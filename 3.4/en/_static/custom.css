@@ -46,6 +46,7 @@ div.signatures {
     color: #333;
     font-size: 13px;
     word-break: keep-all;
+    hyphens: none;
 }
 
 code.literal {

@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>pgr_breadthFirstSearch - Experimental &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -24,10 +25,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
-<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
 
   </head><body>
 
@@ -168,7 +169,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_breadthFirstSearch.html">3.0</a></p></li>
 </ul>
 <section id="pgr-breadthfirstsearch-experimental">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_breadthFirstSearch</span></code> - Experimental<a class="headerlink" href="#pgr-breadthfirstsearch-experimental" title="Permalink to this headline">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_breadthFirstSearch</span></code> - Experimental<a class="headerlink" href="#pgr-breadthfirstsearch-experimental" title="Permalink to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_breadthFirstSearch</span></code> — Returns the traversal order(s) using Breadth First
 Search algorithm.</p>
 <figure class="align-default" id="id1">
@@ -221,7 +222,7 @@ Search algorithm.</p>
 </li>
 </ul>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <p>Provides the Breadth First Search traversal order from a root vertex to a
 particular depth.</p>
 <p><strong>The main Characteristics are:</strong></p>
@@ -233,17 +234,23 @@ target depth level.</p></li>
 </ul>
 </section>
 <section id="signatures">
-<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Summary</p>
-<pre class="literal-block">pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong> [, max_depth] [, directed])
+<div class="admonition-class-signatures admonition">
+<p class="admonition-title"> :class: signatures</p>
+<p>pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong> [, max_depth] [, directed])
 pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vids</strong> [, max_depth] [, directed])
-RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
+RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</p>
+</div>
 <section id="single-vertex">
-<span id="index-0"></span><h3>Single vertex<a class="headerlink" href="#single-vertex" title="Permalink to this headline">¶</a></h3>
-<pre class="literal-block">pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong> [, max_depth] [, directed])
-RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
+<span id="index-0"></span><h3>Single vertex<a class="headerlink" href="#single-vertex" title="Permalink to this heading">¶</a></h3>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<p>pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong> [, max_depth] [, directed])
+RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</p>
+</div>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>From root vertex <span class="math notranslate nohighlight">\(6\)</span> on a <strong>directed</strong> graph with edges in
 ascending order of <code class="docutils literal notranslate"><span class="pre">id</span></code></p>
 </dd>
@@ -273,11 +280,14 @@ ascending order of <code class="docutils literal notranslate"><span class="pre">
 </div>
 </section>
 <section id="multiple-vertices">
-<span id="index-1"></span><h3>Multiple vertices<a class="headerlink" href="#multiple-vertices" title="Permalink to this headline">¶</a></h3>
-<pre class="literal-block">pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vids</strong> [, max_depth] [, directed])
-RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
+<span id="index-1"></span><h3>Multiple vertices<a class="headerlink" href="#multiple-vertices" title="Permalink to this heading">¶</a></h3>
+<div class="admonition-class-signatures admonition">
+<p class="admonition-title"> :class: signatures</p>
+<p>pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vids</strong> [, max_depth] [, directed])
+RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</p>
+</div>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>From root vertices <span class="math notranslate nohighlight">\(\{12, 6\}\)</span> on an <strong>undirected</strong> graph with
 <strong>depth</strong> <span class="math notranslate nohighlight">\(&lt;= 2\)</span> and edges in ascending order of <code class="docutils literal notranslate"><span class="pre">id</span></code></p>
 </dd>
@@ -311,12 +321,12 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 </section>
 </section>
 <section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 13%" />
-<col style="width: 21%" />
-<col style="width: 66%" />
+<col style="width: 12.5%" />
+<col style="width: 21.2%" />
+<col style="width: 66.2%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
@@ -351,16 +361,16 @@ aleatory nodes for each tree in the forest.</p></li>
 </table>
 <p>Where:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
 </dd>
-<dt class="field-even">ANY-NUMERIC</dt>
+<dt class="field-even">ANY-NUMERIC<span class="colon">:</span></dt>
 <dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC</p>
 </dd>
 </dl>
 <section id="optional-parameters">
-<h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -382,8 +392,8 @@ aleatory nodes for each tree in the forest.</p></li>
 </table>
 </section>
 <section id="dfs-optional-parameters">
-<h3>DFS optional parameters<a class="headerlink" href="#dfs-optional-parameters" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<h3>DFS optional parameters<a class="headerlink" href="#dfs-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Type</p></th>
@@ -406,15 +416,15 @@ aleatory nodes for each tree in the forest.</p></li>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this headline">¶</a></h2>
+<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 18%" />
-<col style="width: 18%" />
-<col style="width: 9%" />
-<col style="width: 56%" />
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
@@ -458,19 +468,19 @@ it’s not part of the graph.</p></li>
 </table>
 <p>Where:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL</dt>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 </section>
 <section id="return-columns">
-<h2>Return columns<a class="headerlink" href="#return-columns" title="Permalink to this headline">¶</a></h2>
+<h2>Return columns<a class="headerlink" href="#return-columns" title="Permalink to this heading">¶</a></h2>
 <p>Returns SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Type</p></th>
@@ -518,18 +528,18 @@ it’s not part of the graph.</p></li>
 </table>
 <p>Where:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
 </dd>
-<dt class="field-even">ANY-NUMERIC</dt>
+<dt class="field-even">ANY-NUMERIC<span class="colon">:</span></dt>
 <dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC</p>
 </dd>
 </dl>
 </section>
 <section id="additional-examples">
-<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Same as <a class="reference internal" href="#single-vertex">Single vertex</a> with edges in ascending order of <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
 </dd>
 </dl>
@@ -557,7 +567,7 @@ it’s not part of the graph.</p></li>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Same as <a class="reference internal" href="#single-vertex">Single vertex</a> with edges in descending order of <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
 </dd>
 </dl>
@@ -590,7 +600,7 @@ shows with descending order of the edge identifiers.</p>
 <p><a class="reference internal" href="_images/bfs-ascending.png"><img alt="ascending" src="_images/bfs-ascending.png" style="width: 244.75px; height: 217.5px;" /></a> <a class="reference internal" href="_images/bfs-descending.png"><img alt="descending" src="_images/bfs-descending.png" style="width: 249.25px; height: 217.75px;" /></a></p>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="BFS-category.html"><span class="doc">BFS - Category</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a></p></li>
@@ -618,8 +628,8 @@ shows with descending order of the edge identifiers.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on Sep 14, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
+      Last updated on Sep 17, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
     </p>
   </div>
 </footer>

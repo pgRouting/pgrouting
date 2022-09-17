@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>pgr_createTopology &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -24,10 +25,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
-<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
 
   </head><body>
 
@@ -166,7 +167,7 @@
 <li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_createTopology.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_createTopology.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_createTopology.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_createTopology.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_createTopology.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/common/doc/functions/create_topology.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/common/doc/functions/create_topology.html">2.0</a></p></li>
 </ul>
 <section id="pgr-createtopology">
-<h1>pgr_createTopology<a class="headerlink" href="#pgr-createtopology" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1>pgr_createTopology<a class="headerlink" href="#pgr-createtopology" title="Enlace permanente a este encabezado">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_createTopology</span></code> — Construye una topología de red basada en la información de geometría.</p>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
@@ -178,7 +179,7 @@
 </li>
 </ul>
 <section id="description">
-<h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Descripción<a class="headerlink" href="#description" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>La función devuelve:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">OK</span></code> después de que se ha construido la topología de red y la tabla de vértices.</p></li>
@@ -186,7 +187,7 @@
 </ul>
 </section>
 <section id="signatures">
-<h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">varchar</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="n">text</span> <span class="n">edge_table</span><span class="p">,</span> <span class="n">double</span> <span class="n">precision</span> <span class="n">tolerance</span><span class="p">,</span>
                        <span class="n">text</span> <span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="n">text</span> <span class="nb">id</span><span class="o">:=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span>
                        <span class="n">text</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="n">text</span> <span class="n">target</span><span class="o">:=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span>
@@ -195,31 +196,31 @@
 </div>
 </section>
 <section id="parameters">
-<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>La función de creación de topología requiere los siguientes parámetros:</p>
 <dl class="field-list simple">
-<dt class="field-odd">edge_table</dt>
+<dt class="field-odd">edge_table<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> La tabla de la red. (puede contener el nombre del esquema)</p>
 </dd>
-<dt class="field-even">tolerancia</dt>
+<dt class="field-even">tolerancia<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code> ajuste tolerancia de bordes desconectados. (en la unidad de proyección)</p>
 </dd>
-<dt class="field-odd">the_geom</dt>
+<dt class="field-odd">the_geom<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  nombre de la columna de la geometría en la tabla de la red. El valor por defecto es <code class="docutils literal notranslate"><span class="pre">the_geom</span></code>.</p>
 </dd>
-<dt class="field-even">id</dt>
+<dt class="field-even">id<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text``Nombre</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">columna</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">clave</span> <span class="pre">principal</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">tabla</span> <span class="pre">de</span> <span class="pre">red.</span> <span class="pre">Valor</span> <span class="pre">por</span> <span class="pre">defecto</span> <span class="pre">es</span> <span class="pre">``id</span></code>.</p>
 </dd>
-<dt class="field-odd">source</dt>
+<dt class="field-odd">source<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">id``Nombre</span> <span class="pre">de</span> <span class="pre">columna</span> <span class="pre">de</span> <span class="pre">origen</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">tabla</span> <span class="pre">de</span> <span class="pre">red.</span> <span class="pre">El</span> <span class="pre">valor</span> <span class="pre">predeterminado</span> <span class="pre">es``source</span></code>.</p>
 </dd>
-<dt class="field-even">target</dt>
+<dt class="field-even">target<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> El nombre de la columna del nodo de llegada del segmento.  El valor por defecto es <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
 </dd>
-<dt class="field-odd">rows_where</dt>
+<dt class="field-odd">rows_where<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>   Condición para SELECCIONAR un subconjunto de filas.  El valor predeterminado es <code class="docutils literal notranslate"><span class="pre">true</span></code> para indicar todas las filas donde <code class="docutils literal notranslate"><span class="pre">source</span></code> o <code class="docutils literal notranslate"><span class="pre">target</span></code> tienen un valor nulo, de lo contrario se utiliza la condición.</p>
 </dd>
-<dt class="field-even">limpio</dt>
+<dt class="field-even">limpio<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code> Limpie cualquier topología previa. El valor predeterminado es <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
 </dd>
 </dl>
@@ -264,27 +265,27 @@
 <p>La tabla de vértices es un requerimiento de las funciones <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> y <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</p>
 <p>La estructura de la tabla de los vértices es:</p>
 <dl class="field-list simple">
-<dt class="field-odd">id</dt>
+<dt class="field-odd">id<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code> identificador del vértice.</p>
 </dd>
-<dt class="field-even">cnt</dt>
+<dt class="field-even">cnt<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Número de vértices en la edge_table que referencian este vértice. Ver <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</p>
 </dd>
-<dt class="field-odd">chk</dt>
+<dt class="field-odd">chk<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Indicador de que el vértice podría tener un problema. Consulte <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</p>
 </dd>
-<dt class="field-even">ein</dt>
+<dt class="field-even">ein<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Número de vértices en edge_table que referencian a este vértice como (AS) entrante. Ver <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</p>
 </dd>
-<dt class="field-odd">eout</dt>
+<dt class="field-odd">eout<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Número de vértices en edge_table que referencian este vértice como (AS) saliente. Ver <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</p>
 </dd>
-<dt class="field-even">the_geom</dt>
+<dt class="field-even">the_geom<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code> Valor de la geometría POINT del vértice.</p>
 </dd>
 </dl>
 <section id="usage-when-the-edge-table-s-columns-match-the-default-values">
-<h3>Uso cuando las columnas de la tabla de borde coinciden con los valores por defecto:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-match-the-default-values" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>Uso cuando las columnas de la tabla de borde coinciden con los valores por defecto:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-match-the-default-values" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>La forma más sencilla de utilizar pgr_createTopology es:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
@@ -405,7 +406,7 @@ passed to the function as the geometry column, and the geometry column
 </div>
 </section>
 <section id="usage-when-the-edge-table-s-columns-do-not-match-the-default-values">
-<h3>Uso cuando las columnas de la tabla de borde NO COINCIDEN con los valores por defecto:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-do-not-match-the-default-values" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>Uso cuando las columnas de la tabla de borde NO COINCIDEN con los valores por defecto:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-do-not-match-the-default-values" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Para la siguiente tabla</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">mytable</span> <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">AS</span> <span class="n">gid</span><span class="p">,</span>  <span class="n">geom</span> <span class="n">AS</span> <span class="n">mygeom</span><span class="p">,</span> <span class="n">source</span> <span class="n">AS</span> <span class="n">src</span> <span class="p">,</span> <span class="n">target</span> <span class="n">AS</span> <span class="n">tgt</span> <span class="n">FROM</span> <span class="n">edges</span><span class="p">)</span> <span class="p">;</span>
 <span class="n">SELECT</span> <span class="mi">18</span>
@@ -513,8 +514,8 @@ passed to the function AS the id column.</p>
 </section>
 </section>
 <section id="additional-examples">
-<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlazar permanentemente con este título">¶</a></h2>
-<div class="contents local topic" id="contenido">
+<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlace permanente a este encabezado">¶</a></h2>
+<nav class="contents local" id="contenido">
 <ul class="simple">
 <li><p><a class="reference internal" href="#create-a-routing-topology" id="id2">Creación de una topología de ruteo</a></p>
 <ul>
@@ -528,12 +529,12 @@ passed to the function AS the id column.</p>
 </li>
 <li><p><a class="reference internal" href="#with-full-output" id="id9">Con salida completa</a></p></li>
 </ul>
-</div>
+</nav>
 <section id="create-a-routing-topology">
-<h3><a class="toc-backref" href="#id2">Creación de una topología de ruteo</a><a class="headerlink" href="#create-a-routing-topology" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Creación de una topología de ruteo</a><a class="headerlink" href="#create-a-routing-topology" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>An alternate method to create a routing topology use <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Propuesto</span></a></p>
 <section id="make-sure-the-database-does-not-have-the-vertices-table">
-<h4><a class="toc-backref" href="#id3">Asegurarse de que la base de datos no tiene <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a><a class="headerlink" href="#make-sure-the-database-does-not-have-the-vertices-table" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id3" role="doc-backlink">Asegurarse de que la base de datos no tiene <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a><a class="headerlink" href="#make-sure-the-database-does-not-have-the-vertices-table" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">vertices_table</span><span class="p">;</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">table</span> <span class="s2">&quot;vertices_table&quot;</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">,</span> <span class="n">skipping</span>
 <span class="n">DROP</span> <span class="n">TABLE</span>
@@ -541,7 +542,7 @@ passed to the function AS the id column.</p>
 </div>
 </section>
 <section id="clean-up-the-columns-of-the-routing-topology-to-be-created">
-<h4><a class="toc-backref" href="#id4">Limpieza de las columnas de la topología de ruteo que se creará</a><a class="headerlink" href="#clean-up-the-columns-of-the-routing-topology-to-be-created" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">Limpieza de las columnas de la topología de ruteo que se creará</a><a class="headerlink" href="#clean-up-the-columns-of-the-routing-topology-to-be-created" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edges</span>
 <span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span>
 <span class="n">x1</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span>
@@ -551,7 +552,7 @@ passed to the function AS the id column.</p>
 </div>
 </section>
 <section id="create-the-vertices-table">
-<h4><a class="toc-backref" href="#id5">Crear la tabla de vértices</a><a class="headerlink" href="#create-the-vertices-table" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">Crear la tabla de vértices</a><a class="headerlink" href="#create-the-vertices-table" title="Enlace permanente a este encabezado">¶</a></h4>
 <ul class="simple">
 <li><p>When the <code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code> has a SRID then use <code class="docutils literal notranslate"><span class="pre">geom::geometry(POINT,</span> <span class="pre">&lt;SRID&gt;)</span></code></p></li>
 <li><p>For big edge tables that are been prepared,</p>
@@ -568,7 +569,7 @@ passed to the function AS the id column.</p>
 </div>
 </section>
 <section id="inspect-the-vertices-table">
-<h4><a class="toc-backref" href="#id6">Inspeccionar la tabla de vértices</a><a class="headerlink" href="#inspect-the-vertices-table" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id6" role="doc-backlink">Inspeccionar la tabla de vértices</a><a class="headerlink" href="#inspect-the-vertices-table" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="n">vertices_table</span><span class="p">;</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">in_edges</span> <span class="o">|</span> <span class="n">out_edges</span> <span class="o">|</span>       <span class="n">x</span>        <span class="o">|</span>  <span class="n">y</span>  <span class="o">|</span>                    <span class="n">geom</span>
@@ -596,7 +597,7 @@ passed to the function AS the id column.</p>
 </div>
 </section>
 <section id="create-the-routing-topology-on-the-edge-table">
-<h4><a class="toc-backref" href="#id7">Creación de la topología de ruteo en la tabla de aristas</a><a class="headerlink" href="#create-the-routing-topology-on-the-edge-table" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id7" role="doc-backlink">Creación de la topología de ruteo en la tabla de aristas</a><a class="headerlink" href="#create-the-routing-topology-on-the-edge-table" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Actualizar de la información de <code class="docutils literal notranslate"><span class="pre">source</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">out_going</span> <span class="n">AS</span> <span class="p">(</span>
@@ -623,7 +624,7 @@ passed to the function AS the id column.</p>
 </div>
 </section>
 <section id="inspect-the-routing-topology">
-<h4><a class="toc-backref" href="#id8">Inspección de la topología de ruteo</a><a class="headerlink" href="#inspect-the-routing-topology" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id8" role="doc-backlink">Inspección de la topología de ruteo</a><a class="headerlink" href="#inspect-the-routing-topology" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span>
 <span class="n">FROM</span> <span class="n">edges</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="p">;</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">x1</span>  <span class="o">|</span> <span class="n">y1</span>  <span class="o">|</span>       <span class="n">x2</span>       <span class="o">|</span> <span class="n">y2</span>
@@ -659,7 +660,7 @@ passed to the function AS the id column.</p>
 </section>
 </section>
 <section id="with-full-output">
-<h3><a class="toc-backref" href="#id9">Con salida completa</a><a class="headerlink" href="#with-full-output" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Con salida completa</a><a class="headerlink" href="#with-full-output" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>En este ejemplo se inicia una topología limpia, con 5 aristas y, a continuación, se incrementa al resto de los bordes.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span>  <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &lt; 6&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">true</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
@@ -695,7 +696,7 @@ passed to the function AS the id column.</p>
 </section>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="topology-functions.html"><span class="doc">Topología - Familia de Funciones</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a></p></li>
@@ -722,8 +723,8 @@ passed to the function AS the id column.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en sept. 14, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
+      Actualizado por última vez en sept 17, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
     </p>
   </div>
 </footer>

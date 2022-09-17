@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>pgr_nodeNetwork &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -24,10 +25,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
-<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
 
   </head><body>
 
@@ -151,13 +152,13 @@
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_nodeNetwork.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_nodeNetwork.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_nodeNetwork.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_nodeNetwork.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_nodeNetwork.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/common/doc/functions/node_network.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/common/doc/functions/node_network.html">2.0</a></p></li>
 </ul>
 <section id="pgr-nodenetwork">
-<h1>pgr_nodeNetwork<a class="headerlink" href="#pgr-nodenetwork" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1>pgr_nodeNetwork<a class="headerlink" href="#pgr-nodenetwork" title="Enlace permanente a este encabezado">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code> - Crea los nodos de una tabla de aristas de la red.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Autor</dt>
+<dt class="field-odd">Autor<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Nicolas Ribot</p>
 </dd>
-<dt class="field-even">Derechos de autor</dt>
+<dt class="field-even">Derechos de autor<span class="colon">:</span></dt>
 <dd class="field-even"><p>Nicolas Ribot, el código fuente está liberado bajo la licencia MIT-X.</p>
 </dd>
 </dl>
@@ -175,55 +176,55 @@
 </li>
 </ul>
 <section id="description">
-<h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Descripción<a class="headerlink" href="#description" title="Enlace permanente a este encabezado">¶</a></h2>
 <p><strong>Las principales características son:</strong></p>
 <p>Un problema común asociado con la incorporación de datos SIG en pgRouting es el hecho de que los datos a menudo no están correctamente referenciados con nodos. Esto provoca topologías no válidas, que resultan en rutas que son incorrectas.</p>
 <p>Que los bordes estén indicados como anudados significa que, en cada intersección de la red de caminos, las aristas se descompondrán en segmentos separados . Los casos como una intersección por puente o túnel donde no existe conexión vial no son detectados por esta función.</p>
 <p>Esta función lee la tabla <code class="docutils literal notranslate"><span class="pre">edge_table</span></code>, que tiene una columna de clave principal <code class="docutils literal notranslate"><span class="pre">id</span></code> y columna de la geometría llamada <code class="docutils literal notranslate"><span class="pre">the_geom</span></code>, y verifica la intersección de todos los segmentos contra todos los demás segmentos creando una tabla de salida <code class="docutils literal notranslate"><span class="pre">edge_table_noded</span></code>. Usa la tolerancia <code class="docutils literal notranslate"><span class="pre">tolerance</span></code> para decidir cuáles nodos son considerados como mismo nodo.</p>
 </section>
 <section id="parameters">
-<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlace permanente a este encabezado">¶</a></h2>
 <dl class="field-list simple">
-<dt class="field-odd">edge_table</dt>
+<dt class="field-odd">edge_table<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> La tabla de la red. (puede contener el nombre del esquema)</p>
 </dd>
-<dt class="field-even">tolerancia</dt>
+<dt class="field-even">tolerancia<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code> tolerancia para puntos de coincidencia (en la unidad de proyección)</p>
 </dd>
-<dt class="field-odd">id</dt>
+<dt class="field-odd">id<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text``Nombre</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">columna</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">clave</span> <span class="pre">principal</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">tabla</span> <span class="pre">de</span> <span class="pre">red.</span> <span class="pre">Valor</span> <span class="pre">por</span> <span class="pre">defecto</span> <span class="pre">es</span> <span class="pre">``id</span></code>”.</p>
 </dd>
-<dt class="field-even">the_geom</dt>
+<dt class="field-even">the_geom<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> nombre de la columna de la geometría en la tabla de la red. El valor por defecto es <cite>the_geom`</cite>.</p>
 </dd>
-<dt class="field-odd">table_ending</dt>
+<dt class="field-odd">table_ending<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> sufijo para la nueva tabla. El valor predeterminado es <code class="docutils literal notranslate"><span class="pre">noded</span></code>.</p>
 </dd>
 </dl>
 <p>La tabla de salida tendrá para  <code class="docutils literal notranslate"><span class="pre">edge_table_noded</span></code></p>
 <dl class="field-list simple">
-<dt class="field-odd">id</dt>
+<dt class="field-odd">id<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code> identificador único del vértice</p>
 </dd>
-<dt class="field-even">old_id</dt>
+<dt class="field-even">old_id<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code> identificador del borde en la tabla original</p>
 </dd>
-<dt class="field-odd">sub_id</dt>
+<dt class="field-odd">sub_id<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> número del segmento del borde original</p>
 </dd>
-<dt class="field-even">source</dt>
+<dt class="field-even">source<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Columna de origen vacía que se utilizará con la función <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a></p>
 </dd>
-<dt class="field-odd">target</dt>
+<dt class="field-odd">target<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Columna vacía de destino que se utilizará con la función <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a></p>
 </dd>
-<dt class="field-even">la geom</dt>
+<dt class="field-even">la geom<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code> Columna de geometría de la red discontínua</p>
 </dd>
 </dl>
 </section>
 <section id="examples">
-<h2>Ejemplos<a class="headerlink" href="#examples" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Ejemplos<a class="headerlink" href="#examples" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Vamos a crear la topología para los datos en <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
@@ -361,21 +362,16 @@
 </div>
 </section>
 <section id="images">
-<h2>Imágenes<a class="headerlink" href="#images" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Imágenes<a class="headerlink" href="#images" title="Enlace permanente a este encabezado">¶</a></h2>
 <p class="rubric">Imágen del Antes</p>
 <a class="reference internal image-reference" href="_images/before_node_net.png"><img alt="Imágen del Antes" class="align-left" src="_images/before_node_net.png" style="width: 460.2px; height: 440.4px;" /></a>
 <p class="rubric">Imágen del Después</p>
 <a class="reference internal image-reference" href="_images/after_node_net.png"><img alt="Imágen del Después" class="align-left" src="_images/after_node_net.png" style="width: 456.0px; height: 439.2px;" /></a>
 </section>
 <section id="comparing-the-results">
-<h2>Comparando los resultados<a class="headerlink" href="#comparing-the-results" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Comparando los resultados<a class="headerlink" href="#comparing-the-results" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Comparando con el análisis del edge_table original, vemos que.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 34%" />
-<col style="width: 51%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"></th>
 <th class="head"><p>Antes de</p></th>
@@ -528,7 +524,7 @@
 </div>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
 <p><a class="reference internal" href="topology-functions.html"><span class="doc">Topología - Familia de Funciones</span></a> para obtener una visión general de una topología para algoritmos de enrutamiento. <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> para analizar la direccionalidad de los bordes. <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> para crear una topología basada en la geometría. <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> para analizar los bordes y vértices de la tabla de bordes.</p>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
@@ -551,8 +547,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en sept. 14, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
+      Actualizado por última vez en sept 17, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
     </p>
   </div>
 </footer>

@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>withPoints- Categoría &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -25,10 +26,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
-<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
 
   </head><body>
 
@@ -173,7 +174,7 @@
 <li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/en/withPoints-category.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/en/withPoints-category.html">3.4</a>)</p></li>
 </ul>
 <section id="withpoints-category">
-<h1>withPoints- Categoría<a class="headerlink" href="#withpoints-category" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1>withPoints- Categoría<a class="headerlink" href="#withpoints-category" title="Enlace permanente a este encabezado">¶</a></h1>
 <p>Cuando los puntos se agregan al grafo.</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
@@ -202,7 +203,7 @@
 </li>
 </ul>
 <section id="introduction">
-<h2>Introducción<a class="headerlink" href="#introduction" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Introducción<a class="headerlink" href="#introduction" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>La categoría <strong>with points</strong> modifica el grafo continuamente al agregar puntos en las aristas, como es requerido por la consulta <a class="reference internal" href="#points-sql">Points SQL</a> .</p>
 <p>Las funciones en esta categoría otorgan la habilidad de procesar entre puntos arbitrarios ubicados afuera del grafo original.</p>
 <p>Esta categoría de funciones se origino para el ruteo de vehículos, pero bien puede funcionar si se aplica en algo que no incluya vehículos.</p>
@@ -258,12 +259,12 @@
 </ul>
 </section>
 <section id="parameters">
-<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlace permanente a este encabezado">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 19%" />
-<col style="width: 19%" />
-<col style="width: 61%" />
+<col style="width: 19.4%" />
+<col style="width: 19.4%" />
+<col style="width: 61.1%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -303,13 +304,13 @@
 </tbody>
 </table>
 <section id="optional-parameters">
-<h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 16%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 68%" />
+<col style="width: 15.9%" />
+<col style="width: 8.0%" />
+<col style="width: 8.0%" />
+<col style="width: 68.2%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -319,7 +320,7 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Lado de manejo</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">r</span></code></p></td>
 <td><p>Valor en [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>] indicando si el lado de manejo es:</p>
@@ -344,15 +345,15 @@
 </section>
 </section>
 <section id="inner-queries">
-<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Enlace permanente a este encabezado">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 18%" />
-<col style="width: 18%" />
-<col style="width: 9%" />
-<col style="width: 56%" />
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -395,22 +396,22 @@
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ENTEROS</dt>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">FLOTANTES</dt>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 <section id="points-sql">
-<h3>SQL puntos<a class="headerlink" href="#points-sql" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>SQL puntos<a class="headerlink" href="#points-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 16%" />
-<col style="width: 18%" />
-<col style="width: 9%" />
-<col style="width: 57%" />
+<col style="width: 15.6%" />
+<col style="width: 18.2%" />
+<col style="width: 9.1%" />
+<col style="width: 57.1%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -456,21 +457,21 @@
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ENTEROS</dt>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">FLOTANTES</dt>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 <section id="combinations-sql">
-<h3>SQL Combinaciones<a class="headerlink" href="#combinations-sql" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>SQL Combinaciones<a class="headerlink" href="#combinations-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 14%" />
-<col style="width: 16%" />
-<col style="width: 70%" />
+<col style="width: 14.0%" />
+<col style="width: 16.3%" />
+<col style="width: 69.8%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -491,15 +492,15 @@
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ENTEROS</dt>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
 </dl>
 </section>
 </section>
 <section id="advanced-documentation">
-<h2>Documentación avanzada<a class="headerlink" href="#advanced-documentation" title="Enlazar permanentemente con este título">¶</a></h2>
-<div class="contents local topic" id="contents">
+<h2>Documentación avanzada<a class="headerlink" href="#advanced-documentation" title="Enlace permanente a este encabezado">¶</a></h2>
+<nav class="contents local" id="contents">
 <p class="topic-title">Contenido</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#about-points" id="id1">Sobre los puntos</a></p></li>
@@ -518,9 +519,9 @@
 </ul>
 </li>
 </ul>
-</div>
+</nav>
 <section id="about-points">
-<h3><a class="toc-backref" href="#id1">Sobre los puntos</a><a class="headerlink" href="#about-points" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id1" role="doc-backlink">Sobre los puntos</a><a class="headerlink" href="#about-points" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Para esta sección de la siguiente ciudad (ver <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a>) algunos puntos de interés como restaurantes, supermercado, oficina de correo, etc. seran usadas de ejemplo.</p>
 <figure class="align-default">
 <a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 475.5px; height: 433.0px;" /></a>
@@ -553,7 +554,7 @@
 </div>
 </section>
 <section id="driving-side">
-<h3><a class="toc-backref" href="#id2">Lado de manejo</a><a class="headerlink" href="#driving-side" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Lado de manejo</a><a class="headerlink" href="#driving-side" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>En las siguientes imágenes:</p>
 <ul class="simple">
 <li><p>Los vértices cuadrados son vértices temporales,</p></li>
@@ -561,7 +562,7 @@
 <li><p>visualmente mostrando las diferencias dependiendo de como se interpreta la información de lado de conducción.</p></li>
 </ul>
 <section id="right-driving-side">
-<h4><a class="toc-backref" href="#id3">Lado de manejo derecho</a><a class="headerlink" href="#right-driving-side" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id3" role="doc-backlink">Lado de manejo derecho</a><a class="headerlink" href="#right-driving-side" title="Enlace permanente a este encabezado">¶</a></h4>
 <a class="reference internal image-reference" href="_images/rightDrivingSide.png"><img alt="_images/rightDrivingSide.png" src="_images/rightDrivingSide.png" style="width: 501.5px; height: 433.5px;" /></a>
 <ul class="simple">
 <li><p>Punto**1** ubicado en la arista <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">5)</span></code></p></li>
@@ -573,7 +574,7 @@
 </ul>
 </section>
 <section id="left-driving-side">
-<h4><a class="toc-backref" href="#id4">Lado de manejo izquierdo</a><a class="headerlink" href="#left-driving-side" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">Lado de manejo izquierdo</a><a class="headerlink" href="#left-driving-side" title="Enlace permanente a este encabezado">¶</a></h4>
 <a class="reference internal image-reference" href="_images/leftDrivingSide.png"><img alt="_images/leftDrivingSide.png" src="_images/leftDrivingSide.png" style="width: 510.0px; height: 436.5px;" /></a>
 <ul class="simple">
 <li><p>Punto**1** ubicado en la arista <code class="docutils literal notranslate"><span class="pre">(5,</span> <span class="pre">6)</span></code></p></li>
@@ -585,7 +586,7 @@
 </ul>
 </section>
 <section id="driving-side-does-not-matter">
-<h4><a class="toc-backref" href="#id5">Lado de manejo no importa</a><a class="headerlink" href="#driving-side-does-not-matter" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">Lado de manejo no importa</a><a class="headerlink" href="#driving-side-does-not-matter" title="Enlace permanente a este encabezado">¶</a></h4>
 <ul class="simple">
 <li><p>Como si se tuvieran todos los puntos en ambos lados considerados como <code class="docutils literal notranslate"><span class="pre">b</span></code></p></li>
 <li><p>Uso preferido en grafos <strong>no dirigidos</strong></p></li>
@@ -603,7 +604,7 @@
 </section>
 </section>
 <section id="creating-temporary-vertices">
-<h3><a class="toc-backref" href="#id6">Creación de vértices temporales</a><a class="headerlink" href="#creating-temporary-vertices" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Creación de vértices temporales</a><a class="headerlink" href="#creating-temporary-vertices" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>This section will demonstrate how a temporary vertex is created internally on
 the graph.</p>
 <p class="rubric">Problem</p>
@@ -628,7 +629,7 @@ the graph.</p>
 </pre></div>
 </div>
 <section id="on-a-right-hand-side-driving-network">
-<h4><a class="toc-backref" href="#id7">En una red de conducción del lado derecho</a><a class="headerlink" href="#on-a-right-hand-side-driving-network" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id7" role="doc-backlink">En una red de conducción del lado derecho</a><a class="headerlink" href="#on-a-right-hand-side-driving-network" title="Enlace permanente a este encabezado">¶</a></h4>
 <p class="rubric">Lado de manejo derecho</p>
 <a class="reference internal image-reference" href="_images/rightDrivingSide.png"><img alt="_images/rightDrivingSide.png" src="_images/rightDrivingSide.png" style="width: 501.5px; height: 433.5px;" /></a>
 <ul class="simple">
@@ -647,7 +648,7 @@ the graph.</p>
 </ul>
 </section>
 <section id="on-a-left-hand-side-driving-network">
-<h4><a class="toc-backref" href="#id8">En una red de conducción del lado izquierdo</a><a class="headerlink" href="#on-a-left-hand-side-driving-network" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id8" role="doc-backlink">En una red de conducción del lado izquierdo</a><a class="headerlink" href="#on-a-left-hand-side-driving-network" title="Enlace permanente a este encabezado">¶</a></h4>
 <p class="rubric">Lado de manejo izquierdo</p>
 <a class="reference internal image-reference" href="_images/leftDrivingSide.png"><img alt="_images/leftDrivingSide.png" src="_images/leftDrivingSide.png" style="width: 510.0px; height: 436.5px;" /></a>
 <ul class="simple">
@@ -679,7 +680,7 @@ the graph.</p></li>
 </ul>
 </section>
 <section id="when-driving-side-does-not-matter">
-<h4><a class="toc-backref" href="#id9">Cuando el lado de conducción no importa</a><a class="headerlink" href="#when-driving-side-does-not-matter" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id9" role="doc-backlink">Cuando el lado de conducción no importa</a><a class="headerlink" href="#when-driving-side-does-not-matter" title="Enlace permanente a este encabezado">¶</a></h4>
 <a class="reference internal image-reference" href="_images/noMatterDrivingSide.png"><img alt="_images/noMatterDrivingSide.png" src="_images/noMatterDrivingSide.png" style="width: 470.0px; height: 432.5px;" /></a>
 <ul class="simple">
 <li><p>Arrival to point <code class="docutils literal notranslate"><span class="pre">-2</span></code> can be achived via vertices <strong>16</strong> or <strong>17</strong>.</p></li>
@@ -712,7 +713,7 @@ the graph.</p></li>
 </section>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Familia de funciones</span></a></p></li>
 </ul>
@@ -737,8 +738,8 @@ the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en sept. 14, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
+      Actualizado por última vez en sept 17, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
     </p>
   </div>
 </footer>

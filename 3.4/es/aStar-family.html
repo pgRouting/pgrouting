@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>A* - Familia de Funciones &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -25,10 +26,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
-<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
 
   </head><body>
 
@@ -156,7 +157,7 @@
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/aStar-family.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/aStar-family.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/aStar-family.html">2.4</a></p></li>
 </ul>
 <section id="a-family-of-functions">
-<h1>A* - Familia de Funciones<a class="headerlink" href="#a-family-of-functions" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1>A* - Familia de Funciones<a class="headerlink" href="#a-family-of-functions" title="Enlace permanente a este encabezado">¶</a></h1>
 <p>El algoritmo A * (pronunciado «A estrella») se basa en el algoritmo de Dijkstra con una heurística que permite resolver problemas de ruta más cortos evaluando sólo un subconjunto de la gráfica.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_aStar.html"><span class="doc">pgr_aStar</span></a> - A* Algoritmo para la ruta más corta.</p></li>
@@ -166,7 +167,7 @@
 <div class="toctree-wrapper compound">
 </div>
 <section id="description">
-<h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Descripción<a class="headerlink" href="#description" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Las características principales son:</p>
 <ul class="simple">
 <li><p>Funciona para grafos dirigidos y no dirigidos.</p></li>
@@ -201,8 +202,8 @@
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O((E + V) * \log V)\)</span></p></li>
 </ul>
 <section id="astar-optional-parameters">
-<h3>Parámetros opcionales de aStar<a class="headerlink" href="#astar-optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<h3>Parámetros opcionales de aStar<a class="headerlink" href="#astar-optional-parameters" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
 <th class="head"><p>Tipo</p></th>
@@ -241,9 +242,9 @@
 </section>
 </section>
 <section id="advanced-documentation">
-<h2>Documentación avanzada<a class="headerlink" href="#advanced-documentation" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Documentación avanzada<a class="headerlink" href="#advanced-documentation" title="Enlace permanente a este encabezado">¶</a></h2>
 <section id="heuristic">
-<span id="astar-heuristics"></span><h3>Heurística<a class="headerlink" href="#heuristic" title="Enlazar permanentemente con este título">¶</a></h3>
+<span id="astar-heuristics"></span><h3>Heurística<a class="headerlink" href="#heuristic" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Actualmente las funciones heurísticas disponibles son:</p>
 <ul class="simple">
 <li><p>0: <span class="math notranslate nohighlight">\(h(v) = 0\)</span> (Utilizar este valor para comparar con pgr_dijkstra)</p></li>
@@ -256,12 +257,12 @@
 <p>Donde <span class="math notranslate nohighlight">\(\Delta x = x_1 - x_0\)</span> y <span class="math notranslate nohighlight">\(\Delta y = y_1 - y_0\)</span></p>
 </section>
 <section id="factor">
-<span id="astar-factor"></span><h3>Factor<a class="headerlink" href="#factor" title="Enlazar permanentemente con este título">¶</a></h3>
+<span id="astar-factor"></span><h3>Factor<a class="headerlink" href="#factor" title="Enlace permanente a este encabezado">¶</a></h3>
 <p class="rubric">Análisis 1</p>
 <p>Trabajando con cost/reverse_cost como longitud en grados, x / y en lat/lon: Factor = 1 (sin necesidad de cambiar unidades)</p>
 <p class="rubric">Análisis 2</p>
 <p>Trabajando con cost/reverse_cost donde la longitud es en metros, x / y es lat/lon: Factor dependere de la ubicación de los puntos:</p>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Latitud</p></th>
 <th class="head"><p>Conversión</p></th>
@@ -281,7 +282,7 @@
 </table>
 <p class="rubric">Análisis 3</p>
 <p>Trabajando con cost/reverse_cost con el tiempo en segundos, x / y en lat/lon: Factor: que depende de la ubicación de los puntos y en la velocidad promedio, digamos que 25m/s es la velocidad.</p>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Latitud</p></th>
 <th class="head"><p>Conversión</p></th>
@@ -302,7 +303,7 @@
 </section>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="bdAstar-family.html"><span class="doc">A* Bidireccional - Familia de Funciones</span></a></p></li>
 <li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/astar_search.html">https://www.boost.org/libs/graph/doc/astar_search.html</a></p></li>
@@ -329,8 +330,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en sept. 14, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
+      Actualizado por última vez en sept 17, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
     </p>
   </div>
 </footer>

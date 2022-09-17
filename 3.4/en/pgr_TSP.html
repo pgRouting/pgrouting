@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>pgr_TSP &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -24,10 +25,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
-<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
 
   </head><body>
 
@@ -180,7 +181,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/tsp/doc/index.html">2.0</a></p></li>
 </ul>
 <section id="pgr-tsp">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code><a class="headerlink" href="#pgr-tsp" title="Permalink to this headline">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code><a class="headerlink" href="#pgr-tsp" title="Permalink to this heading">¶</a></h1>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code> - Aproximation using <em>metric</em> algorithm.</p></li>
 </ul>
@@ -222,9 +223,9 @@ randomize</p></li>
 </li>
 </ul>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <section id="problem-definition">
-<h3>Problem Definition<a class="headerlink" href="#problem-definition" title="Permalink to this headline">¶</a></h3>
+<h3>Problem Definition<a class="headerlink" href="#problem-definition" title="Permalink to this heading">¶</a></h3>
 <p>The travelling salesperson problem (TSP) asks the following question:</p>
 <blockquote>
 <div><p><em>Given a list of cities and the distances between each pair of cities, which
@@ -233,7 +234,7 @@ to the origin city?</em></p>
 </div></blockquote>
 </section>
 <section id="characteristics">
-<h3>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h3>
+<h3>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>This problem is an NP-hard optimization problem.</p></li>
 <li><p>Metric Algorithm is used</p></li>
@@ -318,12 +319,17 @@ triangle inequality.</p></li>
 </section>
 </section>
 <section id="signatures">
-<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Summary</p>
-<pre class="literal-block" id="index-0">pgr_TSP(<a class="reference internal" href="#matrix-sql">Matrix SQL</a>, [start_id], [end_id])
-RETURNS SETOF (seq, node, cost, agg_cost)</pre>
+<div class="signatures admonition" id="index-0">
+<p class="admonition-title"></p>
+<blockquote>
+<div><p>pgr_TSP(<a class="reference internal" href="#matrix-sql">Matrix SQL</a>, [start_id], [end_id])
+RETURNS SETOF (seq, node, cost, agg_cost)</p>
+</div></blockquote>
+</div>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Using <a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a> to generate the matrix information</p>
 </dd>
 </dl>
@@ -358,13 +364,8 @@ not connected.</p></li>
 </div>
 </section>
 <section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 28%" />
-<col style="width: 16%" />
-<col style="width: 56%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Type</p></th>
@@ -379,13 +380,13 @@ not connected.</p></li>
 </tbody>
 </table>
 <section id="tsp-optional-parameters">
-<h3>TSP optional parameters<a class="headerlink" href="#tsp-optional-parameters" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>TSP optional parameters<a class="headerlink" href="#tsp-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 18%" />
-<col style="width: 18%" />
-<col style="width: 9%" />
-<col style="width: 56%" />
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
@@ -421,15 +422,10 @@ vertex</p></li>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this headline">¶</a></h2>
+<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="matrix-sql">
-<h3>Matrix SQL<a class="headerlink" href="#matrix-sql" title="Permalink to this headline">¶</a></h3>
+<h3>Matrix SQL<a class="headerlink" href="#matrix-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 16%" />
-<col style="width: 22%" />
-<col style="width: 62%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -454,14 +450,9 @@ vertex</p></li>
 </section>
 </section>
 <section id="result-columns">
-<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
+<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
 <p>Returns SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 10%" />
-<col style="width: 78%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -497,16 +488,16 @@ vertex</p></li>
 </table>
 </section>
 <section id="additional-examples">
-<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
-<div class="contents local topic" id="contents">
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
+<nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#start-from-vertex-1" id="id2">Start from vertex <span class="math notranslate nohighlight">\(1\)</span></a></p></li>
 <li><p><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymetric-matrix" id="id3">Using points of interest to generate an asymetric matrix.</a></p></li>
 <li><p><a class="reference internal" href="#connected-incomplete-data" id="id4">Connected incomplete data</a></p></li>
 </ul>
-</div>
+</nav>
 <section id="start-from-vertex-1">
-<h3><a class="toc-backref" href="#id2">Start from vertex <span class="math notranslate nohighlight">\(1\)</span></a><a class="headerlink" href="#start-from-vertex-1" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Start from vertex <span class="math notranslate nohighlight">\(1\)</span></a><a class="headerlink" href="#start-from-vertex-1" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>Line 6</strong> <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">=&gt;</span> <span class="pre">1</span></code></p></li>
 </ul>
@@ -538,7 +529,7 @@ vertex</p></li>
 </div>
 </section>
 <section id="using-points-of-interest-to-generate-an-asymetric-matrix">
-<h3><a class="toc-backref" href="#id3">Using points of interest to generate an asymetric matrix.</a><a class="headerlink" href="#using-points-of-interest-to-generate-an-asymetric-matrix" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Using points of interest to generate an asymetric matrix.</a><a class="headerlink" href="#using-points-of-interest-to-generate-an-asymetric-matrix" title="Permalink to this heading">¶</a></h3>
 <p>To generate an asymmetric matrix:</p>
 <ul class="simple">
 <li><p><strong>Line 4</strong> The <code class="docutils literal notranslate"><span class="pre">side</span></code> information of <code class="docutils literal notranslate"><span class="pre">pointsOfInterset</span></code> is ignored by not
@@ -579,7 +570,7 @@ because:</p>
 </div>
 </section>
 <section id="connected-incomplete-data">
-<h3><a class="toc-backref" href="#id4">Connected incomplete data</a><a class="headerlink" href="#connected-incomplete-data" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Connected incomplete data</a><a class="headerlink" href="#connected-incomplete-data" title="Permalink to this heading">¶</a></h3>
 <p>Using selected edges <span class="math notranslate nohighlight">\(\{2, 4, 5, 8, 9, 15\}\)</span> the matrix is not complete.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_dijkstraCostMatrix(
 <span class="linenos"> 2</span>  $q1$SELECT id, source, target, cost, reverse_cost FROM edges WHERE id IN (2, 4, 5, 8, 9, 15)$q1$,
@@ -639,7 +630,7 @@ value used is taken from <span class="math notranslate nohighlight">\(10 \righta
 </section>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Traveling Sales Person - Family of functions</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a></p></li>
@@ -667,8 +658,8 @@ value used is taken from <span class="math notranslate nohighlight">\(10 \righta
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on Sep 14, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
+      Last updated on Sep 17, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
     </p>
   </div>
 </footer>

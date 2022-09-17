@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>A* - Family of functions &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -24,10 +25,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
-<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
 
   </head><body>
 
@@ -164,7 +165,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.4/en/aStar-family.html">2.4</a></p></li>
 </ul>
 <section id="a-family-of-functions">
-<h1>A* - Family of functions<a class="headerlink" href="#a-family-of-functions" title="Permalink to this headline">¶</a></h1>
+<h1>A* - Family of functions<a class="headerlink" href="#a-family-of-functions" title="Permalink to this heading">¶</a></h1>
 <p>The A* (pronounced “A Star”) algorithm is based on Dijkstra’s algorithm with a
 heuristic that allow it to solve most shortest path problems by evaluation only
 a sub-set of the overall graph.</p>
@@ -176,7 +177,7 @@ a sub-set of the overall graph.</p>
 <div class="toctree-wrapper compound">
 </div>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <p>The main Characteristics are:</p>
 <ul class="simple">
 <li><p>Process works for directed and undirected graphs.</p></li>
@@ -211,8 +212,8 @@ a sub-set of the overall graph.</p>
 <li><p>Running time: <span class="math notranslate nohighlight">\(O((E + V) * \log V)\)</span></p></li>
 </ul>
 <section id="astar-optional-parameters">
-<h3>aStar optional Parameters<a class="headerlink" href="#astar-optional-parameters" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<h3>aStar optional Parameters<a class="headerlink" href="#astar-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Type</p></th>
@@ -251,9 +252,9 @@ a sub-set of the overall graph.</p>
 </section>
 </section>
 <section id="advanced-documentation">
-<h2>Advanced documentation<a class="headerlink" href="#advanced-documentation" title="Permalink to this headline">¶</a></h2>
+<h2>Advanced documentation<a class="headerlink" href="#advanced-documentation" title="Permalink to this heading">¶</a></h2>
 <section id="heuristic">
-<span id="astar-heuristics"></span><h3>Heuristic<a class="headerlink" href="#heuristic" title="Permalink to this headline">¶</a></h3>
+<span id="astar-heuristics"></span><h3>Heuristic<a class="headerlink" href="#heuristic" title="Permalink to this heading">¶</a></h3>
 <p>Currently the heuristic functions available are:</p>
 <ul class="simple">
 <li><p>0: <span class="math notranslate nohighlight">\(h(v) = 0\)</span> (Use this value to compare with pgr_dijkstra)</p></li>
@@ -266,14 +267,14 @@ a sub-set of the overall graph.</p>
 <p>where <span class="math notranslate nohighlight">\(\Delta x = x_1 - x_0\)</span> and <span class="math notranslate nohighlight">\(\Delta y = y_1 - y_0\)</span></p>
 </section>
 <section id="factor">
-<span id="astar-factor"></span><h3>Factor<a class="headerlink" href="#factor" title="Permalink to this headline">¶</a></h3>
+<span id="astar-factor"></span><h3>Factor<a class="headerlink" href="#factor" title="Permalink to this heading">¶</a></h3>
 <p class="rubric">Analysis 1</p>
 <p>Working with cost/reverse_cost as length in degrees, x/y in lat/lon:
 Factor = 1   (no need to change units)</p>
 <p class="rubric">Analysis 2</p>
 <p>Working with cost/reverse_cost as length in meters, x/y in lat/lon:
 Factor =  would depend on the location of the points:</p>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Latitude</p></th>
 <th class="head"><p>Conversion</p></th>
@@ -295,7 +296,7 @@ Factor =  would depend on the location of the points:</p>
 <p>Working with cost/reverse_cost as time in seconds, x/y in lat/lon:
 Factor: would depend on the location of the points and on the average speed
 say 25m/s is the speed.</p>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Latitude</p></th>
 <th class="head"><p>Conversion</p></th>
@@ -316,7 +317,7 @@ say 25m/s is the speed.</p>
 </section>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="bdAstar-family.html"><span class="doc">Bidirectional A* - Family of functions</span></a></p></li>
 <li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/astar_search.html">https://www.boost.org/libs/graph/doc/astar_search.html</a></p></li>
@@ -343,8 +344,8 @@ say 25m/s is the speed.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on Sep 14, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
+      Last updated on Sep 17, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
     </p>
   </div>
 </footer>

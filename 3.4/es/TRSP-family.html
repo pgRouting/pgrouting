@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>TRSP - Familia de funciones &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -24,10 +25,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
-<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
 
   </head><body>
 
@@ -155,7 +156,7 @@
 <li><p><strong>Versiones Soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/TRSP-family.html">Latest</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/TRSP-family.html">3.4</a>)</p></li>
 </ul>
 <section id="trsp-family-of-functions">
-<h1>TRSP - Familia de funciones<a class="headerlink" href="#trsp-family-of-functions" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1>TRSP - Familia de funciones<a class="headerlink" href="#trsp-family-of-functions" title="Enlace permanente a este encabezado">¶</a></h1>
 <p>Cuando los puntos también se dan como entrada:</p>
 <p class="rubric">Propuesto</p>
 <div class="admonition warning">
@@ -222,7 +223,7 @@
 <div class="toctree-wrapper compound">
 </div>
 <section id="introduction">
-<h2>Introducción<a class="headerlink" href="#introduction" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Introducción<a class="headerlink" href="#introduction" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Road restrictions are a sequence of road segments that can not be taken in a
 sequential manner.
 Some restrictions are implicit on a directed graph, for example, one way roads
@@ -231,16 +232,16 @@ But normally on turns like no left turn or no right turn, hence the name turn
 restrictions, there are sometimes restrictions.</p>
 <img alt="_images/restrictions.png" src="_images/restrictions.png" />
 <section id="trsp-algorithm">
-<h3>Algoritmo TRSP<a class="headerlink" href="#trsp-algorithm" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>Algoritmo TRSP<a class="headerlink" href="#trsp-algorithm" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Wl algoritmo interno TRSP realiza una búsqueda de avanzada sobre el algoritmo de Dijkstra para encontrar un camino que contenga una restricción. Esto permite que el algoritmo pase dos veces sobre el mismo vértice.</p>
 </section>
 <section id="parameters">
-<h3>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>Parámetros<a class="headerlink" href="#parameters" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 23%" />
-<col style="width: 26%" />
-<col style="width: 51%" />
+<col style="width: 23.1%" />
+<col style="width: 25.6%" />
+<col style="width: 51.3%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -265,13 +266,13 @@ restrictions, there are sometimes restrictions.</p>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ENTEROS</dt>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT,</span> <span class="pre">INTEGER,</span> <span class="pre">BIGINT</span></code></p>
 </dd>
 </dl>
 </section>
 <section id="restrictions">
-<h3>Restricciones<a class="headerlink" href="#restrictions" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>Restricciones<a class="headerlink" href="#restrictions" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>En redes de caminos, hay restricciones como vuelta a la izquierda o derecha, no vuelta en U.</p>
 <p>A restriction is a sequence of edges, called path and that path is to be
 avoided.</p>
@@ -306,13 +307,13 @@ avoided.</p>
 </div>
 </section>
 <section id="edges-sql">
-<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 18%" />
-<col style="width: 18%" />
-<col style="width: 9%" />
-<col style="width: 56%" />
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -355,20 +356,20 @@ avoided.</p>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ENTEROS</dt>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">FLOTANTES</dt>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 <section id="restrictions-sql">
-<h4>SQL restricciones<a class="headerlink" href="#restrictions-sql" title="Enlazar permanentemente con este título">¶</a></h4>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h4>SQL restricciones<a class="headerlink" href="#restrictions-sql" title="Enlace permanente a este encabezado">¶</a></h4>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 10%" />
-<col style="width: 25%" />
-<col style="width: 65%" />
+<col style="width: 10.3%" />
+<col style="width: 25.0%" />
+<col style="width: 64.7%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -389,10 +390,10 @@ avoided.</p>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ENTEROS</dt>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">FLOTANTES</dt>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
@@ -400,7 +401,7 @@ avoided.</p>
 </section>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
@@ -422,8 +423,8 @@ avoided.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en sept. 14, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
+      Actualizado por última vez en sept 17, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
     </p>
   </div>
 </footer>

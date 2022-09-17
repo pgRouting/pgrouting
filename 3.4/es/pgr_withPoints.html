@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>pgr_withPoints - Propuesto &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -25,10 +26,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
-<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
 
   </head><body>
 
@@ -177,7 +178,7 @@
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_withPoints.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_withPoints.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_withPoints.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPoints.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPoints.html">2.2</a></p></li>
 </ul>
 <section id="pgr-withpoints-proposed">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> - Propuesto<a class="headerlink" href="#pgr-withpoints-proposed" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> - Propuesto<a class="headerlink" href="#pgr-withpoints-proposed" title="Enlace permanente a este encabezado">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> - Devuelve la ruta más corta de un grafo con vértices temporales adicionales.</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
@@ -220,7 +221,7 @@
 </li>
 </ul>
 <section id="description">
-<h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Descripción<a class="headerlink" href="#description" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Modificar el grafo para incluir puntos definidos por points_sql. Usando el algoritmo Dijkstra, busar la o las rutas más cortas</p>
 <p><strong>Las principales características son:</strong></p>
 <ul class="simple">
@@ -245,26 +246,48 @@
 </ul>
 </section>
 <section id="signatures">
-<h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
 <p class="rubric">Resumen</p>
-<pre class="literal-block">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>
-      [, directed] [, driving_side] [, details])
-pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>
-      [, directed] [, driving_side] [, details])
-pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>
-      [, directed] [, driving_side] [, details])
-pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>
-      [, directed] [, driving_side] [, details])
-pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>
-      [, directed] [, driving_side] [, details])
-RETURNS (seq, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vid</strong></div>
+<div class="line-block">
+<div class="line">[, directed] [, driving_side] [, details])</div>
+</div>
+<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vids</strong></div>
+<div class="line-block">
+<div class="line">[, directed] [, driving_side] [, details])</div>
+</div>
+<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>end vid</strong></div>
+<div class="line-block">
+<div class="line">[, directed] [, driving_side] [, details])</div>
+</div>
+<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>end vids</strong></div>
+<div class="line-block">
+<div class="line">[, directed] [, driving_side] [, details])</div>
+</div>
+<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a></div>
+<div class="line-block">
+<div class="line">[, directed] [, driving_side] [, details])</div>
+</div>
+<div class="line">RETURNS (seq, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)</div>
+</div>
+</div>
 <section id="one-to-one">
-<span id="index-0"></span><h3>Uno a Uno<a class="headerlink" href="#one-to-one" title="Enlazar permanentemente con este título">¶</a></h3>
-<pre class="literal-block">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>
-      [, directed] [, driving_side] [, details])
-RETURNS (seq, path_seq, node, edge, cost, agg_cost)</pre>
+<span id="index-0"></span><h3>Uno a Uno<a class="headerlink" href="#one-to-one" title="Enlace permanente a este encabezado">¶</a></h3>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vid</strong></div>
+<div class="line-block">
+<div class="line">[, directed] [, driving_side] [, details])</div>
+</div>
+<div class="line">RETURNS (seq, path_seq, node, edge, cost, agg_cost)</div>
+</div>
+</div>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo</dt>
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Del punto <span class="math notranslate nohighlight">\(1\)</span> al vértice <span class="math notranslate nohighlight">\(10\)</span> con detalles</p>
 </dd>
 </dl>
@@ -289,12 +312,19 @@ RETURNS (seq, path_seq, node, edge, cost, agg_cost)</pre>
 </div>
 </section>
 <section id="one-to-many">
-<span id="index-1"></span><h3>Uno a Muchos<a class="headerlink" href="#one-to-many" title="Enlazar permanentemente con este título">¶</a></h3>
-<pre class="literal-block">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>
-      [, directed] [, driving_side] [, details])
-RETURNS (seq, path_seq, end_vid, node, edge, cost, agg_cost)</pre>
+<span id="index-1"></span><h3>Uno a Muchos<a class="headerlink" href="#one-to-many" title="Enlace permanente a este encabezado">¶</a></h3>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vids</strong></div>
+<div class="line-block">
+<div class="line">[, directed] [, driving_side] [, details])</div>
+</div>
+<div class="line">RETURNS (seq, path_seq, end_vid, node, edge, cost, agg_cost)</div>
+</div>
+</div>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo</dt>
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Desde el punto <span class="math notranslate nohighlight">\(1\)</span> al punto <span class="math notranslate nohighlight">\(3\)</span> y al vértice <span class="math notranslate nohighlight">\(7\)</span> en un grafo no dirigido</p>
 </dd>
 </dl>
@@ -319,12 +349,19 @@ RETURNS (seq, path_seq, end_vid, node, edge, cost, agg_cost)</pre>
 </div>
 </section>
 <section id="many-to-one">
-<span id="index-2"></span><h3>Muchos a Uno<a class="headerlink" href="#many-to-one" title="Enlazar permanentemente con este título">¶</a></h3>
-<pre class="literal-block">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>
-      [, directed] [, driving_side] [, details])
-RETURNS (seq, path_seq, start_vid, node, edge, cost, agg_cost)</pre>
+<span id="index-2"></span><h3>Muchos a Uno<a class="headerlink" href="#many-to-one" title="Enlace permanente a este encabezado">¶</a></h3>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>end vid</strong></div>
+<div class="line-block">
+<div class="line">[, directed] [, driving_side] [, details])</div>
+</div>
+<div class="line">RETURNS (seq, path_seq, start_vid, node, edge, cost, agg_cost)</div>
+</div>
+</div>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo</dt>
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Desde el punto <span class="math notranslate nohighlight">\(1\)</span> y el vértice <span class="math notranslate nohighlight">\(6\)</span> al punto <span class="math notranslate nohighlight">\(3\)</span></p>
 </dd>
 </dl>
@@ -349,12 +386,19 @@ RETURNS (seq, path_seq, start_vid, node, edge, cost, agg_cost)</pre>
 </div>
 </section>
 <section id="many-to-many">
-<span id="index-3"></span><h3>Muchos a Muchos<a class="headerlink" href="#many-to-many" title="Enlazar permanentemente con este título">¶</a></h3>
-<pre class="literal-block">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>
-      [, directed] [, driving_side] [, details])
-RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</pre>
+<span id="index-3"></span><h3>Muchos a Muchos<a class="headerlink" href="#many-to-many" title="Enlace permanente a este encabezado">¶</a></h3>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>end vids</strong></div>
+<div class="line-block">
+<div class="line">[, directed] [, driving_side] [, details])</div>
+</div>
+<div class="line">RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</div>
+</div>
+</div>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo</dt>
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Desde el punto <span class="math notranslate nohighlight">\(1\)</span> y el vértice <span class="math notranslate nohighlight">\(6\)</span> al punto <span class="math notranslate nohighlight">\(3\)</span> y al vértice <span class="math notranslate nohighlight">\(1\)</span></p>
 </dd>
 </dl>
@@ -388,12 +432,19 @@ RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</pre>
 </div>
 </section>
 <section id="combinations">
-<span id="index-4"></span><h3>Combinaciones<a class="headerlink" href="#combinations" title="Enlazar permanentemente con este título">¶</a></h3>
-<pre class="literal-block">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <cite>Points SQL</cite>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>,
-      [, directed] [, driving_side] [, details])
-RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</pre>
+<span id="index-4"></span><h3>Combinaciones<a class="headerlink" href="#combinations" title="Enlace permanente a este encabezado">¶</a></h3>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <cite>Points SQL</cite>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>,</div>
+<div class="line-block">
+<div class="line">[, directed] [, driving_side] [, details])</div>
+</div>
+<div class="line">RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</div>
+</div>
+</div>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo</dt>
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Dos combinaciones</p>
 </dd>
 </dl>
@@ -426,12 +477,12 @@ RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</pre>
 </section>
 </section>
 <section id="parameters">
-<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlace permanente a este encabezado">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 19%" />
-<col style="width: 19%" />
-<col style="width: 61%" />
+<col style="width: 19.4%" />
+<col style="width: 19.4%" />
+<col style="width: 61.1%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -471,8 +522,8 @@ RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</pre>
 </tbody>
 </table>
 <section id="optional-parameters">
-<h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
@@ -494,13 +545,13 @@ RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</pre>
 </table>
 </section>
 <section id="with-points-optional-parameters">
-<h3>Parámetros opcionales para Con puntos<a class="headerlink" href="#with-points-optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>Parámetros opcionales para Con puntos<a class="headerlink" href="#with-points-optional-parameters" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 16%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 68%" />
+<col style="width: 15.9%" />
+<col style="width: 8.0%" />
+<col style="width: 8.0%" />
+<col style="width: 68.2%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -510,7 +561,7 @@ RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</pre>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Lado de manejo</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
 <td><p>Valor en [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>] indica si el lado de manejo es:</p>
@@ -535,15 +586,15 @@ RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</pre>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Enlace permanente a este encabezado">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 18%" />
-<col style="width: 18%" />
-<col style="width: 9%" />
-<col style="width: 56%" />
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -586,22 +637,22 @@ RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</pre>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ENTEROS</dt>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">FLOTANTES</dt>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 <section id="points-sql">
-<h3>SQL puntos<a class="headerlink" href="#points-sql" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>SQL puntos<a class="headerlink" href="#points-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 16%" />
-<col style="width: 18%" />
-<col style="width: 9%" />
-<col style="width: 57%" />
+<col style="width: 15.6%" />
+<col style="width: 18.2%" />
+<col style="width: 9.1%" />
+<col style="width: 57.1%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -647,21 +698,21 @@ RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</pre>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ENTEROS</dt>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">FLOTANTES</dt>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 <section id="combinations-sql">
-<h3>SQL Combinaciones<a class="headerlink" href="#combinations-sql" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>SQL Combinaciones<a class="headerlink" href="#combinations-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 14%" />
-<col style="width: 16%" />
-<col style="width: 70%" />
+<col style="width: 14.0%" />
+<col style="width: 16.3%" />
+<col style="width: 69.8%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -682,20 +733,20 @@ RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</pre>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ENTEROS</dt>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
 </dl>
 </section>
 </section>
 <section id="result-columns">
-<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Devuelve el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_pid]</span> <span class="pre">[,</span> <span class="pre">end_pid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 14%" />
-<col style="width: 16%" />
-<col style="width: 70%" />
+<col style="width: 14.0%" />
+<col style="width: 16.3%" />
+<col style="width: 69.8%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -773,8 +824,8 @@ RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</pre>
 </table>
 </section>
 <section id="additional-examples">
-<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlazar permanentemente con este título">¶</a></h2>
-<div class="contents local topic" id="contenido">
+<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlace permanente a este encabezado">¶</a></h2>
+<nav class="contents local" id="contenido">
 <ul class="simple">
 <li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id2">Usa <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> en el SQL puntos.</a></p></li>
 <li><p><a class="reference internal" href="#usage-variations" id="id3">Variaciones de uso</a></p>
@@ -784,9 +835,9 @@ RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</pre>
 </ul>
 </li>
 </ul>
-</div>
+</nav>
 <section id="use-pgr-findcloseedges-in-the-points-sql">
-<h3>Usa <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> en el <a class="reference internal" href="#points-sql">SQL puntos</a>.<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>Usa <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> en el <a class="reference internal" href="#points-sql">SQL puntos</a>.<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Wncontrar las rutas desde el vértice <span class="math notranslate nohighlight">\(1\)</span> a las dos ubicaciones más cercanas en el grafo al punto`(2.9, 1.8)`.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
   $e$ SELECT * FROM edges $e$,
@@ -821,7 +872,7 @@ RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</pre>
 </ul>
 </section>
 <section id="usage-variations">
-<h3><a class="toc-backref" href="#id3">Variaciones de uso</a><a class="headerlink" href="#usage-variations" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Variaciones de uso</a><a class="headerlink" href="#usage-variations" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Todos los ejemplos son acerca de viajar desde el punto <span class="math notranslate nohighlight">\(1\)</span> y vértice <span class="math notranslate nohighlight">\(5\)</span> al los puntos <span class="math notranslate nohighlight">\(\{2, 3, 6\}\)</span> y vértices <span class="math notranslate nohighlight">\(\{10, 11\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
@@ -899,7 +950,7 @@ RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</pre>
 </pre></div>
 </div>
 <section id="passes-in-front-or-visits-with-right-side-driving">
-<h4><a class="toc-backref" href="#id4">Pasa enfrente o visita con lado derecho de manejo.</a><a class="headerlink" href="#passes-in-front-or-visits-with-right-side-driving" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">Pasa enfrente o visita con lado derecho de manejo.</a><a class="headerlink" href="#passes-in-front-or-visits-with-right-side-driving" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Del punto <span class="math notranslate nohighlight">\(6\)</span> al vértice <span class="math notranslate nohighlight">\(11\)</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="p">(</span><span class="n">start_pid</span> <span class="o">||</span> <span class="s1">&#39; -&gt; &#39;</span> <span class="o">||</span> <span class="n">end_pid</span> <span class="o">||</span><span class="s1">&#39; at &#39;</span> <span class="o">||</span> <span class="n">path_seq</span> <span class="o">||</span> <span class="s1">&#39;th step&#39;</span><span class="p">)::</span><span class="n">TEXT</span> <span class="n">AS</span> <span class="n">path_at</span><span class="p">,</span>
   <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">edge</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="s1">&#39; visits&#39;</span>
@@ -939,7 +990,7 @@ RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</pre>
 </div>
 </section>
 <section id="passes-in-front-or-visits-with-left-side-driving">
-<h4><a class="toc-backref" href="#id5">Pasa enfrente o visita con lado izquierdo de manejo.</a><a class="headerlink" href="#passes-in-front-or-visits-with-left-side-driving" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">Pasa enfrente o visita con lado izquierdo de manejo.</a><a class="headerlink" href="#passes-in-front-or-visits-with-left-side-driving" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Del punto <span class="math notranslate nohighlight">\(6\)</span> al vértice <span class="math notranslate nohighlight">\(11\)</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="p">(</span><span class="n">start_pid</span> <span class="o">||</span> <span class="s1">&#39; =&gt; &#39;</span> <span class="o">||</span> <span class="n">end_pid</span> <span class="o">||</span><span class="s1">&#39; at &#39;</span> <span class="o">||</span> <span class="n">path_seq</span> <span class="o">||</span> <span class="s1">&#39;th step&#39;</span><span class="p">)::</span><span class="n">TEXT</span> <span class="n">AS</span> <span class="n">path_at</span><span class="p">,</span>
   <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">edge</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="s1">&#39; visits&#39;</span>
@@ -981,7 +1032,7 @@ RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</pre>
 </section>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Familia de funciones</span></a></p></li>
 <li><p><a class="reference internal" href="withPoints-category.html"><span class="doc">withPoints- Categoría</span></a></p></li>
@@ -1008,8 +1059,8 @@ RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</pre>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en sept. 14, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
+      Actualizado por última vez en sept 17, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
     </p>
   </div>
 </footer>

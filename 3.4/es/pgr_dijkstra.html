@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>pgr_dijkstra &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -25,10 +26,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
-<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
 
   </head><body>
 
@@ -221,7 +222,7 @@
 <li><p><strong>Versiones no soportadas</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_dijkstra.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_dijkstra.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_dijkstra.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstra.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstra.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/dijkstra/doc/index.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/dijkstra/doc/index.html">2.0</a></p></li>
 </ul>
 <section id="pgr-dijkstra">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code><a class="headerlink" href="#pgr-dijkstra" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code><a class="headerlink" href="#pgr-dijkstra" title="Enlace permanente a este encabezado">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> — Ruta(s) más corta(s) usando el algoritmo Dijkstra.</p>
 <figure class="align-default" id="id13">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
@@ -268,7 +269,7 @@
 </li>
 </ul>
 <section id="description">
-<h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Descripción<a class="headerlink" href="#description" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Algoritmo de Dijkstra, concebido por el informático holandés Edsger Dijkstra en 1956. Es un algoritmo de búsqueda en grafos que resuelve el problema de ruta más corta para un grafo con costos de aristas no negativos, produciendo la ruta más corta desde un vértice inicial a un vértice final . Esta implementación se puede utilizar con un grafos dirigidos y no dirigidos.</p>
 <ul class="simple">
 <li><p>El proceso se realiza sólo en aristas con costos positivos.</p>
@@ -299,23 +300,32 @@
 </ul>
 </section>
 <section id="signatures">
-<h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
 <p class="rubric">Resumen</p>
-<pre class="literal-block">pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>  [, directed])
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<blockquote>
+<div><p>pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>  [, directed])
 pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong> [, directed])
 pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>  [, directed])
 pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong> [, directed])
 pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a> [, directed])
 RETURNS (seq, path_seq [, start vid] [, end vid], node, edge, cost, agg_cost)
-OR EMPTY SET</pre>
+OR EMPTY SET</p>
+</div></blockquote>
+</div>
 <section id="one-to-one">
-<span id="index-0"></span><h3>Uno a Uno<a class="headerlink" href="#one-to-one" title="Enlazar permanentemente con este título">¶</a></h3>
-<pre class="literal-block">pgr_dijkstra(Edges SQL, start vid,  end vid  [, directed])
-pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>  [, directed])
+<span id="index-0"></span><h3>Uno a Uno<a class="headerlink" href="#one-to-one" title="Enlace permanente a este encabezado">¶</a></h3>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<blockquote>
+<div><p>pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>  [, directed])
 RETURNS (seq, path_seq, node, edge, cost, agg_cost)
-OR EMPTY SET</pre>
+OR EMPTY SET</p>
+</div></blockquote>
+</div>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo</dt>
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Del vértice <span class="math notranslate nohighlight">\(6\)</span> al vértice <span class="math notranslate nohighlight">\(10\)</span> en un grafo <strong>dirigido</strong></p>
 </dd>
 </dl>
@@ -336,13 +346,17 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="one-to-many">
-<span id="index-1"></span><h3>Uno a Muchos<a class="headerlink" href="#one-to-many" title="Enlazar permanentemente con este título">¶</a></h3>
-<pre class="literal-block">pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong> [, directed])
-pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a> [, directed])
+<span id="index-1"></span><h3>Uno a Muchos<a class="headerlink" href="#one-to-many" title="Enlace permanente a este encabezado">¶</a></h3>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<blockquote>
+<div><p>pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong> [, directed])
 RETURNS (seq, path_seq, end vid, node, edge, cost, agg_cost)
-OR EMPTY SET</pre>
+OR EMPTY SET</p>
+</div></blockquote>
+</div>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo</dt>
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Del vértice <span class="math notranslate nohighlight">\(6\)</span> a los vértices <span class="math notranslate nohighlight">\(\{10, 17\}\)</span> en un grafo <strong>no dirigido</strong></p>
 </dd>
 </dl>
@@ -368,12 +382,17 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="many-to-one">
-<span id="index-2"></span><h3>Muchos a Uno<a class="headerlink" href="#many-to-one" title="Enlazar permanentemente con este título">¶</a></h3>
-<pre class="literal-block">pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong> [, directed])
+<span id="index-2"></span><h3>Muchos a Uno<a class="headerlink" href="#many-to-one" title="Enlace permanente a este encabezado">¶</a></h3>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<blockquote>
+<div><p>pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong> [, directed])
 RETURNS (seq, path_seq, start vid, node, edge, cost, agg_cost)
-OR EMPTY SET</pre>
+OR EMPTY SET</p>
+</div></blockquote>
+</div>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo</dt>
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>De los vértices <span class="math notranslate nohighlight">\(\{6, 1\}\)</span> al vertice <span class="math notranslate nohighlight">\(17\)</span> en un grafo <strong>dirigido</strong></p>
 </dd>
 </dl>
@@ -399,12 +418,17 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="many-to-many">
-<span id="index-3"></span><h3>Muchos a Muchos<a class="headerlink" href="#many-to-many" title="Enlazar permanentemente con este título">¶</a></h3>
-<pre class="literal-block">pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong> [, directed])
+<span id="index-3"></span><h3>Muchos a Muchos<a class="headerlink" href="#many-to-many" title="Enlace permanente a este encabezado">¶</a></h3>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<blockquote>
+<div><p>pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong> [, directed])
 RETURNS (seq, path_seq, start vid, end vid, node, edge, cost, agg_cost)
-OR EMPTY SET</pre>
+OR EMPTY SET</p>
+</div></blockquote>
+</div>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo</dt>
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>De los vértices <span class="math notranslate nohighlight">\(\{6, 1\}\)</span> a los vértices <span class="math notranslate nohighlight">\(\{10, 17\}\)</span> en un grafo <strong>no dirigido</strong></p>
 </dd>
 </dl>
@@ -438,12 +462,15 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="combinations">
-<span id="index-4"></span><h3>Combinaciones<a class="headerlink" href="#combinations" title="Enlazar permanentemente con este título">¶</a></h3>
-<pre class="literal-block">pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a> [, directed])
+<span id="index-4"></span><h3>Combinaciones<a class="headerlink" href="#combinations" title="Enlace permanente a este encabezado">¶</a></h3>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<p>pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a> [, directed])
 RETURNS (seq, path_seq, start vid, end vid, node, edge, cost, agg_cost)
-OR EMPTY SET</pre>
+OR EMPTY SET</p>
+</div>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo</dt>
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Usando una tabla de combinaciones en un grafo <strong>no dirigido</strong></p>
 </dd>
 </dl>
@@ -484,12 +511,12 @@ OR EMPTY SET</pre>
 </section>
 </section>
 <section id="parameters">
-<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlace permanente a este encabezado">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 19%" />
-<col style="width: 19%" />
-<col style="width: 61%" />
+<col style="width: 19.4%" />
+<col style="width: 19.4%" />
+<col style="width: 61.1%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -525,8 +552,8 @@ OR EMPTY SET</pre>
 </tbody>
 </table>
 <section id="optional-parameters">
-<h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
@@ -549,15 +576,15 @@ OR EMPTY SET</pre>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Enlace permanente a este encabezado">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 18%" />
-<col style="width: 18%" />
-<col style="width: 9%" />
-<col style="width: 56%" />
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -600,21 +627,21 @@ OR EMPTY SET</pre>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ENTEROS</dt>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">FLOTANTES</dt>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 <section id="combinations-sql">
-<h3>SQL Combinaciones<a class="headerlink" href="#combinations-sql" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>SQL Combinaciones<a class="headerlink" href="#combinations-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 14%" />
-<col style="width: 16%" />
-<col style="width: 70%" />
+<col style="width: 14.0%" />
+<col style="width: 16.3%" />
+<col style="width: 69.8%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -635,20 +662,20 @@ OR EMPTY SET</pre>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ENTEROS</dt>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
 </dl>
 </section>
 </section>
 <section id="result-columns">
-<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Devuelve el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 14%" />
-<col style="width: 16%" />
-<col style="width: 70%" />
+<col style="width: 14.0%" />
+<col style="width: 16.3%" />
+<col style="width: 69.8%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -703,9 +730,9 @@ OR EMPTY SET</pre>
 </table>
 </section>
 <section id="additional-examples">
-<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlace permanente a este encabezado">¶</a></h2>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo</dt>
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Demostración de ignorar los valores repertidos, y resultado ordenado.</p>
 </dd>
 </dl>
@@ -741,7 +768,7 @@ OR EMPTY SET</pre>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo 2</dt>
+<dt class="field-odd">Ejemplo 2<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Haciendo <strong>vértices de salida</strong> igual que <strong>vértices destino</strong></p>
 </dd>
 </dl>
@@ -777,7 +804,7 @@ OR EMPTY SET</pre>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo</dt>
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Manualmente asignar combinaciones de vértices.</p>
 </dd>
 </dl>
@@ -804,7 +831,7 @@ OR EMPTY SET</pre>
 </pre></div>
 </div>
 <p>Los ejemplos de esta sección se basan en la red <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a>.</p>
-<div class="contents local topic" id="contenido">
+<nav class="contents local" id="contenido">
 <ul class="simple">
 <li><p><a class="reference internal" href="#for-directed-graphs-with-cost-and-reverse-cost-columns" id="id18">Para grafos <strong>dirigidos</strong> con columnas <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></p>
 <ul>
@@ -864,9 +891,9 @@ OR EMPTY SET</pre>
 </ul>
 </li>
 </ul>
-</div>
+</nav>
 <section id="for-directed-graphs-with-cost-and-reverse-cost-columns">
-<h3><a class="toc-backref" href="#id18">Para grafos <strong>dirigidos</strong> con columnas <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a><a class="headerlink" href="#for-directed-graphs-with-cost-and-reverse-cost-columns" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id18" role="doc-backlink">Para grafos <strong>dirigidos</strong> con columnas <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a><a class="headerlink" href="#for-directed-graphs-with-cost-and-reverse-cost-columns" title="Enlace permanente a este encabezado">¶</a></h3>
 <figure class="align-default" id="id14">
 <a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 475.5px; height: 433.0px;" /></a>
 <figcaption>
@@ -874,7 +901,7 @@ OR EMPTY SET</pre>
 </figcaption>
 </figure>
 <section id="path-from-6-to-10">
-<h4><a class="toc-backref" href="#id19">1) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#path-from-6-to-10" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id19" role="doc-backlink">1) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#path-from-6-to-10" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span>
@@ -893,7 +920,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="path-from-6-to-7">
-<h4><a class="toc-backref" href="#id20">2) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#path-from-6-to-7" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id20" role="doc-backlink">2) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#path-from-6-to-7" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span>
@@ -908,7 +935,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="path-from-12-to-10">
-<h4><a class="toc-backref" href="#id21">3) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#path-from-12-to-10" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id21" role="doc-backlink">3) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#path-from-12-to-10" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span>
@@ -926,7 +953,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="path-from-12-to-7">
-<h4><a class="toc-backref" href="#id22">4) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#path-from-12-to-7" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id22" role="doc-backlink">4) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#path-from-12-to-7" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">7</span>
@@ -944,7 +971,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="using-one-to-many-to-get-the-solution-of-examples-1-and-2">
-<h4>5) Usando <a class="reference internal" href="#one-to-many">Uno a Muchos</a> para obtener la solución de los ejemplos 1 y 2<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-1-and-2" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>5) Usando <a class="reference internal" href="#one-to-many">Uno a Muchos</a> para obtener la solución de los ejemplos 1 y 2<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-1-and-2" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
@@ -966,7 +993,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="using-many-to-one-to-get-the-solution-of-examples-2-and-4">
-<h4>6) Usando <a class="reference internal" href="#many-to-one">Muchos a Uno</a> para obtener la solución de los ejemplos 2 y 4<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-2-and-4" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>6) Usando <a class="reference internal" href="#many-to-one">Muchos a Uno</a> para obtener la solución de los ejemplos 2 y 4<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-2-and-4" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
@@ -987,7 +1014,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="using-many-to-many-to-get-the-solution-of-examples-1-to-4">
-<h4>7) Usando <a class="reference internal" href="#many-to-many">Muchos a Muchos</a> para obtener la solución de los ejemplos 1 y 4<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-1-to-4" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>7) Usando <a class="reference internal" href="#many-to-many">Muchos a Muchos</a> para obtener la solución de los ejemplos 1 y 4<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-1-to-4" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
@@ -1019,7 +1046,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="using-combinations-to-get-the-solution-of-examples-1-to-3">
-<h4>8) Usando <a class="reference internal" href="#combinations">Combinaciones</a> para obtener la solución de los ejemplos 1 a 3<a class="headerlink" href="#using-combinations-to-get-the-solution-of-examples-1-to-3" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>8) Usando <a class="reference internal" href="#combinations">Combinaciones</a> para obtener la solución de los ejemplos 1 a 3<a class="headerlink" href="#using-combinations-to-get-the-solution-of-examples-1-to-3" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\cup\{12\}\rightarrow\{10\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
@@ -1047,7 +1074,7 @@ OR EMPTY SET</pre>
 </section>
 </section>
 <section id="for-undirected-graphs-with-cost-and-reverse-cost-columns">
-<h3><a class="toc-backref" href="#id27">Para grafos <strong>no dirigidos</strong> con columnas <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a><a class="headerlink" href="#for-undirected-graphs-with-cost-and-reverse-cost-columns" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id27" role="doc-backlink">Para grafos <strong>no dirigidos</strong> con columnas <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a><a class="headerlink" href="#for-undirected-graphs-with-cost-and-reverse-cost-columns" title="Enlace permanente a este encabezado">¶</a></h3>
 <figure class="align-default" id="id15">
 <a class="reference internal image-reference" href="_images/Fig6-undirected.png"><img alt="_images/Fig6-undirected.png" src="_images/Fig6-undirected.png" style="width: 482.0px; height: 435.0px;" /></a>
 <figcaption>
@@ -1055,7 +1082,7 @@ OR EMPTY SET</pre>
 </figcaption>
 </figure>
 <section id="id1">
-<h4><a class="toc-backref" href="#id28">9) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id1" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id28" role="doc-backlink">9) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id1" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>
@@ -1071,7 +1098,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="id2">
-<h4><a class="toc-backref" href="#id29">10) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id2" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id29" role="doc-backlink">10) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id2" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span>
@@ -1087,7 +1114,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="id3">
-<h4><a class="toc-backref" href="#id30">11) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id3" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id30" role="doc-backlink">11) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id3" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>
@@ -1104,7 +1131,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="id4">
-<h4><a class="toc-backref" href="#id31">12) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id4" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id31" role="doc-backlink">12) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id4" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span>
@@ -1121,7 +1148,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="using-one-to-many-to-get-the-solution-of-examples-9-and-10">
-<h4>13) Usando <a class="reference internal" href="#one-to-many">Uno a Muchos</a> para obtener la solución de los ejemplos 9 y 10<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-9-and-10" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>13) Usando <a class="reference internal" href="#one-to-many">Uno a Muchos</a> para obtener la solución de los ejemplos 9 y 10<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-9-and-10" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
@@ -1140,7 +1167,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="using-many-to-one-to-get-the-solution-of-examples-10-and-12">
-<h4>14) Usando <a class="reference internal" href="#many-to-one">Muchos a Uno</a> para obtener la solución de los ejemplos 10 y 12<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-10-and-12" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>14) Usando <a class="reference internal" href="#many-to-one">Muchos a Uno</a> para obtener la solución de los ejemplos 10 y 12<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-10-and-12" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
@@ -1160,7 +1187,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="using-many-to-many-to-get-the-solution-of-examples-9-to-12">
-<h4>15) Usando <a class="reference internal" href="#many-to-many">Muchos a Muchos</a> para obtener la solución de los ejemplos 9 y 12<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-9-to-12" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>15) Usando <a class="reference internal" href="#many-to-many">Muchos a Muchos</a> para obtener la solución de los ejemplos 9 y 12<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-9-to-12" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
@@ -1185,7 +1212,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="using-combinations-to-get-the-solution-of-examples-9-to-11">
-<h4>16) Usando <a class="reference internal" href="#combinations">Combinaciones</a> para obtener la solución de los ejemplos 9 a 13<a class="headerlink" href="#using-combinations-to-get-the-solution-of-examples-9-to-11" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>16) Usando <a class="reference internal" href="#combinations">Combinaciones</a> para obtener la solución de los ejemplos 9 a 13<a class="headerlink" href="#using-combinations-to-get-the-solution-of-examples-9-to-11" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\cup\{12\}\rightarrow\{10\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
@@ -1208,7 +1235,7 @@ OR EMPTY SET</pre>
 </section>
 </section>
 <section id="for-directed-graphs-only-with-cost-column">
-<h3><a class="toc-backref" href="#id36">Para grafos <strong>dirigidos</strong> con columna``cost``</a><a class="headerlink" href="#for-directed-graphs-only-with-cost-column" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id36" role="doc-backlink">Para grafos <strong>dirigidos</strong> con columna``cost``</a><a class="headerlink" href="#for-directed-graphs-only-with-cost-column" title="Enlace permanente a este encabezado">¶</a></h3>
 <figure class="align-default" id="id16">
 <a class="reference internal image-reference" href="_images/Fig2-cost.png"><img alt="_images/Fig2-cost.png" src="_images/Fig2-cost.png" style="width: 484.5px; height: 434.0px;" /></a>
 <figcaption>
@@ -1216,7 +1243,7 @@ OR EMPTY SET</pre>
 </figcaption>
 </figure>
 <section id="id5">
-<h4><a class="toc-backref" href="#id37">17) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id5" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id37" role="doc-backlink">17) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id5" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span>
@@ -1229,7 +1256,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="id6">
-<h4><a class="toc-backref" href="#id38">18) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id6" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id38" role="doc-backlink">18) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id6" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span>
@@ -1244,7 +1271,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="id7">
-<h4><a class="toc-backref" href="#id39">19) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id7" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id39" role="doc-backlink">19) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id7" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span>
@@ -1257,7 +1284,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="id8">
-<h4><a class="toc-backref" href="#id40">20) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id8" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id40" role="doc-backlink">20) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id8" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">7</span>
@@ -1270,7 +1297,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="using-one-to-many-to-get-the-solution-of-examples-17-and-18">
-<h4>21) Usando <a class="reference internal" href="#one-to-many">Uno a Muchos</a> para obtener la solución de los ejemplos 17 y 18<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-17-and-18" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>21) Usando <a class="reference internal" href="#one-to-many">Uno a Muchos</a> para obtener la solución de los ejemplos 17 y 18<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-17-and-18" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
@@ -1286,7 +1313,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="using-many-to-one-to-get-the-solution-of-examples-18-and-20">
-<h4>22) Usando <a class="reference internal" href="#many-to-one">Muchos a Uno</a> para obtener la solución de los ejemplos 18 y 20<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-18-and-20" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>22) Usando <a class="reference internal" href="#many-to-one">Muchos a Uno</a> para obtener la solución de los ejemplos 18 y 20<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-18-and-20" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
@@ -1302,7 +1329,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="using-many-to-many-to-get-the-solution-of-examples-17-to-20">
-<h4>23) Usando <a class="reference internal" href="#many-to-many">Muchos a Muchos</a> para obtener la solución de los ejemplos 17 y 20<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-17-to-20" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>23) Usando <a class="reference internal" href="#many-to-many">Muchos a Muchos</a> para obtener la solución de los ejemplos 17 y 20<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-17-to-20" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
@@ -1318,7 +1345,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="using-combinations-to-get-the-solution-of-examples-17-to-19">
-<h4>24) Usando <a class="reference internal" href="#combinations">Combinaciones</a> para obtener la solución de los ejemplos 17 a 19<a class="headerlink" href="#using-combinations-to-get-the-solution-of-examples-17-to-19" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>24) Usando <a class="reference internal" href="#combinations">Combinaciones</a> para obtener la solución de los ejemplos 17 a 19<a class="headerlink" href="#using-combinations-to-get-the-solution-of-examples-17-to-19" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\cup\{12\}\rightarrow\{10\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
@@ -1335,7 +1362,7 @@ OR EMPTY SET</pre>
 </section>
 </section>
 <section id="for-undirected-graphs-only-with-cost-column">
-<h3><a class="toc-backref" href="#id45">Para grafos <strong>no dirigidos</strong> con columna``cost``</a><a class="headerlink" href="#for-undirected-graphs-only-with-cost-column" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id45" role="doc-backlink">Para grafos <strong>no dirigidos</strong> con columna``cost``</a><a class="headerlink" href="#for-undirected-graphs-only-with-cost-column" title="Enlace permanente a este encabezado">¶</a></h3>
 <figure class="align-default" id="id17">
 <a class="reference internal image-reference" href="_images/Fig4-costUndirected.png"><img alt="_images/Fig4-costUndirected.png" src="_images/Fig4-costUndirected.png" style="width: 487.5px; height: 438.0px;" /></a>
 <figcaption>
@@ -1343,7 +1370,7 @@ OR EMPTY SET</pre>
 </figcaption>
 </figure>
 <section id="id9">
-<h4><a class="toc-backref" href="#id46">25) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id9" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id46" role="doc-backlink">25) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id9" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>
@@ -1361,7 +1388,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="id10">
-<h4><a class="toc-backref" href="#id47">26) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id10" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id47" role="doc-backlink">26) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id10" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span>
@@ -1377,7 +1404,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="id11">
-<h4><a class="toc-backref" href="#id48">27) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id11" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id48" role="doc-backlink">27) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id11" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>
@@ -1394,7 +1421,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="id12">
-<h4><a class="toc-backref" href="#id49">28) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id12" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id49" role="doc-backlink">28) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id12" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span>
@@ -1411,7 +1438,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="using-one-to-many-to-get-the-solution-of-examples-25-and-26">
-<h4>29) Usando <a class="reference internal" href="#one-to-many">Uno a Muchos</a> para obtener la solución de los ejemplos 25 y 26<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-25-and-26" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>29) Usando <a class="reference internal" href="#one-to-many">Uno a Muchos</a> para obtener la solución de los ejemplos 25 y 26<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-25-and-26" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
@@ -1432,7 +1459,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="using-many-to-one-to-get-the-solution-of-examples-26-and-28">
-<h4>30) Usando <a class="reference internal" href="#many-to-one">Muchos a Uno</a> para obtener la solución de los ejemplos 26 y 28<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-26-and-28" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>30) Usando <a class="reference internal" href="#many-to-one">Muchos a Uno</a> para obtener la solución de los ejemplos 26 y 28<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-26-and-28" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
@@ -1452,7 +1479,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="using-many-to-many-to-get-the-solution-of-examples-25-to-28">
-<h4>31) Usando <a class="reference internal" href="#many-to-many">Muchos a Muchos</a> para obtener la solución de los ejemplos 25 y 28<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-25-to-28" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>31) Usando <a class="reference internal" href="#many-to-many">Muchos a Muchos</a> para obtener la solución de los ejemplos 25 y 28<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-25-to-28" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
@@ -1479,7 +1506,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="using-combinations-to-get-the-solution-of-examples-25-to-27">
-<h4>32) Usando <a class="reference internal" href="#combinations">Combinaciones</a> para obtener la solución de los ejemplos 25 a 27<a class="headerlink" href="#using-combinations-to-get-the-solution-of-examples-25-to-27" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>32) Usando <a class="reference internal" href="#combinations">Combinaciones</a> para obtener la solución de los ejemplos 25 a 27<a class="headerlink" href="#using-combinations-to-get-the-solution-of-examples-25-to-27" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Rutas <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\cup\{12\}\rightarrow\{10\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
@@ -1504,10 +1531,10 @@ OR EMPTY SET</pre>
 </section>
 </section>
 <section id="equvalences-between-signatures">
-<h3><a class="toc-backref" href="#id54">Equivalencias entre firmas</a><a class="headerlink" href="#equvalences-between-signatures" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id54" role="doc-backlink">Equivalencias entre firmas</a><a class="headerlink" href="#equvalences-between-signatures" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Los siguientes ejemplos son para la ruta <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10\}\)</span></p>
 <section id="using-one-to-one">
-<h4>33) Usando <a class="reference internal" href="#one-to-one">Uno a Uno</a><a class="headerlink" href="#using-one-to-one" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>33) Usando <a class="reference internal" href="#one-to-one">Uno a Uno</a><a class="headerlink" href="#using-one-to-one" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span>
@@ -1526,7 +1553,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="using-one-to-many">
-<h4>34) Usando <a class="reference internal" href="#one-to-many">Uno a Muchos</a><a class="headerlink" href="#using-one-to-many" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>34) Usando <a class="reference internal" href="#one-to-many">Uno a Muchos</a><a class="headerlink" href="#using-one-to-many" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
@@ -1545,7 +1572,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="using-many-to-one">
-<h4>35) Usando <a class="reference internal" href="#many-to-one">Muchos a Uno</a><a class="headerlink" href="#using-many-to-one" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>35) Usando <a class="reference internal" href="#many-to-one">Muchos a Uno</a><a class="headerlink" href="#using-many-to-one" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="mi">10</span>
@@ -1564,7 +1591,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="using-many-to-many">
-<h4>36) Usando <a class="reference internal" href="#many-to-many">Muchos a Muchos</a><a class="headerlink" href="#using-many-to-many" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>36) Usando <a class="reference internal" href="#many-to-many">Muchos a Muchos</a><a class="headerlink" href="#using-many-to-many" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
@@ -1583,7 +1610,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="using-combinations">
-<h4>36) Usando <a class="reference internal" href="#combinations">Combinaciones</a><a class="headerlink" href="#using-combinations" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>36) Usando <a class="reference internal" href="#combinations">Combinaciones</a><a class="headerlink" href="#using-combinations" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT * FROM (VALUES(6, 10)) AS combinations (source, target)&#39;</span>
@@ -1604,7 +1631,7 @@ OR EMPTY SET</pre>
 </section>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a></p></li>
 <li><p>Las consultas utilizan la red <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
@@ -1630,8 +1657,8 @@ OR EMPTY SET</pre>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en sept. 14, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
+      Actualizado por última vez en sept 17, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
     </p>
   </div>
 </footer>

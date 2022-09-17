@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Vehicle Routing Functions - Category (Experimental) &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -24,10 +25,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
-<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
 
   </head><body>
 
@@ -176,7 +177,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/3.0/en/VRP-category.html">3.0</a></p></li>
 </ul>
 <section id="vehicle-routing-functions-category-experimental">
-<h1><a class="toc-backref" href="#id1">Vehicle Routing Functions - Category (Experimental)</a><a class="headerlink" href="#vehicle-routing-functions-category-experimental" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id1" role="doc-backlink">Vehicle Routing Functions - Category (Experimental)</a><a class="headerlink" href="#vehicle-routing-functions-category-experimental" title="Permalink to this heading">¶</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Possible server crash</p>
@@ -220,7 +221,7 @@
 </ul>
 </li>
 </ul>
-<div class="contents topic" id="contents">
+<nav class="contents" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#vehicle-routing-functions-category-experimental" id="id1">Vehicle Routing Functions - Category (Experimental)</a></p>
@@ -261,11 +262,11 @@
 </ul>
 </li>
 </ul>
-</div>
+</nav>
 <div class="toctree-wrapper compound">
 </div>
 <section id="introduction">
-<h2><a class="toc-backref" href="#id2">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>Vehicle Routing Problems <cite>VRP</cite> are <strong>NP-hard</strong> optimization problem, it
 generalises the travelling salesman problem (TSP).</p>
 <ul class="simple">
@@ -274,7 +275,7 @@ generalises the travelling salesman problem (TSP).</p>
 </ul>
 <p><strong>pgRouting does not try to implement all variants.</strong></p>
 <section id="characteristics">
-<h3><a class="toc-backref" href="#id3">Characteristics</a><a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Characteristics</a><a class="headerlink" href="#characteristics" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Capacitated Vehicle Routing Problem <cite>CVRP</cite> where The vehicles have limited
 carrying capacity of the goods.</p></li>
@@ -294,7 +295,7 @@ locations.</p></li>
 </section>
 </section>
 <section id="pick-delivery">
-<h2><a class="toc-backref" href="#id4">Pick &amp; Delivery</a><a class="headerlink" href="#pick-delivery" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Pick &amp; Delivery</a><a class="headerlink" href="#pick-delivery" title="Permalink to this heading">¶</a></h2>
 <p>Problem: <cite>CVRPPDTW</cite> Capacitated Pick and Delivery Vehicle Routing problem with
 Time Windows</p>
 <ul class="simple">
@@ -325,11 +326,11 @@ delivery location.</p></li>
 </ul>
 </section>
 <section id="parameters">
-<h2><a class="toc-backref" href="#id5">Parameters</a><a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Parameters</a><a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
 <section id="pick-deliver">
-<h3><a class="toc-backref" href="#id6">Pick &amp; deliver</a><a class="headerlink" href="#pick-deliver" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Pick &amp; deliver</a><a class="headerlink" href="#pick-deliver" title="Permalink to this heading">¶</a></h3>
 <p>Used in <a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - Experimental</span></a></p>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -348,7 +349,7 @@ delivery location.</p></li>
 </tbody>
 </table>
 <p>Used in <a class="reference internal" href="pgr_pickDeliver.html"><span class="doc">pgr_pickDeliver - Experimental</span></a></p>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -372,8 +373,8 @@ delivery location.</p></li>
 </table>
 </section>
 <section id="pick-deliver-optional-parameters">
-<h3><a class="toc-backref" href="#id7">Pick-Deliver optional parameters</a><a class="headerlink" href="#pick-deliver-optional-parameters" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Pick-Deliver optional parameters</a><a class="headerlink" href="#pick-deliver-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -413,11 +414,11 @@ front</p></li>
 </section>
 </section>
 <section id="inner-queries">
-<h2><a class="toc-backref" href="#id8">Inner Queries</a><a class="headerlink" href="#inner-queries" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Inner Queries</a><a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="orders-sql">
-<h3><a class="toc-backref" href="#id9">Orders SQL</a><a class="headerlink" href="#orders-sql" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Orders SQL</a><a class="headerlink" href="#orders-sql" title="Permalink to this heading">¶</a></h3>
 <p>Common columns for the orders SQL in both implementations:</p>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -469,16 +470,16 @@ front</p></li>
 </table>
 <p>Where:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL</dt>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 <p>For <a class="reference internal" href="pgr_pickDeliver.html"><span class="doc">pgr_pickDeliver - Experimental</span></a> the pickup and delivery identifiers of the locations
 are needed:</p>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -500,13 +501,13 @@ the <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p></td>
 </table>
 <p>Where:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
 </dl>
 <p>For <a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - Experimental</span></a> the <span class="math notranslate nohighlight">\((x, y)\)</span> values of the locations
 are needed:</p>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -534,15 +535,15 @@ are needed:</p>
 </table>
 <p>Where:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-NUMERICAL</dt>
+<dt class="field-odd">ANY-NUMERICAL<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 <section id="vehicles-sql">
-<h3><a class="toc-backref" href="#id10">Vehicles SQL</a><a class="headerlink" href="#vehicles-sql" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Vehicles SQL</a><a class="headerlink" href="#vehicles-sql" title="Permalink to this heading">¶</a></h3>
 <p>Common columns for the vehicles SQL in both implementations:</p>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -602,7 +603,7 @@ are needed:</p>
 </table>
 <p>For <a class="reference internal" href="pgr_pickDeliver.html"><span class="doc">pgr_pickDeliver - Experimental</span></a> the starting and ending identifiers of the locations
 are needed:</p>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -628,13 +629,13 @@ in the <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p>
 </table>
 <p>Where:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
 </dl>
 <p>For <a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - Experimental</span></a> the <span class="math notranslate nohighlight">\((x, y)\)</span> values of the locations
 are needed:</p>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -670,19 +671,19 @@ are needed:</p>
 </table>
 <p>Where:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-NUMERICAL</dt>
+<dt class="field-odd">ANY-NUMERICAL<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 <section id="matrix-sql">
-<h3><a class="toc-backref" href="#id11">Matrix SQL</a><a class="headerlink" href="#matrix-sql" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Matrix SQL</a><a class="headerlink" href="#matrix-sql" title="Permalink to this heading">¶</a></h3>
 <p>Set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 14%" />
-<col style="width: 16%" />
-<col style="width: 70%" />
+<col style="width: 14.0%" />
+<col style="width: 16.3%" />
+<col style="width: 69.8%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
@@ -708,15 +709,15 @@ are needed:</p>
 </section>
 </section>
 <section id="return-columns">
-<h2><a class="toc-backref" href="#id12">Return columns</a><a class="headerlink" href="#return-columns" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Return columns</a><a class="headerlink" href="#return-columns" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RETURNS</span> <span class="n">SET</span> <span class="n">OF</span>
-  <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">vehicle_seq</span><span class="p">,</span> <span class="n">vehicle_id</span><span class="p">,</span> <span class="n">stop_seq</span><span class="p">,</span> <span class="n">stop_type</span><span class="p">,</span>
-      <span class="n">travel_time</span><span class="p">,</span> <span class="n">arrival_time</span><span class="p">,</span> <span class="n">wait_time</span><span class="p">,</span> <span class="n">service_time</span><span class="p">,</span>  <span class="n">departure_time</span><span class="p">)</span>
-  <span class="n">UNION</span>
-  <span class="p">(</span><span class="n">summary</span> <span class="n">row</span><span class="p">)</span>
+ <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">vehicle_seq</span><span class="p">,</span> <span class="n">vehicle_id</span><span class="p">,</span> <span class="n">stop_seq</span><span class="p">,</span> <span class="n">stop_type</span><span class="p">,</span>
+     <span class="n">travel_time</span><span class="p">,</span> <span class="n">arrival_time</span><span class="p">,</span> <span class="n">wait_time</span><span class="p">,</span> <span class="n">service_time</span><span class="p">,</span>  <span class="n">departure_time</span><span class="p">)</span>
+ <span class="n">UNION</span>
+ <span class="p">(</span><span class="n">summary</span> <span class="n">row</span><span class="p">)</span>
 </pre></div>
 </div>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -862,8 +863,8 @@ vehicle.</p></li>
 </tbody>
 </table>
 <section id="summary-row">
-<h3><a class="toc-backref" href="#id13">Summary Row</a><a class="headerlink" href="#summary-row" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">Summary Row</a><a class="headerlink" href="#summary-row" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -950,7 +951,7 @@ closed.</p></li>
 </section>
 </section>
 <section id="handling-parameters">
-<h2><a class="toc-backref" href="#id14">Handling Parameters</a><a class="headerlink" href="#handling-parameters" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Handling Parameters</a><a class="headerlink" href="#handling-parameters" title="Permalink to this heading">¶</a></h2>
 <p>To define a problem, several considerations have to be done, to get consistent results.
 This section gives an insight of how parameters are to be considered.</p>
 <ul class="simple">
@@ -960,7 +961,7 @@ This section gives an insight of how parameters are to be considered.</p>
 <li><p><a class="reference internal" href="#factor-handling">Factor Handling</a></p></li>
 </ul>
 <section id="capacity-and-demand-units-handling">
-<h3><a class="toc-backref" href="#id15">Capacity and Demand Units Handling</a><a class="headerlink" href="#capacity-and-demand-units-handling" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Capacity and Demand Units Handling</a><a class="headerlink" href="#capacity-and-demand-units-handling" title="Permalink to this heading">¶</a></h3>
 <p>The <cite>capacity</cite> of a vehicle, can be measured in:</p>
 <ul class="simple">
 <li><p>Volume units like <span class="math notranslate nohighlight">\(m^3\)</span>.</p></li>
@@ -984,11 +985,6 @@ apples</cite> to <cite>kg</cite> is needed.</p></li>
 - <span class="math notranslate nohighlight">\(f\_boxes\)</span>: number of boxes needed for <cite>1</cite> kg of feathers.
 - <span class="math notranslate nohighlight">\(a\_weight\)</span>: weight of <cite>1</cite> box of apples.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 26%" />
-<col style="width: 38%" />
-<col style="width: 36%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Capacity Units</p></th>
 <th class="head"><p>apples</p></th>
@@ -1008,7 +1004,7 @@ apples</cite> to <cite>kg</cite> is needed.</p></li>
 </table>
 </section>
 <section id="locations">
-<h3><a class="toc-backref" href="#id16">Locations</a><a class="headerlink" href="#locations" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">Locations</a><a class="headerlink" href="#locations" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>When using <a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - Experimental</span></a>:</p>
 <ul>
@@ -1026,19 +1022,12 @@ apples</cite> to <cite>kg</cite> is needed.</p></li>
 </ul>
 </section>
 <section id="time-handling">
-<h3><a class="toc-backref" href="#id17">Time Handling</a><a class="headerlink" href="#time-handling" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">Time Handling</a><a class="headerlink" href="#time-handling" title="Permalink to this heading">¶</a></h3>
 <p>The times are relative to <strong>0</strong>.
 All time units have to be converted to a <strong>0</strong> reference and the same time units.</p>
 <p>Suppose that a vehicle’s driver starts the shift at 9:00 am and ends the shift
 at 4:30 pm and the service time duration is 10 minutes with 30 seconds.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 12%" />
-<col style="width: 20%" />
-<col style="width: 24%" />
-<col style="width: 30%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Meaning of 0</p></th>
 <th class="head"><p>time units</p></th>
@@ -1076,7 +1065,7 @@ at 4:30 pm and the service time duration is 10 minutes with 30 seconds.</p>
 </table>
 </section>
 <section id="factor-handling">
-<span id="pd-factor"></span><h3><a class="toc-backref" href="#id18">Factor handling</a><a class="headerlink" href="#factor-handling" title="Permalink to this headline">¶</a></h3>
+<span id="pd-factor"></span><h3><a class="toc-backref" href="#id18" role="doc-backlink">Factor handling</a><a class="headerlink" href="#factor-handling" title="Permalink to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">factor</span></code> acts as a multiplier to convert from distance values to time units
 the matrix values or the euclidean values.</p>
 <ul class="simple">
@@ -1092,7 +1081,7 @@ the matrix values or the euclidean values.</p>
 <p>Working with time units in seconds, and x/y in lat/lon:
 Factor: would depend on the location of the points and on the average velocity
 say 25m/s is the velocity.</p>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Latitude</p></th>
 <th class="head"><p>Conversion</p></th>
@@ -1115,13 +1104,13 @@ say 25m/s is the velocity.</p>
 And the <code class="docutils literal notranslate"><span class="pre">factor</span></code> becomes <span class="math notranslate nohighlight">\(1 / v\)</span></p>
 <p>Where:</p>
 <dl class="field-list simple">
-<dt class="field-odd">v</dt>
+<dt class="field-odd">v<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Velocity</p>
 </dd>
-<dt class="field-even">d</dt>
+<dt class="field-even">d<span class="colon">:</span></dt>
 <dd class="field-even"><p>Distance</p>
 </dd>
-<dt class="field-odd">t</dt>
+<dt class="field-odd">t<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Time</p>
 </dd>
 </dl>
@@ -1129,7 +1118,7 @@ And the <code class="docutils literal notranslate"><span class="pre">factor</spa
 <span class="math notranslate nohighlight">\(10m/s \approx 600m/min \approx 36 km/hr\)</span></p>
 <p>Working with time units in seconds and the matrix been in meters:
 For a 1000m lenght value on the matrix:</p>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Units</p></th>
 <th class="head"><p>velocity</p></th>
@@ -1162,7 +1151,7 @@ For a 1000m lenght value on the matrix:</p>
 </section>
 </section>
 <section id="see-also">
-<h2><a class="toc-backref" href="#id19">See Also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id19" role="doc-backlink">See Also</a><a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Vehicle_routing_problem">https://en.wikipedia.org/wiki/Vehicle_routing_problem</a></p></li>
 <li><p>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p></li>
@@ -1188,8 +1177,8 @@ For a 1000m lenght value on the matrix:</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on Sep 14, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
+      Last updated on Sep 17, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
     </p>
   </div>
 </footer>

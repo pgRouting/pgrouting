@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>pgr_TSPeuclidean &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -23,10 +24,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
-<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
 
   </head><body>
 
@@ -180,7 +181,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_eucledianTSP">2.3</a></p></li>
 </ul>
 <section id="pgr-tspeuclidean">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code><a class="headerlink" href="#pgr-tspeuclidean" title="Permalink to this headline">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code><a class="headerlink" href="#pgr-tspeuclidean" title="Permalink to this heading">¶</a></h1>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code> - Aproximation using <em>metric</em> algorithm.</p></li>
 </ul>
@@ -218,9 +219,9 @@
 </li>
 </ul>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <section id="problem-definition">
-<h3>Problem Definition<a class="headerlink" href="#problem-definition" title="Permalink to this headline">¶</a></h3>
+<h3>Problem Definition<a class="headerlink" href="#problem-definition" title="Permalink to this heading">¶</a></h3>
 <p>The travelling salesperson problem (TSP) asks the following question:</p>
 <blockquote>
 <div><p><em>Given a list of cities and the distances between each pair of cities, which
@@ -229,7 +230,7 @@ to the origin city?</em></p>
 </div></blockquote>
 </section>
 <section id="characteristics">
-<h3>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h3>
+<h3>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>This problem is an NP-hard optimization problem.</p></li>
 <li><p>Metric Algorithm is used</p></li>
@@ -273,12 +274,17 @@ in the worst case</em> when:</p>
 </section>
 </section>
 <section id="signatures">
-<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Summary</p>
-<pre class="literal-block" id="index-0">pgr_TSPeuclidean(<a class="reference internal" href="#coordinates-sql">Coordinates SQL</a>, [start id], [end_id])
-RETURNS SETOF (seq, node, cost, agg_cost)</pre>
+<div class="signatures admonition" id="index-0">
+<p class="admonition-title"></p>
+<blockquote>
+<div><p>pgr_TSPeuclidean(<a class="reference internal" href="#coordinates-sql">Coordinates SQL</a>, [start id], [end_id])
+RETURNS SETOF (seq, node, cost, agg_cost)</p>
+</div></blockquote>
+</div>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>With default values</p>
 </dd>
 </dl>
@@ -312,13 +318,8 @@ RETURNS SETOF (seq, node, cost, agg_cost)</pre>
 </div>
 </section>
 <section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 28%" />
-<col style="width: 16%" />
-<col style="width: 56%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Type</p></th>
@@ -333,13 +334,13 @@ RETURNS SETOF (seq, node, cost, agg_cost)</pre>
 </tbody>
 </table>
 <section id="tsp-optional-parameters">
-<h3>TSP optional parameters<a class="headerlink" href="#tsp-optional-parameters" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>TSP optional parameters<a class="headerlink" href="#tsp-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 18%" />
-<col style="width: 18%" />
-<col style="width: 9%" />
-<col style="width: 56%" />
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
@@ -375,15 +376,10 @@ vertex</p></li>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this headline">¶</a></h2>
+<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="coordinates-sql">
-<h3>Coordinates SQL<a class="headerlink" href="#coordinates-sql" title="Permalink to this headline">¶</a></h3>
+<h3>Coordinates SQL<a class="headerlink" href="#coordinates-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 23%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -408,14 +404,9 @@ vertex</p></li>
 </section>
 </section>
 <section id="result-columns">
-<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
+<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
 <p>Returns SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 10%" />
-<col style="width: 78%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -451,8 +442,8 @@ vertex</p></li>
 </table>
 </section>
 <section id="additional-examples">
-<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
-<div class="contents local topic" id="contents">
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
+<nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#test-29-cities-of-western-sahara" id="id2">Test 29 cities of Western Sahara</a></p>
 <ul>
@@ -464,14 +455,14 @@ vertex</p></li>
 </ul>
 </li>
 </ul>
-</div>
+</nav>
 <section id="test-29-cities-of-western-sahara">
-<h3><a class="toc-backref" href="#id2">Test 29 cities of Western Sahara</a><a class="headerlink" href="#test-29-cities-of-western-sahara" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Test 29 cities of Western Sahara</a><a class="headerlink" href="#test-29-cities-of-western-sahara" title="Permalink to this heading">¶</a></h3>
 <p>This example shows how to make performance tests using University of Waterloo’s
 <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/countries.html">example data</a> using
 the 29 cities of <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/wi29.tsp">Western Sahara dataset</a></p>
 <section id="creating-a-table-for-the-data-and-storing-the-data">
-<h4><a class="toc-backref" href="#id3">Creating a table for the data and storing the data</a><a class="headerlink" href="#creating-a-table-for-the-data-and-storing-the-data" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id3" role="doc-backlink">Creating a table for the data and storing the data</a><a class="headerlink" href="#creating-a-table-for-the-data-and-storing-the-data" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">wi29</span> <span class="p">(</span><span class="nb">id</span> <span class="n">BIGINT</span><span class="p">,</span> <span class="n">x</span> <span class="n">FLOAT</span><span class="p">,</span> <span class="n">y</span> <span class="n">FLOAT</span><span class="p">,</span> <span class="n">geom</span> <span class="n">geometry</span><span class="p">);</span>
 <span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">wi29</span> <span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">VALUES</span>
 <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">20833.3333</span><span class="p">,</span><span class="mf">17100.0000</span><span class="p">),</span>
@@ -507,13 +498,13 @@ the 29 cities of <a class="reference external" href="https://www.math.uwaterloo.
 </div>
 </section>
 <section id="adding-a-geometry-for-visual-purposes">
-<h4><a class="toc-backref" href="#id4">Adding a geometry (for visual purposes)</a><a class="headerlink" href="#adding-a-geometry-for-visual-purposes" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">Adding a geometry (for visual purposes)</a><a class="headerlink" href="#adding-a-geometry-for-visual-purposes" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">wi29</span> <span class="n">SET</span> <span class="n">geom</span> <span class="o">=</span> <span class="n">ST_makePoint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
 <section id="total-tour-cost">
-<h4><a class="toc-backref" href="#id5">Total tour cost</a><a class="headerlink" href="#total-tour-cost" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">Total tour cost</a><a class="headerlink" href="#total-tour-cost" title="Permalink to this heading">¶</a></h4>
 <p>Getting a total cost of the tour, compare the value with the length of an
 optimal tour is 27603, given on the dataset</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT *
@@ -528,7 +519,7 @@ WHERE seq = 30;
 </div>
 </section>
 <section id="getting-a-geometry-of-the-tour">
-<h4><a class="toc-backref" href="#id6">Getting a geometry of the tour</a><a class="headerlink" href="#getting-a-geometry-of-the-tour" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id6" role="doc-backlink">Getting a geometry of the tour</a><a class="headerlink" href="#getting-a-geometry-of-the-tour" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WITH
 tsp_results AS (SELECT seq, geom FROM pgr_TSPeuclidean($$SELECT * FROM wi29$$) JOIN wi29 ON (node = id))
 SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
@@ -541,7 +532,7 @@ SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
 </div>
 </section>
 <section id="visual-results">
-<h4><a class="toc-backref" href="#id7">Visual results</a><a class="headerlink" href="#visual-results" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id7" role="doc-backlink">Visual results</a><a class="headerlink" href="#visual-results" title="Permalink to this heading">¶</a></h4>
 <p>Visualy, The first image is the <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/witour.html">optimal solution</a>  and the second image
 is the solution obtained with <code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code>.</p>
 <a class="reference internal image-reference" href="_images/wi29optimal.png"><img alt="_images/wi29optimal.png" src="_images/wi29optimal.png" style="width: 383.5px; height: 311.0px;" /></a>
@@ -550,7 +541,7 @@ is the solution obtained with <code class="docutils literal notranslate"><span c
 </section>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Traveling Sales Person - Family of functions</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p></li>
@@ -579,8 +570,8 @@ is the solution obtained with <code class="docutils literal notranslate"><span c
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on Sep 14, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
+      Last updated on Sep 17, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
     </p>
   </div>
 </footer>
