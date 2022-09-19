@@ -62,9 +62,9 @@ SELECT * FROM pgr_trspViaEdges(
         true,
 
         'SELECT to_cost, target_id::INTEGER, via_path FROM old_restrictions');
-WARNING:  pgr_trspViaEdges(text, integer[], float[], boolean, boolean, text) is been deprecated
-WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
-WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
+WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated on v3.4.0
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   4 |  0.5
@@ -93,9 +93,9 @@ SELECT * FROM pgr_trspViaEdges(
         true,
 
         'SELECT to_cost, target_id::INTEGER, via_path FROM old_restrictions');
-WARNING:  pgr_trspViaEdges(text, integer[], float[], boolean, boolean, text) is been deprecated
-WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
-WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
+WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated on v3.4.0
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
@@ -122,9 +122,9 @@ SELECT * FROM pgr_trspViaEdges(
         true,
 
         'SELECT to_cost, target_id::INTEGER, via_path FROM old_restrictions');
-WARNING:  pgr_trspViaEdges(text, integer[], float[], boolean, boolean, text) is been deprecated
-WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
-WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
+WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated on v3.4.0
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
