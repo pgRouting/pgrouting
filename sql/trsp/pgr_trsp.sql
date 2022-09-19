@@ -58,7 +58,7 @@ new_sql TEXT;
 restrictions_query TEXT;
 trsp_sql TEXT;
 BEGIN
-  RAISE WARNING 'pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated';
+  RAISE WARNING 'pgr_trsp(text,integer,integer,boolean,boolean) deprecated on v3.4.0';
     has_reverse =_pgr_parameter_check('dijkstra', edges_sql, false);
 
     new_sql := edges_sql;
@@ -159,7 +159,7 @@ BEGIN
     IF $2 IS NULL OR $3 IS NULL OR $4 IS NULL OR $5 IS NULL OR $6 IS NULL THEN
         RETURN;
     END IF;
-  RAISE WARNING 'pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated';
+  RAISE WARNING 'pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0';
     has_reverse =_pgr_parameter_check('dijkstra', sql, false);
 
     new_sql := sql;
@@ -260,33 +260,15 @@ ROWS 1000;
 
 COMMENT ON FUNCTION pgr_trsp(TEXT, INTEGER, INTEGER, BOOLEAN, BOOLEAN, TEXT)
 IS 'pgr_trsp
-- DEPRECATED
-- Parameters
-    - edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - from vertex identifier
-    - to vertex identifier
-    - directed
-    - has reverse cost
-- Optional parameters
-    - restrictions_sql := NULL
+- DEPRECATED signature on v3.4.0
 - Documentation:
-    - ${PROJECT_DOC_LINK}/pgr_trsp.html
+  - ${PROJECT_DOC_LINK}/pgr_trsp.html
 ';
 
 
 COMMENT ON FUNCTION pgr_trsp(TEXT, INTEGER, FLOAT, INTEGER, FLOAT, BOOLEAN, BOOLEAN, TEXT)
 IS 'pgr_trsp
-- DEPRECATED
-- Parameters
-    - edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - source edge identifier
-    - fraction position on source edge
-    - target edge identifier
-    - fraction position on target edge
-    - directed
-    - has reverse cost
-- Optional parameters
-    - turn_restrict_sql := NULL
+- DEPRECATED signature on v3.4.0
 - Documentation:
-    - ${PROJECT_DOC_LINK}/pgr_trsp.html
+  - ${PROJECT_DOC_LINK}/pgr_trsp_withPoints.html
 ';

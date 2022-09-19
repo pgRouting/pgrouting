@@ -52,7 +52,7 @@ CREATE FUNCTION pgr_maxCardinalityMatch(
 RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
-RAISE WARNING 'pgr_maxCardinalityMatch(text,boolean) is been deprecated';
+RAISE WARNING 'pgr_maxCardinalityMatch(text,boolean) deprecated on v3.4.0';
 RETURN QUERY SELECT *
 FROM _pgr_maxCardinalityMatch(_pgr_get_statement($1), $2);
 END
@@ -63,7 +63,13 @@ ROWS 1000;
 
 -- COMMENTS
 COMMENT ON FUNCTION pgr_maxCardinalityMatch(TEXT, BOOLEAN)
-IS 'Deprecated function';
+IS 'pgr_maxCardinalityMatch
+- DEPRECATED signature on v3.4.0
+- Use without boolean paramater
+- Regardless of boolen value it will work for undirected graphs
+- Documentation:
+  - ${PROJECT_DOC_LINK}/pgr_maxCardinalityMatch.html
+';
 
 COMMENT ON FUNCTION pgr_maxCardinalityMatch(TEXT)
 IS 'pgr_maxCardinalityMatch

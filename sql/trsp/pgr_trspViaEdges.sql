@@ -23,7 +23,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 --v3.0
---v3.0
 CREATE FUNCTION pgr_trspViaEdges(
     text,      -- SQL (required)
     integer[], -- eids (required)
@@ -69,7 +68,7 @@ declare
     f float;
 
 begin
-  RAISE WARNING 'pgr_trspViaEdges(text, integer[], float[], boolean, boolean, text) is been deprecated';
+  RAISE WARNING 'pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated on v3.4.0';
     SELECT 0::INTEGER AS seq, NULL::INTEGER AS id1, NULL::INTEGER AS id2, NULL::INTEGER AS id3, NULL::FLOAT AS cost INTO lrr;
     has_reverse =_pgr_parameter_check('dijkstra', sql, false);
     edges_sql := sql;
@@ -175,15 +174,7 @@ rows 1000;
 
 COMMENT ON FUNCTION pgr_trspViaEdges(TEXT, INTEGER[], FLOAT[], BOOLEAN, BOOLEAN, TEXT)
 IS 'pgr_trspViaEdges
-- DEPRECATED
-- Parameters
-  - edges SQL with columns: id, source, target, cost [,reverse_cost]
-  - ARRAY[Via edge identifiers]
-  - ARRAY[fraction position on via edges]
-  - directed
-  - has reverse cost
-- Optional parameters
-  - turn_restrict_sql := NULL
+- DEPRECATED function on v3.4.0
 - Documentation:
-  - ${PROJECT_DOC_LINK}/pgr_trsp.html
+  - ${PROJECT_DOC_LINK}/pgr_trspVia_withPoints.html
 ';
