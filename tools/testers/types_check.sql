@@ -209,7 +209,7 @@ DECLARE
   return_params_numbers OID[] = ARRAY[23,23,23,20,20,20,20,701,701,701];
 
 BEGIN
-  IF fn IN ('pgr_trspvia','pgr_trspvia_withpoints') AND NOT min_version('3.4.0') THEN
+  IF fn IN ('pgr_trspvia','pgr_trspvia_withpoints','pgr_withpointsvia') AND NOT min_version('3.4.0') THEN
     RETURN QUERY SELECT skip(1, 'Signature added on 3.4.0');
     RETURN;
   END IF;
