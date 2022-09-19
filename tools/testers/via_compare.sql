@@ -13,6 +13,7 @@ msg TEXT;
 msg_end TEXT;
 all_found BOOLEAN;
 allow_u BOOLEAN;
+inc INTEGER = 1;
 BEGIN
   IF NOT min_version('3.4.0') THEN
     RETURN QUERY SELECT skip(1, 'Signature added on 3.4.0');
@@ -29,7 +30,11 @@ BEGIN
   --msg_end = E'\n' || trsp_sql || E'\n' || dijkstraVia_sql;
   msg_end = ' ';
 
-  FOR i IN 1 .. cant LOOP
+  IF version() LIKE '%SQL 10%' OR version() LIKE '%SQL 11%' THEN
+    inc = 2;
+  END IF;
+
+  FOR i IN 1 .. cant BY inc LOOP
     FOR j IN 1 .. cant LOOP
       FOR l IN 0 .. 1 LOOP
         FOR m IN 0 .. 1 LOOP
@@ -86,6 +91,7 @@ msg TEXT;
 msg_end TEXT;
 all_found BOOLEAN;
 allow_u BOOLEAN;
+inc INTEGER = 1;
 BEGIN
   IF NOT min_version('3.4.0') THEN
     RETURN QUERY SELECT skip(1, 'Signature added on 3.4.0');
@@ -101,7 +107,11 @@ BEGIN
   the_points =  quote_literal('SELECT * FROM pointsOfInterest');
   msg_end = ' ';
 
-  FOR i IN 1 .. cant LOOP
+  IF version() LIKE '%SQL 10%' OR version() LIKE '%SQL 11%' THEN
+    inc = 2;
+  END IF;
+
+  FOR i IN 1 .. cant BY inc LOOP
     FOR j IN 1 .. cant LOOP
       FOR l IN 0 .. 1 LOOP
         FOR m IN 0 .. 1 LOOP
@@ -159,6 +169,7 @@ msg TEXT;
 msg_end TEXT;
 all_found BOOLEAN;
 allow_u BOOLEAN;
+inc INTEGER = 1;
 BEGIN
   IF NOT min_version('3.4.0') THEN
     RETURN QUERY SELECT skip(1, 'Signature added on 3.4.0');
@@ -175,7 +186,11 @@ BEGIN
   empty_restrictions =  quote_literal('SELECT * FROM restrictions WHERE id > 7');
   msg_end = ' ';
 
-  FOR i IN 1 .. cant LOOP
+  IF version() LIKE '%SQL 10%' OR version() LIKE '%SQL 11%' THEN
+    inc = 2;
+  END IF;
+
+  FOR i IN 1 .. cant BY inc LOOP
     FOR j IN 1 .. cant LOOP
       FOR l IN 0 .. 1 LOOP
         FOR m IN 0 .. 1 LOOP
