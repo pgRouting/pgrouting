@@ -66,7 +66,7 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   pgr_bdDijkstraCostMatrix(`Edges SQL`_, **start vids** [, ``directed``])
+   | pgr_bdDijkstraCostMatrix(`Edges SQL`_, **start vids**, [``directed``])
 
    | RETURNS SET OF |matrix-result|
    | OR EMPTY SET
