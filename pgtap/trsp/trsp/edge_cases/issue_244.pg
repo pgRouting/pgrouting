@@ -3,7 +3,9 @@ BEGIN;
 SELECT plan(1);
 UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
-CREATE OR REPLACE PROCEDURE edge_cases() AS
+-- should be a procedure
+CREATE OR REPLACE FUNCTION edge_cases()
+RETURNS void AS
 $BODY$
 BEGIN
   IF min_version('3.4.0') THEN
@@ -37,7 +39,7 @@ $BODY$
 LANGUAGE plpgsql;
 
 
-CALL edge_cases();
+SELECT edge_cases();
 SELECT set_eq('q2', 'q1', 'path found');
 
 SELECT finish();
