@@ -63,9 +63,10 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_KSP(`Edges SQL`_, **start vid**, **end vid**, **K**
-   |            [, directed] [, heap_paths])
-   | RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
+   | pgr_KSP(`Edges SQL`_, **start vid**, **end vid**, **K**, [**options**])
+   | **options:** ``[directed, heap_paths]``
+
+   | RETURNS SET OF |ksp-result|
    | OR EMPTY SET
 
 :Example: Get 2 paths from :math:`6` to :math:`17` on a directed graph.
