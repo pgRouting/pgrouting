@@ -37,7 +37,6 @@ CREATE FUNCTION _pgr_trsp_withPoints(
     details BOOLEAN,
 
     OUT seq INTEGER,
-    OUT path_id INTEGER,
     OUT path_seq INTEGER,
     OUT departure BIGINT,
     OUT end_vid BIGINT,
@@ -62,7 +61,6 @@ CREATE FUNCTION _pgr_trsp_withPoints(
     details BOOLEAN,
 
     OUT seq INTEGER,
-    OUT path_id INTEGER,
     OUT path_seq INTEGER,
     OUT departure BIGINT,
     OUT end_vid BIGINT,

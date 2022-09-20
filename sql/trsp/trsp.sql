@@ -35,7 +35,6 @@ CREATE FUNCTION pgr_trsp(
   directed BOOLEAN DEFAULT true,
 
   OUT seq INTEGER,
-  OUT path_id INTEGER,
   OUT path_seq INTEGER,
   OUT start_vid BIGINT,
   OUT end_vid BIGINT,
@@ -69,7 +68,6 @@ CREATE FUNCTION pgr_trsp(
   directed BOOLEAN DEFAULT true,
 
   OUT seq INTEGER,
-  OUT path_id INTEGER,
   OUT path_seq INTEGER,
   OUT start_vid BIGINT,
   OUT end_vid BIGINT,
@@ -101,7 +99,6 @@ CREATE FUNCTION pgr_trsp(
   directed BOOLEAN DEFAULT true,
 
   OUT seq INTEGER,
-  OUT path_id INTEGER,
   OUT path_seq INTEGER,
   OUT start_vid BIGINT,
   OUT end_vid BIGINT,
@@ -133,7 +130,6 @@ CREATE FUNCTION pgr_trsp(
   directed BOOLEAN DEFAULT true,
 
   OUT seq INTEGER,
-  OUT path_id INTEGER,
   OUT path_seq INTEGER,
   OUT start_vid BIGINT,
   OUT end_vid BIGINT,
@@ -164,7 +160,6 @@ CREATE FUNCTION pgr_trsp(
   directed BOOLEAN DEFAULT true,
 
   OUT seq INTEGER,
-  OUT path_id INTEGER,
   OUT path_seq INTEGER,
   OUT start_vid BIGINT,
   OUT end_vid BIGINT,
