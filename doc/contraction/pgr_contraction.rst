@@ -91,9 +91,10 @@ The pgr_contraction function has the following signature:
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_contraction(`Edges SQL`_, **contraction order**
-   |      [, max_cycles] [, forbidden_vertices] [, directed])
-   | RETURNS SETOF (type, id, contracted_vertices, source, target, cost)
+   | pgr_contraction(`Edges SQL`_, **contraction order**, [**options**])
+
+   | **options:** ``[ max_cycles, forbidden_vertices, directed]``
+   | RETURNS SET OF |result-contract|
 
 :Example: Making a dead end and linear contraction in that order on an
           undirected graph.
@@ -165,7 +166,7 @@ Edges SQL
 Result Columns
 -------------------------------------------------------------------------------
 
-RETURNS SETOF  (type, id, contracted_vertices, source, target, cost)
+Returns set of  |result-contract|
 
 The function returns a single row. The columns of the row are:
 
