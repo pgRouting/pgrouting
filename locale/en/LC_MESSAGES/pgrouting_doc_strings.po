@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-15 18:42-0500\n"
+"POT-Creation-Date: 2022-09-20 13:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
+"Generated-By: Babel 2.10.3\n"
 
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
@@ -77,7 +77,7 @@ msgstr ""
 msgid "`Edges SQL`_ as described below."
 msgstr ""
 
-msgid "**Root vid**"
+msgid "**root vid**"
 msgstr ""
 
 msgid "``BIGINT``"
@@ -91,10 +91,10 @@ msgid ""
 "aleatory nodes for each tree in the forest."
 msgstr ""
 
-msgid "**Root vids**"
+msgid "**root vids**"
 msgstr ""
 
-msgid "``ARRAY[ANY-INTEGER]``"
+msgid "``ARRAY`` [ **ANY-INTEGER** ]"
 msgstr ""
 
 msgid "Array of identifiers of the root vertices."
@@ -4202,6 +4202,15 @@ msgstr ""
 msgid "Edges SQL as described below."
 msgstr ""
 
+msgid "**Root vid**"
+msgstr ""
+
+msgid "**Root vids**"
+msgstr ""
+
+msgid "``ARRAY[ANY-INTEGER]``"
+msgstr ""
+
 msgid "**distance**"
 msgstr ""
 
@@ -4325,7 +4334,7 @@ msgstr ""
 msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
 msgstr ""
 
-msgid ":doc:`hawickCircuits`"
+msgid ":doc:`pgr_hawickCircuits`"
 msgstr ""
 
 msgid ""
@@ -4625,115 +4634,6 @@ msgid ":math:`residual\\_capacity_i = capacity_i - flow_i`"
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/Maximum_flow_problem"
-msgstr ""
-
-msgid ""
-"**Supported versions:** `Latest "
-"<https://docs.pgrouting.org/latest/en/hawickCircuits.html>`__ (`3.4 "
-"<https://docs.pgrouting.org/3.4/en/hawickCircuits.html>`__)"
-msgstr ""
-
-msgid "``pgr_hawickCircuits - Experimental``"
-msgstr ""
-
-msgid ""
-"``pgr_hawickCircuits`` —  Returns the list of cirucits using "
-"hawickCircuits algorithm."
-msgstr ""
-
-msgid "``pgr_hawickCircuits``"
-msgstr ""
-
-msgid ""
-"Hawick Circuit algorithm, is published in 2008 by Ken Hawick and Health "
-"A. James. This algorithm solves the problem of detecting and enumerating "
-"circuits in graphs. It is capable of circuit enumeration in graphs with "
-"directed-arcs, multiple-arcs and self-arcs with a memory efficient and "
-"high-performance im-plementation. It is an extension of Johnson's "
-"Algorithm of finding all the elementary circuits of a directed graph."
-msgstr ""
-
-msgid ""
-"There are 2 variations defined in the Boost Graph Library. Here, we have "
-"implemented only 2nd as it serves the most suitable and practical "
-"usecase. In this variation we get the circuits after filtering out the "
-"circuits caused by parallel edges. Parallel edge circuits have more use "
-"cases when you want to count the no. of circuits.Maybe in future, we will"
-" also implemenent this variation."
-msgstr ""
-
-msgid "The algorithm implementation works only for directed graph"
-msgstr ""
-
-msgid "It is a variation of Johnson's algorithm for circuit enumeration."
-msgstr ""
-
-msgid "The algorithm outputs the distinct circuits present in the graph."
-msgstr ""
-
-msgid "Time Complexity: :math:`O((V + E) (c + 1))`"
-msgstr ""
-
-msgid "where :math:`|E|` is the number of edges in the graph,"
-msgstr ""
-
-msgid ":math:`|V|` is the number of vertices in the graph."
-msgstr ""
-
-msgid ":math:`|c|` is the number of circuts in the graph."
-msgstr ""
-
-msgid "Summary"
-msgstr ""
-
-msgid ""
-"pgr_hawickCircuits(`Edges SQL`_) RETURNS SET OF (seq, path_id, path_seq, "
-"start_vid, node, edge, cost, agg_cost) OR EMPTY SET"
-msgstr ""
-
-msgid "Circuits present in the pgRouting :doc:`sampledata`"
-msgstr ""
-
-msgid "Sequential value starting from ``1``"
-msgstr ""
-
-msgid "``path_id``"
-msgstr ""
-
-msgid "Id of the circuit starting from ``1``"
-msgstr ""
-
-msgid "``path_seq``"
-msgstr ""
-
-msgid "Relative postion in the path. Has value ``0`` for beginning of the path"
-msgstr ""
-
-msgid "Identifier of the starting vertex of the circuit."
-msgstr ""
-
-msgid "Identifier of the ending vertex of the circuit."
-msgstr ""
-
-msgid "Identifier of the node in the path from a vid to next vid."
-msgstr ""
-
-msgid ""
-"Identifier of the edge used to go from ``node`` to the next node in the "
-"path sequence. ``-1`` for the last node of the path."
-msgstr ""
-
-msgid ""
-"Cost to traverse from ``node`` using ``edge`` to the next node in the "
-"path sequence."
-msgstr ""
-
-msgid "Aggregate cost from ``start_v`` to ``node``."
-msgstr ""
-
-msgid ""
-"`Boost: Hawick Circuit Algorithm "
-"<https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
 msgstr ""
 
 msgid ""
@@ -6614,6 +6514,9 @@ msgid ""
 "cost, agg_cost)``"
 msgstr ""
 
+msgid "``path_seq``"
+msgstr ""
+
 msgid ""
 "Relative position in the path. Has value **1** for the beginning of a "
 "path."
@@ -6635,6 +6538,11 @@ msgstr ""
 msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the "
 "path sequence. **-1** for the last node of the path."
+msgstr ""
+
+msgid ""
+"Cost to traverse from ``node`` using ``edge`` to the next node in the "
+"path sequence."
 msgstr ""
 
 msgid "Used on functions the following:"
@@ -6730,6 +6638,9 @@ msgstr ""
 msgid ""
 "Set of ``(seq, path_id, path_seq [, start_vid] [, end_vid], node, edge, "
 "cost, agg_cost)``"
+msgstr ""
+
+msgid "``path_id``"
 msgstr ""
 
 msgid "Path identifier."
@@ -7467,6 +7378,9 @@ msgid ""
 "the number of shortest paths desired."
 msgstr ""
 
+msgid "Summary"
+msgstr ""
+
 msgid "pgr_KSP(`Edges SQL`_, **start vid**, **end vid**, **K**"
 msgstr ""
 
@@ -7962,34 +7876,31 @@ msgid ""
 "which path it belongs."
 msgstr ""
 
-msgid "pgr_aStar(`Edges SQL`_, **start vid**, **end vid**"
+msgid "pgr_aStar(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
 msgstr ""
 
-msgid "[, directed] [, heuristic] [, factor] [, epsilon])"
+msgid "pgr_aStar(`Edges SQL`_, **start vid**, **end vids**, [**options**])"
 msgstr ""
 
-msgid "pgr_aStar(`Edges SQL`_, **start vid**, **end vids**"
+msgid "pgr_aStar(`Edges SQL`_, **start vids**, **end vid**, [**options**])"
 msgstr ""
 
-msgid "pgr_aStar(`Edges SQL`_, **start vids**, **end vid**"
+msgid "pgr_aStar(`Edges SQL`_, **start vids**, **end vids**, [**options**])"
 msgstr ""
 
-msgid "pgr_aStar(`Edges SQL`_, **start vids**, **end vids**"
+msgid "pgr_aStar(`Edges SQL`_, `Combinations SQL`_, [**options**])"
 msgstr ""
 
-msgid "pgr_aStar(`Edges SQL`_, `Combinations SQL`_"
+msgid "**options:** ``[directed, heuristic, factor, epsilon]``"
 msgstr ""
 
-msgid "RETURNS SET OF"
-msgstr ""
-
-msgid "(seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)"
+msgid "RETURNS SET OF |old-generic-result|"
 msgstr ""
 
 msgid "Optional parameters are `named parameters` and have a default value."
 msgstr ""
 
-msgid "RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)"
+msgid "RETURNS SET OF |result-1-1|"
 msgstr ""
 
 msgid ""
@@ -7997,7 +7908,7 @@ msgid ""
 "heuristic :math:`2`"
 msgstr ""
 
-msgid "RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)"
+msgid "RETURNS SET OF |result-1-m|"
 msgstr ""
 
 msgid ""
@@ -8005,7 +7916,7 @@ msgid ""
 "graph with heuristic :math:`3` and factor :math:`3.5`"
 msgstr ""
 
-msgid "RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)"
+msgid "RETURNS SET OF |result-m-1|"
 msgstr ""
 
 msgid ""
@@ -8013,7 +7924,7 @@ msgid ""
 "**undirected** graph with heuristic :math:`4`"
 msgstr ""
 
-msgid "RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)"
+msgid "RETURNS SET OF |result-m-m|"
 msgstr ""
 
 msgid ""
@@ -8116,9 +8027,6 @@ msgid "pgr_aStarCost(`Edges SQL`_, **start vids**, **end vids**, [**options**])"
 msgstr ""
 
 msgid "pgr_aStarCost(`Edges SQL`_, `Combinations SQL`_, [**options**])"
-msgstr ""
-
-msgid "**options:** ``[directed, heuristic, factor, epsilon]``"
 msgstr ""
 
 msgid "RETURNS SET OF |matrix-result|"
@@ -8270,7 +8178,10 @@ msgstr ""
 msgid "When the total number of points is less than 3, returns an EMPTY geometry"
 msgstr ""
 
-msgid "pgr_alphaShape(**geometry**,   [alpha]) RETURNS geometry"
+msgid "pgr_alphaShape(**geometry**, [alpha])"
+msgstr ""
+
+msgid "RETURNS geometry"
 msgstr ""
 
 msgid ""
@@ -8884,19 +8795,19 @@ msgstr ""
 msgid "`pgr_bdAstar(` `Many to Many`_ `)`"
 msgstr ""
 
-msgid "pgr_bdAstar(`Edges SQL`_, **start vid**, **end vid**"
+msgid "pgr_bdAstar(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
 msgstr ""
 
-msgid "pgr_bdAstar(`Edges SQL`_, **start vid**, **end vids**"
+msgid "pgr_bdAstar(`Edges SQL`_, **start vid**, **end vids**, [**options**])"
 msgstr ""
 
-msgid "pgr_bdAstar(`Edges SQL`_, **start vids**, **end vid**"
+msgid "pgr_bdAstar(`Edges SQL`_, **start vids**, **end vid**, [**options**])"
 msgstr ""
 
-msgid "pgr_bdAstar(`Edges SQL`_, **start vids**, **end vids**"
+msgid "pgr_bdAstar(`Edges SQL`_, **start vids**, **end vids**, [**options**])"
 msgstr ""
 
-msgid "pgr_bdAstar(`Edges SQL`_, `Combinations SQL`_"
+msgid "pgr_bdAstar(`Edges SQL`_, `Combinations SQL`_, [**options**])"
 msgstr ""
 
 msgid ""
@@ -8905,9 +8816,6 @@ msgid ""
 msgstr ""
 
 msgid "RETURNS (seq, path_seq, end_vid, node, edge, cost, agg_cost)"
-msgstr ""
-
-msgid "RETURNS (seq, path_seq, start_vid, node, edge, cost, agg_cost)"
 msgstr ""
 
 msgid ""
@@ -9040,22 +8948,19 @@ msgstr ""
 msgid "**Official** ``pgr_bdDijkstra`` (`One to One`_)"
 msgstr ""
 
-msgid "pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vid**  [, directed])"
+msgid "pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
 msgstr ""
 
-msgid "pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vids** [, directed])"
+msgid "pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
 msgstr ""
 
-msgid "pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vid**  [, directed])"
+msgid "pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vid**, [``directed``])"
 msgstr ""
 
-msgid "pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vids** [, directed])"
+msgid "pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vids**, [``directed``])"
 msgstr ""
 
-msgid "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_ [, directed])"
-msgstr ""
-
-msgid "RETURNS (seq, path_seq, node, edge, cost, agg_cost)"
+msgid "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_ , [``directed``])"
 msgstr ""
 
 msgid "From vertex :math:`6` to vertex  :math:`10` on a **directed** graph"
@@ -9074,6 +8979,9 @@ msgstr ""
 msgid ""
 "From vertices :math:`\\{6, 1\\}` to vertices :math:`\\{10, 17\\}` on an "
 "**undirected** graph"
+msgstr ""
+
+msgid "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
 
 msgid "Using a combinations table on an **undirected** graph"
@@ -9119,26 +9027,29 @@ msgid ""
 msgstr ""
 
 msgid ""
-"pgr_bdDijkstraCost(`Edges SQL`_, **start vid**, **end vid**  [, "
-"``directed``])"
+"pgr_bdDijkstraCost(`Edges SQL`_, **start vid**, **end vid** , "
+"[``directed``])"
 msgstr ""
 
 msgid ""
-"pgr_bdDijkstraCost(`Edges SQL`_, **start vid**, **end vids** [, "
-"``directed``])"
+"pgr_bdDijkstraCost(`Edges SQL`_, **start vid**, **end vids**, "
+"[``directed``])"
 msgstr ""
 
 msgid ""
-"pgr_bdDijkstraCost(`Edges SQL`_, **start vids**, **end vid**  [, "
-"``directed``])"
+"pgr_bdDijkstraCost(`Edges SQL`_, **start vids**, **end vid** , "
+"[``directed``])"
 msgstr ""
 
 msgid ""
-"pgr_bdDijkstraCost(`Edges SQL`_, **start vids**, **end vids** [, "
-"``directed``])"
+"pgr_bdDijkstraCost(`Edges SQL`_, **start vids**, **end vids**, "
+"[``directed``])"
 msgstr ""
 
-msgid "pgr_bdDijkstraCost(`Edges SQL`_, `Combinations SQL`_ [, ``directed``])"
+msgid "pgr_bdDijkstraCost(`Edges SQL`_, `Combinations SQL`_, [ ``directed``])"
+msgstr ""
+
+msgid "pgr_bdDijkstraCost(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
 
 msgid ""
@@ -9172,7 +9083,7 @@ msgid ""
 "matrix."
 msgstr ""
 
-msgid "pgr_bdDijkstraCostMatrix(`Edges SQL`_, **start vids** [, ``directed``])"
+msgid "pgr_bdDijkstraCostMatrix(`Edges SQL`_, **start vids**, [``directed``])"
 msgstr ""
 
 msgid ""
@@ -9261,27 +9172,26 @@ msgstr ""
 msgid "Running time: :math:`O(| start\\_vids | * ( V * E))`"
 msgstr ""
 
-msgid ""
-"pgr_bellmanFord(`Edges SQL`_, **start vid**, **end vid**  [, directed]) "
-"pgr_bellmanFord(`Edges SQL`_, **start vid**, **end vids** [, directed]) "
-"pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vid**  [, directed]) "
-"pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vids** [, directed]) "
-"pgr_bellmanFord(`Edges SQL`_, `Combinations SQL`_ [, directed]) RETURNS "
-"(seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost) OR "
-"EMPTY SET"
+msgid "pgr_bellmanFord(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
+msgstr ""
+
+msgid "pgr_bellmanFord(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
 msgstr ""
 
 msgid ""
-"pgr_bellmanFord(`Edges SQL`_, **start vid**,  **end vid**  [, directed]) "
-"RETURNS (seq, path_seq, node, edge, cost, agg_cost) OR EMPTY SET"
+"pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vid** , "
+"[``directed``])"
+msgstr ""
+
+msgid ""
+"pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vids**, "
+"[``directed``])"
+msgstr ""
+
+msgid "pgr_bellmanFord(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
 
 msgid "From vertex :math:`6` to vertex :math:`10` on a **directed** graph"
-msgstr ""
-
-msgid ""
-"pgr_bellmanFord(`Edges SQL`_, **start vid**,  **end vids** [, directed]) "
-"RETURNS (seq, path_seq, end_vid, node, edge, cost, agg_cost) OR EMPTY SET"
 msgstr ""
 
 msgid ""
@@ -9289,22 +9199,7 @@ msgid ""
 " graph"
 msgstr ""
 
-msgid ""
-"pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vid**  [, directed]) "
-"RETURNS (seq, path_seq, start_vid, node, edge, cost, agg_cost) OR EMPTY "
-"SET"
-msgstr ""
-
-msgid ""
-"pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vids** [, directed]) "
-"RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) "
-"OR EMPTY SET"
-msgstr ""
-
-msgid ""
-"pgr_bellmanFord(`Edges SQL`_, `Combinations SQL`_ [, directed]) RETURNS "
-"(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) OR EMPTY "
-"SET"
+msgid "pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vid**, [``directed``])"
 msgstr ""
 
 msgid "Using a combinations table on an **undirected** graph."
@@ -9467,22 +9362,29 @@ msgstr ""
 msgid "Running time: :math:`O(| start\\_vids | * |E|)`"
 msgstr ""
 
-msgid "pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**,  **end vid**"
+msgid ""
+"pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**, **end vid**, "
+"[``directed``])"
 msgstr ""
 
-msgid "[, directed])"
+msgid ""
+"pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**, **end vids**, "
+"[``directed``])"
 msgstr ""
 
-msgid "pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**,  **end vids**"
+msgid ""
+"pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vid**, "
+"[``directed``])"
 msgstr ""
 
-msgid "pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vid**"
+msgid ""
+"pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vids**, "
+"[``directed``])"
 msgstr ""
 
-msgid "pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vids**"
-msgstr ""
-
-msgid "pgr_binaryBreadthFirstSearch(`Edges SQL`_, **Combinations SQL**"
+msgid ""
+"pgr_binaryBreadthFirstSearch(`Edges SQL`_, **Combinations SQL**, "
+"[``directed``])"
 msgstr ""
 
 msgid ""
@@ -9490,16 +9392,9 @@ msgid ""
 "(i.e :math:`1``)"
 msgstr ""
 
-msgid "pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**, **end vid**"
-msgstr ""
-
-msgid "[, directed]);"
-msgstr ""
-
-msgid "pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**, **end vids**"
-msgstr ""
-
-msgid "pgr_binaryBreadthFirstSearch(`Edges SQL`_, `Combinations SQL`_"
+msgid ""
+"pgr_binaryBreadthFirstSearch(`Edges SQL`_, `Combinations SQL`_, "
+"[``directed``])"
 msgstr ""
 
 msgid "Optional Parameters"
@@ -9721,23 +9616,19 @@ msgstr ""
 msgid "Running time: :math:`O(E + V)`"
 msgstr ""
 
-msgid "\\ \\  :class: signatures"
+msgid "pgr_breadthFirstSearch(`Edges SQL`_, **root vid**, [**options**])"
 msgstr ""
 
-msgid ""
-"pgr_breadthFirstSearch(`Edges SQL`_, **Root vid** [, max_depth] [, "
-"directed]) pgr_breadthFirstSearch(`Edges SQL`_, **Root vids** [, "
-"max_depth] [, directed]) RETURNS SET OF (seq, depth, start_vid, node, "
-"edge, cost, agg_cost)"
+msgid "pgr_breadthFirstSearch(`Edges SQL`_, **root vids**, [**options**])"
+msgstr ""
+
+msgid "**options:** ``[max_depth, directed]``"
+msgstr ""
+
+msgid "RETURNS SET OF |result-bfs|"
 msgstr ""
 
 msgid "Single vertex"
-msgstr ""
-
-msgid ""
-"pgr_breadthFirstSearch(`Edges SQL`_, **Root vid** [, max_depth] [, "
-"directed]) RETURNS SET OF (seq, depth, start_vid, node, edge, cost, "
-"agg_cost)"
 msgstr ""
 
 msgid ""
@@ -9746,12 +9637,6 @@ msgid ""
 msgstr ""
 
 msgid "Multiple vertices"
-msgstr ""
-
-msgid ""
-"pgr_breadthFirstSearch(`Edges SQL`_, **Root vids** [, max_depth] [, "
-"directed]) RETURNS SET OF (seq, depth, start_vid, node, edge, cost, "
-"agg_cost)"
 msgstr ""
 
 msgid ""
@@ -9867,12 +9752,24 @@ msgstr ""
 msgid "Returns ``EMPTY SET`` on a disconnected graph"
 msgstr ""
 
-msgid ""
-"pgr_chinesePostman(`Edges SQL`_) RETURNS SET OF (seq, node, edge, cost, "
-"agg_cost) OR EMPTY SET"
+msgid "pgr_chinesePostman(`Edges SQL`_)"
+msgstr ""
+
+msgid "RETURNS SET OF |result-1-1-no-seq|"
 msgstr ""
 
 msgid "Returns set of ``(seq, node, edge, cost, agg_cost)``"
+msgstr ""
+
+msgid "Sequential value starting from ``1``"
+msgstr ""
+
+msgid ""
+"Identifier of the edge used to go from ``node`` to the next node in the "
+"path sequence. ``-1`` for the last node of the path."
+msgstr ""
+
+msgid "Aggregate cost from ``start_v`` to ``node``."
 msgstr ""
 
 msgid ""
@@ -9894,10 +9791,13 @@ msgid ""
 " the same vertex."
 msgstr ""
 
-msgid "[TBD] Return value when the graph if disconnected"
+msgid "Return value when the graph if disconnected"
 msgstr ""
 
-msgid "pgr_chinesePostmanCost(`Edges SQL`_) RETURNS FLOAT"
+msgid "pgr_chinesePostmanCost(`Edges SQL`_)"
+msgstr ""
+
+msgid "RETURNS ``FLOAT``"
 msgstr ""
 
 msgid "``pgr_chinesepostmancost``"
@@ -11329,6 +11229,9 @@ msgstr ""
 msgid "[, directed] [, cap] [, global])"
 msgstr ""
 
+msgid "RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)"
+msgstr ""
+
 msgid "Departing on car from vertex :math:`6` find the nearest subway station."
 msgstr ""
 
@@ -11736,6 +11639,9 @@ msgstr ""
 msgid "pgr_drivingDistance(`Edges SQL`_, **Root vid**,  **distance**"
 msgstr ""
 
+msgid "[, directed])"
+msgstr ""
+
 msgid "pgr_drivingDistance(`Edges SQL`_, **Root vids**, **distance**"
 msgstr ""
 
@@ -11861,6 +11767,12 @@ msgid "Efficient graph coloring is an NP-Hard problem, and therefore:"
 msgstr ""
 
 msgid "In this implelentation the running time: :math:`O(|E|*|V|)`"
+msgstr ""
+
+msgid "where :math:`|E|` is the number of edges in the graph,"
+msgstr ""
+
+msgid ":math:`|V|` is the number of vertices in the graph."
 msgstr ""
 
 msgid "pgr_edgeColoring(`Edges SQL`_)"
@@ -12116,42 +12028,42 @@ msgstr ""
 msgid "Average case: :math:`O( | E | )`"
 msgstr ""
 
-msgid ""
-"pgr_edwardMoore(`Edges SQL`_, **start vid**,  **end vid**  [, directed]) "
-"pgr_edwardMoore(`Edges SQL`_, **start vid**,  **end vids** [, directed]) "
-"pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vid**  [, directed]) "
-"pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vids** [, directed]) "
-"pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_ [, directed]) RETURNS "
-"(seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost) OR "
-"EMPTY SET"
+msgid "pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
+msgstr ""
+
+msgid "pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
+msgstr ""
+
+msgid "pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vid**, [``directed``])"
 msgstr ""
 
 msgid ""
-"pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vid** [, directed]); "
-"RETURNS (seq, path_seq, node, edge, cost, agg_cost) OR EMPTY SET"
+"pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vids**, "
+"[``directed``])"
+msgstr ""
+
+msgid "pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
+msgstr ""
+
+msgid "pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vid**, [``directed``]);"
 msgstr ""
 
 msgid ""
-"pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vids** [, directed]); "
-"RETURNS (seq, path_seq, end_vid, node, edge, cost, agg_cost) OR EMPTY SET"
+"pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vids**, "
+"[``directed``]);"
 msgstr ""
 
 msgid ""
-"pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vid** [, directed]); "
-"RETURNS (seq, path_seq, start_vid, node, edge, cost, agg_cost) OR EMPTY "
-"SET"
+"pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vid**, "
+"[``directed``]);"
 msgstr ""
 
 msgid ""
-"pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vids** [, directed]);"
-" RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) "
-"OR EMPTY SET"
+"pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vids**, "
+"[``directed``]);"
 msgstr ""
 
-msgid ""
-"pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_ [, directed]); RETURNS "
-"(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) OR EMPTY "
-"SET"
+msgid "pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_, [``directed``]);"
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm"
@@ -12812,7 +12724,7 @@ msgid ""
 "implementation which runs in :math:`\\Theta(V^3)` time,"
 msgstr ""
 
-msgid "pgr floydWarshall(`Edges SQL`_ [, directed])"
+msgid "pgr floydWarshall(`Edges SQL`_, [``directed``])"
 msgstr ""
 
 msgid "For a directed subgraph with edges :math:`\\{1, 2, 3, 4\\}`."
@@ -12903,6 +12815,85 @@ msgid "``hash``"
 msgstr ""
 
 msgid "Git hash of pgRouting build"
+msgstr ""
+
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/hawickCircuits.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/en/hawickCircuits.html>`__)"
+msgstr ""
+
+msgid "``pgr_hawickCircuits - Experimental``"
+msgstr ""
+
+msgid ""
+"``pgr_hawickCircuits`` —  Returns the list of cirucits using "
+"hawickCircuits algorithm."
+msgstr ""
+
+msgid "``pgr_hawickCircuits``"
+msgstr ""
+
+msgid ""
+"Hawick Circuit algorithm, is published in 2008 by Ken Hawick and Health "
+"A. James. This algorithm solves the problem of detecting and enumerating "
+"circuits in graphs. It is capable of circuit enumeration in graphs with "
+"directed-arcs, multiple-arcs and self-arcs with a memory efficient and "
+"high-performance im-plementation. It is an extension of Johnson's "
+"Algorithm of finding all the elementary circuits of a directed graph."
+msgstr ""
+
+msgid ""
+"There are 2 variations defined in the Boost Graph Library. Here, we have "
+"implemented only 2nd as it serves the most suitable and practical "
+"usecase. In this variation we get the circuits after filtering out the "
+"circuits caused by parallel edges. Parallel edge circuits have more use "
+"cases when you want to count the no. of circuits.Maybe in future, we will"
+" also implemenent this variation."
+msgstr ""
+
+msgid "The algorithm implementation works only for directed graph"
+msgstr ""
+
+msgid "It is a variation of Johnson's algorithm for circuit enumeration."
+msgstr ""
+
+msgid "The algorithm outputs the distinct circuits present in the graph."
+msgstr ""
+
+msgid "Time Complexity: :math:`O((V + E) (c + 1))`"
+msgstr ""
+
+msgid ":math:`|c|` is the number of circuts in the graph."
+msgstr ""
+
+msgid "pgr_hawickCircuits(`Edges SQL`_)"
+msgstr ""
+
+msgid "RETURNS SET OF |generic-result|"
+msgstr ""
+
+msgid "Circuits present in the pgRouting :doc:`sampledata`"
+msgstr ""
+
+msgid "Id of the circuit starting from ``1``"
+msgstr ""
+
+msgid "Relative postion in the path. Has value ``0`` for beginning of the path"
+msgstr ""
+
+msgid "Identifier of the starting vertex of the circuit."
+msgstr ""
+
+msgid "Identifier of the ending vertex of the circuit."
+msgstr ""
+
+msgid "Identifier of the node in the path from a vid to next vid."
+msgstr ""
+
+msgid ""
+"`Boost: Hawick Circuit Algorithm "
+"<https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
 msgstr ""
 
 msgid ""
@@ -13012,7 +13003,7 @@ msgid ""
 "\\log V)` time,"
 msgstr ""
 
-msgid "pgr johnson(`Edges SQL`_ [, directed])"
+msgid "pgr johnson(`Edges SQL`_, [``directed``])"
 msgstr ""
 
 msgid ""
@@ -15218,9 +15209,6 @@ msgid ""
 "[directed])"
 msgstr ""
 
-msgid "RETURNS SET OF |generic-result|"
-msgstr ""
-
 msgid "From vertex :math:`6` to vertex  :math:`10` on an undirected graph."
 msgstr ""
 
@@ -15924,12 +15912,18 @@ msgid ""
 "agg_cost)"
 msgstr ""
 
+msgid "RETURNS (seq, path_seq, node, edge, cost, agg_cost)"
+msgstr ""
+
 msgid "From point :math:`1` to vertex :math:`10` with details"
 msgstr ""
 
 msgid ""
 "From point :math:`1` to point :math:`3` and vertex :math:`7` on an "
 "undirected graph"
+msgstr ""
+
+msgid "RETURNS (seq, path_seq, start_vid, node, edge, cost, agg_cost)"
 msgstr ""
 
 msgid "From point :math:`1` and vertex :math:`6` to point :math:`3`"
