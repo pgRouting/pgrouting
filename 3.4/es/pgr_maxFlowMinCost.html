@@ -262,25 +262,29 @@
 <p class="rubric">Resumen</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<blockquote>
-<div><p>pgr_maxFlowMinCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>)
-pgr_maxFlowMinCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>)
-pgr_maxFlowMinCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>)
-pgr_maxFlowMinCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>)
-pgr_maxFlowMinCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>)
-RETURNS (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
-OR EMPTY SET</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">pgr_maxFlowMinCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>)</div>
+<div class="line">pgr_maxFlowMinCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>)</div>
+<div class="line">pgr_maxFlowMinCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>)</div>
+<div class="line">pgr_maxFlowMinCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>)</div>
+<div class="line">pgr_maxFlowMinCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
 </div>
 <section id="one-to-one">
 <span id="index-0"></span><h3>Uno a Uno<a class="headerlink" href="#one-to-one" title="Enlace permanente a este encabezado">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<blockquote>
-<div><p>pgr_maxFlowMinCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>)
-RETURNS (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
-OR EMPTY SET</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">pgr_maxFlowMinCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
@@ -306,11 +310,13 @@ OR EMPTY SET</p>
 <span id="index-1"></span><h3>Uno a Muchos<a class="headerlink" href="#one-to-many" title="Enlace permanente a este encabezado">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<blockquote>
-<div><p>pgr_maxFlowMinCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>)
-RETURNS (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
-OR EMPTY SET</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">pgr_maxFlowMinCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
@@ -341,11 +347,13 @@ OR EMPTY SET</p>
 <span id="index-2"></span><h3>Muchos a Uno<a class="headerlink" href="#many-to-one" title="Enlace permanente a este encabezado">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<blockquote>
-<div><p>pgr_maxFlowMinCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>)
-RETURNS (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
-OR EMPTY SET</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">pgr_maxFlowMinCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
@@ -372,11 +380,13 @@ OR EMPTY SET</p>
 <span id="index-3"></span><h3>Muchos a Muchos<a class="headerlink" href="#many-to-many" title="Enlace permanente a este encabezado">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<blockquote>
-<div><p>pgr_maxFlowMinCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>)
-RETURNS (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
-OR EMPTY SET</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">pgr_maxFlowMinCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
@@ -409,11 +419,13 @@ OR EMPTY SET</p>
 <span id="index-4"></span><h3>Combinaciones<a class="headerlink" href="#combinations" title="Enlace permanente a este encabezado">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<blockquote>
-<div><p>pgr_maxFlowMinCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>)
-RETURNS (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
-OR EMPTY SET</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">pgr_maxFlowMinCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>

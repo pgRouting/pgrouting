@@ -218,20 +218,24 @@
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<blockquote>
-<div><p>pgr_kruskalDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong>, <strong>distance</strong>)
-pgr_kruskalDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vids</strong>, <strong>distance</strong>)
-RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">pgr_kruskalDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vid</strong>, <strong>distance</strong>)</div>
+<div class="line">pgr_kruskalDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vids</strong>, <strong>distance</strong>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+</div>
 </div>
 <section id="single-vertex">
 <span id="index-0"></span><h3>Vértice único<a class="headerlink" href="#single-vertex" title="Enlace permanente a este encabezado">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<blockquote>
-<div><p>pgr_kruskalDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong>, <strong>distance</strong>)
-RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">pgr_kruskalDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vid</strong>, <strong>distance</strong>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
@@ -257,10 +261,12 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</p>
 <span id="index-1"></span><h3>Múltiples vértices<a class="headerlink" href="#multiple-vertices" title="Enlace permanente a este encabezado">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<blockquote>
-<div><p>pgr_kruskalDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vids</strong>, <strong>distance</strong>)
-RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">pgr_kruskalDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vids</strong>, <strong>distance</strong>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>

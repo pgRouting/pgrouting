@@ -255,23 +255,15 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong></div>
-<div class="line-block">
-<div class="line">[, directed] [, cap])</div>
+<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, [<strong>options A</strong>])</div>
+<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong> [<strong>options A</strong>])</div>
+<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong> [<strong>options B</strong>])</div>
+<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a> [<strong>options B</strong>])</div>
+<div class="line"><strong>options A:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">cap]</span></code></div>
+<div class="line"><strong>options B:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">cap,</span> <span class="pre">global]</span></code></div>
 </div>
-<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong></div>
 <div class="line-block">
-<div class="line">[, directed] [, cap])</div>
-</div>
-<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong></div>
-<div class="line-block">
-<div class="line">[, directed] [, cap], [global])</div>
-</div>
-<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a></div>
-<div class="line-block">
-<div class="line">[, directed] [, cap] [, global])</div>
-</div>
-<div class="line">RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</div>
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -280,11 +272,11 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong></div>
-<div class="line-block">
-<div class="line">[, directed] [, cap])</div>
+<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">cap]</span></code></div>
 </div>
-<div class="line">RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -322,11 +314,11 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong></div>
-<div class="line-block">
-<div class="line">[, directed] [, cap])</div>
+<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">cap]</span></code></div>
 </div>
-<div class="line">RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -364,11 +356,11 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong></div>
-<div class="line-block">
-<div class="line">[, directed] [, cap], [global])</div>
+<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">cap,</span> <span class="pre">global]</span></code></div>
 </div>
-<div class="line">RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -409,11 +401,11 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a></div>
-<div class="line-block">
-<div class="line">[, directed] [, cap] [, global])</div>
+<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">cap,</span> <span class="pre">global]</span></code></div>
 </div>
-<div class="line">RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>

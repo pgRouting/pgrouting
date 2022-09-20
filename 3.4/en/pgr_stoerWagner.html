@@ -198,7 +198,7 @@
 </div>
 <p class="rubric">Availability</p>
 <ul>
-<li><p>Version 2.3.0</p>
+<li><p>Version 3.0</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>New <strong>Experimental</strong> function</p></li>
@@ -247,11 +247,13 @@ this function determines exactly one of the min-cuts as well as its weight.</p><
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
 <div class="signatures admonition" id="index-0">
 <p class="admonition-title"></p>
-<blockquote>
-<div><p>pgr_stoerWagner(<a class="reference internal" href="#edges-sql">Edges SQL</a>)
-RETURNS SET OF (seq, edge, cost, mincut)
-OR EMPTY SET</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">pgr_stoerWagner(<a class="reference internal" href="#edges-sql">Edges SQL</a>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">mincut)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>

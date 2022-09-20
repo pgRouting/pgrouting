@@ -227,10 +227,12 @@ graph is not planar.</p>
 <p class="rubric">Summary</p>
 <div class="signatures admonition" id="index-0">
 <p class="admonition-title"></p>
-<blockquote>
-<div><p>pgr_isPlanar(<cite>Edges SQL</cite>)
-RETURNS BOOLEAN</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">pgr_isPlanar(<cite>Edges SQL</cite>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS <code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></div>
+</div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_isPlanar</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
@@ -334,7 +336,7 @@ it’s not part of the graph.</p></li>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>pgr_isplanar</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pgr_isplanar</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><ul class="simple">
 <li><p><cite>true</cite> when the graph is planar.</p></li>

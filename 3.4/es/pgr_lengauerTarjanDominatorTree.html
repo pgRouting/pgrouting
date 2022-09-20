@@ -219,11 +219,13 @@
 <p class="rubric">Resumen</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<blockquote>
-<div><p>pgr_lengauerTarjanDominatorTree(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vertex</strong>)
-RETURNS SET OF (seq, vertex_id, idom)
-OR EMPTY SET</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">pgr_lengauerTarjanDominatorTree(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vertex</strong>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">vertex_id,</span> <span class="pre">idom)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
 </div>
 <dl class="field-list simple" id="index-0">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
@@ -267,7 +269,7 @@ OR EMPTY SET</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>SQL de aristas</strong></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p>Consulta SQL como se describió anteriormente.</p></td>
 </tr>
@@ -354,11 +356,11 @@ OR EMPTY SET</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>Valor secuencial a partir de <strong>1</strong>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>vertex_id</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vertex_id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador de vértice.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>idom</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">idom</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Dominador inmediato del vértice.</p></td>
 </tr>

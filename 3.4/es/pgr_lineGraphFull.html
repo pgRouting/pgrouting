@@ -20,7 +20,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="Funciones de Ruteo de Vehículos - Categoría (Experimental)" href="VRP-category.html" />
+    <link rel="next" title="Ordering - Family of functions" href="ordering-family.html" />
     <link rel="prev" title="pgr_lineGraph - Experimental" href="pgr_lineGraph.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -147,7 +147,7 @@
     </a>
   </li>
   <li>
-    <a href="VRP-category.html" title="Next Chapter: Funciones de Ruteo de Vehículos - Categoría (Experimental)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Funciones de ... &raquo;</span>
+    <a href="ordering-family.html" title="Next Chapter: Ordering - Family of functions"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Ordering - Fa... &raquo;</span>
     </a>
   </li>
               
@@ -255,11 +255,13 @@ edges, respecting the directionality.</p>
 <p class="rubric">Resumen</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<blockquote>
-<div><p>pgr_lineGraphFull(<a class="reference internal" href="#edges-sql">Edges SQL</a>)
-RETURNS SET OF (seq, source, target, cost, edge)
-OR EMPTY SET</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">pgr_lineGraphFull(<a class="reference internal" href="#edges-sql">Edges SQL</a>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">edge)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>

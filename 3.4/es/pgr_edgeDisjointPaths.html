@@ -222,27 +222,14 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_edgeDisjointPaths(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong></div>
-<div class="line-block">
-<div class="line">[, directed])</div>
+<div class="line">pgr_edgeDisjointPaths(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_edgeDisjointPaths(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_edgeDisjointPaths(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_edgeDisjointPaths(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_edgeDisjointPaths(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
-<div class="line">pgr_edgeDisjointPaths(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong></div>
 <div class="line-block">
-<div class="line">[, directed])</div>
-</div>
-<div class="line">pgr_edgeDisjointPaths(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong></div>
-<div class="line-block">
-<div class="line">[, directed])</div>
-</div>
-<div class="line">pgr_edgeDisjointPaths(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong></div>
-<div class="line-block">
-<div class="line">[, directed])</div>
-</div>
-<div class="line">pgr_edgeDisjointPaths(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a></div>
-<div class="line-block">
-<div class="line">[, directed])</div>
-</div>
-<div class="line">RETURNS (seq, path_id, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)</div>
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid,]</span> <span class="pre">[end_vid,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -251,11 +238,10 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_edgeDisjointPaths(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong></div>
-<div class="line-block">
-<div class="line">[, directed])</div>
+<div class="line">pgr_edgeDisjointPaths(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
-<div class="line">RETURNS (seq, path_id, path_seq, node, edge, cost, agg_cost)</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -286,11 +272,10 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_edgeDisjointPaths(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong></div>
-<div class="line-block">
-<div class="line">[, directed])</div>
+<div class="line">pgr_edgeDisjointPaths(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
-<div class="line">RETURNS (seq, path_id, path_seq, end_vid, node, edge, cost, agg_cost)</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -329,11 +314,10 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_edgeDisjointPaths(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong></div>
-<div class="line-block">
-<div class="line">[, directed])</div>
+<div class="line">pgr_edgeDisjointPaths(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
-<div class="line">RETURNS (seq, path_id, path_seq, start_vid, node, edge, cost, agg_cost)</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -372,11 +356,10 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_edgeDisjointPaths(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong></div>
-<div class="line-block">
-<div class="line">[, directed])</div>
+<div class="line">pgr_edgeDisjointPaths(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
-<div class="line">RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -443,11 +426,10 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_edgeDisjointPaths(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a></div>
-<div class="line-block">
-<div class="line">[, directed])</div>
+<div class="line">pgr_edgeDisjointPaths(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
-<div class="line">RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>

@@ -19,6 +19,8 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="pgr_cuthillMckeeOrdering - Experimental" href="pgr_cuthillMckeeOrdering.html" />
+    <link rel="prev" title="pgr_lineGraphFull - Experimental" href="pgr_lineGraphFull.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -70,9 +72,9 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
 </ul>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
@@ -93,12 +95,7 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Ordering - Family of functions</a><ul>
-<li><a class="reference internal" href="#parameters">Parámetros</a></li>
-<li><a class="reference internal" href="#edges-sql">SQL aristas</a><ul>
-<li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -109,6 +106,14 @@
             
               
                 
+  <li>
+    <a href="pgr_lineGraphFull.html" title="Previous Chapter: pgr_lineGraphFull - Experimental"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_lineGraph...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_cuthillMckeeOrdering.html" title="Next Chapter: pgr_cuthillMckeeOrdering - Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_cuthillMc... &raquo;</span>
+    </a>
+  </li>
               
             
             
@@ -176,118 +181,17 @@
 </ul>
 </div>
 <ul class="simple">
-<li><p><a class="reference internal" href="cuthillMckeeOrdering.html"><span class="doc">cuthillMckeeOrdering - Experimental</span></a> - Return reverse Cuthill-McKee ordering of an undirected graph.</p></li>
+<li><p><a class="reference internal" href="pgr_cuthillMckeeOrdering.html"><span class="doc">pgr_cuthillMckeeOrdering - Experimental</span></a> - Return reverse Cuthill-McKee ordering of an undirected graph.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
-<section id="parameters">
-<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlace permanente a este encabezado">¶</a></h2>
-<table class="docutils align-default" style="width: 81">
-<thead>
-<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
-<th class="head"><p>Tipo</p></th>
-<th class="head"><p>Descripción</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> descritas más adelante.</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="edges-sql">
-<h2>SQL aristas<a class="headerlink" href="#edges-sql" title="Enlace permanente a este encabezado">¶</a></h2>
-<table class="docutils align-default" style="width: 81">
-<colgroup>
-<col style="width: 17.7%" />
-<col style="width: 17.7%" />
-<col style="width: 8.9%" />
-<col style="width: 55.7%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Columna</p></th>
-<th class="head"><p>Tipo</p></th>
-<th class="head"><p>x Defecto</p></th>
-<th class="head"><p>Descripción</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
-<td><p><strong>ENTEROS</strong></p></td>
-<td></td>
-<td><p>Identificador de la arista.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
-<td><p><strong>ENTEROS</strong></p></td>
-<td></td>
-<td><p>Identificador del primer vértice de la arista.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
-<td><p><strong>ENTEROS</strong></p></td>
-<td></td>
-<td><p>Identificador del segundo vértice de la arista.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
-<td><p><strong>FLOTANTES</strong></p></td>
-<td></td>
-<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
-<td><p><strong>FLOTANTES</strong></p></td>
-<td><p>-1</p></td>
-<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
-<ul class="simple">
-<li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p>Donde:</p>
-<dl class="field-list simple">
-<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
-</dd>
-<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
-</dd>
-</dl>
-<section id="result-columns">
-<h3>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlace permanente a este encabezado">¶</a></h3>
-<p>Returns SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node)</span></code></p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Columna</p></th>
-<th class="head"><p>Tipo</p></th>
-<th class="head"><p>Descripción</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Sequence of the order starting from 1.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>New ordering in reverse order.</p></td>
-</tr>
-</tbody>
-</table>
-</section>
 <section id="see-also">
-<h3>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/cuthill_mckee_ordering.html">Boost: Cuthill-McKee Ordering</a></p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Cuthill%E2%80%93McKee_algorithm">Wikipedia: Cuthill-McKee Ordering</a></p></li>
-</ul>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
 </ul>
-</section>
 </section>
 </section>
 

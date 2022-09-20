@@ -217,20 +217,24 @@ of the Minimum Spanning Tree created using Kruskal’s algorithm.</p>
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<blockquote>
-<div><p>pgr_kruskalDFS(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong> [, max_depth])
-pgr_kruskalDFS(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vids</strong> [, max_depth])
-RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">pgr_kruskalDFS(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vid</strong>, [<code class="docutils literal notranslate"><span class="pre">max_depth</span></code>])</div>
+<div class="line">pgr_kruskalDFS(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vids</strong>, [<code class="docutils literal notranslate"><span class="pre">max_depth</span></code>])</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+</div>
 </div>
 <section id="single-vertex">
 <span id="index-0"></span><h3>Single vertex<a class="headerlink" href="#single-vertex" title="Permalink to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<blockquote>
-<div><p>pgr_kruskalDFS(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong> [, max_depth])
-RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">pgr_kruskalDFS(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vid</strong>, [<code class="docutils literal notranslate"><span class="pre">max_depth</span></code>])</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
@@ -264,10 +268,12 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</p>
 <span id="index-1"></span><h3>Multiple vertices<a class="headerlink" href="#multiple-vertices" title="Permalink to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<blockquote>
-<div><p>pgr_kruskalDFS(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vids</strong> [, max_depth])
-RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">pgr_kruskalDFS(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vids</strong>, [<code class="docutils literal notranslate"><span class="pre">max_depth</span></code>])</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>

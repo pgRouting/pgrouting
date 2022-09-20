@@ -245,11 +245,11 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>  [, <code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
-<div class="line">pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong> [, <code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
-<div class="line">pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>  [, <code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
-<div class="line">pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong> [, <code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
-<div class="line">pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a> [, <code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong> , [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong> , [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
 <div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
@@ -260,7 +260,7 @@
 <span id="index-0"></span><h3>Uno a Uno<a class="headerlink" href="#one-to-one" title="Enlace permanente a este encabezado">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<p>pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>  [, <code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
+<p>pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong> , [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
 <div class="line-block">
 <div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
@@ -286,7 +286,7 @@
 <span id="index-1"></span><h3>Uno a Muchos<a class="headerlink" href="#one-to-many" title="Enlace permanente a este encabezado">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<p>pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong> [, <code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
+<p>pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
 <div class="line-block">
 <div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
@@ -313,7 +313,7 @@
 <span id="index-2"></span><h3>Muchos a Uno<a class="headerlink" href="#many-to-one" title="Enlace permanente a este encabezado">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<p>pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>  [, <code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
+<p>pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong> , [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
 <div class="line-block">
 <div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
@@ -340,7 +340,7 @@
 <span id="index-3"></span><h3>Muchos a Muchos<a class="headerlink" href="#many-to-many" title="Enlace permanente a este encabezado">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<p>pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong> [, <code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
+<p>pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
 <div class="line-block">
 <div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
@@ -370,7 +370,7 @@
 <span id="index-4"></span><h3>Combinaciones<a class="headerlink" href="#combinations" title="Enlace permanente a este encabezado">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<p>pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a> [, <code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
+<p>pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
 <div class="line-block">
 <div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>

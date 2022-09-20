@@ -215,11 +215,13 @@
 <span id="index-0"></span><h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<blockquote>
-<div><p>pgr_connectedComponents(<a class="reference internal" href="#edges-sql">Edges SQL</a>)</p>
-<p>RETURNS SET OF (seq, component, node)
-OR EMPTY SET</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">pgr_connectedComponents(<a class="reference internal" href="#edges-sql">Edges SQL</a>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">component,</span> <span class="pre">node)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
@@ -336,7 +338,7 @@ OR EMPTY SET</p>
 </section>
 <section id="result-columns">
 <h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>Devuelve el conjunto de``(seq, component, node)``</p>
+<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">component,</span> <span class="pre">node)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>

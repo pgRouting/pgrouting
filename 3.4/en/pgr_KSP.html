@@ -209,11 +209,11 @@ number of shortest paths desired.</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_KSP(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>, <strong>K</strong></div>
-<div class="line-block">
-<div class="line">[, directed] [, heap_paths])</div>
+<div class="line">pgr_KSP(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>, <strong>K</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">heap_paths]</span></code></div>
 </div>
-<div class="line">RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>

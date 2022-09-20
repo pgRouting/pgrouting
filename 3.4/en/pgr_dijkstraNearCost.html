@@ -264,10 +264,8 @@ finds the shortest path from the starting vertex to the nearest ending vertex.</
 <div class="line">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>, [<strong>options A</strong>])</div>
 <div class="line">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>, [<strong>options B</strong>])</div>
 <div class="line">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [<strong>options B</strong>])</div>
-<div class="line-block">
 <div class="line"><strong>options A:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">cap]</span></code></div>
 <div class="line"><strong>options B:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">cap,</span> <span class="pre">global]</span></code></div>
-</div>
 </div>
 <div class="line-block">
 <div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
@@ -280,9 +278,7 @@ finds the shortest path from the starting vertex to the nearest ending vertex.</
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, [<strong>options</strong>])</div>
-<div class="line-block">
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">cap]</span></code></div>
-</div>
 </div>
 <div class="line-block">
 <div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
@@ -323,9 +319,7 @@ station.</p>
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>, [<strong>options</strong>])</div>
-<div class="line-block">
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">cap]</span></code></div>
-</div>
 </div>
 <div class="line-block">
 <div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
@@ -366,9 +360,7 @@ best is <span class="math notranslate nohighlight">\(11\)</span>.</p>
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>, [<strong>options</strong>])</div>
-<div class="line-block">
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">cap,</span> <span class="pre">global]</span></code></div>
-</div>
 </div>
 <div class="line-block">
 <div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
@@ -413,9 +405,7 @@ the first subway line and at vertex <span class="math notranslate nohighlight">\
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [<strong>options</strong>])</div>
-<div class="line-block">
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">cap,</span> <span class="pre">global]</span></code></div>
-</div>
 </div>
 <div class="line-block">
 <div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>

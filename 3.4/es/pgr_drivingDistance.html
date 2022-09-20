@@ -196,15 +196,12 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong>,  <strong>distance</strong></div>
-<div class="line-block">
-<div class="line">[, directed])</div>
+<div class="line">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong>,  <strong>distance</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vids</strong>, <strong>distance</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> [directed, equicost]</div>
 </div>
-<div class="line">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vids</strong>, <strong>distance</strong></div>
 <div class="line-block">
-<div class="line">[, directed] [, equicost])</div>
-</div>
-<div class="line">RETURNS SET OF (seq, [from_v,] node, edge, cost, agg_cost)</div>
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[from_v,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 </div>
 </div>
 <section id="single-vertex">
@@ -212,11 +209,10 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong>,  <strong>distance</strong></div>
-<div class="line-block">
-<div class="line">[, directed])</div>
+<div class="line">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong>,  <strong>distance</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
-<div class="line">RETURNS SET OF (seq, node, edge, cost, agg_cost)</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -252,11 +248,11 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vids</strong>, <strong>distance</strong></div>
-<div class="line-block">
-<div class="line">[, directed] [, equicost])</div>
+<div class="line">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vids</strong>, <strong>distance</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> [directed, equicost]</div>
 </div>
-<div class="line">RETURNS SET OF (seq, from_v, node, edge, cost, agg_cost)</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">from_v,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 </div>
 </div>
 <dl class="field-list simple">
