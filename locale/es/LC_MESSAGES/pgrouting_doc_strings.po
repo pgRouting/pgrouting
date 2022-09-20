@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-20 13:54+0000\n"
+"POT-Creation-Date: 2022-09-20 23:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
@@ -4400,137 +4400,6 @@ msgstr "En ambos lados ``b``, ``NULL``"
 msgid ":doc:`TSP-family`"
 msgstr ":doc:`TSP-family`"
 
-#, fuzzy
-msgid ""
-"**Supported versions:** `Latest "
-"<https://docs.pgrouting.org/latest/en/cuthillMckeeOrdering.html>`__ (`3.4"
-" <https://docs.pgrouting.org/3.4/en/cuthillMckeeOrdering.html>`__)"
-msgstr ""
-"**Versiones soportadas** `Última "
-"<https://docs.pgrouting.org/latest/en/reference.html>`__ (`3.4 "
-"<https://docs.pgrouting.org/3.4/en/reference.html>`__)"
-
-#, fuzzy
-msgid "cuthillMckeeOrdering - Experimental"
-msgstr "pgr_edgeColoring - Experimental"
-
-#, fuzzy
-msgid ""
-"``cuthillMckeeOrdering`` — Returns the reverse Cuthill-Mckee ordering of "
-"an undirected graphs"
-msgstr ""
-"``pgr_edgeColoring`` — Coloración de aristas de grafos no dirigidos "
-"acíclicos"
-
-msgid "Boost Graph Inside"
-msgstr "Adentro: Boost Graph"
-
-msgid "Availability"
-msgstr "Disponibilidad"
-
-msgid "Version 3.4.0"
-msgstr "Versión 3.4.0"
-
-msgid "New **experimental** signature:"
-msgstr "Nueva firma **experimental**:"
-
-msgid ""
-"In numerical linear algebra, the Cuthill-McKee algorithm (CM), named "
-"after Elizabeth Cuthill and James McKee, is an algorithm to permute a "
-"sparse matrix that has a symmetric sparsity pattern into a band matrix "
-"form with a small bandwidth. The reverse Cuthill-McKee algorithm (RCM) "
-"due to Alan George and Joseph Liu is the same algorithm but with the "
-"resulting index numbers reversed. In practice this generally results in "
-"less fill-in than the CM ordering when Gaussian elimination is applied."
-msgstr ""
-
-msgid ""
-"The vertices are basically assigned a breadth-first search order, except "
-"that at each step, the adjacent vertices are placed in the queue in order"
-" of increasing degree."
-msgstr ""
-
-msgid ""
-"There are 3 versions defined in the Boost Graph Library. Here, we have "
-"implemented only version 2 as it is most suitable and practical for "
-"users. In this version we don't have to provide the starting vertex in "
-"the query. Whereas, in the version 1 we have to provide the starting "
-"vertex and it gives result only for single component. Version 2 is "
-"applicable for one and more than one components as it finds the starting "
-"vertex itself using the pseudo-peripheral pair heuiristic approach among "
-"each component. Maybe in future, we will also implemenent the version 1."
-msgstr ""
-
-msgid "**The main Characteristics are:**"
-msgstr "**Las características principales son:**"
-
-#, fuzzy
-msgid "The implementation is for **undirected** graphs."
-msgstr "Su implementación es solo para grafo **no dirigido**."
-
-msgid "The bandwidth minimization problems are considered NP-complete problems."
-msgstr ""
-
-#, fuzzy
-msgid "The running time complexity is: :math:`O(m log(m)|V|)`"
-msgstr "Tiempo de ejecución de Prim: :math:`O(E*log V)`"
-
-msgid "where :math:`|V|` is the number of vertices,"
-msgstr "donde :math:`|V|` es el número de vértices,"
-
-#, fuzzy
-msgid ":math:`m` is the maximum degree of the vertices in the graph."
-msgstr ":math:`d` es el grado máximo de los vértices en el grafo,"
-
-msgid "Signatures"
-msgstr "Firmas"
-
-msgid "\\ \\"
-msgstr ""
-
-#, fuzzy
-msgid "cuthillMckeeOrdering(`Edges SQL`_)"
-msgstr "``pgr_full_version``"
-
-#, fuzzy
-msgid "RETURNS SET OF (seq, node) OR EMPTY SET"
-msgstr "Devuelve conjunto de ``(seq, sorted_v)``"
-
-msgid "Example"
-msgstr "Ejemplo"
-
-#, fuzzy
-msgid "Graph ordering of pgRouting :doc:`sampledata`"
-msgstr "Coloración de grafos de pgRouting :doc:`sampledata`"
-
-#, fuzzy
-msgid "Returns SET OF ``(seq, node)``"
-msgstr "Devuelve el conjunto de ``(node)``"
-
-#, fuzzy
-msgid "Sequence of the order starting from 1."
-msgstr "Valor secuencial a partir de **1**."
-
-#, fuzzy
-msgid "New ordering in reverse order."
-msgstr "No se realiza ningún pedido"
-
-#, fuzzy
-msgid ""
-"`Boost: Cuthill-McKee Ordering "
-"<https://www.boost.org/libs/graph/doc/cuthill_mckee_ordering.html>`__"
-msgstr ""
-"`Boost: algoritmo de Kruskal "
-"<https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
-
-#, fuzzy, python-format
-msgid ""
-"`Wikipedia: Cuthill-McKee Ordering "
-"<https://en.wikipedia.org/wiki/Cuthill%E2%80%93McKee_algorithm>`__"
-msgstr ""
-"`Wikipedia: algoritmo de Kruskal "
-"<https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
-
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
 "/dijkstra-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en"
@@ -5067,10 +4936,13 @@ msgstr ":doc:`components-family`"
 msgid ":doc:`ordering-family`"
 msgstr ":doc:`ordering-family`"
 
+#, fuzzy
 msgid ""
-":doc:`cuthillMckeeOrdering` - Return reverse Cuthill-McKee ordering of an"
-" undirected graph."
+":doc:`pgr_cuthillMckeeOrdering` - Return reverse Cuthill-McKee ordering "
+"of an undirected graph."
 msgstr ""
+"``pgr_edgeColoring`` — Coloración de aristas de grafos no dirigidos "
+"acíclicos"
 
 msgid ":doc:`TRSP-family`"
 msgstr ":doc:`TRSP-family`"
@@ -5693,6 +5565,9 @@ msgstr ""
 msgid "Kruskal - Family of functions"
 msgstr "Kruskal - Familia de funciones"
 
+msgid "Boost Graph Inside"
+msgstr "Adentro: Boost Graph"
+
 msgid ""
 "Kruskal's algorithm is a greedy minimum spanning tree algorithm that in "
 "each cycle finds and adds the edge of the least possible weight that "
@@ -5701,6 +5576,9 @@ msgstr ""
 "Kruskal es un ambicioso algoritmo para generar un árbol de expansión "
 "mínimo que en cada ciclo encuentra y agrega la arista del menor peso "
 "posible que conecta dos árboles en el bosque."
+
+msgid "**The main Characteristics are:**"
+msgstr "**Las características principales son:**"
 
 msgid "The total weight of all the edges in the tree or forest is minimized."
 msgstr "Se minimiza el peso total de todos los bordes del árbol o bosque."
@@ -7146,6 +7024,9 @@ msgstr ""
 msgid "The general form of a pgRouting function call is:"
 msgstr "Integración de la consulta interna a la función pgRouting:"
 
+msgid "\\ \\"
+msgstr ""
+
 msgid "pgr_<name>(`Inner queries`_, **parameters**, [ ``Optional parameters``)"
 msgstr ""
 
@@ -8509,6 +8390,9 @@ msgstr "pgr_KSP"
 msgid "``pgr_KSP`` — Yen's algorithm for K shortest paths using Dijkstra."
 msgstr "``pgr_KSP`` — Devuelve las K rutas más cortas usando Dijkstra ."
 
+msgid "Availability"
+msgstr "Disponibilidad"
+
 msgid "Version 2.1.0"
 msgstr "Versión 2.1.0"
 
@@ -8531,23 +8415,27 @@ msgstr ""
 "El algoritmo de ruteo para obtener la ruta más corta K basado en el "
 "algoritmo de Yen . \"K\" es el número de rutas más cortas deseadas."
 
+msgid "Signatures"
+msgstr "Firmas"
+
 msgid "Summary"
 msgstr "Resumen"
 
-msgid "pgr_KSP(`Edges SQL`_, **start vid**, **end vid**, **K**"
-msgstr ""
-
-msgid "[, directed] [, heap_paths])"
-msgstr ""
-
 #, fuzzy
-msgid "RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)"
+msgid "pgr_KSP(`Edges SQL`_, **start vid**, **end vid**, **K**, [**options**])"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
+
+msgid "**options:** ``[directed, heap_paths]``"
 msgstr ""
-"Devuelve el conjunto de ``(seq, path_id, path_seq, start_vid, end_vid, "
-"node, edge, cost, agg_cost)``"
+
+msgid "RETURNS SET OF |ksp-result|"
+msgstr ""
 
 msgid "OR EMPTY SET"
 msgstr ""
+
+msgid "Example"
+msgstr "Ejemplo"
 
 msgid "Get 2 paths from :math:`6` to :math:`17` on a directed graph."
 msgstr "Obteners 2 caminos desde :math:`6` hasta :math:`17` en un grafo dirigido."
@@ -10228,8 +10116,13 @@ msgstr "``node`` ascendente"
 msgid "Running time: :math:`O(V + E)`"
 msgstr "Tiempo de ejecución: :math:`O(V + E)`"
 
-msgid "pgr_articulationPoints(`Edges SQL`_) RETURNS SET OF (node) OR EMPTY SET"
-msgstr ""
+#, fuzzy
+msgid "pgr_articulationPoints(`Edges SQL`_)"
+msgstr "``pgr_articulationPoints``"
+
+#, fuzzy
+msgid "RETURNS SET OF |result-node|"
+msgstr "Devuelve el conjunto de ``(node)``"
 
 msgid "The articulation points of the graph"
 msgstr "Los puntos de articulación del grafo"
@@ -10237,7 +10130,8 @@ msgstr "Los puntos de articulación del grafo"
 msgid "Nodes in red are the articulation points."
 msgstr "Nodos en rojo son los puntos de articulación."
 
-msgid "Returns set of ``(node)``"
+#, fuzzy
+msgid "Returns set of |result-node|"
 msgstr "Devuelve el conjunto de ``(node)``"
 
 msgid ""
@@ -10772,6 +10666,9 @@ msgstr ""
 "``pgr_bellmanFord`` —Camino m+as corto usando el algoritmo de Bellman-"
 "Ford."
 
+msgid "New **experimental** signature:"
+msgstr "Nueva firma **experimental**:"
+
 msgid "``pgr_bellmanFord`` (`Combinations`_)"
 msgstr "``pgr_bellmanFord`` (`Combinaciones`_)"
 
@@ -10984,16 +10881,20 @@ msgstr "``componente`` ascendente."
 msgid "``edge`` ascending."
 msgstr "``edge`` ascendente."
 
-msgid ""
-"pgr_biconnectedComponents(`Edges SQL`_) RETURNS SET OF (seq, component, "
-"edge) OR EMPTY SET"
-msgstr ""
+#, fuzzy
+msgid "pgr_biconnectedComponents(`Edges SQL`_)"
+msgstr "pgr_connectedComponents"
+
+#, fuzzy
+msgid "RETURNS SET OF |result-component-E|"
+msgstr "Devuelve el conjunto de``(seq, component, node)``"
 
 msgid "The biconnected components of the graph"
 msgstr "Los componentes biconectados del grafo"
 
-msgid "Returns set of ``(seq, component, edge)``"
-msgstr "Devuelve el conjunto de ``(seq, component, edge)``"
+#, fuzzy
+msgid "Returns set of |result-component-E|"
+msgstr "Devuelve el conjunto de``(seq, component, node)``"
 
 msgid "``component``"
 msgstr "``component``"
@@ -11225,8 +11126,8 @@ msgid "pgr_bipartite(`Edges SQL`_)"
 msgstr "pgr_bipartite"
 
 #, fuzzy
-msgid "RETURNS SET OF (vertex_id, color_id) OR EMPTY SET"
-msgstr "Devuelve SET OF ``(vertex_id, color_id)``"
+msgid "RETURNS SET OF |result-node-color|"
+msgstr "Devuelve el conjunto de ``(node)``"
 
 msgid "When the graph is bipartite"
 msgstr "Cuando el grafo es bi-partido"
@@ -11311,57 +11212,42 @@ msgstr "Nueva función **Experimental**"
 msgid "Running time: Polynomial"
 msgstr "Tiempo de ejecución: Polinomio"
 
-msgid ""
-"pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vid**) "
-"pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vids**) "
-"pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vid**) "
-"pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vids**) "
-"pgr_boykovKolmogorov(`Edges SQL`_, `Combinations SQL`_) RETURNS SET OF "
-"(seq, edge, start_vid, end_vid, flow, residual_capacity) OR EMPTY SET"
-msgstr ""
+#, fuzzy
+msgid "pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vid**)"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
-msgid ""
-"pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vid**) RETURNS "
-"SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity) OR EMPTY "
-"SET"
+#, fuzzy
+msgid "pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vids**)"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+
+#, fuzzy
+msgid "pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vid**)"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+
+#, fuzzy
+msgid "pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vids**)"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+
+#, fuzzy
+msgid "pgr_boykovKolmogorov(`Edges SQL`_, `Combinations SQL`_)"
+msgstr "``pgr_boykovKolmogorov`` (`Combinaciones`_)"
+
+msgid "RETURNS SET OF |result-flow|"
 msgstr ""
 
 msgid "From vertex :math:`11` to vertex :math:`12`"
 msgstr "Del vértice :math:`11` al vértice :math:`12`"
 
-msgid ""
-"pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vids**) RETURNS "
-"SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity) OR EMPTY "
-"SET"
-msgstr ""
-
 msgid "From vertex :math:`11` to vertices :math:`\\{5, 10, 12\\}`"
 msgstr "Desde el vértice :math:`11` a los vértices :math:`\\{5, 10, 12\\}`"
 
-msgid ""
-"pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vid**) RETURNS "
-"SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity) OR EMPTY "
-"SET"
-msgstr ""
-
 msgid "From vertices :math:`\\{11, 3, 17\\}` to vertex :math:`12`"
 msgstr "De los vértices vertices :math:`\\{11, 3, 17\\}` al vértice :math:`12`"
-
-msgid ""
-"pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vids**) RETURNS "
-"SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity) OR EMPTY "
-"SET"
-msgstr ""
 
 msgid "From vertices :math:`\\{11, 3, 17\\}` to vertices :math:`\\{5, 10, 12\\}`"
 msgstr ""
 "De los vértices :math:`\\{11, 3, 17\\}` a los vértices :math:`\\{5, 10, "
 "12\\}`"
-
-msgid ""
-"pgr_boykovKolmogorov(`Edges SQL`_, `Combinations SQL`_) RETURNS SET OF "
-"(seq, edge, start_vid, end_vid, flow, residual_capacity) OR EMPTY SET"
-msgstr ""
 
 msgid ""
 "Using a combinations table, equivalent to calculating result from "
@@ -11551,13 +11437,19 @@ msgstr "``edge`` ascendente"
 msgid "Running time: :math:`O(E * (V + E))`"
 msgstr "Tiempo de ejecución: :math:`O(E * (V + E))`"
 
-msgid "pgr_bridges(`Edges SQL`_) RETURNS SET OF (edge) OR EMPTY SET"
-msgstr ""
+#, fuzzy
+msgid "pgr_bridges(`Edges SQL`_)"
+msgstr "pgr_bipartite"
+
+#, fuzzy
+msgid "RETURNS SET OF |result-edge|"
+msgstr "Devuelve el conjunto de ``(edge)``"
 
 msgid "The bridges of the graph"
 msgstr "Los puentes del grafo"
 
-msgid "Returns set of ``(edge)``"
+#, fuzzy
+msgid "Returns set of |result-edge|"
 msgstr "Devuelve el conjunto de ``(edge)``"
 
 msgid "Identifier of the edge that is a bridge."
@@ -11724,13 +11616,14 @@ msgid "pgr_connectedComponents(`Edges SQL`_)"
 msgstr "pgr_connectedComponents"
 
 #, fuzzy
-msgid "RETURNS SET OF (seq, component, node) OR EMPTY SET"
+msgid "RETURNS SET OF |result-component-V|"
 msgstr "Devuelve el conjunto de``(seq, component, node)``"
 
 msgid "The connected components of the graph"
 msgstr "Los componentes conectados del grafo"
 
-msgid "Returns set of ``(seq, component, node)``"
+#, fuzzy
+msgid "Returns set of |result-component-V|"
 msgstr "Devuelve el conjunto de``(seq, component, node)``"
 
 msgid "Has the value of the minimum node identifier in the component."
@@ -11849,17 +11742,15 @@ msgstr "columna ``id`` descendente cuando el tipo = ``e``"
 msgid "The pgr_contraction function has the following signature:"
 msgstr "La función pgr_contraction tiene la siguiente firma:"
 
-msgid "pgr_contraction(`Edges SQL`_, **contraction order**"
-msgstr ""
-
-msgid "[, max_cycles] [, forbidden_vertices] [, directed])"
-msgstr ""
-
 #, fuzzy
-msgid "RETURNS SETOF (type, id, contracted_vertices, source, target, cost)"
+msgid "pgr_contraction(`Edges SQL`_, **contraction order**, [**options**])"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
+
+msgid "**options:** ``[ max_cycles, forbidden_vertices, directed]``"
 msgstr ""
-"DEVOLUCION DE CONJUNTOS (type, id, contracted_vertices, source, target, "
-"cost)"
+
+msgid "RETURNS SET OF |result-contract|"
+msgstr ""
 
 msgid ""
 "Making a dead end and linear contraction in that order on an undirected "
@@ -11902,10 +11793,8 @@ msgstr ""
 "Número de veces que se realizarán las operaciones de contracción en el "
 "orden ``contraction_order``."
 
-msgid "RETURNS SETOF  (type, id, contracted_vertices, source, target, cost)"
+msgid "Returns set of  |result-contract|"
 msgstr ""
-"DEVOLUCION DE CONJUNTOS (type, id, contracted_vertices, source, target, "
-"cost)"
 
 msgid "The function returns a single row. The columns of the row are:"
 msgstr "La función devuelve una sola fila. Las columnas de la fila son:"
@@ -12500,6 +12389,116 @@ msgstr ""
 msgid ":doc:`pgr_analyzeOneWay` to analyze directionality of the edges."
 msgstr ":doc:`pgr_analyzeOneWay` para analizar la direccionalidad de los bordes."
 
+#, fuzzy
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/cuthillMckeeOrdering.html>`__ (`3.4"
+" <https://docs.pgrouting.org/3.4/en/cuthillMckeeOrdering.html>`__)"
+msgstr ""
+"**Versiones soportadas** `Última "
+"<https://docs.pgrouting.org/latest/en/reference.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/en/reference.html>`__)"
+
+#, fuzzy
+msgid "``pgr_cuthillMckeeOrdering`` - Experimental"
+msgstr "pgr_edgeColoring - Experimental"
+
+#, fuzzy
+msgid ""
+"``cuthillMckeeOrdering`` — Returns the reverse Cuthill-Mckee ordering of "
+"an undirected graphs"
+msgstr ""
+"``pgr_edgeColoring`` — Coloración de aristas de grafos no dirigidos "
+"acíclicos"
+
+msgid "Version 3.4.0"
+msgstr "Versión 3.4.0"
+
+msgid ""
+"In numerical linear algebra, the Cuthill-McKee algorithm (CM), named "
+"after Elizabeth Cuthill and James McKee, is an algorithm to permute a "
+"sparse matrix that has a symmetric sparsity pattern into a band matrix "
+"form with a small bandwidth. The reverse Cuthill-McKee algorithm (RCM) "
+"due to Alan George and Joseph Liu is the same algorithm but with the "
+"resulting index numbers reversed. In practice this generally results in "
+"less fill-in than the CM ordering when Gaussian elimination is applied."
+msgstr ""
+
+msgid ""
+"The vertices are basically assigned a breadth-first search order, except "
+"that at each step, the adjacent vertices are placed in the queue in order"
+" of increasing degree."
+msgstr ""
+
+msgid ""
+"There are 3 versions defined in the Boost Graph Library. Here, we have "
+"implemented only version 2 as it is most suitable and practical for "
+"users. In this version we don't have to provide the starting vertex in "
+"the query. Whereas, in the version 1 we have to provide the starting "
+"vertex and it gives result only for single component. Version 2 is "
+"applicable for one and more than one components as it finds the starting "
+"vertex itself using the pseudo-peripheral pair heuiristic approach among "
+"each component. Maybe in future, we will also implemenent the version 1."
+msgstr ""
+
+#, fuzzy
+msgid "The implementation is for **undirected** graphs."
+msgstr "Su implementación es solo para grafo **no dirigido**."
+
+msgid "The bandwidth minimization problems are considered NP-complete problems."
+msgstr ""
+
+#, fuzzy
+msgid "The running time complexity is: :math:`O(m log(m)|V|)`"
+msgstr "Tiempo de ejecución de Prim: :math:`O(E*log V)`"
+
+msgid "where :math:`|V|` is the number of vertices,"
+msgstr "donde :math:`|V|` es el número de vértices,"
+
+#, fuzzy
+msgid ":math:`m` is the maximum degree of the vertices in the graph."
+msgstr ":math:`d` es el grado máximo de los vértices en el grafo,"
+
+#, fuzzy
+msgid "pgr_cuthillMckeeOrdering(`Edges SQL`_)"
+msgstr "``pgr_full_version``"
+
+#, fuzzy
+msgid "RETURNS SET OF |result-node-order|"
+msgstr "Devuelve el conjunto de ``(node)``"
+
+#, fuzzy
+msgid "Graph ordering of pgRouting :doc:`sampledata`"
+msgstr "Coloración de grafos de pgRouting :doc:`sampledata`"
+
+#, fuzzy
+msgid "Returns SET OF ``(seq, node)``"
+msgstr "Devuelve el conjunto de ``(node)``"
+
+#, fuzzy
+msgid "Sequence of the order starting from 1."
+msgstr "Valor secuencial a partir de **1**."
+
+#, fuzzy
+msgid "New ordering in reverse order."
+msgstr "No se realiza ningún pedido"
+
+#, fuzzy
+msgid ""
+"`Boost: Cuthill-McKee Ordering "
+"<https://www.boost.org/libs/graph/doc/cuthill_mckee_ordering.html>`__"
+msgstr ""
+"`Boost: algoritmo de Kruskal "
+"<https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
+
+#, fuzzy, python-format
+msgid ""
+"`Wikipedia: Cuthill-McKee Ordering "
+"<https://en.wikipedia.org/wiki/Cuthill%E2%80%93McKee_algorithm>`__"
+msgstr ""
+"`Wikipedia: algoritmo de Kruskal "
+"<https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
+
 msgid ""
 "**Supported versions:** `Latest "
 "<https://docs.pgrouting.org/latest/en/pgr_dagShortestPath.html>`__ (`3.4 "
@@ -12578,46 +12577,34 @@ msgstr "El ``agg_cost`` de los valores no incluídos ``(u, v)`` es :math: `\\inf
 msgid "Running time: :math:`O(| start\\_vids | * (V + E))`"
 msgstr "Tiempo de ejecución: :math:`O(| start\\_vids | * (V + E))`"
 
-msgid ""
-"pgr_dagShortestPath(`Edges SQL`_, **start vid**,  **end vid**) "
-"pgr_dagShortestPath(`Edges SQL`_, **start vid**,  **end vids**) "
-"pgr_dagShortestPath(`Edges SQL`_, **start vids**, **end vid**) "
-"pgr_dagShortestPath(`Edges SQL`_, **start vids**, **end vids**) "
-"pgr_dagShortestPath(`Edges SQL`_, `Combinations SQL`_)"
-msgstr ""
+#, fuzzy
+msgid "pgr_dagShortestPath(`Edges SQL`_, **start vid**,  **end vid**)"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
 #, fuzzy
-msgid "RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) OR EMPTY SET"
-msgstr "Devuelve un conjunto de ``(seq, node, edge, cost, agg_cost)``"
+msgid "pgr_dagShortestPath(`Edges SQL`_, **start vid**,  **end vids**)"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
-msgid ""
-"pgr_dagShortestPath(`Edges SQL`_, **start vid**,  **end vid**) RETURNS "
-"SET OF (seq, path_seq, node, edge, cost, agg_cost) OR EMPTY SET"
-msgstr ""
+#, fuzzy
+msgid "pgr_dagShortestPath(`Edges SQL`_, **start vids**, **end vid**)"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
+
+#, fuzzy
+msgid "pgr_dagShortestPath(`Edges SQL`_, **start vids**, **end vids**)"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
+
+#, fuzzy
+msgid "pgr_dagShortestPath(`Edges SQL`_, `Combinations SQL`_)"
+msgstr "pgr_dagShortestPath(Combinaciones)"
 
 msgid "From vertex :math:`5` to vertex  :math:`11` on a **directed** graph"
 msgstr "Desde el vértice :math:`5` al vértice :math:`11` en un grafo **dirigido**"
 
-msgid ""
-"pgr_dagShortestPath(`Edges SQL`_, **start vid**,  **end vids**) RETURNS "
-"SET OF (seq, path_seq, node, edge, cost, agg_cost) OR EMPTY SET"
-msgstr ""
-
 msgid "From vertex :math:`5` to vertices :math:`\\{7, 11\\}`"
 msgstr "Desde el vértice :math:`5` a los vértices :math:`\\{ 7, 11\\}`"
 
-msgid ""
-"pgr_dagShortestPath(`Edges SQL`_, **start vids**, **end vid**) RETURNS "
-"SET OF (seq, path_seq, node, edge, cost, agg_cost) OR EMPTY SET"
-msgstr ""
-
 msgid "From vertices :math:`\\{5, 10\\}` to vertex :math:`11`"
 msgstr "Desde los vértices :math:`\\{5, 10\\}` al vértice :math:`11`"
-
-msgid ""
-"pgr_dagShortestPath(`Edges SQL`_, **start vids**, **end vids**) RETURNS "
-"SET OF (seq, path_seq, node, edge, cost, agg_cost) OR EMPTY SET"
-msgstr ""
 
 msgid ""
 "From vertices :math:`\\{5, 15\\}` to vertices :math:`\\{11, 17\\}` on an "
@@ -12626,10 +12613,9 @@ msgstr ""
 "Desde los vértices :math:`\\{5, 15\\}` a los vértices :math:`\\{11, "
 "17\\}` en un grafo **no dirigido**"
 
-msgid ""
-"pgr_dagShortestPath(`Edges SQL`_, Combinations) RETURNS SET OF (seq, "
-"path_seq, node, edge, cost, agg_cost) OR EMPTY SET"
-msgstr ""
+#, fuzzy
+msgid "pgr_dagShortestPath(`Edges SQL`_, Combinations)"
+msgstr "pgr_dagShortestPath(Combinaciones)"
 
 msgid "Resturn Columns"
 msgstr "Columnas de Resultados"
@@ -12829,23 +12815,15 @@ msgstr ""
 "Tiempo de ejecución de la Primera Búsqueda de Profundidad: :math:`O(E + "
 "V)`"
 
-msgid ""
-"pgr_depthFirstSearch(`Edges SQL`_, **Root vid** [, directed] [, "
-"max_depth]) pgr_depthFirstSearch(`Edges SQL`_, **Root vids** [, directed]"
-" [, max_depth]) RETURNS SET OF (seq, depth, start_vid, node, edge, cost, "
-"agg_cost)"
-msgstr ""
+#, fuzzy
+msgid "pgr_depthFirstSearch(`Edges SQL`_, **root vid**, [**options**])"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
-msgid ""
-"pgr_depthFirstSearch(`Edges SQL`_, **Root vid** [, directed] [, "
-"max_depth]) RETURNS SET OF (seq, depth, start_vid, node, edge, cost, "
-"agg_cost)"
-msgstr ""
+#, fuzzy
+msgid "pgr_depthFirstSearch(`Edges SQL`_, **root vids**, [**options**])"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
-msgid ""
-"pgr_depthFirstSearch(`Edges SQL`_, **Root vids** [, directed] [, "
-"max_depth]) RETURNS SET OF (seq, depth, start_vid, node, edge, cost, "
-"agg_cost)"
+msgid "**options:** ``[directed, max_depth]``"
 msgstr ""
 
 msgid "Same as `Single vertex`_ but with edges in descending order of ``id``."
@@ -12948,51 +12926,37 @@ msgstr "Cambio de firma en ``pgr_dijkstra`` (`Uno a Uno`_)"
 msgid "**Official** ``pgr_dijkstra`` (`One to One`_)"
 msgstr "**Oficial** ``pgr_dijkstra`` (`Uno a Uno`_)"
 
-msgid "Running time: :math:`O(| start\\_vids | * (V \\log V + E))`"
-msgstr "Tiempo de ejecución: :math:`O(| start\\_vids | * (V \\log V + E))`"
+#, fuzzy
+msgid "pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  , [``directed``])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
-msgid ""
-"pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  [, directed]) "
-"pgr_dijkstra(`Edges SQL`_, **start vid**, **end vids** [, directed]) "
-"pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid**  [, directed]) "
-"pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids** [, directed]) "
-"pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_ [, directed]) RETURNS "
-"(seq, path_seq [, start vid] [, end vid], node, edge, cost, agg_cost) OR "
-"EMPTY SET"
-msgstr ""
+#, fuzzy
+msgid "pgr_dijkstra(`Edges SQL`_, **start vid**, **end vids** , [``directed``])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
-msgid ""
-"pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  [, directed]) "
-"RETURNS (seq, path_seq, node, edge, cost, agg_cost) OR EMPTY SET"
-msgstr ""
+#, fuzzy
+msgid "pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid**  , [``directed``])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
-msgid ""
-"pgr_dijkstra(`Edges SQL`_, **start vid**, **end vids** [, directed]) "
-"RETURNS (seq, path_seq, end vid, node, edge, cost, agg_cost) OR EMPTY SET"
-msgstr ""
+#, fuzzy
+msgid "pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids** , [``directed``])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+
+#, fuzzy
+msgid "pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_ , [``directed``])"
+msgstr "pgr_dijkstraNear(Combinaciones)"
 
 msgid "From vertex :math:`6` to vertices :math:`\\{10, 17\\}` on a **directed**"
 msgstr ""
 "Del vértice :math:`6` a los vértices :math:`\\{10, 17\\}` en un grafo "
 "**no dirigido**"
 
-msgid ""
-"pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid** [, directed]) "
-"RETURNS (seq, path_seq, start vid, node, edge, cost, agg_cost) OR EMPTY "
-"SET"
-msgstr ""
-
-msgid ""
-"pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids** [, directed]) "
-"RETURNS (seq, path_seq, start vid, end vid, node, edge, cost, agg_cost) "
-"OR EMPTY SET"
-msgstr ""
+#, fuzzy
+msgid "pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid** , [``directed``])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 #, fuzzy
-msgid ""
-"pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_ [, directed]) RETURNS "
-"(seq, path_seq, start vid, end vid, node, edge, cost, agg_cost) OR EMPTY "
-"SET"
+msgid "RETURNS (seq, path_seq, start vid, end vid, node, edge, cost, agg_cost)"
 msgstr ""
 "Regresa ``(seq, path_seq, start_vid, end_vid, node, edge, cost, "
 "agg_cost)``"
@@ -13182,7 +13146,8 @@ msgstr "35) Usando `Muchos a Uno`_"
 msgid "36) Using `Many to Many`_"
 msgstr "36) Usando `Muchos a Muchos`_"
 
-msgid "36) Using `Combinations`_"
+#, fuzzy
+msgid "37) Using `Combinations`_"
 msgstr "36) Usando `Combinaciones`_"
 
 #, python-format
@@ -13247,30 +13212,30 @@ msgstr ""
 
 #, fuzzy
 msgid ""
-"pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vid**  [, "
-"``directed``])"
+"pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vid** , "
+"[``directed``])"
 msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 #, fuzzy
 msgid ""
-"pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vids** [, "
-"``directed``])"
+"pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vids**, "
+"[``directed``])"
 msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 #, fuzzy
 msgid ""
-"pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vid**  [, "
-"``directed``])"
+"pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vid** , "
+"[``directed``])"
 msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 #, fuzzy
 msgid ""
-"pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vids** [, "
-"``directed``])"
+"pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vids**, "
+"[``directed``])"
 msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 #, fuzzy
-msgid "pgr_dijkstraCost(`Edges SQL`_, `Combinations SQL`_ [, ``directed``])"
+msgid "pgr_dijkstraCost(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr "pgr_dijkstraNear(Combinaciones)"
 
 msgid ""
@@ -13317,7 +13282,7 @@ msgid "Using Dijkstra algorithm, calculate and return a cost matrix."
 msgstr "Utilizando el algoritmo Dijkstra, calcula y devuelve una matriz de costes."
 
 #, fuzzy
-msgid "pgr_dijkstraCostMatrix(`Edges SQL`_, **start vids** [, ``directed``])"
+msgid "pgr_dijkstraCostMatrix(`Edges SQL`_, **start vids**, [``directed``])"
 msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 msgid ""
@@ -13399,34 +13364,43 @@ msgstr "Muchos a Muchos: :math:`drt * |Starting vids|`"
 msgid "Combinations: :math:`drt * |Starting vids|`"
 msgstr "Combinaciones: :math:`drt * |Starting vids|`"
 
-msgid "pgr_dijkstraNear(`Edges SQL`_, **start vid**, **end vids**"
+#, fuzzy
+msgid ""
+"pgr_dijkstraNear(`Edges SQL`_, **start vid**, **end vids**, [**options "
+"A**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+
+#, fuzzy
+msgid ""
+"pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid** [**options "
+"A**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+
+#, fuzzy
+msgid ""
+"pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids** [**options "
+"B**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+
+#, fuzzy
+msgid "pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_ [**options B**])"
+msgstr "pgr_dijkstraNearCost(Combinaciones)"
+
+msgid "**options A:** ``[directed, cap]``"
+msgstr ""
+
+msgid "**options B:** ``[directed, cap, global]``"
+msgstr ""
+
+msgid "RETURNS SET OF |short-generic-result|"
 msgstr ""
 
 #, fuzzy
-msgid "[, directed] [, cap])"
-msgstr "En grafos dirigidos:"
+msgid "pgr_dijkstraNear(`Edges SQL`_, **start vid**, **end vids**, [**options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
-msgid "pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid**"
+msgid "**options:** ``[directed, cap]``"
 msgstr ""
-
-msgid "pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids**"
-msgstr ""
-
-msgid "[, directed] [, cap], [global])"
-msgstr ""
-
-#, fuzzy
-msgid "pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_"
-msgstr "pgr_dijkstraNear(Combinaciones)"
-
-msgid "[, directed] [, cap] [, global])"
-msgstr ""
-
-#, fuzzy
-msgid "RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)"
-msgstr ""
-"Regresa ``(seq, path_seq, start_vid, end_vid, node, edge, cost, "
-"agg_cost)``"
 
 msgid "Departing on car from vertex :math:`6` find the nearest subway station."
 msgstr ""
@@ -13455,6 +13429,10 @@ msgstr ""
 "El resultado muestra que la estación en el vértice :math:`11` es la más "
 "cercana."
 
+#, fuzzy
+msgid "pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid**, [**options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+
 msgid ""
 "Departing on a car from a subway station find the nearest **two** "
 "stations to vertex :math:`2`"
@@ -13481,6 +13459,15 @@ msgid ""
 msgstr ""
 "El resultado muestra que la estación en el vértice :math:`10` es la más "
 "cercana y la siguiente mejor es :math:`11`."
+
+#, fuzzy
+msgid ""
+"pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids**, "
+"[**options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+
+msgid "**options:** ``[directed, cap, global]``"
+msgstr ""
 
 msgid "Find the best pedestrian connection between two lines of buses"
 msgstr "Encuentra la mejor conexión peatonal entre dos líneas de autobuses"
@@ -13515,6 +13502,10 @@ msgid ""
 "Only `one` route is returned because `global` is ``true`` and `cap` is "
 "``1``"
 msgstr "Solo se devuelve `una` ruta porque `global` es ``true`` y `cap` es ``1``"
+
+#, fuzzy
+msgid "pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_, [**options**])"
+msgstr "pgr_dijkstraNearCost(Combinaciones)"
 
 msgid "Find the best car connection between all the stations of two subway lines"
 msgstr ""
@@ -13670,20 +13661,11 @@ msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 msgid "pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_, [**options B**])"
 msgstr "pgr_dijkstraNearCost(Combinaciones)"
 
-msgid "**options A:** ``[directed, cap]``"
-msgstr ""
-
-msgid "**options B:** ``[directed, cap, global]``"
-msgstr ""
-
 #, fuzzy
 msgid ""
 "pgr_dijkstraNearCost(`Edges SQL`_, **start vid**, **end vids**, "
 "[**options**])"
 msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
-
-msgid "**options:** ``[directed, cap]``"
-msgstr ""
 
 #, fuzzy
 msgid ""
@@ -13703,9 +13685,6 @@ msgid ""
 "pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vids**, "
 "[**options**])"
 msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
-
-msgid "**options:** ``[directed, cap, global]``"
-msgstr ""
 
 #, fuzzy
 msgid "pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_, [**options**])"
@@ -13784,19 +13763,14 @@ msgstr ""
 msgid "One Via"
 msgstr ""
 
-msgid "pgr_dijkstraVia(`Edges SQL`_, **via vertices**"
-msgstr ""
-
-msgid "[, directed] [, strict] [, U_turn_on_edge]) - Proposed on v2.2"
-msgstr ""
-
 #, fuzzy
-msgid "RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,"
-msgstr ""
-"Devuelve el conjunto de ``(seq, path_id, path_seq, start_vid, end_vid, "
-"node, edge, cost, agg_cost)``"
+msgid "pgr_dijkstraVia(`Edges SQL`_, **via vertices**, [**options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
-msgid "node, edge, cost, agg_cost, route_agg_cost)"
+msgid "**options:** ``[, directed, strict, U_turn_on_edge]``"
+msgstr ""
+
+msgid "RETURNS SET OF |via-result|"
 msgstr ""
 
 msgid ""
@@ -13934,30 +13908,27 @@ msgstr ""
 "costes menores o iguales al valor ``distance``. Los bordes extraídos se "
 "ajustarán al árbol de expansión correspondiente."
 
-msgid "pgr_drivingDistance(`Edges SQL`_, **Root vid**,  **distance**"
-msgstr ""
+#, fuzzy
+msgid ""
+"pgr_drivingDistance(`Edges SQL`_, **Root vid**,  **distance**, "
+"[``directed``])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 #, fuzzy
-msgid "[, directed])"
-msgstr "es dirigido"
-
-msgid "pgr_drivingDistance(`Edges SQL`_, **Root vids**, **distance**"
-msgstr ""
+msgid ""
+"pgr_drivingDistance(`Edges SQL`_, **Root vids**, **distance**, "
+"[**options**])"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
 #, fuzzy
-msgid "[, directed] [, equicost])"
+msgid "**options:** [directed, equicost]"
 msgstr "**Grafo 4: No dirigido, con costo**"
 
-#, fuzzy
-msgid "RETURNS SET OF (seq, [from_v,] node, edge, cost, agg_cost)"
-msgstr "Devuelve un conjunto de ``(seq, node, edge, cost, agg_cost)``"
+msgid "RETURNS SET OF |result-dij-dd|"
+msgstr ""
 
 msgid "Single Vertex"
 msgstr "Vértice Único"
-
-#, fuzzy
-msgid "RETURNS SET OF (seq, node, edge, cost, agg_cost)"
-msgstr "Devuelve un conjunto de ``(seq, node, edge, cost, agg_cost)``"
 
 msgid "From vertex :math:`11` for a distance of :math:`3.0`"
 msgstr "Desde el vértice :math:`11` por una distancia de :math:`3.0`"
@@ -13965,9 +13936,8 @@ msgstr "Desde el vértice :math:`11` por una distancia de :math:`3.0`"
 msgid "Multiple Vertices"
 msgstr "Múltiples Vértices"
 
-#, fuzzy
-msgid "RETURNS SET OF (seq, from_v, node, edge, cost, agg_cost)"
-msgstr "Devuelve un conjunto de ``(seq, node, edge, cost, agg_cost)``"
+msgid "RETURNS SET OF |result-dij-dd-m|"
+msgstr ""
 
 msgid ""
 "From vertices :math:`\\{11, 16\\}` for a distance of :math:`3.0` with "
@@ -14108,8 +14078,8 @@ msgid "pgr_edgeColoring(`Edges SQL`_)"
 msgstr "pgr_edgeColoring"
 
 #, fuzzy
-msgid "RETURNS SET OF (edge_id, color_id) OR EMPTY SET"
-msgstr "Devuelve SET OF ``((edge_id, color_id)``"
+msgid "RETURNS SET OF |result-edge-color|"
+msgstr "Devuelve el conjunto de ``(edge)``"
 
 msgid "Graph coloring of pgRouting :doc:`sampledata`"
 msgstr "Coloración de grafos de pgRouting :doc:`sampledata`"
@@ -14188,47 +14158,48 @@ msgstr "El gráfico puede dirigido o no."
 msgid "Uses :doc:`pgr_boykovKolmogorov` to calculate the paths."
 msgstr "Utiliza :doc:`pgr_boykovKolmogorov` para calcular las rutas."
 
-msgid "pgr_edgeDisjointPaths(`Edges SQL`_, **start vid**, **end vid**"
-msgstr ""
-
-msgid "pgr_edgeDisjointPaths(`Edges SQL`_, **start vid**, **end vids**"
-msgstr ""
-
-msgid "pgr_edgeDisjointPaths(`Edges SQL`_, **start vids**, **end vid**"
-msgstr ""
-
-msgid "pgr_edgeDisjointPaths(`Edges SQL`_, **start vids**, **end vids**"
-msgstr ""
-
 #, fuzzy
-msgid "pgr_edgeDisjointPaths(`Edges SQL`_, `Combinations SQL`_"
-msgstr "pgr_edgeDisjointPaths(Combinaciones)"
+msgid ""
+"pgr_edgeDisjointPaths(`Edges SQL`_, **start vid**, **end vid**, "
+"[``directed``])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 #, fuzzy
 msgid ""
-"RETURNS (seq, path_id, path_seq, [start_vid,] [end_vid,] node, edge, "
-"cost, agg_cost)"
-msgstr ""
-"Devuelve el conjunto de ``(seq, path_id, path_seq, start_vid, end_vid, "
-"node, edge, cost, agg_cost)``"
+"pgr_edgeDisjointPaths(`Edges SQL`_, **start vid**, **end vids**, "
+"[``directed``])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 #, fuzzy
-msgid "RETURNS (seq, path_id, path_seq, node, edge, cost, agg_cost)"
-msgstr ""
-"Devuelve el conjunto de ``(seq, path_id, path_seq, start_vid, end_vid, "
-"node, edge, cost, agg_cost)``"
+msgid ""
+"pgr_edgeDisjointPaths(`Edges SQL`_, **start vids**, **end vid**, "
+"[``directed``])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 #, fuzzy
-msgid "RETURNS (seq, path_id, path_seq, end_vid, node, edge, cost, agg_cost)"
-msgstr ""
-"Devuelve el conjunto de ``(seq, path_id, path_seq, start_vid, end_vid, "
-"node, edge, cost, agg_cost)``"
+msgid ""
+"pgr_edgeDisjointPaths(`Edges SQL`_, **start vids**, **end vids**, "
+"[``directed``])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 #, fuzzy
-msgid "RETURNS (seq, path_id, path_seq, start_vid, node, edge, cost, agg_cost)"
+msgid "pgr_edgeDisjointPaths(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
+msgstr "pgr_dijkstraNear(Combinaciones)"
+
+msgid "RETURNS SET OF |result-disjoint|"
 msgstr ""
-"Devuelve el conjunto de ``(seq, path_id, path_seq, start_vid, end_vid, "
-"node, edge, cost, agg_cost)``"
+
+msgid "RETURNS SET OF |result-disjoint-1-1|"
+msgstr ""
+
+msgid "RETURNS SET OF |result-disjoint-1-m|"
+msgstr ""
+
+msgid "RETURNS SET OF |result-disjoint-m-1|"
+msgstr ""
+
+msgid "RETURNS SET OF |result-disjoint-m-m|"
+msgstr ""
 
 msgid ""
 "Using a combinations table, equivalent to calculating result from "
@@ -15450,14 +15421,19 @@ msgstr "El algoritmo no considera los costos transversales en los cálculos."
 msgid "Running time: :math:`O(|V|)`"
 msgstr "Tiempo de ejecución: :math:`O(|V|)`"
 
-msgid "pgr_isPlanar(`Edges SQL`) RETURNS BOOLEAN"
+#, fuzzy
+msgid "pgr_isPlanar(`Edges SQL`)"
+msgstr "pgr_bipartite"
+
+msgid "RETURNS ``BOOLEAN``"
 msgstr ""
 
 msgid "Returns a boolean ``(pgr_isplanar)``"
 msgstr "Devuelve un valor boolean ``(pgr_isplanar)``"
 
-msgid "**pgr_isplanar**"
-msgstr "**pgr_isplanar**"
+#, fuzzy
+msgid "``pgr_isplanar``"
+msgstr "pgr_isPlanar"
 
 msgid "`true` when the graph is planar."
 msgstr "`true` cuando el grafo es planar."
@@ -15592,7 +15568,11 @@ msgstr ""
 msgid "EMPTY SET is returned when there are no edges in the graph."
 msgstr "EMPTY SET es regresado cuando no hay aristas en el grafo."
 
-msgid "pgr_kruskal(`Edges SQL`_) RETURNS SET OF (edge, cost) OR EMPTY SET"
+#, fuzzy
+msgid "pgr_kruskal(`Edges SQL`_)"
+msgstr "``pgr_kruskal``"
+
+msgid "RETURNS SET OF |result-mst|"
 msgstr ""
 
 msgid "Minimum spanning forest"
@@ -15641,26 +15621,16 @@ msgstr ""
 msgid "Breath First Search Running time: :math:`O(E + V)`"
 msgstr "Tiempo de ejecución de la Primera Búsqueda de Anchura: :math:`O(E + V)`"
 
-msgid ""
-"pgr_kruskalBFS(`Edges SQL`_, **Root vid** [, max_depth]) "
-"pgr_kruskalBFS(`Edges SQL`_, **Root vids** [, max_depth]) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
-msgstr ""
+#, fuzzy
+msgid "pgr_kruskalBFS(`Edges SQL`_, **root vid**, [``max_depth``])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 #, fuzzy
-msgid ""
-"pgr_kruskalBFS(`Edges SQL`_, **Root vid** [, max_depth]) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
-msgstr "Regresa ``SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)``"
+msgid "pgr_kruskalBFS(`Edges SQL`_, **root vids**, [``max_depth``])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 msgid "The Minimum Spanning Tree having as root vertex :math:`6`"
 msgstr "El Árbol de Expansión Mínimo que tiene como vértice raíz :math:`6`"
-
-#, fuzzy
-msgid ""
-"pgr_kruskalBFS(`Edges SQL`_, **Root vids** [, max_depth]) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
-msgstr "Regresa ``SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)``"
 
 msgid ""
 "The Minimum Spanning Tree starting on vertices :math:`\\{9, 6\\}` with "
@@ -15709,17 +15679,13 @@ msgstr ""
 msgid "Depth First Search running time: :math:`O(E + V)`"
 msgstr "Primera Búsqueda de Profundidad, tiempo de ejecución: :math:`O(E + V)`"
 
-msgid ""
-"pgr_kruskalDD(`Edges SQL`_, **Root vid**, **distance**) "
-"pgr_kruskalDD(`Edges SQL`_, **Root vids**, **distance**) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
-msgstr ""
+#, fuzzy
+msgid "pgr_kruskalDD(`Edges SQL`_, **root vid**, **distance**)"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
 #, fuzzy
-msgid ""
-"pgr_kruskalDD(`Edges SQL`_, **Root vid**, **distance**) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
-msgstr "Regresa ``SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)``"
+msgid "pgr_kruskalDD(`Edges SQL`_, **root vids**, **distance**)"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
 msgid ""
 "The Minimum Spanning Tree starting on vertex :math:`6` with "
@@ -15727,12 +15693,6 @@ msgid ""
 msgstr ""
 "El mínimo árbol de expansión que comienza en el vértice:math:`6` con "
 ":math:`distance \\leq 3.5`"
-
-#, fuzzy
-msgid ""
-"pgr_kruskalDD(`Edges SQL`_, **Root vids**, **distance**) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
-msgstr "Regresa ``SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)``"
 
 msgid ""
 "The Minimum Spanning Tree starting on vertices :math:`\\{9, 6\\}` with "
@@ -15781,23 +15741,13 @@ msgstr ""
 "Los nodos de árbol devueltos desde un vértice raíz están en el orden de "
 "Primera Búsqueda de Profundidad"
 
-msgid ""
-"pgr_kruskalDFS(`Edges SQL`_, **Root vid** [, max_depth]) "
-"pgr_kruskalDFS(`Edges SQL`_, **Root vids** [, max_depth]) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
-msgstr ""
+#, fuzzy
+msgid "pgr_kruskalDFS(`Edges SQL`_, **root vid**, [``max_depth``])"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
 #, fuzzy
-msgid ""
-"pgr_kruskalDFS(`Edges SQL`_, **Root vid** [, max_depth]) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
-msgstr "Regresa ``SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)``"
-
-#, fuzzy
-msgid ""
-"pgr_kruskalDFS(`Edges SQL`_, **Root vids** [, max_depth]) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
-msgstr "Regresa ``SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)``"
+msgid "pgr_kruskalDFS(`Edges SQL`_, **root vids**, [``max_depth``])"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
 msgid ""
 "**Supported versions:** `Latest "
@@ -15852,16 +15802,16 @@ msgstr ""
 msgid "Running time: :math:`O((V+E)log(V+E))`"
 msgstr "Tiempo de ejecución: :math:`O((V+E)log(V+E))`"
 
-msgid ""
-"pgr_lengauerTarjanDominatorTree(`Edges SQL`_, **root vertex**) RETURNS "
-"SET OF (seq, vertex_id, idom) OR EMPTY SET"
-msgstr ""
+#, fuzzy
+msgid "pgr_lengauerTarjanDominatorTree(`Edges SQL`_, **root vertex**)"
+msgstr "pgr_lengauerTarjanDominatorTree"
+
+#, fuzzy
+msgid "RETURNS SET OF |result-idom|"
+msgstr "Devuelve el conjunto de ``(edge)``"
 
 msgid "The dominator tree with root vertex :math:`5`"
 msgstr "El árbol dominante con vértice raíz :math:`5`"
-
-msgid "**Edges SQL**"
-msgstr "**SQL de aristas**"
 
 msgid "SQL query as described above."
 msgstr "Consulta SQL como se describió anteriormente."
@@ -15872,14 +15822,12 @@ msgstr "**vértice raíz**"
 msgid "Returns set of ``(seq, vertex_id, idom)``"
 msgstr "Devuelve el conjunto de ``(seq, vertex_id, idom)``"
 
-msgid "**vertex_id**"
-msgstr "**vertex_id**"
-
 msgid "Identifier of vertex ."
 msgstr "Identificador de vértice."
 
-msgid "**idom**"
-msgstr "**idom**"
+#, fuzzy
+msgid "``idom``"
+msgstr "``id``"
 
 msgid "Immediate dominator of vertex."
 msgstr "Dominador inmediato del vértice."
@@ -15950,9 +15898,11 @@ msgstr ""
 "Dos vértices de L(G) son adyacentes si y sólo si sus aristas "
 "correspondientes comparten un punto final común en G."
 
-msgid ""
-"pgr_lineGraph(`Edges SQL`_ [, directed]) RETURNS SET OF (seq, source, "
-"target, cost, reverse_cost) OR EMPTY SET"
+#, fuzzy
+msgid "pgr_lineGraph(`Edges SQL`_, [``directed``])"
+msgstr "pgr_dijkstraNear(Combinaciones)"
+
+msgid "RETURNS SET OF |result-lineg|"
 msgstr ""
 
 msgid "For a **directed** graph"
@@ -16091,9 +16041,11 @@ msgstr ""
 msgid "Running time: TBD"
 msgstr "Tiempo de ejecución: TBD"
 
-msgid ""
-"pgr_lineGraphFull(`Edges SQL`_) RETURNS SET OF (seq, source, target, "
-"cost, edge) OR EMPTY SET"
+#, fuzzy
+msgid "pgr_lineGraphFull(`Edges SQL`_)"
+msgstr "pgr_lineGraphFull"
+
+msgid "RETURNS SET OF |result-linegf|"
 msgstr ""
 
 msgid "Full line graph of subgraph of edges :math:`\\{4, 7, 8, 10\\}`"
@@ -16355,10 +16307,12 @@ msgid "The algorithm does not considers geometric topology in the calculations."
 msgstr "El algoritmo no considera la topología geométrica en los cálculos."
 
 #, fuzzy
-msgid ""
-"pgr_makeConnected(`Edges SQL`_) RETURNS SET OF (seq, start_vid, end_vid) "
-"OR EMPTY SET"
-msgstr "Devuelve el conjunto de ``(seq, start_vid, end_vid)``"
+msgid "pgr_makeConnected(`Edges SQL`_)"
+msgstr "pgr_connectedComponents"
+
+#, fuzzy
+msgid "RETURNS SET OF |result-component-make|"
+msgstr "Devuelve el conjunto de``(seq, component, node)``"
 
 msgid ""
 "Query done on :doc:`sampledata` network gives the list of edges that are "
@@ -16367,8 +16321,9 @@ msgstr ""
 "La consulta realizada en la red de :doc:`sampledata` proporciona la lista"
 " de aristas que se necesitan en el grafo para conectarlo."
 
-msgid "Returns set of ``(seq, start_vid, end_vid)``"
-msgstr "Devuelve el conjunto de ``(seq, start_vid, end_vid)``"
+#, fuzzy
+msgid "Returns set of |result-component-make|"
+msgstr "Devuelve el conjunto de``(seq, component, node)``"
 
 msgid "https://www.boost.org/libs/graph/doc/make_connected.html"
 msgstr "https://www.boost.org/libs/graph/doc/make_connected.html"
@@ -16450,8 +16405,9 @@ msgstr "Tiempo de ejecución: :math:`O( E*V * \\alpha(E,V))`"
 msgid ":math:`\\alpha(E,V)` is the inverse of the `Ackermann function`_."
 msgstr ":math:`\\alpha(E,V)` es inverso a `Ackermann function`_."
 
-msgid "pgr_maxCardinalityMatch(`Edges SQL`_) RETURNS SET OF (edge) OR EMPTY SET"
-msgstr ""
+#, fuzzy
+msgid "pgr_maxCardinalityMatch(`Edges SQL`_)"
+msgstr "pgr_maximumcardinalitymatching"
 
 msgid "Using all edges."
 msgstr ""
@@ -16552,26 +16508,27 @@ msgstr "Use el algoritmo :doc:`pgr_pushRelabel <pgr_pushRelabel>` ."
 msgid "Running time: :math:`O( V ^ 3)`"
 msgstr "Tiempo de ejecución: :math:`O( V ^ 3)`"
 
-msgid ""
-"pgr_maxFlow(`Edges SQL`_, **start vid**, **end vid**) pgr_maxFlow(`Edges "
-"SQL`_, **start vid**, **end vids**) pgr_maxFlow(`Edges SQL`_, **start "
-"vids**, **end vid**) pgr_maxFlow(`Edges SQL`_, **start vids**, **end "
-"vids**) pgr_maxFlow(`Edges SQL`_, `Combinations SQL`_) RETURNS BIGINT"
-msgstr ""
+#, fuzzy
+msgid "pgr_maxFlow(`Edges SQL`_, **start vid**, **end vid**)"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
-msgid "pgr_maxFlow(`Edges SQL`_, **start vid**, **end vid**) RETURNS BIGINT"
-msgstr ""
+#, fuzzy
+msgid "pgr_maxFlow(`Edges SQL`_, **start vid**, **end vids**)"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
-msgid "pgr_maxFlow(`Edges SQL`_, **start vid**, **end vids**) RETURNS BIGINT"
-msgstr ""
+#, fuzzy
+msgid "pgr_maxFlow(`Edges SQL`_, **start vids**, **end vid**)"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
-msgid "pgr_maxFlow(`Edges SQL`_, **start vids**, **end vid**) RETURNS BIGINT"
-msgstr ""
+#, fuzzy
+msgid "pgr_maxFlow(`Edges SQL`_, **start vids**, **end vids**)"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
-msgid "pgr_maxFlow(`Edges SQL`_, **start vids**, **end vids**) RETURNS BIGINT"
-msgstr ""
+#, fuzzy
+msgid "pgr_maxFlow(`Edges SQL`_, `Combinations SQL`_)"
+msgstr "``pgr_maxFlow`` (`Combinaciones`_)"
 
-msgid "pgr_maxFlow(`Edges SQL`_, `Combinations SQL`_) RETURNS BIGINT"
+msgid "RETURNS ``BIGINT``"
 msgstr ""
 
 msgid "Maximum flow possible from the source(s) to the target(s)"
@@ -16642,42 +16599,27 @@ msgstr ""
 "casos de la vida reales, la cantidad de iteraciones es mucho menor que "
 ":math:`U`."
 
-msgid ""
-"pgr_maxFlowMinCost(`Edges SQL`_, **start vid**, **end vid**) "
-"pgr_maxFlowMinCost(`Edges SQL`_, **start vid**, **end vids**) "
-"pgr_maxFlowMinCost(`Edges SQL`_, **start vids**, **end vid**) "
-"pgr_maxFlowMinCost(`Edges SQL`_, **start vids**, **end vids**) "
-"pgr_maxFlowMinCost(`Edges SQL`_, `Combinations SQL`_) RETURNS (seq, edge,"
-" source, target, flow, residual_capacity, cost, agg_cost) OR EMPTY SET"
-msgstr ""
+#, fuzzy
+msgid "pgr_maxFlowMinCost(`Edges SQL`_, **start vid**, **end vid**)"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
-msgid ""
-"pgr_maxFlowMinCost(`Edges SQL`_, **start vid**, **end vid**) RETURNS "
-"(seq, edge, source, target, flow, residual_capacity, cost, agg_cost) OR "
-"EMPTY SET"
-msgstr ""
+#, fuzzy
+msgid "pgr_maxFlowMinCost(`Edges SQL`_, **start vid**, **end vids**)"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
-msgid ""
-"pgr_maxFlowMinCost(`Edges SQL`_, **start vid**, **end vids**) RETURNS "
-"(seq, edge, source, target, flow, residual_capacity, cost, agg_cost) OR "
-"EMPTY SET"
-msgstr ""
+#, fuzzy
+msgid "pgr_maxFlowMinCost(`Edges SQL`_, **start vids**, **end vid**)"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
-msgid ""
-"pgr_maxFlowMinCost(`Edges SQL`_, **start vids**, **end vid**) RETURNS "
-"(seq, edge, source, target, flow, residual_capacity, cost, agg_cost) OR "
-"EMPTY SET"
-msgstr ""
+#, fuzzy
+msgid "pgr_maxFlowMinCost(`Edges SQL`_, **start vids**, **end vids**)"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
-msgid ""
-"pgr_maxFlowMinCost(`Edges SQL`_, **start vids**, **end vids**) RETURNS "
-"(seq, edge, source, target, flow, residual_capacity, cost, agg_cost) OR "
-"EMPTY SET"
-msgstr ""
+#, fuzzy
+msgid "pgr_maxFlowMinCost(`Edges SQL`_, `Combinations SQL`_)"
+msgstr "``pgr_maxFlowMinCost`` (`Combinaciones`_)"
 
-msgid ""
-"pgr_maxFlowMinCost(`Edges SQL`_, `Combinations SQL`_) RETURNS (seq, edge,"
-" source, target, flow, residual_capacity, cost, agg_cost) OR EMPTY SET"
+msgid "RETURNS SET OF |result-flow-mincost|"
 msgstr ""
 
 msgid "https://www.boost.org/libs/graph/doc/successive_shortest_path_nonnegative_weights.html"
@@ -16726,35 +16668,27 @@ msgstr "Cuando el flujo máximo es 0 entonces no hay flujo y se devuelve un **0*
 msgid "Uses :doc:`pgr_maxFlowMinCost`."
 msgstr "Usa :doc:`pgr_maxFlowMinCost`."
 
-msgid ""
-"pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vid**, **end vid**) "
-"pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vid**, **end vids**) "
-"pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vids**, **end vid**) "
-"pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vids**, **end vids**) "
-"pgr_maxFlowMinCost_Cost(`Edges SQL`_, `Combinations SQL`_) RETURNS FLOAT"
-msgstr ""
+#, fuzzy
+msgid "pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vid**, **end vid**)"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
-msgid ""
-"pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vid**, **end vid**) RETURNS"
-" FLOAT"
-msgstr ""
+#, fuzzy
+msgid "pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vid**, **end vids**)"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
-msgid ""
-"pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vid**, **end vids**) "
-"RETURNS FLOAT"
-msgstr ""
+#, fuzzy
+msgid "pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vids**, **end vid**)"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
-msgid ""
-"pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vids**, **end vid**) "
-"RETURNS FLOAT"
-msgstr ""
+#, fuzzy
+msgid "pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vids**, **end vids**)"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
-msgid ""
-"pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vids**, **end vids**) "
-"RETURNS FLOAT"
-msgstr ""
+#, fuzzy
+msgid "pgr_maxFlowMinCost_Cost(`Edges SQL`_, `Combinations SQL`_)"
+msgstr "``pgr_maxFlowMinCost_Cost`` (`Combinaciones`_)"
 
-msgid "pgr_maxFlowMinCost_Cost(`Edges SQL`_, `Combinations SQL`_) RETURNS FLOAT"
+msgid "RETURNS FLOAT"
 msgstr ""
 
 msgid "Minimum Cost Maximum Flow possible from the source(s) to the target(s)"
@@ -17425,8 +17359,9 @@ msgstr ""
 msgid "Prim's running time: :math:`O(E * log V)`"
 msgstr "Tiempo de ejecución de Prim: :math:`O(E*log V)`"
 
-msgid "pgr_prim(`Edges SQL`_) RETURNS SET OF (edge, cost) OR EMPTY SET"
-msgstr ""
+#, fuzzy
+msgid "pgr_prim(`Edges SQL`_)"
+msgstr "pgr_edgeColoring"
 
 msgid "Minimum spanning forest of a subgraph"
 msgstr "Bosque de Expansión Mínimo de un subgrafo"
@@ -17473,23 +17408,13 @@ msgstr ""
 "Primera Búsqueda de Respiración del Árbol de Expansión Mínimo creado con "
 "el algoritmo de Prim."
 
-msgid ""
-"pgr_primBFS(`Edges SQL`_, **Root vid** [, max_depth]) pgr_primBFS(`Edges "
-"SQL`_, **Root vids** [, max_depth]) RETURNS SET OF (seq, depth, "
-"start_vid, node, edge, cost, agg_cost)"
-msgstr ""
+#, fuzzy
+msgid "pgr_primBFS(`Edges SQL`_, **root vid**, [``max_depth``])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 #, fuzzy
-msgid ""
-"pgr_primBFS(`Edges SQL`_, **Root vid** [, max_depth]) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
-msgstr "Regresa ``SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)``"
-
-#, fuzzy
-msgid ""
-"pgr_primBFS(`Edges SQL`_, **Root vids** [, max_depth]) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
-msgstr "Regresa ``SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)``"
+msgid "pgr_primBFS(`Edges SQL`_, **root vids**, [``max_depth``])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 msgid ""
 "**Supported versions:** `Latest "
@@ -17523,23 +17448,13 @@ msgstr ""
 "agregados menores o iguales que el valor de la **Distancia** desde un "
 "vértice (o vértices) raíz dentro del árbol de expansión mínimo calculado."
 
-msgid ""
-"pgr_primDD(`Edges SQL`_, **Root vid**, **distance**) pgr_primDD(`Edges "
-"SQL`_, **Root vids**, **distance**) RETURNS SET OF (seq, depth, "
-"start_vid, node, edge, cost, agg_cost)"
-msgstr ""
+#, fuzzy
+msgid "pgr_primDD(`Edges SQL`_, **root vid**, **distance**)"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
 #, fuzzy
-msgid ""
-"pgr_primDD(`Edges SQL`_, **Root vid**, **distance**) RETURNS SET OF (seq,"
-" depth, start_vid, node, edge, cost, agg_cost)"
-msgstr "Regresa ``SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)``"
-
-#, fuzzy
-msgid ""
-"pgr_primDD(`Edges SQL`_, **Root vids**, **distance**) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
-msgstr "Regresa ``SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)``"
+msgid "pgr_primDD(`Edges SQL`_, **root vids**, **distance**)"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
 msgid ""
 "**Supported versions:** `Latest "
@@ -17576,23 +17491,13 @@ msgstr ""
 "Búsqueda de Profundidad del Árbol de Expansión Mínima creado utilizando "
 "el algoritmo de Prim."
 
-msgid ""
-"pgr_primDFS(`Edges SQL`_, **Root vid** [, max_depth]) pgr_primDFS(`Edges "
-"SQL`_, **Root vids** [, max_depth]) RETURNS SET OF (seq, depth, "
-"start_vid, node, edge, cost, agg_cost)"
-msgstr ""
+#, fuzzy
+msgid "pgr_primDFS(`Edges SQL`_, **root vid**, [``max_depth``])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 #, fuzzy
-msgid ""
-"pgr_primDFS(`Edges SQL`_, **Root vid** [, max_depth]) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
-msgstr "Regresa ``SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)``"
-
-#, fuzzy
-msgid ""
-"pgr_primDFS(`Edges SQL`_, **Root vids** [, max_depth]) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
-msgstr "Regresa ``SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)``"
+msgid "pgr_primDFS(`Edges SQL`_, **root vids**, [``max_depth``])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 msgid ""
 "**Supported versions:** `Latest "
@@ -17642,39 +17547,25 @@ msgstr "``pgr_pushRelabel`` (`Combinaciones`_)"
 msgid "Renamed from ``pgr_maxFlowPushRelabel``"
 msgstr "Renombrado de ``pgr_maxFlowPushRelabel``"
 
-msgid ""
-"pgr_pushRelabel(`Edges SQL`_, **start vid**, **end vid**) "
-"pgr_pushRelabel(`Edges SQL`_, **start vid**, **end vids**) "
-"pgr_pushRelabel(`Edges SQL`_, **start vids**, **end vid**) "
-"pgr_pushRelabel(`Edges SQL`_, **start vids**, **end vids**) "
-"pgr_pushRelabel(`Edges SQL`_, `Combinations SQL`_) RETURNS SET OF (seq, "
-"edge, start_vid, end_vid, flow, residual_capacity) OR EMPTY SET"
-msgstr ""
+#, fuzzy
+msgid "pgr_pushRelabel(`Edges SQL`_, **start vid**, **end vid**)"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
-msgid ""
-"pgr_pushRelabel(`Edges SQL`_, **start vid**, **end vid**) RETURNS SET OF "
-"(seq, edge, start_vid, end_vid, flow, residual_capacity) OR EMPTY SET"
-msgstr ""
+#, fuzzy
+msgid "pgr_pushRelabel(`Edges SQL`_, **start vid**, **end vids**)"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
-msgid ""
-"pgr_pushRelabel(`Edges SQL`_, **start vid**, **end vids**) RETURNS SET OF"
-" (seq, edge, start_vid, end_vid, flow, residual_capacity) OR EMPTY SET"
-msgstr ""
+#, fuzzy
+msgid "pgr_pushRelabel(`Edges SQL`_, **start vids**, **end vid**)"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
-msgid ""
-"pgr_pushRelabel(`Edges SQL`_, **start vids**, **end vid**) RETURNS SET OF"
-" (seq, edge, start_vid, end_vid, flow, residual_capacity) OR EMPTY SET"
-msgstr ""
+#, fuzzy
+msgid "pgr_pushRelabel(`Edges SQL`_, **start vids**, **end vids**)"
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
-msgid ""
-"pgr_pushRelabel(`Edges SQL`_, **start vids**, **end vids**) RETURNS SET "
-"OF (seq, edge, start_vid, end_vid, flow, residual_capacity) OR EMPTY SET"
-msgstr ""
-
-msgid ""
-"pgr_pushRelabel(`Edges SQL`_, `Combinations SQL`_) RETURNS SET OF (seq, "
-"edge, start_vid, end_vid, flow, residual_capacity) OR EMPTY SET"
-msgstr ""
+#, fuzzy
+msgid "pgr_pushRelabel(`Edges SQL`_, `Combinations SQL`_)"
+msgstr "``pgr_pushRelabel`` (`Combinaciones`_)"
 
 msgid ""
 "**Supported versions:** `Latest "
@@ -17793,6 +17684,10 @@ msgstr ""
 "``pgr_stoerWagner`` — El corte mínimo del grafo usando el algoritmo "
 "Stoer-Wagner."
 
+#, fuzzy
+msgid "Version 3.0"
+msgstr "Versión 3.4.0"
+
 msgid ""
 "In graph theory, the Stoer–Wagner algorithm is a recursive algorithm to "
 "solve the minimum cut problem in undirected weighted graphs with non-"
@@ -17861,10 +17756,11 @@ msgid "Running time: :math:`O(V*E + V^2*log V)`."
 msgstr "Tiempo de ejecución: :math:`O(V*E + V^2*log V)`."
 
 #, fuzzy
-msgid ""
-"pgr_stoerWagner(`Edges SQL`_) RETURNS SET OF (seq, edge, cost, mincut) OR"
-" EMPTY SET"
-msgstr "Devuelve conjunto de ``(seq, edge, cost, mincut)``"
+msgid "pgr_stoerWagner(`Edges SQL`_)"
+msgstr "pgr_stoerWagner"
+
+msgid "RETURNS SET OF |result-mincut|"
+msgstr ""
 
 msgid "min cut of the main subgraph"
 msgstr "corte mínimo de el subgrafo principal"
@@ -17946,10 +17842,9 @@ msgstr "Funciona paragrafos **dirigidos**."
 msgid "Components are described by vertices identifiers."
 msgstr "Los componentes se describen mediante identificadores de vértices."
 
-msgid ""
-"pgr_strongComponents(`Edges SQL`_) RETURNS SET OF (seq, component, node) "
-"OR EMPTY SET"
-msgstr ""
+#, fuzzy
+msgid "pgr_strongComponents(`Edges SQL`_)"
+msgstr "pgr_connectedComponents"
 
 msgid "The strong components of the graph"
 msgstr "Los componentes fuertes del grafo"
@@ -18013,16 +17908,18 @@ msgstr ""
 msgid "The returned values are ordered in topological order:"
 msgstr "Los valores devueltos se ordenan en orden topológico:"
 
-msgid ""
-"pgr_topologicalSort(`Edges SQL`_) RETURNS SET OF (seq, sorted_v) OR EMPTY"
-" SET"
+#, fuzzy
+msgid "pgr_topologicalSort(`Edges SQL`_)"
+msgstr "pgr_topologicalSort"
+
+msgid "RETURNS SET OF |result-toposort|"
 msgstr ""
 
 msgid "Topologically sorting the graph"
 msgstr ""
 
-msgid "Returns set of ``(seq, sorted_v)``"
-msgstr "Devuelve conjunto de ``(seq, sorted_v)``"
+msgid "Returns set of |result-toposort|"
+msgstr ""
 
 msgid "Sequential value starting from :math:`1`"
 msgstr "Valor secuencial a partir de :math:`1`"
@@ -18093,7 +17990,11 @@ msgstr "Tiempo de ejecución: :math:`O(|V||E|)`"
 msgid "The pgr_transitiveClosure function has the following signature:"
 msgstr "La función pgr_transitiveClosure tiene la siguiente firma:"
 
-msgid "pgr_transitiveClosure(`Edges SQL`_) RETURNS SETOF (seq, vid, target_array)"
+#, fuzzy
+msgid "pgr_transitiveClosure(`Edges SQL`_)"
+msgstr "pgr_transitiveClosure"
+
+msgid "RETURNS SETOF |result-closure|"
 msgstr ""
 
 msgid "Rechability of a subgraph"
@@ -19103,6 +19004,12 @@ msgstr ""
 msgid "From point :math:`1` and vertex :math:`6` to point :math:`3`"
 msgstr "Desde el punto :math:`1` y el vértice :math:`6` al punto :math:`3`"
 
+#, fuzzy
+msgid "RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)"
+msgstr ""
+"Regresa ``(seq, path_seq, start_vid, end_vid, node, edge, cost, "
+"agg_cost)``"
+
 msgid ""
 "From point :math:`1` and vertex :math:`6`  to point :math:`3` and vertex "
 ":math:`1`"
@@ -19277,6 +19184,9 @@ msgid ""
 msgstr ""
 "Para fines de optimización, se omite cualquier valor duplicado en "
 "`start_vids` o `end_vids` ."
+
+msgid "Running time: :math:`O(| start\\_vids | * (V \\log V + E))`"
+msgstr "Tiempo de ejecución: :math:`O(| start\\_vids | * (V \\log V + E))`"
 
 msgid "pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vid**, **end vid**"
 msgstr ""
@@ -19507,6 +19417,10 @@ msgstr ""
 msgid "RETURNS SET OF (seq, [start_vid,] node, edge, cost, agg_cost)"
 msgstr "Regresa vonjunto de ``(seq, [start_vid,] node, edge, cost, agg_cost)``"
 
+#, fuzzy
+msgid "RETURNS SET OF (seq, node, edge, cost, agg_cost)"
+msgstr "Devuelve un conjunto de ``(seq, node, edge, cost, agg_cost)``"
+
 msgid ""
 "Right side driving topology, from point :math:`1` within a distance of "
 ":math:`3.3` with details."
@@ -19613,6 +19527,12 @@ msgstr ""
 msgid "[, directed] [, heap_paths] [, driving_side] [, details])"
 msgstr ""
 
+#, fuzzy
+msgid "RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)"
+msgstr ""
+"Devuelve el conjunto de ``(seq, path_id, path_seq, start_vid, end_vid, "
+"node, edge, cost, agg_cost)``"
+
 msgid "Get 2 paths from Point :math:`1` to point :math:`2` on a directed graph."
 msgstr ""
 "Obtener 2 rutas desde el punto :math:`1` al punto :math:`2` en un grafo "
@@ -19696,6 +19616,15 @@ msgid "pgr_withPointsVia(`Edges SQL`_, `Points SQL`_, **via vertices**"
 msgstr ""
 
 msgid "[, directed] [, strict] [, U_turn_on_edge]) - Proposed on v3.4"
+msgstr ""
+
+#, fuzzy
+msgid "RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,"
+msgstr ""
+"Devuelve el conjunto de ``(seq, path_id, path_seq, start_vid, end_vid, "
+"node, edge, cost, agg_cost)``"
+
+msgid "node, edge, cost, agg_cost, route_agg_cost)"
 msgstr ""
 
 msgid ""

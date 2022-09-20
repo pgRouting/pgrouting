@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-20 13:54+0000\n"
+"POT-Creation-Date: 2022-09-20 23:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3767,115 +3767,6 @@ msgid ":doc:`TSP-family`"
 msgstr ""
 
 msgid ""
-"**Supported versions:** `Latest "
-"<https://docs.pgrouting.org/latest/en/cuthillMckeeOrdering.html>`__ (`3.4"
-" <https://docs.pgrouting.org/3.4/en/cuthillMckeeOrdering.html>`__)"
-msgstr ""
-
-msgid "cuthillMckeeOrdering - Experimental"
-msgstr ""
-
-msgid ""
-"``cuthillMckeeOrdering`` — Returns the reverse Cuthill-Mckee ordering of "
-"an undirected graphs"
-msgstr ""
-
-msgid "Boost Graph Inside"
-msgstr ""
-
-msgid "Availability"
-msgstr ""
-
-msgid "Version 3.4.0"
-msgstr ""
-
-msgid "New **experimental** signature:"
-msgstr ""
-
-msgid ""
-"In numerical linear algebra, the Cuthill-McKee algorithm (CM), named "
-"after Elizabeth Cuthill and James McKee, is an algorithm to permute a "
-"sparse matrix that has a symmetric sparsity pattern into a band matrix "
-"form with a small bandwidth. The reverse Cuthill-McKee algorithm (RCM) "
-"due to Alan George and Joseph Liu is the same algorithm but with the "
-"resulting index numbers reversed. In practice this generally results in "
-"less fill-in than the CM ordering when Gaussian elimination is applied."
-msgstr ""
-
-msgid ""
-"The vertices are basically assigned a breadth-first search order, except "
-"that at each step, the adjacent vertices are placed in the queue in order"
-" of increasing degree."
-msgstr ""
-
-msgid ""
-"There are 3 versions defined in the Boost Graph Library. Here, we have "
-"implemented only version 2 as it is most suitable and practical for "
-"users. In this version we don't have to provide the starting vertex in "
-"the query. Whereas, in the version 1 we have to provide the starting "
-"vertex and it gives result only for single component. Version 2 is "
-"applicable for one and more than one components as it finds the starting "
-"vertex itself using the pseudo-peripheral pair heuiristic approach among "
-"each component. Maybe in future, we will also implemenent the version 1."
-msgstr ""
-
-msgid "**The main Characteristics are:**"
-msgstr ""
-
-msgid "The implementation is for **undirected** graphs."
-msgstr ""
-
-msgid "The bandwidth minimization problems are considered NP-complete problems."
-msgstr ""
-
-msgid "The running time complexity is: :math:`O(m log(m)|V|)`"
-msgstr ""
-
-msgid "where :math:`|V|` is the number of vertices,"
-msgstr ""
-
-msgid ":math:`m` is the maximum degree of the vertices in the graph."
-msgstr ""
-
-msgid "Signatures"
-msgstr ""
-
-msgid "\\ \\"
-msgstr ""
-
-msgid "cuthillMckeeOrdering(`Edges SQL`_)"
-msgstr ""
-
-msgid "RETURNS SET OF (seq, node) OR EMPTY SET"
-msgstr ""
-
-msgid "Example"
-msgstr ""
-
-msgid "Graph ordering of pgRouting :doc:`sampledata`"
-msgstr ""
-
-msgid "Returns SET OF ``(seq, node)``"
-msgstr ""
-
-msgid "Sequence of the order starting from 1."
-msgstr ""
-
-msgid "New ordering in reverse order."
-msgstr ""
-
-msgid ""
-"`Boost: Cuthill-McKee Ordering "
-"<https://www.boost.org/libs/graph/doc/cuthill_mckee_ordering.html>`__"
-msgstr ""
-
-#, python-format
-msgid ""
-"`Wikipedia: Cuthill-McKee Ordering "
-"<https://en.wikipedia.org/wiki/Cuthill%E2%80%93McKee_algorithm>`__"
-msgstr ""
-
-msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
 "/dijkstra-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en"
 "/dijkstra-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en"
@@ -4294,8 +4185,8 @@ msgid ":doc:`ordering-family`"
 msgstr ""
 
 msgid ""
-":doc:`cuthillMckeeOrdering` - Return reverse Cuthill-McKee ordering of an"
-" undirected graph."
+":doc:`pgr_cuthillMckeeOrdering` - Return reverse Cuthill-McKee ordering "
+"of an undirected graph."
 msgstr ""
 
 msgid ":doc:`TRSP-family`"
@@ -4808,10 +4699,16 @@ msgstr ""
 msgid "Kruskal - Family of functions"
 msgstr ""
 
+msgid "Boost Graph Inside"
+msgstr ""
+
 msgid ""
 "Kruskal's algorithm is a greedy minimum spanning tree algorithm that in "
 "each cycle finds and adds the edge of the least possible weight that "
 "connects any two trees in the forest."
+msgstr ""
+
+msgid "**The main Characteristics are:**"
 msgstr ""
 
 msgid "The total weight of all the edges in the tree or forest is minimized."
@@ -6207,6 +6104,9 @@ msgstr ""
 msgid "The general form of a pgRouting function call is:"
 msgstr ""
 
+msgid "\\ \\"
+msgstr ""
+
 msgid "pgr_<name>(`Inner queries`_, **parameters**, [ ``Optional parameters``)"
 msgstr ""
 
@@ -7358,6 +7258,9 @@ msgstr ""
 msgid "``pgr_KSP`` — Yen's algorithm for K shortest paths using Dijkstra."
 msgstr ""
 
+msgid "Availability"
+msgstr ""
+
 msgid "Version 2.1.0"
 msgstr ""
 
@@ -7378,19 +7281,25 @@ msgid ""
 "the number of shortest paths desired."
 msgstr ""
 
+msgid "Signatures"
+msgstr ""
+
 msgid "Summary"
 msgstr ""
 
-msgid "pgr_KSP(`Edges SQL`_, **start vid**, **end vid**, **K**"
+msgid "pgr_KSP(`Edges SQL`_, **start vid**, **end vid**, **K**, [**options**])"
 msgstr ""
 
-msgid "[, directed] [, heap_paths])"
+msgid "**options:** ``[directed, heap_paths]``"
 msgstr ""
 
-msgid "RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)"
+msgid "RETURNS SET OF |ksp-result|"
 msgstr ""
 
 msgid "OR EMPTY SET"
+msgstr ""
+
+msgid "Example"
 msgstr ""
 
 msgid "Get 2 paths from :math:`6` to :math:`17` on a directed graph."
@@ -8713,7 +8622,10 @@ msgstr ""
 msgid "Running time: :math:`O(V + E)`"
 msgstr ""
 
-msgid "pgr_articulationPoints(`Edges SQL`_) RETURNS SET OF (node) OR EMPTY SET"
+msgid "pgr_articulationPoints(`Edges SQL`_)"
+msgstr ""
+
+msgid "RETURNS SET OF |result-node|"
 msgstr ""
 
 msgid "The articulation points of the graph"
@@ -8722,7 +8634,7 @@ msgstr ""
 msgid "Nodes in red are the articulation points."
 msgstr ""
 
-msgid "Returns set of ``(node)``"
+msgid "Returns set of |result-node|"
 msgstr ""
 
 msgid ""
@@ -9110,6 +9022,9 @@ msgstr ""
 msgid "``pgr_bellmanFord`` — Shortest path(s) using Bellman-Ford algorithm."
 msgstr ""
 
+msgid "New **experimental** signature:"
+msgstr ""
+
 msgid "``pgr_bellmanFord`` (`Combinations`_)"
 msgstr ""
 
@@ -9266,15 +9181,16 @@ msgstr ""
 msgid "``edge`` ascending."
 msgstr ""
 
-msgid ""
-"pgr_biconnectedComponents(`Edges SQL`_) RETURNS SET OF (seq, component, "
-"edge) OR EMPTY SET"
+msgid "pgr_biconnectedComponents(`Edges SQL`_)"
+msgstr ""
+
+msgid "RETURNS SET OF |result-component-E|"
 msgstr ""
 
 msgid "The biconnected components of the graph"
 msgstr ""
 
-msgid "Returns set of ``(seq, component, edge)``"
+msgid "Returns set of |result-component-E|"
 msgstr ""
 
 msgid "``component``"
@@ -9451,7 +9367,7 @@ msgstr ""
 msgid "pgr_bipartite(`Edges SQL`_)"
 msgstr ""
 
-msgid "RETURNS SET OF (vertex_id, color_id) OR EMPTY SET"
+msgid "RETURNS SET OF |result-node-color|"
 msgstr ""
 
 msgid "When the graph is bipartite"
@@ -9518,54 +9434,34 @@ msgstr ""
 msgid "Running time: Polynomial"
 msgstr ""
 
-msgid ""
-"pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vid**) "
-"pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vids**) "
-"pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vid**) "
-"pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vids**) "
-"pgr_boykovKolmogorov(`Edges SQL`_, `Combinations SQL`_) RETURNS SET OF "
-"(seq, edge, start_vid, end_vid, flow, residual_capacity) OR EMPTY SET"
+msgid "pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vid**)"
 msgstr ""
 
-msgid ""
-"pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vid**) RETURNS "
-"SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity) OR EMPTY "
-"SET"
+msgid "pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vids**)"
+msgstr ""
+
+msgid "pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vid**)"
+msgstr ""
+
+msgid "pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vids**)"
+msgstr ""
+
+msgid "pgr_boykovKolmogorov(`Edges SQL`_, `Combinations SQL`_)"
+msgstr ""
+
+msgid "RETURNS SET OF |result-flow|"
 msgstr ""
 
 msgid "From vertex :math:`11` to vertex :math:`12`"
 msgstr ""
 
-msgid ""
-"pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vids**) RETURNS "
-"SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity) OR EMPTY "
-"SET"
-msgstr ""
-
 msgid "From vertex :math:`11` to vertices :math:`\\{5, 10, 12\\}`"
-msgstr ""
-
-msgid ""
-"pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vid**) RETURNS "
-"SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity) OR EMPTY "
-"SET"
 msgstr ""
 
 msgid "From vertices :math:`\\{11, 3, 17\\}` to vertex :math:`12`"
 msgstr ""
 
-msgid ""
-"pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vids**) RETURNS "
-"SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity) OR EMPTY "
-"SET"
-msgstr ""
-
 msgid "From vertices :math:`\\{11, 3, 17\\}` to vertices :math:`\\{5, 10, 12\\}`"
-msgstr ""
-
-msgid ""
-"pgr_boykovKolmogorov(`Edges SQL`_, `Combinations SQL`_) RETURNS SET OF "
-"(seq, edge, start_vid, end_vid, flow, residual_capacity) OR EMPTY SET"
 msgstr ""
 
 msgid ""
@@ -9714,13 +9610,16 @@ msgstr ""
 msgid "Running time: :math:`O(E * (V + E))`"
 msgstr ""
 
-msgid "pgr_bridges(`Edges SQL`_) RETURNS SET OF (edge) OR EMPTY SET"
+msgid "pgr_bridges(`Edges SQL`_)"
+msgstr ""
+
+msgid "RETURNS SET OF |result-edge|"
 msgstr ""
 
 msgid "The bridges of the graph"
 msgstr ""
 
-msgid "Returns set of ``(edge)``"
+msgid "Returns set of |result-edge|"
 msgstr ""
 
 msgid "Identifier of the edge that is a bridge."
@@ -9845,13 +9744,13 @@ msgstr ""
 msgid "pgr_connectedComponents(`Edges SQL`_)"
 msgstr ""
 
-msgid "RETURNS SET OF (seq, component, node) OR EMPTY SET"
+msgid "RETURNS SET OF |result-component-V|"
 msgstr ""
 
 msgid "The connected components of the graph"
 msgstr ""
 
-msgid "Returns set of ``(seq, component, node)``"
+msgid "Returns set of |result-component-V|"
 msgstr ""
 
 msgid "Has the value of the minimum node identifier in the component."
@@ -9948,13 +9847,13 @@ msgstr ""
 msgid "The pgr_contraction function has the following signature:"
 msgstr ""
 
-msgid "pgr_contraction(`Edges SQL`_, **contraction order**"
+msgid "pgr_contraction(`Edges SQL`_, **contraction order**, [**options**])"
 msgstr ""
 
-msgid "[, max_cycles] [, forbidden_vertices] [, directed])"
+msgid "**options:** ``[ max_cycles, forbidden_vertices, directed]``"
 msgstr ""
 
-msgid "RETURNS SETOF (type, id, contracted_vertices, source, target, cost)"
+msgid "RETURNS SET OF |result-contract|"
 msgstr ""
 
 msgid ""
@@ -9994,7 +9893,7 @@ msgid ""
 "be performed."
 msgstr ""
 
-msgid "RETURNS SETOF  (type, id, contracted_vertices, source, target, cost)"
+msgid "Returns set of  |result-contract|"
 msgstr ""
 
 msgid "The function returns a single row. The columns of the row are:"
@@ -10473,6 +10372,94 @@ msgstr ""
 
 msgid ""
 "**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/cuthillMckeeOrdering.html>`__ (`3.4"
+" <https://docs.pgrouting.org/3.4/en/cuthillMckeeOrdering.html>`__)"
+msgstr ""
+
+msgid "``pgr_cuthillMckeeOrdering`` - Experimental"
+msgstr ""
+
+msgid ""
+"``cuthillMckeeOrdering`` — Returns the reverse Cuthill-Mckee ordering of "
+"an undirected graphs"
+msgstr ""
+
+msgid "Version 3.4.0"
+msgstr ""
+
+msgid ""
+"In numerical linear algebra, the Cuthill-McKee algorithm (CM), named "
+"after Elizabeth Cuthill and James McKee, is an algorithm to permute a "
+"sparse matrix that has a symmetric sparsity pattern into a band matrix "
+"form with a small bandwidth. The reverse Cuthill-McKee algorithm (RCM) "
+"due to Alan George and Joseph Liu is the same algorithm but with the "
+"resulting index numbers reversed. In practice this generally results in "
+"less fill-in than the CM ordering when Gaussian elimination is applied."
+msgstr ""
+
+msgid ""
+"The vertices are basically assigned a breadth-first search order, except "
+"that at each step, the adjacent vertices are placed in the queue in order"
+" of increasing degree."
+msgstr ""
+
+msgid ""
+"There are 3 versions defined in the Boost Graph Library. Here, we have "
+"implemented only version 2 as it is most suitable and practical for "
+"users. In this version we don't have to provide the starting vertex in "
+"the query. Whereas, in the version 1 we have to provide the starting "
+"vertex and it gives result only for single component. Version 2 is "
+"applicable for one and more than one components as it finds the starting "
+"vertex itself using the pseudo-peripheral pair heuiristic approach among "
+"each component. Maybe in future, we will also implemenent the version 1."
+msgstr ""
+
+msgid "The implementation is for **undirected** graphs."
+msgstr ""
+
+msgid "The bandwidth minimization problems are considered NP-complete problems."
+msgstr ""
+
+msgid "The running time complexity is: :math:`O(m log(m)|V|)`"
+msgstr ""
+
+msgid "where :math:`|V|` is the number of vertices,"
+msgstr ""
+
+msgid ":math:`m` is the maximum degree of the vertices in the graph."
+msgstr ""
+
+msgid "pgr_cuthillMckeeOrdering(`Edges SQL`_)"
+msgstr ""
+
+msgid "RETURNS SET OF |result-node-order|"
+msgstr ""
+
+msgid "Graph ordering of pgRouting :doc:`sampledata`"
+msgstr ""
+
+msgid "Returns SET OF ``(seq, node)``"
+msgstr ""
+
+msgid "Sequence of the order starting from 1."
+msgstr ""
+
+msgid "New ordering in reverse order."
+msgstr ""
+
+msgid ""
+"`Boost: Cuthill-McKee Ordering "
+"<https://www.boost.org/libs/graph/doc/cuthill_mckee_ordering.html>`__"
+msgstr ""
+
+#, python-format
+msgid ""
+"`Wikipedia: Cuthill-McKee Ordering "
+"<https://en.wikipedia.org/wiki/Cuthill%E2%80%93McKee_algorithm>`__"
+msgstr ""
+
+msgid ""
+"**Supported versions:** `Latest "
 "<https://docs.pgrouting.org/latest/en/pgr_dagShortestPath.html>`__ (`3.4 "
 "<https://docs.pgrouting.org/3.4/en/pgr_dagShortestPath.html>`__) `3.3 "
 "<https://docs.pgrouting.org/3.3/en/pgr_dagShortestPath.html>`__ `3.2 "
@@ -10528,44 +10515,28 @@ msgstr ""
 msgid "Running time: :math:`O(| start\\_vids | * (V + E))`"
 msgstr ""
 
-msgid ""
-"pgr_dagShortestPath(`Edges SQL`_, **start vid**,  **end vid**) "
-"pgr_dagShortestPath(`Edges SQL`_, **start vid**,  **end vids**) "
-"pgr_dagShortestPath(`Edges SQL`_, **start vids**, **end vid**) "
-"pgr_dagShortestPath(`Edges SQL`_, **start vids**, **end vids**) "
-"pgr_dagShortestPath(`Edges SQL`_, `Combinations SQL`_)"
+msgid "pgr_dagShortestPath(`Edges SQL`_, **start vid**,  **end vid**)"
 msgstr ""
 
-msgid "RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) OR EMPTY SET"
+msgid "pgr_dagShortestPath(`Edges SQL`_, **start vid**,  **end vids**)"
 msgstr ""
 
-msgid ""
-"pgr_dagShortestPath(`Edges SQL`_, **start vid**,  **end vid**) RETURNS "
-"SET OF (seq, path_seq, node, edge, cost, agg_cost) OR EMPTY SET"
+msgid "pgr_dagShortestPath(`Edges SQL`_, **start vids**, **end vid**)"
+msgstr ""
+
+msgid "pgr_dagShortestPath(`Edges SQL`_, **start vids**, **end vids**)"
+msgstr ""
+
+msgid "pgr_dagShortestPath(`Edges SQL`_, `Combinations SQL`_)"
 msgstr ""
 
 msgid "From vertex :math:`5` to vertex  :math:`11` on a **directed** graph"
 msgstr ""
 
-msgid ""
-"pgr_dagShortestPath(`Edges SQL`_, **start vid**,  **end vids**) RETURNS "
-"SET OF (seq, path_seq, node, edge, cost, agg_cost) OR EMPTY SET"
-msgstr ""
-
 msgid "From vertex :math:`5` to vertices :math:`\\{7, 11\\}`"
 msgstr ""
 
-msgid ""
-"pgr_dagShortestPath(`Edges SQL`_, **start vids**, **end vid**) RETURNS "
-"SET OF (seq, path_seq, node, edge, cost, agg_cost) OR EMPTY SET"
-msgstr ""
-
 msgid "From vertices :math:`\\{5, 10\\}` to vertex :math:`11`"
-msgstr ""
-
-msgid ""
-"pgr_dagShortestPath(`Edges SQL`_, **start vids**, **end vids**) RETURNS "
-"SET OF (seq, path_seq, node, edge, cost, agg_cost) OR EMPTY SET"
 msgstr ""
 
 msgid ""
@@ -10573,9 +10544,7 @@ msgid ""
 "**undirected** graph"
 msgstr ""
 
-msgid ""
-"pgr_dagShortestPath(`Edges SQL`_, Combinations) RETURNS SET OF (seq, "
-"path_seq, node, edge, cost, agg_cost) OR EMPTY SET"
+msgid "pgr_dagShortestPath(`Edges SQL`_, Combinations)"
 msgstr ""
 
 msgid "Resturn Columns"
@@ -10746,23 +10715,13 @@ msgstr ""
 msgid "Depth First Search Running time: :math:`O(E + V)`"
 msgstr ""
 
-msgid ""
-"pgr_depthFirstSearch(`Edges SQL`_, **Root vid** [, directed] [, "
-"max_depth]) pgr_depthFirstSearch(`Edges SQL`_, **Root vids** [, directed]"
-" [, max_depth]) RETURNS SET OF (seq, depth, start_vid, node, edge, cost, "
-"agg_cost)"
+msgid "pgr_depthFirstSearch(`Edges SQL`_, **root vid**, [**options**])"
 msgstr ""
 
-msgid ""
-"pgr_depthFirstSearch(`Edges SQL`_, **Root vid** [, directed] [, "
-"max_depth]) RETURNS SET OF (seq, depth, start_vid, node, edge, cost, "
-"agg_cost)"
+msgid "pgr_depthFirstSearch(`Edges SQL`_, **root vids**, [**options**])"
 msgstr ""
 
-msgid ""
-"pgr_depthFirstSearch(`Edges SQL`_, **Root vids** [, directed] [, "
-"max_depth]) RETURNS SET OF (seq, depth, start_vid, node, edge, cost, "
-"agg_cost)"
+msgid "**options:** ``[directed, max_depth]``"
 msgstr ""
 
 msgid "Same as `Single vertex`_ but with edges in descending order of ``id``."
@@ -10841,48 +10800,28 @@ msgstr ""
 msgid "**Official** ``pgr_dijkstra`` (`One to One`_)"
 msgstr ""
 
-msgid "Running time: :math:`O(| start\\_vids | * (V \\log V + E))`"
+msgid "pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  , [``directed``])"
 msgstr ""
 
-msgid ""
-"pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  [, directed]) "
-"pgr_dijkstra(`Edges SQL`_, **start vid**, **end vids** [, directed]) "
-"pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid**  [, directed]) "
-"pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids** [, directed]) "
-"pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_ [, directed]) RETURNS "
-"(seq, path_seq [, start vid] [, end vid], node, edge, cost, agg_cost) OR "
-"EMPTY SET"
+msgid "pgr_dijkstra(`Edges SQL`_, **start vid**, **end vids** , [``directed``])"
 msgstr ""
 
-msgid ""
-"pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  [, directed]) "
-"RETURNS (seq, path_seq, node, edge, cost, agg_cost) OR EMPTY SET"
+msgid "pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid**  , [``directed``])"
 msgstr ""
 
-msgid ""
-"pgr_dijkstra(`Edges SQL`_, **start vid**, **end vids** [, directed]) "
-"RETURNS (seq, path_seq, end vid, node, edge, cost, agg_cost) OR EMPTY SET"
+msgid "pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids** , [``directed``])"
+msgstr ""
+
+msgid "pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_ , [``directed``])"
 msgstr ""
 
 msgid "From vertex :math:`6` to vertices :math:`\\{10, 17\\}` on a **directed**"
 msgstr ""
 
-msgid ""
-"pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid** [, directed]) "
-"RETURNS (seq, path_seq, start vid, node, edge, cost, agg_cost) OR EMPTY "
-"SET"
+msgid "pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid** , [``directed``])"
 msgstr ""
 
-msgid ""
-"pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids** [, directed]) "
-"RETURNS (seq, path_seq, start vid, end vid, node, edge, cost, agg_cost) "
-"OR EMPTY SET"
-msgstr ""
-
-msgid ""
-"pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_ [, directed]) RETURNS "
-"(seq, path_seq, start vid, end vid, node, edge, cost, agg_cost) OR EMPTY "
-"SET"
+msgid "RETURNS (seq, path_seq, start vid, end vid, node, edge, cost, agg_cost)"
 msgstr ""
 
 msgid "The examples of this section are based on the :doc:`sampledata` network."
@@ -11042,7 +10981,7 @@ msgstr ""
 msgid "36) Using `Many to Many`_"
 msgstr ""
 
-msgid "36) Using `Combinations`_"
+msgid "37) Using `Combinations`_"
 msgstr ""
 
 #, python-format
@@ -11087,26 +11026,26 @@ msgid ""
 msgstr ""
 
 msgid ""
-"pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vid**  [, "
-"``directed``])"
+"pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vid** , "
+"[``directed``])"
 msgstr ""
 
 msgid ""
-"pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vids** [, "
-"``directed``])"
+"pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vids**, "
+"[``directed``])"
 msgstr ""
 
 msgid ""
-"pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vid**  [, "
-"``directed``])"
+"pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vid** , "
+"[``directed``])"
 msgstr ""
 
 msgid ""
-"pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vids** [, "
-"``directed``])"
+"pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vids**, "
+"[``directed``])"
 msgstr ""
 
-msgid "pgr_dijkstraCost(`Edges SQL`_, `Combinations SQL`_ [, ``directed``])"
+msgid "pgr_dijkstraCost(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
 
 msgid ""
@@ -11138,7 +11077,7 @@ msgstr ""
 msgid "Using Dijkstra algorithm, calculate and return a cost matrix."
 msgstr ""
 
-msgid "pgr_dijkstraCostMatrix(`Edges SQL`_, **start vids** [, ``directed``])"
+msgid "pgr_dijkstraCostMatrix(`Edges SQL`_, **start vids**, [``directed``])"
 msgstr ""
 
 msgid ""
@@ -11208,28 +11147,37 @@ msgstr ""
 msgid "Combinations: :math:`drt * |Starting vids|`"
 msgstr ""
 
-msgid "pgr_dijkstraNear(`Edges SQL`_, **start vid**, **end vids**"
+msgid ""
+"pgr_dijkstraNear(`Edges SQL`_, **start vid**, **end vids**, [**options "
+"A**])"
 msgstr ""
 
-msgid "[, directed] [, cap])"
+msgid ""
+"pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid** [**options "
+"A**])"
 msgstr ""
 
-msgid "pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid**"
+msgid ""
+"pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids** [**options "
+"B**])"
 msgstr ""
 
-msgid "pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids**"
+msgid "pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_ [**options B**])"
 msgstr ""
 
-msgid "[, directed] [, cap], [global])"
+msgid "**options A:** ``[directed, cap]``"
 msgstr ""
 
-msgid "pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_"
+msgid "**options B:** ``[directed, cap, global]``"
 msgstr ""
 
-msgid "[, directed] [, cap] [, global])"
+msgid "RETURNS SET OF |short-generic-result|"
 msgstr ""
 
-msgid "RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)"
+msgid "pgr_dijkstraNear(`Edges SQL`_, **start vid**, **end vids**, [**options**])"
+msgstr ""
+
+msgid "**options:** ``[directed, cap]``"
 msgstr ""
 
 msgid "Departing on car from vertex :math:`6` find the nearest subway station."
@@ -11253,6 +11201,9 @@ msgstr ""
 msgid "The result shows that station at vertex :math:`11` is the nearest."
 msgstr ""
 
+msgid "pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid**, [**options**])"
+msgstr ""
+
 msgid ""
 "Departing on a car from a subway station find the nearest **two** "
 "stations to vertex :math:`2`"
@@ -11270,6 +11221,14 @@ msgstr ""
 msgid ""
 "The result shows that station at vertex :math:`10` is the nearest and the"
 " next best is :math:`11`."
+msgstr ""
+
+msgid ""
+"pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids**, "
+"[**options**])"
+msgstr ""
+
+msgid "**options:** ``[directed, cap, global]``"
 msgstr ""
 
 msgid "Find the best pedestrian connection between two lines of buses"
@@ -11299,6 +11258,9 @@ msgstr ""
 msgid ""
 "Only `one` route is returned because `global` is ``true`` and `cap` is "
 "``1``"
+msgstr ""
+
+msgid "pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_, [**options**])"
 msgstr ""
 
 msgid "Find the best car connection between all the stations of two subway lines"
@@ -11421,18 +11383,9 @@ msgstr ""
 msgid "pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_, [**options B**])"
 msgstr ""
 
-msgid "**options A:** ``[directed, cap]``"
-msgstr ""
-
-msgid "**options B:** ``[directed, cap, global]``"
-msgstr ""
-
 msgid ""
 "pgr_dijkstraNearCost(`Edges SQL`_, **start vid**, **end vids**, "
 "[**options**])"
-msgstr ""
-
-msgid "**options:** ``[directed, cap]``"
 msgstr ""
 
 msgid ""
@@ -11448,9 +11401,6 @@ msgstr ""
 msgid ""
 "pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vids**, "
 "[**options**])"
-msgstr ""
-
-msgid "**options:** ``[directed, cap, global]``"
 msgstr ""
 
 msgid "pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_, [**options**])"
@@ -11516,16 +11466,13 @@ msgstr ""
 msgid "One Via"
 msgstr ""
 
-msgid "pgr_dijkstraVia(`Edges SQL`_, **via vertices**"
+msgid "pgr_dijkstraVia(`Edges SQL`_, **via vertices**, [**options**])"
 msgstr ""
 
-msgid "[, directed] [, strict] [, U_turn_on_edge]) - Proposed on v2.2"
+msgid "**options:** ``[, directed, strict, U_turn_on_edge]``"
 msgstr ""
 
-msgid "RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,"
-msgstr ""
-
-msgid "node, edge, cost, agg_cost, route_agg_cost)"
+msgid "RETURNS SET OF |via-result|"
 msgstr ""
 
 msgid ""
@@ -11636,25 +11583,23 @@ msgid ""
 "conform to the corresponding spanning tree."
 msgstr ""
 
-msgid "pgr_drivingDistance(`Edges SQL`_, **Root vid**,  **distance**"
+msgid ""
+"pgr_drivingDistance(`Edges SQL`_, **Root vid**,  **distance**, "
+"[``directed``])"
 msgstr ""
 
-msgid "[, directed])"
+msgid ""
+"pgr_drivingDistance(`Edges SQL`_, **Root vids**, **distance**, "
+"[**options**])"
 msgstr ""
 
-msgid "pgr_drivingDistance(`Edges SQL`_, **Root vids**, **distance**"
+msgid "**options:** [directed, equicost]"
 msgstr ""
 
-msgid "[, directed] [, equicost])"
-msgstr ""
-
-msgid "RETURNS SET OF (seq, [from_v,] node, edge, cost, agg_cost)"
+msgid "RETURNS SET OF |result-dij-dd|"
 msgstr ""
 
 msgid "Single Vertex"
-msgstr ""
-
-msgid "RETURNS SET OF (seq, node, edge, cost, agg_cost)"
 msgstr ""
 
 msgid "From vertex :math:`11` for a distance of :math:`3.0`"
@@ -11663,7 +11608,7 @@ msgstr ""
 msgid "Multiple Vertices"
 msgstr ""
 
-msgid "RETURNS SET OF (seq, from_v, node, edge, cost, agg_cost)"
+msgid "RETURNS SET OF |result-dij-dd-m|"
 msgstr ""
 
 msgid ""
@@ -11778,7 +11723,7 @@ msgstr ""
 msgid "pgr_edgeColoring(`Edges SQL`_)"
 msgstr ""
 
-msgid "RETURNS SET OF (edge_id, color_id) OR EMPTY SET"
+msgid "RETURNS SET OF |result-edge-color|"
 msgstr ""
 
 msgid "Graph coloring of pgRouting :doc:`sampledata`"
@@ -11838,33 +11783,42 @@ msgstr ""
 msgid "Uses :doc:`pgr_boykovKolmogorov` to calculate the paths."
 msgstr ""
 
-msgid "pgr_edgeDisjointPaths(`Edges SQL`_, **start vid**, **end vid**"
-msgstr ""
-
-msgid "pgr_edgeDisjointPaths(`Edges SQL`_, **start vid**, **end vids**"
-msgstr ""
-
-msgid "pgr_edgeDisjointPaths(`Edges SQL`_, **start vids**, **end vid**"
-msgstr ""
-
-msgid "pgr_edgeDisjointPaths(`Edges SQL`_, **start vids**, **end vids**"
-msgstr ""
-
-msgid "pgr_edgeDisjointPaths(`Edges SQL`_, `Combinations SQL`_"
+msgid ""
+"pgr_edgeDisjointPaths(`Edges SQL`_, **start vid**, **end vid**, "
+"[``directed``])"
 msgstr ""
 
 msgid ""
-"RETURNS (seq, path_id, path_seq, [start_vid,] [end_vid,] node, edge, "
-"cost, agg_cost)"
+"pgr_edgeDisjointPaths(`Edges SQL`_, **start vid**, **end vids**, "
+"[``directed``])"
 msgstr ""
 
-msgid "RETURNS (seq, path_id, path_seq, node, edge, cost, agg_cost)"
+msgid ""
+"pgr_edgeDisjointPaths(`Edges SQL`_, **start vids**, **end vid**, "
+"[``directed``])"
 msgstr ""
 
-msgid "RETURNS (seq, path_id, path_seq, end_vid, node, edge, cost, agg_cost)"
+msgid ""
+"pgr_edgeDisjointPaths(`Edges SQL`_, **start vids**, **end vids**, "
+"[``directed``])"
 msgstr ""
 
-msgid "RETURNS (seq, path_id, path_seq, start_vid, node, edge, cost, agg_cost)"
+msgid "pgr_edgeDisjointPaths(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
+msgstr ""
+
+msgid "RETURNS SET OF |result-disjoint|"
+msgstr ""
+
+msgid "RETURNS SET OF |result-disjoint-1-1|"
+msgstr ""
+
+msgid "RETURNS SET OF |result-disjoint-1-m|"
+msgstr ""
+
+msgid "RETURNS SET OF |result-disjoint-m-1|"
+msgstr ""
+
+msgid "RETURNS SET OF |result-disjoint-m-m|"
 msgstr ""
 
 msgid ""
@@ -12936,13 +12890,16 @@ msgstr ""
 msgid "Running time: :math:`O(|V|)`"
 msgstr ""
 
-msgid "pgr_isPlanar(`Edges SQL`) RETURNS BOOLEAN"
+msgid "pgr_isPlanar(`Edges SQL`)"
+msgstr ""
+
+msgid "RETURNS ``BOOLEAN``"
 msgstr ""
 
 msgid "Returns a boolean ``(pgr_isplanar)``"
 msgstr ""
 
-msgid "**pgr_isplanar**"
+msgid "``pgr_isplanar``"
 msgstr ""
 
 msgid "`true` when the graph is planar."
@@ -13037,7 +12994,10 @@ msgstr ""
 msgid "EMPTY SET is returned when there are no edges in the graph."
 msgstr ""
 
-msgid "pgr_kruskal(`Edges SQL`_) RETURNS SET OF (edge, cost) OR EMPTY SET"
+msgid "pgr_kruskal(`Edges SQL`_)"
+msgstr ""
+
+msgid "RETURNS SET OF |result-mst|"
 msgstr ""
 
 msgid "Minimum spanning forest"
@@ -13072,23 +13032,13 @@ msgstr ""
 msgid "Breath First Search Running time: :math:`O(E + V)`"
 msgstr ""
 
-msgid ""
-"pgr_kruskalBFS(`Edges SQL`_, **Root vid** [, max_depth]) "
-"pgr_kruskalBFS(`Edges SQL`_, **Root vids** [, max_depth]) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
+msgid "pgr_kruskalBFS(`Edges SQL`_, **root vid**, [``max_depth``])"
 msgstr ""
 
-msgid ""
-"pgr_kruskalBFS(`Edges SQL`_, **Root vid** [, max_depth]) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
+msgid "pgr_kruskalBFS(`Edges SQL`_, **root vids**, [``max_depth``])"
 msgstr ""
 
 msgid "The Minimum Spanning Tree having as root vertex :math:`6`"
-msgstr ""
-
-msgid ""
-"pgr_kruskalBFS(`Edges SQL`_, **Root vids** [, max_depth]) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
 msgstr ""
 
 msgid ""
@@ -13124,25 +13074,15 @@ msgstr ""
 msgid "Depth First Search running time: :math:`O(E + V)`"
 msgstr ""
 
-msgid ""
-"pgr_kruskalDD(`Edges SQL`_, **Root vid**, **distance**) "
-"pgr_kruskalDD(`Edges SQL`_, **Root vids**, **distance**) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
+msgid "pgr_kruskalDD(`Edges SQL`_, **root vid**, **distance**)"
 msgstr ""
 
-msgid ""
-"pgr_kruskalDD(`Edges SQL`_, **Root vid**, **distance**) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
+msgid "pgr_kruskalDD(`Edges SQL`_, **root vids**, **distance**)"
 msgstr ""
 
 msgid ""
 "The Minimum Spanning Tree starting on vertex :math:`6` with "
 ":math:`distance \\leq 3.5`"
-msgstr ""
-
-msgid ""
-"pgr_kruskalDD(`Edges SQL`_, **Root vids**, **distance**) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
 msgstr ""
 
 msgid ""
@@ -13176,20 +13116,10 @@ msgstr ""
 msgid "Returned tree nodes from a root vertex are on Depth First Search order"
 msgstr ""
 
-msgid ""
-"pgr_kruskalDFS(`Edges SQL`_, **Root vid** [, max_depth]) "
-"pgr_kruskalDFS(`Edges SQL`_, **Root vids** [, max_depth]) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
+msgid "pgr_kruskalDFS(`Edges SQL`_, **root vid**, [``max_depth``])"
 msgstr ""
 
-msgid ""
-"pgr_kruskalDFS(`Edges SQL`_, **Root vid** [, max_depth]) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
-msgstr ""
-
-msgid ""
-"pgr_kruskalDFS(`Edges SQL`_, **Root vids** [, max_depth]) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
+msgid "pgr_kruskalDFS(`Edges SQL`_, **root vids**, [``max_depth``])"
 msgstr ""
 
 msgid ""
@@ -13229,15 +13159,13 @@ msgstr ""
 msgid "Running time: :math:`O((V+E)log(V+E))`"
 msgstr ""
 
-msgid ""
-"pgr_lengauerTarjanDominatorTree(`Edges SQL`_, **root vertex**) RETURNS "
-"SET OF (seq, vertex_id, idom) OR EMPTY SET"
+msgid "pgr_lengauerTarjanDominatorTree(`Edges SQL`_, **root vertex**)"
+msgstr ""
+
+msgid "RETURNS SET OF |result-idom|"
 msgstr ""
 
 msgid "The dominator tree with root vertex :math:`5`"
-msgstr ""
-
-msgid "**Edges SQL**"
 msgstr ""
 
 msgid "SQL query as described above."
@@ -13249,13 +13177,10 @@ msgstr ""
 msgid "Returns set of ``(seq, vertex_id, idom)``"
 msgstr ""
 
-msgid "**vertex_id**"
-msgstr ""
-
 msgid "Identifier of vertex ."
 msgstr ""
 
-msgid "**idom**"
+msgid "``idom``"
 msgstr ""
 
 msgid "Immediate dominator of vertex."
@@ -13309,9 +13234,10 @@ msgid ""
 "edges share a common endpoint in G."
 msgstr ""
 
-msgid ""
-"pgr_lineGraph(`Edges SQL`_ [, directed]) RETURNS SET OF (seq, source, "
-"target, cost, reverse_cost) OR EMPTY SET"
+msgid "pgr_lineGraph(`Edges SQL`_, [``directed``])"
+msgstr ""
+
+msgid "RETURNS SET OF |result-lineg|"
 msgstr ""
 
 msgid "For a **directed** graph"
@@ -13422,9 +13348,10 @@ msgstr ""
 msgid "Running time: TBD"
 msgstr ""
 
-msgid ""
-"pgr_lineGraphFull(`Edges SQL`_) RETURNS SET OF (seq, source, target, "
-"cost, edge) OR EMPTY SET"
+msgid "pgr_lineGraphFull(`Edges SQL`_)"
+msgstr ""
+
+msgid "RETURNS SET OF |result-linegf|"
 msgstr ""
 
 msgid "Full line graph of subgraph of edges :math:`\\{4, 7, 8, 10\\}`"
@@ -13652,9 +13579,10 @@ msgstr ""
 msgid "The algorithm does not considers geometric topology in the calculations."
 msgstr ""
 
-msgid ""
-"pgr_makeConnected(`Edges SQL`_) RETURNS SET OF (seq, start_vid, end_vid) "
-"OR EMPTY SET"
+msgid "pgr_makeConnected(`Edges SQL`_)"
+msgstr ""
+
+msgid "RETURNS SET OF |result-component-make|"
 msgstr ""
 
 msgid ""
@@ -13662,7 +13590,7 @@ msgid ""
 "needed to connect the graph."
 msgstr ""
 
-msgid "Returns set of ``(seq, start_vid, end_vid)``"
+msgid "Returns set of |result-component-make|"
 msgstr ""
 
 msgid "https://www.boost.org/libs/graph/doc/make_connected.html"
@@ -13730,7 +13658,7 @@ msgstr ""
 msgid ":math:`\\alpha(E,V)` is the inverse of the `Ackermann function`_."
 msgstr ""
 
-msgid "pgr_maxCardinalityMatch(`Edges SQL`_) RETURNS SET OF (edge) OR EMPTY SET"
+msgid "pgr_maxCardinalityMatch(`Edges SQL`_)"
 msgstr ""
 
 msgid "Using all edges."
@@ -13810,26 +13738,22 @@ msgstr ""
 msgid "Running time: :math:`O( V ^ 3)`"
 msgstr ""
 
-msgid ""
-"pgr_maxFlow(`Edges SQL`_, **start vid**, **end vid**) pgr_maxFlow(`Edges "
-"SQL`_, **start vid**, **end vids**) pgr_maxFlow(`Edges SQL`_, **start "
-"vids**, **end vid**) pgr_maxFlow(`Edges SQL`_, **start vids**, **end "
-"vids**) pgr_maxFlow(`Edges SQL`_, `Combinations SQL`_) RETURNS BIGINT"
+msgid "pgr_maxFlow(`Edges SQL`_, **start vid**, **end vid**)"
 msgstr ""
 
-msgid "pgr_maxFlow(`Edges SQL`_, **start vid**, **end vid**) RETURNS BIGINT"
+msgid "pgr_maxFlow(`Edges SQL`_, **start vid**, **end vids**)"
 msgstr ""
 
-msgid "pgr_maxFlow(`Edges SQL`_, **start vid**, **end vids**) RETURNS BIGINT"
+msgid "pgr_maxFlow(`Edges SQL`_, **start vids**, **end vid**)"
 msgstr ""
 
-msgid "pgr_maxFlow(`Edges SQL`_, **start vids**, **end vid**) RETURNS BIGINT"
+msgid "pgr_maxFlow(`Edges SQL`_, **start vids**, **end vids**)"
 msgstr ""
 
-msgid "pgr_maxFlow(`Edges SQL`_, **start vids**, **end vids**) RETURNS BIGINT"
+msgid "pgr_maxFlow(`Edges SQL`_, `Combinations SQL`_)"
 msgstr ""
 
-msgid "pgr_maxFlow(`Edges SQL`_, `Combinations SQL`_) RETURNS BIGINT"
+msgid "RETURNS ``BIGINT``"
 msgstr ""
 
 msgid "Maximum flow possible from the source(s) to the target(s)"
@@ -13886,42 +13810,22 @@ msgid ""
 "cases number of iterations is much smaller than :math:`U`."
 msgstr ""
 
-msgid ""
-"pgr_maxFlowMinCost(`Edges SQL`_, **start vid**, **end vid**) "
-"pgr_maxFlowMinCost(`Edges SQL`_, **start vid**, **end vids**) "
-"pgr_maxFlowMinCost(`Edges SQL`_, **start vids**, **end vid**) "
-"pgr_maxFlowMinCost(`Edges SQL`_, **start vids**, **end vids**) "
-"pgr_maxFlowMinCost(`Edges SQL`_, `Combinations SQL`_) RETURNS (seq, edge,"
-" source, target, flow, residual_capacity, cost, agg_cost) OR EMPTY SET"
+msgid "pgr_maxFlowMinCost(`Edges SQL`_, **start vid**, **end vid**)"
 msgstr ""
 
-msgid ""
-"pgr_maxFlowMinCost(`Edges SQL`_, **start vid**, **end vid**) RETURNS "
-"(seq, edge, source, target, flow, residual_capacity, cost, agg_cost) OR "
-"EMPTY SET"
+msgid "pgr_maxFlowMinCost(`Edges SQL`_, **start vid**, **end vids**)"
 msgstr ""
 
-msgid ""
-"pgr_maxFlowMinCost(`Edges SQL`_, **start vid**, **end vids**) RETURNS "
-"(seq, edge, source, target, flow, residual_capacity, cost, agg_cost) OR "
-"EMPTY SET"
+msgid "pgr_maxFlowMinCost(`Edges SQL`_, **start vids**, **end vid**)"
 msgstr ""
 
-msgid ""
-"pgr_maxFlowMinCost(`Edges SQL`_, **start vids**, **end vid**) RETURNS "
-"(seq, edge, source, target, flow, residual_capacity, cost, agg_cost) OR "
-"EMPTY SET"
+msgid "pgr_maxFlowMinCost(`Edges SQL`_, **start vids**, **end vids**)"
 msgstr ""
 
-msgid ""
-"pgr_maxFlowMinCost(`Edges SQL`_, **start vids**, **end vids**) RETURNS "
-"(seq, edge, source, target, flow, residual_capacity, cost, agg_cost) OR "
-"EMPTY SET"
+msgid "pgr_maxFlowMinCost(`Edges SQL`_, `Combinations SQL`_)"
 msgstr ""
 
-msgid ""
-"pgr_maxFlowMinCost(`Edges SQL`_, `Combinations SQL`_) RETURNS (seq, edge,"
-" source, target, flow, residual_capacity, cost, agg_cost) OR EMPTY SET"
+msgid "RETURNS SET OF |result-flow-mincost|"
 msgstr ""
 
 msgid "https://www.boost.org/libs/graph/doc/successive_shortest_path_nonnegative_weights.html"
@@ -13958,35 +13862,22 @@ msgstr ""
 msgid "Uses :doc:`pgr_maxFlowMinCost`."
 msgstr ""
 
-msgid ""
-"pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vid**, **end vid**) "
-"pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vid**, **end vids**) "
-"pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vids**, **end vid**) "
-"pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vids**, **end vids**) "
-"pgr_maxFlowMinCost_Cost(`Edges SQL`_, `Combinations SQL`_) RETURNS FLOAT"
+msgid "pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vid**, **end vid**)"
 msgstr ""
 
-msgid ""
-"pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vid**, **end vid**) RETURNS"
-" FLOAT"
+msgid "pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vid**, **end vids**)"
 msgstr ""
 
-msgid ""
-"pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vid**, **end vids**) "
-"RETURNS FLOAT"
+msgid "pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vids**, **end vid**)"
 msgstr ""
 
-msgid ""
-"pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vids**, **end vid**) "
-"RETURNS FLOAT"
+msgid "pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vids**, **end vids**)"
 msgstr ""
 
-msgid ""
-"pgr_maxFlowMinCost_Cost(`Edges SQL`_, **start vids**, **end vids**) "
-"RETURNS FLOAT"
+msgid "pgr_maxFlowMinCost_Cost(`Edges SQL`_, `Combinations SQL`_)"
 msgstr ""
 
-msgid "pgr_maxFlowMinCost_Cost(`Edges SQL`_, `Combinations SQL`_) RETURNS FLOAT"
+msgid "RETURNS FLOAT"
 msgstr ""
 
 msgid "Minimum Cost Maximum Flow possible from the source(s) to the target(s)"
@@ -14541,7 +14432,7 @@ msgstr ""
 msgid "Prim's running time: :math:`O(E * log V)`"
 msgstr ""
 
-msgid "pgr_prim(`Edges SQL`_) RETURNS SET OF (edge, cost) OR EMPTY SET"
+msgid "pgr_prim(`Edges SQL`_)"
 msgstr ""
 
 msgid "Minimum spanning forest of a subgraph"
@@ -14575,20 +14466,10 @@ msgid ""
 " of the Minimum Spanning Tree created with Prims's algorithm."
 msgstr ""
 
-msgid ""
-"pgr_primBFS(`Edges SQL`_, **Root vid** [, max_depth]) pgr_primBFS(`Edges "
-"SQL`_, **Root vids** [, max_depth]) RETURNS SET OF (seq, depth, "
-"start_vid, node, edge, cost, agg_cost)"
+msgid "pgr_primBFS(`Edges SQL`_, **root vid**, [``max_depth``])"
 msgstr ""
 
-msgid ""
-"pgr_primBFS(`Edges SQL`_, **Root vid** [, max_depth]) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
-msgstr ""
-
-msgid ""
-"pgr_primBFS(`Edges SQL`_, **Root vids** [, max_depth]) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
+msgid "pgr_primBFS(`Edges SQL`_, **root vids**, [``max_depth``])"
 msgstr ""
 
 msgid ""
@@ -14613,20 +14494,10 @@ msgid ""
 "within the calculated minimum spanning tree."
 msgstr ""
 
-msgid ""
-"pgr_primDD(`Edges SQL`_, **Root vid**, **distance**) pgr_primDD(`Edges "
-"SQL`_, **Root vids**, **distance**) RETURNS SET OF (seq, depth, "
-"start_vid, node, edge, cost, agg_cost)"
+msgid "pgr_primDD(`Edges SQL`_, **root vid**, **distance**)"
 msgstr ""
 
-msgid ""
-"pgr_primDD(`Edges SQL`_, **Root vid**, **distance**) RETURNS SET OF (seq,"
-" depth, start_vid, node, edge, cost, agg_cost)"
-msgstr ""
-
-msgid ""
-"pgr_primDD(`Edges SQL`_, **Root vids**, **distance**) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
+msgid "pgr_primDD(`Edges SQL`_, **root vids**, **distance**)"
 msgstr ""
 
 msgid ""
@@ -14652,20 +14523,10 @@ msgid ""
 "of the Minimum Spanning Tree created using Prims's algorithm."
 msgstr ""
 
-msgid ""
-"pgr_primDFS(`Edges SQL`_, **Root vid** [, max_depth]) pgr_primDFS(`Edges "
-"SQL`_, **Root vids** [, max_depth]) RETURNS SET OF (seq, depth, "
-"start_vid, node, edge, cost, agg_cost)"
+msgid "pgr_primDFS(`Edges SQL`_, **root vid**, [``max_depth``])"
 msgstr ""
 
-msgid ""
-"pgr_primDFS(`Edges SQL`_, **Root vid** [, max_depth]) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
-msgstr ""
-
-msgid ""
-"pgr_primDFS(`Edges SQL`_, **Root vids** [, max_depth]) RETURNS SET OF "
-"(seq, depth, start_vid, node, edge, cost, agg_cost)"
+msgid "pgr_primDFS(`Edges SQL`_, **root vids**, [``max_depth``])"
 msgstr ""
 
 msgid ""
@@ -14701,38 +14562,19 @@ msgstr ""
 msgid "Renamed from ``pgr_maxFlowPushRelabel``"
 msgstr ""
 
-msgid ""
-"pgr_pushRelabel(`Edges SQL`_, **start vid**, **end vid**) "
-"pgr_pushRelabel(`Edges SQL`_, **start vid**, **end vids**) "
-"pgr_pushRelabel(`Edges SQL`_, **start vids**, **end vid**) "
-"pgr_pushRelabel(`Edges SQL`_, **start vids**, **end vids**) "
-"pgr_pushRelabel(`Edges SQL`_, `Combinations SQL`_) RETURNS SET OF (seq, "
-"edge, start_vid, end_vid, flow, residual_capacity) OR EMPTY SET"
+msgid "pgr_pushRelabel(`Edges SQL`_, **start vid**, **end vid**)"
 msgstr ""
 
-msgid ""
-"pgr_pushRelabel(`Edges SQL`_, **start vid**, **end vid**) RETURNS SET OF "
-"(seq, edge, start_vid, end_vid, flow, residual_capacity) OR EMPTY SET"
+msgid "pgr_pushRelabel(`Edges SQL`_, **start vid**, **end vids**)"
 msgstr ""
 
-msgid ""
-"pgr_pushRelabel(`Edges SQL`_, **start vid**, **end vids**) RETURNS SET OF"
-" (seq, edge, start_vid, end_vid, flow, residual_capacity) OR EMPTY SET"
+msgid "pgr_pushRelabel(`Edges SQL`_, **start vids**, **end vid**)"
 msgstr ""
 
-msgid ""
-"pgr_pushRelabel(`Edges SQL`_, **start vids**, **end vid**) RETURNS SET OF"
-" (seq, edge, start_vid, end_vid, flow, residual_capacity) OR EMPTY SET"
+msgid "pgr_pushRelabel(`Edges SQL`_, **start vids**, **end vids**)"
 msgstr ""
 
-msgid ""
-"pgr_pushRelabel(`Edges SQL`_, **start vids**, **end vids**) RETURNS SET "
-"OF (seq, edge, start_vid, end_vid, flow, residual_capacity) OR EMPTY SET"
-msgstr ""
-
-msgid ""
-"pgr_pushRelabel(`Edges SQL`_, `Combinations SQL`_) RETURNS SET OF (seq, "
-"edge, start_vid, end_vid, flow, residual_capacity) OR EMPTY SET"
+msgid "pgr_pushRelabel(`Edges SQL`_, `Combinations SQL`_)"
 msgstr ""
 
 msgid ""
@@ -14817,6 +14659,9 @@ msgstr ""
 msgid "``pgr_stoerWagner`` — The min-cut of graph using stoerWagner algorithm."
 msgstr ""
 
+msgid "Version 3.0"
+msgstr ""
+
 msgid ""
 "In graph theory, the Stoer–Wagner algorithm is a recursive algorithm to "
 "solve the minimum cut problem in undirected weighted graphs with non-"
@@ -14862,9 +14707,10 @@ msgstr ""
 msgid "Running time: :math:`O(V*E + V^2*log V)`."
 msgstr ""
 
-msgid ""
-"pgr_stoerWagner(`Edges SQL`_) RETURNS SET OF (seq, edge, cost, mincut) OR"
-" EMPTY SET"
+msgid "pgr_stoerWagner(`Edges SQL`_)"
+msgstr ""
+
+msgid "RETURNS SET OF |result-mincut|"
 msgstr ""
 
 msgid "min cut of the main subgraph"
@@ -14933,9 +14779,7 @@ msgstr ""
 msgid "Components are described by vertices identifiers."
 msgstr ""
 
-msgid ""
-"pgr_strongComponents(`Edges SQL`_) RETURNS SET OF (seq, component, node) "
-"OR EMPTY SET"
+msgid "pgr_strongComponents(`Edges SQL`_)"
 msgstr ""
 
 msgid "The strong components of the graph"
@@ -14989,15 +14833,16 @@ msgstr ""
 msgid "The returned values are ordered in topological order:"
 msgstr ""
 
-msgid ""
-"pgr_topologicalSort(`Edges SQL`_) RETURNS SET OF (seq, sorted_v) OR EMPTY"
-" SET"
+msgid "pgr_topologicalSort(`Edges SQL`_)"
+msgstr ""
+
+msgid "RETURNS SET OF |result-toposort|"
 msgstr ""
 
 msgid "Topologically sorting the graph"
 msgstr ""
 
-msgid "Returns set of ``(seq, sorted_v)``"
+msgid "Returns set of |result-toposort|"
 msgstr ""
 
 msgid "Sequential value starting from :math:`1`"
@@ -15063,7 +14908,10 @@ msgstr ""
 msgid "The pgr_transitiveClosure function has the following signature:"
 msgstr ""
 
-msgid "pgr_transitiveClosure(`Edges SQL`_) RETURNS SETOF (seq, vid, target_array)"
+msgid "pgr_transitiveClosure(`Edges SQL`_)"
+msgstr ""
+
+msgid "RETURNS SETOF |result-closure|"
 msgstr ""
 
 msgid "Rechability of a subgraph"
@@ -15929,6 +15777,9 @@ msgstr ""
 msgid "From point :math:`1` and vertex :math:`6` to point :math:`3`"
 msgstr ""
 
+msgid "RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)"
+msgstr ""
+
 msgid ""
 "From point :math:`1` and vertex :math:`6`  to point :math:`3` and vertex "
 ":math:`1`"
@@ -16059,6 +15910,9 @@ msgstr ""
 msgid ""
 "For optimization purposes, any duplicated value in the `start_vids` or "
 "`end_vids` is ignored."
+msgstr ""
+
+msgid "Running time: :math:`O(| start\\_vids | * (V \\log V + E))`"
 msgstr ""
 
 msgid "pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vid**, **end vid**"
@@ -16237,6 +16091,9 @@ msgstr ""
 msgid "RETURNS SET OF (seq, [start_vid,] node, edge, cost, agg_cost)"
 msgstr ""
 
+msgid "RETURNS SET OF (seq, node, edge, cost, agg_cost)"
+msgstr ""
+
 msgid ""
 "Right side driving topology, from point :math:`1` within a distance of "
 ":math:`3.3` with details."
@@ -16316,6 +16173,9 @@ msgstr ""
 msgid "[, directed] [, heap_paths] [, driving_side] [, details])"
 msgstr ""
 
+msgid "RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)"
+msgstr ""
+
 msgid "Get 2 paths from Point :math:`1` to point :math:`2` on a directed graph."
 msgstr ""
 
@@ -16386,6 +16246,12 @@ msgid "pgr_withPointsVia(`Edges SQL`_, `Points SQL`_, **via vertices**"
 msgstr ""
 
 msgid "[, directed] [, strict] [, U_turn_on_edge]) - Proposed on v3.4"
+msgstr ""
+
+msgid "RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,"
+msgstr ""
+
+msgid "node, edge, cost, agg_cost, route_agg_cost)"
 msgstr ""
 
 msgid ""
