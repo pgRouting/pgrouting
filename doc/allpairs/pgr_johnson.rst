@@ -66,7 +66,7 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   pgr johnson(`Edges SQL`_ [, directed])
+   pgr johnson(`Edges SQL`_, [``directed``])
 
    | RETURNS SET OF |matrix-result|
    | OR EMPTY SET
