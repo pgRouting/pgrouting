@@ -108,6 +108,7 @@ Experimental Functions
    chinesePostmanProblem-family
    transformation-family
    components-family
+   ordering-family
 
 .. rubric:: categories
 
