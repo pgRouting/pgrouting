@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>pgr_breadthFirstSearch - Experimental &#8212; pgRouting Manual (3.4-dev)</title>
+    <title>pgr_breadthFirstSearch - Experimental &#8212; pgRouting Manual (3.4)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -43,7 +43,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.4.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.4.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -236,18 +236,28 @@ target depth level.</p></li>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Summary</p>
-<div class="admonition-class-signatures admonition">
-<p class="admonition-title"> :class: signatures</p>
-<p>pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong> [, max_depth] [, directed])
-pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vids</strong> [, max_depth] [, directed])
-RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</p>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vid</strong>, [<strong>options</strong>])</div>
+<div class="line">pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vids</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[max_depth,</span> <span class="pre">directed]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+</div>
 </div>
 <section id="single-vertex">
 <span id="index-0"></span><h3>Single vertex<a class="headerlink" href="#single-vertex" title="Permalink to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<p>pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong> [, max_depth] [, directed])
-RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</p>
+<div class="line-block">
+<div class="line">pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vid</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[max_depth,</span> <span class="pre">directed]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
@@ -281,10 +291,15 @@ ascending order of <code class="docutils literal notranslate"><span class="pre">
 </section>
 <section id="multiple-vertices">
 <span id="index-1"></span><h3>Multiple vertices<a class="headerlink" href="#multiple-vertices" title="Permalink to this heading">¶</a></h3>
-<div class="admonition-class-signatures admonition">
-<p class="admonition-title"> :class: signatures</p>
-<p>pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vids</strong> [, max_depth] [, directed])
-RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</p>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vids</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[max_depth,</span> <span class="pre">directed]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
@@ -324,9 +339,9 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</p>
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 12.5%" />
-<col style="width: 21.2%" />
-<col style="width: 66.2%" />
+<col style="width: 12.0%" />
+<col style="width: 24.1%" />
+<col style="width: 63.9%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
@@ -339,7 +354,7 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Root vid</strong></p></td>
+<tr class="row-odd"><td><p><strong>root vid</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifier of the root vertex of the tree.</p>
 <ul class="simple">
@@ -348,8 +363,8 @@ aleatory nodes for each tree in the forest.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>Root vids</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></p></td>
+<tr class="row-even"><td><p><strong>root vids</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [ <strong>ANY-INTEGER</strong> ]</p></td>
 <td><p>Array of identifiers of the root vertices.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(0\)</span> values are ignored</p></li>
@@ -627,8 +642,8 @@ shows with descending order of the edge identifiers.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on Sep 17, 2022.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.4.0.<br/>
+      Last updated on Sep 20, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
     </p>
   </div>
