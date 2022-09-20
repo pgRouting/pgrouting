@@ -95,14 +95,7 @@ ROWS 1000;
 
 COMMENT ON FUNCTION pgr_trspViaVertices(TEXT, ANYARRAY, BOOLEAN, BOOLEAN, TEXT)
 IS 'pgr_trspViaVertices
-- DEPRECATED
-- Parameters
-    - edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - ARRAY[Via vertices identifiers
-    - directed
-    - has reverse cost
-- Optional parameters
-    - restrictions_sql := NULL
+- DEPRECATED function on v3.4.0
 - Documentation:
-    - ${PROJECT_DOC_LINK}/pgr_trsp.html
+  - ${PROJECT_DOC_LINK}/pgr_trspVia.html
 ';

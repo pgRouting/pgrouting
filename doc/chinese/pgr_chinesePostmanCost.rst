@@ -41,7 +41,7 @@ Description
    :start-after: charactersistics-start
    :end-before: charactersistics-end
 
-- [TBD] Return value when the graph if disconnected
+- Return value when the graph if disconnected
 
 Signatures
 -------------------------------------------------------------------------------
@@ -52,8 +52,9 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-    pgr_chinesePostmanCost(`Edges SQL`_)
-    RETURNS FLOAT
+   | pgr_chinesePostmanCost(`Edges SQL`_)
+
+   | RETURNS ``FLOAT``
 
 :Example:
 

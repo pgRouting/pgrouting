@@ -6,7 +6,7 @@ SELECT * FROM pgr_trsp(
     'SELECT id::INTEGER, (source+10)::INTEGER AS source, (target+10)::INTEGER AS target, cost::FLOAT FROM edges',
     11, 27, false, false
 );
-WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated
+WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) deprecated on v3.4.0
  seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  11 |   6 |    1
@@ -57,7 +57,7 @@ SELECT * FROM pgr_trsp(
     'SELECT to_cost, target_id::int4, via_path
     FROM old_restrictions'
 );
-WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated
+WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) deprecated on v3.4.0
  seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |   6 |   4 |    1

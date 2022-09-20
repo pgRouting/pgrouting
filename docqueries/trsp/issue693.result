@@ -14,7 +14,7 @@ SELECT pgr_trsp(
           'SELECT gid as id, source::int4, target::int4, length::float8 as cost, length::float8 as reverse_cost FROM routing',
           1, 0.1, 1, 0.9, false, true
     );
-WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0
    pgr_trsp
 ---------------
  (0,-1,1,1000)

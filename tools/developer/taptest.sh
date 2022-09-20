@@ -59,6 +59,7 @@ do
         -f spanningtree.sql \
         -f types_check.sql \
         -f via_compare.sql \
+        -f astar_pgtap_tests.sql \
         -f tsp_pgtap_tests.sql
 
 

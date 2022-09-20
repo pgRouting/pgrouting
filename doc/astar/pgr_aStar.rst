@@ -92,18 +92,14 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_aStar(`Edges SQL`_, **start vid**, **end vid**
-   |            [, directed] [, heuristic] [, factor] [, epsilon])
-   | pgr_aStar(`Edges SQL`_, **start vid**, **end vids**
-   |            [, directed] [, heuristic] [, factor] [, epsilon])
-   | pgr_aStar(`Edges SQL`_, **start vids**, **end vid**
-   |            [, directed] [, heuristic] [, factor] [, epsilon])
-   | pgr_aStar(`Edges SQL`_, **start vids**, **end vids**
-   |            [, directed] [, heuristic] [, factor] [, epsilon])
-   | pgr_aStar(`Edges SQL`_, `Combinations SQL`_
-   |            [, directed] [, heuristic] [, factor] [, epsilon])
-   | RETURNS SET OF
-   |   (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
+   | pgr_aStar(`Edges SQL`_, **start vid**, **end vid**, [**options**])
+   | pgr_aStar(`Edges SQL`_, **start vid**, **end vids**, [**options**])
+   | pgr_aStar(`Edges SQL`_, **start vids**, **end vid**, [**options**])
+   | pgr_aStar(`Edges SQL`_, **start vids**, **end vids**, [**options**])
+   | pgr_aStar(`Edges SQL`_, `Combinations SQL`_, [**options**])
+   | **options:** ``[directed, heuristic, factor, epsilon]``
+
+   | RETURNS SET OF |old-generic-result|
    | OR EMPTY SET
 
 Optional parameters are `named parameters` and have a default value.
@@ -117,10 +113,10 @@ One to One
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_aStar(`Edges SQL`_, **start vid**, **end vid**
-   |            [, directed] [, heuristic] [, factor] [, epsilon])
+   | pgr_aStar(`Edges SQL`_, **start vid**, **end vid**, [**options**])
+   | **options:** ``[directed, heuristic, factor, epsilon]``
 
-   | RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+   | RETURNS SET OF |result-1-1|
    | OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertex :math:`12` on a **directed** graph
@@ -139,9 +135,10 @@ One to Many
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_aStar(`Edges SQL`_, **start vid**, **end vids**
-   |            [, directed] [, heuristic] [, factor] [, epsilon])
-   | RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
+   | pgr_aStar(`Edges SQL`_, **start vid**, **end vids**, [**options**])
+   | **options:** ``[directed, heuristic, factor, epsilon]``
+
+   | RETURNS SET OF |result-1-m|
    | OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertices :math:`\{10, 12\}` on a **directed**
@@ -160,9 +157,10 @@ Many to One
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_aStar(`Edges SQL`_, **start vids**, **end vid**
-   |            [, directed] [, heuristic] [, factor] [, epsilon])
-   | RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
+   | pgr_aStar(`Edges SQL`_, **start vids**, **end vid**, [**options**])
+   | **options:** ``[directed, heuristic, factor, epsilon]``
+
+   | RETURNS SET OF |result-m-1|
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 8\}` to vertex :math:`10` on an
@@ -181,9 +179,10 @@ Many to Many
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_aStar(`Edges SQL`_, **start vids**, **end vids**
-   |            [, directed] [, heuristic] [, factor] [, epsilon])
-   | RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   | pgr_aStar(`Edges SQL`_, **start vids**, **end vids**, [**options**])
+   | **options:** ``[directed, heuristic, factor, epsilon]``
+
+   | RETURNS SET OF |result-m-m|
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 8\}` to vertices :math:`\{10, 12\}` on a
@@ -202,9 +201,10 @@ Combinations
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_aStar(`Edges SQL`_, `Combinations SQL`_
-   |            [, directed] [, heuristic] [, factor] [, epsilon])
-   | RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   | pgr_aStar(`Edges SQL`_, `Combinations SQL`_, [**options**])
+   | **options:** ``[directed, heuristic, factor, epsilon]``
+
+   | RETURNS SET OF |result-m-m|
    | OR EMPTY SET
 
 :Example: Using a combinations table on a **directed** graph with factor
