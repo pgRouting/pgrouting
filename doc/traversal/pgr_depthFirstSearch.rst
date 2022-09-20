@@ -73,9 +73,11 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-    pgr_depthFirstSearch(`Edges SQL`_, **Root vid** [, directed] [, max_depth])
-    pgr_depthFirstSearch(`Edges SQL`_, **Root vids** [, directed] [, max_depth])
-    RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
+   | pgr_depthFirstSearch(`Edges SQL`_, **root vid**, [**options**])
+   | pgr_depthFirstSearch(`Edges SQL`_, **root vids**, [**options**])
+   | **options:** ``[directed, max_depth]``
+
+   | RETURNS SET OF |result-bfs|
 
 .. index::
     single: depthFirstSearch(Single vertex) - Proposed on v3.3
@@ -86,8 +88,10 @@ Single vertex
 .. admonition:: \ \
    :class: signatures
 
-    pgr_depthFirstSearch(`Edges SQL`_, **Root vid** [, directed] [, max_depth])
-    RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
+   | pgr_depthFirstSearch(`Edges SQL`_, **root vid**, [**options**])
+   | **options:** ``[directed, max_depth]``
+
+   | RETURNS SET OF |result-bfs|
 
 :Example: From root vertex :math:`6` on a **directed** graph with edges in
           ascending order of ``id``
@@ -105,8 +109,10 @@ Multiple vertices
 .. admonition:: \ \
    :class: signatures
 
-    pgr_depthFirstSearch(`Edges SQL`_, **Root vids** [, directed] [, max_depth])
-    RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
+   | pgr_depthFirstSearch(`Edges SQL`_, **root vids**, [**options**])
+   | **options:** ``[directed, max_depth]``
+
+   | RETURNS SET OF |result-bfs|
 
 :Example: From root vertices :math:`\{12, 6\}` on an **undirected** graph with
           **depth** :math:`<= 2` and edges in ascending order of ``id``
