@@ -60,9 +60,10 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-    pgr_lineGraph(`Edges SQL`_ [, directed])
-    RETURNS SET OF (seq, source, target, cost, reverse_cost)
-    OR EMPTY SET
+   | pgr_lineGraph(`Edges SQL`_, [``directed``])
+
+   | RETURNS SET OF |result-lineg|
+   | OR EMPTY SET
 
 :Example: For a **directed** graph
 
