@@ -13,7 +13,7 @@
   `Latest <https://docs.pgrouting.org/latest/en/cuthillMckeeOrdering.html>`__
   (`3.4 <https://docs.pgrouting.org/3.4/en/cuthillMckeeOrdering.html>`__)
 
-cuthillMckeeOrdering - Experimental
+``pgr_cuthillMckeeOrdering`` - Experimental
 ===============================================================================
 
 ``cuthillMckeeOrdering`` — Returns the reverse Cuthill-Mckee ordering of an undirected
@@ -32,7 +32,7 @@ graphs
 
 * Version 3.4.0
 
-  * New **experimental** signature:
+  * New **experimental** function
 
 
 Description
@@ -50,17 +50,17 @@ The vertices are basically assigned a breadth-first search order, except that at
 each step, the adjacent vertices are placed in the queue in order of increasing degree.
 
 There are 3 versions defined in the Boost Graph Library. Here, we have implemented only
-version 2 as it is most suitable and practical for users. In this version we don't have to 
-provide the starting vertex in the query. Whereas, in the version 1 we have to provide the 
-starting vertex and it gives result only for single component. Version 2 is applicable for one 
+version 2 as it is most suitable and practical for users. In this version we don't have to
+provide the starting vertex in the query. Whereas, in the version 1 we have to provide the
+starting vertex and it gives result only for single component. Version 2 is applicable for one
 and more than one components as it finds the starting vertex itself using the pseudo-peripheral
-pair heuiristic approach among each component. Maybe in future, we will also implemenent the 
+pair heuiristic approach among each component. Maybe in future, we will also implemenent the
 version 1.
 
 **The main Characteristics are:**
 
 - The implementation is for **undirected** graphs.
-- The bandwidth minimization problems are considered NP-complete problems. 
+- The bandwidth minimization problems are considered NP-complete problems.
 - The running time complexity is: :math:`O(m log(m)|V|)`
 
   - where :math:`|V|` is the number of vertices,
@@ -75,10 +75,10 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-    cuthillMckeeOrdering(`Edges SQL`_)
+   | pgr_cuthillMckeeOrdering(`Edges SQL`_)
 
-    RETURNS SET OF (seq, node)
-    OR EMPTY SET
+   | RETURNS SET OF |result-node-order|
+   | OR EMPTY SET
 
 :Example: Graph ordering of pgRouting :doc:`sampledata`
 
@@ -91,9 +91,9 @@ Signatures
 Parameters
 -------------------------------------------------------------------------------
 
-.. include:: ordering-family.rst
-   :start-after: parameters_start
-   :end-before: parameters_end
+.. include:: pgRouting-concepts.rst
+   :start-after: only_edge_param_start
+   :end-before: only_edge_param_end
 
 Inner Queries
 -------------------------------------------------------------------------------
@@ -103,31 +103,32 @@ Edges SQL
 
 .. include:: pgRouting-concepts.rst
    :start-after: basic_edges_sql_start
-   :end-before: basic_edges_sql_end 
+   :end-before: basic_edges_sql_end
 
-Return columns
+Result Columns
 -------------------------------------------------------------------------------
 
-.. include:: ordering-family.rst
-    :start-after: result_columns_start
-    :end-before: result_columns_end
+Returns SET OF ``(seq, node)``
+
+===============  =========== ======================================
+Column           Type        Description
+===============  =========== ======================================
+``seq``           ``BIGINT``  Sequence of the order starting from 1.
+``node``          ``BIGINT``  New ordering in reverse order.
+===============  =========== ======================================
 
 See Also
 -------------------------------------------------------------------------------
 
 * The queries use the :doc:`sampledata` network.
-
-.. see also start
-
 * `Boost: Cuthill-McKee Ordering
   <https://www.boost.org/libs/graph/doc/cuthill_mckee_ordering.html>`__
-* `Wikipedia: Cuthill-McKee Ordering <https://en.wikipedia.org/wiki/Cuthill%E2%80%93McKee_algorithm>`__
-
-.. see also end
+* `Wikipedia: Cuthill-McKee Ordering
+  <https://en.wikipedia.org/wiki/Cuthill%E2%80%93McKee_algorithm>`__
 
 .. rubric:: Indices and tables
 
 * :ref:`genindex`
-* :ref:`search`     
-  
-      
+* :ref:`search`
+
+
