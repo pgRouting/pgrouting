@@ -59,9 +59,10 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-    pgr_prim(`Edges SQL`_)
-    RETURNS SET OF (edge, cost)
-    OR EMPTY SET
+   | pgr_prim(`Edges SQL`_)
+
+   | RETURNS SET OF |result-mst|
+   | OR EMPTY SET
 
 
 :Example: Minimum spanning forest of a subgraph
