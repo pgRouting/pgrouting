@@ -70,8 +70,9 @@ The pgr_transitiveClosure function has the following signature:
 .. admonition:: \ \
    :class: signatures
 
-    pgr_transitiveClosure(`Edges SQL`_)
-    RETURNS SETOF (seq, vid, target_array)
+   | pgr_transitiveClosure(`Edges SQL`_)
+
+   | RETURNS SETOF |result-closure|
 
 :Example: Rechability of a subgraph
 
