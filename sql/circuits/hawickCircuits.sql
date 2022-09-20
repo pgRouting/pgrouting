@@ -59,5 +59,5 @@ IS 'pgr_hawickCircuits
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Documentation:
-    - ${PROJECT_DOC_LINK}/hawickCircuits.html
+    - ${PROJECT_DOC_LINK}/pgr_hawickCircuits.html
 ';
