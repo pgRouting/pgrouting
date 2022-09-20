@@ -51,5 +51,6 @@ div.signatures {
 
 code.literal {
     color: #404040;
-    background-color: #fbfbfb;
+    background-color: #e8e8e8;
+    font-size: 100%
 }
