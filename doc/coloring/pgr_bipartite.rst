@@ -64,10 +64,10 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-    pgr_bipartite(`Edges SQL`_)
+   | pgr_bipartite(`Edges SQL`_)
 
-    RETURNS SET OF (vertex_id, color_id)
-    OR EMPTY SET
+   | RETURNS SET OF |result-node-color|
+   | OR EMPTY SET
 
 :Example: When the graph is bipartite
 

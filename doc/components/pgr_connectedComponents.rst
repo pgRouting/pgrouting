@@ -75,10 +75,10 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-    pgr_connectedComponents(`Edges SQL`_)
+   | pgr_connectedComponents(`Edges SQL`_)
 
-    RETURNS SET OF (seq, component, node)
-    OR EMPTY SET
+   | RETURNS SET OF |result-component-V|
+   | OR EMPTY SET
 
 :Example: The connected components of the graph
 
@@ -112,7 +112,7 @@ Result Columns
 
 .. return_componentsV_start
 
-Returns set of ``(seq, component, node)``
+Returns set of |result-component-V|
 
 .. list-table::
    :width: 81

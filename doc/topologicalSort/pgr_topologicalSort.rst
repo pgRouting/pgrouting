@@ -69,9 +69,10 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-    pgr_topologicalSort(`Edges SQL`_)
-    RETURNS SET OF (seq, sorted_v)
-    OR EMPTY SET
+   | pgr_topologicalSort(`Edges SQL`_)
+
+   | RETURNS SET OF |result-toposort|
+   | OR EMPTY SET
 
 :Example: Topologically sorting the graph
 
@@ -99,7 +100,7 @@ Edges SQL
 Result Columns
 -------------------------------------------------------------------------------
 
-Returns set of ``(seq, sorted_v)``
+Returns set of |result-toposort|
 
 .. list-table::
    :width: 81

@@ -93,9 +93,10 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-    pgr_maxCardinalityMatch(`Edges SQL`_)
-    RETURNS SET OF (edge)
-    OR EMPTY SET
+   | pgr_maxCardinalityMatch(`Edges SQL`_)
+
+   | RETURNS SET OF |result-edge|
+   | OR EMPTY SET
 
 :Example: Using all edges.
 

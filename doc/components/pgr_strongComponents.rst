@@ -73,9 +73,10 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-    pgr_strongComponents(`Edges SQL`_)
-    RETURNS SET OF (seq, component, node)
-    OR EMPTY SET
+   | pgr_strongComponents(`Edges SQL`_)
+
+   | RETURNS SET OF |result-component-V|
+   | OR EMPTY SET
 
 :Example: The strong components of the graph
 

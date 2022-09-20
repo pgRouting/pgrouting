@@ -65,10 +65,10 @@ One Via
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_dijkstraVia(`Edges SQL`_, **via vertices**
-   |            [, directed] [, strict] [, U_turn_on_edge]) - Proposed on v2.2
-   | RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
-   |                 node, edge, cost, agg_cost, route_agg_cost)
+   | pgr_dijkstraVia(`Edges SQL`_, **via vertices**, [**options**])
+   | **options:** ``[, directed, strict, U_turn_on_edge]``
+
+   | RETURNS SET OF |via-result|
    | OR EMPTY SET
 
 :Example: Find the route that visits the vertices :math:`\{5, 1, 8\}` in that

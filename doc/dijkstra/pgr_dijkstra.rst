@@ -75,7 +75,6 @@ Description
     :start-after: dijkstra_details_start
     :end-before: dijkstra_details_end
 
-- Running time: :math:`O(| start\_vids | * (V \log V + E))`
 
 Signatures
 -------------------------------------------------------------------------------
@@ -85,13 +84,14 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-    pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  [, directed])
-    pgr_dijkstra(`Edges SQL`_, **start vid**, **end vids** [, directed])
-    pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid**  [, directed])
-    pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids** [, directed])
-    pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_ [, directed])
-    RETURNS (seq, path_seq [, start vid] [, end vid], node, edge, cost, agg_cost)
-    OR EMPTY SET
+   | pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  , [``directed``])
+   | pgr_dijkstra(`Edges SQL`_, **start vid**, **end vids** , [``directed``])
+   | pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid**  , [``directed``])
+   | pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids** , [``directed``])
+   | pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_ , [``directed``])
+
+   | RETURNS SET OF |old-generic-result|
+   | OR EMPTY SET
 
 .. index::
     single: dijkstra(One to One)
@@ -102,9 +102,10 @@ One to One
 .. admonition:: \ \
    :class: signatures
 
-    pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  [, directed])
-    RETURNS (seq, path_seq, node, edge, cost, agg_cost)
-    OR EMPTY SET
+   | pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  , [``directed``])
+
+   | RETURNS SET OF |result-1-1|
+   | OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertex  :math:`10` on a **directed** graph
 
@@ -121,9 +122,10 @@ One to Many
 .. admonition:: \ \
    :class: signatures
 
-    pgr_dijkstra(`Edges SQL`_, **start vid**, **end vids** [, directed])
-    RETURNS (seq, path_seq, end vid, node, edge, cost, agg_cost)
-    OR EMPTY SET
+   | pgr_dijkstra(`Edges SQL`_, **start vid**, **end vids** , [``directed``])
+
+   | RETURNS SET OF |result-1-m|
+   | OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertices :math:`\{10, 17\}` on a **directed**
 
@@ -140,9 +142,10 @@ Many to One
 .. admonition:: \ \
    :class: signatures
 
-    pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid** [, directed])
-    RETURNS (seq, path_seq, start vid, node, edge, cost, agg_cost)
-    OR EMPTY SET
+   | pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid** , [``directed``])
+
+   | RETURNS SET OF |result-m-1|
+   | OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 1\}` to vertex :math:`17` on a **directed**
           graph
@@ -160,9 +163,11 @@ Many to Many
 .. admonition:: \ \
    :class: signatures
 
-    pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids** [, directed])
-    RETURNS (seq, path_seq, start vid, end vid, node, edge, cost, agg_cost)
-    OR EMPTY SET
+   | pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids** , [``directed``])
+   | RETURNS SET OF |result-m-m|
+
+   | RETURNS (seq, path_seq, start vid, end vid, node, edge, cost, agg_cost)
+   | OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 17\}` on an
           **undirected** graph
@@ -180,9 +185,10 @@ Combinations
 .. admonition:: \ \
    :class: signatures
 
-   pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_ [, directed])
-   RETURNS (seq, path_seq, start vid, end vid, node, edge, cost, agg_cost)
-   OR EMPTY SET
+   | pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_ , [``directed``])
+
+   | RETURNS SET OF |result-m-m|
+   | OR EMPTY SET
 
 :Example: Using a combinations table on an **undirected** graph
 
@@ -586,7 +592,7 @@ The following examples find the path for :math:`\{6\}\rightarrow\{10\}`
    :start-after: -- q153
    :end-before: -- q154
 
-36) Using `Combinations`_
+37) Using `Combinations`_
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries

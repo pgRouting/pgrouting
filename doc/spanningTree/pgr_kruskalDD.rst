@@ -59,9 +59,10 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-    pgr_kruskalDD(`Edges SQL`_, **Root vid**, **distance**)
-    pgr_kruskalDD(`Edges SQL`_, **Root vids**, **distance**)
-    RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
+   | pgr_kruskalDD(`Edges SQL`_, **root vid**, **distance**)
+   | pgr_kruskalDD(`Edges SQL`_, **root vids**, **distance**)
+
+   | RETURNS SET OF |result-bfs|
 
 .. index::
     single: kruskalDD(Single vertex)
@@ -72,8 +73,9 @@ Single vertex
 .. admonition:: \ \
    :class: signatures
 
-    pgr_kruskalDD(`Edges SQL`_, **Root vid**, **distance**)
-    RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
+   | pgr_kruskalDD(`Edges SQL`_, **root vid**, **distance**)
+
+   | RETURNS SET OF |result-bfs|
 
 :Example: The Minimum Spanning Tree starting on vertex :math:`6` with
           :math:`distance \leq 3.5`
@@ -91,8 +93,9 @@ Multiple vertices
 .. admonition:: \ \
    :class: signatures
 
-    pgr_kruskalDD(`Edges SQL`_, **Root vids**, **distance**)
-    RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
+   | pgr_kruskalDD(`Edges SQL`_, **root vids**, **distance**)
+
+   | RETURNS SET OF |result-bfs|
 
 :Example: The Minimum Spanning Tree starting on vertices :math:`\{9, 6\}` with
           :math:`distance \leq 3.5`

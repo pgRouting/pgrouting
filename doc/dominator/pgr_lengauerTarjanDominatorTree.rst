@@ -59,9 +59,10 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-    pgr_lengauerTarjanDominatorTree(`Edges SQL`_, **root vertex**)
-    RETURNS SET OF (seq, vertex_id, idom)
-    OR EMPTY SET
+   | pgr_lengauerTarjanDominatorTree(`Edges SQL`_, **root vertex**)
+
+   | RETURNS SET OF |result-idom|
+   | OR EMPTY SET
 
 
 .. index::
@@ -80,7 +81,7 @@ Parameters
 =============== ============ =================================================
 Column          Type           Description
 =============== ============ =================================================
-**Edges SQL**    ``TEXT``    SQL query as described above.
+`Edges SQL`_     ``TEXT``    SQL query as described above.
 **root vertex**  ``BIGINT``  Identifier of the starting vertex.
 =============== ============ =================================================
 
@@ -103,9 +104,9 @@ Returns set of ``(seq, vertex_id, idom)``
 ============== =========== =================================================
 Column         Type        Description
 ============== =========== =================================================
-**seq**        ``INTEGER`` Sequential value starting from **1**.
-**vertex_id**  ``BIGINT``  Identifier of vertex .
-**idom**       ``BIGINT``  Immediate dominator of vertex.
+``seq``        ``INTEGER`` Sequential value starting from **1**.
+``vertex_id``  ``BIGINT``  Identifier of vertex .
+``idom``       ``BIGINT``  Immediate dominator of vertex.
 ============== =========== =================================================
 
 Additional Examples
