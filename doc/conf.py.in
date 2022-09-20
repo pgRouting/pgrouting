@@ -333,7 +333,7 @@ linkcheck_ignore = [
     r'https://docs.pgrouting.org/.*/.*/DFS-category.html',
     r'https://docs.pgrouting.org/.*/.*/reference.html',
     r'https://docs.pgrouting.org/.*/.*/pgr_degree.html',
-    r'https://docs.pgrouting.org/.*/.*/cuthillMckeeOrdering.html',
+    r'https://docs.pgrouting.org/.*/.*/pgr_cuthillMckeeOrdering.html',
     r'https://docs.pgrouting.org/.*/.*/ordering-family.html',
     r'https://docs.pgrouting.org/.*/.*/hawickCircuits.html',
     r'https://docs.pgrouting.org/.*/.*/pgr_findCloseEdges.html',
@@ -356,6 +356,8 @@ rst_epilog="""
 .. |ANY-INTEGER| replace:: :abbr:`ANY-INTEGER(SMALLINT, INTEGER, BIGINT)`
 .. |ANY-NUMERICAL| replace:: :abbr:`ANY-NUMERICAL(SMALLINT, INTEGER, BIGINT, REAL, FLOAT)`
 .. |generic-result| replace:: ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
+.. |ksp-result| replace:: ``(seq, path_id, path_seq, node, edge, cost, agg_cost)``
+.. |short-generic-result| replace:: ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
 .. |via-result| replace:: ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost, route_agg_cost)``
 .. |matrix-result| replace:: ``(start_vid, end_vid, agg_cost)``
 .. |old-generic-result| replace:: ``(seq, path_seq, [start_vid], [end_vid], node, edge, cost, agg_cost)``
@@ -364,7 +366,32 @@ rst_epilog="""
 .. |result-m-1| replace:: ``(seq, path_seq, start_vid, node, edge, cost, agg_cost)``
 .. |result-m-m| replace:: ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
 .. |result-bfs| replace:: ``(seq, depth, start_vid, node, edge, cost, agg_cost)``
+.. |result-mst| replace:: ``(edge, cost)``
 .. |result-1-1-no-seq| replace:: ``(seq, node, edge, cost, agg_cost)``
+.. |result-node-color| replace:: ``(vertex_id, color_id)``
+.. |result-edge-color| replace:: ``(edge_id, color_id)``
+.. |result-node| replace:: ``(node)``
+.. |result-edge| replace:: ``(edge)``
+.. |result-node-order| replace:: ``(seq, node)``
+.. |result-toposort| replace:: ``(seq, sorted_v)``
+.. |result-closure| replace:: ``(seq, vid, target_array)``
+.. |result-component-E| replace:: ``(seq, component, edge)``
+.. |result-component-V| replace:: ``(seq, component, node)``
+.. |result-component-make| replace:: ``(seq, start_vid, end_vid)``
+.. |result-contract| replace:: ``(type, id, contracted_vertices, source, target, cost)``
+.. |result-idom| replace:: ``(seq, vertex_id, idom)``
+.. |result-dij-dd| replace:: ``(seq, [from_v,] node, edge, cost, agg_cost)``
+.. |result-dij-dd-m| replace:: ``(seq, from_v, node, edge, cost, agg_cost)``
+.. |result-linegf| replace:: ``(seq, source, target, cost, edge)``
+.. |result-lineg| replace:: ``(seq, source, target, cost, reverse_cost)``
+.. |result-flow| replace:: ``(seq, edge, start_vid, end_vid, flow, residual_capacity)``
+.. |result-flow-mincost| replace:: ``(seq, edge, source, target, flow, residual_capacity, cost, agg_cost)``
+.. |result-disjoint| replace:: ``(seq, path_id, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)``
+.. |result-disjoint-1-1| replace:: ``(seq, path_id, path_seq, node, edge, cost, agg_cost)``
+.. |result-disjoint-1-m| replace:: ``(seq, path_id, path_seq, end_vid, node, edge, cost, agg_cost)``
+.. |result-disjoint-m-1| replace:: ``(seq, path_id, path_seq, start_vid, node, edge, cost, agg_cost)``
+.. |result-disjoint-m-m| replace:: ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
+.. |result-mincut| replace:: ``(seq, edge, cost, mincut)``
 
 """
 
