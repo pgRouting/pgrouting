@@ -65,8 +65,9 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-    pgr_isPlanar(`Edges SQL`)
-    RETURNS BOOLEAN
+   | pgr_isPlanar(`Edges SQL`)
+
+   | RETURNS ``BOOLEAN``
 
 .. literalinclude:: doc-pgr_isPlanar.queries
    :start-after: -- q1
@@ -97,7 +98,7 @@ Returns a boolean ``(pgr_isplanar)``
 =================  =========== ==========================================
 Column             Type        Description
 =================  =========== ==========================================
-**pgr_isplanar**   ``BOOLEAN`` - `true` when the graph is planar.
+``pgr_isplanar``   ``BOOLEAN`` - `true` when the graph is planar.
                                - `false` when the graph is not planar.
 =================  =========== ==========================================
 
