@@ -41,8 +41,10 @@ edges into a new table.
 
 .. parsed-literal::
 
-   pgr_nodenetwork(edge_table, tolerance, id, text the_geom, table_ending, rows_where, outall)
-   RETURNS TEXT
+   | pgr_nodenetwork(edge_table, tolerance, [**options**])
+   | **options:** ``[id, text the_geom, table_ending, rows_where, outall]``
+
+   | RETURNS ``TEXT``
 
 .. rubric:: Availability
 

@@ -108,17 +108,15 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vid**, **end vid**
-   |         [, directed] [, driving_side])
-   | pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vid**, **end vids**
-   |         [, directed] [, driving_side])
-   | pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vids**, **end vid**
-   |         [, directed] [, driving_side])
-   | pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vids**, **end vids**
-   |         [, directed] [, driving_side])
-   | pgr_withPointsCost(`Edges SQL`_, 'Points SQL', `Combinations SQL`_
-   |         [, directed] [, driving_side])
-   | RETURNS (start_vid, end_vid, agg_cost)
+   | pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vid**, **end vid**, **[options**])
+   | pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vid**, **end vids**, **[options**])
+   | pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vids**, **end vid**, **[options**])
+   | pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vids**, **end vids**, **[options**])
+   | pgr_withPointsCost(`Edges SQL`_, 'Points SQL', `Combinations SQL`_, **[options**])
+   | **options:**  ``[directed, driving_side]``
+
+   | RETURNS SET OF |matrix-pid|
+   | OR EMPTY SET
 
 .. note:: There is no **details** flag, unlike the other members of the
    withPoints family of functions.
@@ -132,9 +130,11 @@ One to One
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsCost(`Edges SQL`_, **start vid**, **end vid**
-   |         [, directed] [, driving_side])
-   | RETURNS (start_vid, end_vid, agg_cost)
+   | pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vid**, **end vid**, **[options**])
+   | **options:**  ``[directed, driving_side]``
+
+   | RETURNS SET OF |matrix-pid|
+   | OR EMPTY SET
 
 :Example: From point :math:`1` to vertex :math:`10` with defaults
 
@@ -151,9 +151,11 @@ One to Many
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vid**, **end vids**
-   |         [, directed] [, driving_side])
-   | RETURNS (start_vid, end_vid, agg_cost)
+   | pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vid**, **end vids**, **[options**])
+   | **options:**  ``[directed, driving_side]``
+
+   | RETURNS SET OF |matrix-pid|
+   | OR EMPTY SET
 
 :Example: From point :math:`1` to point :math:`3` and vertex :math:`7` on an
           undirected graph
@@ -171,9 +173,11 @@ Many to One
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vids**, **end vid**
-   |         [, directed] [, driving_side])
-   | RETURNS (start_vid, end_vid, agg_cost)
+   | pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vids**, **end vid**, **[options**])
+   | **options:**  ``[directed, driving_side]``
+
+   | RETURNS SET OF |matrix-pid|
+   | OR EMPTY SET
 
 :Example: From point :math:`1` and vertex :math:`6` to point :math:`3`
 
@@ -190,9 +194,11 @@ Many to Many
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vids**, **end vids**
-   |         [, directed] [, driving_side])
-   | RETURNS (start_vid, end_vid, agg_cost)
+   | pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vids**, **end vids**, **[options**])
+   | **options:**  ``[directed, driving_side]``
+
+   | RETURNS SET OF |matrix-pid|
+   | OR EMPTY SET
 
 :Example: From point :math:`15` and vertex :math:`6`  to point :math:`3` and
           vertex :math:`1`
@@ -210,9 +216,11 @@ Combinations
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsCost(`Edges SQL`_, 'Points SQL', `Combinations SQL`_
-   |         [, directed] [, driving_side])
-   | RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   | pgr_withPointsCost(`Edges SQL`_, 'Points SQL', `Combinations SQL`_, **[options**])
+   | **options:**  ``[directed, driving_side]``
+
+   | RETURNS SET OF |matrix-pid|
+   | OR EMPTY SET
 
 :Example: Two combinations
 

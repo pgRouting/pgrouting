@@ -75,13 +75,11 @@ One Via
 .. admonition:: \ \
    :class: signatures
 
-   pgr_trspVia(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **via
-   vertices**, [options])
+   | pgr_trspVia_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **via vertices**, [options])
+   | **options:** ``[directed, strict, U_turn_on_edge]``
 
-   :[options]: [directed, strict, U_turn_on_edge]
-
-   RETURNS SET OF |via-result|
-   OR EMPTY SET
+   | RETURNS SET OF |via-result|
+   | OR EMPTY SET
 
 :Example: Find the route that visits the vertices :math:`\{-6, 15, -5\}` in that
           order on an directed graph.

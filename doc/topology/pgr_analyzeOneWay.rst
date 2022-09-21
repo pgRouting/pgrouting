@@ -75,13 +75,13 @@ table <edge_table>_vertices_pgr that stores the vertices information.
 Signatures
 -------------------------------------------------------------------------------
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-	text pgr_analyzeOneWay(geom_table text,
-			       text[] s_in_rules, text[] s_out_rules,
-                               text[] t_in_rules, text[] t_out_rules,
-			       text oneway='oneway', text source='source', text target='target',
-			       boolean two_way_if_null=true);
+   | pgr_analyzeOneWay(**geom_table**, **s_in_rules**, **s_out_rules**, **t_in_rules**, **t_out_rules**, [**options**]
+   | **options:** ``[oneway, source, target, two_way_if_null]``
+
+   | RETURNS ``TEXT``
 
 Parameters
 -------------------------------------------------------------------------------

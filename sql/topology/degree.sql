@@ -30,7 +30,7 @@ CREATE FUNCTION pgr_degree(
 
   dryrun BOOLEAN DEFAULT false,
 
-  OUT id BIGINT,
+  OUT node BIGINT,
   OUT degree BIGINT
 )
 RETURNS SETOF RECORD AS

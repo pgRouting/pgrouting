@@ -40,10 +40,12 @@ Get complete details of pgRouting version information
 Signatures
 -------------------------------------------------------------------------------
 
-.. Parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-   pgr_full_version()
-   RETURNS (version, build_type, compile_date, library, system, PostgreSQL, compiler, boost, hash)
+   | pgr_full_version()
+
+   | RETURNS |result-version|
 
 
 :Example: Information about when this documentation was built

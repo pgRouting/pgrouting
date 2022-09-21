@@ -45,8 +45,10 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   pgr_degree(`Edges SQL`_ , `Vertex SQL`_ [, dryrun])
-   RETURNS SETOF (id, degree)
+   | pgr_degree(`Edges SQL`_ , `Vertex SQL`_, [``dryrun``])
+
+   | RETURNS SETOF (node, degree)
+   | OR EMTPY SET
 
 :Example: Extracting the vertex information
 
@@ -137,9 +139,9 @@ Result Columns
    * - Column
      - Type
      - Description
-   * - ``id``
+   * - ``node``
      - ``BIGINT``
-     - Identifier of the first end point vertex of the edge.
+     - Vertex identifier
    * - ``degree``
      - ``BIGINT``
      - Number of edges that are incident to the vertex ``id``

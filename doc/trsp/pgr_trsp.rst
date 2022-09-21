@@ -95,11 +95,11 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vid**, **end vid**, [directed])
-   | pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vid**, **end vids**, [ directed])
-   | pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vids**, **end vid**, [directed])
-   | pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vids**, **end vids**, [directed])
-   | pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, [directed])
+   | pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vid**, **end vid**, [``directed``])
+   | pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vid**, **end vids**, [``directed``])
+   | pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vids**, **end vid**, [``directed``])
+   | pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vids**, **end vids**, [``directed``])
+   | pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, [``directed``])
 
    | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
@@ -113,7 +113,7 @@ One to One
 .. admonition:: \ \
    :class: signatures
 
-   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vid**, **end vid**, [directed])
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vid**, **end vid**, [``directed``])
 
    | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
@@ -133,7 +133,7 @@ One to Many
 .. admonition:: \ \
    :class: signatures
 
-   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vid**, **end vids**, [directed])
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vid**, **end vids**, [``directed``])
 
    | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
@@ -154,8 +154,7 @@ Many to One
 .. admonition:: \ \
    :class: signatures
 
-   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vids**, **end vid**,
-   [directed])
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vids**, **end vid**, [``directed``])
 
    | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
@@ -177,7 +176,7 @@ Many to Many
    :class: signatures
 
    pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vids**, **end vids**,
-   [directed])
+   [``directed``])
 
    | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
@@ -198,7 +197,7 @@ Combinations
 .. admonition:: \ \
    :class: signatures
 
-   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, [directed])
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, [``directed``])
 
    | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET

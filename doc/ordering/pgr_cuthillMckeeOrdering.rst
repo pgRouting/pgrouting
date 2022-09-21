@@ -10,13 +10,13 @@
 |
 
 * **Supported versions:**
-  `Latest <https://docs.pgrouting.org/latest/en/cuthillMckeeOrdering.html>`__
-  (`3.4 <https://docs.pgrouting.org/3.4/en/cuthillMckeeOrdering.html>`__)
+  `Latest <https://docs.pgrouting.org/latest/en/pgr_cuthillMckeeOrdering.html>`__
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_cuthillMckeeOrdering.html>`__)
 
 ``pgr_cuthillMckeeOrdering`` - Experimental
 ===============================================================================
 
-``cuthillMckeeOrdering`` — Returns the reverse Cuthill-Mckee ordering of an undirected
+``pgr_cuthillMckeeOrdering`` — Returns the reverse Cuthill-Mckee ordering of an undirected
 graphs
 
 .. figure:: images/boost-inside.jpeg
@@ -41,21 +41,10 @@ Description
 In numerical linear algebra, the Cuthill-McKee algorithm (CM), named after
 Elizabeth Cuthill and James McKee, is an algorithm to permute a sparse
 matrix that has a symmetric sparsity pattern into a band matrix form with a
-small bandwidth. The reverse Cuthill-McKee algorithm (RCM) due to Alan George
-and Joseph Liu is the same algorithm but with the resulting index numbers reversed.
-In practice this generally results in less fill-in than the CM ordering when
-Gaussian elimination is applied.
+small bandwidth.
 
 The vertices are basically assigned a breadth-first search order, except that at
 each step, the adjacent vertices are placed in the queue in order of increasing degree.
-
-There are 3 versions defined in the Boost Graph Library. Here, we have implemented only
-version 2 as it is most suitable and practical for users. In this version we don't have to
-provide the starting vertex in the query. Whereas, in the version 1 we have to provide the
-starting vertex and it gives result only for single component. Version 2 is applicable for one
-and more than one components as it finds the starting vertex itself using the pseudo-peripheral
-pair heuiristic approach among each component. Maybe in future, we will also implemenent the
-version 1.
 
 **The main Characteristics are:**
 

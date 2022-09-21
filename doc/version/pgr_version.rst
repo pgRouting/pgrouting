@@ -56,7 +56,9 @@ Signature
 .. admonition:: \ \
    :class: signatures
 
-	TEXT pgr_version();
+	| pgr_version();
+
+   | RETURNS TEXT
 
 :Example: pgRouting Version for this documentation
 
