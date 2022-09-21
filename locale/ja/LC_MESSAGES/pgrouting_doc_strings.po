@@ -134,7 +134,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-09-21 17:25+0000\n"
+"POT-Creation-Date: 2022-09-21 18:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -669,6 +669,9 @@ msgid "Restrictions SQL"
 msgstr ""
 
 msgid "``path``"
+msgstr ""
+
+msgid "``ARRAY`` [**ANY-INTEGER**]"
 msgstr ""
 
 msgid ""
@@ -6411,7 +6414,7 @@ msgstr ""
 msgid "**One**: **ANY-INTEGER**"
 msgstr ""
 
-msgid "**Many**: ``ARRAY`` [ **ANY-INTEGER** ]"
+msgid "**Many**: ``ARRAY`` [**ANY-INTEGER**]"
 msgstr ""
 
 msgid ""
@@ -8403,6 +8406,16 @@ msgstr ""
 msgid "``FAIL`` when the analysis was not completed due to an error."
 msgstr ""
 
+#, fuzzy
+msgid "pgr_analyzeGraph(**edge_table**, **tolerance**, [**options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+
+msgid "**options:** ``[the_geom, id, source, target, rows_where]``"
+msgstr ""
+
+msgid "RETURNS ``VARCHAR``"
+msgstr ""
+
 msgid "Prerequisites"
 msgstr "前提条件"
 
@@ -8718,6 +8731,17 @@ msgid ""
 "identify both `source` and `sink` nodes so that you can look at those "
 "areas of your network to make repairs and/or report the problem back to "
 "your data vendor."
+msgstr ""
+
+msgid ""
+"pgr_analyzeOneWay(**geom_table**, **s_in_rules**, **s_out_rules**, "
+"**t_in_rules**, **t_out_rules**, [**options**]"
+msgstr ""
+
+msgid "**options:** ``[oneway, source, target, two_way_if_null]``"
+msgstr ""
+
+msgid "RETURNS ``TEXT``"
 msgstr ""
 
 msgid "s_in_rules"
@@ -10281,6 +10305,12 @@ msgstr ""
 msgid "``FAIL`` when the network topology was not built due to an error."
 msgstr ""
 
+msgid "pgr_createTopology(edge_table, tolerance, [**options**])"
+msgstr ""
+
+msgid "**options:** ``[the_geom, id, source, target, rows_where, clean]``"
+msgstr ""
+
 msgid "The topology creation function accepts the following parameters:"
 msgstr ""
 
@@ -10509,6 +10539,11 @@ msgid "``FAIL`` when the vertices table was not reconstructed due to an error."
 msgstr ""
 
 msgid ""
+"pgr_createVerticesTable(edge_table, [``the_geom, source, target, "
+"rows_where``])"
+msgstr ""
+
+msgid ""
 "The reconstruction of the vertices table  function accepts the following "
 "parameters:"
 msgstr ""
@@ -10647,18 +10682,24 @@ msgstr ""
 msgid ":doc:`pgr_analyzeOneWay` to analyze directionality of the edges."
 msgstr ""
 
+#, fuzzy
 msgid ""
 "**Supported versions:** `Latest "
-"<https://docs.pgrouting.org/latest/en/cuthillMckeeOrdering.html>`__ (`3.4"
-" <https://docs.pgrouting.org/3.4/en/cuthillMckeeOrdering.html>`__)"
+"<https://docs.pgrouting.org/latest/en/pgr_cuthillMckeeOrdering.html>`__ "
+"(`3.4 "
+"<https://docs.pgrouting.org/3.4/en/pgr_cuthillMckeeOrdering.html>`__)"
 msgstr ""
+"**サポートされないバージョン:** `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_eucledianTSP.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_eucledianTSP.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_eucledianTSP>`__"
 
 msgid "``pgr_cuthillMckeeOrdering`` - Experimental"
 msgstr ""
 
 msgid ""
-"``cuthillMckeeOrdering`` — Returns the reverse Cuthill-Mckee ordering of "
-"an undirected graphs"
+"``pgr_cuthillMckeeOrdering`` — Returns the reverse Cuthill-Mckee ordering"
+" of an undirected graphs"
 msgstr ""
 
 msgid "Version 3.4.0"
@@ -10668,27 +10709,13 @@ msgid ""
 "In numerical linear algebra, the Cuthill-McKee algorithm (CM), named "
 "after Elizabeth Cuthill and James McKee, is an algorithm to permute a "
 "sparse matrix that has a symmetric sparsity pattern into a band matrix "
-"form with a small bandwidth. The reverse Cuthill-McKee algorithm (RCM) "
-"due to Alan George and Joseph Liu is the same algorithm but with the "
-"resulting index numbers reversed. In practice this generally results in "
-"less fill-in than the CM ordering when Gaussian elimination is applied."
+"form with a small bandwidth."
 msgstr ""
 
 msgid ""
 "The vertices are basically assigned a breadth-first search order, except "
 "that at each step, the adjacent vertices are placed in the queue in order"
 " of increasing degree."
-msgstr ""
-
-msgid ""
-"There are 3 versions defined in the Boost Graph Library. Here, we have "
-"implemented only version 2 as it is most suitable and practical for "
-"users. In this version we don't have to provide the starting vertex in "
-"the query. Whereas, in the version 1 we have to provide the starting "
-"vertex and it gives result only for single component. Version 2 is "
-"applicable for one and more than one components as it finds the starting "
-"vertex itself using the pseudo-peripheral pair heuiristic approach among "
-"each component. Maybe in future, we will also implemenent the version 1."
 msgstr ""
 
 msgid "The implementation is for **undirected** graphs."
@@ -10860,9 +10887,13 @@ msgstr ""
 msgid "Calculates the degree of the vertices of an **undirected** graph"
 msgstr ""
 
-msgid ""
-"pgr_degree(`Edges SQL`_ , `Vertex SQL`_ [, dryrun]) RETURNS SETOF (id, "
-"degree)"
+msgid "pgr_degree(`Edges SQL`_ , `Vertex SQL`_, [``dryrun``])"
+msgstr ""
+
+msgid "RETURNS SETOF (node, degree)"
+msgstr ""
+
+msgid "OR EMTPY SET"
 msgstr ""
 
 msgid "Extracting the vertex information"
@@ -10906,6 +10937,9 @@ msgid ""
 msgstr ""
 
 msgid "When missing, ``in_edges`` must exist."
+msgstr ""
+
+msgid "Vertex identifier"
 msgstr ""
 
 msgid "``degree``"
@@ -12390,9 +12424,10 @@ msgid ""
 " out edges"
 msgstr ""
 
-msgid ""
-"pgr_extractVertices(`Edges SQL`_ [, dryrun]) RETURNS SETOF (id, in_edges,"
-" out_edges, x, y, geom)"
+msgid "pgr_extractVertices(`Edges SQL`_ [, dryrun])"
+msgstr ""
+
+msgid "RETURNS SETOF |result-extract|"
 msgstr ""
 
 msgid "When line geometry is known"
@@ -12522,20 +12557,21 @@ msgstr ""
 msgid "``EMTPY SET`` is returned on dryrun executions"
 msgstr ""
 
-msgid ""
-"pgr_findCloseEdges(`Edges SQL`_, **point**, **tolerance**  [cap, partial,"
-" dryrun]) pgr_findCloseEdges(`Edges SQL`_, **points**, **tolerance**  "
-"[cap, partial, dryrun]) RETURNS SET OF (edge_id, fraction side, distance,"
-" geom, edge) OR EMPTY SET"
+#, fuzzy
+msgid "pgr_findCloseEdges(`Edges SQL`_, **point**, **tolerance**, [**options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+
+#, fuzzy
+msgid "pgr_findCloseEdges(`Edges SQL`_, **points**, **tolerance**, [**options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+
+msgid "**options:** ``[cap, partial, dryrun]``"
+msgstr ""
+
+msgid "RETURNS SET OF |result-find|"
 msgstr ""
 
 msgid "One point"
-msgstr ""
-
-msgid ""
-"pgr_findCloseEdges(`Edges SQL`_, **point**, **tolerance**  [cap, partial,"
-" dryrun]) RETURNS SET OF (edge_id, fraction, side, distance, geom, edge) "
-"OR EMPTY SET"
 msgstr ""
 
 msgid "Default: ``cap => 1``"
@@ -12566,12 +12602,6 @@ msgid "``NULL`` on ``distance``, ``geom``, ``edge`` columns."
 msgstr ""
 
 msgid "Many points"
-msgstr ""
-
-msgid ""
-"pgr_findCloseEdges(`Edges SQL`_, **points**, **tolerance**  [cap, "
-"partial, dryrun]) RETURNS SET OF (edge_id, fraction, side, distance, "
-"geom, edge) OR EMPTY SET"
 msgstr ""
 
 msgid ""
@@ -13061,6 +13091,12 @@ msgstr ""
 msgid "Get complete details of pgRouting version information"
 msgstr ""
 
+msgid "pgr_full_version()"
+msgstr ""
+
+msgid "RETURNS |result-version|"
+msgstr ""
+
 msgid "Information about when this documentation was built"
 msgstr ""
 
@@ -13121,8 +13157,8 @@ msgstr ""
 #, fuzzy
 msgid ""
 "**Supported versions:** `Latest "
-"<https://docs.pgrouting.org/latest/en/hawickCircuits.html>`__ (`3.4 "
-"<https://docs.pgrouting.org/3.4/en/hawickCircuits.html>`__)"
+"<https://docs.pgrouting.org/latest/en/pgr_hawickCircuits.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/en/pgr_hawickCircuits.html>`__)"
 msgstr ""
 "**サポートされないバージョン:** `2.5 "
 "<https://docs.pgrouting.org/2.5/en/pgr_eucledianTSP.html>`__ `2.4 "
@@ -13133,8 +13169,8 @@ msgid "``pgr_hawickCircuits - Experimental``"
 msgstr ""
 
 msgid ""
-"``pgr_hawickCircuits`` —  Returns the list of cirucits using "
-"hawickCircuits algorithm."
+"``pgr_hawickCircuits`` —  Returns the list of cirucits using hawick "
+"circuits algorithm."
 msgstr ""
 
 msgid "``pgr_hawickCircuits``"
@@ -14623,18 +14659,15 @@ msgstr ""
 msgid "Signature"
 msgstr ""
 
-msgid "pgr_pickDeliver(`Orders SQL`_, `Vehicles SQL`_, `Matrix SQL`_"
-msgstr ""
-
-msgid "[, factor], [max_cycles] [,initial_sol])"
-msgstr ""
-
-msgid "RETURNS SET OF (seq, vehicle_number, vehicle_id,"
-msgstr ""
-
 msgid ""
-"stop, order_id, stop_type, cargo, travel_time, arrival_time, wait_time, "
-"service_time, departure_time)"
+"pgr_pickDeliver(`Orders SQL`_, `Vehicles SQL`_, `Matrix SQL`_, "
+"[**options**])"
+msgstr ""
+
+msgid "**options:** ``[factor, max_cycles, initial_sol]``"
+msgstr ""
+
+msgid "RETURNS SET OF |result-pickdrop|"
 msgstr ""
 
 msgid "Solve the following problem"
@@ -14727,16 +14760,9 @@ msgstr ""
 msgid "the best solution found will be result"
 msgstr ""
 
-msgid "pgr_pickDeliverEuclidean(`Orders SQL`_, `Vehicles SQL`_,"
-msgstr ""
-
-msgid "RETURNS SET OF (seq, vehicle_seq, vehicle_id,"
-msgstr ""
-
-msgid ""
-"stop_seq, stop_type, order_id, cargo, travel_time, arrival_time, "
-"wait_time, service_time, departure_time)"
-msgstr ""
+#, fuzzy
+msgid "pgr_pickDeliverEuclidean(`Orders SQL`_, `Vehicles SQL`_, [**options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 msgid ""
 "id, demand p_x, p_y, p_open, p_close, [p_service,] d_x, d_y, d_open, "
@@ -15417,37 +15443,37 @@ msgstr ""
 msgid "Execute the **TRSP** algorithm with restrictions."
 msgstr ""
 
+#, fuzzy
 msgid ""
 "pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vid**, **end vid**, "
-"[directed])"
-msgstr ""
+"[``directed``])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
+#, fuzzy
 msgid ""
 "pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vid**, **end vids**, "
-"[ directed])"
-msgstr ""
+"[``directed``])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
+#, fuzzy
 msgid ""
 "pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vids**, **end vid**, "
-"[directed])"
-msgstr ""
+"[``directed``])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
+#, fuzzy
 msgid ""
 "pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vids**, **end vids**,"
-" [directed])"
-msgstr ""
+" [``directed``])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
+#, fuzzy
 msgid ""
 "pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, "
-"[directed])"
-msgstr ""
+"[``directed``])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 msgid "From vertex :math:`6` to vertex  :math:`10` on an undirected graph."
-msgstr ""
-
-msgid ""
-"pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vid**, **end vids**, "
-"[directed])"
 msgstr ""
 
 msgid ""
@@ -15520,18 +15546,13 @@ msgstr ""
 msgid "**NOTE** when this is done, ``U_turn_on_edge`` flag is ignored."
 msgstr ""
 
+#, fuzzy
 msgid ""
 "pgr_trspVia(`Edges SQL`_, `Restrictions SQL`_, **via vertices**, "
-"[options])"
-msgstr ""
+"[**options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
-msgid "[options]"
-msgstr ""
-
-msgid "[directed, strict, U_turn_on_edge]"
-msgstr ""
-
-msgid "RETURNS SET OF |via-result| OR EMPTY SET"
+msgid "**options:** ``[directed, strict, U_turn_on_edge]``"
 msgstr ""
 
 msgid ""
@@ -15647,8 +15668,8 @@ msgid "Do not use negative values on identifiers of the inner queries."
 msgstr ""
 
 msgid ""
-"pgr_trspVia(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **via "
-"vertices**, [options])"
+"pgr_trspVia_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
+"**via vertices**, [options])"
 msgstr ""
 
 msgid ""
@@ -15843,37 +15864,36 @@ msgstr ""
 msgid "Running time: :math:`O(|start\\_vids|\\times(V \\log V + E))`"
 msgstr ""
 
+#, fuzzy
 msgid ""
 "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
-"**start vid**, **end vid**, [options])"
-msgstr ""
+"**start vid**, **end vid**, [**options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
+#, fuzzy
 msgid ""
 "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
-"**start vid**, **end vids**, [options])"
-msgstr ""
+"**start vid**, **end vids**, [**options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
+#, fuzzy
 msgid ""
 "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
-"**start vids**, **end vid**, [options])"
-msgstr ""
+"**start vids**, **end vid**, [**options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
+#, fuzzy
 msgid ""
 "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
-"**start vids**, **end vids**, [options])"
-msgstr ""
+"**start vids**, **end vids**, [**options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 msgid ""
 "pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Combinations "
-"SQL`_, `Points SQL`_, [options])"
+"SQL`_, `Points SQL`_, [**options**])"
 msgstr ""
 
-msgid "[directed, driving_side [details]"
-msgstr ""
-
-msgid ""
-"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
-"**start vid**, **end vid**, [directed, driving_side, details])"
+msgid "**options:** ``[directed, driving_side, details]``"
 msgstr ""
 
 msgid ""
@@ -15881,35 +15901,15 @@ msgid ""
 "side configuration on a directed graph with details."
 msgstr ""
 
-msgid ""
-"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
-"**start vid**, **end vids** [directed, driving_side, details])"
-msgstr ""
-
 msgid "From point :math:`1` to point :math:`3` and vertex :math:`7`."
-msgstr ""
-
-msgid ""
-"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
-"**start vids**, **end vid** [directed, driving_side, details])"
 msgstr ""
 
 msgid "From point :math:`1` and vertex :math:`6` to point :math:`3`."
 msgstr ""
 
 msgid ""
-"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, "
-"**start vids**, **end vids** [directed, driving_side, details])"
-msgstr ""
-
-msgid ""
 "From point :math:`1` and vertex :math:`6` to point :math:`3` and vertex "
 ":math:`1`."
-msgstr ""
-
-msgid ""
-"pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Combinations "
-"SQL`_, `Points SQL`_, [directed, driving_side, details])"
 msgstr ""
 
 msgid ""
@@ -15974,12 +15974,13 @@ msgid ""
 " select the paths that do not use the restrictions"
 msgstr ""
 
+#, fuzzy
 msgid ""
-"pgr_turnRestrictedPath(`Edges SQL`_, `Restrictions SQL`_, Start vid, End "
-"vid, K cycles,"
-msgstr ""
+"pgr_turnRestrictedPath(`Edges SQL`_, `Restrictions SQL`_, **start vid**, "
+"**end vid**, **K**, [**options**]"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
-msgid "[, directed] [,heap_paths] [, stop_on_first] [,strict])"
+msgid "**options:** ``[directed, heap_paths, stop_on_first, strict]``"
 msgstr ""
 
 #, fuzzy
@@ -16058,7 +16059,10 @@ msgstr ""
 msgid "Returns pgRouting version information."
 msgstr ""
 
-msgid "TEXT pgr_version();"
+msgid "pgr_version();"
+msgstr ""
+
+msgid "RETURNS TEXT"
 msgstr ""
 
 msgid "pgRouting Version for this documentation"
@@ -16141,34 +16145,49 @@ msgid ""
 " no path: - The agg_cost the non included values (u, v) is ∞"
 msgstr ""
 
-msgid "pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**"
-msgstr ""
-
-msgid "[, directed] [, driving_side] [, details])"
-msgstr ""
-
-msgid "pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**"
-msgstr ""
-
-msgid "pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**"
-msgstr ""
-
-msgid "pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**"
-msgstr ""
-
-msgid "pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_"
-msgstr ""
-
+#, fuzzy
 msgid ""
-"RETURNS (seq, path_seq, [start_vid,] [end_vid,] node, edge, cost, "
-"agg_cost)"
-msgstr ""
+"pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, "
+"[**options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 #, fuzzy
-msgid "RETURNS (seq, path_seq, node, edge, cost, agg_cost)"
-msgstr "``(seq, node, cost, agg_cost)`` の1セットを返却します。"
+msgid ""
+"pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, "
+"[**options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+
+#, fuzzy
+msgid ""
+"pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, "
+"[**options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+
+#, fuzzy
+msgid ""
+"pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**,"
+" [**options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+
+#, fuzzy
+msgid ""
+"pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, "
+"[**options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+
+msgid "**options:** ``[directed, driving_side, details])``"
+msgstr ""
+
+msgid "RETURNS SET OF |old-pid-result|"
+msgstr ""
+
+msgid "**options:** [directed, driving_side, details])"
+msgstr ""
 
 msgid "From point :math:`1` to vertex :math:`10` with details"
+msgstr ""
+
+msgid "RETURNS SET OF |pid-1-m|"
 msgstr ""
 
 msgid ""
@@ -16176,22 +16195,18 @@ msgid ""
 "undirected graph"
 msgstr ""
 
-#, fuzzy
-msgid "RETURNS (seq, path_seq, start_vid, node, edge, cost, agg_cost)"
-msgstr "``(seq, node, cost, agg_cost)`` の1セットを返却します。"
+msgid "RETURNS SET OF |pid-m-1|"
+msgstr ""
 
 msgid "From point :math:`1` and vertex :math:`6` to point :math:`3`"
 msgstr ""
 
-msgid "RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)"
+msgid "RETURNS SET OF |pid-m-m|"
 msgstr ""
 
 msgid ""
 "From point :math:`1` and vertex :math:`6`  to point :math:`3` and vertex "
 ":math:`1`"
-msgstr ""
-
-msgid "pgr_withPoints(`Edges SQL`_, `Points SQL`, `Combinations SQL`_,"
 msgstr ""
 
 msgid "Two combinations"
@@ -16321,35 +16336,45 @@ msgstr ""
 msgid "Running time: :math:`O(| start\\_vids | * (V \\log V + E))`"
 msgstr ""
 
-msgid "pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vid**, **end vid**"
-msgstr ""
+#, fuzzy
+msgid ""
+"pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vid**, **end "
+"vid**, **[options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
-msgid "[, directed] [, driving_side])"
-msgstr ""
+#, fuzzy
+msgid ""
+"pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vid**, **end "
+"vids**, **[options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
-msgid "pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vid**, **end vids**"
-msgstr ""
-
-msgid "pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vids**, **end vid**"
-msgstr ""
-
+#, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vids**, **end "
-"vids**"
+"vid**, **[options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vids**, **end "
+"vids**, **[options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsCost(`Edges SQL`_, 'Points SQL', `Combinations SQL`_, "
+"**[options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+
+msgid "**options:**  ``[directed, driving_side]``"
 msgstr ""
 
-msgid "pgr_withPointsCost(`Edges SQL`_, 'Points SQL', `Combinations SQL`_"
-msgstr ""
-
-msgid "RETURNS (start_vid, end_vid, agg_cost)"
+msgid "RETURNS SET OF |matrix-pid|"
 msgstr ""
 
 msgid ""
 "There is no **details** flag, unlike the other members of the withPoints "
 "family of functions."
-msgstr ""
-
-msgid "pgr_withPointsCost(`Edges SQL`_, **start vid**, **end vid**"
 msgstr ""
 
 msgid "From point :math:`1` to vertex :math:`10` with defaults"
@@ -16428,9 +16453,6 @@ msgid ""
 "**[options**])"
 msgstr ""
 
-msgid "**options:**  [directed, driving_side]"
-msgstr ""
-
 msgid ""
 "Cost matrix for points :math:`\\{1, 6\\}` and vertices :math:`\\{10, "
 "11\\}` on an **undirected** graph"
@@ -16485,22 +16507,32 @@ msgid ""
 "conform the corresponding spanning tree."
 msgstr ""
 
-msgid "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **Root vid**, **distance**"
+#, fuzzy
+msgid ""
+"pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**,"
+" [**options A**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, "
+"**distance**, [**options B**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+
+msgid "**options A:** ``[directed, driving_side, details]``"
 msgstr ""
 
-msgid "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **Root vids**, **distance**"
+msgid "**options B:** ``[directed, driving_side, details, equicost]``"
 msgstr ""
 
-msgid "[, directed] [, driving_side] [, details] [, equicost])"
+msgid "RETURNS SET OF |result-generic-no-seq|"
 msgstr ""
 
 #, fuzzy
-msgid "RETURNS SET OF (seq, [start_vid,] node, edge, cost, agg_cost)"
-msgstr "``(seq, node, cost, agg_cost)`` の1セットを返却します。"
-
-#, fuzzy
-msgid "RETURNS SET OF (seq, node, edge, cost, agg_cost)"
-msgstr "``(seq, node, cost, agg_cost)`` の1セットを返却します。"
+msgid ""
+"pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**,"
+" [**options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 msgid ""
 "Right side driving topology, from point :math:`1` within a distance of "
@@ -16508,8 +16540,16 @@ msgid ""
 msgstr ""
 
 #, fuzzy
-msgid "RETURNS SET OF (seq, start_vid, node, edge, cost, agg_cost)"
-msgstr "``(seq, node, cost, agg_cost)`` の1セットを返却します。"
+msgid ""
+"pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, "
+"**distance**, [**options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+
+msgid "**options:** ``[directed, driving_side, details, equicost]``"
+msgstr ""
+
+msgid "RETURNS SET OF |result-m-1-no-seq|"
+msgstr ""
 
 msgid ""
 "From point :math:`1` and vertex :math:`16` within a distance of "
@@ -16574,17 +16614,14 @@ msgid ""
 " using Yen algorithm, finds the :math:`K` shortest paths."
 msgstr ""
 
-msgid ""
-"pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_ **start_pid**, **end_pid**,"
-" **K**"
-msgstr ""
-
-msgid "[, directed] [, heap_paths] [, driving_side] [, details])"
-msgstr ""
-
 #, fuzzy
-msgid "RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)"
-msgstr "``(seq, node, cost, agg_cost)`` の1セットを返却します。"
+msgid ""
+"pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_ **start vid**, **end vid**,"
+" **K**, [**options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+
+msgid "**options:**  ``[directed, heap_paths, driving_side, details]``"
+msgstr ""
 
 msgid "Get 2 paths from Point :math:`1` to point :math:`2` on a directed graph."
 msgstr ""
@@ -16605,6 +16642,10 @@ msgstr ""
 
 msgid "`Points SQL`_ query as described."
 msgstr ""
+
+#, fuzzy
+msgid "Identifier of the destination vertex."
+msgstr "開始ノードの識別子"
 
 msgid ""
 "Get :math:`2` paths using left side driving topology, from vertex "
@@ -16660,13 +16701,7 @@ msgstr ""
 msgid "pgr_withPointsVia(`Edges SQL`_, `Points SQL`_, **via vertices**"
 msgstr ""
 
-msgid "[, directed] [, strict] [, U_turn_on_edge]) - Proposed on v3.4"
-msgstr ""
-
-msgid "RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,"
-msgstr ""
-
-msgid "node, edge, cost, agg_cost, route_agg_cost)"
+msgid "**options:** [directed, strict, U_turn_on_edge]``"
 msgstr ""
 
 msgid ""
