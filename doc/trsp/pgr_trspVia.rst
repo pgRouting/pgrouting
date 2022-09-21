@@ -65,12 +65,11 @@ One Via
 .. admonition:: \ \
    :class: signatures
 
-   pgr_trspVia(`Edges SQL`_, `Restrictions SQL`_, **via vertices**, [options])
+   | pgr_trspVia(`Edges SQL`_, `Restrictions SQL`_, **via vertices**, [**options**])
+   | **options:** ``[directed, strict, U_turn_on_edge]``
 
-   :[options]: [directed, strict, U_turn_on_edge]
-
-   RETURNS SET OF |via-result|
-   OR EMPTY SET
+   | RETURNS SET OF |via-result|
+   | OR EMPTY SET
 
 :Example: Find the route that visits the vertices :math:`\{ 5, 1, 8\}` in that
           order on an directed graph.

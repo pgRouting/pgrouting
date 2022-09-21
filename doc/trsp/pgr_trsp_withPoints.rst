@@ -80,13 +80,12 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vid**, [options])
-   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vids**, [options])
-   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vids**, **end vid**, [options])
-   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vids**, **end vids**, [options])
-   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, `Points SQL`_, [options])
-
-   :[options]: [directed, driving_side [details]
+   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vid**, [**options**])
+   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vids**, [**options**])
+   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vids**, **end vid**, [**options**])
+   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vids**, **end vids**, [**options**])
+   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, `Points SQL`_, [**options**])
+   | **options:** ``[directed, driving_side, details]``
 
    | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
@@ -100,8 +99,8 @@ One to One
 .. admonition:: \ \
    :class: signatures
 
-   pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start
-   vid**, **end vid**, [directed, driving_side, details])
+   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vid**, [**options**])
+   | **options:** ``[directed, driving_side, details]``
 
    | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
@@ -122,8 +121,8 @@ One to Many
 .. admonition:: \ \
    :class: signatures
 
-   pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start
-   vid**, **end vids** [directed, driving_side, details])
+   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vids**, [**options**])
+   | **options:** ``[directed, driving_side, details]``
 
    | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
@@ -143,8 +142,8 @@ Many to One
 .. admonition:: \ \
    :class: signatures
 
-   pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start
-   vids**, **end vid** [directed, driving_side, details])
+   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vids**, **end vid**, [**options**])
+   | **options:** ``[directed, driving_side, details]``
 
    | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
@@ -164,8 +163,8 @@ Many to Many
 .. admonition:: \ \
    :class: signatures
 
-   pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start
-   vids**, **end vids** [directed, driving_side, details])
+   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vids**, **end vids**, [**options**])
+   | **options:** ``[directed, driving_side, details]``
 
    | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
@@ -186,8 +185,8 @@ Combinations
 .. admonition:: \ \
    :class: signatures
 
-   pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_,
-   `Points SQL`_, [directed, driving_side, details])
+   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, `Points SQL`_, [**options**])
+   | **options:** ``[directed, driving_side, details]``
 
    | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
