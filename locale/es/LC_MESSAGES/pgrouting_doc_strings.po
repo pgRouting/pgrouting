@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-20 23:11+0000\n"
+"POT-Creation-Date: 2022-09-21 17:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
@@ -9100,7 +9100,7 @@ msgstr ""
 "De los vértices :math:`\\{6, 8\\}` al vértice :math:`10` en un grafo **no"
 " dirigido** usando la heurística :math:`4`"
 
-msgid "RETURNS SET OF |result-m-m|"
+msgid "RETURNS SET OF |short-generic-result|"
 msgstr ""
 
 msgid ""
@@ -13372,27 +13372,24 @@ msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 #, fuzzy
 msgid ""
-"pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid** [**options "
+"pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid**, [**options "
 "A**])"
 msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 #, fuzzy
 msgid ""
-"pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids** [**options "
+"pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids**, [**options "
 "B**])"
 msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 #, fuzzy
-msgid "pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_ [**options B**])"
+msgid "pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_, [**options B**])"
 msgstr "pgr_dijkstraNearCost(Combinaciones)"
 
 msgid "**options A:** ``[directed, cap]``"
 msgstr ""
 
 msgid "**options B:** ``[directed, cap, global]``"
-msgstr ""
-
-msgid "RETURNS SET OF |short-generic-result|"
 msgstr ""
 
 #, fuzzy

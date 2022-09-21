@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-20 23:11+0000\n"
+"POT-Creation-Date: 2022-09-21 17:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -7833,7 +7833,7 @@ msgid ""
 "**undirected** graph with heuristic :math:`4`"
 msgstr ""
 
-msgid "RETURNS SET OF |result-m-m|"
+msgid "RETURNS SET OF |short-generic-result|"
 msgstr ""
 
 msgid ""
@@ -11153,25 +11153,22 @@ msgid ""
 msgstr ""
 
 msgid ""
-"pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid** [**options "
+"pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid**, [**options "
 "A**])"
 msgstr ""
 
 msgid ""
-"pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids** [**options "
+"pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids**, [**options "
 "B**])"
 msgstr ""
 
-msgid "pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_ [**options B**])"
+msgid "pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_, [**options B**])"
 msgstr ""
 
 msgid "**options A:** ``[directed, cap]``"
 msgstr ""
 
 msgid "**options B:** ``[directed, cap, global]``"
-msgstr ""
-
-msgid "RETURNS SET OF |short-generic-result|"
 msgstr ""
 
 msgid "pgr_dijkstraNear(`Edges SQL`_, **start vid**, **end vids**, [**options**])"
