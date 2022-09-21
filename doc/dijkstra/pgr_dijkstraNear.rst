@@ -88,9 +88,9 @@ Signatures
    :class: signatures
 
    | pgr_dijkstraNear(`Edges SQL`_, **start vid**, **end vids**, [**options A**])
-   | pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid** [**options A**])
-   | pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids** [**options B**])
-   | pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_ [**options B**])
+   | pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid**, [**options A**])
+   | pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids**, [**options B**])
+   | pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_, [**options B**])
    | **options A:** ``[directed, cap]``
    | **options B:** ``[directed, cap, global]``
 

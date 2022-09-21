@@ -176,7 +176,7 @@ Many to Many
 
    | pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vids**, [``directed``]);
 
-   | RETURNS SET OF |result-m-m|
+   | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 17\}` on an
@@ -197,7 +197,7 @@ Combinations
 
    | pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_, [``directed``]);
 
-   | RETURNS SET OF |result-m-m|
+   | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
 
 :Example: Using a combinations table on an **undirected** graph.
