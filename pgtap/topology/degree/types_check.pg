@@ -16,7 +16,7 @@ BEGIN
 
   RETURN QUERY SELECT set_eq(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_degree'$$,
-    $$SELECT  '{"","","dryrun","id","degree"}'::TEXT[] $$);
+    $$SELECT  '{"","","dryrun","node","degree"}'::TEXT[] $$);
 
   RETURN QUERY SELECT set_eq(
   $$SELECT  proallargtypes from pg_proc where proname = 'pgr_degree'$$,
