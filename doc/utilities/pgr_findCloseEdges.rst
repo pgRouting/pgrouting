@@ -52,10 +52,12 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-    pgr_findCloseEdges(`Edges SQL`_, **point**, **tolerance**  [cap, partial, dryrun])
-    pgr_findCloseEdges(`Edges SQL`_, **points**, **tolerance**  [cap, partial, dryrun])
-    RETURNS SET OF (edge_id, fraction side, distance, geom, edge)
-    OR EMPTY SET
+   | pgr_findCloseEdges(`Edges SQL`_, **point**, **tolerance**, [**options**])
+   | pgr_findCloseEdges(`Edges SQL`_, **points**, **tolerance**, [**options**])
+   | **options:** ``[cap, partial, dryrun]``
+
+   | RETURNS SET OF |result-find|
+   | OR EMPTY SET
 
 .. index::
     single: findCloseEdges(One point)
@@ -66,9 +68,11 @@ One point
 .. admonition:: \ \
    :class: signatures
 
-   pgr_findCloseEdges(`Edges SQL`_, **point**, **tolerance**  [cap, partial, dryrun])
-   RETURNS SET OF (edge_id, fraction, side, distance, geom, edge)
-   OR EMPTY SET
+   | pgr_findCloseEdges(`Edges SQL`_, **point**, **tolerance**, [**options**])
+   | **options:** ``[cap, partial, dryrun]``
+
+   | RETURNS SET OF |result-find|
+   | OR EMPTY SET
 
 :Example: With default values
 
@@ -99,9 +103,11 @@ Many points
 .. admonition:: \ \
    :class: signatures
 
-   pgr_findCloseEdges(`Edges SQL`_, **points**, **tolerance**  [cap, partial, dryrun])
-   RETURNS SET OF (edge_id, fraction, side, distance, geom, edge)
-   OR EMPTY SET
+   | pgr_findCloseEdges(`Edges SQL`_, **points**, **tolerance**, [**options**])
+   | **options:** ``[cap, partial, dryrun]``
+
+   | RETURNS SET OF |result-find|
+   | OR EMPTY SET
 
 :Example: Find at most :math:`2` edges close to all vertices on the points of
           interest table.
