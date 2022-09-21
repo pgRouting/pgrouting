@@ -10,16 +10,16 @@
 |
 
 * **Supported versions:**
-  `Latest <https://docs.pgrouting.org/latest/en/hawickCircuits.html>`__
-  (`3.4 <https://docs.pgrouting.org/3.4/en/hawickCircuits.html>`__)
+  `Latest <https://docs.pgrouting.org/latest/en/pgr_hawickCircuits.html>`__
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_hawickCircuits.html>`__)
 
 ``pgr_hawickCircuits - Experimental``
 ===============================================================================
 
-``pgr_hawickCircuits`` —  Returns the list of cirucits using hawickCircuits algorithm.
+``pgr_hawickCircuits`` —  Returns the list of cirucits using hawick circuits algorithm.
 
 .. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
+   :target: https://www.boost.org/libs/graph/doc/hawick_circuits.html
 
 .. include:: experimental.rst
    :start-after: begin-warn-expr
