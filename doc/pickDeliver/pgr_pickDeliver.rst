@@ -86,11 +86,10 @@ Signature
 .. admonition:: \ \
    :class: signatures
 
-    pgr_pickDeliver(`Orders SQL`_, `Vehicles SQL`_, `Matrix SQL`_
-       [, factor], [max_cycles] [,initial_sol])
-    RETURNS SET OF (seq, vehicle_number, vehicle_id,
-       stop, order_id, stop_type, cargo,
-       travel_time, arrival_time, wait_time, service_time, departure_time)
+   | pgr_pickDeliver(`Orders SQL`_, `Vehicles SQL`_, `Matrix SQL`_, [**options**])
+   | **options:** ``[factor, max_cycles, initial_sol]``
+
+   | RETURNS SET OF |result-pickdrop|
 
 :Example: Solve the following problem
 
