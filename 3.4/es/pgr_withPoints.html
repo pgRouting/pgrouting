@@ -251,27 +251,16 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vid</strong></div>
-<div class="line-block">
-<div class="line">[, directed] [, driving_side] [, details])</div>
+<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>, [<strong>options</strong>])</div>
+<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, [<strong>options</strong>])</div>
+<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>, [<strong>options</strong>])</div>
+<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>, [<strong>options</strong>])</div>
+<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side,</span> <span class="pre">details])</span></code></div>
 </div>
-<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vids</strong></div>
 <div class="line-block">
-<div class="line">[, directed] [, driving_side] [, details])</div>
-</div>
-<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>end vid</strong></div>
-<div class="line-block">
-<div class="line">[, directed] [, driving_side] [, details])</div>
-</div>
-<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>end vids</strong></div>
-<div class="line-block">
-<div class="line">[, directed] [, driving_side] [, details])</div>
-</div>
-<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a></div>
-<div class="line-block">
-<div class="line">[, directed] [, driving_side] [, details])</div>
-</div>
-<div class="line">RETURNS (seq, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)</div>
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">[start_pid],</span> <span class="pre">[end_pid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMTPY SET</div>
 </div>
 </div>
 <section id="one-to-one">
@@ -279,11 +268,12 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vid</strong></div>
-<div class="line-block">
-<div class="line">[, directed] [, driving_side] [, details])</div>
+<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> [directed, driving_side, details])</div>
 </div>
-<div class="line">RETURNS (seq, path_seq, node, edge, cost, agg_cost)</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMTPY SET</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -316,11 +306,12 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vids</strong></div>
-<div class="line-block">
-<div class="line">[, directed] [, driving_side] [, details])</div>
+<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> [directed, driving_side, details])</div>
 </div>
-<div class="line">RETURNS (seq, path_seq, end_vid, node, edge, cost, agg_cost)</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">end_pid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMTPY SET</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -353,11 +344,12 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>end vid</strong></div>
-<div class="line-block">
-<div class="line">[, directed] [, driving_side] [, details])</div>
+<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> [directed, driving_side, details])</div>
 </div>
-<div class="line">RETURNS (seq, path_seq, start_vid, node, edge, cost, agg_cost)</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_pid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMTPY SET</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -390,11 +382,12 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>end vids</strong></div>
-<div class="line-block">
-<div class="line">[, directed] [, driving_side] [, details])</div>
+<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> [directed, driving_side, details])</div>
 </div>
-<div class="line">RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMTPY SET</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -436,11 +429,12 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <cite>Points SQL</cite>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>,</div>
-<div class="line-block">
-<div class="line">[, directed] [, driving_side] [, details])</div>
+<div class="line">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> [directed, driving_side, details])</div>
 </div>
-<div class="line">RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMTPY SET</div>
 </div>
 </div>
 <dl class="field-list simple">

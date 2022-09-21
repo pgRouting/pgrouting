@@ -204,8 +204,13 @@
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
 <div class="signatures admonition" id="index-0">
 <p class="admonition-title"></p>
-<p>pgr_degree(<a class="reference internal" href="#edges-sql">Edges SQL</a> , <a class="reference internal" href="#vertex-sql">Vertex SQL</a> [, dryrun])
-RETURNS SETOF (id, degree)</p>
+<div class="line-block">
+<div class="line">pgr_degree(<a class="reference internal" href="#edges-sql">Edges SQL</a> , <a class="reference internal" href="#vertex-sql">Vertex SQL</a>, [<code class="docutils literal notranslate"><span class="pre">dryrun</span></code>])</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SETOF (node, degree)</div>
+<div class="line">OR EMTPY SET</div>
+</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
@@ -216,25 +221,25 @@ RETURNS SETOF (id, degree)</p>
   $$SELECT id FROM edges$$,
   $$SELECT id, in_edges, out_edges
     FROM pgr_extractVertices(&#39;SELECT id, geom FROM edges&#39;)$$);
- id | degree
-----+--------
-  1 |      1
-  2 |      1
-  3 |      2
-  4 |      1
-  5 |      1
-  6 |      3
-  7 |      4
-  8 |      3
-  9 |      1
- 10 |      3
- 11 |      4
- 12 |      3
- 13 |      1
- 14 |      1
- 15 |      2
- 16 |      3
- 17 |      2
+ node | degree
+------+--------
+    1 |      1
+    2 |      1
+    3 |      2
+    4 |      1
+    5 |      1
+    6 |      3
+    7 |      4
+    8 |      3
+    9 |      1
+   10 |      3
+   11 |      4
+   12 |      3
+   13 |      1
+   14 |      1
+   15 |      2
+   16 |      3
+   17 |      2
 (17 rows)
 
 </pre></div>
@@ -352,9 +357,9 @@ RETURNS SETOF (id, degree)</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del primer vértice de la arista.</p></td>
+<td><p>Vertex identifier</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">degree</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -383,25 +388,25 @@ RETURNS SETOF (id, degree)</p>
   $$SELECT id FROM edges WHERE id &lt; 17$$,
   $$SELECT id, in_edges, out_edges
     FROM pgr_extractVertices(&#39;SELECT id, geom FROM edges&#39;)$$);
- id | degree
-----+--------
-  1 |      1
-  2 |      0
-  3 |      2
-  4 |      0
-  5 |      1
-  6 |      3
-  7 |      4
-  8 |      3
-  9 |      1
- 10 |      3
- 11 |      4
- 12 |      3
- 13 |      0
- 14 |      0
- 15 |      2
- 16 |      3
- 17 |      2
+ node | degree
+------+--------
+    1 |      1
+    2 |      0
+    3 |      2
+    4 |      0
+    5 |      1
+    6 |      3
+    7 |      4
+    8 |      3
+    9 |      1
+   10 |      3
+   11 |      4
+   12 |      3
+   13 |      0
+   14 |      0
+   15 |      2
+   16 |      3
+   17 |      2
 (17 rows)
 
 </pre></div>
@@ -449,8 +454,8 @@ NOTICE:
 
     SELECT id::BIGINT, coalesce(count, 0)::BIGINT FROM all_vertices LEFT JOIN totals USING (id)
     ;
- id | degree
-----+--------
+ node | degree
+------+--------
 (0 rows)
 
 </pre></div>

@@ -258,15 +258,14 @@ size\_of(via\;vertices)\)</span> trying not to use restricted paths.</p>
 <span id="index-0"></span><h3>One Via<a class="headerlink" href="#one-via" title="Enlace permanente a este encabezado">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<p>pgr_trspVia(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#restrictions-sql">Restrictions SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>via
-vertices</strong>, [options])</p>
-<dl class="field-list simple">
-<dt class="field-odd">[options]<span class="colon">:</span></dt>
-<dd class="field-odd"><p>[directed, strict, U_turn_on_edge]</p>
-</dd>
-</dl>
-<p>RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost,</span> <span class="pre">route_agg_cost)</span></code>
-OR EMPTY SET</p>
+<div class="line-block">
+<div class="line">pgr_trspVia_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#restrictions-sql">Restrictions SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>via vertices</strong>, [options])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">strict,</span> <span class="pre">U_turn_on_edge]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost,</span> <span class="pre">route_agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
@@ -522,7 +521,7 @@ order on an directed graph.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ANY-INTEGER</strong>]</p></td>
 <td><p>Secuencia de identificadores de aristas que forman un camino que no se permite tomar. - Arreglos vacios o <code class="docutils literal notranslate"><span class="pre">NULL</span></code> son ignorados. - Arreglos que tienen <code class="docutils literal notranslate"><span class="pre">NULL</span></code> arrojan una excepción.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Cost</span></code></p></td>

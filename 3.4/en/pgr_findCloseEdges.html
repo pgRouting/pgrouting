@@ -234,20 +234,28 @@ adjustments needed by the application.</p></li>
 <p class="rubric">Summary</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<blockquote>
-<div><p>pgr_findCloseEdges(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>point</strong>, <strong>tolerance</strong>  [cap, partial, dryrun])
-pgr_findCloseEdges(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>points</strong>, <strong>tolerance</strong>  [cap, partial, dryrun])
-RETURNS SET OF (edge_id, fraction side, distance, geom, edge)
-OR EMPTY SET</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">pgr_findCloseEdges(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>point</strong>, <strong>tolerance</strong>, [<strong>options</strong>])</div>
+<div class="line">pgr_findCloseEdges(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>points</strong>, <strong>tolerance</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[cap,</span> <span class="pre">partial,</span> <span class="pre">dryrun]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">fraction,</span> <span class="pre">side,</span> <span class="pre">distance,</span> <span class="pre">geom,</span> <span class="pre">edge)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
 </div>
 <section id="one-point">
 <span id="index-0"></span><h3>One point<a class="headerlink" href="#one-point" title="Permalink to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<p>pgr_findCloseEdges(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>point</strong>, <strong>tolerance</strong>  [cap, partial, dryrun])
-RETURNS SET OF (edge_id, fraction, side, distance, geom, edge)
-OR EMPTY SET</p>
+<div class="line-block">
+<div class="line">pgr_findCloseEdges(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>point</strong>, <strong>tolerance</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[cap,</span> <span class="pre">partial,</span> <span class="pre">dryrun]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">fraction,</span> <span class="pre">side,</span> <span class="pre">distance,</span> <span class="pre">geom,</span> <span class="pre">edge)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
@@ -294,9 +302,14 @@ FROM pgr_findCloseEdges(
 <span id="index-1"></span><h3>Many points<a class="headerlink" href="#many-points" title="Permalink to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<p>pgr_findCloseEdges(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>points</strong>, <strong>tolerance</strong>  [cap, partial, dryrun])
-RETURNS SET OF (edge_id, fraction, side, distance, geom, edge)
-OR EMPTY SET</p>
+<div class="line-block">
+<div class="line">pgr_findCloseEdges(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>points</strong>, <strong>tolerance</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[cap,</span> <span class="pre">partial,</span> <span class="pre">dryrun]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">fraction,</span> <span class="pre">side,</span> <span class="pre">distance,</span> <span class="pre">geom,</span> <span class="pre">edge)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>

@@ -176,10 +176,10 @@
 </dl>
 <p>The function reads edges from a not “noded” network table and writes the “noded”
 edges into a new table.</p>
-<div class="highlight-default notranslate" id="index-0"><div class="highlight"><pre><span></span><span class="n">pgr_nodenetwork</span><span class="p">(</span><span class="n">edge_table</span><span class="p">,</span> <span class="n">tolerance</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">text</span> <span class="n">the_geom</span><span class="p">,</span> <span class="n">table_ending</span><span class="p">,</span> <span class="n">rows_where</span><span class="p">,</span> <span class="n">outall</span><span class="p">)</span>
-<span class="n">RETURNS</span> <span class="n">TEXT</span>
-</pre></div>
-</div>
+<pre class="literal-block" id="index-0">| pgr_nodenetwork(edge_table, tolerance, [<strong>options</strong>])
+| <strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[id,</span> <span class="pre">text</span> <span class="pre">the_geom,</span> <span class="pre">table_ending,</span> <span class="pre">rows_where,</span> <span class="pre">outall]</span></code>
+
+| RETURNS <code class="docutils literal notranslate"><span class="pre">TEXT</span></code></pre>
 <p class="rubric">Availability</p>
 <ul class="simple">
 <li><p>Version 2.0.0</p>

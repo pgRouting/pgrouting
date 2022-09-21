@@ -244,13 +244,10 @@ graph) for all <span class="math notranslate nohighlight">\(i &lt; size\_of(via\
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_withPointsVia(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>via vertices</strong></div>
-<div class="line-block">
-<div class="line">[, directed] [, strict] [, U_turn_on_edge]) - Proposed on v3.4</div>
+<div class="line"><strong>options:</strong> [directed, strict, U_turn_on_edge]``</div>
 </div>
-<div class="line">RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,</div>
 <div class="line-block">
-<div class="line">node, edge, cost, agg_cost, route_agg_cost)</div>
-</div>
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost,</span> <span class="pre">route_agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>

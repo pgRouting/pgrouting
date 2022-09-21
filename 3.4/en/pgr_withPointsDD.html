@@ -226,15 +226,14 @@ The edges extracted will conform the corresponding spanning tree.</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>Root vid</strong>, <strong>distance</strong></div>
-<div class="line-block">
-<div class="line">[, directed] [, driving_side] [, details])</div>
+<div class="line">pgr_withPointsDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>root vid</strong>, <strong>distance</strong>, [<strong>options A</strong>])</div>
+<div class="line">pgr_withPointsDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>root vids</strong>, <strong>distance</strong>, [<strong>options B</strong>])</div>
+<div class="line"><strong>options A:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side,</span> <span class="pre">details]</span></code></div>
+<div class="line"><strong>options B:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side,</span> <span class="pre">details,</span> <span class="pre">equicost]</span></code></div>
 </div>
-<div class="line">pgr_withPointsDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>Root vids</strong>, <strong>distance</strong></div>
 <div class="line-block">
-<div class="line">[, directed] [, driving_side] [, details] [, equicost])</div>
-</div>
-<div class="line">RETURNS SET OF (seq, [start_vid,] node, edge, cost, agg_cost)</div>
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[start_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
 </div>
 </div>
 <section id="single-vertex">
@@ -242,11 +241,12 @@ The edges extracted will conform the corresponding spanning tree.</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>Root vid</strong>, <strong>distance</strong></div>
-<div class="line-block">
-<div class="line">[, directed] [, driving_side] [, details])</div>
+<div class="line">pgr_withPointsDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>root vid</strong>, <strong>distance</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side,</span> <span class="pre">details]</span></code></div>
 </div>
-<div class="line">RETURNS SET OF (seq, node, edge, cost, agg_cost)</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -278,11 +278,12 @@ The edges extracted will conform the corresponding spanning tree.</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>Root vids</strong>, <strong>distance</strong></div>
-<div class="line-block">
-<div class="line">[, directed] [, driving_side] [, details] [, equicost])</div>
+<div class="line">pgr_withPointsDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>root vids</strong>, <strong>distance</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side,</span> <span class="pre">details,</span> <span class="pre">equicost]</span></code></div>
 </div>
-<div class="line">RETURNS SET OF (seq, start_vid, node, edge, cost, agg_cost)</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -349,7 +350,7 @@ The edges extracted will conform the corresponding spanning tree.</p>
 </td>
 </tr>
 <tr class="row-odd"><td><p><strong>Root vids</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ANY-INTEGER</strong>]</p></td>
 <td><p>Array of identifiers of the root vertices.</p>
 <ul class="simple">
 <li><p>Negative values represent a point</p></li>

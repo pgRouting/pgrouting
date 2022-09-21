@@ -223,11 +223,12 @@ using Yen algorithm, finds the <span class="math notranslate nohighlight">\(K\)<
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsKSP(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a> <strong>start_pid</strong>, <strong>end_pid</strong>, <strong>K</strong></div>
-<div class="line-block">
-<div class="line">[, directed] [, heap_paths] [, driving_side] [, details])</div>
+<div class="line">pgr_withPointsKSP(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a> <strong>start vid</strong>, <strong>end vid</strong>, <strong>K</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong>  <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">heap_paths,</span> <span class="pre">driving_side,</span> <span class="pre">details]</span></code></div>
 </div>
-<div class="line">RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -292,11 +293,19 @@ point(s) can be in any direction.</p></li>
 </tr>
 <tr class="row-even"><td><p><strong>start vid</strong></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
-<td><p>Identifier of the departure vertex.</p></td>
+<td><p>Identifier of the departure vertex.</p>
+<ul class="simple">
+<li><p>Negative values represent a point</p></li>
+</ul>
+</td>
 </tr>
 <tr class="row-odd"><td><p><strong>end vid</strong></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
-<td><p>Identifier of the departure vertex.</p></td>
+<td><p>Identifier of the destination vertex.</p>
+<ul class="simple">
+<li><p>Negative values represent a point</p></li>
+</ul>
+</td>
 </tr>
 <tr class="row-even"><td><p><strong>K</strong></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>

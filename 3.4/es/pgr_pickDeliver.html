@@ -249,15 +249,13 @@
 <span id="index-0"></span><h2>Firma<a class="headerlink" href="#signature" title="Enlace permanente a este encabezado">¶</a></h2>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<blockquote>
-<div><dl class="simple">
-<dt>pgr_pickDeliver(<a class="reference internal" href="#orders-sql">Orders SQL</a>, <a class="reference internal" href="#vehicles-sql">Vehicles SQL</a>, <a class="reference internal" href="#matrix-sql">Matrix SQL</a></dt><dd><p>[, factor], [max_cycles] [,initial_sol])</p>
-</dd>
-<dt>RETURNS SET OF (seq, vehicle_number, vehicle_id,</dt><dd><p>stop, order_id, stop_type, cargo,
-travel_time, arrival_time, wait_time, service_time, departure_time)</p>
-</dd>
-</dl>
-</div></blockquote>
+<div class="line-block">
+<div class="line">pgr_pickDeliver(<a class="reference internal" href="#orders-sql">Orders SQL</a>, <a class="reference internal" href="#vehicles-sql">Vehicles SQL</a>, <a class="reference internal" href="#matrix-sql">Matrix SQL</a>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[factor,</span> <span class="pre">max_cycles,</span> <span class="pre">initial_sol]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">vehicle_number,</span> <span class="pre">vehicle_id,</span> <span class="pre">stop,</span> <span class="pre">order_id,</span> <span class="pre">stop_type,</span> <span class="pre">cargo,</span> <span class="pre">travel_time,</span> <span class="pre">arrival_time,</span> <span class="pre">wait_time,</span> <span class="pre">service_time,</span> <span class="pre">departure_time)</span></code></div>
+</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>

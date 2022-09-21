@@ -188,11 +188,15 @@
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">varchar</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="n">text</span> <span class="n">edge_table</span><span class="p">,</span> <span class="n">double</span> <span class="n">precision</span> <span class="n">tolerance</span><span class="p">,</span>
-                       <span class="n">text</span> <span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="n">text</span> <span class="nb">id</span><span class="o">:=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span>
-                       <span class="n">text</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="n">text</span> <span class="n">target</span><span class="o">:=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span>
-                       <span class="n">text</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">boolean</span> <span class="n">clean</span><span class="o">:=</span><span class="n">false</span><span class="p">)</span>
-</pre></div>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_createTopology(edge_table, tolerance, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[the_geom,</span> <span class="pre">id,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">rows_where,</span> <span class="pre">clean]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS <code class="docutils literal notranslate"><span class="pre">VARCHAR</span></code></div>
+</div>
 </div>
 </section>
 <section id="parameters">

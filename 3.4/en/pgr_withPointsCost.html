@@ -290,27 +290,16 @@ pair: <cite>(start_vid, end_vid)</cite>.</p></li>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <strong>start vid</strong>, <strong>end vid</strong></div>
-<div class="line-block">
-<div class="line">[, directed] [, driving_side])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <strong>start vid</strong>, <strong>end vid</strong>, <strong>[options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <strong>start vid</strong>, <strong>end vids</strong>, <strong>[options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <strong>start vids</strong>, <strong>end vid</strong>, <strong>[options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <strong>start vids</strong>, <strong>end vids</strong>, <strong>[options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, <strong>[options</strong>])</div>
+<div class="line"><strong>options:</strong>  <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
 </div>
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <strong>start vid</strong>, <strong>end vids</strong></div>
 <div class="line-block">
-<div class="line">[, directed] [, driving_side])</div>
-</div>
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <strong>start vids</strong>, <strong>end vid</strong></div>
-<div class="line-block">
-<div class="line">[, directed] [, driving_side])</div>
-</div>
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <strong>start vids</strong>, <strong>end vids</strong></div>
-<div class="line-block">
-<div class="line">[, directed] [, driving_side])</div>
-</div>
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <a class="reference internal" href="#combinations-sql">Combinations SQL</a></div>
-<div class="line-block">
-<div class="line">[, directed] [, driving_side])</div>
-</div>
-<div class="line">RETURNS (start_vid, end_vid, agg_cost)</div>
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
 </div>
 </div>
 <div class="admonition note">
@@ -323,11 +312,12 @@ withPoints family of functions.</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong></div>
-<div class="line-block">
-<div class="line">[, directed] [, driving_side])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <strong>start vid</strong>, <strong>end vid</strong>, <strong>[options</strong>])</div>
+<div class="line"><strong>options:</strong>  <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
 </div>
-<div class="line">RETURNS (start_vid, end_vid, agg_cost)</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -352,11 +342,12 @@ withPoints family of functions.</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <strong>start vid</strong>, <strong>end vids</strong></div>
-<div class="line-block">
-<div class="line">[, directed] [, driving_side])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <strong>start vid</strong>, <strong>end vids</strong>, <strong>[options</strong>])</div>
+<div class="line"><strong>options:</strong>  <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
 </div>
-<div class="line">RETURNS (start_vid, end_vid, agg_cost)</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -384,11 +375,12 @@ undirected graph</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <strong>start vids</strong>, <strong>end vid</strong></div>
-<div class="line-block">
-<div class="line">[, directed] [, driving_side])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <strong>start vids</strong>, <strong>end vid</strong>, <strong>[options</strong>])</div>
+<div class="line"><strong>options:</strong>  <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
 </div>
-<div class="line">RETURNS (start_vid, end_vid, agg_cost)</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -414,11 +406,12 @@ undirected graph</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <strong>start vids</strong>, <strong>end vids</strong></div>
-<div class="line-block">
-<div class="line">[, directed] [, driving_side])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <strong>start vids</strong>, <strong>end vids</strong>, <strong>[options</strong>])</div>
+<div class="line"><strong>options:</strong>  <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
 </div>
-<div class="line">RETURNS (start_vid, end_vid, agg_cost)</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -447,11 +440,12 @@ vertex <span class="math notranslate nohighlight">\(1\)</span></p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <a class="reference internal" href="#combinations-sql">Combinations SQL</a></div>
-<div class="line-block">
-<div class="line">[, directed] [, driving_side])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, <strong>[options</strong>])</div>
+<div class="line"><strong>options:</strong>  <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
 </div>
-<div class="line">RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
 </div>
 </div>
 <dl class="field-list simple">
