@@ -59,9 +59,11 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_ **start_pid**, **end_pid**, **K**
-   |   [, directed] [, heap_paths] [, driving_side] [, details])
-   | RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
+   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_ **start vid**, **end vid**, **K**, [**options**])
+   | **options:**  ``[directed, heap_paths, driving_side, details]``
+
+   | RETURNS SET OF |ksp-result|
+   | OR EMPTY SET
 
 :Example: Get 2 paths from Point :math:`1` to point :math:`2` on a directed
           graph.
@@ -96,9 +98,13 @@ Parameters
    * - **start vid**
      - **ANY-INTEGER**
      - Identifier of the departure vertex.
+
+       - Negative values represent a point
    * - **end vid**
      - **ANY-INTEGER**
-     - Identifier of the departure vertex.
+     - Identifier of the destination vertex.
+
+       - Negative values represent a point
    * - **K**
      - **ANY-INTEGER**
      - Number of required paths

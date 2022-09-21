@@ -68,7 +68,7 @@ Signatures
    :class: signatures
 
    | pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, **[options**])
-   | **options:**  [directed, driving_side]
+   | **options:**  ``[directed, driving_side]``
 
    | RETURNS SET OF |matrix-result|
    | OR EMPTY SET

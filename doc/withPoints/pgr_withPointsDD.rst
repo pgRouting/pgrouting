@@ -58,11 +58,13 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **Root vid**, **distance**
-   |    [, directed] [, driving_side] [, details])
-   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **Root vids**, **distance**
-   |    [, directed] [, driving_side] [, details] [, equicost])
-   | RETURNS SET OF (seq, [start_vid,] node, edge, cost, agg_cost)
+   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, [**options A**])
+   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, [**options B**])
+   | **options A:** ``[directed, driving_side, details]``
+   | **options B:** ``[directed, driving_side, details, equicost]``
+
+   | RETURNS SET OF |result-generic-no-seq|
+   | OR EMPTY SET
 
 .. index::
     single: withPointsDD(Single Vertex) - Proposed on v2.2
@@ -73,9 +75,11 @@ Single vertex
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **Root vid**, **distance**
-   |    [, directed] [, driving_side] [, details])
-   | RETURNS SET OF (seq, node, edge, cost, agg_cost)
+   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, [**options**])
+   | **options:** ``[directed, driving_side, details]``
+
+   | RETURNS SET OF |result-1-1-no-seq|
+   | OR EMPTY SET
 
 :Example: Right side driving topology, from point :math:`1` within a distance of
           :math:`3.3` with details.
@@ -93,9 +97,11 @@ Multiple vertices
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **Root vids**, **distance**
-   |    [, directed] [, driving_side] [, details] [, equicost])
-   | RETURNS SET OF (seq, start_vid, node, edge, cost, agg_cost)
+   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, [**options**])
+   | **options:** ``[directed, driving_side, details, equicost]``
+
+   | RETURNS SET OF |result-m-1-no-seq|
+   | OR EMPTY SET
 
 :Example: From point :math:`1` and vertex :math:`16` within a distance of
           :math:`3.3` with ``equicost`` on a directed graph
@@ -127,7 +133,7 @@ Parameters
 
        - Negative values represent a point
    * - **Root vids**
-     - ``ARRAY[ANY-INTEGER]``
+     - ``ARRAY`` [**ANY-INTEGER**]
      - Array of identifiers of the root vertices.
 
 
