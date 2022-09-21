@@ -182,7 +182,7 @@ Many to Many
    | pgr_aStar(`Edges SQL`_, **start vids**, **end vids**, [**options**])
    | **options:** ``[directed, heuristic, factor, epsilon]``
 
-   | RETURNS SET OF |result-m-m|
+   | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 8\}` to vertices :math:`\{10, 12\}` on a
@@ -204,7 +204,7 @@ Combinations
    | pgr_aStar(`Edges SQL`_, `Combinations SQL`_, [**options**])
    | **options:** ``[directed, heuristic, factor, epsilon]``
 
-   | RETURNS SET OF |result-m-m|
+   | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
 
 :Example: Using a combinations table on a **directed** graph with factor

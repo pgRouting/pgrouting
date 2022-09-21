@@ -260,7 +260,7 @@ _pgr_trsp_withpoints(PG_FUNCTION_ARGS) {
         bool*        nulls;
         size_t call_cntr = funcctx->call_cntr;
 
-        size_t numb = 9;
+        size_t numb = 8;
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
 
@@ -273,14 +273,13 @@ _pgr_trsp_withpoints(PG_FUNCTION_ARGS) {
         path_id += result_tuples[call_cntr].seq == 1? 1 : 0;
 
         values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int32GetDatum(path_id);
-        values[2] = Int32GetDatum(result_tuples[call_cntr].seq);
-        values[3] = Int64GetDatum(result_tuples[call_cntr].start_id);
-        values[4] = Int64GetDatum(result_tuples[call_cntr].end_id);
-        values[5] = Int64GetDatum(result_tuples[call_cntr].node);
-        values[6] = Int64GetDatum(result_tuples[call_cntr].edge);
-        values[7] = Float8GetDatum(result_tuples[call_cntr].cost);
-        values[8] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
+        values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].end_id);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].node);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].edge);
+        values[6] = Float8GetDatum(result_tuples[call_cntr].cost);
+        values[7] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
 
         result_tuples[call_cntr].seq = path_id;
 

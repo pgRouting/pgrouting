@@ -164,7 +164,7 @@ Many to Many
    :class: signatures
 
    | pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids** , [``directed``])
-   | RETURNS SET OF |result-m-m|
+   | RETURNS SET OF |short-generic-result|
 
    | RETURNS (seq, path_seq, start vid, end vid, node, edge, cost, agg_cost)
    | OR EMPTY SET
@@ -187,7 +187,7 @@ Combinations
 
    | pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_ , [``directed``])
 
-   | RETURNS SET OF |result-m-m|
+   | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
 
 :Example: Using a combinations table on an **undirected** graph
