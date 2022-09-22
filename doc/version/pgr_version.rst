@@ -58,7 +58,7 @@ Signature
 
 	| pgr_version();
 
-   | RETURNS TEXT
+   | RETURNS ``TEXT``
 
 :Example: pgRouting Version for this documentation
 
