@@ -105,7 +105,7 @@ Edges SQL
 Result Columns
 -------------------------------------------------------------------------------
 
-RETURNS SETOF  ``(seq, source, target, cost, reverse_cost)``
+RETURNS SET OF |result-linegf|
 
 .. list-table::
    :width: 81

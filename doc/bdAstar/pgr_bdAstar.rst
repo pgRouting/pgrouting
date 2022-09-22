@@ -98,7 +98,6 @@ Signatures
    | pgr_bdAstar(`Edges SQL`_, `Combinations SQL`_, [**options**])
    | **options:** ``[directed, heuristic, factor, epsilon]``
 
-   | RETURNS (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
    | RETURNS SET OF |old-generic-result|
    | OR EMPTY SET
 
@@ -138,7 +137,6 @@ One to Many
    | pgr_bdAstar(`Edges SQL`_, **start vid**, **end vids**, [**options**])
    | **options:** ``[directed, heuristic, factor, epsilon]``
 
-   | RETURNS (seq, path_seq, end_vid, node, edge, cost, agg_cost)
    | RETURNS SET OF |result-1-m|
    | OR EMPTY SET
 

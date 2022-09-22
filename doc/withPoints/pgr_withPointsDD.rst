@@ -185,7 +185,7 @@ Points SQL
 Result Columns
 -------------------------------------------------------------------------------
 
-Returns SET OF ``(seq, [start_vid,] node, edge, cost, agg_cost)``
+RETURNS SET OF |result-generic-no-seq|
 
 .. list-table::
    :width: 81

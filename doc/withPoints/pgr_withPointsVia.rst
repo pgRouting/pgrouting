@@ -66,8 +66,8 @@ One Via
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsVia(`Edges SQL`_, `Points SQL`_, **via vertices**
-   | **options:** [directed, strict, U_turn_on_edge]``
+   | pgr_withPointsVia(`Edges SQL`_, `Points SQL`_, **via vertices**, [**options**])
+   | **options:** ``[directed, strict, U_turn_on_edge]``
 
    | RETURNS SET OF |via-result|
    | OR EMPTY SET

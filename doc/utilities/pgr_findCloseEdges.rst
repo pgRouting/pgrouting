@@ -205,10 +205,7 @@ Edges SQL
 Result Columns
 -------------------------------------------------------------------------------
 
-``RETURNS SET OF (edge_id, fraction, side, distance, geom, edge)
-OR EMPTY SET``
-
-
+Returns set of |result-find|
 
 .. list-table::
    :width: 81
