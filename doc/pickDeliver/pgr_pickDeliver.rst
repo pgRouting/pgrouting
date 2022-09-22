@@ -135,9 +135,9 @@ A `SELECT` statement that returns the following columns:
 .. admonition:: \ \
    :class: signatures
 
-    id, demand
-    p_node_id, p_open, p_close, [p_service,]
-    d_node_id, d_open, d_close, [d_service,]
+   | id, demand
+   | p_node_id, p_open, p_close, [p_service,]
+   | d_node_id, d_open, d_close, [d_service,]
 
 where:
 
@@ -158,9 +158,9 @@ A `SELECT` statement that returns the following columns:
 .. admonition:: \ \
    :class: signatures
 
-    id, capacity
-    start_node_id, start_open, start_close [, start_service,]
-    [end_node_id, end_open, end_close, end_service]
+   | id, capacity
+   | start_node_id, start_open, start_close [, start_service,]
+   | [end_node_id, end_open, end_close, end_service]
 
 where:
 
