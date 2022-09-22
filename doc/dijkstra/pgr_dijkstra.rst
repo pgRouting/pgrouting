@@ -164,9 +164,8 @@ Many to Many
    :class: signatures
 
    | pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids** , [``directed``])
-   | RETURNS SET OF |short-generic-result|
 
-   | RETURNS (seq, path_seq, start vid, end vid, node, edge, cost, agg_cost)
+   | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 17\}` on an
