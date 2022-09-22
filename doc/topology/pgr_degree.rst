@@ -47,7 +47,7 @@ Signatures
 
    | pgr_degree(`Edges SQL`_ , `Vertex SQL`_, [``dryrun``])
 
-   | RETURNS SETOF (node, degree)
+   | RETURNS SETOF |result-degree|
    | OR EMTPY SET
 
 :Example: Extracting the vertex information

@@ -57,7 +57,7 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_extractVertices(`Edges SQL`_ [, dryrun])
+   | pgr_extractVertices(`Edges SQL`_, [``dryrun``])
 
    | RETURNS SETOF |result-extract|
    | OR EMTPY SET

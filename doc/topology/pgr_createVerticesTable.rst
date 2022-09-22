@@ -52,7 +52,7 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-	| pgr_createVerticesTable(edge_table, [``the_geom, source, target, rows_where``])
+   | pgr_createVerticesTable(edge_table, [``the_geom, source, target, rows_where``])
 
    | RETURNS ``VARCHAR``
 
