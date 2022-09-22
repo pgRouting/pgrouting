@@ -51,7 +51,7 @@ Signatures
    | pgr_turnRestrictedPath(`Edges SQL`_, `Restrictions SQL`_, **start vid**, **end vid**, **K**, [**options**]
    | **options:** ``[directed, heap_paths, stop_on_first, strict]``
 
-   | RETURNS SETOF (seq, path_id, path_seq, node, edge, cost, agg_cost)
+   | RETURNS SET OF |ksp-result|
    | OR EMPTY SET
 
 :Example: From vertex :math:`3` to vertex  :math:`8` on a directed graph
