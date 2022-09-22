@@ -72,13 +72,14 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-    pgr_edmondsKarp(`Edges SQL`_, **start vid**, **end vid**)
-    pgr_edmondsKarp(`Edges SQL`_, **start vid**, **end vids**)
-    pgr_edmondsKarp(`Edges SQL`_, **start vids**, **end vid**)
-    pgr_edmondsKarp(`Edges SQL`_, **start vids**, **end vids**)
-    pgr_edmondsKarp(`Edges SQL`_, `Combinations SQL`_)
-    RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
-    OR EMPTY SET
+   | pgr_edmondsKarp(`Edges SQL`_, **start vid**, **end vid**)
+   | pgr_edmondsKarp(`Edges SQL`_, **start vid**, **end vids**)
+   | pgr_edmondsKarp(`Edges SQL`_, **start vids**, **end vid**)
+   | pgr_edmondsKarp(`Edges SQL`_, **start vids**, **end vids**)
+   | pgr_edmondsKarp(`Edges SQL`_, `Combinations SQL`_)
+
+   | RETURNS SET OF |result-flow|
+   | OR EMPTY SET
 
 .. index::
     single: edmondsKarp(One to One)
@@ -89,9 +90,10 @@ One to One
 .. admonition:: \ \
    :class: signatures
 
-    pgr_edmondsKarp(`Edges SQL`_, **start vid**, **end vid**)
-    RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
-    OR EMPTY SET
+   | pgr_edmondsKarp(`Edges SQL`_, **start vid**, **end vid**)
+
+   | RETURNS SET OF |result-flow|
+   | OR EMPTY SET
 
 :Example: From vertex :math:`11` to vertex :math:`12`
 
@@ -108,9 +110,10 @@ One to Many
 .. admonition:: \ \
    :class: signatures
 
-    pgr_edmondsKarp(`Edges SQL`_, **start vid**, **end vids**)
-    RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
-    OR EMPTY SET
+   | pgr_edmondsKarp(`Edges SQL`_, **start vid**, **end vids**)
+
+   | RETURNS SET OF |result-flow|
+   | OR EMPTY SET
 
 :Example: From vertex :math:`11` to vertices :math:`\{5, 10, 12\}`
 
@@ -127,9 +130,10 @@ Many to One
 .. admonition:: \ \
    :class: signatures
 
-    pgr_edmondsKarp(`Edges SQL`_, **start vids**, **end vid**)
-    RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
-    OR EMPTY SET
+   | pgr_edmondsKarp(`Edges SQL`_, **start vids**, **end vid**)
+
+   | RETURNS SET OF |result-flow|
+   | OR EMPTY SET
 
 :Example: From vertices :math:`\{11, 3, 17\}` to vertex :math:`12`
 
@@ -146,9 +150,10 @@ Many to Many
 .. admonition:: \ \
    :class: signatures
 
-    pgr_edmondsKarp(`Edges SQL`_, **start vids**, **end vids**)
-    RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
-    OR EMPTY SET
+   | pgr_edmondsKarp(`Edges SQL`_, **start vids**, **end vids**)
+
+   | RETURNS SET OF |result-flow|
+   | OR EMPTY SET
 
 :Example: From vertices :math:`\{11, 3, 17\}` to vertices :math:`\{5, 10, 12\}`
 
@@ -165,9 +170,10 @@ Combinations
 .. admonition:: \ \
    :class: signatures
 
-    pgr_edmondsKarp(`Edges SQL`_, `Combinations SQL`_)
-    RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
-    OR EMPTY SET
+   | pgr_edmondsKarp(`Edges SQL`_, `Combinations SQL`_)
+
+   | RETURNS SET OF |result-flow|
+   | OR EMPTY SET
 
 :Example: Using a combinations table, equivalent to calculating result from
           vertices :math:`\{5, 6\}` to vertices :math:`\{10, 15, 14\}`.
