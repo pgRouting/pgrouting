@@ -244,8 +244,8 @@ graph) for all <span class="math notranslate nohighlight">\(i &lt; size\_of(via\
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsVia(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>via vertices</strong></div>
-<div class="line"><strong>options:</strong> [directed, strict, U_turn_on_edge]``</div>
+<div class="line">pgr_withPointsVia(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>via vertices</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">strict,</span> <span class="pre">U_turn_on_edge]</span></code></div>
 </div>
 <div class="line-block">
 <div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost,</span> <span class="pre">route_agg_cost)</span></code></div>
@@ -828,7 +828,7 @@ that order on a <strong>directed</strong> graph.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0.<br/>
-      Actualizado por última vez en sept 21, 2022.<br/>
+      Actualizado por última vez en sept 22, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
     </p>
   </div>

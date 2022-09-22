@@ -249,25 +249,29 @@ can be calculated:</p>
 <p class="rubric">Summary</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<blockquote>
-<div><p>pgr_edmondsKarp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>)
-pgr_edmondsKarp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>)
-pgr_edmondsKarp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>)
-pgr_edmondsKarp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>)
-pgr_edmondsKarp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>)
-RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
-OR EMPTY SET</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">pgr_edmondsKarp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>)</div>
+<div class="line">pgr_edmondsKarp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>)</div>
+<div class="line">pgr_edmondsKarp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>)</div>
+<div class="line">pgr_edmondsKarp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>)</div>
+<div class="line">pgr_edmondsKarp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
 </div>
 <section id="one-to-one">
 <span id="index-0"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<blockquote>
-<div><p>pgr_edmondsKarp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>)
-RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
-OR EMPTY SET</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">pgr_edmondsKarp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
@@ -293,11 +297,13 @@ OR EMPTY SET</p>
 <span id="index-1"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<blockquote>
-<div><p>pgr_edmondsKarp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>)
-RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
-OR EMPTY SET</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">pgr_edmondsKarp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
@@ -328,11 +334,13 @@ OR EMPTY SET</p>
 <span id="index-2"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<blockquote>
-<div><p>pgr_edmondsKarp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>)
-RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
-OR EMPTY SET</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">pgr_edmondsKarp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
@@ -359,11 +367,13 @@ OR EMPTY SET</p>
 <span id="index-3"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<blockquote>
-<div><p>pgr_edmondsKarp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>)
-RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
-OR EMPTY SET</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">pgr_edmondsKarp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
@@ -395,11 +405,13 @@ OR EMPTY SET</p>
 <span id="index-4"></span><h3>Combinations<a class="headerlink" href="#combinations" title="Permalink to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<blockquote>
-<div><p>pgr_edmondsKarp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>)
-RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
-OR EMPTY SET</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">pgr_edmondsKarp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
@@ -669,7 +681,7 @@ the edge.</p></td>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0.<br/>
-      Last updated on Sep 21, 2022.<br/>
+      Last updated on Sep 22, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
     </p>
   </div>

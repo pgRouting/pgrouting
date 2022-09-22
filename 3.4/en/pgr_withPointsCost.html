@@ -290,11 +290,11 @@ pair: <cite>(start_vid, end_vid)</cite>.</p></li>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <strong>start vid</strong>, <strong>end vid</strong>, <strong>[options</strong>])</div>
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <strong>start vid</strong>, <strong>end vids</strong>, <strong>[options</strong>])</div>
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <strong>start vids</strong>, <strong>end vid</strong>, <strong>[options</strong>])</div>
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <strong>start vids</strong>, <strong>end vids</strong>, <strong>[options</strong>])</div>
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, <strong>[options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL`_, <strong>start vid</strong>, <strong>end vid</strong>, <strong>[options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL`_, <strong>start vid</strong>, <strong>end vids</strong>, <strong>[options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL`_, <strong>start vids</strong>, <strong>end vid</strong>, <strong>[options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL`_, <strong>start vids</strong>, <strong>end vids</strong>, <strong>[options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL`_, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, <strong>[options</strong>])</div>
 <div class="line"><strong>options:</strong>  <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
 </div>
 <div class="line-block">
@@ -312,7 +312,7 @@ withPoints family of functions.</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <strong>start vid</strong>, <strong>end vid</strong>, <strong>[options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL`_, <strong>start vid</strong>, <strong>end vid</strong>, <strong>[options</strong>])</div>
 <div class="line"><strong>options:</strong>  <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
 </div>
 <div class="line-block">
@@ -342,7 +342,7 @@ withPoints family of functions.</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <strong>start vid</strong>, <strong>end vids</strong>, <strong>[options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL`_, <strong>start vid</strong>, <strong>end vids</strong>, <strong>[options</strong>])</div>
 <div class="line"><strong>options:</strong>  <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
 </div>
 <div class="line-block">
@@ -375,7 +375,7 @@ undirected graph</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <strong>start vids</strong>, <strong>end vid</strong>, <strong>[options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL`_, <strong>start vids</strong>, <strong>end vid</strong>, <strong>[options</strong>])</div>
 <div class="line"><strong>options:</strong>  <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
 </div>
 <div class="line-block">
@@ -406,7 +406,7 @@ undirected graph</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <strong>start vids</strong>, <strong>end vids</strong>, <strong>[options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL`_, <strong>start vids</strong>, <strong>end vids</strong>, <strong>[options</strong>])</div>
 <div class="line"><strong>options:</strong>  <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
 </div>
 <div class="line-block">
@@ -440,7 +440,7 @@ vertex <span class="math notranslate nohighlight">\(1\)</span></p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL’, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, <strong>[options</strong>])</div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, ‘Points SQL`_, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, <strong>[options</strong>])</div>
 <div class="line"><strong>options:</strong>  <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
 </div>
 <div class="line-block">
@@ -903,7 +903,7 @@ on the graph of point <cite>(2.9, 1.8)</cite>.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0.<br/>
-      Last updated on Sep 21, 2022.<br/>
+      Last updated on Sep 22, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
     </p>
   </div>

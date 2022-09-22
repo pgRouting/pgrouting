@@ -323,10 +323,13 @@ triangle inequality.</p></li>
 <p class="rubric">Summary</p>
 <div class="signatures admonition" id="index-0">
 <p class="admonition-title"></p>
-<blockquote>
-<div><p>pgr_TSP(<a class="reference internal" href="#matrix-sql">Matrix SQL</a>, [start_id], [end_id])
-RETURNS SETOF (seq, node, cost, agg_cost)</p>
-</div></blockquote>
+<div class="line-block">
+<div class="line">pgr_TSP(<a class="reference internal" href="#matrix-sql">Matrix SQL</a>, <code class="docutils literal notranslate"><span class="pre">[start_id,</span> <span class="pre">end_id]</span></code>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMTPY SET</div>
+</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
@@ -658,7 +661,7 @@ value used is taken from <span class="math notranslate nohighlight">\(10 \righta
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0.<br/>
-      Last updated on Sep 21, 2022.<br/>
+      Last updated on Sep 22, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
     </p>
   </div>
