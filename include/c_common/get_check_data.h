@@ -105,13 +105,13 @@ void pgr_check_text_type(Column_info_t info);
 void pgr_check_boolean_type(Column_info_t info);
 
 /*!
-@brief The function check whether column type is ANY-INTEGER[] or not.
-       Where ANY-INTEGER[] is SQL type:
+@brief The function check whether column type is ANY-INTEGER-ARRAY or not.
+       Where ANY-INTEGER-ARRAY is SQL type:
             SMALLINT[], INTEGER[], BIGINT[]
 
 @param[in] info contain column information.
 
-@throw ERROR Unexpected Column type. Expected column type is ANY-INTEGER[].
+@throw ERROR Unexpected Column type. Expected ANY-INTEGER-ARRAY.
 
  */
 
@@ -148,7 +148,7 @@ char pgr_SPI_getChar(
 @param[out] the_size number of element in array.
 
 @throw ERROR No elements found in ARRAY.
-@throw ERROR Unexpected Column type. Expected column type is ANY-INTEGER[].
+@throw ERROR Unexpected Column type. Expected column type is ANY-INTEGER-ARRAY.
 @throw ERROR NULL value found in Array.
 
 @return Array of columns value is returned.
