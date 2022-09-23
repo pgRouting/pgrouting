@@ -78,7 +78,7 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_analyzeOneWay(**geom_table**, **s_in_rules**, **s_out_rules**, **t_in_rules**, **t_out_rules**, [**options**]
+   | pgr_analyzeOneWay(**geom_table**, **s_in_rules**, **s_out_rules**, **t_in_rules**, **t_out_rules**, [**options**])
    | **options:** ``[oneway, source, target, two_way_if_null]``
 
    | RETURNS ``TEXT``
