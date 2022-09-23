@@ -46,6 +46,7 @@ BEGIN
     RETURN query SELECT * FROM no_crash_test('pgr_maxCardinalityMatch', params, subs);
   ELSE
     RETURN QUERY SELECT skip(1, 'cost & reverse cost used on 3.4');
+    RETURN;
   END IF;
 
     -- TODO v4 going & coming are to be removed, remove these tests
