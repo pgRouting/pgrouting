@@ -1,6 +1,16 @@
 BEGIN;
 
-SELECT plan(5);
+SELECT CASE WHEN NOT min_version('3.4.0') THEN plan(1) ELSE plan(5) END;
+
+CREATE OR REPLACE FUNCTION issue_check()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF NOT min_version('3.4.0') THEN
+  RETURN QUERY SELECT skip(1,'Issue fixed on 3.4.0');
+  RETURN;
+END IF;
 
 CREATE TABLE e_table (id integer, source integer, target integer, cost float);
 INSERT INTO e_table VALUES (1, 10, 11, 10.0);
@@ -16,7 +26,9 @@ SELECT * FROM   pgr_withPoints(
     11,
     false);
 
+RETURN QUERY
 SELECT * FROM lives_ok('q1');
+RETURN QUERY
 SELECT * FROM isnt_empty('q1');
 
 PREPARE q2 AS
@@ -28,10 +40,19 @@ FROM   pgr_withPoints(
     11,
     false);
 
+RETURN QUERY
 SELECT * FROM lives_ok('q2');
+RETURN QUERY
 SELECT * FROM isnt_empty('q2');
 
+RETURN QUERY
 SELECT * FROM set_eq('q1','q2');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT issue_check();
 
 SELECT finish();
 ROLLBACK;
