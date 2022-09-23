@@ -56,7 +56,7 @@ Signature
 .. admonition:: \ \
    :class: signatures
 
-	| pgr_version();
+   | pgr_version()
 
    | RETURNS ``TEXT``
 

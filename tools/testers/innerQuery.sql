@@ -118,7 +118,7 @@ end_sql TEXT;
 query TEXT;
 p TEXT;
 code TEXT = 'XX000';
-msg TEXT = $$Unexpected Column '$$ || parameter || $$' type. Expected ANY-INTEGER[]$$;
+msg TEXT = $$Unexpected Column '$$ || parameter || $$' type. Expected ANY-INTEGER-ARRAY$$;
 BEGIN
   start_sql = 'SELECT * FROM ' || begin_sql || '$$ SELECT ';
   FOREACH  p IN ARRAY params LOOP
@@ -130,7 +130,7 @@ BEGIN
 
   IF begin_sql LIKE 'pgr_degree(%' THEN
     code = 'P0001';
-    msg = 'Expected type of column "'|| parameter|| '" is ANY-INTEGER[]';
+    msg = 'Expected type of column "'|| parameter|| '" is ANY-INTEGER-ARRAY';
   END IF;
 
   query := start_sql || parameter || '::SMALLINT[] ' || end_sql;

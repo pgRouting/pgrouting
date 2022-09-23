@@ -67,7 +67,7 @@ BEGIN
       END IF;
     WHEN 'ANY-INTEGER[]' THEN
       IF  rec.pg_typeof NOT IN ('smallint[]','integer[]','bigint[]') THEN
-        RAISE EXCEPTION 'Expected type of column "%" is ANY-INTEGER[]', $2
+        RAISE EXCEPTION 'Expected type of column "%" is ANY-INTEGER-ARRAY', $2
         USING HINT = 'Query: ' || $1;
       END IF;
     WHEN 'ANY-NUMERICAL' THEN
