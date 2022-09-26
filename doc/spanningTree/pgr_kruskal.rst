@@ -55,11 +55,13 @@ Signatures
 
 .. rubric:: Summary
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_kruskal(`Edges SQL`_)
-    RETURNS SET OF (edge, cost)
-    OR EMPTY SET
+   | pgr_kruskal(`Edges SQL`_)
+
+   | RETURNS SET OF |result-mst|
+   | OR EMPTY SET
 
 :Example: Minimum spanning forest
 

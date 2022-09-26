@@ -65,14 +65,13 @@ Parameters
      -
      - SQL query as described.
    * - **via vertices**
-     - ``ARRAY[`` **ANY-INTEGER** ``]``
+     - ``ARRAY`` [ **ANY-INTEGER** ]
      -
      - Array of ordered vertices identifiers that are going to be visited.
 
 Where:
 
 :ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
 
 .. via_parameters_end
 

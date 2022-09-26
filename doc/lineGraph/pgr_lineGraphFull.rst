@@ -70,19 +70,19 @@ Signatures
 
 .. rubric:: Summary
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_lineGraphFull(`Edges SQL`_)
-    RETURNS SET OF (seq, source, target, cost, edge)
-    OR EMPTY SET
+   | pgr_lineGraphFull(`Edges SQL`_)
+
+   | RETURNS SET OF |result-linegf|
+   | OR EMPTY SET
 
 :Example: Full line graph of subgraph of edges :math:`\{4, 7, 8, 10\}`
 
 .. literalinclude:: doc-pgr_lineGraphFull.queries
    :start-after: -- q1
    :end-before: -- q2
-
-.. pgr_lineGraphFull_parameters_start
 
 Parameters
 -------------------------------------------------------------------------------
@@ -104,7 +104,7 @@ Edges SQL
 Result Columns
 -------------------------------------------------------------------------------
 
-RETURNS SETOF  ``(seq, source, target, cost, reverse_cost)``
+RETURNS SET OF |result-linegf|
 
 .. list-table::
    :width: 81

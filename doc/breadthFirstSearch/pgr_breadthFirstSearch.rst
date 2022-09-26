@@ -58,11 +58,14 @@ Signatures
 
 .. rubric:: Summary
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-  pgr_breadthFirstSearch(`Edges SQL`_, **Root vid** [, max_depth] [, directed])
-  pgr_breadthFirstSearch(`Edges SQL`_, **Root vids** [, max_depth] [, directed])
-  RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
+   | pgr_breadthFirstSearch(`Edges SQL`_, **root vid**, [**options**])
+   | pgr_breadthFirstSearch(`Edges SQL`_, **root vids**, [**options**])
+   | **options:** ``[max_depth, directed]``
+
+   | RETURNS SET OF |result-bfs|
 
 .. index::
     single: breadthFirstSearch(Single vertex) - Experimental on v3.0
@@ -70,10 +73,13 @@ Signatures
 Single vertex
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-   pgr_breadthFirstSearch(`Edges SQL`_, **Root vid** [, max_depth] [, directed])
-   RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
+   | pgr_breadthFirstSearch(`Edges SQL`_, **root vid**, [**options**])
+   | **options:** ``[max_depth, directed]``
+
+   | RETURNS SET OF |result-bfs|
 
 :Example: From root vertex :math:`6` on a **directed** graph with edges in
           ascending order of ``id``
@@ -88,10 +94,13 @@ Single vertex
 Multiple vertices
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-  pgr_breadthFirstSearch(`Edges SQL`_, **Root vids** [, max_depth] [, directed])
-  RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
+   | pgr_breadthFirstSearch(`Edges SQL`_, **root vids**, [**options**])
+   | **options:** ``[max_depth, directed]``
+
+   | RETURNS SET OF |result-bfs|
 
 :Example: From root vertices :math:`\{12, 6\}` on an **undirected** graph with
           **depth** :math:`<= 2` and edges in ascending order of ``id``

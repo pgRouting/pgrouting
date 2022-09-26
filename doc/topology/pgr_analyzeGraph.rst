@@ -44,14 +44,14 @@ The function returns:
 - ``OK`` after the analysis has finished.
 - ``FAIL`` when the analysis was not completed due to an error.
 
-.. index::
-	single: analyzeGraph
+.. admonition:: \ \
+   :class: signatures
 
-.. parsed-literal::
+   | pgr_analyzeGraph(**edge_table**, **tolerance**, [**options**])
+   | **options:** ``[the_geom, id, source, target, rows_where]``
 
-	varchar pgr_analyzeGraph(text edge_table, double precision tolerance,
-            text the_geom:='the_geom', text id:='id',
-            text source:='source',text target:='target',text rows_where:='true')
+   | RETURNS ``VARCHAR``
+
 
 .. rubric:: Prerequisites
 

@@ -70,15 +70,17 @@ Signatures
 
 .. rubric:: Summary
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vid**  [, directed])
-    pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vids** [, directed])
-    pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vid**  [, directed])
-    pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vids** [, directed])
-    pgr_dijkstraCost(`Edges SQL`_, `Combinations SQL`_ [, directed])
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
-    OR EMPTY SET
+   | pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vid** , [``directed``])
+   | pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vids**, [``directed``])
+   | pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vid** , [``directed``])
+   | pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vids**, [``directed``])
+   | pgr_dijkstraCost(`Edges SQL`_, `Combinations SQL`_, [``directed``])
+
+   | RETURNS SET OF |matrix-result|
+   | OR EMPTY SET
 
 .. index::
     single: dijkstraCost(One to One)
@@ -86,11 +88,13 @@ Signatures
 One to One
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vid**  [, directed])
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
-    OR EMPTY SET
+   pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vid** , [``directed``])
+
+   | RETURNS SET OF |matrix-result|
+   | OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertex  :math:`10` on a **directed** graph
 
@@ -104,11 +108,13 @@ One to One
 One to Many
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vids** [, directed])
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
-    OR EMPTY SET
+   pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vids**, [``directed``])
+
+   | RETURNS SET OF |matrix-result|
+   | OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertices :math:`\{10, 17\}` on a **directed**
           graph
@@ -123,11 +129,13 @@ One to Many
 Many to One
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vid**  [, directed])
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
-    OR EMPTY SET
+   pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vid** , [``directed``])
+
+   | RETURNS SET OF |matrix-result|
+   | OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 1\}` to vertex :math:`17` on a **directed**
           graph
@@ -142,11 +150,13 @@ Many to One
 Many to Many
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vids** [, directed])
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
-    OR EMPTY SET
+   pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vids**, [``directed``])
+
+   | RETURNS SET OF |matrix-result|
+   | OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 17\}` on an
           **undirected** graph
@@ -161,11 +171,13 @@ Many to Many
 Combinations
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_dijkstraCost(`Edges SQL`_, `Combinations SQL`_ [, directed])
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
-    OR EMPTY SET
+   pgr_dijkstraCost(`Edges SQL`_, `Combinations SQL`_, [``directed``])
+
+   | RETURNS SET OF |matrix-result|
+   | OR EMPTY SET
 
 :Example: Using a combinations table on an **undirected** graph
 

@@ -53,10 +53,13 @@ Signatures
 .. index::
     single: pgr_extractVertices - Proposed on v3.3
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-   pgr_extractVertices(`Edges SQL`_ [, dryrun])
-   RETURNS SETOF (id, in_edges, out_edges, x, y, geom)
+   | pgr_extractVertices(`Edges SQL`_, [``dryrun``])
+
+   | RETURNS SETOF |result-extract|
+   | OR EMTPY SET
 
 :Example: Extracting the vertex information
 
@@ -165,7 +168,7 @@ Result Columns
      - Description
    * - ``id``
      - ``BIGINT``
-     - Identifier of the first end point vertex of the edge.
+     - Vertex identifier
    * - ``in_edges``
      - ``BIGINT[]``
      - Array of identifiers of the edges that have the vertex ``id`` as *first

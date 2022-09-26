@@ -55,11 +55,13 @@ Signatures
 
 .. rubric:: Summary
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_prim(`Edges SQL`_)
-    RETURNS SET OF (edge, cost)
-    OR EMPTY SET
+   | pgr_prim(`Edges SQL`_)
+
+   | RETURNS SET OF |result-mst|
+   | OR EMPTY SET
 
 
 :Example: Minimum spanning forest of a subgraph
@@ -88,7 +90,7 @@ Edges SQL
 Result Columns
 -------------------------------------------------------------------------------
 
-include:: pgRouting-concepts.rst
+.. include:: pgRouting-concepts.rst
    :start-after: r-edge-cost-start
    :end-before: r-edge-cost-end
 

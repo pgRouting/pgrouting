@@ -62,11 +62,13 @@ Signatures
 
 .. rubric:: Summary
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr johnson(`Edges SQL`_ [, directed])
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
-    OR EMPTY SET
+   pgr johnson(`Edges SQL`_, [``directed``])
+
+   | RETURNS SET OF |matrix-result|
+   | OR EMPTY SET
 
 :Example: For a directed subgraph with edges :math:`\{1, 2, 3, 4\}`.
 
@@ -100,8 +102,6 @@ Edges SQL
 
 Result Columns
 -------------------------------------------------------------------------------
-
-Returns set of ``(start_vid, end_vid, agg_cost)``
 
 .. include:: pgRouting-concepts.rst
     :start-after: return_cost_start

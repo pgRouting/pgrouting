@@ -62,11 +62,13 @@ This implementation can only be used with an undirected graph.
 Signatures
 -------------------------------------------------------------------------------
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_bridges(`Edges SQL`_)
-    RETURNS SET OF (edge)
-    OR EMPTY SET
+   | pgr_bridges(`Edges SQL`_)
+
+   | RETURNS SET OF |result-edge|
+   | OR EMPTY SET
 
 :Example: The bridges of the graph
 
@@ -97,7 +99,7 @@ Edges SQL
 Result Columns
 -------------------------------------------------------------------------------
 
-Returns set of ``(edge)``
+Returns set of |result-edge|
 
 .. list-table::
    :width: 81

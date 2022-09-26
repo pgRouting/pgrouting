@@ -66,11 +66,13 @@ This implementation can only be used with an undirected graph.
 Signatures
 -------------------------------------------------------------------------------
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_articulationPoints(`Edges SQL`_)
-    RETURNS SET OF (node)
-    OR EMPTY SET
+   | pgr_articulationPoints(`Edges SQL`_)
+
+   | RETURNS SET OF |result-node|
+   | OR EMPTY SET
 
 :Example: The articulation points of the graph
 
@@ -103,7 +105,7 @@ Edges SQL
 Result Columns
 -------------------------------------------------------------------------------
 
-Returns set of ``(node)``
+Returns set of |result-node|
 
 .. list-table::
    :width: 81

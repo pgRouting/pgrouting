@@ -127,10 +127,13 @@ Signatures
 .. index::
     single: TSP
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_TSP(`Matrix SQL`_, [start_id], [end_id])
-    RETURNS SETOF (seq, node, cost, agg_cost)
+   | pgr_TSP(`Matrix SQL`_, ``[start_id, end_id]``)
+
+   | RETURNS SET OF |tsp-result|
+   | OR EMTPY SET
 
 :Example: Using :doc:`pgr_dijkstraCostMatrix` to generate the matrix information
 

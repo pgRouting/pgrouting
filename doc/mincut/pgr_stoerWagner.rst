@@ -31,7 +31,7 @@ pgr_stoerWagner - Experimental
 
 .. rubric:: Availability
 
-* Version 2.3.0
+* Version 3.0
 
    * New **Experimental** function
 
@@ -78,11 +78,13 @@ Signatures
 .. index::
     single: stoerWagner - Experimental on v3.0
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_stoerWagner(`Edges SQL`_)
-    RETURNS SET OF (seq, edge, cost, mincut)
-    OR EMPTY SET
+   | pgr_stoerWagner(`Edges SQL`_)
+
+   | RETURNS SET OF |result-mincut|
+   | OR EMPTY SET
 
 :Example: min cut of the main subgraph
 

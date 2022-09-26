@@ -47,11 +47,13 @@ Signatures
 .. index::
     single: chinesePostman - Experimental on v3.0
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_chinesePostman(`Edges SQL`_)
-    RETURNS SET OF (seq, node, edge, cost, agg_cost)
-    OR EMPTY SET
+   | pgr_chinesePostman(`Edges SQL`_)
+
+   | RETURNS SET OF |result-1-1-no-seq|
+   | OR EMPTY SET
 
 :Example:
 

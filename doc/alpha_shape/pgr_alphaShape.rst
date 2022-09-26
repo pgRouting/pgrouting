@@ -78,10 +78,12 @@ Signatures
 .. index::
     single: alphaShape
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-   pgr_alphaShape(**geometry**,   [alpha])
-   RETURNS geometry
+   | pgr_alphaShape(**geometry**, [alpha])
+
+   | RETURNS ``geometry``
 
 
 :Example: passing a geometry collection with spoon radius :math:`1.5` using the

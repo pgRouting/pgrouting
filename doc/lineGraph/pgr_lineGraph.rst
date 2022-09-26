@@ -56,11 +56,13 @@ Given a graph G, its line graph L(G) is a graph such that:
 Signatures
 -------------------------------------------------------------------------------
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_lineGraph(`Edges SQL`_ [, directed])
-    RETURNS SET OF (seq, source, target, cost, reverse_cost)
-    OR EMPTY SET
+   | pgr_lineGraph(`Edges SQL`_, [``directed``])
+
+   | RETURNS SET OF |result-lineg|
+   | OR EMPTY SET
 
 :Example: For a **directed** graph
 
@@ -95,7 +97,7 @@ Edges SQL
 Result Columns
 -------------------------------------------------------------------------------
 
-RETURNS SETOF ``(seq, source, target, cost, reverse_cost)``
+RETURNS SET OF |result-lineg|
 
 .. list-table::
    :width: 81

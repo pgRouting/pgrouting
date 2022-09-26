@@ -68,15 +68,17 @@ Signatures
 
 .. rubric:: Summary
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vid**)
-    pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vids**)
-    pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vid**)
-    pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vids**)
-    pgr_boykovKolmogorov(`Edges SQL`_, `Combinations SQL`_)
-    RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
-    OR EMPTY SET
+   | pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vid**)
+   | pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vids**)
+   | pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vid**)
+   | pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vids**)
+   | pgr_boykovKolmogorov(`Edges SQL`_, `Combinations SQL`_)
+
+   | RETURNS SET OF |result-flow|
+   | OR EMPTY SET
 
 .. index::
     single: boykovKolmogorov(One to One)
@@ -84,11 +86,13 @@ Signatures
 One to One
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vid**)
-    RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
-    OR EMPTY SET
+   | pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vid**)
+
+   | RETURNS SET OF |result-flow|
+   | OR EMPTY SET
 
 :Example: From vertex :math:`11` to vertex :math:`12`
 
@@ -102,11 +106,13 @@ One to One
 One to Many
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vids**)
-    RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
-    OR EMPTY SET
+   | pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vids**)
+
+   | RETURNS SET OF |result-flow|
+   | OR EMPTY SET
 
 :Example: From vertex :math:`11` to vertices :math:`\{5, 10, 12\}`
 
@@ -120,11 +126,13 @@ One to Many
 Many to One
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vid**)
-    RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
-    OR EMPTY SET
+   | pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vid**)
+
+   | RETURNS SET OF |result-flow|
+   | OR EMPTY SET
 
 :Example: From vertices :math:`\{11, 3, 17\}` to vertex :math:`12`
 
@@ -138,11 +146,13 @@ Many to One
 Many to Many
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vids**)
-    RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
-    OR EMPTY SET
+   | pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vids**)
+
+   | RETURNS SET OF |result-flow|
+   | OR EMPTY SET
 
 :Example: From vertices :math:`\{11, 3, 17\}` to vertices :math:`\{5, 10, 12\}`
 
@@ -156,11 +166,13 @@ Many to Many
 Combinations
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_boykovKolmogorov(`Edges SQL`_, `Combinations SQL`_)
-    RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
-    OR EMPTY SET
+   | pgr_boykovKolmogorov(`Edges SQL`_, `Combinations SQL`_)
+
+   | RETURNS SET OF |result-flow|
+   | OR EMPTY SET
 
 :Example: Using a combinations table, equivalent to calculating result from
           vertices :math:`\{5, 6\}` to vertices :math:`\{10, 15, 14\}`.
