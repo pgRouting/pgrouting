@@ -48,7 +48,7 @@ Parameters
 
 .. list-table::
    :width: 81
-   :widths: 10,17,53
+   :widths: 10,20,53
    :header-rows: 1
 
    * - Parameter
@@ -57,15 +57,15 @@ Parameters
    * - `Edges SQL`_
      - ``TEXT``
      - `Edges SQL`_ as described below.
-   * - **Root vid**
+   * - **root vid**
      - ``BIGINT``
      - Identifier of the root vertex of the tree.
 
        * When value is :math:`0` then gets the spanning forest starting in
          aleatory nodes for each tree in the forest.
 
-   * - **Root vids**
-     - ``ARRAY[ANY-INTEGER]``
+   * - **root vids**
+     - ``ARRAY`` [ **ANY-INTEGER** ]
      -  Array of identifiers of the root vertices.
 
         * :math:`0` values are ignored

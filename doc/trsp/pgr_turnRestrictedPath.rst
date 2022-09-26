@@ -30,7 +30,7 @@ restrictions
 
 * Version 3.0.0
 
-  * New **Experimental** function
+  * New experimental function
 
 Description
 -------------------------------------------------------------------------------
@@ -44,13 +44,16 @@ Signatures
 .. index::
    single: turnRestrictedPath - Experimental on v3.0
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_turnRestrictedPath(`Edges SQL`_, `Restrictions SQL`_, Start vid, End vid, K cycles,
-      [, directed] [,heap_paths] [, stop_on_first] [,strict])
-    RETURNS SETOF (seq, path_id, path_seq, node, edge, cost, agg_cost)
+   | pgr_turnRestrictedPath(`Edges SQL`_, `Restrictions SQL`_, **start vid**, **end vid**, **K**, [**options**])
+   | **options:** ``[directed, heap_paths, stop_on_first, strict]``
 
-:Example: From vertex :math:`3` to vertex  :math:`8` on a **directed** graph
+   | RETURNS SET OF |ksp-result|
+   | OR EMPTY SET
+
+:Example: From vertex :math:`3` to vertex  :math:`8` on a directed graph
 
 .. literalinclude:: doc-pgr_turnRestrictedPath.queries
    :start-after: -- q1
@@ -137,7 +140,7 @@ No results because the only path available follows a restriction.
    :start-after: -- q2
    :end-before: -- q3
 
-:Example: From vertex :math:`3` to vertex  :math:`8` on an **undirected** graph
+:Example: From vertex :math:`3` to vertex  :math:`8` on an undirected graph
 
 .. literalinclude:: doc-pgr_turnRestrictedPath.queries
    :start-after: -- q3

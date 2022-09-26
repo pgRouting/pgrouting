@@ -49,12 +49,13 @@ The function returns:
 Signatures
 -------------------------------------------------------------------------------
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    varchar pgr_createTopology(text edge_table, double precision tolerance,
-                           text the_geom:='the_geom', text id:='id',
-                           text source:='source',text target:='target',
-                           text rows_where:='true', boolean clean:=false)
+   | pgr_createTopology(edge_table, tolerance, [**options**])
+   | **options:** ``[the_geom, id, source, target, rows_where, clean]``
+
+   | RETURNS ``VARCHAR``
 
 Parameters
 -------------------------------------------------------------------------------

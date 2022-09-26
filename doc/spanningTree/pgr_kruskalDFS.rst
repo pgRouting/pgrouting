@@ -52,11 +52,13 @@ of the Minimum Spanning Tree created using Kruskal's algorithm.
 Signatures
 -------------------------------------------------------------------------------
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_kruskalDFS(`Edges SQL`_, **Root vid** [, max_depth])
-    pgr_kruskalDFS(`Edges SQL`_, **Root vids** [, max_depth])
-    RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
+   | pgr_kruskalDFS(`Edges SQL`_, **root vid**, [``max_depth``])
+   | pgr_kruskalDFS(`Edges SQL`_, **root vids**, [``max_depth``])
+
+   | RETURNS SET OF |result-bfs|
 
 .. index::
     single: kruskalDFS(Single vertex)
@@ -64,10 +66,12 @@ Signatures
 Single vertex
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_kruskalDFS(`Edges SQL`_, **Root vid** [, max_depth])
-    RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
+   | pgr_kruskalDFS(`Edges SQL`_, **root vid**, [``max_depth``])
+
+   | RETURNS SET OF |result-bfs|
 
 :Example: The Minimum Spanning Tree having as root vertex :math:`6`
 
@@ -81,10 +85,12 @@ Single vertex
 Multiple vertices
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_kruskalDFS(`Edges SQL`_, **Root vids** [, max_depth])
-    RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
+   | pgr_kruskalDFS(`Edges SQL`_, **root vids**, [``max_depth``])
+
+   | RETURNS SET OF |result-bfs|
 
 :Example: The Minimum Spanning Tree starting on vertices :math:`\{9, 6\}` with
           :math:`depth \leq 3`

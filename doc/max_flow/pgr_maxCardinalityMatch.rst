@@ -34,6 +34,10 @@ graph.
 
 .. Rubric:: Availability
 
+* Version 3.3.3
+
+  * ``directed`` parameter ignored as algorithm works only on undirected graphs
+
 * Version 3.0.0
 
   * **Official** function
@@ -51,17 +55,16 @@ graph.
 Description
 -------------------------------------------------------------------------------
 
-**The main characteristics are:**
+The main characteristics are:
 
+* Works for **undirected** graphs.
 * A matching or independent edge set in a graph is a set of edges without common
   vertices.
 * A maximum matching is a matching that contains the largest possible number of
   edges.
 
   * There may be many maximum matchings.
-  * Calculates **one** possible maximum cardinality matching in a graph.
-
-* The graph can be **directed** or **undirected**.
+  * Calculates one possible maximum cardinality matching in a graph.
 
 * Running time: :math:`O( E*V * \alpha(E,V))`
 
@@ -75,18 +78,27 @@ Signatures
 .. index::
     single: MaximumCardinalityMatch
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_maxCardinalityMatch(`Edges SQL`_ [, directed])
+   | pgr_maxCardinalityMatch(`Edges SQL`_)
 
-    RETURNS SET OF (seq, edge_id, source, target)
-    OR EMPTY SET
+   | RETURNS SET OF (seq, edge_id, source, target)
+   | OR EMPTY SET
 
-:Example: For a **directed** graph
+:Example: Using all edges.
+
 
 .. literalinclude:: doc-pgr_maxCardinalityMatch.queries
    :start-after: -- q2
    :end-before: -- q3
+
+Parameters
+-------------------------------------------------------------------------------
+
+.. include:: pgRouting-concepts.rst
+   :start-after: only_edge_param_start
+   :end-before: only_edge_param_end
 
 Inner Queries
 -------------------------------------------------------------------------------
@@ -96,22 +108,42 @@ Edges SQL
 
 SQL query, which should return a set of rows with the following columns:
 
-========== =============== =================================================
-Column     Type            Description
-========== =============== =================================================
-``id``     ``ANY-INTEGER`` Identifier of the edge.
-``source`` ``ANY-INTEGER`` Identifier of the first end point vertex of the edge.
-``target`` ``ANY-INTEGER`` Identifier of the second end point vertex of the edge.
-``going``  ``ANY-NUMERIC`` A positive value represents the existence of the edge
-                           (``source``, ``target``).
-``coming`` ``ANY-NUMERIC`` A positive value represents the existence of the edge
-                           (``target``, ``source``).
-========== =============== =================================================
+.. list-table::
+   :width: 81
+   :widths: 14 14 7 44
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Default
+     - Description
+   * - ``id``
+     - **ANY-INTEGER**
+     -
+     - Identifier of the edge.
+   * - ``source``
+     - **ANY-INTEGER**
+     -
+     - Identifier of the first end point vertex of the edge.
+   * - ``target``
+     - **ANY-INTEGER**
+     -
+     - Identifier of the second end point vertex of the edge.
+   * - ``going``
+     - **ANY-NUMERICAL**
+     -
+     - A positive value represents the existence of the edge (``source``,
+       ``target``).
+   * - ``coming``
+     - **ANY-NUMERICAL**
+     - -1
+     - A positive value represents the existence of the edge (``target``,
+       ``source``)
 
 Where:
 
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERIC: SMALLINT, INTEGER, BIGINT, REAL FLOAT
+:ANY-INTEGER: ``SMALLINT``, ``INTEGER``, ``BIGINT``
+:ANY-NUMERICAL: ``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``
 
 Result Columns
 -------------------------------------------------------------------------------
@@ -137,4 +169,3 @@ See Also
 
 * :ref:`genindex`
 * :ref:`search`
-

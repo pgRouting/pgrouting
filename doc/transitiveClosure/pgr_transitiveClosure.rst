@@ -66,10 +66,12 @@ The pgr_transitiveClosure function has the following signature:
 .. index::
    single: transitiveClosure - Experimental on v3.0
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_transitiveClosure(`Edges SQL`_)
-    RETURNS SETOF (seq, vid, target_array)
+   | pgr_transitiveClosure(`Edges SQL`_)
+
+   | RETURNS SET OF |result-closure|
 
 :Example: Rechability of a subgraph
 
@@ -97,7 +99,7 @@ Edges SQL
 Result Columns
 -------------------------------------------------------------------------------
 
-RETURNS SETOF  (seq, vid, target_array)
+RETURNS SET OF |result-closure|
 
 .. list-table::
    :width: 81

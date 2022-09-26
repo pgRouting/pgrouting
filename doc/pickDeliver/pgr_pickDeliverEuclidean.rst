@@ -91,13 +91,13 @@ Characteristics
 Signature
 -------------------------------------------------------------------------------
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_pickDeliverEuclidean(`Orders SQL`_, `Vehicles SQL`_,
-       [, factor], [max_cycles] [,initial_sol])
-    RETURNS SET OF (seq, vehicle_seq, vehicle_id,
-       stop_seq, stop_type, order_id, cargo,
-       travel_time, arrival_time, wait_time, service_time, departure_time)
+   | pgr_pickDeliverEuclidean(`Orders SQL`_, `Vehicles SQL`_, [**options**])
+   | **options:** ``[factor, max_cycles, initial_sol]``
+
+   | RETURNS SET OF |result-pickdrop|
 
 :Example: Solve the following problem
 
@@ -139,11 +139,12 @@ Orders SQL
 
 A `SELECT` statement that returns the following columns:
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    id, demand
-    p_x, p_y, p_open, p_close, [p_service,]
-    d_x, d_y, d_open, d_close, [d_service]
+   | id, demand
+   | p_x, p_y, p_open, p_close, [p_service,]
+   | d_x, d_y, d_open, d_close, [d_service]
 
 Where:
 
@@ -161,11 +162,12 @@ Vehicles SQL
 
 A `SELECT` statement that returns the following columns:
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    id, capacity
-    start_x, start_y, start_open, start_close [, start_service, ]
-    [ end_x, end_y, end_open, end_close, end_service ]
+   | id, capacity
+   | start_x, start_y, start_open, start_close [, start_service, ]
+   | [ end_x, end_y, end_open, end_close, end_service ]
 
 where:
 

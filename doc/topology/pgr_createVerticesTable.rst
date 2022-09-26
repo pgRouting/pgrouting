@@ -48,10 +48,12 @@ The function returns:
 Signatures
 -------------------------------------------------------------------------------
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-	pgr_createVerticesTable(edge_table, the_geom, source, target, rows_where)
-    RETURNS VARCHAR
+   | pgr_createVerticesTable(edge_table, [``the_geom, source, target, rows_where``])
+
+   | RETURNS ``VARCHAR``
 
 Parameters
 -------------------------------------------------------------------------------

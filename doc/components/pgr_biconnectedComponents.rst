@@ -74,11 +74,13 @@ only be contained in a single biconnected component.
 Signatures
 -------------------------------------------------------------------------------
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_biconnectedComponents(`Edges SQL`_)
-    RETURNS SET OF (seq, component, edge)
-    OR EMPTY SET
+   | pgr_biconnectedComponents(`Edges SQL`_)
+
+   | RETURNS SET OF |result-component-E|
+   | OR EMPTY SET
 
 :Example: The biconnected components of the graph
 
@@ -109,7 +111,7 @@ Edges SQL
 Result Columns
 -------------------------------------------------------------------------------
 
-Returns set of ``(seq, component, edge)``
+Returns set of |result-component-E|
 
 .. list-table::
    :width: 81

@@ -62,10 +62,13 @@ Signatures
 
 .. rubric:: Summary
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_bdDijkstraCostMatrix(`Edges SQL`_, **start vids** [, directed])
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
+   | pgr_bdDijkstraCostMatrix(`Edges SQL`_, **start vids**, [``directed``])
+
+   | RETURNS SET OF |matrix-result|
+   | OR EMPTY SET
 
 :Example: Symmetric cost matrix for vertices :math:`\{5, 6, 10, 15\}` on an
           **undirected** graph
