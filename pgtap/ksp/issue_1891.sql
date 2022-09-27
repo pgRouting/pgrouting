@@ -1,0 +1,63 @@
+BEGIN;
+
+SELECT CASE WHEN min_version('3.3.3') THEN plan(2) ELSE plan(1) END;
+
+CREATE TABLE fiber(id SERIAL, source INT, target INT, cost FLOAT);
+
+INSERT INTO FIBER (source, target, cost) VALUES
+(1,2,10),(2,4,10),(1,3,10),(3,4,10),(2,3,10),(1,4,10);
+
+
+CREATE OR REPLACE FUNCTION issue_1891() RETURNS SETOF TEXT AS
+$BODY$
+DECLARE
+  have INTEGER;
+BEGIN
+  IF NOT min_version('3.3.3') THEN
+    RETURN QUERY SELECT skip(1, 'Issue fixed on 3.4.0');
+    RETURN;
+  END IF;
+
+SELECT count(DISTINCT path_id) FROM
+pgr_ksp('SELECT * FROM fiber', 1, 4, 10, directed => false, heap_paths => true) INTO have;
+
+RETURN QUERY
+SELECT is(have, 5);
+
+prepare q2 AS
+SELECT * FROM
+pgr_ksp('SELECT * FROM fiber', 1, 4, 10, directed => false, heap_paths => true);
+
+PREPARE r2 AS
+SELECT *
+FROM (VALUES
+  (1, 1, 1, 1, 6, 10, 0),
+  (2, 1, 2, 4, -1, 0, 10),
+  (3, 2, 1, 1, 1, 10, 0),
+  (4, 2, 2, 2, 2, 10, 10),
+  (5, 2, 3, 4, -1, 0, 20),
+  (6, 3, 1, 1, 3, 10, 0),
+  (7, 3, 2, 3, 4, 10, 10),
+  (8, 3, 3, 4, -1, 0, 20),
+  (9, 4, 1, 1, 1, 10, 0),
+  (10,4, 2, 2, 5, 10, 10),
+  (11, 4, 3, 3, 4, 10, 20),
+  (12, 4, 4, 4, -1, 0, 30),
+  (13, 5, 1, 1, 3, 10, 0),
+  (14, 5, 2, 3, 5, 10, 10),
+  (15, 5, 3, 2, 2, 10, 20),
+  (16, 5, 4, 4, -1, 0, 30))
+AS t(seq, path_id, path_seq, node, edge, cost, agg_cost);
+
+RETURN QUERY
+SELECT bag_eq('q2','r2','q2 should have r2 result');
+
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE;
+
+
+SELECT issue_1891();
+
+SELECT finish();
+ROLLBACK;

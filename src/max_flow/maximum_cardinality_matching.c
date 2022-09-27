@@ -72,7 +72,7 @@ process(
 
     do_pgr_maximum_cardinality_matching(
             edges, total_edges,
-            directed,
+            false,
             result_tuples,
             result_count,
 
