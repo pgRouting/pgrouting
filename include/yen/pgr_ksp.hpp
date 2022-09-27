@@ -169,7 +169,7 @@ class Pgr_ksp :  public Pgr_messages {
              auto rootPath = curr_result_path.getSubpath(i);
 
              for (const auto &path : m_ResultSet) {
-                 if (path.isEqual(rootPath)) {
+                 if (path.isEqual(rootPath) && spurNodeId == path[i].node) {
                      if (path.size() > i + 1) {
                          graph.disconnect_edge(path[i].node,     // from
                                  path[i + 1].node);  // to

@@ -36,7 +36,8 @@ graph.
 
 * Version 3.3.3
 
-  * ``directed`` parameter ignored as algorithm works only on undirected graphs
+  * ``directed`` optional parameter ignored and removed from the documentation
+    as the algorithm works only on undirected graphs
 
 * Version 3.0.0
 
