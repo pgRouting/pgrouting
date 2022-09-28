@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-23 16:50+0000\n"
 "PO-Revision-Date: 2022-09-28 18:19+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
 "Language: es\n"
@@ -1384,7 +1384,7 @@ msgid "Kind of stop location the vehicle is at"
 msgstr "Tipo de parada en la que se encuentra el vehículo"
 
 msgid ":math:`-1`: at the solution summary row"
-msgstr ""
+msgstr ":math:`-1`: en la fila de resumen de solución"
 
 msgid ":math:`1`: Starting location"
 msgstr "``1``: Ubicación inicial"
@@ -1396,7 +1396,7 @@ msgid ":math:`3`: Delivery location"
 msgstr ":math:`3`: Lugar de entrega"
 
 msgid ":math:`6`: Ending location and indicates the vehicle's summary row"
-msgstr ""
+msgstr ":math:`6`: Ubicación final indica la fila de resumen del vehículo"
 
 msgid "``order_id``"
 msgstr "``order_id``"
@@ -1411,13 +1411,13 @@ msgstr ""
 "parada actual."
 
 msgid "``cargo``"
-msgstr ""
+msgstr "``cargo``"
 
 msgid "Cargo units of the vehicle when leaving the stop."
 msgstr "Unidades de carga del vehículo al salir de la parada."
 
 msgid "Value :math:`-1` on solution summary row."
-msgstr ""
+msgstr "El valor :math:`-1` en fila de resumen de solución."
 
 msgid "``travel_time``"
 msgstr "``travel_time``"
@@ -1427,7 +1427,7 @@ msgstr ""
 "Tiempo de viaje desde el ``stop_seq`` anterior hasta el ``stop_seq`` actual."
 
 msgid "Summary has the **total traveling time**:"
-msgstr ""
+msgstr "El resumen tiene el **tiempo total de viaje**:"
 
 msgid "The sum of all the ``travel_time``."
 msgstr "La suma de todos los ``travel_time``."
@@ -1439,7 +1439,7 @@ msgid "Time spent waiting for current location to open."
 msgstr "Tiempo de espera para la apertura de la ubicación actual."
 
 msgid ":math:`-1`: at the solution summary row."
-msgstr ""
+msgstr ":math:`-1` en fila de resumen de solución."
 
 msgid ":math:`0`: at the starting location."
 msgstr ":math:`0`: en la ubicación inicial."
@@ -1448,7 +1448,7 @@ msgid "``wait_time``"
 msgstr "``wait_time``"
 
 msgid "Summary row has the **total waiting time**:"
-msgstr ""
+msgstr "La fila de resumen tiene el **tiempo total de espera**:"
 
 msgid "The sum of all the ``wait_time``."
 msgstr "La suma de todo el ``wait_time``."
@@ -1460,7 +1460,7 @@ msgid "Service duration at current location."
 msgstr "Duralción del servicio en la ubicación actual."
 
 msgid "Summary row has the **total service time**:"
-msgstr ""
+msgstr "La fila de resumen tiene el **tiempo total de servicio**:"
 
 msgid "The sum of all the ``service_time``."
 msgstr "La suma de todo el ``service_time``."
@@ -1469,7 +1469,7 @@ msgid "``departure_time``"
 msgstr "``departure_time``"
 
 msgid "The time at which the vehicle departs from the stop."
-msgstr ""
+msgstr "El tiempo en el que el vehículo sale desde la parada."
 
 msgid ":math:`arrival\\_time + wait\\_time + service\\_time`."
 msgstr ":math:`arrival\\_time + wait\\_time + service\\_time`."
@@ -1479,7 +1479,7 @@ msgstr ""
 "El destino final tiene el **tiempo total** utilizado por el vehículo actual."
 
 msgid "Summary row has the **total solution time**:"
-msgstr ""
+msgstr "La fila de resumen tiene el **tiempo total de solución**:"
 
 msgid ""
 ":math:`total\\ traveling\\ time + total\\ waiting\\ time + total\\ service\\ "
@@ -1495,7 +1495,7 @@ msgid "Continues the sequence"
 msgstr "Continúa la secuencia"
 
 msgid "**total capacity violations**:"
-msgstr ""
+msgstr "**infracciones de capacidad total**:"
 
 msgid "**total time windows violations**:"
 msgstr "**Cantidad total de violaciones de ventanas de tiempo**:"
@@ -1579,10 +1579,13 @@ msgstr ""
 "Si la **capacidad** del vehículo se mide mediante `cajas`, se necesita una "
 "conversión de `kg de plumas` a `número equivalente de cajas`."
 
+#, fuzzy
 msgid ""
 "If the vehicle's **capacity** is measured in `kg`, a conversion of `box of "
 "apples` to `kg` is needed."
 msgstr ""
+"Si la **capacidad** del vehículo se mide en `kg`, una conversión de `box of "
+"apples` a `kg` es necesaria."
 
 msgid "Showing how the 2 possible conversions can be done"
 msgstr "Mostrar cómo se pueden hacer las 2 conversiones posibles"
@@ -1622,7 +1625,7 @@ msgid "Locations"
 msgstr "Ubiaciones"
 
 msgid "When using :doc:`pgr_pickDeliverEuclidean`:"
-msgstr ""
+msgstr "Cuando se use :doc:`pgr_pickDeliverEuclidean`:"
 
 msgid "The vehicles have :math:`(x, y)` pairs for start and ending locations."
 msgstr ""
@@ -1635,7 +1638,7 @@ msgstr ""
 "entrega."
 
 msgid "When using :doc:`pgr_pickDeliver`:"
-msgstr ""
+msgstr "Cuando se use :doc:`pgr_pickDeliver`:"
 
 msgid "The vehicles have identifiers for the start and ending locations."
 msgstr ""
@@ -1657,6 +1660,8 @@ msgid ""
 "The times are relative to **0**. All time units have to be converted to a "
 "**0** reference and the same time units."
 msgstr ""
+"El tiempo es relativo a **0**. Todas las unidades de tiempo se convierte a "
+"la referencia de **0** y las mismas unidades de tiempo."
 
 msgid ""
 "Suppose that a vehicle's driver starts the shift at 9:00 am and ends the "
@@ -1724,27 +1729,32 @@ msgid ""
 "``factor`` acts as a multiplier to convert from distance values to time "
 "units the matrix values or the euclidean values."
 msgstr ""
+"``factor``funciona como un multiplicador que convierte valores de distancia "
+"a unidades de tiempo, ya sea en valores matriciales o euclidianos."
 
 msgid "When the values are already in the desired time units"
-msgstr ""
+msgstr "Los valores ya están en la unidad de tiempo deseada"
 
 msgid "``factor`` should be **1**"
-msgstr ""
+msgstr "``factor`` debería ser **1**"
 
 msgid "When ``factor`` > 1 the travel times are faster"
-msgstr ""
+msgstr "Cuando ``factor`` > 1 el tiempo de viaje es más rápido"
 
 msgid "When ``factor`` < 1 the travel times are slower"
-msgstr ""
+msgstr "Cuando ``factor`` > 1 el tiempo de viaje es más lento"
 
 msgid "For the :doc:`pgr_pickDeliverEuclidean`:"
-msgstr ""
+msgstr "Para el :doc:`pgr_pickDeliverEuclidean`:"
 
 msgid ""
 "Working with time units in seconds, and x/y in lat/lon: Factor: would depend "
 "on the location of the points and on the average velocity say 25m/s is the "
 "velocity."
 msgstr ""
+"Trabajando con la unidad de tiempo en segundos, con x/y en lat/lon : Factor: "
+"dependería en la ubicación de los puntos y la velocidad promedio, digamos "
+"con velocidad de 25m/s."
 
 msgid "Latitude"
 msgstr "Latitud"
@@ -1771,76 +1781,82 @@ msgid "4452 s"
 msgstr "4452 s"
 
 msgid "For the :doc:`pgr_pickDeliver`:"
-msgstr ""
+msgstr "Para el :doc:`pgr_pickDeliver`:"
 
 msgid ""
 "Given :math:`v = d / t` therefore :math:`t = d / v` And the ``factor`` "
 "becomes :math:`1 / v`"
 msgstr ""
+"Dado :math:`v = d / t`entonces :math:`t = d / v` y el ``factor`` se "
+"convierte en :math:`1 / v`"
 
 msgid "v"
-msgstr ""
+msgstr "v"
 
 msgid "Velocity"
-msgstr ""
+msgstr "Velocidad"
 
 msgid "d"
-msgstr ""
+msgstr "d"
 
 msgid "Distance"
-msgstr ""
+msgstr "Distancia"
 
 msgid "t"
-msgstr ""
+msgstr "t"
 
 msgid "Time"
-msgstr ""
+msgstr "Tiempo"
 
 msgid ""
 "For the following equivalences :math:`10m/s \\approx 600m/min \\approx 36 km/"
 "hr`"
 msgstr ""
+"Para las siguientes equivalencias :math:`10m/s \\approx 600m/min \\approx 36 "
+"km/hr`"
 
 msgid ""
 "Working with time units in seconds and the matrix been in meters: For a "
 "1000m lenght value on the matrix:"
 msgstr ""
+"Trabajando con segundos para las unidades de tiempo y la matriz en metros: "
+"Para un valor de longitud de 1000m en la matriz:"
 
 msgid "Units"
 msgstr "Unidades"
 
 msgid "velocity"
-msgstr ""
+msgstr "velocidad"
 
 msgid "Result"
 msgstr "Resultado"
 
 msgid "seconds"
-msgstr ""
+msgstr "segundos"
 
 msgid ":math:`10 m/s`"
 msgstr ":math:`10 m/s`"
 
 msgid ":math:`\\frac{1}{10m/s}`"
-msgstr ""
+msgstr ":math:`\\frac{1}{10m/s}`"
 
 msgid ":math:`0.1s/m`"
-msgstr ""
+msgstr ":math:`0.1s/m`"
 
 msgid ":math:`1000m * 0.1s/m = 100s`"
-msgstr ""
+msgstr ":math:`1000m * 0.1s/m = 100s`"
 
 msgid ":math:`600 m/min`"
 msgstr ":math:`600 m/min`"
 
 msgid ":math:`\\frac{1}{600m/min}`"
-msgstr ""
+msgstr ":math:`\\frac{1}{600m/min}`"
 
 msgid ":math:`0.0016min/m`"
-msgstr ""
+msgstr ":math:`0.0016min/m`"
 
 msgid ":math:`1000m * 0.0016min/m = 1.6min`"
-msgstr ""
+msgstr ":math:`1000m * 0.0016min/m = 1.6min`"
 
 msgid "Hours"
 msgstr "Horas"
@@ -1849,13 +1865,13 @@ msgid ":math:`36 km/hr`"
 msgstr ":math:`36 km/hr`"
 
 msgid ":math:`\\frac{1}{36 km/hr}`"
-msgstr ""
+msgstr ":math:`\\frac{1}{36 km/hr}`"
 
 msgid ":math:`0.0277hr/km`"
-msgstr ""
+msgstr ":math:`0.0277hr/km`"
 
 msgid ":math:`1km * 0.0277hr/km = 0.0277hr`"
-msgstr ""
+msgstr ":math:`1km * 0.0277hr/km = 0.0277hr`"
 
 msgid "https://en.wikipedia.org/wiki/Vehicle_routing_problem"
 msgstr "https://en.wikipedia.org/wiki/Vehicle_routing_problem"
@@ -3024,16 +3040,21 @@ msgid ""
 "Based on Dijkstra's algorithm, the bidirectional search finds a shortest "
 "path a starting vertex to an ending vertex."
 msgstr ""
+"Basado en el algoritmo de Dijkstra, la búsqueda bidireccional encuentra el "
+"camino más corto entre el vértice de inicio al vértice final."
 
 msgid ""
 "It runs two simultaneous searches: one forward from the source, and one "
 "backward from the target, stopping when the two meet in the middle."
 msgstr ""
+"Corre dos búsquedas simultaneas: una adelante de la fuente y otra atrás del "
+"objetivo, parándose cuando los dos coinciden en medio."
 
 msgid ""
 "This implementation can be used with a directed graph and an undirected "
 "graph."
 msgstr ""
+"Esta implementación se puede usar para los grafos dirigidos y no dirigidos."
 
 msgid ""
 "A negative value on a cost column is interpreted as the edge does not exist."
@@ -3365,7 +3386,7 @@ msgstr ""
 "máximo de veces que se van a ejecutar."
 
 msgid "Contraction of the leaf nodes of the graph."
-msgstr ""
+msgstr "Contracción de los nodos de hoja del grafo."
 
 msgid "Dead end"
 msgstr "Sin salida"
@@ -3396,7 +3417,7 @@ msgstr ""
 "Contracción de callejón sin salida`_."
 
 msgid "Dead end vertex on undirected graph"
-msgstr ""
+msgstr "Vértice sin salida en un grafo sin dirigir"
 
 msgid "The green nodes are `dead end`_ nodes"
 msgstr "Los nodos verdes son nodos `dead end`_"
@@ -3405,25 +3426,25 @@ msgid "The blue nodes have an unlimited number of edges."
 msgstr "Los nodos azules tienen un número ilimitado de aristas."
 
 msgid "Node"
-msgstr ""
+msgstr "Nodo"
 
 msgid "Adjecent nodes"
-msgstr ""
+msgstr "Nodos adyacentes"
 
 msgid "Number of adjacent nodes"
 msgstr "Número de vértices adyacentes"
 
 msgid ":math:`a`"
-msgstr ""
+msgstr ":math:`a`"
 
 msgid ":math:`\\{u\\}`"
-msgstr ""
+msgstr ":math:`\\{u\\}`"
 
 msgid ":math:`b`"
-msgstr ""
+msgstr ":math:`b`"
 
 msgid ":math:`\\{v\\}`"
-msgstr ""
+msgstr ":math:`\\{v\\}`"
 
 msgid "Dead end vertex on directed graph"
 msgstr "Vértice sin salida en un grafo dirigido"
@@ -3435,41 +3456,46 @@ msgstr ""
 "salientes."
 
 msgid "Number of incoming edges"
-msgstr ""
+msgstr "Número de aristas entrantes"
 
 msgid "Number of outgoing edges"
-msgstr ""
+msgstr "Número de aristas salientes"
 
 msgid ":math:`c`"
-msgstr ""
+msgstr ":math:`c`"
 
 msgid ":math:`\\{v, w\\}`"
-msgstr ""
+msgstr ":math:`\\{v, w\\}`"
 
 msgid "2"
-msgstr ""
+msgstr "2"
 
 msgid ":math:`d`"
-msgstr ""
+msgstr ":math:`d`"
 
 msgid ":math:`\\{x\\}`"
-msgstr ""
+msgstr ":math:`\\{x\\}`"
 
 msgid ":math:`e`"
-msgstr ""
+msgstr ":math:`e`"
 
 msgid ":math:`\\{x, y\\}`"
-msgstr ""
+msgstr ":math:`\\{x, y\\}`"
 
 msgid ""
 "From above, nodes :math:`\\{a, b, d\\}` are dead ends because the number of "
 "adjacent vertices is 1. No further checks are needed for those nodes."
 msgstr ""
+"De arriba, nodes :math:`\\{a, b, d\\}` son callejones sin salida por que el "
+"número de vértices adyacentes es 1. No son necesarios los checks para esos "
+"nodos."
 
 msgid ""
 "On the following table, nodes :math:`\\{c, e\\}` because the even that the "
 "number of adjacent vertices is not 1 for"
 msgstr ""
+"En al siguiente tabla, nodos :math:`\\{c, e\\}` por que el par del numero de "
+"vértices adyacentes no es 1 para"
 
 msgid "Operation: Dead End Contraction"
 msgstr "Operación: Contracción sin salida"
@@ -3534,40 +3560,40 @@ msgid "Undirected"
 msgstr "No dirigido"
 
 msgid ":math:`v`"
-msgstr ""
+msgstr ":math:`v`"
 
 msgid ":math:`\\{u, w\\}`"
-msgstr ""
+msgstr ":math:`\\{u, w\\}`"
 
 msgid "Linear vertex on directed graph"
 msgstr "Vértice lineal en grafo dirigido"
 
 msgid "The white node is not linear because the linearity is not symetrical."
-msgstr ""
+msgstr "El nodo blanco no es linero por que la linealidad no es simétrica."
 
 msgid "It is possible to go :math:`y \\rightarrow c \\rightarrow z`"
-msgstr ""
+msgstr "Es posible ir a :math:`y \\rightarrow c \\rightarrow z`"
 
 msgid "It's not possible to go :math:`z \\rightarrow c \\rightarrow y`"
-msgstr ""
+msgstr "No es posible ir a :math:`z \\rightarrow c \\rightarrow y`"
 
 msgid "Is symmetrical?"
 msgstr "Es simétrico?"
 
 msgid ":math:`\\{u, v\\}`"
-msgstr ""
+msgstr ":math:`\\{u, v\\}`"
 
 msgid "yes"
-msgstr ""
+msgstr "sí"
 
 msgid ":math:`\\{w, x\\}`"
-msgstr ""
+msgstr ":math:`\\{w, x\\}`"
 
 msgid ":math:`\\{y, z\\}`"
-msgstr ""
+msgstr ":math:`\\{y, z\\}`"
 
 msgid "no"
-msgstr ""
+msgstr "no"
 
 msgid "Operation: Linear Contraction"
 msgstr "Operación: Contracción Lineal"
@@ -3776,6 +3802,8 @@ msgid ""
 "Fill ``contracted_vertices`` with the information from the results tha "
 "belong to the vertices."
 msgstr ""
+"Lllena ``contracted_vertices`` con la información de los resultados que "
+"pertenecen a los vértices."
 
 msgid "The modified vertices table:"
 msgstr "La tabla de vértices modificada:"
@@ -4938,6 +4966,10 @@ msgid ""
 "`pgr_edmondsKarp`, :doc:`pgr_boykovKolmogorov`, but the actual flow through "
 "each edge may vary."
 msgstr ""
+":doc:`pgr_maxFlow` es el Flujo máximo y este máximo tiene garantía de ser el "
+"mismo en las funciones :doc:`pgr_pushRelabel`, :doc:`pgr_edmondsKarp`, "
+":doc:`pgr_boykovKolmogorov`, pero el flujo actual para cada arista puede "
+"variar."
 
 msgid "Capacity edges"
 msgstr "Aristas de capacidad"
@@ -4955,7 +4987,7 @@ msgid "``reverse_capacity``"
 msgstr "``reverse_capacity``"
 
 msgid "Capacity-Cost edges"
-msgstr ""
+msgstr "Aristas Capacidad-Costo"
 
 msgid ":doc:`pgr_maxFlowMinCost`"
 msgstr ":doc:`pgr_maxFlowMinCost`"
@@ -4976,13 +5008,13 @@ msgid "Weight of the edge (``target``, ``source``) if it exist"
 msgstr "Peso de la arista (``target``, ``source``) si existe"
 
 msgid "Cost edges"
-msgstr ""
+msgstr "Aristas de costo"
 
 msgid ":doc:`pgr_edgeDisjointPaths`"
-msgstr ""
+msgstr ":doc:`pgr_edgeDisjointPaths`"
 
 msgid "Used in"
-msgstr ""
+msgstr "Usado en"
 
 msgid "**seq**"
 msgstr "``seq``"
@@ -5391,25 +5423,31 @@ msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
 "pgr_trsp.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_trsp.html>`__)"
 msgstr ""
+"**Versiones Soportadas** `Última de <https://docs.pgrouting.org/latest/en/"
+"pgr_trsp.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_trsp.html>`__)"
 
 msgid "Migration guide"
-msgstr ""
+msgstr "Guía de migración"
 
 msgid ""
 "Several functions are having changes on the signatures, and/or have been "
 "replaced by new functions."
 msgstr ""
+"Varias funciones están teniendo cambios en las firmas, y/o han sido "
+"remplazadas por nuevas funciones."
 
 msgid "Results can be different because of the changes."
-msgstr ""
+msgstr "Resultados pueden ser diferentes dado los cambios."
 
 msgid "Migrating functions:"
-msgstr ""
+msgstr "Migrando funciones:"
 
 msgid ""
 ":doc:`pgr_maxCardinalityMatch` works only for undirected graphs, therefore "
 "the ``directed`` flag has been removed."
 msgstr ""
+":doc:`pgr_maxCardinalityMatch` funciona solamente para grafos no dirigidos, "
+"entonces la flag ``directed`` ha sido removida."
 
 msgid ""
 ":doc:`pgr_trsp` signatures have changed and many issues have been fixed in "
@@ -5417,24 +5455,29 @@ msgid ""
 "signatures to the new replacement functions. This also affects the "
 "restrictions."
 msgstr ""
+":doc:`pgr_trsp` firmas han cambiando y varios problemas han sido arreglados "
+"en las nuevas firmas. Esta sección enseñara como migrar las viejas firmas a "
+"la nueva función de reemplazo. Esto también afecta las restricciones ."
 
 msgid "All deprecated functions will be removed on next mayor version 4.0.0"
 msgstr ""
+"Todas las funciones obsoletas serán removidas en las siguiente versión mayor "
+"4.0.0"
 
 msgid "Migration of ``pgr_maxCardinalityMatch``"
-msgstr ""
+msgstr "Migración de ``pgr_maxCardinalityMatch``"
 
 msgid "Signature to be migrated:"
-msgstr ""
+msgstr "Firmas que serán migradas:"
 
 msgid "Migration is needed, because:"
-msgstr ""
+msgstr "Migración es necesaria, porque:"
 
 msgid "Use ``cost`` and ``reverse_cost`` on the inner query"
-msgstr ""
+msgstr "Usa ``cost`` y ``reverse_cost`` en la consulta interna"
 
 msgid "Results are ordered"
-msgstr ""
+msgstr "Los resultados son ordenados"
 
 msgid "Works for undirected graphs."
 msgstr "Funciona para grafos no dirigidos."
@@ -5444,17 +5487,20 @@ msgstr "Nueva firma"
 
 msgid "``pgr_maxCardinalityMatch(text)`` returns only ``edge`` column."
 msgstr ""
+"``pgr_maxCardinalityMatch(text)`` regresa solamente la columna ``edge``."
 
 msgid "The optional flag ``directed`` is removed."
-msgstr ""
+msgstr "La flag opcional ``directed``es removida."
 
 msgid "Before migration"
-msgstr ""
+msgstr "Antes de migración"
 
 msgid ""
 "Columns used are ``going`` and ``coming`` to represent the existence of an "
 "edge."
 msgstr ""
+"Las columnas usadas son ``going`` y ``coming`` para representar la "
+"existencia de la arista."
 
 msgid ""
 "Flag ``directed`` was used to indicate if it was for a **directed** or "
