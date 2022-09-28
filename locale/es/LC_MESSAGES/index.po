@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: 2022-09-28 16:02+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/index/"
 "es/>\n"
 "Language: es\n"
@@ -622,3 +622,9 @@ msgstr "**destinos**"
 
 msgid "`Combinations SQL`_"
 msgstr "`SQL de combinations`_"
+
+msgid "``epsilon``"
+msgstr "``epsilon``"
+
+msgid "``directed``"
+msgstr "``directed``"
