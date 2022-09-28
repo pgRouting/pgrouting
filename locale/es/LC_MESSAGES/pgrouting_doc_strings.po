@@ -100,8 +100,9 @@ msgstr ""
 msgid "**root vids**"
 msgstr "*vid raíces**"
 
+#, fuzzy
 msgid "``ARRAY`` [ **ANY-INTEGER** ]"
-msgstr ""
+msgstr "``ARRAY`` [ **ANY-INTEGER** ]"
 
 msgid "Array of identifiers of the root vertices."
 msgstr "Arreglo de identificadores de los vértices raíz."
@@ -578,8 +579,9 @@ msgstr "SQL restricciones"
 msgid "``path``"
 msgstr "``path``"
 
+#, fuzzy
 msgid "``ARRAY`` [**ANY-INTEGER**]"
-msgstr ""
+msgstr "``ARRAY`` [**ANY-INTEGER**]"
 
 msgid ""
 "Sequence of edge identifiers that form a path that is not allowed to be "
@@ -1080,31 +1082,32 @@ msgstr "Número de unidades en la orden"
 
 #, fuzzy
 msgid "``p_open``"
-msgstr "`start_open`"
+msgstr "``p_open``"
 
 msgid "The time, relative to 0, when the pickup location opens."
 msgstr "La hora, en relación con 0, cuando se abre la ubicación de recogida."
 
 #, fuzzy
 msgid "``p_close``"
-msgstr "`start_close`"
+msgstr "``p_close``"
 
 msgid "The time, relative to 0, when the pickup location closes."
 msgstr "La hora, en relación con 0, cuando se cierra la ubicación de recogida."
 
 #, fuzzy
 msgid "[``p_service``]"
-msgstr "`start_service`"
+msgstr "[``p_service``]"
 
 msgid "The duration of the loading at the pickup location."
 msgstr "La duración de la carga en el lugar de recogida."
 
+#, fuzzy
 msgid "When missing: 0 time units are used"
-msgstr ""
+msgstr "Cuando falte: 0 unidades de tiempo son usadas"
 
 #, fuzzy
 msgid "``d_open``"
-msgstr "`start_open`"
+msgstr "``d_open``"
 
 msgid "The time, relative to 0, when the delivery location opens."
 msgstr "La hora, en relación con 0, cuando se abre la ubicación de entrega."
@@ -1117,7 +1120,7 @@ msgstr "La hora, en relación con 0, cuando se cierra la ubicación de entrega."
 
 #, fuzzy
 msgid "[``d_service``]"
-msgstr "`start_service`"
+msgstr "[``d_service``]"
 
 msgid "The duration of the unloading at the delivery location."
 msgstr "La duración de la descarga en el lugar de entrega."
@@ -1131,7 +1134,7 @@ msgstr ""
 
 #, fuzzy
 msgid "``p_node_id``"
-msgstr "`start_node_id`"
+msgstr "``p_node_id``"
 
 msgid ""
 "The node identifier of the pickup, must match a vertex identifier in the "
@@ -1142,7 +1145,7 @@ msgstr ""
 
 #, fuzzy
 msgid "``d_node_id``"
-msgstr "`start_node_id`"
+msgstr "``d_node_id``"
 
 msgid ""
 "The node identifier of the delivery, must match a vertex identifier in the "
@@ -1160,28 +1163,28 @@ msgstr ""
 
 #, fuzzy
 msgid "``p_x``"
-msgstr "``-1``"
+msgstr "``p_x``"
 
 msgid ":math:`x` value of the pick up location"
 msgstr ":math:`x` valor de la ubicación de recogida"
 
 #, fuzzy
 msgid "``p_y``"
-msgstr "``-1``"
+msgstr "``p_y``"
 
 msgid ":math:`y` value of the pick up location"
 msgstr ":math:`y` valor de la ubicación de recogida"
 
 #, fuzzy
 msgid "``d_x``"
-msgstr "``-1``"
+msgstr "``d_x``"
 
 msgid ":math:`x` value of the delivery location"
 msgstr "valor :math:`x` de la ubicación de entrega"
 
 #, fuzzy
 msgid "``d_y``"
-msgstr "``-1``"
+msgstr "``d_y``"
 
 msgid ":math:`y` value of the delivery location"
 msgstr "valor :math:`y` del lugar de entrega"
@@ -1205,7 +1208,7 @@ msgstr "Máxima capacidad"
 
 #, fuzzy
 msgid "``start_open``"
-msgstr "`start_open`"
+msgstr "``start_open``"
 
 msgid "The time, relative to 0, when the starting location opens."
 msgstr "La hora, en relación con 0, cuando se abre la ubicación inicial."
@@ -1218,17 +1221,20 @@ msgstr "La hora, en relación con 0, cuando se cierra la ubicación inicial."
 
 #, fuzzy
 msgid "[``start_service``]"
-msgstr "`start_service`"
+msgstr "[``start_service``]"
 
 msgid "The duration of the loading at the starting location."
 msgstr "La duración de la carga en la ubicación inicial."
 
+#, fuzzy
 msgid "When missing: A duration of :math:`0` time units is used."
 msgstr ""
+"Cuando falte: Unidades de tiempo serán usadas para una duración de :math: "
+"`0`."
 
 #, fuzzy
 msgid "[``end_open``]"
-msgstr "**end_open**"
+msgstr "[``end_open``]"
 
 msgid "The time, relative to 0, when the ending location opens."
 msgstr "La hora, en relación con 0, cuando se abre la ubicación final."
@@ -1238,7 +1244,7 @@ msgstr "Cuando falte: El valor de``start_open`` se usara"
 
 #, fuzzy
 msgid "[``end_close``]"
-msgstr "**end_close**"
+msgstr "[``end_close``]"
 
 msgid "The time, relative to 0, when the ending location closes."
 msgstr "La hora, en relación con 0, cuando se cierra la ubicación final."
@@ -2231,7 +2237,7 @@ msgid "4G memory"
 msgstr "memoria 4G"
 
 msgid "trusty"
-msgstr "trusty"
+msgstr "confiable"
 
 msgid "posgreSQL version 9.3"
 msgstr "postgreSQL versión 9.3"
@@ -11132,7 +11138,7 @@ msgstr ""
 "de aristas."
 
 msgid "|ascending| |descending|"
-msgstr "|ascending| |descending|"
+msgstr "|ascendente| |descendente|"
 
 msgid "ascending"
 msgstr "ascendente"
