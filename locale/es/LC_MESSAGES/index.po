@@ -562,3 +562,63 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/index.rst:121
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+msgid "**root vid**"
+msgstr "**raíz**"
+
+msgid "**distance**"
+msgstr "**distancia**"
+
+msgid "**point**"
+msgstr "**punto**"
+
+msgid "**tolerance**"
+msgstr "**tolerancia**"
+
+msgid "`Restrictions SQL`_"
+msgstr "`SQL de restricciones`_"
+
+msgid "`Edges SQL`_"
+msgstr "`SQL de aristas`_"
+
+msgid "**start vids**"
+msgstr "**salidas**"
+
+msgid "``start_close``"
+msgstr "``start_close``"
+
+msgid "pgr_quote_ident"
+msgstr "pgr_quote_ident"
+
+msgid "``max_depth``"
+msgstr "``max_depth``"
+
+msgid "`Points SQL`_"
+msgstr "`SQL de puntos`_,"
+
+msgid "**start vid**"
+msgstr "**salida**"
+
+msgid "``end_close``"
+msgstr "``end_close``"
+
+msgid "**options**"
+msgstr "**opciones**"
+
+msgid "**root vids**"
+msgstr "**raices**"
+
+msgid "**end vid**"
+msgstr "**destino**"
+
+msgid "**points**"
+msgstr "**puntos**"
+
+msgid "**via vertices**"
+msgstr "**vertices**"
+
+msgid "**end vids**"
+msgstr "**destinos**"
+
+msgid "`Combinations SQL`_"
+msgstr "`SQL de combinations`_"
