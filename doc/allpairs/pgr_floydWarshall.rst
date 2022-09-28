@@ -67,7 +67,7 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   pgr floydWarshall(`Edges SQL`_, [``directed``])
+   pgr_floydWarshall(`Edges SQL`_, [``directed``])
 
    | RETURNS SET OF |matrix-result|
    | OR EMPTY SET

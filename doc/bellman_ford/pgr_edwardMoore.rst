@@ -112,7 +112,7 @@ One to One
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vid**, [``directed``]);
+   | pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vid**, [``directed``])
 
    | RETURNS SET OF |result-1-1|
    | OR EMPTY SET
@@ -132,7 +132,7 @@ One to Many
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vids**, [``directed``]);
+   | pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vids**, [``directed``])
 
    | RETURNS SET OF |result-1-m|
    | OR EMPTY SET
@@ -153,7 +153,7 @@ Many to One
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vid**, [``directed``]);
+   | pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vid**, [``directed``])
 
    | RETURNS SET OF |result-m-1|
    | OR EMPTY SET
@@ -174,7 +174,7 @@ Many to Many
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vids**, [``directed``]);
+   | pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vids**, [``directed``])
 
    | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
@@ -195,7 +195,7 @@ Combinations
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_, [``directed``]);
+   | pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_, [``directed``])
 
    | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET

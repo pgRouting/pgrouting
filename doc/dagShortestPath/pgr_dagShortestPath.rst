@@ -194,7 +194,7 @@ Combinations
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_dagShortestPath(`Edges SQL`_, Combinations)
+   | pgr_dagShortestPath(`Edges SQL`_, `Combinations SQL`_)
 
    | RETURNS SET OF |result-1-1|
    | OR EMPTY SET
