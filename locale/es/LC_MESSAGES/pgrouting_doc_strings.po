@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-23 16:50+0000\n"
 "PO-Revision-Date: 2022-09-28 16:02+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
 "Language: es\n"
@@ -1252,7 +1252,7 @@ msgid "The time, relative to 0, when the ending location closes."
 msgstr "La hora, en relación con 0, cuando se cierra la ubicación final."
 
 msgid "When missing: The value of ``start_close`` is used"
-msgstr ""
+msgstr "Cuando falte: Se usara el valor de ``start_close``"
 
 #, fuzzy
 msgid "[``end_service``]"
@@ -1262,7 +1262,7 @@ msgid "The duration of the loading at the ending location."
 msgstr "La duración de la carga en la ubicación final."
 
 msgid "When missing: A duration in ``start_service`` is used."
-msgstr ""
+msgstr "Cuando falte: Se usara una duración en ``start_service``."
 
 #, fuzzy
 msgid ""
@@ -1295,7 +1295,7 @@ msgstr ""
 "identificador de vértice en la `SQL de matriz`_."
 
 msgid "When missing: ``end_node_id`` is used."
-msgstr ""
+msgstr "Cuando falte: Se usara``end_node_id``."
 
 #, fuzzy
 msgid "``start_x``"
@@ -1314,30 +1314,32 @@ msgid ":math:`y` value of the starting location"
 msgstr ":math:`y` valor de la ubicación de recogida"
 
 msgid "[``end_x``]"
-msgstr ""
+msgstr "[``end_x``]"
 
 #, fuzzy
 msgid ":math:`x` value of the ending location"
 msgstr "valor :math:`x` de la ubicación de entrega"
 
 msgid "When missing: ``start_x`` is used."
-msgstr ""
+msgstr "Cuando falte: Se usará ``start_x``."
 
+#, fuzzy
 msgid "[``end_y``]"
-msgstr ""
+msgstr "[``end_y``]"
 
 #, fuzzy
 msgid ":math:`y` value of the ending location"
 msgstr "valor :math:`y` del lugar de entrega"
 
 msgid "When missing: ``start_y`` is used."
-msgstr ""
+msgstr "Cuando falte: Se usará ``start_y``."
 
 msgid "Matrix SQL"
 msgstr "SQL de matriz"
 
+#, fuzzy
 msgid "Set of |matrix-result|"
-msgstr ""
+msgstr "Conjunto de |matrix-result|"
 
 msgid "Identifier of the starting vertex."
 msgstr "Identificador del vértice de salida."
@@ -1380,11 +1382,13 @@ msgid "Current vehicle identifier."
 msgstr "Identificador del vehículo actual."
 
 msgid "Sumary row has the **total capacity violations**."
-msgstr ""
+msgstr "Fila de resumen tiene las **infracciones de capacidad total**."
 
 msgid ""
 "A capacity violation happens when overloading or underloading a vehicle."
 msgstr ""
+"Cuando se sobrecarga o subrogar un vehículo, ocurre una infracción de "
+"capacidad."
 
 msgid "``stop_seq``"
 msgstr "``stop_seq``"
@@ -1400,11 +1404,13 @@ msgstr ""
 "vehículo actual. La parada :math:`m_{th}` del vehículo actual."
 
 msgid "Sumary row has the **total time windows violations**."
-msgstr ""
+msgstr "Fila de resumen tiene las **infracciones de ventana de tiempo total**."
 
 msgid ""
 "A time window violation happens when arriving after the location has closed."
 msgstr ""
+"Cuando se llega a la ubicación después de que ésta cerró, ocurre una "
+"infracción de ventana de tiempo."
 
 msgid "``stop_type``"
 msgstr "``stop_type``"
