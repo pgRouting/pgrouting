@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: 2022-09-28 16:02+0000\n"
+"PO-Revision-Date: 2022-09-28 18:19+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/index/"
 "es/>\n"
@@ -628,3 +628,39 @@ msgstr "``epsilon``"
 
 msgid "``directed``"
 msgstr "``directed``"
+
+msgid "**ANY-NUMERICAL**"
+msgstr "**FLOTANTES**"
+
+msgid "**ANY-INTEGER**"
+msgstr "**ENTEROS**"
+
+msgid "``p_open``"
+msgstr "``p_open``"
+
+msgid "``p_close``"
+msgstr "``p_close``"
+
+msgid "`Matrix SQL`_"
+msgstr "`SQL de martiz`_"
+
+msgid "RETURNS SET OF"
+msgstr "REGRESA CONJUNTO DE"
+
+msgid "``p_service``"
+msgstr "``p_service``"
+
+msgid "**Supported versions:**"
+msgstr "**Versiones Soportadas:**"
+
+msgid "``d_open``"
+msgstr "``d_open``"
+
+msgid "``d_service``"
+msgstr "``d_service``"
+
+msgid "``p_node_id``"
+msgstr "``p_node_id``"
+
+msgid "``d_node_id``"
+msgstr "``d_node_id``"
