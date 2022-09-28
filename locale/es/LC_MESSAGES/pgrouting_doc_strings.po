@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-23 16:50+0000\n"
-"PO-Revision-Date: 2022-09-28 16:02+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-09-28 18:19+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
 "Language: es\n"
@@ -102,9 +102,8 @@ msgstr ""
 msgid "**root vids**"
 msgstr "**raices**"
 
-#, fuzzy
 msgid "``ARRAY`` [ **ANY-INTEGER** ]"
-msgstr "``ARRAY`` [ **ANY-INTEGER** ]"
+msgstr "``ARRAY`` [**ENTEROS** ]"
 
 msgid "Array of identifiers of the root vertices."
 msgstr "Arreglo de identificadores de los vértices raíz."
@@ -497,7 +496,6 @@ msgstr ":doc:`pgr_turnRestrictedPath` - Ruteo con restricciones."
 msgid "Introduction"
 msgstr "Introducción"
 
-#, fuzzy
 msgid ""
 "Road restrictions are a sequence of road segments that can not be taken in a "
 "sequential manner. Some restrictions are implicit on a directed graph, for "
@@ -509,7 +507,7 @@ msgstr ""
 "tomar de manera secuencial. Algunas restricciones están implícitas en un "
 "grafo dirigido, por ejemplo, caminos de un solo sentido donde el sentido "
 "contrario ni siquiera se inserta en el grafo. Pero normalmente en giros como "
-"**giro a la izquierda** o **giro a la derecha**, de ahí el nombre de "
+"prohibido vuelta a la izquierda o a la derecha, de ahí el nombre de "
 "restricciones de giro, a veces hay restricciones."
 
 msgid "TRSP algorithm"
@@ -552,13 +550,12 @@ msgstr ""
 "En redes de caminos, hay restricciones como vuelta a la izquierda o derecha, "
 "no vuelta en U."
 
-#, fuzzy
 msgid ""
 "A restriction is a sequence of edges, called path and that path is to be "
 "avoided."
 msgstr ""
-"Una restricción es una secuencia de aristas, llamado **path** y ese **path** "
-"se debería evitar."
+"Una restricción es una secuencia de aristas, llamado trayectoria y esa "
+"trayectoria se debe evitar."
 
 msgid "**Restrictions on the road network**"
 msgstr "**Restricciones en la red de calles**"
@@ -581,9 +578,8 @@ msgstr "SQL restricciones"
 msgid "``path``"
 msgstr "``path``"
 
-#, fuzzy
 msgid "``ARRAY`` [**ANY-INTEGER**]"
-msgstr "``ARRAY`` [**ANY-INTEGER**]"
+msgstr "``ARRAY`` [**ENTEROS**]"
 
 msgid ""
 "Sequence of edge identifiers that form a path that is not allowed to be "
@@ -1082,32 +1078,27 @@ msgstr "|ANY-NUMERICAL|"
 msgid "Number of units in the order"
 msgstr "Número de unidades en la orden"
 
-#, fuzzy
 msgid "``p_open``"
 msgstr "``p_open``"
 
 msgid "The time, relative to 0, when the pickup location opens."
 msgstr "La hora, en relación con 0, cuando se abre la ubicación de recogida."
 
-#, fuzzy
 msgid "``p_close``"
 msgstr "``p_close``"
 
 msgid "The time, relative to 0, when the pickup location closes."
 msgstr "La hora, en relación con 0, cuando se cierra la ubicación de recogida."
 
-#, fuzzy
 msgid "[``p_service``]"
 msgstr "[``p_service``]"
 
 msgid "The duration of the loading at the pickup location."
 msgstr "La duración de la carga en el lugar de recogida."
 
-#, fuzzy
 msgid "When missing: 0 time units are used"
-msgstr "Cuando falte: 0 unidades de tiempo son usadas"
+msgstr "Cuando falta: Son usadas 0 unidades de tiempo"
 
-#, fuzzy
 msgid "``d_open``"
 msgstr "``d_open``"
 
@@ -1120,7 +1111,6 @@ msgstr "``d_close``"
 msgid "The time, relative to 0, when the delivery location closes."
 msgstr "La hora, en relación con 0, cuando se cierra la ubicación de entrega."
 
-#, fuzzy
 msgid "[``d_service``]"
 msgstr "[``d_service``]"
 
@@ -1134,7 +1124,6 @@ msgstr ""
 "Para :doc:`pgr_pickDeliver` los identificadores de ubicación de la carga y "
 "envío son necesarias:"
 
-#, fuzzy
 msgid "``p_node_id``"
 msgstr "``p_node_id``"
 
@@ -1145,7 +1134,6 @@ msgstr ""
 "El identificador de nodo de la recogida debe coincidir con un identificador "
 "de vértice en la `SQL de matriz`_."
 
-#, fuzzy
 msgid "``d_node_id``"
 msgstr "``d_node_id``"
 
@@ -1160,31 +1148,27 @@ msgid ""
 "For :doc:`pgr_pickDeliverEuclidean` the :math:`(x, y)` values of the "
 "locations are needed:"
 msgstr ""
-"Para:doc:`pgr_pickDeliverEuclidean` los valores de las ubicaciones :math:"
-"`(x, y)`son necesarias:"
+"Para :doc:`pgr_pickDeliverEuclidean` los valores :math:`(x, y)` de las "
+"ubicaciones son necesarias:"
 
-#, fuzzy
 msgid "``p_x``"
 msgstr "``p_x``"
 
 msgid ":math:`x` value of the pick up location"
 msgstr ":math:`x` valor de la ubicación de recogida"
 
-#, fuzzy
 msgid "``p_y``"
 msgstr "``p_y``"
 
 msgid ":math:`y` value of the pick up location"
 msgstr ":math:`y` valor de la ubicación de recogida"
 
-#, fuzzy
 msgid "``d_x``"
 msgstr "``d_x``"
 
 msgid ":math:`x` value of the delivery location"
 msgstr "valor :math:`x` de la ubicación de entrega"
 
-#, fuzzy
 msgid "``d_y``"
 msgstr "``d_y``"
 
@@ -1208,7 +1192,6 @@ msgstr "``capacity``"
 msgid "Maiximum capacity units"
 msgstr "Máxima capacidad"
 
-#, fuzzy
 msgid "``start_open``"
 msgstr "``start_open``"
 
@@ -1221,20 +1204,15 @@ msgstr "``start_close``"
 msgid "The time, relative to 0, when the starting location closes."
 msgstr "La hora, en relación con 0, cuando se cierra la ubicación inicial."
 
-#, fuzzy
 msgid "[``start_service``]"
 msgstr "[``start_service``]"
 
 msgid "The duration of the loading at the starting location."
 msgstr "La duración de la carga en la ubicación inicial."
 
-#, fuzzy
 msgid "When missing: A duration of :math:`0` time units is used."
-msgstr ""
-"Cuando falte: Unidades de tiempo serán usadas para una duración de :math: "
-"`0`."
+msgstr "Cuando falta: Una duración de :math: `0` unidades de tiempo son usadas."
 
-#, fuzzy
 msgid "[``end_open``]"
 msgstr "[``end_open``]"
 
@@ -1244,7 +1222,6 @@ msgstr "La hora, en relación con 0, cuando se abre la ubicación final."
 msgid "When missing: The value of ``start_open`` is used"
 msgstr "Cuando falte: El valor de``start_open`` se usara"
 
-#, fuzzy
 msgid "[``end_close``]"
 msgstr "[``end_close``]"
 
@@ -1254,9 +1231,8 @@ msgstr "La hora, en relación con 0, cuando se cierra la ubicación final."
 msgid "When missing: The value of ``start_close`` is used"
 msgstr "Cuando falte: Se usara el valor de ``start_close``"
 
-#, fuzzy
 msgid "[``end_service``]"
-msgstr "**end_service**"
+msgstr "[``end_service``]"
 
 msgid "The duration of the loading at the ending location."
 msgstr "La duración de la carga en la ubicación final."
@@ -1264,17 +1240,15 @@ msgstr "La duración de la carga en la ubicación final."
 msgid "When missing: A duration in ``start_service`` is used."
 msgstr "Cuando falte: Se usara una duración en ``start_service``."
 
-#, fuzzy
 msgid ""
 "For :doc:`pgr_pickDeliver` the starting and ending identifiers of the "
 "locations are needed:"
 msgstr ""
-"Para la implementación :doc:`pgr_pickDeliver` se necesitan los "
-"identificadores inicial y final:"
+"Para :doc:`pgr_pickDeliver` se necesitan los identificadores de salida y "
+"destino:"
 
-#, fuzzy
 msgid "``start_node_id``"
-msgstr "`start_node_id`"
+msgstr "``start_node_id``"
 
 msgid ""
 "The node identifier of the start location, must match a vertex identifier in "
@@ -1283,9 +1257,8 @@ msgstr ""
 "El identificador de nodo de la ubicación inicial debe coincidir con un "
 "identificador de vértice en la `SQL de matriz`_."
 
-#, fuzzy
 msgid "[``end_node_id``]"
-msgstr "**end_node_id**"
+msgstr "[``end_node_id``]"
 
 msgid ""
 "The node identifier of the end location, must match a vertex identifier in "
@@ -1297,39 +1270,32 @@ msgstr ""
 msgid "When missing: ``end_node_id`` is used."
 msgstr "Cuando falte: Se usara``end_node_id``."
 
-#, fuzzy
 msgid "``start_x``"
-msgstr "`start_x`"
+msgstr "``start_x``"
 
-#, fuzzy
 msgid ":math:`x` value of the starting location"
-msgstr ":math:`x` valor de la ubicación de recogida"
+msgstr "Valor :math:`x` de la ubicación de salida"
 
-#, fuzzy
 msgid "``start_y``"
-msgstr "`start_y`"
+msgstr "``start_y``"
 
-#, fuzzy
 msgid ":math:`y` value of the starting location"
-msgstr ":math:`y` valor de la ubicación de recogida"
+msgstr "Valor :math:`y` de la ubicación de salida"
 
 msgid "[``end_x``]"
 msgstr "[``end_x``]"
 
-#, fuzzy
 msgid ":math:`x` value of the ending location"
-msgstr "valor :math:`x` de la ubicación de entrega"
+msgstr "Valor :math:`x` de la ubicación del destino"
 
 msgid "When missing: ``start_x`` is used."
 msgstr "Cuando falte: Se usará ``start_x``."
 
-#, fuzzy
 msgid "[``end_y``]"
 msgstr "[``end_y``]"
 
-#, fuzzy
 msgid ":math:`y` value of the ending location"
-msgstr "valor :math:`y` del lugar de entrega"
+msgstr "Valor :math:`y` del la ubicaclón del destino"
 
 msgid "When missing: ``start_y`` is used."
 msgstr "Cuando falte: Se usará ``start_y``."
@@ -1337,7 +1303,6 @@ msgstr "Cuando falte: Se usará ``start_y``."
 msgid "Matrix SQL"
 msgstr "SQL de matriz"
 
-#, fuzzy
 msgid "Set of |matrix-result|"
 msgstr "Conjunto de |matrix-result|"
 
@@ -1409,8 +1374,8 @@ msgstr "Fila de resumen tiene las **infracciones de ventana de tiempo total**."
 msgid ""
 "A time window violation happens when arriving after the location has closed."
 msgstr ""
-"Cuando se llega a la ubicación después de que ésta cerró, ocurre una "
-"infracción de ventana de tiempo."
+"Una infracción de ventana de tiempo ocurre cuando se llega a la ubicación "
+"después de que ésta cerró."
 
 msgid "``stop_type``"
 msgstr "``stop_type``"
@@ -1526,9 +1491,8 @@ msgstr ""
 msgid "Summary Row"
 msgstr "Fila de Resumen"
 
-#, fuzzy
 msgid "Continues the sequence"
-msgstr "Continúa el valor Secuencial"
+msgstr "Continúa la secuencia"
 
 msgid "**total capacity violations**:"
 msgstr ""
@@ -1608,15 +1572,12 @@ msgstr ""
 "Para manejar problemas como: 10 (dimensión igual) cajas de manzanas y 5 kg "
 "de plumas que se van a transportar (no embaladas en cajas)."
 
-#, fuzzy
 msgid ""
 "If the vehicle's **capacity** is measured in `boxes`, a conversion of `kg of "
 "feathers` to `number of boxes` is needed."
 msgstr ""
-"Si la `capacidad` del vehículo se mide mediante `cajas`, se necesita una "
-"conversión de `kg de plumas` a `número equivalente de cajas`. Si la "
-"`capacidad` del vehículo se mide por `kg`, se necesita una conversión de "
-"`caja de manzanas` a `número equivalente de kg`."
+"Si la **capacidad** del vehículo se mide mediante `cajas`, se necesita una "
+"conversión de `kg de plumas` a `número equivalente de cajas`."
 
 msgid ""
 "If the vehicle's **capacity** is measured in `kg`, a conversion of `box of "
@@ -1626,13 +1587,12 @@ msgstr ""
 msgid "Showing how the 2 possible conversions can be done"
 msgstr "Mostrar cómo se pueden hacer las 2 conversiones posibles"
 
-#, fuzzy
 msgid ""
 "Let: - :math:`f\\_boxes`: number of boxes needed for `1` kg of feathers. - :"
 "math:`a\\_weight`: weight of `1` box of apples."
 msgstr ""
-"Sea: - :math:`f_boxes`: el número de cajas que se utilizarían para `1` kg de "
-"plumas. - :math:`a_weight`: peso de `1` caja de manzanas."
+"Sea: - :math:`f_boxes`: el número de cajas necesarias para `1` kg de plumas. "
+"- :math:`a_weight`: peso de `1` caja de manzanas."
 
 msgid "Capacity Units"
 msgstr "Unidades de Capacidad"
@@ -1757,9 +1717,8 @@ msgstr "7.5"
 msgid ":math:`7.5*60 = 540`"
 msgstr ":math:`7.5*60 = 540`"
 
-#, fuzzy
 msgid "Factor handling"
-msgstr "Manejo de Factores"
+msgstr "Manipulación del Factor"
 
 msgid ""
 "``factor`` acts as a multiplier to convert from distance values to time "
@@ -1847,23 +1806,20 @@ msgid ""
 "1000m lenght value on the matrix:"
 msgstr ""
 
-#, fuzzy
 msgid "Units"
-msgstr "unidades de tiempo"
+msgstr "Unidades"
 
 msgid "velocity"
 msgstr ""
 
-#, fuzzy
 msgid "Result"
-msgstr "Resultados"
+msgstr "Resultado"
 
 msgid "seconds"
 msgstr ""
 
-#, fuzzy
 msgid ":math:`10 m/s`"
-msgstr ":math:`9*60 = 54`"
+msgstr ":math:`10 m/s`"
 
 msgid ":math:`\\frac{1}{10m/s}`"
 msgstr ""
@@ -1874,9 +1830,8 @@ msgstr ""
 msgid ":math:`1000m * 0.1s/m = 100s`"
 msgstr ""
 
-#, fuzzy
 msgid ":math:`600 m/min`"
-msgstr ":math:`9*60 = 54`"
+msgstr ":math:`600 m/min`"
 
 msgid ":math:`\\frac{1}{600m/min}`"
 msgstr ""
@@ -1887,13 +1842,11 @@ msgstr ""
 msgid ":math:`1000m * 0.0016min/m = 1.6min`"
 msgstr ""
 
-#, fuzzy
 msgid "Hours"
-msgstr "horas"
+msgstr "Horas"
 
-#, fuzzy
 msgid ":math:`36 km/hr`"
-msgstr ":math:`9*60 = 54`"
+msgstr ":math:`36 km/hr`"
 
 msgid ":math:`\\frac{1}{36 km/hr}`"
 msgstr ""
@@ -3417,10 +3370,8 @@ msgstr ""
 msgid "Dead end"
 msgstr "Sin salida"
 
-#, fuzzy
 msgid "A node is considered a **dead end** node when"
-msgstr ""
-"En el caso de un grafo dirigido, un nodo se considera 'sin salida' cuando"
+msgstr "Un nodo se considera **sin salida** cuando"
 
 msgid "On undirected graphs:"
 msgstr "En grafos no dirigidos:"
@@ -3450,10 +3401,8 @@ msgstr ""
 msgid "The green nodes are `dead end`_ nodes"
 msgstr "Los nodos verdes son nodos `dead end`_"
 
-#, fuzzy
 msgid "The blue nodes have an unlimited number of edges."
-msgstr ""
-"Los nodos azules tienen un número ilimitado de aristas entrantes y salientes."
+msgstr "Los nodos azules tienen un número ilimitado de aristas."
 
 msgid "Node"
 msgstr ""
@@ -3476,15 +3425,14 @@ msgstr ""
 msgid ":math:`\\{v\\}`"
 msgstr ""
 
-#, fuzzy
 msgid "Dead end vertex on directed graph"
-msgstr "Grafo no dirigido"
+msgstr "Vértice sin salida en un grafo dirigido"
 
-#, fuzzy
 msgid ""
 "The blue nodes have an unlimited number of incoming and/or outgoing edges."
 msgstr ""
-"Los nodos azules tienen un número ilimitado de aristas entrantes y salientes."
+"Los nodos azules tienen un número ilimitado de aristas entrantes y/o "
+"salientes."
 
 msgid "Number of incoming edges"
 msgstr ""
@@ -3526,21 +3474,20 @@ msgstr ""
 msgid "Operation: Dead End Contraction"
 msgstr "Operación: Contracción sin salida"
 
-#, fuzzy
 msgid ""
 "The dead end contraction will stop until there are no more dead end nodes. "
 "For example from the following graph where :math:`w` is the `dead end`_ node:"
 msgstr ""
 "La contracción sin salida se detendrá hasta que no haya más nodos sin "
-"salida. Por ejemplo, del siguiente grafo donde ``w`` es el nodo `dead end`_:"
+"salida. Por ejemplo, del siguiente grafo donde :math:`w` es el nodo `dead "
+"end`_:"
 
-#, fuzzy
 msgid ""
 "After contracting :math:`w`, node :math:`v` is now a `dead end`_ node and is "
 "contracted:"
 msgstr ""
-"Después de contraer ``w``, el nodo ``v`` es ahora un nodo `dead end`_ y es "
-"contraído:"
+"Después de contraer :math:`w`, el nodo ` :math:`v` es ahora un nodo `dead "
+"end`_ y es contraído:"
 
 msgid ""
 "After contracting :math:`v`, stop. Node :math:`u` has the information of "
@@ -3549,9 +3496,8 @@ msgstr ""
 "Después de contraer math:`v`, detenerse El nodo math:`u` tiene la "
 "información de los nodos que se contraen."
 
-#, fuzzy
 msgid "Node :math:`u` has the information of nodes that were contracted."
-msgstr "El nodo ``u`` tiene la información de los nodos que se contrajeron."
+msgstr "El nodo :math:`u` tiene la información de los nodos que se contrajeron."
 
 msgid "In the algorithm, linear contraction is represented by 2."
 msgstr "En el algoritmo, la contracción lineal es representada con un 2."
@@ -3574,9 +3520,8 @@ msgstr "En el caso de un grafo dirigido, un nodo se considera `lineal` cuando"
 msgid "Linearity is symmetrical"
 msgstr "La linealidad es simétrica"
 
-#, fuzzy
 msgid "Linear vertex on undirected graph"
-msgstr "Usando el grafo contraído"
+msgstr "Vértice lineal en grafo no dirigido"
 
 msgid "The green nodes are `linear`_ nodes"
 msgstr "Los nodos verdes son `lineales`_"
@@ -3594,9 +3539,8 @@ msgstr ""
 msgid ":math:`\\{u, w\\}`"
 msgstr ""
 
-#, fuzzy
 msgid "Linear vertex on directed graph"
-msgstr "Usando el grafo contraído"
+msgstr "Vértice lineal en grafo dirigido"
 
 msgid "The white node is not linear because the linearity is not symetrical."
 msgstr ""
@@ -3628,22 +3572,20 @@ msgstr ""
 msgid "Operation: Linear Contraction"
 msgstr "Operación: Contracción Lineal"
 
-#, fuzzy
 msgid ""
 "The linear contraction will stop when there are no more linear nodes. For "
 "example from the following graph where :math:`v` and :math:`w` are `linear`_ "
 "nodes:"
 msgstr ""
-"La contracción lineal se detendrá hasta que no haya más nodos lineales. Por "
-"ejemplo, en el siguiente grafo donde ``v`` y ``w`` son nodos `lineales`_ :"
+"La contracción lineal se detendrá hasta que no hayan más nodos lineales. Por "
+"ejemplo, en el siguiente grafo donde ` :math:`v` y :math:`w` son nodos "
+"`lineales`_ :"
 
-#, fuzzy
 msgid "Contracting :math:`w`,"
-msgstr "Después de contraer ``w``,"
+msgstr "Contrayendo :math:`w`,"
 
-#, fuzzy
 msgid "The vertex :math:`w` is removed from the graph"
-msgstr "El vértice ``w`` se elimina del grafo"
+msgstr "El vértice :math:`w` se elimina del grafo"
 
 msgid ""
 "The edges :math:`v \\rightarrow w` and  :math:`w \\rightarrow z` are removed "
@@ -3658,13 +3600,11 @@ msgstr ""
 "Se inserta un nuevo arista :math:`v \\rightarrow z` y se representa con "
 "color rojo."
 
-#, fuzzy
 msgid "Contracting :math:`v`:"
-msgstr "Contracción ``v``:"
+msgstr "Contrayendo :math:`v`:"
 
-#, fuzzy
 msgid "The vertex :math:`v` is removed from the graph"
-msgstr "El vértice ``v`` se elimina del grafo"
+msgstr "El vértice :math:`v` se elimina del grafo"
 
 msgid ""
 "The edges :math:`u \\rightarrow v` and  :math:`v \\rightarrow z` are removed "
@@ -3707,9 +3647,8 @@ msgstr ""
 "Esta implementación alterna los tiempos `` max_cycles`` a través de `` "
 "operations_order``."
 
-#, fuzzy
 msgid "Contracting sample data"
-msgstr "Contracción de Datos de Muestra"
+msgstr "Contracción de los datos de muestra"
 
 msgid ""
 "In this section, building and using a contracted graph will be shown by "
@@ -3740,7 +3679,6 @@ msgstr ""
 msgid "The original graph:"
 msgstr "El grafo original:"
 
-#, fuzzy
 msgid "Contraction results"
 msgstr "Resultados de la Contracción"
 
@@ -3783,13 +3721,11 @@ msgstr "``contracted_vertices``"
 msgid "The vertices set belonging to the vertex/edge"
 msgstr "El conjunto de vértices que pertenecen al vértice/arista"
 
-#, fuzzy
 msgid "``is_contracted``"
-msgstr "**is_contracted**"
+msgstr "``is_contracted``"
 
-#, fuzzy
 msgid "On the vertex table"
-msgstr "En la tabla `vértice`"
+msgstr "En la tabla de vértices"
 
 msgid ""
 "when ``true`` the vertex is contracted, its not part of the contracted graph."
@@ -3803,9 +3739,8 @@ msgid ""
 msgstr ""
 "En caso de ''false'' el vértice no se contrae, su parte del grafo contraído."
 
-#, fuzzy
 msgid "``is_new``"
-msgstr "**is_new**"
+msgstr "``is_new``"
 
 msgid "On the edge table"
 msgstr "En la tabla de aristas"
@@ -3830,16 +3765,12 @@ msgstr "Almacenar información de contracción"
 msgid "Store the `contraction results`_ in a table"
 msgstr "Almacenar los `resultados de la contracción`_ en una tabla"
 
-#, fuzzy
 msgid "The vertex table update"
-msgstr "En la tabla `vértice`"
+msgstr "Actualización de la tabla de vértices"
 
-#, fuzzy
 msgid ""
 "Use ``is_contracted`` column to indicate the vertices that are contracted."
-msgstr ""
-"Use ``edge_table_vertices_pgr.is_contracted`` para indicar los vértices que "
-"son contraídos."
+msgstr "Usar la columna ``is_contracted`` para indicar los vértices contraídos."
 
 msgid ""
 "Fill ``contracted_vertices`` with the information from the results tha "
@@ -3867,7 +3798,6 @@ msgstr "Vértices que pertenecen al grafo contraído."
 msgid "Edges that belong to the contracted graph."
 msgstr "Aristas que pertenecen al grafo contraído."
 
-#, fuzzy
 msgid "Contracted graph"
 msgstr "El grafo contraído"
 
@@ -4250,10 +4180,10 @@ msgid "`Points SQL`_"
 msgstr "`SQL de puntos`_"
 
 msgid "`Points SQL`_ as described below"
-msgstr "`SQL puntos`_ como se describe abajo"
+msgstr "`SQL de puntos`_ como se describe abajo"
 
 msgid "Points SQL"
-msgstr "SQL puntos"
+msgstr "SQL de puntos"
 
 msgid "``pid``"
 msgstr "``pid``"
@@ -4872,9 +4802,8 @@ msgstr ":doc:`pgr_transitiveClosure`"
 msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
 msgstr ":doc:`pgr_lengauerTarjanDominatorTree`"
 
-#, fuzzy
 msgid ":doc:`pgr_hawickCircuits`"
-msgstr "``pgr_kruskal``"
+msgstr ":doc:`pgr_hawickCircuits`"
 
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/flow-"
@@ -5935,19 +5864,17 @@ msgstr ""
 msgid ":doc:`withPoints-category`"
 msgstr ":doc:`withPoints-category`"
 
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
 "ordering-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/ordering-"
 "family.html>`__)"
 msgstr ""
-"**Versiones Soportadas:** `Latest <https://docs.pgrouting.org/latest/es/TRSP-"
-"family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/TRSP-family."
-"html>`__)"
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/es/"
+"ordering-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/ordering-"
+"family.html>`__)"
 
-#, fuzzy
 msgid "Ordering - Family of functions"
-msgstr "Coloración - Familia de funciones"
+msgstr "Ordenamiento - Familia de funciones"
 
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
@@ -5986,12 +5913,11 @@ msgstr ""
 msgid "pgRouting Concepts"
 msgstr "Conceptos de pgRouting"
 
-#, fuzzy
 msgid ""
 "This is a simple guide that go through some of the steps for getting started "
 "with pgRouting. This guide covers:"
 msgstr ""
-"Esta es una guía simple para llevarte a través de los pasos básicos para "
+"Esta es una guía simple que va a través de los pasos básicos para empezar "
 "trabajar con pgRouting. Esta guía cubre:"
 
 msgid "Graphs"
@@ -6060,29 +5986,24 @@ msgid ""
 "manner."
 msgstr ""
 
-#, fuzzy
 msgid "Identifier of a vertex."
-msgstr "Identificador del vértice inicial."
+msgstr "Identificador de un vértice."
 
 msgid "Weight of the edge (``source``, ``target``):"
 msgstr "Peso de la arista (``source``, ``target``):"
 
-#, fuzzy
 msgid ""
 "When negative the edge (``source``, ``target``) do not exist on the graph."
 msgstr ""
-"Cuando es negativo: la arista `(source, target)` no existe, por lo tanto no "
-"es parte del grafo."
+"Cuando negativo: la arista (``source``, ``target``) no existe en el grafo."
 
 msgid "``cost`` must exist in the query."
 msgstr ""
 
-#, fuzzy
 msgid ""
 "When negative the edge (``target``, ``source``) do not exist on the graph."
 msgstr ""
-"En caso negativo: la arista `(target, source)` no existe, por lo tanto no es "
-"parte del grafo."
+"Cuando negativo: la arista (``target``, ``source``) no existe en el grafo."
 
 msgid ""
 "The decision of the graph to be **directed** or **undirected** is done when "
@@ -6236,9 +6157,8 @@ msgid ""
 "associated with the graph."
 msgstr ""
 
-#, fuzzy
 msgid "Wiki example"
-msgstr "Ejemplo"
+msgstr "Ejemplo de Wiki"
 
 #, python-format
 msgid ""
@@ -6282,9 +6202,8 @@ msgid ""
 "pgRouting: ::"
 msgstr ""
 
-#, fuzzy
 msgid "Create a table"
-msgstr "Índices y tablas"
+msgstr "Crear una tabla"
 
 msgid ""
 "The basic elements needed to perform basic routing on an undirected graph "
@@ -6355,41 +6274,35 @@ msgid ""
 "html>`__"
 msgstr ""
 
-#, fuzzy
 msgid "There are various open source tools that can help, like:"
-msgstr ""
-"Si tiene otros requisitos, puede probar varias herramientas de OpenSource "
-"que pueden ayudarle, como:"
+msgstr "Existen varias herramientas de codigo abierto que pueden ayudar, como:"
 
 msgid "shp2pgsql"
 msgstr "shp2pgsql"
 
-#, fuzzy
 msgid "postgresql shapefile loader"
-msgstr "Este es un cargador de archivo shape a postgresql"
+msgstr "cargador a postgresql de archivos shape"
 
 msgid "ogr2ogr"
 msgstr "ogr2ogr"
 
-#, fuzzy
 msgid "vector data conversion utility"
-msgstr "Esta es una utilidad de conversión de datos vectoriales"
+msgstr "herramienta de conversión de datos vectoriales"
 
 msgid "osm2pgsql"
 msgstr "osm2pgsql"
 
-#, fuzzy
 msgid "load OSM data into postgresql"
-msgstr "Esta es una herramienta para cargar los datos de OSM a postgresql"
+msgstr "cargar datos de OSM a postgresql"
 
-#, fuzzy
 msgid ""
 "Please note that these tools will **not** import the data in a structure "
 "compatible with pgRouting and when this happens the topology needs to be "
 "adjusted."
 msgstr ""
-"Tenga en cuenta que estas herramientas no importarán los datos en una "
-"estructura compatible con pgRouting y es posible que deba adaptarlos."
+"Tener en cuenta que estas herramientas **no** importan los datos a una "
+"estructura compatible con pgRouting y cuando esto sucede, la topología "
+"necesita ser ajustada."
 
 msgid "Breakup a segments on each segment-segment intersection"
 msgstr ""
@@ -6452,9 +6365,8 @@ msgid ""
 "documentation and the `PostGIS <https://postgis.net/>`__ documentation."
 msgstr ""
 
-#, fuzzy
 msgid "Build a routing topology"
-msgstr "Construir una Topología de Ruteo"
+msgstr "Construir una topología de ruteo"
 
 msgid ""
 "The basic information to use the majority of the pgRouting functions ``id, "
@@ -6880,9 +6792,8 @@ msgid ""
 "Once the graph preparation work has been done above, it is time to use a"
 msgstr ""
 
-#, fuzzy
 msgid "The general form of a pgRouting function call is:"
-msgstr "Integración de la consulta interna a la función pgRouting:"
+msgstr "La forma general de una llamada a una función de pgRouting es:"
 
 msgid "\\ \\"
 msgstr ""
@@ -6912,10 +6823,10 @@ msgstr ""
 msgid "For example, for this :doc:`pgr_dijkstra` signature:"
 msgstr ""
 
-#, fuzzy
 msgid ""
 "pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  [, ``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_dijkstra(`SQL de aristas`_, **salida**, **destino**, [``directed``])"
 
 msgid "`Edges SQL`_:"
 msgstr "`SQL aristas`_:"
@@ -6988,11 +6899,8 @@ msgstr "`Muchos a Muchos`_"
 msgid "`Combinations`_"
 msgstr "`Combinaciones`_"
 
-#, fuzzy
 msgid "Depending on the overload the parameters types change."
-msgstr ""
-"Dependiendo de la sobrecarga son los parámetros utilizados, manteniendo la "
-"coherencia en todas las funciones."
+msgstr "Dependiendo de la sobrecarga, los tipos de los parámetros cambian."
 
 msgid "**One**: **ANY-INTEGER**"
 msgstr ""
@@ -7047,11 +6955,9 @@ msgstr "Cada tupla especifica un par de vértices iniciales y un vértice final"
 msgid "Users can define the combinations as desired."
 msgstr "Los usuarios pueden definir las combinaciones como deseen."
 
-#, fuzzy
 msgid "Needs a `Combinations SQL`_"
-msgstr "`Combinaciones`_"
+msgstr "Necesita una `SQL de combinations`_"
 
-#, fuzzy
 msgid ""
 "There are several kinds of valid inner queries and also the columns returned "
 "are depending of the function. Which kind of inner query will depend on the "
@@ -7061,11 +6967,10 @@ msgstr ""
 "Hay varios tipos de consultas internas válidas y también las columnas "
 "devueltas dependen de la función. El tipo de consulta interna dependerá de "
 "los requisitos de las funcion(es). Para simplificar la variedad de tipos, se "
-"utiliza ``ANY-INTEGER`` y ``ANY-NUMERICAL``."
+"utiliza `**ENTEROS** y **FLOTANTES**."
 
-#, fuzzy
 msgid "Edges SQL for"
-msgstr "edges_sql"
+msgstr "SQL de aristas para"
 
 msgid ":doc:`withPoints-family`"
 msgstr ":doc:`withPoints-family`"
@@ -7125,9 +7030,8 @@ msgstr ""
 msgid "Used on combination signatures"
 msgstr ""
 
-#, fuzzy
 msgid "Points SQL for"
-msgstr "points_sql"
+msgstr "SQL de puntos para"
 
 msgid ""
 "The main parameter of the majority of the pgRouting functions is a query "
@@ -7145,9 +7049,8 @@ msgid ""
 "value."
 msgstr ""
 
-#, fuzzy
 msgid "Parameters for the Via functions"
-msgstr "Para las funciones de Ruteo"
+msgstr "Párametros para las funciones Via"
 
 msgid ":doc:`pgr_dijkstraVia`"
 msgstr ":doc:`pgr_dijkstraVia`"
@@ -7178,33 +7081,30 @@ msgstr ""
 msgid "``U_turn_on_edge``"
 msgstr "``U_turn_on_edge``"
 
-#, fuzzy
 msgid ""
 "When ``true`` departing from a visited vertex will not try to avoid using "
 "the edge used to reach it.  In other words, U turn using the edge with same "
 "identifier is allowed."
 msgstr ""
-"En caso de ``true`` saliendo de un vértice visitado no intentará evitar el "
-"uso de la arista utilizada para alcanzarlo.  En otras palabras, se permite "
-"el giro U utilizando la arista con el mismo 'id'."
+"Cuando ``true`` saliendo de un vértice visitado no intentará evitar el uso "
+"de la arista utilizada para alcanzarlo. En otras palabras, se permite la "
+"vuelta en U usando la arista con el mismo identificador."
 
-#, fuzzy
 msgid ""
 "When ``false`` when a departing from a visited vertex tries to avoid using "
 "the edge used to reach it.  In other words, U turn using the edge with same "
 "identifier is used when no other path is found."
 msgstr ""
-"En caso de ``false`` cuando una salida de un vértice visitado intenta evitar "
-"el uso de la arista utilizada para alcanzarlo.  En otras palabras, se "
-"utiliza el giro U utilizando el borde con el mismo `id` cuando no se "
-"encuentra ninguna otra ruta."
+"Cuando ``false`` al salir de un vértice visitado intenta evitar el uso de la "
+"arista utilizada para alcanzarlo. En otras palabras, se utiliza la vuelta en "
+"U utilizando la arista con el mismo identificador cuando no se encuentra "
+"ninguna otra ruta."
 
 msgid "For the TRSP functions"
 msgstr "Para las funciones de TRSP"
 
-#, fuzzy
 msgid ":doc:`pgr_trsp`"
-msgstr ":doc:`pgr_dijkstra`"
+msgstr ":doc:`pgr_trsp`"
 
 msgid "Array of identifiers of destination vertices."
 msgstr "Arreglo de identificadores de vértices destino."
@@ -7213,9 +7113,8 @@ msgid ""
 "There are several kinds of columns returned are depending of the function."
 msgstr "Hay varios tipos de columnas devueltas que dependen de la función."
 
-#, fuzzy
 msgid "Return columns for a path"
-msgstr "Valores devueltos para una ruta"
+msgstr "Columnas devueltas para una trayectoria"
 
 msgid "Used on functions that return one path solution"
 msgstr ""
@@ -7270,9 +7169,8 @@ msgstr ""
 msgid "Used on functions the following:"
 msgstr ""
 
-#, fuzzy
 msgid ":doc:`pgr_withPoints`"
-msgstr ":doc:`pgr_dijkstra`"
+msgstr ":doc:`pgr_withPoints`"
 
 msgid ""
 "Returns set of ``(seq, path_seq [, start_pid] [, end_pid], node, edge, cost, "
@@ -7393,9 +7291,8 @@ msgstr ""
 "Devuelve el conjunto de ``(seq, path_id, path_seq, start_vid, end_vid, node, "
 "edge, cost, agg_cost)``"
 
-#, fuzzy
 msgid "Return columns for cost functions"
-msgstr "Devolución de columnas y valores"
+msgstr "Columnas devueltas para funciones de costo"
 
 msgid "Used in the following"
 msgstr ""
@@ -7407,9 +7304,8 @@ msgstr ""
 "Cuando las columnas del vértice inicial o del destino continen valores "
 "negativos, el identificador es para un Punto."
 
-#, fuzzy
 msgid "Return columns for flow functions"
-msgstr "Devolución de columnas y valores"
+msgstr "Columnas devueltas para funciones de flujo"
 
 msgid "Edges SQL for the following"
 msgstr ""
@@ -7429,12 +7325,11 @@ msgstr "Consejos de Rendimiento"
 msgid "For the Routing functions"
 msgstr "Para las funciones de Ruteo"
 
-#, fuzzy
 msgid ""
 "To get faster results bound the queries to an area of interest of routing."
 msgstr ""
-"Para obtener resultados más rápidos, las consultas enlazan el área de "
-"interés para tener, por ejemplo, no más de un millón de filas."
+"Para obtener resultados más rápidos, delimitar las consultas a un área de "
+"interés para el ruteo."
 
 msgid ""
 "In this example Use an inner query SQL that does not include some edges in "
@@ -7459,35 +7354,32 @@ msgstr ""
 msgid "Or create a new Wiki page"
 msgstr "O crea una nueva página Wiki"
 
-#, fuzzy
 msgid ""
 "Create a page on the `pgRouting Wiki <https://github.com/pgRouting/pgrouting/"
 "wiki>`__"
 msgstr ""
-"Crear una página en el `pgRouting Wiki <https://github.com/pgRouting/"
+"Crear una página en el `Wiki de pgRouting <https://github.com/pgRouting/"
 "pgrouting/wiki>`_"
 
 msgid "Give the title an appropriate name"
 msgstr "Asigne al título un nombre apropiado"
 
-#, fuzzy
 msgid ""
 "`Example <https://github.com/pgRouting/pgrouting/wiki/How-to:-Handle-"
 "parallel-edges-(KSP)>`__"
 msgstr ""
-"`Example <https://github.com/pgRouting/pgrouting/wiki/How-to:-Handle-"
-"parallel-edges-(KSP)>`_"
+"`Ejemplo <https://github.com/pgRouting/pgrouting/wiki/How-to:-Handle-"
+"parallel-edges-(KSP)>`__"
 
 msgid "Adding Functionaity to pgRouting"
 msgstr "Agregar funcionalidad a pgRouting"
 
-#, fuzzy
 msgid ""
 "Consult the `developer's documentation <https://docs.pgrouting.org/doxy/2.4/"
 "index.html>`__"
 msgstr ""
-"Consultar `developer's documentation <https://docs.pgrouting.org/doxy/2.4/"
-"index.html>`_"
+"Consultar la `documentation de desarrolladores <https://docs.pgrouting.org/"
+"doxygen/>`__"
 
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
@@ -7599,13 +7491,12 @@ msgstr "Wget"
 msgid "To download this release:"
 msgstr "Para descargar esta versión:"
 
-#, fuzzy
 msgid ""
 "Go to :ref:`install-short` for more instructions on extracting tar ball and "
 "compiling pgRouting."
 msgstr ""
-"Ir a :ref:`install-short` a las instrucciones de compilación (no hay bola de "
-"alquitrán)."
+"Ir a :ref:`install-short` para más instrucciones sobre la extraccion de la "
+"bola tar y la compilación de pgRouting."
 
 msgid "git"
 msgstr "git"
@@ -7638,12 +7529,11 @@ msgstr ""
 msgid "Upgrading the database"
 msgstr "Actualización de la base de datos"
 
-#, fuzzy
 msgid ""
 "To upgrade pgRouting in the database to version 3.4.0 use the following "
 "command:"
 msgstr ""
-"Para actualizar pgRouting en la base de datos a la versión 3.3.0 utilice el "
+"Para actualizar pgRouting en la base de datos a la versión 3.4.0 utilice el "
 "siguiente comando:"
 
 msgid ""
@@ -7669,14 +7559,12 @@ msgstr ""
 msgid "C and C++0x compilers"
 msgstr ""
 
-#, fuzzy
 msgid ""
 "Compiling with Boost 1.56 up to Boost 1.74 requires C++ Compiler with C++03 "
 "or C++11 standard support"
 msgstr ""
-"Compiladores C and C++0x * Compilando con Boost 1.56 up to Boost 1.74 "
-"requires C++ Compiler with C++03 or C++11 standard support * Compiling with "
-"Boost 1.75 requires C++ Compiler with C++14 standard support"
+"Compilar con Boost 1.56 hasta Boost 1.74 requiere un compilador C++ con "
+"soporte estandard para C++03 o C++11"
 
 msgid ""
 "Compiling with Boost 1.75 requires C++ Compiler with C++14 standard support"
@@ -7733,9 +7621,8 @@ msgstr "Instalación de las dependencias de compilación"
 msgid "Database dependencies"
 msgstr "Dependencias de bases de datos"
 
-#, fuzzy
 msgid "Configuring PostgreSQL"
-msgstr "Configuración"
+msgstr "Configurar PostgreSQL"
 
 msgid "Entering psql console"
 msgstr ""
@@ -7819,13 +7706,12 @@ msgstr "Para ver las variables que se pueden configurar"
 msgid "Configuring The Documentation"
 msgstr "Configurar la documentación"
 
-#, fuzzy
 msgid ""
 "Most of the effort of the documentation has been on the HTML files. Some "
 "variables for building documentation:"
 msgstr ""
 "La mayor parte del esfuerzo de la documentación ha estado en los archivos "
-"HTML. Algunas variables para la documentación:"
+"HTML. Algunas variables para construir la documentación:"
 
 msgid "Variable"
 msgstr "Variable"
@@ -7884,7 +7770,6 @@ msgstr ""
 msgid "Configuring cmake to create documentation before building pgRouting"
 msgstr ""
 
-#, fuzzy
 msgid "Most of the effort of the documentation has been on the html files."
 msgstr ""
 "La mayor parte del esfuerzo de la documentación ha estado en los archivos "
@@ -7922,7 +7807,6 @@ msgid ""
 "To remove the build when the configuration changes, use the following code:"
 msgstr ""
 
-#, fuzzy
 msgid "and start the build process as mentioned previously."
 msgstr "e iniciar el proceso de compilación como se mencionó anteriormente."
 
@@ -8061,31 +7945,27 @@ msgstr "Colaboradores"
 msgid "This Release Contributors"
 msgstr "Colaboradores de esta Versión"
 
-#, fuzzy
 msgid "Individuals in this release (in alphabetical order)"
-msgstr "Personas (en orden alfabético)"
+msgstr "Personas en este lanzamiento (en orden alfabético)"
 
-#, fuzzy
 msgid ""
 "Ashish Kumar, Cayetano Benavent, Daniel Kastl, Nitish Chauhan, Rajat Shinde, "
 "Regina Obe, Shobhit Chaurasia, Swapnil Joshi, Virginia Vergara"
 msgstr ""
-"Ashish Kumar, Cayetano Benavent, Daniel Kastl, Himanshu Raj, Martha Vergara, "
-"Regina Obe, Veenit Kumar, Virginia Vergara"
+"Ashish Kumar, Cayetano Benavent, Daniel Kastl, Nitish Chauhan, Rajat Shinde, "
+"Regina Obe, Shobhit Chaurasia, Swapnil Joshi, Virginia Vergara"
 
-#, fuzzy
 msgid ""
 "And all the people that give us a little of their time making comments, "
 "finding issues, making pull requests etc.  in any of our products: "
 "osm2pgrouting, pgRouting, pgRoutingLayer, workshop."
 msgstr ""
 "Y todas las personas que nos dan un poco de su tiempo haciendo comentarios, "
-"encontrando problemas, haciendo solicitudes de extracción, etc. en "
-"cualquiera de nuestros productos: osm2pgrouting, pgRouting, pgRoutingLayer."
+"encontrando problemas, haciendo pull request, etc. en cualquiera de nuestros "
+"productos: osm2pgrouting, pgRouting, pgRoutingLayer, workshop."
 
-#, fuzzy
 msgid "Corporate Sponsors in this release (in alphabetical order)"
-msgstr "Patrocinadores corporativos (en orden alfabético)"
+msgstr "Patrocinadores corporativos de este lanzamiento (en orden alfabético)"
 
 msgid ""
 "These are corporate entities that have contributed developer time, hosting, "
@@ -8179,13 +8059,12 @@ msgstr ""
 msgid "Boost C++ source libraries at https://www.boost.org."
 msgstr "Bibliotecas de código Boost C++ en https://www.boost.org."
 
-#, fuzzy
 msgid ""
 "The Migration guide from 2.6 can be found at https://github.com/pgRouting/"
 "pgrouting/wiki/Migration-Guide."
 msgstr ""
-"La guía de Migración se puede encontrar en https://github.com/pgRouting/"
-"pgrouting/wiki/Migration-Guide."
+"La guía de Migración de 2.6 se puede encontrar en https://github.com/"
+"pgRouting/pgrouting/wiki/Migration-Guide."
 
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
@@ -8502,13 +8381,11 @@ msgid "the missing values will be calculated with dijkstra algorithm."
 msgstr ""
 "los datos están incompletos se calcularán con el algoritmo de Dijkstra."
 
-#, fuzzy
 msgid "pgr_TSP(`Matrix SQL`_, ``[start_id, end_id]``)"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr "pgr_TSP(`SQL de martiz`_, ``[start_id, end_id]``)"
 
-#, fuzzy
 msgid "RETURNS SET OF |tsp-result|"
-msgstr "Devuelve el conjunto de ``(node)``"
+msgstr "REGRESA CONJUNTO DE |tsp-result|"
 
 msgid "OR EMTPY SET"
 msgstr ""
@@ -8882,9 +8759,8 @@ msgstr ""
 "pgr_aStar(`SQL de aristas`_, **salidas**, **destinos**, **K**, "
 "[**opciones**])"
 
-#, fuzzy
 msgid "pgr_aStar(`Edges SQL`_, `Combinations SQL`_, [**options**])"
-msgstr "``pgr_aStarCost`` (`Combinaciones`_)"
+msgstr "pgr_aStar(`SQL de aristas`_, `SQL de combinations`_, [**opciones**])"
 
 msgid "**options:** ``[directed, heuristic, factor, epsilon]``"
 msgstr ""
@@ -9049,9 +8925,9 @@ msgid ""
 msgstr ""
 "pgr_aStarCost(`SQL de aristas`_, **salidas**, **destinos**, [**opciones**])"
 
-#, fuzzy
 msgid "pgr_aStarCost(`Edges SQL`_, `Combinations SQL`_, [**options**])"
-msgstr "``pgr_aStarCost`` (`Combinaciones`_)"
+msgstr ""
+"pgr_aStarCost(`SQL de aristas`_, `SQL de combinations`_, [**opciones**])"
 
 msgid "RETURNS SET OF |matrix-result|"
 msgstr "Regresa conjunto de |matrix-result|"
@@ -9238,13 +9114,11 @@ msgid ""
 msgstr ""
 "Cuando el número total de puntos es menor que 3, devuelve una geometría EMPTY"
 
-#, fuzzy
 msgid "pgr_alphaShape(**geometry**, [alpha])"
-msgstr "La entrada es una *geometría* y devuelve una *geometría*"
+msgstr "pgr_alphaShape(**geometría**, [alpha])"
 
-#, fuzzy
 msgid "RETURNS ``geometry``"
-msgstr "``geometry``"
+msgstr "REGRESA ``geometry``"
 
 msgid ""
 "passing a geometry collection with spoon radius :math:`1.5` using the return "
@@ -9936,13 +9810,11 @@ msgstr "``node`` ascendente"
 msgid "Running time: :math:`O(V + E)`"
 msgstr "Tiempo de ejecución: :math:`O(V + E)`"
 
-#, fuzzy
 msgid "pgr_articulationPoints(`Edges SQL`_)"
-msgstr "``pgr_articulationPoints``"
+msgstr "pgr_articulationPoints(`SQL de aristas`_)"
 
-#, fuzzy
 msgid "RETURNS SET OF |result-node|"
-msgstr "Devuelve el conjunto de ``(node)``"
+msgstr "REGRESA CONJUNTO DE |result-node|"
 
 msgid "The articulation points of the graph"
 msgstr "Los puntos de articulación del grafo"
@@ -9950,9 +9822,8 @@ msgstr "Los puntos de articulación del grafo"
 msgid "Nodes in red are the articulation points."
 msgstr "Nodos en rojo son los puntos de articulación."
 
-#, fuzzy
 msgid "Returns set of |result-node|"
-msgstr "Devuelve el conjunto de ``(node)``"
+msgstr "Regresa conjunto de |result-node|"
 
 msgid ""
 "Boost: `Biconnected components & articulation points <https://www.boost.org/"
@@ -10058,9 +9929,8 @@ msgid "pgr_bdAstar(`Edges SQL`_, **start vids**, **end vids**, [**options**])"
 msgstr ""
 "pgr_bdAstar(`SQL de aristas`_, **salidas**, **destinos**, [**opciones**])"
 
-#, fuzzy
 msgid "pgr_bdAstar(`Edges SQL`_, `Combinations SQL`_, [**options**])"
-msgstr "``pgr_bdAstarCost`` (`Combinaciones`_)"
+msgstr "pgr_bdAstar(`SQL de aristas`_, `SQL de combinations`_, [**opciones**])"
 
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
@@ -10128,9 +9998,9 @@ msgid ""
 msgstr ""
 "pgr_bdAstarCost(`SQL de aristas`_, **salidas**, **destinos**, [**opciones**])"
 
-#, fuzzy
 msgid "pgr_bdAstarCost(`Edges SQL`_, `Combinations SQL`_, [**options**])"
-msgstr "``pgr_bdAstarCost`` (`Combinaciones`_)"
+msgstr ""
+"pgr_bdAstarCost(`SQL de aristas`_, `SQL de combinations`_, [**opciones**])"
 
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
@@ -10251,19 +10121,19 @@ msgid ""
 "pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
 msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
-#, fuzzy
 msgid ""
 "pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vid**, [``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_bdDijkstra(`SQL de aristas`_, **salidas**, **destino**, [``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vids**, [``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_bdDijkstra(`SQL de aristas`_, **salidas**, **destinos**, [``directed``])"
 
-#, fuzzy
 msgid "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_ , [``directed``])"
-msgstr "pgr_dijkstraNear(Combinaciones)"
+msgstr ""
+"pgr_bdDijkstra(`SQL de aristas`_, `SQL de combinations`_, [``directed``])"
 
 msgid "From vertex :math:`6` to vertex  :math:`10` on a **directed** graph"
 msgstr "Del vértice :math:`6` al vértice :math:`10` en un grafo **dirigido**"
@@ -10288,9 +10158,9 @@ msgstr ""
 "De los vértices :math:`\\{6, 1\\}` a los vértices :math:`\\{10, 17\\}` en un "
 "grafo **no dirigido**"
 
-#, fuzzy
 msgid "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
-msgstr "pgr_dijkstraNear(Combinaciones)"
+msgstr ""
+"pgr_bdDijkstra(`SQL de aristas`_, `SQL de combinations`_, [``directed``])"
 
 msgid "Using a combinations table on an **undirected** graph"
 msgstr "Usando una tabla de combinaciones en un grafo **no dirigido**"
@@ -10352,35 +10222,39 @@ msgstr ""
 "La función ``pgr_bdDijkstraCost`` sumarisa el costo de la ruta más corta "
 "utilizando el algoritmo de bidirecional de Dijkstra."
 
-#, fuzzy
 msgid ""
 "pgr_bdDijkstraCost(`Edges SQL`_, **start vid**, **end vid** , [``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_bdDijkstraCost(`SQL de aristas`_, **salida**, **destino**, "
+"[``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_bdDijkstraCost(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_bdDijkstraCost(`SQL de aristas`_, **salida**, **destinos**, "
+"[``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_bdDijkstraCost(`Edges SQL`_, **start vids**, **end vid** , "
 "[``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_bdDijkstraCost(`SQL de aristas`_, **salidas**, **destino**, "
+"[``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_bdDijkstraCost(`Edges SQL`_, **start vids**, **end vids**, "
 "[``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_bdDijkstraCost(`SQL de aristas`_, **salidas**, **destinos**, "
+"[``directed``])"
 
-#, fuzzy
 msgid "pgr_bdDijkstraCost(`Edges SQL`_, `Combinations SQL`_, [ ``directed``])"
-msgstr "pgr_dijkstraNear(Combinaciones)"
+msgstr ""
+"pgr_bdDijkstraCost(`SQL de aristas`_, `SQL de combinations`_, [``directed``])"
 
-#, fuzzy
 msgid "pgr_bdDijkstraCost(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
-msgstr "pgr_dijkstraNear(Combinaciones)"
+msgstr ""
+"pgr_bdDijkstraCost(`SQL de aristas`_, `SQL de combinations`_, [``directed``])"
 
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
@@ -10424,9 +10298,9 @@ msgstr ""
 "Usando el algoritmo bidireccional de Dijkstra, calcular y regresar una "
 "matriz de costos."
 
-#, fuzzy
 msgid "pgr_bdDijkstraCostMatrix(`Edges SQL`_, **start vids**, [``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_bdDijkstraCostMatrix(`SQL de aristas`_, **salidas**, [``directed``])"
 
 msgid ""
 "Symmetric cost matrix for vertices :math:`\\{5, 6, 10, 15\\}` on an "
@@ -10551,29 +10425,29 @@ msgstr ""
 msgid "Running time: :math:`O(| start\\_vids | * ( V * E))`"
 msgstr "Tiempo de ejecución :math:`O(| start\\_vids | * ( V * E))`"
 
-#, fuzzy
 msgid ""
 "pgr_bellmanFord(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_bellmanFord(`SQL de aristas`_, **salida**, **destino**, [``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_bellmanFord(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_bellmanFord(`SQL de aristas`_, **salida**, **destinos**, [``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vid** , [``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_bellmanFord(`SQL de aristas`_, **salidas**, **destino**, [``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vids**, [``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_bellmanFord(`SQL de aristas`_, **salidas**, **destinos**, [``directed``])"
 
-#, fuzzy
 msgid "pgr_bellmanFord(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
-msgstr "pgr_dijkstraNear(Combinaciones)"
+msgstr ""
+"pgr_bellmanFord(`SQL de aristas`_, `SQL de combinations`_, [``directed``])"
 
 msgid "From vertex :math:`6` to vertex :math:`10` on a **directed** graph"
 msgstr "Del vértice :math:`6` al vértice :math:`10` en un grafo **dirigido**"
@@ -10585,10 +10459,10 @@ msgstr ""
 "Desde el vértice :math:`6` a los vértices :math:`\\{ 10, 17\\}` en un grafo "
 "**dirigido**"
 
-#, fuzzy
 msgid ""
 "pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vid**, [``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_bellmanFord(`SQL de aristas`_, **salidas**, **destino**, [``directed``])"
 
 msgid "Using a combinations table on an **undirected** graph."
 msgstr "Uso de una tabla de combinaciones en un grafo **no dirigido**."
@@ -10667,20 +10541,17 @@ msgstr "``componente`` ascendente."
 msgid "``edge`` ascending."
 msgstr "``edge`` ascendente."
 
-#, fuzzy
 msgid "pgr_biconnectedComponents(`Edges SQL`_)"
-msgstr "pgr_connectedComponents"
+msgstr "pgr_biconnectedComponents(`SQL de aristas`_)"
 
-#, fuzzy
 msgid "RETURNS SET OF |result-component-E|"
-msgstr "Devuelve el conjunto de``(seq, component, node)``"
+msgstr "REGRESA CONJUNTO DE |result-component-E|"
 
 msgid "The biconnected components of the graph"
 msgstr "Los componentes biconectados del grafo"
 
-#, fuzzy
 msgid "Returns set of |result-component-E|"
-msgstr "Devuelve el conjunto de``(seq, component, node)``"
+msgstr "Regresa conjunto de |result-component-E|"
 
 msgid "``component``"
 msgstr "``component``"
@@ -10793,35 +10664,40 @@ msgstr ""
 msgid "Running time: :math:`O(| start\\_vids | * |E|)`"
 msgstr "Tiempo de ejecución: :math:`O(| start\\_vids | * |E|)`"
 
-#, fuzzy
 msgid ""
 "pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**, **end vid**, "
 "[``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_binaryBreadthFirstSearch(`SQL de aristas`_, **salida**, **destino**, "
+"[``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**, **end vids**, "
 "[``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_binaryBreadthFirstSearch(`SQL de aristas`_, **salida**, **destinos**, "
+"[``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vid**, "
 "[``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_binaryBreadthFirstSearch(`SQL de aristas`_, **salidas**, **destino**, "
+"[``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vids**, "
 "[``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_binaryBreadthFirstSearch(`SQL de aristas`_, **salidaa**, **destinoa**, "
+"[``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_binaryBreadthFirstSearch(`Edges SQL`_, **Combinations SQL**, "
 "[``directed``])"
-msgstr "pgr_binaryBreadthFirstSearch(Combinaciones)"
+msgstr ""
+"pgr_binaryBreadthFirstSearch(`SQL de aristas`_, `SQL de combinaciones`_, "
+"[``directed``])"
 
 msgid ""
 "**Note:** Using the :doc:`sampledata` Network as all weights are same (i.e :"
@@ -10830,11 +10706,12 @@ msgstr ""
 "**Nota:** Usando la red de :doc:`BFS-category` como todos los pesos son los "
 "mismos (i.e :math:`1``)"
 
-#, fuzzy
 msgid ""
 "pgr_binaryBreadthFirstSearch(`Edges SQL`_, `Combinations SQL`_, "
 "[``directed``])"
-msgstr "pgr_binaryBreadthFirstSearch(`Combinaciones`_)"
+msgstr ""
+"pgr_binaryBreadthFirstSearch(`SQL de aristas`_, `SQL de combinations`_, "
+"[``directed``])"
 
 msgid "Optional Parameters"
 msgstr "Parámetros opcionales"
@@ -10903,13 +10780,11 @@ msgstr ""
 msgid "If graph is not bipartite then algorithm returns empty set."
 msgstr "Si el grafo no es bipartito, el algoritmo devuelve un conjunto vacío."
 
-#, fuzzy
 msgid "pgr_bipartite(`Edges SQL`_)"
-msgstr "pgr_bipartite"
+msgstr "pgr_bipartite(`SQL de aristas`_)"
 
-#, fuzzy
 msgid "RETURNS SET OF |result-node-color|"
-msgstr "Devuelve el conjunto de ``(node)``"
+msgstr "REGRESA CONJUNTO DE |result-node-color|"
 
 msgid "When the graph is bipartite"
 msgstr "Cuando el grafo es bi-partido"
@@ -10991,25 +10866,20 @@ msgstr "Nueva función **Experimental**"
 msgid "Running time: Polynomial"
 msgstr "Tiempo de ejecución: Polinomio"
 
-#, fuzzy
 msgid "pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vid**)"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr "pgr_boykovKolmogorov(`SQL de aristas`_, **salida**, **destino**)"
 
-#, fuzzy
 msgid "pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vids**)"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr "pgr_boykovKolmogorov(`SQL de aristas`_, **salida**, **destinos**)"
 
-#, fuzzy
 msgid "pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vid**)"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr "pgr_boykovKolmogorov(`SQL de aristas`_, **salidas**, **destino**)"
 
-#, fuzzy
 msgid "pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vids**)"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr "pgr_boykovKolmogorov(`SQL de aristas`_, **salidas**, **destinos**)"
 
-#, fuzzy
 msgid "pgr_boykovKolmogorov(`Edges SQL`_, `Combinations SQL`_)"
-msgstr "``pgr_boykovKolmogorov`` (`Combinaciones`_)"
+msgstr "pgr_boykovKolmogorov(`SQL de aristas`_, *`SQL de combinations`_)"
 
 msgid "RETURNS SET OF |result-flow|"
 msgstr ""
@@ -11146,7 +11016,7 @@ msgstr ""
 "de aristas."
 
 msgid "|ascending| |descending|"
-msgstr "|ascendente| |descendente|"
+msgstr "|ascending| |descending|"
 
 msgid "ascending"
 msgstr "ascendente"
@@ -11213,20 +11083,17 @@ msgstr "``edge`` ascendente"
 msgid "Running time: :math:`O(E * (V + E))`"
 msgstr "Tiempo de ejecución: :math:`O(E * (V + E))`"
 
-#, fuzzy
 msgid "pgr_bridges(`Edges SQL`_)"
-msgstr "pgr_bipartite"
+msgstr "pgr_bridges(`SQL de aristas`_)"
 
-#, fuzzy
 msgid "RETURNS SET OF |result-edge|"
-msgstr "Devuelve el conjunto de ``(edge)``"
+msgstr "REGRESA CONJUNTO DE |result-edge|"
 
 msgid "The bridges of the graph"
 msgstr "Los puentes del grafo"
 
-#, fuzzy
 msgid "Returns set of |result-edge|"
-msgstr "Devuelve el conjunto de ``(edge)``"
+msgstr "Regresa conjunto de |result-edge|"
 
 msgid "Identifier of the edge that is a bridge."
 msgstr "Identificador del borde que es un puente."
@@ -11265,9 +11132,8 @@ msgstr ""
 msgid "Returns ``EMPTY SET`` on a disconnected graph"
 msgstr "Devuelve ``EMPTY SET`` en un grafo desconectado"
 
-#, fuzzy
 msgid "pgr_chinesePostman(`Edges SQL`_)"
-msgstr "``pgr_chinesepostmancost``"
+msgstr "pgr_chinesePostman(`SQL de aristas`_)"
 
 msgid "RETURNS SET OF |result-1-1-no-seq|"
 msgstr ""
@@ -11317,13 +11183,11 @@ msgstr ""
 "circuito que contiene cada arista de un grafo dirigido y comienza y termina "
 "en el mismo vértice."
 
-#, fuzzy
 msgid "Return value when the graph if disconnected"
-msgstr "[TBD] Valor devuelto cuando el grafo está desconectado"
+msgstr "Valor devuelto cuando el grafo está desconectado"
 
-#, fuzzy
 msgid "pgr_chinesePostmanCost(`Edges SQL`_)"
-msgstr "``pgr_chinesepostmancost``"
+msgstr "pgr_chinesePostmanCost(`SQL de aristas`_)"
 
 msgid "RETURNS ``FLOAT``"
 msgstr ""
@@ -11383,20 +11247,17 @@ msgstr "Los componentes se describen mediante vértices"
 msgid "``component`` ascending"
 msgstr "``component`` ascendente"
 
-#, fuzzy
 msgid "pgr_connectedComponents(`Edges SQL`_)"
-msgstr "pgr_connectedComponents"
+msgstr "pgr_connectedComponents(`SQL de aristas`_)"
 
-#, fuzzy
 msgid "RETURNS SET OF |result-component-V|"
-msgstr "Devuelve el conjunto de``(seq, component, node)``"
+msgstr "REGRESA CONJUNTO DE |result-component-V|"
 
 msgid "The connected components of the graph"
 msgstr "Los componentes conectados del grafo"
 
-#, fuzzy
 msgid "Returns set of |result-component-V|"
-msgstr "Devuelve el conjunto de``(seq, component, node)``"
+msgstr "Regresa conjunto de |result-component-V|"
 
 msgid "Has the value of the minimum node identifier in the component."
 msgstr "Continene le valor mínimo de identificador de nodo en el componente."
@@ -12159,26 +12020,24 @@ msgid ":doc:`pgr_analyzeOneWay` to analyze directionality of the edges."
 msgstr ""
 ":doc:`pgr_analyzeOneWay` para analizar la direccionalidad de los bordes."
 
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
 "pgr_cuthillMckeeOrdering.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/"
 "pgr_cuthillMckeeOrdering.html>`__)"
 msgstr ""
-"**Versiones soportadas** `Última <https://docs.pgrouting.org/latest/en/"
-"reference.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/reference."
-"html>`__)"
+"**Versiones Soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"pgr_cuthillMckeeOrdering.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"pgr_cuthillMckeeOrdering.html>`__)"
 
-#, fuzzy
 msgid "``pgr_cuthillMckeeOrdering`` - Experimental"
-msgstr "pgr_edgeColoring - Experimental"
+msgstr "``pgr_cuthillMckeeOrdering`` - Experimental"
 
-#, fuzzy
 msgid ""
 "``pgr_cuthillMckeeOrdering`` — Returns the reverse Cuthill-Mckee ordering of "
 "an undirected graphs"
 msgstr ""
-"``pgr_edgeColoring`` — Coloración de aristas de grafos no dirigidos acíclicos"
+"``pgr_cuthillMckeeOrdering`` —Ordenamiento Cuthill-Mckee de grapos no "
+"dirigidos"
 
 msgid "Version 3.4.0"
 msgstr "Versión 3.4.0"
@@ -12196,17 +12055,15 @@ msgid ""
 "increasing degree."
 msgstr ""
 
-#, fuzzy
 msgid "The implementation is for **undirected** graphs."
-msgstr "Su implementación es solo para grafo **no dirigido**."
+msgstr "La implementación es para grafos **no dirigidos**."
 
 msgid ""
 "The bandwidth minimization problems are considered NP-complete problems."
 msgstr ""
 
-#, fuzzy
 msgid "The running time complexity is: :math:`O(m log(m)|V|)`"
-msgstr "Tiempo de ejecución de Prim: :math:`O(E*log V)`"
+msgstr "Tiempo de ejecución es: :math:`O(m log(m)|V|)`"
 
 msgid "where :math:`|V|` is the number of vertices,"
 msgstr "donde :math:`|V|` es el número de vértices,"
@@ -12214,36 +12071,30 @@ msgstr "donde :math:`|V|` es el número de vértices,"
 msgid ":math:`m` is the maximum degree of the vertices in the graph."
 msgstr ":math:`m`es el grado máximo de los vértices en el grafo."
 
-#, fuzzy
 msgid "pgr_cuthillMckeeOrdering(`Edges SQL`_)"
-msgstr "``pgr_full_version``"
+msgstr "pgr_cuthillMckeeOrdering(`SQL de aristas`_)"
 
-#, fuzzy
 msgid "RETURNS SET OF |result-node-order|"
-msgstr "Devuelve el conjunto de ``(node)``"
+msgstr "REGRESA CONJUNTO DE |result-node-order|"
 
-#, fuzzy
 msgid "Graph ordering of pgRouting :doc:`sampledata`"
-msgstr "Coloración de grafos de pgRouting :doc:`sampledata`"
+msgstr "Ordenamiento del grafo de los:doc:`sampledata` de pgRouting"
 
-#, fuzzy
 msgid "Returns SET OF ``(seq, node)``"
-msgstr "Devuelve el conjunto de ``(node)``"
+msgstr "Regresa conjunto de ``(seq, node)``"
 
-#, fuzzy
 msgid "Sequence of the order starting from 1."
-msgstr "Valor secuencial a partir de **1**."
+msgstr "Valor secuencial a partir de 1."
 
 msgid "New ordering in reverse order."
 msgstr "Nuevo ordenamiento es en orden inverso."
 
-#, fuzzy
 msgid ""
 "`Boost: Cuthill-McKee Ordering <https://www.boost.org/libs/graph/doc/"
 "cuthill_mckee_ordering.html>`__"
 msgstr ""
-"`Boost: algoritmo de Kruskal <https://www.boost.org/libs/graph/doc/"
-"kruskal_min_spanning_tree.html>`__"
+"`Boost: Ordernamiento Cuthill-McKee <https://www.boost.org/libs/graph/doc/"
+"cuthill_mckee_ordering.html>`__"
 
 #, python-format
 msgid ""
@@ -12344,9 +12195,8 @@ msgstr "pgr_dagShortestPath(`SQL de aristas`_, **salidas**, **destino**)"
 msgid "pgr_dagShortestPath(`Edges SQL`_, **start vids**, **end vids**)"
 msgstr "pgr_dagShortestPath(`SQL de aristas`_, **salidas**, **destinos**)"
 
-#, fuzzy
 msgid "pgr_dagShortestPath(`Edges SQL`_, `Combinations SQL`_)"
-msgstr "pgr_dagShortestPath(Combinaciones)"
+msgstr "pgr_dagShortestPath(`SQL de aristas`_, `SQL de combinations`_)"
 
 msgid "From vertex :math:`5` to vertex  :math:`11` on a **directed** graph"
 msgstr ""
@@ -12365,9 +12215,8 @@ msgstr ""
 "Desde los vértices :math:`\\{5, 15\\}` a los vértices :math:`\\{11, 17\\}` "
 "en un grafo **no dirigido**"
 
-#, fuzzy
 msgid "pgr_dagShortestPath(`Edges SQL`_, Combinations)"
-msgstr "pgr_dagShortestPath(Combinaciones)"
+msgstr "pgr_dagShortestPath(`SQL de aristas`_, `SQL de combinations`_)"
 
 msgid "Resturn Columns"
 msgstr "Columnas de Resultados"
@@ -12396,9 +12245,8 @@ msgstr ""
 msgid "pgr_degree(`Edges SQL`_ , `Vertex SQL`_, [``dryrun``])"
 msgstr ""
 
-#, fuzzy
 msgid "RETURNS SETOF |result-degree|"
-msgstr "Devuelve el conjunto de ``(edge)``"
+msgstr "REGRESA CONJUNTO DE |result-degree|"
 
 msgid "Extracting the vertex information"
 msgstr "Extraer la información del vértice"
@@ -12673,29 +12521,28 @@ msgstr "Cambio de firma en ``pgr_dijkstra`` (`Uno a Uno`_)"
 msgid "**Official** ``pgr_dijkstra`` (`One to One`_)"
 msgstr "**Oficial** ``pgr_dijkstra`` (`Uno a Uno`_)"
 
-#, fuzzy
 msgid ""
 "pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  , [``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_dijkstra(`SQL de aristas`_, **salida**, **destino**, [``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_dijkstra(`Edges SQL`_, **start vid**, **end vids** , [``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_dijkstra(`SQL de aristas`_, **salida**, **destinos**, [``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid**  , [``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_dijkstra(`SQL de aristas`_, **salidas**, **destino**, [``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids** , [``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_dijkstra(`SQL de aristas`_, **salidas**, **destinos**, [``directed``])"
 
-#, fuzzy
 msgid "pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_ , [``directed``])"
-msgstr "pgr_dijkstraNear(Combinaciones)"
+msgstr "pgr_dijkstra(`SQL de aristas`_, `SQL de combinations`_, [``directed``])"
 
 msgid ""
 "From vertex :math:`6` to vertices :math:`\\{10, 17\\}` on a **directed**"
@@ -12703,10 +12550,10 @@ msgstr ""
 "Del vértice :math:`6` a los vértices :math:`\\{10, 17\\}` en un grafo **no "
 "dirigido**"
 
-#, fuzzy
 msgid ""
 "pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid** , [``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_dijkstra(`SQL de aristas`_, **salidas**, **destino**, [``directed``])"
 
 msgid ""
 "The examples of this section are based on the :doc:`sampledata` network."
@@ -12884,9 +12731,8 @@ msgstr "35) Usando `Muchos a Uno`_"
 msgid "36) Using `Many to Many`_"
 msgstr "36) Usando `Muchos a Muchos`_"
 
-#, fuzzy
 msgid "37) Using `Combinations`_"
-msgstr "36) Usando `Combinaciones`_"
+msgstr "37) Usando `Combinaciones`_"
 
 #, python-format
 msgid "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
@@ -12946,29 +12792,30 @@ msgstr ""
 "La función ``pgr_dijkstraCost`` function sumarizes el costo de los caminos "
 "más cortos usando el algoritmo de Dijkstra."
 
-#, fuzzy
 msgid ""
 "pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vid** , [``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_dijkstraCost(`SQL de aristas`_, **salida**, **destino**, [``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_dijkstraCost(`SQL de aristas`_, **salida**, **destinos**, [``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vid** , [``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_dijkstraCost(`SQL de aristas`_, **salidas**, **destino**, [``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vids**, [``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_dijkstraCost(`SQL de aristas`_, **salidas**, **destinos**, "
+"[``directed``])"
 
-#, fuzzy
 msgid "pgr_dijkstraCost(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
-msgstr "pgr_dijkstraNear(Combinaciones)"
+msgstr ""
+"pgr_dijkstraCost(`SQL de aristas`_, `SQL de combinations`_, [``directed``])"
 
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
@@ -13014,9 +12861,8 @@ msgid "Using Dijkstra algorithm, calculate and return a cost matrix."
 msgstr ""
 "Utilizando el algoritmo Dijkstra, calcula y devuelve una matriz de costes."
 
-#, fuzzy
 msgid "pgr_dijkstraCostMatrix(`Edges SQL`_, **start vids**, [``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr "pgr_dijkstraCostMatrix(`SQL de aristas`_, **salidas**, [``directed``])"
 
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
@@ -13097,24 +12943,27 @@ msgstr "Muchos a Muchos: :math:`drt * |Starting vids|`"
 msgid "Combinations: :math:`drt * |Starting vids|`"
 msgstr "Combinaciones: :math:`drt * |Starting vids|`"
 
-#, fuzzy
 msgid ""
 "pgr_dijkstraNear(`Edges SQL`_, **start vid**, **end vids**, [**options A**])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_dijkstraNear(`SQL de aristas`_, **salida**, **destinos**, [**opciones "
+"A**])"
 
-#, fuzzy
 msgid ""
 "pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid**, [**options A**])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_dijkstraNear(`SQL de aristas`_, **salidas**, **destino**, [**opciones "
+"A**])"
 
-#, fuzzy
 msgid ""
 "pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids**, [**options B**])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_dijkstraNear(`SQL de aristas`_, **salidas**, **destinos**, [**opciones "
+"B**])"
 
-#, fuzzy
 msgid "pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_, [**options B**])"
-msgstr "pgr_dijkstraNearCost(Combinaciones)"
+msgstr ""
+"pgr_dijkstraNear(`SQL de aristas`_, `SQL de combinations`_, [**opciones B**])"
 
 msgid "**options A:** ``[directed, cap]``"
 msgstr ""
@@ -13122,10 +12971,10 @@ msgstr ""
 msgid "**options B:** ``[directed, cap, global]``"
 msgstr ""
 
-#, fuzzy
 msgid ""
 "pgr_dijkstraNear(`Edges SQL`_, **start vid**, **end vids**, [**options**])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_dijkstraNear(`SQL de aristas`_, **salida**, **destinos**, [**opciones**])"
 
 msgid "**options:** ``[directed, cap]``"
 msgstr ""
@@ -13158,10 +13007,10 @@ msgstr ""
 "El resultado muestra que la estación en el vértice :math:`11` es la más "
 "cercana."
 
-#, fuzzy
 msgid ""
 "pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid**, [**options**])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_dijkstraNear(`SQL de aristas`_, **salidas**, **destino**, [**opciones**])"
 
 msgid ""
 "Departing on a car from a subway station find the nearest **two** stations "
@@ -13191,10 +13040,11 @@ msgstr ""
 "El resultado muestra que la estación en el vértice :math:`10` es la más "
 "cercana y la siguiente mejor es :math:`11`."
 
-#, fuzzy
 msgid ""
 "pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids**, [**options**])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_dijkstraNear(`SQL de aristas`_, **salidas**, **destinos**, "
+"[**opciones**])"
 
 msgid "**options:** ``[directed, cap, global]``"
 msgstr ""
@@ -13234,9 +13084,9 @@ msgid ""
 msgstr ""
 "Solo se devuelve `una` ruta porque `global` es ``true`` y `cap` es ``1``"
 
-#, fuzzy
 msgid "pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_, [**options**])"
-msgstr "pgr_dijkstraNearCost(Combinaciones)"
+msgstr ""
+"pgr_dijkstraNear(`SQL de aristas`_, `SQL de combinations`_, [**opciones**])"
 
 msgid ""
 "Find the best car connection between all the stations of two subway lines"
@@ -13370,11 +13220,12 @@ msgstr ""
 "``pgr_dijkstraNearCost`` — Usando el algoritmo dijkstra, encuentra la ruta "
 "que conduce al vértice más cercano."
 
-#, fuzzy
 msgid ""
 "pgr_dijkstraNearCost(`Edges SQL`_, **start vid**, **end vids**, [**options "
 "A**])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_dijkstraNearCost(`SQL de aristas`_, **salida**, **destinos**, [**"
+"opciones A**])"
 
 #, fuzzy
 msgid ""
@@ -18145,7 +17996,7 @@ msgid "**positive** when it belongs to the `Edges SQL`_"
 msgstr ""
 
 msgid "**negative** when it belongs to the `Points SQL`_"
-msgstr ""
+msgstr "**negative** cuando pertence al `SQL de puntos`_"
 
 msgid "Driving side can not be ``b``"
 msgstr ""
@@ -18559,11 +18410,12 @@ msgstr ""
 "pgr_withPoints(`SQL de aristas`_, `SQL de puntos`_, **salidas**, **destinos**"
 ", [**opciones**])"
 
-#, fuzzy
 msgid ""
 "pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, "
 "[**options**])"
-msgstr "``pgr_aStarCost`` (`Combinaciones`_)"
+msgstr ""
+"pgr_withPoints(`SQL de aristas`_, `SQL de puntos`_, `SQL de combinations`_, "
+"[**opciones**])"
 
 #, fuzzy
 msgid "**options:** ``[directed, driving_side, details])``"
@@ -18660,7 +18512,7 @@ msgid "``b`` for both."
 msgstr "``b`` for ambos."
 
 msgid "Use :doc:`pgr_findCloseEdges` in the `Points SQL`_."
-msgstr "Usa :doc:`pgr_findCloseEdges` en el `SQL puntos`_."
+msgstr "Usar :doc:`pgr_findCloseEdges` en el `SQL de puntos`_."
 
 msgid ""
 "All the examples are about traveling from point :math:`1` and vertex :math:"
@@ -18777,35 +18629,36 @@ msgid ""
 "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vid**, **end vid**, "
 "**[options**])"
 msgstr ""
-"pgr_withPointsCost(`SQL de aristas`_, `SQL de puntos`_, **salida**, "
+"pgr_withPointsCost(`SQL de aristas`_, 'SQL de puntos`_, **salida**, "
 "**destino**, [**opciones**])"
 
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vid**, **end vids**, "
 "**[options**])"
 msgstr ""
-"pgr_withPointsCost(`SQL de aristas`_, `SQL de puntos`_, **salida**, "
+"pgr_withPointsCost(`SQL de aristas`_, 'SQL de puntos`_, **salida**, "
 "**destinos**, [**opciones**])"
 
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vids**, **end vid**, "
 "**[options**])"
 msgstr ""
-"pgr_withPointsCost(`SQL de aristas`_, `SQL de puntos`_, **salidas**, "
+"pgr_withPointsCost(`SQL de aristas`_, 'SQL de puntos`_, **salidas**, "
 "**destino**, [**opciones**])"
 
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vids**, **end "
 "vids**, **[options**])"
 msgstr ""
-"pgr_withPointsCost(`SQL de aristas`_, `SQL de puntos`_, **salidas**, "
+"pgr_withPointsCost(`SQL de aristas`_, 'SQL de puntos`_, **salidas**, "
 "**destinos**, [**opciones**])"
 
-#, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, `Combinations SQL`_, "
 "**[options**])"
-msgstr "``pgr_aStarCost`` (`Combinaciones`_)"
+msgstr ""
+"pgr_withPointsCost(`SQL de aristas`_, 'SQL de puntos`_, `SQL de combinations`"
+"_, [**opciones**])"
 
 #, fuzzy
 msgid "**options:**  ``[directed, driving_side]``"
@@ -18853,11 +18706,12 @@ msgstr ""
 "Desde el punto :math:`15` y vértice :math:`6` al punto :math:`3` y vértice :"
 "math:`1`"
 
-#, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, "
 "**[options**])"
-msgstr "``pgr_aStarCost`` (`Combinaciones`_)"
+msgstr ""
+"pgr_withPointsCost(`SQL de aristas`_, `SQL de puntos`_, `SQL de combinations`"
+"_, [**opciones**])"
 
 msgid "Identifier of the starting vertex or point."
 msgstr "Identificador del vértice o punto inicial."
@@ -19153,7 +19007,7 @@ msgid ""
 "Modifies the graph to include the points defined in the `Points SQL`_ and "
 "using Yen algorithm, finds the :math:`K` shortest paths."
 msgstr ""
-"Modifica el grafo para incluir los puntos definidos en `SQL puntos`_ y "
+"Modifica el grafo para incluir los puntos definidos en el `SQL de puntos`_ y "
 "utilizando el algoritmo Yen, encuentra las :math:`K` rutas más cortas."
 
 msgid ""
@@ -19192,7 +19046,7 @@ msgid "No heap paths are returned."
 msgstr "No se devuelven rutas pre-calculadas."
 
 msgid "`Points SQL`_ query as described."
-msgstr "`SQL puntos`_ como se describe."
+msgstr "`SQL de puntos`_ como se describe."
 
 #, fuzzy
 msgid "Identifier of the destination vertex."
@@ -19250,11 +19104,12 @@ msgid ""
 "a point on the graph) for all :math:`i < size\\_of(via\\;vertices)`."
 msgstr ""
 
-#, fuzzy
 msgid ""
 "pgr_withPointsVia(`Edges SQL`_, `Points SQL`_, **via vertices**, "
 "[**options**])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_withPointsVia(`SQL de aristas`_, `SQL de puntos`_, ****vértices****, "
+"[**opciones**])"
 
 msgid ""
 "Find the route that visits the vertices :math:`\\{ -6, 15, -1\\}` in that "
@@ -22585,7 +22440,7 @@ msgid ""
 "on edges as required by the `Points SQL`_ query."
 msgstr ""
 "La categoría **with points** modifica el grafo continuamente al agregar "
-"puntos en las aristas, como es requerido por la consulta `Points SQL`_ ."
+"puntos en las aristas, como es requerido por la consulta `SQL de puntos`_ ."
 
 msgid ""
 "The functions within this category give the ability to process between "
@@ -22695,7 +22550,7 @@ msgid "positive sign is a vertex of the original graph"
 msgstr "signo positivo es un vértice en el grafo original"
 
 msgid "negative sign is a point of the `Points SQL`_"
-msgstr "signo negativo es un punto en el `SQL de puntos`_"
+msgstr "signo negativo es un punto en la `SQL de puntos`_"
 
 msgid "About points"
 msgstr "Sobre los puntos"
@@ -23162,11 +23017,12 @@ msgstr ""
 "pgr_withPointsCost(`SQL de aristas`_, `SQL de puntos`_, **salidas**, "
 "**destinos**, [**opciones**])"
 
-#, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, 'Points SQL', `Combinations SQL`_, "
 "**[options**])"
-msgstr "``pgr_aStarCost`` (`Combinaciones`_)"
+msgstr ""
+"pgr_withPointsCost(`SQL de aristas`_, `SQL de puntos`_, `SQL de combinations`"
+"_, [**opciones**])"
 
 msgid "Returns SET OF ``(seq, [start_vid,] node, edge, cost, agg_cost)``"
 msgstr "Regresa vonjunto de ``(seq, [start_vid,] node, edge, cost, agg_cost)``"
