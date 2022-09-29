@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: 2022-09-29 15:49+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"PO-Revision-Date: 2022-09-29 16:37+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/index/"
 "es/>\n"
 "Language: es\n"
@@ -564,3 +564,15 @@ msgstr "`SQL de aristas`_"
 
 msgid "**distance**"
 msgstr "**distancia**"
+
+msgid "RETURNS SETOF"
+msgstr "REGRESA CONJUNTO DE"
+
+msgid "edge"
+msgstr "arista"
+
+msgid "RETURNS SET OF"
+msgstr "REGRESA CONJUNTO DE"
+
+msgid "path"
+msgstr "camino"
