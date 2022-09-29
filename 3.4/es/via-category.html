@@ -15,6 +15,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -81,7 +82,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Guía de migración</a></li>
 </ul>
 </ul>
 </li>
@@ -104,7 +105,7 @@
 <li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
 <li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
 <li><a class="reference internal" href="#restrictions-sql">SQL restricciones</a></li>
-<li><a class="reference internal" href="#points-sql">SQL puntos</a></li>
+<li><a class="reference internal" href="#points-sql">SQL de puntos</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
@@ -222,13 +223,13 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td></td>
 <td><p>Consulta SQL como se describe.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>vía vértices</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [ <strong>ANY-INTEGER</strong> ]</p></td>
+<tr class="row-odd"><td><p><strong>vértices</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ENTEROS</strong> ]</p></td>
 <td></td>
 <td><p>Arreglo ordenado de identificadores de vértices que serán visitados.</p></td>
 </tr>
@@ -260,18 +261,18 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td></td>
 <td><p>Consulta SQL como se describe.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">SQL puntos</a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">SQL de puntos</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td></td>
 <td><p>Consulta SQL como se describe.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>vía vértices</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [ <strong>ANY-INTEGER</strong> ]</p></td>
+<tr class="row-even"><td><p><strong>vértices</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ENTEROS</strong> ]</p></td>
 <td></td>
 <td><p>Arreglo ordenado de identificadores de vértices que serán visitados.</p>
 <ul class="simple">
@@ -413,7 +414,7 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ANY-INTEGER</strong>]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ENTEROS</strong>]</p></td>
 <td><p>Secuencia de identificadores de aristas que forman un camino que no se permite tomar. - Arreglos vacios o <code class="docutils literal notranslate"><span class="pre">NULL</span></code> son ignorados. - Arreglos que tienen <code class="docutils literal notranslate"><span class="pre">NULL</span></code> arrojan una excepción.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Cost</span></code></p></td>
@@ -433,7 +434,7 @@
 </dl>
 </section>
 <section id="points-sql">
-<h3>SQL puntos<a class="headerlink" href="#points-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>SQL de puntos<a class="headerlink" href="#points-sql" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Usado en</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia - Proposed</span></a></p></li>
@@ -593,8 +594,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0.<br/>
-      Actualizado por última vez en sept 23, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
+      Actualizado por última vez en sept 29, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.2.<br/>
     </p>
   </div>
 </footer>

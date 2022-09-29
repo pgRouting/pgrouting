@@ -15,6 +15,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -81,7 +82,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Guía de migración</a></li>
 </ul>
 </ul>
 </li>
@@ -208,7 +209,7 @@
 <div class="line">pgr_degree(<a class="reference internal" href="#edges-sql">Edges SQL</a> , <a class="reference internal" href="#vertex-sql">Vertex SQL</a>, [<code class="docutils literal notranslate"><span class="pre">dryrun</span></code>])</div>
 </div>
 <div class="line-block">
-<div class="line">RETURNS SETOF <code class="docutils literal notranslate"><span class="pre">(node,</span> <span class="pre">degree)</span></code></div>
+<div class="line">REGRESA CONJUNTO DE <code class="docutils literal notranslate"><span class="pre">(node,</span> <span class="pre">degree)</span></code></div>
 <div class="line">OR EMTPY SET</div>
 </div>
 </div>
@@ -255,7 +256,7 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> como se describe a continuación</p></td>
 </tr>
@@ -359,7 +360,7 @@
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Vertex identifier</p></td>
+<td><p>Identificador de vértice</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">degree</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -549,8 +550,8 @@ functions can be used to divide the problem.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0.<br/>
-      Actualizado por última vez en sept 23, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
+      Actualizado por última vez en sept 29, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.2.<br/>
     </p>
   </div>
 </footer>

@@ -15,6 +15,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -81,7 +82,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Guía de migración</a></li>
 </ul>
 </ul>
 </li>
@@ -104,7 +105,7 @@
 </li>
 <li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
 <li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
-<li><a class="reference internal" href="#points-sql">SQL puntos</a></li>
+<li><a class="reference internal" href="#points-sql">SQL de puntos</a></li>
 <li><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></li>
 </ul>
 </li>
@@ -234,31 +235,31 @@ functions that compose them are based one way or another on dijkstra algorithm.<
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> como se describe a continuación</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">SQL puntos</a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">SQL de puntos</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#points-sql">SQL puntos</a> como se describe abajo</p></td>
+<td><p><a class="reference internal" href="#points-sql">SQL de puntos</a> como se describe abajo</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#combinations-sql">SQL de combinaciones</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a> como se describe a abajo</p></td>
+<td><p><a class="reference internal" href="#combinations-sql">SQL de combinaciones</a> como se describe a abajo</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>vid de salida</strong></p></td>
+<tr class="row-odd"><td><p><strong>salida</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del vértice inicial de la ruta. Valor negativo es para identificador de punto.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>vid salidas</strong></p></td>
+<tr class="row-even"><td><p><strong>salidas</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
 <td><p>Arreglo de identificadores de vértices iniciales. Valores negativos son para identificadores de puntos.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>vid destino</strong></p></td>
+<tr class="row-odd"><td><p><strong>destino</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del vértice final de la ruta. Valor negativo es para identificador de punto.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>vids destinos</strong></p></td>
+<tr class="row-even"><td><p><strong>destinos</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
 <td><p>Arreglo de identificadores de vértices finales. Valores negativos son para identificadores de puntos.</p></td>
 </tr>
@@ -389,7 +390,7 @@ functions that compose them are based one way or another on dijkstra algorithm.<
 </dl>
 </section>
 <section id="points-sql">
-<h3>SQL puntos<a class="headerlink" href="#points-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>SQL de puntos<a class="headerlink" href="#points-sql" title="Enlace permanente a este encabezado">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 15.6%" />
@@ -722,8 +723,8 @@ the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0.<br/>
-      Actualizado por última vez en sept 23, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
+      Actualizado por última vez en sept 29, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.2.<br/>
     </p>
   </div>
 </footer>

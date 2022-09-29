@@ -15,6 +15,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -81,7 +82,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Guía de migración</a></li>
 </ul>
 </ul>
 </li>
@@ -231,8 +232,8 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vid</strong>, [<strong>options</strong>])</div>
-<div class="line">pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vids</strong>, [<strong>options</strong>])</div>
+<div class="line">pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>raíz</strong>, [<strong>options</strong>])</div>
+<div class="line">pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>raices</strong>, [<strong>options</strong>])</div>
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[max_depth,</span> <span class="pre">directed]</span></code></div>
 </div>
 <div class="line-block">
@@ -244,7 +245,7 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vid</strong>, [<strong>options</strong>])</div>
+<div class="line">pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>raíz</strong>, [<strong>options</strong>])</div>
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[max_depth,</span> <span class="pre">directed]</span></code></div>
 </div>
 <div class="line-block">
@@ -285,7 +286,7 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vids</strong>, [<strong>options</strong>])</div>
+<div class="line">pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>raices</strong>, [<strong>options</strong>])</div>
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[max_depth,</span> <span class="pre">directed]</span></code></div>
 </div>
 <div class="line-block">
@@ -340,11 +341,11 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> descritas más adelante.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>root vid</strong></p></td>
+<tr class="row-odd"><td><p><strong>raíz</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del vértice raíz del árbol.</p>
 <ul class="simple">
@@ -352,8 +353,8 @@
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>root vids</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [ <strong>ANY-INTEGER</strong> ]</p></td>
+<tr class="row-even"><td><p><strong>raices</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ENTEROS</strong> ]</p></td>
 <td><p>Arreglo de identificadores de los vértices raíz.</p>
 <ul class="simple">
 <li><p>Valores <span class="math notranslate nohighlight">\(0\)</span> son ignorados</p></li>
@@ -630,8 +631,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0.<br/>
-      Actualizado por última vez en sept 23, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
+      Actualizado por última vez en sept 29, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.2.<br/>
     </p>
   </div>
 </footer>

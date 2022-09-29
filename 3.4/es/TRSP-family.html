@@ -15,6 +15,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/translations.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
@@ -80,7 +81,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Guía de migración</a></li>
 </ul>
 </ul>
 </li>
@@ -184,7 +185,7 @@
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
-<p>Leer <a class="reference internal" href="migration.html"><span class="doc">Migration guide</span></a> sobre como migrar de la funcionalidad obsoleta de TRSP a las nuevas firmas o funciones que las reemplazan.</p>
+<p>Leer <a class="reference internal" href="migration.html"><span class="doc">Guía de migración</span></a> sobre como migrar de la funcionalidad obsoleta de TRSP a las nuevas firmas o funciones que las reemplazan.</p>
 </div>
 <p class="rubric">Experimental</p>
 <div class="admonition warning">
@@ -224,12 +225,7 @@
 </div>
 <section id="introduction">
 <h2>Introducción<a class="headerlink" href="#introduction" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>Road restrictions are a sequence of road segments that can not be taken in a
-sequential manner.
-Some restrictions are implicit on a directed graph, for example, one way roads
-where the wrong way edge is not even inserted on the graph.
-But normally on turns like no left turn or no right turn, hence the name turn
-restrictions, there are sometimes restrictions.</p>
+<p>Las restricciones viales son una secuencia de tramos viales que no se pueden tomar de manera secuencial. Algunas restricciones están implícitas en un grafo dirigido, por ejemplo, caminos de un solo sentido donde el sentido contrario ni siquiera se inserta en el grafo. Pero normalmente en giros como prohibido vuelta a la izquierda o a la derecha, de ahí el nombre de restricciones de giro, a veces hay restricciones.</p>
 <img alt="_images/restrictions.png" src="_images/restrictions.png" />
 <section id="trsp-algorithm">
 <h3>Algoritmo TRSP<a class="headerlink" href="#trsp-algorithm" title="Enlace permanente a este encabezado">¶</a></h3>
@@ -250,7 +246,7 @@ restrictions, there are sometimes restrictions.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p>Consulta <a class="reference internal" href="#edges-sql">SQL aristas</a> como se describen.</p></td>
 </tr>
@@ -258,7 +254,7 @@ restrictions, there are sometimes restrictions.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p><a class="reference internal" href="#restrictions-sql">SQL restricciones</a> consulta como se describe.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>vía vértices</strong></p></td>
+<tr class="row-even"><td><p><strong>vértices</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
 <td><p>Arreglo ordenado de identificadores de vértices que serán visitados.</p></td>
 </tr>
@@ -274,8 +270,7 @@ restrictions, there are sometimes restrictions.</p>
 <section id="restrictions">
 <h3>Restricciones<a class="headerlink" href="#restrictions" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>En redes de caminos, hay restricciones como vuelta a la izquierda o derecha, no vuelta en U.</p>
-<p>A restriction is a sequence of edges, called path and that path is to be
-avoided.</p>
+<p>Una restricción es una secuencia de aristas, llamado trayectoria y esa trayectoria se debe evitar.</p>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="_images/with_restrictions.png"><img alt="_images/with_restrictions.png" src="_images/with_restrictions.png" style="width: 475.5px; height: 433.0px;" /></a>
 <figcaption>
@@ -379,7 +374,7 @@ avoided.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ANY-INTEGER</strong>]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ENTEROS</strong>]</p></td>
 <td><p>Secuencia de identificadores de aristas que forman un camino que no se permite tomar. - Arreglos vacios o <code class="docutils literal notranslate"><span class="pre">NULL</span></code> son ignorados. - Arreglos que tienen <code class="docutils literal notranslate"><span class="pre">NULL</span></code> arrojan una excepción.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Cost</span></code></p></td>
@@ -423,8 +418,8 @@ avoided.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0.<br/>
-      Actualizado por última vez en sept 23, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
+      Actualizado por última vez en sept 29, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.2.<br/>
     </p>
   </div>
 </footer>

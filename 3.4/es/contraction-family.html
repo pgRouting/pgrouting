@@ -15,6 +15,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -81,7 +82,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Guía de migración</a></li>
 </ul>
 </ul>
 </li>
@@ -99,8 +100,8 @@
 <li><a class="reference internal" href="#introduction">Introducción</a></li>
 <li><a class="reference internal" href="#dead-end-contraction">Contracción sin salida</a><ul>
 <li><a class="reference internal" href="#dead-end">Sin salida</a><ul>
-<li><a class="reference internal" href="#dead-end-vertex-on-undirected-graph">Dead end vertex on undirected graph</a></li>
-<li><a class="reference internal" href="#dead-end-vertex-on-directed-graph">Dead end vertex on directed graph</a></li>
+<li><a class="reference internal" href="#dead-end-vertex-on-undirected-graph">Vértice sin salida en un grafo sin dirigir</a></li>
+<li><a class="reference internal" href="#dead-end-vertex-on-directed-graph">Vértice sin salida en un grafo dirigido</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#operation-dead-end-contraction">Operación: Contracción sin salida</a></li>
@@ -108,27 +109,27 @@
 </li>
 <li><a class="reference internal" href="#linear-contraction">Contracción lineal</a><ul>
 <li><a class="reference internal" href="#linear">Lineal</a><ul>
-<li><a class="reference internal" href="#linear-vertex-on-undirected-graph">Linear vertex on undirected graph</a></li>
-<li><a class="reference internal" href="#linear-vertex-on-directed-graph">Linear vertex on directed graph</a></li>
+<li><a class="reference internal" href="#linear-vertex-on-undirected-graph">Vértice lineal en grafo no dirigido</a></li>
+<li><a class="reference internal" href="#linear-vertex-on-directed-graph">Vértice lineal en grafo dirigido</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#operation-linear-contraction">Operación: Contracción Lineal</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#the-cycle">El ciclo</a></li>
-<li><a class="reference internal" href="#contracting-sample-data">Contracting sample data</a><ul>
+<li><a class="reference internal" href="#contracting-sample-data">Contracción de los datos de muestra</a><ul>
 <li><a class="reference internal" href="#construction-of-the-graph-in-the-database">Construcción del grafo en la base de datos</a><ul>
-<li><a class="reference internal" href="#contraction-results">Contraction results</a></li>
+<li><a class="reference internal" href="#contraction-results">Resultados de la Contracción</a></li>
 <li><a class="reference internal" href="#add-additional-columns">Añadir columnas adicionales</a></li>
 <li><a class="reference internal" href="#store-contraction-information">Almacenar información de contracción</a></li>
-<li><a class="reference internal" href="#the-vertex-table-update">The vertex table update</a></li>
+<li><a class="reference internal" href="#the-vertex-table-update">Actualización de la tabla de vértices</a></li>
 <li><a class="reference internal" href="#the-edge-table-update">Actialización de la tabla de aristas</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#the-contracted-graph">El grafo contraído</a><ul>
 <li><a class="reference internal" href="#vertices-that-belong-to-the-contracted-graph">Vértices que pertenecen al grafo contraído.</a></li>
 <li><a class="reference internal" href="#edges-that-belong-to-the-contracted-graph">Aristas que pertenecen al grafo contraído.</a></li>
-<li><a class="reference internal" href="#contracted-graph">Contracted graph</a></li>
+<li><a class="reference internal" href="#contracted-graph">El grafo contraído</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#using-the-contracted-graph">Usando el grafo contraído</a><ul>
@@ -213,10 +214,10 @@
 </section>
 <section id="dead-end-contraction">
 <h2>Contracción sin salida<a class="headerlink" href="#dead-end-contraction" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>Contraction of the leaf nodes of the graph.</p>
+<p>Contracción de los nodos de hoja del grafo.</p>
 <section id="dead-end">
 <h3>Sin salida<a class="headerlink" href="#dead-end" title="Enlace permanente a este encabezado">¶</a></h3>
-<p>A node is considered a <strong>dead end</strong> node when</p>
+<p>Un nodo se considera <strong>sin salida</strong> cuando</p>
 <ul class="simple">
 <li><p>En grafos no dirigidos:</p>
 <ul>
@@ -233,10 +234,10 @@
 </ul>
 <p>Cuando las condiciones son verdaderas, se puede hacer la <a class="reference internal" href="#operation-dead-end-contraction">Operación: Contracción de callejón sin salida</a>.</p>
 <section id="dead-end-vertex-on-undirected-graph">
-<h4>Dead end vertex on undirected graph<a class="headerlink" href="#dead-end-vertex-on-undirected-graph" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4>Vértice sin salida en un grafo sin dirigir<a class="headerlink" href="#dead-end-vertex-on-undirected-graph" title="Enlace permanente a este encabezado">¶</a></h4>
 <ul class="simple">
 <li><p>Los nodos verdes son nodos <a class="reference internal" href="#dead-end">dead end</a></p></li>
-<li><p>The blue nodes have an unlimited number of edges.</p></li>
+<li><p>Los nodos azules tienen un número ilimitado de aristas.</p></li>
 </ul>
 <div class="graphviz"><img src="_images/graphviz-133c3d00246c459c4912dd2d409ee878545598e4.png" alt="graph G {
     u, v [shape=circle;style=filled;width=.4;color=deepskyblue];
@@ -252,8 +253,8 @@
 }" class="graphviz" /></div>
 <table class="docutils align-default" style="width: 80">
 <thead>
-<tr class="row-odd"><th class="head"><p>Node</p></th>
-<th class="head"><p>Adjecent nodes</p></th>
+<tr class="row-odd"><th class="head"><p>Nodo</p></th>
+<th class="head"><p>Nodos adyacentes</p></th>
 <th class="head"><p>Número de vértices adyacentes</p></th>
 </tr>
 </thead>
@@ -270,10 +271,10 @@
 </table>
 </section>
 <section id="dead-end-vertex-on-directed-graph">
-<h4>Dead end vertex on directed graph<a class="headerlink" href="#dead-end-vertex-on-directed-graph" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4>Vértice sin salida en un grafo dirigido<a class="headerlink" href="#dead-end-vertex-on-directed-graph" title="Enlace permanente a este encabezado">¶</a></h4>
 <ul class="simple">
 <li><p>Los nodos verdes son nodos <a class="reference internal" href="#dead-end">dead end</a></p></li>
-<li><p>The blue nodes have an unlimited number of incoming and/or outgoing edges.</p></li>
+<li><p>Los nodos azules tienen un número ilimitado de aristas entrantes y/o salientes.</p></li>
 </ul>
 <div class="graphviz"><img src="_images/graphviz-5efe3d7b813da1c75d98039a1a2825ccb5f14744.png" alt="digraph G {
     u, v, w, x, y [shape=circle;style=filled;width=.4;color=deepskyblue];
@@ -292,11 +293,11 @@
 }" class="graphviz" /></div>
 <table class="docutils align-default" style="width: 80">
 <thead>
-<tr class="row-odd"><th class="head"><p>Node</p></th>
-<th class="head"><p>Adjecent nodes</p></th>
+<tr class="row-odd"><th class="head"><p>Nodo</p></th>
+<th class="head"><p>Nodos adyacentes</p></th>
 <th class="head"><p>Número de vértices adyacentes</p></th>
-<th class="head"><p>Number of incoming edges</p></th>
-<th class="head"><p>Number of outgoing edges</p></th>
+<th class="head"><p>Número de aristas entrantes</p></th>
+<th class="head"><p>Número de aristas salientes</p></th>
 </tr>
 </thead>
 <tbody>
@@ -332,10 +333,8 @@
 </tr>
 </tbody>
 </table>
-<p>From above, nodes <span class="math notranslate nohighlight">\(\{a, b, d\}\)</span> are dead ends because the
-number of adjacent vertices is 1. No further checks are needed for those nodes.</p>
-<p>On the following table, nodes <span class="math notranslate nohighlight">\(\{c, e\}\)</span> because the
-even that the number of adjacent vertices is not 1 for</p>
+<p>De arriba, nodes <span class="math notranslate nohighlight">\(\{a, b, d\}\)</span> son callejones sin salida por que el número de vértices adyacentes es 1. No son necesarios los checks para esos nodos.</p>
+<p>En al siguiente tabla, nodos <span class="math notranslate nohighlight">\(\{c, e\}\)</span> por que el par del numero de vértices adyacentes no es 1 para</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(c\)</span></p>
 <ul>
@@ -352,8 +351,7 @@ even that the number of adjacent vertices is not 1 for</p>
 </section>
 <section id="operation-dead-end-contraction">
 <h3>Operación: Contracción sin salida<a class="headerlink" href="#operation-dead-end-contraction" title="Enlace permanente a este encabezado">¶</a></h3>
-<p>The dead end contraction will stop until there are no more dead end nodes.
-For example from the following graph where <span class="math notranslate nohighlight">\(w\)</span> is the <a class="reference internal" href="#dead-end">dead end</a> node:</p>
+<p>La contracción sin salida se detendrá hasta que no haya más nodos sin salida. Por ejemplo, del siguiente grafo donde <span class="math notranslate nohighlight">\(w\)</span> es el nodo <a class="reference internal" href="#dead-end">dead end</a>:</p>
 <div class="graphviz"><img src="_images/graphviz-4fdcd0305dbfbab90073ec9514716ef0ad1e4f76.png" alt="digraph G {
     u, v [shape=circle;style=filled;width=.4;color=deepskyblue];
     w [style=filled; color=green];
@@ -364,8 +362,7 @@ For example from the following graph where <span class="math notranslate nohighl
     G -&gt; u [dir=none, weight=1, penwidth=3];
     u -&gt; v -&gt; w;
 }" class="graphviz" /></div>
-<p>After contracting <span class="math notranslate nohighlight">\(w\)</span>, node <span class="math notranslate nohighlight">\(v\)</span> is now a <a class="reference internal" href="#dead-end">dead end</a> node and is
-contracted:</p>
+<p>Después de contraer <span class="math notranslate nohighlight">\(w\)</span>, el nodo ` <span class="math notranslate nohighlight">\(v\)</span> es ahora un nodo <a class="reference internal" href="#dead-end">dead end</a> y es contraído:</p>
 <div class="graphviz"><img src="_images/graphviz-82174f96e766deeae75a75488fa01f23af7da497.png" alt="digraph G {
     u [shape=circle;style=filled;width=.4;color=deepskyblue];
     v [style=filled; color=green, label=&quot;v{w}&quot;];
@@ -385,7 +382,7 @@ contracted:</p>
     rankdir=LR;
     G -&gt; u [dir=none, weight=1, penwidth=3];
 }" class="graphviz" /></div>
-<p>Node <span class="math notranslate nohighlight">\(u\)</span> has the information of nodes that were contracted.</p>
+<p>El nodo <span class="math notranslate nohighlight">\(u\)</span> tiene la información de los nodos que se contrajeron.</p>
 </section>
 </section>
 <section id="linear-contraction">
@@ -403,7 +400,7 @@ contracted:</p>
 <li><p>La linealidad es simétrica</p></li>
 </ul>
 <section id="linear-vertex-on-undirected-graph">
-<h4>Linear vertex on undirected graph<a class="headerlink" href="#linear-vertex-on-undirected-graph" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4>Vértice lineal en grafo no dirigido<a class="headerlink" href="#linear-vertex-on-undirected-graph" title="Enlace permanente a este encabezado">¶</a></h4>
 <ul class="simple">
 <li><p>Los nodos verdes son <a class="reference internal" href="#linear">lineales</a></p></li>
 <li><p>Los nodos azules tienen un número ilimitado de aristas entrantes y salientes.</p></li>
@@ -421,8 +418,8 @@ contracted:</p>
 }" class="graphviz" /></div>
 <table class="docutils align-default" style="width: 80">
 <thead>
-<tr class="row-odd"><th class="head"><p>Node</p></th>
-<th class="head"><p>Adjecent nodes</p></th>
+<tr class="row-odd"><th class="head"><p>Nodo</p></th>
+<th class="head"><p>Nodos adyacentes</p></th>
 <th class="head"><p>Número de vértices adyacentes</p></th>
 </tr>
 </thead>
@@ -435,14 +432,14 @@ contracted:</p>
 </table>
 </section>
 <section id="linear-vertex-on-directed-graph">
-<h4>Linear vertex on directed graph<a class="headerlink" href="#linear-vertex-on-directed-graph" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4>Vértice lineal en grafo dirigido<a class="headerlink" href="#linear-vertex-on-directed-graph" title="Enlace permanente a este encabezado">¶</a></h4>
 <ul class="simple">
 <li><p>Los nodos verdes son <a class="reference internal" href="#linear">lineales</a></p></li>
 <li><p>Los nodos azules tienen un número ilimitado de aristas entrantes y salientes.</p></li>
-<li><p>The white node is not linear because the linearity is not symetrical.</p>
+<li><p>El nodo blanco no es linero por que la linealidad no es simétrica.</p>
 <ul>
-<li><p>It is possible to go <span class="math notranslate nohighlight">\(y \rightarrow c \rightarrow z\)</span></p></li>
-<li><p>It’s not possible to go <span class="math notranslate nohighlight">\(z \rightarrow c \rightarrow y\)</span></p></li>
+<li><p>Es posible ir a <span class="math notranslate nohighlight">\(y \rightarrow c \rightarrow z\)</span></p></li>
+<li><p>No es posible ir a <span class="math notranslate nohighlight">\(z \rightarrow c \rightarrow y\)</span></p></li>
 </ul>
 </li>
 </ul>
@@ -461,8 +458,8 @@ contracted:</p>
 }" class="graphviz" /></div>
 <table class="docutils align-default" style="width: 80">
 <thead>
-<tr class="row-odd"><th class="head"><p>Node</p></th>
-<th class="head"><p>Adjecent nodes</p></th>
+<tr class="row-odd"><th class="head"><p>Nodo</p></th>
+<th class="head"><p>Nodos adyacentes</p></th>
 <th class="head"><p>Número de vértices adyacentes</p></th>
 <th class="head"><p>Es simétrico?</p></th>
 </tr>
@@ -471,12 +468,12 @@ contracted:</p>
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\(a\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\{u, v\}\)</span></p></td>
 <td><p>2</p></td>
-<td><p>yes</p></td>
+<td><p>sí</p></td>
 </tr>
 <tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(b\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\{w, x\}\)</span></p></td>
 <td><p>2</p></td>
-<td><p>yes</p></td>
+<td><p>sí</p></td>
 </tr>
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\(c\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\{y, z\}\)</span></p></td>
@@ -489,9 +486,7 @@ contracted:</p>
 </section>
 <section id="operation-linear-contraction">
 <h3>Operación: Contracción Lineal<a class="headerlink" href="#operation-linear-contraction" title="Enlace permanente a este encabezado">¶</a></h3>
-<p>The linear contraction will stop when there are no more linear nodes.
-For example from the following graph where <span class="math notranslate nohighlight">\(v\)</span> and <span class="math notranslate nohighlight">\(w\)</span> are <a class="reference internal" href="#linear">linear</a>
-nodes:</p>
+<p>La contracción lineal se detendrá hasta que no hayan más nodos lineales. Por ejemplo, en el siguiente grafo donde ` <span class="math notranslate nohighlight">\(v\)</span> y <span class="math notranslate nohighlight">\(w\)</span> son nodos <a class="reference internal" href="#linear">lineales</a> :</p>
 <div class="graphviz"><img src="_images/graphviz-5d6780661464bc07b07b2af1a5d6b5f8f36ca90a.png" alt="digraph G {
     u, z [shape=circle;style=filled;color=deepskyblue];
     v, w [style=filled; color=green];
@@ -502,9 +497,9 @@ nodes:</p>
     G -&gt; {u, z} [dir=none, weight=1, penwidth=3];
     u -&gt; v -&gt; w -&gt; z;
 }" class="graphviz" /></div>
-<p>Contracting <span class="math notranslate nohighlight">\(w\)</span>,</p>
+<p>Contrayendo <span class="math notranslate nohighlight">\(w\)</span>,</p>
 <ul class="simple">
-<li><p>The vertex <span class="math notranslate nohighlight">\(w\)</span> is removed from the graph</p></li>
+<li><p>El vértice <span class="math notranslate nohighlight">\(w\)</span> se elimina del grafo</p></li>
 <li><p>Los aristas <span class="math notranslate nohighlight">\(v \rightarrow w\)</span> y  <span class="math notranslate nohighlight">\(w \rightarrow z\)</span> fueron eliminados del grafo.</p></li>
 <li><p>Se inserta un nuevo arista <span class="math notranslate nohighlight">\(v \rightarrow z\)</span> y se representa con color rojo.</p></li>
 </ul>
@@ -519,9 +514,9 @@ nodes:</p>
     u -&gt; v;
     v -&gt; z [label=&quot;{w}&quot;;color=red]
 }" class="graphviz" /></div>
-<p>Contracting <span class="math notranslate nohighlight">\(v\)</span>:</p>
+<p>Contrayendo <span class="math notranslate nohighlight">\(v\)</span>:</p>
 <ul class="simple">
-<li><p>The vertex <span class="math notranslate nohighlight">\(v\)</span> is removed from the graph</p></li>
+<li><p>El vértice <span class="math notranslate nohighlight">\(v\)</span> se elimina del grafo</p></li>
 <li><p>Los aristas <span class="math notranslate nohighlight">\(u \rightarrow v\)</span>  y  <span class="math notranslate nohighlight">\(v \rightarrow z\)</span>  son removidos del grafo.</p></li>
 <li><p>Se inserta un nuevo arista <span class="math notranslate nohighlight">\(u \rightarrow z\)</span> y se representa con color rojo.</p></li>
 </ul>
@@ -551,7 +546,7 @@ nodes:</p>
 </div>
 </section>
 <section id="contracting-sample-data">
-<h2>Contracting sample data<a class="headerlink" href="#contracting-sample-data" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Contracción de los datos de muestra<a class="headerlink" href="#contracting-sample-data" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>En esta sección, la creación y el uso de un grafo contraído se mostrarán en el ejemplo.</p>
 <ul class="simple">
 <li><p>Se usa <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> para un grafo no dirigido</p></li>
@@ -561,10 +556,10 @@ nodes:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#construction-of-the-graph-in-the-database" id="id2">Construcción del grafo en la base de datos</a></p>
 <ul>
-<li><p><a class="reference internal" href="#contraction-results" id="id3">Contraction results</a></p></li>
+<li><p><a class="reference internal" href="#contraction-results" id="id3">Resultados de la Contracción</a></p></li>
 <li><p><a class="reference internal" href="#add-additional-columns" id="id4">Añadir columnas adicionales</a></p></li>
 <li><p><a class="reference internal" href="#store-contraction-information" id="id5">Almacenar información de contracción</a></p></li>
-<li><p><a class="reference internal" href="#the-vertex-table-update" id="id6">The vertex table update</a></p></li>
+<li><p><a class="reference internal" href="#the-vertex-table-update" id="id6">Actualización de la tabla de vértices</a></p></li>
 <li><p><a class="reference internal" href="#the-edge-table-update" id="id7">Actialización de la tabla de aristas</a></p></li>
 </ul>
 </li>
@@ -572,7 +567,7 @@ nodes:</p>
 <ul>
 <li><p><a class="reference internal" href="#vertices-that-belong-to-the-contracted-graph" id="id9">Vértices que pertenecen al grafo contraído.</a></p></li>
 <li><p><a class="reference internal" href="#edges-that-belong-to-the-contracted-graph" id="id10">Aristas que pertenecen al grafo contraído.</a></p></li>
-<li><p><a class="reference internal" href="#contracted-graph" id="id11">Contracted graph</a></p></li>
+<li><p><a class="reference internal" href="#contracted-graph" id="id11">El grafo contraído</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#using-the-contracted-graph" id="id12">Usando el grafo contraído</a></p>
@@ -617,7 +612,7 @@ nodes:</p>
 <p>El grafo original:</p>
 <a class="reference internal image-reference" href="_images/Fig6-undirected.png"><img alt="_images/Fig6-undirected.png" src="_images/Fig6-undirected.png" style="width: 241.0px; height: 217.5px;" /></a>
 <section id="contraction-results">
-<h4><a class="toc-backref" href="#id3" role="doc-backlink">Contraction results</a><a class="headerlink" href="#contraction-results" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id3" role="doc-backlink">Resultados de la Contracción</a><a class="headerlink" href="#contraction-results" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Los resultados no representan al grafo contraído. Representan los cambios realizados en el grafo después de aplicar el algoritmo de contracción.</p>
 <p>Observe que los vértices, por ejemplo, <span class="math notranslate nohighlight">\(6\)</span> , no aparecen en los resultados porque no se vieron afectados por el algoritmo de contracción.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contraction</span><span class="p">(</span>
@@ -656,7 +651,7 @@ nodes:</p>
 <td><p>El conjunto de vértices que pertenecen al vértice/arista</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">is_contracted</span></code></p></td>
-<td><p>On the vertex table</p>
+<td><p>En la tabla de vértices</p>
 <ul class="simple">
 <li><p>En caso de “”true”” se contrae el vértice, no forma parte del grafo contraído.</p></li>
 <li><p>En caso de “”false”” el vértice no se contrae, su parte del grafo contraído.</p></li>
@@ -696,16 +691,15 @@ nodes:</p>
 </div>
 </section>
 <section id="the-vertex-table-update">
-<h4><a class="toc-backref" href="#id6" role="doc-backlink">The vertex table update</a><a class="headerlink" href="#the-vertex-table-update" title="Enlace permanente a este encabezado">¶</a></h4>
-<p>Use <code class="docutils literal notranslate"><span class="pre">is_contracted</span></code> column to indicate the vertices that are contracted.</p>
+<h4><a class="toc-backref" href="#id6" role="doc-backlink">Actualización de la tabla de vértices</a><a class="headerlink" href="#the-vertex-table-update" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>Usar la columna <code class="docutils literal notranslate"><span class="pre">is_contracted</span></code> para indicar los vértices contraídos.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span>
 <span class="n">SET</span> <span class="n">is_contracted</span> <span class="o">=</span> <span class="n">true</span>
 <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span>  <span class="n">unnest</span><span class="p">(</span><span class="n">contracted_vertices</span><span class="p">)</span> <span class="n">FROM</span>  <span class="n">contraction_results</span><span class="p">);</span>
 <span class="n">UPDATE</span> <span class="mi">10</span>
 </pre></div>
 </div>
-<p>Fill <code class="docutils literal notranslate"><span class="pre">contracted_vertices</span></code> with the information from the results tha belong to
-the vertices.</p>
+<p>Lllena <code class="docutils literal notranslate"><span class="pre">contracted_vertices</span></code> con la información de los resultados que pertenecen a los vértices.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span>
 <span class="n">SET</span> <span class="n">contracted_vertices</span> <span class="o">=</span> <span class="n">contraction_results</span><span class="o">.</span><span class="n">contracted_vertices</span>
 <span class="n">FROM</span> <span class="n">contraction_results</span>
@@ -836,7 +830,7 @@ the vertices.</p>
 </div>
 </section>
 <section id="contracted-graph">
-<h4><a class="toc-backref" href="#id11" role="doc-backlink">Contracted graph</a><a class="headerlink" href="#contracted-graph" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id11" role="doc-backlink">El grafo contraído</a><a class="headerlink" href="#contracted-graph" title="Enlace permanente a este encabezado">¶</a></h4>
 <a class="reference internal image-reference" href="_images/newgraph.png"><img alt="_images/newgraph.png" src="_images/newgraph.png" style="width: 184.25px; height: 193.75px;" /></a>
 </section>
 </section>
@@ -1125,8 +1119,8 @@ the vertices.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0.<br/>
-      Actualizado por última vez en sept 23, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
+      Actualizado por última vez en sept 29, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.2.<br/>
     </p>
   </div>
 </footer>

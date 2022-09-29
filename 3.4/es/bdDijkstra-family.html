@@ -15,6 +15,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -81,7 +82,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Guía de migración</a></li>
 </ul>
 </ul>
 </li>
@@ -155,17 +156,15 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_bdDijkstra.html"><span class="doc">pgr_bdDijkstra</span></a> - Algoritmo Dijkstra bidireccional para las rutas más cortas.</p></li>
 <li><p><a class="reference internal" href="pgr_bdDijkstraCost.html"><span class="doc">pgr_bdDijkstraCost</span></a> - Dijkstra bidireccional para calcular el costo de las rutas más cortas</p></li>
-<li><p><a class="reference internal" href="pgr_bdDijkstraCostMatrix.html"><span class="doc">pgr_bdDijkstraCostMatrix</span></a> - Algoritmo Dijkstra bidireccional para crear una matriz de costos de las rutas más cortas.</p></li>
+<li><p><a class="reference internal" href="pgr_bdDijkstraCostMatrix.html"><span class="doc">pgr_bdDijkstraCostMatrix</span></a> - Algoritmo Dijkstra bidireccional para crear una matriz de costes de las rutas más cortas.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
 <section id="synopsis">
 <h2>Sinopsis<a class="headerlink" href="#synopsis" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>Based on Dijkstra’s algorithm, the bidirectional search finds a shortest path
-a starting vertex to an ending vertex.</p>
-<p>It runs two simultaneous searches: one forward from the source, and one backward
-from the target, stopping when the two meet in the middle.</p>
-<p>This implementation can be used with a directed graph and an undirected graph.</p>
+<p>Basado en el algoritmo de Dijkstra, la búsqueda bidireccional encuentra el camino más corto entre el vértice de inicio al vértice final.</p>
+<p>Corre dos búsquedas simultaneas: una adelante de la fuente y otra atrás del objetivo, parándose cuando los dos coinciden en medio.</p>
+<p>Esta implementación se puede usar para los grafos dirigidos y no dirigidos.</p>
 </section>
 <section id="characteristics">
 <h2>Características<a class="headerlink" href="#characteristics" title="Enlace permanente a este encabezado">¶</a></h2>
@@ -223,8 +222,8 @@ from the target, stopping when the two meet in the middle.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0.<br/>
-      Actualizado por última vez en sept 23, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
+      Actualizado por última vez en sept 29, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.2.<br/>
     </p>
   </div>
 </footer>

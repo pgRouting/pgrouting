@@ -15,6 +15,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -81,7 +82,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Guía de migración</a></li>
 </ul>
 </ul>
 </li>
@@ -158,14 +159,14 @@
 <section id="flow-family-of-functions">
 <h1>Flow - Familia de funciones<a class="headerlink" href="#flow-family-of-functions" title="Enlace permanente a este encabezado">¶</a></h1>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> - Solo el flujo máximo se calcula usando los algoritmos Push y Relabel.</p></li>
-<li><p><a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a> - Algoritmos Boykov y Kolmogorov con detalles del flujo en aristas.</p></li>
-<li><p><a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a> - Algoritmos de Edmonds y Karp con detalles de flujo con detalles del flujo en aristas.</p></li>
-<li><p><a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a> - Algoritmos Push y Relabel con detalles del flujo en aristas.</p></li>
+<li><p><a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> - Solo el flujo máximo se calcula usando el algoritmo empuja y reetiquetado.</p></li>
+<li><p><a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a> - Algoritmo Boykov y Kolmogorov con detalles del flujo en aristas.</p></li>
+<li><p><a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a> - Algoritmo Edmonds y Karp con detalles de flujo del flujo en aristas.</p></li>
+<li><p><a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a> - Algoritmo empuja y reetiquetado con detalles del flujo en aristas.</p></li>
 <li><p>Aplicaciones</p>
 <ul>
-<li><p><a class="reference internal" href="pgr_edgeDisjointPaths.html"><span class="doc">pgr_edgeDisjointPaths</span></a> - Calcula rutas de separación de aristas entre dos grupos de vértices.</p></li>
-<li><p><a class="reference internal" href="pgr_maxCardinalityMatch.html"><span class="doc">pgr_maxCardinalityMatch</span></a> - Calcula una cardinalidad máxima coincidiendo dentro de un grafo.</p></li>
+<li><p><a class="reference internal" href="pgr_edgeDisjointPaths.html"><span class="doc">pgr_edgeDisjointPaths</span></a> - Calcula rutas de aristas disjuntas entre dos grupos de vértices.</p></li>
+<li><p><a class="reference internal" href="pgr_maxCardinalityMatch.html"><span class="doc">pgr_maxCardinalityMatch</span></a> - Calcular una cardinalidad máxima de coincidencia dentro de un grafo.</p></li>
 </ul>
 </li>
 </ul>
@@ -231,9 +232,7 @@
 </ul>
 </li>
 </ul>
-<p><a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a>  is the  maximum Flow and that maximum is guaranteed to be
-the same on the functions <a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a>, <a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a>,
-<a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a>, but the actual flow through each edge may vary.</p>
+<p><a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> es el Flujo máximo y este máximo tiene garantía de ser el mismo en las funciones <a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a>, <a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a>, <a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a>, pero el flujo actual para cada arista puede variar.</p>
 </section>
 <section id="inner-queries">
 <h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Enlace permanente a este encabezado">¶</a></h2>
@@ -300,7 +299,7 @@ the same on the functions <a class="reference internal" href="pgr_pushRelabel.ht
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
-<p class="rubric">Capacity-Cost edges</p>
+<p class="rubric">Aristas Capacidad-Costo</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_maxFlowMinCost.html"><span class="doc">pgr_maxFlowMinCost - Experimental</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_maxFlowMinCost_Cost.html"><span class="doc">pgr_maxFlowMinCost_Cost - Experimental</span></a></p></li>
@@ -374,7 +373,7 @@ the same on the functions <a class="reference internal" href="pgr_pushRelabel.ht
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
-<p class="rubric">Cost edges</p>
+<p class="rubric">Aristas de costo</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_edgeDisjointPaths.html"><span class="doc">pgr_edgeDisjointPaths</span></a></p></li>
 </ul>
@@ -469,7 +468,7 @@ the same on the functions <a class="reference internal" href="pgr_pushRelabel.ht
 </section>
 <section id="result-columns">
 <h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>Used in</p>
+<p>Usado en</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a></p></li>
@@ -621,8 +620,8 @@ the same on the functions <a class="reference internal" href="pgr_pushRelabel.ht
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0.<br/>
-      Actualizado por última vez en sept 23, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
+      Actualizado por última vez en sept 29, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.2.<br/>
     </p>
   </div>
 </footer>

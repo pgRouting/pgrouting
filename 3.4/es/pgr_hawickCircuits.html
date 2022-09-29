@@ -15,6 +15,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -81,7 +82,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Guía de migración</a></li>
 </ul>
 </ul>
 </li>
@@ -222,7 +223,7 @@ have more use cases when you want to count the no. of circuits.Maybe in future, 
 implemenent this variation.</p>
 <p><strong>Las características principales son:</strong></p>
 <ul class="simple">
-<li><p>The algorithm implementation works only for directed graph</p></li>
+<li><p>La implementación del algoritmo sirve solo para grafos dirigidos</p></li>
 <li><p>It is a variation of Johnson’s algorithm for circuit enumeration.</p></li>
 <li><p>The algorithm outputs the distinct circuits present in the graph.</p></li>
 <li><p>Time Complexity: <span class="math notranslate nohighlight">\(O((V + E) (c + 1))\)</span></p>
@@ -249,7 +250,7 @@ implemenent this variation.</p>
 </div>
 <dl class="field-list simple" id="index-0">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Circuits present in the pgRouting <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p>
+<dd class="field-odd"><p>Circuitos dentro de los <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> de pgRouting</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_hawickCircuits</span><span class="p">(</span>
@@ -367,7 +368,7 @@ implemenent this variation.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td></td>
 <td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> descritas más adelante.</p></td>
@@ -474,7 +475,7 @@ implemenent this variation.</p>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>Relative postion in the path. Has value <code class="docutils literal notranslate"><span class="pre">0</span></code> for beginning of the path</p></td>
+<td><p>Posición relativa en la camino. Tiene el valor <code class="docutils literal notranslate"><span class="pre">0</span></code> para el inicio de la ruta</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -530,8 +531,8 @@ implemenent this variation.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0.<br/>
-      Actualizado por última vez en sept 23, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
+      Actualizado por última vez en sept 29, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.2.<br/>
     </p>
   </div>
 </footer>

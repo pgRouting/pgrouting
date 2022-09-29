@@ -15,6 +15,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -81,7 +82,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Guía de migración</a></li>
 </ul>
 </ul>
 </li>
@@ -174,12 +175,12 @@
 <ul class="simple">
 <li><p>Versión 3.4.0</p>
 <ul>
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> on the inner query</p></li>
-<li><p>Results are ordered</p></li>
-<li><p>Works for undirected graphs.</p></li>
-<li><p>New signature</p>
+<li><p>Usa <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> en la consulta interna</p></li>
+<li><p>Los resultados son ordenados</p></li>
+<li><p>Funciona para grafos no dirigidos.</p></li>
+<li><p>Nueva firma</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch(text)</span></code> returns only <code class="docutils literal notranslate"><span class="pre">edge</span></code> column.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch(text)</span></code> regresa solamente la columna <code class="docutils literal notranslate"><span class="pre">edge</span></code>.</p></li>
 </ul>
 </li>
 <li><p>Deprecated signature</p>
@@ -237,7 +238,7 @@
 <div class="line">pgr_maxCardinalityMatch(<a class="reference internal" href="#edges-sql">Edges SQL</a>)</div>
 </div>
 <div class="line-block">
-<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(edge)</span></code></div>
+<div class="line">REGRESA CONJUNTO DE <code class="docutils literal notranslate"><span class="pre">(edge)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -273,7 +274,7 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> descritas más adelante.</p></td>
 </tr>
@@ -323,8 +324,7 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>FLOTANTES</strong></p></td>
 <td><p>-1</p></td>
-<td><p>A positive value represents the existence of the edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>,
-<code class="docutils literal notranslate"><span class="pre">source</span></code>)</p></td>
+<td><p>Un valor positivo representa la existencia de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p></td>
 </tr>
 </tbody>
 </table>
@@ -360,7 +360,7 @@
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones</span></a></p></li>
-<li><p><a class="reference internal" href="migration.html"><span class="doc">Migration guide</span></a></p></li>
+<li><p><a class="reference internal" href="migration.html"><span class="doc">Guía de migración</span></a></p></li>
 <li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/maximum_matching.html">https://www.boost.org/libs/graph/doc/maximum_matching.html</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Matching_%28graph_theory%29">https://en.wikipedia.org/wiki/Matching_%28graph_theory%29</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Ackermann_function">https://en.wikipedia.org/wiki/Ackermann_function</a></p></li>
@@ -386,8 +386,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0.<br/>
-      Actualizado por última vez en sept 23, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
+      Actualizado por última vez en sept 29, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.2.<br/>
     </p>
   </div>
 </footer>

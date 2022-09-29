@@ -15,6 +15,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -81,7 +82,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Guía de migración</a></li>
 </ul>
 </ul>
 </li>
@@ -105,12 +106,12 @@
 </li>
 <li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
 <li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
-<li><a class="reference internal" href="#points-sql">SQL puntos</a></li>
+<li><a class="reference internal" href="#points-sql">SQL de puntos</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
-<li><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql">Usa <span class="xref std std-doc">pgr_findCloseEdges</span> en el SQL puntos.</a></li>
+<li><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql">Usar <span class="xref std std-doc">pgr_findCloseEdges</span> en el SQL de puntos.</a></li>
 <li><a class="reference internal" href="#use-with-pgr-tsp">Usar con <span class="xref std std-doc">pgr_TSP</span>.</a></li>
 </ul>
 </li>
@@ -247,7 +248,7 @@
 <li><p>El costo agregado de <cite>(u, v)</cite> es el mismo que para <cite>(v, u)</cite>.</p></li>
 </ul>
 </li>
-<li><p>Se omite cualquier valor duplicado en <strong>ids de veértices</strong>.</p></li>
+<li><p>Se omite cualquier valor duplicado en las <strong>salidas</strong>.</p></li>
 <li><p>Los valores regresados se ordenan:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> ascendente</p></li>
@@ -266,7 +267,7 @@
 <div class="line"><strong>options:</strong>  <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
 </div>
 <div class="line-block">
-<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -317,15 +318,15 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> como se describe a continuación</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">SQL puntos</a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">SQL de puntos</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#points-sql">SQL puntos</a> como se describe abajo</p></td>
+<td><p><a class="reference internal" href="#points-sql">SQL de puntos</a> como se describe abajo</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>vid salidas</strong></p></td>
+<tr class="row-even"><td><p><strong>salidas</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
 <td><p>Arreglo de identificadores de vértices iniciales.</p></td>
 </tr>
@@ -441,7 +442,7 @@
 </dl>
 </section>
 <section id="points-sql">
-<h3>SQL puntos<a class="headerlink" href="#points-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>SQL de puntos<a class="headerlink" href="#points-sql" title="Enlace permanente a este encabezado">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 15.6%" />
@@ -504,7 +505,7 @@
 </section>
 <section id="result-columns">
 <h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>Set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
+<p>Conjunto de <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14.0%" />
@@ -541,12 +542,12 @@
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlace permanente a este encabezado">¶</a></h2>
 <nav class="contents local" id="contenido">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id2">Usa <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> en el SQL puntos.</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id2">Usar <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> en el SQL de puntos.</a></p></li>
 <li><p><a class="reference internal" href="#use-with-pgr-tsp" id="id3">Usar con <a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a>.</a></p></li>
 </ul>
 </nav>
 <section id="use-pgr-findcloseedges-in-the-points-sql">
-<h3>Usa <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> en el <a class="reference internal" href="#points-sql">SQL puntos</a>.<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Usar <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> en el <a class="reference internal" href="#points-sql">SQL de puntos</a>.<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Encontrar la matriz de costos de las rutas desde el vértice <span class="math notranslate nohighlight">\(1\)</span> y las dos ubicaciones más cercanas en el grafo al punto <cite>(2.9, 1.8)</cite>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsCostMatrix(
   $e$ SELECT * FROM edges $e$,
@@ -634,8 +635,8 @@ HINT:  Ignoring annaeling parameters
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0.<br/>
-      Actualizado por última vez en sept 23, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
+      Actualizado por última vez en sept 29, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.2.<br/>
     </p>
   </div>
 </footer>

@@ -15,6 +15,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/translations.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
@@ -80,7 +81,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Guía de migración</a></li>
 </ul>
 </ul>
 </li>
@@ -158,7 +159,7 @@
 </ul>
 <section id="installation">
 <h1>Instalación<a class="headerlink" href="#installation" title="Enlace permanente a este encabezado">¶</a></h1>
-<p class="rubric">Contenido</p>
+<p class="rubric">Tabla de Contenido</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#install-short"><span class="std std-ref">Versión corta</span></a></p></li>
 <li><p><a class="reference internal" href="#install-get-sources"><span class="std std-ref">Obtener las fuentes</span></a></p></li>
@@ -200,8 +201,7 @@ be found in <a class="reference external" href="https://github.com/pgRouting/pgr
 <p class="rubric">Wget</p>
 <p>Para descargar esta versión:</p>
 <pre class="literal-block">wget -O pgrouting-3.4.0.tar.gz    <a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/v3.4.0.tar.gz">https://github.com/pgRouting/pgrouting/archive/v3.4.0.tar.gz</a></pre>
-<p>Go to <a class="reference internal" href="#install-short"><span class="std std-ref">Versión corta</span></a> for more instructions on extracting tar ball and
-compiling pgRouting.</p>
+<p>Ir a <a class="reference internal" href="#install-short"><span class="std std-ref">Versión corta</span></a> para más instrucciones sobre la extraccion de la bola tar y la compilación de pgRouting.</p>
 <p class="rubric">git</p>
 <p>Para descargar el repositorio</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pgRouting</span><span class="o">/</span><span class="n">pgrouting</span><span class="o">.</span><span class="n">git</span>
@@ -229,8 +229,7 @@ pgRouting in the database.</p>
 </pre></div>
 </div>
 <p class="rubric">Actualización de la base de datos</p>
-<p>To upgrade pgRouting in the database to version 3.4.0 use the
-following command:</p>
+<p>Para actualizar pgRouting en la base de datos a la versión 3.4.0 utilice el siguiente comando:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="n">UPDATE</span> <span class="n">TO</span> <span class="s2">&quot;3.4.0&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -244,8 +243,7 @@ following command:</p>
 <li><p>C and C++0x compilers</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Compiling with Boost 1.56 up to Boost 1.74 requires C++ Compiler with
-C++03 or C++11 standard support</p></li>
+<li><p>Compilar con Boost 1.56 hasta Boost 1.74 requiere un compilador C++ con soporte estandard para C++03 o C++11</p></li>
 <li><p>Compiling with Boost 1.75 requires C++ Compiler with C++14 standard
 support</p></li>
 </ul>
@@ -282,7 +280,7 @@ support</p></li>
 <span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">postgresql</span><span class="o">-</span><span class="mi">14</span><span class="o">-</span><span class="n">postgis</span>
 </pre></div>
 </div>
-<p class="rubric">Configuring PostgreSQL</p>
+<p class="rubric">Configurar PostgreSQL</p>
 <p>Entering psql console</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">postgresql</span><span class="o">.</span><span class="n">service</span>
 <span class="n">sudo</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span><span class="n">u</span> <span class="n">postgres</span>
@@ -374,8 +372,7 @@ $ cmake -L ..
 </pre></div>
 </div>
 <p class="rubric">Configurar la documentación</p>
-<p>Most of the effort of the documentation has been on the HTML files.
-Some variables for building documentation:</p>
+<p>La mayor parte del esfuerzo de la documentación ha estado en los archivos HTML. Algunas variables para construir la documentación:</p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Variable</p></th>
@@ -417,7 +414,7 @@ pgRouting</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Most of the effort of the documentation has been on the html files.</p>
+<p>La mayor parte del esfuerzo de la documentación ha estado en los archivos html.</p>
 </div>
 </section>
 </section>
@@ -458,7 +455,7 @@ code:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">build</span>
 </pre></div>
 </div>
-<p>and start the build process as mentioned previously.</p>
+<p>e iniciar el proceso de compilación como se mencionó anteriormente.</p>
 </section>
 <section id="testing">
 <span id="install-testing"></span><h2>Pruebas<a class="headerlink" href="#testing" title="Enlace permanente a este encabezado">¶</a></h2>
@@ -494,8 +491,8 @@ code:</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0.<br/>
-      Actualizado por última vez en sept 23, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
+      Actualizado por última vez en sept 29, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.2.<br/>
     </p>
   </div>
 </footer>

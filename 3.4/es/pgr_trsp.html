@@ -15,6 +15,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -81,7 +82,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Guía de migración</a></li>
 </ul>
 </ul>
 </li>
@@ -218,7 +219,7 @@
 </li>
 <li><p>Versión 2.1.0</p>
 <ul>
-<li><p>New prototypes:</p>
+<li><p>Nuevos prototipos:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></p></li>
@@ -261,7 +262,7 @@ real world navigable road networks.</p>
 <div class="line">pgr_trsp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#restrictions-sql">Restrictions SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 <div class="line">pgr_trsp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#restrictions-sql">Restrictions SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 <div class="line">pgr_trsp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#restrictions-sql">Restrictions SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
-<div class="line">pgr_trsp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#restrictions-sql">Restrictions SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_trsp(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#combinations-sql">SQL de restricciones</a>, <a class="reference internal" href="#restrictions-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
 <div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
@@ -422,7 +423,7 @@ undirected graph.</p>
 <span id="index-4"></span><h3>Combinaciones<a class="headerlink" href="#combinations" title="Enlace permanente a este encabezado">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<p>pgr_trsp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#restrictions-sql">Restrictions SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
+<p>pgr_trsp(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#combinations-sql">SQL de restricciones</a>, <a class="reference internal" href="#restrictions-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
 <div class="line-block">
 <div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
@@ -430,7 +431,7 @@ undirected graph.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Using a combinations table on an undirected graph.</p>
+<dd class="field-odd"><p>Usando una tabla de combinaciones en un grafo no dirigido.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
@@ -485,7 +486,7 @@ undirected graph.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p>Consulta SQL como se describe.</p></td>
 </tr>
@@ -493,24 +494,24 @@ undirected graph.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p>Consulta SQL como se describe.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#combinations-sql">SQL de combinaciones</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a> como se describe a abajo</p></td>
+<td><p><a class="reference internal" href="#combinations-sql">SQL de combinaciones</a> como se describe a abajo</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>vid de salida</strong></p></td>
+<tr class="row-odd"><td><p><strong>salida</strong></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
 <td><p>Identificador del vértice de salida.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>vid salidas</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ANY-INTEGER</strong>]</p></td>
+<tr class="row-even"><td><p><strong>salidas</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ENTEROS</strong>]</p></td>
 <td><p>Arreglo de identificadores de vértices destino.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>vid destino</strong></p></td>
+<tr class="row-odd"><td><p><strong>destino</strong></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
 <td><p>Identificador del vértice de salida.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>vids destinos</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ANY-INTEGER</strong>]</p></td>
+<tr class="row-even"><td><p><strong>destinos</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ENTEROS</strong>]</p></td>
 <td><p>Arreglo de identificadores de vértices destino.</p></td>
 </tr>
 </tbody>
@@ -621,7 +622,7 @@ undirected graph.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ANY-INTEGER</strong>]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ENTEROS</strong>]</p></td>
 <td><p>Secuencia de identificadores de aristas que forman un camino que no se permite tomar. - Arreglos vacios o <code class="docutils literal notranslate"><span class="pre">NULL</span></code> son ignorados. - Arreglos que tienen <code class="docutils literal notranslate"><span class="pre">NULL</span></code> arrojan una excepción.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Cost</span></code></p></td>
@@ -737,7 +738,7 @@ undirected graph.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="TRSP-family.html"><span class="doc">TRSP - Familia de funciones</span></a></p></li>
 <li><p><a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_trsp.html">Deprecated documentation</a></p></li>
-<li><p><a class="reference internal" href="migration.html"><span class="doc">Migration guide</span></a></p></li>
+<li><p><a class="reference internal" href="migration.html"><span class="doc">Guía de migración</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
@@ -761,8 +762,8 @@ undirected graph.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0.<br/>
-      Actualizado por última vez en sept 23, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
+      Actualizado por última vez en sept 29, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.2.<br/>
     </p>
   </div>
 </footer>
