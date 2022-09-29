@@ -12,6 +12,17 @@ on:
       - '.github/workflows/update-locale.yml'
       - 'doc/**'
 
+    branches-ignore:
+      - 'gh-pages'
+
+  pull_request:
+    paths:
+      - '.github/workflows/update-locale.yml'
+      - 'doc/**'
+
+    branches-ignore:
+      - 'gh-pages'
+
 permissions:
   contents: read
 
@@ -19,7 +30,7 @@ jobs:
   update-locale:
     permissions:
       contents: write  # for Git to git push
-    name: Update Locale and Website
+    name: Update Locale
     runs-on: ubuntu-latest
 
     strategy:
@@ -44,7 +55,6 @@ jobs:
       - name: Extract branch name and commit hash
         run: |
           branch=${GITHUB_REF#refs/heads/}
-          echo "BRANCH=$branch" >> $GITHUB_ENV
           git_hash=$(git rev-parse --short "$GITHUB_SHA")
           echo "GIT_HASH=$git_hash" >> $GITHUB_ENV
 
@@ -89,5 +99,4 @@ jobs:
           # Add the files, commit and push
           git diff --staged --quiet || git commit -m "Update locale: commit ${{ env.GIT_HASH }}"
           git restore .  # Remove the unstaged changes before rebasing
-          git rebase "origin/${{ env.BRANCH }}"
-          git push "origin ${{ env.BRANCH }}"
+          git push

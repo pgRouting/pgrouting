@@ -12,6 +12,7 @@ DIR=$(git rev-parse --show-toplevel)
 
 pushd "${DIR}" > /dev/null || exit 1
 
+mkdir -p build
 pushd build > /dev/null || exit 1
 cmake -DWITH_DOC=ON -DCMAKE_BUILD_TYPE=Release -DLOCALE=ON ..
 
