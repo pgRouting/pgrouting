@@ -19627,7 +19627,3 @@ msgid "Advanced Documentation"
 msgstr ""
 
 #, fuzzy
-#~ msgid ""
-#~ "pgr_binaryBreadthFirstSearch(`Edges SQL`_, **Combinations SQL**, "
-#~ "[``directed``])"
-#~ msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
