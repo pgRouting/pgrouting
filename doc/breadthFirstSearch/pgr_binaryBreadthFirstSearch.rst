@@ -94,7 +94,7 @@ Signatures
    | pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**, **end vids**, [``directed``])
    | pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vid**, [``directed``])
    | pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vids**, [``directed``])
-   | pgr_binaryBreadthFirstSearch(`Edges SQL`_, **Combinations SQL**, [``directed``])
+   | pgr_binaryBreadthFirstSearch(`Edges SQL`_, `Combinations SQL`_, [``directed``])
 
    | RETURNS SET OF |old-generic-result|
    | OR EMPTY SET

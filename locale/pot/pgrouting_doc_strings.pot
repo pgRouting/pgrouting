@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-23 16:50+0000\n"
+"POT-Creation-Date: 2022-09-29 02:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3727,7 +3727,7 @@ msgstr ""
 msgid "By aggregation of the incoming flow to the targets"
 msgstr ""
 
-msgid ":doc:`pgr_maxFlow`  is the  maximum Flow and that maximum is guaranteed to be the same on the functions :doc:`pgr_pushRelabel`, :doc:`pgr_edmondsKarp`, :doc:`pgr_boykovKolmogorov`, but the actual flow through each edge may vary."
+msgid ":doc:`pgr_maxFlow` is the maximum Flow and that maximum is guaranteed to be the same on the functions :doc:`pgr_pushRelabel`, :doc:`pgr_edmondsKarp`, :doc:`pgr_boykovKolmogorov`, but the actual flow through each edge may vary."
 msgstr ""
 
 msgid "Capacity edges"
@@ -7666,13 +7666,10 @@ msgstr ""
 msgid "pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vids**, [``directed``])"
 msgstr ""
 
-msgid "pgr_binaryBreadthFirstSearch(`Edges SQL`_, **Combinations SQL**, [``directed``])"
+msgid "pgr_binaryBreadthFirstSearch(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
 
 msgid "**Note:** Using the :doc:`sampledata` Network as all weights are same (i.e :math:`1``)"
-msgstr ""
-
-msgid "pgr_binaryBreadthFirstSearch(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
 
 msgid "Optional Parameters"
@@ -8600,9 +8597,6 @@ msgid "From vertices :math:`\\{5, 10\\}` to vertex :math:`11`"
 msgstr ""
 
 msgid "From vertices :math:`\\{5, 15\\}` to vertices :math:`\\{11, 17\\}` on an **undirected** graph"
-msgstr ""
-
-msgid "pgr_dagShortestPath(`Edges SQL`_, Combinations)"
 msgstr ""
 
 msgid "Resturn Columns"
@@ -9730,21 +9724,6 @@ msgstr ""
 msgid "pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
 
-msgid "pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vid**, [``directed``]);"
-msgstr ""
-
-msgid "pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vids**, [``directed``]);"
-msgstr ""
-
-msgid "pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vid**, [``directed``]);"
-msgstr ""
-
-msgid "pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vids**, [``directed``]);"
-msgstr ""
-
-msgid "pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_, [``directed``]);"
-msgstr ""
-
 msgid "https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm"
 msgstr ""
 
@@ -10270,7 +10249,7 @@ msgstr ""
 msgid "The Floyd-Warshall algorithm, also known as Floyd's algorithm, is a good choice to calculate the sum of the costs of the shortest path for each pair of nodes in the graph, for *dense graphs*. We use Boost's implementation which runs in :math:`\\Theta(V^3)` time,"
 msgstr ""
 
-msgid "pgr floydWarshall(`Edges SQL`_, [``directed``])"
+msgid "pgr_floydWarshall(`Edges SQL`_, [``directed``])"
 msgstr ""
 
 msgid "For a directed subgraph with edges :math:`\\{1, 2, 3, 4\\}`."
@@ -12658,19 +12637,19 @@ msgstr ""
 msgid "Running time: :math:`O(| start\\_vids | * (V \\log V + E))`"
 msgstr ""
 
-msgid "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vid**, **end vid**, **[options**])"
+msgid "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vid**, **end vid**, [**options**])"
 msgstr ""
 
-msgid "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vid**, **end vids**, **[options**])"
+msgid "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vid**, **end vids**, [**options**])"
 msgstr ""
 
-msgid "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vids**, **end vid**, **[options**])"
+msgid "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vids**, **end vid**, [**options**])"
 msgstr ""
 
-msgid "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vids**, **end vids**, **[options**])"
+msgid "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vids**, **end vids**, [**options**])"
 msgstr ""
 
-msgid "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, `Combinations SQL`_, **[options**])"
+msgid "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, `Combinations SQL`_, [**options**])"
 msgstr ""
 
 msgid "**options:**  ``[directed, driving_side]``"
@@ -12685,19 +12664,19 @@ msgstr ""
 msgid "From point :math:`1` to vertex :math:`10` with defaults"
 msgstr ""
 
-msgid "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, **[options**])"
+msgid "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, [**options**])"
 msgstr ""
 
-msgid "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, **[options**])"
+msgid "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, [**options**])"
 msgstr ""
 
-msgid "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, **[options**])"
+msgid "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, [**options**])"
 msgstr ""
 
 msgid "From point :math:`15` and vertex :math:`6`  to point :math:`3` and vertex :math:`1`"
 msgstr ""
 
-msgid "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **[options**])"
+msgid "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, [**options**])"
 msgstr ""
 
 msgid "Identifier of the starting vertex or point."
@@ -12742,7 +12721,7 @@ msgstr ""
 msgid "``pgr_withPointsCostMatrix`` - Calculates a cost matrix using :doc:`pgr_withPoints`."
 msgstr ""
 
-msgid "pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, **[options**])"
+msgid "pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, [**options**])"
 msgstr ""
 
 msgid "Cost matrix for points :math:`\\{1, 6\\}` and vertices :math:`\\{10, 11\\}` on an **undirected** graph"

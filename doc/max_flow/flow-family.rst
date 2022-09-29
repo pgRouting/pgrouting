@@ -101,7 +101,7 @@ Flow Functions General Information
 .. characteristics_end
 
 
-:doc:`pgr_maxFlow`  is the  maximum Flow and that maximum is guaranteed to be
+:doc:`pgr_maxFlow` is the maximum Flow and that maximum is guaranteed to be
 the same on the functions :doc:`pgr_pushRelabel`, :doc:`pgr_edmondsKarp`,
 :doc:`pgr_boykovKolmogorov`, but the actual flow through each edge may vary.
 
