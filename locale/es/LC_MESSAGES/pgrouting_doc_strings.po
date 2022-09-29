@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-29 02:23+0000\n"
 "PO-Revision-Date: 2022-09-29 16:37+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
 "Language: es\n"
@@ -5566,75 +5566,77 @@ msgid "``target_id``"
 msgstr "``target_id``"
 
 msgid "Is the last edge of the forbidden path."
-msgstr ""
+msgstr "Es la última arista del camino prohibido."
 
 msgid "Is of type ``INTEGER``."
-msgstr ""
+msgstr "Es de tipo de ``INTEGER``."
 
 msgid "``to_cost``"
-msgstr ""
+msgstr "``to_cost``"
 
 msgid "Is of type ``FLOAT``."
-msgstr ""
+msgstr "Es de tipo ``FLOAT``."
 
 msgid "Creation of the old restrictions table"
-msgstr ""
+msgstr "Creación de la vieja table de restricciones"
 
 msgid "Old restrictions fill up"
-msgstr ""
+msgstr "Las viejas restricciones se llenan"
 
 msgid "Old restrictions contents"
-msgstr ""
+msgstr "Contenido de viejas restricciones"
 
 msgid ""
 "The restriction with ``rid = 2`` is representing :math:`3 \\rightarrow 5 "
 "\\rightarrow9`"
 msgstr ""
+"La restricción con ``rid = 2`` representa :math:`3 \\rightarrow 5 "
+"\\rightarrow9`"
 
 msgid ":math:`3\\rightarrow5`"
-msgstr ""
+msgstr ":math:`3\\rightarrow5`"
 
 msgid "is on column ``via_path`` in reverse order"
-msgstr ""
+msgstr "esta en la columna ``via_path`` en orden reverso"
 
 msgid "is of type ``TEXT``"
-msgstr ""
+msgstr "es de tipo ``TEXT``"
 
 msgid ":math:`9`"
-msgstr ""
+msgstr ":math:`9`"
 
 msgid "is on column ``target_id``"
-msgstr ""
+msgstr "está en la columna ``target_id``"
 
 msgid "is of type ``INTEGER``"
-msgstr ""
+msgstr "es de tipo ``INTEGER``"
 
 msgid "New restrictions structure"
-msgstr ""
+msgstr "Estructura de nuevas restricciones"
 
 msgid "Column ``id`` is ignored"
-msgstr ""
+msgstr "La columna ``id`` es ignorada"
 
 msgid "Column ``path``"
-msgstr ""
+msgstr "Columna ``path``"
 
 msgid "Is of type ``ARRAY[ANY-INTEGER]``."
-msgstr ""
+msgstr "Es de tipo ``ARRAY[ANY-INTEGER]``."
 
 msgid "Contains all the edges involved on the restriction."
-msgstr ""
+msgstr "Contiene todas las aristas involucradas con la restricción"
 
 msgid "The array has the ordered edges of the restriction."
-msgstr ""
+msgstr "El conjunto tiene las aristas ordenadas de la restricción."
 
 msgid "Column ``cost``"
-msgstr ""
+msgstr "Columna ``cost``"
 
 msgid "Is of type ``ANY-NUMERICAL``"
-msgstr ""
+msgstr "Es de tipo``ANY-NUMERICAL``"
 
 msgid "The creation of the restrictions table"
-msgstr ""
+msgstr "La creación de la tabla de restricciones"
 
 msgid "Adding the restrictions"
 msgstr "Agregando las restricciones"
@@ -5646,13 +5648,17 @@ msgid ""
 "The restriction with ``rid = 2`` represents the path :math:`3 \\rightarrow5 "
 "\\rightarrow9`."
 msgstr ""
+"La restricción con``rid = 2`` representa el camino :math:`3 \\rightarrow5 "
+"\\rightarrow9`."
 
 msgid "By inspection the path is clear."
-msgstr ""
+msgstr "El camino es claro por inspección."
 
 msgid ""
 "To transform the old restrictions table to the new restrictions structure,"
 msgstr ""
+"Para transformar la antigua tabla de restricciones a la nueva estructura de "
+"restricciones,"
 
 msgid "Create a new table with the new restrictions structure."
 msgstr ""
