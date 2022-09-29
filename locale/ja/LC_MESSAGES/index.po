@@ -3,18 +3,21 @@
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2022-09-29 00:46+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/index/"
+"ja/>\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.14.1\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/index.rst:12
@@ -42,7 +45,7 @@ msgstr ""
 
 #: ../../build/doc/index.rst:30
 msgid "Table of Contents"
-msgstr ""
+msgstr "目次"
 
 #: ../../build/doc/index.rst:32
 msgid ""
@@ -53,7 +56,7 @@ msgstr ""
 
 #: ../../build/doc/index.rst:36
 msgid "This is the manual for pgRouting |release|."
-msgstr ""
+msgstr "このマニュアルは pgRouting |release| のマニュアルです。"
 
 msgid "Creative Commons Attribution-Share Alike 3.0 License"
 msgstr ""
@@ -70,7 +73,7 @@ msgstr ""
 
 #: ../../build/doc/index.rst:50
 msgid "General"
-msgstr ""
+msgstr "概要"
 
 #: ../../build/doc/index.rst:60
 msgid ":doc:`sampledata` that is used in the examples of this manual."
@@ -200,27 +203,30 @@ msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:3
 msgid ":doc:`pgr_dijkstra` - Dijkstra's algorithm for the shortest paths."
-msgstr ""
+msgstr ":doc:'pgr_dijkstra' - 最短経路を求めるためのダイクストラ・アルゴリズム。"
 
 #: ../../build/doc/dijkstra-family.rst:4
 msgid ":doc:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths."
-msgstr ""
+msgstr ":doc:'pgr_dijkstraCost' - 最短経路の総コストを集計します。"
 
 #: ../../build/doc/dijkstra-family.rst:5
 msgid ":doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix."
-msgstr ""
+msgstr ":doc:'pgr_dijkstraCostMatrix' - pgr_dijkstra "
+"を使用してコストマトリックスを作成します。"
 
 #: ../../build/doc/dijkstra-family.rst:6
 msgid ""
 ":doc:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament "
 "information."
-msgstr ""
+msgstr ":doc:'pgr_drivingDistance' - pgr_dijkstra "
+"を使用して対象エリアの情報を計算します。"
 
 #: ../../build/doc/dijkstra-family.rst:8
 msgid ""
 ":doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K "
 "shortest paths."
-msgstr ""
+msgstr ":doc:'pgr_KSP' - "
+"pgr_dijkstraでYenアルゴリズムを使用してK最短経路を取得します。"
 
 #: ../../build/doc/routingFunctions.rst:47
 msgid ":doc:`flow-family`"
@@ -356,15 +362,15 @@ msgstr ""
 
 #: ../../build/doc/routingFunctions.rst:77
 msgid ":doc:`TSP-family`"
-msgstr ""
+msgstr ":doc:`TSP-family`"
 
 #: ../../build/doc/TSP-family.rst:3
 msgid ":doc:`pgr_TSP` - When input is given as matrix cell information."
-msgstr ""
+msgstr ":doc:`pgr_TSP` - 引数に行列のマトリクスが与えられたとき。"
 
 #: ../../build/doc/TSP-family.rst:4
 msgid ":doc:`pgr_TSPeuclidean` - When input are coordinates."
-msgstr ""
+msgstr ":doc:`pgr_TSPeuclidean` - 引数に一連の座標が与えられたとき。"
 
 #: ../../build/doc/routingFunctions.rst:83
 msgid ":doc:`pgr_trsp` - Turn Restriction Shortest Path (TRSP)"
@@ -483,13 +489,12 @@ msgstr ""
 
 #: ../../build/doc/index.rst:119
 msgid "Indices and tables"
-msgstr ""
+msgstr "索引とテーブル"
 
 #: ../../build/doc/index.rst:120
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`genindex`"
 
 #: ../../build/doc/index.rst:121
 msgid ":ref:`search`"
-msgstr ""
-
+msgstr ":ref:`search`"
