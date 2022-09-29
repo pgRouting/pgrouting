@@ -1,4 +1,4 @@
-name: Update Locale and Website
+name: Website
 
 on:
   workflow_dispatch:
@@ -14,7 +14,7 @@ jobs:
   release:
     permissions:
       contents: write  # for Git to git push
-    name: Update Locale and Website
+    name: Update Website
     runs-on: ubuntu-latest
     if: ${{ github.repository_owner == 'pgRouting' }}
 
@@ -85,19 +85,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-      - name: Update locale
-        if: github.ref == 'refs/heads/develop'
-        run: |
-          bash tools/transifex/update_locale.sh
-
-          # Add the files, commit and push
-          for line in `cat build/doc/locale_changes_po_pot.txt`; do git add "$line"; done
-          git diff --staged --quiet || git commit -m "Update locale: commit ${{ env.GIT_HASH }}"
-          git fetch origin develop
-          git restore .  # Remove the unstaged changes before rebasing
-          git rebase origin/develop
-          git push origin develop
 
 
       - name: Update Users Documentation
