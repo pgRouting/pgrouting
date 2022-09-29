@@ -4962,11 +4962,6 @@ msgid "By aggregation of the incoming flow to the targets"
 msgstr "Mediante la suma de los flujos llegantes a los destinos"
 
 #, fuzzy
-#| msgid ""
-#| ":doc:`pgr_maxFlow`  is the  maximum Flow and that maximum is guaranteed "
-#| "to be the same on the functions :doc:`pgr_pushRelabel`, :doc:"
-#| "`pgr_edmondsKarp`, :doc:`pgr_boykovKolmogorov`, but the actual flow "
-#| "through each edge may vary."
 msgid ""
 ":doc:`pgr_maxFlow` is the maximum Flow and that maximum is guaranteed to be "
 "the same on the functions :doc:`pgr_pushRelabel`, :doc:`pgr_edmondsKarp`, :"
@@ -18638,9 +18633,6 @@ msgid "Running time: :math:`O(| start\\_vids | * (V \\log V + E))`"
 msgstr "Tiempo de ejecución: :math:`O(| start\\_vids | * (V \\log V + E))`"
 
 #, fuzzy
-#| msgid ""
-#| "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vid**, **end "
-#| "vid**, **[options**])"
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vid**, **end vid**, "
 "[**options**])"
@@ -18649,9 +18641,6 @@ msgstr ""
 "**destino**, [**opciones**])"
 
 #, fuzzy
-#| msgid ""
-#| "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vid**, **end "
-#| "vids**, **[options**])"
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vid**, **end vids**, "
 "[**options**])"
@@ -18660,9 +18649,6 @@ msgstr ""
 "**destinos**, [**opciones**])"
 
 #, fuzzy
-#| msgid ""
-#| "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vids**, **end "
-#| "vid**, **[options**])"
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vids**, **end vid**, "
 "[**options**])"
@@ -18671,9 +18657,6 @@ msgstr ""
 "**destino**, [**opciones**])"
 
 #, fuzzy
-#| msgid ""
-#| "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vids**, **end "
-#| "vids**, **[options**])"
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vids**, **end "
 "vids**, [**options**])"
@@ -18682,9 +18665,6 @@ msgstr ""
 "**destinos**, [**opciones**])"
 
 #, fuzzy
-#| msgid ""
-#| "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, `Combinations SQL`_, "
-#| "**[options**])"
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, `Combinations SQL`_, "
 "[**options**])"
@@ -18711,9 +18691,6 @@ msgid "From point :math:`1` to vertex :math:`10` with defaults"
 msgstr "Del punto :math:`1` al punto :math:`3` con valores por defecto"
 
 #, fuzzy
-#| msgid ""
-#| "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end "
-#| "vids**, **[options**])"
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, "
 "[**options**])"
@@ -18722,9 +18699,6 @@ msgstr ""
 "**destinos**, [**opciones**])"
 
 #, fuzzy
-#| msgid ""
-#| "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end "
-#| "vid**, **[options**])"
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, "
 "[**options**])"
@@ -18733,9 +18707,6 @@ msgstr ""
 "**destino**, [**opciones**])"
 
 #, fuzzy
-#| msgid ""
-#| "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end "
-#| "vids**, **[options**])"
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end "
 "vids**, [**options**])"
@@ -18751,9 +18722,6 @@ msgstr ""
 "math:`1`"
 
 #, fuzzy
-#| msgid ""
-#| "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, "
-#| "**[options**])"
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, "
 "[**options**])"
@@ -18840,9 +18808,6 @@ msgstr ""
 "`pgr_withPoints`."
 
 #, fuzzy
-#| msgid ""
-#| "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end "
-#| "vids**, **[options**])"
 msgid ""
 "pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, "
 "[**options**])"
@@ -22873,4 +22838,3 @@ msgstr "pgr_withPoints se basa en pgr_dijkstra"
 
 msgid "Advanced Documentation"
 msgstr ""
-
