@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-29 02:23+0000\n"
-"PO-Revision-Date: 2022-09-29 15:39+0000\n"
+"PO-Revision-Date: 2022-09-29 15:48+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
@@ -5559,9 +5559,8 @@ msgstr "Debe de estar en orden reverso."
 msgid "Is of type ``TEXT``."
 msgstr "Es de tipo ``TEXT``."
 
-#, fuzzy
 msgid "When more than one via edge must be separated with ``,``."
-msgstr "Cuando más de una arista via debe de ser separada con ``,``."
+msgstr "Cuando hay más de una arista debe de ser separada con ``,``."
 
 msgid "``target_id``"
 msgstr "``target_id``"
@@ -10164,15 +10163,15 @@ msgstr "La firma cambió en ``pgr_bdDijsktra`` (`Uno a Uno`_)"
 msgid "**Official** ``pgr_bdDijkstra`` (`One to One`_)"
 msgstr "**Oficial** ``pgr_bdDijkstra`` (`Uno a Uno`_)"
 
-#, fuzzy
 msgid ""
 "pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_bdDijkstra(`SQL de aristas`_, **salida**, **destino**, [``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_bdDijkstra(`SQL de aristas`_, **salida**, **destinos**, [``directed``])"
 
 msgid ""
 "pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vid**, [``directed``])"
@@ -13267,17 +13266,19 @@ msgstr ""
 "pgr_dijkstraNearCost(`SQL de aristas`_, **salida**, **destinos**, "
 "[**opciones A**])"
 
-#, fuzzy
 msgid ""
 "pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vid**, [**options "
 "A**])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_dijkstraNearCost(`SQL de aristas`_, **salidas**, **destino**, [**"
+"opciones A**])"
 
-#, fuzzy
 msgid ""
 "pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vids**, [**options "
 "B**])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_dijkstraNearCost(`SQL de aristas`_, **salidas**, **destinos**, [**"
+"opciones B**])"
 
 msgid ""
 "pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_, [**options B**])"
@@ -13285,17 +13286,19 @@ msgstr ""
 "pgr_dijkstraNearCost(`SQL de aristas`_, `SQL de combinaciones`_, [**opciones "
 "B**])"
 
-#, fuzzy
 msgid ""
 "pgr_dijkstraNearCost(`Edges SQL`_, **start vid**, **end vids**, "
 "[**options**])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_dijkstraNearCost(`SQL de aristas`_, **salida**, **destinos**, "
+"[**opciones**])"
 
-#, fuzzy
 msgid ""
 "pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vid**, "
 "[**options**])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_dijkstraNearCost(`SQL de aristas`_, **salidas**, **destinos*, "
+"[**opciones**])"
 
 msgid ""
 "Departing on a car from a subway station find the nearest **two** stations "
@@ -13304,11 +13307,12 @@ msgstr ""
 "Saliendo en coche desde una estación de metro encontrar las **dos** "
 "estaciones más cercanas al vértice :math:`6`"
 
-#, fuzzy
 msgid ""
 "pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vids**, "
 "[**options**])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_dijkstraNearCost(`SQL de aristas`_, **salidas**, **destinos**, "
+"[**opciones**])"
 
 msgid "pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_, [**options**])"
 msgstr ""
@@ -13387,13 +13391,11 @@ msgstr ""
 msgid "One Via"
 msgstr ""
 
-#, fuzzy
 msgid "pgr_dijkstraVia(`Edges SQL`_, **via vertices**, [**options**])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr "pgr_dijkstraVia(`SQL de aristas`_, **vértices**, [**opciones**])"
 
-#, fuzzy
 msgid "**options:** ``[directed, strict, U_turn_on_edge]``"
-msgstr "**Grafo 4: No dirigido, con costo**"
+msgstr "**opciones:** ``[directed, strict, U_turn_on_edge]``"
 
 msgid "RETURNS SET OF |via-result|"
 msgstr ""
@@ -13531,11 +13533,12 @@ msgstr ""
 "menores o iguales al valor ``distance``. Los bordes extraídos se ajustarán "
 "al árbol de expansión correspondiente."
 
-#, fuzzy
 msgid ""
 "pgr_drivingDistance(`Edges SQL`_, **Root vid**,  **distance**, "
 "[``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_drivingDistance`SQL de aristas`_, **Raíz**, **distancia**, "
+"[``directed``])"
 
 msgid ""
 "pgr_drivingDistance(`Edges SQL`_, **Root vids**, **distance**, [**options**])"
@@ -13543,9 +13546,8 @@ msgstr ""
 "pgr_drivingDistance(`SQL de aristas`_, **raices**, **distancia**, "
 "[**opciones**])"
 
-#, fuzzy
 msgid "**options:** [directed, equicost]"
-msgstr "**Grafo 4: No dirigido, con costo**"
+msgstr "**opciones:** [directed, equicost]"
 
 msgid "RETURNS SET OF |result-dij-dd|"
 msgstr ""
@@ -13698,9 +13700,8 @@ msgstr "donde :math:`|E|` es la cantidad de arístas en el grafo,"
 msgid ":math:`|V|` is the number of vertices in the graph."
 msgstr ":math:`|V|` es la cantidad de vertices del grafo."
 
-#, fuzzy
 msgid "pgr_edgeColoring(`Edges SQL`_)"
-msgstr "pgr_edgeColoring"
+msgstr "pgr_edgeColoring(`SQL de aristas`_)"
 
 #, fuzzy
 msgid "RETURNS SET OF |result-edge-color|"
