@@ -133,7 +133,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-23 16:50+0000\n"
+"POT-Creation-Date: 2022-09-29 02:23+0000\n"
 "PO-Revision-Date: 2022-09-29 00:46+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/"
@@ -3927,27 +3927,31 @@ msgid "Dijkstra - Family of functions"
 msgstr "ダイクストラ関連機能"
 
 msgid ":doc:`pgr_dijkstra` - Dijkstra's algorithm for the shortest paths."
-msgstr ":doc:'pgr_dijkstra' - 最短経路を求めるためのダイクストラ・アルゴリズム。"
+msgstr ""
+":doc:'pgr_dijkstra' - 最短経路を求めるためのダイクストラ・アルゴリズム。"
 
 msgid ":doc:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths."
 msgstr ":doc:'pgr_dijkstraCost' - 最短経路の総コストを集計します。"
 
 msgid ""
 ":doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix."
-msgstr ":doc:'pgr_dijkstraCostMatrix' - pgr_dijkstra "
-"を使用してコストマトリックスを作成します。"
+msgstr ""
+":doc:'pgr_dijkstraCostMatrix' - pgr_dijkstra を使用してコストマトリックスを作"
+"成します。"
 
 msgid ""
 ":doc:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament "
 "information."
-msgstr ":doc:'pgr_drivingDistance' - pgr_dijkstra "
-"を使用して対象エリアの情報を計算します。"
+msgstr ""
+":doc:'pgr_drivingDistance' - pgr_dijkstra を使用して対象エリアの情報を計算し"
+"ます。"
 
 msgid ""
 ":doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K shortest "
 "paths."
-msgstr ":doc:'pgr_KSP' - "
-"pgr_dijkstraでYenアルゴリズムを使用してK最短経路を取得します。"
+msgstr ""
+":doc:'pgr_KSP' - pgr_dijkstraでYenアルゴリズムを使用してK最短経路を取得しま"
+"す。"
 
 msgid ":doc:`pgr_dijkstraVia` - Get a route of a seuence of vertices."
 msgstr ":doc:'pgr_dijkstraVia' - 連続したノードの経路を取得します。"
@@ -4180,11 +4184,13 @@ msgstr ""
 msgid ""
 ":math:`path\\_seq` indicates the relative position in the path of the :math:"
 "`node` or :math:`edge`."
-msgstr ":math:`path\\_seq' は、:math:'node' または :math:'edge' "
-"の経路内の相対位置を示しています。"
+msgstr ""
+":math:`path\\_seq' は、:math:'node' または :math:'edge' の経路内の相対位置を"
+"示しています。"
 
 msgid ":math:`cost` is the cost of the edge to be used to go to the next node."
-msgstr ":math:`cost` は、次のノードに移動するために使用するエッジのコストです。"
+msgstr ""
+":math:`cost` は、次のノードに移動するために使用するエッジのコストです。"
 
 msgid ""
 ":math:`agg\\_cost` is the cost from the :math:`start_{vid}` up to the node."
@@ -4487,10 +4493,9 @@ msgid "By aggregation of the incoming flow to the targets"
 msgstr ""
 
 msgid ""
-":doc:`pgr_maxFlow`  is the  maximum Flow and that maximum is guaranteed to "
-"be the same on the functions :doc:`pgr_pushRelabel`, :doc:"
-"`pgr_edmondsKarp`, :doc:`pgr_boykovKolmogorov`, but the actual flow through "
-"each edge may vary."
+":doc:`pgr_maxFlow` is the maximum Flow and that maximum is guaranteed to be "
+"the same on the functions :doc:`pgr_pushRelabel`, :doc:`pgr_edmondsKarp`, :"
+"doc:`pgr_boykovKolmogorov`, but the actual flow through each edge may vary."
 msgstr ""
 
 msgid "Capacity edges"
@@ -7687,7 +7692,8 @@ msgstr "ノード/座標/ポイントの識別子。"
 msgid ""
 "Cost to traverse from the current ``node`` to the next ``node`` in the path "
 "sequence."
-msgstr "現在の ``ノード`` から次の ``ノード`` まで移動する際の経路にかかるコスト。"
+msgstr ""
+"現在の ``ノード`` から次の ``ノード`` まで移動する際の経路にかかるコスト。"
 
 msgid "``0`` for the last row in the tour sequence."
 msgstr ""
@@ -9495,7 +9501,7 @@ msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 #, fuzzy
 msgid ""
-"pgr_binaryBreadthFirstSearch(`Edges SQL`_, **Combinations SQL**, "
+"pgr_binaryBreadthFirstSearch(`Edges SQL`_, `Combinations SQL`_, "
 "[``directed``])"
 msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
@@ -9503,12 +9509,6 @@ msgid ""
 "**Note:** Using the :doc:`sampledata` Network as all weights are same (i.e :"
 "math:`1``)"
 msgstr ""
-
-#, fuzzy
-msgid ""
-"pgr_binaryBreadthFirstSearch(`Edges SQL`_, `Combinations SQL`_, "
-"[``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 msgid "Optional Parameters"
 msgstr "オプションとなるパラメータ"
@@ -10739,9 +10739,6 @@ msgstr ""
 msgid ""
 "From vertices :math:`\\{5, 15\\}` to vertices :math:`\\{11, 17\\}` on an "
 "**undirected** graph"
-msgstr ""
-
-msgid "pgr_dagShortestPath(`Edges SQL`_, Combinations)"
 msgstr ""
 
 msgid "Resturn Columns"
@@ -12227,25 +12224,6 @@ msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 msgid "pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
-msgid ""
-"pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vid**, [``directed``]);"
-msgstr ""
-
-msgid ""
-"pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vids**, [``directed``]);"
-msgstr ""
-
-msgid ""
-"pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vid**, [``directed``]);"
-msgstr ""
-
-msgid ""
-"pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vids**, [``directed``]);"
-msgstr ""
-
-msgid "pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_, [``directed``]);"
-msgstr ""
-
 msgid "https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm"
 msgstr ""
 
@@ -12906,8 +12884,9 @@ msgid ""
 "which runs in :math:`\\Theta(V^3)` time,"
 msgstr ""
 
-msgid "pgr floydWarshall(`Edges SQL`_, [``directed``])"
-msgstr ""
+#, fuzzy
+msgid "pgr_floydWarshall(`Edges SQL`_, [``directed``])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 msgid "For a directed subgraph with edges :math:`\\{1, 2, 3, 4\\}`."
 msgstr ""
@@ -16132,31 +16111,31 @@ msgstr ""
 #, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vid**, **end vid**, "
-"**[options**])"
+"[**options**])"
 msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 #, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vid**, **end vids**, "
-"**[options**])"
+"[**options**])"
 msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 #, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vids**, **end vid**, "
-"**[options**])"
+"[**options**])"
 msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 #, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vids**, **end "
-"vids**, **[options**])"
+"vids**, [**options**])"
 msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 #, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, `Combinations SQL`_, "
-"**[options**])"
+"[**options**])"
 msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 msgid "**options:**  ``[directed, driving_side]``"
@@ -16176,19 +16155,19 @@ msgstr ""
 #, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, "
-"**[options**])"
+"[**options**])"
 msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 #, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, "
-"**[options**])"
+"[**options**])"
 msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 #, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end "
-"vids**, **[options**])"
+"vids**, [**options**])"
 msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 msgid ""
@@ -16199,7 +16178,7 @@ msgstr ""
 #, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, "
-"**[options**])"
+"[**options**])"
 msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 msgid "Identifier of the starting vertex or point."
@@ -16262,10 +16241,11 @@ msgid ""
 "`pgr_withPoints`."
 msgstr ""
 
+#, fuzzy
 msgid ""
 "pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, "
-"**[options**])"
-msgstr ""
+"[**options**])"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
 msgid ""
 "Cost matrix for points :math:`\\{1, 6\\}` and vertices :math:`\\{10, 11\\}` "
@@ -19645,3 +19625,9 @@ msgstr ""
 
 msgid "Advanced Documentation"
 msgstr ""
+
+#, fuzzy
+#~ msgid ""
+#~ "pgr_binaryBreadthFirstSearch(`Edges SQL`_, **Combinations SQL**, "
+#~ "[``directed``])"
+#~ msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
