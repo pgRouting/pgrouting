@@ -10,44 +10,51 @@ msgstr ""
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: 2022-09-28 21:16+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/index/"
-"es/>\n"
 "Language: es\n"
+"Language-Team: Spanish "
+"<https://weblate.osgeo.org/projects/pgrouting/index/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1\n"
-"Generated-By: Babel 2.9.1\n"
+"Generated-By: Babel 2.10.3\n"
 
 #: ../../build/doc/index.rst:12
 msgid ""
-"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/index."
-"html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/index.html>`__) `3.3 "
-"<https://docs.pgrouting.org/3.3/en/index.html>`__ `3.2 <https://docs."
-"pgrouting.org/3.2/en/index.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/"
-"index.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/index.html>`__"
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/index.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/en/index.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/en/index.html>`__ `3.2 "
+"<https://docs.pgrouting.org/3.2/en/index.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/en/index.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/index.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
-"index.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/index.html>`__) `3.3 "
-"<https://docs.pgrouting.org/3.3/es/index.html>`__ `3.2 <https://docs."
-"pgrouting.org/3.2/es/index.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
-"index.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/index.html>`__"
+"**Versiones soportadas:** `Última "
+"<https://docs.pgrouting.org/latest/es/index.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/es/index.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/es/index.html>`__ `3.2 "
+"<https://docs.pgrouting.org/3.2/es/index.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/es/index.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/es/index.html>`__"
 
 #: ../../build/doc/index.rst:19
 msgid ""
-"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/index."
-"html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/index.html>`__ `2.4 "
-"<https://docs.pgrouting.org/2.4/en/index.html>`__ `2.3 <https://docs."
-"pgrouting.org/2.3/en/index.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/"
-"index.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/index.html>`__ `2.0 "
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/index.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/index.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/index.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/index.html>`__ `2.2 "
+"<https://docs.pgrouting.org/2.2/en/index.html>`__ `2.1 "
+"<https://docs.pgrouting.org/2.1/en/index.html>`__ `2.0 "
 "<https://docs.pgrouting.org/2.0/en/index.html>`__"
 msgstr ""
-"**Versiones no soportadas:** `2.6 <https://docs.pgrouting.org/2.6/en/index."
-"html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/index.html>`__ `2.4 "
-"<https://docs.pgrouting.org/2.4/en/index.html>`__ `2.3 <https://docs."
-"pgrouting.org/2.3/en/index.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/"
-"index.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/index.html>`__ `2.0 "
+"**Versiones no soportadas:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/index.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/index.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/index.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/index.html>`__ `2.2 "
+"<https://docs.pgrouting.org/2.2/en/index.html>`__ `2.1 "
+"<https://docs.pgrouting.org/2.1/en/index.html>`__ `2.0 "
 "<https://docs.pgrouting.org/2.0/en/index.html>`__"
 
 #: ../../build/doc/index.rst:30
@@ -56,13 +63,14 @@ msgstr "Tabla de Contenido"
 
 #: ../../build/doc/index.rst:32
 msgid ""
-"pgRouting extends the `PostGIS <https://postgis.net>`__/`PostgreSQL <https://"
-"www.postgresql.org>`__ geospatial database to provide geospatial routing and "
-"other network analysis functionality."
+"pgRouting extends the `PostGIS <https://postgis.net>`__/`PostgreSQL "
+"<https://www.postgresql.org>`__ geospatial database to provide geospatial"
+" routing and other network analysis functionality."
 msgstr ""
-"pgRouting extiende la base de datos geospacial de `PostGIS <https://postgis."
-"net>`__/`PostgreSQL <https://www.postgresql.org>`__ para proporcionar "
-"enrutamiento geoespacial y otras funciones de análisis de red."
+"pgRouting extiende la base de datos geospacial de `PostGIS "
+"<https://postgis.net>`__/`PostgreSQL <https://www.postgresql.org>`__ para"
+" proporcionar enrutamiento geoespacial y otras funciones de análisis de "
+"red."
 
 #: ../../build/doc/index.rst:36
 msgid "This is the manual for pgRouting |release|."
@@ -73,19 +81,20 @@ msgstr "Licencia de Creative Commons Attribution-Share Alike 3.0"
 
 #: ../../build/doc/index.rst:42
 msgid ""
-"The pgRouting Manual is licensed under a `Creative Commons Attribution-Share "
-"Alike 3.0 License <https://creativecommons.org/licenses/by-sa/3.0/>`_. Feel "
-"free to use this material any way you like, but we ask that you attribute "
-"credit to the pgRouting Project and wherever possible, a link back to "
-"https://pgrouting.org. For other licenses used in pgRouting see the :ref:"
-"`license` page."
+"The pgRouting Manual is licensed under a `Creative Commons Attribution-"
+"Share Alike 3.0 License <https://creativecommons.org/licenses/by-"
+"sa/3.0/>`_. Feel free to use this material any way you like, but we ask "
+"that you attribute credit to the pgRouting Project and wherever possible,"
+" a link back to https://pgrouting.org. For other licenses used in "
+"pgRouting see the :ref:`license` page."
 msgstr ""
 "El Manual de pgRouting está bajo licencia `Creative Commons Attribution-"
-"Share Alike 3.0 License <https://creativecommons.org/licenses/by-sa/3.0/>`_. "
-"Siéntase libre de usar este material de la manera que desee, pero le pedimos "
-"que atribuya el crédito correspondiente al proyecto pgRouting y, siempre que "
-"sea posible, visite https://pgrouting.org. Para otras licencias utilizadas "
-"en pgRouting, consulte la página :ref:`license` ."
+"Share Alike 3.0 License <https://creativecommons.org/licenses/by-"
+"sa/3.0/>`_. Siéntase libre de usar este material de la manera que desee, "
+"pero le pedimos que atribuya el crédito correspondiente al proyecto "
+"pgRouting y, siempre que sea posible, visite https://pgrouting.org. Para "
+"otras licencias utilizadas en pgRouting, consulte la página "
+":ref:`license` ."
 
 #: ../../build/doc/index.rst:50
 msgid "General"
@@ -125,14 +134,13 @@ msgstr ":doc:`pgr_aStar` - Algoritmo A* para la ruta más corta."
 
 #: ../../build/doc/aStar-family.rst:4
 msgid ":doc:`pgr_aStarCost` - Get the aggregate cost of the shortest paths."
-msgstr ""
-":doc:`pgr_aStarCost` - Obtener el costo agregado de las rutas más cortas."
+msgstr ":doc:`pgr_aStarCost` - Obtener el costo agregado de las rutas más cortas."
 
 #: ../../build/doc/aStar-family.rst:5
 msgid ":doc:`pgr_aStarCostMatrix` - Get the cost matrix of the shortest paths."
 msgstr ""
-":doc:`pgr_aStarCostMatrix` - Obtener la matriz de costos de las rutas más "
-"cortas."
+":doc:`pgr_aStarCostMatrix` - Obtener la matriz de costos de las rutas más"
+" cortas."
 
 #: ../../build/doc/routingFunctions.rst:17
 msgid ":doc:`bdAstar-family`"
@@ -144,19 +152,19 @@ msgstr ":doc:`pgr_bdAstar` - Algoritmo bidireccional A* para obtener rutas."
 
 #: ../../build/doc/bdAstar-family.rst:4
 msgid ""
-":doc:`pgr_bdAstarCost` - Bidirectional A* algorithm to calculate the cost of "
-"the paths."
+":doc:`pgr_bdAstarCost` - Bidirectional A* algorithm to calculate the cost"
+" of the paths."
 msgstr ""
-":doc:`pgr_bdAstarCost` - Algoritmo bidireccional A* para calcular el coste "
-"de las rutas."
+":doc:`pgr_bdAstarCost` - Algoritmo bidireccional A* para calcular el "
+"coste de las rutas."
 
 #: ../../build/doc/bdAstar-family.rst:6
 msgid ""
 ":doc:`pgr_bdAstarCostMatrix` - Bidirectional A* algorithm to calculate a "
 "cost matrix of paths."
 msgstr ""
-":doc:`pgr_bdAstarCostMatrix` - Algoritmo bidireccional A* para calcular una "
-"matriz de costes de rutas."
+":doc:`pgr_bdAstarCostMatrix` - Algoritmo bidireccional A* para calcular "
+"una matriz de costes de rutas."
 
 #: ../../build/doc/routingFunctions.rst:23
 msgid ":doc:`bdDijkstra-family`"
@@ -164,19 +172,19 @@ msgstr ":doc:`bdDijkstra-family`"
 
 #: ../../build/doc/bdDijkstra-family.rst:3
 msgid ""
-":doc:`pgr_bdDijkstra` - Bidirectional Dijkstra algorithm for the shortest "
-"paths."
+":doc:`pgr_bdDijkstra` - Bidirectional Dijkstra algorithm for the shortest"
+" paths."
 msgstr ""
-":doc:`pgr_bdDijkstra` - Algoritmo Dijkstra bidireccional para las rutas más "
-"cortas."
+":doc:`pgr_bdDijkstra` - Algoritmo Dijkstra bidireccional para las rutas "
+"más cortas."
 
 #: ../../build/doc/bdDijkstra-family.rst:5
 msgid ""
-":doc:`pgr_bdDijkstraCost` - Bidirectional Dijkstra to calculate the cost of "
-"the shortest paths"
+":doc:`pgr_bdDijkstraCost` - Bidirectional Dijkstra to calculate the cost "
+"of the shortest paths"
 msgstr ""
-":doc:`pgr_bdDijkstraCost` - Dijkstra bidireccional para calcular el costo de "
-"las rutas más cortas"
+":doc:`pgr_bdDijkstraCost` - Dijkstra bidireccional para calcular el costo"
+" de las rutas más cortas"
 
 #: ../../build/doc/bdDijkstra-family.rst:7
 msgid ""
@@ -192,30 +200,32 @@ msgstr ":doc:`components-family`"
 
 #: ../../build/doc/components-family.rst:3
 msgid ""
-":doc:`pgr_connectedComponents` - Connected components of an undirected graph."
+":doc:`pgr_connectedComponents` - Connected components of an undirected "
+"graph."
 msgstr ""
 ":doc:`pgr_connectedComponents` - Componentes conectados de un grafo no "
 "dirigido."
 
 #: ../../build/doc/components-family.rst:4
 msgid ""
-":doc:`pgr_strongComponents` - Strongly connected components of a directed "
-"graph."
+":doc:`pgr_strongComponents` - Strongly connected components of a directed"
+" graph."
 msgstr ""
-":doc:`pgr_strongComponents` - Componentes fuertemente conectados de un grafo "
-"dirigido."
+":doc:`pgr_strongComponents` - Componentes fuertemente conectados de un "
+"grafo dirigido."
 
 #: ../../build/doc/components-family.rst:6
 msgid ""
-":doc:`pgr_biconnectedComponents` - Biconnected components of an undirected "
-"graph."
+":doc:`pgr_biconnectedComponents` - Biconnected components of an "
+"undirected graph."
 msgstr ""
-":doc:`pgr_biconnectedComponents` - Componentes biconectados de un grafo no "
-"dirigido."
+":doc:`pgr_biconnectedComponents` - Componentes biconectados de un grafo "
+"no dirigido."
 
 #: ../../build/doc/components-family.rst:8
 msgid ""
-":doc:`pgr_articulationPoints` - Articulation points of an undirected graph."
+":doc:`pgr_articulationPoints` - Articulation points of an undirected "
+"graph."
 msgstr ""
 ":doc:`pgr_articulationPoints` - Puntos de articulación de un grafo no "
 "dirigido."
@@ -243,30 +253,30 @@ msgstr ":doc:`pgr_dijkstra` - Algoritmo de Dijkstra para las rutas más cortas."
 #: ../../build/doc/dijkstra-family.rst:4
 msgid ":doc:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths."
 msgstr ""
-":doc:`pgr_dijkstraCost` - Obtener el costo agregado de las rutas más cortas."
+":doc:`pgr_dijkstraCost` - Obtener el costo agregado de las rutas más "
+"cortas."
 
 #: ../../build/doc/dijkstra-family.rst:5
-msgid ""
-":doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix."
+msgid ":doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix."
 msgstr ""
-":doc:`pgr_dijkstraCostMatrix` - Usar pgr_dijkstra para crear una matriz de "
-"costes."
+":doc:`pgr_dijkstraCostMatrix` - Usar pgr_dijkstra para crear una matriz "
+"de costes."
 
 #: ../../build/doc/dijkstra-family.rst:6
 msgid ""
 ":doc:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament "
 "information."
 msgstr ""
-":doc:`pgr_drivingDistance` - Usar pgr_dijkstra para calcular información de "
-"captación."
+":doc:`pgr_drivingDistance` - Usar pgr_dijkstra para calcular información "
+"de captación."
 
 #: ../../build/doc/dijkstra-family.rst:8
 msgid ""
-":doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K shortest "
-"paths."
+":doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K "
+"shortest paths."
 msgstr ""
-":doc:`pgr_KSP` - Usar el algoritmo Yen con pgr_dijkstra para obtener las K "
-"rutas más cortas."
+":doc:`pgr_KSP` - Usar el algoritmo Yen con pgr_dijkstra para obtener las "
+"K rutas más cortas."
 
 #: ../../build/doc/routingFunctions.rst:47
 msgid ":doc:`flow-family`"
@@ -274,35 +284,35 @@ msgstr ":doc:`flow-family`"
 
 #: ../../build/doc/flow-family.rst:3
 msgid ""
-":doc:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel "
-"algorithm."
+":doc:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel"
+" algorithm."
 msgstr ""
 ":doc:`pgr_maxFlow` - Solo el flujo máximo se calcula usando el algoritmo "
 "empuja y reetiquetado."
 
 #: ../../build/doc/flow-family.rst:5
 msgid ""
-":doc:`pgr_boykovKolmogorov` - Boykov and Kolmogorov with details of flow on "
-"edges."
+":doc:`pgr_boykovKolmogorov` - Boykov and Kolmogorov with details of flow "
+"on edges."
 msgstr ""
-":doc:`pgr_boykovKolmogorov` - Algoritmo Boykov y Kolmogorov con detalles del "
-"flujo en aristas."
+":doc:`pgr_boykovKolmogorov` - Algoritmo Boykov y Kolmogorov con detalles "
+"del flujo en aristas."
 
 #: ../../build/doc/flow-family.rst:7
 msgid ""
-":doc:`pgr_edmondsKarp` - Edmonds and Karp algorithm with details of flow on "
-"edges."
+":doc:`pgr_edmondsKarp` - Edmonds and Karp algorithm with details of flow "
+"on edges."
 msgstr ""
-":doc:`pgr_edmondsKarp` - Algoritmo Edmonds y Karp con detalles de flujo del "
-"flujo en aristas."
+":doc:`pgr_edmondsKarp` - Algoritmo Edmonds y Karp con detalles de flujo "
+"del flujo en aristas."
 
 #: ../../build/doc/flow-family.rst:9
 msgid ""
-":doc:`pgr_pushRelabel` - Push and relabel algorithm with details of flow on "
-"edges."
+":doc:`pgr_pushRelabel` - Push and relabel algorithm with details of flow "
+"on edges."
 msgstr ""
-":doc:`pgr_pushRelabel` - Algoritmo empuja y reetiquetado con detalles del "
-"flujo en aristas."
+":doc:`pgr_pushRelabel` - Algoritmo empuja y reetiquetado con detalles del"
+" flujo en aristas."
 
 #: ../../build/doc/flow-family.rst:11
 msgid "Applications"
@@ -310,16 +320,16 @@ msgstr "Aplicaciones"
 
 #: ../../build/doc/flow-family.rst:13
 msgid ""
-":doc:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two "
-"groups of vertices."
+":doc:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two"
+" groups of vertices."
 msgstr ""
-":doc:`pgr_edgeDisjointPaths` - Calcula rutas de aristas disjuntas entre dos "
-"grupos de vértices."
+":doc:`pgr_edgeDisjointPaths` - Calcula rutas de aristas disjuntas entre "
+"dos grupos de vértices."
 
 #: ../../build/doc/flow-family.rst:15
 msgid ""
-":doc:`pgr_maxCardinalityMatch` - Calculates a maximum cardinality matching "
-"in a graph."
+":doc:`pgr_maxCardinalityMatch` - Calculates a maximum cardinality "
+"matching in a graph."
 msgstr ""
 ":doc:`pgr_maxCardinalityMatch` - Calcular una cardinalidad máxima de "
 "coincidencia dentro de un grafo."
@@ -384,38 +394,40 @@ msgstr ":doc:`topology-functions`"
 
 #: ../../build/doc/topology-functions.rst:3
 msgid ""
-"The following functions modify the database directly therefore the user must "
-"have special permissions given by the administrators to use them."
+"The following functions modify the database directly therefore the user "
+"must have special permissions given by the administrators to use them."
 msgstr ""
-"Las siguientes funciones modifican la base de datos directamente, por lo que "
-"el usuario debe tener permisos especiales otorgados por un administrador "
-"para usarlos."
+"Las siguientes funciones modifican la base de datos directamente, por lo "
+"que el usuario debe tener permisos especiales otorgados por un "
+"administrador para usarlos."
 
 #: ../../build/doc/topology-functions.rst:6
 msgid ":doc:`pgr_createTopology` -  create a topology based on the geometry."
 msgstr ""
-":doc:`pgr_createTopology` - para crear una topología basada en la geometría."
+":doc:`pgr_createTopology` - para crear una topología basada en la "
+"geometría."
 
 #: ../../build/doc/topology-functions.rst:7
 msgid ""
-":doc:`pgr_createVerticesTable` - reconstruct the vertices table based on the "
-"source and target information."
+":doc:`pgr_createVerticesTable` - reconstruct the vertices table based on "
+"the source and target information."
 msgstr ""
-":doc:`pgr_createVerticesTable` - reconstruir la tabla de vértices en base a "
-"la información de origen y destino."
+":doc:`pgr_createVerticesTable` - reconstruir la tabla de vértices en base"
+" a la información de origen y destino."
 
 #: ../../build/doc/topology-functions.rst:9
 msgid ""
 ":doc:`pgr_analyzeGraph`  - to analyze the edges and vertices of the edge "
 "table."
 msgstr ""
-":doc:`pgr_analyzeGraph` - para analizar los bordes y vértices de la tabla de "
-"aristas."
+":doc:`pgr_analyzeGraph` - para analizar los bordes y vértices de la tabla"
+" de aristas."
 
 #: ../../build/doc/topology-functions.rst:11
 msgid ":doc:`pgr_analyzeOneWay` - to analyze directionality of the edges."
 msgstr ""
-":doc:`pgr_analyzeOneWay` - para analizar la direccionalidad de las aristas."
+":doc:`pgr_analyzeOneWay` - para analizar la direccionalidad de las "
+"aristas."
 
 #: ../../build/doc/topology-functions.rst:12
 msgid ":doc:`pgr_nodeNetwork`  -to create nodes to a not noded edge table."
@@ -428,7 +440,8 @@ msgstr ":doc:`TSP-family`"
 #: ../../build/doc/TSP-family.rst:3
 msgid ":doc:`pgr_TSP` - When input is given as matrix cell information."
 msgstr ""
-":doc:`pgr_TSP` - Cuando la entrada es la información de celdas de una matriz."
+":doc:`pgr_TSP` - Cuando la entrada es la información de celdas de una "
+"matriz."
 
 #: ../../build/doc/TSP-family.rst:4
 msgid ":doc:`pgr_TSPeuclidean` - When input are coordinates."
@@ -493,10 +506,11 @@ msgstr ":doc:`drivingDistance-category`"
 
 #: ../../build/doc/drivingDistance-category.rst:3
 msgid ""
-":doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's algorithm"
+":doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's "
+"algorithm"
 msgstr ""
-":doc:`pgr_drivingDistance` - Distancia de Manejo basada en el algoritmo de "
-"Dijkstra"
+":doc:`pgr_drivingDistance` - Distancia de Manejo basada en el algoritmo "
+"de Dijkstra"
 
 #: ../../build/doc/drivingDistance-category.rst:4
 msgid ":doc:`pgr_primDD` - Driving Distance based on Prim's algorithm"
@@ -505,7 +519,8 @@ msgstr ":doc:`pgr_primDD` - Distancia de manejo basada en el algoritmo de Prim"
 #: ../../build/doc/drivingDistance-category.rst:5
 msgid ":doc:`pgr_kruskalDD` - Driving Distance based on Kruskal's algorithm"
 msgstr ""
-":doc:`pgr_kruskalDD` - Distancia de Manejo basada en el algoritmo de Kruskal"
+":doc:`pgr_kruskalDD` - Distancia de Manejo basada en el algoritmo de "
+"Kruskal"
 
 #: ../../build/doc/drivingDistance-category.rst:6
 msgid "Post pocessing"
@@ -563,104 +578,3 @@ msgstr ":ref:`genindex`"
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
 
-msgid "**root vid**"
-msgstr "**raíz**"
-
-msgid "**distance**"
-msgstr "**distancia**"
-
-msgid "**point**"
-msgstr "**punto**"
-
-msgid "**tolerance**"
-msgstr "**tolerancia**"
-
-msgid "`Restrictions SQL`_"
-msgstr "`SQL de restricciones`_"
-
-msgid "`Edges SQL`_"
-msgstr "`SQL de aristas`_"
-
-msgid "**start vids**"
-msgstr "**salidas**"
-
-msgid "``start_close``"
-msgstr "``start_close``"
-
-msgid "pgr_quote_ident"
-msgstr "pgr_quote_ident"
-
-msgid "``max_depth``"
-msgstr "``max_depth``"
-
-msgid "`Points SQL`_"
-msgstr "`SQL de puntos`_"
-
-msgid "**start vid**"
-msgstr "**salida**"
-
-msgid "``end_close``"
-msgstr "``end_close``"
-
-msgid "**options**"
-msgstr "**opciones**"
-
-msgid "**root vids**"
-msgstr "**raices**"
-
-msgid "**end vid**"
-msgstr "**destino**"
-
-msgid "**points**"
-msgstr "**puntos**"
-
-msgid "**via vertices**"
-msgstr "**vértices**"
-
-msgid "**end vids**"
-msgstr "**destinos**"
-
-msgid "`Combinations SQL`_"
-msgstr "`SQL de combinaciones`_"
-
-msgid "``epsilon``"
-msgstr "``epsilon``"
-
-msgid "``directed``"
-msgstr "``directed``"
-
-msgid "**ANY-NUMERICAL**"
-msgstr "**FLOTANTES**"
-
-msgid "**ANY-INTEGER**"
-msgstr "**ENTEROS**"
-
-msgid "``p_open``"
-msgstr "``p_open``"
-
-msgid "``p_close``"
-msgstr "``p_close``"
-
-msgid "`Matrix SQL`_"
-msgstr "`SQL de matriz`_"
-
-msgid "RETURNS SET OF"
-msgstr "REGRESA CONJUNTO DE"
-
-msgid "``p_service``"
-msgstr "``p_service``"
-
-msgid "**Supported versions:**"
-msgstr "**Versiones Soportadas:**"
-
-msgid "``d_open``"
-msgstr "``d_open``"
-
-msgid "``d_service``"
-msgstr "``d_service``"
-
-msgid "``p_node_id``"
-msgstr "``p_node_id``"
-
-msgid "``d_node_id``"
-msgstr "``d_node_id``"
