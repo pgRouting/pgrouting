@@ -129,19 +129,21 @@
 # #-#-#-#-#  TSP-family.po (pgRouting v3.4.0-dev)  #-#-#-#-#
 # #-#-#-#-#  VRP-category.po (pgRouting v3.4.0-dev)  #-#-#-#-#
 # #-#-#-#-#  withPoints-family.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-23 16:50+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2022-09-29 00:46+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/"
+"pgrouting-develop/ja/>\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.14.1\n"
 "Generated-By: Babel 2.10.3\n"
 
 #, fuzzy
@@ -448,7 +450,7 @@ msgid "Proposed"
 msgstr ""
 
 msgid "Proposed functions for next mayor release."
-msgstr "次期リリース予定の機能"
+msgstr "次期リリース予定の機能。"
 
 msgid "They are not officially in the current release."
 msgstr "現在のリリースでは公式ではありません。"
@@ -480,9 +482,8 @@ msgid ""
 ":doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph."
 msgstr ""
 
-#, fuzzy
 msgid "In general:"
-msgstr "概要"
+msgstr "概要:"
 
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/KSP-"
@@ -705,10 +706,10 @@ msgid "Traveling Sales Person - Family of functions"
 msgstr "巡回セールスマン問題の関連機能"
 
 msgid ":doc:`pgr_TSP` - When input is given as matrix cell information."
-msgstr ":doc:`pgr_TSP` - 引数に行列のマトリクスが与えられたとき"
+msgstr ":doc:`pgr_TSP` - 引数に行列のマトリクスが与えられたとき。"
 
 msgid ":doc:`pgr_TSPeuclidean` - When input are coordinates."
-msgstr ":doc:`pgr_TSPeuclidean` - 引数に一連の座標が与えられたとき"
+msgstr ":doc:`pgr_TSPeuclidean` - 引数に一連の座標が与えられたとき。"
 
 msgid "Table of Contents"
 msgstr "目次"
@@ -743,7 +744,7 @@ msgid ""
 "A discussion about the work of Hamilton & Kirkman can be found in the book "
 "**Graph Theory (Biggs et  al. 1976)**."
 msgstr ""
-"Hamilton & Kirkman の業績についての議論は **Graph Theory (Biggs et  al. "
+"Hamilton & Kirkman の業績についての議論は **Graph Theory (Biggs et al. "
 "1976)** という書籍に見出すことができます。"
 
 msgid "ISBN-13: 978-0198539162"
@@ -761,11 +762,12 @@ msgid ""
 "homepages.cwi.nl/~lex/files/histco.ps>`__"
 msgstr ""
 
+#, fuzzy
 msgid "To calculate the number of different tours through :math:`n` cities:"
-msgstr " :math:`n` 都市を巡る様々なツアーの数を計算するには："
+msgstr ":math:`n` 都市を巡る様々なツアーの数を計算するには："
 
 msgid "Given a starting city,"
-msgstr "出発する都市が与えられる。"
+msgstr "出発する都市が与えられる,"
 
 msgid "There are :math:`n-1` choices for the second city,"
 msgstr "2番目の都市のための :math:`n-1` の選択肢があり、"
@@ -1313,13 +1315,13 @@ msgid "Set of |matrix-result|"
 msgstr ""
 
 msgid "Identifier of the starting vertex."
-msgstr "開始ノードの識別子"
+msgstr "開始ノードの識別子。"
 
 msgid "``end_vid``"
 msgstr ""
 
 msgid "Identifier of the ending vertex."
-msgstr "終了ノードの識別子"
+msgstr "終了ノードの識別子。"
 
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
 msgstr ""
@@ -3925,31 +3927,27 @@ msgid "Dijkstra - Family of functions"
 msgstr "ダイクストラ関連機能"
 
 msgid ":doc:`pgr_dijkstra` - Dijkstra's algorithm for the shortest paths."
-msgstr ""
-":doc:'pgr_dijkstra' - 最短経路を求めるためのダイクストラ・アルゴリズム。"
+msgstr ":doc:'pgr_dijkstra' - 最短経路を求めるためのダイクストラ・アルゴリズム。"
 
 msgid ":doc:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths."
 msgstr ":doc:'pgr_dijkstraCost' - 最短経路の総コストを集計します。"
 
 msgid ""
 ":doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix."
-msgstr ""
-":doc:'pgr_dijkstraCostMatrix' - pgr_dijkstra を使用してコストマトリックスを作"
-"成します。"
+msgstr ":doc:'pgr_dijkstraCostMatrix' - pgr_dijkstra "
+"を使用してコストマトリックスを作成します。"
 
 msgid ""
 ":doc:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament "
 "information."
-msgstr ""
-":doc:'pgr_drivingDistance' - pgr_dijkstra を使用して対象エリアの情報を計算し"
-"ます。"
+msgstr ":doc:'pgr_drivingDistance' - pgr_dijkstra "
+"を使用して対象エリアの情報を計算します。"
 
 msgid ""
 ":doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K shortest "
 "paths."
-msgstr ""
-":doc:'pgr_KSP' - pgr_dijkstraでYenアルゴリズムを使用してK最短経路を取得しま"
-"す。"
+msgstr ":doc:'pgr_KSP' - "
+"pgr_dijkstraでYenアルゴリズムを使用してK最短経路を取得します。"
 
 msgid ":doc:`pgr_dijkstraVia` - Get a route of a seuence of vertices."
 msgstr ":doc:'pgr_dijkstraVia' - 連続したノードの経路を取得します。"
@@ -4024,7 +4022,7 @@ msgstr ""
 "`"
 
 msgid "and"
-msgstr "and"
+msgstr ""
 
 msgid ":math:`source = \\bigcup source_i`,"
 msgstr ":math:`source = \\bigcup source_i`,"
@@ -4033,13 +4031,13 @@ msgid ":math:`target = \\bigcup target_i`,"
 msgstr ":math:`target = \\bigcup target_i`,"
 
 msgid "The graphs are defined as follows:"
-msgstr "グラフは次のように定義されます。"
+msgstr "グラフは次のように定義されます:"
 
 msgid "Directed graph"
 msgstr "導かれたグラフ"
 
 msgid "The weighted directed graph, :math:`G_d(V,E)`, is definied by:"
-msgstr "重みづけされた有向グラフ :math:'G_d(V,E)''は、次のように定義されます。"
+msgstr "重みづけされた有向グラフ :math:'G_d(V,E)''は、次のように定義されます:"
 
 msgid "the set of vertices  :math:`V`"
 msgstr "ノードのセット :math:`V`"
@@ -4107,10 +4105,10 @@ msgid "Given:"
 msgstr "与えられるもの:"
 
 msgid ":math:`start_{vid} \\in V` a starting vertex"
-msgstr ":math:`start_{vid} \\in V` a starting vertex"
+msgstr ""
 
 msgid ":math:`end_{vid} \\in V` an ending vertex"
-msgstr ":math:`end_{vid} \\in V` an ending vertex"
+msgstr ""
 
 msgid ""
 ":math:`G(V,E) = \\begin{cases} G_d(V,E) & \\quad \\text{ if6 } directed = "
@@ -4182,12 +4180,11 @@ msgstr ""
 msgid ""
 ":math:`path\\_seq` indicates the relative position in the path of the :math:"
 "`node` or :math:`edge`."
-msgstr ""
-":math:'path\\_seq' は、:math:'node' または :math:'edge' の経路内の相対位置を"
-"示しています。"
+msgstr ":math:`path\\_seq' は、:math:'node' または :math:'edge' "
+"の経路内の相対位置を示しています。"
 
 msgid ":math:`cost` is the cost of the edge to be used to go to the next node."
-msgstr ":math:'cost'は、次のノードに移動するために使用するエッジのコストです。"
+msgstr ":math:`cost` は、次のノードに移動するために使用するエッジのコストです。"
 
 msgid ""
 ":math:`agg\\_cost` is the cost from the :math:`start_{vid}` up to the node."
@@ -4554,7 +4551,7 @@ msgid "Identifier of the edge in the original query (edges_sql)."
 msgstr ""
 
 msgid "**start_vid**"
-msgstr "**start_vid**"
+msgstr ""
 
 msgid "**end_vid**"
 msgstr "**end_vid**"
@@ -4588,7 +4585,7 @@ msgid "Residual capacity of the edge in the direction (source, target)."
 msgstr ""
 
 msgid "**cost**"
-msgstr "**cost**"
+msgstr ""
 
 msgid ""
 "The cost of sending this flow through the edge in the direction (source, "
@@ -4596,7 +4593,7 @@ msgid ""
 msgstr ""
 
 msgid "**agg_cost**"
-msgstr "**agg_cost**"
+msgstr ""
 
 msgid "The aggregate cost."
 msgstr ""
@@ -5042,9 +5039,8 @@ msgstr ""
 msgid "is of type ``TEXT``"
 msgstr ""
 
-#, fuzzy
 msgid ":math:`9`"
-msgstr ":math:`(n-1)!/2`."
+msgstr ":math:`9`"
 
 msgid "is on column ``target_id``"
 msgstr ""
@@ -5155,9 +5151,8 @@ msgstr ""
 msgid "Migrate by using:"
 msgstr ""
 
-#, fuzzy
 msgid ":doc:`pgr_dijkstra` when there are no restrictions,"
-msgstr ":doc:'pgr_dijkstraCost' - 最短経路の総コストを集計します。"
+msgstr ""
 
 msgid ":doc:`pgr_trsp` (One to One) when there are restrictions."
 msgstr ""
@@ -5293,9 +5288,8 @@ msgstr ""
 msgid "The integral types of the ``Edges SQL`` can only be ``INTEGER``."
 msgstr ""
 
-#, fuzzy
 msgid ":doc:`pgr_dijkstraVia` when there are no restrictions,"
-msgstr ":doc:'pgr_dijkstraCost' - 最短経路の総コストを集計します。"
+msgstr ""
 
 msgid ":doc:`pgr_trspVia` when there are restrictions."
 msgstr ""
@@ -7431,25 +7425,8 @@ msgstr ""
 msgid "Signature change"
 msgstr "変更機能"
 
-#, fuzzy
 msgid "Old signature no longer supported"
 msgstr ""
-"#-#-#-#-#  pgr_alphaShape.po (pgRouting v3.4.0-dev)  #-#-#-#-#\n"
-"古い機能はサポートされなくなりました\n"
-"#-#-#-#-#  pgr_aStar.po (pgRouting v3.4.0-dev)  #-#-#-#-#\n"
-"古い機能はサポートされなくなりました\n"
-"#-#-#-#-#  pgr_bdAstar.po (pgRouting v3.4.0-dev)  #-#-#-#-#\n"
-"古い機能はサポートされなくなりました\n"
-"#-#-#-#-#  pgr_bdDijkstra.po (pgRouting v3.4.0-dev)  #-#-#-#-#\n"
-"古い機能はサポートされなくなりました\n"
-"#-#-#-#-#  pgr_floydWarshall.po (pgRouting v3.4.0-dev)  #-#-#-#-#\n"
-"古い機能はサポートされなくなりました\n"
-"#-#-#-#-#  pgr_johnson.po (pgRouting v3.4.0-dev)  #-#-#-#-#\n"
-"古い機能はサポートされなくなりました\n"
-"#-#-#-#-#  pgr_KSP.po (pgRouting v3.4.0-dev)  #-#-#-#-#\n"
-"古い機能はサポートされなくなりました\n"
-"#-#-#-#-#  pgr_TSP.po (pgRouting v3.4.0-dev)  #-#-#-#-#\n"
-"長い間サポートされていない古い機能"
 
 msgid "Version 2.0.0"
 msgstr "バージョン 2.0.0"
@@ -7696,28 +7673,27 @@ msgid "Cost for going from start_vid to end_vid"
 msgstr "start_vid から end_vid まで行くのにかかるコスト"
 
 msgid "Returns SET OF ``(seq, node, cost, agg_cost)``"
-msgstr "``(seq, node, cost, agg_cost)`` の1セットを返却します。"
+msgstr "``(seq, node, cost, agg_cost)`` の1セットを返却します"
 
 msgid "Row sequence."
-msgstr "行番号"
+msgstr "行番号。"
 
 msgid "**node**"
 msgstr "**node**"
 
 msgid "Identifier of the node/coordinate/point."
-msgstr "ノード/座標/ポイントの識別子"
+msgstr "ノード/座標/ポイントの識別子。"
 
 msgid ""
 "Cost to traverse from the current ``node`` to the next ``node`` in the path "
 "sequence."
-msgstr ""
-"現在の ``ノード`` から次の ``ノード`` まで移動する際の経路にかかるコスト"
+msgstr "現在の ``ノード`` から次の ``ノード`` まで移動する際の経路にかかるコスト。"
 
 msgid "``0`` for the last row in the tour sequence."
 msgstr ""
 
 msgid "Aggregate cost from the ``node`` at ``seq = 1`` to the current node."
-msgstr "``seq = 1`` の ``ノード`` から現在のノードまでの総コスト"
+msgstr "``seq = 1`` の ``ノード`` から現在のノードまでの総コスト。"
 
 msgid "``0`` for the first row in the tour sequence."
 msgstr ""
@@ -7848,13 +7824,13 @@ msgid "``x``"
 msgstr ""
 
 msgid "X value of the coordinate."
-msgstr "座標のX値"
+msgstr "座標のX値。"
 
 msgid "``y``"
 msgstr ""
 
 msgid "Y value of the coordinate."
-msgstr "座標のY値"
+msgstr "座標のY値。"
 
 msgid "Test 29 cities of Western Sahara"
 msgstr ""
@@ -10654,13 +10630,12 @@ msgstr ""
 msgid "Graph ordering of pgRouting :doc:`sampledata`"
 msgstr ""
 
-#, fuzzy
 msgid "Returns SET OF ``(seq, node)``"
-msgstr "``(seq, node, cost, agg_cost)`` の1セットを返却します。"
+msgstr ""
 
 #, fuzzy
 msgid "Sequence of the order starting from 1."
-msgstr "開始ノードの識別子"
+msgstr "開始ノードの識別子。"
 
 msgid "New ordering in reverse order."
 msgstr ""
@@ -12252,29 +12227,24 @@ msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 msgid "pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
-#, fuzzy
 msgid ""
 "pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vid**, [``directed``]);"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
 
-#, fuzzy
 msgid ""
 "pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vids**, [``directed``]);"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
 
-#, fuzzy
 msgid ""
 "pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vid**, [``directed``]);"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
 
-#, fuzzy
 msgid ""
 "pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vids**, [``directed``]);"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
 
-#, fuzzy
 msgid "pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_, [``directed``]);"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm"
 msgstr ""
@@ -12665,7 +12635,7 @@ msgstr ""
 
 #, fuzzy
 msgid "For edge :math:`5`:"
-msgstr "エッジのセット:math:`E`"
+msgstr "エッジのセット :math:`5`:"
 
 msgid ""
 "``fraction``: The closest point from the **original point** is at the :math:"
@@ -12682,9 +12652,8 @@ msgid ""
 "from edge :math:`5`."
 msgstr ""
 
-#, fuzzy
 msgid "For edge :math:`8`:"
-msgstr "エッジのセット:math:`E`"
+msgstr "エッジのセット :math:`8`:"
 
 msgid ""
 "``fraction``: The closest point from the **original point** is at the :math:"
@@ -13109,11 +13078,11 @@ msgstr ""
 
 #, fuzzy
 msgid "Identifier of the starting vertex of the circuit."
-msgstr "開始ノードの識別子"
+msgstr "開始ノードの識別子。"
 
 #, fuzzy
 msgid "Identifier of the ending vertex of the circuit."
-msgstr "終了ノードの識別子"
+msgstr "終了ノードの識別子。"
 
 msgid "Identifier of the node in the path from a vid to next vid."
 msgstr ""
@@ -15778,7 +15747,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Show details on undirected graph."
-msgstr "導かれないグラフ"
+msgstr "導かれないグラフ。"
 
 msgid ""
 "From point :math:`1` and vertex :math:`6` to point :math:`3` to vertex :math:"
@@ -16483,9 +16452,8 @@ msgstr ""
 msgid "`Points SQL`_ query as described."
 msgstr ""
 
-#, fuzzy
 msgid "Identifier of the destination vertex."
-msgstr "開始ノードの識別子"
+msgstr "開始ノードの識別子。"
 
 msgid ""
 "Get :math:`2` paths using left side driving topology, from vertex :math:`1` "
