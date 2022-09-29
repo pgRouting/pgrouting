@@ -559,9 +559,6 @@ msgstr "**vértices**"
 msgid "**Root vid**"
 msgstr "**Raíz**"
 
-msgid "RETURNS SET OF |result-edge-color|"
-msgstr "REGRESA CONJUNTO DE"
-
 msgid "`Edges SQL`_"
 msgstr "`SQL de aristas`_"
 
