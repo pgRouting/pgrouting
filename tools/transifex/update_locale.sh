@@ -29,4 +29,7 @@ bash tools/transifex/remove_obsolete_entries.sh
 
 while read -r f; do git add "$f"; done < build/doc/locale_changes_po_pot.txt
 
+git restore --staged locale/*/LC_MESSAGES/index.po
+git restore locale/*/LC_MESSAGES/index.po
+
 popd > /dev/null || exit 1
