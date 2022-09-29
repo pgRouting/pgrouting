@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-29 02:23+0000\n"
-"PO-Revision-Date: 2022-09-29 15:49+0000\n"
+"PO-Revision-Date: 2022-09-29 16:37+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
@@ -522,7 +522,7 @@ msgstr ""
 "Esto permite que el algoritmo pase dos veces sobre el mismo vértice."
 
 msgid "`Edges SQL`_ query as described."
-msgstr "Consulta `SQL de aristas`_ como se describen."
+msgstr "`SQL de aristas`_ como se describen."
 
 msgid "`Restrictions SQL`_"
 msgstr "`SQL de restricciones`_"
@@ -6880,7 +6880,7 @@ msgstr ""
 "pgr_dijkstra(`SQL de aristas`_, **salida**, **destino**, [``directed``])"
 
 msgid "`Edges SQL`_:"
-msgstr "`SQL aristas`_:"
+msgstr "`SQL de aristas`_:"
 
 msgid "Is the first parameter."
 msgstr ""
@@ -14076,9 +14076,8 @@ msgstr ""
 msgid "pgr_extractVertices(`Edges SQL`_, [``dryrun``])"
 msgstr "pgr_dijkstraNear(Combinaciones)"
 
-#, fuzzy
 msgid "RETURNS SETOF |result-extract|"
-msgstr "Devuelve el conjunto de ``(node)``"
+msgstr "REGRESA CONJUNTO DE |result-extract|"
 
 msgid "When line geometry is known"
 msgstr "Cuando se conoce la geometría de línea"
@@ -14092,9 +14091,8 @@ msgstr "``geom``"
 msgid "``LINESTRING``"
 msgstr "``LINESTRING``"
 
-#, fuzzy
 msgid "Geometry of the edge."
-msgstr "Geometría LINESTRING de la arista."
+msgstr "Geometría de la arista."
 
 msgid ""
 "This inner query takes precedence over the next two inner query, therefore "
@@ -14132,13 +14130,12 @@ msgstr "Geometría POINT del vértice inicial."
 msgid "POINT geometry of the ending vertex."
 msgstr "Geometría POINT del vértice final."
 
-#, fuzzy
 msgid ""
 "This inner query takes precedence over the next inner query, therefore other "
 "columns are ignored when ``startpoint`` and ``endpoint`` columns appears."
 msgstr ""
 "Esta consulta interna tiene prioridad sobre la siguiente consulta interna, "
-"por lo que se omiten otras columnas cuando aparecen las columnas "
+"por lo que otras columnas son ignoradas cuando aparecen las columnas "
 "``startpoint`` y ``endpoint``."
 
 msgid "When identifiers of vertices are known"
@@ -14154,16 +14151,14 @@ msgstr ""
 msgid "``NULL`` When the ``id`` is not part of the inner query"
 msgstr "``NULL`` When the ``id`` no forma parte de la consulta interna"
 
-#, fuzzy
 msgid "X value of the point geometry"
-msgstr "Valor Y de la geometría POINT"
+msgstr "Valor X de la geometría del punto"
 
 msgid "``NULL`` When no geometry is provided"
 msgstr "``NULL`` Cuando no se proporciona geometría"
 
-#, fuzzy
 msgid "Geometry of the point"
-msgstr "Geometría del PUNTO"
+msgstr "Geometría del punto"
 
 msgid "Dryrun execution"
 msgstr "Ejecución de Dryrun"
@@ -14233,9 +14228,8 @@ msgstr ""
 msgid "**options:** ``[cap, partial, dryrun]``"
 msgstr ""
 
-#, fuzzy
 msgid "RETURNS SET OF |result-find|"
-msgstr "Devuelve el conjunto de ``(node)``"
+msgstr "REGRESA CONJUNTO DE |result-find|"
 
 msgid "One point"
 msgstr ""
@@ -14334,9 +14328,8 @@ msgstr ""
 msgid "The ``LINESTRING`` geometry of the edge."
 msgstr ""
 
-#, fuzzy
 msgid "Returns set of |result-find|"
-msgstr "Devuelve el conjunto de ``(node)``"
+msgstr "Regresa conjunto de |result-find|"
 
 msgid "When :math:`cap = 1`, it is the closest edge."
 msgstr ""
@@ -14734,9 +14727,8 @@ msgstr ""
 "para cada par de nodos en el grafo, para *grafos densos*. Usamos la "
 "implementación de Boost que se ejecuta en :math:`\\Theta(V^3)` tiempo,"
 
-#, fuzzy
 msgid "pgr_floydWarshall(`Edges SQL`_, [``directed``])"
-msgstr "pgr_dijkstraNear(Combinaciones)"
+msgstr "pgr_floydWarshall(`SQL de aristas`_, [``directed``])"
 
 msgid "For a directed subgraph with edges :math:`\\{1, 2, 3, 4\\}`."
 msgstr "Para sub-grafo con aristas :math:`\\{1, 2, 3, 4\\}`."
@@ -14783,13 +14775,11 @@ msgstr "Nueva función **oficial**"
 msgid "Get complete details of pgRouting version information"
 msgstr "Obtener los detalles de la información de la versión de pgRouting"
 
-#, fuzzy
 msgid "pgr_full_version()"
-msgstr "``pgr_full_version``"
+msgstr "pgr_full_version()"
 
-#, fuzzy
 msgid "RETURNS |result-version|"
-msgstr "Devuelve el conjunto de ``(node)``"
+msgstr "REGRESA |result-version|"
 
 msgid "Information about when this documentation was built"
 msgstr "Información sobre cuándo se construyó esta documentación"
@@ -14848,31 +14838,27 @@ msgstr "``hash``"
 msgid "Git hash of pgRouting build"
 msgstr "Hash de Git de pgRouting"
 
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
 "pgr_hawickCircuits.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/"
 "pgr_hawickCircuits.html>`__)"
 msgstr ""
 "**Versiones soportadas** `Última <https://docs.pgrouting.org/latest/en/"
-"reference.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/reference."
-"html>`__)"
+"pgr_hawickCircuits.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/"
+"pgr_hawickCircuits.html>`__)"
 
-#, fuzzy
 msgid "``pgr_hawickCircuits - Experimental``"
-msgstr "pgr_pickDeliver - Experimental"
+msgstr "``pgr_hawickCircuits - Experimental``"
 
-#, fuzzy
 msgid ""
 "``pgr_hawickCircuits`` —  Returns the list of cirucits using hawick circuits "
 "algorithm."
 msgstr ""
-"``pgr_bdDijkstra`` — Devuelve la(s) rutas más cortas mediante el algoritmo "
-"Bidirectional Dijkstra."
+"``pgr_hawickCircuits`` — Enumeración de los circuitos usando el algoritmo de "
+"circutos de Hawick."
 
-#, fuzzy
 msgid "``pgr_hawickCircuits``"
-msgstr "``pgr_kruskal``"
+msgstr "``pgr_hawickCircuits``"
 
 msgid ""
 "Hawick Circuit algorithm, is published in 2008 by Ken Hawick and Health A. "
@@ -14904,13 +14890,11 @@ msgstr ""
 msgid "Time Complexity: :math:`O((V + E) (c + 1))`"
 msgstr ""
 
-#, fuzzy
 msgid ":math:`|c|` is the number of circuts in the graph."
-msgstr ":math:`|V|` es la cantidad de vertices del grafo."
+msgstr ":math:`|c|` es la cantidad de vertices del grafo."
 
-#, fuzzy
 msgid "pgr_hawickCircuits(`Edges SQL`_)"
-msgstr "``pgr_kruskal``"
+msgstr "pgr_hawickCircuits(`SQL de aristas`_)"
 
 msgid "RETURNS SET OF |generic-result|"
 msgstr ""
@@ -14918,34 +14902,29 @@ msgstr ""
 msgid "Circuits present in the pgRouting :doc:`sampledata`"
 msgstr "Circuitos dentro de los :doc:`sampledata` de pgRouting"
 
-#, fuzzy
 msgid "Id of the circuit starting from ``1``"
-msgstr "Valor secuencial a partir de ``1``"
+msgstr "Identificador del circuito comenzando con ``1``"
 
 msgid "Relative postion in the path. Has value ``0`` for beginning of the path"
 msgstr ""
 "Posición relativa en la camino. Tiene el valor ``0`` para el inicio de la "
 "ruta"
 
-#, fuzzy
 msgid "Identifier of the starting vertex of the circuit."
-msgstr "Identificador del vértice inicial de la ruta."
+msgstr "Identificador del vértice inicial del circuito."
 
-#, fuzzy
 msgid "Identifier of the ending vertex of the circuit."
-msgstr "Identificador del vértice final de la ruta."
+msgstr "Identificador del vértice final del circuito."
 
-#, fuzzy
 msgid "Identifier of the node in the path from a vid to next vid."
-msgstr "Identificador del nodo en la ruta de ``start_vid`` a ``end_vid``."
+msgstr "Identificador del nodo en la ruta de un vértice al siguiente vértice."
 
-#, fuzzy
 msgid ""
 "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/1_78_0/libs/"
 "graph/doc/hawick_circuits.html>`__"
 msgstr ""
-"`Boost: es bipartido <https://www.boost.org/libs/graph/doc/is_bipartite."
-"html>`__"
+"`Boost: Algoritmo de Circutios de Hawick <https://www.boost.org/doc/libs/"
+"1_78_0/libs/graph/doc/hawick_circuits.html>`__"
 
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
@@ -14998,9 +14977,8 @@ msgstr "El algoritmo no considera los costos transversales en los cálculos."
 msgid "Running time: :math:`O(|V|)`"
 msgstr "Tiempo de ejecución: :math:`O(|V|)`"
 
-#, fuzzy
 msgid "pgr_isPlanar(`Edges SQL`)"
-msgstr "pgr_bipartite"
+msgstr "pgr_isPlanar(`SQL de aristas`)"
 
 msgid "RETURNS ``BOOLEAN``"
 msgstr ""
@@ -15008,9 +14986,8 @@ msgstr ""
 msgid "Returns a boolean ``(pgr_isplanar)``"
 msgstr "Devuelve un valor boolean ``(pgr_isplanar)``"
 
-#, fuzzy
 msgid "``pgr_isplanar``"
-msgstr "pgr_isPlanar"
+msgstr "``pgr_isplanar``"
 
 msgid "`true` when the graph is planar."
 msgstr "`true` cuando el grafo es planar."
@@ -15134,9 +15111,8 @@ msgstr ""
 msgid "EMPTY SET is returned when there are no edges in the graph."
 msgstr "EMPTY SET es regresado cuando no hay aristas en el grafo."
 
-#, fuzzy
 msgid "pgr_kruskal(`Edges SQL`_)"
-msgstr "``pgr_kruskal``"
+msgstr "pgr_kruskal(`SQL de aristas`_)"
 
 msgid "RETURNS SET OF |result-mst|"
 msgstr ""
@@ -15187,13 +15163,11 @@ msgid "Breath First Search Running time: :math:`O(E + V)`"
 msgstr ""
 "Tiempo de ejecución de la Primera Búsqueda de Anchura: :math:`O(E + V)`"
 
-#, fuzzy
 msgid "pgr_kruskalBFS(`Edges SQL`_, **root vid**, [``max_depth``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr "pgr_kruskalBFS(`SQL de aristas`_, **Raíz**, [``max_depth``])"
 
-#, fuzzy
 msgid "pgr_kruskalBFS(`Edges SQL`_, **root vids**, [``max_depth``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr "pgr_kruskalBFS(`SQL de aristas`_, **raices**, [``max_depth``])"
 
 msgid "The Minimum Spanning Tree having as root vertex :math:`6`"
 msgstr "El Árbol de Expansión Mínimo que tiene como vértice raíz :math:`6`"
@@ -15358,13 +15332,11 @@ msgstr ""
 msgid "Running time: :math:`O((V+E)log(V+E))`"
 msgstr "Tiempo de ejecución: :math:`O((V+E)log(V+E))`"
 
-#, fuzzy
 msgid "pgr_lengauerTarjanDominatorTree(`Edges SQL`_, **root vertex**)"
-msgstr "pgr_lengauerTarjanDominatorTree"
+msgstr "pgr_lengauerTarjanDominatorTree(`SQL de aristas`_, **raíz**)"
 
-#, fuzzy
 msgid "RETURNS SET OF |result-idom|"
-msgstr "Devuelve el conjunto de ``(edge)``"
+msgstr "REGRESA CONJUNTO DE |result-idom|"
 
 msgid "The dominator tree with root vertex :math:`5`"
 msgstr "El árbol dominante con vértice raíz :math:`5`"
@@ -15381,9 +15353,8 @@ msgstr "Devuelve el conjunto de ``(seq, vertex_id, idom)``"
 msgid "Identifier of vertex ."
 msgstr "Identificador de vértice."
 
-#, fuzzy
 msgid "``idom``"
-msgstr "``id``"
+msgstr "``idom``"
 
 msgid "Immediate dominator of vertex."
 msgstr "Dominador inmediato del vértice."
@@ -15452,9 +15423,8 @@ msgstr ""
 "Dos vértices de L(G) son adyacentes si y sólo si sus aristas "
 "correspondientes comparten un punto final común en G."
 
-#, fuzzy
 msgid "pgr_lineGraph(`Edges SQL`_, [``directed``])"
-msgstr "pgr_dijkstraNear(Combinaciones)"
+msgstr "pgr_lineGraph(`SQL de aristas`_, [``directed``])"
 
 msgid "RETURNS SET OF |result-lineg|"
 msgstr ""
@@ -15519,9 +15489,8 @@ msgstr ""
 "**Versiones no sustentadas:** `2.6 <https://docs.pgrouting.org/2.6/en/"
 "pgr_lineGraphFull.html>`__"
 
-#, fuzzy
 msgid "``pgr_lineGraphFull`` - Experimental"
-msgstr "pgr_lineGraphFull - Experimental"
+msgstr "``pgr_lineGraphFull`` - Experimental"
 
 msgid ""
 "``pgr_lineGraphFull`` — Transforms a given graph into a new graph where all "
@@ -15533,15 +15502,14 @@ msgstr ""
 msgid "Version 2.6.0"
 msgstr "Versión 2.6.0"
 
-#, fuzzy
 msgid ""
 "``pgr_lineGraphFull``, converts original directed graph to a directed line "
 "graph by converting each vertex to a complete graph and keeping all the "
 "original edges. The new connecting edges have a cost 0 and go between the "
 "adjacent original edges, respecting the directionality."
 msgstr ""
-"pgr_lineGraphFull, convierte un grafo dirigido original a un grafo lineal "
-"dirigido, convirtiendo cada vértice en un grafo completo y manteniendo todas "
+"``pgr_lineGraphFull``, convierte un grafo dirigido a un grafo dirigido "
+"lineal, convirtiendo cada vértice en un grafo completo y manteniendo todas "
 "las aristas originales. Las nuevas aristas de conexión tienen un costo de 0 "
 "y van entre las aristas originales adyacentes, respetando la direccionalidad."
 
@@ -15589,9 +15557,8 @@ msgstr ""
 msgid "Running time: TBD"
 msgstr "Tiempo de ejecución: TBD"
 
-#, fuzzy
 msgid "pgr_lineGraphFull(`Edges SQL`_)"
-msgstr "pgr_lineGraphFull"
+msgstr "pgr_lineGraphFull(`SQL de aristas`_)"
 
 msgid "RETURNS SET OF |result-linegf|"
 msgstr ""
@@ -15634,19 +15601,17 @@ msgstr "|second|"
 msgid "second"
 msgstr "segundo"
 
-#, fuzzy
 msgid ""
 "In the transformed graph, all of the edges from the original graph are still "
 "present (yellow), but we now have additional edges for every turn that could "
 "be made across vertex 7 (orange)."
 msgstr ""
 "En el grafo transformado, todas las aristas del grafo original siguen "
-"presentes (amarillos), pero ahora tenemos aristas adicionales para cada giro "
-"que se podría hacer a través del vértice 6 (naranja)."
+"presentes (amarillos), pero ahora hay aristas adicionales para cada giro que "
+"se podría hacer a través del vértice 7 (naranja)."
 
-#, fuzzy
 msgid "Creating table that identifies transformed vertices"
-msgstr "Para crear una tabla que identifique vértices transformados"
+msgstr "Crear una tabla que identifica los vértices transformados"
 
 msgid ""
 "The vertices in the transformed graph are each created by splitting up the "
@@ -15851,13 +15816,11 @@ msgid ""
 "The algorithm does not considers geometric topology in the calculations."
 msgstr "El algoritmo no considera la topología geométrica en los cálculos."
 
-#, fuzzy
 msgid "pgr_makeConnected(`Edges SQL`_)"
-msgstr "pgr_connectedComponents"
+msgstr "pgr_makeConnected(`SQL de aristas`_)"
 
-#, fuzzy
 msgid "RETURNS SET OF |result-component-make|"
-msgstr "Devuelve el conjunto de``(seq, component, node)``"
+msgstr "REGRESA CONJUNTO DE |result-component-make|"
 
 msgid ""
 "Query done on :doc:`sampledata` network gives the list of edges that are "
@@ -15866,9 +15829,8 @@ msgstr ""
 "La consulta realizada en la red de :doc:`sampledata` proporciona la lista de "
 "aristas que se necesitan en el grafo para conectarlo."
 
-#, fuzzy
 msgid "Returns set of |result-component-make|"
-msgstr "Devuelve el conjunto de``(seq, component, node)``"
+msgstr "Regresa conjunto de |result-component-make|"
 
 msgid "https://www.boost.org/libs/graph/doc/make_connected.html"
 msgstr "https://www.boost.org/libs/graph/doc/make_connected.html"
@@ -15910,9 +15872,8 @@ msgstr ""
 msgid "Deprecated signature"
 msgstr ""
 
-#, fuzzy
 msgid "``pgr_maxCardinalityMatch(text,boolean)``"
-msgstr "pgr_maxCardinalityMatch"
+msgstr "``pgr_maxCardinalityMatch(text,boolean)``"
 
 msgid "``directed => false`` when used."
 msgstr ""
@@ -15937,10 +15898,8 @@ msgstr ""
 msgid "There may be many maximum matchings."
 msgstr "Puede haber muchas coincidencias máximas."
 
-#, fuzzy
 msgid "Calculates one possible maximum cardinality matching in a graph."
-msgstr ""
-"Calcula **una** posible coincidencia máxima de cardinalidad en un grafo."
+msgstr "Calcula una posible coincidencia máxima de cardinalidad en un grafo."
 
 msgid "Running time: :math:`O( E*V * \\alpha(E,V))`"
 msgstr "Tiempo de ejecución: :math:`O( E*V * \\alpha(E,V))`"
@@ -15948,9 +15907,8 @@ msgstr "Tiempo de ejecución: :math:`O( E*V * \\alpha(E,V))`"
 msgid ":math:`\\alpha(E,V)` is the inverse of the `Ackermann function`_."
 msgstr ":math:`\\alpha(E,V)` es inverso a `Ackermann function`_."
 
-#, fuzzy
 msgid "pgr_maxCardinalityMatch(`Edges SQL`_)"
-msgstr "pgr_maximumcardinalitymatching"
+msgstr "pgr_maxCardinalityMatch(`SQL de aristas`_)"
 
 msgid "Using all edges."
 msgstr ""
@@ -16591,9 +16549,8 @@ msgstr ""
 "pgr_pickDeliver.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
 "pgr_pickDeliver.html>`__"
 
-#, fuzzy
 msgid "``pgr_pickDeliver`` - Experimental"
-msgstr "pgr_pickDeliver - Experimental"
+msgstr "``pgr_pickDeliver`` - Experimental"
 
 msgid "``pgr_pickDeliver`` - Pickup and delivery Vehicle Routing Problem"
 msgstr ""
@@ -16678,9 +16635,8 @@ msgstr ""
 msgid "**options:** ``[factor, max_cycles, initial_sol]``"
 msgstr ""
 
-#, fuzzy
 msgid "RETURNS SET OF |result-pickdrop|"
-msgstr "Devuelve el conjunto de ``(node)``"
+msgstr "REGRESA CONJUNTO DE |result-pickdrop|"
 
 msgid "Solve the following problem"
 msgstr ""
@@ -16697,9 +16653,8 @@ msgstr "Los parámetros son:"
 msgid "A `SELECT` statement that returns the following columns:"
 msgstr "Una instrucción `SELECT` que devuelve las siguientes columnas:"
 
-#, fuzzy
 msgid "id, demand"
-msgstr "**demanda**"
+msgstr "id, demand"
 
 msgid "p_node_id, p_open, p_close, [p_service,]"
 msgstr ""
@@ -16707,9 +16662,8 @@ msgstr ""
 msgid "d_node_id, d_open, d_close, [d_service,]"
 msgstr ""
 
-#, fuzzy
 msgid "id, capacity"
-msgstr "``capacity``"
+msgstr "id, capacity"
 
 msgid "start_node_id, start_open, start_close [, start_service,]"
 msgstr ""
@@ -16744,9 +16698,8 @@ msgstr ""
 "en/src/vrppdtw/doc/index.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/"
 "src/vrppdtw/doc/index.html>`__"
 
-#, fuzzy
 msgid "``pgr_pickDeliverEuclidean`` - Experimental"
-msgstr "pgr_pickDeliverEuclidean - Experimental"
+msgstr "``pgr_pickDeliverEuclidean`` - Experimental"
 
 msgid ""
 "``pgr_pickDeliverEuclidean`` - Pickup and delivery Vehicle Routing Problem"
@@ -16791,9 +16744,10 @@ msgstr "Seis diferentes soluciones iniciales opcionales"
 msgid "the best solution found will be result"
 msgstr "la mejor solución encontrada será el resultado"
 
-#, fuzzy
 msgid "pgr_pickDeliverEuclidean(`Orders SQL`_, `Vehicles SQL`_, [**options**])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_pickDeliverEuclidean(`SQL de órdenes`_, `SQL de vehículos`_, "
+"[**opciones**])"
 
 msgid "p_x, p_y, p_open, p_close, [p_service,]"
 msgstr ""
@@ -16875,9 +16829,8 @@ msgstr ""
 msgid "Prim's running time: :math:`O(E * log V)`"
 msgstr "Tiempo de ejecución de Prim: :math:`O(E*log V)`"
 
-#, fuzzy
 msgid "pgr_prim(`Edges SQL`_)"
-msgstr "pgr_edgeColoring"
+msgstr "pgr_prim(`SQL de aristas`_)"
 
 msgid "Minimum spanning forest of a subgraph"
 msgstr "Bosque de Expansión Mínimo de un subgrafo"
@@ -16922,13 +16875,11 @@ msgstr ""
 "Primera Búsqueda de Respiración del Árbol de Expansión Mínimo creado con el "
 "algoritmo de Prim."
 
-#, fuzzy
 msgid "pgr_primBFS(`Edges SQL`_, **root vid**, [``max_depth``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr "pgr_primBFS(`SQL de aristas`_, **Raíz**, [``max_depth``])"
 
-#, fuzzy
 msgid "pgr_primBFS(`Edges SQL`_, **root vids**, [``max_depth``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr "pgr_primBFS(`SQL de aristas`_, **Raíces**, [``max_depth``])"
 
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
@@ -16999,13 +16950,11 @@ msgstr ""
 "Búsqueda de Profundidad del Árbol de Expansión Mínima creado utilizando el "
 "algoritmo de Prim."
 
-#, fuzzy
 msgid "pgr_primDFS(`Edges SQL`_, **root vid**, [``max_depth``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr "pgr_primBFS(`SQL de aristas`_, **Raíz**, [``max_depth``])"
 
-#, fuzzy
 msgid "pgr_primDFS(`Edges SQL`_, **root vids**, [``max_depth``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr "pgr_primBFS(`SQL de aristas`_, **Raíces**, [``max_depth``])"
 
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
@@ -17149,9 +17098,8 @@ msgstr ":math:`d` es el grado máximo de los vértices en el grafo,"
 msgid ":math:`k` is the number of colors used."
 msgstr ":math:`k` es el número de colores utilizados."
 
-#, fuzzy
 msgid "pgr_sequentialVertexColoring(`Edges SQL`_)"
-msgstr "pgr_sequentialVertexColoring"
+msgstr "pgr_sequentialVertexColoring(`SQL de aristas`_)"
 
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
@@ -17178,9 +17126,8 @@ msgstr ""
 "``pgr_stoerWagner`` — El corte mínimo del grafo usando el algoritmo Stoer-"
 "Wagner."
 
-#, fuzzy
 msgid "Version 3.0"
-msgstr "Versión 3.4.0"
+msgstr "Versión 3.0"
 
 msgid ""
 "In graph theory, the Stoer–Wagner algorithm is a recursive algorithm to "
@@ -17245,9 +17192,8 @@ msgstr ""
 msgid "Running time: :math:`O(V*E + V^2*log V)`."
 msgstr "Tiempo de ejecución: :math:`O(V*E + V^2*log V)`."
 
-#, fuzzy
 msgid "pgr_stoerWagner(`Edges SQL`_)"
-msgstr "pgr_stoerWagner"
+msgstr "pgr_stoerWagner(`SQL de aristas`_)"
 
 msgid "RETURNS SET OF |result-mincut|"
 msgstr ""
@@ -17331,9 +17277,8 @@ msgstr "Funciona paragrafos **dirigidos**."
 msgid "Components are described by vertices identifiers."
 msgstr "Los componentes se describen mediante identificadores de vértices."
 
-#, fuzzy
 msgid "pgr_strongComponents(`Edges SQL`_)"
-msgstr "pgr_connectedComponents"
+msgstr "pgr_strongComponents(`SQL de aristas`_)"
 
 msgid "The strong components of the graph"
 msgstr "Los componentes fuertes del grafo"
@@ -17398,9 +17343,8 @@ msgstr ""
 msgid "The returned values are ordered in topological order:"
 msgstr "Los valores devueltos se ordenan en orden topológico:"
 
-#, fuzzy
 msgid "pgr_topologicalSort(`Edges SQL`_)"
-msgstr "pgr_topologicalSort"
+msgstr "pgr_topologicalSort(`SQL de aristas`_)"
 
 msgid "RETURNS SET OF |result-toposort|"
 msgstr ""
@@ -17479,13 +17423,11 @@ msgstr "Tiempo de ejecución: :math:`O(|V||E|)`"
 msgid "The pgr_transitiveClosure function has the following signature:"
 msgstr "La función pgr_transitiveClosure tiene la siguiente firma:"
 
-#, fuzzy
 msgid "pgr_transitiveClosure(`Edges SQL`_)"
-msgstr "pgr_transitiveClosure"
+msgstr "pgr_transitiveClosure(`SQL de aristas`_)"
 
-#, fuzzy
 msgid "RETURNS SET OF |result-closure|"
-msgstr "Devuelve el conjunto de ``(node)``"
+msgstr "REGRESA CONJUNTO DE |result-closure|"
 
 msgid "Rechability of a subgraph"
 msgstr ""
@@ -17584,13 +17526,11 @@ msgstr ""
 msgid "New prototypes:"
 msgstr "Nuevos prototipos:"
 
-#, fuzzy
 msgid "``pgr_trspViaVertices``"
-msgstr "pgr_trspViaVertices"
+msgstr "``pgr_trspViaVertices``"
 
-#, fuzzy
 msgid "``pgr_trspViaEdges``"
-msgstr "pgr_trspViaEdges"
+msgstr "``pgr_trspViaEdges``"
 
 msgid ""
 "Turn restricted shortest path (TRSP) is an algorithm that receives turn "
@@ -17614,29 +17554,33 @@ msgstr ""
 msgid "Execute the **TRSP** algorithm with restrictions."
 msgstr ""
 
-#, fuzzy
 msgid ""
 "pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vid**, **end vid**, "
 "[``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_trsp(`SQL de aristas`_, `SQL de restricciones`_, **salida**, **destino**"
+", [``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vid**, **end vids**, "
 "[``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_trsp(`SQL de aristas`_, `SQL de restricciones`_, **salida**, **destinos**"
+", [``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vids**, **end vid**, "
 "[``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_trsp(`SQL de aristas`_, `SQL de restricciones`_, **salidas**, **destino**"
+", [``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vids**, **end vids**, "
 "[``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_trsp(`SQL de aristas`_, `SQL de restricciones`_, **salidas**, "
+"**destinos**, [``directed``])"
 
 msgid ""
 "pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, "
@@ -17709,27 +17653,26 @@ msgstr ""
 msgid "**NOTE** when this is done, ``U_turn_on_edge`` flag is ignored."
 msgstr ""
 
-#, fuzzy
 msgid ""
 "pgr_trspVia(`Edges SQL`_, `Restrictions SQL`_, **via vertices**, "
 "[**options**])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_trsp(`SQL de aristas`_, `SQL de restricciones`_,**vértices**, "
+"[``directed``])"
 
-#, fuzzy
 msgid ""
 "Find the route that visits the vertices :math:`\\{ 5, 1, 8\\}` in that order "
 "on an directed graph."
 msgstr ""
 "Encontrar la ruta que visita los vértices :math:`\\{ 5, 1, 8\\}` en ese "
-"orden, en un grafo **dirigido**."
+"orden, en un grafo dirigido."
 
-#, fuzzy
 msgid ""
 "All this examples are about the route that visits the vertices :math:`\\{5, "
 "7, 1, 8, 15\\}` in that order on a directed graph."
 msgstr ""
 "Todos estos ejemplos son sobre la ruta que visita los vértices :math:`\\{5, "
-"7, 1, 8, 15\\}` en ese orden, en un grafo **dirigido**."
+"7, 1, 8, 15\\}` en ese orden, en un grafo dirigido."
 
 msgid "Simulation of how algorithm works."
 msgstr "Sumulación del functionamiento del algoritmo."
@@ -18067,21 +18010,18 @@ msgstr ""
 "pgr_trsp_withPoints(`SQL de aristas`_, `SQL de restricciones`_, `SQL de "
 "combinaciones`_, `SQL de puntos`_, [**opciones**])"
 
-#, fuzzy
 msgid "**options:** ``[directed, driving_side, details]``"
-msgstr "**Grafo 4: No dirigido, con costo**"
+msgstr "**opciones:** ``[directed, driving_side, details]``"
 
 # | msgid ""
 # | "From point :math:`1` to vertex :math:`3` with details on a **left** "
 # | "driving side configuration on a **directed** graph with **details**."
-#, fuzzy
 msgid ""
 "From point :math:`1` to vertex :math:`10` with details on a left driving "
 "side configuration on a directed graph with details."
 msgstr ""
-"Desde el punto :math:`1` al vértice :math:`3` con detalles en una "
-"configuración de manejo por la **izquierda** en un grafo **dirigido** con "
-"**detalles**."
+"Desde el punto :math:`1` al vértice :math:`10` con detalles en una "
+"configuración de manejo por la izquierda en un grafo dirigido con detalles."
 
 # | msgid "From point :math:`1` to point :math:`3` and vertex :math:`5`."
 #, fuzzy
@@ -18637,7 +18577,6 @@ msgstr ""
 msgid "Running time: :math:`O(| start\\_vids | * (V \\log V + E))`"
 msgstr "Tiempo de ejecución: :math:`O(| start\\_vids | * (V \\log V + E))`"
 
-#, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vid**, **end vid**, "
 "[**options**])"
@@ -18645,7 +18584,6 @@ msgstr ""
 "pgr_withPointsCost(`SQL de aristas`_, 'SQL de puntos`_, **salida**, "
 "**destino**, [**opciones**])"
 
-#, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vid**, **end vids**, "
 "[**options**])"
@@ -18653,7 +18591,6 @@ msgstr ""
 "pgr_withPointsCost(`SQL de aristas`_, 'SQL de puntos`_, **salida**, "
 "**destinos**, [**opciones**])"
 
-#, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vids**, **end vid**, "
 "[**options**])"
@@ -18661,7 +18598,6 @@ msgstr ""
 "pgr_withPointsCost(`SQL de aristas`_, 'SQL de puntos`_, **salidas**, "
 "**destino**, [**opciones**])"
 
-#, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vids**, **end "
 "vids**, [**options**])"
@@ -18669,7 +18605,6 @@ msgstr ""
 "pgr_withPointsCost(`SQL de aristas`_, 'SQL de puntos`_, **salidas**, "
 "**destinos**, [**opciones**])"
 
-#, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, `Combinations SQL`_, "
 "[**options**])"
@@ -18695,7 +18630,6 @@ msgstr ""
 msgid "From point :math:`1` to vertex :math:`10` with defaults"
 msgstr "Del punto :math:`1` al punto :math:`3` con valores por defecto"
 
-#, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, "
 "[**options**])"
@@ -18703,7 +18637,6 @@ msgstr ""
 "pgr_withPointsCost(`SQL de aristas`_, `SQL de puntos`_, **salida**, "
 "**destinos**, [**opciones**])"
 
-#, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, "
 "[**options**])"
@@ -18711,7 +18644,6 @@ msgstr ""
 "pgr_withPointsCost(`SQL de aristas`_, `SQL de puntos`_, **salidas**, "
 "**destino**, [**opciones**])"
 
-#, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end "
 "vids**, [**options**])"
@@ -18726,7 +18658,6 @@ msgstr ""
 "Desde el punto :math:`15` y vértice :math:`6` al punto :math:`3` y vértice :"
 "math:`1`"
 
-#, fuzzy
 msgid ""
 "pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, "
 "[**options**])"
@@ -18812,7 +18743,6 @@ msgstr ""
 "``pgr_withPointsCostMatrix`` - Calcula una matriz de costos usando :doc:"
 "`pgr_withPoints`."
 
-#, fuzzy
 msgid ""
 "pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, "
 "[**options**])"
