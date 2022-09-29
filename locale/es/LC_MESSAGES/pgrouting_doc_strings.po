@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 # Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-29 02:23+0000\n"
-"PO-Revision-Date: 2022-09-29 19:13+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-09-30 01:18+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
 "Language: es\n"
@@ -528,7 +529,7 @@ msgid "`Restrictions SQL`_"
 msgstr "`SQL de restricciones`_"
 
 msgid "`Restrictions SQL`_ query as described."
-msgstr "`SQL restricciones`_ consulta como se describe."
+msgstr "`SQL de restricciones`_ consulta como se describe."
 
 msgid "**via vertices**"
 msgstr "**vértices**"
@@ -5447,7 +5448,7 @@ msgid ""
 "the ``directed`` flag has been removed."
 msgstr ""
 ":doc:`pgr_maxCardinalityMatch` funciona solamente para grafos no dirigidos, "
-"entonces la flag ``directed`` ha sido removida."
+"entonces la bandera ``directed`` ha sido removida."
 
 msgid ""
 ":doc:`pgr_trsp` signatures have changed and many issues have been fixed in "
@@ -5490,7 +5491,7 @@ msgstr ""
 "``pgr_maxCardinalityMatch(text)`` regresa solamente la columna ``edge``."
 
 msgid "The optional flag ``directed`` is removed."
-msgstr "La flag opcional ``directed`` es removida."
+msgstr "La bandera opcional ``directed`` es removida."
 
 msgid "Before migration"
 msgstr "Antes de migración"
@@ -5510,7 +5511,7 @@ msgstr ""
 "or **no dirigido**."
 
 msgid "The flag ``directed`` is ignored."
-msgstr "La bander ``directed`` es ignorada."
+msgstr "La bandera ``directed`` es ignorada."
 
 msgid ""
 "Regardless of it's value it gives the result considering the graph as "
@@ -11758,7 +11759,7 @@ msgid ""
 "Note that this example uses clean flag. So it recreates the whole vertices "
 "table."
 msgstr ""
-"Tenga en cuenta que en este ejemplo se utiliza la marca clean. Así que "
+"Tenga en cuenta que en este ejemplo se utiliza la bandera clean. Así que "
 "recrea toda la tabla de vértices."
 
 msgid ""
@@ -13521,16 +13522,16 @@ msgid "Version 2.1.0:"
 msgstr "Versión 2.1.0:"
 
 msgid "Signature change pgr_drivingDistance(single vertex)"
-msgstr "Cambio de firma pgr_drivingDistance(single vertex)"
+msgstr "Cambio de firma pgr_drivingDistance(vértice único)"
 
 msgid "New **Official** pgr_drivingDistance(multiple vertices)"
-msgstr "Nuevo **Oficial** pgr_drivingDistance(multiple vertices)"
+msgstr "Nuevo **Oficial** pgr_drivingDistance(multiples vértices)"
 
 msgid "Version 2.0.0:"
 msgstr "Versión 2.0.0:"
 
 msgid "**Official** pgr_drivingDistance(single vertex)"
-msgstr "**Oficial** pgr_drivingDistance(single vertex)"
+msgstr "**Oficial** pgr_drivingDistance(vértice único)"
 
 msgid ""
 "Using the Dijkstra algorithm, extracts all the nodes that have costs less "
@@ -13545,7 +13546,7 @@ msgid ""
 "pgr_drivingDistance(`Edges SQL`_, **Root vid**,  **distance**, "
 "[``directed``])"
 msgstr ""
-"pgr_drivingDistance`SQL de aristas`_, **Raíz**, **distancia**, "
+"pgr_drivingDistance(`SQL de aristas`_, **Raíz**, **distancia**, "
 "[``directed``])"
 
 msgid ""
@@ -21246,7 +21247,7 @@ msgid "pgr_dijkstra(many to many)"
 msgstr "pgr_dijkstra(muchos a muchos)"
 
 msgid "pgr_drivingDistance(multiple vertices)"
-msgstr "pgr_drivingDistance(multiple vertices)"
+msgstr "pgr_drivingDistance(múltiples vértices)"
 
 msgid "Refactored"
 msgstr "Refactorizado"
@@ -21258,7 +21259,7 @@ msgid "pgr_ksp"
 msgstr "pgr_ksp"
 
 msgid "pgr_drivingDistance(single vertex)"
-msgstr "pgr_drivingDistance(single vertex)"
+msgstr "pgr_drivingDistance(vértice único)"
 
 msgid ""
 "pgr_alphaShape function now can generate better (multi)polygon with holes "
