@@ -2,13 +2,13 @@
 # Copyright (C) pgRouting Contributors - Version v3.4.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
-#
+# Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-29 02:23+0000\n"
-"PO-Revision-Date: 2022-09-29 16:37+0000\n"
+"PO-Revision-Date: 2022-09-29 19:13+0000\n"
 "Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
@@ -5661,18 +5661,20 @@ msgstr ""
 "restricciones,"
 
 msgid "Create a new table with the new restrictions structure."
-msgstr ""
+msgstr "Crea una nueva tabla con la nueva estructura de restricciones."
 
 msgid "In this migration guide ``new_restrictions`` is been used."
-msgstr ""
+msgstr "En esta guía de migración ``new_restrictions`` está siendo usada."
 
 msgid ""
 "For this migration pgRouting supplies an auxiliary function for reversal of "
 "an array ``_pgr_array_reverse`` needed for the migration."
 msgstr ""
+"Para esta migración pgRouting proporciona una función auxiliar para la "
+"inversión de un conjunto ``_pgr_array_reverse`` necesaria para la migración."
 
 msgid "``_pgr_array_reverse``:"
-msgstr ""
+msgstr "``_pgr_array_reverse``:"
 
 msgid "Was created temporally for this migration"
 msgstr ""
