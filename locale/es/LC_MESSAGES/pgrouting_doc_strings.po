@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-29 02:23+0000\n"
-"PO-Revision-Date: 2022-09-29 15:22+0000\n"
+"PO-Revision-Date: 2022-09-29 15:39+0000\n"
 "Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
@@ -5530,40 +5530,41 @@ msgstr ""
 "de una arista."
 
 msgid "Do not use the flag ``directed``."
-msgstr ""
+msgstr "No use la bandera ``directed``."
 
 msgid "In the query returns only ``edge`` column."
-msgstr ""
+msgstr "En la consulta solo devuelve la columna ``edge``."
 
 msgid "Migration of restrictions"
-msgstr ""
+msgstr "Migración de restricciones"
 
 msgid "The structure of the restrictions have changed:"
-msgstr ""
+msgstr "La estructura de las restricciones ha cambiado:"
 
 msgid "Old restrictions structure"
-msgstr ""
+msgstr "Estructura de restricciones vieja"
 
 msgid "On the deprecated signatures:"
-msgstr ""
+msgstr "Sobre las firmas obsoletas:"
 
 msgid "Column ``rid`` is ignored"
-msgstr ""
+msgstr "La columna ``rid`` es ignorada"
 
 msgid "``via_path``"
-msgstr ""
+msgstr "``via_path``"
 
 msgid "Must be in reverse order."
-msgstr ""
+msgstr "Debe de estar en orden reverso."
 
 msgid "Is of type ``TEXT``."
-msgstr ""
+msgstr "Es de tipo ``TEXT``."
 
+#, fuzzy
 msgid "When more than one via edge must be separated with ``,``."
-msgstr ""
+msgstr "Cuando más de una arista via debe de ser separada con ``,``."
 
 msgid "``target_id``"
-msgstr ""
+msgstr "``target_id``"
 
 msgid "Is the last edge of the forbidden path."
 msgstr ""
