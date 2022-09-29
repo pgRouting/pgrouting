@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: 2022-09-29 00:46+0000\n"
+"PO-Revision-Date: 2022-09-29 15:27+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/index/"
 "ja/>\n"
@@ -203,29 +203,29 @@ msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:3
 msgid ":doc:`pgr_dijkstra` - Dijkstra's algorithm for the shortest paths."
-msgstr ":doc:'pgr_dijkstra' - 最短経路を求めるためのダイクストラ・アルゴリズム。"
+msgstr ":doc:`pgr_dijkstra` - 最短経路を求めるためのダイクストラ・アルゴリズム。"
 
 #: ../../build/doc/dijkstra-family.rst:4
 msgid ":doc:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths."
-msgstr ":doc:'pgr_dijkstraCost' - 最短経路の総コストを集計します。"
+msgstr ":doc:`pgr_dijkstraCost` - 最短経路の総コストを集計します。"
 
 #: ../../build/doc/dijkstra-family.rst:5
 msgid ":doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix."
-msgstr ":doc:'pgr_dijkstraCostMatrix' - pgr_dijkstra "
+msgstr ":doc:`pgr_dijkstraCostMatrix` - pgr_dijkstra "
 "を使用してコストマトリックスを作成します。"
 
 #: ../../build/doc/dijkstra-family.rst:6
 msgid ""
 ":doc:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament "
 "information."
-msgstr ":doc:'pgr_drivingDistance' - pgr_dijkstra "
+msgstr ":doc:`pgr_drivingDistance` - pgr_dijkstra "
 "を使用して対象エリアの情報を計算します。"
 
 #: ../../build/doc/dijkstra-family.rst:8
 msgid ""
 ":doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K "
 "shortest paths."
-msgstr ":doc:'pgr_KSP' - "
+msgstr ":doc:`pgr_KSP` - "
 "pgr_dijkstraでYenアルゴリズムを使用してK最短経路を取得します。"
 
 #: ../../build/doc/routingFunctions.rst:47
@@ -469,7 +469,7 @@ msgstr ""
 
 #: ../../build/doc/routingFunctions.rst:126
 msgid ":doc:`DFS-category`"
-msgstr ""
+msgstr ":doc:`DFS-category`"
 
 #: ../../build/doc/index.rst:91
 msgid "Available Functions but not official pgRouting functions"
