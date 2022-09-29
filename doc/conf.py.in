@@ -335,7 +335,7 @@ linkcheck_ignore = [
     r'https://docs.pgrouting.org/.*/.*/pgr_degree.html',
     r'https://docs.pgrouting.org/.*/.*/pgr_cuthillMckeeOrdering.html',
     r'https://docs.pgrouting.org/.*/.*/ordering-family.html',
-    r'https://docs.pgrouting.org/.*/.*/hawickCircuits.html',
+    r'https://docs.pgrouting.org/.*/.*/pgr_hawickCircuits.html',
     r'https://docs.pgrouting.org/.*/.*/pgr_findCloseEdges.html',
 
     # link failing used in contraction-family
