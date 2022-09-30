@@ -178,13 +178,13 @@
 <ul class="simple">
 <li><p>Versión 2.1.0:</p>
 <ul>
-<li><p>Cambio de firma pgr_drivingDistance(single vertex)</p></li>
-<li><p>Nuevo <strong>Oficial</strong> pgr_drivingDistance(multiple vertices)</p></li>
+<li><p>Cambio de firma pgr_drivingDistance(vértice único)</p></li>
+<li><p>Nuevo <strong>Oficial</strong> pgr_drivingDistance(multiples vértices)</p></li>
 </ul>
 </li>
 <li><p>Versión 2.0.0:</p>
 <ul>
-<li><p><strong>Oficial</strong> pgr_drivingDistance(single vertex)</p></li>
+<li><p><strong>Oficial</strong> pgr_drivingDistance(vértice único)</p></li>
 </ul>
 </li>
 </ul>
@@ -197,9 +197,9 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong>,  <strong>distance</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>Raíz</strong>, <strong>distancia</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 <div class="line">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>raices</strong>, <strong>distancia</strong>, [<strong>opciones</strong>])</div>
-<div class="line"><strong>options:</strong> [directed, equicost]</div>
+<div class="line"><strong>opciones:</strong> [directed, equicost]</div>
 </div>
 <div class="line-block">
 <div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[from_v,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
@@ -210,7 +210,7 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong>,  <strong>distance</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>Raíz</strong>, <strong>distancia</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
 <div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
@@ -250,7 +250,7 @@
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>raices</strong>, <strong>distancia</strong>, [<strong>opciones</strong>])</div>
-<div class="line"><strong>options:</strong> [directed, equicost]</div>
+<div class="line"><strong>opciones:</strong> [directed, equicost]</div>
 </div>
 <div class="line-block">
 <div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">from_v,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
@@ -564,7 +564,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0.<br/>
-      Actualizado por última vez en sept 29, 2022.<br/>
+      Actualizado por última vez en sept 30, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.2.<br/>
     </p>
   </div>

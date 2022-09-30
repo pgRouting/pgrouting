@@ -237,7 +237,7 @@
 <div class="line">pgr_extractVertices(<a class="reference internal" href="#edges-sql">Edges SQL</a>, [<code class="docutils literal notranslate"><span class="pre">dryrun</span></code>])</div>
 </div>
 <div class="line-block">
-<div class="line">RETURNS SETOF <code class="docutils literal notranslate"><span class="pre">(id,</span> <span class="pre">in_edges,</span> <span class="pre">out_edges,</span> <span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">geom)</span></code></div>
+<div class="line">REGRESA CONJUNTO DE <code class="docutils literal notranslate"><span class="pre">(id,</span> <span class="pre">in_edges,</span> <span class="pre">out_edges,</span> <span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">geom)</span></code></div>
 <div class="line">OR EMTPY SET</div>
 </div>
 </div>
@@ -284,7 +284,7 @@
 <tbody>
 <tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> como se describe a continuación</p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a> como se describe a continuación</p></td>
 </tr>
 </tbody>
 </table>
@@ -342,7 +342,7 @@
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">geom</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code></p></td>
-<td><p>Geometry of the edge.</p></td>
+<td><p>Geometría de la arista.</p></td>
 </tr>
 </tbody>
 </table>
@@ -383,8 +383,7 @@
 </tr>
 </tbody>
 </table>
-<p>This inner query takes precedence over the next inner query, therefore other
-columns are ignored when <code class="docutils literal notranslate"><span class="pre">startpoint</span></code> and <code class="docutils literal notranslate"><span class="pre">endpoint</span></code> columns appears.</p>
+<p>Esta consulta interna tiene prioridad sobre la siguiente consulta interna, por lo que otras columnas son ignoradas cuando aparecen las columnas <code class="docutils literal notranslate"><span class="pre">startpoint</span></code> y <code class="docutils literal notranslate"><span class="pre">endpoint</span></code>.</p>
 <ul class="simple">
 <li><p>Columnas ignoradas:</p>
 <ul>
@@ -454,7 +453,7 @@ columns are ignored when <code class="docutils literal notranslate"><span class=
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>X value of the point geometry</p>
+<td><p>Valor X de la geometría del punto</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> Cuando no se proporciona geometría</p></li>
 </ul>
@@ -462,7 +461,7 @@ columns are ignored when <code class="docutils literal notranslate"><span class=
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">y</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>X value of the point geometry</p>
+<td><p>Valor X de la geometría del punto</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> Cuando no se proporciona geometría</p></li>
 </ul>
@@ -470,7 +469,7 @@ columns are ignored when <code class="docutils literal notranslate"><span class=
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">geom</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">POINT</span></code></p></td>
-<td><p>Geometry of the point</p>
+<td><p>Geometría del punto</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> Cuando no se proporciona geometría</p></li>
 </ul>
@@ -985,7 +984,7 @@ view.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0.<br/>
-      Actualizado por última vez en sept 29, 2022.<br/>
+      Actualizado por última vez en sept 30, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.2.<br/>
     </p>
   </div>
