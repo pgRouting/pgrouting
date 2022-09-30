@@ -12,6 +12,7 @@ DIR=$(git rev-parse --show-toplevel)
 
 pushd "${DIR}" > /dev/null || exit 1
 
+mkdir -p build
 pushd build > /dev/null || exit 1
 cmake -DWITH_DOC=ON -DCMAKE_BUILD_TYPE=Release -DLOCALE=ON ..
 
@@ -28,5 +29,8 @@ perl -ne '/\/en\// && print' build/doc/locale_changes_po.txt | \
 bash tools/transifex/remove_obsolete_entries.sh
 
 while read -r f; do git add "$f"; done < build/doc/locale_changes_po_pot.txt
+
+git restore --staged locale/*/LC_MESSAGES/index.po
+git restore locale/*/LC_MESSAGES/index.po
 
 popd > /dev/null || exit 1

@@ -1,22 +1,29 @@
-name: Website
+name: Update Locale
+
+# This action runs:
+# - When this file changes
+# - When changes on documentation (doc)
+# - When is triggered manually
 
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
-      - develop
+    paths:
+      - '.github/workflows/update-locale.yml'
+      - 'doc/**'
+
+    branches-ignore:
+      - 'gh-pages'
 
 permissions:
   contents: read
 
 jobs:
-  release:
+  update-locale:
     permissions:
       contents: write  # for Git to git push
-    name: Update Website
+    name: Update Locale
     runs-on: ubuntu-latest
-    if: ${{ github.repository_owner == 'pgRouting' }}
 
     strategy:
         fail-fast: false
@@ -40,7 +47,6 @@ jobs:
       - name: Extract branch name and commit hash
         run: |
           branch=${GITHUB_REF#refs/heads/}
-          echo "BRANCH=$branch" >> $GITHUB_ENV
           git_hash=$(git rev-parse --short "$GITHUB_SHA")
           echo "GIT_HASH=$git_hash" >> $GITHUB_ENV
 
@@ -52,7 +58,7 @@ jobs:
             $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 
       - name: Install python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v3
         with:
           python-version: '3.x'
 
@@ -73,32 +79,16 @@ jobs:
           pip install sphinx-intl[transifex]
           pip list
 
-      - name: Configure and build documentation
-        run: |
-          export PATH=/usr/lib/postgresql/${PGVER}/bin:$PATH
-          mkdir build
-          cd build
-          cmake -DPOSTGRESQL_VERSION=${PGVER} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON -DCMAKE_BUILD_TYPE=Release -DES=ON ..
-          make doc
-
       - name: Initialize mandatory git config
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-
-      - name: Update Users Documentation
+      - name: Update locale
         run: |
-          git checkout origin/gh-pages
-          git checkout -b gh-pages
-          PROJECT_MAJOR_MINOR="${PROJECT_VERSION%.*}"
-          rm -rf ${PROJECT_MAJOR_MINOR}
-          cp -r build/doc/html ${PROJECT_MAJOR_MINOR}
-          git add ${PROJECT_MAJOR_MINOR}
-          git diff-index --quiet HEAD || git commit -m "Update users documentation for ${PROJECT_VERSION}: commit ${{ env.GIT_HASH }}"
-          git fetch origin
-          git rebase origin/gh-pages
-          git push origin gh-pages
+          bash tools/transifex/update_locale.sh
 
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Add the files, commit and push
+          git diff --staged --quiet || git commit -m "Update locale: commit ${{ env.GIT_HASH }}"
+          git restore .  # Remove the unstaged changes before rebasing
+          git push
