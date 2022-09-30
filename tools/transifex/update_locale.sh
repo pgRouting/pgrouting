@@ -11,6 +11,12 @@
 DIR=$(git rev-parse --show-toplevel)
 
 pushd "${DIR}" > /dev/null || exit 1
+VERSION=$(grep -Po '(?<=set\(MINORS )[^;]+' CMakeLists.txt  | awk '{ print $1}')
+echo "${VERSION}"  | awk '{ print $1}'
+if (( $(echo "${VERSION} <= $1" |bc -l) )); then
+    exit 0
+fi
+
 
 mkdir -p build
 pushd build > /dev/null || exit 1
