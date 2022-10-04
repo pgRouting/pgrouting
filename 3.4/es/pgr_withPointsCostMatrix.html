@@ -263,8 +263,8 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_withPointsCost(<a class="reference internal" href="#points-sql">SQL de aristas</a>, <a class="reference internal" href="#points-sql">SQL de puntos</a>, <strong>salida</strong>, <strong>destinos</strong>, [<strong>opciones</strong>])</div>
-<div class="line"><strong>options:</strong>  <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
+<div class="line">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#points-sql">SQL de puntos</a>, <strong>salida</strong>, <strong>destinos</strong>, [<strong>opciones</strong>])</div>
+<div class="line"><strong>opciones:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
 </div>
 <div class="line-block">
 <div class="line">Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
@@ -282,8 +282,8 @@
 </dl>
 <ul class="simple">
 <li><p>Devolver una matriz de costes <strong>simétrica</strong></p></li>
-<li><p>Using the default <code class="docutils literal notranslate"><span class="pre">side</span></code> value on the <strong>points_sql</strong> query</p></li>
-<li><p>Using the default <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> value</p></li>
+<li><p>Uso del valor predeterminado <code class="docutils literal notranslate"><span class="pre">side</span></code> en la consulta <strong>SQL de puntos</strong></p></li>
+<li><p>Usando el valor predeterminado <code class="docutils literal notranslate"><span class="pre">driving_side</span></code></p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCostMatrix</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
@@ -635,8 +635,8 @@ HINT:  Ignoring annaeling parameters
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0.<br/>
-      Actualizado por última vez en sept 30, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.2.<br/>
+      Actualizado por última vez en oct 04, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>
   </div>
 </footer>

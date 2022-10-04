@@ -96,9 +96,9 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Notas de versión</a><ul>
-<li><a class="reference internal" href="#pgrouting-3-4-0-release-notes">pgRouting 3.4.0 Release Notes</a></li>
-<li><a class="reference internal" href="#pgrouting-3-3-2-release-notes">pgRouting 3.3.2 Release Notes</a></li>
-<li><a class="reference internal" href="#pgrouting-3-3-1-release-notes">pgRouting 3.3.1 Release Notes</a></li>
+<li><a class="reference internal" href="#pgrouting-3-4-0-release-notes">Notas de la versión 3.4.0 de pgRouting</a></li>
+<li><a class="reference internal" href="#pgrouting-3-3-2-release-notes">Notas de la versión 3.3.2 de pgRouting</a></li>
+<li><a class="reference internal" href="#pgrouting-3-3-1-release-notes">Notas de la versión 3.3.1 de pgRouting</a></li>
 <li><a class="reference internal" href="#pgrouting-3-3-0-release-notes">Notas de la versión 3.3.0 de pgRouting</a></li>
 <li><a class="reference internal" href="#pgrouting-3-2-2-release-notes">Notas de la Versión 3.2.2 de pgRouting</a></li>
 <li><a class="reference internal" href="#pgrouting-3-2-1-release-notes">Notas de la Versión 3.2.1 de pgRouting</a></li>
@@ -207,9 +207,9 @@
 <nav class="contents local" id="contents">
 <p class="topic-title">Contenido</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-4-0-release-notes" id="id1">pgRouting 3.4.0 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-3-2-release-notes" id="id2">pgRouting 3.3.2 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-3-1-release-notes" id="id3">pgRouting 3.3.1 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-4-0-release-notes" id="id1">Notas de la versión 3.4.0 de pgRouting</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3-2-release-notes" id="id2">Notas de la versión 3.3.2 de pgRouting</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3-1-release-notes" id="id3">Notas de la versión 3.3.1 de pgRouting</a></p></li>
 <li><p><a class="reference internal" href="#pgrouting-3-3-0-release-notes" id="id4">Notas de la versión 3.3.0 de pgRouting</a></p></li>
 <li><p><a class="reference internal" href="#pgrouting-3-2-2-release-notes" id="id5">Notas de la Versión 3.2.2 de pgRouting</a></p></li>
 <li><p><a class="reference internal" href="#pgrouting-3-2-1-release-notes" id="id6">Notas de la Versión 3.2.1 de pgRouting</a></p></li>
@@ -266,7 +266,7 @@
 </ul>
 </nav>
 <section id="pgrouting-3-4-0-release-notes">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">pgRouting 3.4.0 Release Notes</a><a class="headerlink" href="#pgrouting-3-4-0-release-notes" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Notas de la versión 3.4.0 de pgRouting</a><a class="headerlink" href="#pgrouting-3-4-0-release-notes" title="Enlace permanente a este encabezado">¶</a></h2>
 <p class="rubric">Corrección de problemas</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1891">#1891</a>:
@@ -274,35 +274,35 @@ pgr_ksp doesn’t give all correct shortest path</p></li>
 </ul>
 <p class="rubric">Nuevas funciones propuestas</p>
 <ul class="simple">
-<li><p>With points</p>
+<li><p>Con puntos</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code> (One Via)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code> (Una trayectoria)</p></li>
 </ul>
 </li>
-<li><p>Turn Restrictions</p>
+<li><p>Restricciones de giro</p>
 <ul>
-<li><p>Via with turn restrictions</p>
+<li><p>Trayectoria con restricciones de giro</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> (One Via)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> (One Via)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> (Muchas trayectorias)</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (One to One)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (One to Many)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Many to One)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Many to Many)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Combinations)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Uno a Uno)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Uno a Muchos)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Muchos a Uno)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Muchos a Muchos)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Combinaciones)</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> (One to One)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> (One to Many)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> (Many to One)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> (Many to Many)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> (Combinations)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> (Uno a Uno)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> (Uno a Muchos)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> (Muchos a Uno)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> (Muchos a Muchos)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> (Combinaciones)</p></li>
 </ul>
 </li>
 </ul>
@@ -326,7 +326,7 @@ pgr_ksp doesn’t give all correct shortest path</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_cuthillMckeeOrdering</span></code></p></li>
 </ul>
 </li>
-<li><p>Unclassified</p>
+<li><p>No clasificado</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_hawickCircuits</span></code></p></li>
 </ul>
@@ -334,7 +334,7 @@ pgr_ksp doesn’t give all correct shortest path</p></li>
 </ul>
 <p class="rubric">Official functions changes</p>
 <ul class="simple">
-<li><p>Flow functions</p>
+<li><p>Funciones de flujo</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch(text)</span></code></p>
 <ul>
@@ -346,7 +346,7 @@ pgr_ksp doesn’t give all correct shortest path</p></li>
 </ul>
 <p class="rubric">Funciones Obsoletas</p>
 <ul class="simple">
-<li><p>Turn Restrictions</p>
+<li><p>Restricciones de giro</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp(text,integer,integer,boolean,boolean,text)</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text)</span></code></p></li>
@@ -357,8 +357,8 @@ pgr_ksp doesn’t give all correct shortest path</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-3-2-release-notes">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">pgRouting 3.3.2 Release Notes</a><a class="headerlink" href="#pgrouting-3-3-2-release-notes" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>Para ver todos los problemas y solicitudes de extracción cerrados pora ésta versión, consulte la <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.0%22">meta cerrada de 3.3.0</a> en Github</p>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Notas de la versión 3.3.2 de pgRouting</a><a class="headerlink" href="#pgrouting-3-3-2-release-notes" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Para ver todos los problemas y solicitudes de extracción cerrados pora ésta versión, consulte la <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.2%22">meta cerrada de 3.3.2</a></p>
 <ul>
 <li><p>Revised documentation</p>
 <ul>
@@ -399,10 +399,8 @@ pgr_extractVertices error when target is not BIGINT</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-3-1-release-notes">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">pgRouting 3.3.1 Release Notes</a><a class="headerlink" href="#pgrouting-3-3-1-release-notes" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.1%22">Git closed
-milestone for 3.3.1</a>
-on Github.</p>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Notas de la versión 3.3.1 de pgRouting</a><a class="headerlink" href="#pgrouting-3-3-1-release-notes" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Para ver todos los problemas y solicitudes de extracción cerrados pora ésta versión, consulte la <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.1%22">meta cerrada para 3.3.1</a> en Github.</p>
 <p class="rubric">Corrección de problemas</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2216">#2216</a>: Warnings when using clang</p></li>
@@ -1529,8 +1527,8 @@ FindPostgreSQL.cmake</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0.<br/>
-      Actualizado por última vez en sept 30, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.2.<br/>
+      Actualizado por última vez en oct 04, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>
   </div>
 </footer>
