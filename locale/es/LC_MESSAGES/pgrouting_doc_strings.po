@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-29 02:23+0000\n"
-"PO-Revision-Date: 2022-10-01 02:04+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"PO-Revision-Date: 2022-10-04 17:43+0000\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
 "Language: es\n"
@@ -5678,181 +5678,188 @@ msgid "``_pgr_array_reverse``:"
 msgstr "``_pgr_array_reverse``:"
 
 msgid "Was created temporally for this migration"
-msgstr ""
+msgstr "Se creo temporalmente para esta migración"
 
 msgid "Is not documented."
-msgstr ""
+msgstr "No está documentado."
 
 msgid "Will be removed on the next mayor version 4.0.0"
-msgstr ""
+msgstr "Se eliminara en la próxima versión mayor 4.0.0"
 
 msgid "The migrated table contents:"
-msgstr ""
+msgstr "El contenido de la tabla de migración:"
 
 msgid "Migration of ``pgr_trsp`` (Vertices)"
-msgstr ""
+msgstr "Migración de `pgr_trsp`` (Vértices)"
 
 msgid "The integral type of the ``Edges SQL`` can only be ``INTEGER``."
-msgstr ""
+msgstr "El tipo integral de ``Edges SQL`` sólo puede ser ``INTEGER``."
 
 msgid "The floating point type of the ``Edges SQL`` can only be ``FLOAT``."
-msgstr ""
+msgstr "El tipo de punto flotante del ``Edges SQL`` solo puede ser ``FLOAT``."
 
 msgid "``directed`` flag is compulsory."
-msgstr ""
+msgstr "La bandera ``directed`` es obligatoria."
 
 msgid "Does not have a default value."
-msgstr ""
+msgstr "No tiene un valor de facto."
 
 msgid "Does not autodetect if ``reverse_cost`` column exist."
-msgstr ""
+msgstr "No auto-detecta si la columna``reverse_cost`` existe."
 
 msgid ""
 "User must be careful to match the existence of the column with the value of "
 "``has_rcost`` parameter."
 msgstr ""
+"El usuario debe de tener cuidado al coincidir la existencia de la columna "
+"con el valor del parámetro ``has_rcost``."
 
 msgid "The restrictions inner query is optional."
-msgstr ""
+msgstr "Las restricciones de consulta interna son opcionales."
 
 msgid "The output column names are meaningless"
-msgstr ""
+msgstr "Los nombres de la columna de salida no tienen importancia"
 
 msgid "Migrate by using:"
-msgstr ""
+msgstr "Migra al user:"
 
 msgid ":doc:`pgr_dijkstra` when there are no restrictions,"
-msgstr ""
+msgstr ":doc:`pgr_dijkstra` cuando no hay restricciones,"
 
 msgid ":doc:`pgr_trsp` (One to One) when there are restrictions."
-msgstr ""
+msgstr ":doc:`pgr_trsp` (Uno a uno) cuando hay restricciones."
 
 msgid "Migrating ``pgr_trsp`` (Vertices) using ``pgr_dijkstra``"
-msgstr ""
+msgstr "Migrar ``pgr_trsp`` (Vértices) usando ``pgr_dijkstra``"
 
 msgid "The following query does not have restrictions."
-msgstr ""
+msgstr "La siguiente consulta no tiene restricciones."
 
 msgid "A message about deprecation is shown"
-msgstr ""
+msgstr "Un mensaje sobre lo obsoleto se enseña"
 
 msgid "Deprecated functions will be removed on the next mayor version 4.0.0"
-msgstr ""
+msgstr "Funciones obsoletas se eliminaran en la siguiente versión mayor 4.0.0"
 
 msgid "Use :doc:`pgr_dijkstra` instead."
-msgstr ""
+msgstr "Usa en vez :doc:`pgr_dijkstra`."
 
 msgid "The types casting has been removed."
-msgstr ""
+msgstr "Se han eliminado la fundición de tipos."
 
 msgid ":doc:`pgr_dijkstra`:"
-msgstr ""
+msgstr ":doc:`pgr_dijkstra`:"
 
 msgid "Autodetects if ``reverse_cost`` column is in the edges SQL."
-msgstr ""
+msgstr "Auto-detecta si la columna``reverse_cost`` está en la SQL de aristas."
 
 msgid "Accepts ``ANY-INTEGER`` on integral types"
-msgstr ""
+msgstr "Acepta ``ANY-INTEGER`` sobre tipos integrales"
 
 msgid "Accepts ``ANY-NUMERICAL`` on floating point types"
-msgstr ""
+msgstr "Acepta ``ANY-NUMERICAL`` sobre tipos de puntos flotantes"
 
 msgid "``directed`` flag has a default value of ``true``."
-msgstr ""
+msgstr "La bandera ``directed`` tiene valor de facto de ``true``."
 
 msgid "Use the same value that on the original query."
-msgstr ""
+msgstr "Usa el mismo valor de la consulta original."
 
 msgid "In this example it is ``true`` which is the default value."
-msgstr ""
+msgstr "En este ejemplo ``true`` que es el valor de facto."
 
 msgid "The flag has been omitted and the default is been used."
-msgstr ""
+msgstr "Se ha omitido la bandera y se ha utilizado el valor por defecto."
 
 msgid ""
 "When the need of using strictly the same (meaningless) names and types of "
 "the function been migrated then:"
 msgstr ""
+"Cuando la necesidad de utilizar estrictamente los mismos nombres (sin "
+"importancia) y los tipos de la función han sido migradas entonces:"
 
 msgid "``id1`` is the node"
-msgstr ""
+msgstr "``id1`` es el nodo"
 
 msgid "``id2`` is the edge"
-msgstr ""
+msgstr "``id2`` es la arista"
 
 msgid "Migrating ``pgr_trsp`` (Vertices) using ``pgr_trsp``"
-msgstr ""
+msgstr "Migrando ``pgr_trsp`` (Vértices) usando ``pgr_trsp``"
 
 msgid "The following query has restrictions."
-msgstr ""
+msgstr "La siguiente consulta tiene restricciones."
 
 msgid "The restrictions are the last parameter of the function"
-msgstr ""
+msgstr "Las restricciones son el último parámetro de la función"
 
 msgid "Using the old structure of restrictions"
-msgstr ""
+msgstr "Usando la antigua estructura de restricciones"
 
 msgid "Use :doc:`pgr_trsp` (One to One) instead."
-msgstr ""
+msgstr "Utilice en su lugar :doc:`pgr_trsp` (Uno a uno)."
 
 msgid "The new structure of restrictions is been used."
-msgstr ""
+msgstr "La nueva estructura de restricciones han sido utilizados."
 
 msgid "It is the second parameter."
-msgstr ""
+msgstr "Es el segundo parámetro."
 
 msgid ":doc:`pgr_trsp`:"
-msgstr ""
+msgstr ":doc:`pgr_trsp`:"
 
 msgid "Migration of ``pgr_trsp`` (Edges)"
-msgstr ""
+msgstr "Migración de ``pgr_trsp`` (Aristas)"
 
 msgid "The integral types of the ``sql`` can only be ``INTEGER``."
-msgstr ""
+msgstr "Los tipos integrales de ``sql`` solo pueden ser ``INTEGER``."
 
 msgid "The floating point type of the ``sql`` can only be ``FLOAT``."
-msgstr ""
+msgstr "El tipo de punto flotante del ``sql`` solo pueden ser ``FLOAT``."
 
 msgid "For these migration guide the following points will be used:"
-msgstr ""
+msgstr "Para los siguientes puntos la guía de migración se utilizara:"
 
 msgid ":doc:`pgr_withPoints` when there are no restrictions,"
-msgstr ""
+msgstr ":doc:`pgr_withPoints`cuando no hay restricciones,"
 
 msgid ":doc:`pgr_trsp_withPoints` (One to One) when there are restrictions."
-msgstr ""
+msgstr ":doc:`pgr_trsp_withPoints` (Uno a uno) cuando hay restricciones."
 
 msgid "Migrating ``pgr_trsp`` (Edges) using ``pgr_withPoints``"
-msgstr ""
+msgstr "Migrando ``pgr_trsp`` (Aristas) usando ``pgr_withPoints``"
 
 msgid "Use :doc:`pgr_withPoints` instead."
-msgstr ""
+msgstr "Utiliza en su lugar :doc:`pgr_withPoints`."
 
 msgid "Do not show details, as the deprecated function does not show details."
-msgstr ""
+msgstr "No enseña detalles, pues las funciones obsoletas no enseñan detalles."
 
 msgid ":doc:`pgr_withPoints`:"
-msgstr ""
+msgstr ":doc:`pgr_withPoints`:"
 
 msgid "On the points query do not include the ``side`` column."
-msgstr ""
+msgstr "La consulta de puntos con incluye la columna ``side``."
 
 msgid ""
 "When the need of using strictly the same (meaningless) names and types, and "
 "node values of the function been migrated then:"
 msgstr ""
+"Cuando la necesidad de utilizar estrictamente los mismos nombres (sin "
+"importancia) y tipos , y los valores de nodo de la función han sido migradas "
+"entonces:"
 
 msgid "Migrating ``pgr_trsp`` (Edges) using ``pgr_trsp_withPoints``"
-msgstr ""
+msgstr "Migrando``pgr_trsp`` (Aristas) utilizando ``pgr_trsp_withPoints``"
 
 msgid "Use :doc:`pgr_trsp_withPoints` instead."
-msgstr ""
+msgstr "Utilizar en su lugar :doc:`pgr_trsp_withPoints`."
 
 msgid ":doc:`pgr_trsp_withPoints`:"
-msgstr ""
+msgstr ":doc:`pgr_trsp_withPoints`:"
 
 msgid "Migration of ``pgr_trspViaVertices``"
-msgstr ""
+msgstr "Migraciones de ``pgr_trspViaVertices``"
 
 msgid "The integral types of the ``Edges SQL`` can only be ``INTEGER``."
 msgstr ""
