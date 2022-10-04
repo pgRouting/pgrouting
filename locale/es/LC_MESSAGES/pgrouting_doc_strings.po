@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-29 02:23+0000\n"
-"PO-Revision-Date: 2022-09-30 01:18+0000\n"
+"PO-Revision-Date: 2022-10-01 02:04+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
@@ -13792,29 +13792,33 @@ msgstr "El gráfico puede dirigido o no."
 msgid "Uses :doc:`pgr_boykovKolmogorov` to calculate the paths."
 msgstr "Utiliza :doc:`pgr_boykovKolmogorov` para calcular las rutas."
 
-#, fuzzy
 msgid ""
 "pgr_edgeDisjointPaths(`Edges SQL`_, **start vid**, **end vid**, "
 "[``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_edgeDisjointPaths(`SQL de aristas`_, **salida**, **destino**, "
+"[``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_edgeDisjointPaths(`Edges SQL`_, **start vid**, **end vids**, "
 "[``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_edgeDisjointPaths(`SQL de aristas`_, **salida**, **destinos**, "
+"[``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_edgeDisjointPaths(`Edges SQL`_, **start vids**, **end vid**, "
 "[``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_edgeDisjointPaths(`SQL de aristas`_, **salidas**, **destino**, "
+"[``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_edgeDisjointPaths(`Edges SQL`_, **start vids**, **end vids**, "
 "[``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_edgeDisjointPaths(`SQL de aristas`_, **salidas**, **destinos**, "
+"[``directed``])"
 
 msgid ""
 "pgr_edgeDisjointPaths(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
@@ -14013,25 +14017,25 @@ msgstr ""
 msgid "Average case: :math:`O( | E | )`"
 msgstr ""
 
-#, fuzzy
 msgid ""
 "pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_edwardMoore(`SQL de aristas`_, **salida**, **destino**, [``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_edwardMoore(`SQL de aristas`_, **salida**, **destinos**, [``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vid**, [``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_edwardMoore(`SQL de aristas`_, **salidas**, **destino**, [``directed``])"
 
-#, fuzzy
 msgid ""
 "pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vids**, [``directed``])"
-msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+"pgr_edwardMoore(`SQL de aristas`_, **salidas**, **destinos**, [``directed``])"
 
 msgid "pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
@@ -14063,9 +14067,8 @@ msgstr "pgr_extractVertices -- Propuesto"
 msgid "``pgr_extractVertices`` — Extracts the vertices information"
 msgstr "``pgr_extractVertices`` — Extrae la información de los vértices"
 
-#, fuzzy
 msgid "Classified as **proposed** function"
-msgstr "Promovido a función **propuesta**"
+msgstr "Clasicado como función **propuesta**"
 
 msgid ""
 "This is an auxiliary function for extracting the vertex information of the "
@@ -14081,9 +14084,8 @@ msgstr ""
 "Cuando se proporciona el identificador de arista, también se calcularán las "
 "aristas de entrada y salida"
 
-#, fuzzy
 msgid "pgr_extractVertices(`Edges SQL`_, [``dryrun``])"
-msgstr "pgr_dijkstraNear(Combinaciones)"
+msgstr "pgr_extractVertices(`SQL de aristas`_, [``dryrun``])"
 
 msgid "RETURNS SETOF |result-extract|"
 msgstr "REGRESA CONJUNTO DE |result-extract|"
@@ -18033,28 +18035,28 @@ msgstr ""
 "configuración de manejo por la izquierda en un grafo dirigido con detalles."
 
 # | msgid "From point :math:`1` to point :math:`3` and vertex :math:`5`."
-#, fuzzy
 msgid "From point :math:`1` to point :math:`3` and vertex :math:`7`."
-msgstr "Desde el punto :math:`1` al punto :math:`3` y vértice :math:`5`."
+msgstr "Desde el punto :math:`1` al punto :math:`3` y vértice :math:`7`."
 
 # | msgid "From point :math:`1` and vertex :math:`2` to point :math:`3`."
-#, fuzzy
 msgid "From point :math:`1` and vertex :math:`6` to point :math:`3`."
-msgstr "Desde el punto :math:`1` y vértice :math:`2` al punto :math:`3`."
+msgstr "Desde el punto :math:`1` y vértice :math:`6` al punto :math:`3`."
 
 # | msgid "From point :math:`1` to point :math:`3` and vertex :math:`5`."
-#, fuzzy
 msgid ""
 "From point :math:`1` and vertex :math:`6` to point :math:`3` and vertex :"
 "math:`1`."
-msgstr "Desde el punto :math:`1` al punto :math:`3` y vértice :math:`5`."
+msgstr ""
+"Desde el punto :math:`1` y vértice :math:`6` al punto :math:`3` y vértice "
+":math:`1`."
 
 # | msgid "From point :math:`1` and vertex :math:`2` to point :math:`3`."
-#, fuzzy
 msgid ""
 "From point :math:`1` to vertex :math:`10` and from vertex :math:`6` to "
 "point :math:`3` with right side driving configuration."
-msgstr "Desde el punto :math:`1` y vértice :math:`2` al punto :math:`3`."
+msgstr ""
+"Desde el punto :math:`1` al vértice :math:`10` y desde el vértice :math:`6` "
+"al punto :math:`3` on una configuración de manejo por la derecha."
 
 msgid ""
 "Find the routes from vertex :math:`1` to the two closest locations on the "
@@ -18063,13 +18065,11 @@ msgstr ""
 "Wncontrar las rutas desde el vértice :math:`1` a las dos ubicaciones más "
 "cercanas en el grafo al punto`(2.9, 1.8)`."
 
-#, fuzzy
 msgid ""
 "Point :math:`-1` corresponds to the closest edge from point `(2.9, 1.8)`."
 msgstr ""
 "Punto :math:`-1` corresponde a la arista más cercana al punto `(2.9, 1.8)`."
 
-#, fuzzy
 msgid ""
 "Point :math:`-2` corresponds to the next close edge from point `(2.9, 1.8)`."
 msgstr ""
@@ -18090,14 +18090,12 @@ msgstr ""
 # | msgid ""
 # | "From point :math:`1` to vertex :math:`3` with details on a **left** "
 # | "driving side configuration on a **directed** graph with **details**."
-#, fuzzy
 msgid ""
 "From point :math:`1` and vertex :math:`6` to point :math:`3` to vertex :math:"
 "`1` on an undirected graph, with details."
 msgstr ""
-"Desde el punto :math:`1` al vértice :math:`3` con detalles en una "
-"configuración de manejo por la **izquierda** en un grafo **dirigido** con "
-"**detalles**."
+"Desde el punto :math:`1` y el vértice :math:`6` al punto :math:`3` y el "
+"vértice :math:`1` en un grafo no dirigido, con detalles."
 
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
@@ -18124,9 +18122,8 @@ msgid ""
 "restrictions"
 msgstr ""
 
-#, fuzzy
 msgid "New experimental function"
-msgstr "Nueva función **Experimental**"
+msgstr "Nueva función Experimental"
 
 msgid ""
 "Using Yen's algorithm to obtain K shortest paths and analyze the paths to "
@@ -18140,9 +18137,8 @@ msgstr ""
 "pgr_turnRestrictedPath(`SQL de aristas`_, `SQL de restricciones`_, "
 "**salida**, **destino**, **K**, [**opciones**])"
 
-#, fuzzy
 msgid "**options:** ``[directed, heap_paths, stop_on_first, strict]``"
-msgstr "**Grafo 4: No dirigido, con costo**"
+msgstr "**opciones:** ``[directed, heap_paths, stop_on_first, strict]``"
 
 msgid "From vertex :math:`3` to vertex  :math:`8` on a directed graph"
 msgstr ""
@@ -18228,9 +18224,8 @@ msgstr "Soporte termina para antigua firma"
 msgid "Returns pgRouting version information."
 msgstr "Devuelve la información de la versión de pgRouting."
 
-#, fuzzy
 msgid "pgr_version()"
-msgstr "pgr_versionless"
+msgstr "pgr_version()"
 
 msgid "pgRouting Version for this documentation"
 msgstr "Versión de pgRouting para esta documentación"
@@ -18378,24 +18373,20 @@ msgstr ""
 "pgr_withPoints(`SQL de aristas`_, `SQL de puntos`_, `SQL de combinaciones`_, "
 "[**opciones**])"
 
-#, fuzzy
 msgid "**options:** ``[directed, driving_side, details])``"
-msgstr "**Grafo 4: No dirigido, con costo**"
+msgstr "**opciones:** ``[directed, driving_side, details])``"
 
-#, fuzzy
 msgid "RETURNS SET OF |old-pid-result|"
-msgstr "Devuelve el conjunto de ``(node)``"
+msgstr "REGRESA CONJUNTO DE |old-pid-result|"
 
-#, fuzzy
 msgid "**options:** [directed, driving_side, details])"
-msgstr "**Grafo 4: No dirigido, con costo**"
+msgstr "**opciones:** [directed, driving_side, details])"
 
 msgid "From point :math:`1` to vertex :math:`10` with details"
 msgstr "Del punto :math:`1` al vértice :math:`10` con detalles"
 
-#, fuzzy
 msgid "RETURNS SET OF |pid-1-m|"
-msgstr "Devuelve el conjunto de ``(node)``"
+msgstr "REGRESA CONJUNTO DE |pid-1-m|"
 
 msgid ""
 "From point :math:`1` to point :math:`3` and vertex :math:`7` on an "
@@ -18404,16 +18395,14 @@ msgstr ""
 "Desde el punto :math:`1` al punto :math:`3` y al vértice :math:`7` en un "
 "grafo no dirigido"
 
-#, fuzzy
 msgid "RETURNS SET OF |pid-m-1|"
-msgstr "Devuelve el conjunto de ``(node)``"
+msgstr "REGRESA CONJUNTO DE |pid-m-1|"
 
 msgid "From point :math:`1` and vertex :math:`6` to point :math:`3`"
 msgstr "Desde el punto :math:`1` y el vértice :math:`6` al punto :math:`3`"
 
-#, fuzzy
 msgid "RETURNS SET OF |pid-m-m|"
-msgstr "Devuelve el conjunto de ``(node)``"
+msgstr "REGRESA CONJUNTO DE |pid-m-m|"
 
 msgid ""
 "From point :math:`1` and vertex :math:`6`  to point :math:`3` and vertex :"
@@ -18621,13 +18610,11 @@ msgstr ""
 "pgr_withPointsCost(`SQL de aristas`_, 'SQL de puntos`_, `SQL de "
 "combinaciones`_, [**opciones**])"
 
-#, fuzzy
 msgid "**options:**  ``[directed, driving_side]``"
-msgstr "**Grafo 4: No dirigido, con costo**"
+msgstr "**opciones:** ``[directed, driving_side]``"
 
-#, fuzzy
 msgid "RETURNS SET OF |matrix-pid|"
-msgstr "Devuelve el conjunto de ``(node)``"
+msgstr "REGRESA CONJUNTO DE |matrix-pid|"
 
 msgid ""
 "There is no **details** flag, unlike the other members of the withPoints "
@@ -18769,13 +18756,11 @@ msgstr ""
 msgid "Returning a **symmetrical** cost matrix"
 msgstr "Devolver una matriz de costes **simétrica**"
 
-#, fuzzy
 msgid "Using the default ``side`` value on the **points_sql** query"
-msgstr "Uso del valor predeterminado **side** en la consulta **points_sql**"
+msgstr "Uso del valor predeterminado ``side``* en la consulta **SQL de puntos**"
 
-#, fuzzy
 msgid "Using the default ``driving_side`` value"
-msgstr "Usando el valor predeterminado **driving_side**"
+msgstr "Usando el valor predeterminado ``driving_side``"
 
 msgid ""
 "Find the matrix cost of the routes from vertex :math:`1` and the two closest "
@@ -18851,17 +18836,14 @@ msgstr ""
 "pgr_withPointsDD(`SQL de aristas`_, `SQL de puntos`_, **raices**, "
 "**distancia**, [**opciones B**])"
 
-#, fuzzy
 msgid "**options A:** ``[directed, driving_side, details]``"
-msgstr "**Grafo 4: No dirigido, con costo**"
+msgstr "**opciones A:** ``[directed, driving_side, details]``"
 
-#, fuzzy
 msgid "**options B:** ``[directed, driving_side, details, equicost]``"
-msgstr "**Grafo 4: No dirigido, con costo**"
+msgstr "**opciones B:** ``[directed, driving_side, details, equicost]``"
 
-#, fuzzy
 msgid "RETURNS SET OF |result-generic-no-seq|"
-msgstr "Devuelve el conjunto de ``(node)``"
+msgstr "REGRESA CONJUNTO DE |result-generic-no-seq|"
 
 msgid ""
 "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, "
@@ -18884,13 +18866,11 @@ msgstr ""
 "pgr_withPointsDD(`SQL de aristas`_, `SQL de puntos`_, **raices**, "
 "**distancia**, [**opciones**])"
 
-#, fuzzy
 msgid "**options:** ``[directed, driving_side, details, equicost]``"
-msgstr "**Grafo 4: No dirigido, con costo**"
+msgstr "**opciones:** ``[directed, driving_side, details, equicost]``"
 
-#, fuzzy
 msgid "RETURNS SET OF |result-m-1-no-seq|"
-msgstr "Devuelve el conjunto de ``(node)``"
+msgstr "REGRESA CONJUNTO DE |result-m-1-no-seq|"
 
 msgid ""
 "From point :math:`1` and vertex :math:`16` within a distance of :math:`3.3` "
@@ -18980,9 +18960,8 @@ msgstr ""
 "pgr_withPointsKSP(`SQL de aristas`_, `SQL de puntos`_, **salida**, "
 "**destino**, **K**, [**options**])"
 
-#, fuzzy
 msgid "**options:**  ``[directed, heap_paths, driving_side, details]``"
-msgstr "**Grafo 4: No dirigido, con costo**"
+msgstr "**opciones:** ``[directed, heap_paths, driving_side, details]``"
 
 msgid ""
 "Get 2 paths from Point :math:`1` to point :math:`2` on a directed graph."
@@ -19011,9 +18990,8 @@ msgstr "No se devuelven rutas pre-calculadas."
 msgid "`Points SQL`_ query as described."
 msgstr "`SQL de puntos`_ como se describe."
 
-#, fuzzy
 msgid "Identifier of the destination vertex."
-msgstr "Identificador del vértice de salida."
+msgstr "Identificador del vértice destino."
 
 msgid ""
 "Get :math:`2` paths using left side driving topology, from vertex :math:`1` "
@@ -19295,94 +19273,73 @@ msgstr ""
 "Para ver la lista completa de cambios, consulte la lista de `Git commits "
 "<https://github.com/pgRouting/pgrouting/commits>`_ en Github."
 
-#, fuzzy
 msgid "pgRouting 3.4.0 Release Notes"
-msgstr "Notas de la versión 3.3.0 de pgRouting"
+msgstr "Notas de la versión 3.4.0 de pgRouting"
 
 msgid "Issue fixes"
 msgstr "Corrección de problemas"
 
-#, fuzzy
 msgid ""
 "`#1891 <https://github.com/pgRouting/pgrouting/issues/1891>`__: pgr_ksp "
 "doesn't give all correct shortest path"
 msgstr ""
-"`#1300 <https://github.com/pgRouting/pgrouting/issues/1300>`__: "
-"pgr_chinesePostman falla en los datos de prueba"
 
 msgid "New proposed functions"
 msgstr "Nuevas funciones propuestas"
 
-#, fuzzy
 msgid "With points"
-msgstr "pgr_withPointsKSP"
+msgstr "Con puntos"
 
-#, fuzzy
 msgid "``pgr_withPointsVia`` (One Via)"
-msgstr "pgr_withPoints(uno a muchos)"
+msgstr "``pgr_withPointsVia`` (Una trayectoria)"
 
-#, fuzzy
 msgid "Turn Restrictions"
-msgstr "con restricciones"
+msgstr "Restricciones de giro"
 
-#, fuzzy
 msgid "Via with turn restrictions"
-msgstr "con restricciones"
+msgstr "Trayectoria con restricciones de giro"
 
 msgid "``pgr_trspVia`` (One Via)"
 msgstr ""
 
-#, fuzzy
 msgid "``pgr_trspVia_withPoints`` (One Via)"
-msgstr "pgr_withPoints(uno a muchos)"
+msgstr "``pgr_trspVia_withPoints`` (Muchas trayectorias)"
 
-#, fuzzy
 msgid "``pgr_trsp``"
-msgstr "pgr_ksp"
+msgstr "``pgr_trsp``"
 
-#, fuzzy
 msgid "``pgr_trsp`` (One to One)"
-msgstr "pgr_aStarCost(Uno a Uno)"
+msgstr "``pgr_trsp`` (Uno a Uno)"
 
-#, fuzzy
 msgid "``pgr_trsp`` (One to Many)"
-msgstr "pgr_aStar(Uno a Muchos)"
+msgstr "``pgr_trsp`` (Uno a Muchos)"
 
-#, fuzzy
 msgid "``pgr_trsp`` (Many to One)"
-msgstr "pgr_aStar(many to one)"
+msgstr "``pgr_trsp``(Muchos a Uno)"
 
-#, fuzzy
 msgid "``pgr_trsp`` (Many to Many)"
-msgstr "pgr_aStar(many to many)"
+msgstr "``pgr_trsp`` (Muchos a Muchos)"
 
-#, fuzzy
 msgid "``pgr_trsp`` (Combinations)"
-msgstr "pgr_aStar(Combinaciones)"
+msgstr "``pgr_trsp``(Combinaciones)"
 
-#, fuzzy
 msgid "``pgr_trsp_withPoints``"
-msgstr "pgr_withPointsKSP"
+msgstr "``pgr_trsp_withPoints``"
 
-#, fuzzy
 msgid "``pgr_trsp_withPoints`` (One to One)"
-msgstr "pgr_withPoints(Uno a Uno)"
+msgstr "``pgr_trsp_withPoints`` (Uno a Uno)"
 
-#, fuzzy
 msgid "``pgr_trsp_withPoints`` (One to Many)"
-msgstr "pgr_withPoints(uno a muchos)"
+msgstr "``pgr_trsp_withPoints`` (Uno a Muchos)"
 
-#, fuzzy
 msgid "``pgr_trsp_withPoints`` (Many to One)"
-msgstr "pgr_withPoints(muchos a uno)"
+msgstr "``pgr_trsp_withPoints`` (Muchos a Uno)"
 
-#, fuzzy
 msgid "``pgr_trsp_withPoints`` (Many to Many)"
-msgstr "pgr_withPoints(muchos a muchos)"
+msgstr "``pgr_trsp_withPoints`` (Muchos a Muchos)"
 
-#, fuzzy
 msgid "``pgr_trsp_withPoints`` (Combinations)"
-msgstr "pgr_withPoints(Combinaciones)"
+msgstr "``pgr_trsp_withPoints`` (Combinaciones)"
 
 msgid "Topology"
 msgstr "Topología"
@@ -19402,24 +19359,20 @@ msgstr "Nuevas funciones experimentales"
 msgid "Ordering"
 msgstr "Ordenamiento"
 
-#, fuzzy
 msgid "``pgr_cuthillMckeeOrdering``"
-msgstr "``pgr_full_version``"
+msgstr "``pgr_cuthillMckeeOrdering``"
 
-#, fuzzy
 msgid "Unclassified"
 msgstr "No clasificado"
 
 msgid "Official functions changes"
 msgstr ""
 
-#, fuzzy
 msgid "Flow functions"
-msgstr "Nuevas funciones"
+msgstr "Funciones de flujo"
 
-#, fuzzy
 msgid "``pgr_maxCardinalityMatch(text)``"
-msgstr "pgr_maximumcardinalitymatching"
+msgstr "``pgr_maxCardinalityMatch(text)``"
 
 msgid "Deprecating ``pgr_maxCardinalityMatch(text,boolean)``"
 msgstr ""
@@ -19427,18 +19380,14 @@ msgstr ""
 msgid "Deprecated functions"
 msgstr "Funciones Obsoletas"
 
-#, fuzzy
 msgid "``pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text)``"
-msgstr ""
-"Correción pgr_trsp(text,integer,double precision,integer,double precision,"
-"boolean,boolean[,text])"
+msgstr "``pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text)``"
 
 msgid "``pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)``"
 msgstr ""
 
-#, fuzzy
 msgid "pgRouting 3.3.2 Release Notes"
-msgstr "Notas de la versión 3.3.0 de pgRouting"
+msgstr "Notas de la versión 3.3.2 de pgRouting"
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
@@ -19480,52 +19429,38 @@ msgstr ""
 msgid "Restructure of the pgRouting concepts page."
 msgstr ""
 
-#, fuzzy
 msgid ""
 "`#2276 <https://github.com/pgRouting/pgrouting/issues/2276>`__: "
 "edgeDisjointPaths issues with start_vid and combinations"
 msgstr ""
-"`#1006 <https://github.com/pgRouting/pgrouting/issues/1006>`__: No hay "
-"pérdida de información2"
 
-#, fuzzy
 msgid ""
 "`#2312 <https://github.com/pgRouting/pgrouting/issues/2312>`__: "
 "pgr_extractVertices error when target is not BIGINT"
 msgstr ""
-"`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__: "
-"pgr_extractVertices a propuesto"
 
-#, fuzzy
 msgid "pgRouting 3.3.1 Release Notes"
-msgstr "Notas de la versión 3.3.0 de pgRouting"
+msgstr "Notas de la versión 3.3.1 de pgRouting"
 
-#, fuzzy
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.3.1 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.3.1%22>`_ on Github."
 msgstr ""
 "Para ver todos los problemas y solicitudes de extracción cerrados pora ésta "
-"versión, consulte la `meta cerrada de 3.3.0 <https://github.com/pgRouting/"
-"pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.0%22>`_ en "
+"versión, consulte la `meta cerrada para 3.3.1 <https://github.com/pgRouting/"
+"pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.1%22>`_ en "
 "Github."
 
-#, fuzzy
 msgid ""
 "`#2216 <https://github.com/pgRouting/pgrouting/issues/2216>`__: Warnings "
 "when using clang"
 msgstr ""
-"`#1770 <https://github.com/pgRouting/pgrouting/issues/1770>`__: Eliminar "
-"advertencias cuando se utiliza el compilador clang"
 
-#, fuzzy
 msgid ""
 "`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__: Error "
 "processing restrictions"
 msgstr ""
-"`#1006 <https://github.com/pgRouting/pgrouting/issues/1006>`__: No hay "
-"pérdida de información2"
 
 msgid "pgRouting 3.3.0 Release Notes"
 msgstr "Notas de la versión 3.3.0 de pgRouting"
@@ -21708,16 +21643,14 @@ msgstr ""
 msgid "Sample Data"
 msgstr "Datos Muestra"
 
-#, fuzzy
 msgid ""
 "The documentation provides very simple example queries based on a small "
 "sample network that resembles a city. To be able to execute the mayority of "
 "the examples queries, follow the instructions bellow."
 msgstr ""
 "La documentación proporciona consultas de ejemplo muy simples basadas en una "
-"red muestra pequeña. Para ser capaz de ejecutar las consultas de la muestra, "
-"ejecute los siguientes comandos SQL para crear una tabla con el conjunto de "
-"datos de la red."
+"red muestra pequeña que asemeja una ciudad. Para ser capaz de ejecutar la "
+"mayoría de los ejemplos, siga las siguientes instrucciones."
 
 msgid "Main graph"
 msgstr ""
@@ -21842,9 +21775,8 @@ msgstr ""
 msgid "The structure of the table is:"
 msgstr ""
 
-#, fuzzy
 msgid "Vertices data"
-msgstr "Insertar datos"
+msgstr "Datos de vértices"
 
 msgid "The saved information of the vertices is:"
 msgstr ""
@@ -21854,28 +21786,22 @@ msgid ""
 "Additional columns names and types will depend on the application."
 msgstr ""
 
-#, fuzzy
 msgid "The topology"
-msgstr "Topología"
+msgstr "La topología"
 
-#, fuzzy
 msgid ""
 "This queries based on the vertices data create a topology by filling the "
 "``source`` and ``target`` columns in the edges table."
 msgstr ""
-"Antes de probar una función de ruteo, utiliza esta consulta para crear una "
-"topología (rellena las columnas ``source`` y ``target``)."
 
-#, fuzzy
 msgid "Topology data"
-msgstr "Topología"
+msgstr "Datos de topología"
 
 msgid "Points outside the graph"
 msgstr "Puntos fuera del grafo"
 
-#, fuzzy
 msgid "Support tables"
-msgstr "Crear tabla"
+msgstr "Tablas de apoyo"
 
 msgid ""
 "Many functions can be used with a combinations of ``(source, target)`` pairs "
@@ -21911,9 +21837,8 @@ msgstr "Los puntos están fuera del grafo."
 msgid "Click on the graph to enlarge."
 msgstr "Haga clic en el grafo para ampliarlo."
 
-#, fuzzy
 msgid "Directed graph with ``cost`` and ``reverse_cost``"
-msgstr "**Grafo 2: No dirigido, con costo y costo inverso**"
+msgstr "Grafo dirigido con ``cost`` y ``reverse_cost``"
 
 msgid ""
 "When working with city networks, this is recommended for point of view of "
@@ -21922,13 +21847,11 @@ msgstr ""
 "Cuando se trabaja con redes de ciudades, esto se recomienda para el punto de "
 "vista de los vehículos."
 
-#, fuzzy
 msgid "Directed, with cost and reverse_cost"
-msgstr "**Grafo 2: No dirigido, con costo y costo inverso**"
+msgstr "Dirigido, con costo y costo inverso"
 
-#, fuzzy
 msgid "Undirected graph with ``cost`` and ``reverse_cost``"
-msgstr "**Grafo 2: No dirigido, con costo y costo inverso**"
+msgstr "Grafo no dirigido con ``cost`` y ``reverse_cost``"
 
 msgid ""
 "When working with city networks, this is recommended for point of view of "
@@ -21937,23 +21860,20 @@ msgstr ""
 "Cuando se trabaja con redes de ciudades, esto se recomienda para el punto de "
 "vista de los peatones."
 
-#, fuzzy
 msgid "Undirected, with cost and reverse cost"
-msgstr "**Grafo 2: No dirigido, con costo y costo inverso**"
+msgstr "No dirigido, con costo y costo inverso"
 
 msgid "Directed graph with ``cost``"
 msgstr ""
 
-#, fuzzy
 msgid "Directed, with cost"
-msgstr "**Grafo 4: No dirigido, con costo**"
+msgstr "Dirigido, con costo"
 
 msgid "Undirected graph with ``cost``"
 msgstr ""
 
-#, fuzzy
 msgid "Undirected, with cost"
-msgstr "**Grafo 4: No dirigido, con costo**"
+msgstr "No dirigido, con costo"
 
 msgid "Pick & Deliver Data"
 msgstr "Datos de Recogida y Entrega"
@@ -22756,29 +22676,23 @@ msgstr ""
 msgid "Depending on the name:"
 msgstr ""
 
-#, fuzzy
 msgid "pgr_withPoints is pgr_dijkstra **with points**"
-msgstr "pgr_withPoints se basa en pgr_dijkstra"
+msgstr "pgr_withPoints es pgr_dijkstra **con puntos**"
 
-#, fuzzy
 msgid "pgr_withPointsCost is pgr_dijkstraCost **with points**"
-msgstr "pgr_withPointsCost se basa en pgr_dijkstraCost"
+msgstr "pgr_withPointsCost es pgr_dijkstraCost **con puntos**"
 
-#, fuzzy
 msgid "pgr_withPointsCostMatrix is pgr_dijkstraCostMatrix **with points**"
-msgstr "pgr_withPointsCost se basa en pgr_dijkstraCost"
+msgstr "pgr_withPointsCostMatrix es pgr_dijkstraCostMatrix **con puntos**"
 
-#, fuzzy
 msgid "pgr_withPointsKSP is pgr_ksp **with points**"
-msgstr "pgr_withPointsKSP se basa en pgr_ksp"
+msgstr "pgr_withPointsKSP es pgr_ksp **con puntos**"
 
-#, fuzzy
 msgid "pgr_withPointsDD is pgr_drivingDistance **with points**"
-msgstr "pgr_withPointsDD se basa en pgr_drivingDistance"
+msgstr "pgr_withPointsDD es pgr_drivingDistance **con puntos**"
 
-#, fuzzy
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
-msgstr "pgr_withPoints se basa en pgr_dijkstra"
+msgstr "pgr_withPoints es pgr_dijkstraVia **con puntos**"
 
 msgid "Advanced Documentation"
 msgstr ""
