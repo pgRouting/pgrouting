@@ -12,6 +12,7 @@
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/withPoints-category.html>`__
   (`3.4 <https://docs.pgrouting.org/3.4/en/withPoints-category.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/withPoints-category.html>`__
 
 withPoints - Category
 ===============================================================================
