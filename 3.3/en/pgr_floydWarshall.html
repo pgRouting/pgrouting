@@ -44,7 +44,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -224,9 +224,14 @@ would be the pair: <cite>(start_vid, end_vid)</cite>.</p></li>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Summary</p>
-<pre class="literal-block">pgr floydWarshall(<a class="reference internal" href="#edges-sql">Edges SQL</a> [, directed])
-RETURNS SET OF (start_vid, end_vid, agg_cost)
-OR EMPTY SET</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<p>pgr_floydWarshall(<a class="reference internal" href="#edges-sql">Edges SQL</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>For a directed subgraph with edges <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span>.</p>
@@ -357,7 +362,6 @@ it’s not part of the graph.</p></li>
 </section>
 <section id="result-columns">
 <h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
-<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
 <p>Set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
@@ -414,7 +418,7 @@ it’s not part of the graph.</p></li>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Last updated on Oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

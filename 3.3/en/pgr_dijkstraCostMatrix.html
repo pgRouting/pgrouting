@@ -44,7 +44,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -257,8 +257,14 @@ path.</p>
 <section id="signatures">
 <span id="index-0"></span><h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Summary</p>
-<pre class="literal-block">pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong> [, directed])
-RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<p>pgr_dijkstraCostMatrix(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Symmetric cost matrix for vertices <span class="math notranslate nohighlight">\(\{5, 6, 10, 15\}\)</span> on an
@@ -485,7 +491,7 @@ HINT:  Ignoring annaeling parameters
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Last updated on Oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

@@ -44,7 +44,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -251,11 +251,16 @@ vehicles.</p>
 </section>
 <section id="signature">
 <span id="index-0"></span><h2>Signature<a class="headerlink" href="#signature" title="Permalink to this heading">¶</a></h2>
-<pre class="literal-block">pgr_pickDeliver(<a class="reference internal" href="#orders-sql">Orders SQL</a>, <a class="reference internal" href="#vehicles-sql">Vehicles SQL</a>, <a class="reference internal" href="#matrix-sql">Matrix SQL</a>
-   [, factor], [max_cycles] [,initial_sol])
-RETURNS SET OF (seq, vehicle_number, vehicle_id,
-   stop, order_id, stop_type, cargo,
-   travel_time, arrival_time, wait_time, service_time, departure_time)</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_pickDeliver(<a class="reference internal" href="#orders-sql">Orders SQL</a>, <a class="reference internal" href="#vehicles-sql">Vehicles SQL</a>, <a class="reference internal" href="#matrix-sql">Matrix SQL</a>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[factor,</span> <span class="pre">max_cycles,</span> <span class="pre">initial_sol]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">vehicle_number,</span> <span class="pre">vehicle_id,</span> <span class="pre">stop,</span> <span class="pre">order_id,</span> <span class="pre">stop_type,</span> <span class="pre">cargo,</span> <span class="pre">travel_time,</span> <span class="pre">arrival_time,</span> <span class="pre">wait_time,</span> <span class="pre">service_time,</span> <span class="pre">departure_time)</span></code></div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Solve the following problem</p>
@@ -388,10 +393,13 @@ front</p></li>
 <section id="orders-sql">
 <h3>Orders SQL<a class="headerlink" href="#orders-sql" title="Permalink to this heading">¶</a></h3>
 <p>A <cite>SELECT</cite> statement that returns the following columns:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span><span class="p">,</span> <span class="n">demand</span>
-<span class="n">p_node_id</span><span class="p">,</span> <span class="n">p_open</span><span class="p">,</span> <span class="n">p_close</span><span class="p">,</span> <span class="p">[</span><span class="n">p_service</span><span class="p">,]</span>
-<span class="n">d_node_id</span><span class="p">,</span> <span class="n">d_open</span><span class="p">,</span> <span class="n">d_close</span><span class="p">,</span> <span class="p">[</span><span class="n">d_service</span><span class="p">,]</span>
-</pre></div>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">id, demand</div>
+<div class="line">p_node_id, p_open, p_close, [p_service,]</div>
+<div class="line">d_node_id, d_open, d_close, [d_service,]</div>
+</div>
 </div>
 <p>where:</p>
 <table class="docutils align-default" style="width: 81">
@@ -483,10 +491,13 @@ the <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p></td>
 <section id="vehicles-sql">
 <h3>Vehicles SQL<a class="headerlink" href="#vehicles-sql" title="Permalink to this heading">¶</a></h3>
 <p>A <cite>SELECT</cite> statement that returns the following columns:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span><span class="p">,</span> <span class="n">capacity</span>
-<span class="n">start_node_id</span><span class="p">,</span> <span class="n">start_open</span><span class="p">,</span> <span class="n">start_close</span> <span class="p">[,</span> <span class="n">start_service</span><span class="p">,]</span>
-<span class="p">[</span><span class="n">end_node_id</span><span class="p">,</span> <span class="n">end_open</span><span class="p">,</span> <span class="n">end_close</span><span class="p">,</span> <span class="n">end_service</span><span class="p">]</span>
-</pre></div>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">id, capacity</div>
+<div class="line">start_node_id, start_open, start_close [, start_service,]</div>
+<div class="line">[end_node_id, end_open, end_close, end_service]</div>
+</div>
 </div>
 <p>where:</p>
 <table class="docutils align-default" style="width: 81">
@@ -594,10 +605,10 @@ in the <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p>
 <section id="return-columns">
 <h2>Return columns<a class="headerlink" href="#return-columns" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RETURNS</span> <span class="n">SET</span> <span class="n">OF</span>
-  <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">vehicle_seq</span><span class="p">,</span> <span class="n">vehicle_id</span><span class="p">,</span> <span class="n">stop_seq</span><span class="p">,</span> <span class="n">stop_type</span><span class="p">,</span>
-      <span class="n">travel_time</span><span class="p">,</span> <span class="n">arrival_time</span><span class="p">,</span> <span class="n">wait_time</span><span class="p">,</span> <span class="n">service_time</span><span class="p">,</span>  <span class="n">departure_time</span><span class="p">)</span>
-  <span class="n">UNION</span>
-  <span class="p">(</span><span class="n">summary</span> <span class="n">row</span><span class="p">)</span>
+ <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">vehicle_seq</span><span class="p">,</span> <span class="n">vehicle_id</span><span class="p">,</span> <span class="n">stop_seq</span><span class="p">,</span> <span class="n">stop_type</span><span class="p">,</span>
+     <span class="n">travel_time</span><span class="p">,</span> <span class="n">arrival_time</span><span class="p">,</span> <span class="n">wait_time</span><span class="p">,</span> <span class="n">service_time</span><span class="p">,</span>  <span class="n">departure_time</span><span class="p">)</span>
+ <span class="n">UNION</span>
+ <span class="p">(</span><span class="n">summary</span> <span class="n">row</span><span class="p">)</span>
 </pre></div>
 </div>
 <table class="docutils align-default" style="width: 81">
@@ -772,7 +783,7 @@ vehicle.</p></li>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Last updated on Oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

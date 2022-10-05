@@ -45,7 +45,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -105,7 +105,7 @@
 </li>
 <li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
 <li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
-<li><a class="reference internal" href="#points-sql">SQL puntos</a></li>
+<li><a class="reference internal" href="#points-sql">SQL de puntos</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
@@ -248,7 +248,7 @@
 <li><p>El costo agregado de <cite>(u, v)</cite> es el mismo que para <cite>(v, u)</cite>.</p></li>
 </ul>
 </li>
-<li><p>Se omite cualquier valor duplicado en <strong>ids de veértices</strong>.</p></li>
+<li><p>Se omite cualquier valor duplicado en las <strong>salidas</strong>.</p></li>
 <li><p>Los valores regresados se ordenan:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> ascendente</p></li>
@@ -273,11 +273,11 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> como se describe a continuación</p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a> como se describe a continuación</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>vid salidas</strong></p></td>
+<tr class="row-odd"><td><p><strong>salidas</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
 <td><p>Arreglo de identificadores de vértices iniciales.</p></td>
 </tr>
@@ -295,15 +295,15 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> como se describe a continuación</p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a> como se describe a continuación</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">SQL puntos</a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">SQL de puntos</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#points-sql">SQL puntos</a> como se describe abajo</p></td>
+<td><p><a class="reference internal" href="#points-sql">SQL de puntos</a> como se describe abajo</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>vid salidas</strong></p></td>
+<tr class="row-even"><td><p><strong>salidas</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
 <td><p>Arreglo de identificadores de vértices iniciales.</p></td>
 </tr>
@@ -399,7 +399,7 @@
 </dl>
 </section>
 <section id="points-sql">
-<h3>SQL puntos<a class="headerlink" href="#points-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>SQL de puntos<a class="headerlink" href="#points-sql" title="Enlace permanente a este encabezado">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 15.6%" />
@@ -516,7 +516,7 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Actualizado por última vez en oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

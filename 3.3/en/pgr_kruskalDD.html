@@ -44,7 +44,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -205,8 +205,7 @@ calculated minimum spanning tree.</p>
 <ul class="simple">
 <li><p>Extracts all the nodes that have costs less than or equal to the value
 distance.</p></li>
-<li><p>The edges extracted will conform to the corresponding spanning tree.
-Edge</p></li>
+<li><p>The edges extracted will conform to the corresponding spanning tree.</p></li>
 <li><p>Edge <span class="math notranslate nohighlight">\((u, v)\)</span> will not be included when:</p>
 <ul>
 <li><p>The distance from the <strong>root</strong> to <span class="math notranslate nohighlight">\(u\)</span> &gt; limit distance.</p></li>
@@ -223,13 +222,27 @@ not within the limit, the edge is not included.</p></li>
 </section>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
-<pre class="literal-block">pgr_kruskalDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong>, <strong>distance</strong>)
-pgr_kruskalDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vids</strong>, <strong>distance</strong>)
-RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_kruskalDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vid</strong>, <strong>distance</strong>)</div>
+<div class="line">pgr_kruskalDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vids</strong>, <strong>distance</strong>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+</div>
+</div>
 <section id="single-vertex">
 <span id="index-0"></span><h3>Single vertex<a class="headerlink" href="#single-vertex" title="Permalink to this heading">¶</a></h3>
-<pre class="literal-block">pgr_kruskalDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong>, <strong>distance</strong>)
-RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_kruskalDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vid</strong>, <strong>distance</strong>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The Minimum Spanning Tree starting on vertex <span class="math notranslate nohighlight">\(6\)</span> with
@@ -253,8 +266,15 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 </section>
 <section id="multiple-vertices">
 <span id="index-1"></span><h3>Multiple vertices<a class="headerlink" href="#multiple-vertices" title="Permalink to this heading">¶</a></h3>
-<pre class="literal-block">pgr_kruskalDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vids</strong>, <strong>distance</strong>)
-RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_kruskalDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vids</strong>, <strong>distance</strong>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The Minimum Spanning Tree starting on vertices <span class="math notranslate nohighlight">\(\{9, 6\}\)</span> with
@@ -482,7 +502,7 @@ it’s not part of the graph.</p></li>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Last updated on Oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

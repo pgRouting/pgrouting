@@ -44,7 +44,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -1464,7 +1464,12 @@ functions can be used to divide the problem.</p>
 <h2><a class="toc-backref" href="#id12" role="doc-backlink">Function’s structure</a><a class="headerlink" href="#function-s-structure" title="Permalink to this heading">¶</a></h2>
 <p>Once the graph preparation work has been done above, it is time to use a</p>
 <p>The general form of a pgRouting function call is:</p>
-<pre class="literal-block">pgr_&lt;name&gt;(<a class="reference internal" href="#inner-queries">Inner queries</a>, <strong>parameters</strong>, [ <code class="docutils literal notranslate"><span class="pre">Optional</span> <span class="pre">parameters</span></code>)</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<blockquote>
+<div><p>pgr_&lt;name&gt;(<a class="reference internal" href="#inner-queries">Inner queries</a>, <strong>parameters</strong>, [ <code class="docutils literal notranslate"><span class="pre">Optional</span> <span class="pre">parameters</span></code>)</p>
+</div></blockquote>
+</div>
 <p>Where:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#inner-queries">Inner queries</a>: Are compulsory parameters that are <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> strings
@@ -1476,7 +1481,10 @@ default value when omitted.</p></li>
 <p>The compulsory parameters are positional parameters, the optional parameters are
 named parameters.</p>
 <p>For example, for this <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> signature:</p>
-<pre class="literal-block">pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>  [, <code class="docutils literal notranslate"><span class="pre">directed</span></code>])</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<p>pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>  [, <code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
+</div>
 <ul class="simple">
 <li><p><a class="reference internal" href="#edges-sql">Edges SQL</a>:</p>
 <ul>
@@ -1527,7 +1535,7 @@ each function.</p>
 <p>Depending on the overload the parameters types change.</p>
 <ul class="simple">
 <li><p><strong>One</strong>: <strong>ANY-INTEGER</strong></p></li>
-<li><p><strong>Many</strong>: <code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [ <strong>ANY-INTEGER</strong> ]</p></li>
+<li><p><strong>Many</strong>: <code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ANY-INTEGER</strong>]</p></li>
 </ul>
 <p>Depending of the function the overloads may vary. But the concept of parameter
 type change remains the same.</p>
@@ -2015,7 +2023,7 @@ it’s not part of the graph.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ANY-INTEGER</strong>]</p></td>
 <td><p>Sequence of edge identifiers that form a path that is not allowed to be
 taken.
 - Empty arrays or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> arrays are ignored.
@@ -2154,7 +2162,7 @@ The optional parameters are named parameters and will have a default value.</p>
 <td><p>SQL query as described.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>via vertices</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ANY-INTEGER</strong>]</p></td>
 <td></td>
 <td><p>Array of ordered vertices identifiers that are going to be visited.</p></td>
 </tr>
@@ -2227,7 +2235,7 @@ with same identifier is used when no other path is found.</p></li>
 <td><p>Identifier of the departure vertex.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>start vids</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ANY-INTEGER</strong>]</p></td>
 <td><p>Array of identifiers of destination vertices.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>end vid</strong></p></td>
@@ -2235,7 +2243,7 @@ with same identifier is used when no other path is found.</p></li>
 <td><p>Identifier of the departure vertex.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>end vids</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ANY-INTEGER</strong>]</p></td>
 <td><p>Array of identifiers of destination vertices.</p></td>
 </tr>
 </tbody>
@@ -2854,7 +2862,7 @@ routing function and is within the area of the results.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Last updated on Oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

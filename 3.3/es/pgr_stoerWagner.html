@@ -45,7 +45,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -196,7 +196,7 @@
 </div>
 <p class="rubric">Disponibilidad</p>
 <ul>
-<li><p>Versión 2.3.0</p>
+<li><p>Versión 3.0</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Nueva función <strong>Experimental</strong></p></li>
@@ -208,7 +208,7 @@
 <h2>Descripción<a class="headerlink" href="#description" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>En teoría de grafos, el algoritmo Stoer-Wagner es un algoritmo recursivo para resolver el problema de corte mínimo en gráficos ponderados no dirigidos con pesos no negativos. La idea esencial de este algoritmo es encoger el grafo mediante la fusión de los vértices más intensivos, hasta que el grafo sólo contiene dos conjuntos de vértices combinados. En cada fase, el algoritmo encuentra el corte s-t mínimo para dos vértices s y t elegidos a su voluntad. A continuación, el algoritmo encoge la arista entre s y t para buscar cortes no s-t. El corte mínimo encontrado en todas las fases será el corte ponderado mínimo del grafo.</p>
 <p>Un corte es una partición de los vértices de un grafo en dos subconjuntos separados. Un corte mínimo es un corte para el que el tamaño o peso del corte no es mayor que el tamaño de cualquier otro corte. Para un grafo no ponderado, el corte mínimo sería simplemente el corte con menos aristas. Para un grafo ponderado, la suma del peso de todas las aristas en el corte determina si se trata de un corte mínimo.</p>
-<p><strong>Las características principales son:</strong></p>
+<p><strong>Las principales características son:</strong></p>
 <ul class="simple">
 <li><p>El proceso se realiza sólo en aristas con costos positivos.</p></li>
 <li><p>Su implementación es solo para grafo <strong>no dirigido</strong>.</p></li>
@@ -231,9 +231,16 @@
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
-<pre class="literal-block" id="index-0">pgr_stoerWagner(<a class="reference internal" href="#edges-sql">Edges SQL</a>)
-RETURNS SET OF (seq, edge, cost, mincut)
-OR EMPTY SET</pre>
+<div class="signatures admonition" id="index-0">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_stoerWagner(<a class="reference internal" href="#edges-sql">SQL de aristas</a>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">mincut)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>corte mínimo de el subgrafo principal</p>
@@ -260,9 +267,9 @@ OR EMPTY SET</pre>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> descritas más adelante.</p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a> descritas más adelante.</p></td>
 </tr>
 </tbody>
 </table>
@@ -423,7 +430,7 @@ OR EMPTY SET</pre>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Actualizado por última vez en oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

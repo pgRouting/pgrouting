@@ -45,7 +45,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -205,9 +205,9 @@
 <h2>Descripción<a class="headerlink" href="#description" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Coloración de arístas es un algoritmo utilizado para colorear aristas para los vértices de un grafo. Es una asignación de colores a las aristas del grafo de tal manera que dos aristas adjacentes no tengan el mismo color.</p>
 <p><strong>Las características principales son:</strong></p>
-<ul>
-<li><p>La implementación es para grafos <strong>no dirigidos</strong> sin <strong>auto-ciclos</strong></p>
 <ul class="simple">
+<li><p>La implementación es para grafos <strong>no dirigidos</strong> sin <strong>auto-ciclos</strong></p>
+<ul>
 <li><dl class="field-list simple">
 <dt class="field-odd">Sin auto ciclos<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Sin auto ciclos ni aristas paralelas.</p>
@@ -221,23 +221,20 @@
 <ul>
 <li><p>Esto es óptimo para algunos gráfos. y por el teorema de Vizing, utiliza a lo más un color extra que el óptimo para todos los demás.</p></li>
 <li><p>Cuando el grafo es bi-partido</p>
-<blockquote>
-<div><ul class="simple">
+<ul>
 <li><p>El número cromático <span class="math notranslate nohighlight">\(x'(G)\)</span> (mínima cantidad de colores necesitados para colorear apropiadamentnte las aristas de un grafo) es igual al grado <span class="math notranslate nohighlight">\(\Delta + 1\)</span> del grafo, (<span class="math notranslate nohighlight">\(x'(G) = \Delta\)</span>)</p></li>
 </ul>
-</div></blockquote>
 </li>
 </ul>
 </li>
 <li><p>El algoritmo trata de asignar el menor color a cada arista.</p>
-<ul class="simple">
+<ul>
 <li><p>No produce siempre produce la coloración ótpima.</p></li>
 </ul>
 </li>
 <li><p>Las filas de resultados son ordenados ascendentemente respecto al identificador de la arista.</p></li>
 <li><p>Coloración eficiente de un grafo es un problema NP-Duro, por lo que:</p>
-<blockquote>
-<div><ul class="simple">
+<ul>
 <li><p>El tiempo de ejecución de esta implementación es: <span class="math notranslate nohighlight">\(O(|E|*|V|)\)</span></p>
 <ul>
 <li><p>donde <span class="math notranslate nohighlight">\(|E|\)</span> es la cantidad de arístas en el grafo,</p></li>
@@ -245,16 +242,21 @@
 </ul>
 </li>
 </ul>
-</div></blockquote>
 </li>
 </ul>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
-<pre class="literal-block" id="index-0">pgr_edgeColoring(<a class="reference internal" href="#edges-sql">Edges SQL</a>)
-
-RETURNS SET OF (edge_id, color_id)
-OR EMPTY SET</pre>
+<div class="signatures admonition" id="index-0">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_edgeColoring(<a class="reference internal" href="#edges-sql">SQL de aristas</a>)</div>
+</div>
+<div class="line-block">
+<div class="line">REGRESA CONJUNTO DE</div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Coloración de grafos de pgRouting <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p>
@@ -299,9 +301,9 @@ OR EMPTY SET</pre>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> descritas más adelante.</p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a> descritas más adelante.</p></td>
 </tr>
 </tbody>
 </table>
@@ -422,7 +424,7 @@ OR EMPTY SET</pre>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Actualizado por última vez en oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

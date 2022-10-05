@@ -44,7 +44,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -234,8 +234,16 @@ edges</p></li>
 </section>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
-<pre class="literal-block" id="index-0">pgr_extractVertices(<a class="reference internal" href="#edges-sql">Edges SQL</a> [, dryrun])
-RETURNS SETOF (id, in_edges, out_edges, x, y, geom)</pre>
+<div class="signatures admonition" id="index-0">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_extractVertices(<a class="reference internal" href="#edges-sql">Edges SQL</a>, [<code class="docutils literal notranslate"><span class="pre">dryrun</span></code>])</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SETOF <code class="docutils literal notranslate"><span class="pre">(id,</span> <span class="pre">in_edges,</span> <span class="pre">out_edges,</span> <span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">geom)</span></code></div>
+<div class="line">OR EMTPY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Extracting the vertex information</p>
@@ -435,7 +443,7 @@ of the edge.</p></td>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the first end point vertex of the edge.</p></td>
+<td><p>Vertex identifier</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">in_edges</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT[]</span></code></p></td>
@@ -989,7 +997,7 @@ view.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Last updated on Oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

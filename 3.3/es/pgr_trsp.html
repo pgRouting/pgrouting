@@ -45,7 +45,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -96,9 +96,9 @@
 <li><a class="reference internal" href="#">pgr_trsp - Turn Restriction Shortest Path (TRSP)</a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#support-for-vias">Support for Vias</a></li>
-<li><a class="reference internal" href="#additional-examples">Additional Examples</a></li>
+<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a></li>
 <li><a class="reference internal" href="#known-issues">Known Issues</a><ul>
-<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#introduction">Introducción</a></li>
 <li><a class="reference internal" href="#the-restrictions">The restrictions</a></li>
 <li><a class="reference internal" href="#the-vertices-signature-version">The «Vertices» signature version</a><ul>
 <li><a class="reference internal" href="#different-ways-to-represent-no-path-found">1 Different ways to represent “no path found`</a></li>
@@ -181,7 +181,7 @@
 <ul class="simple">
 <li><p>Versión 2.1.0</p>
 <ul>
-<li><p>Nuevo <em>Via</em> <strong>prototypes</strong></p>
+<li><p>New <em>Via</em> <strong>prototypes</strong></p>
 <ul>
 <li><p>pgr_trspViaVertices</p></li>
 <li><p>pgr_trspViaEdges</p></li>
@@ -221,7 +221,7 @@
 <span class="k">RETURNS</span><span class="w"> </span><span class="k">SETOF</span><span class="w"> </span><span class="p">(</span><span class="n">seq</span><span class="p">,</span><span class="w"> </span><span class="n">id1</span><span class="p">,</span><span class="w"> </span><span class="n">id2</span><span class="p">,</span><span class="w"> </span><span class="n">id3</span><span class="p">,</span><span class="w"> </span><span class="n">cost</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
-<p><strong>The main characteristics are:</strong></p>
+<p><strong>Las principales características son:</strong></p>
 <p>The Turn Restricted Shortest Path algorithm (TRSP) is similar to the shooting star in that you can specify turn restrictions.</p>
 <p>The TRSP setup is mostly the same as <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">Dijkstra shortest path</span></a> with the addition of an optional turn restriction table. This provides an easy way of adding turn restrictions to a road network by placing them in a separate table.</p>
 <dl class="field-list">
@@ -396,7 +396,7 @@
 </dl>
 </section>
 <section id="additional-examples">
-<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlace permanente a este encabezado">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Without turn restrictions</p>
@@ -521,12 +521,12 @@
 
 </pre></div>
 </div>
-<p>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> network.</p>
+<p>Las consultas utilizan la red <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p>
 </section>
 <section id="known-issues">
 <h2>Known Issues<a class="headerlink" href="#known-issues" title="Enlace permanente a este encabezado">¶</a></h2>
 <section id="introduction">
-<h3>Introduction<a class="headerlink" href="#introduction" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Introducción<a class="headerlink" href="#introduction" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>pgr_trsp code has issues that are not being fixed yet, but as time passes and new functionality is added to pgRouting with wrappers to <strong>hide</strong> the issues, not to fix them.</p>
 <p>For clarity on the queries:</p>
 <ul class="simple">
@@ -1033,7 +1033,7 @@ When there are no restrictions and have a routing «via» problem with vertices:
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Actualizado por última vez en oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

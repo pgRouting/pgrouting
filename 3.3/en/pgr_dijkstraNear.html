@@ -44,7 +44,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -255,22 +255,34 @@ ending vertex.</p>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Summary</p>
-<pre class="literal-block">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>
-           [, directed] [, cap])
-pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>
-           [, directed] [, cap])
-pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>
-           [, directed] [, cap], [global])
-pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>
-           [, directed] [, cap] [, global])
-RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-OR EMPTY SET</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, [<strong>options A</strong>])</div>
+<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>, [<strong>options A</strong>])</div>
+<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>, [<strong>options B</strong>])</div>
+<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [<strong>options B</strong>])</div>
+<div class="line"><strong>options A:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">cap]</span></code></div>
+<div class="line"><strong>options B:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">cap,</span> <span class="pre">global]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <section id="one-to-many">
 <span id="index-0"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this heading">¶</a></h3>
-<pre class="literal-block">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>
-           [, directed] [, cap])
-RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-OR EMPTY SET</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">cap]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Departing on car from vertex <span class="math notranslate nohighlight">\(6\)</span> find the nearest subway
@@ -303,10 +315,17 @@ station.</p>
 </section>
 <section id="many-to-one">
 <span id="index-1"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this heading">¶</a></h3>
-<pre class="literal-block">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>
-           [, directed] [, cap])
-RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-OR EMPTY SET</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">cap]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Departing on a car from a subway station find the nearest <strong>two</strong>
@@ -340,12 +359,17 @@ best is <span class="math notranslate nohighlight">\(11\)</span>.</p>
 </section>
 <section id="many-to-many">
 <span id="index-2"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this heading">¶</a></h3>
-<pre class="literal-block">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>
-           [, directed] [, cap], [global])
-pgr_dijkstraNear(Edges SQL, Start vids, End vids
-           [, directed] [, cap], [global])
-RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-OR EMPTY SET</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">cap,</span> <span class="pre">global]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Find the best pedestrian connection between two lines of buses</p>
@@ -381,10 +405,17 @@ the first subway line and at vertex <span class="math notranslate nohighlight">\
 </section>
 <section id="combinations">
 <span id="index-3"></span><h3>Combinations<a class="headerlink" href="#combinations" title="Permalink to this heading">¶</a></h3>
-<pre class="literal-block">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>
-           [, directed] [, cap] [, global])
-RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-OR EMPTY SET</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">cap,</span> <span class="pre">global]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Find the best car connection between all the stations of two subway
@@ -761,7 +792,7 @@ path sequence.</p></td>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Last updated on Oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

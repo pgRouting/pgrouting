@@ -45,7 +45,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -233,11 +233,17 @@ shortest path between <span class="math notranslate nohighlight">\(vertex_i\)</s
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
 <section id="one-via">
 <span id="index-0"></span><h3>One Via<a class="headerlink" href="#one-via" title="Enlace permanente a este encabezado">¶</a></h3>
-<pre class="literal-block">pgr_dijkstraVia(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>via vertices</strong>
-           [, directed] [, strict] [, U_turn_on_edge]) - Proposed on v2.2
-RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
-                node, edge, cost, agg_cost, route_agg_cost)
-OR EMPTY SET</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_dijkstraVia(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>vértices</strong>, [<strong>opciones</strong>])</div>
+<div class="line"><strong>opciones:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">strict,</span> <span class="pre">U_turn_on_edge]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost,</span> <span class="pre">route_agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Find the route that visits the vertices <span class="math notranslate nohighlight">\(\{5, 1, 8\}\)</span> in that
@@ -281,13 +287,13 @@ order on an <strong>directed</strong> graph.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td></td>
 <td><p>Consulta SQL como se describe.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>vía vértices</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<tr class="row-odd"><td><p><strong>vértices</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ENTEROS</strong> ]</p></td>
 <td></td>
 <td><p>Arreglo ordenado de identificadores de vértices que serán visitados.</p></td>
 </tr>
@@ -297,9 +303,6 @@ order on an <strong>directed</strong> graph.</p>
 <dl class="field-list simple">
 <dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT,</span> <span class="pre">INTEGER,</span> <span class="pre">BIGINT</span></code></p>
-</dd>
-<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 <section id="optional-parameters">
@@ -659,7 +662,7 @@ order on an <strong>directed</strong> graph.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Actualizado por última vez en oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

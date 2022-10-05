@@ -45,7 +45,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -202,7 +202,7 @@ restrictions</p>
 <ul class="simple">
 <li><p>Versión 3.0.0</p>
 <ul>
-<li><p>Nueva función <strong>Experimental</strong></p></li>
+<li><p>Nueva función Experimental</p></li>
 </ul>
 </li>
 </ul>
@@ -213,12 +213,20 @@ the paths that do not use the restrictions</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
-<pre class="literal-block" id="index-0">pgr_turnRestrictedPath(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#restrictions-sql">Restrictions SQL</a>, Start vid, End vid, K cycles,
-  [, directed] [,heap_paths] [, stop_on_first] [,strict])
-RETURNS SETOF (seq, path_id, path_seq, node, edge, cost, agg_cost)</pre>
+<div class="signatures admonition" id="index-0">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_turnRestrictedPath(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#restrictions-sql">SQL de restricciones</a>, <strong>salida</strong>, <strong>destino</strong>, <strong>K</strong>, [<strong>opciones</strong>])</div>
+<div class="line"><strong>opciones:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">heap_paths,</span> <span class="pre">stop_on_first,</span> <span class="pre">strict]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(3\)</span> to vertex  <span class="math notranslate nohighlight">\(8\)</span> on a <strong>directed</strong> graph</p>
+<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(3\)</span> to vertex  <span class="math notranslate nohighlight">\(8\)</span> on a directed graph</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_turnRestrictedPath(
@@ -250,15 +258,15 @@ RETURNS SETOF (seq, path_id, path_seq, node, edge, cost, agg_cost)</pre>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p>Consulta SQL como se describe.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>vid de salida</strong></p></td>
+<tr class="row-odd"><td><p><strong>salida</strong></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
 <td><p>Identificador del vértice de salida.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>vid destino</strong></p></td>
+<tr class="row-even"><td><p><strong>destino</strong></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
 <td><p>Identificador del vértice de salida.</p></td>
 </tr>
@@ -431,7 +439,7 @@ restrictions</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ENTEROS</strong>]</p></td>
 <td><p>Secuencia de identificadores de aristas que forman un camino que no se permite tomar. - Arreglos vacios o <code class="docutils literal notranslate"><span class="pre">NULL</span></code> son ignorados. - Arreglos que tienen <code class="docutils literal notranslate"><span class="pre">NULL</span></code> arrojan una excepción.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Cost</span></code></p></td>
@@ -531,7 +539,7 @@ restrictions</p></li>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(3\)</span> to vertex  <span class="math notranslate nohighlight">\(8\)</span> on an <strong>undirected</strong> graph</p>
+<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(3\)</span> to vertex  <span class="math notranslate nohighlight">\(8\)</span> on an undirected graph</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_turnRestrictedPath(
@@ -611,7 +619,7 @@ restrictions</p></li>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Actualizado por última vez en oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

@@ -45,7 +45,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -217,10 +217,16 @@
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
-<pre class="literal-block" id="index-0">pgr_bipartite(<a class="reference internal" href="#edges-sql">Edges SQL</a>)
-
-RETURNS SET OF (vertex_id, color_id)
-OR EMPTY SET</pre>
+<div class="signatures admonition" id="index-0">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_bipartite(<a class="reference internal" href="#edges-sql">SQL de aristas</a>)</div>
+</div>
+<div class="line-block">
+<div class="line">REGRESA CONJUNTO DE <code class="docutils literal notranslate"><span class="pre">(vertex_id,</span> <span class="pre">color_id)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Cuando el grafo es bi-partido</p>
@@ -263,9 +269,9 @@ OR EMPTY SET</pre>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> descritas más adelante.</p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a> descritas más adelante.</p></td>
 </tr>
 </tbody>
 </table>
@@ -411,7 +417,7 @@ OR EMPTY SET</pre>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Actualizado por última vez en oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

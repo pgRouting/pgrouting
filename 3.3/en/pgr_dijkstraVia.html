@@ -44,7 +44,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -232,11 +232,17 @@ shortest path between <span class="math notranslate nohighlight">\(vertex_i\)</s
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
 <section id="one-via">
 <span id="index-0"></span><h3>One Via<a class="headerlink" href="#one-via" title="Permalink to this heading">¶</a></h3>
-<pre class="literal-block">pgr_dijkstraVia(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>via vertices</strong>
-           [, directed] [, strict] [, U_turn_on_edge]) - Proposed on v2.2
-RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
-                node, edge, cost, agg_cost, route_agg_cost)
-OR EMPTY SET</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_dijkstraVia(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>via vertices</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">strict,</span> <span class="pre">U_turn_on_edge]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost,</span> <span class="pre">route_agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Find the route that visits the vertices <span class="math notranslate nohighlight">\(\{5, 1, 8\}\)</span> in that
@@ -286,7 +292,7 @@ order on an <strong>directed</strong> graph.</p>
 <td><p>SQL query as described.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>via vertices</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [ <strong>ANY-INTEGER</strong> ]</p></td>
 <td></td>
 <td><p>Array of ordered vertices identifiers that are going to be visited.</p></td>
 </tr>
@@ -296,9 +302,6 @@ order on an <strong>directed</strong> graph.</p>
 <dl class="field-list simple">
 <dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
-</dd>
-<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
-<dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
 </dd>
 </dl>
 <section id="optional-parameters">
@@ -664,7 +667,7 @@ current <code class="docutils literal notranslate"><span class="pre">seq</span><
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Last updated on Oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

@@ -45,7 +45,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -217,13 +217,13 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td></td>
 <td><p>Consulta SQL como se describe.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>vía vértices</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<tr class="row-odd"><td><p><strong>vértices</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ENTEROS</strong> ]</p></td>
 <td></td>
 <td><p>Arreglo ordenado de identificadores de vértices que serán visitados.</p></td>
 </tr>
@@ -233,9 +233,6 @@
 <dl class="field-list simple">
 <dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT,</span> <span class="pre">INTEGER,</span> <span class="pre">BIGINT</span></code></p>
-</dd>
-<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 <p>Ademas de los parámetros obligatorios que tiene cada función, hay parámetros opcionales que existen dado el tipo de función.</p>
@@ -355,7 +352,7 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ENTEROS</strong>]</p></td>
 <td><p>Secuencia de identificadores de aristas que forman un camino que no se permite tomar. - Arreglos vacios o <code class="docutils literal notranslate"><span class="pre">NULL</span></code> son ignorados. - Arreglos que tienen <code class="docutils literal notranslate"><span class="pre">NULL</span></code> arrojan una excepción.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Cost</span></code></p></td>
@@ -467,7 +464,7 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Actualizado por última vez en oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

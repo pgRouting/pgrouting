@@ -44,7 +44,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -221,10 +221,16 @@ possible color that is not used by its neighbors, to each vertex.</p></li>
 </section>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
-<pre class="literal-block" id="index-0">pgr_sequentialVertexColoring(<a class="reference internal" href="#edges-sql">Edges SQL</a>)
-
-RETURNS SET OF (vertex_id, color_id)
-OR EMPTY SET</pre>
+<div class="signatures admonition" id="index-0">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_sequentialVertexColoring(<a class="reference internal" href="#edges-sql">Edges SQL</a>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(vertex_id,</span> <span class="pre">color_id)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Graph coloring of pgRouting <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a></p>
@@ -392,7 +398,7 @@ it’s not part of the graph.</p></li>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Last updated on Oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

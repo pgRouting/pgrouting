@@ -45,7 +45,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -180,13 +180,13 @@
 <ul class="simple">
 <li><p>Versión 2.1.0:</p>
 <ul>
-<li><p>Cambio de firma pgr_drivingDistance(single vertex)</p></li>
-<li><p>Nuevo <strong>Oficial</strong> pgr_drivingDistance(multiple vertices)</p></li>
+<li><p>Cambio de firma pgr_drivingDistance(vértice único)</p></li>
+<li><p>Nuevo <strong>Oficial</strong> pgr_drivingDistance(multiples vértices)</p></li>
 </ul>
 </li>
 <li><p>Versión 2.0.0:</p>
 <ul>
-<li><p><strong>Oficial</strong> pgr_drivingDistance(single vertex)</p></li>
+<li><p><strong>Oficial</strong> pgr_drivingDistance(vértice único)</p></li>
 </ul>
 </li>
 </ul>
@@ -196,16 +196,28 @@
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
-<pre class="literal-block">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong>,  <strong>distance</strong>
-           [, directed])
-pgr_drivingDistance(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vids</strong>, <strong>distance</strong>
-           [, directed] [, equicost])
-RETURNS SET OF (seq, [from_v,] node, edge, cost, agg_cost)</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>Raíz</strong>, <strong>distancia</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>raices</strong>, <strong>distancia</strong>, [<strong>opciones</strong>])</div>
+<div class="line"><strong>opciones:</strong> [directed, equicost]</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[from_v,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+</div>
+</div>
 <section id="single-vertex">
 <span id="index-0"></span><h3>Vértice Único<a class="headerlink" href="#single-vertex" title="Enlace permanente a este encabezado">¶</a></h3>
-<pre class="literal-block">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong>,  <strong>distance</strong>
-           [, directed])
-RETURNS SET OF (seq, node, edge, cost, agg_cost)</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>Raíz</strong>, <strong>distancia</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Desde el vértice <span class="math notranslate nohighlight">\(11\)</span> por una distancia de <span class="math notranslate nohighlight">\(3.0\)</span></p>
@@ -236,9 +248,16 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)</pre>
 </section>
 <section id="multiple-vertices">
 <span id="index-1"></span><h3>Múltiples Vértices<a class="headerlink" href="#multiple-vertices" title="Enlace permanente a este encabezado">¶</a></h3>
-<pre class="literal-block">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vids</strong>, <strong>distance</strong>
-           [, directed] [, equicost])
-RETURNS SET OF (seq, from_v, node, edge, cost, agg_cost)</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>raices</strong>, <strong>distancia</strong>, [<strong>opciones</strong>])</div>
+<div class="line"><strong>opciones:</strong> [directed, equicost]</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">from_v,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Desde los vertices <span class="math notranslate nohighlight">\(\{11, 16\}\)</span> por una distancia de <span class="math notranslate nohighlight">\(3.0\)</span> con equi-cost en un grafo dirigido</p>
@@ -283,7 +302,7 @@ RETURNS SET OF (seq, from_v, node, edge, cost, agg_cost)</pre>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p>SQL de aristas como se describen abajo.</p></td>
 </tr>
@@ -484,8 +503,7 @@ RETURNS SET OF (seq, from_v, node, edge, cost, agg_cost)</pre>
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlace permanente a este encabezado">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From vertices <span class="math notranslate nohighlight">\(\{11, 16\}\)</span> for a distance of <span class="math notranslate nohighlight">\(3.0\)</span> on an
-undirected graph</p>
+<dd class="field-odd"><p>Desde vértices math:<cite>{11, 16}</cite> con una distancia de <span class="math notranslate nohighlight">\(3.0\)</span> en un grafo no dirigido</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
@@ -524,7 +542,7 @@ undirected graph</p>
 <section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_alphaShape.html"><span class="doc">pgr_alphaShape</span></a> - Cálculo de la forma Alpha</p></li>
+<li><p><a class="reference internal" href="pgr_alphaShape.html"><span class="doc">pgr_alphaShape</span></a> - Cálcular la forma Alpha</p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
@@ -547,7 +565,7 @@ undirected graph</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Actualizado por última vez en oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

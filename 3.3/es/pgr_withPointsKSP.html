@@ -45,7 +45,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -106,7 +106,7 @@
 </li>
 <li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
 <li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
-<li><a class="reference internal" href="#points-sql">SQL puntos</a></li>
+<li><a class="reference internal" href="#points-sql">SQL de puntos</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
@@ -207,13 +207,21 @@
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>Modifica el grafo para incluir los puntos definidos en <a class="reference internal" href="#points-sql">SQL puntos</a> y utilizando el algoritmo Yen, encuentra las <span class="math notranslate nohighlight">\(K\)</span> rutas más cortas.</p>
+<p>Modifica el grafo para incluir los puntos definidos en el <a class="reference internal" href="#points-sql">SQL de puntos</a> y utilizando el algoritmo Yen, encuentra las <span class="math notranslate nohighlight">\(K\)</span> rutas más cortas.</p>
 </section>
 <section id="signatures">
 <span id="index-0"></span><h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
-<pre class="literal-block">pgr_withPointsKSP(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a> <strong>start_pid</strong>, <strong>end_pid</strong>, <strong>K</strong>
-  [, directed] [, heap_paths] [, driving_side] [, details])
-RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_withPointsKSP(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#points-sql">SQL de puntos</a>, <strong>salida</strong>, <strong>destino</strong>, <strong>K</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>opciones:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">heap_paths,</span> <span class="pre">driving_side,</span> <span class="pre">details]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Obtener 2 rutas desde el punto <span class="math notranslate nohighlight">\(1\)</span> al punto <span class="math notranslate nohighlight">\(2\)</span> en un grafo dirigido.</p>
@@ -264,21 +272,29 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)</pre>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p>Consulta <a class="reference internal" href="#edges-sql">SQL aristas</a> como se describen.</p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a> como se describen.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">SQL puntos</a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">SQL de puntos</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#points-sql">SQL puntos</a> como se describe.</p></td>
+<td><p><a class="reference internal" href="#points-sql">SQL de puntos</a> como se describe.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>vid de salida</strong></p></td>
+<tr class="row-even"><td><p><strong>salida</strong></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
-<td><p>Identificador del vértice de salida.</p></td>
+<td><p>Identificador del vértice de salida.</p>
+<ul class="simple">
+<li><p>Valores negativos representan un punto</p></li>
+</ul>
+</td>
 </tr>
-<tr class="row-odd"><td><p><strong>vid destino</strong></p></td>
+<tr class="row-odd"><td><p><strong>destino</strong></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
-<td><p>Identificador del vértice de salida.</p></td>
+<td><p>Identificador del vértice destino.</p>
+<ul class="simple">
+<li><p>Valores negativos representan un punto</p></li>
+</ul>
+</td>
 </tr>
 <tr class="row-even"><td><p><strong>K</strong></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
@@ -356,7 +372,7 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)</pre>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Lado de manejo</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
 <td><p>Valor en [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>] indica si el lado de manejo es:</p>
@@ -441,7 +457,7 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)</pre>
 </dl>
 </section>
 <section id="points-sql">
-<h3>SQL puntos<a class="headerlink" href="#points-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>SQL de puntos<a class="headerlink" href="#points-sql" title="Enlace permanente a este encabezado">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 15.6%" />
@@ -664,7 +680,7 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)</pre>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Actualizado por última vez en oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

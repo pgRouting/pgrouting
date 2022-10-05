@@ -43,7 +43,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -180,10 +180,15 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">OK</span></code> after the analysis has finished.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">FAIL</span></code> when the analysis was not completed due to an error.</p></li>
 </ul>
-<div class="highlight-default notranslate" id="index-0"><div class="highlight"><pre><span></span><span class="n">varchar</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="n">text</span> <span class="n">edge_table</span><span class="p">,</span> <span class="n">double</span> <span class="n">precision</span> <span class="n">tolerance</span><span class="p">,</span>
-    <span class="n">text</span> <span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="n">text</span> <span class="nb">id</span><span class="o">:=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span>
-    <span class="n">text</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="n">text</span> <span class="n">target</span><span class="o">:=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="n">text</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
-</pre></div>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_analyzeGraph(<strong>edge_table</strong>, <strong>tolerance</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[the_geom,</span> <span class="pre">id,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">rows_where]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS <code class="docutils literal notranslate"><span class="pre">VARCHAR</span></code></div>
+</div>
 </div>
 <p class="rubric">Prerequisites</p>
 <p>The  edge table to be analyzed must contain a source column and a target column
@@ -926,7 +931,7 @@ values for the column names do not match the column names of the table.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Last updated on Oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

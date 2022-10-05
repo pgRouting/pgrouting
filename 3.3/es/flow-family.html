@@ -45,7 +45,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -161,14 +161,14 @@
 <section id="flow-family-of-functions">
 <h1>Flow - Familia de funciones<a class="headerlink" href="#flow-family-of-functions" title="Enlace permanente a este encabezado">¶</a></h1>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> - Solo el flujo máximo se calcula usando los algoritmos Push y Relabel.</p></li>
-<li><p><a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a> - Algoritmos Boykov y Kolmogorov con detalles del flujo en aristas.</p></li>
-<li><p><a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a> - Algoritmos de Edmonds y Karp con detalles de flujo con detalles del flujo en aristas.</p></li>
-<li><p><a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a> - Algoritmos Push y Relabel con detalles del flujo en aristas.</p></li>
+<li><p><a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> - Solo el flujo máximo se calcula usando el algoritmo empuja y reetiquetado.</p></li>
+<li><p><a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a> - Algoritmo Boykov y Kolmogorov con detalles del flujo en aristas.</p></li>
+<li><p><a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a> - Algoritmo Edmonds y Karp con detalles de flujo del flujo en aristas.</p></li>
+<li><p><a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a> - Algoritmo empuja y reetiquetado con detalles del flujo en aristas.</p></li>
 <li><p>Aplicaciones</p>
 <ul>
-<li><p><a class="reference internal" href="pgr_edgeDisjointPaths.html"><span class="doc">pgr_edgeDisjointPaths</span></a> - Calcula rutas de separación de aristas entre dos grupos de vértices.</p></li>
-<li><p><a class="reference internal" href="pgr_maxCardinalityMatch.html"><span class="doc">pgr_maxCardinalityMatch</span></a> - Calcula una cardinalidad máxima coincidiendo dentro de un grafo.</p></li>
+<li><p><a class="reference internal" href="pgr_edgeDisjointPaths.html"><span class="doc">pgr_edgeDisjointPaths</span></a> - Calcula rutas de aristas disjuntas entre dos grupos de vértices.</p></li>
+<li><p><a class="reference internal" href="pgr_maxCardinalityMatch.html"><span class="doc">pgr_maxCardinalityMatch</span></a> - Calcular una cardinalidad máxima de coincidencia dentro de un grafo.</p></li>
 </ul>
 </li>
 </ul>
@@ -211,7 +211,7 @@
 </div>
 <section id="flow-functions-general-information">
 <h2>Información General de las Funciones de Flujo<a class="headerlink" href="#flow-functions-general-information" title="Enlace permanente a este encabezado">¶</a></h2>
-<p><strong>Las características principales son:</strong></p>
+<p><strong>Las principales características son:</strong></p>
 <ul class="simple">
 <li><p>El grafo es <strong>dirigido</strong>.</p></li>
 <li><p>El proceso se realiza sólo en aristas con capacidades positivas.</p></li>
@@ -234,9 +234,7 @@
 </ul>
 </li>
 </ul>
-<p><a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a>  is the  maximum Flow and that maximum is guaranteed to be
-the same on the functions <a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a>, <a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a>,
-<a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a>, but the actual flow through each edge may vary.</p>
+<p><a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> es el flujo máximo y este máximo tiene garantía de ser el mismo en las funciones <a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a>, <a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a>, <a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a>, pero el flujo actual para cada arista puede variar.</p>
 </section>
 <section id="inner-queries">
 <h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Enlace permanente a este encabezado">¶</a></h2>
@@ -303,7 +301,7 @@ the same on the functions <a class="reference internal" href="pgr_pushRelabel.ht
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
-<p class="rubric">Capacity-Cost edges</p>
+<p class="rubric">Aristas Capacidad-Costo</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_maxFlowMinCost.html"><span class="doc">pgr_maxFlowMinCost - Experimental</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_maxFlowMinCost_Cost.html"><span class="doc">pgr_maxFlowMinCost_Cost - Experimental</span></a></p></li>
@@ -377,7 +375,7 @@ the same on the functions <a class="reference internal" href="pgr_pushRelabel.ht
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
-<p class="rubric">Cost edges</p>
+<p class="rubric">Aristas de costo</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_edgeDisjointPaths.html"><span class="doc">pgr_edgeDisjointPaths</span></a></p></li>
 </ul>
@@ -472,7 +470,7 @@ the same on the functions <a class="reference internal" href="pgr_pushRelabel.ht
 </section>
 <section id="result-columns">
 <h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>Used in</p>
+<p>Usado en</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a></p></li>
@@ -563,7 +561,7 @@ the same on the functions <a class="reference internal" href="pgr_pushRelabel.ht
 <p>Se garantiza que el flujo máximo a través del grafo sea el mismo con todas las implementaciones, pero el flujo real a través de cada arista puede variar.</p>
 <p>Dada la siguiente consulta:</p>
 <p>pgr_maxFlow <span class="math notranslate nohighlight">\((edges\_sql, source\_vertex, sink\_vertex)\)</span></p>
-<p>where <span class="math notranslate nohighlight">\(edges\_sql = \{(id_i, source_i, target_i, capacity_i, reverse\_capacity_i)\}\)</span></p>
+<p>donde: <span class="math notranslate nohighlight">\(edges\_sql = \{(id_i, source_i, target_i, capacity_i, reverse\_capacity_i)\}\)</span></p>
 <p class="rubric">Definición de grafo</p>
 <p>El grafo ponderado dirigido, <span class="math notranslate nohighlight">\(G(V,E)\)</span>, se define como:</p>
 <ul class="simple">
@@ -623,7 +621,7 @@ the same on the functions <a class="reference internal" href="pgr_pushRelabel.ht
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Actualizado por última vez en oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

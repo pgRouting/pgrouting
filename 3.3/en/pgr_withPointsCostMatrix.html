@@ -44,7 +44,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -275,9 +275,17 @@ path.</p>
 <section id="signatures">
 <span id="index-0"></span><h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Summary</p>
-<pre class="literal-block">pgr_withPointsCostMatrix(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>
-  [, directed] [, driving_side])
-RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_withPointsCostMatrix(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong>  <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>There is no <strong>details</strong> flag, unlike the other members of the
@@ -291,8 +299,8 @@ withPoints family of functions.</p>
 </dl>
 <ul class="simple">
 <li><p>Returning a <strong>symmetrical</strong> cost matrix</p></li>
-<li><p>Using the default <strong>side</strong> value on the <strong>points_sql</strong> query</p></li>
-<li><p>Using the default <strong>driving_side</strong> value</p></li>
+<li><p>Using the default <code class="docutils literal notranslate"><span class="pre">side</span></code> value on the <strong>points_sql</strong> query</p></li>
+<li><p>Using the default <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> value</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCostMatrix</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
@@ -612,7 +620,7 @@ HINT:  Ignoring annaeling parameters
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Last updated on Oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

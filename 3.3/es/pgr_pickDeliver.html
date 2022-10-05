@@ -45,7 +45,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -98,9 +98,9 @@
 <li><a class="reference internal" href="#characteristics">Características</a></li>
 <li><a class="reference internal" href="#signature">Firma</a><ul>
 <li><a class="reference internal" href="#parameters">Parámetros</a></li>
-<li><a class="reference internal" href="#pick-deliver-optional-parameters">Pick-Deliver optional parameters</a></li>
-<li><a class="reference internal" href="#orders-sql">Orders SQL</a></li>
-<li><a class="reference internal" href="#vehicles-sql">Vehicles SQL</a></li>
+<li><a class="reference internal" href="#pick-deliver-optional-parameters">Parámetros opcionales de Recoger-Entregar</a></li>
+<li><a class="reference internal" href="#orders-sql">SQL de órdenes</a></li>
+<li><a class="reference internal" href="#vehicles-sql">SQL de Vehículos</a></li>
 <li><a class="reference internal" href="#matrix-sql">SQL de matriz</a></li>
 </ul>
 </li>
@@ -250,11 +250,16 @@
 </section>
 <section id="signature">
 <span id="index-0"></span><h2>Firma<a class="headerlink" href="#signature" title="Enlace permanente a este encabezado">¶</a></h2>
-<pre class="literal-block">pgr_pickDeliver(<a class="reference internal" href="#orders-sql">Orders SQL</a>, <a class="reference internal" href="#vehicles-sql">Vehicles SQL</a>, <a class="reference internal" href="#matrix-sql">Matrix SQL</a>
-   [, factor], [max_cycles] [,initial_sol])
-RETURNS SET OF (seq, vehicle_number, vehicle_id,
-   stop, order_id, stop_type, cargo,
-   travel_time, arrival_time, wait_time, service_time, departure_time)</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_pickDeliver(<a class="reference internal" href="#orders-sql">Orders SQL</a>, <a class="reference internal" href="#vehicles-sql">Vehicles SQL</a>, <a class="reference internal" href="#matrix-sql">Matrix SQL</a>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[factor,</span> <span class="pre">max_cycles,</span> <span class="pre">initial_sol]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">REGRESA CONJUNTO DE <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">vehicle_number,</span> <span class="pre">vehicle_id,</span> <span class="pre">stop,</span> <span class="pre">order_id,</span> <span class="pre">stop_type,</span> <span class="pre">cargo,</span> <span class="pre">travel_time,</span> <span class="pre">arrival_time,</span> <span class="pre">wait_time,</span> <span class="pre">service_time,</span> <span class="pre">departure_time)</span></code></div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Solve the following problem</p>
@@ -329,23 +334,23 @@ RETURNS SET OF (seq, vehicle_number, vehicle_id,
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#orders-sql">Orders SQL</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#orders-sql">SQL de órdenes</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#orders-sql">Orders SQL</a> as described below.</p></td>
+<td><p><a class="reference internal" href="#orders-sql">SQL de órdenes</a> como se describe más adelante.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#vehicles-sql">Vehicles SQL</a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#vehicles-sql">SQL de Vehículos</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#vehicles-sql">Vehicles SQL</a> as described below.</p></td>
+<td><p><a class="reference internal" href="#vehicles-sql">SQL de Vehículos</a> como se describe más adelante.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#matrix-sql">SQL matriz</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#matrix-sql">SQL de matriz</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#matrix-sql">Matrix SQL</a> as described below.</p></td>
+<td><p><a class="reference internal" href="#matrix-sql">SQL de matriz</a> como se describe más adelante.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="pick-deliver-optional-parameters">
-<h3>Pick-Deliver optional parameters<a class="headerlink" href="#pick-deliver-optional-parameters" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Parámetros opcionales de Recoger-Entregar<a class="headerlink" href="#pick-deliver-optional-parameters" title="Enlace permanente a este encabezado">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -358,7 +363,7 @@ RETURNS SET OF (seq, vehicle_number, vehicle_id,
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">factor</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code></p></td>
 <td><p>1</p></td>
-<td><p>Multiplicador de tiempo de viaje. Ver <a class="reference internal" href="VRP-category.html#pd-factor"><span class="std std-ref">Factor handling</span></a></p></td>
+<td><p>Multiplicador de tiempo de viaje. Ver <a class="reference internal" href="VRP-category.html#pd-factor"><span class="std std-ref">Manipulación del Factor</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">max_cycles</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
@@ -383,12 +388,15 @@ RETURNS SET OF (seq, vehicle_number, vehicle_id,
 </table>
 </section>
 <section id="orders-sql">
-<h3>Orders SQL<a class="headerlink" href="#orders-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>SQL de órdenes<a class="headerlink" href="#orders-sql" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Una instrucción <cite>SELECT</cite> que devuelve las siguientes columnas:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span><span class="p">,</span> <span class="n">demand</span>
-<span class="n">p_node_id</span><span class="p">,</span> <span class="n">p_open</span><span class="p">,</span> <span class="n">p_close</span><span class="p">,</span> <span class="p">[</span><span class="n">p_service</span><span class="p">,]</span>
-<span class="n">d_node_id</span><span class="p">,</span> <span class="n">d_open</span><span class="p">,</span> <span class="n">d_close</span><span class="p">,</span> <span class="p">[</span><span class="n">d_service</span><span class="p">,]</span>
-</pre></div>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">id, demand</div>
+<div class="line">p_node_id, p_open, p_close, [p_service,]</div>
+<div class="line">d_node_id, d_open, d_close, [d_service,]</div>
+</div>
 </div>
 <p>Donde:</p>
 <table class="docutils align-default" style="width: 81">
@@ -419,7 +427,7 @@ RETURNS SET OF (seq, vehicle_number, vehicle_id,
 <td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
 <td><p>La duración de la carga en el lugar de recogida.</p>
 <ul class="simple">
-<li><p>When missing: 0 time units are used</p></li>
+<li><p>Cuando falta: Son usadas 0 unidades de tiempo</p></li>
 </ul>
 </td>
 </tr>
@@ -433,9 +441,9 @@ RETURNS SET OF (seq, vehicle_number, vehicle_id,
 </tr>
 <tr class="row-odd"><td><p>[<code class="docutils literal notranslate"><span class="pre">d_service</span></code>]</p></td>
 <td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
-<td><p>The duration of the unloading at the delivery location.</p>
+<td><p>La duración de la descarga en el lugar de entrega.</p>
 <ul class="simple">
-<li><p>When missing: 0 time units are used</p></li>
+<li><p>Cuando falta: Son usadas 0 unidades de tiempo</p></li>
 </ul>
 </td>
 </tr>
@@ -460,13 +468,11 @@ RETURNS SET OF (seq, vehicle_number, vehicle_id,
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">p_node_id</span></code></p></td>
 <td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
-<td><p>The node identifier of the pickup, must match a vertex identifier in the
-<a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p></td>
+<td><p>El identificador de nodo de la recogida debe coincidir con un identificador de vértice en la <a class="reference internal" href="#matrix-sql">SQL de matriz</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">d_node_id</span></code></p></td>
 <td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
-<td><p>The node identifier of the delivery, must match a vertex identifier in
-the <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p></td>
+<td><p>El identificador de nodo de la entrega debe coincidir con un identificador de vértice en la <a class="reference internal" href="#matrix-sql">SQL de matriz</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -478,12 +484,15 @@ the <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p></td>
 </dl>
 </section>
 <section id="vehicles-sql">
-<h3>Vehicles SQL<a class="headerlink" href="#vehicles-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>SQL de Vehículos<a class="headerlink" href="#vehicles-sql" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Una instrucción <cite>SELECT</cite> que devuelve las siguientes columnas:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span><span class="p">,</span> <span class="n">capacity</span>
-<span class="n">start_node_id</span><span class="p">,</span> <span class="n">start_open</span><span class="p">,</span> <span class="n">start_close</span> <span class="p">[,</span> <span class="n">start_service</span><span class="p">,]</span>
-<span class="p">[</span><span class="n">end_node_id</span><span class="p">,</span> <span class="n">end_open</span><span class="p">,</span> <span class="n">end_close</span><span class="p">,</span> <span class="n">end_service</span><span class="p">]</span>
-</pre></div>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">id, capacity</div>
+<div class="line">start_node_id, start_open, start_close [, start_service,]</div>
+<div class="line">[end_node_id, end_open, end_close, end_service]</div>
+</div>
 </div>
 <p>Donde:</p>
 <table class="docutils align-default" style="width: 81">
@@ -496,7 +505,7 @@ the <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p></td>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
 <td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
-<td><p>Identifier of the vehicle.</p></td>
+<td><p>Identificador del vehículo.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">capacity</span></code></p></td>
 <td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
@@ -514,7 +523,7 @@ the <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p></td>
 <td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
 <td><p>La duración de la carga en la ubicación inicial.</p>
 <ul class="simple">
-<li><p>When missing: A duration of <span class="math notranslate nohighlight">\(0\)</span> time units is used.</p></li>
+<li><p>Cuando falta: Una duración de :math: <cite>0</cite> unidades de tiempo son usadas.</p></li>
 </ul>
 </td>
 </tr>
@@ -522,7 +531,7 @@ the <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p></td>
 <td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
 <td><p>La hora, en relación con 0, cuando se abre la ubicación final.</p>
 <ul class="simple">
-<li><p>When missing: The value of <code class="docutils literal notranslate"><span class="pre">start_open</span></code> is used</p></li>
+<li><p>Cuando falte: El valor de``start_open`` se usara</p></li>
 </ul>
 </td>
 </tr>
@@ -530,7 +539,7 @@ the <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p></td>
 <td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
 <td><p>La hora, en relación con 0, cuando se cierra la ubicación final.</p>
 <ul class="simple">
-<li><p>When missing: The value of <code class="docutils literal notranslate"><span class="pre">start_close</span></code> is used</p></li>
+<li><p>Cuando falte: Se usara el valor de <code class="docutils literal notranslate"><span class="pre">start_close</span></code></p></li>
 </ul>
 </td>
 </tr>
@@ -538,7 +547,7 @@ the <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p></td>
 <td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
 <td><p>La duración de la carga en la ubicación final.</p>
 <ul class="simple">
-<li><p>When missing: A duration in <code class="docutils literal notranslate"><span class="pre">start_service</span></code> is used.</p></li>
+<li><p>Cuando falte: Se usara una duración en <code class="docutils literal notranslate"><span class="pre">start_service</span></code>.</p></li>
 </ul>
 </td>
 </tr>
@@ -554,15 +563,13 @@ the <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p></td>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_node_id</span></code></p></td>
 <td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
-<td><p>The node identifier of the start location, must match a vertex identifier
-in the <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p></td>
+<td><p>El identificador de nodo de la ubicación inicial debe coincidir con un identificador de vértice en la <a class="reference internal" href="#matrix-sql">SQL de matriz</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>[<code class="docutils literal notranslate"><span class="pre">end_node_id</span></code>]</p></td>
 <td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
-<td><p>The node identifier of the end location, must match a vertex identifier
-in the <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p>
+<td><p>El identificador de nodo de la ubicación final debe coincidir con un identificador de vértice en la <a class="reference internal" href="#matrix-sql">SQL de matriz</a>.</p>
 <ul class="simple">
-<li><p>When missing: <code class="docutils literal notranslate"><span class="pre">end_node_id</span></code> is used.</p></li>
+<li><p>Cuando falte: Se usara``end_node_id``.</p></li>
 </ul>
 </td>
 </tr>
@@ -591,10 +598,10 @@ in the <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p>
 <section id="return-columns">
 <h2>Columnas de Resultados<a class="headerlink" href="#return-columns" title="Enlace permanente a este encabezado">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RETURNS</span> <span class="n">SET</span> <span class="n">OF</span>
-  <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">vehicle_seq</span><span class="p">,</span> <span class="n">vehicle_id</span><span class="p">,</span> <span class="n">stop_seq</span><span class="p">,</span> <span class="n">stop_type</span><span class="p">,</span>
-      <span class="n">travel_time</span><span class="p">,</span> <span class="n">arrival_time</span><span class="p">,</span> <span class="n">wait_time</span><span class="p">,</span> <span class="n">service_time</span><span class="p">,</span>  <span class="n">departure_time</span><span class="p">)</span>
-  <span class="n">UNION</span>
-  <span class="p">(</span><span class="n">summary</span> <span class="n">row</span><span class="p">)</span>
+ <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">vehicle_seq</span><span class="p">,</span> <span class="n">vehicle_id</span><span class="p">,</span> <span class="n">stop_seq</span><span class="p">,</span> <span class="n">stop_type</span><span class="p">,</span>
+     <span class="n">travel_time</span><span class="p">,</span> <span class="n">arrival_time</span><span class="p">,</span> <span class="n">wait_time</span><span class="p">,</span> <span class="n">service_time</span><span class="p">,</span>  <span class="n">departure_time</span><span class="p">)</span>
+ <span class="n">UNION</span>
+ <span class="p">(</span><span class="n">summary</span> <span class="n">row</span><span class="p">)</span>
 </pre></div>
 </div>
 <table class="docutils align-default" style="width: 81">
@@ -621,10 +628,9 @@ in the <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p>
 <td><p>BIGINT</p></td>
 <td><p>Identificador del vehículo actual.</p>
 <ul class="simple">
-<li><p>Sumary row has the <strong>total capacity violations</strong>.</p>
+<li><p>Fila de resumen tiene las <strong>infracciones de capacidad total</strong>.</p>
 <ul>
-<li><p>A capacity violation happens when overloading or underloading a
-vehicle.</p></li>
+<li><p>Cuando se sobrecarga o subrogar un vehículo, ocurre una infracción de capacidad.</p></li>
 </ul>
 </li>
 </ul>
@@ -634,10 +640,9 @@ vehicle.</p></li>
 <td><p>INTEGER</p></td>
 <td><p>Valor secuencial a partir de <strong>1</strong> para las paradas realizadas por el vehículo actual. La parada <span class="math notranslate nohighlight">\(m_{th}\)</span> del vehículo actual.</p>
 <ul class="simple">
-<li><p>Sumary row has the <strong>total time windows violations</strong>.</p>
+<li><p>Fila de resumen tiene las <strong>infracciones de ventana de tiempo total</strong>.</p>
 <ul>
-<li><p>A time window violation happens when arriving after the location has
-closed.</p></li>
+<li><p>Una infracción de ventana de tiempo ocurre cuando se llega a la ubicación después de que ésta cerró.</p></li>
 </ul>
 </li>
 </ul>
@@ -648,11 +653,11 @@ closed.</p></li>
 <td><ul class="simple">
 <li><p>Tipo de parada en la que se encuentra el vehículo</p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(-1\)</span>: at the solution summary row</p></li>
+<li><p><span class="math notranslate nohighlight">\(-1\)</span>: en la fila de resumen de solución</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">1</span></code>: Ubicación inicial</p></li>
 <li><p><span class="math notranslate nohighlight">\(2\)</span>: Ubicación de recogida</p></li>
 <li><p><span class="math notranslate nohighlight">\(3\)</span>: Lugar de entrega</p></li>
-<li><p><span class="math notranslate nohighlight">\(6\)</span>: Ending location and indicates the vehicle’s summary row</p></li>
+<li><p><span class="math notranslate nohighlight">\(6\)</span>: Ubicación final indica la fila de resumen del vehículo</p></li>
 </ul>
 </li>
 </ul>
@@ -670,7 +675,7 @@ closed.</p></li>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Unidades de carga del vehículo al salir de la parada.</p>
 <ul class="simple">
-<li><p>Value <span class="math notranslate nohighlight">\(-1\)</span> on solution summary row.</p></li>
+<li><p>El valor <span class="math notranslate nohighlight">\(-1\)</span> en fila de resumen de solución.</p></li>
 </ul>
 </td>
 </tr>
@@ -678,7 +683,7 @@ closed.</p></li>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Tiempo de viaje desde el <code class="docutils literal notranslate"><span class="pre">stop_seq</span></code> anterior hasta el <code class="docutils literal notranslate"><span class="pre">stop_seq</span></code> actual.</p>
 <ul class="simple">
-<li><p>Summary has the <strong>total traveling time</strong>:</p>
+<li><p>El resumen tiene el <strong>tiempo total de viaje</strong>:</p>
 <ul>
 <li><p>La suma de todos los <code class="docutils literal notranslate"><span class="pre">travel_time</span></code>.</p></li>
 </ul>
@@ -690,7 +695,7 @@ closed.</p></li>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Tiempo de espera para la apertura de la ubicación actual.</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(-1\)</span>: at the solution summary row.</p></li>
+<li><p><span class="math notranslate nohighlight">\(-1\)</span> en fila de resumen de solución.</p></li>
 <li><p><span class="math notranslate nohighlight">\(0\)</span>: en la ubicación inicial.</p></li>
 </ul>
 </td>
@@ -699,7 +704,7 @@ closed.</p></li>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Tiempo de espera para la apertura de la ubicación actual.</p>
 <ul class="simple">
-<li><p>Summary row has the <strong>total waiting time</strong>:</p>
+<li><p>La fila de resumen tiene el <strong>tiempo total de espera</strong>:</p>
 <ul>
 <li><p>La suma de todo el <code class="docutils literal notranslate"><span class="pre">wait_time</span></code>.</p></li>
 </ul>
@@ -711,7 +716,7 @@ closed.</p></li>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Duralción del servicio en la ubicación actual.</p>
 <ul class="simple">
-<li><p>Summary row has the <strong>total service time</strong>:</p>
+<li><p>La fila de resumen tiene el <strong>tiempo total de servicio</strong>:</p>
 <ul>
 <li><p>La suma de todo el <code class="docutils literal notranslate"><span class="pre">service_time</span></code>.</p></li>
 </ul>
@@ -722,13 +727,13 @@ closed.</p></li>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">departure_time</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><ul class="simple">
-<li><p>The time at which the vehicle departs from the stop.</p>
+<li><p>El tiempo en el que el vehículo sale desde la parada.</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(arrival\_time + wait\_time + service\_time\)</span>.</p></li>
 </ul>
 </li>
 <li><p>El destino final tiene el <strong>tiempo total</strong> utilizado por el vehículo actual.</p></li>
-<li><p>Summary row has the <strong>total solution time</strong>:</p>
+<li><p>La fila de resumen tiene el <strong>tiempo total de solución</strong>:</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(total\ traveling\ time + total\ waiting\ time + total\ service\ time\)</span>.</p></li>
 </ul>
@@ -765,7 +770,7 @@ closed.</p></li>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Actualizado por última vez en oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

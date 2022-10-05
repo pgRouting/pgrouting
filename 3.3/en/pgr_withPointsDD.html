@@ -44,7 +44,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -219,16 +219,32 @@ The edges extracted will conform the corresponding spanning tree.</p>
 </section>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
-<pre class="literal-block">pgr_withPointsDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>Root vid</strong>, <strong>distance</strong>
-   [, directed] [, driving_side] [, details])
-pgr_withPointsDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>Root vids</strong>, <strong>distance</strong>
-   [, directed] [, driving_side] [, details] [, equicost])
-RETURNS SET OF (seq, [start_vid,] node, edge, cost, agg_cost)</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_withPointsDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>root vid</strong>, <strong>distance</strong>, [<strong>options A</strong>])</div>
+<div class="line">pgr_withPointsDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>root vids</strong>, <strong>distance</strong>, [<strong>options B</strong>])</div>
+<div class="line"><strong>options A:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side,</span> <span class="pre">details]</span></code></div>
+<div class="line"><strong>options B:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side,</span> <span class="pre">details,</span> <span class="pre">equicost]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[start_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <section id="single-vertex">
 <span id="index-0"></span><h3>Single vertex<a class="headerlink" href="#single-vertex" title="Permalink to this heading">¶</a></h3>
-<pre class="literal-block">pgr_withPointsDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>Root vid</strong>, <strong>distance</strong>
-   [, directed] [, driving_side] [, details])
-RETURNS SET OF (seq, node, edge, cost, agg_cost)</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_withPointsDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>root vid</strong>, <strong>distance</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side,</span> <span class="pre">details]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Right side driving topology, from point <span class="math notranslate nohighlight">\(1\)</span> within a distance of
@@ -255,9 +271,17 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)</pre>
 </section>
 <section id="multiple-vertices">
 <span id="index-1"></span><h3>Multiple vertices<a class="headerlink" href="#multiple-vertices" title="Permalink to this heading">¶</a></h3>
-<pre class="literal-block">pgr_withPointsDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>Root vids</strong>, <strong>distance</strong>
-   [, directed] [, driving_side] [, details] [, equicost])
-RETURNS SET OF (seq, start_vid, node, edge, cost, agg_cost)</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_withPointsDD(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>root vids</strong>, <strong>distance</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side,</span> <span class="pre">details,</span> <span class="pre">equicost]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> and vertex <span class="math notranslate nohighlight">\(16\)</span> within a distance of
@@ -322,7 +346,7 @@ RETURNS SET OF (seq, start_vid, node, edge, cost, agg_cost)</pre>
 </td>
 </tr>
 <tr class="row-odd"><td><p><strong>Root vids</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ANY-INTEGER</strong>]</p></td>
 <td><p>Array of identifiers of the root vertices.</p>
 <ul class="simple">
 <li><p>Negative values represent a point</p></li>
@@ -561,7 +585,7 @@ point of the edge.</p></td>
 </section>
 <section id="result-columns">
 <h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
-<p>Returns SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[start_vid,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<p>RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[start_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
@@ -672,7 +696,7 @@ side, with details.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Last updated on Oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

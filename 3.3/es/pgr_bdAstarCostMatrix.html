@@ -45,7 +45,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -187,7 +187,7 @@
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Enlace permanente a este encabezado">¶</a></h2>
-<p><strong>Las características principales son:</strong></p>
+<p><strong>Las principales características son:</strong></p>
 <ul class="simple">
 <li><p>Usando internamente el algoritmo <a class="reference internal" href="pgr_bdAstar.html"><span class="doc">pgr_bdAstar</span></a></p></li>
 <li><p>Devuelve una matriz de costes.</p></li>
@@ -214,9 +214,17 @@
 <section id="signatures">
 <span id="index-0"></span><h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
 <p class="rubric">Resumen</p>
-<pre class="literal-block">pgr_bdAstarCostMatrix(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>
-           [, directed] [, heuristic] [, factor] [, epsilon])
-RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_bdAstarCostMatrix(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salidas</strong>, [<strong>opciones</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">heuristic,</span> <span class="pre">factor,</span> <span class="pre">epsilon]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Matriz simétrica de costes para los vértices <span class="math notranslate nohighlight">\(\{5, 6, 10, 15\}\)</span> en un grafo <strong>no dirigido</strong> usando la heurística <span class="math notranslate nohighlight">\(2\)</span></p>
@@ -256,11 +264,11 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> como se describe a continuación</p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a> como se describe a continuación</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>vid salidas</strong></p></td>
+<tr class="row-odd"><td><p><strong>salidas</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
 <td><p>Arreglo de identificadores de vértices iniciales.</p></td>
 </tr>
@@ -504,7 +512,7 @@ HINT:  Ignoring annaeling parameters
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Actualizado por última vez en oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

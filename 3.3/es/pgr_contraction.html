@@ -45,7 +45,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -223,9 +223,16 @@
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
 <p class="rubric">Resumen</p>
 <p>La función pgr_contraction tiene la siguiente firma:</p>
-<pre class="literal-block" id="index-0">pgr_contraction(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>contraction order</strong>
-     [, max_cycles] [, forbidden_vertices] [, directed])
-RETURNS SETOF (type, id, contracted_vertices, source, target, cost)</pre>
+<div class="signatures admonition" id="index-0">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_contraction(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>orden de contracción</strong>, [<strong>opciones</strong>])</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">max_cycles,</span> <span class="pre">forbidden_vertices,</span> <span class="pre">directed]</span></code></div>
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(type,</span> <span class="pre">id,</span> <span class="pre">contracted_vertices,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost)</span></code></div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Hacer una contracción de callejón sin salida y una contracción lineal en ese orden en un grafo no dirigido.</p>
@@ -258,9 +265,9 @@ RETURNS SETOF (type, id, contracted_vertices, source, target, cost)</pre>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> descritas más adelante.</p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a> descritas más adelante.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Orden de contracciones</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
@@ -390,7 +397,7 @@ RETURNS SETOF (type, id, contracted_vertices, source, target, cost)</pre>
 </section>
 <section id="result-columns">
 <h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>DEVOLUCION DE CONJUNTOS (type, id, contracted_vertices, source, target, cost)</p>
+<p>Returns set of  <code class="docutils literal notranslate"><span class="pre">(type,</span> <span class="pre">id,</span> <span class="pre">contracted_vertices,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost)</span></code></p>
 <p>La función devuelve una sola fila. Las columnas de la fila son:</p>
 <table class="docutils align-default" style="width: 81">
 <thead>
@@ -529,7 +536,7 @@ RETURNS SETOF (type, id, contracted_vertices, source, target, cost)</pre>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Actualizado por última vez en oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

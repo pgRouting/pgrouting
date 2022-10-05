@@ -44,7 +44,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -229,9 +229,16 @@ edges decreasing the total time and space used in graph algorithms.</p>
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Summary</p>
 <p>The pgr_contraction function has the following signature:</p>
-<pre class="literal-block" id="index-0">pgr_contraction(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>contraction order</strong>
-     [, max_cycles] [, forbidden_vertices] [, directed])
-RETURNS SETOF (type, id, contracted_vertices, source, target, cost)</pre>
+<div class="signatures admonition" id="index-0">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_contraction(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>contraction order</strong>, [<strong>options</strong>])</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">max_cycles,</span> <span class="pre">forbidden_vertices,</span> <span class="pre">directed]</span></code></div>
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(type,</span> <span class="pre">id,</span> <span class="pre">contracted_vertices,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost)</span></code></div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Making a dead end and linear contraction in that order on an
@@ -399,7 +406,7 @@ it’s not part of the graph.</p></li>
 </section>
 <section id="result-columns">
 <h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
-<p>RETURNS SETOF  (type, id, contracted_vertices, source, target, cost)</p>
+<p>Returns set of  <code class="docutils literal notranslate"><span class="pre">(type,</span> <span class="pre">id,</span> <span class="pre">contracted_vertices,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost)</span></code></p>
 <p>The function returns a single row. The columns of the row are:</p>
 <table class="docutils align-default" style="width: 81">
 <thead>
@@ -542,7 +549,7 @@ edge (<code class="docutils literal notranslate"><span class="pre">source</span>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Last updated on Oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

@@ -44,7 +44,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -263,26 +263,34 @@ integer.)</p></li>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Summary</p>
-<pre class="literal-block">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>,  <strong>end vid</strong>
-            [, directed])
-pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>,  <strong>end vids</strong>
-            [, directed])
-pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>
-            [, directed])
-pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>
-            [, directed])
-pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Combinations SQL</strong>
-            [, directed])
-RETURNS (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
-OR EMPTY SET</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid],</span> <span class="pre">[end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <p><strong>Note:</strong> Using the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> Network as all weights are same (i.e
 <span class="math notranslate nohighlight">\(1`\)</span>)</p>
 <section id="one-to-one">
 <span id="index-0"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this heading">¶</a></h3>
-<pre class="literal-block">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>
-           [, directed]);
-RETURNS (seq, path_seq, node, edge, cost, agg_cost)
-OR EMPTY SET</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(6\)</span> to vertex  <span class="math notranslate nohighlight">\(10\)</span> on a <strong>directed</strong> graph</p>
@@ -306,10 +314,16 @@ OR EMPTY SET</pre>
 </section>
 <section id="one-to-many">
 <span id="index-1"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this heading">¶</a></h3>
-<pre class="literal-block">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>
-           [, directed]);
-RETURNS (seq, path_seq, end_vid, node, edge, cost, agg_cost)
-OR EMPTY SET</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(6\)</span> to vertices <span class="math notranslate nohighlight">\(\{10, 17\}\)</span> on a <strong>directed</strong>
@@ -339,10 +353,16 @@ graph</p>
 </section>
 <section id="many-to-one">
 <span id="index-2"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this heading">¶</a></h3>
-<pre class="literal-block">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>
-           [, directed]);
-RETURNS (seq, path_seq, start_vid, node, edge, cost, agg_cost)
-OR EMPTY SET</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>From vertices <span class="math notranslate nohighlight">\(\{6, 1\}\)</span> to vertex <span class="math notranslate nohighlight">\(17\)</span> on a <strong>directed</strong>
@@ -372,10 +392,16 @@ graph</p>
 </section>
 <section id="many-to-many">
 <span id="index-3"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this heading">¶</a></h3>
-<pre class="literal-block">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>
-           [, directed]);
-RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-OR EMPTY SET</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>From vertices <span class="math notranslate nohighlight">\(\{6, 1\}\)</span> to vertices <span class="math notranslate nohighlight">\(\{10, 17\}\)</span> on an
@@ -413,10 +439,16 @@ OR EMPTY SET</pre>
 </section>
 <section id="combinations">
 <span id="index-4"></span><h3>Combinations<a class="headerlink" href="#combinations" title="Permalink to this heading">¶</a></h3>
-<pre class="literal-block">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>
-           [, directed]);
-RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-OR EMPTY SET</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Using a combinations table on an <strong>undirected</strong> graph</p>
@@ -752,7 +784,7 @@ path sequence.</p></td>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Last updated on Oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

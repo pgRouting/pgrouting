@@ -45,7 +45,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -105,7 +105,7 @@
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
 <li><a class="reference internal" href="#the-data">The data</a></li>
 <li><a class="reference internal" href="#the-transformation">The transformation</a></li>
-<li><a class="reference internal" href="#creating-table-that-identifies-transformed-vertices">Creating table that identifies transformed vertices</a><ul>
+<li><a class="reference internal" href="#creating-table-that-identifies-transformed-vertices">Crear una tabla que identifica los vértices transformados</a><ul>
 <li><a class="reference internal" href="#store-edge-results">Store edge results</a></li>
 <li><a class="reference internal" href="#create-the-mapping-table">Create the mapping table</a></li>
 <li><a class="reference internal" href="#filling-the-mapping-table">Filling the mapping table</a></li>
@@ -228,11 +228,7 @@
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Enlace permanente a este encabezado">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code>, converts original directed graph to a directed line graph
-by converting each vertex to a complete graph and keeping all the original
-edges.
-The new connecting edges have a cost 0 and go between the adjacent original
-edges, respecting the directionality.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code>, convierte un grafo dirigido a un grafo dirigido lineal, convirtiendo cada vértice en un grafo completo y manteniendo todas las aristas originales. Las nuevas aristas de conexión tienen un costo de 0 y van entre las aristas originales adyacentes, respetando la direccionalidad.</p>
 <p>Una posible aplicación del grafo resultante es <strong>«ruteo con restricciones en dos aristas»</strong>:</p>
 <ul class="simple">
 <li><p>Establecer un coste de uso del vértice al enrutar entre aristas en la arista de conexión</p></li>
@@ -250,9 +246,16 @@ edges, respecting the directionality.</p>
 <section id="signatures">
 <span id="index-0"></span><h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
 <p class="rubric">Resumen</p>
-<pre class="literal-block">pgr_lineGraphFull(<a class="reference internal" href="#edges-sql">Edges SQL</a>)
-RETURNS SET OF (seq, source, target, cost, edge)
-OR EMPTY SET</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_lineGraphFull(<a class="reference internal" href="#edges-sql">SQL de aristas</a>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">edge)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Grafo de línea completa del subgrafo de las aristas <span class="math notranslate nohighlight">\(\{4, 7, 8, 10\}\)</span></p>
@@ -307,9 +310,9 @@ OR EMPTY SET</pre>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> descritas más adelante.</p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a> descritas más adelante.</p></td>
 </tr>
 </tbody>
 </table>
@@ -377,7 +380,7 @@ OR EMPTY SET</pre>
 </section>
 <section id="result-columns">
 <h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>RETURNS SETOF  <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">reverse_cost)</span></code></p>
+<p>RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">edge)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -435,7 +438,7 @@ OR EMPTY SET</pre>
 <ul class="simple">
 <li><p><a class="reference internal" href="#the-data" id="id1">The data</a></p></li>
 <li><p><a class="reference internal" href="#the-transformation" id="id2">The transformation</a></p></li>
-<li><p><a class="reference internal" href="#creating-table-that-identifies-transformed-vertices" id="id3">Creating table that identifies transformed vertices</a></p>
+<li><p><a class="reference internal" href="#creating-table-that-identifies-transformed-vertices" id="id3">Crear una tabla que identifica los vértices transformados</a></p>
 <ul>
 <li><p><a class="reference internal" href="#store-edge-results" id="id4">Store edge results</a></p></li>
 <li><p><a class="reference internal" href="#create-the-mapping-table" id="id5">Create the mapping table</a></p></li>
@@ -463,9 +466,7 @@ OR EMPTY SET</pre>
 <li><p><a class="reference internal" href="#using-the-routing-graph" id="id16">Using the routing graph</a></p></li>
 </ul>
 </nav>
-<p>The examples of this section are based on the <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> network.
-The examples include the subgraph including edges 4, 7, 8, and 10 with
-<code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>.</p>
+<p>Los ejemplos de esta sección se basan en la red <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a>. Los ejemplos incluyen el subgrafo que incluye las aristas 4, 7, 8 y 10 con <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>.</p>
 <section id="the-data">
 <h3><a class="toc-backref" href="#id1" role="doc-backlink">The data</a><a class="headerlink" href="#the-data" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>En este ejemplo se muestra cómo funciona esta transformación de grafo para crear aristas adicionales para cada giro posible en un grafoáfico.</p>
@@ -529,12 +530,10 @@ The examples include the subgraph including edges 4, 7, 8, and 10 with
 <div class="line-block">
 <div class="line"><img alt="segundo" class="align-middle" src="_images/transformation.png" /></div>
 </div>
-<p>In the transformed graph, all of the edges from the original graph are still
-present (yellow), but we now have additional edges for every turn that could be
-made across vertex 7 (orange).</p>
+<p>En el grafo transformado, todas las aristas del grafo original siguen presentes (amarillos), pero ahora hay aristas adicionales para cada giro que se podría hacer a través del vértice 7 (naranja).</p>
 </section>
 <section id="creating-table-that-identifies-transformed-vertices">
-<h3><a class="toc-backref" href="#id3" role="doc-backlink">Creating table that identifies transformed vertices</a><a class="headerlink" href="#creating-table-that-identifies-transformed-vertices" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Crear una tabla que identifica los vértices transformados</a><a class="headerlink" href="#creating-table-that-identifies-transformed-vertices" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Los vértices del grafo transformado se crean dividiendo los vértices en el grafo original. A menos que un vértice en el grafo original sea un vértice hoja, generará más de un vértice en el grafo transformado. A uno de los vértices recién creados en el grafo transformado se le dará el mismo identificador del vértice desde el cual se creó en el grafo original, pero el resto de los vértices recién creados tendrán identificadores de vértices negativos.</p>
 <p>Following is an example of how to generate a table that maps the ids of the
 newly created vertices with the original vertex that they were created from</p>
@@ -996,7 +995,7 @@ LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Actualizado por última vez en oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

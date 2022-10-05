@@ -45,7 +45,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -163,7 +163,7 @@
 <li><a class="reference internal" href="#using-one-to-many">34) Usando Uno a Muchos</a></li>
 <li><a class="reference internal" href="#using-many-to-one">35) Usando Muchos a Uno</a></li>
 <li><a class="reference internal" href="#using-many-to-many">36) Usando Muchos a Muchos</a></li>
-<li><a class="reference internal" href="#using-combinations">36) Usando Combinaciones</a></li>
+<li><a class="reference internal" href="#using-combinations">37) Usando Combinaciones</a></li>
 </ul>
 </li>
 </ul>
@@ -216,7 +216,12 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_dijkstra.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_dijkstra.html">3.3</a>) <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_dijkstra.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_dijkstra.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_dijkstra.html">3.0</a></p></li>
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_dijkstra.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_dijkstra.html">3.3</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_dijkstra.html">3.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_dijkstra.html">3.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_dijkstra.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_dijkstra.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_dijkstra.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_dijkstra.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstra.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstra.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/dijkstra/doc/index.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/dijkstra/doc/index.html">2.0</a></p></li>
 </ul>
 <section id="pgr-dijkstra">
@@ -293,26 +298,36 @@
 <li><p>Para fines de optimización, se ignora cualquier valor duplicado en los vertices de salida o destino.</p></li>
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O(| start\_vids | * (V \log V + E))\)</span></p></li>
 </ul>
-<ul class="simple">
-<li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O(| start\_vids | * (V \log V + E))\)</span></p></li>
-</ul>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
 <p class="rubric">Resumen</p>
-<pre class="literal-block">pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>  [, directed])
-pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong> [, directed])
-pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>  [, directed])
-pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong> [, directed])
-pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a> [, directed])
-RETURNS (seq, path_seq [, start vid] [, end vid], node, edge, cost, agg_cost)
-OR EMPTY SET</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salida</strong>, <strong>destino</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salida</strong>, <strong>destinos</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salidas</strong>, <strong>destino</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salidas</strong>, <strong>destinos</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_dijkstra(<a class="reference internal" href="#combinations-sql">SQL de aristas</a>, <a class="reference internal" href="#edges-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid],</span> <span class="pre">[end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <section id="one-to-one">
 <span id="index-0"></span><h3>Uno a Uno<a class="headerlink" href="#one-to-one" title="Enlace permanente a este encabezado">¶</a></h3>
-<pre class="literal-block">pgr_dijkstra(Edges SQL, start vid,  end vid  [, directed])
-pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>  [, directed])
-RETURNS (seq, path_seq, node, edge, cost, agg_cost)
-OR EMPTY SET</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salida</strong>, <strong>destino</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Del vértice <span class="math notranslate nohighlight">\(6\)</span> al vértice <span class="math notranslate nohighlight">\(10\)</span> en un grafo <strong>dirigido</strong></p>
@@ -336,10 +351,16 @@ OR EMPTY SET</pre>
 </section>
 <section id="one-to-many">
 <span id="index-1"></span><h3>Uno a Muchos<a class="headerlink" href="#one-to-many" title="Enlace permanente a este encabezado">¶</a></h3>
-<pre class="literal-block">pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong> [, directed])
-pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a> [, directed])
-RETURNS (seq, path_seq, end vid, node, edge, cost, agg_cost)
-OR EMPTY SET</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salida</strong>, <strong>destinos</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Del vértice <span class="math notranslate nohighlight">\(6\)</span> a los vértices <span class="math notranslate nohighlight">\(\{10, 17\}\)</span> en un grafo <strong>no dirigido</strong></p>
@@ -368,9 +389,16 @@ OR EMPTY SET</pre>
 </section>
 <section id="many-to-one">
 <span id="index-2"></span><h3>Muchos a Uno<a class="headerlink" href="#many-to-one" title="Enlace permanente a este encabezado">¶</a></h3>
-<pre class="literal-block">pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong> [, directed])
-RETURNS (seq, path_seq, start vid, node, edge, cost, agg_cost)
-OR EMPTY SET</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salidas</strong>, <strong>destino</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>De los vértices <span class="math notranslate nohighlight">\(\{6, 1\}\)</span> al vertice <span class="math notranslate nohighlight">\(17\)</span> en un grafo <strong>dirigido</strong></p>
@@ -399,9 +427,16 @@ OR EMPTY SET</pre>
 </section>
 <section id="many-to-many">
 <span id="index-3"></span><h3>Muchos a Muchos<a class="headerlink" href="#many-to-many" title="Enlace permanente a este encabezado">¶</a></h3>
-<pre class="literal-block">pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong> [, directed])
-RETURNS (seq, path_seq, start vid, end vid, node, edge, cost, agg_cost)
-OR EMPTY SET</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salidas</strong>, <strong>destinos</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>De los vértices <span class="math notranslate nohighlight">\(\{6, 1\}\)</span> a los vértices <span class="math notranslate nohighlight">\(\{10, 17\}\)</span> en un grafo <strong>no dirigido</strong></p>
@@ -438,9 +473,16 @@ OR EMPTY SET</pre>
 </section>
 <section id="combinations">
 <span id="index-4"></span><h3>Combinaciones<a class="headerlink" href="#combinations" title="Enlace permanente a este encabezado">¶</a></h3>
-<pre class="literal-block">pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a> [, directed])
-RETURNS (seq, path_seq, start vid, end vid, node, edge, cost, agg_cost)
-OR EMPTY SET</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_dijkstra(<a class="reference internal" href="#combinations-sql">SQL de aristas</a>, <a class="reference internal" href="#edges-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Usando una tabla de combinaciones en un grafo <strong>no dirigido</strong></p>
@@ -497,27 +539,27 @@ OR EMPTY SET</pre>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> como se describe a continuación</p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a> como se describe a continuación</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#combinations-sql">SQL de combinaciones</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a> como se describe a abajo</p></td>
+<td><p><a class="reference internal" href="#combinations-sql">SQL de combinaciones</a> como se describe a abajo</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>vid de salida</strong></p></td>
+<tr class="row-even"><td><p><strong>salida</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del vértice inicial de la ruta.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>vid salidas</strong></p></td>
+<tr class="row-odd"><td><p><strong>salidas</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
 <td><p>Arreglo de identificadores de vértices iniciales.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>vid destino</strong></p></td>
+<tr class="row-even"><td><p><strong>destino</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del vértice final de la ruta.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>vids destinos</strong></p></td>
+<tr class="row-odd"><td><p><strong>destinos</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
 <td><p>Arreglo de identificadores de vértices finales.</p></td>
 </tr>
@@ -859,7 +901,7 @@ OR EMPTY SET</pre>
 <li><p><a class="reference internal" href="#using-one-to-many" id="id56">34) Usando Uno a Muchos</a></p></li>
 <li><p><a class="reference internal" href="#using-many-to-one" id="id57">35) Usando Muchos a Uno</a></p></li>
 <li><p><a class="reference internal" href="#using-many-to-many" id="id58">36) Usando Muchos a Muchos</a></p></li>
-<li><p><a class="reference internal" href="#using-combinations" id="id59">36) Usando Combinaciones</a></p></li>
+<li><p><a class="reference internal" href="#using-combinations" id="id59">37) Usando Combinaciones</a></p></li>
 </ul>
 </li>
 </ul>
@@ -1582,7 +1624,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="using-combinations">
-<h4>36) Usando <a class="reference internal" href="#combinations">Combinaciones</a><a class="headerlink" href="#using-combinations" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4>37) Usando <a class="reference internal" href="#combinations">Combinaciones</a><a class="headerlink" href="#using-combinations" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT * FROM (VALUES(6, 10)) AS combinations (source, target)&#39;</span>
@@ -1628,7 +1670,7 @@ OR EMPTY SET</pre>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Actualizado por última vez en oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

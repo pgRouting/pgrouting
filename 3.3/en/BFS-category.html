@@ -44,7 +44,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -180,9 +180,9 @@
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 12.5%" />
-<col style="width: 21.2%" />
-<col style="width: 66.2%" />
+<col style="width: 12.0%" />
+<col style="width: 24.1%" />
+<col style="width: 63.9%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
@@ -195,7 +195,7 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Root vid</strong></p></td>
+<tr class="row-odd"><td><p><strong>root vid</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifier of the root vertex of the tree.</p>
 <ul class="simple">
@@ -204,8 +204,8 @@ aleatory nodes for each tree in the forest.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>Root vids</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></p></td>
+<tr class="row-even"><td><p><strong>root vids</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [ <strong>ANY-INTEGER</strong> ]</p></td>
 <td><p>Array of identifiers of the root vertices.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(0\)</span> values are ignored</p></li>
@@ -397,7 +397,7 @@ it’s not part of the graph.</p></li>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Last updated on Oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

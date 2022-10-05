@@ -44,7 +44,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -224,7 +224,7 @@ given.</p>
 <td><p>SQL query as described.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>via vertices</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [ <strong>ANY-INTEGER</strong> ]</p></td>
 <td></td>
 <td><p>Array of ordered vertices identifiers that are going to be visited.</p></td>
 </tr>
@@ -234,9 +234,6 @@ given.</p>
 <dl class="field-list simple">
 <dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
-</dd>
-<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
-<dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
 </dd>
 </dl>
 <p>Besides the compulsory parameters each function has, there are optional
@@ -358,7 +355,7 @@ it’s not part of the graph.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ANY-INTEGER</strong>]</p></td>
 <td><p>Sequence of edge identifiers that form a path that is not allowed to be
 taken.
 - Empty arrays or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> arrays are ignored.
@@ -478,7 +475,7 @@ the identifier is for a Point.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Last updated on Oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>

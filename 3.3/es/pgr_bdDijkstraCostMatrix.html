@@ -45,7 +45,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -260,7 +260,7 @@
 <li><p>El costo agregado de <cite>(u, v)</cite> es el mismo que para <cite>(v, u)</cite>.</p></li>
 </ul>
 </li>
-<li><p>Se omite cualquier valor duplicado en <strong>ids de veértices</strong>.</p></li>
+<li><p>Se omite cualquier valor duplicado en las <strong>salidas</strong>.</p></li>
 <li><p>Los valores regresados se ordenan:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> ascendente</p></li>
@@ -272,11 +272,19 @@
 <section id="signatures">
 <span id="index-0"></span><h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
 <p class="rubric">Resumen</p>
-<pre class="literal-block">pgr_bdDijkstraCostMatrix(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong> [, directed])
-RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_bdDijkstraCostMatrix(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salidas</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+</div>
+<div class="line-block">
+<div class="line">Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Matriz de costos simétrica para vértices <span class="math notranslate nohighlight">\(\{5, 6, 10, 15}\)</span> en un grafo <strong>no dirigido</strong></p>
+<dd class="field-odd"><p>Matriz de costos simétrica para vértices <span class="math notranslate nohighlight">\(\{5, 6, 10, 15\}\)</span> en un grafo <strong>no dirigido</strong></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdDijkstraCostMatrix</span><span class="p">(</span>
@@ -314,11 +322,11 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> como se describe a continuación</p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a> como se describe a continuación</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>vid salidas</strong></p></td>
+<tr class="row-odd"><td><p><strong>salidas</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
 <td><p>Arreglo de identificadores de vértices iniciales.</p></td>
 </tr>
@@ -498,7 +506,7 @@ HINT:  Ignoring annaeling parameters
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.3.<br/>
       Actualizado por última vez en oct 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br/>
     </p>
