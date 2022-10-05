@@ -10,8 +10,8 @@
 |
 
 * **Supported versions:**
-  `Latest <https://docs.pgrouting.org/latest/en/pgr_trsp.html>`__
-  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_trsp.html>`__)
+  `Latest <https://docs.pgrouting.org/latest/en/migration.html>`__
+  (`3.4 <https://docs.pgrouting.org/3.4/en/migration.html>`__)
 
 Migration guide
 ===============================================================================

@@ -38,6 +38,10 @@ To see the full list of changes check the list of `Git commits
 pgRouting 3.4.0 Release Notes
 -------------------------------------------------------------------------------
 
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.3.4
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.4%22>`_
+
 .. rubric:: Issue fixes
 
 * `#1891 <https://github.com/pgRouting/pgrouting/issues/1891>`__:
@@ -107,6 +111,28 @@ pgRouting 3.4.0 Release Notes
   * ``pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text)``
   * ``pgr_trspViaVertices(text,anyarray,boolean,boolean,text)``
   * ``pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)``
+
+pgRouting 3.3.3 Release Notes
+-------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.3.3
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.3%22>`_
+
+.. rubric:: Issue fixes
+
+* `#1891 <https://github.com/pgRouting/pgrouting/issues/1891>`__:
+  pgr_ksp doesn't give all correct shortest path
+
+.. rubric:: Official functions changes
+
+* Flow functions
+
+  * ``pgr_maxCardinalityMatch(text,boolean)``
+
+    * Ignoring optional boolean parameter, as the algorithm works only for
+      undirected graphs.
+
 
 pgRouting 3.3.2 Release Notes
 -------------------------------------------------------------------------------

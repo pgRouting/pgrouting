@@ -325,13 +325,11 @@ linkcheck_ignore = [
     r'https://docs.pgrouting.org/.*/.*/pgr_trsp_withPoints.html',
     r'https://docs.pgrouting.org/.*/.*/pgr_trspVia.html',
     r'https://docs.pgrouting.org/.*/.*/pgr_withPointsVia.html',
-    r'https://docs.pgrouting.org/.*/.*/via-category.html',
     r'https://docs.pgrouting.org/.*/.*/pgr_trspVia_withPoints.html',
-    r'https://docs.pgrouting.org/.*/.*/withPoints-category.html',
-    r'https://docs.pgrouting.org/.*/.*/migration.html',
-    r'https://docs.pgrouting.org/.*/.*/BFS-category.html',
-    r'https://docs.pgrouting.org/.*/.*/DFS-category.html',
-    r'https://docs.pgrouting.org/.*/.*/reference.html',
+
+
+
+
     r'https://docs.pgrouting.org/.*/.*/pgr_degree.html',
     r'https://docs.pgrouting.org/.*/.*/pgr_cuthillMckeeOrdering.html',
     r'https://docs.pgrouting.org/.*/.*/ordering-family.html',
@@ -339,13 +337,13 @@ linkcheck_ignore = [
     r'https://docs.pgrouting.org/.*/.*/pgr_findCloseEdges.html',
 
     # link failing used in contraction-family
-    'https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf'
+    'https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf',
 
     # FIXME: tmp disable due to Retry-After header for rate-limiting by Github not respected
     #        (see: https://github.com/sphinx-doc/sphinx/issues/7388)
-    r'https://github.com/pgRouting/pgrouting/issues/*i',    # limit only pgrouting
-    r'https://www.overpass-api.de/*',
-    'https://github.com/pgRouting/pgrouting/archive/v3.4.0.tar.gz'
+    r'https://github.com/pgRouting/pgrouting/issues/*',    # limit only pgrouting
+    r'https://github.com/pgRouting/pgrouting/archive/*',
+    r'https://www.overpass-api.de/*'
 ]
 
 linkcheck_timeout = 20
