@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-29 02:23+0000\n"
+"POT-Creation-Date: 2022-10-05 01:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/BFS-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/BFS-category.html>`__)"
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/BFS-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/BFS-category.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/BFS-category.html>`__"
 msgstr ""
 
 msgid "BFS - Category"
@@ -271,7 +271,7 @@ msgstr ""
 msgid ":ref:`search`"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/DFS-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/DFS-category.html>`__)"
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/DFS-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/DFS-category.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/DFS-category.html>`__"
 msgstr ""
 
 msgid "DFS - Category"
@@ -4045,7 +4045,7 @@ msgstr ""
 msgid "Kruskal's running time: :math:`O(E * log E)`"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_trsp.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_trsp.html>`__)"
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/migration.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/migration.html>`__)"
 msgstr ""
 
 msgid "Migration guide"
@@ -11488,7 +11488,7 @@ msgstr ""
 msgid "[end_node_id, end_open, end_close, end_service]"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_pickDeliverEuclidean.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_pickDeliverEuclidean.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/pgr_pickDeliverEuclidean.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_pickDeliverEuclidean.html>`__ current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_pickDeliverEuclidean.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_pickDeliverEuclidean.html>`__"
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_pickDeliverEuclidean.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_pickDeliverEuclidean.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/pgr_pickDeliverEuclidean.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_pickDeliverEuclidean.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_pickDeliverEuclidean.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_pickDeliverEuclidean.html>`__"
 msgstr ""
 
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_gsoc_vrppdtw.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_gsoc_vrppdtw.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_gsoc_vrppdtw.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/vrppdtw/doc/pgr_gsoc_vrppdtw.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/vrppdtw/doc/index.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/vrppdtw/doc/index.html>`__"
@@ -12967,7 +12967,7 @@ msgstr ""
 msgid ":doc:`pgr_findCloseEdges`"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/reference.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/reference.html>`__)"
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/reference.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/reference.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/reference.html>`__"
 msgstr ""
 
 msgid "Reference"
@@ -12986,6 +12986,9 @@ msgid "To see the full list of changes check the list of `Git commits <https://g
 msgstr ""
 
 msgid "pgRouting 3.4.0 Release Notes"
+msgstr ""
+
+msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.3.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.4%22>`_"
 msgstr ""
 
 msgid "Issue fixes"
@@ -13094,6 +13097,15 @@ msgid "``pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text)``"
 msgstr ""
 
 msgid "``pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)``"
+msgstr ""
+
+msgid "pgRouting 3.3.3 Release Notes"
+msgstr ""
+
+msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.3.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.3%22>`_"
+msgstr ""
+
+msgid "Ignoring optional boolean parameter, as the algorithm works only for undirected graphs."
 msgstr ""
 
 msgid "pgRouting 3.3.2 Release Notes"
@@ -15109,7 +15121,7 @@ msgstr ""
 msgid "Aditionaly there are 2 categories under this family"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/via-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/via-category.html>`__)"
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/via-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/via-category.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/via-category.html>`__"
 msgstr ""
 
 msgid "Via - Category"
@@ -15151,7 +15163,7 @@ msgstr ""
 msgid "Used on"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/withPoints-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/withPoints-category.html>`__)"
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/withPoints-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/withPoints-category.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/withPoints-category.html>`__"
 msgstr ""
 
 msgid "withPoints - Category"
