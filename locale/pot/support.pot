@@ -1,0 +1,113 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/support.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/support.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/support.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/support.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/support.html>`__"
+msgstr ""
+
+msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/support.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/support.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/support.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/doc/src/introduction/support.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/doc/src/introduction/support.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/doc/src/introduction/support.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/doc/src/introduction/support.html>`__"
+msgstr ""
+
+msgid "Support"
+msgstr ""
+
+msgid "pgRouting community support is available through the `pgRouting website <https://pgrouting.org/support.html>`_, `documentation <https://docs.pgrouting.org>`_, tutorials, mailing lists and others. If you’re looking for :ref:`commercial support <support_commercial>`, find below a list of companies providing pgRouting development and consulting services."
+msgstr ""
+
+msgid "Reporting Problems"
+msgstr ""
+
+msgid "Bugs are reported and managed in an `issue tracker <https://github.com/pgrouting/pgrouting/issues>`_. Please follow these steps:"
+msgstr ""
+
+msgid "Search the tickets to see if your problem has already been reported. If so, add any extra context you might have found, or at least indicate that you too are having the problem. This will help us prioritize common issues."
+msgstr ""
+
+msgid "If your problem is unreported, create a `new issue <https://github.com/pgRouting/pgrouting/issues/new>`__ for it."
+msgstr ""
+
+msgid "In your report include explicit instructions to replicate your issue. The best tickets include the exact SQL necessary to replicate a problem."
+msgstr ""
+
+msgid "If you can test older versions of PostGIS for your problem, please do. On your ticket, note the earliest version the problem appears."
+msgstr ""
+
+msgid "For the versions where you can replicate the problem, note the operating system and version of pgRouting, PostGIS and PostgreSQL."
+msgstr ""
+
+msgid "It is recommended to use the following wrapper on the problem to pin point the step that is causing the problem."
+msgstr ""
+
+msgid "Mailing List and GIS StackExchange"
+msgstr ""
+
+msgid "There are two mailing lists for pgRouting hosted on OSGeo mailing list server:"
+msgstr ""
+
+msgid "User mailing list: https://lists.osgeo.org/mailman/listinfo/pgrouting-users"
+msgstr ""
+
+msgid "Developer mailing list: https://lists.osgeo.org/mailman/listinfo/pgrouting-dev"
+msgstr ""
+
+msgid "For general questions and topics about how to use pgRouting, please write to the user mailing list."
+msgstr ""
+
+msgid "You can also ask at `GIS StackExchange <https://gis.stackexchange.com/>`_ and tag the question with ``pgrouting``. Find all questions tagged with ``pgrouting`` under https://gis.stackexchange.com/questions/tagged/pgrouting or subscribe to the `pgRouting questions feed <https://gis.stackexchange.com/feeds/tag?tagnames=pgrouting&sort=newest>`_."
+msgstr ""
+
+msgid "Commercial Support"
+msgstr ""
+
+msgid "For users who require professional support, development and consulting services, consider contacting any of the following organizations, which have significantly contributed to the development of pgRouting:"
+msgstr ""
+
+msgid "**Company**"
+msgstr ""
+
+msgid "**Offices in**"
+msgstr ""
+
+msgid "**Website**"
+msgstr ""
+
+msgid "Georepublic"
+msgstr ""
+
+msgid "Germany, Japan"
+msgstr ""
+
+msgid "https://georepublic.info"
+msgstr ""
+
+msgid "Paragon Corporation"
+msgstr ""
+
+msgid "United States"
+msgstr ""
+
+msgid "https://www.paragoncorporation.com"
+msgstr ""
+
+msgid "Netlab"
+msgstr ""
+
+msgid "Capranica, Italy"
+msgstr ""
+
+msgid "https://www.osgeo.org/service-providers/netlab/"
+msgstr ""

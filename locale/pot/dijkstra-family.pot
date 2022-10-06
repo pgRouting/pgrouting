@@ -1,0 +1,410 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/dijkstra-family.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/dijkstra-family.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/dijkstra-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/dijkstra-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/dijkstra-family.html>`__"
+msgstr ""
+
+msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/dijkstra-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/dijkstra-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/dijkstra-family.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/dijkstra.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/dijkstra.html>`__"
+msgstr ""
+
+msgid "Dijkstra - Family of functions"
+msgstr ""
+
+msgid ":doc:`pgr_dijkstra` - Dijkstra's algorithm for the shortest paths."
+msgstr ""
+
+msgid ":doc:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths."
+msgstr ""
+
+msgid ":doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix."
+msgstr ""
+
+msgid ":doc:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament information."
+msgstr ""
+
+msgid ":doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K shortest paths."
+msgstr ""
+
+msgid "Proposed"
+msgstr ""
+
+msgid "Proposed functions for next mayor release."
+msgstr ""
+
+msgid "They are not officially in the current release."
+msgstr ""
+
+msgid "They will likely officially be part of the next mayor release:"
+msgstr ""
+
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+msgid "Name might not change. (But still can)"
+msgstr ""
+
+msgid "Signature might not change. (But still can)"
+msgstr ""
+
+msgid "Functionality might not change. (But still can)"
+msgstr ""
+
+msgid "pgTap tests have being done. But might need more."
+msgstr ""
+
+msgid "Documentation might need refinement."
+msgstr ""
+
+msgid ":doc:`pgr_dijkstraVia` - Get a route of a seuence of vertices."
+msgstr ""
+
+msgid ":doc:`pgr_dijkstraNear` - Get the route to the nearest vertex."
+msgstr ""
+
+msgid ":doc:`pgr_dijkstraNearCost` - Get the cost to the nearest vertex."
+msgstr ""
+
+msgid "Introduction"
+msgstr ""
+
+msgid "Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1956. It is a graph search algorithm that solves the shortest path problem for a graph with non-negative edge path costs, producing a shortest path from a starting vertex to an ending vertex. This implementation can be used with a directed graph and an undirected graph."
+msgstr ""
+
+msgid "The main characteristics are:"
+msgstr ""
+
+msgid "Process is done only on edges with positive costs."
+msgstr ""
+
+msgid "A negative value on a cost column is interpreted as the edge does not exist."
+msgstr ""
+
+msgid "Values are returned when there is a path."
+msgstr ""
+
+msgid "When there is no path:"
+msgstr ""
+
+msgid "When the starting vertex and ending vertex are the same."
+msgstr ""
+
+msgid "The **aggregate cost** of the non included values :math:`(v, v)` is :math:`0`"
+msgstr ""
+
+msgid "When the starting vertex and ending vertex are the different and there is no path:"
+msgstr ""
+
+msgid "The **aggregate cost** the non included values :math:`(u, v)` is :math:`\\infty`"
+msgstr ""
+
+msgid "For optimization purposes, any duplicated value in the starting vertices or on the ending vertices are ignored."
+msgstr ""
+
+msgid "Running time: :math:`O(| start\\ vids | * (V \\log V + E))`"
+msgstr ""
+
+msgid "The Dijkstra family functions are based on the Dijkstra algorithm."
+msgstr ""
+
+msgid "Parameters"
+msgstr ""
+
+msgid "Column"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "`Edges SQL`_"
+msgstr ""
+
+msgid "``TEXT``"
+msgstr ""
+
+msgid "`Edges SQL`_ as described below"
+msgstr ""
+
+msgid "`Combinations SQL`_"
+msgstr ""
+
+msgid "`Combinations SQL`_ as described below"
+msgstr ""
+
+msgid "**start vid**"
+msgstr ""
+
+msgid "``BIGINT``"
+msgstr ""
+
+msgid "Identifier of the starting vertex of the path."
+msgstr ""
+
+msgid "**start vids**"
+msgstr ""
+
+msgid "``ARRAY[BIGINT]``"
+msgstr ""
+
+msgid "Array of identifiers of starting vertices."
+msgstr ""
+
+msgid "**end vid**"
+msgstr ""
+
+msgid "Identifier of the ending vertex of the path."
+msgstr ""
+
+msgid "**end vids**"
+msgstr ""
+
+msgid "Array of identifiers of ending vertices."
+msgstr ""
+
+msgid "Optional parameters"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "``directed``"
+msgstr ""
+
+msgid "``BOOLEAN``"
+msgstr ""
+
+msgid "``true``"
+msgstr ""
+
+msgid "When ``true`` the graph is considered `Directed`"
+msgstr ""
+
+msgid "When ``false`` the graph is considered as `Undirected`."
+msgstr ""
+
+msgid "Inner Queries"
+msgstr ""
+
+msgid "Edges SQL"
+msgstr ""
+
+msgid "``id``"
+msgstr ""
+
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+msgid "Identifier of the edge."
+msgstr ""
+
+msgid "``source``"
+msgstr ""
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+msgid "``target``"
+msgstr ""
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+msgid "``cost``"
+msgstr ""
+
+msgid "**ANY-NUMERICAL**"
+msgstr ""
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr ""
+
+msgid "``reverse_cost``"
+msgstr ""
+
+msgid "-1"
+msgstr ""
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr ""
+
+msgid "When negative: edge (``target``, ``source``) does not exist, therefore it's not part of the graph."
+msgstr ""
+
+msgid "Where:"
+msgstr ""
+
+msgid "ANY-INTEGER"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr ""
+
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
+
+msgid "Combinations SQL"
+msgstr ""
+
+msgid "Parameter"
+msgstr ""
+
+msgid "Identifier of the departure vertex."
+msgstr ""
+
+msgid "Identifier of the arrival vertex."
+msgstr ""
+
+msgid "Advanced documentation"
+msgstr ""
+
+msgid "The problem definition (Advanced documentation)"
+msgstr ""
+
+msgid "Given the following query:"
+msgstr ""
+
+msgid "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr ""
+
+msgid "where  :math:`sql = \\{(id_i, source_i, target_i, cost_i, reverse\\_cost_i)\\}`"
+msgstr ""
+
+msgid "and"
+msgstr ""
+
+msgid ":math:`source = \\bigcup source_i`,"
+msgstr ""
+
+msgid ":math:`target = \\bigcup target_i`,"
+msgstr ""
+
+msgid "The graphs are defined as follows:"
+msgstr ""
+
+msgid "Directed graph"
+msgstr ""
+
+msgid "The weighted directed graph, :math:`G_d(V,E)`, is definied by:"
+msgstr ""
+
+msgid "the set of vertices  :math:`V`"
+msgstr ""
+
+msgid ":math:`V = source \\cup target \\cup {start_{vid}} \\cup  {end_{vid}}`"
+msgstr ""
+
+msgid "the set of edges :math:`E`"
+msgstr ""
+
+msgid ":math:`E = \\begin{cases} \\text{ }  \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} & \\quad \\text{if } reverse\\_cost = \\varnothing \\\\ \\text{ }  \\text{ }  & \\quad \\text{ } \\\\ \\text{ }  \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} &  \\quad \\text{ } \\\\ \\cup      \\{(target_i, source_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i>=0 \\} & \\quad \\text{if } reverse\\_cost \\neq \\varnothing \\\\ \\end{cases}`"
+msgstr ""
+
+msgid "Undirected graph"
+msgstr ""
+
+msgid "The weighted undirected graph, :math:`G_u(V,E)`, is definied by:"
+msgstr ""
+
+msgid ":math:`V = source \\cup target \\cup {start_v{vid}} \\cup  {end_{vid}}`"
+msgstr ""
+
+msgid ":math:`E = \\begin{cases} \\text{ }  \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\}  & \\quad \\text{ } \\\\ \\cup      \\{(target_i, source_i, cost_i) \\text{ when } cost >=0 \\}  & \\quad \\text{ if } reverse\\_cost = \\varnothing \\\\ \\text{ }  \\text{ }  & \\text{ } \\\\ \\text{ }  \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} & \\text{ } \\\\ \\cup  \\{(target_i, source_i, cost_i) \\text{ when } cost >=0 \\} & \\text{ } \\\\ \\cup  \\{(target_i, source_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} & \\text{ } \\\\ \\cup  \\{(source_i, target_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} & \\quad \\text{ if } reverse\\_cost \\neq \\varnothing \\\\ \\end{cases}`"
+msgstr ""
+
+msgid "The problem"
+msgstr ""
+
+msgid "Given:"
+msgstr ""
+
+msgid ":math:`start_{vid} \\in V` a starting vertex"
+msgstr ""
+
+msgid ":math:`end_{vid} \\in V` an ending vertex"
+msgstr ""
+
+msgid ":math:`G(V,E) = \\begin{cases} G_d(V,E) & \\quad \\text{ if6 } directed = true \\\\ G_u(V,E) & \\quad \\text{ if5 } directed = false \\\\ \\end{cases}`"
+msgstr ""
+
+msgid "Then:"
+msgstr ""
+
+msgid ":math:`\\boldsymbol{\\pi} = \\{(path\\_seq_i, node_i, edge_i, cost_i, agg\\_cost_i)\\}`"
+msgstr ""
+
+msgid "where:"
+msgstr ""
+
+msgid ":math:`path\\_seq_i = i`"
+msgstr ""
+
+msgid ":math:`path\\_seq_{| \\pi |} = | \\pi |`"
+msgstr ""
+
+msgid ":math:`node_i \\in V`"
+msgstr ""
+
+msgid ":math:`node_1 = start_{vid}`"
+msgstr ""
+
+msgid ":math:`node_{| \\pi |}  = end_{vid}`"
+msgstr ""
+
+msgid ":math:`\\forall i \\neq | \\pi |, \\quad (node_i, node_{i+1}, cost_i) \\in E`"
+msgstr ""
+
+msgid ":math:`edge_i  = \\begin{cases}  id_{(node_i, node_{i+1},cost_i)}  &\\quad  \\text{when } i \\neq | \\pi | \\\\ -1 &\\quad  \\text{when } i = | \\pi | \\\\ \\end{cases}`"
+msgstr ""
+
+msgid ":math:`cost_i = cost_{(node_i, node_{i+1})}`"
+msgstr ""
+
+msgid ":math:`agg\\_cost_i  = \\begin{cases}  0   &\\quad  \\text{when } i = 1  \\\\ \\displaystyle\\sum_{k=1}^{i}  cost_{(node_{k-1}, node_k)}  &\\quad  \\text{when } i \\neq 1 \\\\ \\end{cases}`"
+msgstr ""
+
+msgid "In other words: The algorithm returns a the shortest path between :math:`start_{vid}` and :math:`end_{vid}`, if it exists, in terms of a sequence of nodes  and of edges,"
+msgstr ""
+
+msgid ":math:`path\\_seq` indicates the relative position in the path of the :math:`node` or :math:`edge`."
+msgstr ""
+
+msgid ":math:`cost` is the cost of the edge to be used to go to the next node."
+msgstr ""
+
+msgid ":math:`agg\\_cost` is the cost from the :math:`start_{vid}` up to the node."
+msgstr ""
+
+msgid "If there is no path, the resulting set is empty."
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""

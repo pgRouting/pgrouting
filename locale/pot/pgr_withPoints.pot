@@ -1,0 +1,569 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_withPoints.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_withPoints.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/pgr_withPoints.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_withPoints.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_withPoints.html>`__"
+msgstr ""
+
+msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_withPoints.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_withPoints.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_withPoints.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPoints.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPoints.html>`__"
+msgstr ""
+
+msgid "``pgr_withPoints`` - Proposed"
+msgstr ""
+
+msgid "``pgr_withPoints`` - Returns the shortest path in a graph with additional temporary vertices."
+msgstr ""
+
+msgid "Proposed functions for next mayor release."
+msgstr ""
+
+msgid "They are not officially in the current release."
+msgstr ""
+
+msgid "They will likely officially be part of the next mayor release:"
+msgstr ""
+
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+msgid "Name might not change. (But still can)"
+msgstr ""
+
+msgid "Signature might not change. (But still can)"
+msgstr ""
+
+msgid "Functionality might not change. (But still can)"
+msgstr ""
+
+msgid "pgTap tests have being done. But might need more."
+msgstr ""
+
+msgid "Documentation might need refinement."
+msgstr ""
+
+msgid "Boost Graph Inside"
+msgstr ""
+
+msgid "Availability"
+msgstr ""
+
+msgid "Version 3.2.0"
+msgstr ""
+
+msgid "New **proposed** function:"
+msgstr ""
+
+msgid "pgr_withPoints(Combinations)"
+msgstr ""
+
+msgid "Version 2.2.0"
+msgstr ""
+
+msgid "New **proposed** function"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Modify the graph to include points defined by points_sql. Using Dijkstra algorithm, find the shortest path(s)"
+msgstr ""
+
+msgid "**The main characteristics are:**"
+msgstr ""
+
+msgid "Process is done only on edges with positive costs."
+msgstr ""
+
+msgid "Vertices of the graph are:"
+msgstr ""
+
+msgid "**positive** when it belongs to the edges_sql"
+msgstr ""
+
+msgid "**negative** when it belongs to the points_sql"
+msgstr ""
+
+msgid "Values are returned when there is a path."
+msgstr ""
+
+msgid "When the starting vertex and ending vertex are the same, there is no path. - The agg_cost the non included values (v, v) is 0"
+msgstr ""
+
+msgid "When the starting vertex and ending vertex are the different and there is no path: - The agg_cost the non included values (u, v) is ∞"
+msgstr ""
+
+msgid "For optimization purposes, any duplicated value in the start_vids or end_vids are ignored."
+msgstr ""
+
+msgid "The returned values are ordered: - start_vid ascending - end_vid ascending"
+msgstr ""
+
+msgid "Running time: :math:`O(|start\\_vids|\\times(V \\log V + E))`"
+msgstr ""
+
+msgid "Signatures"
+msgstr ""
+
+msgid "Summary"
+msgstr ""
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, [**options**])"
+msgstr ""
+
+msgid "pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, [**options**])"
+msgstr ""
+
+msgid "pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, [**options**])"
+msgstr ""
+
+msgid "pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, [**options**])"
+msgstr ""
+
+msgid "pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, [**options**])"
+msgstr ""
+
+msgid "**options:** ``[directed, driving_side, details])``"
+msgstr ""
+
+msgid "RETURNS SET OF |old-pid-result|"
+msgstr ""
+
+msgid "OR EMTPY SET"
+msgstr ""
+
+msgid "One to One"
+msgstr ""
+
+msgid "**options:** [directed, driving_side, details])"
+msgstr ""
+
+msgid "RETURNS SET OF |result-1-1|"
+msgstr ""
+
+msgid "Example"
+msgstr ""
+
+msgid "From point :math:`1` to vertex :math:`10` with details"
+msgstr ""
+
+msgid "One to Many"
+msgstr ""
+
+msgid "RETURNS SET OF |pid-1-m|"
+msgstr ""
+
+msgid "From point :math:`1` to point :math:`3` and vertex :math:`7` on an undirected graph"
+msgstr ""
+
+msgid "Many to One"
+msgstr ""
+
+msgid "RETURNS SET OF |pid-m-1|"
+msgstr ""
+
+msgid "From point :math:`1` and vertex :math:`6` to point :math:`3`"
+msgstr ""
+
+msgid "Many to Many"
+msgstr ""
+
+msgid "RETURNS SET OF |pid-m-m|"
+msgstr ""
+
+msgid "From point :math:`1` and vertex :math:`6`  to point :math:`3` and vertex :math:`1`"
+msgstr ""
+
+msgid "Combinations"
+msgstr ""
+
+msgid "Two combinations"
+msgstr ""
+
+msgid "From point :math:`1` to vertex :math:`10`, and from vertex :math:`6` to point :math:`3` with **right** side driving."
+msgstr ""
+
+msgid "Parameters"
+msgstr ""
+
+msgid "Column"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "`Edges SQL`_"
+msgstr ""
+
+msgid "``TEXT``"
+msgstr ""
+
+msgid "`Edges SQL`_ as described below"
+msgstr ""
+
+msgid "`Points SQL`_"
+msgstr ""
+
+msgid "`Points SQL`_ as described below"
+msgstr ""
+
+msgid "`Combinations SQL`_"
+msgstr ""
+
+msgid "`Combinations SQL`_ as described below"
+msgstr ""
+
+msgid "**start vid**"
+msgstr ""
+
+msgid "``BIGINT``"
+msgstr ""
+
+msgid "Identifier of the starting vertex of the path. Negative value is for point’s identifier."
+msgstr ""
+
+msgid "**start vids**"
+msgstr ""
+
+msgid "``ARRAY[BIGINT]``"
+msgstr ""
+
+msgid "Array of identifiers of starting vertices. Negative values are for point’s identifiers."
+msgstr ""
+
+msgid "**end vid**"
+msgstr ""
+
+msgid "Identifier of the ending vertex of the path. Negative value is for point’s identifier."
+msgstr ""
+
+msgid "**end vids**"
+msgstr ""
+
+msgid "Array of identifiers of ending vertices. Negative values are for point’s identifiers."
+msgstr ""
+
+msgid "Optional parameters"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "``directed``"
+msgstr ""
+
+msgid "``BOOLEAN``"
+msgstr ""
+
+msgid "``true``"
+msgstr ""
+
+msgid "When ``true`` the graph is considered `Directed`"
+msgstr ""
+
+msgid "When ``false`` the graph is considered as `Undirected`."
+msgstr ""
+
+msgid "With points optional parameters"
+msgstr ""
+
+msgid "Parameter"
+msgstr ""
+
+msgid "``driving_side``"
+msgstr ""
+
+msgid "``CHAR``"
+msgstr ""
+
+msgid "``b``"
+msgstr ""
+
+msgid "Value in [``r``, ``l``, ``b``] indicating if the driving side is:"
+msgstr ""
+
+msgid "``r`` for right driving side."
+msgstr ""
+
+msgid "``l`` for left driving side."
+msgstr ""
+
+msgid "``b`` for both."
+msgstr ""
+
+msgid "``details``"
+msgstr ""
+
+msgid "``false``"
+msgstr ""
+
+msgid "When ``true`` the results will include the points that are in the path."
+msgstr ""
+
+msgid "When ``false`` the results will not include the points that are in the path."
+msgstr ""
+
+msgid "Inner Queries"
+msgstr ""
+
+msgid "Edges SQL"
+msgstr ""
+
+msgid "``id``"
+msgstr ""
+
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+msgid "Identifier of the edge."
+msgstr ""
+
+msgid "``source``"
+msgstr ""
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+msgid "``target``"
+msgstr ""
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+msgid "``cost``"
+msgstr ""
+
+msgid "**ANY-NUMERICAL**"
+msgstr ""
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr ""
+
+msgid "``reverse_cost``"
+msgstr ""
+
+msgid "-1"
+msgstr ""
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr ""
+
+msgid "When negative: edge (``target``, ``source``) does not exist, therefore it's not part of the graph."
+msgstr ""
+
+msgid "Where:"
+msgstr ""
+
+msgid "ANY-INTEGER"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr ""
+
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
+
+msgid "Points SQL"
+msgstr ""
+
+msgid "``pid``"
+msgstr ""
+
+msgid "**value**"
+msgstr ""
+
+msgid "Identifier of the point."
+msgstr ""
+
+msgid "Use with positive value, as internally will be converted to negative value"
+msgstr ""
+
+msgid "If column is present, it can not be NULL."
+msgstr ""
+
+msgid "If column is not present, a sequential negative **value** will be given automatically."
+msgstr ""
+
+msgid "``edge_id``"
+msgstr ""
+
+msgid "Identifier of the \"closest\" edge to the point."
+msgstr ""
+
+msgid "``fraction``"
+msgstr ""
+
+msgid "Value in <0,1> that indicates the relative postition from the first end point of the edge."
+msgstr ""
+
+msgid "``side``"
+msgstr ""
+
+msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"
+msgstr ""
+
+msgid "In the right ``r``,"
+msgstr ""
+
+msgid "In the left ``l``,"
+msgstr ""
+
+msgid "In both sides ``b``, ``NULL``"
+msgstr ""
+
+msgid "Combinations SQL"
+msgstr ""
+
+msgid "Identifier of the departure vertex."
+msgstr ""
+
+msgid "Identifier of the arrival vertex."
+msgstr ""
+
+msgid "Result Columns"
+msgstr ""
+
+msgid "Returns set of ``(seq, path_seq [, start_pid] [, end_pid], node, edge, cost, agg_cost)``"
+msgstr ""
+
+msgid "``seq``"
+msgstr ""
+
+msgid "``INTEGER``"
+msgstr ""
+
+msgid "Sequential value starting from **1**."
+msgstr ""
+
+msgid "``path_seq``"
+msgstr ""
+
+msgid "Relative position in the path."
+msgstr ""
+
+msgid "**1** For the first row of the path."
+msgstr ""
+
+msgid "``start_pid``"
+msgstr ""
+
+msgid "Identifier of a starting vertex/point of the path."
+msgstr ""
+
+msgid "When positive is the identifier of the starting vertex."
+msgstr ""
+
+msgid "When negative is the identifier of the starting point."
+msgstr ""
+
+msgid "Returned on `Many to One`_  and `Many to Many`_"
+msgstr ""
+
+msgid "``end_pid``"
+msgstr ""
+
+msgid "Identifier of an ending vertex/point of the path."
+msgstr ""
+
+msgid "When positive is the identifier of the ending vertex."
+msgstr ""
+
+msgid "When negative is the identifier of the ending point."
+msgstr ""
+
+msgid "Returned on `One to Many`_ and `Many to Many`_"
+msgstr ""
+
+msgid "``node``"
+msgstr ""
+
+msgid "Identifier of the node in the path from ``start_pid`` to ``end_pid``."
+msgstr ""
+
+msgid "When positive is the identifier of the a vertex."
+msgstr ""
+
+msgid "When negative is the identifier of the a point."
+msgstr ""
+
+msgid "``edge``"
+msgstr ""
+
+msgid "Identifier of the edge used to go from ``node`` to the next node in the path sequence."
+msgstr ""
+
+msgid "**-1** for the last row of the path."
+msgstr ""
+
+msgid "``FLOAT``"
+msgstr ""
+
+msgid "Cost to traverse from ``node`` using ``edge`` to the next node in the path sequence."
+msgstr ""
+
+msgid "**0** For the first row of the path."
+msgstr ""
+
+msgid "``agg_cost``"
+msgstr ""
+
+msgid "Aggregate cost from ``start_vid`` to ``node``."
+msgstr ""
+
+msgid "Additional Examples"
+msgstr ""
+
+msgid "Usage variations"
+msgstr ""
+
+msgid "All the examples are about traveling from point :math:`1` and vertex :math:`5` to points :math:`\\{2, 3, 6\\}` and vertices :math:`\\{10, 11\\}`"
+msgstr ""
+
+msgid "Passes in front or visits with right side driving."
+msgstr ""
+
+msgid "For point :math:`6` and vertex :math:`11`."
+msgstr ""
+
+msgid "Passes in front or visits with left side driving."
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid ":doc:`withPoints-family`"
+msgstr ""
+
+msgid ":doc:`withPoints-category`"
+msgstr ""
+
+msgid ":doc:`sampledata`"
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""

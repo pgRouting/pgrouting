@@ -1,0 +1,155 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgRouting-introduction.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/pgRouting-introduction.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/pgRouting-introduction.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgRouting-introduction.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgRouting-introduction.html>`__"
+msgstr ""
+
+msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgRouting-introduction.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgRouting-introduction.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgRouting-introduction.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/doc/src/introduction/introduction.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/doc/src/introduction/introduction.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/doc/src/introduction/introduction.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/doc/src/introduction/introduction.html>`__"
+msgstr ""
+
+msgid "Introduction"
+msgstr ""
+
+msgid "pgRouting is an extension of `PostGIS <https://postgis.net>`__ and `PostgreSQL <https://www.postgresql.org>`__ geospatial database and adds routing and other network analysis functionality. A predecessor of pgRouting – pgDijkstra, written by Sylvain Pasche from `Camptocamp <https://camptocamp.com>`__, was later extended by Orkney and renamed to pgRouting. The project is now supported and maintained by `Georepublic <https://georepublic.info>`__, `Paragon Corporation <https://www.paragoncorporation.com/>`__ and a broad user community."
+msgstr ""
+
+msgid "pgRouting is part of `OSGeo Community Projects <https://wiki.osgeo.org/wiki/OSGeo_Community_Projects>`__ from the `OSGeo Foundation <https://www.osgeo.org>`__ and included on `OSGeoLive <http://live.osgeo.org/>`__."
+msgstr ""
+
+msgid "Licensing"
+msgstr ""
+
+msgid "The following licenses can be found in pgRouting:"
+msgstr ""
+
+msgid "**License**"
+msgstr ""
+
+msgid "GNU General Public License v2.0 or later"
+msgstr ""
+
+msgid "Most features of pgRouting are available under `GNU General Public License v2.0 or later <https://spdx.org/licenses/GPL-2.0-or-later.html>`_."
+msgstr ""
+
+msgid "Boost Software License - Version 1.0"
+msgstr ""
+
+msgid "Some Boost extensions are available under `Boost Software License - Version 1.0 <https://www.boost.org/LICENSE_1_0.txt>`_."
+msgstr ""
+
+msgid "MIT-X License"
+msgstr ""
+
+msgid "Some code contributed by iMaptools.com is available under MIT-X license."
+msgstr ""
+
+msgid "Creative Commons Attribution-Share Alike 3.0 License"
+msgstr ""
+
+msgid "The pgRouting Manual is licensed under a `Creative Commons Attribution-Share Alike 3.0 License <https://creativecommons.org/licenses/by-sa/3.0/>`_."
+msgstr ""
+
+msgid "In general license information should be included in the header of each source file."
+msgstr ""
+
+msgid "Contributors"
+msgstr ""
+
+msgid "This Release Contributors"
+msgstr ""
+
+msgid "Individuals in this release (in alphabetical order)"
+msgstr ""
+
+msgid "Ashish Kumar, Cayetano Benavent, Daniel Kastl, Nitish Chauhan, Rajat Shinde, Regina Obe, Shobhit Chaurasia, Swapnil Joshi, Virginia Vergara"
+msgstr ""
+
+msgid "And all the people that give us a little of their time making comments, finding issues, making pull requests etc.  in any of our products: osm2pgrouting, pgRouting, pgRoutingLayer, workshop."
+msgstr ""
+
+msgid "Corporate Sponsors in this release (in alphabetical order)"
+msgstr ""
+
+msgid "These are corporate entities that have contributed developer time, hosting, or direct monetary funding to the pgRouting project:"
+msgstr ""
+
+msgid "`Georepublic <https://georepublic.info/en/>`__"
+msgstr ""
+
+msgid "`Google Summer of Code <https://summerofcode.withgoogle.com>`__"
+msgstr ""
+
+msgid "`Paragon Corporation <https://www.paragoncorporation.com/>`__"
+msgstr ""
+
+msgid "Contributors Past & Present:"
+msgstr ""
+
+msgid "Individuals (in alphabetical order)"
+msgstr ""
+
+msgid "Aasheesh Tiwari, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Ashraf Hossain, Ashish Kumar, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara"
+msgstr ""
+
+msgid "Corporate Sponsors (in alphabetical order)"
+msgstr ""
+
+msgid "Camptocamp"
+msgstr ""
+
+msgid "CSIS (University of Tokyo)"
+msgstr ""
+
+msgid "Georepublic"
+msgstr ""
+
+msgid "Google Summer of Code"
+msgstr ""
+
+msgid "iMaptools"
+msgstr ""
+
+msgid "Leopark"
+msgstr ""
+
+msgid "Orkney"
+msgstr ""
+
+msgid "Paragon Corporation"
+msgstr ""
+
+msgid "Versaterm Inc."
+msgstr ""
+
+msgid "More Information"
+msgstr ""
+
+msgid "The latest software, documentation and news items are available at the pgRouting web site https://pgrouting.org."
+msgstr ""
+
+msgid "PostgreSQL database server at the PostgreSQL main site https://www.postgresql.org."
+msgstr ""
+
+msgid "PostGIS extension at the PostGIS project web site https://postgis.net."
+msgstr ""
+
+msgid "Boost C++ source libraries at https://www.boost.org."
+msgstr ""
+
+msgid "The Migration guide from 2.6 can be found at https://github.com/pgRouting/pgrouting/wiki/Migration-Guide."
+msgstr ""

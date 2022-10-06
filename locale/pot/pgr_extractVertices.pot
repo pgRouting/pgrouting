@@ -1,0 +1,446 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_extractVertices.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_extractVertices.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/pgr_extractVertices.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_extractVertices.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_extractVertices.html>`__"
+msgstr ""
+
+msgid "pgr_extractVertices -- Proposed"
+msgstr ""
+
+msgid "``pgr_extractVertices`` — Extracts the vertices information"
+msgstr ""
+
+msgid "Proposed functions for next mayor release."
+msgstr ""
+
+msgid "They are not officially in the current release."
+msgstr ""
+
+msgid "They will likely officially be part of the next mayor release:"
+msgstr ""
+
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+msgid "Name might not change. (But still can)"
+msgstr ""
+
+msgid "Signature might not change. (But still can)"
+msgstr ""
+
+msgid "Functionality might not change. (But still can)"
+msgstr ""
+
+msgid "pgTap tests have being done. But might need more."
+msgstr ""
+
+msgid "Documentation might need refinement."
+msgstr ""
+
+msgid "Availability"
+msgstr ""
+
+msgid "Version 3.3.0"
+msgstr ""
+
+msgid "Classified as **proposed** function"
+msgstr ""
+
+msgid "Version 3.0.0"
+msgstr ""
+
+msgid "New **experimental** function"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "This is an auxiliary function for extracting the vertex information of the set of edges of a graph."
+msgstr ""
+
+msgid "When the edge identifier is given, then it will also calculate the in and out edges"
+msgstr ""
+
+msgid "Signatures"
+msgstr ""
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_extractVertices(`Edges SQL`_, [``dryrun``])"
+msgstr ""
+
+msgid "RETURNS SETOF |result-extract|"
+msgstr ""
+
+msgid "OR EMTPY SET"
+msgstr ""
+
+msgid "Example"
+msgstr ""
+
+msgid "Extracting the vertex information"
+msgstr ""
+
+msgid "Parameters"
+msgstr ""
+
+msgid "Parameter"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "`Edges SQL`_"
+msgstr ""
+
+msgid "``TEXT``"
+msgstr ""
+
+msgid "`Edges SQL`_ as described below"
+msgstr ""
+
+msgid "Optional parameters"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "``dryrun``"
+msgstr ""
+
+msgid "``BOOLEAN``"
+msgstr ""
+
+msgid "``false``"
+msgstr ""
+
+msgid "When true do not process and get in a NOTICE the resulting query."
+msgstr ""
+
+msgid "Inner Queries"
+msgstr ""
+
+msgid "Edges SQL"
+msgstr ""
+
+msgid "When line geometry is known"
+msgstr ""
+
+msgid "Column"
+msgstr ""
+
+msgid "``id``"
+msgstr ""
+
+msgid "``BIGINT``"
+msgstr ""
+
+msgid "(Optional) identifier of the edge."
+msgstr ""
+
+msgid "``geom``"
+msgstr ""
+
+msgid "``LINESTRING``"
+msgstr ""
+
+msgid "Geometry of the edge."
+msgstr ""
+
+msgid "This inner query takes precedence over the next two inner query, therefore other columns are ignored when ``geom`` column appears."
+msgstr ""
+
+msgid "Ignored columns:"
+msgstr ""
+
+msgid "``startpoint``"
+msgstr ""
+
+msgid "``endpoint``"
+msgstr ""
+
+msgid "``source``"
+msgstr ""
+
+msgid "``target``"
+msgstr ""
+
+msgid "When vertex geometry is known"
+msgstr ""
+
+msgid "To use this inner query the column ``geom`` should not be part of the set of columns."
+msgstr ""
+
+msgid "``POINT``"
+msgstr ""
+
+msgid "POINT geometry of the starting vertex."
+msgstr ""
+
+msgid "POINT geometry of the ending vertex."
+msgstr ""
+
+msgid "This inner query takes precedence over the next inner query, therefore other columns are ignored when ``startpoint`` and ``endpoint`` columns appears."
+msgstr ""
+
+msgid "When identifiers of vertices are known"
+msgstr ""
+
+msgid "To use this inner query the columns ``geom``, ``startpoint`` and ``endpoint`` should not be part of the set of columns."
+msgstr ""
+
+msgid "``ANY-INTEGER``"
+msgstr ""
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+msgid "Result Columns"
+msgstr ""
+
+msgid "Vertex identifier"
+msgstr ""
+
+msgid "``in_edges``"
+msgstr ""
+
+msgid "``BIGINT[]``"
+msgstr ""
+
+msgid "Array of identifiers of the edges that have the vertex ``id`` as *first end point*."
+msgstr ""
+
+msgid "``NULL`` When the ``id`` is not part of the inner query"
+msgstr ""
+
+msgid "``out_edges``"
+msgstr ""
+
+msgid "Array of identifiers of the edges that have the vertex ``id`` as *second end point*."
+msgstr ""
+
+msgid "``x``"
+msgstr ""
+
+msgid "``FLOAT``"
+msgstr ""
+
+msgid "X value of the point geometry"
+msgstr ""
+
+msgid "``NULL`` When no geometry is provided"
+msgstr ""
+
+msgid "``y``"
+msgstr ""
+
+msgid "Geometry of the point"
+msgstr ""
+
+msgid "Additional Examples"
+msgstr ""
+
+msgid "Dryrun execution"
+msgstr ""
+
+msgid "To get the query generated used to get the vertex information, use ``dryrun := true``."
+msgstr ""
+
+msgid "The results can be used as base code to make a refinement based on the backend development needs."
+msgstr ""
+
+msgid "Create a routing topology"
+msgstr ""
+
+msgid "Make sure the database does not have the ``vertices_table``"
+msgstr ""
+
+msgid "Clean up the columns of the routing topology to be created"
+msgstr ""
+
+msgid "Create the vertices table"
+msgstr ""
+
+msgid "When the ``LINESTRING`` has a SRID then use ``geom::geometry(POINT, <SRID>)``"
+msgstr ""
+
+msgid "For big edge tables that are been prepared,"
+msgstr ""
+
+msgid "Create it as ``UNLOGGED`` and"
+msgstr ""
+
+msgid "After the table is created ``ALTER TABLE .. SET LOGGED``"
+msgstr ""
+
+msgid "Inspect the vertices table"
+msgstr ""
+
+msgid "Create the routing topology on the edge table"
+msgstr ""
+
+msgid "Updating the ``source`` information"
+msgstr ""
+
+msgid "Updating the ``target`` information"
+msgstr ""
+
+msgid "Inspect the routing topology"
+msgstr ""
+
+msgid "**Generated topology**"
+msgstr ""
+
+msgid "Crossing edges"
+msgstr ""
+
+msgid "To get the crossing edges:"
+msgstr ""
+
+msgid "That information is correct, for example, when in terms of vehicles, is it a tunnel or bride crossing over another road."
+msgstr ""
+
+msgid "It might be incorrect, for example:"
+msgstr ""
+
+msgid "When it is actually an intersection of roads, where vehicles can make turns."
+msgstr ""
+
+msgid "When in terms of electrical lines, the electrical line is able to switch roads even on a tunnel or bridge."
+msgstr ""
+
+msgid "When it is incorrect, it needs fixing:"
+msgstr ""
+
+msgid "For vehicles and pedestrians"
+msgstr ""
+
+msgid "If the data comes from OSM and was imported to the database using ``osm2pgrouting``, the fix needs to be done in the `OSM portal <https://www.openstreetmap.org>`__ and the data imported again."
+msgstr ""
+
+msgid "In general when the data comes from a supplier that has the data prepared for routing vehicles, and there is a problem, the data is to be fixed from the supplier"
+msgstr ""
+
+msgid "For very specific applications"
+msgstr ""
+
+msgid "The data is correct when from the point of view of routing vehicles or pedestrians."
+msgstr ""
+
+msgid "The data needs a local fix for the specific application."
+msgstr ""
+
+msgid "Once analyzed one by one the crossings, for the ones that need a local fix, the edges need to be `split <https://postgis.net/docs/ST_Split.html>`__."
+msgstr ""
+
+msgid "The new edges need to be added to the edges table, the rest of the attributes need to be updated in the new edges, the old edges need to be removed and the routing topology needs to be updated."
+msgstr ""
+
+msgid "Adding split edges"
+msgstr ""
+
+msgid "For each pair of crossing edges a process similar to this one must be performed."
+msgstr ""
+
+msgid "The columns inserted and the way are calculated are based on the application. For example, if the edges have a trait **name**, then that column is to be copied."
+msgstr ""
+
+msgid "For pgRouting calculations"
+msgstr ""
+
+msgid "**factor** based on the position of the intersection of the edges can be used to adjust the ``cost`` and ``reverse_cost`` columns."
+msgstr ""
+
+msgid "Capacity information, used on the :doc:`flow-family` functions does not need to change when splitting edges."
+msgstr ""
+
+msgid "Adding new vertices"
+msgstr ""
+
+msgid "After adding all the split edges required by the application, the newly created vertices need to be added to the vertices table."
+msgstr ""
+
+msgid "Updating edges topology"
+msgstr ""
+
+msgid "Removing the surplus edges"
+msgstr ""
+
+msgid "Once all significant information needed by the application has been transported to the new edges, then the crossing edges can be deleted."
+msgstr ""
+
+msgid "There are other options to do this task, like creating a view, or a materialized view."
+msgstr ""
+
+msgid "Updating vertices topology"
+msgstr ""
+
+msgid "To keep the graph consistent, the vertices topology needs to be updated"
+msgstr ""
+
+msgid "Checking for crossing edges"
+msgstr ""
+
+msgid "There are no crossing edges on the graph."
+msgstr ""
+
+msgid "Graphs without geometries"
+msgstr ""
+
+msgid "Using this table design for this example:"
+msgstr ""
+
+msgid "Insert the data"
+msgstr ""
+
+msgid "Find the shortest path"
+msgstr ""
+
+msgid "To solve this example :doc:`pgr_dijkstra` is used:"
+msgstr ""
+
+msgid "To go from :math:`1` to :math:`5` the path goes thru the following vertices: :math:`1 \\rightarrow 3 \\rightarrow 6 \\rightarrow 5`"
+msgstr ""
+
+msgid "Vertex information"
+msgstr ""
+
+msgid "To obtain the vertices information, use :doc:`pgr_extractVertices`"
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid ":doc:`topology-functions`"
+msgstr ""
+
+msgid ":doc:`pgr_createVerticesTable`"
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""

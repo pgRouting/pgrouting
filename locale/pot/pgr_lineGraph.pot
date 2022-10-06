@@ -1,0 +1,293 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_lineGraph.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_lineGraph.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/pgr_lineGraph.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_lineGraph.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_lineGraph.html>`__"
+msgstr ""
+
+msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_lineGraph.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_lineGraph.html>`__"
+msgstr ""
+
+msgid "``pgr_lineGraph`` - Experimental"
+msgstr ""
+
+msgid "``pgr_lineGraph`` — Transforms the given graph into its corresponding edge-based graph."
+msgstr ""
+
+msgid "Boost Graph Inside"
+msgstr ""
+
+msgid "Possible server crash"
+msgstr ""
+
+msgid "These functions might create a server crash"
+msgstr ""
+
+msgid "Experimental functions"
+msgstr ""
+
+msgid "They are not officially of the current release."
+msgstr ""
+
+msgid "They likely will not be officially be part of the next release:"
+msgstr ""
+
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+msgid "Name might change."
+msgstr ""
+
+msgid "Signature might change."
+msgstr ""
+
+msgid "Functionality might change."
+msgstr ""
+
+msgid "pgTap tests might be missing."
+msgstr ""
+
+msgid "Might need c/c++ coding."
+msgstr ""
+
+msgid "May lack documentation."
+msgstr ""
+
+msgid "Documentation if any might need to be rewritten."
+msgstr ""
+
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+
+msgid "Might need a lot of feedback from the comunity."
+msgstr ""
+
+msgid "Might depend on a proposed function of pgRouting"
+msgstr ""
+
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr ""
+
+msgid "Availability"
+msgstr ""
+
+msgid "Version 2.5.0"
+msgstr ""
+
+msgid "New **Experimental** function"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Given a graph G, its line graph L(G) is a graph such that:"
+msgstr ""
+
+msgid "Each vertex of L(G) represents an edge of G"
+msgstr ""
+
+msgid "Two vertices of L(G) are adjacent if and only if their corresponding edges share a common endpoint in G."
+msgstr ""
+
+msgid "Signatures"
+msgstr ""
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_lineGraph(`Edges SQL`_, [``directed``])"
+msgstr ""
+
+msgid "RETURNS SET OF |result-lineg|"
+msgstr ""
+
+msgid "OR EMPTY SET"
+msgstr ""
+
+msgid "Example"
+msgstr ""
+
+msgid "For a **directed** graph"
+msgstr ""
+
+msgid "Parameters"
+msgstr ""
+
+msgid "Parameter"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "`Edges SQL`_"
+msgstr ""
+
+msgid "``TEXT``"
+msgstr ""
+
+msgid "`Edges SQL`_ as described below."
+msgstr ""
+
+msgid "Optional parameters"
+msgstr ""
+
+msgid "Column"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "``directed``"
+msgstr ""
+
+msgid "``BOOLEAN``"
+msgstr ""
+
+msgid "``true``"
+msgstr ""
+
+msgid "When ``true`` the graph is considered `Directed`"
+msgstr ""
+
+msgid "When ``false`` the graph is considered as `Undirected`."
+msgstr ""
+
+msgid "Inner Queries"
+msgstr ""
+
+msgid "Edges SQL"
+msgstr ""
+
+msgid "``id``"
+msgstr ""
+
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+msgid "Identifier of the edge."
+msgstr ""
+
+msgid "``source``"
+msgstr ""
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+msgid "``target``"
+msgstr ""
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+msgid "``cost``"
+msgstr ""
+
+msgid "**ANY-NUMERICAL**"
+msgstr ""
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr ""
+
+msgid "``reverse_cost``"
+msgstr ""
+
+msgid "-1"
+msgstr ""
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr ""
+
+msgid "When negative: edge (``target``, ``source``) does not exist, therefore it's not part of the graph."
+msgstr ""
+
+msgid "Where:"
+msgstr ""
+
+msgid "ANY-INTEGER"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr ""
+
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
+
+msgid "Result Columns"
+msgstr ""
+
+msgid "``seq``"
+msgstr ""
+
+msgid "``INTEGER``"
+msgstr ""
+
+msgid "Sequential value starting from **1**."
+msgstr ""
+
+msgid "Gives a local identifier for the edge"
+msgstr ""
+
+msgid "``BIGINT``"
+msgstr ""
+
+msgid "Identifier of the source vertex of the current edge."
+msgstr ""
+
+msgid "When `negative`: the source is the reverse edge in the original graph."
+msgstr ""
+
+msgid "Identifier of the target vertex of the current edge."
+msgstr ""
+
+msgid "When `negative`: the target is the reverse edge in the original graph."
+msgstr ""
+
+msgid "``FLOAT``"
+msgstr ""
+
+msgid "Weight of the edge (``source``, ``target``)."
+msgstr ""
+
+msgid "When `negative`: edge (``source``, ``target``) does not exist, therefore it’s not part of the graph."
+msgstr ""
+
+msgid "Weight of the edge (``target``, ``source``)."
+msgstr ""
+
+msgid "When `negative`: edge (``target``, ``source``) does not exist, therefore it’s not part of the graph."
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid "https://en.wikipedia.org/wiki/Line_graph"
+msgstr ""
+
+msgid "The queries use the :doc:`sampledata` network."
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""

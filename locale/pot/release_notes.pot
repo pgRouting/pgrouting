@@ -1,0 +1,1772 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/release_notes.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/release_notes.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/release_notes.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/release_notes.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/release_notes.html>`__"
+msgstr ""
+
+msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/release_notes.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/release_notes.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/release_notes.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/doc/src/changelog/release_notes.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/doc/src/changelog/index.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/doc/src/changelog/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/doc/src/changelog/index.html>`__"
+msgstr ""
+
+msgid "Release Notes"
+msgstr ""
+
+msgid "To see the full list of changes check the list of `Git commits <https://github.com/pgRouting/pgrouting/commits>`_ on Github."
+msgstr ""
+
+msgid "Contents"
+msgstr ""
+
+msgid "pgRouting 3.3.4 Release Notes"
+msgstr ""
+
+msgid "No Changes Yet"
+msgstr ""
+
+msgid "pgRouting 3.3.3 Release Notes"
+msgstr ""
+
+msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.3.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.3%22>`_"
+msgstr ""
+
+msgid "Issue fixes"
+msgstr ""
+
+msgid "`#1891 <https://github.com/pgRouting/pgrouting/issues/1891>`__: pgr_ksp doesn't give all correct shortest path"
+msgstr ""
+
+msgid "Official functions changes"
+msgstr ""
+
+msgid "Flow functions"
+msgstr ""
+
+msgid "``pgr_maxCardinalityMatch(text,boolean)``"
+msgstr ""
+
+msgid "Ignoring optional boolean parameter, as the algorithm works only for undirected graphs."
+msgstr ""
+
+msgid "pgRouting 3.3.2 Release Notes"
+msgstr ""
+
+msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.3.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.2%22>`_"
+msgstr ""
+
+msgid "Revised documentation"
+msgstr ""
+
+msgid "Simplifying table names and table columns, for example:"
+msgstr ""
+
+msgid "``edges`` instead of ``edge_table``"
+msgstr ""
+
+msgid "Removing unused columns ``category_id`` and ``reverse_category_id``."
+msgstr ""
+
+msgid "``combinations`` instead of ``combinations_table``"
+msgstr ""
+
+msgid "Using PostGIS standard for geometry column."
+msgstr ""
+
+msgid "``geom`` instead of ``the_geom``"
+msgstr ""
+
+msgid "Avoiding usage of functions that modify indexes, columns etc on tables."
+msgstr ""
+
+msgid "Using ``pgr_extractVertices`` to create a routing topology"
+msgstr ""
+
+msgid "Restructure of the pgRouting concepts page."
+msgstr ""
+
+msgid "`#2276 <https://github.com/pgRouting/pgrouting/issues/2276>`__: edgeDisjointPaths issues with start_vid and combinations"
+msgstr ""
+
+msgid "`#2312 <https://github.com/pgRouting/pgrouting/issues/2312>`__: pgr_extractVertices error when target is not BIGINT"
+msgstr ""
+
+msgid "`#2357 <https://github.com/pgRouting/pgrouting/issues/2357>`__: Apply clang-tidy performance-*"
+msgstr ""
+
+msgid "pgRouting 3.3.1 Release Notes"
+msgstr ""
+
+msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.3.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.1%22>`_ on Github."
+msgstr ""
+
+msgid "`#2216 <https://github.com/pgRouting/pgrouting/issues/2216>`__: Warnings when using clang"
+msgstr ""
+
+msgid "`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__: Error processing restrictions"
+msgstr ""
+
+msgid "pgRouting 3.3.0 Release Notes"
+msgstr ""
+
+msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.3.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.0%22>`_ on Github."
+msgstr ""
+
+msgid "`#2057 <https://github.com/pgRouting/pgrouting/issues/2057>`__: trspViaEdges columns in different order"
+msgstr ""
+
+msgid "`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__: pgr_extractVertices to proposed"
+msgstr ""
+
+msgid "`#2201 <https://github.com/pgRouting/pgrouting/issues/2201>`__: pgr_depthFirstSearch to proposed"
+msgstr ""
+
+msgid "`#2202 <https://github.com/pgRouting/pgrouting/issues/2202>`__: pgr_sequentialVertexColoring to proposed"
+msgstr ""
+
+msgid "`#2203 <https://github.com/pgRouting/pgrouting/issues/2203>`__: pgr_dijkstraNear and pgr_dijkstraNearCost to proposed"
+msgstr ""
+
+msgid "New experimental functions"
+msgstr ""
+
+msgid "Coloring"
+msgstr ""
+
+msgid "pgr_edgeColoring"
+msgstr ""
+
+msgid "Experimental promoted to Proposed"
+msgstr ""
+
+msgid "Dijkstra"
+msgstr ""
+
+msgid "pgr_dijkstraNear"
+msgstr ""
+
+msgid "pgr_dijkstraNear(Combinations)"
+msgstr ""
+
+msgid "pgr_dijkstraNear(Many to Many)"
+msgstr ""
+
+msgid "pgr_dijkstraNear(Many to One)"
+msgstr ""
+
+msgid "pgr_dijkstraNear(One to Many)"
+msgstr ""
+
+msgid "pgr_dijkstraNearCost"
+msgstr ""
+
+msgid "pgr_dijkstraNearCost(Combinations)"
+msgstr ""
+
+msgid "pgr_dijkstraNearCost(Many to Many)"
+msgstr ""
+
+msgid "pgr_dijkstraNearCost(Many to One)"
+msgstr ""
+
+msgid "pgr_dijkstraNearCost(One to Many)"
+msgstr ""
+
+msgid "pgr_sequentialVertexColoring"
+msgstr ""
+
+msgid "Topology"
+msgstr ""
+
+msgid "pgr_extractVertices"
+msgstr ""
+
+msgid "Traversal"
+msgstr ""
+
+msgid "pgr_depthFirstSearch(Multiple vertices)"
+msgstr ""
+
+msgid "pgr_depthFirstSearch(Single vertex)"
+msgstr ""
+
+msgid "pgRouting 3.2.2 Release Notes"
+msgstr ""
+
+msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.2.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.2%22>`_ on Github."
+msgstr ""
+
+msgid "Issues"
+msgstr ""
+
+msgid "`#2093 <https://github.com/pgRouting/pgrouting/issues/2093>`__: Compilation on Visual Studio"
+msgstr ""
+
+msgid "`#2189 <https://github.com/pgRouting/pgrouting/issues/2189>`__: Build error on RHEL 7"
+msgstr ""
+
+msgid "pgRouting 3.2.1 Release Notes"
+msgstr ""
+
+msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.2.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.1%22>`_ on Github."
+msgstr ""
+
+msgid "`#1883 <https://github.com/pgRouting/pgrouting/issues/1883>`__: pgr_TSPEuclidean crashes connection on Windows"
+msgstr ""
+
+msgid "The solution is to use Boost::graph::metric_tsp_approx"
+msgstr ""
+
+msgid "To not break user's code the optional parameters related to the TSP Annaeling are ignored"
+msgstr ""
+
+msgid "The function with the annaeling optional parameters is deprecated"
+msgstr ""
+
+msgid "pgRouting 3.2.0 Release Notes"
+msgstr ""
+
+msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.2.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.0%22>`_ on Github."
+msgstr ""
+
+msgid "Build"
+msgstr ""
+
+msgid "`#1850 <https://github.com/pgRouting/pgrouting/issues/1850>`__: Change Boost min version to 1.56"
+msgstr ""
+
+msgid "Removing support for Boost v1.53, v1.54 & v1.55"
+msgstr ""
+
+msgid "pgr_bellmanFord(Combinations)"
+msgstr ""
+
+msgid "pgr_binaryBreadthFirstSearch(Combinations)"
+msgstr ""
+
+msgid "pgr_bipartite"
+msgstr ""
+
+msgid "pgr_dagShortestPath(Combinations)"
+msgstr ""
+
+msgid "pgr_depthFirstSearch"
+msgstr ""
+
+msgid "Dijkstra Near"
+msgstr ""
+
+msgid "pgr_edwardMoore(Combinations)"
+msgstr ""
+
+msgid "pgr_isPlanar"
+msgstr ""
+
+msgid "pgr_lengauerTarjanDominatorTree"
+msgstr ""
+
+msgid "pgr_makeConnected"
+msgstr ""
+
+msgid "Flow"
+msgstr ""
+
+msgid "pgr_maxFlowMinCost(Combinations)"
+msgstr ""
+
+msgid "pgr_maxFlowMinCost_Cost(Combinations)"
+msgstr ""
+
+msgid "New proposed functions"
+msgstr ""
+
+msgid "Astar"
+msgstr ""
+
+msgid "pgr_aStar(Combinations)"
+msgstr ""
+
+msgid "pgr_aStarCost(Combinations)"
+msgstr ""
+
+msgid "Bidirectional Astar"
+msgstr ""
+
+msgid "pgr_bdAstar(Combinations)"
+msgstr ""
+
+msgid "pgr_bdAstarCost(Combinations)"
+msgstr ""
+
+msgid "Bidirectional Dijkstra"
+msgstr ""
+
+msgid "pgr_bdDijkstra(Combinations)"
+msgstr ""
+
+msgid "pgr_bdDijkstraCost(Combinations)"
+msgstr ""
+
+msgid "pgr_boykovKolmogorov(Combinations)"
+msgstr ""
+
+msgid "pgr_edgeDisjointPaths(Combinations)"
+msgstr ""
+
+msgid "pgr_edmondsKarp(Combinations)"
+msgstr ""
+
+msgid "pgr_maxFlow(Combinations)"
+msgstr ""
+
+msgid "pgr_pushRelabel(Combinations)"
+msgstr ""
+
+msgid "pgr_withPoints(Combinations)"
+msgstr ""
+
+msgid "pgr_withPointsCost(Combinations)"
+msgstr ""
+
+msgid "pgRouting 3.1.4 Release Notes"
+msgstr ""
+
+msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.4%22>`_ on Github."
+msgstr ""
+
+msgid "Issues fixes"
+msgstr ""
+
+msgid "pgRouting 3.1.3 Release Notes"
+msgstr ""
+
+msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.3%22>`_ on Github."
+msgstr ""
+
+msgid "`#1825 <https://github.com/pgRouting/pgrouting/issues/1825>`__: Boost versions are not honored"
+msgstr ""
+
+msgid "`#1849 <https://github.com/pgRouting/pgrouting/issues/1849>`__: Boost 1.75.0 geometry \"point_xy.hpp\" build error on macOS environment"
+msgstr ""
+
+msgid "`#1861 <https://github.com/pgRouting/pgrouting/issues/1861>`__: vrp functions crash server"
+msgstr ""
+
+msgid "pgRouting 3.1.2 Release Notes"
+msgstr ""
+
+msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.2%22>`_ on Github."
+msgstr ""
+
+msgid "`#1304 <https://github.com/pgRouting/pgrouting/issues/1304>`__: FreeBSD 12 64-bit crashes on pgr_vrOneDepot tests Experimental Function"
+msgstr ""
+
+msgid "`#1356 <https://github.com/pgRouting/pgrouting/issues/1356>`__: tools/testers/pg_prove_tests.sh fails when PostgreSQL port is not passed"
+msgstr ""
+
+msgid "`#1725 <https://github.com/pgRouting/pgrouting/issues/1725>`__: Server crash on pgr_pickDeliver and pgr_vrpOneDepot on openbsd"
+msgstr ""
+
+msgid "`#1760 <https://github.com/pgRouting/pgrouting/issues/1760>`__: TSP server crash on ubuntu 20.04 #1760"
+msgstr ""
+
+msgid "`#1770 <https://github.com/pgRouting/pgrouting/issues/1770>`__: Remove warnings when using clang compiler"
+msgstr ""
+
+msgid "pgRouting 3.1.1 Release Notes"
+msgstr ""
+
+msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.1%22>`_ on Github."
+msgstr ""
+
+msgid "`#1733 <https://github.com/pgRouting/pgrouting/issues/1733>`__: pgr_bdAstar fails when source or target vertex does not exist in the graph"
+msgstr ""
+
+msgid "`#1647 <https://github.com/pgRouting/pgrouting/issues/1647>`__: Linear Contraction contracts self loops"
+msgstr ""
+
+msgid "`#1640 <https://github.com/pgRouting/pgrouting/issues/1640>`__: pgr_withPoints fails when points_sql is empty"
+msgstr ""
+
+msgid "`#1616 <https://github.com/pgRouting/pgrouting/issues/1616>`__: Path evaluation on C++ not updated before the results go back to C"
+msgstr ""
+
+msgid "`#1300 <https://github.com/pgRouting/pgrouting/issues/1300>`__: pgr_chinesePostman crash on test data"
+msgstr ""
+
+msgid "pgRouting 3.1.0 Release Notes"
+msgstr ""
+
+msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.0%22>`_ on Github."
+msgstr ""
+
+msgid "pgr_dijkstra(combinations)"
+msgstr ""
+
+msgid "pgr_dijkstraCost(combinations)"
+msgstr ""
+
+msgid "Build changes"
+msgstr ""
+
+msgid "Minimal requirement for Sphinx: version 1.8"
+msgstr ""
+
+msgid "pgRouting 3.0.6 Release Notes"
+msgstr ""
+
+msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.6 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.6%22>`_ on Github."
+msgstr ""
+
+msgid "pgRouting 3.0.5 Release Notes"
+msgstr ""
+
+msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.5%22>`_ on Github."
+msgstr ""
+
+msgid "Backport issues fixes"
+msgstr ""
+
+msgid "pgRouting 3.0.4 Release Notes"
+msgstr ""
+
+msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`_ on Github."
+msgstr ""
+
+msgid "pgRouting 3.0.3 Release Notes"
+msgstr ""
+
+msgid "pgRouting 3.0.2 Release Notes"
+msgstr ""
+
+msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`_ on Github."
+msgstr ""
+
+msgid "`#1378 <https://github.com/pgRouting/pgrouting/issues/1378>`__: Visual Studio build failing"
+msgstr ""
+
+msgid "pgRouting 3.0.1 Release Notes"
+msgstr ""
+
+msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.1%22>`_ on Github."
+msgstr ""
+
+msgid "`#232 <https://github.com/pgRouting/pgrouting/issues/232>`__:  Honor client cancel requests in C /C++ code"
+msgstr ""
+
+msgid "pgRouting 3.0.0 Release Notes"
+msgstr ""
+
+msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.0%22>`_ on Github."
+msgstr ""
+
+msgid "Fixed Issues"
+msgstr ""
+
+msgid "`#1153 <https://github.com/pgRouting/pgrouting/issues/1153>`__: Renamed pgr_eucledianTSP to pgr_TSPeuclidean"
+msgstr ""
+
+msgid "`#1188 <https://github.com/pgRouting/pgrouting/issues/1188>`__: Removed CGAL dependency"
+msgstr ""
+
+msgid "`#1002 <https://github.com/pgRouting/pgrouting/issues/1002>`__: Fixed contraction issues:"
+msgstr ""
+
+msgid "`#1004 <https://github.com/pgRouting/pgrouting/issues/1004>`__: Contracts when forbidden vertices do not belong to graph"
+msgstr ""
+
+msgid "`#1005 <https://github.com/pgRouting/pgrouting/issues/1005>`__: Intermideate results eliminated"
+msgstr ""
+
+msgid "`#1006 <https://github.com/pgRouting/pgrouting/issues/1006>`__: No loss of information"
+msgstr ""
+
+msgid "New functions"
+msgstr ""
+
+msgid "Kruskal family"
+msgstr ""
+
+msgid "pgr_kruskal"
+msgstr ""
+
+msgid "pgr_kruskalBFS"
+msgstr ""
+
+msgid "pgr_kruskalDD"
+msgstr ""
+
+msgid "pgr_kruskalDFS"
+msgstr ""
+
+msgid "Prim family"
+msgstr ""
+
+msgid "pgr_prim"
+msgstr ""
+
+msgid "pgr_primDD"
+msgstr ""
+
+msgid "pgr_primDFS"
+msgstr ""
+
+msgid "pgr_primBFS"
+msgstr ""
+
+msgid "Proposed moved to official on pgRouting"
+msgstr ""
+
+msgid "aStar Family"
+msgstr ""
+
+msgid "pgr_aStar(one to many)"
+msgstr ""
+
+msgid "pgr_aStar(many to one)"
+msgstr ""
+
+msgid "pgr_aStar(many to many)"
+msgstr ""
+
+msgid "pgr_aStarCost(one to one)"
+msgstr ""
+
+msgid "pgr_aStarCost(one to many)"
+msgstr ""
+
+msgid "pgr_aStarCost(many to one)"
+msgstr ""
+
+msgid "pgr_aStarCost(many to many)"
+msgstr ""
+
+msgid "pgr_aStarCostMatrix(one to one)"
+msgstr ""
+
+msgid "pgr_aStarCostMatrix(one to many)"
+msgstr ""
+
+msgid "pgr_aStarCostMatrix(many to one)"
+msgstr ""
+
+msgid "pgr_aStarCostMatrix(many to many)"
+msgstr ""
+
+msgid "bdAstar Family"
+msgstr ""
+
+msgid "pgr_bdAstar(one to many)"
+msgstr ""
+
+msgid "pgr_bdAstar(many to one)"
+msgstr ""
+
+msgid "pgr_bdAstar(many to many)"
+msgstr ""
+
+msgid "pgr_bdAstarCost(one to one)"
+msgstr ""
+
+msgid "pgr_bdAstarCost(one to many)"
+msgstr ""
+
+msgid "pgr_bdAstarCost(many to one)"
+msgstr ""
+
+msgid "pgr_bdAstarCost(many to many)"
+msgstr ""
+
+msgid "pgr_bdAstarCostMatrix(one to one)"
+msgstr ""
+
+msgid "pgr_bdAstarCostMatrix(one to many)"
+msgstr ""
+
+msgid "pgr_bdAstarCostMatrix(many to one)"
+msgstr ""
+
+msgid "pgr_bdAstarCostMatrix(many to many)"
+msgstr ""
+
+msgid "bdDijkstra Family"
+msgstr ""
+
+msgid "pgr_bdDijkstra(one to many)"
+msgstr ""
+
+msgid "pgr_bdDijkstra(many to one)"
+msgstr ""
+
+msgid "pgr_bdDijkstra(many to many)"
+msgstr ""
+
+msgid "pgr_bdDijkstraCost(one to one)"
+msgstr ""
+
+msgid "pgr_bdDijkstraCost(one to many)"
+msgstr ""
+
+msgid "pgr_bdDijkstraCost(many to one)"
+msgstr ""
+
+msgid "pgr_bdDijkstraCost(many to many)"
+msgstr ""
+
+msgid "pgr_bdDijkstraCostMatrix(one to one)"
+msgstr ""
+
+msgid "pgr_bdDijkstraCostMatrix(one to many)"
+msgstr ""
+
+msgid "pgr_bdDijkstraCostMatrix(many to one)"
+msgstr ""
+
+msgid "pgr_bdDijkstraCostMatrix(many to many)"
+msgstr ""
+
+msgid "Flow Family"
+msgstr ""
+
+msgid "pgr_pushRelabel(one to one)"
+msgstr ""
+
+msgid "pgr_pushRelabel(one to many)"
+msgstr ""
+
+msgid "pgr_pushRelabel(many to one)"
+msgstr ""
+
+msgid "pgr_pushRelabel(many to many)"
+msgstr ""
+
+msgid "pgr_edmondsKarp(one to one)"
+msgstr ""
+
+msgid "pgr_edmondsKarp(one to many)"
+msgstr ""
+
+msgid "pgr_edmondsKarp(many to one)"
+msgstr ""
+
+msgid "pgr_edmondsKarp(many to many)"
+msgstr ""
+
+msgid "pgr_boykovKolmogorov (one to one)"
+msgstr ""
+
+msgid "pgr_boykovKolmogorov (one to many)"
+msgstr ""
+
+msgid "pgr_boykovKolmogorov (many to one)"
+msgstr ""
+
+msgid "pgr_boykovKolmogorov (many to many)"
+msgstr ""
+
+msgid "pgr_maxCardinalityMatching"
+msgstr ""
+
+msgid "pgr_maxFlow"
+msgstr ""
+
+msgid "pgr_edgeDisjointPaths(one to one)"
+msgstr ""
+
+msgid "pgr_edgeDisjointPaths(one to many)"
+msgstr ""
+
+msgid "pgr_edgeDisjointPaths(many to one)"
+msgstr ""
+
+msgid "pgr_edgeDisjointPaths(many to many)"
+msgstr ""
+
+msgid "Components family"
+msgstr ""
+
+msgid "pgr_connectedComponents"
+msgstr ""
+
+msgid "pgr_strongComponents"
+msgstr ""
+
+msgid "pgr_biconnectedComponents"
+msgstr ""
+
+msgid "pgr_articulationPoints"
+msgstr ""
+
+msgid "pgr_bridges"
+msgstr ""
+
+msgid "Contraction:"
+msgstr ""
+
+msgid "Removed unnecessary column seq"
+msgstr ""
+
+msgid "Bug Fixes"
+msgstr ""
+
+msgid "New Experimental functions"
+msgstr ""
+
+msgid "pgr_maxFlowMinCost"
+msgstr ""
+
+msgid "pgr_maxFlowMinCost_Cost"
+msgstr ""
+
+msgid "pgr_turnRestrictedPath"
+msgstr ""
+
+msgid "pgr_stoerWagner"
+msgstr ""
+
+msgid "pgr_dagShortestpath"
+msgstr ""
+
+msgid "pgr_topologicalSort"
+msgstr ""
+
+msgid "pgr_transitiveClosure"
+msgstr ""
+
+msgid "VRP category"
+msgstr ""
+
+msgid "pgr_pickDeliverEuclidean"
+msgstr ""
+
+msgid "pgr_pickDeliver"
+msgstr ""
+
+msgid "Chinese Postman family"
+msgstr ""
+
+msgid "pgr_chinesePostman"
+msgstr ""
+
+msgid "pgr_chinesePostmanCost"
+msgstr ""
+
+msgid "Breadth First Search family"
+msgstr ""
+
+msgid "pgr_breadthFirstSearch"
+msgstr ""
+
+msgid "pgr_binaryBreadthFirstSearch"
+msgstr ""
+
+msgid "Bellman Ford family"
+msgstr ""
+
+msgid "pgr_bellmanFord"
+msgstr ""
+
+msgid "pgr_edwardMoore"
+msgstr ""
+
+msgid "Moved to legacy"
+msgstr ""
+
+msgid "Experimental functions"
+msgstr ""
+
+msgid "pgr_labelGraph  -  Use the components family of functions instead."
+msgstr ""
+
+msgid "Max flow - functions were renamed on v2.5.0"
+msgstr ""
+
+msgid "pgr_maxFlowPushRelabel"
+msgstr ""
+
+msgid "pgr_maxFlowBoykovKolmogorov"
+msgstr ""
+
+msgid "pgr_maxFlowEdmondsKarp"
+msgstr ""
+
+msgid "pgr_maximumcardinalitymatching"
+msgstr ""
+
+msgid "VRP"
+msgstr ""
+
+msgid "pgr_gsoc_vrppdtw"
+msgstr ""
+
+msgid "TSP old signatures"
+msgstr ""
+
+msgid "pgr_pointsAsPolygon"
+msgstr ""
+
+msgid "pgr_alphaShape old signature"
+msgstr ""
+
+msgid "pgRouting 2.6.3 Release Notes"
+msgstr ""
+
+msgid "To see the issues closed by this release see the `Git closed milestone for 2.6.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.3%22%20>`_ on Github."
+msgstr ""
+
+msgid "Bug fixes"
+msgstr ""
+
+msgid "`#1219 <https://github.com/pgRouting/pgrouting/pull/1219>`__ Implicit cast for via_path integer to text"
+msgstr ""
+
+msgid "`#1193 <https://github.com/pgRouting/pgrouting/pull/1193>`__ Fixed pgr_pointsAsPolygon breaking when comparing strings in WHERE clause"
+msgstr ""
+
+msgid "`#1185 <https://github.com/pgRouting/pgrouting/pull/1185>`__ Improve FindPostgreSQL.cmake"
+msgstr ""
+
+msgid "pgRouting 2.6.2 Release Notes"
+msgstr ""
+
+msgid "To see the issues closed by this release see the `Git closed milestone for 2.6.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.2%22%20>`_ on Github."
+msgstr ""
+
+msgid "`#1152 <https://github.com/pgRouting/pgrouting/issues/1152>`__ Fixes driving distance when vertex is not part of the graph"
+msgstr ""
+
+msgid "`#1098 <https://github.com/pgRouting/pgrouting/issues/1098>`__ Fixes windows test"
+msgstr ""
+
+msgid "`#1165 <https://github.com/pgRouting/pgrouting/issues/1165>`__ Fixes build for python3 and perl5"
+msgstr ""
+
+msgid "pgRouting 2.6.1 Release Notes"
+msgstr ""
+
+msgid "To see the issues closed by this release see the `Git closed milestone for 2.6.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.1%22%20>`_ on Github."
+msgstr ""
+
+msgid "Fixes server crash on several functions."
+msgstr ""
+
+msgid "pgr_floydWarshall"
+msgstr ""
+
+msgid "pgr_johnson"
+msgstr ""
+
+msgid "pgr_astar"
+msgstr ""
+
+msgid "pgr_bdAstar"
+msgstr ""
+
+msgid "pgr_bdDijstra"
+msgstr ""
+
+msgid "pgr_alphashape"
+msgstr ""
+
+msgid "pgr_dijkstraCostMatrix"
+msgstr ""
+
+msgid "pgr_dijkstra"
+msgstr ""
+
+msgid "pgr_dijkstraCost"
+msgstr ""
+
+msgid "pgr_drivingDistance"
+msgstr ""
+
+msgid "pgr_KSP"
+msgstr ""
+
+msgid "pgr_dijkstraVia (proposed)"
+msgstr ""
+
+msgid "pgr_boykovKolmogorov (proposed)"
+msgstr ""
+
+msgid "pgr_edgeDisjointPaths (proposed)"
+msgstr ""
+
+msgid "pgr_edmondsKarp (proposed)"
+msgstr ""
+
+msgid "pgr_maxCardinalityMatch (proposed)"
+msgstr ""
+
+msgid "pgr_maxFlow (proposed)"
+msgstr ""
+
+msgid "pgr_withPoints (proposed)"
+msgstr ""
+
+msgid "pgr_withPointsCost (proposed)"
+msgstr ""
+
+msgid "pgr_withPointsKSP (proposed)"
+msgstr ""
+
+msgid "pgr_withPointsDD (proposed)"
+msgstr ""
+
+msgid "pgr_withPointsCostMatrix (proposed)"
+msgstr ""
+
+msgid "pgr_contractGraph (experimental)"
+msgstr ""
+
+msgid "pgr_pushRelabel (experimental)"
+msgstr ""
+
+msgid "pgr_vrpOneDepot (experimental)"
+msgstr ""
+
+msgid "pgr_gsoc_vrppdtw (experimental)"
+msgstr ""
+
+msgid "Fixes for deprecated functions where also applied but not tested"
+msgstr ""
+
+msgid "Removed compilation warning for g++8"
+msgstr ""
+
+msgid "Fixed a fallthrugh on Astar and bdAstar."
+msgstr ""
+
+msgid "pgRouting 2.6.0 Release Notes"
+msgstr ""
+
+msgid "To see the issues closed by this release see the `Git closed milestone for 2.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22%20>`_ on Github."
+msgstr ""
+
+msgid "pgr_lineGraphFull"
+msgstr ""
+
+msgid "Fix pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean[,text])"
+msgstr ""
+
+msgid "without restrictions"
+msgstr ""
+
+msgid "calls pgr_dijkstra when both end points have a fraction IN (0,1)"
+msgstr ""
+
+msgid "calls pgr_withPoints when at least one fraction NOT IN (0,1)"
+msgstr ""
+
+msgid "with restrictions"
+msgstr ""
+
+msgid "calls original trsp code"
+msgstr ""
+
+msgid "Internal code"
+msgstr ""
+
+msgid "Cleaned the internal code of trsp(text,integer,integer,boolean,boolean [, text])"
+msgstr ""
+
+msgid "Removed the use of pointers"
+msgstr ""
+
+msgid "Internal code can accept BIGINT"
+msgstr ""
+
+msgid "Cleaned the internal code of withPoints"
+msgstr ""
+
+msgid "pgRouting 2.5.5 Release Notes"
+msgstr ""
+
+msgid "To see the issues closed by this release see the `Git closed milestone for 2.5.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.5%22%20>`_ on Github."
+msgstr ""
+
+msgid "Fixes driving distance when vertex is not part of the graph"
+msgstr ""
+
+msgid "Fixes windows test"
+msgstr ""
+
+msgid "Fixes build for python3 and perl5"
+msgstr ""
+
+msgid "pgRouting 2.5.4 Release Notes"
+msgstr ""
+
+msgid "To see the issues closed by this release see the `Git closed milestone for 2.5.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22%20>`_ on Github."
+msgstr ""
+
+msgid "pgRouting 2.5.3 Release Notes"
+msgstr ""
+
+msgid "To see the issues closed by this release see the `Git closed milestone for 2.5.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.3%22%20>`_ on Github."
+msgstr ""
+
+msgid "Fix for postgresql 11: Removed a compilation error when compiling with postgreSQL"
+msgstr ""
+
+msgid "pgRouting 2.5.2 Release Notes"
+msgstr ""
+
+msgid "To see the issues closed by this release see the `Git closed milestone for 2.5.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.2%22%20>`_ on Github."
+msgstr ""
+
+msgid "Fix for postgresql 10.1: Removed a compiler condition"
+msgstr ""
+
+msgid "pgRouting 2.5.1 Release Notes"
+msgstr ""
+
+msgid "To see the issues closed by this release see the `Git closed milestone for 2.5.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.1%22%20>`_ on Github."
+msgstr ""
+
+msgid "Fixed prerequisite minimum version of: cmake"
+msgstr ""
+
+msgid "pgRouting 2.5.0 Release Notes"
+msgstr ""
+
+msgid "To see the issues closed by this release see the `Git closed issues for 2.5.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.5.0%22+is%3Aclosed>`_ on Github."
+msgstr ""
+
+msgid "enhancement:"
+msgstr ""
+
+msgid "pgr_version is now on SQL language"
+msgstr ""
+
+msgid "Breaking change on:"
+msgstr ""
+
+msgid "pgr_edgeDisjointPaths:"
+msgstr ""
+
+msgid "Added path_id, cost and agg_cost columns on the result"
+msgstr ""
+
+msgid "Parameter names changed"
+msgstr ""
+
+msgid "The many version results are the union of the one to one version"
+msgstr ""
+
+msgid "New Signatures:"
+msgstr ""
+
+msgid "pgr_bdAstar(one to one)"
+msgstr ""
+
+msgid "New Proposed functions"
+msgstr ""
+
+msgid "pgr_bdAstarCostMatrix"
+msgstr ""
+
+msgid "pgr_bdDijkstraCostMatrix"
+msgstr ""
+
+msgid "pgr_lineGraph"
+msgstr ""
+
+msgid "Deprecated Signatures"
+msgstr ""
+
+msgid "pgr_bdastar - use pgr_bdAstar instead"
+msgstr ""
+
+msgid "Renamed Functions"
+msgstr ""
+
+msgid "pgr_maxFlowPushRelabel - use pgr_pushRelabel instead"
+msgstr ""
+
+msgid "pgr_maxFlowEdmondsKarp -use pgr_edmondsKarp instead"
+msgstr ""
+
+msgid "pgr_maxFlowBoykovKolmogorov - use pgr_boykovKolmogorov instead"
+msgstr ""
+
+msgid "pgr_maximumCardinalityMatching - use pgr_maxCardinalityMatch instead"
+msgstr ""
+
+msgid "Deprecated function"
+msgstr ""
+
+msgid "pgr_pointToEdgeNode"
+msgstr ""
+
+msgid "pgRouting 2.4.2 Release Notes"
+msgstr ""
+
+msgid "To see the issues closed by this release see the `Git closed milestone for 2.4.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.2%22%20>`_ on Github."
+msgstr ""
+
+msgid "Improvement"
+msgstr ""
+
+msgid "Works for postgreSQL 10"
+msgstr ""
+
+msgid "Fixed: Unexpected error column \"cname\""
+msgstr ""
+
+msgid "Replace __linux__ with __GLIBC__ for glibc-specific headers and functions"
+msgstr ""
+
+msgid "pgRouting 2.4.1 Release Notes"
+msgstr ""
+
+msgid "To see the issues closed by this release see the `Git closed milestone for 2.4.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22%20>`_ on Github."
+msgstr ""
+
+msgid "Fixed compiling error on macOS"
+msgstr ""
+
+msgid "Condition error on pgr_withPoints"
+msgstr ""
+
+msgid "pgRouting 2.4.0 Release Notes"
+msgstr ""
+
+msgid "To see the issues closed by this release see the `Git closed issues for 2.4.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.4.0%22+is%3Aclosed>`_ on Github."
+msgstr ""
+
+msgid "New Signatures"
+msgstr ""
+
+msgid "pgr_bdDijkstra"
+msgstr ""
+
+msgid "New Proposed Signatures"
+msgstr ""
+
+msgid "pgr_astar(one to many)"
+msgstr ""
+
+msgid "pgr_astar(many to one)"
+msgstr ""
+
+msgid "pgr_astar(many to many)"
+msgstr ""
+
+msgid "pgr_astarCost(one to one)"
+msgstr ""
+
+msgid "pgr_astarCost(one to many)"
+msgstr ""
+
+msgid "pgr_astarCost(many to one)"
+msgstr ""
+
+msgid "pgr_astarCost(many to many)"
+msgstr ""
+
+msgid "pgr_astarCostMatrix"
+msgstr ""
+
+msgid "pgr_bddijkstra - use pgr_bdDijkstra instead"
+msgstr ""
+
+msgid "Deprecated Functions"
+msgstr ""
+
+msgid "pgr_pointsToVids"
+msgstr ""
+
+msgid "Bug fixes on proposed functions"
+msgstr ""
+
+msgid "pgr_withPointsKSP: fixed ordering"
+msgstr ""
+
+msgid "TRSP original code is used with no changes on the compilation warnings"
+msgstr ""
+
+msgid "pgRouting 2.3.2 Release Notes"
+msgstr ""
+
+msgid "To see the issues closed by this release see the `Git closed issues for 2.3.2 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.2%22+is%3Aclosed>`_ on Github."
+msgstr ""
+
+msgid "Fixed pgr_gsoc_vrppdtw crash when all orders fit on one truck."
+msgstr ""
+
+msgid "Fixed pgr_trsp:"
+msgstr ""
+
+msgid "Alternate code is not executed when the point is in reality a vertex"
+msgstr ""
+
+msgid "Fixed ambiguity on seq"
+msgstr ""
+
+msgid "pgRouting 2.3.1 Release Notes"
+msgstr ""
+
+msgid "To see the issues closed by this release see the `Git closed issues for 2.3.1 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.1%22+is%3Aclosed>`_ on Github."
+msgstr ""
+
+msgid "Leaks on proposed max_flow functions"
+msgstr ""
+
+msgid "Regression error on pgr_trsp"
+msgstr ""
+
+msgid "Types discrepancy on pgr_createVerticesTable"
+msgstr ""
+
+msgid "pgRouting 2.3.0 Release Notes"
+msgstr ""
+
+msgid "To see the issues closed by this release see the `Git closed issues for 2.3.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.0%22+is%3Aclosed>`_ on Github."
+msgstr ""
+
+msgid "pgr_TSP"
+msgstr ""
+
+msgid "pgr_aStar"
+msgstr ""
+
+msgid "New Functions"
+msgstr ""
+
+msgid "pgr_eucledianTSP"
+msgstr ""
+
+msgid "pgr_withPointsCostMatrix"
+msgstr ""
+
+msgid "pgr_maxFlowPushRelabel(one to one)"
+msgstr ""
+
+msgid "pgr_maxFlowPushRelabel(one to many)"
+msgstr ""
+
+msgid "pgr_maxFlowPushRelabel(many to one)"
+msgstr ""
+
+msgid "pgr_maxFlowPushRelabel(many to many)"
+msgstr ""
+
+msgid "pgr_maxFlowEdmondsKarp(one to one)"
+msgstr ""
+
+msgid "pgr_maxFlowEdmondsKarp(one to many)"
+msgstr ""
+
+msgid "pgr_maxFlowEdmondsKarp(many to one)"
+msgstr ""
+
+msgid "pgr_maxFlowEdmondsKarp(many to many)"
+msgstr ""
+
+msgid "pgr_maxFlowBoykovKolmogorov (one to one)"
+msgstr ""
+
+msgid "pgr_maxFlowBoykovKolmogorov (one to many)"
+msgstr ""
+
+msgid "pgr_maxFlowBoykovKolmogorov (many to one)"
+msgstr ""
+
+msgid "pgr_maxFlowBoykovKolmogorov (many to many)"
+msgstr ""
+
+msgid "pgr_maximumCardinalityMatching"
+msgstr ""
+
+msgid "pgr_contractGraph"
+msgstr ""
+
+msgid "pgr_tsp - use pgr_TSP or pgr_eucledianTSP instead"
+msgstr ""
+
+msgid "pgr_astar - use pgr_aStar instead"
+msgstr ""
+
+msgid "pgr_flip_edges"
+msgstr ""
+
+msgid "pgr_vidsToDmatrix"
+msgstr ""
+
+msgid "pgr_pointsToDMatrix"
+msgstr ""
+
+msgid "pgr_textToPoints"
+msgstr ""
+
+msgid "pgRouting 2.2.4 Release Notes"
+msgstr ""
+
+msgid "To see the issues closed by this release see the `Git closed issues for 2.2.4 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.4%22+is%3Aclosed>`_ on Github."
+msgstr ""
+
+msgid "Bogus uses of extern \"C\""
+msgstr ""
+
+msgid "Build error on Fedora 24 + GCC 6.0"
+msgstr ""
+
+msgid "Regression error pgr_nodeNetwork"
+msgstr ""
+
+msgid "pgRouting 2.2.3 Release Notes"
+msgstr ""
+
+msgid "To see the issues closed by this release see the `Git closed issues for 2.2.3 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.3%22+is%3Aclosed>`_ on Github."
+msgstr ""
+
+msgid "Fixed compatibility issues with PostgreSQL 9.6."
+msgstr ""
+
+msgid "pgRouting 2.2.2 Release Notes"
+msgstr ""
+
+msgid "To see the issues closed by this release see the `Git closed issues for 2.2.2 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.2%22+is%3Aclosed>`_ on Github."
+msgstr ""
+
+msgid "Fixed regression error on pgr_drivingDistance"
+msgstr ""
+
+msgid "pgRouting 2.2.1 Release Notes"
+msgstr ""
+
+msgid "To see the issues closed by this release see the `Git closed issues for 2.2.1 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A2.2.1+is%3Aclosed>`_ on Github."
+msgstr ""
+
+msgid "Server crash fix on pgr_alphaShape"
+msgstr ""
+
+msgid "Bug fix on With Points family of functions"
+msgstr ""
+
+msgid "pgRouting 2.2.0 Release Notes"
+msgstr ""
+
+msgid "To see the issues closed by this release see the `Git closed issues for 2.2.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.0%22+is%3Aclosed>`_ on Github."
+msgstr ""
+
+msgid "Improvements"
+msgstr ""
+
+msgid "pgr_nodeNetwork"
+msgstr ""
+
+msgid "Adding a row_where and outall optional parameters"
+msgstr ""
+
+msgid "Signature fix"
+msgstr ""
+
+msgid "pgr_dijkstra  -- to match what is documented"
+msgstr ""
+
+msgid "pgr_Johnson"
+msgstr ""
+
+msgid "pgr_dijkstraCost(one to one)"
+msgstr ""
+
+msgid "pgr_dijkstraCost(one to many)"
+msgstr ""
+
+msgid "pgr_dijkstraCost(many to one)"
+msgstr ""
+
+msgid "pgr_dijkstraCost(many to many)"
+msgstr ""
+
+msgid "Proposed functionality"
+msgstr ""
+
+msgid "pgr_withPoints(one to one)"
+msgstr ""
+
+msgid "pgr_withPoints(one to many)"
+msgstr ""
+
+msgid "pgr_withPoints(many to one)"
+msgstr ""
+
+msgid "pgr_withPoints(many to many)"
+msgstr ""
+
+msgid "pgr_withPointsCost(one to one)"
+msgstr ""
+
+msgid "pgr_withPointsCost(one to many)"
+msgstr ""
+
+msgid "pgr_withPointsCost(many to one)"
+msgstr ""
+
+msgid "pgr_withPointsCost(many to many)"
+msgstr ""
+
+msgid "pgr_withPointsDD(single vertex)"
+msgstr ""
+
+msgid "pgr_withPointsDD(multiple vertices)"
+msgstr ""
+
+msgid "pgr_withPointsKSP"
+msgstr ""
+
+msgid "pgr_dijkstraVia"
+msgstr ""
+
+msgid "Deprecated functions:"
+msgstr ""
+
+msgid "pgr_apspWarshall  use pgr_floydWarshall instead"
+msgstr ""
+
+msgid "pgr_apspJohnson   use pgr_Johnson instead"
+msgstr ""
+
+msgid "pgr_kDijkstraCost use pgr_dijkstraCost instead"
+msgstr ""
+
+msgid "pgr_kDijkstraPath use pgr_dijkstra instead"
+msgstr ""
+
+msgid "Renamed and deprecated function"
+msgstr ""
+
+msgid "pgr_makeDistanceMatrix renamed to _pgr_makeDistanceMatrix"
+msgstr ""
+
+msgid "pgRouting 2.1.0 Release Notes"
+msgstr ""
+
+msgid "To see the issues closed by this release see the `Git closed issues for 2.1.0 <https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed>`_ on Github."
+msgstr ""
+
+msgid "pgr_dijkstra(one to many)"
+msgstr ""
+
+msgid "pgr_dijkstra(many to one)"
+msgstr ""
+
+msgid "pgr_dijkstra(many to many)"
+msgstr ""
+
+msgid "pgr_drivingDistance(multiple vertices)"
+msgstr ""
+
+msgid "Refactored"
+msgstr ""
+
+msgid "pgr_dijkstra(one to one)"
+msgstr ""
+
+msgid "pgr_ksp"
+msgstr ""
+
+msgid "pgr_drivingDistance(single vertex)"
+msgstr ""
+
+msgid "pgr_alphaShape function now can generate better (multi)polygon with holes and alpha parameter."
+msgstr ""
+
+msgid "Proposed functions from Steve Woodbridge, (Classified as Convenience by the author.)"
+msgstr ""
+
+msgid "pgr_pointToEdgeNode - convert a point geometry to a vertex_id based on closest edge."
+msgstr ""
+
+msgid "pgr_flipEdges - flip the edges in an array of geometries so the connect end to end."
+msgstr ""
+
+msgid "pgr_textToPoints - convert a string of x,y;x,y;... locations into point geometries."
+msgstr ""
+
+msgid "pgr_pointsToVids - convert an array of point geometries into vertex ids."
+msgstr ""
+
+msgid "pgr_pointsToDMatrix - Create a distance matrix from an array of points."
+msgstr ""
+
+msgid "pgr_vidsToDMatrix - Create a distance matrix from an array of vertix_id."
+msgstr ""
+
+msgid "Added proposed functions from GSoc Projects:"
+msgstr ""
+
+msgid "pgr_vrppdtw"
+msgstr ""
+
+msgid "pgr_vrponedepot"
+msgstr ""
+
+msgid "Deprecated functions"
+msgstr ""
+
+msgid "pgr_getColumnName"
+msgstr ""
+
+msgid "pgr_getTableName"
+msgstr ""
+
+msgid "pgr_isColumnCndexed"
+msgstr ""
+
+msgid "pgr_isColumnInTable"
+msgstr ""
+
+msgid "pgr_quote_ident"
+msgstr ""
+
+msgid "pgr_versionless"
+msgstr ""
+
+msgid "pgr_startPoint"
+msgstr ""
+
+msgid "pgr_endPoint"
+msgstr ""
+
+msgid "pgr_pointToId"
+msgstr ""
+
+msgid "No longer supported"
+msgstr ""
+
+msgid "Removed the 1.x legacy functions"
+msgstr ""
+
+msgid "Some bug fixes in other functions"
+msgstr ""
+
+msgid "Refactoring Internal Code"
+msgstr ""
+
+msgid "A C and C++ library for developer was created"
+msgstr ""
+
+msgid "encapsulates postgreSQL related functions"
+msgstr ""
+
+msgid "encapsulates Boost.Graph graphs"
+msgstr ""
+
+msgid "Directed Boost.Graph"
+msgstr ""
+
+msgid "Undirected Boost.graph."
+msgstr ""
+
+msgid "allow any-integer in the id's"
+msgstr ""
+
+msgid "allow any-numerical on the cost/reverse_cost columns"
+msgstr ""
+
+msgid "Instead of generating many libraries: - All functions are encapsulated in one library - The library has the prefix 2-1-0"
+msgstr ""
+
+msgid "pgRouting 2.0.1 Release Notes"
+msgstr ""
+
+msgid "Minor bug fixes."
+msgstr ""
+
+msgid "No track of the bug fixes were kept."
+msgstr ""
+
+msgid "pgRouting 2.0.0 Release Notes"
+msgstr ""
+
+msgid "To see the issues closed by this release see the `Git closed issues for 2.0.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.0.0%22+is%3Aclosed>`_ on Github."
+msgstr ""
+
+msgid "With the release of pgRouting 2.0.0 the library has abandoned backwards compatibility to `pgRouting 1.x Release Notes`_ releases. The main Goals for this release are:"
+msgstr ""
+
+msgid "Major restructuring of pgRouting."
+msgstr ""
+
+msgid "Standardization of the function naming"
+msgstr ""
+
+msgid "Preparation of the project for future development."
+msgstr ""
+
+msgid "As a result of this effort:"
+msgstr ""
+
+msgid "pgRouting has a simplified structure"
+msgstr ""
+
+msgid "Significant new functionality has being added"
+msgstr ""
+
+msgid "Documentation has being integrated"
+msgstr ""
+
+msgid "Testing has being integrated"
+msgstr ""
+
+msgid "And made it easier for multiple developers to make contributions."
+msgstr ""
+
+msgid "Important Changes"
+msgstr ""
+
+msgid "Graph Analytics - tools for detecting and fixing connection some problems in a graph"
+msgstr ""
+
+msgid "A collection of useful utility functions"
+msgstr ""
+
+msgid "Two new All Pairs Short Path algorithms (pgr_apspJohnson, pgr_apspWarshall)"
+msgstr ""
+
+msgid "Bi-directional Dijkstra and A-star search algorithms (pgr_bdAstar, pgr_bdDijkstra)"
+msgstr ""
+
+msgid "One to many nodes search (pgr_kDijkstra)"
+msgstr ""
+
+msgid "K alternate paths shortest path (pgr_ksp)"
+msgstr ""
+
+msgid "New TSP solver that simplifies the code and the build process (pgr_tsp), dropped \"Gaul Library\" dependency"
+msgstr ""
+
+msgid "Turn Restricted shortest path (pgr_trsp) that replaces Shooting Star"
+msgstr ""
+
+msgid "Dropped support for Shooting Star"
+msgstr ""
+
+msgid "Built a test infrastructure that is run before major code changes are checked in"
+msgstr ""
+
+msgid "Tested and fixed most all of the outstanding bugs reported against 1.x that existing in the 2.0-dev code base."
+msgstr ""
+
+msgid "Improved build process for Windows"
+msgstr ""
+
+msgid "Automated testing on Linux and Windows platforms trigger by every commit"
+msgstr ""
+
+msgid "Modular library design"
+msgstr ""
+
+msgid "Compatibility with PostgreSQL 9.1 or newer"
+msgstr ""
+
+msgid "Compatibility with PostGIS 2.0 or newer"
+msgstr ""
+
+msgid "Installs as PostgreSQL EXTENSION"
+msgstr ""
+
+msgid "Return types re factored and unified"
+msgstr ""
+
+msgid "Support for table SCHEMA in function parameters"
+msgstr ""
+
+msgid "Support for ``st_`` PostGIS function prefix"
+msgstr ""
+
+msgid "Added ``pgr_`` prefix to functions and types"
+msgstr ""
+
+msgid "Better documentation: https://docs.pgrouting.org"
+msgstr ""
+
+msgid "shooting_star is discontinued"
+msgstr ""
+
+msgid "pgRouting 1.x Release Notes"
+msgstr ""
+
+msgid "To see the issues closed by this release see the `Git closed issues for 1.x <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+1.x%22+is%3Aclosed>`_ on Github. The following release notes have been copied from the previous ``RELEASE_NOTES`` file and are kept as a reference."
+msgstr ""
+
+msgid "Changes for release 1.05"
+msgstr ""
+
+msgid "Changes for release 1.03"
+msgstr ""
+
+msgid "Much faster topology creation"
+msgstr ""
+
+msgid "Changes for release 1.02"
+msgstr ""
+
+msgid "Shooting* bug fixes"
+msgstr ""
+
+msgid "Compilation problems solved"
+msgstr ""
+
+msgid "Changes for release 1.01"
+msgstr ""
+
+msgid "Changes for release 1.0"
+msgstr ""
+
+msgid "Core and extra functions are separated"
+msgstr ""
+
+msgid "Cmake build process"
+msgstr ""
+
+msgid "Changes for release 1.0.0b"
+msgstr ""
+
+msgid "Additional SQL file with more simple names for wrapper functions"
+msgstr ""
+
+msgid "Changes for release 1.0.0a"
+msgstr ""
+
+msgid "Shooting* shortest path algorithm for real road networks"
+msgstr ""
+
+msgid "Several SQL bugs were fixed"
+msgstr ""
+
+msgid "Changes for release 0.9.9"
+msgstr ""
+
+msgid "PostgreSQL 8.2 support"
+msgstr ""
+
+msgid "Shortest path functions return empty result if they could not find any path"
+msgstr ""
+
+msgid "Changes for release 0.9.8"
+msgstr ""
+
+msgid "Renumbering scheme was added to shortest path functions"
+msgstr ""
+
+msgid "Directed shortest path functions were added"
+msgstr ""
+
+msgid "routing_postgis.sql was modified to use dijkstra in TSP search"
+msgstr ""

@@ -1,0 +1,602 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_dijkstra.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstra.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstra.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_dijkstra.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_dijkstra.html>`__"
+msgstr ""
+
+msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_dijkstra.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_dijkstra.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_dijkstra.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstra.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstra.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/dijkstra/doc/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/dijkstra/doc/index.html>`__"
+msgstr ""
+
+msgid "``pgr_dijkstra``"
+msgstr ""
+
+msgid "``pgr_dijkstra`` — Shortest path(s) using Dijkstra algorithm."
+msgstr ""
+
+msgid "Boost Graph Inside"
+msgstr ""
+
+msgid "Availability"
+msgstr ""
+
+msgid "Version 3.1.0"
+msgstr ""
+
+msgid "New **Proposed** functions:"
+msgstr ""
+
+msgid "``pgr_dijkstra`` (`Combinations`_)"
+msgstr ""
+
+msgid "Version 3.0.0"
+msgstr ""
+
+msgid "**Official** functions"
+msgstr ""
+
+msgid "Version 2.2.0"
+msgstr ""
+
+msgid "New **proposed** functions:"
+msgstr ""
+
+msgid "``pgr_dijkstra`` (`One to Many`_)"
+msgstr ""
+
+msgid "``pgr_dijkstra`` (`Many to One`_)"
+msgstr ""
+
+msgid "``pgr_dijkstra`` (`Many to Many`_)"
+msgstr ""
+
+msgid "Version 2.1.0"
+msgstr ""
+
+msgid "Signature change on ``pgr_dijkstra`` (`One to One`_)"
+msgstr ""
+
+msgid "Version 2.0.0"
+msgstr ""
+
+msgid "**Official** ``pgr_dijkstra`` (`One to One`_)"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1956. It is a graph search algorithm that solves the shortest path problem for a graph with non-negative edge path costs, producing a shortest path from a starting vertex to an ending vertex. This implementation can be used with a directed graph and an undirected graph."
+msgstr ""
+
+msgid "Process is done only on edges with positive costs."
+msgstr ""
+
+msgid "A negative value on a cost column is interpreted as the edge does not exist."
+msgstr ""
+
+msgid "Values are returned when there is a path."
+msgstr ""
+
+msgid "When there is no path:"
+msgstr ""
+
+msgid "When the starting vertex and ending vertex are the same."
+msgstr ""
+
+msgid "The **aggregate cost** of the non included values :math:`(v, v)` is :math:`0`"
+msgstr ""
+
+msgid "When the starting vertex and ending vertex are the different and there is no path:"
+msgstr ""
+
+msgid "The **aggregate cost** the non included values :math:`(u, v)` is :math:`\\infty`"
+msgstr ""
+
+msgid "For optimization purposes, any duplicated value in the starting vertices or on the ending vertices are ignored."
+msgstr ""
+
+msgid "Running time: :math:`O(| start\\ vids | * (V \\log V + E))`"
+msgstr ""
+
+msgid "Signatures"
+msgstr ""
+
+msgid "Summary"
+msgstr ""
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  , [``directed``])"
+msgstr ""
+
+msgid "pgr_dijkstra(`Edges SQL`_, **start vid**, **end vids** , [``directed``])"
+msgstr ""
+
+msgid "pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid**  , [``directed``])"
+msgstr ""
+
+msgid "pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids** , [``directed``])"
+msgstr ""
+
+msgid "pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_ , [``directed``])"
+msgstr ""
+
+msgid "RETURNS SET OF |old-generic-result|"
+msgstr ""
+
+msgid "OR EMPTY SET"
+msgstr ""
+
+msgid "One to One"
+msgstr ""
+
+msgid "RETURNS SET OF |result-1-1|"
+msgstr ""
+
+msgid "Example"
+msgstr ""
+
+msgid "From vertex :math:`6` to vertex  :math:`10` on a **directed** graph"
+msgstr ""
+
+msgid "One to Many"
+msgstr ""
+
+msgid "RETURNS SET OF |result-1-m|"
+msgstr ""
+
+msgid "From vertex :math:`6` to vertices :math:`\\{10, 17\\}` on a **directed**"
+msgstr ""
+
+msgid "Many to One"
+msgstr ""
+
+msgid "pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid** , [``directed``])"
+msgstr ""
+
+msgid "RETURNS SET OF |result-m-1|"
+msgstr ""
+
+msgid "From vertices :math:`\\{6, 1\\}` to vertex :math:`17` on a **directed** graph"
+msgstr ""
+
+msgid "Many to Many"
+msgstr ""
+
+msgid "RETURNS SET OF |short-generic-result|"
+msgstr ""
+
+msgid "From vertices :math:`\\{6, 1\\}` to vertices :math:`\\{10, 17\\}` on an **undirected** graph"
+msgstr ""
+
+msgid "Combinations"
+msgstr ""
+
+msgid "Using a combinations table on an **undirected** graph"
+msgstr ""
+
+msgid "The combinations table:"
+msgstr ""
+
+msgid "The query:"
+msgstr ""
+
+msgid "Parameters"
+msgstr ""
+
+msgid "Column"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "`Edges SQL`_"
+msgstr ""
+
+msgid "``TEXT``"
+msgstr ""
+
+msgid "`Edges SQL`_ as described below"
+msgstr ""
+
+msgid "`Combinations SQL`_"
+msgstr ""
+
+msgid "`Combinations SQL`_ as described below"
+msgstr ""
+
+msgid "**start vid**"
+msgstr ""
+
+msgid "``BIGINT``"
+msgstr ""
+
+msgid "Identifier of the starting vertex of the path."
+msgstr ""
+
+msgid "**start vids**"
+msgstr ""
+
+msgid "``ARRAY[BIGINT]``"
+msgstr ""
+
+msgid "Array of identifiers of starting vertices."
+msgstr ""
+
+msgid "**end vid**"
+msgstr ""
+
+msgid "Identifier of the ending vertex of the path."
+msgstr ""
+
+msgid "**end vids**"
+msgstr ""
+
+msgid "Array of identifiers of ending vertices."
+msgstr ""
+
+msgid "Optional parameters"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "``directed``"
+msgstr ""
+
+msgid "``BOOLEAN``"
+msgstr ""
+
+msgid "``true``"
+msgstr ""
+
+msgid "When ``true`` the graph is considered `Directed`"
+msgstr ""
+
+msgid "When ``false`` the graph is considered as `Undirected`."
+msgstr ""
+
+msgid "Inner Queries"
+msgstr ""
+
+msgid "Edges SQL"
+msgstr ""
+
+msgid "``id``"
+msgstr ""
+
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+msgid "Identifier of the edge."
+msgstr ""
+
+msgid "``source``"
+msgstr ""
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+msgid "``target``"
+msgstr ""
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+msgid "``cost``"
+msgstr ""
+
+msgid "**ANY-NUMERICAL**"
+msgstr ""
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr ""
+
+msgid "``reverse_cost``"
+msgstr ""
+
+msgid "-1"
+msgstr ""
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr ""
+
+msgid "When negative: edge (``target``, ``source``) does not exist, therefore it's not part of the graph."
+msgstr ""
+
+msgid "Where:"
+msgstr ""
+
+msgid "ANY-INTEGER"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr ""
+
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
+
+msgid "Combinations SQL"
+msgstr ""
+
+msgid "Parameter"
+msgstr ""
+
+msgid "Identifier of the departure vertex."
+msgstr ""
+
+msgid "Identifier of the arrival vertex."
+msgstr ""
+
+msgid "Result Columns"
+msgstr ""
+
+msgid "Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)``"
+msgstr ""
+
+msgid "``seq``"
+msgstr ""
+
+msgid "``INTEGER``"
+msgstr ""
+
+msgid "Sequential value starting from **1**."
+msgstr ""
+
+msgid "``path_seq``"
+msgstr ""
+
+msgid "Relative position in the path. Has value **1** for the beginning of a path."
+msgstr ""
+
+msgid "``start_vid``"
+msgstr ""
+
+msgid "Identifier of the starting vertex. Returned when multiple starting vetrices are in the query."
+msgstr ""
+
+msgid "`Many to One`_"
+msgstr ""
+
+msgid "`Many to Many`_"
+msgstr ""
+
+msgid "``end_vid``"
+msgstr ""
+
+msgid "Identifier of the ending vertex. Returned when multiple ending vertices are in the query."
+msgstr ""
+
+msgid "`One to Many`_"
+msgstr ""
+
+msgid "``node``"
+msgstr ""
+
+msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
+msgstr ""
+
+msgid "``edge``"
+msgstr ""
+
+msgid "Identifier of the edge used to go from ``node`` to the next node in the path sequence. **-1** for the last node of the path."
+msgstr ""
+
+msgid "``FLOAT``"
+msgstr ""
+
+msgid "Cost to traverse from ``node`` using ``edge`` to the next node in the path sequence."
+msgstr ""
+
+msgid "``agg_cost``"
+msgstr ""
+
+msgid "Aggregate cost from ``start_vid`` to ``node``."
+msgstr ""
+
+msgid "Additional Examples"
+msgstr ""
+
+msgid "Demonstration of repeated values are ignored, and result is sorted."
+msgstr ""
+
+msgid "Example 2"
+msgstr ""
+
+msgid "Making **start_vids** the same as **end_vids**"
+msgstr ""
+
+msgid "Manually assigned vertex combinations."
+msgstr ""
+
+msgid "The examples of this section are based on the :doc:`sampledata` network."
+msgstr ""
+
+msgid "For **directed** graphs with ``cost`` and ``reverse_cost`` columns"
+msgstr ""
+
+msgid "Directed graph with cost and reverse cost columns"
+msgstr ""
+
+msgid "1) Path from :math:`6` to :math:`10`"
+msgstr ""
+
+msgid "2) Path from :math:`6` to :math:`7`"
+msgstr ""
+
+msgid "3) Path from :math:`12` to :math:`10`"
+msgstr ""
+
+msgid "4) Path from :math:`12` to :math:`7`"
+msgstr ""
+
+msgid "5) Using `One to Many`_ to get the solution of examples 1 and 2"
+msgstr ""
+
+msgid "Paths :math:`\\{6\\}\\rightarrow\\{10, 7\\}`"
+msgstr ""
+
+msgid "6) Using `Many to One`_ to get the solution of examples 2 and 4"
+msgstr ""
+
+msgid "Paths :math:`\\{6, 12\\}\\rightarrow\\{7\\}`"
+msgstr ""
+
+msgid "7) Using `Many to Many`_ to get the solution of examples 1 to 4"
+msgstr ""
+
+msgid "Paths :math:`\\{6, 12\\}\\rightarrow\\{10, 7\\}`"
+msgstr ""
+
+msgid "8) Using `Combinations`_ to get the solution of examples 1 to 3"
+msgstr ""
+
+msgid "Paths :math:`\\{6\\}\\rightarrow\\{10, 7\\}\\cup\\{12\\}\\rightarrow\\{10\\}`"
+msgstr ""
+
+msgid "For **undirected** graphs with ``cost`` and ``reverse_cost`` columns"
+msgstr ""
+
+msgid "Undirected graph with cost and reverse cost columns"
+msgstr ""
+
+msgid "9) Path from :math:`6` to :math:`10`"
+msgstr ""
+
+msgid "10) Path from :math:`6` to :math:`7`"
+msgstr ""
+
+msgid "11) Path from :math:`12` to :math:`10`"
+msgstr ""
+
+msgid "12) Path from :math:`12` to :math:`7`"
+msgstr ""
+
+msgid "13) Using `One to Many`_ to get the solution of examples 9 and 10"
+msgstr ""
+
+msgid "14) Using `Many to One`_ to get the solution of examples 10 and 12"
+msgstr ""
+
+msgid "15) Using `Many to Many`_ to get the solution of examples 9 to 12"
+msgstr ""
+
+msgid "16) Using `Combinations`_ to get the solution of examples 9 to 11"
+msgstr ""
+
+msgid "For **directed** graphs only with ``cost`` column"
+msgstr ""
+
+msgid "Directed graph only with cost column"
+msgstr ""
+
+msgid "17) Path from :math:`6` to :math:`10`"
+msgstr ""
+
+msgid "18) Path from :math:`6` to :math:`7`"
+msgstr ""
+
+msgid "19) Path from :math:`12` to :math:`10`"
+msgstr ""
+
+msgid "20) Path from :math:`12` to :math:`7`"
+msgstr ""
+
+msgid "21) Using `One to Many`_ to get the solution of examples 17 and 18"
+msgstr ""
+
+msgid "22) Using `Many to One`_ to get the solution of examples 18 and 20"
+msgstr ""
+
+msgid "23) Using `Many to Many`_ to get the solution of examples 17 to 20"
+msgstr ""
+
+msgid "24) Using `Combinations`_ to get the solution of examples 17 to 19"
+msgstr ""
+
+msgid "For **undirected** graphs only with ``cost`` column"
+msgstr ""
+
+msgid "Undirected graph only with cost column"
+msgstr ""
+
+msgid "25) Path from :math:`6` to :math:`10`"
+msgstr ""
+
+msgid "26) Path from :math:`6` to :math:`7`"
+msgstr ""
+
+msgid "27) Path from :math:`12` to :math:`10`"
+msgstr ""
+
+msgid "28) Path from :math:`12` to :math:`7`"
+msgstr ""
+
+msgid "29) Using `One to Many`_ to get the solution of examples 25 and 26"
+msgstr ""
+
+msgid "30) Using `Many to One`_ to get the solution of examples 26 and 28"
+msgstr ""
+
+msgid "31) Using `Many to Many`_ to get the solution of examples 25 to 28"
+msgstr ""
+
+msgid "32) Using `Combinations`_ to get the solution of examples 25 to 27"
+msgstr ""
+
+msgid "Equvalences between signatures"
+msgstr ""
+
+msgid "The following examples find the path for :math:`\\{6\\}\\rightarrow\\{10\\}`"
+msgstr ""
+
+msgid "33) Using `One to One`_"
+msgstr ""
+
+msgid "34) Using `One to Many`_"
+msgstr ""
+
+msgid "35) Using `Many to One`_"
+msgstr ""
+
+msgid "36) Using `Many to Many`_"
+msgstr ""
+
+msgid "37) Using `Combinations`_"
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
+msgstr ""
+
+msgid "The queries use the :doc:`sampledata` network."
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""
