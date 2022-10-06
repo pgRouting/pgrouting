@@ -1,0 +1,139 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+msgid "Previous versions of this page"
+msgstr ""
+
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
+"/bdDijkstra-family.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en"
+"/bdDijkstra-family.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en"
+"/bdDijkstra-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en"
+"/bdDijkstra-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en"
+"/bdDijkstra-family.html>`__"
+msgstr ""
+
+msgid ""
+"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en"
+"/bdDijkstra-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en"
+"/bdDijkstra-family.html>`__"
+msgstr ""
+
+msgid "Bidirectional Dijkstra - Family of functions"
+msgstr ""
+
+msgid ""
+":doc:`pgr_bdDijkstra` - Bidirectional Dijkstra algorithm for the shortest"
+" paths."
+msgstr ""
+
+msgid ""
+":doc:`pgr_bdDijkstraCost` - Bidirectional Dijkstra to calculate the cost "
+"of the shortest paths"
+msgstr ""
+
+msgid ""
+":doc:`pgr_bdDijkstraCostMatrix` - Bidirectional Dijkstra algorithm  to "
+"create a matrix of costs of the shortest paths."
+msgstr ""
+
+msgid "Synopsis"
+msgstr ""
+
+msgid ""
+"Based on Dijkstra's algorithm, the bidirectional search finds a shortest "
+"path a starting vertex to an ending vertex."
+msgstr ""
+
+msgid ""
+"It runs two simultaneous searches: one forward from the source, and one "
+"backward from the target, stopping when the two meet in the middle."
+msgstr ""
+
+msgid ""
+"This implementation can be used with a directed graph and an undirected "
+"graph."
+msgstr ""
+
+msgid "Characteristics"
+msgstr ""
+
+msgid "The main Characteristics are:"
+msgstr ""
+
+msgid "Process is done only on edges with positive costs."
+msgstr ""
+
+msgid ""
+"A negative value on a cost column is interpreted as the edge does not "
+"exist."
+msgstr ""
+
+msgid "Values are returned when there is a path."
+msgstr ""
+
+msgid "When there is no path:"
+msgstr ""
+
+msgid "When the starting vertex and ending vertex are the same."
+msgstr ""
+
+msgid ""
+"The **aggregate cost** of the non included values :math:`(v, v)` is "
+":math:`0`"
+msgstr ""
+
+msgid ""
+"When the starting vertex and ending vertex are the different and there is"
+" no path:"
+msgstr ""
+
+msgid ""
+"The **aggregate cost** the non included values :math:`(u, v)` is "
+":math:`\\infty`"
+msgstr ""
+
+msgid ""
+"For optimization purposes, any duplicated value in the starting vertices "
+"or on the ending vertices are ignored."
+msgstr ""
+
+msgid "Running time (worse case scenario): :math:`O((V \\log V + E))`"
+msgstr ""
+
+msgid ""
+"For large graphs where there is a path bewtween the starting vertex and "
+"ending vertex:"
+msgstr ""
+
+msgid "It is expected to terminate faster than pgr_dijkstra"
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""
+

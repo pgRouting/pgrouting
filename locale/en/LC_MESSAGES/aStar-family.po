@@ -1,0 +1,263 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
+"/aStar-family.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/aStar-"
+"family.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/aStar-"
+"family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/aStar-"
+"family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/aStar-"
+"family.html>`__"
+msgstr ""
+
+msgid ""
+"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/aStar-"
+"family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/aStar-"
+"family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/aStar-"
+"family.html>`__"
+msgstr ""
+
+msgid "A* - Family of functions"
+msgstr ""
+
+msgid ""
+"The A* (pronounced \"A Star\") algorithm is based on Dijkstra's algorithm"
+" with a heuristic that allow it to solve most shortest path problems by "
+"evaluation only a sub-set of the overall graph."
+msgstr ""
+
+msgid ":doc:`pgr_aStar` - A* algorithm for the shortest path."
+msgstr ""
+
+msgid ":doc:`pgr_aStarCost` - Get the aggregate cost of the shortest paths."
+msgstr ""
+
+msgid ":doc:`pgr_aStarCostMatrix` - Get the cost matrix of the shortest paths."
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "The main Characteristics are:"
+msgstr ""
+
+msgid "Process works for directed and undirected graphs."
+msgstr ""
+
+msgid "Ordering is:"
+msgstr ""
+
+msgid "first by ``start_vid`` (if exists)"
+msgstr ""
+
+msgid "then by ``end_vid``"
+msgstr ""
+
+msgid "Values are returned when there is a path."
+msgstr ""
+
+msgid "Let :math:`v` and :math:`u` be nodes on the graph:"
+msgstr ""
+
+msgid "If there is no path from :math:`v` to :math:`u`:"
+msgstr ""
+
+msgid "no corresponding row is returned"
+msgstr ""
+
+msgid "``agg_cost`` from :math:`v` to :math:`u` is :math:`\\infty`"
+msgstr ""
+
+msgid "There is no path when :math:`v = u` therefore"
+msgstr ""
+
+msgid "``agg_cost`` from `v` to `u` is :math:`0`"
+msgstr ""
+
+msgid "When :math:`(x,y)` coordinates for the same vertex identifier differ:"
+msgstr ""
+
+msgid "A random selection of the vertex's :math:`(x,y)` coordinates is used."
+msgstr ""
+
+msgid "Running time: :math:`O((E + V) * \\log V)`"
+msgstr ""
+
+msgid "aStar optional Parameters"
+msgstr ""
+
+msgid "Parameter"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "``heuristic``"
+msgstr ""
+
+msgid "``INTEGER``"
+msgstr ""
+
+msgid "5"
+msgstr ""
+
+msgid "Heuristic number. Current valid values 0~5."
+msgstr ""
+
+msgid "0: :math:`h(v) = 0` (Use this value to compare with pgr_dijkstra)"
+msgstr ""
+
+msgid "1: :math:`h(v) = abs(max(\\Delta x, \\Delta y))`"
+msgstr ""
+
+msgid "2: :math:`h(v) = abs(min(\\Delta x, \\Delta y))`"
+msgstr ""
+
+msgid "3: :math:`h(v) = \\Delta x * \\Delta x + \\Delta y * \\Delta y`"
+msgstr ""
+
+msgid "4: :math:`h(v) = sqrt(\\Delta x * \\Delta x + \\Delta y * \\Delta y)`"
+msgstr ""
+
+msgid "5: :math:`h(v) = abs(\\Delta x) + abs(\\Delta y)`"
+msgstr ""
+
+msgid "``factor``"
+msgstr ""
+
+msgid "``FLOAT``"
+msgstr ""
+
+msgid "``1``"
+msgstr ""
+
+msgid "For units manipulation. :math:`factor > 0`."
+msgstr ""
+
+msgid "``epsilon``"
+msgstr ""
+
+msgid "For less restricted results. :math:`epsilon >= 1`."
+msgstr ""
+
+msgid ""
+"See :ref:`heuristics <astar_heuristics>` available and :ref:`factor "
+"<astar_factor>` handling."
+msgstr ""
+
+msgid "Advanced documentation"
+msgstr ""
+
+msgid "Heuristic"
+msgstr ""
+
+msgid "Currently the heuristic functions available are:"
+msgstr ""
+
+msgid "where :math:`\\Delta x = x_1 - x_0` and :math:`\\Delta y = y_1 - y_0`"
+msgstr ""
+
+msgid "Factor"
+msgstr ""
+
+msgid "Analysis 1"
+msgstr ""
+
+msgid ""
+"Working with cost/reverse_cost as length in degrees, x/y in lat/lon: "
+"Factor = 1   (no need to change units)"
+msgstr ""
+
+msgid "Analysis 2"
+msgstr ""
+
+msgid ""
+"Working with cost/reverse_cost as length in meters, x/y in lat/lon: "
+"Factor =  would depend on the location of the points:"
+msgstr ""
+
+msgid "Latitude"
+msgstr ""
+
+msgid "Conversion"
+msgstr ""
+
+msgid "45"
+msgstr ""
+
+msgid "1 longitude degree is  78846.81 m"
+msgstr ""
+
+msgid "78846"
+msgstr ""
+
+msgid "0"
+msgstr ""
+
+msgid "1 longitude degree is 111319.46 m"
+msgstr ""
+
+msgid "111319"
+msgstr ""
+
+msgid "Analysis 3"
+msgstr ""
+
+msgid ""
+"Working with cost/reverse_cost as time in seconds, x/y in lat/lon: "
+"Factor: would depend on the location of the points and on the average "
+"speed say 25m/s is the speed."
+msgstr ""
+
+msgid "1 longitude degree is (78846.81m)/(25m/s)"
+msgstr ""
+
+msgid "3153 s"
+msgstr ""
+
+msgid "1 longitude degree is (111319.46 m)/(25m/s)"
+msgstr ""
+
+msgid "4452 s"
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid ":doc:`bdAstar-family`"
+msgstr ""
+
+msgid "https://www.boost.org/libs/graph/doc/astar_search.html"
+msgstr ""
+
+msgid "https://en.wikipedia.org/wiki/A*_search_algorithm"
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""
+

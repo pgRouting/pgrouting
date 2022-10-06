@@ -1,0 +1,401 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_boykovKolmogorov.html>`__ (`3.3"
+" <https://docs.pgrouting.org/3.3/en/pgr_boykovKolmogorov.html>`__) `3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_boykovKolmogorov.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_boykovKolmogorov.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_boykovKolmogorov.html>`__"
+msgstr ""
+
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_boykovKolmogorov.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_boykovKolmogorov.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_maxFlowBoykovKolmogorov.html>`__ "
+"`2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maxFlowBoykovKolmogorov.html>`__"
+msgstr ""
+
+msgid "``pgr_boykovKolmogorov``"
+msgstr ""
+
+msgid ""
+"``pgr_boykovKolmogorov`` — Calculates the flow on the graph edges that "
+"maximizes the flow from the sources to the targets using Boykov "
+"Kolmogorov algorithm."
+msgstr ""
+
+msgid "Boost Graph Inside"
+msgstr ""
+
+msgid "Availability"
+msgstr ""
+
+msgid "Version 3.2.0"
+msgstr ""
+
+msgid "New **proposed** signature"
+msgstr ""
+
+msgid "``pgr_boykovKolmogorov`` (`Combinations`_)"
+msgstr ""
+
+msgid "Version 3.0.0"
+msgstr ""
+
+msgid "**Official** function"
+msgstr ""
+
+msgid "Version 2.5.0"
+msgstr ""
+
+msgid "Renamed from ``pgr_maxFlowBoykovKolmogorov``"
+msgstr ""
+
+msgid "**Proposed** function"
+msgstr ""
+
+msgid "Version 2.3.0"
+msgstr ""
+
+msgid "New **Experimental** function"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "**The main characteristics are:**"
+msgstr ""
+
+msgid "The graph is **directed**."
+msgstr ""
+
+msgid "Process is done only on edges with positive capacities."
+msgstr ""
+
+msgid ""
+"When the maximum flow is 0 then there is no flow and **EMPTY SET** is "
+"returned."
+msgstr ""
+
+msgid "There is no flow when a **source** is the same as a **target**."
+msgstr ""
+
+msgid "Any duplicated value in the source(s) or target(s) are ignored."
+msgstr ""
+
+msgid "Calculates the flow/residual capacity for each edge. In the output"
+msgstr ""
+
+msgid "Edges with zero flow are omitted."
+msgstr ""
+
+msgid ""
+"Creates a **super source** and edges to all the source(s), and a **super "
+"target** and the edges from all the targets(s)."
+msgstr ""
+
+msgid ""
+"The maximum flow through the graph is guaranteed to be the value returned"
+" by :doc:`pgr_maxFlow <pgr_maxFlow>` when executed with the same "
+"parameters and can be calculated:"
+msgstr ""
+
+msgid "By aggregation of the outgoing flow from the sources"
+msgstr ""
+
+msgid "By aggregation of the incoming flow to the targets"
+msgstr ""
+
+msgid "Running time: Polynomial"
+msgstr ""
+
+msgid "Signatures"
+msgstr ""
+
+msgid "Summary"
+msgstr ""
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vid**)"
+msgstr ""
+
+msgid "pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vids**)"
+msgstr ""
+
+msgid "pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vid**)"
+msgstr ""
+
+msgid "pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vids**)"
+msgstr ""
+
+msgid "pgr_boykovKolmogorov(`Edges SQL`_, `Combinations SQL`_)"
+msgstr ""
+
+msgid "RETURNS SET OF |result-flow|"
+msgstr ""
+
+msgid "OR EMPTY SET"
+msgstr ""
+
+msgid "One to One"
+msgstr ""
+
+msgid "Example"
+msgstr ""
+
+msgid "From vertex :math:`11` to vertex :math:`12`"
+msgstr ""
+
+msgid "One to Many"
+msgstr ""
+
+msgid "From vertex :math:`11` to vertices :math:`\\{5, 10, 12\\}`"
+msgstr ""
+
+msgid "Many to One"
+msgstr ""
+
+msgid "From vertices :math:`\\{11, 3, 17\\}` to vertex :math:`12`"
+msgstr ""
+
+msgid "Many to Many"
+msgstr ""
+
+msgid "From vertices :math:`\\{11, 3, 17\\}` to vertices :math:`\\{5, 10, 12\\}`"
+msgstr ""
+
+msgid "Combinations"
+msgstr ""
+
+msgid ""
+"Using a combinations table, equivalent to calculating result from "
+"vertices :math:`\\{5, 6\\}` to vertices :math:`\\{10, 15, 14\\}`."
+msgstr ""
+
+msgid "The combinations table:"
+msgstr ""
+
+msgid "The query:"
+msgstr ""
+
+msgid "Parameters"
+msgstr ""
+
+msgid "Column"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "`Edges SQL`_"
+msgstr ""
+
+msgid "``TEXT``"
+msgstr ""
+
+msgid "`Edges SQL`_ as described below"
+msgstr ""
+
+msgid "`Combinations SQL`_"
+msgstr ""
+
+msgid "`Combinations SQL`_ as described below"
+msgstr ""
+
+msgid "**start vid**"
+msgstr ""
+
+msgid "``BIGINT``"
+msgstr ""
+
+msgid "Identifier of the starting vertex of the path."
+msgstr ""
+
+msgid "**start vids**"
+msgstr ""
+
+msgid "``ARRAY[BIGINT]``"
+msgstr ""
+
+msgid "Array of identifiers of starting vertices."
+msgstr ""
+
+msgid "**end vid**"
+msgstr ""
+
+msgid "Identifier of the ending vertex of the path."
+msgstr ""
+
+msgid "**end vids**"
+msgstr ""
+
+msgid "Array of identifiers of ending vertices."
+msgstr ""
+
+msgid "Inner Queries"
+msgstr ""
+
+msgid "Edges SQL"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "``id``"
+msgstr ""
+
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+msgid "Identifier of the edge."
+msgstr ""
+
+msgid "``source``"
+msgstr ""
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+msgid "``target``"
+msgstr ""
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+msgid "``capacity``"
+msgstr ""
+
+msgid "Weight of the edge  (``source``, ``target``)"
+msgstr ""
+
+msgid "``reverse_capacity``"
+msgstr ""
+
+msgid "-1"
+msgstr ""
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr ""
+
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+
+msgid "Where:"
+msgstr ""
+
+msgid "ANY-INTEGER"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr ""
+
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
+
+msgid "Combinations SQL"
+msgstr ""
+
+msgid "Parameter"
+msgstr ""
+
+msgid "Identifier of the departure vertex."
+msgstr ""
+
+msgid "Identifier of the arrival vertex."
+msgstr ""
+
+msgid "Result Columns"
+msgstr ""
+
+msgid "**seq**"
+msgstr ""
+
+msgid "``INT``"
+msgstr ""
+
+msgid "Sequential value starting from **1**."
+msgstr ""
+
+msgid "**edge**"
+msgstr ""
+
+msgid "Identifier of the edge in the original query (edges_sql)."
+msgstr ""
+
+msgid "**start_vid**"
+msgstr ""
+
+msgid "**end_vid**"
+msgstr ""
+
+msgid "**flow**"
+msgstr ""
+
+msgid "Flow through the edge in the direction (``start_vid``, ``end_vid``)."
+msgstr ""
+
+msgid "**residual_capacity**"
+msgstr ""
+
+msgid ""
+"Residual capacity of the edge in the direction (``start_vid``, "
+"``end_vid``)."
+msgstr ""
+
+msgid "Additional Examples"
+msgstr ""
+
+msgid "Manually assigned vertex combinations."
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid ":doc:`flow-family`"
+msgstr ""
+
+msgid ":doc:`pgr_edmondsKarp`"
+msgstr ""
+
+msgid ":doc:`pgr_pushRelabel`"
+msgstr ""
+
+msgid "https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html"
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""
+

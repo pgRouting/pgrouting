@@ -1,0 +1,276 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_maxCardinalityMatch.html>`__ "
+"(`3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_maxCardinalityMatch.html>`__) `3.2"
+" <https://docs.pgrouting.org/3.2/en/pgr_maxCardinalityMatch.html>`__ `3.1"
+" <https://docs.pgrouting.org/3.1/en/pgr_maxCardinalityMatch.html>`__ `3.0"
+" <https://docs.pgrouting.org/3.0/en/pgr_maxCardinalityMatch.html>`__"
+msgstr ""
+
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_maxCardinalityMatch.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_maxCardinalityMatch.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_maximumCardinalityMatching.html>`__"
+" `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maximumCardinalityMatching.html>`__"
+msgstr ""
+
+msgid "pgr_maxCardinalityMatch"
+msgstr ""
+
+msgid ""
+"``pgr_maxCardinalityMatch`` — Calculates a maximum cardinality matching "
+"in a graph."
+msgstr ""
+
+msgid "Boost Graph Inside"
+msgstr ""
+
+msgid "Availability"
+msgstr ""
+
+msgid "Version 3.3.3"
+msgstr ""
+
+msgid ""
+"``directed`` optional parameter ignored and removed from the "
+"documentation as the algorithm works only on undirected graphs"
+msgstr ""
+
+msgid "Version 3.0.0"
+msgstr ""
+
+msgid "**Official** function"
+msgstr ""
+
+msgid "Version 2.5.0"
+msgstr ""
+
+msgid "Renamed from ``pgr_maximumCardinalityMatching``"
+msgstr ""
+
+msgid "**Proposed** function"
+msgstr ""
+
+msgid "Version 2.3.0"
+msgstr ""
+
+msgid "New **Experimental** function"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "The main characteristics are:"
+msgstr ""
+
+msgid "Works for **undirected** graphs."
+msgstr ""
+
+msgid ""
+"A matching or independent edge set in a graph is a set of edges without "
+"common vertices."
+msgstr ""
+
+msgid ""
+"A maximum matching is a matching that contains the largest possible "
+"number of edges."
+msgstr ""
+
+msgid "There may be many maximum matchings."
+msgstr ""
+
+msgid "Calculates one possible maximum cardinality matching in a graph."
+msgstr ""
+
+msgid "Running time: :math:`O( E*V * \\alpha(E,V))`"
+msgstr ""
+
+msgid ":math:`\\alpha(E,V)` is the inverse of the `Ackermann function`_."
+msgstr ""
+
+msgid "Signatures"
+msgstr ""
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_maxCardinalityMatch(`Edges SQL`_)"
+msgstr ""
+
+msgid "RETURNS SET OF (seq, edge_id, source, target)"
+msgstr ""
+
+msgid "OR EMPTY SET"
+msgstr ""
+
+msgid "Example"
+msgstr ""
+
+msgid "Using all edges."
+msgstr ""
+
+msgid "Parameters"
+msgstr ""
+
+msgid "Parameter"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "`Edges SQL`_"
+msgstr ""
+
+msgid "``TEXT``"
+msgstr ""
+
+msgid "`Edges SQL`_ as described below."
+msgstr ""
+
+msgid "Inner Queries"
+msgstr ""
+
+msgid "Edges SQL"
+msgstr ""
+
+msgid "SQL query, which should return a set of rows with the following columns:"
+msgstr ""
+
+msgid "Column"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "``id``"
+msgstr ""
+
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+msgid "Identifier of the edge."
+msgstr ""
+
+msgid "``source``"
+msgstr ""
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+msgid "``target``"
+msgstr ""
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+msgid "``going``"
+msgstr ""
+
+msgid "**ANY-NUMERICAL**"
+msgstr ""
+
+msgid ""
+"A positive value represents the existence of the edge (``source``, "
+"``target``)."
+msgstr ""
+
+msgid "``coming``"
+msgstr ""
+
+msgid "-1"
+msgstr ""
+
+msgid ""
+"A positive value represents the existence of the edge (``target``, "
+"``source``)"
+msgstr ""
+
+msgid "Where:"
+msgstr ""
+
+msgid "ANY-INTEGER"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr ""
+
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
+
+msgid "Result Columns"
+msgstr ""
+
+msgid "``seq``"
+msgstr ""
+
+msgid "``INT``"
+msgstr ""
+
+msgid "Sequential value starting from **1**."
+msgstr ""
+
+msgid "``edge``"
+msgstr ""
+
+msgid "``BIGINT``"
+msgstr ""
+
+msgid "Identifier of the edge in the original query."
+msgstr ""
+
+msgid "Identifier of the first end point of the edge."
+msgstr ""
+
+msgid "Identifier of the second end point of the edge."
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid ":doc:`flow-family`"
+msgstr ""
+
+msgid "https://www.boost.org/libs/graph/doc/maximum_matching.html"
+msgstr ""
+
+#, python-format
+msgid "https://en.wikipedia.org/wiki/Matching_%28graph_theory%29"
+msgstr ""
+
+msgid "https://en.wikipedia.org/wiki/Ackermann_function"
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""
+

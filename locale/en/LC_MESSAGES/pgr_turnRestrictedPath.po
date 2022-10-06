@@ -1,0 +1,421 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_turnRestrictedPath.html>`__ "
+"(`3.3 <https://docs.pgrouting.org/3.3/en/pgr_turnRestrictedPath.html>`__)"
+" `3.2 <https://docs.pgrouting.org/3.2/en/pgr_turnRestrictedPath.html>`__ "
+"`3.1 <https://docs.pgrouting.org/3.1/en/pgr_turnRestrictedPath.html>`__ "
+"`3.0 <https://docs.pgrouting.org/3.0/en/pgr_turnRestrictedPath.html>`__"
+msgstr ""
+
+msgid "pgr_turnRestrictedPath - Experimental"
+msgstr ""
+
+msgid ""
+"``pgr_turnRestrictedPath`` Using Yen's algorithm Vertex -Vertex routing "
+"with restrictions"
+msgstr ""
+
+msgid "Possible server crash"
+msgstr ""
+
+msgid "These functions might create a server crash"
+msgstr ""
+
+msgid "Experimental functions"
+msgstr ""
+
+msgid "They are not officially of the current release."
+msgstr ""
+
+msgid "They likely will not be officially be part of the next release:"
+msgstr ""
+
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+msgid "Name might change."
+msgstr ""
+
+msgid "Signature might change."
+msgstr ""
+
+msgid "Functionality might change."
+msgstr ""
+
+msgid "pgTap tests might be missing."
+msgstr ""
+
+msgid "Might need c/c++ coding."
+msgstr ""
+
+msgid "May lack documentation."
+msgstr ""
+
+msgid "Documentation if any might need to be rewritten."
+msgstr ""
+
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+
+msgid "Might need a lot of feedback from the comunity."
+msgstr ""
+
+msgid "Might depend on a proposed function of pgRouting"
+msgstr ""
+
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr ""
+
+msgid "Availability"
+msgstr ""
+
+msgid "Version 3.0.0"
+msgstr ""
+
+msgid "New experimental function"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid ""
+"Using Yen's algorithm to obtain K shortest paths and analyze the paths to"
+" select the paths that do not use the restrictions"
+msgstr ""
+
+msgid "Signatures"
+msgstr ""
+
+msgid "\\ \\"
+msgstr ""
+
+msgid ""
+"pgr_turnRestrictedPath(`Edges SQL`_, `Restrictions SQL`_, **start vid**, "
+"**end vid**, **K**, [**options**])"
+msgstr ""
+
+msgid "**options:** ``[directed, heap_paths, stop_on_first, strict]``"
+msgstr ""
+
+msgid "RETURNS SET OF |ksp-result|"
+msgstr ""
+
+msgid "OR EMPTY SET"
+msgstr ""
+
+msgid "Example"
+msgstr ""
+
+msgid "From vertex :math:`3` to vertex  :math:`8` on a directed graph"
+msgstr ""
+
+msgid "Parameters"
+msgstr ""
+
+msgid "Column"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "`Edges SQL`_"
+msgstr ""
+
+msgid "``TEXT``"
+msgstr ""
+
+msgid "SQL query as described."
+msgstr ""
+
+msgid "**start vid**"
+msgstr ""
+
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+msgid "Identifier of the departure vertex."
+msgstr ""
+
+msgid "**end vid**"
+msgstr ""
+
+msgid "**K**"
+msgstr ""
+
+msgid "Number of required paths"
+msgstr ""
+
+msgid "Where:"
+msgstr ""
+
+msgid "ANY-INTEGER"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr ""
+
+msgid "Optional parameters"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "``directed``"
+msgstr ""
+
+msgid "``BOOLEAN``"
+msgstr ""
+
+msgid "``true``"
+msgstr ""
+
+msgid "When ``true`` the graph is considered `Directed`"
+msgstr ""
+
+msgid "When ``false`` the graph is considered as `Undirected`."
+msgstr ""
+
+msgid "KSP Optional parameters"
+msgstr ""
+
+msgid "``heap_paths``"
+msgstr ""
+
+msgid "``false``"
+msgstr ""
+
+msgid "When ``false`` Returns at most K paths"
+msgstr ""
+
+msgid "When ``true`` all the calculated paths while processing are returned."
+msgstr ""
+
+msgid ""
+"Roughly, when the shortest path has ``N`` edges, the heap will contain "
+"about than ``N * K`` paths for small value of ``K`` and ``K > 5``."
+msgstr ""
+
+msgid "Special optional parameters"
+msgstr ""
+
+msgid "``stop_on_first``"
+msgstr ""
+
+msgid "When ``true`` stops on first path found that dos not violate restrictions"
+msgstr ""
+
+msgid "When ``false`` returns at most K paths"
+msgstr ""
+
+msgid "``strict``"
+msgstr ""
+
+msgid "When ``true`` returns only paths that do not violate restrictions"
+msgstr ""
+
+msgid "When ``false`` returns the paths found"
+msgstr ""
+
+msgid "Inner Queries"
+msgstr ""
+
+msgid "Edges SQL"
+msgstr ""
+
+msgid "``id``"
+msgstr ""
+
+msgid "Identifier of the edge."
+msgstr ""
+
+msgid "``source``"
+msgstr ""
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+msgid "``target``"
+msgstr ""
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+msgid "``cost``"
+msgstr ""
+
+msgid "**ANY-NUMERICAL**"
+msgstr ""
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr ""
+
+msgid "``reverse_cost``"
+msgstr ""
+
+msgid "-1"
+msgstr ""
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr ""
+
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
+
+msgid "Restrictions SQL"
+msgstr ""
+
+msgid "``path``"
+msgstr ""
+
+msgid "``ARRAY`` [**ANY-INTEGER**]"
+msgstr ""
+
+msgid ""
+"Sequence of edge identifiers that form a path that is not allowed to be "
+"taken. - Empty arrays or ``NULL`` arrays are ignored. - Arrays that have "
+"a ``NULL`` element will raise an exception."
+msgstr ""
+
+msgid "``Cost``"
+msgstr ""
+
+msgid "Cost of taking the forbidden path."
+msgstr ""
+
+msgid "Result Columns"
+msgstr ""
+
+msgid ""
+"Returns set of ``(seq, path_id, path_seq, start_vid, end_vid, node, edge,"
+" cost, agg_cost)``"
+msgstr ""
+
+msgid "``seq``"
+msgstr ""
+
+msgid "``INTEGER``"
+msgstr ""
+
+msgid "Sequential value starting from **1**."
+msgstr ""
+
+msgid "``path_id``"
+msgstr ""
+
+msgid "Path identifier."
+msgstr ""
+
+msgid "Has value **1** for the first of a path from ``start_vid`` to ``end_vid``."
+msgstr ""
+
+msgid "``path_seq``"
+msgstr ""
+
+msgid ""
+"Relative position in the path. Has value **1** for the beginning of a "
+"path."
+msgstr ""
+
+msgid "``start_vid``"
+msgstr ""
+
+msgid "``BIGINT``"
+msgstr ""
+
+msgid "Identifier of the starting vertex."
+msgstr ""
+
+msgid "``end_vid``"
+msgstr ""
+
+msgid "Identifier of the ending vertex."
+msgstr ""
+
+msgid "``node``"
+msgstr ""
+
+msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
+msgstr ""
+
+msgid "``edge``"
+msgstr ""
+
+msgid ""
+"Identifier of the edge used to go from ``node`` to the next node in the "
+"path sequence. **-1** for the last node of the path."
+msgstr ""
+
+msgid "``FLOAT``"
+msgstr ""
+
+msgid ""
+"Cost to traverse from ``node`` using ``edge`` to the next node in the "
+"path sequence."
+msgstr ""
+
+msgid "``agg_cost``"
+msgstr ""
+
+msgid "Aggregate cost from ``start_vid`` to ``node``."
+msgstr ""
+
+msgid "Additional Examples"
+msgstr ""
+
+msgid "From vertex :math:`3` to :math:`8` with ``strict`` flag on."
+msgstr ""
+
+msgid "No results because the only path available follows a restriction."
+msgstr ""
+
+msgid "From vertex :math:`3` to vertex  :math:`8` on an undirected graph"
+msgstr ""
+
+msgid "From vertex :math:`3` to vertex  :math:`8` with more alternatives"
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid ":doc:`KSP-category`"
+msgstr ""
+
+msgid ":doc:`sampledata`"
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""
+

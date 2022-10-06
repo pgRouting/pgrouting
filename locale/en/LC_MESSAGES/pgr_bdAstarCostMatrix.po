@@ -1,0 +1,383 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_bdAstarCostMatrix.html>`__ "
+"(`3.3 <https://docs.pgrouting.org/3.3/en/pgr_bdAstarCostMatrix.html>`__) "
+"`3.2 <https://docs.pgrouting.org/3.2/en/pgr_bdAstarCostMatrix.html>`__ "
+"`3.1 <https://docs.pgrouting.org/3.1/en/pgr_bdAstarCostMatrix.html>`__ "
+"`3.0 <https://docs.pgrouting.org/3.0/en/pgr_bdAstarCostMatrix.html>`__"
+msgstr ""
+
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_bdAstarCostMatrix.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_bdAstarCostMatrix.html>`__"
+msgstr ""
+
+msgid "``pgr_bdAstarCostMatrix``"
+msgstr ""
+
+msgid ""
+"``pgr_bdAstarCostMatrix`` - Calculates the a cost matrix using "
+":doc:`pgr_aStar`."
+msgstr ""
+
+msgid "Boost Graph Inside"
+msgstr ""
+
+msgid "Availability"
+msgstr ""
+
+msgid "Version 3.0.0"
+msgstr ""
+
+msgid "**Official** function"
+msgstr ""
+
+msgid "Version 2.5.0"
+msgstr ""
+
+msgid "New **proposed** function"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "**The main characteristics are:**"
+msgstr ""
+
+msgid "Using internaly the :doc:`pgr_bdAstar` algorithm"
+msgstr ""
+
+msgid "Returns a cost matrix."
+msgstr ""
+
+msgid "No ordering is performed"
+msgstr ""
+
+msgid "let `v` and `u` are nodes on the graph:"
+msgstr ""
+
+msgid "when there is no path from `v` to `u`:"
+msgstr ""
+
+msgid "no corresponding row is returned"
+msgstr ""
+
+msgid "cost from `v` to `u` is :math:`\\inf`"
+msgstr ""
+
+msgid "when :math:`v = u` then"
+msgstr ""
+
+msgid "cost from `v` to `u` is :math:`0`"
+msgstr ""
+
+msgid "When the graph is **undirected** the cost matrix is symmetric"
+msgstr ""
+
+msgid "Signatures"
+msgstr ""
+
+msgid "Summary"
+msgstr ""
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_bdAstarCostMatrix(`Edges SQL`_, **start vids**, [**options**])"
+msgstr ""
+
+msgid "**options:** ``[directed, heuristic, factor, epsilon]``"
+msgstr ""
+
+msgid "RETURNS SET OF |matrix-result|"
+msgstr ""
+
+msgid "OR EMPTY SET"
+msgstr ""
+
+msgid "Example"
+msgstr ""
+
+msgid ""
+"Symmetric cost matrix for vertices :math:`\\{5, 6, 10, 15\\}` on an "
+"**undirected** graph using heuristic :math:`2`"
+msgstr ""
+
+msgid "Parameters"
+msgstr ""
+
+msgid "Column"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "`Edges SQL`_"
+msgstr ""
+
+msgid "``TEXT``"
+msgstr ""
+
+msgid "`Edges SQL`_ as described below"
+msgstr ""
+
+msgid "**start vids**"
+msgstr ""
+
+msgid "``ARRAY[BIGINT]``"
+msgstr ""
+
+msgid "Array of identifiers of starting vertices."
+msgstr ""
+
+msgid "Optional parameters"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "``directed``"
+msgstr ""
+
+msgid "``BOOLEAN``"
+msgstr ""
+
+msgid "``true``"
+msgstr ""
+
+msgid "When ``true`` the graph is considered `Directed`"
+msgstr ""
+
+msgid "When ``false`` the graph is considered as `Undirected`."
+msgstr ""
+
+msgid "aStar optional Parameters"
+msgstr ""
+
+msgid "Parameter"
+msgstr ""
+
+msgid "``heuristic``"
+msgstr ""
+
+msgid "``INTEGER``"
+msgstr ""
+
+msgid "5"
+msgstr ""
+
+msgid "Heuristic number. Current valid values 0~5."
+msgstr ""
+
+msgid "0: :math:`h(v) = 0` (Use this value to compare with pgr_dijkstra)"
+msgstr ""
+
+msgid "1: :math:`h(v) = abs(max(\\Delta x, \\Delta y))`"
+msgstr ""
+
+msgid "2: :math:`h(v) = abs(min(\\Delta x, \\Delta y))`"
+msgstr ""
+
+msgid "3: :math:`h(v) = \\Delta x * \\Delta x + \\Delta y * \\Delta y`"
+msgstr ""
+
+msgid "4: :math:`h(v) = sqrt(\\Delta x * \\Delta x + \\Delta y * \\Delta y)`"
+msgstr ""
+
+msgid "5: :math:`h(v) = abs(\\Delta x) + abs(\\Delta y)`"
+msgstr ""
+
+msgid "``factor``"
+msgstr ""
+
+msgid "``FLOAT``"
+msgstr ""
+
+msgid "``1``"
+msgstr ""
+
+msgid "For units manipulation. :math:`factor > 0`."
+msgstr ""
+
+msgid "``epsilon``"
+msgstr ""
+
+msgid "For less restricted results. :math:`epsilon >= 1`."
+msgstr ""
+
+msgid ""
+"See :ref:`heuristics <astar_heuristics>` available and :ref:`factor "
+"<astar_factor>` handling."
+msgstr ""
+
+msgid "Inner Queries"
+msgstr ""
+
+msgid "Edges SQL"
+msgstr ""
+
+msgid "``id``"
+msgstr ""
+
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+msgid "Identifier of the edge."
+msgstr ""
+
+msgid "``source``"
+msgstr ""
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+msgid "``target``"
+msgstr ""
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+msgid "``cost``"
+msgstr ""
+
+msgid "**ANY-NUMERICAL**"
+msgstr ""
+
+msgid "Weight of the edge  (``source``, ``target``)"
+msgstr ""
+
+msgid ""
+"When negative: edge (``source``, ``target``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+
+msgid "``reverse_cost``"
+msgstr ""
+
+msgid "-1"
+msgstr ""
+
+msgid "Weight of the edge (``target``, ``source``),"
+msgstr ""
+
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+
+msgid "``x1``"
+msgstr ""
+
+msgid "X coordinate of ``source`` vertex."
+msgstr ""
+
+msgid "``y1``"
+msgstr ""
+
+msgid "Y coordinate of ``source`` vertex."
+msgstr ""
+
+msgid "``x2``"
+msgstr ""
+
+msgid "X coordinate of ``target`` vertex."
+msgstr ""
+
+msgid "``y2``"
+msgstr ""
+
+msgid "Y coordinate of ``target`` vertex."
+msgstr ""
+
+msgid "Where:"
+msgstr ""
+
+msgid "ANY-INTEGER"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr ""
+
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
+
+msgid "Result Columns"
+msgstr ""
+
+msgid "Set of |matrix-result|"
+msgstr ""
+
+msgid "``start_vid``"
+msgstr ""
+
+msgid "``BIGINT``"
+msgstr ""
+
+msgid "Identifier of the starting vertex."
+msgstr ""
+
+msgid "``end_vid``"
+msgstr ""
+
+msgid "Identifier of the ending vertex."
+msgstr ""
+
+msgid "``agg_cost``"
+msgstr ""
+
+msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
+msgstr ""
+
+msgid "Additional Examples"
+msgstr ""
+
+msgid "Use with :doc:`pgr_TSP`"
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid ":doc:`bdAstar-family`"
+msgstr ""
+
+msgid ":doc:`costMatrix-category`"
+msgstr ""
+
+msgid ":doc:`TSP-family`"
+msgstr ""
+
+msgid ":doc:`sampledata`"
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""
+
