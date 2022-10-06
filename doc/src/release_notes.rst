@@ -40,7 +40,7 @@ pgRouting 3.4.1 Release Notes
 -------------------------------------------------------------------------------
 
 To see all issues & pull requests closed by this release see the `Git closed
-milestone for 3.3.4
+milestone for 3.4.1
 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.1%22>`_
 
 .. rubric:: Issue fixes
@@ -125,6 +125,18 @@ milestone for 3.4.0
   * ``pgr_trspViaVertices(text,anyarray,boolean,boolean,text)``
   * ``pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)``
 
+pgRouting 3.3.4 Release Notes
+-------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.3.4
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.4%22>`_
+
+.. rubric:: Issue fixes
+
+* `#2400 <https://github.com/pgRouting/pgrouting/issues/2400>`__:
+  pgRouting 3.3.3 does not build in focal
+
 pgRouting 3.3.3 Release Notes
 -------------------------------------------------------------------------------
 
@@ -181,6 +193,8 @@ milestone for 3.3.2
   edgeDisjointPaths issues with start_vid and combinations
 * `#2312 <https://github.com/pgRouting/pgrouting/issues/2312>`__:
   pgr_extractVertices error when target is not BIGINT
+* `#2357 <https://github.com/pgRouting/pgrouting/issues/2357>`__:
+  Apply clang-tidy performance-*
 
 pgRouting 3.3.1 Release Notes
 -------------------------------------------------------------------------------
