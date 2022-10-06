@@ -1,0 +1,304 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: 2022-10-04 18:19+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language: es\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
+"/pgrouting-develop/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_maxCardinalityMatch.html>`__ "
+"(`3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_maxCardinalityMatch.html>`__) `3.2"
+" <https://docs.pgrouting.org/3.2/en/pgr_maxCardinalityMatch.html>`__ `3.1"
+" <https://docs.pgrouting.org/3.1/en/pgr_maxCardinalityMatch.html>`__ `3.0"
+" <https://docs.pgrouting.org/3.0/en/pgr_maxCardinalityMatch.html>`__"
+msgstr ""
+
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_maxCardinalityMatch.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_maxCardinalityMatch.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_maximumCardinalityMatching.html>`__"
+" `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maximumCardinalityMatching.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_maxCardinalityMatch.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_maxCardinalityMatch.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_maximumCardinalityMatching.html>`__"
+" `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maximumCardinalityMatching.html"
+"#pgr-maximumcardinalitymatching>`__"
+
+msgid "pgr_maxCardinalityMatch"
+msgstr "pgr_maxCardinalityMatch"
+
+msgid ""
+"``pgr_maxCardinalityMatch`` — Calculates a maximum cardinality matching "
+"in a graph."
+msgstr ""
+"``pgr_maxCardinalityMatch`` — Calcula una coincidencia de cardinalidad "
+"máxima en un grafo."
+
+msgid "Boost Graph Inside"
+msgstr "Adentro: Boost Graph"
+
+msgid "Availability"
+msgstr "Disponibilidad"
+
+#, fuzzy
+msgid "Version 3.3.3"
+msgstr "Versión 3.3.0"
+
+msgid ""
+"``directed`` optional parameter ignored and removed from the "
+"documentation as the algorithm works only on undirected graphs"
+msgstr ""
+
+msgid "Version 3.0.0"
+msgstr "Versión 3.0.0"
+
+msgid "**Official** function"
+msgstr "Función **oficial**"
+
+msgid "Version 2.5.0"
+msgstr "Versión 2.5.0"
+
+msgid "Renamed from ``pgr_maximumCardinalityMatching``"
+msgstr "Renombrado de ``pgr_maximumCardinalityMatching``"
+
+msgid "**Proposed** function"
+msgstr "Función **propuesta**"
+
+msgid "Version 2.3.0"
+msgstr "Versión 2.3.0"
+
+msgid "New **Experimental** function"
+msgstr "Nueva función **Experimental**"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid "The main characteristics are:"
+msgstr "Las principales características son:"
+
+msgid "Works for **undirected** graphs."
+msgstr "Funciona para grafos **no dirigidos**."
+
+msgid ""
+"A matching or independent edge set in a graph is a set of edges without "
+"common vertices."
+msgstr ""
+"Un conjunto de aristas coincidente o independiente en un grafo es un "
+"conjunto de aristas sin vértices comunes."
+
+msgid ""
+"A maximum matching is a matching that contains the largest possible "
+"number of edges."
+msgstr ""
+"Una coincidencia máxima es una coincidencia que contiene el mayor número "
+"posible de aristas."
+
+msgid "There may be many maximum matchings."
+msgstr "Puede haber muchas coincidencias máximas."
+
+msgid "Calculates one possible maximum cardinality matching in a graph."
+msgstr "Calcula una posible coincidencia máxima de cardinalidad en un grafo."
+
+msgid "Running time: :math:`O( E*V * \\alpha(E,V))`"
+msgstr "Tiempo de ejecución: :math:`O( E*V * \\alpha(E,V))`"
+
+msgid ":math:`\\alpha(E,V)` is the inverse of the `Ackermann function`_."
+msgstr ":math:`\\alpha(E,V)` es inverso a `Ackermann function`_."
+
+msgid "Signatures"
+msgstr "Firmas"
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_maxCardinalityMatch(`Edges SQL`_)"
+msgstr "pgr_maxCardinalityMatch(`SQL de aristas`_)"
+
+#, fuzzy
+msgid "RETURNS SET OF (seq, edge_id, source, target)"
+msgstr "Devuelve conjunto de ``(seq, edge, cost, mincut)``"
+
+msgid "OR EMPTY SET"
+msgstr ""
+
+msgid "Example"
+msgstr "Ejemplo"
+
+msgid "Using all edges."
+msgstr ""
+
+msgid "Parameters"
+msgstr "Parámetros"
+
+msgid "Parameter"
+msgstr "Parámetro"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "`Edges SQL`_"
+msgstr "`SQL de aristas`_"
+
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+msgid "`Edges SQL`_ as described below."
+msgstr "`SQL de aristas`_ descritas más adelante."
+
+msgid "Inner Queries"
+msgstr "Consultas Internas"
+
+msgid "Edges SQL"
+msgstr "SQL aristas"
+
+msgid "SQL query, which should return a set of rows with the following columns:"
+msgstr ""
+"Una consulta SQL, que debe regresar un conjunto de filas con las "
+"siguientes columnas:"
+
+msgid "Column"
+msgstr "Columna"
+
+msgid "Default"
+msgstr "x Defecto"
+
+msgid "``id``"
+msgstr "``id``"
+
+msgid "**ANY-INTEGER**"
+msgstr "**ENTEROS**"
+
+msgid "Identifier of the edge."
+msgstr "Identificador de la arista."
+
+msgid "``source``"
+msgstr "``source``"
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer vértice de la arista."
+
+msgid "``target``"
+msgstr "``target``"
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo vértice de la arista."
+
+#, fuzzy
+msgid "``going``"
+msgstr "``geom``"
+
+msgid "**ANY-NUMERICAL**"
+msgstr "**FLOTANTES**"
+
+msgid ""
+"A positive value represents the existence of the edge (``source``, "
+"``target``)."
+msgstr ""
+"Un valor positivo representa la existencia de la arista (``source``, "
+"``target``)."
+
+#, fuzzy
+msgid "``coming``"
+msgstr "``compiler``"
+
+msgid "-1"
+msgstr "-1"
+
+msgid ""
+"A positive value represents the existence of the edge (``target``, "
+"``source``)"
+msgstr ""
+"Un valor positivo representa la existencia de la arista (``target``, "
+"``source``)"
+
+msgid "Where:"
+msgstr "Donde:"
+
+msgid "ANY-INTEGER"
+msgstr "ENTEROS"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+
+msgid "ANY-NUMERICAL"
+msgstr "FLOTANTES"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+
+msgid "Result Columns"
+msgstr "Columnas de Resultados"
+
+msgid "``seq``"
+msgstr "``seq``"
+
+msgid "``INT``"
+msgstr "``INT``"
+
+msgid "Sequential value starting from **1**."
+msgstr "Valor secuencial a partir de **1**."
+
+msgid "``edge``"
+msgstr "``edge``"
+
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+msgid "Identifier of the edge in the original query."
+msgstr "Identificador de la arista en la consulta original."
+
+#, fuzzy
+msgid "Identifier of the first end point of the edge."
+msgstr "Identificador del primer vértice de la arista."
+
+#, fuzzy
+msgid "Identifier of the second end point of the edge."
+msgstr "Identificador del segundo vértice de la arista."
+
+msgid "See Also"
+msgstr "Ver también"
+
+msgid ":doc:`flow-family`"
+msgstr ":doc:`flow-family`"
+
+msgid "https://www.boost.org/libs/graph/doc/maximum_matching.html"
+msgstr "https://www.boost.org/libs/graph/doc/maximum_matching.html"
+
+#, python-format
+msgid "https://en.wikipedia.org/wiki/Matching_%28graph_theory%29"
+msgstr "https://en.wikipedia.org/wiki/Matching_%28graph_theory%29"
+
+msgid "https://en.wikipedia.org/wiki/Ackermann_function"
+msgstr "https://en.wikipedia.org/wiki/Ackermann_function"
+
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
+

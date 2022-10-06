@@ -1,0 +1,550 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: 2022-10-04 18:19+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language: es\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
+"/pgrouting-develop/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#, fuzzy
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_extractVertices.html>`__ (`3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_extractVertices.html>`__) `3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_extractVertices.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_extractVertices.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_extractVertices.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Última "
+"<https://docs.pgrouting.org/latest/es/pgr_extractVertices.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/es/pgr_extractVertices.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/es/pgr_extractVertices.html>`__ `3.2 "
+"<https://docs.pgrouting.org/3.2/es/pgr_extractVertices.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_extractVertices.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_extractVertices.html>`__"
+
+msgid "pgr_extractVertices -- Proposed"
+msgstr "pgr_extractVertices -- Propuesto"
+
+msgid "``pgr_extractVertices`` — Extracts the vertices information"
+msgstr "``pgr_extractVertices`` — Extrae la información de los vértices"
+
+msgid "Proposed functions for next mayor release."
+msgstr "Funciones propuestas para la próxima versión mayor."
+
+msgid "They are not officially in the current release."
+msgstr "No están oficialmente en la versión actual."
+
+msgid "They will likely officially be part of the next mayor release:"
+msgstr "Es probable que oficialmente formen parte del próximo lanzamiento:"
+
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
+
+msgid "Name might not change. (But still can)"
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
+
+msgid "Signature might not change. (But still can)"
+msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
+
+msgid "Functionality might not change. (But still can)"
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
+
+msgid "pgTap tests have being done. But might need more."
+msgstr "Se han hecho pruebas con pgTap. Pero tal vez se necesiten más."
+
+msgid "Documentation might need refinement."
+msgstr "Es posible que la documentación necesite un refinamiento."
+
+msgid "Availability"
+msgstr "Disponibilidad"
+
+msgid "Version 3.3.0"
+msgstr "Versión 3.3.0"
+
+msgid "Classified as **proposed** function"
+msgstr "Clasicado como función **propuesta**"
+
+msgid "Version 3.0.0"
+msgstr "Versión 3.0.0"
+
+msgid "New **experimental** function"
+msgstr "Nueva función **experimental**"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid ""
+"This is an auxiliary function for extracting the vertex information of "
+"the set of edges of a graph."
+msgstr ""
+"Esta es una función auxiliar para extraer la información de vértices del "
+"conjunto de aristas de un grafo."
+
+msgid ""
+"When the edge identifier is given, then it will also calculate the in and"
+" out edges"
+msgstr ""
+"Cuando se proporciona el identificador de arista, también se calcularán "
+"las aristas de entrada y salida"
+
+msgid "Signatures"
+msgstr "Firmas"
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_extractVertices(`Edges SQL`_, [``dryrun``])"
+msgstr "pgr_extractVertices(`SQL de aristas`_, [``dryrun``])"
+
+msgid "RETURNS SETOF |result-extract|"
+msgstr "REGRESA CONJUNTO DE |result-extract|"
+
+msgid "OR EMTPY SET"
+msgstr ""
+
+msgid "Example"
+msgstr "Ejemplo"
+
+msgid "Extracting the vertex information"
+msgstr "Extraer la información del vértice"
+
+msgid "Parameters"
+msgstr "Parámetros"
+
+msgid "Parameter"
+msgstr "Parámetro"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "`Edges SQL`_"
+msgstr "`SQL de aristas`_"
+
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+msgid "`Edges SQL`_ as described below"
+msgstr "`SQL de aristas`_ como se describe a continuación"
+
+msgid "Optional parameters"
+msgstr "Parámetros opcionales"
+
+msgid "Default"
+msgstr "x Defecto"
+
+msgid "``dryrun``"
+msgstr "``dryrun``"
+
+msgid "``BOOLEAN``"
+msgstr "``BOOLEAN``"
+
+msgid "``false``"
+msgstr "``false``"
+
+msgid "When true do not process and get in a NOTICE the resulting query."
+msgstr ""
+"Cuando verdadero, no procesar y recibir un AVISO de la consulta "
+"resultante."
+
+msgid "Inner Queries"
+msgstr "Consultas Internas"
+
+msgid "Edges SQL"
+msgstr "SQL aristas"
+
+msgid "When line geometry is known"
+msgstr "Cuando se conoce la geometría de línea"
+
+msgid "Column"
+msgstr "Columna"
+
+msgid "``id``"
+msgstr "``id``"
+
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+msgid "(Optional) identifier of the edge."
+msgstr "(Opcional) identificador de la arista."
+
+msgid "``geom``"
+msgstr "``geom``"
+
+msgid "``LINESTRING``"
+msgstr "``LINESTRING``"
+
+msgid "Geometry of the edge."
+msgstr "Geometría de la arista."
+
+msgid ""
+"This inner query takes precedence over the next two inner query, "
+"therefore other columns are ignored when ``geom`` column appears."
+msgstr ""
+"Esta consulta interna tiene prioridad sobre las dos consultas internas "
+"siguientes, por lo que se omiten otras columnas cuando aparece la columna"
+" ''geom''."
+
+msgid "Ignored columns:"
+msgstr "Columnas ignoradas:"
+
+msgid "``startpoint``"
+msgstr "``startpoint``"
+
+msgid "``endpoint``"
+msgstr "``endpoint``"
+
+msgid "``source``"
+msgstr "``source``"
+
+msgid "``target``"
+msgstr "``target``"
+
+msgid "When vertex geometry is known"
+msgstr "Cuando se conoce la geometría de vértices"
+
+msgid ""
+"To use this inner query the column ``geom`` should not be part of the set"
+" of columns."
+msgstr ""
+"Para utilizar esta consulta interna, la columna ``geom`` no debe formar "
+"parte del conjunto de columnas."
+
+msgid "``POINT``"
+msgstr "``POINT``"
+
+msgid "POINT geometry of the starting vertex."
+msgstr "Geometría POINT del vértice inicial."
+
+msgid "POINT geometry of the ending vertex."
+msgstr "Geometría POINT del vértice final."
+
+msgid ""
+"This inner query takes precedence over the next inner query, therefore "
+"other columns are ignored when ``startpoint`` and ``endpoint`` columns "
+"appears."
+msgstr ""
+"Esta consulta interna tiene prioridad sobre la siguiente consulta "
+"interna, por lo que otras columnas son ignoradas cuando aparecen las "
+"columnas ``startpoint`` y ``endpoint``."
+
+msgid "When identifiers of vertices are known"
+msgstr "Cuando se conocen identificadores de vértices"
+
+msgid ""
+"To use this inner query the columns ``geom``, ``startpoint`` and "
+"``endpoint`` should not be part of the set of columns."
+msgstr ""
+"Para utilizar esta consulta interna, las columnas ``geom``, "
+"``startpoint`` y ``endpoint`` no deben formar parte del conjunto de "
+"columnas."
+
+msgid "``ANY-INTEGER``"
+msgstr "``ANY-INTEGER``"
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer vértice de la arista."
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo vértice de la arista."
+
+msgid "Result Columns"
+msgstr "Columnas de Resultados"
+
+msgid "Vertex identifier"
+msgstr "Identificador de vértice"
+
+msgid "``in_edges``"
+msgstr "``in_edges``"
+
+msgid "``BIGINT[]``"
+msgstr "``BIGINT[]``"
+
+msgid ""
+"Array of identifiers of the edges that have the vertex ``id`` as *first "
+"end point*."
+msgstr ""
+"Arreglo de identificadores de las aristas que tienen el vértice ``id`` "
+"como *primer punto final*."
+
+msgid "``NULL`` When the ``id`` is not part of the inner query"
+msgstr "``NULL`` When the ``id`` no forma parte de la consulta interna"
+
+msgid "``out_edges``"
+msgstr "``out_edges``"
+
+msgid ""
+"Array of identifiers of the edges that have the vertex ``id`` as *second "
+"end point*."
+msgstr ""
+"Arreglo de identificadores de las aristas que tienen el vértice ``id`` "
+"como *segundo punto final*."
+
+msgid "``x``"
+msgstr "``x``"
+
+msgid "``FLOAT``"
+msgstr "``FLOAT``"
+
+msgid "X value of the point geometry"
+msgstr "Valor X de la geometría del punto"
+
+msgid "``NULL`` When no geometry is provided"
+msgstr "``NULL`` Cuando no se proporciona geometría"
+
+msgid "``y``"
+msgstr "``y``"
+
+msgid "Geometry of the point"
+msgstr "Geometría del punto"
+
+msgid "Additional Examples"
+msgstr "Ejemplos Adicionales"
+
+msgid "Dryrun execution"
+msgstr "Ejecución de Dryrun"
+
+msgid ""
+"To get the query generated used to get the vertex information, use "
+"``dryrun := true``."
+msgstr ""
+"Para obtener la consulta generada que se usa para obtener la información "
+"de vértices, utilice ``dryrun := true``."
+
+msgid ""
+"The results can be used as base code to make a refinement based on the "
+"backend development needs."
+msgstr ""
+"Los resultados se pueden usar como código base para realizar un "
+"refinamiento basado en las necesidades de desarrollo de back-end."
+
+msgid "Create a routing topology"
+msgstr "Creación de una topología de ruteo"
+
+msgid "Make sure the database does not have the ``vertices_table``"
+msgstr "Asegurarse de que la base de datos no tiene ``vertices_table``"
+
+msgid "Clean up the columns of the routing topology to be created"
+msgstr "Limpieza de las columnas de la topología de ruteo que se creará"
+
+msgid "Create the vertices table"
+msgstr "Crear la tabla de vértices"
+
+msgid ""
+"When the ``LINESTRING`` has a SRID then use ``geom::geometry(POINT, "
+"<SRID>)``"
+msgstr ""
+
+msgid "For big edge tables that are been prepared,"
+msgstr ""
+
+msgid "Create it as ``UNLOGGED`` and"
+msgstr ""
+
+msgid "After the table is created ``ALTER TABLE .. SET LOGGED``"
+msgstr ""
+
+msgid "Inspect the vertices table"
+msgstr "Inspeccionar la tabla de vértices"
+
+msgid "Create the routing topology on the edge table"
+msgstr "Creación de la topología de ruteo en la tabla de aristas"
+
+msgid "Updating the ``source`` information"
+msgstr "Actualizar de la información de ``source``"
+
+msgid "Updating the ``target`` information"
+msgstr "Actualización de la información de ``target``"
+
+msgid "Inspect the routing topology"
+msgstr "Inspección de la topología de ruteo"
+
+msgid "**Generated topology**"
+msgstr "**Topología generada**"
+
+msgid "Crossing edges"
+msgstr ""
+
+msgid "To get the crossing edges:"
+msgstr ""
+
+msgid ""
+"That information is correct, for example, when in terms of vehicles, is "
+"it a tunnel or bride crossing over another road."
+msgstr ""
+
+msgid "It might be incorrect, for example:"
+msgstr ""
+
+msgid ""
+"When it is actually an intersection of roads, where vehicles can make "
+"turns."
+msgstr ""
+
+msgid ""
+"When in terms of electrical lines, the electrical line is able to switch "
+"roads even on a tunnel or bridge."
+msgstr ""
+
+msgid "When it is incorrect, it needs fixing:"
+msgstr ""
+
+msgid "For vehicles and pedestrians"
+msgstr ""
+
+msgid ""
+"If the data comes from OSM and was imported to the database using "
+"``osm2pgrouting``, the fix needs to be done in the `OSM portal "
+"<https://www.openstreetmap.org>`__ and the data imported again."
+msgstr ""
+
+msgid ""
+"In general when the data comes from a supplier that has the data prepared"
+" for routing vehicles, and there is a problem, the data is to be fixed "
+"from the supplier"
+msgstr ""
+
+msgid "For very specific applications"
+msgstr ""
+
+msgid ""
+"The data is correct when from the point of view of routing vehicles or "
+"pedestrians."
+msgstr ""
+
+msgid "The data needs a local fix for the specific application."
+msgstr ""
+
+msgid ""
+"Once analyzed one by one the crossings, for the ones that need a local "
+"fix, the edges need to be `split "
+"<https://postgis.net/docs/ST_Split.html>`__."
+msgstr ""
+
+msgid ""
+"The new edges need to be added to the edges table, the rest of the "
+"attributes need to be updated in the new edges, the old edges need to be "
+"removed and the routing topology needs to be updated."
+msgstr ""
+
+msgid "Adding split edges"
+msgstr ""
+
+msgid ""
+"For each pair of crossing edges a process similar to this one must be "
+"performed."
+msgstr ""
+
+msgid ""
+"The columns inserted and the way are calculated are based on the "
+"application. For example, if the edges have a trait **name**, then that "
+"column is to be copied."
+msgstr ""
+
+msgid "For pgRouting calculations"
+msgstr "Para llos cálculos de pgRouting"
+
+msgid ""
+"**factor** based on the position of the intersection of the edges can be "
+"used to adjust the ``cost`` and ``reverse_cost`` columns."
+msgstr ""
+
+msgid ""
+"Capacity information, used on the :doc:`flow-family` functions does not "
+"need to change when splitting edges."
+msgstr ""
+
+msgid "Adding new vertices"
+msgstr "Añadiendo nuevos vértices"
+
+msgid ""
+"After adding all the split edges required by the application, the newly "
+"created vertices need to be added to the vertices table."
+msgstr ""
+
+msgid "Updating edges topology"
+msgstr "Actualizar la topología de aristas"
+
+msgid "Removing the surplus edges"
+msgstr ""
+
+msgid ""
+"Once all significant information needed by the application has been "
+"transported to the new edges, then the crossing edges can be deleted."
+msgstr ""
+
+msgid ""
+"There are other options to do this task, like creating a view, or a "
+"materialized view."
+msgstr ""
+
+msgid "Updating vertices topology"
+msgstr "Actializar la topología de vértices"
+
+msgid "To keep the graph consistent, the vertices topology needs to be updated"
+msgstr ""
+
+msgid "Checking for crossing edges"
+msgstr ""
+
+msgid "There are no crossing edges on the graph."
+msgstr ""
+
+msgid "Graphs without geometries"
+msgstr ""
+
+msgid "Using this table design for this example:"
+msgstr ""
+
+msgid "Insert the data"
+msgstr ""
+
+msgid "Find the shortest path"
+msgstr ""
+
+msgid "To solve this example :doc:`pgr_dijkstra` is used:"
+msgstr ""
+
+msgid ""
+"To go from :math:`1` to :math:`5` the path goes thru the following "
+"vertices: :math:`1 \\rightarrow 3 \\rightarrow 6 \\rightarrow 5`"
+msgstr ""
+
+msgid "Vertex information"
+msgstr "Información de vertices"
+
+msgid "To obtain the vertices information, use :doc:`pgr_extractVertices`"
+msgstr ""
+
+msgid "See Also"
+msgstr "Ver también"
+
+msgid ":doc:`topology-functions`"
+msgstr ":doc:`topology-functions`"
+
+msgid ":doc:`pgr_createVerticesTable`"
+msgstr ":doc:`pgr_createVerticesTable`"
+
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
+

@@ -1,0 +1,206 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: 2022-10-04 18:19+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language: es\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
+"/pgrouting-develop/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#, fuzzy
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/proposed.html>`__ (`3.3 "
+"<https://docs.pgrouting.org/3.3/en/proposed.html>`__) `3.2 "
+"<https://docs.pgrouting.org/3.2/en/proposed.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/en/proposed.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/proposed.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Última "
+"<https://docs.pgrouting.org/latest/es/proposed.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/es/proposed.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/es/proposed.html>`__ `3.2 "
+"<https://docs.pgrouting.org/3.2/es/proposed.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/es/proposed.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/es/proposed.html>`__"
+
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/proposed.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/proposed.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/proposed.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/proposed.html>`__ `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/proposed.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/proposed.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/proposed.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/proposed.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/proposed.html>`__ `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/proposed.html>`__"
+
+msgid "Proposed Functions"
+msgstr "Funciones propuestas"
+
+msgid "Proposed functions for next mayor release."
+msgstr "Funciones propuestas para la próxima versión mayor."
+
+msgid "They are not officially in the current release."
+msgstr "No están oficialmente en la versión actual."
+
+msgid "They will likely officially be part of the next mayor release:"
+msgstr "Es probable que oficialmente formen parte del próximo lanzamiento:"
+
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
+
+msgid "Name might not change. (But still can)"
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
+
+msgid "Signature might not change. (But still can)"
+msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
+
+msgid "Functionality might not change. (But still can)"
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
+
+msgid "pgTap tests have being done. But might need more."
+msgstr "Se han hecho pruebas con pgTap. Pero tal vez se necesiten más."
+
+msgid "Documentation might need refinement."
+msgstr "Es posible que la documentación necesite un refinamiento."
+
+msgid "Families"
+msgstr "Familias"
+
+msgid ":doc:`dijkstra-family`"
+msgstr ":doc:`dijkstra-family`"
+
+msgid ":doc:`pgr_dijkstraVia` - Get a route of a seuence of vertices."
+msgstr ""
+":doc:`pgr_dijkstraVia` - Obtenga una ruta a partir de una secuencia de "
+"vértices."
+
+msgid ":doc:`pgr_dijkstraNear` - Get the route to the nearest vertex."
+msgstr ":doc:`pgr_dijkstraNear` - Obtener la ruta al vértice más cercano."
+
+msgid ":doc:`pgr_dijkstraNearCost` - Get the cost to the nearest vertex."
+msgstr ":doc:`pgr_dijkstraNearCost` - Consigue el costo del vértice más cercano."
+
+msgid ":doc:`withPoints-family`"
+msgstr ":doc:`withPoints-family`"
+
+msgid ":doc:`pgr_withPoints` - Route from/to points anywhere on the graph."
+msgstr ""
+":doc:`pgr_withPoints` - Ruta desde/hacia puntos en cualquier parte del "
+"grafo."
+
+msgid ":doc:`pgr_withPointsCost` - Costs of the shortest paths."
+msgstr ":doc:`pgr_withPointsCost` - Costos de las tutas más cortas."
+
+msgid ":doc:`pgr_withPointsCostMatrix` - Costs of the shortest paths."
+msgstr ":doc:`pgr_withPointsCostMatrix` - Costos de las rutas más cortas."
+
+msgid ":doc:`pgr_withPointsKSP` - K shortest paths."
+msgstr ":doc:`pgr_withPointsKSP` - rutas más cortas K."
+
+msgid ":doc:`pgr_withPointsDD` - Driving distance."
+msgstr ":doc:`pgr_withPointsDD` - Distancia de conducción."
+
+msgid ":doc:`topology-functions`"
+msgstr ":doc:`topology-functions`"
+
+msgid "These proposed functions do not modify the database."
+msgstr "Funciones propuestas para la próxima versión mayor."
+
+msgid ""
+":doc:`pgr_extractVertices` - Extracts vertex information based on the "
+"edge table information."
+msgstr ""
+":doc:`pgr_extractVertices` - Extrae información de vértices basada en la "
+"tabla de aristas."
+
+msgid ":doc:`coloring-family`"
+msgstr ":doc:`coloring-family`"
+
+msgid ""
+":doc:`pgr_sequentialVertexColoring` - Vertex coloring algorithm using "
+"greedy approach."
+msgstr ""
+":doc:`pgr_sequentialVertexColoring`- Algoritmo de coloración de vértices "
+"mediante un enfoque codicioso."
+
+msgid ":doc:`traversal-family`"
+msgstr ":doc:`traversal-family`"
+
+msgid ":doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph."
+msgstr ""
+":doc:`pgr_depthFirstSearch` - Recorrido de búsqueda en profundidad del "
+"grafo."
+
+msgid "categories"
+msgstr "Categorías"
+
+msgid ":doc:`cost-category`"
+msgstr ":doc:`cost-category`"
+
+msgid ":doc:`pgr_withPointsCost`"
+msgstr ":doc:`pgr_withPointsCost`"
+
+msgid ":doc:`costMatrix-category`"
+msgstr ":doc:`costMatrix-category`"
+
+msgid ":doc:`pgr_withPointsCostMatrix`"
+msgstr ":doc:`pgr_withPointsCostMatrix`"
+
+msgid ":doc:`drivingDistance-category`"
+msgstr ":doc:`drivingDistance-category`"
+
+msgid ":doc:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints"
+msgstr ":doc:`pgr_withPointsDD` - Distancia Manejando basada en pgr_withPoints"
+
+msgid ":doc:`KSP-category`"
+msgstr ":doc:`KSP-category`"
+
+msgid ":doc:`pgr_withPointsKSP` - Yen's algorithm based on pgr_withPoints"
+msgstr ":doc:`pgr_withPointsKSP` - Algoritmo de Yen basado en pgr_withPoints"
+
+msgid ":doc:`via-category`"
+msgstr ":doc:`via-category`"
+
+msgid ":doc:`pgr_dijkstraVia`"
+msgstr ":doc:`pgr_dijkstraVia`"
+
+msgid ":doc:`withPoints-category`"
+msgstr ":doc:`withPoints-category`"
+
+msgid ":doc:`withPoints-family` - Functions based on Dijkstra algorithm."
+msgstr ":doc:`withPoints-family` - Funciones basadas en el algoritmo Dijkstra."
+
+msgid "See Also"
+msgstr "Ver también"
+
+msgid ":doc:`experimental`"
+msgstr ":doc:`experimental`"
+
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
+

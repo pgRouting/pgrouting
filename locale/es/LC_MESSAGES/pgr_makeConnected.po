@@ -1,0 +1,303 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: 2022-10-04 18:19+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language: es\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
+"/pgrouting-develop/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#, fuzzy
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_makeConnected.html>`__ (`3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_makeConnected.html>`__) `3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_makeConnected.html>`__"
+msgstr ""
+"**Versiones soportadas** `Última "
+"<https://docs.pgrouting.org/latest/es/pgr_makeConnected.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/es/pgr_makeConnected.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/es/pgr_makeConnected.html>`__ `3.2 "
+"<https://docs.pgrouting.org/3.2/es/pgr_makeConnected.html>`__"
+
+msgid "``pgr_makeConnected`` - Experimental"
+msgstr "``pgr_makeConnected`` - Experimental"
+
+msgid "``pgr_makeConnected`` — Set of edges that will connect the graph."
+msgstr "``pgr_makeConnected`` — Conjunto de aristas que conectan el grafo."
+
+msgid "Boost Graph Inside"
+msgstr "Adentro: Boost Graph"
+
+msgid "Possible server crash"
+msgstr "Posible bloqueo del servidor"
+
+msgid "These functions might create a server crash"
+msgstr "Estas funciones pueden crear una caída del servidor"
+
+msgid "Experimental functions"
+msgstr "Funciones experimentales"
+
+msgid "They are not officially of the current release."
+msgstr "No son oficialmente de la versión actual."
+
+msgid "They likely will not be officially be part of the next release:"
+msgstr "Es probable que oficialmente no formen parte de la siguiente versión:"
+
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr "Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL"
+
+msgid "Name might change."
+msgstr "El nombre puede cambiar."
+
+msgid "Signature might change."
+msgstr "La firma puede cambiar."
+
+msgid "Functionality might change."
+msgstr "La funcionalidad puede cambiar."
+
+msgid "pgTap tests might be missing."
+msgstr "Las pruebas de pgTap pueden faltar."
+
+msgid "Might need c/c++ coding."
+msgstr "Posiblemente necesite codificación c/c++."
+
+msgid "May lack documentation."
+msgstr "Puede carecer documentación."
+
+msgid "Documentation if any might need to be rewritten."
+msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
+
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+"Puede ser necesario que los ejemplos de documentación se generen "
+"automáticamente."
+
+msgid "Might need a lot of feedback from the comunity."
+msgstr "Puede ser necesaria retroalimentación por parte de la comunidad."
+
+msgid "Might depend on a proposed function of pgRouting"
+msgstr "Puede depender de una función propuesta de pgRouting"
+
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr "Podría depender de una función obsoleta de pgRouting"
+
+msgid "Availability"
+msgstr "Disponibilidad"
+
+msgid "Version 3.2.0"
+msgstr "Versión 3.2.0"
+
+msgid "New **experimental** function"
+msgstr "Nueva función **experimental**"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid ""
+"Adds the minimum number of edges needed to make the input graph "
+"connected. The algorithm first identifies all of the connected components"
+" in the graph, then adds edges to connect those components together in a "
+"path. For example, if a graph contains three connected components A, B, "
+"and C, make_connected will add two edges. The two edges added might "
+"consist of one connecting a vertex in A with a vertex in B and one "
+"connecting a vertex in B with a vertex in C."
+msgstr ""
+"Agrega el número mínimo de bordes necesarios para conectar el gráfico de "
+"entrada. El algoritmo primero identifica todos los componentes conectados"
+" en el gráfico, luego agrega bordes para conectar esos componentes en una"
+" ruta. Por ejemplo, si un gráfico contiene tres componentes conectados A,"
+" B y C, make_connected agregará dos bordes. Las dos aristas agregadas "
+"podrían consistir en una que conecta un vértice en A con un vértice en B "
+"y otra que conecta un vértice en B con un vértice en C."
+
+msgid "The main characteristics are:"
+msgstr "Las principales características son:"
+
+msgid "Works for **undirected** graphs."
+msgstr "Funciona para grafos **no dirigidos**."
+
+msgid ""
+"It will give a minimum list of all edges which are needed in the graph to"
+" make connect it."
+msgstr ""
+"Dará la lista mínima de los bordes que se necesitan en el grafo para "
+"conectarlo."
+
+msgid "The algorithm does not considers traversal costs in the calculations."
+msgstr "El algoritmo no considera los costos transversales en los cálculos."
+
+msgid "The algorithm does not considers geometric topology in the calculations."
+msgstr "El algoritmo no considera la topología geométrica en los cálculos."
+
+msgid "Running time: :math:`O(V + E)`"
+msgstr "Tiempo de ejecución: :math:`O(V + E)`"
+
+msgid "Signatures"
+msgstr "Firmas"
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_makeConnected(`Edges SQL`_)"
+msgstr "pgr_makeConnected(`SQL de aristas`_)"
+
+msgid "RETURNS SET OF |result-component-make|"
+msgstr "REGRESA CONJUNTO DE |result-component-make|"
+
+msgid "OR EMPTY SET"
+msgstr ""
+
+msgid "Example"
+msgstr "Ejemplo"
+
+msgid ""
+"Query done on :doc:`sampledata` network gives the list of edges that are "
+"needed to connect the graph."
+msgstr ""
+"La consulta realizada en la red de :doc:`sampledata` proporciona la lista"
+" de aristas que se necesitan en el grafo para conectarlo."
+
+msgid "Parameters"
+msgstr "Parámetros"
+
+msgid "Parameter"
+msgstr "Parámetro"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "`Edges SQL`_"
+msgstr "`SQL de aristas`_"
+
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+msgid "`Edges SQL`_ as described below."
+msgstr "`SQL de aristas`_ descritas más adelante."
+
+msgid "Inner Queries"
+msgstr "Consultas Internas"
+
+msgid "Edges SQL"
+msgstr "SQL aristas"
+
+msgid "Column"
+msgstr "Columna"
+
+msgid "Default"
+msgstr "x Defecto"
+
+msgid "``id``"
+msgstr "``id``"
+
+msgid "**ANY-INTEGER**"
+msgstr "**ENTEROS**"
+
+msgid "Identifier of the edge."
+msgstr "Identificador de la arista."
+
+msgid "``source``"
+msgstr "``source``"
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer vértice de la arista."
+
+msgid "``target``"
+msgstr "``target``"
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo vértice de la arista."
+
+msgid "``cost``"
+msgstr "``cost``"
+
+msgid "**ANY-NUMERICAL**"
+msgstr "**FLOTANTES**"
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr "Peso de la arista (``source``, ``target``)"
+
+msgid "``reverse_cost``"
+msgstr "``reverse_cost``"
+
+msgid "-1"
+msgstr "-1"
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr "Peso de la arista (``target``, ``source``)"
+
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
+"tanto no es parte del grafo."
+
+msgid "Where:"
+msgstr "Donde:"
+
+msgid "ANY-INTEGER"
+msgstr "ENTEROS"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+
+msgid "ANY-NUMERICAL"
+msgstr "FLOTANTES"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+
+msgid "Result Columns"
+msgstr "Columnas de Resultados"
+
+msgid "Returns set of |result-component-make|"
+msgstr "Regresa conjunto de |result-component-make|"
+
+msgid "``seq``"
+msgstr "``seq``"
+
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+msgid "Sequential value starting from **1**."
+msgstr "Valor secuencial a partir de **1**."
+
+msgid "``start_vid``"
+msgstr "``start_vid``"
+
+msgid "``end_vid``"
+msgstr "``end_vid``"
+
+msgid "See Also"
+msgstr "Ver también"
+
+msgid "https://www.boost.org/libs/graph/doc/make_connected.html"
+msgstr "https://www.boost.org/libs/graph/doc/make_connected.html"
+
+msgid "The queries use the :doc:`sampledata` network."
+msgstr "Las consultas utilizan la red :doc:`sampledata` ."
+
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
+

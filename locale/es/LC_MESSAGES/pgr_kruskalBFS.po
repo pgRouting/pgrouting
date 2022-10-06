@@ -1,0 +1,371 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: 2022-10-04 18:19+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language: es\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
+"/pgrouting-develop/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_kruskalBFS.html>`__ (`3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_kruskalBFS.html>`__) `3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_kruskalBFS.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_kruskalBFS.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_kruskalBFS.html>`__"
+msgstr ""
+
+msgid "``pgr_kruskalBFS``"
+msgstr "``pgr_kruskalBFS``"
+
+msgid ""
+"``pgr_kruskalBFS`` — Kruskal's algorithm for Minimum Spanning Tree with "
+"breadth First Search ordering."
+msgstr ""
+"``pgr_kruskalBFS`` — Algoritmo de Kruskal para el Árbol de Expansión "
+"Mínimo con orden de Primera Búsqueda en Anchura."
+
+msgid "Boost Graph Inside"
+msgstr "Adentro: Boost Graph"
+
+msgid "Availability"
+msgstr "Disponibilidad"
+
+msgid "Version 3.0.0"
+msgstr "Versión 3.0.0"
+
+msgid "New **Official** function"
+msgstr "Nueva función **Oficial**"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid ""
+"Visits and extracts the nodes information in Breath First Search ordering"
+" of the Minimum Spanning Tree created using Kruskal's algorithm."
+msgstr ""
+"Visita y extrae la información de los nodos en la orden de Primera "
+"Búsqueda en Anchura del Árbol de Expansión Mínimo creado con el algoritmo"
+" de Kruskal."
+
+msgid "**The main Characteristics are:**"
+msgstr "**Las características principales son:**"
+
+msgid "It's implementation is only on **undirected** graph."
+msgstr "Su implementación es solo para grafo **no dirigido**."
+
+msgid "Process is done only on edges with positive costs."
+msgstr "El proceso se realiza sólo en aristas con costos positivos."
+
+msgid "When the graph is connected"
+msgstr "Cuando el grafo es conectado"
+
+msgid "The resulting edges make up a tree"
+msgstr "Las aristas resultantes componen un árbol"
+
+msgid "When the graph is not connected,"
+msgstr "Cuando el grafo no está conectado,"
+
+msgid "Finds a minimum spanning tree for each connected component."
+msgstr "Encuentra un árbol de expansión mínimo para cada componente conectado."
+
+msgid "The resulting edges make up a forest."
+msgstr "Las aristas resultantes conforman un bosque."
+
+msgid "The total weight of all the edges in the tree or forest is minimized."
+msgstr "Se minimiza el peso total de todos los bordes del árbol o bosque."
+
+msgid "Kruskal's running time: :math:`O(E * log E)`"
+msgstr "Tiempo de ejecución de Kruskal: :math:`O(E * log E)`"
+
+msgid "Returned tree nodes from a root vertex are on Breath First Search order"
+msgstr ""
+"Los nodos de árbol devueltos desde un vértice raíz están en orden de la "
+"Primera Búsqueda de Anchura"
+
+msgid "Breath First Search Running time: :math:`O(E + V)`"
+msgstr "Tiempo de ejecución de la Primera Búsqueda de Anchura: :math:`O(E + V)`"
+
+msgid "Signatures"
+msgstr "Firmas"
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_kruskalBFS(`Edges SQL`_, **root vid**, [``max_depth``])"
+msgstr "pgr_kruskalBFS(`SQL de aristas`_, **Raíz**, [``max_depth``])"
+
+msgid "pgr_kruskalBFS(`Edges SQL`_, **root vids**, [``max_depth``])"
+msgstr "pgr_kruskalBFS(`SQL de aristas`_, **raices**, [``max_depth``])"
+
+msgid "RETURNS SET OF |result-bfs|"
+msgstr ""
+
+msgid "Single vertex"
+msgstr "Vértice único"
+
+msgid "Example"
+msgstr "Ejemplo"
+
+msgid "The Minimum Spanning Tree having as root vertex :math:`6`"
+msgstr "El Árbol de Expansión Mínimo que tiene como vértice raíz :math:`6`"
+
+msgid "Multiple vertices"
+msgstr "Múltiples vértices"
+
+msgid ""
+"The Minimum Spanning Tree starting on vertices :math:`\\{9, 6\\}` with "
+":math:`depth \\leq 3`"
+msgstr ""
+"El Árbol de Expansión Mínimo que comienza en los vértices :math:`\\{9, "
+"6\\}` con ::math:`depth \\leq 3`"
+
+msgid "Parameters"
+msgstr "Parámetros"
+
+msgid "Parameter"
+msgstr "Parámetro"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "`Edges SQL`_"
+msgstr "`SQL de aristas`_"
+
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+msgid "`Edges SQL`_ as described below."
+msgstr "`SQL de aristas`_ descritas más adelante."
+
+msgid "**root vid**"
+msgstr "**raíz**"
+
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+msgid "Identifier of the root vertex of the tree."
+msgstr "Identificador del vértice raíz del árbol."
+
+msgid ""
+"When value is :math:`0` then gets the spanning forest starting in "
+"aleatory nodes for each tree in the forest."
+msgstr ""
+"Cuando el valor es :math:`0` se obtiene el bosque de expansión que "
+"comienza en nodos aleatorios para cada árbol del bosque."
+
+msgid "**root vids**"
+msgstr "**raices**"
+
+msgid "``ARRAY`` [ **ANY-INTEGER** ]"
+msgstr "``ARRAY`` [**ENTEROS** ]"
+
+msgid "Array of identifiers of the root vertices."
+msgstr "Arreglo de identificadores de los vértices raíz."
+
+msgid ":math:`0` values are ignored"
+msgstr "Valores :math:`0` son ignorados"
+
+msgid "For optimization purposes, any duplicated value is ignored."
+msgstr "Con el propósito de optimización, valores duplicados son ignorados."
+
+msgid "Where:"
+msgstr "Donde:"
+
+msgid "ANY-INTEGER"
+msgstr "ENTEROS"
+
+msgid "SMALLINT, INTEGER, BIGINT"
+msgstr "``SMALLINT, INTEGER, BIGINT``"
+
+msgid "ANY-NUMERIC"
+msgstr "FLOTANTES"
+
+msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
+msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
+
+msgid "BFS optional parameters"
+msgstr "Párametros opcionales de BFS"
+
+msgid "Default"
+msgstr "x Defecto"
+
+msgid "``max_depth``"
+msgstr "``max_depth``"
+
+msgid ":math:`9223372036854775807`"
+msgstr ":math:`9223372036854775807`"
+
+msgid "Upper limit of the depth of the tree."
+msgstr "Límite superior para la profundidad del árbol."
+
+msgid "When negative throws an error."
+msgstr "Cuando negativo arroja error."
+
+msgid "Inner Queries"
+msgstr "Consultas Internas"
+
+msgid "Edges SQL"
+msgstr "SQL aristas"
+
+msgid "Column"
+msgstr "Columna"
+
+msgid "``id``"
+msgstr "``id``"
+
+msgid "**ANY-INTEGER**"
+msgstr "**ENTEROS**"
+
+msgid "Identifier of the edge."
+msgstr "Identificador de la arista."
+
+msgid "``source``"
+msgstr "``source``"
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer vértice de la arista."
+
+msgid "``target``"
+msgstr "``target``"
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo vértice de la arista."
+
+msgid "``cost``"
+msgstr "``cost``"
+
+msgid "**ANY-NUMERICAL**"
+msgstr "**FLOTANTES**"
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr "Peso de la arista (``source``, ``target``)"
+
+msgid "``reverse_cost``"
+msgstr "``reverse_cost``"
+
+msgid "-1"
+msgstr "-1"
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr "Peso de la arista (``target``, ``source``)"
+
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
+"tanto no es parte del grafo."
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+
+msgid "ANY-NUMERICAL"
+msgstr "FLOTANTES"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+
+msgid "Result Columns"
+msgstr "Columnas de Resultados"
+
+msgid "Returns SET OF ``(seq, depth, start_vid, node, edge, cost, agg_cost)``"
+msgstr "Regresa ``SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)``"
+
+msgid "``seq``"
+msgstr "``seq``"
+
+msgid "Sequential value starting from :math:`1`."
+msgstr "Valor secuencial a partir de :math:`1`."
+
+msgid "``depth``"
+msgstr "``depth``"
+
+msgid "Depth of the ``node``."
+msgstr "Profundidad del ``node``."
+
+msgid ":math:`0` when ``node`` = ``start_vid``."
+msgstr ":math:`0` cuando ``node`` = ``start_vid``."
+
+msgid "``start_vid``"
+msgstr "``start_vid``"
+
+msgid "Identifier of the root vertex."
+msgstr "Identificador del vértice raíz."
+
+msgid "``node``"
+msgstr "``node``"
+
+msgid "Identifier of ``node`` reached using ``edge``."
+msgstr "Identificador del ``node`` alcanzado usando ``edge``."
+
+msgid "``edge``"
+msgstr "``edge``"
+
+msgid "Identifier of the ``edge`` used to arrive to ``node``."
+msgstr "Identificador del ``edge`` utilizado para llegar a ``node``."
+
+msgid ":math:`-1` when ``node`` = ``start_vid``."
+msgstr ":math:`-1` cuando ``node`` = ``start_vid``."
+
+msgid "``FLOAT``"
+msgstr "``FLOAT``"
+
+msgid "Cost to traverse ``edge``."
+msgstr "Costo por recorrer ``edge``."
+
+msgid "``agg_cost``"
+msgstr "``agg_cost``"
+
+msgid "Aggregate cost from ``start_vid`` to ``node``."
+msgstr "Costo agregado desde ``start_vid`` hasta ``node``."
+
+msgid "See Also"
+msgstr "Ver también"
+
+msgid ":doc:`spanningTree-family`"
+msgstr ":doc:`spanningTree-family`"
+
+msgid ":doc:`kruskal-family`"
+msgstr ":doc:`kruskal-family`"
+
+msgid ":doc:`sampledata`"
+msgstr ":doc:`sampledata`"
+
+msgid ""
+"`Boost: Kruskal's algorithm "
+"<https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
+msgstr ""
+"`Boost: algoritmo de Kruskal "
+"<https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
+
+msgid ""
+"`Wikipedia: Kruskal's algorithm "
+"<https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
+msgstr ""
+"`Wikipedia: algoritmo de Kruskal "
+"<https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
+
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
+

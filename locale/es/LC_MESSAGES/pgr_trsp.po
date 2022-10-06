@@ -1,0 +1,726 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: 2022-10-04 18:19+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language: es\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
+"/pgrouting-develop/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#, fuzzy
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_trsp.html>`__ (`3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_trsp.html>`__) `3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_trsp.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_trsp.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_trsp.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Última "
+"<https://docs.pgrouting.org/latest/es/pgr_trsp.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/es/pgr_trsp.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/es/pgr_trsp.html>`__ `3.2 "
+"<https://docs.pgrouting.org/3.2/es/pgr_trsp.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_trsp.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_trsp.html>`__"
+
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_trsp.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_trsp.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_trsp.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/trsp/doc/pgr_trsp.html>`__ `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/trsp/doc/pgr_trsp.html>`__ `2.1 "
+"<https://docs.pgrouting.org/2.1/en/src/trsp/doc/index.html>`__ `2.0 "
+"<https://docs.pgrouting.org/2.0/en/src/trsp/doc/index.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_trsp.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_trsp.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_trsp.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/trsp/doc/pgr_trsp.html>`__ `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/trsp/doc/pgr_trsp.html>`__ `2.1 "
+"<https://docs.pgrouting.org/2.1/en/src/trsp/doc/index.html>`__ `2.0 "
+"<https://docs.pgrouting.org/2.0/en/src/trsp/doc/index.html>`__"
+
+#, fuzzy
+msgid "pgr_trsp - Turn Restriction Shortest Path (TRSP)"
+msgstr ":doc:`pgr_trsp` - Camino más corto con restricción de giros (TRSP)"
+
+#, fuzzy
+msgid ""
+"``pgr_trsp`` — Returns the shortest path with support for turn "
+"restrictions."
+msgstr "``pgr_trsp`` - Ruteo con restricciones."
+
+msgid "Availability"
+msgstr "Disponibilidad"
+
+msgid "Version 2.1.0"
+msgstr "Versión 2.1.0"
+
+#, fuzzy
+msgid "New *Via* **prototypes**"
+msgstr "Nuevos prototipos:"
+
+#, fuzzy
+msgid "pgr_trspViaVertices"
+msgstr "``pgr_trspViaVertices``"
+
+#, fuzzy
+msgid "pgr_trspViaEdges"
+msgstr "``pgr_trspViaEdges``"
+
+msgid "Version 2.0.0"
+msgstr "Versión 2.0.0"
+
+msgid "**Official** function"
+msgstr "Función **oficial**"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid ""
+"The turn restricted shorthest path (TRSP) is a shortest path algorithm "
+"that can optionally take into account complicated turn restrictions like "
+"those found in real world navigable road networks. Performamnce wise it "
+"is nearly as fast as the A* search but has many additional features like "
+"it works with edges rather than the nodes of the network. Returns a set "
+"of (seq, id1, id2, cost) or (seq, id1, id2, id3, cost) rows, that make up"
+" a path."
+msgstr ""
+
+msgid "**The main characteristics are:**"
+msgstr "**Las principales características son:**"
+
+msgid ""
+"The Turn Restricted Shortest Path algorithm (TRSP) is similar to the "
+"shooting star in that you can specify turn restrictions."
+msgstr ""
+
+msgid ""
+"The TRSP setup is mostly the same as :doc:`Dijkstra shortest path "
+"<pgr_dijkstra>` with the addition of an optional turn restriction table. "
+"This provides an easy way of adding turn restrictions to a road network "
+"by placing them in a separate table."
+msgstr ""
+
+msgid "sql"
+msgstr ""
+
+#, fuzzy
+msgid "a SQL query, which should return a set of rows with the following columns:"
+msgstr ""
+"Una consulta SQL, que debe regresar un conjunto de filas con las "
+"siguientes columnas:"
+
+msgid "id"
+msgstr "id"
+
+#, fuzzy
+msgid "``int4`` identifier of the edge"
+msgstr "``bigint`` identificador del vértice."
+
+msgid "source"
+msgstr "source"
+
+#, fuzzy
+msgid "``int4`` identifier of the source vertex"
+msgstr "``bigint`` identificador del vértice."
+
+msgid "target"
+msgstr "target"
+
+#, fuzzy
+msgid "``int4`` identifier of the target vertex"
+msgstr "``bigint`` identificador del vértice."
+
+#, fuzzy
+msgid "cost"
+msgstr "``cost``"
+
+msgid ""
+"``float8`` value, of the edge traversal cost. A negative cost will "
+"prevent the edge from being inserted in the graph."
+msgstr ""
+
+#, fuzzy
+msgid "reverse_cost"
+msgstr "``reverse_cost``"
+
+msgid ""
+"(optional) the cost for the reverse traversal of the edge. This is only "
+"used when the ``directed`` and ``has_rcost`` parameters are ``true`` (see"
+" the above remark about negative costs)."
+msgstr ""
+
+msgid "``int4`` **NODE id** of the start point"
+msgstr ""
+
+msgid "``int4`` **NODE id** of the end point"
+msgstr ""
+
+#, fuzzy
+msgid "directed"
+msgstr "No dirigido"
+
+#, fuzzy
+msgid "``true`` if the graph is directed"
+msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
+
+msgid "has_rcost"
+msgstr ""
+
+msgid ""
+"if ``true``, the ``reverse_cost`` column of the SQL generated set of rows"
+" will be used for the cost of the traversal of the edge in the opposite "
+"direction."
+msgstr ""
+
+#, fuzzy
+msgid "restrict_sql"
+msgstr "Restricciones"
+
+#, fuzzy
+msgid ""
+"(optional) a SQL query, which should return a set of rows with the "
+"following columns:"
+msgstr ""
+"Una consulta SQL, que debe regresar un conjunto de filas con las "
+"siguientes columnas:"
+
+#, fuzzy
+msgid "to_cost"
+msgstr "``to_cost``"
+
+#, fuzzy
+msgid "``float8`` turn restriction cost"
+msgstr "Trayectoria con restricciones de giro"
+
+#, fuzzy
+msgid "target_id"
+msgstr "``target_id``"
+
+#, fuzzy
+msgid "``int4`` target id"
+msgstr "``target_id``"
+
+#, fuzzy
+msgid "via_path"
+msgstr "``via_path``"
+
+msgid "``text`` comma separated list of edges in the reverse order of ``rule``"
+msgstr ""
+
+msgid ""
+"Another variant of TRSP allows to specify **EDGE id** of source and "
+"target together with a fraction to interpolate the position:"
+msgstr ""
+
+#, fuzzy
+msgid "source_edge"
+msgstr "source"
+
+#, fuzzy
+msgid "``int4`` **EDGE id** of the start edge"
+msgstr "``integer`` número del segmento del borde original"
+
+#, fuzzy
+msgid "source_pos"
+msgstr "source"
+
+msgid "``float8`` fraction of 1 defines the position on the start edge"
+msgstr ""
+
+#, fuzzy
+msgid "target_edge"
+msgstr "target"
+
+#, fuzzy
+msgid "``int4`` **EDGE id** of the end edge"
+msgstr "``integer`` número del segmento del borde original"
+
+#, fuzzy
+msgid "target_pos"
+msgstr "target"
+
+msgid "``float8`` fraction of 1 defines the position on the end edge"
+msgstr ""
+
+#, fuzzy
+msgid "Returns set of:"
+msgstr "Regresa conjunto de |result-node|"
+
+#, fuzzy
+msgid "seq"
+msgstr "``seq``"
+
+#, fuzzy
+msgid "row sequence"
+msgstr "Secuencia de filas."
+
+#, fuzzy
+msgid "id1"
+msgstr "id"
+
+#, fuzzy
+msgid "node ID"
+msgstr "old_id"
+
+#, fuzzy
+msgid "id2"
+msgstr "id"
+
+msgid "edge ID (``-1`` for the last row)"
+msgstr ""
+
+#, fuzzy
+msgid "cost to traverse from ``id1`` using ``id2``"
+msgstr "Costo por recorrer ``edge``."
+
+#, fuzzy
+msgid "Support for Vias"
+msgstr "Tablas de apoyo"
+
+msgid ""
+"The Support for Vias functions are prototypes. Not all corner cases are "
+"being considered."
+msgstr ""
+
+msgid ""
+"We also have support for vias where you can say generate a from A to B to"
+" C, etc. We support both methods above only you pass an array of vertices"
+" or and array of edges and percentage position along the edge in two "
+"arrays."
+msgstr ""
+
+#, fuzzy
+msgid "vids"
+msgstr "id"
+
+msgid ""
+"``int4[]`` An ordered array of **NODE id** the path will go through from "
+"start to end."
+msgstr ""
+
+msgid "``text`` commar separated list of edges in the reverse order of ``rule``"
+msgstr ""
+
+msgid ""
+"Another variant of TRSP allows to specify **EDGE id** together with a "
+"fraction to interpolate the position:"
+msgstr ""
+
+#, fuzzy
+msgid "eids"
+msgstr "id"
+
+msgid "``int4`` An ordered array of **EDGE id** that the path has to traverse"
+msgstr ""
+
+msgid "pcts"
+msgstr ""
+
+msgid ""
+"``float8`` An array of fractional positions along the respective edges in"
+" ``eids``, where 0.0 is the start of the edge and 1.0 is the end of the "
+"eadge."
+msgstr ""
+
+#, fuzzy
+msgid "route ID"
+msgstr "ruta"
+
+#, fuzzy
+msgid "id3"
+msgstr "id"
+
+#, fuzzy
+msgid "cost to traverse from ``id2`` using ``id3``"
+msgstr "Costo por recorrer ``edge``."
+
+msgid "Additional Examples"
+msgstr "Ejemplos Adicionales"
+
+msgid "Example"
+msgstr "Ejemplo"
+
+#, fuzzy
+msgid "Without turn restrictions"
+msgstr "sin restricciones"
+
+#, fuzzy
+msgid "With turn restrictions"
+msgstr "Trayectoria con restricciones de giro"
+
+#, fuzzy
+msgid "Then a query with turn restrictions is created as:"
+msgstr "Trayectoria con restricciones de giro"
+
+msgid "An example query using vertex ids and via points:"
+msgstr ""
+
+msgid "An example query using edge ids and vias:"
+msgstr ""
+
+msgid "The queries use the :doc:`sampledata` network."
+msgstr "Las consultas utilizan la red :doc:`sampledata` ."
+
+msgid "Known Issues"
+msgstr ""
+
+msgid "Introduction"
+msgstr "Introducción"
+
+msgid ""
+"pgr_trsp code has issues that are not being fixed yet, but as time passes"
+" and new functionality is added to pgRouting with wrappers to **hide** "
+"the issues, not to fix them."
+msgstr ""
+
+msgid "For clarity on the queries:"
+msgstr ""
+
+msgid "_pgr_trsp (internal_function) is the original code"
+msgstr ""
+
+msgid "pgr_trsp (lower case) represents the wrapper calling the original code"
+msgstr ""
+
+msgid ""
+"pgr_TRSP (upper case) represents the wrapper calling the replacement "
+"function, depending on the function, it can be:"
+msgstr ""
+
+msgid "pgr_dijkstra"
+msgstr "pgr_dijkstra"
+
+msgid "pgr_dijkstraVia"
+msgstr "pgr_dijkstraVia"
+
+#, fuzzy
+msgid "pgr_withPoints"
+msgstr "pgr_withPointsKSP"
+
+#, fuzzy
+msgid "_pgr_withPointsVia (internal function)"
+msgstr "pgr_withPoints(Combinaciones)"
+
+#, fuzzy
+msgid "The restrictions"
+msgstr "con restricciones"
+
+msgid ""
+"The restriction used in the examples does not have to do anything with "
+"the graph:"
+msgstr ""
+
+msgid "No vertex has id: 25, 32 or 33"
+msgstr ""
+
+msgid "No edge has id: 25, 32 or 33"
+msgstr ""
+
+#, fuzzy
+msgid "A restriction is assigned as:"
+msgstr "Contenido de viejas restricciones"
+
+msgid "The back end code has that same restriction as follows"
+msgstr ""
+
+msgid ""
+"therefore the shortest path expected are as if there was no restriction "
+"involved"
+msgstr ""
+
+msgid "The \"Vertices\" signature version"
+msgstr ""
+
+msgid "1 Different ways to represent 'no path found`"
+msgstr ""
+
+msgid "Sometimes represents with EMPTY SET a no path found"
+msgstr ""
+
+msgid "Sometimes represents with Error a no path found"
+msgstr ""
+
+msgid "Returning EMPTY SET to represent no path found"
+msgstr ""
+
+msgid ""
+"pgr_trsp calls :doc:`pgr_dijkstra` when there are no restrictions which "
+"returns `EMPTY SET` when a path is not found"
+msgstr ""
+
+msgid "Throwing EXCEPTION to represent no path found"
+msgstr ""
+
+msgid ""
+"pgr_trsp use the original code when there are restrictions, even if they "
+"have nothing to do with the graph, which will throw an EXCEPTION to "
+"represent no path found."
+msgstr ""
+
+#, fuzzy
+msgid "1 Routing from/to same location"
+msgstr "Cuando se utiliza la notación por nombre"
+
+msgid ""
+"When routing from location :math:`1` to the same location :math:`1`, no "
+"path is needed to reach the destination, its already there. Therefore is "
+"expected to return an `EMPTY SET` or an `EXCEPTION` depending on the "
+"parameters"
+msgstr ""
+
+msgid "Sometimes represents with EMPTY SET no path found (expected)"
+msgstr ""
+
+#, fuzzy
+msgid "Sometimes represents with EXCEPTION no path found (expected)"
+msgstr "Las trayectorias representan los tramos de la ruta."
+
+msgid "Sometimes finds a path (not expected)"
+msgstr ""
+
+msgid "Returning expected EMPTY SET to represent no path found"
+msgstr ""
+
+msgid ""
+"``pgr_trsp`` calls :doc:`pgr_dijkstra` when there are no restrictions "
+"which returns the expected to return `EMPTY SET` to represent no path "
+"found."
+msgstr ""
+
+msgid "Returning expected EXCEPTION to represent no path found"
+msgstr ""
+
+msgid ""
+"In this case ``pgr_trsp`` calls the original code when there are "
+"restrictions, even if they have nothing to do with the graph, in this "
+"case that code throws the expected EXCEPTION"
+msgstr ""
+
+msgid "Returning unexpected path"
+msgstr ""
+
+msgid ""
+"In this case ``pgr_trsp`` calls the original code when there are "
+"restrictions, even if they have nothing to do with the graph, in this "
+"case that code finds an unexpected path."
+msgstr ""
+
+#, fuzzy
+msgid "1 User contradictions"
+msgstr "Contracción lineal"
+
+msgid ""
+"``pgr_trsp`` unlike other pgRouting functions does not autodectect the "
+"existence of ``reverse_cost`` column. Therefor it has ``has_rcost`` "
+"parameter to check the existence of ``reverse_cost`` column. "
+"Contradictions happen:"
+msgstr ""
+
+msgid "When the reverse_cost is missing, and the flag `has_rcost` is set to true"
+msgstr ""
+
+msgid "When the reverse_cost exists, and the flag `has_rcost` is set to false"
+msgstr ""
+
+msgid "When the reverse_cost is missing, and the flag `has_rcost` is set to true."
+msgstr ""
+
+msgid "An EXCEPTION is thrown."
+msgstr ""
+
+msgid ""
+"The ``reverse_cost`` column will be effectively removed and will cost "
+"execution time"
+msgstr ""
+
+msgid "The \"Edges\" signature version"
+msgstr ""
+
+msgid "2 Different ways to represent 'no path found`"
+msgstr ""
+
+#, fuzzy
+msgid "Sometimes represents with EXCEPTION a no path found"
+msgstr "Las trayectorias representan los tramos de la ruta."
+
+msgid ""
+"pgr_trsp calls :doc:`pgr_withPoints` when there are no restrictions which"
+" returns `EMPTY SET` when a path is not found"
+msgstr ""
+
+#, fuzzy
+msgid "Paths with equal number of vertices and edges"
+msgstr ":math:`|V|` es la cantidad de vertices del grafo."
+
+msgid "A path is made of `N` vertices and `N - 1` edges."
+msgstr ""
+
+msgid "Sometimes returns `N` vertices and `N - 1` edges."
+msgstr ""
+
+msgid "Sometimes returns `N - 1` vertices and `N - 1` edges."
+msgstr ""
+
+msgid "Returning `N` vertices and `N - 1` edges."
+msgstr ""
+
+msgid ""
+"pgr_trsp calls :doc:`pgr_withPoints` when there are no restrictions which"
+" returns the correct number of rows that will include all the vertices. "
+"The last row will have a ``-1`` on the edge column to indicate the edge "
+"number is invalidu for that row."
+msgstr ""
+
+msgid "Returning `N - 1` vertices and `N - 1` edges."
+msgstr ""
+
+msgid ""
+"pgr_trsp use the original code when there are restrictions, even if they "
+"have nothing to do with the graph, and will not return the last vertex of"
+" the path."
+msgstr ""
+
+#, fuzzy
+msgid "2 Routing from/to same location"
+msgstr "Cuando se utiliza la notación por nombre"
+
+msgid ""
+"When routing from the same edge and position to the same edge and "
+"position, no path is needed to reach the destination, its already there. "
+"Therefore is expected to return an `EMPTY SET` or an `EXCEPTION` "
+"depending on the parameters, non of which is happening."
+msgstr ""
+
+msgid "A path with 2 vertices and edge cost 0"
+msgstr ""
+
+msgid ""
+"pgr_trsp calls :doc:`pgr_withPoints` setting the first :math:`(edge, "
+"position)` with a differenct point id from the second :math:`(edge, "
+"position)` making them different points. But the cost using the edge, is "
+":math:`0`."
+msgstr ""
+
+msgid "A path with 1 vertices and edge cost 0"
+msgstr ""
+
+msgid ""
+"pgr_trsp use the original code when there are restrictions, even if they "
+"have nothing to do with the graph, and will not have the row for the "
+"vertex :math:`-2`."
+msgstr ""
+
+#, fuzzy
+msgid "2 User contradictions"
+msgstr "2 - Contracción lineal"
+
+#, fuzzy
+msgid "Using a points of interest table"
+msgstr "Datos de puntos de interés"
+
+#, fuzzy
+msgid "Given a set of points of interest:"
+msgstr "Puntos de interés"
+
+#, fuzzy
+msgid "Using pgr_trsp"
+msgstr "Corregido pgr_trsp:"
+
+msgid "On *pgr_trsp*, to be able to use the table information:"
+msgstr ""
+
+msgid "Each parameter has to be extracted explicitly from the table"
+msgstr ""
+
+msgid "Regardles of the point pid original value"
+msgstr ""
+
+msgid "will always be -1 for the first point"
+msgstr ""
+
+msgid "will always be -2 for the second point"
+msgstr ""
+
+msgid "the row reaching point -2 will not be shown"
+msgstr ""
+
+msgid "Using :doc:`pgr_withPoints`"
+msgstr ""
+
+#, fuzzy
+msgid "Suggestion: use :doc:`pgr_withPoints` when there are no turn restrictions:"
+msgstr ":doc:`pgr_withPoints` cuando no hay restricciones,"
+
+#, fuzzy
+msgid "Results are more complete"
+msgstr "Los resultados son ordenados"
+
+#, fuzzy
+msgid "Column names are meaningful"
+msgstr "Los nombres de la columna de salida no tienen importancia"
+
+msgid "Routing from a vertex to a point"
+msgstr ""
+
+msgid ""
+"Solving a shortest path from vertex :math:`6` to pid 1 using a points of "
+"interest table"
+msgstr ""
+
+msgid "Vertex 6 is on edge 8 at 1 fraction"
+msgstr ""
+
+msgid "Vertex 6 is also edge 11 at 0 fraction"
+msgstr ""
+
+msgid "No need to choose where the vertex is located."
+msgstr ""
+
+#, fuzzy
+msgid "prototypes"
+msgstr "Nuevos prototipos:"
+
+msgid ""
+"``pgr_trspViaVertices`` and ``pgr_trspViaEdges`` were added to pgRouting "
+"as prototypes"
+msgstr ""
+
+msgid ""
+"These functions use the pgr_trsp functions inheriting all the problems "
+"mentioned above. When there are no restrictions and have a routing "
+"\"via\" problem with vertices:"
+msgstr ""
+
+msgid ":doc:`pgr_dijkstraVia`"
+msgstr ":doc:`pgr_dijkstraVia`"
+
+msgid "See Also"
+msgstr "Ver también"
+
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
+

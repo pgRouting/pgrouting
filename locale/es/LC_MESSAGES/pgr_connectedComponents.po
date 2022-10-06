@@ -1,0 +1,367 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: 2022-10-04 18:19+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language: es\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
+"/pgrouting-develop/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#, fuzzy
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_connectedComponents.html>`__ "
+"(`3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_connectedComponents.html>`__) `3.2"
+" <https://docs.pgrouting.org/3.2/en/pgr_connectedComponents.html>`__ `3.1"
+" <https://docs.pgrouting.org/3.1/en/pgr_connectedComponents.html>`__ `3.0"
+" <https://docs.pgrouting.org/3.0/en/pgr_connectedComponents.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Última "
+"<https://docs.pgrouting.org/latest/es/pgr_connectedComponents.html>`__ "
+"(`3.4 "
+"<https://docs.pgrouting.org/3.4/es/pgr_connectedComponents.html>`__) `3.3"
+" <https://docs.pgrouting.org/3.3/es/pgr_connectedComponents.html>`__ `3.2"
+" <https://docs.pgrouting.org/3.2/es/pgr_connectedComponents.html>`__ `3.1"
+" <https://docs.pgrouting.org/3.1/es/pgr_connectedComponents.html>`__ `3.0"
+" <https://docs.pgrouting.org/3.0/es/pgr_connectedComponents.html>`__"
+
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_connectedComponents.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_connectedComponents.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_connectedComponents.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_connectedComponents.html>`__"
+
+msgid "pgr_connectedComponents"
+msgstr "pgr_connectedComponents"
+
+msgid ""
+"``pgr_connectedComponents`` — Connected components of an undirected graph"
+" using a DFS-based approach."
+msgstr ""
+"``pgr_connectedComponents`` — Componentes conectados de un grafo no "
+"dirigido mediante un enfoque basado en DFS."
+
+msgid "Boost Graph Inside"
+msgstr "Adentro: Boost Graph"
+
+msgid "Availability"
+msgstr "Disponibilidad"
+
+msgid "Version 3.0.0"
+msgstr "Versión 3.0.0"
+
+msgid "Return columns change:"
+msgstr "Las columnas de retorno cambian:"
+
+msgid "``n_seq`` is removed"
+msgstr "``n_seq`` se elimina"
+
+msgid "``seq`` changed type to ``BIGINT``"
+msgstr "``seq`` cambió el tipo a ``BIGINT``'"
+
+msgid "**Official** function"
+msgstr "Función **oficial**"
+
+msgid "Version 2.5.0"
+msgstr "Versión 2.5.0"
+
+msgid "New **experimental** function"
+msgstr "Nueva función **experimental**"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid ""
+"A connected component of an undirected graph is a set of vertices that "
+"are all reachable from each other."
+msgstr ""
+"Un componente conectado de un gráfico no direccionado es un conjunto de "
+"vértices que son todos accesibles entre sí."
+
+msgid "**The main characteristics are:**"
+msgstr "**Las principales características son:**"
+
+msgid "Works for **undirected** graphs."
+msgstr "Funciona para grafos **no dirigidos**."
+
+msgid "Components are described by vertices"
+msgstr "Los componentes se describen mediante vértices"
+
+msgid "The returned values are ordered:"
+msgstr "Los valores regresados se ordenan:"
+
+msgid "``component`` ascending"
+msgstr "``component`` ascendente"
+
+msgid "``node`` ascending"
+msgstr "``node`` ascendente"
+
+msgid "Running time: :math:`O(V + E)`"
+msgstr "Tiempo de ejecución: :math:`O(V + E)`"
+
+msgid "Signatures"
+msgstr "Firmas"
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_connectedComponents(`Edges SQL`_)"
+msgstr "pgr_connectedComponents(`SQL de aristas`_)"
+
+msgid "RETURNS SET OF |result-component-V|"
+msgstr "REGRESA CONJUNTO DE |result-component-V|"
+
+msgid "OR EMPTY SET"
+msgstr ""
+
+msgid "Example"
+msgstr "Ejemplo"
+
+msgid "The connected components of the graph"
+msgstr "Los componentes conectados del grafo"
+
+msgid "Parameters"
+msgstr "Parámetros"
+
+msgid "Parameter"
+msgstr "Parámetro"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "`Edges SQL`_"
+msgstr "`SQL de aristas`_"
+
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+msgid "`Edges SQL`_ as described below."
+msgstr "`SQL de aristas`_ descritas más adelante."
+
+msgid "Inner Queries"
+msgstr "Consultas Internas"
+
+msgid "Edges SQL"
+msgstr "SQL aristas"
+
+msgid "Column"
+msgstr "Columna"
+
+msgid "Default"
+msgstr "x Defecto"
+
+msgid "``id``"
+msgstr "``id``"
+
+msgid "**ANY-INTEGER**"
+msgstr "**ENTEROS**"
+
+msgid "Identifier of the edge."
+msgstr "Identificador de la arista."
+
+msgid "``source``"
+msgstr "``source``"
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer vértice de la arista."
+
+msgid "``target``"
+msgstr "``target``"
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo vértice de la arista."
+
+msgid "``cost``"
+msgstr "``cost``"
+
+msgid "**ANY-NUMERICAL**"
+msgstr "**FLOTANTES**"
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr "Peso de la arista (``source``, ``target``)"
+
+msgid "``reverse_cost``"
+msgstr "``reverse_cost``"
+
+msgid "-1"
+msgstr "-1"
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr "Peso de la arista (``target``, ``source``)"
+
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
+"tanto no es parte del grafo."
+
+msgid "Where:"
+msgstr "Donde:"
+
+msgid "ANY-INTEGER"
+msgstr "ENTEROS"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+
+msgid "ANY-NUMERICAL"
+msgstr "FLOTANTES"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+
+msgid "Result Columns"
+msgstr "Columnas de Resultados"
+
+msgid "Returns set of |result-component-V|"
+msgstr "Regresa conjunto de |result-component-V|"
+
+msgid "``seq``"
+msgstr "``seq``"
+
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+msgid "Sequential value starting from **1**."
+msgstr "Valor secuencial a partir de **1**."
+
+msgid "``component``"
+msgstr "``component``"
+
+msgid "Component identifier."
+msgstr "Identificador de componente."
+
+msgid "Has the value of the minimum node identifier in the component."
+msgstr "Continene le valor mínimo de identificador de nodo en el componente."
+
+msgid "``node``"
+msgstr "``node``"
+
+msgid "Identifier of the vertex that belongs to the ``component``."
+msgstr "Identificador del vértice que pertenece al ``component``."
+
+msgid "Additional Examples"
+msgstr "Ejemplos Adicionales"
+
+msgid "Connecting disconnected components"
+msgstr "Conectando componentes desconectados"
+
+msgid "To get the graph connectivity:"
+msgstr "Para obtener la conectividad del grafo:"
+
+msgid ""
+"In this example, the component :math:`2` consists of vertices "
+":math:`\\{2, 4\\}` and both vertices are also part of the dead end result"
+" set."
+msgstr ""
+
+msgid "This graph needs to be connected."
+msgstr ""
+
+msgid ""
+"With the original graph of this documentation, there would be 3 "
+"components as the crossing edge in this graph is a different component."
+msgstr ""
+
+msgid "Prepare storage for connection information"
+msgstr ""
+
+msgid "Save the vertices connection information"
+msgstr ""
+
+msgid "Save the edges connection information"
+msgstr ""
+
+msgid "Get the closest vertex"
+msgstr ""
+
+msgid ""
+"The closest vertex to component :math:`1` is vertex :math:`4`. And the "
+"closest edge to vertex :math:`4` is edge :math:`14`."
+msgstr ""
+
+msgid ""
+"The ``edge`` can be used to connect the components, using the "
+"``fraction`` information about the edge :math:`14` to split the "
+"connecting edge."
+msgstr ""
+
+msgid "Connecting components"
+msgstr "Conectando componentes"
+
+msgid "There are three basic ways to connect the components"
+msgstr ""
+
+msgid "From the vertex to the starting point of the edge"
+msgstr ""
+
+msgid "From the vertex to the ending point of the edge"
+msgstr ""
+
+msgid "From the vertex to the closest vertex on the edge"
+msgstr ""
+
+msgid "This solution requires the edge to be split."
+msgstr ""
+
+msgid "The following query shows the three ways to connect the components:"
+msgstr ""
+
+msgid "Checking components"
+msgstr ""
+
+msgid ""
+"Ignoring the edge that requires further work. The graph is now fully "
+"connected as there is only one component."
+msgstr ""
+
+msgid "See Also"
+msgstr "Ver también"
+
+msgid ":doc:`components-family`"
+msgstr ":doc:`components-family`"
+
+msgid "The queries use the :doc:`sampledata` network."
+msgstr "Las consultas utilizan la red :doc:`sampledata` ."
+
+msgid ""
+"Boost: `Connected components "
+"<https://www.boost.org/libs/graph/doc/connected_components.html>`__"
+msgstr ""
+"Boost: `Componente conectado "
+"<https://www.boost.org/libs/graph/doc/connected_components.html>`__"
+
+msgid ""
+"wikipedia: `Connected component "
+"<https://en.wikipedia.org/wiki/Connected_component_(graph_theory)>`__"
+msgstr ""
+"wikipedia: `Componente conectado "
+"<https://en.wikipedia.org/wiki/Connected_component_(graph_theory)>`__"
+
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
+

@@ -1,0 +1,975 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: 2022-10-04 18:19+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language: es\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
+"/pgrouting-develop/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#, fuzzy
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
+"/allpairs-family.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en"
+"/allpairs-family.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en"
+"/allpairs-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en"
+"/allpairs-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en"
+"/allpairs-family.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Actual <https://docs.pgrouting.org/latest/es"
+"/allpairs-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es"
+"/allpairs-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es"
+"/allpairs-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es"
+"/allpairs-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es"
+"/allpairs-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es"
+"/allpairs-family.html>`__"
+
+msgid ""
+"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en"
+"/allpairs-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en"
+"/allpairs-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en"
+"/allpairs-family.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/allpairs/doc/allpairs.html>`__ "
+"`2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/allpairs/doc/allpairs.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 <https://docs.pgrouting.org/2.6/en"
+"/allpairs-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en"
+"/allpairs-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en"
+"/allpairs-family.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/allpairs/doc/allpairs.html>`__ "
+"`2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/allpairs/doc/allpairs.html>`__"
+
+msgid "All Pairs - Family of Functions"
+msgstr "Todos los Pares - Familia de Funciones"
+
+msgid "The following functions work on all vertices pair combinations"
+msgstr ""
+"Las siguientes funciones funcionan en todas las combinaciones de pares de"
+" vértices"
+
+msgid ":doc:`pgr_floydWarshall` - Floyd-Warshall's algorithm."
+msgstr ":doc:`pgr_floydWarshall` - Algoritmo de Floyd-Warshall."
+
+msgid ":doc:`pgr_johnson` - Johnson's algorithm"
+msgstr ":doc:`pgr_johnson` - Algoritmo de Johnson"
+
+msgid "Introduction"
+msgstr "Introducción"
+
+msgid "The main characteristics are:"
+msgstr "Las principales características son:"
+
+msgid "It does not return a path."
+msgstr "No devuelve una ruta."
+
+msgid ""
+"Returns the sum of the costs of the shortest path for each pair of nodes "
+"in the graph."
+msgstr ""
+"Regresa la suma de los costos de la ruta más corta para cada par de nodos"
+" del grafo."
+
+msgid "Process is done only on edges with positive costs."
+msgstr "El proceso se realiza sólo en aristas con costos positivos."
+
+msgid ""
+"Boost returns a :math:`V \\times V` matrix, where the infinity values. "
+"Represent the distance between vertices for which there is no path."
+msgstr ""
+"Boost devuelve una matriz :math:`V \\times V` donde los valores infinitos"
+" representan la distancia entre vértices para los que no hay ruta."
+
+msgid ""
+"We return only the non infinity values in form of a set of `(start_vid, "
+"end_vid, agg_cost)`."
+msgstr ""
+"Solo regresa los valores no infinitos en forma de un conjunto de "
+"`(start_vid, end_vid, agg_cost)`."
+
+msgid ""
+"Let be the case the values returned are stored in a table, so the unique "
+"index would be the pair: `(start_vid, end_vid)`."
+msgstr ""
+"Sea el caso donde los valores devueltos se almacenan en una tabla, por lo"
+" que el índice único sería el par: `(start_vid, end_vid)`."
+
+msgid "For the undirected graph, the results are symmetric."
+msgstr "Para el grafo no dirigido, los resultados son simétricos."
+
+msgid "The  `agg_cost` of `(u, v)` is the same as for `(v, u)`."
+msgstr "El `agg_cost` de `(u, v)` es el mismo que para `(v, u)`."
+
+msgid "When  `start_vid` = `end_vid`, the `agg_cost` = 0."
+msgstr "En caso de `start_vid` = `end_vid`, el `agg_cost` = 0."
+
+msgid "**Recommended, use a bounding box of no more than 3500 edges.**"
+msgstr ""
+"**Recomendación: utilice un cuadro delimitador de no más de 3500 "
+"aristas.**"
+
+msgid "Parameters"
+msgstr "Parámetros"
+
+msgid "Parameter"
+msgstr "Parámetro"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "Default"
+msgstr "x Defecto"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid "`Edges SQL`_"
+msgstr "`SQL de aristas`_"
+
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+msgid "`Edges SQL`_ as described below."
+msgstr "`SQL de aristas`_ descritas más adelante."
+
+msgid "Optional parameters"
+msgstr "Parámetros opcionales"
+
+msgid "Column"
+msgstr "Columna"
+
+msgid "``directed``"
+msgstr "``directed``"
+
+msgid "``BOOLEAN``"
+msgstr "``BOOLEAN``"
+
+msgid "``true``"
+msgstr "``true``"
+
+msgid "When ``true`` the graph is considered `Directed`"
+msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
+
+msgid "When ``false`` the graph is considered as `Undirected`."
+msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
+
+msgid "Inner Queries"
+msgstr "Consultas Internas"
+
+msgid "Edges SQL"
+msgstr "SQL aristas"
+
+msgid "``source``"
+msgstr "``source``"
+
+msgid "**ANY-INTEGER**"
+msgstr "**ENTEROS**"
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer vértice de la arista."
+
+msgid "``target``"
+msgstr "``target``"
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo vértice de la arista."
+
+msgid "``cost``"
+msgstr "``cost``"
+
+msgid "**ANY-NUMERICAL**"
+msgstr "**FLOTANTES**"
+
+msgid "Weight of the edge  (``source``, ``target``)"
+msgstr "Peso de la arista (``source``, ``target``)"
+
+msgid "``reverse_cost``"
+msgstr "``reverse_cost``"
+
+msgid "-1"
+msgstr "-1"
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr "Peso de la arista (``target``, ``source``)"
+
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
+"tanto no es parte del grafo."
+
+msgid "Where:"
+msgstr "Donde:"
+
+msgid "ANY-INTEGER"
+msgstr "ENTEROS"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+
+msgid "ANY-NUMERICAL"
+msgstr "FLOTANTES"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+
+msgid "Result Columns"
+msgstr "Columnas de Resultados"
+
+msgid "Set of |matrix-result|"
+msgstr "Conjunto de |matrix-result|"
+
+msgid "``start_vid``"
+msgstr "``start_vid``"
+
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+msgid "Identifier of the starting vertex."
+msgstr "Identificador del vértice de salida."
+
+msgid "``end_vid``"
+msgstr "``end_vid``"
+
+msgid "Identifier of the ending vertex."
+msgstr "Identificador del vértice destino."
+
+msgid "``agg_cost``"
+msgstr "``agg_cost``"
+
+msgid "``FLOAT``"
+msgstr "``FLOAT``"
+
+msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
+msgstr "Costo afregado desde ``start_vid`` hasta ``end_vid``."
+
+msgid "Performance"
+msgstr "Rendimiento"
+
+msgid "The following tests:"
+msgstr "Las siguientes pruebas:"
+
+msgid "non server computer"
+msgstr "computadora que no sea servidor"
+
+msgid "with AMD 64 CPU"
+msgstr "con unidad de procesamiento central AMD 64"
+
+msgid "4G memory"
+msgstr "memoria 4G"
+
+msgid "trusty"
+msgstr "confiable"
+
+msgid "posgreSQL version 9.3"
+msgstr "postgreSQL versión 9.3"
+
+msgid "Data"
+msgstr "Datos"
+
+msgid "The following data was used"
+msgstr "Se usaron los siguientes datos"
+
+msgid "Data processing was done with osm2pgrouting-alpha"
+msgstr "El procesamiento de datos se llevó a cabo con osm2pgrouting-alpha"
+
+msgid "Results"
+msgstr "Resultados"
+
+msgid "Test"
+msgstr "Prueba"
+
+msgid "One"
+msgstr "Uno"
+
+msgid ""
+"This test is not with a bounding box The density of the passed graph is "
+"extremely low. For each <SIZE> 30 tests were executed to get the average "
+"The tested query is:"
+msgstr ""
+"Esta prueba no se hace con cuadro delimitador. La densidad del gráfico "
+"que se pasa es extremadamente baja. Para cada <SIZE> se ejecutaron 30 "
+"pruebas para obtener el medio. La consulta probada es:"
+
+msgid "The results of this tests are presented as:"
+msgstr "Los resultados de la prueba son:"
+
+msgid "SIZE"
+msgstr "TAMAÑO"
+
+msgid "is the number of edges given as input."
+msgstr "es la cantidad de aristas dadas como entradas."
+
+msgid "EDGES"
+msgstr "ARISTAS"
+
+msgid "is the total number of records in the query."
+msgstr "es el número de registros en la consulta."
+
+msgid "DENSITY"
+msgstr "DENSIDAD"
+
+msgid "is the density of the data :math:`\\dfrac{E}{V \\times (V-1)}`."
+msgstr "es la densidad de los datos :math:`\\dfrac{E}{V \\times (V-1)}`."
+
+msgid "OUT ROWS"
+msgstr "REGISTROS DEVUELTOS"
+
+msgid "is the number of records returned by the queries."
+msgstr "es el número de registros devueltos por las consultas."
+
+msgid "Floyd-Warshall"
+msgstr "Floyd-Warshall"
+
+msgid "is the average execution time in seconds of pgr_floydWarshall."
+msgstr "es el tiempo promedio de ejecución en segundos de pgr_floydWarshall."
+
+msgid "Johnson"
+msgstr "Johnson"
+
+msgid "is the average execution time in seconds of pgr_johnson."
+msgstr "es el tiempo promedio de ejecución en segundos de pgr_johnson."
+
+msgid "500"
+msgstr "500"
+
+msgid "0.18E-7"
+msgstr "0.18E-7"
+
+msgid "1346"
+msgstr "1346"
+
+msgid "0.14"
+msgstr "0.14"
+
+msgid "0.13"
+msgstr "0.13"
+
+msgid "1000"
+msgstr "1000"
+
+msgid "0.36E-7"
+msgstr "0.36E-7"
+
+msgid "2655"
+msgstr "2655"
+
+msgid "0.23"
+msgstr "0.23"
+
+msgid "0.18"
+msgstr "0.18"
+
+msgid "1500"
+msgstr "1500"
+
+msgid "0.55E-7"
+msgstr "0.55E-7"
+
+msgid "4110"
+msgstr "4110"
+
+msgid "0.37"
+msgstr "0.37"
+
+msgid "0.34"
+msgstr "0.34"
+
+msgid "2000"
+msgstr "2000"
+
+msgid "0.73E-7"
+msgstr "0.73E-7"
+
+msgid "5676"
+msgstr "5676"
+
+msgid "0.56"
+msgstr "0.56"
+
+msgid "2500"
+msgstr "2500"
+
+msgid "0.89E-7"
+msgstr "0.89E-7"
+
+msgid "7177"
+msgstr "7177"
+
+msgid "0.84"
+msgstr "0.84"
+
+msgid "0.51"
+msgstr "0.51"
+
+msgid "3000"
+msgstr "3000"
+
+msgid "1.07E-7"
+msgstr "1.07E-7"
+
+msgid "8778"
+msgstr "8778"
+
+msgid "1.28"
+msgstr "1.28"
+
+msgid "0.68"
+msgstr "0.68"
+
+msgid "3500"
+msgstr "3500"
+
+msgid "1.24E-7"
+msgstr "1.24E-7"
+
+msgid "10526"
+msgstr "10526"
+
+msgid "2.08"
+msgstr "2.08"
+
+msgid "0.95"
+msgstr "0.95"
+
+msgid "4000"
+msgstr "4000"
+
+msgid "1.41E-7"
+msgstr "1.41E-7"
+
+msgid "12484"
+msgstr "12484"
+
+msgid "3.16"
+msgstr "3.16"
+
+msgid "1.24"
+msgstr "1.24"
+
+msgid "4500"
+msgstr "4500"
+
+msgid "1.58E-7"
+msgstr "1.58E-7"
+
+msgid "14354"
+msgstr "14354"
+
+msgid "4.49"
+msgstr "4.49"
+
+msgid "1.47"
+msgstr "1.47"
+
+msgid "5000"
+msgstr "5000"
+
+msgid "1.76E-7"
+msgstr "1.76E-7"
+
+msgid "16503"
+msgstr "16503"
+
+msgid "6.05"
+msgstr "6.05"
+
+msgid "1.78"
+msgstr "1.78"
+
+msgid "5500"
+msgstr "5500"
+
+msgid "1.93E-7"
+msgstr "1.93E-7"
+
+msgid "18623"
+msgstr "18623"
+
+msgid "7.53"
+msgstr "7.53"
+
+msgid "2.03"
+msgstr "2.03"
+
+msgid "6000"
+msgstr "6000"
+
+msgid "2.11E-7"
+msgstr "2.11E-7"
+
+msgid "20710"
+msgstr "20710"
+
+msgid "8.47"
+msgstr "8.47"
+
+msgid "2.37"
+msgstr "2.37"
+
+msgid "6500"
+msgstr "6500"
+
+msgid "2.28E-7"
+msgstr "2.28E-7"
+
+msgid "22752"
+msgstr "22752"
+
+msgid "9.99"
+msgstr "9.99"
+
+msgid "2.68"
+msgstr "2.68"
+
+msgid "7000"
+msgstr "7000"
+
+msgid "2.46E-7"
+msgstr "2.46E-7"
+
+msgid "24687"
+msgstr "24687"
+
+msgid "11.82"
+msgstr "11.82"
+
+msgid "3.12"
+msgstr "3.12"
+
+msgid "7500"
+msgstr "7500"
+
+msgid "2.64E-7"
+msgstr "2.64E-7"
+
+msgid "26861"
+msgstr "26861"
+
+msgid "13.94"
+msgstr "13.94"
+
+msgid "3.60"
+msgstr "3.60"
+
+msgid "8000"
+msgstr "8000"
+
+msgid "2.83E-7"
+msgstr "2.83E-7"
+
+msgid "29050"
+msgstr "29050"
+
+msgid "15.61"
+msgstr "15.61"
+
+msgid "4.09"
+msgstr "4.09"
+
+msgid "8500"
+msgstr "8500"
+
+msgid "3.01E-7"
+msgstr "3.01E-7"
+
+msgid "31693"
+msgstr "31693"
+
+msgid "17.43"
+msgstr "17.43"
+
+msgid "4.63"
+msgstr "4.63"
+
+msgid "9000"
+msgstr "9000"
+
+msgid "3.17E-7"
+msgstr "3.17E-7"
+
+msgid "33879"
+msgstr "33879"
+
+msgid "19.19"
+msgstr "19.19"
+
+msgid "5.34"
+msgstr "5.34"
+
+msgid "9500"
+msgstr "9500"
+
+msgid "3.35E-7"
+msgstr "3.35E-7"
+
+msgid "36287"
+msgstr "36287"
+
+msgid "20.77"
+msgstr "20.77"
+
+msgid "6.24"
+msgstr "6.24"
+
+msgid "10000"
+msgstr "10000"
+
+msgid "3.52E-7"
+msgstr "3.52E-7"
+
+msgid "38491"
+msgstr "38491"
+
+msgid "23.26"
+msgstr "23.26"
+
+msgid "6.51"
+msgstr "6.51"
+
+msgid "Two"
+msgstr "Dos"
+
+msgid ""
+"This test is with a bounding box The density of the passed graph higher "
+"than of the Test One. For each <SIZE> 30 tests were executed to get the "
+"average The tested edge query is:"
+msgstr ""
+"Esta prueba se hace con cuadro delimitador. La densidad del gráfico que "
+"se pasa es superior a la de la prueba 1. Para cada <SIZE> se ejecutaron "
+"30 pruebas para obtener el medio. La consulta de arista que se prueba es:"
+
+msgid "The tested queries"
+msgstr "Las consultas probadas"
+
+msgid "is the size of the bounding box."
+msgstr "es el tamaño del cuadro delimitador."
+
+msgid "0.001"
+msgstr "0.001"
+
+msgid "44"
+msgstr "44"
+
+msgid "0.0608"
+msgstr "0.0608"
+
+msgid "1197"
+msgstr "1197"
+
+msgid "0.10"
+msgstr "0.10"
+
+msgid "0.002"
+msgstr "0.002"
+
+msgid "99"
+msgstr "99"
+
+msgid "0.0251"
+msgstr "0.0251"
+
+msgid "4330"
+msgstr "4330"
+
+msgid "0.003"
+msgstr "0.003"
+
+msgid "223"
+msgstr "223"
+
+msgid "0.0122"
+msgstr "0.0122"
+
+msgid "18849"
+msgstr "18849"
+
+msgid "0.12"
+msgstr "0.12"
+
+msgid "0.004"
+msgstr "0.004"
+
+msgid "358"
+msgstr "358"
+
+msgid "0.0085"
+msgstr "0.0085"
+
+msgid "71834"
+msgstr "71834"
+
+msgid "0.16"
+msgstr "0.16"
+
+msgid "0.005"
+msgstr "0.005"
+
+msgid "470"
+msgstr "470"
+
+msgid "0.0070"
+msgstr "0.0070"
+
+msgid "116290"
+msgstr "116290"
+
+msgid "0.22"
+msgstr "0.22"
+
+msgid "0.19"
+msgstr "0.19"
+
+msgid "0.006"
+msgstr "0.006"
+
+msgid "639"
+msgstr "639"
+
+msgid "0.0055"
+msgstr "0.0055"
+
+msgid "207030"
+msgstr "207030"
+
+msgid "0.27"
+msgstr "0.27"
+
+msgid "0.007"
+msgstr "0.007"
+
+msgid "843"
+msgstr "843"
+
+msgid "0.0043"
+msgstr "0.0043"
+
+msgid "346930"
+msgstr "346930"
+
+msgid "0.64"
+msgstr "0.64"
+
+msgid "0.38"
+msgstr "0.38"
+
+msgid "0.008"
+msgstr "0.008"
+
+msgid "996"
+msgstr "996"
+
+msgid "0.0037"
+msgstr "0.0037"
+
+msgid "469936"
+msgstr "469936"
+
+msgid "0.90"
+msgstr "0.90"
+
+msgid "0.49"
+msgstr "0.49"
+
+msgid "0.009"
+msgstr "0.009"
+
+msgid "1146"
+msgstr "1146"
+
+msgid "0.0032"
+msgstr "0.0032"
+
+msgid "613135"
+msgstr "613135"
+
+msgid "1.26"
+msgstr "1.26"
+
+msgid "0.62"
+msgstr "0.62"
+
+msgid "0.010"
+msgstr "0.010"
+
+msgid "1360"
+msgstr "1360"
+
+msgid "0.0027"
+msgstr "0.0027"
+
+msgid "849304"
+msgstr "849304"
+
+msgid "1.87"
+msgstr "1.87"
+
+msgid "0.82"
+msgstr "0.82"
+
+msgid "0.011"
+msgstr "0.011"
+
+msgid "1573"
+msgstr "1573"
+
+msgid "0.0024"
+msgstr "0.0024"
+
+msgid "1147101"
+msgstr "1147101"
+
+msgid "2.65"
+msgstr "2.65"
+
+msgid "1.04"
+msgstr "1.04"
+
+msgid "0.012"
+msgstr "0.012"
+
+msgid "1789"
+msgstr "1789"
+
+msgid "0.0021"
+msgstr "0.0021"
+
+msgid "1483629"
+msgstr "1483629"
+
+msgid "3.72"
+msgstr "3.72"
+
+msgid "1.35"
+msgstr "1.35"
+
+msgid "0.013"
+msgstr "0.013"
+
+msgid "1975"
+msgstr "1975"
+
+msgid "0.0019"
+msgstr "0.0019"
+
+msgid "1846897"
+msgstr "1846897"
+
+msgid "4.86"
+msgstr "4.86"
+
+msgid "1.68"
+msgstr "1.68"
+
+msgid "0.014"
+msgstr "0.014"
+
+msgid "2281"
+msgstr "2281"
+
+msgid "0.0017"
+msgstr "0.0017"
+
+msgid "2438298"
+msgstr "2438298"
+
+msgid "7.08"
+msgstr "7.08"
+
+msgid "2.28"
+msgstr "2.28"
+
+msgid "0.015"
+msgstr "0.015"
+
+msgid "2588"
+msgstr "2588"
+
+msgid "0.0015"
+msgstr "0.0015"
+
+msgid "3156007"
+msgstr "3156007"
+
+msgid "10.28"
+msgstr "10.28"
+
+msgid "2.80"
+msgstr "2.80"
+
+msgid "0.016"
+msgstr "0.016"
+
+msgid "2958"
+msgstr "2958"
+
+msgid "0.0013"
+msgstr "0.0013"
+
+msgid "4090618"
+msgstr "4090618"
+
+msgid "14.67"
+msgstr "14.67"
+
+msgid "3.76"
+msgstr "3.76"
+
+msgid "0.017"
+msgstr "0.017"
+
+msgid "3247"
+msgstr "3247"
+
+msgid "0.0012"
+msgstr "0.0012"
+
+msgid "4868919"
+msgstr "4868919"
+
+msgid "18.12"
+msgstr "18.12"
+
+msgid "4.48"
+msgstr "4.48"
+
+msgid "See Also"
+msgstr "Ver también"
+
+msgid ":doc:`pgr_johnson`"
+msgstr ":doc:`pgr_johnson`"
+
+msgid ":doc:`pgr_floydWarshall`"
+msgstr ":doc:`pgr_floydWarshall`"
+
+msgid ""
+"Boost `floyd-Warshall "
+"<https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`__"
+msgstr ""
+"Boost `Algoritmo floyd-Warshall "
+"<https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_"
+
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
+

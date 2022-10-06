@@ -1,0 +1,557 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: 2022-10-04 18:19+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language: es\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
+"/pgrouting-develop/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#, fuzzy
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_withPointsCostMatrix.html>`__ "
+"(`3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_withPointsCostMatrix.html>`__) "
+"`3.2 <https://docs.pgrouting.org/3.2/en/pgr_withPointsCostMatrix.html>`__"
+" `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_withPointsCostMatrix.html>`__ `3.0"
+" <https://docs.pgrouting.org/3.0/en/pgr_withPointsCostMatrix.html>`__"
+msgstr ""
+"Columna ``id`` tiene valor positivo "
+"<https://docs.pgrouting.org/latest/es/pgr_withPointsCostMatrix.html>`__ "
+"(`3.4 "
+"<https://docs.pgrouting.org/3.4/es/pgr_withPointsCostMatrix.html>`__) "
+"`3.3 <https://docs.pgrouting.org/3.3/es/pgr_withPointsCostMatrix.html>`__"
+" `3.2 "
+"<https://docs.pgrouting.org/3.2/es/pgr_withPointsCostMatrix.html>`__ `3.1"
+" <https://docs.pgrouting.org/3.1/es/pgr_withPointsCostMatrix.html>`__ "
+"`3.0 <https://docs.pgrouting.org/3.0/es/pgr_withPointsCostMatrix.html>`__"
+
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_withPointsCostMatrix.html>`__ `2.5"
+" <https://docs.pgrouting.org/2.5/en/pgr_withPointsCostMatrix.html>`__ "
+"`2.4 <https://docs.pgrouting.org/2.4/en/pgr_withPointsCostMatrix.html>`__"
+" `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/costMatrix/doc/pgr_withPointsCostMatrix.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_withPointsCostMatrix.html>`__ `2.5"
+" <https://docs.pgrouting.org/2.5/en/pgr_withPointsCostMatrix.html>`__ "
+"`2.4 <https://docs.pgrouting.org/2.4/en/pgr_withPointsCostMatrix.html>`__"
+" `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/costMatrix/doc/pgr_withPointsCostMatrix.html>`__"
+
+msgid "``pgr_withPointsCostMatrix`` - proposed"
+msgstr "``pgr_withPointsCostMatrix`` - propuesto"
+
+msgid ""
+"``pgr_withPointsCostMatrix`` - Calculates a cost matrix using "
+":doc:`pgr_withPoints`."
+msgstr ""
+"``pgr_withPointsCostMatrix`` - Calcula una matriz de costos usando "
+":doc:`pgr_withPoints`."
+
+msgid "Proposed functions for next mayor release."
+msgstr "Funciones propuestas para la próxima versión mayor."
+
+msgid "They are not officially in the current release."
+msgstr "No están oficialmente en la versión actual."
+
+msgid "They will likely officially be part of the next mayor release:"
+msgstr "Es probable que oficialmente formen parte del próximo lanzamiento:"
+
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
+
+msgid "Name might not change. (But still can)"
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
+
+msgid "Signature might not change. (But still can)"
+msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
+
+msgid "Functionality might not change. (But still can)"
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
+
+msgid "pgTap tests have being done. But might need more."
+msgstr "Se han hecho pruebas con pgTap. Pero tal vez se necesiten más."
+
+msgid "Documentation might need refinement."
+msgstr "Es posible que la documentación necesite un refinamiento."
+
+msgid "Boost Graph Inside"
+msgstr "Adentro: Boost Graph"
+
+msgid "Availability"
+msgstr "Disponibilidad"
+
+msgid "Version 2.2.0"
+msgstr "Version 2.2.0"
+
+msgid "New **proposed** function"
+msgstr "Nueva función **propuesta**"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid "Using Dijkstra algorithm, calculate and return a cost matrix."
+msgstr "Utilizando el algoritmo Dijkstra, calcula y devuelve una matriz de costes."
+
+msgid ""
+"Dijkstra's algorithm, conceived by Dutch computer scientist Edsger "
+"Dijkstra in 1956. It is a graph search algorithm that solves the shortest"
+" path problem for a graph with non-negative edge path costs, producing a "
+"shortest path from a starting vertex to an ending vertex. This "
+"implementation can be used with a directed graph and an undirected graph."
+msgstr ""
+"Algoritmo de Dijkstra, concebido por el informático holandés Edsger "
+"Dijkstra en 1956. Es un algoritmo de búsqueda en grafos que resuelve el "
+"problema de ruta más corta para un grafo con costos de aristas no "
+"negativos, produciendo la ruta más corta desde un vértice inicial a un "
+"vértice final . Esta implementación se puede utilizar con un grafos "
+"dirigidos y no dirigidos."
+
+msgid "The main Characteristics are:"
+msgstr "Las características principales son:"
+
+msgid "Can be used as input to :doc:`pgr_TSP`."
+msgstr "Se puede utilizar como entrada para :doc:`pgr_TSP`."
+
+msgid ""
+"Use directly when the resulting matrix is symmetric and there is no "
+":math:`\\infty` value."
+msgstr ""
+"Usar directamente cuando la matriz resultante es simétrica y no hay valor"
+" :math:`\\infty`."
+
+msgid "It will be the users responsibility to make the matrix symmetric."
+msgstr "Es responsabilidad dels usuario hacer que la matriz sea simétrica."
+
+msgid "By using geometric or harmonic average of the non symmetric values."
+msgstr ""
+"Mediante el uso de la media geométrica o armónica de los valores no "
+"simétricos."
+
+msgid "By using max or min the non symmetric values."
+msgstr "Mediante el uso de max o min, los valores no simétricos."
+
+msgid ""
+"By setting the upper triangle to be the mirror image of the lower "
+"triangle."
+msgstr ""
+"Estableciendo el triángulo superior para que sea la imagen reflejada del "
+"triángulo inferior."
+
+msgid ""
+"By setting the lower triangle to be the mirror image of the upper "
+"triangle."
+msgstr ""
+"Estableciendo el triángulo inferior para que sea la imagen reflejada del "
+"triángulo superior."
+
+msgid "It is also the users responsibility to fix an :math:`\\infty` value."
+msgstr ""
+"También es responsabilidad de los usuarios para fijar un valor "
+":math:`\\infty`."
+
+msgid "Each function works as part of the family it belongs to."
+msgstr "Cada función funciona como parte de la familia a la que pertenece."
+
+msgid "It does not return a path."
+msgstr "No devuelve una ruta."
+
+msgid ""
+"Returns the sum of the costs of the shortest path for pair combination of"
+" nodes in the graph."
+msgstr ""
+"Devuelve la suma de los costos de la ruta más corta para la combinación "
+"de pares de nodos en el grafo."
+
+msgid "Process is done only on edges with positive costs."
+msgstr "El proceso se realiza sólo en aristas con costos positivos."
+
+msgid "Values are returned when there is a path."
+msgstr "Los valores se devuelven cuando hay una ruta."
+
+msgid "When the starting vertex and ending vertex are the same, there is no path."
+msgstr "Cuando el vértice inicial y el vértice final son iguales, no hay camino."
+
+msgid "The aggregate cost in the non included values `(v, v)` is `0`."
+msgstr "El costo agregado de los valores no incluídos `(v, v)` es `0`."
+
+msgid ""
+"When the starting vertex and ending vertex are the different and there is"
+" no path."
+msgstr "Cuando el vértice inicial y el vértice final son diferentes y no hay ruta."
+
+msgid "The aggregate cost in the non included values `(u, v)` is :math:`\\infty`."
+msgstr ""
+"El costo agregado de los valores no incluídos ``(u, v)`` es :math: "
+"`\\infty`."
+
+msgid "Let be the case the values returned are stored in a table:"
+msgstr "Sea el caso, los valores devueltos se almacenan en una tabla:"
+
+msgid "The unique index would be the pair: ``(start_vid, end_vid)``."
+msgstr "El índice único es el par: ``(start_vid, end_vid)``."
+
+msgid ""
+"Depending on the function and its parameters, the results can be "
+"symmetric."
+msgstr ""
+"Dependiendo de la función y sus parámetros, los resultados pueden ser "
+"simétricos."
+
+msgid "The aggregate cost of `(u, v)` is the same as for `(v, u)`."
+msgstr "El costo agregado de `(u, v)` es el mismo que para `(v, u)`."
+
+msgid "Any duplicated value in the **start vids** are ignored."
+msgstr "Se omite cualquier valor duplicado en las **salidas**."
+
+msgid "The returned values are ordered:"
+msgstr "Los valores regresados se ordenan:"
+
+msgid "``start_vid`` ascending"
+msgstr "``start_vid`` ascendente"
+
+msgid "``end_vid`` ascending"
+msgstr "``end_vid`` ascendente"
+
+msgid "Signatures"
+msgstr "Firmas"
+
+msgid "Summary"
+msgstr "Resumen"
+
+msgid "\\ \\"
+msgstr ""
+
+msgid ""
+"pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, "
+"[**options**])"
+msgstr ""
+"pgr_withPointsCost(`SQL de aristas`_, `SQL de puntos`_, **salida**, "
+"**destinos**, [**opciones**])"
+
+msgid "**options:**  ``[directed, driving_side]``"
+msgstr "**opciones:** ``[directed, driving_side]``"
+
+msgid "RETURNS SET OF |matrix-result|"
+msgstr "Regresa conjunto de |matrix-result|"
+
+msgid "OR EMPTY SET"
+msgstr ""
+
+msgid ""
+"There is no **details** flag, unlike the other members of the withPoints "
+"family of functions."
+msgstr ""
+"No hay identificador de **details**, a diferencia de los otros miembros "
+"de la familia de funciones withPoints."
+
+msgid "Example"
+msgstr "Ejemplo"
+
+msgid ""
+"Cost matrix for points :math:`\\{1, 6\\}` and vertices :math:`\\{10, "
+"11\\}` on an **undirected** graph"
+msgstr ""
+"Matriz de costos para puntos :math:`\\{1, 6\\}` y vértices :math:`\\{10, "
+"11\\}` en un grafo **no dirigido**"
+
+msgid "Returning a **symmetrical** cost matrix"
+msgstr "Devolver una matriz de costes **simétrica**"
+
+msgid "Using the default ``side`` value on the **points_sql** query"
+msgstr "Uso del valor predeterminado ``side`` en la consulta **SQL de puntos**"
+
+msgid "Using the default ``driving_side`` value"
+msgstr "Usando el valor predeterminado ``driving_side``"
+
+msgid "Parameters"
+msgstr "Parámetros"
+
+msgid "Column"
+msgstr "Columna"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "`Edges SQL`_"
+msgstr "`SQL de aristas`_"
+
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+msgid "`Edges SQL`_ as described below"
+msgstr "`SQL de aristas`_ como se describe a continuación"
+
+msgid "`Points SQL`_"
+msgstr "`SQL de puntos`_"
+
+msgid "`Points SQL`_ as described below"
+msgstr "`SQL de puntos`_ como se describe abajo"
+
+msgid "**start vids**"
+msgstr "**salidas**"
+
+msgid "``ARRAY[BIGINT]``"
+msgstr "``ARRAY[BIGINT]``"
+
+msgid "Array of identifiers of starting vertices."
+msgstr "Arreglo de identificadores de vértices iniciales."
+
+msgid "Optional parameters"
+msgstr "Parámetros opcionales"
+
+msgid "Default"
+msgstr "x Defecto"
+
+msgid "``directed``"
+msgstr "``directed``"
+
+msgid "``BOOLEAN``"
+msgstr "``BOOLEAN``"
+
+msgid "``true``"
+msgstr "``true``"
+
+msgid "When ``true`` the graph is considered `Directed`"
+msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
+
+msgid "When ``false`` the graph is considered as `Undirected`."
+msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
+
+msgid "With points optional parameters"
+msgstr "Parámetros opcionales para Con puntos"
+
+msgid "Parameter"
+msgstr "Parámetro"
+
+msgid "``driving_side``"
+msgstr "``driving_side``"
+
+msgid "``CHAR``"
+msgstr "``CHAR``"
+
+msgid "``b``"
+msgstr "``b``"
+
+msgid "Value in [``r``, ``l``, ``b``] indicating if the driving side is:"
+msgstr "Valor en [``r``, ``l``, ``b``] indica si el lado de manejo es:"
+
+msgid "``r`` for right driving side."
+msgstr "``r`` para manejo del lado derecho."
+
+msgid "``l`` for left driving side."
+msgstr "``l`` para lado de manejo izquierdo."
+
+msgid "``b`` for both."
+msgstr "``b`` for ambos."
+
+msgid "Inner Queries"
+msgstr "Consultas Internas"
+
+msgid "Edges SQL"
+msgstr "SQL aristas"
+
+msgid "``id``"
+msgstr "``id``"
+
+msgid "**ANY-INTEGER**"
+msgstr "**ENTEROS**"
+
+msgid "Identifier of the edge."
+msgstr "Identificador de la arista."
+
+msgid "``source``"
+msgstr "``source``"
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer vértice de la arista."
+
+msgid "``target``"
+msgstr "``target``"
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo vértice de la arista."
+
+msgid "``cost``"
+msgstr "``cost``"
+
+msgid "**ANY-NUMERICAL**"
+msgstr "**FLOTANTES**"
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr "Peso de la arista (``source``, ``target``)"
+
+msgid "``reverse_cost``"
+msgstr "``reverse_cost``"
+
+msgid "-1"
+msgstr "-1"
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr "Peso de la arista (``target``, ``source``)"
+
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
+"tanto no es parte del grafo."
+
+msgid "Where:"
+msgstr "Donde:"
+
+msgid "ANY-INTEGER"
+msgstr "ENTEROS"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+
+msgid "ANY-NUMERICAL"
+msgstr "FLOTANTES"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+
+msgid "Points SQL"
+msgstr "SQL de puntos"
+
+msgid "``pid``"
+msgstr "``pid``"
+
+msgid "**value**"
+msgstr "**valor**"
+
+msgid "Identifier of the point."
+msgstr "Identificador del punto."
+
+msgid "Use with positive value, as internally will be converted to negative value"
+msgstr ""
+"Use con un valor positivo, dado que internamente se convertirá a un valor"
+" negativo"
+
+msgid "If column is present, it can not be NULL."
+msgstr "Si columna esta presente, no puede ser NULL."
+
+msgid ""
+"If column is not present, a sequential negative **value** will be given "
+"automatically."
+msgstr ""
+"Si columna no esta presente, un **valor** secuencial negativo se otorgará"
+" automáticamente."
+
+msgid "``edge_id``"
+msgstr "``edge_id``"
+
+msgid "Identifier of the \"closest\" edge to the point."
+msgstr "Identificador de la arista \"más cercana\" al punto."
+
+msgid "``fraction``"
+msgstr "``fraction``"
+
+msgid ""
+"Value in <0,1> that indicates the relative postition from the first end "
+"point of the edge."
+msgstr ""
+"El valor en <0,1> que indica la posición relativa desde el primer punto "
+"de la arista."
+
+msgid "``side``"
+msgstr "``side``"
+
+msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"
+msgstr "Valor en [``b``, ``r``, ``l``, ``NULL``] que indica si el punto es:"
+
+msgid "In the right ``r``,"
+msgstr "A la derecha ``r``,"
+
+msgid "In the left ``l``,"
+msgstr "A la izquierda `l`,"
+
+msgid "In both sides ``b``, ``NULL``"
+msgstr "En ambos lados ``b``, ``NULL``"
+
+msgid "Result Columns"
+msgstr "Columnas de Resultados"
+
+msgid "Set of |matrix-result|"
+msgstr "Conjunto de |matrix-result|"
+
+msgid "``start_vid``"
+msgstr "``start_vid``"
+
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+msgid "Identifier of the starting vertex."
+msgstr "Identificador del vértice de salida."
+
+msgid "``end_vid``"
+msgstr "``end_vid``"
+
+msgid "Identifier of the ending vertex."
+msgstr "Identificador del vértice destino."
+
+msgid "``agg_cost``"
+msgstr "``agg_cost``"
+
+msgid "``FLOAT``"
+msgstr "``FLOAT``"
+
+msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
+msgstr "Costo afregado desde ``start_vid`` hasta ``end_vid``."
+
+msgid ""
+"When start_vid or end_vid columns have negative values, the identifier is"
+" for a Point."
+msgstr ""
+"Cuando las columnas del vértice inicial o del destino continen valores "
+"negativos, el identificador es para un Punto."
+
+msgid "Additional Examples"
+msgstr "Ejemplos Adicionales"
+
+msgid "Use with :doc:`pgr_TSP`."
+msgstr "Usar con :doc:`pgr_TSP`."
+
+msgid "See Also"
+msgstr "Ver también"
+
+msgid ":doc:`withPoints-family`"
+msgstr ":doc:`withPoints-family`"
+
+msgid ":doc:`costMatrix-category`"
+msgstr ":doc:`costMatrix-category`"
+
+msgid ":doc:`TSP-family`"
+msgstr ":doc:`TSP-family`"
+
+msgid ":doc:`sampledata`"
+msgstr ":doc:`sampledata`"
+
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
+

@@ -1,0 +1,401 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: 2022-10-04 18:19+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language: es\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
+"/pgrouting-develop/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_dijkstraCostMatrix.html>`__ "
+"(`3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstraCostMatrix.html>`__)"
+" `3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraCostMatrix.html>`__ "
+"`3.1 <https://docs.pgrouting.org/3.1/en/pgr_dijkstraCostMatrix.html>`__) "
+"`3.0 <https://docs.pgrouting.org/3.0/en/pgr_dijkstraCostMatrix.html>`__"
+msgstr ""
+
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_dijkstraCostMatrix.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_dijkstraCostMatrix.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_dijkstraCostMatrix.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/costMatrix/doc/pgr_dijkstraCostMatrix.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_dijkstraCostMatrix.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_dijkstraCostMatrix.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_dijkstraCostMatrix.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/costMatrix/doc/pgr_dijkstraCostMatrix.html>`__"
+
+msgid "``pgr_dijkstraCostMatrix``"
+msgstr "``pgr_dijkstraCostMatrix``"
+
+msgid ""
+"``pgr_dijkstraCostMatrix`` - Calculates a cost matrix using "
+":doc:`pgr_dijkstra`."
+msgstr ""
+"``pgr_dijkstraCostMatrix`` - Calcula la matriz de costes utilizando "
+":doc:`pgr_dijkstra`."
+
+msgid "Boost Graph Inside"
+msgstr "Adentro: Boost Graph"
+
+msgid "Availability"
+msgstr "Disponibilidad"
+
+msgid "Version 3.0.0"
+msgstr "Versión 3.0.0"
+
+msgid "**Official** function"
+msgstr "Función **oficial**"
+
+msgid "Version 2.3.0"
+msgstr "Versión 2.3.0"
+
+msgid "New **proposed** function"
+msgstr "Nueva función **propuesta**"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid "Using Dijkstra algorithm, calculate and return a cost matrix."
+msgstr "Utilizando el algoritmo Dijkstra, calcula y devuelve una matriz de costes."
+
+msgid ""
+"Dijkstra's algorithm, conceived by Dutch computer scientist Edsger "
+"Dijkstra in 1956. It is a graph search algorithm that solves the shortest"
+" path problem for a graph with non-negative edge path costs, producing a "
+"shortest path from a starting vertex to an ending vertex. This "
+"implementation can be used with a directed graph and an undirected graph."
+msgstr ""
+"Algoritmo de Dijkstra, concebido por el informático holandés Edsger "
+"Dijkstra en 1956. Es un algoritmo de búsqueda en grafos que resuelve el "
+"problema de ruta más corta para un grafo con costos de aristas no "
+"negativos, produciendo la ruta más corta desde un vértice inicial a un "
+"vértice final . Esta implementación se puede utilizar con un grafos "
+"dirigidos y no dirigidos."
+
+msgid "The main Characteristics are:"
+msgstr "Las características principales son:"
+
+msgid "Can be used as input to :doc:`pgr_TSP`."
+msgstr "Se puede utilizar como entrada para :doc:`pgr_TSP`."
+
+msgid ""
+"Use directly when the resulting matrix is symmetric and there is no "
+":math:`\\infty` value."
+msgstr ""
+"Usar directamente cuando la matriz resultante es simétrica y no hay valor"
+" :math:`\\infty`."
+
+msgid "It will be the users responsibility to make the matrix symmetric."
+msgstr "Es responsabilidad dels usuario hacer que la matriz sea simétrica."
+
+msgid "By using geometric or harmonic average of the non symmetric values."
+msgstr ""
+"Mediante el uso de la media geométrica o armónica de los valores no "
+"simétricos."
+
+msgid "By using max or min the non symmetric values."
+msgstr "Mediante el uso de max o min, los valores no simétricos."
+
+msgid ""
+"By setting the upper triangle to be the mirror image of the lower "
+"triangle."
+msgstr ""
+"Estableciendo el triángulo superior para que sea la imagen reflejada del "
+"triángulo inferior."
+
+msgid ""
+"By setting the lower triangle to be the mirror image of the upper "
+"triangle."
+msgstr ""
+"Estableciendo el triángulo inferior para que sea la imagen reflejada del "
+"triángulo superior."
+
+msgid "It is also the users responsibility to fix an :math:`\\infty` value."
+msgstr ""
+"También es responsabilidad de los usuarios para fijar un valor "
+":math:`\\infty`."
+
+msgid "Each function works as part of the family it belongs to."
+msgstr "Cada función funciona como parte de la familia a la que pertenece."
+
+msgid "It does not return a path."
+msgstr "No devuelve una ruta."
+
+msgid ""
+"Returns the sum of the costs of the shortest path for pair combination of"
+" nodes in the graph."
+msgstr ""
+"Devuelve la suma de los costos de la ruta más corta para la combinación "
+"de pares de nodos en el grafo."
+
+msgid "Process is done only on edges with positive costs."
+msgstr "El proceso se realiza sólo en aristas con costos positivos."
+
+msgid "Values are returned when there is a path."
+msgstr "Los valores se devuelven cuando hay una ruta."
+
+msgid "When the starting vertex and ending vertex are the same, there is no path."
+msgstr "Cuando el vértice inicial y el vértice final son iguales, no hay camino."
+
+msgid "The aggregate cost in the non included values `(v, v)` is `0`."
+msgstr "El costo agregado de los valores no incluídos `(v, v)` es `0`."
+
+msgid ""
+"When the starting vertex and ending vertex are the different and there is"
+" no path."
+msgstr "Cuando el vértice inicial y el vértice final son diferentes y no hay ruta."
+
+msgid "The aggregate cost in the non included values `(u, v)` is :math:`\\infty`."
+msgstr ""
+"El costo agregado de los valores no incluídos ``(u, v)`` es :math: "
+"`\\infty`."
+
+msgid "Let be the case the values returned are stored in a table:"
+msgstr "Sea el caso, los valores devueltos se almacenan en una tabla:"
+
+msgid "The unique index would be the pair: ``(start_vid, end_vid)``."
+msgstr "El índice único es el par: ``(start_vid, end_vid)``."
+
+msgid ""
+"Depending on the function and its parameters, the results can be "
+"symmetric."
+msgstr ""
+"Dependiendo de la función y sus parámetros, los resultados pueden ser "
+"simétricos."
+
+msgid "The aggregate cost of `(u, v)` is the same as for `(v, u)`."
+msgstr "El costo agregado de `(u, v)` es el mismo que para `(v, u)`."
+
+msgid "Any duplicated value in the **start vids** are ignored."
+msgstr "Se omite cualquier valor duplicado en las **salidas**."
+
+msgid "The returned values are ordered:"
+msgstr "Los valores regresados se ordenan:"
+
+msgid "``start_vid`` ascending"
+msgstr "``start_vid`` ascendente"
+
+msgid "``end_vid`` ascending"
+msgstr "``end_vid`` ascendente"
+
+msgid "Signatures"
+msgstr "Firmas"
+
+msgid "Summary"
+msgstr "Resumen"
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_dijkstraCostMatrix(`Edges SQL`_, **start vids**, [``directed``])"
+msgstr "pgr_dijkstraCostMatrix(`SQL de aristas`_, **salidas**, [``directed``])"
+
+msgid "RETURNS SET OF |matrix-result|"
+msgstr "Regresa conjunto de |matrix-result|"
+
+msgid "OR EMPTY SET"
+msgstr ""
+
+msgid "Example"
+msgstr "Ejemplo"
+
+msgid ""
+"Symmetric cost matrix for vertices :math:`\\{5, 6, 10, 15\\}` on an "
+"**undirected** graph"
+msgstr ""
+"Matriz de costos simétrica para vértices :math:`\\{5, 6, 10, 15\\}` en un"
+" grafo **no dirigido**"
+
+msgid "Parameters"
+msgstr "Parámetros"
+
+msgid "Column"
+msgstr "Columna"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "`Edges SQL`_"
+msgstr "`SQL de aristas`_"
+
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+msgid "`Edges SQL`_ as described below"
+msgstr "`SQL de aristas`_ como se describe a continuación"
+
+msgid "**start vids**"
+msgstr "**salidas**"
+
+msgid "``ARRAY[BIGINT]``"
+msgstr "``ARRAY[BIGINT]``"
+
+msgid "Array of identifiers of starting vertices."
+msgstr "Arreglo de identificadores de vértices iniciales."
+
+msgid "Optional parameters"
+msgstr "Parámetros opcionales"
+
+msgid "Default"
+msgstr "x Defecto"
+
+msgid "``directed``"
+msgstr "``directed``"
+
+msgid "``BOOLEAN``"
+msgstr "``BOOLEAN``"
+
+msgid "``true``"
+msgstr "``true``"
+
+msgid "When ``true`` the graph is considered `Directed`"
+msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
+
+msgid "When ``false`` the graph is considered as `Undirected`."
+msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
+
+msgid "Inner Queries"
+msgstr "Consultas Internas"
+
+msgid "Edges SQL"
+msgstr "SQL aristas"
+
+msgid "``id``"
+msgstr "``id``"
+
+msgid "**ANY-INTEGER**"
+msgstr "**ENTEROS**"
+
+msgid "Identifier of the edge."
+msgstr "Identificador de la arista."
+
+msgid "``source``"
+msgstr "``source``"
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer vértice de la arista."
+
+msgid "``target``"
+msgstr "``target``"
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo vértice de la arista."
+
+msgid "``cost``"
+msgstr "``cost``"
+
+msgid "**ANY-NUMERICAL**"
+msgstr "**FLOTANTES**"
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr "Peso de la arista (``source``, ``target``)"
+
+msgid "``reverse_cost``"
+msgstr "``reverse_cost``"
+
+msgid "-1"
+msgstr "-1"
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr "Peso de la arista (``target``, ``source``)"
+
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
+"tanto no es parte del grafo."
+
+msgid "Where:"
+msgstr "Donde:"
+
+msgid "ANY-INTEGER"
+msgstr "ENTEROS"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+
+msgid "ANY-NUMERICAL"
+msgstr "FLOTANTES"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+
+msgid "Result Columns"
+msgstr "Columnas de Resultados"
+
+msgid "Set of |matrix-result|"
+msgstr "Conjunto de |matrix-result|"
+
+msgid "``start_vid``"
+msgstr "``start_vid``"
+
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+msgid "Identifier of the starting vertex."
+msgstr "Identificador del vértice de salida."
+
+msgid "``end_vid``"
+msgstr "``end_vid``"
+
+msgid "Identifier of the ending vertex."
+msgstr "Identificador del vértice destino."
+
+msgid "``agg_cost``"
+msgstr "``agg_cost``"
+
+msgid "``FLOAT``"
+msgstr "``FLOAT``"
+
+msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
+msgstr "Costo afregado desde ``start_vid`` hasta ``end_vid``."
+
+msgid "Additional Examples"
+msgstr "Ejemplos Adicionales"
+
+msgid "Use with :doc:`pgr_TSP`."
+msgstr "Usar con :doc:`pgr_TSP`."
+
+msgid "See Also"
+msgstr "Ver también"
+
+msgid ":doc:`dijkstra-family`"
+msgstr ":doc:`dijkstra-family`"
+
+msgid ":doc:`costMatrix-category`"
+msgstr ":doc:`costMatrix-category`"
+
+msgid ":doc:`TSP-family`"
+msgstr ":doc:`TSP-family`"
+
+msgid ":doc:`sampledata`"
+msgstr ":doc:`sampledata`"
+
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
+

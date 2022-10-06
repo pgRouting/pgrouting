@@ -1,0 +1,241 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: 2022-10-04 18:19+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language: es\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
+"/pgrouting-develop/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#, fuzzy
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_alphaShape.html>`__ (`3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_alphaShape.html>`__) `3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_alphaShape.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_alphaShape.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_alphaShape.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Última "
+"<https://docs.pgrouting.org/latest/es/pgr_alphaShape.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/es/pgr_alphaShape.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/es/pgr_alphaShape.html>`__ `3.2 "
+"<https://docs.pgrouting.org/3.2/es/pgr_alphaShape.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_alphaShape.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_alphaShape.html>`__"
+
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_alphaShape.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_alphaShape.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_alphaShape.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/alpha_shape/doc/pgr_alphaShape.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/alpha_shape/doc/pgr_alphaShape.html>`__"
+" `2.1 "
+"<https://docs.pgrouting.org/2.1/en/src/driving_distance/doc/dd_alphashape.html>`__"
+" `2.0 "
+"<https://docs.pgrouting.org/2.0/en/src/driving_distance/doc/dd_alphashape.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_alphaShape.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_alphaShape.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_alphaShape.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/alpha_shape/doc/pgr_alphaShape.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/alpha_shape/doc/pgr_alphaShape.html>`__"
+" `2.1 "
+"<https://docs.pgrouting.org/2.1/en/src/driving_distance/doc/dd_alphashape.html>`__"
+" `2.0 "
+"<https://docs.pgrouting.org/2.0/en/src/driving_distance/doc/dd_alphashape.html>`__"
+
+msgid "``pgr_alphaShape``"
+msgstr "``pgr_alphaShape``"
+
+msgid "``pgr_alphaShape`` — Polygon part of an alpha shape."
+msgstr "``pgr_alphaShape`` —Parte poligonal de una forma alfa."
+
+msgid "Availability"
+msgstr "Disponibilidad"
+
+msgid "Version 3.0.0"
+msgstr "Versión 3.0.0"
+
+msgid "Breaking change on signature"
+msgstr "Cambio de ruptura en la firma"
+
+msgid "Old signature no longer supported"
+msgstr "Firma antigua ya no soportada"
+
+msgid "**Boost 1.54** & **Boost 1.55** are supported"
+msgstr "**Boost 1.54** y **Boost 1.55** son soportados"
+
+msgid "**Boost 1.56+** is preferable"
+msgstr "**Boost 1.56+** es preferible"
+
+msgid "Boost Geometry is stable on Boost 1.56"
+msgstr "Boost Geometry es estable en Boost 1.56"
+
+msgid "Version 2.1.0"
+msgstr "Versión 2.1.0"
+
+msgid "Added alpha argument with default 0 (use optimal value)"
+msgstr "Añadido argumento alfa con valor predeterminado 0 (usar el valor óptimo)"
+
+msgid "Support to return multiple outer/inner ring"
+msgstr "Soporte para devolver múltiples anillos exteriores/interiores"
+
+msgid "Version 2.0.0"
+msgstr "Versión 2.0.0"
+
+msgid "**Official** function"
+msgstr "Función **oficial**"
+
+msgid "Renamed from version 1.x"
+msgstr "Renombrado desde la versión 1.x"
+
+msgid "Support"
+msgstr "Soporte"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid "Returns the polygon part of an alpha shape."
+msgstr "Devuelve la parte poligonal de una forma alfa."
+
+msgid "Characteristics"
+msgstr "Características"
+
+msgid "Input is a *geometry* and returns a *geometry*"
+msgstr "La entrada es una *geometría* y devuelve una *geometría*"
+
+msgid "Uses PostGis ST_DelaunyTriangles"
+msgstr "Usa PostGis ST_DelaunyTriangles"
+
+msgid "Instead of using CGAL's definition of `alpha` it use the ``spoon_radius``"
+msgstr ""
+"En lugar de utilizar la definición de CGAL de `alpha` utiliza "
+"``spoon_radius`` el ''spoon_radius''"
+
+msgid ":math:`spoon\\_radius = \\sqrt alpha`"
+msgstr ":math:`spoon\\_radius = \\sqrt alpha`"
+
+msgid ""
+"A Triangle area is considered part of the alpha shape when "
+":math:`circumcenter\\ radius < spoon\\_radius`"
+msgstr ""
+"Un área de triángulo se considera parte de la forma alfa cuando "
+":math:`circumcenter\\ radius < spoon\\_radius`"
+
+msgid "The ``alpha`` parameter is the **spoon radius**"
+msgstr "El parámetro ``alpha`` es el **radio de cuchara**"
+
+msgid "When the total number of points is less than 3, returns an EMPTY geometry"
+msgstr ""
+"Cuando el número total de puntos es menor que 3, devuelve una geometría "
+"EMPTY"
+
+msgid "Signatures"
+msgstr "Firmas"
+
+msgid "Summary"
+msgstr "Resumen"
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_alphaShape(**geometry**, [alpha])"
+msgstr "pgr_alphaShape(**geometría**, [alpha])"
+
+msgid "RETURNS ``geometry``"
+msgstr "REGRESA ``geometry``"
+
+msgid "Example"
+msgstr "Ejemplo"
+
+msgid ""
+"passing a geometry collection with spoon radius :math:`1.5` using the "
+"return variable ``geom``"
+msgstr ""
+"pasar una colección de geometrías con radio de cuchara :math:`1.5` usando"
+" la variable de retorno ``geom``"
+
+msgid "Parameters"
+msgstr "Parámetros"
+
+msgid "Parameter"
+msgstr "Parámetro"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "Default"
+msgstr "x Defecto"
+
+msgid "**geometry**"
+msgstr "**geometría**"
+
+msgid "``geometry``"
+msgstr "``geometry``"
+
+msgid "Geometry with at least :math:`3` points"
+msgstr "Geometría con al menos :math:`3` puntos"
+
+msgid "``alpha``"
+msgstr "``alpha``"
+
+msgid "``FLOAT``"
+msgstr "``FLOAT``"
+
+msgid "0"
+msgstr "0"
+
+msgid "The radius of the spoon."
+msgstr "El radio de la cuchara."
+
+msgid "Return Value"
+msgstr "Valor de Devolución"
+
+msgid "Kind of geometry"
+msgstr "Tipo de geometría"
+
+msgid "GEOMETRY COLLECTION"
+msgstr "GEOMETRY COLLECTION"
+
+msgid "A Geometry collection of Polygons"
+msgstr "Una colección de Geometría de Polígonos"
+
+msgid "See Also"
+msgstr "Ver también"
+
+msgid ":doc:`pgr_drivingDistance`"
+msgstr ":doc:`pgr_drivingDistance`"
+
+msgid ":doc:`sampledata` network."
+msgstr ":doc:`sampledata` ."
+
+msgid "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
+msgstr "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
+
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
+

@@ -1,0 +1,690 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: 2022-10-04 18:19+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language: es\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
+"/pgrouting-develop/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#, fuzzy
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_dijkstraNear.html>`__ (`3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_dijkstraNear.html>`__) `3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_dijkstraNear.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Última "
+"<https://docs.pgrouting.org/latest/es/pgr_dijkstraNear.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/es/pgr_dijkstraNear.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/es/pgr_dijkstraNear.html>`__ `3.2 "
+"<https://docs.pgrouting.org/3.2/es/pgr_dijkstraNear.html>`__"
+
+msgid "``pgr_dijkstraNear`` - Proposed"
+msgstr "``pgr_dijkstraNear`` - Propuesto"
+
+msgid ""
+"``pgr_dijkstraNear`` — Using Dijkstra's algorithm, finds the route that "
+"leads to the nearest vertex."
+msgstr ""
+"``pgr_dijkstraNear`` — Utilizando el algoritmo dijkstra, encuentra la "
+"ruta que conduce al vértice más cercano."
+
+msgid "Proposed functions for next mayor release."
+msgstr "Funciones propuestas para la próxima versión mayor."
+
+msgid "They are not officially in the current release."
+msgstr "No están oficialmente en la versión actual."
+
+msgid "They will likely officially be part of the next mayor release:"
+msgstr "Es probable que oficialmente formen parte del próximo lanzamiento:"
+
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
+
+msgid "Name might not change. (But still can)"
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
+
+msgid "Signature might not change. (But still can)"
+msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
+
+msgid "Functionality might not change. (But still can)"
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
+
+msgid "pgTap tests have being done. But might need more."
+msgstr "Se han hecho pruebas con pgTap. Pero tal vez se necesiten más."
+
+msgid "Documentation might need refinement."
+msgstr "Es posible que la documentación necesite un refinamiento."
+
+msgid "Boost Graph Inside"
+msgstr "Adentro: Boost Graph"
+
+msgid "Availability"
+msgstr "Disponibilidad"
+
+msgid "Version 3.3.0"
+msgstr "Versión 3.3.0"
+
+msgid "Promoted to **proposed** function"
+msgstr "Promovido a función **propuesta**"
+
+msgid "Version 3.2.0"
+msgstr "Versión 3.2.0"
+
+msgid "New **experimental** function"
+msgstr "Nueva función **experimental**"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid ""
+"Given a graph, a starting vertex and a set of ending vertices, this "
+"function finds the shortest path from the starting vertex to the nearest "
+"ending vertex."
+msgstr ""
+"Dado un grafo, un vértice inicial y un conjunto de vértices finales, esta"
+" función encuentra la ruta más corta desde el vértice inicial hasta el "
+"vértice final más cercano."
+
+msgid "Characteristics"
+msgstr "Características"
+
+msgid "Uses Dijkstra algorithm."
+msgstr "Utiliza el algoritmo Dijkstra."
+
+msgid "Works for **directed** and **undirected** graphs."
+msgstr "Funciona para grafos **dirigidos** y **no dirigidos**."
+
+msgid "When there are more than one path to the same vertex with same cost:"
+msgstr "Cuando hay más de una ruta al mismo vértice con el mismo coste:"
+
+msgid "The algorithm will return just one path"
+msgstr "El algoritmo devolverá solo una ruta"
+
+msgid "Optionally allows to find more than one path."
+msgstr "Opcionalmente permite encontrar más de una ruta."
+
+msgid "When more than one path is to be returned:"
+msgstr "Cuando se va a devolver más de una ruta:"
+
+msgid "Results are sorted in increasing order of:"
+msgstr "Los resultados se ordenan en orden creciente de:"
+
+msgid "aggregate cost"
+msgstr "costo agregado"
+
+msgid "Within the same value of aggregate costs:"
+msgstr "Dentro del mismo valor de los costes agregados:"
+
+msgid "results are sorted by (source, target)"
+msgstr "los resultados se ordenan por (fuente, destino)"
+
+msgid "Running time: Dijkstra running time: :math:`drt = O((|E| + |V|)log|V|)`"
+msgstr ""
+"Tiempo de ejecución: Dijkstra tiempo de ejecución: :math:`drt = O((|E| + "
+"|V|)log|V|)`"
+
+msgid "One to Many; :math:`drt`"
+msgstr "Uno a Muchos; :math:`drt`"
+
+msgid "Many to One: :math:`drt`"
+msgstr "Muchos a Uno: :math:`drt`"
+
+msgid "Many to Many: :math:`drt * |Starting vids|`"
+msgstr "Muchos a Muchos: :math:`drt * |Starting vids|`"
+
+msgid "Combinations: :math:`drt * |Starting vids|`"
+msgstr "Combinaciones: :math:`drt * |Starting vids|`"
+
+msgid "Signatures"
+msgstr "Firmas"
+
+msgid "Summary"
+msgstr "Resumen"
+
+msgid "\\ \\"
+msgstr ""
+
+msgid ""
+"pgr_dijkstraNear(`Edges SQL`_, **start vid**, **end vids**, [**options "
+"A**])"
+msgstr ""
+"pgr_dijkstraNear(`SQL de aristas`_, **salida**, **destinos**, [**opciones"
+" A**])"
+
+msgid ""
+"pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid**, [**options "
+"A**])"
+msgstr ""
+"pgr_dijkstraNear(`SQL de aristas`_, **salidas**, **destino**, [**opciones"
+" A**])"
+
+msgid ""
+"pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids**, [**options "
+"B**])"
+msgstr ""
+"pgr_dijkstraNear(`SQL de aristas`_, **salidas**, **destinos**, "
+"[**opciones B**])"
+
+msgid "pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_, [**options B**])"
+msgstr ""
+"pgr_dijkstraNear(`SQL de aristas`_, `SQL de combinaciones`_, [**opciones "
+"B**])"
+
+msgid "**options A:** ``[directed, cap]``"
+msgstr ""
+
+msgid "**options B:** ``[directed, cap, global]``"
+msgstr ""
+
+msgid "RETURNS SET OF |short-generic-result|"
+msgstr ""
+
+msgid "OR EMPTY SET"
+msgstr ""
+
+msgid "One to Many"
+msgstr "Uno a Muchos"
+
+msgid "pgr_dijkstraNear(`Edges SQL`_, **start vid**, **end vids**, [**options**])"
+msgstr ""
+"pgr_dijkstraNear(`SQL de aristas`_, **salida**, **destinos**, "
+"[**opciones**])"
+
+msgid "**options:** ``[directed, cap]``"
+msgstr ""
+
+msgid "Example"
+msgstr "Ejemplo"
+
+msgid "Departing on car from vertex :math:`6` find the nearest subway station."
+msgstr ""
+"Saliendo en coche desde el vértice :math:`6` encontrar la estación de "
+"metro más cercana."
+
+msgid "Using a **directed** graph for car routing."
+msgstr "Usando un grafo **dirigido** para el ruteo de automóviles."
+
+msgid "The subway stations are on the following vertices :math:`\\{1, 10, 11\\}`"
+msgstr ""
+"Las estaciones de metro se encuentran en los siguientes vértices "
+":math:`\\{ 1, 10, 11\\}`"
+
+msgid "The defaults used:"
+msgstr "Los valores predeterminados utilizados:"
+
+msgid "`directed => true`"
+msgstr "`directed => true`"
+
+msgid "`cap => 1`"
+msgstr "`cap => 1`"
+
+msgid "The result shows that station at vertex :math:`11` is the nearest."
+msgstr ""
+"El resultado muestra que la estación en el vértice :math:`11` es la más "
+"cercana."
+
+msgid "Many to One"
+msgstr "Muchos a Uno"
+
+msgid "pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid**, [**options**])"
+msgstr ""
+"pgr_dijkstraNear(`SQL de aristas`_, **salidas**, **destino**, "
+"[**opciones**])"
+
+msgid ""
+"Departing on a car from a subway station find the nearest **two** "
+"stations to vertex :math:`2`"
+msgstr ""
+"Saliendo en coche desde una estación de metro encontrar las **dos** "
+"estaciones más cercanas al vértice :math:`2`"
+
+msgid "The subway stations are on the following vertices :math:`\\{ 1, 10, 11\\}`"
+msgstr ""
+"Las estaciones de metro se encuentran en los siguientes vértices "
+":math:`\\{ 1, 10, 11\\}`"
+
+msgid "On line `4`: using the positional parameter: `directed` set to ``true``"
+msgstr ""
+"En la línea `4`: utilizando el parámetro posicional: `directed` "
+"configurado en ``true``"
+
+msgid "In line `5`: using named parameter `cap => 2`"
+msgstr "En la línea `5`: usando el parámetro con nombre `cap => 2`"
+
+msgid ""
+"The result shows that station at vertex :math:`10` is the nearest and the"
+" next best is :math:`11`."
+msgstr ""
+"El resultado muestra que la estación en el vértice :math:`10` es la más "
+"cercana y la siguiente mejor es :math:`11`."
+
+msgid "Many to Many"
+msgstr "Muchos a Muchos"
+
+msgid ""
+"pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids**, "
+"[**options**])"
+msgstr ""
+"pgr_dijkstraNear(`SQL de aristas`_, **salidas**, **destinos**, "
+"[**opciones**])"
+
+msgid "**options:** ``[directed, cap, global]``"
+msgstr ""
+
+msgid "Find the best pedestrian connection between two lines of buses"
+msgstr "Encuentra la mejor conexión peatonal entre dos líneas de autobuses"
+
+msgid "Unsing an **undirected** graph for pedestrian routing"
+msgstr "Usando un grafo **no dirigido** para el ruteo de peatones"
+
+msgid "The first subway line stations are at :math:`\\{15, 16\\}`"
+msgstr "Las estaciones de la primera línea de metro están en :math:`\\{15, 16\\}`"
+
+msgid "The second subway line stations stops are at :math:`\\{1, 10, 11\\}`"
+msgstr ""
+"Las estaciones de la segunda línea de metro están en :math:`\\{1, 10, "
+"11\\}`"
+
+msgid "On line `4`: using the named parameter: `directed => false`"
+msgstr "En la línea `4`: utilizando el parámetro con nombre: `directed => false`"
+
+msgid "`global => true`"
+msgstr "`global => true`"
+
+msgid ""
+"For a pedestrian the best connection is to get on/off is at vertex "
+":math:`15` of the first subway line and at vertex :math:`10` of the "
+"second subway line."
+msgstr ""
+"Para un peatón la mejor conexión es subir/bajar en el vértice :math:`15` "
+"de la primera línea de metro y en el vértice :math:`10` de la segunda "
+"línea de metro."
+
+msgid ""
+"Only `one` route is returned because `global` is ``true`` and `cap` is "
+"``1``"
+msgstr "Solo se devuelve `una` ruta porque `global` es ``true`` y `cap` es ``1``"
+
+msgid "Combinations"
+msgstr "Combinaciones"
+
+msgid "pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_, [**options**])"
+msgstr ""
+"pgr_dijkstraNear(`SQL de aristas`_, `SQL de combinaciones`_, "
+"[**opciones**])"
+
+msgid "Find the best car connection between all the stations of two subway lines"
+msgstr ""
+"Encuentra la mejor conexión de coche entre todas las estaciones de dos "
+"líneas de metro"
+
+msgid "The first subway line stations stops are at :math:`\\{1, 10, 11\\}`"
+msgstr ""
+"Las estaciones de la primera línea de metro están en :math:`\\{1, 10, "
+"11\\}`"
+
+msgid "The second subway line stations are at :math:`\\{15, 16\\}`"
+msgstr "Las estaciones de la segunda línea de metro están en :math:`\\{15, 16\\}`"
+
+msgid "The combinations contents:"
+msgstr "El contenido de las combinaciones:"
+
+msgid "The query:"
+msgstr "La consulta:"
+
+msgid ""
+"lines `3~4` sets the start vertices to be from the first subway line and "
+"the ending vertices to be from the second subway line"
+msgstr ""
+"líneas `3~4` establece los vértices de inicio de la primera línea de "
+"metro y los vértices finales de la segunda línea de metro"
+
+msgid ""
+"lines `6~7` sets the start vertices to be from the first subway line and "
+"the ending vertices to be from the first subway line"
+msgstr ""
+"la línea `6~7` establecen los vértices de inicio de la primera línea de "
+"metro y los vértices finales de la primera línea de metro"
+
+msgid "On line `8`: using the named parameter is `global => false`"
+msgstr "En la línea `8`: usando el parámetro con nombre `global => false`"
+
+msgid "From the results:"
+msgstr "A partir de los resultados:"
+
+msgid ""
+"making a connection from the first subway line :math:`\\{1, 10, 11\\}` to"
+" the second :math:`\\{15, 16\\}`:"
+msgstr ""
+"haciendo una conexión desde la primera línea de metro :math:`\\{1, 10, "
+"11\\}` a la segunda :math:`\\{15, 16\\}`:"
+
+msgid ""
+"The best connections from all the stations from the first line are: "
+":math:`{(1 \\rightarrow 16) (10 \\rightarrow 16) (11 \\rightarrow 16)}`"
+msgstr ""
+"Las mejores conecciones de todas las estaciones desde la primera línea "
+"son: :math:`{(1 \\rightarrow 16) (10 \\rightarrow 16) (11 \\rightarrow "
+"16)}`"
+
+msgid ""
+"The best one is :math:`(11 \\rightarrow 16)` with a cost of :math:`1` "
+"(lines: `11` and `12`)"
+msgstr ""
+"La mejor es:math:`(11 \\rightarrow 16)` con un costo de :math:`1` "
+"(líneas: `11` y `12`)"
+
+msgid ""
+"making a connection from the second subway line :math:`\\{15, 16\\}` to "
+"the first :math:`\\{1, 10, 11\\}`:"
+msgstr ""
+"haciendo una conexión desde la segunda línea de metro :math:`\\{15, "
+"16\\}` a la primera :math:`\\{1, 10, 11\\}`:"
+
+msgid ""
+"The best connections from all the stations from the second line are: "
+":math:`{(15 \\rightarrow 10) (16 \\rightarrow 11)}`"
+msgstr ""
+"Las mejores conecciones de todas las estaciones desde la segunda línea "
+"son: :math:`{(15 \\rightarrow 10) (16 \\rightarrow 11)}`"
+
+msgid ""
+"Both are equaly good as they have the same cost. (lines: `13` and `14` "
+"and lines: `15` and `16`)"
+msgstr ""
+"Ambas son igualmente buenas, como también tienen el mismo costo. (lines: "
+"`13` and `14` and lines: `15` and `16`)"
+
+msgid "Parameters"
+msgstr "Parámetros"
+
+msgid "Column"
+msgstr "Columna"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "`Edges SQL`_"
+msgstr "`SQL de aristas`_"
+
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+msgid "`Edges SQL`_ as described below"
+msgstr "`SQL de aristas`_ como se describe a continuación"
+
+msgid "`Combinations SQL`_"
+msgstr "`SQL de combinaciones`_"
+
+msgid "`Combinations SQL`_ as described below"
+msgstr "`SQL de combinaciones`_ como se describe a abajo"
+
+msgid "**start vid**"
+msgstr "**salida**"
+
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+msgid "Identifier of the starting vertex of the path."
+msgstr "Identificador del vértice inicial de la ruta."
+
+msgid "**start vids**"
+msgstr "**salidas**"
+
+msgid "``ARRAY[BIGINT]``"
+msgstr "``ARRAY[BIGINT]``"
+
+msgid "Array of identifiers of starting vertices."
+msgstr "Arreglo de identificadores de vértices iniciales."
+
+msgid "**end vid**"
+msgstr "**destino**"
+
+msgid "Identifier of the ending vertex of the path."
+msgstr "Identificador del vértice final de la ruta."
+
+msgid "**end vids**"
+msgstr "**destinos**"
+
+msgid "Array of identifiers of ending vertices."
+msgstr "Arreglo de identificadores de vértices finales."
+
+msgid "Dijkstra optional parameters"
+msgstr "Parámetros opcionales de Dijkstra"
+
+msgid "Default"
+msgstr "x Defecto"
+
+msgid "``directed``"
+msgstr "``directed``"
+
+msgid "``BOOLEAN``"
+msgstr "``BOOLEAN``"
+
+msgid "``true``"
+msgstr "``true``"
+
+msgid "When ``true`` the graph is considered `Directed`"
+msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
+
+msgid "When ``false`` the graph is considered as `Undirected`."
+msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
+
+msgid "Near optional parameters"
+msgstr "Parámetros opcionales de Cercanía"
+
+msgid "Parameter"
+msgstr "Parámetro"
+
+msgid "``cap``"
+msgstr "``cap``"
+
+msgid "``1``"
+msgstr "``1``"
+
+msgid "Find at most ``cap`` number of nearest shortest paths"
+msgstr ""
+"Encuentra como máximo el número ``cap`` de los caminos más cortos y más "
+"cercanos"
+
+msgid "``global``"
+msgstr "``global``"
+
+msgid "When ``true``: only ``cap`` limit results will be returned"
+msgstr "Cuando ``true``: solo se devolverán los resultados del límite ``cap``"
+
+msgid "When ``false``: ``cap`` limit per ``Start vid`` will be returned"
+msgstr "Cuando ``false``: ``cap`` límite por ``Start vid`` será devuelto"
+
+msgid "Inner Queries"
+msgstr "Consultas Internas"
+
+msgid "Edges SQL"
+msgstr "SQL aristas"
+
+msgid "``id``"
+msgstr "``id``"
+
+msgid "**ANY-INTEGER**"
+msgstr "**ENTEROS**"
+
+msgid "Identifier of the edge."
+msgstr "Identificador de la arista."
+
+msgid "``source``"
+msgstr "``source``"
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer vértice de la arista."
+
+msgid "``target``"
+msgstr "``target``"
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo vértice de la arista."
+
+msgid "``cost``"
+msgstr "``cost``"
+
+msgid "**ANY-NUMERICAL**"
+msgstr "**FLOTANTES**"
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr "Peso de la arista (``source``, ``target``)"
+
+msgid "``reverse_cost``"
+msgstr "``reverse_cost``"
+
+msgid "-1"
+msgstr "-1"
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr "Peso de la arista (``target``, ``source``)"
+
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
+"tanto no es parte del grafo."
+
+msgid "Where:"
+msgstr "Donde:"
+
+msgid "ANY-INTEGER"
+msgstr "ENTEROS"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+
+msgid "ANY-NUMERICAL"
+msgstr "FLOTANTES"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+
+msgid "Combinations SQL"
+msgstr "SQL Combinaciones"
+
+msgid "Identifier of the departure vertex."
+msgstr "Identificador del vértice de salida."
+
+msgid "Identifier of the arrival vertex."
+msgstr "Identificador del vértice de llegada."
+
+msgid "Result Columns"
+msgstr "Columnas de Resultados"
+
+msgid ""
+"Returns ``(seq, path_seq, start_vid, end_vid, node, edge, cost, "
+"agg_cost)``"
+msgstr ""
+"Regresa ``(seq, path_seq, start_vid, end_vid, node, edge, cost, "
+"agg_cost)``"
+
+msgid "``seq``"
+msgstr "``seq``"
+
+msgid "``INTEGER``"
+msgstr "``INTEGER``"
+
+msgid "Sequential value starting from **1**."
+msgstr "Valor secuencial a partir de **1**."
+
+msgid "``path_seq``"
+msgstr "``path_seq``"
+
+msgid ""
+"Relative position in the path. Has value **1** for the beginning of a "
+"path."
+msgstr ""
+"Posición relativa en la ruta. Tiene el valor **1** para el inicio de una "
+"ruta."
+
+msgid "``start_vid``"
+msgstr "``start_vid``"
+
+msgid "Identifier of the starting vertex of the current path."
+msgstr "Identificador del vértice inicial de la ruta actual."
+
+msgid "``end_vid``"
+msgstr "``end_vid``"
+
+msgid "Identifier of the ending vertex of the current path."
+msgstr "Identificador del vértice final de la ruta actual."
+
+msgid "``node``"
+msgstr "``node``"
+
+msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
+msgstr "Identificador del nodo en la ruta de ``start_vid`` a ``end_vid``."
+
+msgid "``edge``"
+msgstr "``edge``"
+
+msgid ""
+"Identifier of the edge used to go from ``node`` to the next node in the "
+"path sequence. **-1** for the last node of the path."
+msgstr ""
+"Identificador de la arista utilizado para ir del ``node`` al siguiente "
+"nodo de la secuencia de ruta. ``-1`` para el último nodo de la ruta."
+
+msgid "``FLOAT``"
+msgstr "``FLOAT``"
+
+msgid ""
+"Cost to traverse from ``node`` using ``edge`` to the next node in the "
+"path sequence."
+msgstr ""
+"Costo para atravesar desde ``node`` usando ``edge`` hasta el siguiente "
+"nodo en la secuencia de la ruta."
+
+msgid "``agg_cost``"
+msgstr "``agg_cost``"
+
+msgid "Aggregate cost from ``start_vid`` to ``node``."
+msgstr "Costo agregado desde ``start_vid`` hasta ``node``."
+
+msgid "See Also"
+msgstr "Ver también"
+
+msgid ":doc:`dijkstra-family`"
+msgstr ":doc:`dijkstra-family`"
+
+msgid ":doc:`pgr_dijkstraNearCost`"
+msgstr ":doc:`pgr_dijkstraNearCost`"
+
+msgid ":doc:`sampledata` network."
+msgstr ":doc:`sampledata` ."
+
+msgid "boost: https://www.boost.org/libs/graph/doc/table_of_contents.html"
+msgstr "boost: https://www.boost.org/libs/graph/doc/table_of_contents.html"
+
+#, python-format
+msgid "Wikipedia: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
+msgstr "Wikipedia: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
+
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
+

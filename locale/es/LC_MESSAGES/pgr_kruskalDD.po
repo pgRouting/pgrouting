@@ -1,0 +1,383 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: 2022-10-04 18:19+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language: es\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
+"/pgrouting-develop/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_kruskalDD.html>`__ (`3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_kruskalDD.html>`__) `3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_kruskalDD.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_kruskalDD.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_kruskalDD.html>`__"
+msgstr ""
+
+msgid "``pgr_kruskalDD``"
+msgstr "``pgr_kruskalDD``"
+
+msgid "``pgr_kruskalDD`` — Catchament nodes using Kruskal's algorithm."
+msgstr "``pgr_kruskalDD`` — Nodos de captación utilizando el algoritmo de Kruskal."
+
+msgid "Boost Graph Inside"
+msgstr "Adentro: Boost Graph"
+
+msgid "Availability"
+msgstr "Disponibilidad"
+
+msgid "Version 3.0.0"
+msgstr "Versión 3.0.0"
+
+msgid "New **Official** function"
+msgstr "Nueva función **Oficial**"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid ""
+"Using Kruskal's algorithm, extracts the nodes that have aggregate costs "
+"less than or equal to a **distance** from a **root** vertex (or vertices)"
+" within the calculated minimum spanning tree."
+msgstr ""
+"Usando el algoritmo de Kruskal, extraerá los nodos que tienen costos "
+"agregados menores o iguales a la **distancia** desde un vértice (o "
+"vértices) **raíz** dentro del árbol de expansión mínimo calculado."
+
+msgid "**The main Characteristics are:**"
+msgstr "**Las características principales son:**"
+
+msgid "It's implementation is only on **undirected** graph."
+msgstr "Su implementación es solo para grafo **no dirigido**."
+
+msgid "Process is done only on edges with positive costs."
+msgstr "El proceso se realiza sólo en aristas con costos positivos."
+
+msgid "When the graph is connected"
+msgstr "Cuando el grafo es conectado"
+
+msgid "The resulting edges make up a tree"
+msgstr "Las aristas resultantes componen un árbol"
+
+msgid "When the graph is not connected,"
+msgstr "Cuando el grafo no está conectado,"
+
+msgid "Finds a minimum spanning tree for each connected component."
+msgstr "Encuentra un árbol de expansión mínimo para cada componente conectado."
+
+msgid "The resulting edges make up a forest."
+msgstr "Las aristas resultantes conforman un bosque."
+
+msgid "The total weight of all the edges in the tree or forest is minimized."
+msgstr "Se minimiza el peso total de todos los bordes del árbol o bosque."
+
+msgid "Kruskal's running time: :math:`O(E * log E)`"
+msgstr "Tiempo de ejecución de Kruskal: :math:`O(E * log E)`"
+
+msgid ""
+"Extracts all the nodes that have costs less than or equal to the value "
+"distance."
+msgstr ""
+"Extrae todos los nodos que tienen costos menor o igual al valor de la "
+"distancia."
+
+msgid "The edges extracted will conform to the corresponding spanning tree."
+msgstr "Las aristas extraídas conformarán el correspondiente árbol de expansión."
+
+msgid "Edge :math:`(u, v)` will not be included when:"
+msgstr "Arista :math:`(u, v)` no se incluye cuando:"
+
+msgid "The distance from the **root** to :math:`u` > limit distance."
+msgstr "La distancia de la **raiz** a:math:`u` > límite de la distancia."
+
+msgid "The distance from the **root** to :math:`v` > limit distance."
+msgstr "La distancia de la **raiz** a :math:`v` > límite de la distancia."
+
+msgid ""
+"No new nodes are created on the graph, so when is within the limit and is"
+" not within the limit, the edge is not included."
+msgstr ""
+"No se crean nuevos nodos en el grafo, por lo que cuando el vértice está "
+"dentro de los límites y parte de la arista no está dentro de los límites,"
+" la arsta no se incluye."
+
+msgid "Returned tree nodes from a root vertex are on Depth First Search order."
+msgstr ""
+"Los nodos de árbol devueltos de un vértice raíz están en el orden de "
+"Primera Búsqueda de Profundidad."
+
+msgid "Depth First Search running time: :math:`O(E + V)`"
+msgstr "Primera Búsqueda de Profundidad, tiempo de ejecución: :math:`O(E + V)`"
+
+msgid "Signatures"
+msgstr "Firmas"
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_kruskalDD(`Edges SQL`_, **root vid**, **distance**)"
+msgstr "pgr_kruskalDD(`SQL de aristas`_, **raíz**, **distancia**)"
+
+msgid "pgr_kruskalDD(`Edges SQL`_, **root vids**, **distance**)"
+msgstr "pgr_kruskalDD(`SQL de aristas`_, **raices**, **distancia**)"
+
+msgid "RETURNS SET OF |result-bfs|"
+msgstr ""
+
+msgid "Single vertex"
+msgstr "Vértice único"
+
+msgid "Example"
+msgstr "Ejemplo"
+
+msgid ""
+"The Minimum Spanning Tree starting on vertex :math:`6` with "
+":math:`distance \\leq 3.5`"
+msgstr ""
+"El mínimo árbol de expansión que comienza en el vértice:math:`6` con "
+":math:`distance \\leq 3.5`"
+
+msgid "Multiple vertices"
+msgstr "Múltiples vértices"
+
+msgid ""
+"The Minimum Spanning Tree starting on vertices :math:`\\{9, 6\\}` with "
+":math:`distance \\leq 3.5`"
+msgstr ""
+"El árbol de expansión mínimo que comienza en los vértices :math:`\\{9, "
+"6\\}` con :math:`distance \\leq 3.5`"
+
+msgid "Parameters"
+msgstr "Parámetros"
+
+msgid "Parameter"
+msgstr "Parámetro"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "`Edges SQL`_"
+msgstr "`SQL de aristas`_"
+
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+msgid "Edges SQL as described below."
+msgstr "SQL de aristas como se describen abajo."
+
+msgid "**Root vid**"
+msgstr "**id raíz**"
+
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+msgid "Identifier of the root vertex of the tree."
+msgstr "Identificador del vértice raíz del árbol."
+
+msgid "**Root vids**"
+msgstr "**Raíces**"
+
+msgid "``ARRAY[ANY-INTEGER]``"
+msgstr "``ARREGLO[ENTEROS]``"
+
+msgid "Array of identifiers of the root vertices."
+msgstr "Arreglo de identificadores de los vértices raíz."
+
+msgid ":math:`0` values are ignored"
+msgstr "Valores :math:`0` son ignorados"
+
+msgid "For optimization purposes, any duplicated value is ignored."
+msgstr "Con el propósito de optimización, valores duplicados son ignorados."
+
+msgid "**distance**"
+msgstr "**distancia**"
+
+msgid "``FLOAT``"
+msgstr "``FLOAT``"
+
+msgid "Upper limit for the inclusion of a node in the result."
+msgstr "Límite superior para la inclusión del nodo en el resultado."
+
+msgid "Where:"
+msgstr "Donde:"
+
+msgid "ANY-INTEGER"
+msgstr "ENTEROS"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+
+msgid "ANY-NUMERIC"
+msgstr "FLOTANTES"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+
+msgid "Inner Queries"
+msgstr "Consultas Internas"
+
+msgid "Edges SQL"
+msgstr "SQL aristas"
+
+msgid "Column"
+msgstr "Columna"
+
+msgid "Default"
+msgstr "x Defecto"
+
+msgid "``id``"
+msgstr "``id``"
+
+msgid "**ANY-INTEGER**"
+msgstr "**ENTEROS**"
+
+msgid "Identifier of the edge."
+msgstr "Identificador de la arista."
+
+msgid "``source``"
+msgstr "``source``"
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer vértice de la arista."
+
+msgid "``target``"
+msgstr "``target``"
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo vértice de la arista."
+
+msgid "``cost``"
+msgstr "``cost``"
+
+msgid "**ANY-NUMERICAL**"
+msgstr "**FLOTANTES**"
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr "Peso de la arista (``source``, ``target``)"
+
+msgid "``reverse_cost``"
+msgstr "``reverse_cost``"
+
+msgid "-1"
+msgstr "-1"
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr "Peso de la arista (``target``, ``source``)"
+
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
+"tanto no es parte del grafo."
+
+msgid "ANY-NUMERICAL"
+msgstr "FLOTANTES"
+
+msgid "Result Columns"
+msgstr "Columnas de Resultados"
+
+msgid "Returns SET OF ``(seq, depth, start_vid, node, edge, cost, agg_cost)``"
+msgstr "Regresa ``SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)``"
+
+msgid "``seq``"
+msgstr "``seq``"
+
+msgid "Sequential value starting from :math:`1`."
+msgstr "Valor secuencial a partir de :math:`1`."
+
+msgid "``depth``"
+msgstr "``depth``"
+
+msgid "Depth of the ``node``."
+msgstr "Profundidad del ``node``."
+
+msgid ":math:`0` when ``node`` = ``start_vid``."
+msgstr ":math:`0` cuando ``node`` = ``start_vid``."
+
+msgid "``start_vid``"
+msgstr "``start_vid``"
+
+msgid "Identifier of the root vertex."
+msgstr "Identificador del vértice raíz."
+
+msgid "``node``"
+msgstr "``node``"
+
+msgid "Identifier of ``node`` reached using ``edge``."
+msgstr "Identificador del ``node`` alcanzado usando ``edge``."
+
+msgid "``edge``"
+msgstr "``edge``"
+
+msgid "Identifier of the ``edge`` used to arrive to ``node``."
+msgstr "Identificador del ``edge`` utilizado para llegar a ``node``."
+
+msgid ":math:`-1` when ``node`` = ``start_vid``."
+msgstr ":math:`-1` cuando ``node`` = ``start_vid``."
+
+msgid "Cost to traverse ``edge``."
+msgstr "Costo por recorrer ``edge``."
+
+msgid "``agg_cost``"
+msgstr "``agg_cost``"
+
+msgid "Aggregate cost from ``start_vid`` to ``node``."
+msgstr "Costo agregado desde ``start_vid`` hasta ``node``."
+
+msgid "SMALLINT, INTEGER, BIGINT"
+msgstr "``SMALLINT, INTEGER, BIGINT``"
+
+msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
+msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
+
+msgid "See Also"
+msgstr "Ver también"
+
+msgid ":doc:`spanningTree-family`"
+msgstr ":doc:`spanningTree-family`"
+
+msgid ":doc:`kruskal-family`"
+msgstr ":doc:`kruskal-family`"
+
+msgid ":doc:`sampledata`"
+msgstr ":doc:`sampledata`"
+
+msgid ""
+"`Boost: Kruskal's algorithm "
+"<https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
+msgstr ""
+"`Boost: algoritmo de Kruskal "
+"<https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
+
+msgid ""
+"`Wikipedia: Kruskal's algorithm "
+"<https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
+msgstr ""
+"`Wikipedia: algoritmo de Kruskal "
+"<https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
+
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
+

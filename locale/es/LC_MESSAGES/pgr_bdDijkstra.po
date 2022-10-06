@@ -1,0 +1,583 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: 2022-10-04 18:19+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language: es\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
+"/pgrouting-develop/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#, fuzzy
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_bdDijkstra.html>`__ (`3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_bdDijkstra.html>`__) `3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_bdDijkstra.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_bdDijkstra.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_bdDijkstra.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Última "
+"<https://docs.pgrouting.org/latest/es/pgr_dijkstra.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/es/pgr_dijkstra.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/es/pgr_dijkstra.html>`__ `3.2 "
+"<https://docs.pgrouting.org/3.2/es/pgr_dijkstra.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_dijkstra.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_dijkstra.html>`__"
+
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_bdDijkstra.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_bdDijkstra.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_bdDijkstra.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/bd_dijkstra/doc/pgr_bdDijkstra.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/bd_dijkstra/doc/pgr_bdDijkstra.html>`__"
+" `2.1 "
+"<https://docs.pgrouting.org/2.1/en/src/bd_dijkstra/doc/index.html>`__ "
+"`2.0 "
+"<https://docs.pgrouting.org/2.0/en/src/bd_dijkstra/doc/index.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_bdDijkstra.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_bdDijkstra.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_bdDijkstra.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/bd_dijkstra/doc/pgr_bdDijkstra.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/bd_dijkstra/doc/pgr_bdDijkstra.html>`__"
+" `2.1 "
+"<https://docs.pgrouting.org/2.1/en/src/bd_dijkstra/doc/index.html>`__ "
+"`2.0 "
+"<https://docs.pgrouting.org/2.0/en/src/bd_dijkstra/doc/index.html>`__"
+
+msgid "``pgr_bdDijkstra``"
+msgstr "``pgr_bdDijkstra``"
+
+msgid ""
+"``pgr_bdDijkstra`` — Returns the shortest path(s) using Bidirectional "
+"Dijkstra algorithm."
+msgstr ""
+"``pgr_bdDijkstra`` — Devuelve la(s) rutas más cortas mediante el "
+"algoritmo Bidirectional Dijkstra."
+
+msgid "Boost Graph Inside"
+msgstr "Adentro: Boost Graph"
+
+msgid "Availability:"
+msgstr "Disponibilidad:"
+
+msgid "Version 3.2.0"
+msgstr "Versión 3.2.0"
+
+msgid "New **proposed** signature:"
+msgstr "Nueva firma **propuesta**:"
+
+msgid "pgr_bdDijkstra(`Combinations`_)"
+msgstr "pgr_bdDijkstra(`Combinaciones`_)"
+
+msgid "Version 3.0.0"
+msgstr "Versión 3.0.0"
+
+msgid "**Official** function"
+msgstr "Función **oficial**"
+
+msgid "Version 2.5.0"
+msgstr "Versión 2.5.0"
+
+msgid "New **Proposed** functions:"
+msgstr "Nuevas funciones **Propuestas**:"
+
+msgid "``pgr_bdDijkstra`` (`One to Many`_)"
+msgstr "``pgr_bdDijkstra`` (`Uno a Muchos`_)"
+
+msgid "``pgr_bdDijkstra`` (`Many to One`_)"
+msgstr "``pgr_bdDijkstra`` (`Muchos a Uno`_)"
+
+msgid "``pgr_bdDijkstra`` (`Many to Many`_)"
+msgstr "``pgr_bdDijkstra`` (`Muchos a Muchos`_)"
+
+msgid "Version 2.4.0"
+msgstr "Versión 2.4.0"
+
+msgid "Signature change on ``pgr_bdDijsktra`` (`One to One`_)"
+msgstr "La firma cambió en ``pgr_bdDijsktra`` (`Uno a Uno`_)"
+
+msgid "Old signature no longer supported"
+msgstr "Firma antigua ya no soportada"
+
+msgid "Version 2.0.0"
+msgstr "Versión 2.0.0"
+
+msgid "**Official** ``pgr_bdDijkstra`` (`One to One`_)"
+msgstr "**Oficial** ``pgr_bdDijkstra`` (`Uno a Uno`_)"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid "**The main characteristics are:**"
+msgstr "**Las principales características son:**"
+
+msgid "Process is done only on edges with positive costs."
+msgstr "El proceso se realiza sólo en aristas con costos positivos."
+
+msgid ""
+"A negative value on a cost column is interpreted as the edge does not "
+"exist."
+msgstr ""
+"Valor no negativo en una columna de costo se interpreta como la arista no"
+" exite."
+
+msgid "Values are returned when there is a path."
+msgstr "Los valores se devuelven cuando hay una ruta."
+
+msgid "When there is no path:"
+msgstr "Cuando no hay ruta:"
+
+msgid "When the starting vertex and ending vertex are the same."
+msgstr "Cuando el vértice de salida y el vértice destino son iguales."
+
+msgid ""
+"The **aggregate cost** of the non included values :math:`(v, v)` is "
+":math:`0`"
+msgstr ""
+"El **costo agregado** de los valores no incluídos :math:`(v, v)` es "
+":math:`0`"
+
+msgid ""
+"When the starting vertex and ending vertex are the different and there is"
+" no path:"
+msgstr ""
+"Cuando el vértice de salida y el vértice destino son diferentes y no hay "
+"ninguna ruta:"
+
+msgid ""
+"The **aggregate cost** the non included values :math:`(u, v)` is "
+":math:`\\infty`"
+msgstr ""
+"El **costo agregado** de los valores no incluídos :math:`(u, v)` es "
+":math: `\\infty`"
+
+msgid ""
+"For optimization purposes, any duplicated value in the starting vertices "
+"or on the ending vertices are ignored."
+msgstr ""
+"Para fines de optimización, se ignora cualquier valor duplicado en los "
+"vertices de salida o destino."
+
+msgid "Running time (worse case scenario): :math:`O((V \\log V + E))`"
+msgstr "Tiempo de ejecución (peor de los casos): :math:`O((V \\log V + E))`"
+
+msgid ""
+"For large graphs where there is a path bewtween the starting vertex and "
+"ending vertex:"
+msgstr ""
+"Para grandes gráficos donde hay un camino entre el vértice inicial y el "
+"vértice final:"
+
+msgid "It is expected to terminate faster than pgr_dijkstra"
+msgstr "Se espera que termine más rápido que pgr_dijkstra"
+
+msgid "Signatures"
+msgstr "Firmas"
+
+msgid "Summary"
+msgstr "Resumen"
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
+msgstr "pgr_bdDijkstra(`SQL de aristas`_, **salida**, **destino**, [``directed``])"
+
+msgid "pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
+msgstr ""
+"pgr_bdDijkstra(`SQL de aristas`_, **salida**, **destinos**, "
+"[``directed``])"
+
+msgid "pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vid**, [``directed``])"
+msgstr ""
+"pgr_bdDijkstra(`SQL de aristas`_, **salidas**, **destino**, "
+"[``directed``])"
+
+msgid "pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vids**, [``directed``])"
+msgstr ""
+"pgr_bdDijkstra(`SQL de aristas`_, **salidas**, **destinos**, "
+"[``directed``])"
+
+msgid "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_ , [``directed``])"
+msgstr "pgr_bdDijkstra(`SQL de aristas`_, `SQL de combinaciones`_, [``directed``])"
+
+msgid "RETURNS SET OF |old-generic-result|"
+msgstr ""
+
+msgid "OR EMPTY SET"
+msgstr ""
+
+msgid "One to One"
+msgstr "Uno a Uno"
+
+msgid "RETURNS SET OF |result-1-1|"
+msgstr ""
+
+msgid "Example"
+msgstr "Ejemplo"
+
+msgid "From vertex :math:`6` to vertex  :math:`10` on a **directed** graph"
+msgstr "Del vértice :math:`6` al vértice :math:`10` en un grafo **dirigido**"
+
+msgid "One to Many"
+msgstr "Uno a Muchos"
+
+msgid "RETURNS SET OF |result-1-m|"
+msgstr ""
+
+msgid ""
+"From vertex :math:`6` to vertices :math:`\\{10, 17\\}` on a **directed** "
+"graph"
+msgstr ""
+"Del vértice :math:`6` a los vértices :math:`\\{10, 17\\}` en un grafo "
+"**dirigido**"
+
+msgid "Many to One"
+msgstr "Muchos a Uno"
+
+msgid "RETURNS SET OF |result-m-1|"
+msgstr ""
+
+msgid ""
+"From vertices :math:`\\{6, 1\\}` to vertex :math:`17` on a **directed** "
+"graph"
+msgstr ""
+"De los vértices :math:`\\{6, 1\\}` al vertice :math:`17` en un grafo "
+"**dirigido**"
+
+msgid "Many to Many"
+msgstr "Muchos a Muchos"
+
+msgid "RETURNS SET OF |short-generic-result|"
+msgstr ""
+
+msgid ""
+"From vertices :math:`\\{6, 1\\}` to vertices :math:`\\{10, 17\\}` on an "
+"**undirected** graph"
+msgstr ""
+"De los vértices :math:`\\{6, 1\\}` a los vértices :math:`\\{10, 17\\}` en"
+" un grafo **no dirigido**"
+
+msgid "Combinations"
+msgstr "Combinaciones"
+
+msgid "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
+msgstr "pgr_bdDijkstra(`SQL de aristas`_, `SQL de combinaciones`_, [``directed``])"
+
+msgid "Using a combinations table on an **undirected** graph"
+msgstr "Usando una tabla de combinaciones en un grafo **no dirigido**"
+
+msgid "The combinations table:"
+msgstr "La tabla de combinaciones:"
+
+msgid "The query:"
+msgstr "La consulta:"
+
+msgid "Parameters"
+msgstr "Parámetros"
+
+msgid "Column"
+msgstr "Columna"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "`Edges SQL`_"
+msgstr "`SQL de aristas`_"
+
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+msgid "`Edges SQL`_ as described below"
+msgstr "`SQL de aristas`_ como se describe a continuación"
+
+msgid "`Combinations SQL`_"
+msgstr "`SQL de combinaciones`_"
+
+msgid "`Combinations SQL`_ as described below"
+msgstr "`SQL de combinaciones`_ como se describe a abajo"
+
+msgid "**start vid**"
+msgstr "**salida**"
+
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+msgid "Identifier of the starting vertex of the path."
+msgstr "Identificador del vértice inicial de la ruta."
+
+msgid "**start vids**"
+msgstr "**salidas**"
+
+msgid "``ARRAY[BIGINT]``"
+msgstr "``ARRAY[BIGINT]``"
+
+msgid "Array of identifiers of starting vertices."
+msgstr "Arreglo de identificadores de vértices iniciales."
+
+msgid "**end vid**"
+msgstr "**destino**"
+
+msgid "Identifier of the ending vertex of the path."
+msgstr "Identificador del vértice final de la ruta."
+
+msgid "**end vids**"
+msgstr "**destinos**"
+
+msgid "Array of identifiers of ending vertices."
+msgstr "Arreglo de identificadores de vértices finales."
+
+msgid "Optional parameters"
+msgstr "Parámetros opcionales"
+
+msgid "Default"
+msgstr "x Defecto"
+
+msgid "``directed``"
+msgstr "``directed``"
+
+msgid "``BOOLEAN``"
+msgstr "``BOOLEAN``"
+
+msgid "``true``"
+msgstr "``true``"
+
+msgid "When ``true`` the graph is considered `Directed`"
+msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
+
+msgid "When ``false`` the graph is considered as `Undirected`."
+msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
+
+msgid "Inner Queries"
+msgstr "Consultas Internas"
+
+msgid "Edges SQL"
+msgstr "SQL aristas"
+
+msgid "``id``"
+msgstr "``id``"
+
+msgid "**ANY-INTEGER**"
+msgstr "**ENTEROS**"
+
+msgid "Identifier of the edge."
+msgstr "Identificador de la arista."
+
+msgid "``source``"
+msgstr "``source``"
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer vértice de la arista."
+
+msgid "``target``"
+msgstr "``target``"
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo vértice de la arista."
+
+msgid "``cost``"
+msgstr "``cost``"
+
+msgid "**ANY-NUMERICAL**"
+msgstr "**FLOTANTES**"
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr "Peso de la arista (``source``, ``target``)"
+
+msgid "``reverse_cost``"
+msgstr "``reverse_cost``"
+
+msgid "-1"
+msgstr "-1"
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr "Peso de la arista (``target``, ``source``)"
+
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
+"tanto no es parte del grafo."
+
+msgid "Where:"
+msgstr "Donde:"
+
+msgid "ANY-INTEGER"
+msgstr "ENTEROS"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+
+msgid "ANY-NUMERICAL"
+msgstr "FLOTANTES"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+
+msgid "Combinations SQL"
+msgstr "SQL Combinaciones"
+
+msgid "Parameter"
+msgstr "Parámetro"
+
+msgid "Identifier of the departure vertex."
+msgstr "Identificador del vértice de salida."
+
+msgid "Identifier of the arrival vertex."
+msgstr "Identificador del vértice de llegada."
+
+msgid "Result Columns"
+msgstr "Columnas de Resultados"
+
+msgid ""
+"Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, "
+"cost, agg_cost)``"
+msgstr ""
+"Devuelve el conjunto de ``(seq, path_seq [, start_vid] [, end_vid], node,"
+" edge, cost, agg_cost)``"
+
+msgid "``seq``"
+msgstr "``seq``"
+
+msgid "``INTEGER``"
+msgstr "``INTEGER``"
+
+msgid "Sequential value starting from **1**."
+msgstr "Valor secuencial a partir de **1**."
+
+msgid "``path_seq``"
+msgstr "``path_seq``"
+
+msgid ""
+"Relative position in the path. Has value **1** for the beginning of a "
+"path."
+msgstr ""
+"Posición relativa en la ruta. Tiene el valor **1** para el inicio de una "
+"ruta."
+
+msgid "``start_vid``"
+msgstr "``start_vid``"
+
+msgid ""
+"Identifier of the starting vertex. Returned when multiple starting "
+"vetrices are in the query."
+msgstr ""
+"Identificador del vértice inicial. Se devuelve cuando hay varias vetrices"
+" iniciales en la consulta."
+
+msgid "`Many to One`_"
+msgstr "`Muchos a Uno`_"
+
+msgid "`Many to Many`_"
+msgstr "`Muchos a Muchos`_"
+
+msgid "``end_vid``"
+msgstr "``end_vid``"
+
+msgid ""
+"Identifier of the ending vertex. Returned when multiple ending vertices "
+"are in the query."
+msgstr ""
+"Identificador del vértice final. Se devuelve cuando hay varios vértices "
+"finales en la consulta."
+
+msgid "`One to Many`_"
+msgstr "`Uno a Muchos`_"
+
+msgid "``node``"
+msgstr "``node``"
+
+msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
+msgstr "Identificador del nodo en la ruta de ``start_vid`` a ``end_vid``."
+
+msgid "``edge``"
+msgstr "``edge``"
+
+msgid ""
+"Identifier of the edge used to go from ``node`` to the next node in the "
+"path sequence. **-1** for the last node of the path."
+msgstr ""
+"Identificador de la arista utilizado para ir del ``node`` al siguiente "
+"nodo de la secuencia de ruta. ``-1`` para el último nodo de la ruta."
+
+msgid "``FLOAT``"
+msgstr "``FLOAT``"
+
+msgid ""
+"Cost to traverse from ``node`` using ``edge`` to the next node in the "
+"path sequence."
+msgstr ""
+"Costo para atravesar desde ``node`` usando ``edge`` hasta el siguiente "
+"nodo en la secuencia de la ruta."
+
+msgid "``agg_cost``"
+msgstr "``agg_cost``"
+
+msgid "Aggregate cost from ``start_vid`` to ``node``."
+msgstr "Costo agregado desde ``start_vid`` hasta ``node``."
+
+msgid "Additional Examples"
+msgstr "Ejemplos Adicionales"
+
+msgid "Example 1"
+msgstr "Ejemplo 1"
+
+msgid "Demonstration of repeated values are ignored, and result is sorted."
+msgstr "Demostración de ignorar los valores repertidos, y resultado ordenado."
+
+msgid "Example 2"
+msgstr "Ejemplo 2"
+
+msgid "Making **start vids** the same as **end vids**."
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
+
+msgid "Example 3"
+msgstr "Ejemplo 3"
+
+msgid "Manually assigned vertex combinations."
+msgstr "Manualmente asignar combinaciones de vértices."
+
+msgid "See Also"
+msgstr "Ver también"
+
+msgid ":doc:`bdDijkstra-family`"
+msgstr ":doc:`bdDijkstra-family`"
+
+msgid ":doc:`sampledata`"
+msgstr ":doc:`sampledata`"
+
+#, python-format
+msgid "https://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf"
+msgstr "https://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf"
+
+msgid "https://en.wikipedia.org/wiki/Bidirectional_search"
+msgstr "https://en.wikipedia.org/wiki/Bidirectional_search"
+
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
+
