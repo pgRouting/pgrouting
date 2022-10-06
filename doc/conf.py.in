@@ -321,21 +321,6 @@ pdf_style_path = ['.', '_styles']
 
 # cases to ignore during link checking
 linkcheck_ignore = [
-    r'https://docs.pgrouting.org/.*/.*/TRSP-family.html',
-    r'https://docs.pgrouting.org/.*/.*/pgr_trsp_withPoints.html',
-    r'https://docs.pgrouting.org/.*/.*/pgr_trspVia.html',
-    r'https://docs.pgrouting.org/.*/.*/pgr_withPointsVia.html',
-    r'https://docs.pgrouting.org/.*/.*/pgr_trspVia_withPoints.html',
-
-
-
-
-    r'https://docs.pgrouting.org/.*/.*/pgr_degree.html',
-    r'https://docs.pgrouting.org/.*/.*/pgr_cuthillMckeeOrdering.html',
-    r'https://docs.pgrouting.org/.*/.*/ordering-family.html',
-    r'https://docs.pgrouting.org/.*/.*/pgr_hawickCircuits.html',
-    r'https://docs.pgrouting.org/.*/.*/pgr_findCloseEdges.html',
-
     # link failing used in contraction-family
     'https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf',
 
