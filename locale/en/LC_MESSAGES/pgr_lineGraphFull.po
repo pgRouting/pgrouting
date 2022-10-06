@@ -1,0 +1,516 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_lineGraphFull.html>`__ (`3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_lineGraphFull.html>`__) `3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_lineGraphFull.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_lineGraphFull.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_lineGraphFull.html>`__"
+msgstr ""
+
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_lineGraphFull.html>`__"
+msgstr ""
+
+msgid "``pgr_lineGraphFull`` - Experimental"
+msgstr ""
+
+msgid ""
+"``pgr_lineGraphFull`` — Transforms a given graph into a new graph where "
+"all of the vertices from the original graph are converted to line graphs."
+msgstr ""
+
+msgid "Possible server crash"
+msgstr ""
+
+msgid "These functions might create a server crash"
+msgstr ""
+
+msgid "Experimental functions"
+msgstr ""
+
+msgid "They are not officially of the current release."
+msgstr ""
+
+msgid "They likely will not be officially be part of the next release:"
+msgstr ""
+
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+msgid "Name might change."
+msgstr ""
+
+msgid "Signature might change."
+msgstr ""
+
+msgid "Functionality might change."
+msgstr ""
+
+msgid "pgTap tests might be missing."
+msgstr ""
+
+msgid "Might need c/c++ coding."
+msgstr ""
+
+msgid "May lack documentation."
+msgstr ""
+
+msgid "Documentation if any might need to be rewritten."
+msgstr ""
+
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+
+msgid "Might need a lot of feedback from the comunity."
+msgstr ""
+
+msgid "Might depend on a proposed function of pgRouting"
+msgstr ""
+
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr ""
+
+msgid "Availability"
+msgstr ""
+
+msgid "Version 2.6.0"
+msgstr ""
+
+msgid "New **Experimental** function"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid ""
+"``pgr_lineGraphFull``, converts original directed graph to a directed "
+"line graph by converting each vertex to a complete graph and keeping all "
+"the original edges. The new connecting edges have a cost 0 and go between"
+" the adjacent original edges, respecting the directionality."
+msgstr ""
+
+msgid ""
+"A possible application of the resulting graph is **\"routing with two "
+"edge restrictions\"**:"
+msgstr ""
+
+msgid ""
+"Setting a cost of using the vertex when routing between edges on the "
+"connecting edge"
+msgstr ""
+
+msgid "Forbid the routing between two edges by removing the connecting edge"
+msgstr ""
+
+msgid ""
+"This is possible because each of the intersections (vertices) in the "
+"original graph are now complete graphs that have a new edge for each "
+"possible turn across that intersection."
+msgstr ""
+
+msgid "The main characteristics are:"
+msgstr ""
+
+msgid "This function is for **directed** graphs."
+msgstr ""
+
+msgid ""
+"Results are undefined when a negative vertex id is used in the input "
+"graph."
+msgstr ""
+
+msgid ""
+"Results are undefined when a duplicated edge id is used in the input "
+"graph."
+msgstr ""
+
+msgid "Running time: TBD"
+msgstr ""
+
+msgid "Signatures"
+msgstr ""
+
+msgid "Summary"
+msgstr ""
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_lineGraphFull(`Edges SQL`_)"
+msgstr ""
+
+msgid "RETURNS SET OF |result-linegf|"
+msgstr ""
+
+msgid "OR EMPTY SET"
+msgstr ""
+
+msgid "Example"
+msgstr ""
+
+msgid "Full line graph of subgraph of edges :math:`\\{4, 7, 8, 10\\}`"
+msgstr ""
+
+msgid "Parameters"
+msgstr ""
+
+msgid "Parameter"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "`Edges SQL`_"
+msgstr ""
+
+msgid "``TEXT``"
+msgstr ""
+
+msgid "`Edges SQL`_ as described below."
+msgstr ""
+
+msgid "Inner Queries"
+msgstr ""
+
+msgid "Edges SQL"
+msgstr ""
+
+msgid "Column"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "``id``"
+msgstr ""
+
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+msgid "Identifier of the edge."
+msgstr ""
+
+msgid "``source``"
+msgstr ""
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+msgid "``target``"
+msgstr ""
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+msgid "``cost``"
+msgstr ""
+
+msgid "**ANY-NUMERICAL**"
+msgstr ""
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr ""
+
+msgid "``reverse_cost``"
+msgstr ""
+
+msgid "-1"
+msgstr ""
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr ""
+
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+
+msgid "Where:"
+msgstr ""
+
+msgid "ANY-INTEGER"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr ""
+
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
+
+msgid "Result Columns"
+msgstr ""
+
+msgid "``seq``"
+msgstr ""
+
+msgid "``INTEGER``"
+msgstr ""
+
+msgid "Sequential value starting from **1**."
+msgstr ""
+
+msgid "Gives a local identifier for the edge"
+msgstr ""
+
+msgid "``BIGINT``"
+msgstr ""
+
+msgid "Identifier of the source vertex of the current edge."
+msgstr ""
+
+msgid "When `negative`: the source is the reverse edge in the original graph."
+msgstr ""
+
+msgid "Identifier of the target vertex of the current edge."
+msgstr ""
+
+msgid "When `negative`: the target is the reverse edge in the original graph."
+msgstr ""
+
+msgid "``FLOAT``"
+msgstr ""
+
+msgid "Weight of the edge (``source``, ``target``)."
+msgstr ""
+
+msgid ""
+"When `negative`: edge (``source``, ``target``) does not exist, therefore "
+"it’s not part of the graph."
+msgstr ""
+
+msgid "Weight of the edge (``target``, ``source``)."
+msgstr ""
+
+msgid ""
+"When `negative`: edge (``target``, ``source``) does not exist, therefore "
+"it’s not part of the graph."
+msgstr ""
+
+msgid "Additional Examples"
+msgstr ""
+
+msgid ""
+"The examples of this section are based on the :doc:`sampledata` network. "
+"The examples include the subgraph including edges 4, 7, 8, and 10 with "
+"``reverse_cost``."
+msgstr ""
+
+msgid "The data"
+msgstr ""
+
+msgid ""
+"This example displays how this graph transformation works to create "
+"additional edges for each possible turn in a graph."
+msgstr ""
+
+msgid "|first|"
+msgstr ""
+
+msgid "first"
+msgstr ""
+
+msgid "The transformation"
+msgstr ""
+
+msgid "|second|"
+msgstr ""
+
+msgid "second"
+msgstr ""
+
+msgid ""
+"In the transformed graph, all of the edges from the original graph are "
+"still present (yellow), but we now have additional edges for every turn "
+"that could be made across vertex 7 (orange)."
+msgstr ""
+
+msgid "Creating table that identifies transformed vertices"
+msgstr ""
+
+msgid ""
+"The vertices in the transformed graph are each created by splitting up "
+"the vertices in the original graph. Unless a vertex in the original graph"
+" is a leaf vertex, it will generate more than one vertex in the "
+"transformed graph. One of the newly created vertices in the transformed "
+"graph will be given the same vertex identifier as the vertex that it was "
+"created from in the original graph, but the rest of the newly created "
+"vertices will have negative vertex ids."
+msgstr ""
+
+msgid ""
+"Following is an example of how to generate a table that maps the ids of "
+"the newly created vertices with the original vertex that they were "
+"created from"
+msgstr ""
+
+msgid "Store edge results"
+msgstr ""
+
+msgid ""
+"The first step is to store the results of the ``pgr_lineGraphFull`` call "
+"into a table"
+msgstr ""
+
+msgid "Create the mapping table"
+msgstr ""
+
+msgid "From the original graph's vertex information"
+msgstr ""
+
+msgid "Add the new vertices"
+msgstr ""
+
+msgid "Filling the mapping table"
+msgstr ""
+
+msgid "The positive vertex identifiers are the original identifiers"
+msgstr ""
+
+msgid "Inspecting the vertices map"
+msgstr ""
+
+msgid ""
+"The self loops happen when there is no cost traveling to the ``target`` "
+"and the source has an original value."
+msgstr ""
+
+msgid "Updating values from self loops"
+msgstr ""
+
+msgid "Inspecting the vertices table"
+msgstr ""
+
+msgid "Updating from inner self loops"
+msgstr ""
+
+msgid "Adding a soft restriction"
+msgstr ""
+
+msgid ""
+"A soft restriction going from vertex 6 to vertex 3 using edges 4 -> 7 is "
+"wanted."
+msgstr ""
+
+msgid "Idenifying the restriction"
+msgstr ""
+
+msgid ""
+"Running a :doc:`pgr_dijkstraNear` the edge with cost 0, edge 8, is where "
+"the cost will be increased"
+msgstr ""
+
+msgid ""
+"The edge to be altered is ``WHERE cost = 0 AND seq != 1 AND edge != -1`` "
+"from the previus query:"
+msgstr ""
+
+msgid "Adding a value to the restriction"
+msgstr ""
+
+msgid "Updating the cost to the edge:"
+msgstr ""
+
+msgid "Routing from :math:`6` to :math:`3`"
+msgstr ""
+
+msgid "Now the route does not use edge 8 and does a U turn on a leaf vertex."
+msgstr ""
+
+msgid "Simplifying leaf vertices"
+msgstr ""
+
+msgid "In this example, there is no additional cost for traversing a leaf vertex."
+msgstr ""
+
+msgid "Using the vertex map give the leaf verices their original value."
+msgstr ""
+
+msgid "On the source column"
+msgstr ""
+
+msgid "On the target column"
+msgstr ""
+
+msgid "Removing self loops on leaf nodes"
+msgstr ""
+
+msgid "The self loops of the leaf nodes are"
+msgstr ""
+
+msgid "Which can be removed"
+msgstr ""
+
+msgid ""
+"Routing can be done now using the original vertices id using "
+":doc:`pgr_dijkstra`"
+msgstr ""
+
+msgid "Complete routing graph"
+msgstr ""
+
+msgid "Add edges from the original graph"
+msgstr ""
+
+msgid ""
+"Add all the edges that are not involved in the line graph process to the "
+"new table"
+msgstr ""
+
+msgid "Some administrative tasks to get new identifiers for the edges"
+msgstr ""
+
+msgid "Add the newly calculated edges"
+msgstr ""
+
+msgid "Using the routing graph"
+msgstr ""
+
+msgid ""
+"When using this method for routing with soft restrictions there will be "
+"uturns"
+msgstr ""
+
+msgid "Routing from :math:`5` to :math:`1`"
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid "https://en.wikipedia.org/wiki/Line_graph"
+msgstr ""
+
+msgid "https://en.wikipedia.org/wiki/Complete_graph"
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""
+

@@ -1,0 +1,732 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_pickDeliverEuclidean.html>`__ "
+"(`3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_pickDeliverEuclidean.html>`__) "
+"`3.2 <https://docs.pgrouting.org/3.2/en/pgr_pickDeliverEuclidean.html>`__"
+" `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_pickDeliverEuclidean.html>`__ `3.0"
+" <https://docs.pgrouting.org/3.0/en/pgr_pickDeliverEuclidean.html>`__"
+msgstr ""
+
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_gsoc_vrppdtw.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_gsoc_vrppdtw.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_gsoc_vrppdtw.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/vrppdtw/doc/pgr_gsoc_vrppdtw.html>`__"
+" `2.2 <https://docs.pgrouting.org/2.2/en/src/vrppdtw/doc/index.html>`__ "
+"`2.1 <https://docs.pgrouting.org/2.1/en/src/vrppdtw/doc/index.html>`__"
+msgstr ""
+
+msgid "``pgr_pickDeliverEuclidean`` - Experimental"
+msgstr ""
+
+msgid "``pgr_pickDeliverEuclidean`` - Pickup and delivery Vehicle Routing Problem"
+msgstr ""
+
+msgid "Possible server crash"
+msgstr ""
+
+msgid "These functions might create a server crash"
+msgstr ""
+
+msgid "Experimental functions"
+msgstr ""
+
+msgid "They are not officially of the current release."
+msgstr ""
+
+msgid "They likely will not be officially be part of the next release:"
+msgstr ""
+
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+msgid "Name might change."
+msgstr ""
+
+msgid "Signature might change."
+msgstr ""
+
+msgid "Functionality might change."
+msgstr ""
+
+msgid "pgTap tests might be missing."
+msgstr ""
+
+msgid "Might need c/c++ coding."
+msgstr ""
+
+msgid "May lack documentation."
+msgstr ""
+
+msgid "Documentation if any might need to be rewritten."
+msgstr ""
+
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+
+msgid "Might need a lot of feedback from the comunity."
+msgstr ""
+
+msgid "Might depend on a proposed function of pgRouting"
+msgstr ""
+
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr ""
+
+msgid "Availability"
+msgstr ""
+
+msgid "Version 3.0.0"
+msgstr ""
+
+msgid "Replaces ``pgr_gsoc_vrppdtw``"
+msgstr ""
+
+msgid "New **experimental** function"
+msgstr ""
+
+msgid "Synopsis"
+msgstr ""
+
+msgid ""
+"Problem: Distribute and optimize the pickup-delivery pairs into a fleet "
+"of vehicles."
+msgstr ""
+
+msgid "Optimization problem is NP-hard."
+msgstr ""
+
+msgid "Pickup and Delivery:"
+msgstr ""
+
+msgid "capacitated"
+msgstr ""
+
+msgid "with time windows."
+msgstr ""
+
+msgid "The vehicles"
+msgstr ""
+
+msgid "have (x, y) start and ending locations."
+msgstr ""
+
+msgid "have a start and ending service times."
+msgstr ""
+
+msgid "have opening and closing times for the start and ending locations."
+msgstr ""
+
+msgid "An order is for doing a pickup and a a deliver."
+msgstr ""
+
+msgid "has (x, y) pickup and delivery locations."
+msgstr ""
+
+msgid "has opening and closing times for the pickup and delivery locations."
+msgstr ""
+
+msgid "has a pickup and deliver service times."
+msgstr ""
+
+msgid "There is a customer where to deliver a pickup."
+msgstr ""
+
+msgid "travel time between customers is distance / speed"
+msgstr ""
+
+msgid "pickup and delivery pair is done with the same vehicle."
+msgstr ""
+
+msgid "A pickup is done before the delivery."
+msgstr ""
+
+msgid "Characteristics"
+msgstr ""
+
+msgid "No multiple time windows for a location."
+msgstr ""
+
+msgid "Less vehicle used is considered better."
+msgstr ""
+
+msgid "Less total duration is better."
+msgstr ""
+
+msgid "Less wait time is better."
+msgstr ""
+
+msgid "Six different optional different initial solutions"
+msgstr ""
+
+msgid "the best solution found will be result"
+msgstr ""
+
+msgid "Signature"
+msgstr ""
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_pickDeliverEuclidean(`Orders SQL`_, `Vehicles SQL`_, [**options**])"
+msgstr ""
+
+msgid "**options:** ``[factor, max_cycles, initial_sol]``"
+msgstr ""
+
+msgid "RETURNS SET OF |result-pickdrop|"
+msgstr ""
+
+msgid "Example"
+msgstr ""
+
+msgid "Solve the following problem"
+msgstr ""
+
+msgid "Given the vehicles:"
+msgstr ""
+
+msgid "and the orders:"
+msgstr ""
+
+msgid "The query:"
+msgstr ""
+
+msgid "Parameters"
+msgstr ""
+
+msgid "Column"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "`Orders SQL`_"
+msgstr ""
+
+msgid "``TEXT``"
+msgstr ""
+
+msgid "`Orders SQL`_ as described below."
+msgstr ""
+
+msgid "`Vehicles SQL`_"
+msgstr ""
+
+msgid "`Vehicles SQL`_ as described below."
+msgstr ""
+
+msgid "Pick-Deliver optional parameters"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "``factor``"
+msgstr ""
+
+msgid "``NUMERIC``"
+msgstr ""
+
+msgid "1"
+msgstr ""
+
+msgid "Travel time multiplier. See :ref:`pd_factor`"
+msgstr ""
+
+msgid "``max_cycles``"
+msgstr ""
+
+msgid "``INTEGER``"
+msgstr ""
+
+msgid "10"
+msgstr ""
+
+msgid "Maximum number of cycles to perform on the optimization."
+msgstr ""
+
+msgid "``initial_sol``"
+msgstr ""
+
+msgid "4"
+msgstr ""
+
+msgid "Initial solution to be used."
+msgstr ""
+
+msgid "``1`` One order per truck"
+msgstr ""
+
+msgid "``2`` Push front order."
+msgstr ""
+
+msgid "``3`` Push back order."
+msgstr ""
+
+msgid "``4`` Optimize insert."
+msgstr ""
+
+msgid "``5`` Push back order that allows more orders to be inserted at the back"
+msgstr ""
+
+msgid "``6`` Push front order that allows more orders to be inserted at the front"
+msgstr ""
+
+msgid "Orders SQL"
+msgstr ""
+
+msgid "A `SELECT` statement that returns the following columns:"
+msgstr ""
+
+msgid "id, demand"
+msgstr ""
+
+msgid "p_x, p_y, p_open, p_close, [p_service,]"
+msgstr ""
+
+msgid "d_x, d_y, d_open, d_close, [d_service]"
+msgstr ""
+
+msgid "Where:"
+msgstr ""
+
+msgid "``id``"
+msgstr ""
+
+msgid "|ANY-INTEGER|"
+msgstr ""
+
+msgid "Identifier of the pick-delivery order pair."
+msgstr ""
+
+msgid "``demand``"
+msgstr ""
+
+msgid "|ANY-NUMERICAL|"
+msgstr ""
+
+msgid "Number of units in the order"
+msgstr ""
+
+msgid "``p_open``"
+msgstr ""
+
+msgid "The time, relative to 0, when the pickup location opens."
+msgstr ""
+
+msgid "``p_close``"
+msgstr ""
+
+msgid "The time, relative to 0, when the pickup location closes."
+msgstr ""
+
+msgid "[``p_service``]"
+msgstr ""
+
+msgid "The duration of the loading at the pickup location."
+msgstr ""
+
+msgid "When missing: 0 time units are used"
+msgstr ""
+
+msgid "``d_open``"
+msgstr ""
+
+msgid "The time, relative to 0, when the delivery location opens."
+msgstr ""
+
+msgid "``d_close``"
+msgstr ""
+
+msgid "The time, relative to 0, when the delivery location closes."
+msgstr ""
+
+msgid "[``d_service``]"
+msgstr ""
+
+msgid "The duration of the unloading at the delivery location."
+msgstr ""
+
+msgid "ANY-INTEGER"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr ""
+
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
+
+msgid "``p_x``"
+msgstr ""
+
+msgid ":math:`x` value of the pick up location"
+msgstr ""
+
+msgid "``p_y``"
+msgstr ""
+
+msgid ":math:`y` value of the pick up location"
+msgstr ""
+
+msgid "``d_x``"
+msgstr ""
+
+msgid ":math:`x` value of the delivery location"
+msgstr ""
+
+msgid "``d_y``"
+msgstr ""
+
+msgid ":math:`y` value of the delivery location"
+msgstr ""
+
+msgid "Vehicles SQL"
+msgstr ""
+
+msgid "id, capacity"
+msgstr ""
+
+msgid "start_x, start_y, start_open, start_close [, start_service, ]"
+msgstr ""
+
+msgid "[ end_x, end_y, end_open, end_close, end_service ]"
+msgstr ""
+
+msgid "where:"
+msgstr ""
+
+msgid "Identifier of the vehicle."
+msgstr ""
+
+msgid "``capacity``"
+msgstr ""
+
+msgid "Maiximum capacity units"
+msgstr ""
+
+msgid "``start_open``"
+msgstr ""
+
+msgid "The time, relative to 0, when the starting location opens."
+msgstr ""
+
+msgid "``start_close``"
+msgstr ""
+
+msgid "The time, relative to 0, when the starting location closes."
+msgstr ""
+
+msgid "[``start_service``]"
+msgstr ""
+
+msgid "The duration of the loading at the starting location."
+msgstr ""
+
+msgid "When missing: A duration of :math:`0` time units is used."
+msgstr ""
+
+msgid "[``end_open``]"
+msgstr ""
+
+msgid "The time, relative to 0, when the ending location opens."
+msgstr ""
+
+msgid "When missing: The value of ``start_open`` is used"
+msgstr ""
+
+msgid "[``end_close``]"
+msgstr ""
+
+msgid "The time, relative to 0, when the ending location closes."
+msgstr ""
+
+msgid "When missing: The value of ``start_close`` is used"
+msgstr ""
+
+msgid "[``end_service``]"
+msgstr ""
+
+msgid "The duration of the loading at the ending location."
+msgstr ""
+
+msgid "When missing: A duration in ``start_service`` is used."
+msgstr ""
+
+msgid "``start_x``"
+msgstr ""
+
+msgid ":math:`x` value of the starting location"
+msgstr ""
+
+msgid "``start_y``"
+msgstr ""
+
+msgid ":math:`y` value of the starting location"
+msgstr ""
+
+msgid "[``end_x``]"
+msgstr ""
+
+msgid ":math:`x` value of the ending location"
+msgstr ""
+
+msgid "When missing: ``start_x`` is used."
+msgstr ""
+
+msgid "[``end_y``]"
+msgstr ""
+
+msgid ":math:`y` value of the ending location"
+msgstr ""
+
+msgid "When missing: ``start_y`` is used."
+msgstr ""
+
+msgid "Return columns"
+msgstr ""
+
+msgid "``seq``"
+msgstr ""
+
+msgid "Sequential value starting from **1**."
+msgstr ""
+
+msgid "``vehicle_seq``"
+msgstr ""
+
+msgid ""
+"Sequential value starting from **1** for current vehicles. The "
+":math:`n_{th}` vehicle in the solution."
+msgstr ""
+
+msgid "Value :math:`-2` indicates it is the summary row."
+msgstr ""
+
+msgid "``vehicle_id``"
+msgstr ""
+
+msgid "BIGINT"
+msgstr ""
+
+msgid "Current vehicle identifier."
+msgstr ""
+
+msgid "Sumary row has the **total capacity violations**."
+msgstr ""
+
+msgid "A capacity violation happens when overloading or underloading a vehicle."
+msgstr ""
+
+msgid "``stop_seq``"
+msgstr ""
+
+msgid "INTEGER"
+msgstr ""
+
+msgid ""
+"Sequential value starting from **1** for the stops made by the current "
+"vehicle. The :math:`m_{th}` stop of the current vehicle."
+msgstr ""
+
+msgid "Sumary row has the **total time windows violations**."
+msgstr ""
+
+msgid ""
+"A time window violation happens when arriving after the location has "
+"closed."
+msgstr ""
+
+msgid "``stop_type``"
+msgstr ""
+
+msgid "Kind of stop location the vehicle is at"
+msgstr ""
+
+msgid ":math:`-1`: at the solution summary row"
+msgstr ""
+
+msgid ":math:`1`: Starting location"
+msgstr ""
+
+msgid ":math:`2`: Pickup location"
+msgstr ""
+
+msgid ":math:`3`: Delivery location"
+msgstr ""
+
+msgid ":math:`6`: Ending location and indicates the vehicle's summary row"
+msgstr ""
+
+msgid "``order_id``"
+msgstr ""
+
+msgid "``BIGINT``"
+msgstr ""
+
+msgid "Pickup-Delivery order pair identifier."
+msgstr ""
+
+msgid "Value :math:`-1`: When no order is involved on the current stop location."
+msgstr ""
+
+msgid "``cargo``"
+msgstr ""
+
+msgid "``FLOAT``"
+msgstr ""
+
+msgid "Cargo units of the vehicle when leaving the stop."
+msgstr ""
+
+msgid "Value :math:`-1` on solution summary row."
+msgstr ""
+
+msgid "``travel_time``"
+msgstr ""
+
+msgid "Travel time from previous ``stop_seq`` to current ``stop_seq``."
+msgstr ""
+
+msgid "Summary has the **total traveling time**:"
+msgstr ""
+
+msgid "The sum of all the ``travel_time``."
+msgstr ""
+
+msgid "``arrival_time``"
+msgstr ""
+
+msgid "Time spent waiting for current location to open."
+msgstr ""
+
+msgid ":math:`-1`: at the solution summary row."
+msgstr ""
+
+msgid ":math:`0`: at the starting location."
+msgstr ""
+
+msgid "``wait_time``"
+msgstr ""
+
+msgid "Summary row has the **total waiting time**:"
+msgstr ""
+
+msgid "The sum of all the ``wait_time``."
+msgstr ""
+
+msgid "``service_time``"
+msgstr ""
+
+msgid "Service duration at current location."
+msgstr ""
+
+msgid "Summary row has the **total service time**:"
+msgstr ""
+
+msgid "The sum of all the ``service_time``."
+msgstr ""
+
+msgid "``departure_time``"
+msgstr ""
+
+msgid "The time at which the vehicle departs from the stop."
+msgstr ""
+
+msgid ":math:`arrival\\_time + wait\\_time + service\\_time`."
+msgstr ""
+
+msgid "The ending location has the **total time** used by the current vehicle."
+msgstr ""
+
+msgid "Summary row has the **total solution time**:"
+msgstr ""
+
+msgid ""
+":math:`total\\ traveling\\ time + total\\ waiting\\ time + total\\ "
+"service\\ time`."
+msgstr ""
+
+msgid ""
+"This data example **lc101** is from data published at "
+"https://www.sintef.no/projectweb/top/pdptw/li-lim-benchmark/"
+msgstr ""
+
+msgid "There are 25 vehciles in the problem all with the same characteristics."
+msgstr ""
+
+msgid "The original orders"
+msgstr ""
+
+msgid ""
+"The data comes in different rows for the pickup and the delivery of the "
+"same order."
+msgstr ""
+
+msgid "The orders"
+msgstr ""
+
+msgid "The original data needs to be converted to an appropiate table:"
+msgstr ""
+
+msgid "The query"
+msgstr ""
+
+msgid ""
+"Showing only the relevant information to compare with the best solution "
+"information published on "
+"https://www.sintef.no/projectweb/top/pdptw/100-customers/"
+msgstr ""
+
+msgid "The best solution found for **lc101** is a travel time: 828.94"
+msgstr ""
+
+msgid "This implementation's travel time: 854.54"
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid ":doc:`VRP-category`"
+msgstr ""
+
+msgid "The queries use the :doc:`sampledata` network."
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""
+

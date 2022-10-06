@@ -1,0 +1,224 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
+"/TSP-family.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/TSP-"
+"family.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/TSP-"
+"family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/TSP-"
+"family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/TSP-"
+"family.html>`__"
+msgstr ""
+
+msgid ""
+"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/TSP-"
+"family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/TSP-"
+"family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/TSP-"
+"family.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/tsp/doc/tsp.html>`__"
+msgstr ""
+
+msgid "Traveling Sales Person - Family of functions"
+msgstr ""
+
+msgid ":doc:`pgr_TSP` - When input is given as matrix cell information."
+msgstr ""
+
+msgid ":doc:`pgr_TSPeuclidean` - When input are coordinates."
+msgstr ""
+
+msgid "Table of Contents"
+msgstr ""
+
+msgid "General Information"
+msgstr ""
+
+msgid "Problem Definition"
+msgstr ""
+
+msgid "The travelling salesperson problem (TSP) asks the following question:"
+msgstr ""
+
+msgid ""
+"*Given a list of cities and the distances between each pair of cities, "
+"which is the shortest possible route that visits each city exactly once "
+"and returns to the origin city?*"
+msgstr ""
+
+msgid "Origin"
+msgstr ""
+
+msgid ""
+"The traveling sales person problem was studied in the 18th century by "
+"mathematicians **Sir William Rowam Hamilton** and **Thomas Penyngton "
+"Kirkman**."
+msgstr ""
+
+msgid ""
+"A discussion about the work of Hamilton & Kirkman can be found in the "
+"book **Graph Theory (Biggs et  al. 1976)**."
+msgstr ""
+
+msgid "ISBN-13: 978-0198539162"
+msgstr ""
+
+msgid "ISBN-10: 0198539169"
+msgstr ""
+
+msgid ""
+"It is believed that the general form of the TSP have been first studied "
+"by Kalr Menger in Vienna and Harvard. The problem was later promoted by "
+"Hassler, Whitney & Merrill at Princeton. A detailed description about the"
+" connection between Menger & Whitney, and the development of the TSP can "
+"be found in `On the history of combinatorial optimization (till 1960) "
+"<https://homepages.cwi.nl/~lex/files/histco.ps>`__"
+msgstr ""
+
+msgid "To calculate the number of different tours through :math:`n` cities:"
+msgstr ""
+
+msgid "Given a starting city,"
+msgstr ""
+
+msgid "There are :math:`n-1` choices for the second city,"
+msgstr ""
+
+msgid "And  :math:`n-2` choices for the third city, etc."
+msgstr ""
+
+msgid "Multiplying these together we get :math:`(n-1)!  = (n-1) (n-2) . .  1`."
+msgstr ""
+
+msgid ""
+"Now since the travel costs do not depend on the direction taken around "
+"the tour:"
+msgstr ""
+
+msgid "this number by 2"
+msgstr ""
+
+msgid ":math:`(n-1)!/2`."
+msgstr ""
+
+msgid "Characteristics"
+msgstr ""
+
+msgid "This problem is an NP-hard optimization problem."
+msgstr ""
+
+msgid "Metric Algorithm is used"
+msgstr ""
+
+msgid ""
+"Implementation generates solutions that *are twice as long as the optimal"
+" tour in the worst case* when:"
+msgstr ""
+
+msgid "Graph is undirected"
+msgstr ""
+
+msgid "Graph is fully connected"
+msgstr ""
+
+msgid "Graph where traveling costs on edges obey the triangle inequality."
+msgstr ""
+
+msgid "On an undirected graph:"
+msgstr ""
+
+msgid "The traveling costs are symmetric:"
+msgstr ""
+
+msgid ""
+"Traveling costs from ``u`` to ``v`` are just as much as traveling from "
+"``v`` to ``u``"
+msgstr ""
+
+msgid "TSP optional parameters"
+msgstr ""
+
+msgid "Column"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "``start_id``"
+msgstr ""
+
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+msgid "``0``"
+msgstr ""
+
+msgid "The first visiting vertex"
+msgstr ""
+
+msgid "When `0` any vertex can become the first visiting vertex."
+msgstr ""
+
+msgid "``end_id``"
+msgstr ""
+
+msgid "Last visiting vertex before returning to ``start_vid``."
+msgstr ""
+
+msgid ""
+"When ``0`` any vertex can become the last visiting vertex before "
+"returning to ``start_id``."
+msgstr ""
+
+msgid "When ``NOT 0`` and ``start_id = 0`` then it is the first and last vertex"
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid "References"
+msgstr ""
+
+msgid ""
+"`Boost's metric appro's metric approximation "
+"<https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
+msgstr ""
+
+msgid "`University of Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__"
+msgstr ""
+
+msgid ""
+"`Wikipedia: Traveling Salesman Problem "
+"<https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""
+

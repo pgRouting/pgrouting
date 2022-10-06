@@ -1,0 +1,224 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/experimental.html>`__ (`3.3 "
+"<https://docs.pgrouting.org/3.3/en/experimental.html>`__) `3.2 "
+"<https://docs.pgrouting.org/3.2/en/experimental.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/en/experimental.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/experimental.html>`__"
+msgstr ""
+
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/proposed.html#experimental-"
+"functions>`__ `2.5 <https://docs.pgrouting.org/2.5/en/proposed.html"
+"#experimental-functions>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/proposed.html#experimental-and-"
+"proposed-functions>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/proposed.html#experimental-and-"
+"proposed-functions>`__ `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/proposed.html#experimental-and-"
+"proposed-functions>`__"
+msgstr ""
+
+msgid "Experimental Functions"
+msgstr ""
+
+msgid "Possible server crash"
+msgstr ""
+
+msgid "These functions might create a server crash"
+msgstr ""
+
+msgid "Experimental functions"
+msgstr ""
+
+msgid "They are not officially of the current release."
+msgstr ""
+
+msgid "They likely will not be officially be part of the next release:"
+msgstr ""
+
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+msgid "Name might change."
+msgstr ""
+
+msgid "Signature might change."
+msgstr ""
+
+msgid "Functionality might change."
+msgstr ""
+
+msgid "pgTap tests might be missing."
+msgstr ""
+
+msgid "Might need c/c++ coding."
+msgstr ""
+
+msgid "May lack documentation."
+msgstr ""
+
+msgid "Documentation if any might need to be rewritten."
+msgstr ""
+
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+
+msgid "Might need a lot of feedback from the comunity."
+msgstr ""
+
+msgid "Might depend on a proposed function of pgRouting"
+msgstr ""
+
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr ""
+
+msgid "Families"
+msgstr ""
+
+msgid ":doc:`flow-family`"
+msgstr ""
+
+msgid ":doc:`pgr_maxFlowMinCost` - Details of flow and cost on edges."
+msgstr ""
+
+msgid ":doc:`pgr_maxFlowMinCost_Cost` - Only the Min Cost calculation."
+msgstr ""
+
+msgid ":doc:`chinesePostmanProblem-family`"
+msgstr ""
+
+msgid ":doc:`pgr_chinesePostman`"
+msgstr ""
+
+msgid ":doc:`pgr_chinesePostmanCost`"
+msgstr ""
+
+msgid ":doc:`coloring-family`"
+msgstr ""
+
+msgid ""
+":doc:`pgr_bipartite` - Bipartite graph algorithm using a DFS-based "
+"coloring approach."
+msgstr ""
+
+msgid ":doc:`pgr_edgeColoring` - Edge Coloring algorithm using Vizing's theorem."
+msgstr ""
+
+msgid ":doc:`transformation-family`"
+msgstr ""
+
+msgid ""
+":doc:`pgr_lineGraph` - Transformation algorithm for generating a Line "
+"Graph."
+msgstr ""
+
+msgid ""
+":doc:`pgr_lineGraphFull` - Transformation algorithm for generating a Line"
+" Graph out of each vertex in the input graph."
+msgstr ""
+
+msgid ":doc:`traversal-family`"
+msgstr ""
+
+msgid ""
+":doc:`pgr_breadthFirstSearch` - Breath first search traversal of the "
+"graph."
+msgstr ""
+
+msgid ""
+":doc:`pgr_binaryBreadthFirstSearch` - Breath first search traversal of "
+"the graph."
+msgstr ""
+
+msgid ":doc:`components-family`"
+msgstr ""
+
+msgid ":doc:`pgr_makeConnected` - Details of edges to make graph connected."
+msgstr ""
+
+msgid "categories"
+msgstr ""
+
+msgid ":doc:`VRP-category`"
+msgstr ""
+
+msgid "Pickup and delivery problem"
+msgstr ""
+
+msgid ":doc:`pgr_pickDeliver` - Pickup & Delivery using a Cost Matrix"
+msgstr ""
+
+msgid ""
+":doc:`pgr_pickDeliverEuclidean` - Pickup & Delivery with Euclidean "
+"distances"
+msgstr ""
+
+msgid "Distribution problem"
+msgstr ""
+
+msgid ":doc:`pgr_vrpOneDepot` - From a single depot, distributes orders"
+msgstr ""
+
+msgid "Not classified"
+msgstr ""
+
+msgid ":doc:`pgr_bellmanFord`"
+msgstr ""
+
+msgid ":doc:`pgr_dagShortestPath`"
+msgstr ""
+
+msgid ":doc:`pgr_edwardMoore`"
+msgstr ""
+
+msgid ":doc:`pgr_isPlanar`"
+msgstr ""
+
+msgid ":doc:`pgr_stoerWagner`"
+msgstr ""
+
+msgid ":doc:`pgr_topologicalSort`"
+msgstr ""
+
+msgid ":doc:`pgr_transitiveClosure`"
+msgstr ""
+
+msgid ":doc:`pgr_turnRestrictedPath`"
+msgstr ""
+
+msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""
+

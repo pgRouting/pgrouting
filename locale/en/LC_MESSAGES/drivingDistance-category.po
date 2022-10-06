@@ -1,0 +1,254 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
+"/drivingDistance-category.html>`__ (`3.3 "
+"<https://docs.pgrouting.org/3.3/en/drivingDistance-category.html>`__) "
+"`3.2 <https://docs.pgrouting.org/3.2/en/drivingDistance-category.html>`__"
+" `3.1 <https://docs.pgrouting.org/3.1/en/drivingDistance-"
+"category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en"
+"/drivingDistance-category.html>`__"
+msgstr ""
+
+msgid ""
+"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en"
+"/drivingDistance-category.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/drivingDistance-category.html>`__ `2.4"
+" <https://docs.pgrouting.org/2.4/en/drivingDistance-category.html>`__"
+msgstr ""
+
+msgid "Driving Distance - Category"
+msgstr ""
+
+msgid ""
+":doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's "
+"algorithm"
+msgstr ""
+
+msgid ":doc:`pgr_primDD` - Driving Distance based on Prim's algorithm"
+msgstr ""
+
+msgid ":doc:`pgr_kruskalDD` - Driving Distance based on Kruskal's algorithm"
+msgstr ""
+
+msgid "Post pocessing"
+msgstr ""
+
+msgid ":doc:`pgr_alphaShape` - Alpha shape computation"
+msgstr ""
+
+msgid "Proposed"
+msgstr ""
+
+msgid "Proposed functions for next mayor release."
+msgstr ""
+
+msgid "They are not officially in the current release."
+msgstr ""
+
+msgid "They will likely officially be part of the next mayor release:"
+msgstr ""
+
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+msgid "Name might not change. (But still can)"
+msgstr ""
+
+msgid "Signature might not change. (But still can)"
+msgstr ""
+
+msgid "Functionality might not change. (But still can)"
+msgstr ""
+
+msgid "pgTap tests have being done. But might need more."
+msgstr ""
+
+msgid "Documentation might need refinement."
+msgstr ""
+
+msgid ":doc:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints"
+msgstr ""
+
+msgid "Calculate nodes that are within a distance."
+msgstr ""
+
+msgid ""
+"Extracts all the nodes that have costs less than or equal to the value "
+"distance."
+msgstr ""
+
+msgid "The edges extracted will conform to the corresponding spanning tree."
+msgstr ""
+
+msgid "Edge :math:`(u, v)` will not be included when:"
+msgstr ""
+
+msgid "The distance from the **root** to :math:`u` > limit distance."
+msgstr ""
+
+msgid "The distance from the **root** to :math:`v` > limit distance."
+msgstr ""
+
+msgid ""
+"No new nodes are created on the graph, so when is within the limit and is"
+" not within the limit, the edge is not included."
+msgstr ""
+
+msgid "Parameters"
+msgstr ""
+
+msgid "Parameter"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "`Edges SQL`_"
+msgstr ""
+
+msgid "``TEXT``"
+msgstr ""
+
+msgid "Edges SQL as described below."
+msgstr ""
+
+msgid "**Root vid**"
+msgstr ""
+
+msgid "``BIGINT``"
+msgstr ""
+
+msgid "Identifier of the root vertex of the tree."
+msgstr ""
+
+msgid "**Root vids**"
+msgstr ""
+
+msgid "``ARRAY[ANY-INTEGER]``"
+msgstr ""
+
+msgid "Array of identifiers of the root vertices."
+msgstr ""
+
+msgid ":math:`0` values are ignored"
+msgstr ""
+
+msgid "For optimization purposes, any duplicated value is ignored."
+msgstr ""
+
+msgid "**distance**"
+msgstr ""
+
+msgid "``FLOAT``"
+msgstr ""
+
+msgid "Upper limit for the inclusion of a node in the result."
+msgstr ""
+
+msgid "Where:"
+msgstr ""
+
+msgid "ANY-INTEGER"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr ""
+
+msgid "ANY-NUMERIC"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
+
+msgid "Inner Queries"
+msgstr ""
+
+msgid "Edges SQL"
+msgstr ""
+
+msgid "Column"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "``id``"
+msgstr ""
+
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+msgid "Identifier of the edge."
+msgstr ""
+
+msgid "``source``"
+msgstr ""
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+msgid "``target``"
+msgstr ""
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+msgid "``cost``"
+msgstr ""
+
+msgid "**ANY-NUMERICAL**"
+msgstr ""
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr ""
+
+msgid "``reverse_cost``"
+msgstr ""
+
+msgid "-1"
+msgstr ""
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr ""
+
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""
+

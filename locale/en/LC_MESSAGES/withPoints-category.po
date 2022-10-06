@@ -1,0 +1,641 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
+"/withPoints-category.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en"
+"/withPoints-category.html>`__)"
+msgstr ""
+
+msgid "withPoints - Category"
+msgstr ""
+
+msgid "When points are added to the graph."
+msgstr ""
+
+msgid "Proposed functions for next mayor release."
+msgstr ""
+
+msgid "They are not officially in the current release."
+msgstr ""
+
+msgid "They will likely officially be part of the next mayor release:"
+msgstr ""
+
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+msgid "Name might not change. (But still can)"
+msgstr ""
+
+msgid "Signature might not change. (But still can)"
+msgstr ""
+
+msgid "Functionality might not change. (But still can)"
+msgstr ""
+
+msgid "pgTap tests have being done. But might need more."
+msgstr ""
+
+msgid "Documentation might need refinement."
+msgstr ""
+
+msgid ":doc:`withPoints-family` - Functions based on Dijkstra algorithm."
+msgstr ""
+
+msgid "Introduction"
+msgstr ""
+
+msgid ""
+"The **with points** category modifies the graph on the fly by adding "
+"points on edges as required by the `Points SQL`_ query."
+msgstr ""
+
+msgid ""
+"The functions within this category give the ability to process between "
+"arbitrary points located outside the original graph."
+msgstr ""
+
+msgid ""
+"This category of functions was thought for routing vehicles, but might as"
+" well work for some other application not involving vehicles."
+msgstr ""
+
+msgid ""
+"When given a point identifier ``pid`` that its being mapped to an edge "
+"with an identifier ``edge_id``, with a fraction from the source to the "
+"target along the edge ``fraction`` and some additional information about "
+"which side of the edge the point is on ``side``, then processing from "
+"arbitrary points can be done on fixed networks."
+msgstr ""
+
+msgid ""
+"All this functions consider as many traits from the \"real world\" as "
+"possible:"
+msgstr ""
+
+msgid "Kind of graph:"
+msgstr ""
+
+msgid "**directed** graph"
+msgstr ""
+
+msgid "**undirected** graph"
+msgstr ""
+
+msgid "Arriving at the point:"
+msgstr ""
+
+msgid "Compulsory arrival on the side of the segment where the point is located."
+msgstr ""
+
+msgid "On either side of the segment."
+msgstr ""
+
+msgid "Countries with:"
+msgstr ""
+
+msgid "**Right** side driving"
+msgstr ""
+
+msgid "**Left** side driving"
+msgstr ""
+
+msgid "Some points are:"
+msgstr ""
+
+msgid ""
+"**Permanent**: for example the set of points of clients stored in a table"
+" in the data base."
+msgstr ""
+
+msgid "The graph has been modified to permanently have those points as vertices."
+msgstr ""
+
+msgid "There is a table on the database that describes the points"
+msgstr ""
+
+msgid "**Temporal**: for example points given through a web application"
+msgstr ""
+
+msgid "The numbering of the points are handled with negative sign."
+msgstr ""
+
+msgid ""
+"This sign change is to avoid confusion when there is a vertex with the "
+"same identifier as the point identifier."
+msgstr ""
+
+msgid "Original point identifiers are to be positive."
+msgstr ""
+
+msgid "Transformation to negative is done internally."
+msgstr ""
+
+msgid "Interpretation of the sign on the node information of the output"
+msgstr ""
+
+msgid "positive sign is a vertex of the original graph"
+msgstr ""
+
+msgid "negative sign is a point of the `Points SQL`_"
+msgstr ""
+
+msgid "Parameters"
+msgstr ""
+
+msgid "Column"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "`Edges SQL`_"
+msgstr ""
+
+msgid "``TEXT``"
+msgstr ""
+
+msgid "`Edges SQL`_ as described below"
+msgstr ""
+
+msgid "`Points SQL`_"
+msgstr ""
+
+msgid "`Points SQL`_ as described below"
+msgstr ""
+
+msgid "`Combinations SQL`_"
+msgstr ""
+
+msgid "`Combinations SQL`_ as described below"
+msgstr ""
+
+msgid "**start vid**"
+msgstr ""
+
+msgid "``BIGINT``"
+msgstr ""
+
+msgid ""
+"Identifier of the starting vertex of the path. Negative value is for "
+"point’s identifier."
+msgstr ""
+
+msgid "**start vids**"
+msgstr ""
+
+msgid "``ARRAY[BIGINT]``"
+msgstr ""
+
+msgid ""
+"Array of identifiers of starting vertices. Negative values are for "
+"point’s identifiers."
+msgstr ""
+
+msgid "**end vid**"
+msgstr ""
+
+msgid ""
+"Identifier of the ending vertex of the path. Negative value is for "
+"point’s identifier."
+msgstr ""
+
+msgid "**end vids**"
+msgstr ""
+
+msgid ""
+"Array of identifiers of ending vertices. Negative values are for point’s "
+"identifiers."
+msgstr ""
+
+msgid "Optional parameters"
+msgstr ""
+
+msgid "Parameter"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "``driving_side``"
+msgstr ""
+
+msgid "``CHAR``"
+msgstr ""
+
+msgid "``r``"
+msgstr ""
+
+msgid "Value in [``r``, ``l``] indicating if the driving side is:"
+msgstr ""
+
+msgid "``r`` for right driving side"
+msgstr ""
+
+msgid "``l`` for left driving side"
+msgstr ""
+
+msgid "Any other value will be considered as ``r``"
+msgstr ""
+
+msgid "``details``"
+msgstr ""
+
+msgid "``BOOLEAN``"
+msgstr ""
+
+msgid "``false``"
+msgstr ""
+
+msgid "When ``true`` the results will include the points that are in the path."
+msgstr ""
+
+msgid ""
+"When ``false`` the results will not include the points that are in the "
+"path."
+msgstr ""
+
+msgid "Inner Queries"
+msgstr ""
+
+msgid "Edges SQL"
+msgstr ""
+
+msgid "``id``"
+msgstr ""
+
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+msgid "Identifier of the edge."
+msgstr ""
+
+msgid "``source``"
+msgstr ""
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+msgid "``target``"
+msgstr ""
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+msgid "``cost``"
+msgstr ""
+
+msgid "**ANY-NUMERICAL**"
+msgstr ""
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr ""
+
+msgid "``reverse_cost``"
+msgstr ""
+
+msgid "-1"
+msgstr ""
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr ""
+
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+
+msgid "Where:"
+msgstr ""
+
+msgid "ANY-INTEGER"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr ""
+
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
+
+msgid "Points SQL"
+msgstr ""
+
+msgid "``pid``"
+msgstr ""
+
+msgid "**value**"
+msgstr ""
+
+msgid "Identifier of the point."
+msgstr ""
+
+msgid "Use with positive value, as internally will be converted to negative value"
+msgstr ""
+
+msgid "If column is present, it can not be NULL."
+msgstr ""
+
+msgid ""
+"If column is not present, a sequential negative **value** will be given "
+"automatically."
+msgstr ""
+
+msgid "``edge_id``"
+msgstr ""
+
+msgid "Identifier of the \"closest\" edge to the point."
+msgstr ""
+
+msgid "``fraction``"
+msgstr ""
+
+msgid ""
+"Value in <0,1> that indicates the relative postition from the first end "
+"point of the edge."
+msgstr ""
+
+msgid "``side``"
+msgstr ""
+
+msgid "``b``"
+msgstr ""
+
+msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"
+msgstr ""
+
+msgid "In the right ``r``,"
+msgstr ""
+
+msgid "In the left ``l``,"
+msgstr ""
+
+msgid "In both sides ``b``, ``NULL``"
+msgstr ""
+
+msgid "Combinations SQL"
+msgstr ""
+
+msgid "Identifier of the departure vertex."
+msgstr ""
+
+msgid "Identifier of the arrival vertex."
+msgstr ""
+
+msgid "Advanced documentation"
+msgstr ""
+
+msgid "Contents"
+msgstr ""
+
+msgid "About points"
+msgstr ""
+
+msgid ""
+"For this section the following city (see :doc:`sampledata`) some "
+"interesing points such as restaurant, supermarket, post office, etc. will"
+" be used as example."
+msgstr ""
+
+msgid "The graph is **directed**"
+msgstr ""
+
+msgid "Red arrows show the ``(source, target)`` of the edge on the edge table"
+msgstr ""
+
+msgid "Blue arrows show the ``(target, source)`` of the edge on the edge table"
+msgstr ""
+
+msgid ""
+"Each point location shows where it is located with relation of the edge "
+"``(source, target)``"
+msgstr ""
+
+msgid "On the right for points **2** and **4**."
+msgstr ""
+
+msgid "On the left for points **1**, **3** and **5**."
+msgstr ""
+
+msgid "On both sides for point **6**."
+msgstr ""
+
+msgid ""
+"The representation on the data base follows the `Points SQL`_ "
+"description, and for this example:"
+msgstr ""
+
+msgid "Driving side"
+msgstr ""
+
+msgid "In the the folowwing images:"
+msgstr ""
+
+msgid "The squared vertices are the temporary vertices,"
+msgstr ""
+
+msgid "The temporary vertices are added according to the driving side,"
+msgstr ""
+
+msgid ""
+"visually showing the differences on how depending on the driving side the"
+" data is interpreted."
+msgstr ""
+
+msgid "Right driving side"
+msgstr ""
+
+msgid "Point **1** located on edge ``(6, 5)``"
+msgstr ""
+
+msgid "Point **2** located on edge ``(16, 17)``"
+msgstr ""
+
+msgid "Point **3** located on edge ``(8, 12)``"
+msgstr ""
+
+msgid "Point **4** located on edge ``(1, 3)``"
+msgstr ""
+
+msgid "Point **5** located on edge ``(10, 11)``"
+msgstr ""
+
+msgid "Point **6** located on edges ``(6, 7)`` and ``(7, 6)``"
+msgstr ""
+
+msgid "Left driving side"
+msgstr ""
+
+msgid "Point **1** located on edge ``(5, 6)``"
+msgstr ""
+
+msgid "Point **2** located on edge ``(17, 16)``"
+msgstr ""
+
+msgid "Point **4** located on edge ``(3, 1)``"
+msgstr ""
+
+msgid "Driving side does not matter"
+msgstr ""
+
+msgid "Like having all points to be considered in both sides ``b``"
+msgstr ""
+
+msgid "Prefered usage on **undirected** graphs"
+msgstr ""
+
+msgid "Point **1** located on edge ``(5, 6)`` and ``(6, 5)``"
+msgstr ""
+
+msgid "Point **2** located on edge ``(17, 16)``and ``16, 17``"
+msgstr ""
+
+msgid "Point **4** located on edge ``(3, 1)`` and ``(1, 3)``"
+msgstr ""
+
+msgid "Creating temporary vertices"
+msgstr ""
+
+msgid ""
+"This section will demonstrate how a temporary vertex is created "
+"internally on the graph."
+msgstr ""
+
+msgid "Problem"
+msgstr ""
+
+msgid "For edge:"
+msgstr ""
+
+msgid "insert point:"
+msgstr ""
+
+msgid "On a right hand side driving network"
+msgstr ""
+
+msgid "Arrival to point ``-2`` can be achived only via vertex **16**."
+msgstr ""
+
+msgid "Does not affects edge ``(17, 16)``, therefore the edge is kept."
+msgstr ""
+
+msgid "It only affects the edge ``(16, 17)``, therefore the edge is removed."
+msgstr ""
+
+msgid "Create two new edges:"
+msgstr ""
+
+msgid ""
+"Edge ``(16, -2)`` with cost ``0.4`` (original cost * fraction == :math:`1"
+" * 0.4`)"
+msgstr ""
+
+msgid "Edge ``(-2, 17)`` with cost ``0.6`` (the remaing cost)"
+msgstr ""
+
+msgid "The total cost of the additional edges is equal to the original cost."
+msgstr ""
+
+msgid "If more points are on the same edge, the process is repeated recursevly."
+msgstr ""
+
+msgid "On a left hand side driving network"
+msgstr ""
+
+msgid "Arrival to point ``-2`` can be achived only via vertex **17**."
+msgstr ""
+
+msgid "Does not affects edge ``(16, 17)``, therefore the edge is kept."
+msgstr ""
+
+msgid "It only affects the edge ``(17, 16)``, therefore the edge is removed."
+msgstr ""
+
+msgid ""
+"Work with the original edge ``(16, 17)`` as the fraction is a fraction of"
+" the original:"
+msgstr ""
+
+msgid "Flip the Edges and add them to the graph:"
+msgstr ""
+
+msgid ""
+"Edge ``(17, -2)`` becomes ``(-2, 16)`` with cost ``0.4`` and is added to "
+"the graph."
+msgstr ""
+
+msgid ""
+"Edge ``(-2, 16)`` becomes ``(17, -2)`` with cost ``0.6`` and is added to "
+"the graph."
+msgstr ""
+
+msgid "When driving side does not matter"
+msgstr ""
+
+msgid "Arrival to point ``-2`` can be achived via vertices **16** or **17**."
+msgstr ""
+
+msgid ""
+"Affects the edges ``(16, 17)`` and ``(17, 16)``, therefore the edges are "
+"removed."
+msgstr ""
+
+msgid "Create four new edges:"
+msgstr ""
+
+msgid "Flip the Edges and add all the edges to the graph:"
+msgstr ""
+
+msgid "Edge ``(16, -2)`` is added to the graph."
+msgstr ""
+
+msgid "Edge ``(-2, 17)`` is added to the graph."
+msgstr ""
+
+msgid ""
+"Edge ``(16, -2)`` becomes ``(-2, 16)`` with cost ``0.4`` and is added to "
+"the graph."
+msgstr ""
+
+msgid ""
+"Edge ``(-2, 17)`` becomes ``(17, -2)`` with cost ``0.6`` and is added to "
+"the graph."
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid ":doc:`withPoints-family`"
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""
+

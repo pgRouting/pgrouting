@@ -1,0 +1,592 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
+"/contraction-family.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en"
+"/contraction-family.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en"
+"/contraction-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en"
+"/contraction-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en"
+"/contraction-family.html>`__"
+msgstr ""
+
+msgid ""
+"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en"
+"/contraction-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en"
+"/contraction-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en"
+"/contraction-family.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/contraction/doc/contraction.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/contraction/doc/contraction.html>`__"
+msgstr ""
+
+msgid "Contraction - Family of functions"
+msgstr ""
+
+msgid ":doc:`pgr_contraction`"
+msgstr ""
+
+msgid "Introduction"
+msgstr ""
+
+msgid ""
+"In large graphs, like the road graphs, or electric networks, graph "
+"contraction can be used to speed up some graph algorithms. Contraction "
+"reduces the size of the graph by removing some of the vertices and edges "
+"and, for example, might add edges that represent a sequence of original "
+"edges decreasing the total time and space used in graph algorithms."
+msgstr ""
+
+msgid ""
+"This implementation gives a flexible framework for adding contraction "
+"algorithms in the future, currently, it supports two algorithms:"
+msgstr ""
+
+msgid "Dead end contraction"
+msgstr ""
+
+msgid "Linear contraction"
+msgstr ""
+
+msgid "Allowing the user to:"
+msgstr ""
+
+msgid "Forbid contraction on a set of nodes."
+msgstr ""
+
+msgid ""
+"Decide the order of the contraction algorithms and set the maximum number"
+" of times they are to be executed."
+msgstr ""
+
+msgid "Contraction of the leaf nodes of the graph."
+msgstr ""
+
+msgid "Dead end"
+msgstr ""
+
+msgid "A node is considered a **dead end** node when"
+msgstr ""
+
+msgid "On undirected graphs:"
+msgstr ""
+
+msgid "The number of adjacent vertices is 1."
+msgstr ""
+
+msgid "On directed graphs:"
+msgstr ""
+
+msgid "There are no outgoing edges and has at least one incoming edge."
+msgstr ""
+
+msgid "There are no incoming edges and has at least one outgoing edge."
+msgstr ""
+
+msgid ""
+"When the conditions are true then the `Operation: Dead End Contraction`_ "
+"can be done."
+msgstr ""
+
+msgid "Dead end vertex on undirected graph"
+msgstr ""
+
+msgid "The green nodes are `dead end`_ nodes"
+msgstr ""
+
+msgid "The blue nodes have an unlimited number of edges."
+msgstr ""
+
+msgid "Node"
+msgstr ""
+
+msgid "Adjecent nodes"
+msgstr ""
+
+msgid "Number of adjacent nodes"
+msgstr ""
+
+msgid ":math:`a`"
+msgstr ""
+
+msgid ":math:`\\{u\\}`"
+msgstr ""
+
+msgid "1"
+msgstr ""
+
+msgid ":math:`b`"
+msgstr ""
+
+msgid ":math:`\\{v\\}`"
+msgstr ""
+
+msgid "Dead end vertex on directed graph"
+msgstr ""
+
+msgid "The blue nodes have an unlimited number of incoming and/or outgoing edges."
+msgstr ""
+
+msgid "Number of incoming edges"
+msgstr ""
+
+msgid "Number of outgoing edges"
+msgstr ""
+
+msgid ":math:`c`"
+msgstr ""
+
+msgid ":math:`\\{v, w\\}`"
+msgstr ""
+
+msgid "2"
+msgstr ""
+
+msgid "0"
+msgstr ""
+
+msgid ":math:`d`"
+msgstr ""
+
+msgid ":math:`\\{x\\}`"
+msgstr ""
+
+msgid ":math:`e`"
+msgstr ""
+
+msgid ":math:`\\{x, y\\}`"
+msgstr ""
+
+msgid ""
+"From above, nodes :math:`\\{a, b, d\\}` are dead ends because the number "
+"of adjacent vertices is 1. No further checks are needed for those nodes."
+msgstr ""
+
+msgid ""
+"On the following table, nodes :math:`\\{c, e\\}` because the even that "
+"the number of adjacent vertices is not 1 for"
+msgstr ""
+
+msgid "Operation: Dead End Contraction"
+msgstr ""
+
+msgid ""
+"The dead end contraction will stop until there are no more dead end "
+"nodes. For example from the following graph where :math:`w` is the `dead "
+"end`_ node:"
+msgstr ""
+
+msgid ""
+"After contracting :math:`w`, node :math:`v` is now a `dead end`_ node and"
+" is contracted:"
+msgstr ""
+
+msgid ""
+"After contracting :math:`v`, stop. Node :math:`u` has the information of "
+"nodes that were contrcted."
+msgstr ""
+
+msgid "Node :math:`u` has the information of nodes that were contracted."
+msgstr ""
+
+msgid "In the algorithm, linear contraction is represented by 2."
+msgstr ""
+
+msgid "Linear"
+msgstr ""
+
+msgid "In case of an undirected graph, a node is considered a `linear` node when"
+msgstr ""
+
+msgid "The number of adjacent vertices is 2."
+msgstr ""
+
+msgid "In case of a directed graph, a node is considered a `linear` node when"
+msgstr ""
+
+msgid "Linearity is symmetrical"
+msgstr ""
+
+msgid "Linear vertex on undirected graph"
+msgstr ""
+
+msgid "The green nodes are `linear`_ nodes"
+msgstr ""
+
+msgid "The blue nodes have an unlimited number of incoming and outgoing edges."
+msgstr ""
+
+msgid "Undirected"
+msgstr ""
+
+msgid ":math:`v`"
+msgstr ""
+
+msgid ":math:`\\{u, w\\}`"
+msgstr ""
+
+msgid "Linear vertex on directed graph"
+msgstr ""
+
+msgid "The white node is not linear because the linearity is not symetrical."
+msgstr ""
+
+msgid "It is possible to go :math:`y \\rightarrow c \\rightarrow z`"
+msgstr ""
+
+msgid "It's not possible to go :math:`z \\rightarrow c \\rightarrow y`"
+msgstr ""
+
+msgid "Is symmetrical?"
+msgstr ""
+
+msgid ":math:`\\{u, v\\}`"
+msgstr ""
+
+msgid "yes"
+msgstr ""
+
+msgid ":math:`\\{w, x\\}`"
+msgstr ""
+
+msgid ":math:`\\{y, z\\}`"
+msgstr ""
+
+msgid "no"
+msgstr ""
+
+msgid "Operation: Linear Contraction"
+msgstr ""
+
+msgid ""
+"The linear contraction will stop when there are no more linear nodes. For"
+" example from the following graph where :math:`v` and :math:`w` are "
+"`linear`_ nodes:"
+msgstr ""
+
+msgid "Contracting :math:`w`,"
+msgstr ""
+
+msgid "The vertex :math:`w` is removed from the graph"
+msgstr ""
+
+msgid ""
+"The edges :math:`v \\rightarrow w` and  :math:`w \\rightarrow z` are "
+"removed from the graph."
+msgstr ""
+
+msgid ""
+"A new edge :math:`v \\rightarrow z` is inserted represented with red "
+"color."
+msgstr ""
+
+msgid "Contracting :math:`v`:"
+msgstr ""
+
+msgid "The vertex :math:`v` is removed from the graph"
+msgstr ""
+
+msgid ""
+"The edges :math:`u \\rightarrow v` and  :math:`v \\rightarrow z` are "
+"removed from the graph."
+msgstr ""
+
+msgid ""
+"A new edge :math:`u \\rightarrow z` is inserted represented with red "
+"color."
+msgstr ""
+
+msgid ""
+"Edge :math:`u \\rightarrow z` has the information of nodes that were "
+"contracted."
+msgstr ""
+
+msgid "The cycle"
+msgstr ""
+
+msgid ""
+"Contracting a graph, can be done with more than one operation. The order "
+"of the operations affect the resulting contracted graph, after applying "
+"one operation, the set of vertices that can be contracted by another "
+"operation changes."
+msgstr ""
+
+msgid ""
+"This implementation, cycles ``max_cycles`` times through "
+"``operations_order`` ."
+msgstr ""
+
+msgid "Contracting sample data"
+msgstr ""
+
+msgid ""
+"In this section, building and using a contracted graph will be shown by "
+"example."
+msgstr ""
+
+msgid "The :doc:`sampledata` for an undirected graph is used"
+msgstr ""
+
+msgid "a dead end operation first followed by a linear operation."
+msgstr ""
+
+msgid "Construction of the graph in the database"
+msgstr ""
+
+msgid "Original Data"
+msgstr ""
+
+msgid ""
+"The following query shows the original data involved in the contraction "
+"operation."
+msgstr ""
+
+msgid "The original graph:"
+msgstr ""
+
+msgid "Contraction results"
+msgstr ""
+
+msgid ""
+"The results do not represent the contracted graph. They represent the "
+"changes done to the graph after applying the contraction algorithm."
+msgstr ""
+
+msgid ""
+"Observe that vertices, for example, :math:`6` do not appear in the "
+"results because it was not affected by the contraction algorithm."
+msgstr ""
+
+msgid "After doing the dead end contraction operation:"
+msgstr ""
+
+msgid "After doing the linear contraction operation to the graph above:"
+msgstr ""
+
+msgid "The process to create the contraction graph on the database:"
+msgstr ""
+
+msgid "Add additional columns"
+msgstr ""
+
+msgid ""
+"Adding extra columns to the ``edge_table`` and "
+"``edge_table_vertices_pgr`` tables, where:"
+msgstr ""
+
+msgid "Column"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "``contracted_vertices``"
+msgstr ""
+
+msgid "The vertices set belonging to the vertex/edge"
+msgstr ""
+
+msgid "``is_contracted``"
+msgstr ""
+
+msgid "On the vertex table"
+msgstr ""
+
+msgid ""
+"when ``true`` the vertex is contracted, its not part of the contracted "
+"graph."
+msgstr ""
+
+msgid ""
+"when ``false`` the vertex is not contracted, its part of the contracted "
+"graph."
+msgstr ""
+
+msgid "``is_new``"
+msgstr ""
+
+msgid "On the edge table"
+msgstr ""
+
+msgid ""
+"when ``true`` the edge was generated by the contraction algorithm. its "
+"part of the contracted graph."
+msgstr ""
+
+msgid ""
+"when ``false`` the edge is an original edge, might be or not part of the "
+"contracted graph."
+msgstr ""
+
+msgid "Store contraction information"
+msgstr ""
+
+msgid "Store the `contraction results`_ in a table"
+msgstr ""
+
+msgid "The vertex table update"
+msgstr ""
+
+msgid "Use ``is_contracted`` column to indicate the vertices that are contracted."
+msgstr ""
+
+msgid ""
+"Fill ``contracted_vertices`` with the information from the results tha "
+"belong to the vertices."
+msgstr ""
+
+msgid "The modified vertices table:"
+msgstr ""
+
+msgid "The edge table update"
+msgstr ""
+
+msgid "Insert the new edges generated by pgr_contraction."
+msgstr ""
+
+msgid "The modified ``edge_table``."
+msgstr ""
+
+msgid "The contracted graph"
+msgstr ""
+
+msgid "Vertices that belong to the contracted graph."
+msgstr ""
+
+msgid "Edges that belong to the contracted graph."
+msgstr ""
+
+msgid "Contracted graph"
+msgstr ""
+
+msgid "Using the contracted graph"
+msgstr ""
+
+msgid "Using the contracted graph with ``pgr_dijkstra``"
+msgstr ""
+
+msgid ""
+"There are three cases when calculating the shortest path between a given "
+"source and target in a contracted graph:"
+msgstr ""
+
+msgid "Case 1: Both source and target belong to the contracted graph."
+msgstr ""
+
+msgid "Case 2: Source and/or target belong to an edge subgraph."
+msgstr ""
+
+msgid "Case 3: Source and/or target belong to a vertex."
+msgstr ""
+
+msgid "Using the `Edges that belong to the contracted graph.`_ on lines 10 to 19."
+msgstr ""
+
+msgid "Case 1"
+msgstr ""
+
+msgid ""
+"When both source and target belong to the contracted graph, a path is "
+"found."
+msgstr ""
+
+msgid "Case 2"
+msgstr ""
+
+msgid ""
+"When source and/or target belong to an edge subgraph then a path is not "
+"found."
+msgstr ""
+
+msgid ""
+"In this case, the contracted graph do not have an edge connecting with "
+"node :math:`4`."
+msgstr ""
+
+msgid "Case 3"
+msgstr ""
+
+msgid "When source and/or target belong to a vertex then a path is not found."
+msgstr ""
+
+msgid ""
+"In this case, the contracted graph do not have an edge connecting with "
+"node :math:`7` and of node :math:`4` of the second case."
+msgstr ""
+
+msgid "Refining the above function to include nodes that belong to an edge."
+msgstr ""
+
+msgid "The vertices that need to be expanded are calculated on lines 10 to 16."
+msgstr ""
+
+msgid "Adding to the contracted graph that additional section on lines 25 to 27."
+msgstr ""
+
+msgid ""
+"When source and/or target belong to an edge subgraph, now, a path is "
+"found."
+msgstr ""
+
+msgid "The routing graph now has an edge connecting with node :math:`4`."
+msgstr ""
+
+msgid ""
+"In this case, the contracted graph do not have an edge connecting with "
+"node :math:`7`."
+msgstr ""
+
+msgid "The vertices that need to be expanded are calculated on lines 18 to 23."
+msgstr ""
+
+msgid "Adding to the contracted graph that additional section on lines 38 to 40."
+msgstr ""
+
+msgid ""
+"The code change do not affect this case so when source and/or target "
+"belong to an edge subgraph, a path is still found."
+msgstr ""
+
+msgid "When source and/or target belong to a vertex, now, a path is found."
+msgstr ""
+
+msgid "Now, the routing graph has an edge connecting with node :math:`7`."
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid ":doc:`sampledata`"
+msgstr ""
+
+msgid "https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf"
+msgstr ""
+
+msgid "https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf"
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""
+

@@ -1,0 +1,151 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_full_version.html>`__ (`3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_full_version.html>`__) `3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_full_version.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_full_version.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_full_version.html>`__"
+msgstr ""
+
+msgid "``pgr_full_version``"
+msgstr ""
+
+msgid "``pgr_full_version`` — Get the details of pgRouting version information."
+msgstr ""
+
+msgid "Availability"
+msgstr ""
+
+msgid "Version 3.0.0"
+msgstr ""
+
+msgid "New **official** function"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Get complete details of pgRouting version information"
+msgstr ""
+
+msgid "Signatures"
+msgstr ""
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_full_version()"
+msgstr ""
+
+msgid "RETURNS |result-version|"
+msgstr ""
+
+msgid "Example"
+msgstr ""
+
+msgid "Information about when this documentation was built"
+msgstr ""
+
+msgid "Return columns"
+msgstr ""
+
+msgid "Column"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "``version``"
+msgstr ""
+
+msgid "``TEXT``"
+msgstr ""
+
+msgid "pgRouting version"
+msgstr ""
+
+msgid "``build_type``"
+msgstr ""
+
+msgid "The Build type"
+msgstr ""
+
+msgid "``compile_date``"
+msgstr ""
+
+msgid "Compilation date"
+msgstr ""
+
+msgid "``library``"
+msgstr ""
+
+msgid "Library name and version"
+msgstr ""
+
+msgid "``system``"
+msgstr ""
+
+msgid "Operative system"
+msgstr ""
+
+msgid "``postgreSQL``"
+msgstr ""
+
+msgid "pgsql used"
+msgstr ""
+
+msgid "``compiler``"
+msgstr ""
+
+msgid "Compiler and version"
+msgstr ""
+
+msgid "``boost``"
+msgstr ""
+
+msgid "Boost version"
+msgstr ""
+
+msgid "``hash``"
+msgstr ""
+
+msgid "Git hash of pgRouting build"
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid ":doc:`reference`"
+msgstr ""
+
+msgid ":doc:`pgr_version`"
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""
+

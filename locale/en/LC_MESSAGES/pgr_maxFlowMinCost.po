@@ -1,0 +1,474 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_maxFlowMinCost.html>`__ (`3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_maxFlowMinCost.html>`__) `3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_maxFlowMinCost.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_maxFlowMinCost.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_maxFlowMinCost.html>`__"
+msgstr ""
+
+msgid "``pgr_maxFlowMinCost`` - Experimental"
+msgstr ""
+
+msgid ""
+"``pgr_maxFlowMinCost`` — Calculates the edges that minimizes the total "
+"cost of the maximum flow on a graph"
+msgstr ""
+
+msgid "Boost Graph Inside"
+msgstr ""
+
+msgid "Possible server crash"
+msgstr ""
+
+msgid "These functions might create a server crash"
+msgstr ""
+
+msgid "Experimental functions"
+msgstr ""
+
+msgid "They are not officially of the current release."
+msgstr ""
+
+msgid "They likely will not be officially be part of the next release:"
+msgstr ""
+
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+msgid "Name might change."
+msgstr ""
+
+msgid "Signature might change."
+msgstr ""
+
+msgid "Functionality might change."
+msgstr ""
+
+msgid "pgTap tests might be missing."
+msgstr ""
+
+msgid "Might need c/c++ coding."
+msgstr ""
+
+msgid "May lack documentation."
+msgstr ""
+
+msgid "Documentation if any might need to be rewritten."
+msgstr ""
+
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+
+msgid "Might need a lot of feedback from the comunity."
+msgstr ""
+
+msgid "Might depend on a proposed function of pgRouting"
+msgstr ""
+
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr ""
+
+msgid "Availability"
+msgstr ""
+
+msgid "Version 3.2.0"
+msgstr ""
+
+msgid "New **experimental** function:"
+msgstr ""
+
+msgid "``pgr_maxFlowMinCost`` (`Combinations`_)"
+msgstr ""
+
+msgid "Version 3.0.0"
+msgstr ""
+
+msgid "New **experimental** function"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "**The main characteristics are:**"
+msgstr ""
+
+msgid "The graph is **directed**."
+msgstr ""
+
+msgid "Process is done only on edges with positive capacities."
+msgstr ""
+
+msgid ""
+"When the maximum flow is 0 then there is no flow and **EMPTY SET** is "
+"returned."
+msgstr ""
+
+msgid "There is no flow when a **source** is the same as a **target**."
+msgstr ""
+
+msgid "Any duplicated value in the source(s) or target(s) are ignored."
+msgstr ""
+
+msgid "Calculates the flow/residual capacity for each edge. In the output"
+msgstr ""
+
+msgid "Edges with zero flow are omitted."
+msgstr ""
+
+msgid ""
+"Creates a **super source** and edges to all the source(s), and a **super "
+"target** and the edges from all the targets(s)."
+msgstr ""
+
+msgid ""
+"The maximum flow through the graph is guaranteed to be the value returned"
+" by :doc:`pgr_maxFlow <pgr_maxFlow>` when executed with the same "
+"parameters and can be calculated:"
+msgstr ""
+
+msgid "By aggregation of the outgoing flow from the sources"
+msgstr ""
+
+msgid "By aggregation of the incoming flow to the targets"
+msgstr ""
+
+msgid "**TODO** check which statement is true:"
+msgstr ""
+
+msgid "The cost value of all input edges must be nonnegative."
+msgstr ""
+
+msgid "Process is done when the cost value of all input edges is nonnegative."
+msgstr ""
+
+msgid "Process is done on edges with nonnegative cost."
+msgstr ""
+
+msgid "Running time: :math:`O(U * (E + V * logV))`"
+msgstr ""
+
+msgid "where :math:`U` is the value of the max flow."
+msgstr ""
+
+msgid ""
+":math:`U` is upper bound on number of iterations. In many real world "
+"cases number of iterations is much smaller than :math:`U`."
+msgstr ""
+
+msgid "Signatures"
+msgstr ""
+
+msgid "Summary"
+msgstr ""
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_maxFlowMinCost(`Edges SQL`_, **start vid**, **end vid**)"
+msgstr ""
+
+msgid "pgr_maxFlowMinCost(`Edges SQL`_, **start vid**, **end vids**)"
+msgstr ""
+
+msgid "pgr_maxFlowMinCost(`Edges SQL`_, **start vids**, **end vid**)"
+msgstr ""
+
+msgid "pgr_maxFlowMinCost(`Edges SQL`_, **start vids**, **end vids**)"
+msgstr ""
+
+msgid "pgr_maxFlowMinCost(`Edges SQL`_, `Combinations SQL`_)"
+msgstr ""
+
+msgid "RETURNS SET OF |result-flow-mincost|"
+msgstr ""
+
+msgid "OR EMPTY SET"
+msgstr ""
+
+msgid "One to One"
+msgstr ""
+
+msgid "Example"
+msgstr ""
+
+msgid "From vertex :math:`11` to vertex :math:`12`"
+msgstr ""
+
+msgid "One to Many"
+msgstr ""
+
+msgid "From vertex :math:`11` to vertices :math:`\\{5, 10, 12\\}`"
+msgstr ""
+
+msgid "Many to One"
+msgstr ""
+
+msgid "From vertices :math:`\\{11, 3, 17\\}` to vertex :math:`12`"
+msgstr ""
+
+msgid "Many to Many"
+msgstr ""
+
+msgid "From vertices :math:`\\{11, 3, 17\\}` to vertices :math:`\\{5, 10, 12\\}`"
+msgstr ""
+
+msgid "Combinations"
+msgstr ""
+
+msgid ""
+"Using a combinations table, equivalent to calculating result from "
+"vertices :math:`\\{5, 6\\}` to vertices :math:`\\{10, 15, 14\\}`."
+msgstr ""
+
+msgid "The combinations table:"
+msgstr ""
+
+msgid "The query:"
+msgstr ""
+
+msgid "Parameters"
+msgstr ""
+
+msgid "Column"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "`Edges SQL`_"
+msgstr ""
+
+msgid "``TEXT``"
+msgstr ""
+
+msgid "`Edges SQL`_ as described below"
+msgstr ""
+
+msgid "`Combinations SQL`_"
+msgstr ""
+
+msgid "`Combinations SQL`_ as described below"
+msgstr ""
+
+msgid "**start vid**"
+msgstr ""
+
+msgid "``BIGINT``"
+msgstr ""
+
+msgid "Identifier of the starting vertex of the path."
+msgstr ""
+
+msgid "**start vids**"
+msgstr ""
+
+msgid "``ARRAY[BIGINT]``"
+msgstr ""
+
+msgid "Array of identifiers of starting vertices."
+msgstr ""
+
+msgid "**end vid**"
+msgstr ""
+
+msgid "Identifier of the ending vertex of the path."
+msgstr ""
+
+msgid "**end vids**"
+msgstr ""
+
+msgid "Array of identifiers of ending vertices."
+msgstr ""
+
+msgid "Inner Queries"
+msgstr ""
+
+msgid "Edges SQL"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "``id``"
+msgstr ""
+
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+msgid "Identifier of the edge."
+msgstr ""
+
+msgid "``source``"
+msgstr ""
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+msgid "``target``"
+msgstr ""
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+msgid "``capacity``"
+msgstr ""
+
+msgid "Capacity of the edge  (``source``, ``target``)"
+msgstr ""
+
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+
+msgid "``reverse_capacity``"
+msgstr ""
+
+msgid "-1"
+msgstr ""
+
+msgid "Capacity of the edge (``target``, ``source``)"
+msgstr ""
+
+msgid "``cost``"
+msgstr ""
+
+msgid "**ANY-NUMERICAL**"
+msgstr ""
+
+msgid "Weight of the edge  (``source``, ``target``) if it exist"
+msgstr ""
+
+msgid "``reverse_cost``"
+msgstr ""
+
+msgid ":math:`-1`"
+msgstr ""
+
+msgid "Weight of the edge (``target``, ``source``) if it exist"
+msgstr ""
+
+msgid "Where:"
+msgstr ""
+
+msgid "ANY-INTEGER"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr ""
+
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
+
+msgid "Combinations SQL"
+msgstr ""
+
+msgid "Parameter"
+msgstr ""
+
+msgid "Identifier of the departure vertex."
+msgstr ""
+
+msgid "Identifier of the arrival vertex."
+msgstr ""
+
+msgid "Result Columns"
+msgstr ""
+
+msgid "**seq**"
+msgstr ""
+
+msgid "``INT``"
+msgstr ""
+
+msgid "Sequential value starting from **1**."
+msgstr ""
+
+msgid "**edge**"
+msgstr ""
+
+msgid "Identifier of the edge in the original query (edges_sql)."
+msgstr ""
+
+msgid "**source**"
+msgstr ""
+
+msgid "**target**"
+msgstr ""
+
+msgid "**flow**"
+msgstr ""
+
+msgid "Flow through the edge in the direction (source, target)."
+msgstr ""
+
+msgid "**residual_capacity**"
+msgstr ""
+
+msgid "Residual capacity of the edge in the direction (source, target)."
+msgstr ""
+
+msgid "**cost**"
+msgstr ""
+
+msgid "``FLOAT``"
+msgstr ""
+
+msgid ""
+"The cost of sending this flow through the edge in the direction (source, "
+"target)."
+msgstr ""
+
+msgid "**agg_cost**"
+msgstr ""
+
+msgid "The aggregate cost."
+msgstr ""
+
+msgid "Additional Examples"
+msgstr ""
+
+msgid "Manually assigned vertex combinations."
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid ":doc:`flow-family`"
+msgstr ""
+
+msgid "https://www.boost.org/libs/graph/doc/successive_shortest_path_nonnegative_weights.html"
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""
+

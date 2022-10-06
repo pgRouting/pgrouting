@@ -1,0 +1,280 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_isPlanar.html>`__ (`3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_isPlanar.html>`__) `3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_isPlanar.html>`__"
+msgstr ""
+
+msgid "``pgr_isPlanar`` - Experimental"
+msgstr ""
+
+msgid ""
+"``pgr_isPlanar`` — Returns a boolean depending upon the planarity of the "
+"graph."
+msgstr ""
+
+msgid "Boost Graph Inside"
+msgstr ""
+
+msgid "Possible server crash"
+msgstr ""
+
+msgid "These functions might create a server crash"
+msgstr ""
+
+msgid "Experimental functions"
+msgstr ""
+
+msgid "They are not officially of the current release."
+msgstr ""
+
+msgid "They likely will not be officially be part of the next release:"
+msgstr ""
+
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+msgid "Name might change."
+msgstr ""
+
+msgid "Signature might change."
+msgstr ""
+
+msgid "Functionality might change."
+msgstr ""
+
+msgid "pgTap tests might be missing."
+msgstr ""
+
+msgid "Might need c/c++ coding."
+msgstr ""
+
+msgid "May lack documentation."
+msgstr ""
+
+msgid "Documentation if any might need to be rewritten."
+msgstr ""
+
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+
+msgid "Might need a lot of feedback from the comunity."
+msgstr ""
+
+msgid "Might depend on a proposed function of pgRouting"
+msgstr ""
+
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr ""
+
+msgid "Availability"
+msgstr ""
+
+msgid "Version 3.2.0"
+msgstr ""
+
+msgid "New **experimental** function"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid ""
+"A graph is planar if it can be drawn in two-dimensional space with no two"
+" of its edges crossing. Such a drawing of a planar graph is called a "
+"plane drawing. Every planar graph also admits a straight-line drawing, "
+"which is a plane drawing where each edge is represented by a line "
+"segment. When a graph has :math:`K_5` or :math:`K_{3, 3}` as subgraph "
+"then the graph is not planar."
+msgstr ""
+
+msgid "The main characteristics are:"
+msgstr ""
+
+msgid "This implementation use the Boyer-Myrvold Planarity Testing."
+msgstr ""
+
+msgid "It will return a boolean value depending upon the planarity of the graph."
+msgstr ""
+
+msgid "Applicable only for **undirected** graphs."
+msgstr ""
+
+msgid "The algorithm does not considers traversal costs in the calculations."
+msgstr ""
+
+msgid "Running time: :math:`O(|V|)`"
+msgstr ""
+
+msgid "Signatures"
+msgstr ""
+
+msgid "Summary"
+msgstr ""
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_isPlanar(`Edges SQL`)"
+msgstr ""
+
+msgid "RETURNS ``BOOLEAN``"
+msgstr ""
+
+msgid "Parameters"
+msgstr ""
+
+msgid "Parameter"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "`Edges SQL`_"
+msgstr ""
+
+msgid "``TEXT``"
+msgstr ""
+
+msgid "`Edges SQL`_ as described below."
+msgstr ""
+
+msgid "Inner Queries"
+msgstr ""
+
+msgid "Edges SQL"
+msgstr ""
+
+msgid "Column"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "``id``"
+msgstr ""
+
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+msgid "Identifier of the edge."
+msgstr ""
+
+msgid "``source``"
+msgstr ""
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+msgid "``target``"
+msgstr ""
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+msgid "``cost``"
+msgstr ""
+
+msgid "**ANY-NUMERICAL**"
+msgstr ""
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr ""
+
+msgid "``reverse_cost``"
+msgstr ""
+
+msgid "-1"
+msgstr ""
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr ""
+
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+
+msgid "Where:"
+msgstr ""
+
+msgid "ANY-INTEGER"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr ""
+
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
+
+msgid "Result Columns"
+msgstr ""
+
+msgid "Returns a boolean ``(pgr_isplanar)``"
+msgstr ""
+
+msgid "``pgr_isplanar``"
+msgstr ""
+
+msgid "``BOOLEAN``"
+msgstr ""
+
+msgid "`true` when the graph is planar."
+msgstr ""
+
+msgid "`false` when the graph is not planar."
+msgstr ""
+
+msgid "Additional Examples"
+msgstr ""
+
+msgid ""
+"The following edges will make the subgraph with vertices {10, 15, 11, 16,"
+" 13} a :math:`K_1` graph."
+msgstr ""
+
+msgid ""
+"The new graph is not planar because it has a :math:`K_5` subgraph. Edges "
+"in blue represent :math:`K_5` subgraph."
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid ":doc:`sampledata`"
+msgstr ""
+
+msgid "https://www.boost.org/libs/graph/doc/boyer_myrvold.html"
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""
+
