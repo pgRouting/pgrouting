@@ -123,7 +123,6 @@ gettext_uuid = False
 gettext_auto_build = True
 #For example: gettext_additional_targets = ['literal-block','raw','index','doctest-block']
 gettext_additional_targets = []
-gettext_compact = "pgrouting_doc_strings"
 
 
 
