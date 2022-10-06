@@ -1,0 +1,662 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: 2022-10-04 18:19+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language: es\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
+"/pgrouting-develop/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#, fuzzy
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
+"/withPoints-family.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en"
+"/withPoints-family.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en"
+"/withPoints-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en"
+"/withPoints-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en"
+"/withPoints-family.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es"
+"/withPoints-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es"
+"/withPoints-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es"
+"/withPoints-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es"
+"/withPoints-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es"
+"/withPoints-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es"
+"/withPoints-family.html>`__"
+
+msgid ""
+"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en"
+"/withPoints-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en"
+"/withPoints-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en"
+"/withPoints-family.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/withPoints/doc/withPoints.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/withPoints/doc/withPoints.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 <https://docs.pgrouting.org/2.6/en"
+"/withPoints-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en"
+"/withPoints-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en"
+"/withPoints-family.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/withPoints/doc/withPoints.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/withPoints/doc/withPoints.html>`__"
+
+msgid "withPoints - Family of functions"
+msgstr "withPoints - Familia de funciones"
+
+msgid "When points are also given as input:"
+msgstr "Cuando los puntos también se dan como entrada:"
+
+msgid "Proposed functions for next mayor release."
+msgstr "Funciones propuestas para la próxima versión mayor."
+
+msgid "They are not officially in the current release."
+msgstr "No están oficialmente en la versión actual."
+
+msgid "They will likely officially be part of the next mayor release:"
+msgstr "Es probable que oficialmente formen parte del próximo lanzamiento:"
+
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
+
+msgid "Name might not change. (But still can)"
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
+
+msgid "Signature might not change. (But still can)"
+msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
+
+msgid "Functionality might not change. (But still can)"
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
+
+msgid "pgTap tests have being done. But might need more."
+msgstr "Se han hecho pruebas con pgTap. Pero tal vez se necesiten más."
+
+msgid "Documentation might need refinement."
+msgstr "Es posible que la documentación necesite un refinamiento."
+
+msgid ":doc:`pgr_withPoints` - Route from/to points anywhere on the graph."
+msgstr ""
+":doc:`pgr_withPoints` - Ruta desde/hacia puntos en cualquier parte del "
+"grafo."
+
+msgid ":doc:`pgr_withPointsCost` - Costs of the shortest paths."
+msgstr ":doc:`pgr_withPointsCost` - Costos de las tutas más cortas."
+
+msgid ":doc:`pgr_withPointsCostMatrix` - Costs of the shortest paths."
+msgstr ":doc:`pgr_withPointsCostMatrix` - Costos de las rutas más cortas."
+
+msgid ":doc:`pgr_withPointsKSP` - K shortest paths."
+msgstr ":doc:`pgr_withPointsKSP` - rutas más cortas K."
+
+msgid ":doc:`pgr_withPointsDD` - Driving distance."
+msgstr ":doc:`pgr_withPointsDD` - Distancia de conducción."
+
+msgid "Introduction"
+msgstr "Introducción"
+
+msgid ""
+"This family of functions belongs to the :doc:`withPoints-category` and "
+"the functions that compose them are based one way or another on dijkstra "
+"algorithm."
+msgstr ""
+
+msgid "Depending on the name:"
+msgstr ""
+
+msgid "pgr_withPoints is pgr_dijkstra **with points**"
+msgstr "pgr_withPoints es pgr_dijkstra **con puntos**"
+
+msgid "pgr_withPointsCost is pgr_dijkstraCost **with points**"
+msgstr "pgr_withPointsCost es pgr_dijkstraCost **con puntos**"
+
+msgid "pgr_withPointsCostMatrix is pgr_dijkstraCostMatrix **with points**"
+msgstr "pgr_withPointsCostMatrix es pgr_dijkstraCostMatrix **con puntos**"
+
+msgid "pgr_withPointsKSP is pgr_ksp **with points**"
+msgstr "pgr_withPointsKSP es pgr_ksp **con puntos**"
+
+msgid "pgr_withPointsDD is pgr_drivingDistance **with points**"
+msgstr "pgr_withPointsDD es pgr_drivingDistance **con puntos**"
+
+msgid "Parameters"
+msgstr "Parámetros"
+
+msgid "Column"
+msgstr "Columna"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid "`Edges SQL`_"
+msgstr "`SQL de aristas`_"
+
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+msgid "`Edges SQL`_ as described below"
+msgstr "`SQL de aristas`_ como se describe a continuación"
+
+msgid "`Points SQL`_"
+msgstr "`SQL de puntos`_"
+
+msgid "`Points SQL`_ as described below"
+msgstr "`SQL de puntos`_ como se describe abajo"
+
+msgid "`Combinations SQL`_"
+msgstr "`SQL de combinaciones`_"
+
+msgid "`Combinations SQL`_ as described below"
+msgstr "`SQL de combinaciones`_ como se describe a abajo"
+
+msgid "**start vid**"
+msgstr "**salida**"
+
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+msgid ""
+"Identifier of the starting vertex of the path. Negative value is for "
+"point’s identifier."
+msgstr ""
+"Identificador del vértice inicial de la ruta. Valor negativo es para "
+"identificador de punto."
+
+msgid "**start vids**"
+msgstr "**salidas**"
+
+msgid "``ARRAY[BIGINT]``"
+msgstr "``ARRAY[BIGINT]``"
+
+msgid ""
+"Array of identifiers of starting vertices. Negative values are for "
+"point’s identifiers."
+msgstr ""
+"Arreglo de identificadores de vértices iniciales. Valores negativos son "
+"para identificadores de puntos."
+
+msgid "**end vid**"
+msgstr "**destino**"
+
+msgid ""
+"Identifier of the ending vertex of the path. Negative value is for "
+"point’s identifier."
+msgstr ""
+"Identificador del vértice final de la ruta. Valor negativo es para "
+"identificador de punto."
+
+msgid "**end vids**"
+msgstr "**destinos**"
+
+msgid ""
+"Array of identifiers of ending vertices. Negative values are for point’s "
+"identifiers."
+msgstr ""
+"Arreglo de identificadores de vértices finales. Valores negativos son "
+"para identificadores de puntos."
+
+msgid "Optional parameters"
+msgstr "Parámetros opcionales"
+
+msgid "Default"
+msgstr "x Defecto"
+
+msgid "``directed``"
+msgstr "``directed``"
+
+msgid "``BOOLEAN``"
+msgstr "``BOOLEAN``"
+
+msgid "``true``"
+msgstr "``true``"
+
+msgid "When ``true`` the graph is considered `Directed`"
+msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
+
+msgid "When ``false`` the graph is considered as `Undirected`."
+msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
+
+msgid "With points optional parameters"
+msgstr "Parámetros opcionales para Con puntos"
+
+msgid "Parameter"
+msgstr "Parámetro"
+
+msgid "``driving_side``"
+msgstr "``driving_side``"
+
+msgid "``CHAR``"
+msgstr "``CHAR``"
+
+msgid "``b``"
+msgstr "``b``"
+
+msgid "Value in [``r``, ``l``, ``b``] indicating if the driving side is:"
+msgstr "Valor en [``r``, ``l``, ``b``] indica si el lado de manejo es:"
+
+msgid "``r`` for right driving side."
+msgstr "``r`` para manejo del lado derecho."
+
+msgid "``l`` for left driving side."
+msgstr "``l`` para lado de manejo izquierdo."
+
+msgid "``b`` for both."
+msgstr "``b`` for ambos."
+
+msgid "``details``"
+msgstr "``details``"
+
+msgid "``false``"
+msgstr "``false``"
+
+msgid "When ``true`` the results will include the points that are in the path."
+msgstr "Cuando ``true`` los resultados incluyen los puntos que están en el camino."
+
+msgid ""
+"When ``false`` the results will not include the points that are in the "
+"path."
+msgstr ""
+"Cuando ``false`` los resultados no incluyen los puntos que están en el "
+"camino."
+
+msgid "Inner Queries"
+msgstr "Consultas Internas"
+
+msgid "Edges SQL"
+msgstr "SQL aristas"
+
+msgid "``id``"
+msgstr "``id``"
+
+msgid "**ANY-INTEGER**"
+msgstr "**ENTEROS**"
+
+msgid "Identifier of the edge."
+msgstr "Identificador de la arista."
+
+msgid "``source``"
+msgstr "``source``"
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer vértice de la arista."
+
+msgid "``target``"
+msgstr "``target``"
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo vértice de la arista."
+
+msgid "``cost``"
+msgstr "``cost``"
+
+msgid "**ANY-NUMERICAL**"
+msgstr "**FLOTANTES**"
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr "Peso de la arista (``source``, ``target``)"
+
+msgid "``reverse_cost``"
+msgstr "``reverse_cost``"
+
+msgid "-1"
+msgstr "-1"
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr "Peso de la arista (``target``, ``source``)"
+
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
+"tanto no es parte del grafo."
+
+msgid "Where:"
+msgstr "Donde:"
+
+msgid "ANY-INTEGER"
+msgstr "ENTEROS"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+
+msgid "ANY-NUMERICAL"
+msgstr "FLOTANTES"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+
+msgid "Points SQL"
+msgstr "SQL de puntos"
+
+msgid "``pid``"
+msgstr "``pid``"
+
+msgid "**value**"
+msgstr "**valor**"
+
+msgid "Identifier of the point."
+msgstr "Identificador del punto."
+
+msgid "Use with positive value, as internally will be converted to negative value"
+msgstr ""
+"Use con un valor positivo, dado que internamente se convertirá a un valor"
+" negativo"
+
+msgid "If column is present, it can not be NULL."
+msgstr "Si columna esta presente, no puede ser NULL."
+
+msgid ""
+"If column is not present, a sequential negative **value** will be given "
+"automatically."
+msgstr ""
+"Si columna no esta presente, un **valor** secuencial negativo se otorgará"
+" automáticamente."
+
+msgid "``edge_id``"
+msgstr "``edge_id``"
+
+msgid "Identifier of the \"closest\" edge to the point."
+msgstr "Identificador de la arista \"más cercana\" al punto."
+
+msgid "``fraction``"
+msgstr "``fraction``"
+
+msgid ""
+"Value in <0,1> that indicates the relative postition from the first end "
+"point of the edge."
+msgstr ""
+"El valor en <0,1> que indica la posición relativa desde el primer punto "
+"de la arista."
+
+msgid "``side``"
+msgstr "``side``"
+
+msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"
+msgstr "Valor en [``b``, ``r``, ``l``, ``NULL``] que indica si el punto es:"
+
+msgid "In the right ``r``,"
+msgstr "A la derecha ``r``,"
+
+msgid "In the left ``l``,"
+msgstr "A la izquierda `l`,"
+
+msgid "In both sides ``b``, ``NULL``"
+msgstr "En ambos lados ``b``, ``NULL``"
+
+msgid "Combinations SQL"
+msgstr "SQL Combinaciones"
+
+msgid "Identifier of the departure vertex."
+msgstr "Identificador del vértice de salida."
+
+msgid "Identifier of the arrival vertex."
+msgstr "Identificador del vértice de llegada."
+
+msgid "Advanced Documentation"
+msgstr ""
+
+msgid "Contents"
+msgstr "Contenido"
+
+msgid "About points"
+msgstr "Sobre los puntos"
+
+msgid ""
+"For this section the following city (see :doc:`sampledata`) some "
+"interesing points such as restaurant, supermarket, post office, etc. will"
+" be used as example."
+msgstr ""
+"Para esta sección de la siguiente ciudad (ver :doc:`sampledata`) algunos "
+"puntos de interés como restaurantes, supermercado, oficina de correo, "
+"etc. seran usadas de ejemplo."
+
+msgid "The graph is **directed**"
+msgstr "El grafo es **dirigido**"
+
+msgid "Red arrows show the ``(source, target)`` of the edge on the edge table"
+msgstr ""
+"Las flechas rojas muestran``(source, target)`` de la arista en al tabla "
+"de aristas"
+
+msgid "Blue arrows show the ``(target, source)`` of the edge on the edge table"
+msgstr ""
+"La flechas azules muestran ``(target, source)`` la arista en la tabla de "
+"aristas"
+
+msgid ""
+"Each point location shows where it is located with relation of the edge "
+"``(source, target)``"
+msgstr ""
+"Cada ubicación de los puntos muestra su ubicación en relación con la "
+"arista ``(source, target)``"
+
+msgid "On the right for points **2** and **4**."
+msgstr "A la derecha para los puntos **2** y **4**."
+
+msgid "On the left for points **1**, **3** and **5**."
+msgstr "A la izquierda para los puntos **1**, **3** y**5**."
+
+msgid "On both sides for point **6**."
+msgstr "En ambos lados para el punto **6**."
+
+msgid ""
+"The representation on the data base follows the `Points SQL`_ "
+"description, and for this example:"
+msgstr ""
+"La representación de la base de datos sigue la descripción `SQL de "
+"puntos`_ , y para este ejemplo:"
+
+msgid "Driving side"
+msgstr "Lado de manejo"
+
+msgid "In the the folowwing images:"
+msgstr "En las siguientes imágenes:"
+
+msgid "The squared vertices are the temporary vertices,"
+msgstr "Los vértices cuadrados son vértices temporales,"
+
+msgid "The temporary vertices are added according to the driving side,"
+msgstr "Los vértices temporales se agregan según el lado de conducción,"
+
+msgid ""
+"visually showing the differences on how depending on the driving side the"
+" data is interpreted."
+msgstr ""
+"visualmente mostrando las diferencias dependiendo de como se interpreta "
+"la información de lado de conducción."
+
+msgid "Right driving side"
+msgstr "Lado de manejo derecho"
+
+msgid "Point **1** located on edge ``(6, 5)``"
+msgstr "Punto**1** ubicado en la arista ``(6, 5)``"
+
+msgid "Point **2** located on edge ``(16, 17)``"
+msgstr "Punto **2** ubicado en la arista``(16, 17)``"
+
+msgid "Point **3** located on edge ``(8, 12)``"
+msgstr "Punto **3** ubicado en la arista``(8, 12)``"
+
+msgid "Point **4** located on edge ``(1, 3)``"
+msgstr "Punto **4** ubicado en la arista``(1, 3)``"
+
+msgid "Point **5** located on edge ``(10, 11)``"
+msgstr "Punto **5** ubicado en la arista``(10, 11)``"
+
+msgid "Point **6** located on edges ``(6, 7)`` and ``(7, 6)``"
+msgstr "Punto **6** ubicado en las aristas ``(6, 7)`` y ``(7, 6)``"
+
+msgid "Left driving side"
+msgstr "Lado de manejo izquierdo"
+
+msgid "Point **1** located on edge ``(5, 6)``"
+msgstr "Punto**1** ubicado en la arista ``(5, 6)``"
+
+msgid "Point **2** located on edge ``(17, 16)``"
+msgstr "Punto **2** ubicado en la arista``(17, 16)``"
+
+msgid "Point **4** located on edge ``(3, 1)``"
+msgstr "Punto **4** ubicado en la arista``(3, 1)``"
+
+msgid "Driving side does not matter"
+msgstr "Lado de manejo no importa"
+
+msgid "Like having all points to be considered in both sides ``b``"
+msgstr ""
+"Como si se tuvieran todos los puntos en ambos lados considerados como "
+"``b``"
+
+msgid "Prefered usage on **undirected** graphs"
+msgstr "Uso preferido en grafos **no dirigidos**"
+
+msgid "Point **1** located on edge ``(5, 6)`` and ``(6, 5)``"
+msgstr "Punto**1** ubicado en la arista``(5, 6)`` y ``(6, 5)``"
+
+msgid "Point **2** located on edge ``(17, 16)``and ``16, 17``"
+msgstr "Punto **2** ubicado en la arista``(17, 16)`` y ``(16, 17)``"
+
+msgid "Point **4** located on edge ``(3, 1)`` and ``(1, 3)``"
+msgstr ""
+
+msgid "Creating temporary vertices"
+msgstr "Creación de vértices temporales"
+
+msgid ""
+"This section will demonstrate how a temporary vertex is created "
+"internally on the graph."
+msgstr ""
+
+msgid "Problem"
+msgstr ""
+
+msgid "For edge:"
+msgstr ""
+
+msgid "insert point:"
+msgstr ""
+
+msgid "On a right hand side driving network"
+msgstr "En una red de conducción del lado derecho"
+
+msgid "Arrival to point ``-2`` can be achived only via vertex **16**."
+msgstr "Llegada al punto ``-2`` se logra solo vía el vértice **16**."
+
+msgid "Does not affects edge ``(17, 16)``, therefore the edge is kept."
+msgstr ""
+
+msgid "It only affects the edge ``(16, 17)``, therefore the edge is removed."
+msgstr "Sólo afecta a la arista ``(16, 17)``, por lo que la arista se elimina."
+
+msgid "Create two new edges:"
+msgstr "Crear dos aristas nuevas:"
+
+msgid ""
+"Edge ``(16, -2)`` with cost ``0.4`` (original cost * fraction == :math:`1"
+" * 0.4`)"
+msgstr ""
+
+msgid "Edge ``(-2, 17)`` with cost ``0.6`` (the remaing cost)"
+msgstr ""
+
+msgid "The total cost of the additional edges is equal to the original cost."
+msgstr ""
+
+msgid "If more points are on the same edge, the process is repeated recursevly."
+msgstr ""
+
+msgid "On a left hand side driving network"
+msgstr "En una red de conducción del lado izquierdo"
+
+msgid "Arrival to point ``-2`` can be achived only via vertex **17**."
+msgstr "Llegada al punto ``-2`` se logra solo vía el vértice **17**."
+
+msgid "Does not affects edge ``(16, 17)``, therefore the edge is kept."
+msgstr ""
+
+msgid "It only affects the edge ``(17, 16)``, therefore the edge is removed."
+msgstr "Sólo afecta a la arista ``(17, 16)``, por lo que la arista se elimina."
+
+msgid ""
+"Work with the original edge ``(16, 17)`` as the fraction is a fraction of"
+" the original:"
+msgstr ""
+
+msgid "Flip the Edges and add them to the graph:"
+msgstr ""
+
+msgid ""
+"Edge ``(17, -2)`` becomes ``(-2, 16)`` with cost ``0.4`` and is added to "
+"the graph."
+msgstr ""
+
+msgid ""
+"Edge ``(-2, 16)`` becomes ``(17, -2)`` with cost ``0.6`` and is added to "
+"the graph."
+msgstr ""
+
+msgid "When driving side does not matter"
+msgstr "Cuando el lado de conducción no importa"
+
+msgid "Arrival to point ``-2`` can be achived via vertices **16** or **17**."
+msgstr ""
+
+msgid ""
+"Affects the edges ``(16, 17)`` and ``(17, 16)``, therefore the edges are "
+"removed."
+msgstr ""
+"Afecta las aristas ``(16, 17)`` y ``(17, 16)`` por lo que esas aristas se"
+" eliminan."
+
+msgid "Create four new edges:"
+msgstr "Crear cuatro nuevas aristas:"
+
+msgid "Flip the Edges and add all the edges to the graph:"
+msgstr ""
+
+msgid "Edge ``(16, -2)`` is added to the graph."
+msgstr ""
+
+msgid "Edge ``(-2, 17)`` is added to the graph."
+msgstr ""
+
+msgid ""
+"Edge ``(16, -2)`` becomes ``(-2, 16)`` with cost ``0.4`` and is added to "
+"the graph."
+msgstr ""
+
+msgid ""
+"Edge ``(-2, 17)`` becomes ``(17, -2)`` with cost ``0.6`` and is added to "
+"the graph."
+msgstr ""
+
+msgid "See Also"
+msgstr "Ver también"
+
+msgid ":doc:`withPoints-category`"
+msgstr ":doc:`withPoints-category`"
+
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
+

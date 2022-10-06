@@ -1,0 +1,491 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: 2022-10-04 18:19+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language: es\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
+"/pgrouting-develop/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#, fuzzy
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
+"/pgRouting-installation.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en"
+"/pgRouting-installation.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en"
+"/pgRouting-installation.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en"
+"/pgRouting-installation.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en"
+"/pgRouting-installation.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es"
+"/pgRouting-installation.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es"
+"/pgRouting-installation.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es"
+"/pgRouting-installation.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es"
+"/pgRouting-installation.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es"
+"/pgRouting-installation.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es"
+"/pgRouting-installation.html>`__"
+
+msgid ""
+"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en"
+"/pgRouting-installation.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en"
+"/pgRouting-installation.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en"
+"/pgRouting-installation.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/doc/src/installation/installation.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/doc/src/installation/installation.html>`__"
+" `2.1 "
+"<https://docs.pgrouting.org/2.1/en/doc/src/installation/index.html>`__ "
+"`2.0 "
+"<https://docs.pgrouting.org/2.0/en/doc/src/installation/index.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 <https://docs.pgrouting.org/2.6/en"
+"/pgRouting-installation.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en"
+"/pgRouting-installation.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en"
+"/pgRouting-installation.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/doc/src/installation/installation.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/doc/src/installation/installation.html>`__"
+" `2.1 "
+"<https://docs.pgrouting.org/2.1/en/doc/src/installation/index.html>`__ "
+"`2.0 "
+"<https://docs.pgrouting.org/2.0/en/doc/src/installation/index.html>`__"
+
+msgid "Installation"
+msgstr "Instalación"
+
+msgid "Table of Contents"
+msgstr "Tabla de Contenido"
+
+msgid ":ref:`install-short`"
+msgstr ":ref:`install-short`"
+
+msgid ":ref:`install_get_sources`"
+msgstr ":ref:`install_get_sources`"
+
+msgid ":ref:`install_enable_db`"
+msgstr ":ref:`install_enable_db`"
+
+msgid ":ref:`install_dependencies`"
+msgstr ":ref:`install_dependencies`"
+
+msgid ":ref:`install_configuring`"
+msgstr ":ref:`install_configuring`"
+
+msgid ":ref:`install_build`"
+msgstr ":ref:`install_build`"
+
+msgid ":ref:`install_testing`"
+msgstr ":ref:`install_testing`"
+
+msgid ""
+"Instructions for downloading and installing binaries for different "
+"operating systems, additional notes and corrections not included in this "
+"documentation can be found in `Installation wiki "
+"<https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-"
+"Installation-and-building-pgRouting>`__"
+msgstr ""
+
+msgid ""
+"To use pgRouting PostGIS needs to be installed, please read the "
+"information about installation in this `Install Guide "
+"<https://www.postgis.us/presentations/postgis_install_guide_22.html>`__"
+msgstr ""
+"Para utilizar pgRouting postGIS necesita ser instalado, por favor lea la "
+"información sobre la instalación en esta `Guía de instalacoón "
+"<https://www.postgis.us/presentations/postgis_install_guide_22.html>`__"
+
+msgid "Short Version"
+msgstr "Versión corta"
+
+msgid "Extracting the tar ball"
+msgstr "Extraer la bola de alquitrán"
+
+msgid "To compile assuming you have all the dependencies in your search path:"
+msgstr ""
+"Para compilar suponiendo que tiene todas las dependencias en su ruta de "
+"búsqueda:"
+
+msgid ""
+"Once pgRouting is installed, it needs to be enabled in each individual "
+"database you want to use it in."
+msgstr ""
+"Una vez que pgRouting está instalado, debe habilitarse en cada base de "
+"datos individual en la que desee utilizarlo."
+
+msgid "Get the sources"
+msgstr "Obtener las fuentes"
+
+msgid ""
+"The pgRouting latest release can be found in "
+"https://github.com/pgRouting/pgrouting/releases/latest"
+msgstr ""
+"La última versión de pgRouting se puede encontrar en "
+"https://github.com/pgRouting/pgrouting/releases/latest"
+
+msgid "wget"
+msgstr "Wget"
+
+msgid "To download this release:"
+msgstr "Para descargar esta versión:"
+
+msgid ""
+"Go to :ref:`install-short` for more instructions on extracting tar ball "
+"and compiling pgRouting."
+msgstr ""
+"Ir a :ref:`install-short` para más instrucciones sobre la extraccion de "
+"la bola tar y la compilación de pgRouting."
+
+msgid "git"
+msgstr "git"
+
+msgid "To download the repository"
+msgstr "Para descargar el repositorio"
+
+msgid ""
+"Go to :ref:`install-short` for more instructions on compiling pgRouting "
+"(there is no tar ball involved while downloading pgRouting repository "
+"from GitHub)."
+msgstr ""
+
+msgid "Enabling and upgrading in the database"
+msgstr "Habilitación y actualización en la base de datos"
+
+msgid "Enabling the database"
+msgstr "Habilitación de la base de datos"
+
+msgid ""
+"pgRouting is a PostgreSQL extension and depends on PostGIS to provide "
+"functionalities to end user. Below given code demonstrates enabling "
+"PostGIS and pgRouting in the database."
+msgstr ""
+
+msgid ""
+"Checking PostGIS and pgRouting version after enabling them in the "
+"database."
+msgstr ""
+
+msgid "Upgrading the database"
+msgstr "Actualización de la base de datos"
+
+#, fuzzy
+msgid ""
+"To upgrade pgRouting in the database to version 3.3.4 use the following "
+"command:"
+msgstr ""
+"Para actualizar pgRouting en la base de datos a la versión 3.4.0 utilice "
+"el siguiente comando:"
+
+msgid ""
+"More information can be found in https://www.postgresql.org/docs/current"
+"/sql-createextension.html"
+msgstr ""
+"Puede hallar más información en https://www.postgresql.org/docs/current"
+"/sql-createextension.html"
+
+msgid "Dependencies"
+msgstr "Dependencias"
+
+msgid "Compilation Dependencies"
+msgstr "Dependencias de Compilación"
+
+msgid ""
+"To be able to compile pgRouting, make sure that the following "
+"dependencies are met:"
+msgstr ""
+"Para poder compilar pgRouting, asegúrese de que se cumplen las siguientes"
+" dependencias:"
+
+msgid "C and C++0x compilers"
+msgstr ""
+
+msgid ""
+"Compiling with Boost 1.56 up to Boost 1.74 requires C++ Compiler with "
+"C++03 or C++11 standard support"
+msgstr ""
+"Compilar con Boost 1.56 hasta Boost 1.74 requiere un compilador C++ con "
+"soporte estandard para C++03 o C++11"
+
+msgid ""
+"Compiling with Boost 1.75 requires C++ Compiler with C++14 standard "
+"support"
+msgstr ""
+
+msgid "Postgresql version = Supported versions by PostgreSQL"
+msgstr "Versión postgresql = Versiones compatibles por PostgreSQL"
+
+msgid "The Boost Graph Library (BGL). Version >= 1.56"
+msgstr "La Biblioteca de Gráficos Boost (BGL). Versión >= 1.56"
+
+msgid "CMake >= 3.2"
+msgstr "CMake >= 3.2"
+
+msgid "optional dependencies"
+msgstr "dependencias opcionales"
+
+msgid "For user's documentation"
+msgstr "Para la documentación del usuario"
+
+msgid "Sphinx >= 1.1"
+msgstr "Sphinx >= 1.1"
+
+msgid "Latex"
+msgstr "Latex"
+
+msgid "For developer's documentation"
+msgstr "Para la documentación del desarrollador"
+
+msgid "Doxygen >= 1.7"
+msgstr "Doxygen >= 1.7"
+
+msgid "For testing"
+msgstr "Para pruebas"
+
+msgid "pgtap"
+msgstr "pgtap"
+
+msgid "pg_prove"
+msgstr "pg_prove"
+
+msgid "For using:"
+msgstr "Para uso:"
+
+msgid "PostGIS version >= 2.2"
+msgstr "PostGIS version >= 2.2"
+
+msgid "Example: Installing dependencies on linux"
+msgstr "Ejemplo: Instalación de dependencias en linux"
+
+msgid "Installing the compilation dependencies"
+msgstr "Instalación de las dependencias de compilación"
+
+msgid "Database dependencies"
+msgstr "Dependencias de bases de datos"
+
+msgid "Configuring PostgreSQL"
+msgstr "Configurar PostgreSQL"
+
+msgid "Entering psql console"
+msgstr ""
+
+msgid "To exit psql console"
+msgstr ""
+
+msgid ""
+"Entering psql console directly without switching roles can be done by the"
+" following commands"
+msgstr ""
+
+msgid "Then use the above given method to exit out of the psql console"
+msgstr ""
+
+msgid "Checking PostgreSQL version"
+msgstr ""
+
+msgid "or"
+msgstr ""
+
+msgid "Enter the psql console using above given method and then enter"
+msgstr ""
+
+msgid "Creating PostgreSQL role"
+msgstr ""
+
+msgid ""
+"Default role provided by PostgreSQL is postgres. To create new roles you "
+"can use the above provided commands. The prompt will ask the user to type"
+" name of the role and then provide affirmation. Proceed with the steps "
+"and you will succeed in creating PostgreSQL role successfully."
+msgstr ""
+
+msgid ""
+"To add password to the role or change previously created password of the "
+"role use the following commands"
+msgstr ""
+
+msgid ""
+"To get additional details on the flags associated with ``createuser`` "
+"below given command can be used"
+msgstr ""
+
+msgid "Creating Database in PostgreSQL"
+msgstr ""
+
+msgid "Connecting to a PostgreSQL Database"
+msgstr ""
+
+msgid "Enter the psql console and type the following commands"
+msgstr ""
+
+msgid "Build dependencies"
+msgstr "Construir dependencias"
+
+msgid "Optional dependencies"
+msgstr "Dependencias opcionales"
+
+msgid "For documentation and testing"
+msgstr "Para documentación y pruebas"
+
+msgid "Configuring"
+msgstr "Configuración"
+
+msgid "pgRouting uses the `cmake` system to do the configuration."
+msgstr "pgRouting utiliza el sistema 'cmake' para realizar la configuración."
+
+msgid "The build directory is different from the source directory"
+msgstr "El directorio de compilación es diferente del directorio de origen"
+
+msgid "Create the build directory"
+msgstr "Cree el directorio de compilación"
+
+msgid "Configurable variables"
+msgstr "Variables configurables"
+
+msgid "To see the variables that can be configured"
+msgstr "Para ver las variables que se pueden configurar"
+
+msgid "Configuring The Documentation"
+msgstr "Configurar la documentación"
+
+msgid ""
+"Most of the effort of the documentation has been on the HTML files. Some "
+"variables for building documentation:"
+msgstr ""
+"La mayor parte del esfuerzo de la documentación ha estado en los archivos"
+" HTML. Algunas variables para construir la documentación:"
+
+msgid "Variable"
+msgstr "Variable"
+
+msgid "Default"
+msgstr "x Defecto"
+
+msgid "Comment"
+msgstr "Comentario"
+
+msgid "WITH_DOC"
+msgstr "WITH_DOC"
+
+msgid "BOOL=OFF"
+msgstr "BOOL=OFF"
+
+msgid "Turn on/off building the documentation"
+msgstr "Activar/desactivar la construcción de la documentación"
+
+msgid "BUILD_HTML"
+msgstr "BUILD_HTML"
+
+msgid "BOOL=ON"
+msgstr "BOOL=ON"
+
+msgid "If ON, turn on/off building HTML for user's documentation"
+msgstr ""
+"Si está activado, active/desactive la creación de HTML para la "
+"documentación del usuario"
+
+msgid "BUILD_DOXY"
+msgstr "BUILD_DOXY"
+
+msgid "If ON, turn on/off building HTML for developer's documentation"
+msgstr ""
+"Si está activado, active o desactive la creación de HTML para la "
+"documentación del desarrollador"
+
+msgid "BUILD_LATEX"
+msgstr "BUILD_LATEX"
+
+msgid "If ON, turn on/off building PDF"
+msgstr "Si está activado, active/desactive la creación de PDF"
+
+msgid "BUILD_MAN"
+msgstr "BUILD_MAN"
+
+msgid "If ON, turn on/off building MAN pages"
+msgstr "Si está activado, active/desactive las páginas MAN de construcción"
+
+msgid "DOC_USE_BOOTSTRAP"
+msgstr "DOC_USE_BOOTSTRAP"
+
+msgid "If ON, use sphinx-bootstrap for HTML pages of the users documentation"
+msgstr ""
+"Si está activado, utilice sphinx-bootstrap para las páginas HTML de la "
+"documentación de los usuarios"
+
+msgid "Configuring cmake to create documentation before building pgRouting"
+msgstr ""
+
+msgid "Most of the effort of the documentation has been on the html files."
+msgstr ""
+"La mayor parte del esfuerzo de la documentación ha estado en los archivos"
+" html."
+
+msgid "Building"
+msgstr "Compilando"
+
+msgid "Using ``make`` to build the code and the documentation"
+msgstr "Uso de ``make`` para compilar el código y la documentación"
+
+msgid "The following instructions start from *path/to/pgrouting/build*"
+msgstr "Las siguientes instrucciones comienzan desde *path/to/pgrouting/build*"
+
+msgid ""
+"We have tested on several platforms, For installing or reinstalling all "
+"the steps are needed."
+msgstr ""
+"Hemos probado en varias plataformas, Para instalar o reinstalar todos los"
+" pasos son necesarios."
+
+msgid "The sql signatures are configured and build in the ``cmake`` command."
+msgstr "Las firmas sql se configuran y se compilan en el comando ``cmake``."
+
+msgid "MinGW on Windows"
+msgstr "MinGW en Windows"
+
+msgid "Linux"
+msgstr "Linux"
+
+msgid "The following instructions start from *path/to/pgrouting*"
+msgstr "Las siguientes instrucciones comienzan desde *path/to/pgrouting*"
+
+msgid ""
+"To remove the build when the configuration changes, use the following "
+"code:"
+msgstr ""
+
+msgid "and start the build process as mentioned previously."
+msgstr "e iniciar el proceso de compilación como se mencionó anteriormente."
+
+msgid "Testing"
+msgstr "Pruebas"
+
+msgid "Currently there is no :code:`make test` and testing is done as follows"
+msgstr ""
+"Actualmente no hay :code:`make test` y las pruebas se realizan de la "
+"siguiente manera"
+
+msgid "The following instructions start from *path/to/pgrouting/*"
+msgstr "Las siguientes instrucciones comienzan desde *path/to/pgrouting/*"
+
+msgid "See Also"
+msgstr "Ver también"
+
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
+

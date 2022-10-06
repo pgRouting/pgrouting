@@ -1,0 +1,578 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: 2022-10-04 18:19+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language: es\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
+"/pgrouting-develop/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_aStarCost.html>`__ (`3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_aStarCost.html>`__) `3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_aStarCost.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_aStarCost.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_aStarCost.html>`__"
+msgstr ""
+
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_aStarCost.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_aStarCost.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_aStarCost.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_aStarCost.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_aStarCost.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_aStarCost.html>`__"
+
+msgid "pgr_aStarCost"
+msgstr "pgr_aStarCost"
+
+msgid ""
+"``pgr_aStarCost`` - Total cost of the shortest path(s) using the A* "
+"algorithm."
+msgstr ""
+"``pgr_aStarCost`` —Costo total de la ruta más corta usando el algoritmo "
+":A*."
+
+msgid "Boost Graph Inside"
+msgstr "Adentro: Boost Graph"
+
+msgid "Availability"
+msgstr "Disponibilidad"
+
+msgid "Version 3.2.0"
+msgstr "Versión 3.2.0"
+
+msgid "New **proposed** signature:"
+msgstr "Nueva firma **propuesta**:"
+
+msgid "``pgr_aStarCost`` (`Combinations`_)"
+msgstr "``pgr_aStarCost`` (`Combinaciones`_)"
+
+msgid "Version 3.0.0"
+msgstr "Versión 3.0.0"
+
+msgid "**Official** function"
+msgstr "Función **oficial**"
+
+msgid "Version 2.4.0"
+msgstr "Versión 2.4.0"
+
+msgid "New **proposed** function"
+msgstr "Nueva función **propuesta**"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid ""
+"The ``pgr_aStarCost`` function sumarizes of the cost of the shortest "
+"path(s) using the A* algorithm."
+msgstr ""
+"La función ``pgr_aStarCost`` sumarisa el costo de la ruta más corta "
+"usando el algoritmo A*."
+
+msgid "**The main characteristics are:**"
+msgstr "**Las principales características son:**"
+
+msgid "Process works for directed and undirected graphs."
+msgstr "Funciona para grafos dirigidos y no dirigidos."
+
+msgid "Ordering is:"
+msgstr "Ordenamiento es:"
+
+msgid "first by ``start_vid`` (if exists)"
+msgstr "primero por ``start_vid`` (si existe)"
+
+msgid "then by ``end_vid``"
+msgstr "luego por ``end_vid``"
+
+msgid "Values are returned when there is a path."
+msgstr "Los valores se devuelven cuando hay una ruta."
+
+msgid "Let :math:`v` and :math:`u` be nodes on the graph:"
+msgstr "Sean :math:`v` y :math:`u` nodos en el grafo:"
+
+msgid "If there is no path from :math:`v` to :math:`u`:"
+msgstr "Si no hay camino de :math:`v` a :math:`u`:"
+
+msgid "no corresponding row is returned"
+msgstr "no se devuelve ninguna fila correspondiente"
+
+msgid "``agg_cost`` from :math:`v` to :math:`u` is :math:`\\infty`"
+msgstr "``agg_cost`` de :math:`v` a :math:`u` es :math:`\\infty`"
+
+msgid "There is no path when :math:`v = u` therefore"
+msgstr "No hay camino cuando :math:`v = u` por lo tanto"
+
+msgid "``agg_cost`` from `v` to `u` is :math:`0`"
+msgstr "``agg_cost`` de `v` a `u` es :math:`0`"
+
+msgid "When :math:`(x,y)` coordinates for the same vertex identifier differ:"
+msgstr ""
+"Cuando las coordenadas (x,y) para el mismo identificador de vértice "
+"difieren:"
+
+msgid "A random selection of the vertex's :math:`(x,y)` coordinates is used."
+msgstr ""
+"Se utiliza una selección aleatoria de las coordenadas del vértice "
+":math:`(x,y)`."
+
+msgid "Running time: :math:`O((E + V) * \\log V)`"
+msgstr "Tiempo de ejecución: :math:`O((E + V) * \\log V)`"
+
+msgid "It does not return a path."
+msgstr "No devuelve una ruta."
+
+msgid ""
+"Returns the sum of the costs of the shortest path of each pair "
+"combination of nodes requested."
+msgstr ""
+"Devuelve la suma de los costos de la ruta más corta para cada par de "
+"combinación de nodos requeridos."
+
+msgid ""
+"Let be the case the values returned are stored in a table, so the unique "
+"index would be the pair: `(start_vid, end_vid)`"
+msgstr ""
+"Sea el caso de que los resultados se almacenen en una tabla, el índice "
+"unico lo conformarían el par `(start_vid, end_vid)`"
+
+msgid "For undirected graphs, the results are symmetric."
+msgstr "Para grafos no dirigidos, los resultados son simétricos."
+
+msgid "The  `agg_cost` of `(u, v)` is the same as for `(v, u)`."
+msgstr "El `agg_cost` de `(u, v)` es el mismo que para `(v, u)`."
+
+msgid "The returned values are ordered in ascending order:"
+msgstr "Loas valores regresandos son ordenados en orden ascendente:"
+
+msgid "`start_vid` ascending"
+msgstr "`start_vid` ascendente"
+
+msgid "`end_vid` ascending"
+msgstr "`end_vid` ascendente"
+
+msgid "Signatures"
+msgstr "Firmas"
+
+msgid "Summary"
+msgstr "Resumen"
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_aStarCost(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
+msgstr "pgr_aStarCost(`SQL de aristas`_, **salida**, **destino**, [**opciones**])"
+
+msgid "pgr_aStarCost(`Edges SQL`_, **start vid**, **end vids**, [**options**])"
+msgstr "pgr_aStarCost(`SQL de aristas`_, **salida**, **destinos**, [**opciones**])"
+
+msgid "pgr_aStarCost(`Edges SQL`_, **start vids**, **end vid**, [**options**])"
+msgstr "pgr_aStarCost(`SQL de aristas`_, **salidas**, **destino**, [**opciones**])"
+
+msgid "pgr_aStarCost(`Edges SQL`_, **start vids**, **end vids**, [**options**])"
+msgstr ""
+"pgr_aStarCost(`SQL de aristas`_, **salidas**, **destinos**, "
+"[**opciones**])"
+
+msgid "pgr_aStarCost(`Edges SQL`_, `Combinations SQL`_, [**options**])"
+msgstr "pgr_aStarCost(`SQL de aristas`_, `SQL de combinaciones`_, [**opciones**])"
+
+msgid "**options:** ``[directed, heuristic, factor, epsilon]``"
+msgstr ""
+
+msgid "RETURNS SET OF |matrix-result|"
+msgstr "Regresa conjunto de |matrix-result|"
+
+msgid "OR EMPTY SET"
+msgstr ""
+
+msgid "One to One"
+msgstr "Uno a Uno"
+
+msgid "Example"
+msgstr "Ejemplo"
+
+msgid ""
+"From vertex :math:`6` to vertex :math:`12` on a **directed** graph with "
+"heuristic :math:`2`"
+msgstr ""
+"De vértice :math:`6` a vértice :math:`12` en un grafo **dirigido** usando"
+" la heurística :math:`2`"
+
+msgid "One to Many"
+msgstr "Uno a Muchos"
+
+msgid ""
+"From vertex :math:`6` to vertices :math:`\\{10, 12\\}` on a **directed** "
+"graph with heuristic :math:`3` and factor :math:`3.5`"
+msgstr ""
+"Desde el vértice :math:`6` a los vértices :math:`\\{12, 10\\}` en un "
+"grafo **dirigido** usando la heurística :math:`3` con factor :math:`3.5`"
+
+msgid "Many to One"
+msgstr "Muchos a Uno"
+
+msgid ""
+"From vertices :math:`\\{6, 8\\}` to vertex :math:`10` on an "
+"**undirected** graph with heuristic :math:`4`"
+msgstr ""
+"De los vértices :math:`\\{6, 8\\}` al vértice :math:`10` en un grafo **no"
+" dirigido** usando la heurística :math:`4`"
+
+msgid "Many to Many"
+msgstr "Muchos a Muchos"
+
+msgid "pgr_aStarCost(`Edges SQL`_, **start vids**, **end vids**, [options])"
+msgstr ""
+"pgr_aStarCost(`SQL de aristas`_, **salidas**, **destinos**, "
+"[**opciones**])"
+
+msgid ""
+"From vertices :math:`\\{6, 8\\}` to vertices :math:`\\{10, 12\\}` on a "
+"**directed** graph with factor :math:`0.5`"
+msgstr ""
+"De los vértices :math:`\\{6, 8\\}` a los vértices :math:`\\{10, 12\\}` en"
+" un gráfico **dirigido** con factor :math:`0.5`"
+
+msgid "Combinations"
+msgstr "Combinaciones"
+
+msgid ""
+"Using a combinations table on a **directed** graph with factor "
+":math:`0.5`."
+msgstr ""
+"Usando una tabla de combinaciones en un grafo **dirigido** con factor "
+":math:`0.5`."
+
+msgid "The combinations table:"
+msgstr "La tabla de combinaciones:"
+
+msgid "The query:"
+msgstr "La consulta:"
+
+msgid "Parameters"
+msgstr "Parámetros"
+
+msgid "Column"
+msgstr "Columna"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "`Edges SQL`_"
+msgstr "`SQL de aristas`_"
+
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+msgid "`Edges SQL`_ as described below"
+msgstr "`SQL de aristas`_ como se describe a continuación"
+
+msgid "`Combinations SQL`_"
+msgstr "`SQL de combinaciones`_"
+
+msgid "`Combinations SQL`_ as described below"
+msgstr "`SQL de combinaciones`_ como se describe a abajo"
+
+msgid "**start vid**"
+msgstr "**salida**"
+
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+msgid "Identifier of the starting vertex of the path."
+msgstr "Identificador del vértice inicial de la ruta."
+
+msgid "**start vids**"
+msgstr "**salidas**"
+
+msgid "``ARRAY[BIGINT]``"
+msgstr "``ARRAY[BIGINT]``"
+
+msgid "Array of identifiers of starting vertices."
+msgstr "Arreglo de identificadores de vértices iniciales."
+
+msgid "**end vid**"
+msgstr "**destino**"
+
+msgid "Identifier of the ending vertex of the path."
+msgstr "Identificador del vértice final de la ruta."
+
+msgid "**end vids**"
+msgstr "**destinos**"
+
+msgid "Array of identifiers of ending vertices."
+msgstr "Arreglo de identificadores de vértices finales."
+
+msgid "Optional parameters"
+msgstr "Parámetros opcionales"
+
+msgid "Default"
+msgstr "x Defecto"
+
+msgid "``directed``"
+msgstr "``directed``"
+
+msgid "``BOOLEAN``"
+msgstr "``BOOLEAN``"
+
+msgid "``true``"
+msgstr "``true``"
+
+msgid "When ``true`` the graph is considered `Directed`"
+msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
+
+msgid "When ``false`` the graph is considered as `Undirected`."
+msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
+
+msgid "aStar optional Parameters"
+msgstr "Parámetros opcionales de aStar"
+
+msgid "Parameter"
+msgstr "Parámetro"
+
+msgid "``heuristic``"
+msgstr "``heuristic``"
+
+msgid "``INTEGER``"
+msgstr "``INTEGER``"
+
+msgid "5"
+msgstr "5"
+
+msgid "Heuristic number. Current valid values 0~5."
+msgstr "Número heurístico. Valores válidos 0~5."
+
+msgid "0: :math:`h(v) = 0` (Use this value to compare with pgr_dijkstra)"
+msgstr "0: :math:`h(v) = 0` (Utilizar este valor para comparar con pgr_dijkstra)"
+
+msgid "1: :math:`h(v) = abs(max(\\Delta x, \\Delta y))`"
+msgstr "1: :math:`h(v) = abs(max(\\Delta x, \\Delta y))`"
+
+msgid "2: :math:`h(v) = abs(min(\\Delta x, \\Delta y))`"
+msgstr "2: :math:`h(v) = abs(min(\\Delta x, \\Delta y))`"
+
+msgid "3: :math:`h(v) = \\Delta x * \\Delta x + \\Delta y * \\Delta y`"
+msgstr "3: :math:`h(v) = \\Delta x * \\Delta x + \\Delta y * \\Delta y`"
+
+msgid "4: :math:`h(v) = sqrt(\\Delta x * \\Delta x + \\Delta y * \\Delta y)`"
+msgstr "4: :math:`h(v) = sqrt(\\Delta x * \\Delta x + \\Delta y * \\Delta y)`"
+
+msgid "5: :math:`h(v) = abs(\\Delta x) + abs(\\Delta y)`"
+msgstr "5: :math:`h(v) = abs(\\Delta x) + abs(\\Delta y)`"
+
+msgid "``factor``"
+msgstr "``factor``"
+
+msgid "``FLOAT``"
+msgstr "``FLOAT``"
+
+msgid "``1``"
+msgstr "``1``"
+
+msgid "For units manipulation. :math:`factor > 0`."
+msgstr "Para la manipulación de unidades. math:`factor > 0`."
+
+msgid "``epsilon``"
+msgstr "``epsilon``"
+
+msgid "For less restricted results. :math:`epsilon >= 1`."
+msgstr "Para resultados menos restringidos. :math:`epsilon >= 1`."
+
+msgid ""
+"See :ref:`heuristics <astar_heuristics>` available and :ref:`factor "
+"<astar_factor>` handling."
+msgstr ""
+"Ver :ref:`heuristicas <astar_heuristics>` disponibles y manupulación de "
+":ref:`factor <astar_factor>`."
+
+msgid "Inner Queries"
+msgstr "Consultas Internas"
+
+msgid "Edges SQL"
+msgstr "SQL aristas"
+
+msgid "``id``"
+msgstr "``id``"
+
+msgid "**ANY-INTEGER**"
+msgstr "**ENTEROS**"
+
+msgid "Identifier of the edge."
+msgstr "Identificador de la arista."
+
+msgid "``source``"
+msgstr "``source``"
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer vértice de la arista."
+
+msgid "``target``"
+msgstr "``target``"
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo vértice de la arista."
+
+msgid "``cost``"
+msgstr "``cost``"
+
+msgid "**ANY-NUMERICAL**"
+msgstr "**FLOTANTES**"
+
+msgid "Weight of the edge  (``source``, ``target``)"
+msgstr "Peso de la arista (``source``, ``target``)"
+
+msgid ""
+"When negative: edge (``source``, ``target``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+"Cuando es negativo: la arista (``source``, ``target``) no existe, por lo "
+"tanto no es parte del grafo."
+
+msgid "``reverse_cost``"
+msgstr "``reverse_cost``"
+
+msgid "-1"
+msgstr "-1"
+
+msgid "Weight of the edge (``target``, ``source``),"
+msgstr "Peso de la arista (``target``, ``source``),"
+
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
+"tanto no es parte del grafo."
+
+msgid "``x1``"
+msgstr "``x1``"
+
+msgid "X coordinate of ``source`` vertex."
+msgstr "Coordenada X del vértice ``source``."
+
+msgid "``y1``"
+msgstr "``y1``"
+
+msgid "Y coordinate of ``source`` vertex."
+msgstr "Coordenada Y del vértice ``source``."
+
+msgid "``x2``"
+msgstr "``x2``"
+
+msgid "X coordinate of ``target`` vertex."
+msgstr "Coordenada X del vértice ``target``."
+
+msgid "``y2``"
+msgstr "``y2``"
+
+msgid "Y coordinate of ``target`` vertex."
+msgstr "Coordenada Y del vértice ``target``."
+
+msgid "Where:"
+msgstr "Donde:"
+
+msgid "ANY-INTEGER"
+msgstr "ENTEROS"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+
+msgid "ANY-NUMERICAL"
+msgstr "FLOTANTES"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+
+msgid "Combinations SQL"
+msgstr "SQL Combinaciones"
+
+msgid "Identifier of the departure vertex."
+msgstr "Identificador del vértice de salida."
+
+msgid "Identifier of the arrival vertex."
+msgstr "Identificador del vértice de llegada."
+
+msgid "Result Columns"
+msgstr "Columnas de Resultados"
+
+msgid "Set of |matrix-result|"
+msgstr "Conjunto de |matrix-result|"
+
+msgid "``start_vid``"
+msgstr "``start_vid``"
+
+msgid "Identifier of the starting vertex."
+msgstr "Identificador del vértice de salida."
+
+msgid "``end_vid``"
+msgstr "``end_vid``"
+
+msgid "Identifier of the ending vertex."
+msgstr "Identificador del vértice destino."
+
+msgid "``agg_cost``"
+msgstr "``agg_cost``"
+
+msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
+msgstr "Costo afregado desde ``start_vid`` hasta ``end_vid``."
+
+msgid "Additional Examples"
+msgstr "Ejemplos Adicionales"
+
+msgid "Example 1"
+msgstr "Ejemplo 1"
+
+msgid "Demonstration of repeated values are ignored, and result is sorted."
+msgstr "Demostración de ignorar los valores repertidos, y resultado ordenado."
+
+msgid "Example 2"
+msgstr "Ejemplo 2"
+
+msgid "Making **start vids** the same as **end vids**."
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
+
+msgid "Example 3"
+msgstr "Ejemplo 3"
+
+msgid "Manually assigned vertex combinations."
+msgstr "Manualmente asignar combinaciones de vértices."
+
+msgid "See Also"
+msgstr "Ver también"
+
+msgid ":doc:`aStar-family`"
+msgstr ":doc:`aStar-family`"
+
+msgid ":doc:`cost-category`"
+msgstr ":doc:`cost-category`"
+
+msgid ":doc:`sampledata`"
+msgstr ":doc:`sampledata`"
+
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
+

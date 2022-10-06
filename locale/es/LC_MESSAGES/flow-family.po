@@ -1,0 +1,593 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: 2022-10-04 18:19+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language: es\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
+"/pgrouting-develop/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#, fuzzy
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
+"/flow-family.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/flow-"
+"family.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/flow-"
+"family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/flow-"
+"family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/flow-"
+"family.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es"
+"/flow-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/flow-"
+"family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/flow-"
+"family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/flow-"
+"family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/flow-"
+"family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/flow-"
+"family.html>`__"
+
+msgid ""
+"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/flow-"
+"family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/flow-"
+"family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/flow-"
+"family.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/max_flow/doc/maxFlow.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 <https://docs.pgrouting.org/2.6/en"
+"/flow-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/flow-"
+"family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/flow-"
+"family.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/max_flow/doc/maxFlow.html>`__"
+
+msgid "Flow - Family of functions"
+msgstr "Flow - Familia de funciones"
+
+msgid ""
+":doc:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel"
+" algorithm."
+msgstr ""
+":doc:`pgr_maxFlow` - Solo el flujo máximo se calcula usando el algoritmo "
+"empuja y reetiquetado."
+
+msgid ""
+":doc:`pgr_boykovKolmogorov` - Boykov and Kolmogorov with details of flow "
+"on edges."
+msgstr ""
+":doc:`pgr_boykovKolmogorov` - Algoritmo Boykov y Kolmogorov con detalles "
+"del flujo en aristas."
+
+msgid ""
+":doc:`pgr_edmondsKarp` - Edmonds and Karp algorithm with details of flow "
+"on edges."
+msgstr ""
+":doc:`pgr_edmondsKarp` - Algoritmo Edmonds y Karp con detalles de flujo "
+"del flujo en aristas."
+
+msgid ""
+":doc:`pgr_pushRelabel` - Push and relabel algorithm with details of flow "
+"on edges."
+msgstr ""
+":doc:`pgr_pushRelabel` - Algoritmo empuja y reetiquetado con detalles del"
+" flujo en aristas."
+
+msgid "Applications"
+msgstr "Aplicaciones"
+
+msgid ""
+":doc:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two"
+" groups of vertices."
+msgstr ""
+":doc:`pgr_edgeDisjointPaths` - Calcula rutas de aristas disjuntas entre "
+"dos grupos de vértices."
+
+msgid ""
+":doc:`pgr_maxCardinalityMatch` - Calculates a maximum cardinality "
+"matching in a graph."
+msgstr ""
+":doc:`pgr_maxCardinalityMatch` - Calcular una cardinalidad máxima de "
+"coincidencia dentro de un grafo."
+
+msgid "Experimental"
+msgstr "Experimental"
+
+msgid "Possible server crash"
+msgstr "Posible bloqueo del servidor"
+
+msgid "These functions might create a server crash"
+msgstr "Estas funciones pueden crear una caída del servidor"
+
+msgid "Experimental functions"
+msgstr "Funciones experimentales"
+
+msgid "They are not officially of the current release."
+msgstr "No son oficialmente de la versión actual."
+
+msgid "They likely will not be officially be part of the next release:"
+msgstr "Es probable que oficialmente no formen parte de la siguiente versión:"
+
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr "Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL"
+
+msgid "Name might change."
+msgstr "El nombre puede cambiar."
+
+msgid "Signature might change."
+msgstr "La firma puede cambiar."
+
+msgid "Functionality might change."
+msgstr "La funcionalidad puede cambiar."
+
+msgid "pgTap tests might be missing."
+msgstr "Las pruebas de pgTap pueden faltar."
+
+msgid "Might need c/c++ coding."
+msgstr "Posiblemente necesite codificación c/c++."
+
+msgid "May lack documentation."
+msgstr "Puede carecer documentación."
+
+msgid "Documentation if any might need to be rewritten."
+msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
+
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+"Puede ser necesario que los ejemplos de documentación se generen "
+"automáticamente."
+
+msgid "Might need a lot of feedback from the comunity."
+msgstr "Puede ser necesaria retroalimentación por parte de la comunidad."
+
+msgid "Might depend on a proposed function of pgRouting"
+msgstr "Puede depender de una función propuesta de pgRouting"
+
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr "Podría depender de una función obsoleta de pgRouting"
+
+msgid ":doc:`pgr_maxFlowMinCost` - Details of flow and cost on edges."
+msgstr ":doc:`pgr_maxFlowMinCost` - Detalles del flujo y el coste en los bordes."
+
+msgid ":doc:`pgr_maxFlowMinCost_Cost` - Only the Min Cost calculation."
+msgstr ":doc:`pgr_maxFlowMinCost_Cost` - Solo el cálculo del Coste Mínimo."
+
+msgid "Flow Functions General Information"
+msgstr "Información General de las Funciones de Flujo"
+
+msgid "**The main characteristics are:**"
+msgstr "**Las principales características son:**"
+
+msgid "The graph is **directed**."
+msgstr "El grafo es **dirigido**."
+
+msgid "Process is done only on edges with positive capacities."
+msgstr "El proceso se realiza sólo en aristas con capacidades positivas."
+
+msgid ""
+"When the maximum flow is 0 then there is no flow and **EMPTY SET** is "
+"returned."
+msgstr ""
+"Cuando el flujo máximo es 0 entonces no hay flujo, se devolverá: **EMPTY "
+"SET**."
+
+msgid "There is no flow when a **source** is the same as a **target**."
+msgstr "No hay ningún flujo cuando el **orígen** es el mismo que el **destino**."
+
+msgid "Any duplicated value in the source(s) or target(s) are ignored."
+msgstr ""
+"Cualquier valor duplicado en el/los orígen(es) o en el/los destino(s) "
+"será ignorado."
+
+msgid "Calculates the flow/residual capacity for each edge. In the output"
+msgstr "Calcula la capacidad de flujo/residuo para cada arista. En la salida"
+
+msgid "Edges with zero flow are omitted."
+msgstr "Se omiten las aristas con flujo cero."
+
+msgid ""
+"Creates a **super source** and edges to all the source(s), and a **super "
+"target** and the edges from all the targets(s)."
+msgstr ""
+"Crea una **súper origen**, con aristas para todos las fuentes(es), y un "
+"**súper destino** con aristas para todos los destino(s)."
+
+msgid ""
+"The maximum flow through the graph is guaranteed to be the value returned"
+" by :doc:`pgr_maxFlow <pgr_maxFlow>` when executed with the same "
+"parameters and can be calculated:"
+msgstr ""
+"Se garantiza que el flujo máximo a través del grafo es el valor devuelto "
+"por :doc:`pgr_maxFlow <pgr_maxFlow>` cuando es ejecutado con los mismos "
+"parámetros y se puede calcular:"
+
+msgid "By aggregation of the outgoing flow from the sources"
+msgstr "Mediante la suma de los flujos salientes de las fuentes"
+
+msgid "By aggregation of the incoming flow to the targets"
+msgstr "Mediante la suma de los flujos llegantes a los destinos"
+
+msgid ""
+":doc:`pgr_maxFlow` is the maximum Flow and that maximum is guaranteed to "
+"be the same on the functions :doc:`pgr_pushRelabel`, "
+":doc:`pgr_edmondsKarp`, :doc:`pgr_boykovKolmogorov`, but the actual flow "
+"through each edge may vary."
+msgstr ""
+":doc:`pgr_maxFlow` es el flujo máximo y este máximo tiene garantía de ser"
+" el mismo en las funciones :doc:`pgr_pushRelabel`, "
+":doc:`pgr_edmondsKarp`, :doc:`pgr_boykovKolmogorov`, pero el flujo actual"
+" para cada arista puede variar."
+
+msgid "Inner Queries"
+msgstr "Consultas Internas"
+
+msgid "Edges SQL"
+msgstr "SQL aristas"
+
+msgid "Capacity edges"
+msgstr "Aristas de capacidad"
+
+msgid ":doc:`pgr_pushRelabel`"
+msgstr ":doc:`pgr_pushRelabel`"
+
+msgid ":doc:`pgr_edmondsKarp`"
+msgstr ":doc:`pgr_edmondsKarp`"
+
+msgid ":doc:`pgr_boykovKolmogorov`"
+msgstr ":doc:`pgr_boykovKolmogorov`"
+
+msgid "Column"
+msgstr "Columna"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "Default"
+msgstr "x Defecto"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid "``id``"
+msgstr "``id``"
+
+msgid "**ANY-INTEGER**"
+msgstr "**ENTEROS**"
+
+msgid "Identifier of the edge."
+msgstr "Identificador de la arista."
+
+msgid "``source``"
+msgstr "``source``"
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer vértice de la arista."
+
+msgid "``target``"
+msgstr "``target``"
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo vértice de la arista."
+
+msgid "``capacity``"
+msgstr "``capacity``"
+
+msgid "Weight of the edge  (``source``, ``target``)"
+msgstr "Peso de la arista (``source``, ``target``)"
+
+msgid "``reverse_capacity``"
+msgstr "``reverse_capacity``"
+
+msgid "-1"
+msgstr "-1"
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr "Peso de la arista (``target``, ``source``)"
+
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
+"tanto no es parte del grafo."
+
+msgid "Where:"
+msgstr "Donde:"
+
+msgid "ANY-INTEGER"
+msgstr "ENTEROS"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+
+msgid "ANY-NUMERICAL"
+msgstr "FLOTANTES"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+
+msgid "Capacity-Cost edges"
+msgstr "Aristas Capacidad-Costo"
+
+msgid ":doc:`pgr_maxFlowMinCost`"
+msgstr ":doc:`pgr_maxFlowMinCost`"
+
+msgid ":doc:`pgr_maxFlowMinCost_Cost`"
+msgstr ":doc:`pgr_maxFlowMinCost_Cost`"
+
+msgid "Capacity of the edge  (``source``, ``target``)"
+msgstr "Capacidad de la arista (``source``, ``target``)"
+
+msgid "Capacity of the edge (``target``, ``source``)"
+msgstr "Capacidad de la arista (``target``, ``source``)"
+
+msgid "``cost``"
+msgstr "``cost``"
+
+msgid "**ANY-NUMERICAL**"
+msgstr "**FLOTANTES**"
+
+msgid "Weight of the edge  (``source``, ``target``) if it exist"
+msgstr "Peso de la arista (``source``, ``target``) si existe"
+
+msgid "``reverse_cost``"
+msgstr "``reverse_cost``"
+
+msgid ":math:`-1`"
+msgstr ":math:`-1`"
+
+msgid "Weight of the edge (``target``, ``source``) if it exist"
+msgstr "Peso de la arista (``target``, ``source``) si existe"
+
+msgid "Cost edges"
+msgstr "Aristas de costo"
+
+msgid ":doc:`pgr_edgeDisjointPaths`"
+msgstr ":doc:`pgr_edgeDisjointPaths`"
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr "Peso de la arista (``source``, ``target``)"
+
+msgid "Combinations SQL"
+msgstr "SQL Combinaciones"
+
+msgid "Parameter"
+msgstr "Parámetro"
+
+msgid "Identifier of the departure vertex."
+msgstr "Identificador del vértice de salida."
+
+msgid "Identifier of the arrival vertex."
+msgstr "Identificador del vértice de llegada."
+
+msgid "Result Columns"
+msgstr "Columnas de Resultados"
+
+msgid "Used in"
+msgstr "Usado en"
+
+msgid "**seq**"
+msgstr "``seq``"
+
+msgid "``INT``"
+msgstr "``INT``"
+
+msgid "Sequential value starting from **1**."
+msgstr "Valor secuencial a partir de **1**."
+
+msgid "**edge**"
+msgstr "**arista**"
+
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+msgid "Identifier of the edge in the original query (edges_sql)."
+msgstr "Identificador de la arista en la consulta original(edges_sql)."
+
+msgid "**start_vid**"
+msgstr "``start_vid``"
+
+msgid "**end_vid**"
+msgstr "``end_vid``"
+
+msgid "**flow**"
+msgstr "**flujo**"
+
+msgid "Flow through the edge in the direction (``start_vid``, ``end_vid``)."
+msgstr "Flujo a través del arista en la dirección (``start_vid``, ``end_vid``)."
+
+msgid "**residual_capacity**"
+msgstr "**residual_capacity**"
+
+msgid ""
+"Residual capacity of the edge in the direction (``start_vid``, "
+"``end_vid``)."
+msgstr ""
+"Capacidad residual del arista en la dirección (``start_vid``, "
+"``end_vid``)."
+
+msgid "For :doc:`pgr_maxFlowMinCost`"
+msgstr "Para :doc:`pgr_maxFlowMinCost`"
+
+msgid "**source**"
+msgstr "**origen**"
+
+msgid "**target**"
+msgstr "**objetivo**"
+
+msgid "Flow through the edge in the direction (source, target)."
+msgstr "Flujo a través de la arista en la dirección (origen, destino)."
+
+msgid "Residual capacity of the edge in the direction (source, target)."
+msgstr "Capacidad residual de la arista en la dirección (origen, destino)."
+
+msgid "**cost**"
+msgstr "**costo**"
+
+msgid "``FLOAT``"
+msgstr "``FLOAT``"
+
+msgid ""
+"The cost of sending this flow through the edge in the direction (source, "
+"target)."
+msgstr ""
+"El costo de enviar este flujo a través de la arista en la dirección "
+"(origen, destino)."
+
+msgid "**agg_cost**"
+msgstr "``agg_cost``"
+
+msgid "The aggregate cost."
+msgstr "El costo agregado."
+
+msgid "Adcanced Documentation"
+msgstr "Documentación Avanzada"
+
+msgid ""
+"A flow network is a directed graph where each edge has a capacity and a "
+"flow. The flow through an edge must not exceed the capacity of the edge. "
+"Additionally, the incoming and outgoing flow of a node must be equal "
+"except for source which only has outgoing flow, and the destination(sink)"
+" which only has incoming flow."
+msgstr ""
+"Una red de flujo es un gráfico dirigido donde cada arista tiene una "
+"capacidad y un flujo. El flujo a través de una arista no debe exceder la "
+"capacidad de la misma. Además, el flujo entrante y saliente de un nodo "
+"debe ser igual, excepto para el origen que solo tiene flujo saliente, y "
+"el destino (receptor) que solo tiene flujo entrante."
+
+msgid ""
+"Maximum flow algorithms calculate the maximum flow through the graph and "
+"the flow of each edge."
+msgstr ""
+"Los algoritmos de Flujo Máximo se calculan a través del grafo del flujo "
+"máximo y el flujo de cada arista."
+
+msgid ""
+"The maximum flow through the graph is guaranteed to be the same with all "
+"implementations, but the actual flow through each edge may vary."
+msgstr ""
+"Se garantiza que el flujo máximo a través del grafo sea el mismo con "
+"todas las implementaciones, pero el flujo real a través de cada arista "
+"puede variar."
+
+msgid "Given the following query:"
+msgstr "Dada la siguiente consulta:"
+
+msgid "pgr_maxFlow :math:`(edges\\_sql, source\\_vertex, sink\\_vertex)`"
+msgstr "pgr_maxFlow :math:`(edges\\_sql, source\\_vertex, sink\\_vertex)`"
+
+msgid ""
+"where :math:`edges\\_sql = \\{(id_i, source_i, target_i, capacity_i, "
+"reverse\\_capacity_i)\\}`"
+msgstr ""
+"donde: :math:`edges\\_sql = \\{(id_i, source_i, target_i, capacity_i, "
+"reverse\\_capacity_i)\\}`"
+
+msgid "Graph definition"
+msgstr "Definición de grafo"
+
+msgid "The weighted directed graph, :math:`G(V,E)`, is defined as:"
+msgstr "El grafo ponderado dirigido, :math:`G(V,E)`, se define como:"
+
+msgid "the set of vertices  :math:`V`"
+msgstr "Conjunto de vértices :math:`V`"
+
+msgid ""
+":math:`source\\_vertex  \\cup  sink\\_vertex  \\bigcup  source_i  "
+"\\bigcup  target_i`"
+msgstr ""
+":math:`source\\_vertex \\cup sink\\_vertex \\bigcup source_i "
+"\\bigcuptarget_i`"
+
+msgid "the set of edges :math:`E`"
+msgstr "El conjunto de aristas :math:`E`"
+
+msgid ""
+":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, capacity_i) "
+"\\text{ when } capacity > 0 \\} & \\quad  \\text{ if } reverse\\_capacity"
+" = \\varnothing \\\\ \\text{ } & \\quad \\text{ } \\\\ \\{(source_i, "
+"target_i, capacity_i) \\text{ when } capacity > 0 \\} & \\text{ } \\\\ "
+"\\cup \\{(target_i, source_i, reverse\\_capacity_i) \\text{ when } "
+"reverse\\_capacity_i > 0)\\} & \\quad \\text{ if } reverse\\_capacity "
+"\\neq \\varnothing \\\\ \\end{cases}`"
+msgstr ""
+":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, capacity_i) "
+"\\text{ when } capacity > 0 \\} & \\quad \\text{ if } reverse\\_capacity "
+"= \\varnothing \\\\ \\text{ } & \\quad \\text{ } \\\\ \\{(source_i, "
+"target_i, capacity_i) \\text{ when } capacity > 0 \\} & \\text{ } \\\\ "
+"\\cup \\{(target_i, source_i, reverse\\_capacity_i) \\text{ when } "
+"reverse\\_capacity_i > 0)\\} & \\quad \\text{ if } reverse\\_capacity "
+"\\neq \\varnothing \\\\ \\end{cases}`"
+
+msgid "Maximum flow problem"
+msgstr "Problema de Flujo Máximo"
+
+msgid "Given:"
+msgstr "Dado:"
+
+msgid ":math:`G(V,E)`"
+msgstr ":math:`G(V,E)`"
+
+msgid ":math:`source\\_vertex \\in V` the source vertex"
+msgstr ":math:`source\\_vertex \\in V` el vértice de origen"
+
+msgid ":math:`sink\\_vertex \\in V` the sink vertex"
+msgstr ":math:`sink\\_vertex \\in V` el vértice pozo"
+
+msgid "Then:"
+msgstr "Entonces:"
+
+msgid ":math:`pgr\\_maxFlow(edges\\_sql, source, sink) = \\boldsymbol{\\Phi}`"
+msgstr ":math:`pgr\\_maxFlow(edges\\_sql, source, sink) = \\boldsymbol{\\Phi}`"
+
+msgid ""
+":math:`\\boldsymbol{\\Phi} = {(id_i, edge\\_id_i, source_i, target_i, "
+"flow_i, residual\\_capacity_i)}`"
+msgstr ""
+":math:`\\boldsymbol{\\Phi} = {(id_i, edge\\_id_i, source_i, target_i, "
+"flow_i, residual\\_capacity_i)}`"
+
+msgid ""
+":math:`\\boldsymbol{\\Phi}` is a subset of the original edges with their "
+"residual capacity and flow. The maximum flow through the graph can be "
+"obtained by aggregating on the source or sink and summing the flow "
+"from/to it. In particular:"
+msgstr ""
+":math:`\\boldsymbol{\\Phi}` es un subconjunto de las aristas originales "
+"con su flujo y capacidad residual. El flujo máximo a través del grafo se "
+"puede obtener agregando en el origen o sumidero y sumiendo el flujo hacia"
+" él. En particular:"
+
+msgid ":math:`id_i = i`"
+msgstr ":math:`id_i = i`"
+
+msgid ":math:`edge\\_id = id_i` in edges_sql"
+msgstr ":math:`edge\\_id = id_i` en edges_sql"
+
+msgid ":math:`residual\\_capacity_i = capacity_i - flow_i`"
+msgstr ":math:`residual\\_capacity_i = capacity_i - flow_i`"
+
+msgid "See Also"
+msgstr "Ver también"
+
+msgid "https://en.wikipedia.org/wiki/Maximum_flow_problem"
+msgstr "https://en.wikipedia.org/wiki/Maximum_flow_problem"
+
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
+

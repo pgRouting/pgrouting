@@ -1,0 +1,678 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: 2022-10-04 18:19+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language: es\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
+"/pgrouting-develop/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#, fuzzy
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_withPointsCost.html>`__ (`3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_withPointsCost.html>`__) `3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_withPointsCost.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_withPointsCost.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_withPointsCost.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Última "
+"<https://docs.pgrouting.org/latest/es/pgr_withPointsCost.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/es/pgr_withPointsCost.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/es/pgr_withPointsCost.html>`__ `3.2 "
+"<https://docs.pgrouting.org/3.2/es/pgr_withPointsCost.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_withPointsCost.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_withPointsCost.html>`__"
+
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_withPointsCost.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_withPointsCost.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_withPointsCost.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPointsCost.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPointsCost.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_withPointsCost.html>`__ `2.5 "
+"<https://docs.pgrouting.org/2.5/en/pgr_withPointsCost.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/pgr_withPointsCost.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPointsCost.html>`__"
+" `2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPointsCost.html>`__"
+
+msgid "``pgr_withPointsCost`` - Proposed"
+msgstr "``pgr_withPointsCost`` - Propuesto"
+
+msgid ""
+"``pgr_withPointsCost`` - Calculates the shortest path and returns only "
+"the aggregate cost of the shortest path(s) found, for the combination of "
+"points given."
+msgstr ""
+"``pgr_withPointsCost`` - Calcula la ruta más corta y devuelve solo el "
+"costo agregado de la(s) rutas más cortas encontradas, para la combinación"
+" de puntos dados."
+
+msgid "Proposed functions for next mayor release."
+msgstr "Funciones propuestas para la próxima versión mayor."
+
+msgid "They are not officially in the current release."
+msgstr "No están oficialmente en la versión actual."
+
+msgid "They will likely officially be part of the next mayor release:"
+msgstr "Es probable que oficialmente formen parte del próximo lanzamiento:"
+
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
+
+msgid "Name might not change. (But still can)"
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
+
+msgid "Signature might not change. (But still can)"
+msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
+
+msgid "Functionality might not change. (But still can)"
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
+
+msgid "pgTap tests have being done. But might need more."
+msgstr "Se han hecho pruebas con pgTap. Pero tal vez se necesiten más."
+
+msgid "Documentation might need refinement."
+msgstr "Es posible que la documentación necesite un refinamiento."
+
+msgid "Boost Graph Inside"
+msgstr "Adentro: Boost Graph"
+
+msgid "Availability"
+msgstr "Disponibilidad"
+
+msgid "Version 3.2.0"
+msgstr "Versión 3.2.0"
+
+msgid "New **proposed** function:"
+msgstr "Nueva función **propuesta**:"
+
+msgid "pgr_withPointsCost(Combinations)"
+msgstr "pgr_withPointsCost(Combinaciones)"
+
+msgid "Version 2.2.0"
+msgstr "Version 2.2.0"
+
+msgid "New **proposed** function"
+msgstr "Nueva función **propuesta**"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid ""
+"Modify the graph to include points defined by points_sql. Using Dijkstra "
+"algorithm, return only the aggregate cost of the shortest path(s) found."
+msgstr ""
+"Modifica el grafo para incluir puntos definidos por points_sql. Con el "
+"algoritmo Dijkstra, devuelva solo el costo agregado de la(s) rutas más "
+"cortas encontradas."
+
+msgid "The main characteristics are:"
+msgstr "Las principales características son:"
+
+msgid "It does not return a path."
+msgstr "No devuelve una ruta."
+
+msgid ""
+"Returns the sum of the costs of the shortest path for pair combination of"
+" vertices in the modified graph."
+msgstr ""
+"Devuelve la suma de los costes de la ruta más corta para la combinación "
+"de pares de vértices en el grafo modificado."
+
+msgid "Vertices of the graph are:"
+msgstr "Los vértices del grafo son:"
+
+msgid "**positive** when it belongs to the edges_sql"
+msgstr "**positivo** cuando pertenece a edges_sql"
+
+msgid "**negative** when it belongs to the points_sql"
+msgstr "**negativo** cuando pertenece a points_sql"
+
+msgid "Process is done only on edges with positive costs."
+msgstr "El proceso se realiza sólo en aristas con costos positivos."
+
+msgid "Values are returned when there is a path."
+msgstr "Los valores se devuelven cuando hay una ruta."
+
+msgid ""
+"The returned values are in the form of a set of `(start_vid, end_vid, "
+"agg_cost)`."
+msgstr ""
+"Los valores devueltos tienen la forma de un conjunto de `(start_vid, "
+"end_vid, agg_cost)`."
+
+msgid "When the starting vertex and ending vertex are the same, there is no path."
+msgstr "Cuando el vértice inicial y el vértice final son iguales, no hay camino."
+
+msgid "The `agg_cost` in the non included values `(v, v)` is `0`"
+msgstr "El `agg_cost` en los valores no incluidos `(v, v)` es `0`"
+
+msgid ""
+"When the starting vertex and ending vertex are the different and there is"
+" no path."
+msgstr "Cuando el vértice inicial y el vértice final son diferentes y no hay ruta."
+
+msgid "The `agg_cost` in the non included values `(u, v)` is :math:`\\infty`"
+msgstr "El `agg_cost` en los valores no incluidos `(u, v)` es :math:`\\infty`"
+
+msgid ""
+"If the values returned are stored in a table, the unique index would be "
+"the pair: `(start_vid, end_vid)`."
+msgstr ""
+"Si los valores devueltos se almacenan en una tabla, el índice único sería"
+" el par: `(start_vid, end_vid)`."
+
+msgid "For **undirected** graphs, the results are **symmetric**."
+msgstr "Para los grafos **no dirigidos**, los resultados son **simétricos**."
+
+msgid "The  `agg_cost` of `(u, v)` is the same as for `(v, u)`."
+msgstr "El `agg_cost` de `(u, v)` es el mismo que para `(v, u)`."
+
+msgid ""
+"For optimization purposes, any duplicated value in the `start_vids` or "
+"`end_vids` is ignored."
+msgstr ""
+"Para fines de optimización, se omite cualquier valor duplicado en "
+"`start_vids` o `end_vids` ."
+
+msgid "The returned values are ordered:"
+msgstr "Los valores regresados se ordenan:"
+
+msgid "`start_vid` ascending"
+msgstr "`start_vid` ascendente"
+
+msgid "`end_vid` ascending"
+msgstr "`end_vid` ascendente"
+
+msgid "Running time: :math:`O(| start\\_vids | * (V \\log V + E))`"
+msgstr "Tiempo de ejecución: :math:`O(| start\\_vids | * (V \\log V + E))`"
+
+msgid "Signatures"
+msgstr "Firmas"
+
+msgid "Summary"
+msgstr "Resumen"
+
+msgid "\\ \\"
+msgstr ""
+
+#, fuzzy
+msgid ""
+"pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vid**, **end "
+"vid**, **[options**])"
+msgstr ""
+"pgr_withPointsCost(`SQL de aristas`_, 'SQL de puntos`_, **salida**, "
+"**destino**, [**opciones**])"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vid**, **end "
+"vids**, **[options**])"
+msgstr ""
+"pgr_withPointsCost(`SQL de aristas`_, 'SQL de puntos`_, **salida**, "
+"**destinos**, [**opciones**])"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vids**, **end "
+"vid**, **[options**])"
+msgstr ""
+"pgr_withPointsCost(`SQL de aristas`_, 'SQL de puntos`_, **salidas**, "
+"**destino**, [**opciones**])"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vids**, **end "
+"vids**, **[options**])"
+msgstr ""
+"pgr_withPointsCost(`SQL de aristas`_, 'SQL de puntos`_, **salidas**, "
+"**destinos**, [**opciones**])"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, `Combinations SQL`_, "
+"**[options**])"
+msgstr ""
+"pgr_withPointsCost(`SQL de aristas`_, 'SQL de puntos`_, `SQL de "
+"combinaciones`_, [**opciones**])"
+
+msgid "**options:**  ``[directed, driving_side]``"
+msgstr "**opciones:** ``[directed, driving_side]``"
+
+msgid "RETURNS SET OF |matrix-pid|"
+msgstr "REGRESA CONJUNTO DE |matrix-pid|"
+
+msgid "OR EMPTY SET"
+msgstr ""
+
+msgid ""
+"There is no **details** flag, unlike the other members of the withPoints "
+"family of functions."
+msgstr ""
+"No hay identificador de **details**, a diferencia de los otros miembros "
+"de la familia de funciones withPoints."
+
+msgid "One to One"
+msgstr "Uno a Uno"
+
+msgid "Example"
+msgstr "Ejemplo"
+
+msgid "From point :math:`1` to vertex :math:`10` with defaults"
+msgstr "Del punto :math:`1` al punto :math:`3` con valores por defecto"
+
+msgid "One to Many"
+msgstr "Uno a Muchos"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end "
+"vids**, **[options**])"
+msgstr ""
+"pgr_withPointsCost(`SQL de aristas`_, `SQL de puntos`_, **salida**, "
+"**destinos**, [**opciones**])"
+
+msgid ""
+"From point :math:`1` to point :math:`3` and vertex :math:`7` on an "
+"undirected graph"
+msgstr ""
+"Desde el punto :math:`1` al punto :math:`3` y al vértice :math:`7` en un "
+"grafo no dirigido"
+
+msgid "Many to One"
+msgstr "Muchos a Uno"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end "
+"vid**, **[options**])"
+msgstr ""
+"pgr_withPointsCost(`SQL de aristas`_, `SQL de puntos`_, **salidas**, "
+"**destino**, [**opciones**])"
+
+msgid "From point :math:`1` and vertex :math:`6` to point :math:`3`"
+msgstr "Desde el punto :math:`1` y el vértice :math:`6` al punto :math:`3`"
+
+msgid "Many to Many"
+msgstr "Muchos a Muchos"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end "
+"vids**, **[options**])"
+msgstr ""
+"pgr_withPointsCost(`SQL de aristas`_, `SQL de puntos`_, **salidas**, "
+"**destinos**, [**opciones**])"
+
+msgid ""
+"From point :math:`15` and vertex :math:`6`  to point :math:`3` and vertex"
+" :math:`1`"
+msgstr ""
+"Desde el punto :math:`15` y vértice :math:`6` al punto :math:`3` y "
+"vértice :math:`1`"
+
+msgid "Combinations"
+msgstr "Combinaciones"
+
+#, fuzzy
+msgid ""
+"pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, "
+"**[options**])"
+msgstr ""
+"pgr_withPointsCost(`SQL de aristas`_, `SQL de puntos`_, `SQL de "
+"combinaciones`_, [**opciones**])"
+
+msgid "Two combinations"
+msgstr "Dos combinaciones"
+
+msgid ""
+"From point :math:`1` to vertex :math:`10`, and from vertex :math:`6` to "
+"point :math:`3` with **right** side driving."
+msgstr ""
+"Desde el punto :math:`1` hasta el vértice :math:`10`, y desde el vértice "
+":math:`6` hasta el punto :math:`3` con lado de manejo **derecho**."
+
+msgid "Parameters"
+msgstr "Parámetros"
+
+msgid "Column"
+msgstr "Columna"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "`Edges SQL`_"
+msgstr "`SQL de aristas`_"
+
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+msgid "`Edges SQL`_ as described below"
+msgstr "`SQL de aristas`_ como se describe a continuación"
+
+msgid "`Points SQL`_"
+msgstr "`SQL de puntos`_"
+
+msgid "`Points SQL`_ as described below"
+msgstr "`SQL de puntos`_ como se describe abajo"
+
+msgid "`Combinations SQL`_"
+msgstr "`SQL de combinaciones`_"
+
+msgid "`Combinations SQL`_ as described below"
+msgstr "`SQL de combinaciones`_ como se describe a abajo"
+
+msgid "**start vid**"
+msgstr "**salida**"
+
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+msgid ""
+"Identifier of the starting vertex of the path. Negative value is for "
+"point’s identifier."
+msgstr ""
+"Identificador del vértice inicial de la ruta. Valor negativo es para "
+"identificador de punto."
+
+msgid "**start vids**"
+msgstr "**salidas**"
+
+msgid "``ARRAY[BIGINT]``"
+msgstr "``ARRAY[BIGINT]``"
+
+msgid ""
+"Array of identifiers of starting vertices. Negative values are for "
+"point’s identifiers."
+msgstr ""
+"Arreglo de identificadores de vértices iniciales. Valores negativos son "
+"para identificadores de puntos."
+
+msgid "**end vid**"
+msgstr "**destino**"
+
+msgid ""
+"Identifier of the ending vertex of the path. Negative value is for "
+"point’s identifier."
+msgstr ""
+"Identificador del vértice final de la ruta. Valor negativo es para "
+"identificador de punto."
+
+msgid "**end vids**"
+msgstr "**destinos**"
+
+msgid ""
+"Array of identifiers of ending vertices. Negative values are for point’s "
+"identifiers."
+msgstr ""
+"Arreglo de identificadores de vértices finales. Valores negativos son "
+"para identificadores de puntos."
+
+msgid "Optional parameters"
+msgstr "Parámetros opcionales"
+
+msgid "Default"
+msgstr "x Defecto"
+
+msgid "``directed``"
+msgstr "``directed``"
+
+msgid "``BOOLEAN``"
+msgstr "``BOOLEAN``"
+
+msgid "``true``"
+msgstr "``true``"
+
+msgid "When ``true`` the graph is considered `Directed`"
+msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
+
+msgid "When ``false`` the graph is considered as `Undirected`."
+msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
+
+msgid "With points optional parameters"
+msgstr "Parámetros opcionales para Con puntos"
+
+msgid "Parameter"
+msgstr "Parámetro"
+
+msgid "``driving_side``"
+msgstr "``driving_side``"
+
+msgid "``CHAR``"
+msgstr "``CHAR``"
+
+msgid "``b``"
+msgstr "``b``"
+
+msgid "Value in [``r``, ``l``, ``b``] indicating if the driving side is:"
+msgstr "Valor en [``r``, ``l``, ``b``] indica si el lado de manejo es:"
+
+msgid "``r`` for right driving side."
+msgstr "``r`` para manejo del lado derecho."
+
+msgid "``l`` for left driving side."
+msgstr "``l`` para lado de manejo izquierdo."
+
+msgid "``b`` for both."
+msgstr "``b`` for ambos."
+
+msgid "Inner Queries"
+msgstr "Consultas Internas"
+
+msgid "Edges SQL"
+msgstr "SQL aristas"
+
+msgid "``id``"
+msgstr "``id``"
+
+msgid "**ANY-INTEGER**"
+msgstr "**ENTEROS**"
+
+msgid "Identifier of the edge."
+msgstr "Identificador de la arista."
+
+msgid "``source``"
+msgstr "``source``"
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer vértice de la arista."
+
+msgid "``target``"
+msgstr "``target``"
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo vértice de la arista."
+
+msgid "``cost``"
+msgstr "``cost``"
+
+msgid "**ANY-NUMERICAL**"
+msgstr "**FLOTANTES**"
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr "Peso de la arista (``source``, ``target``)"
+
+msgid "``reverse_cost``"
+msgstr "``reverse_cost``"
+
+msgid "-1"
+msgstr "-1"
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr "Peso de la arista (``target``, ``source``)"
+
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
+"tanto no es parte del grafo."
+
+msgid "Where:"
+msgstr "Donde:"
+
+msgid "ANY-INTEGER"
+msgstr "ENTEROS"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+
+msgid "ANY-NUMERICAL"
+msgstr "FLOTANTES"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+
+msgid "Points SQL"
+msgstr "SQL de puntos"
+
+msgid "``pid``"
+msgstr "``pid``"
+
+msgid "**value**"
+msgstr "**valor**"
+
+msgid "Identifier of the point."
+msgstr "Identificador del punto."
+
+msgid "Use with positive value, as internally will be converted to negative value"
+msgstr ""
+"Use con un valor positivo, dado que internamente se convertirá a un valor"
+" negativo"
+
+msgid "If column is present, it can not be NULL."
+msgstr "Si columna esta presente, no puede ser NULL."
+
+msgid ""
+"If column is not present, a sequential negative **value** will be given "
+"automatically."
+msgstr ""
+"Si columna no esta presente, un **valor** secuencial negativo se otorgará"
+" automáticamente."
+
+msgid "``edge_id``"
+msgstr "``edge_id``"
+
+msgid "Identifier of the \"closest\" edge to the point."
+msgstr "Identificador de la arista \"más cercana\" al punto."
+
+msgid "``fraction``"
+msgstr "``fraction``"
+
+msgid ""
+"Value in <0,1> that indicates the relative postition from the first end "
+"point of the edge."
+msgstr ""
+"El valor en <0,1> que indica la posición relativa desde el primer punto "
+"de la arista."
+
+msgid "``side``"
+msgstr "``side``"
+
+msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"
+msgstr "Valor en [``b``, ``r``, ``l``, ``NULL``] que indica si el punto es:"
+
+msgid "In the right ``r``,"
+msgstr "A la derecha ``r``,"
+
+msgid "In the left ``l``,"
+msgstr "A la izquierda `l`,"
+
+msgid "In both sides ``b``, ``NULL``"
+msgstr "En ambos lados ``b``, ``NULL``"
+
+msgid "Combinations SQL"
+msgstr "SQL Combinaciones"
+
+msgid "Identifier of the departure vertex."
+msgstr "Identificador del vértice de salida."
+
+msgid "Identifier of the arrival vertex."
+msgstr "Identificador del vértice de llegada."
+
+msgid "Result Columns"
+msgstr "Columnas de Resultados"
+
+msgid "``start_pid``"
+msgstr "``start_pid``"
+
+msgid "Identifier of the starting vertex or point."
+msgstr "Identificador del vértice o punto inicial."
+
+msgid "When positive: is a vertex’s identifier."
+msgstr "Cuando positivo: es un identificador de vértice."
+
+msgid "When negative: is a point’s identifier."
+msgstr "Cuando negativo: es un identificador de punto."
+
+msgid "``end_pid``"
+msgstr "``end_pid``"
+
+msgid "Identifier of the ending vertex or point."
+msgstr "Identificador del primer vértice o punto."
+
+msgid "``agg_cost``"
+msgstr "``agg_cost``"
+
+msgid "``FLOAT``"
+msgstr "``FLOAT``"
+
+msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
+msgstr "Costo afregado desde ``start_vid`` hasta ``end_vid``."
+
+msgid "Additional Examples"
+msgstr "Ejemplos Adicionales"
+
+msgid "Right side driving topology"
+msgstr "Topología de manejo del lado derecho"
+
+msgid ""
+"Traveling from point :math:`1` and vertex :math:`5` to points "
+":math:`\\{2, 3, 6\\}` and vertices :math:`\\{10, 11\\}`"
+msgstr ""
+"Desde el punto :math:`1` y vértice :math:`5` al los puntos :math:`\\{2, "
+"3, 6\\}`y vértices :math:`\\{10, 11\\}`"
+
+msgid "Left side driving topology"
+msgstr "Topología de manejo del lado izquierdo"
+
+msgid "Does not matter driving side driving topology"
+msgstr "No importa el lado de manejo"
+
+msgid "The queries use the :doc:`sampledata` network."
+msgstr "Las consultas utilizan la red :doc:`sampledata` ."
+
+msgid "See Also"
+msgstr "Ver también"
+
+msgid ":doc:`withPoints-family`"
+msgstr ":doc:`withPoints-family`"
+
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
+

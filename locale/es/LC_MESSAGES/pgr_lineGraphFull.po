@@ -1,0 +1,566 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: 2022-10-04 18:19+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language: es\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
+"/pgrouting-develop/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_lineGraphFull.html>`__ (`3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_lineGraphFull.html>`__) `3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_lineGraphFull.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_lineGraphFull.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_lineGraphFull.html>`__"
+msgstr ""
+
+msgid ""
+"**Unsupported versions:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_lineGraphFull.html>`__"
+msgstr ""
+"**Versiones no sustentadas:** `2.6 "
+"<https://docs.pgrouting.org/2.6/en/pgr_lineGraphFull.html>`__"
+
+msgid "``pgr_lineGraphFull`` - Experimental"
+msgstr "``pgr_lineGraphFull`` - Experimental"
+
+msgid ""
+"``pgr_lineGraphFull`` — Transforms a given graph into a new graph where "
+"all of the vertices from the original graph are converted to line graphs."
+msgstr ""
+"``pgr_lineGraphFull`` — Transforma un grafo dado en uno nuevo donde todos"
+" los vértices del grafo original se convierten en grafos de líneas."
+
+msgid "Possible server crash"
+msgstr "Posible bloqueo del servidor"
+
+msgid "These functions might create a server crash"
+msgstr "Estas funciones pueden crear una caída del servidor"
+
+msgid "Experimental functions"
+msgstr "Funciones experimentales"
+
+msgid "They are not officially of the current release."
+msgstr "No son oficialmente de la versión actual."
+
+msgid "They likely will not be officially be part of the next release:"
+msgstr "Es probable que oficialmente no formen parte de la siguiente versión:"
+
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr "Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL"
+
+msgid "Name might change."
+msgstr "El nombre puede cambiar."
+
+msgid "Signature might change."
+msgstr "La firma puede cambiar."
+
+msgid "Functionality might change."
+msgstr "La funcionalidad puede cambiar."
+
+msgid "pgTap tests might be missing."
+msgstr "Las pruebas de pgTap pueden faltar."
+
+msgid "Might need c/c++ coding."
+msgstr "Posiblemente necesite codificación c/c++."
+
+msgid "May lack documentation."
+msgstr "Puede carecer documentación."
+
+msgid "Documentation if any might need to be rewritten."
+msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
+
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+"Puede ser necesario que los ejemplos de documentación se generen "
+"automáticamente."
+
+msgid "Might need a lot of feedback from the comunity."
+msgstr "Puede ser necesaria retroalimentación por parte de la comunidad."
+
+msgid "Might depend on a proposed function of pgRouting"
+msgstr "Puede depender de una función propuesta de pgRouting"
+
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr "Podría depender de una función obsoleta de pgRouting"
+
+msgid "Availability"
+msgstr "Disponibilidad"
+
+msgid "Version 2.6.0"
+msgstr "Versión 2.6.0"
+
+msgid "New **Experimental** function"
+msgstr "Nueva función **Experimental**"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid ""
+"``pgr_lineGraphFull``, converts original directed graph to a directed "
+"line graph by converting each vertex to a complete graph and keeping all "
+"the original edges. The new connecting edges have a cost 0 and go between"
+" the adjacent original edges, respecting the directionality."
+msgstr ""
+"``pgr_lineGraphFull``, convierte un grafo dirigido a un grafo dirigido "
+"lineal, convirtiendo cada vértice en un grafo completo y manteniendo "
+"todas las aristas originales. Las nuevas aristas de conexión tienen un "
+"costo de 0 y van entre las aristas originales adyacentes, respetando la "
+"direccionalidad."
+
+msgid ""
+"A possible application of the resulting graph is **\"routing with two "
+"edge restrictions\"**:"
+msgstr ""
+"Una posible aplicación del grafo resultante es **\"ruteo con "
+"restricciones en dos aristas\"**:"
+
+msgid ""
+"Setting a cost of using the vertex when routing between edges on the "
+"connecting edge"
+msgstr ""
+"Establecer un coste de uso del vértice al enrutar entre aristas en la "
+"arista de conexión"
+
+msgid "Forbid the routing between two edges by removing the connecting edge"
+msgstr "Prohibir el ruteo entre dos aristas al quitar el arista de conexión"
+
+msgid ""
+"This is possible because each of the intersections (vertices) in the "
+"original graph are now complete graphs that have a new edge for each "
+"possible turn across that intersection."
+msgstr ""
+"Esto es posible porque cada una de las intersecciones (vértices) en el "
+"grafo original ahora son grafos completos que tienen una nueva arista "
+"para cada posible giro a través de esa intersección."
+
+msgid "The main characteristics are:"
+msgstr "Las principales características son:"
+
+msgid "This function is for **directed** graphs."
+msgstr "Esta función es para grafos **dirigidos**."
+
+msgid ""
+"Results are undefined when a negative vertex id is used in the input "
+"graph."
+msgstr ""
+"Los resultados son indefinidos cuando se utiliza un identificador de "
+"vértice negativo en el grafo de entrada."
+
+msgid ""
+"Results are undefined when a duplicated edge id is used in the input "
+"graph."
+msgstr ""
+"Los resultados son indefinidos cuando se utiliza un identificador de "
+"borde duplicado en el grafo de entrada."
+
+msgid "Running time: TBD"
+msgstr "Tiempo de ejecución: TBD"
+
+msgid "Signatures"
+msgstr "Firmas"
+
+msgid "Summary"
+msgstr "Resumen"
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_lineGraphFull(`Edges SQL`_)"
+msgstr "pgr_lineGraphFull(`SQL de aristas`_)"
+
+msgid "RETURNS SET OF |result-linegf|"
+msgstr ""
+
+msgid "OR EMPTY SET"
+msgstr ""
+
+msgid "Example"
+msgstr "Ejemplo"
+
+msgid "Full line graph of subgraph of edges :math:`\\{4, 7, 8, 10\\}`"
+msgstr ""
+"Grafo de línea completa del subgrafo de las aristas :math:`\\{4, 7, 8, "
+"10\\}`"
+
+msgid "Parameters"
+msgstr "Parámetros"
+
+msgid "Parameter"
+msgstr "Parámetro"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "`Edges SQL`_"
+msgstr "`SQL de aristas`_"
+
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+msgid "`Edges SQL`_ as described below."
+msgstr "`SQL de aristas`_ descritas más adelante."
+
+msgid "Inner Queries"
+msgstr "Consultas Internas"
+
+msgid "Edges SQL"
+msgstr "SQL aristas"
+
+msgid "Column"
+msgstr "Columna"
+
+msgid "Default"
+msgstr "x Defecto"
+
+msgid "``id``"
+msgstr "``id``"
+
+msgid "**ANY-INTEGER**"
+msgstr "**ENTEROS**"
+
+msgid "Identifier of the edge."
+msgstr "Identificador de la arista."
+
+msgid "``source``"
+msgstr "``source``"
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer vértice de la arista."
+
+msgid "``target``"
+msgstr "``target``"
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo vértice de la arista."
+
+msgid "``cost``"
+msgstr "``cost``"
+
+msgid "**ANY-NUMERICAL**"
+msgstr "**FLOTANTES**"
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr "Peso de la arista (``source``, ``target``)"
+
+msgid "``reverse_cost``"
+msgstr "``reverse_cost``"
+
+msgid "-1"
+msgstr "-1"
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr "Peso de la arista (``target``, ``source``)"
+
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
+"tanto no es parte del grafo."
+
+msgid "Where:"
+msgstr "Donde:"
+
+msgid "ANY-INTEGER"
+msgstr "ENTEROS"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+
+msgid "ANY-NUMERICAL"
+msgstr "FLOTANTES"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+
+msgid "Result Columns"
+msgstr "Columnas de Resultados"
+
+msgid "``seq``"
+msgstr "``seq``"
+
+msgid "``INTEGER``"
+msgstr "``INTEGER``"
+
+msgid "Sequential value starting from **1**."
+msgstr "Valor secuencial a partir de **1**."
+
+msgid "Gives a local identifier for the edge"
+msgstr "Da un identificador local de la arista"
+
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+msgid "Identifier of the source vertex of the current edge."
+msgstr "Identificador del vértice de origen de la arista actual."
+
+msgid "When `negative`: the source is the reverse edge in the original graph."
+msgstr "Cuando es 'negativo': el origen es la arista inversa en el grafo original."
+
+msgid "Identifier of the target vertex of the current edge."
+msgstr "Identificador del vértice destino de la arista actual."
+
+msgid "When `negative`: the target is the reverse edge in the original graph."
+msgstr ""
+"Cuando es `negativo`: el destino es la arista inversa en el grafo "
+"original."
+
+msgid "``FLOAT``"
+msgstr "``FLOAT``"
+
+msgid "Weight of the edge (``source``, ``target``)."
+msgstr "Peso de la arista (``source``, ``target``)."
+
+msgid ""
+"When `negative`: edge (``source``, ``target``) does not exist, therefore "
+"it’s not part of the graph."
+msgstr ""
+"Cuando `negative`: la arista (``source``, ``target``) no existe, por lo "
+"tanto no es parte del grafo."
+
+msgid "Weight of the edge (``target``, ``source``)."
+msgstr "Peso de la arista (``target``, ``source``)."
+
+msgid ""
+"When `negative`: edge (``target``, ``source``) does not exist, therefore "
+"it’s not part of the graph."
+msgstr ""
+"Cuando `negative`: la arista (``target``, ``source``) no existe, por lo "
+"tanto no es parte del grafo."
+
+msgid "Additional Examples"
+msgstr "Ejemplos Adicionales"
+
+msgid ""
+"The examples of this section are based on the :doc:`sampledata` network. "
+"The examples include the subgraph including edges 4, 7, 8, and 10 with "
+"``reverse_cost``."
+msgstr ""
+"Los ejemplos de esta sección se basan en la red :doc:`sampledata`. Los "
+"ejemplos incluyen el subgrafo que incluye las aristas 4, 7, 8 y 10 con "
+"``reverse_cost``."
+
+msgid "The data"
+msgstr ""
+
+msgid ""
+"This example displays how this graph transformation works to create "
+"additional edges for each possible turn in a graph."
+msgstr ""
+"En este ejemplo se muestra cómo funciona esta transformación de grafo "
+"para crear aristas adicionales para cada giro posible en un grafoáfico."
+
+msgid "|first|"
+msgstr "|first|"
+
+msgid "first"
+msgstr "primero"
+
+msgid "The transformation"
+msgstr ""
+
+msgid "|second|"
+msgstr "|second|"
+
+msgid "second"
+msgstr "segundo"
+
+msgid ""
+"In the transformed graph, all of the edges from the original graph are "
+"still present (yellow), but we now have additional edges for every turn "
+"that could be made across vertex 7 (orange)."
+msgstr ""
+"En el grafo transformado, todas las aristas del grafo original siguen "
+"presentes (amarillos), pero ahora hay aristas adicionales para cada giro "
+"que se podría hacer a través del vértice 7 (naranja)."
+
+msgid "Creating table that identifies transformed vertices"
+msgstr "Crear una tabla que identifica los vértices transformados"
+
+msgid ""
+"The vertices in the transformed graph are each created by splitting up "
+"the vertices in the original graph. Unless a vertex in the original graph"
+" is a leaf vertex, it will generate more than one vertex in the "
+"transformed graph. One of the newly created vertices in the transformed "
+"graph will be given the same vertex identifier as the vertex that it was "
+"created from in the original graph, but the rest of the newly created "
+"vertices will have negative vertex ids."
+msgstr ""
+"Los vértices del grafo transformado se crean dividiendo los vértices en "
+"el grafo original. A menos que un vértice en el grafo original sea un "
+"vértice hoja, generará más de un vértice en el grafo transformado. A uno "
+"de los vértices recién creados en el grafo transformado se le dará el "
+"mismo identificador del vértice desde el cual se creó en el grafo "
+"original, pero el resto de los vértices recién creados tendrán "
+"identificadores de vértices negativos."
+
+msgid ""
+"Following is an example of how to generate a table that maps the ids of "
+"the newly created vertices with the original vertex that they were "
+"created from"
+msgstr ""
+
+msgid "Store edge results"
+msgstr ""
+
+msgid ""
+"The first step is to store the results of the ``pgr_lineGraphFull`` call "
+"into a table"
+msgstr ""
+
+msgid "Create the mapping table"
+msgstr ""
+
+msgid "From the original graph's vertex information"
+msgstr ""
+
+msgid "Add the new vertices"
+msgstr ""
+
+msgid "Filling the mapping table"
+msgstr ""
+
+msgid "The positive vertex identifiers are the original identifiers"
+msgstr ""
+
+msgid "Inspecting the vertices map"
+msgstr ""
+
+msgid ""
+"The self loops happen when there is no cost traveling to the ``target`` "
+"and the source has an original value."
+msgstr ""
+
+msgid "Updating values from self loops"
+msgstr ""
+
+msgid "Inspecting the vertices table"
+msgstr ""
+
+msgid "Updating from inner self loops"
+msgstr ""
+
+msgid "Adding a soft restriction"
+msgstr ""
+
+msgid ""
+"A soft restriction going from vertex 6 to vertex 3 using edges 4 -> 7 is "
+"wanted."
+msgstr ""
+
+msgid "Idenifying the restriction"
+msgstr ""
+
+msgid ""
+"Running a :doc:`pgr_dijkstraNear` the edge with cost 0, edge 8, is where "
+"the cost will be increased"
+msgstr ""
+
+msgid ""
+"The edge to be altered is ``WHERE cost = 0 AND seq != 1 AND edge != -1`` "
+"from the previus query:"
+msgstr ""
+
+msgid "Adding a value to the restriction"
+msgstr ""
+
+msgid "Updating the cost to the edge:"
+msgstr ""
+
+msgid "Routing from :math:`6` to :math:`3`"
+msgstr ""
+
+msgid "Now the route does not use edge 8 and does a U turn on a leaf vertex."
+msgstr ""
+
+msgid "Simplifying leaf vertices"
+msgstr ""
+
+msgid "In this example, there is no additional cost for traversing a leaf vertex."
+msgstr ""
+
+msgid "Using the vertex map give the leaf verices their original value."
+msgstr ""
+
+msgid "On the source column"
+msgstr ""
+
+msgid "On the target column"
+msgstr ""
+
+msgid "Removing self loops on leaf nodes"
+msgstr ""
+
+msgid "The self loops of the leaf nodes are"
+msgstr ""
+
+msgid "Which can be removed"
+msgstr ""
+
+msgid ""
+"Routing can be done now using the original vertices id using "
+":doc:`pgr_dijkstra`"
+msgstr ""
+
+msgid "Complete routing graph"
+msgstr ""
+
+msgid "Add edges from the original graph"
+msgstr ""
+
+msgid ""
+"Add all the edges that are not involved in the line graph process to the "
+"new table"
+msgstr ""
+
+msgid "Some administrative tasks to get new identifiers for the edges"
+msgstr ""
+
+msgid "Add the newly calculated edges"
+msgstr ""
+
+msgid "Using the routing graph"
+msgstr ""
+
+msgid ""
+"When using this method for routing with soft restrictions there will be "
+"uturns"
+msgstr ""
+
+msgid "Routing from :math:`5` to :math:`1`"
+msgstr ""
+
+msgid "See Also"
+msgstr "Ver también"
+
+msgid "https://en.wikipedia.org/wiki/Line_graph"
+msgstr "https://en.wikipedia.org/wiki/Line_graph"
+
+msgid "https://en.wikipedia.org/wiki/Complete_graph"
+msgstr "https://en.wikipedia.org/wiki/Complete_graph"
+
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
+

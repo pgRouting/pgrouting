@@ -1,0 +1,574 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: 2022-10-04 18:19+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language: es\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
+"/pgrouting-develop/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#, fuzzy
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
+"/dijkstra-family.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en"
+"/dijkstra-family.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en"
+"/dijkstra-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en"
+"/dijkstra-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en"
+"/dijkstra-family.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es"
+"/dijkstra-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es"
+"/dijkstra-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es"
+"/dijkstra-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es"
+"/dijkstra-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es"
+"/dijkstra-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es"
+"/dijkstra-family.html>`__"
+
+msgid ""
+"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en"
+"/dijkstra-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en"
+"/dijkstra-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en"
+"/dijkstra-family.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/dijkstra.html>`__ "
+"`2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/dijkstra.html>`__"
+msgstr ""
+"**Versiones no soportadas:** `2.6 <https://docs.pgrouting.org/2.6/en"
+"/dijkstra-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en"
+"/dijkstra-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en"
+"/dijkstra-family.html>`__ `2.3 "
+"<https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/dijkstra.html>`__ "
+"`2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/dijkstra.html>`__"
+
+msgid "Dijkstra - Family of functions"
+msgstr "Dijkstra - Familia de funciones"
+
+msgid ":doc:`pgr_dijkstra` - Dijkstra's algorithm for the shortest paths."
+msgstr ":doc:`pgr_dijkstra` - Algoritmo de Dijkstra para las rutas más cortas."
+
+msgid ":doc:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths."
+msgstr ""
+":doc:`pgr_dijkstraCost` - Obtener el costo agregado de las rutas más "
+"cortas."
+
+msgid ":doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix."
+msgstr ""
+":doc:`pgr_dijkstraCostMatrix` - Usar pgr_dijkstra para crear una matriz "
+"de costes."
+
+msgid ""
+":doc:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament "
+"information."
+msgstr ""
+":doc:`pgr_drivingDistance` - Usar pgr_dijkstra para calcular información "
+"de captación."
+
+msgid ""
+":doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K "
+"shortest paths."
+msgstr ""
+":doc:`pgr_KSP` - Usar el algoritmo Yen con pgr_dijkstra para obtener las "
+"K rutas más cortas."
+
+msgid "Proposed"
+msgstr "Propuesto"
+
+msgid "Proposed functions for next mayor release."
+msgstr "Funciones propuestas para la próxima versión mayor."
+
+msgid "They are not officially in the current release."
+msgstr "No están oficialmente en la versión actual."
+
+msgid "They will likely officially be part of the next mayor release:"
+msgstr "Es probable que oficialmente formen parte del próximo lanzamiento:"
+
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
+
+msgid "Name might not change. (But still can)"
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
+
+msgid "Signature might not change. (But still can)"
+msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
+
+msgid "Functionality might not change. (But still can)"
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
+
+msgid "pgTap tests have being done. But might need more."
+msgstr "Se han hecho pruebas con pgTap. Pero tal vez se necesiten más."
+
+msgid "Documentation might need refinement."
+msgstr "Es posible que la documentación necesite un refinamiento."
+
+msgid ":doc:`pgr_dijkstraVia` - Get a route of a seuence of vertices."
+msgstr ""
+":doc:`pgr_dijkstraVia` - Obtenga una ruta a partir de una secuencia de "
+"vértices."
+
+msgid ":doc:`pgr_dijkstraNear` - Get the route to the nearest vertex."
+msgstr ":doc:`pgr_dijkstraNear` - Obtener la ruta al vértice más cercano."
+
+msgid ":doc:`pgr_dijkstraNearCost` - Get the cost to the nearest vertex."
+msgstr ":doc:`pgr_dijkstraNearCost` - Consigue el costo del vértice más cercano."
+
+msgid "Introduction"
+msgstr "Introducción"
+
+msgid ""
+"Dijkstra's algorithm, conceived by Dutch computer scientist Edsger "
+"Dijkstra in 1956. It is a graph search algorithm that solves the shortest"
+" path problem for a graph with non-negative edge path costs, producing a "
+"shortest path from a starting vertex to an ending vertex. This "
+"implementation can be used with a directed graph and an undirected graph."
+msgstr ""
+"Algoritmo de Dijkstra, concebido por el informático holandés Edsger "
+"Dijkstra en 1956. Es un algoritmo de búsqueda en grafos que resuelve el "
+"problema de ruta más corta para un grafo con costos de aristas no "
+"negativos, produciendo la ruta más corta desde un vértice inicial a un "
+"vértice final . Esta implementación se puede utilizar con un grafos "
+"dirigidos y no dirigidos."
+
+msgid "The main characteristics are:"
+msgstr "Las principales características son:"
+
+msgid "Process is done only on edges with positive costs."
+msgstr "El proceso se realiza sólo en aristas con costos positivos."
+
+msgid ""
+"A negative value on a cost column is interpreted as the edge does not "
+"exist."
+msgstr ""
+"Valor no negativo en una columna de costo se interpreta como la arista no"
+" exite."
+
+msgid "Values are returned when there is a path."
+msgstr "Los valores se devuelven cuando hay una ruta."
+
+msgid "When there is no path:"
+msgstr "Cuando no hay ruta:"
+
+msgid "When the starting vertex and ending vertex are the same."
+msgstr "Cuando el vértice de salida y el vértice destino son iguales."
+
+msgid ""
+"The **aggregate cost** of the non included values :math:`(v, v)` is "
+":math:`0`"
+msgstr ""
+"El **costo agregado** de los valores no incluídos :math:`(v, v)` es "
+":math:`0`"
+
+msgid ""
+"When the starting vertex and ending vertex are the different and there is"
+" no path:"
+msgstr ""
+"Cuando el vértice de salida y el vértice destino son diferentes y no hay "
+"ninguna ruta:"
+
+msgid ""
+"The **aggregate cost** the non included values :math:`(u, v)` is "
+":math:`\\infty`"
+msgstr ""
+"El **costo agregado** de los valores no incluídos :math:`(u, v)` es "
+":math: `\\infty`"
+
+msgid ""
+"For optimization purposes, any duplicated value in the starting vertices "
+"or on the ending vertices are ignored."
+msgstr ""
+"Para fines de optimización, se ignora cualquier valor duplicado en los "
+"vertices de salida o destino."
+
+msgid "Running time: :math:`O(| start\\ vids | * (V \\log V + E))`"
+msgstr "Tiempo de ejecución: :math:`O(| start\\_vids | * (V \\log V + E))`"
+
+msgid "The Dijkstra family functions are based on the Dijkstra algorithm."
+msgstr ""
+"Las funciones de la familia de Dijkstra se basan en el algoritmo de "
+"Dijkstra."
+
+msgid "Parameters"
+msgstr "Parámetros"
+
+msgid "Column"
+msgstr "Columna"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid "`Edges SQL`_"
+msgstr "`SQL de aristas`_"
+
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+msgid "`Edges SQL`_ as described below"
+msgstr "`SQL de aristas`_ como se describe a continuación"
+
+msgid "`Combinations SQL`_"
+msgstr "`SQL de combinaciones`_"
+
+msgid "`Combinations SQL`_ as described below"
+msgstr "`SQL de combinaciones`_ como se describe a abajo"
+
+msgid "**start vid**"
+msgstr "**salida**"
+
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+msgid "Identifier of the starting vertex of the path."
+msgstr "Identificador del vértice inicial de la ruta."
+
+msgid "**start vids**"
+msgstr "**salidas**"
+
+msgid "``ARRAY[BIGINT]``"
+msgstr "``ARRAY[BIGINT]``"
+
+msgid "Array of identifiers of starting vertices."
+msgstr "Arreglo de identificadores de vértices iniciales."
+
+msgid "**end vid**"
+msgstr "**destino**"
+
+msgid "Identifier of the ending vertex of the path."
+msgstr "Identificador del vértice final de la ruta."
+
+msgid "**end vids**"
+msgstr "**destinos**"
+
+msgid "Array of identifiers of ending vertices."
+msgstr "Arreglo de identificadores de vértices finales."
+
+msgid "Optional parameters"
+msgstr "Parámetros opcionales"
+
+msgid "Default"
+msgstr "x Defecto"
+
+msgid "``directed``"
+msgstr "``directed``"
+
+msgid "``BOOLEAN``"
+msgstr "``BOOLEAN``"
+
+msgid "``true``"
+msgstr "``true``"
+
+msgid "When ``true`` the graph is considered `Directed`"
+msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
+
+msgid "When ``false`` the graph is considered as `Undirected`."
+msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
+
+msgid "Inner Queries"
+msgstr "Consultas Internas"
+
+msgid "Edges SQL"
+msgstr "SQL aristas"
+
+msgid "``id``"
+msgstr "``id``"
+
+msgid "**ANY-INTEGER**"
+msgstr "**ENTEROS**"
+
+msgid "Identifier of the edge."
+msgstr "Identificador de la arista."
+
+msgid "``source``"
+msgstr "``source``"
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer vértice de la arista."
+
+msgid "``target``"
+msgstr "``target``"
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo vértice de la arista."
+
+msgid "``cost``"
+msgstr "``cost``"
+
+msgid "**ANY-NUMERICAL**"
+msgstr "**FLOTANTES**"
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr "Peso de la arista (``source``, ``target``)"
+
+msgid "``reverse_cost``"
+msgstr "``reverse_cost``"
+
+msgid "-1"
+msgstr "-1"
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr "Peso de la arista (``target``, ``source``)"
+
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
+"tanto no es parte del grafo."
+
+msgid "Where:"
+msgstr "Donde:"
+
+msgid "ANY-INTEGER"
+msgstr "ENTEROS"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+
+msgid "ANY-NUMERICAL"
+msgstr "FLOTANTES"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+
+msgid "Combinations SQL"
+msgstr "SQL Combinaciones"
+
+msgid "Parameter"
+msgstr "Parámetro"
+
+msgid "Identifier of the departure vertex."
+msgstr "Identificador del vértice de salida."
+
+msgid "Identifier of the arrival vertex."
+msgstr "Identificador del vértice de llegada."
+
+msgid "Advanced documentation"
+msgstr "Documentación avanzada"
+
+msgid "The problem definition (Advanced documentation)"
+msgstr "La definición de problema (Documentación avanzada)"
+
+msgid "Given the following query:"
+msgstr "Dada la siguiente consulta:"
+
+msgid "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
+
+msgid ""
+"where  :math:`sql = \\{(id_i, source_i, target_i, cost_i, "
+"reverse\\_cost_i)\\}`"
+msgstr ""
+"Donde :math:`sql = \\{(id_i, source_i, target_i, cost_i, "
+"reverse\\_cost_i)\\}`"
+
+msgid "and"
+msgstr "y"
+
+msgid ":math:`source = \\bigcup source_i`,"
+msgstr ":math:`source = \\bigcup source_i`,"
+
+msgid ":math:`target = \\bigcup target_i`,"
+msgstr ":math:`target = \\bigcup target_i`,"
+
+msgid "The graphs are defined as follows:"
+msgstr "Los gráficos se definen como sigue:"
+
+msgid "Directed graph"
+msgstr "Grafo dirigido"
+
+msgid "The weighted directed graph, :math:`G_d(V,E)`, is definied by:"
+msgstr "El gráfico dirigido ponderado, :math:`G_d(V,E)`, se define por:"
+
+msgid "the set of vertices  :math:`V`"
+msgstr "Conjunto de vértices :math:`V`"
+
+msgid ":math:`V = source \\cup target \\cup {start_{vid}} \\cup  {end_{vid}}`"
+msgstr ":math:`V = source \\cup target \\cup {start_{vid}} \\cup {end_{vid}}`"
+
+msgid "the set of edges :math:`E`"
+msgstr "El conjunto de aristas :math:`E`"
+
+msgid ""
+":math:`E = \\begin{cases} \\text{ }  \\{(source_i, target_i, cost_i) "
+"\\text{ when } cost >=0 \\} & \\quad \\text{if } reverse\\_cost = "
+"\\varnothing \\\\ \\text{ }  \\text{ }  & \\quad \\text{ } \\\\ \\text{ }"
+"  \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} &  \\quad "
+"\\text{ } \\\\ \\cup      \\{(target_i, source_i, reverse\\_cost_i) "
+"\\text{ when } reverse\\_cost_i>=0 \\} & \\quad \\text{if } "
+"reverse\\_cost \\neq \\varnothing \\\\ \\end{cases}`"
+msgstr ""
+":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, cost_i) "
+"\\text{ when } cost >=0 \\} & \\quad \\text{if } reverse\\_cost = "
+"\\varnothing \\\\ \\text{ } \\text{ } & \\quad \\text{ } \\\\ \\text{ } "
+"\\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} & \\quad "
+"\\text{ } \\\\ \\cup \\{(target_i, source_i, reverse\\_cost_i) \\text{ "
+"when } reverse\\_cost_i>=0 \\} & \\quad \\text{if } reverse\\_cost \\neq "
+"\\varnothing \\\\ \\end{cases}`"
+
+msgid "Undirected graph"
+msgstr "Grafo no dirigido"
+
+msgid "The weighted undirected graph, :math:`G_u(V,E)`, is definied by:"
+msgstr "El grafo ponderado no dirigido :math:`G_u(V,E)`, es definido por:"
+
+msgid ":math:`V = source \\cup target \\cup {start_v{vid}} \\cup  {end_{vid}}`"
+msgstr ":math:`V = source \\cup target \\cup {start_v{vid}} \\cup {end_{vid}}`"
+
+msgid ""
+":math:`E = \\begin{cases} \\text{ }  \\{(source_i, target_i, cost_i) "
+"\\text{ when } cost >=0 \\}  & \\quad \\text{ } \\\\ \\cup      "
+"\\{(target_i, source_i, cost_i) \\text{ when } cost >=0 \\}  & \\quad "
+"\\text{ if } reverse\\_cost = \\varnothing \\\\ \\text{ }  \\text{ }  & "
+"\\text{ } \\\\ \\text{ }  \\{(source_i, target_i, cost_i) \\text{ when } "
+"cost >=0 \\} & \\text{ } \\\\ \\cup  \\{(target_i, source_i, cost_i) "
+"\\text{ when } cost >=0 \\} & \\text{ } \\\\ \\cup  \\{(target_i, "
+"source_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} & "
+"\\text{ } \\\\ \\cup  \\{(source_i, target_i, reverse\\_cost_i) \\text{ "
+"when } reverse\\_cost_i >=0)\\} & \\quad \\text{ if } reverse\\_cost "
+"\\neq \\varnothing \\\\ \\end{cases}`"
+msgstr ""
+":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, cost_i) "
+"\\text{ when } cost >=0 \\} & \\quad \\text{ } \\\\ \\cup \\{(target_i, "
+"source_i, cost_i) \\text{ when } cost >=0 \\} & \\quad \\text{ if } "
+"reverse\\_cost = \\varnothing \\\\ \\text{ } \\text{ } & \\text{ } \\\\ "
+"\\text{ } \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} & "
+"\\text{ } \\\\ \\cup \\{(target_i, source_i, cost_i) \\text{ when } cost "
+">=0 \\} & \\text{ } \\\\ \\cup \\{(target_i, source_i, reverse\\_cost_i) "
+"\\text{ when } reverse\\_cost_i >=0)\\} & \\text{ } \\\\ \\cup "
+"\\{(source_i, target_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i"
+" >=0)\\} & \\quad \\text{ if } reverse\\_cost \\neq \\varnothing \\\\ "
+"\\end{cases}`"
+
+msgid "The problem"
+msgstr "El problema"
+
+msgid "Given:"
+msgstr "Dado:"
+
+msgid ":math:`start_{vid} \\in V` a starting vertex"
+msgstr ":math:`start_{vid} \\in V` un vértice inicial"
+
+msgid ":math:`end_{vid} \\in V` an ending vertex"
+msgstr ":math:`end_{vid} \\in V` un vértice final"
+
+msgid ""
+":math:`G(V,E) = \\begin{cases} G_d(V,E) & \\quad \\text{ if6 } directed ="
+" true \\\\ G_u(V,E) & \\quad \\text{ if5 } directed = false \\\\ "
+"\\end{cases}`"
+msgstr ""
+":math:`G(V,E) = \\begin{cases} G_d(V,E) & \\quad \\text{ if6 } directed ="
+" true \\\\ G_u(V,E) & \\quad \\text{ if5 } directed = false \\\\ "
+"\\end{cases}`"
+
+msgid "Then:"
+msgstr "Entonces:"
+
+msgid ""
+":math:`\\boldsymbol{\\pi} = \\{(path\\_seq_i, node_i, edge_i, cost_i, "
+"agg\\_cost_i)\\}`"
+msgstr ""
+":math:`\\boldsymbol{\\pi} = \\{(path\\_seq_i, node_i, edge_i, cost_i, "
+"agg\\_cost_i)\\}`"
+
+msgid "where:"
+msgstr "Donde:"
+
+msgid ":math:`path\\_seq_i = i`"
+msgstr ":math:`path\\_seq_i = i`"
+
+msgid ":math:`path\\_seq_{| \\pi |} = | \\pi |`"
+msgstr ":math:`path\\_seq_{| \\pi |} = | \\pi |`"
+
+msgid ":math:`node_i \\in V`"
+msgstr ":math:`node_i \\in V`"
+
+msgid ":math:`node_1 = start_{vid}`"
+msgstr ":math:`node_1 = start_{vid}`"
+
+msgid ":math:`node_{| \\pi |}  = end_{vid}`"
+msgstr ":math:`node_{| \\pi |} = end_{vid}`"
+
+msgid ""
+":math:`\\forall i \\neq | \\pi |, \\quad (node_i, node_{i+1}, cost_i) "
+"\\in E`"
+msgstr ""
+":math:`\\forall i \\neq | \\pi |, \\quad (node_i, node_{i+1}, cost_i) "
+"\\in E`"
+
+msgid ""
+":math:`edge_i  = \\begin{cases}  id_{(node_i, node_{i+1},cost_i)}  "
+"&\\quad  \\text{when } i \\neq | \\pi | \\\\ -1 &\\quad  \\text{when } i "
+"= | \\pi | \\\\ \\end{cases}`"
+msgstr ""
+":math:`edge_i = \\begin{cases} id_{(node_i, node_{i+1},cost_i)} &\\quad "
+"\\text{when } i \\neq | \\pi | \\\\ -1 &\\quad \\text{when } i = | \\pi |"
+" \\\\ \\end{cases}`"
+
+msgid ":math:`cost_i = cost_{(node_i, node_{i+1})}`"
+msgstr ":math:`cost_i = cost_{(node_i, node_{i+1})}`"
+
+msgid ""
+":math:`agg\\_cost_i  = \\begin{cases}  0   &\\quad  \\text{when } i = 1  "
+"\\\\ \\displaystyle\\sum_{k=1}^{i}  cost_{(node_{k-1}, node_k)}  &\\quad"
+"  \\text{when } i \\neq 1 \\\\ \\end{cases}`"
+msgstr ""
+":math:`agg\\_cost_i = \\begin{cases} 0 &\\quad \\text{when } i = 1 \\\\ "
+"\\displaystyle\\sum_{k=1}^{i} cost_{(node_{k-1}, node_k)} &\\quad "
+"\\text{when } i \\neq 1 \\\\ \\end{cases}`"
+
+msgid ""
+"In other words: The algorithm returns a the shortest path between "
+":math:`start_{vid}` and :math:`end_{vid}`, if it exists, in terms of a "
+"sequence of nodes  and of edges,"
+msgstr ""
+"En otras palabras: El algoritmo devuelve la ruta más corta entre "
+":math:`start_{vid}` y :math:`end_{vid}`, si es que existe, en términos de"
+" una secuencia de nodos y de aristas,"
+
+msgid ""
+":math:`path\\_seq` indicates the relative position in the path of the "
+":math:`node` or :math:`edge`."
+msgstr ""
+":math:`path\\_seq` indica la posición relativa en el camino de "
+":math:`node` o :math:`edge`."
+
+msgid ":math:`cost` is the cost of the edge to be used to go to the next node."
+msgstr ""
+":math:`cost` es el coste del borde que se utilizará para ir al siguiente "
+"nodo."
+
+msgid ""
+":math:`agg\\_cost` is the cost from the :math:`start_{vid}` up to the "
+"node."
+msgstr ":math:`agg\\_cost` es el costo desde el :math:`start_{vid}` hasta el nodo."
+
+msgid "If there is no path, the resulting set is empty."
+msgstr "Si no hay ruta, el conjunto resultante estará vacío."
+
+msgid "See Also"
+msgstr "Ver también"
+
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
+

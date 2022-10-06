@@ -1,0 +1,164 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: 2022-10-04 18:19+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language: es\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
+"/pgrouting-develop/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#, fuzzy
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_full_version.html>`__ (`3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_full_version.html>`__) `3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_full_version.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_full_version.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_full_version.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Última "
+"<https://docs.pgrouting.org/latest/es/pgr_full_version.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/es/pgr_full_version.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/es/pgr_full_version.html>`__ `3.2 "
+"<https://docs.pgrouting.org/3.2/es/pgr_full_version.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_full_version.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_full_version.html>`__"
+
+msgid "``pgr_full_version``"
+msgstr "``pgr_full_version``"
+
+msgid "``pgr_full_version`` — Get the details of pgRouting version information."
+msgstr ""
+"``pgr_full_version`` — Obtener los detalles de la información de la "
+"versión de pgRouting."
+
+msgid "Availability"
+msgstr "Disponibilidad"
+
+msgid "Version 3.0.0"
+msgstr "Versión 3.0.0"
+
+msgid "New **official** function"
+msgstr "Nueva función **oficial**"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid "Get complete details of pgRouting version information"
+msgstr "Obtener los detalles de la información de la versión de pgRouting"
+
+msgid "Signatures"
+msgstr "Firmas"
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_full_version()"
+msgstr "pgr_full_version()"
+
+msgid "RETURNS |result-version|"
+msgstr "REGRESA |result-version|"
+
+msgid "Example"
+msgstr "Ejemplo"
+
+msgid "Information about when this documentation was built"
+msgstr "Información sobre cuándo se construyó esta documentación"
+
+msgid "Return columns"
+msgstr "Columnas de Resultados"
+
+msgid "Column"
+msgstr "Columna"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "``version``"
+msgstr "``version``"
+
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+msgid "pgRouting version"
+msgstr "Versión de pgRouting"
+
+msgid "``build_type``"
+msgstr "``build_type``"
+
+msgid "The Build type"
+msgstr "El tipo de Compilación"
+
+msgid "``compile_date``"
+msgstr "``compile_date``"
+
+msgid "Compilation date"
+msgstr "Fecha de compilación"
+
+msgid "``library``"
+msgstr "``library``"
+
+msgid "Library name and version"
+msgstr "Nombre y versión de la biblioteca"
+
+msgid "``system``"
+msgstr "``system``"
+
+msgid "Operative system"
+msgstr "Sistema operativo"
+
+msgid "``postgreSQL``"
+msgstr "``postgreSQL``"
+
+msgid "pgsql used"
+msgstr "pgsql utilizado"
+
+msgid "``compiler``"
+msgstr "``compiler``"
+
+msgid "Compiler and version"
+msgstr "Compilador y versión"
+
+msgid "``boost``"
+msgstr "``boost``"
+
+msgid "Boost version"
+msgstr "Versión de Boost"
+
+msgid "``hash``"
+msgstr "``hash``"
+
+msgid "Git hash of pgRouting build"
+msgstr "Hash de Git de pgRouting"
+
+msgid "See Also"
+msgstr "Ver también"
+
+msgid ":doc:`reference`"
+msgstr ":doc:`reference`"
+
+msgid ":doc:`pgr_version`"
+msgstr ":doc:`pgr_version`"
+
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
+

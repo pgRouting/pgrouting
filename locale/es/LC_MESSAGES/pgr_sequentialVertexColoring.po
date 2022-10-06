@@ -1,0 +1,325 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
+# Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: 2022-10-04 18:19+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language: es\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
+"/pgrouting-develop/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#, fuzzy
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_sequentialVertexColoring.html>`__"
+" (`3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_sequentialVertexColoring.html>`__)"
+" `3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_sequentialVertexColoring.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Última "
+"<https://docs.pgrouting.org/latest/es/pgr_sequentialVertexColoring.html>`__"
+" (`3.4 "
+"<https://docs.pgrouting.org/3.4/es/pgr_sequentialVertexColoring.html>`__)"
+" `3.3 "
+"<https://docs.pgrouting.org/3.3/es/pgr_sequentialVertexColoring.html>`__ "
+"`3.2 "
+"<https://docs.pgrouting.org/3.2/es/pgr_sequentialVertexColoring.html>`__"
+
+msgid "pgr_sequentialVertexColoring - Proposed"
+msgstr "pgr_sequentialVertexColoring - Propuesto"
+
+msgid ""
+"``pgr_sequentialVertexColoring`` — Returns the vertex coloring of an "
+"undirected graph, using greedy approach."
+msgstr ""
+"``pgr_sequentialVertexColoring`` — Devuelve el color de vértice de un "
+"grafo no dirigido, utilizando un enfoque codicioso."
+
+msgid "Boost Graph Inside"
+msgstr "Adentro: Boost Graph"
+
+msgid "Proposed functions for next mayor release."
+msgstr "Funciones propuestas para la próxima versión mayor."
+
+msgid "They are not officially in the current release."
+msgstr "No están oficialmente en la versión actual."
+
+msgid "They will likely officially be part of the next mayor release:"
+msgstr "Es probable que oficialmente formen parte del próximo lanzamiento:"
+
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
+
+msgid "Name might not change. (But still can)"
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
+
+msgid "Signature might not change. (But still can)"
+msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
+
+msgid "Functionality might not change. (But still can)"
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
+
+msgid "pgTap tests have being done. But might need more."
+msgstr "Se han hecho pruebas con pgTap. Pero tal vez se necesiten más."
+
+msgid "Documentation might need refinement."
+msgstr "Es posible que la documentación necesite un refinamiento."
+
+msgid "Availability"
+msgstr "Disponibilidad"
+
+msgid "Version 3.3.0"
+msgstr "Versión 3.3.0"
+
+msgid "Promoted to **proposed** signature"
+msgstr "Promovido a firma **propuesta**"
+
+msgid "Version 3.2.0"
+msgstr "Versión 3.2.0"
+
+msgid "New **experimental** signature"
+msgstr "Nueva función **experimental**"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid ""
+"Sequential vertex coloring algorithm is a graph coloring algorithm in "
+"which color identifiers are assigned to the vertices of a graph in a "
+"sequential manner, such that no edge connects two identically colored "
+"vertices."
+msgstr ""
+"El algoritmo de Coloración de Vértices Secuenciales es un algoritmo de "
+"coloración de grafos en el que se asignan identificadores de color a los "
+"vértices de un grafo de forma secuencial, de modo que ninguna arista "
+"conecte dos vértices de colores idénticos."
+
+msgid "**The main Characteristics are:**"
+msgstr "**Las características principales son:**"
+
+msgid "The implementation is applicable only for **undirected** graphs."
+msgstr "La implementación solo es aplicable a los grafos **no dirigidos**."
+
+msgid ""
+"Provides the color to be assigned to all the vertices present in the "
+"graph."
+msgstr ""
+"Proporciona el color que se asignará a todos los vértices presentes en el"
+" grafo."
+
+msgid "Color identifiers values are in the Range :math:`[1, |V|]`"
+msgstr ""
+"Los valores de los identificadores de color se encuentran en el rango "
+":math:`[1, |V|]`"
+
+msgid "The algorithm tries to assign the least possible color to every vertex."
+msgstr "El algoritmo intenta asignar el menor color posible a cada vértice."
+
+msgid ""
+"Efficient graph coloring is an NP-Hard problem, and therefore, this "
+"algorithm does not always produce optimal coloring. It follows a greedy "
+"strategy by iterating through all the vertices sequentially, and "
+"assigning the smallest possible color that is not used by its neighbors, "
+"to each vertex."
+msgstr ""
+"El color de grafos eficientes es un problema NP-Hard, y por lo tanto, "
+"este algoritmo no siempre produce un coloración óptima. Sigue una "
+"estrategia expansiva recorriendo en iteración todos los vértices "
+"secuencialmente y asignando el color más pequeño posible que no sea "
+"utilizado por sus vecinos, a cada vértice."
+
+msgid "The returned rows are ordered in ascending order of the vertex value."
+msgstr "Las filas devueltas se ordenan en orden ascendente del valor de vértice."
+
+msgid "Sequential Vertex Coloring Running Time: :math:`O(|V|*(d + k))`"
+msgstr ""
+"Tiempo de Ejecución de Coloración de Vértices Secuenciales: "
+":math:`O(|V|*(d + k))`"
+
+msgid "where :math:`|V|` is the number of vertices,"
+msgstr "donde :math:`|V|` es el número de vértices,"
+
+msgid ":math:`d` is the maximum degree of the vertices in the graph,"
+msgstr ":math:`d` es el grado máximo de los vértices en el grafo,"
+
+msgid ":math:`k` is the number of colors used."
+msgstr ":math:`k` es el número de colores utilizados."
+
+msgid "Signatures"
+msgstr "Firmas"
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_sequentialVertexColoring(`Edges SQL`_)"
+msgstr "pgr_sequentialVertexColoring(`SQL de aristas`_)"
+
+msgid "RETURNS SET OF |result-node-color|"
+msgstr "REGRESA CONJUNTO DE |result-node-color|"
+
+msgid "OR EMPTY SET"
+msgstr ""
+
+msgid "Example"
+msgstr "Ejemplo"
+
+msgid "Graph coloring of pgRouting :doc:`sampledata`"
+msgstr "Coloración de grafos de pgRouting :doc:`sampledata`"
+
+msgid "Parameters"
+msgstr "Parámetros"
+
+msgid "Parameter"
+msgstr "Parámetro"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "`Edges SQL`_"
+msgstr "`SQL de aristas`_"
+
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+msgid "`Edges SQL`_ as described below."
+msgstr "`SQL de aristas`_ descritas más adelante."
+
+msgid "Inner Queries"
+msgstr "Consultas Internas"
+
+msgid "Edges SQL"
+msgstr "SQL aristas"
+
+msgid "Column"
+msgstr "Columna"
+
+msgid "Default"
+msgstr "x Defecto"
+
+msgid "``id``"
+msgstr "``id``"
+
+msgid "**ANY-INTEGER**"
+msgstr "**ENTEROS**"
+
+msgid "Identifier of the edge."
+msgstr "Identificador de la arista."
+
+msgid "``source``"
+msgstr "``source``"
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer vértice de la arista."
+
+msgid "``target``"
+msgstr "``target``"
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo vértice de la arista."
+
+msgid "``cost``"
+msgstr "``cost``"
+
+msgid "**ANY-NUMERICAL**"
+msgstr "**FLOTANTES**"
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr "Peso de la arista (``source``, ``target``)"
+
+msgid "``reverse_cost``"
+msgstr "``reverse_cost``"
+
+msgid "-1"
+msgstr "-1"
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr "Peso de la arista (``target``, ``source``)"
+
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
+"tanto no es parte del grafo."
+
+msgid "Where:"
+msgstr "Donde:"
+
+msgid "ANY-INTEGER"
+msgstr "ENTEROS"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+
+msgid "ANY-NUMERICAL"
+msgstr "FLOTANTES"
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+
+msgid "Result Columns"
+msgstr "Columnas de Resultados"
+
+msgid "Returns SET OF ``(vertex_id, color_id)``"
+msgstr "Devuelve SET OF ``(vertex_id, color_id)``"
+
+msgid "``vertex_id``"
+msgstr "``vertex_id``"
+
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+msgid "Identifier of the vertex."
+msgstr "Identificador del vértice."
+
+msgid "``color_id``"
+msgstr "``color_id``"
+
+msgid "Identifier of the color of the vertex."
+msgstr "Identificador del color del vértice."
+
+msgid "The minimum value of color is 1."
+msgstr "El valor mínimo de color es 1."
+
+msgid "See Also"
+msgstr "Ver también"
+
+msgid "The queries use the :doc:`sampledata` network."
+msgstr "Las consultas utilizan la red :doc:`sampledata` ."
+
+msgid ""
+"`Boost: Sequential Vertex Coloring algorithm documentation "
+"<https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html>`__"
+msgstr ""
+"`Boost: Documentacion de Algoritmo de Coloración Secuencial de Vertices "
+"<https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html>`__"
+
+msgid ""
+"`Wikipedia: Graph coloring "
+"<https://en.wikipedia.org/wiki/Graph_coloring>`__"
+msgstr ""
+"`Wikipedia: Coloración de grafos "
+"<https://en.wikipedia.org/wiki/Graph_coloring>`__"
+
+msgid "Indices and tables"
+msgstr "Índices y tablas"
+
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
+
