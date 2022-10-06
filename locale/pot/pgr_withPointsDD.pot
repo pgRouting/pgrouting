@@ -1,0 +1,452 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_withPointsDD.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_withPointsDD.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/pgr_withPointsDD.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_withPointsDD.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_withPointsDD.html>`__"
+msgstr ""
+
+msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_withPointsDD.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_withPointsDD.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_withPointsDD.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPointsDD.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPointsDD.html>`__"
+msgstr ""
+
+msgid "``pgr_withPointsDD`` - Proposed"
+msgstr ""
+
+msgid "``pgr_withPointsDD`` - Returns the driving **distance** from a starting point."
+msgstr ""
+
+msgid "Proposed functions for next mayor release."
+msgstr ""
+
+msgid "They are not officially in the current release."
+msgstr ""
+
+msgid "They will likely officially be part of the next mayor release:"
+msgstr ""
+
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+msgid "Name might not change. (But still can)"
+msgstr ""
+
+msgid "Signature might not change. (But still can)"
+msgstr ""
+
+msgid "Functionality might not change. (But still can)"
+msgstr ""
+
+msgid "pgTap tests have being done. But might need more."
+msgstr ""
+
+msgid "Documentation might need refinement."
+msgstr ""
+
+msgid "Boost Graph Inside"
+msgstr ""
+
+msgid "Availability"
+msgstr ""
+
+msgid "Version 2.2.0"
+msgstr ""
+
+msgid "New **proposed** function"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Modify the graph to include points and using Dijkstra algorithm, extracts all the nodes and points that have costs less than or equal to the value ``**distance**`` from the starting point. The edges extracted will conform the corresponding spanning tree."
+msgstr ""
+
+msgid "Signatures"
+msgstr ""
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, [**options A**])"
+msgstr ""
+
+msgid "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, [**options B**])"
+msgstr ""
+
+msgid "**options A:** ``[directed, driving_side, details]``"
+msgstr ""
+
+msgid "**options B:** ``[directed, driving_side, details, equicost]``"
+msgstr ""
+
+msgid "RETURNS SET OF |result-generic-no-seq|"
+msgstr ""
+
+msgid "OR EMPTY SET"
+msgstr ""
+
+msgid "Single vertex"
+msgstr ""
+
+msgid "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, [**options**])"
+msgstr ""
+
+msgid "**options:** ``[directed, driving_side, details]``"
+msgstr ""
+
+msgid "RETURNS SET OF |result-1-1-no-seq|"
+msgstr ""
+
+msgid "Example"
+msgstr ""
+
+msgid "Right side driving topology, from point :math:`1` within a distance of :math:`3.3` with details."
+msgstr ""
+
+msgid "Multiple vertices"
+msgstr ""
+
+msgid "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, [**options**])"
+msgstr ""
+
+msgid "**options:** ``[directed, driving_side, details, equicost]``"
+msgstr ""
+
+msgid "RETURNS SET OF |result-m-1-no-seq|"
+msgstr ""
+
+msgid "From point :math:`1` and vertex :math:`16` within a distance of :math:`3.3` with ``equicost`` on a directed graph"
+msgstr ""
+
+msgid "Parameters"
+msgstr ""
+
+msgid "Column"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "`Edges SQL`_"
+msgstr ""
+
+msgid "``TEXT``"
+msgstr ""
+
+msgid "`Edges SQL`_ as described below"
+msgstr ""
+
+msgid "`Points SQL`_"
+msgstr ""
+
+msgid "`Points SQL`_ as described below"
+msgstr ""
+
+msgid "**Root vid**"
+msgstr ""
+
+msgid "``BIGINT``"
+msgstr ""
+
+msgid "Identifier of the root vertex of the tree."
+msgstr ""
+
+msgid "Negative values represent a point"
+msgstr ""
+
+msgid "**Root vids**"
+msgstr ""
+
+msgid "``ARRAY`` [**ANY-INTEGER**]"
+msgstr ""
+
+msgid "Array of identifiers of the root vertices."
+msgstr ""
+
+msgid ":math:`0` values are ignored"
+msgstr ""
+
+msgid "For optimization purposes, any duplicated value is ignored."
+msgstr ""
+
+msgid "**distance**"
+msgstr ""
+
+msgid "``FLOAT``"
+msgstr ""
+
+msgid "Upper limit for the inclusion of a node in the result."
+msgstr ""
+
+msgid "Optional parameters"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "``directed``"
+msgstr ""
+
+msgid "``BOOLEAN``"
+msgstr ""
+
+msgid "``true``"
+msgstr ""
+
+msgid "When ``true`` the graph is considered `Directed`"
+msgstr ""
+
+msgid "When ``false`` the graph is considered as `Undirected`."
+msgstr ""
+
+msgid "With points optional parameters"
+msgstr ""
+
+msgid "Parameter"
+msgstr ""
+
+msgid "``driving_side``"
+msgstr ""
+
+msgid "``CHAR``"
+msgstr ""
+
+msgid "``b``"
+msgstr ""
+
+msgid "Value in [``r``, ``l``, ``b``] indicating if the driving side is:"
+msgstr ""
+
+msgid "``r`` for right driving side."
+msgstr ""
+
+msgid "``l`` for left driving side."
+msgstr ""
+
+msgid "``b`` for both."
+msgstr ""
+
+msgid "``details``"
+msgstr ""
+
+msgid "``false``"
+msgstr ""
+
+msgid "When ``true`` the results will include the points that are in the path."
+msgstr ""
+
+msgid "When ``false`` the results will not include the points that are in the path."
+msgstr ""
+
+msgid "Driving distance optional parameters"
+msgstr ""
+
+msgid "``equicost``"
+msgstr ""
+
+msgid "When ``true`` the node will only appear in the closest ``from_v`` list."
+msgstr ""
+
+msgid "When ``false`` which resembles several calls using the single starting point signatures. Tie brakes are arbitrary."
+msgstr ""
+
+msgid "Inner Queries"
+msgstr ""
+
+msgid "Edges SQL"
+msgstr ""
+
+msgid "``id``"
+msgstr ""
+
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+msgid "Identifier of the edge."
+msgstr ""
+
+msgid "``source``"
+msgstr ""
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+msgid "``target``"
+msgstr ""
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+msgid "``cost``"
+msgstr ""
+
+msgid "**ANY-NUMERICAL**"
+msgstr ""
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr ""
+
+msgid "``reverse_cost``"
+msgstr ""
+
+msgid "-1"
+msgstr ""
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr ""
+
+msgid "When negative: edge (``target``, ``source``) does not exist, therefore it's not part of the graph."
+msgstr ""
+
+msgid "Where:"
+msgstr ""
+
+msgid "ANY-INTEGER"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr ""
+
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
+
+msgid "Points SQL"
+msgstr ""
+
+msgid "``pid``"
+msgstr ""
+
+msgid "**value**"
+msgstr ""
+
+msgid "Identifier of the point."
+msgstr ""
+
+msgid "Use with positive value, as internally will be converted to negative value"
+msgstr ""
+
+msgid "If column is present, it can not be NULL."
+msgstr ""
+
+msgid "If column is not present, a sequential negative **value** will be given automatically."
+msgstr ""
+
+msgid "``edge_id``"
+msgstr ""
+
+msgid "Identifier of the \"closest\" edge to the point."
+msgstr ""
+
+msgid "``fraction``"
+msgstr ""
+
+msgid "Value in <0,1> that indicates the relative postition from the first end point of the edge."
+msgstr ""
+
+msgid "``side``"
+msgstr ""
+
+msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"
+msgstr ""
+
+msgid "In the right ``r``,"
+msgstr ""
+
+msgid "In the left ``l``,"
+msgstr ""
+
+msgid "In both sides ``b``, ``NULL``"
+msgstr ""
+
+msgid "Result Columns"
+msgstr ""
+
+msgid "``seq``"
+msgstr ""
+
+msgid "Sequential value starting from :math:`1`."
+msgstr ""
+
+msgid "``[start_vid]``"
+msgstr ""
+
+msgid "Identifier of the root vertex."
+msgstr ""
+
+msgid "``node``"
+msgstr ""
+
+msgid "Identifier of ``node`` within the limits from ``from_v``."
+msgstr ""
+
+msgid "``edge``"
+msgstr ""
+
+msgid "Identifier of the ``edge`` used to arrive to ``node``."
+msgstr ""
+
+msgid ":math:`0` when ``node`` = ``from_v``."
+msgstr ""
+
+msgid "Cost to traverse ``edge``."
+msgstr ""
+
+msgid "``agg_cost``"
+msgstr ""
+
+msgid "Aggregate cost from ``from_v`` to ``node``."
+msgstr ""
+
+msgid "SMALLINT, INTEGER, BIGINT"
+msgstr ""
+
+msgid "ANY-NUMERIC"
+msgstr ""
+
+msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
+msgstr ""
+
+msgid "Additional Examples"
+msgstr ""
+
+msgid "Driving side does not matter"
+msgstr ""
+
+msgid "From point :math:`1` within a distance of :math:`3.3`, does not matter driving side, with details."
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid ":doc:`pgr_drivingDistance`"
+msgstr ""
+
+msgid ":doc:`pgr_alphaShape`"
+msgstr ""
+
+msgid ":doc:`sampledata`"
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""

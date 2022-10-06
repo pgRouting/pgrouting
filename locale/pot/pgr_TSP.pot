@@ -1,0 +1,389 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_TSP.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_TSP.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/pgr_TSP.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_TSP.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_TSP.html>`__"
+msgstr ""
+
+msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_TSP.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_TSP.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_TSP.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_tsp.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/tsp/doc/pgr_tsp.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/tsp/doc/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/tsp/doc/index.html>`__"
+msgstr ""
+
+msgid "``pgr_TSP``"
+msgstr ""
+
+msgid "``pgr_TSP`` - Aproximation using *metric* algorithm."
+msgstr ""
+
+msgid "Boost Graph Inside"
+msgstr ""
+
+msgid "Availability:"
+msgstr ""
+
+msgid "Version 3.2.1"
+msgstr ""
+
+msgid "Metric Algorithm from `Boost library <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
+msgstr ""
+
+msgid "Simulated Annealing Algorithm no longer supported"
+msgstr ""
+
+msgid "The Simulated Annealing Algorithm related parameters are ignored: max_processing_time, tries_per_temperature, max_changes_per_temperature, max_consecutive_non_changes, initial_temperature, final_temperature, cooling_factor, randomize"
+msgstr ""
+
+msgid "Version 2.3.0"
+msgstr ""
+
+msgid "Signature change"
+msgstr ""
+
+msgid "Old signature no longer supported"
+msgstr ""
+
+msgid "Version 2.0.0"
+msgstr ""
+
+msgid "**Official** function"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Problem Definition"
+msgstr ""
+
+msgid "The travelling salesperson problem (TSP) asks the following question:"
+msgstr ""
+
+msgid "*Given a list of cities and the distances between each pair of cities, which is the shortest possible route that visits each city exactly once and returns to the origin city?*"
+msgstr ""
+
+msgid "Characteristics"
+msgstr ""
+
+msgid "This problem is an NP-hard optimization problem."
+msgstr ""
+
+msgid "Metric Algorithm is used"
+msgstr ""
+
+msgid "Implementation generates solutions that *are twice as long as the optimal tour in the worst case* when:"
+msgstr ""
+
+msgid "Graph is undirected"
+msgstr ""
+
+msgid "Graph is fully connected"
+msgstr ""
+
+msgid "Graph where traveling costs on edges obey the triangle inequality."
+msgstr ""
+
+msgid "On an undirected graph:"
+msgstr ""
+
+msgid "The traveling costs are symmetric:"
+msgstr ""
+
+msgid "Traveling costs from ``u`` to ``v`` are just as much as traveling from ``v`` to ``u``"
+msgstr ""
+
+msgid "Can be Used with :doc:`costMatrix-category` functions preferably with `directed => false`."
+msgstr ""
+
+msgid "With ``directed => false``"
+msgstr ""
+
+msgid "Will generate a graph that:"
+msgstr ""
+
+msgid "is undirected"
+msgstr ""
+
+msgid "is fully connected (As long as the graph has one component)"
+msgstr ""
+
+msgid "all traveling costs on edges obey the triangle inequality."
+msgstr ""
+
+msgid "When ``start_vid = 0 OR end_vid = 0``"
+msgstr ""
+
+msgid "The solutions generated is garanteed to be *twice as long as the optimal tour in the worst case*"
+msgstr ""
+
+msgid "When ``start_vid != 0 AND end_vid != 0 AND start_vid != end_vid``"
+msgstr ""
+
+msgid "It is **not garanteed** that the solution will be, in the worse case, twice as long as the optimal tour, due to the fact that `end_vid` is forced to be in a fixed position."
+msgstr ""
+
+msgid "With ``directed => true``"
+msgstr ""
+
+msgid "It is **not garanteed** that the solution will be, in the worse case, twice as long as the optimal tour"
+msgstr ""
+
+msgid "is directed"
+msgstr ""
+
+msgid "some (or all) traveling costs on edges might not obey the triangle inequality."
+msgstr ""
+
+msgid "As an undirected graph is required, the directed graph is transformed as follows:"
+msgstr ""
+
+msgid "edges `(u, v)` and `(v, u)` is considered to be the same edge (denoted `(u, v)`"
+msgstr ""
+
+msgid "if ``agg_cost`` differs between one or more instances of edge `(u, v)`"
+msgstr ""
+
+msgid "The minimum value of the ``agg_cost`` all instances of edge `(u, v)` is going to be considered as the ``agg_cost`` of edge  `(u, v)`"
+msgstr ""
+
+msgid "Some (or all) traveling costs on edges will still might not obey the triangle inequality."
+msgstr ""
+
+msgid "When the data is incomplete, but it is a connected graph:"
+msgstr ""
+
+msgid "the missing values will be calculated with dijkstra algorithm."
+msgstr ""
+
+msgid "Signatures"
+msgstr ""
+
+msgid "Summary"
+msgstr ""
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_TSP(`Matrix SQL`_, ``[start_id, end_id]``)"
+msgstr ""
+
+msgid "RETURNS SET OF |tsp-result|"
+msgstr ""
+
+msgid "OR EMTPY SET"
+msgstr ""
+
+msgid "Example"
+msgstr ""
+
+msgid "Using :doc:`pgr_dijkstraCostMatrix` to generate the matrix information"
+msgstr ""
+
+msgid "**Line 4** Vertices :math:`\\{2, 4, 13, 14\\}` are not included because they are not connected."
+msgstr ""
+
+msgid "Parameters"
+msgstr ""
+
+msgid "Parameter"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "`Matrix SQL`_"
+msgstr ""
+
+msgid "``TEXT``"
+msgstr ""
+
+msgid "`Matrix SQL`_ as described below"
+msgstr ""
+
+msgid "TSP optional parameters"
+msgstr ""
+
+msgid "Column"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "``start_id``"
+msgstr ""
+
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+msgid "``0``"
+msgstr ""
+
+msgid "The first visiting vertex"
+msgstr ""
+
+msgid "When `0` any vertex can become the first visiting vertex."
+msgstr ""
+
+msgid "``end_id``"
+msgstr ""
+
+msgid "Last visiting vertex before returning to ``start_vid``."
+msgstr ""
+
+msgid "When ``0`` any vertex can become the last visiting vertex before returning to ``start_id``."
+msgstr ""
+
+msgid "When ``NOT 0`` and ``start_id = 0`` then it is the first and last vertex"
+msgstr ""
+
+msgid "Inner Queries"
+msgstr ""
+
+msgid "Matrix SQL"
+msgstr ""
+
+msgid "**Matrix SQL**: an SQL query, which should return a set of rows with the following columns:"
+msgstr ""
+
+msgid "**start_vid**"
+msgstr ""
+
+msgid "``ANY-INTEGER``"
+msgstr ""
+
+msgid "Identifier of the starting vertex."
+msgstr ""
+
+msgid "**end_vid**"
+msgstr ""
+
+msgid "Identifier of the ending vertex."
+msgstr ""
+
+msgid "**agg_cost**"
+msgstr ""
+
+msgid "``ANY-NUMERICAL``"
+msgstr ""
+
+msgid "Cost for going from start_vid to end_vid"
+msgstr ""
+
+msgid "Result Columns"
+msgstr ""
+
+msgid "Returns SET OF ``(seq, node, cost, agg_cost)``"
+msgstr ""
+
+msgid "**seq**"
+msgstr ""
+
+msgid "``INTEGER``"
+msgstr ""
+
+msgid "Row sequence."
+msgstr ""
+
+msgid "**node**"
+msgstr ""
+
+msgid "``BIGINT``"
+msgstr ""
+
+msgid "Identifier of the node/coordinate/point."
+msgstr ""
+
+msgid "**cost**"
+msgstr ""
+
+msgid "``FLOAT``"
+msgstr ""
+
+msgid "Cost to traverse from the current ``node`` to the next ``node`` in the path sequence."
+msgstr ""
+
+msgid "``0`` for the last row in the tour sequence."
+msgstr ""
+
+msgid "Aggregate cost from the ``node`` at ``seq = 1`` to the current node."
+msgstr ""
+
+msgid "``0`` for the first row in the tour sequence."
+msgstr ""
+
+msgid "Additional Examples"
+msgstr ""
+
+msgid "Start from vertex :math:`1`"
+msgstr ""
+
+msgid "**Line 6** ``start_vid => 1``"
+msgstr ""
+
+msgid "Using points of interest to generate an asymetric matrix."
+msgstr ""
+
+msgid "To generate an asymmetric matrix:"
+msgstr ""
+
+msgid "**Line 4** The ``side`` information of ``pointsOfInterset`` is ignored by not including it in the query"
+msgstr ""
+
+msgid "**Line 6** Generating an asymetric matrix with ``directed => true``"
+msgstr ""
+
+msgid ":math:`min(agg\\_cost(u, v), agg\\_cost(v, u))` is going to be considered as the ``agg_cost``"
+msgstr ""
+
+msgid "The solution that can be larger than *twice as long as the optimal tour* because:"
+msgstr ""
+
+msgid "Triangle inequality might not be satisfied."
+msgstr ""
+
+msgid "``start_id != 0 AND end_id != 0``"
+msgstr ""
+
+msgid "Connected incomplete data"
+msgstr ""
+
+msgid "Using selected edges :math:`\\{2, 4, 5, 8, 9, 15\\}` the matrix is not complete."
+msgstr ""
+
+msgid "Cost value for :math:`17 \\rightarrow 10` do not exist on the matrix, but the value used is taken from :math:`10 \\rightarrow 17`."
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid ":doc:`TSP-family`"
+msgstr ""
+
+msgid ":doc:`sampledata`"
+msgstr ""
+
+msgid "`Boost's metric appro's metric approximation <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
+msgstr ""
+
+msgid "`Wikipedia: Traveling Salesman Problem <https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""

@@ -1,0 +1,167 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/prim-family.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/prim-family.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/prim-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/prim-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/prim-family.html>`__"
+msgstr ""
+
+msgid "Prim - Family of functions"
+msgstr ""
+
+msgid ":doc:`pgr_prim`"
+msgstr ""
+
+msgid ":doc:`pgr_primBFS`"
+msgstr ""
+
+msgid ":doc:`pgr_primDD`"
+msgstr ""
+
+msgid ":doc:`pgr_primDFS`"
+msgstr ""
+
+msgid "Boost Graph Inside"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "The prim algorithm was developed in 1930 by Czech mathematician Vojtěch Jarník. It is a greedy algorithm that finds a minimum spanning tree for a weighted undirected graph. This means it finds a subset of the edges that forms a tree that includes every vertex, where the total weight of all the edges in the tree is minimized. The algorithm operates by building this tree one vertex at a time, from an arbitrary starting vertex, at each step adding the cheapest possible connection from the tree to another vertex."
+msgstr ""
+
+msgid "This algorithms find the minimum spanning forest in a possibly disconnected graph; in contrast, the most basic form of Prim's algorithm only finds minimum spanning trees in connected graphs. However, running Prim's algorithm separately for each connected component of the graph, then it is called minimum spanning forest."
+msgstr ""
+
+msgid "**The main characteristics are:**"
+msgstr ""
+
+msgid "It's implementation is only on **undirected** graph."
+msgstr ""
+
+msgid "Process is done only on edges with positive costs."
+msgstr ""
+
+msgid "When the graph is connected"
+msgstr ""
+
+msgid "The resulting edges make up a tree"
+msgstr ""
+
+msgid "When the graph is not connected,"
+msgstr ""
+
+msgid "Finds a minimum spanning tree for each connected component."
+msgstr ""
+
+msgid "The resulting edges make up a forest."
+msgstr ""
+
+msgid "Prim's running time: :math:`O(E * log V)`"
+msgstr ""
+
+msgid "From boost Graph: \"The algorithm as implemented in Boost.Graph does not produce correct results on graphs with parallel edges.\""
+msgstr ""
+
+msgid "Inner Queries"
+msgstr ""
+
+msgid "Column"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "``id``"
+msgstr ""
+
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+msgid "Identifier of the edge."
+msgstr ""
+
+msgid "``source``"
+msgstr ""
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+msgid "``target``"
+msgstr ""
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+msgid "``cost``"
+msgstr ""
+
+msgid "**ANY-NUMERICAL**"
+msgstr ""
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr ""
+
+msgid "``reverse_cost``"
+msgstr ""
+
+msgid "-1"
+msgstr ""
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr ""
+
+msgid "When negative: edge (``target``, ``source``) does not exist, therefore it's not part of the graph."
+msgstr ""
+
+msgid "Where:"
+msgstr ""
+
+msgid "ANY-INTEGER"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr ""
+
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid ":doc:`spanningTree-family`"
+msgstr ""
+
+msgid "Boost: `Prim's algorithm <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
+msgstr ""
+
+msgid "Wikipedia: `Prim's algorithm <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""

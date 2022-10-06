@@ -1,0 +1,275 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_transitiveClosure.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_transitiveClosure.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/pgr_transitiveClosure.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_transitiveClosure.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_transitiveClosure.html>`__"
+msgstr ""
+
+msgid "``pgr_transitiveClosure`` - Experimental"
+msgstr ""
+
+msgid "``pgr_transitiveClosure`` — Transitive closure graph of a directed graph."
+msgstr ""
+
+msgid "Boost Graph Inside"
+msgstr ""
+
+msgid "Possible server crash"
+msgstr ""
+
+msgid "These functions might create a server crash"
+msgstr ""
+
+msgid "Experimental functions"
+msgstr ""
+
+msgid "They are not officially of the current release."
+msgstr ""
+
+msgid "They likely will not be officially be part of the next release:"
+msgstr ""
+
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+msgid "Name might change."
+msgstr ""
+
+msgid "Signature might change."
+msgstr ""
+
+msgid "Functionality might change."
+msgstr ""
+
+msgid "pgTap tests might be missing."
+msgstr ""
+
+msgid "Might need c/c++ coding."
+msgstr ""
+
+msgid "May lack documentation."
+msgstr ""
+
+msgid "Documentation if any might need to be rewritten."
+msgstr ""
+
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+
+msgid "Might need a lot of feedback from the comunity."
+msgstr ""
+
+msgid "Might depend on a proposed function of pgRouting"
+msgstr ""
+
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr ""
+
+msgid "Availability"
+msgstr ""
+
+msgid "Version 3.0.0"
+msgstr ""
+
+msgid "New **experimental** function"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Transforms the input directed graph into the transitive closure of the graph."
+msgstr ""
+
+msgid "The main characteristics are:"
+msgstr ""
+
+msgid "Process is valid for directed graphs."
+msgstr ""
+
+msgid "The transitive closure of an undirected graph produces a cluster graph"
+msgstr ""
+
+msgid "Reachability between vertices on an undirected graph happens when they belong to the same connected component. (see :doc:`pgr_connectedComponents`)"
+msgstr ""
+
+msgid "The returned values are not ordered"
+msgstr ""
+
+msgid "The returned graph is compresed"
+msgstr ""
+
+msgid "Running time: :math:`O(|V||E|)`"
+msgstr ""
+
+msgid "Signatures"
+msgstr ""
+
+msgid "Summary"
+msgstr ""
+
+msgid "The pgr_transitiveClosure function has the following signature:"
+msgstr ""
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_transitiveClosure(`Edges SQL`_)"
+msgstr ""
+
+msgid "RETURNS SET OF |result-closure|"
+msgstr ""
+
+msgid "Example"
+msgstr ""
+
+msgid "Rechability of a subgraph"
+msgstr ""
+
+msgid "Parameters"
+msgstr ""
+
+msgid "Parameter"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "`Edges SQL`_"
+msgstr ""
+
+msgid "``TEXT``"
+msgstr ""
+
+msgid "`Edges SQL`_ as described below."
+msgstr ""
+
+msgid "Inner Queries"
+msgstr ""
+
+msgid "Edges SQL"
+msgstr ""
+
+msgid "Column"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "``id``"
+msgstr ""
+
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+msgid "Identifier of the edge."
+msgstr ""
+
+msgid "``source``"
+msgstr ""
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+msgid "``target``"
+msgstr ""
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+msgid "``cost``"
+msgstr ""
+
+msgid "**ANY-NUMERICAL**"
+msgstr ""
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr ""
+
+msgid "``reverse_cost``"
+msgstr ""
+
+msgid "-1"
+msgstr ""
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr ""
+
+msgid "When negative: edge (``target``, ``source``) does not exist, therefore it's not part of the graph."
+msgstr ""
+
+msgid "Where:"
+msgstr ""
+
+msgid "ANY-INTEGER"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr ""
+
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
+
+msgid "Result Columns"
+msgstr ""
+
+msgid "``seq``"
+msgstr ""
+
+msgid "``INTEGER``"
+msgstr ""
+
+msgid "Sequential value starting from :math:`1`"
+msgstr ""
+
+msgid "``vid``"
+msgstr ""
+
+msgid "``BIGINT``"
+msgstr ""
+
+msgid "Identifier of the source of the edges"
+msgstr ""
+
+msgid "``target_array``"
+msgstr ""
+
+msgid "Identifiers of the targets of the edges"
+msgstr ""
+
+msgid "Identifiers of the vertices that are reachable from vertex v."
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid ":doc:`sampledata`"
+msgstr ""
+
+msgid "https://en.wikipedia.org/wiki/Transitive_closure"
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""

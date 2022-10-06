@@ -1,0 +1,419 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_bdDijkstraCost.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_bdDijkstraCost.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/pgr_bdDijkstraCost.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_bdDijkstraCost.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bdDijkstraCost.html>`__"
+msgstr ""
+
+msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bdDijkstraCost.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_bdDijkstraCost.html>`__"
+msgstr ""
+
+msgid "``pgr_bdDijkstraCost``"
+msgstr ""
+
+msgid "``pgr_bdDijkstraCost`` — Returns the shortest path(s)'s cost using Bidirectional Dijkstra algorithm."
+msgstr ""
+
+msgid "Boost Graph Inside"
+msgstr ""
+
+msgid "Availability"
+msgstr ""
+
+msgid "Version 3.2.0"
+msgstr ""
+
+msgid "New **proposed** signature:"
+msgstr ""
+
+msgid "``pgr_bdDijkstraCost`` (`Combinations`_)"
+msgstr ""
+
+msgid "Version 3.0.0"
+msgstr ""
+
+msgid "**Official** function"
+msgstr ""
+
+msgid "Version 2.5.0"
+msgstr ""
+
+msgid "New **proposed** function"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "The ``pgr_bdDijkstraCost`` function sumarizes of the cost of the shortest path using the bidirectional Dijkstra Algorithm."
+msgstr ""
+
+msgid "Process is done only on edges with positive costs."
+msgstr ""
+
+msgid "A negative value on a cost column is interpreted as the edge does not exist."
+msgstr ""
+
+msgid "Values are returned when there is a path."
+msgstr ""
+
+msgid "When there is no path:"
+msgstr ""
+
+msgid "When the starting vertex and ending vertex are the same."
+msgstr ""
+
+msgid "The **aggregate cost** of the non included values :math:`(v, v)` is :math:`0`"
+msgstr ""
+
+msgid "When the starting vertex and ending vertex are the different and there is no path:"
+msgstr ""
+
+msgid "The **aggregate cost** the non included values :math:`(u, v)` is :math:`\\infty`"
+msgstr ""
+
+msgid "For optimization purposes, any duplicated value in the starting vertices or on the ending vertices are ignored."
+msgstr ""
+
+msgid "Running time (worse case scenario): :math:`O((V \\log V + E))`"
+msgstr ""
+
+msgid "For large graphs where there is a path bewtween the starting vertex and ending vertex:"
+msgstr ""
+
+msgid "It is expected to terminate faster than pgr_dijkstra"
+msgstr ""
+
+msgid "It does not return a path."
+msgstr ""
+
+msgid "Returns the sum of the costs of the shortest path of each pair combination of nodes requested."
+msgstr ""
+
+msgid "Let be the case the values returned are stored in a table, so the unique index would be the pair: ``(start_vid, end_vid)``."
+msgstr ""
+
+msgid "Depending on the function and its parameters, the results can be symmetric."
+msgstr ""
+
+msgid "The  **aggregate cost** of :math:`(u, v)` is the same as for :math:`(v, u)`."
+msgstr ""
+
+msgid "Any duplicated value in the start or end vertex identifiers are ignored."
+msgstr ""
+
+msgid "The returned values are ordered:"
+msgstr ""
+
+msgid "``start_vid`` ascending"
+msgstr ""
+
+msgid "``end_vid`` ascending"
+msgstr ""
+
+msgid "Signatures"
+msgstr ""
+
+msgid "Summary"
+msgstr ""
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_bdDijkstraCost(`Edges SQL`_, **start vid**, **end vid** , [``directed``])"
+msgstr ""
+
+msgid "pgr_bdDijkstraCost(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
+msgstr ""
+
+msgid "pgr_bdDijkstraCost(`Edges SQL`_, **start vids**, **end vid** , [``directed``])"
+msgstr ""
+
+msgid "pgr_bdDijkstraCost(`Edges SQL`_, **start vids**, **end vids**, [``directed``])"
+msgstr ""
+
+msgid "pgr_bdDijkstraCost(`Edges SQL`_, `Combinations SQL`_, [ ``directed``])"
+msgstr ""
+
+msgid "RETURNS SET OF |matrix-result|"
+msgstr ""
+
+msgid "OR EMPTY SET"
+msgstr ""
+
+msgid "One to One"
+msgstr ""
+
+msgid "Example"
+msgstr ""
+
+msgid "From vertex :math:`6` to vertex  :math:`10` on a **directed** graph"
+msgstr ""
+
+msgid "One to Many"
+msgstr ""
+
+msgid "From vertex :math:`6` to vertices :math:`\\{10, 17\\}` on a **directed** graph"
+msgstr ""
+
+msgid "Many to One"
+msgstr ""
+
+msgid "From vertices :math:`\\{6, 1\\}` to vertex :math:`17` on a **directed** graph"
+msgstr ""
+
+msgid "Many to Many"
+msgstr ""
+
+msgid "From vertices :math:`\\{6, 1\\}` to vertices :math:`\\{10, 17\\}` on an **undirected** graph"
+msgstr ""
+
+msgid "Combinations"
+msgstr ""
+
+msgid "pgr_bdDijkstraCost(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
+msgstr ""
+
+msgid "Using a combinations table on an **undirected** graph"
+msgstr ""
+
+msgid "The combinations table:"
+msgstr ""
+
+msgid "The query:"
+msgstr ""
+
+msgid "Parameters"
+msgstr ""
+
+msgid "Column"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "`Edges SQL`_"
+msgstr ""
+
+msgid "``TEXT``"
+msgstr ""
+
+msgid "`Edges SQL`_ as described below"
+msgstr ""
+
+msgid "`Combinations SQL`_"
+msgstr ""
+
+msgid "`Combinations SQL`_ as described below"
+msgstr ""
+
+msgid "**start vid**"
+msgstr ""
+
+msgid "``BIGINT``"
+msgstr ""
+
+msgid "Identifier of the starting vertex of the path."
+msgstr ""
+
+msgid "**start vids**"
+msgstr ""
+
+msgid "``ARRAY[BIGINT]``"
+msgstr ""
+
+msgid "Array of identifiers of starting vertices."
+msgstr ""
+
+msgid "**end vid**"
+msgstr ""
+
+msgid "Identifier of the ending vertex of the path."
+msgstr ""
+
+msgid "**end vids**"
+msgstr ""
+
+msgid "Array of identifiers of ending vertices."
+msgstr ""
+
+msgid "Optional parameters"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "``directed``"
+msgstr ""
+
+msgid "``BOOLEAN``"
+msgstr ""
+
+msgid "``true``"
+msgstr ""
+
+msgid "When ``true`` the graph is considered `Directed`"
+msgstr ""
+
+msgid "When ``false`` the graph is considered as `Undirected`."
+msgstr ""
+
+msgid "Inner Queries"
+msgstr ""
+
+msgid "Edges SQL"
+msgstr ""
+
+msgid "``id``"
+msgstr ""
+
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+msgid "Identifier of the edge."
+msgstr ""
+
+msgid "``source``"
+msgstr ""
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+msgid "``target``"
+msgstr ""
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+msgid "``cost``"
+msgstr ""
+
+msgid "**ANY-NUMERICAL**"
+msgstr ""
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr ""
+
+msgid "``reverse_cost``"
+msgstr ""
+
+msgid "-1"
+msgstr ""
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr ""
+
+msgid "When negative: edge (``target``, ``source``) does not exist, therefore it's not part of the graph."
+msgstr ""
+
+msgid "Where:"
+msgstr ""
+
+msgid "ANY-INTEGER"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr ""
+
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
+
+msgid "Combinations SQL"
+msgstr ""
+
+msgid "Parameter"
+msgstr ""
+
+msgid "Identifier of the departure vertex."
+msgstr ""
+
+msgid "Identifier of the arrival vertex."
+msgstr ""
+
+msgid "Result Columns"
+msgstr ""
+
+msgid "Set of |matrix-result|"
+msgstr ""
+
+msgid "``start_vid``"
+msgstr ""
+
+msgid "Identifier of the starting vertex."
+msgstr ""
+
+msgid "``end_vid``"
+msgstr ""
+
+msgid "Identifier of the ending vertex."
+msgstr ""
+
+msgid "``agg_cost``"
+msgstr ""
+
+msgid "``FLOAT``"
+msgstr ""
+
+msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
+msgstr ""
+
+msgid "Additional Examples"
+msgstr ""
+
+msgid "Example 1"
+msgstr ""
+
+msgid "Demonstration of repeated values are ignored, and result is sorted."
+msgstr ""
+
+msgid "Example 2"
+msgstr ""
+
+msgid "Making **start vids** the same as **end vids**."
+msgstr ""
+
+msgid "Example 3"
+msgstr ""
+
+msgid "Manually assigned vertex combinations."
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid ":doc:`bdDijkstra-family`"
+msgstr ""
+
+msgid ":doc:`sampledata`"
+msgstr ""
+
+msgid "https://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf"
+msgstr ""
+
+msgid "https://en.wikipedia.org/wiki/Bidirectional_search"
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""

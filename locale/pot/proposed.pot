@@ -1,0 +1,161 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/proposed.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/proposed.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/proposed.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/proposed.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/proposed.html>`__"
+msgstr ""
+
+msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/proposed.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/proposed.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/proposed.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/proposed.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/proposed.html>`__"
+msgstr ""
+
+msgid "Proposed Functions"
+msgstr ""
+
+msgid "Proposed functions for next mayor release."
+msgstr ""
+
+msgid "They are not officially in the current release."
+msgstr ""
+
+msgid "They will likely officially be part of the next mayor release:"
+msgstr ""
+
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+msgid "Name might not change. (But still can)"
+msgstr ""
+
+msgid "Signature might not change. (But still can)"
+msgstr ""
+
+msgid "Functionality might not change. (But still can)"
+msgstr ""
+
+msgid "pgTap tests have being done. But might need more."
+msgstr ""
+
+msgid "Documentation might need refinement."
+msgstr ""
+
+msgid "Families"
+msgstr ""
+
+msgid ":doc:`dijkstra-family`"
+msgstr ""
+
+msgid ":doc:`pgr_dijkstraVia` - Get a route of a seuence of vertices."
+msgstr ""
+
+msgid ":doc:`pgr_dijkstraNear` - Get the route to the nearest vertex."
+msgstr ""
+
+msgid ":doc:`pgr_dijkstraNearCost` - Get the cost to the nearest vertex."
+msgstr ""
+
+msgid ":doc:`withPoints-family`"
+msgstr ""
+
+msgid ":doc:`pgr_withPoints` - Route from/to points anywhere on the graph."
+msgstr ""
+
+msgid ":doc:`pgr_withPointsCost` - Costs of the shortest paths."
+msgstr ""
+
+msgid ":doc:`pgr_withPointsCostMatrix` - Costs of the shortest paths."
+msgstr ""
+
+msgid ":doc:`pgr_withPointsKSP` - K shortest paths."
+msgstr ""
+
+msgid ":doc:`pgr_withPointsDD` - Driving distance."
+msgstr ""
+
+msgid ":doc:`topology-functions`"
+msgstr ""
+
+msgid "These proposed functions do not modify the database."
+msgstr ""
+
+msgid ":doc:`pgr_extractVertices` - Extracts vertex information based on the edge table information."
+msgstr ""
+
+msgid ":doc:`coloring-family`"
+msgstr ""
+
+msgid ":doc:`pgr_sequentialVertexColoring` - Vertex coloring algorithm using greedy approach."
+msgstr ""
+
+msgid ":doc:`traversal-family`"
+msgstr ""
+
+msgid ":doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph."
+msgstr ""
+
+msgid "categories"
+msgstr ""
+
+msgid ":doc:`cost-category`"
+msgstr ""
+
+msgid ":doc:`pgr_withPointsCost`"
+msgstr ""
+
+msgid ":doc:`costMatrix-category`"
+msgstr ""
+
+msgid ":doc:`pgr_withPointsCostMatrix`"
+msgstr ""
+
+msgid ":doc:`drivingDistance-category`"
+msgstr ""
+
+msgid ":doc:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints"
+msgstr ""
+
+msgid ":doc:`KSP-category`"
+msgstr ""
+
+msgid ":doc:`pgr_withPointsKSP` - Yen's algorithm based on pgr_withPoints"
+msgstr ""
+
+msgid ":doc:`via-category`"
+msgstr ""
+
+msgid ":doc:`pgr_dijkstraVia`"
+msgstr ""
+
+msgid ":doc:`withPoints-category`"
+msgstr ""
+
+msgid ":doc:`withPoints-family` - Functions based on Dijkstra algorithm."
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid ":doc:`experimental`"
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""

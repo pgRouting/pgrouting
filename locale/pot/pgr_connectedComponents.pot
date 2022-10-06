@@ -1,0 +1,308 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_connectedComponents.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_connectedComponents.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/pgr_connectedComponents.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_connectedComponents.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_connectedComponents.html>`__"
+msgstr ""
+
+msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_connectedComponents.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_connectedComponents.html>`__"
+msgstr ""
+
+msgid "pgr_connectedComponents"
+msgstr ""
+
+msgid "``pgr_connectedComponents`` — Connected components of an undirected graph using a DFS-based approach."
+msgstr ""
+
+msgid "Boost Graph Inside"
+msgstr ""
+
+msgid "Availability"
+msgstr ""
+
+msgid "Version 3.0.0"
+msgstr ""
+
+msgid "Return columns change:"
+msgstr ""
+
+msgid "``n_seq`` is removed"
+msgstr ""
+
+msgid "``seq`` changed type to ``BIGINT``"
+msgstr ""
+
+msgid "**Official** function"
+msgstr ""
+
+msgid "Version 2.5.0"
+msgstr ""
+
+msgid "New **experimental** function"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "A connected component of an undirected graph is a set of vertices that are all reachable from each other."
+msgstr ""
+
+msgid "**The main characteristics are:**"
+msgstr ""
+
+msgid "Works for **undirected** graphs."
+msgstr ""
+
+msgid "Components are described by vertices"
+msgstr ""
+
+msgid "The returned values are ordered:"
+msgstr ""
+
+msgid "``component`` ascending"
+msgstr ""
+
+msgid "``node`` ascending"
+msgstr ""
+
+msgid "Running time: :math:`O(V + E)`"
+msgstr ""
+
+msgid "Signatures"
+msgstr ""
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_connectedComponents(`Edges SQL`_)"
+msgstr ""
+
+msgid "RETURNS SET OF |result-component-V|"
+msgstr ""
+
+msgid "OR EMPTY SET"
+msgstr ""
+
+msgid "Example"
+msgstr ""
+
+msgid "The connected components of the graph"
+msgstr ""
+
+msgid "Parameters"
+msgstr ""
+
+msgid "Parameter"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "`Edges SQL`_"
+msgstr ""
+
+msgid "``TEXT``"
+msgstr ""
+
+msgid "`Edges SQL`_ as described below."
+msgstr ""
+
+msgid "Inner Queries"
+msgstr ""
+
+msgid "Edges SQL"
+msgstr ""
+
+msgid "Column"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "``id``"
+msgstr ""
+
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+msgid "Identifier of the edge."
+msgstr ""
+
+msgid "``source``"
+msgstr ""
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+msgid "``target``"
+msgstr ""
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+msgid "``cost``"
+msgstr ""
+
+msgid "**ANY-NUMERICAL**"
+msgstr ""
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr ""
+
+msgid "``reverse_cost``"
+msgstr ""
+
+msgid "-1"
+msgstr ""
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr ""
+
+msgid "When negative: edge (``target``, ``source``) does not exist, therefore it's not part of the graph."
+msgstr ""
+
+msgid "Where:"
+msgstr ""
+
+msgid "ANY-INTEGER"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr ""
+
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
+
+msgid "Result Columns"
+msgstr ""
+
+msgid "Returns set of |result-component-V|"
+msgstr ""
+
+msgid "``seq``"
+msgstr ""
+
+msgid "``BIGINT``"
+msgstr ""
+
+msgid "Sequential value starting from **1**."
+msgstr ""
+
+msgid "``component``"
+msgstr ""
+
+msgid "Component identifier."
+msgstr ""
+
+msgid "Has the value of the minimum node identifier in the component."
+msgstr ""
+
+msgid "``node``"
+msgstr ""
+
+msgid "Identifier of the vertex that belongs to the ``component``."
+msgstr ""
+
+msgid "Additional Examples"
+msgstr ""
+
+msgid "Connecting disconnected components"
+msgstr ""
+
+msgid "To get the graph connectivity:"
+msgstr ""
+
+msgid "In this example, the component :math:`2` consists of vertices :math:`\\{2, 4\\}` and both vertices are also part of the dead end result set."
+msgstr ""
+
+msgid "This graph needs to be connected."
+msgstr ""
+
+msgid "With the original graph of this documentation, there would be 3 components as the crossing edge in this graph is a different component."
+msgstr ""
+
+msgid "Prepare storage for connection information"
+msgstr ""
+
+msgid "Save the vertices connection information"
+msgstr ""
+
+msgid "Save the edges connection information"
+msgstr ""
+
+msgid "Get the closest vertex"
+msgstr ""
+
+msgid "The closest vertex to component :math:`1` is vertex :math:`4`. And the closest edge to vertex :math:`4` is edge :math:`14`."
+msgstr ""
+
+msgid "The ``edge`` can be used to connect the components, using the ``fraction`` information about the edge :math:`14` to split the connecting edge."
+msgstr ""
+
+msgid "Connecting components"
+msgstr ""
+
+msgid "There are three basic ways to connect the components"
+msgstr ""
+
+msgid "From the vertex to the starting point of the edge"
+msgstr ""
+
+msgid "From the vertex to the ending point of the edge"
+msgstr ""
+
+msgid "From the vertex to the closest vertex on the edge"
+msgstr ""
+
+msgid "This solution requires the edge to be split."
+msgstr ""
+
+msgid "The following query shows the three ways to connect the components:"
+msgstr ""
+
+msgid "Checking components"
+msgstr ""
+
+msgid "Ignoring the edge that requires further work. The graph is now fully connected as there is only one component."
+msgstr ""
+
+msgid "See Also"
+msgstr ""
+
+msgid ":doc:`components-family`"
+msgstr ""
+
+msgid "The queries use the :doc:`sampledata` network."
+msgstr ""
+
+msgid "Boost: `Connected components <https://www.boost.org/libs/graph/doc/connected_components.html>`__"
+msgstr ""
+
+msgid "wikipedia: `Connected component <https://en.wikipedia.org/wiki/Connected_component_(graph_theory)>`__"
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""

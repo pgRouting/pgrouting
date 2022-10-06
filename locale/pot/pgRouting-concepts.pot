@@ -1,0 +1,1604 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.3.4
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 14:22-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgRouting-concepts.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/pgRouting-concepts.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/pgRouting-concepts.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgRouting-concepts.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgRouting-concepts.html>`__"
+msgstr ""
+
+msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgRouting-concepts.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgRouting-concepts.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgRouting-concepts.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/doc/src/tutorial/index.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/doc/src/tutorial/index.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/doc/src/tutorial/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/doc/src/tutorial/index.html>`__"
+msgstr ""
+
+msgid "pgRouting Concepts"
+msgstr ""
+
+msgid "This is a simple guide that go through some of the steps for getting started with pgRouting. This guide covers:"
+msgstr ""
+
+msgid "Graphs"
+msgstr ""
+
+msgid "Graph definition"
+msgstr ""
+
+msgid "A graph is an ordered pair :math:`G = (V ,E)` where:"
+msgstr ""
+
+msgid ":math:`V` is a set of vertices, also called nodes."
+msgstr ""
+
+msgid ":math:`E \\subseteq \\{( u, v ) \\mid u , v \\in V \\}`"
+msgstr ""
+
+msgid "There are different kinds of graphs:"
+msgstr ""
+
+msgid "Undirected graph"
+msgstr ""
+
+msgid ":math:`E \\subseteq \\{( u, v ) \\mid u , v \\in V\\}`"
+msgstr ""
+
+msgid "Undirected simple graph"
+msgstr ""
+
+msgid ":math:`E \\subseteq \\{( u, v ) \\mid u , v \\in V, u \\neq v\\}`"
+msgstr ""
+
+msgid "Directed graph"
+msgstr ""
+
+msgid ":math:`E \\subseteq \\{( u, v ) \\mid (u , v) \\in (V X V) \\}`"
+msgstr ""
+
+msgid "Directed simple graph"
+msgstr ""
+
+msgid ":math:`E \\subseteq \\{( u, v ) \\mid (u , v) \\in (V X V), u \\neq v\\}`"
+msgstr ""
+
+msgid "Graphs:"
+msgstr ""
+
+msgid "Do not have geometries."
+msgstr ""
+
+msgid "Some graph theory problems require graphs to have weights, called **cost** in pgRouting."
+msgstr ""
+
+msgid "In pgRouting there are several ways to represent a graph on the database:"
+msgstr ""
+
+msgid "With ``cost``"
+msgstr ""
+
+msgid "(``id``, ``source``, ``target``, ``cost``)"
+msgstr ""
+
+msgid "With ``cost`` and ``reverse_cost``"
+msgstr ""
+
+msgid "(``id``, ``source``, ``target``, ``cost``, ``reverse_cost``)"
+msgstr ""
+
+msgid "Where:"
+msgstr ""
+
+msgid "Column"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "``id``"
+msgstr ""
+
+msgid "Identifier of the edge. Requirement to use the database in a consistent. manner."
+msgstr ""
+
+msgid "``source``"
+msgstr ""
+
+msgid "Identifier of a vertex."
+msgstr ""
+
+msgid "``target``"
+msgstr ""
+
+msgid "``cost``"
+msgstr ""
+
+msgid "Weight of the edge (``source``, ``target``):"
+msgstr ""
+
+msgid "When negative the edge (``source``, ``target``) do not exist on the graph."
+msgstr ""
+
+msgid "``cost`` must exist in the query."
+msgstr ""
+
+msgid "``reverse_cost``"
+msgstr ""
+
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr ""
+
+msgid "When negative the edge (``target``, ``source``) do not exist on the graph."
+msgstr ""
+
+msgid "The decision of the graph to be **directed** or **undirected** is done when executing a pgRouting algorithm."
+msgstr ""
+
+msgid "Graph with ``cost``"
+msgstr ""
+
+msgid "The weighted directed graph, :math:`G_d(V,E)`:"
+msgstr ""
+
+msgid "Graph data is obtained with a query"
+msgstr ""
+
+msgid "``SELECT id, source, target, cost FROM edges``"
+msgstr ""
+
+msgid "the set of edges :math:`E`"
+msgstr ""
+
+msgid ":math:`E = \\{(source_{id}, target_{id}, cost_{id}) \\text{ when } cost_{id} \\ge 0 \\}`"
+msgstr ""
+
+msgid "Edges where ``cost`` is non negative are part of the graph."
+msgstr ""
+
+msgid "the set of vertices  :math:`V`"
+msgstr ""
+
+msgid ":math:`V = \\{source_{id} \\cup target_{id}\\}`"
+msgstr ""
+
+msgid "All vertices in ``source`` and ``target`` are part of the graph."
+msgstr ""
+
+msgid "In a directed graph the edge :math:`(source_{id}, target_{id}, cost_{id})` has directionality: :math:`source_{id} \\rightarrow target_{id}`"
+msgstr ""
+
+msgid "For the following data:"
+msgstr ""
+
+msgid "Edge :math:`2` (:math:`1 \\rightarrow 3`) is not part of the graph."
+msgstr ""
+
+msgid "The data is representing the following graph:"
+msgstr ""
+
+msgid "In an undirected graph the edge :math:`(source_{id}, target_{id}, cost_{id})` does not have directionality: :math:`source_{id} \\frac{\\;\\;\\;\\;\\;}{} target_{id}`"
+msgstr ""
+
+msgid "In terms of a directed graph is like having two edges: :math:`source_{id} \\leftrightarrow target_{id}`"
+msgstr ""
+
+msgid "Edge :math:`2` (:math:`1  \\frac{\\;\\;\\;\\;\\;}{} 3`) is not part of the graph."
+msgstr ""
+
+msgid "Graph with ``cost`` and ``reverse_cost``"
+msgstr ""
+
+msgid "The weighted directed graph, :math:`G_d(V,E)`, is defined by:"
+msgstr ""
+
+msgid "``SELECT id, source, target, cost, reverse_cost FROM edges``"
+msgstr ""
+
+msgid "The set of edges :math:`E`:"
+msgstr ""
+
+msgid ":math:`E = \\begin{split} \\begin{align} & {\\{(source_{id}, target_{id}, cost_{id}) \\text{ when } cost_{id} >=0 \\}} \\\\ & \\cup \\\\ & {\\{(target_{id}, source_{id}, reverse\\_cost_{id}) \\text{ when } reverse\\_cost_{id} >=0 \\}} \\end{align} \\end{split}`"
+msgstr ""
+
+msgid "Edges :math:`(source \\rightarrow target)` where ``cost`` is non negative are part of the graph."
+msgstr ""
+
+msgid "Edges :math:`(target \\rightarrow source)` where ``reverse_cost`` is non negative are part of the graph."
+msgstr ""
+
+msgid "The set of vertices  :math:`V`:"
+msgstr ""
+
+msgid "In a directed graph both edges have directionality"
+msgstr ""
+
+msgid "edge :math:`(source_{id}, target_{id}, cost_{id})` has directionality: :math:`source_{id} \\rightarrow target_{id}`"
+msgstr ""
+
+msgid "edge :math:`(target_{id}, source_{id}, reverse\\_cost_{id})` has directionality: :math:`target_{id} \\rightarrow source_{id}`"
+msgstr ""
+
+msgid "Edges not part of the graph:"
+msgstr ""
+
+msgid ":math:`2` (:math:`1  \\rightarrow 3`)"
+msgstr ""
+
+msgid ":math:`3` (:math:`3  \\rightarrow 2`)"
+msgstr ""
+
+msgid "In a directed graph both edges do not have directionality"
+msgstr ""
+
+msgid "Edge :math:`(source_{id}, target_{id}, cost_{id})` is :math:`source_{id} \\frac{\\;\\;\\;\\;\\;}{} target_{id}`"
+msgstr ""
+
+msgid "Edge :math:`(target_{id}, source_{id}, reverse\\_cost_{id})` is :math:`target_{id} \\frac{\\;\\;\\;\\;\\;}{} source_{id}`"
+msgstr ""
+
+msgid "In terms of a directed graph is like having four edges:"
+msgstr ""
+
+msgid ":math:`source_i \\leftrightarrow target_i`"
+msgstr ""
+
+msgid ":math:`target_i \\leftrightarrow source_i`"
+msgstr ""
+
+msgid ":math:`2` (:math:`1  \\frac{\\;\\;\\;\\;\\;}{} 3`)"
+msgstr ""
+
+msgid ":math:`3` (:math:`3  \\frac{\\;\\;\\;\\;\\;}{} 2`)"
+msgstr ""
+
+msgid "Graphs without geometries"
+msgstr ""
+
+msgid "Personal relationships, genealogy, file dependency problems can be solved using pgRouting. Those problems, normally,  do not come with geometries associated with the graph."
+msgstr ""
+
+msgid "Wiki example"
+msgstr ""
+
+msgid "Solve the example problem taken from `wikipedia <https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm>`__):"
+msgstr ""
+
+msgid "Problem is to find the shortest path from :math:`1` to :math:`5`."
+msgstr ""
+
+msgid "Is an undirected graph."
+msgstr ""
+
+msgid "Although visually looks like to have geometries, the drawing is not to scale."
+msgstr ""
+
+msgid "No geometries associated to the vertices or edges"
+msgstr ""
+
+msgid "Has 6 vertices :math:`\\{1,2,3,4,5,6\\}`"
+msgstr ""
+
+msgid "Has 9 edges:"
+msgstr ""
+
+msgid ":math:`\\begin{split} \\begin{align} E = & \\{(1,2,7), (1,3,9), (1,6,14), \\\\ & (2,3,10), (2,4,13), \\\\ & (3,4,11), (3,6,2), \\\\ & (4,5,6), \\\\ & (5,6,9) \\} \\end{align} \\end{split}`"
+msgstr ""
+
+msgid "The graph can be represented in many ways for example:"
+msgstr ""
+
+msgid "Prepare the database"
+msgstr ""
+
+msgid "Create a database for the example, access the database and install pgRouting: ::"
+msgstr ""
+
+msgid "Create a table"
+msgstr ""
+
+msgid "The basic elements needed to perform basic routing on an undirected graph are:"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+msgid "Identifier of the edge."
+msgstr ""
+
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+msgid "**ANY-NUMERICAL**"
+msgstr ""
+
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr ""
+
+msgid "ANY-INTEGER"
+msgstr ""
+
+msgid "SMALLINT, INTEGER, BIGINT"
+msgstr ""
+
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+msgstr ""
+
+msgid "Using this table design for this example:"
+msgstr ""
+
+msgid "Insert the data"
+msgstr ""
+
+msgid "Find the shortest path"
+msgstr ""
+
+msgid "To solve this example :doc:`pgr_dijkstra` is used:"
+msgstr ""
+
+msgid "To go from :math:`1` to :math:`5` the path goes thru the following vertices: :math:`1 \\rightarrow 3 \\rightarrow 6 \\rightarrow 5`"
+msgstr ""
+
+msgid "Vertex information"
+msgstr ""
+
+msgid "To obtain the vertices information, use :doc:`pgr_extractVertices`"
+msgstr ""
+
+msgid "Graphs with geometries"
+msgstr ""
+
+msgid "Create a routing Database"
+msgstr ""
+
+msgid "The first step is to create a database and load pgRouting in the database."
+msgstr ""
+
+msgid "Typically create a database for each project."
+msgstr ""
+
+msgid "Once having the database to work in, load your data and build the routing application in that database."
+msgstr ""
+
+msgid "Load Data"
+msgstr ""
+
+msgid "There are several ways to load your data into pgRouting."
+msgstr ""
+
+msgid "Manually creating a database."
+msgstr ""
+
+msgid "`Graphs without geometries`_"
+msgstr ""
+
+msgid ":doc:`sampledata`: a small graph used on the documentation examples"
+msgstr ""
+
+msgid "Using `osm2pgrouting <https://workshop.pgrouting.org/latest/en/basic/data.html>`__"
+msgstr ""
+
+msgid "There are various open source tools that can help, like:"
+msgstr ""
+
+msgid "shp2pgsql"
+msgstr ""
+
+msgid "postgresql shapefile loader"
+msgstr ""
+
+msgid "ogr2ogr"
+msgstr ""
+
+msgid "vector data conversion utility"
+msgstr ""
+
+msgid "osm2pgsql"
+msgstr ""
+
+msgid "load OSM data into postgresql"
+msgstr ""
+
+msgid "Please note that these tools will **not** import the data in a structure compatible with pgRouting and when this happens the topology needs to be adjusted."
+msgstr ""
+
+msgid "Breakup a segments on each segment-segment intersection"
+msgstr ""
+
+msgid "When missing, add columns and assign values to ``source``, ``target``, ``cost``, ``reverse_cost``."
+msgstr ""
+
+msgid "Connect a disconnected graph."
+msgstr ""
+
+msgid "Create the complete graph topology"
+msgstr ""
+
+msgid "Create one or more graphs based on the application to be developed."
+msgstr ""
+
+msgid "Create a contracted graph for the high speed roads"
+msgstr ""
+
+msgid "Create graphs per state/country"
+msgstr ""
+
+msgid "In few words:"
+msgstr ""
+
+msgid "Prepare the graph"
+msgstr ""
+
+msgid "What and how to prepare the graph, will depend on the application and/or on the quality of the data and/or on how close the information is to have a topology usable by pgRouting and/or some other factors not mentioned."
+msgstr ""
+
+msgid "The steps to prepare the graph involve geometry operations using `PostGIS <https://postgis.net/>`__ and some others involve graph operations like :doc:`pgr_contraction` to contract a graph."
+msgstr ""
+
+msgid "The `workshop <https://workshop.pgrouting.org/latest>`__ has a step by step on how to prepare a graph using Open Street Map data, for a small application."
+msgstr ""
+
+msgid "The use of indexes on the database design in general:"
+msgstr ""
+
+msgid "Have the geometries indexed."
+msgstr ""
+
+msgid "Have the identifiers columns indexed."
+msgstr ""
+
+msgid "Please consult the `PostgreSQL <https://www.postgresql.org/docs/>`__ documentation and the `PostGIS <https://postgis.net/>`__ documentation."
+msgstr ""
+
+msgid "Build a routing topology"
+msgstr ""
+
+msgid "The basic information to use the majority of the pgRouting functions ``id, source, target, cost, [reverse_cost]`` is what in pgRouting is called the routing topology."
+msgstr ""
+
+msgid "``reverse_cost`` is optional but strongly recommended to have in order to reduce the size of the database due to the size of the geometry columns. Having said that, in this documentation ``reverse_cost`` is used in this documentation."
+msgstr ""
+
+msgid "When the data comes with geometries and there is no routing topology, then this step is needed."
+msgstr ""
+
+msgid "All the start and end vertices of the geometries need an identifier that is to be stored in a ``source`` and ``target`` columns of the table of the data. Likewise, ``cost`` and ``reverse_cost`` need to have the value of traversing the edge in both directions."
+msgstr ""
+
+msgid "If the columns do not exist they need to be added to the table in question. (see `ALTER TABLE <https://www.postgresql.org/docs/current/sql-altertable.html>`__)"
+msgstr ""
+
+msgid "The function :doc:`pgr_extractVertices` is used to create a vertices table based on the edge identifier and the geometry of the edge of the graph."
+msgstr ""
+
+msgid "Finally using the data stored on the vertices tables the ``source`` and ``target`` are filled up."
+msgstr ""
+
+msgid "See :doc:`sampledata` for an example for building a topology."
+msgstr ""
+
+msgid "Data coming from OSM and using `osm2pgrouting <https://github.com/pgRouting/osm2pgrouting>`__ as an import tool, comes with the routing topology. See an example of using ``osm2pgrouting`` on the `workshop <https://workshop.pgrouting.org/latest/en/basic/data.html>`__."
+msgstr ""
+
+msgid "Adjust costs"
+msgstr ""
+
+msgid "For this example the ``cost`` and ``reverse_cost`` values are going to be the double of the length of the geometry."
+msgstr ""
+
+msgid "Update costs to length of geometry"
+msgstr ""
+
+msgid "Suppose that ``cost`` and ``reverse_cost`` columns in the sample data represent:"
+msgstr ""
+
+msgid ":math:`1` when the edge exists in the graph"
+msgstr ""
+
+msgid ":math:`-1` when the edge does not exist in the graph"
+msgstr ""
+
+msgid "Using that information updating to the length of the geometries:"
+msgstr ""
+
+msgid "Which gives the following results:"
+msgstr ""
+
+msgid "Note that to be able to follow the documentation examples, everything is based on the original graph."
+msgstr ""
+
+msgid "Returning to the original data:"
+msgstr ""
+
+msgid "Update costs based on codes"
+msgstr ""
+
+msgid "Other datasets, can have a column with values like"
+msgstr ""
+
+msgid "``FT`` vehicle flow on the direction of the geometry"
+msgstr ""
+
+msgid "``TF`` vehicle flow opposite of the direction of the geometry"
+msgstr ""
+
+msgid "``B`` vehicle flow on both directions"
+msgstr ""
+
+msgid "Preparing a code column for the example:"
+msgstr ""
+
+msgid "Adjusting the costs based on the codes:"
+msgstr ""
+
+msgid "Check the Routing Topology"
+msgstr ""
+
+msgid "There are lots of possible problems in a graph."
+msgstr ""
+
+msgid "The data used may not have been designed with routing in mind."
+msgstr ""
+
+msgid "A graph has some very specific requirements."
+msgstr ""
+
+msgid "The graph is disconnected."
+msgstr ""
+
+msgid "There are unwanted intersections."
+msgstr ""
+
+msgid "The graph is too large and needs to be contracted."
+msgstr ""
+
+msgid "A sub graph is needed for the application."
+msgstr ""
+
+msgid "and many other problems that the pgRouting user, that is the application developer might encounter."
+msgstr ""
+
+msgid "Crossing edges"
+msgstr ""
+
+msgid "To get the crossing edges:"
+msgstr ""
+
+msgid "That information is correct, for example, when in terms of vehicles, is it a tunnel or bride crossing over another road."
+msgstr ""
+
+msgid "It might be incorrect, for example:"
+msgstr ""
+
+msgid "When it is actually an intersection of roads, where vehicles can make turns."
+msgstr ""
+
+msgid "When in terms of electrical lines, the electrical line is able to switch roads even on a tunnel or bridge."
+msgstr ""
+
+msgid "When it is incorrect, it needs fixing:"
+msgstr ""
+
+msgid "For vehicles and pedestrians"
+msgstr ""
+
+msgid "If the data comes from OSM and was imported to the database using ``osm2pgrouting``, the fix needs to be done in the `OSM portal <https://www.openstreetmap.org>`__ and the data imported again."
+msgstr ""
+
+msgid "In general when the data comes from a supplier that has the data prepared for routing vehicles, and there is a problem, the data is to be fixed from the supplier"
+msgstr ""
+
+msgid "For very specific applications"
+msgstr ""
+
+msgid "The data is correct when from the point of view of routing vehicles or pedestrians."
+msgstr ""
+
+msgid "The data needs a local fix for the specific application."
+msgstr ""
+
+msgid "Once analyzed one by one the crossings, for the ones that need a local fix, the edges need to be `split <https://postgis.net/docs/ST_Split.html>`__."
+msgstr ""
+
+msgid "The new edges need to be added to the edges table, the rest of the attributes need to be updated in the new edges, the old edges need to be removed and the routing topology needs to be updated."
+msgstr ""
+
+msgid "Adding split edges"
+msgstr ""
+
+msgid "For each pair of crossing edges a process similar to this one must be performed."
+msgstr ""
+
+msgid "The columns inserted and the way are calculated are based on the application. For example, if the edges have a trait **name**, then that column is to be copied."
+msgstr ""
+
+msgid "For pgRouting calculations"
+msgstr ""
+
+msgid "**factor** based on the position of the intersection of the edges can be used to adjust the ``cost`` and ``reverse_cost`` columns."
+msgstr ""
+
+msgid "Capacity information, used on the :doc:`flow-family` functions does not need to change when splitting edges."
+msgstr ""
+
+msgid "Adding new vertices"
+msgstr ""
+
+msgid "After adding all the split edges required by the application, the newly created vertices need to be added to the vertices table."
+msgstr ""
+
+msgid "Updating edges topology"
+msgstr ""
+
+msgid "Removing the surplus edges"
+msgstr ""
+
+msgid "Once all significant information needed by the application has been transported to the new edges, then the crossing edges can be deleted."
+msgstr ""
+
+msgid "There are other options to do this task, like creating a view, or a materialized view."
+msgstr ""
+
+msgid "Updating vertices topology"
+msgstr ""
+
+msgid "To keep the graph consistent, the vertices topology needs to be updated"
+msgstr ""
+
+msgid "Checking for crossing edges"
+msgstr ""
+
+msgid "There are no crossing edges on the graph."
+msgstr ""
+
+msgid "Disconnected graphs"
+msgstr ""
+
+msgid "To get the graph connectivity:"
+msgstr ""
+
+msgid "In this example, the component :math:`2` consists of vertices :math:`\\{2, 4\\}` and both vertices are also part of the dead end result set."
+msgstr ""
+
+msgid "This graph needs to be connected."
+msgstr ""
+
+msgid "With the original graph of this documentation, there would be 3 components as the crossing edge in this graph is a different component."
+msgstr ""
+
+msgid "Prepare storage for connection information"
+msgstr ""
+
+msgid "Save the vertices connection information"
+msgstr ""
+
+msgid "Save the edges connection information"
+msgstr ""
+
+msgid "Get the closest vertex"
+msgstr ""
+
+msgid "The closest vertex to component :math:`1` is vertex :math:`4`. And the closest edge to vertex :math:`4` is edge :math:`14`."
+msgstr ""
+
+msgid "The ``edge`` can be used to connect the components, using the ``fraction`` information about the edge :math:`14` to split the connecting edge."
+msgstr ""
+
+msgid "Connecting components"
+msgstr ""
+
+msgid "There are three basic ways to connect the components"
+msgstr ""
+
+msgid "From the vertex to the starting point of the edge"
+msgstr ""
+
+msgid "From the vertex to the ending point of the edge"
+msgstr ""
+
+msgid "From the vertex to the closest vertex on the edge"
+msgstr ""
+
+msgid "This solution requires the edge to be split."
+msgstr ""
+
+msgid "The following query shows the three ways to connect the components:"
+msgstr ""
+
+msgid "Checking components"
+msgstr ""
+
+msgid "Ignoring the edge that requires further work. The graph is now fully connected as there is only one component."
+msgstr ""
+
+msgid "Contraction of a graph"
+msgstr ""
+
+msgid "The graph can be reduced in size using :doc:`contraction-family`"
+msgstr ""
+
+msgid "When to contract will depend on the size of the graph, processing times, correctness of the data, on the final application, or any other factor not mentioned."
+msgstr ""
+
+msgid "A fairly good method of finding out if contraction can be useful is because of the number of dead ends and/or the number of linear edges."
+msgstr ""
+
+msgid "A complete method on how to contract and how to use the contracted graph is described on :doc:`contraction-family`"
+msgstr ""
+
+msgid "Dead ends"
+msgstr ""
+
+msgid "To get the dead ends:"
+msgstr ""
+
+msgid "That information is correct, for example, when the dead end is on the limit of the imported graph."
+msgstr ""
+
+msgid "Visually node :math:`4` looks to be as start/ending of 3 edges, but it is not."
+msgstr ""
+
+msgid "Is that correct?"
+msgstr ""
+
+msgid "Is there such a small curb:"
+msgstr ""
+
+msgid "That does not allow a vehicle to use that visual intersection?"
+msgstr ""
+
+msgid "Is the application for pedestrians and therefore the pedestrian can easily walk on the small curb?"
+msgstr ""
+
+msgid "Is the application for the electricity and the electrical lines than can easily be extended on top of the small curb?"
+msgstr ""
+
+msgid "Is there a big cliff and from eagles view look like the dead end is close to the segment?"
+msgstr ""
+
+msgid "When there are many dead ends, to speed up, the :doc:`contraction-family` functions can be used to divide the problem."
+msgstr ""
+
+msgid "Linear edges"
+msgstr ""
+
+msgid "To get the linear edges:"
+msgstr ""
+
+msgid "This information is correct, for example, when the application is taking into account speed bumps, stop signals."
+msgstr ""
+
+msgid "When there are many linear edges, to speed up, the :doc:`contraction-family` functions can be used to divide the problem."
+msgstr ""
+
+msgid "Function's structure"
+msgstr ""
+
+msgid "Once the graph preparation work has been done above, it is time to use a"
+msgstr ""
+
+msgid "The general form of a pgRouting function call is:"
+msgstr ""
+
+msgid "\\ \\"
+msgstr ""
+
+msgid "pgr_<name>(`Inner queries`_, **parameters**, [ ``Optional parameters``)"
+msgstr ""
+
+msgid "`Inner queries`_: Are compulsory parameters that are ``TEXT`` strings containing SQL queries."
+msgstr ""
+
+msgid "**parameters**: Additional compulsory parameters needed by the function."
+msgstr ""
+
+msgid "``Optional parameters``: Are non compulsory **named** parameters that have a default value when omitted."
+msgstr ""
+
+msgid "The compulsory parameters are positional parameters, the optional parameters are named parameters."
+msgstr ""
+
+msgid "For example, for this :doc:`pgr_dijkstra` signature:"
+msgstr ""
+
+msgid "pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  [, ``directed``])"
+msgstr ""
+
+msgid "`Edges SQL`_:"
+msgstr ""
+
+msgid "Is the first parameter."
+msgstr ""
+
+msgid "It is compulsory."
+msgstr ""
+
+msgid "It is an inner query."
+msgstr ""
+
+msgid "It has no name, so **Edges SQL** gives an idea of what kind of inner query needs to be used"
+msgstr ""
+
+msgid "**start vid**:"
+msgstr ""
+
+msgid "Is the second parameter."
+msgstr ""
+
+msgid "It has no name, so **start vid** gives an idea of what the second parameter's value should contain."
+msgstr ""
+
+msgid "**end vid**"
+msgstr ""
+
+msgid "Is the third parameter."
+msgstr ""
+
+msgid "It has no name, so **end vid** gives an idea of what the third parameter's value should contain"
+msgstr ""
+
+msgid "``directed``"
+msgstr ""
+
+msgid "Is the fourth parameter."
+msgstr ""
+
+msgid "It is optional."
+msgstr ""
+
+msgid "It has a name."
+msgstr ""
+
+msgid "The full description of the parameters are found on the `Parameters`_ section of each function."
+msgstr ""
+
+msgid "Function's overloads"
+msgstr ""
+
+msgid "A function might have different overloads. The most common are called:"
+msgstr ""
+
+msgid "`One to One`_"
+msgstr ""
+
+msgid "`One to Many`_"
+msgstr ""
+
+msgid "`Many to One`_"
+msgstr ""
+
+msgid "`Many to Many`_"
+msgstr ""
+
+msgid "`Combinations`_"
+msgstr ""
+
+msgid "Depending on the overload the parameters types change."
+msgstr ""
+
+msgid "**One**: **ANY-INTEGER**"
+msgstr ""
+
+msgid "**Many**: ``ARRAY`` [**ANY-INTEGER**]"
+msgstr ""
+
+msgid "Depending of the function the overloads may vary. But the concept of parameter type change remains the same."
+msgstr ""
+
+msgid "One to One"
+msgstr ""
+
+msgid "When routing from:"
+msgstr ""
+
+msgid "From **one** starting vertex"
+msgstr ""
+
+msgid "to **one** ending vertex"
+msgstr ""
+
+msgid "One to Many"
+msgstr ""
+
+msgid "to **many** ending vertices"
+msgstr ""
+
+msgid "Many to One"
+msgstr ""
+
+msgid "From **many** starting vertices"
+msgstr ""
+
+msgid "Many to Many"
+msgstr ""
+
+msgid "Combinations"
+msgstr ""
+
+msgid "From **many** different starting vertices"
+msgstr ""
+
+msgid "to **many** different ending vertices"
+msgstr ""
+
+msgid "Every tuple specifies a pair of a start vertex and an end vertex"
+msgstr ""
+
+msgid "Users can define the combinations as desired."
+msgstr ""
+
+msgid "Needs a `Combinations SQL`_"
+msgstr ""
+
+msgid "Inner Queries"
+msgstr ""
+
+msgid "There are several kinds of valid inner queries and also the columns returned are depending of the function. Which kind of inner query will depend on the function(s) requirements. To simplify variety of types, **ANY-INTEGER** and **ANY-NUMERICAL** is used."
+msgstr ""
+
+msgid "Edges SQL"
+msgstr ""
+
+msgid "General"
+msgstr ""
+
+msgid "Edges SQL for"
+msgstr ""
+
+msgid ":doc:`dijkstra-family`"
+msgstr ""
+
+msgid ":doc:`withPoints-family`"
+msgstr ""
+
+msgid ":doc:`bdDijkstra-family`"
+msgstr ""
+
+msgid ":doc:`components-family`"
+msgstr ""
+
+msgid ":doc:`kruskal-family`"
+msgstr ""
+
+msgid ":doc:`prim-family`"
+msgstr ""
+
+msgid "Some uncategorised functions"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "-1"
+msgstr ""
+
+msgid "When negative: edge (``target``, ``source``) does not exist, therefore it's not part of the graph."
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr ""
+
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
+
+msgid "General without ``id``"
+msgstr ""
+
+msgid ":doc:`allpairs-family`"
+msgstr ""
+
+msgid "Weight of the edge  (``source``, ``target``)"
+msgstr ""
+
+msgid "General with (X,Y)"
+msgstr ""
+
+msgid ":doc:`aStar-family`"
+msgstr ""
+
+msgid ":doc:`bdAstar-family`"
+msgstr ""
+
+msgid "Parameter"
+msgstr ""
+
+msgid "When negative: edge (``source``, ``target``) does not exist, therefore it's not part of the graph."
+msgstr ""
+
+msgid "Weight of the edge (``target``, ``source``),"
+msgstr ""
+
+msgid "``x1``"
+msgstr ""
+
+msgid "X coordinate of ``source`` vertex."
+msgstr ""
+
+msgid "``y1``"
+msgstr ""
+
+msgid "Y coordinate of ``source`` vertex."
+msgstr ""
+
+msgid "``x2``"
+msgstr ""
+
+msgid "X coordinate of ``target`` vertex."
+msgstr ""
+
+msgid "``y2``"
+msgstr ""
+
+msgid "Y coordinate of ``target`` vertex."
+msgstr ""
+
+msgid "Flow"
+msgstr ""
+
+msgid "Edges SQL for :doc:`flow-family`"
+msgstr ""
+
+msgid ":doc:`pgr_pushRelabel`"
+msgstr ""
+
+msgid ":doc:`pgr_edmondsKarp`"
+msgstr ""
+
+msgid ":doc:`pgr_boykovKolmogorov`"
+msgstr ""
+
+msgid "``capacity``"
+msgstr ""
+
+msgid "``reverse_capacity``"
+msgstr ""
+
+msgid "Edges SQL for the following functions of :doc:`flow-family`"
+msgstr ""
+
+msgid ":doc:`pgr_maxFlowMinCost`"
+msgstr ""
+
+msgid ":doc:`pgr_maxFlowMinCost_Cost`"
+msgstr ""
+
+msgid "Capacity of the edge  (``source``, ``target``)"
+msgstr ""
+
+msgid "Capacity of the edge (``target``, ``source``)"
+msgstr ""
+
+msgid "Weight of the edge  (``source``, ``target``) if it exist"
+msgstr ""
+
+msgid ":math:`-1`"
+msgstr ""
+
+msgid "Weight of the edge (``target``, ``source``) if it exist"
+msgstr ""
+
+msgid "Combinations SQL"
+msgstr ""
+
+msgid "Used on combination signatures"
+msgstr ""
+
+msgid "Identifier of the departure vertex."
+msgstr ""
+
+msgid "Identifier of the arrival vertex."
+msgstr ""
+
+msgid "Restrictions SQL"
+msgstr ""
+
+msgid "``path``"
+msgstr ""
+
+msgid "``ARRAY`` [**ANY-INTEGER**]"
+msgstr ""
+
+msgid "Sequence of edge identifiers that form a path that is not allowed to be taken. - Empty arrays or ``NULL`` arrays are ignored. - Arrays that have a ``NULL`` element will raise an exception."
+msgstr ""
+
+msgid "``Cost``"
+msgstr ""
+
+msgid "Cost of taking the forbidden path."
+msgstr ""
+
+msgid "Points SQL"
+msgstr ""
+
+msgid "Points SQL for"
+msgstr ""
+
+msgid "``pid``"
+msgstr ""
+
+msgid "**value**"
+msgstr ""
+
+msgid "Identifier of the point."
+msgstr ""
+
+msgid "Use with positive value, as internally will be converted to negative value"
+msgstr ""
+
+msgid "If column is present, it can not be NULL."
+msgstr ""
+
+msgid "If column is not present, a sequential negative **value** will be given automatically."
+msgstr ""
+
+msgid "``edge_id``"
+msgstr ""
+
+msgid "Identifier of the \"closest\" edge to the point."
+msgstr ""
+
+msgid "``fraction``"
+msgstr ""
+
+msgid "Value in <0,1> that indicates the relative postition from the first end point of the edge."
+msgstr ""
+
+msgid "``side``"
+msgstr ""
+
+msgid "``CHAR``"
+msgstr ""
+
+msgid "``b``"
+msgstr ""
+
+msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"
+msgstr ""
+
+msgid "In the right ``r``,"
+msgstr ""
+
+msgid "In the left ``l``,"
+msgstr ""
+
+msgid "In both sides ``b``, ``NULL``"
+msgstr ""
+
+msgid "Parameters"
+msgstr ""
+
+msgid "The main parameter of the majority of the pgRouting functions is a query that selects the edges of the graph."
+msgstr ""
+
+msgid "`Edges SQL`_"
+msgstr ""
+
+msgid "``TEXT``"
+msgstr ""
+
+msgid "`Edges SQL`_ as described below."
+msgstr ""
+
+msgid "Depending on the family or category of a function it will have additional parameters, some of them are compulsory and some are optional."
+msgstr ""
+
+msgid "The compulsory parameters are nameless and must be given in the required order. The optional parameters are named parameters and will have a default value."
+msgstr ""
+
+msgid "Parameters for the Via functions"
+msgstr ""
+
+msgid ":doc:`pgr_dijkstraVia`"
+msgstr ""
+
+msgid "SQL query as described."
+msgstr ""
+
+msgid "**via vertices**"
+msgstr ""
+
+msgid "Array of ordered vertices identifiers that are going to be visited."
+msgstr ""
+
+msgid "``BOOLEAN``"
+msgstr ""
+
+msgid "``true``"
+msgstr ""
+
+msgid "When ``true`` Graph is considered `Directed`"
+msgstr ""
+
+msgid "When ``false`` the graph is considered as Undirected."
+msgstr ""
+
+msgid "``strict``"
+msgstr ""
+
+msgid "``false``"
+msgstr ""
+
+msgid "When ``true`` if a path is missing stops and returns **EMPTY SET**"
+msgstr ""
+
+msgid "When ``false`` ignores missing paths returning all paths found"
+msgstr ""
+
+msgid "``U_turn_on_edge``"
+msgstr ""
+
+msgid "When ``true`` departing from a visited vertex will not try to avoid using the edge used to reach it.  In other words, U turn using the edge with same identifier is allowed."
+msgstr ""
+
+msgid "When ``false`` when a departing from a visited vertex tries to avoid using the edge used to reach it.  In other words, U turn using the edge with same identifier is used when no other path is found."
+msgstr ""
+
+msgid "For the TRSP functions"
+msgstr ""
+
+msgid ":doc:`pgr_trsp`"
+msgstr ""
+
+msgid "`Restrictions SQL`_"
+msgstr ""
+
+msgid "`Combinations SQL`_"
+msgstr ""
+
+msgid "`Combinations SQL`_ as described below"
+msgstr ""
+
+msgid "**start vid**"
+msgstr ""
+
+msgid "**start vids**"
+msgstr ""
+
+msgid "Array of identifiers of destination vertices."
+msgstr ""
+
+msgid "**end vids**"
+msgstr ""
+
+msgid "Return columns"
+msgstr ""
+
+msgid "There are several kinds of columns returned are depending of the function."
+msgstr ""
+
+msgid "Return columns for a path"
+msgstr ""
+
+msgid "Used on functions that return one path solution"
+msgstr ""
+
+msgid "Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)``"
+msgstr ""
+
+msgid "``seq``"
+msgstr ""
+
+msgid "``INTEGER``"
+msgstr ""
+
+msgid "Sequential value starting from **1**."
+msgstr ""
+
+msgid "``path_seq``"
+msgstr ""
+
+msgid "Relative position in the path. Has value **1** for the beginning of a path."
+msgstr ""
+
+msgid "``start_vid``"
+msgstr ""
+
+msgid "``BIGINT``"
+msgstr ""
+
+msgid "Identifier of the starting vertex. Returned when multiple starting vetrices are in the query."
+msgstr ""
+
+msgid "``end_vid``"
+msgstr ""
+
+msgid "Identifier of the ending vertex. Returned when multiple ending vertices are in the query."
+msgstr ""
+
+msgid "``node``"
+msgstr ""
+
+msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
+msgstr ""
+
+msgid "``edge``"
+msgstr ""
+
+msgid "Identifier of the edge used to go from ``node`` to the next node in the path sequence. **-1** for the last node of the path."
+msgstr ""
+
+msgid "``FLOAT``"
+msgstr ""
+
+msgid "Cost to traverse from ``node`` using ``edge`` to the next node in the path sequence."
+msgstr ""
+
+msgid "``agg_cost``"
+msgstr ""
+
+msgid "Aggregate cost from ``start_vid`` to ``node``."
+msgstr ""
+
+msgid "Used on functions the following:"
+msgstr ""
+
+msgid ":doc:`pgr_withPoints`"
+msgstr ""
+
+msgid "Returns set of ``(seq, path_seq [, start_pid] [, end_pid], node, edge, cost, agg_cost)``"
+msgstr ""
+
+msgid "Relative position in the path."
+msgstr ""
+
+msgid "**1** For the first row of the path."
+msgstr ""
+
+msgid "``start_pid``"
+msgstr ""
+
+msgid "Identifier of a starting vertex/point of the path."
+msgstr ""
+
+msgid "When positive is the identifier of the starting vertex."
+msgstr ""
+
+msgid "When negative is the identifier of the starting point."
+msgstr ""
+
+msgid "Returned on `Many to One`_  and `Many to Many`_"
+msgstr ""
+
+msgid "``end_pid``"
+msgstr ""
+
+msgid "Identifier of an ending vertex/point of the path."
+msgstr ""
+
+msgid "When positive is the identifier of the ending vertex."
+msgstr ""
+
+msgid "When negative is the identifier of the ending point."
+msgstr ""
+
+msgid "Returned on `One to Many`_ and `Many to Many`_"
+msgstr ""
+
+msgid "Identifier of the node in the path from ``start_pid`` to ``end_pid``."
+msgstr ""
+
+msgid "When positive is the identifier of the a vertex."
+msgstr ""
+
+msgid "When negative is the identifier of the a point."
+msgstr ""
+
+msgid "Identifier of the edge used to go from ``node`` to the next node in the path sequence."
+msgstr ""
+
+msgid "**-1** for the last row of the path."
+msgstr ""
+
+msgid "**0** For the first row of the path."
+msgstr ""
+
+msgid ":doc:`pgr_dijkstraNear`"
+msgstr ""
+
+msgid "Returns ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``"
+msgstr ""
+
+msgid "Identifier of the starting vertex of the current path."
+msgstr ""
+
+msgid "Identifier of the ending vertex of the current path."
+msgstr ""
+
+msgid "Multiple paths"
+msgstr ""
+
+msgid "Selective for multiple paths."
+msgstr ""
+
+msgid "The columns depend on the function call."
+msgstr ""
+
+msgid "Set of ``(seq, path_id, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)``"
+msgstr ""
+
+msgid "``path_id``"
+msgstr ""
+
+msgid "Path identifier."
+msgstr ""
+
+msgid "Has value **1** for the first of a path from ``start_vid`` to ``end_vid``."
+msgstr ""
+
+msgid "Non selective for multiple paths"
+msgstr ""
+
+msgid "Regardless of the call, al the columns are returned."
+msgstr ""
+
+msgid "Returns set of ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``"
+msgstr ""
+
+msgid "Identifier of the starting vertex."
+msgstr ""
+
+msgid "Identifier of the ending vertex."
+msgstr ""
+
+msgid "Return columns for cost functions"
+msgstr ""
+
+msgid "Used in the following"
+msgstr ""
+
+msgid ":doc:`cost-category`"
+msgstr ""
+
+msgid ":doc:`costMatrix-category`"
+msgstr ""
+
+msgid "Set of |matrix-result|"
+msgstr ""
+
+msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
+msgstr ""
+
+msgid "When start_vid or end_vid columns have negative values, the identifier is for a Point."
+msgstr ""
+
+msgid "Return columns for flow functions"
+msgstr ""
+
+msgid "Edges SQL for the following"
+msgstr ""
+
+msgid ":doc:`flow-family`"
+msgstr ""
+
+msgid "**seq**"
+msgstr ""
+
+msgid "``INT``"
+msgstr ""
+
+msgid "**edge**"
+msgstr ""
+
+msgid "Identifier of the edge in the original query (edges_sql)."
+msgstr ""
+
+msgid "**start_vid**"
+msgstr ""
+
+msgid "**end_vid**"
+msgstr ""
+
+msgid "**flow**"
+msgstr ""
+
+msgid "Flow through the edge in the direction (``start_vid``, ``end_vid``)."
+msgstr ""
+
+msgid "**residual_capacity**"
+msgstr ""
+
+msgid "Residual capacity of the edge in the direction (``start_vid``, ``end_vid``)."
+msgstr ""
+
+msgid "**source**"
+msgstr ""
+
+msgid "**target**"
+msgstr ""
+
+msgid "Flow through the edge in the direction (source, target)."
+msgstr ""
+
+msgid "Residual capacity of the edge in the direction (source, target)."
+msgstr ""
+
+msgid "**cost**"
+msgstr ""
+
+msgid "The cost of sending this flow through the edge in the direction (source, target)."
+msgstr ""
+
+msgid "**agg_cost**"
+msgstr ""
+
+msgid "The aggregate cost."
+msgstr ""
+
+msgid "Return columns for spanning tree functions"
+msgstr ""
+
+msgid ":doc:`pgr_prim`"
+msgstr ""
+
+msgid ":doc:`pgr_kruskal`"
+msgstr ""
+
+msgid "Returns SET OF ``(edge, cost)``"
+msgstr ""
+
+msgid "Cost to traverse the edge."
+msgstr ""
+
+msgid "Performance Tips"
+msgstr ""
+
+msgid "For the Routing functions"
+msgstr ""
+
+msgid "To get faster results bound the queries to an area of interest of routing."
+msgstr ""
+
+msgid "In this example Use an inner query SQL that does not include some edges in the routing function and is within the area of the results."
+msgstr ""
+
+msgid "How to contribute"
+msgstr ""
+
+msgid "Wiki"
+msgstr ""
+
+msgid "Edit an existing  `pgRouting Wiki <https://github.com/pgRouting/pgrouting/wiki>`__ page."
+msgstr ""
+
+msgid "Or create a new Wiki page"
+msgstr ""
+
+msgid "Create a page on the `pgRouting Wiki <https://github.com/pgRouting/pgrouting/wiki>`__"
+msgstr ""
+
+msgid "Give the title an appropriate name"
+msgstr ""
+
+msgid "`Example <https://github.com/pgRouting/pgrouting/wiki/How-to:-Handle-parallel-edges-(KSP)>`__"
+msgstr ""
+
+msgid "Adding Functionaity to pgRouting"
+msgstr ""
+
+msgid "Consult the `developer's documentation <https://docs.pgrouting.org/doxy/2.4/index.html>`__"
+msgstr ""
+
+msgid "Indices and tables"
+msgstr ""
+
+msgid ":ref:`genindex`"
+msgstr ""
+
+msgid ":ref:`search`"
+msgstr ""
