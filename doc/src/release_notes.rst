@@ -35,11 +35,11 @@ To see the full list of changes check the list of `Git commits
 
 
 
-
 pgRouting 3.3.5 Release Notes
 -------------------------------------------------------------------------------
 
-No Changes Yet
+* `#2401 <https://github.com/pgRouting/pgrouting/issues/2401>`__:
+  pgRouting 3.4.0 do not build docs when sphinx is too low or missing
 
 pgRouting 3.3.4 Release Notes
 -------------------------------------------------------------------------------
