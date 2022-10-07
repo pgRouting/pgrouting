@@ -130,8 +130,12 @@ milestone for 3.4.0
 pgRouting 3.3.5 Release Notes
 -------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 * `#2401 <https://github.com/pgRouting/pgrouting/issues/2401>`__:
   pgRouting 3.4.0 do not build docs when sphinx is too low or missing
+=======
+No Changes Yet
+>>>>>>> 0091d7e747... [update] include 3.3.5
 
 pgRouting 3.3.4 Release Notes
 -------------------------------------------------------------------------------
