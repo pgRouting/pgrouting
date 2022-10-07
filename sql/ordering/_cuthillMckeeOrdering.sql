@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- _pgr_cuthillMckeeOrdering
 ----------------------------
 
+--v3.4.0
 CREATE FUNCTION _pgr_cuthillMckeeOrdering(
     TEXT,
     OUT seq BIGINT,
@@ -45,4 +46,4 @@ LANGUAGE C IMMUTABLE STRICT;
 
 COMMENT ON FUNCTION _pgr_cuthillMckeeOrdering(TEXT)
 IS 'pgRouting internal function';
- 
+

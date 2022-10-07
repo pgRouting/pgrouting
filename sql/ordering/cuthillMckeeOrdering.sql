@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- pgr_cuthillMckeeOrdering
 ----------------------------
 
+--v3.4.0
 CREATE FUNCTION pgr_cuthillMckeeOrdering(
     TEXT, -- edges_sql (required)
     OUT seq BIGINT,
