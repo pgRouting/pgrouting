@@ -45,6 +45,8 @@ milestone for 3.4.1
 
 .. rubric:: Issue fixes
 
+* `#2401 <https://github.com/pgRouting/pgrouting/issues/2401>`__:
+  pgRouting 3.4.0 do not build docs when sphinx is too low or missing
 * `#2398 <https://github.com/pgRouting/pgrouting/issues/2398>`__:
   v3.4.0 does not upgrade from 3.3.3
 
@@ -124,6 +126,12 @@ milestone for 3.4.0
   * ``pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text)``
   * ``pgr_trspViaVertices(text,anyarray,boolean,boolean,text)``
   * ``pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)``
+
+pgRouting 3.3.5 Release Notes
+-------------------------------------------------------------------------------
+
+* `#2401 <https://github.com/pgRouting/pgrouting/issues/2401>`__:
+  pgRouting 3.4.0 do not build docs when sphinx is too low or missing
 
 pgRouting 3.3.4 Release Notes
 -------------------------------------------------------------------------------
