@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-05 01:18+0000\n"
+"POT-Creation-Date: 2022-10-07 00:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -6768,7 +6768,7 @@ msgid "Upgrading the database"
 msgstr ""
 
 msgid ""
-"To upgrade pgRouting in the database to version 3.4.0 use the following "
+"To upgrade pgRouting in the database to version 3.4.1 use the following "
 "command:"
 msgstr ""
 
@@ -16375,17 +16375,32 @@ msgid ""
 "<https://github.com/pgRouting/pgrouting/commits>`_ on Github."
 msgstr ""
 
+msgid "pgRouting 3.4.1 Release Notes"
+msgstr ""
+
+#, python-format
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git "
+"closed milestone for 3.4.1 "
+"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.1%22>`_"
+msgstr ""
+
+msgid "Issue fixes"
+msgstr ""
+
+msgid ""
+"`#2398 <https://github.com/pgRouting/pgrouting/issues/2398>`__: v3.4.0 "
+"does not upgrade from 3.3.3"
+msgstr ""
+
 msgid "pgRouting 3.4.0 Release Notes"
 msgstr ""
 
 #, python-format
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git "
-"closed milestone for 3.3.4 "
-"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.4%22>`_"
-msgstr ""
-
-msgid "Issue fixes"
+"closed milestone for 3.4.0 "
+"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.0%22>`_"
 msgstr ""
 
 msgid ""
@@ -16495,6 +16510,21 @@ msgstr ""
 msgid "``pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)``"
 msgstr ""
 
+msgid "pgRouting 3.3.4 Release Notes"
+msgstr ""
+
+#, python-format
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git "
+"closed milestone for 3.3.4 "
+"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.4%22>`_"
+msgstr ""
+
+msgid ""
+"`#2400 <https://github.com/pgRouting/pgrouting/issues/2400>`__: pgRouting"
+" 3.3.3 does not build in focal"
+msgstr ""
+
 msgid "pgRouting 3.3.3 Release Notes"
 msgstr ""
 
@@ -16558,6 +16588,11 @@ msgstr ""
 msgid ""
 "`#2312 <https://github.com/pgRouting/pgrouting/issues/2312>`__: "
 "pgr_extractVertices error when target is not BIGINT"
+msgstr ""
+
+msgid ""
+"`#2357 <https://github.com/pgRouting/pgrouting/issues/2357>`__: Apply "
+"clang-tidy performance-*"
 msgstr ""
 
 msgid "pgRouting 3.3.1 Release Notes"
