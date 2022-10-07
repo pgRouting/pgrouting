@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-07 00:12+0000\n"
+"POT-Creation-Date: 2022-10-07 23:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12994,6 +12994,9 @@ msgstr ""
 msgid "Issue fixes"
 msgstr ""
 
+msgid "`#2401 <https://github.com/pgRouting/pgrouting/issues/2401>`__: pgRouting 3.4.0 do not build docs when sphinx is too low or missing"
+msgstr ""
+
 msgid "`#2398 <https://github.com/pgRouting/pgrouting/issues/2398>`__: v3.4.0 does not upgrade from 3.3.3"
 msgstr ""
 
@@ -13106,6 +13109,15 @@ msgid "``pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text)``"
 msgstr ""
 
 msgid "``pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)``"
+msgstr ""
+
+msgid "pgRouting 3.3.5 Release Notes"
+msgstr ""
+
+msgid "<<<<<<< HEAD * `#2401 <https://github.com/pgRouting/pgrouting/issues/2401>`__:"
+msgstr ""
+
+msgid "pgRouting 3.4.0 do not build docs when sphinx is too low or missing"
 msgstr ""
 
 msgid "pgRouting 3.3.4 Release Notes"
