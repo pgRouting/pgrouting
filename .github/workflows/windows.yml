@@ -76,7 +76,7 @@ jobs:
           boost_version: 1.73.0
 
       - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.0.3
+        uses: microsoft/setup-msbuild@v1.1.3
 
       - name: Install PostgreSQL
         run: |
