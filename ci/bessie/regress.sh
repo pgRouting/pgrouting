@@ -1,6 +1,6 @@
 #!/bin/sh
 # /*PGR-GNU*****************************************************************
-# File: NombredelArchivo.ext
+# File: regress.sh
 # Copyright (c) 2018 pgRouting developers
 # Mail: project@pgrouting.org
 # ------
