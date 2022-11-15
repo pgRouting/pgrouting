@@ -1,3 +1,4 @@
+-- Creative Commons Attribution-Share Alike 3.0 License : https://creativecommons.org/licenses/by-sa/3.0/
 /* -- g1 */
 SELECT *
 FROM (VALUES (1, 1, 2, 5), (2, 1, 3, -3))
