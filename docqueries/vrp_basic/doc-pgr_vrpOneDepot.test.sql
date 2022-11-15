@@ -1,3 +1,4 @@
+-- Creative Commons Attribution-Share Alike 3.0 License : https://creativecommons.org/licenses/by-sa/3.0/
 
 SELECT * FROM pgr_vrpOneDepot(
     'SELECT * FROM solomon_100_RC_101',
