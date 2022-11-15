@@ -1,3 +1,4 @@
+-- Creative Commons Attribution-Share Alike 3.0 License : https://creativecommons.org/licenses/by-sa/3.0/
 /* -- q01 */
 SELECT * FROM pgr_dijkstraVia(
   'SELECT id, source, target, cost, reverse_cost FROM edges order by id',
