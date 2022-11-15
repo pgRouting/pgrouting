@@ -1,3 +1,4 @@
+-- Creative Commons Attribution-Share Alike 3.0 License : https://creativecommons.org/licenses/by-sa/3.0/
 /* -- q2 */
 SELECT * FROM pgr_bdAstarCost(
   'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
