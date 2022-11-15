@@ -1,3 +1,4 @@
+-- Creative Commons Attribution-Share Alike 3.0 License : https://creativecommons.org/licenses/by-sa/3.0/
 /* --q1 */
 ALTER TABLE edges ADD COLUMN dir TEXT;
 SELECT  pgr_createTopology('edges', 0.001, 'geom');
