@@ -2,33 +2,40 @@
 # Copyright (C) pgRouting Contributors - Version v3.4.0
 # This file is distributed under the same license as the pgRouting package.
 # Regina Obe <regina@arrival3d.com>, 2022.
+# Hyung-Gyu Ryoo <hyunggyu.ryoo@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-05 01:18+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-11-15 15:30+0000\n"
+"Last-Translator: Hyung-Gyu Ryoo <hyunggyu.ryoo@gmail.com>\n"
+"Language-Team: Korean <https://weblate.osgeo.org/projects/pgrouting/"
+"pgrouting-develop/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.14.1\n"
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/BFS-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/BFS-category.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/BFS-category.html>`__"
 msgstr ""
+"**지원되는 버전:** `최신 버전 <https://docs.pgrouting.org/latest/en/BFS-"
+"category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/BFS-category."
+"html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/BFS-category.html>`__"
 
 msgid "BFS - Category"
-msgstr ""
+msgstr "BFS - 카테고리"
 
 msgid ":doc:`pgr_kruskalBFS`"
-msgstr ""
+msgstr ":doc:`pgr_kruskalBFS`"
 
 msgid ":doc:`pgr_primBFS`"
-msgstr ""
+msgstr ":doc:`pgr_primBFS`"
 
 msgid "Traversal using breadth first search."
-msgstr ""
+msgstr "너비 우선 탐색을 이용한 순회."
 
 msgid "It's implementation is only on **undirected** graph."
 msgstr ""
@@ -52,16 +59,16 @@ msgid "The resulting edges make up a forest."
 msgstr ""
 
 msgid "Parameters"
-msgstr ""
+msgstr "파라미터"
 
 msgid "Parameter"
-msgstr ""
+msgstr "파라미터"
 
 msgid "Type"
-msgstr ""
+msgstr "타입"
 
 msgid "Description"
-msgstr ""
+msgstr "설명"
 
 msgid "`Edges SQL`_"
 msgstr ""
@@ -94,10 +101,10 @@ msgid "Array of identifiers of the root vertices."
 msgstr ""
 
 msgid ":math:`0` values are ignored"
-msgstr ""
+msgstr ":math:`0` 값은 무시됩니다"
 
 msgid "For optimization purposes, any duplicated value is ignored."
-msgstr ""
+msgstr "최적화를 위해 중복값은 무시됩니다."
 
 msgid "Where:"
 msgstr ""
@@ -124,7 +131,7 @@ msgid "``max_depth``"
 msgstr ""
 
 msgid ":math:`9223372036854775807`"
-msgstr ""
+msgstr ":math:`9223372036854775807`"
 
 msgid "Upper limit of the depth of the tree."
 msgstr ""
@@ -193,7 +200,7 @@ msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
 msgid "Result Columns"
-msgstr ""
+msgstr "결과 컬럼"
 
 msgid "Returns SET OF ``(seq, depth, start_vid, node, edge, cost, agg_cost)``"
 msgstr ""
@@ -262,16 +269,19 @@ msgid "`Wikipedia: Kruskal's algorithm <https://en.wikipedia.org/wiki/Kruskal's_
 msgstr ""
 
 msgid "Indices and tables"
-msgstr ""
+msgstr "색인과 표"
 
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`genindex`"
 
 msgid ":ref:`search`"
-msgstr ""
+msgstr ":ref:`search`"
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/DFS-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/DFS-category.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/DFS-category.html>`__"
 msgstr ""
+"**지원되는 버전:** `최신 버전 <https://docs.pgrouting.org/latest/en/DFS-"
+"category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/DFS-category."
+"html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/DFS-category.html>`__"
 
 msgid "DFS - Category"
 msgstr ""
@@ -280,10 +290,10 @@ msgid "Traversal using Depth First Search."
 msgstr ""
 
 msgid ":doc:`pgr_kruskalDFS`"
-msgstr ""
+msgstr ":doc:`pgr_kruskalDFS`"
 
 msgid ":doc:`pgr_primDFS`"
-msgstr ""
+msgstr ":doc:`pgr_primDFS`"
 
 msgid "Proposed"
 msgstr ""
@@ -323,21 +333,33 @@ msgstr ""
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/KSP-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/KSP-category.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/KSP-category.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/KSP-category.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/KSP-category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/KSP-category.html>`__"
 msgstr ""
+"**지원되는 버전:** `최신 버전 <https://docs.pgrouting.org/latest/en/KSP-"
+"category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/KSP-category."
+"html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/KSP-category.html>`__ `3.2 "
+"<https://docs.pgrouting.org/3.2/en/KSP-category.html>`__ `3.1 <https://docs."
+"pgrouting.org/3.1/en/KSP-category.html>`__) `3.0 <https://docs.pgrouting.org/"
+"3.0/en/KSP-category.html>`__"
 
 msgid "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/KSP-category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/KSP-category.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/KSP-category.html>`__"
 msgstr ""
+"**지원되지 않는 버전:** `2.5 <https://docs.pgrouting.org/2.5/en/KSP-category."
+"html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/KSP-category.html>`__ `2.6 "
+"<https://docs.pgrouting.org/2.6/en/KSP-category.html>`__"
 
 msgid "K shortest paths - Category"
 msgstr ""
 
 msgid ":doc:`pgr_KSP` - Yen's algorithm based on pgr_dijkstra"
-msgstr ""
+msgstr ":doc:`pgr_KSP` - pgr_dijkstra 기반의 Yen 알고리즘"
 
 msgid ":doc:`pgr_withPointsKSP` - Yen's algorithm based on pgr_withPoints"
 msgstr ""
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/TRSP-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/TRSP-family.html>`__)"
 msgstr ""
+"**지원되는 버전:** `최신 버전 <https://docs.pgrouting.org/latest/en/TRSP-"
+"family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/TRSP-family."
+"html>`__)"
 
 msgid "TRSP - Family of functions"
 msgstr ""
@@ -418,7 +440,7 @@ msgid ":doc:`pgr_turnRestrictedPath` - Routing with restrictions."
 msgstr ""
 
 msgid "Introduction"
-msgstr ""
+msgstr "소개"
 
 msgid "Road restrictions are a sequence of road segments that can not be taken in a sequential manner. Some restrictions are implicit on a directed graph, for example, one way roads where the wrong way edge is not even inserted on the graph. But normally on turns like no left turn or no right turn, hence the name turn restrictions, there are sometimes restrictions."
 msgstr ""
@@ -485,9 +507,19 @@ msgstr ""
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/TSP-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/TSP-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/TSP-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/TSP-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/TSP-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/TSP-family.html>`__"
 msgstr ""
+"**지원되는 버전:** `최신 버전 <https://docs.pgrouting.org/latest/en/TSP-"
+"family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/TSP-family.html>`__)"
+" `3.3 <https://docs.pgrouting.org/3.3/en/TSP-family.html>`__ `3.2 "
+"<https://docs.pgrouting.org/3.2/en/TSP-family.html>`__ `3.1 <https://docs."
+"pgrouting.org/3.1/en/TSP-family.html>`__ `3.0 <https://docs.pgrouting.org/3."
+"0/en/TSP-family.html>`__"
 
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/TSP-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/TSP-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/TSP-family.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/tsp/doc/tsp.html>`__"
 msgstr ""
+"**지원되지 않는 버전:** `2.6 <https://docs.pgrouting.org/2.6/en/TSP-family."
+"html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/TSP-family.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/TSP-family.html>`__ `2.3 <https://docs."
+"pgrouting.org/2.3/en/src/tsp/doc/tsp.html>`__"
 
 msgid "Traveling Sales Person - Family of functions"
 msgstr ""
@@ -499,7 +531,7 @@ msgid ":doc:`pgr_TSPeuclidean` - When input are coordinates."
 msgstr ""
 
 msgid "Table of Contents"
-msgstr ""
+msgstr "목차"
 
 msgid "General Information"
 msgstr ""
@@ -626,6 +658,10 @@ msgstr ""
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/VRP-category.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/VRP-category.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/VRP-category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/VRP-category.html>`__"
 msgstr ""
+"**지원되는 버전:** `최신 버전 <https://docs.pgrouting.org/latest/en/VRP-"
+"category.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/VRP-category."
+"html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/VRP-category.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/en/VRP-category.html>`__"
 
 msgid "Vehicle Routing Functions - Category (Experimental)"
 msgstr ""
@@ -1517,9 +1553,18 @@ msgstr ""
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/aStar-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/aStar-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/aStar-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/aStar-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/aStar-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/aStar-family.html>`__"
 msgstr ""
+"**지원되는 버전:** `최신 버전 <https://docs.pgrouting.org/latest/en/aStar-"
+"family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/aStar-family."
+"html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/aStar-family.html>`__ `3.2 "
+"<https://docs.pgrouting.org/3.2/en/aStar-family.html>`__ `3.1 <https://docs."
+"pgrouting.org/3.1/en/aStar-family.html>`__ `3.0 <https://docs.pgrouting.org/3"
+".0/en/aStar-family.html>`__"
 
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/aStar-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/aStar-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/aStar-family.html>`__"
 msgstr ""
+"**지원되지 않는 버전:** `2.6 <https://docs.pgrouting.org/2.6/en/aStar-family."
+"html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/aStar-family.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/aStar-family.html>`__"
 
 msgid "A* - Family of functions"
 msgstr ""
@@ -1528,13 +1573,13 @@ msgid "The A* (pronounced \"A Star\") algorithm is based on Dijkstra's algorithm
 msgstr ""
 
 msgid ":doc:`pgr_aStar` - A* algorithm for the shortest path."
-msgstr ""
+msgstr ":doc:`pgr_aStar` - A* 최단 경로 알고리즘."
 
 msgid ":doc:`pgr_aStarCost` - Get the aggregate cost of the shortest paths."
-msgstr ""
+msgstr ":doc:`pgr_aStarCost` - 최단 경로의 집계 비용 반환."
 
 msgid ":doc:`pgr_aStarCostMatrix` - Get the cost matrix of the shortest paths."
-msgstr ""
+msgstr ":doc:`pgr_aStarCostMatrix` - 최단 경로의 비용 행렬 반환."
 
 msgid "The main Characteristics are:"
 msgstr ""
@@ -1594,19 +1639,19 @@ msgid "0: :math:`h(v) = 0` (Use this value to compare with pgr_dijkstra)"
 msgstr ""
 
 msgid "1: :math:`h(v) = abs(max(\\Delta x, \\Delta y))`"
-msgstr ""
+msgstr "1: :math:`h(v) = abs(max(\\Delta x, \\Delta y))`"
 
 msgid "2: :math:`h(v) = abs(min(\\Delta x, \\Delta y))`"
-msgstr ""
+msgstr "2: :math:`h(v) = abs(min(\\Delta x, \\Delta y))`"
 
 msgid "3: :math:`h(v) = \\Delta x * \\Delta x + \\Delta y * \\Delta y`"
-msgstr ""
+msgstr "3: :math:`h(v) = \\Delta x * \\Delta x + \\Delta y * \\Delta y`"
 
 msgid "4: :math:`h(v) = sqrt(\\Delta x * \\Delta x + \\Delta y * \\Delta y)`"
-msgstr ""
+msgstr "4: :math:`h(v) = sqrt(\\Delta x * \\Delta x + \\Delta y * \\Delta y)`"
 
 msgid "5: :math:`h(v) = abs(\\Delta x) + abs(\\Delta y)`"
-msgstr ""
+msgstr "5: :math:`h(v) = abs(\\Delta x) + abs(\\Delta y)`"
 
 msgid "``1``"
 msgstr ""
@@ -1666,7 +1711,7 @@ msgid "Working with cost/reverse_cost as time in seconds, x/y in lat/lon: Factor
 msgstr ""
 
 msgid ":doc:`bdAstar-family`"
-msgstr ""
+msgstr ":doc:`bdAstar-family`"
 
 msgid "https://www.boost.org/libs/graph/doc/astar_search.html"
 msgstr ""
@@ -1676,9 +1721,20 @@ msgstr ""
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/allpairs-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/allpairs-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/allpairs-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/allpairs-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/allpairs-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/allpairs-family.html>`__"
 msgstr ""
+"**지원되는 버전:** `최신 버전 <https://docs.pgrouting.org/latest/en/allpairs-"
+"family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/allpairs-family."
+"html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/allpairs-family.html>`__ `"
+"3.2 <https://docs.pgrouting.org/3.2/en/allpairs-family.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/en/allpairs-family.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/allpairs-family.html>`__"
 
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/allpairs-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/allpairs-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/allpairs-family.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/allpairs/doc/allpairs.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/allpairs/doc/allpairs.html>`__"
 msgstr ""
+"**지원되지 않는 버전:** `2.6 <https://docs.pgrouting.org/2.6/en/allpairs-"
+"family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/allpairs-family."
+"html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/allpairs-family.html>`__ `"
+"2.3 <https://docs.pgrouting.org/2.3/en/src/allpairs/doc/allpairs.html>`__ `"
+"2.2 <https://docs.pgrouting.org/2.2/en/src/allpairs/doc/allpairs.html>`__"
 
 msgid "All Pairs - Family of Functions"
 msgstr ""
@@ -1687,10 +1743,10 @@ msgid "The following functions work on all vertices pair combinations"
 msgstr ""
 
 msgid ":doc:`pgr_floydWarshall` - Floyd-Warshall's algorithm."
-msgstr ""
+msgstr ":doc:`pgr_floydWarshall` - 플로이드-워셜(Floyd-Warshall) 알고리즘."
 
 msgid ":doc:`pgr_johnson` - Johnson's algorithm"
-msgstr ""
+msgstr ":doc:`pgr_johnson` - 존슨(Johnson) 알고리즘"
 
 msgid "The main characteristics are:"
 msgstr ""
@@ -2422,19 +2478,28 @@ msgid "4.48"
 msgstr ""
 
 msgid ":doc:`pgr_johnson`"
-msgstr ""
+msgstr ":doc:`pgr_johnson`"
 
 msgid ":doc:`pgr_floydWarshall`"
-msgstr ""
+msgstr ":doc:`pgr_floydWarshall`"
 
 msgid "Boost `floyd-Warshall <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`__"
 msgstr ""
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/bdAstar-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/bdAstar-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/bdAstar-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/bdAstar-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/bdAstar-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/bdAstar-family.html>`__"
 msgstr ""
+"**지원되는 버전:** `최신 버전 <https://docs.pgrouting.org/latest/en/bdAstar-"
+"family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/bdAstar-family."
+"html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/bdAstar-family.html>`__ `"
+"3.2 <https://docs.pgrouting.org/3.2/en/bdAstar-family.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/en/bdAstar-family.html>`__ `3.0 <https://docs"
+".pgrouting.org/3.0/en/bdAstar-family.html>`__"
 
 msgid "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/bdAstar-family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/bdAstar-family.html>`__"
 msgstr ""
+"**지원되지 않는 버전:** `2.5 <https://docs.pgrouting.org/2.5/en/bdAstar-"
+"family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/bdAstar-family."
+"html>`__"
 
 msgid "Bidirectional A* - Family of functions"
 msgstr ""
@@ -2443,13 +2508,14 @@ msgid "The bidirectional A* (pronounced \"A Star\") algorithm is based on the A*
 msgstr ""
 
 msgid ":doc:`pgr_bdAstar` - Bidirectional A* algorithm for obtaining paths."
-msgstr ""
+msgstr ":doc:`pgr_bdAstar` - 경로를 얻기 위한 양방향 A* 알고리즘."
 
 msgid ":doc:`pgr_bdAstarCost` - Bidirectional A* algorithm to calculate the cost of the paths."
-msgstr ""
+msgstr ":doc:`pgr_bdAstarCost` - 경로의 비용을 계산하기 위한 양방향 A* 알고리즘."
 
 msgid ":doc:`pgr_bdAstarCostMatrix` - Bidirectional A* algorithm to calculate a cost matrix of paths."
-msgstr ""
+msgstr ":doc:`pgr_bdAstarCostMatrix` - 경로의 비용 행렬을 계산하기 위한 양방향 A* "
+"알고리즘."
 
 msgid "Based on A* algorithm, the bidirectional search finds a shortest path from a starting vertex (``start_vid``) to an ending vertex (``end_vid``). It runs two simultaneous searches: one forward from the ``start_vid``, and one backward from the ``end_vid``, stopping when the two meet in the middle. This implementation can be used with a directed graph and an undirected graph."
 msgstr ""
@@ -2461,28 +2527,40 @@ msgid "It is expected to terminate faster than pgr_astar"
 msgstr ""
 
 msgid ":doc:`aStar-family`"
-msgstr ""
+msgstr ":doc:`aStar-family`"
 
 msgid "Previous versions of this page"
 msgstr ""
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/bdDijkstra-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/bdDijkstra-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/bdDijkstra-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/bdDijkstra-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/bdDijkstra-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/bdDijkstra-family.html>`__"
 msgstr ""
+"**지원되는 버전:** `최신 버전 <https://docs.pgrouting.org/latest/en/"
+"bdDijkstra-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/"
+"bdDijkstra-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/"
+"bdDijkstra-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/"
+"bdDijkstra-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/"
+"bdDijkstra-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/"
+"bdDijkstra-family.html>`__"
 
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/bdDijkstra-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/bdDijkstra-family.html>`__"
 msgstr ""
+"**지원되지 않는 버전:** `2.6 <https://docs.pgrouting.org/2.6/en/bdDijkstra-"
+"family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/bdDijkstra-family."
+"html>`__"
 
 msgid "Bidirectional Dijkstra - Family of functions"
 msgstr ""
 
 msgid ":doc:`pgr_bdDijkstra` - Bidirectional Dijkstra algorithm for the shortest paths."
-msgstr ""
+msgstr ":doc:`pgr_bdDijkstra` - 최단 경로를 위한 양방향 다익스트라 알고리즘."
 
 msgid ":doc:`pgr_bdDijkstraCost` - Bidirectional Dijkstra to calculate the cost of the shortest paths"
-msgstr ""
+msgstr ":doc:`pgr_bdDijkstraCost` - 최단 경로의 비용을 계산하기 위한 양방향 "
+"다익스트라 알고리즘"
 
 msgid ":doc:`pgr_bdDijkstraCostMatrix` - Bidirectional Dijkstra algorithm  to create a matrix of costs of the shortest paths."
-msgstr ""
+msgstr ":doc:`pgr_bdDijkstraCostMatrix` - 최단 경로의 비용 행렬을 생성하기 위한 "
+"양방향 다익스트라 알고리즘."
 
 msgid "Synopsis"
 msgstr ""
@@ -2525,15 +2603,22 @@ msgstr ""
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/chinesePostmanProblem-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/chinesePostmanProblem-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/chinesePostmanProblem-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/chinesePostmanProblem-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/chinesePostmanProblem-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/chinesePostmanProblem-family.html>`__"
 msgstr ""
+"**지원되는 버전:** `최신 버전 <https://docs.pgrouting.org/latest/en/"
+"chinesePostmanProblem-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/"
+"en/chinesePostmanProblem-family.html>`__) `3.3 <https://docs.pgrouting.org/3."
+"3/en/chinesePostmanProblem-family.html>`__ `3.2 <https://docs.pgrouting.org/3"
+".2/en/chinesePostmanProblem-family.html>`__ `3.1 <https://docs.pgrouting.org/"
+"3.1/en/chinesePostmanProblem-family.html>`__ `3.0 <https://docs.pgrouting."
+"org/3.0/en/chinesePostmanProblem-family.html>`__"
 
 msgid "Chinese Postman Problem - Family of functions (Experimental)"
 msgstr ""
 
 msgid ":doc:`pgr_chinesePostman`"
-msgstr ""
+msgstr ":doc:`pgr_chinesePostman`"
 
 msgid ":doc:`pgr_chinesePostmanCost`"
-msgstr ""
+msgstr ":doc:`pgr_chinesePostmanCost`"
 
 msgid "**The main characteristics are:**"
 msgstr ""
@@ -2552,6 +2637,10 @@ msgstr ""
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/coloring-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/coloring-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/coloring-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/coloring-family.html>`__"
 msgstr ""
+"**지원되는 버전:** `최신 버전 <https://docs.pgrouting.org/latest/en/coloring-"
+"family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/coloring-family."
+"html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/coloring-family.html>`__ `"
+"3.2 <https://docs.pgrouting.org/3.2/en/coloring-family.html>`__"
 
 msgid "Coloring - Family of functions"
 msgstr ""
@@ -2612,42 +2701,65 @@ msgstr ""
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/components-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/components-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/components-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/components-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/components-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/components-family.html>`__"
 msgstr ""
+"**지원되는 버전:** `최신 버전 <https://docs.pgrouting.org/latest/en/"
+"components-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/"
+"components-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/"
+"components-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/"
+"components-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/"
+"components-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/"
+"components-family.html>`__"
 
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/components-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/components-family.html>`__"
 msgstr ""
+"**지원되지 않는 버전:** `2.6 <https://docs.pgrouting.org/2.6/en/components-"
+"family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/components-family."
+"html>`__"
 
 msgid "Components - Family of functions"
 msgstr ""
 
 msgid ":doc:`pgr_connectedComponents` - Connected components of an undirected graph."
-msgstr ""
+msgstr ":doc:`pgr_connectedComponents` - 무방향 그래프의 연결 요소."
 
 msgid ":doc:`pgr_strongComponents` - Strongly connected components of a directed graph."
-msgstr ""
+msgstr ":doc:`pgr_strongComponents` - 방향 그래프의 강한 연결 요소."
 
 msgid ":doc:`pgr_biconnectedComponents` - Biconnected components of an undirected graph."
-msgstr ""
+msgstr ":doc:`pgr_biconnectedComponents` - 무방향 그래프의 이중 연결성분."
 
 msgid ":doc:`pgr_articulationPoints` - Articulation points of an undirected graph."
-msgstr ""
+msgstr ":doc:`pgr_articulationPoints` - 무방향 그래프의 단절점."
 
 msgid ":doc:`pgr_bridges` - Bridges of an undirected graph."
-msgstr ""
+msgstr ":doc:`pgr_bridges` - 무방향 그래프의 브릿지."
 
 msgid ":doc:`pgr_makeConnected` - Details of edges to make graph connected."
 msgstr ""
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/contraction-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/contraction-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/contraction-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/contraction-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/contraction-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/contraction-family.html>`__"
 msgstr ""
+"**지원되는 버전:** `최신 버전 <https://docs.pgrouting.org/latest/en/"
+"contraction-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/"
+"contraction-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/"
+"contraction-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/"
+"contraction-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/"
+"contraction-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/"
+"contraction-family.html>`__"
 
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/contraction-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/contraction-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/contraction-family.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/contraction/doc/contraction.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/contraction/doc/contraction.html>`__"
 msgstr ""
+"**지원되지 않는 버전:** `2.6 <https://docs.pgrouting.org/2.6/en/contraction-"
+"family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/contraction-family."
+"html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/contraction-family.html>`__ "
+"`2.3 <https://docs.pgrouting.org/2.3/en/src/contraction/doc/contraction."
+"html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/contraction/doc/"
+"contraction.html>`__"
 
 msgid "Contraction - Family of functions"
 msgstr ""
 
 msgid ":doc:`pgr_contraction`"
-msgstr ""
+msgstr ":doc:`pgr_contraction`"
 
 msgid "In large graphs, like the road graphs, or electric networks, graph contraction can be used to speed up some graph algorithms. Contraction reduces the size of the graph by removing some of the vertices and edges and, for example, might add edges that represent a sequence of original edges decreasing the total time and space used in graph algorithms."
 msgstr ""
@@ -3085,7 +3197,7 @@ msgid "Now, the routing graph has an edge connecting with node :math:`7`."
 msgstr ""
 
 msgid ":doc:`sampledata`"
-msgstr ""
+msgstr ":doc:`sampledata`"
 
 msgid "https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf"
 msgstr ""
@@ -3095,30 +3207,39 @@ msgstr ""
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/cost-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/cost-category.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/cost-category.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/cost-category.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/cost-category.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/cost-category.html>`__"
 msgstr ""
+"**지원되는 버전:** `최신 버전 <https://docs.pgrouting.org/latest/en/cost-"
+"category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/cost-category."
+"html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/cost-category.html>`__ `"
+"3.2 <https://docs.pgrouting.org/3.2/en/cost-category.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/en/cost-category.html>`__ `3.0 <https://docs."
+"pgrouting.org/3.0/en/cost-category.html>`__"
 
 msgid "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/cost-category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/cost-category.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/cost-category.html>`__"
 msgstr ""
+"**지원되지 않는 버전:** `2.5 <https://docs.pgrouting.org/2.5/en/cost-category"
+".html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/cost-category.html>`__ `"
+"2.6 <https://docs.pgrouting.org/2.6/en/cost-category.html>`__"
 
 msgid "Cost - Category"
 msgstr ""
 
 msgid ":doc:`pgr_aStarCost`"
-msgstr ""
+msgstr ":doc:`pgr_aStarCost`"
 
 msgid ":doc:`pgr_bdAstarCost`"
-msgstr ""
+msgstr ":doc:`pgr_bdAstarCost`"
 
 msgid ":doc:`pgr_dijkstraCost`"
-msgstr ""
+msgstr ":doc:`pgr_dijkstraCost`"
 
 msgid ":doc:`pgr_bdDijkstraCost`"
-msgstr ""
+msgstr ":doc:`pgr_bdDijkstraCost`"
 
 msgid ":doc:`pgr_dijkstraNearCost`"
-msgstr ""
+msgstr ":doc:`pgr_dijkstraNearCost`"
 
 msgid ":doc:`pgr_withPointsCost`"
-msgstr ""
+msgstr ":doc:`pgr_withPointsCost`"
 
 msgid "Each function works as part of the family it belongs to."
 msgstr ""
@@ -3149,30 +3270,41 @@ msgstr ""
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/costMatrix-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/costMatrix-category.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/costMatrix-category.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/costMatrix-category.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/costMatrix-category.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/costMatrix-category.html>`__"
 msgstr ""
+"**지원되는 버전:** `최신 버전 <https://docs.pgrouting.org/latest/en/"
+"costMatrix-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/"
+"costMatrix-category.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/"
+"costMatrix-category.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/"
+"costMatrix-category.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/"
+"costMatrix-category.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/"
+"costMatrix-category.html>`__"
 
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/costMatrix-category.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/costMatrix-category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/costMatrix-category.html>`__"
 msgstr ""
+"**지원되지 않는 버전:** `2.6 <https://docs.pgrouting.org/2.6/en/costMatrix-"
+"category.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/costMatrix-category"
+".html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/costMatrix-category."
+"html>`__"
 
 msgid "Cost Matrix - Category"
 msgstr ""
 
 msgid ":doc:`pgr_aStarCostMatrix`"
-msgstr ""
+msgstr ":doc:`pgr_aStarCostMatrix`"
 
 msgid ":doc:`pgr_bdAstarCostMatrix`"
-msgstr ""
+msgstr ":doc:`pgr_bdAstarCostMatrix`"
 
 msgid ":doc:`pgr_bdDijkstraCostMatrix`"
-msgstr ""
+msgstr ":doc:`pgr_bdDijkstraCostMatrix`"
 
 msgid ":doc:`pgr_dijkstraCostMatrix`"
-msgstr ""
+msgstr ":doc:`pgr_dijkstraCostMatrix`"
 
 msgid "proposed"
 msgstr ""
 
 msgid ":doc:`pgr_withPointsCostMatrix`"
-msgstr ""
+msgstr ":doc:`pgr_withPointsCostMatrix`"
 
 msgid ":doc:`TSP-family` needs as input a symmetric cost matrix and no edge `(u, v)` must value :math:`\\infty`."
 msgstr ""
@@ -3304,19 +3436,30 @@ msgid "In both sides ``b``, ``NULL``"
 msgstr ""
 
 msgid ":doc:`TSP-family`"
-msgstr ""
+msgstr ":doc:`TSP-family`"
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/dijkstra-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/dijkstra-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/dijkstra-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/dijkstra-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/dijkstra-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/dijkstra-family.html>`__"
 msgstr ""
+"**지원되는 버전:** `최신 버전 <https://docs.pgrouting.org/latest/en/dijkstra-"
+"family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/dijkstra-family."
+"html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/dijkstra-family.html>`__ `"
+"3.2 <https://docs.pgrouting.org/3.2/en/dijkstra-family.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/en/dijkstra-family.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/dijkstra-family.html>`__"
 
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/dijkstra-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/dijkstra-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/dijkstra-family.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/dijkstra.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/dijkstra.html>`__"
 msgstr ""
+"**지원되지 않는 버전:** `2.6 <https://docs.pgrouting.org/2.6/en/dijkstra-"
+"family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/dijkstra-family."
+"html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/dijkstra-family.html>`__ `"
+"2.3 <https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/dijkstra.html>`__ `"
+"2.2 <https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/dijkstra.html>`__"
 
 msgid "Dijkstra - Family of functions"
 msgstr ""
 
 msgid ":doc:`pgr_dijkstra` - Dijkstra's algorithm for the shortest paths."
-msgstr ""
+msgstr ":doc:`pgr_dijkstra` - 최단 경로를 위한 다익스트라 알고리즘."
 
 msgid ":doc:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths."
 msgstr ""
@@ -3328,7 +3471,7 @@ msgid ":doc:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament inf
 msgstr ""
 
 msgid ":doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K shortest paths."
-msgstr ""
+msgstr ":doc:`pgr_KSP` - K 최단 경로를 얻기 위해 pgr_dijkstra로 Yen 알고리즘을 사용."
 
 msgid ":doc:`pgr_dijkstraVia` - Get a route of a seuence of vertices."
 msgstr ""
@@ -3503,9 +3646,20 @@ msgstr ""
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/drivingDistance-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/drivingDistance-category.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/drivingDistance-category.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/drivingDistance-category.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/drivingDistance-category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/drivingDistance-category.html>`__"
 msgstr ""
+"**지원되는 버전:** `최신 버전 <https://docs.pgrouting.org/latest/en/"
+"drivingDistance-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/"
+"drivingDistance-category.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/"
+"drivingDistance-category.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/"
+"drivingDistance-category.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/"
+"drivingDistance-category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/"
+"drivingDistance-category.html>`__"
 
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/drivingDistance-category.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/drivingDistance-category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/drivingDistance-category.html>`__"
 msgstr ""
+"**지원되지 않는 버전:** `2.6 <https://docs.pgrouting.org/2.6/en/"
+"drivingDistance-category.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/"
+"drivingDistance-category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/"
+"drivingDistance-category.html>`__"
 
 msgid "Driving Distance - Category"
 msgstr ""
@@ -3520,10 +3674,10 @@ msgid ":doc:`pgr_kruskalDD` - Driving Distance based on Kruskal's algorithm"
 msgstr ""
 
 msgid "Post pocessing"
-msgstr ""
+msgstr "포스트 프로세싱"
 
 msgid ":doc:`pgr_alphaShape` - Alpha shape computation"
-msgstr ""
+msgstr ":doc:`pgr_alphaShape` - 알파 셰이프 계산"
 
 msgid ":doc:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints"
 msgstr ""
@@ -3569,9 +3723,22 @@ msgstr ""
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/experimental.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/experimental.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/experimental.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/experimental.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/experimental.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/experimental.html>`__"
 msgstr ""
+"**지원되는 버전:** `최신 버전 <https://docs.pgrouting.org/latest/en/"
+"experimental.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/experimental."
+"html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/experimental.html>`__ `3.2 "
+"<https://docs.pgrouting.org/3.2/en/experimental.html>`__ `3.1 <https://docs."
+"pgrouting.org/3.1/en/experimental.html>`__ `3.0 <https://docs.pgrouting.org/3"
+".0/en/experimental.html>`__"
 
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/proposed.html#experimental-functions>`__ `2.5 <https://docs.pgrouting.org/2.5/en/proposed.html#experimental-functions>`__ `2.4 <https://docs.pgrouting.org/2.4/en/proposed.html#experimental-and-proposed-functions>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/proposed.html#experimental-and-proposed-functions>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/proposed.html#experimental-and-proposed-functions>`__"
 msgstr ""
+"**지원되지 않는 버전:** `2.6 <https://docs.pgrouting.org/2.6/en/proposed.html"
+"#experimental-functions>`__ `2.5 <https://docs.pgrouting.org/2.5/en/proposed."
+"html#experimental-functions>`__ `2.4 <https://docs.pgrouting.org/2.4/en/"
+"proposed.html#experimental-and-proposed-functions>`__ `2.3 <https://docs."
+"pgrouting.org/2.3/en/src/proposed.html#experimental-and-proposed-functions>`"
+"__ `2.2 <https://docs.pgrouting.org/2.2/en/src/proposed.html#experimental-"
+"and-proposed-functions>`__"
 
 msgid "Experimental Functions"
 msgstr ""
@@ -3580,7 +3747,7 @@ msgid "Families"
 msgstr ""
 
 msgid ":doc:`flow-family`"
-msgstr ""
+msgstr ":doc:`flow-family`"
 
 msgid ":doc:`pgr_maxFlowMinCost` - Details of flow and cost on edges."
 msgstr ""
@@ -3589,13 +3756,13 @@ msgid ":doc:`pgr_maxFlowMinCost_Cost` - Only the Min Cost calculation."
 msgstr ""
 
 msgid ":doc:`chinesePostmanProblem-family`"
-msgstr ""
+msgstr ":doc:`chinesePostmanProblem-family`"
 
 msgid ":doc:`coloring-family`"
-msgstr ""
+msgstr ":doc:`coloring-family`"
 
 msgid ":doc:`transformation-family`"
-msgstr ""
+msgstr ":doc:`transformation-family`"
 
 msgid ":doc:`pgr_lineGraph` - Transformation algorithm for generating a Line Graph."
 msgstr ""
@@ -3604,7 +3771,7 @@ msgid ":doc:`pgr_lineGraphFull` - Transformation algorithm for generating a Line
 msgstr ""
 
 msgid ":doc:`traversal-family`"
-msgstr ""
+msgstr ":doc:`traversal-family`"
 
 msgid ":doc:`pgr_breadthFirstSearch` - Breath first search traversal of the graph."
 msgstr ""
@@ -3613,58 +3780,68 @@ msgid ":doc:`pgr_binaryBreadthFirstSearch` - Breath first search traversal of th
 msgstr ""
 
 msgid ":doc:`components-family`"
-msgstr ""
+msgstr ":doc:`components-family`"
 
 msgid ":doc:`ordering-family`"
-msgstr ""
+msgstr ":doc:`ordering-family`"
 
 msgid ":doc:`pgr_cuthillMckeeOrdering` - Return reverse Cuthill-McKee ordering of an undirected graph."
 msgstr ""
 
 msgid ":doc:`TRSP-family`"
-msgstr ""
+msgstr ":doc:`TRSP-family`"
 
 msgid "categories"
 msgstr ""
 
 msgid ":doc:`VRP-category`"
-msgstr ""
+msgstr ":doc:`VRP-category`"
 
 msgid "Not classified"
 msgstr ""
 
 msgid ":doc:`pgr_bellmanFord`"
-msgstr ""
+msgstr ":doc:`pgr_bellmanFord`"
 
 msgid ":doc:`pgr_dagShortestPath`"
-msgstr ""
+msgstr ":doc:`pgr_dagShortestPath`"
 
 msgid ":doc:`pgr_edwardMoore`"
-msgstr ""
+msgstr ":doc:`pgr_edwardMoore`"
 
 msgid ":doc:`pgr_isPlanar`"
-msgstr ""
+msgstr ":doc:`pgr_isPlanar`"
 
 msgid ":doc:`pgr_stoerWagner`"
-msgstr ""
+msgstr ":doc:`pgr_stoerWagner`"
 
 msgid ":doc:`pgr_topologicalSort`"
-msgstr ""
+msgstr ":doc:`pgr_topologicalSort`"
 
 msgid ":doc:`pgr_transitiveClosure`"
-msgstr ""
+msgstr ":doc:`pgr_transitiveClosure`"
 
 msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
-msgstr ""
+msgstr ":doc:`pgr_lengauerTarjanDominatorTree`"
 
 msgid ":doc:`pgr_hawickCircuits`"
-msgstr ""
+msgstr ":doc:`pgr_hawickCircuits`"
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/flow-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/flow-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/flow-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/flow-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/flow-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/flow-family.html>`__"
 msgstr ""
+"**지원되는 버전:** `최신 버전 <https://docs.pgrouting.org/latest/en/flow-"
+"family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/flow-family."
+"html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/flow-family.html>`__ `3.2 "
+"<https://docs.pgrouting.org/3.2/en/flow-family.html>`__ `3.1 <https://docs."
+"pgrouting.org/3.1/en/flow-family.html>`__ `3.0 <https://docs.pgrouting.org/3."
+"0/en/flow-family.html>`__"
 
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/flow-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/flow-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/flow-family.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/max_flow/doc/maxFlow.html>`__"
 msgstr ""
+"**지원되지 않는 버전:** `2.6 <https://docs.pgrouting.org/2.6/en/flow-family."
+"html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/flow-family.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/flow-family.html>`__ `2.3 <https://docs."
+"pgrouting.org/2.3/en/src/max_flow/doc/maxFlow.html>`__"
 
 msgid "Flow - Family of functions"
 msgstr ""
@@ -3733,13 +3910,13 @@ msgid "Capacity edges"
 msgstr ""
 
 msgid ":doc:`pgr_pushRelabel`"
-msgstr ""
+msgstr ":doc:`pgr_pushRelabel`"
 
 msgid ":doc:`pgr_edmondsKarp`"
-msgstr ""
+msgstr ":doc:`pgr_edmondsKarp`"
 
 msgid ":doc:`pgr_boykovKolmogorov`"
-msgstr ""
+msgstr ":doc:`pgr_boykovKolmogorov`"
 
 msgid "``reverse_capacity``"
 msgstr ""
@@ -3748,10 +3925,10 @@ msgid "Capacity-Cost edges"
 msgstr ""
 
 msgid ":doc:`pgr_maxFlowMinCost`"
-msgstr ""
+msgstr ":doc:`pgr_maxFlowMinCost`"
 
 msgid ":doc:`pgr_maxFlowMinCost_Cost`"
-msgstr ""
+msgstr ":doc:`pgr_maxFlowMinCost_Cost`"
 
 msgid "Capacity of the edge  (``source``, ``target``)"
 msgstr ""
@@ -3769,7 +3946,7 @@ msgid "Cost edges"
 msgstr ""
 
 msgid ":doc:`pgr_edgeDisjointPaths`"
-msgstr ""
+msgstr ":doc:`pgr_edgeDisjointPaths`"
 
 msgid "Used in"
 msgstr ""
@@ -3865,7 +4042,7 @@ msgid "Maximum flow problem"
 msgstr ""
 
 msgid ":math:`G(V,E)`"
-msgstr ""
+msgstr ":math:`G(V,E)`"
 
 msgid ":math:`source\\_vertex \\in V` the source vertex"
 msgstr ""
@@ -3896,78 +4073,93 @@ msgstr ""
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/index.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/index.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/index.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/index.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/index.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/index.html>`__"
 msgstr ""
+"**지원되는 버전:** `최신 버전 <https://docs.pgrouting.org/latest/en/index."
+"html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/index.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/en/index.html>`__ `3.2 <https://docs."
+"pgrouting.org/3.2/en/index.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/"
+"index.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/index.html>`__"
 
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/index.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/index.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/index.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/index.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/index.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/index.html>`__"
 msgstr ""
+"**지원되지 않는 버전:** `2.6 <https://docs.pgrouting.org/2.6/en/index.html>`"
+"__ `2.5 <https://docs.pgrouting.org/2.5/en/index.html>`__ `2.4 <https://docs."
+"pgrouting.org/2.4/en/index.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/"
+"index.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/index.html>`__ `2.1 "
+"<https://docs.pgrouting.org/2.1/en/index.html>`__ `2.0 <https://docs."
+"pgrouting.org/2.0/en/index.html>`__"
 
 msgid "pgRouting extends the `PostGIS <https://postgis.net>`__/`PostgreSQL <https://www.postgresql.org>`__ geospatial database to provide geospatial routing and other network analysis functionality."
 msgstr ""
+"pgRouting은 `PostGIS <https://postgis.net>`__/`PostgreSQL <https://www."
+"postgresql.org>`__ 지리공간 데이터베이스를 확장하여 기하공간 라우팅과 기타 "
+"네트워크 분석 기능을 제공합니다."
 
 msgid "This is the manual for pgRouting |release|."
-msgstr ""
+msgstr "이 문서는 pgRouting |release|를 위한 매뉴얼입니다."
 
 msgid "Creative Commons Attribution-Share Alike 3.0 License"
-msgstr ""
+msgstr "크리에이티브 커먼즈 저작자표시-동일조건변경허락 3.0 라이선스"
 
 msgid "The pgRouting Manual is licensed under a `Creative Commons Attribution-Share Alike 3.0 License <https://creativecommons.org/licenses/by-sa/3.0/>`_. Feel free to use this material any way you like, but we ask that you attribute credit to the pgRouting Project and wherever possible, a link back to https://pgrouting.org. For other licenses used in pgRouting see the :ref:`license` page."
 msgstr ""
 
 msgid "General"
-msgstr ""
+msgstr "개요"
 
 msgid ":doc:`sampledata` that is used in the examples of this manual."
-msgstr ""
+msgstr ":doc:`sampledata` 는 이 매뉴얼의 예제로 사용됩니다."
 
 msgid "Pgrouting Concepts"
-msgstr ""
+msgstr "Pgrouting 개념"
 
 msgid ":doc:`routingFunctions`"
-msgstr ""
+msgstr ":doc:`routingFunctions`"
 
 msgid ":doc:`allpairs-family`"
-msgstr ""
+msgstr ":doc:`allpairs-family`"
 
 msgid ":doc:`bdDijkstra-family`"
-msgstr ""
+msgstr ":doc:`bdDijkstra-family`"
 
 msgid ":doc:`contraction-family`"
-msgstr ""
+msgstr ":doc:`contraction-family`"
 
 msgid ":doc:`dijkstra-family`"
-msgstr ""
+msgstr ":doc:`dijkstra-family`"
 
 msgid ":doc:`kruskal-family`"
-msgstr ""
+msgstr ":doc:`kruskal-family`"
 
 msgid ":doc:`pgr_kruskal`"
-msgstr ""
+msgstr ":doc:`pgr_kruskal`"
 
 msgid ":doc:`pgr_kruskalDD`"
-msgstr ""
+msgstr ":doc:`pgr_kruskalDD`"
 
 msgid ":doc:`prim-family`"
-msgstr ""
+msgstr ":doc:`prim-family`"
 
 msgid ":doc:`pgr_prim`"
-msgstr ""
+msgstr ":doc:`pgr_prim`"
 
 msgid ":doc:`pgr_primDD`"
-msgstr ""
+msgstr ":doc:`pgr_primDD`"
 
 msgid ":doc:`reference`"
-msgstr ""
+msgstr ":doc:`reference`"
 
 msgid ":doc:`pgr_version`"
-msgstr ""
+msgstr ":doc:`pgr_version`"
 
 msgid ":doc:`pgr_full_version`"
-msgstr ""
+msgstr ":doc:`pgr_full_version`"
 
 msgid ":doc:`topology-functions`"
-msgstr ""
+msgstr ":doc:`topology-functions`"
 
 msgid "The following functions modify the database directly therefore the user must have special permissions given by the administrators to use them."
-msgstr ""
+msgstr "다음 함수는 데이터베이스를 직접 수정하므로 사용하려면 관리자가 부여한 특별한 "
+"권한이 있어야 합니다."
 
 msgid ":doc:`pgr_createTopology` -  create a topology based on the geometry."
 msgstr ""
@@ -3988,40 +4180,40 @@ msgid ":doc:`pgr_trsp` - Turn Restriction Shortest Path (TRSP)"
 msgstr ""
 
 msgid "Functions by categories"
-msgstr ""
+msgstr "카테고리별 함수"
 
 msgid ":doc:`cost-category`"
-msgstr ""
+msgstr ":doc:`cost-category`"
 
 msgid ":doc:`costMatrix-category`"
-msgstr ""
+msgstr ":doc:`costMatrix-category`"
 
 msgid ":doc:`drivingDistance-category`"
-msgstr ""
+msgstr ":doc:`drivingDistance-category`"
 
 msgid ":doc:`KSP-category`"
-msgstr ""
+msgstr ":doc:`KSP-category`"
 
 msgid ":doc:`spanningTree-family`"
-msgstr ""
+msgstr ":doc:`spanningTree-family`"
 
 msgid ":doc:`BFS-category`"
-msgstr ""
+msgstr ":doc:`BFS-category`"
 
 msgid ":doc:`DFS-category`"
-msgstr ""
+msgstr ":doc:`DFS-category`"
 
 msgid "Available Functions but not official pgRouting functions"
-msgstr ""
+msgstr "사용 가능하지만 공식적으로 지원하지 않는 pgRouting 함수"
 
 msgid ":doc:`proposed`"
-msgstr ""
+msgstr ":doc:`proposed`"
 
 msgid ":doc:`experimental`"
-msgstr ""
+msgstr ":doc:`experimental`"
 
 msgid ":doc:`release_notes`"
-msgstr ""
+msgstr ":doc:`release_notes`"
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/kruskal-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/kruskal-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/kruskal-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/kruskal-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/kruskal-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/kruskal-family.html>`__"
 msgstr ""
@@ -4486,7 +4678,7 @@ msgid ":doc:`pgr_trspVia_withPoints`:"
 msgstr ""
 
 msgid ":doc:`withPoints-category`"
-msgstr ""
+msgstr ":doc:`withPoints-category`"
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/ordering-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/ordering-family.html>`__)"
 msgstr ""
@@ -5353,7 +5545,7 @@ msgid "Edges SQL for"
 msgstr ""
 
 msgid ":doc:`withPoints-family`"
-msgstr ""
+msgstr ":doc:`withPoints-family`"
 
 msgid "Some uncategorised functions"
 msgstr ""
@@ -5422,7 +5614,7 @@ msgid "Parameters for the Via functions"
 msgstr ""
 
 msgid ":doc:`pgr_dijkstraVia`"
-msgstr ""
+msgstr ":doc:`pgr_dijkstraVia`"
 
 msgid "SQL query as described."
 msgstr ""
@@ -5458,7 +5650,7 @@ msgid "For the TRSP functions"
 msgstr ""
 
 msgid ":doc:`pgr_trsp`"
-msgstr ""
+msgstr ":doc:`pgr_trsp`"
 
 msgid "Array of identifiers of destination vertices."
 msgstr ""
@@ -5500,7 +5692,7 @@ msgid "Used on functions the following:"
 msgstr ""
 
 msgid ":doc:`pgr_withPoints`"
-msgstr ""
+msgstr ":doc:`pgr_withPoints`"
 
 msgid "Returns set of ``(seq, path_seq [, start_pid] [, end_pid], node, edge, cost, agg_cost)``"
 msgstr ""
@@ -5560,7 +5752,7 @@ msgid "**0** For the first row of the path."
 msgstr ""
 
 msgid ":doc:`pgr_dijkstraNear`"
-msgstr ""
+msgstr ":doc:`pgr_dijkstraNear`"
 
 msgid "Returns ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``"
 msgstr ""
@@ -5671,28 +5863,28 @@ msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgRouti
 msgstr ""
 
 msgid "Installation"
-msgstr ""
+msgstr "설치"
 
 msgid ":ref:`install-short`"
-msgstr ""
+msgstr ":ref:`install-short`"
 
 msgid ":ref:`install_get_sources`"
-msgstr ""
+msgstr ":ref:`install_get_sources`"
 
 msgid ":ref:`install_enable_db`"
-msgstr ""
+msgstr ":ref:`install_enable_db`"
 
 msgid ":ref:`install_dependencies`"
-msgstr ""
+msgstr ":ref:`install_dependencies`"
 
 msgid ":ref:`install_configuring`"
-msgstr ""
+msgstr ":ref:`install_configuring`"
 
 msgid ":ref:`install_build`"
-msgstr ""
+msgstr ":ref:`install_build`"
 
 msgid ":ref:`install_testing`"
-msgstr ""
+msgstr ":ref:`install_testing`"
 
 msgid "Instructions for downloading and installing binaries for different operating systems, additional notes and corrections not included in this documentation can be found in `Installation wiki <https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting>`__"
 msgstr ""
@@ -5701,10 +5893,10 @@ msgid "To use pgRouting PostGIS needs to be installed, please read the informati
 msgstr ""
 
 msgid "Short Version"
-msgstr ""
+msgstr "짧은 버전"
 
 msgid "Extracting the tar ball"
-msgstr ""
+msgstr "tar ball 압축 해제"
 
 msgid "To compile assuming you have all the dependencies in your search path:"
 msgstr ""
@@ -5713,13 +5905,13 @@ msgid "Once pgRouting is installed, it needs to be enabled in each individual da
 msgstr ""
 
 msgid "Get the sources"
-msgstr ""
+msgstr "소스 가져오기"
 
 msgid "The pgRouting latest release can be found in https://github.com/pgRouting/pgrouting/releases/latest"
 msgstr ""
 
 msgid "wget"
-msgstr ""
+msgstr "wget"
 
 msgid "To download this release:"
 msgstr ""
@@ -5728,7 +5920,7 @@ msgid "Go to :ref:`install-short` for more instructions on extracting tar ball a
 msgstr ""
 
 msgid "git"
-msgstr ""
+msgstr "git"
 
 msgid "To download the repository"
 msgstr ""
@@ -5737,10 +5929,10 @@ msgid "Go to :ref:`install-short` for more instructions on compiling pgRouting (
 msgstr ""
 
 msgid "Enabling and upgrading in the database"
-msgstr ""
+msgstr "데이터베이스에서 활성화 및 업그레이드 하기"
 
 msgid "Enabling the database"
-msgstr ""
+msgstr "데이터베이스 활성화"
 
 msgid "pgRouting is a PostgreSQL extension and depends on PostGIS to provide functionalities to end user. Below given code demonstrates enabling PostGIS and pgRouting in the database."
 msgstr ""
@@ -5749,7 +5941,7 @@ msgid "Checking PostGIS and pgRouting version after enabling them in the databas
 msgstr ""
 
 msgid "Upgrading the database"
-msgstr ""
+msgstr "데이터베이스 업그레이드"
 
 msgid "To upgrade pgRouting in the database to version 3.4.0 use the following command:"
 msgstr ""
@@ -5758,16 +5950,16 @@ msgid "More information can be found in https://www.postgresql.org/docs/current/
 msgstr ""
 
 msgid "Dependencies"
-msgstr ""
+msgstr "종속성"
 
 msgid "Compilation Dependencies"
-msgstr ""
+msgstr "컴파일 종속성"
 
 msgid "To be able to compile pgRouting, make sure that the following dependencies are met:"
-msgstr ""
+msgstr "pgRouting을 컴파일 하기 위해, 다음 종속성이 충족되는지 확인하세요:"
 
 msgid "C and C++0x compilers"
-msgstr ""
+msgstr "C 와 C++0x 컴파일러"
 
 msgid "Compiling with Boost 1.56 up to Boost 1.74 requires C++ Compiler with C++03 or C++11 standard support"
 msgstr ""
@@ -5776,22 +5968,22 @@ msgid "Compiling with Boost 1.75 requires C++ Compiler with C++14 standard suppo
 msgstr ""
 
 msgid "Postgresql version = Supported versions by PostgreSQL"
-msgstr ""
+msgstr "Postgresql 버전 = PostgreSQL의 지원되는 버전"
 
 msgid "The Boost Graph Library (BGL). Version >= 1.56"
-msgstr ""
+msgstr "The Boost Graph Library (BGL). Version >= 1.56"
 
 msgid "CMake >= 3.2"
-msgstr ""
+msgstr "CMake >= 3.2"
 
 msgid "optional dependencies"
-msgstr ""
+msgstr "추가 선택적 종속성"
 
 msgid "For user's documentation"
 msgstr ""
 
 msgid "Sphinx >= 1.1"
-msgstr ""
+msgstr "Sphinx >= 1.1"
 
 msgid "Latex"
 msgstr ""
@@ -5824,10 +6016,10 @@ msgid "Installing the compilation dependencies"
 msgstr ""
 
 msgid "Database dependencies"
-msgstr ""
+msgstr "데이터베이스 종속성"
 
 msgid "Configuring PostgreSQL"
-msgstr ""
+msgstr "PostgreSQL 설정"
 
 msgid "Entering psql console"
 msgstr ""
@@ -5872,16 +6064,16 @@ msgid "Enter the psql console and type the following commands"
 msgstr ""
 
 msgid "Build dependencies"
-msgstr ""
+msgstr "빌드 종속성"
 
 msgid "Optional dependencies"
-msgstr ""
+msgstr "선택적 종속성"
 
 msgid "For documentation and testing"
 msgstr ""
 
 msgid "Configuring"
-msgstr ""
+msgstr "구성"
 
 msgid "pgRouting uses the `cmake` system to do the configuration."
 msgstr ""
@@ -5905,10 +6097,10 @@ msgid "Most of the effort of the documentation has been on the HTML files. Some 
 msgstr ""
 
 msgid "Variable"
-msgstr ""
+msgstr "변수"
 
 msgid "Comment"
-msgstr ""
+msgstr "설명"
 
 msgid "WITH_DOC"
 msgstr ""
@@ -5959,7 +6151,7 @@ msgid "Most of the effort of the documentation has been on the html files."
 msgstr ""
 
 msgid "Building"
-msgstr ""
+msgstr "빌드"
 
 msgid "Using ``make`` to build the code and the documentation"
 msgstr ""
@@ -5974,10 +6166,10 @@ msgid "The sql signatures are configured and build in the ``cmake`` command."
 msgstr ""
 
 msgid "MinGW on Windows"
-msgstr ""
+msgstr "윈도우의 MinGW"
 
 msgid "Linux"
-msgstr ""
+msgstr "리눅스"
 
 msgid "The following instructions start from *path/to/pgrouting*"
 msgstr ""
@@ -5989,7 +6181,7 @@ msgid "and start the build process as mentioned previously."
 msgstr ""
 
 msgid "Testing"
-msgstr ""
+msgstr "테스트"
 
 msgid "Currently there is no :code:`make test` and testing is done as follows"
 msgstr ""
@@ -5999,9 +6191,24 @@ msgstr ""
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgRouting-introduction.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/pgRouting-introduction.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/pgRouting-introduction.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgRouting-introduction.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgRouting-introduction.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgRouting-introduction.html>`__"
 msgstr ""
+"**지원되는 버전:** `최신 버전 <https://docs.pgrouting.org/latest/en/"
+"pgRouting-introduction.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/"
+"pgRouting-introduction.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/"
+"pgRouting-introduction.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/"
+"pgRouting-introduction.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/"
+"pgRouting-introduction.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/"
+"pgRouting-introduction.html>`__"
 
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgRouting-introduction.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgRouting-introduction.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgRouting-introduction.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/doc/src/introduction/introduction.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/doc/src/introduction/introduction.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/doc/src/introduction/introduction.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/doc/src/introduction/introduction.html>`__"
 msgstr ""
+"**지원되지 않는 버전:** `2.6 <https://docs.pgrouting.org/2.6/en/pgRouting-"
+"introduction.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgRouting-"
+"introduction.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgRouting-"
+"introduction.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/doc/src/"
+"introduction/introduction.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/"
+"doc/src/introduction/introduction.html>`__ `2.1 <https://docs.pgrouting.org/2"
+".1/en/doc/src/introduction/introduction.html>`__ `2.0 <https://docs.pgrouting"
+".org/2.0/en/doc/src/introduction/introduction.html>`__"
 
 msgid "pgRouting is an extension of `PostGIS <https://postgis.net>`__ and `PostgreSQL <https://www.postgresql.org>`__ geospatial database and adds routing and other network analysis functionality. A predecessor of pgRouting – pgDijkstra, written by Sylvain Pasche from `Camptocamp <https://camptocamp.com>`__, was later extended by Orkney and renamed to pgRouting. The project is now supported and maintained by `Georepublic <https://georepublic.info>`__, `Paragon Corporation <https://www.paragoncorporation.com/>`__ and a broad user community."
 msgstr ""
@@ -6010,13 +6217,13 @@ msgid "pgRouting is part of `OSGeo Community Projects <https://wiki.osgeo.org/wi
 msgstr ""
 
 msgid "Licensing"
-msgstr ""
+msgstr "라이선스"
 
 msgid "The following licenses can be found in pgRouting:"
 msgstr ""
 
 msgid "**License**"
-msgstr ""
+msgstr "**라이선스**"
 
 msgid "GNU General Public License v2.0 or later"
 msgstr ""
@@ -6841,7 +7048,7 @@ msgid "A Geometry collection of Polygons"
 msgstr ""
 
 msgid ":doc:`pgr_drivingDistance`"
-msgstr ""
+msgstr ":doc:`pgr_drivingDistance`"
 
 msgid "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
 msgstr ""
@@ -7069,10 +7276,10 @@ msgid "The examples use the :doc:`sampledata` network."
 msgstr ""
 
 msgid ":doc:`pgr_analyzeOneWay`"
-msgstr ""
+msgstr ":doc:`pgr_analyzeOneWay`"
 
 msgid ":doc:`pgr_createVerticesTable`"
-msgstr ""
+msgstr ":doc:`pgr_createVerticesTable`"
 
 msgid ":doc:`pgr_nodeNetwork` to create nodes to a not noded edge table."
 msgstr ""
@@ -7174,7 +7381,7 @@ msgid "``integer`` Number of vertices in the edge_table that reference this vert
 msgstr ""
 
 msgid ":doc:`pgr_analyzeGraph`"
-msgstr ""
+msgstr ":doc:`pgr_analyzeGraph`"
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_articulationPoints.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_articulationPoints.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/pgr_articulationPoints.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_articulationPoints.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_articulationPoints.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_articulationPoints.html>`__"
 msgstr ""
@@ -8689,7 +8896,7 @@ msgid "Degree from an existing table"
 msgstr ""
 
 msgid ":doc:`pgr_extractVertices`"
-msgstr ""
+msgstr ":doc:`pgr_extractVertices`"
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_depthFirstSearch.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_depthFirstSearch.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/pgr_depthFirstSearch.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_depthFirstSearch.html>`__"
 msgstr ""
@@ -10996,7 +11203,7 @@ msgid "Identifier of the edge in the original query."
 msgstr ""
 
 msgid ":doc:`migration`"
-msgstr ""
+msgstr ":doc:`migration`"
 
 msgid "https://www.boost.org/libs/graph/doc/maximum_matching.html"
 msgstr ""
@@ -12133,7 +12340,7 @@ msgid "Therefore the result ignores the ``U_turn_on_edge`` flag when set to ``fa
 msgstr ""
 
 msgid ":doc:`via-category`"
-msgstr ""
+msgstr ":doc:`via-category`"
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_trspVia_withPoints.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_trspVia_withPoints.html>`__)"
 msgstr ""
@@ -12802,7 +13009,7 @@ msgid "From point :math:`1` within a distance of :math:`3.3`, does not matter dr
 msgstr ""
 
 msgid ":doc:`pgr_alphaShape`"
-msgstr ""
+msgstr ":doc:`pgr_alphaShape`"
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_withPointsKSP.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_withPointsKSP.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/pgr_withPointsKSP.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_withPointsKSP.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_withPointsKSP.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_withPointsKSP.html>`__"
 msgstr ""
@@ -12946,13 +13153,13 @@ msgid ":doc:`pgr_extractVertices` - Extracts vertex information based on the edg
 msgstr ""
 
 msgid ":doc:`pgr_withPointsVia`"
-msgstr ""
+msgstr ":doc:`pgr_withPointsVia`"
 
 msgid ":doc:`pgr_trspVia`"
-msgstr ""
+msgstr ":doc:`pgr_trspVia`"
 
 msgid ":doc:`pgr_trspVia_withPoints`"
-msgstr ""
+msgstr ":doc:`pgr_trspVia_withPoints`"
 
 msgid ":doc:`withPoints-family` - Functions based on Dijkstra algorithm."
 msgstr ""
@@ -12964,7 +13171,7 @@ msgid "Utilities"
 msgstr ""
 
 msgid ":doc:`pgr_findCloseEdges`"
-msgstr ""
+msgstr ":doc:`pgr_findCloseEdges`"
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/reference.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/reference.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/reference.html>`__"
 msgstr ""
@@ -15434,9 +15641,22 @@ msgstr ""
 
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/withPoints-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/withPoints-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/withPoints-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/withPoints-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/withPoints-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/withPoints-family.html>`__"
 msgstr ""
+"**지원되는 버전:** `최신 버전 <https://docs.pgrouting.org/latest/en/"
+"withPoints-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/"
+"withPoints-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/"
+"withPoints-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/"
+"withPoints-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/"
+"withPoints-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/"
+"withPoints-family.html>`__"
 
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/withPoints-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/withPoints-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/withPoints-family.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/withPoints/doc/withPoints.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/withPoints/doc/withPoints.html>`__"
 msgstr ""
+"**지원되지 않는 버전:** `2.6 <https://docs.pgrouting.org/2.6/en/withPoints-"
+"family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/withPoints-family."
+"html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/withPoints-family.html>`__ `"
+"2.3 <https://docs.pgrouting.org/2.3/en/src/withPoints/doc/withPoints.html>`"
+"__ `2.2 <https://docs.pgrouting.org/2.2/en/src/withPoints/doc/withPoints."
+"html>`__"
 
 msgid "withPoints - Family of functions"
 msgstr ""
