@@ -32,7 +32,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_common/debug_macro.h"
 
-
+/*!
+ * @brief  Function will check whether the colNumber represent any specific column or NULL (SPI_ERROR_NOATTRIBUTE).
+ *
+ * @param[in] colNumber Column number (count starts at 1).
+ *
+ * @return @b TRUE when colNumber exist.
+ *        @b FALSE when colNumber was not found.
+ *
+ */
 bool
 column_found(int colNumber) {
     /*
@@ -40,6 +48,21 @@ column_found(int colNumber) {
      */
     return !(colNumber == SPI_ERROR_NOATTRIBUTE);
 }
+
+/*!
+ * @brief Function tells expected type of each column and then check the correspondence type of each column.
+ *
+ * @param[in] info[]     contain one or more column information.
+ * @param[in] info_size  number of columns.
+ * 
+ * @throw column not found.
+ * @throw ERROR Unknown type of column.
+ *  
+ *
+ * @return @b TRUE when column exist.
+ *        @b FALSE when column was not found.
+ *
+ */
 
 static
 bool
@@ -75,6 +98,17 @@ fetch_column_info(
     return false;
 }
 
+/*!
+ * @brief Function tells expected type of each column and then check the correspondence type of each column.
+ *
+ * @param[in] info[]     contain one or more column information.
+ * @param[in] info_size  number of columns.
+ * 
+ * @throw ERROR Unknown type of column.
+ *
+ * @return NULL is always returned.
+ *
+ */
 
 void pgr_fetch_column_info(
         Column_info_t info[],
@@ -110,6 +144,16 @@ void pgr_fetch_column_info(
  * [INT2ARRAYOID](https://doxygen.postgresql.org/include_2catalog_2pg__type_8h.html#ac265fe7b0bb75fead13b16bf072722e9)
  */
 
+/*!
+ * @brief The function check whether column type is CHAR or not.
+ *        Where CHAR is SQL type:
+ *             CHARACTER
+ * 
+ * @param[in] info contain column information.
+ * 
+ * @throw ERROR Unexpected Column type. Expected column type is CHAR.
+ *
+ */
 void
 pgr_check_char_type(Column_info_t info) {
     if (!(info.type == BPCHAROID)) {
@@ -117,12 +161,34 @@ pgr_check_char_type(Column_info_t info) {
     }
 }
 
+/*!
+ * @brief The function check whether column type is TEXT or not.
+ *       Where TEXT is SQL type:
+ *             TEXT
+ * 
+ * @param[in] info contain column information.
+ * 
+ * @throw ERROR Unexpected Column type. Expected column type is TEXT.
+ * 
+ */
+
 void
 pgr_check_text_type(Column_info_t info) {
     if (!(info.type == TEXTOID)) {
         elog(ERROR, "Unexpected Column '%s' type. Expected TEXT", info.name);
     }
 }
+
+/*!
+ * @brief The function check whether column type is ANY-INTEGER or not.
+ *       Where ANY-INTEGER is SQL type:
+ *           SMALLINT, INTEGER, BIGINT
+ * 
+ * @param[in] info contain column information.
+ * 
+ * @throw ERROR Unexpected Column type. Expected column type is ANY-INTEGER.
+ * 
+ */
 
 void
 pgr_check_any_integer_type(Column_info_t info) {
@@ -134,7 +200,16 @@ pgr_check_any_integer_type(Column_info_t info) {
                 info.name);
     }
 }
-
+/*!
+ * @brief The function check whether column type is ANY-INTEGER-ARRAY or not.
+ *        Where ANY-INTEGER-ARRAY is SQL type:
+ *             SMALLINT[], INTEGER[], BIGINT[]
+ * 
+ * @param[in] info contain column information.
+ * 
+ * @throw ERROR Unexpected Column type. Expected ANY-INTEGER-ARRAY.
+ * 
+ */
 void
 pgr_check_any_integerarray_type(Column_info_t info) {
     if (!(info.type == INT2ARRAYOID
@@ -145,6 +220,17 @@ pgr_check_any_integerarray_type(Column_info_t info) {
                 info.name);
     }
 }
+
+/*!
+ * @brief The function check whether column type is ANY-NUMERICAL.
+ *        Where ANY-NUMERICAL is SQL type:
+ *             SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+ * 
+ * @param[in] info contain column information.
+ * 
+ * @throw ERROR Unexpected Column type. Expected column type is ANY-NUMERICAL.
+ * 
+ */
 
 void pgr_check_any_numerical_type(Column_info_t info) {
     if (!(info.type == INT2OID
@@ -165,6 +251,22 @@ void pgr_check_any_numerical_type(Column_info_t info) {
  * [SPI_getbinval](https://www.postgresql.org/docs/8.1/static/spi-spi-getbinval.html)
  * [Datum](https://doxygen.postgresql.org/datum_8h.html)
  * [DatumGetInt16](https://doxygen.postgresql.org/postgres_8h.html#aec991e04209850f29a8a63df0c78ba2d)
+ */
+
+/*!
+ * @brief Function return the value of specified column in char type.
+ * 
+ * @param[in]  tuple         input row to be examined.
+ * @param[in]  tupdesc       input row description.
+ * @param[in]  info          contain column information.
+ * @param[in]  strict        boolean value of strict.
+ * @param[in]  default_value returned when column contain NULL value.
+ * 
+ * @throw ERROR Unexpected Column type. Expected column type is CHAR.
+ * @throw ERROR When value of column is NULL.
+ * 
+ * @return Char type of column value is returned.
+ * 
  */
 
 char
@@ -190,18 +292,22 @@ pgr_SPI_getChar(
     return value;
 }
 
+/*!
+ * @brief Function returns the values of specified columns in array.
+ * 
+ * @param[in]  tuple    input row to be examined.
+ * @param[in]  tupdesc  input row description.
+ * @param[in]  info     contain column information.
+ * @param[out] the_size number of element in array.
+ * 
+ * @throw ERROR No elements found in ARRAY.
+ * @throw ERROR Unexpected Column type. Expected column type is ANY-INTEGER-ARRAY.
+ * @throw ERROR NULL value found in Array.
+ * 
+ * @return Array of columns value is returned.
+ * 
+ */
 
-
-/*
-@param[in]  tuple    input row to be examined.
-@param[in]  tupdesc  input row description.
-@param[in]  info     contain column information.
-@param[in,out]  the_size     size of the array
-@param[out] the_size number of element in array.
-
-@returns NULL on NULL input
-@returns C Array.
-*/
 int64_t*
 pgr_SPI_getBigIntArr(
         HeapTuple *tuple,
@@ -223,7 +329,19 @@ pgr_SPI_getBigIntArr(
     return pgr_get_bigIntArray_allowEmpty((size_t*)the_size, pg_array);
 }
 
-
+/*!
+ * @brief Function returns the value of specified column in integer type.
+ * 
+ * @param[in]  tuple   input row to be examined.
+ * @param[in]  tupdesc input row description.
+ * @param[in]  info    contain column information.
+ * 
+ * @throw ERROR Unexpected Column type. Expected column type is ANY-INTEGER.
+ * @throw ERROR When value of column is NULL.
+ * 
+ * @return Integer type of column value is returned.
+ * 
+ */
 
 int64_t
 pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
@@ -254,6 +372,20 @@ pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
 #endif
     return value;
 }
+
+/*!
+ * @brief Function returns the value of specified column in double type.
+ * 
+ * @param[in] tuple   input row to be examined.
+ * @param[in] tupdesc input row description.
+ * @param[in] info    contain column information.
+ * 
+ * @throw ERROR Unexpected Column type. Expected column type is ANY-NUMERICAL.
+ * @throw ERROR When value of column is NULL.
+ * 
+ * @return Double type of column value is returned.
+ * 
+ */ 
 
 double
 pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
@@ -302,6 +434,18 @@ pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
 /*
  * [DatumGetCString](https://doxygen.postgresql.org/postgres_8h.html#ae401c8476d1a12b420e3061823a206a7)
  */
+
+/*!
+ * @brief Function returns the string representation of the value of specified column.
+ * 
+ * @param[in]  tuple   input row to be examined.
+ * @param[in]  tupdesc input row description.
+ * @param[in]  info    contain column information.
+ * 
+ * @return Pointer of string is returned.
+ * 
+ */
+
 char*
 pgr_SPI_getText(HeapTuple *tuple, TupleDesc *tupdesc,  Column_info_t info) {
     return DatumGetCString(SPI_getvalue(*tuple, *tupdesc, info.colNumber));
