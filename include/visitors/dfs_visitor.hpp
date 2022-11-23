@@ -29,12 +29,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_VISITORS_DFS_VISITOR_HPP_
 #pragma once
 
-#include <boost/graph/depth_first_search.hpp>
-
 #include <vector>
 #include <set>
 #include <map>
 #include <iostream>
+
+#include <boost/graph/depth_first_search.hpp>
 
 #include "visitors/found_goals.hpp"
 
