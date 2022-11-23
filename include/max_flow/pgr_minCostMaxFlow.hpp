@@ -28,15 +28,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_MAX_FLOW_PGR_MINCOSTMAXFLOW_HPP_
 #pragma once
 
-#include <boost/graph/successive_shortest_path_nonnegative_weights.hpp>
-#include <boost/graph/find_flow_cost.hpp>
-
 #include <map>
 #include <string>
 #include <utility>
 #include <vector>
 #include <set>
 #include <limits>
+
+#include <boost/graph/successive_shortest_path_nonnegative_weights.hpp>
+#include <boost/graph/find_flow_cost.hpp>
 
 #include "c_types/flow_t.h"
 #include "c_types/costFlow_t.h"

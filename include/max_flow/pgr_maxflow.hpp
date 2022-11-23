@@ -28,19 +28,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_MAX_FLOW_PGR_MAXFLOW_HPP_
 #pragma once
 
-
-#include "pgr_flowgraph.hpp"
-#include <boost/graph/push_relabel_max_flow.hpp>
-#include <boost/graph/edmonds_karp_max_flow.hpp>
-#include <boost/graph/boykov_kolmogorov_max_flow.hpp>
-
-
 #include <map>
 #include <string>
 #include <utility>
 #include <vector>
 #include <set>
 #include <limits>
+
+#include "max_flow/pgr_flowgraph.hpp"
+#include <boost/graph/push_relabel_max_flow.hpp>
+#include <boost/graph/edmonds_karp_max_flow.hpp>
+#include <boost/graph/boykov_kolmogorov_max_flow.hpp>
 
 #include "c_types/flow_t.h"
 #include "c_types/edge_t.h"
