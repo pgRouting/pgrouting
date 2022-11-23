@@ -27,14 +27,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include "coloring/pgr_edgeColoring.hpp"
-#include <boost/graph/edge_coloring.hpp>
-#include <boost/graph/graph_utility.hpp>
 
 #include <vector>
 #include <utility>
 #include <string>
 
 #include "cpp_common/identifiers.hpp"
+#include <boost/graph/edge_coloring.hpp>
+#include <boost/graph/graph_utility.hpp>
+
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/interruption.h"
 

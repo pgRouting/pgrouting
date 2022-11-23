@@ -25,6 +25,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_COLORING_PGR_SEQUENTIALVERTEXCOLORING_HPP_
 #pragma once
 
+#include <algorithm>
+#include <vector>
+#include <map>
 
 #include <boost/property_map/property_map.hpp>
 #include <boost/graph/graph_traits.hpp>
@@ -32,10 +35,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/type_traits.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/sequential_vertex_coloring.hpp>
-
-#include <algorithm>
-#include <vector>
-#include <map>
 
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/interruption.h"

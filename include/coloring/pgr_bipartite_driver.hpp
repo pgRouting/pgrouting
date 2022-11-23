@@ -32,14 +32,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_COLORING_PGR_BIPARTITE_DRIVER_HPP_
 #pragma once
 
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
 #include <boost/property_map/property_map.hpp>
 #include <boost/property_map/vector_property_map.hpp>
 #include <boost/type_traits.hpp>
 #include <boost/graph/bipartite.hpp>
-
-#include <iostream>
-#include <algorithm>
-#include <vector>
 
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/pgr_messages.h"
