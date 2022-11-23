@@ -33,17 +33,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_MAX_FLOW_PGR_MAXIMUMCARDINALITYMATCHING_HPP_
 #pragma once
 
-
-#include <boost/config.hpp>
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/max_cardinality_matching.hpp>
-
-
 #include <map>
 #include <vector>
 #include <utility>
 #include <set>
 #include <algorithm>
+
+#include <boost/config.hpp>
+#include <boost/graph/adjacency_list.hpp>
+#include <boost/graph/max_cardinality_matching.hpp>
 
 #include "c_types/edge_bool_t_rt.h"
 
