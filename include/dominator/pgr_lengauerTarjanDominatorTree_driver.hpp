@@ -32,6 +32,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DOMINATOR_PGR_LENGAUERTARJANDOMINATORTREE_DRIVER_HPP_
 #pragma once
 
+#include <vector>
+#include <algorithm>
 
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/dominator_tree.hpp>
@@ -39,8 +41,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/property_map/vector_property_map.hpp>
 #include <boost/type_traits.hpp>
 
-#include <vector>
-#include <algorithm>
 #include "cpp_common/interruption.h"
 #include "cpp_common/pgr_messages.h"
 #include "cpp_common/pgr_base_graph.hpp"
