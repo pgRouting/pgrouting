@@ -29,16 +29,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_SPANNINGTREE_PGR_RANDOMSPANNINGTREE_HPP_
 #pragma once
 
+#include <vector>
+#include <random>
+#include <iostream>
+#include <exception>
+
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/random_spanning_tree.hpp>
 #include <boost/random/random_number_generator.hpp>
 #include <boost/graph/graph_traits.hpp>
-
-#include <vector>
-#include <random>
-#include <iostream>
-#include <exception>
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"

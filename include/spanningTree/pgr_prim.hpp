@@ -29,11 +29,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_SPANNINGTREE_PGR_PRIM_HPP_
 #pragma once
 
-#include <visitors/prim_dijkstra_visitor.hpp>
-#include <boost/graph/prim_minimum_spanning_tree.hpp>
-
 #include <vector>
 #include <set>
+
+#include <visitors/prim_dijkstra_visitor.hpp>
+#include <boost/graph/prim_minimum_spanning_tree.hpp>
 
 #include "spanningTree/pgr_mst.hpp"
 #include "cpp_common/interruption.h"
