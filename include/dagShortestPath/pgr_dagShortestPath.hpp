@@ -28,10 +28,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DAGSHORTESTPATH_PGR_DAGSHORTESTPATH_HPP_
 #pragma once
 
-#include <boost/config.hpp>
-#include <boost/graph/dijkstra_shortest_paths.hpp>
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/dag_shortest_paths.hpp>
 #include <deque>
 #include <set>
 #include <vector>
@@ -40,6 +36,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <functional>
 #include <limits>
 #include <map>
+
+#include <boost/config.hpp>
+#include <boost/graph/dijkstra_shortest_paths.hpp>
+#include <boost/graph/adjacency_list.hpp>
+#include <boost/graph/dag_shortest_paths.hpp>
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
