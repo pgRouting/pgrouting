@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.4.1
+# Copyright (C) pgRouting Contributors - Version v3.4.2
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.4.1\n"
+"Project-Id-Version: pgRouting v3.4.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-10 17:48+0000\n"
+"POT-Creation-Date: 2022-11-23 18:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -5752,7 +5752,7 @@ msgstr ""
 msgid "Upgrading the database"
 msgstr ""
 
-msgid "To upgrade pgRouting in the database to version 3.4.1 use the following command:"
+msgid "To upgrade pgRouting in the database to version 3.4.2 use the following command:"
 msgstr ""
 
 msgid "More information can be found in https://www.postgresql.org/docs/current/sql-createextension.html"
@@ -12983,6 +12983,12 @@ msgid "Release Notes"
 msgstr ""
 
 msgid "To see the full list of changes check the list of `Git commits <https://github.com/pgRouting/pgrouting/commits>`_ on Github."
+msgstr ""
+
+msgid "pgRouting 3.4.2 Release Notes"
+msgstr ""
+
+msgid "No Changes Yet"
 msgstr ""
 
 msgid "pgRouting 3.4.1 Release Notes"
