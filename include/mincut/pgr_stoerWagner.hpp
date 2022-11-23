@@ -29,14 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_MINCUT_PGR_STOERWAGNER_HPP_
 #pragma once
 
-#include <boost/config.hpp>
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/graph_traits.hpp>
-#include <boost/graph/one_bit_color_map.hpp>
-#include <boost/graph/stoer_wagner_min_cut.hpp>
-#include <boost/property_map/property_map.hpp>
-#include <boost/typeof/typeof.hpp>
-
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -45,6 +37,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 
 #include "cpp_common/basePath_SSEC.hpp"
+#include <boost/config.hpp>
+#include <boost/graph/adjacency_list.hpp>
+#include <boost/graph/graph_traits.hpp>
+#include <boost/graph/one_bit_color_map.hpp>
+#include <boost/graph/stoer_wagner_min_cut.hpp>
+#include <boost/property_map/property_map.hpp>
+#include <boost/typeof/typeof.hpp>
+
 #include "cpp_common/pgr_base_graph.hpp"
 #include "c_types/stoerWagner_t.h"
 
