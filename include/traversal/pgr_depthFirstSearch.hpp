@@ -25,13 +25,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_TRAVERSAL_PGR_DEPTHFIRSTSEARCH_HPP_
 #pragma once
 
+#include <vector>
+#include <map>
 
 #include <visitors/dfs_visitor.hpp>
 #include <boost/graph/depth_first_search.hpp>
 #include <boost/graph/undirected_dfs.hpp>
-
-#include <vector>
-#include <map>
 
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/interruption.h"
