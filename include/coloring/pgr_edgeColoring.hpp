@@ -27,12 +27,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_COLORING_PGR_EDGECOLORING_HPP_
 #pragma once
 
-#include <boost/config.hpp>
-#include <boost/graph/adjacency_list.hpp>
-
 #include <iostream>
 #include <map>
 #include <vector>
+
+#include <boost/config.hpp>
+#include <boost/graph/adjacency_list.hpp>
 
 #include "c_types/edge_t.h"
 #include "c_types/ii_t_rt.h"
