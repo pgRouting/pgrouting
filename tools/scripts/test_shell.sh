@@ -21,7 +21,7 @@
 
 DIR=$(git rev-parse --show-toplevel)
 
-pushd "${DIR}" > /dev/null || exit
+pushd "${DIR}" > /dev/null || exit 1
 code="0"
 
 for f in $(git ls-files | grep '\.sh')
@@ -29,7 +29,7 @@ do
   if [ "${f}" = "tools/developer/addNewVersionLink.sh" ] ; then
     result=$(shellcheck --exclude=SC2046,SC2016 "${f}")
   else
-    result=$(shellcheck "${f}")
+    result=$(shellcheck --exclude=SC2141 "${f}")
   fi
 
   if [[ $result ]]; then
