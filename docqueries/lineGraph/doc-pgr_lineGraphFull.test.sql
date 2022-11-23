@@ -1,3 +1,4 @@
+-- CopyRight(c) pgRouting developers
 -- Creative Commons Attribution-Share Alike 3.0 License : https://creativecommons.org/licenses/by-sa/3.0/
 DROP TABLE IF EXISTS linegraph_edges;
 DROP TABLE IF EXISTS vertex_map;

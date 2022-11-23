@@ -1,3 +1,4 @@
+-- CopyRight(c) pgRouting developers
 -- Creative Commons Attribution-Share Alike 3.0 License : https://creativecommons.org/licenses/by-sa/3.0/
 UPDATE edges SET id = id * 100, source = 1000 * source, target = 1000 * target;
 UPDATE vertices SET id = id * 1000;

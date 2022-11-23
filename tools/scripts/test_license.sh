@@ -18,7 +18,7 @@
 # ********************************************************************PGR-GNU*/
 # This test checks that all source files correctly have license headers
 
-EXCLUDE_LIST="txt|sig|png|jpeg|_static|md|control|html|cfg|gif"
+EXCLUDE_LIST="txt|sig|png|jpeg|_static|md|control|html|cfg|gif|result|conf"
 
 mylicensecheck() {
     licensecheck -r --copyright -l 30 --tail 0 -i "$EXCLUDE_LIST" "$1"
@@ -28,8 +28,10 @@ DIR=$(git rev-parse --show-toplevel)
 
 pushd "${DIR}" > /dev/null || exit
 missing=$(! { mylicensecheck src & mylicensecheck  sql &  mylicensecheck include & mylicensecheck pgtap;}  | grep "No copyright\|UNKNOWN")
-missing1=$(mylicensecheck doc  | grep "No copyright")
+missing1=$(mylicensecheck doc | grep "No copyright")
 missing2=$(grep --files-without-match 'Creative Commons' doc/*/*.rst)
+missing3=$(mylicensecheck docqueries | grep "No copyright")
+missing4=$(grep --files-without-match 'Creative Commons' "$(git ls-files docqueries | grep '.sql')")
 popd > /dev/null || exit
 
 #mylicensecheck doc
@@ -57,5 +59,23 @@ if [[ $missing2 ]]; then
   echo "$missing2"
   error=1
 fi
+
+if [[ $missing3 ]]; then
+  echo " ****************************************************"
+  echo " *** Found docqueries files without copyright"
+  echo " ****************************************************"
+  echo "$missing3"
+  error=1
+fi
+
+if [[ $missing4 ]]; then
+  echo " ****************************************************"
+  echo " *** Found docqueries files without copyright"
+  echo " ****************************************************"
+  echo "$missing4"
+  error=1
+fi
+
+
 exit $error
 

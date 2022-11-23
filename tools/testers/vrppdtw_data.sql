@@ -1,3 +1,5 @@
+-- CopyRight(c) pgRouting developers
+-- Creative Commons Attribution-Share Alike 3.0 License : https://creativecommons.org/licenses/by-sa/3.0/
 
 DROP TABLE IF EXISTS lc101_c CASCADE;
 DROP TABLE IF EXISTS c_lc101 CASCADE;
