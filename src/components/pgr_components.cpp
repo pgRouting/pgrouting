@@ -26,16 +26,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "components/pgr_components.hpp"
 
+#include <vector>
+#include <map>
+#include <utility>
+#include <algorithm>
+
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/connected_components.hpp>
 #include <boost/graph/strong_components.hpp>
 #include <boost/graph/biconnected_components.hpp>
-
-#include <vector>
-#include <map>
-#include <utility>
-#include <algorithm>
 
 #include "cpp_common/identifiers.hpp"
 #include "cpp_common/interruption.h"
