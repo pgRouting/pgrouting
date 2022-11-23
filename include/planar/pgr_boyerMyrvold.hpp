@@ -25,6 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_PLANAR_PGR_BOYERMYRVOLD_HPP_
 #pragma once
 
+#include <vector>
+
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/properties.hpp>
 #include <boost/graph/graph_traits.hpp>
@@ -32,8 +34,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/boyer_myrvold_planar_test.hpp>
 #include <boost/graph/is_kuratowski_subgraph.hpp>
 #include <boost/ref.hpp>
-
-#include <vector>
 
 #include "cpp_common/pgr_messages.h"
 #include "cpp_common/pgr_base_graph.hpp"
