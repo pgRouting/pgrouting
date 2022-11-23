@@ -27,7 +27,7 @@ mylicensecheck() {
 DIR=$(git rev-parse --show-toplevel)
 
 pushd "${DIR}" > /dev/null || exit
-missing=$(! { mylicensecheck src & mylicensecheck  sql &  mylicensecheck include;}  | grep "No copyright\|UNKNOWN")
+missing=$(! { mylicensecheck src & mylicensecheck  sql &  mylicensecheck include & mylicensecheck pgtap;}  | grep "No copyright\|UNKNOWN")
 missing1=$(mylicensecheck doc  | grep "No copyright")
 missing2=$(grep --files-without-match 'Creative Commons' doc/*/*.rst)
 popd > /dev/null || exit
