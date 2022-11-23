@@ -25,6 +25,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_COMPONENTS_PGR_MAKECONNECTED_HPP_
 #pragma once
 
+#include <vector>
+#include <set>
+#include <map>
+
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/properties.hpp>
 #include <boost/graph/graph_traits.hpp>
@@ -32,10 +36,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/connected_components.hpp>
 #include <boost/graph/make_connected.hpp>
 #include <boost/ref.hpp>
-
-#include <vector>
-#include <set>
-#include <map>
 
 #include "c_types/ii_t_rt.h"
 #include "cpp_common/pgr_messages.h"
