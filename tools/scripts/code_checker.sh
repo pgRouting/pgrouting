@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # -*- coding: utf-8 -*-
 ###############################################################################
 #
@@ -32,11 +32,13 @@ set -e
 if ! test -d code_linter; then
     # Get our fork of codespell that adds --words-white-list and full filename support for -S option
     mkdir code_linter
-    cd code_linter || exit 1
-    git clone https://github.com/google/styleguide
-    cd styleguide || exit 1
-    git checkout gh-pages
-    cd ../.. || exit 1
+    pushd code_linter || exit 1
+    git clone --branch develop https://github.com/cpplint/cpplint
+    # cd styleguide || exit 1
+    # git checkout gh-pages
+    popd || exit 1
+    ls code_linter
+    ls code_linter/cpplint
     echo code_linter installed
 fi
 
@@ -46,15 +48,15 @@ if test -z "$DIRECTORY"; then
     echo "--------------------"
     echo "------   *.c  ------"
     echo "--------------------"
-    python2 code_linter/styleguide/cpplint/cpplint.py --extensions=c  --linelength=120 --filter=-readability/casting src/*/*.c
+    code_linter/cpplint/cpplint.py --extensions=c  --linelength=120 --filter=-readability/casting src/*/*.c
     echo "--------------------"
     echo "------ *.cpp  ------"
     echo "--------------------"
-    python2 code_linter/styleguide/cpplint/cpplint.py --filter=-runtime/references  --linelength=120 src/*/*.cpp
+    code_linter/cpplint/cpplint.py --filter=-runtime/references  --linelength=120 src/*/*.cpp
     echo "--------------------"
     echo "------ HEADERS  ------"
     echo "--------------------"
-    python2 code_linter/styleguide/cpplint/cpplint.py --extensions=hpp,h --headers=hpp,h  --linelength=120 --filter=-runtime/references \
+    code_linter/cpplint/cpplint.py --extensions=hpp,h --headers=hpp,h  --linelength=120 --filter=-runtime/references \
         include/*/*.h* \
         include/*/*/*.h*
 
@@ -64,7 +66,7 @@ else
     echo "--------------------"
     echo "------ IN PLACE HEADERS  ------"
     echo "--------------------"
-    python2 code_linter/styleguide/cpplint/cpplint.py --extensions=hpp,h --headers=hpp,h  --linelength=120 --filter=-runtime/references \
+    code_linter/cpplint/cpplint.py --extensions=hpp,h --headers=hpp,h  --linelength=120 --filter=-runtime/references \
         include/*/*.h* \
         include/*/*/*.h*
 
@@ -72,26 +74,26 @@ else
         echo "--------------------"
         echo "------   *.c  ------"
         echo "--------------------"
-        python2 code_linter/styleguide/cpplint/cpplint.py --extensions=c  --linelength=120 --filter=-readability/casting src/"$DIRECTORY"/*.c
+        code_linter/cpplint/cpplint.py --extensions=c  --linelength=120 --filter=-readability/casting src/"$DIRECTORY"/*.c
         echo "--------------------"
         echo "------ *.cpp  ------"
         echo "--------------------"
-        python2 code_linter/styleguide/cpplint/cpplint.py  --linelength=120 --filter=-runtime/references src/"$DIRECTORY"/*.cpp
+        code_linter/cpplint/cpplint.py  --linelength=120 --filter=-runtime/references src/"$DIRECTORY"/*.cpp
         echo "--------------------"
         echo "------   C HEADER  ------"
         echo "--------------------"
-        python2 code_linter/styleguide/cpplint/cpplint.py \
+        code_linter/cpplint/cpplint.py \
             include/drivers/"$DIRECTORY"/*.h \
             include/c_types/"$DIRECTORY"/*.h
 
         echo "--------------------"
         echo "------ C++ HEADER  ------"
         echo "--------------------"
-        python2 code_linter/styleguide/cpplint/cpplint.py  --extensions=hpp,h --headers=hpp  --linelength=120 --filter=-runtime/references include/"$DIRECTORY"/*.h*
+        code_linter/cpplint/cpplint.py  --extensions=hpp,h --headers=hpp  --linelength=120 --filter=-runtime/references include/"$DIRECTORY"/*.h*
         echo "--------------------"
         echo "------ this shouild fail  ------"
         echo "--------------------"
-        python2 code_linter/styleguide/cpplint/cpplint.py src/"$DIRECTORY"/src/*.h*
+        code_linter/cpplint/cpplint.py src/"$DIRECTORY"/src/*.h*
     fi
 fi
 
