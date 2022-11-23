@@ -36,6 +36,12 @@ To see the full list of changes check the list of `Git commits
 
 
 
+
+pgRouting 3.4.2 Release Notes
+-------------------------------------------------------------------------------
+
+No Changes Yet
+
 pgRouting 3.4.1 Release Notes
 -------------------------------------------------------------------------------
 
