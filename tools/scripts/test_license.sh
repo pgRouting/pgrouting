@@ -18,7 +18,7 @@
 # ********************************************************************PGR-GNU*/
 # This test checks that all source files correctly have license headers
 
-EXCLUDE_LIST="txt|sig|png|jpeg|_static|md|control|html|cfg"
+EXCLUDE_LIST="txt|sig|png|jpeg|_static|md|control|html|cfg|gif"
 
 mylicensecheck() {
     licensecheck -r --copyright -l 30 --tail 0 -i "$EXCLUDE_LIST" "$1"
