@@ -25,17 +25,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include "tsp/tsp.hpp"
-#include <boost/graph/metric_tsp_approx.hpp>
-#include <boost/graph/connected_components.hpp>
-#include <boost/graph/dijkstra_shortest_paths.hpp>
-#include <boost/graph/graph_utility.hpp>
-
 
 #include <utility>
 #include <vector>
 #include <deque>
 #include <string>
 #include <limits>
+
+#include <boost/graph/metric_tsp_approx.hpp>
+#include <boost/graph/connected_components.hpp>
+#include <boost/graph/dijkstra_shortest_paths.hpp>
+#include <boost/graph/graph_utility.hpp>
 
 #include "cpp_common/identifiers.hpp"
 #include "cpp_common/pgr_messages.h"

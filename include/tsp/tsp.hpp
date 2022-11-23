@@ -29,14 +29,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 
-#include <boost/config.hpp>
-#include <boost/graph/adjacency_list.hpp>
-
 #include <map>
 #include <string>
 #include <utility>
 #include <deque>
 #include <vector>
+
+#include <boost/config.hpp>
+#include <boost/graph/adjacency_list.hpp>
 
 #include "c_types/iid_t_rt.h"
 #include "c_types/coordinate_t.h"
