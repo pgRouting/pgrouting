@@ -28,19 +28,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_ALLPAIRS_PGR_ALLPAIRS_HPP_
 #pragma once
 
+#include <deque>
+#include <vector>
+#include <set>
+#include <limits>
 
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/property_map/property_map.hpp>
 #include <boost/graph/johnson_all_pairs_shortest.hpp>
 #include <boost/graph/floyd_warshall_shortest.hpp>
-
-
-#include <deque>
-#include <vector>
-#include <set>
-#include <limits>
-
 
 #include "c_types/iid_t_rt.h"
 #include "cpp_common/basePath_SSEC.hpp"
