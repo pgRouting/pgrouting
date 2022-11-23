@@ -1,3 +1,4 @@
+-- CopyRight(c) pgRouting developers
 -- Creative Commons Attribution-Share Alike 3.0 License : https://creativecommons.org/licenses/by-sa/3.0/
 SET extra_float_digits=-3;
 SET client_min_messages TO WARNING;
