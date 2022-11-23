@@ -28,16 +28,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_CPP_COMMON_BASEPATH_SSEC_HPP_
 #pragma once
 
-
-#include <boost/config.hpp>
-#include <boost/graph/adjacency_list.hpp>
-
-
 #include <deque>
 #include <vector>
 #include <iostream>
 #include <algorithm>
 #include <map>
+
+#include <boost/config.hpp>
+#include <boost/graph/adjacency_list.hpp>
 
 #include "c_types/path_rt.h"
 #include "cpp_common/path_t.h"

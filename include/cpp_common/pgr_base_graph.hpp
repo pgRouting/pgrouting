@@ -26,16 +26,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_CPP_COMMON_PGR_BASE_GRAPH_HPP_
 #pragma once
 
-#include <boost/graph/iteration_macros.hpp>
-#include <boost/config.hpp>
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/graph_utility.hpp>
-
 #include <deque>
 #include <vector>
 #include <set>
 #include <map>
 #include <limits>
+
+#include <boost/graph/iteration_macros.hpp>
+#include <boost/config.hpp>
+#include <boost/graph/adjacency_list.hpp>
+#include <boost/graph/graph_utility.hpp>
 
 #include "c_types/graph_enum.h"
 

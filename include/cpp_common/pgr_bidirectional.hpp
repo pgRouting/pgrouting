@@ -34,11 +34,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 
-#include <boost/config.hpp>
-
-#include <boost/graph/dijkstra_shortest_paths.hpp>
-#include <boost/graph/adjacency_list.hpp>
-
 #include <string>
 #include <queue>
 #include <utility>
@@ -47,6 +42,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <functional>
 #include <numeric>
 
+#include <boost/config.hpp>
+#include <boost/graph/dijkstra_shortest_paths.hpp>
+#include <boost/graph/adjacency_list.hpp>
 
 #include "cpp_common/pgr_assert.h"
 
