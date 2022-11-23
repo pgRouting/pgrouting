@@ -29,8 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_SPANNINGTREE_PGR_KRUSKAL_HPP_
 #pragma once
 
-#include <boost/graph/kruskal_min_spanning_tree.hpp>
 #include <vector>
+#include <boost/graph/kruskal_min_spanning_tree.hpp>
 #include "spanningTree/pgr_mst.hpp"
 #include "cpp_common/interruption.h"
 

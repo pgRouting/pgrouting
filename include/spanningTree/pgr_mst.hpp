@@ -26,16 +26,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_SPANNINGTREE_PGR_MST_HPP_
 #pragma once
 
+#include <set>
+#include <utility>
+#include <string>
+#include <vector>
+
 #include <visitors/dfs_visitor_with_root.hpp>
 #include <visitors/edges_order_bfs_visitor.hpp>
 #include <visitors/edges_order_dfs_visitor.hpp>
 #include <boost/graph/connected_components.hpp>
 #include <boost/graph/filtered_graph.hpp>
-
-#include <set>
-#include <utility>
-#include <string>
-#include <vector>
 
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/interruption.h"
