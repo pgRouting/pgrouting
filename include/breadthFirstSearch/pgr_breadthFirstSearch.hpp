@@ -25,11 +25,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_BREADTHFIRSTSEARCH_PGR_BREADTHFIRSTSEARCH_HPP_
 #pragma once
 
+#include <vector>
 
 #include <visitors/edges_order_bfs_visitor.hpp>
 #include <boost/graph/breadth_first_search.hpp>
-
-#include <vector>
 
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/interruption.h"
