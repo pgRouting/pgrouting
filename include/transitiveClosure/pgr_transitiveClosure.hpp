@@ -31,12 +31,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_TRANSITIVECLOSURE_PGR_TRANSITIVECLOSURE_HPP_
 #pragma once
 
-#include <boost/graph/transitive_closure.hpp>
 
 #include <deque>
 #include <vector>
 #include <utility>
 
+#include <boost/graph/transitive_closure.hpp>
 #include "cpp_common/pgr_assert.h"
 
 
