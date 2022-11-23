@@ -31,13 +31,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_CONTRACTION_PGR_CONTRACTIONGRAPH_HPP_
 #pragma once
 
-#include <boost/graph/iteration_macros.hpp>
-
 #include <limits>
 #include <algorithm>
 #include <vector>
 #include <iostream>
 #include <tuple>
+
+#include <boost/graph/iteration_macros.hpp>
 
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/ch_vertex.h"

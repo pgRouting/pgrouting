@@ -32,12 +32,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 
-#include <boost/graph/iteration_macros.hpp>
-#include <boost/graph/filtered_graph.hpp>
-
 #include <queue>
 #include <functional>
 #include <vector>
+
+#include <boost/graph/iteration_macros.hpp>
+#include <boost/graph/filtered_graph.hpp>
 
 #include "cpp_common/identifiers.hpp"
 
