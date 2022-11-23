@@ -26,13 +26,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  * this file is not compiled with boost 1.53 or less
  */
 #include "drivers/alpha_shape/alphaShape_driver.h"
-#include <boost/geometry/io/wkt/write.hpp>
 
 #include <cmath>
 #include <vector>
 #include <string>
 #include <utility>
 #include <algorithm>
+
+#include <boost/geometry/io/wkt/write.hpp>
 
 #include "c_types/geom_text_rt.h"
 #include "cpp_common/pgr_assert.h"

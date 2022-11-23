@@ -27,6 +27,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "alphaShape/pgr_alphaShape.h"
 
+#include <sstream>
+#include <set>
+#include <vector>
+#include <algorithm>
+#include <utility>
+#include <map>
+
 #include <visitors/dijkstra_one_goal_visitor.hpp>
 #include <boost/graph/dijkstra_shortest_paths.hpp>
 #include <boost/graph/filtered_graph.hpp>
@@ -43,12 +50,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/geometry/algorithms/distance.hpp>
 
 
-#include <sstream>
-#include <set>
-#include <vector>
-#include <algorithm>
-#include <utility>
-#include <map>
 #include "cpp_common/interruption.h"
 
 namespace bg = boost::geometry;
