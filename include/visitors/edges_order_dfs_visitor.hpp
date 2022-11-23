@@ -30,8 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_VISITORS_EDGES_ORDER_DFS_VISITOR_HPP_
 #pragma once
 
-#include <boost/graph/depth_first_search.hpp>
 #include <vector>
+#include <boost/graph/depth_first_search.hpp>
 #include "visitors/found_goals.hpp"
 
 namespace pgrouting {
