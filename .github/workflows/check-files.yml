@@ -66,9 +66,10 @@ jobs:
       - name: Install Requirements
         uses: actions/checkout@v3
         with:
-          repository: 'google/styleguide'
-          ref: "gh-pages"
-          path: "code_linter/styleguide"
+          repository: 'cpplint/cpplint'
+          ref: "develop"
+          path: "code_linter/cpplint"
       - name: Run linter
         run: |
+          ls code_linter
           bash ./tools/scripts/code_checker.sh
