@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/traversal-family.html>`__
-  (`3.4 <https://docs.pgrouting.org/3.4/en/traversal-family.html>`__)
+  (`3.5 <https://docs.pgrouting.org/3.5/en/traversal-family.html>`__)
+  `3.4 <https://docs.pgrouting.org/3.4/en/traversal-family.html>`__
   `3.3 <https://docs.pgrouting.org/3.3/en/traversal-family.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/traversal-family.html>`__
 

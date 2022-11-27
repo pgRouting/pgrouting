@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/TRSP-family.html>`__
-  (`3.4 <https://docs.pgrouting.org/3.4/en/TRSP-family.html>`__)
+  (`3.5 <https://docs.pgrouting.org/3.5/en/TRSP-family.html>`__)
+  `3.4 <https://docs.pgrouting.org/3.4/en/TRSP-family.html>`__
 
 TRSP - Family of functions
 ===============================================================================

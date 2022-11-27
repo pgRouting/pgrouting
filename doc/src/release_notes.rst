@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/release_notes.html>`__
-  (`3.4 <https://docs.pgrouting.org/3.4/en/release_notes.html>`__)
+  (`3.5 <https://docs.pgrouting.org/3.5/en/release_notes.html>`__)
+  `3.4 <https://docs.pgrouting.org/3.4/en/release_notes.html>`__
   `3.3 <https://docs.pgrouting.org/3.3/en/release_notes.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/release_notes.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/release_notes.html>`__
@@ -36,6 +37,12 @@ To see the full list of changes check the list of `Git commits
 
 
 
+
+
+pgRouting 3.5.0 Release Notes
+-------------------------------------------------------------------------------
+
+No Changes Yet
 
 pgRouting 3.4.2 Release Notes
 -------------------------------------------------------------------------------
