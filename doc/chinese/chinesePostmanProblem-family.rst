@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/chinesePostmanProblem-family.html>`__
-  (`3.4 <https://docs.pgrouting.org/3.4/en/chinesePostmanProblem-family.html>`__)
+  (`3.5 <https://docs.pgrouting.org/3.5/en/chinesePostmanProblem-family.html>`__)
+  `3.4 <https://docs.pgrouting.org/3.4/en/chinesePostmanProblem-family.html>`__
   `3.3 <https://docs.pgrouting.org/3.3/en/chinesePostmanProblem-family.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/chinesePostmanProblem-family.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/chinesePostmanProblem-family.html>`__
