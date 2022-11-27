@@ -1,22 +1,4 @@
 #!/bin/bash
-# /*PGR-GNU*****************************************************************
-# File: pumpup-dev.sh
-# Copyright (c) 2020 pgRouting developers
-# Mail: project@pgrouting.org
-# ------
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-# GNU General Public License for more details.
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-# ********************************************************************PGR-GNU*/
-set -e
 
 # ------------------------------------------------------------------------------
 # pgRouting Scripts
@@ -24,36 +6,84 @@ set -e
 #
 # Pump up version
 # ------------------------------------------------------------------------------
+WHAT_NEXT=$1
 
-# Script to pump up branch to next minor development
+# Script to pump up branch to next development
+# Usage:
+# bash tools/developer/pumpup_version.sh minor
+
 
 OLD_VERSION=$(grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt)
 KIND=$(grep -Po '(?<=set\(PROJECT_VERSION_DEV )[^;]+\"\)' CMakeLists.txt)
+echo "KIND=${KIND}"
 KIND=$(echo "${KIND}" | awk -F'"' '{print $2}')
 echo "OLD_VERSION=${OLD_VERSION}"
 echo "KIND=${KIND}"
+
 IFS='\. ' read -r -a a <<< "${OLD_VERSION}"
 
 MAYOR="${a[0]}"
 MINOR="${a[1]}"
-#MICRO="${a[2]}"
 
-((a[1]++))
-NEW_MINOR="${a[1]}"
-NEW_MICRO="0"
-NEW_KIND="-dev"
-NEW_VERSION="${MAYOR}.${NEW_MINOR}.${NEW_MICRO}"
+function pumpup_doc {
+    echo "pump up doc"
+    OLDSTR='^  \(`'"${1}"' (.*)\/'"${1}"'(.*)\)$'
+    NEWSTR='  \(`'"${2}"' $1\/'"${2}"'$2\)\n  `'"${1}"' $1\/'"${1}"'$2'
+    perl -pi -e 's/'"$OLDSTR"'/'"${NEWSTR}"'/' $(git ls-files './*.rst')
+}
 
-echo "NEW_VERSION=${NEW_VERSION}"
+function pumpup_mayor {
+    ((a[0]++))
+    NEW_MAYOR="${a[0]}"
+    NEW_MINOR="0"
+    NEW_MICRO="0"
+    NEW_KIND="-dev"
+    pumpup_doc "${MAYOR}.${MINOR}" "${NEW_MAYOR}.${NEW_MINOR}"
+}
+
+function pumpup_minor {
+    ((a[1]++))
+    NEW_MAYOR="${a[0]}"
+    NEW_MINOR="${a[1]}"
+    NEW_MICRO="0"
+    NEW_KIND="-dev"
+    pumpup_doc "${MAYOR}.${MINOR}" "${NEW_MAYOR}.${NEW_MINOR}"
+}
+
+function pumpup_micro {
+    ((a[2]++))
+    NEW_MAYOR="${a[0]}"
+    NEW_MINOR="${a[1]}"
+    NEW_MICRO="${a[2]}"
+    NEW_KIND="${KIND}"
+}
+
+
+if [ "${WHAT_NEXT}" == "mayor" ]
+then
+    pumpup_mayor
+elif [ "${WHAT_NEXT}" == "micro" ]
+then
+    pumpup_micro
+elif [ "${WHAT_NEXT}" == "minor" ]
+then
+    pumpup_minor
+fi
+
+
+NEW_VERSION="${NEW_MAYOR}.${NEW_MINOR}.${NEW_MICRO}"
+echo "pumpup from ${OLD_VERSION}${KIND} to ${NEW_VERSION}${NEW_KIND}"
 
 # --------------------------------------------
+# --------------------------------------------
 # Modifications to CMakeLists
+# --------------------------------------------
 # --------------------------------------------
 
 # set version to new version
 perl -pi -e 's/project\(PGROUTING VERSION (.*)$/project\(PGROUTING VERSION '"${NEW_VERSION}"'/g' CMakeLists.txt
 perl -pi -e 's/set\(PROJECT_VERSION_DEV(.*)$/set\(PROJECT_VERSION_DEV "'"${NEW_KIND}"'"\)/g'  CMakeLists.txt
-perl -pi -e 's/set\(MINORS(.*)$/set\(MINORS '"${MAYOR}"'.'"${NEW_MINOR}"'$1/g'  CMakeLists.txt
+perl -pi -e 's/set\(MINORS(.*)$/set\(MINORS '"${NEW_MAYOR}"'.'"${NEW_MINOR}"'$1/g'  CMakeLists.txt
 perl -pi -e 's/OLD_SIGNATURES$/OLD_SIGNATURES\n    '"${OLD_VERSION}"' /g' CMakeLists.txt
 
 # --------------------------------------------
@@ -66,8 +96,11 @@ perl -pi -e 's/OLD_SIGNATURES$/OLD_SIGNATURES\n    '"${OLD_VERSION}"' /g' CMakeL
 # Copy last signature file
 # --------------------------------------------
 
-cp -f "sql/sigs/pgrouting--${MAYOR}.${MINOR}.sig" "sql/sigs/pgrouting--${MAYOR}.${NEW_MINOR}.sig"
-#git add "sql/sigs/pgrouting--${MAYOR}.${NEW_MINOR}.sig
+if [ "${WHAT_NEXT}" != "micro" ]
+then
+    cp -f "sql/sigs/pgrouting--${MAYOR}.${MINOR}.sig" "sql/sigs/pgrouting--${NEW_MAYOR}.${NEW_MINOR}.sig"
+    git add "sql/sigs/pgrouting--${MAYOR}.${NEW_MINOR}.sig"
+fi
 
 # --------------------------------------------
 # Adding section in release notes & news
@@ -106,6 +139,13 @@ perl -pi -e 's/old_pgr: \[/old_pgr: \['"${OLD_VERSION}"', /g' .github/workflows/
 # Include file in CMakeLists.txt
 # --------------------------------------------
 
-perl -pi -e 's/# add minor here/my \$version_'"${MAYOR}"'_'"${NEW_MINOR}"' = qr\/\('"${MAYOR}"'\.'"${NEW_MINOR}"'\.\[\\d\+\]\)\/;\n# add minor here/g' sql/scripts/build-extension-update-files.pl
-perl -pi -e 's/my \$current = (.*)$/my \$current = \$version_'"${MAYOR}"'\_'"${NEW_MINOR}"';/g' sql/scripts/build-extension-update-files.pl
-perl -pi -e 's/unless \$old_version =~ (.*)\/;$/unless \$old_version =~ $1|\$version_'"${MAYOR}"'_'"${NEW_MINOR}"'\/;/g' sql/scripts/build-extension-update-files.pl
+if [ "${WHAT_NEXT}" != "micro" ]
+then
+    perl -pi -e 's/# add minor here/my \$version_'"${NEW_MAYOR}"'_'"${NEW_MINOR}"' = qr\/\('"${NEW_MAYOR}"'\.'"${NEW_MINOR}"'\.\[\\d\+\]\)\/;\n# add minor here/g' sql/scripts/build-extension-update-files.pl
+    perl -pi -e 's/my \$current = (.*)$/my \$current = \$version_'"${NEW_MAYOR}"'\_'"${NEW_MINOR}"';/g' sql/scripts/build-extension-update-files.pl
+    perl -pi -e 's/unless \$old_version =~ (.*)\/;$/unless \$old_version =~ $1|\$version_'"${NEW_MAYOR}"'_'"${NEW_MINOR}"'\/;/g' sql/scripts/build-extension-update-files.pl
+fi
+
+
+perl -pi -e 's/# Copyright(.*) v(.*)$/# Copyright$1 v'"${NEW_VERSION}${NEW_KIND}"'/' locale/pot/*.pot
+perl -pi -e 's/# Copyright(.*) v(.*)$/# Copyright$1 v'"${NEW_VERSION}${NEW_KIND}"'/' locale/*/*/*.po
