@@ -97,7 +97,7 @@ DECLARE
     sourcetype TEXT;
     targettype TEXT;
     debuglevel TEXT;
-    dummyRec TEXT;
+    dummyRec record;
     fnName TEXT;
     err bool;
     msgKind int;

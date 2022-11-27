@@ -88,7 +88,7 @@ DECLARE
     notincluded INTEGER;
     included INTEGER;
     debuglevel TEXT;
-    dummyRec TEXT;
+    dummyRec record;
     fnName TEXT;
     err bool;
 
