@@ -6,6 +6,7 @@
 #
 # Pump up version
 # ------------------------------------------------------------------------------
+# shellcheck disable=SC2016
 WHAT_NEXT=$1
 
 # Script to pump up branch to next development
@@ -29,7 +30,7 @@ function pumpup_doc {
     echo "pump up doc"
     OLDSTR='^  \(`'"${1}"' (.*)\/'"${1}"'(.*)\)$'
     NEWSTR='  \(`'"${2}"' $1\/'"${2}"'$2\)\n  `'"${1}"' $1\/'"${1}"'$2'
-    perl -pi -e 's/'"$OLDSTR"'/'"${NEWSTR}"'/' $(git ls-files './*.rst')
+    perl -pi -e 's/'"$OLDSTR"'/'"${NEWSTR}"'/' "$(git ls-files './*.rst')"
 }
 
 function pumpup_mayor {
