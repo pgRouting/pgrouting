@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Proposed Functions &#8212; pgRouting Manual (3.5-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="TRSP - Family of functions" href="TRSP-family.html" />
+    <link rel="prev" title="BFS - Category" href="BFS-category.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+          pgRouting</a>
+        <span class="navbar-text navbar-version pull-left"><b>v3.5.0-dev</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Proposed Functions</a><ul>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="BFS-category.html" title="Previous Chapter: BFS - Category"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; BFS - Category</span>
+    </a>
+  </li>
+  <li>
+    <a href="TRSP-family.html" title="Next Chapter: TRSP - Family of functions"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">TRSP - Family... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/proposed.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.5/en/proposed.html">3.5</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.4/en/proposed.html">3.4</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.3/en/proposed.html">3.3</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.2/en/proposed.html">3.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.1/en/proposed.html">3.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/proposed.html">3.0</a></p></li>
+<li><p><strong>Unsupported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/2.6/en/proposed.html">2.6</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.5/en/proposed.html">2.5</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.4/en/proposed.html">2.4</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/proposed.html">2.3</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/proposed.html">2.2</a></p></li>
+</ul>
+<section id="proposed-functions">
+<h1>Proposed Functions<a class="headerlink" href="#proposed-functions" title="Permalink to this heading">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Proposed functions for next mayor release.</p>
+<ul class="simple">
+<li><p>They are not officially in the current release.</p></li>
+<li><p>They will likely officially be part of the next mayor release:</p>
+<ul>
+<li><p>The functions make use of ANY-INTEGER and ANY-NUMERICAL</p></li>
+<li><p>Name might not change. (But still can)</p></li>
+<li><p>Signature might not change. (But still can)</p></li>
+<li><p>Functionality might not change. (But still can)</p></li>
+<li><p>pgTap tests have being done. But might need more.</p></li>
+<li><p>Documentation might need refinement.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p class="rubric">Families</p>
+<p><a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - Family of functions</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a> - Get a route of a seuence of vertices.</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - Proposed</span></a> - Get the route to the nearest vertex.</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - Proposed</span></a> - Get the cost to the nearest vertex.</p></li>
+</ul>
+<p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Family of functions</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Proposed</span></a> - Route from/to points anywhere on the graph.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_withPointsCost - Proposed</span></a> - Costs of the shortest paths.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsCostMatrix.html"><span class="doc">pgr_withPointsCostMatrix - proposed</span></a> - Costs of the shortest paths.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP - Proposed</span></a> - K shortest paths.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD - Proposed</span></a> - Driving distance.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia - Proposed</span></a> - Via routing</p></li>
+</ul>
+<p><a class="reference internal" href="TRSP-family.html"><span class="doc">TRSP - Family of functions</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Proposed</span></a> - Vertex - Vertex routing with restrictions.</p></li>
+<li><p><a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia - Proposed</span></a> - Via Vertices routing with restrictions.</p></li>
+<li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - Proposed</span></a> - Vertex/Point routing with restrictions.</p></li>
+<li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints - Proposed</span></a> - Via Vertex/point routing with restrictions.</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<p><a class="reference internal" href="topology-functions.html"><span class="doc">Topology - Family of Functions</span></a></p>
+<p>These proposed functions do not modify the database.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_degree.html"><span class="doc">pgr_degree – Proposed</span></a> - Calculates the degree of the vertices of a graph.</p></li>
+<li><p><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Proposed</span></a> - Extracts vertex information based on the edge
+table information.</p></li>
+</ul>
+<p><a class="reference internal" href="coloring-family.html"><span class="doc">Coloring - Family of functions</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_sequentialVertexColoring.html"><span class="doc">pgr_sequentialVertexColoring - Proposed</span></a> - Vertex coloring algorithm using greedy
+approach.</p></li>
+</ul>
+<p><a class="reference internal" href="traversal-family.html"><span class="doc">Traversal - Family of functions</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_depthFirstSearch.html"><span class="doc">pgr_depthFirstSearch - Proposed</span></a> - Depth first search traversal of the graph.</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<p class="rubric">categories</p>
+<p><a class="reference internal" href="cost-category.html"><span class="doc">Cost - Category</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_withPointsCost - Proposed</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Category</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_withPointsCostMatrix.html"><span class="doc">pgr_withPointsCostMatrix - proposed</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="drivingDistance-category.html"><span class="doc">Driving Distance - Category</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD - Proposed</span></a> - Driving Distance based on pgr_withPoints</p></li>
+</ul>
+<p><a class="reference internal" href="KSP-category.html"><span class="doc">K shortest paths - Category</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP - Proposed</span></a> - Yen’s algorithm based on pgr_withPoints</p></li>
+</ul>
+<p><a class="reference internal" href="via-category.html"><span class="doc">Via - Category</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia - Proposed</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia - Proposed</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints - Proposed</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="withPoints-category.html"><span class="doc">withPoints - Category</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Family of functions</span></a> - Functions based on Dijkstra algorithm.</p></li>
+<li><p>From the <a class="reference internal" href="TRSP-family.html"><span class="doc">TRSP - Family of functions</span></a>:</p>
+<ul>
+<li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - Proposed</span></a> - Vertex/Point routing with restrictions.</p></li>
+<li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints - Proposed</span></a> - Via Vertex/point routing with restrictions.</p></li>
+</ul>
+</li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<p class="rubric">Utilities</p>
+<p><a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a></p>
+<div class="toctree-wrapper compound">
+</div>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="experimental.html"><span class="doc">Experimental Functions</span></a></p></li>
+</ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.5.0-dev.<br/>
+      Last updated on Nov 27, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

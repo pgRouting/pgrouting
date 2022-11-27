@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Funciones de Ruteo de Vehículos - Categoría (Experimental) &#8212; pgRouting Manual (3.5-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/translations.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="pgr_pickDeliver - Experimental" href="pgr_pickDeliver.html" />
+    <link rel="prev" title="pgr_cuthillMckeeOrdering - Experimental" href="pgr_cuthillMckeeOrdering.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+          pgRouting</a>
+        <span class="navbar-text navbar-version pull-left"><b>v3.5.0-dev</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Soporte</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Datos Muestra</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Guía de migración</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Funciones de Ruteo de Vehículos - Categoría (Experimental)</a><ul>
+<li><a class="reference internal" href="#introduction">Introducción</a><ul>
+<li><a class="reference internal" href="#characteristics">Características</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pick-delivery">Recogida y Entrega</a></li>
+<li><a class="reference internal" href="#parameters">Parámetros</a><ul>
+<li><a class="reference internal" href="#pick-deliver">Recogida y Entrega</a></li>
+<li><a class="reference internal" href="#pick-deliver-optional-parameters">Parámetros opcionales de Recoger-Entregar</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#orders-sql">SQL de órdenes</a></li>
+<li><a class="reference internal" href="#vehicles-sql">SQL de Vehículos</a></li>
+<li><a class="reference internal" href="#matrix-sql">SQL de matriz</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#return-columns">Columnas de Resultados</a><ul>
+<li><a class="reference internal" href="#summary-row">Fila de Resumen</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#handling-parameters">Parámetros de Manipulación</a><ul>
+<li><a class="reference internal" href="#capacity-and-demand-units-handling">Manejo de Unidades de Capacidad y Demanda</a></li>
+<li><a class="reference internal" href="#locations">Ubiaciones</a></li>
+<li><a class="reference internal" href="#time-handling">Manejo del Tiempo</a></li>
+<li><a class="reference internal" href="#factor-handling">Manipulación del Factor</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_cuthillMckeeOrdering.html" title="Previous Chapter: pgr_cuthillMckeeOrdering - Experimental"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_cuthillMc...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_pickDeliver.html" title="Next Chapter: pgr_pickDeliver - Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_pickDeliv... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/VRP-category.html">Último</a> (<a class="reference external" href="https://docs.pgrouting.org/3.2/es/VRP-category.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/VRP-category.html">3.1</a>) <a class="reference external" href="https://docs.pgrouting.org/3.0/es/VRP-category.html">3.0</a></p></li>
+</ul>
+<section id="vehicle-routing-functions-category-experimental">
+<h1><a class="toc-backref" href="#id1" role="doc-backlink">Funciones de Ruteo de Vehículos - Categoría (Experimental)</a><a class="headerlink" href="#vehicle-routing-functions-category-experimental" title="Enlace permanente a este encabezado">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Posible bloqueo del servidor</p>
+<ul class="simple">
+<li><p>Estas funciones pueden crear una caída del servidor</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Funciones experimentales</p>
+<ul class="simple">
+<li><p>No son oficialmente de la versión actual.</p></li>
+<li><p>Es probable que oficialmente no formen parte de la siguiente versión:</p>
+<ul>
+<li><p>Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL</p></li>
+<li><p>El nombre puede cambiar.</p></li>
+<li><p>La firma puede cambiar.</p></li>
+<li><p>La funcionalidad puede cambiar.</p></li>
+<li><p>Las pruebas de pgTap pueden faltar.</p></li>
+<li><p>Posiblemente necesite codificación c/c++.</p></li>
+<li><p>Puede carecer documentación.</p></li>
+<li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
+<li><p>Puede ser necesario que los ejemplos de documentación se generen automáticamente.</p></li>
+<li><p>Puede ser necesaria retroalimentación por parte de la comunidad.</p></li>
+<li><p>Puede depender de una función propuesta de pgRouting</p></li>
+<li><p>Podría depender de una función obsoleta de pgRouting</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>Problema de recogida y entrega</p>
+<ul>
+<li><p><a class="reference internal" href="pgr_pickDeliver.html"><span class="doc">pgr_pickDeliver - Experimental</span></a> - Recogida y Entrega utilizando una Matriz de Costos</p></li>
+<li><p><a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - Experimental</span></a> - Recoger y Entregar con distancias Euclideanas</p></li>
+</ul>
+</li>
+<li><p>Problema de distribución</p>
+<ul>
+<li><p><a class="reference internal" href="pgr_vrpOneDepot.html"><span class="doc">pgr_vrpOneDepot - Experimental</span></a> - Desde un único depósito, distribuye los pedidos</p></li>
+</ul>
+</li>
+</ul>
+<nav class="contents" id="contenido">
+<p class="topic-title">Contenido</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#vehicle-routing-functions-category-experimental" id="id1">Funciones de Ruteo de Vehículos - Categoría (Experimental)</a></p>
+<ul>
+<li><p><a class="reference internal" href="#introduction" id="id2">Introducción</a></p>
+<ul>
+<li><p><a class="reference internal" href="#characteristics" id="id3">Características</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#pick-delivery" id="id4">Recogida y Entrega</a></p></li>
+<li><p><a class="reference internal" href="#parameters" id="id5">Parámetros</a></p>
+<ul>
+<li><p><a class="reference internal" href="#pick-deliver" id="id6">Recogida y Entrega</a></p></li>
+<li><p><a class="reference internal" href="#pick-deliver-optional-parameters" id="id7">Parámetros opcionales de Recoger-Entregar</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#inner-queries" id="id8">Consultas Internas</a></p>
+<ul>
+<li><p><a class="reference internal" href="#orders-sql" id="id9">SQL de órdenes</a></p></li>
+<li><p><a class="reference internal" href="#vehicles-sql" id="id10">SQL de Vehículos</a></p></li>
+<li><p><a class="reference internal" href="#matrix-sql" id="id11">SQL de matriz</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#return-columns" id="id12">Columnas de Resultados</a></p>
+<ul>
+<li><p><a class="reference internal" href="#summary-row" id="id13">Fila de Resumen</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#handling-parameters" id="id14">Parámetros de Manipulación</a></p>
+<ul>
+<li><p><a class="reference internal" href="#capacity-and-demand-units-handling" id="id15">Manejo de Unidades de Capacidad y Demanda</a></p></li>
+<li><p><a class="reference internal" href="#locations" id="id16">Ubiaciones</a></p></li>
+<li><p><a class="reference internal" href="#time-handling" id="id17">Manejo del Tiempo</a></p></li>
+<li><p><a class="reference internal" href="#factor-handling" id="id18">Manipulación del Factor</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#see-also" id="id19">Ver también</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<div class="toctree-wrapper compound">
+</div>
+<section id="introduction">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Introducción</a><a class="headerlink" href="#introduction" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Problemas de Ruteo de Vehículos <cite>VRP</cite> son problemas de optimización <strong>NP-hard</strong> , que generaliza el problema del vendedor viajante (TSP).</p>
+<ul class="simple">
+<li><p>El objetivo del VRP es minimizar el costo total de la ruta.</p></li>
+<li><p>Hay distintas variantes del problema VRP,</p></li>
+</ul>
+<p><strong>pgRouting no intenta implementar todas las variantes.</strong></p>
+<section id="characteristics">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Características</a><a class="headerlink" href="#characteristics" title="Enlace permanente a este encabezado">¶</a></h3>
+<ul class="simple">
+<li><p>Problema de Ruteo de Vehículos Capacitados <cite>CVRP</cite> donde los vehículos tienen una capacidad de transporte limitada de las mercancías.</p></li>
+<li><p>Problema de Ruteo del Vehículo con Ventanas de Tiempo <cite>VRPTW</cite> donde las ubicaciones tienen ventanas de tiempo dentro de las cuales se deben realizar las visitas del vehículo.</p></li>
+<li><p>Problema de Ruteo de Vehículos con Recogida y Entrega <cite>VRPPD</cite> donde una serie de mercancías necesitan ser trasladadas de ciertas ubicaciones de recogida a otros lugares de entrega.</p></li>
+</ul>
+<p class="rubric">Limitaciones</p>
+<ul class="simple">
+<li><p>No hay varias ventanas de tiempo para una ubicación.</p></li>
+<li><p>Menos vehículo utilizado se considera mejor.</p></li>
+<li><p>Menos duración total es mejor.</p></li>
+<li><p>Menos tiempo de espera es mejor.</p></li>
+</ul>
+</section>
+</section>
+<section id="pick-delivery">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Recogida y Entrega</a><a class="headerlink" href="#pick-delivery" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Problema: <cite>CVRPPDTW</cite> Problema de Ruteo de vehículos de recogida y entrega capacitado con Ventanas de Tiempo</p>
+<ul class="simple">
+<li><p>Los tiempos son relativos a <cite>0</cite></p></li>
+<li><p>Los vehículos</p>
+<ul>
+<li><p>tienen tiempos de duración del servicio de inicio y fin.</p></li>
+<li><p>tienen horarios de apertura y cierre para las ubicaciones de inicio y finalización.</p></li>
+<li><p>tienen cierta capacidad.</p></li>
+</ul>
+</li>
+<li><p>Las órdenes</p>
+<ul>
+<li><p>Tener lugares de recogida y entrega.</p></li>
+<li><p>Tener horarios de apertura y cierre para las ubicaciones de recogida y entrega.</p></li>
+<li><p>Tener tiempos de servicio de recogida y entrega.</p></li>
+<li><p>solicitar el traslado de mercancías desde el lugar de recogida hasta el lugar de entrega.</p></li>
+</ul>
+</li>
+<li><p>Cálculos basados en el tiempo:</p>
+<ul>
+<li><p>El tiempo de viaje entre los clientes es <span class="math notranslate nohighlight">\(distancia / velocidad\)</span></p></li>
+<li><p>El par de órdenes de recogida y entrega se realiza por el mismo vehículo.</p></li>
+<li><p>La recogida se realiza antes de la entrega.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="parameters">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Parámetros</a><a class="headerlink" href="#parameters" title="Enlace permanente a este encabezado">¶</a></h2>
+<section id="pick-deliver">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Recogida y Entrega</a><a class="headerlink" href="#pick-deliver" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Usado en <a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - Experimental</span></a></p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#orders-sql">SQL de órdenes</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#orders-sql">SQL de órdenes</a> como se describe más adelante.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#vehicles-sql">SQL de Vehículos</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#vehicles-sql">SQL de Vehículos</a> como se describe más adelante.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Usado en <a class="reference internal" href="pgr_pickDeliver.html"><span class="doc">pgr_pickDeliver - Experimental</span></a></p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#orders-sql">SQL de órdenes</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#orders-sql">SQL de órdenes</a> como se describe más adelante.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#vehicles-sql">SQL de Vehículos</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#vehicles-sql">SQL de Vehículos</a> como se describe más adelante.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#matrix-sql">SQL de matriz</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#matrix-sql">SQL de matriz</a> como se describe más adelante.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="pick-deliver-optional-parameters">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Parámetros opcionales de Recoger-Entregar</a><a class="headerlink" href="#pick-deliver-optional-parameters" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">factor</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code></p></td>
+<td><p>1</p></td>
+<td><p>Multiplicador de tiempo de viaje. Ver <a class="reference internal" href="#pd-factor"><span class="std std-ref">Manipulación del Factor</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">max_cycles</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>10</p></td>
+<td><p>Número máximo de ciclos a realizar en la optimización.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">initial_sol</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>4</p></td>
+<td><p>Solución inicial a utilizar.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code> Una orden por camión</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span></code> Empuje la orden delantera.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3</span></code> Empuje la orden trasera.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">4</span></code> Optimizar inserción.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">5</span></code> Orden de retroceso que permite insertar más órdenes en la parte posterior</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">6</span></code> Orden de avance que permite insertar más órdenes en la parte frontal</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="inner-queries">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Consultas Internas</a><a class="headerlink" href="#inner-queries" title="Enlace permanente a este encabezado">¶</a></h2>
+<section id="orders-sql">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">SQL de órdenes</a><a class="headerlink" href="#orders-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>En general, las columnas para las órdenes SQL es la misma en ambas implementaciones:</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
+<td><p>Identificador del par de órdenes recogida-entrega.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">demand</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>Número de unidades en la orden</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">p_open</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>La hora, en relación con 0, cuando se abre la ubicación de recogida.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">p_close</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>La hora, en relación con 0, cuando se cierra la ubicación de recogida.</p></td>
+</tr>
+<tr class="row-even"><td><p>[<code class="docutils literal notranslate"><span class="pre">p_service</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>La duración de la carga en el lugar de recogida.</p>
+<ul class="simple">
+<li><p>Cuando falta: Son usadas 0 unidades de tiempo</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">d_open</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>La hora, en relación con 0, cuando se abre la ubicación de entrega.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">d_close</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>La hora, en relación con 0, cuando se cierra la ubicación de entrega.</p></td>
+</tr>
+<tr class="row-odd"><td><p>[<code class="docutils literal notranslate"><span class="pre">d_service</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>La duración de la descarga en el lugar de entrega.</p>
+<ul class="simple">
+<li><p>Cuando falta: Son usadas 0 unidades de tiempo</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Donde:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+<p>Para <a class="reference internal" href="pgr_pickDeliver.html"><span class="doc">pgr_pickDeliver - Experimental</span></a> los identificadores de ubicación de la carga y envío son necesarias:</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">p_node_id</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
+<td><p>El identificador de nodo de la recogida debe coincidir con un identificador de vértice en la <a class="reference internal" href="#matrix-sql">SQL de matriz</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">d_node_id</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
+<td><p>El identificador de nodo de la entrega debe coincidir con un identificador de vértice en la <a class="reference internal" href="#matrix-sql">SQL de matriz</a>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Donde:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+</dl>
+<p>Para <a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - Experimental</span></a> los valores <span class="math notranslate nohighlight">\((x, y)\)</span> de las ubicaciones son necesarias:</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">p_x</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p><span class="math notranslate nohighlight">\(x\)</span> valor de la ubicación de recogida</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">p_y</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p><span class="math notranslate nohighlight">\(y\)</span> valor de la ubicación de recogida</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">d_x</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>valor <span class="math notranslate nohighlight">\(x\)</span> de la ubicación de entrega</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">d_y</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>valor <span class="math notranslate nohighlight">\(y\)</span> del lugar de entrega</p></td>
+</tr>
+</tbody>
+</table>
+<p>Donde:</p>
+<dl class="field-list simple">
+<dt class="field-odd">FLOTANTES<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+</section>
+<section id="vehicles-sql">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">SQL de Vehículos</a><a class="headerlink" href="#vehicles-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Las columnas comunas para vehículos SQL son las mismas en ambas implementaciones:</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>Identificador del vehículo.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">capacity</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>Máxima capacidad</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_open</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>La hora, en relación con 0, cuando se abre la ubicación inicial.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start_close</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>La hora, en relación con 0, cuando se cierra la ubicación inicial.</p></td>
+</tr>
+<tr class="row-even"><td><p>[<code class="docutils literal notranslate"><span class="pre">start_service</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>La duración de la carga en la ubicación inicial.</p>
+<ul class="simple">
+<li><p>Cuando falta: Una duración de :math: <cite>0</cite> unidades de tiempo son usadas.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>[<code class="docutils literal notranslate"><span class="pre">end_open</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>La hora, en relación con 0, cuando se abre la ubicación final.</p>
+<ul class="simple">
+<li><p>Cuando falte: El valor de``start_open`` se usara</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>[<code class="docutils literal notranslate"><span class="pre">end_close</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>La hora, en relación con 0, cuando se cierra la ubicación final.</p>
+<ul class="simple">
+<li><p>Cuando falte: Se usara el valor de <code class="docutils literal notranslate"><span class="pre">start_close</span></code></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>[<code class="docutils literal notranslate"><span class="pre">end_service</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>La duración de la carga en la ubicación final.</p>
+<ul class="simple">
+<li><p>Cuando falte: Se usara una duración en <code class="docutils literal notranslate"><span class="pre">start_service</span></code>.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Para <a class="reference internal" href="pgr_pickDeliver.html"><span class="doc">pgr_pickDeliver - Experimental</span></a> se necesitan los identificadores de salida y destino:</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_node_id</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
+<td><p>El identificador de nodo de la ubicación inicial debe coincidir con un identificador de vértice en la <a class="reference internal" href="#matrix-sql">SQL de matriz</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>[<code class="docutils literal notranslate"><span class="pre">end_node_id</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
+<td><p>El identificador de nodo de la ubicación final debe coincidir con un identificador de vértice en la <a class="reference internal" href="#matrix-sql">SQL de matriz</a>.</p>
+<ul class="simple">
+<li><p>Cuando falte: Se usara``end_node_id``.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Donde:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+</dl>
+<p>Para <a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - Experimental</span></a> los valores <span class="math notranslate nohighlight">\((x, y)\)</span> de las ubicaciones son necesarias:</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_x</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>Valor <span class="math notranslate nohighlight">\(x\)</span> de la ubicación de salida</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start_y</span></code></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>Valor <span class="math notranslate nohighlight">\(y\)</span> de la ubicación de salida</p></td>
+</tr>
+<tr class="row-even"><td><p>[<code class="docutils literal notranslate"><span class="pre">end_x</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>Valor <span class="math notranslate nohighlight">\(x\)</span> de la ubicación del destino</p>
+<ul class="simple">
+<li><p>Cuando falte: Se usará <code class="docutils literal notranslate"><span class="pre">start_x</span></code>.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>[<code class="docutils literal notranslate"><span class="pre">end_y</span></code>]</p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>Valor <span class="math notranslate nohighlight">\(y\)</span> del la ubicaclón del destino</p>
+<ul class="simple">
+<li><p>Cuando falte: Se usará <code class="docutils literal notranslate"><span class="pre">start_y</span></code>.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Donde:</p>
+<dl class="field-list simple">
+<dt class="field-odd">FLOTANTES<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+</section>
+<section id="matrix-sql">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">SQL de matriz</a><a class="headerlink" href="#matrix-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Conjunto de <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 14.0%" />
+<col style="width: 16.3%" />
+<col style="width: 69.8%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del vértice de salida.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del vértice destino.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Costo afregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="return-columns">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Columnas de Resultados</a><a class="headerlink" href="#return-columns" title="Enlace permanente a este encabezado">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RETURNS</span> <span class="n">SET</span> <span class="n">OF</span>
+ <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">vehicle_seq</span><span class="p">,</span> <span class="n">vehicle_id</span><span class="p">,</span> <span class="n">stop_seq</span><span class="p">,</span> <span class="n">stop_type</span><span class="p">,</span>
+     <span class="n">travel_time</span><span class="p">,</span> <span class="n">arrival_time</span><span class="p">,</span> <span class="n">wait_time</span><span class="p">,</span> <span class="n">service_time</span><span class="p">,</span>  <span class="n">departure_time</span><span class="p">)</span>
+ <span class="n">UNION</span>
+ <span class="p">(</span><span class="n">summary</span> <span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>Valor secuencial a partir de <strong>1</strong>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vehicle_seq</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>Valor secuencial a partir de <strong>1</strong> para vehículos actuales. El vehículo <span class="math notranslate nohighlight">\(n_{th}\)</span> en la solución.</p>
+<ul class="simple">
+<li><p>Valor <span class="math notranslate nohighlight">\(-2\)</span> para indicar que es una fila de resumen.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">vehicle_id</span></code></p></td>
+<td><p>BIGINT</p></td>
+<td><p>Identificador del vehículo actual.</p>
+<ul class="simple">
+<li><p>Fila de resumen tiene las <strong>infracciones de capacidad total</strong>.</p>
+<ul>
+<li><p>Cuando se sobrecarga o subrogar un vehículo, ocurre una infracción de capacidad.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stop_seq</span></code></p></td>
+<td><p>INTEGER</p></td>
+<td><p>Valor secuencial a partir de <strong>1</strong> para las paradas realizadas por el vehículo actual. La parada <span class="math notranslate nohighlight">\(m_{th}\)</span> del vehículo actual.</p>
+<ul class="simple">
+<li><p>Fila de resumen tiene las <strong>infracciones de ventana de tiempo total</strong>.</p>
+<ul>
+<li><p>Una infracción de ventana de tiempo ocurre cuando se llega a la ubicación después de que ésta cerró.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stop_type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><ul class="simple">
+<li><p>Tipo de parada en la que se encuentra el vehículo</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(-1\)</span>: en la fila de resumen de solución</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code>: Ubicación inicial</p></li>
+<li><p><span class="math notranslate nohighlight">\(2\)</span>: Ubicación de recogida</p></li>
+<li><p><span class="math notranslate nohighlight">\(3\)</span>: Lugar de entrega</p></li>
+<li><p><span class="math notranslate nohighlight">\(6\)</span>: Ubicación final indica la fila de resumen del vehículo</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">order_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador de par de órdenes Recoger-Entregar.</p>
+<ul class="simple">
+<li><p>Valor <span class="math notranslate nohighlight">\(-1\)</span>: Cuando no hay pedidos involucrados en la ubicación de la parada actual.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cargo</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Unidades de carga del vehículo al salir de la parada.</p>
+<ul class="simple">
+<li><p>El valor <span class="math notranslate nohighlight">\(-1\)</span> en fila de resumen de solución.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">travel_time</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Tiempo de viaje desde el <code class="docutils literal notranslate"><span class="pre">stop_seq</span></code> anterior hasta el <code class="docutils literal notranslate"><span class="pre">stop_seq</span></code> actual.</p>
+<ul class="simple">
+<li><p>El resumen tiene el <strong>tiempo total de viaje</strong>:</p>
+<ul>
+<li><p>La suma de todos los <code class="docutils literal notranslate"><span class="pre">travel_time</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">arrival_time</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Tiempo de espera para la apertura de la ubicación actual.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(-1\)</span> en fila de resumen de solución.</p></li>
+<li><p><span class="math notranslate nohighlight">\(0\)</span>: en la ubicación inicial.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">wait_time</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Tiempo de espera para la apertura de la ubicación actual.</p>
+<ul class="simple">
+<li><p>La fila de resumen tiene el <strong>tiempo total de espera</strong>:</p>
+<ul>
+<li><p>La suma de todo el <code class="docutils literal notranslate"><span class="pre">wait_time</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">service_time</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Duralción del servicio en la ubicación actual.</p>
+<ul class="simple">
+<li><p>La fila de resumen tiene el <strong>tiempo total de servicio</strong>:</p>
+<ul>
+<li><p>La suma de todo el <code class="docutils literal notranslate"><span class="pre">service_time</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">departure_time</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><ul class="simple">
+<li><p>El tiempo en el que el vehículo sale desde la parada.</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(arrival\_time + wait\_time + service\_time\)</span>.</p></li>
+</ul>
+</li>
+<li><p>El destino final tiene el <strong>tiempo total</strong> utilizado por el vehículo actual.</p></li>
+<li><p>La fila de resumen tiene el <strong>tiempo total de solución</strong>:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(total\ traveling\ time + total\ waiting\ time + total\ service\ time\)</span>.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<section id="summary-row">
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">Fila de Resumen</a><a class="headerlink" href="#summary-row" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>Continúa la secuencia</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vehicle_seq</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>Valor <span class="math notranslate nohighlight">\(-2\)</span> para indicar que es una fila de resumen.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">vehicle_id</span></code></p></td>
+<td><p>BIGINT</p></td>
+<td><p><strong>infracciones de capacidad total</strong>:</p>
+<ul class="simple">
+<li><p>Cuando se sobrecarga o subrogar un vehículo, ocurre una infracción de capacidad.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stop_seq</span></code></p></td>
+<td><p>INTEGER</p></td>
+<td><p><strong>Cantidad total de violaciones de ventanas de tiempo</strong>:</p>
+<ul class="simple">
+<li><p>Una infracción de ventana de tiempo ocurre cuando se llega a la ubicación después de que ésta cerró.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stop_type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(-1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">order_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(-1\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cargo</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(-1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">travel_time</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><strong>tiempo total transportándose</strong>:</p>
+<ul class="simple">
+<li><p>La suma de todos los <code class="docutils literal notranslate"><span class="pre">travel_time</span></code>.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">arrival_time</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(-1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">wait_time</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><em>tiempo total de espera*</em>:</p>
+<ul class="simple">
+<li><p>La suma de todo el <code class="docutils literal notranslate"><span class="pre">wait_time</span></code>.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">service_time</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><strong>tiempo total de servicio</strong>:</p>
+<ul class="simple">
+<li><p>La suma de todo el <code class="docutils literal notranslate"><span class="pre">service_time</span></code>.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">departure_time</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>La fila de resumen tiene el <strong>tiempo total de solución</strong>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(total\ traveling\ time + total\ waiting\ time + total\ service\ time\)</span>.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="handling-parameters">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Parámetros de Manipulación</a><a class="headerlink" href="#handling-parameters" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Para definir un problema, hay que hacer varias consideraciones, para obtener resultados consistentes. En esta sección se proporciona una idea de cómo se deben considerar los parámetros.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#capacity-and-demand-units-handling">Manejo de Unidades de Capacidad y Demanda</a></p></li>
+<li><p><a class="reference internal" href="#locations">Ubicaciones</a></p></li>
+<li><p><a class="reference internal" href="#time-handling">Manejo del tiempo</a></p></li>
+<li><p><a class="reference internal" href="#factor-handling">Manejo de Factor</a></p></li>
+</ul>
+<section id="capacity-and-demand-units-handling">
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Manejo de Unidades de Capacidad y Demanda</a><a class="headerlink" href="#capacity-and-demand-units-handling" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>La <cite>capacidad</cite> de un vehículo, se puede medir en:</p>
+<ul class="simple">
+<li><p>Unidades de volumen como <span class="math notranslate nohighlight">\(m^3\)</span>.</p></li>
+<li><p>Unidades de área como <span class="math notranslate nohighlight">\(m^2\)</span> (cuando no se permite el apilamiento).</p></li>
+<li><p>Unidades de peso como <span class="math notranslate nohighlight">\(kg\)</span>.</p></li>
+<li><p>Número de cajas que caben en el vehículo.</p></li>
+<li><p>Número de asientos en el vehículo</p></li>
+</ul>
+<p>La solicitud de <cite>demanda</cite> de las órdenes de recogida-entrega debe utilizar las mismas unidades que las utilizadas en la <cite>capacidad</cite> del vehículo.</p>
+<p>Para manejar problemas como: 10 (dimensión igual) cajas de manzanas y 5 kg de plumas que se van a transportar (no embaladas en cajas).</p>
+<ul class="simple">
+<li><p>Si la <strong>capacidad</strong> del vehículo se mide mediante <cite>cajas</cite>, se necesita una conversión de <cite>kg de plumas</cite> a <cite>número equivalente de cajas</cite>.</p></li>
+<li><p>Si la <strong>capacidad</strong> del vehículo se mide en <cite>kg</cite>, se necesita una conversión de <cite>cajas de manzanas</cite> a <cite>kg</cite>.</p></li>
+</ul>
+<p>Mostrar cómo se pueden hacer las 2 conversiones posibles</p>
+<p>Sea: - <span class="math notranslate nohighlight">\(f_boxes\)</span>: el número de cajas necesarias para <cite>1</cite> kg de plumas. - <span class="math notranslate nohighlight">\(a_weight\)</span>: peso de <cite>1</cite> caja de manzanas.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Unidades de Capacidad</p></th>
+<th class="head"><p>Manzanas</p></th>
+<th class="head"><p>plumas</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>cajas</p></td>
+<td><p>10</p></td>
+<td><p><span class="math notranslate nohighlight">\(5 * f\_cajas\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>kg</p></td>
+<td><p><span class="math notranslate nohighlight">\(10 * a\_peso\)</span></p></td>
+<td><p>5</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="locations">
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">Ubiaciones</a><a class="headerlink" href="#locations" title="Enlace permanente a este encabezado">¶</a></h3>
+<ul class="simple">
+<li><p>Cuando se use <a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - Experimental</span></a>:</p>
+<ul>
+<li><p>Los vehículos tienen <span class="math notranslate nohighlight">\((x, y)\)</span> pares para las ubicaciones de inicio y fin.</p></li>
+<li><p>Los pedidos tienen <span class="math notranslate nohighlight">\((x, y)\)</span> pares para ubicaciones de recogida y entrega.</p></li>
+</ul>
+</li>
+<li><p>Cuando se use <a class="reference internal" href="pgr_pickDeliver.html"><span class="doc">pgr_pickDeliver - Experimental</span></a>:</p>
+<ul>
+<li><p>Los vehículos tienen identificadores para las ubicaciones de inicio y finalización.</p></li>
+<li><p>Los pedidos tienen identificadores para las ubicaciones de recogida y entrega.</p></li>
+<li><p>Todos los identificadores son índices de la matriz dada.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="time-handling">
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">Manejo del Tiempo</a><a class="headerlink" href="#time-handling" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>El tiempo es relativo a <strong>0</strong>. Todas las unidades de tiempo se convierte a la referencia de <strong>0</strong> y las mismas unidades de tiempo.</p>
+<p>Supongamos que el conductor de un vehículo comienza el turno a las 9:00 am y termina el turno a las 4:30 pm y la duración del tiempo de servicio es de 10 minutos con 30 segundos.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Significado de 0</p></th>
+<th class="head"><p>unidades de tiempo</p></th>
+<th class="head"><p>9:00 am</p></th>
+<th class="head"><p>4:30 pm</p></th>
+<th class="head"><p>10 min 30 seg</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0:00 am</p></td>
+<td><p>horas</p></td>
+<td><p>9</p></td>
+<td><p>16.5</p></td>
+<td><p><span class="math notranslate nohighlight">\(10.5 / 60 = 0.175\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>0:00 am</p></td>
+<td><p>minutos</p></td>
+<td><p><span class="math notranslate nohighlight">\(9*60 = 54\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(16.5*60 = 990\)</span></p></td>
+<td><p>10.5</p></td>
+</tr>
+<tr class="row-even"><td><p>9:00 am</p></td>
+<td><p>horas</p></td>
+<td><p>0</p></td>
+<td><p>7.5</p></td>
+<td><p><span class="math notranslate nohighlight">\(10.5 / 60 = 0.175\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>9:00 am</p></td>
+<td><p>minutos</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(7.5*60 = 540\)</span></p></td>
+<td><p>10.5</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="factor-handling">
+<span id="pd-factor"></span><h3><a class="toc-backref" href="#id18" role="doc-backlink">Manipulación del Factor</a><a class="headerlink" href="#factor-handling" title="Enlace permanente a este encabezado">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">factor</span></code> funciona como un multiplicador que convierte valores de distancia a unidades de tiempo, ya sea en valores matriciales o euclidianos.</p>
+<ul class="simple">
+<li><p>Los valores ya están en la unidad de tiempo deseada</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">factor</span></code> debería ser <strong>1</strong></p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">factor</span></code> &gt; 1 el tiempo de viaje es más rápido</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">factor</span></code> &gt; 1 el tiempo de viaje es más lento</p></li>
+</ul>
+</li>
+</ul>
+<p>Para el <a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - Experimental</span></a>:</p>
+<p>Trabajando con la unidad de tiempo en segundos, con x/y en lat/lon : Factor: dependería en la ubicación de los puntos y la velocidad promedio, digamos con velocidad de 25m/s.</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Latitud</p></th>
+<th class="head"><p>Conversión</p></th>
+<th class="head"><p>Factor</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>45</p></td>
+<td><p>1 grado de longitud es (78846.81m)/(25m/s)</p></td>
+<td><p>3153 s</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>1 grado de longitud es (111319.46 m)/(25m/s)</p></td>
+<td><p>4452 s</p></td>
+</tr>
+</tbody>
+</table>
+<p>Para el <a class="reference internal" href="pgr_pickDeliver.html"><span class="doc">pgr_pickDeliver - Experimental</span></a>:</p>
+<p>Dado <span class="math notranslate nohighlight">\(v = d / t`entonces :math:`t = d / v\)</span> y el <code class="docutils literal notranslate"><span class="pre">factor</span></code> se convierte en <span class="math notranslate nohighlight">\(1 / v\)</span></p>
+<p>Donde:</p>
+<dl class="field-list simple">
+<dt class="field-odd">v<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Velocidad</p>
+</dd>
+<dt class="field-even">d<span class="colon">:</span></dt>
+<dd class="field-even"><p>Distancia</p>
+</dd>
+<dt class="field-odd">t<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tiempo</p>
+</dd>
+</dl>
+<p>Para las siguientes equivalencias <span class="math notranslate nohighlight">\(10m/s \approx 600m/min \approx 36 km/hr\)</span></p>
+<p>Trabajando con segundos para las unidades de tiempo y la matriz en metros: Para un valor de longitud de 1000m en la matriz:</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Unidades</p></th>
+<th class="head"><p>velocidad</p></th>
+<th class="head"><p>Conversión</p></th>
+<th class="head"><p>Factor</p></th>
+<th class="head"><p>Resultado</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>segundos</p></td>
+<td><p><span class="math notranslate nohighlight">\(10 m/s\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{10m/s}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.1s/m\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1000m * 0.1s/m = 100s\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>minutos</p></td>
+<td><p><span class="math notranslate nohighlight">\(600 m/min\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{600m/min}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.0016min/m\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1000m * 0.0016min/m = 1.6min\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Horas</p></td>
+<td><p><span class="math notranslate nohighlight">\(36 km/hr\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{36 km/hr}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.0277hr/km\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1km * 0.0277hr/km = 0.0277hr\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="see-also">
+<h2><a class="toc-backref" href="#id19" role="doc-backlink">Ver también</a><a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Vehicle_routing_problem">https://en.wikipedia.org/wiki/Vehicle_routing_problem</a></p></li>
+<li><p>Las consultas utilizan la red <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
+</ul>
+<p class="rubric">Índices y tablas</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.5.0-dev.<br/>
+      Actualizado por última vez en nov 27, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
