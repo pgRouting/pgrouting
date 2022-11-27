@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-25 22:01+0000\n"
+"POT-Creation-Date: 2022-11-27 16:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12995,6 +12995,9 @@ msgid "Issue fixes"
 msgstr ""
 
 msgid "`#2394 <https://github.com/pgRouting/pgrouting/issues/2394>`__: pgr_bdAstar accumulates heuristic cost in visited node cost."
+msgstr ""
+
+msgid "`#2427 <https://github.com/pgRouting/pgrouting/issues/2427>`__: pgr_createVerticesTable & pgr_createTopology, variable should be of type Record."
 msgstr ""
 
 msgid "pgRouting 3.4.1 Release Notes"
