@@ -48,6 +48,8 @@ milestone for 3.4.2
 
 * `#2394 <https://github.com/pgRouting/pgrouting/issues/2394>`__:
   pgr_bdAstar accumulates heuristic cost in visited node cost.
+* `#2427 <https://github.com/pgRouting/pgrouting/issues/2427>`__:
+  pgr_createVerticesTable & pgr_createTopology, variable should be of type Record.
 
 pgRouting 3.4.1 Release Notes
 -------------------------------------------------------------------------------
