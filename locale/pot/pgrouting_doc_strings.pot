@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.5.0-dev
+# Copyright (C) pgRouting Contributors - Version v4.0.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.5.0-dev\n"
+"Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-27 18:44+0000\n"
+"POT-Creation-Date: 2022-11-28 18:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -5752,7 +5752,7 @@ msgstr ""
 msgid "Upgrading the database"
 msgstr ""
 
-msgid "To upgrade pgRouting in the database to version 3.5.0 use the following command:"
+msgid "To upgrade pgRouting in the database to version 4.0.0 use the following command:"
 msgstr ""
 
 msgid "More information can be found in https://www.postgresql.org/docs/current/sql-createextension.html"
@@ -12985,6 +12985,75 @@ msgstr ""
 msgid "To see the full list of changes check the list of `Git commits <https://github.com/pgRouting/pgrouting/commits>`_ on Github."
 msgstr ""
 
+msgid "pgRouting 4.0.0 Release Notes"
+msgstr ""
+
+msgid "Update from old versions is needed"
+msgstr ""
+
+msgid "Simplify C/C++ code for combinations style"
+msgstr ""
+
+msgid "pgr_dijkstra"
+msgstr ""
+
+msgid "Internal SQL functions are removed"
+msgstr ""
+
+msgid "_pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)"
+msgstr ""
+
+msgid "_pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)"
+msgstr ""
+
+msgid "_pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)"
+msgstr ""
+
+msgid "_pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)"
+msgstr ""
+
+msgid "_pgr_dijkstra(text,text,boolean,boolean,boolean)"
+msgstr ""
+
+msgid "Breaking changes"
+msgstr ""
+
+msgid "Traveling Salesman problem"
+msgstr ""
+
+msgid "Functions affected:"
+msgstr ""
+
+msgid "pgr_TSP"
+msgstr ""
+
+msgid "pgr_TSPEuclidean"
+msgstr ""
+
+msgid "Changes:"
+msgstr ""
+
+msgid "Deprecated signatures that include annaeling parameters are removed"
+msgstr ""
+
+msgid "pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
+msgstr ""
+
+msgid "pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
+msgstr ""
+
+msgid "New signatures:"
+msgstr ""
+
+msgid "pgr_tsp(text,bigint,bigint,integer)"
+msgstr ""
+
+msgid "pgr_tspeuclidean(text,bigint,bigint,integer)"
+msgstr ""
+
+msgid "New default parameter: max_cycles with default value `1`"
+msgstr ""
+
 msgid "pgRouting 3.5.0 Release Notes"
 msgstr ""
 
@@ -13939,9 +14008,6 @@ msgstr ""
 msgid "pgr_dijkstraCostMatrix"
 msgstr ""
 
-msgid "pgr_dijkstra"
-msgstr ""
-
 msgid "pgr_dijkstraCost"
 msgstr ""
 
@@ -14288,9 +14354,6 @@ msgid "pgRouting 2.3.0 Release Notes"
 msgstr ""
 
 msgid "To see the issues closed by this release see the `Git closed issues for 2.3.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.0%22+is%3Aclosed>`_ on Github."
-msgstr ""
-
-msgid "pgr_TSP"
 msgstr ""
 
 msgid "pgr_aStar"
