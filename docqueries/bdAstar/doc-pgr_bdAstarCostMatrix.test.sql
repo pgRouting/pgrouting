@@ -14,7 +14,6 @@ SELECT * FROM pgr_TSP(
     (SELECT array_agg(id) FROM vertices WHERE id IN (5, 6, 10, 15)),
     directed=> false, heuristic => 2
   )
-  $$,
-  randomize => false
+  $$
 );
 /* -- q4 */
