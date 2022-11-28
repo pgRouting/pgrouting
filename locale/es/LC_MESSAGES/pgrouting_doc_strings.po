@@ -21,15 +21,14 @@ msgstr ""
 "X-Generator: Weblate 4.14.1\n"
 "Generated-By: Babel 2.10.3\n"
 
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/BFS-"
 "category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/BFS-category."
 "html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/BFS-category.html>`__"
 msgstr ""
-"**Versiones no soportadas:** `2.5 <https://docs.pgrouting.org/2.5/en/KSP-"
-"category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/KSP-category."
-"html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/KSP-category.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/BFS-"
+"category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/BFS-category."
+"html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/BFS-category.html>`__"
 
 msgid "BFS - Category"
 msgstr "BFS - Categoría"
@@ -307,15 +306,14 @@ msgstr ":ref:`genindex`"
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
 
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/DFS-"
 "category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/DFS-category."
 "html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/DFS-category.html>`__"
 msgstr ""
-"**Versiones no soportadas:** `2.5 <https://docs.pgrouting.org/2.5/en/KSP-"
-"category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/KSP-category."
-"html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/KSP-category.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/DFS-"
+"category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/DFS-category."
+"html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/DFS-category.html>`__"
 
 msgid "DFS - Category"
 msgstr "DFS - Categoría"
@@ -4686,7 +4684,7 @@ msgid "Edges SQL as described below."
 msgstr "SQL de aristas como se describen abajo."
 
 msgid "**Root vid**"
-msgstr "**id raíz**"
+msgstr "**Raíz**"
 
 msgid "**Root vids**"
 msgstr "**Raíces**"
@@ -5421,14 +5419,14 @@ msgstr "Se minimiza el peso total de todos los bordes del árbol o bosque."
 msgid "Kruskal's running time: :math:`O(E * log E)`"
 msgstr "Tiempo de ejecución de Kruskal: :math:`O(E * log E)`"
 
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
 "migration.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/migration."
 "html>`__)"
 msgstr ""
-"**Versiones Soportadas** `Última de <https://docs.pgrouting.org/latest/en/"
-"pgr_trsp.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_trsp.html>`__)"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"migration.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/migration."
+"html>`__)"
 
 msgid "Migration guide"
 msgstr "Guía de migración"
@@ -5866,21 +5864,23 @@ msgstr "Migraciones de ``pgr_trspViaVertices``"
 
 msgid "The integral types of the ``Edges SQL`` can only be ``INTEGER``."
 msgstr ""
+"Los tipos enteros de las ``Consultas de Aristas`` solo pueden ser "
+"``ENTEROS``."
 
 msgid ":doc:`pgr_dijkstraVia` when there are no restrictions,"
-msgstr ""
+msgstr ":doc:`pgr_dijkstraVia` cuando no hay restricciones,"
 
 msgid ":doc:`pgr_trspVia` when there are restrictions."
-msgstr ""
+msgstr ":doc:`pgr_trspVia` cuando hay restricciones."
 
 msgid "Migrating ``pgr_trspViaVertices`` using ``pgr_dijkstraVia``"
-msgstr ""
+msgstr "Migrando ``pgr_trspViaVertices`` usando ``pgr_dijkstraVia``"
 
 msgid "Use :doc:`pgr_dijkstraVia` instead."
-msgstr ""
+msgstr "Usar :doc:`pgr_dijkstraVia` en su lugar."
 
 msgid ":doc:`pgr_dijkstraVia`:"
-msgstr ""
+msgstr ":doc:`pgr_dijkstraVia`:"
 
 msgid "``id1`` is the path identifier"
 msgstr ""
@@ -5892,45 +5892,47 @@ msgid "``id3`` is the edge"
 msgstr ""
 
 msgid "Migrating ``pgr_trspViaVertices`` using ``pgr_trspVia``"
-msgstr ""
+msgstr "Migrando ``pgr_trspViaVertices`` usando ``pgr_trspVia``"
 
 msgid "Use :doc:`pgr_trspVia` instead."
-msgstr ""
+msgstr "Usar :doc:`pgr_trspVia` en su lugar."
 
 msgid ":doc:`pgr_trspVia`:"
-msgstr ""
+msgstr ":doc:`pgr_trspVia`:"
 
 msgid "Migration of ``pgr_trspViaEdges``"
-msgstr ""
+msgstr "Migración de ``pgr_trspViaEdges``"
 
 msgid ""
 "And will travel thru the following Via points :math:"
 "`4\\rightarrow3\\rightarrow6`"
 msgstr ""
+"Viajará a travez de los siguientes puntos de la vía :math:"
+"`4\\rightarrow3\\rightarrow6`"
 
 msgid ":doc:`pgr_withPointsVia` when there are no restrictions,"
-msgstr ""
+msgstr ":doc:`pgr_withPointsVia` cuando no hay restricciones,"
 
 msgid ":doc:`pgr_trspVia_withPoints` when there are restrictions."
-msgstr ""
+msgstr ":doc:`pgr_trspVia_withPoints` cuando hay restricciones."
 
 msgid "Migrating ``pgr_trspViaEdges`` using ``pgr_withPointsVia``"
-msgstr ""
+msgstr "Migrando ``pgr_trspViaEdges`` usando ``pgr_withPointsVia``"
 
 msgid "Use :doc:`pgr_withPointsVia` instead."
-msgstr ""
+msgstr "Usar :doc:`pgr_withPointsVia` en su lugar."
 
 msgid ":doc:`pgr_withPointsVia`:"
-msgstr ""
+msgstr ":doc:`pgr_withPointsVia`:"
 
 msgid "Migrating ``pgr_trspViaEdges`` using ``pgr_trspVia_withPoints``"
-msgstr ""
+msgstr "Migrando ``pgr_trspViaEdges`` usando ``pgr_trspVia_withPoints``"
 
 msgid "Use :doc:`pgr_trspVia_withPoints` instead."
-msgstr ""
+msgstr "Usar :doc:`pgr_trspVia_withPoints` en su lugar."
 
 msgid ":doc:`pgr_trspVia_withPoints`:"
-msgstr ""
+msgstr ":doc:`pgr_trspVia_withPoints`:"
 
 msgid ":doc:`withPoints-category`"
 msgstr ":doc:`withPoints-category`"
@@ -5992,70 +5994,76 @@ msgstr ""
 "trabajar con pgRouting. Esta guía cubre:"
 
 msgid "Graphs"
-msgstr ""
+msgstr "Grafos"
 
 msgid "A graph is an ordered pair :math:`G = (V ,E)` where:"
-msgstr ""
+msgstr "Un grafo es un par ordenado :math:`G = (V ,E)` donde:"
 
 msgid ":math:`V` is a set of vertices, also called nodes."
-msgstr ""
+msgstr ":math:`V` es un conjunto de vértices, también llamados nodos."
 
 msgid ":math:`E \\subseteq \\{( u, v ) \\mid u , v \\in V \\}`"
-msgstr ""
+msgstr ":math:`E \\subseteq \\{( u, v ) \\mid u , v \\in V \\}`"
 
 msgid "There are different kinds of graphs:"
-msgstr ""
+msgstr "Hay diferentes tipos de grafos:"
 
 msgid ":math:`E \\subseteq \\{( u, v ) \\mid u , v \\in V\\}`"
-msgstr ""
+msgstr ":math:`E \\subseteq \\{( u, v ) \\mid u , v \\in V\\}`"
 
 msgid "Undirected simple graph"
-msgstr ""
+msgstr "Grafo no dirigido simple"
 
 msgid ":math:`E \\subseteq \\{( u, v ) \\mid u , v \\in V, u \\neq v\\}`"
-msgstr ""
+msgstr ":math:`E \\subseteq \\{( u, v ) \\mid u , v \\in V, u \\neq v\\}`"
 
 msgid ":math:`E \\subseteq \\{( u, v ) \\mid (u , v) \\in (V X V) \\}`"
-msgstr ""
+msgstr ":math:`E \\subseteq \\{( u, v ) \\mid (u , v) \\in (V X V) \\}`"
 
 msgid "Directed simple graph"
-msgstr ""
+msgstr "Grafo dirigido simple"
 
 msgid ""
 ":math:`E \\subseteq \\{( u, v ) \\mid (u , v) \\in (V X V), u \\neq v\\}`"
 msgstr ""
+":math:`E \\subseteq \\{( u, v ) \\mid (u , v) \\in (V X V), u \\neq v\\}`"
 
 msgid "Graphs:"
-msgstr ""
+msgstr "Grafos:"
 
 msgid "Do not have geometries."
-msgstr ""
+msgstr "No tienen geometrías."
 
 msgid ""
 "Some graph theory problems require graphs to have weights, called **cost** "
 "in pgRouting."
 msgstr ""
+"Algunos problemas de teoría de grafos requieren tener pesos, llamados "
+"**cost** en pgRouting."
 
 msgid ""
 "In pgRouting there are several ways to represent a graph on the database:"
 msgstr ""
+"En pgRouting hay varias maneras de representar in grafo en la base de datos:"
 
 msgid "With ``cost``"
-msgstr ""
+msgstr "Con ``cost``"
 
 msgid "(``id``, ``source``, ``target``, ``cost``)"
-msgstr ""
+msgstr "(``id``, ``source``, ``target``, ``cost``)"
 
 msgid "With ``cost`` and ``reverse_cost``"
-msgstr ""
+msgstr "Con ``cost`` y ``reverse_cost``"
 
 msgid "(``id``, ``source``, ``target``, ``cost``, ``reverse_cost``)"
-msgstr ""
+msgstr "(``id``, ``source``, ``target``, ``cost``, ``reverse_cost``)"
 
 msgid ""
 "Identifier of the edge. Requirement to use the database in a consistent. "
 "manner."
 msgstr ""
+"Identificador de la asirsta. Requerimiento para mantener consistente la base "
+"de datos."
 
 msgid "Identifier of a vertex."
 msgstr "Identificador de un vértice."
@@ -6069,7 +6077,7 @@ msgstr ""
 "Cuando negativo: la arista (``source``, ``target``) no existe en el grafo."
 
 msgid "``cost`` must exist in the query."
-msgstr ""
+msgstr "``cost`` debe existir en la consulta."
 
 msgid ""
 "When negative the edge (``target``, ``source``) do not exist on the graph."
@@ -6082,7 +6090,7 @@ msgid ""
 msgstr ""
 
 msgid "Graph with ``cost``"
-msgstr ""
+msgstr "Grafo con ``cost``"
 
 msgid "The weighted directed graph, :math:`G_d(V,E)`:"
 msgstr ""
@@ -6091,18 +6099,20 @@ msgid "Graph data is obtained with a query"
 msgstr ""
 
 msgid "``SELECT id, source, target, cost FROM edges``"
-msgstr ""
+msgstr "``SELECT id, source, target, cost FROM edges``"
 
 msgid ""
 ":math:`E = \\{(source_{id}, target_{id}, cost_{id}) \\text{ when } cost_{id} "
 "\\ge 0 \\}`"
 msgstr ""
+":math:`E = \\{(source_{id}, target_{id}, cost_{id}) \\text{ cuando } "
+"cost_{id} \\ge 0 \\}`"
 
 msgid "Edges where ``cost`` is non negative are part of the graph."
 msgstr ""
 
 msgid ":math:`V = \\{source_{id} \\cup target_{id}\\}`"
-msgstr ""
+msgstr ":math:`V = \\{source_{id} \\cup target_{id}\\}`"
 
 msgid "All vertices in ``source`` and ``target`` are part of the graph."
 msgstr ""
@@ -6186,10 +6196,10 @@ msgid "Edges not part of the graph:"
 msgstr ""
 
 msgid ":math:`2` (:math:`1  \\rightarrow 3`)"
-msgstr ""
+msgstr ":math:`2` (:math:`1 \\rightarrow 3`)"
 
 msgid ":math:`3` (:math:`3  \\rightarrow 2`)"
-msgstr ""
+msgstr ":math:`3` (:math:`3 \\rightarrow 2`)"
 
 msgid "In a directed graph both edges do not have directionality"
 msgstr ""
@@ -16692,7 +16702,6 @@ msgstr ""
 msgid "[end_node_id, end_open, end_close, end_service]"
 msgstr ""
 
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
 "pgr_pickDeliverEuclidean.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/"
@@ -16703,12 +16712,12 @@ msgid ""
 "pgr_pickDeliverEuclidean.html>`__"
 msgstr ""
 "**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
-"pgr_pickDeliver.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
-"pgr_pickDeliver.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
-"pgr_pickDeliver.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
-"pgr_pickDeliver.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
-"pgr_pickDeliver.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
-"pgr_pickDeliver.html>`__"
+"pgr_pickDeliverEuclidean.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"pgr_pickDeliverEuclidean.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"pgr_pickDeliverEuclidean.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"pgr_pickDeliverEuclidean.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"pgr_pickDeliverEuclidean.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"pgr_pickDeliverEuclidean.html>`__"
 
 msgid ""
 "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/"
@@ -19237,16 +19246,14 @@ msgstr "Utilidades"
 msgid ":doc:`pgr_findCloseEdges`"
 msgstr ":doc:`pgr_findCloseEdges`"
 
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
 "reference.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/reference."
 "html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/reference.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/en/"
-"pgr_edgeColoring.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/"
-"pgr_edgeColoring.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/"
-"pgr_edgeColoring.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"reference.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/reference."
+"html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/reference.html>`__"
 
 msgid "Reference"
 msgstr "Referencia"
@@ -19296,15 +19303,14 @@ msgstr ""
 msgid "pgRouting 3.4.0 Release Notes"
 msgstr "Notas de la versión 3.4.0 de pgRouting"
 
-#, fuzzy
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.3.4 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.3.4%22>`_"
 msgstr ""
 "Para ver todos los problemas y solicitudes de extracción cerrados pora ésta "
-"versión, consulte la `meta cerrada de 3.3.2 <https://github.com/pgRouting/"
-"pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.2%22>`_"
+"versión, consulte la `meta cerrada de 3.3.4 <https://github.com/pgRouting/"
+"pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.4%22>`_"
 
 msgid "Issue fixes"
 msgstr "Corrección de problemas"
@@ -19416,25 +19422,24 @@ msgstr "``pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text)``"
 msgid "``pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)``"
 msgstr ""
 
-#, fuzzy
 msgid "pgRouting 3.3.3 Release Notes"
-msgstr "Notas de la versión 3.3.2 de pgRouting"
+msgstr "Notas de la versión 3.3.3 de pgRouting"
 
-#, fuzzy
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.3.3 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.3.3%22>`_"
 msgstr ""
 "Para ver todos los problemas y solicitudes de extracción cerrados pora ésta "
-"versión, consulte la `meta cerrada de 3.3.2 <https://github.com/pgRouting/"
+"versión, consulte la `meta cerrada 3.3.3 <https://github.com/pgRouting/"
 "pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.2%22>`_"
 
-#, fuzzy
 msgid ""
 "Ignoring optional boolean parameter, as the algorithm works only for "
 "undirected graphs."
-msgstr "La implementación del algoritmo sirve solo para grafos dirigidos"
+msgstr ""
+"Ignorando el parametro opcional boleano, ya que el algortítmo trabaja solo "
+"para grafos dirigidos."
 
 msgid "pgRouting 3.3.2 Release Notes"
 msgstr "Notas de la versión 3.3.2 de pgRouting"
@@ -22263,15 +22268,14 @@ msgstr "Traversal - Familia de funciones"
 msgid "Aditionaly there are 2 categories under this family"
 msgstr "Adicionalmente, hay dos categorías en esta familia"
 
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/via-"
 "category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/via-category."
 "html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/via-category.html>`__"
 msgstr ""
-"**Versiones no soportadas:** `2.5 <https://docs.pgrouting.org/2.5/en/KSP-"
-"category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/KSP-category."
-"html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/KSP-category.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/via-"
+"category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/via-category."
+"html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/via-category.html>`__"
 
 msgid "Via - Category"
 msgstr "Via- Categoria"
@@ -22325,16 +22329,16 @@ msgstr ""
 msgid "Used on"
 msgstr "Usado en"
 
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
 "withPoints-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/"
 "withPoints-category.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/"
 "withPoints-category.html>`__"
 msgstr ""
-"**Versiones no soportadas:** `2.5 <https://docs.pgrouting.org/2.5/en/cost-"
-"category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/cost-category."
-"html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/cost-category.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"withPoints-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"withPoints-category.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"withPoints-category.html>`__"
 
 msgid "withPoints - Category"
 msgstr "withPoints- Categoría"
