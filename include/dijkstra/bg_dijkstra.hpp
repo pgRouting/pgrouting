@@ -37,16 +37,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DIJKSTRA_BG_DIJKSTRA_HPP_
 #pragma once
 
-#include <boost/config.hpp>
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/dijkstra_shortest_paths.hpp>
-
 #include <map>
 #include <deque>
 #include <limits>
 #include <vector>
 #include <set>
 #include <functional>
+
+#include <boost/config.hpp>
+#include <boost/graph/adjacency_list.hpp>
+#include <boost/graph/dijkstra_shortest_paths.hpp>
 
 #include "cpp_common/interruption.h"
 
