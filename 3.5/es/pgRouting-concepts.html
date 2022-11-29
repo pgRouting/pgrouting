@@ -97,9 +97,9 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Conceptos de pgRouting</a><ul>
-<li><a class="reference internal" href="#graphs">Graphs</a><ul>
+<li><a class="reference internal" href="#graphs">Grafos</a><ul>
 <li><a class="reference internal" href="#graph-definition">Definición de grafo</a></li>
-<li><a class="reference internal" href="#graph-with-cost">Graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a></li>
+<li><a class="reference internal" href="#graph-with-cost">Grafo con <code class="docutils literal notranslate"><span class="pre">cost</span></code></a></li>
 <li><a class="reference internal" href="#graph-with-cost-and-reverse-cost">Graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></li>
 </ul>
 </li>
@@ -257,7 +257,7 @@
 <p>Esta es una guía simple que va a través de los pasos básicos para empezar trabajar con pgRouting. Esta guía cubre:</p>
 <nav class="contents local" id="contenido">
 <ul class="simple">
-<li><p><a class="reference internal" href="#graphs" id="id8">Graphs</a></p></li>
+<li><p><a class="reference internal" href="#graphs" id="id8">Grafos</a></p></li>
 <li><p><a class="reference internal" href="#graphs-without-geometries" id="id9">Graphs without geometries</a></p></li>
 <li><p><a class="reference internal" href="#graphs-with-geometries" id="id10">Graphs with geometries</a></p></li>
 <li><p><a class="reference internal" href="#check-the-routing-topology" id="id11">Compruebe la Topología de Ruteo</a></p></li>
@@ -271,29 +271,29 @@
 </ul>
 </nav>
 <section id="graphs">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">Graphs</a><a class="headerlink" href="#graphs" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Grafos</a><a class="headerlink" href="#graphs" title="Enlace permanente a este encabezado">¶</a></h2>
 <nav class="contents local" id="id1">
 <ul class="simple">
 <li><p><a class="reference internal" href="#graph-definition" id="id19">Definición de grafo</a></p></li>
-<li><p><a class="reference internal" href="#graph-with-cost" id="id20">Graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a></p></li>
+<li><p><a class="reference internal" href="#graph-with-cost" id="id20">Grafo con <code class="docutils literal notranslate"><span class="pre">cost</span></code></a></p></li>
 <li><p><a class="reference internal" href="#graph-with-cost-and-reverse-cost" id="id21">Graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></p></li>
 </ul>
 </nav>
 <section id="graph-definition">
 <h3><a class="toc-backref" href="#id19" role="doc-backlink">Definición de grafo</a><a class="headerlink" href="#graph-definition" title="Enlace permanente a este encabezado">¶</a></h3>
-<p>A graph is an ordered pair <span class="math notranslate nohighlight">\(G = (V ,E)\)</span> where:</p>
+<p>Un grafo es un par ordenado <span class="math notranslate nohighlight">\(G = (V ,E)\)</span> donde:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(V\)</span> is a set of vertices, also called nodes.</p></li>
+<li><p><span class="math notranslate nohighlight">\(V\)</span> es un conjunto de vértices, también llamados nodos.</p></li>
 <li><p><span class="math notranslate nohighlight">\(E \subseteq \{( u, v ) \mid u , v \in V \}\)</span></p></li>
 </ul>
-<p>There are different kinds of graphs:</p>
+<p>Hay diferentes tipos de grafos:</p>
 <ul class="simple">
 <li><p>Grafo no dirigido</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(E \subseteq \{( u, v ) \mid u , v \in V\}\)</span></p></li>
 </ul>
 </li>
-<li><p>Undirected simple graph</p>
+<li><p>Grafo no dirigido simple</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(E \subseteq \{( u, v ) \mid u , v \in V, u \neq v\}\)</span></p></li>
 </ul>
@@ -303,26 +303,25 @@
 <li><p><span class="math notranslate nohighlight">\(E \subseteq \{( u, v ) \mid (u , v) \in (V X V) \}\)</span></p></li>
 </ul>
 </li>
-<li><p>Directed simple graph</p>
+<li><p>Grafo dirigido simple</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(E \subseteq \{( u, v ) \mid (u , v) \in (V X V), u \neq v\}\)</span></p></li>
 </ul>
 </li>
 </ul>
-<p>Graphs:</p>
+<p>Grafos:</p>
 <ul class="simple">
-<li><p>Do not have geometries.</p></li>
-<li><p>Some graph theory problems require graphs to have weights, called <strong>cost</strong> in
-pgRouting.</p></li>
+<li><p>No tienen geometrías.</p></li>
+<li><p>Algunos problemas de teoría de grafos requieren tener pesos, llamados <strong>cost</strong> en pgRouting.</p></li>
 </ul>
-<p>In pgRouting there are several ways to represent a graph on the database:</p>
+<p>En pgRouting hay varias maneras de representar in grafo en la base de datos:</p>
 <ul class="simple">
-<li><p>With <code class="docutils literal notranslate"><span class="pre">cost</span></code></p>
+<li><p>Con <code class="docutils literal notranslate"><span class="pre">cost</span></code></p>
 <ul>
 <li><p>(<code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">cost</span></code>)</p></li>
 </ul>
 </li>
-<li><p>With <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p>
+<li><p>Con <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p>
 <ul>
 <li><p>(<code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">cost</span></code>, <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>)</p></li>
 </ul>
@@ -337,8 +336,7 @@ pgRouting.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
-<td><p>Identifier of the edge. Requirement to use the database in a consistent.
-manner.</p></td>
+<td><p>Identificador de la asirsta. Requerimiento para mantener consistente la base de datos.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p>Identificador de un vértice.</p></td>
@@ -350,7 +348,7 @@ manner.</p></td>
 <td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>):</p>
 <ul class="simple">
 <li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) no existe en el grafo.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">cost</span></code> must exist in the query.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cost</span></code> debe existir en la consulta.</p></li>
 </ul>
 </td>
 </tr>
@@ -367,7 +365,7 @@ manner.</p></td>
 executing a pgRouting algorithm.</p>
 </section>
 <section id="graph-with-cost">
-<h3><a class="toc-backref" href="#id20" role="doc-backlink">Graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a><a class="headerlink" href="#graph-with-cost" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id20" role="doc-backlink">Grafo con <code class="docutils literal notranslate"><span class="pre">cost</span></code></a><a class="headerlink" href="#graph-with-cost" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>The weighted directed graph, <span class="math notranslate nohighlight">\(G_d(V,E)\)</span>:</p>
 <ul>
 <li><p>Graph data is obtained with a query</p>
@@ -375,8 +373,7 @@ executing a pgRouting algorithm.</p>
 </li>
 <li><p>El conjunto de aristas <span class="math notranslate nohighlight">\(E\)</span></p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(E = \{(source_{id}, target_{id}, cost_{id}) \text{ when } cost_{id}
-\ge 0 \}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E = \{(source_{id}, target_{id}, cost_{id}) \text{ cuando } cost_{id} \ge 0 \}\)</span></p></li>
 <li><p>Edges where <code class="docutils literal notranslate"><span class="pre">cost</span></code> is non negative are part of the graph.</p></li>
 </ul>
 </li>
@@ -485,8 +482,8 @@ negative are part of the graph.</p></li>
 </div>
 <p>Edges not part of the graph:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(2\)</span> (<span class="math notranslate nohighlight">\(1  \rightarrow 3\)</span>)</p></li>
-<li><p><span class="math notranslate nohighlight">\(3\)</span> (<span class="math notranslate nohighlight">\(3  \rightarrow 2\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(2\)</span> (<span class="math notranslate nohighlight">\(1 \rightarrow 3\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(3\)</span> (<span class="math notranslate nohighlight">\(3 \rightarrow 2\)</span>)</p></li>
 </ul>
 <p>The data is representing the following graph:</p>
 <div class="graphviz"><img src="_images/graphviz-30736f62adc8dbf11ad4115151b7af7577cda635.png" alt="digraph G {
