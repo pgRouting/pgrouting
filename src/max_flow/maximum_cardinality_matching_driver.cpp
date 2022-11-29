@@ -6,6 +6,7 @@ Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Ignroing directed flag & works only for undirected graph
+& cleaning up code
 Copyright (c) 2022 Celia Vriginia Vergara Castillo
 Mail: vicky at georepublic.mail
 
@@ -44,58 +45,43 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/edge_bool_t_rt.h"
 
 void
-do_pgr_maximum_cardinality_matching(
+do_maxCardinalityMatch(
     Edge_bool_t_rt *data_edges,
     size_t total_tuples,
-    /* TODO(v4) flag directed is to be removed */
-    bool,
 
-    Edge_bool_t_rt **return_tuples,
+    int64_t **return_tuples,
     size_t *return_count,
 
-    char** log_msg,
-    char** notice_msg,
+    char**,
+    char**,
     char **err_msg) {
     std::ostringstream log;
-    std::ostringstream notice;
     std::ostringstream err;
 
     try {
-        std::vector<Edge_bool_t_rt> matched_vertices;
-
-        pgrouting::flow::PgrCardinalityGraph G(data_edges, total_tuples);
-        matched_vertices = G.get_matched_vertices();
+        pgrouting::flow::MaxCardinalityMatch G(data_edges, total_tuples);
+        auto matched_vertices = G.get_matched_vertices();
 
         (*return_tuples) = pgr_alloc(matched_vertices.size(), (*return_tuples));
         for (size_t i = 0; i < matched_vertices.size(); ++i) {
             (*return_tuples)[i] = matched_vertices[i];
         }
         *return_count = matched_vertices.size();
-
-        *log_msg = log.str().empty()?
-            *log_msg :
-            pgr_msg(log.str().c_str());
-        *notice_msg = notice.str().empty()?
-            *notice_msg :
-            pgr_msg(notice.str().c_str());
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
     } catch(...) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << "Caught unknown exception!";
         *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
     }
 }
 

@@ -5,4 +5,6 @@ ADD_LIBRARY(cpp_common OBJECT
     bpoint.cpp
     pgr_messages.cpp
     combinations.cpp
+
+    pgr_maximumcardinalitymatching.cpp
     )

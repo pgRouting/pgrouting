@@ -259,54 +259,6 @@ END;
 $BODY$
 LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION style_cardinalitymatch(fn TEXT, rest_sql TEXT)
-RETURNS SETOF TEXT AS
--- TODO v4 going & coming are to be removed, remove this function
-$BODY$
-BEGIN
-
-ALTER TABLE edge_table RENAME cost TO going;
-ALTER TABLE edge_table RENAME reverse_cost TO coming;
-
---with reverse cost
-RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'going', 'coming'],
-    'id');
-RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'going', 'coming'],
-    'source');
-RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'going', 'coming'],
-    'target');
-RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'going', 'coming'],
-    'going');
-RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'going', 'coming'],
-    'coming');
-
-
---without coming
-RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'going'],
-    'id');
-RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'going'],
-    'source');
-RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'going'],
-    'target');
-RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'going'],
-    'going');
-
-ALTER TABLE edge_table RENAME going TO cost;
-ALTER TABLE edge_table RENAME coming TO reverse_cost;
-
-END;
-$BODY$
-LANGUAGE plpgsql;
-
 CREATE OR REPLACE FUNCTION style_cost_flow(fn TEXT, rest_sql TEXT)
 RETURNS SETOF TEXT AS
 $BODY$

@@ -23,7 +23,7 @@
   `2.4 <https://docs.pgrouting.org/2.4/en/pgr_maximumCardinalityMatching.html>`__
   `2.3 <https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maximumCardinalityMatching.html>`__
 
-pgr_maxCardinalityMatch
+``pgr_maxCardinalityMatch``
 ===============================================================================
 
 ``pgr_maxCardinalityMatch`` — Calculates a maximum cardinality matching in a
@@ -36,16 +36,21 @@ graph.
 
 .. Rubric:: Availability
 
+* Version 4.0.0
+
+  * Use ``going`` and ``coming`` on the inner query is no longer available.
+  * Deprecated signature is removed.
+
 * Version 3.4.0
 
-  * Use ``cost`` and ``reverse_cost`` on the inner query
-  * Results are ordered
+  * Use ``cost`` and ``reverse_cost`` on the inner query.
+  * Results are ordered.
   * Works for undirected graphs.
-  * New signature
+  * New signature:
 
     * ``pgr_maxCardinalityMatch(text)`` returns only ``edge`` column.
 
-  * Deprecated signature
+  * Deprecated signature:
 
     * ``pgr_maxCardinalityMatch(text,boolean)``
 

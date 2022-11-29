@@ -49,19 +49,6 @@ use vars qw/*name *dir *prune/;
 *dir    = *File::Find::dir;
 *prune  = *File::Find::prune;
 
-my $version_2_0 = qr/(2.0.[\d+])/;
-my $version_2_1 = qr/(2.1.[\d+])/;
-my $version_2_2 = qr/(2.2.[\d+])/;
-my $version_2_3 = qr/(2.3.[\d+])/;
-my $version_2_4 = qr/(2.4.[\d+])/;
-my $version_2_5 = qr/(2.5.[\d+])/;
-my $version_2_6 = qr/(2.6.[\d+])/;
-my $version_3_0 = qr/(3.0.[\d+])/;
-my $version_3_1 = qr/(3.1.[\d+])/;
-my $version_3_2 = qr/(3.2.[\d+])/;
-my $version_3_3 = qr/(3.3.[\d+])/;
-my $version_3_4 = qr/(3.4.[\d+])/;
-my $version_3_5 = qr/(3.5.[\d+])/;
 my $version_4_0 = qr/(4.0.[\d+])/;
 # add minor here
 
@@ -218,30 +205,11 @@ sub generate_upgrade_script {
             push @commands, "ALTER EXTENSION pgrouting DROP FUNCTION $old_function;\n";
             push @commands, "DROP FUNCTION IF EXISTS $old_function;\n\n";
         }
-
-        # updating to 3.4+
-        if ($old_mayor == 2 or $old_minor < 4) {
-            push @commands, drop_special_case_function("pgr_maxcardinalitymatch(text,boolean)");
-        }
-
     }
 
     #------------------------------------
     # Special cases
     #------------------------------------
-
-    if ($old_mayor == 2) {
-        push @commands, update_from_version_2();
-    }
-    if ("$old_version" eq "3.0.0") {
-        push @commands, update_from_version_3_0_0();
-    }
-
-    # UGH! someone change the definition of the TYPE or reused an existing
-    # TYPE name which is VERY BAD because other poeple might be dependent
-    # on the old TYPE so we can DROP TYPE <type> CASCADE; or we might drop
-    # a user's function. So juse DIE and maybe someone can resolve this
-    die "ERROR: pgrouting TYPE changed! Cannot continue!\n" if $err;
 
 
     write_script(join('', @commands));
@@ -297,7 +265,6 @@ sub get_current_sql {
     close(IN);
     my $contents = join('', @file);
 
-    # remove the header
     $contents  =~ s/\\echo Use "CREATE EXTENSION pgrouting" to load this file. \\quit//;
 
     my %seen = ();
@@ -305,6 +272,27 @@ sub get_current_sql {
         $seen{$1}++;
     }
     my @uniq = keys %seen;
+
+=pod
+    For example:
+    When the function was first created on version 3.3
+    * the update is from version 3.2 <= 3.3
+    The function use: CREATE
+
+    * the update is from version 3.4 not <= 3.3
+    otherwise the function use: CREATE OR REPLACE
+
+
+    Change based on old_version from
+
+    --v3.x
+    CREATE FUNCTION
+
+    to
+
+    --v3.x
+    CREATE OR REPLACE FUNCTION
+=cut
 
     foreach my $minor (@uniq) {
         if  ($old_minor >= $minor) {
@@ -326,6 +314,21 @@ functions to fix signatures
 *****************************************************************
 =cut
 
+=pod
+    Example
+    --v3.3
+    CREATE FUNCTION pgr_maxcardinalitymatch(FOO text, BAR boolean)
+
+    But on v4.0 the parameter name changed then
+    --v4.0
+    CREATE FUNCTION pgr_maxcardinalitymatch(text, BAR boolean)
+
+    The function needs to be dropped and the version comment to be updated to when it was changed.
+
+    if ($old_minor >= 3.3 and $old_minor < 4.0) {
+        push @commands, drop_special_case_function("pgr_maxcardinalitymatch(text,boolean)");
+    }
+=cut
 sub drop_special_case_function {
     my ($function) = @_;
     my @commands = ();
@@ -335,433 +338,5 @@ sub drop_special_case_function {
     push @commands, "DROP FUNCTION IF EXISTS $function;\n\n\n";
     return @commands;
 }
-
-sub update_pg_proc_short {
-    my ($func_name, $new_sig) = @_;
-    return "
-UPDATE pg_proc SET
-proargnames = '{$new_sig}'
-WHERE proname = '$func_name';
-    ";
-}
-
-sub update_pg_proc {
-    my ($func_name, $old_sig, $new_sig) = @_;
-    return "
-UPDATE pg_proc SET
-proargnames = '{$new_sig}'
-WHERE proname = '$func_name'
-AND proargnames = '{$old_sig}';
-    ";
-}
-
-sub update_proallargtypes{
-    my ($func_name, $old_sig, $new_sig) = @_;
-    return "
-UPDATE pg_proc SET
-proallargtypes = '{$new_sig}'
-WHERE proname = '$func_name'
-AND proallargtypes = '{$old_sig}';
-    ";
-}
-
-
-=pod
-*****************************************************************
-code beyond this point is v3.0.0 specific
-*****************************************************************
-=cut
-
-sub update_from_version_3_0_0 {
-    my @commands = ();
-    push @commands, "
-
----------------------------------------------
--- Updating from version 3.0.0
----------------------------------------------
-" if $DEBUG;
-
-    push @commands, tsp();
-    push @commands, withpoints();
-    push @commands, components();
-    push @commands, flow();
-    push @commands, others_3_0_0();
-    return @commands;
-}
-
-sub others_3_0_0 {
-    my @commands = ();
-    push @commands, update_pg_proc(
-        'pgr_topologicalsort',
-        'edges_sql,seq,sorted_v',
-        '"",seq,sorted_v');
-    push @commands, update_pg_proc(
-        'pgr_transitiveclosure',
-        'edges_sql,seq,vid,target_array',
-        '"",seq,vid,target_array');
-    return @commands;
-}
-=pod
-*****************************************************************
-code beyond this point is v2.6 specific
-*****************************************************************
-=cut
-
-sub update_from_version_2 {
-    my @commands = ();
-    push @commands, "
----------------------------------------------
--- Updating from version 2.6
----------------------------------------------
-" if $DEBUG;
-    push @commands, "ALTER EXTENSION pgrouting DROP TYPE pgr_costresult;  DROP TYPE pgr_costresult CASCADE;\n";
-    push @commands, "ALTER EXTENSION pgrouting DROP TYPE pgr_costresult3; DROP TYPE pgr_costresult3 CASCADE;\n";
-    push @commands, "ALTER EXTENSION pgrouting DROP TYPE pgr_geomresult;  DROP TYPE pgr_geomresult CASCADE;\n";
-    push @commands, dijkstra();
-    push @commands, allpairs();
-    push @commands, astar();
-    push @commands, withpoints();
-    push @commands, drivingDistance();
-    push @commands, ksp();
-    push @commands, bddijkstra();
-    push @commands, bdastar();
-    push @commands, flow();
-    push @commands, tsp();
-    push @commands, components();
-    push @commands, vrp();
-    push @commands, topology();
-    push @commands, version();
-    return @commands;
-}
-
-sub version {
-    my @commands = ();
-    push @commands, drop_special_case_function("pgr_version()");
-    return @commands;
-}
-
-sub bddijkstra {
-    my @commands = ();
-
-    push @commands, drop_special_case_function("_pgr_bddijkstra(text,anyarray,anyarray,boolean,boolean)");
-    push @commands, drop_special_case_function("pgr_bddijkstra(text,bigint,anyarray,boolean)");
-
-    push @commands, update_pg_proc(
-        'pgr_bddijkstra',
-        'edges_sql,start_vid,end_vid,directed,seq,path_seq,node,edge,cost,agg_cost',
-        '"","","",directed,seq,path_seq,node,edge,cost,agg_cost');
-    push @commands, update_pg_proc(
-        'pgr_bddijkstra',
-        'edges_sql,start_vid,end_vids,directed,seq,path_seq,end_vid,node,edge,cost,agg_cost',
-        '"","","",directed,seq,path_seq,node,end_vid,edge,cost,agg_cost');
-    push @commands, update_pg_proc(
-        'pgr_bddijkstra',
-        'edges_sql,start_vids,end_vid,directed,seq,path_seq,start_vid,node,edge,cost,agg_cost',
-        '"","","",directed,seq,path_seq,start_vid,node,edge,cost,agg_cost');
-    push @commands, update_pg_proc(
-        'pgr_bddijkstra',
-        'edges_sql,start_vids,end_vids,directed,seq,path_seq,start_vid,end_vid,node,edge,cost,agg_cost',
-        '"","","",directed,seq,path_seq,start_vid,end_vid,node,edge,cost,agg_cost');
-
-    # pgr_BDdijkstraCost
-    push @commands, update_pg_proc_short(
-        'pgr_bddijkstracost',
-        '"","","",directed,start_vid,end_vid,agg_cost');
-
-    # pgr_BDdijkstraCostMatrix
-    push @commands, update_pg_proc(
-        'pgr_bddijkstracostmatrix',
-        'edges_sql,vids,directed,start_vid,end_vid,agg_cost',
-        '"","",directed,start_vid,end_vid,agg_cost');
-
-    return @commands;
-}
-
-
-sub withpoints {
-    my @commands = ();
-
-    push @commands, update_pg_proc(
-        'pgr_withpoints',
-        'edges_sql,points_sql,start_pid,end_pid,directed,driving_side,details,seq,path_seq,node,edge,cost,agg_cost',
-        '"","","","",directed,driving_side,details,seq,path_seq,node,edge,cost,agg_cost');
-    push @commands, update_pg_proc(
-        'pgr_withpoints',
-        'edges_sql,points_sql,start_pid,end_pids,directed,driving_side,details,seq,path_seq,end_pid,node,edge,cost,agg_cost',
-        '"","","","",directed,driving_side,details,seq,path_seq,end_pid,node,edge,cost,agg_cost');
-    push @commands, update_pg_proc(
-        'pgr_withpoints',
-        'edges_sql,points_sql,start_pids,end_pid,directed,driving_side,details,seq,path_seq,start_pid,node,edge,cost,agg_cost',
-        '"","","","",directed,driving_side,details,seq,path_seq,start_pid,node,edge,cost,agg_cost');
-    push @commands, update_pg_proc(
-        'pgr_withpoints',
-        'edges_sql,points_sql,start_pids,end_pids,directed,driving_side,details,seq,path_seq,start_pid,end_pid,node,edge,cost,agg_cost',
-        '"","","","",directed,driving_side,details,seq,path_seq,start_pid,end_pid,node,edge,cost,agg_cost');
-
-    # pgr_withPointsCost
-    push @commands, update_pg_proc_short(
-        'pgr_withpointscost',
-        '"","","","",directed,driving_side,start_pid,end_pid,agg_cost');
-
-    #pgr_withPointsCostMatrix
-    push @commands, update_pg_proc(
-        'pgr_withpointscostmatrix',
-        'edges_sql,points_sql,pids,directed,driving_side,start_vid,end_vid,agg_cost',
-        '"","","",directed,driving_side,start_vid,end_vid,agg_cost');
-
-    # pgr_withPointsDD
-    push @commands, update_pg_proc(
-        'pgr_withpointsdd',
-        'edges_sql,points_sql,start_pid,distance,directed,driving_side,details,equicost,seq,start_vid,node,edge,cost,agg_cost',
-        '"","","","",directed,driving_side,details,equicost,seq,start_vid,node,edge,cost,agg_cost');
-    push @commands, update_pg_proc(
-        'pgr_withpointsdd',
-        'edges_sql,points_sql,start_pid,distance,directed,driving_side,details,seq,node,edge,cost,agg_cost',
-        '"","","","",directed,driving_side,details,seq,node,edge,cost,agg_cost');
-
-    return @commands;
-}
-
-
-sub drivingDistance {
-    my @commands = ();
-
-    push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean)");
-    push @commands, update_pg_proc(
-        'pgr_drivingdistance',
-        'edges_sql,start_vids,distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost',
-        '"","","",directed,equicost,seq,from_v,node,edge,cost,agg_cost');
-
-    return @commands;
-}
-
-
-sub topology {
-    my @commands = ();
-
-    push @commands, update_pg_proc(
-        'pgr_nodenetwork',
-        'edge_table,tolerance,id,the_geom,table_ending,rows_where,outall',
-        '"","",id,the_geom,table_ending,rows_where,outall');
-    push @commands, update_pg_proc(
-        'pgr_createverticestable',
-        'edge_table,the_geom,source,target,rows_where',
-        '"",the_geom,source,target,rows_where');
-    push @commands, update_pg_proc(
-        'pgr_createtopology',
-        'edge_table,tolerance,the_geom,id,source,target,rows_where,clean',
-        '"","",the_geom,id,source,target,rows_where,clean');
-    push @commands, update_pg_proc(
-        'pgr_analyzegraph',
-        'edge_table,tolerance,the_geom,id,source,target,rows_where',
-        '"","",the_geom,id,source,target,rows_where');
-    push @commands, update_pg_proc(
-        'pgr_analyzeoneway',
-        'edge_table,s_in_rules,s_out_rules,t_in_rules,t_out_rules,two_way_if_null,oneway,source,target',
-        '"","","","","",two_way_if_null,oneway,source,target');
-    return @commands;
-}
-
-
-sub allpairs {
-    my @commands = ();
-
-    push @commands, update_pg_proc(
-        'pgr_johnson',
-        'edges_sql,directed,start_vid,end_vid,agg_cost',
-        '"",directed,start_vid,end_vid,agg_cost');
-    push @commands, update_pg_proc(
-        'pgr_floydwarshall',
-        'edges_sql,directed,start_vid,end_vid,agg_cost',
-        '"",directed,start_vid,end_vid,agg_cost');
-    return @commands;
-}
-
-
-
-sub components {
-    my @commands = ();
-    if ("$old_version" eq "3.0.0") {
-        push @commands, update_proallargtypes(
-            '_pgr_strongcomponents',
-            '25,23,20,20',
-            '25,20,20,20');
-        push @commands, update_proallargtypes(
-            'pgr_strongcomponents',
-            '25,23,20,20',
-            '25,20,20,20');
-        push @commands, update_proallargtypes(
-            '_pgr_biconnectedcomponents',
-            '25,23,20,20',
-            '25,20,20,20');
-        push @commands, update_proallargtypes(
-            'pgr_biconnectedcomponents',
-            '25,23,20,20',
-            '25,20,20,20');
-    }
-
-    if ($old_mayor == 2) {
-        push @commands, drop_special_case_function("pgr_connectedcomponents(text)");
-        push @commands, drop_special_case_function("pgr_strongcomponents(text)");
-        push @commands, drop_special_case_function("pgr_biconnectedcomponents(text)");
-        push @commands, drop_special_case_function("pgr_articulationpoints(text)");
-        push @commands, drop_special_case_function("pgr_bridges(text)");
-    }
-
-    return @commands;
-}
-
-
-sub tsp {
-    my @commands = ();
-
-    push @commands, update_pg_proc(
-        'pgr_tsp',
-        'matrix_row_sql,start_id,end_id,max_processing_time,tries_per_temperature,max_changes_per_temperature,max_consecutive_non_changes,initial_temperature,final_temperature,cooling_factor,randomize,seq,node,cost,agg_cost',
-        '"",start_id,end_id,max_processing_time,tries_per_temperature,max_changes_per_temperature,max_consecutive_non_changes,initial_temperature,final_temperature,cooling_factor,randomize,seq,node,cost,agg_cost');
-
-    return @commands;
-}
-
-sub dijkstra {
-    my @commands = ();
-
-    push @commands, drop_special_case_function("pgr_dijkstra(text,bigint,anyarray,boolean)");
-
-    push @commands, update_pg_proc(
-        'pgr_dijkstra',
-        'edges_sql,start_vid,end_vid,directed,seq,path_seq,node,edge,cost,agg_cost',
-        '"","","",directed,seq,path_seq,node,edge,cost,agg_cost');
-    push @commands, update_pg_proc(
-        'pgr_dijkstra',
-        'edges_sql,start_vid,end_vids,directed,seq,path_seq,end_vid,node,edge,cost,agg_cost',
-        '"","","",directed,seq,path_seq,node,end_vid,edge,cost,agg_cost');
-    push @commands, update_pg_proc(
-        'pgr_dijkstra',
-        'edges_sql,start_vids,end_vid,directed,seq,path_seq,start_vid,node,edge,cost,agg_cost',
-        '"","","",directed,seq,path_seq,start_vid,node,edge,cost,agg_cost');
-    push @commands, update_pg_proc(
-        'pgr_dijkstra',
-        'edges_sql,start_vids,end_vids,directed,seq,path_seq,start_vid,end_vid,node,edge,cost,agg_cost',
-        '"","","",directed,seq,path_seq,start_vid,end_vid,node,edge,cost,agg_cost');
-
-    # pgr_dijkstraCost
-    push @commands, update_pg_proc_short(
-        'pgr_dijkstracost',
-        '"","","",directed,start_vid,end_vid,agg_cost');
-
-    # pgr_dijkstraCostMatrix
-    push @commands, update_pg_proc(
-        'pgr_dijkstracostmatrix',
-        'edges_sql,vids,directed,start_vid,end_vid,agg_cost',
-        '"","",directed,start_vid,end_vid,agg_cost');
-
-    push @commands, update_pg_proc(
-        'pgr_dijkstravia',
-        'edges_sql,via_vertices,directed,strict,u_turn_on_edge,seq,path_id,path_seq,start_vid,end_vid,node,edge,cost,agg_cost,route_agg_cost',
-        '"","",directed,strict,u_turn_on_edge,seq,path_id,path_seq,start_vid,end_vid,node,edge,cost,agg_cost,route_agg_cost');
-
-
-    return @commands;
-}
-
-
-
-sub ksp {
-    my @commands = ();
-
-    push @commands, update_pg_proc(
-        'pgr_ksp',
-        'edges_sql,start_vid,end_vid,k,directed,heap_paths,seq,path_id,path_seq,node,edge,cost,agg_cost',
-        '"","","","",directed,heap_paths,seq,path_id,path_seq,node,edge,cost,agg_cost');
-    push @commands, update_pg_proc(
-        'pgr_withpointsksp',
-        'edges_sql,points_sql,start_pid,end_pid,k,directed,heap_paths,driving_side,details,seq,path_id,path_seq,node,edge,cost,agg_cost',
-        '"","","","","",directed,heap_paths,driving_side,details,seq,path_id,path_seq,node,edge,cost,agg_cost');
-
-    return @commands;
-}
-
-sub vrp {
-    my @commands = ();
-
-    push @commands, update_pg_proc(
-        'pgr_vrponedepot',
-        'order_sql,vehicle_sql,cost_sql,depot_id,oid,opos,vid,tarrival,tdepart',
-        '"","","","",oid,opos,vid,tarrival,tdepart');
-
-    return @commands;
-}
-
-sub bdastar {
-    my @commands = ();
-
-    push @commands, update_pg_proc(
-            'pgr_bdastarcostmatrix',
-             'edges_sql,vids,directed,heuristic,factor,epsilon,start_vid,end_vid,agg_cost',
-             '"","",directed,heuristic,factor,epsilon,start_vid,end_vid,agg_cost');
-
-    return @commands;
-}
-
-sub astar {
-    my @commands = ();
-
-    push @commands, update_pg_proc(
-        'pgr_astar',
-        'edges_sql,start_vid,end_vid,directed,heuristic,factor,epsilon,seq,path_seq,node,edge,cost,agg_cost',
-        '"","","",directed,heuristic,factor,epsilon,seq,path_seq,node,edge,cost,agg_cost');
-    push @commands, update_pg_proc(
-        'pgr_astar',
-        'edges_sql,start_vid,end_vids,directed,heuristic,factor,epsilon,seq,path_seq,end_vid,node,edge,cost,agg_cost',
-        '"","","",directed,heuristic,factor,epsilon,seq,path_seq,end_vid,node,edge,cost,agg_cost');
-    push @commands, update_pg_proc(
-        'pgr_astar',
-        'edges_sql,start_vids,end_vid,directed,heuristic,factor,epsilon,seq,path_seq,start_vid,node,edge,cost,agg_cost',
-        '"","","",directed,heuristic,factor,epsilon,seq,path_seq,start_vid,node,edge,cost,agg_cost');
-    push @commands, update_pg_proc(
-        'pgr_astar',
-        'edges_sql,start_vids,end_vids,directed,heuristic,factor,epsilon,seq,path_seq,start_vid,end_vid,node,edge,cost,agg_cost',
-        '"","","",directed,heuristic,factor,epsilon,seq,path_seq,start_vid,end_vid,node,edge,cost,agg_cost');
-
-    #pgr_astarCost
-    push @commands, update_pg_proc_short(
-        'pgr_astarcost',
-        '"","","",directed,heuristic,factor,epsilon,start_vid,end_vid,agg_cost');
-
-    #pgr_astarCostMatrix
-    push @commands, update_pg_proc(
-        'pgr_astarcostmatrix',
-        'edges_sql,vids,directed,heuristic,factor,epsilon,start_vid,end_vid,agg_cost',
-        '"","",directed,heuristic,factor,epsilon,start_vid,end_vid,agg_cost');
-
-    return @commands;
-}
-
-
-
-
-sub flow {
-    my @commands = ();
-
-    if ("$old_version" eq "3.0.0") {
-        push @commands, update_pg_proc(
-            'pgr_stoerwagner',
-            'edges_sql,seq,edge,cost,mincut',
-            '"",seq,edge,cost,mincut');
-    }
-    if ($old_mayor == 2) {
-        push @commands, update_pg_proc(
-            'pgr_maxcardinalitymatch',
-            'edges_sql,directed,seq,edge,source,target',
-            '"",directed,seq,edge,source,target');
-        push @commands, update_pg_proc(
-            'pgr_maxflow',
-            'edges_sql,source_vertices,sink_vertices',
-            '"","",""');
-    }
-    return @commands;
-}
-
 
 

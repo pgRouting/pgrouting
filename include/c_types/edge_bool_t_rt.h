@@ -40,8 +40,6 @@ struct Edge_bool_t_rt {
   int64_t source;
   int64_t target;
   bool going;
-  bool coming;
-  int64_t edge_id;
 };
 
 #endif  // INCLUDE_C_TYPES_EDGE_BOOL_T_RT_H_

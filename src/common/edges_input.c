@@ -63,21 +63,12 @@ void fetch_basic_edge(
         edge->id = *default_id;
         ++(*default_id);
     }
-    bool new_columns = column_found(info[5].colNumber);
 
     edge->source = pgr_SPI_getBigInt(tuple, tupdesc, info[1]);
     edge->target = pgr_SPI_getBigInt(tuple, tupdesc, info[2]);
 
-    edge->coming = false;
-    if (new_columns) {
-        edge->going = pgr_SPI_getFloat8(tuple, tupdesc, info[5]) > 0
-            || (column_found(info[6].colNumber)
-                    && pgr_SPI_getFloat8(tuple, tupdesc, info[6]) > 0);
-    } else {
-        edge->going = pgr_SPI_getFloat8(tuple, tupdesc, info[3]) > 0
-            || (column_found(info[4].colNumber)
-                    && pgr_SPI_getFloat8(tuple, tupdesc, info[4]) > 0);
-    }
+    edge->going = pgr_SPI_getFloat8(tuple, tupdesc, info[3]) > 0
+        || ((column_found(info[4].colNumber) && pgr_SPI_getFloat8(tuple, tupdesc, info[4]) > 0));
 
     (*valid_edges)++;
 }
@@ -624,7 +615,7 @@ get_edges_basic(
     Column_info_t info[7];
 
     int i;
-    for (i = 0; i < 7; ++i) {
+    for (i = 0; i < 5; ++i) {
         info[i].colNumber = -1;
         info[i].type = 0;
         info[i].strict = true;
@@ -633,21 +624,14 @@ get_edges_basic(
     info[0].name = "id";
     info[1].name = "source";
     info[2].name = "target";
-    info[3].name = "going";
-    info[4].name = "coming";
-    info[5].name = "cost";
-    info[6].name = "reverse_cost";
+    info[3].name = "cost";
+    info[4].name = "reverse_cost";
 
     info[0].strict = !ignore_id;
-    info[3].strict = false;
     info[4].strict = false;
-    info[5].strict = false;
-    info[6].strict = false;
 
     info[3].eType = ANY_NUMERICAL;
     info[4].eType = ANY_NUMERICAL;
-    info[5].eType = ANY_NUMERICAL;
-    info[6].eType = ANY_NUMERICAL;
 
 
     void *SPIplan;
@@ -665,7 +649,7 @@ get_edges_basic(
     while (moredata == true) {
         SPI_cursor_fetch(SPIportal, true, tuple_limit);
         if (total_tuples == 0)
-            pgr_fetch_column_info(info, 7);
+            pgr_fetch_column_info(info, 5);
 
         size_t ntuples = SPI_processed;
         total_tuples += ntuples;

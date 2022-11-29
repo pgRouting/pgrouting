@@ -31,7 +31,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_common/postgres_connection.h"
 
-#include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 #include "c_common/edges_input.h"
@@ -44,15 +43,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 PGDLLEXPORT Datum
 _pgr_maxcardinalitymatch(PG_FUNCTION_ARGS);
 
-/******************************************************************************/
-/*                          MODIFY AS NEEDED                                  */
 static
 void
 process(
-    char *edges_sql,
-    bool directed,
-    Edge_bool_t_rt **result_tuples,
-    size_t *result_count) {
+        char *edges_sql,
+        int64_t **result_tuples,
+        size_t *result_count) {
     pgr_SPI_connect();
 
     Edge_bool_t_rt *edges = NULL;
@@ -64,15 +60,13 @@ process(
         return;
     }
 
-    PGR_DBG("Starting timer");
     clock_t start_t = clock();
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char *err_msg = NULL;
 
-    do_pgr_maximum_cardinality_matching(
+    do_maxCardinalityMatch(
             edges, total_edges,
-            directed,
             result_tuples,
             result_count,
 
@@ -80,7 +74,7 @@ process(
             &notice_msg,
             &err_msg);
 
-    time_msg("pgr_maximumCardinalityMatching()", start_t, clock());
+    time_msg("pgr_maxCardinalityMatch()", start_t, clock());
 
     if (edges) pfree(edges);
 
@@ -104,12 +98,9 @@ PG_FUNCTION_INFO_V1(_pgr_maxcardinalitymatch);
 PGDLLEXPORT Datum
 _pgr_maxcardinalitymatch(PG_FUNCTION_ARGS) {
     FuncCallContext *funcctx;
-    TupleDesc tuple_desc;
 
-    /**************************************************************************/
-    Edge_bool_t_rt *result_tuples = NULL;
+    int64_t *result_tuples = NULL;
     size_t result_count = 0;
-    /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext oldcontext;
@@ -117,60 +108,23 @@ _pgr_maxcardinalitymatch(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-        /**********************************************************************/
-        PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_BOOL(1),
                 &result_tuples,
                 &result_count);
 
-        /**********************************************************************/
-
         funcctx->max_calls = result_count;
         funcctx->user_fctx = result_tuples;
-        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
-                != TYPEFUNC_COMPOSITE) {
-            ereport(ERROR,
-                    (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-                     errmsg("function returning record called in context "
-                         "that cannot accept type record")));
-        }
-
-        funcctx->tuple_desc = tuple_desc;
         MemoryContextSwitchTo(oldcontext);
     }
 
     funcctx = SRF_PERCALL_SETUP();
-    tuple_desc = funcctx->tuple_desc;
-    result_tuples = (Edge_bool_t_rt *) funcctx->user_fctx;
+    result_tuples = (int64_t *) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
-        HeapTuple tuple;
         Datum result;
-        Datum *values;
-        bool *nulls;
 
-        /**********************************************************************/
-
-        values = palloc(4 * sizeof(Datum));
-        nulls = palloc(4 * sizeof(bool));
-
-
-        size_t i;
-        for (i = 0; i < 4; ++i) {
-            nulls[i] = false;
-        }
-
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge_id);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
-
-        /**********************************************************************/
-
-        tuple = heap_form_tuple(tuple_desc, values, nulls);
-        result = HeapTupleGetDatum(tuple);
+        result = Int64GetDatum(result_tuples[funcctx->call_cntr]);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
         SRF_RETURN_DONE(funcctx);
