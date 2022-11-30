@@ -317,7 +317,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     endif()
 
     set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}   -Wall -Wconversion -Wmissing-prototypes -W -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
-    add_definitions(-Wsign-conversion  -Wfloat-conversion)
+    add_definitions(-Wsign-conversion)
     if(BOOST_Geometry_VERSION_OK)
         set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -Wconversion -pedantic -W -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
     else()
