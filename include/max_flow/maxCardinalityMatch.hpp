@@ -1,8 +1,15 @@
 /*PGR-GNU*****************************************************************
-File: edge_bool_t_rt.h
 
-Copyright (c) 2017 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+Refactoring
+Copyright (c) 2022 Celia Virginia Vergara Castillo
+Mail: vicky_vergara at hotmail.com
+
+Function's developer:
+Copyright (c) 2016 Andrea Nardelli
+Mail: nrd.nardelli@gmail.com
 
 ------
 
@@ -21,25 +28,22 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-/*! @file */
 
-#ifndef INCLUDE_C_TYPES_EDGE_BOOL_T_RT_H_
-#define INCLUDE_C_TYPES_EDGE_BOOL_T_RT_H_
+#ifndef INCLUDE_MAX_FLOW_MAXCARDINALITYMATCH_HPP_
+#define INCLUDE_MAX_FLOW_MAXCARDINALITYMATCH_HPP_
 #pragma once
 
-/* for int64_t */
-#ifdef __cplusplus
-#   include <cstdint>
-#else
-#   include <stdbool.h>
-#   include <stdint.h>
-#endif
+#include <set>
 
-struct Edge_bool_t_rt {
-  int64_t id;
-  int64_t source;
-  int64_t target;
-  bool going;
-};
+#include "cpp_common/undirectedNoCostBG.hpp"
 
-#endif  // INCLUDE_C_TYPES_EDGE_BOOL_T_RT_H_
+
+namespace pgrouting {
+namespace flow {
+
+  std::set<int64_t> maxCardinalityMatch(pgrouting::graph::UndirectedNoCostsBG&);
+
+}  // namespace flow
+}  // namespace pgrouting
+
+#endif  // INCLUDE_MAX_FLOW_MAXCARDINALITYMATCH_HPP_

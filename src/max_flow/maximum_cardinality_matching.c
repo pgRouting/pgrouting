@@ -1,9 +1,12 @@
 /*PGR-GNU*****************************************************************
 File: maximum_cardinality_matching.c
 
-Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
+
+Refactoring
+Copyright (c) 2022 Celia Vriginia Vergara Castillo
+Mail: vicky_vergara at hotmail.com
 
 Function's developer:
 Copyright (c) 2016 Andrea Nardelli
@@ -35,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 #include "c_common/edges_input.h"
 
-#include "c_types/edge_bool_t_rt.h"
+#include "c_types/edge_bool_t.h"
 
 #include "drivers/max_flow/maximum_cardinality_matching_driver.h"
 
@@ -51,7 +54,7 @@ process(
         size_t *result_count) {
     pgr_SPI_connect();
 
-    Edge_bool_t_rt *edges = NULL;
+    Edges *edges = NULL;
     size_t total_edges = 0;
     pgr_get_basic_edges(edges_sql, &edges, &total_edges);
 

@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "c_types/column_info_t.h"
-#include "c_types/edge_bool_t_rt.h"
+#include "c_types/edge_bool_t.h"
 #include "c_types/costFlow_t.h"
 #include "c_types/edge_xy_t.h"
 
@@ -48,22 +48,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /*
  * Only for undirected graph, without weights on the costs
+ * going: true when cost or reverse_cost is non negative
 */
 static
 void fetch_basic_edge(
     HeapTuple *tuple,
     TupleDesc *tupdesc,
     Column_info_t info[7],
-    int64_t *default_id,
-    Edge_bool_t_rt *edge,
+    Edge_bool_t *edge,
     size_t *valid_edges) {
-    if (column_found(info[0].colNumber)) {
-        edge->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
-    } else {
-        edge->id = *default_id;
-        ++(*default_id);
-    }
 
+    edge->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
     edge->source = pgr_SPI_getBigInt(tuple, tupdesc, info[1]);
     edge->target = pgr_SPI_getBigInt(tuple, tupdesc, info[2]);
 
@@ -602,9 +597,8 @@ static
 void
 get_edges_basic(
     char *sql,
-    Edge_bool_t_rt **edges,
-    size_t *totalTuples,
-    bool ignore_id) {
+    Edge_bool_t **edges,
+    size_t *totalTuples) {
     clock_t start_t = clock();
 
     const int tuple_limit = 1000000;
@@ -627,7 +621,6 @@ get_edges_basic(
     info[3].name = "cost";
     info[4].name = "reverse_cost";
 
-    info[0].strict = !ignore_id;
     info[4].strict = false;
 
     info[3].eType = ANY_NUMERICAL;
@@ -645,7 +638,6 @@ get_edges_basic(
     (*totalTuples) = total_tuples = valid_edges = 0;
 
 
-    int64_t default_id = 0;
     while (moredata == true) {
         SPI_cursor_fetch(SPIportal, true, tuple_limit);
         if (total_tuples == 0)
@@ -656,11 +648,11 @@ get_edges_basic(
 
         if (ntuples > 0) {
             if ((*edges) == NULL)
-                (*edges) = (Edge_bool_t_rt *)palloc0(
-                        total_tuples * sizeof(Edge_bool_t_rt));
+                (*edges) = (Edge_bool_t *)palloc0(
+                        total_tuples * sizeof(Edge_bool_t));
             else
-                (*edges) = (Edge_bool_t_rt *)repalloc(
-                        (*edges), total_tuples * sizeof(Edge_bool_t_rt));
+                (*edges) = (Edge_bool_t *)repalloc(
+                        (*edges), total_tuples * sizeof(Edge_bool_t));
 
             if ((*edges) == NULL) {
                 elog(ERROR, "Out of memory");
@@ -673,7 +665,6 @@ get_edges_basic(
             for (t = 0; t < ntuples; t++) {
                 HeapTuple tuple = tuptable->vals[t];
                 fetch_basic_edge(&tuple, &tupdesc, info,
-                           &default_id,
                            &(*edges)[total_tuples - ntuples + t],
                            &valid_edges);
             }
@@ -772,8 +763,7 @@ pgr_get_edges_xy_reversed(
 void
 pgr_get_basic_edges(
         char *sql,
-        Edge_bool_t_rt **edges,
+        Edge_bool_t **edges,
         size_t *total_edges) {
-    bool ignore_id = false;
-    get_edges_basic(sql, edges, total_edges, ignore_id);
+    get_edges_basic(sql, edges, total_edges);
 }

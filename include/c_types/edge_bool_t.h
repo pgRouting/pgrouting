@@ -1,15 +1,8 @@
 /*PGR-GNU*****************************************************************
-FILE: maxCardinalityMatch.sql
+File: edge_bool_t.h
 
-Copyright (c) 2015 pgRouting developers
-Mail: project@pgrouting.org
-
-Refactoring
-Copyright (c) 2022 Celia Vriginia Vergara Castillo
+Copyright (c) 2017 Celia Virginia Vergara Castillo
 Mail: vicky_vergara at hotmail.com
-
-Copyright (c) 2016 Andrea Nardelli
-mail: nrd.nardelli@gmail.com
 
 ------
 
@@ -28,26 +21,25 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
+/*! @file */
 
---v3.4
-CREATE FUNCTION pgr_maxCardinalityMatch(
-  TEXT, -- edges_sql (required)
+#ifndef INCLUDE_C_TYPES_EDGE_BOOL_T_H_
+#define INCLUDE_C_TYPES_EDGE_BOOL_T_H_
+#pragma once
 
-  OUT edge BIGINT)
-RETURNS SETOF BIGINT AS
-$BODY$
-SELECT *
-FROM _pgr_maxCardinalityMatch(_pgr_get_statement($1))
-$BODY$
-LANGUAGE SQL VOLATILE STRICT
-COST 100
-ROWS 1000;
+/* for int64_t */
+#ifdef __cplusplus
+#   include <cstdint>
+#else
+#   include <stdbool.h>
+#   include <stdint.h>
+#endif
 
+struct Edge_bool_t {
+  int64_t id;
+  int64_t source;
+  int64_t target;
+  bool going;
+};
 
-COMMENT ON FUNCTION pgr_maxCardinalityMatch(TEXT)
-IS 'pgr_maxCardinalityMatch
-- Parameters:
-  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-- Documentation:
-- ${PROJECT_DOC_LINK}/pgr_maxCardinalityMatch.html
-';
+#endif  // INCLUDE_C_TYPES_EDGE_BOOL_T_H_

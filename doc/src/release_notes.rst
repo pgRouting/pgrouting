@@ -38,12 +38,6 @@ To see the full list of changes check the list of `Git commits
 pgRouting 4.0.0 Release Notes
 -------------------------------------------------------------------------------
 
-> _pgr_maxcardinalitymatch(text)
-> _pgr_tspeuclidean(text,bigint,bigint,integer)
-> pgr_tspeuclidean(text,bigint,bigint,integer)
-> _pgr_tsp(text,bigint,bigint,integer)
-> pgr_tsp(text,bigint,bigint,integer)
-
 Update from old versions is needed
 
 * Simplify C/C++ code for combinations style

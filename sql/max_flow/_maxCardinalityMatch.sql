@@ -4,6 +4,10 @@ FILE: _maxCardinalityMatch.sql
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
+Refactoring
+Copyright (c) 2022 Celia Vriginia Vergara Castillo
+Mail: vicky_vergara at hotmail.com
+
 Copyright (c) 2016 Andrea Nardelli
 mail: nrd.nardelli@gmail.com
 

@@ -3,9 +3,9 @@
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Ignroing directed flag & works only for undirected graph
+Refactoring
 Copyright (c) 2022 Celia Vriginia Vergara Castillo
-Mail: vicky at georepublic.mail
+Mail: vicky_vergara at hotmail.com
 
 Function's developer:
 Copyright (c) 2016 Andrea Nardelli
@@ -29,49 +29,51 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_MAX_FLOW_PGR_MAXIMUMCARDINALITYMATCHING_HPP_
-#define INCLUDE_MAX_FLOW_PGR_MAXIMUMCARDINALITYMATCHING_HPP_
+#ifndef INCLUDE_CPP_COMMON_UNDIRECTEDNOCOSTBG_HPP_
+#define INCLUDE_CPP_COMMON_UNDIRECTEDNOCOSTBG_HPP_
 #pragma once
 
 #include <map>
-#include <vector>
 
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 
-#include "c_types/edge_bool_t_rt.h"
+#include "c_types/edge_bool_t.h"
 
 
 namespace pgrouting {
-namespace flow {
+namespace graph {
 
-class MaxCardinalityMatch {
-  using G = boost::adjacency_list<boost::listS, boost::vecS, boost::undirectedS>;
-  using V = boost::graph_traits<G>::vertex_descriptor;
-  using E = boost::graph_traits<G>::edge_descriptor;
-  using V_it = boost::graph_traits<G>::vertex_iterator;
 
+class UndirectedNoCostsBG {
  public:
-  MaxCardinalityMatch(Edge_bool_t_rt *, size_t);
-  std::vector<int64_t> get_matched_vertices();
+     using G = boost::adjacency_list<boost::listS, boost::vecS, boost::undirectedS>;
+     using V = boost::graph_traits<G>::vertex_descriptor;
+     using E = boost::graph_traits<G>::edge_descriptor;
+     using V_it = boost::graph_traits<G>::vertex_iterator;
+     using Edge_bool_t = struct Edge_bool_t;
+
+     UndirectedNoCostsBG(Edge_bool_t*, size_t);
+
+     V get_boost_vertex(int64_t id) {
+         return id_to_V[id];
+     }
+
+     int64_t get_edge_id(E e) {
+         return E_to_id[e];
+     }
+
+     G& operator()() {return graph;}
+     const G& operator()() const {return graph;}
 
  private:
-  inline V get_boost_vertex(int64_t id) {
-      return id_to_V[id];
-  }
-
-  inline int64_t get_edge_id(E e) {
-      return E_to_id[e];
-  }
-
-  G boost_graph;
-  std::map<int64_t, V> id_to_V;
-  std::map<V, int64_t> V_to_id;
-  std::map<E, int64_t> E_to_id;
-
+     G graph;
+     std::map<int64_t, V> id_to_V;
+     std::map<V, int64_t> V_to_id;
+     std::map<E, int64_t> E_to_id;
 };
 
-}  // namespace flow
+}  // namespace graph
 }  // namespace pgrouting
 
-#endif  // INCLUDE_MAX_FLOW_PGR_MAXIMUMCARDINALITYMATCHING_HPP_
+#endif  // INCLUDE_CPP_COMMON_UNDIRECTEDNOCOSTBG_HPP_

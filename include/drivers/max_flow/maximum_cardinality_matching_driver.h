@@ -1,9 +1,12 @@
 /*PGR-GNU*****************************************************************
 File: maximum_cardinality_matching_driver.h
 
-Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
+
+Refactoring
+Copyright (c) 2022 Celia Virginia Vergara Castillo
+Mail: vicky_vergara at hotmail.com
 
 Function's developer:
 Copyright (c) 2016 Andrea Nardelli
@@ -31,15 +34,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_MAX_FLOW_MAXIMUM_CARDINALITY_MATCHING_DRIVER_H_
 #pragma once
 
-/* for size-t */
 #ifdef __cplusplus
 # include <cstddef>
 # include <cstdint>
-using Edge_bool_t_rt = struct Edge_bool_t_rt;
+using Edges = struct Edge_bool_t;
 #else
 # include <stddef.h>
 # include <stdint.h>
-typedef struct Edge_bool_t_rt Edge_bool_t_rt;
+typedef struct Edge_bool_t Edges;
 #endif
 
 #ifdef __cplusplus
@@ -48,7 +50,7 @@ extern "C" {
 
     void
         do_maxCardinalityMatch(
-            Edge_bool_t_rt *,
+            Edges *,
             size_t,
 
             int64_t **,

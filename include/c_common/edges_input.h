@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 typedef struct Edge_xy_t Edge_xy_t;
 typedef struct Flow_t Flow_t;
-typedef struct Edge_bool_t_rt Edge_bool_t_rt;
+typedef struct Edge_bool_t Edge_bool_t;
 typedef struct CostFlow_t CostFlow_t;
 typedef struct Edge_t Edge_t;
 
@@ -176,7 +176,7 @@ FROM edge_table;
 */
 void pgr_get_basic_edges(
     char *sql,
-    Edge_bool_t_rt **edges,
+    Edge_bool_t **edges,
     size_t *total_edges);
 
 

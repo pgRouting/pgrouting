@@ -1,14 +1,12 @@
 /*PGR-GNU*****************************************************************
 File: maximum_cardinality_matching_driver.cpp
 
-Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Ignroing directed flag & works only for undirected graph
-& cleaning up code
+Refactoring
 Copyright (c) 2022 Celia Vriginia Vergara Castillo
-Mail: vicky at georepublic.mail
+Mail: vicky_vergara at hotmail.com
 
 Function's developer:
 Copyright (c) 2016 Andrea Nardelli
@@ -37,16 +35,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <vector>
 
-#include "max_flow/pgr_maximumcardinalitymatching.hpp"
+#include "max_flow/maxCardinalityMatch.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-#include "c_types/edge_bool_t_rt.h"
+#include "c_types/edge_bool_t.h"
 
 void
 do_maxCardinalityMatch(
-    Edge_bool_t_rt *data_edges,
+    Edges *data_edges,
     size_t total_tuples,
 
     int64_t **return_tuples,
@@ -59,14 +57,15 @@ do_maxCardinalityMatch(
     std::ostringstream err;
 
     try {
-        pgrouting::flow::MaxCardinalityMatch G(data_edges, total_tuples);
-        auto matched_vertices = G.get_matched_vertices();
+        pgrouting::graph::UndirectedNoCostsBG graph(data_edges, total_tuples);
+        auto match = pgrouting::flow::maxCardinalityMatch(graph);
 
-        (*return_tuples) = pgr_alloc(matched_vertices.size(), (*return_tuples));
-        for (size_t i = 0; i < matched_vertices.size(); ++i) {
-            (*return_tuples)[i] = matched_vertices[i];
+        (*return_tuples) = pgr_alloc(match.size(), (*return_tuples));
+        size_t i {0};
+        for (const auto e : match) {
+            (*return_tuples)[i++] = e;
         }
-        *return_count = matched_vertices.size();
+        *return_count = match.size();
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
