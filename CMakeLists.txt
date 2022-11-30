@@ -33,7 +33,7 @@ string(TIMESTAMP COMPILATION_DATE "%Y/%m/%d" UTC)
 
 set(MINORS 3.4 3.3 3.2 3.1 3.0 2.6)
 set(OLD_SIGNATURES
-    3.4.1 
+    3.4.1
     3.4.0
     3.3.5 3.3.4 3.3.3 3.3.2 3.3.1 3.3.0
     3.2.2 3.2.1 3.2.0
@@ -315,7 +315,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     endif()
 
     set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}   -Wall -Wconversion -Wmissing-prototypes -W -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
-    add_definitions(-Wsign-conversion  -Wfloat-conversion)
+    add_definitions(-Wsign-conversion)
     if(BOOST_Geometry_VERSION_OK)
         set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -Wconversion -pedantic -W -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
     else()
