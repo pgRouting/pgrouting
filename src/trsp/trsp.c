@@ -159,7 +159,8 @@ static int compute_trsp(
   int64_t v_max_id = 0;
   int64_t v_min_id = INT_MAX;
 
-  for (size_t z = 0; z < total_tuples; z++) {
+  size_t z;
+  for (z = 0; z < total_tuples; z++) {
     PGR_DBG("id %ld source %ld target %ld cost %f rev %f",
             edges[z].id, edges[z].source, edges[z].target, edges[z].cost, edges[z].reverse_cost);
     if (edges[z].source < v_min_id)
@@ -181,7 +182,7 @@ static int compute_trsp(
   /* track if start and end are both in edge tuples */
   int s_count = 0;
   int t_count = 0;
-  for (size_t z = 0; z < total_tuples; z++) {
+  for (z = 0; z < total_tuples; z++) {
     // check if edges[] contains source and target
     if (dovertex) {
         if (edges[z].source == start_id || edges[z].target == start_id)
@@ -309,7 +310,7 @@ static int compute_trsp(
   // ::::::::::::::::::::::::::::::::
   // :: restoring original vertex id
   // ::::::::::::::::::::::::::::::::
-  for (size_t z = 0; z < *path_count; z++) {
+  for (z = 0; z < *path_count; z++) {
     if (z || (*path)[z].vertex_id != -1)
         (*path)[z].vertex_id += v_min_id;
   }
