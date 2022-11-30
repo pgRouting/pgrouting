@@ -104,7 +104,6 @@ class Pgr_bdAstar : public Pgr_bidirectional<G> {
     void explore_forward(const Cost_Vertex_pair &node) {
         typename G::EO_i out, out_end;
 
-        auto current_cost = node.first;
         auto current_node = node.second;
         auto current_node_cost = forward_cost[current_node];
 
