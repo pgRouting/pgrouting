@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 18:43+0000\n"
+"POT-Creation-Date: 2022-12-02 18:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4097,6 +4097,9 @@ msgid "The optional flag ``directed`` is removed."
 msgstr ""
 
 msgid "Before migration"
+msgstr ""
+
+msgid "The following query could be done:"
 msgstr ""
 
 msgid "Columns used are ``going`` and ``coming`` to represent the existence of an edge."
@@ -10942,13 +10945,31 @@ msgstr ""
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_maxCardinalityMatch.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_maxCardinalityMatch.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_maximumCardinalityMatching.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maximumCardinalityMatching.html>`__"
 msgstr ""
 
-msgid "pgr_maxCardinalityMatch"
+msgid "``pgr_maxCardinalityMatch``"
 msgstr ""
 
 msgid "``pgr_maxCardinalityMatch`` — Calculates a maximum cardinality matching in a graph."
 msgstr ""
 
-msgid "Deprecated signature"
+msgid "Version 4.0.0"
+msgstr ""
+
+msgid "Use ``going`` and ``coming`` on the inner query is no longer available."
+msgstr ""
+
+msgid "Deprecated signature is removed."
+msgstr ""
+
+msgid "Use ``cost`` and ``reverse_cost`` on the inner query."
+msgstr ""
+
+msgid "Results are ordered."
+msgstr ""
+
+msgid "New signature:"
+msgstr ""
+
+msgid "Deprecated signature:"
 msgstr ""
 
 msgid "``pgr_maxCardinalityMatch(text,boolean)``"
@@ -13015,6 +13036,15 @@ msgstr ""
 msgid "_pgr_dijkstra(text,text,boolean,boolean,boolean)"
 msgstr ""
 
+msgid "_pgr_maxcardinalitymatch(text,boolean)"
+msgstr ""
+
+msgid "_pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
+msgstr ""
+
+msgid "_pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
+msgstr ""
+
 msgid "Breaking changes"
 msgstr ""
 
@@ -13052,6 +13082,21 @@ msgid "pgr_tspeuclidean(text,bigint,bigint,integer)"
 msgstr ""
 
 msgid "New default parameter: max_cycles with default value `1`"
+msgstr ""
+
+msgid "Flow functions"
+msgstr ""
+
+msgid "pgr_maxcardinalitymatch"
+msgstr ""
+
+msgid "Deprecated signatures are removed"
+msgstr ""
+
+msgid "pgr_maxcardinalitymatch(text,boolean)"
+msgstr ""
+
+msgid "No longer accepting ``going`` and ``coming`` columns on inner query"
 msgstr ""
 
 msgid "pgRouting 3.5.0 Release Notes"
@@ -13178,9 +13223,6 @@ msgid "Unclassified"
 msgstr ""
 
 msgid "Official functions changes"
-msgstr ""
-
-msgid "Flow functions"
 msgstr ""
 
 msgid "``pgr_maxCardinalityMatch(text)``"
