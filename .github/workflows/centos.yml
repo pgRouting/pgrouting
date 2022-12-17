@@ -33,6 +33,7 @@ jobs:
 
       - name: Install
         run: |
+          cd build
           sudo make install
 
       - name: Test
