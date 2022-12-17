@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   build:
-    name: psql
+    name: centos-7-gcc-4.8.5
     runs-on:
       - self-hosted
       - centos-7 gcc-4.8.5
@@ -30,4 +30,10 @@ jobs:
         run: |
           cd build
           make -j 4
-          sudo make install
+          sudo make
+
+      - name: Test
+        run: |
+          sudo service postgresql start
+          sudo -u postgres createdb -p ${PGPORT}  ___pgr___test___
+          sudo -u postgres bash ./tools/testers/pg_prove_tests.sh postgres ${PGPORT}  Release
