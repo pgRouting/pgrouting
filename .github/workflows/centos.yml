@@ -34,6 +34,6 @@ jobs:
 
       - name: Test
         run: |
-          sudo service postgresql start
+          export PGPORT=5432
           sudo -u postgres createdb -p ${PGPORT}  ___pgr___test___
           sudo -u postgres bash ./tools/testers/pg_prove_tests.sh postgres ${PGPORT}  Release
