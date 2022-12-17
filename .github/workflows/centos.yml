@@ -4,8 +4,7 @@ name: Build for Centos
 # - 5 * 2 * 2 = 20 jobs are triggered
 # - So many jobs take too much time
 
-on:
-  workflow_dispatch:
+on: [push]
 
 permissions:
   contents: read
