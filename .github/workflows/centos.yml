@@ -1,0 +1,33 @@
+name: Build for Centos
+
+# manually triggered workflow
+# - 5 * 2 * 2 = 20 jobs are triggered
+# - So many jobs take too much time
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: psql
+    runs-on:
+      - self-hosted
+      - centos-7 gcc-4.8.5
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Configure for gcc
+        run: |
+          mkdir build
+          cd build
+          export PATH=${PATH}:/usr/pgsql-15/bin
+          cmake3 -DCMAKE_BUILD_TYPE=Release -DBOOST_ROOT:PATH="/opt/boost" ..
+
+      - name: Build
+        run: |
+          cd build
+          make -j 4
