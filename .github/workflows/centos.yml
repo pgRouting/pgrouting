@@ -41,7 +41,7 @@ jobs:
           export PGPORT=5432
           export PG_RUNNER_USER=`whoami`
           sudo -u postgres psql -p ${PGPORT} -c "DROP DATABASE IF EXISTS ___pgr___test___;"
-          sudo -u postgres psql -p ${PGPORT} -c "CREATE ROLE ${PG_RUNNER_USER} WITH LOGIN SUPERUSER;"
+          sudo -u postgres psql -p ${PGPORT} -c "CREATE ROLE ""${PG_RUNNER_USER}"" WITH LOGIN SUPERUSER;"
           psql -c "CREATE DATABASE ___pgr___test___;"
           bash ./tools/testers/pg_prove_tests.sh postgres ${PGPORT}  Release
           psql -c "DROP DATABASE IF EXISTS ___pgr___test___;"
