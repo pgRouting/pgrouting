@@ -39,6 +39,7 @@ jobs:
       - name: Test
         run: |
           export PGPORT=5432
+          sudo chmod 777 -R ./tools/testers/
           sudo -u postgres psql -p ${PGPORT} -c "DROP DATABASE IF EXISTS ___pgr___test___;"
           sudo -u postgres createdb -p ${PGPORT}  ___pgr___test___
           sudo -u postgres bash ./tools/testers/pg_prove_tests.sh postgres ${PGPORT}  Release
