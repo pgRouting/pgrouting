@@ -23,7 +23,7 @@ SELECT * FROM old_restrictions;
 /* --rest2 */
 SELECT * FROM restrictions;
 /* --rest3 */
-SELECT rid AS id, -- optional
+SELECT rid AS id,
   _pgr_array_reverse(
     array_prepend(target_id, string_to_array(via_path::text, ',')::BIGINT[])) AS path,
   to_cost AS cost
@@ -210,3 +210,20 @@ SELECT * FROM pgr_maxCardinalityMatch(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$
 );
 /* --maxcard3 */
+/* --dijkstra1 */
+SELECT * FROM pgr_dijkstra(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
+  6, 10);
+/* --dijkstra2 */
+SELECT * FROM pgr_dijkstra(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
+  6, ARRAY[3, 10]);
+/* --dijkstra3 */
+SELECT * FROM pgr_dijkstra(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
+  ARRAY[3, 6], 10);
+/* --dijkstra4 */
+SELECT seq, path_seq, node, edge, cost, agg_cost FROM pgr_dijkstra(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
+  6, 10);
+/* --dijkstra5 */

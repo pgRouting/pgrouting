@@ -38,8 +38,6 @@ SELECT * FROM pgr_Dijkstra(
   'SELECT * FROM (VALUES (6, 10), (6, 7), (12, 10)) AS combinations (source, target)');
 /* -- q9 */
 
--- Examples for :ref:`fig1-direct-Cost-Reverse`
--------------------------------------------------------------------------------
 
 /* -- q70 */
 SELECT * FROM pgr_dijkstra(
@@ -84,8 +82,6 @@ SELECT * FROM pgr_dijkstra(
 /* -- q80 */
 
 
--- Examples for :ref:`fig2-undirect-Cost-Reverse`
--------------------------------------------------------------------------------
 
 
 /* -- q90 */
@@ -139,8 +135,6 @@ SELECT * FROM pgr_dijkstra(
 /* -- q10 */
 
 
--- Examples for :ref:`fig3-direct-Cost`
--------------------------------------------------------------------------------
 
 
 /* -- q11 */
@@ -186,8 +180,6 @@ SELECT * FROM pgr_dijkstra(
 /* -- q12 */
 
 
--- Examples for :ref:`fig4-undirect-Cost`
--------------------------------------------------------------------------------
 
 /* -- q13 */
 SELECT * FROM pgr_dijkstra(
@@ -242,8 +234,6 @@ SELECT * FROM pgr_dijkstra(
 
 
 
--- Equivalences for :ref:`fig1-direct-Cost-Reverse`
--------------------------------------------------------------------------------
 
 /* -- q15 */
 SELECT * FROM pgr_dijkstra(
