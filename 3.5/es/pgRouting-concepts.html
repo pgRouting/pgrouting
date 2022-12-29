@@ -11,9 +11,6 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/translations.js"></script>
@@ -43,7 +40,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+        <a class="navbar-brand" href="index.html">
           pgRouting</a>
         <span class="navbar-text navbar-version pull-left"><b>v3.5.0-dev</b></span>
       </div>
@@ -100,21 +97,21 @@
 <li><a class="reference internal" href="#graphs">Grafos</a><ul>
 <li><a class="reference internal" href="#graph-definition">Definición de grafo</a></li>
 <li><a class="reference internal" href="#graph-with-cost">Grafo con <code class="docutils literal notranslate"><span class="pre">cost</span></code></a></li>
-<li><a class="reference internal" href="#graph-with-cost-and-reverse-cost">Graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></li>
+<li><a class="reference internal" href="#graph-with-cost-and-reverse-cost">Grafo con <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#graphs-without-geometries">Graphs without geometries</a><ul>
+<li><a class="reference internal" href="#graphs-without-geometries">Grafos sin geometrías</a><ul>
 <li><a class="reference internal" href="#wiki-example">Ejemplo de Wiki</a><ul>
-<li><a class="reference internal" href="#prepare-the-database">Prepare the database</a></li>
+<li><a class="reference internal" href="#prepare-the-database">Prepara la base de datos</a></li>
 <li><a class="reference internal" href="#create-a-table">Crear una tabla</a></li>
-<li><a class="reference internal" href="#insert-the-data">Insert the data</a></li>
-<li><a class="reference internal" href="#find-the-shortest-path">Find the shortest path</a></li>
+<li><a class="reference internal" href="#insert-the-data">Introduzca los datos</a></li>
+<li><a class="reference internal" href="#find-the-shortest-path">En cuentre el camino más corto</a></li>
 <li><a class="reference internal" href="#vertex-information">Información de vertices</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#graphs-with-geometries">Graphs with geometries</a><ul>
+<li><a class="reference internal" href="#graphs-with-geometries">Grafos con geometrías</a><ul>
 <li><a class="reference internal" href="#create-a-routing-database">Crear una Base de Datos de Ruteo</a></li>
 <li><a class="reference internal" href="#load-data">Cargar Datos</a></li>
 <li><a class="reference internal" href="#build-a-routing-topology">Construir una topología de ruteo</a></li>
@@ -242,14 +239,7 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgRouting-concepts.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgRouting-concepts.html">3.5</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgRouting-concepts.html">3.4</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgRouting-concepts.html">3.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgRouting-concepts.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgRouting-concepts.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgRouting-concepts.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgRouting-concepts.html">Última</a> <a class="reference external" href="https://docs.pgrouting.org/3.5/es/pgRouting-concepts.html">3.5</a>) <a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgRouting-concepts.html">3.4</a> <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgRouting-concepts.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgRouting-concepts.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgRouting-concepts.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgRouting-concepts.html">3.0</a></p></li>
 <li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgRouting-concepts.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgRouting-concepts.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgRouting-concepts.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/doc/src/tutorial/index.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/doc/src/tutorial/index.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/doc/src/tutorial/index.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/doc/src/tutorial/index.html">2.0</a></p></li>
 </ul>
 <section id="pgrouting-concepts">
@@ -258,8 +248,8 @@
 <nav class="contents local" id="contenido">
 <ul class="simple">
 <li><p><a class="reference internal" href="#graphs" id="id8">Grafos</a></p></li>
-<li><p><a class="reference internal" href="#graphs-without-geometries" id="id9">Graphs without geometries</a></p></li>
-<li><p><a class="reference internal" href="#graphs-with-geometries" id="id10">Graphs with geometries</a></p></li>
+<li><p><a class="reference internal" href="#graphs-without-geometries" id="id9">Grafos sin geometrías</a></p></li>
+<li><p><a class="reference internal" href="#graphs-with-geometries" id="id10">Grafos con geometrías</a></p></li>
 <li><p><a class="reference internal" href="#check-the-routing-topology" id="id11">Compruebe la Topología de Ruteo</a></p></li>
 <li><p><a class="reference internal" href="#function-s-structure" id="id12">Function’s structure</a></p></li>
 <li><p><a class="reference internal" href="#function-s-overloads" id="id13">Function’s overloads</a></p></li>
@@ -276,7 +266,7 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="#graph-definition" id="id19">Definición de grafo</a></p></li>
 <li><p><a class="reference internal" href="#graph-with-cost" id="id20">Grafo con <code class="docutils literal notranslate"><span class="pre">cost</span></code></a></p></li>
-<li><p><a class="reference internal" href="#graph-with-cost-and-reverse-cost" id="id21">Graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></p></li>
+<li><p><a class="reference internal" href="#graph-with-cost-and-reverse-cost" id="id21">Grafo con <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></p></li>
 </ul>
 </nav>
 <section id="graph-definition">
@@ -361,33 +351,31 @@
 </tr>
 </tbody>
 </table>
-<p>The decision of the graph to be <strong>directed</strong> or <strong>undirected</strong> is done when
-executing a pgRouting algorithm.</p>
+<p>La decisión del grafo de ser <strong>directed</strong> o <strong>undirected</strong> es resultado al ejecutar el algoritmo de pgRouting.</p>
 </section>
 <section id="graph-with-cost">
 <h3><a class="toc-backref" href="#id20" role="doc-backlink">Grafo con <code class="docutils literal notranslate"><span class="pre">cost</span></code></a><a class="headerlink" href="#graph-with-cost" title="Enlace permanente a este encabezado">¶</a></h3>
-<p>The weighted directed graph, <span class="math notranslate nohighlight">\(G_d(V,E)\)</span>:</p>
+<p>El grafo ponderado dirigido, <span class="math notranslate nohighlight">\(G_d(V,E)\)</span>:</p>
 <ul>
-<li><p>Graph data is obtained with a query</p>
+<li><p>Datos de l grafo se obtienen mediante una consulta</p>
 <p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">id,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost</span> <span class="pre">FROM</span> <span class="pre">edges</span></code></p>
 </li>
 <li><p>El conjunto de aristas <span class="math notranslate nohighlight">\(E\)</span></p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(E = \{(source_{id}, target_{id}, cost_{id}) \text{ cuando } cost_{id} \ge 0 \}\)</span></p></li>
-<li><p>Edges where <code class="docutils literal notranslate"><span class="pre">cost</span></code> is non negative are part of the graph.</p></li>
+<li><p>Aristas donde <code class="docutils literal notranslate"><span class="pre">cost</span></code> es no negativo son parte del grafo.</p></li>
 </ul>
 </li>
 <li><p>Conjunto de vértices <span class="math notranslate nohighlight">\(V\)</span></p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(V = \{source_{id} \cup target_{id}\}\)</span></p></li>
-<li><p>All vertices in <code class="docutils literal notranslate"><span class="pre">source</span></code> and <code class="docutils literal notranslate"><span class="pre">target</span></code> are part of the graph.</p></li>
+<li><p>Todos los vértices``source`` y <code class="docutils literal notranslate"><span class="pre">target</span></code> son parte del grafo.</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">Grafo dirigido</p>
-<p>In a directed graph the edge <span class="math notranslate nohighlight">\((source_{id}, target_{id}, cost_{id})\)</span> has
-directionality: <span class="math notranslate nohighlight">\(source_{id} \rightarrow target_{id}\)</span></p>
-<p>For the following data:</p>
+<p>En un grafo dirigido la arista <span class="math notranslate nohighlight">\((source_{id}, target_{id}, cost_{id})\)</span> tiene direccionalidad: <span class="math notranslate nohighlight">\(source_{id} \rightarrow target_{id}\)</span></p>
+<p>Para los siguientes datos:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="p">(</span><span class="n">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">))</span>
      <span class="n">AS</span> <span class="n">t</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">);</span>
@@ -399,21 +387,18 @@ directionality: <span class="math notranslate nohighlight">\(source_{id} \righta
 
 </pre></div>
 </div>
-<p>Edge <span class="math notranslate nohighlight">\(2\)</span> (<span class="math notranslate nohighlight">\(1 \rightarrow 3\)</span>) is not part of the graph.</p>
-<p>The data is representing the following graph:</p>
+<p>La arista <span class="math notranslate nohighlight">\(2\)</span> (<span class="math notranslate nohighlight">\(1 \rightarrow 3\)</span>) no es parte del grafo.</p>
+<p>Los datos se representan en el siguiente grafo:</p>
 <div class="graphviz"><img src="_images/graphviz-fea3ff0c3c30969d4fcc1a5452438952118b0036.png" alt="digraph G {
  1 -&gt; 2 [label=&quot;  1(5)&quot;];
  3;
 }" class="graphviz" /></div>
 <p class="rubric">Grafo no dirigido</p>
-<p>In an undirected graph the edge <span class="math notranslate nohighlight">\((source_{id}, target_{id}, cost_{id})\)</span>
-does not have directionality: <span class="math notranslate nohighlight">\(source_{id} \frac{\;\;\;\;\;}{}
-target_{id}\)</span></p>
+<p>En un grafo no dirigido la arista <span class="math notranslate nohighlight">\((source_{id}, target_{id}, cost_{id})\)</span> no tiene direccionalidad: <span class="math notranslate nohighlight">\(source_{id} \frac{\;\;\;\;\;}{} target_{id}\)</span></p>
 <ul class="simple">
-<li><p>In terms of a directed graph is like having two edges: <span class="math notranslate nohighlight">\(source_{id}
-\leftrightarrow target_{id}\)</span></p></li>
+<li><p>En términos de un grafo dirigido es como tener dos aristas: <span class="math notranslate nohighlight">\(source_{id} \leftrightarrow target_{id}\)</span></p></li>
 </ul>
-<p>For the following data:</p>
+<p>Para los siguientes datos:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="p">(</span><span class="n">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">))</span>
      <span class="n">AS</span> <span class="n">t</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">);</span>
@@ -425,49 +410,45 @@ target_{id}\)</span></p>
 
 </pre></div>
 </div>
-<p>Edge <span class="math notranslate nohighlight">\(2\)</span> (<span class="math notranslate nohighlight">\(1  \frac{\;\;\;\;\;}{} 3\)</span>) is not part of the graph.</p>
-<p>The data is representing the following graph:</p>
+<p>Arista <span class="math notranslate nohighlight">\(2\)</span> (<span class="math notranslate nohighlight">\(1  \frac{\;\;\;\;\;}{} 3\)</span>) no es parte del grafo.</p>
+<p>Los datos se representan en el siguiente grafo:</p>
 <div class="graphviz"><img src="_images/graphviz-15ad35e043b1329141358020162ef62da0f2d5e0.png" alt="graph G {
  1 -- 2 [label=&quot;  1(5)&quot;];
  3;
 }" class="graphviz" /></div>
 </section>
 <section id="graph-with-cost-and-reverse-cost">
-<h3><a class="toc-backref" href="#id21" role="doc-backlink">Graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a><a class="headerlink" href="#graph-with-cost-and-reverse-cost" title="Enlace permanente a este encabezado">¶</a></h3>
-<p>The weighted directed graph, <span class="math notranslate nohighlight">\(G_d(V,E)\)</span>, is defined by:</p>
+<h3><a class="toc-backref" href="#id21" role="doc-backlink">Grafo con <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a><a class="headerlink" href="#graph-with-cost-and-reverse-cost" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>El ponderado del grafo dirigido, <span class="math notranslate nohighlight">\(G_d(V,E)\)</span>, se define por:</p>
 <ul>
-<li><p>Graph data is obtained with a query</p>
+<li><p>Datos de l grafo se obtienen mediante una consulta</p>
 <p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">id,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">reverse_cost</span> <span class="pre">FROM</span> <span class="pre">edges</span></code></p>
 </li>
-<li><p>The set of edges <span class="math notranslate nohighlight">\(E\)</span>:</p>
+<li><p>El conjunto de aristas <span class="math notranslate nohighlight">\(E\)</span>:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(E = \begin{split} \begin{align}
 &amp; {\{(source_{id}, target_{id}, cost_{id}) \text{ when } cost_{id} &gt;=0 \}} \\
 &amp; \cup \\
 &amp; {\{(target_{id}, source_{id}, reverse\_cost_{id}) \text{ when } reverse\_cost_{id} &gt;=0 \}}
 \end{align} \end{split}\)</span></p></li>
-<li><p>Edges <span class="math notranslate nohighlight">\((source \rightarrow target)\)</span> where <code class="docutils literal notranslate"><span class="pre">cost</span></code> is non negative are
-part of the graph.</p></li>
-<li><p>Edges <span class="math notranslate nohighlight">\((target \rightarrow source)\)</span> where <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> is non
-negative are part of the graph.</p></li>
+<li><p>Aristas <span class="math notranslate nohighlight">\((source \rightarrow target)\)</span> done <code class="docutils literal notranslate"><span class="pre">cost</span></code> es no negativo son parte del grafo.</p></li>
+<li><p>Aristas <span class="math notranslate nohighlight">\((target \rightarrow source)\)</span> donde <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> es no negativo son parte del grafo.</p></li>
 </ul>
 </li>
-<li><p>The set of vertices  <span class="math notranslate nohighlight">\(V\)</span>:</p>
+<li><p>El conjunto de aristas <span class="math notranslate nohighlight">\(V\)</span>:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(V = \{source_{id} \cup target_{id}\}\)</span></p></li>
-<li><p>All vertices in <code class="docutils literal notranslate"><span class="pre">source</span></code> and <code class="docutils literal notranslate"><span class="pre">target</span></code> are part of the graph.</p></li>
+<li><p>Todos los vértices``source`` y <code class="docutils literal notranslate"><span class="pre">target</span></code> son parte del grafo.</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">Grafo dirigido</p>
-<p>In a directed graph both edges have directionality</p>
+<p>En un grafo dirigido ambas aristas tiene direccionalidad</p>
 <ul class="simple">
-<li><p>edge <span class="math notranslate nohighlight">\((source_{id}, target_{id}, cost_{id})\)</span> has directionality: <span class="math notranslate nohighlight">\(source_{id}
-\rightarrow target_{id}\)</span></p></li>
-<li><p>edge <span class="math notranslate nohighlight">\((target_{id}, source_{id}, reverse\_cost_{id})\)</span> has directionality:
-<span class="math notranslate nohighlight">\(target_{id} \rightarrow source_{id}\)</span></p></li>
+<li><p>arista <span class="math notranslate nohighlight">\((source_{id}, target_{id}, cost_{id})\)</span> tiene direccionalidad: <span class="math notranslate nohighlight">\(source_{id} \rightarrow target_{id}\)</span></p></li>
+<li><p>arista <span class="math notranslate nohighlight">\((target_{id}, source_{id}, reverse\_cost_{id})\)</span> tiene direccionalidad: <span class="math notranslate nohighlight">\(target_{id} \rightarrow source_{id}\)</span></p></li>
 </ul>
-<p>For the following data:</p>
+<p>Para los siguientes datos:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="p">(</span><span class="n">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
      <span class="n">AS</span> <span class="n">t</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">);</span>
@@ -480,12 +461,12 @@ negative are part of the graph.</p></li>
 
 </pre></div>
 </div>
-<p>Edges not part of the graph:</p>
+<p>Aristas no son parte del grafo:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(2\)</span> (<span class="math notranslate nohighlight">\(1 \rightarrow 3\)</span>)</p></li>
 <li><p><span class="math notranslate nohighlight">\(3\)</span> (<span class="math notranslate nohighlight">\(3 \rightarrow 2\)</span>)</p></li>
 </ul>
-<p>The data is representing the following graph:</p>
+<p>Los datos se representan en el siguiente grafo:</p>
 <div class="graphviz"><img src="_images/graphviz-30736f62adc8dbf11ad4115151b7af7577cda635.png" alt="digraph G {
  1 -&gt; 2 [label=&quot;  1(5)&quot;];
  2 -&gt; 1 [label=&quot;  1(2)&quot;];
@@ -493,20 +474,18 @@ negative are part of the graph.</p></li>
  2 -&gt; 3 [label=&quot;  3(7)&quot;];
 }" class="graphviz" /></div>
 <p class="rubric">Grafo no dirigido</p>
-<p>In a directed graph both edges do not have directionality</p>
+<p>En un grafo dirigido ambas aristas no tiene direccionalidad</p>
 <ul class="simple">
-<li><p>Edge <span class="math notranslate nohighlight">\((source_{id}, target_{id}, cost_{id})\)</span> is <span class="math notranslate nohighlight">\(source_{id}
-\frac{\;\;\;\;\;}{} target_{id}\)</span></p></li>
-<li><p>Edge <span class="math notranslate nohighlight">\((target_{id}, source_{id}, reverse\_cost_{id})\)</span> is
-<span class="math notranslate nohighlight">\(target_{id} \frac{\;\;\;\;\;}{} source_{id}\)</span></p></li>
-<li><p>In terms of a directed graph is like having four edges:</p>
+<li><p>Arista <span class="math notranslate nohighlight">\((source_{id}, target_{id}, cost_{id})\)</span> es <span class="math notranslate nohighlight">\(source_{id} \frac{\;\;\;\;\;}{} target_{id}\)</span></p></li>
+<li><p>Arista <span class="math notranslate nohighlight">\((target_{id}, source_{id}, reverse\_cost_{id})\)</span> es <span class="math notranslate nohighlight">\(target_{id} \frac{\;\;\;\;\;}{} source_{id}\)</span></p></li>
+<li><p>En términos de un grafo dirigido es como tener cuatro aristas:</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(source_i \leftrightarrow target_i\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(target_i \leftrightarrow source_i\)</span></p></li>
 </ul>
 </li>
 </ul>
-<p>For the following data:</p>
+<p>Para los siguientes datos:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="p">(</span><span class="n">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
      <span class="n">AS</span> <span class="n">t</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">);</span>
@@ -519,12 +498,12 @@ negative are part of the graph.</p></li>
 
 </pre></div>
 </div>
-<p>Edges not part of the graph:</p>
+<p>Aristas no son parte del grafo:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(2\)</span> (<span class="math notranslate nohighlight">\(1  \frac{\;\;\;\;\;}{} 3\)</span>)</p></li>
 <li><p><span class="math notranslate nohighlight">\(3\)</span> (<span class="math notranslate nohighlight">\(3  \frac{\;\;\;\;\;}{} 2\)</span>)</p></li>
 </ul>
-<p>The data is representing the following graph:</p>
+<p>Los datos se representan en el siguiente grafo:</p>
 <div class="graphviz"><img src="_images/graphviz-d3e0d812756609c1050c29940fd38b77a9a039cd.png" alt="graph G {
  1 -- 2 [label=&quot;  1(5)&quot;];
  2 -- 1 [label=&quot;  1(2)&quot;];
@@ -534,18 +513,16 @@ negative are part of the graph.</p></li>
 </section>
 </section>
 <section id="graphs-without-geometries">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">Graphs without geometries</a><a class="headerlink" href="#graphs-without-geometries" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>Personal relationships, genealogy, file dependency problems can be solved
-using pgRouting. Those problems, normally,  do not come with geometries associated
-with the graph.</p>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Grafos sin geometrías</a><a class="headerlink" href="#graphs-without-geometries" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Relaciones personales, genealogía, problemas de dependencia de archivos puede ser resueltos usando pgRouting. Esos problemas, normalmente, no vienen con las geometrías asociadas con el grafo.</p>
 <nav class="contents local" id="id2">
 <ul class="simple">
 <li><p><a class="reference internal" href="#wiki-example" id="id22">Ejemplo de Wiki</a></p>
 <ul>
-<li><p><a class="reference internal" href="#prepare-the-database" id="id23">Prepare the database</a></p></li>
+<li><p><a class="reference internal" href="#prepare-the-database" id="id23">Prepara la base de datos</a></p></li>
 <li><p><a class="reference internal" href="#create-a-table" id="id24">Crear una tabla</a></p></li>
-<li><p><a class="reference internal" href="#insert-the-data" id="id25">Insert the data</a></p></li>
-<li><p><a class="reference internal" href="#find-the-shortest-path" id="id26">Find the shortest path</a></p></li>
+<li><p><a class="reference internal" href="#insert-the-data" id="id25">Introduzca los datos</a></p></li>
+<li><p><a class="reference internal" href="#find-the-shortest-path" id="id26">En cuentre el camino más corto</a></p></li>
 <li><p><a class="reference internal" href="#vertex-information" id="id27">Información de vertices</a></p></li>
 </ul>
 </li>
@@ -553,21 +530,21 @@ with the graph.</p>
 </nav>
 <section id="wiki-example">
 <h3><a class="toc-backref" href="#id22" role="doc-backlink">Ejemplo de Wiki</a><a class="headerlink" href="#wiki-example" title="Enlace permanente a este encabezado">¶</a></h3>
-<p>Solve the example problem taken from <a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">wikipedia</a>):</p>
+<p>Resuelva el problema de ejemplo tomado de <a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">wikipedia</a>):</p>
 <figure class="align-default">
 <img alt="_images/Dijkstra_Animation.gif" src="_images/Dijkstra_Animation.gif" />
 </figure>
 <p>Donde:</p>
 <ul>
-<li><p>Problem is to find the shortest path from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(5\)</span>.</p></li>
-<li><p>Is an undirected graph.</p></li>
-<li><p>Although visually looks like to have geometries, the drawing is not to scale.</p>
+<li><p>Problema es encontrar el camino mas corto desde <span class="math notranslate nohighlight">\(1\)</span> a <span class="math notranslate nohighlight">\(5\)</span>.</p></li>
+<li><p>Es un grafo dirigido.</p></li>
+<li><p>Aunque visualmente se vea con geometrías, el dibujo no es a escala.</p>
 <ul class="simple">
-<li><p>No geometries associated to the vertices or edges</p></li>
+<li><p>Las geometrías no esta asociadas con los vértices o aristas</p></li>
 </ul>
 </li>
-<li><p>Has 6 vertices <span class="math notranslate nohighlight">\(\{1,2,3,4,5,6\}\)</span></p></li>
-<li><p>Has 9 edges:</p>
+<li><p>Tiene 6 vértices <span class="math notranslate nohighlight">\(\{1,2,3,4,5,6\}\)</span></p></li>
+<li><p>Tiene 9 aristas:</p>
 <p><span class="math notranslate nohighlight">\(\begin{split} \begin{align}
 E = &amp; \{(1,2,7), (1,3,9), (1,6,14), \\
 &amp; (2,3,10), (2,4,13), \\
@@ -576,7 +553,7 @@ E = &amp; \{(1,2,7), (1,3,9), (1,6,14), \\
 &amp; (5,6,9) \}
 \end{align} \end{split}\)</span></p>
 </li>
-<li><p>The graph can be represented in many ways for example:</p></li>
+<li><p>El grafo puede ser representados de varias maneras por ejemplo:</p></li>
 </ul>
 <div class="graphviz"><img src="_images/graphviz-f7be590ac01a366380dea45ade8a60068b4b9db9.png" alt="graph G {
  rankdir=&quot;LR&quot;;
@@ -593,8 +570,8 @@ E = &amp; \{(1,2,7), (1,3,9), (1,6,14), \\
  4 -- 5 [label=&quot;  (6)&quot;];
 }" class="graphviz" /></div>
 <section id="prepare-the-database">
-<h4><a class="toc-backref" href="#id23" role="doc-backlink">Prepare the database</a><a class="headerlink" href="#prepare-the-database" title="Enlace permanente a este encabezado">¶</a></h4>
-<p>Create a database for the example, access the database and install pgRouting:</p>
+<h4><a class="toc-backref" href="#id23" role="doc-backlink">Prepara la base de datos</a><a class="headerlink" href="#prepare-the-database" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>Crea una base de datos para el ejemplo, acceda a la base de datos e instala pgRouting:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ createdb wiki
 $ psql wiki
 wiki =# CREATE EXTENSION pgRouting CASCADE;
@@ -603,7 +580,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </section>
 <section id="create-a-table">
 <h4><a class="toc-backref" href="#id24" role="doc-backlink">Crear una tabla</a><a class="headerlink" href="#create-a-table" title="Enlace permanente a este encabezado">¶</a></h4>
-<p>The basic elements needed to perform basic routing on an undirected graph are:</p>
+<p>Los elementos básicos necesarios para realizar routing básico en un grafo no dirigido son:</p>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -639,7 +616,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
-<p>Using this table design for this example:</p>
+<p>Usando este diseño de tabla para este ejemplo:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">wiki</span> <span class="p">(</span>
   <span class="nb">id</span> <span class="n">SERIAL</span><span class="p">,</span>
   <span class="n">source</span> <span class="n">INTEGER</span><span class="p">,</span>
@@ -650,7 +627,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </div>
 </section>
 <section id="insert-the-data">
-<h4><a class="toc-backref" href="#id25" role="doc-backlink">Insert the data</a><a class="headerlink" href="#insert-the-data" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id25" role="doc-backlink">Introduzca los datos</a><a class="headerlink" href="#insert-the-data" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">wiki</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">)</span> <span class="n">VALUES</span>
 <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
 <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
@@ -662,8 +639,8 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </div>
 </section>
 <section id="find-the-shortest-path">
-<h4><a class="toc-backref" href="#id26" role="doc-backlink">Find the shortest path</a><a class="headerlink" href="#find-the-shortest-path" title="Enlace permanente a este encabezado">¶</a></h4>
-<p>To solve this example <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> is used:</p>
+<h4><a class="toc-backref" href="#id26" role="doc-backlink">En cuentre el camino más corto</a><a class="headerlink" href="#find-the-shortest-path" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>Para resolver el ejemplo se usa <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM wiki&#39;</span><span class="p">,</span>
   <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
@@ -677,8 +654,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 
 </pre></div>
 </div>
-<p>To go from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(5\)</span> the path goes thru the following vertices:
-<span class="math notranslate nohighlight">\(1 \rightarrow 3 \rightarrow 6 \rightarrow 5\)</span></p>
+<p>Para ir de <span class="math notranslate nohighlight">\(1\)</span> a <span class="math notranslate nohighlight">\(5\)</span> el camino que atraviesa los siguientes vértices: <span class="math notranslate nohighlight">\(1 \rightarrow 3 \rightarrow 6 \rightarrow 5\)</span></p>
 <div class="graphviz"><img src="_images/graphviz-5ad5eec8c89b5f62e851c73f0c5ed9e9286be10c.png" alt="graph G {
  rankdir=&quot;LR&quot;;
  1 [color=&quot;red&quot;];
@@ -696,7 +672,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </section>
 <section id="vertex-information">
 <h4><a class="toc-backref" href="#id27" role="doc-backlink">Información de vertices</a><a class="headerlink" href="#vertex-information" title="Enlace permanente a este encabezado">¶</a></h4>
-<p>To obtain the vertices information, use <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Propuesto</span></a></p>
+<p>Para obtener la información de los vértices, use <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Propuesto</span></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span>
 <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target FROM wiki&#39;</span><span class="p">);</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">in_edges</span> <span class="o">|</span> <span class="n">out_edges</span>
@@ -715,7 +691,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </section>
 </section>
 <section id="graphs-with-geometries">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">Graphs with geometries</a><a class="headerlink" href="#graphs-with-geometries" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Grafos con geometrías</a><a class="headerlink" href="#graphs-with-geometries" title="Enlace permanente a este encabezado">¶</a></h2>
 <nav class="contents local" id="id3">
 <ul class="simple">
 <li><p><a class="reference internal" href="#create-a-routing-database" id="id28">Crear una Base de Datos de Ruteo</a></p></li>
@@ -731,10 +707,9 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </nav>
 <section id="create-a-routing-database">
 <h3><a class="toc-backref" href="#id28" role="doc-backlink">Crear una Base de Datos de Ruteo</a><a class="headerlink" href="#create-a-routing-database" title="Enlace permanente a este encabezado">¶</a></h3>
-<p>The first step is to create a database and load pgRouting in the database.</p>
-<p>Typically create a database for each project.</p>
-<p>Once having the database to work in, load your data and build the routing
-application in that database.</p>
+<p>El primer paso para crear una base de datos y cargar pgRouting en la base de datos.</p>
+<p>Típicamente se crea una base de datos para cada proyecto.</p>
+<p>Una vez que se tenga una base de datos, cargue sus datos y construya la aplicación de routeo en esa base de datos.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">createdb</span> <span class="n">sampledata</span>
 <span class="n">psql</span> <span class="n">sampledata</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;CREATE EXTENSION pgrouting CASCADE&quot;</span>
 </pre></div>
@@ -742,15 +717,15 @@ application in that database.</p>
 </section>
 <section id="load-data">
 <h3><a class="toc-backref" href="#id29" role="doc-backlink">Cargar Datos</a><a class="headerlink" href="#load-data" title="Enlace permanente a este encabezado">¶</a></h3>
-<p>There are several ways to load your data into pgRouting.</p>
+<p>Hay varias maneras de cargar tus datos en pgRouting.</p>
 <ul class="simple">
-<li><p>Manually creating a database.</p>
+<li><p>Creando manualmente la base de datos.</p>
 <ul>
-<li><p><a class="reference internal" href="#graphs-without-geometries">Graphs without geometries</a></p></li>
-<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a>: a small graph used on the documentation examples</p></li>
+<li><p><a class="reference internal" href="#graphs-without-geometries">Grafos sin geometrías</a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a>: un grafo chico usado para ejemplos de documentación</p></li>
 </ul>
 </li>
-<li><p>Using <a class="reference external" href="https://workshop.pgrouting.org/latest/en/basic/data.html">osm2pgrouting</a></p></li>
+<li><p>Usando <a class="reference external" href="https://workshop.pgrouting.org/latest/en/basic/data.html">osm2pgrouting</a></p></li>
 </ul>
 <p>Existen varias herramientas de codigo abierto que pueden ayudar, como:</p>
 <dl class="field-list simple">
@@ -772,21 +747,20 @@ application in that database.</p>
 </dl>
 <p>Tener en cuenta que estas herramientas <strong>no</strong> importan los datos a una estructura compatible con pgRouting y cuando esto sucede, la topología necesita ser ajustada.</p>
 <ul class="simple">
-<li><p>Breakup a segments on each segment-segment intersection</p></li>
-<li><p>When missing, add columns and assign values to <code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>,
-<code class="docutils literal notranslate"><span class="pre">cost</span></code>, <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>.</p></li>
-<li><p>Connect a disconnected graph.</p></li>
-<li><p>Create the complete graph topology</p></li>
-<li><p>Create one or more graphs based on the application to be developed.</p>
+<li><p>Rompe en segmentos cada intersección segmento-segmento</p></li>
+<li><p>Cuando falte, agregue columnas y asigne valores a <code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">cost</span></code>, <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>.</p></li>
+<li><p>Conecte un grafo desconectado.</p></li>
+<li><p>Crea la topología de un grafo completo</p></li>
+<li><p>Crea uno o mas grafos según la aplicación que se desarrolla.</p>
 <ul>
-<li><p>Create a contracted graph for the high speed roads</p></li>
-<li><p>Create graphs per state/country</p></li>
+<li><p>Crea un grafo contraído para calles de alta velocidad</p></li>
+<li><p>Crear grafos por estado/país</p></li>
 </ul>
 </li>
 </ul>
-<p>In few words:</p>
+<p>En pocas palabras:</p>
 <blockquote>
-<div><p>Prepare the graph</p>
+<div><p>Prepara el grafo</p>
 </div></blockquote>
 <p>What and how to prepare the graph, will depend on the application and/or on the
 quality of the data and/or on how close the information is to have a topology
@@ -2782,8 +2756,8 @@ The optional parameters are named parameters and will have a default value.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.5.0-dev.<br/>
-      Actualizado por última vez en dic 19, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br/>
+      Actualizado por última vez en dic 29, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.0.0.<br/>
     </p>
   </div>
 </footer>

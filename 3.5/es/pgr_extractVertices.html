@@ -11,9 +11,6 @@
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/translations.js"></script>
@@ -43,7 +40,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+        <a class="navbar-brand" href="index.html">
           pgRouting</a>
         <span class="navbar-text navbar-version pull-left"><b>v3.5.0-dev</b></span>
       </div>
@@ -131,9 +128,9 @@
 <li><a class="reference internal" href="#checking-for-crossing-edges">Checking for crossing edges</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#graphs-without-geometries">Graphs without geometries</a><ul>
-<li><a class="reference internal" href="#insert-the-data">Insert the data</a></li>
-<li><a class="reference internal" href="#find-the-shortest-path">Find the shortest path</a></li>
+<li><a class="reference internal" href="#graphs-without-geometries">Grafos sin geometrías</a><ul>
+<li><a class="reference internal" href="#insert-the-data">Introduzca los datos</a></li>
+<li><a class="reference internal" href="#find-the-shortest-path">En cuentre el camino más corto</a></li>
 <li><a class="reference internal" href="#vertex-information">Información de vertices</a></li>
 </ul>
 </li>
@@ -187,14 +184,7 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_extractVertices.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_extractVertices.html">3.5</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_extractVertices.html">3.4</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_extractVertices.html">3.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_extractVertices.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_extractVertices.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_extractVertices.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_extractVertices.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.5/es/pgr_extractVertices.html">3.5</a>) <a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgr_extractVertices.html">3.4</a> <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_extractVertices.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_extractVertices.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_extractVertices.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_extractVertices.html">3.0</a></p></li>
 </ul>
 <section id="pgr-extractvertices-proposed">
 <h1>pgr_extractVertices – Propuesto<a class="headerlink" href="#pgr-extractvertices-proposed" title="Enlace permanente a este encabezado">¶</a></h1>
@@ -510,10 +500,10 @@
 <li><p><a class="reference internal" href="#checking-for-crossing-edges" id="id21">Checking for crossing edges</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#graphs-without-geometries" id="id22">Graphs without geometries</a></p>
+<li><p><a class="reference internal" href="#graphs-without-geometries" id="id22">Grafos sin geometrías</a></p>
 <ul>
-<li><p><a class="reference internal" href="#insert-the-data" id="id23">Insert the data</a></p></li>
-<li><p><a class="reference internal" href="#find-the-shortest-path" id="id24">Find the shortest path</a></p></li>
+<li><p><a class="reference internal" href="#insert-the-data" id="id23">Introduzca los datos</a></p></li>
+<li><p><a class="reference internal" href="#find-the-shortest-path" id="id24">En cuentre el camino más corto</a></p></li>
 <li><p><a class="reference internal" href="#vertex-information" id="id25">Información de vertices</a></p></li>
 </ul>
 </li>
@@ -889,8 +879,8 @@ view.</p>
 </section>
 </section>
 <section id="graphs-without-geometries">
-<h3><a class="toc-backref" href="#id22" role="doc-backlink">Graphs without geometries</a><a class="headerlink" href="#graphs-without-geometries" title="Enlace permanente a este encabezado">¶</a></h3>
-<p>Using this table design for this example:</p>
+<h3><a class="toc-backref" href="#id22" role="doc-backlink">Grafos sin geometrías</a><a class="headerlink" href="#graphs-without-geometries" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Usando este diseño de tabla para este ejemplo:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">wiki</span> <span class="p">(</span>
   <span class="nb">id</span> <span class="n">SERIAL</span><span class="p">,</span>
   <span class="n">source</span> <span class="n">INTEGER</span><span class="p">,</span>
@@ -900,7 +890,7 @@ view.</p>
 </pre></div>
 </div>
 <section id="insert-the-data">
-<h4><a class="toc-backref" href="#id23" role="doc-backlink">Insert the data</a><a class="headerlink" href="#insert-the-data" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id23" role="doc-backlink">Introduzca los datos</a><a class="headerlink" href="#insert-the-data" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">wiki</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">)</span> <span class="n">VALUES</span>
 <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
 <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
@@ -912,8 +902,8 @@ view.</p>
 </div>
 </section>
 <section id="find-the-shortest-path">
-<h4><a class="toc-backref" href="#id24" role="doc-backlink">Find the shortest path</a><a class="headerlink" href="#find-the-shortest-path" title="Enlace permanente a este encabezado">¶</a></h4>
-<p>To solve this example <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> is used:</p>
+<h4><a class="toc-backref" href="#id24" role="doc-backlink">En cuentre el camino más corto</a><a class="headerlink" href="#find-the-shortest-path" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>Para resolver el ejemplo se usa <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM wiki&#39;</span><span class="p">,</span>
   <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
@@ -927,8 +917,7 @@ view.</p>
 
 </pre></div>
 </div>
-<p>To go from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(5\)</span> the path goes thru the following vertices:
-<span class="math notranslate nohighlight">\(1 \rightarrow 3 \rightarrow 6 \rightarrow 5\)</span></p>
+<p>Para ir de <span class="math notranslate nohighlight">\(1\)</span> a <span class="math notranslate nohighlight">\(5\)</span> el camino que atraviesa los siguientes vértices: <span class="math notranslate nohighlight">\(1 \rightarrow 3 \rightarrow 6 \rightarrow 5\)</span></p>
 <div class="graphviz"><img src="_images/graphviz-7095ca58fc489e099e284f23a9e49787441fc104.png" alt="graph G {
  rankdir=&quot;LR&quot;;
  1 [color=&quot;red&quot;];
@@ -946,7 +935,7 @@ view.</p>
 </section>
 <section id="vertex-information">
 <h4><a class="toc-backref" href="#id25" role="doc-backlink">Información de vertices</a><a class="headerlink" href="#vertex-information" title="Enlace permanente a este encabezado">¶</a></h4>
-<p>To obtain the vertices information, use <a class="reference internal" href="#"><span class="doc">pgr_extractVertices – Propuesto</span></a></p>
+<p>Para obtener la información de los vértices, use <a class="reference internal" href="#"><span class="doc">pgr_extractVertices – Propuesto</span></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span>
 <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target FROM wiki&#39;</span><span class="p">);</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">in_edges</span> <span class="o">|</span> <span class="n">out_edges</span>
@@ -991,8 +980,8 @@ view.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.5.0-dev.<br/>
-      Actualizado por última vez en dic 19, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br/>
+      Actualizado por última vez en dic 29, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.0.0.<br/>
     </p>
   </div>
 </footer>
