@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.5.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-27 18:44+0000\n"
+"POT-Creation-Date: 2022-12-29 21:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3025,7 +3025,7 @@ msgstr ""
 msgid "Case 3: Source and/or target belong to a vertex."
 msgstr ""
 
-msgid "Using the `Edges that belong to the contracted graph.`_ on lines 10 to 19."
+msgid "Using the `Edges that belong to the contracted graph.`_ on lines 11 to 20."
 msgstr ""
 
 msgid "Case 1"
@@ -3055,10 +3055,10 @@ msgstr ""
 msgid "Refining the above function to include nodes that belong to an edge."
 msgstr ""
 
-msgid "The vertices that need to be expanded are calculated on lines 10 to 16."
+msgid "The vertices that need to be expanded are calculated on lines 11 to 17."
 msgstr ""
 
-msgid "Adding to the contracted graph that additional section on lines 25 to 27."
+msgid "Adding to the contracted graph that additional section on lines 26 to 28."
 msgstr ""
 
 msgid "When source and/or target belong to an edge subgraph, now, a path is found."
@@ -3070,7 +3070,7 @@ msgstr ""
 msgid "In this case, the contracted graph do not have an edge connecting with node :math:`7`."
 msgstr ""
 
-msgid "The vertices that need to be expanded are calculated on lines 18 to 23."
+msgid "The vertices that need to be expanded are calculated on lines 19 to 24."
 msgstr ""
 
 msgid "Adding to the contracted graph that additional section on lines 38 to 40."
@@ -4069,7 +4069,79 @@ msgstr ""
 msgid "All deprecated functions will be removed on next mayor version 4.0.0"
 msgstr ""
 
+msgid "Migration of ``pgr_dijkstra``"
+msgstr ""
+
+msgid "Starting from `v3.5.0 <https://docs.pgrouting.org/3.5/en/migration.html>`__"
+msgstr ""
+
+msgid "Signatures to be migrated:"
+msgstr ""
+
+msgid "``pgr_dijkstra`` (`One to One`)"
+msgstr ""
+
+msgid "``pgr_dijkstra`` (`One to Many`)"
+msgstr ""
+
+msgid "``pgr_dijkstra`` (`Many to One`)"
+msgstr ""
+
+msgid "Before Migration"
+msgstr ""
+
+msgid "Output columns are |old-generic-result|"
+msgstr ""
+
+msgid "Depending on the overload used the columns ``start_vid`` and ``end_vid`` might be missing:"
+msgstr ""
+
+msgid "``pgr_dijkstra`` (`One to One`) does not have ``start_vid`` and ``end_vid``."
+msgstr ""
+
+msgid "``pgr_dijkstra`` (`One to Many`) does not have ``start_vid``."
+msgstr ""
+
+msgid "``pgr_dijkstra`` (`Many to One`) does not have ``end_vid``."
+msgstr ""
+
+msgid "Migration"
+msgstr ""
+
+msgid "Be aware of the existance of the additional columns."
+msgstr ""
+
+msgid "In ``pgr_dijkstra`` (`One to One`)"
+msgstr ""
+
+msgid "``start_vid`` contains the **start vid** parameter value."
+msgstr ""
+
+msgid "``end_vid`` contains the **end vid** parameter value."
+msgstr ""
+
+msgid "In ``pgr_dijkstra`` (`One to Many`)"
+msgstr ""
+
+msgid "In ``pgr_dijkstra`` (`Many to One`)"
+msgstr ""
+
+msgid "If needed filter out the added columns, for example:"
+msgstr ""
+
+msgid "If needed add the new columns, for example:"
+msgstr ""
+
+msgid "In `v3.0 <https://docs.pgrouting.org/3.0/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph>`__ the function ``my_dijkstra`` uses ``pgr_dijkstra``."
+msgstr ""
+
+msgid "Starting from `v3.5 <https://docs.pgrouting.org/3.5/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph>`__ the function ``my_dijkstra`` returns the new additional columns of ``pgr_dijkstra``."
+msgstr ""
+
 msgid "Migration of ``pgr_maxCardinalityMatch``"
+msgstr ""
+
+msgid "Starting from `v3.4.0 <https://docs.pgrouting.org/3.4/en/migration.html>`__"
 msgstr ""
 
 msgid "Signature to be migrated:"
@@ -4109,9 +4181,6 @@ msgid "The flag ``directed`` is ignored."
 msgstr ""
 
 msgid "Regardless of it's value it gives the result considering the graph as **undirected**."
-msgstr ""
-
-msgid "Migration"
 msgstr ""
 
 msgid "Use the columns ``cost`` and ``reverse_cost`` to represent the existence of an edge."
@@ -8773,6 +8842,21 @@ msgstr ""
 msgid "``pgr_dijkstra`` — Shortest path(s) using Dijkstra algorithm."
 msgstr ""
 
+msgid "Version 3.5.0"
+msgstr ""
+
+msgid "Standarizing output columns to |short-generic-result|"
+msgstr ""
+
+msgid "``pgr_dijkstra`` (`One to One`_) added `start_vid` and `end_vid` columns."
+msgstr ""
+
+msgid "``pgr_dijkstra`` (`One to Many`_) added `end_vid` column."
+msgstr ""
+
+msgid "``pgr_dijkstra`` (`Many to One`_) added `start_vid` column."
+msgstr ""
+
 msgid "Version 3.1.0"
 msgstr ""
 
@@ -8816,6 +8900,12 @@ msgid "pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids** , [``directed``])
 msgstr ""
 
 msgid "pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_ , [``directed``])"
+msgstr ""
+
+msgid "Breaking change on 3.5.0"
+msgstr ""
+
+msgid "Read the :doc:`migration` about how to migrate from the old result columns to the new result columns."
 msgstr ""
 
 msgid "From vertex :math:`6` to vertices :math:`\\{10, 17\\}` on a **directed**"
@@ -10639,7 +10729,7 @@ msgstr ""
 msgid "`Wikipedia: dominator tree <https://en.wikipedia.org/wiki/Dominator_(graph_theory)>`__"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_lineGraph.html>`__ (`3.5 <https://docs.pgrouting.org/3.5/en/pgr_lineGraph.html>`__) `3.4 <https://docs.pgrouting.org/3.4/en/pgr_lineGraph.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_lineGraph.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_lineGraph.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_lineGraph.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_lineGraph.html>`__"
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_lineGraph.html>`__ (`3.5 <https://docs.pgrouting.org/3.5/en/pgr_lineGraph.html>`__) `3.4 <https://docs.pgrouting.org/3.4/en/pgr_lineGraph.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_lineGraph.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_lineGraph.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_lineGraph.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_lineGraph.html>`__"
 msgstr ""
 
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_lineGraph.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_lineGraph.html>`__"
@@ -10699,7 +10789,7 @@ msgstr ""
 msgid "https://en.wikipedia.org/wiki/Line_graph"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_lineGraphFull.html>`__ (`3.5 <https://docs.pgrouting.org/3.5/en/pgr_lineGraphFull.html>`__) `3.4 <https://docs.pgrouting.org/3.4/en/pgr_lineGraphFull.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_lineGraphFull.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_lineGraphFull.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_lineGraphFull.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_lineGraphFull.html>`__"
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_lineGraphFull.html>`__ (`3.5 <https://docs.pgrouting.org/3.5/en/pgr_lineGraphFull.html>`__) `3.4 <https://docs.pgrouting.org/3.4/en/pgr_lineGraphFull.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_lineGraphFull.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_lineGraphFull.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_lineGraphFull.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_lineGraphFull.html>`__"
 msgstr ""
 
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_lineGraphFull.html>`__"
@@ -12988,7 +13078,22 @@ msgstr ""
 msgid "pgRouting 3.5.0 Release Notes"
 msgstr ""
 
-msgid "No Changes Yet"
+msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.5.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.0%22>`_"
+msgstr ""
+
+msgid "Official functions changes"
+msgstr ""
+
+msgid "Dijkstra"
+msgstr ""
+
+msgid "``pgr_dijkstra`` (`One to One`) added ``start_vid`` and ``end_vid`` columns."
+msgstr ""
+
+msgid "``pgr_dijkstra`` (`One to Many`) added ``end_vid`` column."
+msgstr ""
+
+msgid "``pgr_dijkstra`` (`Many to One`) added ``start_vid`` column."
 msgstr ""
 
 msgid "pgRouting 3.4.2 Release Notes"
@@ -13106,9 +13211,6 @@ msgid "``pgr_cuthillMckeeOrdering``"
 msgstr ""
 
 msgid "Unclassified"
-msgstr ""
-
-msgid "Official functions changes"
 msgstr ""
 
 msgid "Flow functions"
@@ -13235,9 +13337,6 @@ msgid "pgr_edgeColoring"
 msgstr ""
 
 msgid "Experimental promoted to Proposed"
-msgstr ""
-
-msgid "Dijkstra"
 msgstr ""
 
 msgid "pgr_dijkstraNear"
