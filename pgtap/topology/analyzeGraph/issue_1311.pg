@@ -51,4 +51,4 @@ ALTER TABLE edges2 ALTER COLUMN target SET DATA TYPE INTEGER;
 SELECT is(pgr_analyzegraph('edges2', 0.000001), 'OK', '1');
 
 SELECT finish();
-
+ROLLBACK;

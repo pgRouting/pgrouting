@@ -161,4 +161,5 @@ SELECT set_eq('wikiSample1', 'wikiresult', 'WIKI: pgr_EdmondsKarp');
 SELECT set_eq('wikiSample2', 'wikiresult', 'WIKI: pgr_BoykovKolmogorov');
 SELECT set_eq('wikiSample3', 'wikiresult', 'WIKI: pgr_PushRelabel');
 
+SELECT finish();
 ROLLBACK;

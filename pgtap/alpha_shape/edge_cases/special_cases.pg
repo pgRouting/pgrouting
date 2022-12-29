@@ -17,6 +17,8 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
+BEGIN;
+
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(2);
 
@@ -51,3 +53,4 @@ SELECT CASE WHEN _pgr_versionless((SELECT boost from pgr_full_version()), '1.54.
     END;
 
 SELECT finish();
+ROLLBACK;

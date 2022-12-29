@@ -125,3 +125,4 @@ FROM (VALUES
 SELECT set_eq('q6', 'sol6');
 
 SELECT finish();
+ROLLBACK;

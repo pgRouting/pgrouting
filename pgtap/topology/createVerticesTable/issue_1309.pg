@@ -53,4 +53,4 @@ SELECT is(pgr_createVerticesTable('edges2'), 'OK', '1');
 DROP TABLE IF EXISTS public.edges2_vertices_pgr;
 
 SELECT finish();
-
+ROLLBACK;

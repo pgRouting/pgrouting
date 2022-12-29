@@ -121,4 +121,5 @@ SELECT set_eq('q5', 'sol_2_1');
 
 
 SELECT finish();
+ROLLBACK;
 
