@@ -65,7 +65,7 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-          boost_minor: [56, 68, 75, 80]
+          boost_minor: [56, 68, 75]
 
     steps:
       - uses: actions/checkout@v3
