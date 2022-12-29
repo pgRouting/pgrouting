@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-27 18:44+0000\n"
-"PO-Revision-Date: 2022-10-04 18:19+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"PO-Revision-Date: 2022-12-28 22:48+0000\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
 "Language: es\n"
@@ -5928,13 +5928,13 @@ msgid ":doc:`pgr_dijkstraVia`:"
 msgstr ":doc:`pgr_dijkstraVia`:"
 
 msgid "``id1`` is the path identifier"
-msgstr ""
+msgstr "``id1`` es el identificador de camino"
 
 msgid "``id2`` is the node"
-msgstr ""
+msgstr "``id2`` es el nodo"
 
 msgid "``id3`` is the edge"
-msgstr ""
+msgstr "``id3`` es la arista"
 
 msgid "Migrating ``pgr_trspViaVertices`` using ``pgr_trspVia``"
 msgstr "Migrando ``pgr_trspViaVertices`` usando ``pgr_trspVia``"
@@ -6137,15 +6137,17 @@ msgid ""
 "The decision of the graph to be **directed** or **undirected** is done when "
 "executing a pgRouting algorithm."
 msgstr ""
+"La decisión del grafo de ser **directed** o **undirected** es resultado al "
+"ejecutar el algoritmo de pgRouting."
 
 msgid "Graph with ``cost``"
 msgstr "Grafo con ``cost``"
 
 msgid "The weighted directed graph, :math:`G_d(V,E)`:"
-msgstr ""
+msgstr "El grafo ponderado dirigido, :math:`G_d(V,E)`:"
 
 msgid "Graph data is obtained with a query"
-msgstr ""
+msgstr "Datos de l grafo se obtienen mediante una consulta"
 
 msgid "``SELECT id, source, target, cost FROM edges``"
 msgstr "``SELECT id, source, target, cost FROM edges``"
@@ -6158,55 +6160,64 @@ msgstr ""
 "cost_{id} \\ge 0 \\}`"
 
 msgid "Edges where ``cost`` is non negative are part of the graph."
-msgstr ""
+msgstr "Aristas donde ``cost`` es no negativo son parte del grafo."
 
 msgid ":math:`V = \\{source_{id} \\cup target_{id}\\}`"
 msgstr ":math:`V = \\{source_{id} \\cup target_{id}\\}`"
 
 msgid "All vertices in ``source`` and ``target`` are part of the graph."
-msgstr ""
+msgstr "Todos los vértices``source`` y ``target`` son parte del grafo."
 
 msgid ""
 "In a directed graph the edge :math:`(source_{id}, target_{id}, cost_{id})` "
 "has directionality: :math:`source_{id} \\rightarrow target_{id}`"
 msgstr ""
+"En un grafo dirigido la arista :math:`(source_{id}, target_{id}, cost_{id})` "
+"tiene direccionalidad: :math:`source_{id} \\rightarrow target_{id}`"
 
 msgid "For the following data:"
-msgstr ""
+msgstr "Para los siguientes datos:"
 
 msgid "Edge :math:`2` (:math:`1 \\rightarrow 3`) is not part of the graph."
-msgstr ""
+msgstr "La arista :math:`2` (:math:`1 \\rightarrow 3`) no es parte del grafo."
 
 msgid "The data is representing the following graph:"
-msgstr ""
+msgstr "Los datos se representan en el siguiente grafo:"
 
 msgid ""
 "In an undirected graph the edge :math:`(source_{id}, target_{id}, "
 "cost_{id})` does not have directionality: :math:`source_{id} \\frac{\\;\\;\\;"
 "\\;\\;}{} target_{id}`"
 msgstr ""
+"En un grafo no dirigido la arista :math:`(source_{id}, target_{id}, "
+"cost_{id})` no tiene direccionalidad: :math:`source_{id} \\frac{\\;\\;\\;\\;"
+"\\;}{} target_{id}`"
 
 msgid ""
 "In terms of a directed graph is like having two edges: :math:`source_{id} "
 "\\leftrightarrow target_{id}`"
 msgstr ""
+"En términos de un grafo dirigido es como tener dos aristas: "
+":math:`source_{id} \\leftrightarrow target_{id}`"
 
 msgid ""
 "Edge :math:`2` (:math:`1  \\frac{\\;\\;\\;\\;\\;}{} 3`) is not part of the "
 "graph."
 msgstr ""
+"Arista :math:`2` (:math:`1  \\frac{\\;\\;\\;\\;\\;}{} 3`) no es parte del "
+"grafo."
 
 msgid "Graph with ``cost`` and ``reverse_cost``"
-msgstr ""
+msgstr "Grafo con ``cost`` y ``reverse_cost``"
 
 msgid "The weighted directed graph, :math:`G_d(V,E)`, is defined by:"
-msgstr ""
+msgstr "El ponderado del grafo dirigido, :math:`G_d(V,E)`, se define por:"
 
 msgid "``SELECT id, source, target, cost, reverse_cost FROM edges``"
-msgstr ""
+msgstr "``SELECT id, source, target, cost, reverse_cost FROM edges``"
 
 msgid "The set of edges :math:`E`:"
-msgstr ""
+msgstr "El conjunto de aristas :math:`E`:"
 
 msgid ""
 ":math:`E = \\begin{split} \\begin{align} & {\\{(source_{id}, target_{id}, "
@@ -6214,35 +6225,47 @@ msgid ""
 "{\\{(target_{id}, source_{id}, reverse\\_cost_{id}) \\text{ when } reverse"
 "\\_cost_{id} >=0 \\}} \\end{align} \\end{split}`"
 msgstr ""
+":math:`E = \\begin{split} \\begin{align} & {\\{(source_{id}, target_{id}, "
+"cost_{id}) \\text{ when } cost_{id} >=0 \\}} \\\\ & \\cup \\\\ & {\\"
+"{(target_{id}, source_{id}, reverse\\_cost_{id}) \\text{ when } "
+"reverse\\_cost_{id} >=0 \\}} \\end{align} \\end{split}`"
 
 msgid ""
 "Edges :math:`(source \\rightarrow target)` where ``cost`` is non negative "
 "are part of the graph."
 msgstr ""
+"Aristas :math:`(source \\rightarrow target)` done ``cost`` es no negativo "
+"son parte del grafo."
 
 msgid ""
 "Edges :math:`(target \\rightarrow source)` where ``reverse_cost`` is non "
 "negative are part of the graph."
 msgstr ""
+"Aristas :math:`(target \\rightarrow source)` donde ``reverse_cost`` es no "
+"negativo son parte del grafo."
 
 msgid "The set of vertices  :math:`V`:"
-msgstr ""
+msgstr "El conjunto de aristas :math:`V`:"
 
 msgid "In a directed graph both edges have directionality"
-msgstr ""
+msgstr "En un grafo dirigido ambas aristas tiene direccionalidad"
 
 msgid ""
 "edge :math:`(source_{id}, target_{id}, cost_{id})` has directionality: :math:"
 "`source_{id} \\rightarrow target_{id}`"
 msgstr ""
+"arista :math:`(source_{id}, target_{id}, cost_{id})` tiene direccionalidad: "
+":math:`source_{id} \\rightarrow target_{id}`"
 
 msgid ""
 "edge :math:`(target_{id}, source_{id}, reverse\\_cost_{id})` has "
 "directionality: :math:`target_{id} \\rightarrow source_{id}`"
 msgstr ""
+"arista :math:`(target_{id}, source_{id}, reverse\\_cost_{id})` tiene "
+"direccionalidad: :math:`target_{id} \\rightarrow source_{id}`"
 
 msgid "Edges not part of the graph:"
-msgstr ""
+msgstr "Aristas no son parte del grafo:"
 
 msgid ":math:`2` (:math:`1  \\rightarrow 3`)"
 msgstr ":math:`2` (:math:`1 \\rightarrow 3`)"
@@ -6251,41 +6274,48 @@ msgid ":math:`3` (:math:`3  \\rightarrow 2`)"
 msgstr ":math:`3` (:math:`3 \\rightarrow 2`)"
 
 msgid "In a directed graph both edges do not have directionality"
-msgstr ""
+msgstr "En un grafo dirigido ambas aristas no tiene direccionalidad"
 
 msgid ""
 "Edge :math:`(source_{id}, target_{id}, cost_{id})` is :math:`source_{id} "
 "\\frac{\\;\\;\\;\\;\\;}{} target_{id}`"
 msgstr ""
+"Arista :math:`(source_{id}, target_{id}, cost_{id})` es :math:`source_{id} "
+"\\frac{\\;\\;\\;\\;\\;}{} target_{id}`"
 
 msgid ""
 "Edge :math:`(target_{id}, source_{id}, reverse\\_cost_{id})` is :math:"
 "`target_{id} \\frac{\\;\\;\\;\\;\\;}{} source_{id}`"
 msgstr ""
+"Arista :math:`(target_{id}, source_{id}, reverse\\_cost_{id})` es "
+":math:`target_{id} \\frac{\\;\\;\\;\\;\\;}{} source_{id}`"
 
 msgid "In terms of a directed graph is like having four edges:"
-msgstr ""
+msgstr "En términos de un grafo dirigido es como tener cuatro aristas:"
 
 msgid ":math:`source_i \\leftrightarrow target_i`"
-msgstr ""
+msgstr ":math:`source_i \\leftrightarrow target_i`"
 
 msgid ":math:`target_i \\leftrightarrow source_i`"
-msgstr ""
+msgstr ":math:`target_i \\leftrightarrow source_i`"
 
 msgid ":math:`2` (:math:`1  \\frac{\\;\\;\\;\\;\\;}{} 3`)"
-msgstr ""
+msgstr ":math:`2` (:math:`1  \\frac{\\;\\;\\;\\;\\;}{} 3`)"
 
 msgid ":math:`3` (:math:`3  \\frac{\\;\\;\\;\\;\\;}{} 2`)"
-msgstr ""
+msgstr ":math:`3` (:math:`3  \\frac{\\;\\;\\;\\;\\;}{} 2`)"
 
 msgid "Graphs without geometries"
-msgstr ""
+msgstr "Grafos sin geometrías"
 
 msgid ""
 "Personal relationships, genealogy, file dependency problems can be solved "
 "using pgRouting. Those problems, normally,  do not come with geometries "
 "associated with the graph."
 msgstr ""
+"Relaciones personales, genealogía, problemas de dependencia de archivos "
+"puede ser resueltos usando pgRouting. Esos problemas, normalmente, no vienen "
+"con las geometrías asociadas con el grafo."
 
 msgid "Wiki example"
 msgstr "Ejemplo de Wiki"
@@ -6294,42 +6324,49 @@ msgid ""
 "Solve the example problem taken from `wikipedia <https://en.wikipedia.org/"
 "wiki/Dijkstra%27s_algorithm>`__):"
 msgstr ""
+"Resuelva el problema de ejemplo tomado de `wikipedia <https://en.wikipedia."
+"org/wiki/Dijkstra%27s_algorithm>`__):"
 
 msgid "Problem is to find the shortest path from :math:`1` to :math:`5`."
-msgstr ""
+msgstr "Problema es encontrar el camino mas corto desde :math:`1` a :math:`5`."
 
 msgid "Is an undirected graph."
-msgstr ""
+msgstr "Es un grafo dirigido."
 
 msgid ""
 "Although visually looks like to have geometries, the drawing is not to scale."
-msgstr ""
+msgstr "Aunque visualmente se vea con geometrías, el dibujo no es a escala."
 
 msgid "No geometries associated to the vertices or edges"
-msgstr ""
+msgstr "Las geometrías no esta asociadas con los vértices o aristas"
 
 msgid "Has 6 vertices :math:`\\{1,2,3,4,5,6\\}`"
-msgstr ""
+msgstr "Tiene 6 vértices :math:`\\{1,2,3,4,5,6\\}`"
 
 msgid "Has 9 edges:"
-msgstr ""
+msgstr "Tiene 9 aristas:"
 
 msgid ""
 ":math:`\\begin{split} \\begin{align} E = & \\{(1,2,7), (1,3,9), (1,6,14), \\"
 "\\ & (2,3,10), (2,4,13), \\\\ & (3,4,11), (3,6,2), \\\\ & (4,5,6), \\\\ & "
 "(5,6,9) \\} \\end{align} \\end{split}`"
 msgstr ""
+":math:`\\begin{split} \\begin{align} E = & \\{(1,2,7), (1,3,9), (1,6,14), \\"
+"\\ & (2,3,10), (2,4,13), \\\\ & (3,4,11), (3,6,2), \\\\ & (4,5,6), \\\\ & "
+"(5,6,9) \\} \\end{align} \\end{split}`"
 
 msgid "The graph can be represented in many ways for example:"
-msgstr ""
+msgstr "El grafo puede ser representados de varias maneras por ejemplo:"
 
 msgid "Prepare the database"
-msgstr ""
+msgstr "Prepara la base de datos"
 
 msgid ""
 "Create a database for the example, access the database and install "
 "pgRouting: ::"
 msgstr ""
+"Crea una base de datos para el ejemplo, acceda a la base de datos e instala "
+"pgRouting: ::"
 
 msgid "Create a table"
 msgstr "Crear una tabla"
@@ -6338,35 +6375,40 @@ msgid ""
 "The basic elements needed to perform basic routing on an undirected graph "
 "are:"
 msgstr ""
+"Los elementos básicos necesarios para realizar routing básico en un grafo no "
+"dirigido son:"
 
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 msgid "Using this table design for this example:"
-msgstr ""
+msgstr "Usando este diseño de tabla para este ejemplo:"
 
 msgid "Insert the data"
-msgstr ""
+msgstr "Introduzca los datos"
 
 msgid "Find the shortest path"
-msgstr ""
+msgstr "En cuentre el camino más corto"
 
 msgid "To solve this example :doc:`pgr_dijkstra` is used:"
-msgstr ""
+msgstr "Para resolver el ejemplo :doc:`pgr_dijkstra`se usa:"
 
 msgid ""
 "To go from :math:`1` to :math:`5` the path goes thru the following "
 "vertices: :math:`1 \\rightarrow 3 \\rightarrow 6 \\rightarrow 5`"
 msgstr ""
+"Para ir de :math:`1` a :math:`5` el camino que atraviesa los siguientes "
+"vértices: :math:`1 \\rightarrow 3 \\rightarrow 6 \\rightarrow 5`"
 
 msgid "Vertex information"
 msgstr "Información de vertices"
 
 msgid "To obtain the vertices information, use :doc:`pgr_extractVertices`"
 msgstr ""
+"Para obtener la información de los vértices, use :doc:`pgr_extractVertices`"
 
 msgid "Graphs with geometries"
-msgstr ""
+msgstr "Grafos con geometrías"
 
 msgid "Create a routing Database"
 msgstr "Crear una Base de Datos de Ruteo"
@@ -6374,34 +6416,41 @@ msgstr "Crear una Base de Datos de Ruteo"
 msgid ""
 "The first step is to create a database and load pgRouting in the database."
 msgstr ""
+"El primer paso para crear una base de datos y cargar pgRouting en la base de "
+"datos."
 
 msgid "Typically create a database for each project."
-msgstr ""
+msgstr "Típicamente se crea una base de datos para cada proyecto."
 
 msgid ""
 "Once having the database to work in, load your data and build the routing "
 "application in that database."
 msgstr ""
+"Una vez que se tenga una base de datos, cargue sus datos y construya la "
+"aplicación de routeo en esa base de datos."
 
 msgid "Load Data"
 msgstr "Cargar Datos"
 
 msgid "There are several ways to load your data into pgRouting."
-msgstr ""
+msgstr "Hay varias maneras de cargar tus datos en pgRouting."
 
 msgid "Manually creating a database."
-msgstr ""
+msgstr "Creando manualmente la base de datos."
 
+#, fuzzy
 msgid "`Graphs without geometries`_"
-msgstr ""
+msgstr "`Graphs without geometries`_"
 
 msgid ":doc:`sampledata`: a small graph used on the documentation examples"
-msgstr ""
+msgstr ":doc:`sampledata`: un grafo chico usado para ejemplos de documentación"
 
 msgid ""
 "Using `osm2pgrouting <https://workshop.pgrouting.org/latest/en/basic/data."
 "html>`__"
 msgstr ""
+"Usando `osm2pgrouting <https://workshop.pgrouting.org/latest/en/basic/data."
+"html>`__"
 
 msgid "There are various open source tools that can help, like:"
 msgstr "Existen varias herramientas de codigo abierto que pueden ayudar, como:"
@@ -6434,33 +6483,35 @@ msgstr ""
 "necesita ser ajustada."
 
 msgid "Breakup a segments on each segment-segment intersection"
-msgstr ""
+msgstr "Rompe en segmentos cada intersección segmento-segmento"
 
 msgid ""
 "When missing, add columns and assign values to ``source``, ``target``, "
 "``cost``, ``reverse_cost``."
 msgstr ""
+"Cuando falte, agregue columnas y asigne valores a ``source``, ``target``, "
+"``cost``, ``reverse_cost``."
 
 msgid "Connect a disconnected graph."
-msgstr ""
+msgstr "Conecte un grafo desconectado."
 
 msgid "Create the complete graph topology"
-msgstr ""
+msgstr "Crea la topología de un grafo completo"
 
 msgid "Create one or more graphs based on the application to be developed."
-msgstr ""
+msgstr "Crea uno o mas grafos según la aplicación que se desarrolla."
 
 msgid "Create a contracted graph for the high speed roads"
-msgstr ""
+msgstr "Crea un grafo contraído para calles de alta velocidad"
 
 msgid "Create graphs per state/country"
-msgstr ""
+msgstr "Crear grafos por estado/país"
 
 msgid "In few words:"
-msgstr ""
+msgstr "En pocas palabras:"
 
 msgid "Prepare the graph"
-msgstr ""
+msgstr "Prepara el grafo"
 
 msgid ""
 "What and how to prepare the graph, will depend on the application and/or on "
@@ -23163,4 +23214,3 @@ msgstr "pgr_withPoints es pgr_dijkstraVia **con puntos**"
 
 msgid "Advanced Documentation"
 msgstr ""
-
