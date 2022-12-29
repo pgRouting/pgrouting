@@ -223,6 +223,13 @@ sub generate_upgrade_script {
             push @commands, drop_special_case_function("pgr_maxcardinalitymatch(text,boolean)");
         }
 
+        # updating to 3.5+
+        if ($old_mayor == 2 or $old_minor < 5) {
+            push @commands, drop_special_case_function("pgr_dijkstra(text,anyarray,bigint,boolean)");
+            push @commands, drop_special_case_function("pgr_dijkstra(text,bigint,anyarray,boolean)");
+            push @commands, drop_special_case_function("pgr_dijkstra(text,bigint,bigint,boolean)");
+        }
+
     }
 
     #------------------------------------
