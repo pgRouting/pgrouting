@@ -1,10 +1,20 @@
 name: Build for Centos
 
 # manually triggered workflow
-# - 5 * 2 * 2 = 20 jobs are triggered
-# - So many jobs take too much time
+# or when this file changes
 
-on: [push]
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/centos.yml'
+
+    branches-ignore:
+      - 'gh-pages'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read

@@ -6,6 +6,16 @@ name: Update test
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/update.yml'
+
+    branches-ignore:
+      - 'gh-pages'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -29,6 +39,13 @@ jobs:
           pgver=$(psql --version | grep -Po '(?<=psql \(PostgreSQL\) )[^;]+(?=\.\d \()')
           echo "PGVER=${pgver}" >> $GITHUB_ENV
           echo "PGIS=3" >> $GITHUB_ENV
+          PG_USER=$(whoami)
+          echo "PG_RUNNER_USER=${PG_USER}" >> $GITHUB_ENV
+          PG_PORT=5432
+          echo "PGPORT=${PG_PORT}" >> $GITHUB_ENV
+          sudo -u postgres psql -p "${PG_PORT}" -c "DROP ROLE IF EXISTS \"${PG_USER}\";"
+          sudo -u postgres psql -p "${PG_PORT}" -c "CREATE ROLE \"${PG_USER}\" WITH LOGIN SUPERUSER;"
+          sudo -u postgres psql -p "${PG_PORT}" -c "CREATE DATABASE \"${PG_USER}\";"
 
       - name: Add PostgreSQL APT repository
         run: |
@@ -74,17 +91,16 @@ jobs:
           make -j 4
           sudo make install
           sudo service postgresql start
-          sudo -u postgres createdb -p 5432  ___pgr___test___
-          sudo -u postgres psql -p 5432  -d ___pgr___test___ -c "CREATE EXTENSION pgrouting CASCADE;"
+          createdb -p "${PGPORT}"  ___pgr___test___
+          psql -p "${PGPORT}"  -d ___pgr___test___ -c "CREATE EXTENSION pgrouting CASCADE;"
 
       - name: Test old version before update with current tests
         run: |
           sudo service postgresql start
-          sudo -u postgres psql -p 5432  -d ___pgr___test___ -c "SELECT * FROM pgr_full_version();"
+          psql -p "${PGPORT}"  -d ___pgr___test___ -c "SELECT * FROM pgr_full_version();"
           DIR=$(git rev-parse --show-toplevel)
-          pushd "${DIR}/tools/testers" > /dev/null || exit 1
-          sudo -u postgres bash setup_db.sh 5432 ___pgr___test___ postgres "${{ matrix.old_pgr }}"
-          sudo -u postgres pg_prove  -Q -f --normalize --directives --recurse -d ___pgr___test___ "../../pgtap"
+          bash "${DIR}/tools/testers/setup_db.sh" "${PGPORT}" ___pgr___test___ "${PG_RUNNER_USER}" "${{ matrix.old_pgr }}"
+          pg_prove  -Q -f --normalize --directives --recurse -U "${PG_RUNNER_USER}" -d ___pgr___test___ "pgtap"
 
       - name: Build current version
         run: |
@@ -98,32 +114,14 @@ jobs:
       - name: Test old version with currrent tests after installing current
         run: |
           sudo service postgresql start
-          sudo -u postgres psql -p 5432  -d ___pgr___test___ -c "SELECT * FROM pgr_full_version();"
+          psql -p "${PGPORT}"  -d ___pgr___test___ -c "SELECT * FROM pgr_full_version();"
           DIR=$(git rev-parse --show-toplevel)
-          pushd "${DIR}/tools/testers" > /dev/null || exit 1
-          sudo -u postgres bash setup_db.sh 5432 ___pgr___test___ postgres "${{ matrix.old_pgr }}"
-          sudo -u postgres pg_prove  -Q -f --normalize --directives --recurse -d ___pgr___test___ "../../pgtap"
+          pg_prove  -Q -f --normalize --directives --recurse -U "${PG_RUNNER_USER}" -d ___pgr___test___ "pgtap"
 
       - name: Test old version with current tests after update
         run: |
           sudo service postgresql start
-          sudo -u postgres dropdb -p 5432  ___pgr___test___
-          sudo -u postgres createdb -p 5432  ___pgr___test___
-          DIR=$(git rev-parse --show-toplevel)
-          pushd "${DIR}/tools/testers" > /dev/null || exit 1
-          sudo -u postgres bash setup_db.sh 5432 ___pgr___test___ postgres "${{ matrix.old_pgr }}"
-          sudo -u postgres psql -p 5432  -d ___pgr___test___ -c "SELECT * FROM pgr_full_version();"
-          sudo -u postgres psql -p 5432  -d ___pgr___test___ -c "ALTER EXTENSION pgrouting UPDATE  TO '3.5.0';"
-          sudo -u postgres psql -p 5432  -d ___pgr___test___ -c "SELECT * FROM pgr_full_version();"
-          sudo -u postgres pg_prove -Q -f --normalize --directives --recurse -d ___pgr___test___ "../../pgtap"
-
-      - name: Test old version with current tests before update
-        run: |
-          sudo service postgresql start
-          sudo -u postgres dropdb -p 5432  ___pgr___test___
-          sudo -u postgres createdb -p 5432  ___pgr___test___
-          DIR=$(git rev-parse --show-toplevel)
-          pushd "${DIR}/tools/testers" > /dev/null || exit 1
-          sudo -u postgres bash setup_db.sh 5432 ___pgr___test___ postgres "${{ matrix.old_pgr }}"
-          sudo -u postgres psql -p 5432  -d ___pgr___test___ -c "SELECT * FROM pgr_full_version();"
-          sudo -u postgres pg_prove -Q -f --normalize --directives --recurse -d ___pgr___test___ "../../pgtap"
+          psql -p "${PGPORT}"  -d ___pgr___test___ -c "SELECT * FROM pgr_full_version();"
+          psql -p "${PGPORT}"  -d ___pgr___test___ -c "ALTER EXTENSION pgrouting UPDATE  TO '3.5.0';"
+          psql -p "${PGPORT}"  -d ___pgr___test___ -c "SELECT * FROM pgr_full_version();"
+          pg_prove  -Q -f --normalize --directives --recurse -U "${PG_RUNNER_USER}" -d ___pgr___test___ "pgtap"
