@@ -19,9 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT plan(1156);
-
-SET client_min_messages TO ERROR;
+SELECT plan(1300);
 
 UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
@@ -34,52 +32,44 @@ dijkstra_sql TEXT;
 bellman_ford_sql TEXT;
 BEGIN
 
-    FOR i IN 1.. cant LOOP
-        FOR j IN 1.. cant LOOP
-
-            -- DIRECTED
-            inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edge_table';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', true)';
-
-            bellman_ford_sql := 'SELECT * FROM pgr_bellmanFord($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', true)';
-            RETURN query SELECT set_eq(bellman_ford_sql, dijkstra_sql, bellman_ford_sql);
-
-
-            inner_sql := 'SELECT id, source, target, cost FROM edge_table';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', true)';
-
-            bellman_ford_sql := 'SELECT * FROM pgr_bellmanFord($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', true)';
-            RETURN query SELECT set_eq(bellman_ford_sql, dijkstra_sql, bellman_ford_sql);
-
-
-
-            -- UNDIRECTED
-            inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edge_table';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', false)';
-
-            bellman_ford_sql := 'SELECT * FROM pgr_bellmanFord($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', false)';
-            RETURN query SELECT set_eq(bellman_ford_sql, dijkstra_sql, bellman_ford_sql);
-
-
-            inner_sql := 'SELECT id, source, target, cost FROM edge_table';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', false)';
-
-            bellman_ford_sql := 'SELECT * FROM pgr_bellmanFord($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', false)';
-            RETURN query SELECT set_eq(bellman_ford_sql, dijkstra_sql, bellman_ford_sql);
-
-
-        END LOOP;
-    END LOOP;
-
+  IF min_version('3.5.0') THEN
+    -- v3.5.0+
+    RETURN QUERY SELECT compare_dijkstra_one_one('pgr_bellmanFord', true, 'seq, path_seq, node, edge, cost, agg_cost');
+    RETURN QUERY SELECT compare_dijkstra_one_one('pgr_bellmanFord', false, 'seq, path_seq, node, edge, cost, agg_cost');
+    RETURN QUERY SELECT compare_dijkstra_one_many('pgr_bellmanFord', true, 'seq, path_seq, end_vid, node, edge, cost, agg_cost');
+    RETURN QUERY SELECT compare_dijkstra_one_many('pgr_bellmanFord', false, 'seq, path_seq, end_vid, node, edge, cost, agg_cost');
+    RETURN QUERY SELECT compare_dijkstra_many_one('pgr_bellmanFord', true, 'seq, path_seq, start_vid, node, edge, cost, agg_cost');
+    RETURN QUERY SELECT compare_dijkstra_many_one('pgr_bellmanFord', false, 'seq, path_seq, start_vid, node, edge, cost, agg_cost');
+    RETURN QUERY SELECT compare_dijkstra_many_many('pgr_bellmanFord', true);
+    RETURN QUERY SELECT compare_dijkstra_many_many('pgr_bellmanFord', false);
+    RETURN QUERY SELECT compare_dijkstra_combinations('pgr_bellmanFord', true);
+    RETURN QUERY SELECT compare_dijkstra_combinations('pgr_bellmanFord', false);
     RETURN;
+
+  END IF;
+
+  -- All These tests should work when pgr_bellmanFord 's output is standarized
+
+  RETURN QUERY SELECT compare_dijkstra_one_one('pgr_bellmanFord', true);
+  RETURN QUERY SELECT compare_dijkstra_one_one('pgr_bellmanFord', false);
+  IF min_version('3.1.1') THEN
+    RETURN QUERY SELECT compare_dijkstra_one_many('pgr_bellmanFord', true);
+    RETURN QUERY SELECT compare_dijkstra_one_many('pgr_bellmanFord', false);
+    RETURN QUERY SELECT compare_dijkstra_many_one('pgr_bellmanFord', true);
+    RETURN QUERY SELECT compare_dijkstra_many_one('pgr_bellmanFord', false);
+    RETURN QUERY SELECT compare_dijkstra_many_many('pgr_bellmanFord', true);
+    RETURN QUERY SELECT compare_dijkstra_many_many('pgr_bellmanFord', false);
+  ELSE
+    RETURN QUERY SELECT skip(140, 'Something changed on version 3.1.1');
+  END IF;
+
+  IF min_version('3.2.0') THEN
+    RETURN QUERY SELECT compare_dijkstra_combinations('pgr_bellmanFord', true);
+    RETURN QUERY SELECT compare_dijkstra_combinations('pgr_bellmanFord', false);
+  ELSE
+    RETURN QUERY SELECT skip(4, 'Combinations signature added on version 3.2.0');
+  END IF;
+
 END
 $BODY$
 language plpgsql;
@@ -89,4 +79,3 @@ SELECT * from bellman_ford_compare_dijkstra();
 
 SELECT * FROM finish();
 ROLLBACK;
-

@@ -19,14 +19,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(1156);
-
-SET client_min_messages TO ERROR;
+SELECT plan(1300);
 
 -- Compare final row of result (Only final row due to existence of multiple valid paths)
-
-CREATE or REPLACE FUNCTION binaryBreadthFirstSearch_compare_dijkstra(MAX_LIMIT INTEGER default 17)
+CREATE or REPLACE FUNCTION binaryBreadthFirstSearch_compare_dijkstra(cant INTEGER default 17)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -35,59 +31,40 @@ dijkstra_sql TEXT;
 binaryBreadthFirstSearch TEXT;
 BEGIN
 
-    FOR i IN 1.. MAX_LIMIT LOOP
-        FOR j IN 1.. MAX_LIMIT LOOP
+  IF NOT min_version('3.5.0') THEN
+  -- All These tests should work when binaryBreadthFirstSearch 's output is standarized
 
-            -- DIRECTED
-            inner_sql := 'SELECT id, source, target, road_work as cost, reverse_road_work as reverse_cost FROM roadworks';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', true) ORDER BY seq DESC LIMIT 1';
+    RETURN QUERY SELECT compare_dijkstra_one_one('pgr_binaryBreadthFirstSearch', true, '*', 'WHERE edge = -1');
+    RETURN QUERY SELECT compare_dijkstra_one_one('pgr_binaryBreadthFirstSearch', false, '*', 'WHERE edge = -1');
+    RETURN QUERY SELECT compare_dijkstra_one_many('pgr_binaryBreadthFirstSearch', true, '*', 'WHERE edge = -1');
+    RETURN QUERY SELECT compare_dijkstra_one_many('pgr_binaryBreadthFirstSearch', false, '*', 'WHERE edge = -1');
+    RETURN QUERY SELECT compare_dijkstra_many_one('pgr_binaryBreadthFirstSearch', true, '*', 'WHERE edge = -1');
+    RETURN QUERY SELECT compare_dijkstra_many_one('pgr_binaryBreadthFirstSearch', false, '*', 'WHERE edge = -1');
 
-            binaryBreadthFirstSearch := 'SELECT * FROM pgr_binaryBreadthFirstSearch($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', true) ORDER BY seq DESC LIMIT 1';
-            RETURN query SELECT set_eq(binaryBreadthFirstSearch, dijkstra_sql, binaryBreadthFirstSearch);
+  ELSE
 
+    RETURN QUERY SELECT compare_dijkstra_one_one('pgr_binaryBreadthFirstSearch', true, 'seq, path_seq, node, edge, cost, agg_cost', 'WHERE edge = -1');
+    RETURN QUERY SELECT compare_dijkstra_one_one('pgr_binaryBreadthFirstSearch', false, 'seq, path_seq, node, edge, cost, agg_cost', 'WHERE edge = -1');
+    RETURN QUERY SELECT compare_dijkstra_one_many('pgr_binaryBreadthFirstSearch', true, 'seq, path_seq, end_vid, node, edge, cost, agg_cost', 'WHERE edge = -1');
+    RETURN QUERY SELECT compare_dijkstra_one_many('pgr_binaryBreadthFirstSearch', false, 'seq, path_seq, end_vid, node, edge, cost, agg_cost', 'WHERE edge = -1');
+    RETURN QUERY SELECT compare_dijkstra_many_one('pgr_binaryBreadthFirstSearch', true, 'seq, path_seq, start_vid, node, edge, cost, agg_cost', 'WHERE edge = -1');
+    RETURN QUERY SELECT compare_dijkstra_many_one('pgr_binaryBreadthFirstSearch', false, 'seq, path_seq, start_vid, node, edge, cost, agg_cost', 'WHERE edge = -1');
+  END IF;
 
-            inner_sql := 'SELECT id, source, target, road_work as cost FROM roadworks';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', true) ORDER BY seq DESC LIMIT 1';
+  RETURN QUERY SELECT compare_dijkstra_many_many('pgr_binaryBreadthFirstSearch', true, '*', 'WHERE edge = -1');
+  RETURN QUERY SELECT compare_dijkstra_many_many('pgr_binaryBreadthFirstSearch', false, '*', 'WHERE edge = -1');
+  IF min_version('3.2.0') THEN
+    RETURN QUERY SELECT compare_dijkstra_combinations('pgr_binaryBreadthFirstSearch', true, '*', 'WHERE edge = -1');
+    RETURN QUERY SELECT compare_dijkstra_combinations('pgr_binaryBreadthFirstSearch', false, '*', 'WHERE edge = -1');
+  ELSE
+    RETURN QUERY SELECT skip(4, 'Combinations signature added on version 3.2.0');
+  END IF;
 
-            binaryBreadthFirstSearch := 'SELECT * FROM pgr_binaryBreadthFirstSearch($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', true) ORDER BY seq DESC LIMIT 1';
-            RETURN query SELECT set_eq(binaryBreadthFirstSearch, dijkstra_sql, binaryBreadthFirstSearch);
-
-
-
-            -- UNDIRECTED
-            inner_sql := 'SELECT id, source, target, road_work as cost, reverse_road_work as reverse_cost FROM roadworks';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', false) ORDER BY seq DESC LIMIT 1';
-
-            binaryBreadthFirstSearch := 'SELECT * FROM pgr_binaryBreadthFirstSearch($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', false) ORDER BY seq DESC LIMIT 1';
-            RETURN query SELECT set_eq(binaryBreadthFirstSearch, dijkstra_sql, binaryBreadthFirstSearch);
-
-
-            inner_sql := 'SELECT id, source, target, road_work as cost FROM roadworks';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', false) ORDER BY seq DESC LIMIT 1';
-
-            binaryBreadthFirstSearch := 'SELECT * FROM pgr_binaryBreadthFirstSearch($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', false) ORDER BY seq DESC LIMIT 1';
-            RETURN query SELECT set_eq(binaryBreadthFirstSearch, dijkstra_sql, binaryBreadthFirstSearch);
-
-
-        END LOOP;
-    END LOOP;
-
-    RETURN;
 END
 $BODY$
 language plpgsql;
 
 SELECT * from binaryBreadthFirstSearch_compare_dijkstra();
 
-
 SELECT * FROM finish();
 ROLLBACK;
-
