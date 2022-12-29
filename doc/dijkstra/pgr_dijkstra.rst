@@ -38,6 +38,14 @@
 
 .. rubric:: Availability
 
+* Version 3.5.0
+
+  * Standarizing output columns to |short-generic-result|
+
+    * ``pgr_dijkstra`` (`One to One`_) added `start_vid` and `end_vid` columns.
+    * ``pgr_dijkstra`` (`One to Many`_) added `end_vid` column.
+    * ``pgr_dijkstra`` (`Many to One`_) added `start_vid` column.
+
 * Version 3.1.0
 
   * New **Proposed** functions:
@@ -91,8 +99,14 @@ Signatures
    | pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids** , [``directed``])
    | pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_ , [``directed``])
 
-   | RETURNS SET OF |old-generic-result|
+   | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
+
+
+.. Warning:: Breaking change on 3.5.0
+
+   Read the :doc:`migration` about how to migrate from the old result columns to
+   the new result columns.
 
 .. index::
     single: dijkstra(One to One)
@@ -105,7 +119,7 @@ One to One
 
    | pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  , [``directed``])
 
-   | RETURNS SET OF |result-1-1|
+   | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertex  :math:`10` on a **directed** graph
@@ -125,7 +139,7 @@ One to Many
 
    | pgr_dijkstra(`Edges SQL`_, **start vid**, **end vids** , [``directed``])
 
-   | RETURNS SET OF |result-1-m|
+   | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertices :math:`\{10, 17\}` on a **directed**
@@ -145,7 +159,7 @@ Many to One
 
    | pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid** , [``directed``])
 
-   | RETURNS SET OF |result-m-1|
+   | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 1\}` to vertex :math:`17` on a **directed**

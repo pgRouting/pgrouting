@@ -1,7 +1,19 @@
 pgRouting 3.5.0 Release Notes
 -------------------------------------------------------------------------------
 
-No Changes Yet
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.5.0
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.0%22>`_
+
+**Official functions changes**
+
+* Dijkstra
+
+  * Standarizing output columns to |short-generic-result|
+
+    * ``pgr_dijkstra`` (`One to One`) added ``start_vid`` and ``end_vid`` columns.
+    * ``pgr_dijkstra`` (`One to Many`) added ``end_vid`` column.
+    * ``pgr_dijkstra`` (`Many to One`) added ``start_vid`` column.
 
 pgRouting 3.4.2 Release Notes
 -------------------------------------------------------------------------------
