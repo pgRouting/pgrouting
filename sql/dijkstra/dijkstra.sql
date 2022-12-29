@@ -3,6 +3,7 @@
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
+Copyright (c) 2022 Celia Virginia Vergara Castillo
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 mail: vicky_vergara@hotmail.com
 
@@ -43,13 +44,15 @@ CREATE FUNCTION pgr_dijkstra(
 
     OUT seq INTEGER,
     OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
+    SELECT *
     FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, false, true) AS a;
 $BODY$
 LANGUAGE sql VOLATILE STRICT
@@ -67,6 +70,7 @@ CREATE FUNCTION pgr_dijkstra(
 
     OUT seq INTEGER,
     OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
@@ -74,7 +78,7 @@ CREATE FUNCTION pgr_dijkstra(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
+    SELECT *
     FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, false, true) AS a;
 $BODY$
 LANGUAGE sql VOLATILE STRICT
@@ -93,13 +97,14 @@ CREATE FUNCTION pgr_dijkstra(
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
+    SELECT *
     FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, false, false) AS a;
 $BODY$
 LANGUAGE sql VOLATILE STRICT
@@ -125,7 +130,7 @@ CREATE FUNCTION pgr_dijkstra(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
+    SELECT *
     FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, false, true) AS a;
 $BODY$
 LANGUAGE sql VOLATILE STRICT
@@ -150,7 +155,7 @@ CREATE FUNCTION pgr_dijkstra(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
+    SELECT *
     FROM _pgr_dijkstra(_pgr_get_statement($1), _pgr_get_statement($2), $3, false, true) AS a;
 $BODY$
 LANGUAGE sql VOLATILE STRICT
