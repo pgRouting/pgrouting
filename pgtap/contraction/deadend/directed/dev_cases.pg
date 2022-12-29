@@ -104,3 +104,4 @@ SELECT * FROM pgr_contraction(
 SELECT is_empty('q4');
 
 SELECT finish();
+ROLLBACK;

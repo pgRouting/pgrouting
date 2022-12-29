@@ -77,4 +77,5 @@ LANGUAGE plpgsql VOLATILE;
 
 SELECT * FROM no_crash();
 
+SELECT finish();
 ROLLBACK;

@@ -94,3 +94,5 @@ $BODY$
 language plpgsql;
 
 SELECT * from lineGraphFullOriginalVertexMapping();
+SELECT finish();
+ROLLBACK;

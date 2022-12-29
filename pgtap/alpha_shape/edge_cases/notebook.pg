@@ -110,4 +110,4 @@ SELECT alphaShape_tester('e_test', 'geom', 0.0498, true, 0, 0);
 SELECT alphaShape_tester('e_test', 'geom', 0.01, true, 0, 0);
 
 SELECT finish();
-
+ROLLBACK;

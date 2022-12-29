@@ -38,4 +38,5 @@ SELECT lives_ok(
     )',
     '4: Documentation says works with no flags');
 
+SELECT finish();
 ROLLBACK;

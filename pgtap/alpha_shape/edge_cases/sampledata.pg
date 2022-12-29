@@ -17,6 +17,8 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
+
+BEGIN;
 /*
 Test for old code VS new code results
 Data from sample data of the documentation
@@ -58,7 +60,5 @@ SELECT alphaShape_tester('edge_table', 'the_geom', 0.7, false, 1.75, 10);
 -- no area
 SELECT alphaShape_tester('edge_table', 'the_geom', 0.4301, true, 0, 0);
 
-
-
-
 SELECT finish();
+ROLLBACK;

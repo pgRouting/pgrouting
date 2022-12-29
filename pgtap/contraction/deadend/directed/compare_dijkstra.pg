@@ -143,3 +143,5 @@ $BODY$
 LANGUAGE plpgsql;
 
 SELECT compare_dijkstra_all();
+SELECT finish();
+ROLLBACK;

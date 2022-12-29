@@ -127,4 +127,5 @@ SELECT alphaShape_tester('s_test', 'geom', 1, true, 0, 0);
 
 
 
+SELECT finish();
 ROLLBACK;

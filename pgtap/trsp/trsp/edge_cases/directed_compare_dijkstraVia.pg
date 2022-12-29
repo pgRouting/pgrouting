@@ -102,4 +102,4 @@ LANGUAGE plpgsql;
 SELECT edge_case();
 
 SELECT finish();
-ROLLBACK
+ROLLBACK;
