@@ -92,6 +92,7 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Migration guide</a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-dijkstra">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-maxcardinalitymatch">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-restrictions">Migration of restrictions</a><ul>
 <li><a class="reference internal" href="#old-restrictions-structure">Old restrictions structure</a><ul>
@@ -194,53 +195,194 @@ new replacement functions. This also affects the restrictions.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#migration-guide" id="id1">Migration guide</a></p>
 <ul>
-<li><p><a class="reference internal" href="#migration-of-pgr-maxcardinalitymatch" id="id2">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-restrictions" id="id3">Migration of restrictions</a></p>
+<li><p><a class="reference internal" href="#migration-of-pgr-dijkstra" id="id2">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-maxcardinalitymatch" id="id3">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-restrictions" id="id4">Migration of restrictions</a></p>
 <ul>
-<li><p><a class="reference internal" href="#old-restrictions-structure" id="id4">Old restrictions structure</a></p>
+<li><p><a class="reference internal" href="#old-restrictions-structure" id="id5">Old restrictions structure</a></p>
 <ul>
-<li><p><a class="reference internal" href="#old-restrictions-contents" id="id5">Old restrictions contents</a></p></li>
+<li><p><a class="reference internal" href="#old-restrictions-contents" id="id6">Old restrictions contents</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#new-restrictions-structure" id="id6">New restrictions structure</a></p>
+<li><p><a class="reference internal" href="#new-restrictions-structure" id="id7">New restrictions structure</a></p>
 <ul>
-<li><p><a class="reference internal" href="#restrictions-data" id="id7">Restrictions data</a></p></li>
+<li><p><a class="reference internal" href="#restrictions-data" id="id8">Restrictions data</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#migration" id="id8">Migration</a></p></li>
+<li><p><a class="reference internal" href="#migration" id="id9">Migration</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#migration-of-pgr-trsp-vertices" id="id9">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Vertices)</a></p>
+<li><p><a class="reference internal" href="#migration-of-pgr-trsp-vertices" id="id10">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Vertices)</a></p>
 <ul>
-<li><p><a class="reference internal" href="#migrating-pgr-trsp-vertices-using-pgr-dijkstra" id="id10">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Vertices) using <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migrating-pgr-trsp-vertices-using-pgr-trsp" id="id11">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Vertices) using <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migrating-pgr-trsp-vertices-using-pgr-dijkstra" id="id11">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Vertices) using <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migrating-pgr-trsp-vertices-using-pgr-trsp" id="id12">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Vertices) using <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code></a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#migration-of-pgr-trsp-edges" id="id12">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges)</a></p>
+<li><p><a class="reference internal" href="#migration-of-pgr-trsp-edges" id="id13">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges)</a></p>
 <ul>
-<li><p><a class="reference internal" href="#migrating-pgr-trsp-edges-using-pgr-withpoints" id="id13">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges) using <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migrating-pgr-trsp-edges-using-pgr-trsp-withpoints" id="id14">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges) using <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migrating-pgr-trsp-edges-using-pgr-withpoints" id="id14">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges) using <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migrating-pgr-trsp-edges-using-pgr-trsp-withpoints" id="id15">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges) using <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code></a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#migration-of-pgr-trspviavertices" id="id15">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a></p>
+<li><p><a class="reference internal" href="#migration-of-pgr-trspviavertices" id="id16">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a></p>
 <ul>
-<li><p><a class="reference internal" href="#migrating-pgr-trspviavertices-using-pgr-dijkstravia" id="id16">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code> using <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migrating-pgr-trspviavertices-using-pgr-trspvia" id="id17">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code> using <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migrating-pgr-trspviavertices-using-pgr-dijkstravia" id="id17">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code> using <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migrating-pgr-trspviavertices-using-pgr-trspvia" id="id18">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code> using <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code></a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#migration-of-pgr-trspviaedges" id="id18">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a></p>
+<li><p><a class="reference internal" href="#migration-of-pgr-trspviaedges" id="id19">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a></p>
 <ul>
-<li><p><a class="reference internal" href="#migrating-pgr-trspviaedges-using-pgr-withpointsvia" id="id19">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code> using <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migrating-pgr-trspviaedges-using-pgr-trspvia-withpoints" id="id20">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code> using <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migrating-pgr-trspviaedges-using-pgr-withpointsvia" id="id20">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code> using <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migrating-pgr-trspviaedges-using-pgr-trspvia-withpoints" id="id21">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code> using <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code></a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#see-also" id="id21">See Also</a></p></li>
+<li><p><a class="reference internal" href="#see-also" id="id22">See Also</a></p></li>
 </ul>
 </li>
 </ul>
 </nav>
+<section id="migration-of-pgr-dijkstra">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a><a class="headerlink" href="#migration-of-pgr-dijkstra" title="Permalink to this heading">¶</a></h2>
+<p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.5/en/migration.html">v3.5.0</a></p>
+<p>Signatures to be migrated:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>One to One</cite>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>One to Many</cite>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>Many to One</cite>)</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Before Migration<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<ul class="simple">
+<li><p>Output columns are <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid],</span> <span class="pre">[end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<ul>
+<li><p>Depending on the overload used the columns <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>
+might be missing:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>One to One</cite>) does not have <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and
+<code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>One to Many</cite>) does not have <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>Many to One</cite>) does not have <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Migration<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<ul class="simple">
+<li><p>Be aware of the existance of the additional columns.</p></li>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>One to One</cite>)</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> contains the <strong>start vid</strong> parameter value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code> contains the <strong>end vid</strong> parameter value.</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
+  6, 10);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         6 |      10 |    6 |    4 |    1 |        0
+   2 |        2 |         6 |      10 |    7 |    8 |    1 |        1
+   3 |        3 |         6 |      10 |   11 |    9 |    1 |        2
+   4 |        4 |         6 |      10 |   16 |   16 |    1 |        3
+   5 |        5 |         6 |      10 |   15 |    3 |    1 |        4
+   6 |        6 |         6 |      10 |   10 |   -1 |    0 |        5
+(6 rows)
+
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>In <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>One to Many</cite>)</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> contains the <strong>start vid</strong> parameter value.</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
+  6, ARRAY[3, 10]);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         6 |       3 |    6 |    4 |    1 |        0
+   2 |        2 |         6 |       3 |    7 |    7 |    1 |        1
+   3 |        3 |         6 |       3 |    3 |   -1 |    0 |        2
+   4 |        1 |         6 |      10 |    6 |    4 |    1 |        0
+   5 |        2 |         6 |      10 |    7 |    8 |    1 |        1
+   6 |        3 |         6 |      10 |   11 |    9 |    1 |        2
+   7 |        4 |         6 |      10 |   16 |   16 |    1 |        3
+   8 |        5 |         6 |      10 |   15 |    3 |    1 |        4
+   9 |        6 |         6 |      10 |   10 |   -1 |    0 |        5
+(9 rows)
+
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>In <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>Many to One</cite>)</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code> contains the <strong>end vid</strong> parameter value.</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
+  ARRAY[3, 6], 10);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         3 |      10 |    3 |    7 |    1 |        0
+   2 |        2 |         3 |      10 |    7 |    8 |    1 |        1
+   3 |        3 |         3 |      10 |   11 |    9 |    1 |        2
+   4 |        4 |         3 |      10 |   16 |   16 |    1 |        3
+   5 |        5 |         3 |      10 |   15 |    3 |    1 |        4
+   6 |        6 |         3 |      10 |   10 |   -1 |    0 |        5
+   7 |        1 |         6 |      10 |    6 |    4 |    1 |        0
+   8 |        2 |         6 |      10 |    7 |    8 |    1 |        1
+   9 |        3 |         6 |      10 |   11 |    9 |    1 |        2
+  10 |        4 |         6 |      10 |   16 |   16 |    1 |        3
+  11 |        5 |         6 |      10 |   15 |    3 |    1 |        4
+  12 |        6 |         6 |      10 |   10 |   -1 |    0 |        5
+(12 rows)
+
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>If needed filter out the added columns, for example:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT seq, path_seq, node, edge, cost, agg_cost FROM pgr_dijkstra(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
+  6, 10);
+ seq | path_seq | node | edge | cost | agg_cost
+-----+----------+------+------+------+----------
+   1 |        1 |    6 |    4 |    1 |        0
+   2 |        2 |    7 |    8 |    1 |        1
+   3 |        3 |   11 |    9 |    1 |        2
+   4 |        4 |   16 |   16 |    1 |        3
+   5 |        5 |   15 |    3 |    1 |        4
+   6 |        6 |   10 |   -1 |    0 |        5
+(6 rows)
+
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>If needed add the new columns, for example:</p>
+<ul>
+<li><p>In <a class="reference external" href="https://docs.pgrouting.org/3.0/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph">v3.0</a>
+the function <code class="docutils literal notranslate"><span class="pre">my_dijkstra</span></code> uses <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code>.</p></li>
+<li><p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.5/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph">v3.5</a>
+the function <code class="docutils literal notranslate"><span class="pre">my_dijkstra</span></code> returns the new additional columns of
+<code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
 <section id="migration-of-pgr-maxcardinalitymatch">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a><a class="headerlink" href="#migration-of-pgr-maxcardinalitymatch" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a><a class="headerlink" href="#migration-of-pgr-maxcardinalitymatch" title="Permalink to this heading">¶</a></h2>
+<p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.4/en/migration.html">v3.4.0</a></p>
 <p>Signature to be migrated:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_maxCardinalityMatch</span><span class="p">(</span><span class="n">Edges</span> <span class="n">SQL</span><span class="p">,</span> <span class="p">[</span><span class="n">directed</span><span class="p">])</span>
  <span class="n">RETURNS</span> <span class="n">SETOF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
@@ -325,10 +467,11 @@ edge.</p></li>
 </div>
 </section>
 <section id="migration-of-restrictions">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">Migration of restrictions</a><a class="headerlink" href="#migration-of-restrictions" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Migration of restrictions</a><a class="headerlink" href="#migration-of-restrictions" title="Permalink to this heading">¶</a></h2>
+<p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.4/en/migration.html">v3.4.0</a></p>
 <p>The structure of the restrictions have changed:</p>
 <section id="old-restrictions-structure">
-<h3><a class="toc-backref" href="#id4" role="doc-backlink">Old restrictions structure</a><a class="headerlink" href="#old-restrictions-structure" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Old restrictions structure</a><a class="headerlink" href="#old-restrictions-structure" title="Permalink to this heading">¶</a></h3>
 <p>On the deprecated signatures:</p>
 <ul class="simple">
 <li><p>Column <code class="docutils literal notranslate"><span class="pre">rid</span></code> is ignored</p></li>
@@ -372,7 +515,7 @@ edge.</p></li>
 </pre></div>
 </div>
 <section id="old-restrictions-contents">
-<h4><a class="toc-backref" href="#id5" role="doc-backlink">Old restrictions contents</a><a class="headerlink" href="#old-restrictions-contents" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id6" role="doc-backlink">Old restrictions contents</a><a class="headerlink" href="#old-restrictions-contents" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">old_restrictions</span><span class="p">;</span>
  <span class="n">rid</span> <span class="o">|</span> <span class="n">to_cost</span> <span class="o">|</span> <span class="n">target_id</span> <span class="o">|</span> <span class="n">via_path</span>
 <span class="o">-----+---------+-----------+----------</span>
@@ -404,7 +547,7 @@ edge.</p></li>
 </section>
 </section>
 <section id="new-restrictions-structure">
-<h3><a class="toc-backref" href="#id6" role="doc-backlink">New restrictions structure</a><a class="headerlink" href="#new-restrictions-structure" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">New restrictions structure</a><a class="headerlink" href="#new-restrictions-structure" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Column <code class="docutils literal notranslate"><span class="pre">id</span></code> is ignored</p></li>
 <li><p>Column <code class="docutils literal notranslate"><span class="pre">path</span></code></p>
@@ -440,7 +583,7 @@ edge.</p></li>
 </pre></div>
 </div>
 <section id="restrictions-data">
-<h4><a class="toc-backref" href="#id7" role="doc-backlink">Restrictions data</a><a class="headerlink" href="#restrictions-data" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id8" role="doc-backlink">Restrictions data</a><a class="headerlink" href="#restrictions-data" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">restrictions</span><span class="p">;</span>
  <span class="nb">id</span> <span class="o">|</span>  <span class="n">path</span>   <span class="o">|</span> <span class="n">cost</span>
 <span class="o">----+---------+------</span>
@@ -461,7 +604,7 @@ edge.</p></li>
 </section>
 </section>
 <section id="migration">
-<h3><a class="toc-backref" href="#id8" role="doc-backlink">Migration</a><a class="headerlink" href="#migration" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Migration</a><a class="headerlink" href="#migration" title="Permalink to this heading">¶</a></h3>
 <p>To transform the old restrictions table to the new restrictions structure,</p>
 <ul class="simple">
 <li><p>Create a new table with the new restrictions structure.</p>
@@ -507,7 +650,8 @@ array <code class="docutils literal notranslate"><span class="pre">_pgr_array_re
 </section>
 </section>
 <section id="migration-of-pgr-trsp-vertices">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Vertices)</a><a class="headerlink" href="#migration-of-pgr-trsp-vertices" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Vertices)</a><a class="headerlink" href="#migration-of-pgr-trsp-vertices" title="Permalink to this heading">¶</a></h2>
+<p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.4/en/migration.html">v3.4.0</a></p>
 <p>Signature to be migrated:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trsp</span><span class="p">(</span><span class="n">Edges</span> <span class="n">SQL</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span>
          <span class="n">directed</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="n">boolean</span>
@@ -538,7 +682,7 @@ array <code class="docutils literal notranslate"><span class="pre">_pgr_array_re
 <li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Proposed</span></a> (One to One) when there are restrictions.</p></li>
 </ul>
 <section id="migrating-pgr-trsp-vertices-using-pgr-dijkstra">
-<h3><a class="toc-backref" href="#id10" role="doc-backlink">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Vertices) using <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a><a class="headerlink" href="#migrating-pgr-trsp-vertices-using-pgr-dijkstra" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Vertices) using <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a><a class="headerlink" href="#migrating-pgr-trsp-vertices-using-pgr-dijkstra" title="Permalink to this heading">¶</a></h3>
 <p>The following query does not have restrictions.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
   $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost
@@ -568,12 +712,12 @@ WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) deprecated on v3.4.0
   $$SELECT id, source, target, cost, reverse_cost
     FROM edges WHERE id != 16$$,
   15, 16);
- seq | path_seq | node | edge | cost | agg_cost
------+----------+------+------+------+----------
-   1 |        1 |   15 |    3 |    1 |        0
-   2 |        2 |   10 |    5 |    1 |        1
-   3 |        3 |   11 |    9 |    1 |        2
-   4 |        4 |   16 |   -1 |    0 |        3
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |        15 |      16 |   15 |    3 |    1 |        0
+   2 |        2 |        15 |      16 |   10 |    5 |    1 |        1
+   3 |        3 |        15 |      16 |   11 |    9 |    1 |        2
+   4 |        4 |        15 |      16 |   16 |   -1 |    0 |        3
 (4 rows)
 
 </pre></div>
@@ -622,7 +766,7 @@ FROM pgr_dijkstra(
 </ul>
 </section>
 <section id="migrating-pgr-trsp-vertices-using-pgr-trsp">
-<h3><a class="toc-backref" href="#id11" role="doc-backlink">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Vertices) using <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code></a><a class="headerlink" href="#migrating-pgr-trsp-vertices-using-pgr-trsp" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Vertices) using <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code></a><a class="headerlink" href="#migrating-pgr-trsp-vertices-using-pgr-trsp" title="Permalink to this heading">¶</a></h3>
 <p>The following query has restrictions.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
   $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost
@@ -727,7 +871,7 @@ FROM pgr_trsp(
 </section>
 </section>
 <section id="migration-of-pgr-trsp-edges">
-<h2><a class="toc-backref" href="#id12" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges)</a><a class="headerlink" href="#migration-of-pgr-trsp-edges" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges)</a><a class="headerlink" href="#migration-of-pgr-trsp-edges" title="Permalink to this heading">¶</a></h2>
 <p>Signature to be migrated:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trsp</span><span class="p">(</span><span class="n">sql</span> <span class="n">text</span><span class="p">,</span> <span class="n">source_edge</span> <span class="n">integer</span><span class="p">,</span> <span class="n">source_pos</span> <span class="n">float8</span><span class="p">,</span>
                  <span class="n">target_edge</span> <span class="n">integer</span><span class="p">,</span> <span class="n">target_pos</span> <span class="n">float8</span><span class="p">,</span>
@@ -769,7 +913,7 @@ FROM pgr_trsp(
 <li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - Proposed</span></a> (One to One) when there are restrictions.</p></li>
 </ul>
 <section id="migrating-pgr-trsp-edges-using-pgr-withpoints">
-<h3><a class="toc-backref" href="#id13" role="doc-backlink">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges) using <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code></a><a class="headerlink" href="#migrating-pgr-trsp-edges-using-pgr-withpoints" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id14" role="doc-backlink">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges) using <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code></a><a class="headerlink" href="#migrating-pgr-trsp-edges-using-pgr-withpoints" title="Permalink to this heading">¶</a></h3>
 <p>The following query does not have restrictions.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
   $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost
@@ -860,7 +1004,7 @@ FROM pgr_withPoints(
 </ul>
 </section>
 <section id="migrating-pgr-trsp-edges-using-pgr-trsp-withpoints">
-<h3><a class="toc-backref" href="#id14" role="doc-backlink">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges) using <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code></a><a class="headerlink" href="#migrating-pgr-trsp-edges-using-pgr-trsp-withpoints" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges) using <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code></a><a class="headerlink" href="#migrating-pgr-trsp-edges-using-pgr-trsp-withpoints" title="Permalink to this heading">¶</a></h3>
 <p>The following query has restrictions.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
   $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges$$,
@@ -980,7 +1124,7 @@ WHERE edge != -1;
 </section>
 </section>
 <section id="migration-of-pgr-trspviavertices">
-<h2><a class="toc-backref" href="#id15" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a><a class="headerlink" href="#migration-of-pgr-trspviavertices" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a><a class="headerlink" href="#migration-of-pgr-trspviavertices" title="Permalink to this heading">¶</a></h2>
 <p>Signature to be migrated:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trspViaVertices</span><span class="p">(</span><span class="n">sql</span> <span class="n">text</span><span class="p">,</span> <span class="n">vids</span> <span class="n">integer</span><span class="p">[],</span>
                   <span class="n">directed</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="n">boolean</span>
@@ -1010,7 +1154,7 @@ WHERE edge != -1;
 <li><p><a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia - Proposed</span></a> when there are restrictions.</p></li>
 </ul>
 <section id="migrating-pgr-trspviavertices-using-pgr-dijkstravia">
-<h3><a class="toc-backref" href="#id16" role="doc-backlink">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code> using <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code></a><a class="headerlink" href="#migrating-pgr-trspviavertices-using-pgr-dijkstravia" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code> using <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code></a><a class="headerlink" href="#migrating-pgr-trspviavertices-using-pgr-dijkstravia" title="Permalink to this heading">¶</a></h3>
 <p>The following query does not have restrictions.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trspViaVertices(
   $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges$$,
@@ -1100,7 +1244,7 @@ WHERE edge != -1;
 </ul>
 </section>
 <section id="migrating-pgr-trspviavertices-using-pgr-trspvia">
-<h3><a class="toc-backref" href="#id17" role="doc-backlink">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code> using <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code></a><a class="headerlink" href="#migrating-pgr-trspviavertices-using-pgr-trspvia" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id18" role="doc-backlink">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code> using <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code></a><a class="headerlink" href="#migrating-pgr-trspviavertices-using-pgr-trspvia" title="Permalink to this heading">¶</a></h3>
 <p>The following query has restrictions.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trspViaVertices(
   $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges$$,
@@ -1222,7 +1366,7 @@ WHERE edge != -1;
 </section>
 </section>
 <section id="migration-of-pgr-trspviaedges">
-<h2><a class="toc-backref" href="#id18" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a><a class="headerlink" href="#migration-of-pgr-trspviaedges" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id19" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a><a class="headerlink" href="#migration-of-pgr-trspviaedges" title="Permalink to this heading">¶</a></h2>
 <p>Signature to be migrated:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trspViaEdges</span><span class="p">(</span><span class="n">sql</span> <span class="n">text</span><span class="p">,</span> <span class="n">eids</span> <span class="n">integer</span><span class="p">[],</span> <span class="n">pcts</span> <span class="n">float8</span><span class="p">[],</span>
                   <span class="n">directed</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="n">boolean</span>
@@ -1265,7 +1409,7 @@ WHERE edge != -1;
 <li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints - Proposed</span></a> when there are restrictions.</p></li>
 </ul>
 <section id="migrating-pgr-trspviaedges-using-pgr-withpointsvia">
-<h3><a class="toc-backref" href="#id19" role="doc-backlink">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code> using <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code></a><a class="headerlink" href="#migrating-pgr-trspviaedges-using-pgr-withpointsvia" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id20" role="doc-backlink">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code> using <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code></a><a class="headerlink" href="#migrating-pgr-trspviaedges-using-pgr-withpointsvia" title="Permalink to this heading">¶</a></h3>
 <p>The following query does not have restrictions.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trspViaEdges(
   $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges$$,
@@ -1379,7 +1523,7 @@ FROM pgr_withPointsVia(
 </ul>
 </section>
 <section id="migrating-pgr-trspviaedges-using-pgr-trspvia-withpoints">
-<h3><a class="toc-backref" href="#id20" role="doc-backlink">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code> using <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code></a><a class="headerlink" href="#migrating-pgr-trspviaedges-using-pgr-trspvia-withpoints" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id21" role="doc-backlink">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code> using <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code></a><a class="headerlink" href="#migrating-pgr-trspviaedges-using-pgr-trspvia-withpoints" title="Permalink to this heading">¶</a></h3>
 <p>The following query has restrictions.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trspViaEdges(
   $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges$$,
@@ -1514,7 +1658,7 @@ FROM pgr_trspVia_withPoints(
 </section>
 </section>
 <section id="see-also">
-<h2><a class="toc-backref" href="#id21" role="doc-backlink">See Also</a><a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id22" role="doc-backlink">See Also</a><a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="TRSP-family.html"><span class="doc">TRSP - Family of functions</span></a></p></li>
 <li><p><a class="reference internal" href="withPoints-category.html"><span class="doc">withPoints - Category</span></a></p></li>
@@ -1540,7 +1684,7 @@ FROM pgr_trspVia_withPoints(
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.5.0-dev.<br/>
-      Last updated on Dec 29, 2022.<br/>
+      Last updated on Jan 01, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.0.0.<br/>
     </p>
   </div>

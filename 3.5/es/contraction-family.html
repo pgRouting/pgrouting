@@ -842,41 +842,42 @@
 </ul>
 <section id="case-1-both-source-and-target-belong-to-the-contracted-graph">
 <h4><a class="toc-backref" href="#id13" role="doc-backlink">Caso 1: Tanto el origen como el destino pertenecen al grafo contraído.</a><a class="headerlink" href="#case-1-both-source-and-target-belong-to-the-contracted-graph" title="Enlace permanente a este encabezado">¶</a></h4>
-<p>Usando las <a class="reference internal" href="#edges-that-belong-to-the-contracted-graph">Aristas que pertenecen al grafo contraído.</a> en las líneas 10 a 19.</p>
+<p>Using the <a class="reference internal" href="#edges-that-belong-to-the-contracted-graph">Edges that belong to the contracted graph.</a> on lines 11 to 20.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>CREATE OR REPLACE FUNCTION my_dijkstra(
 <span class="linenos"> 2</span>  departure BIGINT, destination BIGINT,
 <span class="linenos"> 3</span>  OUT seq INTEGER, OUT path_seq INTEGER,
-<span class="linenos"> 4</span>  OUT node BIGINT, OUT edge BIGINT,
-<span class="linenos"> 5</span>  OUT cost FLOAT, OUT agg_cost FLOAT)
-<span class="linenos"> 6</span>RETURNS SETOF RECORD AS
-<span class="linenos"> 7</span>$BODY$
-<span class="linenos"> 8</span>SELECT * FROM pgr_dijkstra(
-<span class="linenos"> 9</span>  $$
-<span class="hll"><span class="linenos">10</span>  WITH
-</span><span class="hll"><span class="linenos">11</span>  vertices_in_graph AS (
-</span><span class="hll"><span class="linenos">12</span>    SELECT id
-</span><span class="hll"><span class="linenos">13</span>    FROM vertices
-</span><span class="hll"><span class="linenos">14</span>    WHERE is_contracted = false
-</span><span class="hll"><span class="linenos">15</span>  )
-</span><span class="hll"><span class="linenos">16</span>  SELECT id, source, target, cost, reverse_cost
-</span><span class="hll"><span class="linenos">17</span>  FROM edges
-</span><span class="hll"><span class="linenos">18</span>  WHERE source IN (SELECT * FROM vertices_in_graph)
-</span><span class="hll"><span class="linenos">19</span>  AND target IN (SELECT * FROM vertices_in_graph)
-</span><span class="linenos">20</span>  $$,
-<span class="linenos">21</span>  departure, destination, false);
-<span class="linenos">22</span>$BODY$
-<span class="linenos">23</span>LANGUAGE SQL VOLATILE;
-<span class="linenos">24</span>CREATE FUNCTION
+<span class="linenos"> 4</span>  OUT start_vid BIGINT, OUT end_vid BIGINT,
+<span class="linenos"> 5</span>  OUT node BIGINT, OUT edge BIGINT,
+<span class="linenos"> 6</span>  OUT cost FLOAT, OUT agg_cost FLOAT)
+<span class="linenos"> 7</span>RETURNS SETOF RECORD AS
+<span class="linenos"> 8</span>$BODY$
+<span class="linenos"> 9</span>SELECT * FROM pgr_dijkstra(
+<span class="linenos">10</span>  $$
+<span class="hll"><span class="linenos">11</span>  WITH
+</span><span class="hll"><span class="linenos">12</span>  vertices_in_graph AS (
+</span><span class="hll"><span class="linenos">13</span>    SELECT id
+</span><span class="hll"><span class="linenos">14</span>    FROM vertices
+</span><span class="hll"><span class="linenos">15</span>    WHERE is_contracted = false
+</span><span class="hll"><span class="linenos">16</span>  )
+</span><span class="hll"><span class="linenos">17</span>  SELECT id, source, target, cost, reverse_cost
+</span><span class="hll"><span class="linenos">18</span>  FROM edges
+</span><span class="hll"><span class="linenos">19</span>  WHERE source IN (SELECT * FROM vertices_in_graph)
+</span><span class="hll"><span class="linenos">20</span>  AND target IN (SELECT * FROM vertices_in_graph)
+</span><span class="linenos">21</span>  $$,
+<span class="linenos">22</span>  departure, destination, false);
+<span class="linenos">23</span>$BODY$
+<span class="linenos">24</span>LANGUAGE SQL VOLATILE;
+<span class="linenos">25</span>CREATE FUNCTION
 </pre></div>
 </div>
 <p class="rubric">Caso 1</p>
 <p>Cuando el origen y el destino pertenecen al grafo contraído, se encuentra ruta.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">my_dijkstra</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
-<span class="o">-----+----------+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">2</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="mi">10</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>        <span class="mi">10</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>        <span class="mi">10</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">2</span>
 <span class="p">(</span><span class="mi">3</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -885,8 +886,8 @@
 <p>Cuando el origen y/o el destino pertenecen a un subgrafo de aristas, no se encuentra una ruta.</p>
 <p>En este caso, el grafo contraído no tiene una arista que se conecte con el nodo <span class="math notranslate nohighlight">\(4\)</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">my_dijkstra</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
-<span class="o">-----+----------+------+------+------+----------</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
 <span class="p">(</span><span class="mi">0</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -895,8 +896,8 @@
 <p>Cuando el origen y/o el destino pertenecen a un vértice, no se encuentra ruta.</p>
 <p>En este caso, el grafo contraído no tiene algún arista que conecte con el nodo <span class="math notranslate nohighlight">\(7\)</span> ni con el nodo <span class="math notranslate nohighlight">\(4\)</span> del segundo caso.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">my_dijkstra</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
-<span class="o">-----+----------+------+------+------+----------</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
 <span class="p">(</span><span class="mi">0</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -906,57 +907,58 @@
 <h4><a class="toc-backref" href="#id14" role="doc-backlink">Caso 2: El origen y/o el destino pertenecen a un subgrafo de aristas.</a><a class="headerlink" href="#case-2-source-and-or-target-belong-to-an-edge-subgraph" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Refinar la función anterior para incluir nodos que pertenezcan a una arista.</p>
 <ul class="simple">
-<li><p>Los vértices que deben ampliarse se calculan en las líneas 10 a 16.</p></li>
-<li><p>Añadiendo al grafo contraído esa sección adicional en las líneas 25 a 27.</p></li>
+<li><p>The vertices that need to be expanded are calculated on lines 11 to 17.</p></li>
+<li><p>Adding to the contracted graph that additional section on lines 26 to 28.</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>CREATE OR REPLACE FUNCTION my_dijkstra(
 <span class="linenos"> 2</span>  departure BIGINT, destination BIGINT,
 <span class="linenos"> 3</span>  OUT seq INTEGER, OUT path_seq INTEGER,
-<span class="linenos"> 4</span>  OUT node BIGINT, OUT edge BIGINT,
-<span class="linenos"> 5</span>  OUT cost FLOAT, OUT agg_cost FLOAT)
-<span class="linenos"> 6</span>RETURNS SETOF RECORD AS
-<span class="linenos"> 7</span>$BODY$
-<span class="linenos"> 8</span>SELECT * FROM pgr_dijkstra(
-<span class="linenos"> 9</span>  $$
-<span class="hll"><span class="linenos">10</span>  WITH
-</span><span class="hll"><span class="linenos">11</span>  edges_to_expand AS (
-</span><span class="hll"><span class="linenos">12</span>    SELECT id
-</span><span class="hll"><span class="linenos">13</span>    FROM edges
-</span><span class="hll"><span class="linenos">14</span>    WHERE ARRAY[$$ || departure || $$]::BIGINT[] &lt;@ contracted_vertices
-</span><span class="hll"><span class="linenos">15</span>    OR ARRAY[$$ || destination || $$]::BIGINT[] &lt;@ contracted_vertices
-</span><span class="hll"><span class="linenos">16</span>  ),
-</span><span class="linenos">17</span>
-<span class="linenos">18</span>  vertices_in_graph AS (
-<span class="linenos">19</span>    SELECT id
-<span class="linenos">20</span>    FROM vertices
-<span class="linenos">21</span>    WHERE is_contracted = false
-<span class="linenos">22</span>
-<span class="linenos">23</span>    UNION
-<span class="linenos">24</span>
-<span class="hll"><span class="linenos">25</span>    SELECT unnest(contracted_vertices)
-</span><span class="hll"><span class="linenos">26</span>    FROM edges
-</span><span class="hll"><span class="linenos">27</span>    WHERE id IN (SELECT id FROM edges_to_expand)
-</span><span class="linenos">28</span>  )
-<span class="linenos">29</span>
-<span class="linenos">30</span>  SELECT id, source, target, cost, reverse_cost
-<span class="linenos">31</span>  FROM edges
-<span class="linenos">32</span>  WHERE source IN (SELECT * FROM vertices_in_graph)
-<span class="linenos">33</span>  AND target IN (SELECT * FROM vertices_in_graph)
-<span class="linenos">34</span>  $$,
-<span class="linenos">35</span>  departure, destination, false);
-<span class="linenos">36</span>$BODY$
-<span class="linenos">37</span>LANGUAGE SQL VOLATILE;
-<span class="linenos">38</span>CREATE FUNCTION
+<span class="linenos"> 4</span>  OUT start_vid BIGINT, OUT end_vid BIGINT,
+<span class="linenos"> 5</span>  OUT node BIGINT, OUT edge BIGINT,
+<span class="linenos"> 6</span>  OUT cost FLOAT, OUT agg_cost FLOAT)
+<span class="linenos"> 7</span>RETURNS SETOF RECORD AS
+<span class="linenos"> 8</span>$BODY$
+<span class="linenos"> 9</span>SELECT * FROM pgr_dijkstra(
+<span class="linenos">10</span>  $$
+<span class="hll"><span class="linenos">11</span>  WITH
+</span><span class="hll"><span class="linenos">12</span>  edges_to_expand AS (
+</span><span class="hll"><span class="linenos">13</span>    SELECT id
+</span><span class="hll"><span class="linenos">14</span>    FROM edges
+</span><span class="hll"><span class="linenos">15</span>    WHERE ARRAY[$$ || departure || $$]::BIGINT[] &lt;@ contracted_vertices
+</span><span class="hll"><span class="linenos">16</span>    OR ARRAY[$$ || destination || $$]::BIGINT[] &lt;@ contracted_vertices
+</span><span class="hll"><span class="linenos">17</span>  ),
+</span><span class="linenos">18</span>
+<span class="linenos">19</span>  vertices_in_graph AS (
+<span class="linenos">20</span>    SELECT id
+<span class="linenos">21</span>    FROM vertices
+<span class="linenos">22</span>    WHERE is_contracted = false
+<span class="linenos">23</span>
+<span class="linenos">24</span>    UNION
+<span class="linenos">25</span>
+<span class="hll"><span class="linenos">26</span>    SELECT unnest(contracted_vertices)
+</span><span class="hll"><span class="linenos">27</span>    FROM edges
+</span><span class="hll"><span class="linenos">28</span>    WHERE id IN (SELECT id FROM edges_to_expand)
+</span><span class="linenos">29</span>  )
+<span class="linenos">30</span>
+<span class="linenos">31</span>  SELECT id, source, target, cost, reverse_cost
+<span class="linenos">32</span>  FROM edges
+<span class="linenos">33</span>  WHERE source IN (SELECT * FROM vertices_in_graph)
+<span class="linenos">34</span>  AND target IN (SELECT * FROM vertices_in_graph)
+<span class="linenos">35</span>  $$,
+<span class="linenos">36</span>  departure, destination, false);
+<span class="linenos">37</span>$BODY$
+<span class="linenos">38</span>LANGUAGE SQL VOLATILE;
+<span class="linenos">39</span>CREATE FUNCTION
 </pre></div>
 </div>
 <p class="rubric">Caso 1</p>
 <p>Cuando el origen y el destino pertenecen al grafo contraído, se encuentra ruta.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">my_dijkstra</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
-<span class="o">-----+----------+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">2</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="mi">10</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>        <span class="mi">10</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>        <span class="mi">10</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">2</span>
 <span class="p">(</span><span class="mi">3</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -965,11 +967,11 @@
 <p>Cuando el origen y/o el destino pertenecen a un subgrafo de arista, entonces se encuentra una ruta.</p>
 <p>El grafo de ruteo ahora tiene un arista que se conecta con el nodo <span class="math notranslate nohighlight">\(4\)</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">my_dijkstra</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
-<span class="o">-----+----------+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>   <span class="mi">21</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">3</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="mi">15</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>        <span class="mi">15</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>   <span class="mi">21</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>        <span class="mi">15</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">3</span>
 <span class="p">(</span><span class="mi">3</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -978,8 +980,8 @@
 <p>Cuando el origen y/o el destino pertenecen a un vértice, no se encuentra ruta.</p>
 <p>En este caso, el grafo contraído no tiene una arista que se conecte con el nodo <span class="math notranslate nohighlight">\(7\)</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">my_dijkstra</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
-<span class="o">-----+----------+------+------+------+----------</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
 <span class="p">(</span><span class="mi">0</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -989,70 +991,71 @@
 <h4><a class="toc-backref" href="#id15" role="doc-backlink">Caso 3: El origen y/o el destino pertenecen a un vértice.</a><a class="headerlink" href="#case-3-source-and-or-target-belong-to-a-vertex" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Refinar la función anterior para incluir nodos que pertenezcan a una arista.</p>
 <ul class="simple">
-<li><p>Los vértices que deben ampliarse se calculan en las líneas 18 a 23.</p></li>
+<li><p>The vertices that need to be expanded are calculated on lines 19 to 24.</p></li>
 <li><p>Añadiendo al grafo contraído esa sección adicional en las líneas 38 a 40.</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>CREATE OR REPLACE FUNCTION my_dijkstra(
 <span class="linenos"> 2</span>  departure BIGINT, destination BIGINT,
 <span class="linenos"> 3</span>  OUT seq INTEGER, OUT path_seq INTEGER,
-<span class="linenos"> 4</span>  OUT node BIGINT, OUT edge BIGINT,
-<span class="linenos"> 5</span>  OUT cost FLOAT, OUT agg_cost FLOAT)
-<span class="linenos"> 6</span>RETURNS SETOF RECORD AS
-<span class="linenos"> 7</span>$BODY$
-<span class="linenos"> 8</span>SELECT * FROM pgr_dijkstra(
-<span class="linenos"> 9</span>  $$
-<span class="linenos">10</span>  WITH
-<span class="linenos">11</span>  edges_to_expand AS (
-<span class="linenos">12</span>    SELECT id
-<span class="linenos">13</span>    FROM edges
-<span class="linenos">14</span>    WHERE ARRAY[$$ || departure || $$]::BIGINT[] &lt;@ contracted_vertices
-<span class="linenos">15</span>    OR ARRAY[$$ || destination || $$]::BIGINT[] &lt;@ contracted_vertices
-<span class="linenos">16</span>  ),
-<span class="linenos">17</span>
-<span class="hll"><span class="linenos">18</span>  vertices_to_expand AS (
-</span><span class="hll"><span class="linenos">19</span>    SELECT id
-</span><span class="hll"><span class="linenos">20</span>    FROM vertices
-</span><span class="hll"><span class="linenos">21</span>    WHERE ARRAY[$$ || departure || $$]::BIGINT[] &lt;@ contracted_vertices
-</span><span class="hll"><span class="linenos">22</span>    OR ARRAY[$$ || destination || $$]::BIGINT[] &lt;@ contracted_vertices
-</span><span class="hll"><span class="linenos">23</span>  ),
-</span><span class="linenos">24</span>
-<span class="linenos">25</span>  vertices_in_graph AS (
-<span class="linenos">26</span>    SELECT id
-<span class="linenos">27</span>    FROM vertices
-<span class="linenos">28</span>    WHERE is_contracted = false
-<span class="linenos">29</span>
-<span class="linenos">30</span>    UNION
-<span class="linenos">31</span>
-<span class="linenos">32</span>    SELECT unnest(contracted_vertices)
-<span class="linenos">33</span>    FROM edges
-<span class="linenos">34</span>    WHERE id IN (SELECT id FROM edges_to_expand)
-<span class="linenos">35</span>
-<span class="linenos">36</span>    UNION
-<span class="linenos">37</span>
-<span class="hll"><span class="linenos">38</span>    SELECT unnest(contracted_vertices)
-</span><span class="hll"><span class="linenos">39</span>    FROM vertices
-</span><span class="hll"><span class="linenos">40</span>    WHERE id IN (SELECT id FROM vertices_to_expand)
-</span><span class="linenos">41</span>  )
-<span class="linenos">42</span>
-<span class="linenos">43</span>  SELECT id, source, target, cost, reverse_cost
-<span class="linenos">44</span>  FROM edges
-<span class="linenos">45</span>  WHERE source IN (SELECT * FROM vertices_in_graph)
-<span class="linenos">46</span>  AND target IN (SELECT * FROM vertices_in_graph)
-<span class="linenos">47</span>  $$,
-<span class="linenos">48</span>  departure, destination, false);
-<span class="linenos">49</span>$BODY$
-<span class="linenos">50</span>LANGUAGE SQL VOLATILE;
-<span class="linenos">51</span>CREATE FUNCTION
+<span class="linenos"> 4</span>  OUT start_vid BIGINT, OUT end_vid BIGINT,
+<span class="linenos"> 5</span>  OUT node BIGINT, OUT edge BIGINT,
+<span class="linenos"> 6</span>  OUT cost FLOAT, OUT agg_cost FLOAT)
+<span class="linenos"> 7</span>RETURNS SETOF RECORD AS
+<span class="linenos"> 8</span>$BODY$
+<span class="linenos"> 9</span>SELECT * FROM pgr_dijkstra(
+<span class="linenos">10</span>  $$
+<span class="linenos">11</span>  WITH
+<span class="linenos">12</span>  edges_to_expand AS (
+<span class="linenos">13</span>    SELECT id
+<span class="linenos">14</span>    FROM edges
+<span class="linenos">15</span>    WHERE ARRAY[$$ || departure || $$]::BIGINT[] &lt;@ contracted_vertices
+<span class="linenos">16</span>    OR ARRAY[$$ || destination || $$]::BIGINT[] &lt;@ contracted_vertices
+<span class="linenos">17</span>  ),
+<span class="linenos">18</span>
+<span class="hll"><span class="linenos">19</span>  vertices_to_expand AS (
+</span><span class="hll"><span class="linenos">20</span>    SELECT id
+</span><span class="hll"><span class="linenos">21</span>    FROM vertices
+</span><span class="hll"><span class="linenos">22</span>    WHERE ARRAY[$$ || departure || $$]::BIGINT[] &lt;@ contracted_vertices
+</span><span class="hll"><span class="linenos">23</span>    OR ARRAY[$$ || destination || $$]::BIGINT[] &lt;@ contracted_vertices
+</span><span class="hll"><span class="linenos">24</span>  ),
+</span><span class="linenos">25</span>
+<span class="linenos">26</span>  vertices_in_graph AS (
+<span class="linenos">27</span>    SELECT id
+<span class="linenos">28</span>    FROM vertices
+<span class="linenos">29</span>    WHERE is_contracted = false
+<span class="linenos">30</span>
+<span class="linenos">31</span>    UNION
+<span class="linenos">32</span>
+<span class="linenos">33</span>    SELECT unnest(contracted_vertices)
+<span class="linenos">34</span>    FROM edges
+<span class="linenos">35</span>    WHERE id IN (SELECT id FROM edges_to_expand)
+<span class="linenos">36</span>
+<span class="linenos">37</span>    UNION
+<span class="linenos">38</span>
+<span class="hll"><span class="linenos">39</span>    SELECT unnest(contracted_vertices)
+</span><span class="hll"><span class="linenos">40</span>    FROM vertices
+</span><span class="hll"><span class="linenos">41</span>    WHERE id IN (SELECT id FROM vertices_to_expand)
+</span><span class="linenos">42</span>  )
+<span class="linenos">43</span>
+<span class="linenos">44</span>  SELECT id, source, target, cost, reverse_cost
+<span class="linenos">45</span>  FROM edges
+<span class="linenos">46</span>  WHERE source IN (SELECT * FROM vertices_in_graph)
+<span class="linenos">47</span>  AND target IN (SELECT * FROM vertices_in_graph)
+<span class="linenos">48</span>  $$,
+<span class="linenos">49</span>  departure, destination, false);
+<span class="linenos">50</span>$BODY$
+<span class="linenos">51</span>LANGUAGE SQL VOLATILE;
+<span class="linenos">52</span>CREATE FUNCTION
 </pre></div>
 </div>
 <p class="rubric">Caso 1</p>
 <p>Cuando el origen y el destino pertenecen al grafo contraído, se encuentra ruta.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">my_dijkstra</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
-<span class="o">-----+----------+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">2</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="mi">10</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>        <span class="mi">10</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>        <span class="mi">10</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">2</span>
 <span class="p">(</span><span class="mi">3</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -1060,11 +1063,11 @@
 <p class="rubric">Caso 2</p>
 <p>El cambio de código no afecta a este caso, por lo que cuando el origen o el destino pertenecen a un subgrafo de aristas, aún se puede encontrar ruta.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">my_dijkstra</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
-<span class="o">-----+----------+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>   <span class="mi">21</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">3</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="mi">15</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>        <span class="mi">15</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>   <span class="mi">21</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>        <span class="mi">15</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">3</span>
 <span class="p">(</span><span class="mi">3</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -1073,13 +1076,13 @@
 <p>Cuando el origen y/o el destino pertenecen a un vértice, entonces se encuentra ruta.</p>
 <p>Ahora, el grafo de ruteo tiene un arista que se conecta con el nodo <span class="math notranslate nohighlight">\(7\)</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">my_dijkstra</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
-<span class="o">-----+----------+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">19</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span>
-   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">5</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="mi">15</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>        <span class="mi">15</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">19</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>        <span class="mi">15</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>        <span class="mi">15</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span>
+   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>        <span class="mi">15</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">5</span>
 <span class="p">(</span><span class="mi">5</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -1116,7 +1119,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.5.0-dev.<br/>
-      Actualizado por última vez en dic 29, 2022.<br/>
+      Actualizado por última vez en ene 01, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.0.0.<br/>
     </p>
   </div>

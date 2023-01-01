@@ -276,7 +276,22 @@
 </nav>
 <section id="pgrouting-3-5-0-release-notes">
 <h2><a class="toc-backref" href="#id1" role="doc-backlink">Notas de la versión 3.5.0 de pgRouting</a><a class="headerlink" href="#pgrouting-3-5-0-release-notes" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>No Changes Yet</p>
+<p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.5.0%22">Git closed
+milestone for 3.5.0</a></p>
+<p class="rubric">Official functions changes</p>
+<ul class="simple">
+<li><p>Dijkstra</p>
+<ul>
+<li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>One to One</cite>) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> columns.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>One to Many</cite>) added <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> column.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>Many to One</cite>) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 </section>
 <section id="pgrouting-3-4-2-release-notes">
 <h2><a class="toc-backref" href="#id2" role="doc-backlink">Notas de la versión 3.4.2 de pgRouting</a><a class="headerlink" href="#pgrouting-3-4-2-release-notes" title="Enlace permanente a este encabezado">¶</a></h2>
@@ -1595,7 +1610,7 @@ FindPostgreSQL.cmake</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.5.0-dev.<br/>
-      Actualizado por última vez en dic 29, 2022.<br/>
+      Actualizado por última vez en ene 01, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.0.0.<br/>
     </p>
   </div>
