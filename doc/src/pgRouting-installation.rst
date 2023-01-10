@@ -205,9 +205,9 @@ Installing the compilation dependencies
 
 .. parsed-literal::
 
-    sudo apt install postgresql-14
-    sudo apt install postgresql-server-dev-14
-    sudo apt install postgresql-14-postgis
+    sudo apt install postgresql-15
+    sudo apt install postgresql-server-dev-15
+    sudo apt install postgresql-15-postgis
 
 .. rubric:: Configuring PostgreSQL
 
@@ -320,7 +320,7 @@ For documentation and testing
     sudo apt install texlive
     sudo apt install doxygen
     sudo apt install libtap-parser-sourcehandler-pgtap-perl
-    sudo apt install postgresql-14-pgtap
+    sudo apt install postgresql-15-pgtap
 
 
 .. _install_configuring:
