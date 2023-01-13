@@ -183,11 +183,16 @@ BEGIN
         target BIGINT)';
     END IF;
     EXECUTE 'SELECT geometrytype('||quote_ident(n_geom)||') FROM '||_pgr_quote_ident(intab)||' limit 1' INTO geomtype;
-    RAISE DEBUG '  ------> Create geometry column of type %', geomtype;
-    EXECUTE 'SELECT addGeometryColumn('||quote_literal(sname)||','||quote_literal(outname)||','||quote_literal(n_geom)||','|| srid||', '||quote_literal(geomtype)||', 2)';
-    EXECUTE 'CREATE INDEX '||quote_ident(outname||'_'||n_geom||'_idx')||' ON '||_pgr_quote_ident(outtab)||' USING GIST ('||quote_ident(n_geom)||')';
-    EXECUTE 'SET client_min_messages TO '|| debuglevel;
-    RAISE DEBUG '  ------>OK';
+    IF geomtype IS NULL THEN
+      RAISE NOTICE '-------> Table %.% must contain invalid geometries',sname, tname;
+      RETURN 'FAIL';
+    ELSE
+      RAISE DEBUG '  ------> Create geometry column of type %', geomtype;
+      EXECUTE 'SELECT addGeometryColumn('||quote_literal(sname)||','||quote_literal(outname)||','||quote_literal(n_geom)||','|| srid||', '||quote_literal(geomtype)||', 2)';
+      EXECUTE 'CREATE INDEX '||quote_ident(outname||'_'||n_geom||'_idx')||' ON '||_pgr_quote_ident(outtab)||' USING GIST ('||quote_ident(n_geom)||')';
+      EXECUTE 'SET client_min_messages TO '|| debuglevel;
+      RAISE DEBUG '  ------>OK';
+    END IF;
   END;
 ----------------
 
