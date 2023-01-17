@@ -38,21 +38,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "coloring/pgr_sequentialVertexColoring.hpp"
 
-/** @file sequentialVertexColoring_driver.cpp
- * @brief Handles actual calling of function in the `pgr_sequentialVertexColoring.hpp` file.
- *
- */
+/** @file sequentialVertexColoring_driver.cpp */
 
-/***********************************************************************
- *
- *   pgr_sequentialVertexColoring(edges_sql TEXT);
- *
- ***********************************************************************/
 
 /** @brief Calls the main function defined in the C++ Header file.
  *
  * @param graph      the graph containing the edges
- * @param log        stores the log message
  *
  * @returns results, when results are found
  */
@@ -85,8 +76,6 @@ pgr_sequentialVertexColoring(G &graph) {
  * @param log_msg        stores the log message
  * @param notice_msg     stores the notice message
  * @param err_msg        stores the error message
- *
- * @returns void
  */
 
 void

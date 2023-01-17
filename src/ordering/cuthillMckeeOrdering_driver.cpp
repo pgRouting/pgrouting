@@ -51,7 +51,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /** @brief Calls the main function defined in the C++ Header file.
  *
  * @param graph      the graph containing the edges
- * @param log        stores the log message
  *
  * @returns results, when results are found
  */
@@ -84,8 +83,6 @@ cuthillMckeeOrdering(G &graph) {
  * @param log_msg        stores the log message
  * @param notice_msg     stores the notice message
  * @param err_msg        stores the error message
- *
- * @returns void
  */
 
 void do_cuthillMckeeOrdering(

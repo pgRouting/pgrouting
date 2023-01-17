@@ -97,7 +97,6 @@ class Pgr_pickDeliver : public PD_problem {
 
     /** message controller for all classes */
     Pgr_messages msg;
-    /** @} */
 
 
  private:
