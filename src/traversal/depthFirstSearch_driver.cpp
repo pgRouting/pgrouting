@@ -42,17 +42,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  */
 
-/***********************************************************************
- *
- *   pgr_depthFirstSearch(
- *       edges_sql TEXT,
- *       root_vids ANYARRAY,
- *       max_depth BIGINT DEFAULT 9223372036854775807,
- *       directed BOOLEAN DEFAULT true
- *   );
- *
- ***********************************************************************/
-
 /** @brief Calls the main function defined in the C++ Header file.
  *
  * Also sorts the root vertices in an increasing order,
@@ -63,7 +52,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  * @param roots      the root vertices
  * @param directed   whether the graph is directed or undirected
  * @param max_depth  the maximum depth of traversal
- * @param log        stores the log message
  *
  * @returns results, when results are found
  */
@@ -111,8 +99,6 @@ pgr_depthFirstSearch(
  * @param log_msg        stores the log message
  * @param notice_msg     stores the notice message
  * @param err_msg        stores the error message
- *
- * @returns void
  */
 void
 do_pgr_depthFirstSearch(

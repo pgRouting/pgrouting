@@ -187,9 +187,9 @@ TSP::tsp(int64_t start_vid) {
 
 
 /**
- * @params[in] start_vid user's start vertex identifier, 0 when not set
- * @params[in] end_vid user's end vertex identifier, 0 when not set
- * @params[in] strict Only applies when both values are set
+ * @param [in] start_vid user's start vertex identifier, 0 when not set
+ * @param [in] end_vid user's end vertex identifier, 0 when not set
+ * @param [in] max_cycles Upper limit of ccycles
  */
 std::deque<std::pair<int64_t, double>>
 TSP::tsp(

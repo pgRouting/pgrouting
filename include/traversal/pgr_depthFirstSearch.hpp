@@ -116,6 +116,7 @@ class Pgr_depthFirstSearch {
       * @param root           the root vertex
       * @param visited_order  vector which will contain the edges of the resulting traversal
       * @param directed       whether the graph is directed or undirected
+      * @param max_depth      Upper limit for depth to be returned
       *
       * @returns bool  @b true, when results are found
       */

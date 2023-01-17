@@ -40,21 +40,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "drivers/circuits/hawickcircuits_driver.h"
 #include "circuits/hawickcircuits.hpp"
 
-/** @file hawickCircuits_driver.cpp
- * @brief Handles actual calling of function in the `hawickcircuits.hpp` file.
- *
- */
+/** @file hawickCircuits_driver.cpp */
 
-/***********************************************************************
- *
- *   pgr_hawickcircuits(edges_sql TEXT);
- *
- ***********************************************************************/
 
 /** @brief Calls the main function defined in the C++ Header file.
  *
  * @param graph      the graph containing the edges
- * @param log        stores the log message
  *
  * @returns results, when results are found
  */
@@ -87,8 +78,6 @@ pgr_hawickCircuits(G &graph) {
  * @param log_msg        stores the log message
  * @param notice_msg     stores the notice message
  * @param err_msg        stores the error message
- *
- * @returns void
  */
 
 void

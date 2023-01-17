@@ -32,7 +32,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <math.h>
 #include <float.h>
 #include <limits.h>
-/* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
 #else
@@ -142,7 +141,11 @@ get_combinations_2_columns(
     time_msg("reading combinations", start_t, clock());
 }
 
-/* select source, target */
+/**
+ * @param [in] combinations_sql
+ * @param [out] combinations II_t_rt
+ * @param [out] total_combinations
+ */
 void
 pgr_get_combinations(
         char *combinations_sql,
