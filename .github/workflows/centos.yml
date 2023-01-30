@@ -6,8 +6,8 @@ name: Build for Centos
 on:
   workflow_dispatch:
   push:
-    #paths:
-    #  - '.github/workflows/centos.yml'
+    paths:
+      - '.github/workflows/centos.yml'
 
     branches-ignore:
       - 'gh-pages'
