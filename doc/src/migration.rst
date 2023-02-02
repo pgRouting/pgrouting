@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/migration.html>`__
-  (`3.4 <https://docs.pgrouting.org/3.4/en/migration.html>`__)
+  (`3.5 <https://docs.pgrouting.org/3.5/en/migration.html>`__)
+  `3.4 <https://docs.pgrouting.org/3.4/en/migration.html>`__
 
 Migration guide
 ===============================================================================
@@ -35,8 +36,76 @@ new replacement functions. This also affects the restrictions.
 
 .. contents:: Contents
 
+Migration of ``pgr_dijkstra``
+-------------------------------------------------------------------------------
+
+Starting from `v3.5.0 <https://docs.pgrouting.org/3.5/en/migration.html>`__
+
+Signatures to be migrated:
+
+* ``pgr_dijkstra`` (`One to One`)
+* ``pgr_dijkstra`` (`One to Many`)
+* ``pgr_dijkstra`` (`Many to One`)
+
+:Before Migration:
+
+* Output columns are |old-generic-result|
+
+  * Depending on the overload used the columns ``start_vid`` and ``end_vid``
+    might be missing:
+
+    * ``pgr_dijkstra`` (`One to One`) does not have ``start_vid`` and
+      ``end_vid``.
+    * ``pgr_dijkstra`` (`One to Many`) does not have ``start_vid``.
+    * ``pgr_dijkstra`` (`Many to One`) does not have ``end_vid``.
+
+:Migration:
+
+* Be aware of the existance of the additional columns.
+
+* In ``pgr_dijkstra`` (`One to One`)
+
+  * ``start_vid`` contains the **start vid** parameter value.
+  * ``end_vid`` contains the **end vid** parameter value.
+
+.. literalinclude:: migration.queries
+   :start-after: --dijkstra1
+   :end-before: --dijkstra2
+
+* In ``pgr_dijkstra`` (`One to Many`)
+
+  * ``start_vid`` contains the **start vid** parameter value.
+
+.. literalinclude:: migration.queries
+   :start-after: --dijkstra2
+   :end-before: --dijkstra3
+
+* In ``pgr_dijkstra`` (`Many to One`)
+
+  * ``end_vid`` contains the **end vid** parameter value.
+
+.. literalinclude:: migration.queries
+   :start-after: --dijkstra3
+   :end-before: --dijkstra4
+
+* If needed filter out the added columns, for example:
+
+.. literalinclude:: migration.queries
+   :start-after: --dijkstra4
+   :end-before: --dijkstra5
+
+* If needed add the new columns, for example:
+
+  * In `v3.0 <https://docs.pgrouting.org/3.0/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph>`__
+    the function ``my_dijkstra`` uses ``pgr_dijkstra``.
+  * Starting from `v3.5 <https://docs.pgrouting.org/3.5/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph>`__
+    the function ``my_dijkstra`` returns the new additional columns of
+    ``pgr_dijkstra``.
+
 Migration of ``pgr_maxCardinalityMatch``
 -------------------------------------------------------------------------------
+
+Starting from `v3.4.0 <https://docs.pgrouting.org/3.4/en/migration.html>`__
 
 Signature to be migrated:
 
@@ -84,6 +153,8 @@ Migration is needed, because:
 
 Migration of restrictions
 -------------------------------------------------------------------------------
+
+Starting from `v3.4.0 <https://docs.pgrouting.org/3.4/en/migration.html>`__
 
 The structure of the restrictions have changed:
 
@@ -196,6 +267,8 @@ The migrated table contents:
 
 Migration of ``pgr_trsp`` (Vertices)
 -------------------------------------------------------------------------------
+
+Starting from `v3.4.0 <https://docs.pgrouting.org/3.4/en/migration.html>`__
 
 Signature to be migrated:
 

@@ -36,15 +36,10 @@ typedef struct II_t_rt II_t_rt;
 SELECT source, target
 FROM combinations_table;
 ~~~~
-
-
-@param[in] combinations_sql
-@param[out] combinations
-@param[out] combinations_edges
 */
 void pgr_get_combinations(
-        char *combinations_sql,
-        II_t_rt **combinations,
-        size_t *total_combinations);
+        char *,
+        II_t_rt **,
+        size_t *);
 
 #endif  // INCLUDE_C_COMMON_COMBINATIONS_INPUT_H_

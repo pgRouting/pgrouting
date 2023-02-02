@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/contraction-family.html>`__
-  (`3.4 <https://docs.pgrouting.org/3.4/en/contraction-family.html>`__)
+  (`3.5 <https://docs.pgrouting.org/3.5/en/contraction-family.html>`__)
+  `3.4 <https://docs.pgrouting.org/3.4/en/contraction-family.html>`__
   `3.3 <https://docs.pgrouting.org/3.3/en/contraction-family.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/contraction-family.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/contraction-family.html>`__
@@ -610,10 +611,10 @@ and target in a contracted graph:
 Case 1: Both source and target belong to the contracted graph.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Using the `Edges that belong to the contracted graph.`_ on lines 10 to 19.
+Using the `Edges that belong to the contracted graph.`_ on lines 11 to 20.
 
 .. literalinclude:: doc-contraction-family.queries
-   :emphasize-lines: 10-19
+   :emphasize-lines: 11-20
    :start-after: -- case1
    :end-before: -- use1
    :linenos:
@@ -653,11 +654,11 @@ Case 2: Source and/or target belong to an edge subgraph.
 
 Refining the above function to include nodes that belong to an edge.
 
-- The vertices that need to be expanded are calculated on lines 10 to 16.
-- Adding to the contracted graph that additional section on lines 25 to 27.
+- The vertices that need to be expanded are calculated on lines 11 to 17.
+- Adding to the contracted graph that additional section on lines 26 to 28.
 
 .. literalinclude:: doc-contraction-family.queries
-   :emphasize-lines: 10-16, 25-27
+   :emphasize-lines: 11-17, 26-28
    :start-after: -- case2
    :end-before: -- use2
    :linenos:
@@ -696,11 +697,11 @@ Case 3: Source and/or target belong to a vertex.
 
 Refining the above function to include nodes that belong to an edge.
 
-- The vertices that need to be expanded are calculated on lines 18 to 23.
+- The vertices that need to be expanded are calculated on lines 19 to 24.
 - Adding to the contracted graph that additional section on lines 38 to 40.
 
 .. literalinclude:: doc-contraction-family.queries
-   :emphasize-lines: 18-23, 38-40
+   :emphasize-lines: 19-24, 39-41
    :start-after: -- case3
    :end-before: -- use3
    :linenos:

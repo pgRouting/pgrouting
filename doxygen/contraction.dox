@@ -81,13 +81,13 @@ output: G'(V',E'), removed_vertices
 The contracted graph will be represented with two parameters, the modified Graph, and the removed_vertices set.
 
 ~~~~{.c}
-removed_vertices = {(v,1):{2}, (e,-1):{3}}.
+removed = {E{1},  V{2, 3}}.
 ~~~~
 
 
 The above notation indicates:
-  - Vertex 2 is removed, and belongs to vertex 1 subgraph
-  - Vertex 3 is removed, and belongs to edge -1 subgraph
+  - Edge 2 is removed
+  - Vertex 2, and 3 are removed
 
 
 
@@ -153,15 +153,9 @@ G = {E:{1(1, 2)}, V:{1, 2} }
 
 Visually the graph is
 
-
-@todo (Rohith) practice a little graphviz  :)
-
-@image html  twoNodesoneEdge_a.png
-
 @dot
 digraph G {
     1 -> 2 [label="id = 1"];
-    2 [color = lightblue,style=filled];
 }
 
 @enddot
@@ -171,7 +165,7 @@ Initial set up:
 ----------------
 
 ~~~~{.c}
-removed_vertices={}
+removed={}
 V1 = {2}
 V2 = {}
 ~~~~
@@ -199,12 +193,16 @@ Results:
 ~~~~{.c}
 
     G = {V:{1}, E:{}}
-    removed_vertices = {(v, 1):{2}}
-~~~~{.c}
+    removed = {E{1}, V{2}}
+~~~~
 
 Visually the graph is
 
-@image html  ../doc/images/twoNodesoneEdge_b.png
+@dot
+digraph G {
+    1 -> 2 [label="id = 1, has={2}"];
+}
+@enddot
 
 
 @subsection contraction_examples_linear Linear Contraction
@@ -220,12 +218,17 @@ Visually the graph is
 1. Input: G = {V:{1, 2, 3}, E:{(1, 2), (2, 3)}}
 
 Visually the graph is
-@image html  ../doc/images/threeNodestwoEdges_a.png
+@dot
+digraph G {
+    1 -> 2 [label="id = 1"];
+    2 -> 3 [label="id = 2"];
+}
+@enddot
 
 
 2. initial set up
 ~~~~{.c}
-removed_vertices={}
+removed={}
 V1 = {3}
 V2 = {2}
 ~~~~
@@ -234,16 +237,20 @@ V2 = {2}
 ~~~~{.c}
 V2 = {2} is not empty
 
-    V1 = {3}
-    removed_vertices = {(e, -1):{2}}
+    removed = {E{1}, V{2}}
+    add = {E{-1(1,3)}, V{}}
     V2 = {}
-    G = {V:{1, 3}, E:{-1(1,3,c=2)}}
+    G = {E:{-1(1,3,c=2)}, V{1,3}}
 
 V2 is empty
 ~~~~
 
 Visually the graph is
-@image html  threeNodestwoEdges_b.png
+@dot
+digraph G {
+    1 -> 3 [label="id = -1, cost = 2, has={2}"];
+}
+@enddot
 
 4. Since V2 is empty we go on to the next contraction operation
 ~~~~{.c}
@@ -251,7 +258,7 @@ V1 = {3} is not empty
 
     V1 = {}
     V2 = {}
-    removed_vertices = {(v, 1):{3, 2}}.
+    removed = {E{-1}, V{3}}.
     G = {V:{1}, E:{}}
 
 V1 is empty
@@ -260,12 +267,15 @@ V1 is empty
 
 5. Results
 ~~~~{.c}
-removed_vertices = {(v, 1):{3, 2}}.
 G = {V:{1}, E:{}}
 ~~~~
 
 Visually the graph is
-@image html  threeNodestwoEdges_c.png
+@dot
+digraph G {
+    1 [label="1, has={2, 3}"];
+}
+@enddot
 
 
 

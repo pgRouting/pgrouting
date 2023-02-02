@@ -3,9 +3,20 @@ name: Build for Ubuntu
 # manually triggered workflow
 # - 5 * 2 * 2 = 20 jobs are triggered
 # - So many jobs take too much time
+# When this file changes
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/ubuntu.yml'
+
+    branches-ignore:
+      - 'gh-pages'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -18,9 +29,9 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-          psql: [10,11,12,13,14]
+          psql: [11,12,13,14]
           postgis: [3]
-          os: [ubuntu-latest, ubuntu-18.04]
+          os: [ubuntu-latest, ubuntu-20.04, ubuntu-18.04]
 
     steps:
       - uses: actions/checkout@v3
@@ -69,5 +80,12 @@ jobs:
       - name: Test
         run: |
           sudo service postgresql start
-          sudo -u postgres createdb -p ${PGPORT}  ___pgr___test___
-          sudo -u postgres bash ./tools/testers/pg_prove_tests.sh postgres ${PGPORT}  Release
+          export PG_RUNNER_USER=`whoami`
+          sudo -u postgres psql -p ${PGPORT} -c "DROP DATABASE IF EXISTS ___pgr___test___;"
+          sudo -u postgres psql -p ${PGPORT} -c "DROP DATABASE IF EXISTS \"${PG_RUNNER_USER}\";"
+          sudo -u postgres psql -p ${PGPORT} -c "DROP ROLE IF EXISTS \"${PG_RUNNER_USER}\";"
+          sudo -u postgres psql -p ${PGPORT} -c "CREATE ROLE \"${PG_RUNNER_USER}\" WITH LOGIN SUPERUSER;"
+          sudo -u postgres psql -p ${PGPORT} -c "CREATE DATABASE \"${PG_RUNNER_USER}\";"
+          psql -c "CREATE DATABASE ___pgr___test___;"
+          bash ./tools/testers/pg_prove_tests.sh ${PG_RUNNER_USER} ${PGPORT}  Release
+          psql -c "DROP DATABASE IF EXISTS ___pgr___test___;"

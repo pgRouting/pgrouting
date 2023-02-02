@@ -67,7 +67,7 @@ class Tw_node : public Dnode {
 
 
      /** @name accessors */
-     ///@ {
+     ///@{
 
      /*! @brief Returns the opening time.*/
      inline int64_t order() const {return m_order;}
@@ -105,7 +105,7 @@ class Tw_node : public Dnode {
       *   - the demand are valid for the requested type
       */
 
-     ///@ {
+     ///@{
 
 
      /*! @brief is_start
@@ -187,7 +187,7 @@ class Tw_node : public Dnode {
 
 
      /** @name document functions */
-     ///@ {
+     ///@{
      /*!
       * The actual arrival time at @b This node, given that:
       * @b this node is visited directly after @b other node

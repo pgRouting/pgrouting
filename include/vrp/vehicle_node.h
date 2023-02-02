@@ -48,7 +48,7 @@ namespace vrp {
 class Vehicle_node: public Tw_node {
  public:
      /** @name log */
-     ///@ {
+     ///@{
 
      friend std::ostream& operator<<(
              std::ostream &log, const Vehicle_node &node);
@@ -56,7 +56,7 @@ class Vehicle_node: public Tw_node {
      ///@}
 
      /** @name Node evaluation accessors */
-     ///@ {
+     ///@{
 
      /*! \brief Truck's travel_time from previous node to this node. */
      inline double travel_time() const {return m_travel_time;}
@@ -81,7 +81,7 @@ class Vehicle_node: public Tw_node {
 
 
      /** @name Accumulated evaluation accessors */
-     ///@ {
+     ///@{
 
      /*! \brief Truck's total times it has violated time windows. */
      inline int twvTot() const {return m_twvTot;}
@@ -108,7 +108,7 @@ class Vehicle_node: public Tw_node {
 
 
      /** @name State */
-     ///@ {
+     ///@{
 
      /*! \brief True when the total count for violations are 0 */
      bool feasible() const {return m_twvTot == 0 &&  m_cvTot == 0;}
@@ -134,7 +134,7 @@ class Vehicle_node: public Tw_node {
      ///@}
 
      /** @name mutators */
-     ///@ {
+     ///@{
      /*! @todo TODO evaluate with matrix also*/
      void evaluate(double cargoLimit);
      void evaluate(const Vehicle_node &pred, double cargoLimit, double speed);
@@ -150,7 +150,7 @@ class Vehicle_node: public Tw_node {
 
  private:
      /** @name Node evaluation members */
-     ///@ {
+     ///@{
 
      double m_travel_time;     ///< Travel time from last node
      double m_arrival_time;    ///< Arrival time at this node
@@ -161,7 +161,7 @@ class Vehicle_node: public Tw_node {
      ///@}
 
      /** @name Accumulated evaluation members */
-     ///@ {
+     ///@{
 
      double m_cargo;           ///< Accumulated cargo
      int    m_twvTot;          ///< Total count of TWV

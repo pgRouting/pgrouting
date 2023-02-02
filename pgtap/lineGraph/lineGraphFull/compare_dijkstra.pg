@@ -139,3 +139,5 @@ language plpgsql;
 
 SELECT * from lineGraphFullDijkstraEquivalence();
 
+SELECT finish();
+ROLLBACK;

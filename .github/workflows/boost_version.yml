@@ -17,7 +17,10 @@ name: Boost supported versions
 # See https://www.boost.org/users/history/
 # Currently
 # - boost::geometry has not changed anything we use
-# - boost::graph changed on 1.68 and 1.75 requires C++14
+#
+# - boost::graph changed on 1.80
+# - boost::graph 1.75 requires C++14
+# - boost::graph changed on 1.68
 # - 1.56 is the minimum version we ask
 
 on:
@@ -47,6 +50,10 @@ on:
     branches-ignore:
       - 'gh-pages'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
@@ -69,6 +76,13 @@ jobs:
           pgver=$(psql --version | grep -Po '(?<=psql \(PostgreSQL\) )[^;]+(?=\.\d \()')
           echo "PGVER=${pgver}" >> $GITHUB_ENV
           echo "PGIS=3" >> $GITHUB_ENV
+          PG_USER=$(whoami)
+          echo "PG_RUNNER_USER=${PG_USER}" >> $GITHUB_ENV
+          PG_PORT=5432
+          echo "PGPORT=${PG_PORT}" >> $GITHUB_ENV
+          sudo -u postgres psql -p "${PG_PORT}" -c "DROP ROLE IF EXISTS \"${PG_USER}\";"
+          sudo -u postgres psql -p "${PG_PORT}" -c "CREATE ROLE \"${PG_USER}\" WITH LOGIN SUPERUSER;"
+          sudo -u postgres psql -p "${PG_PORT}" -c "CREATE DATABASE \"${PG_USER}\";"
 
       - name: Add PostgreSQL APT repository
         run: |
@@ -117,5 +131,7 @@ jobs:
       - name: Test
         run: |
           sudo service postgresql start
-          sudo -u postgres createdb -p 5432  ___pgr___test___
-          sudo -u postgres bash ./tools/testers/pg_prove_tests.sh postgres 5432  Release
+          psql -c "CREATE DATABASE ___pgr___test___;"
+          DIR=$(git rev-parse --show-toplevel)
+          bash "${DIR}/tools/testers/setup_db.sh" "${PGPORT}" ___pgr___test___ "${PG_RUNNER_USER}" "3.5.0"
+          pg_prove  -Q -f --normalize --directives --recurse -U "${PG_RUNNER_USER}" -d ___pgr___test___ "pgtap"

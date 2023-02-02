@@ -282,4 +282,5 @@ SELECT * FROM pgr_contraction(
 SELECT set_eq('v4e4q23', 'v4e4q25', '5: Directed graph with four edges and no forbidden vertices');
 SELECT set_eq('v4e4q24', 'v4e4q25', '5: Directed graph with four edges and no forbidden vertices');
 
-
+SELECT finish();
+ROLLBACK;

@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgRouting-installation.html>`__
-  (`3.4 <https://docs.pgrouting.org/3.4/en/pgRouting-installation.html>`__)
+  (`3.5 <https://docs.pgrouting.org/3.5/en/pgRouting-installation.html>`__)
+  `3.4 <https://docs.pgrouting.org/3.4/en/pgRouting-installation.html>`__
   `3.3 <https://docs.pgrouting.org/3.3/en/pgRouting-installation.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgRouting-installation.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgRouting-installation.html>`__
@@ -204,9 +205,9 @@ Installing the compilation dependencies
 
 .. parsed-literal::
 
-    sudo apt install postgresql-14
-    sudo apt install postgresql-server-dev-14
-    sudo apt install postgresql-14-postgis
+    sudo apt install postgresql-15
+    sudo apt install postgresql-server-dev-15
+    sudo apt install postgresql-15-postgis
 
 .. rubric:: Configuring PostgreSQL
 
@@ -319,7 +320,7 @@ For documentation and testing
     sudo apt install texlive
     sudo apt install doxygen
     sudo apt install libtap-parser-sourcehandler-pgtap-perl
-    sudo apt install postgresql-14-pgtap
+    sudo apt install postgresql-15-pgtap
 
 
 .. _install_configuring:

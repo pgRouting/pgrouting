@@ -46,12 +46,12 @@ INSERT 0 9
 SELECT * FROM pgr_dijkstra(
   'SELECT id, source, target, cost FROM wiki',
   1, 5, false);
- seq | path_seq | node | edge | cost | agg_cost
------+----------+------+------+------+----------
-   1 |        1 |    1 |    2 |    9 |        0
-   2 |        2 |    3 |    6 |    2 |        9
-   3 |        3 |    6 |    9 |    9 |       11
-   4 |        4 |    5 |   -1 |    0 |       20
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         1 |       5 |    1 |    2 |    9 |        0
+   2 |        2 |         1 |       5 |    3 |    6 |    2 |        9
+   3 |        3 |         1 |       5 |    6 |    9 |    9 |       11
+   4 |        4 |         1 |       5 |    5 |   -1 |    0 |       20
 (4 rows)
 
 /* -- q4 */
@@ -421,8 +421,8 @@ SELECT * FROM pgr_dijkstra($$
   WHERE geom && (SELECT st_buffer(geom, 1) AS myarea
     FROM edges WHERE id = 2)$$,
   1, 2);
- seq | path_seq | node | edge | cost | agg_cost
------+----------+------+------+------+----------
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
 (0 rows)
 
 /* -- performance2 */

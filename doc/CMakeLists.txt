@@ -232,6 +232,7 @@ if (LOCALE)
     add_custom_target(locale
         COMMAND ${SPHINX_EXECUTABLE}
         -b gettext
+        -j auto
         -c "${PGR_DOCUMENTATION_SOURCE_DIR}"
         "${PGR_DOCUMENTATION_SOURCE_DIR}"
         "${CMAKE_SOURCE_DIR}/locale/pot"
@@ -269,7 +270,7 @@ foreach (target ${PROJECT_DOC_TARGETS})
             -v   # increase verbosity
             -W
             --keep-going
-            #-j auto
+            -j auto
             #-E  # don't use a saved environment, always read all file
             #-a  # write all files; default is to only write new and changed files
             -b ${target}

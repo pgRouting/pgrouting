@@ -19,14 +19,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(1156);
+SELECT CASE WHEN min_version('3.1.1') THEN plan(1300) ELSE plan(1) END;
 
-SET client_min_messages TO ERROR;
+UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
--- Compare final row of result (Only final row due to existence of multiple valid paths)
-
-CREATE or REPLACE FUNCTION edwardMoore_compare_dijkstra(MAX_LIMIT INTEGER default 17)
+CREATE or REPLACE FUNCTION edwardMoore_compare_dijkstra(cant INTEGER default 17)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -35,52 +32,45 @@ dijkstra_sql TEXT;
 edwardMoore TEXT;
 BEGIN
 
-    FOR i IN 1.. MAX_LIMIT LOOP
-        FOR j IN 1.. MAX_LIMIT LOOP
-
-            -- DIRECTED
-            inner_sql := 'SELECT id, source, target, road_work as cost, reverse_road_work as reverse_cost FROM roadworks';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', true) ORDER BY seq DESC LIMIT 1';
-
-            edwardMoore := 'SELECT * FROM pgr_edwardMoore($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', true) ORDER BY seq DESC LIMIT 1';
-            RETURN query SELECT set_eq(edwardMoore, dijkstra_sql, edwardMoore);
-
-
-            inner_sql := 'SELECT id, source, target, road_work as cost FROM roadworks';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', true) ORDER BY seq DESC LIMIT 1';
-
-            edwardMoore := 'SELECT * FROM pgr_edwardMoore($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', true) ORDER BY seq DESC LIMIT 1';
-            RETURN query SELECT set_eq(edwardMoore, dijkstra_sql, edwardMoore);
-
-
-
-            -- UNDIRECTED
-            inner_sql := 'SELECT id, source, target, road_work as cost, reverse_road_work as reverse_cost FROM roadworks';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', false) ORDER BY seq DESC LIMIT 1';
-
-            edwardMoore := 'SELECT * FROM pgr_edwardMoore($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', false) ORDER BY seq DESC LIMIT 1';
-            RETURN query SELECT set_eq(edwardMoore, dijkstra_sql, edwardMoore);
-
-
-            inner_sql := 'SELECT id, source, target, road_work as cost FROM roadworks';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', false) ORDER BY seq DESC LIMIT 1';
-
-            edwardMoore := 'SELECT * FROM pgr_edwardMoore($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', false) ORDER BY seq DESC LIMIT 1';
-            RETURN query SELECT set_eq(edwardMoore, dijkstra_sql, edwardMoore);
-
-
-        END LOOP;
-    END LOOP;
-
+  IF NOT min_version('3.1.1') THEN
+    RETURN QUERY SELECT skip(1, 'Something changed on version 3.1.0');
     RETURN;
+  END IF;
+
+  IF min_version('3.5.0') THEN
+
+    -- v3.5.0+
+    -- pgr_edwardMoore has out put is not standarized
+    RETURN QUERY SELECT compare_dijkstra_one_one('pgr_edwardMoore', true, 'seq, path_seq, node, edge, cost, agg_cost');
+    RETURN QUERY SELECT compare_dijkstra_one_one('pgr_edwardMoore', false, 'seq, path_seq, node, edge, cost, agg_cost');
+    RETURN QUERY SELECT compare_dijkstra_one_many('pgr_edwardMoore', true, 'seq, path_seq, end_vid, node, edge, cost, agg_cost');
+    RETURN QUERY SELECT compare_dijkstra_one_many('pgr_edwardMoore', false, 'seq, path_seq, end_vid, node, edge, cost, agg_cost');
+    RETURN QUERY SELECT compare_dijkstra_many_one('pgr_edwardMoore', true, 'seq, path_seq, start_vid, node, edge, cost, agg_cost');
+    RETURN QUERY SELECT compare_dijkstra_many_one('pgr_edwardMoore', false, 'seq, path_seq, start_vid, node, edge, cost, agg_cost');
+    RETURN QUERY SELECT compare_dijkstra_many_many('pgr_edwardMoore', true);
+    RETURN QUERY SELECT compare_dijkstra_many_many('pgr_edwardMoore', false);
+    RETURN QUERY SELECT compare_dijkstra_combinations('pgr_edwardMoore', true);
+    RETURN QUERY SELECT compare_dijkstra_combinations('pgr_edwardMoore', false);
+    RETURN;
+
+  END IF;
+
+  -- All These tests should work when pgr_edwardMoore 's output is standarized
+  RETURN QUERY SELECT compare_dijkstra_one_one('pgr_edwardMoore', true);
+  RETURN QUERY SELECT compare_dijkstra_one_one('pgr_edwardMoore', false);
+  RETURN QUERY SELECT compare_dijkstra_one_many('pgr_edwardMoore', true);
+  RETURN QUERY SELECT compare_dijkstra_one_many('pgr_edwardMoore', false);
+  RETURN QUERY SELECT compare_dijkstra_many_one('pgr_edwardMoore', true);
+  RETURN QUERY SELECT compare_dijkstra_many_one('pgr_edwardMoore', false);
+  RETURN QUERY SELECT compare_dijkstra_many_many('pgr_edwardMoore', true);
+  RETURN QUERY SELECT compare_dijkstra_many_many('pgr_edwardMoore', false);
+  IF min_version('3.2.0') THEN
+    RETURN QUERY SELECT compare_dijkstra_combinations('pgr_edwardMoore', true);
+    RETURN QUERY SELECT compare_dijkstra_combinations('pgr_edwardMoore', false);
+  ELSE
+    RETURN QUERY SELECT skip(4, 'Combinations signature added on version 3.2.0');
+  END IF;
+
 END
 $BODY$
 language plpgsql;

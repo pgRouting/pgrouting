@@ -61,6 +61,7 @@ my $version_3_1 = qr/(3.1.[\d+])/;
 my $version_3_2 = qr/(3.2.[\d+])/;
 my $version_3_3 = qr/(3.3.[\d+])/;
 my $version_3_4 = qr/(3.4.[\d+])/;
+my $version_3_5 = qr/(3.5.[\d+])/;
 # add minor here
 
 my $version_2 = qr/(2.[\d+].[\d+])/;
@@ -70,7 +71,7 @@ my $minor_format   = qr/([\d+].[\d+]).[\d+]/;
 my $mayor_format   = qr/([\d+]).[\d+].[\d+]/;
 
 
-my $current = $version_3_4;
+my $current = $version_3_5;
 
 
 sub Usage {
@@ -220,6 +221,13 @@ sub generate_upgrade_script {
         # updating to 3.4+
         if ($old_mayor == 2 or $old_minor < 4) {
             push @commands, drop_special_case_function("pgr_maxcardinalitymatch(text,boolean)");
+        }
+
+        # updating to 3.5+
+        if ($old_mayor == 2 or $old_minor < 5) {
+            push @commands, drop_special_case_function("pgr_dijkstra(text,anyarray,bigint,boolean)");
+            push @commands, drop_special_case_function("pgr_dijkstra(text,bigint,anyarray,boolean)");
+            push @commands, drop_special_case_function("pgr_dijkstra(text,bigint,bigint,boolean)");
         }
 
     }

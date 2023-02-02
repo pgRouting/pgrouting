@@ -89,13 +89,8 @@ class Fleet {
      Identifiers<size_t> m_used;
      Identifiers<size_t> m_un_used;
 
-     /*! @brief build the fleet
-      *
-      * @param[in] vehicles of type Vehicle_t
-      */
-     bool build_fleet(
-             std::vector<Vehicle_t> vehicles,
-             double factor);
+     /*! @brief build the fleet */
+     bool build_fleet(std::vector<Vehicle_t>, double);
 
      void add_vehicle(
              Vehicle_t,

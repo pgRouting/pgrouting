@@ -18,6 +18,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
+BEGIN;
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(5);
 
@@ -34,3 +35,5 @@ SELECT set_eq(
   $$SELECT  proallargtypes FROM pg_proc WHERE proname = 'pgr_turnrestrictedpath'$$,
   $$SELECT  '{25,25,20,20,23,16,16,16,16,23,23,23,20,20,701,701}'::OID[] $$
 );
+SELECT finish();
+ROLLBACK;

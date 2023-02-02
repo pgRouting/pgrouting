@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_assert.h"
 #include "c_types/circuits_rt.h"
 
-/** @file hawickcirucits.hpp
+/**
  * @brief The main file which calls the respective boost function.
  *
  * Contains actual implementation of the function and the calling
@@ -57,9 +57,8 @@ class circuit_detector{
  public:
     /** @brief circuit detector to get the results
       *
-      *
-      * @param graph     the graph containing the edges
-      * @param result    container for storing the result
+      * @param graph the graph containing the edges
+      * @param data  container for storing the result
       *
       */
     circuit_detector(

@@ -147,6 +147,30 @@ BEGIN
   RETURN QUERY SELECT function_returns(fn, ARRAY['text','anyarray','bigint','boolean'],'setof record');
   RETURN QUERY SELECT function_returns(fn, ARRAY['text','anyarray','anyarray','boolean'],'setof record');
 
+  -- pgr_dijkstra standarized output on 3.5.0
+  IF (min_version('3.5.0') AND fn = 'pgr_dijkstra') THEN
+    RETURN QUERY SELECT has_function(fn, ARRAY['text','text','boolean']);
+    RETURN QUERY SELECT function_returns(fn, ARRAY['text','text','boolean'],'setof record');
+    RETURN QUERY SELECT set_eq(
+      format($$SELECT  proargnames from pg_proc where proname = %1$L$$,fn),
+      $$VALUES
+      ('{"","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
+      ('{"","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
+      $$,'proargnames');
+
+    RETURN QUERY SELECT set_eq(
+      format($$SELECT  proallargtypes from pg_proc where proname = %1$L$$,fn),
+      $$VALUES
+      ('{25,20,20,    16,23,23,20,20,20,20,701,701}'::OID[]),
+      ('{25,20,2277,  16,23,23,20,20,20,20,701,701}'::OID[]),
+      ('{25,2277,20,  16,23,23,20,20,20,20,701,701}'::OID[]),
+      ('{25,2277,2277,16,23,23,20,20,20,20,701,701}'::OID[]),
+      ('{25,25,       16,23,23,20,20,20,20,701,701}'::OID[])
+      $$,'proallargtypes');
+
+    RETURN;
+  END IF;
+
 IF (min_version('3.2.0') AND fn != 'pgr_dijkstra') OR (min_version('3.1.0') AND fn = 'pgr_dijkstra') THEN
   RETURN QUERY SELECT has_function(fn, ARRAY['text','text','boolean']);
   RETURN QUERY SELECT function_returns(fn, ARRAY['text','text','boolean'],'setof record');

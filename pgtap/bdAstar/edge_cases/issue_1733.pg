@@ -48,3 +48,4 @@ END;
 
 
 SELECT finish();
+ROLLBACK;
