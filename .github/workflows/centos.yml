@@ -53,7 +53,7 @@ jobs:
 
       - name: Test
         run: |
-          sudo service postgresql start
+          sudo systemctl restart postgresql-15
           export PG_RUNNER_USER=`whoami`
           sudo -u postgres psql -p ${PGPORT} -c "DROP DATABASE IF EXISTS ___pgr___test___;"
           sudo -u postgres psql -p ${PGPORT} -c "DROP DATABASE IF EXISTS \"${PG_RUNNER_USER}\";"
