@@ -31,9 +31,7 @@ jobs:
 
       - name: get postgres version
         run: |
-          sudo service postgresql start
-          pgver=$(psql --version | grep -Po '(?<=psql \(PostgreSQL\) )[^;]+(?=\.\d \()')
-          echo "PGVER=${pgver}" >> $GITHUB_ENV
+          echo "PGVER=15" >> $GITHUB_ENV
           echo "PGPORT=5432" >> $GITHUB_ENV
 
       - name: Configure for gcc
