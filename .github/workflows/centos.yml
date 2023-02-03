@@ -29,11 +29,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: get postgres version
+        run: |
+          sudo service postgresql start
+          pgver=$(psql --version | grep -Po '(?<=psql \(PostgreSQL\) )[^;]+(?=\.\d \()')
+          echo "PGVER=${pgver}" >> $GITHUB_ENV
+          echo "PGPORT=5432" >> $GITHUB_ENV
+
       - name: Configure for gcc
         run: |
           mkdir build
           cd build
-          export PATH=${PATH}:/usr/pgsql-15/bin
+          export PATH=${PATH}:/usr/pgsql-${PGVER}/bin
           cmake3 -DCMAKE_BUILD_TYPE=Release -DBOOST_ROOT:PATH="/opt/boost" ..
 
       - name: Build
@@ -48,7 +55,7 @@ jobs:
 
       - name: Test
         run: |
-          export PGPORT=5432
+          sudo service postgresql start
           export PG_RUNNER_USER=`whoami`
           sudo -u postgres psql -p ${PGPORT} -c "DROP DATABASE IF EXISTS ___pgr___test___;"
           sudo -u postgres psql -p ${PGPORT} -c "DROP DATABASE IF EXISTS \"${PG_RUNNER_USER}\";"
