@@ -8,6 +8,11 @@ on:
   push:
     paths:
       - '.github/workflows/centos.yml'
+      - 'src/**'
+      - 'include/**'
+      - 'pgtap/**'
+      - 'tools/testers/**'
+      - './CMakeLists.txt'
 
     branches-ignore:
       - 'gh-pages'
@@ -54,6 +59,7 @@ jobs:
       - name: Test
         run: |
           sudo systemctl restart postgresql-15
+          export PGPORT=5432
           export PG_RUNNER_USER=`whoami`
           sudo -u postgres psql -p ${PGPORT} -c "DROP DATABASE IF EXISTS ___pgr___test___;"
           sudo -u postgres psql -p ${PGPORT} -c "DROP DATABASE IF EXISTS \"${PG_RUNNER_USER}\";"
@@ -61,5 +67,5 @@ jobs:
           sudo -u postgres psql -p ${PGPORT} -c "CREATE ROLE \"${PG_RUNNER_USER}\" WITH LOGIN SUPERUSER;"
           sudo -u postgres psql -p ${PGPORT} -c "CREATE DATABASE \"${PG_RUNNER_USER}\";"
           psql -c "CREATE DATABASE ___pgr___test___;"
-          bash ./tools/testers/pg_prove_tests.sh ${PG_RUNNER_USER} ${PGPORT}  Release
+          ./tools/testers/pg_prove_tests.sh ${PG_RUNNER_USER} ${PGPORT} Release
           psql -c "DROP DATABASE IF EXISTS ___pgr___test___;"
