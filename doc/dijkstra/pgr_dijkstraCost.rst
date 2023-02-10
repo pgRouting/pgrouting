@@ -10,7 +10,7 @@
 |
 
 * **Supported versions:**
-  `Latest <https://docs.pgrouting.org/latest/en/pgr_aStarCost.html>`__
+  `Latest <https://docs.pgrouting.org/latest/en/pgr_dijkstraCost.html>`__
   (`3.5 <https://docs.pgrouting.org/3.5/en/pgr_dijkstraCost.html>`__)
   `3.4 <https://docs.pgrouting.org/3.4/en/pgr_dijkstraCost.html>`__
   `3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstraCost.html>`__
@@ -75,9 +75,9 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vid** , [``directed``])
+   | pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vid**, [``directed``])
    | pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vids**, [``directed``])
-   | pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vid** , [``directed``])
+   | pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vid**, [``directed``])
    | pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vids**, [``directed``])
    | pgr_dijkstraCost(`Edges SQL`_, `Combinations SQL`_, [``directed``])
 
@@ -93,7 +93,7 @@ One to One
 .. admonition:: \ \
    :class: signatures
 
-   pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vid** , [``directed``])
+   pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vid**, [``directed``])
 
    | RETURNS SET OF |matrix-result|
    | OR EMPTY SET
@@ -134,7 +134,7 @@ Many to One
 .. admonition:: \ \
    :class: signatures
 
-   pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vid** , [``directed``])
+   pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vid**, [``directed``])
 
    | RETURNS SET OF |matrix-result|
    | OR EMPTY SET
