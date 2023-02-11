@@ -404,7 +404,7 @@ class Pgr_base_graph {
              add_vertices(vertices);
          }
 #endif
-         for (const auto edge : edges) {
+         for (const auto &edge : edges) {
              graph_add_edge(edge, normal);
          }
      }

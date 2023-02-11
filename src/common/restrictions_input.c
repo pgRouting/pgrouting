@@ -36,7 +36,7 @@ static
 void fetch_restriction(
         HeapTuple *tuple,
         TupleDesc *tupdesc,
-        Column_info_t info[3],
+        Column_info_t info[2],
         Restriction_t *restriction) {
     /*
      * reading the cost
