@@ -251,10 +251,11 @@ PGDLLEXPORT Datum _pgr_withpointsksp(PG_FUNCTION_ARGS) {
                 path_id = result_tuples[funcctx->call_cntr - 1].start_id;
             }
         }
+        int64_t seq = funcctx->call_cntr == 0?  1 : result_tuples[funcctx->call_cntr - 1].end_id;
 
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
         values[1] = Int32GetDatum(path_id);
-        values[2] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
+        values[2] = Int32GetDatum(seq);
         if (PG_NARGS() != 9) {
             values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id);
             values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_id);
@@ -265,6 +266,7 @@ PGDLLEXPORT Datum _pgr_withpointsksp(PG_FUNCTION_ARGS) {
         values[n - 1] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
 
         result_tuples[funcctx->call_cntr].start_id = path_id;
+        result_tuples[funcctx->call_cntr].end_id = result_tuples[funcctx->call_cntr].edge < 0? 1 : seq + 1;
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

@@ -185,8 +185,10 @@ _pgr_astar(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
+        int64_t seq = call_cntr == 0?  1 : result_tuples[call_cntr - 1].start_id;
+
         values[0] = Int32GetDatum((int32_t)call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
+        values[1] = Int32GetDatum(seq);
         values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
         values[3] = Int64GetDatum(result_tuples[call_cntr].end_id);
         values[4] = Int64GetDatum(result_tuples[call_cntr].node);
@@ -194,6 +196,7 @@ _pgr_astar(PG_FUNCTION_ARGS) {
         values[6] = Float8GetDatum(result_tuples[call_cntr].cost);
         values[7] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
 
+        result_tuples[call_cntr].start_id = result_tuples[call_cntr].edge < 0? 1 : seq + 1;
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
