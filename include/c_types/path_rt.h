@@ -38,7 +38,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 struct Path_rt {
-    int seq;
     int64_t start_id;
     int64_t end_id;
     int64_t node;
