@@ -274,10 +274,8 @@ PgrDirectedChPPGraph::BuildResultPath() {
         newElement.cost = edge_t.cost;
         if (resultPath.empty()) {
             /* adding the first row because is a cycle */
-            newElement.seq = 1;
             newElement.agg_cost = 0.0;
         } else {
-            newElement.seq = resultPath.back().seq + 1;
             newElement.agg_cost = resultPath.back().agg_cost + resultPath.back().cost;
         }
         resultPath.push_back(newElement);
@@ -287,10 +285,8 @@ PgrDirectedChPPGraph::BuildResultPath() {
     newElement.edge = -1;
     newElement.cost = 0;
     if (resultPath.empty()) {
-        newElement.seq = 1;
         newElement.agg_cost = 0.0;
     } else {
-        newElement.seq = resultPath.back().seq + 1;
         newElement.agg_cost =
             resultPath.back().agg_cost + resultPath.back().cost;
     }
