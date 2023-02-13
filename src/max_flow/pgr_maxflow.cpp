@@ -282,7 +282,6 @@ PgrFlowGraph::get_edge_disjoint_paths(
         size_t j;
         for (j = 0; j < size - 1; j++) {
             Path_rt edge = {};
-            edge.seq = static_cast<int>(j + 1);
             edge.start_id = paths[i][0];
             edge.end_id = paths[i][size - 1];
             edge.node = paths[i][j];
@@ -293,7 +292,6 @@ PgrFlowGraph::get_edge_disjoint_paths(
             path_elements.push_back(edge);
         }
         Path_rt edge = {};
-        edge.seq = static_cast<int>(j + 1);
         edge.start_id = paths[i][0];
         edge.end_id = paths[i][size - 1];
         edge.node = paths[i][j];
