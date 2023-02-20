@@ -35,10 +35,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/edges_input.h"
 
 #include "drivers/allpairs/johnson_driver.h"
+#include "drivers/allpairs/floydWarshall_driver.h"
 
+/**
+ which = 0 -> johnson
+ which = 1 -> floydWarshall
+ */
 void process_allpairs(
         char* edges_sql,
         bool directed,
+        int which,
         IID_t_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
@@ -62,15 +68,15 @@ void process_allpairs(
     char *notice_msg = NULL;
     char *err_msg = NULL;
     clock_t start_t = clock();
-    do_pgr_johnson(
-            edges,
-            total_tuples,
-            directed,
-            result_tuples,
-            result_count,
-            &log_msg,
-            &err_msg);
-    time_msg(" processing Johnson", start_t, clock());
+    if (which == 0) {
+        // TODO remove the "pgr_"
+        do_pgr_johnson(edges, total_tuples, directed, result_tuples, result_count, &log_msg, &err_msg);
+        time_msg(" processing pgr_johnson", start_t, clock());
+    } else {
+        do_pgr_floydWarshall(edges, total_tuples, directed, result_tuples, result_count, &log_msg, &err_msg);
+        time_msg(" processing pgr_floydWarshall", start_t, clock());
+    }
+
 
     if (err_msg && (*result_tuples)) {
         free(*result_tuples);
