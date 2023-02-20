@@ -43,22 +43,12 @@ typedef struct IID_t_rt IID_t_rt;
 #endif
 
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 void
-do_pgr_floydWarshall(
-    Edge_t  *data_edges,
-    size_t total_tuples,
-    bool directedFlag,
-
-    // return values
-    IID_t_rt **ret_matrix,
-    size_t *return_tuple_count,
-    char ** log_msg,
-    char ** err_msg);
+do_floydWarshall(Edge_t  *, size_t, bool, IID_t_rt **, size_t *, char **, char **);
 
 #ifdef __cplusplus
 }

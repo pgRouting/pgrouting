@@ -69,11 +69,10 @@ void process_allpairs(
     char *err_msg = NULL;
     clock_t start_t = clock();
     if (which == 0) {
-        // TODO remove the "pgr_"
-        do_pgr_johnson(edges, total_tuples, directed, result_tuples, result_count, &log_msg, &err_msg);
+        do_johnson(edges, total_tuples, directed, result_tuples, result_count, &log_msg, &err_msg);
         time_msg(" processing pgr_johnson", start_t, clock());
     } else {
-        do_pgr_floydWarshall(edges, total_tuples, directed, result_tuples, result_count, &log_msg, &err_msg);
+        do_floydWarshall(edges, total_tuples, directed, result_tuples, result_count, &log_msg, &err_msg);
         time_msg(" processing pgr_floydWarshall", start_t, clock());
     }
 

@@ -47,16 +47,8 @@ typedef struct IID_t_rt IID_t_rt;
 extern "C" {
 #endif
 
-//  CREATE OR REPLACE FUNCTION pgr_johnson(edges_sql TEXT, directed BOOLEAN,
 void
-do_pgr_johnson(
-        Edge_t  *data_edges,
-        size_t total_tuples,
-        bool directed,
-        IID_t_rt **return_tuples,
-        size_t *return_count,
-        char ** log_msg,
-        char ** err_msg);
+do_johnson(Edge_t  *, size_t, bool, IID_t_rt **, size_t *, char **, char **);
 
 
 #ifdef __cplusplus
