@@ -36,6 +36,14 @@ using IID_t_rt = struct IID_t_rt;
 typedef struct IID_t_rt IID_t_rt;
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 void process_allpairs(char*, bool, int, IID_t_rt **, size_t *);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif  // INCLUDE_ALLPAIRS_PROCESS_ALLPAIRS_H_
