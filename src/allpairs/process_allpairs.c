@@ -1,13 +1,9 @@
 /*PGR-GNU*****************************************************************
-File: johnson.c
-
-Generated with Template by:
-Copyright (c) 2015 pgRouting developers
-Mail: project@pgrouting.org
+File: process_allpairs.c
 
 Function's developer:
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Copyright (c) 2023 Celia Virginia Vergara Castillo
+Mail: vicky_vergara at hotmail.com
 
 ------
 
@@ -27,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+#include "allpairs/process_allpairs.h"
+
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
 
@@ -34,20 +32,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/pgdata_getters.h"
-#include "allpairs/process_allpairs.h"
+#include "c_common/edges_input.h"
 
+#include "drivers/allpairs/johnson_driver.h"
 
 #if 0
-#include "drivers/allpairs/johnson_driver.h"
-#endif
-
 PGDLLEXPORT Datum _pgr_johnson(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_johnson);
+#endif
 
 #if 0
 static
-void process(
+#endif
+void process_allpairs(
         char* edges_sql,
         bool directed,
         IID_t_rt **result_tuples,
@@ -57,7 +54,7 @@ void process(
     PGR_DBG("Load data");
     Edge_t *edges = NULL;
     size_t total_tuples = 0;
-    pgr_get_edges(edges_sql, &edges, &total_tuples, true, true);
+    pgr_get_edges_no_id(edges_sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");
@@ -84,7 +81,7 @@ void process(
     time_msg(" processing Johnson", start_t, clock());
 
     if (err_msg && (*result_tuples)) {
-        pfree(*result_tuples);
+        free(*result_tuples);
         (*result_tuples) = NULL;
         (*result_count) = 0;
     }
@@ -99,8 +96,9 @@ void process(
     pfree(edges);
     pgr_SPI_finish();
 }
-#endif
 
+
+#if 0
 PGDLLEXPORT Datum
 _pgr_johnson(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
@@ -118,7 +116,7 @@ _pgr_johnson(PG_FUNCTION_ARGS) {
 
 
         PGR_DBG("Calling process");
-        process_allpairs(
+        process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_BOOL(1),
                 &result_tuples,
@@ -166,4 +164,4 @@ _pgr_johnson(PG_FUNCTION_ARGS) {
         SRF_RETURN_DONE(funcctx);
     }
 }
-
+#endif

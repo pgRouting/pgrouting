@@ -41,6 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 PGDLLEXPORT Datum _pgr_floydwarshall(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_floydwarshall);
 
+#if 1
 static
 void process(
         char* edges_sql,
@@ -94,7 +95,7 @@ void process(
     pfree(edges);
     pgr_SPI_finish();
 }
-
+#endif
 
 PGDLLEXPORT Datum
 _pgr_floydwarshall(PG_FUNCTION_ARGS) {
