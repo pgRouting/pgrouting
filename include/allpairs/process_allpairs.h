@@ -36,10 +36,6 @@ using IID_t_rt = struct IID_t_rt;
 typedef struct IID_t_rt IID_t_rt;
 #endif
 
-void process_allpairs(
-        char* edges_sql,
-        bool directed,
-        IID_t_rt **result_tuples,
-        size_t *result_count);
+void process_allpairs(char*, bool, int, IID_t_rt **, size_t *);
 
 #endif  // INCLUDE_ALLPAIRS_PROCESS_ALLPAIRS_H_
