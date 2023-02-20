@@ -41,8 +41,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 PGDLLEXPORT Datum _pgr_johnson(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_johnson);
 
-/******************************************************************************/
-/*                          MODIFY AS NEEDED                                  */
 static
 void process(
         char* edges_sql,
@@ -96,33 +94,23 @@ void process(
     pfree(edges);
     pgr_SPI_finish();
 }
-/*                                                                            */
-/******************************************************************************/
+
 
 PGDLLEXPORT Datum
 _pgr_johnson(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
-    /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
+
     IID_t_rt *result_tuples = NULL;
     size_t result_count = 0;
-    /*                                                                        */
-    /**************************************************************************/
+
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-
-        /*********************************************************************/
-        /*                          MODIFY AS NEEDED                         */
-        // CREATE OR REPLACE FUNCTION pgr_johnson(
-        // edges_sql TEXT,
-        // directed BOOLEAN,
 
         PGR_DBG("Calling process");
         process(
@@ -131,8 +119,6 @@ _pgr_johnson(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-        /*                                                                   */
-        /*********************************************************************/
 
         funcctx->max_calls = result_count;
         funcctx->user_fctx = result_tuples;
@@ -157,17 +143,9 @@ _pgr_johnson(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool         *nulls;
 
-        /*********************************************************************/
-        /*                          MODIFY AS NEEDED                         */
-        // OUT seq BIGINT,
-        // OUT from_vid BIGINT,
-        // OUT to_vid BIGINT,
-        // OUT cost float)
-
         values = palloc(3 * sizeof(Datum));
         nulls = palloc(3 * sizeof(bool));
 
-        // postgres starts counting from 1
         values[0] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_vid);
         nulls[0] = false;
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].to_vid);
@@ -175,7 +153,6 @@ _pgr_johnson(PG_FUNCTION_ARGS) {
         values[2] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         nulls[2] = false;
 
-        /*********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

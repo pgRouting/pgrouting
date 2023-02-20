@@ -28,14 +28,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include <stdbool.h>
-
 #include "c_common/postgres_connection.h"
 
 #include "c_types/iid_t_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-
 #include "c_common/pgdata_getters.h"
 
 #include "drivers/allpairs/floydWarshall_driver.h"
@@ -44,8 +42,7 @@ PGDLLEXPORT Datum _pgr_floydwarshall(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_floydwarshall);
 
 static
-void
-process(
+void process(
         char* edges_sql,
         bool directed,
         IID_t_rt **result_tuples,
@@ -66,11 +63,11 @@ process(
     }
     PGR_DBG("Total %ld tuples in query:", total_tuples);
 
-    clock_t start_t = clock();
     PGR_DBG("Starting processing");
-    char *err_msg = NULL;
-    char *notice_msg = NULL;
     char *log_msg = NULL;
+    char *notice_msg = NULL;
+    char *err_msg = NULL;
+    clock_t start_t = clock();
     do_pgr_floydWarshall(
             edges,
             total_tuples,
@@ -104,29 +101,15 @@ _pgr_floydwarshall(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
-    /**************************************************************************/
-    /*                                                                        */
-    IID_t_rt  *result_tuples = NULL;
+
+    IID_t_rt *result_tuples = NULL;
     size_t result_count = 0;
-    /*                                                                        */
-    /**************************************************************************/
+
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-
-
-        /*********************************************************************/
-        /*                                                                   */
-        // QUERY
-        // CREATE OR REPLACE FUNCTION pgr_floydWarshalll(
-        // edges_sql TEXT,
-        // directed BOOLEAN,
-        // OUT seq INTEGER,
-        // OUT from_vid bigint,
-        // OUT to_vid bigint,
-        // OUT cost float)
 
 
         PGR_DBG("Calling process");
@@ -136,8 +119,6 @@ _pgr_floydwarshall(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-        /*                                                                   */
-        /*********************************************************************/
 
         funcctx->max_calls = result_count;
         funcctx->user_fctx = result_tuples;
@@ -160,20 +141,18 @@ _pgr_floydwarshall(PG_FUNCTION_ARGS) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
-        bool*        nulls;
+        bool         *nulls;
 
-        /*********************************************************************/
         values = palloc(3 * sizeof(Datum));
         nulls = palloc(3 * sizeof(bool));
 
-        // postgres starts counting from 1
         values[0] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_vid);
         nulls[0] = false;
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].to_vid);
         nulls[1] = false;
         values[2] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         nulls[2] = false;
-        /*********************************************************************/
+
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
