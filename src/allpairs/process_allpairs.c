@@ -1,13 +1,9 @@
 /*PGR-GNU*****************************************************************
-File: floydWarshall.c
-
-Generated with Template by:
-Copyright (c) 2015 pgRouting developers
-Mail: project@pgrouting.org
+File: process_allpairs.c
 
 Function's developer:
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Copyright (c) 2023 Celia Virginia Vergara Castillo
+Mail: vicky_vergara at hotmail.com
 
 ------
 
@@ -27,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+#include "allpairs/process_allpairs.h"
+
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
 
@@ -34,55 +32,82 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
+#include "c_common/edges_input.h"
 
-#include "drivers/allpairs/floydWarshall_driver.h"
+#include "drivers/allpairs/johnson_driver.h"
 
-PGDLLEXPORT Datum _pgr_floydwarshall(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(_pgr_floydwarshall);
+#if 0
+PGDLLEXPORT Datum _pgr_johnson(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_johnson);
+#endif
 
-#if 1
+#if 0
 static
-void
-process(
+#endif
+void process_allpairs(
         char* edges_sql,
         bool directed,
         IID_t_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
 
+    PGR_DBG("Load data");
+    Edge_t *edges = NULL;
+    size_t total_tuples = 0;
+    pgr_get_edges_no_id(edges_sql, &edges, &total_tuples);
+
+    if (total_tuples == 0) {
+        PGR_DBG("No edges found");
+        (*result_count) = 0;
+        (*result_tuples) = NULL;
+        pgr_SPI_finish();
+        return;
+    }
+    PGR_DBG("Total %ld tuples in query:", total_tuples);
+
+    PGR_DBG("Starting processing");
+    char *log_msg = NULL;
+    char *notice_msg = NULL;
+    char *err_msg = NULL;
     clock_t start_t = clock();
-    pgr_do_floydWarshall(
-            edges_sql,
+    do_pgr_johnson(
+            edges,
+            total_tuples,
             directed,
             result_tuples,
             result_count,
             &log_msg,
             &err_msg);
-    time_msg(" processing FloydWarshall", start_t, clock());
+    time_msg(" processing Johnson", start_t, clock());
 
     if (err_msg && (*result_tuples)) {
-        pfree(*result_tuples);
+        free(*result_tuples);
         (*result_tuples) = NULL;
         (*result_count) = 0;
     }
 
-    pgr_global_report(&log_msg, &notice_msg, &err_msg);
+    pgr_global_report(log_msg, notice_msg, err_msg);
 
+
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
+
+    pfree(edges);
     pgr_SPI_finish();
 }
-#endif
 
+
+#if 0
 PGDLLEXPORT Datum
-_pgr_floydwarshall(PG_FUNCTION_ARGS) {
+_pgr_johnson(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
 
-    IID_t_rt  *result_tuples = NULL;
+    IID_t_rt *result_tuples = NULL;
     size_t result_count = 0;
+
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
@@ -90,11 +115,13 @@ _pgr_floydwarshall(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
+        PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_BOOL(1),
                 &result_tuples,
                 &result_count);
+
 
         funcctx->max_calls = result_count;
         funcctx->user_fctx = result_tuples;
@@ -117,18 +144,18 @@ _pgr_floydwarshall(PG_FUNCTION_ARGS) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
-        bool*        nulls;
+        bool         *nulls;
 
         values = palloc(3 * sizeof(Datum));
         nulls = palloc(3 * sizeof(bool));
 
-        // postgres starts counting from 1
         values[0] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_vid);
         nulls[0] = false;
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].to_vid);
         nulls[1] = false;
         values[2] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         nulls[2] = false;
+
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
@@ -137,4 +164,4 @@ _pgr_floydwarshall(PG_FUNCTION_ARGS) {
         SRF_RETURN_DONE(funcctx);
     }
 }
-
+#endif
