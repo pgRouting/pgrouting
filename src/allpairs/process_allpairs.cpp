@@ -25,14 +25,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "allpairs/process_allpairs.h"
 
-#include <stdbool.h>
-#include "c_common/postgres_connection.h"
+#include <string>
 
-#include "c_types/iid_t_rt.h"
-#include "c_common/debug_macro.h"
+extern "C" {
+#include "c_common/postgres_connection.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 #include "c_common/edges_input.h"
+}
+
+#include "c_types/iid_t_rt.h"
+#include "c_common/debug_macro.h"
 
 #include "drivers/allpairs/johnson_driver.h"
 #include "drivers/allpairs/floydWarshall_driver.h"
@@ -70,10 +73,10 @@ void process_allpairs(
     clock_t start_t = clock();
     if (which == 0) {
         do_johnson(edges, total_tuples, directed, result_tuples, result_count, &log_msg, &err_msg);
-        time_msg(" processing pgr_johnson", start_t, clock());
+        time_msg(std::string(" processing pgr_johnson").c_str(), start_t, clock());
     } else {
         do_floydWarshall(edges, total_tuples, directed, result_tuples, result_count, &log_msg, &err_msg);
-        time_msg(" processing pgr_floydWarshall", start_t, clock());
+        time_msg(std::string(" processing pgr_floydWarshall").c_str(), start_t, clock());
     }
 
 
