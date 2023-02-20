@@ -36,16 +36,6 @@ using IID_t_rt = struct IID_t_rt;
 typedef struct IID_t_rt IID_t_rt;
 #endif
 
-#if 0
-#include "c_types/iid_t_rt.h"
-#include "c_common/postgres_connection.h"
-
-#include "c_common/debug_macro.h"
-#include "c_common/e_report.h"
-#include "c_common/time_msg.h"
-#include "c_common/edges_input.h"
-#endif
-
 void process_allpairs(
         char* edges_sql,
         bool directed,
