@@ -40,62 +40,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 PGDLLEXPORT Datum _pgr_floydwarshall(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_floydwarshall);
 
-#if 0
-static
-void process(
-        char* edges_sql,
-        bool directed,
-        IID_t_rt **result_tuples,
-        size_t *result_count) {
-    pgr_SPI_connect();
-
-    PGR_DBG("Load data");
-    Edge_t *edges = NULL;
-    size_t total_tuples = 0;
-    pgr_get_edges(edges_sql, &edges, &total_tuples, true, true);
-
-    if (total_tuples == 0) {
-        PGR_DBG("No edges found");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
-        pgr_SPI_finish();
-        return;
-    }
-    PGR_DBG("Total %ld tuples in query:", total_tuples);
-
-    PGR_DBG("Starting processing");
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
-    clock_t start_t = clock();
-    do_pgr_floydWarshall(
-            edges,
-            total_tuples,
-            directed,
-            result_tuples,
-            result_count,
-            &log_msg,
-            &err_msg);
-    time_msg(" processing FloydWarshall", start_t, clock());
-
-    if (err_msg && (*result_tuples)) {
-        pfree(*result_tuples);
-        (*result_tuples) = NULL;
-        (*result_count) = 0;
-    }
-
-    pgr_global_report(log_msg, notice_msg, err_msg);
-
-
-    if (log_msg) pfree(log_msg);
-    if (notice_msg) pfree(notice_msg);
-    if (err_msg) pfree(err_msg);
-
-    pfree(edges);
-    pgr_SPI_finish();
-}
-#endif
-
 PGDLLEXPORT Datum
 _pgr_floydwarshall(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
