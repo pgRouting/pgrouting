@@ -42,7 +42,6 @@ typedef struct IID_t_rt IID_t_rt;
 #endif
 
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
