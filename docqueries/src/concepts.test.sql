@@ -50,10 +50,10 @@ reverse_cost = sign(reverse_cost);
 /* -- topo4 */
 ALTER TABLE edges ADD COLUMN direction TEXT;
 UPDATE edges SET
-direction = CASE WHEN (cost>0 AND reverse_cost>0) THEN 'B'   -- both ways
-           WHEN (cost>0 AND reverse_cost<0) THEN 'FT'  -- direction of the LINESSTRING
-           WHEN (cost<0 AND reverse_cost>0) THEN 'TF'  -- reverse direction of the LINESTRING
-           ELSE '' END;                                -- unknown
+direction = CASE WHEN (cost>0 AND reverse_cost>0) THEN 'B'   /* both ways */
+           WHEN (cost>0 AND reverse_cost<0) THEN 'FT'  /* direction of the LINESSTRING */
+           WHEN (cost<0 AND reverse_cost>0) THEN 'TF'  /* reverse direction of the LINESTRING */
+           ELSE '' END;                                /* unknown */
 /* -- topo5 */
 UPDATE edges SET
 cost = CASE WHEN (direction = 'B' OR direction = 'FT')
@@ -205,9 +205,7 @@ three_options AS (
     ST_X(ST_EndPoint(e_geom)) AS x2, ST_Y(ST_EndPoint(e_geom)) AS y2,
     ST_MakeLine(geom, ST_EndPoint(e_geom)) AS geom
   FROM info
-  --
   UNION
-  --
   SELECT closest, source, 0, 0, capacity, reverse_capacity,
     ST_X(geom) AS x1, ST_Y(geom) AS y1,
     ST_X(ST_StartPoint(e_geom)) AS x2, ST_Y(ST_StartPoint(e_geom)) AS y2,
@@ -222,7 +220,6 @@ three_options AS (
     edge
   FROM info */
   )
---
 INSERT INTO edges
   (source, target,
     cost, reverse_cost,

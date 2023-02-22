@@ -8,9 +8,6 @@ SELECT * FROM pgr_cuthillMckeeOrdering(
 
 
 
--- added to pgtap test
-
-
 CREATE TABLE expected_result (
   seq BIGINT,
   node BIGINT);
