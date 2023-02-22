@@ -28,7 +28,6 @@ SELECT * FROM pgr_cuthillMckeeOrdering(
 (17 rows)
 
 /* -- q2 */
-
 CREATE TABLE expected_result (
   seq BIGINT,
   node BIGINT);

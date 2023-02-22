@@ -17,7 +17,7 @@ WITH
 tsp_results AS (SELECT seq, geom FROM pgr_TSPeuclidean($$SELECT * FROM wi29$$) JOIN wi29 ON (node = id))
 SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
 /* -- q4 */
--- This query is used to create the optimal solution image visually deduced the ordering
+/* This query is used to create the optimal solution image visually deduced the ordering */
 SELECT 1 AS gid, ST_MakeLine(ARRAY(
   SELECT geom FROM unnest(array[1,2,6,10,11,12,15,19,18,17,21,22,23,29,28,26,20,25,27,24,16,14,13,9,7,3,4,8,5,1])
   JOIN wi29 ON (unnest = id)));

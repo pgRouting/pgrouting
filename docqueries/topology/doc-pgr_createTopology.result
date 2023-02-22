@@ -124,7 +124,6 @@ SELECT  pgr_createTopology('edges', 0.001, 'geom',
 (1 row)
 
 /* --q9.1 */
-
 /* --q10 */
 CREATE TABLE mytable AS (SELECT id AS gid,  geom AS mygeom, source AS src , target AS tgt FROM edges) ;
 SELECT 18
@@ -223,7 +222,6 @@ SELECT  pgr_createTopology('mytable', 0.001, source:='src', id:='gid', target:='
 (1 row)
 
 /* --q16.1 */
-
 SET client_min_messages TO NOTICE;
 SET
 /* --q17 */

@@ -13,7 +13,7 @@ FROM pgr_findCloseEdges(
   (SELECT array_agg(geom) FROM pointsOfInterest),
   0.5);
 /* -- q3 */
--- One point signature
+/* One point signature */
 /* -- o1 */
 SELECT *
 FROM pgr_findCloseEdges(
@@ -56,7 +56,7 @@ FROM pgr_findCloseEdges(
 /* -- o6 */
 
 
--- Many point signature
+/* Many point signature */
 /* -- m1 */
 SELECT edge_id, round(fraction::numeric, 2) AS fraction, side, round(distance::numeric, 3) AS distance,
   ST_AsText(geom) AS geom_is_original, edge

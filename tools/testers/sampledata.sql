@@ -189,14 +189,14 @@ INSERT INTO vehicles
 CREATE TABLE orders (
     id BIGSERIAL PRIMARY KEY,
     demand FLOAT,
-    -- the pickups
+    /* the pickups */
     p_node_id BIGINT,
     p_x FLOAT,
     p_y FLOAT,
     p_open FLOAT,
     p_close FLOAT,
     p_service FLOAT,
-    -- the deliveries
+    /* the deliveries */
     d_node_id BIGINT,
     d_x FLOAT,
     d_y FLOAT,
@@ -224,7 +224,6 @@ INSERT INTO orders
 /* --ORDERS TABLE END */
 
 
--- TODO remove in v4
 CREATE TABLE old_restrictions (
     rid BIGINT NOT NULL,
     to_cost FLOAT,
