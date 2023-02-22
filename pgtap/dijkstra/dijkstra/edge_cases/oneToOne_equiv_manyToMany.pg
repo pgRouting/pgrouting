@@ -47,7 +47,7 @@ BEGIN
                 sql_OneToOne := sql_OneToOne ||' UNION ALL';
             END IF;
             sql_OneToOne := sql_OneToOne ||
-            '( SELECT seq, ' || i || 'as start_vid, ' || j || 'as end_vid, node, edge, cost, agg_cost  FROM pgr_dijkstra(
+            '( SELECT seq, ' || i || ' as start_vid, ' || j || ' as end_vid, node, edge, cost, agg_cost  FROM pgr_dijkstra(
                     ''SELECT id, source, target, cost, reverse_cost FROM edge_table'', '
                     || i || ', ' || j ||
                     ') )';
