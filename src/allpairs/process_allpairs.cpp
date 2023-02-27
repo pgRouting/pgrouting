@@ -45,6 +45,8 @@ extern "C" {
 /**
  which = 0 -> johnson
  which = 1 -> floydWarshall
+
+ This is c++ code, linked as C code, because process_allpairs is called from C code
  */
 void process_allpairs(
         char* edges_sql,
