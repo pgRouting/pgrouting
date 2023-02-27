@@ -41,8 +41,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 void
 do_allpairs(
         Edge_t  *data_edges,
-        size_t total_tuples,
-        bool directedFlag,
+        size_t total_edges,
+        bool directed,
         int which,
 
         IID_t_rt **return_tuples,
@@ -61,13 +61,13 @@ do_allpairs(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        graphType gType = directedFlag? DIRECTED: UNDIRECTED;
+        graphType gType = directed? DIRECTED: UNDIRECTED;
 
 
-        if (directedFlag) {
+        if (directed) {
             log << "Processing Directed graph\n";
             pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(data_edges, total_tuples);
+            digraph.insert_edges(data_edges, total_edges);
             if (which == 0) {
                 pgr_johnson(digraph, *return_count, return_tuples);
             } else {
@@ -76,7 +76,7 @@ do_allpairs(
         } else {
             log << "Processing Undirected graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(data_edges, total_tuples);
+            undigraph.insert_edges(data_edges, total_edges);
             if (which == 0) {
                 pgr_johnson(undigraph, *return_count, return_tuples);
             } else {

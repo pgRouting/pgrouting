@@ -73,11 +73,10 @@ void process_allpairs(
     char *notice_msg = NULL;
     char *err_msg = NULL;
     clock_t start_t = clock();
+    do_allpairs(edges, total_tuples, directed, which, result_tuples, result_count, &log_msg, &err_msg);
     if (which == 0) {
-        do_allpairs(edges, total_tuples, directed, which, result_tuples, result_count, &log_msg, &err_msg);
         time_msg(std::string(" processing pgr_johnson").c_str(), start_t, clock());
     } else {
-        do_allpairs(edges, total_tuples, directed, which, result_tuples, result_count, &log_msg, &err_msg);
         time_msg(std::string(" processing pgr_floydWarshall").c_str(), start_t, clock());
     }
 
