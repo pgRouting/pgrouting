@@ -38,7 +38,7 @@ extern "C" {
 #include "c_common/debug_macro.h"
 
 #include "drivers/allpairs/johnson_driver.h"
-#include "drivers/allpairs/floydWarshall_driver.h"
+#include "drivers/allpairs/allpairs_driver.h"
 
 /**
  which = 0 -> johnson
@@ -75,7 +75,7 @@ void process_allpairs(
         do_johnson(edges, total_tuples, directed, result_tuples, result_count, &log_msg, &err_msg);
         time_msg(std::string(" processing pgr_johnson").c_str(), start_t, clock());
     } else {
-        do_floydWarshall(edges, total_tuples, directed, result_tuples, result_count, &log_msg, &err_msg);
+        do_allpairs(edges, total_tuples, directed, result_tuples, result_count, &log_msg, &err_msg);
         time_msg(std::string(" processing pgr_floydWarshall").c_str(), start_t, clock());
     }
 
