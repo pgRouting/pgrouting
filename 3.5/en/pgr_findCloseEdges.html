@@ -1341,9 +1341,7 @@ three_options AS (
     ST_X(ST_EndPoint(e_geom)) AS x2, ST_Y(ST_EndPoint(e_geom)) AS y2,
     ST_MakeLine(geom, ST_EndPoint(e_geom)) AS geom
   FROM info
-
   UNION
-
   SELECT closest, source, 0, 0, capacity, reverse_capacity,
     ST_X(geom) AS x1, ST_Y(geom) AS y1,
     ST_X(ST_StartPoint(e_geom)) AS x2, ST_Y(ST_StartPoint(e_geom)) AS y2,
@@ -1358,7 +1356,6 @@ three_options AS (
     edge
   FROM info */
   )
-
 INSERT INTO edges
   (source, target,
     cost, reverse_cost,
@@ -1434,7 +1431,7 @@ as there is only one component.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.5.0.<br/>
-      Last updated on Feb 21, 2023.<br/>
+      Last updated on Feb 27, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br/>
     </p>
   </div>
