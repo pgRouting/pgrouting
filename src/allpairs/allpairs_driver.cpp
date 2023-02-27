@@ -43,6 +43,7 @@ do_allpairs(
         Edge_t  *data_edges,
         size_t total_tuples,
         bool directedFlag,
+        int which,
 
         IID_t_rt **return_tuples,
         size_t *return_count,
@@ -67,12 +68,20 @@ do_allpairs(
             log << "Processing Directed graph\n";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_tuples);
-            pgr_floydWarshall(digraph, *return_count, return_tuples);
+            if (which == 0) {
+                pgr_johnson(digraph, *return_count, return_tuples);
+            } else {
+                pgr_floydWarshall(digraph, *return_count, return_tuples);
+            }
         } else {
             log << "Processing Undirected graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_tuples);
-            pgr_floydWarshall(undigraph, *return_count, return_tuples);
+            if (which == 0) {
+                pgr_johnson(undigraph, *return_count, return_tuples);
+            } else {
+                pgr_floydWarshall(undigraph, *return_count, return_tuples);
+            }
         }
 
 

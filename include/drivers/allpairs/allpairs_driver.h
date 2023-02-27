@@ -37,6 +37,6 @@ using IID_t_rt = struct IID_t_rt;
 
 
 void
-do_allpairs(Edge_t  *, size_t, bool, IID_t_rt **, size_t *, char **, char **);
+do_allpairs(Edge_t  *, size_t, bool, int, IID_t_rt **, size_t *, char **, char **);
 
 #endif  // INCLUDE_DRIVERS_ALLPAIRS_FLOYDWARSHALL_DRIVER_H_
