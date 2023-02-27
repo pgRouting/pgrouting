@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "drivers/allpairs/floydWarshall_driver.h"
+#include "drivers/allpairs/allpairs_driver.h"
 
 #include <sstream>
 #include <deque>
@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 void
-do_floydWarshall(
+do_allpairs(
         Edge_t  *data_edges,
         size_t total_tuples,
         bool directedFlag,
