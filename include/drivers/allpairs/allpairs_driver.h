@@ -51,6 +51,7 @@ void
 pgr_do_allpairs(
     const char*,
     bool,
+    int,
 
     IID_t_rt**,
     size_t*,

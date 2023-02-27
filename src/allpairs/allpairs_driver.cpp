@@ -44,6 +44,7 @@ void
 pgr_do_allpairs(
         const char *edges_sql,
         bool directed,
+        int which,
 
         IID_t_rt **return_tuples,
         size_t *return_count,
@@ -75,11 +76,21 @@ pgr_do_allpairs(
             pgrouting::DirectedGraph digraph;
             digraph.insert_edges(edges);
             pgr_floydWarshall(digraph, *return_count, return_tuples);
+            if (which == 0) {
+                pgr_johnson(digraph, *return_count, return_tuples);
+            } else {
+                pgr_floydWarshall(digraph, *return_count, return_tuples);
+            }
         } else {
             log << "Processing Undirected graph\n";
             pgrouting::UndirectedGraph undigraph;
             undigraph.insert_edges(edges);
             pgr_floydWarshall(undigraph, *return_count, return_tuples);
+            if (which == 0) {
+                pgr_johnson(undigraph, *return_count, return_tuples);
+            } else {
+                pgr_floydWarshall(undigraph, *return_count, return_tuples);
+            }
         }
 
 

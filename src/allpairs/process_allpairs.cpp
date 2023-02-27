@@ -37,7 +37,9 @@ extern "C" {
 #include "c_types/iid_t_rt.h"
 #include "c_common/debug_macro.h"
 
+#if 0
 #include "drivers/allpairs/johnson_driver.h"
+#endif
 #include "drivers/allpairs/allpairs_driver.h"
 
 /**
@@ -72,10 +74,10 @@ void process_allpairs(
     char *err_msg = NULL;
     clock_t start_t = clock();
     if (which == 0) {
-        do_johnson(edges, total_tuples, directed, result_tuples, result_count, &log_msg, &err_msg);
+        do_allpairs(edges, total_tuples, directed, which, result_tuples, result_count, &log_msg, &err_msg);
         time_msg(std::string(" processing pgr_johnson").c_str(), start_t, clock());
     } else {
-        do_allpairs(edges, total_tuples, directed, result_tuples, result_count, &log_msg, &err_msg);
+        do_allpairs(edges, total_tuples, directed, which, result_tuples, result_count, &log_msg, &err_msg);
         time_msg(std::string(" processing pgr_floydWarshall").c_str(), start_t, clock());
     }
 
