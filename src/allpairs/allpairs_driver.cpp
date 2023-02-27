@@ -41,6 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 void
+<<<<<<< HEAD
 pgr_do_allpairs(
         const char *edges_sql,
         bool directed,
