@@ -46,6 +46,7 @@ pgr_do_allpairs(
         const char *edges_sql,
         bool directed,
         int which,
+        /* IDEA: have as a parameter the function name*/
 
         IID_t_rt **return_tuples,
         size_t *return_count,
