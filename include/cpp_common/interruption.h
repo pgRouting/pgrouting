@@ -35,54 +35,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 extern "C" {
 
-#ifdef _MSC_VER
-
 #include <postgres.h>
 #include <miscadmin.h>
-
-#else
-    /*
-     * Instead of including all the files
-     * copy/paste what is used
-     * IMPORTANT: this copy/paste might depend on the postgreSQL version
-     */
-#include <signal.h>
-
-    /*
-     * https://doxygen.postgresql.org/c_8h.html#a166c1d950e659804f0e3247aad99a81f
-     */
-#define PGDLLIMPORT
-
-    /*
-     * https://doxygen.postgresql.org/miscadmin_8h_source.html
-     */
-    extern PGDLLIMPORT volatile sig_atomic_t InterruptPending;
-    extern void ProcessInterrupts(void);
-
-#if __GNUC__ >= 3
-#define unlikely(x) __builtin_expect((x) != 0, 0)
-#else
-#define unlikely(x) ((x) != 0)
-#endif
-
-    /* Test whether an interrupt is pending */
-#ifndef WIN32
-#define INTERRUPTS_PENDING_CONDITION() \
-    (unlikely(InterruptPending))
-#else
-    extern void pgwin32_dispatch_queued_signals(void);
-#define INTERRUPTS_PENDING_CONDITION() \
-    (unlikely(UNBLOCKED_SIGNAL_QUEUE()) ? pgwin32_dispatch_queued_signals() : 0, \
-     unlikely(InterruptPending))
-#endif
-
-    /* Service interrupt, if one is pending and it's safe to service it now */
-#define CHECK_FOR_INTERRUPTS() \
-    do { \
-        if (INTERRUPTS_PENDING_CONDITION()) \
-        ProcessInterrupts(); \
-    } while (0)
-#endif
 
 }
 
