@@ -177,7 +177,7 @@ PGDLLEXPORT Datum _pgr_sequentialvertexcoloring(PG_FUNCTION_ARGS) {
          *
          **********************************************************************/
 
-        size_t num  = 3;
+        size_t num  = 2;
         values = palloc(num * sizeof(Datum));
         nulls = palloc(num * sizeof(bool));
 
