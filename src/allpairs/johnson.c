@@ -81,7 +81,7 @@ void process(
     time_msg(" processing Johnson", start_t, clock());
 
     if (err_msg && (*result_tuples)) {
-        free(*result_tuples);
+        pfree(*result_tuples);
         (*result_tuples) = NULL;
         (*result_count) = 0;
     }
