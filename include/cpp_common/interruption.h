@@ -66,7 +66,7 @@ extern "C" {
 #endif
 
     /* Test whether an interrupt is pending */
-#ifndef WIN32
+#if !defined(WIN32) || defined(__MINGW64_VERSION_MAJOR)
 #define INTERRUPTS_PENDING_CONDITION() \
     (unlikely(InterruptPending))
 #else

@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.5.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.5.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.5.0-dev\n"
+"Project-Id-Version: pgRouting v3.5.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-29 21:59+0000\n"
+"POT-Creation-Date: 2023-03-02 02:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -8887,19 +8887,19 @@ msgstr ""
 msgid "**Official** ``pgr_dijkstra`` (`One to One`_)"
 msgstr ""
 
-msgid "pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  , [``directed``])"
+msgid "pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
 msgstr ""
 
-msgid "pgr_dijkstra(`Edges SQL`_, **start vid**, **end vids** , [``directed``])"
+msgid "pgr_dijkstra(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
 msgstr ""
 
-msgid "pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid**  , [``directed``])"
+msgid "pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid**, [``directed``])"
 msgstr ""
 
-msgid "pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids** , [``directed``])"
+msgid "pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids**, [``directed``])"
 msgstr ""
 
-msgid "pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_ , [``directed``])"
+msgid "pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
 
 msgid "Breaking change on 3.5.0"
@@ -8909,9 +8909,6 @@ msgid "Read the :doc:`migration` about how to migrate from the old result column
 msgstr ""
 
 msgid "From vertex :math:`6` to vertices :math:`\\{10, 17\\}` on a **directed**"
-msgstr ""
-
-msgid "pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid** , [``directed``])"
 msgstr ""
 
 msgid "The examples of this section are based on the :doc:`sampledata` network."
@@ -9073,7 +9070,7 @@ msgstr ""
 msgid "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_aStarCost.html>`__ (`3.5 <https://docs.pgrouting.org/3.5/en/pgr_dijkstraCost.html>`__) `3.4 <https://docs.pgrouting.org/3.4/en/pgr_dijkstraCost.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstraCost.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraCost.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_dijkstraCost.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_dijkstraCost.html>`__"
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_dijkstraCost.html>`__ (`3.5 <https://docs.pgrouting.org/3.5/en/pgr_dijkstraCost.html>`__) `3.4 <https://docs.pgrouting.org/3.4/en/pgr_dijkstraCost.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstraCost.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraCost.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_dijkstraCost.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_dijkstraCost.html>`__"
 msgstr ""
 
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_dijkstraCost.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_dijkstraCost.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_dijkstraCost.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstraCost.html#pgr-dijkstracost>`__ `2.3 <https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstraCost.html#pgr-dijkstracost>`__"
@@ -9091,13 +9088,13 @@ msgstr ""
 msgid "The ``pgr_dijkstraCost`` function sumarizes of the cost of the shortest path(s) using Dijkstra Algorithm."
 msgstr ""
 
-msgid "pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vid** , [``directed``])"
+msgid "pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
 msgstr ""
 
 msgid "pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
 msgstr ""
 
-msgid "pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vid** , [``directed``])"
+msgid "pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vid**, [``directed``])"
 msgstr ""
 
 msgid "pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vids**, [``directed``])"
