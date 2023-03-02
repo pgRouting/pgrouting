@@ -1339,7 +1339,9 @@ three_options AS (
     ST_X(ST_EndPoint(e_geom)) AS x2, ST_Y(ST_EndPoint(e_geom)) AS y2,
     ST_MakeLine(geom, ST_EndPoint(e_geom)) AS geom
   FROM info
+
   UNION
+
   SELECT closest, source, 0, 0, capacity, reverse_capacity,
     ST_X(geom) AS x1, ST_Y(geom) AS y1,
     ST_X(ST_StartPoint(e_geom)) AS x2, ST_Y(ST_StartPoint(e_geom)) AS y2,
@@ -1354,6 +1356,7 @@ three_options AS (
     edge
   FROM info */
   )
+
 INSERT INTO edges
   (source, target,
     cost, reverse_cost,

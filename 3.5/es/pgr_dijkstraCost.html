@@ -162,14 +162,7 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_dijkstraCost.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_dijkstraCost.html">3.5</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_dijkstraCost.html">3.4</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_dijkstraCost.html">3.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_dijkstraCost.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_dijkstraCost.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_dijkstraCost.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_aStarCost.html">Latest</a> (<a class="reference external" href="https://docs.pgrouting.org/3.5/es/pgr_dijkstraCost.html">3.5</a>) <a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgr_dijkstraCost.html">3.4</a> <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_dijkstraCost.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_dijkstraCost.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_dijkstraCost.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_dijkstraCost.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_dijkstraCost.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_dijkstraCost.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_dijkstraCost.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstraCost.html#pgr-dijkstracost">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstraCost.html#pgr-dijkstracost">2.3</a></p></li>
 </ul>
 <section id="pgr-dijkstracost">
@@ -250,11 +243,11 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salida</strong>, <strong>destino</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 <div class="line">pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salida</strong>, <strong>destinos</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
-<div class="line">pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salidas</strong>, <strong>destino</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 <div class="line">pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salidas</strong>, <strong>destinos</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
-<div class="line">pgr_dijkstraCost(<a class="reference internal" href="#combinations-sql">SQL de aristas</a>, <a class="reference internal" href="#edges-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#combinations-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
 <div class="line">Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
@@ -265,7 +258,7 @@
 <span id="index-0"></span><h3>Uno a Uno<a class="headerlink" href="#one-to-one" title="Enlace permanente a este encabezado">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<p>pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
+<p>pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salida</strong>, <strong>destino</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
 <div class="line-block">
 <div class="line">Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
@@ -318,7 +311,7 @@
 <span id="index-2"></span><h3>Muchos a Uno<a class="headerlink" href="#many-to-one" title="Enlace permanente a este encabezado">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<p>pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
+<p>pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salidas</strong>, <strong>destino</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
 <div class="line-block">
 <div class="line">Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
@@ -375,7 +368,7 @@
 <span id="index-4"></span><h3>Combinaciones<a class="headerlink" href="#combinations" title="Enlace permanente a este encabezado">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<p>pgr_dijkstraCost(<a class="reference internal" href="#combinations-sql">SQL de aristas</a>, <a class="reference internal" href="#edges-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
+<p>pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#combinations-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
 <div class="line-block">
 <div class="line">Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
