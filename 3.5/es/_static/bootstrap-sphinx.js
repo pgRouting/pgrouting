@@ -90,36 +90,6 @@
     $(".bs-sidenav > ul > li > a").addClass("nav-header");
 
     
-    // back to top
-    setTimeout(function () {
-      var $sideBar = $(".bs-sidenav");
-      var $content = $(".content");
-
-      // Enlarge content if sidebar is larger.
-      if ($sideBar.outerHeight(true) > $content.outerHeight(true)) {
-        $content.css("min-height", $sideBar.outerHeight(true));
-      }
-
-      $sideBar
-        // Add affix.
-        .affix({
-          offset: {
-            top: function () {
-              var offsetTop      = $sideBar.offset().top;
-              var sideBarMargin  = parseInt($sideBar.css("margin-top"), 10);
-              var navOuterHeight = $("#navbar").outerHeight(true);
-
-              return (this.top = offsetTop - navOuterHeight);
-            },
-            bottom: function () {
-              return (this.bottom = $(".footer").outerHeight(true));
-            }
-          }
-        })
-        // Trigger to reset if page content is scrolled to bottom.
-        .trigger("scroll.bs.affix.data-api");
-    }, 0);
-    
 
     // Local TOC.
     patchToc($("ul.localtoc"), 2);
