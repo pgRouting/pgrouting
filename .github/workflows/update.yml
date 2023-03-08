@@ -28,7 +28,7 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-          old_pgr: [3.4.2, 3.4.1, 3.4.0, 3.3.5, 3.3.4, 3.3.3, 3.3.2, 3.3.1, 3.3.0, 3.0.0, 3.0.1, 3.0.2, 3.0.3, 3.0.4, 3.0.6, 3.1.0, 3.1.1, 3.1.2, 3.1.3, 3.2.0, 3.2.1, 3.2.2]
+          old_pgr: [3.5.0, 3.4.2, 3.4.1, 3.4.0, 3.3.5, 3.3.4, 3.3.3, 3.3.2, 3.3.1, 3.3.0, 3.0.0, 3.0.1, 3.0.2, 3.0.3, 3.0.4, 3.0.6, 3.1.0, 3.1.1, 3.1.2, 3.1.3, 3.2.0, 3.2.1, 3.2.2]
 
     steps:
       - uses: actions/checkout@v3
@@ -122,6 +122,6 @@ jobs:
         run: |
           sudo service postgresql start
           psql -p "${PGPORT}"  -d ___pgr___test___ -c "SELECT * FROM pgr_full_version();"
-          psql -p "${PGPORT}"  -d ___pgr___test___ -c "ALTER EXTENSION pgrouting UPDATE  TO '3.5.0';"
+          psql -p "${PGPORT}"  -d ___pgr___test___ -c "ALTER EXTENSION pgrouting UPDATE  TO '3.5.1';"
           psql -p "${PGPORT}"  -d ___pgr___test___ -c "SELECT * FROM pgr_full_version();"
           pg_prove  -Q -f --normalize --directives --recurse -U "${PG_RUNNER_USER}" -d ___pgr___test___ "pgtap"
