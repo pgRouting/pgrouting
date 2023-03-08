@@ -84,9 +84,11 @@ echo "pumpup from ${OLD_VERSION}${KIND} to ${NEW_VERSION}${NEW_KIND}"
 # set version to new version
 perl -pi -e 's/project\(PGROUTING VERSION (.*)$/project\(PGROUTING VERSION '"${NEW_VERSION}"'/g' CMakeLists.txt
 perl -pi -e 's/set\(PROJECT_VERSION_DEV(.*)$/set\(PROJECT_VERSION_DEV "'"${NEW_KIND}"'"\)/g'  CMakeLists.txt
-perl -pi -e 's/set\(MINORS(.*)$/set\(MINORS '"${NEW_MAYOR}"'.'"${NEW_MINOR}"'$1/g'  CMakeLists.txt
-perl -pi -e 's/OLD_SIGNATURES$/OLD_SIGNATURES\n    '"${OLD_VERSION}"' /g' CMakeLists.txt
-
+perl -pi -e 's/OLD_SIGNATURES$/OLD_SIGNATURES\n    '"${OLD_VERSION}"'/g' CMakeLists.txt
+if [ "${WHAT_NEXT}" != "micro" ]
+then
+    perl -pi -e 's/set\(MINORS(.*)$/set\(MINORS '"${NEW_MAYOR}"'.'"${NEW_MINOR}"'$1/g'  CMakeLists.txt
+fi
 # --------------------------------------------
 # --------------------------------------------
 # sql directory
@@ -114,6 +116,7 @@ No Changes Yet
 
 $1/g' doc/src/release_notes.rst
 
+# adding to news
 tools/release-scripts/notes2news.pl
 
 # --------------------------------------------
@@ -135,6 +138,7 @@ perl -pi -e 's/'"${OLD_VERSION}"'/'"${NEW_VERSION}"'/' docqueries/version/*.resu
 
 perl -pi -e 's/'"${OLD_VERSION}"'/'"${NEW_VERSION}"'/g' .github/workflows/update.yml
 perl -pi -e 's/old_pgr: \[/old_pgr: \['"${OLD_VERSION}"', /g' .github/workflows/update.yml
+perl -pi -e 's/'"${OLD_VERSION}"'/'"${NEW_VERSION}"'/g' .github/workflows/boost_version.yml
 
 # --------------------------------------------
 # Include file in CMakeLists.txt
