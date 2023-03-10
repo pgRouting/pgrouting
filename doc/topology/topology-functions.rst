@@ -60,7 +60,7 @@ have special permissions given by the administrators to use them.
 
 These proposed functions do not modify the database.
 
-- :doc:`pgr_degree` - Calculates the degree of the vertices of a graph.
+- :doc:`pgr_degree` - Returns a set of vertices and corresponding count of incidet edges to the vertex.
 - :doc:`pgr_extractVertices` - Extracts vertex information based on the edge
   table information.
 
