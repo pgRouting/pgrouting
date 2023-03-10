@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.5.0\n"
+"Project-Id-Version: pgRouting v3.5.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-02 02:00+0000\n"
+"POT-Creation-Date: 2023-03-10 15:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -5821,7 +5821,7 @@ msgstr ""
 msgid "Upgrading the database"
 msgstr ""
 
-msgid "To upgrade pgRouting in the database to version 3.5.0 use the following command:"
+msgid "To upgrade pgRouting in the database to version 3.5.1 use the following command:"
 msgstr ""
 
 msgid "More information can be found in https://www.postgresql.org/docs/current/sql-createextension.html"
@@ -13070,6 +13070,12 @@ msgid "Release Notes"
 msgstr ""
 
 msgid "To see the full list of changes check the list of `Git commits <https://github.com/pgRouting/pgrouting/commits>`_ on Github."
+msgstr ""
+
+msgid "pgRouting 3.5.1 Release Notes"
+msgstr ""
+
+msgid "No Changes Yet"
 msgstr ""
 
 msgid "pgRouting 3.5.0 Release Notes"
