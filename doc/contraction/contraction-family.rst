@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/contraction-family.html>`__
-  (`3.5 <https://docs.pgrouting.org/3.5/en/contraction-family.html>`__)
+  (`3.6 <https://docs.pgrouting.org/3.6/en/contraction-family.html>`__)
+  `3.5 <https://docs.pgrouting.org/3.5/en/contraction-family.html>`__
   `3.4 <https://docs.pgrouting.org/3.4/en/contraction-family.html>`__
   `3.3 <https://docs.pgrouting.org/3.3/en/contraction-family.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/contraction-family.html>`__

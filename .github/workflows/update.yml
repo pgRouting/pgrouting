@@ -122,6 +122,6 @@ jobs:
         run: |
           sudo service postgresql start
           psql -p "${PGPORT}"  -d ___pgr___test___ -c "SELECT * FROM pgr_full_version();"
-          psql -p "${PGPORT}"  -d ___pgr___test___ -c "ALTER EXTENSION pgrouting UPDATE  TO '3.5.1';"
+          psql -p "${PGPORT}"  -d ___pgr___test___ -c "ALTER EXTENSION pgrouting UPDATE  TO '3.6.0';"
           psql -p "${PGPORT}"  -d ___pgr___test___ -c "SELECT * FROM pgr_full_version();"
           pg_prove  -Q -f --normalize --directives --recurse -U "${PG_RUNNER_USER}" -d ___pgr___test___ "pgtap"

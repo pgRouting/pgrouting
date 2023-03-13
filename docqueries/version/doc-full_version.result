@@ -5,8 +5,8 @@ SET
 /* -- q1 */
 SELECT version, library FROM pgr_full_version();
  version |     library
----------+-----------------
- 3.5.1   | pgrouting-3.5.1
+-----------+-----------------
+ 3.6.0-dev   | pgrouting-3.6.0
 (1 row)
 
 /* -- q2 */

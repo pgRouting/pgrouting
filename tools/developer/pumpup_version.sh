@@ -30,7 +30,23 @@ function pumpup_doc {
     echo "pump up doc"
     OLDSTR='^  \(`'"${1}"' (.*)\/'"${1}"'(.*)\)$'
     NEWSTR='  \(`'"${2}"' $1\/'"${2}"'$2\)\n  `'"${1}"' $1\/'"${1}"'$2'
-    perl -pi -e 's/'"$OLDSTR"'/'"${NEWSTR}"'/' "$(git ls-files './*.rst')"
+    for f in $(git ls-files './*.rst')
+    do
+        perl -pi -e 's/'"$OLDSTR"'/'"${NEWSTR}"'/' "$f"
+    done
+    WEBLINK='<https:\/\/docs.pgrouting.org\/'
+    OLDSTR='`'"${1}"' '"${WEBLINK}${1}"
+    NEWSTR='`'"${2}"' '"${WEBLINK}${2}"
+    echo "${OLDSTR}"
+    echo "${NEWSTR}"
+    echo "pump up pot file"
+    perl -pi -e 's/\('"${OLDSTR}"'(.*)__\)/\('"${NEWSTR}"'$1__\) '"${OLDSTR}"'$1__/' locale/pot/pgrouting_doc_strings.pot
+    # Joining the line to be changed
+    perl -pi -e 's/\(`'"${1}"'(.*)\n/\"\n\"\(`'"${1}"'$1/g' locale/*/LC_MESSAGES/pgrouting_doc_strings.po
+    # Removing double quote
+    perl -pi -e 's/^\"(.*)""(.*)$/\"$1$2/g' locale/*/LC_MESSAGES/pgrouting_doc_strings.po
+    # now it can be substitued
+    perl -pi -e 's/\('"${OLDSTR}"'(.*)__\)/\('"${NEWSTR}"'$1__\)\"\n\"'"${OLDSTR}"'$1__/' locale/*/LC_MESSAGES/pgrouting_doc_strings.po
 }
 
 function pumpup_mayor {
@@ -130,6 +146,10 @@ perl -pi -e 's/'"${OLD_VERSION}"'/'"${NEW_VERSION}"'/g' tools/testers/pg_prove_t
 # --------------------------------------------
 
 perl -pi -e 's/'"${OLD_VERSION}${KIND}"'/'"${NEW_VERSION}${NEW_KIND}"'/' docqueries/version/*.result
+if [ "${WHAT_NEXT}" == "minor" ]
+then
+    perl -pi -e 's/^---------/-----------/' docqueries/version/doc-full_version.result
+fi
 perl -pi -e 's/'"${OLD_VERSION}"'/'"${NEW_VERSION}"'/' docqueries/version/*.result
 
 # --------------------------------------------

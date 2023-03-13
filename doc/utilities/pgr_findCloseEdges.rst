@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_findCloseEdges.html>`__
-  (`3.5 <https://docs.pgrouting.org/3.5/en/pgr_findCloseEdges.html>`__)
+  (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_findCloseEdges.html>`__)
+  `3.5 <https://docs.pgrouting.org/3.5/en/pgr_findCloseEdges.html>`__
   `3.4 <https://docs.pgrouting.org/3.4/en/pgr_findCloseEdges.html>`__
 
 
