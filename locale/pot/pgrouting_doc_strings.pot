@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.5.1\n"
+"Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-10 15:31+0000\n"
+"POT-Creation-Date: 2023-03-13 13:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -322,7 +322,7 @@ msgstr ""
 msgid "In general:"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/KSP-category.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/KSP-category.html>`__) `3.4 <https://docs.pgrouting.org/3.4/en/KSP-category.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/KSP-category.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/KSP-category.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/KSP-category.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/KSP-category.html>`__) `3.4 <https://docs.pgrouting.org/3.4/en/KSP-category.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/KSP-category.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/KSP-category.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/KSP-category.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/KSP-category.html>`__"
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/KSP-category.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/KSP-category.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/KSP-category.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/KSP-category.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/KSP-category.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/KSP-category.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/KSP-category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/KSP-category.html>`__"
 msgstr ""
 
 msgid "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/KSP-category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/KSP-category.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/KSP-category.html>`__"
@@ -3502,7 +3502,7 @@ msgstr ""
 msgid "If there is no path, the resulting set is empty."
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/drivingDistance-category.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/drivingDistance-category.html>`__) `3.4 <https://docs.pgrouting.org/3.4/en/drivingDistance-category.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/drivingDistance-category.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/drivingDistance-category.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/drivingDistance-category.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/drivingDistance-category.html>`__) `3.4 <https://docs.pgrouting.org/3.4/en/drivingDistance-category.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/drivingDistance-category.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/drivingDistance-category.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/drivingDistance-category.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/drivingDistance-category.html>`__"
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/drivingDistance-category.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/drivingDistance-category.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/drivingDistance-category.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/drivingDistance-category.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/drivingDistance-category.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/drivingDistance-category.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/drivingDistance-category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/drivingDistance-category.html>`__"
 msgstr ""
 
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/drivingDistance-category.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/drivingDistance-category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/drivingDistance-category.html>`__"
@@ -5821,7 +5821,7 @@ msgstr ""
 msgid "Upgrading the database"
 msgstr ""
 
-msgid "To upgrade pgRouting in the database to version 3.5.1 use the following command:"
+msgid "To upgrade pgRouting in the database to version 3.6.0 use the following command:"
 msgstr ""
 
 msgid "More information can be found in https://www.postgresql.org/docs/current/sql-createextension.html"
@@ -6199,7 +6199,7 @@ msgstr ""
 msgid "The Migration guide from 2.6 can be found at https://github.com/pgRouting/pgrouting/wiki/Migration-Guide."
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_KSP.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_KSP.html>`__) `3.4 <https://docs.pgrouting.org/3.4/en/pgr_KSP.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_KSP.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_KSP.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_KSP.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_KSP.html>`__) `3.4 <https://docs.pgrouting.org/3.4/en/pgr_KSP.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_KSP.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_KSP.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_KSP.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_KSP.html>`__"
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_KSP.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_KSP.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_KSP.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_KSP.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_KSP.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_KSP.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_KSP.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_KSP.html>`__"
 msgstr ""
 
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_KSP.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_KSP.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_KSP.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/ksp/doc/pgr_ksp.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/ksp/doc/pgr_ksp.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/ksp/doc/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/ksp/doc/index.html>`__"
@@ -9103,7 +9103,7 @@ msgstr ""
 msgid "pgr_dijkstraCost(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_dijkstraCostMatrix.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_dijkstraCostMatrix.html>`__) `3.4 <https://docs.pgrouting.org/3.4/en/pgr_dijkstraCostMatrix.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstraCostMatrix.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraCostMatrix.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_dijkstraCostMatrix.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_dijkstraCostMatrix.html>`__) `3.4 <https://docs.pgrouting.org/3.4/en/pgr_dijkstraCostMatrix.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstraCostMatrix.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraCostMatrix.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_dijkstraCostMatrix.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_dijkstraCostMatrix.html>`__"
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_dijkstraCostMatrix.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_dijkstraCostMatrix.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_dijkstraCostMatrix.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_dijkstraCostMatrix.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstraCostMatrix.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraCostMatrix.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_dijkstraCostMatrix.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_dijkstraCostMatrix.html>`__"
 msgstr ""
 
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_dijkstraCostMatrix.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_dijkstraCostMatrix.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_dijkstraCostMatrix.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/costMatrix/doc/pgr_dijkstraCostMatrix.html>`__"
@@ -9478,7 +9478,7 @@ msgstr ""
 msgid ":doc:`dijkstra-family`."
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_drivingDistance.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_drivingDistance.html>`__) `3.4 <https://docs.pgrouting.org/3.4/en/pgr_drivingDistance.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_drivingDistance.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_drivingDistance.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_drivingDistance.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html>`__) `3.4 <https://docs.pgrouting.org/3.4/en/pgr_drivingDistance.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_drivingDistance.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_drivingDistance.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_drivingDistance.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_drivingDistance.html>`__"
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_drivingDistance.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_drivingDistance.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_drivingDistance.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_drivingDistance.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_drivingDistance.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_drivingDistance.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_drivingDistance.html>`__"
 msgstr ""
 
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_drivingDistance.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_drivingDistance.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_drivingDistance.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/driving_distance/doc/pgr_drivingDistance.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/driving_distance/doc/pgr_drivingDistance.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/driving_distance/doc/dd_driving_distance_v3.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/driving_distance/doc/dd_driving_distance.html>`__"
@@ -11461,7 +11461,7 @@ msgstr ""
 msgid ":doc:`topology-functions` for an overview of a topology for routing algorithms. :doc:`pgr_analyzeOneWay` to analyze directionality of the edges. :doc:`pgr_createTopology` to create a topology based on the geometry. :doc:`pgr_analyzeGraph` to analyze the edges and vertices of the edge table."
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_pickDeliver.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_pickDeliver.html>`__) `3.4 <https://docs.pgrouting.org/3.4/en/pgr_pickDeliver.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_pickDeliver.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_pickDeliver.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_pickDeliver.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_pickDeliver.html>`__) `3.4 <https://docs.pgrouting.org/3.4/en/pgr_pickDeliver.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_pickDeliver.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_pickDeliver.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_pickDeliver.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_pickDeliver.html>`__"
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_pickDeliver.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_pickDeliver.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_pickDeliver.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_pickDeliver.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_pickDeliver.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_pickDeliver.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_pickDeliver.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_pickDeliver.html>`__"
 msgstr ""
 
 msgid "``pgr_pickDeliver`` - Experimental"
@@ -11821,7 +11821,7 @@ msgstr ""
 msgid "pgr_sequentialVertexColoring(`Edges SQL`_)"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_stoerWagner.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_stoerWagner.html>`__) `3.4 <https://docs.pgrouting.org/3.4/en/pgr_stoerWagner.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_stoerWagner.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_stoerWagner.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_stoerWagner.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_stoerWagner.html>`__) `3.4 <https://docs.pgrouting.org/3.4/en/pgr_stoerWagner.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_stoerWagner.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_stoerWagner.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_stoerWagner.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_stoerWagner.html>`__"
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_stoerWagner.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_stoerWagner.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_stoerWagner.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_stoerWagner.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_stoerWagner.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_stoerWagner.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_stoerWagner.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_stoerWagner.html>`__"
 msgstr ""
 
 msgid "pgr_stoerWagner - Experimental"
@@ -13072,10 +13072,13 @@ msgstr ""
 msgid "To see the full list of changes check the list of `Git commits <https://github.com/pgRouting/pgrouting/commits>`_ on Github."
 msgstr ""
 
-msgid "pgRouting 3.5.1 Release Notes"
+msgid "pgRouting 3.6.0 Release Notes"
 msgstr ""
 
 msgid "No Changes Yet"
+msgstr ""
+
+msgid "pgRouting 3.5.1 Release Notes"
 msgstr ""
 
 msgid "pgRouting 3.5.0 Release Notes"
@@ -15247,7 +15250,7 @@ msgstr ""
 msgid "Additional functions to analyze a graph:"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/transformation-family.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/transformation-family.html>`__) `3.4 <https://docs.pgrouting.org/3.4/en/transformation-family.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/transformation-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/transformation-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/transformation-family.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/transformation-family.html>`__) `3.4 <https://docs.pgrouting.org/3.4/en/transformation-family.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/transformation-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/transformation-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/transformation-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/transformation-family.html>`__"
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/transformation-family.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/transformation-family.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/transformation-family.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/transformation-family.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/transformation-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/transformation-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/transformation-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/transformation-family.html>`__"
 msgstr ""
 
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/transformation-family.html>`__"
