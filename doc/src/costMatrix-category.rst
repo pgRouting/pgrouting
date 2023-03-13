@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/costMatrix-category.html>`__
-  (`3.5 <https://docs.pgrouting.org/3.5/en/costMatrix-category.html>`__)
+  (`3.6 <https://docs.pgrouting.org/3.6/en/costMatrix-category.html>`__)
+  `3.5 <https://docs.pgrouting.org/3.5/en/costMatrix-category.html>`__
   `3.4 <https://docs.pgrouting.org/3.4/en/costMatrix-category.html>`__
   `3.3 <https://docs.pgrouting.org/3.3/en/costMatrix-category.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/costMatrix-category.html>`__

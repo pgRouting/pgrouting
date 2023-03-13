@@ -167,7 +167,11 @@ if (DOC_USE_BOOTSTRAP)
     set(SPHINX_INCLUDE "import sphinx_bootstrap_theme")
     set(SPHINX_THEME "bootstrap")
     set(SPHINX_THEME_DIR "sphinx_bootstrap_theme.get_html_theme_path()")
-    set(SPHINX_THEME_OPTIONS "'source_link_position': \"none\",")
+    set(SPHINX_THEME_OPTIONS "
+    'navbar_class': \"navbar\",
+    'source_link_position': \"nav\",
+    'bootstrap_version': \"2\",
+    ")
 else()
     set(SPHINX_INCLUDE "")
     set(SPHINX_THEME "haiku")

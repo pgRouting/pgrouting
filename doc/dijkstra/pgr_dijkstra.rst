@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_dijkstra.html>`__
-  (`3.5 <https://docs.pgrouting.org/3.5/en/pgr_dijkstra.html>`__)
+  (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_dijkstra.html>`__)
+  `3.5 <https://docs.pgrouting.org/3.5/en/pgr_dijkstra.html>`__
   `3.4 <https://docs.pgrouting.org/3.4/en/pgr_dijkstra.html>`__
   `3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstra.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstra.html>`__
@@ -93,11 +94,11 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  , [``directed``])
-   | pgr_dijkstra(`Edges SQL`_, **start vid**, **end vids** , [``directed``])
-   | pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid**  , [``directed``])
-   | pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids** , [``directed``])
-   | pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_ , [``directed``])
+   | pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**, [``directed``])
+   | pgr_dijkstra(`Edges SQL`_, **start vid**, **end vids**, [``directed``])
+   | pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid**, [``directed``])
+   | pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids**, [``directed``])
+   | pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_, [``directed``])
 
    | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
@@ -117,7 +118,7 @@ One to One
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  , [``directed``])
+   | pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**, [``directed``])
 
    | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
@@ -137,7 +138,7 @@ One to Many
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_dijkstra(`Edges SQL`_, **start vid**, **end vids** , [``directed``])
+   | pgr_dijkstra(`Edges SQL`_, **start vid**, **end vids**, [``directed``])
 
    | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
@@ -157,7 +158,7 @@ Many to One
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid** , [``directed``])
+   | pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid**, [``directed``])
 
    | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
@@ -178,7 +179,7 @@ Many to Many
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids** , [``directed``])
+   | pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids**, [``directed``])
 
    | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
@@ -199,7 +200,7 @@ Combinations
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_ , [``directed``])
+   | pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_, [``directed``])
 
    | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
@@ -217,7 +218,6 @@ The query:
 .. literalinclude:: doc-pgr_dijkstra.queries
     :start-after: -- q52
     :end-before: -- q6
-
 
 Parameters
 -------------------------------------------------------------------------------

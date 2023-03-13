@@ -26,10 +26,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
     SELECT * FROM pgr_trspViaVertices(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edges',
-        ARRAY[6, 1, 12]::INTEGER[],
-        true,
-        true,
-
+        ARRAY[6, 1, 12]::INTEGER[],     /* array of vids */
+        true,  /* directed graph? */
+        true,  /* has_reverse_cost? */
+        /* include the turn restrictions */
         'SELECT to_cost, target_id::INTEGER, via_path FROM old_restrictions');
 WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) is been deprecated
  seq | id1 | id2 | id3 | cost
@@ -56,11 +56,11 @@ WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) is been deprec
 
 SELECT * FROM pgr_trspViaEdges(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edges',
-        ARRAY[4,6,11]::INTEGER[],
-        ARRAY[0.5, 0.5, 0.5]::float8[],
-        true,
-        true,
-
+        ARRAY[4,6,11]::INTEGER[],           /* array of eids */
+        ARRAY[0.5, 0.5, 0.5]::float8[],     /* array of vids */
+        true,  /* directed graph? */
+        true,  /* has_reverse_cost? */
+        /* include the turn restrictions */
         'SELECT to_cost, target_id::INTEGER, via_path FROM old_restrictions');
 WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated on v3.4.0
 WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0
@@ -87,11 +87,11 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated 
 
 SELECT * FROM pgr_trspViaEdges(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edges',
-        ARRAY[1,11,6]::INTEGER[],
-        ARRAY[0.5, 0.5, 0.5]::float8[],
-        true,
-        true,
-
+        ARRAY[1,11,6]::INTEGER[],           /* array of eids */
+        ARRAY[0.5, 0.5, 0.5]::float8[],     /* array of vids */
+        true,  /* directed graph? */
+        true,  /* has_reverse_cost? */
+        /* include the turn restrictions */
         'SELECT to_cost, target_id::INTEGER, via_path FROM old_restrictions');
 WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated on v3.4.0
 WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0
@@ -116,11 +116,11 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated 
 
 SELECT * FROM pgr_trspViaEdges(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edges',
-        ARRAY[1,11,6]::INTEGER[],
-        ARRAY[0.5, 0.5, 0.5]::float8[],
-        true,
-        true,
-
+        ARRAY[1,11,6]::INTEGER[],           /* array of eids */
+        ARRAY[0.5, 0.5, 0.5]::float8[],     /* array of vids */
+        true,  /* directed graph? */
+        true,  /* has_reverse_cost? */
+        /* include the turn restrictions */
         'SELECT to_cost, target_id::INTEGER, via_path FROM old_restrictions');
 WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated on v3.4.0
 WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0
