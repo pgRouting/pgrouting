@@ -19811,10 +19811,10 @@ msgstr ""
 
 msgid ""
 "From boost Graph: \"The algorithm as implemented in Boost.Graph does not "
-"produce correct results on graphs with parallel edges.\
+"produce correct results on graphs with parallel edges."
 msgstr ""
 "De boost Graph: \"El algoritmo tal como se aplica en el Boost.Graph no "
-"produce resultados correctos en grafos con bordes paralelos .\
+"produce resultados correctos en grafos con bordes paralelos ."
 
 msgid ""
 "Boost: `Prim's algorithm <https://www.boost.org/libs/graph/doc/"
