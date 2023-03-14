@@ -17200,7 +17200,7 @@ msgstr ""
 
 msgid ""
 "From boost Graph: \"The algorithm as implemented in Boost.Graph does not "
-"produce correct results on graphs with parallel edges.\
+"produce correct results on graphs with parallel edges."
 msgstr ""
 
 msgid ""
