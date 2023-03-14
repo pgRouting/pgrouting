@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>A* Bidireccional - Familia de Funciones &#8212; pgRouting Manual (3.6-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/translations.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="pgr_bdAstar" href="pgr_bdAstar.html" />
+    <link rel="prev" title="pgr_aStarCostMatrix" href="pgr_aStarCostMatrix.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v3.6.0-dev</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Soporte</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Datos Muestra</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Guía de migración</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">A* Bidireccional - Familia de Funciones</a><ul>
+<li><a class="reference internal" href="#description">Descripción</a></li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_aStarCostMatrix.html" title="Previous Chapter: pgr_aStarCostMatrix"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_aStarCostMatrix</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_bdAstar.html" title="Next Chapter: pgr_bdAstar"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_bdAstar &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body span12 content" role="main">
+      
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/bdAstar-family.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.6/en/bdAstar-family.html">3.6</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.5/en/bdAstar-family.html">3.5</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.4/en/bdAstar-family.html">3.4</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.3/en/bdAstar-family.html">3.3</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.2/en/bdAstar-family.html">3.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.1/en/bdAstar-family.html">3.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/bdAstar-family.html">3.0</a></p></li>
+<li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/bdAstar-family.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/bdAstar-family.html">2.6</a></p></li>
+</ul>
+<section id="bidirectional-a-family-of-functions">
+<h1>A* Bidireccional - Familia de Funciones<a class="headerlink" href="#bidirectional-a-family-of-functions" title="Enlace permanente a este encabezado">¶</a></h1>
+<p>El algoritmo bidirectional A* (leído «A estrella») se basa en el algoritmo A*.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_bdAstar.html"><span class="doc">pgr_bdAstar</span></a> - Algoritmo bidireccional A* para obtener rutas.</p></li>
+<li><p><a class="reference internal" href="pgr_bdAstarCost.html"><span class="doc">pgr_bdAstarCost</span></a> - Algoritmo bidireccional A* para calcular el coste de las rutas.</p></li>
+<li><p><a class="reference internal" href="pgr_bdAstarCostMatrix.html"><span class="doc">pgr_bdAstarCostMatrix</span></a> - Algoritmo bidireccional A* para calcular una matriz de costes de rutas.</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<section id="description">
+<h2>Descripción<a class="headerlink" href="#description" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>La búsqueda bidireccional, basado en algoritmo de A*, encuentra el camino más corto desde el vértice inicial (<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>) hasta el vértice final (<code class="docutils literal notranslate"><span class="pre">end_vid</span></code>). Ejecuta dos búsquedas simultáneas: uno hacia adelande del <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> y la otra en reversa desde el <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>, parando cuando las dos se encuentran en el medio. Esta aplicación puede utilizarse con un grafo dirigido y un grafo sin dirección.</p>
+<p>Las características principales son:</p>
+<ul class="simple">
+<li><p>Funciona para grafos dirigidos y no dirigidos.</p></li>
+<li><p>Ordenamiento es:</p>
+<ul>
+<li><p>primero por <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> (si existe)</p></li>
+<li><p>luego por <code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></li>
+</ul>
+</li>
+<li><p>Los valores se devuelven cuando hay una ruta.</p></li>
+<li><p>Sean <span class="math notranslate nohighlight">\(v\)</span> y <span class="math notranslate nohighlight">\(u\)</span> nodos en el grafo:</p>
+<ul>
+<li><p>Si no hay camino de <span class="math notranslate nohighlight">\(v\)</span> a <span class="math notranslate nohighlight">\(u\)</span>:</p>
+<ul>
+<li><p>no se devuelve ninguna fila correspondiente</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> de <span class="math notranslate nohighlight">\(v\)</span> a <span class="math notranslate nohighlight">\(u\)</span> es <span class="math notranslate nohighlight">\(\infty\)</span></p></li>
+</ul>
+</li>
+<li><p>No hay camino cuando <span class="math notranslate nohighlight">\(v = u\)</span> por lo tanto</p>
+<ul>
+<li><p>no se devuelve ninguna fila correspondiente</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> de <cite>v</cite> a <cite>u</cite> es <span class="math notranslate nohighlight">\(0\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Cuando las coordenadas (x,y) para el mismo identificador de vértice difieren:</p>
+<ul>
+<li><p>Se utiliza una selección aleatoria de las coordenadas del vértice <span class="math notranslate nohighlight">\((x,y)\)</span>.</p></li>
+</ul>
+</li>
+<li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O((E + V) * \log V)\)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p>Para grandes gráficos donde hay un camino entre el vértice inicial y el vértice final:</p>
+<ul>
+<li><p>Se espera que termine más rápido que pgr_astar</p></li>
+</ul>
+</li>
+</ul>
+<p>Ver <a class="reference internal" href="aStar-family.html#astar-heuristics"><span class="std std-ref">heuristicas</span></a> disponibles y manupulación de <a class="reference internal" href="aStar-family.html#astar-factor"><span class="std std-ref">factor</span></a>.</p>
+</section>
+<section id="see-also">
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="aStar-family.html"><span class="doc">A* - Familia de Funciones</span></a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/astar_search.html">https://www.boost.org/libs/graph/doc/astar_search.html</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/A*_search_algorithm">https://en.wikipedia.org/wiki/A*_search_algorithm</a></p></li>
+</ul>
+<p class="rubric">Índices y tablas</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
+      Actualizado por última vez en mar 14, 2023.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

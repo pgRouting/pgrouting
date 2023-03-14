@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>pgr_floydWarshall &#8212; pgRouting Manual (3.6-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/translations.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="pgr_johnson" href="pgr_johnson.html" />
+    <link rel="prev" title="Todos los Pares - Familia de Funciones" href="allpairs-family.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v3.6.0-dev</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Soporte</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Datos Muestra</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Guía de migración</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_floydWarshall</span></code></a><ul>
+<li><a class="reference internal" href="#description">Descripción</a></li>
+<li><a class="reference internal" href="#signatures">Firmas</a></li>
+<li><a class="reference internal" href="#parameters">Parámetros</a><ul>
+<li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="allpairs-family.html" title="Previous Chapter: Todos los Pares - Familia de Funciones"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Todos los Par...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_johnson.html" title="Next Chapter: pgr_johnson"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_johnson &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body span12 content" role="main">
+      
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_floydWarshall.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.6/en/pgr_floydWarshall.html">3.6</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_floydWarshall.html">3.5</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_floydWarshall.html">3.4</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_floydWarshall.html">3.3</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_floydWarshall.html">3.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_floydWarshall.html">3.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_floydWarshall.html">3.0</a></p></li>
+<li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_floydWarshall.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_floydWarshall.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_floydWarshall.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/allpairs/doc/pgr_floydWarshall.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/allpairs/doc/pgr_floydWarshall.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/apsp_warshall/doc/index.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/apsp_warshall/doc/index.html">2.0</a></p></li>
+</ul>
+<section id="pgr-floydwarshall">
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_floydWarshall</span></code><a class="headerlink" href="#pgr-floydwarshall" title="Enlace permanente a este encabezado">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_floydWarshall</span></code> - Devuelve la suma de los costos de la ruta más corta para cada par de nodos en el grafo mediante el algoritmo Floyd-Warshall.</p>
+<figure class="align-default" id="id1">
+<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
+<figcaption>
+<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+</figcaption>
+</figure>
+<p class="rubric">Disponibilidad</p>
+<ul class="simple">
+<li><p>Version 2.2.0</p>
+<ul>
+<li><p>Cambio de firma</p></li>
+<li><p>Firma antigua ya no soportada</p></li>
+</ul>
+</li>
+<li><p>Versión 2.0.0</p>
+<ul>
+<li><p>Función <strong>oficial</strong></p></li>
+</ul>
+</li>
+</ul>
+<section id="description">
+<h2>Descripción<a class="headerlink" href="#description" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>El algoritmo Floyd-Warshall, también conocido como algoritmo de Floyd, es una buena opción para calcular la suma de los costos de la ruta más corta para cada par de nodos en el grafo, para <em>grafos densos</em>. Usamos la implementación de Boost que se ejecuta en <span class="math notranslate nohighlight">\(\Theta(V^3)\)</span> tiempo,</p>
+<p>Las principales características son:</p>
+<ul class="simple">
+<li><p>No devuelve una ruta.</p></li>
+<li><p>Regresa la suma de los costos de la ruta más corta para cada par de nodos del grafo.</p></li>
+<li><p>El proceso se realiza sólo en aristas con costos positivos.</p></li>
+<li><p>Boost devuelve una matriz <span class="math notranslate nohighlight">\(V \times V\)</span> donde los valores infinitos representan la distancia entre vértices para los que no hay ruta.</p>
+<ul>
+<li><p>Solo regresa los valores no infinitos en forma de un conjunto de <cite>(start_vid, end_vid, agg_cost)</cite>.</p></li>
+</ul>
+</li>
+<li><p>Sea el caso donde los valores devueltos se almacenan en una tabla, por lo que el índice único sería el par: <cite>(start_vid, end_vid)</cite>.</p></li>
+<li><p>Para el grafo no dirigido, los resultados son simétricos.</p>
+<ul>
+<li><p>El <cite>agg_cost</cite> de <cite>(u, v)</cite> es el mismo que para <cite>(v, u)</cite>.</p></li>
+</ul>
+</li>
+<li><p>En caso de <cite>start_vid</cite> = <cite>end_vid</cite>, el <cite>agg_cost</cite> = 0.</p></li>
+<li><p><strong>Recomendación: utilice un cuadro delimitador de no más de 3500 aristas.</strong></p></li>
+</ul>
+</section>
+<section id="signatures">
+<h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
+<p class="rubric">Resumen</p>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<p>pgr_floydWarshall(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
+<div class="line-block">
+<div class="line">Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Para sub-grafo con aristas <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span>.</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_floydWarshall</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
+  <span class="n">FROM</span> <span class="n">edges</span> <span class="n">where</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="s1">&#39;</span>
+<span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">end_vid</span><span class="p">;</span>
+ <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----------+---------+----------</span>
+         <span class="mi">5</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>        <span class="mi">1</span>
+         <span class="mi">5</span> <span class="o">|</span>       <span class="mi">7</span> <span class="o">|</span>        <span class="mi">2</span>
+         <span class="mi">6</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>        <span class="mi">1</span>
+         <span class="mi">6</span> <span class="o">|</span>       <span class="mi">7</span> <span class="o">|</span>        <span class="mi">1</span>
+         <span class="mi">7</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>        <span class="mi">2</span>
+         <span class="mi">7</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>        <span class="mi">1</span>
+        <span class="mi">10</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>        <span class="mi">2</span>
+        <span class="mi">10</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>        <span class="mi">1</span>
+        <span class="mi">10</span> <span class="o">|</span>       <span class="mi">7</span> <span class="o">|</span>        <span class="mi">2</span>
+        <span class="mi">15</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>        <span class="mi">3</span>
+        <span class="mi">15</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>        <span class="mi">2</span>
+        <span class="mi">15</span> <span class="o">|</span>       <span class="mi">7</span> <span class="o">|</span>        <span class="mi">3</span>
+        <span class="mi">15</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="p">(</span><span class="mi">13</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="parameters">
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlace permanente a este encabezado">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a> descritas más adelante.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="optional-parameters">
+<h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><ul class="simple">
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> el gráfo se considera <cite>Dirigido</cite></p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> el gráfo se considera <cite>No Dirigido</cite>.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="inner-queries">
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Enlace permanente a este encabezado">¶</a></h2>
+<section id="edges-sql">
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td></td>
+<td><p>Identificador del primer vértice de la arista.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td></td>
+<td><p>Identificador del segundo vértice de la arista.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
+<td></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
+<td><p>-1</p></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
+<ul class="simple">
+<li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Donde:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="result-columns">
+<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Conjunto de <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 14.0%" />
+<col style="width: 16.3%" />
+<col style="width: 69.8%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del vértice de salida.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del vértice destino.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Costo afregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="see-also">
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_johnson.html"><span class="doc">pgr_johnson</span></a></p></li>
+<li><p>Boost <a class="reference external" href="https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html">Algoritmo floyd-Warshall</a></p></li>
+<li><p>Consultas utilizan la red <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a>.</p></li>
+</ul>
+<p class="rubric">Índices y tablas</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
+      Actualizado por última vez en mar 14, 2023.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
