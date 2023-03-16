@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>pgr_lineGraphFull - Experimental &#8212; pgRouting Manual (3.5)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/translations.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Ordenamiento - Familia de funciones" href="ordering-family.html" />
+    <link rel="prev" title="pgr_lineGraph - Experimental" href="pgr_lineGraph.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v3.5.1</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Soporte</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Datos Muestra</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Guía de migración</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> - Experimental</a><ul>
+<li><a class="reference internal" href="#description">Descripción</a></li>
+<li><a class="reference internal" href="#signatures">Firmas</a></li>
+<li><a class="reference internal" href="#parameters">Parámetros</a></li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
+<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
+<li><a class="reference internal" href="#the-data">The data</a></li>
+<li><a class="reference internal" href="#the-transformation">The transformation</a></li>
+<li><a class="reference internal" href="#creating-table-that-identifies-transformed-vertices">Crear una tabla que identifica los vértices transformados</a><ul>
+<li><a class="reference internal" href="#store-edge-results">Store edge results</a></li>
+<li><a class="reference internal" href="#create-the-mapping-table">Create the mapping table</a></li>
+<li><a class="reference internal" href="#filling-the-mapping-table">Filling the mapping table</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#adding-a-soft-restriction">Adding a soft restriction</a><ul>
+<li><a class="reference internal" href="#idenifying-the-restriction">Idenifying the restriction</a></li>
+<li><a class="reference internal" href="#adding-a-value-to-the-restriction">Adding a value to the restriction</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#simplifying-leaf-vertices">Simplifying leaf vertices</a><ul>
+<li><a class="reference internal" href="#using-the-vertex-map-give-the-leaf-verices-their-original-value">Using the vertex map give the leaf verices their original value.</a></li>
+<li><a class="reference internal" href="#removing-self-loops-on-leaf-nodes">Removing self loops on leaf nodes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#complete-routing-graph">Complete routing graph</a><ul>
+<li><a class="reference internal" href="#add-edges-from-the-original-graph">Add edges from the original graph</a></li>
+<li><a class="reference internal" href="#add-the-newly-calculated-edges">Add the newly calculated edges</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#using-the-routing-graph">Using the routing graph</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_lineGraph.html" title="Previous Chapter: pgr_lineGraph - Experimental"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_lineGraph...</span>
+    </a>
+  </li>
+  <li>
+    <a href="ordering-family.html" title="Next Chapter: Ordenamiento - Familia de funciones"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Ordenamiento ... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body span12 content" role="main">
+      
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_lineGraphFull.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_lineGraphFull.html">3.5</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_lineGraphFull.html">3.4</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_lineGraphFull.html">3.3</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_lineGraphFull.html">3.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_lineGraphFull.html">3.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_lineGraphFull.html">3.0</a></p></li>
+<li><p><strong>Versiones no sustentadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_lineGraphFull.html">2.6</a></p></li>
+</ul>
+<section id="pgr-linegraphfull-experimental">
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> - Experimental<a class="headerlink" href="#pgr-linegraphfull-experimental" title="Enlace permanente a este encabezado">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> — Transforma un grafo dado en uno nuevo donde todos los vértices del grafo original se convierten en grafos de líneas.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Posible bloqueo del servidor</p>
+<ul class="simple">
+<li><p>Estas funciones pueden crear una caída del servidor</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Funciones experimentales</p>
+<ul class="simple">
+<li><p>No son oficialmente de la versión actual.</p></li>
+<li><p>Es probable que oficialmente no formen parte de la siguiente versión:</p>
+<ul>
+<li><p>Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL</p></li>
+<li><p>El nombre puede cambiar.</p></li>
+<li><p>La firma puede cambiar.</p></li>
+<li><p>La funcionalidad puede cambiar.</p></li>
+<li><p>Las pruebas de pgTap pueden faltar.</p></li>
+<li><p>Posiblemente necesite codificación c/c++.</p></li>
+<li><p>Puede carecer documentación.</p></li>
+<li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
+<li><p>Puede ser necesario que los ejemplos de documentación se generen automáticamente.</p></li>
+<li><p>Puede ser necesaria retroalimentación por parte de la comunidad.</p></li>
+<li><p>Puede depender de una función propuesta de pgRouting</p></li>
+<li><p>Podría depender de una función obsoleta de pgRouting</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p class="rubric">Disponibilidad</p>
+<ul class="simple">
+<li><p>Versión 2.6.0</p>
+<ul>
+<li><p>Nueva función <strong>Experimental</strong></p></li>
+</ul>
+</li>
+</ul>
+<section id="description">
+<h2>Descripción<a class="headerlink" href="#description" title="Enlace permanente a este encabezado">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code>, convierte un grafo dirigido a un grafo dirigido lineal, convirtiendo cada vértice en un grafo completo y manteniendo todas las aristas originales. Las nuevas aristas de conexión tienen un costo de 0 y van entre las aristas originales adyacentes, respetando la direccionalidad.</p>
+<p>Una posible aplicación del grafo resultante es <strong>«ruteo con restricciones en dos aristas»</strong>:</p>
+<ul class="simple">
+<li><p>Establecer un coste de uso del vértice al enrutar entre aristas en la arista de conexión</p></li>
+<li><p>Prohibir el ruteo entre dos aristas al quitar el arista de conexión</p></li>
+</ul>
+<p>Esto es posible porque cada una de las intersecciones (vértices) en el grafo original ahora son grafos completos que tienen una nueva arista para cada posible giro a través de esa intersección.</p>
+<p>Las principales características son:</p>
+<ul class="simple">
+<li><p>Esta función es para grafos <strong>dirigidos</strong>.</p></li>
+<li><p>Los resultados son indefinidos cuando se utiliza un identificador de vértice negativo en el grafo de entrada.</p></li>
+<li><p>Los resultados son indefinidos cuando se utiliza un identificador de borde duplicado en el grafo de entrada.</p></li>
+<li><p>Tiempo de ejecución: TBD</p></li>
+</ul>
+</section>
+<section id="signatures">
+<span id="index-0"></span><h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
+<p class="rubric">Resumen</p>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_lineGraphFull(<a class="reference internal" href="#edges-sql">SQL de aristas</a>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">edge)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Grafo de línea completa del subgrafo de las aristas <span class="math notranslate nohighlight">\(\{4, 7, 8, 10\}\)</span></p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_lineGraphFull(
+  $$SELECT id, source, target, cost, reverse_cost
+  FROM edges
+  WHERE id IN (4, 7, 8, 10)$$);
+ seq | source | target | cost | edge
+-----+--------+--------+------+------
+   1 |     -1 |      7 |    1 |    4
+   2 |      6 |     -1 |    0 |    0
+   3 |     -2 |      6 |    1 |   -4
+   4 |     -3 |      3 |    1 |   -7
+   5 |     -4 |     11 |    1 |    8
+   6 |     -5 |      8 |    1 |   10
+   7 |      7 |     -2 |    0 |    0
+   8 |      7 |     -3 |    0 |    0
+   9 |      7 |     -4 |    0 |    0
+  10 |      7 |     -5 |    0 |    0
+  11 |     -6 |     -2 |    0 |    0
+  12 |     -6 |     -3 |    0 |    0
+  13 |     -6 |     -4 |    0 |    0
+  14 |     -6 |     -5 |    0 |    0
+  15 |     -7 |     -2 |    0 |    0
+  16 |     -7 |     -3 |    0 |    0
+  17 |     -7 |     -4 |    0 |    0
+  18 |     -7 |     -5 |    0 |    0
+  19 |     -8 |     -2 |    0 |    0
+  20 |     -8 |     -3 |    0 |    0
+  21 |     -8 |     -4 |    0 |    0
+  22 |     -8 |     -5 |    0 |    0
+  23 |     -9 |     -6 |    1 |    7
+  24 |      3 |     -9 |    0 |    0
+  25 |    -10 |     -7 |    1 |   -8
+  26 |     11 |    -10 |    0 |    0
+  27 |    -11 |     -8 |    1 |  -10
+  28 |      8 |    -11 |    0 |    0
+(28 rows)
+
+</pre></div>
+</div>
+</section>
+<section id="parameters">
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlace permanente a este encabezado">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a> descritas más adelante.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="inner-queries">
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Enlace permanente a este encabezado">¶</a></h2>
+<section id="edges-sql">
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td></td>
+<td><p>Identificador de la arista.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td></td>
+<td><p>Identificador del primer vértice de la arista.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td></td>
+<td><p>Identificador del segundo vértice de la arista.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
+<td></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
+<td><p>-1</p></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
+<ul class="simple">
+<li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Donde:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="result-columns">
+<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">edge)</span></code></p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>Valor secuencial a partir de <strong>1</strong>.</p>
+<ul class="simple">
+<li><p>Da un identificador local de la arista</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del vértice de origen de la arista actual.</p>
+<ul class="simple">
+<li><p>Cuando es “negativo”: el origen es la arista inversa en el grafo original.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del vértice destino de la arista actual.</p>
+<ul class="simple">
+<li><p>Cuando es <cite>negativo</cite>: el destino es la arista inversa en el grafo original.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>).</p>
+<ul class="simple">
+<li><p>Cuando <cite>negative</cite>: la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>).</p>
+<ul class="simple">
+<li><p>Cuando <cite>negative</cite>: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="additional-examples">
+<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlace permanente a este encabezado">¶</a></h2>
+<nav class="contents local" id="contenido">
+<ul class="simple">
+<li><p><a class="reference internal" href="#the-data" id="id1">The data</a></p></li>
+<li><p><a class="reference internal" href="#the-transformation" id="id2">The transformation</a></p></li>
+<li><p><a class="reference internal" href="#creating-table-that-identifies-transformed-vertices" id="id3">Crear una tabla que identifica los vértices transformados</a></p>
+<ul>
+<li><p><a class="reference internal" href="#store-edge-results" id="id4">Store edge results</a></p></li>
+<li><p><a class="reference internal" href="#create-the-mapping-table" id="id5">Create the mapping table</a></p></li>
+<li><p><a class="reference internal" href="#filling-the-mapping-table" id="id6">Filling the mapping table</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#adding-a-soft-restriction" id="id7">Adding a soft restriction</a></p>
+<ul>
+<li><p><a class="reference internal" href="#idenifying-the-restriction" id="id8">Idenifying the restriction</a></p></li>
+<li><p><a class="reference internal" href="#adding-a-value-to-the-restriction" id="id9">Adding a value to the restriction</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#simplifying-leaf-vertices" id="id10">Simplifying leaf vertices</a></p>
+<ul>
+<li><p><a class="reference internal" href="#using-the-vertex-map-give-the-leaf-verices-their-original-value" id="id11">Using the vertex map give the leaf verices their original value.</a></p></li>
+<li><p><a class="reference internal" href="#removing-self-loops-on-leaf-nodes" id="id12">Removing self loops on leaf nodes</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#complete-routing-graph" id="id13">Complete routing graph</a></p>
+<ul>
+<li><p><a class="reference internal" href="#add-edges-from-the-original-graph" id="id14">Add edges from the original graph</a></p></li>
+<li><p><a class="reference internal" href="#add-the-newly-calculated-edges" id="id15">Add the newly calculated edges</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#using-the-routing-graph" id="id16">Using the routing graph</a></p></li>
+</ul>
+</nav>
+<p>Los ejemplos de esta sección se basan en la red <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a>. Los ejemplos incluyen el subgrafo que incluye las aristas 4, 7, 8 y 10 con <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>.</p>
+<section id="the-data">
+<h3><a class="toc-backref" href="#id1" role="doc-backlink">The data</a><a class="headerlink" href="#the-data" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>En este ejemplo se muestra cómo funciona esta transformación de grafo para crear aristas adicionales para cada giro posible en un grafoáfico.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span>
+<span class="n">FROM</span> <span class="n">edges</span>
+<span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">reverse_cost</span>
+<span class="o">----+--------+--------+------+--------------</span>
+  <span class="mi">4</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
+  <span class="mi">7</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
+  <span class="mi">8</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
+ <span class="mi">10</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
+<span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><img alt="primero" class="align-middle" src="_images/original.png" /></div>
+</div>
+</section>
+<section id="the-transformation">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">The transformation</a><a class="headerlink" href="#the-transformation" title="Enlace permanente a este encabezado">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_lineGraphFull(
+  $$SELECT id, source, target, cost, reverse_cost
+  FROM edges
+  WHERE id IN (4, 7, 8, 10)$$);
+ seq | source | target | cost | edge
+-----+--------+--------+------+------
+   1 |     -1 |      7 |    1 |    4
+   2 |      6 |     -1 |    0 |    0
+   3 |     -2 |      6 |    1 |   -4
+   4 |     -3 |      3 |    1 |   -7
+   5 |     -4 |     11 |    1 |    8
+   6 |     -5 |      8 |    1 |   10
+   7 |      7 |     -2 |    0 |    0
+   8 |      7 |     -3 |    0 |    0
+   9 |      7 |     -4 |    0 |    0
+  10 |      7 |     -5 |    0 |    0
+  11 |     -6 |     -2 |    0 |    0
+  12 |     -6 |     -3 |    0 |    0
+  13 |     -6 |     -4 |    0 |    0
+  14 |     -6 |     -5 |    0 |    0
+  15 |     -7 |     -2 |    0 |    0
+  16 |     -7 |     -3 |    0 |    0
+  17 |     -7 |     -4 |    0 |    0
+  18 |     -7 |     -5 |    0 |    0
+  19 |     -8 |     -2 |    0 |    0
+  20 |     -8 |     -3 |    0 |    0
+  21 |     -8 |     -4 |    0 |    0
+  22 |     -8 |     -5 |    0 |    0
+  23 |     -9 |     -6 |    1 |    7
+  24 |      3 |     -9 |    0 |    0
+  25 |    -10 |     -7 |    1 |   -8
+  26 |     11 |    -10 |    0 |    0
+  27 |    -11 |     -8 |    1 |  -10
+  28 |      8 |    -11 |    0 |    0
+(28 rows)
+
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><img alt="segundo" class="align-middle" src="_images/transformation.png" /></div>
+</div>
+<p>En el grafo transformado, todas las aristas del grafo original siguen presentes (amarillos), pero ahora hay aristas adicionales para cada giro que se podría hacer a través del vértice 7 (naranja).</p>
+</section>
+<section id="creating-table-that-identifies-transformed-vertices">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Crear una tabla que identifica los vértices transformados</a><a class="headerlink" href="#creating-table-that-identifies-transformed-vertices" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Los vértices del grafo transformado se crean dividiendo los vértices en el grafo original. A menos que un vértice en el grafo original sea un vértice hoja, generará más de un vértice en el grafo transformado. A uno de los vértices recién creados en el grafo transformado se le dará el mismo identificador del vértice desde el cual se creó en el grafo original, pero el resto de los vértices recién creados tendrán identificadores de vértices negativos.</p>
+<p>Following is an example of how to generate a table that maps the ids of the
+newly created vertices with the original vertex that they were created from</p>
+<section id="store-edge-results">
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">Store edge results</a><a class="headerlink" href="#store-edge-results" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>The first step is to store the results of the <code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> call into a
+table</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT seq AS id, source, target, cost, edge
+INTO lineGraph_edges
+FROM pgr_lineGraphFull(
+  $$SELECT id, source, target, cost, reverse_cost
+  FROM edges
+  WHERE id IN (4, 7, 8, 10)$$);
+SELECT 28
+</pre></div>
+</div>
+</section>
+<section id="create-the-mapping-table">
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">Create the mapping table</a><a class="headerlink" href="#create-the-mapping-table" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>From the original graph’s vertex information</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">NULL</span><span class="p">::</span><span class="n">BIGINT</span> <span class="n">original_id</span>
+<span class="n">INTO</span> <span class="n">vertex_map</span>
+<span class="n">FROM</span> <span class="n">vertices</span><span class="p">;</span>
+<span class="n">SELECT</span> <span class="mi">17</span>
+</pre></div>
+</div>
+<p>Add the new vertices</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>INSERT INTO vertex_map (id)
+(SELECT id
+FROM pgr_extractVertices(
+  $$SELECT id, source, target FROM lineGraph_edges$$) WHERE id &lt; 0);
+INSERT 0 11
+</pre></div>
+</div>
+</section>
+<section id="filling-the-mapping-table">
+<h4><a class="toc-backref" href="#id6" role="doc-backlink">Filling the mapping table</a><a class="headerlink" href="#filling-the-mapping-table" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>The positive vertex identifiers are the original identifiers</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertex_map</span>
+<span class="n">SET</span> <span class="n">original_id</span> <span class="o">=</span> <span class="nb">id</span>
+<span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">17</span>
+</pre></div>
+</div>
+<p>Inspecting the vertices map</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">vertex_map</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span> <span class="n">DESC</span><span class="p">;</span>
+ <span class="nb">id</span>  <span class="o">|</span> <span class="n">original_id</span>
+<span class="o">-----+-------------</span>
+  <span class="mi">17</span> <span class="o">|</span>          <span class="mi">17</span>
+  <span class="mi">16</span> <span class="o">|</span>          <span class="mi">16</span>
+  <span class="mi">15</span> <span class="o">|</span>          <span class="mi">15</span>
+  <span class="mi">14</span> <span class="o">|</span>          <span class="mi">14</span>
+  <span class="mi">13</span> <span class="o">|</span>          <span class="mi">13</span>
+  <span class="mi">12</span> <span class="o">|</span>          <span class="mi">12</span>
+  <span class="mi">11</span> <span class="o">|</span>          <span class="mi">11</span>
+  <span class="mi">10</span> <span class="o">|</span>          <span class="mi">10</span>
+   <span class="mi">9</span> <span class="o">|</span>           <span class="mi">9</span>
+   <span class="mi">8</span> <span class="o">|</span>           <span class="mi">8</span>
+   <span class="mi">7</span> <span class="o">|</span>           <span class="mi">7</span>
+   <span class="mi">6</span> <span class="o">|</span>           <span class="mi">6</span>
+   <span class="mi">5</span> <span class="o">|</span>           <span class="mi">5</span>
+   <span class="mi">4</span> <span class="o">|</span>           <span class="mi">4</span>
+   <span class="mi">3</span> <span class="o">|</span>           <span class="mi">3</span>
+   <span class="mi">2</span> <span class="o">|</span>           <span class="mi">2</span>
+   <span class="mi">1</span> <span class="o">|</span>           <span class="mi">1</span>
+  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>
+  <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>
+  <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>
+  <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>
+  <span class="o">-</span><span class="mi">5</span> <span class="o">|</span>
+  <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>
+  <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>
+  <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>
+  <span class="o">-</span><span class="mi">9</span> <span class="o">|</span>
+ <span class="o">-</span><span class="mi">10</span> <span class="o">|</span>
+ <span class="o">-</span><span class="mi">11</span> <span class="o">|</span>
+<span class="p">(</span><span class="mi">28</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>The self loops happen when there is no cost traveling to the <code class="docutils literal notranslate"><span class="pre">target</span></code> and the
+source has an original value.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span><span class="p">,</span> <span class="n">source</span> <span class="n">AS</span> <span class="n">targets_original_id</span>
+  <span class="n">FROM</span> <span class="n">lineGraph_edges</span>
+  <span class="n">WHERE</span> <span class="n">cost</span> <span class="o">=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">source</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">targets_original_id</span>
+<span class="o">----+--------+--------+------+------+---------------------</span>
+  <span class="mi">2</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>                   <span class="mi">6</span>
+  <span class="mi">7</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>                   <span class="mi">7</span>
+  <span class="mi">8</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>                   <span class="mi">7</span>
+  <span class="mi">9</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>                   <span class="mi">7</span>
+ <span class="mi">10</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">5</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>                   <span class="mi">7</span>
+ <span class="mi">24</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">9</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>                   <span class="mi">3</span>
+ <span class="mi">26</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">10</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>                  <span class="mi">11</span>
+ <span class="mi">28</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">11</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>                   <span class="mi">8</span>
+<span class="p">(</span><span class="mi">8</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Updating values from self loops</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
+<span class="n">self_loops</span> <span class="n">AS</span> <span class="p">(</span>
+  <span class="n">SELECT</span> <span class="n">DISTINCT</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">source</span> <span class="n">AS</span> <span class="n">targets_original_id</span>
+  <span class="n">FROM</span> <span class="n">lineGraph_edges</span>
+  <span class="n">WHERE</span> <span class="n">cost</span> <span class="o">=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">source</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">UPDATE</span> <span class="n">vertex_map</span> <span class="n">SET</span> <span class="n">original_id</span> <span class="o">=</span> <span class="n">targets_original_id</span>
+<span class="n">FROM</span> <span class="n">self_loops</span> <span class="n">WHERE</span> <span class="n">target</span> <span class="o">=</span> <span class="nb">id</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">8</span>
+</pre></div>
+</div>
+<p>Inspecting the vertices table</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">vertex_map</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">0</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span> <span class="n">DESC</span><span class="p">;</span>
+ <span class="nb">id</span>  <span class="o">|</span> <span class="n">original_id</span>
+<span class="o">-----+-------------</span>
+  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">6</span>
+  <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>           <span class="mi">7</span>
+  <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>           <span class="mi">7</span>
+  <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>           <span class="mi">7</span>
+  <span class="o">-</span><span class="mi">5</span> <span class="o">|</span>           <span class="mi">7</span>
+  <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>
+  <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>
+  <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>
+  <span class="o">-</span><span class="mi">9</span> <span class="o">|</span>           <span class="mi">3</span>
+ <span class="o">-</span><span class="mi">10</span> <span class="o">|</span>          <span class="mi">11</span>
+ <span class="o">-</span><span class="mi">11</span> <span class="o">|</span>           <span class="mi">8</span>
+<span class="p">(</span><span class="mi">11</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Updating from inner self loops</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
+<span class="n">assigned_vertices</span>
+<span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">original_id</span>
+  <span class="n">FROM</span> <span class="n">vertex_map</span>
+  <span class="n">WHERE</span> <span class="n">original_id</span> <span class="n">IS</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">),</span>
+<span class="n">cross_edges</span>
+<span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">DISTINCT</span> <span class="n">e</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">original_id</span> <span class="n">AS</span> <span class="n">source_original_id</span>
+  <span class="n">FROM</span> <span class="n">lineGraph_edges</span> <span class="n">AS</span> <span class="n">e</span>
+  <span class="n">JOIN</span> <span class="n">vertex_map</span> <span class="n">AS</span> <span class="n">v</span> <span class="n">ON</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+  <span class="n">WHERE</span> <span class="n">source</span> <span class="n">NOT</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">assigned_vertices</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">UPDATE</span> <span class="n">vertex_map</span> <span class="n">SET</span> <span class="n">original_id</span> <span class="o">=</span> <span class="n">source_original_id</span>
+<span class="n">FROM</span> <span class="n">cross_edges</span> <span class="n">WHERE</span> <span class="n">source</span> <span class="o">=</span> <span class="nb">id</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>Inspecting the vertices map</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">vertex_map</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">0</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span> <span class="n">DESC</span><span class="p">;</span>
+ <span class="nb">id</span>  <span class="o">|</span> <span class="n">original_id</span>
+<span class="o">-----+-------------</span>
+  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">6</span>
+  <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>           <span class="mi">7</span>
+  <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>           <span class="mi">7</span>
+  <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>           <span class="mi">7</span>
+  <span class="o">-</span><span class="mi">5</span> <span class="o">|</span>           <span class="mi">7</span>
+  <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>           <span class="mi">7</span>
+  <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>           <span class="mi">7</span>
+  <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>           <span class="mi">7</span>
+  <span class="o">-</span><span class="mi">9</span> <span class="o">|</span>           <span class="mi">3</span>
+ <span class="o">-</span><span class="mi">10</span> <span class="o">|</span>          <span class="mi">11</span>
+ <span class="o">-</span><span class="mi">11</span> <span class="o">|</span>           <span class="mi">8</span>
+<span class="p">(</span><span class="mi">11</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="adding-a-soft-restriction">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Adding a soft restriction</a><a class="headerlink" href="#adding-a-soft-restriction" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>A soft restriction going from vertex 6 to vertex 3 using edges 4 -&gt; 7 is wanted.</p>
+<section id="idenifying-the-restriction">
+<h4><a class="toc-backref" href="#id8" role="doc-backlink">Idenifying the restriction</a><a class="headerlink" href="#idenifying-the-restriction" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>Running a <a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - Propuesto</span></a> the edge with cost 0, edge 8, is where the
+cost will be increased</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT seq, path_seq, start_vid, end_vid, node, original_id, edge, cost, agg_cost
+FROM (SELECT * FROM pgr_dijkstraNear(
+  $$SELECT * FROM lineGraph_edges$$,
+  (SELECT array_agg(id) FROM vertex_map where original_id = 6),
+  (SELECT array_agg(id) FROM vertex_map where original_id = 3))) dn
+JOIN vertex_map AS v1 ON (node = v1.id);
+ seq | path_seq | start_vid | end_vid | node | original_id | edge | cost | agg_cost
+-----+----------+-----------+---------+------+-------------+------+------+----------
+   3 |        3 |        -1 |       3 |   -3 |           7 |    4 |    1 |        1
+   1 |        1 |        -1 |       3 |   -1 |           6 |    1 |    1 |        0
+   4 |        4 |        -1 |       3 |    3 |           3 |   -1 |    0 |        2
+   2 |        2 |        -1 |       3 |    7 |           7 |    8 |    0 |        1
+(4 rows)
+
+</pre></div>
+</div>
+<p>The edge to be altered is <code class="docutils literal notranslate"><span class="pre">WHERE</span> <span class="pre">cost</span> <span class="pre">=</span> <span class="pre">0</span> <span class="pre">AND</span> <span class="pre">seq</span> <span class="pre">!=</span> <span class="pre">1</span> <span class="pre">AND</span> <span class="pre">edge</span> <span class="pre">!=</span> <span class="pre">-1</span></code> from
+the previus query:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge FROM pgr_dijkstraNear(
+  $$SELECT * FROM lineGraph_edges$$,
+  (SELECT array_agg(id) FROM vertex_map where original_id = 6),
+  (SELECT array_agg(id) FROM vertex_map where original_id = 3))
+WHERE cost = 0 AND seq != 1 AND edge != -1;
+ edge
+------
+    8
+(1 row)
+
+</pre></div>
+</div>
+</section>
+<section id="adding-a-value-to-the-restriction">
+<h4><a class="toc-backref" href="#id9" role="doc-backlink">Adding a value to the restriction</a><a class="headerlink" href="#adding-a-value-to-the-restriction" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>Updating the cost to the edge:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>UPDATE lineGraph_edges
+SET cost = 100
+WHERE id IN (
+SELECT edge FROM pgr_dijkstraNear(
+  $$SELECT * FROM lineGraph_edges$$,
+  (SELECT array_agg(id) FROM vertex_map where original_id = 6),
+  (SELECT array_agg(id) FROM vertex_map where original_id = 3))
+WHERE cost = 0 AND seq != 1 AND edge != -1);
+UPDATE 1
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Routing from <span class="math notranslate nohighlight">\(6\)</span> to <span class="math notranslate nohighlight">\(3\)</span></p>
+</dd>
+</dl>
+<p>Now the route does not use edge 8 and does a U turn on a leaf vertex.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WITH
+results AS (
+  SELECT * FROM pgr_dijkstraNear(
+    $$SELECT * FROM lineGraph_edges$$,
+    (SELECT array_agg(id) FROM vertex_map where original_id = 6),
+    (SELECT array_agg(id) FROM vertex_map where original_id = 3)))
+SELECT seq, path_seq, start_vid, end_vid, node, original_id, edge, cost, agg_cost
+FROM results
+LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
+ seq | path_seq | start_vid | end_vid | node | original_id | edge | cost | agg_cost
+-----+----------+-----------+---------+------+-------------+------+------+----------
+   1 |        1 |        -1 |       3 |   -1 |           6 |    1 |    1 |        0
+   2 |        2 |        -1 |       3 |    7 |           7 |   10 |    0 |        1
+   3 |        3 |        -1 |       3 |   -5 |           7 |    6 |    1 |        1
+   4 |        4 |        -1 |       3 |    8 |           8 |   28 |    0 |        2
+   5 |        5 |        -1 |       3 |  -11 |           8 |   27 |    1 |        2
+   6 |        6 |        -1 |       3 |   -8 |           7 |   20 |    0 |        3
+   7 |        7 |        -1 |       3 |   -3 |           7 |    4 |    1 |        3
+   8 |        8 |        -1 |       3 |    3 |           3 |   -1 |    0 |        4
+(8 rows)
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="simplifying-leaf-vertices">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Simplifying leaf vertices</a><a class="headerlink" href="#simplifying-leaf-vertices" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>In this example, there is no additional cost for traversing a leaf vertex.</p>
+<section id="using-the-vertex-map-give-the-leaf-verices-their-original-value">
+<h4><a class="toc-backref" href="#id11" role="doc-backlink">Using the vertex map give the leaf verices their original value.</a><a class="headerlink" href="#using-the-vertex-map-give-the-leaf-verices-their-original-value" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>On the source column</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
+<span class="n">u_turns</span> <span class="n">AS</span> <span class="p">(</span>
+<span class="n">SELECT</span> <span class="n">e</span><span class="o">.</span><span class="n">id</span> <span class="n">AS</span> <span class="n">eid</span><span class="p">,</span> <span class="n">v1</span><span class="o">.</span><span class="n">original_id</span>
+<span class="n">FROM</span> <span class="n">linegraph_edges</span> <span class="k">as</span> <span class="n">e</span>
+<span class="n">JOIN</span> <span class="n">vertex_map</span> <span class="n">AS</span> <span class="n">v1</span> <span class="n">ON</span> <span class="p">(</span><span class="n">source</span> <span class="o">=</span> <span class="n">v1</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">AND</span> <span class="n">v1</span><span class="o">.</span><span class="n">original_id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">))</span>
+<span class="n">UPDATE</span> <span class="n">lineGraph_edges</span>
+<span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">original_id</span>
+<span class="n">FROM</span> <span class="n">u_turns</span>
+<span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="n">eid</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">8</span>
+</pre></div>
+</div>
+<p>On the target column</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
+<span class="n">u_turns</span> <span class="n">AS</span> <span class="p">(</span>
+<span class="n">SELECT</span> <span class="n">e</span><span class="o">.</span><span class="n">id</span> <span class="n">AS</span> <span class="n">eid</span><span class="p">,</span> <span class="n">v1</span><span class="o">.</span><span class="n">original_id</span>
+<span class="n">FROM</span> <span class="n">linegraph_edges</span> <span class="k">as</span> <span class="n">e</span>
+<span class="n">JOIN</span> <span class="n">vertex_map</span> <span class="n">AS</span> <span class="n">v1</span> <span class="n">ON</span> <span class="p">(</span><span class="n">target</span> <span class="o">=</span> <span class="n">v1</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">AND</span> <span class="n">v1</span><span class="o">.</span><span class="n">original_id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">))</span>
+<span class="n">UPDATE</span> <span class="n">lineGraph_edges</span>
+<span class="n">SET</span> <span class="n">target</span> <span class="o">=</span> <span class="n">original_id</span>
+<span class="n">FROM</span> <span class="n">u_turns</span>
+<span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="n">eid</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">8</span>
+</pre></div>
+</div>
+</section>
+<section id="removing-self-loops-on-leaf-nodes">
+<h4><a class="toc-backref" href="#id12" role="doc-backlink">Removing self loops on leaf nodes</a><a class="headerlink" href="#removing-self-loops-on-leaf-nodes" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>The self loops of the leaf nodes are</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">linegraph_edges</span>
+<span class="n">WHERE</span> <span class="n">source</span> <span class="o">=</span> <span class="n">target</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="p">;</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">edge</span>
+<span class="o">----+--------+--------+------+------</span>
+  <span class="mi">2</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+ <span class="mi">24</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+ <span class="mi">26</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+ <span class="mi">28</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+<span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Which can be removed</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="n">FROM</span> <span class="n">linegraph_edges</span>
+<span class="n">WHERE</span> <span class="n">source</span> <span class="o">=</span> <span class="n">target</span><span class="p">;</span>
+<span class="n">DELETE</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Routing from <span class="math notranslate nohighlight">\(6\)</span> to <span class="math notranslate nohighlight">\(3\)</span></p>
+</dd>
+</dl>
+<p>Routing can be done now using the original vertices id using <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WITH
+results AS (
+  SELECT * FROM pgr_dijkstra(
+    $$SELECT * FROM lineGraph_edges$$, 6, 3))
+SELECT seq, path_seq, node, original_id, edge, cost, agg_cost
+FROM results
+LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
+ seq | path_seq | node | original_id | edge | cost | agg_cost
+-----+----------+------+-------------+------+------+----------
+   1 |        1 |    6 |           6 |    1 |    1 |        0
+   2 |        2 |    7 |           7 |    9 |    0 |        1
+   3 |        3 |   -4 |           7 |    5 |    1 |        1
+   4 |        4 |   11 |          11 |   25 |    1 |        2
+   5 |        5 |   -7 |           7 |   16 |    0 |        3
+   6 |        6 |   -3 |           7 |    4 |    1 |        3
+   7 |        7 |    3 |           3 |   -1 |    0 |        4
+(7 rows)
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="complete-routing-graph">
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">Complete routing graph</a><a class="headerlink" href="#complete-routing-graph" title="Enlace permanente a este encabezado">¶</a></h3>
+<section id="add-edges-from-the-original-graph">
+<h4><a class="toc-backref" href="#id14" role="doc-backlink">Add edges from the original graph</a><a class="headerlink" href="#add-edges-from-the-original-graph" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>Add all the edges that are not involved in the line graph process to the new
+table</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span>
+<span class="n">INTO</span> <span class="n">new_graph</span> <span class="kn">from</span> <span class="nn">edges</span>
+<span class="n">WHERE</span> <span class="nb">id</span> <span class="n">NOT</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="mi">14</span>
+</pre></div>
+</div>
+<p>Some administrative tasks to get new identifiers for the edges</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">SEQUENCE</span> <span class="n">new_graph_id_seq</span><span class="p">;</span>
+<span class="n">CREATE</span> <span class="n">SEQUENCE</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">new_graph</span> <span class="n">ALTER</span> <span class="n">COLUMN</span> <span class="nb">id</span> <span class="n">SET</span> <span class="n">DEFAULT</span> <span class="n">nextval</span><span class="p">(</span><span class="s1">&#39;new_graph_id_seq&#39;</span><span class="p">);</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">new_graph</span> <span class="n">ALTER</span> <span class="n">COLUMN</span> <span class="nb">id</span> <span class="n">SET</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">;</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+<span class="n">ALTER</span> <span class="n">SEQUENCE</span> <span class="n">new_graph_id_seq</span> <span class="n">OWNED</span> <span class="n">BY</span> <span class="n">new_graph</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
+<span class="n">ALTER</span> <span class="n">SEQUENCE</span>
+<span class="n">SELECT</span> <span class="n">setval</span><span class="p">(</span><span class="s1">&#39;new_graph_id_seq&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">max</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">new_graph</span><span class="p">));</span>
+ <span class="n">setval</span>
+<span class="o">--------</span>
+     <span class="mi">18</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="add-the-newly-calculated-edges">
+<h4><a class="toc-backref" href="#id15" role="doc-backlink">Add the newly calculated edges</a><a class="headerlink" href="#add-the-newly-calculated-edges" title="Enlace permanente a este encabezado">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">new_graph</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">)</span>
+<span class="n">SELECT</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span> <span class="n">FROM</span> <span class="n">lineGraph_edges</span><span class="p">;</span>
+<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">24</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="using-the-routing-graph">
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">Using the routing graph</a><a class="headerlink" href="#using-the-routing-graph" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>When using this method for routing with soft restrictions there will be uturns</p>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Routing from <span class="math notranslate nohighlight">\(6\)</span> to <span class="math notranslate nohighlight">\(3\)</span></p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WITH
+results AS (
+  SELECT * FROM pgr_dijkstra(
+    $$SELECT * FROM new_graph$$, 6, 3))
+SELECT seq, path_seq, node, original_id, edge, cost, agg_cost
+FROM results
+LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
+ seq | path_seq | node | original_id | edge | cost | agg_cost
+-----+----------+------+-------------+------+------+----------
+   1 |        1 |    6 |           6 |   35 |    1 |        0
+   2 |        2 |    7 |           7 |   20 |    0 |        1
+   3 |        3 |   -4 |           7 |   41 |    1 |        1
+   4 |        4 |   11 |          11 |   37 |    1 |        2
+   5 |        5 |   -7 |           7 |   27 |    0 |        3
+   6 |        6 |   -3 |           7 |   40 |    1 |        3
+   7 |        7 |    3 |           3 |   -1 |    0 |        4
+(7 rows)
+
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Routing from <span class="math notranslate nohighlight">\(5\)</span> to <span class="math notranslate nohighlight">\(1\)</span></p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WITH
+results AS (
+  SELECT * FROM pgr_dijkstra(
+    $$SELECT * FROM new_graph$$, 5, 1))
+SELECT seq, path_seq, node, original_id, edge, cost, agg_cost
+FROM results
+LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
+ seq | path_seq | node | original_id | edge | cost | agg_cost
+-----+----------+------+-------------+------+------+----------
+   1 |        1 |    5 |           5 |    1 |    1 |        0
+   2 |        2 |    6 |           6 |   35 |    1 |        1
+   3 |        3 |    7 |           7 |   20 |    0 |        2
+   4 |        4 |   -4 |           7 |   41 |    1 |        2
+   5 |        5 |   11 |          11 |   37 |    1 |        3
+   6 |        6 |   -7 |           7 |   27 |    0 |        4
+   7 |        7 |   -3 |           7 |   40 |    1 |        4
+   8 |        8 |    3 |           3 |    6 |    1 |        5
+   9 |        9 |    1 |           1 |   -1 |    0 |        6
+(9 rows)
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="see-also">
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Line_graph">https://en.wikipedia.org/wiki/Line_graph</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Complete_graph">https://en.wikipedia.org/wiki/Complete_graph</a></p></li>
+</ul>
+<p class="rubric">Índices y tablas</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.5.1.<br/>
+      Actualizado por última vez en mar 13, 2023.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

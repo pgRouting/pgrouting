@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 
 
+<!-- Do not forget to update the date at the end of the file -->
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
+
     <title>pgRouting Manuals</title>
-    
+
     <link rel="stylesheet" href="2.4/en/_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="2.4/en/_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="2.4/en/_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
@@ -16,12 +18,12 @@
 
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '6',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
+              URL_ROOT:    './',
+              VERSION:     '6',
+              COLLAPSE_INDEX: false,
+              FILE_SUFFIX: '.html',
+              HAS_SOURCE:  true
+            };
     </script>
     <script type="text/javascript" src="2.4/en/_static/jquery.js"></script>
     <script type="text/javascript" src="2.4/en/_static/underscore.js"></script>
@@ -33,186 +35,209 @@
     <link rel="shortcut icon" href="2.4/en/_static/favicon.ico"/>
     <link rel="top" title="Routing with pgRouting" href="#" />
     <link rel="next" title="1. Introduction" href="chapters/introduction.html" />
-  <script type="text/javascript">
-  /* <![CDATA[ */
+    <script type="text/javascript">
+      /* <![CDATA[ */
       (function() {
-          var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
-          s.type = 'text/javascript';
-          s.async = true;
-          s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
-          t.parentNode.insertBefore(s, t);
-      })();
-  /* ]]> */</script>
+              var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
+              s.type = 'text/javascript';
+              s.async = true;
+              s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
+              t.parentNode.insertBefore(s, t);
+            })();
+      /* ]]> */</script>
 
-  <style>
-    .toctree-wrapper {
-      -webkit-column-count: 2;
-      -moz-column-count: 2;
-      column-count: 2;
-    }
-  </style>
+    <style>
+.toctree-wrapper {
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  column-count: 2;
+}
+    </style>
 
   </head>
-<body>
+  <body>
 
-  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#"><span><img src="2.4/en/_static/pgrouting.png"></span>
-            pgRouting Manuals</a>
-      </div>
-
-      <div class="collapse navbar-collapse nav-collapse">
-         <ul class="nav navbar-nav">
-           <li class="dropdown globaltoc-container">
-           <a role="button"
-               id="dLabelGlobalToc"
-               data-toggle="dropdown"
-               data-target="#"
-               href="#">Versions<b class="caret"></b></a>
-           <ul class="dropdown-menu globaltoc"
-               role="menu"
-               aria-labelledby="dLabelGlobalToc">
-               <ul>
-                   <li class="toctree-l1"><a class="reference internal" href="latest/en/index.html">Latest</a></li>
-                   <li class="toctree-l1"><a class="reference internal" href="dev/en/index.html">dev</a></li>
-                   <li class="toctree-l1"><a class="reference internal" href="3.4/en/index.html">3.3</a></li>
-                   <li class="toctree-l1"><a class="reference internal" href="3.3/en/index.html">3.3</a></li>
-                   <li class="toctree-l1"><a class="reference internal" href="3.2/en/index.html">3.2</a></li>
-                   <li class="toctree-l1"><a class="reference internal" href="3.1/en/index.html">3.1</a></li>
-                   <li class="toctree-l1"><a class="reference internal" href="3.0/en/index.html">3.0</a></li>
-                   <li class="toctree-l1"><a class="reference internal" href="2.6/en/index.html">2.6</a></li>
-                   <li class="toctree-l1"><a class="reference internal" href="2.5/en/index.html">2.5</a></li>
-                   <li class="toctree-l1"><a class="reference internal" href="2.4/en/index.html">2.4</a></li>
-                   <li class="toctree-l1"><a class="reference internal" href="2.3/en/index.html">2.3</a></li>
-                   <li class="toctree-l1"><a class="reference internal" href="2.2/en/index.html">2.2</a></li>
-               </ul>
-           </ul>
-           </li>
-        </ul>
-       </div>
-   </div>
-</div>
-
-
-
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-12 content">
-      <div class="section" id="pgrouting-users">
-          <span id="index"></span><h1>pgRouting Manuals<a class="headerlink" href="#pgrouting-manual" title="pgRouting Manuals">¶</a></h1>
-          <img class="centerlogo" src="2.4/en/_static/pgrouting.png" alt="Logo"/>
-          <p><em>&#8220;Routing with pgRouting&#8221;</em>.</p>
-          <h2>User's Documentation<a class="headerlink" href="#pgrouting-users" title="User's Documentation">¶</a></h2>
-
-          <h3>English documentation</h3>
-
-          <p> <b>pgRouting HTML</b>
-               <a class="reference internal" href="latest/en/index.html">latest</a>
-	       <a class="reference internal" href="latest/es/index.html">(es)</a> |
-               <a class="reference internal" href="3.5/en/index.html">3.5</a>
-               <a class="reference internal" href="3.5/es/index.html">(es)</a> |
-               <a class="reference internal" href="3.4/en/index.html">3.4</a>
-               <a class="reference internal" href="3.4/es/index.html">(es)</a> |
-               <a class="reference internal" href="3.3/en/index.html">3.3</a>
-               <a class="reference internal" href="3.3/es/index.html">(es)</a> |
-               <a class="reference internal" href="3.2/en/index.html">3.2</a>
-               <a class="reference internal" href="3.2/es/index.html">(es)</a> |
-               <a class="reference internal" href="3.1/en/index.html">3.1</a>
-               <a class="reference internal" href="3.1/es/index.html">(es)</a> |
-               <a class="reference internal" href="3.0/en/index.html">3.0</a>
-	       <a class="reference internal" href="3.0/es/index.html">(es)</a> |
-               <a class="reference internal" href="dev/en/index.html">dev</a> 
-               <a class="reference internal" href="dev/es/index.html">(es)</a> 
-          </p>
-
-
-          <h3>pgRouting releases no longer supported</h3>
-
-          <p> <b>pgRouting HTML</b>
-               <a class="reference internal" href="2.5/en/index.html">2.6</a> |
-               <a class="reference internal" href="2.5/en/index.html">2.5</a> |
-               <a class="reference internal" href="2.4/en/index.html">2.4</a> |
-               <a class="reference internal" href="2.3/en/index.html">2.3</a> |
-               <a class="reference internal" href="2.2/en/index.html">2.2</a> |
-               <a class="reference internal" href="2.1/en/index.html">2.1</a> |
-               <a class="reference internal" href="2.0/en/index.html">2.0</a>
-               <a class="reference internal" href="2.0/es/index.html">(es)</a> 
-               <a class="reference internal" href="2.0/fr/index.html">(fr)</a> |
-               <a class="reference internal" href="1.x/en/index.html">1.x</a>
-          </p>
-          <p> <b>pgRouting PDF </b>
-               <a class="reference internal" href="pdf/en/pgRoutingDocumentation-2.6.0.pdf">2.6</a> |
-               <a class="reference internal" href="pdf/en/pgRoutingDocumentation-2.5.1.pdf">2.5</a> |
-               <a class="reference internal" href="pdf/en/pgRoutingDocumentation-2.3.2.pdf">2.3</a> |
-               <a class="reference internal" href="pdf/en/pgRoutingDocumentation-2.2.4.pdf">2.2</a> |
-               <a class="reference internal" href="pdf/en/pgRoutingDocumentation-2.1.0.pdf">2.1</a> |
-               <a class="reference internal" href="pdf/en/pgRoutingDocumentation-2.0.0.pdf">2.0</a>
-               <a class="reference internal" href="2.0/es/pgRoutingDocumentation.pdf">(es)</a>
-               <a class="reference internal" href="2.0/fr/pgRoutingDocumentation.pdf">(fr)</a>
-          </p>
-          <p> <b>pgRouting MAN </b>
-              (<a class="reference internal" href="2.0/en/pgrouting.7.gz">2.0</a>)
-          </p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<hr>
-<div class="container">
-  <div class="row">
-    <div class="col-md-12 content">
-      <div class="section" id="pgrouting-developers">
-          <h2>Developer's Documentation<a class="headerlink" href="#pgrouting-developers" title="Developer's Documentation">¶</a></h2>
-
-          <p class="rubric">pgRouting
-               <a class="reference internal" href="doxygen">master</a> 
-          </p>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-12 content">
-      <div class="section" id="pgrouting-developers">
-          <h2>Translations<a class="headerlink" title="Permalink to this headline">¶</a></h2>
-          <p>Help us translate the documentation.</p>
-          <div class="toctree-wrapper compound">
-              <ul>
-                  <li><a  href="https://weblate.osgeo.org/projects/pgrouting/">pgRouting in Weblate</a></li>
-              </ul>
-          </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<br> <br> <br>
-
-  <footer class="footer">
+    <div id="navbar" class="navbar navbar-default navbar-fixed-top">
       <div class="container">
-  <p class="pull-right">
-  <a href="#">Back to top</a>
+        <div class="navbar-header">
+          <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><span><img src="2.4/en/_static/pgrouting.png"></span>
+            pgRouting Manuals</a>
+        </div>
 
-          </p>
-          <p>
-          &copy; Copyright <a href="http://www.pgrouting.org">pgRouting</a> Contributors.
-          Last updated on March, 2017.<br/>
-          </p>
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown globaltoc-container">
+              <a role="button"
+                 id="dLabelGlobalToc"
+                 data-toggle="dropdown"
+                 data-target="#"
+                 href="#">English<b class="caret"></b></a>
+              <ul class="dropdown-menu globaltoc"
+                  role="menu"
+                  aria-labelledby="dLabelGlobalToc">
+                <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="latest/en/index.html">Latest</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="3.5/en/index.html">3.5</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="3.4/en/index.html">3.4</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="3.3/en/index.html">3.3</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="3.2/en/index.html">3.2</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="3.1/en/index.html">3.1</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="3.0/en/index.html">3.0</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="main/en/index.html">main</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="dev/en/index.html">dev</a></li>
+                </ul>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li class="dropdown globaltoc-container">
+              <a role="button"
+                 id="dLabelGlobalToc"
+                 data-toggle="dropdown"
+                 data-target="#"
+                 href="#">Spanish<b class="caret"></b></a>
+              <ul class="dropdown-menu globaltoc"
+                  role="menu"
+                  aria-labelledby="dLabelGlobalToc">
+                <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="latest/es/index.html">Latest</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="3.5/es/index.html">3.5</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="3.4/es/index.html">3.4</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="3.3/es/index.html">3.3</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="3.2/es/index.html">3.2</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="3.1/es/index.html">3.1</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="3.0/es/index.html">3.0</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="main/es/index.html">main</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="dev/es/index.html">dev</a></li>
+                </ul>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
-  </footer>
+    </div>
+
+
+
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 content">
+          <div class="section" id="pgrouting-users">
+            <span id="index"></span><h1>pgRouting Manuals<a class="headerlink" href="#pgrouting-manual" title="pgRouting Manuals">¶</a></h1>
+            <img class="centerlogo" src="2.4/en/_static/pgrouting.png" alt="Logo"/>
+            <p><em>&#8220;Routing with pgRouting&#8221;</em>.</p>
+            <h2>User's Documentation<a class="headerlink" href="#pgrouting-users" title="User's Documentation">¶</a></h2>
+
+            <h3>English documentation</h3>
+
+            <p> <b>pgRouting HTML</b>
+            <a class="reference internal" href="latest/en/index.html">latest</a>
+            <a class="reference internal" href="latest/es/index.html">(es)</a> |
+            <a class="reference internal" href="3.5/en/index.html">3.5</a>
+            <a class="reference internal" href="3.5/es/index.html">(es)</a> |
+            <a class="reference internal" href="3.4/en/index.html">3.4</a>
+            <a class="reference internal" href="3.4/es/index.html">(es)</a> |
+            <a class="reference internal" href="3.3/en/index.html">3.3</a>
+            <a class="reference internal" href="3.3/es/index.html">(es)</a> |
+            <a class="reference internal" href="3.2/en/index.html">3.2</a>
+            <a class="reference internal" href="3.2/es/index.html">(es)</a> |
+            <a class="reference internal" href="3.1/en/index.html">3.1</a>
+            <a class="reference internal" href="3.1/es/index.html">(es)</a> |
+            <a class="reference internal" href="3.0/en/index.html">3.0</a>
+            <a class="reference internal" href="3.0/es/index.html">(es)</a> |
+            <a class="reference internal" href="main/en/index.html">main</a>
+            <a class="reference internal" href="main/es/index.html">(es)</a> |
+            <a class="reference internal" href="dev/en/index.html">dev</a>
+            <a class="reference internal" href="dev/es/index.html">(es)</a>
+            </p>
+
+
+            <h3>pgRouting releases no longer supported</h3>
+
+            <p> <b>pgRouting HTML</b>
+            <a class="reference internal" href="2.5/en/index.html">2.6</a> |
+            <a class="reference internal" href="2.5/en/index.html">2.5</a> |
+            <a class="reference internal" href="2.4/en/index.html">2.4</a> |
+            <a class="reference internal" href="2.3/en/index.html">2.3</a> |
+            <a class="reference internal" href="2.2/en/index.html">2.2</a> |
+            <a class="reference internal" href="2.1/en/index.html">2.1</a> |
+            <a class="reference internal" href="2.0/en/index.html">2.0</a>
+            <a class="reference internal" href="2.0/es/index.html">(es)</a>
+            <a class="reference internal" href="2.0/fr/index.html">(fr)</a> |
+            <a class="reference internal" href="1.x/en/index.html">1.x</a>
+            </p>
+            <p> <b>pgRouting PDF </b>
+            <a class="reference internal" href="pdf/en/pgRoutingDocumentation-2.6.0.pdf">2.6</a> |
+            <a class="reference internal" href="pdf/en/pgRoutingDocumentation-2.5.1.pdf">2.5</a> |
+            <a class="reference internal" href="pdf/en/pgRoutingDocumentation-2.3.2.pdf">2.3</a> |
+            <a class="reference internal" href="pdf/en/pgRoutingDocumentation-2.2.4.pdf">2.2</a> |
+            <a class="reference internal" href="pdf/en/pgRoutingDocumentation-2.1.0.pdf">2.1</a> |
+            <a class="reference internal" href="pdf/en/pgRoutingDocumentation-2.0.0.pdf">2.0</a>
+            <a class="reference internal" href="2.0/es/pgRoutingDocumentation.pdf">(es)</a>
+            <a class="reference internal" href="2.0/fr/pgRoutingDocumentation.pdf">(fr)</a>
+            </p>
+            <p> <b>pgRouting MAN </b>
+            (<a class="reference internal" href="2.0/en/pgrouting.7.gz">2.0</a>)
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 content">
+          <div class="section" id="pgrouting-developers">
+            <h2>Developer's Documentation<a class="headerlink" href="#pgrouting-developers" title="Developer's Documentation">¶</a></h2>
+
+            <p class="rubric">pgRouting
+            <a class="reference internal" href="doxygen">doxygen</a>
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 content">
+          <div class="section" id="pgrouting-developers">
+            <h2>Translations<a class="headerlink" title="Permalink to this headline">¶</a></h2>
+            <p>Help us translate the documentation.</p>
+            <div class="toctree-wrapper compound">
+              <ul>
+                <li><a  href="https://weblate.osgeo.org/projects/pgrouting/">pgRouting in Weblate</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br> <br> <br>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="pull-right">
+        <a href="#">Back to top</a>
+
+        </p>
+        <p>
+        &copy; Copyright <a href="http://www.pgrouting.org">pgRouting</a> Contributors.
+        Last updated on March, 2023.<br/>
+        </p>
+      </div>
+    </footer>
   </body>
-  </html>
+</html>

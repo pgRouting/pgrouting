@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Instalación &#8212; pgRouting Manual (3.5)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Soporte" href="support.html" />
+    <link rel="prev" title="Introducción" href="pgRouting-introduction.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v3.5.1</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introducción</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Soporte</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Datos Muestra</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Guía de migración</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Instalación</a><ul>
+<li><a class="reference internal" href="#short-version">Versión corta</a></li>
+<li><a class="reference internal" href="#get-the-sources">Obtener las fuentes</a></li>
+<li><a class="reference internal" href="#enabling-and-upgrading-in-the-database">Habilitación y actualización en la base de datos</a></li>
+<li><a class="reference internal" href="#dependencies">Dependencias</a></li>
+<li><a class="reference internal" href="#configuring">Configuración</a><ul>
+<li><a class="reference internal" href="#configurable-variables">Variables configurables</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#building">Compilando</a></li>
+<li><a class="reference internal" href="#testing">Pruebas</a></li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgRouting-introduction.html" title="Previous Chapter: Introducción"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Introducción</span>
+    </a>
+  </li>
+  <li>
+    <a href="support.html" title="Next Chapter: Soporte"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Soporte &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body span12 content" role="main">
+      
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgRouting-installation.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.5/es/pgRouting-installation.html">3.5</a>) <a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgRouting-installation.html">3.4</a> <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgRouting-installation.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgRouting-installation.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgRouting-installation.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgRouting-installation.html">3.0</a></p></li>
+<li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgRouting-installation.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgRouting-installation.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgRouting-installation.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/doc/src/installation/installation.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/doc/src/installation/installation.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/doc/src/installation/index.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/doc/src/installation/index.html">2.0</a></p></li>
+</ul>
+<section id="installation">
+<h1>Instalación<a class="headerlink" href="#installation" title="Enlace permanente a este encabezado">¶</a></h1>
+<p class="rubric">Tabla de Contenido</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#install-short"><span class="std std-ref">Versión corta</span></a></p></li>
+<li><p><a class="reference internal" href="#install-get-sources"><span class="std std-ref">Obtener las fuentes</span></a></p></li>
+<li><p><a class="reference internal" href="#install-enable-db"><span class="std std-ref">Habilitación y actualización en la base de datos</span></a></p></li>
+<li><p><a class="reference internal" href="#install-dependencies"><span class="std std-ref">Dependencias</span></a></p></li>
+<li><p><a class="reference internal" href="#install-configuring"><span class="std std-ref">Configuración</span></a></p></li>
+<li><p><a class="reference internal" href="#install-build"><span class="std std-ref">Compilando</span></a></p></li>
+<li><p><a class="reference internal" href="#install-testing"><span class="std std-ref">Pruebas</span></a></p></li>
+</ul>
+<p>Instructions for downloading and installing binaries for different operating
+systems, additional notes and corrections not included in this documentation can
+be found in <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting">Installation wiki</a></p>
+<p>Para utilizar pgRouting postGIS necesita ser instalado, por favor lea la información sobre la instalación en esta <a class="reference external" href="https://www.postgis.us/presentations/postgis_install_guide_22.html">Guía de instalacoón</a></p>
+<section id="short-version">
+<span id="install-short"></span><h2>Versión corta<a class="headerlink" href="#short-version" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Extraer la bola de alquitrán</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="n">xvfz</span> <span class="n">pgrouting</span><span class="o">-</span><span class="mf">3.5.1</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">cd</span> <span class="n">pgrouting</span><span class="o">-</span><span class="mf">3.5.1</span>
+</pre></div>
+</div>
+<p>Para compilar suponiendo que tiene todas las dependencias en su ruta de búsqueda:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="n">build</span>
+<span class="n">cmake</span>  <span class="o">..</span>
+<span class="n">make</span>
+<span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>Una vez que pgRouting está instalado, debe habilitarse en cada base de datos individual en la que desee utilizarlo.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">createdb</span> <span class="n">routing</span>
+<span class="n">psql</span> <span class="n">routing</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;CREATE EXTENSION PostGIS&#39;</span>
+<span class="n">psql</span> <span class="n">routing</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;CREATE EXTENSION pgRouting&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="get-the-sources">
+<span id="install-get-sources"></span><h2>Obtener las fuentes<a class="headerlink" href="#get-the-sources" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>La última versión de pgRouting se puede encontrar en <a class="reference external" href="https://github.com/pgRouting/pgrouting/releases/latest">https://github.com/pgRouting/pgrouting/releases/latest</a></p>
+<p class="rubric">Wget</p>
+<p>Para descargar esta versión:</p>
+<pre class="literal-block">wget -O pgrouting-3.5.1.tar.gz    <a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/v3.5.1.tar.gz">https://github.com/pgRouting/pgrouting/archive/v3.5.1.tar.gz</a></pre>
+<p>Ir a <a class="reference internal" href="#install-short"><span class="std std-ref">Versión corta</span></a> para más instrucciones sobre la extraccion de la bola tar y la compilación de pgRouting.</p>
+<p class="rubric">git</p>
+<p>Para descargar el repositorio</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pgRouting</span><span class="o">/</span><span class="n">pgrouting</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">pgrouting</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">v3</span><span class="mf">.5.1</span>
+</pre></div>
+</div>
+<p>Go to <a class="reference internal" href="#install-short"><span class="std std-ref">Versión corta</span></a> for more instructions on compiling pgRouting
+(there is no tar ball involved while downloading pgRouting repository from
+GitHub).</p>
+</section>
+<section id="enabling-and-upgrading-in-the-database">
+<span id="install-enable-db"></span><h2>Habilitación y actualización en la base de datos<a class="headerlink" href="#enabling-and-upgrading-in-the-database" title="Enlace permanente a este encabezado">¶</a></h2>
+<p class="rubric">Habilitación de la base de datos</p>
+<p>pgRouting is a PostgreSQL extension and depends on PostGIS to provide
+functionalities to end user. Below given code demonstrates enabling PostGIS and
+pgRouting in the database.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">EXTENSION</span> <span class="n">postgis</span><span class="p">;</span>
+<span class="n">CREATE</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Checking PostGIS and pgRouting version after enabling them in the database.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">PostGIS_full_version</span><span class="p">();</span>
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_version</span><span class="p">();</span>
+</pre></div>
+</div>
+<p class="rubric">Actualización de la base de datos</p>
+<p>To upgrade pgRouting in the database to version 3.5.1 use the
+following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="n">UPDATE</span> <span class="n">TO</span> <span class="s2">&quot;3.5.1&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Puede hallar más información en <a class="reference external" href="https://www.postgresql.org/docs/current/sql-createextension.html">https://www.postgresql.org/docs/current/sql-createextension.html</a></p>
+</section>
+<section id="dependencies">
+<span id="install-dependencies"></span><h2>Dependencias<a class="headerlink" href="#dependencies" title="Enlace permanente a este encabezado">¶</a></h2>
+<p class="rubric">Dependencias de Compilación</p>
+<p>Para poder compilar pgRouting, asegúrese de que se cumplen las siguientes dependencias:</p>
+<ul>
+<li><p>C and C++0x compilers</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Compilar con Boost 1.56 hasta Boost 1.74 requiere un compilador C++ con soporte estandard para C++03 o C++11</p></li>
+<li><p>Compiling with Boost 1.75 requires C++ Compiler with C++14 standard
+support</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Versión postgresql = Versiones compatibles por PostgreSQL</p></li>
+<li><p>La Biblioteca de Gráficos Boost (BGL). Versión &gt;= 1.56</p></li>
+<li><p>CMake &gt;= 3.2</p></li>
+</ul>
+<p class="rubric">dependencias opcionales</p>
+<p>Para la documentación del usuario</p>
+<ul class="simple">
+<li><p>Sphinx &gt;= 1.1</p></li>
+<li><p>Latex</p></li>
+</ul>
+<p>Para la documentación del desarrollador</p>
+<ul class="simple">
+<li><p>Doxygen &gt;= 1.7</p></li>
+</ul>
+<p>Para pruebas</p>
+<ul class="simple">
+<li><p>pgtap</p></li>
+<li><p>pg_prove</p></li>
+</ul>
+<p>Para uso:</p>
+<ul class="simple">
+<li><p>PostGIS version &gt;= 2.2</p></li>
+</ul>
+<p class="rubric">Ejemplo: Instalación de dependencias en linux</p>
+<p>Instalación de las dependencias de compilación</p>
+<p class="rubric">Dependencias de bases de datos</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">postgresql</span><span class="o">-</span><span class="mi">15</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">postgresql</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">dev</span><span class="o">-</span><span class="mi">15</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">postgresql</span><span class="o">-</span><span class="mi">15</span><span class="o">-</span><span class="n">postgis</span>
+</pre></div>
+</div>
+<p class="rubric">Configurar PostgreSQL</p>
+<p>Entering psql console</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">postgresql</span><span class="o">.</span><span class="n">service</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span><span class="n">u</span> <span class="n">postgres</span>
+<span class="n">psql</span>
+</pre></div>
+</div>
+<p>To exit psql console</p>
+<pre class="literal-block">q</pre>
+<p>Entering psql console directly without switching roles can be done by the
+following commands</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">postgres</span> <span class="n">psql</span>
+</pre></div>
+</div>
+<p>Then use the above given method to exit out of the psql console</p>
+<p>Checking PostgreSQL version</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">psql</span> <span class="o">--</span><span class="n">version</span>
+</pre></div>
+</div>
+<p>or</p>
+<p>Enter the psql console using above given method and then enter</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">VERSION</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Creating PostgreSQL role</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span><span class="n">u</span> <span class="n">postgres</span>
+<span class="n">createuser</span> <span class="o">--</span><span class="n">interactive</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">postgres</span> <span class="n">createuser</span> <span class="o">--</span><span class="n">interactive</span>
+</pre></div>
+</div>
+<p>Default role provided by PostgreSQL is postgres. To create new roles you
+can use the above provided commands. The prompt will ask the user to type
+name of the role and then provide affirmation. Proceed with the steps and
+you will succeed in creating PostgreSQL role successfully.</p>
+<p>To add password to the role or change previously created password of the
+role use the following commands</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">USER</span> <span class="o">&lt;</span><span class="n">role</span> <span class="n">name</span><span class="o">&gt;</span> <span class="n">PASSWORD</span> <span class="o">&lt;</span><span class="n">password</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>To get additional details on the flags associated with <code class="docutils literal notranslate"><span class="pre">createuser</span></code> below
+given command can be used</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">man</span> <span class="n">createuser</span>
+</pre></div>
+</div>
+<p>Creating Database in PostgreSQL</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span><span class="n">u</span> <span class="n">postgres</span>
+<span class="n">createdb</span> <span class="o">&lt;</span><span class="n">database</span> <span class="n">name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">postgres</span> <span class="n">createdb</span> <span class="o">&lt;</span><span class="n">database</span> <span class="n">name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Connecting to a PostgreSQL Database</p>
+<p>Enter the psql console and type the following commands</p>
+<pre class="literal-block">connect &lt;database name&gt;</pre>
+<p class="rubric">Construir dependencias</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">cmake</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">g</span><span class="o">++</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">libboost</span><span class="o">-</span><span class="n">graph</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+<p class="rubric">Dependencias opcionales</p>
+<p>Para documentación y pruebas</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">bootstrap</span><span class="o">-</span><span class="n">theme</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">texlive</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">doxygen</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">libtap</span><span class="o">-</span><span class="n">parser</span><span class="o">-</span><span class="n">sourcehandler</span><span class="o">-</span><span class="n">pgtap</span><span class="o">-</span><span class="n">perl</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">postgresql</span><span class="o">-</span><span class="mi">15</span><span class="o">-</span><span class="n">pgtap</span>
+</pre></div>
+</div>
+</section>
+<section id="configuring">
+<span id="install-configuring"></span><h2>Configuración<a class="headerlink" href="#configuring" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>pgRouting utiliza el sistema “cmake” para realizar la configuración.</p>
+<p>El directorio de compilación es diferente del directorio de origen</p>
+<p>Cree el directorio de compilación</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir build
+</pre></div>
+</div>
+<section id="configurable-variables">
+<h3>Variables configurables<a class="headerlink" href="#configurable-variables" title="Enlace permanente a este encabezado">¶</a></h3>
+<p class="rubric">Para ver las variables que se pueden configurar</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd build
+$ cmake -L ..
+</pre></div>
+</div>
+<p class="rubric">Configurar la documentación</p>
+<p>La mayor parte del esfuerzo de la documentación ha estado en los archivos HTML. Algunas variables para construir la documentación:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Comentario</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>WITH_DOC</p></td>
+<td><p>BOOL=OFF</p></td>
+<td><p>Activar/desactivar la construcción de la documentación</p></td>
+</tr>
+<tr class="row-odd"><td><p>BUILD_HTML</p></td>
+<td><p>BOOL=ON</p></td>
+<td><p>Si está activado, active/desactive la creación de HTML para la documentación del usuario</p></td>
+</tr>
+<tr class="row-even"><td><p>BUILD_DOXY</p></td>
+<td><p>BOOL=ON</p></td>
+<td><p>Si está activado, active o desactive la creación de HTML para la documentación del desarrollador</p></td>
+</tr>
+<tr class="row-odd"><td><p>BUILD_LATEX</p></td>
+<td><p>BOOL=OFF</p></td>
+<td><p>Si está activado, active/desactive la creación de PDF</p></td>
+</tr>
+<tr class="row-even"><td><p>BUILD_MAN</p></td>
+<td><p>BOOL=OFF</p></td>
+<td><p>Si está activado, active/desactive las páginas MAN de construcción</p></td>
+</tr>
+<tr class="row-odd"><td><p>DOC_USE_BOOTSTRAP</p></td>
+<td><p>BOOL=OFF</p></td>
+<td><p>Si está activado, utilice sphinx-bootstrap para las páginas HTML de la documentación de los usuarios</p></td>
+</tr>
+</tbody>
+</table>
+<p>Configuring cmake to create documentation before building
+pgRouting</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cmake -DWITH_DOC=ON -DDOC_USE_BOOTSTRAP=ON ..
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>La mayor parte del esfuerzo de la documentación ha estado en los archivos html.</p>
+</div>
+</section>
+</section>
+<section id="building">
+<span id="install-build"></span><h2>Compilando<a class="headerlink" href="#building" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Uso de <code class="docutils literal notranslate"><span class="pre">make</span></code> para compilar el código y la documentación</p>
+<p>Las siguientes instrucciones comienzan desde <em>path/to/pgrouting/build</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ make          # build the code but not the documentation
+$ make doc      # build only the user&#39;s documentation
+$ make all doc  # build both the code and the user&#39;s documentation
+$ make doxy     # build only the developer&#39;s documentation
+</pre></div>
+</div>
+<p>Hemos probado en varias plataformas, Para instalar o reinstalar todos los pasos son necesarios.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Las firmas sql se configuran y se compilan en el comando <code class="docutils literal notranslate"><span class="pre">cmake</span></code>.</p>
+</div>
+<p class="rubric">MinGW en Windows</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir build
+$ cd build
+$ cmake -G&quot;MSYS Makefiles&quot; ..
+$ make
+$ make install
+</pre></div>
+</div>
+<p class="rubric">Linux</p>
+<p>Las siguientes instrucciones comienzan desde <em>path/to/pgrouting</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="n">build</span>
+<span class="n">cmake</span>  <span class="o">..</span>
+<span class="n">make</span>
+<span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>To remove the build when the configuration changes, use the following
+code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">build</span>
+</pre></div>
+</div>
+<p>e iniciar el proceso de compilación como se mencionó anteriormente.</p>
+</section>
+<section id="testing">
+<span id="install-testing"></span><h2>Pruebas<a class="headerlink" href="#testing" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Actualmente no hay <code class="code docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code> y las pruebas se realizan de la siguiente manera</p>
+<p>Las siguientes instrucciones comienzan desde <em>path/to/pgrouting/</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tools</span><span class="o">/</span><span class="n">testers</span><span class="o">/</span><span class="n">doc_queries_generator</span><span class="o">.</span><span class="n">pl</span>
+<span class="n">createdb</span> <span class="o">-</span><span class="n">U</span> <span class="o">&lt;</span><span class="n">user</span><span class="o">&gt;</span> <span class="n">___pgr___test___</span>
+<span class="n">sh</span> <span class="o">./</span><span class="n">tools</span><span class="o">/</span><span class="n">testers</span><span class="o">/</span><span class="n">pg_prove_tests</span><span class="o">.</span><span class="n">sh</span> <span class="o">&lt;</span><span class="n">user</span><span class="o">&gt;</span>
+<span class="n">dropdb</span> <span class="o">-</span><span class="n">U</span> <span class="o">&lt;</span><span class="n">user</span><span class="o">&gt;</span> <span class="n">___pgr___test___</span>
+</pre></div>
+</div>
+</section>
+<section id="see-also">
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
+<p class="rubric">Índices y tablas</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.5.1.<br/>
+      Actualizado por última vez en mar 13, 2023.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

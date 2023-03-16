@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Sample Data &#8212; pgRouting Manual (3.5)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pgRouting Concepts" href="pgRouting-concepts.html" />
+    <link rel="prev" title="Support" href="support.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v3.5.1</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sample Data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Sample Data</a><ul>
+<li><a class="reference internal" href="#main-graph">Main graph</a><ul>
+<li><a class="reference internal" href="#edges">Edges</a><ul>
+<li><a class="reference internal" href="#edges-data">Edges data</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#vertices">Vertices</a><ul>
+<li><a class="reference internal" href="#vertices-data">Vertices data</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-topology">The topology</a><ul>
+<li><a class="reference internal" href="#topology-data">Topology data</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#points-outside-the-graph">Points outside the graph</a><ul>
+<li><a class="reference internal" href="#points-of-interest">Points of interest</a></li>
+<li><a class="reference internal" href="#points-of-interest-geometry">Points of interest geometry</a></li>
+<li><a class="reference internal" href="#points-of-interest-fillup">Points of interest fillup</a></li>
+<li><a class="reference internal" href="#a-special-case-to-arrive-from-both-sides-of-the-edge">A special case to arrive from both sides of the edge.</a></li>
+<li><a class="reference internal" href="#points-of-interest-data">Points of interest data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#support-tables">Support tables</a><ul>
+<li><a class="reference internal" href="#combinations">Combinations</a><ul>
+<li><a class="reference internal" href="#combinations-data">Combinations data</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#restrictions">Restrictions</a><ul>
+<li><a class="reference internal" href="#restrictions-data">Restrictions data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#images">Images</a><ul>
+<li><a class="reference internal" href="#directed-graph-with-cost-and-reverse-cost">Directed graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></li>
+<li><a class="reference internal" href="#undirected-graph-with-cost-and-reverse-cost">Undirected graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></li>
+<li><a class="reference internal" href="#directed-graph-with-cost">Directed graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a></li>
+<li><a class="reference internal" href="#undirected-graph-with-cost">Undirected graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pick-deliver-data">Pick &amp; Deliver Data</a><ul>
+<li><a class="reference internal" href="#the-vehicles">The vehicles</a></li>
+<li><a class="reference internal" href="#the-original-orders">The original orders</a></li>
+<li><a class="reference internal" href="#the-orders">The orders</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="support.html" title="Previous Chapter: Support"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Support</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgRouting-concepts.html" title="Next Chapter: pgRouting Concepts"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgRouting Concepts &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body span12 content" role="main">
+      
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/sampledata.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.5/en/sampledata.html">3.5</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.4/en/sampledata.html">3.4</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.3/en/sampledata.html">3.3</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.2/en/sampledata.html">3.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.1/en/sampledata.html">3.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/sampledata.html">3.0</a></p></li>
+<li><p><strong>Unsupported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/2.6/en/sampledata.html">2.6</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.5/en/sampledata.html">2.5</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.4/en/sampledata.html">2.4</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.3/en/doc/src/developer/sampledata.html">2.3</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.2/en/doc/src/developer/sampledata.html">2.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.1/en/doc/src/developer/sampledata.html">2.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.0/en/doc/src/developer/sampledata.html">2.0</a></p></li>
+</ul>
+<section id="sample-data">
+<h1>Sample Data<a class="headerlink" href="#sample-data" title="Permalink to this heading">¶</a></h1>
+<p>The documentation provides very simple example queries based on a small sample
+network that resembles a city.
+To be able to execute the mayority of the examples queries, follow the
+instructions bellow.</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#main-graph" id="id5">Main graph</a></p>
+<ul>
+<li><p><a class="reference internal" href="#edges" id="id6">Edges</a></p>
+<ul>
+<li><p><a class="reference internal" href="#edges-data" id="id7">Edges data</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#vertices" id="id8">Vertices</a></p>
+<ul>
+<li><p><a class="reference internal" href="#vertices-data" id="id9">Vertices data</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#the-topology" id="id10">The topology</a></p>
+<ul>
+<li><p><a class="reference internal" href="#topology-data" id="id11">Topology data</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#points-outside-the-graph" id="id12">Points outside the graph</a></p>
+<ul>
+<li><p><a class="reference internal" href="#points-of-interest" id="id13">Points of interest</a></p></li>
+<li><p><a class="reference internal" href="#points-of-interest-geometry" id="id14">Points of interest geometry</a></p></li>
+<li><p><a class="reference internal" href="#points-of-interest-fillup" id="id15">Points of interest fillup</a></p></li>
+<li><p><a class="reference internal" href="#a-special-case-to-arrive-from-both-sides-of-the-edge" id="id16">A special case to arrive from both sides of the edge.</a></p></li>
+<li><p><a class="reference internal" href="#points-of-interest-data" id="id17">Points of interest data</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#support-tables" id="id18">Support tables</a></p>
+<ul>
+<li><p><a class="reference internal" href="#combinations" id="id19">Combinations</a></p>
+<ul>
+<li><p><a class="reference internal" href="#combinations-data" id="id20">Combinations data</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#restrictions" id="id21">Restrictions</a></p>
+<ul>
+<li><p><a class="reference internal" href="#restrictions-data" id="id22">Restrictions data</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#images" id="id23">Images</a></p>
+<ul>
+<li><p><a class="reference internal" href="#directed-graph-with-cost-and-reverse-cost" id="id24">Directed graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></p></li>
+<li><p><a class="reference internal" href="#undirected-graph-with-cost-and-reverse-cost" id="id25">Undirected graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></p></li>
+<li><p><a class="reference internal" href="#directed-graph-with-cost" id="id26">Directed graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a></p></li>
+<li><p><a class="reference internal" href="#undirected-graph-with-cost" id="id27">Undirected graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#pick-deliver-data" id="id28">Pick &amp; Deliver Data</a></p>
+<ul>
+<li><p><a class="reference internal" href="#the-vehicles" id="id29">The vehicles</a></p></li>
+<li><p><a class="reference internal" href="#the-original-orders" id="id30">The original orders</a></p></li>
+<li><p><a class="reference internal" href="#the-orders" id="id31">The orders</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="main-graph">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Main graph</a><a class="headerlink" href="#main-graph" title="Permalink to this heading">¶</a></h2>
+<p>A graph consists of a set of edges and a set of vertices.</p>
+<p>The following city is to be inserted into the database:</p>
+<figure class="align-default">
+<img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" />
+</figure>
+<p>Information known at this point is the geometry of the edges, cost values,
+cpacity values, category values and some locations that are not in the graph.</p>
+<p>The process to have working topology starts by inserting the edges.
+After that everything else is calculated.</p>
+<section id="edges">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Edges</a><a class="headerlink" href="#edges" title="Permalink to this heading">¶</a></h3>
+<p>The database design for the documentation of pgRouting, keeps in the same row 2
+segments, one in the direction of the geometry and the second in the oposite
+direction. Therfore some information has the <code class="docutils literal notranslate"><span class="pre">reverse_</span></code> prefix which
+corresponds to the segment on the oposite direction of the geometry.</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p>A unique identifier.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p>Identifier of the starting vertex of the geometry <code class="docutils literal notranslate"><span class="pre">geom</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p>Identifier of the ending vertex of the geometry <code class="docutils literal notranslate"><span class="pre">geom</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p>Cost to traverse from <cite>source</cite> to <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
+<td><p>Cost to traverse from <cite>target</cite> to <code class="docutils literal notranslate"><span class="pre">source</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">capacity</span></code></p></td>
+<td><p>Flow capacity from <cite>source</cite> to <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_capacity</span></code></p></td>
+<td><p>Flow capacity from <cite>target</cite> to <code class="docutils literal notranslate"><span class="pre">source</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">category</span></code></p></td>
+<td><p>Flow capacity from <cite>target</cite> to <code class="docutils literal notranslate"><span class="pre">source</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_category</span></code></p></td>
+<td><p>Flow capacity from <cite>target</cite> to <code class="docutils literal notranslate"><span class="pre">source</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x1</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(x\)</span> coordinate of the starting vertex of the geometry.</p>
+<ul class="simple">
+<li><p>For convinience it is saved on the table but can be calculated as
+<code class="docutils literal notranslate"><span class="pre">ST_X(ST_StartPoint(geom))</span></code>.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">y2</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(y\)</span> coordinate of the ending vertex of the geometry.</p>
+<ul class="simple">
+<li><p>For convinience it is saved on the table but can be calculated as
+<code class="docutils literal notranslate"><span class="pre">ST_Y(ST_EndPoint(geom))</span></code>.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">geom</span></code></p></td>
+<td><p>The geometry of the segments.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="p">(</span>
+    <span class="nb">id</span> <span class="n">BIGSERIAL</span> <span class="n">PRIMARY</span> <span class="n">KEY</span><span class="p">,</span>
+    <span class="n">source</span> <span class="n">BIGINT</span><span class="p">,</span>
+    <span class="n">target</span> <span class="n">BIGINT</span><span class="p">,</span>
+    <span class="n">cost</span> <span class="n">FLOAT</span><span class="p">,</span>
+    <span class="n">reverse_cost</span> <span class="n">FLOAT</span><span class="p">,</span>
+    <span class="n">capacity</span> <span class="n">BIGINT</span><span class="p">,</span>
+    <span class="n">reverse_capacity</span> <span class="n">BIGINT</span><span class="p">,</span>
+    <span class="n">x1</span> <span class="n">FLOAT</span><span class="p">,</span>
+    <span class="n">y1</span> <span class="n">FLOAT</span><span class="p">,</span>
+    <span class="n">x2</span> <span class="n">FLOAT</span><span class="p">,</span>
+    <span class="n">y2</span> <span class="n">FLOAT</span><span class="p">,</span>
+    <span class="n">geom</span> <span class="n">geometry</span>
+<span class="p">);</span>
+<span class="n">CREATE</span> <span class="n">TABLE</span>
+</pre></div>
+</div>
+<p>Starting on  PostgreSQL 12:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<span class="n">x1</span> <span class="n">FLOAT</span> <span class="n">GENERATED</span> <span class="n">ALWAYS</span> <span class="n">AS</span> <span class="p">(</span><span class="n">ST_X</span><span class="p">(</span><span class="n">ST_StartPoint</span><span class="p">(</span><span class="n">geom</span><span class="p">)))</span> <span class="n">STORED</span><span class="p">,</span>
+<span class="n">y1</span> <span class="n">FLOAT</span> <span class="n">GENERATED</span> <span class="n">ALWAYS</span> <span class="n">AS</span> <span class="p">(</span><span class="n">ST_Y</span><span class="p">(</span><span class="n">ST_StartPoint</span><span class="p">(</span><span class="n">geom</span><span class="p">)))</span> <span class="n">STORED</span><span class="p">,</span>
+<span class="n">x1</span> <span class="n">FLOAT</span> <span class="n">GENERATED</span> <span class="n">ALWAYS</span> <span class="n">AS</span> <span class="p">(</span><span class="n">ST_X</span><span class="p">(</span><span class="n">ST_EndPoint</span><span class="p">(</span><span class="n">geom</span><span class="p">)))</span> <span class="n">STORED</span><span class="p">,</span>
+<span class="n">y1</span> <span class="n">FLOAT</span> <span class="n">GENERATED</span> <span class="n">ALWAYS</span> <span class="n">AS</span> <span class="p">(</span><span class="n">ST_Y</span><span class="p">(</span><span class="n">ST_EndPoint</span><span class="p">(</span><span class="n">geom</span><span class="p">)))</span> <span class="n">STORED</span><span class="p">,</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>Optionally indexes on different columns can be created.
+The recomendation is to have</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> indexed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">source</span></code> and <code class="docutils literal notranslate"><span class="pre">target</span></code> columns indexed to speed up pgRouting queries.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom</span></code> indexed to speed up gemetry processes that might be needed in the
+front end.</p></li>
+</ul>
+<p>For this small example the indexes are skipped, except for <code class="docutils literal notranslate"><span class="pre">id</span></code></p>
+<section id="edges-data">
+<h4><a class="toc-backref" href="#id7" role="doc-backlink">Edges data</a><a class="headerlink" href="#edges-data" title="Permalink to this heading">¶</a></h4>
+<p>Inserting into the database the information of the edges:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span> <span class="p">(</span>
+    <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span>
+    <span class="n">capacity</span><span class="p">,</span> <span class="n">reverse_capacity</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span> <span class="n">VALUES</span>
+<span class="p">(</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">80</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span>   <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))),</span>
+<span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span>   <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))),</span>
+<span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span>   <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">))),</span>
+<span class="p">(</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span>  <span class="mi">50</span><span class="p">,</span>   <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))),</span>
+<span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))),</span>
+<span class="p">(</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span>   <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))),</span>
+<span class="p">(</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">50</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span>   <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))),</span>
+<span class="p">(</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span>   <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))),</span>
+<span class="p">(</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span>  <span class="mi">80</span><span class="p">,</span>   <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">))),</span>
+<span class="p">(</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span>  <span class="mi">50</span><span class="p">,</span>   <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))),</span>
+<span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))),</span>
+<span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))),</span>
+<span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))),</span>
+<span class="p">(</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">80</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span>   <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))),</span>
+<span class="p">(</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">80</span><span class="p">,</span>  <span class="mi">50</span><span class="p">,</span>   <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))),</span>
+<span class="p">(</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">80</span><span class="p">,</span>  <span class="mi">80</span><span class="p">,</span>   <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">))),</span>
+<span class="p">(</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span>   <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mf">1.999999999999</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">))),</span>
+<span class="p">(</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">50</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span>   <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span> <span class="mi">4</span><span class="p">)));</span>
+<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">18</span>
+</pre></div>
+</div>
+<p>Negative values on the cost, capacity and category means that the edge do not
+exist.</p>
+</section>
+</section>
+<section id="vertices">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Vertices</a><a class="headerlink" href="#vertices" title="Permalink to this heading">¶</a></h3>
+<p>The vertex information is calculated based on the identifier of the edge and the
+geometry and saved on a table.
+Saving all the information provided by <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Proposed</span></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">vertices</span>
+<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges ORDER BY id&#39;</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="mi">17</span>
+</pre></div>
+</div>
+<p>In this case the because the <code class="docutils literal notranslate"><span class="pre">CREATE</span></code> statement was not used, the definition
+of an index on the table is needed.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">SEQUENCE</span> <span class="n">vertices_id_seq</span><span class="p">;</span>
+<span class="n">CREATE</span> <span class="n">SEQUENCE</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">vertices</span> <span class="n">ALTER</span> <span class="n">COLUMN</span> <span class="nb">id</span> <span class="n">SET</span> <span class="n">DEFAULT</span> <span class="n">nextval</span><span class="p">(</span><span class="s1">&#39;vertices_id_seq&#39;</span><span class="p">);</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+<span class="n">ALTER</span> <span class="n">SEQUENCE</span> <span class="n">vertices_id_seq</span> <span class="n">OWNED</span> <span class="n">BY</span> <span class="n">vertices</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
+<span class="n">ALTER</span> <span class="n">SEQUENCE</span>
+<span class="n">SELECT</span> <span class="n">setval</span><span class="p">(</span><span class="s1">&#39;vertices_id_seq&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">coalesce</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="nb">id</span><span class="p">))</span> <span class="n">FROM</span> <span class="n">vertices</span><span class="p">));</span>
+ <span class="n">setval</span>
+<span class="o">--------</span>
+     <span class="mi">17</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>The structure of the table is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+                                  <span class="n">Table</span> <span class="s2">&quot;public.vertices&quot;</span>
+  <span class="n">Column</span>   <span class="o">|</span>       <span class="n">Type</span>       <span class="o">|</span> <span class="n">Collation</span> <span class="o">|</span> <span class="n">Nullable</span> <span class="o">|</span>               <span class="n">Default</span>
+<span class="o">-----------+------------------+-----------+----------+--------------------------------------</span>
+ <span class="nb">id</span>        <span class="o">|</span> <span class="n">bigint</span>           <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span> <span class="n">nextval</span><span class="p">(</span><span class="s1">&#39;vertices_id_seq&#39;</span><span class="p">::</span><span class="n">regclass</span><span class="p">)</span>
+ <span class="n">in_edges</span>  <span class="o">|</span> <span class="n">bigint</span><span class="p">[]</span>         <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>
+ <span class="n">out_edges</span> <span class="o">|</span> <span class="n">bigint</span><span class="p">[]</span>         <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>
+ <span class="n">x</span>         <span class="o">|</span> <span class="n">double</span> <span class="n">precision</span> <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>
+ <span class="n">y</span>         <span class="o">|</span> <span class="n">double</span> <span class="n">precision</span> <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>
+ <span class="n">geom</span>      <span class="o">|</span> <span class="n">geometry</span>         <span class="o">|</span>           <span class="o">|</span>          <span class="o">|</span>
+
+</pre></div>
+</div>
+<section id="vertices-data">
+<h4><a class="toc-backref" href="#id9" role="doc-backlink">Vertices data</a><a class="headerlink" href="#vertices-data" title="Permalink to this heading">¶</a></h4>
+<p>The saved information of the vertices is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">vertices</span><span class="p">;</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">in_edges</span> <span class="o">|</span> <span class="n">out_edges</span> <span class="o">|</span>       <span class="n">x</span>        <span class="o">|</span>  <span class="n">y</span>  <span class="o">|</span>                    <span class="n">geom</span>
+<span class="o">----+----------+-----------+----------------+-----+--------------------------------------------</span>
+  <span class="mi">1</span> <span class="o">|</span>          <span class="o">|</span> <span class="p">{</span><span class="mi">6</span><span class="p">}</span>       <span class="o">|</span>              <span class="mi">0</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mi">010100000000000000000000000000000000000040</span>
+  <span class="mi">2</span> <span class="o">|</span>          <span class="o">|</span> <span class="p">{</span><span class="mi">17</span><span class="p">}</span>      <span class="o">|</span>            <span class="mf">0.5</span> <span class="o">|</span> <span class="mf">3.5</span> <span class="o">|</span> <span class="mf">0101000000000000000000E03</span><span class="n">F0000000000000C40</span>
+  <span class="mi">3</span> <span class="o">|</span> <span class="p">{</span><span class="mi">6</span><span class="p">}</span>      <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">}</span>       <span class="o">|</span>              <span class="mi">1</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mi">0101000000000000000000</span><span class="n">F03F0000000000000040</span>
+  <span class="mi">4</span> <span class="o">|</span> <span class="p">{</span><span class="mi">17</span><span class="p">}</span>     <span class="o">|</span>           <span class="o">|</span> <span class="mf">1.999999999999</span> <span class="o">|</span> <span class="mf">3.5</span> <span class="o">|</span> <span class="mi">010100000068</span><span class="n">EEFFFFFFFFFF3F0000000000000C40</span>
+  <span class="mi">5</span> <span class="o">|</span>          <span class="o">|</span> <span class="p">{</span><span class="mi">1</span><span class="p">}</span>       <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span> <span class="mi">010100000000000000000000400000000000000000</span>
+  <span class="mi">6</span> <span class="o">|</span> <span class="p">{</span><span class="mi">1</span><span class="p">}</span>      <span class="o">|</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">}</span>     <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span> <span class="mi">01010000000000000000000040000000000000</span><span class="n">F03F</span>
+  <span class="mi">7</span> <span class="o">|</span> <span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">}</span>    <span class="o">|</span> <span class="p">{</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">}</span>    <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mi">010100000000000000000000400000000000000040</span>
+  <span class="mi">8</span> <span class="o">|</span> <span class="p">{</span><span class="mi">10</span><span class="p">}</span>     <span class="o">|</span> <span class="p">{</span><span class="mi">12</span><span class="p">,</span><span class="mi">14</span><span class="p">}</span>   <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span> <span class="mi">010100000000000000000000400000000000000840</span>
+  <span class="mi">9</span> <span class="o">|</span> <span class="p">{</span><span class="mi">14</span><span class="p">}</span>     <span class="o">|</span>           <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span> <span class="mi">010100000000000000000000400000000000001040</span>
+ <span class="mi">10</span> <span class="o">|</span> <span class="p">{</span><span class="mi">2</span><span class="p">}</span>      <span class="o">|</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">}</span>     <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span> <span class="mi">01010000000000000000000840000000000000</span><span class="n">F03F</span>
+ <span class="mi">11</span> <span class="o">|</span> <span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">}</span>    <span class="o">|</span> <span class="p">{</span><span class="mi">9</span><span class="p">,</span><span class="mi">11</span><span class="p">}</span>    <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mi">010100000000000000000008400000000000000040</span>
+ <span class="mi">12</span> <span class="o">|</span> <span class="p">{</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">}</span>  <span class="o">|</span> <span class="p">{</span><span class="mi">13</span><span class="p">}</span>      <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span> <span class="mi">010100000000000000000008400000000000000840</span>
+ <span class="mi">13</span> <span class="o">|</span>          <span class="o">|</span> <span class="p">{</span><span class="mi">18</span><span class="p">}</span>      <span class="o">|</span>            <span class="mf">3.5</span> <span class="o">|</span> <span class="mf">2.3</span> <span class="o">|</span> <span class="mi">01010000000000000000000</span><span class="n">C406666666666660240</span>
+ <span class="mi">14</span> <span class="o">|</span> <span class="p">{</span><span class="mi">18</span><span class="p">}</span>     <span class="o">|</span>           <span class="o">|</span>            <span class="mf">3.5</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span> <span class="mi">01010000000000000000000</span><span class="n">C400000000000001040</span>
+ <span class="mi">15</span> <span class="o">|</span> <span class="p">{</span><span class="mi">3</span><span class="p">}</span>      <span class="o">|</span> <span class="p">{</span><span class="mi">16</span><span class="p">}</span>      <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span> <span class="mi">01010000000000000000001040000000000000</span><span class="n">F03F</span>
+ <span class="mi">16</span> <span class="o">|</span> <span class="p">{</span><span class="mi">9</span><span class="p">,</span><span class="mi">16</span><span class="p">}</span>   <span class="o">|</span> <span class="p">{</span><span class="mi">15</span><span class="p">}</span>      <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mi">010100000000000000000010400000000000000040</span>
+ <span class="mi">17</span> <span class="o">|</span> <span class="p">{</span><span class="mi">13</span><span class="p">,</span><span class="mi">15</span><span class="p">}</span>  <span class="o">|</span>           <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span> <span class="mi">010100000000000000000010400000000000000840</span>
+<span class="p">(</span><span class="mi">17</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Here is where adding more columns to the vertices table can be done.
+Additional columns names and types will depend on the application.</p>
+</section>
+</section>
+<section id="the-topology">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">The topology</a><a class="headerlink" href="#the-topology" title="Permalink to this heading">¶</a></h3>
+<p>This queries based on the vertices data create a topology by filling the
+<code class="docutils literal notranslate"><span class="pre">source</span></code> and <code class="docutils literal notranslate"><span class="pre">target</span></code> columns in the edges table.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">source</span> <span class="n">information</span> <span class="o">*/</span>
+<span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
+<span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">FROM</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span>
+<span class="n">WHERE</span> <span class="n">ST_StartPoint</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">geom</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">18</span>
+<span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">target</span> <span class="n">information</span> <span class="o">*/</span>
+<span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
+<span class="n">SET</span> <span class="n">target</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">FROM</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span>
+<span class="n">WHERE</span> <span class="n">ST_EndPoint</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">geom</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">18</span>
+</pre></div>
+</div>
+<section id="topology-data">
+<h4><a class="toc-backref" href="#id11" role="doc-backlink">Topology data</a><a class="headerlink" href="#topology-data" title="Permalink to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="p">;</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span>
+<span class="o">----+--------+--------</span>
+  <span class="mi">1</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>      <span class="mi">6</span>
+  <span class="mi">2</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="mi">10</span>
+  <span class="mi">3</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">15</span>
+  <span class="mi">4</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>      <span class="mi">7</span>
+  <span class="mi">5</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">11</span>
+  <span class="mi">6</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">3</span>
+  <span class="mi">7</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">7</span>
+  <span class="mi">8</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="mi">11</span>
+  <span class="mi">9</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">16</span>
+ <span class="mi">10</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>      <span class="mi">8</span>
+ <span class="mi">11</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">12</span>
+ <span class="mi">12</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>     <span class="mi">12</span>
+ <span class="mi">13</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>     <span class="mi">17</span>
+ <span class="mi">14</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>      <span class="mi">9</span>
+ <span class="mi">15</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>     <span class="mi">17</span>
+ <span class="mi">16</span> <span class="o">|</span>     <span class="mi">15</span> <span class="o">|</span>     <span class="mi">16</span>
+ <span class="mi">17</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">4</span>
+ <span class="mi">18</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>     <span class="mi">14</span>
+<span class="p">(</span><span class="mi">18</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="points-outside-the-graph">
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">Points outside the graph</a><a class="headerlink" href="#points-outside-the-graph" title="Permalink to this heading">¶</a></h3>
+<section id="points-of-interest">
+<h4><a class="toc-backref" href="#id13" role="doc-backlink">Points of interest</a><a class="headerlink" href="#points-of-interest" title="Permalink to this heading">¶</a></h4>
+<p>Some times the applications work “on the fly” starting from a location that is
+not a vertex in the graph.
+Those locations, in pgRrouting are called points of interest.</p>
+<p>The information needed in the points of interest is <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">edge_id</span></code>,
+<code class="docutils literal notranslate"><span class="pre">side</span></code>, <code class="docutils literal notranslate"><span class="pre">fraction</span></code>.</p>
+<p>On this documentation there will be some 6 fixed points of interest and they
+will be stored on a table.</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pid</span></code></p></td>
+<td><p>A unique identifier.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
+<td><p>Identifier of the edge nearest edge that allows an arrival to the point.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">side</span></code></p></td>
+<td><p>Is it on the left, right or both sides of the segment <code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code></p></td>
+<td><p>Where in the segment is the point located.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">geom</span></code></p></td>
+<td><p>The geometry of the points.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">newPoint</span></code></p></td>
+<td><p>The geometry of the points moved on top of the segment.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">pointsOfInterest</span><span class="p">(</span>
+    <span class="n">pid</span> <span class="n">BIGSERIAL</span> <span class="n">PRIMARY</span> <span class="n">KEY</span><span class="p">,</span>
+    <span class="n">edge_id</span> <span class="n">BIGINT</span><span class="p">,</span>
+    <span class="n">side</span> <span class="n">CHAR</span><span class="p">,</span>
+    <span class="n">fraction</span> <span class="n">FLOAT</span><span class="p">,</span>
+    <span class="n">geom</span> <span class="n">geometry</span><span class="p">,</span>
+    <span class="n">newPoint</span> <span class="n">geometry</span><span class="p">);</span>
+<span class="n">CREATE</span> <span class="n">TABLE</span>
+</pre></div>
+</div>
+</section>
+<section id="points-of-interest-geometry">
+<h4><a class="toc-backref" href="#id14" role="doc-backlink">Points of interest geometry</a><a class="headerlink" href="#points-of-interest-geometry" title="Permalink to this heading">¶</a></h4>
+<p>Inserting the data of the points of interest:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">pointsOfInterest</span> <span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="n">VALUES</span>
+<span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mf">1.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)),</span>
+<span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mf">4.2</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">)),</span>
+<span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mf">2.6</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">)),</span>
+<span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">)),</span>
+<span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mf">2.9</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">)),</span>
+<span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">));</span>
+<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">6</span>
+</pre></div>
+</div>
+</section>
+<section id="points-of-interest-fillup">
+<h4><a class="toc-backref" href="#id15" role="doc-backlink">Points of interest fillup</a><a class="headerlink" href="#points-of-interest-fillup" title="Permalink to this heading">¶</a></h4>
+<p>Using <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a>
+Calculating for visual purposes the points over the graph.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>UPDATE pointsOfInterest AS p SET
+  edge_id = q.edge_id,
+  side = q.side,
+  fraction = q.fraction,
+  newPoint = ST_endPoint(q.edge)
+FROM (SELECT * FROM pgr_findCloseEdges(
+  $$SELECT id, geom FROM edges$$,
+  (SELECT array_agg(geom) FROM pointsOfInterest),
+  0.5, partial =&gt; false)) AS q
+WHERE p.geom = q.geom;
+UPDATE 6
+</pre></div>
+</div>
+</section>
+<section id="a-special-case-to-arrive-from-both-sides-of-the-edge">
+<h4><a class="toc-backref" href="#id16" role="doc-backlink">A special case to arrive from both sides of the edge.</a><a class="headerlink" href="#a-special-case-to-arrive-from-both-sides-of-the-edge" title="Permalink to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">pointsOfInterest</span> <span class="n">SET</span> <span class="n">side</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span>
+<span class="n">WHERE</span> <span class="n">pid</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+<section id="points-of-interest-data">
+<h4><a class="toc-backref" href="#id17" role="doc-backlink">Points of interest data</a><a class="headerlink" href="#points-of-interest-data" title="Permalink to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pid</span><span class="p">,</span> <span class="n">edge_id</span><span class="p">,</span> <span class="n">side</span><span class="p">,</span> <span class="n">fraction</span><span class="p">,</span>
+       <span class="n">ST_AsText</span><span class="p">(</span><span class="n">geom</span><span class="p">),</span> <span class="n">ST_AsText</span><span class="p">(</span><span class="n">newPoint</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">pointsOfInterest</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">pid</span><span class="p">;</span>
+ <span class="n">pid</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">side</span> <span class="o">|</span>      <span class="n">fraction</span>      <span class="o">|</span>   <span class="n">st_astext</span>    <span class="o">|</span>  <span class="n">st_astext</span>
+<span class="o">-----+---------+------+--------------------+----------------+--------------</span>
+   <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span> <span class="n">l</span>    <span class="o">|</span>                <span class="mf">0.4</span> <span class="o">|</span> <span class="n">POINT</span><span class="p">(</span><span class="mf">1.8</span> <span class="mf">0.4</span><span class="p">)</span> <span class="o">|</span> <span class="n">POINT</span><span class="p">(</span><span class="mi">2</span> <span class="mf">0.4</span><span class="p">)</span>
+   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">15</span> <span class="o">|</span> <span class="n">r</span>    <span class="o">|</span> <span class="mf">0.3999999999999999</span> <span class="o">|</span> <span class="n">POINT</span><span class="p">(</span><span class="mf">4.2</span> <span class="mf">2.4</span><span class="p">)</span> <span class="o">|</span> <span class="n">POINT</span><span class="p">(</span><span class="mi">4</span> <span class="mf">2.4</span><span class="p">)</span>
+   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span> <span class="n">l</span>    <span class="o">|</span> <span class="mf">0.6000000000000001</span> <span class="o">|</span> <span class="n">POINT</span><span class="p">(</span><span class="mf">2.6</span> <span class="mf">3.2</span><span class="p">)</span> <span class="o">|</span> <span class="n">POINT</span><span class="p">(</span><span class="mf">2.6</span> <span class="mi">3</span><span class="p">)</span>
+   <span class="mi">4</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span> <span class="n">r</span>    <span class="o">|</span>                <span class="mf">0.3</span> <span class="o">|</span> <span class="n">POINT</span><span class="p">(</span><span class="mf">0.3</span> <span class="mf">1.8</span><span class="p">)</span> <span class="o">|</span> <span class="n">POINT</span><span class="p">(</span><span class="mf">0.3</span> <span class="mi">2</span><span class="p">)</span>
+   <span class="mi">5</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span> <span class="n">l</span>    <span class="o">|</span>                <span class="mf">0.8</span> <span class="o">|</span> <span class="n">POINT</span><span class="p">(</span><span class="mf">2.9</span> <span class="mf">1.8</span><span class="p">)</span> <span class="o">|</span> <span class="n">POINT</span><span class="p">(</span><span class="mi">3</span> <span class="mf">1.8</span><span class="p">)</span>
+   <span class="mi">6</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span> <span class="n">b</span>    <span class="o">|</span>                <span class="mf">0.7</span> <span class="o">|</span> <span class="n">POINT</span><span class="p">(</span><span class="mf">2.2</span> <span class="mf">1.7</span><span class="p">)</span> <span class="o">|</span> <span class="n">POINT</span><span class="p">(</span><span class="mi">2</span> <span class="mf">1.7</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="support-tables">
+<h2><a class="toc-backref" href="#id18" role="doc-backlink">Support tables</a><a class="headerlink" href="#support-tables" title="Permalink to this heading">¶</a></h2>
+<section id="combinations">
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">Combinations</a><a class="headerlink" href="#combinations" title="Permalink to this heading">¶</a></h3>
+<p>Many functions can be used with a combinations of <code class="docutils literal notranslate"><span class="pre">(source,</span> <span class="pre">target)</span></code> pairs
+when wanting a route from <code class="docutils literal notranslate"><span class="pre">source</span></code> to <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
+<p>For convinence of this documentations, some combinations will be stored on a
+table:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">combinations</span> <span class="p">(</span>
+    <span class="n">source</span> <span class="n">BIGINT</span><span class="p">,</span>
+    <span class="n">target</span> <span class="n">BIGINT</span>
+<span class="p">);</span>
+<span class="n">CREATE</span> <span class="n">TABLE</span>
+</pre></div>
+</div>
+<p>Inserting the data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">combinations</span> <span class="p">(</span>
+    <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span> <span class="n">VALUES</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">14</span><span class="p">);</span>
+<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<section id="combinations-data">
+<h4><a class="toc-backref" href="#id20" role="doc-backlink">Combinations data</a><a class="headerlink" href="#combinations-data" title="Permalink to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">combinations</span><span class="p">;</span>
+ <span class="n">source</span> <span class="o">|</span> <span class="n">target</span>
+<span class="o">--------+--------</span>
+      <span class="mi">5</span> <span class="o">|</span>      <span class="mi">6</span>
+      <span class="mi">5</span> <span class="o">|</span>     <span class="mi">10</span>
+      <span class="mi">6</span> <span class="o">|</span>      <span class="mi">5</span>
+      <span class="mi">6</span> <span class="o">|</span>     <span class="mi">15</span>
+      <span class="mi">6</span> <span class="o">|</span>     <span class="mi">14</span>
+<span class="p">(</span><span class="mi">5</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="restrictions">
+<h3><a class="toc-backref" href="#id21" role="doc-backlink">Restrictions</a><a class="headerlink" href="#restrictions" title="Permalink to this heading">¶</a></h3>
+<p>Some functions accept soft restrictions about the segments.</p>
+<p>The creation of the restrictions table</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">restrictions</span> <span class="p">(</span>
+    <span class="nb">id</span> <span class="n">SERIAL</span> <span class="n">PRIMARY</span> <span class="n">KEY</span><span class="p">,</span>
+    <span class="n">path</span> <span class="n">BIGINT</span><span class="p">[],</span>
+    <span class="n">cost</span> <span class="n">FLOAT</span>
+<span class="p">);</span>
+<span class="n">CREATE</span> <span class="n">TABLE</span>
+</pre></div>
+</div>
+<p>Adding the restrictions</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">restrictions</span> <span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">cost</span><span class="p">)</span> <span class="n">VALUES</span>
+<span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="mi">100</span><span class="p">),</span>
+<span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="mi">100</span><span class="p">),</span>
+<span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="mi">100</span><span class="p">),</span>
+<span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="mi">4</span><span class="p">),</span>
+<span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span> <span class="mi">100</span><span class="p">);</span>
+<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<section id="restrictions-data">
+<h4><a class="toc-backref" href="#id22" role="doc-backlink">Restrictions data</a><a class="headerlink" href="#restrictions-data" title="Permalink to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">restrictions</span><span class="p">;</span>
+ <span class="nb">id</span> <span class="o">|</span>  <span class="n">path</span>   <span class="o">|</span> <span class="n">cost</span>
+<span class="o">----+---------+------</span>
+  <span class="mi">1</span> <span class="o">|</span> <span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">}</span>   <span class="o">|</span>  <span class="mi">100</span>
+  <span class="mi">2</span> <span class="o">|</span> <span class="p">{</span><span class="mi">8</span><span class="p">,</span><span class="mi">11</span><span class="p">}</span>  <span class="o">|</span>  <span class="mi">100</span>
+  <span class="mi">3</span> <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="mi">10</span><span class="p">}</span>  <span class="o">|</span>  <span class="mi">100</span>
+  <span class="mi">4</span> <span class="o">|</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">9</span><span class="p">}</span> <span class="o">|</span>    <span class="mi">4</span>
+  <span class="mi">5</span> <span class="o">|</span> <span class="p">{</span><span class="mi">9</span><span class="p">,</span><span class="mi">16</span><span class="p">}</span>  <span class="o">|</span>  <span class="mi">100</span>
+<span class="p">(</span><span class="mi">5</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="images">
+<h2><a class="toc-backref" href="#id23" role="doc-backlink">Images</a><a class="headerlink" href="#images" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Red arrows correspond when <code class="docutils literal notranslate"><span class="pre">cost</span></code> &gt; 0 in the edge table.</p></li>
+<li><p>Blue arrows correspond when <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> &gt; 0 in the edge table.</p></li>
+<li><p>Points are outside the graph.</p></li>
+<li><p>Click on the graph to enlarge.</p></li>
+</ul>
+<section id="directed-graph-with-cost-and-reverse-cost">
+<span id="fig1"></span><h3><a class="toc-backref" href="#id24" role="doc-backlink">Directed graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a><a class="headerlink" href="#directed-graph-with-cost-and-reverse-cost" title="Permalink to this heading">¶</a></h3>
+<p>When working with city networks, this is recommended for point of view of
+vehicles.</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 475.5px; height: 433.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Directed, with cost and reverse_cost</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="undirected-graph-with-cost-and-reverse-cost">
+<span id="fig2"></span><h3><a class="toc-backref" href="#id25" role="doc-backlink">Undirected graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a><a class="headerlink" href="#undirected-graph-with-cost-and-reverse-cost" title="Permalink to this heading">¶</a></h3>
+<p>When working with city networks, this is recommended for point of view of
+pedestrians.</p>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="_images/Fig6-undirected.png"><img alt="_images/Fig6-undirected.png" src="_images/Fig6-undirected.png" style="width: 482.0px; height: 435.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Undirected, with cost and reverse cost</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="directed-graph-with-cost">
+<span id="fig3"></span><h3><a class="toc-backref" href="#id26" role="doc-backlink">Directed graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a><a class="headerlink" href="#directed-graph-with-cost" title="Permalink to this heading">¶</a></h3>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="_images/Fig2-cost.png"><img alt="_images/Fig2-cost.png" src="_images/Fig2-cost.png" style="width: 193.8px; height: 173.60000000000002px;" /></a>
+<figcaption>
+<p><span class="caption-text">Directed, with cost</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="undirected-graph-with-cost">
+<span id="fig4"></span><h3><a class="toc-backref" href="#id27" role="doc-backlink">Undirected graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a><a class="headerlink" href="#undirected-graph-with-cost" title="Permalink to this heading">¶</a></h3>
+<figure class="align-default" id="id4">
+<a class="reference internal image-reference" href="_images/Fig4-costUndirected.png"><img alt="_images/Fig4-costUndirected.png" src="_images/Fig4-costUndirected.png" style="width: 195.0px; height: 175.20000000000002px;" /></a>
+<figcaption>
+<p><span class="caption-text">Undirected, with cost</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="pick-deliver-data">
+<span id="pickdeliverdata"></span><h2><a class="toc-backref" href="#id28" role="doc-backlink">Pick &amp; Deliver Data</a><a class="headerlink" href="#pick-deliver-data" title="Permalink to this heading">¶</a></h2>
+<p>This data example <strong>lc101</strong> is from data published at
+<a class="reference external" href="https://www.sintef.no/projectweb/top/pdptw/li-lim-benchmark/">https://www.sintef.no/projectweb/top/pdptw/li-lim-benchmark/</a></p>
+<section id="the-vehicles">
+<h3><a class="toc-backref" href="#id29" role="doc-backlink">The vehicles</a><a class="headerlink" href="#the-vehicles" title="Permalink to this heading">¶</a></h3>
+<p>There are 25 vehciles in the problem all with the same characteristics.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">v_lc101</span><span class="p">(</span>
+  <span class="nb">id</span> <span class="n">BIGINT</span> <span class="n">NOT</span> <span class="n">NULL</span> <span class="n">primary</span> <span class="n">key</span><span class="p">,</span>
+  <span class="n">capacity</span> <span class="n">BIGINT</span> <span class="n">DEFAULT</span> <span class="mi">200</span><span class="p">,</span>
+  <span class="n">start_x</span> <span class="n">FLOAT</span> <span class="n">DEFAULT</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="n">start_y</span> <span class="n">FLOAT</span> <span class="n">DEFAULT</span> <span class="mi">50</span><span class="p">,</span>
+  <span class="n">start_open</span> <span class="n">INTEGER</span> <span class="n">DEFAULT</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="n">start_close</span> <span class="n">INTEGER</span> <span class="n">DEFAULT</span> <span class="mi">1236</span><span class="p">);</span>
+<span class="n">CREATE</span> <span class="n">TABLE</span>
+<span class="o">/*</span> <span class="n">create</span> <span class="mi">25</span> <span class="n">vehciles</span> <span class="o">*/</span>
+<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">v_lc101</span> <span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+<span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">generate_series</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">25</span><span class="p">));</span>
+<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">25</span>
+</pre></div>
+</div>
+</section>
+<section id="the-original-orders">
+<h3><a class="toc-backref" href="#id30" role="doc-backlink">The original orders</a><a class="headerlink" href="#the-original-orders" title="Permalink to this heading">¶</a></h3>
+<p>The data comes in different rows for the pickup and the delivery of the same
+order.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">table</span> <span class="n">lc101_c</span><span class="p">(</span>
+  <span class="nb">id</span> <span class="n">BIGINT</span> <span class="ow">not</span> <span class="n">null</span> <span class="n">primary</span> <span class="n">key</span><span class="p">,</span>
+  <span class="n">x</span> <span class="n">DOUBLE</span> <span class="n">PRECISION</span><span class="p">,</span>
+  <span class="n">y</span> <span class="n">DOUBLE</span> <span class="n">PRECISION</span><span class="p">,</span>
+  <span class="n">demand</span> <span class="n">INTEGER</span><span class="p">,</span>
+  <span class="nb">open</span> <span class="n">INTEGER</span><span class="p">,</span>
+  <span class="n">close</span> <span class="n">INTEGER</span><span class="p">,</span>
+  <span class="n">service</span> <span class="n">INTEGER</span><span class="p">,</span>
+  <span class="n">pindex</span> <span class="n">BIGINT</span><span class="p">,</span>
+  <span class="n">dindex</span> <span class="n">BIGINT</span>
+<span class="p">);</span>
+<span class="n">CREATE</span> <span class="n">TABLE</span>
+<span class="o">/*</span> <span class="n">the</span> <span class="n">original</span> <span class="n">data</span> <span class="o">*/</span>
+<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">lc101_c</span><span class="p">(</span>
+  <span class="nb">id</span><span class="p">,</span>     <span class="n">x</span><span class="p">,</span>    <span class="n">y</span><span class="p">,</span> <span class="n">demand</span><span class="p">,</span> <span class="nb">open</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">service</span><span class="p">,</span> <span class="n">pindex</span><span class="p">,</span> <span class="n">dindex</span><span class="p">)</span> <span class="n">VALUES</span>
+<span class="p">(</span>  <span class="mi">1</span><span class="p">,</span>    <span class="mi">45</span><span class="p">,</span>   <span class="mi">68</span><span class="p">,</span>   <span class="o">-</span><span class="mi">10</span><span class="p">,</span>   <span class="mi">912</span><span class="p">,</span>   <span class="mi">967</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">11</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span>  <span class="mi">2</span><span class="p">,</span>    <span class="mi">45</span><span class="p">,</span>   <span class="mi">70</span><span class="p">,</span>   <span class="o">-</span><span class="mi">20</span><span class="p">,</span>   <span class="mi">825</span><span class="p">,</span>   <span class="mi">870</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">6</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span>  <span class="mi">3</span><span class="p">,</span>    <span class="mi">42</span><span class="p">,</span>   <span class="mi">66</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>    <span class="mi">65</span><span class="p">,</span>   <span class="mi">146</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">75</span><span class="p">),</span>
+<span class="p">(</span>  <span class="mi">4</span><span class="p">,</span>    <span class="mi">42</span><span class="p">,</span>   <span class="mi">68</span><span class="p">,</span>   <span class="o">-</span><span class="mi">10</span><span class="p">,</span>   <span class="mi">727</span><span class="p">,</span>   <span class="mi">782</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">9</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span>  <span class="mi">5</span><span class="p">,</span>    <span class="mi">42</span><span class="p">,</span>   <span class="mi">65</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>    <span class="mi">15</span><span class="p">,</span>    <span class="mi">67</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>    <span class="mi">7</span><span class="p">),</span>
+<span class="p">(</span>  <span class="mi">6</span><span class="p">,</span>    <span class="mi">40</span><span class="p">,</span>   <span class="mi">69</span><span class="p">,</span>    <span class="mi">20</span><span class="p">,</span>   <span class="mi">621</span><span class="p">,</span>   <span class="mi">702</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>    <span class="mi">2</span><span class="p">),</span>
+<span class="p">(</span>  <span class="mi">7</span><span class="p">,</span>    <span class="mi">40</span><span class="p">,</span>   <span class="mi">66</span><span class="p">,</span>   <span class="o">-</span><span class="mi">10</span><span class="p">,</span>   <span class="mi">170</span><span class="p">,</span>   <span class="mi">225</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">5</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span>  <span class="mi">8</span><span class="p">,</span>    <span class="mi">38</span><span class="p">,</span>   <span class="mi">68</span><span class="p">,</span>    <span class="mi">20</span><span class="p">,</span>   <span class="mi">255</span><span class="p">,</span>   <span class="mi">324</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">10</span><span class="p">),</span>
+<span class="p">(</span>  <span class="mi">9</span><span class="p">,</span>    <span class="mi">38</span><span class="p">,</span>   <span class="mi">70</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>   <span class="mi">534</span><span class="p">,</span>   <span class="mi">605</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>    <span class="mi">4</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">10</span><span class="p">,</span>    <span class="mi">35</span><span class="p">,</span>   <span class="mi">66</span><span class="p">,</span>   <span class="o">-</span><span class="mi">20</span><span class="p">,</span>   <span class="mi">357</span><span class="p">,</span>   <span class="mi">410</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">8</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">11</span><span class="p">,</span>    <span class="mi">35</span><span class="p">,</span>   <span class="mi">69</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>   <span class="mi">448</span><span class="p">,</span>   <span class="mi">505</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>    <span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">12</span><span class="p">,</span>    <span class="mi">25</span><span class="p">,</span>   <span class="mi">85</span><span class="p">,</span>   <span class="o">-</span><span class="mi">20</span><span class="p">,</span>   <span class="mi">652</span><span class="p">,</span>   <span class="mi">721</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">18</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">13</span><span class="p">,</span>    <span class="mi">22</span><span class="p">,</span>   <span class="mi">75</span><span class="p">,</span>    <span class="mi">30</span><span class="p">,</span>    <span class="mi">30</span><span class="p">,</span>    <span class="mi">92</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">17</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">14</span><span class="p">,</span>    <span class="mi">22</span><span class="p">,</span>   <span class="mi">85</span><span class="p">,</span>   <span class="o">-</span><span class="mi">40</span><span class="p">,</span>   <span class="mi">567</span><span class="p">,</span>   <span class="mi">620</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">16</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">15</span><span class="p">,</span>    <span class="mi">20</span><span class="p">,</span>   <span class="mi">80</span><span class="p">,</span>   <span class="o">-</span><span class="mi">10</span><span class="p">,</span>   <span class="mi">384</span><span class="p">,</span>   <span class="mi">429</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">19</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">16</span><span class="p">,</span>    <span class="mi">20</span><span class="p">,</span>   <span class="mi">85</span><span class="p">,</span>    <span class="mi">40</span><span class="p">,</span>   <span class="mi">475</span><span class="p">,</span>   <span class="mi">528</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">14</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">17</span><span class="p">,</span>    <span class="mi">18</span><span class="p">,</span>   <span class="mi">75</span><span class="p">,</span>   <span class="o">-</span><span class="mi">30</span><span class="p">,</span>    <span class="mi">99</span><span class="p">,</span>   <span class="mi">148</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">13</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">18</span><span class="p">,</span>    <span class="mi">15</span><span class="p">,</span>   <span class="mi">75</span><span class="p">,</span>    <span class="mi">20</span><span class="p">,</span>   <span class="mi">179</span><span class="p">,</span>   <span class="mi">254</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">12</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">19</span><span class="p">,</span>    <span class="mi">15</span><span class="p">,</span>   <span class="mi">80</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>   <span class="mi">278</span><span class="p">,</span>   <span class="mi">345</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">15</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">20</span><span class="p">,</span>    <span class="mi">30</span><span class="p">,</span>   <span class="mi">50</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>    <span class="mi">73</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">24</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">21</span><span class="p">,</span>    <span class="mi">30</span><span class="p">,</span>   <span class="mi">52</span><span class="p">,</span>   <span class="o">-</span><span class="mi">10</span><span class="p">,</span>   <span class="mi">914</span><span class="p">,</span>   <span class="mi">965</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">30</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">22</span><span class="p">,</span>    <span class="mi">28</span><span class="p">,</span>   <span class="mi">52</span><span class="p">,</span>   <span class="o">-</span><span class="mi">20</span><span class="p">,</span>   <span class="mi">812</span><span class="p">,</span>   <span class="mi">883</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">28</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">23</span><span class="p">,</span>    <span class="mi">28</span><span class="p">,</span>   <span class="mi">55</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>   <span class="mi">732</span><span class="p">,</span>   <span class="mi">777</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>  <span class="mi">103</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">24</span><span class="p">,</span>    <span class="mi">25</span><span class="p">,</span>   <span class="mi">50</span><span class="p">,</span>   <span class="o">-</span><span class="mi">10</span><span class="p">,</span>    <span class="mi">65</span><span class="p">,</span>   <span class="mi">144</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">20</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">25</span><span class="p">,</span>    <span class="mi">25</span><span class="p">,</span>   <span class="mi">52</span><span class="p">,</span>    <span class="mi">40</span><span class="p">,</span>   <span class="mi">169</span><span class="p">,</span>   <span class="mi">224</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">27</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">26</span><span class="p">,</span>    <span class="mi">25</span><span class="p">,</span>   <span class="mi">55</span><span class="p">,</span>   <span class="o">-</span><span class="mi">10</span><span class="p">,</span>   <span class="mi">622</span><span class="p">,</span>   <span class="mi">701</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">29</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">27</span><span class="p">,</span>    <span class="mi">23</span><span class="p">,</span>   <span class="mi">52</span><span class="p">,</span>   <span class="o">-</span><span class="mi">40</span><span class="p">,</span>   <span class="mi">261</span><span class="p">,</span>   <span class="mi">316</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">25</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">28</span><span class="p">,</span>    <span class="mi">23</span><span class="p">,</span>   <span class="mi">55</span><span class="p">,</span>    <span class="mi">20</span><span class="p">,</span>   <span class="mi">546</span><span class="p">,</span>   <span class="mi">593</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">22</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">29</span><span class="p">,</span>    <span class="mi">20</span><span class="p">,</span>   <span class="mi">50</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>   <span class="mi">358</span><span class="p">,</span>   <span class="mi">405</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">26</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">30</span><span class="p">,</span>    <span class="mi">20</span><span class="p">,</span>   <span class="mi">55</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>   <span class="mi">449</span><span class="p">,</span>   <span class="mi">504</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">21</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">31</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>   <span class="mi">35</span><span class="p">,</span>   <span class="o">-</span><span class="mi">30</span><span class="p">,</span>   <span class="mi">200</span><span class="p">,</span>   <span class="mi">237</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">32</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">32</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>   <span class="mi">40</span><span class="p">,</span>    <span class="mi">30</span><span class="p">,</span>    <span class="mi">31</span><span class="p">,</span>   <span class="mi">100</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">31</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">33</span><span class="p">,</span>     <span class="mi">8</span><span class="p">,</span>   <span class="mi">40</span><span class="p">,</span>    <span class="mi">40</span><span class="p">,</span>    <span class="mi">87</span><span class="p">,</span>   <span class="mi">158</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">37</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">34</span><span class="p">,</span>     <span class="mi">8</span><span class="p">,</span>   <span class="mi">45</span><span class="p">,</span>   <span class="o">-</span><span class="mi">30</span><span class="p">,</span>   <span class="mi">751</span><span class="p">,</span>   <span class="mi">816</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">38</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">35</span><span class="p">,</span>     <span class="mi">5</span><span class="p">,</span>   <span class="mi">35</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>   <span class="mi">283</span><span class="p">,</span>   <span class="mi">344</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">39</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">36</span><span class="p">,</span>     <span class="mi">5</span><span class="p">,</span>   <span class="mi">45</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>   <span class="mi">665</span><span class="p">,</span>   <span class="mi">716</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>  <span class="mi">105</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">37</span><span class="p">,</span>     <span class="mi">2</span><span class="p">,</span>   <span class="mi">40</span><span class="p">,</span>   <span class="o">-</span><span class="mi">40</span><span class="p">,</span>   <span class="mi">383</span><span class="p">,</span>   <span class="mi">434</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">33</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">38</span><span class="p">,</span>     <span class="mi">0</span><span class="p">,</span>   <span class="mi">40</span><span class="p">,</span>    <span class="mi">30</span><span class="p">,</span>   <span class="mi">479</span><span class="p">,</span>   <span class="mi">522</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">34</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">39</span><span class="p">,</span>     <span class="mi">0</span><span class="p">,</span>   <span class="mi">45</span><span class="p">,</span>   <span class="o">-</span><span class="mi">10</span><span class="p">,</span>   <span class="mi">567</span><span class="p">,</span>   <span class="mi">624</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">35</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">40</span><span class="p">,</span>    <span class="mi">35</span><span class="p">,</span>   <span class="mi">30</span><span class="p">,</span>   <span class="o">-</span><span class="mi">20</span><span class="p">,</span>   <span class="mi">264</span><span class="p">,</span>   <span class="mi">321</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">42</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">41</span><span class="p">,</span>    <span class="mi">35</span><span class="p">,</span>   <span class="mi">32</span><span class="p">,</span>   <span class="o">-</span><span class="mi">10</span><span class="p">,</span>   <span class="mi">166</span><span class="p">,</span>   <span class="mi">235</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">43</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">42</span><span class="p">,</span>    <span class="mi">33</span><span class="p">,</span>   <span class="mi">32</span><span class="p">,</span>    <span class="mi">20</span><span class="p">,</span>    <span class="mi">68</span><span class="p">,</span>   <span class="mi">149</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">40</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">43</span><span class="p">,</span>    <span class="mi">33</span><span class="p">,</span>   <span class="mi">35</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>    <span class="mi">16</span><span class="p">,</span>    <span class="mi">80</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">41</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">44</span><span class="p">,</span>    <span class="mi">32</span><span class="p">,</span>   <span class="mi">30</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>   <span class="mi">359</span><span class="p">,</span>   <span class="mi">412</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">46</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">45</span><span class="p">,</span>    <span class="mi">30</span><span class="p">,</span>   <span class="mi">30</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>   <span class="mi">541</span><span class="p">,</span>   <span class="mi">600</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">48</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">46</span><span class="p">,</span>    <span class="mi">30</span><span class="p">,</span>   <span class="mi">32</span><span class="p">,</span>   <span class="o">-</span><span class="mi">10</span><span class="p">,</span>   <span class="mi">448</span><span class="p">,</span>   <span class="mi">509</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">44</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">47</span><span class="p">,</span>    <span class="mi">30</span><span class="p">,</span>   <span class="mi">35</span><span class="p">,</span>   <span class="o">-</span><span class="mi">10</span><span class="p">,</span>  <span class="mi">1054</span><span class="p">,</span>  <span class="mi">1127</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">49</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">48</span><span class="p">,</span>    <span class="mi">28</span><span class="p">,</span>   <span class="mi">30</span><span class="p">,</span>   <span class="o">-</span><span class="mi">10</span><span class="p">,</span>   <span class="mi">632</span><span class="p">,</span>   <span class="mi">693</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">45</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">49</span><span class="p">,</span>    <span class="mi">28</span><span class="p">,</span>   <span class="mi">35</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>  <span class="mi">1001</span><span class="p">,</span>  <span class="mi">1066</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">47</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">50</span><span class="p">,</span>    <span class="mi">26</span><span class="p">,</span>   <span class="mi">32</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>   <span class="mi">815</span><span class="p">,</span>   <span class="mi">880</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">52</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">51</span><span class="p">,</span>    <span class="mi">25</span><span class="p">,</span>   <span class="mi">30</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>   <span class="mi">725</span><span class="p">,</span>   <span class="mi">786</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>  <span class="mi">101</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">52</span><span class="p">,</span>    <span class="mi">25</span><span class="p">,</span>   <span class="mi">35</span><span class="p">,</span>   <span class="o">-</span><span class="mi">10</span><span class="p">,</span>   <span class="mi">912</span><span class="p">,</span>   <span class="mi">969</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">50</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">53</span><span class="p">,</span>    <span class="mi">44</span><span class="p">,</span>    <span class="mi">5</span><span class="p">,</span>    <span class="mi">20</span><span class="p">,</span>   <span class="mi">286</span><span class="p">,</span>   <span class="mi">347</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">58</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">54</span><span class="p">,</span>    <span class="mi">42</span><span class="p">,</span>   <span class="mi">10</span><span class="p">,</span>    <span class="mi">40</span><span class="p">,</span>   <span class="mi">186</span><span class="p">,</span>   <span class="mi">257</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">60</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">55</span><span class="p">,</span>    <span class="mi">42</span><span class="p">,</span>   <span class="mi">15</span><span class="p">,</span>   <span class="o">-</span><span class="mi">40</span><span class="p">,</span>    <span class="mi">95</span><span class="p">,</span>   <span class="mi">158</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">57</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">56</span><span class="p">,</span>    <span class="mi">40</span><span class="p">,</span>    <span class="mi">5</span><span class="p">,</span>    <span class="mi">30</span><span class="p">,</span>   <span class="mi">385</span><span class="p">,</span>   <span class="mi">436</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">59</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">57</span><span class="p">,</span>    <span class="mi">40</span><span class="p">,</span>   <span class="mi">15</span><span class="p">,</span>    <span class="mi">40</span><span class="p">,</span>    <span class="mi">35</span><span class="p">,</span>    <span class="mi">87</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">55</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">58</span><span class="p">,</span>    <span class="mi">38</span><span class="p">,</span>    <span class="mi">5</span><span class="p">,</span>   <span class="o">-</span><span class="mi">20</span><span class="p">,</span>   <span class="mi">471</span><span class="p">,</span>   <span class="mi">534</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">53</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">59</span><span class="p">,</span>    <span class="mi">38</span><span class="p">,</span>   <span class="mi">15</span><span class="p">,</span>   <span class="o">-</span><span class="mi">30</span><span class="p">,</span>   <span class="mi">651</span><span class="p">,</span>   <span class="mi">740</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">56</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">60</span><span class="p">,</span>    <span class="mi">35</span><span class="p">,</span>    <span class="mi">5</span><span class="p">,</span>   <span class="o">-</span><span class="mi">40</span><span class="p">,</span>   <span class="mi">562</span><span class="p">,</span>   <span class="mi">629</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">54</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">61</span><span class="p">,</span>    <span class="mi">50</span><span class="p">,</span>   <span class="mi">30</span><span class="p">,</span>   <span class="o">-</span><span class="mi">10</span><span class="p">,</span>   <span class="mi">531</span><span class="p">,</span>   <span class="mi">610</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">67</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">62</span><span class="p">,</span>    <span class="mi">50</span><span class="p">,</span>   <span class="mi">35</span><span class="p">,</span>    <span class="mi">20</span><span class="p">,</span>   <span class="mi">262</span><span class="p">,</span>   <span class="mi">317</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">68</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">63</span><span class="p">,</span>    <span class="mi">50</span><span class="p">,</span>   <span class="mi">40</span><span class="p">,</span>    <span class="mi">50</span><span class="p">,</span>   <span class="mi">171</span><span class="p">,</span>   <span class="mi">218</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">74</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">64</span><span class="p">,</span>    <span class="mi">48</span><span class="p">,</span>   <span class="mi">30</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>   <span class="mi">632</span><span class="p">,</span>   <span class="mi">693</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>  <span class="mi">102</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">65</span><span class="p">,</span>    <span class="mi">48</span><span class="p">,</span>   <span class="mi">40</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>    <span class="mi">76</span><span class="p">,</span>   <span class="mi">129</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">72</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">66</span><span class="p">,</span>    <span class="mi">47</span><span class="p">,</span>   <span class="mi">35</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>   <span class="mi">826</span><span class="p">,</span>   <span class="mi">875</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">69</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">67</span><span class="p">,</span>    <span class="mi">47</span><span class="p">,</span>   <span class="mi">40</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>    <span class="mi">12</span><span class="p">,</span>    <span class="mi">77</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">61</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">68</span><span class="p">,</span>    <span class="mi">45</span><span class="p">,</span>   <span class="mi">30</span><span class="p">,</span>   <span class="o">-</span><span class="mi">20</span><span class="p">,</span>   <span class="mi">734</span><span class="p">,</span>   <span class="mi">777</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">62</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">69</span><span class="p">,</span>    <span class="mi">45</span><span class="p">,</span>   <span class="mi">35</span><span class="p">,</span>   <span class="o">-</span><span class="mi">10</span><span class="p">,</span>   <span class="mi">916</span><span class="p">,</span>   <span class="mi">969</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">66</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">70</span><span class="p">,</span>    <span class="mi">95</span><span class="p">,</span>   <span class="mi">30</span><span class="p">,</span>   <span class="o">-</span><span class="mi">30</span><span class="p">,</span>   <span class="mi">387</span><span class="p">,</span>   <span class="mi">456</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">81</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">71</span><span class="p">,</span>    <span class="mi">95</span><span class="p">,</span>   <span class="mi">35</span><span class="p">,</span>    <span class="mi">20</span><span class="p">,</span>   <span class="mi">293</span><span class="p">,</span>   <span class="mi">360</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">77</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">72</span><span class="p">,</span>    <span class="mi">53</span><span class="p">,</span>   <span class="mi">30</span><span class="p">,</span>   <span class="o">-</span><span class="mi">10</span><span class="p">,</span>   <span class="mi">450</span><span class="p">,</span>   <span class="mi">505</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">65</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">73</span><span class="p">,</span>    <span class="mi">92</span><span class="p">,</span>   <span class="mi">30</span><span class="p">,</span>   <span class="o">-</span><span class="mi">10</span><span class="p">,</span>   <span class="mi">478</span><span class="p">,</span>   <span class="mi">551</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">76</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">74</span><span class="p">,</span>    <span class="mi">53</span><span class="p">,</span>   <span class="mi">35</span><span class="p">,</span>   <span class="o">-</span><span class="mi">50</span><span class="p">,</span>   <span class="mi">353</span><span class="p">,</span>   <span class="mi">412</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">63</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">75</span><span class="p">,</span>    <span class="mi">45</span><span class="p">,</span>   <span class="mi">65</span><span class="p">,</span>   <span class="o">-</span><span class="mi">10</span><span class="p">,</span>   <span class="mi">997</span><span class="p">,</span>  <span class="mi">1068</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">3</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">76</span><span class="p">,</span>    <span class="mi">90</span><span class="p">,</span>   <span class="mi">35</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>   <span class="mi">203</span><span class="p">,</span>   <span class="mi">260</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">73</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">77</span><span class="p">,</span>    <span class="mi">88</span><span class="p">,</span>   <span class="mi">30</span><span class="p">,</span>   <span class="o">-</span><span class="mi">20</span><span class="p">,</span>   <span class="mi">574</span><span class="p">,</span>   <span class="mi">643</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">71</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">78</span><span class="p">,</span>    <span class="mi">88</span><span class="p">,</span>   <span class="mi">35</span><span class="p">,</span>    <span class="mi">20</span><span class="p">,</span>   <span class="mi">109</span><span class="p">,</span>   <span class="mi">170</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>  <span class="mi">104</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">79</span><span class="p">,</span>    <span class="mi">87</span><span class="p">,</span>   <span class="mi">30</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>   <span class="mi">668</span><span class="p">,</span>   <span class="mi">731</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">80</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">80</span><span class="p">,</span>    <span class="mi">85</span><span class="p">,</span>   <span class="mi">25</span><span class="p">,</span>   <span class="o">-</span><span class="mi">10</span><span class="p">,</span>   <span class="mi">769</span><span class="p">,</span>   <span class="mi">820</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">79</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">81</span><span class="p">,</span>    <span class="mi">85</span><span class="p">,</span>   <span class="mi">35</span><span class="p">,</span>    <span class="mi">30</span><span class="p">,</span>    <span class="mi">47</span><span class="p">,</span>   <span class="mi">124</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">70</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">82</span><span class="p">,</span>    <span class="mi">75</span><span class="p">,</span>   <span class="mi">55</span><span class="p">,</span>    <span class="mi">20</span><span class="p">,</span>   <span class="mi">369</span><span class="p">,</span>   <span class="mi">420</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">85</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">83</span><span class="p">,</span>    <span class="mi">72</span><span class="p">,</span>   <span class="mi">55</span><span class="p">,</span>   <span class="o">-</span><span class="mi">20</span><span class="p">,</span>   <span class="mi">265</span><span class="p">,</span>   <span class="mi">338</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">87</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">84</span><span class="p">,</span>    <span class="mi">70</span><span class="p">,</span>   <span class="mi">58</span><span class="p">,</span>    <span class="mi">20</span><span class="p">,</span>   <span class="mi">458</span><span class="p">,</span>   <span class="mi">523</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">89</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">85</span><span class="p">,</span>    <span class="mi">68</span><span class="p">,</span>   <span class="mi">60</span><span class="p">,</span>   <span class="o">-</span><span class="mi">20</span><span class="p">,</span>   <span class="mi">555</span><span class="p">,</span>   <span class="mi">612</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">82</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">86</span><span class="p">,</span>    <span class="mi">66</span><span class="p">,</span>   <span class="mi">55</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>   <span class="mi">173</span><span class="p">,</span>   <span class="mi">238</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">91</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">87</span><span class="p">,</span>    <span class="mi">65</span><span class="p">,</span>   <span class="mi">55</span><span class="p">,</span>    <span class="mi">20</span><span class="p">,</span>    <span class="mi">85</span><span class="p">,</span>   <span class="mi">144</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">83</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">88</span><span class="p">,</span>    <span class="mi">65</span><span class="p">,</span>   <span class="mi">60</span><span class="p">,</span>   <span class="o">-</span><span class="mi">10</span><span class="p">,</span>   <span class="mi">645</span><span class="p">,</span>   <span class="mi">708</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">89</span><span class="p">,</span>    <span class="mi">63</span><span class="p">,</span>   <span class="mi">58</span><span class="p">,</span>   <span class="o">-</span><span class="mi">20</span><span class="p">,</span>   <span class="mi">737</span><span class="p">,</span>   <span class="mi">802</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">84</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">90</span><span class="p">,</span>    <span class="mi">60</span><span class="p">,</span>   <span class="mi">55</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>    <span class="mi">20</span><span class="p">,</span>    <span class="mi">84</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">88</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">91</span><span class="p">,</span>    <span class="mi">60</span><span class="p">,</span>   <span class="mi">60</span><span class="p">,</span>   <span class="o">-</span><span class="mi">10</span><span class="p">,</span>   <span class="mi">836</span><span class="p">,</span>   <span class="mi">889</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">86</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">92</span><span class="p">,</span>    <span class="mi">67</span><span class="p">,</span>   <span class="mi">85</span><span class="p">,</span>    <span class="mi">20</span><span class="p">,</span>   <span class="mi">368</span><span class="p">,</span>   <span class="mi">441</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">93</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">93</span><span class="p">,</span>    <span class="mi">65</span><span class="p">,</span>   <span class="mi">85</span><span class="p">,</span>   <span class="o">-</span><span class="mi">20</span><span class="p">,</span>   <span class="mi">475</span><span class="p">,</span>   <span class="mi">518</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">92</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">94</span><span class="p">,</span>    <span class="mi">65</span><span class="p">,</span>   <span class="mi">82</span><span class="p">,</span>   <span class="o">-</span><span class="mi">10</span><span class="p">,</span>   <span class="mi">285</span><span class="p">,</span>   <span class="mi">336</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">96</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">95</span><span class="p">,</span>    <span class="mi">62</span><span class="p">,</span>   <span class="mi">80</span><span class="p">,</span>   <span class="o">-</span><span class="mi">20</span><span class="p">,</span>   <span class="mi">196</span><span class="p">,</span>   <span class="mi">239</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">98</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">96</span><span class="p">,</span>    <span class="mi">60</span><span class="p">,</span>   <span class="mi">80</span><span class="p">,</span>    <span class="mi">10</span><span class="p">,</span>    <span class="mi">95</span><span class="p">,</span>   <span class="mi">156</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">94</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">97</span><span class="p">,</span>    <span class="mi">60</span><span class="p">,</span>   <span class="mi">85</span><span class="p">,</span>    <span class="mi">30</span><span class="p">,</span>   <span class="mi">561</span><span class="p">,</span>   <span class="mi">622</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>  <span class="mi">106</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">98</span><span class="p">,</span>    <span class="mi">58</span><span class="p">,</span>   <span class="mi">75</span><span class="p">,</span>    <span class="mi">20</span><span class="p">,</span>    <span class="mi">30</span><span class="p">,</span>    <span class="mi">84</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">95</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">99</span><span class="p">,</span>    <span class="mi">55</span><span class="p">,</span>   <span class="mi">80</span><span class="p">,</span>   <span class="o">-</span><span class="mi">20</span><span class="p">,</span>   <span class="mi">743</span><span class="p">,</span>   <span class="mi">820</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>  <span class="mi">100</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">100</span><span class="p">,</span>   <span class="mi">55</span><span class="p">,</span>   <span class="mi">85</span><span class="p">,</span>    <span class="mi">20</span><span class="p">,</span>   <span class="mi">647</span><span class="p">,</span>   <span class="mi">726</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>   <span class="mi">99</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">101</span><span class="p">,</span>   <span class="mi">25</span><span class="p">,</span>   <span class="mi">30</span><span class="p">,</span>   <span class="o">-</span><span class="mi">10</span><span class="p">,</span>   <span class="mi">725</span><span class="p">,</span>   <span class="mi">786</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">51</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">102</span><span class="p">,</span>   <span class="mi">48</span><span class="p">,</span>   <span class="mi">30</span><span class="p">,</span>   <span class="o">-</span><span class="mi">10</span><span class="p">,</span>   <span class="mi">632</span><span class="p">,</span>   <span class="mi">693</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">64</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">103</span><span class="p">,</span>   <span class="mi">28</span><span class="p">,</span>   <span class="mi">55</span><span class="p">,</span>   <span class="o">-</span><span class="mi">10</span><span class="p">,</span>   <span class="mi">732</span><span class="p">,</span>   <span class="mi">777</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">23</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">104</span><span class="p">,</span>   <span class="mi">88</span><span class="p">,</span>   <span class="mi">35</span><span class="p">,</span>   <span class="o">-</span><span class="mi">20</span><span class="p">,</span>   <span class="mi">109</span><span class="p">,</span>   <span class="mi">170</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">78</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">105</span><span class="p">,</span>    <span class="mi">5</span><span class="p">,</span>   <span class="mi">45</span><span class="p">,</span>   <span class="o">-</span><span class="mi">10</span><span class="p">,</span>   <span class="mi">665</span><span class="p">,</span>   <span class="mi">716</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">36</span><span class="p">,</span>    <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span> <span class="mi">106</span><span class="p">,</span>   <span class="mi">60</span><span class="p">,</span>   <span class="mi">85</span><span class="p">,</span>   <span class="o">-</span><span class="mi">30</span><span class="p">,</span>   <span class="mi">561</span><span class="p">,</span>   <span class="mi">622</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">97</span><span class="p">,</span>    <span class="mi">0</span><span class="p">);</span>
+<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">106</span>
+</pre></div>
+</div>
+</section>
+<section id="the-orders">
+<h3><a class="toc-backref" href="#id31" role="doc-backlink">The orders</a><a class="headerlink" href="#the-orders" title="Permalink to this heading">¶</a></h3>
+<p>The original data needs to be converted to an appropiate table:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span> <span class="n">deliveries</span> <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">lc101_c</span> <span class="n">WHERE</span> <span class="n">dindex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">SELECT</span>
+  <span class="n">row_number</span><span class="p">()</span> <span class="n">over</span><span class="p">()</span> <span class="n">AS</span> <span class="nb">id</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">demand</span><span class="p">,</span>
+  <span class="n">p</span><span class="o">.</span><span class="n">id</span> <span class="k">as</span> <span class="n">p_node_id</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">x</span> <span class="n">AS</span> <span class="n">p_x</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">y</span> <span class="n">AS</span> <span class="n">p_y</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">open</span> <span class="n">AS</span> <span class="n">p_open</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">close</span> <span class="k">as</span> <span class="n">p_close</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">service</span> <span class="k">as</span> <span class="n">p_service</span><span class="p">,</span>
+  <span class="n">d</span><span class="o">.</span><span class="n">id</span> <span class="k">as</span> <span class="n">d_node_id</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">x</span> <span class="n">AS</span> <span class="n">d_x</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">y</span> <span class="n">AS</span> <span class="n">d_y</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">open</span> <span class="n">AS</span> <span class="n">d_open</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">close</span> <span class="k">as</span> <span class="n">d_close</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">service</span> <span class="k">as</span> <span class="n">d_service</span>
+<span class="n">INTO</span> <span class="n">c_lc101</span>
+<span class="n">FROM</span> <span class="n">deliveries</span> <span class="k">as</span> <span class="n">d</span> <span class="n">JOIN</span> <span class="n">lc101_c</span> <span class="k">as</span> <span class="n">p</span> <span class="n">ON</span> <span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">pindex</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">id</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="mi">53</span>
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">c_lc101</span> <span class="n">LIMIT</span> <span class="mi">1</span><span class="p">;</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">demand</span> <span class="o">|</span> <span class="n">p_node_id</span> <span class="o">|</span> <span class="n">p_x</span> <span class="o">|</span> <span class="n">p_y</span> <span class="o">|</span> <span class="n">p_open</span> <span class="o">|</span> <span class="n">p_close</span> <span class="o">|</span> <span class="n">p_service</span> <span class="o">|</span> <span class="n">d_node_id</span> <span class="o">|</span> <span class="n">d_x</span> <span class="o">|</span> <span class="n">d_y</span> <span class="o">|</span> <span class="n">d_open</span> <span class="o">|</span> <span class="n">d_close</span> <span class="o">|</span> <span class="n">d_service</span>
+<span class="o">----+--------+-----------+-----+-----+--------+---------+-----------+-----------+-----+-----+--------+---------+-----------</span>
+  <span class="mi">1</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>         <span class="mi">3</span> <span class="o">|</span>  <span class="mi">42</span> <span class="o">|</span>  <span class="mi">66</span> <span class="o">|</span>     <span class="mi">65</span> <span class="o">|</span>     <span class="mi">146</span> <span class="o">|</span>        <span class="mi">90</span> <span class="o">|</span>        <span class="mi">75</span> <span class="o">|</span>  <span class="mi">45</span> <span class="o">|</span>  <span class="mi">65</span> <span class="o">|</span>    <span class="mi">997</span> <span class="o">|</span>    <span class="mi">1068</span> <span class="o">|</span>        <span class="mi">90</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.5.1.<br/>
+      Last updated on Mar 13, 2023.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

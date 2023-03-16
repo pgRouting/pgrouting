@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>withPoints - Familia de funciones &#8212; pgRouting Manual (3.5)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/translations.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="pgr_withPoints - Propuesto" href="pgr_withPoints.html" />
+    <link rel="prev" title="pgr_edgeColoring - Experimental" href="pgr_edgeColoring.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v3.5.1</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Soporte</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Datos Muestra</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Guía de migración</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">withPoints - Familia de funciones</a><ul>
+<li><a class="reference internal" href="#introduction">Introducción</a></li>
+<li><a class="reference internal" href="#parameters">Parámetros</a><ul>
+<li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
+<li><a class="reference internal" href="#with-points-optional-parameters">Parámetros opcionales para Con puntos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
+<li><a class="reference internal" href="#points-sql">SQL de puntos</a></li>
+<li><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#advanced-documentation">Advanced Documentation</a><ul>
+<li><a class="reference internal" href="#about-points">Sobre los puntos</a></li>
+<li><a class="reference internal" href="#driving-side">Lado de manejo</a><ul>
+<li><a class="reference internal" href="#right-driving-side">Lado de manejo derecho</a></li>
+<li><a class="reference internal" href="#left-driving-side">Lado de manejo izquierdo</a></li>
+<li><a class="reference internal" href="#driving-side-does-not-matter">Lado de manejo no importa</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#creating-temporary-vertices">Creación de vértices temporales</a><ul>
+<li><a class="reference internal" href="#on-a-right-hand-side-driving-network">En una red de conducción del lado derecho</a></li>
+<li><a class="reference internal" href="#on-a-left-hand-side-driving-network">En una red de conducción del lado izquierdo</a></li>
+<li><a class="reference internal" href="#when-driving-side-does-not-matter">Cuando el lado de conducción no importa</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_edgeColoring.html" title="Previous Chapter: pgr_edgeColoring - Experimental"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_edgeColor...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_withPoints.html" title="Next Chapter: pgr_withPoints - Propuesto"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_withPoint... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body span12 content" role="main">
+      
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/withPoints-family.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.5/es/withPoints-family.html">3.5</a>) <a class="reference external" href="https://docs.pgrouting.org/3.4/es/withPoints-family.html">3.4</a> <a class="reference external" href="https://docs.pgrouting.org/3.3/es/withPoints-family.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/withPoints-family.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/withPoints-family.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/withPoints-family.html">3.0</a></p></li>
+<li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/withPoints-family.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/withPoints-family.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/withPoints-family.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/withPoints/doc/withPoints.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/withPoints/doc/withPoints.html">2.2</a></p></li>
+</ul>
+<section id="withpoints-family-of-functions">
+<h1>withPoints - Familia de funciones<a class="headerlink" href="#withpoints-family-of-functions" title="Enlace permanente a este encabezado">¶</a></h1>
+<p>Cuando los puntos también se dan como entrada:</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Funciones propuestas para la próxima versión mayor.</p>
+<ul class="simple">
+<li><p>No están oficialmente en la versión actual.</p></li>
+<li><p>Es probable que oficialmente formen parte del próximo lanzamiento:</p>
+<ul>
+<li><p>Las funciones hacen uso de ENTEROS y FLOTANTES</p></li>
+<li><p>Probablemente el nombre no cambie. (Pero todavía puede)</p></li>
+<li><p>Es posible que la firma no cambie. (Pero todavía puede)</p></li>
+<li><p>Probablemente la funcionalidad no cambie. (Pero todavía puede)</p></li>
+<li><p>Se han hecho pruebas con pgTap. Pero tal vez se necesiten más.</p></li>
+<li><p>Es posible que la documentación necesite un refinamiento.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a> - Ruta desde/hacia puntos en cualquier parte del grafo.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_withPointsCost - Propuesto</span></a> - Costos de las tutas más cortas.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsCostMatrix.html"><span class="doc">pgr_withPointsCostMatrix - propuesto</span></a> - Costos de las rutas más cortas.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP - Propuesto</span></a> - rutas más cortas K.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD - Propuesto</span></a> - Distancia de conducción.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia - Proposed</span></a> - Ruteo vía ubicaciones</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<section id="introduction">
+<h2>Introducción<a class="headerlink" href="#introduction" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>This family of functions belongs to the <a class="reference internal" href="withPoints-category.html"><span class="doc">withPoints- Categoría</span></a> and the
+functions that compose them are based one way or another on dijkstra algorithm.</p>
+<p>Depending on the name:</p>
+<ul class="simple">
+<li><p>pgr_withPoints es pgr_dijkstra <strong>con puntos</strong></p></li>
+<li><p>pgr_withPointsCost es pgr_dijkstraCost <strong>con puntos</strong></p></li>
+<li><p>pgr_withPointsCostMatrix es pgr_dijkstraCostMatrix <strong>con puntos</strong></p></li>
+<li><p>pgr_withPointsKSP es pgr_ksp <strong>con puntos</strong></p></li>
+<li><p>pgr_withPointsDD es pgr_drivingDistance <strong>con puntos</strong></p></li>
+<li><p>pgr_withPoints es pgr_dijkstraVia <strong>con puntos</strong></p></li>
+</ul>
+</section>
+<section id="parameters">
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlace permanente a este encabezado">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 19.4%" />
+<col style="width: 19.4%" />
+<col style="width: 61.1%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a> como se describe a continuación</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">SQL de puntos</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#points-sql">SQL de puntos</a> como se describe abajo</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#combinations-sql">SQL de combinaciones</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#combinations-sql">SQL de combinaciones</a> como se describe a abajo</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>salida</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del vértice inicial de la ruta. Valor negativo es para identificador de punto.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>salidas</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td><p>Arreglo de identificadores de vértices iniciales. Valores negativos son para identificadores de puntos.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>destino</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del vértice final de la ruta. Valor negativo es para identificador de punto.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>destinos</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td><p>Arreglo de identificadores de vértices finales. Valores negativos son para identificadores de puntos.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="optional-parameters">
+<h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><ul class="simple">
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> el gráfo se considera <cite>Dirigido</cite></p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> el gráfo se considera <cite>No Dirigido</cite>.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="with-points-optional-parameters">
+<h3>Parámetros opcionales para Con puntos<a class="headerlink" href="#with-points-optional-parameters" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 15.9%" />
+<col style="width: 8.0%" />
+<col style="width: 8.0%" />
+<col style="width: 68.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
+<td><p>Valor en [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>] indica si el lado de manejo es:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> para manejo del lado derecho.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> para lado de manejo izquierdo.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> for ambos.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">details</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><ul class="simple">
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> los resultados incluyen los puntos que están en el camino.</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> los resultados no incluyen los puntos que están en el camino.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="inner-queries">
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Enlace permanente a este encabezado">¶</a></h2>
+<section id="edges-sql">
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td></td>
+<td><p>Identificador de la arista.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td></td>
+<td><p>Identificador del primer vértice de la arista.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td></td>
+<td><p>Identificador del segundo vértice de la arista.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
+<td></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
+<td><p>-1</p></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
+<ul class="simple">
+<li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Donde:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+</section>
+<section id="points-sql">
+<h3>SQL de puntos<a class="headerlink" href="#points-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 15.6%" />
+<col style="width: 18.2%" />
+<col style="width: 9.1%" />
+<col style="width: 57.1%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pid</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td><p><strong>valor</strong></p></td>
+<td><p>Identificador del punto.</p>
+<ul class="simple">
+<li><p>Use con un valor positivo, dado que internamente se convertirá a un valor negativo</p></li>
+<li><p>Si columna esta presente, no puede ser NULL.</p></li>
+<li><p>Si columna no esta presente, un <strong>valor</strong> secuencial negativo se otorgará automáticamente.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td></td>
+<td><p>Identificador de la arista «más cercana» al punto.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
+<td></td>
+<td><p>El valor en &lt;0,1&gt; que indica la posición relativa desde el primer punto de la arista.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">side</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
+<td><p>Valor en [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>] que indica si el punto es:</p>
+<ul class="simple">
+<li><p>A la derecha <code class="docutils literal notranslate"><span class="pre">r</span></code>,</p></li>
+<li><p>A la izquierda <cite>l</cite>,</p></li>
+<li><p>En ambos lados <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Donde:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+</section>
+<section id="combinations-sql">
+<h3>SQL Combinaciones<a class="headerlink" href="#combinations-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 14.0%" />
+<col style="width: 16.3%" />
+<col style="width: 69.8%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td><p>Identificador del vértice de salida.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td><p>Identificador del vértice de llegada.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Donde:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="advanced-documentation">
+<h2>Advanced Documentation<a class="headerlink" href="#advanced-documentation" title="Enlace permanente a este encabezado">¶</a></h2>
+<nav class="contents local" id="contents">
+<p class="topic-title">Contenido</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#about-points" id="id1">Sobre los puntos</a></p></li>
+<li><p><a class="reference internal" href="#driving-side" id="id2">Lado de manejo</a></p>
+<ul>
+<li><p><a class="reference internal" href="#right-driving-side" id="id3">Lado de manejo derecho</a></p></li>
+<li><p><a class="reference internal" href="#left-driving-side" id="id4">Lado de manejo izquierdo</a></p></li>
+<li><p><a class="reference internal" href="#driving-side-does-not-matter" id="id5">Lado de manejo no importa</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#creating-temporary-vertices" id="id6">Creación de vértices temporales</a></p>
+<ul>
+<li><p><a class="reference internal" href="#on-a-right-hand-side-driving-network" id="id7">En una red de conducción del lado derecho</a></p></li>
+<li><p><a class="reference internal" href="#on-a-left-hand-side-driving-network" id="id8">En una red de conducción del lado izquierdo</a></p></li>
+<li><p><a class="reference internal" href="#when-driving-side-does-not-matter" id="id9">Cuando el lado de conducción no importa</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="about-points">
+<h3><a class="toc-backref" href="#id1" role="doc-backlink">Sobre los puntos</a><a class="headerlink" href="#about-points" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Para esta sección de la siguiente ciudad (ver <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a>) algunos puntos de interés como restaurantes, supermercado, oficina de correo, etc. seran usadas de ejemplo.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 475.5px; height: 433.0px;" /></a>
+</figure>
+<ul class="simple">
+<li><p>El grafo es <strong>dirigido</strong></p></li>
+<li><p>Las flechas rojas muestran``(source, target)`` de la arista en al tabla de aristas</p></li>
+<li><p>La flechas azules muestran <code class="docutils literal notranslate"><span class="pre">(target,</span> <span class="pre">source)</span></code> la arista en la tabla de aristas</p></li>
+<li><p>Cada ubicación de los puntos muestra su ubicación en relación con la arista <code class="docutils literal notranslate"><span class="pre">(source,</span> <span class="pre">target)</span></code></p>
+<ul>
+<li><p>A la derecha para los puntos <strong>2</strong> y <strong>4</strong>.</p></li>
+<li><p>A la izquierda para los puntos <strong>1</strong>, <strong>3</strong> y**5**.</p></li>
+<li><p>En ambos lados para el punto <strong>6</strong>.</p></li>
+</ul>
+</li>
+</ul>
+<p>La representación de la base de datos sigue la descripción <a class="reference internal" href="#points-sql">SQL de puntos</a> , y para este ejemplo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pid</span><span class="p">,</span> <span class="n">edge_id</span><span class="p">,</span> <span class="n">fraction</span><span class="p">,</span> <span class="n">side</span> <span class="n">FROM</span> <span class="n">pointsOfInterest</span><span class="p">;</span>
+ <span class="n">pid</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span>      <span class="n">fraction</span>      <span class="o">|</span> <span class="n">side</span>
+<span class="o">-----+---------+--------------------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>                <span class="mf">0.4</span> <span class="o">|</span> <span class="n">l</span>
+   <span class="mi">4</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>                <span class="mf">0.3</span> <span class="o">|</span> <span class="n">r</span>
+   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span> <span class="mf">0.6000000000000001</span> <span class="o">|</span> <span class="n">l</span>
+   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">15</span> <span class="o">|</span> <span class="mf">0.3999999999999999</span> <span class="o">|</span> <span class="n">r</span>
+   <span class="mi">5</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>                <span class="mf">0.8</span> <span class="o">|</span> <span class="n">l</span>
+   <span class="mi">6</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>                <span class="mf">0.7</span> <span class="o">|</span> <span class="n">b</span>
+<span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="driving-side">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Lado de manejo</a><a class="headerlink" href="#driving-side" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>En las siguientes imágenes:</p>
+<ul class="simple">
+<li><p>Los vértices cuadrados son vértices temporales,</p></li>
+<li><p>Los vértices temporales se agregan según el lado de conducción,</p></li>
+<li><p>visualmente mostrando las diferencias dependiendo de como se interpreta la información de lado de conducción.</p></li>
+</ul>
+<section id="right-driving-side">
+<h4><a class="toc-backref" href="#id3" role="doc-backlink">Lado de manejo derecho</a><a class="headerlink" href="#right-driving-side" title="Enlace permanente a este encabezado">¶</a></h4>
+<a class="reference internal image-reference" href="_images/rightDrivingSide.png"><img alt="_images/rightDrivingSide.png" src="_images/rightDrivingSide.png" style="width: 501.5px; height: 433.5px;" /></a>
+<ul class="simple">
+<li><p>Punto**1** ubicado en la arista <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">5)</span></code></p></li>
+<li><p>Punto <strong>2</strong> ubicado en la arista``(16, 17)``</p></li>
+<li><p>Punto <strong>3</strong> ubicado en la arista``(8, 12)``</p></li>
+<li><p>Punto <strong>4</strong> ubicado en la arista``(1, 3)``</p></li>
+<li><p>Punto <strong>5</strong> ubicado en la arista``(10, 11)``</p></li>
+<li><p>Punto <strong>6</strong> ubicado en las aristas <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">7)</span></code> y <code class="docutils literal notranslate"><span class="pre">(7,</span> <span class="pre">6)</span></code></p></li>
+</ul>
+</section>
+<section id="left-driving-side">
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">Lado de manejo izquierdo</a><a class="headerlink" href="#left-driving-side" title="Enlace permanente a este encabezado">¶</a></h4>
+<a class="reference internal image-reference" href="_images/leftDrivingSide.png"><img alt="_images/leftDrivingSide.png" src="_images/leftDrivingSide.png" style="width: 510.0px; height: 436.5px;" /></a>
+<ul class="simple">
+<li><p>Punto**1** ubicado en la arista <code class="docutils literal notranslate"><span class="pre">(5,</span> <span class="pre">6)</span></code></p></li>
+<li><p>Punto <strong>2</strong> ubicado en la arista``(17, 16)``</p></li>
+<li><p>Punto <strong>3</strong> ubicado en la arista``(8, 12)``</p></li>
+<li><p>Punto <strong>4</strong> ubicado en la arista``(3, 1)``</p></li>
+<li><p>Punto <strong>5</strong> ubicado en la arista``(10, 11)``</p></li>
+<li><p>Punto <strong>6</strong> ubicado en las aristas <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">7)</span></code> y <code class="docutils literal notranslate"><span class="pre">(7,</span> <span class="pre">6)</span></code></p></li>
+</ul>
+</section>
+<section id="driving-side-does-not-matter">
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">Lado de manejo no importa</a><a class="headerlink" href="#driving-side-does-not-matter" title="Enlace permanente a este encabezado">¶</a></h4>
+<ul class="simple">
+<li><p>Como si se tuvieran todos los puntos en ambos lados considerados como <code class="docutils literal notranslate"><span class="pre">b</span></code></p></li>
+<li><p>Uso preferido en grafos <strong>no dirigidos</strong></p></li>
+<li><p>En <a class="reference internal" href="TRSP-family.html"><span class="doc">TRSP - Familia de funciones</span></a> esta opción no es válida</p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/noMatterDrivingSide.png"><img alt="_images/noMatterDrivingSide.png" src="_images/noMatterDrivingSide.png" style="width: 470.0px; height: 432.5px;" /></a>
+<ul class="simple">
+<li><p>Punto**1** ubicado en la arista``(5, 6)`` y <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">5)</span></code></p></li>
+<li><p>Punto <strong>2</strong> ubicado en la arista``(17, 16)`` y <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code></p></li>
+<li><p>Punto <strong>3</strong> ubicado en la arista``(8, 12)``</p></li>
+<li><p>Point <strong>4</strong> located on edge <code class="docutils literal notranslate"><span class="pre">(3,</span> <span class="pre">1)</span></code> and <code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">3)</span></code></p></li>
+<li><p>Punto <strong>5</strong> ubicado en la arista``(10, 11)``</p></li>
+<li><p>Punto <strong>6</strong> ubicado en las aristas <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">7)</span></code> y <code class="docutils literal notranslate"><span class="pre">(7,</span> <span class="pre">6)</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="creating-temporary-vertices">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Creación de vértices temporales</a><a class="headerlink" href="#creating-temporary-vertices" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>This section will demonstrate how a temporary vertex is created internally on
+the graph.</p>
+<p class="rubric">Problem</p>
+<p>For edge:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">reverse_cost</span>
+<span class="o">----+--------+--------+------+--------------</span>
+ <span class="mi">15</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>     <span class="mi">17</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>insert point:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pid</span><span class="p">,</span> <span class="n">edge_id</span><span class="p">,</span> <span class="n">fraction</span><span class="p">,</span> <span class="n">side</span>
+<span class="n">FROM</span> <span class="n">pointsOfInterest</span> <span class="n">WHERE</span> <span class="n">pid</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+ <span class="n">pid</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span>      <span class="n">fraction</span>      <span class="o">|</span> <span class="n">side</span>
+<span class="o">-----+---------+--------------------+------</span>
+   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">15</span> <span class="o">|</span> <span class="mf">0.3999999999999999</span> <span class="o">|</span> <span class="n">r</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<section id="on-a-right-hand-side-driving-network">
+<h4><a class="toc-backref" href="#id7" role="doc-backlink">En una red de conducción del lado derecho</a><a class="headerlink" href="#on-a-right-hand-side-driving-network" title="Enlace permanente a este encabezado">¶</a></h4>
+<p class="rubric">Lado de manejo derecho</p>
+<a class="reference internal image-reference" href="_images/rightDrivingSide.png"><img alt="_images/rightDrivingSide.png" src="_images/rightDrivingSide.png" style="width: 501.5px; height: 433.5px;" /></a>
+<ul class="simple">
+<li><p>Llegada al punto <code class="docutils literal notranslate"><span class="pre">-2</span></code> se logra solo vía el vértice <strong>16</strong>.</p></li>
+<li><p>Does not affects edge <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)</span></code>, therefore the edge is kept.</p></li>
+<li><p>Sólo afecta a la arista <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code>, por lo que la arista se elimina.</p></li>
+<li><p>Crear dos aristas nuevas:</p>
+<ul>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">-2)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.4</span></code> (original cost * fraction == <span class="math notranslate nohighlight">\(1 *
+0.4\)</span>)</p></li>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.6</span></code> (the remaing cost)</p></li>
+</ul>
+</li>
+<li><p>The total cost of the additional edges is equal to the original cost.</p></li>
+<li><p>If more points are on the same edge, the process is repeated recursevly.</p></li>
+</ul>
+</section>
+<section id="on-a-left-hand-side-driving-network">
+<h4><a class="toc-backref" href="#id8" role="doc-backlink">En una red de conducción del lado izquierdo</a><a class="headerlink" href="#on-a-left-hand-side-driving-network" title="Enlace permanente a este encabezado">¶</a></h4>
+<p class="rubric">Lado de manejo izquierdo</p>
+<a class="reference internal image-reference" href="_images/leftDrivingSide.png"><img alt="_images/leftDrivingSide.png" src="_images/leftDrivingSide.png" style="width: 510.0px; height: 436.5px;" /></a>
+<ul class="simple">
+<li><p>Llegada al punto <code class="docutils literal notranslate"><span class="pre">-2</span></code> se logra solo vía el vértice <strong>17</strong>.</p></li>
+<li><p>Does not affects edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code>, therefore the edge is kept.</p></li>
+<li><p>Sólo afecta a la arista <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)</span></code>, por lo que la arista se elimina.</p></li>
+<li><p>Crear dos aristas nuevas:</p>
+<ul>
+<li><p>Work with the original edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code> as the fraction is a fraction of the
+original:</p>
+<ul>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">-2)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.4</span></code> (original cost * fraction == <span class="math notranslate nohighlight">\(1 *
+0.4\)</span>)</p></li>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.6</span></code> (the remaing cost)</p></li>
+<li><p>If more points are on the same edge, the process is repeated recursevly.</p></li>
+</ul>
+</li>
+<li><p>Flip the Edges and add them to the graph:</p>
+<ul>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">-2)</span></code> becomes <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">16)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.4</span></code> and is added to the
+graph.</p></li>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">16)</span></code> becomes <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">-2)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.6</span></code> and is added to
+the graph.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>The total cost of the additional edges is equal to the original cost.</p></li>
+</ul>
+</section>
+<section id="when-driving-side-does-not-matter">
+<h4><a class="toc-backref" href="#id9" role="doc-backlink">Cuando el lado de conducción no importa</a><a class="headerlink" href="#when-driving-side-does-not-matter" title="Enlace permanente a este encabezado">¶</a></h4>
+<a class="reference internal image-reference" href="_images/noMatterDrivingSide.png"><img alt="_images/noMatterDrivingSide.png" src="_images/noMatterDrivingSide.png" style="width: 470.0px; height: 432.5px;" /></a>
+<ul class="simple">
+<li><p>Arrival to point <code class="docutils literal notranslate"><span class="pre">-2</span></code> can be achived via vertices <strong>16</strong> or <strong>17</strong>.</p></li>
+<li><p>Afecta las aristas <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code> y <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)</span></code> por lo que esas aristas se eliminan.</p></li>
+<li><p>Crear cuatro nuevas aristas:</p>
+<ul>
+<li><p>Work with the original edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code> as the fraction is a fraction of the
+original:</p>
+<ul>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">-2)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.4</span></code> (original cost * fraction == <span class="math notranslate nohighlight">\(1 *
+0.4\)</span>)</p></li>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.6</span></code> (the remaing cost)</p></li>
+<li><p>If more points are on the same edge, the process is repeated recursevly.</p></li>
+</ul>
+</li>
+<li><p>Flip the Edges and add all the edges to the graph:</p>
+<ul>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">-2)</span></code> is added to the graph.</p></li>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> is added to the graph.</p></li>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">-2)</span></code> becomes <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">16)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.4</span></code> and is added to the
+graph.</p></li>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> becomes <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">-2)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.6</span></code> and is added to
+the graph.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="see-also">
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="withPoints-category.html"><span class="doc">withPoints- Categoría</span></a></p></li>
+</ul>
+<p class="rubric">Índices y tablas</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.5.1.<br/>
+      Actualizado por última vez en mar 13, 2023.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
