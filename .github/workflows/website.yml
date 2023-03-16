@@ -21,7 +21,7 @@ jobs:
       contents: write  # for Git to git push
     name: Update Website
     runs-on: ubuntu-latest
-    if: ${{ github.repository_owner == 'cvvergara' }}
+    if: ${{ github.repository_owner == 'pgRouting' }}
 
     strategy:
         fail-fast: false
