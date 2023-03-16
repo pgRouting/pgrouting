@@ -172,11 +172,30 @@ if (DOC_USE_BOOTSTRAP)
     'source_link_position': \"nav\",
     'bootstrap_version': \"2\",
     ")
+# Modify
+#   https://github.com/ryan-roemer/sphinx-bootstrap-theme/blob/master/sphinx_bootstrap_theme/bootstrap/layout.html#L67
+#   adding the call to get the history of the file
+    set(THEME_HISTORY "
+{%- block content %}
+{{ navBar() }}
+<div class=\"container\">
+    <div class=\"row\">
+        {%- block sidebar1 %}{{ bsidebar() }}{% endblock %}
+        <div class=\"body {{ bs_span_prefix }}{{ bs_content_width }} content\" role=\"main\">
+            <script> document.write(get_history('{{ pagename }}','{{ language }}'));  </script>
+            {% block body %}{% endblock %}
+        </div>
+        {% block sidebar2 %} {# possible location for sidebar #} {% endblock %}
+    </div>
+</div>
+{%- endblock %}
+    ")
 else()
     set(SPHINX_INCLUDE "")
     set(SPHINX_THEME "haiku")
     set(SPHINX_THEME_DIR "['']")
     set(SPHINX_THEME_OPTIONS "")
+    set(THEME_HISTORY "")
 endif()
 
 
@@ -210,6 +229,8 @@ configure_file("../tools/testers/sampledata.sql" "${PGR_DOCUMENTATION_SOURCE_DIR
 #add_subdirectory("themes")
 file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/_static" DESTINATION "${PGR_DOCUMENTATION_SOURCE_DIR}")
 file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/_themes" DESTINATION "${PGR_DOCUMENTATION_SOURCE_DIR}")
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/_templates/layout.html"
+    "${PGR_DOCUMENTATION_SOURCE_DIR}/_templates/layout.html" @ONLY)
 
 
 configure_file(
