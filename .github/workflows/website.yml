@@ -3,6 +3,11 @@ name: Website
 on:
   workflow_dispatch:
   push:
+    paths:
+      - '.github/workflows/website.yml'
+      - 'doc/**'
+      - 'locale/**'
+      - 'CMakeLists.txt'
     branches:
       - main
       - develop
@@ -87,15 +92,35 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
 
-      - name: Update Users Documentation
+      - name: Update Users Documentation on develop
+        if: ${{ github.ref == 'refs/heads/develop' }}
         run: |
+
           git checkout origin/gh-pages
           git checkout -b gh-pages
-          PROJECT_MAJOR_MINOR="${PROJECT_VERSION%.*}"
-          rm -rf ${PROJECT_MAJOR_MINOR}
-          cp -r build/doc/html ${PROJECT_MAJOR_MINOR}
-          git add ${PROJECT_MAJOR_MINOR}
-          git diff-index --quiet HEAD || git commit -m "Update users documentation for ${PROJECT_VERSION}: commit ${{ env.GIT_HASH }}"
+          DIRECTORY="${PROJECT_VERSION%.*}"
+          rm -rf ${DIRECTORY}
+          cp -r build/doc/html ${DIRECTORY}
+          git add ${DIRECTORY}
+          git diff-index --quiet HEAD || git commit -m "Update users documentation for ${PROJECT_VERSION} for develop branch: commit ${{ env.GIT_HASH }}"
+          git fetch origin
+          git rebase origin/gh-pages
+          git push origin gh-pages
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update Users Documentation on main
+        if: ${{ github.ref == 'refs/heads/main' }}
+        run: |
+
+          git checkout origin/gh-pages
+          git checkout -b gh-pages
+          DIRECTORY="main"
+          rm -rf ${DIRECTORY}
+          cp -r build/doc/html ${DIRECTORY}
+          git add ${DIRECTORY}
+          git diff-index --quiet HEAD || git commit -m "Update users documentation for ${PROJECT_VERSION} for main branch: commit ${{ env.GIT_HASH }}"
           git fetch origin
           git rebase origin/gh-pages
           git push origin gh-pages
