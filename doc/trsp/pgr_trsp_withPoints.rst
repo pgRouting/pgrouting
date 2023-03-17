@@ -9,10 +9,6 @@
 
 |
 
-* **Supported versions:**
-  `Latest <https://docs.pgrouting.org/latest/en/pgr_trsp_withPoints.html>`__
-  (`3.5 <https://docs.pgrouting.org/3.5/en/pgr_trsp_withPoints.html>`__)
-  `3.4 <https://docs.pgrouting.org/3.4/en/pgr_trsp_withPoints.html>`__
 
 pgr_trsp_withPoints - Proposed
 ===============================================================================

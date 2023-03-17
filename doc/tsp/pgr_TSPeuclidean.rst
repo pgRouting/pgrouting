@@ -9,18 +9,6 @@
 
 |
 
-* **Supported versions:**
-  `Latest <https://docs.pgrouting.org/latest/en/pgr_TSPeuclidean.html>`__
-  (`3.5 <https://docs.pgrouting.org/3.5/en/pgr_TSPeuclidean.html>`__)
-  `3.4 <https://docs.pgrouting.org/3.4/en/pgr_TSPeuclidean.html>`__
-  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_TSPeuclidean.html>`__
-  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_TSPeuclidean.html>`__
-  `3.1 <https://docs.pgrouting.org/3.1/en/pgr_TSPeuclidean.html>`__
-  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_TSPeuclidean.html>`__
-* **Unsupported versions:**
-  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_eucledianTSP.html>`__
-  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_eucledianTSP.html>`__
-  `2.3 <https://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_eucledianTSP>`__
 
 ``pgr_TSPeuclidean``
 =============================================================================
