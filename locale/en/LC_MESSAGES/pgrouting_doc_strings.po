@@ -17682,9 +17682,3 @@ msgstr ""
 msgid "Advanced Documentation"
 msgstr ""
 
-#~ msgid ""
-#~ "To upgrade pgRouting in the database "
-#~ "to version 3.5.1 use the following "
-#~ "command:"
-#~ msgstr ""
-
