@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
+<script src="_static/page_history.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
@@ -183,13 +184,12 @@
 <div class="container">
   <div class="row">
     <div class="body col-md-12 content" role="main">
+ <div class="line"><br/></div> <script> document.write(get_history("release_notes","es")); </script>
       
   <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/en/release_notes.html">Actual</a> (<a class="reference external" href="https://docs.pgrouting.org/3.2/en/release_notes.html">3.2</a>) <a class="reference external" href="https://docs.pgrouting.org/3.1/en/release_notes.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/en/release_notes.html">3.0</a></p></li>
-<li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/release_notes.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/release_notes.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/release_notes.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/doc/src/changelog/release_notes.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/doc/src/changelog/index.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/doc/src/changelog/index.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/doc/src/changelog/index.html">2.0</a></p></li>
 </ul>
 <section id="release-notes">
 <h1>Notas de versión<a class="headerlink" href="#release-notes" title="Enlazar permanentemente con este título">¶</a></h1>
@@ -638,7 +638,6 @@
 </li>
 <li><p>VRP</p>
 <ul>
-<li><p>pgr_gsoc_vrppdtw</p></li>
 </ul>
 </li>
 </ul>
@@ -699,7 +698,6 @@
 <li><p>pgr_contractGraph (experimental)</p></li>
 <li><p>pgr_pushRelabel (experimental)</p></li>
 <li><p>pgr_vrpOneDepot (experimental)</p></li>
-<li><p>pgr_gsoc_vrppdtw (experimental)</p></li>
 <li><p>Correcciones para funciones en desuso en las que también se aplican pero no se prueban</p></li>
 </ul>
 </li>
@@ -784,7 +782,6 @@
 <li><p>pgr_contractGraph (experimental)</p></li>
 <li><p>pgr_pushRelabel (experimental)</p></li>
 <li><p>pgr_vrpOneDepot (experimental)</p></li>
-<li><p>pgr_gsoc_vrppdtw (experimental)</p></li>
 <li><p>Correcciones para funciones en desuso en las que también se aplican pero no se prueban</p></li>
 </ul>
 </li>
@@ -943,7 +940,6 @@
 <p>Para ver los problemas cerrados por esta versión, consulte los <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.2%22+is%3Aclosed">Git closed issues for 2.3.2</a> en Github.</p>
 <p class="rubric">Corrección de errores</p>
 <ul class="simple">
-<li><p>Se ha corregido el bloqueo pgr_gsoc_vrppdtw cuando todos los pedidos caben en un camión.</p></li>
 <li><p>Corregido pgr_trsp:</p>
 <ul>
 <li><p>El código alternativo no se ejecuta cuando el punto es en realidad un vértice</p></li>
