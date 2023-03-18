@@ -8,16 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-13 13:51+0000\n"
+"POT-Creation-Date: 2023-03-17 11:06-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/BFS-category.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/BFS-category.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/BFS-category.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/BFS-category.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/BFS-category.html>`__"
-msgstr ""
 
 msgid "BFS - Category"
 msgstr ""
@@ -271,9 +268,6 @@ msgstr ""
 msgid ":ref:`search`"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/DFS-category.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/DFS-category.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/DFS-category.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/DFS-category.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/DFS-category.html>`__"
-msgstr ""
-
 msgid "DFS - Category"
 msgstr ""
 
@@ -322,12 +316,6 @@ msgstr ""
 msgid "In general:"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/KSP-category.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/KSP-category.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/KSP-category.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/KSP-category.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/KSP-category.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/KSP-category.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/KSP-category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/KSP-category.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/KSP-category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/KSP-category.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/KSP-category.html>`__"
-msgstr ""
-
 msgid "K shortest paths - Category"
 msgstr ""
 
@@ -335,9 +323,6 @@ msgid ":doc:`pgr_KSP` - Yen's algorithm based on pgr_dijkstra"
 msgstr ""
 
 msgid ":doc:`pgr_withPointsKSP` - Yen's algorithm based on pgr_withPoints"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/TRSP-family.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/TRSP-family.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/TRSP-family.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/TRSP-family.html>`__"
 msgstr ""
 
 msgid "TRSP - Family of functions"
@@ -484,12 +469,6 @@ msgstr ""
 msgid "Cost of taking the forbidden path."
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/TSP-family.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/TSP-family.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/TSP-family.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/TSP-family.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/TSP-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/TSP-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/TSP-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/TSP-family.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/TSP-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/TSP-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/TSP-family.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/tsp/doc/tsp.html>`__"
-msgstr ""
-
 msgid "Traveling Sales Person - Family of functions"
 msgstr ""
 
@@ -623,9 +602,6 @@ msgid "`University of Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__"
 msgstr ""
 
 msgid "`Wikipedia: Traveling Salesman Problem <https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/VRP-category.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/VRP-category.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/VRP-category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/VRP-category.html>`__"
 msgstr ""
 
 msgid "Vehicle Routing Functions - Category (Experimental)"
@@ -1516,12 +1492,6 @@ msgstr ""
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/aStar-family.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/aStar-family.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/aStar-family.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/aStar-family.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/aStar-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/aStar-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/aStar-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/aStar-family.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/aStar-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/aStar-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/aStar-family.html>`__"
-msgstr ""
-
 msgid "A* - Family of functions"
 msgstr ""
 
@@ -1673,12 +1643,6 @@ msgid "https://www.boost.org/libs/graph/doc/astar_search.html"
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/A*_search_algorithm"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/allpairs-family.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/allpairs-family.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/allpairs-family.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/allpairs-family.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/allpairs-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/allpairs-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/allpairs-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/allpairs-family.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/allpairs-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/allpairs-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/allpairs-family.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/allpairs/doc/allpairs.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/allpairs/doc/allpairs.html>`__"
 msgstr ""
 
 msgid "All Pairs - Family of Functions"
@@ -2431,12 +2395,6 @@ msgstr ""
 msgid "Boost `floyd-Warshall <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`__"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/bdAstar-family.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/bdAstar-family.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/bdAstar-family.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/bdAstar-family.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/bdAstar-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/bdAstar-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/bdAstar-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/bdAstar-family.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/bdAstar-family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/bdAstar-family.html>`__"
-msgstr ""
-
 msgid "Bidirectional A* - Family of functions"
 msgstr ""
 
@@ -2465,12 +2423,6 @@ msgid ":doc:`aStar-family`"
 msgstr ""
 
 msgid "Previous versions of this page"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/bdDijkstra-family.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/bdDijkstra-family.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/bdDijkstra-family.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/bdDijkstra-family.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/bdDijkstra-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/bdDijkstra-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/bdDijkstra-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/bdDijkstra-family.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/bdDijkstra-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/bdDijkstra-family.html>`__"
 msgstr ""
 
 msgid "Bidirectional Dijkstra - Family of functions"
@@ -2524,9 +2476,6 @@ msgstr ""
 msgid "It is expected to terminate faster than pgr_dijkstra"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/chinesePostmanProblem-family.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/chinesePostmanProblem-family.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/chinesePostmanProblem-family.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/chinesePostmanProblem-family.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/chinesePostmanProblem-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/chinesePostmanProblem-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/chinesePostmanProblem-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/chinesePostmanProblem-family.html>`__"
-msgstr ""
-
 msgid "Chinese Postman Problem - Family of functions (Experimental)"
 msgstr ""
 
@@ -2549,9 +2498,6 @@ msgid "Graph must be connected."
 msgstr ""
 
 msgid "An Edges SQL that represents a **directed** graph with the following columns"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/coloring-family.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/coloring-family.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/coloring-family.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/coloring-family.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/coloring-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/coloring-family.html>`__"
 msgstr ""
 
 msgid "Coloring - Family of functions"
@@ -2611,12 +2557,6 @@ msgstr ""
 msgid "`Wikipedia: Graph Coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/components-family.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/components-family.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/components-family.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/components-family.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/components-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/components-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/components-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/components-family.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/components-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/components-family.html>`__"
-msgstr ""
-
 msgid "Components - Family of functions"
 msgstr ""
 
@@ -2636,12 +2576,6 @@ msgid ":doc:`pgr_bridges` - Bridges of an undirected graph."
 msgstr ""
 
 msgid ":doc:`pgr_makeConnected` - Details of edges to make graph connected."
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/contraction-family.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/contraction-family.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/contraction-family.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/contraction-family.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/contraction-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/contraction-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/contraction-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/contraction-family.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/contraction-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/contraction-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/contraction-family.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/contraction/doc/contraction.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/contraction/doc/contraction.html>`__"
 msgstr ""
 
 msgid "Contraction - Family of functions"
@@ -3094,12 +3028,6 @@ msgstr ""
 msgid "https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/cost-category.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/cost-category.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/cost-category.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/cost-category.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/cost-category.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/cost-category.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/cost-category.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/cost-category.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/cost-category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/cost-category.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/cost-category.html>`__"
-msgstr ""
-
 msgid "Cost - Category"
 msgstr ""
 
@@ -3146,12 +3074,6 @@ msgid "``start_vid`` ascending"
 msgstr ""
 
 msgid "``end_vid`` ascending"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/costMatrix-category.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/costMatrix-category.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/costMatrix-category.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/costMatrix-category.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/costMatrix-category.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/costMatrix-category.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/costMatrix-category.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/costMatrix-category.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/costMatrix-category.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/costMatrix-category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/costMatrix-category.html>`__"
 msgstr ""
 
 msgid "Cost Matrix - Category"
@@ -3305,12 +3227,6 @@ msgid "In both sides ``b``, ``NULL``"
 msgstr ""
 
 msgid ":doc:`TSP-family`"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/dijkstra-family.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/dijkstra-family.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/dijkstra-family.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/dijkstra-family.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/dijkstra-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/dijkstra-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/dijkstra-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/dijkstra-family.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/dijkstra-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/dijkstra-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/dijkstra-family.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/dijkstra.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/dijkstra.html>`__"
 msgstr ""
 
 msgid "Dijkstra - Family of functions"
@@ -3502,12 +3418,6 @@ msgstr ""
 msgid "If there is no path, the resulting set is empty."
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/drivingDistance-category.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/drivingDistance-category.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/drivingDistance-category.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/drivingDistance-category.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/drivingDistance-category.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/drivingDistance-category.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/drivingDistance-category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/drivingDistance-category.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/drivingDistance-category.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/drivingDistance-category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/drivingDistance-category.html>`__"
-msgstr ""
-
 msgid "Driving Distance - Category"
 msgstr ""
 
@@ -3566,12 +3476,6 @@ msgid "**distance**"
 msgstr ""
 
 msgid "Upper limit for the inclusion of a node in the result."
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/experimental.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/experimental.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/experimental.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/experimental.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/experimental.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/experimental.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/experimental.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/experimental.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/proposed.html#experimental-functions>`__ `2.5 <https://docs.pgrouting.org/2.5/en/proposed.html#experimental-functions>`__ `2.4 <https://docs.pgrouting.org/2.4/en/proposed.html#experimental-and-proposed-functions>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/proposed.html#experimental-and-proposed-functions>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/proposed.html#experimental-and-proposed-functions>`__"
 msgstr ""
 
 msgid "Experimental Functions"
@@ -3659,12 +3563,6 @@ msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
 msgstr ""
 
 msgid ":doc:`pgr_hawickCircuits`"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/flow-family.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/flow-family.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/flow-family.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/flow-family.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/flow-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/flow-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/flow-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/flow-family.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/flow-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/flow-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/flow-family.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/max_flow/doc/maxFlow.html>`__"
 msgstr ""
 
 msgid "Flow - Family of functions"
@@ -3895,12 +3793,6 @@ msgstr ""
 msgid "https://en.wikipedia.org/wiki/Maximum_flow_problem"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/index.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/index.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/index.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/index.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/index.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/index.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/index.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/index.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/index.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/index.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/index.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/index.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/index.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/index.html>`__"
-msgstr ""
-
 msgid "pgRouting extends the `PostGIS <https://postgis.net>`__/`PostgreSQL <https://www.postgresql.org>`__ geospatial database to provide geospatial routing and other network analysis functionality."
 msgstr ""
 
@@ -4024,9 +3916,6 @@ msgstr ""
 msgid ":doc:`release_notes`"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/kruskal-family.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/kruskal-family.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/kruskal-family.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/kruskal-family.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/kruskal-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/kruskal-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/kruskal-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/kruskal-family.html>`__"
-msgstr ""
-
 msgid "Kruskal - Family of functions"
 msgstr ""
 
@@ -4043,9 +3932,6 @@ msgid "The total weight of all the edges in the tree or forest is minimized."
 msgstr ""
 
 msgid "Kruskal's running time: :math:`O(E * log E)`"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/migration.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/migration.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/migration.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/migration.html>`__"
 msgstr ""
 
 msgid "Migration guide"
@@ -4558,16 +4444,7 @@ msgstr ""
 msgid ":doc:`withPoints-category`"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/ordering-family.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/ordering-family.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/ordering-family.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/ordering-family.html>`__"
-msgstr ""
-
 msgid "Ordering - Family of functions"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgRouting-concepts.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgRouting-concepts.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgRouting-concepts.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgRouting-concepts.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgRouting-concepts.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgRouting-concepts.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgRouting-concepts.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgRouting-concepts.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgRouting-concepts.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgRouting-concepts.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgRouting-concepts.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/doc/src/tutorial/index.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/doc/src/tutorial/index.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/doc/src/tutorial/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/doc/src/tutorial/index.html>`__"
 msgstr ""
 
 msgid "pgRouting Concepts"
@@ -5734,12 +5611,6 @@ msgstr ""
 msgid "Consult the `developer's documentation <https://docs.pgrouting.org/doxy/2.4/index.html>`__"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgRouting-installation.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgRouting-installation.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgRouting-installation.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgRouting-installation.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgRouting-installation.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgRouting-installation.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgRouting-installation.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgRouting-installation.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgRouting-installation.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgRouting-installation.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgRouting-installation.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/doc/src/installation/installation.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/doc/src/installation/installation.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/doc/src/installation/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/doc/src/installation/index.html>`__"
-msgstr ""
-
 msgid "Installation"
 msgstr ""
 
@@ -6067,12 +5938,6 @@ msgstr ""
 msgid "The following instructions start from *path/to/pgrouting/*"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgRouting-introduction.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgRouting-introduction.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgRouting-introduction.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgRouting-introduction.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgRouting-introduction.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgRouting-introduction.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgRouting-introduction.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgRouting-introduction.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgRouting-introduction.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgRouting-introduction.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgRouting-introduction.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/doc/src/introduction/introduction.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/doc/src/introduction/introduction.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/doc/src/introduction/introduction.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/doc/src/introduction/introduction.html>`__"
-msgstr ""
-
 msgid "pgRouting is an extension of `PostGIS <https://postgis.net>`__ and `PostgreSQL <https://www.postgresql.org>`__ geospatial database and adds routing and other network analysis functionality. A predecessor of pgRouting – pgDijkstra, written by Sylvain Pasche from `Camptocamp <https://camptocamp.com>`__, was later extended by Orkney and renamed to pgRouting. The project is now supported and maintained by `Georepublic <https://georepublic.info>`__, `Paragon Corporation <https://www.paragoncorporation.com/>`__ and a broad user community."
 msgstr ""
 
@@ -6199,12 +6064,6 @@ msgstr ""
 msgid "The Migration guide from 2.6 can be found at https://github.com/pgRouting/pgrouting/wiki/Migration-Guide."
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_KSP.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_KSP.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_KSP.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_KSP.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_KSP.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_KSP.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_KSP.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_KSP.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_KSP.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_KSP.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_KSP.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/ksp/doc/pgr_ksp.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/ksp/doc/pgr_ksp.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/ksp/doc/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/ksp/doc/index.html>`__"
-msgstr ""
-
 msgid "pgr_KSP"
 msgstr ""
 
@@ -6299,12 +6158,6 @@ msgid "Also get the paths in the heap."
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/K_shortest_path_routing"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_TSP.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_TSP.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_TSP.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_TSP.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_TSP.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_TSP.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_TSP.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_TSP.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_TSP.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_TSP.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_TSP.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_tsp.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/tsp/doc/pgr_tsp.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/tsp/doc/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/tsp/doc/index.html>`__"
 msgstr ""
 
 msgid "``pgr_TSP``"
@@ -6484,12 +6337,6 @@ msgstr ""
 msgid "Cost value for :math:`17 \\rightarrow 10` do not exist on the matrix, but the value used is taken from :math:`10 \\rightarrow 17`."
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_TSPeuclidean.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_TSPeuclidean.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_TSPeuclidean.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_TSPeuclidean.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_TSPeuclidean.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_TSPeuclidean.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_TSPeuclidean.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_TSPeuclidean.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/pgr_eucledianTSP.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_eucledianTSP.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_eucledianTSP>`__"
-msgstr ""
-
 msgid "``pgr_TSPeuclidean``"
 msgstr ""
 
@@ -6575,12 +6422,6 @@ msgid "Visualy, The first image is the `optimal solution <https://www.math.uwate
 msgstr ""
 
 msgid ":doc:`sampledata` network."
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_aStar.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_aStar.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_aStar.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_aStar.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_aStar.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_aStar.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_aStar.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_aStar.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_aStar.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_aStar.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_aStar.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/astar/doc/pgr_astar.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/astar/doc/pgr_astar.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/astar/doc/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/astar/doc/index.html>`__"
 msgstr ""
 
 msgid "``pgr_aStar``"
@@ -6709,12 +6550,6 @@ msgstr ""
 msgid "Manually assigned vertex combinations."
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_aStarCost.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_aStarCost.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_aStarCost.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_aStarCost.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_aStarCost.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_aStarCost.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_aStarCost.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_aStarCost.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_aStarCost.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_aStarCost.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_aStarCost.html>`__"
-msgstr ""
-
 msgid "pgr_aStarCost"
 msgstr ""
 
@@ -6766,12 +6601,6 @@ msgstr ""
 msgid "pgr_aStarCost(`Edges SQL`_, **start vids**, **end vids**, [options])"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_aStarCostMatrix.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_aStarCostMatrix.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_aStarCostMatrix.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_aStarCostMatrix.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_aStarCostMatrix.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_aStarCostMatrix.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_aStarCostMatrix.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_aStarCostMatrix.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_aStarCostMatrix.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_aStarCostMatrix.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_aStarCostMatrix.html>`__"
-msgstr ""
-
 msgid "``pgr_aStarCostMatrix``"
 msgstr ""
 
@@ -6812,12 +6641,6 @@ msgid "Symmetric cost matrix for vertices :math:`\\{5, 6, 10, 15\\}` on an **und
 msgstr ""
 
 msgid "Use with :doc:`pgr_TSP`"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_alphaShape.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_alphaShape.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_alphaShape.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_alphaShape.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_alphaShape.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_alphaShape.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_alphaShape.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_alphaShape.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_alphaShape.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_alphaShape.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_alphaShape.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/alpha_shape/doc/pgr_alphaShape.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/alpha_shape/doc/pgr_alphaShape.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/driving_distance/doc/dd_alphashape.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/driving_distance/doc/dd_alphashape.html>`__"
 msgstr ""
 
 msgid "``pgr_alphaShape``"
@@ -6914,12 +6737,6 @@ msgid ":doc:`pgr_drivingDistance`"
 msgstr ""
 
 msgid "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_analyzeGraph.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_analyzeGraph.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_analyzeGraph.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_analyzeGraph.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_analyzeGraph.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_analyzeGraph.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_analyzeGraph.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_analyzeGraph.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_analyzeGraph.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_analyzeGraph.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_analyzeGraph.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_analyzeGraph.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_analyzeGraph.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/common/doc/functions/analyze_graph.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/common/doc/functions/analyze_graph.html>`__"
 msgstr ""
 
 msgid "pgr_analyzeGraph"
@@ -7147,12 +6964,6 @@ msgstr ""
 msgid ":doc:`pgr_nodeNetwork` to create nodes to a not noded edge table."
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_analyzeOneWay.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_analyzeOneWay.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_analyzeOneWay.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_analyzeOneWay.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_analyzeOneWay.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_analyzeOneWay.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_analyzeOneWay.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_analyzeOneWay.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_analyzeOneWay.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_analyzeOneWay.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_analyzeOneWay.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_analyzeOneWay.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_analyzeOneWay.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/common/doc/functions/analyze_oneway.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/common/doc/functions/analyze_oneway.html>`__"
-msgstr ""
-
 msgid "pgr_analyzeOneWay"
 msgstr ""
 
@@ -7246,12 +7057,6 @@ msgstr ""
 msgid ":doc:`pgr_analyzeGraph`"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_articulationPoints.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_articulationPoints.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_articulationPoints.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_articulationPoints.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_articulationPoints.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_articulationPoints.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_articulationPoints.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_articulationPoints.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_articulationPoints.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_articulationPoints.html>`__"
-msgstr ""
-
 msgid "``pgr_articulationPoints``"
 msgstr ""
 
@@ -7298,12 +7103,6 @@ msgid "Boost: `Biconnected components & articulation points <https://www.boost.o
 msgstr ""
 
 msgid "wikipedia: `Biconnected component <https://en.wikipedia.org/wiki/Biconnected_component>`__"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_bdAstar.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_bdAstar.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_bdAstar.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_bdAstar.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_bdAstar.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_bdAstar.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_bdAstar.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bdAstar.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bdAstar.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_bdAstar.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_bdAstar.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/bd_astar/doc/pgr_bdAstar.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/bd_astar/doc/pgr_bdAstar.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/astar/doc/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/astar/doc/index.html>`__"
 msgstr ""
 
 msgid "``pgr_bdAstar``"
@@ -7357,12 +7156,6 @@ msgstr ""
 msgid "pgr_bdAstar(`Edges SQL`_, `Combinations SQL`_, [**options**])"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_bdAstarCost.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_bdAstarCost.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_bdAstarCost.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_bdAstarCost.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_bdAstarCost.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_bdAstarCost.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_bdAstarCost.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bdAstarCost.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bdAstar.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_bdAstar.html>`__"
-msgstr ""
-
 msgid "pgr_bdAstarCost"
 msgstr ""
 
@@ -7390,12 +7183,6 @@ msgstr ""
 msgid "pgr_bdAstarCost(`Edges SQL`_, `Combinations SQL`_, [**options**])"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_bdAstarCostMatrix.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_bdAstarCostMatrix.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_bdAstarCostMatrix.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_bdAstarCostMatrix.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_bdAstarCostMatrix.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_bdAstarCostMatrix.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_bdAstarCostMatrix.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bdAstarCostMatrix.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bdAstarCostMatrix.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_bdAstarCostMatrix.html>`__"
-msgstr ""
-
 msgid "``pgr_bdAstarCostMatrix``"
 msgstr ""
 
@@ -7406,12 +7193,6 @@ msgid "Using internaly the :doc:`pgr_bdAstar` algorithm"
 msgstr ""
 
 msgid "pgr_bdAstarCostMatrix(`Edges SQL`_, **start vids**, [**options**])"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_bdDijkstra.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_bdDijkstra.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_bdDijkstra.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_bdDijkstra.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_bdDijkstra.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_bdDijkstra.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_bdDijkstra.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bdDijkstra.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bdDijkstra.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_bdDijkstra.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_bdDijkstra.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/bd_dijkstra/doc/pgr_bdDijkstra.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/bd_dijkstra/doc/pgr_bdDijkstra.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/bd_dijkstra/doc/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/bd_dijkstra/doc/index.html>`__"
 msgstr ""
 
 msgid "``pgr_bdDijkstra``"
@@ -7480,12 +7261,6 @@ msgstr ""
 msgid "https://en.wikipedia.org/wiki/Bidirectional_search"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_bdDijkstraCost.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_bdDijkstraCost.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_bdDijkstraCost.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_bdDijkstraCost.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_bdDijkstraCost.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_bdDijkstraCost.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_bdDijkstraCost.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bdDijkstraCost.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bdDijkstraCost.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_bdDijkstraCost.html>`__"
-msgstr ""
-
 msgid "``pgr_bdDijkstraCost``"
 msgstr ""
 
@@ -7516,12 +7291,6 @@ msgstr ""
 msgid "pgr_bdDijkstraCost(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_bdDijkstraCostMatrix.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_bdDijkstraCostMatrix.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_bdDijkstraCostMatrix.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_bdDijkstraCostMatrix.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_bdDijkstraCostMatrix.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_bdDijkstraCostMatrix.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_bdDijkstraCostMatrix.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bdDijkstraCostMatrix.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bdDijkstraCostMatrix.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_bdDijkstraCostMatrix.html>`__"
-msgstr ""
-
 msgid "``pgr_bdDijkstraCostMatrix``"
 msgstr ""
 
@@ -7538,9 +7307,6 @@ msgid "Symmetric cost matrix for vertices :math:`\\{5, 6, 10, 15\\}` on an **und
 msgstr ""
 
 msgid "Use with :doc:`pgr_TSP`."
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_bellmanFord.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_bellmanFord.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_bellmanFord.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_bellmanFord.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_bellmanFord.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_bellmanFord.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_bellmanFord.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bellmanFord.html>`__"
 msgstr ""
 
 msgid "``pgr_bellmanFord - Experimental``"
@@ -7624,12 +7390,6 @@ msgstr ""
 msgid "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_biconnectedComponents.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_biconnectedComponents.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_biconnectedComponents.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_biconnectedComponents.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_biconnectedComponents.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_biconnectedComponents.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_biconnectedComponents.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_biconnectedComponents.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_biconnectedComponents.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_biconnectedComponents.html>`__"
-msgstr ""
-
 msgid "``pgr_biconnectedComponents``"
 msgstr ""
 
@@ -7682,9 +7442,6 @@ msgid "Identifier of the edge that belongs to the ``component``."
 msgstr ""
 
 msgid "Boost: `Biconnected components <https://www.boost.org/libs/graph/doc/biconnected_components.html>`__"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_binaryBreadthFirstSearch.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_binaryBreadthFirstSearch.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_binaryBreadthFirstSearch.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_binaryBreadthFirstSearch.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_binaryBreadthFirstSearch.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_binaryBreadthFirstSearch.html>`__"
 msgstr ""
 
 msgid "``pgr_binaryBreadthFirstSearch`` - Experimental"
@@ -7750,9 +7507,6 @@ msgstr ""
 msgid "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Specialized_variants"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_bipartite.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_bipartite.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_bipartite.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_bipartite.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_bipartite.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_bipartite.html>`__"
-msgstr ""
-
 msgid "pgr_bipartite -Experimental"
 msgstr ""
 
@@ -7796,12 +7550,6 @@ msgid "The edge :math:`5 \\rightarrow 1` will make subgraph with vertices :math:
 msgstr ""
 
 msgid "Edges in blue represent odd length cycle subgraph."
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_boykovKolmogorov.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_boykovKolmogorov.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_boykovKolmogorov.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_boykovKolmogorov.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_boykovKolmogorov.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_boykovKolmogorov.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_boykovKolmogorov.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_boykovKolmogorov.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_boykovKolmogorov.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_boykovKolmogorov.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_maxFlowBoykovKolmogorov.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maxFlowBoykovKolmogorov.html>`__"
 msgstr ""
 
 msgid "``pgr_boykovKolmogorov``"
@@ -7862,9 +7610,6 @@ msgid "Using a combinations table, equivalent to calculating result from vertice
 msgstr ""
 
 msgid "https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_breadthFirstSearch.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_breadthFirstSearch.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_breadthFirstSearch.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_breadthFirstSearch.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_breadthFirstSearch.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_breadthFirstSearch.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_breadthFirstSearch.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_breadthFirstSearch.html>`__"
 msgstr ""
 
 msgid "``pgr_breadthFirstSearch`` - Experimental"
@@ -7945,12 +7690,6 @@ msgstr ""
 msgid "`Wikipedia: Breadth First Search algorithm <https://en.wikipedia.org/wiki/Breadth-first_search>`__"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_bridges.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_bridges.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_bridges.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_bridges.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_bridges.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_bridges.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_bridges.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bridges.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bridges.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_bridges.html>`__"
-msgstr ""
-
 msgid "``pgr_bridges``"
 msgstr ""
 
@@ -7984,7 +7723,7 @@ msgstr ""
 msgid "https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29"
 msgstr ""
 
-msgid "**Supported versions** `Latest <https://docs.pgrouting.org/latest/en/pgr_chinesePostman.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_chinesePostman.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_chinesePostman.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_chinesePostman.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_chinesePostman.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_chinesePostman.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_chinesePostman.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_chinesePostman.html>`__"
+msgid "**Supported versions**"
 msgstr ""
 
 msgid "``pgr_chinesePostman`` - Experimental"
@@ -8014,9 +7753,6 @@ msgstr ""
 msgid "Aggregate cost from ``start_v`` to ``node``."
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_chinesePostmanCost.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_chinesePostmanCost.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_chinesePostmanCost.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_chinesePostmanCost.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_chinesePostmanCost.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_chinesePostmanCost.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_chinesePostmanCost.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_chinesePostmanCost.html>`__"
-msgstr ""
-
 msgid "``pgr_chinesePostmanCost`` - Experimental"
 msgstr ""
 
@@ -8036,12 +7772,6 @@ msgid "``pgr_chinesepostmancost``"
 msgstr ""
 
 msgid "Minimum costs of a circuit path."
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_connectedComponents.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_connectedComponents.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_connectedComponents.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_connectedComponents.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_connectedComponents.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_connectedComponents.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_connectedComponents.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_connectedComponents.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_connectedComponents.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_connectedComponents.html>`__"
 msgstr ""
 
 msgid "pgr_connectedComponents"
@@ -8084,12 +7814,6 @@ msgid "Boost: `Connected components <https://www.boost.org/libs/graph/doc/connec
 msgstr ""
 
 msgid "wikipedia: `Connected component <https://en.wikipedia.org/wiki/Connected_component_(graph_theory)>`__"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_contraction.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_contraction.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_contraction.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_contraction.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_contraction.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_contraction.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_contraction.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_contraction.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_contractGraph.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_contractGraph.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_contractGraph.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/contraction/doc/pgr_contractGraph.html>`__"
 msgstr ""
 
 msgid "``pgr_contraction``"
@@ -8246,12 +7970,6 @@ msgid "Only dead end contraction"
 msgstr ""
 
 msgid "Only linear contraction"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_createTopology.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_createTopology.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_createTopology.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_createTopology.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_createTopology.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_createTopology.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_createTopology.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_createTopology.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_createTopology.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_createTopology.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_createTopology.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_createTopology.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_createTopology.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/common/doc/functions/create_topology.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/common/doc/functions/create_topology.html>`__"
 msgstr ""
 
 msgid "pgr_createTopology"
@@ -8419,12 +8137,6 @@ msgstr ""
 msgid "The example uses the :doc:`sampledata` network."
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_createVerticesTable.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_createVerticesTable.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_createVerticesTable.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_createVerticesTable.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_createVerticesTable.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_createVerticesTable.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_createVerticesTable.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_createVerticesTable.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_createVerticesTable.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_createVerticesTable.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_createVerticesTable.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_createVerticesTable.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_createVerticesTable.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/common/doc/functions/create_vert_table.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/common/doc/functions/create_vert_table.html>`__"
-msgstr ""
-
 msgid "pgr_createVerticesTable"
 msgstr ""
 
@@ -8548,9 +8260,6 @@ msgstr ""
 msgid ":doc:`pgr_analyzeOneWay` to analyze directionality of the edges."
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_cuthillMckeeOrdering.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_cuthillMckeeOrdering.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_cuthillMckeeOrdering.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_cuthillMckeeOrdering.html>`__"
-msgstr ""
-
 msgid "``pgr_cuthillMckeeOrdering`` - Experimental"
 msgstr ""
 
@@ -8603,9 +8312,6 @@ msgid "`Boost: Cuthill-McKee Ordering <https://www.boost.org/libs/graph/doc/cuth
 msgstr ""
 
 msgid "`Wikipedia: Cuthill-McKee Ordering <https://en.wikipedia.org/wiki/Cuthill%E2%80%93McKee_algorithm>`__"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_dagShortestPath.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_dagShortestPath.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_dagShortestPath.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_dagShortestPath.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_dagShortestPath.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_dagShortestPath.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_dagShortestPath.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_dagShortestPath.html>`__"
 msgstr ""
 
 msgid "pgr_dagShortestPath - Experimental"
@@ -8675,9 +8381,6 @@ msgid "Making **start_vids** the same as **end_vids**"
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/Topological_sorting"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_degree.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_degree.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_degree.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_degree.html>`__"
 msgstr ""
 
 msgid "``pgr_degree`` -- Proposed"
@@ -8761,9 +8464,6 @@ msgstr ""
 msgid ":doc:`pgr_extractVertices`"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_depthFirstSearch.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_depthFirstSearch.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_depthFirstSearch.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_depthFirstSearch.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_depthFirstSearch.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_depthFirstSearch.html>`__"
-msgstr ""
-
 msgid "``pgr_depthFirstSearch`` - Proposed"
 msgstr ""
 
@@ -8828,12 +8528,6 @@ msgid "`Boost: Undirected DFS algorithm documentation <https://www.boost.org/lib
 msgstr ""
 
 msgid "`Wikipedia: Depth First Search algorithm <https://en.wikipedia.org/wiki/Depth-first_search>`__"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_dijkstra.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_dijkstra.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_dijkstra.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_dijkstra.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstra.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstra.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_dijkstra.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_dijkstra.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_dijkstra.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_dijkstra.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_dijkstra.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstra.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstra.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/dijkstra/doc/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/dijkstra/doc/index.html>`__"
 msgstr ""
 
 msgid "``pgr_dijkstra``"
@@ -9070,12 +8764,6 @@ msgstr ""
 msgid "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_dijkstraCost.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_dijkstraCost.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_dijkstraCost.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_dijkstraCost.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstraCost.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraCost.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_dijkstraCost.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_dijkstraCost.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_dijkstraCost.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_dijkstraCost.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_dijkstraCost.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstraCost.html#pgr-dijkstracost>`__ `2.3 <https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstraCost.html#pgr-dijkstracost>`__"
-msgstr ""
-
 msgid "``pgr_dijkstraCost``"
 msgstr ""
 
@@ -9103,12 +8791,6 @@ msgstr ""
 msgid "pgr_dijkstraCost(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_dijkstraCostMatrix.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_dijkstraCostMatrix.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_dijkstraCostMatrix.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_dijkstraCostMatrix.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstraCostMatrix.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraCostMatrix.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_dijkstraCostMatrix.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_dijkstraCostMatrix.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_dijkstraCostMatrix.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_dijkstraCostMatrix.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_dijkstraCostMatrix.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/costMatrix/doc/pgr_dijkstraCostMatrix.html>`__"
-msgstr ""
-
 msgid "``pgr_dijkstraCostMatrix``"
 msgstr ""
 
@@ -9119,9 +8801,6 @@ msgid "Using Dijkstra algorithm, calculate and return a cost matrix."
 msgstr ""
 
 msgid "pgr_dijkstraCostMatrix(`Edges SQL`_, **start vids**, [``directed``])"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_dijkstraNear.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_dijkstraNear.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_dijkstraNear.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_dijkstraNear.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstraNear.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraNear.html>`__"
 msgstr ""
 
 msgid "``pgr_dijkstraNear`` - Proposed"
@@ -9343,9 +9022,6 @@ msgstr ""
 msgid "Wikipedia: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_dijkstraNearCost.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_dijkstraNearCost.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_dijkstraNearCost.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_dijkstraNearCost.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstraNearCost.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraNearCost.html>`__"
-msgstr ""
-
 msgid "``pgr_dijkstraNearCost`` - Proposed"
 msgstr ""
 
@@ -9386,12 +9062,6 @@ msgid "The best one is :math:`(11 \\rightarrow 16)` with a cost of :math:`1` (li
 msgstr ""
 
 msgid "Both are equaly good as they have the same cost. (lines: `12` and `13`)"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_dijkstraVia.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_dijkstraVia.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_dijkstraVia.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_dijkstraVia.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstraVia.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraVia.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_dijkstraVia.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_dijkstraVia.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_dijkstraVia.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_dijkstraVia.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_dijkstraVia.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstraVia.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstraVia.html>`__"
 msgstr ""
 
 msgid "``pgr_dijkstraVia`` - Proposed"
@@ -9478,12 +9148,6 @@ msgstr ""
 msgid ":doc:`dijkstra-family`."
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_drivingDistance.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_drivingDistance.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_drivingDistance.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_drivingDistance.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_drivingDistance.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_drivingDistance.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_drivingDistance.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_drivingDistance.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_drivingDistance.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_drivingDistance.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/driving_distance/doc/pgr_drivingDistance.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/driving_distance/doc/pgr_drivingDistance.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/driving_distance/doc/dd_driving_distance_v3.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/driving_distance/doc/dd_driving_distance.html>`__"
-msgstr ""
-
 msgid "``pgr_drivingDistance``"
 msgstr ""
 
@@ -9565,9 +9229,6 @@ msgstr ""
 msgid "From vertices :math:`\\{11, 16\\}` for a distance of :math:`3.0` on an undirected graph"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_edgeColoring.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_edgeColoring.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_edgeColoring.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_edgeColoring.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_edgeColoring.html>`__"
-msgstr ""
-
 msgid "pgr_edgeColoring - Experimental"
 msgstr ""
 
@@ -9626,12 +9287,6 @@ msgid "RETURNS SET OF |result-edge-color|"
 msgstr ""
 
 msgid "Graph coloring of pgRouting :doc:`sampledata`"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_edgeDisjointPaths.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_edgeDisjointPaths.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_edgeDisjointPaths.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_edgeDisjointPaths.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_edgeDisjointPaths.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_edgeDisjointPaths.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_edgeDisjointPaths.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_edgeDisjointPaths.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_edgeDisjointPaths.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_edgeDisjointPaths.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_edgeDisjointPaths.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_edgeDisjointPaths.html>`__"
 msgstr ""
 
 msgid "``pgr_edgeDisjointPaths``"
@@ -9700,12 +9355,6 @@ msgstr ""
 msgid "Manually assigned vertex combinations on an undirected graph."
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_edmondsKarp.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_edmondsKarp.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_edmondsKarp.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_edmondsKarp.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_edmondsKarp.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_edmondsKarp.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_edmondsKarp.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_edmondsKarp.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_edmondsKarp.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_edmondsKarp.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_maxFlowEdmondsKarp.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maxFlowEdmondsKarp.html>`__"
-msgstr ""
-
 msgid "``pgr_edmondsKarp``"
 msgstr ""
 
@@ -9740,9 +9389,6 @@ msgid "https://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html"
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_edwardMoore.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_edwardMoore.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_edwardMoore.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_edwardMoore.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_edwardMoore.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_edwardMoore.html>`__"
 msgstr ""
 
 msgid "``pgr_edwardMoore - Experimental``"
@@ -9812,9 +9458,6 @@ msgid "pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_extractVertices.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_extractVertices.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_extractVertices.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_extractVertices.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_extractVertices.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_extractVertices.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_extractVertices.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_extractVertices.html>`__"
 msgstr ""
 
 msgid "pgr_extractVertices -- Proposed"
@@ -9908,9 +9551,6 @@ msgid "To get the query generated used to get the vertex information, use ``dryr
 msgstr ""
 
 msgid "The results can be used as base code to make a refinement based on the backend development needs."
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_findCloseEdges.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_findCloseEdges.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_findCloseEdges.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_findCloseEdges.html>`__"
 msgstr ""
 
 msgid "``pgr_findCloseEdges``"
@@ -10321,12 +9961,6 @@ msgstr ""
 msgid "Points of interest data"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_floydWarshall.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_floydWarshall.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_floydWarshall.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_floydWarshall.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_floydWarshall.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_floydWarshall.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_floydWarshall.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_floydWarshall.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_floydWarshall.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_floydWarshall.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_floydWarshall.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/allpairs/doc/pgr_floydWarshall.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/allpairs/doc/pgr_floydWarshall.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/apsp_warshall/doc/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/apsp_warshall/doc/index.html>`__"
-msgstr ""
-
 msgid "``pgr_floydWarshall``"
 msgstr ""
 
@@ -10346,9 +9980,6 @@ msgid "Boost `floyd-Warshall <https://www.boost.org/libs/graph/doc/floyd_warshal
 msgstr ""
 
 msgid "Queries uses the :doc:`sampledata` network."
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_full_version.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_full_version.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_full_version.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_full_version.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_full_version.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_full_version.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_full_version.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_full_version.html>`__"
 msgstr ""
 
 msgid "``pgr_full_version``"
@@ -10426,9 +10057,6 @@ msgstr ""
 msgid "Git hash of pgRouting build"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_hawickCircuits.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_hawickCircuits.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_hawickCircuits.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_hawickCircuits.html>`__"
-msgstr ""
-
 msgid "``pgr_hawickCircuits - Experimental``"
 msgstr ""
 
@@ -10486,9 +10114,6 @@ msgstr ""
 msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_isPlanar.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_isPlanar.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_isPlanar.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_isPlanar.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_isPlanar.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_isPlanar.html>`__"
-msgstr ""
-
 msgid "``pgr_isPlanar`` - Experimental"
 msgstr ""
 
@@ -10540,12 +10165,6 @@ msgstr ""
 msgid "https://www.boost.org/libs/graph/doc/boyer_myrvold.html"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_johnson.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_johnson.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_johnson.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_johnson.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_johnson.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_johnson.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_johnson.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_johnson.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_johnson.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_johnson.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_johnson.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/allpairs/doc/pgr_johnson.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/allpairs/doc/pgr_johnson.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/apsp_johnson/doc/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/apsp_johnson/doc/index.html>`__"
-msgstr ""
-
 msgid "``pgr_johnson``"
 msgstr ""
 
@@ -10559,9 +10178,6 @@ msgid "pgr johnson(`Edges SQL`_, [``directed``])"
 msgstr ""
 
 msgid "Boost `Johnson <https://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html>`_"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_kruskal.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_kruskal.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_kruskal.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_kruskal.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_kruskal.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_kruskal.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_kruskal.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_kruskal.html>`__"
 msgstr ""
 
 msgid "``pgr_kruskal``"
@@ -10583,9 +10199,6 @@ msgid "RETURNS SET OF |result-mst|"
 msgstr ""
 
 msgid "Minimum spanning forest"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_kruskalBFS.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_kruskalBFS.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_kruskalBFS.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_kruskalBFS.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_kruskalBFS.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_kruskalBFS.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_kruskalBFS.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_kruskalBFS.html>`__"
 msgstr ""
 
 msgid "``pgr_kruskalBFS``"
@@ -10615,9 +10228,6 @@ msgstr ""
 msgid "The Minimum Spanning Tree starting on vertices :math:`\\{9, 6\\}` with :math:`depth \\leq 3`"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_kruskalDD.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_kruskalDD.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_kruskalDD.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_kruskalDD.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_kruskalDD.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_kruskalDD.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_kruskalDD.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_kruskalDD.html>`__"
-msgstr ""
-
 msgid "``pgr_kruskalDD``"
 msgstr ""
 
@@ -10645,9 +10255,6 @@ msgstr ""
 msgid "The Minimum Spanning Tree starting on vertices :math:`\\{9, 6\\}` with :math:`distance \\leq 3.5`"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_kruskalDFS.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_kruskalDFS.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_kruskalDFS.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_kruskalDFS.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_kruskalDFS.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_kruskalDFS.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_kruskalDFS.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_kruskalDFS.html>`__"
-msgstr ""
-
 msgid "``pgr_kruskalDFS``"
 msgstr ""
 
@@ -10664,9 +10271,6 @@ msgid "pgr_kruskalDFS(`Edges SQL`_, **root vid**, [``max_depth``])"
 msgstr ""
 
 msgid "pgr_kruskalDFS(`Edges SQL`_, **root vids**, [``max_depth``])"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_lengauerTarjanDominatorTree.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_lengauerTarjanDominatorTree.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_lengauerTarjanDominatorTree.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_lengauerTarjanDominatorTree.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_lengauerTarjanDominatorTree.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_lengauerTarjanDominatorTree.html>`__"
 msgstr ""
 
 msgid "pgr_lengauerTarjanDominatorTree -Experimental"
@@ -10726,12 +10330,6 @@ msgstr ""
 msgid "`Wikipedia: dominator tree <https://en.wikipedia.org/wiki/Dominator_(graph_theory)>`__"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_lineGraph.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_lineGraph.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_lineGraph.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_lineGraph.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_lineGraph.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_lineGraph.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_lineGraph.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_lineGraph.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_lineGraph.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_lineGraph.html>`__"
-msgstr ""
-
 msgid "``pgr_lineGraph`` - Experimental"
 msgstr ""
 
@@ -10784,12 +10382,6 @@ msgid "When `negative`: edge (``target``, ``source``) does not exist, therefore 
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/Line_graph"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_lineGraphFull.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_lineGraphFull.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_lineGraphFull.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_lineGraphFull.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_lineGraphFull.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_lineGraphFull.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_lineGraphFull.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_lineGraphFull.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_lineGraphFull.html>`__"
 msgstr ""
 
 msgid "``pgr_lineGraphFull`` - Experimental"
@@ -10990,9 +10582,6 @@ msgstr ""
 msgid "https://en.wikipedia.org/wiki/Complete_graph"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_makeConnected.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_makeConnected.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_makeConnected.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_makeConnected.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_makeConnected.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_makeConnected.html>`__"
-msgstr ""
-
 msgid "``pgr_makeConnected`` - Experimental"
 msgstr ""
 
@@ -11021,12 +10610,6 @@ msgid "Returns set of |result-component-make|"
 msgstr ""
 
 msgid "https://www.boost.org/libs/graph/doc/make_connected.html"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_maxCardinalityMatch.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_maxCardinalityMatch.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_maxCardinalityMatch.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_maxCardinalityMatch.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_maxCardinalityMatch.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_maxCardinalityMatch.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_maxCardinalityMatch.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_maxCardinalityMatch.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_maxCardinalityMatch.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_maxCardinalityMatch.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_maximumCardinalityMatching.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maximumCardinalityMatching.html>`__"
 msgstr ""
 
 msgid "pgr_maxCardinalityMatch"
@@ -11095,12 +10678,6 @@ msgstr ""
 msgid "https://en.wikipedia.org/wiki/Ackermann_function"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_maxFlow.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_maxFlow.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_maxFlow.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_maxFlow.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_maxFlow.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_maxFlow.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_maxFlow.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_maxFlow.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_maxFlow.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_maxFlow.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_maxFlow.html>`__"
-msgstr ""
-
 msgid "``pgr_maxFlow``"
 msgstr ""
 
@@ -11150,9 +10727,6 @@ msgid "https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html"
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_maxFlowMinCost.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_maxFlowMinCost.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_maxFlowMinCost.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_maxFlowMinCost.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_maxFlowMinCost.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_maxFlowMinCost.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_maxFlowMinCost.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_maxFlowMinCost.html>`__"
 msgstr ""
 
 msgid "``pgr_maxFlowMinCost`` - Experimental"
@@ -11206,9 +10780,6 @@ msgstr ""
 msgid "https://www.boost.org/libs/graph/doc/successive_shortest_path_nonnegative_weights.html"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_maxFlowMinCost_Cost.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_maxFlowMinCost_Cost.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_maxFlowMinCost_Cost.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_maxFlowMinCost_Cost.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_maxFlowMinCost_Cost.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_maxFlowMinCost_Cost.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_maxFlowMinCost_Cost.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_maxFlowMinCost_Cost.html>`__"
-msgstr ""
-
 msgid "``pgr_maxFlowMinCost_Cost`` - Experimental"
 msgstr ""
 
@@ -11246,12 +10817,6 @@ msgid "RETURNS FLOAT"
 msgstr ""
 
 msgid "Minimum Cost Maximum Flow possible from the source(s) to the target(s)"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_nodeNetwork.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_nodeNetwork.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_nodeNetwork.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_nodeNetwork.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_nodeNetwork.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_nodeNetwork.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_nodeNetwork.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_nodeNetwork.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_nodeNetwork.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_nodeNetwork.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_nodeNetwork.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_nodeNetwork.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_nodeNetwork.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/common/doc/functions/node_network.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/common/doc/functions/node_network.html>`__"
 msgstr ""
 
 msgid "pgr_nodeNetwork"
@@ -11461,9 +11026,6 @@ msgstr ""
 msgid ":doc:`topology-functions` for an overview of a topology for routing algorithms. :doc:`pgr_analyzeOneWay` to analyze directionality of the edges. :doc:`pgr_createTopology` to create a topology based on the geometry. :doc:`pgr_analyzeGraph` to analyze the edges and vertices of the edge table."
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_pickDeliver.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_pickDeliver.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_pickDeliver.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_pickDeliver.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_pickDeliver.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_pickDeliver.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_pickDeliver.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_pickDeliver.html>`__"
-msgstr ""
-
 msgid "``pgr_pickDeliver`` - Experimental"
 msgstr ""
 
@@ -11575,12 +11137,6 @@ msgstr ""
 msgid "[end_node_id, end_open, end_close, end_service]"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_pickDeliverEuclidean.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_pickDeliverEuclidean.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_pickDeliverEuclidean.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_pickDeliverEuclidean.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_pickDeliverEuclidean.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_pickDeliverEuclidean.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_pickDeliverEuclidean.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_pickDeliverEuclidean.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_gsoc_vrppdtw.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_gsoc_vrppdtw.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_gsoc_vrppdtw.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/vrppdtw/doc/pgr_gsoc_vrppdtw.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/vrppdtw/doc/index.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/vrppdtw/doc/index.html>`__"
-msgstr ""
-
 msgid "``pgr_pickDeliverEuclidean`` - Experimental"
 msgstr ""
 
@@ -11665,9 +11221,6 @@ msgstr ""
 msgid "This implementation's travel time: 854.54"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_prim.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_prim.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_prim.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_prim.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_prim.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_prim.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_prim.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_prim.html>`__"
-msgstr ""
-
 msgid "``pgr_prim``"
 msgstr ""
 
@@ -11689,9 +11242,6 @@ msgstr ""
 msgid "`Boost: Prim's algorithm documentation <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_primBFS.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_primBFS.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_primBFS.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_primBFS.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_primBFS.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_primBFS.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_primBFS.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_primBFS.html>`__"
-msgstr ""
-
 msgid "``pgr_primBFS``"
 msgstr ""
 
@@ -11705,9 +11255,6 @@ msgid "pgr_primBFS(`Edges SQL`_, **root vid**, [``max_depth``])"
 msgstr ""
 
 msgid "pgr_primBFS(`Edges SQL`_, **root vids**, [``max_depth``])"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_primDD.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_primDD.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_primDD.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_primDD.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_primDD.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_primDD.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_primDD.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_primDD.html>`__"
 msgstr ""
 
 msgid "``pgr_primDD``"
@@ -11725,9 +11272,6 @@ msgstr ""
 msgid "pgr_primDD(`Edges SQL`_, **root vids**, **distance**)"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_primDFS.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_primDFS.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_primDFS.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_primDFS.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_primDFS.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_primDFS.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_primDFS.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_primDFS.html>`__"
-msgstr ""
-
 msgid "``pgr_primDFS``"
 msgstr ""
 
@@ -11741,12 +11285,6 @@ msgid "pgr_primDFS(`Edges SQL`_, **root vid**, [``max_depth``])"
 msgstr ""
 
 msgid "pgr_primDFS(`Edges SQL`_, **root vids**, [``max_depth``])"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_pushRelabel.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_pushRelabel.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_pushRelabel.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_pushRelabel.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_pushRelabel.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_pushRelabel.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_pushRelabel.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_pushRelabel.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_pushRelabel.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_pushRelabel.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_maxFlowPushRelabel.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maxFlowPushRelabel.html>`__"
 msgstr ""
 
 msgid "``pgr_pushRelabel``"
@@ -11774,9 +11312,6 @@ msgid "pgr_pushRelabel(`Edges SQL`_, **start vids**, **end vids**)"
 msgstr ""
 
 msgid "pgr_pushRelabel(`Edges SQL`_, `Combinations SQL`_)"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_sequentialVertexColoring.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_sequentialVertexColoring.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_sequentialVertexColoring.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_sequentialVertexColoring.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_sequentialVertexColoring.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_sequentialVertexColoring.html>`__"
 msgstr ""
 
 msgid "pgr_sequentialVertexColoring - Proposed"
@@ -11819,9 +11354,6 @@ msgid ":math:`k` is the number of colors used."
 msgstr ""
 
 msgid "pgr_sequentialVertexColoring(`Edges SQL`_)"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_stoerWagner.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_stoerWagner.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_stoerWagner.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_stoerWagner.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_stoerWagner.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_stoerWagner.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_stoerWagner.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/pgr_stoerWagner.html>`__"
 msgstr ""
 
 msgid "pgr_stoerWagner - Experimental"
@@ -11896,12 +11428,6 @@ msgstr ""
 msgid "https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_strongComponents.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_strongComponents.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_strongComponents.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_strongComponents.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_strongComponents.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_strongComponents.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_strongComponents.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_strongComponents.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_strongComponents.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_strongComponents.html>`__"
-msgstr ""
-
 msgid "``pgr_strongComponents``"
 msgstr ""
 
@@ -11927,9 +11453,6 @@ msgid "Boost: `Strong components <https://www.boost.org/libs/graph/doc/strong_co
 msgstr ""
 
 msgid "wikipedia: `Strongly connected component <https://en.wikipedia.org/wiki/Strongly_connected_component>`__"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_topologicalSort.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_topologicalSort.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_topologicalSort.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_topologicalSort.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_topologicalSort.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_topologicalSort.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_topologicalSort.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_topologicalSort.html>`__"
 msgstr ""
 
 msgid "``pgr_topologicalSort`` - Experimental"
@@ -11981,9 +11504,6 @@ msgid "Topologically sorting the one way segments"
 msgstr ""
 
 msgid "Graph is not a DAG"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_transitiveClosure.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_transitiveClosure.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_transitiveClosure.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_transitiveClosure.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_transitiveClosure.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_transitiveClosure.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_transitiveClosure.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_transitiveClosure.html>`__"
 msgstr ""
 
 msgid "``pgr_transitiveClosure`` - Experimental"
@@ -12041,12 +11561,6 @@ msgid "Identifiers of the vertices that are reachable from vertex v."
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/Transitive_closure"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_trsp.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_trsp.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_trsp.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_trsp.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_trsp.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_trsp.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_trsp.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_trsp.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_trsp.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_trsp.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_trsp.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/trsp/doc/pgr_trsp.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/trsp/doc/pgr_trsp.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/trsp/doc/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/trsp/doc/index.html>`__"
 msgstr ""
 
 msgid "pgr_trsp - Proposed"
@@ -12148,9 +11662,6 @@ msgstr ""
 msgid "`Deprecated documentation <https://docs.pgrouting.org/3.3/en/pgr_trsp.html>`_"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_trspVia.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_trspVia.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_trspVia.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_trspVia.html>`__"
-msgstr ""
-
 msgid "``pgr_trspVia`` - Proposed"
 msgstr ""
 
@@ -12221,9 +11732,6 @@ msgid "Therefore the result ignores the ``U_turn_on_edge`` flag when set to ``fa
 msgstr ""
 
 msgid ":doc:`via-category`"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_trspVia_withPoints.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_trspVia_withPoints.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_trspVia_withPoints.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_trspVia_withPoints.html>`__"
 msgstr ""
 
 msgid "``pgr_trspVia_withPoints`` - Proposed"
@@ -12358,9 +11866,6 @@ msgstr ""
 msgid "Therefore the result ignores the ``U_turn_on_edge`` flag when set to ``false``. From the :doc:`pgr_withPointsVia` result it removes the conflicting paths and builds the solution with the results of the :doc:`pgr_trsp` algorithm. In this case a U turn is been done using the same edge."
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_trsp_withPoints.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_trsp_withPoints.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_trsp_withPoints.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_trsp_withPoints.html>`__"
-msgstr ""
-
 msgid "pgr_trsp_withPoints - Proposed"
 msgstr ""
 
@@ -12469,9 +11974,6 @@ msgstr ""
 msgid "From point :math:`1` and vertex :math:`6` to point :math:`3` to vertex :math:`1` on an undirected graph, with details."
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_turnRestrictedPath.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_turnRestrictedPath.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_turnRestrictedPath.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_turnRestrictedPath.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_turnRestrictedPath.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_turnRestrictedPath.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_turnRestrictedPath.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_turnRestrictedPath.html>`__"
-msgstr ""
-
 msgid "pgr_turnRestrictedPath - Experimental"
 msgstr ""
 
@@ -12523,12 +12025,6 @@ msgstr ""
 msgid "From vertex :math:`3` to vertex  :math:`8` with more alternatives"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_version.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_version.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_version.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_version.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_version.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_version.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_version.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_version.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_version.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_version.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_version.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/common/doc/pgr_version.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/common/doc/pgr_version.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/common/doc/utilities/version.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/common/doc/utilities/version.html>`__"
-msgstr ""
-
 msgid "``pgr_version``"
 msgstr ""
 
@@ -12550,12 +12046,6 @@ msgstr ""
 msgid "pgRouting Version for this documentation"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_vrpOneDepot.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_vrpOneDepot.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_vrpOneDepot.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_vrpOneDepot.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_vrpOneDepot.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_vrpOneDepot.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_vrpOneDepot.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_vrpOneDepot.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_vrpOneDepot.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_vrpOneDepot.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_vrpOneDepot.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/vrp_basic/doc/pgr_vrpOneDepot.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/vrp_basic/doc/pgr_vrpOneDepot.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/vrp_basic/doc/index.html>`__"
-msgstr ""
-
 msgid "pgr_vrpOneDepot - Experimental"
 msgstr ""
 
@@ -12563,12 +12053,6 @@ msgid "**No documentation available**"
 msgstr ""
 
 msgid "**TBD**"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_withPoints.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_withPoints.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_withPoints.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_withPoints.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_withPoints.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_withPoints.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_withPoints.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_withPoints.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_withPoints.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_withPoints.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_withPoints.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPoints.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPoints.html>`__"
 msgstr ""
 
 msgid "``pgr_withPoints`` - Proposed"
@@ -12682,12 +12166,6 @@ msgstr ""
 msgid "Passes in front or visits with left side driving."
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_withPointsCost.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_withPointsCost.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_withPointsCost.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_withPointsCost.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_withPointsCost.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_withPointsCost.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_withPointsCost.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_withPointsCost.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_withPointsCost.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_withPointsCost.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_withPointsCost.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPointsCost.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPointsCost.html>`__"
-msgstr ""
-
 msgid "``pgr_withPointsCost`` - Proposed"
 msgstr ""
 
@@ -12796,12 +12274,6 @@ msgstr ""
 msgid "Does not matter driving side driving topology"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_withPointsCostMatrix.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_withPointsCostMatrix.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_withPointsCostMatrix.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_withPointsCostMatrix.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_withPointsCostMatrix.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_withPointsCostMatrix.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_withPointsCostMatrix.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_withPointsCostMatrix.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_withPointsCostMatrix.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_withPointsCostMatrix.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_withPointsCostMatrix.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/costMatrix/doc/pgr_withPointsCostMatrix.html>`__"
-msgstr ""
-
 msgid "``pgr_withPointsCostMatrix`` - proposed"
 msgstr ""
 
@@ -12824,12 +12296,6 @@ msgid "Using the default ``driving_side`` value"
 msgstr ""
 
 msgid "Find the matrix cost of the routes from vertex :math:`1` and the two closest locations on the graph of point `(2.9, 1.8)`."
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_withPointsDD.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_withPointsDD.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_withPointsDD.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_withPointsDD.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_withPointsDD.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_withPointsDD.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_withPointsDD.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_withPointsDD.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_withPointsDD.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_withPointsDD.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPointsDD.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPointsDD.html>`__"
 msgstr ""
 
 msgid "``pgr_withPointsDD`` - Proposed"
@@ -12892,12 +12358,6 @@ msgstr ""
 msgid ":doc:`pgr_alphaShape`"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_withPointsKSP.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_withPointsKSP.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_withPointsKSP.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_withPointsKSP.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/pgr_withPointsKSP.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_withPointsKSP.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_withPointsKSP.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_withPointsKSP.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_withPointsKSP.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/pgr_withPointsKSP.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/pgr_withPointsKSP.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPointsKSP.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPointsKSP.html>`__"
-msgstr ""
-
 msgid "pgr_withPointsKSP - Proposed"
 msgstr ""
 
@@ -12949,9 +12409,6 @@ msgstr ""
 msgid "Get :math:`2` paths using right side driving topology from, point :math:`1` to point :math:`2` with heap paths and details."
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_withPointsVia.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/pgr_withPointsVia.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/pgr_withPointsVia.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/pgr_withPointsVia.html>`__"
-msgstr ""
-
 msgid "``pgr_withPointsVia`` - Proposed"
 msgstr ""
 
@@ -12976,9 +12433,6 @@ msgstr ""
 msgid "All this examples are about the route that visits the vertices :math:`\\{-1, 7, -3, 16, 15\\}` in that order on a **directed** graph."
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/prim-family.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/prim-family.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/prim-family.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/prim-family.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/prim-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/prim-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/prim-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/prim-family.html>`__"
-msgstr ""
-
 msgid "Prim - Family of functions"
 msgstr ""
 
@@ -12988,19 +12442,13 @@ msgstr ""
 msgid "This algorithms find the minimum spanning forest in a possibly disconnected graph; in contrast, the most basic form of Prim's algorithm only finds minimum spanning trees in connected graphs. However, running Prim's algorithm separately for each connected component of the graph, then it is called minimum spanning forest."
 msgstr ""
 
-msgid "From boost Graph: \"The algorithm as implemented in Boost.Graph does not produce correct results on graphs with parallel edges."
+msgid "From boost Graph: \"The algorithm as implemented in Boost.Graph does not produce correct results on graphs with parallel edges.\""
 msgstr ""
 
 msgid "Boost: `Prim's algorithm <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
 msgstr ""
 
 msgid "Wikipedia: `Prim's algorithm <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/proposed.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/proposed.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/proposed.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/proposed.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/proposed.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/proposed.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/proposed.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/proposed.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/proposed.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/proposed.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/proposed.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/proposed.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/proposed.html>`__"
 msgstr ""
 
 msgid "Proposed Functions"
@@ -13054,16 +12502,7 @@ msgstr ""
 msgid ":doc:`pgr_findCloseEdges`"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/reference.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/reference.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/reference.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/reference.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/reference.html>`__"
-msgstr ""
-
 msgid "Reference"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/release_notes.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/release_notes.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/release_notes.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/release_notes.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/release_notes.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/release_notes.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/release_notes.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/release_notes.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/release_notes.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/release_notes.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/release_notes.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/doc/src/changelog/release_notes.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/doc/src/changelog/index.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/doc/src/changelog/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/doc/src/changelog/index.html>`__"
 msgstr ""
 
 msgid "Release Notes"
@@ -14923,19 +14362,7 @@ msgstr ""
 msgid "routing_postgis.sql was modified to use dijkstra in TSP search"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/routingFunctions.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/routingFunctions.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/routingFunctions.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/routingFunctions.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/routingFunctions.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/routingFunctions.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/routingFunctions.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/routingFunctions.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/routingFunctions.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/routingFunctions.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/routingFunctions.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/routingFunctions.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/routingFunctions.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/index.html>`__"
-msgstr ""
-
 msgid "Function Families"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/sampledata.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/sampledata.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/sampledata.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/sampledata.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/sampledata.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/sampledata.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/sampledata.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/sampledata.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/sampledata.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/sampledata.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/sampledata.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/doc/src/developer/sampledata.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/doc/src/developer/sampledata.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/doc/src/developer/sampledata.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/doc/src/developer/sampledata.html>`__"
 msgstr ""
 
 msgid "Sample Data"
@@ -15127,9 +14554,6 @@ msgstr ""
 msgid "Pick & Deliver Data"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/spanningTree-family.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/spanningTree-family.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/spanningTree-family.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/spanningTree-family.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/spanningTree-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/spanningTree-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/spanningTree-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/spanningTree-family.html>`__"
-msgstr ""
-
 msgid "Spanning Tree - Category"
 msgstr ""
 
@@ -15137,12 +14561,6 @@ msgid "A spanning tree of an undirected graph is a tree that includes all the ve
 msgstr ""
 
 msgid "For a disconnected graph, there there is no single tree, but a spanning forest, consisting of a spanning tree of each connected component."
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/support.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/support.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/support.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/support.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/support.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/support.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/support.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/support.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/support.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/support.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/support.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/doc/src/introduction/support.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/doc/src/introduction/support.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/doc/src/introduction/support.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/doc/src/introduction/support.html>`__"
 msgstr ""
 
 msgid "pgRouting community support is available through the `pgRouting website <https://pgrouting.org/support.html>`_, `documentation <https://docs.pgrouting.org>`_, tutorials, mailing lists and others. If you’re looking for :ref:`commercial support <support_commercial>`, find below a list of companies providing pgRouting development and consulting services."
@@ -15226,12 +14644,6 @@ msgstr ""
 msgid "https://www.osgeo.org/service-providers/netlab/"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/topology-functions.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/topology-functions.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/topology-functions.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/topology-functions.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/topology-functions.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/topology-functions.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/topology-functions.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/topology-functions.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/topology-functions.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/topology-functions.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/topology-functions.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en//src/topology/doc/topology.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en//src/topology/doc/topology.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/src/common/doc/functions/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/src/common/doc/functions/index.html>`__"
-msgstr ""
-
 msgid "Topology - Family of Functions"
 msgstr ""
 
@@ -15250,28 +14662,16 @@ msgstr ""
 msgid "Additional functions to analyze a graph:"
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/transformation-family.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/transformation-family.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/transformation-family.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/transformation-family.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/transformation-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/transformation-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/transformation-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/transformation-family.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/transformation-family.html>`__"
-msgstr ""
-
 msgid "Transformation - Family of functions (Experimental)"
 msgstr ""
 
 msgid "This family of functions is used for transforming a given input graph :math:`G(V,E)` into a new graph :math:`G'(V',E')`."
 msgstr ""
 
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/traversal-family.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/traversal-family.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/traversal-family.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/traversal-family.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/traversal-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/traversal-family.html>`__"
-msgstr ""
-
 msgid "Traversal - Family of functions"
 msgstr ""
 
 msgid "Aditionaly there are 2 categories under this family"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/via-category.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/via-category.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/via-category.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/via-category.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/via-category.html>`__"
 msgstr ""
 
 msgid "Via - Category"
@@ -15311,9 +14711,6 @@ msgid "Depending on the function one or more inner queries are needed."
 msgstr ""
 
 msgid "Used on"
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/withPoints-category.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/withPoints-category.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/withPoints-category.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/withPoints-category.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/withPoints-category.html>`__"
 msgstr ""
 
 msgid "withPoints - Category"
@@ -15581,12 +14978,6 @@ msgid "Edge ``(16, -2)`` becomes ``(-2, 16)`` with cost ``0.4`` and is added to 
 msgstr ""
 
 msgid "Edge ``(-2, 17)`` becomes ``(17, -2)`` with cost ``0.6`` and is added to the graph."
-msgstr ""
-
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/withPoints-family.html>`__ (`3.6 <https://docs.pgrouting.org/3.6/en/withPoints-family.html>`__) `3.5 <https://docs.pgrouting.org/3.5/en/withPoints-family.html>`__ `3.4 <https://docs.pgrouting.org/3.4/en/withPoints-family.html>`__ `3.3 <https://docs.pgrouting.org/3.3/en/withPoints-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/withPoints-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/withPoints-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/withPoints-family.html>`__"
-msgstr ""
-
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/withPoints-family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/withPoints-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/withPoints-family.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/src/withPoints/doc/withPoints.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/src/withPoints/doc/withPoints.html>`__"
 msgstr ""
 
 msgid "withPoints - Family of functions"
