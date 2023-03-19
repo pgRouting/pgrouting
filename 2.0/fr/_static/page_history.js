@@ -1,1 +1,0 @@
-../../../main/en/_static/page_history.js
