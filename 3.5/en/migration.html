@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/doctools.js"></script>
+<script src="_static/page_history.js"></script>
     <script src="_static/sphinx_highlight.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
@@ -167,15 +168,12 @@
 <div class="container">
   <div class="row">
     <div class="body span12 content" role="main">
+ <div class="line"><br/></div> <script> document.write(get_history("migration","en")); </script>
       
   <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/migration.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.5/en/migration.html">3.5</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.4/en/migration.html">3.4</a></p></li>
 </ul>
 <section id="migration-guide">
 <h1><a class="toc-backref" href="#id1" role="doc-backlink">Migration guide</a><a class="headerlink" href="#migration-guide" title="Permalink to this heading">¶</a></h1>
@@ -245,7 +243,6 @@ new replacement functions. This also affects the restrictions.</p>
 </nav>
 <section id="migration-of-pgr-dijkstra">
 <h2><a class="toc-backref" href="#id2" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a><a class="headerlink" href="#migration-of-pgr-dijkstra" title="Permalink to this heading">¶</a></h2>
-<p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.5/en/migration.html">v3.5.0</a></p>
 <p>Signatures to be migrated:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>One to One</cite>)</p></li>
@@ -384,7 +381,6 @@ the function <code class="docutils literal notranslate"><span class="pre">my_dij
 </section>
 <section id="migration-of-pgr-maxcardinalitymatch">
 <h2><a class="toc-backref" href="#id3" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a><a class="headerlink" href="#migration-of-pgr-maxcardinalitymatch" title="Permalink to this heading">¶</a></h2>
-<p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.4/en/migration.html">v3.4.0</a></p>
 <p>Signature to be migrated:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_maxCardinalityMatch</span><span class="p">(</span><span class="n">Edges</span> <span class="n">SQL</span><span class="p">,</span> <span class="p">[</span><span class="n">directed</span><span class="p">])</span>
  <span class="n">RETURNS</span> <span class="n">SETOF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
@@ -470,7 +466,6 @@ edge.</p></li>
 </section>
 <section id="migration-of-restrictions">
 <h2><a class="toc-backref" href="#id4" role="doc-backlink">Migration of restrictions</a><a class="headerlink" href="#migration-of-restrictions" title="Permalink to this heading">¶</a></h2>
-<p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.4/en/migration.html">v3.4.0</a></p>
 <p>The structure of the restrictions have changed:</p>
 <section id="old-restrictions-structure">
 <h3><a class="toc-backref" href="#id5" role="doc-backlink">Old restrictions structure</a><a class="headerlink" href="#old-restrictions-structure" title="Permalink to this heading">¶</a></h3>
@@ -653,7 +648,6 @@ array <code class="docutils literal notranslate"><span class="pre">_pgr_array_re
 </section>
 <section id="migration-of-pgr-trsp-vertices">
 <h2><a class="toc-backref" href="#id10" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Vertices)</a><a class="headerlink" href="#migration-of-pgr-trsp-vertices" title="Permalink to this heading">¶</a></h2>
-<p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.4/en/migration.html">v3.4.0</a></p>
 <p>Signature to be migrated:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trsp</span><span class="p">(</span><span class="n">Edges</span> <span class="n">SQL</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span>
          <span class="n">directed</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="n">boolean</span>

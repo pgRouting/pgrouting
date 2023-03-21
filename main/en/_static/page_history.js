@@ -38,13 +38,17 @@ var newpages = [
         'pgr_bdAstarCost', 'pgr_articulationPoints', 'components-family', 'bdDijkstra-family', 'bdAstar-family', ] },
 
     {v: '2.4', pages: [ 'pgr_maxFlow', 'pgr_aStarCostMatrix', 'pgr_aStarCost', 'KSP-category',
-        'drivingDistance-category', 'costMatrix-category', 'cost-category', 'aStar-family' ] },
+        'cost-category', 'aStar-family' ] },
 ];
 
 var filesArr = [
 
+
     new createInfo('TSP-family', '2.3', [
         { v: '2.3', n: 'tsp', d: 'tsp'},
+    ]),
+    new createInfo('costMatrix-category', '2.3', [
+        { v: '2.3', n: 'CostMatrix', d: 'costMatrix'},
     ]),
     new createInfo('pgr_withPointsCostMatrix', '2.3', [
         { v: '2.3', n: 'pgr_withPointsCostMatrix', d: 'costMatrix'},
@@ -77,6 +81,9 @@ var filesArr = [
     new createInfo('pgr_dijkstraCostMatrix', '2.3', [
         { v: '2.3', n: 'pgr_dijkstraCostMatrix', d: 'costMatrix'},
     ]),
+    new createInfo('contraction-family', '2.3', [
+        { v: '2.3', n: 'contraction', d: 'contraction'},
+    ]),
     new createInfo('pgr_contraction', '2.3', [
         { v: '2.3', n: 'pgr_contractGraph', d: 'contraction'},
         { v: '2.4', n: 'pgr_contractGraph', d: ''},
@@ -86,6 +93,12 @@ var filesArr = [
     new createInfo('flow-family', '2.3', [
         { v: '2.3', n: 'maxFlow', d: 'max_flow'},
     ]),
+
+    new createInfo('drivingDistance-category', '2.2', [
+        { v: '2.2', n: 'drivingDistance', d: 'driving_distance'},
+        { v: '2.3', n: 'drivingDistance', d: 'driving_distance'},
+      ]),
+
     new createInfo('withPoints-family', '2.2', [
         { v: '2.2', n: 'withPoints', d: 'withPoints'},
         { v: '2.3', n: 'withPoints', d: 'withPoints'},
@@ -102,8 +115,8 @@ var filesArr = [
         { v: '2.6', n: 'proposed', d: ''},
     ]),
     new createInfo('proposed', '2.2', [
-        { v: '2.2', n: 'src/proposed', d: ''},
-        { v: '2.3', n: 'src/proposed', d: ''},
+        { v: '2.2', n: 'src/proposedNext', d: ''},
+        { v: '2.3', n: 'src/proposedNext', d: ''},
     ]),
     new createInfo('pgr_withPointsKSP', '2.2', [
         { v: '2.2', n: 'pgr_withPointsKSP', d: 'withPoints'},
@@ -136,10 +149,6 @@ var filesArr = [
     new createInfo('dijkstra-family', '2.2', [
         { v: '2.2', n: 'dijkstra', d: 'dijkstra'},
         { v: '2.3', n: 'dijkstra', d: 'dijkstra'},
-    ]),
-    new createInfo('contraction-family', '2.2', [
-        { v: '2.2', n: 'contraction', d: 'contraction'},
-        { v: '2.3', n: 'contraction', d: 'contraction'},
     ]),
     new createInfo('allpairs-family', '2.2', [
         { v: '2.2', n: 'allpairs', d: 'allpairs'},
@@ -190,13 +199,13 @@ var filesArr = [
     ]),
     new createInfo('pgr_KSP', '2.0', [
         { v: '2.0', n: 'index', d: 'ksp'},
-        { v: '2.1', n: 'index', d: 'ksp'},
+        { v: '2.1', n: 'ksp_v3', d: 'ksp'},
         { v: '2.2', n: 'pgr_ksp', d: 'ksp'},
         { v: '2.3', n: 'pgr_ksp', d: 'ksp'},
     ]),
     new createInfo('pgr_dijkstra', '2.0', [
         { v: '2.0', n: 'index', d: 'dijkstra'},
-        { v: '2.1', n: 'index', d: 'dijkstra'},
+        { v: '2.1', n: 'dijkstra_v3', d: 'dijkstra'},
         { v: '2.2', n: 'pgr_dijkstra', d: 'dijkstra'},
         { v: '2.3', n: 'pgr_dijkstra', d: 'dijkstra'}
     ]),
@@ -267,10 +276,10 @@ var filesArr = [
         { v: '2.3', n: 'pgr_analyzeGraph', d: 'topology'},
     ]),
     new createInfo('pgRouting-concepts', '2.0', [
-        { v: '2.0', n: 'doc/src/tutorial/tutorial', d: ''},
-        { v: '2.1', n: 'doc/src/tutorial/tutorial', d: ''},
-        { v: '2.2', n: 'doc/src/tutorial/tutorial', d: ''},
-        { v: '2.3', n: 'doc/src/tutorial/tutorial', d: ''},
+        { v: '2.0', n: 'doc/src/tutorial/index', d: ''},
+        { v: '2.1', n: 'doc/src/tutorial/index', d: ''},
+        { v: '2.2', n: 'doc/src/tutorial/index', d: ''},
+        { v: '2.3', n: 'doc/src/tutorial/index', d: ''},
     ]),
     new createInfo('support', '2.0', [
         { v: '2.0', n: 'doc/src/introduction/support', d: ''},

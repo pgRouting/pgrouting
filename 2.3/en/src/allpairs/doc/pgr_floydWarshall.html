@@ -21,6 +21,7 @@
       };
     </script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
+<script src="../../../_static/page_history.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -47,8 +48,9 @@
 
       </div>
       <div class="content">
-        
-        
+ <div class="line"><br/></div> <script> document.write(get_history("pgr_floydWarshall","en")); </script>
+
+
   <div class="section" id="pgr-floydwarshall">
 <span id="id1"></span><h1>pgr_floydWarshall<a class="headerlink" href="#pgr-floydwarshall" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="synopsis">
@@ -116,7 +118,7 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_floydWarshall(
     &#39;SELECT id, source, target, cost FROM edge_table where id &lt; 5&#39;
 );
- start_vid | end_vid | agg_cost 
+ start_vid | end_vid | agg_cost
 -----------+---------+----------
          1 |       2 |        1
          1 |       5 |        2
@@ -143,7 +145,7 @@ RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
     &#39;SELECT id, source, target, cost FROM edge_table where id &lt; 5&#39;,
     false
 );
- start_vid | end_vid | agg_cost 
+ start_vid | end_vid | agg_cost
 -----------+---------+----------
          1 |       2 |        1
          1 |       5 |        2
