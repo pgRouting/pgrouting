@@ -67,9 +67,6 @@ class Vehicle_pickDeliver : public Vehicle {
              double p_speed,
              double factor);
 
-     Vehicle_pickDeliver(const Vehicle_pickDeliver &) = default;
-
-
      void set_compatibles(const PD_Orders &orders);
      bool is_order_feasable(const Order &order) const;
      Identifiers<size_t> feasable_orders() const {return m_feasable_orders;}

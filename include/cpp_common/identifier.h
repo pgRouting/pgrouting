@@ -39,7 +39,6 @@ namespace pgrouting {
 class Identifier {
  public:
      Identifier() = default;
-     Identifier(const Identifier &v) = default;
      Identifier(const size_t _idx, const int64_t _id);
 
      int64_t id() const;
