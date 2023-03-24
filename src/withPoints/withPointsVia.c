@@ -58,7 +58,7 @@ process(
      * Processing Via
      */
     size_t size_vias = 0;
-    int64_t* vias = (int64_t*) pgr_get_bigIntArray(&size_vias, viasArr);
+    int64_t* vias = (int64_t*) pgr_get_bigIntArray(&size_vias, viasArr, false);
 
     // TODO(vicky) figure out what happens when one point or 0 points are given
 

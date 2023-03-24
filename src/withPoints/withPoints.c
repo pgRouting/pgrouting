@@ -107,9 +107,9 @@ process(
 
         if (starts && ends) {
             start_pidsArr = (int64_t*)
-                pgr_get_bigIntArray(&size_start_pidsArr, starts);
+                pgr_get_bigIntArray(&size_start_pidsArr, starts, false);
             end_pidsArr = (int64_t*)
-                pgr_get_bigIntArray(&size_end_pidsArr, ends);
+                pgr_get_bigIntArray(&size_end_pidsArr, ends, false);
         } else if (combinations_sql) {
             pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
         }
@@ -118,9 +118,9 @@ process(
         pgr_get_edges(edges_no_points_query, &edges, &total_edges, false, false);
 
         end_pidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_end_pidsArr, starts);
+            pgr_get_bigIntArray(&size_end_pidsArr, starts, false);
         start_pidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_start_pidsArr, ends);
+            pgr_get_bigIntArray(&size_start_pidsArr, ends, false);
     }
 
 
