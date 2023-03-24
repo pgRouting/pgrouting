@@ -22,8 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "c_common/orders_input.h"
-
+#include "c_common/pgdata_getters.h"
 #include "c_types/column_info_t.h"
 
 #include "c_common/debug_macro.h"
@@ -203,13 +202,15 @@ pgr_get_pd_orders_general(
 }
 
 void
-pgr_get_pd_orders(
+pgr_get_orders(
         char *pd_orders_sql,
         Orders_t **pd_orders,
-        size_t *total_pd_orders) {
-    pgr_get_pd_orders_general(pd_orders_sql, pd_orders, total_pd_orders, false);
+        size_t *total_pd_orders,
+        bool with_id) {
+    pgr_get_pd_orders_general(pd_orders_sql, pd_orders, total_pd_orders, with_id);
 }
 
+#if 0
 void
 pgr_get_pd_orders_with_id(
         char *pd_orders_sql,
@@ -217,3 +218,4 @@ pgr_get_pd_orders_with_id(
         size_t *total_pd_orders) {
     pgr_get_pd_orders_general(pd_orders_sql, pd_orders, total_pd_orders, true);
 }
+#endif

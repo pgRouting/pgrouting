@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: matrixRows_input.c
+File: coordindates_input.c
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 vicky_vergara@hotmail.com
@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "c_common/coordinates_input.h"
+#include "c_common/pgdata_getters.h"
 
 #include "c_types/column_info_t.h"
 #include "c_types/coordinate_t.h"
