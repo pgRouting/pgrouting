@@ -36,9 +36,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 
-#include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
-#include "c_common/combinations_input.h"
+#include "c_common/pgdata_getters.h"
 
 #include "drivers/bellman_ford/bellman_ford_neg_driver.h"  // the link to the C++ code of the function
 
@@ -93,7 +92,7 @@ process(
     Edge_t *positive_edges = NULL;
     size_t total_positive_edges = 0;
 
-    pgr_get_edges(edges_sql, &positive_edges, &total_positive_edges);
+    pgr_get_edges(edges_sql, &positive_edges, &total_positive_edges, true, false);
     PGR_DBG(
             "Total positive weighted edges in query: %ld",
             total_positive_edges);
@@ -101,7 +100,7 @@ process(
     Edge_t *negative_edges = NULL;
     size_t total_negative_edges = 0;
 
-    pgr_get_edges(neg_edges_sql, &negative_edges, &total_negative_edges);
+    pgr_get_edges(neg_edges_sql, &negative_edges, &total_negative_edges, true, false);
     PGR_DBG(
             "Total negative weighted edges in query: %ld",
             total_negative_edges);

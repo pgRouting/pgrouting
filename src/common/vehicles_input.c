@@ -22,12 +22,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "c_common/vehicles_input.h"
-
 #include <limits.h>
 #include <float.h>
 
-
+#include "c_common/pgdata_getters.h"
 #include "c_types/column_info_t.h"
 #include "c_types/pickDeliver/vehicle_t.h"
 #include "c_common/debug_macro.h"
@@ -259,10 +257,12 @@ void
 pgr_get_vehicles(
         char *vehicles_sql,
         Vehicle_t **vehicles,
-        size_t *total_vehicles) {
-    pgr_get_vehicles_general(vehicles_sql, vehicles, total_vehicles, false);
+        size_t *total_vehicles,
+        bool with_id) {
+    pgr_get_vehicles_general(vehicles_sql, vehicles, total_vehicles, with_id);
 }
 
+#if 0
 void
 pgr_get_vehicles_with_id(
         char *vehicles_sql,
@@ -270,4 +270,5 @@ pgr_get_vehicles_with_id(
         size_t *total_vehicles) {
     pgr_get_vehicles_general(vehicles_sql, vehicles, total_vehicles, true);
 }
+#endif
 

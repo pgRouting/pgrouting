@@ -77,7 +77,7 @@ class PgrCardinalityGraph {
       return E_to_id[e];
   }
 
-  PgrCardinalityGraph(Edge_bool_t_rt *data_edges, size_t total_tuples) {
+  PgrCardinalityGraph(Edge_bool_t *data_edges, size_t total_tuples) {
       std::set<int64_t> vertices;
       for (size_t i = 0; i < total_tuples; ++i) {
           vertices.insert(data_edges[i].source);
@@ -102,11 +102,11 @@ class PgrCardinalityGraph {
       }
   }
 
-  std::vector<Edge_bool_t_rt>
+  std::vector<Only_int_rt>
   get_matched_vertices() {
       /* TODO(v4) source & target are to be removed */
       std::vector<V> mate_map(boost::num_vertices(boost_graph));
-      std::vector<Edge_bool_t_rt> matched_vertices;
+      std::vector<Only_int_rt> matched_vertices;
       maximum_cardinality_matching(mate_map);
 
       V_it vi, vi_end;
@@ -129,7 +129,7 @@ class PgrCardinalityGraph {
           if (((uint64_t)mate_map[*vi]
                       != boost::graph_traits<G>::null_vertex())
                   && (*vi < (uint64_t)mate_map[*vi])) {
-              Edge_bool_t_rt matched_couple;
+              Only_int_rt matched_couple;
               matched_couple.source = get_vertex_id(*vi);
               matched_couple.target = get_vertex_id(mate_map[*vi]);
               matched_couple.edge_id = get_edge_id(e);
@@ -137,7 +137,7 @@ class PgrCardinalityGraph {
           }
       }
       std::sort(matched_vertices.begin(), matched_vertices.end(),
-              [](const Edge_bool_t_rt &a, const Edge_bool_t_rt &b)
+              [](const Only_int_rt &a, const Only_int_rt &b)
               -> bool { return a.edge_id < b.edge_id; });
       return matched_vertices;
   }

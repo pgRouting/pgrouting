@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 
-#include "c_common/edges_input.h"
+#include "c_common/pgdata_getters.h"
 #include "c_types/ii_t_rt.h"
 
 
@@ -76,7 +76,7 @@ process(
     Edge_t *edges = NULL;
     size_t total_edges = 0;
 
-    pgr_get_edges(edges_sql, &edges, &total_edges);
+    pgr_get_edges(edges_sql, &edges, &total_edges, true, false);
     if (total_edges == 0) {
         ereport(WARNING,
                 (errmsg("Insufficient data edges SQL."),

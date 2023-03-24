@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 
-#include "c_common/edges_input.h"
+#include "c_common/pgdata_getters.h"
 
 #include "drivers/allpairs/floydWarshall_driver.h"
 
@@ -55,7 +55,7 @@ process(
     PGR_DBG("Load data");
     Edge_t *edges = NULL;
     size_t total_tuples = 0;
-    pgr_get_edges_no_id(edges_sql, &edges, &total_tuples);
+    pgr_get_edges(edges_sql, &edges, &total_tuples, true, true);
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");

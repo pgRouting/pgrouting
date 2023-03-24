@@ -31,9 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 
-#include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
-#include "c_common/points_input.h"
+#include "c_common/pgdata_getters.h"
 
 #include "drivers/withPoints/get_new_queries.h"
 #include "drivers/driving_distance/withPoints_dd_driver.h"
@@ -79,12 +78,11 @@ void process(
 
     Edge_t *edges_of_points = NULL;
     size_t total_edges_of_points = 0;
-    pgr_get_edges(
-            edges_of_points_query, &edges_of_points, &total_edges_of_points);
+    pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points, true, false);
 
     Edge_t *edges = NULL;
     size_t total_edges = 0;
-    pgr_get_edges(edges_no_points_query, &edges, &total_edges);
+    pgr_get_edges(edges_no_points_query, &edges, &total_edges, true, false);
 
     PGR_DBG("freeing allocated memory not used anymore");
     pfree(edges_of_points_query);

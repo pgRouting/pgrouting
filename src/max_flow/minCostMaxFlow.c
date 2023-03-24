@@ -48,19 +48,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "utils/array.h"
 
 
-/* for macro PGR_DBG */
 #include "c_common/debug_macro.h"
-/* for pgr_global_report */
 #include "c_common/e_report.h"
-/* for time_msg & clock */
 #include "c_common/time_msg.h"
-/* for functions to get edges information */
-#include "c_common/edges_input.h"
-/* for functions to get array input */
 #include "c_common/arrays_input.h"
-#include "c_common/combinations_input.h"
+#include "c_common/pgdata_getters.h"
 
-#include "drivers/max_flow/minCostMaxFlow_driver.h"  // the link to the C++ code of the function
+#include "drivers/max_flow/minCostMaxFlow_driver.h"
 
 #include "c_types/flow_t.h"
 
