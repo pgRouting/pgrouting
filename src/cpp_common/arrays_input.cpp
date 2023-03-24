@@ -138,8 +138,9 @@ get_bigIntArr(ArrayType *v, size_t *arrlen, bool allow_empty) {
 
 /**
  * @param[out] arrlen Length of the array
- * @param[in] input Input type of the array
- * @returns Returns the output of @a pgr_get_bitIntArray when @a allow_empty is set to false.
+ * @param[in] input the postgres array
+ * @param[in] allow_empty when true, empty arrays are accepted.
+ * @returns Returns a C array of integers
  */
 
 int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input, bool allow_empty) {
