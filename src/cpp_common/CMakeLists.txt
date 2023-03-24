@@ -5,4 +5,5 @@ ADD_LIBRARY(cpp_common OBJECT
     bpoint.cpp
     pgr_messages.cpp
     combinations.cpp
+    arrays_input.cpp
     )

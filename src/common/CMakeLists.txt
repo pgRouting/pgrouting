@@ -16,7 +16,6 @@ ADD_LIBRARY(common OBJECT
     restrictions_input.c
 
     coordinates_input.c
-    arrays_input.c
     delauny_input.c
 
     check_parameters.c
