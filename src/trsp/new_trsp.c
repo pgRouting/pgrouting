@@ -41,10 +41,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/restriction_t.h"
 #include "c_types/path_rt.h"
 
-#include "c_common/edges_input.h"
-#include "c_common/restrictions_input.h"
 #include "c_common/arrays_input.h"
-#include "c_common/combinations_input.h"
+#include "c_common/pgdata_getters.h"
 
 PGDLLEXPORT Datum _trsp(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_trsp);
@@ -83,7 +81,7 @@ void process(
     Restriction_t * restrictions = NULL;
     size_t total_restrictions = 0;
 
-    pgr_get_edges(edges_sql, &edges, &total_edges);
+    pgr_get_edges(edges_sql, &edges, &total_edges, true, false);
 
     if (total_edges == 0) {
         pgr_SPI_finish();

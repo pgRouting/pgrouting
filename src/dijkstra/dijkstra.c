@@ -42,9 +42,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
-#include "c_common/combinations_input.h"
+#include "c_common/pgdata_getters.h"
 #include "drivers/dijkstra/dijkstra_driver.h"
 
 PG_MODULE_MAGIC;
@@ -76,13 +75,13 @@ process(
     Edge_t *edges = NULL;
     size_t total_edges = 0;
     if (normal) {
-        pgr_get_edges(edges_sql, &edges, &total_edges);
+        pgr_get_edges(edges_sql, &edges, &total_edges, true, false);
         start_vidsArr = (int64_t*)
             pgr_get_bigIntArray(&size_start_vidsArr, starts);
         end_vidsArr = (int64_t*)
             pgr_get_bigIntArray(&size_end_vidsArr, ends);
     } else {
-        pgr_get_edges_reversed(edges_sql, &edges, &total_edges);
+        pgr_get_edges(edges_sql, &edges, &total_edges, false, false);
         end_vidsArr = (int64_t*)
             pgr_get_bigIntArray(&size_end_vidsArr, starts);
         start_vidsArr = (int64_t*)
@@ -171,7 +170,7 @@ process_combinations(
     II_t_rt *combinations = NULL;
     size_t total_combinations = 0;
 
-    pgr_get_edges(edges_sql, &edges, &total_edges);
+    pgr_get_edges(edges_sql, &edges, &total_edges, true, false);
 
     if (total_edges == 0) {
         pgr_SPI_finish();

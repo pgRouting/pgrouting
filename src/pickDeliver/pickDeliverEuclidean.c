@@ -33,8 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/orders_input.h"
-#include "c_common/vehicles_input.h"
+#include "c_common/pgdata_getters.h"
 #include "c_types/iid_t_rt.h"
 #include "c_types/pickDeliver/orders_t.h"
 #include "c_types/pickDeliver/vehicle_t.h"
@@ -89,14 +88,12 @@ process(
     PGR_DBG("Load orders");
     Orders_t *pd_orders_arr = NULL;
     size_t total_pd_orders = 0;
-    pgr_get_pd_orders(pd_orders_sql,
-           &pd_orders_arr, &total_pd_orders);
+    pgr_get_orders(pd_orders_sql, &pd_orders_arr, &total_pd_orders, false);
 
     PGR_DBG("Load vehicles");
     Vehicle_t *vehicles_arr = NULL;
     size_t total_vehicles = 0;
-    pgr_get_vehicles(vehicles_sql,
-           &vehicles_arr, &total_vehicles);
+    pgr_get_vehicles(vehicles_sql, &vehicles_arr, &total_vehicles, false);
     PGR_DBG("total vehicles %ld", total_vehicles);
 
     size_t i;

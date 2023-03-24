@@ -35,9 +35,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
-#include "c_common/combinations_input.h"
+#include "c_common/pgdata_getters.h"
 #include "c_common/check_parameters.h"
 
 #include "drivers/astar/astar_driver.h"
@@ -100,7 +99,7 @@ process(char* edges_sql,
     size_t total_combinations = 0;
 
     if (normal) {
-        pgr_get_edges_xy(edges_sql, &edges, &total_edges);
+        pgr_get_edges_xy(edges_sql, &edges, &total_edges, true);
         if (starts && ends) {
             start_vidsArr = (int64_t*)
                 pgr_get_bigIntArray(&size_start_vidsArr, starts);
@@ -110,7 +109,7 @@ process(char* edges_sql,
             pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
         }
     } else {
-        pgr_get_edges_xy_reversed(edges_sql, &edges, &total_edges);
+        pgr_get_edges_xy(edges_sql, &edges, &total_edges, false);
         end_vidsArr = (int64_t*)
             pgr_get_bigIntArray(&size_end_vidsArr, starts);
         start_vidsArr = (int64_t*)

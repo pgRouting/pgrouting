@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 
 
-#include "c_common/edges_input.h"
+#include "c_common/pgdata_getters.h"
 #include "c_types/geom_text_rt.h"
 
 #include "drivers/alpha_shape/alphaShape_driver.h"
@@ -50,7 +50,7 @@ static void process(
     Edge_xy_t *edgesArr = NULL;
     size_t edgesSize = 0;
 
-    pgr_get_edges_xy(edges_sql, &edgesArr, &edgesSize);
+    pgr_get_edges_xy(edges_sql, &edgesArr, &edgesSize, true);
 
     PGR_DBG("total edges %ld", edgesSize);
     PGR_DBG("alpha %f", alpha);

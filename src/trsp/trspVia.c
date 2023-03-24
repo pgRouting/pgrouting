@@ -29,9 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
-#include "c_common/restrictions_input.h"
+#include "c_common/pgdata_getters.h"
 #include "drivers/trsp/trspVia_driver.h"
 
 PGDLLEXPORT Datum _pgr_trspvia(PG_FUNCTION_ARGS);
@@ -55,7 +54,7 @@ process(
 
     Edge_t* edges = NULL;
     size_t size_edges = 0;
-    pgr_get_edges(edges_sql, &edges, &size_edges);
+    pgr_get_edges(edges_sql, &edges, &size_edges, true, false);
 
     if (size_edges == 0) {
         if (via) pfree(via);
