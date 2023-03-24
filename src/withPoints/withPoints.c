@@ -114,6 +114,7 @@ process(
             pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
         }
     } else {
+        pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points, false, false);
         pgr_get_edges(edges_no_points_query, &edges, &total_edges, false, false);
 
         end_pidsArr = (int64_t*)
