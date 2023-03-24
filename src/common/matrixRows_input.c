@@ -22,13 +22,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "c_common/matrixRows_input.h"
 
 /* for bool */
 #   include <stdbool.h>
 /* for size_t */
 #   include <stddef.h>
 
+#include "c_common/pgdata_getters.h"
 #include "c_types/column_info_t.h"
 #include "c_types/iid_t_rt.h"
 

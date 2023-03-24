@@ -31,13 +31,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_MAX_FLOW_MAXIMUM_CARDINALITY_MATCHING_DRIVER_H_
 #pragma once
 
-/* for size-t */
+#include <stddef.h>
+
 #ifdef __cplusplus
-#   include <cstddef>
-using Edge_bool_t_rt = struct Edge_bool_t_rt;
+using Edge_bool_t = struct Edge_bool_t;
+using Only_int_rt = struct Only_int_rt;
 #else
-#   include <stddef.h>
-typedef struct Edge_bool_t_rt Edge_bool_t_rt;
+typedef struct Edge_bool_t Edge_bool_t;
+typedef struct Only_int_rt Only_int_rt;
 #endif
 
 #ifdef __cplusplus
@@ -46,16 +47,9 @@ extern "C" {
 
     void
         do_pgr_maximum_cardinality_matching(
-            Edge_bool_t_rt *data_edges,
-            size_t total_edges,
-            bool directed,
-
-            Edge_bool_t_rt **return_tuples,
-            size_t *return_count,
-
-            char** log_msg,
-            char** notice_msg,
-            char **err_msg);
+            Edge_bool_t*, size_t, bool,
+            Only_int_rt **, size_t *,
+            char**, char**, char **);
 
 
 #ifdef __cplusplus

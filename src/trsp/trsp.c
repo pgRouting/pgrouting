@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/trsp/trsp.h"
 #include "c_types/edge_t.h"
 
-#include "c_common/edges_input.h"
+#include "c_common/pgdata_getters.h"
 
 #include "trsp/trsp_core.h"
 typedef struct restrict_t restrict_t;
@@ -153,7 +153,7 @@ static int compute_trsp(
 
   Edge_t *edges = NULL;
   size_t total_tuples = 0;
-  pgr_get_edges(sql, &edges, &total_tuples);
+  pgr_get_edges(sql, &edges, &total_tuples, true, false);
 
   // defining min and max vertex id
   int64_t v_max_id = 0;

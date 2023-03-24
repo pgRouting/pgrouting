@@ -37,10 +37,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 
-#include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
-#include "c_common/points_input.h"
-#include "c_common/combinations_input.h"
+#include "c_common/pgdata_getters.h"
 #include "drivers/withPoints/get_new_queries.h"
 #include "drivers/withPoints/withPoints_driver.h"
 
@@ -104,11 +102,8 @@ process(
     size_t total_edges = 0;
 
     if (normal) {
-        pgr_get_edges(
-                edges_of_points_query,
-                &edges_of_points,
-                &total_edges_of_points);
-        pgr_get_edges(edges_no_points_query, &edges, &total_edges);
+        pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points, true, false);
+        pgr_get_edges(edges_no_points_query, &edges, &total_edges, true, false);
 
         if (starts && ends) {
             start_pidsArr = (int64_t*)
@@ -119,11 +114,8 @@ process(
             pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
         }
     } else {
-        pgr_get_edges_reversed(
-                edges_of_points_query,
-                &edges_of_points,
-                &total_edges_of_points);
-        pgr_get_edges_reversed(edges_no_points_query, &edges, &total_edges);
+        pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points, false, false);
+        pgr_get_edges(edges_no_points_query, &edges, &total_edges, false, false);
 
         end_pidsArr = (int64_t*)
             pgr_get_bigIntArray(&size_end_pidsArr, starts);

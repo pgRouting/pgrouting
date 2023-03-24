@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/edges_input.h"
+#include "c_common/pgdata_getters.h"
 
 #include "c_types/edge_bool_t_rt.h"
 
@@ -51,11 +51,11 @@ void
 process(
     char *edges_sql,
     bool directed,
-    Edge_bool_t_rt **result_tuples,
-    size_t *result_count) {
+    Only_int_rt** result_tuples,
+    size_t* result_count) {
     pgr_SPI_connect();
 
-    Edge_bool_t_rt *edges = NULL;
+    Edge_bool_t* edges = NULL;
     size_t total_edges = 0;
     pgr_get_basic_edges(edges_sql, &edges, &total_edges);
 
@@ -106,8 +106,7 @@ _pgr_maxcardinalitymatch(PG_FUNCTION_ARGS) {
     FuncCallContext *funcctx;
     TupleDesc tuple_desc;
 
-    /**************************************************************************/
-    Edge_bool_t_rt *result_tuples = NULL;
+    Only_int_rt* result_tuples = NULL;
     size_t result_count = 0;
     /**************************************************************************/
 
@@ -143,7 +142,7 @@ _pgr_maxcardinalitymatch(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (Edge_bool_t_rt *) funcctx->user_fctx;
+    result_tuples = (Only_int_rt *) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple tuple;
