@@ -37,8 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/edges_input.h"
-#include "c_common/arrays_input.h"
+#include "c_common/pgdata_getters.h"
 #include "drivers/topologicalSort/topologicalSort_driver.h"
 #if 0
 PG_MODULE_MAGIC;
@@ -56,7 +55,7 @@ process(
 
     Edge_t *edges = NULL;
     size_t total_edges = 0;
-    pgr_get_edges(edges_sql, &edges, &total_edges);
+    pgr_get_edges(edges_sql, &edges, &total_edges, true, false);
 
     PGR_DBG("Starting timer");
     clock_t start_t = clock();

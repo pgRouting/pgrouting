@@ -35,12 +35,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stdint.h>
 #endif
 
-struct Edge_bool_t_rt {
+struct Edge_bool_t {
   int64_t id;
   int64_t source;
   int64_t target;
   bool going;
-  bool coming;
+};
+
+/* TODO on v4, only the edge_id is returned
+ * source and target are kept for backward compatability */
+struct Only_int_rt {
+  int64_t source;
+  int64_t target;
   int64_t edge_id;
 };
 

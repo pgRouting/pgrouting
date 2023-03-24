@@ -22,7 +22,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "c_common/edges_input.h"
 
 #include <math.h>
 #include <float.h>
@@ -34,17 +33,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stddef.h>
 #endif
 
+#include "c_common/pgdata_getters.h"
+#include "c_common/arrays_input.h"
 #include "c_types/column_info_t.h"
 #include "c_types/edge_bool_t_rt.h"
 #include "c_types/costFlow_t.h"
 #include "c_types/edge_xy_t.h"
+#include "c_types/flow_t.h"
+#include "c_types/edge_t.h"
 
 #include "c_common/debug_macro.h"
 #include "c_common/get_check_data.h"
 #include "c_common/time_msg.h"
 
-#include "c_types/flow_t.h"
-#include "c_types/edge_t.h"
 
 /*
  * Only for undirected graph, without weights on the costs
@@ -55,7 +56,7 @@ void fetch_basic_edge(
     TupleDesc *tupdesc,
     Column_info_t info[7],
     int64_t *default_id,
-    Edge_bool_t_rt *edge,
+    Edge_bool_t *edge,
     size_t *valid_edges) {
     if (column_found(info[0].colNumber)) {
         edge->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
@@ -68,7 +69,6 @@ void fetch_basic_edge(
     edge->source = pgr_SPI_getBigInt(tuple, tupdesc, info[1]);
     edge->target = pgr_SPI_getBigInt(tuple, tupdesc, info[2]);
 
-    edge->coming = false;
     if (new_columns) {
         edge->going = pgr_SPI_getFloat8(tuple, tupdesc, info[5]) > 0
             || (column_found(info[6].colNumber)
@@ -611,7 +611,7 @@ static
 void
 get_edges_basic(
     char *sql,
-    Edge_bool_t_rt **edges,
+    Edge_bool_t **edges,
     size_t *totalTuples,
     bool ignore_id) {
     clock_t start_t = clock();
@@ -672,11 +672,11 @@ get_edges_basic(
 
         if (ntuples > 0) {
             if ((*edges) == NULL)
-                (*edges) = (Edge_bool_t_rt *)palloc0(
-                        total_tuples * sizeof(Edge_bool_t_rt));
+                (*edges) = (Edge_bool_t *)palloc0(
+                        total_tuples * sizeof(Edge_bool_t));
             else
-                (*edges) = (Edge_bool_t_rt *)repalloc(
-                        (*edges), total_tuples * sizeof(Edge_bool_t_rt));
+                (*edges) = (Edge_bool_t *)repalloc(
+                        (*edges), total_tuples * sizeof(Edge_bool_t));
 
             if ((*edges) == NULL) {
                 elog(ERROR, "Out of memory");
@@ -715,8 +715,7 @@ pgr_get_flow_edges(
     char *sql,
     Edge_t **edges,
     size_t *total_edges) {
-    bool ignore_id = false;
-    get_edges_flow(sql, edges, total_edges, ignore_id);
+    get_edges_flow(sql, edges, total_edges, true);
 }
 
 /* select id, source, target, capacity, reverse_capacity, cost, reverse_cost */
@@ -725,8 +724,7 @@ pgr_get_costFlow_edges(
     char *sql,
     CostFlow_t **edges,
     size_t *total_edges) {
-    bool ignore_id = false;
-    get_edges_costFlow(sql, edges, total_edges, ignore_id);
+    get_edges_costFlow(sql, edges, total_edges, true);
 }
 
 /* select id, source, target, cost, reverse_cost */
@@ -734,31 +732,9 @@ void
 pgr_get_edges(
         char *edges_sql,
         Edge_t **edges,
-        size_t *total_edges) {
-    bool ignore_id = false;
-    bool normal = true;
-    get_edges_5_columns(edges_sql, edges, total_edges, ignore_id, normal);
-}
-
-/* select id, source AS target, target AS source, cost, reverse_cost */
-void
-pgr_get_edges_reversed(
-        char *edges_sql,
-        Edge_t **edges,
-        size_t *total_edges) {
-    bool ignore_id = false;
-    bool normal = false;
-    get_edges_5_columns(edges_sql, edges, total_edges, ignore_id, normal);
-}
-
-/* select source, target, cost, reverse_cost */
-void
-pgr_get_edges_no_id(
-        char *edges_sql,
-        Edge_t **edges,
-        size_t *total_edges) {
-    bool ignore_id = true;
-    bool normal = true;
+        size_t *total_edges,
+        bool normal,
+        bool ignore_id) {
     get_edges_5_columns(edges_sql, edges, total_edges, ignore_id, normal);
 }
 
@@ -767,29 +743,16 @@ void
 pgr_get_edges_xy(
         char *edges_sql,
         Edge_xy_t **edges,
-        size_t *total_edges) {
-    get_edges_9_columns(edges_sql, edges, total_edges, true);
-}
-
-/* select id,
- * source AS target,
- * target AS source,
- * cost, reverse_cost,
- * x1, y1, x2, y2 */
-void
-pgr_get_edges_xy_reversed(
-        char *edges_sql,
-        Edge_xy_t **edges,
-        size_t *total_edges) {
-    get_edges_9_columns(edges_sql, edges, total_edges, false);
+        size_t *total_edges,
+        bool normal) {
+    get_edges_9_columns(edges_sql, edges, total_edges, normal);
 }
 
 /* used in flow algorithms */
 void
 pgr_get_basic_edges(
         char *sql,
-        Edge_bool_t_rt **edges,
+        Edge_bool_t **edges,
         size_t *total_edges) {
-    bool ignore_id = false;
-    get_edges_basic(sql, edges, total_edges, ignore_id);
+    get_edges_basic(sql, edges, total_edges, true);
 }
