@@ -91,7 +91,6 @@ class Vehicle : public Identifier {
      std::vector<Schedule_rt>
            get_postgres_result(int vid) const;
 
-     Vehicle(const Vehicle &) = default;
      Vehicle(
              size_t idx,
              int64_t id,

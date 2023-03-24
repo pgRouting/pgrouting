@@ -59,7 +59,6 @@ class Path {
     Path(int64_t s_id, int64_t e_id)
         : m_start_id(s_id), m_end_id(e_id), m_tot_cost(0)
     {}
-    Path(const Path&) = default;
 
     int64_t start_id() const {return m_start_id;}
     void start_id(int64_t value) {m_start_id = value;}

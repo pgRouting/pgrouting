@@ -47,8 +47,6 @@ class Order : public Identifier {
      Order(size_t p_id, int64_t p_idx,
              const Vehicle_node &p_pickup,
              const Vehicle_node &p_deliver);
-
-     Order(const Order &) = default;
      /*!@}*/
 
 

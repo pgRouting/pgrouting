@@ -40,7 +40,6 @@ namespace pgrouting {
 class XY_vertex {
  public:
   XY_vertex() = default;
-  XY_vertex(const XY_vertex &) = default;
   XY_vertex(const int64_t _id, double _x, double _y) :
       id(_id), point(_x, _y) {
       }
