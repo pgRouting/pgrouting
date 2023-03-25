@@ -50,7 +50,7 @@ process(
     pgr_SPI_connect();
 
     size_t size_via = 0;
-    int64_t* via = (int64_t*) pgr_get_bigIntArray(&size_via, via_arr);
+    int64_t* via = (int64_t*) pgr_get_bigIntArray(&size_via, via_arr, false);
 
     Edge_t* edges = NULL;
     size_t size_edges = 0;

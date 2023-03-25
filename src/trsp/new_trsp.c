@@ -91,9 +91,9 @@ void process(
 
     if (starts && ends) {
         start_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_start_vidsArr, starts);
+            pgr_get_bigIntArray(&size_start_vidsArr, starts, false);
         end_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_end_vidsArr, ends);
+            pgr_get_bigIntArray(&size_end_vidsArr, ends, false);
     } else if (combinations_sql) {
         pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
     }
