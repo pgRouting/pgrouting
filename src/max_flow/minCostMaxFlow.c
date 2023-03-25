@@ -94,9 +94,9 @@ process(
 
     if (starts && ends) {
         sourceVertices = (int64_t*)
-            pgr_get_bigIntArray(&sizeSourceVerticesArr, starts);
+            pgr_get_bigIntArray(&sizeSourceVerticesArr, starts, false);
         sinkVertices = (int64_t*)
-            pgr_get_bigIntArray(&sizeSinkVerticesArr, ends);
+            pgr_get_bigIntArray(&sizeSinkVerticesArr, ends, false);
     } else if (combinations_sql) {
         pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
         if (total_combinations == 0) {

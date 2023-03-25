@@ -102,18 +102,18 @@ process(char* edges_sql,
         pgr_get_edges_xy(edges_sql, &edges, &total_edges, true);
         if (starts && ends) {
             start_vidsArr = (int64_t*)
-                pgr_get_bigIntArray(&size_start_vidsArr, starts);
+                pgr_get_bigIntArray(&size_start_vidsArr, starts, false);
             end_vidsArr = (int64_t*)
-                pgr_get_bigIntArray(&size_end_vidsArr, ends);
+                pgr_get_bigIntArray(&size_end_vidsArr, ends, false);
         } else if (combinations_sql) {
             pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
         }
     } else {
         pgr_get_edges_xy(edges_sql, &edges, &total_edges, false);
         end_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_end_vidsArr, starts);
+            pgr_get_bigIntArray(&size_end_vidsArr, starts, false);
         start_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_start_vidsArr, ends);
+            pgr_get_bigIntArray(&size_start_vidsArr, ends, false);
     }
 
     if (total_edges == 0) {

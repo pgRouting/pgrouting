@@ -1,8 +1,9 @@
 /*PGR-GNU*****************************************************************
 File: arrays_input.h
 
+Copyright (c) 2023 Celia Virginia Vergara Castillo
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+mail: vicky at erosion.dev
 
 ------
 
@@ -26,15 +27,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_C_COMMON_ARRAYS_INPUT_H_
 #pragma once
 
-
+#include <stddef.h>
 #include <stdint.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <postgres.h>
 #include <utils/array.h>
 
 /** @brief Enforces the input array to be @b NOT empty */
-int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input);
+int64_t* pgr_get_bigIntArray(size_t*, ArrayType*, bool);
 
-/** @brief Allows the input array to be empty */
-int64_t* pgr_get_bigIntArray_allowEmpty(size_t *arrlen, ArrayType *input);
+#ifdef __cplusplus
+}
+#endif
 
 #endif  // INCLUDE_C_COMMON_ARRAYS_INPUT_H_

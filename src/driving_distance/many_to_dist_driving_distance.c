@@ -52,7 +52,7 @@ void process(
     pgr_SPI_connect();
 
     size_t size_start_vidsArr = 0;
-    int64_t* start_vidsArr = pgr_get_bigIntArray(&size_start_vidsArr, starts);
+    int64_t* start_vidsArr = pgr_get_bigIntArray(&size_start_vidsArr, starts, false);
 
     Edge_t *edges = NULL;
     size_t total_tuples = 0;
