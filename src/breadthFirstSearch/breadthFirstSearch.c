@@ -61,7 +61,7 @@ process(
 
     size_t size_start_vidsArr = 0;
     int64_t *start_vidsArr = (int64_t *)
-        pgr_get_bigIntArray(&size_start_vidsArr, starts);
+        pgr_get_bigIntArray(&size_start_vidsArr, starts, false);
     PGR_DBG("start_vidsArr size %ld ", size_start_vidsArr);
 
 
