@@ -49,7 +49,7 @@ Signatures
    | pgr_drivingDistance(`Edges SQL`_, **Root vids**, **distance**, [**options**])
    | **options:** [directed, equicost]
 
-   | RETURNS SET OF |result-dij-dd|
+   | RETURNS SET OF |result-dij-dd-m|
 
 .. index::
    single: drivingDistance(Single vertex)
@@ -62,7 +62,7 @@ Single Vertex
 
    | pgr_drivingDistance(`Edges SQL`_, **Root vid**,  **distance**, [``directed``])
 
-   | RETURNS SET OF |result-1-1|
+   | RETURNS SET OF |result-1-1-no-seq|
 
 :Example: From vertex :math:`11` for a distance of :math:`3.0`
 
