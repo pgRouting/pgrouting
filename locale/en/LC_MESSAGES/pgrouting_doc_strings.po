@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-17 11:06-0600\n"
+"POT-Creation-Date: 2023-03-27 12:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -6963,7 +6963,7 @@ msgstr ""
 msgid "**K**"
 msgstr ""
 
-msgid "Number of required paths"
+msgid "Number of required paths."
 msgstr ""
 
 msgid "KSP Optional parameters"
@@ -6972,7 +6972,7 @@ msgstr ""
 msgid "``heap_paths``"
 msgstr ""
 
-msgid "When ``false`` Returns at most K paths"
+msgid "When ``false`` Returns at most K paths."
 msgstr ""
 
 msgid "When ``true`` all the calculated paths while processing are returned."
@@ -14523,6 +14523,9 @@ msgid "`Points SQL`_ query as described."
 msgstr ""
 
 msgid "Identifier of the destination vertex."
+msgstr ""
+
+msgid "Number of required paths"
 msgstr ""
 
 msgid ""
