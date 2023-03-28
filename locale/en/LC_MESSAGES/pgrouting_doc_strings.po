@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-16 12:56-0600\n"
+"POT-Creation-Date: 2023-03-28 05:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10629,7 +10629,7 @@ msgstr ""
 msgid "**options:** [directed, equicost]"
 msgstr ""
 
-msgid "RETURNS SET OF |result-dij-dd|"
+msgid "RETURNS SET OF |result-dij-dd-m|"
 msgstr ""
 
 msgid "Single Vertex"
@@ -10639,9 +10639,6 @@ msgid "From vertex :math:`11` for a distance of :math:`3.0`"
 msgstr ""
 
 msgid "Multiple Vertices"
-msgstr ""
-
-msgid "RETURNS SET OF |result-dij-dd-m|"
 msgstr ""
 
 msgid ""
