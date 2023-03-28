@@ -81,7 +81,7 @@ Parameters
      - Identifier of the departure vertex.
    * - **end vid**
      - **ANY-INTEGER**
-     - Identifier of the departure vertex.
+     - Identifier of the arrival vertex.
    * - **K**
      - **ANY-INTEGER**
      - Number of required paths
