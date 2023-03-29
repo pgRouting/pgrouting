@@ -76,9 +76,9 @@ process(
 
     if (starts && ends) {
         source_vertices = (int64_t*)
-            pgr_get_bigIntArray(&size_source_verticesArr, starts, false);
+            pgr_get_bigIntArray(&size_source_verticesArr, starts);
         sink_vertices = (int64_t*)
-            pgr_get_bigIntArray(&size_sink_verticesArr, ends, false);
+            pgr_get_bigIntArray(&size_sink_verticesArr, ends);
     } else if (combinations_sql) {
         pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
         if (total_combinations == 0) {

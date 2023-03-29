@@ -68,11 +68,17 @@ process(char* edges_sql,
     pgr_SPI_connect();
 
     size_t size_forbidden_vertices = 0;
-    int64_t* forbidden_vertices = pgr_get_bigIntArray(&size_forbidden_vertices, forbidden, true);
+    int64_t* forbidden_vertices =
+        pgr_get_bigIntArray_allowEmpty(
+                &size_forbidden_vertices,
+                forbidden);
     PGR_DBG("size_forbidden_vertices %ld", size_forbidden_vertices);
 
     size_t size_contraction_order = 0;
-    int64_t* contraction_order = pgr_get_bigIntArray(&size_contraction_order, order, false);
+    int64_t* contraction_order =
+        pgr_get_bigIntArray(
+                &size_contraction_order,
+                order);
     PGR_DBG("size_contraction_order %ld ", size_contraction_order);
 
 

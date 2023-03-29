@@ -1,9 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: arrays_input.cpp
+File: arrays_input.c
 
-Copyright (c) 2023 Celia Virginia Vergara Castillo
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-mail: vicky at erosion.dev
+vicky_vergara@hotmail.com
 
 ------
 
@@ -25,17 +24,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_common/arrays_input.h"
 
-extern "C" {
+#include <assert.h>
 #include <utils/lsyscache.h>
 #include <catalog/pg_type.h>
-}
 
-#include "cpp_common/pgr_alloc.hpp"
-
-namespace {
-
-/** @brief get the array contents from postgres
- *
+#include "c_common/time_msg.h"
+#include "c_common/debug_macro.h"
+/**
+ * Function for array input
  * @details This function generates the array inputs according to their type
  * received through @a ArrayType *v parameter and store them in @a c_array. It
  * can be empty also if received @a allow_empty true. The cases of failure are:-
@@ -46,42 +42,46 @@ namespace {
  * 5. When null value is found in the array.
  *
  * All these failures are represented as error through @a elog.
- * @param[in] v Pointer to the postgres C array
- * @param[out] arrlen size of the C array
- * @param[in] allow_empty flag to allow empty arrays
- *
- * @pre the array has to be one dimension
- * @pre Must have elements (when allow_empty is false)
- *
- * @returns The resultant array
+ * @param[in] v The type of element to be processed.
+ * @param[out] arrlen The length of the array (To be determined in this function).
+ * @param[in] allow_empty Bool type parameter that tells us whether to consider empty
+ *                    array or not.
+ * @pre The initial value of @a *arrlen should be zero.
+ * @returns The resultant array i.e. @a c_array.
  */
+static
 int64_t*
-get_bigIntArr(ArrayType *v, size_t *arrlen, bool allow_empty) {
-    int64_t *c_array = nullptr;
+pgr_get_bigIntArr(ArrayType *v, size_t *arrlen, bool allow_empty) {
+    clock_t start_t = clock();
+    int64_t *c_array = NULL;
 
-    auto    element_type = ARR_ELEMTYPE(v);
-    auto    dim = ARR_DIMS(v);
-    auto    ndim = ARR_NDIM(v);
-    auto    nitems = ArrayGetNItems(ndim, dim);
-    Datum  *elements = nullptr;
-    bool   *nulls = nullptr;
+    Oid     element_type = ARR_ELEMTYPE(v);
+    int    *dim = ARR_DIMS(v);
+    int     ndim = ARR_NDIM(v);
+    int     nitems = ArrayGetNItems(ndim, dim);
+    Datum  *elements;
+    bool   *nulls;
     int16   typlen;
     bool    typbyval;
     char    typalign;
 
+    assert((*arrlen) == 0);
+
 
     if (allow_empty && (ndim == 0 || nitems <= 0)) {
-        return nullptr;
+        PGR_DBG("ndim %d nitems %d", ndim, nitems);
+        return (int64_t*)NULL;
     }
+    /* the array is not empty*/
 
     if (ndim != 1) {
         elog(ERROR, "One dimension expected");
-        return nullptr;
+        return (int64_t*)NULL;
     }
 
     if (nitems <= 0) {
         elog(ERROR, "No elements found");
-        return nullptr;
+        return (int64_t*)NULL;
     }
 
     get_typlenbyvalalign(element_type,
@@ -95,7 +95,7 @@ get_bigIntArr(ArrayType *v, size_t *arrlen, bool allow_empty) {
             break;
         default:
             elog(ERROR, "Expected array of ANY-INTEGER");
-            return nullptr;
+            return (int64_t*)NULL;
             break;
     }
 
@@ -103,23 +103,24 @@ get_bigIntArr(ArrayType *v, size_t *arrlen, bool allow_empty) {
             typalign, &elements, &nulls,
             &nitems);
 
-    c_array = pgr_alloc(static_cast<size_t>(nitems), (c_array));
+    c_array = (int64_t *) palloc(sizeof(int64_t) * (size_t)nitems);
     if (!c_array) {
         elog(ERROR, "Out of memory!");
     }
 
 
-    for (int i = 0; i < nitems; i++) {
+    int i;
+    for (i = 0; i < nitems; i++) {
         if (nulls[i]) {
             pfree(c_array);
             elog(ERROR, "NULL value found in Array!");
         } else {
             switch (element_type) {
                 case INT2OID:
-                    c_array[i] = static_cast<int64_t>(DatumGetInt16(elements[i]));
+                    c_array[i] = (int64_t) DatumGetInt16(elements[i]);
                     break;
                 case INT4OID:
-                    c_array[i] = static_cast<int64_t>(DatumGetInt32(elements[i]));
+                    c_array[i] = (int64_t) DatumGetInt32(elements[i]);
                     break;
                 case INT8OID:
                     c_array[i] = DatumGetInt64(elements[i]);
@@ -127,22 +128,31 @@ get_bigIntArr(ArrayType *v, size_t *arrlen, bool allow_empty) {
             }
         }
     }
-    (*arrlen) = static_cast<size_t>(nitems);
+    (*arrlen) = (size_t)nitems;
 
     pfree(elements);
     pfree(nulls);
+    PGR_DBG("Array size %ld", (*arrlen));
+    time_msg("reading Array", start_t, clock());
     return c_array;
 }
 
-}  // namespace
+/**
+ * @param[out] arrlen Length of the array
+ * @param[in] input Input type of the array
+ * @returns Returns the output of @a pgr_get_bitIntArray when @a allow_empty is set to false.
+ */
+
+int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input) {
+    return pgr_get_bigIntArr(input, arrlen, false);
+}
 
 /**
  * @param[out] arrlen Length of the array
- * @param[in] input the postgres array
- * @param[in] allow_empty when true, empty arrays are accepted.
- * @returns Returns a C array of integers
+ * @param[in] input Input type of the array
+ * @returns Returns the output of @a pgr_get_bitIntArray when @a allow_empty is set to true.
  */
 
-int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input, bool allow_empty) {
-    return get_bigIntArr(input, arrlen, allow_empty);
+int64_t* pgr_get_bigIntArray_allowEmpty(size_t *arrlen, ArrayType *input) {
+    return pgr_get_bigIntArr(input, arrlen, true);
 }

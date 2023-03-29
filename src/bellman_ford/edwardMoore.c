@@ -70,9 +70,9 @@ process(
 
     if (starts && ends) {
         start_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_start_vidsArr, starts, false);
+            pgr_get_bigIntArray(&size_start_vidsArr, starts);
         end_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_end_vidsArr, ends, false);
+            pgr_get_bigIntArray(&size_end_vidsArr, ends);
     } else if (combinations_sql) {
         pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
         if (total_combinations == 0) {

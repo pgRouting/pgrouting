@@ -77,15 +77,15 @@ process(
     if (normal) {
         pgr_get_edges(edges_sql, &edges, &total_edges, true, false);
         start_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_start_vidsArr, starts, false);
+            pgr_get_bigIntArray(&size_start_vidsArr, starts);
         end_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_end_vidsArr, ends, false);
+            pgr_get_bigIntArray(&size_end_vidsArr, ends);
     } else {
         pgr_get_edges(edges_sql, &edges, &total_edges, false, false);
         end_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_end_vidsArr, starts, false);
+            pgr_get_bigIntArray(&size_end_vidsArr, starts);
         start_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_start_vidsArr, ends, false);
+            pgr_get_bigIntArray(&size_start_vidsArr, ends);
     }
 
     if (total_edges == 0) {

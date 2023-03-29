@@ -323,7 +323,7 @@ pgr_SPI_getBigIntArr(
     */
     ArrayType *pg_array = DatumGetArrayTypeP(raw_array);
 
-    return pgr_get_bigIntArray((size_t*)the_size, pg_array, true);
+    return pgr_get_bigIntArray_allowEmpty((size_t*)the_size, pg_array);
 }
 
 /*!

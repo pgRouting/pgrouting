@@ -111,8 +111,8 @@ process(
 
     /* Managing departure & destination */
     if (starts && ends) {
-        start_pidsArr = (int64_t*) pgr_get_bigIntArray(&size_start_pidsArr, starts, false);
-        end_pidsArr = (int64_t*) pgr_get_bigIntArray(&size_end_pidsArr, ends, false);
+        start_pidsArr = (int64_t*) pgr_get_bigIntArray(&size_start_pidsArr, starts);
+        end_pidsArr = (int64_t*) pgr_get_bigIntArray(&size_end_pidsArr, ends);
     } else if (combinations_sql) {
         pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
     }
