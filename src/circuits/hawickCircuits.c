@@ -54,6 +54,8 @@ PG_FUNCTION_INFO_V1(_pgr_hawickcircuits);
  * @param edges_sql      the edges of the SQL query
  * @param result_tuples  the rows in the result
  * @param result_count   the count of rows in the result
+ *
+ * @returns void
  */
 
 static void

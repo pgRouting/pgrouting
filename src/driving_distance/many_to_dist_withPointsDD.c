@@ -61,7 +61,7 @@ void process(
     pgr_SPI_connect();
 
     size_t total_starts = 0;
-    int64_t* start_pidsArr = pgr_get_bigIntArray(&total_starts, starts, false);
+    int64_t* start_pidsArr = pgr_get_bigIntArray(&total_starts, starts);
     PGR_DBG("sourcesArr size %ld ", total_starts);
 
     Point_on_edge_t *points = NULL;

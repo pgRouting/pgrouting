@@ -69,7 +69,7 @@ process(
     }
 
     size_t size_rootsArr = 0;
-    int64_t* rootsArr = (int64_t*) pgr_get_bigIntArray(&size_rootsArr, roots, false);
+    int64_t* rootsArr = (int64_t*) pgr_get_bigIntArray(&size_rootsArr, roots);
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
