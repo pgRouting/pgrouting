@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.5.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-29 04:51+0000\n"
+"POT-Creation-Date: 2023-04-01 22:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -8386,7 +8386,7 @@ msgstr ""
 msgid "``pgr_degree`` -- Proposed"
 msgstr ""
 
-msgid "``pgr_degree`` — Calculates the vertices degree"
+msgid "``pgr_degree`` — For each vertex in an undirected graph, returns the count of edges incident to the vertex"
 msgstr ""
 
 msgid "Calculates the degree of the vertices of an **undirected** graph"
@@ -8399,6 +8399,9 @@ msgid "RETURNS SETOF |result-degree|"
 msgstr ""
 
 msgid "Extracting the vertex information"
+msgstr ""
+
+msgid "pgr_degree can utilize output from `pgr_extractVertices` or can have `pgr_extractVertices` embedded in the call. For decent size networks, it is best to prep your vertices table before hand and use that vertices table for pgr_degree calls."
 msgstr ""
 
 msgid "`Vertex SQL`_"
@@ -8460,6 +8463,12 @@ msgstr ""
 
 msgid "Degree from an existing table"
 msgstr ""
+
+msgid "If you have a vertices table already built using ``pgr_extractVertices`` and want the degree of the whole graph rather than a subset, you can forgo using pgr_degree and work with the ``in_edges`` and ``out_edges`` columns directly."
+msgstr ""
+
+msgid "If you have a vertices table already built using ``pgr_extractVertices`` and want the degree of the whole graph rather than a subset, you can forgo using pgr_degree and work with the ``in_edges`` and ``out_edges`` columns directly."
+msgstr "If you have a vertices table already built using ``pgr_extractVertices`` and want the degree of the whole graph rather than a subset, you can forgo using pgr_degree and work with the ``in_edges`` and ``out_edges`` columns directly."
 
 msgid ":doc:`pgr_extractVertices`"
 msgstr ""
@@ -12478,7 +12487,7 @@ msgstr ""
 msgid "These proposed functions do not modify the database."
 msgstr ""
 
-msgid ":doc:`pgr_degree` - Calculates the degree of the vertices of a graph."
+msgid ":doc:`pgr_degree` - Returns a set of vertices and corresponding count of incidet edges to the vertex."
 msgstr ""
 
 msgid ":doc:`pgr_extractVertices` - Extracts vertex information based on the edge table information."
