@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
+
 
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
@@ -84,16 +84,21 @@ process(
     }
 
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     PGR_DBG("Load orders");
     Orders_t *pd_orders_arr = NULL;
     size_t total_pd_orders = 0;
-    pgr_get_orders(pd_orders_sql, &pd_orders_arr, &total_pd_orders, false);
+    pgr_get_orders(pd_orders_sql, &pd_orders_arr, &total_pd_orders, false, &err_msg);
+    throw_error(err_msg, pd_orders_sql);
 
     PGR_DBG("Load vehicles");
     Vehicle_t *vehicles_arr = NULL;
     size_t total_vehicles = 0;
-    pgr_get_vehicles(vehicles_sql, &vehicles_arr, &total_vehicles, false);
+    pgr_get_vehicles(vehicles_sql, &vehicles_arr, &total_vehicles, false, &err_msg);
+    throw_error(err_msg, vehicles_sql);
     PGR_DBG("total vehicles %ld", total_vehicles);
 
     size_t i;
@@ -154,9 +159,6 @@ process(
 
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
     do_pgr_pickDeliverEuclidean(
             pd_orders_arr, total_pd_orders,
             vehicles_arr, total_vehicles,
