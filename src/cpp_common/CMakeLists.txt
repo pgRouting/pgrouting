@@ -5,5 +5,9 @@ ADD_LIBRARY(cpp_common OBJECT
     bpoint.cpp
     pgr_messages.cpp
     combinations.cpp
-    arrays_input.cpp
+
+    get_check_data.cpp
+    pgdata_fetchers.cpp
+    # linked as C, but compiled as C++
+    pgdata_getters.cpp
     )
