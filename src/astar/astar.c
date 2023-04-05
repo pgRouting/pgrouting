@@ -35,7 +35,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/arrays_input.h"
 #include "c_common/pgdata_getters.h"
 #include "c_common/check_parameters.h"
 
@@ -85,6 +84,9 @@ process(char* edges_sql,
     check_parameters(heuristic, factor, epsilon);
 
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     int64_t* start_vidsArr = NULL;
     size_t size_start_vidsArr = 0;
@@ -99,21 +101,24 @@ process(char* edges_sql,
     size_t total_combinations = 0;
 
     if (normal) {
-        pgr_get_edges_xy(edges_sql, &edges, &total_edges, true);
+        pgr_get_edges_xy(edges_sql, &edges, &total_edges, true, &err_msg);
+        throw_error(err_msg, edges_sql);
         if (starts && ends) {
-            start_vidsArr = (int64_t*)
-                pgr_get_bigIntArray(&size_start_vidsArr, starts, false);
-            end_vidsArr = (int64_t*)
-                pgr_get_bigIntArray(&size_end_vidsArr, ends, false);
+            start_vidsArr = pgr_get_bigIntArray(&size_start_vidsArr, starts, false, &err_msg);
+            throw_error(err_msg, "While getting start vids");
+            end_vidsArr = pgr_get_bigIntArray(&size_end_vidsArr, ends, false, &err_msg);
+            throw_error(err_msg, "While getting end vids");
         } else if (combinations_sql) {
-            pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
+            pgr_get_combinations(combinations_sql, &combinations, &total_combinations, &err_msg);
+            throw_error(err_msg, combinations_sql);
         }
     } else {
-        pgr_get_edges_xy(edges_sql, &edges, &total_edges, false);
-        end_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_end_vidsArr, starts, false);
-        start_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_start_vidsArr, ends, false);
+        pgr_get_edges_xy(edges_sql, &edges, &total_edges, false, &err_msg);
+        throw_error(err_msg, edges_sql);
+        end_vidsArr = pgr_get_bigIntArray(&size_end_vidsArr, starts, false, &err_msg);
+        throw_error(err_msg, "While getting start vids");
+        start_vidsArr = pgr_get_bigIntArray(&size_start_vidsArr, ends, false, &err_msg);
+        throw_error(err_msg, "While getting end vids");
     }
 
     if (total_edges == 0) {
@@ -125,9 +130,6 @@ process(char* edges_sql,
     }
 
     PGR_DBG("Starting processing");
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
     clock_t start_t = clock();
     do_pgr_astarManyToMany(
             edges, total_edges,
