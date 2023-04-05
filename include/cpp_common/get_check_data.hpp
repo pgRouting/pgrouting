@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: get_check_data.h
+File: get_check_data.hpp
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Copyright (c) 2023 Celia Virginia Vergara Castillo
+vicky at erosion.dev
 
 ------
 
@@ -22,188 +22,50 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_C_COMMON_GET_CHECK_DATA_H_
-#define INCLUDE_C_COMMON_GET_CHECK_DATA_H_
+#ifndef INCLUDE_C_COMMON_GET_CHECK_DATA_HPP_
+#define INCLUDE_C_COMMON_GET_CHECK_DATA_HPP_
 #pragma once
 
-#include "c_common/postgres_connection.h"
-typedef struct Column_info_t Column_info_t;
 
-/*!
- * @brief  Function will check whether the colNumber represent any specific column or NULL (SPI_ERROR_NOATTRIBUTE).
- *
- * @param[in] colNumber Column number (count starts at 1).
- *
- * @return @b TRUE when colNumber exist.
- *        @b FALSE when colNumber was not found.
- *
- */
-bool column_found(int colNumber);
+extern "C" {
+#include <postgres.h>
+#include <utils/array.h>
+#include <access/htup_details.h>
+}
 
-/*!
- * @brief Function tells expected type of each column and then check the correspondence type of each column.
- *
- * @throw ERROR Unknown type of column.
- */
-void pgr_fetch_column_info(
-        Column_info_t info[],
-        int info_size);
-
-/*!
- * @brief The function check whether column type is ANY-INTEGER or not.
- *       Where ANY-INTEGER is SQL type:
- *           SMALLINT, INTEGER, BIGINT
- *
- * @param[in] info contain column information.
- *
- * @throw ERROR Unexpected Column type. Expected column type is ANY-INTEGER.
- *
- */
-void pgr_check_any_integer_type(Column_info_t info);
-
-/*!
- * @brief The function check whether column type is ANY-NUMERICAL.
- *        Where ANY-NUMERICAL is SQL type:
- *             SMALLINT, INTEGER, BIGINT, REAL, FLOAT
- *
- * @param[in] info contain column information.
- *
- * @throw ERROR Unexpected Column type. Expected column type is ANY-NUMERICAL.
- *
- */
-void pgr_check_any_numerical_type(Column_info_t info);
-
-/*!
- * @brief The function check whether column type is CHAR or not.
- *        Where CHAR is SQL type:
- *             CHARACTER
- *
- * @param[in] info contain column information.
- *
- * @throw ERROR Unexpected Column type. Expected column type is CHAR.
- *
- */
-void pgr_check_char_type(Column_info_t info);
-
-/*!
- * @brief The function check whether column type is TEXT or not.
- *       Where TEXT is SQL type:
- *             TEXT
- *
- * @param[in] info contain column information.
- *
- * @throw ERROR Unexpected Column type. Expected column type is TEXT.
- *
- */
-void pgr_check_text_type(Column_info_t info);
-void pgr_check_boolean_type(Column_info_t info);
-
-/*!
- * @brief The function check whether column type is ANY-INTEGER-ARRAY or not.
- *        Where ANY-INTEGER-ARRAY is SQL type:
- *             SMALLINT[], INTEGER[], BIGINT[]
- *
- * @param[in] info contain column information.
- *
- * @throw ERROR Unexpected Column type. Expected ANY-INTEGER-ARRAY.
- *
- */
-
-void pgr_check_any_integerarray_type(Column_info_t info);
-
-/*!
- * @brief Function return the value of specified column in char type.
- *
- * @param[in]  tuple         input row to be examined.
- * @param[in]  tupdesc       input row description.
- * @param[in]  info          contain column information.
- * @param[in]  strict        boolean value of strict.
- * @param[in]  default_value returned when column contain NULL value.
- *
- * @throw ERROR Unexpected Column type. Expected column type is CHAR.
- * @throw ERROR When value of column is NULL.
- *
- * @return Char type of column value is returned.
- *
- */
-char pgr_SPI_getChar(
-        HeapTuple *tuple,
-        TupleDesc *tupdesc,
-        Column_info_t info,
-        bool strict,
-        char default_value);
-
-/*!
- * @brief Function returns the values of specified columns in array.
- *
- * @param[in]  tuple    input row to be examined.
- * @param[in]  tupdesc  input row description.
- * @param[in]  info     contain column information.
- * @param[out] the_size number of element in array.
- *
- * @throw ERROR No elements found in ARRAY.
- * @throw ERROR Unexpected Column type. Expected column type is ANY-INTEGER-ARRAY.
- * @throw ERROR NULL value found in Array.
- *
- * @return Array of columns value is returned.
- *
- */
-
-int64_t*
-pgr_SPI_getBigIntArr(
-        HeapTuple *tuple,
-        TupleDesc *tupdesc,
-        Column_info_t info,
-        uint64_t *the_size);
-
-/*!
- * @brief Function returns the value of specified column in integer type.
- *
- * @param[in]  tuple   input row to be examined.
- * @param[in]  tupdesc input row description.
- * @param[in]  info    contain column information.
- *
- * @throw ERROR Unexpected Column type. Expected column type is ANY-INTEGER.
- * @throw ERROR When value of column is NULL.
- *
- * @return Integer type of column value is returned.
- *
- */
-
-int64_t pgr_SPI_getBigInt(
-        HeapTuple *tuple,
-        TupleDesc *tupdesc,
-        Column_info_t info);
-
-/*!
- * @brief Function returns the value of specified column in double type.
- *
- * @param[in] tuple   input row to be examined.
- * @param[in] tupdesc input row description.
- * @param[in] info    contain column information.
- *
- * @throw ERROR Unexpected Column type. Expected column type is ANY-NUMERICAL.
- * @throw ERROR When value of column is NULL.
- *
- * @return Double type of column value is returned.
- *
- */
-
-double  pgr_SPI_getFloat8(
-        HeapTuple *tuple,
-        TupleDesc *tupdesc,
-        Column_info_t info);
-/*!
- * @brief Function returns the string representation of the value of specified column.
- *
- * @return Pointer of string is returned.
- *
- */
-
-char* pgr_SPI_getText(
-        HeapTuple *tuple,
-        TupleDesc *tupdesc,
-        Column_info_t info);
+#include <vector>
+#include <string>
 
 
-#endif  // INCLUDE_C_COMMON_GET_CHECK_DATA_H_
+using Column_info_t = struct Column_info_t;
+
+namespace pgrouting {
+
+/** @brief  Function will check whether the colNumber represent any specific column or NULL (SPI_ERROR_NOATTRIBUTE).  */
+bool column_found(int);
+
+/** @brief Function tells expected type of each column and then check the correspondence type of each column.  */
+void fetch_column_info(const TupleDesc&, std::vector<Column_info_t>&);
+
+/** @brief Function return the value of specified column in char type. */
+char getChar(const HeapTuple, const TupleDesc&, const Column_info_t&, bool, char);
+
+/** @brief Enforces the input array to be @b NOT empty */
+int64_t* get_array(ArrayType*, size_t*, bool);
+
+/** @brief Function returns the values of specified columns in array. */
+int64_t* getBigIntArr(const HeapTuple, const TupleDesc&, const Column_info_t&, uint64_t*);
+
+/** @brief Function returns the value of specified column in integer type.  */
+int64_t getBigInt(const HeapTuple, const TupleDesc&, const Column_info_t&);
+
+/** @brief Function returns the value of specified column in double type.  */
+double  getFloat8(const HeapTuple, const TupleDesc&, const Column_info_t&);
+
+/** @brief Function returns the string representation of the value of specified column.  */
+char* getText(const HeapTuple, const TupleDesc&, const Column_info_t&);
+
+}  // namespace pgrouting
+
+
+#endif  // INCLUDE_C_COMMON_GET_CHECK_DATA_HPP_

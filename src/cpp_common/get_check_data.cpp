@@ -1,9 +1,10 @@
 /*PGR-GNU*****************************************************************
-File: get_check_data.c
+File: get_check_data.cpp
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
-
+Copyright (c) 2023 Celia Virginia Vergara Castillo
+vicky at erosion.dev
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -22,276 +23,325 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include <stdbool.h>
-#include "c_types/column_info_t.h"
-#include "c_common/postgres_connection.h"
-#include "c_common/get_check_data.h"
-#include "c_common/arrays_input.h"
+#include "cpp_common/get_check_data.hpp"
 
-#include "catalog/pg_type.h"
 
-#include "c_common/debug_macro.h"
-
-/*!
- * @brief  Function will check whether the colNumber represent any specific column or NULL (SPI_ERROR_NOATTRIBUTE).
- *
- * @param[in] colNumber Column number (count starts at 1).
- *
- * @return @b TRUE when colNumber exist.
- *        @b FALSE when colNumber was not found.
- *
- */
-bool
-column_found(int colNumber) {
-    /*
-     * [SPI_ERROR_NOATTRIBUTE](https://doxygen.postgresql.org/spi_8h.html#ac1512d8aaa23c2d57bb0d1eb8f453ee2)
-     */
-    return !(colNumber == SPI_ERROR_NOATTRIBUTE);
+extern "C" {
+#include <postgres.h>
+#include <utils/builtins.h>
+#include <access/htup_details.h>
+#include <executor/spi.h>
+#include <utils/lsyscache.h>
 }
 
-/*!
- * @brief Function tells expected type of each column and then check the correspondence type of each column.
+#include <vector>
+
+#include "cpp_common/pgr_alloc.hpp"
+#include "c_types/info_t.hpp"
+
+
+namespace {
+
+/** @brief Function tells expected type of each column and then check the correspondence type of each column.
  *
+ * [SPI_fnumber](https://www.postgresql.org/docs/current/spi-spi-fnumber.html)
+ * [SPI_gettypeid](https://www.postgresql.org/docs/9.1/static/spi-spi-gettypeid.html)
+ * @param[in] tupdesc  tuple description.
  * @param[in] info     contain one or more column information.
- *
  * @throw column not found.
  * @throw ERROR Unknown type of column.
- *
- *
  * @return @b TRUE when column exist.
  *        @b FALSE when column was not found.
- *
  */
-
-static
 bool
-fetch_column_info(
-        Column_info_t *info) {
-/* TODO(vicky) Remove unused code */
-#if 0
-    PGR_DBG("Fetching column info of %s", info->name);
-#endif
-    /*
-     * [SPI_fnumber](https://www.postgresql.org/docs/8.2/static/spi-spi-fnumber.html)
-     */
-    info->colNumber =  SPI_fnumber(SPI_tuptable->tupdesc, info->name);
-    if (info->strict && !column_found(info->colNumber)) {
-        elog(ERROR, "Column '%s' not Found", info->name);
+get_column_info(const TupleDesc &tupdesc, Column_info_t &info) {
+    info.colNumber =  SPI_fnumber(tupdesc, info.name.c_str());
+    if (info.strict && info.colNumber == SPI_ERROR_NOATTRIBUTE) {
+        throw std::string("Column '") + info.name + "' not Found";
     }
 
-    if (column_found(info->colNumber)) {
-        /*
-         * [SPI_gettypeid](https://www.postgresql.org/docs/9.1/static/spi-spi-gettypeid.html)
-         */
-        (info->type) = SPI_gettypeid(SPI_tuptable->tupdesc, (info->colNumber));
-        if (SPI_result == SPI_ERROR_NOATTRIBUTE) {
-            elog(ERROR, "Type of column '%s' not Found", info->name);
+    if (info.colNumber != SPI_ERROR_NOATTRIBUTE) {
+        info.type = SPI_gettypeid(tupdesc, info.colNumber);
+        if (info.type == InvalidOid) {
+            throw std::string("Type of column '") + info.name + "' not Found";
         }
-/* TODO(vicky) Remove unused code */
-#if 0
-        PGR_DBG("Column %s found: %lu", info->name, info->type);
-#endif
         return true;
     }
-    PGR_DBG("Column %s not found", info->name);
     return false;
 }
 
-/*!
- * @brief Function tells expected type of each column and then check the correspondence type of each column.
+/** @brief The function check whether column type is ANY-INTEGER or not.
  *
- * @param[in] info     contain one or more column information.
- * @param[in] info_size  number of columns.
- *
- * @throw ERROR Unknown type of column.
- *
- */
-
-void pgr_fetch_column_info(
-        Column_info_t info[],
-        int info_size) {
-    int i;
-    for (i = 0; i < info_size; ++i) {
-        if (fetch_column_info(&info[i])) {
-            switch (info[i].eType) {
-                case ANY_INTEGER:
-                    pgr_check_any_integer_type(info[i]);
-                    break;
-                case ANY_NUMERICAL:
-                    pgr_check_any_numerical_type(info[i]);
-                    break;
-                case TEXT:
-                    pgr_check_text_type(info[i]);
-                    break;
-                case CHAR1:
-                    pgr_check_char_type(info[i]);
-                    break;
-                case ANY_INTEGER_ARRAY:
-                    pgr_check_any_integerarray_type(info[i]);
-                    break;
-                default:
-                    elog(ERROR, "Unknown type of column %s", info[i].name);
-            }
-        }
-    }
-}
-
-/*
- * [BPCHAROID](https://doxygen.postgresql.org/include_2catalog_2pg__type_8h.html#afa7749dbe36d31874205189d9d6b21d7)
- * [INT2ARRAYOID](https://doxygen.postgresql.org/include_2catalog_2pg__type_8h.html#ac265fe7b0bb75fead13b16bf072722e9)
- */
-
-/*!
- * @brief The function check whether column type is CHAR or not.
- *        Where CHAR is SQL type:
- *             CHARACTER
+ * Where ANY-INTEGER is SQL type: SMALLINT, INTEGER, BIGINT
  *
  * @param[in] info contain column information.
- *
- * @throw ERROR Unexpected Column type. Expected column type is CHAR.
- *
- */
-void
-pgr_check_char_type(Column_info_t info) {
-    if (!(info.type == BPCHAROID)) {
-        elog(ERROR, "Unexpected Column '%s' type. Expected CHAR", info.name);
-    }
-}
-
-/*!
- * @brief The function check whether column type is TEXT or not.
- *       Where TEXT is SQL type:
- *             TEXT
- *
- * @param[in] info contain column information.
- *
- * @throw ERROR Unexpected Column type. Expected column type is TEXT.
- *
- */
-
-void
-pgr_check_text_type(Column_info_t info) {
-    if (!(info.type == TEXTOID)) {
-        elog(ERROR, "Unexpected Column '%s' type. Expected TEXT", info.name);
-    }
-}
-
-/*!
- * @brief The function check whether column type is ANY-INTEGER or not.
- *       Where ANY-INTEGER is SQL type:
- *           SMALLINT, INTEGER, BIGINT
- *
- * @param[in] info contain column information.
- *
  * @throw ERROR Unexpected Column type. Expected column type is ANY-INTEGER.
- *
  */
-
 void
-pgr_check_any_integer_type(Column_info_t info) {
+check_any_integer_type(const Column_info_t &info) {
     if (!(info.type == INT2OID
                 || info.type == INT4OID
                 || info.type == INT8OID)) {
-        elog(ERROR,
-                "Unexpected Column '%s' type. Expected ANY-INTEGER",
-                info.name);
-    }
-}
-/*!
- * @brief The function check whether column type is ANY-INTEGER-ARRAY or not.
- *        Where ANY-INTEGER-ARRAY is SQL type:
- *             SMALLINT[], INTEGER[], BIGINT[]
- *
- * @param[in] info contain column information.
- *
- * @throw ERROR Unexpected Column type. Expected ANY-INTEGER-ARRAY.
- *
- */
-void
-pgr_check_any_integerarray_type(Column_info_t info) {
-    if (!(info.type == INT2ARRAYOID
-                || info.type == INT4ARRAYOID
-                || info.type == 1016)) {
-        elog(ERROR,
-                "Unexpected Column '%s' type. Expected ANY-INTEGER-ARRAY",
-                info.name);
+        throw std::string("Unexpected Column '") + info.name + "' type. Expected ANY-INTEGER";
     }
 }
 
-/*!
+/**
  * @brief The function check whether column type is ANY-NUMERICAL.
  *        Where ANY-NUMERICAL is SQL type:
  *             SMALLINT, INTEGER, BIGINT, REAL, FLOAT
  *
  * @param[in] info contain column information.
- *
  * @throw ERROR Unexpected Column type. Expected column type is ANY-NUMERICAL.
- *
  */
-
-void pgr_check_any_numerical_type(Column_info_t info) {
+void check_any_numerical_type(const Column_info_t &info) {
     if (!(info.type == INT2OID
                 || info.type == INT4OID
                 || info.type == INT8OID
                 || info.type == FLOAT4OID
                 || info.type == FLOAT8OID
                 || info.type == NUMERICOID)) {
-        elog(ERROR,
-                "Unexpected Column '%s' type. Expected ANY-NUMERICAL",
-                info.name);
+        throw std::string("Unexpected Column '") + info.name + "' type. Expected ANY-NUMERICAL";
     }
 }
 
+/**
+ * @brief The function check whether column type is TEXT or not.
+ *       Where TEXT is SQL type:
+ *             TEXT
+ *
+ * @param[in] info contain column information.
+ * @throw ERROR Unexpected Column type. Expected column type is TEXT.
+ */
+void
+check_text_type(const Column_info_t &info) {
+    if (!(info.type == TEXTOID)) {
+        throw std::string("Unexpected Column '") + info.name + "' type. Expected TEXT";
+    }
+}
 
-/*
+/**
+ * @brief The function check whether column type is CHAR or not.
+ *        Where CHAR is SQL type:
+ *             CHARACTER
+ *
+ * [BPCHAROID](https://doxygen.postgresql.org/include_2catalog_2pg__type_8h.html#afa7749dbe36d31874205189d9d6b21d7)
+ * @param[in] info contain column information.
+ * @throw ERROR Unexpected Column type. Expected column type is CHAR.
+ */
+void
+check_char_type(const Column_info_t &info) {
+    if (!(info.type == BPCHAROID)) {
+        throw std::string("Unexpected Column '") + info.name + "' type. Expected TEXT";
+    }
+}
+
+/**
+ * @brief The function check whether column type is ANY-INTEGER-ARRAY or not.
+ *        Where ANY-INTEGER-ARRAY is SQL type:
+ *             SMALLINT[], INTEGER[], BIGINT[]
+ *
+ * @param[in] info contain column information.
+ * @throw ERROR Unexpected Column type. Expected ANY-INTEGER-ARRAY.
+ */
+void
+check_any_integer_array_type(const Column_info_t &info) {
+    if (!(info.type == INT2ARRAYOID
+                || info.type == INT4ARRAYOID
+                || info.type == 1016)) {
+        throw std::string("Unexpected Column '") + info.name + "' type. Expected ANY-INTEGER-ARRAY";
+    }
+}
+
+}  // namespace
+
+namespace pgrouting {
+
+/**
+ * @param[in] colNumber Column number (count starts at 1).
+ * @return @b TRUE when colNumber exist.
+ *         @b FALSE when colNumber was not found.
+ *
+ * [SPI_ERROR_NOATTRIBUTE](https://doxygen.postgresql.org/spi_8h.html#ac1512d8aaa23c2d57bb0d1eb8f453ee2)
+ */
+bool column_found(int colNumber) {
+    return !(colNumber == SPI_ERROR_NOATTRIBUTE);
+}
+
+
+/**
+ * @param[in] tupdesc  tuple descriptor
+ * @param[in] info     contain one or more column information.
+ *
+ * @throw ERROR Unknown type of column.
+ */
+void fetch_column_info(
+        const TupleDesc &tupdesc,
+        std::vector<Column_info_t> &info) {
+    for (auto &coldata : info) {
+        if (get_column_info(tupdesc, coldata)) {
+            switch (coldata.eType) {
+                case ANY_INTEGER:
+                    check_any_integer_type(coldata);
+                    break;
+                case ANY_NUMERICAL:
+                    check_any_numerical_type(coldata);
+                    break;
+                case TEXT:
+                    check_text_type(coldata);
+                    break;
+                case CHAR1:
+                    check_char_type(coldata);
+                    break;
+                case ANY_INTEGER_ARRAY:
+                    check_any_integer_array_type(coldata);
+                    break;
+                default:
+                    throw std::string("Unexpected type of column ") + coldata.name;
+            }
+        }
+    }
+}
+
+/**
  * http://doxygen.postgresql.org/include_2catalog_2pg__type_8h.html;
  * [SPI_getbinval](https://www.postgresql.org/docs/8.1/static/spi-spi-getbinval.html)
  * [Datum](https://doxygen.postgresql.org/datum_8h.html)
  * [DatumGetInt16](https://doxygen.postgresql.org/postgres_8h.html#aec991e04209850f29a8a63df0c78ba2d)
- */
-
-/*!
- * @brief Function return the value of specified column in char type.
  *
  * @param[in]  tuple         input row to be examined.
- * @param[in]  tupdesc       input row description.
+ * @param[in] tupdesc  tuple descriptor
  * @param[in]  info          contain column information.
  * @param[in]  strict        boolean value of strict.
  * @param[in]  default_value returned when column contain NULL value.
- *
  * @throw ERROR Unexpected Column type. Expected column type is CHAR.
  * @throw ERROR When value of column is NULL.
- *
  * @return Char type of column value is returned.
- *
  */
-
-char
-pgr_SPI_getChar(
-        HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info,
+char getChar(
+        const HeapTuple tuple, const TupleDesc &tupdesc, const Column_info_t &info,
         bool strict, char default_value) {
     Datum binval;
     bool isNull;
     char value = default_value;
 
-    binval = SPI_getbinval(*tuple, *tupdesc, info.colNumber, &isNull);
+    binval = SPI_getbinval(tuple, tupdesc, info.colNumber, &isNull);
     if (!(info.type == BPCHAROID)) {
-        elog(ERROR, "Unexpected Column type of %s. Expected CHAR", info.name);
+        throw std::string("Unexpected Column type of ") + info.name + ". Expected CHAR";
     }
     if (!isNull) {
-        value =  ((char*)binval)[1];
+        value =  reinterpret_cast<char*>(binval)[1];
     } else {
         if (strict) {
-            elog(ERROR, "Unexpected Null value in column %s", info.name);
+            throw std::string("Unexpected Null value in column ") + info.name;
         }
         value = default_value;
     }
     return value;
 }
 
-/*!
- * @brief Function returns the values of specified columns in array.
+/** @brief get the array contents from postgres
  *
+ * @details This function generates the array inputs according to their type
+ * received through @a ArrayType *v parameter and store them in @a c_array. It
+ * can be empty also if received @a allow_empty true. The cases of failure are:-
+ * 1. When @a ndim is not equal to one dimension.
+ * 2. When no element is found i.e. nitems is zero or negative.
+ * 3. If the element type doesn't lie in switch cases, give the error of expected array of any integer type
+ * 4. When size of @a c_array is out of range or memory.
+ * 5. When null value is found in the array.
+ *
+ * All these failures are represented as error through @a elog.
+ * @param[in] v Pointer to the postgres C array
+ * @param[out] arrlen size of the C array
+ * @param[in] allow_empty flag to allow empty arrays
+ *
+ * @pre the array has to be one dimension
+ * @pre Must have elements (when allow_empty is false)
+ *
+ * @returns The resultant array
+ */
+int64_t*
+get_array(ArrayType *v, size_t *arrlen, bool allow_empty) {
+    int64_t *c_array = nullptr;
+
+    auto    element_type = ARR_ELEMTYPE(v);
+    auto    dim = ARR_DIMS(v);
+    auto    ndim = ARR_NDIM(v);
+    auto    nitems = ArrayGetNItems(ndim, dim);
+    Datum  *elements = nullptr;
+    bool   *nulls = nullptr;
+    int16   typlen;
+    bool    typbyval;
+    char    typalign;
+
+
+    if (allow_empty && (ndim == 0 || nitems <= 0)) {
+        return nullptr;
+    }
+
+    if (ndim != 1) {
+        throw std::string("One dimension expected");
+        return nullptr;
+    }
+
+    if (nitems <= 0) {
+        throw std::string("No elements found");
+        return nullptr;
+    }
+
+    get_typlenbyvalalign(element_type, &typlen, &typbyval, &typalign);
+
+    /* validate input data type */
+    switch (element_type) {
+        case INT2OID:
+        case INT4OID:
+        case INT8OID:
+            break;
+        default:
+            throw std::string("Expected array of ANY-INTEGER");
+            return nullptr;
+    }
+
+    deconstruct_array(v, element_type, typlen, typbyval,
+            typalign, &elements, &nulls,
+            &nitems);
+
+    c_array = pgr_alloc(static_cast<size_t>(nitems), (c_array));
+    if (!c_array) {
+        throw std::string("Out of memory!");
+    }
+
+
+    for (int i = 0; i < nitems; i++) {
+        if (nulls[i]) {
+            pfree(c_array);
+            throw std::string("NULL value found in Array!");
+            return nullptr;
+        } else {
+            switch (element_type) {
+                case INT2OID:
+                    c_array[i] = static_cast<int64_t>(DatumGetInt16(elements[i]));
+                    break;
+                case INT4OID:
+                    c_array[i] = static_cast<int64_t>(DatumGetInt32(elements[i]));
+                    break;
+                case INT8OID:
+                    c_array[i] = DatumGetInt64(elements[i]);
+                    break;
+            }
+        }
+    }
+    (*arrlen) = static_cast<size_t>(nitems);
+
+    pfree(elements);
+    pfree(nulls);
+    return c_array;
+}
+
+/**
+ * [DatumGetArrayTypeP](https://doxygen.postgresql.org/array_8h.html#aa1b8e77c103863862e06a7b7c07ec532)
+ * [pgrouting::get_bigIntArray](http://docs.pgrouting.org/doxy/2.2/arrays__input_8c_source.html)
  * @param[in]  tuple    input row to be examined.
  * @param[in]  tupdesc  input row description.
  * @param[in]  info     contain column information.
@@ -300,54 +350,40 @@ pgr_SPI_getChar(
  * @throw ERROR No elements found in ARRAY.
  * @throw ERROR Unexpected Column type. Expected column type is ANY-INTEGER-ARRAY.
  * @throw ERROR NULL value found in Array.
- *
  * @return Array of columns value is returned.
- *
  */
-
-int64_t*
-pgr_SPI_getBigIntArr(
-        HeapTuple *tuple,
-        TupleDesc *tupdesc,
-        Column_info_t info,
+int64_t* getBigIntArr(
+        const HeapTuple tuple,
+        const TupleDesc &tupdesc,
+        const Column_info_t &info,
         uint64_t *the_size) {
     bool is_null = false;
 
-    Datum raw_array = SPI_getbinval(*tuple, *tupdesc, info.colNumber, &is_null);
+    Datum raw_array = SPI_getbinval(tuple, tupdesc, info.colNumber, &is_null);
 
     *the_size = 0;
-    if (is_null) return (int64_t*)NULL;
-    /*
-    * [DatumGetArrayTypeP](https://doxygen.postgresql.org/array_8h.html#aa1b8e77c103863862e06a7b7c07ec532)
-    * [pgr_get_bigIntArray](http://docs.pgrouting.org/doxy/2.2/arrays__input_8c_source.html)
-    */
+    if (is_null) return nullptr;
     ArrayType *pg_array = DatumGetArrayTypeP(raw_array);
-
-    return pgr_get_bigIntArray((size_t*)the_size, pg_array, true);
+    return get_array(pg_array, the_size, true);
 }
 
-/*!
- * @brief Function returns the value of specified column in integer type.
- *
- * @param[in]  tuple   input row to be examined.
- * @param[in]  tupdesc input row description.
- * @param[in]  info    contain column information.
- *
+/**
+ * @param[in] tuple   input row to be examined.
+ * @param[in] tupdesc  tuple descriptor
+ * @param[in] info    contain column information.
  * @throw ERROR Unexpected Column type. Expected column type is ANY-INTEGER.
  * @throw ERROR When value of column is NULL.
  *
  * @return Integer type of column value is returned.
- *
  */
-
-int64_t
-pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
+int64_t getBigInt(
+        const HeapTuple tuple, const TupleDesc &tupdesc, const Column_info_t &info) {
     Datum binval;
     bool isnull;
     int64_t value = 0;
-    binval = SPI_getbinval(*tuple, *tupdesc, info.colNumber, &isnull);
+    binval = SPI_getbinval(tuple, tupdesc, info.colNumber, &isnull);
     if (isnull)
-        elog(ERROR, "Unexpected Null value in column %s", info.name);
+        throw std::string("Unexpected Null value in column ") + info.name;
     switch (info.type) {
         case INT2OID:
             value = (int64_t) DatumGetInt16(binval);
@@ -359,91 +395,64 @@ pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
             value = DatumGetInt64(binval);
             break;
         default:
-            elog(ERROR,
-                    "Unexpected Column type of %s. Expected ANY-INTEGER",
-                    info.name);
+            throw std::string("Unexpected Column type of ") + info.name + ". Expected ANY-INTEGER";
     }
-/* TODO(vicky) Remove unused code */
-#if 0
-    PGR_DBG("Variable: %s Value: %ld", info.name, value);
-#endif
-    return value;
-}
-
-/*!
- * @brief Function returns the value of specified column in double type.
- *
- * @param[in] tuple   input row to be examined.
- * @param[in] tupdesc input row description.
- * @param[in] info    contain column information.
- *
- * @throw ERROR Unexpected Column type. Expected column type is ANY-NUMERICAL.
- * @throw ERROR When value of column is NULL.
- *
- * @return Double type of column value is returned.
- *
- */
-
-double
-pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
-    Datum binval;
-    bool isnull = false;
-    double value = 0.0;
-    binval = SPI_getbinval(*tuple, *tupdesc, info.colNumber, &isnull);
-    if (isnull)
-        elog(ERROR, "Unexpected Null value in column %s", info.name);
-
-    switch (info.type) {
-        case INT2OID:
-            value = (double) DatumGetInt16(binval);
-            break;
-        case INT4OID:
-            value = (double) DatumGetInt32(binval);
-            break;
-        case INT8OID:
-            value = (double) DatumGetInt64(binval);
-            break;
-        case FLOAT4OID:
-            value = (double) DatumGetFloat4(binval);
-            break;
-        case FLOAT8OID:
-            value = DatumGetFloat8(binval);
-            break;
-        case NUMERICOID:
-             /* Note: out-of-range values will be clamped to +-HUGE_VAL */
-             value = (double) DatumGetFloat8(DirectFunctionCall1(numeric_float8_no_overflow, binval));
-             break;
-        default:
-            elog(ERROR,
-                    "Unexpected Column type of %s. Expected ANY-NUMERICAL",
-                    info.name);
-    }
-/* TODO(vicky) Remove unused code */
-#if 0
-    PGR_DBG("Variable: %s Value: %.20f", info.name, value);
-#endif
     return value;
 }
 
 /**
- * under development
+ * @param[in] tuple   input row to be examined.
+ * @param[in] tupdesc  tuple descriptor
+ * @param[in] info    contain column information.
+ * @throw ERROR Unexpected Column type. Expected column type is ANY-NUMERICAL.
+ * @throw ERROR When value of column is NULL.
+ * @return Double type of column value is returned.
  */
-/*
- * [DatumGetCString](https://doxygen.postgresql.org/postgres_8h.html#ae401c8476d1a12b420e3061823a206a7)
- */
+double getFloat8(
+        const HeapTuple tuple, const TupleDesc &tupdesc, const Column_info_t &info) {
+    Datum binval;
+    bool isnull = false;
+    binval = SPI_getbinval(tuple, tupdesc, info.colNumber, &isnull);
+    if (isnull)
+        throw std::string("Unexpected Null value in column ") + info.name;
+
+    switch (info.type) {
+        case INT2OID:
+            return static_cast<double>(DatumGetInt16(binval));
+            break;
+        case INT4OID:
+            return static_cast<double>(DatumGetInt32(binval));
+            break;
+        case INT8OID:
+            return static_cast<double>(DatumGetInt64(binval));
+            break;
+        case FLOAT4OID:
+            return static_cast<double>(DatumGetFloat4(binval));
+            break;
+        case FLOAT8OID:
+            return static_cast<double>(DatumGetFloat8(binval));
+            break;
+        case NUMERICOID:
+            /* Note: out-of-range values will be clamped to +-HUGE_VAL */
+            return static_cast<double>(DatumGetFloat8(DirectFunctionCall1(numeric_float8_no_overflow, binval)));
+            break;
+        default:
+            throw std::string("Unexpected Column type of ") + info.name + ". Expected ANY-NUMERICAL";
+    }
+    return 0.0;
+}
 
 /*!
- * @brief Function returns the string representation of the value of specified column.
- *
- * @param[in]  tuple   input row to be examined.
- * @param[in]  tupdesc input row description.
+ * [DatumGetCString](https://doxygen.postgresql.org/postgres_8h.html#ae401c8476d1a12b420e3061823a206a7)
+ * @note under development Not used, not tested
+ * @param[in] tuple   input row to be examined.
+ * @param[in]  tupdesc  tuple descriptor
  * @param[in]  info    contain column information.
- *
  * @return Pointer of string is returned.
- *
  */
 
-char*
-pgr_SPI_getText(HeapTuple *tuple, TupleDesc *tupdesc,  Column_info_t info) {
-    return DatumGetCString(SPI_getvalue(*tuple, *tupdesc, info.colNumber));
+char* getText(const HeapTuple tuple, const TupleDesc &tupdesc,  const Column_info_t &info) {
+    return DatumGetCString(SPI_getvalue(tuple, tupdesc, info.colNumber));
 }
+
+}  // namespace pgrouting
