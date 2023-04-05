@@ -30,13 +30,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
 
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 
-#include "c_common/arrays_input.h"
 #include "c_common/pgdata_getters.h"
 
 #include "drivers/bellman_ford/bellman_ford_neg_driver.h"  // the link to the C++ code of the function
@@ -58,6 +56,9 @@ process(
         Path_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     PGR_DBG("Initializing arrays");
 
@@ -76,7 +77,8 @@ process(
         end_vidsArr = (int64_t*)
             pgr_get_bigIntArray(&size_end_vidsArr, ends, false);
     } else if (combinations_sql) {
-        pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
+        pgr_get_combinations(combinations_sql, &combinations, &total_combinations, &err_msg);
+        throw_error(err_msg, combinations_sql);
         if (total_combinations == 0) {
             if (combinations)
                 pfree(combinations);
@@ -92,7 +94,8 @@ process(
     Edge_t *positive_edges = NULL;
     size_t total_positive_edges = 0;
 
-    pgr_get_edges(edges_sql, &positive_edges, &total_positive_edges, true, false);
+    pgr_get_edges(edges_sql, &positive_edges, &total_positive_edges, true, false, &err_msg);
+    throw_error(err_msg, edges_sql);
     PGR_DBG(
             "Total positive weighted edges in query: %ld",
             total_positive_edges);
@@ -100,7 +103,8 @@ process(
     Edge_t *negative_edges = NULL;
     size_t total_negative_edges = 0;
 
-    pgr_get_edges(neg_edges_sql, &negative_edges, &total_negative_edges, true, false);
+    pgr_get_edges(neg_edges_sql, &negative_edges, &total_negative_edges, true, false, &err_msg);
+    throw_error(err_msg, neg_edges_sql);
     PGR_DBG(
             "Total negative weighted edges in query: %ld",
             total_negative_edges);
@@ -116,9 +120,6 @@ process(
 
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
     do_pgr_bellman_ford_neg(
             positive_edges,
             total_positive_edges,
