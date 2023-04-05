@@ -63,6 +63,9 @@ process(
         circuits_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
@@ -70,7 +73,8 @@ process(
     Edge_t *edges = NULL;
     size_t total_edges = 0;
 
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false);
+    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
+    throw_error(err_msg, edges_sql);
     if (total_edges == 0) {
         pgr_SPI_finish();
         return;
@@ -78,9 +82,6 @@ process(
 
     PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
     do_hawickCircuits(
             edges, total_edges,
 
