@@ -81,10 +81,10 @@ Parameters
      - Identifier of the departure vertex.
    * - **end vid**
      - **ANY-INTEGER**
-     - Identifier of the departure vertex.
+     - Identifier of the arrival vertex.
    * - **K**
      - **ANY-INTEGER**
-     - Number of required paths
+     - Number of required paths.
 
 Where:
 
@@ -116,7 +116,7 @@ KSP Optional parameters
    * - ``heap_paths``
      - ``BOOLEAN``
      - ``false``
-     - * When ``false`` Returns at most K paths
+     - * When ``false`` Returns at most K paths.
        * When ``true`` all the calculated paths while processing are returned.
        * Roughly, when the shortest path has ``N`` edges, the heap will contain
          about than ``N * K`` paths for small value of ``K`` and ``K > 5``.
