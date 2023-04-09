@@ -42,8 +42,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 
+namespace {
+
 template < class G >
-std::deque< Path >
+std::deque<pgrouting::Path>
 pgr_dagShortestPath(
         G &graph,
         std::vector <II_t_rt> &combinations,
@@ -61,7 +63,7 @@ pgr_dagShortestPath(
             targets.end());
 
 
-    Pgr_dag< G > fn_dag;
+    pgrouting::Pgr_dag< G > fn_dag;
     auto paths = combinations.empty() ?
             fn_dag.dag(graph, sources, targets, only_cost)
             : fn_dag.dag(graph, combinations, only_cost);
@@ -69,6 +71,7 @@ pgr_dagShortestPath(
     return paths;
 }
 
+}  // namespace
 
 void
 do_pgr_dagShortestPath(
@@ -88,6 +91,11 @@ do_pgr_dagShortestPath(
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
+    using pgrouting::Path;
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
