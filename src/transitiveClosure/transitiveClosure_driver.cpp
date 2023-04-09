@@ -37,10 +37,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/transitiveClosure_rt.h"
 
-
+namespace {
 
 template < class G >
-static
 boost::adjacency_list <>
 pgr_transitiveClosure(
         G &graph) {
@@ -50,11 +49,11 @@ pgr_transitiveClosure(
 
 
 template <typename G>
-static
 void get_postgres_result(
         G &graph,
         TransitiveClosure_rt **return_tuples,
         size_t *count) {
+    using pgrouting::pgr_alloc;
     boost::adjacency_list <> TC;
     TC = pgr_transitiveClosure(graph);
     (*count) = boost::num_vertices(TC);
@@ -87,6 +86,7 @@ void get_postgres_result(
     }
 }
 
+}  // namespace
 
 
 /************************************************************
@@ -101,6 +101,9 @@ do_pgr_transitiveClosure(
         char **log_msg,
         char **notice_msg,
         char **err_msg) {
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
