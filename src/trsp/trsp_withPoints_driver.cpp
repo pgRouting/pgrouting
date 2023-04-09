@@ -53,7 +53,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace {
 
 void
-post_process_trsp(std::deque<Path> &paths) {
+post_process_trsp(std::deque<pgrouting::Path> &paths) {
+    using pgrouting::Path;
     paths.erase(std::remove_if(paths.begin(), paths.end(),
                 [](const Path &p) {
                 return p.size() == 0;
@@ -74,7 +75,7 @@ post_process_trsp(std::deque<Path> &paths) {
 }
 
 template <class G>
-std::deque<Path>
+std::deque<pgrouting::Path>
 pgr_dijkstra(
         G &graph,
         std::map<int64_t, std::set<int64_t>> &combinations
@@ -110,6 +111,11 @@ do_trsp_withPoints(
         char** log_msg,
         char** notice_msg,
         char** err_msg) {
+    using pgrouting::Path;
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;

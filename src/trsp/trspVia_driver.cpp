@@ -44,7 +44,8 @@ namespace {
 
 /** @brief Orders results in terms of the via information */
 void
-post_process_trspvia(std::deque<Path> &paths, std::vector<int64_t> via) {
+post_process_trspvia(std::deque<pgrouting::Path> &paths, std::vector<int64_t> via) {
+    using pgrouting::Path;
     for (auto &p : paths) {
         p.recalculate_agg_cost();
     }
@@ -81,7 +82,7 @@ void
 get_path(
         int route_id,
         int path_id,
-        const Path &path,
+        const pgrouting::Path &path,
         Routes_t **postgres_data,
         double &route_cost,
         size_t &sequence) {
@@ -107,7 +108,7 @@ get_path(
 size_t
 get_route(
         Routes_t **ret_path,
-        std::deque<Path> &paths) {
+        std::deque<pgrouting::Path> &paths) {
     size_t sequence = 0;
     int path_id = 1;
     int route_id = 1;
@@ -115,7 +116,7 @@ get_route(
     for (auto &p : paths) {
         p.recalculate_agg_cost();
     }
-    for (const Path &path : paths) {
+    for (const auto &path : paths) {
         if (path.size() > 0)
             get_path(route_id, path_id, path, ret_path, route_cost, sequence);
         ++path_id;
@@ -138,6 +139,11 @@ do_trspVia(
         char** log_msg,
         char** notice_msg,
         char** err_msg) {
+    using pgrouting::Path;
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
