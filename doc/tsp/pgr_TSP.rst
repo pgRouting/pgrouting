@@ -153,9 +153,17 @@ Inner Queries
 Matrix SQL
 ...............................................................................
 
-.. include:: ../../src/common/matrixRows_input.c
-   :start-after: Matrix SQL definition start
-   :end-before: Matrix SQL definition end
+.. Matrix SQL definition start
+
+============= ================= =================================================
+Column        Type              Description
+============= ================= =================================================
+``start_vid`` ``ANY-INTEGER``   Identifier of the starting vertex.
+``end_vid``   ``ANY-INTEGER``   Identifier of the ending vertex.
+``agg_cost``  ``ANY-NUMERICAL`` Cost for going from start_vid to end_vid
+============= ================= =================================================
+
+.. Matrix SQL definition end
 
 Result Columns
 -------------------------------------------------------------------------------

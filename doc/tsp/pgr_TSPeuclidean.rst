@@ -115,9 +115,18 @@ Inner Queries
 Coordinates SQL
 ...............................................................................
 
-.. include:: ../../src/common/coordinates_input.c
-   :start-after: Coordinates SQL definition start
-   :end-before: Coordinates SQL definition end
+.. Coordinates SQL definition start
+
+========= ================= =================================================
+Column        Type               Description
+========= ================= =================================================
+``id``    ``ANY-INTEGER``    Identifier of the starting vertex.
+``x``     ``ANY-NUMERICAL``  X value of the coordinate.
+``y``     ``ANY-NUMERICAL``  Y value of the coordinate.
+========= ================= =================================================
+
+.. Coordinates SQL definition end
+
 
 Result Columns
 -------------------------------------------------------------------------------
