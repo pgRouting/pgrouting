@@ -48,6 +48,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  ***********************************************************************/
 
+namespace {
+
 /** @brief Calls the main function defined in the C++ Header file.
  *
  * @param graph      the graph containing the edges
@@ -62,6 +64,8 @@ cuthillMckeeOrdering(G &graph) {
     auto results = fn_cuthillMckeeOrdering.cuthillMckeeOrdering(graph);
     return results;
 }
+
+}  // namespace
 
 /** @brief Performs exception handling and converts the results to postgres.
  *
@@ -95,6 +99,10 @@ void do_cuthillMckeeOrdering(
     char **log_msg,
     char **notice_msg,
     char **err_msg) {
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
