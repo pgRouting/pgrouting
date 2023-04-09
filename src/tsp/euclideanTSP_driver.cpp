@@ -55,6 +55,10 @@ do_pgr_euclideanTSP(
         char **log_msg,
         char **notice_msg,
         char **err_msg) {
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
