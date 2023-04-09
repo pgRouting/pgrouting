@@ -48,9 +48,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
     ANYARRAY,
     directed BOOLEAN DEFAULT true,
  ***********************************************************/
-
+namespace {
 template < class G >
-std::deque< Path >
+std::deque<pgrouting::Path>
 pgr_bellman_ford(
         G &graph,
         std::vector <II_t_rt> &combinations,
@@ -68,13 +68,15 @@ pgr_bellman_ford(
             std::unique(targets.begin(), targets.end()),
             targets.end());
 
-    Pgr_bellman_ford< G > fn_bellman_ford;
+    pgrouting::Pgr_bellman_ford< G > fn_bellman_ford;
     auto paths = combinations.empty() ?
             fn_bellman_ford.bellman_ford(graph, sources, targets, only_cost)
             : fn_bellman_ford.bellman_ford(graph, combinations, only_cost);
     log += fn_bellman_ford.get_log();
     return paths;
 }
+
+}  // namespace
 
 void
 do_pgr_bellman_ford_neg(
@@ -96,11 +98,16 @@ do_pgr_bellman_ford_neg(
                 char ** log_msg,
                 char ** notice_msg,
                 char ** err_msg) {
+    using pgrouting::Path;
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
-    size_t total_edges =  total_positive_edges + total_negative_edges;
     try {
+        size_t total_edges =  total_positive_edges + total_negative_edges;
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
