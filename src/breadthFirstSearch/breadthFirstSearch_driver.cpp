@@ -38,6 +38,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "breadthFirstSearch/pgr_breadthFirstSearch.hpp"
 
+namespace {
+
 template < class G >
 std::vector<MST_rt>
 pgr_breadthFirstSearch(
@@ -56,6 +58,8 @@ pgr_breadthFirstSearch(
     return results;
 }
 
+}  // namespace
+
 void
 do_pgr_breadthFirstSearch(
                 Edge_t  *data_edges,
@@ -70,6 +74,10 @@ do_pgr_breadthFirstSearch(
                 char ** log_msg,
                 char ** notice_msg,
                 char ** err_msg) {
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
