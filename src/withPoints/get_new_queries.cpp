@@ -48,6 +48,7 @@ get_new_queries(
         char *points_sql,
         char **edges_of_points_query,
         char **edges_no_points_query) {
+    using pgrouting::pgr_msg;
     std::ostringstream edges_of_points_sql;
     std::ostringstream edges_no_points_sql;
 

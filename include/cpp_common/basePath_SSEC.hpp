@@ -42,6 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/rule.h"
 
+namespace pgrouting {
 
 class Path {
     typedef std::deque< Path_t >::iterator pthIt;
@@ -59,7 +60,6 @@ class Path {
     Path(int64_t s_id, int64_t e_id)
         : m_start_id(s_id), m_end_id(e_id), m_tot_cost(0)
     {}
-    Path(const Path&) = default;
 
     int64_t start_id() const {return m_start_id;}
     void start_id(int64_t value) {m_start_id = value;}
@@ -333,5 +333,6 @@ class Path {
     }
 };
 
+}  // namespace pgrouting
 
 #endif  // INCLUDE_CPP_COMMON_BASEPATH_SSEC_HPP_

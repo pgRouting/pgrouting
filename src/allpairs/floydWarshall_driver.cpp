@@ -48,6 +48,9 @@ do_pgr_floydWarshall(
         size_t *return_count,
         char ** log_msg,
         char ** err_msg) {
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream err;
 

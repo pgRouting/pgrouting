@@ -42,9 +42,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/edge_xy_t.h"
 #include "c_types/ii_t_rt.h"
 
+namespace {
 
 template < class G >
-std::deque<Path>
+std::deque<pgrouting::Path>
 pgr_astar(
         G &graph,
         std::vector <II_t_rt> &combinations,
@@ -78,6 +79,7 @@ pgr_astar(
     return paths;
 }
 
+}  // namespace
 
 /************************************************************
   edges_sql TEXT,
@@ -103,6 +105,11 @@ void do_pgr_astarManyToMany(
         char** log_msg,
         char** notice_msg,
         char** err_msg) {
+    using pgrouting::Path;
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;

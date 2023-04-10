@@ -43,8 +43,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
+namespace {
+
 template < class G >
-std::deque< Path >
+std::deque<pgrouting::Path>
 pgr_dijkstra(
         G &graph,
         std::vector < II_t_rt > &combinations,
@@ -81,6 +83,7 @@ pgr_dijkstra(
     return paths;
 }
 
+}  // namespace
 
 // CREATE OR REPLACE FUNCTION pgr_withPoint(
 // edges_sql TEXT,
@@ -111,6 +114,11 @@ do_pgr_withPoints(
         char** log_msg,
         char** notice_msg,
         char** err_msg) {
+    using pgrouting::Path;
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;

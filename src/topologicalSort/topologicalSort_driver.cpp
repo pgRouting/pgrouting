@@ -41,8 +41,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
+namespace {
+
 template < class G >
-static
 std::vector<I_rt>
 pgr_topologicalSort(
         G &graph) {
@@ -50,6 +51,7 @@ pgr_topologicalSort(
     return fn_topologicalSort.topologicalSort(graph);
 }
 
+}  // namespace
 
 // CREATE OR REPLACE FUNCTION pgr_topologicalSort(
 // sql text,
@@ -64,6 +66,10 @@ do_pgr_topologicalSort(
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;

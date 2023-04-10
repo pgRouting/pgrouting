@@ -51,10 +51,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
     directed BOOLEAN DEFAULT true,
     only_cost BOOLEAN DEFAULT false,
  ***********************************************************/
-
+namespace {
 template < class G >
-static
-std::deque<Path>
+std::deque<pgrouting::Path>
 pgr_bdAstar(
         G &graph,
         std::vector < II_t_rt > &combinations,
@@ -66,7 +65,7 @@ pgr_bdAstar(
         double epsilon,
         std::ostream &log,
         bool only_cost) {
-    log << "entering static function\n";
+    using pgrouting::Path;
 
     pgrouting::bidirectional::Pgr_bdAstar<G> fn_bdAstar(graph);
     std::deque<Path> paths;
@@ -137,6 +136,7 @@ pgr_bdAstar(
     return paths;
 }
 
+}  // namespace
 
 void
 do_pgr_bdAstar(
@@ -162,6 +162,10 @@ do_pgr_bdAstar(
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
+    using pgrouting::Path;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_alloc;
+
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;

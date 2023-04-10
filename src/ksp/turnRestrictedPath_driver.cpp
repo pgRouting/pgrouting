@@ -43,12 +43,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/restriction_t.h"
 #include "yen/pgr_turnRestrictedPath.hpp"
 
-using pgrouting::yen::Pgr_turnRestrictedPath;
-using pgrouting::trsp::Rule;
+
+namespace {
 
 template < class G >
-static
-std::deque<Path>
+std::deque<pgrouting::Path>
 pgr_dijkstraTR(
         G &graph,
         const std::vector<pgrouting::trsp::Rule> &restrictions,
@@ -59,7 +58,8 @@ pgr_dijkstraTR(
         bool heap_paths,
         bool stop_on_first,
         bool strict) {
-    Pgr_turnRestrictedPath< G > fn_TRSP;
+    using pgrouting::yen::Pgr_turnRestrictedPath;
+    Pgr_turnRestrictedPath<G> fn_TRSP;
 
     auto paths = fn_TRSP.turnRestrictedPath(graph,
                     restrictions,
@@ -73,6 +73,8 @@ pgr_dijkstraTR(
     log += fn_TRSP.get_log();
     return paths;
 }
+
+}  // namespace
 
 void
 do_pgr_turnRestrictedPath(
@@ -97,6 +99,13 @@ do_pgr_turnRestrictedPath(
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
+    using pgrouting::Path;
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+    using pgrouting::yen::Pgr_turnRestrictedPath;
+    using pgrouting::trsp::Rule;
+
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;

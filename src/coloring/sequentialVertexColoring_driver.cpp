@@ -41,6 +41,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /** @file sequentialVertexColoring_driver.cpp */
 
 
+namespace {
+
 /** @brief Calls the main function defined in the C++ Header file.
  *
  * @param graph      the graph containing the edges
@@ -55,6 +57,8 @@ pgr_sequentialVertexColoring(G &graph) {
     auto results = fn_sequentialVertexColoring.sequentialVertexColoring(graph);
     return results;
 }
+
+}  // namespace
 
 /** @brief Performs exception handling and converts the results to postgres.
  *
@@ -89,6 +93,10 @@ do_pgr_sequentialVertexColoring(
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;

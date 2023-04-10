@@ -69,6 +69,10 @@ do_pgr_pickDeliverEuclidean(
         char **log_msg,
         char **notice_msg,
         char **err_msg) {
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
@@ -96,7 +100,7 @@ do_pgr_pickDeliverEuclidean(
             matrix_data[std::pair<double, double>(v.end_x, v.end_y)] = v.end_node_id;
         }
 
-        Identifiers<int64_t> unique_ids;
+        pgrouting::Identifiers<int64_t> unique_ids;
         for (const auto &e : matrix_data) {
             unique_ids += e.second;
         }

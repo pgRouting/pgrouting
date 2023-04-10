@@ -47,6 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // TODO(vicky) don't keep it here
 #include "cpp_common/pgr_alloc.hpp"
 
+namespace pgrouting  {
 template < class G > class Pgr_allpairs;
 
 // user's functions
@@ -257,5 +258,6 @@ class Pgr_allpairs {
      };
 };
 
+}  // namespace pgrouting
 
 #endif  // INCLUDE_ALLPAIRS_PGR_ALLPAIRS_HPP_

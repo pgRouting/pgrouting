@@ -42,6 +42,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  */
 
+namespace {
+
 /** @brief Calls the main function defined in the C++ Header file.
  *
  * Also sorts the root vertices in an increasing order,
@@ -72,6 +74,8 @@ pgr_depthFirstSearch(
     auto results = fn_depthFirstSearch.depthFirstSearch(graph, roots, directed, max_depth);
     return results;
 }
+
+}  // namespace
 
 /** @brief Performs exception handling and converts the results to postgres.
  *
@@ -117,6 +121,10 @@ do_pgr_depthFirstSearch(
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;

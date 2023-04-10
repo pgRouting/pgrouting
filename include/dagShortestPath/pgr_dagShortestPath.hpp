@@ -48,6 +48,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/ii_t_rt.h"
 
+namespace pgrouting {
+
 template < class G >
 class Pgr_dag {
  public:
@@ -359,5 +361,7 @@ class Pgr_dag {
           size_t m_n_goals;
      };
 };
+
+}  // namespace pgrouting
 
 #endif  // INCLUDE_DAGSHORTESTPATH_PGR_DAGSHORTESTPATH_HPP_

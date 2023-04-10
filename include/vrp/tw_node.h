@@ -210,7 +210,6 @@ class Tw_node : public Dnode {
 
 
      Tw_node() = default;
-     Tw_node(const Tw_node &) = default;
      Tw_node(
              size_t id,
              Orders_t data,

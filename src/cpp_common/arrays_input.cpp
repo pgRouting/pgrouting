@@ -103,7 +103,7 @@ get_bigIntArr(ArrayType *v, size_t *arrlen, bool allow_empty) {
             typalign, &elements, &nulls,
             &nitems);
 
-    c_array = pgr_alloc(static_cast<size_t>(nitems), (c_array));
+    c_array = pgrouting::pgr_alloc(static_cast<size_t>(nitems), (c_array));
     if (!c_array) {
         elog(ERROR, "Out of memory!");
     }

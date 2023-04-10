@@ -48,7 +48,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace detail {
 
 void
-post_process(std::deque<Path> &paths, bool only_cost, bool normal, size_t n_goals, bool global) {
+post_process(std::deque<pgrouting::Path> &paths, bool only_cost, bool normal, size_t n_goals, bool global) {
+    using pgrouting::Path;
     paths.erase(std::remove_if(paths.begin(), paths.end(),
                 [](const Path &p) {
                     return p.size() == 0;
@@ -96,7 +97,7 @@ post_process(std::deque<Path> &paths, bool only_cost, bool normal, size_t n_goal
 
 
 template < class G >
-std::deque< Path >
+std::deque<pgrouting::Path>
 pgr_dijkstra(
         G &graph,
         std::vector < int64_t > sources,
@@ -128,7 +129,7 @@ pgr_dijkstra(
 
 
 template < class G >
-std::deque< Path >
+std::deque<pgrouting::Path>
 pgr_dijkstra(
         G &graph,
         std::vector < II_t_rt > &combinations,
@@ -173,6 +174,11 @@ do_pgr_many_to_many_dijkstra(
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
+    using pgrouting::Path;
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
@@ -275,6 +281,11 @@ do_pgr_combinations_dijkstra(
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
+    using pgrouting::Path;
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
