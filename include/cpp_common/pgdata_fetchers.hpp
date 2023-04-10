@@ -41,7 +41,6 @@ extern "C" {
 
 #include <vector>
 
-using Column_info_t = struct Column_info_t;
 using II_t_rt = struct II_t_rt;
 using IID_t_rt = struct IID_t_rt;
 using Coordinate_t = struct Coordinate_t;
@@ -56,16 +55,12 @@ using Point_on_edge_t = struct Point_on_edge_t;
 using Vehicle_t = struct Vehicle_t;
 
 namespace pgrouting {
+using Column_info_t = struct Column_info_t;
 
 void fetch_combination(
         const HeapTuple, const TupleDesc &,
         const std::vector<Column_info_t> &,
         int64_t*, II_t_rt*, size_t*, bool);
-
-void fetch_coordinate(
-        const HeapTuple, const TupleDesc &,
-        const std::vector<Column_info_t> &,
-        int64_t*, Coordinate_t*, size_t*, bool);
 
 void fetch_coordinate(
         const HeapTuple, const TupleDesc &,
