@@ -30,14 +30,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <cstdint>
 #include <string>
 
-typedef
-enum {
+namespace pgrouting {
+
+enum expectType {
     ANY_INTEGER,
     ANY_NUMERICAL,
     TEXT,
     CHAR1,
     ANY_INTEGER_ARRAY
-} expectType;
+};
 
 
 struct Column_info_t {
@@ -48,5 +49,6 @@ struct Column_info_t {
     expectType eType;
 };
 
+}  // namespace pgrouting
 
 #endif  // INCLUDE_C_TYPES_INFO_T_HPP_
