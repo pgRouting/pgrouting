@@ -3,133 +3,20 @@
 # Copyright (C) pgRouting Contributors - Version v3.6.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# Translators:
 # Vicky Vergara <vicky@georepublic.de>, 2020
 # Daniel Kastl, 2022
 # Ko Nagase <nagase@georepublic.co.jp>, 2022
 # Taro Matsuzawa <taro@georepublic.co.jp>, 2022
 # Jin Igarashi <wushilan0623@gmail.com>, 2022
-# #-#-#-#-#  aStar-family.po (pgRouting v3.4.0-dev)  #-#-#-#-#
 # Ko Nagase <nagase@georepublic.co.jp>, 2020
-# #-#-#-#-#  bdAstar-family.po (pgRouting v3.4.0-dev)  #-#-#-#-#
 # Daniel Kastl, 2020
-# #-#-#-#-#  bdDijkstra-family.po (pgRouting v3.4.0-dev)  #-#-#-#-#
 # Jin Igarashi <wushilan0623@gmail.com>, 2020
-# #-#-#-#-#  chinesePostmanProblem-family.po (pgRouting v3.4.0-dev)
-# #-#-#-#-#
 # Taro Matsuzawa <taro@georepublic.co.jp>, 2020
-# #-#-#-#-#  coloring-family.po (pgRouting v3.4.0-dev)  #-#-#-#-#
 # Jin Igarashi <wushilan0623@gmail.com>, 2021
-# #-#-#-#-#  components-family.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  contraction-family.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  cost-category.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  costMatrix-category.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  dijkstra-family.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  drivingDistance-category.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  experimental.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  flow-family.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  index.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  kruskal-family.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  KSP-category.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_alphaShape.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_analyzeGraph.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_analyzeOneWay.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_articulationPoints.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_aStarCostMatrix.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_aStarCost.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_aStar.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_bdAstarCostMatrix.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_bdAstarCost.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_bdAstar.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_bdDijkstraCostMatrix.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_bdDijkstraCost.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_bdDijkstra.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_bellmanFord.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_biconnectedComponents.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_binaryBreadthFirstSearch.po (pgRouting v3.4.0-dev)
-# #-#-#-#-#  pgr_bipartite.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_boykovKolmogorov.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_breadthFirstSearch.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_bridges.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_chinesePostmanCost.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_chinesePostman.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_connectedComponents.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_contraction.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_createTopology.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_createVerticesTable.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_dagShortestPath.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_depthFirstSearch.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_dijkstraCostMatrix.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_dijkstraCost.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_dijkstraNearCost.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_dijkstraNear.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_dijkstra.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_dijkstraVia.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_drivingDistance.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_edgeDisjointPaths.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_edmondsKarp.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_edwardMoore.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_extractVertices.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_floydWarshall.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_full_version.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_isPlanar.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_johnson.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_kruskalBFS.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_kruskalDD.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_kruskalDFS.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_kruskal.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_KSP.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_lengauerTarjanDominatorTree.po (pgRouting v3.4.0-dev)
-# #-#-#-#-#  pgr_lineGraphFull.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_lineGraph.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_makeConnected.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_maxCardinalityMatch.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_maxFlowMinCost_Cost.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_maxFlowMinCost.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_maxFlow.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_nodeNetwork.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgRouting-concepts.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgRouting-installation.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgRouting-introduction.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_pickDeliverEuclidean.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_pickDeliver.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_primBFS.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_primDD.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_primDFS.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_prim.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_pushRelabel.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_sequentialVertexColoring.po (pgRouting v3.4.0-dev)
-# #-#-#-#-#  pgr_stoerWagner.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_strongComponents.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_topologicalSort.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_transitiveClosure.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_trsp.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_TSPeuclidean.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_TSP.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_turnRestrictedPath.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_version.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_vrpOneDepot.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_withPointsCostMatrix.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_withPointsCost.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_withPointsDD.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_withPointsKSP.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  pgr_withPoints.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  prim-family.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  proposed.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  release_notes.po (pgRouting v3.4.0-dev)  #-#-#-#-#
 # Ko Nagase <nagase@georepublic.co.jp>, 2021
-# #-#-#-#-#  routingFunctions.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  sampledata.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  spanningTree-family.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  support.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  topology-functions.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  transformation-family.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  traversal-family.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  TSP-family.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  VRP-category.po (pgRouting v3.4.0-dev)  #-#-#-#-#
-# #-#-#-#-#  withPoints-family.po (pgRouting v3.4.0-dev)  #-#-#-#-#
 # Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
 #
-# Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
