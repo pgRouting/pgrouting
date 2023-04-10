@@ -31,15 +31,17 @@ extern "C" {
 #include <postgres.h>
 #include <utils/array.h>
 #include <access/htup_details.h>
+#include <catalog/pg_type.h>
 }
 
 #include <vector>
 #include <string>
+#include <cstdint>
 
 
-using Column_info_t = struct Column_info_t;
 
 namespace pgrouting {
+using Column_info_t = struct Column_info_t;
 
 /** @brief  Function will check whether the colNumber represent any specific column or NULL (SPI_ERROR_NOATTRIBUTE).  */
 bool column_found(int);

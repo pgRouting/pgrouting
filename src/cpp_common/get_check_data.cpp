@@ -54,7 +54,7 @@ namespace {
  *        @b FALSE when column was not found.
  */
 bool
-get_column_info(const TupleDesc &tupdesc, Column_info_t &info) {
+get_column_info(const TupleDesc &tupdesc, pgrouting::Column_info_t &info) {
     info.colNumber =  SPI_fnumber(tupdesc, info.name.c_str());
     if (info.strict && info.colNumber == SPI_ERROR_NOATTRIBUTE) {
         throw std::string("Column '") + info.name + "' not Found";
@@ -78,7 +78,7 @@ get_column_info(const TupleDesc &tupdesc, Column_info_t &info) {
  * @throw ERROR Unexpected Column type. Expected column type is ANY-INTEGER.
  */
 void
-check_any_integer_type(const Column_info_t &info) {
+check_any_integer_type(const pgrouting::Column_info_t &info) {
     if (!(info.type == INT2OID
                 || info.type == INT4OID
                 || info.type == INT8OID)) {
@@ -94,7 +94,7 @@ check_any_integer_type(const Column_info_t &info) {
  * @param[in] info contain column information.
  * @throw ERROR Unexpected Column type. Expected column type is ANY-NUMERICAL.
  */
-void check_any_numerical_type(const Column_info_t &info) {
+void check_any_numerical_type(const pgrouting::Column_info_t &info) {
     if (!(info.type == INT2OID
                 || info.type == INT4OID
                 || info.type == INT8OID
@@ -114,7 +114,7 @@ void check_any_numerical_type(const Column_info_t &info) {
  * @throw ERROR Unexpected Column type. Expected column type is TEXT.
  */
 void
-check_text_type(const Column_info_t &info) {
+check_text_type(const pgrouting::Column_info_t &info) {
     if (!(info.type == TEXTOID)) {
         throw std::string("Unexpected Column '") + info.name + "' type. Expected TEXT";
     }
@@ -130,7 +130,7 @@ check_text_type(const Column_info_t &info) {
  * @throw ERROR Unexpected Column type. Expected column type is CHAR.
  */
 void
-check_char_type(const Column_info_t &info) {
+check_char_type(const pgrouting::Column_info_t &info) {
     if (!(info.type == BPCHAROID)) {
         throw std::string("Unexpected Column '") + info.name + "' type. Expected TEXT";
     }
@@ -145,7 +145,7 @@ check_char_type(const Column_info_t &info) {
  * @throw ERROR Unexpected Column type. Expected ANY-INTEGER-ARRAY.
  */
 void
-check_any_integer_array_type(const Column_info_t &info) {
+check_any_integer_array_type(const pgrouting::Column_info_t &info) {
     if (!(info.type == INT2ARRAYOID
                 || info.type == INT4ARRAYOID
                 || info.type == 1016)) {
@@ -177,7 +177,7 @@ bool column_found(int colNumber) {
  */
 void fetch_column_info(
         const TupleDesc &tupdesc,
-        std::vector<Column_info_t> &info) {
+        std::vector<pgrouting::Column_info_t> &info) {
     for (auto &coldata : info) {
         if (get_column_info(tupdesc, coldata)) {
             switch (coldata.eType) {
@@ -219,7 +219,7 @@ void fetch_column_info(
  * @return Char type of column value is returned.
  */
 char getChar(
-        const HeapTuple tuple, const TupleDesc &tupdesc, const Column_info_t &info,
+        const HeapTuple tuple, const TupleDesc &tupdesc, const pgrouting::Column_info_t &info,
         bool strict, char default_value) {
     Datum binval;
     bool isNull;
@@ -377,7 +377,7 @@ int64_t* getBigIntArr(
  * @return Integer type of column value is returned.
  */
 int64_t getBigInt(
-        const HeapTuple tuple, const TupleDesc &tupdesc, const Column_info_t &info) {
+        const HeapTuple tuple, const TupleDesc &tupdesc, const pgrouting::Column_info_t &info) {
     Datum binval;
     bool isnull;
     int64_t value = 0;
@@ -409,7 +409,7 @@ int64_t getBigInt(
  * @return Double type of column value is returned.
  */
 double getFloat8(
-        const HeapTuple tuple, const TupleDesc &tupdesc, const Column_info_t &info) {
+        const HeapTuple tuple, const TupleDesc &tupdesc, const pgrouting::Column_info_t &info) {
     Datum binval;
     bool isnull = false;
     binval = SPI_getbinval(tuple, tupdesc, info.colNumber, &isnull);
@@ -451,7 +451,7 @@ double getFloat8(
  * @return Pointer of string is returned.
  */
 
-char* getText(const HeapTuple tuple, const TupleDesc &tupdesc,  const Column_info_t &info) {
+char* getText(const HeapTuple tuple, const TupleDesc &tupdesc,  const pgrouting::Column_info_t &info) {
     return DatumGetCString(SPI_getvalue(tuple, tupdesc, info.colNumber));
 }
 
