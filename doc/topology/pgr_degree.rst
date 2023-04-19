@@ -13,7 +13,7 @@
 ``pgr_degree`` -- Proposed
 ===============================================================================
 
-``pgr_degree`` — For each vertex in an undirected graph, returns the count of edges incident to the vertex
+``pgr_degree`` — For each vertex in an undirected graph, return the count of edges incident to the vertex.
 
 
 .. include:: proposed.rst
