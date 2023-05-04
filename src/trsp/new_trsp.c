@@ -28,8 +28,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
-
 
 #include "drivers/trsp/trsp_driver.h"
 
@@ -41,7 +39,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/restriction_t.h"
 #include "c_types/path_rt.h"
 
-#include "c_common/arrays_input.h"
 #include "c_common/pgdata_getters.h"
 
 PGDLLEXPORT Datum _trsp(PG_FUNCTION_ARGS);
@@ -65,6 +62,9 @@ void process(
         Path_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     size_t size_start_vidsArr = 0;
     int64_t* start_vidsArr = NULL;
@@ -80,28 +80,27 @@ void process(
 
     Restriction_t * restrictions = NULL;
     size_t total_restrictions = 0;
-
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false);
+    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
+    throw_error(err_msg, edges_sql);
 
     if (total_edges == 0) {
         pgr_SPI_finish();
         return;
     }
-    pgr_get_restrictions(restrictions_sql, &restrictions, &total_restrictions);
+    pgr_get_restrictions(restrictions_sql, &restrictions, &total_restrictions, &err_msg);
+    throw_error(err_msg, restrictions_sql);
 
     if (starts && ends) {
-        start_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_start_vidsArr, starts, false);
-        end_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_end_vidsArr, ends, false);
+        start_vidsArr = pgr_get_bigIntArray(&size_start_vidsArr, starts, false, &err_msg);
+        throw_error(err_msg, "While getting start vids");
+        end_vidsArr = pgr_get_bigIntArray(&size_end_vidsArr, ends, false, &err_msg);
+        throw_error(err_msg, "While getting end vids");
     } else if (combinations_sql) {
-        pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
+        pgr_get_combinations(combinations_sql, &combinations, &total_combinations, &err_msg);
+        throw_error(err_msg, combinations_sql);
     }
 
     clock_t start_t = clock();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
 
     do_trsp(
             edges, total_edges,

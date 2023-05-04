@@ -50,11 +50,15 @@ void process(
         IID_t_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     PGR_DBG("Load data");
     Edge_t *edges = NULL;
     size_t total_tuples = 0;
-    pgr_get_edges(edges_sql, &edges, &total_tuples, true, true);
+    pgr_get_edges(edges_sql, &edges, &total_tuples, true, true, &err_msg);
+    throw_error(err_msg, edges_sql);
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");
@@ -66,9 +70,6 @@ void process(
     PGR_DBG("Total %ld tuples in query:", total_tuples);
 
     PGR_DBG("Starting processing");
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
     clock_t start_t = clock();
     do_pgr_johnson(
             edges,

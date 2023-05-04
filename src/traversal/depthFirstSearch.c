@@ -33,13 +33,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
 
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 
-#include "c_common/arrays_input.h"
 #include "c_common/pgdata_getters.h"
 
 #include "c_types/mst_rt.h"
@@ -75,10 +73,14 @@ process(
         MST_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     size_t size_rootsArr = 0;
 
-    int64_t* rootsArr = (int64_t*) pgr_get_bigIntArray(&size_rootsArr, roots, false);
+    int64_t* rootsArr = pgr_get_bigIntArray(&size_rootsArr, roots, false, &err_msg);
+    throw_error(err_msg, "While getting start vids");
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
@@ -86,12 +88,10 @@ process(
     Edge_t *edges = NULL;
     size_t total_edges = 0;
 
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false);
+    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
+    throw_error(err_msg, edges_sql);
 
     clock_t start_t = clock();
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
     do_pgr_depthFirstSearch(
             edges, total_edges,
             rootsArr, size_rootsArr,

@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
+
 
 #include "c_types/path_rt.h"
 #include "c_common/debug_macro.h"
@@ -46,7 +46,7 @@ PGDLLEXPORT Datum _pgr_tsp(PG_FUNCTION_ARGS);
 static
 void
 process(
-        char* distances_sql,
+        char* matrix_sql,
         int64_t start_vid,
         int64_t end_vid,
         int max_cycles,
@@ -54,15 +54,18 @@ process(
         TSP_tour_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     IID_t_rt *distances = NULL;
     size_t total_distances = 0;
-    pgr_get_matrixRows(distances_sql, &distances, &total_distances);
-
+    pgr_get_matrixRows(matrix_sql, &distances, &total_distances, &err_msg);
+    throw_error(err_msg, matrix_sql);
     if (total_distances == 0) {
         ereport(WARNING,
                 (errmsg("Insufficient data found on inner query."),
-                 errhint("%s", distances_sql)));
+                 errhint("%s", matrix_sql)));
         (*result_count) = 0;
         (*result_tuples) = NULL;
         pgr_SPI_finish();
@@ -72,9 +75,6 @@ process(
 
     PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
 
     do_pgr_tsp(
             distances, total_distances,

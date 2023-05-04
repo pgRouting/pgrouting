@@ -30,13 +30,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdbool.h>
 
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
-
 
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/arrays_input.h"
 #include "c_common/pgdata_getters.h"
 #include "drivers/max_flow/max_flow_driver.h"
 
@@ -61,6 +58,9 @@ process(
     }
 
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     int64_t *source_vertices = NULL;
     size_t size_source_verticesArr = 0;
@@ -75,12 +75,13 @@ process(
     size_t total_combinations = 0;
 
     if (starts && ends) {
-        source_vertices = (int64_t*)
-            pgr_get_bigIntArray(&size_source_verticesArr, starts, false);
-        sink_vertices = (int64_t*)
-            pgr_get_bigIntArray(&size_sink_verticesArr, ends, false);
+        source_vertices = pgr_get_bigIntArray(&size_source_verticesArr, starts, false, &err_msg);
+        throw_error(err_msg, "While getting start vids");
+        sink_vertices = pgr_get_bigIntArray(&size_sink_verticesArr, ends, false, &err_msg);
+        throw_error(err_msg, "While getting end vids");
     } else if (combinations_sql) {
-        pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
+        pgr_get_combinations(combinations_sql, &combinations, &total_combinations, &err_msg);
+        throw_error(err_msg, combinations_sql);
         if (total_combinations == 0) {
             if (combinations)
                 pfree(combinations);
@@ -92,7 +93,8 @@ process(
     /* NOTE:
      * For flow, cost and reverse_cost are really capacity and reverse_capacity
      */
-    pgr_get_flow_edges(edges_sql, &edges, &total_edges);
+    pgr_get_flow_edges(edges_sql, &edges, &total_edges, &err_msg);
+    throw_error(err_msg, edges_sql);
 
     if (total_edges == 0) {
         if (source_vertices) pfree(source_vertices);
@@ -104,9 +106,6 @@ process(
 
     PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char *err_msg = NULL;
 
     do_pgr_max_flow(
             edges, total_edges,

@@ -74,10 +74,14 @@ process(
     }
 
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     Point_on_edge_t *points = NULL;
     size_t total_points = 0;
-    pgr_get_points(points_sql, &points, &total_points);
+    pgr_get_points(points_sql, &points, &total_points, &err_msg);
+    throw_error(err_msg, points_sql);
 
     char *edges_of_points_query = NULL;
     char *edges_no_points_query = NULL;
@@ -89,11 +93,13 @@ process(
 
     Edge_t *edges_of_points = NULL;
     size_t total_edges_of_points = 0;
-    pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points, true, false);
+    pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points, true, false, &err_msg);
+    throw_error(err_msg, edges_of_points_query);
 
     Edge_t *edges = NULL;
     size_t total_edges = 0;
-    pgr_get_edges(edges_no_points_query, &edges, &total_edges, true, false);
+    pgr_get_edges(edges_no_points_query, &edges, &total_edges, true, false, &err_msg);
+    throw_error(err_msg, edges_no_points_query);
 
     PGR_DBG("freeing allocated memory not used anymore");
     pfree(edges_of_points_query);
@@ -110,9 +116,6 @@ process(
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
 
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
     do_pgr_withPointsKsp(
             edges,
             total_edges,
