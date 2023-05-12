@@ -33,7 +33,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include "drivers/dijkstra/dijkstra_driver.h"
-#include <c_types/ii_t_rt.h>
 
 #include <sstream>
 #include <deque>
@@ -41,10 +40,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <limits>
 
-#include "dijkstra/pgr_dijkstra.hpp"
 
+#include "c_types/ii_t_rt.h"
+/* this include gets the set of combinations
+ * aka map of source to set of targets*/
+#include "cpp_common/combinations.h"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
+
+#include "dijkstra/pgr_dijkstra.hpp"
 
 namespace detail {
 
@@ -97,6 +101,8 @@ post_process(std::deque<pgrouting::Path> &paths, bool only_cost, bool normal, si
 }
 
 
+#if 0
+// This code is no longer used
 template < class G >
 std::deque<pgrouting::Path>
 pgr_dijkstra(
@@ -127,27 +133,22 @@ pgr_dijkstra(
 
     return paths;
 }
+#endif
 
-
-template < class G >
+template <class G>
 std::deque<pgrouting::Path>
-pgr_dijkstra(
+/* Removing the prefix because its not called from C file */
+dijkstra(
         G &graph,
-        std::vector < II_t_rt > &combinations,
+        /* Now it receives a map */
+        const std::map<int64_t , std::set<int64_t>> &combinations,
         bool only_cost,
-        bool normal,
-        size_t n_goals,
-        bool global) {
-    pgrouting::Pgr_dijkstra< G > fn_dijkstra;
-    auto paths = fn_dijkstra.dijkstra(
-            graph,
-            combinations,
-            only_cost, n_goals);
-
-    post_process(paths, only_cost, normal, n_goals, global);
-
-    return paths;
+        size_t n_goals) {
+    std::deque<pgrouting::Path> paths;
+    pgrouting::Pgr_dijkstra<G> fn_dijkstra;
+    return  fn_dijkstra.dijkstra(graph, combinations, only_cost, n_goals);
 }
+
 }  // namespace detail
 
 
@@ -155,7 +156,8 @@ void
 pgr_do_dijkstra(
         Edge_t  *data_edges, size_t total_edges,
 
-        II_t_rt *combinations, size_t total_combinations,
+        /* Standarizing with Arr, C arrays */
+        II_t_rt *combinationsArr, size_t total_combinations,
         int64_t *start_vidsArr, size_t size_start_vidsArr,
         int64_t *end_vidsArr, size_t size_end_vidsArr,
 
@@ -190,16 +192,27 @@ pgr_do_dijkstra(
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
+        size_t n = n_goals <= 0? (std::numeric_limits<size_t>::max)() : static_cast<size_t>(n_goals);
+        std::deque<Path>paths;
+
+        /* All dijkstra overloads on SQL file are converted to combinations overload style
+         * aka map from one source to a set of targets */
+        auto combinations = total_combinations?
+            pgrouting::utilities::get_combinations(combinationsArr, total_combinations)
+            : pgrouting::utilities::get_combinations(start_vidsArr, size_start_vidsArr, end_vidsArr, size_end_vidsArr);
+#if 0
+        // this code is substitued by the above
         std::vector<II_t_rt> combinations_vector(combinations, combinations + total_combinations);
         std::vector<int64_t> start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
         std::vector<int64_t> end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
+#endif
 
-        size_t n = n_goals <= 0? (std::numeric_limits<size_t>::max)() : static_cast<size_t>(n_goals);
-
-        std::deque<Path>paths;
+#if 0
+        /* Remember I mentioned I did not like this many if-then-else */
         if (directed) {
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
+
             if (combinations_vector.empty()) {
                 paths = detail::pgr_dijkstra(digraph, start_vertices, end_vertices, only_cost, normal, n, global);
             } else {
@@ -214,8 +227,26 @@ pgr_do_dijkstra(
                 paths = detail::pgr_dijkstra(undigraph, combinations_vector, only_cost, normal, n, global);
             }
         }
+        /* I am changing to the following */
+#endif
 
-        combinations_vector.clear();
+        if (directed) {
+            pgrouting::DirectedGraph digraph(gType);
+            digraph.insert_edges(data_edges, total_edges);
+            paths = detail::dijkstra(
+                    digraph,
+                    combinations,
+                    only_cost, n);
+        } else {
+            pgrouting::UndirectedGraph undigraph(gType);
+            undigraph.insert_edges(data_edges, total_edges);
+            paths = detail::dijkstra(
+                    undigraph,
+                    combinations,
+                    only_cost, n);
+        }
+        detail::post_process(paths, only_cost, normal, n, global);
+        combinations.clear();
 
         size_t count(0);
         count = count_tuples(paths);
