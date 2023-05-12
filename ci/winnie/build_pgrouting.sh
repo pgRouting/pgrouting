@@ -82,10 +82,10 @@ then
     echo "PATH ${PATH}"
 fi
 
-BOOST_VER=1.59.0
-BOOST_VER_WU=1_59_0
-BOOST_VER_WUM=1_59
-ZLIB_VER=1.2.8
+BOOST_VER=1.78.0
+BOOST_VER_WU=1_78_0
+BOOST_VER_WUM=1_78
+ZLIB_VER=1.2.13
 echo "${BOOST_VER}"
 
 if [ $JENKINS_DEBUG -eq 1 ]
@@ -123,8 +123,8 @@ echo "***************************"
 echo "Current contents of PGPATH ${PGPATH}"
 echo "***************************"
 #---------------
-ls "${PGPATH}/lib/libpgrouting*"
-ls "${PGPATH}/share/extension/pgrouting*"
+ls ${PGPATH}/lib/libpgrouting*
+ls ${PGPATH}/share/extension/pgrouting*
 
 #---------------
 echo
@@ -132,13 +132,13 @@ echo "***************************"
 echo "Current contents of PGPATHEDB ${PGPATHEDB}"
 echo "***************************"
 #---------------
-ls "${PGPATHEDB}/lib/libpgrouting*"
-ls "${PGPATHEDB}/share/extension/pgrouting*"
+ls ${PGPATHEDB}/lib/libpgrouting*
+ls ${PGPATHEDB}/share/extension/pgrouting*
 
-rm "${PGPATH}/lib/libpgrouting*"
-rm "${PGPATH}/share/extension/pgrouting*"
-rm "${PGPATHEDB}/lib/libpgrouting*"
-rm "${PGPATHEDB}/share/extension/pgrouting*"
+rm ${PGPATH}/lib/libpgrouting*
+rm ${PGPATH}/share/extension/pgrouting*
+rm ${PGPATHEDB}/lib/libpgrouting
+rm ${PGPATHEDB}/share/extension/pgrouting*
 
 #---------------
 echo
@@ -146,8 +146,8 @@ echo "***************************"
 echo "After removing in PGPATH ${PGPATH}"
 echo "***************************"
 #---------------
-ls "${PGPATH}"/lib/libpgrouting*
-ls "${PGPATH}"/share/extension/pgrouting*
+ls ${PGPATH}/lib/libpgrouting*
+ls ${PGPATH}/share/extension/pgrouting*
 
 #---------------
 echo
@@ -155,8 +155,8 @@ echo "***************************"
 echo "After removing in PGPATHEDB ${PGPATHEDB}"
 echo "***************************"
 #---------------
-ls "${PGPATHEDB}"/lib/libpgrouting*
-ls "${PGPATHEDB}"/share/extension/pgrouting*
+ls ${PGPATHEDB}/lib/libpgrouting*
+ls ${PGPATHEDB}/share/extension/pgrouting*
 cmake --version
 
 cmake -G "MSYS Makefiles" -DCMAKE_VERBOSE_MAKEFILE=ON \
@@ -188,8 +188,8 @@ echo "***************************"
 echo "Current contents of PGPATH ${PGPATH}"
 echo "***************************"
 #---------------
-ls "${PGPATH}/lib/libpgrouting*"
-ls "${PGPATH}/share/extension/pgrouting*"
+ls ${PGPATH}/lib/libpgrouting*
+ls ${PGPATH}/share/extension/pgrouting*
 
 #---------------
 echo
@@ -198,15 +198,15 @@ echo "Current contents of PGPATHEDB ${PGPATHEDB}"
 echo Should be empty
 echo "***************************"
 #---------------
-ls "${PGPATHEDB}"/lib/libpgrouting*
-ls "${PGPATHEDB}"/share/extension/pgrouting*
+ls ${PGPATHEDB}/lib/libpgrouting*
+ls ${PGPATHEDB}/share/extension/pgrouting*
 
 
 #we need uninstall and reinstall copy to VC++ EDB instance if we want to test on standard Windows installed versions
 #cp *.dll ${PGPATHEDB}/lib/  #TODO remove this once we fix so the .dlls are created in lib folder
-cp -r "${PGPATH}/lib/libpgrouting*.dll" "${PGPATHEDB}/lib/"
-cp -r "${PGPATH}/share/extension/pgrouting*.sql" "${PGPATHEDB}/share/extension/"
-cp -r "${PGPATH}/share/extension/pgrouting.control" "${PGPATHEDB}/share/extension/"
+cp -r ${PGPATH}/lib/libpgrouting*.dll ${PGPATHEDB}/lib/
+cp -r ${PGPATH}/share/extension/pgrouting*.sql ${PGPATHEDB}/share/extension/
+cp -r ${PGPATH}/share/extension/pgrouting.control ${PGPATHEDB}/share/extension/
 
 #---------------
 echo
@@ -214,8 +214,8 @@ echo "***************************"
 echo "After copying to PGPATHEDB ${PGPATHEDB}"
 echo "***************************"
 #---------------
-ls "${PGPATHEDB}/lib/libpgrouting*"
-ls "${PGPATHEDB}/share/extension/pgrouting*"
+ls ${PGPATHEDB}/lib/libpgrouting*
+ls ${PGPATHEDB}/share/extension/pgrouting*
 
 cd "${PROJECTS}/pgrouting/branches/${PGROUTING_VER}" || exit 1
 
