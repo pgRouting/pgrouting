@@ -44,17 +44,17 @@ export PATH="${PATHOLD}:${PostgreSQL_ROOT}/bin:${PostgreSQL_ROOT}/lib"
 if [[ "${GCC_TYPE}" == *gcc48* ]] ; then
 	GMP_VER=5.1.2
 	MPFR_VER=3.1.2
-	CGAL_VER=4.6.1
-	BOOST_VER=1.59.0
-	BOOST_VER_WU=1_59_0
-	BOOST_VER_WUM=1_59
+	CGAL_VER=5.0.3
+	BOOST_VER=1.78.0
+	BOOST_VER_WU=1_78_0
+	BOOST_VER_WUM=1_78
     echo "$BOOST_VER_WU"
     echo "$BOOST_VER_WUM"
 else
   GMP_VER=5.1.2
 	MPFR_VER=3.1.2
-	CGAL_VER=3.9
-	BOOST_VER=1.46.1
+	CGAL_VER=5.0.3
+	BOOST_VER=1.78.0
     echo "$GMP_VER"
     echo "$MPFR_VER"
 fi;
