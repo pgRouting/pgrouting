@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-17 11:06-0600\n"
+"POT-Creation-Date: 2023-05-15 14:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14688,10 +14688,44 @@ msgstr ""
 msgid "pgRouting 3.6.0 Release Notes"
 msgstr ""
 
-msgid "No Changes Yet"
+msgid "C/C++ code enhancements"
+msgstr ""
+
+msgid ""
+"`2504 <https://github.com/pgRouting/pgrouting/pull/2504>` To C++ pg data "
+"get, fetch and check."
+msgstr ""
+
+msgid "Stopping support for compilation with MSVC."
+msgstr ""
+
+msgid "`2505 <https://github.com/pgRouting/pgrouting/pull/2505>` Using namespace."
+msgstr ""
+
+msgid ""
+"`2512 <https://github.com/pgRouting/pgrouting/pull/2512>` [Dijkstra] "
+"Removing duplicate code on Dijkstra."
+msgstr ""
+
+msgid "Documentation"
+msgstr ""
+
+msgid ""
+"`2490 <https://github.com/pgRouting/pgrouting/pull/2490>` Automatic page "
+"history links."
 msgstr ""
 
 msgid "pgRouting 3.5.1 Release Notes"
+msgstr ""
+
+msgid ""
+"`2496 <https://github.com/pgRouting/pgrouting/pull/2496>` Grouping "
+"headers."
+msgstr ""
+
+msgid ""
+"`2497 <https://github.com/pgRouting/pgrouting/pull/2497>` Arrays input to"
+" C++."
 msgstr ""
 
 msgid "pgRouting 3.5.0 Release Notes"
