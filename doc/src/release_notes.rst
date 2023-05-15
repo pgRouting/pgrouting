@@ -19,17 +19,33 @@ To see the full list of changes check the list of `Git commits
 .. contents:: Contents
    :local:
 
-
-
 pgRouting 3.6.0 Release Notes
 -------------------------------------------------------------------------------
 
-No Changes Yet
+.. rubric:: C/C++ code enhancements
+
+* `2504 <https://github.com/pgRouting/pgrouting/pull/2504>` To C++ pg data get,
+  fetch and check.
+
+  * Stopping support for compilation with MSVC.
+
+* `2505 <https://github.com/pgRouting/pgrouting/pull/2505>` Using namespace.
+* `2512 <https://github.com/pgRouting/pgrouting/pull/2512>` [Dijkstra] Removing
+  duplicate code on Dijkstra.
+
+.. rubric:: Documentation
+
+* `2490 <https://github.com/pgRouting/pgrouting/pull/2490>` Automatic page
+  history links.
 
 pgRouting 3.5.1 Release Notes
 -------------------------------------------------------------------------------
 
-No Changes Yet
+.. rubric:: C/C++ code enhancements
+
+* `2496 <https://github.com/pgRouting/pgrouting/pull/2496>` Grouping headers.
+* `2497 <https://github.com/pgRouting/pgrouting/pull/2497>` Arrays input to C++.
+
 
 pgRouting 3.5.0 Release Notes
 -------------------------------------------------------------------------------
