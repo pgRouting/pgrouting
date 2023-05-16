@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-15 14:54+0000\n"
+"POT-Creation-Date: 2023-05-16 16:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3955,13 +3955,82 @@ msgstr ""
 msgid "All deprecated functions will be removed on next mayor version 4.0.0"
 msgstr ""
 
+msgid "Migration of functions that add new columns"
+msgstr ""
+
+msgid "Migration of ``pgr_aStar``"
+msgstr ""
+
+msgid "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__"
+msgstr ""
+
+msgid "Signatures to be migrated:"
+msgstr ""
+
+msgid "``pgr_aStar`` (`One to One`)"
+msgstr ""
+
+msgid "``pgr_aStar`` (`One to Many`)"
+msgstr ""
+
+msgid "``pgr_aStar`` (`Many to One`)"
+msgstr ""
+
+msgid "Before Migration"
+msgstr ""
+
+msgid "Output columns were |old-generic-result|"
+msgstr ""
+
+msgid "Depending on the overload used, the columns ``start_vid`` and ``end_vid`` might be missing:"
+msgstr ""
+
+msgid "``pgr_aStar`` (`One to One`) does not have ``start_vid`` and ``end_vid``."
+msgstr ""
+
+msgid "``pgr_aStar`` (`One to Many`) does not have ``start_vid``."
+msgstr ""
+
+msgid "``pgr_aStar`` (`Many to One`) does not have ``end_vid``."
+msgstr ""
+
+msgid "Migration"
+msgstr ""
+
+msgid "Be aware of the existance of the additional columns."
+msgstr ""
+
+msgid "In ``pgr_aStar`` (`One to One`)"
+msgstr ""
+
+msgid "``start_vid`` contains the **start vid** parameter value."
+msgstr ""
+
+msgid "``end_vid`` contains the **end vid** parameter value."
+msgstr ""
+
+msgid "In ``pgr_aStar`` (`One to Many`)"
+msgstr ""
+
+msgid "In ``pgr_aStar`` (`Many to One`)"
+msgstr ""
+
+msgid "If needed filter out the added columns, for example:"
+msgstr ""
+
+msgid "If needed add the new columns, similar to the following example where ``pgr_dijkstra`` is used, and the function had to be modified to be able to return the new columns:"
+msgstr ""
+
+msgid "In `v3.0 <https://docs.pgrouting.org/3.0/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph>`__ the function ``my_dijkstra`` uses ``pgr_dijkstra``."
+msgstr ""
+
+msgid "Starting from `v3.5 <https://docs.pgrouting.org/3.5/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph>`__ the function ``my_dijkstra`` returns the new additional columns of ``pgr_dijkstra``."
+msgstr ""
+
 msgid "Migration of ``pgr_dijkstra``"
 msgstr ""
 
 msgid "Starting from `v3.5.0 <https://docs.pgrouting.org/3.5/en/migration.html>`__"
-msgstr ""
-
-msgid "Signatures to be migrated:"
 msgstr ""
 
 msgid "``pgr_dijkstra`` (`One to One`)"
@@ -3973,15 +4042,6 @@ msgstr ""
 msgid "``pgr_dijkstra`` (`Many to One`)"
 msgstr ""
 
-msgid "Before Migration"
-msgstr ""
-
-msgid "Output columns are |old-generic-result|"
-msgstr ""
-
-msgid "Depending on the overload used the columns ``start_vid`` and ``end_vid`` might be missing:"
-msgstr ""
-
 msgid "``pgr_dijkstra`` (`One to One`) does not have ``start_vid`` and ``end_vid``."
 msgstr ""
 
@@ -3991,19 +4051,7 @@ msgstr ""
 msgid "``pgr_dijkstra`` (`Many to One`) does not have ``end_vid``."
 msgstr ""
 
-msgid "Migration"
-msgstr ""
-
-msgid "Be aware of the existance of the additional columns."
-msgstr ""
-
 msgid "In ``pgr_dijkstra`` (`One to One`)"
-msgstr ""
-
-msgid "``start_vid`` contains the **start vid** parameter value."
-msgstr ""
-
-msgid "``end_vid`` contains the **end vid** parameter value."
 msgstr ""
 
 msgid "In ``pgr_dijkstra`` (`One to Many`)"
@@ -4012,16 +4060,10 @@ msgstr ""
 msgid "In ``pgr_dijkstra`` (`Many to One`)"
 msgstr ""
 
-msgid "If needed filter out the added columns, for example:"
-msgstr ""
-
 msgid "If needed add the new columns, for example:"
 msgstr ""
 
-msgid "In `v3.0 <https://docs.pgrouting.org/3.0/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph>`__ the function ``my_dijkstra`` uses ``pgr_dijkstra``."
-msgstr ""
-
-msgid "Starting from `v3.5 <https://docs.pgrouting.org/3.5/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph>`__ the function ``my_dijkstra`` returns the new additional columns of ``pgr_dijkstra``."
+msgid "Migration of functions that change inner query columns names"
 msgstr ""
 
 msgid "Migration of ``pgr_maxCardinalityMatch``"
@@ -4076,6 +4118,9 @@ msgid "Do not use the flag ``directed``."
 msgstr ""
 
 msgid "In the query returns only ``edge`` column."
+msgstr ""
+
+msgid "Migration of turn restrictions"
 msgstr ""
 
 msgid "Migration of restrictions"
@@ -6430,6 +6475,21 @@ msgstr ""
 msgid "``pgr_aStar`` — Shortest path using the A* algorithm."
 msgstr ""
 
+msgid "Version 3.5.0"
+msgstr ""
+
+msgid "Standarizing output columns to |short-generic-result|"
+msgstr ""
+
+msgid "``pgr_aStar`` (`One to One`_) added ``start_vid`` and ``end_vid`` columns."
+msgstr ""
+
+msgid "``pgr_aStar`` (`One to Many`_) added ``end_vid`` column."
+msgstr ""
+
+msgid "``pgr_aStar`` (`Many to One`_) added ``start_vid`` column."
+msgstr ""
+
 msgid "Version 3.2.0"
 msgstr ""
 
@@ -6493,31 +6553,19 @@ msgstr ""
 msgid "**options:** ``[directed, heuristic, factor, epsilon]``"
 msgstr ""
 
-msgid "RETURNS SET OF |old-generic-result|"
+msgid "RETURNS SET OF |short-generic-result|"
 msgstr ""
 
 msgid "Optional parameters are `named parameters` and have a default value."
 msgstr ""
 
-msgid "RETURNS SET OF |result-1-1|"
-msgstr ""
-
 msgid "From vertex :math:`6` to vertex :math:`12` on a **directed** graph with heuristic :math:`2`"
-msgstr ""
-
-msgid "RETURNS SET OF |result-1-m|"
 msgstr ""
 
 msgid "From vertex :math:`6` to vertices :math:`\\{10, 12\\}` on a **directed** graph with heuristic :math:`3` and factor :math:`3.5`"
 msgstr ""
 
-msgid "RETURNS SET OF |result-m-1|"
-msgstr ""
-
 msgid "From vertices :math:`\\{6, 8\\}` to vertex :math:`10` on an **undirected** graph with heuristic :math:`4`"
-msgstr ""
-
-msgid "RETURNS SET OF |short-generic-result|"
 msgstr ""
 
 msgid "From vertices :math:`\\{6, 8\\}` to vertices :math:`\\{10, 12\\}` on a **directed** graph with factor :math:`0.5`"
@@ -7154,6 +7202,18 @@ msgid "pgr_bdAstar(`Edges SQL`_, **start vids**, **end vids**, [**options**])"
 msgstr ""
 
 msgid "pgr_bdAstar(`Edges SQL`_, `Combinations SQL`_, [**options**])"
+msgstr ""
+
+msgid "RETURNS SET OF |old-generic-result|"
+msgstr ""
+
+msgid "RETURNS SET OF |result-1-1|"
+msgstr ""
+
+msgid "RETURNS SET OF |result-1-m|"
+msgstr ""
+
+msgid "RETURNS SET OF |result-m-1|"
 msgstr ""
 
 msgid "pgr_bdAstarCost"
@@ -8534,12 +8594,6 @@ msgid "``pgr_dijkstra``"
 msgstr ""
 
 msgid "``pgr_dijkstra`` — Shortest path(s) using Dijkstra algorithm."
-msgstr ""
-
-msgid "Version 3.5.0"
-msgstr ""
-
-msgid "Standarizing output columns to |short-generic-result|"
 msgstr ""
 
 msgid "``pgr_dijkstra`` (`One to One`_) added `start_vid` and `end_vid` columns."
@@ -12514,6 +12568,21 @@ msgstr ""
 msgid "pgRouting 3.6.0 Release Notes"
 msgstr ""
 
+msgid "Official functions changes"
+msgstr ""
+
+msgid "aStar"
+msgstr ""
+
+msgid "``pgr_aStar`` (`One to One`) added ``start_vid`` and ``end_vid`` columns."
+msgstr ""
+
+msgid "``pgr_aStar`` (`One to Many`) added ``end_vid`` column."
+msgstr ""
+
+msgid "``pgr_aStar`` (`Many to One`) added ``start_vid`` column."
+msgstr ""
+
 msgid "C/C++ code enhancements"
 msgstr ""
 
@@ -12548,9 +12617,6 @@ msgid "pgRouting 3.5.0 Release Notes"
 msgstr ""
 
 msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.5.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.0%22>`_"
-msgstr ""
-
-msgid "Official functions changes"
 msgstr ""
 
 msgid "Dijkstra"
