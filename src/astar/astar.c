@@ -43,30 +43,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 PGDLLEXPORT Datum _pgr_astar(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_astar);
 
-#if 0
-void
-check_parameters(
-        int heuristic,
-        double factor,
-        double epsilon) {
-    if (heuristic > 5 || heuristic < 0) {
-        ereport(ERROR,
-                (errmsg("Unknown heuristic"),
-                 errhint("Valid values: 0~5")));
-    }
-    if (factor <= 0) {
-        ereport(ERROR,
-                (errmsg("Factor value out of range"),
-                 errhint("Valid values: positive non zero")));
-    }
-    if (epsilon < 1) {
-        ereport(ERROR,
-                (errmsg("Epsilon value out of range"),
-                 errhint("Valid values: 1 or greater than 1")));
-    }
-}
-#endif
-
 static
 void
 process(char* edges_sql,
@@ -179,10 +155,8 @@ _pgr_astar(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
-    /**********************************************************************/
     Path_rt  *result_tuples = NULL;
     size_t result_count = 0;
-    /**********************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
@@ -194,7 +168,6 @@ _pgr_astar(PG_FUNCTION_ARGS) {
             /*
              * many to many
              */
-
             process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 NULL,
@@ -208,12 +181,10 @@ _pgr_astar(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(8),
                 &result_tuples,
                 &result_count);
-
         } else if (PG_NARGS() == 7) {
             /*
              * Combinations
              */
-
             process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
@@ -231,7 +202,6 @@ _pgr_astar(PG_FUNCTION_ARGS) {
 
 
         funcctx->max_calls = result_count;
-
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE)
@@ -253,18 +223,6 @@ _pgr_astar(PG_FUNCTION_ARGS) {
         Datum        result;
         Datum        *values;
         bool*        nulls;
-
-        /*********************************************************************
-          OUT seq INTEGER,
-          OUT path_seq INTEGER,
-          OUT start_vid BIGINT,
-          OUT end_vid BIGINT,
-          OUT node BIGINT,
-          OUT edge BIGINT,
-          OUT cost FLOAT,
-          OUT agg_cost FLOAT
-         **********************************************************************/
-
 
         size_t numb = 8;
         values = palloc(numb * sizeof(Datum));
