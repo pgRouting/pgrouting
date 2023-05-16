@@ -81,12 +81,6 @@ pgr_astar(
 
 }  // namespace
 
-/************************************************************
-  edges_sql TEXT,
-  vertex_table TEXT,
-  start_vid BIGINT,
-  end_vid BIGINT  directed BOOLEAN DEFAULT true,
- ***********************************************************/
 void do_pgr_astarManyToMany(
         Edge_xy_t *edges, size_t total_edges,
 
@@ -120,8 +114,6 @@ void do_pgr_astarManyToMany(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-
-        log << "Inserting target vertices into a c++ vector structure\n";
         std::vector<II_t_rt>
                 combinations_vector(combinations, combinations + total_combinations);
         std::vector< int64_t > end_vids(
@@ -135,7 +127,6 @@ void do_pgr_astarManyToMany(
 
         std::deque< Path >paths;
         if (directed) {
-            log << "Working with directed Graph\n";
             pgrouting::xyDirectedGraph digraph(
                     pgrouting::extract_vertices(edges, total_edges),
                     gType);
@@ -143,7 +134,6 @@ void do_pgr_astarManyToMany(
             paths = pgr_astar(digraph, combinations_vector, start_vids, end_vids,
                     heuristic, factor, epsilon, only_cost, normal);
         } else {
-            log << "Working with Undirected Graph\n";
             pgrouting::xyUndirectedGraph undigraph(
                     pgrouting::extract_vertices(edges, total_edges),
                     gType);
@@ -159,8 +149,7 @@ void do_pgr_astarManyToMany(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            notice <<
-                "No paths found\n";
+            notice << "No paths found\n";
             *log_msg = pgr_msg(notice.str().c_str());
             return;
         }
