@@ -1,6 +1,16 @@
 pgRouting 3.6.0 Release Notes
 -------------------------------------------------------------------------------
 
+**Official functions changes**
+
+* aStar
+
+  * Standarizing output columns to |short-generic-result|
+
+    * ``pgr_aStar`` (`One to One`) added ``start_vid`` and ``end_vid`` columns.
+    * ``pgr_aStar`` (`One to Many`) added ``end_vid`` column.
+    * ``pgr_aStar`` (`Many to One`) added ``start_vid`` column.
+
 **C/C++ code enhancements**
 
 * `2504 <https://github.com/pgRouting/pgrouting/pull/2504>` To C++ pg data get,
