@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.5.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-19 02:39+0000\n"
+"POT-Creation-Date: 2023-05-16 15:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -8466,9 +8466,6 @@ msgstr ""
 
 msgid "If you have a vertices table already built using ``pgr_extractVertices`` and want the degree of the whole graph rather than a subset, you can forgo using pgr_degree and work with the ``in_edges`` and ``out_edges`` columns directly."
 msgstr ""
-
-msgid "If you have a vertices table already built using ``pgr_extractVertices`` and want the degree of the whole graph rather than a subset, you can forgo using pgr_degree and work with the ``in_edges`` and ``out_edges`` columns directly."
-msgstr "If you have a vertices table already built using ``pgr_extractVertices`` and want the degree of the whole graph rather than a subset, you can forgo using pgr_degree and work with the ``in_edges`` and ``out_edges`` columns directly."
 
 msgid ":doc:`pgr_extractVertices`"
 msgstr ""
