@@ -23,7 +23,31 @@ To see the full list of changes check the list of `Git commits
 pgRouting 3.5.1 Release Notes
 -------------------------------------------------------------------------------
 
-No Changes Yet
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.5.1
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.1%22>`_
+
+.. rubric:: Documentation fixes
+
+Changes on the documentation to the following:
+
+* pgr_degree
+* pgr_dijkstra
+* pgr_ksp
+* Automatic page history links
+
+  * using bootstrap_version 2 because 3+ does not do dropdowns
+
+
+.. rubric:: Build fixes
+
+* Fix winnie build
+
+.. rubric::  Code fixes
+
+* Fix clang warnings
+
+  * Grouping headers of postgres readers
 
 pgRouting 3.5.0 Release Notes
 -------------------------------------------------------------------------------
