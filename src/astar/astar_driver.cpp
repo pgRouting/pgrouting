@@ -55,7 +55,6 @@ pgr_astar(
         double epsilon,
         bool only_cost,
         bool normal) {
-
     auto paths = pgrouting::algorithms::astar(graph, combinations, heuristic, factor, epsilon, only_cost);
 
     if (!normal) {

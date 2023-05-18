@@ -28,11 +28,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_ASTAR_PGR_ASTAR_HPP_
 #pragma once
 
-#include <cmath>
 #include <deque>
-#include <limits>
-#include <algorithm>
 #include <vector>
+#include <limits>
 #include <set>
 #include <map>
 
@@ -47,17 +45,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/interruption.h"
 #include "c_types/ii_t_rt.h"
 
-namespace {
+namespace detail {
 
 template <typename B_G, typename V>
 class distance_heuristic : public boost::astar_heuristic<B_G, double> {
  public:
-     distance_heuristic(B_G &g, V goal, int heuristic, double factor)
-         : m_g(g),
-         m_factor(factor),
-         m_heuristic(heuristic) {
-             m_goals.insert(goal);
-         }
      distance_heuristic(
              B_G &g,
              const std::set<V> &goals,
@@ -117,7 +109,7 @@ class distance_heuristic : public boost::astar_heuristic<B_G, double> {
      std::set<V> m_goals;
      double m_factor;
      int m_heuristic;
-};  // class distance_heuristic
+};
 
 template <typename G, typename V>
 bool astar_1_to_many(
@@ -169,7 +161,7 @@ std::deque<pgrouting::Path> get_paths(
     return paths;
 }
 
-}  // namespace
+}  // namespace detail
 
 namespace pgrouting {
 namespace algorithms {
@@ -196,8 +188,8 @@ std::deque<Path> astar(
                 v_targets.insert(graph.get_V(vertex));
             }
         }
-        astar_1_to_many(graph, predecessors, distances, v_source, v_targets, heuristic, factor, epsilon);
-        auto r_paths = get_paths(graph, predecessors, distances, v_source, v_targets, only_cost);
+        detail::astar_1_to_many(graph, predecessors, distances, v_source, v_targets, heuristic, factor, epsilon);
+        auto r_paths = detail::get_paths(graph, predecessors, distances, v_source, v_targets, only_cost);
         std::stable_sort(r_paths.begin(), r_paths.end(),
                 [](const Path &e1, const Path &e2)->bool {
                 return e1.end_id() < e2.end_id();

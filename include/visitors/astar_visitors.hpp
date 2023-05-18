@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef INCLUDE_VISITORS_ASTAR_VISITORS_HPP_
 #define INCLUDE_VISITORS_ASTAR_VISITORS_HPP_
 
+#include <set>
 #include <boost/graph/astar_search.hpp>
 #include "visitors/found_goals.hpp"
 
@@ -37,20 +38,20 @@ namespace visitors {
 /** @brief visitor stops when all targets are found */
 template <typename V>
 class astar_many_goals_visitor : public boost::default_astar_visitor {
-    public:
-        explicit astar_many_goals_visitor(const std::set<V> &goals)
-            :m_goals(goals) {}
-        template <class B_G>
-            void examine_vertex(V u, B_G &g) {
-                auto s_it = m_goals.find(u);
-                if (s_it == m_goals.end()) return;
-                // found one more goal
-                m_goals.erase(s_it);
-                if (m_goals.size() == 0) throw found_goals();
-                num_edges(g);
-            }
-    private:
-        std::set<V> m_goals;
+ public:
+     explicit astar_many_goals_visitor(const std::set<V> &goals)
+         :m_goals(goals) {}
+     template <class B_G>
+         void examine_vertex(V u, B_G &g) {
+             auto s_it = m_goals.find(u);
+             if (s_it == m_goals.end()) return;
+             // found one more goal
+             m_goals.erase(s_it);
+             if (m_goals.size() == 0) throw found_goals();
+             num_edges(g);
+         }
+ private:
+     std::set<V> m_goals;
 };
 
 }  // namespace visitors
