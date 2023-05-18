@@ -47,6 +47,78 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/interruption.h"
 #include "c_types/ii_t_rt.h"
 
+namespace {
+class distance_heuristic : public boost::astar_heuristic< B_G, double > {
+ public:
+     distance_heuristic(B_G &g, V goal, int heuristic, double factor)
+         : m_g(g),
+         m_factor(factor),
+         m_heuristic(heuristic) {
+             m_goals.insert(goal);
+         }
+     distance_heuristic(
+             B_G &g,
+             const std::set<V> &goals,
+             int heuristic,
+             double factor)
+         : m_g(g),
+         m_goals(goals),
+         m_factor(factor),
+         m_heuristic(heuristic) {}
+
+     double operator()(V u) {
+         if (m_heuristic == 0) return 0;
+         if (m_goals.empty()) return 0;
+         double best_h((std::numeric_limits<double>::max)());
+         for (auto goal : m_goals) {
+             double current((std::numeric_limits<double>::max)());
+             double dx = m_g[goal].x() - m_g[u].x();
+             double dy = m_g[goal].y() - m_g[u].y();
+             switch (m_heuristic) {
+                 case 0:
+                     current = 0;
+                     break;
+                 case 1:
+                     current = std::fabs((std::max)(dx, dy)) * m_factor;
+                     break;
+                 case 2:
+                     current = std::fabs((std::min)(dx, dy)) * m_factor;
+                     break;
+                 case 3:
+                     current = (dx * dx + dy * dy) * m_factor * m_factor;
+                     break;
+                 case 4:
+                     current = std::sqrt(dx * dx + dy * dy) * m_factor;
+                     break;
+                 case 5:
+                     current = (std::fabs(dx) + std::fabs(dy)) * m_factor;
+                     break;
+                 default:
+                     current = 0;
+             }
+             if (current < best_h) {
+                 best_h = current;
+             }
+         }
+         {
+             auto s_it = m_goals.find(u);
+             if (!(s_it == m_goals.end())) {
+                 // found one more goal
+                 m_goals.erase(s_it);
+             }
+         }
+         return best_h;
+     }
+
+ private:
+     B_G &m_g;
+     std::set<V> m_goals;
+     double m_factor;
+     int m_heuristic;
+};  // class distance_heuristic
+
+}  // namespace
+
 namespace pgrouting {
 namespace algorithms {
 
@@ -136,76 +208,6 @@ class Pgr_astar {
      std::vector< double > distances;
      std::deque< V > nodesInDistance;
      //@}
-
-     // heuristic for one goal
-     class distance_heuristic : public boost::astar_heuristic< B_G, double > {
-      public:
-          distance_heuristic(B_G &g, V goal, int heuristic, double factor)
-              : m_g(g),
-              m_factor(factor),
-              m_heuristic(heuristic) {
-                  m_goals.insert(goal);
-              }
-          distance_heuristic(
-                  B_G &g,
-                  const std::set<V> &goals,
-                  int heuristic,
-                  double factor)
-              : m_g(g),
-              m_goals(goals),
-              m_factor(factor),
-              m_heuristic(heuristic) {}
-
-          double operator()(V u) {
-              if (m_heuristic == 0) return 0;
-              if (m_goals.empty()) return 0;
-              double best_h((std::numeric_limits<double>::max)());
-              for (auto goal : m_goals) {
-                  double current((std::numeric_limits<double>::max)());
-                  double dx = m_g[goal].x() - m_g[u].x();
-                  double dy = m_g[goal].y() - m_g[u].y();
-                  switch (m_heuristic) {
-                      case 0:
-                          current = 0;
-                          break;
-                      case 1:
-                          current = std::fabs((std::max)(dx, dy)) * m_factor;
-                          break;
-                      case 2:
-                          current = std::fabs((std::min)(dx, dy)) * m_factor;
-                          break;
-                      case 3:
-                          current = (dx * dx + dy * dy) * m_factor * m_factor;
-                          break;
-                      case 4:
-                          current = std::sqrt(dx * dx + dy * dy) * m_factor;
-                          break;
-                      case 5:
-                          current = (std::fabs(dx) + std::fabs(dy)) * m_factor;
-                          break;
-                      default:
-                          current = 0;
-                  }
-                  if (current < best_h) {
-                      best_h = current;
-                  }
-              }
-              {
-                  auto s_it = m_goals.find(u);
-                  if (!(s_it == m_goals.end())) {
-                      // found one more goal
-                      m_goals.erase(s_it);
-                  }
-              }
-              return best_h;
-          }
-
-      private:
-          B_G &m_g;
-          std::set< V > m_goals;
-          double m_factor;
-          int m_heuristic;
-     };  // class distance_heuristic
 
 
      /******************** IMPLEMENTTION ******************/
