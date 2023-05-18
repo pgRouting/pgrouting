@@ -62,6 +62,7 @@ class Pgr_astar {
          distances.clear();
      }
 
+#if 0
      //! @name Astar
      //@{
      //! one to one
@@ -97,6 +98,7 @@ class Pgr_astar {
 
          return solution;
      }
+#endif
 
      //! astar 1 to many
      std::deque<Path> astar(
@@ -286,6 +288,7 @@ class Pgr_astar {
 
 
 
+#if 0
      //! Call to Astar  1 source to 1 target
      bool astar_1_to_1(
              G &graph,
@@ -313,7 +316,7 @@ class Pgr_astar {
          }
          return found;
      }
-
+#endif
 
      //! Call to astar  1 source to many targets
      bool astar_1_to_many(
