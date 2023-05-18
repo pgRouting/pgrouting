@@ -2,9 +2,9 @@
 
 File: astar.hpp
 
+Copyright (c) 2023 Vicky Vergara
 Copyright (c) 2015 Vicky Vergara
 Mail: vicky at erosion.dev
-Mail: project@pgrouting.org
 
 ------
 
@@ -34,12 +34,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <map>
 
-#include <boost/config.hpp>
-#include <boost/graph/graph_traits.hpp>
-#include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/astar_search.hpp>
-#include <visitors/astar_visitors.hpp>
 
+#include "visitors/astar_visitors.hpp"
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/interruption.h"
@@ -52,11 +49,11 @@ class distance_heuristic : public boost::astar_heuristic<B_G, double> {
  public:
      distance_heuristic(
              B_G &g,
-             const std::set<V> &goals,
+             const std::set<V> &destinations,
              int heuristic,
              double factor)
          : m_g(g),
-         m_goals(goals),
+         m_goals(destinations),
          m_factor(factor),
          m_heuristic(heuristic) {}
 
@@ -116,8 +113,8 @@ bool astar_1_to_many(
         G &graph,
         std::vector<V> &predecessors,
         std::vector<double> &distances,
-        V source,
-        const std::set<V> &targets,
+        V departure,
+        const std::set<V> &destinations,
         int heuristic,
         double factor,
         double epsilon) {
@@ -126,14 +123,14 @@ bool astar_1_to_many(
     CHECK_FOR_INTERRUPTS();
     try {
         boost::astar_search(
-                graph.graph, source,
+                graph.graph, departure,
                 distance_heuristic<B_G, V>(
-                    graph.graph, targets,
+                    graph.graph, destinations,
                     heuristic, factor * epsilon),
                 boost::predecessor_map(&predecessors[0])
                 .weight_map(get(&pgrouting::Basic_edge::cost, graph.graph))
                 .distance_map(&distances[0])
-                .visitor(pgrouting::visitors::astar_many_goals_visitor<V>(targets)));
+                .visitor(pgrouting::visitors::astar_many_goals_visitor<V>(destinations)));
     }
     catch(pgrouting::found_goals &) {
         found = true;  // Target vertex found
@@ -181,20 +178,23 @@ std::deque<Path> astar(
         if (!graph.has_vertex(c.first)) continue;
         std::vector<V> predecessors(graph.num_vertices());
         std::vector<double> distances(graph.num_vertices());
-        auto v_source(graph.get_V(c.first));
-        std::set<V> v_targets;
+
+        auto departure(graph.get_V(c.first));
+        std::set<V> destinations;
+
         for (const auto &vertex : c.second) {
             if (graph.has_vertex(vertex)) {
-                v_targets.insert(graph.get_V(vertex));
+                destinations.insert(graph.get_V(vertex));
             }
         }
-        detail::astar_1_to_many(graph, predecessors, distances, v_source, v_targets, heuristic, factor, epsilon);
-        auto r_paths = detail::get_paths(graph, predecessors, distances, v_source, v_targets, only_cost);
+
+        detail::astar_1_to_many(graph, predecessors, distances, departure, destinations, heuristic, factor, epsilon);
+        auto r_paths = detail::get_paths(graph, predecessors, distances, departure, destinations, only_cost);
+
         std::stable_sort(r_paths.begin(), r_paths.end(),
                 [](const Path &e1, const Path &e2)->bool {
                 return e1.end_id() < e2.end_id();
                 });
-
         paths.insert(paths.end(), r_paths.begin(), r_paths.end());
     }
 
