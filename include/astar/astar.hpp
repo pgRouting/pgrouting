@@ -103,6 +103,7 @@ class Pgr_astar {
          return paths;
      }
 
+#if 0
      // preparation for many to many
      std::deque<Path> astar(
              G &graph,
@@ -129,6 +130,7 @@ class Pgr_astar {
                  });
          return paths;
      }
+#endif
 
      // preparation for parallel arrays
      std::deque<Path> astar(
