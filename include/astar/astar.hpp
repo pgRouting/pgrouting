@@ -66,7 +66,7 @@ class Pgr_astar {
      std::deque<Path> astar(
              G &graph,
              int64_t start_vertex,
-             std::vector<int64_t> end_vertex,
+             std::set<int64_t> end_vertex,
              int heuristic,
              double factor,
              double epsilon,
@@ -133,7 +133,7 @@ class Pgr_astar {
      // preparation for parallel arrays
      std::deque<Path> astar(
              G &graph,
-             const std::vector<II_t_rt> &combinations,
+             const std::map<int64_t, std::set<int64_t>> &combinations,
              int heuristic,
              double factor,
              double epsilon,
@@ -141,6 +141,7 @@ class Pgr_astar {
          // a call to 1 to many is faster for each of the sources
          std::deque<Path> paths;
 
+#if 0
          // group targets per distinct source
          std::map< int64_t, std::vector<int64_t> > vertex_map;
          for (const II_t_rt &comb : combinations) {
@@ -152,11 +153,12 @@ class Pgr_astar {
                  vertex_map[comb.d1.source] = targets;
              }
          }
+#endif
 
-         for (const auto &start_ends : vertex_map) {
+         for (const auto &c : combinations) {
              auto r_paths = astar(
                      graph,
-                     start_ends.first, start_ends.second,
+                     c.first, c.second,
                      heuristic, factor, epsilon, only_cost);
              paths.insert(paths.end(), r_paths.begin(), r_paths.end());
          }

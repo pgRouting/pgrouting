@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "astar/astar.hpp"
 
+#include "cpp_common/combinations.h"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
@@ -48,28 +49,15 @@ template < class G >
 std::deque<pgrouting::Path>
 pgr_astar(
         G &graph,
-        std::vector <II_t_rt> &combinations,
-        std::vector<int64_t> sources,
-        std::vector<int64_t> targets,
+        const std::map<int64_t, std::set<int64_t>> &combinations,
         int heuristic,
         double factor,
         double epsilon,
         bool only_cost,
         bool normal) {
-    std::sort(sources.begin(), sources.end());
-    sources.erase(
-            std::unique(sources.begin(), sources.end()),
-            sources.end());
-
-    std::sort(targets.begin(), targets.end());
-    targets.erase(
-            std::unique(targets.begin(), targets.end()),
-            targets.end());
 
     pgrouting::algorithms::Pgr_astar< G > fn_astar;
-    auto paths = combinations.empty() ?
-        fn_astar.astar(graph, sources, targets, heuristic, factor, epsilon, only_cost)
-        : fn_astar.astar(graph, combinations, heuristic, factor, epsilon, only_cost);
+    auto paths = fn_astar.astar(graph, combinations, heuristic, factor, epsilon, only_cost);
 
     if (!normal) {
         for (auto &path : paths) {
@@ -126,14 +114,14 @@ void do_pgr_astarManyToMany(
                     pgrouting::extract_vertices(edges, total_edges),
                     gType);
             digraph.insert_edges(edges, total_edges);
-            paths = pgr_astar(digraph, combinations_vector, start_vids, end_vids,
+            paths = pgr_astar(digraph, combinations,
                     heuristic, factor, epsilon, only_cost, normal);
         } else {
             pgrouting::xyUndirectedGraph undigraph(
                     pgrouting::extract_vertices(edges, total_edges),
                     gType);
             undigraph.insert_edges(edges, total_edges);
-            paths = pgr_astar(undigraph, combinations_vector, start_vids, end_vids,
+            paths = pgr_astar(undigraph, combinations,
                     heuristic, factor, epsilon, only_cost, normal);
         }
 
