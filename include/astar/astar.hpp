@@ -186,6 +186,7 @@ class Pgr_astar {
          distances.clear();
      }
 
+#if 0
      //! astar 1 to many
      std::deque<Path> astar(
              G &graph,
@@ -196,7 +197,6 @@ class Pgr_astar {
              double epsilon,
              bool only_cost) {
          clear();
-
          predecessors.resize(graph.num_vertices());
          distances.resize(graph.num_vertices());
 
@@ -210,14 +210,7 @@ class Pgr_astar {
              }
          }
 
-         astar_1_to_many(graph,
-                 predecessors, distances,
-                 v_source,
-                 v_targets,
-                 heuristic,
-                 factor,
-                 epsilon);
-
+         astar_1_to_many(graph, predecessors, distances, v_source, v_targets, heuristic, factor, epsilon);
          auto paths = get_paths(graph, predecessors, distances, v_source, v_targets, only_cost);
 
          std::stable_sort(paths.begin(), paths.end(),
@@ -227,8 +220,8 @@ class Pgr_astar {
 
          return paths;
      }
+#endif
 
-     // preparation for parallel arrays
      /* TODO make this a function */
      std::deque<Path> astar(
              G &graph,
@@ -241,10 +234,31 @@ class Pgr_astar {
          std::deque<Path> paths;
 
          for (const auto &c : combinations) {
+#if 1
+             if (!graph.has_vertex(c.first)) continue;
+             clear();
+             predecessors.resize(graph.num_vertices());
+             distances.resize(graph.num_vertices());
+             auto v_source(graph.get_V(c.first));
+             std::set<V> v_targets;
+             for (const auto &vertex : c.second) {
+                 if (graph.has_vertex(vertex)) {
+                     v_targets.insert(graph.get_V(vertex));
+                 }
+             }
+             astar_1_to_many(graph, predecessors, distances, v_source, v_targets, heuristic, factor, epsilon);
+             auto r_paths = get_paths(graph, predecessors, distances, v_source, v_targets, only_cost);
+             std::stable_sort(r_paths.begin(), r_paths.end(),
+                     [](const Path &e1, const Path &e2)->bool {
+                     return e1.end_id() < e2.end_id();
+                     });
+
+#else
              auto r_paths = astar(
                      graph,
                      c.first, c.second,
                      heuristic, factor, epsilon, only_cost);
+#endif
              paths.insert(paths.end(), r_paths.begin(), r_paths.end());
          }
 
@@ -259,7 +273,6 @@ class Pgr_astar {
      //@{
      std::vector< V > predecessors;
      std::vector< double > distances;
-     std::deque< V > nodesInDistance;
      //@}
 
 
