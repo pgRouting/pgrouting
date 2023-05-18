@@ -1,9 +1,9 @@
 /*PGR-GNU*****************************************************************
 
-File: pgr_astar.hpp
+File: astar.hpp
 
 Copyright (c) 2015 Vicky Vergara
-Mail: vicky_vergara@hotmail.com
+Mail: vicky at erosion.dev
 Mail: project@pgrouting.org
 
 ------
