@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace visitors {
 
+#if 0
 //! visitor that terminates when we find the goal
 template <typename V>
 class astar_one_goal_visitor : public boost::default_astar_visitor {
@@ -49,6 +50,7 @@ class astar_one_goal_visitor : public boost::default_astar_visitor {
  private:
      V m_goal;
 };  // class astar_one_goal_visitor
+#endif
 
 //! class for stopping when all targets are found
 template <typename V>
