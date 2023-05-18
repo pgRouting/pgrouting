@@ -282,6 +282,7 @@ class Pgr_astar {
      };  // class distance_heuristic
 
 
+#if 0
      //! visitor that terminates when we find the goal
      class astar_one_goal_visitor : public boost::default_astar_visitor {
       public:
@@ -314,6 +315,7 @@ class Pgr_astar {
       private:
           std::set< V > m_goals;
      };
+#endif
 
      /******************** IMPLEMENTTION ******************/
 
