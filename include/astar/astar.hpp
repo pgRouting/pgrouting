@@ -119,6 +119,26 @@ class distance_heuristic : public boost::astar_heuristic<B_G, double> {
      int m_heuristic;
 };  // class distance_heuristic
 
+template <typename G, typename V>
+std::deque<pgrouting::Path> get_paths(
+        const G &graph,
+        const std::vector<V> &predecessors,
+        const std::vector<double> &distances,
+        V source,
+        const std::set<V> &targets,
+        bool only_cost) {
+    using Path = pgrouting::Path;
+    std::deque<Path> paths;
+    for (const auto &target : targets) {
+        auto p = Path(graph,
+                source, target,
+                predecessors, distances,
+                false);
+        paths.push_back(Path(graph, p, only_cost));
+    }
+    return paths;
+}
+
 }  // namespace
 
 namespace pgrouting {
@@ -167,7 +187,7 @@ class Pgr_astar {
                  factor,
                  epsilon);
 
-         auto paths = get_paths(graph, v_source, v_targets, only_cost);
+         auto paths = get_paths(graph, predecessors, distances, v_source, v_targets, only_cost);
 
          std::stable_sort(paths.begin(), paths.end(),
                  [](const Path &e1, const Path &e2)->bool {
@@ -242,27 +262,6 @@ class Pgr_astar {
          return found;
      }
 
-
-     /*
-      * GET_PATHS
-      */
-
-
-     std::deque<Path> get_paths(
-             const G &graph,
-             V source,
-             const std::set<V> &targets,
-             bool only_cost) const {
-         std::deque<Path> paths;
-         for (const auto &target : targets) {
-             auto p = Path(graph,
-                         source, target,
-                         predecessors, distances,
-                         false);
-             paths.push_back(Path(graph, p, only_cost));
-         }
-         return paths;
-     }
 };
 
 
