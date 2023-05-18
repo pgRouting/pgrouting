@@ -282,41 +282,6 @@ class Pgr_astar {
      };  // class distance_heuristic
 
 
-#if 0
-     //! visitor that terminates when we find the goal
-     class astar_one_goal_visitor : public boost::default_astar_visitor {
-      public:
-          explicit astar_one_goal_visitor(V goal) : m_goal(goal) {}
-          template <class B_G>
-              void examine_vertex(V u, B_G &g) {
-                  if (u == m_goal)
-                      throw found_goals();
-                  // using g, otherwise is throws a warning
-                  num_edges(g);
-              }
-      private:
-          V m_goal;
-     };  // class astar_one_goal_visitor
-
-     //! class for stopping when all targets are found
-     class astar_many_goals_visitor : public boost::default_astar_visitor {
-      public:
-          explicit astar_many_goals_visitor(const std::vector< V > &goals)
-              :m_goals(goals.begin(), goals.end()) {}
-          template <class B_G>
-              void examine_vertex(V u, B_G &g) {
-                  auto s_it = m_goals.find(u);
-                  if (s_it == m_goals.end()) return;
-                  // found one more goal
-                  m_goals.erase(s_it);
-                  if (m_goals.size() == 0) throw found_goals();
-                  num_edges(g);
-              }
-      private:
-          std::set< V > m_goals;
-     };
-#endif
-
      /******************** IMPLEMENTTION ******************/
 
 
