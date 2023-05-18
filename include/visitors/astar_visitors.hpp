@@ -38,8 +38,8 @@ namespace visitors {
 template <typename V>
 class astar_many_goals_visitor : public boost::default_astar_visitor {
     public:
-        explicit astar_many_goals_visitor(const std::vector< V > &goals)
-            :m_goals(goals.begin(), goals.end()) {}
+        explicit astar_many_goals_visitor(const std::set<V> &goals)
+            :m_goals(goals) {}
         template <class B_G>
             void examine_vertex(V u, B_G &g) {
                 auto s_it = m_goals.find(u);

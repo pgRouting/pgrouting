@@ -79,10 +79,10 @@ class Pgr_astar {
          if (!graph.has_vertex(start_vertex)) return std::deque<Path>();
          auto v_source(graph.get_V(start_vertex));
 
-         std::vector<V> v_targets;
+         std::set<V> v_targets;
          for (const auto &vertex : end_vertex) {
              if (graph.has_vertex(vertex)) {
-                 v_targets.push_back(graph.get_V(vertex));
+                 v_targets.insert(graph.get_V(vertex));
              }
          }
 
@@ -103,36 +103,8 @@ class Pgr_astar {
          return paths;
      }
 
-#if 0
-     // preparation for many to many
-     std::deque<Path> astar(
-             G &graph,
-             std::vector<int64_t> start_vertex,
-             std::vector<int64_t> end_vertex,
-             int heuristic,
-             double factor,
-             double epsilon,
-             bool only_cost) {
-         std::deque<Path> paths;
-         for (const auto &start : start_vertex) {
-             auto r_paths = astar(graph, start, end_vertex,
-                     heuristic, factor, epsilon, only_cost);
-              paths.insert(paths.begin(), r_paths.begin(), r_paths.end());
-         }
-
-         std::sort(paths.begin(), paths.end(),
-                 [](const Path &e1, const Path &e2)->bool {
-                 return e1.end_id() < e2.end_id();
-                 });
-         std::stable_sort(paths.begin(), paths.end(),
-                 [](const Path &e1, const Path &e2)->bool {
-                 return e1.start_id() < e2.start_id();
-                 });
-         return paths;
-     }
-#endif
-
      // preparation for parallel arrays
+     /* TODO make this a function */
      std::deque<Path> astar(
              G &graph,
              const std::map<int64_t, std::set<int64_t>> &combinations,
@@ -142,20 +114,6 @@ class Pgr_astar {
              bool only_cost) {
          // a call to 1 to many is faster for each of the sources
          std::deque<Path> paths;
-
-#if 0
-         // group targets per distinct source
-         std::map< int64_t, std::vector<int64_t> > vertex_map;
-         for (const II_t_rt &comb : combinations) {
-             std::map< int64_t, std::vector<int64_t> >::iterator it = vertex_map.find(comb.d1.source);
-             if (it != vertex_map.end()) {
-                 it->second.push_back(comb.d2.target);
-             } else {
-                 std::vector<int64_t > targets{comb.d2.target};
-                 vertex_map[comb.d1.source] = targets;
-             }
-         }
-#endif
 
          for (const auto &c : combinations) {
              auto r_paths = astar(
@@ -190,11 +148,11 @@ class Pgr_astar {
               }
           distance_heuristic(
                   B_G &g,
-                  const std::vector< V > &goals,
+                  const std::set<V> &goals,
                   int heuristic,
                   double factor)
               : m_g(g),
-              m_goals(goals.begin(), goals.end()),
+              m_goals(goals),
               m_factor(factor),
               m_heuristic(heuristic) {}
 
@@ -256,7 +214,7 @@ class Pgr_astar {
      bool astar_1_to_many(
              G &graph,
              V source,
-             const std::vector< V > &targets,
+             const std::set<V> &targets,
              int heuristic,
              double factor,
              double epsilon) {
@@ -289,7 +247,7 @@ class Pgr_astar {
      std::deque<Path> get_paths(
              const G &graph,
              V source,
-             const std::vector<V> &targets,
+             const std::set<V> &targets,
              bool only_cost) const {
          std::deque<Path> paths;
          for (const auto &target : targets) {
