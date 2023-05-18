@@ -84,7 +84,7 @@ pgr_astar(
 void do_pgr_astarManyToMany(
         Edge_xy_t *edges, size_t total_edges,
 
-        II_t_rt *combinations, size_t total_combinations,
+        II_t_rt *combinationsArr, size_t total_combinations,
 
         int64_t  *start_vidsArr, size_t size_start_vidsArr,
         int64_t  *end_vidsArr, size_t size_end_vidsArr,
@@ -114,14 +114,9 @@ void do_pgr_astarManyToMany(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        std::vector<II_t_rt>
-                combinations_vector(combinations, combinations + total_combinations);
-        std::vector< int64_t > end_vids(
-                end_vidsArr,
-                end_vidsArr + size_end_vidsArr);
-        std::vector< int64_t > start_vids(
-                start_vidsArr,
-                start_vidsArr + size_start_vidsArr);
+        auto combinations = total_combinations?
+            pgrouting::utilities::get_combinations(combinationsArr, total_combinations)
+            : pgrouting::utilities::get_combinations(start_vidsArr, size_start_vidsArr, end_vidsArr, size_end_vidsArr);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
