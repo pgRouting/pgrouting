@@ -175,50 +175,39 @@ namespace pgrouting {
 namespace algorithms {
 
 template < class G >
-class Pgr_astar {
- public:
-     typedef typename G::V V;
-     typedef typename G::B_G B_G;
+std::deque<Path> astar(
+        G &graph,
+        const std::map<int64_t, std::set<int64_t>> &combinations,
+        int heuristic,
+        double factor,
+        double epsilon,
+        bool only_cost) {
+    typedef typename G::V V;
+    std::deque<Path> paths;
 
+    for (const auto &c : combinations) {
+        if (!graph.has_vertex(c.first)) continue;
+        std::vector<V> predecessors(graph.num_vertices());
+        std::vector<double> distances(graph.num_vertices());
+        auto v_source(graph.get_V(c.first));
+        std::set<V> v_targets;
+        for (const auto &vertex : c.second) {
+            if (graph.has_vertex(vertex)) {
+                v_targets.insert(graph.get_V(vertex));
+            }
+        }
+        astar_1_to_many(graph, predecessors, distances, v_source, v_targets, heuristic, factor, epsilon);
+        auto r_paths = get_paths(graph, predecessors, distances, v_source, v_targets, only_cost);
+        std::stable_sort(r_paths.begin(), r_paths.end(),
+                [](const Path &e1, const Path &e2)->bool {
+                return e1.end_id() < e2.end_id();
+                });
 
+        paths.insert(paths.end(), r_paths.begin(), r_paths.end());
+    }
 
-     /* TODO make this a function */
-     std::deque<Path> astar(
-             G &graph,
-             const std::map<int64_t, std::set<int64_t>> &combinations,
-             int heuristic,
-             double factor,
-             double epsilon,
-             bool only_cost) {
-         // a call to 1 to many is faster for each of the sources
-         std::deque<Path> paths;
-
-         for (const auto &c : combinations) {
-             if (!graph.has_vertex(c.first)) continue;
-             std::vector<V> predecessors(graph.num_vertices());
-             std::vector<double> distances(graph.num_vertices());
-             auto v_source(graph.get_V(c.first));
-             std::set<V> v_targets;
-             for (const auto &vertex : c.second) {
-                 if (graph.has_vertex(vertex)) {
-                     v_targets.insert(graph.get_V(vertex));
-                 }
-             }
-             astar_1_to_many(graph, predecessors, distances, v_source, v_targets, heuristic, factor, epsilon);
-             auto r_paths = get_paths(graph, predecessors, distances, v_source, v_targets, only_cost);
-             std::stable_sort(r_paths.begin(), r_paths.end(),
-                     [](const Path &e1, const Path &e2)->bool {
-                     return e1.end_id() < e2.end_id();
-                     });
-
-             paths.insert(paths.end(), r_paths.begin(), r_paths.end());
-         }
-
-         return paths;
-     }
-
-};
-
+    return paths;
+}
 
 }  // namespace algorithms
 }  // namespace pgrouting
