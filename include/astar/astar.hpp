@@ -119,15 +119,18 @@ class distance_heuristic : public boost::astar_heuristic<B_G, double> {
      int m_heuristic;
 };  // class distance_heuristic
 
+template <typename G, typename V>
 bool astar_1_to_many(
         G &graph,
+        std::vector<V> &predecessors,
+        std::vector<double> &distances,
         V source,
         const std::set<V> &targets,
         int heuristic,
         double factor,
         double epsilon) {
+    typedef typename G::B_G B_G;
     bool found = false;
-    /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
     CHECK_FOR_INTERRUPTS();
     try {
         boost::astar_search(
@@ -138,9 +141,9 @@ bool astar_1_to_many(
                 boost::predecessor_map(&predecessors[0])
                 .weight_map(get(&pgrouting::Basic_edge::cost, graph.graph))
                 .distance_map(&distances[0])
-                .visitor(visitors::astar_many_goals_visitor<V>(targets)));
+                .visitor(pgrouting::visitors::astar_many_goals_visitor<V>(targets)));
     }
-    catch(found_goals &) {
+    catch(pgrouting::found_goals &) {
         found = true;  // Target vertex found
     }
     return found;
@@ -208,6 +211,7 @@ class Pgr_astar {
          }
 
          astar_1_to_many(graph,
+                 predecessors, distances,
                  v_source,
                  v_targets,
                  heuristic,
