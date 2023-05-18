@@ -186,42 +186,6 @@ class Pgr_astar {
          distances.clear();
      }
 
-#if 0
-     //! astar 1 to many
-     std::deque<Path> astar(
-             G &graph,
-             int64_t start_vertex,
-             std::set<int64_t> end_vertex,
-             int heuristic,
-             double factor,
-             double epsilon,
-             bool only_cost) {
-         clear();
-         predecessors.resize(graph.num_vertices());
-         distances.resize(graph.num_vertices());
-
-         if (!graph.has_vertex(start_vertex)) return std::deque<Path>();
-         auto v_source(graph.get_V(start_vertex));
-
-         std::set<V> v_targets;
-         for (const auto &vertex : end_vertex) {
-             if (graph.has_vertex(vertex)) {
-                 v_targets.insert(graph.get_V(vertex));
-             }
-         }
-
-         astar_1_to_many(graph, predecessors, distances, v_source, v_targets, heuristic, factor, epsilon);
-         auto paths = get_paths(graph, predecessors, distances, v_source, v_targets, only_cost);
-
-         std::stable_sort(paths.begin(), paths.end(),
-                 [](const Path &e1, const Path &e2)->bool {
-                 return e1.end_id() < e2.end_id();
-                 });
-
-         return paths;
-     }
-#endif
-
      /* TODO make this a function */
      std::deque<Path> astar(
              G &graph,
@@ -234,7 +198,6 @@ class Pgr_astar {
          std::deque<Path> paths;
 
          for (const auto &c : combinations) {
-#if 1
              if (!graph.has_vertex(c.first)) continue;
              clear();
              predecessors.resize(graph.num_vertices());
@@ -253,12 +216,6 @@ class Pgr_astar {
                      return e1.end_id() < e2.end_id();
                      });
 
-#else
-             auto r_paths = astar(
-                     graph,
-                     c.first, c.second,
-                     heuristic, factor, epsilon, only_cost);
-#endif
              paths.insert(paths.end(), r_paths.begin(), r_paths.end());
          }
 
