@@ -119,6 +119,33 @@ class distance_heuristic : public boost::astar_heuristic<B_G, double> {
      int m_heuristic;
 };  // class distance_heuristic
 
+bool astar_1_to_many(
+        G &graph,
+        V source,
+        const std::set<V> &targets,
+        int heuristic,
+        double factor,
+        double epsilon) {
+    bool found = false;
+    /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+    CHECK_FOR_INTERRUPTS();
+    try {
+        boost::astar_search(
+                graph.graph, source,
+                distance_heuristic<B_G, V>(
+                    graph.graph, targets,
+                    heuristic, factor * epsilon),
+                boost::predecessor_map(&predecessors[0])
+                .weight_map(get(&pgrouting::Basic_edge::cost, graph.graph))
+                .distance_map(&distances[0])
+                .visitor(visitors::astar_many_goals_visitor<V>(targets)));
+    }
+    catch(found_goals &) {
+        found = true;  // Target vertex found
+    }
+    return found;
+}
+
 template <typename G, typename V>
 std::deque<pgrouting::Path> get_paths(
         const G &graph,
@@ -231,36 +258,6 @@ class Pgr_astar {
      std::deque< V > nodesInDistance;
      //@}
 
-
-     /******************** IMPLEMENTTION ******************/
-
-     //! Call to astar  1 source to many targets
-     bool astar_1_to_many(
-             G &graph,
-             V source,
-             const std::set<V> &targets,
-             int heuristic,
-             double factor,
-             double epsilon) {
-         bool found = false;
-         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
-         CHECK_FOR_INTERRUPTS();
-         try {
-             boost::astar_search(
-                     graph.graph, source,
-                     distance_heuristic<B_G, V>(
-                         graph.graph, targets,
-                         heuristic, factor * epsilon),
-                     boost::predecessor_map(&predecessors[0])
-                     .weight_map(get(&pgrouting::Basic_edge::cost, graph.graph))
-                     .distance_map(&distances[0])
-                     .visitor(visitors::astar_many_goals_visitor<V>(targets)));
-         }
-         catch(found_goals &) {
-             found = true;  // Target vertex found
-         }
-         return found;
-     }
 
 };
 
