@@ -48,7 +48,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/ii_t_rt.h"
 
 namespace {
-class distance_heuristic : public boost::astar_heuristic< B_G, double > {
+
+template <typename B_G, typename V>
+class distance_heuristic : public boost::astar_heuristic<B_G, double> {
  public:
      distance_heuristic(B_G &g, V goal, int heuristic, double factor)
          : m_g(g),
@@ -226,7 +228,7 @@ class Pgr_astar {
          try {
              boost::astar_search(
                      graph.graph, source,
-                     distance_heuristic(
+                     distance_heuristic<B_G, V>(
                          graph.graph, targets,
                          heuristic, factor * epsilon),
                      boost::predecessor_map(&predecessors[0])
