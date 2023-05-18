@@ -34,25 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace visitors {
 
-#if 0
-//! visitor that terminates when we find the goal
-template <typename V>
-class astar_one_goal_visitor : public boost::default_astar_visitor {
- public:
-     explicit astar_one_goal_visitor(V goal) : m_goal(goal) {}
-     template <class B_G>
-         void examine_vertex(V u, B_G &g) {
-             if (u == m_goal)
-                 throw found_goals();
-             // using g, otherwise is throws a warning
-             num_edges(g);
-         }
- private:
-     V m_goal;
-};  // class astar_one_goal_visitor
-#endif
-
-//! class for stopping when all targets are found
+/** @brief visitor stops when all targets are found */
 template <typename V>
 class astar_many_goals_visitor : public boost::default_astar_visitor {
     public:

@@ -62,44 +62,6 @@ class Pgr_astar {
          distances.clear();
      }
 
-#if 0
-     //! @name Astar
-     //@{
-     //! one to one
-     //! astar 1 to 1
-     Path astar(
-             G &graph,
-             int64_t start_vertex,
-             int64_t end_vertex,
-             int heuristic,
-             double factor,
-             double epsilon,
-             bool only_cost) {
-         clear();
-
-         predecessors.resize(graph.num_vertices());
-         distances.resize(graph.num_vertices());
-
-         if (!graph.has_vertex(start_vertex)
-                 || !graph.has_vertex(end_vertex)) {
-             return Path(start_vertex, end_vertex);
-         }
-
-         auto v_source(graph.get_V(start_vertex));
-         auto v_target(graph.get_V(end_vertex));
-
-         // perform the algorithm
-         astar_1_to_1(graph, v_source, v_target, heuristic, factor, epsilon);
-
-         auto solution = Path(graph, Path(graph,
-                 v_source, v_target,
-                 predecessors, distances,
-                 false), only_cost);
-
-         return solution;
-     }
-#endif
-
      //! astar 1 to many
      std::deque<Path> astar(
              G &graph,
@@ -285,38 +247,6 @@ class Pgr_astar {
 
 
      /******************** IMPLEMENTTION ******************/
-
-
-
-#if 0
-     //! Call to Astar  1 source to 1 target
-     bool astar_1_to_1(
-             G &graph,
-             V source,
-             V target,
-             int heuristic,
-             double factor,
-             double epsilon) {
-         bool found = false;
-         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
-         CHECK_FOR_INTERRUPTS();
-         try {
-             // Call A* named parameter interface
-             boost::astar_search(
-                     graph.graph, source,
-                     distance_heuristic(graph.graph, target,
-                         heuristic, factor * epsilon),
-                     boost::predecessor_map(&predecessors[0])
-                     .weight_map(get(&pgrouting::Basic_edge::cost, graph.graph))
-                     .distance_map(&distances[0])
-                     .visitor(visitors::astar_one_goal_visitor<V>(target)));
-         }
-         catch(found_goals &) {
-             found = true;  // Target vertex found
-         }
-         return found;
-     }
-#endif
 
      //! Call to astar  1 source to many targets
      bool astar_1_to_many(
