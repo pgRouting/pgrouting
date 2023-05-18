@@ -181,10 +181,6 @@ class Pgr_astar {
      typedef typename G::B_G B_G;
 
 
-     void clear() {
-         predecessors.clear();
-         distances.clear();
-     }
 
      /* TODO make this a function */
      std::deque<Path> astar(
@@ -199,9 +195,8 @@ class Pgr_astar {
 
          for (const auto &c : combinations) {
              if (!graph.has_vertex(c.first)) continue;
-             clear();
-             predecessors.resize(graph.num_vertices());
-             distances.resize(graph.num_vertices());
+             std::vector<V> predecessors(graph.num_vertices());
+             std::vector<double> distances(graph.num_vertices());
              auto v_source(graph.get_V(c.first));
              std::set<V> v_targets;
              for (const auto &vertex : c.second) {
@@ -221,17 +216,6 @@ class Pgr_astar {
 
          return paths;
      }
-     //@}
-
-
-
- private:
-     //! @name members;
-     //@{
-     std::vector< V > predecessors;
-     std::vector< double > distances;
-     //@}
-
 
 };
 
