@@ -43,6 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/edge_xy_t.h"
 #include "c_types/ii_t_rt.h"
 
+#if 0
 namespace {
 
 template < class G >
@@ -66,7 +67,7 @@ pgr_astar(
 }
 
 }  // namespace
-
+#endif
 void do_pgr_astarManyToMany(
         Edge_xy_t *edges, size_t total_edges,
 
@@ -106,21 +107,24 @@ void do_pgr_astarManyToMany(
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        std::deque< Path >paths;
+        std::deque<Path> paths;
         if (directed) {
-            pgrouting::xyDirectedGraph digraph(
+            pgrouting::xyDirectedGraph graph(
                     pgrouting::extract_vertices(edges, total_edges),
                     gType);
-            digraph.insert_edges(edges, total_edges);
-            paths = pgr_astar(digraph, combinations,
-                    heuristic, factor, epsilon, only_cost, normal);
+            graph.insert_edges(edges, total_edges);
+            paths = pgrouting::algorithms::astar(graph, combinations, heuristic, factor, epsilon, only_cost);
         } else {
-            pgrouting::xyUndirectedGraph undigraph(
+            pgrouting::xyUndirectedGraph graph(
                     pgrouting::extract_vertices(edges, total_edges),
                     gType);
-            undigraph.insert_edges(edges, total_edges);
-            paths = pgr_astar(undigraph, combinations,
-                    heuristic, factor, epsilon, only_cost, normal);
+            graph.insert_edges(edges, total_edges);
+            paths = pgrouting::algorithms::astar(graph, combinations, heuristic, factor, epsilon, only_cost);
+        }
+        if (!normal) {
+            for (auto &path : paths) {
+                path.reverse();
+            }
         }
 
         size_t count(0);
