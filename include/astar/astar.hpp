@@ -40,6 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/graph_traits.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/astar_search.hpp>
+#include <visitors/astar_visitors.hpp>
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
@@ -205,7 +206,6 @@ class Pgr_astar {
  private:
      //! @name members;
      //@{
-     struct found_goals{};  //!< exception for termination
      std::vector< V > predecessors;
      std::vector< double > distances;
      std::deque< V > nodesInDistance;
@@ -341,7 +341,7 @@ class Pgr_astar {
                      boost::predecessor_map(&predecessors[0])
                      .weight_map(get(&pgrouting::Basic_edge::cost, graph.graph))
                      .distance_map(&distances[0])
-                     .visitor(astar_one_goal_visitor(target)));
+                     .visitor(visitors::astar_one_goal_visitor<V>(target)));
          }
          catch(found_goals &) {
              found = true;  // Target vertex found
@@ -370,7 +370,7 @@ class Pgr_astar {
                      boost::predecessor_map(&predecessors[0])
                      .weight_map(get(&pgrouting::Basic_edge::cost, graph.graph))
                      .distance_map(&distances[0])
-                     .visitor(astar_many_goals_visitor(targets)));
+                     .visitor(visitors::astar_many_goals_visitor<V>(targets)));
          }
          catch(found_goals &) {
              found = true;  // Target vertex found

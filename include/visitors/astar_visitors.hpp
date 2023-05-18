@@ -35,6 +35,7 @@ namespace pgrouting {
 namespace visitors {
 
 //! visitor that terminates when we find the goal
+template <typename V>
 class astar_one_goal_visitor : public boost::default_astar_visitor {
  public:
      explicit astar_one_goal_visitor(V goal) : m_goal(goal) {}
@@ -50,6 +51,7 @@ class astar_one_goal_visitor : public boost::default_astar_visitor {
 };  // class astar_one_goal_visitor
 
 //! class for stopping when all targets are found
+template <typename V>
 class astar_many_goals_visitor : public boost::default_astar_visitor {
     public:
         explicit astar_many_goals_visitor(const std::vector< V > &goals)
@@ -64,7 +66,7 @@ class astar_many_goals_visitor : public boost::default_astar_visitor {
                 num_edges(g);
             }
     private:
-        std::set< V > m_goals;
+        std::set<V> m_goals;
 };
 
 }  // namespace visitors
