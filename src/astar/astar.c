@@ -105,9 +105,8 @@ process(char* edges_sql,
         return;
     }
 
-    PGR_DBG("Starting processing");
     clock_t start_t = clock();
-    do_pgr_astarManyToMany(
+    pgr_do_astar(
             edges, total_edges,
 
             combinations, total_combinations,

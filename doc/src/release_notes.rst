@@ -42,6 +42,8 @@ pgRouting 3.6.0 Release Notes
 * `2505 <https://github.com/pgRouting/pgrouting/pull/2505>` Using namespace.
 * `2512 <https://github.com/pgRouting/pgrouting/pull/2512>` [Dijkstra] Removing
   duplicate code on Dijkstra.
+* `2517 <https://github.com/pgRouting/pgrouting/pull/2517>` Astar code
+  simplification.
 
 .. rubric:: Documentation
 

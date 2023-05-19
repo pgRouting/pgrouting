@@ -1,13 +1,13 @@
 /*PGR-GNU*****************************************************************
-File: astarOneToOne_driver.cpp
+File: astar_driver.cpp
 
-Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
+Copyright (c) 2023 Celia Virginia Vergara Castillo
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail:
+Mail: vicky at erosion.dev
 
 ------
 
@@ -34,57 +34,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <vector>
 
-#include "astar/pgr_astar.hpp"
+#include "astar/astar.hpp"
 
+#include "cpp_common/combinations.h"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
 #include "c_types/edge_xy_t.h"
 #include "c_types/ii_t_rt.h"
 
-namespace {
-
-template < class G >
-std::deque<pgrouting::Path>
-pgr_astar(
-        G &graph,
-        std::vector <II_t_rt> &combinations,
-        std::vector<int64_t> sources,
-        std::vector<int64_t> targets,
-        int heuristic,
-        double factor,
-        double epsilon,
-        bool only_cost,
-        bool normal) {
-    std::sort(sources.begin(), sources.end());
-    sources.erase(
-            std::unique(sources.begin(), sources.end()),
-            sources.end());
-
-    std::sort(targets.begin(), targets.end());
-    targets.erase(
-            std::unique(targets.begin(), targets.end()),
-            targets.end());
-
-    pgrouting::algorithms::Pgr_astar< G > fn_astar;
-    auto paths = combinations.empty() ?
-        fn_astar.astar(graph, sources, targets, heuristic, factor, epsilon, only_cost)
-        : fn_astar.astar(graph, combinations, heuristic, factor, epsilon, only_cost);
-
-    if (!normal) {
-        for (auto &path : paths) {
-            path.reverse();
-        }
-    }
-    return paths;
-}
-
-}  // namespace
-
-void do_pgr_astarManyToMany(
+void pgr_do_astar(
         Edge_xy_t *edges, size_t total_edges,
 
-        II_t_rt *combinations, size_t total_combinations,
+        II_t_rt *combinationsArr, size_t total_combinations,
 
         int64_t  *start_vidsArr, size_t size_start_vidsArr,
         int64_t  *end_vidsArr, size_t size_end_vidsArr,
@@ -94,11 +56,8 @@ void do_pgr_astarManyToMany(
         double epsilon,
         bool only_cost,
         bool normal,
-        Path_rt **return_tuples,
-        size_t *return_count,
-        char** log_msg,
-        char** notice_msg,
-        char** err_msg) {
+        Path_rt **return_tuples, size_t *return_count,
+        char** log_msg, char** notice_msg, char** err_msg) {
     using pgrouting::Path;
     using pgrouting::pgr_alloc;
     using pgrouting::pgr_msg;
@@ -114,37 +73,34 @@ void do_pgr_astarManyToMany(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        std::vector<II_t_rt>
-                combinations_vector(combinations, combinations + total_combinations);
-        std::vector< int64_t > end_vids(
-                end_vidsArr,
-                end_vidsArr + size_end_vidsArr);
-        std::vector< int64_t > start_vids(
-                start_vidsArr,
-                start_vidsArr + size_start_vidsArr);
+        auto combinations = total_combinations?
+            pgrouting::utilities::get_combinations(combinationsArr, total_combinations)
+            : pgrouting::utilities::get_combinations(start_vidsArr, size_start_vidsArr, end_vidsArr, size_end_vidsArr);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        std::deque< Path >paths;
+        std::deque<Path> paths;
         if (directed) {
-            pgrouting::xyDirectedGraph digraph(
+            pgrouting::xyDirectedGraph graph(
                     pgrouting::extract_vertices(edges, total_edges),
                     gType);
-            digraph.insert_edges(edges, total_edges);
-            paths = pgr_astar(digraph, combinations_vector, start_vids, end_vids,
-                    heuristic, factor, epsilon, only_cost, normal);
+            graph.insert_edges(edges, total_edges);
+            paths = pgrouting::algorithms::astar(graph, combinations, heuristic, factor, epsilon, only_cost);
         } else {
-            pgrouting::xyUndirectedGraph undigraph(
+            pgrouting::xyUndirectedGraph graph(
                     pgrouting::extract_vertices(edges, total_edges),
                     gType);
-            undigraph.insert_edges(edges, total_edges);
-            paths = pgr_astar(undigraph, combinations_vector, start_vids, end_vids,
-                    heuristic, factor, epsilon, only_cost, normal);
+            graph.insert_edges(edges, total_edges);
+            paths = pgrouting::algorithms::astar(graph, combinations, heuristic, factor, epsilon, only_cost);
+        }
+        if (!normal) {
+            for (auto &path : paths) {
+                path.reverse();
+            }
         }
 
         size_t count(0);
         count = count_tuples(paths);
-
 
         if (count == 0) {
             (*return_tuples) = NULL;
@@ -155,7 +111,6 @@ void do_pgr_astarManyToMany(
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        log << "Converting a set of paths into the tuples\n";
         (*return_count) = (collapse_paths(return_tuples, paths));
 
         *log_msg = log.str().empty()?
@@ -184,4 +139,3 @@ void do_pgr_astarManyToMany(
         *log_msg = pgr_msg(log.str().c_str());
     }
 }
-
