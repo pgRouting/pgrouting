@@ -24,6 +24,7 @@ jobs:
       contents: write  # for Git to git push
     name: Update Locale
     runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'pgRouting' }}
 
     strategy:
         fail-fast: false
