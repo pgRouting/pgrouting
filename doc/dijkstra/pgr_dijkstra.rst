@@ -26,9 +26,9 @@
 
   * Standarizing output columns to |short-generic-result|
 
-    * ``pgr_dijkstra`` (`One to One`_) added `start_vid` and `end_vid` columns.
-    * ``pgr_dijkstra`` (`One to Many`_) added `end_vid` column.
-    * ``pgr_dijkstra`` (`Many to One`_) added `start_vid` column.
+    * ``pgr_dijkstra`` (`One to One`_) added ``start_vid`` and ``end_vid`` columns.
+    * ``pgr_dijkstra`` (`One to Many`_) added ``end_vid`` column.
+    * ``pgr_dijkstra`` (`Many to One`_) added ``start_vid`` column.
 
 * Version 3.1.0
 
