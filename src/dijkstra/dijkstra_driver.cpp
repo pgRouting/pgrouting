@@ -98,6 +98,7 @@ post_process(std::deque<pgrouting::Path> &paths, bool only_cost, bool normal, si
     }
 }
 
+#if 0
 template <class G>
 std::deque<pgrouting::Path>
 dijkstra(
@@ -106,9 +107,9 @@ dijkstra(
         const std::map<int64_t , std::set<int64_t>> &combinations,
         bool only_cost,
         size_t n_goals) {
-    std::deque<pgrouting::Path> paths;
     return  pgrouting::dijkstra(graph, combinations, only_cost, n_goals);
 }
+#endif
 
 }  // namespace detail
 
@@ -160,19 +161,13 @@ pgr_do_dijkstra(
             : pgrouting::utilities::get_combinations(start_vidsArr, size_start_vidsArr, end_vidsArr, size_end_vidsArr);
 
         if (directed) {
-            pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(data_edges, total_edges);
-            paths = detail::dijkstra(
-                    digraph,
-                    combinations,
-                    only_cost, n);
+            pgrouting::DirectedGraph graph(gType);
+            graph.insert_edges(data_edges, total_edges);
+            paths =  pgrouting::dijkstra(graph, combinations, only_cost, n);
         } else {
-            pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(data_edges, total_edges);
-            paths = detail::dijkstra(
-                    undigraph,
-                    combinations,
-                    only_cost, n);
+            pgrouting::UndirectedGraph graph(gType);
+            graph.insert_edges(data_edges, total_edges);
+            paths =  pgrouting::dijkstra(graph, combinations, only_cost, n);
         }
         detail::post_process(paths, only_cost, normal, n, global);
         combinations.clear();

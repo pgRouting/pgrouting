@@ -377,6 +377,7 @@ class Pgr_dijkstra {
      }
 
 
+#if 0
      // preparation for many to many
      std::deque<Path> dijkstra(
              G &graph,
@@ -397,6 +398,7 @@ class Pgr_dijkstra {
 
          return paths;
      }
+#endif
 
     // preparation for parallel arrays
     std::deque<Path> dijkstra(
