@@ -3,16 +3,14 @@
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
+Copyright (c) 2023 Celia Virginia Vergara Castillo
+Copyright (c) 2022 Celia Virginia Vergara Castillo
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+vicky at erosion.dev
 
 Copyright (c) 2020 The combinations_sql signature is added by Mahmoud SAKR
 and Esteban ZIMANYI
-mail: m_attia_sakr@yahoo.com, estebanzimanyi@gmail.com
-
-Copyright (c) 2022 Celia Virginia Vergara Castillo
-* Added 1 to many with set parameter
-* Added dijkstra with a map of combinations
+mail: m_attia_sakri at yahoo.com, estebanzimanyi at gmail.com
 
 ------
 
@@ -322,42 +320,6 @@ class Pgr_dijkstra {
      //@{
 
 
-#if 0
-     //! Dijkstra 1 to many
-     std::deque<Path> dijkstra(
-             G &graph,
-             int64_t start_vertex,
-             const std::set<int64_t> &end_vertex,
-             bool only_cost,
-             size_t n_goals) {
-         clear();
-
-         predecessors.resize(graph.num_vertices());
-         distances.resize(
-                 graph.num_vertices(),
-                 std::numeric_limits<double>::infinity());
-
-         if (!graph.has_vertex(start_vertex)) return std::deque<Path>();
-
-         auto v_source(graph.get_V(start_vertex));
-
-         std::set<V> s_v_targets;
-         for (const auto &vertex : end_vertex) {
-             if (graph.has_vertex(vertex)) s_v_targets.insert(graph.get_V(vertex));
-         }
-
-         std::vector<V> v_targets(s_v_targets.begin(), s_v_targets.end());
-         // perform the algorithm
-         dijkstra_1_to_many(graph, v_source, v_targets, n_goals);
-
-         std::deque<Path> paths;
-         // get the results
-         paths = get_paths(graph, v_source, v_targets, only_cost);
-
-         return paths;
-     }
-#endif
-
      //! Dijkstra 1 to many
      std::deque<Path> dijkstra(
              G &graph,
@@ -468,59 +430,10 @@ class Pgr_dijkstra {
         return paths;
     }
 
-#if 0
-    // dijkstra with a map of combinations
-    std::deque<Path> dijkstra(
-            G &graph,
-            const std::map<int64_t, std::set<int64_t>> &combinations,
-            bool only_cost,
-            size_t n_goals) {
-        std::deque<Path> paths;
-
-        for (const auto &c : combinations) {
-            auto r_paths = dijkstra(
-                    graph,
-                    c.first, c.second,
-                    only_cost, n_goals);
-            paths.insert(paths.begin(), r_paths.begin(), r_paths.end());
-        }
-
-        return paths;
-    }
-#endif
 
      //@}
 
  private:
-#if 0
-     //! Call to Dijkstra  1 source to 1 target
-     bool dijkstra_1_to_1(
-                 G &graph,
-                 V source,
-                 V target) {
-         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
-         CHECK_FOR_INTERRUPTS();
-         try {
-             boost::dijkstra_shortest_paths(graph.graph, source,
-                     boost::predecessor_map(&predecessors[0])
-                     .weight_map(get(&G::G_T_E::cost, graph.graph))
-                     .distance_map(&distances[0])
-                     .visitor(visitors::dijkstra_one_goal_visitor<V>(target)));
-         } catch(found_goals &) {
-             return true;
-         } catch (boost::exception const& ex) {
-             (void)ex;
-             throw;
-         } catch (std::exception &e) {
-             (void)e;
-             throw;
-         } catch (...) {
-             throw;
-         }
-         return true;
-     }
-#endif
-
      /** Call to Dijkstra  1 to distance
       *
       * Used on:
@@ -832,69 +745,12 @@ class Pgr_dijkstra {
          return paths;
      }
 
-#if 0
-     //! Dijkstra  1 source to many targets
-     bool dijkstra_1_to_many(
-             G &graph,
-             V source,
-             const std::vector< V > &targets,
-             size_t n_goals) {
-         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
-         CHECK_FOR_INTERRUPTS();
-         std::set<V> goals_found;
-         std::set<V> goals(targets.begin(), targets.end());
-         try {
-             boost::dijkstra_shortest_paths(graph.graph, source,
-                     boost::predecessor_map(&predecessors[0])
-                     .weight_map(get(&G::G_T_E::cost, graph.graph))
-                     .distance_map(&distances[0])
-                     .distance_inf(std::numeric_limits<double>::infinity())
-                     .visitor(visitors::dijkstra_many_goal_visitor<V>(goals, n_goals, goals_found)));
-         } catch(found_goals &) {
-             for (const auto &g : goals) {
-                 if (goals_found.find(g) == goals_found.end()) {
-                     /* goal was not found */
-                     predecessors[g] = g;
-                 }
-             }
-             return true;
-         } catch (boost::exception const& ex) {
-             (void)ex;
-             throw;
-         } catch (std::exception &e) {
-             (void)e;
-             throw;
-         } catch (...) {
-             throw;
-         }
-         return true;
-     }
-#endif
 
      void clear() {
          predecessors.clear();
          distances.clear();
          nodesInDistance.clear();
      }
-
-#if 0
-     // used when multiple goals
-     std::deque<Path> get_paths(
-             const G &graph,
-             V source,
-             std::vector< V > &targets,
-             bool only_cost) const {
-         std::deque<Path> paths;
-         for (const auto target : targets) {
-             paths.push_back(Path(
-                         graph,
-                         source, target,
-                         predecessors, distances,
-                         only_cost, true));
-         }
-         return paths;
-     }
-#endif
 
      //! @name members
      //@{
