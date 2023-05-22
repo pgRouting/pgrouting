@@ -74,7 +74,7 @@ class dijkstra_distance_visitor : public boost::default_dijkstra_visitor {
      std::vector<double> &m_dist;
 };
 
-template <typename V>
+template <typename V, typename E>
 class dijkstra_distance_visitor_no_init : public boost::default_dijkstra_visitor {
  public:
      explicit dijkstra_distance_visitor_no_init(

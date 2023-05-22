@@ -415,10 +415,7 @@ class Pgr_dijkstra {
                      boost::predecessor_map(&predecessors[0])
                      .weight_map(get(&G::G_T_E::cost, graph.graph))
                      .distance_map(&distances[0])
-                     .visitor(dijkstra_distance_visitor(
-                             distance,
-                             nodesInDistance,
-                             distances)));
+                     .visitor(visitors::dijkstra_distance_visitor<V>(distance, nodesInDistance, distances)));
          } catch(found_goals &) {
              /*No op*/
          } catch (boost::exception const&) {
@@ -459,12 +456,7 @@ class Pgr_dijkstra {
                      std::less<double>(),
                      boost::closed_plus<double>(),
                      static_cast<double>(0),
-                     dijkstra_distance_visitor_no_init(
-                         log,
-                         source,
-                         distance,
-                         predecessors,
-                         distances,
+                     visitors::dijkstra_distance_visitor_no_init<V,E>(log, source, distance, predecessors, distances,
                          color_map),
                      boost::make_iterator_property_map(
                          color_map.begin(),
