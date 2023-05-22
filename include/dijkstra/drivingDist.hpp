@@ -1,6 +1,6 @@
 /*PGR-GNU*****************************************************************
 
-File: dijkstra.hpp
+file: driveDist.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -32,8 +32,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DIJKSTRA_PGR_DIJKSTRA_HPP_
-#define INCLUDE_DIJKSTRA_PGR_DIJKSTRA_HPP_
+#ifndef INCLUDE_DIJKSTRA_DRIVEDIST_HPP_
+#define INCLUDE_DIJKSTRA_DRIVEDIST_HPP_
 #pragma once
 
 #include <deque>
@@ -56,6 +56,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/interruption.h"
 #include "visitors/dijkstra_visitors.hpp"
 
+#if 0
 namespace detail {
 
 template <typename G, typename V>
@@ -176,11 +177,12 @@ std::deque<pgrouting::Path> dijkstra(
 
 }  // namespace detail
 
+#endif
+
 
 namespace pgrouting {
 // TODO(vicky) namespace algorithm
 
-#if 0
 template < class G > class Pgr_dijkstra;
 // user's functions
 // for development
@@ -201,8 +203,9 @@ pgr_drivingDistance(
             equicost,
             log);
 }
-#endif
 
+
+#if 0
 /* 1 to 1*/
 template <class G>
 Path dijkstra(
@@ -249,8 +252,8 @@ std::deque<Path> dijkstra(
 
     return paths;
 }
+#endif
 
-#if 0
 //******************************************
 
 template < class G >
@@ -648,9 +651,8 @@ class Pgr_dijkstra {
      std::ostringstream log;
      //@}
 };
-#endif
 
 }  // namespace pgrouting
 
 
-#endif  // INCLUDE_DIJKSTRA_PGR_DIJKSTRA_HPP_
+#endif  // INCLUDE_DIJKSTRA_DRIVEDIST_HPP_
