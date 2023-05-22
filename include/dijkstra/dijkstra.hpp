@@ -105,9 +105,9 @@ bool dijkstra_1_to_1(
          return true;
      }
 
-template <typename G, typename V>
+template <typename B_G, typename V, typename T_E>
 bool dijkstra_1_to_many(
-        G &graph,
+        B_G &graph,
         std::vector<V> &predecessors,
         std::vector<double> &distances,
         V departure,
@@ -116,9 +116,9 @@ bool dijkstra_1_to_many(
     CHECK_FOR_INTERRUPTS();
     std::set<V> goals_found;
     try {
-        boost::dijkstra_shortest_paths(graph.graph, departure,
+        boost::dijkstra_shortest_paths(graph, departure,
                 boost::predecessor_map(&predecessors[0])
-                .weight_map(get(&G::G_T_E::cost, graph.graph))
+                .weight_map(get(&T_E::cost, graph))
                 .distance_map(&distances[0])
                 .distance_inf(std::numeric_limits<double>::infinity())
                 .visitor(pgrouting::visitors::dijkstra_many_goal_visitor<V>(destinations, n_goals, goals_found)));
@@ -152,6 +152,8 @@ std::deque<pgrouting::Path> dijkstra(
         bool only_cost,
         size_t n_goals) {
     typedef typename G::V V;
+    typedef typename G::G_T_E T_E;
+    typedef typename G::B_G B_G;
     std::vector<V> predecessors(graph.num_vertices());
     std::vector<double> distances(graph.num_vertices(), std::numeric_limits<double>::infinity());
 
@@ -165,7 +167,7 @@ std::deque<pgrouting::Path> dijkstra(
     }
 
     // perform the algorithm
-    detail::dijkstra_1_to_many<G, V>(graph, predecessors, distances, departure, destinations, n_goals);
+    detail::dijkstra_1_to_many<B_G, V, T_E>(graph.graph, predecessors, distances, departure, destinations, n_goals);
 
     // get the results
     auto paths = get_paths(graph,  predecessors, distances, departure, destinations, only_cost);
