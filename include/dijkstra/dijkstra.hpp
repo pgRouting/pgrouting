@@ -86,6 +86,39 @@ bool dijkstra_1_to_1(
          return true;
      }
 
+//! Dijkstra 1 to many
+std::deque<Path> dijkstra_1_to_many(
+        G &graph,
+        int64_t start_vertex,
+        const std::set<int64_t> &end_vertex,
+        bool only_cost,
+        size_t n_goals) {
+    clear();
+
+    predecessors.resize(graph.num_vertices());
+    distances.resize(
+            graph.num_vertices(),
+            std::numeric_limits<double>::infinity());
+
+    if (!graph.has_vertex(start_vertex)) return std::deque<Path>();
+
+    auto v_source(graph.get_V(start_vertex));
+
+    std::set<V> s_v_targets;
+    for (const auto &vertex : end_vertex) {
+        if (graph.has_vertex(vertex)) s_v_targets.insert(graph.get_V(vertex));
+    }
+
+    std::vector<V> v_targets(s_v_targets.begin(), s_v_targets.end());
+    // perform the algorithm
+    dijkstra_1_to_many(graph, v_source, v_targets, n_goals);
+
+    std::deque<Path> paths;
+    // get the results
+    paths = get_paths(graph, v_source, v_targets, only_cost);
+
+         return paths;
+     }
 }  // namespace detail
 
 
@@ -145,6 +178,20 @@ Path dijkstra(
             only_cost, true);
 }
 
+std::deque<Path> dijkstra(
+        G &graph,
+        const std::map<int64_t, std::set<int64_t>> &combinations,
+        bool only_cost,
+        size_t n_goals) {
+    std::deque<Path> paths;
+
+    for (const auto &c : combinations) {
+        auto r_paths = detail::dijkstra_1_to_many(graph, c.first, c.second, only_cost, n_goals);
+        paths.insert(paths.begin(), r_paths.begin(), r_paths.end());
+    }
+
+    return paths;
+}
 
 //******************************************
 
@@ -219,6 +266,7 @@ class Pgr_dijkstra {
      //@{
 
 
+#if 0
      //! Dijkstra 1 to many
      std::deque<Path> dijkstra(
              G &graph,
@@ -252,6 +300,7 @@ class Pgr_dijkstra {
 
          return paths;
      }
+#endif
 
      //! Dijkstra 1 to many
      std::deque<Path> dijkstra(
@@ -364,6 +413,7 @@ class Pgr_dijkstra {
         return paths;
     }
 
+#if 0
     // dijkstra with a map of combinations
     std::deque<Path> dijkstra(
             G &graph,
@@ -382,6 +432,7 @@ class Pgr_dijkstra {
 
         return paths;
     }
+#endif
 
      //@}
 
