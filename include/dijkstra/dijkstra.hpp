@@ -59,6 +59,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace detail {
 
 template <typename G, typename V>
+std::deque<pgrouting::Path> get_paths(
+        const G &graph,
+        const std::vector<V> &predecessors,
+        const std::vector<double> &distances,
+        V source,
+        std::set<V> &targets,
+        bool only_cost) {
+    std::deque<pgrouting::Path> paths;
+    for (const auto target : targets) {
+        paths.push_back(pgrouting::Path(
+                    graph,
+                    source, target,
+                    predecessors, distances,
+                    only_cost, true));
+    }
+    return paths;
+}
+
+template <typename G, typename V>
 bool dijkstra_1_to_1(
         G &graph,
         std::vector<V> &predecessors,
@@ -86,21 +105,58 @@ bool dijkstra_1_to_1(
          return true;
      }
 
+template <typename G, typename V>
+bool dijkstra_1_to_many(
+        G &graph,
+        std::vector<V> &predecessors,
+        std::vector<double> &distances,
+        V source,
+        const std::set<V> &targets,
+        size_t n_goals) {
+    CHECK_FOR_INTERRUPTS();
+    std::set<V> goals_found;
+    std::set<V> goals(targets.begin(), targets.end());
+    try {
+        boost::dijkstra_shortest_paths(graph.graph, source,
+                boost::predecessor_map(&predecessors[0])
+                .weight_map(get(&G::G_T_E::cost, graph.graph))
+                .distance_map(&distances[0])
+                .distance_inf(std::numeric_limits<double>::infinity())
+                .visitor(pgrouting::visitors::dijkstra_many_goal_visitor<V>(goals, n_goals, goals_found)));
+    } catch(pgrouting::found_goals &) {
+        for (const auto &g : goals) {
+            if (goals_found.find(g) == goals_found.end()) {
+                /* goal was not found */
+                predecessors[g] = g;
+            }
+        }
+        return true;
+    } catch (boost::exception const& ex) {
+        (void)ex;
+        throw;
+    } catch (std::exception &e) {
+        (void)e;
+        throw;
+    } catch (...) {
+             throw;
+         }
+         return true;
+     }
+
+
 //! Dijkstra 1 to many
-std::deque<Path> dijkstra_1_to_many(
+template <class G>
+std::deque<pgrouting::Path> dijkstra(
         G &graph,
         int64_t start_vertex,
         const std::set<int64_t> &end_vertex,
         bool only_cost,
         size_t n_goals) {
-    clear();
+    typedef typename G::V V;
+    std::vector<V> predecessors(graph.num_vertices());
+    std::vector<double> distances(graph.num_vertices(), std::numeric_limits<double>::infinity());
 
-    predecessors.resize(graph.num_vertices());
-    distances.resize(
-            graph.num_vertices(),
-            std::numeric_limits<double>::infinity());
-
-    if (!graph.has_vertex(start_vertex)) return std::deque<Path>();
+    if (!graph.has_vertex(start_vertex)) return std::deque<pgrouting::Path>();
 
     auto v_source(graph.get_V(start_vertex));
 
@@ -109,16 +165,15 @@ std::deque<Path> dijkstra_1_to_many(
         if (graph.has_vertex(vertex)) s_v_targets.insert(graph.get_V(vertex));
     }
 
-    std::vector<V> v_targets(s_v_targets.begin(), s_v_targets.end());
     // perform the algorithm
-    dijkstra_1_to_many(graph, v_source, v_targets, n_goals);
+    detail::dijkstra_1_to_many<G, V>(graph, predecessors, distances, v_source, s_v_targets, n_goals);
 
-    std::deque<Path> paths;
     // get the results
-    paths = get_paths(graph, v_source, v_targets, only_cost);
+    auto paths = get_paths(graph,  predecessors, distances, v_source, s_v_targets, only_cost);
 
-         return paths;
-     }
+    return paths;
+}
+
 }  // namespace detail
 
 
@@ -178,6 +233,7 @@ Path dijkstra(
             only_cost, true);
 }
 
+template <class G>
 std::deque<Path> dijkstra(
         G &graph,
         const std::map<int64_t, std::set<int64_t>> &combinations,
@@ -186,7 +242,7 @@ std::deque<Path> dijkstra(
     std::deque<Path> paths;
 
     for (const auto &c : combinations) {
-        auto r_paths = detail::dijkstra_1_to_many(graph, c.first, c.second, only_cost, n_goals);
+        auto r_paths = detail::dijkstra<G>(graph, c.first, c.second, only_cost, n_goals);
         paths.insert(paths.begin(), r_paths.begin(), r_paths.end());
     }
 
@@ -328,13 +384,12 @@ class Pgr_dijkstra {
              if (graph.has_vertex(vertex)) s_v_targets.insert(graph.get_V(vertex));
          }
 
-         std::vector< V > v_targets(s_v_targets.begin(), s_v_targets.end());
          // perform the algorithm
-         dijkstra_1_to_many(graph, v_source, v_targets, n_goals);
+         detail::dijkstra_1_to_many(graph, predecessors, distances, v_source, s_v_targets, n_goals);
 
          std::deque< Path > paths;
          // get the results // route id are the targets
-         paths = get_paths(graph, v_source, v_targets, only_cost);
+         paths = detail::get_paths(graph,  predecessors, distances, v_source, s_v_targets, only_cost);
 
          return paths;
      }
@@ -777,6 +832,7 @@ class Pgr_dijkstra {
          return paths;
      }
 
+#if 0
      //! Dijkstra  1 source to many targets
      bool dijkstra_1_to_many(
              G &graph,
@@ -813,7 +869,7 @@ class Pgr_dijkstra {
          }
          return true;
      }
-
+#endif
 
      void clear() {
          predecessors.clear();
@@ -821,6 +877,7 @@ class Pgr_dijkstra {
          nodesInDistance.clear();
      }
 
+#if 0
      // used when multiple goals
      std::deque<Path> get_paths(
              const G &graph,
@@ -837,6 +894,7 @@ class Pgr_dijkstra {
          }
          return paths;
      }
+#endif
 
      //! @name members
      //@{

@@ -107,8 +107,7 @@ dijkstra(
         bool only_cost,
         size_t n_goals) {
     std::deque<pgrouting::Path> paths;
-    pgrouting::Pgr_dijkstra<G> fn_dijkstra;
-    return  fn_dijkstra.dijkstra(graph, combinations, only_cost, n_goals);
+    return  pgrouting::dijkstra(graph, combinations, only_cost, n_goals);
 }
 
 }  // namespace detail
