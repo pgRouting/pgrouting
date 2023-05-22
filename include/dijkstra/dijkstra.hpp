@@ -54,7 +54,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/interruption.h"
-#include "visitors/dijkstra_one_goal_visitor.hpp"
+#include "visitors/dijkstra_visitors.hpp"
 
 namespace pgrouting {
 
