@@ -77,6 +77,7 @@ std::deque<pgrouting::Path> get_paths(
     return paths;
 }
 
+#if 0
 template <typename G, typename V>
 bool dijkstra_1_to_1(
         G &graph,
@@ -104,6 +105,7 @@ bool dijkstra_1_to_1(
          }
          return true;
      }
+#endif
 
 template <typename B_G, typename V, typename T_E>
 bool dijkstra_1_to_many(
@@ -181,6 +183,22 @@ std::deque<pgrouting::Path> dijkstra(
 namespace pgrouting {
 namespace algorithms {
 
+template <class G>
+std::deque<Path> dijkstra(
+        G &graph,
+        const std::map<int64_t, std::set<int64_t>> &combinations,
+        bool only_cost,
+        size_t n_goals = (std::numeric_limits<size_t>::max)()) {
+    std::deque<Path> paths;
+
+    for (const auto &c : combinations) {
+        auto r_paths = detail::dijkstra<G>(graph, c.first, c.second, only_cost, n_goals);
+        paths.insert(paths.begin(), r_paths.begin(), r_paths.end());
+    }
+
+    return paths;
+}
+
 /* 1 to 1*/
 template <class G>
 Path dijkstra(
@@ -192,6 +210,13 @@ Path dijkstra(
     std::vector<V> predecessors(graph.num_vertices());
     std::vector<double> distances(graph.num_vertices(), std::numeric_limits<double>::infinity());
 
+    std::map<int64_t, std::set<int64_t>> combinations;
+    combinations[start_vertex].insert(end_vertex);
+
+    auto paths = dijkstra(graph, combinations, only_cost);
+    return paths.front();
+
+#if 0
     if (!graph.has_vertex(start_vertex)
             || !graph.has_vertex(end_vertex)) {
         return Path(start_vertex, end_vertex);
@@ -210,23 +235,9 @@ Path dijkstra(
             departure, destination,
             predecessors, distances,
             only_cost, true);
+#endif
 }
 
-template <class G>
-std::deque<Path> dijkstra(
-        G &graph,
-        const std::map<int64_t, std::set<int64_t>> &combinations,
-        bool only_cost,
-        size_t n_goals) {
-    std::deque<Path> paths;
-
-    for (const auto &c : combinations) {
-        auto r_paths = detail::dijkstra<G>(graph, c.first, c.second, only_cost, n_goals);
-        paths.insert(paths.begin(), r_paths.begin(), r_paths.end());
-    }
-
-    return paths;
-}
 
 }  // namespace algorithms
 }  // namespace pgrouting
