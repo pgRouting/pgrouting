@@ -150,8 +150,7 @@ class Pgr_ksp :  public Pgr_messages {
      Path getFirstSolution(G &graph) {
          Path path;
 
-         Pgr_dijkstra< G > fn_dijkstra;
-         path = fn_dijkstra.dijkstra(graph, m_start, m_end);
+         path = dijkstra(graph, m_start, m_end);
          path.recalculate_agg_cost();
 
          if (path.empty()) return path;
@@ -179,8 +178,7 @@ class Pgr_ksp :  public Pgr_messages {
 
              removeVertices(graph, rootPath);
 
-             Pgr_dijkstra< G > fn_dijkstra;
-             auto spurPath = fn_dijkstra.dijkstra(graph, spurNodeId, m_end);
+             auto spurPath = dijkstra(graph, spurNodeId, m_end);
 
              if (spurPath.size() > 0) {
                  rootPath.appendPath(spurPath);

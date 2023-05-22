@@ -56,7 +56,41 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/interruption.h"
 #include "visitors/dijkstra_visitors.hpp"
 
+namespace detail {
+
+template <typename G, typename V>
+bool dijkstra_1_to_1(
+        G &graph,
+        std::vector<V> &predecessors,
+        std::vector<double> &distances,
+        V source,
+        V target) {
+    CHECK_FOR_INTERRUPTS();
+    try {
+        boost::dijkstra_shortest_paths(graph.graph, source,
+                boost::predecessor_map(&predecessors[0])
+                .weight_map(get(&G::G_T_E::cost, graph.graph))
+                .distance_map(&distances[0])
+                .visitor(pgrouting::visitors::dijkstra_one_goal_visitor<V>(target)));
+    } catch(pgrouting::found_goals &) {
+        return true;
+    } catch (boost::exception const& ex) {
+        (void)ex;
+        throw;
+    } catch (std::exception &e) {
+        (void)e;
+        throw;
+    } catch (...) {
+             throw;
+         }
+         return true;
+     }
+
+}  // namespace detail
+
+
 namespace pgrouting {
+// TODO(vicky) namespace algorithm
 
 template < class G > class Pgr_dijkstra;
 // user's functions
@@ -81,6 +115,7 @@ pgr_drivingDistance(
 
 
 /* 1 to 1*/
+#if 0
 template < class G >
 Path
 pgr_dijkstra(
@@ -88,11 +123,41 @@ pgr_dijkstra(
         int64_t source,
         int64_t target,
         bool only_cost = false) {
-    Pgr_dijkstra< G > fn_dijkstra;
+    Pgr_dijkstra<G> fn_dijkstra;
     return fn_dijkstra.dijkstra(graph, source, target, only_cost);
 }
+#else
 
+template <class G>
+Path dijkstra(
+        G &graph,
+        int64_t start_vertex,
+        int64_t end_vertex,
+        bool only_cost = false) {
+    typedef typename G::V V;
+    std::vector<V> predecessors(graph.num_vertices());
+    std::vector<double> distances(graph.num_vertices(), std::numeric_limits<double>::infinity());
 
+    if (!graph.has_vertex(start_vertex)
+            || !graph.has_vertex(end_vertex)) {
+        return Path(start_vertex, end_vertex);
+    }
+
+    // get the graphs source and target
+    auto departure(graph.get_V(start_vertex));
+    auto destination(graph.get_V(end_vertex));
+
+    // perform the algorithm
+    detail::dijkstra_1_to_1<G, V>(graph, predecessors, distances, departure, destination);
+
+    // get the results
+    return Path(
+            graph,
+            departure, destination,
+            predecessors, distances,
+            only_cost, true);
+}
+#endif
 
 
 //******************************************
@@ -167,6 +232,7 @@ class Pgr_dijkstra {
      //! @name Dijkstra
      //@{
 
+#if 0
      //! Dijkstra 1 to 1
      Path dijkstra(
              G &graph,
@@ -201,6 +267,7 @@ class Pgr_dijkstra {
                  predecessors, distances,
                  only_cost, true);
      }
+#endif
 
 
      //! Dijkstra 1 to many
@@ -370,6 +437,7 @@ class Pgr_dijkstra {
      //@}
 
  private:
+#if 0
      //! Call to Dijkstra  1 source to 1 target
      bool dijkstra_1_to_1(
                  G &graph,
@@ -396,6 +464,7 @@ class Pgr_dijkstra {
          }
          return true;
      }
+#endif
 
      /** Call to Dijkstra  1 to distance
       *
@@ -771,9 +840,9 @@ class Pgr_dijkstra {
 
      //! @name members
      //@{
-     std::vector< V > predecessors;
-     std::vector< double > distances;
-     std::deque< V > nodesInDistance;
+     std::vector<V> predecessors;
+     std::vector<double> distances;
+     std::deque<V> nodesInDistance;
      std::ostringstream log;
      //@}
 };
