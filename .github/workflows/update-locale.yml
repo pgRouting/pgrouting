@@ -8,12 +8,8 @@ name: Update Locale
 on:
   workflow_dispatch:
   push:
-    paths:
-      - '.github/workflows/update-locale.yml'
-      - 'doc/**'
-
-    branches-ignore:
-      - 'gh-pages'
+    branches:
+      - 'develop'
 
 permissions:
   contents: read
