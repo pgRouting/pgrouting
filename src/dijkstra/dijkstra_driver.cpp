@@ -98,19 +98,6 @@ post_process(std::deque<pgrouting::Path> &paths, bool only_cost, bool normal, si
     }
 }
 
-#if 0
-template <class G>
-std::deque<pgrouting::Path>
-dijkstra(
-        G &graph,
-        /* Now it receives a map */
-        const std::map<int64_t , std::set<int64_t>> &combinations,
-        bool only_cost,
-        size_t n_goals) {
-    return  pgrouting::dijkstra(graph, combinations, only_cost, n_goals);
-}
-#endif
-
 }  // namespace detail
 
 
