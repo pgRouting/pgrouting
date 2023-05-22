@@ -26,7 +26,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_YEN_PGR_KSP_HPP_
 #pragma once
 
-#include "dijkstra/dijkstra.hpp"
 
 #include <sstream>
 #include <deque>
@@ -35,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <limits>
 
+#include "dijkstra/dijkstra.hpp"
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/compPaths.h"
 #include "cpp_common/pgr_messages.h"

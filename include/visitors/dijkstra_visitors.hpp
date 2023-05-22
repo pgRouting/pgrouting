@@ -25,11 +25,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_VISITORS_DIJKSTRA_ONE_GOAL_VISITOR_HPP_
-#define INCLUDE_VISITORS_DIJKSTRA_ONE_GOAL_VISITOR_HPP_
+#ifndef INCLUDE_VISITORS_DIJKSTRA_VISITORS_HPP_
+#define INCLUDE_VISITORS_DIJKSTRA_VISITORS_HPP_
 
 #include <boost/graph/dijkstra_shortest_paths.hpp>
 
+#include <deque>
+#include <vector>
 #include "visitors/found_goals.hpp"
 
 namespace pgrouting {
@@ -152,4 +154,4 @@ class dijkstra_distance_visitor_no_init : public boost::default_dijkstra_visitor
 }  // namespace visitors
 }  // namespace pgrouting
 
-#endif  // INCLUDE_VISITORS_DIJKSTRA_ONE_GOAL_VISITOR_HPP_
+#endif  // INCLUDE_VISITORS_DIJKSTRA_VISITORS_HPP_
