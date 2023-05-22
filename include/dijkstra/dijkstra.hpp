@@ -115,19 +115,6 @@ pgr_drivingDistance(
 
 
 /* 1 to 1*/
-#if 0
-template < class G >
-Path
-pgr_dijkstra(
-        G &graph,
-        int64_t source,
-        int64_t target,
-        bool only_cost = false) {
-    Pgr_dijkstra<G> fn_dijkstra;
-    return fn_dijkstra.dijkstra(graph, source, target, only_cost);
-}
-#else
-
 template <class G>
 Path dijkstra(
         G &graph,
@@ -157,7 +144,6 @@ Path dijkstra(
             predecessors, distances,
             only_cost, true);
 }
-#endif
 
 
 //******************************************
@@ -231,43 +217,6 @@ class Pgr_dijkstra {
 
      //! @name Dijkstra
      //@{
-
-#if 0
-     //! Dijkstra 1 to 1
-     Path dijkstra(
-             G &graph,
-             int64_t start_vertex,
-             int64_t end_vertex,
-             bool only_cost = false) {
-         clear();
-
-         // adjust predecessors and distances vectors
-         predecessors.resize(graph.num_vertices());
-         distances.resize(
-                 graph.num_vertices(),
-                 std::numeric_limits<double>::infinity());
-
-
-         if (!graph.has_vertex(start_vertex)
-                 || !graph.has_vertex(end_vertex)) {
-             return Path(start_vertex, end_vertex);
-         }
-
-         // get the graphs source and target
-         auto v_source(graph.get_V(start_vertex));
-         auto v_target(graph.get_V(end_vertex));
-
-         // perform the algorithm
-         dijkstra_1_to_1(graph, v_source, v_target);
-
-         // get the results
-         return Path(
-                 graph,
-                 v_source, v_target,
-                 predecessors, distances,
-                 only_cost, true);
-     }
-#endif
 
 
      //! Dijkstra 1 to many
