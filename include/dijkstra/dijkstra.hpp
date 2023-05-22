@@ -725,7 +725,7 @@ class Pgr_dijkstra {
                      .weight_map(get(&G::G_T_E::cost, graph.graph))
                      .distance_map(&distances[0])
                      .distance_inf(std::numeric_limits<double>::infinity())
-                     .visitor(dijkstra_many_goal_visitor(goals, n_goals, goals_found)));
+                     .visitor(visitors::dijkstra_many_goal_visitor<V>(goals, n_goals, goals_found)));
          } catch(found_goals &) {
              for (const auto &g : goals) {
                  if (goals_found.find(g) == goals_found.end()) {
