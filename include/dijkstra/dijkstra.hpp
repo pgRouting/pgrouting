@@ -831,6 +831,7 @@ class Pgr_dijkstra {
      };
 
 
+#if 0
      //! class for stopping when a distance/cost has being surpassed
      class dijkstra_distance_visitor : public boost::default_dijkstra_visitor {
       public:
@@ -857,7 +858,9 @@ class Pgr_dijkstra {
           std::deque< V > &m_nodes;
           std::vector< double > &m_dist;
      };
+#endif
 
+#if 0
      //! class for stopping when a distance/cost has being surpassed
      class dijkstra_distance_visitor_no_init
          : public boost::default_dijkstra_visitor {
@@ -936,6 +939,7 @@ class Pgr_dijkstra {
           std::vector< double > &m_dist;
           std::vector<boost::default_color_type> &m_color;
      };
+#endif
 };
 
 }  // namespace pgrouting
