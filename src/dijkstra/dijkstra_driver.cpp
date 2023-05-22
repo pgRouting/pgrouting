@@ -150,11 +150,11 @@ pgr_do_dijkstra(
         if (directed) {
             pgrouting::DirectedGraph graph(gType);
             graph.insert_edges(data_edges, total_edges);
-            paths =  pgrouting::dijkstra(graph, combinations, only_cost, n);
+            paths =  pgrouting::algorithms::dijkstra(graph, combinations, only_cost, n);
         } else {
             pgrouting::UndirectedGraph graph(gType);
             graph.insert_edges(data_edges, total_edges);
-            paths =  pgrouting::dijkstra(graph, combinations, only_cost, n);
+            paths =  pgrouting::algorithms::dijkstra(graph, combinations, only_cost, n);
         }
         detail::post_process(paths, only_cost, normal, n, global);
         combinations.clear();

@@ -81,7 +81,7 @@ pgr_dijkstra(
         G &graph,
         std::map<int64_t, std::set<int64_t>> &combinations
         ) {
-    auto paths = dijkstra(
+    auto paths = pgrouting::algorithms::dijkstra(
             graph,
             combinations,
             false, (std::numeric_limits<size_t>::max)());

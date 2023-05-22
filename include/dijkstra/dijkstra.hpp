@@ -178,7 +178,7 @@ std::deque<pgrouting::Path> dijkstra(
 
 
 namespace pgrouting {
-// TODO(vicky) namespace algorithm
+namespace algorithms {
 
 /* 1 to 1*/
 template <class G>
@@ -227,6 +227,7 @@ std::deque<Path> dijkstra(
     return paths;
 }
 
+}  // namespace algorithms
 }  // namespace pgrouting
 
 

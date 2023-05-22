@@ -5,7 +5,6 @@ file: driveDist.hpp
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Copyright (c) 2023 Celia Virginia Vergara Castillo
 Copyright (c) 2022 Celia Virginia Vergara Castillo
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 vicky at erosion.dev

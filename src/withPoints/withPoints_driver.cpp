@@ -54,7 +54,7 @@ pgr_dijkstra(
         bool only_cost,
         bool normal) {
     size_t n_goals = (std::numeric_limits<size_t>::max)();
-    auto paths = dijkstra(graph, combinations, only_cost, n_goals);
+    auto paths = pgrouting::algorithms::dijkstra(graph, combinations, only_cost, n_goals);
 
     if (!normal) {
         for (auto &path : paths) {
