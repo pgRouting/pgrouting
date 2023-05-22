@@ -708,7 +708,6 @@ class Pgr_dijkstra {
          return paths;
      }
 
-
      //! Dijkstra  1 source to many targets
      bool dijkstra_1_to_many(
              G &graph,
@@ -753,9 +752,6 @@ class Pgr_dijkstra {
          nodesInDistance.clear();
      }
 
-
-
-
      // used when multiple goals
      std::deque<Path> get_paths(
              const G &graph,
@@ -773,8 +769,6 @@ class Pgr_dijkstra {
          return paths;
      }
 
-
-
      //! @name members
      //@{
      std::vector< V > predecessors;
@@ -782,47 +776,6 @@ class Pgr_dijkstra {
      std::deque< V > nodesInDistance;
      std::ostringstream log;
      //@}
-
-
-#if 0
-     //! @name Stopping classes
-     //@{
-     //! class for stopping when all targets are found
-     class dijkstra_many_goal_visitor : public boost::default_dijkstra_visitor {
-      public:
-          dijkstra_many_goal_visitor(
-                  const std::set<V> &goals,
-                  size_t n_goals,
-                  std::set<V> &f_goals) :
-              m_goals(goals),
-              m_n_goals(n_goals),
-              m_found_goals(f_goals)   {
-              }
-          template <class B_G>
-              void examine_vertex(V u, B_G &) {
-                  auto s_it = m_goals.find(u);
-
-                  /* examined vertex is not a goal */
-                  if (s_it == m_goals.end()) return;
-
-                  // found one more goal
-                  m_found_goals.insert(*s_it);
-                  m_goals.erase(s_it);
-
-                  // all goals found
-                  if (m_goals.size() == 0) throw found_goals();
-
-                  // number of requested goals found
-                  --m_n_goals;
-                  if (m_n_goals == 0) throw found_goals();
-              }
-
-      private:
-          std::set< V > m_goals;
-          size_t m_n_goals;
-          std::set< V > &m_found_goals;
-     };
-#endif
 };
 
 }  // namespace pgrouting
