@@ -784,6 +784,7 @@ class Pgr_dijkstra {
      //@}
 
 
+#if 0
      //! @name Stopping classes
      //@{
      //! class for stopping when all targets are found
@@ -821,6 +822,7 @@ class Pgr_dijkstra {
           size_t m_n_goals;
           std::set< V > &m_found_goals;
      };
+#endif
 };
 
 }  // namespace pgrouting
