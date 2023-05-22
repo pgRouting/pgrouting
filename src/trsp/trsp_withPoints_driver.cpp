@@ -46,7 +46,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/combinations.h"
 #include "c_types/restriction_t.h"
 #include "c_types/ii_t_rt.h"
-#include "dijkstra/pgr_dijkstra.hpp"
+#include "dijkstra/dijkstra.hpp"
 #include "withPoints/pgr_withPoints.hpp"
 
 
