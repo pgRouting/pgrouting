@@ -7,7 +7,7 @@ Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2022 Celia Virginia Vergara Castillo
-Mail: vicky at georepublic.de
+Mail: vicky at erosion.dev
 
 ------
 

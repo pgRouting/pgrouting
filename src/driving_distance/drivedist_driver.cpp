@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: boost_interface_drivedist.cpp
+File: drivedist_driver.cpp
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Mail: vicky at erosion.dev
 
 ------
 

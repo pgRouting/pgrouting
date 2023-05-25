@@ -7,7 +7,7 @@ Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2017 Anthony Nicola Tasca
-Mail: atasca10@gmail.com
+Mail: atasca10 at gmail.com
 
 ------
 

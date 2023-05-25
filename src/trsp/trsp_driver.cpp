@@ -5,6 +5,7 @@ Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2022 Celia Virginia Vergara Castillo
+Mail: vicky at erosion.dev
 * Added combinations functionality
 
 ------

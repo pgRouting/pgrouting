@@ -7,7 +7,7 @@ Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2017 Vidhan Jain
-Mail: vidhanj1307@gmail.com
+Mail: vidhanj1307 at gmail.com
 
 ------
 

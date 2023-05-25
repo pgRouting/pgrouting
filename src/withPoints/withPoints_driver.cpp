@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: one_to_many_withPoints_driver.cpp
+File: withPoints_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -7,7 +7,7 @@ Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail:
+Mail: vicky at erosion.dev
 
 ------
 

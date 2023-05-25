@@ -6,6 +6,7 @@ Copyright (c) 2015 pgRouting developers
 
 Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
+mail: vicky at erosion.dev
 
 ------
 

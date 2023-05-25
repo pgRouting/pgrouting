@@ -1,11 +1,12 @@
 /*PGR-GNU*****************************************************************
-file: dijkstra_one_goal_visitor.hpp
+file: dijkstra_visitors.hpp
 
 Copyright (c) 2018 pgRouting developers
 Mail: project@pgrouting.org
 
+Copyright (c) 2023 Celia Virginia Vergara Castillo
 Copyright (c) 2018 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Mail: vicky at erosion.dev
 
 ------
 
@@ -38,6 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace visitors {
 
+#if 0
 template <typename V>
 class dijkstra_one_goal_visitor : public boost::default_dijkstra_visitor {
  public:
@@ -49,6 +51,7 @@ class dijkstra_one_goal_visitor : public boost::default_dijkstra_visitor {
  private:
      V m_goal;
 };
+#endif
 
 template <typename V>
 class dijkstra_many_goal_visitor : public boost::default_dijkstra_visitor {
