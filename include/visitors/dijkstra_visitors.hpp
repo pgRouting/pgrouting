@@ -39,7 +39,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace visitors {
 
-#if 0
 template <typename V>
 class dijkstra_one_goal_visitor : public boost::default_dijkstra_visitor {
  public:
@@ -51,7 +50,6 @@ class dijkstra_one_goal_visitor : public boost::default_dijkstra_visitor {
  private:
      V m_goal;
 };
-#endif
 
 template <typename V>
 class dijkstra_many_goal_visitor : public boost::default_dijkstra_visitor {
