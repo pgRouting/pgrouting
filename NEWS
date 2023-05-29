@@ -23,6 +23,8 @@ pgRouting 3.6.0 Release Notes
   duplicate code on Dijkstra.
 * `2517 <https://github.com/pgRouting/pgrouting/pull/2517>` Astar code
   simplification.
+* `2521 <https://github.com/pgRouting/pgrouting/pull/2521>` Dijkstra code
+  simplification.
 
 **Documentation**
 

@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: boost_interface_drivedist.cpp
+File: drivedist_driver.cpp
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Mail: vicky at erosion.dev
 
 ------
 
@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "dijkstra/pgr_dijkstra.hpp"
+#include "dijkstra/drivingDist.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"

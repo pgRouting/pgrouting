@@ -46,7 +46,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-#include "dijkstra/pgr_dijkstra.hpp"
+#include "dijkstra/dijkstra.hpp"
 
 namespace detail {
 
@@ -96,19 +96,6 @@ post_process(std::deque<pgrouting::Path> &paths, bool only_cost, bool normal, si
                     return e1.start_id() < e2.start_id();
                 });
     }
-}
-
-template <class G>
-std::deque<pgrouting::Path>
-dijkstra(
-        G &graph,
-        /* Now it receives a map */
-        const std::map<int64_t , std::set<int64_t>> &combinations,
-        bool only_cost,
-        size_t n_goals) {
-    std::deque<pgrouting::Path> paths;
-    pgrouting::Pgr_dijkstra<G> fn_dijkstra;
-    return  fn_dijkstra.dijkstra(graph, combinations, only_cost, n_goals);
 }
 
 }  // namespace detail
@@ -161,19 +148,13 @@ pgr_do_dijkstra(
             : pgrouting::utilities::get_combinations(start_vidsArr, size_start_vidsArr, end_vidsArr, size_end_vidsArr);
 
         if (directed) {
-            pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(data_edges, total_edges);
-            paths = detail::dijkstra(
-                    digraph,
-                    combinations,
-                    only_cost, n);
+            pgrouting::DirectedGraph graph(gType);
+            graph.insert_edges(data_edges, total_edges);
+            paths =  pgrouting::algorithms::dijkstra(graph, combinations, only_cost, n);
         } else {
-            pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(data_edges, total_edges);
-            paths = detail::dijkstra(
-                    undigraph,
-                    combinations,
-                    only_cost, n);
+            pgrouting::UndirectedGraph graph(gType);
+            graph.insert_edges(data_edges, total_edges);
+            paths =  pgrouting::algorithms::dijkstra(graph, combinations, only_cost, n);
         }
         detail::post_process(paths, only_cost, normal, n, global);
         combinations.clear();
