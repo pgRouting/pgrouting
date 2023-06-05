@@ -89,7 +89,7 @@ do_pgr_bdAstar(
 
             paths = pgrouting::algorithms::bdastar(digraph, combinations, heuristic, factor, epsilon, only_cost);
         } else {
-            pgrouting::xyUndirectedGraph undigraph( pgrouting::extract_vertices(edges, total_edges), gType);
+            pgrouting::xyUndirectedGraph undigraph(pgrouting::extract_vertices(edges, total_edges), gType);
             undigraph.insert_edges(edges, total_edges);
 
             paths = pgrouting::algorithms::bdastar(undigraph, combinations, heuristic, factor, epsilon, only_cost);
@@ -99,7 +99,7 @@ do_pgr_bdAstar(
         count = count_tuples(paths);
 
         if (count == 0) {
-            (*return_tuples) = NULL;
+            (*return_tuples) = nullptr;
             (*return_count) = 0;
             notice << "No paths found\n";
             *log_msg = pgr_msg(notice.str().c_str());
@@ -110,7 +110,7 @@ do_pgr_bdAstar(
         (*return_count) = (collapse_paths(return_tuples, paths));
 
 
-        pgassert(*err_msg == NULL);
+        pgassert(*err_msg == nullptr);
         *log_msg = log.str().empty()?
             *log_msg :
             pgr_msg(log.str().c_str());
