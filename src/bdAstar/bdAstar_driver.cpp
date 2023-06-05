@@ -73,12 +73,10 @@ pgr_bdAstar(
             paths.push_back(fn_bdAstar.pgr_bdAstar(
                         graph.get_V(c.first), graph.get_V(destination),
                         heuristic, factor, epsilon, only_cost));
-
         }
     }
 
     log << fn_bdAstar.log();
-
     return paths;
 }
 
