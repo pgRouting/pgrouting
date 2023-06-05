@@ -57,10 +57,11 @@ template < class G >
 std::deque<pgrouting::Path>
 pgr_bdAstar(
         G &graph,
-        std::vector < II_t_rt > &combinations,
+        const std::map<int64_t, std::set<int64_t>> &combinations,
+#if 0
         std::vector < int64_t > sources,
         std::vector < int64_t > targets,
-
+#endif
         int heuristic,
         double factor,
         double epsilon,
@@ -72,6 +73,7 @@ pgr_bdAstar(
     std::deque<Path> paths;
 
     if (combinations.empty()) {
+#if 0
         std::sort(sources.begin(), sources.end());
         sources.erase(
                 std::unique(sources.begin(), sources.end()),
@@ -81,7 +83,6 @@ pgr_bdAstar(
         targets.erase(
                 std::unique(targets.begin(), targets.end()),
                 targets.end());
-
         for (const auto source : sources) {
             for (const auto target : targets) {
                 fn_bdAstar.clear();
@@ -97,8 +98,10 @@ pgr_bdAstar(
                         heuristic, factor, epsilon, only_cost));
             }
         }
+#endif
 
     } else {
+#if 0
         std::sort(combinations.begin(), combinations.end(),
                 [](const II_t_rt &lhs, const II_t_rt &rhs)->bool {
                     return lhs.d2.target < rhs.d2.target;
@@ -107,28 +110,47 @@ pgr_bdAstar(
                 [](const II_t_rt &lhs, const II_t_rt &rhs)->bool {
                     return lhs.d1.source < rhs.d1.source;
                 });
+#endif
 
+#if 0
         II_t_rt previousCombination {{0}, {0}};
+#endif
 
-        for (const II_t_rt &comb : combinations) {
-            fn_bdAstar.clear();
+        /* for each departure process each destination */
+        for (const auto &c : combinations) {
+            if (!graph.has_vertex(c.first)) continue;
 
+            for (const auto &destination : c.second) {
+                if (!graph.has_vertex(destination)) continue;
+
+                fn_bdAstar.clear();
+
+#if 0
+            /* This is skiping duplicates */
             if (comb.d1.source == previousCombination.d1.source &&
                     comb.d2.target == previousCombination.d2.target) {
                 continue;
             }
+#endif
 
+
+#if 0
+            /* this is my guide */
             if (!graph.has_vertex(comb.d1.source)
                     || !graph.has_vertex(comb.d2.target)) {
                 paths.push_back(Path(comb.d1.source, comb.d2.target));
                 continue;
             }
+#endif
 
             paths.push_back(fn_bdAstar.pgr_bdAstar(
-                    graph.get_V(comb.d1.source), graph.get_V(comb.d2.target),
+                    graph.get_V(c.first), graph.get_V(destination),
                     heuristic, factor, epsilon, only_cost));
 
+#if 0
             previousCombination = comb;
+#endif
+            }
         }
     }
 
@@ -200,12 +222,8 @@ do_pgr_bdAstar(
             digraph.insert_edges(edges, total_edges);
 
             paths = pgr_bdAstar(digraph,
-                    combinations_vector,
-                    start_vertices,
-                    end_vertices,
-                    heuristic,
-                    factor,
-                    epsilon,
+                    combinations,
+                    heuristic, factor, epsilon,
                     log,
                     only_cost);
         } else {
@@ -217,12 +235,8 @@ do_pgr_bdAstar(
 
             paths = pgr_bdAstar(
                     undigraph,
-                    combinations_vector,
-                    start_vertices,
-                    end_vertices,
-                    heuristic,
-                    factor,
-                    epsilon,
+                    combinations,
+                    heuristic, factor, epsilon,
                     log,
                     only_cost);
         }
