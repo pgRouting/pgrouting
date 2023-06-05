@@ -44,47 +44,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/ii_t_rt.h"
 
 
-#if 0
-/* Moving code to bdAstar.hpp */
-namespace {
-
-template < class G >
-std::deque<pgrouting::Path>
-pgr_bdAstar(
-        G &graph,
-        const std::map<int64_t, std::set<int64_t>> &combinations,
-        int heuristic,
-        double factor,
-        double epsilon,
-        std::ostream &log,
-        bool only_cost) {
-    using pgrouting::Path;
-
-    pgrouting::bidirectional::Pgr_bdAstar<G> fn_bdAstar(graph);
-    std::deque<Path> paths;
-
-    /* for each departure process each destination */
-    for (const auto &c : combinations) {
-        if (!graph.has_vertex(c.first)) continue;
-
-        for (const auto &destination : c.second) {
-            if (!graph.has_vertex(destination)) continue;
-
-            fn_bdAstar.clear();
-
-            paths.push_back(fn_bdAstar.pgr_bdAstar(
-                        graph.get_V(c.first), graph.get_V(destination),
-                        heuristic, factor, epsilon, only_cost));
-        }
-    }
-
-    log << fn_bdAstar.log();
-    return paths;
-}
-
-}  // namespace
-#endif
-
 void
 do_pgr_bdAstar(
         Edge_xy_t *edges, size_t total_edges,
