@@ -45,13 +45,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 
-/************************************************************
-  edges_sql TEXT,
-    start_vid BIGINT,
-    end_vid BIGINT,
-    directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
- ***********************************************************/
 namespace {
 template < class G >
 std::deque<pgrouting::Path>
@@ -130,15 +123,6 @@ do_pgr_bdAstar(
         auto combinations = total_combinations?
             pgrouting::utilities::get_combinations(combinationsArr, total_combinations)
             : pgrouting::utilities::get_combinations(start_vidsArr, size_start_vidsArr, end_vidsArr, size_end_vidsArr);
-#if 0
-        log << "Inserting vertices into a c++ vector structure";
-        std::vector<int64_t>
-            start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
-        std::vector< int64_t >
-            end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
-        std::vector< II_t_rt >
-            combinations_vector(combinations, combinations + total_combinations);
-#endif
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
@@ -187,22 +171,6 @@ do_pgr_bdAstar(
         log << "\nConverting a set of paths into the tuples";
         (*return_count) = (collapse_paths(return_tuples, paths));
 
-
-#if 0
-        auto count = path.size();
-
-        if (count == 0) {
-            (*return_tuples) = NULL;
-            (*return_count) = 0;
-            notice <<
-                "No paths found between start_vid and end_vid vertices";
-        } else {
-            (*return_tuples) = pgr_alloc(count, (*return_tuples));
-            size_t sequence = 0;
-            path.generate_postgres_data(return_tuples, sequence);
-            (*return_count) = sequence;
-        }
-#endif
 
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
