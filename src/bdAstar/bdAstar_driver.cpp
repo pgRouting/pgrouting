@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 
-#include "bdAstar/pgr_bdAstar.hpp"
+#include "bdAstar/bdAstar.hpp"
 
 #include "cpp_common/combinations.h"
 #include "cpp_common/pgr_alloc.hpp"
@@ -44,6 +44,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/ii_t_rt.h"
 
 
+#if 0
+/* Moving code to bdAstar.hpp */
 namespace {
 
 template < class G >
@@ -81,6 +83,7 @@ pgr_bdAstar(
 }
 
 }  // namespace
+#endif
 
 void
 do_pgr_bdAstar(
@@ -122,28 +125,15 @@ do_pgr_bdAstar(
 
         std::deque<Path> paths;
         if (directed) {
-            pgrouting::xyDirectedGraph digraph(
-                    pgrouting::extract_vertices(edges, total_edges),
-                    gType);
+            pgrouting::xyDirectedGraph digraph(pgrouting::extract_vertices(edges, total_edges), gType);
             digraph.insert_edges(edges, total_edges);
 
-            paths = pgr_bdAstar(digraph,
-                    combinations,
-                    heuristic, factor, epsilon,
-                    log,
-                    only_cost);
+            paths = pgrouting::algorithms::bdastar(digraph, combinations, heuristic, factor, epsilon, only_cost);
         } else {
-            pgrouting::xyUndirectedGraph undigraph(
-                    pgrouting::extract_vertices(edges, total_edges),
-                    gType);
+            pgrouting::xyUndirectedGraph undigraph( pgrouting::extract_vertices(edges, total_edges), gType);
             undigraph.insert_edges(edges, total_edges);
 
-            paths = pgr_bdAstar(
-                    undigraph,
-                    combinations,
-                    heuristic, factor, epsilon,
-                    log,
-                    only_cost);
+            paths = pgrouting::algorithms::bdastar(undigraph, combinations, heuristic, factor, epsilon, only_cost);
         }
 
         size_t count(0);
