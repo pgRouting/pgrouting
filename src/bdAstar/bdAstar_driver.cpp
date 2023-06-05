@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "bdAstar/pgr_bdAstar.hpp"
 
+#include "cpp_common/combinations.h"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
@@ -140,16 +141,12 @@ pgr_bdAstar(
 
 void
 do_pgr_bdAstar(
-        Edge_xy_t *edges,
-        size_t total_edges,
-        II_t_rt *combinations,
-        size_t total_combinations,
-        int64_t  *start_vidsArr,
-        size_t size_start_vidsArr,
-        int64_t  *end_vidsArr,
-        size_t size_end_vidsArr,
+        Edge_xy_t *edges, size_t total_edges,
 
+        II_t_rt *combinationsArr, size_t total_combinations,
 
+        int64_t  *start_vidsArr, size_t size_start_vidsArr,
+        int64_t  *end_vidsArr, size_t size_end_vidsArr,
         bool directed,
         int heuristic,
         double factor,
@@ -178,6 +175,10 @@ do_pgr_bdAstar(
         pgassert(total_edges != 0);
 
 
+        auto combinations = total_combinations?
+            pgrouting::utilities::get_combinations(combinationsArr, total_combinations)
+            : pgrouting::utilities::get_combinations(start_vidsArr, size_start_vidsArr, end_vidsArr, size_end_vidsArr);
+#if 0
         log << "Inserting vertices into a c++ vector structure";
         std::vector<int64_t>
             start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
@@ -185,6 +186,7 @@ do_pgr_bdAstar(
             end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
         std::vector< II_t_rt >
             combinations_vector(combinations, combinations + total_combinations);
+#endif
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
