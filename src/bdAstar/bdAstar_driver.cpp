@@ -58,10 +58,6 @@ std::deque<pgrouting::Path>
 pgr_bdAstar(
         G &graph,
         const std::map<int64_t, std::set<int64_t>> &combinations,
-#if 0
-        std::vector < int64_t > sources,
-        std::vector < int64_t > targets,
-#endif
         int heuristic,
         double factor,
         double epsilon,
@@ -72,85 +68,19 @@ pgr_bdAstar(
     pgrouting::bidirectional::Pgr_bdAstar<G> fn_bdAstar(graph);
     std::deque<Path> paths;
 
-    if (combinations.empty()) {
-#if 0
-        std::sort(sources.begin(), sources.end());
-        sources.erase(
-                std::unique(sources.begin(), sources.end()),
-                sources.end());
+    /* for each departure process each destination */
+    for (const auto &c : combinations) {
+        if (!graph.has_vertex(c.first)) continue;
 
-        std::sort(targets.begin(), targets.end());
-        targets.erase(
-                std::unique(targets.begin(), targets.end()),
-                targets.end());
-        for (const auto source : sources) {
-            for (const auto target : targets) {
-                fn_bdAstar.clear();
+        for (const auto &destination : c.second) {
+            if (!graph.has_vertex(destination)) continue;
 
-                if (!graph.has_vertex(source)
-                        || !graph.has_vertex(target)) {
-                    paths.push_back(Path(source, target));
-                    continue;
-                }
-
-                paths.push_back(fn_bdAstar.pgr_bdAstar(
-                        graph.get_V(source), graph.get_V(target),
-                        heuristic, factor, epsilon, only_cost));
-            }
-        }
-#endif
-
-    } else {
-#if 0
-        std::sort(combinations.begin(), combinations.end(),
-                [](const II_t_rt &lhs, const II_t_rt &rhs)->bool {
-                    return lhs.d2.target < rhs.d2.target;
-                });
-        std::stable_sort(combinations.begin(), combinations.end(),
-                [](const II_t_rt &lhs, const II_t_rt &rhs)->bool {
-                    return lhs.d1.source < rhs.d1.source;
-                });
-#endif
-
-#if 0
-        II_t_rt previousCombination {{0}, {0}};
-#endif
-
-        /* for each departure process each destination */
-        for (const auto &c : combinations) {
-            if (!graph.has_vertex(c.first)) continue;
-
-            for (const auto &destination : c.second) {
-                if (!graph.has_vertex(destination)) continue;
-
-                fn_bdAstar.clear();
-
-#if 0
-            /* This is skiping duplicates */
-            if (comb.d1.source == previousCombination.d1.source &&
-                    comb.d2.target == previousCombination.d2.target) {
-                continue;
-            }
-#endif
-
-
-#if 0
-            /* this is my guide */
-            if (!graph.has_vertex(comb.d1.source)
-                    || !graph.has_vertex(comb.d2.target)) {
-                paths.push_back(Path(comb.d1.source, comb.d2.target));
-                continue;
-            }
-#endif
+            fn_bdAstar.clear();
 
             paths.push_back(fn_bdAstar.pgr_bdAstar(
-                    graph.get_V(c.first), graph.get_V(destination),
-                    heuristic, factor, epsilon, only_cost));
+                        graph.get_V(c.first), graph.get_V(destination),
+                        heuristic, factor, epsilon, only_cost));
 
-#if 0
-            previousCombination = comb;
-#endif
-            }
         }
     }
 
