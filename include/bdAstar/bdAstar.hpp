@@ -201,6 +201,7 @@ std::deque<Path> bdastar(
         double epsilon,
         bool only_cost) {
     std::deque<Path> paths;
+    pgrouting::bidirectional::Pgr_bdAstar<G> fn_bdAstar(graph);
 
     for (const auto &c : combinations) {
         if (!graph.has_vertex(c.first)) continue;
@@ -208,7 +209,7 @@ std::deque<Path> bdastar(
         for (const auto &destination : c.second) {
             if (!graph.has_vertex(destination)) continue;
 
-            pgrouting::bidirectional::Pgr_bdAstar<G> fn_bdAstar(graph);
+            fn_bdAstar.clear();
 
             paths.push_back(fn_bdAstar.pgr_bdAstar(
                         graph.get_V(c.first), graph.get_V(destination),
