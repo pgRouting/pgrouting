@@ -105,6 +105,73 @@ Signatures to be migrated:
     the function ``my_dijkstra`` returns the new additional columns of
     ``pgr_dijkstra``.
 
+Migration of ``pgr_bdAstar``
+-------------------------------------------------------------------------------
+
+Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
+
+Signatures to be migrated:
+
+* ``pgr_bdAstar`` (`One to One`)
+* ``pgr_bdAstar`` (`One to Many`)
+* ``pgr_bdAstar`` (`Many to One`)
+
+:Before Migration:
+
+* Output columns were |old-generic-result|
+
+  * Depending on the overload used, the columns ``start_vid`` and ``end_vid``
+    might be missing:
+
+    * ``pgr_bdAstar`` (`One to One`) does not have ``start_vid`` and ``end_vid``.
+    * ``pgr_bdAstar`` (`One to Many`) does not have ``start_vid``.
+    * ``pgr_bdAstar`` (`Many to One`) does not have ``end_vid``.
+
+:Migration:
+
+* Be aware of the existance of the additional columns.
+
+* In ``pgr_bdAstar`` (`One to One`)
+
+  * ``start_vid`` contains the **start vid** parameter value.
+  * ``end_vid`` contains the **end vid** parameter value.
+
+.. literalinclude:: migration.queries
+   :start-after: --bdastar1
+   :end-before: --bdastar2
+
+* In ``pgr_bdAstar`` (`One to Many`)
+
+  * ``start_vid`` contains the **start vid** parameter value.
+
+.. literalinclude:: migration.queries
+   :start-after: --bdastar2
+   :end-before: --bdastar3
+
+* In ``pgr_bdAstar`` (`Many to One`)
+
+  * ``end_vid`` contains the **end vid** parameter value.
+
+.. literalinclude:: migration.queries
+   :start-after: --bdastar3
+   :end-before: --bdastar4
+
+* If needed filter out the added columns, for example:
+
+.. literalinclude:: migration.queries
+   :start-after: --bdastar4
+   :end-before: --bdastar5
+
+* If needed add the new columns, similar to the following example where
+  ``pgr_dijkstra`` is used, and the function had to be modified to be able to
+  return the new columns:
+
+  * In `v3.0 <https://docs.pgrouting.org/3.0/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph>`__
+    the function ``my_dijkstra`` uses ``pgr_dijkstra``.
+  * Starting from `v3.5 <https://docs.pgrouting.org/3.5/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph>`__
+    the function ``my_dijkstra`` returns the new additional columns of
+    ``pgr_dijkstra``.
+
 
 Migration of ``pgr_dijkstra``
 -------------------------------------------------------------------------------

@@ -719,5 +719,71 @@ SELECT seq, path_seq, node, edge, cost, agg_cost FROM pgr_aStar(
 (6 rows)
 
 /* --astar5 */
+/* --bdastar1 */
+SELECT * FROM pgr_aStar(
+  $$SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges$$,
+  6, 10);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         6 |      10 |    6 |    4 |    1 |        0
+   2 |        2 |         6 |      10 |    7 |    8 |    1 |        1
+   3 |        3 |         6 |      10 |   11 |    9 |    1 |        2
+   4 |        4 |         6 |      10 |   16 |   16 |    1 |        3
+   5 |        5 |         6 |      10 |   15 |    3 |    1 |        4
+   6 |        6 |         6 |      10 |   10 |   -1 |    0 |        5
+(6 rows)
+
+/* --bdastar2 */
+SELECT * FROM pgr_aStar(
+  $$SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges$$,
+  6, ARRAY[3, 10]);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         6 |       3 |    6 |    4 |    1 |        0
+   2 |        2 |         6 |       3 |    7 |    7 |    1 |        1
+   3 |        3 |         6 |       3 |    3 |   -1 |    0 |        2
+   4 |        1 |         6 |      10 |    6 |    4 |    1 |        0
+   5 |        2 |         6 |      10 |    7 |    8 |    1 |        1
+   6 |        3 |         6 |      10 |   11 |    9 |    1 |        2
+   7 |        4 |         6 |      10 |   16 |   16 |    1 |        3
+   8 |        5 |         6 |      10 |   15 |    3 |    1 |        4
+   9 |        6 |         6 |      10 |   10 |   -1 |    0 |        5
+(9 rows)
+
+/* --bdastar3 */
+SELECT * FROM pgr_aStar(
+  $$SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges$$,
+  ARRAY[3, 6], 10);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         3 |      10 |    3 |    7 |    1 |        0
+   2 |        2 |         3 |      10 |    7 |    8 |    1 |        1
+   3 |        3 |         3 |      10 |   11 |    9 |    1 |        2
+   4 |        4 |         3 |      10 |   16 |   16 |    1 |        3
+   5 |        5 |         3 |      10 |   15 |    3 |    1 |        4
+   6 |        6 |         3 |      10 |   10 |   -1 |    0 |        5
+   7 |        1 |         6 |      10 |    6 |    4 |    1 |        0
+   8 |        2 |         6 |      10 |    7 |    8 |    1 |        1
+   9 |        3 |         6 |      10 |   11 |    9 |    1 |        2
+  10 |        4 |         6 |      10 |   16 |   16 |    1 |        3
+  11 |        5 |         6 |      10 |   15 |    3 |    1 |        4
+  12 |        6 |         6 |      10 |   10 |   -1 |    0 |        5
+(12 rows)
+
+/* --bdastar4 */
+SELECT seq, path_seq, node, edge, cost, agg_cost FROM pgr_aStar(
+  $$SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges$$,
+  6, 10);
+ seq | path_seq | node | edge | cost | agg_cost
+-----+----------+------+------+------+----------
+   1 |        1 |    6 |    4 |    1 |        0
+   2 |        2 |    7 |    8 |    1 |        1
+   3 |        3 |   11 |    9 |    1 |        2
+   4 |        4 |   16 |   16 |    1 |        3
+   5 |        5 |   15 |    3 |    1 |        4
+   6 |        6 |   10 |   -1 |    0 |        5
+(6 rows)
+
+/* --bdastar5 */
 ROLLBACK;
 ROLLBACK
