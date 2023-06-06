@@ -97,7 +97,7 @@ process(char* edges_sql,
     }
 
     clock_t start_t = clock();
-    do_pgr_bdAstar(
+    pgr_do_bdAstar(
             edges, total_edges,
 
             combinations, total_combinations,

@@ -45,7 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 void
-do_pgr_bdAstar(
+pgr_do_bdAstar(
         Edge_xy_t *edges, size_t total_edges,
 
         II_t_rt *combinationsArr, size_t total_combinations,
