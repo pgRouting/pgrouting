@@ -46,6 +46,8 @@ pgRouting 3.6.0 Release Notes
   simplification.
 * `2521 <https://github.com/pgRouting/pgrouting/pull/2521>` Dijkstra code
   simplification.
+* `2522 <https://github.com/pgRouting/pgrouting/pull/2522>` bdAstar code
+  simplification.
 
 .. rubric:: Documentation
 
