@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-29 14:31+0000\n"
+"POT-Creation-Date: 2023-06-06 15:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12608,6 +12608,9 @@ msgid "`2517 <https://github.com/pgRouting/pgrouting/pull/2517>` Astar code simp
 msgstr ""
 
 msgid "`2521 <https://github.com/pgRouting/pgrouting/pull/2521>` Dijkstra code simplification."
+msgstr ""
+
+msgid "`2522 <https://github.com/pgRouting/pgrouting/pull/2522>` bdAstar code simplification."
 msgstr ""
 
 msgid "Documentation"
