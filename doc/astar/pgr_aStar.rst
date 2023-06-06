@@ -22,7 +22,7 @@
 
 .. rubric:: Availability
 
-* Version 3.5.0
+* Version 3.6.0
 
   * Standarizing output columns to |short-generic-result|
 
@@ -73,9 +73,7 @@ Description
   * `pgr_aStar(` `One to Many`_ `)`
   * `pgr_aStar(` `Many to One`_ `)`
   * `pgr_aStar(` `Many to Many`_ `)`
-
-* ``start_vid`` and ``end_vid`` in the result is used to distinguish to which
-  path it belongs.
+  * `pgr_aStar(` `Combinations`_ `)`
 
 Signatures
 -------------------------------------------------------------------------------
