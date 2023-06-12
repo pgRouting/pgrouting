@@ -206,8 +206,6 @@ SELECT * FROM pgr_bdAstar(
   13 |        5 |        12 |      10 |   10 |   -1 |    0 |        4
 (13 rows)
 
--/* -- q9 */
+/* -- q9 */
 ROLLBACK;
-ERROR:  syntax error at or near "-"
-LINE 1: -/* -- q9 */
-        ^
+ROLLBACK
