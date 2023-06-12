@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-06 15:40+0000\n"
+"POT-Creation-Date: 2023-06-12 17:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4027,6 +4027,36 @@ msgstr ""
 msgid "Starting from `v3.5 <https://docs.pgrouting.org/3.5/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph>`__ the function ``my_dijkstra`` returns the new additional columns of ``pgr_dijkstra``."
 msgstr ""
 
+msgid "Migration of ``pgr_bdAstar``"
+msgstr ""
+
+msgid "``pgr_bdAstar`` (`One to One`)"
+msgstr ""
+
+msgid "``pgr_bdAstar`` (`One to Many`)"
+msgstr ""
+
+msgid "``pgr_bdAstar`` (`Many to One`)"
+msgstr ""
+
+msgid "``pgr_bdAstar`` (`One to One`) does not have ``start_vid`` and ``end_vid``."
+msgstr ""
+
+msgid "``pgr_bdAstar`` (`One to Many`) does not have ``start_vid``."
+msgstr ""
+
+msgid "``pgr_bdAstar`` (`Many to One`) does not have ``end_vid``."
+msgstr ""
+
+msgid "In ``pgr_bdAstar`` (`One to One`)"
+msgstr ""
+
+msgid "In ``pgr_bdAstar`` (`One to Many`)"
+msgstr ""
+
+msgid "In ``pgr_bdAstar`` (`Many to One`)"
+msgstr ""
+
 msgid "Migration of ``pgr_dijkstra``"
 msgstr ""
 
@@ -6475,7 +6505,7 @@ msgstr ""
 msgid "``pgr_aStar`` — Shortest path using the A* algorithm."
 msgstr ""
 
-msgid "Version 3.5.0"
+msgid "Version 3.6.0"
 msgstr ""
 
 msgid "Standarizing output columns to |short-generic-result|"
@@ -6532,7 +6562,7 @@ msgstr ""
 msgid "`pgr_aStar(` `Many to Many`_ `)`"
 msgstr ""
 
-msgid "``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs."
+msgid "`pgr_aStar(` `Combinations`_ `)`"
 msgstr ""
 
 msgid "pgr_aStar(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
@@ -7159,6 +7189,15 @@ msgstr ""
 msgid "``pgr_bdAstar`` — Shortest path using the bidirectional A* algorithm."
 msgstr ""
 
+msgid "``pgr_bdAstar`` (`One to One`_) added ``start_vid`` and ``end_vid`` columns."
+msgstr ""
+
+msgid "``pgr_bdAstar`` (`One to Many`_) added ``end_vid`` column."
+msgstr ""
+
+msgid "``pgr_bdAstar`` (`Many to One`_) added ``start_vid`` column."
+msgstr ""
+
 msgid "``pgr_bdAstar`` (`Combinations`_)"
 msgstr ""
 
@@ -7189,6 +7228,9 @@ msgstr ""
 msgid "`pgr_bdAstar(` `Many to Many`_ `)`"
 msgstr ""
 
+msgid "`pgr_bdAstar(` `Combinations`_ `)`"
+msgstr ""
+
 msgid "pgr_bdAstar(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
 msgstr ""
 
@@ -7202,18 +7244,6 @@ msgid "pgr_bdAstar(`Edges SQL`_, **start vids**, **end vids**, [**options**])"
 msgstr ""
 
 msgid "pgr_bdAstar(`Edges SQL`_, `Combinations SQL`_, [**options**])"
-msgstr ""
-
-msgid "RETURNS SET OF |old-generic-result|"
-msgstr ""
-
-msgid "RETURNS SET OF |result-1-1|"
-msgstr ""
-
-msgid "RETURNS SET OF |result-1-m|"
-msgstr ""
-
-msgid "RETURNS SET OF |result-m-1|"
 msgstr ""
 
 msgid "pgr_bdAstarCost"
@@ -7297,10 +7327,22 @@ msgstr ""
 msgid "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_ , [``directed``])"
 msgstr ""
 
+msgid "RETURNS SET OF |old-generic-result|"
+msgstr ""
+
+msgid "RETURNS SET OF |result-1-1|"
+msgstr ""
+
 msgid "From vertex :math:`6` to vertex  :math:`10` on a **directed** graph"
 msgstr ""
 
+msgid "RETURNS SET OF |result-1-m|"
+msgstr ""
+
 msgid "From vertex :math:`6` to vertices :math:`\\{10, 17\\}` on a **directed** graph"
+msgstr ""
+
+msgid "RETURNS SET OF |result-m-1|"
 msgstr ""
 
 msgid "From vertices :math:`\\{6, 1\\}` to vertex :math:`17` on a **directed** graph"
@@ -8600,6 +8642,9 @@ msgid "``pgr_dijkstra``"
 msgstr ""
 
 msgid "``pgr_dijkstra`` — Shortest path(s) using Dijkstra algorithm."
+msgstr ""
+
+msgid "Version 3.5.0"
 msgstr ""
 
 msgid "``pgr_dijkstra`` (`One to One`_) added ``start_vid`` and ``end_vid`` columns."
@@ -12577,7 +12622,7 @@ msgstr ""
 msgid "Official functions changes"
 msgstr ""
 
-msgid "aStar"
+msgid "`2516 <https://github.com/pgRouting/pgrouting/pull/2516>` Standarize output pgr_aStar"
 msgstr ""
 
 msgid "``pgr_aStar`` (`One to One`) added ``start_vid`` and ``end_vid`` columns."
@@ -12587,6 +12632,18 @@ msgid "``pgr_aStar`` (`One to Many`) added ``end_vid`` column."
 msgstr ""
 
 msgid "``pgr_aStar`` (`Many to One`) added ``start_vid`` column."
+msgstr ""
+
+msgid "`2523 <https://github.com/pgRouting/pgrouting/pull/2523>` Standarize output pgr_bdAstar"
+msgstr ""
+
+msgid "``pgr_bdAstar`` (`One to One`) added ``start_vid`` and ``end_vid`` columns."
+msgstr ""
+
+msgid "``pgr_bdAstar`` (`One to Many`) added ``end_vid`` column."
+msgstr ""
+
+msgid "``pgr_bdAstar`` (`Many to One`) added ``start_vid`` column."
 msgstr ""
 
 msgid "C/C++ code enhancements"
