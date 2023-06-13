@@ -8,7 +8,6 @@ SET(LOCAL_FILES
     doc-pgr_primDD
     doc-pgr_primDFS
     doc-pgr_prim
-    doc-pgr_randomSpanTree
     )
 
 foreach (f ${LOCAL_FILES})
