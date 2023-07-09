@@ -248,7 +248,7 @@ PGDLLEXPORT Datum _pgr_binarybreadthfirstsearch(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[0] = Int64GetDatum((int64_t)funcctx->call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_id);

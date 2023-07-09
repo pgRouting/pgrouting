@@ -161,7 +161,7 @@ Datum _pgr_alphashape(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        values[0] = Int64GetDatum(call_cntr + 1);
+        values[0] = Int64GetDatum((int64_t)call_cntr + 1);
         values[1] = CStringGetTextDatum(result_tuples[call_cntr].geom);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

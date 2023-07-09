@@ -152,7 +152,7 @@ PGDLLEXPORT Datum _pgr_linegraphfull(PG_FUNCTION_ARGS) {
 
         size_t c_cntr = funcctx->call_cntr;
 
-        values[0] = Int32GetDatum(c_cntr + 1);
+        values[0] = Int32GetDatum((int32_t)c_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[c_cntr].source);
         values[2] = Int64GetDatum(result_tuples[c_cntr].target);
         values[3] = Float8GetDatum(result_tuples[c_cntr].cost);
