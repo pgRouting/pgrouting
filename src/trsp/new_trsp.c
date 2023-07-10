@@ -210,7 +210,7 @@ _v4trsp(PG_FUNCTION_ARGS) {
         int path_id = call_cntr == 0? 0 : result_tuples[call_cntr - 1].seq;
         path_id += result_tuples[call_cntr].seq == 1? 1 : 0;
 
-        values[0] = Int32GetDatum(call_cntr + 1);
+        values[0] = Int64GetDatum((int64_t)call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
         values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
         values[3] = Int64GetDatum(result_tuples[call_cntr].end_id);
@@ -293,7 +293,7 @@ _trsp(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        values[0] = Int32GetDatum(call_cntr + 1);
+        values[0] = Int64GetDatum((int64_t)call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
         values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
         values[3] = Int64GetDatum(result_tuples[call_cntr].end_id);

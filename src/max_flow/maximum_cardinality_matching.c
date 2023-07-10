@@ -162,7 +162,7 @@ _pgr_maxcardinalitymatch(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[0] = Int64GetDatum((int64_t)funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge_id);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);

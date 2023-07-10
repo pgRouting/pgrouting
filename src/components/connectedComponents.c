@@ -151,7 +151,7 @@ PGDLLEXPORT Datum _pgr_connectedcomponents(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        values[0] = Int64GetDatum(funcctx->call_cntr + 1);
+        values[0] = Int64GetDatum((int64_t)funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].d2.value);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].d1.id);
 
