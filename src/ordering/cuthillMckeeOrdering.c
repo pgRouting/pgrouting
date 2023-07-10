@@ -188,7 +188,7 @@ _pgr_cuthillmckeeordering(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        values[0] = Int64GetDatum(funcctx->call_cntr + 1);
+        values[0] = Int64GetDatum((int64_t)funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].d2.value);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

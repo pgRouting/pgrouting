@@ -115,8 +115,7 @@ fetch_restrict(HeapTuple *tuple, TupleDesc *tupdesc,
   if (isnull)
     elog(ERROR, "to_cost contains a null value");
   rest->to_cost = DatumGetFloat8(binval);
-  char *str = DatumGetCString(SPI_getvalue(*tuple, *tupdesc,
-       restrict_columns->via_path));
+  char *str = SPI_getvalue(*tuple, *tupdesc, restrict_columns->via_path);
 
   // PGR_DBG("restriction: %f, %i, %s", rest->to_cost, rest->target_id, str);
 
@@ -430,11 +429,11 @@ _pgr_trsp(PG_FUNCTION_ARGS) {
       values = palloc(4 * sizeof(Datum));
       nulls = palloc(4 * sizeof(char));
 
-      values[0] = Int32GetDatum(funcctx->call_cntr);
+      values[0] = Int64GetDatum((int64_t)funcctx->call_cntr);
       nulls[0] = false;
-      values[1] = Int32GetDatum(path[funcctx->call_cntr].vertex_id);
+      values[1] = Int32GetDatum((int32_t)path[funcctx->call_cntr].vertex_id);
       nulls[1] = false;
-      values[2] = Int32GetDatum(path[funcctx->call_cntr].edge_id);
+      values[2] = Int32GetDatum((int32_t)path[funcctx->call_cntr].edge_id);
       nulls[2] = false;
       values[3] = Float8GetDatum(path[funcctx->call_cntr].cost);
       nulls[3] = false;

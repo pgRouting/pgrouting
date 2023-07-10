@@ -171,7 +171,7 @@ PGDLLEXPORT Datum _pgr_chinesepostman(PG_FUNCTION_ARGS) {
         for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[0] = Int64GetDatum((int64_t)funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[call_cntr].node);
         values[2] = Int64GetDatum(result_tuples[call_cntr].edge);
         values[3] = Float8GetDatum(result_tuples[call_cntr].cost);
