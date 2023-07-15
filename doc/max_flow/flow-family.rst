@@ -188,7 +188,7 @@ Column                 Type       Description
 .. result_costFlow_end
 
 
-Adcanced Documentation
+Advanced Documentation
 ------------------------
 
 A flow network is a directed graph where each edge has a capacity and a flow.
