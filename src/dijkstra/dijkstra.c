@@ -112,7 +112,7 @@ process(
         return;
     }
 
-    if (total_combinations == 0 && (size_end_vidsArr== 0 || size_end_vidsArr == 0)) {
+    if (total_combinations == 0 && (size_end_vidsArr== 0 || size_start_vidsArr == 0)) {
         if (edges) pfree(edges);
         pgr_SPI_finish();
         return;
@@ -274,7 +274,7 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        values[0] = Int64GetDatum((int64_t)call_cntr + 1);
+        values[0] = Int32GetDatum((int32_t)call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
         values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
         values[3] = Int64GetDatum(result_tuples[call_cntr].end_id);

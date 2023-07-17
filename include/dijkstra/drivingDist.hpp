@@ -68,7 +68,7 @@ template < class G >
 std::deque<Path>
 pgr_drivingDistance(
         G &graph,
-        std::vector< int64_t > start_vids,
+        const std::vector<int64_t> &start_vids,
         double distance,
         bool equicost,
         std::ostringstream &log) {

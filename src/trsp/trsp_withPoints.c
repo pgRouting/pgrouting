@@ -272,7 +272,7 @@ _pgr_trsp_withpoints(PG_FUNCTION_ARGS) {
         int path_id = call_cntr == 0? 0 : result_tuples[call_cntr - 1].seq;
         path_id += result_tuples[call_cntr].seq == 1? 1 : 0;
 
-        values[0] = Int64GetDatum((int64_t)call_cntr + 1);
+        values[0] = Int32GetDatum((int32_t)call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
         values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
         values[3] = Int64GetDatum(result_tuples[call_cntr].end_id);

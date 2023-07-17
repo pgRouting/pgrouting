@@ -282,12 +282,10 @@ get_array(ArrayType *v, size_t *arrlen, bool allow_empty) {
 
     if (ndim != 1) {
         throw std::string("One dimension expected");
-        return nullptr;
     }
 
     if (nitems <= 0) {
         throw std::string("No elements found");
-        return nullptr;
     }
 
     get_typlenbyvalalign(element_type, &typlen, &typbyval, &typalign);

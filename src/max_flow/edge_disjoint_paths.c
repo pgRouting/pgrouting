@@ -221,7 +221,7 @@ _pgr_edgedisjointpaths(PG_FUNCTION_ARGS) {
             }
         }
 
-        values[0] = Int64GetDatum((int64_t)funcctx->call_cntr + 1);
+        values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
         values[1] = Int32GetDatum((int32_t)path_id);
         values[2] = Int32GetDatum((int32_t)seq);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id);
