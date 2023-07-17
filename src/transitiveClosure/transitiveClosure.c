@@ -201,7 +201,7 @@ _pgr_transitiveclosure(PG_FUNCTION_ARGS) {
         TupleDescInitEntry(tuple_desc, (AttrNumber) 3, "target_array",
                 INT8ARRAYOID, -1, 0);
 
-        values[0] = Int64GetDatum((int64_t)call_cntr + 1);
+        values[0] = Int32GetDatum((int32_t)call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[call_cntr].vid);
         values[2] = PointerGetDatum(arrayType);
 

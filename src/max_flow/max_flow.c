@@ -242,7 +242,7 @@ _pgr_maxflow(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        values[0] = Int64GetDatum((int64_t)call_cntr + 1);
+        values[0] = Int32GetDatum((int32_t)call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[call_cntr].edge);
         values[2] = Int64GetDatum(result_tuples[call_cntr].source);
         values[3] = Int64GetDatum(result_tuples[call_cntr].target);

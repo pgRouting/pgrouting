@@ -182,7 +182,7 @@ _pgr_dijkstravia(PG_FUNCTION_ARGS) {
         }
 
         // postgres starts counting from 1
-        values[0] = Int64GetDatum((int64_t)call_cntr + 1);
+        values[0] = Int32GetDatum((int32_t)call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[call_cntr].path_id);
         values[2] = Int32GetDatum(result_tuples[call_cntr].path_seq + 1);
         values[3] = Int64GetDatum(result_tuples[call_cntr].start_vid);
