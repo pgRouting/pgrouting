@@ -48,11 +48,11 @@ class Pgr_edwardMoore {
 
     std::deque<Path> edwardMoore(
         G &graph,
-        std::vector<int64_t> start_vertex,
-        std::vector<int64_t> end_vertex) {
+        const std::vector<int64_t> &start_vertex,
+        const std::vector<int64_t> &end_vertex) {
         std::deque<Path> paths;
 
-        for (auto source : start_vertex) {
+        for (const auto &source : start_vertex) {
             std::deque<Path> result_paths = one_to_many_edwardMoore(
                 graph,
                 source,

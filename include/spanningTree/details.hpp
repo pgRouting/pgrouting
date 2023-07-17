@@ -37,8 +37,7 @@ std::vector<int64_t>
 clean_vids(std::vector<int64_t> vids);
 
 std::vector<MST_rt>
-get_no_edge_graph_result(
-        std::vector<int64_t> vids);
+get_no_edge_graph_result(const std::vector<int64_t> &vids);
 
 }  // namespace details
 }  // namespace pgrouting

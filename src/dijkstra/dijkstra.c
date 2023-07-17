@@ -112,7 +112,7 @@ process(
         return;
     }
 
-    if (total_combinations == 0 && (size_end_vidsArr== 0 || size_end_vidsArr == 0)) {
+    if (total_combinations == 0 && (size_end_vidsArr== 0 || size_start_vidsArr == 0)) {
         if (edges) pfree(edges);
         pgr_SPI_finish();
         return;
