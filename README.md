@@ -4,7 +4,7 @@
 
 ## Branches
 
-* The *master* branch has the development of the next micro release
+* The *main* branch has the development of the next micro release
 * The *develop* branch has the development of the next minor/major release
 
 For the complete list of releases go to:
