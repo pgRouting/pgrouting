@@ -1,11 +1,12 @@
 /*PGR-GNU*****************************************************************
-file: dijkstra_one_goal_visitor.hpp
+file: astar_visitors.hpp
 
-Copyright (c) 2018 pgRouting developers
+Copyright (c) 2023 Celia Virginia Vergara Castillo
+Copyright (c) 2015 Celia Virginia Vergara Castillo
+vicky at erosion.dev
+
+Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
-
-Copyright (c) 2018 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
 
 ------
 
@@ -25,29 +26,36 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_VISITORS_DIJKSTRA_ONE_GOAL_VISITOR_HPP_
-#define INCLUDE_VISITORS_DIJKSTRA_ONE_GOAL_VISITOR_HPP_
+#ifndef INCLUDE_VISITORS_ASTAR_VISITORS_HPP_
+#define INCLUDE_VISITORS_ASTAR_VISITORS_HPP_
 
-#include <boost/graph/dijkstra_shortest_paths.hpp>
-
+#include <set>
+#include <boost/graph/astar_search.hpp>
 #include "visitors/found_goals.hpp"
 
 namespace pgrouting {
 namespace visitors {
 
+/** @brief visitor stops when all targets are found */
 template <typename V>
-class dijkstra_one_goal_visitor : public boost::default_dijkstra_visitor {
+class astar_many_goals_visitor : public boost::default_astar_visitor {
  public:
-     explicit dijkstra_one_goal_visitor(V goal) : m_goal(goal) {}
+     explicit astar_many_goals_visitor(const std::set<V> &goals)
+         :m_goals(goals) {}
      template <class B_G>
-         void examine_vertex(V &u, B_G &) {
-             if (u == m_goal) throw found_goals();
+         void examine_vertex(V u, B_G &g) {
+             auto s_it = m_goals.find(u);
+             if (s_it == m_goals.end()) return;
+             // found one more goal
+             m_goals.erase(s_it);
+             if (m_goals.size() == 0) throw found_goals();
+             num_edges(g);
          }
  private:
-     V m_goal;
+     std::set<V> m_goals;
 };
 
 }  // namespace visitors
 }  // namespace pgrouting
 
-#endif  // INCLUDE_VISITORS_DIJKSTRA_ONE_GOAL_VISITOR_HPP_
+#endif  // INCLUDE_VISITORS_ASTAR_VISITORS_HPP_

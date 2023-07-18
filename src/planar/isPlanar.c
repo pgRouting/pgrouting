@@ -30,13 +30,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
 
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 
-#include "c_common/edges_input.h"
+#include "c_common/pgdata_getters.h"
 
 #include "drivers/planar/isPlanar_driver.h"
 PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS);
@@ -48,11 +47,15 @@ process(
   ) {
     bool planarity = false;
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     Edge_t *edges = NULL;
     size_t total_edges = 0;
 
-    pgr_get_edges(edges_sql, &edges, &total_edges);
+    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
+    throw_error(err_msg, edges_sql);
 
     if (total_edges == 0) {
         pgr_SPI_finish();
@@ -60,10 +63,6 @@ process(
     }
 
     clock_t start_t = clock();
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
-
 
     planarity = do_pgr_isPlanar(
         edges,

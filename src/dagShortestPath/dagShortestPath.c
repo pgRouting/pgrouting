@@ -30,15 +30,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
 
 #include "c_types/path_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/edges_input.h"
-#include "c_common/arrays_input.h"
-#include "c_common/combinations_input.h"
+#include "c_common/pgdata_getters.h"
 #include "drivers/dagShortestPath/dagShortestPath_driver.h"  // the link to the C++ code of the function
 
 PGDLLEXPORT Datum _pgr_dagshortestpath(PG_FUNCTION_ARGS);
@@ -60,6 +57,9 @@ process(
      *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
      */
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
 
 
@@ -75,12 +75,13 @@ process(
     II_t_rt *combinations = NULL;
 
     if (starts && ends) {
-        start_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_start_vidsArr, starts);
-        end_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_end_vidsArr, ends);
+        start_vidsArr = pgr_get_bigIntArray(&size_start_vidsArr, starts, false, &err_msg);
+        throw_error(err_msg, "While getting start vids");
+        end_vidsArr = pgr_get_bigIntArray(&size_end_vidsArr, ends, false, &err_msg);
+        throw_error(err_msg, "While getting end vids");
     } else if (combinations_sql) {
-        pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
+        pgr_get_combinations(combinations_sql, &combinations, &total_combinations, &err_msg);
+        throw_error(err_msg, combinations_sql);
         if (total_combinations == 0) {
             if (combinations)
                 pfree(combinations);
@@ -96,7 +97,8 @@ process(
     Edge_t *edges = NULL;
     size_t total_edges = 0;
 
-    pgr_get_edges(edges_sql, &edges, &total_edges);
+    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
+    throw_error(err_msg, edges_sql);
     PGR_DBG("Total %ld edges in query:", total_edges);
 
     if (total_edges == 0) {
@@ -107,9 +109,6 @@ process(
 
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
     do_pgr_dagShortestPath(
             edges,
             total_edges,
@@ -230,7 +229,7 @@ PGDLLEXPORT Datum _pgr_dagshortestpath(PG_FUNCTION_ARGS) {
         }
 
         // postgres starts counting from 1
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);

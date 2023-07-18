@@ -35,6 +35,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/path_rt.h"
 #include "cpp_common/pgr_assert.h"
 
+namespace pgrouting {
+
 Path& Path::renumber_vertices(const std::map<int64_t, int64_t>& idx_to_id) {
     for (auto &r : path) {
         r.node = idx_to_id.at(r.node);
@@ -400,3 +402,5 @@ count_tuples(const std::deque< Path > &paths) {
     }
     return count;
 }
+
+}  // namespace pgrouting

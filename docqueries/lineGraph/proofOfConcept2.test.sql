@@ -2,9 +2,9 @@
 -- Creative Commons Attribution-Share Alike 3.0 License : https://creativecommons.org/licenses/by-sa/3.0/
 -- TODO move to pgtap
 
-DROP TABLE edges;
-DROP TABLE vertices;
-CREATE TABLE edges (
+DROP TABLE IF EXISTS edges_lg;
+DROP TABLE IF EXISTS vertices_lg;
+CREATE TABLE edges_lg (
     id integer,
     source integer,
     target integer,
@@ -14,7 +14,7 @@ CREATE TABLE edges (
 
 
 
-INSERT INTO edges (id, source, target, cost, the_geom) VALUES
+INSERT INTO edges_lg (id, source, target, cost, the_geom) VALUES
 (664, 75242, 13078, 1, '01050000000100000001020000000500000006BB5C440B595D413FE94F59BAA125410134DD6412595D41A025BB1FD6A125413849F7A815595D41640C555DEBA12541336449FE18595D41899CBB7916A225418F8280C419595D412B03161742A22541'),
 (700, 41613, 6810, 1, '010500000001000000010200000004000000E44CC814E05C5D41C9DAE107B8AB254139C51DD7E25C5D41B9326524F9AB25415226091BE65C5D415F2F44630EAC25414C05189BEA5C5D411C439CCD14AC2541'),
 (716, 45339, 41613, 1, '01050000000100000001020000000500000064F3864EEB5C5D410656760257AB254164869F7DE75C5D41AB83AD0C5FAB25414810CFBDE35C5D4189D7B9F57CAB2541EA0FD53FE15C5D41DA0C855493AB2541E44CC814E05C5D41C9DAE107B8AB2541'),
@@ -318,68 +318,88 @@ INSERT INTO edges (id, source, target, cost, the_geom) VALUES
 (169454, 24021, 63826, 1, '010500000001000000010200000017000000BD23BFFDD15D5D4159262F5FB8862541E9B9D8CEAD5D5D4182EB07411E872541A5F82FB7955D5D419DEA93E56B872541783CD8EC7E5D5D41D785B894C08725417AE9A9266F5D5D419909469A0C882541CB237BB3605D5D4106AE8BF466882541A0384395585D5D417A217730AA8825419AC5BD7C505D5D41BE7BAEB6F488254133271439475D5D41DFC134F06389254159E5F07E405D5D41F97A9F5FCB892541FAB7B8063B5D5D411298D9442B8A25417EC26407325D5D416868B2F9F18A254170E3939A2C5D5D41D68D7F73608B2541C663AE3C255D5D41D651F702C88B254163B04D351D5D5D41C9C42968288C2541EA547811155D5D41EB48095A648C2541DF070CA60B5D5D413FF4E58BA08C25418A7522B1FF5C5D419C730088E48C2541C74525CBF15C5D419BF2DA99218D25416B3B2BA5E75C5D41C4CDC2C2408D2541B3FFCD93DB5C5D41B0EFAF4B608D2541457AD91AD05C5D4127B42220718D2541E4C78096C45C5D41E9CF1860738D2541'),
 (170151, 11736, 70733, 1, '0105000000010000000102000000050000001448CDD103595D4139CEAC9C859B254144BF53FFF9585D4192F23763DE9C2541B3737717F5585D41E289758BF49D254130783A6DF6585D4183DA6569D69E2541D3473EF6F9585D4197B02122439F2541');
 
+SELECT count(*)=302 FROM edges_lg;
 
-WITH a AS (SELECT source FROM edges UNION select target FROM edge_table)
-SELECT source AS id INTO vertices FROM a;
+
+WITH a AS (SELECT source FROM edges_lg UNION select target FROM edges_lg)
+SELECT source AS id INTO vertices_lg FROM a;
+
+SELECT count(*) = 256 FROM vertices_lg;
 
 DROP TABLE IF EXISTS result2;
 SELECT  * INTO result2 FROM pgr_lineGraphFull(
     $$SELECT id, source, target, cost
-    FROM edges$$
+    FROM edges_lg$$
 );
-SELECT count(*) FROM result2;
+SELECT count(*) = 638 FROM result2;
 
+SELECT * FROM result2 limit 10;
 
-DROP TABLE IF EXISTS result2_vertices_pgr;
-WITH foo AS (SELECT source AS id FROM result2
-    UNION
-    SELECT target FROM result2)
-SELECT *, NULL::BIGINT AS original_id
-INTO result2_vertices_pgr
-FROM foo
+SELECT id, NULL::BIGINT AS original_id, in_edges, out_edges
+INTO result2_v
+FROM pgr_extractVertices($$SELECT seq as id, * FROM result2$$)
 ORDER BY id;
 
-SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
-SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
+SELECT count(*) = 604 FROM result2_v;
+SELECT count(*) = 0 FROM result2_v WHERE original_id IS NOT NULL;
+SELECT count(*) = 604 FROM result2_v WHERE original_id IS NULL;
 
-UPDATE result2_vertices_pgr AS r SET original_id = v.id
-FROM vertices AS v WHERE v.id = r.id;
+/* original graph does not have negative vertices values
+All positives are from the original graph */
+UPDATE result2_v
+SET original_id = id
+WHERE id > 0;
 
-SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
-SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
+SELECT count(*) = 256 FROM result2_v WHERE original_id IS NOT NULL;
+SELECT count(*) = 348 FROM result2_v WHERE original_id IS NULL;
 
-WITH a AS (SELECT e.id, e.original_id FROM result2_vertices_pgr AS e WHERE original_id IS NOT NULL),
+WITH
+a AS (SELECT e.id, e.original_id FROM result2_v AS e WHERE original_id IS NOT NULL),
 b AS (SELECT * FROM result2 WHERE cost = 0 and source IN (SELECT id FROM a)),
-c AS (SELECT * FROM b JOIN result2_vertices_pgr ON(source = id)),
-d AS (SELECT c.source, v.original_id FROM c JOIN result2_vertices_pgr as v ON (target=v.id)),
-e AS (SELECT DISTINCT c.target, c.original_id FROM c JOIN result2_vertices_pgr AS r ON(target = r.id AND r.original_id IS NULL))
-UPDATE result2_vertices_pgr SET original_id = e.original_id FROM e WHERE e.target = id;
+c AS (SELECT * FROM b JOIN result2_v ON (source = id)),
+d AS (SELECT c.source, v.original_id FROM c JOIN result2_v as v ON (target = v.id)),
+e AS (
+  SELECT DISTINCT c.target, c.original_id
+  FROM c JOIN result2_v AS r ON(target = r.id AND r.original_id IS NULL))
+UPDATE result2_v SET original_id = e.original_id FROM e WHERE e.target = id;
 
-SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
-SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
+SELECT count(*) = 496 FROM result2_v WHERE original_id IS NOT NULL;
+SELECT count(*) = 108 FROM result2_v WHERE original_id IS NULL;
+SELECT * FROM result2_v WHERE original_id IS NULL;
 
-WITH a AS (SELECT e.id, e.original_id FROM result2_vertices_pgr AS e WHERE original_id IS NOT NULL),
+WITH
+a AS (SELECT e.id, e.original_id FROM result2_v AS e WHERE original_id IS NOT NULL),
 b AS (SELECT * FROM result2 WHERE cost = 0 and target IN (SELECT id FROM a)),
-c AS (SELECT * FROM b JOIN result2_vertices_pgr ON(target = id)),
-d AS (SELECT c.target, v.original_id FROM c JOIN result2_vertices_pgr as v ON (source=v.id)),
-e AS (SELECT DISTINCT c.source, c.original_id FROM c JOIN result2_vertices_pgr AS r ON(source = r.id AND r.original_id IS NULL))
-UPDATE result2_vertices_pgr SET original_id = e.original_id FROM e WHERE e.source = id;
+c AS (SELECT * FROM b JOIN result2_v ON(target = id)),
+d AS (SELECT c.target, v.original_id FROM c JOIN result2_v as v ON (source=v.id)),
+e AS (
+  SELECT DISTINCT c.source, c.original_id
+  FROM c JOIN result2_v AS r ON(source = r.id AND r.original_id IS NULL))
+UPDATE result2_v SET original_id = e.original_id
+FROM e WHERE e.source = id;
 
-SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
-SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
+SELECT count(*) = 574 FROM result2_v WHERE original_id IS NOT NULL;
+SELECT count(*) = 30 FROM result2_v WHERE original_id IS NULL;
 
-WITH a AS (SELECT id FROM result2_vertices_pgr WHERE original_id IS NULL),
-b AS (SELECT source,edge FROM result2 WHERE source IN (SELECT id FROM a)),
-c AS (SELECT id,source FROM edges WHERE id IN (SELECT edge FROM b))
-UPDATE result2_vertices_pgr AS d SET original_id = (SELECT source FROM c WHERE c.id = (SELECT edge FROM b WHERE b.source = d.id)) WHERE id IN (SELECT id FROM a);
+WITH
+a AS (SELECT id FROM result2_v WHERE original_id IS NULL),
+b AS (SELECT source, edge FROM result2 WHERE source IN (SELECT id FROM a)),
+c AS (SELECT id, source FROM edges_lg WHERE id IN (SELECT edge FROM b))
+UPDATE result2_v AS r
+SET original_id = (SELECT source FROM c WHERE c.id = (SELECT edge FROM b WHERE b.source = r.id))
+WHERE id IN (SELECT id FROM a);
 
-SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
-SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
+SELECT count(*) = 589 FROM result2_v WHERE original_id IS NOT NULL;
+SELECT count(*) = 15  FROM result2_v WHERE original_id IS NULL;
 
-WITH a AS (SELECT id FROM result2_vertices_pgr WHERE original_id IS NULL),
-b AS (SELECT target,edge FROM result2 WHERE target IN (SELECT id FROM a)),
-c AS (SELECT id,target FROM edges WHERE id IN (SELECT edge FROM b))
-UPDATE result2_vertices_pgr AS d SET original_id = (SELECT target FROM c WHERE c.id = (SELECT edge FROM b WHERE b.target = d.id)) WHERE id IN (SELECT id FROM a);
+WITH
+a AS (SELECT id FROM result2_v WHERE original_id IS NULL),
+b AS (SELECT target, edge FROM result2 WHERE target IN (SELECT id FROM a)),
+c AS (SELECT id, target FROM edges_lg WHERE id IN (SELECT edge FROM b))
+UPDATE result2_v AS d
+SET original_id = (SELECT target FROM c WHERE c.id = (SELECT edge FROM b WHERE b.target = d.id))
+WHERE id IN (SELECT id FROM a);
 
-SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
-SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
+SELECT count(*) = 604 FROM result2_v WHERE original_id IS NOT NULL;
+SELECT count(*) = 0 FROM result2_v WHERE original_id IS NULL;
+SELECT * FROM result2_v WHERE original_id IS NULL;

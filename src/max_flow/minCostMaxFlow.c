@@ -45,22 +45,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
 
-
-/* for macro PGR_DBG */
 #include "c_common/debug_macro.h"
-/* for pgr_global_report */
 #include "c_common/e_report.h"
-/* for time_msg & clock */
 #include "c_common/time_msg.h"
-/* for functions to get edges information */
-#include "c_common/edges_input.h"
-/* for functions to get array input */
-#include "c_common/arrays_input.h"
-#include "c_common/combinations_input.h"
+#include "c_common/pgdata_getters.h"
 
-#include "drivers/max_flow/minCostMaxFlow_driver.h"  // the link to the C++ code of the function
+#include "drivers/max_flow/minCostMaxFlow_driver.h"
 
 #include "c_types/flow_t.h"
 
@@ -84,6 +75,9 @@ process(
      *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
      */
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     int64_t *sourceVertices = NULL;
     size_t sizeSourceVerticesArr = 0;
@@ -99,12 +93,13 @@ process(
     size_t total_combinations = 0;
 
     if (starts && ends) {
-        sourceVertices = (int64_t*)
-            pgr_get_bigIntArray(&sizeSourceVerticesArr, starts);
-        sinkVertices = (int64_t*)
-            pgr_get_bigIntArray(&sizeSinkVerticesArr, ends);
+        sourceVertices = pgr_get_bigIntArray(&sizeSourceVerticesArr, starts, false, &err_msg);
+        throw_error(err_msg, "While getting start vids");
+        sinkVertices = pgr_get_bigIntArray(&sizeSinkVerticesArr, ends, false, &err_msg);
+        throw_error(err_msg, "While getting end vids");
     } else if (combinations_sql) {
-        pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
+        pgr_get_combinations(combinations_sql, &combinations, &total_combinations, &err_msg);
+        throw_error(err_msg, combinations_sql);
         if (total_combinations == 0) {
             if (combinations)
                 pfree(combinations);
@@ -113,7 +108,8 @@ process(
         }
     }
 
-    pgr_get_costFlow_edges(edges_sql, &edges, &total_edges);
+    pgr_get_costFlow_edges(edges_sql, &edges, &total_edges, &err_msg);
+    throw_error(err_msg, edges_sql);
     PGR_DBG("Total %ld edges in query:", total_edges);
 
     if (total_edges == 0) {
@@ -128,9 +124,6 @@ process(
 
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
 
     do_pgr_minCostMaxFlow(
             edges, total_edges,
@@ -275,7 +268,7 @@ PGDLLEXPORT Datum _pgr_maxflowmincost(PG_FUNCTION_ARGS) {
         }
 
         // postgres starts counting from 1
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);

@@ -45,9 +45,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 
+namespace {
+
 template < class G >
-static
-std::deque<Path>
+std::deque<pgrouting::Path>
 pgr_bdDijkstra(
         G &graph,
         std::vector < II_t_rt > &combinations,
@@ -56,7 +57,7 @@ pgr_bdDijkstra(
 
         std::ostream &log,
         bool only_cost) {
-    log << "entering static function\n";
+    using pgrouting::Path;
 
     pgrouting::bidirectional::Pgr_bdDijkstra<G> fn_bdDijkstra(graph);
     std::deque<Path> paths;
@@ -124,6 +125,7 @@ pgr_bdDijkstra(
     return paths;
 }
 
+}  // namespace
 
 void
 do_pgr_bdDijkstra(
@@ -144,6 +146,11 @@ do_pgr_bdDijkstra(
         char **log_msg,
         char **notice_msg,
         char **err_msg) {
+    using pgrouting::Path;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+    using pgrouting::pgr_alloc;
+
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;

@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 #include "c_types/ii_t_rt.h"
-#include "c_common/edges_input.h"
+#include "c_common/pgdata_getters.h"
 
 #include "drivers/dominator/lengauerTarjanDominatorTree_driver.h"
 
@@ -51,11 +51,15 @@ process(char* edges_sql,
         II_t_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     size_t total_edges = 0;
     Edge_t* edges = NULL;
 
-    pgr_get_edges(edges_sql, &edges, &total_edges);
+    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
+    throw_error(err_msg, edges_sql);
     if (total_edges == 0) {
         pgr_SPI_finish();
         return;
@@ -63,9 +67,6 @@ process(char* edges_sql,
 
     PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
     do_pgr_LTDTree(
             edges, total_edges,
             root_vertex,
@@ -147,7 +148,7 @@ _pgr_lengauertarjandominatortree(PG_FUNCTION_ARGS) {
         for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
-            values[0] = Int32GetDatum(call_cntr + 1);
+            values[0] = Int32GetDatum((int32_t)call_cntr + 1);
             values[1] = Int64GetDatum(result_tuples[call_cntr].d1.id);
             values[2] = Int64GetDatum(result_tuples[call_cntr].d2.value);
             tuple = heap_form_tuple(tuple_desc, values, nulls);

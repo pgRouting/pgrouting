@@ -9,15 +9,11 @@
 
 |
 
-* **Supported versions:**
-  `Latest <https://docs.pgrouting.org/latest/en/pgr_degree.html>`__
-  (`3.5 <https://docs.pgrouting.org/3.5/en/pgr_degree.html>`__)
-  `3.4 <https://docs.pgrouting.org/3.4/en/pgr_degree.html>`__
 
 ``pgr_degree`` -- Proposed
 ===============================================================================
 
-``pgr_degree`` — Calculates the vertices degree
+``pgr_degree`` — For each vertex in an undirected graph, return the count of edges incident to the vertex.
 
 
 .. include:: proposed.rst
@@ -52,6 +48,10 @@ Signatures
    | OR EMTPY SET
 
 :Example: Extracting the vertex information
+
+pgr_degree can utilize output from `pgr_extractVertices` or can have `pgr_extractVertices` embedded in the call.
+For decent size networks, it is best to prep your vertices table before hand and use that vertices table
+for pgr_degree calls.
 
 .. literalinclude:: degree.queries
    :start-after: -- q1
@@ -175,6 +175,10 @@ development needs.
 
 Degree from an existing table
 ...............................................................................
+If you have a vertices table already built using ``pgr_extractVertices``
+and want the degree of the whole graph rather than a subset, you can forgo using pgr_degree
+and work with the ``in_edges`` and ``out_edges`` columns directly.
+
 
 .. include:: pgRouting-concepts.rst
    :start-after: degree_from_table_start

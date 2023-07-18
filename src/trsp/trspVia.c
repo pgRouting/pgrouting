@@ -24,14 +24,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
 #include "c_types/routes_t.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/edges_input.h"
-#include "c_common/arrays_input.h"
-#include "c_common/restrictions_input.h"
+#include "c_common/pgdata_getters.h"
 #include "drivers/trsp/trspVia_driver.h"
 
 PGDLLEXPORT Datum _pgr_trspvia(PG_FUNCTION_ARGS);
@@ -49,13 +46,18 @@ process(
         Routes_t **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     size_t size_via = 0;
-    int64_t* via = (int64_t*) pgr_get_bigIntArray(&size_via, via_arr);
+    int64_t* via = pgr_get_bigIntArray(&size_via, via_arr, false, &err_msg);
+    throw_error(err_msg, "While getting via vertices");
 
     Edge_t* edges = NULL;
     size_t size_edges = 0;
-    pgr_get_edges(edges_sql, &edges, &size_edges);
+    pgr_get_edges(edges_sql, &edges, &size_edges, true, false, &err_msg);
+    throw_error(err_msg, edges_sql);
 
     if (size_edges == 0) {
         if (via) pfree(via);
@@ -66,12 +68,10 @@ process(
     Restriction_t * restrictions = NULL;
     size_t size_restrictions = 0;
 
-    pgr_get_restrictions(restrictions_sql, &restrictions, &size_restrictions);
+    pgr_get_restrictions(restrictions_sql, &restrictions, &size_restrictions, &err_msg);
+    throw_error(err_msg, restrictions_sql);
 
     clock_t start_t = clock();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
     do_trspVia(
             edges, size_edges,
             restrictions, size_restrictions,
@@ -188,7 +188,7 @@ _pgr_trspvia(PG_FUNCTION_ARGS) {
         }
 
         // postgres starts counting from 1
-        values[0] = Int32GetDatum(call_cntr + 1);
+        values[0] = Int32GetDatum((int32_t)call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[call_cntr].path_id);
         values[2] = Int32GetDatum(result_tuples[call_cntr].path_seq + 1);
         values[3] = Int64GetDatum(result_tuples[call_cntr].start_vid);

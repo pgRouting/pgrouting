@@ -29,7 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
 
 #include "c_types/path_rt.h"
 #include "c_types/point_on_edge_t.h"
@@ -37,10 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 
-#include "c_common/edges_input.h"
-#include "c_common/arrays_input.h"
-#include "c_common/points_input.h"
-#include "c_common/combinations_input.h"
+#include "c_common/pgdata_getters.h"
 #include "drivers/withPoints/get_new_queries.h"
 #include "drivers/withPoints/withPoints_driver.h"
 
@@ -69,6 +65,9 @@ process(
     driving_side[0] = estimate_drivingSide(driving_side[0]);
 
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     size_t size_start_pidsArr = 0;
     int64_t* start_pidsArr = NULL;
@@ -81,7 +80,8 @@ process(
 
     Point_on_edge_t *points = NULL;
     size_t total_points = 0;
-    pgr_get_points(points_sql, &points, &total_points);
+    pgr_get_points(points_sql, &points, &total_points, &err_msg);
+    throw_error(err_msg, points_sql);
 
 #ifndef NDEBUG
     size_t i;
@@ -104,31 +104,30 @@ process(
     size_t total_edges = 0;
 
     if (normal) {
-        pgr_get_edges(
-                edges_of_points_query,
-                &edges_of_points,
-                &total_edges_of_points);
-        pgr_get_edges(edges_no_points_query, &edges, &total_edges);
+        pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points, true, false, &err_msg);
+        throw_error(err_msg, edges_of_points_query);
+        pgr_get_edges(edges_no_points_query, &edges, &total_edges, true, false, &err_msg);
+        throw_error(err_msg, edges_no_points_query);
 
         if (starts && ends) {
-            start_pidsArr = (int64_t*)
-                pgr_get_bigIntArray(&size_start_pidsArr, starts);
-            end_pidsArr = (int64_t*)
-                pgr_get_bigIntArray(&size_end_pidsArr, ends);
+            start_pidsArr = pgr_get_bigIntArray(&size_start_pidsArr, starts, false, &err_msg);
+            throw_error(err_msg, "While getting start vids");
+            end_pidsArr = pgr_get_bigIntArray(&size_end_pidsArr, ends, false, &err_msg);
+            throw_error(err_msg, "While getting end vids");
         } else if (combinations_sql) {
-            pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
+            pgr_get_combinations(combinations_sql, &combinations, &total_combinations, &err_msg);
+            throw_error(err_msg, combinations_sql);
         }
     } else {
-        pgr_get_edges_reversed(
-                edges_of_points_query,
-                &edges_of_points,
-                &total_edges_of_points);
-        pgr_get_edges_reversed(edges_no_points_query, &edges, &total_edges);
+        pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points, false, false, &err_msg);
+        throw_error(err_msg, edges_of_points_query);
+        pgr_get_edges(edges_no_points_query, &edges, &total_edges, false, false, &err_msg);
+        throw_error(err_msg, edges_no_points_query);
 
-        end_pidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_end_pidsArr, starts);
-        start_pidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_start_pidsArr, ends);
+        end_pidsArr = pgr_get_bigIntArray(&size_end_pidsArr, starts, false, &err_msg);
+        throw_error(err_msg, "While getting start vids");
+        start_pidsArr = pgr_get_bigIntArray(&size_start_pidsArr, ends, false, &err_msg);
+        throw_error(err_msg, "While getting end vids");
     }
 
 
@@ -143,9 +142,6 @@ process(
     }
 
     clock_t start_t = clock();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
 
     do_pgr_withPoints(
             edges, total_edges,
@@ -297,7 +293,7 @@ _pgr_withpoints(PG_FUNCTION_ARGS) {
         }
 
 
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_id);

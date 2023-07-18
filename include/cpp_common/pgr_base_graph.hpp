@@ -119,7 +119,7 @@ Vector of unique vertices of the graph
 ~~~~{.c}
 size_t total_edges;
 Edge_t *my_edges = NULL;
-pgr_get_edges(edges_sql, &my_edges, &total_tuples);
+pgr_get_edges(edges_sql, &my_edges, &total_tuples, true, false, &err_msg);
 std::vector< Basic_Vertex > vertices(pgrouting::extract_vertices(my_edges));
 ~~~~
 There are several ways to initialize the graph
@@ -404,7 +404,7 @@ class Pgr_base_graph {
              add_vertices(vertices);
          }
 #endif
-         for (const auto edge : edges) {
+         for (const auto &edge : edges) {
              graph_add_edge(edge, normal);
          }
      }

@@ -52,4 +52,4 @@ SELECT * FROM pgr_bdAstar(
   'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
   FROM edges',
   'SELECT * FROM (VALUES (6, 10), (6, 7), (12, 10)) AS combinations (source, target)');
--/* -- q9 */
+/* -- q9 */

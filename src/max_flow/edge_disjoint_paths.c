@@ -30,15 +30,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdbool.h>
 
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
 
 #include "c_types/path_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/edges_input.h"
-#include "c_common/arrays_input.h"
-#include "c_common/combinations_input.h"
+#include "c_common/pgdata_getters.h"
 #include "drivers/max_flow/edge_disjoint_paths_driver.h"
 
 PGDLLEXPORT Datum
@@ -56,6 +53,9 @@ process(
     Path_rt **result_tuples,
     size_t *result_count) {
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     int64_t *source_vertices = NULL;
     size_t size_source_verticesArr = 0;
@@ -71,12 +71,13 @@ process(
     size_t total_combinations = 0;
 
     if (starts && ends) {
-        source_vertices = (int64_t*)
-            pgr_get_bigIntArray(&size_source_verticesArr, starts);
-        sink_vertices = (int64_t*)
-            pgr_get_bigIntArray(&size_sink_verticesArr, ends);
+        source_vertices = pgr_get_bigIntArray(&size_source_verticesArr, starts, false, &err_msg);
+        throw_error(err_msg, "While getting start vids");
+        sink_vertices = pgr_get_bigIntArray(&size_sink_verticesArr, ends, false, &err_msg);
+        throw_error(err_msg, "While getting end_vids");
     } else if (combinations_sql) {
-        pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
+        pgr_get_combinations(combinations_sql, &combinations, &total_combinations, &err_msg);
+        throw_error(err_msg, combinations_sql);
         if (total_combinations == 0) {
             if (combinations)
                 pfree(combinations);
@@ -85,7 +86,8 @@ process(
         }
     }
 
-    pgr_get_edges(edges_sql, &edges, &total_edges);
+    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
+    throw_error(err_msg, edges_sql);
 
     if (total_edges == 0) {
         if (source_vertices) pfree(source_vertices);
@@ -97,9 +99,6 @@ process(
 
     PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
 
     do_pgr_edge_disjoint_paths(
         edges, total_edges,
@@ -222,9 +221,9 @@ _pgr_edgedisjointpaths(PG_FUNCTION_ARGS) {
             }
         }
 
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int32GetDatum(path_id);
-        values[2] = Int32GetDatum(seq);
+        values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
+        values[1] = Int32GetDatum((int32_t)path_id);
+        values[2] = Int32GetDatum((int32_t)seq);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id);
         values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_id);
         values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);

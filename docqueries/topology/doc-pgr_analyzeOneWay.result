@@ -20,12 +20,13 @@ NOTICE:  ----------------------------------------------
 (1 row)
 
 UPDATE edges SET
-dir = CASE WHEN (cost>0 AND reverse_cost>0) THEN 'B'
-           WHEN (cost>0 AND reverse_cost<0) THEN 'FT'
-           WHEN (cost<0 AND reverse_cost>0) THEN 'TF'
+dir = CASE WHEN (cost>0 AND reverse_cost>0) THEN 'B'   /* both ways */
+           WHEN (cost>0 AND reverse_cost<0) THEN 'FT'  /* direction of the LINESSTRING */
+           WHEN (cost<0 AND reverse_cost>0) THEN 'TF'  /* reverse direction of the LINESTRING */
            ELSE '' END;
 UPDATE 18
-SELECT pgr_analyzeOneWay('edges',
+/* unknown */
+	SELECT pgr_analyzeOneWay('edges',
         ARRAY['', 'B', 'TF'],
         ARRAY['', 'B', 'FT'],
         ARRAY['', 'B', 'FT'],

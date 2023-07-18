@@ -30,7 +30,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdbool.h>
 
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
 #include "catalog/pg_type.h"
 #include "utils/lsyscache.h"
 
@@ -42,8 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 #include "c_types/contracted_rt.h"
-#include "c_common/edges_input.h"
-#include "c_common/arrays_input.h"
+#include "c_common/pgdata_getters.h"
 #include "drivers/contraction/contractGraph_driver.h"
 
 PGDLLEXPORT Datum _pgr_contraction(PG_FUNCTION_ARGS);
@@ -66,25 +64,25 @@ process(char* edges_sql,
     if (num_cycles < 1) return;
 
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     size_t size_forbidden_vertices = 0;
-    int64_t* forbidden_vertices =
-        pgr_get_bigIntArray_allowEmpty(
-                &size_forbidden_vertices,
-                forbidden);
+    int64_t* forbidden_vertices = pgr_get_bigIntArray(&size_forbidden_vertices, forbidden, true, &err_msg);
+    throw_error(err_msg, "While getting forbidden_vertices");
     PGR_DBG("size_forbidden_vertices %ld", size_forbidden_vertices);
 
     size_t size_contraction_order = 0;
-    int64_t* contraction_order =
-        pgr_get_bigIntArray(
-                &size_contraction_order,
-                order);
+    int64_t* contraction_order = pgr_get_bigIntArray(&size_contraction_order, order, false, &err_msg);
+    throw_error(err_msg, "While getting contraction order");
     PGR_DBG("size_contraction_order %ld ", size_contraction_order);
 
 
     size_t total_edges = 0;
     Edge_t* edges = NULL;
-    pgr_get_edges(edges_sql, &edges, &total_edges);
+    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
+    throw_error(err_msg, edges_sql);
     if (total_edges == 0) {
         if (forbidden_vertices) pfree(forbidden_vertices);
         if (contraction_order) pfree(contraction_order);
@@ -94,9 +92,6 @@ process(char* edges_sql,
 
     PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
     do_pgr_contractGraph(
             edges, total_edges,
             forbidden_vertices, size_forbidden_vertices,

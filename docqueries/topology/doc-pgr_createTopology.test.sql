@@ -61,7 +61,6 @@ SELECT  pgr_createTopology('edges', 0.001, 'geom',
     rows_where:='geom && (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)');
 /* --q9.1 */
 
--- THE NEXT SECTION
 
 /* --q10 */
 CREATE TABLE mytable AS (SELECT id AS gid,  geom AS mygeom, source AS src , target AS tgt FROM edges) ;
@@ -105,7 +104,6 @@ SELECT  pgr_createTopology('mytable', 0.001, source:='src', id:='gid', target:='
     rows_where:='mygeom && (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)');
 /* --q16.1 */
 
--------------------------------------------------------------------------------
 SET client_min_messages TO NOTICE;
 /* --q17 */
 SELECT pgr_createTopology('edges',  0.001, 'geom', rows_where:='id < 6', clean := true);

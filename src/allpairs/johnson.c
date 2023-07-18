@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/edges_input.h"
+#include "c_common/pgdata_getters.h"
 
 #include "drivers/allpairs/johnson_driver.h"
 
@@ -50,11 +50,15 @@ void process(
         IID_t_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     PGR_DBG("Load data");
     Edge_t *edges = NULL;
     size_t total_tuples = 0;
-    pgr_get_edges_no_id(edges_sql, &edges, &total_tuples);
+    pgr_get_edges(edges_sql, &edges, &total_tuples, true, true, &err_msg);
+    throw_error(err_msg, edges_sql);
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");
@@ -66,9 +70,6 @@ void process(
     PGR_DBG("Total %ld tuples in query:", total_tuples);
 
     PGR_DBG("Starting processing");
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
     clock_t start_t = clock();
     do_pgr_johnson(
             edges,
@@ -81,7 +82,7 @@ void process(
     time_msg(" processing Johnson", start_t, clock());
 
     if (err_msg && (*result_tuples)) {
-        free(*result_tuples);
+        pfree(*result_tuples);
         (*result_tuples) = NULL;
         (*result_count) = 0;
     }

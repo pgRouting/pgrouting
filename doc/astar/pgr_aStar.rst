@@ -9,22 +9,6 @@
 
 |
 
-* **Supported versions:**
-  `Latest <https://docs.pgrouting.org/latest/en/pgr_aStar.html>`__
-  (`3.5 <https://docs.pgrouting.org/3.5/en/pgr_aStar.html>`__)
-  `3.4 <https://docs.pgrouting.org/3.4/en/pgr_aStar.html>`__
-  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_aStar.html>`__
-  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_aStar.html>`__
-  `3.1 <https://docs.pgrouting.org/3.1/en/pgr_aStar.html>`__
-  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_aStar.html>`__
-* **Unsupported versions:**
-  `2.6 <https://docs.pgrouting.org/2.6/en/pgr_aStar.html>`__
-  `2.5 <https://docs.pgrouting.org/2.5/en/pgr_aStar.html>`__
-  `2.4 <https://docs.pgrouting.org/2.4/en/pgr_aStar.html>`__
-  `2.3 <https://docs.pgrouting.org/2.3/en/src/astar/doc/pgr_astar.html>`__
-  `2.2 <https://docs.pgrouting.org/2.2/en/src/astar/doc/pgr_astar.html>`__
-  `2.1 <https://docs.pgrouting.org/2.1/en/src/astar/doc/index.html>`__
-  `2.0 <https://docs.pgrouting.org/2.0/en/src/astar/doc/index.html>`__
 
 ``pgr_aStar``
 ===============================================================================
@@ -37,6 +21,14 @@
    Boost Graph Inside
 
 .. rubric:: Availability
+
+* Version 3.6.0
+
+  * Standarizing output columns to |short-generic-result|
+
+    * ``pgr_aStar`` (`One to One`_) added ``start_vid`` and ``end_vid`` columns.
+    * ``pgr_aStar`` (`One to Many`_) added ``end_vid`` column.
+    * ``pgr_aStar`` (`Many to One`_) added ``start_vid`` column.
 
 * Version 3.2.0
 
@@ -81,9 +73,7 @@ Description
   * `pgr_aStar(` `One to Many`_ `)`
   * `pgr_aStar(` `Many to One`_ `)`
   * `pgr_aStar(` `Many to Many`_ `)`
-
-* ``start_vid`` and ``end_vid`` in the result is used to distinguish to which
-  path it belongs.
+  * `pgr_aStar(` `Combinations`_ `)`
 
 Signatures
 -------------------------------------------------------------------------------
@@ -100,7 +90,7 @@ Signatures
    | pgr_aStar(`Edges SQL`_, `Combinations SQL`_, [**options**])
    | **options:** ``[directed, heuristic, factor, epsilon]``
 
-   | RETURNS SET OF |old-generic-result|
+   | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
 
 Optional parameters are `named parameters` and have a default value.
@@ -117,7 +107,7 @@ One to One
    | pgr_aStar(`Edges SQL`_, **start vid**, **end vid**, [**options**])
    | **options:** ``[directed, heuristic, factor, epsilon]``
 
-   | RETURNS SET OF |result-1-1|
+   | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertex :math:`12` on a **directed** graph
@@ -139,7 +129,7 @@ One to Many
    | pgr_aStar(`Edges SQL`_, **start vid**, **end vids**, [**options**])
    | **options:** ``[directed, heuristic, factor, epsilon]``
 
-   | RETURNS SET OF |result-1-m|
+   | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertices :math:`\{10, 12\}` on a **directed**
@@ -161,7 +151,7 @@ Many to One
    | pgr_aStar(`Edges SQL`_, **start vids**, **end vid**, [**options**])
    | **options:** ``[directed, heuristic, factor, epsilon]``
 
-   | RETURNS SET OF |result-m-1|
+   | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 8\}` to vertex :math:`10` on an

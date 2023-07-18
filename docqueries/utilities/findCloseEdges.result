@@ -30,7 +30,7 @@ FROM pgr_findCloseEdges(
 (6 rows)
 
 /* -- q3 */
-
+/* One point signature */
 /* -- o1 */
 SELECT *
 FROM pgr_findCloseEdges(
@@ -128,7 +128,7 @@ NOTICE:
 (0 rows)
 
 /* -- o6 */
-
+/* Many point signature */
 /* -- m1 */
 SELECT edge_id, round(fraction::numeric, 2) AS fraction, side, round(distance::numeric, 3) AS distance,
   ST_AsText(geom) AS geom_is_original, edge

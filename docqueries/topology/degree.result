@@ -3,10 +3,17 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 /* -- q1 */
+DROP TABLE IF EXISTS tmp_edges_vertices_pgr;
+NOTICE:  table "tmp_edges_vertices_pgr" does not exist, skipping
+DROP TABLE
+CREATE TEMP TABLE tmp_edges_vertices_pgr AS
+SELECT id, in_edges, out_edges
+    FROM pgr_extractVertices('SELECT id, geom FROM edges');
+SELECT 17
 SELECT * FROM pgr_degree(
   $$SELECT id FROM edges$$,
   $$SELECT id, in_edges, out_edges
-    FROM pgr_extractVertices('SELECT id, geom FROM edges')$$);
+    FROM tmp_edges_vertices_pgr$$);
  node | degree
 ------+--------
     1 |      1

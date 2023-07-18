@@ -280,14 +280,14 @@ INSERT 0 2
 CREATE TABLE orders (
     id BIGSERIAL PRIMARY KEY,
     demand FLOAT,
-
+    /* the pickups */
     p_node_id BIGINT,
     p_x FLOAT,
     p_y FLOAT,
     p_open FLOAT,
     p_close FLOAT,
     p_service FLOAT,
-
+    /* the deliveries */
     d_node_id BIGINT,
     d_x FLOAT,
     d_y FLOAT,
@@ -311,7 +311,6 @@ INSERT INTO orders
            12,    3,   3,      3,         20,          3);
 INSERT 0 3
 /* --ORDERS TABLE END */
-
 CREATE TABLE old_restrictions (
     rid BIGINT NOT NULL,
     to_cost FLOAT,

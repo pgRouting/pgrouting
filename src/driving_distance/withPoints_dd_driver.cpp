@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: withPoints_driver.cpp
+File: withPoints_dd_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -7,7 +7,7 @@ Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail:
+Mail: vicky at erosion.dev
 
 ------
 
@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 
-#include "dijkstra/pgr_dijkstra.hpp"
+#include "dijkstra/drivingDist.hpp"
 #include "withPoints/pgr_withPoints.hpp"
 
 
@@ -73,6 +73,11 @@ do_pgr_many_withPointsDD(
         char** log_msg,
         char** notice_msg,
         char** err_msg) {
+    using pgrouting::Path;
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;

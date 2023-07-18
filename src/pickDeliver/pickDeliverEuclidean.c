@@ -28,13 +28,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
+
 
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/orders_input.h"
-#include "c_common/vehicles_input.h"
+#include "c_common/pgdata_getters.h"
 #include "c_types/iid_t_rt.h"
 #include "c_types/pickDeliver/orders_t.h"
 #include "c_types/pickDeliver/vehicle_t.h"
@@ -85,18 +84,21 @@ process(
     }
 
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     PGR_DBG("Load orders");
     Orders_t *pd_orders_arr = NULL;
     size_t total_pd_orders = 0;
-    pgr_get_pd_orders(pd_orders_sql,
-           &pd_orders_arr, &total_pd_orders);
+    pgr_get_orders(pd_orders_sql, &pd_orders_arr, &total_pd_orders, false, &err_msg);
+    throw_error(err_msg, pd_orders_sql);
 
     PGR_DBG("Load vehicles");
     Vehicle_t *vehicles_arr = NULL;
     size_t total_vehicles = 0;
-    pgr_get_vehicles(vehicles_sql,
-           &vehicles_arr, &total_vehicles);
+    pgr_get_vehicles(vehicles_sql, &vehicles_arr, &total_vehicles, false, &err_msg);
+    throw_error(err_msg, vehicles_sql);
     PGR_DBG("total vehicles %ld", total_vehicles);
 
     size_t i;
@@ -157,9 +159,6 @@ process(
 
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
     do_pgr_pickDeliverEuclidean(
             pd_orders_arr, total_pd_orders,
             vehicles_arr, total_vehicles,
@@ -286,7 +285,7 @@ _pgr_pickdelivereuclidean(PG_FUNCTION_ARGS) {
 
 
         // postgres starts counting from 1
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[call_cntr].vehicle_seq);
         values[2] = Int64GetDatum(result_tuples[call_cntr].vehicle_id);
         values[3] = Int32GetDatum(result_tuples[call_cntr].stop_seq);

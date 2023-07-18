@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 
-#include "c_common/edges_input.h"
+#include "c_common/pgdata_getters.h"
 
 #include "drivers/allpairs/floydWarshall_driver.h"
 
@@ -51,11 +51,15 @@ process(
         IID_t_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     PGR_DBG("Load data");
     Edge_t *edges = NULL;
     size_t total_tuples = 0;
-    pgr_get_edges_no_id(edges_sql, &edges, &total_tuples);
+    pgr_get_edges(edges_sql, &edges, &total_tuples, true, true, &err_msg);
+    throw_error(err_msg, edges_sql);
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");
@@ -68,9 +72,6 @@ process(
 
     clock_t start_t = clock();
     PGR_DBG("Starting processing");
-    char *err_msg = NULL;
-    char *notice_msg = NULL;
-    char *log_msg = NULL;
     do_pgr_floydWarshall(
             edges,
             total_tuples,
@@ -82,7 +83,7 @@ process(
     time_msg(" processing FloydWarshall", start_t, clock());
 
     if (err_msg && (*result_tuples)) {
-        free(*result_tuples);
+        pfree(*result_tuples);
         (*result_tuples) = NULL;
         (*result_count) = 0;
     }

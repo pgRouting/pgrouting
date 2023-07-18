@@ -8,12 +8,8 @@ name: Update Locale
 on:
   workflow_dispatch:
   push:
-    paths:
-      - '.github/workflows/update-locale.yml'
-      - 'doc/**'
-
-    branches-ignore:
-      - 'gh-pages'
+    branches:
+      - 'develop'
 
 permissions:
   contents: read
@@ -24,6 +20,7 @@ jobs:
       contents: write  # for Git to git push
     name: Update Locale
     runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'pgRouting' }}
 
     strategy:
         fail-fast: false

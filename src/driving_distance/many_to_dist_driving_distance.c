@@ -24,15 +24,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
 
 #include "c_types/path_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 
-#include "c_common/edges_input.h"
-#include "c_common/arrays_input.h"
+#include "c_common/pgdata_getters.h"
 #include "drivers/driving_distance/drivedist_driver.h"
 
 
@@ -42,7 +40,7 @@ PG_FUNCTION_INFO_V1(_pgr_drivingdistance);
 
 static
 void process(
-        char* sql,
+        char* edges_sql,
         ArrayType *starts,
         float8 distance,
         bool directed,
@@ -50,13 +48,18 @@ void process(
         Path_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     size_t size_start_vidsArr = 0;
-    int64_t* start_vidsArr = pgr_get_bigIntArray(&size_start_vidsArr, starts);
+    int64_t* start_vidsArr = pgr_get_bigIntArray(&size_start_vidsArr, starts, false, &err_msg);
+    throw_error(err_msg, "While getting start vids");
 
     Edge_t *edges = NULL;
     size_t total_tuples = 0;
-    pgr_get_edges(sql, &edges, &total_tuples);
+    pgr_get_edges(edges_sql, &edges, &total_tuples, true, false, &err_msg);
+    throw_error(err_msg, edges_sql);
 
     if (total_tuples == 0) {
         return;
@@ -64,9 +67,6 @@ void process(
 
     PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
     do_pgr_driving_many_to_dist(
             edges, total_tuples,
             start_vidsArr, size_start_vidsArr,
@@ -163,7 +163,7 @@ _pgr_drivingdistance(PG_FUNCTION_ARGS) {
         for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);

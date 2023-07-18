@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 
-#include "c_common/edges_input.h"
+#include "c_common/pgdata_getters.h"
 #include "c_types/ii_t_rt.h"
 
 
@@ -57,8 +57,6 @@ PG_FUNCTION_INFO_V1(_pgr_cuthillmckeeordering);
  * @param edges_sql      the edges of the SQL query
  * @param result_tuples  the rows in the result
  * @param result_count   the count of rows in the result
- *
- * @returns void
  */
 
 static
@@ -69,6 +67,9 @@ process(
     II_t_rt **result_tuples,
     size_t *result_count) {
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
@@ -76,7 +77,8 @@ process(
     Edge_t *edges = NULL;
     size_t total_edges = 0;
 
-    pgr_get_edges(edges_sql, &edges, &total_edges);
+    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
+    throw_error(err_msg, edges_sql);
     if (total_edges == 0) {
         ereport(WARNING,
                 (errmsg("Insufficient data edges SQL."),
@@ -89,9 +91,6 @@ process(
 
     PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
 
     do_cuthillMckeeOrdering(
             edges, total_edges,
@@ -189,7 +188,7 @@ _pgr_cuthillmckeeordering(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        values[0] = Int64GetDatum(funcctx->call_cntr + 1);
+        values[0] = Int64GetDatum((int64_t)funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].d2.value);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

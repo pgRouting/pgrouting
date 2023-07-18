@@ -38,8 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/edges_input.h"
-#include "c_common/arrays_input.h"
+#include "c_common/pgdata_getters.h"
 #include "drivers/coloring/bipartite_driver.h"
 
 
@@ -53,10 +52,14 @@ process(char* edges_sql,
         II_t_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     size_t total_edges = 0;
     Edge_t* edges = NULL;
-    pgr_get_edges(edges_sql, &edges, &total_edges);
+    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
+    throw_error(err_msg, edges_sql);
     if (total_edges == 0) {
         pgr_SPI_finish();
         return;
@@ -64,9 +67,6 @@ process(char* edges_sql,
 
     PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
     do_pgr_bipartite(
             edges, total_edges,
             result_tuples, result_count,

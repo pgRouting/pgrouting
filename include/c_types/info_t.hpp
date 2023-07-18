@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: vehicles_input.h
+File: info_t.hpp
 
-Copyright (c) 2016 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Copyright (c) 2015 Celia Virginia Vergara Castillo
+Mail: vicky at erosion.dev
 
 ------
 
@@ -21,36 +21,34 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
+/*! @file */
 
-#ifndef INCLUDE_C_COMMON_VEHICLES_INPUT_H_
-#define INCLUDE_C_COMMON_VEHICLES_INPUT_H_
+#ifndef INCLUDE_C_TYPES_INFO_T_HPP_
+#define INCLUDE_C_TYPES_INFO_T_HPP_
 #pragma once
 
-#include <stddef.h>
-typedef struct Vehicle_t Vehicle_t;
+#include <cstdint>
+#include <string>
 
-/** @brief Reads the vehicles orders
- *
- * @param[in] vehicles_sql
- * @param[out] vehicles
- * @param[out] total_vehicles
- */
-void
-pgr_get_vehicles(
-        char *vehicles_sql,
-        Vehicle_t **vehicles,
-        size_t *total_vehicles);
+namespace pgrouting {
 
-/** @brief Reads the vehicles orders
- *
- * @param[in] vehicles_sql
- * @param[out] vehicles
- * @param[out] total_vehicles
- */
-void
-pgr_get_vehicles_with_id(
-        char *vehicles_sql,
-        Vehicle_t **vehicles,
-        size_t *total_vehicles);
+enum expectType {
+    ANY_INTEGER,
+    ANY_NUMERICAL,
+    TEXT,
+    CHAR1,
+    ANY_INTEGER_ARRAY
+};
 
-#endif  // INCLUDE_C_COMMON_VEHICLES_INPUT_H_
+
+struct Column_info_t {
+    int colNumber;
+    uint64_t type;
+    bool strict;
+    std::string name;
+    expectType eType;
+};
+
+}  // namespace pgrouting
+
+#endif  // INCLUDE_C_TYPES_INFO_T_HPP_

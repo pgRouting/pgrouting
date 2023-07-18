@@ -9,22 +9,6 @@
 
 |
 
-* **Supported versions:**
-  `Latest <https://docs.pgrouting.org/latest/en/release_notes.html>`__
-  (`3.5 <https://docs.pgrouting.org/3.5/en/release_notes.html>`__)
-  `3.4 <https://docs.pgrouting.org/3.4/en/release_notes.html>`__
-  `3.3 <https://docs.pgrouting.org/3.3/en/release_notes.html>`__
-  `3.2 <https://docs.pgrouting.org/3.2/en/release_notes.html>`__
-  `3.1 <https://docs.pgrouting.org/3.1/en/release_notes.html>`__
-  `3.0 <https://docs.pgrouting.org/3.0/en/release_notes.html>`__
-* **Unsupported versions:**
-  `2.6 <https://docs.pgrouting.org/2.6/en/release_notes.html>`__
-  `2.5 <https://docs.pgrouting.org/2.5/en/release_notes.html>`__
-  `2.4 <https://docs.pgrouting.org/2.4/en/release_notes.html>`__
-  `2.3 <https://docs.pgrouting.org/2.3/en/doc/src/changelog/release_notes.html>`__
-  `2.2 <https://docs.pgrouting.org/2.2/en/doc/src/changelog/index.html>`__
-  `2.1 <https://docs.pgrouting.org/2.1/en/doc/src/changelog/index.html>`__
-  `2.0 <https://docs.pgrouting.org/2.0/en/doc/src/changelog/index.html>`__
 
 Release Notes
 ===============================================================================
@@ -34,6 +18,81 @@ To see the full list of changes check the list of `Git commits
 
 .. contents:: Contents
    :local:
+
+pgRouting 3.6.0 Release Notes
+-------------------------------------------------------------------------------
+
+.. rubric:: Official functions changes
+
+* `2516 <https://github.com/pgRouting/pgrouting/pull/2516>` Standarize output
+  pgr_aStar
+
+  * Standarizing output columns to |short-generic-result|
+
+    * ``pgr_aStar`` (`One to One`) added ``start_vid`` and ``end_vid`` columns.
+    * ``pgr_aStar`` (`One to Many`) added ``end_vid`` column.
+    * ``pgr_aStar`` (`Many to One`) added ``start_vid`` column.
+
+* `2523 <https://github.com/pgRouting/pgrouting/pull/2523>` Standarize output
+  pgr_bdAstar
+
+  * Standarizing output columns to |short-generic-result|
+
+    * ``pgr_bdAstar`` (`One to One`) added ``start_vid`` and ``end_vid`` columns.
+    * ``pgr_bdAstar`` (`One to Many`) added ``end_vid`` column.
+    * ``pgr_bdAstar`` (`Many to One`) added ``start_vid`` column.
+
+
+.. rubric:: C/C++ code enhancements
+
+* `2504 <https://github.com/pgRouting/pgrouting/pull/2504>` To C++ pg data get,
+  fetch and check.
+
+  * Stopping support for compilation with MSVC.
+
+* `2505 <https://github.com/pgRouting/pgrouting/pull/2505>` Using namespace.
+* `2512 <https://github.com/pgRouting/pgrouting/pull/2512>` [Dijkstra] Removing
+  duplicate code on Dijkstra.
+* `2517 <https://github.com/pgRouting/pgrouting/pull/2517>` Astar code
+  simplification.
+* `2521 <https://github.com/pgRouting/pgrouting/pull/2521>` Dijkstra code
+  simplification.
+* `2522 <https://github.com/pgRouting/pgrouting/pull/2522>` bdAstar code
+  simplification.
+
+.. rubric:: Documentation
+
+* `2490 <https://github.com/pgRouting/pgrouting/pull/2490>` Automatic page
+  history links.
+
+pgRouting 3.5.1 Release Notes
+-------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.5.1
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.1%22>`_
+
+.. rubric:: Documentation fixes
+
+Changes on the documentation to the following:
+
+* pgr_degree
+* pgr_dijkstra
+* pgr_ksp
+* Automatic page history links
+
+  * using bootstrap_version 2 because 3+ does not do dropdowns
+
+
+.. rubric:: Build fixes
+
+* Fix winnie build
+
+.. rubric::  Code fixes
+
+* Fix clang warnings
+
+  * Grouping headers of postgres readers
 
 pgRouting 3.5.0 Release Notes
 -------------------------------------------------------------------------------

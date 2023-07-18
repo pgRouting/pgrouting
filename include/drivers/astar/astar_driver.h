@@ -5,8 +5,9 @@ Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
+Copyright (c) 2023 Celia Virginia Vergara Castillo
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail:
+Mail: vicky at erosion.dev
 
 ------
 
@@ -30,7 +31,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_ASTAR_ASTAR_DRIVER_H_
 #pragma once
 
-/* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
 #   include <cstdint>
@@ -49,32 +49,16 @@ typedef struct Path_rt Path_rt;
 extern "C" {
 #endif
 
-    /*********************************************************
-      edges_sql TEXT,
-      vertex_table TEXT,
-      start_vid BIGINT,
-      end_vid BIGINT  directed BOOLEAN DEFAULT true,
-     ********************************************************/
-    void do_pgr_astarManyToMany(
-            Edge_xy_t  *data_edges,
-            size_t total_edges,
+    void pgr_do_astar(
+            Edge_xy_t*, size_t,
+            II_t_rt*, size_t,
+            int64_t*, size_t,
+            int64_t*, size_t,
 
-            II_t_rt  *combinations,
-            size_t total_combinations,
+            bool, int, double, double, bool, bool,
 
-            int64_t  *start_vidsArr, size_t size_start_vidsArr,
-            int64_t  *end_vidsArr, size_t size_end_vidsArr,
-            bool directed,
-            int heuristic,
-            double factor,
-            double epsilon,
-            bool only_cost,
-            bool normal,
-            Path_rt **return_tuples,
-            size_t *return_count,
-            char** log_msg,
-            char** notice_msg,
-            char** err_msg);
+            Path_rt**, size_t*,
+            char**, char**, char**);
 
 
 #ifdef __cplusplus

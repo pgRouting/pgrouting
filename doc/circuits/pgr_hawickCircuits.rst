@@ -9,10 +9,6 @@
 
 |
 
-* **Supported versions:**
-  `Latest <https://docs.pgrouting.org/latest/en/pgr_hawickCircuits.html>`__
-  (`3.5 <https://docs.pgrouting.org/3.5/en/pgr_hawickCircuits.html>`__)
-  `3.4 <https://docs.pgrouting.org/3.4/en/pgr_hawickCircuits.html>`__
 
 ``pgr_hawickCircuits - Experimental``
 ===============================================================================

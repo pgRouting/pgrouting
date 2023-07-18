@@ -28,8 +28,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
-
 
 #include "drivers/trsp/trsp_driver.h"
 
@@ -41,10 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/restriction_t.h"
 #include "c_types/path_rt.h"
 
-#include "c_common/edges_input.h"
-#include "c_common/restrictions_input.h"
-#include "c_common/arrays_input.h"
-#include "c_common/combinations_input.h"
+#include "c_common/pgdata_getters.h"
 
 PGDLLEXPORT Datum _trsp(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_trsp);
@@ -67,6 +62,9 @@ void process(
         Path_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     size_t size_start_vidsArr = 0;
     int64_t* start_vidsArr = NULL;
@@ -82,28 +80,27 @@ void process(
 
     Restriction_t * restrictions = NULL;
     size_t total_restrictions = 0;
-
-    pgr_get_edges(edges_sql, &edges, &total_edges);
+    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
+    throw_error(err_msg, edges_sql);
 
     if (total_edges == 0) {
         pgr_SPI_finish();
         return;
     }
-    pgr_get_restrictions(restrictions_sql, &restrictions, &total_restrictions);
+    pgr_get_restrictions(restrictions_sql, &restrictions, &total_restrictions, &err_msg);
+    throw_error(err_msg, restrictions_sql);
 
     if (starts && ends) {
-        start_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_start_vidsArr, starts);
-        end_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_end_vidsArr, ends);
+        start_vidsArr = pgr_get_bigIntArray(&size_start_vidsArr, starts, false, &err_msg);
+        throw_error(err_msg, "While getting start vids");
+        end_vidsArr = pgr_get_bigIntArray(&size_end_vidsArr, ends, false, &err_msg);
+        throw_error(err_msg, "While getting end vids");
     } else if (combinations_sql) {
-        pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
+        pgr_get_combinations(combinations_sql, &combinations, &total_combinations, &err_msg);
+        throw_error(err_msg, combinations_sql);
     }
 
     clock_t start_t = clock();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
 
     do_trsp(
             edges, total_edges,
@@ -213,7 +210,7 @@ _v4trsp(PG_FUNCTION_ARGS) {
         int path_id = call_cntr == 0? 0 : result_tuples[call_cntr - 1].seq;
         path_id += result_tuples[call_cntr].seq == 1? 1 : 0;
 
-        values[0] = Int32GetDatum(call_cntr + 1);
+        values[0] = Int32GetDatum((int32_t)call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
         values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
         values[3] = Int64GetDatum(result_tuples[call_cntr].end_id);
@@ -296,7 +293,7 @@ _trsp(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        values[0] = Int32GetDatum(call_cntr + 1);
+        values[0] = Int64GetDatum((int64_t)call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
         values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
         values[3] = Int64GetDatum(result_tuples[call_cntr].end_id);

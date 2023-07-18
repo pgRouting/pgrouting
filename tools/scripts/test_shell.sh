@@ -28,6 +28,8 @@ for f in $(git ls-files | grep '\.sh')
 do
   if [ "${f}" = "tools/developer/addNewVersionLink.sh" ] ; then
     result=$(shellcheck --exclude=SC2046,SC2016 "${f}")
+  elif [ "${f}" = "ci/winnie/build_pgrouting.sh" ] ; then
+    result=$(shellcheck --exclude=SC2046,SC2016,SC2141,SC2086 "${f}")
   else
     result=$(shellcheck --exclude=SC2141 "${f}")
   fi

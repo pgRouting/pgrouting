@@ -60,7 +60,6 @@ class PD_Orders {
       * @{
       */
      PD_Orders() = default;
-     PD_Orders(const PD_Orders&) = default;
      explicit PD_Orders(const std::vector<Orders_t>&);
      /*!@}*/
 

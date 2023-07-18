@@ -37,12 +37,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_assert.h"
 
 
-static
+namespace  {
 void
 get_path(
         int route_id,
         int path_id,
-        const Path &path,
+        const pgrouting::Path &path,
         Routes_t **postgres_data,
         double &route_cost,
         size_t &sequence) {
@@ -66,11 +66,10 @@ get_path(
 }
 
 
-static
 size_t
 get_route(
         Routes_t **ret_path,
-        std::deque< Path > &paths) {
+        std::deque<pgrouting::Path> &paths) {
     size_t sequence = 0;
     int path_id = 1;
     int route_id = 1;
@@ -78,13 +77,14 @@ get_route(
     for (auto &p : paths) {
         p.recalculate_agg_cost();
     }
-    for (const Path &path : paths) {
+    for (const auto &path : paths) {
         if (path.size() > 0)
             get_path(route_id, path_id, path, ret_path, route_cost, sequence);
         ++path_id;
     }
     return sequence;
 }
+}  // namespace
 
 void
 do_pgr_dijkstraVia(
@@ -98,6 +98,11 @@ do_pgr_dijkstraVia(
         char** log_msg,
         char** notice_msg,
         char** err_msg) {
+    using pgrouting::Path;
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;

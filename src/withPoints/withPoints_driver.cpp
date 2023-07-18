@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: one_to_many_withPoints_driver.cpp
+File: withPoints_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -7,7 +7,7 @@ Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail:
+Mail: vicky at erosion.dev
 
 ------
 
@@ -37,36 +37,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 
 
-#include "dijkstra/pgr_dijkstra.hpp"
+#include "dijkstra/dijkstra.hpp"
 #include "withPoints/pgr_withPoints.hpp"
 
+#include "cpp_common/combinations.h"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
+namespace {
+
 template < class G >
-std::deque< Path >
+std::deque<pgrouting::Path>
 pgr_dijkstra(
         G &graph,
-        std::vector < II_t_rt > &combinations,
-        std::vector < int64_t > sources,
-        std::vector < int64_t > targets,
+        const std::map<int64_t , std::set<int64_t>> &combinations,
         bool only_cost,
         bool normal) {
-    std::sort(sources.begin(), sources.end());
-    sources.erase(
-            std::unique(sources.begin(), sources.end()),
-            sources.end());
-
-    std::sort(targets.begin(), targets.end());
-    targets.erase(
-            std::unique(targets.begin(), targets.end()),
-            targets.end());
-
-    pgrouting::Pgr_dijkstra< G > fn_dijkstra;
     size_t n_goals = (std::numeric_limits<size_t>::max)();
-    auto paths = combinations.empty()?
-        fn_dijkstra.dijkstra(graph, sources, targets, only_cost)
-        : fn_dijkstra.dijkstra(graph, combinations, only_cost, n_goals);
+    auto paths = pgrouting::algorithms::dijkstra(graph, combinations, only_cost, n_goals);
 
     if (!normal) {
         for (auto &path : paths) {
@@ -81,6 +69,7 @@ pgr_dijkstra(
     return paths;
 }
 
+}  // namespace
 
 // CREATE OR REPLACE FUNCTION pgr_withPoint(
 // edges_sql TEXT,
@@ -95,10 +84,10 @@ do_pgr_withPoints(
         Point_on_edge_t *points_p, size_t total_points,
         Edge_t *edges_of_points, size_t total_edges_of_points,
 
-        II_t_rt *combinations, size_t total_combinations,
+        II_t_rt *combinationsArr, size_t total_combinations,
 
-        int64_t *start_pidsArr, size_t size_start_pidsArr,
-        int64_t *end_pidsArr, size_t size_end_pidsArr,
+        int64_t *start_vidsArr, size_t size_start_vidsArr,
+        int64_t *end_vidsArr, size_t size_end_vidsArr,
 
         char driving_side,
         bool details,
@@ -111,6 +100,11 @@ do_pgr_withPoints(
         char** log_msg,
         char** notice_msg,
         char** err_msg) {
+    using pgrouting::Path;
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
@@ -141,13 +135,9 @@ do_pgr_withPoints(
             return;
         }
 
-
-        std::vector<II_t_rt>
-                combinations_vector(combinations, combinations + total_combinations);
-        std::vector<int64_t>
-            start_vertices(start_pidsArr, start_pidsArr + size_start_pidsArr);
-        std::vector< int64_t >
-            end_vertices(end_pidsArr, end_pidsArr + size_end_pidsArr);
+        auto combinations = total_combinations?
+            pgrouting::utilities::get_combinations(combinationsArr, total_combinations)
+            : pgrouting::utilities::get_combinations(start_vidsArr, size_start_vidsArr, end_vidsArr, size_end_vidsArr);
 
         auto vertices(pgrouting::extract_vertices(edges, total_edges));
         vertices = pgrouting::extract_vertices(vertices, pg_graph.new_edges());
@@ -164,8 +154,7 @@ do_pgr_withPoints(
 
             paths = pgr_dijkstra(
                     digraph,
-                    combinations_vector,
-                    start_vertices, end_vertices,
+                    combinations,
                     only_cost, normal);
         } else {
             log << "Working with Undirected Graph\n";
@@ -174,8 +163,7 @@ do_pgr_withPoints(
             undigraph.insert_edges(pg_graph.new_edges());
             paths = pgr_dijkstra(
                     undigraph,
-                    combinations_vector,
-                    start_vertices, end_vertices,
+                    combinations,
                     only_cost, normal);
         }
 

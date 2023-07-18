@@ -28,12 +28,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/postgres_connection.h"
 #include "catalog/pg_type.h"
 #include "c_common/debug_macro.h"
+#include "c_common/e_report.h"
 
 
 #include "c_types/trsp/trsp.h"
 #include "c_types/edge_t.h"
 
-#include "c_common/edges_input.h"
+#include "c_common/pgdata_getters.h"
 
 #include "trsp/trsp_core.h"
 typedef struct restrict_t restrict_t;
@@ -114,8 +115,7 @@ fetch_restrict(HeapTuple *tuple, TupleDesc *tupdesc,
   if (isnull)
     elog(ERROR, "to_cost contains a null value");
   rest->to_cost = DatumGetFloat8(binval);
-  char *str = DatumGetCString(SPI_getvalue(*tuple, *tupdesc,
-       restrict_columns->via_path));
+  char *str = SPI_getvalue(*tuple, *tupdesc, restrict_columns->via_path);
 
   // PGR_DBG("restriction: %f, %i, %s", rest->to_cost, rest->target_id, str);
 
@@ -135,7 +135,7 @@ fetch_restrict(HeapTuple *tuple, TupleDesc *tupdesc,
 
 
 static int compute_trsp(
-        char* sql,
+        char* edges_sql,
         int dovertex,
         int64_t start_id,
         double start_pos,
@@ -147,13 +147,15 @@ static int compute_trsp(
         path_element_tt **path,
         size_t *path_count) {
   pgr_SPI_connect();
+    char* err_msg = NULL;
 
   SPIPlanPtr SPIplan;
   Portal SPIportal;
 
   Edge_t *edges = NULL;
   size_t total_tuples = 0;
-  pgr_get_edges(sql, &edges, &total_tuples);
+  pgr_get_edges(edges_sql, &edges, &total_tuples, true, false, &err_msg);
+  throw_error(err_msg, edges_sql);
 
   // defining min and max vertex id
   int64_t v_max_id = 0;
@@ -224,13 +226,12 @@ static int compute_trsp(
   restrict_columns_t restrict_columns = {.target_id = -1, .via_path = -1,
                                  .to_cost = -1};
 
-  char *err_msg;
   int ret = -1;
 
   if (restrict_sql == NULL) {
       PGR_DBG("Sql for restrictions is null.");
   } else {
-      uint32_t TUPLIMIT = 1000;
+      int64 TUPLIMIT = 1000;
 
       SPIplan = SPI_prepare(restrict_sql, 0, NULL);
       if (SPIplan  == NULL) {
@@ -428,11 +429,11 @@ _pgr_trsp(PG_FUNCTION_ARGS) {
       values = palloc(4 * sizeof(Datum));
       nulls = palloc(4 * sizeof(char));
 
-      values[0] = Int32GetDatum(funcctx->call_cntr);
+      values[0] = Int64GetDatum((int64_t)funcctx->call_cntr);
       nulls[0] = false;
-      values[1] = Int32GetDatum(path[funcctx->call_cntr].vertex_id);
+      values[1] = Int32GetDatum((int32_t)path[funcctx->call_cntr].vertex_id);
       nulls[1] = false;
-      values[2] = Int32GetDatum(path[funcctx->call_cntr].edge_id);
+      values[2] = Int32GetDatum((int32_t)path[funcctx->call_cntr].edge_id);
       nulls[2] = false;
       values[3] = Float8GetDatum(path[funcctx->call_cntr].cost);
       nulls[3] = false;

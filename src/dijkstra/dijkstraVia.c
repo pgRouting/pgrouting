@@ -32,8 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/edges_input.h"
-#include "c_common/arrays_input.h"
+#include "c_common/pgdata_getters.h"
 #include "drivers/dijkstra/dijkstraVia_driver.h"
 
 PGDLLEXPORT Datum _pgr_dijkstravia(PG_FUNCTION_ARGS);
@@ -49,13 +48,18 @@ process(char* edges_sql,
         Routes_t **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     size_t size_via_vidsArr = 0;
-    int64_t* via_vidsArr = (int64_t*) pgr_get_bigIntArray(&size_via_vidsArr, vias);
+    int64_t* via_vidsArr = pgr_get_bigIntArray(&size_via_vidsArr, vias, false, &err_msg);
+    throw_error(err_msg, "While getting via vertices");
 
     Edge_t* edges = NULL;
     size_t total_edges = 0;
-    pgr_get_edges(edges_sql, &edges, &total_edges);
+    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
+    throw_error(err_msg, edges_sql);
 
     if (total_edges == 0) {
         if (via_vidsArr) pfree(via_vidsArr);
@@ -65,9 +69,6 @@ process(char* edges_sql,
 
     PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
     do_pgr_dijkstraVia(
             edges, total_edges,
             via_vidsArr, size_via_vidsArr,
@@ -181,7 +182,7 @@ _pgr_dijkstravia(PG_FUNCTION_ARGS) {
         }
 
         // postgres starts counting from 1
-        values[0] = Int32GetDatum(call_cntr + 1);
+        values[0] = Int32GetDatum((int32_t)call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[call_cntr].path_id);
         values[2] = Int32GetDatum(result_tuples[call_cntr].path_seq + 1);
         values[3] = Int64GetDatum(result_tuples[call_cntr].start_vid);

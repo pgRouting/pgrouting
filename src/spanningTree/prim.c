@@ -28,13 +28,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
 
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/edges_input.h"
-#include "c_common/arrays_input.h"
+#include "c_common/pgdata_getters.h"
 #include "c_types/mst_rt.h"
 
 #include "drivers/spanningTree/mst_common.h"
@@ -56,10 +54,10 @@ process(
         MST_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
 
     char * fn_name = get_name(1, fn_suffix, &err_msg);
     if (err_msg) {
@@ -68,7 +66,8 @@ process(
     }
 
     size_t size_rootsArr = 0;
-    int64_t* rootsArr = (int64_t*) pgr_get_bigIntArray(&size_rootsArr, roots);
+    int64_t* rootsArr = pgr_get_bigIntArray(&size_rootsArr, roots, false, &err_msg);
+    throw_error(err_msg, "While getting start vids");
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
@@ -76,7 +75,8 @@ process(
     Edge_t *edges = NULL;
     size_t total_edges = 0;
 
-    pgr_get_edges(edges_sql, &edges, &total_edges);
+    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
+    throw_error(err_msg, edges_sql);
 
 
     clock_t start_t = clock();
@@ -170,7 +170,7 @@ PGDLLEXPORT Datum _pgr_prim(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        values[0] = Int64GetDatum(funcctx->call_cntr + 1);
+        values[0] = Int64GetDatum((int64_t)funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].depth);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_v);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);

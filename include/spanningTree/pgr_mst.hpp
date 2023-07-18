@@ -286,11 +286,9 @@ class Pgr_mst {
              } else {
                  std::vector<MST_rt> results;
                  for (const auto root : m_roots) {
-                     std::vector<E> visited_order;
-
                      using dfs_visitor = visitors::Dfs_visitor_with_root<V, E>;
                      if (graph.has_vertex(root)) {
-                         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+                         std::vector<E> visited_order;
                          CHECK_FOR_INTERRUPTS();
                          try {
                              boost::depth_first_search(

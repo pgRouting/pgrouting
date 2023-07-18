@@ -49,8 +49,8 @@ namespace {
   @result The vids Identifiers with at least one contracted vertex
 */
 template <typename G>
-Identifiers<int64_t> get_modified_vertices(const G& graph) {
-    Identifiers<int64_t> vids;
+pgrouting::Identifiers<int64_t> get_modified_vertices(const G& graph) {
+    pgrouting::Identifiers<int64_t> vids;
     for (auto v : boost::make_iterator_range(boost::vertices(graph.graph))) {
         if (graph[v].has_contracted_vertices()) {
             vids += graph[v].id;
@@ -66,7 +66,7 @@ Identifiers<int64_t> get_modified_vertices(const G& graph) {
 template <typename G>
 std::vector<typename G::E> get_shortcuts(const G& graph) {
     using E = typename G::E;
-    Identifiers<E> eids;
+    pgrouting::Identifiers<E> eids;
     for (auto e : boost::make_iterator_range(boost::edges(graph.graph))) {
         if (graph[e].id < 0) {
             eids += e;
@@ -90,7 +90,7 @@ void process_contraction(
         const std::vector< int64_t > &contraction_order,
         int64_t max_cycles) {
     graph.insert_edges(edges);
-    Identifiers<typename G::V> forbid_vertices;
+    pgrouting::Identifiers<typename G::V> forbid_vertices;
     for (const auto &vertex : forbidden_vertices) {
         if (graph.has_vertex(vertex)) {
             forbid_vertices += graph.get_V(vertex);
@@ -113,6 +113,7 @@ void get_postgres_result(
         G &graph,
         contracted_rt **return_tuples,
         size_t *count) {
+    using pgrouting::pgr_alloc;
     auto modified_vertices(get_modified_vertices(graph));
     auto shortcut_edges(get_shortcuts(graph));
 
@@ -189,6 +190,10 @@ do_pgr_contractGraph(
         char **log_msg,
         char **notice_msg,
         char **err_msg) {
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;

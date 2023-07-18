@@ -53,6 +53,11 @@ void  do_pgr_ksp(
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
+    using pgrouting::Path;
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream err;
     std::ostringstream log;
     std::ostringstream notice;

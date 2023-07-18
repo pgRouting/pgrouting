@@ -1,10 +1,12 @@
 /*PGR-GNU*****************************************************************
 
+File: tsp.cc
+
 Copyright (c) 2021 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2021 Vicky Vergara
-Mail: vicky@georepublic.de
+Mail: vicky at erosion.dev
 
 ------
 
@@ -42,7 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/interruption.h"
 
-#include "visitors/dijkstra_one_goal_visitor.hpp"
+#include "visitors/dijkstra_visitors.hpp"
 
 
 namespace {

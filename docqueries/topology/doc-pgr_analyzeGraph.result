@@ -436,7 +436,6 @@ NOTICE:                      Ring geometries: 0
 (1 row)
 
 /* -- q22.1 */
-
 /* -- q23 */
 SELECT  pgr_createTopology('edges',0.001, 'geom', clean := true);
 NOTICE:  PROCESSING:
@@ -539,7 +538,6 @@ NOTICE:                      Ring geometries: 0
 (1 row)
 
 /* -- q26.1 */
-
 /* -- q27 */
 SELECT pgr_createTopology('edges', 0.001,'geom', rows_where:='id <17', clean := true);
 NOTICE:  PROCESSING:

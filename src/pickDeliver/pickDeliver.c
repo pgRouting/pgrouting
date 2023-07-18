@@ -31,9 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/orders_input.h"
-#include "c_common/vehicles_input.h"
-#include "c_common/matrixRows_input.h"
+#include "c_common/pgdata_getters.h"
 
 #include "c_types/iid_t_rt.h"
 #include "c_types/pickDeliver/schedule_rt.h"
@@ -82,18 +80,21 @@ process(
     }
 
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     PGR_DBG("Load orders");
     Orders_t *pd_orders_arr = NULL;
     size_t total_pd_orders = 0;
-    pgr_get_pd_orders_with_id(pd_orders_sql,
-           &pd_orders_arr, &total_pd_orders);
+    pgr_get_orders(pd_orders_sql, &pd_orders_arr, &total_pd_orders, true, &err_msg);
+    throw_error(err_msg, pd_orders_sql);
 
     PGR_DBG("Load vehicles");
     Vehicle_t *vehicles_arr = NULL;
     size_t total_vehicles = 0;
-    pgr_get_vehicles_with_id(vehicles_sql,
-           &vehicles_arr, &total_vehicles);
+    pgr_get_vehicles(vehicles_sql, &vehicles_arr, &total_vehicles, true, &err_msg);
+    throw_error(err_msg, vehicles_sql);
     PGR_DBG("total vehicles %ld", total_vehicles);
 
 
@@ -147,7 +148,8 @@ process(
     PGR_DBG("load matrix");
     IID_t_rt *matrix_cells_arr = NULL;
     size_t total_cells = 0;
-    pgr_get_matrixRows(matrix_sql, &matrix_cells_arr, &total_cells);
+    pgr_get_matrixRows(matrix_sql, &matrix_cells_arr, &total_cells, &err_msg);
+    throw_error(err_msg, matrix_sql);
 
 
     if (total_pd_orders == 0 || total_vehicles == 0 || total_cells == 0) {
@@ -163,9 +165,6 @@ process(
 
     PGR_DBG("Starting processing");
             clock_t start_t = clock();
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
 
     do_pgr_pickDeliver(
             pd_orders_arr, total_pd_orders,
@@ -302,7 +301,7 @@ _pgr_pickdeliver(PG_FUNCTION_ARGS) {
         }
 
 
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[call_cntr].vehicle_seq);
         values[2] = Int64GetDatum(result_tuples[call_cntr].vehicle_id);
         values[3] = Int32GetDatum(result_tuples[call_cntr].stop_seq);

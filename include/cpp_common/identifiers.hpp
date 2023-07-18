@@ -44,6 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* TODO(vicky)
  * compiler check that type T is a integral type
  */
+namespace pgrouting {
 
 template <typename T>
 class Identifiers {
@@ -55,9 +56,7 @@ class Identifiers {
     //! @name constructors
     //@{
     Identifiers<T>() = default;
-    Identifiers<T>(const Identifiers<T>&) = default;
-    Identifiers<T>(const std::set<T>& data) {
-        m_ids = data;
+    Identifiers<T>(const std::set<T>& data) : m_ids(data) {
     }
 
     /* @brief initializes with {1 ~ number}
@@ -249,5 +248,7 @@ class Identifiers {
             return os;
         }
 };
+
+}  // namespace pgrouting
 
 #endif  // INCLUDE_CPP_COMMON_IDENTIFIERS_HPP_

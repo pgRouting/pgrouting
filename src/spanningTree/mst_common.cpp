@@ -32,6 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 int
 get_order(char * fn_suffix, char ** err_msg) {
+    using pgrouting::pgr_msg;
     std::ostringstream err;
     try {
         pgassert(!(*err_msg));
@@ -52,6 +53,7 @@ get_order(char * fn_suffix, char ** err_msg) {
 
 char *
 get_name(int fn_id, char * fn_suffix, char ** err_msg) {
+    using pgrouting::pgr_msg;
     std::ostringstream err;
     try {
         pgassert(!(*err_msg));

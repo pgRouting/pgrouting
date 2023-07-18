@@ -9,10 +9,6 @@
 
 |
 
-* **Supported versions:**
-  `Latest <https://docs.pgrouting.org/latest/en/migration.html>`__
-  (`3.5 <https://docs.pgrouting.org/3.5/en/migration.html>`__)
-  `3.4 <https://docs.pgrouting.org/3.4/en/migration.html>`__
 
 Migration guide
 ===============================================================================
@@ -36,6 +32,147 @@ new replacement functions. This also affects the restrictions.
 
 .. contents:: Contents
 
+Migration of functions that add new columns
+*******************************************************************************
+
+.. contents:: Contents
+   :local:
+
+Migration of ``pgr_aStar``
+-------------------------------------------------------------------------------
+
+Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
+
+Signatures to be migrated:
+
+* ``pgr_aStar`` (`One to One`)
+* ``pgr_aStar`` (`One to Many`)
+* ``pgr_aStar`` (`Many to One`)
+
+:Before Migration:
+
+* Output columns were |old-generic-result|
+
+  * Depending on the overload used, the columns ``start_vid`` and ``end_vid``
+    might be missing:
+
+    * ``pgr_aStar`` (`One to One`) does not have ``start_vid`` and ``end_vid``.
+    * ``pgr_aStar`` (`One to Many`) does not have ``start_vid``.
+    * ``pgr_aStar`` (`Many to One`) does not have ``end_vid``.
+
+:Migration:
+
+* Be aware of the existance of the additional columns.
+
+* In ``pgr_aStar`` (`One to One`)
+
+  * ``start_vid`` contains the **start vid** parameter value.
+  * ``end_vid`` contains the **end vid** parameter value.
+
+.. literalinclude:: migration.queries
+   :start-after: --astar1
+   :end-before: --astar2
+
+* In ``pgr_aStar`` (`One to Many`)
+
+  * ``start_vid`` contains the **start vid** parameter value.
+
+.. literalinclude:: migration.queries
+   :start-after: --astar2
+   :end-before: --astar3
+
+* In ``pgr_aStar`` (`Many to One`)
+
+  * ``end_vid`` contains the **end vid** parameter value.
+
+.. literalinclude:: migration.queries
+   :start-after: --astar3
+   :end-before: --astar4
+
+* If needed filter out the added columns, for example:
+
+.. literalinclude:: migration.queries
+   :start-after: --astar4
+   :end-before: --astar5
+
+* If needed add the new columns, similar to the following example where
+  ``pgr_dijkstra`` is used, and the function had to be modified to be able to
+  return the new columns:
+
+  * In `v3.0 <https://docs.pgrouting.org/3.0/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph>`__
+    the function ``my_dijkstra`` uses ``pgr_dijkstra``.
+  * Starting from `v3.5 <https://docs.pgrouting.org/3.5/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph>`__
+    the function ``my_dijkstra`` returns the new additional columns of
+    ``pgr_dijkstra``.
+
+Migration of ``pgr_bdAstar``
+-------------------------------------------------------------------------------
+
+Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
+
+Signatures to be migrated:
+
+* ``pgr_bdAstar`` (`One to One`)
+* ``pgr_bdAstar`` (`One to Many`)
+* ``pgr_bdAstar`` (`Many to One`)
+
+:Before Migration:
+
+* Output columns were |old-generic-result|
+
+  * Depending on the overload used, the columns ``start_vid`` and ``end_vid``
+    might be missing:
+
+    * ``pgr_bdAstar`` (`One to One`) does not have ``start_vid`` and ``end_vid``.
+    * ``pgr_bdAstar`` (`One to Many`) does not have ``start_vid``.
+    * ``pgr_bdAstar`` (`Many to One`) does not have ``end_vid``.
+
+:Migration:
+
+* Be aware of the existance of the additional columns.
+
+* In ``pgr_bdAstar`` (`One to One`)
+
+  * ``start_vid`` contains the **start vid** parameter value.
+  * ``end_vid`` contains the **end vid** parameter value.
+
+.. literalinclude:: migration.queries
+   :start-after: --bdastar1
+   :end-before: --bdastar2
+
+* In ``pgr_bdAstar`` (`One to Many`)
+
+  * ``start_vid`` contains the **start vid** parameter value.
+
+.. literalinclude:: migration.queries
+   :start-after: --bdastar2
+   :end-before: --bdastar3
+
+* In ``pgr_bdAstar`` (`Many to One`)
+
+  * ``end_vid`` contains the **end vid** parameter value.
+
+.. literalinclude:: migration.queries
+   :start-after: --bdastar3
+   :end-before: --bdastar4
+
+* If needed filter out the added columns, for example:
+
+.. literalinclude:: migration.queries
+   :start-after: --bdastar4
+   :end-before: --bdastar5
+
+* If needed add the new columns, similar to the following example where
+  ``pgr_dijkstra`` is used, and the function had to be modified to be able to
+  return the new columns:
+
+  * In `v3.0 <https://docs.pgrouting.org/3.0/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph>`__
+    the function ``my_dijkstra`` uses ``pgr_dijkstra``.
+  * Starting from `v3.5 <https://docs.pgrouting.org/3.5/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph>`__
+    the function ``my_dijkstra`` returns the new additional columns of
+    ``pgr_dijkstra``.
+
+
 Migration of ``pgr_dijkstra``
 -------------------------------------------------------------------------------
 
@@ -49,9 +186,9 @@ Signatures to be migrated:
 
 :Before Migration:
 
-* Output columns are |old-generic-result|
+* Output columns were |old-generic-result|
 
-  * Depending on the overload used the columns ``start_vid`` and ``end_vid``
+  * Depending on the overload used, the columns ``start_vid`` and ``end_vid``
     might be missing:
 
     * ``pgr_dijkstra`` (`One to One`) does not have ``start_vid`` and
@@ -102,6 +239,12 @@ Signatures to be migrated:
     the function ``my_dijkstra`` returns the new additional columns of
     ``pgr_dijkstra``.
 
+Migration of functions that change inner query columns names
+*******************************************************************************
+
+.. contents:: Contents
+   :local:
+
 Migration of ``pgr_maxCardinalityMatch``
 -------------------------------------------------------------------------------
 
@@ -150,6 +293,12 @@ Migration is needed, because:
 .. literalinclude:: migration.queries
    :start-after: --maxcard2
    :end-before: --maxcard3
+
+Migration of turn restrictions
+*******************************************************************************
+
+.. contents:: Contents
+   :local:
 
 Migration of restrictions
 -------------------------------------------------------------------------------

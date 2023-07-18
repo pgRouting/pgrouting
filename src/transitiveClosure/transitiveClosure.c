@@ -30,7 +30,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdbool.h>
 
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
 #include "catalog/pg_type.h"
 #include "utils/lsyscache.h"
 
@@ -42,8 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 #include "c_types/transitiveClosure_rt.h"
-#include "c_common/edges_input.h"
-#include "c_common/arrays_input.h"
+#include "c_common/pgdata_getters.h"
 #include "drivers/transitiveClosure/transitiveClosure_driver.h"
 
 PGDLLEXPORT Datum _pgr_transitiveclosure(PG_FUNCTION_ARGS);
@@ -57,10 +55,14 @@ process(char* edges_sql,
         TransitiveClosure_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     size_t total_edges = 0;
     Edge_t* edges = NULL;
-    pgr_get_edges(edges_sql, &edges, &total_edges);
+    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
+    throw_error(err_msg, edges_sql);
     if (total_edges == 0) {
         pgr_SPI_finish();
         return;
@@ -68,9 +70,6 @@ process(char* edges_sql,
 
     PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
     do_pgr_transitiveClosure(
             edges, total_edges,
 
@@ -202,7 +201,7 @@ _pgr_transitiveclosure(PG_FUNCTION_ARGS) {
         TupleDescInitEntry(tuple_desc, (AttrNumber) 3, "target_array",
                 INT8ARRAYOID, -1, 0);
 
-        values[0] = Int32GetDatum(call_cntr + 1);
+        values[0] = Int32GetDatum((int32_t)call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[call_cntr].vid);
         values[2] = PointerGetDatum(arrayType);
 
