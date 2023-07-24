@@ -3,7 +3,7 @@ File: process_allpairs.cpp
 
 Function's developer:
 Copyright (c) 2023 Celia Virginia Vergara Castillo
-Mail: vicky_vergara at hotmail.com
+Mail: vicky_vergara at erosion.dev
 
 ------
 
@@ -31,11 +31,11 @@ extern "C" {
 #include "c_common/postgres_connection.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/pgdata_getters.h"
 }
 
 #include "c_types/iid_t_rt.h"
 #include "c_common/debug_macro.h"
+#include "cpp_common/pggetdata.hpp"
 
 #include "drivers/allpairs/allpairs_driver.h"
 
@@ -52,27 +52,19 @@ void process_allpairs(
         IID_t_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
-    PGR_DBG("Load data");
-    Edge_t *edges = NULL;
-    size_t total_tuples = 0;
-    pgr_get_edges(edges_sql, &edges, &total_tuples, true, true);
-
-    if (total_tuples == 0) {
-        PGR_DBG("No edges found");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
-        pgr_SPI_finish();
-        return;
-    }
-    PGR_DBG("Total %ld tuples in query:", total_tuples);
-
-    PGR_DBG("Starting processing");
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
     clock_t start_t = clock();
-    do_allpairs(edges, total_tuples, directed, which, result_tuples, result_count, &log_msg, &err_msg);
+    do_allpairs(
+            edges_sql,
+            directed,
+            which,
+            result_tuples,
+            result_count,
+            &log_msg,
+            &err_msg);
     if (which == 0) {
         time_msg(std::string(" processing pgr_johnson").c_str(), start_t, clock());
     } else {
@@ -81,18 +73,12 @@ void process_allpairs(
 
 
     if (err_msg && (*result_tuples)) {
-        free(*result_tuples);
+        pfree(*result_tuples);
         (*result_tuples) = NULL;
         (*result_count) = 0;
     }
 
-    pgr_global_report(log_msg, notice_msg, err_msg);
+    pgr_global_report(&log_msg, &notice_msg, &err_msg);
 
-
-    if (log_msg) pfree(log_msg);
-    if (notice_msg) pfree(notice_msg);
-    if (err_msg) pfree(err_msg);
-
-    pfree(edges);
     pgr_SPI_finish();
 }
