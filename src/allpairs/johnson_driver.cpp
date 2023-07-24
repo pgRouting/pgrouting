@@ -44,7 +44,6 @@ pgr_johnson(
         char *edges_sql,
 
         bool directed,
-
         IID_t_rt **return_tuples,
         size_t *return_count,
         char ** log_msg,
@@ -65,7 +64,7 @@ pgr_johnson(
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
         hint = edges_sql;
-        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, true, err);
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, true);
 
         if (edges.size() == 0) {
             throw std::string("No edges found");

@@ -78,7 +78,7 @@ void pgr_get_delauny(char*, Delauny_t**, size_t*, char**);
 #endif
 
 /** @brief Read edges called from C++ file*/
-std::vector<Edge_t> get_edges(const std::string&, bool, bool, std::ostringstream&);
+std::vector<Edge_t> get_edges(const std::string&, bool, bool);
 
 #if 0
 /** @brief Read edges with x, y endpointscalled from C file */

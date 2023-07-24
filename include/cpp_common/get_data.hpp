@@ -33,7 +33,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/info_t.hpp"
 #include "cpp_common/get_check_data.hpp"
 #include "cpp_common/pgr_alloc.hpp"
-#include "cpp_common/pgr_assert.h"
 
 namespace pgrouting {
 

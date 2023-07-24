@@ -399,33 +399,19 @@ std::vector<Edge_t>
 get_edges(
         const std::string &sql,
         bool normal,
-        bool ignore_id,
-        std::ostringstream &err) {
+        bool ignore_id) {
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
     using pgrouting::Column_info_t;
-#if 0
-    try {
-#endif
-        std::vector<Column_info_t> info{5};
+    std::vector<Column_info_t> info{5};
 
-        info[0] = {-1, 0, !ignore_id, "id", pgrouting::ANY_INTEGER};
-        info[1] = {-1, 0, true, "source", pgrouting::ANY_INTEGER};
-        info[2] = {-1, 0, true, "target", pgrouting::ANY_INTEGER};
-        info[3] = {-1, 0, true, "cost", pgrouting::ANY_NUMERICAL};
-        info[4] = {-1, 0, false, "reverse_cost", pgrouting::ANY_NUMERICAL};
+    info[0] = {-1, 0, !ignore_id, "id", pgrouting::ANY_INTEGER};
+    info[1] = {-1, 0, true, "source", pgrouting::ANY_INTEGER};
+    info[2] = {-1, 0, true, "target", pgrouting::ANY_INTEGER};
+    info[3] = {-1, 0, true, "cost", pgrouting::ANY_NUMERICAL};
+    info[4] = {-1, 0, false, "reverse_cost", pgrouting::ANY_NUMERICAL};
 
-        return pgrouting::get_data1<Edge_t>(sql, normal, info, &pgrouting::pgget::fetch_edge);
-#if 0
-    } catch (AssertFailedException &except) {
-        err << except.what();
-    } catch (const std::string &ex) {
-        err << ex.c_str();
-    } catch(...) {
-        err << "Caught unknown exception!";
-    }
-    return std::vector<Edge_t>();
-#endif
+    return pgrouting::get_data1<Edge_t>(sql, normal, info, &pgrouting::pgget::fetch_edge);
 }
 
 
