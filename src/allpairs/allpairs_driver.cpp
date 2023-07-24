@@ -36,13 +36,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "allpairs/allpairs.hpp"
 #include "cpp_common/pgdata_getters.hpp"
-
 #include "cpp_common/assert.hpp"
 
 
 void
 pgr_do_allpairs(
-        const char *edges_sql,
+        std::string edges_sql,
         bool directed,
         int which,
         /* IDEA: have as a parameter the function name*/
@@ -71,7 +70,6 @@ pgr_do_allpairs(
             throw std::string("No edges found");
         }
         hint = nullptr;
-
         if (directed) {
             log << "Processing Directed graph\n";
 
@@ -89,7 +87,6 @@ pgr_do_allpairs(
 
             pgrouting::UndirectedGraph undigraph;
             undigraph.insert_edges(edges);
-            pgr_floydWarshall(undigraph, *return_count, return_tuples);
 
             if (which == 0) {
                 pgr_johnson(undigraph, *return_count, return_tuples);

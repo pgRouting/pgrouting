@@ -32,26 +32,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 
-/* for size-t */
-#ifdef __cplusplus
 #include <cstddef>
 #include <vector>
+#include <string>
 using IID_t_rt = struct IID_t_rt;
-#else
-#   include <stddef.h>
-#include <stdbool.h>
-typedef struct IID_t_rt IID_t_rt;
-#endif
 
-
-
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 void
 pgr_do_allpairs(
-    const char*,
+    std::string,
     bool,
     int,
 
@@ -63,7 +52,5 @@ pgr_do_allpairs(
 #ifdef __cplusplus
 }
 #endif
-
-
 
 #endif  // INCLUDE_DRIVERS_ALLPAIRS_FLOYDWARSHALL_DRIVER_H_

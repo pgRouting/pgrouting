@@ -68,6 +68,7 @@ void process_allpairs(
             result_count,
             &log_msg,
             &err_msg);
+
     if (which == 0) {
         time_msg(std::string(" processing pgr_johnson").c_str(), start_t, clock());
     } else {
