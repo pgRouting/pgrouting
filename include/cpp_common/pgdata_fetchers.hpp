@@ -82,6 +82,13 @@ void fetch_edge(
         const std::vector<Column_info_t> &,
         int64_t*, Edge_t*, size_t*, bool);
 
+namespace pgget {
+Edge_t fetch_edge(
+        const HeapTuple, const TupleDesc &,
+        const std::vector<Column_info_t> &,
+        int64_t*, size_t*, bool);
+}  // namespace pgget
+
 void fetch_costFlow_edge(
         const HeapTuple, const TupleDesc &,
         const std::vector<Column_info_t> &,

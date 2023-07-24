@@ -55,6 +55,7 @@ void process(
     char* err_msg = NULL;
 
     PGR_DBG("Load data");
+#if 0
     Edge_t *edges = NULL;
     size_t total_tuples = 0;
     pgr_get_edges(edges_sql, &edges, &total_tuples, true, true, &err_msg);
@@ -68,12 +69,12 @@ void process(
         return;
     }
     PGR_DBG("Total %ld tuples in query:", total_tuples);
+#endif
 
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
-    do_pgr_johnson(
-            edges,
-            total_tuples,
+    pgr_johnson(
+            edges_sql,
             directed,
             result_tuples,
             result_count,
@@ -94,7 +95,9 @@ void process(
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
 
+#if 0
     pfree(edges);
+#endif
     pgr_SPI_finish();
 }
 /*                                                                            */
