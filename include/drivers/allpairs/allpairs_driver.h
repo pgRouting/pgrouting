@@ -31,9 +31,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_ALLPAIRS_FLOYDWARSHALL_DRIVER_H_
 #pragma once
 
+
 /* for size-t */
 #ifdef __cplusplus
-#   include <cstddef>
+#include <cstddef>
+#include <vector>
 using IID_t_rt = struct IID_t_rt;
 #else
 #   include <stddef.h>
@@ -61,5 +63,7 @@ pgr_do_allpairs(
 #ifdef __cplusplus
 }
 #endif
+
+
 
 #endif  // INCLUDE_DRIVERS_ALLPAIRS_FLOYDWARSHALL_DRIVER_H_

@@ -41,7 +41,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 void
-<<<<<<< HEAD
 pgr_do_allpairs(
         const char *edges_sql,
         bool directed,
@@ -75,9 +74,11 @@ pgr_do_allpairs(
 
         if (directed) {
             log << "Processing Directed graph\n";
+
             pgrouting::DirectedGraph digraph;
             digraph.insert_edges(edges);
             pgr_floydWarshall(digraph, *return_count, return_tuples);
+
             if (which == 0) {
                 pgr_johnson(digraph, *return_count, return_tuples);
             } else {
@@ -85,9 +86,11 @@ pgr_do_allpairs(
             }
         } else {
             log << "Processing Undirected graph\n";
+
             pgrouting::UndirectedGraph undigraph;
             undigraph.insert_edges(edges);
             pgr_floydWarshall(undigraph, *return_count, return_tuples);
+
             if (which == 0) {
                 pgr_johnson(undigraph, *return_count, return_tuples);
             } else {

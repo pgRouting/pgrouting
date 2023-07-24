@@ -36,6 +36,7 @@ extern "C" {
 #include "c_types/iid_t_rt.h"
 #include "c_common/debug_macro.h"
 #include "cpp_common/pggetdata.hpp"
+#include "cpp_common/pgr_assert.h"
 
 #include "drivers/allpairs/allpairs_driver.h"
 
@@ -51,6 +52,8 @@ void process_allpairs(
         int which,
         IID_t_rt **result_tuples,
         size_t *result_count) {
+    pgassert(!(*result_tuples));
+    pgassert(*result_count == 0);
     pgr_SPI_connect();
     char* log_msg = NULL;
     char* notice_msg = NULL;

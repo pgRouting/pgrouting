@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  * Generates an ERROR on postgres when err in not null
  */
 void
-pgr_throw_error(char *err, char *hint) {
+pgr_throw_error(const char *err, const char *hint) {
     if (err) {
         ereport(ERROR, (errmsg("%s", err), errhint("%s", hint)));
     }
