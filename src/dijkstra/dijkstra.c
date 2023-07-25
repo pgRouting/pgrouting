@@ -76,52 +76,24 @@ process(
     int64_t* end_vidsArr = NULL;
     size_t size_end_vidsArr = 0;
 
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-
-    II_t_rt *combinationsArr = NULL;
-    size_t total_combinations = 0;
-
     if (normal) {
-        pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-        throw_error(err_msg, edges_sql);
-
-        if (combinations_sql) {
-            pgr_get_combinations(combinations_sql, &combinationsArr, &total_combinations, &err_msg);
-            throw_error(err_msg, combinations_sql);
-        } else {
+        if (!combinations_sql) {
             start_vidsArr = pgr_get_bigIntArray(&size_start_vidsArr, starts, false, &err_msg);
             throw_error(err_msg, "While getting start vids");
             end_vidsArr = pgr_get_bigIntArray(&size_end_vidsArr, ends, false, &err_msg);
             throw_error(err_msg, "While getting end vids");
         }
     } else {
-        pgr_get_edges(edges_sql, &edges, &total_edges, false, false, &err_msg);
-        throw_error(err_msg, edges_sql);
         end_vidsArr = pgr_get_bigIntArray(&size_end_vidsArr, starts, false, &err_msg);
         throw_error(err_msg, "While getting start vids");
         start_vidsArr = pgr_get_bigIntArray(&size_start_vidsArr, ends, false, &err_msg);
         throw_error(err_msg, "While getting end vids");
     }
 
-    if (total_edges == 0) {
-        if (end_vidsArr) pfree(end_vidsArr);
-        if (start_vidsArr) pfree(start_vidsArr);
-        if (combinationsArr) pfree(combinationsArr);
-        pgr_SPI_finish();
-        return;
-    }
-
-    if (total_combinations == 0 && (size_end_vidsArr== 0 || size_start_vidsArr == 0)) {
-        if (edges) pfree(edges);
-        pgr_SPI_finish();
-        return;
-    }
-
     clock_t start_t = clock();
     pgr_do_dijkstra(
-            edges, total_edges,
-            combinationsArr, total_combinations,
+            edges_sql,
+            combinations_sql,
             start_vidsArr, size_start_vidsArr,
             end_vidsArr, size_end_vidsArr,
 
@@ -164,10 +136,9 @@ process(
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-    if (edges) pfree(edges);
+
     if (start_vidsArr) pfree(start_vidsArr);
     if (end_vidsArr) pfree(end_vidsArr);
-    if (combinationsArr) pfree(combinationsArr);
     pgr_SPI_finish();
 }
 

@@ -43,6 +43,9 @@ std::map<int64_t, std::set<int64_t>>
 get_combinations(const II_t_rt *, size_t);
 
 std::map<int64_t, std::set<int64_t>>
+get_combinations(const std::vector<II_t_rt>&);
+
+std::map<int64_t, std::set<int64_t>>
 get_combinations(int64_t*, size_t, int64_t*, size_t);
 
 std::map<int64_t, std::set<int64_t>>

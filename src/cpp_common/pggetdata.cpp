@@ -82,6 +82,7 @@ int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input, bool allow_empty,
         return nullptr;
     }
 }
+#endif
 
 
 /**
@@ -95,32 +96,19 @@ int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input, bool allow_empty,
   @param [out] total_rows size of combinations
   @param[out] err_msg when not null, there was an error and contains the message
   */
-void pgr_get_combinations(
-        char *sql,
-        II_t_rt **rows,
-        size_t *total_rows,
-        char **err_msg) {
+std::vector<II_t_rt>
+get_combinations(const std::string &sql) {
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
     using pgrouting::Column_info_t;
-    try {
-        std::vector<Column_info_t> info{2};
+    std::vector<Column_info_t> info{2};
 
-        info[0] = {-1, 0, true, "source", pgrouting::ANY_INTEGER};
-        info[1] = {-1, 0, true, "target", pgrouting::ANY_INTEGER};
-        pgrouting::get_data(sql, rows, total_rows, true, info, &pgrouting::fetch_combination);
-    } catch (const std::string &ex) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg(ex.c_str());
-    } catch(...) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg("Caught unknown exception!");
-    }
+    info[0] = {-1, 0, true, "source", pgrouting::ANY_INTEGER};
+    info[1] = {-1, 0, true, "target", pgrouting::ANY_INTEGER};
+    return pgrouting::get_data1<II_t_rt>(sql, true, info, &pgrouting::pgget::fetch_combination);
 }
 
-
+#if 0
 /**
   For queries of the type:
   ~~~~{.c}

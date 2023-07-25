@@ -57,19 +57,22 @@ using Edge_xy_t = struct Edge_xy_t;
 using Flow_t = struct Flow_t;
 using Edge_bool_t = struct Edge_bool_t;
 using CostFlow_t = struct CostFlow_t;
-#include "c_types/edge_t.h"
+using Edges_t = struct Edges_t;
 using Orders_t = struct Orders_t;
 using Point_on_edge_t = struct Point_on_edge_t;
 using Vehicle_t = struct Vehicle_t;
 using Restriction_t = struct Restriction_t;
 
+#include "c_types/ii_t_rt.h"
+#include "c_types/edge_t.h"
+
 namespace pgrouting {
 namespace pgget {
 
-#if 0
 /** @brief Read rows of combinations, called from C file*/
-void pgr_get_combinations(char *, II_t_rt **, size_t *, char**);
+std::vector<II_t_rt> get_combinations(const std::string&);
 
+#if 0
 /** @brief Read rows of matrix, called from C file*/
 void pgr_get_coordinates(char*, Coordinate_t**, size_t*, char**);
 

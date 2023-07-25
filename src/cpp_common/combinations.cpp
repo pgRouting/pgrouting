@@ -46,6 +46,16 @@ get_combinations(const II_t_rt *combinations, size_t total) {
 }
 
 std::map<int64_t , std::set<int64_t>>
+get_combinations(const std::vector<II_t_rt> &combinations) {
+    std::map<int64_t, std::set<int64_t>> result;
+
+    for (const auto &row : combinations) {
+        result[row.d1.source].insert(row.d2.target);
+    }
+    return result;
+}
+
+std::map<int64_t , std::set<int64_t>>
 get_combinations(
         int64_t  *start_arr,
         size_t size_start_arr,

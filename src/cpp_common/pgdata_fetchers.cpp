@@ -69,6 +69,21 @@ void fetch_combination(
     *valid_combinations = *valid_combinations + 1;
 }
 
+namespace pgget {
+II_t_rt fetch_combination(
+        const HeapTuple tuple,
+        const TupleDesc &tupdesc,
+        const std::vector<Column_info_t> &info,
+        int64_t*,
+        size_t*,
+        bool) {
+    II_t_rt combination;
+    combination.d1.source = pgrouting::getBigInt(tuple, tupdesc, info[0]);
+    combination.d2.target = pgrouting::getBigInt(tuple, tupdesc, info[1]);
+    return combination;
+}
+}  // namespace pgget
+
 void fetch_coordinate(
         const HeapTuple tuple,
         const TupleDesc &tupdesc,

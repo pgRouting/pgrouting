@@ -62,6 +62,13 @@ void fetch_combination(
         const std::vector<Column_info_t> &,
         int64_t*, II_t_rt*, size_t*, bool);
 
+namespace pgget {
+II_t_rt fetch_combination(
+        const HeapTuple, const TupleDesc &,
+        const std::vector<Column_info_t> &,
+        int64_t*, size_t*, bool);
+}  // namespace pgget
+
 void fetch_coordinate(
         const HeapTuple, const TupleDesc &,
         const std::vector<Column_info_t> &,
