@@ -53,9 +53,6 @@ void process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    PGR_DBG("Load data");
-
-    PGR_DBG("Starting processing");
     clock_t start_t = clock();
     pgr_do_johnson(
             edges_sql,
