@@ -155,12 +155,12 @@ pgr_do_dijkstra(
             pgrouting::pgget::get_combinations(std::string(combinations_sql)) : std::vector<II_t_rt>();
         hint = nullptr;
 
-        size_t n = n_goals <= 0? (std::numeric_limits<size_t>::max)() : static_cast<size_t>(n_goals);
-        std::deque<Path>paths;
-
         auto combinations = combinationsArr.empty()?
             pgrouting::utilities::get_combinations(start_vidsArr, size_start_vidsArr, end_vidsArr, size_end_vidsArr)
             : pgrouting::utilities::get_combinations(combinationsArr);
+
+        size_t n = n_goals <= 0? (std::numeric_limits<size_t>::max)() : static_cast<size_t>(n_goals);
+        std::deque<Path>paths;
 
         if (directed) {
             pgrouting::DirectedGraph graph(gType);

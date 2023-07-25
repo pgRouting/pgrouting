@@ -83,10 +83,10 @@ void pgr_get_delauny(char*, Delauny_t**, size_t*, char**);
 /** @brief Read edges called from C++ file*/
 std::vector<Edge_t> get_edges(const std::string&, bool, bool);
 
-#if 0
 /** @brief Read edges with x, y endpointscalled from C file */
-void pgr_get_edges_xy(char*, Edge_xy_t**, size_t*, bool, char**);
+std::vector<Edge_xy_t> get_edges_xy(const std::string&, bool);
 
+#if 0
 /** @brief Read edges for flow called from C file */
 void pgr_get_flow_edges(char*, Edge_t**, size_t*, char**);
 
