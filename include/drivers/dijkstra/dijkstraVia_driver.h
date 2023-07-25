@@ -47,24 +47,15 @@ typedef struct Routes_t Routes_t;
 extern "C" {
 #endif
 
-    /*
-       CREATE OR REPLACE FUNCTION pgr_dijkstraViaVertices(
-       sql text,
-       vertices anyarray,
-       directed boolean default true,
-       */
-    void
-        do_pgr_dijkstraVia(
-                Edge_t  *data_edges,  size_t total_edges,
-                int64_t  *via_vidsArr,    size_t size_via_vidsArr,
-                bool directed,
-                bool strict,
-                bool U_turn_on_edge,
-                Routes_t **return_tuples, size_t *return_count,
+void pgr_do_dijkstraVia(
+        char*,
+        int64_t*,size_t size_via_vidsArr,
+        bool,
+        bool,
+        bool,
+        Routes_t **, size_t *,
 
-                char** log_msg,
-                char** notice_msg,
-                char** err_msg);
+        char**, char**, char** );
 
 #ifdef __cplusplus
 }
