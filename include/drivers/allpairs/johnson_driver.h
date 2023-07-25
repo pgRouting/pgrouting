@@ -46,14 +46,12 @@ extern "C" {
 #endif
 
 void
-pgr_johnson(
-        char  *data_edges,
-        bool directed,
-        IID_t_rt **return_tuples,
-        size_t *return_count,
-        char ** log_msg,
-        char ** err_msg);
-
+pgr_do_johnson(
+        char*,
+        bool,
+        IID_t_rt**, size_t*,
+        char**,
+        char**);
 
 #ifdef __cplusplus
 }

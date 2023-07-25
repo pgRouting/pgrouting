@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 void
-pgr_johnson(
+pgr_do_johnson(
         char *edges_sql,
 
         bool directed,
@@ -85,13 +85,12 @@ pgr_johnson(
 
 
         if (*return_count == 0) {
-            log <<  "No result generated, report this error\n";
-            *log_msg = pgr_msg(err.str().c_str());
+            err << "No result generated, report this error\n";
+            *err_msg = pgr_msg(err.str().c_str());
             *return_tuples = NULL;
             *return_count = 0;
             return;
         }
-
 
         *log_msg = log.str().empty()?
             *log_msg :
