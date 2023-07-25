@@ -7,7 +7,7 @@ Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail:vicky at erosion.dev
+Mail: vicky at erosion.dev
 
 ------
 
@@ -69,11 +69,13 @@ process(char* edges_sql,
     int64_t* end_vidsArr = NULL;
     size_t size_end_vidsArr = 0;
 
+#if 0
     Edge_xy_t *edges = NULL;
     size_t total_edges = 0;
 
     II_t_rt *combinations = NULL;
     size_t total_combinations = 0;
+#endif
 
     if (starts && ends) {
         start_vidsArr = pgr_get_bigIntArray(&size_start_vidsArr, starts, false, &err_msg);
@@ -81,10 +83,12 @@ process(char* edges_sql,
         end_vidsArr = pgr_get_bigIntArray(&size_end_vidsArr, ends, false, &err_msg);
         throw_error(err_msg, "While getting end vids");
     } else if (combinations_sql) {
+#if 0
         pgr_get_combinations(combinations_sql, &combinations, &total_combinations, &err_msg);
         throw_error(err_msg, combinations_sql);
+#endif
     }
-
+#if 0
     pgr_get_edges_xy(edges_sql, &edges, &total_edges, true, &err_msg);
     throw_error(err_msg, edges_sql);
 
@@ -95,12 +99,12 @@ process(char* edges_sql,
         pgr_SPI_finish();
         return;
     }
+#endif
 
     clock_t start_t = clock();
     pgr_do_bdAstar(
-            edges, total_edges,
-
-            combinations, total_combinations,
+            edges_sql,
+            combinations_sql,
 
             start_vidsArr, size_start_vidsArr,
             end_vidsArr, size_end_vidsArr,
@@ -131,7 +135,6 @@ process(char* edges_sql,
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-    if (edges) pfree(edges);
     if (start_vidsArr) pfree(start_vidsArr);
     if (end_vidsArr) pfree(end_vidsArr);
 
@@ -161,7 +164,6 @@ _pgr_bdastar(PG_FUNCTION_ARGS) {
                 NULL,
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_ARRAYTYPE_P(2),
-
                 PG_GETARG_BOOL(3),
                 PG_GETARG_INT32(4),
                 PG_GETARG_FLOAT8(5),
@@ -171,7 +173,7 @@ _pgr_bdastar(PG_FUNCTION_ARGS) {
                 &result_count);
         } else if (PG_NARGS() == 7) {
             /*
-             * combinations
+             * Combinations
              */
             process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),

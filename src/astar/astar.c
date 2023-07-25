@@ -29,7 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
 
 #include "c_types/path_rt.h"
 #include "c_common/debug_macro.h"
@@ -109,7 +108,6 @@ process(char* edges_sql,
     } else {
         time_msg("processing pgr_astar", start_t, clock());
     }
-
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
@@ -201,6 +199,8 @@ _pgr_astar(PG_FUNCTION_ARGS) {
         Datum        result;
         Datum        *values;
         bool*        nulls;
+        size_t       call_cntr = funcctx->call_cntr;
+
 
         size_t numb = 8;
         values = palloc(numb * sizeof(Datum));
@@ -211,15 +211,14 @@ _pgr_astar(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-
-        values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_id);
-        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
-        values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[0] = Int32GetDatum((int32_t)call_cntr + 1);
+        values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].end_id);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].node);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].edge);
+        values[6] = Float8GetDatum(result_tuples[call_cntr].cost);
+        values[7] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
 
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

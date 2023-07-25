@@ -70,6 +70,7 @@ void pgr_do_astar(
     char* hint;
     try {
         pgassert(!(*log_msg));
+        pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
@@ -106,6 +107,7 @@ void pgr_do_astar(
             graph.insert_edges(edges);
             paths = pgrouting::algorithms::astar(graph, combinations, heuristic, factor, epsilon, only_cost);
         }
+
         if (!normal) {
             for (auto &path : paths) {
                 path.reverse();
@@ -116,7 +118,7 @@ void pgr_do_astar(
         count = count_tuples(paths);
 
         if (count == 0) {
-            (*return_tuples) = NULL;
+            (*return_tuples) = nullptr;
             (*return_count) = 0;
             notice << "No paths found\n";
             *log_msg = pgr_msg(notice.str().c_str());
