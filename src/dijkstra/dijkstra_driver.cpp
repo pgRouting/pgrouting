@@ -49,7 +49,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "dijkstra/dijkstra.hpp"
 
-namespace detail {
+namespace {
 
 void
 post_process(std::deque<pgrouting::Path> &paths, bool only_cost, bool normal, size_t n_goals, bool global) {
@@ -99,7 +99,7 @@ post_process(std::deque<pgrouting::Path> &paths, bool only_cost, bool normal, si
     }
 }
 
-}  // namespace detail
+}  // namespace
 
 
 void
@@ -171,7 +171,7 @@ pgr_do_dijkstra(
             graph.insert_edges(edges);
             paths =  pgrouting::algorithms::dijkstra(graph, combinations, only_cost, n);
         }
-        detail::post_process(paths, only_cost, normal, n, global);
+        post_process(paths, only_cost, normal, n, global);
         combinations.clear();
 
         size_t count(0);

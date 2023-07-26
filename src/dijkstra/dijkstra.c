@@ -1,5 +1,4 @@
 /*PGR-GNU*****************************************************************
-
 File: dijkstra.c
 
 Generated with Template by:
@@ -52,7 +51,7 @@ static
 void
 process(
         char *edges_sql,
-        char* combinations_sql,
+        char *combinations_sql,
         ArrayType *starts,
         ArrayType *ends,
 
@@ -153,6 +152,7 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
+
         if (PG_NARGS() == 7) {
             /* kept for backwards compatibility
              * TODO remove on 4.0.0 */
