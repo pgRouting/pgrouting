@@ -51,7 +51,7 @@ pgr_bellman_ford(
         G &graph,
         const std::map<int64_t, std::set<int64_t>> &combinations,
         bool only_cost = false) {
-    pgrouting::Pgr_bellman_ford< G > fn_bellman_ford;
+    pgrouting::Pgr_bellman_ford<G> fn_bellman_ford;
     auto paths = fn_bellman_ford.bellman_ford(graph, combinations, only_cost);
     for (auto &p : paths) p.recalculate_agg_cost();
     return paths;
@@ -124,9 +124,7 @@ pgr_do_bellman_ford(
         } else {
             pgrouting::UndirectedGraph graph(gType);
             graph.insert_edges(edges);
-            paths = pgr_bellman_ford(graph,
-                    combinations,
-                    only_cost);
+            paths = pgr_bellman_ford(graph, combinations, only_cost);
         }
 
         size_t count(0);

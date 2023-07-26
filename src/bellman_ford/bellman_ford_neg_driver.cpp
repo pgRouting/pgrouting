@@ -33,71 +33,49 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 #include <algorithm>
-#include <string>
 
-#include "bellman_ford/pgr_bellman_ford.hpp"
 
+#include "c_types/ii_t_rt.h"
+#include "cpp_common/combinations.h"
+#include "cpp_common/pggetdata.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
+#include "bellman_ford/pgr_bellman_ford.hpp"
 
-/* Bellman Ford Shortest Path */
-/************************************************************
-    EDGE_SQL,
-    ANYARRAY,
-    ANYARRAY,
-    directed BOOLEAN DEFAULT true,
- ***********************************************************/
 namespace {
-template < class G >
+
+template <class G>
 std::deque<pgrouting::Path>
 pgr_bellman_ford(
         G &graph,
-        std::vector <II_t_rt> &combinations,
-        std::vector < int64_t > sources,
-        std::vector < int64_t > targets,
-        std::string &log,
+        const std::map<int64_t, std::set<int64_t>> &combinations,
         bool only_cost = false) {
-    std::sort(sources.begin(), sources.end());
-    sources.erase(
-            std::unique(sources.begin(), sources.end()),
-            sources.end());
-
-    std::sort(targets.begin(), targets.end());
-    targets.erase(
-            std::unique(targets.begin(), targets.end()),
-            targets.end());
-
-    pgrouting::Pgr_bellman_ford< G > fn_bellman_ford;
-    auto paths = combinations.empty() ?
-            fn_bellman_ford.bellman_ford(graph, sources, targets, only_cost)
-            : fn_bellman_ford.bellman_ford(graph, combinations, only_cost);
-    log += fn_bellman_ford.get_log();
+    pgrouting::Pgr_bellman_ford<G> fn_bellman_ford;
+    auto paths = fn_bellman_ford.bellman_ford(graph, combinations, only_cost);
+    for (auto &p : paths) p.recalculate_agg_cost();
     return paths;
 }
 
 }  // namespace
 
 void
-do_pgr_bellman_ford_neg(
-                Edge_t  *positive_edges,
-                size_t total_positive_edges,
-                Edge_t  *negative_edges,
-                size_t total_negative_edges,
-                II_t_rt *combinations,
-                size_t total_combinations,
-                int64_t  *start_vidsArr,
-                size_t size_start_vidsArr,
-                int64_t  *end_vidsArr,
-                size_t size_end_vidsArr,
-                bool directed,
-                bool only_cost,
+pgr_do_bellman_ford_neg(
+        char *edges_sql,
+        char *neg_edges_sql,
+        char *combinations_sql,
 
-                Path_rt **return_tuples,
-                size_t *return_count,
-                char ** log_msg,
-                char ** notice_msg,
-                char ** err_msg) {
+        int64_t *start_vidsArr, size_t size_start_vidsArr,
+        int64_t *end_vidsArr, size_t size_end_vidsArr,
+
+        bool directed,
+        bool only_cost,
+
+        Path_rt **return_tuples,
+        size_t *return_count,
+        char **log_msg,
+        char **notice_msg,
+        char **err_msg) {
     using pgrouting::Path;
     using pgrouting::pgr_alloc;
     using pgrouting::pgr_msg;
@@ -106,74 +84,69 @@ do_pgr_bellman_ford_neg(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char *hint;
+
     try {
-        size_t total_edges =  total_positive_edges + total_negative_edges;
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(total_edges != 0);
-        pgassert(total_positive_edges || total_negative_edges);
-        pgassert((start_vidsArr && end_vidsArr) || combinations);
-        pgassert((size_start_vidsArr && size_end_vidsArr) || total_combinations);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        log << "Inserting vertices into a c++ vector structure";
+	hint = neg_edges_sql;
+        auto neg_edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
 
-        std::vector<int64_t>
-            start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
-        std::vector< int64_t >
-            end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
-        std::vector< II_t_rt >
-            combinations_vector(combinations, combinations + total_combinations);
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
 
-        std::deque< Path >paths;
-        std::string logstr;
+        if (edges.size() + neg_edges.size() == 0) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
+
+        hint = combinations_sql;
+        auto combinationsArr = combinations_sql?
+            pgrouting::pgget::get_combinations(std::string(combinations_sql)) : std::vector<II_t_rt>();
+        hint = nullptr;
+
+        auto combinations = combinationsArr.empty()?
+            pgrouting::utilities::get_combinations(start_vidsArr, size_start_vidsArr, end_vidsArr, size_end_vidsArr)
+            : pgrouting::utilities::get_combinations(combinationsArr);
+
+        std::deque<Path> paths;
+
         if (directed) {
-            log << "Working with directed Graph\n";
-            pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(positive_edges, total_positive_edges);
-            digraph.insert_negative_edges(negative_edges, total_negative_edges);
-            log << digraph;
-            paths = pgr_bellman_ford(digraph,
-                    combinations_vector,
-                    start_vertices,
-                    end_vertices,
-                    logstr,
+            pgrouting::DirectedGraph graph(gType);
+            graph.insert_edges(edges);
+            graph.insert_negative_edges(neg_edges);
+            log << graph;
+            paths = pgr_bellman_ford(graph,
+                    combinations,
                     only_cost);
         } else {
-            log << "Working with Undirected Graph\n";
-            pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(positive_edges, total_positive_edges);
-            undigraph.insert_negative_edges(
-                    negative_edges,
-                    total_negative_edges);
-            log << undigraph;
-            paths = pgr_bellman_ford(
-                    undigraph,
-                    combinations_vector,
-                    start_vertices,
-                    end_vertices,
-                    logstr,
-                    only_cost);
+            pgrouting::UndirectedGraph graph(gType);
+            graph.insert_edges(edges);
+            graph.insert_negative_edges(neg_edges);
+            log << graph;
+            paths = pgr_bellman_ford(graph, combinations, only_cost);
         }
-        log<< logstr;
+
         size_t count(0);
         count = count_tuples(paths);
 
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            notice <<
-                "No paths found";
+            notice << "No paths found";
             *log_msg = pgr_msg(notice.str().c_str());
             return;
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        log << "\nConverting a set of paths into the tuples";
         (*return_count) = (collapse_paths(return_tuples, paths));
 
         *log_msg = log.str().empty()?
@@ -187,18 +160,21 @@ do_pgr_bellman_ford_neg(
         (*return_count) = 0;
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch(...) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << "Caught unknown exception!";
         *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     }
 }
