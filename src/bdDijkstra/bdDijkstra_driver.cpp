@@ -7,7 +7,7 @@ Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2016 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Mail: vicky at erosion.dev
 
 ------
 
@@ -37,6 +37,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "bdDijkstra/pgr_bdDijkstra.hpp"
 
 
+#include "cpp_common/combinations.h"
+#include "cpp_common/pggetdata.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/pgr_base_graph.hpp"
@@ -51,92 +53,36 @@ template < class G >
 std::deque<pgrouting::Path>
 pgr_bdDijkstra(
         G &graph,
-        std::vector < II_t_rt > &combinations,
-        std::vector < int64_t > sources,
-        std::vector < int64_t > targets,
-
-        std::ostream &log,
+        const std::map<int64_t, std::set<int64_t>> &combinations,
         bool only_cost) {
     using pgrouting::Path;
 
     pgrouting::bidirectional::Pgr_bdDijkstra<G> fn_bdDijkstra(graph);
     std::deque<Path> paths;
 
-    if (combinations.empty()) {
-        std::sort(sources.begin(), sources.end());
-        sources.erase(
-                std::unique(sources.begin(), sources.end()),
-                sources.end());
+    for (const auto &comb : combinations) {
+        auto source = comb.first;
+        if (!graph.has_vertex(source)) continue;
 
-        std::sort(targets.begin(), targets.end());
-        targets.erase(
-                std::unique(targets.begin(), targets.end()),
-                targets.end());
-
-        for (const auto source : sources) {
-            for (const auto target : targets) {
-                fn_bdDijkstra.clear();
-
-                if (!graph.has_vertex(source)
-                        || !graph.has_vertex(target)) {
-                    paths.push_back(Path(source, target));
-                    continue;
-                }
-
-                paths.push_back(fn_bdDijkstra.pgr_bdDijkstra(
-                        graph.get_V(source), graph.get_V(target), only_cost));
-            }
-        }
-
-    } else {
-        std::sort(combinations.begin(), combinations.end(),
-                [](const II_t_rt &lhs, const II_t_rt &rhs)->bool {
-                    return lhs.d2.target < rhs.d2.target;
-                });
-        std::stable_sort(combinations.begin(), combinations.end(),
-                [](const II_t_rt &lhs, const II_t_rt &rhs)->bool {
-                    return lhs.d1.source < rhs.d1.source;
-                });
-
-        II_t_rt previousCombination {{0}, {0}};
-
-        for (const II_t_rt &comb : combinations) {
+        for (const auto &target : comb.second) {
+            if (!graph.has_vertex(target)) continue;
             fn_bdDijkstra.clear();
-            if (comb.d1.source == previousCombination.d1.source &&
-                    comb.d2.target == previousCombination.d2.target) {
-                continue;
-            }
 
-            if (!graph.has_vertex(comb.d1.source)
-                    || !graph.has_vertex(comb.d2.target)) {
-                paths.push_back(Path(comb.d1.source, comb.d2.target));
-                continue;
-            }
-
-            paths.push_back(fn_bdDijkstra.pgr_bdDijkstra(
-                    graph.get_V(comb.d1.source), graph.get_V(comb.d2.target), only_cost));
-
-            previousCombination = comb;
+            paths.push_back(fn_bdDijkstra.pgr_bdDijkstra(graph.get_V(source), graph.get_V(target), only_cost));
         }
     }
-
-    log << fn_bdDijkstra.log();
-
     return paths;
 }
 
 }  // namespace
 
 void
-do_pgr_bdDijkstra(
-        Edge_t  *data_edges,
-        size_t total_edges,
-        II_t_rt *combinations,
-        size_t total_combinations,
-        int64_t  *start_vidsArr,
-        size_t size_start_vidsArr,
-        int64_t  *end_vidsArr,
-        size_t size_end_vidsArr,
+pgr_do_bddijkstra(
+        char *edges_sql,
+        char *combinations_sql,
+
+        int64_t *start_vidsArr, size_t size_start_vidsArr,
+        int64_t *end_vidsArr, size_t size_end_vidsArr,
 
         bool directed,
         bool only_cost,
@@ -147,55 +93,53 @@ do_pgr_bdDijkstra(
         char **notice_msg,
         char **err_msg) {
     using pgrouting::Path;
+    using pgrouting::pgr_alloc;
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
-    using pgrouting::pgr_alloc;
 
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char *hint;
+
     try {
-        pgassert(total_edges != 0);
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        log << "Inserting vertices into a c++ vector structure";
-        std::vector<int64_t>
-            start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
-        std::vector< int64_t >
-            end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
-        std::vector< II_t_rt >
-            combinations_vector(combinations, combinations + total_combinations);
-
         graphType gType = directed? DIRECTED: UNDIRECTED;
+
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+
+        if (edges.size() == 0) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
+
+        hint = combinations_sql;
+        auto combinationsArr = combinations_sql?
+            pgrouting::pgget::get_combinations(std::string(combinations_sql)) : std::vector<II_t_rt>();
+        hint = nullptr;
+
+        auto combinations = combinationsArr.empty()?
+            pgrouting::utilities::get_combinations(start_vidsArr, size_start_vidsArr, end_vidsArr, size_end_vidsArr)
+            : pgrouting::utilities::get_combinations(combinationsArr);
 
         std::deque<Path> paths;
 
-        log << "starting process\n";
         if (directed) {
-            log << "Working with directed Graph\n";
-            pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(data_edges, total_edges);
-            paths = pgr_bdDijkstra(digraph,
-                    combinations_vector,
-                    start_vertices,
-                    end_vertices,
-                    log,
-                    only_cost);
+            pgrouting::DirectedGraph graph(gType);
+            graph.insert_edges(edges);
+            paths = pgr_bdDijkstra(graph, combinations, only_cost);
         } else {
-            log << "Working with Undirected Graph\n";
-            pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(data_edges, total_edges);
-            paths = pgr_bdDijkstra(
-                    undigraph,
-                    combinations_vector,
-                    start_vertices,
-                    end_vertices,
-                    log,
-                    only_cost);
+            pgrouting::UndirectedGraph graph(gType);
+            graph.insert_edges(edges);
+            paths = pgr_bdDijkstra( graph, combinations, only_cost);
         }
 
         size_t count(0);
@@ -204,17 +148,14 @@ do_pgr_bdDijkstra(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            notice <<
-                "No paths found";
+            notice << "No paths found";
             *log_msg = pgr_msg(notice.str().c_str());
             return;
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        log << "\nConverting a set of paths into the tuples";
         (*return_count) = (collapse_paths(return_tuples, paths));
 
-        pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             *log_msg :
             pgr_msg(log.str().c_str());
@@ -226,18 +167,21 @@ do_pgr_bdDijkstra(
         (*return_count) = 0;
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch(...) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << "Caught unknown exception!";
         *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     }
 }

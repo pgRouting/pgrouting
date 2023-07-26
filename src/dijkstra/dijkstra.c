@@ -34,7 +34,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include <stdbool.h>
-
 #include "c_common/postgres_connection.h"
 
 #include "c_types/path_rt.h"
@@ -261,4 +260,3 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
         SRF_RETURN_DONE(funcctx);
     }
 }
-

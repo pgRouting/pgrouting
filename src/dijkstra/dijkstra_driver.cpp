@@ -118,9 +118,9 @@ pgr_do_dijkstra(
 
         Path_rt **return_tuples,
         size_t *return_count,
-        char ** log_msg,
-        char ** notice_msg,
-        char ** err_msg) {
+        char **log_msg,
+        char **notice_msg,
+        char **err_msg) {
     using pgrouting::Path;
     using pgrouting::pgr_alloc;
     using pgrouting::pgr_msg;
