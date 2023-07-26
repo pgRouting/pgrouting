@@ -35,12 +35,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifdef __cplusplus
 #   include <cstddef>
 #   include <cstdint>
-using Edge_t = struct Edge_t;
 using MST_rt = struct MST_rt;
 #else
 #   include <stddef.h>
 #   include <stdint.h>
-typedef struct Edge_t Edge_t;
 typedef struct MST_rt MST_rt;
 #endif
 
@@ -50,30 +48,19 @@ typedef struct MST_rt MST_rt;
 extern "C" {
 #endif
 
-    /*********************************************************
-    TEXT,
-    ANYARRAY,
-    max_depth BIGINT DEFAULT 9223372036854775807,
-    directed BOOLEAN DEFAULT true
-     ********************************************************/
+void pgr_do_breadthFirstSearch(
+        char*,
+        int64_t *, size_t,
 
+        int64_t,
+        bool,
 
-    void do_pgr_breadthFirstSearch(
-                Edge_t  *data_edges,
-                size_t total_tuples,
-                int64_t  *start_vidsArr,
-                size_t size_start_vidsArr,
-                int64_t max_depth,
-                bool directed,
-                MST_rt **return_tuples,
-                size_t *return_count,
-                char ** log_msg,
-                char ** notice_msg,
-                char ** err_msg);
+        MST_rt**, size_t*,
+        char**, char**, char**);
 
 
 #ifdef __cplusplus
-}
+        }
 #endif
 
 #endif  // INCLUDE_DRIVERS_BREADTHFIRSTSEARCH_BREADTHFIRSTSEARCH_DRIVER_H_

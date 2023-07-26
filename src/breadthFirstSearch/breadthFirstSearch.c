@@ -26,19 +26,16 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-********************************************************************PGR-GNU*/
+ ********************************************************************PGR-GNU*/
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
 
+#include "c_types/mst_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-
 #include "c_common/pgdata_getters.h"
-
-#include "c_types/mst_rt.h"
-
 #include "drivers/breadthFirstSearch/breadthFirstSearch_driver.h"
 
 PGDLLEXPORT Datum _pgr_breadthfirstsearch(PG_FUNCTION_ARGS);
@@ -57,38 +54,17 @@ process(
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char* err_msg = NULL;
+    (*result_tuples) = NULL;
+    (*result_count) = 0;
 
-    PGR_DBG("Initializing arrays");
 
     size_t size_start_vidsArr = 0;
     int64_t *start_vidsArr = pgr_get_bigIntArray(&size_start_vidsArr, starts, false, &err_msg);
     throw_error(err_msg, "While getting start vids");
-    PGR_DBG("start_vidsArr size %ld ", size_start_vidsArr);
 
-
-    (*result_tuples) = NULL;
-    (*result_count) = 0;
-
-    PGR_DBG("Load data");
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-    PGR_DBG("Total %ld edges in query:", total_edges);
-
-    if (total_edges == 0) {
-        if (start_vidsArr)
-            pfree(start_vidsArr);
-        pgr_SPI_finish();
-        return;
-    }
-
-    PGR_DBG("Starting processing");
     clock_t start_t = clock();
-    do_pgr_breadthFirstSearch(
-        edges,
-        total_edges,
+    pgr_do_breadthFirstSearch(
+        edges_sql,
         start_vidsArr, size_start_vidsArr,
         max_depth,
         directed,
@@ -101,54 +77,36 @@ process(
         &err_msg);
 
     time_msg(" processing pgr_breadthFirstSearch", start_t, clock());
-    PGR_DBG("Returning %ld tuples", *result_count);
 
-    if (err_msg) {
-        if (*result_tuples)
-            pfree(*result_tuples);
+
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_tuples) = NULL;
+        (*result_count) = 0;
     }
 
     pgr_global_report(log_msg, notice_msg, err_msg);
 
-    if (edges)
-        pfree(edges);
-    if (log_msg)
-        pfree(log_msg);
-    if (notice_msg)
-        pfree(notice_msg);
-    if (err_msg)
-        pfree(err_msg);
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
 
-    if (start_vidsArr)
-        pfree(start_vidsArr);
+    if (start_vidsArr) pfree(start_vidsArr);
     pgr_SPI_finish();
 }
 
 PGDLLEXPORT Datum _pgr_breadthfirstsearch(PG_FUNCTION_ARGS) {
-    FuncCallContext *funcctx;
-    TupleDesc tuple_desc;
+    FuncCallContext     *funcctx;
+    TupleDesc            tuple_desc;
 
-    /**************************************************************************/
     MST_rt *result_tuples = NULL;
     size_t result_count = 0;
-    /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        /**********************************************************************/
-        /*
-        pgr_breadthFirstSearch(
-            edge_sql TEXT,
-            start_vids ANYARRAY,
-            max_depth BIGINT DEFAULT 9223372036854775807,
-            directed BOOLEAN DEFAULT true)
-        */
-        /**********************************************************************/
-
-        PGR_DBG("Calling process");
         process(
             text_to_cstring(PG_GETARG_TEXT_P(0)),
             PG_GETARG_ARRAYTYPE_P(1),
@@ -157,16 +115,14 @@ PGDLLEXPORT Datum _pgr_breadthfirstsearch(PG_FUNCTION_ARGS) {
             &result_tuples,
             &result_count);
 
-        /**********************************************************************/
-
         funcctx->max_calls = result_count;
-
         funcctx->user_fctx = result_tuples;
-        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE) {
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
+                != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
-                            "that cannot accept type record")));
+                         "that cannot accept type record")));
         }
 
         funcctx->tuple_desc = tuple_desc;
@@ -178,22 +134,12 @@ PGDLLEXPORT Datum _pgr_breadthfirstsearch(PG_FUNCTION_ARGS) {
     result_tuples = (MST_rt *)funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
-        HeapTuple tuple;
-        Datum result;
-        Datum *values;
-        bool *nulls;
+        HeapTuple    tuple;
+        Datum        result;
+        Datum        *values;
+        bool*        nulls;
+        size_t       call_cntr = funcctx->call_cntr;
 
-        /**********************************************************************/
-        /*
-            OUT seq BIGINT,
-            OUT depth BIGINT,
-            OUT start_vid BIGINT,
-            OUT node BIGINT,
-            OUT edge BIGINT,
-            OUT cost FLOAT,
-            OUT agg_cost FLOAT
-        */
-        /**********************************************************************/
         size_t numb = 7;
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
@@ -203,26 +149,18 @@ PGDLLEXPORT Datum _pgr_breadthfirstsearch(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].depth);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_v);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
-        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
-
-        /**********************************************************************/
+        values[0] = Int32GetDatum((int32_t)call_cntr + 1);
+        values[1] = Int64GetDatum(result_tuples[call_cntr].depth);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].from_v);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].node);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].edge);
+        values[5] = Float8GetDatum(result_tuples[call_cntr].cost);
+        values[6] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        /**********************************************************************/
-
-        PGR_DBG("Clean up code");
-
-        /**********************************************************************/
-
         SRF_RETURN_DONE(funcctx);
     }
 }

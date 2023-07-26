@@ -141,8 +141,7 @@ pgr_do_bddijkstra(
             paths = pgr_bdDijkstra( graph, combinations, only_cost);
         }
 
-        size_t count(0);
-        count = count_tuples(paths);
+        auto count = count_tuples(paths);
 
         if (count == 0) {
             (*return_tuples) = NULL;

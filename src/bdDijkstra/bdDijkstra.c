@@ -41,8 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 PGDLLEXPORT Datum _pgr_bddijkstra(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_bddijkstra);
 
-static
-void
+static void
 process(
         char *edges_sql,
         char *combinations_sql,
