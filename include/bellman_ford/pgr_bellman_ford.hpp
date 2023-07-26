@@ -57,46 +57,7 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
      typedef typename G::V V;
      typedef typename G::E E;
 
-#if 0
-     //! @name BellmanFord
-     //@{
-     //! BellmanFord 1 to 1
-     Path bellman_ford(
-             G &graph,
-             int64_t start_vertex,
-             int64_t end_vertex,
-             bool only_cost = false) {
-         clear();
-         log << std::string(__FUNCTION__) << "\n";
-
-         // adjust predecessors and distances vectors
-         predecessors.resize(graph.num_vertices());
-         distances.resize(graph.num_vertices());
-
-
-         if (!graph.has_vertex(start_vertex)
-                 || !graph.has_vertex(end_vertex)) {
-             return Path(start_vertex, end_vertex);
-         }
-
-         // get the graphs source and target
-         auto v_source(graph.get_V(start_vertex));
-         auto v_target(graph.get_V(end_vertex));
-
-         // perform the algorithm
-         bellman_ford_1_to_1(graph, v_source, v_target);
-
-         // get the results
-         return Path(
-                 graph,
-                 v_source, v_target,
-                 predecessors, distances,
-                 only_cost, true);
-     }
-#endif
-
-
-     //! BellmanFord 1 to many
+     /** @brief BellmanFord one to many **/
      std::deque<Path> bellman_ford(
              G &graph,
              int64_t start_vertex,
@@ -133,59 +94,8 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
          return paths;
      }
 
-#if 0
-     // BellmanFord many to 1
-     std::deque<Path> bellman_ford(
-             G &graph,
-             const std::vector < int64_t > &start_vertex,
-             int64_t end_vertex,
-             bool only_cost = false) {
-         std::deque<Path> paths;
-         log << std::string(__FUNCTION__) << "\n";
-         for (const auto &start : start_vertex) {
-             paths.push_back(
-                     bellman_ford(graph, start, end_vertex, only_cost));
-         }
 
-         std::stable_sort(paths.begin(), paths.end(),
-                 [](const Path &e1, const Path &e2)->bool {
-                 return e1.start_id() < e2.start_id();
-                 });
-         return paths;
-     }
-#endif
-
-
-#if 0
-     // BellmanFord many to many
-     std::deque<Path> bellman_ford(
-             G &graph,
-             const std::vector< int64_t > &start_vertex,
-             const std::vector< int64_t > &end_vertex,
-             bool only_cost = false) {
-         // a call to 1 to many is faster for each of the sources
-         std::deque<Path> paths;
-         log << std::string(__FUNCTION__) << "\n";
-
-         for (const auto &start : start_vertex) {
-             auto r_paths = bellman_ford(graph, start, end_vertex, only_cost);
-             paths.insert(paths.begin(), r_paths.begin(), r_paths.end());
-         }
-
-
-         std::sort(paths.begin(), paths.end(),
-                 [](const Path &e1, const Path &e2)->bool {
-                 return e1.end_id() < e2.end_id();
-                 });
-         std::stable_sort(paths.begin(), paths.end(),
-                 [](const Path &e1, const Path &e2)->bool {
-                 return e1.start_id() < e2.start_id();
-                 });
-         return paths;
-     }
-#endif
-
-     // BellmanFord combinations
+     /** @brief BellmanFord combinations **/
      std::deque<Path> bellman_ford(
              G &graph,
              const std::map<int64_t, std::set<int64_t>> &combinations,
@@ -205,36 +115,6 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
      //@}
 
  private:
-#if 0
-     //! Call to BellmanFord  1 source to 1 target
-     bool bellman_ford_1_to_1(
-                 G &graph,
-                 V source
-                 ) {
-         log << std::string(__FUNCTION__) << "\n";
-         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
-         CHECK_FOR_INTERRUPTS();
-         try {
-             boost::bellman_ford_shortest_paths(
-                     graph.graph,
-                     static_cast<int>(graph.num_vertices()),
-                     boost::predecessor_map(&predecessors[0])
-                     .weight_map(get(&G::G_T_E::cost, graph.graph))
-                     .distance_map(&distances[0])
-                     .root_vertex(source));
-         } catch (boost::exception const& ex) {
-             (void)ex;
-             throw;
-         } catch (std::exception &e) {
-             (void)e;
-             throw;
-         } catch (...) {
-             throw;
-         }
-         return true;
-     }
-
-#endif
      //! Call to BellmanFord  1 source to many targets
      bool bellman_ford_1_to_many(
              G &graph,
@@ -263,7 +143,7 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
      }
 
 
-     // To Empty predecessors and distances vector for each function call
+     /** To Empty predecessors and distances vector for each function call */
      void clear() {
          predecessors.clear();
          distances.clear();
@@ -291,8 +171,8 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
 
      //! @name members
      //@{
-     std::vector< V > predecessors;
-     std::vector< double > distances;
+     std::vector<V> predecessors;
+     std::vector<double> distances;
 
      //@}
 };

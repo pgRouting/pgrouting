@@ -128,7 +128,6 @@ pgr_do_bellman_ford(
                     combinations,
                     only_cost);
         }
-        log<< logstr;
 
         size_t count(0);
         count = count_tuples(paths);
