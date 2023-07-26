@@ -42,39 +42,7 @@ class Pgr_edwardMoore {
  public:
     typedef typename G::V V;
     typedef typename G::E E;
-    typedef typename G::B_G B_G;
     typedef typename G::EO_i EO_i;
-    typedef typename G::E_i E_i;
-
-    std::deque<Path> edwardMoore(
-        G &graph,
-        const std::vector<int64_t> &start_vertex,
-        const std::vector<int64_t> &end_vertex) {
-        std::deque<Path> paths;
-
-        for (const auto &source : start_vertex) {
-            std::deque<Path> result_paths = one_to_many_edwardMoore(
-                graph,
-                source,
-                end_vertex);
-
-            paths.insert(
-                paths.begin(),
-                std::make_move_iterator(result_paths.begin()),
-                std::make_move_iterator(result_paths.end()));
-        }
-
-        std::sort(paths.begin(), paths.end(),
-                  [](const Path &e1, const Path &e2) -> bool {
-                      return e1.end_id() < e2.end_id();
-                  });
-        std::stable_sort(paths.begin(), paths.end(),
-                         [](const Path &e1, const Path &e2) -> bool {
-                             return e1.start_id() < e2.start_id();
-                         });
-
-        return paths;
-    }
 
     // preparation for the parallel arrays
     std::deque<Path> edwardMoore(
@@ -99,7 +67,7 @@ class Pgr_edwardMoore {
     }
 
  private:
-    E DEFAULT_EDGE;
+    E default_edge;
 
     std::deque<Path> one_to_many_edwardMoore(
         G &graph,
@@ -115,7 +83,7 @@ class Pgr_edwardMoore {
         std::vector<bool> isInQ(graph.num_vertices(), false);
         std::vector<E> from_edge(graph.num_vertices());
         std::deque<V> dq;
-        DEFAULT_EDGE = from_edge[0];
+        default_edge = from_edge[0];
 
         auto bgl_start_vertex = graph.get_V(start_vertex);
 
@@ -139,7 +107,7 @@ class Pgr_edwardMoore {
 
             auto bgl_target_vertex = graph.get_V(target_vertex);
 
-            if (from_edge[bgl_target_vertex] == DEFAULT_EDGE) {
+            if (from_edge[bgl_target_vertex] == default_edge) {
                 continue;
             }
 
@@ -170,7 +138,7 @@ class Pgr_edwardMoore {
             path.push_back({graph[from].id, graph[e].id, graph[e].cost, current_cost[from]});
 
             current_node = from;
-        } while (from_edge[current_node] != DEFAULT_EDGE);
+        } while (from_edge[current_node] != default_edge);
 
         std::reverse(path.begin(), path.end());
         return path;
