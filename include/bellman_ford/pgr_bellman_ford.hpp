@@ -106,7 +106,6 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
              if (!graph.has_vertex(comb.first)) continue;
              auto tmp_paths = bellman_ford(graph, comb.first, comb.second, only_cost);
              paths.insert(paths.end(), tmp_paths.begin(), tmp_paths.end());
-
          }
 
          return paths;

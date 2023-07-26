@@ -118,9 +118,7 @@ pgr_do_bellman_ford(
         if (directed) {
             pgrouting::DirectedGraph graph(gType);
             graph.insert_edges(edges);
-            paths = pgr_bellman_ford(graph,
-                    combinations,
-                    only_cost);
+            paths = pgr_bellman_ford(graph, combinations, only_cost);
         } else {
             pgrouting::UndirectedGraph graph(gType);
             graph.insert_edges(edges);

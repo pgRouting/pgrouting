@@ -79,43 +79,23 @@ class Pgr_edwardMoore {
     // preparation for the parallel arrays
     std::deque<Path> edwardMoore(
         G &graph,
-        const std::vector<II_t_rt> &combinations) {
+        const std::map<int64_t, std::set<int64_t>> &combinations) {
         std::deque<Path> paths;
 
-        // group targets per distinct source
-        std::map< int64_t, std::vector<int64_t> > vertex_map;
-        for (const II_t_rt &comb : combinations) {
-            std::map< int64_t, std::vector<int64_t> >::iterator it = vertex_map.find(comb.d1.source);
-            if (it != vertex_map.end()) {
-                it->second.push_back(comb.d2.target);
-            } else {
-                std::vector<int64_t > targets{comb.d2.target};
-                vertex_map[comb.d1.source] = targets;
-            }
-        }
-
-        for (const auto &start_ends : vertex_map) {
-            std::deque<Path> result_paths = one_to_many_edwardMoore(
-                graph,
-                start_ends.first,
-                start_ends.second);
-
-            paths.insert(
-                paths.end(),
-                std::make_move_iterator(result_paths.begin()),
-                std::make_move_iterator(result_paths.end()));
-        }
-
-        std::sort(paths.begin(), paths.end(),
-                  [](const Path &e1, const Path &e2) -> bool {
-                      return e1.end_id() < e2.end_id();
-                  });
-        std::stable_sort(paths.begin(), paths.end(),
-                         [](const Path &e1, const Path &e2) -> bool {
-                             return e1.start_id() < e2.start_id();
-                         });
-
-        return paths;
+         for (const auto &comb : combinations) {
+             if (!graph.has_vertex(comb.first)) continue;
+             auto tmp_paths = one_to_many_edwardMoore(graph, comb.first, comb.second);
+             paths.insert(paths.end(), tmp_paths.begin(), tmp_paths.end());
+         }
+         std::sort(paths.begin(), paths.end(),
+                 [](const Path &e1, const Path &e2) -> bool {
+                 return e1.end_id() < e2.end_id();
+                 });
+         std::stable_sort(paths.begin(), paths.end(),
+                 [](const Path &e1, const Path &e2) -> bool {
+                 return e1.start_id() < e2.start_id();
+                 });
+         return paths;
     }
 
  private:
@@ -124,7 +104,7 @@ class Pgr_edwardMoore {
     std::deque<Path> one_to_many_edwardMoore(
         G &graph,
         int64_t start_vertex,
-        std::vector<int64_t> end_vertex) {
+        std::set<int64_t> end_vertex) {
         std::deque<Path> paths;
 
         if (graph.has_vertex(start_vertex) == false) {
