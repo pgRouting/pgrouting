@@ -50,15 +50,10 @@ std::deque<pgrouting::Path>
 pgr_bellman_ford(
         G &graph,
         const std::map<int64_t, std::set<int64_t>> &combinations,
-        std::string &log,
         bool only_cost = false) {
-
     pgrouting::Pgr_bellman_ford< G > fn_bellman_ford;
     auto paths = fn_bellman_ford.bellman_ford(graph, combinations, only_cost);
-    log += fn_bellman_ford.get_log();
-    for (auto &p : paths) {
-        p.recalculate_agg_cost();
-    }
+    for (auto &p : paths) p.recalculate_agg_cost();
     return paths;
 }
 
@@ -119,21 +114,18 @@ pgr_do_bellman_ford(
             : pgrouting::utilities::get_combinations(combinationsArr);
 
         std::deque<Path> paths;
-        std::string logstr;
 
         if (directed) {
             pgrouting::DirectedGraph graph(gType);
             graph.insert_edges(edges);
             paths = pgr_bellman_ford(graph,
                     combinations,
-                    logstr,
                     only_cost);
         } else {
             pgrouting::UndirectedGraph graph(gType);
             graph.insert_edges(edges);
             paths = pgr_bellman_ford(graph,
                     combinations,
-                    logstr,
                     only_cost);
         }
         log<< logstr;
