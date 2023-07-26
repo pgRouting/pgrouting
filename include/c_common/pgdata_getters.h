@@ -104,9 +104,6 @@ void pgr_get_delauny(char*, Delauny_t**, size_t*, char**);
 /** @brief Read edges called from C file*/
 void pgr_get_edges(char*, Edge_t**, size_t*, bool, bool, char**);
 
-/** @brief Read edges with x, y endpointscalled from C file */
-void pgr_get_edges_xy(char*, Edge_xy_t**, size_t*, bool, char**);
-
 /** @brief Read edges for flow called from C file */
 void pgr_get_flow_edges(char*, Edge_t**, size_t*, char**);
 
