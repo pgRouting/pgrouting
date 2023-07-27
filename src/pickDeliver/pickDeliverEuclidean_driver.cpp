@@ -91,16 +91,6 @@ pgr_do_pickDeliverEuclidean(
 
         hint = nullptr;
 
-#if 0
-        /*
-         * transform to C++ containers
-         */
-        std::vector<Orders_t> orders(
-                customers_arr, customers_arr + total_customers);
-        std::vector<Vehicle_t> vehicles(
-                vehicles_arr, vehicles_arr + total_vehicles);
-#endif
-
         std::map<std::pair<double, double>, int64_t> matrix_data;
 
         for (const auto &o : orders) {
