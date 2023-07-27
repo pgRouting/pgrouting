@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "c_common/pgdata_getters.h"
+#include "cpp_common/pggetdata.hpp"
 #include <vector>
 #include <string>
 #include <cmath>
@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/get_data.hpp"
 #include "cpp_common/get_check_data.hpp"
 #include "cpp_common/pgr_alloc.hpp"
-#include "cpp_common/pgdata_fetchers.hpp"
+#include "cpp_common/pgfetch.hpp"
 
 #include "c_types/info_t.hpp"
 #include "c_types/coordinate_t.h"
@@ -103,12 +103,11 @@ get_combinations(const std::string &sql) {
     using pgrouting::Column_info_t;
     std::vector<Column_info_t> info{2};
 
-    info[0] = {-1, 0, true, "source", pgrouting::ANY_INTEGER};
-    info[1] = {-1, 0, true, "target", pgrouting::ANY_INTEGER};
-    return pgrouting::get_data1<II_t_rt>(sql, true, info, &pgrouting::pgget::fetch_combination);
+    info[0] = {-1, 0, true, "source", ANY_INTEGER};
+    info[1] = {-1, 0, true, "target", ANY_INTEGER};
+    return get_data1<II_t_rt>(sql, true, info, &fetch_combination);
 }
 
-#if 0
 /**
   For queries of the type:
   ~~~~{.c}
@@ -120,30 +119,18 @@ get_combinations(const std::string &sql) {
   @param[out] total_rows size of coordinates
   @param[out] err_msg when not null, there was an error and contains the message
   */
-void pgr_get_coordinates(
-        char *sql,
-        Coordinate_t **rows,
-        size_t *total_rows,
-        char **err_msg) {
+std::vector<Coordinate_t> pgr_get_coordinates(
+        const std::string &sql
+        ) {
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
     using pgrouting::Column_info_t;
-    try {
-        std::vector<Column_info_t> info{3};
+    std::vector<Column_info_t> info{3};
 
-        info[0] = {-1, 0, true, "id", pgrouting::ANY_INTEGER};
-        info[1] = {-1, 0, true, "x", pgrouting::ANY_NUMERICAL};
-        info[2] = {-1, 0, true, "y", pgrouting::ANY_NUMERICAL};
-        pgrouting::get_data(sql, rows, total_rows, true, info, &pgrouting::fetch_coordinate);
-    } catch (const std::string &ex) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg(ex.c_str());
-    } catch(...) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg("Caught unknown exception!");
-    }
+    info[0] = {-1, 0, true, "id", ANY_INTEGER};
+    info[1] = {-1, 0, true, "x", ANY_NUMERICAL};
+    info[2] = {-1, 0, true, "y", ANY_NUMERICAL};
+    return get_data1<Coordinate_t>(sql, true, info, &fetch_coordinate);
 }
 
 
@@ -159,31 +146,17 @@ void pgr_get_coordinates(
   @param[out] total_rows size of delauny
   @param[out] err_msg when not null, there was an error and contains the message
   */
-void pgr_get_delauny(
-        char *sql,
-        Delauny_t **rows,
-        size_t *total_rows,
-        char **err_msg) {
+std::vector<Delauny_t> pgr_get_delauny(const std::string &sql) {
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
     using pgrouting::Column_info_t;
-    try {
-        std::vector<Column_info_t> info{4};
+    std::vector<Column_info_t> info{4};
 
-        info[0] = {-1, 0, true, "tid", pgrouting::ANY_INTEGER};
-        info[1] = {-1, 0, true, "pid", pgrouting::ANY_INTEGER};
-        info[2] = {-1, 0, true, "x", pgrouting::ANY_NUMERICAL};
-        info[3] = {-1, 0, true, "y", pgrouting::ANY_NUMERICAL};
-        pgrouting::get_data(sql, rows, total_rows, true, info, &pgrouting::fetch_delauny);
-    } catch (const std::string &ex) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg(ex.c_str());
-    } catch(...) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg("Caught unknown exception!");
-    }
+    info[0] = {-1, 0, true, "tid", ANY_INTEGER};
+    info[1] = {-1, 0, true, "pid", ANY_INTEGER};
+    info[2] = {-1, 0, true, "x", ANY_NUMERICAL};
+    info[3] = {-1, 0, true, "y", ANY_NUMERICAL};
+    return get_data1<Delauny_t>(sql, true, info, &fetch_delauny);
 }
 
 
@@ -198,34 +171,22 @@ void pgr_get_delauny(
   @param[out] total_rows size of edges
   @param[out] err_msg when not null, there was an error and contains the message
   */
-void
+std::vector<Edge_t>
 pgr_get_flow_edges(
-        char *sql,
-        Edge_t **rows,
-        size_t *total_rows,
-        char **err_msg) {
+        const std::string &sql
+        ) {
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
     using pgrouting::Column_info_t;
-    try {
-        std::vector<Column_info_t> info{5};
+    std::vector<Column_info_t> info{5};
 
-        info[0] = {-1, 0, true, "id", pgrouting::ANY_INTEGER};
-        info[1] = {-1, 0, true, "source", pgrouting::ANY_INTEGER};
-        info[2] = {-1, 0, true, "target", pgrouting::ANY_INTEGER};
-        info[3] = {-1, 0, true, "capacity", pgrouting::ANY_INTEGER};
-        info[4] = {-1, 0, false, "reverse_capacity", pgrouting::ANY_INTEGER};
+    info[0] = {-1, 0, true, "id", ANY_INTEGER};
+    info[1] = {-1, 0, true, "source", ANY_INTEGER};
+    info[2] = {-1, 0, true, "target", ANY_INTEGER};
+    info[3] = {-1, 0, true, "capacity", ANY_INTEGER};
+    info[4] = {-1, 0, false, "reverse_capacity", ANY_INTEGER};
 
-        pgrouting::get_data(sql, rows, total_rows, true, info, &pgrouting::fetch_edge);
-    } catch (const std::string &ex) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg(ex.c_str());
-    } catch(...) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg("Caught unknown exception!");
-    }
+    return get_data1<Edge_t>(sql, true, info, &fetch_edge);
 }
 
 /**
@@ -240,36 +201,24 @@ pgr_get_flow_edges(
   @param[out] total_rows size of edges
   @param[out] err_msg when not null, there was an error and contains the message
   */
-void
+std::vector<CostFlow_t>
 pgr_get_costFlow_edges(
-        char *sql,
-        CostFlow_t **rows,
-        size_t *total_rows,
-        char **err_msg) {
+        const std::string &sql
+        ) {
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
     using pgrouting::Column_info_t;
-    try {
-        std::vector<Column_info_t> info{7};
+    std::vector<Column_info_t> info{7};
 
-        info[0] = {-1, 0, true, "id", pgrouting::ANY_INTEGER};
-        info[1] = {-1, 0, true, "source", pgrouting::ANY_INTEGER};
-        info[2] = {-1, 0, true, "target", pgrouting::ANY_INTEGER};
-        info[3] = {-1, 0, true, "capacity", pgrouting::ANY_INTEGER};
-        info[4] = {-1, 0, false, "reverse_capacity", pgrouting::ANY_INTEGER};
-        info[5] = {-1, 0, true, "cost", pgrouting::ANY_NUMERICAL};
-        info[6] = {-1, 0, false, "reverse_cost", pgrouting::ANY_NUMERICAL};
+    info[0] = {-1, 0, true, "id", ANY_INTEGER};
+    info[1] = {-1, 0, true, "source", ANY_INTEGER};
+    info[2] = {-1, 0, true, "target", ANY_INTEGER};
+    info[3] = {-1, 0, true, "capacity", ANY_INTEGER};
+    info[4] = {-1, 0, false, "reverse_capacity", ANY_INTEGER};
+    info[5] = {-1, 0, true, "cost", ANY_NUMERICAL};
+    info[6] = {-1, 0, false, "reverse_cost", ANY_NUMERICAL};
 
-        pgrouting::get_data(sql, rows, total_rows, true, info, &pgrouting::fetch_costFlow_edge);
-    } catch (const std::string &ex) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg(ex.c_str());
-    } catch(...) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg("Caught unknown exception!");
-    }
+    return get_data1<CostFlow_t>(sql, true, info, &fetch_costFlow_edge);
 }
 
 
@@ -290,38 +239,25 @@ pgr_get_costFlow_edges(
   @param[out] total_rows size of edges
   @param[out] err_msg when not null, there was an error and contains the message
   */
-void
+std::vector<Edge_bool_t>
 pgr_get_basic_edges(
-        char *sql,
-        Edge_bool_t **rows,
-        size_t *total_rows,
-        char **err_msg) {
+        const std::string &sql
+        ) {
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
     using pgrouting::Column_info_t;
-    try {
-        std::vector<Column_info_t> info{7};
+    std::vector<Column_info_t> info{7};
 
-        info[0] = {-1, 0, true, "id", pgrouting::ANY_INTEGER};
-        info[1] = {-1, 0, true, "source", pgrouting::ANY_INTEGER};
-        info[2] = {-1, 0, true, "target", pgrouting::ANY_INTEGER};
-        info[3] = {-1, 0, false, "going", pgrouting::ANY_NUMERICAL};
-        info[4] = {-1, 0, false, "coming", pgrouting::ANY_NUMERICAL};
-        info[5] = {-1, 0, false, "cost", pgrouting::ANY_NUMERICAL};
-        info[6] = {-1, 0, false, "reverse_cost", pgrouting::ANY_NUMERICAL};
+    info[0] = {-1, 0, true, "id", ANY_INTEGER};
+    info[1] = {-1, 0, true, "source", ANY_INTEGER};
+    info[2] = {-1, 0, true, "target", ANY_INTEGER};
+    info[3] = {-1, 0, false, "going", ANY_NUMERICAL};
+    info[4] = {-1, 0, false, "coming", ANY_NUMERICAL};
+    info[5] = {-1, 0, false, "cost", ANY_NUMERICAL};
+    info[6] = {-1, 0, false, "reverse_cost", ANY_NUMERICAL};
 
-        pgrouting::get_data(sql, rows, total_rows, true, info, &pgrouting::fetch_basic_edge);
-    } catch (const std::string &ex) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg(ex.c_str());
-    } catch(...) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg("Caught unknown exception!");
-    }
+    return get_data1<Edge_bool_t>(sql, true, info, &fetch_basic_edge);
 }
-#endif
 
 /**
   For queries of the type:
@@ -344,17 +280,17 @@ get_edges_xy(
     using pgrouting::Column_info_t;
     std::vector<Column_info_t> info{9};
 
-    info[0] = {-1, 0, true, "id", pgrouting::ANY_INTEGER};
-    info[1] = {-1, 0, true, "source", pgrouting::ANY_INTEGER};
-    info[2] = {-1, 0, true, "target", pgrouting::ANY_INTEGER};
-    info[3] = {-1, 0, true, "cost", pgrouting::ANY_NUMERICAL};
-    info[4] = {-1, 0, false, "reverse_cost", pgrouting::ANY_NUMERICAL};
-    info[5] = {-1, 0, true, "x1", pgrouting::ANY_NUMERICAL};
-    info[6] = {-1, 0, true, "y1", pgrouting::ANY_NUMERICAL};
-    info[7] = {-1, 0, true, "x2", pgrouting::ANY_NUMERICAL};
-    info[8] = {-1, 0, true, "y2", pgrouting::ANY_NUMERICAL};
+    info[0] = {-1, 0, true, "id", ANY_INTEGER};
+    info[1] = {-1, 0, true, "source", ANY_INTEGER};
+    info[2] = {-1, 0, true, "target", ANY_INTEGER};
+    info[3] = {-1, 0, true, "cost", ANY_NUMERICAL};
+    info[4] = {-1, 0, false, "reverse_cost", ANY_NUMERICAL};
+    info[5] = {-1, 0, true, "x1", ANY_NUMERICAL};
+    info[6] = {-1, 0, true, "y1", ANY_NUMERICAL};
+    info[7] = {-1, 0, true, "x2", ANY_NUMERICAL};
+    info[8] = {-1, 0, true, "y2", ANY_NUMERICAL};
 
-    return pgrouting::get_data1<Edge_xy_t>(sql, normal, info, &pgrouting::pgget::fetch_edge_xy);
+    return get_data1<Edge_xy_t>(sql, normal, info, &fetch_edge_xy);
 }
 
 /**
@@ -380,17 +316,16 @@ get_edges(
     using pgrouting::Column_info_t;
     std::vector<Column_info_t> info{5};
 
-    info[0] = {-1, 0, !ignore_id, "id", pgrouting::ANY_INTEGER};
-    info[1] = {-1, 0, true, "source", pgrouting::ANY_INTEGER};
-    info[2] = {-1, 0, true, "target", pgrouting::ANY_INTEGER};
-    info[3] = {-1, 0, true, "cost", pgrouting::ANY_NUMERICAL};
-    info[4] = {-1, 0, false, "reverse_cost", pgrouting::ANY_NUMERICAL};
+    info[0] = {-1, 0, !ignore_id, "id", ANY_INTEGER};
+    info[1] = {-1, 0, true, "source", ANY_INTEGER};
+    info[2] = {-1, 0, true, "target", ANY_INTEGER};
+    info[3] = {-1, 0, true, "cost", ANY_NUMERICAL};
+    info[4] = {-1, 0, false, "reverse_cost", ANY_NUMERICAL};
 
-    return pgrouting::get_data1<Edge_t>(sql, normal, info, &pgrouting::pgget::fetch_edge);
+    return get_data1<Edge_t>(sql, normal, info, &fetch_edge);
 }
 
 
-#if 0
 /**
   For queries of the type:
   ~~~~{.c}
@@ -402,30 +337,18 @@ get_edges(
   @param[out] total_rows size of matrix rows
   @param[out] err_msg when not null, there was an error and contains the message
   */
-void pgr_get_matrixRows(
-        char *sql,
-        IID_t_rt **rows,
-        size_t *total_rows,
-        char **err_msg) {
+std::vector<IID_t_rt> pgr_get_matrixRows(
+        const std::string &sql
+        ) {
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
     using pgrouting::Column_info_t;
-    try {
-        std::vector<Column_info_t> info{3};
+    std::vector<Column_info_t> info{3};
 
-        info[0] = {-1, 0, true, "start_vid", pgrouting::ANY_INTEGER};
-        info[1] = {-1, 0, true, "end_vid", pgrouting::ANY_INTEGER};
-        info[2] = {-1, 0, true, "agg_cost", pgrouting::ANY_NUMERICAL};
-        pgrouting::get_data(sql, rows, total_rows, true, info, &pgrouting::pgr_fetch_row);
-    } catch (const std::string &ex) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg(ex.c_str());
-    } catch(...) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg("Caught unknown exception!");
-    }
+    info[0] = {-1, 0, true, "start_vid", ANY_INTEGER};
+    info[1] = {-1, 0, true, "end_vid", ANY_INTEGER};
+    info[2] = {-1, 0, true, "agg_cost", ANY_NUMERICAL};
+    return get_data1<IID_t_rt>(sql, true, info, &pgr_fetch_row);
 }
 
 
@@ -433,8 +356,8 @@ void pgr_get_matrixRows(
   For queries of the type:
   ~~~~{.c}
   SELECT id, demand
-    [p_node_id | p_x, p_y], p_open, p_close, p_service,
-    [d_node_id | d_x, d_y], d_open, d_close, d_service,
+  [p_node_id | p_x, p_y], p_open, p_close, p_service,
+  [d_node_id | d_x, d_y], d_open, d_close, d_service,
   FROM orders;
   ~~~~
 
@@ -444,55 +367,43 @@ void pgr_get_matrixRows(
   @param[out] with_id flag to choose if its euclidean or matrix
   @param[out] err_msg when not null, there was an error and contains the message
   */
-void pgr_get_orders(
-        char *sql,
-        Orders_t **rows,
-        size_t *total_rows,
-        bool with_id,
-        char **err_msg) {
+std::vector<Orders_t> pgr_get_orders(
+        const std::string &sql,
+        bool with_id
+        ) {
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
     using pgrouting::Column_info_t;
-    try {
-        std::vector<Column_info_t> info{14};
+    std::vector<Column_info_t> info{14};
 
-        info[0] = {-1, 0, true, "id", pgrouting::ANY_INTEGER};
-        info[1] = {-1, 0, true, "demand", pgrouting::ANY_NUMERICAL};
-        info[2] = {-1, 0, true, "p_x", pgrouting::ANY_NUMERICAL};
-        info[3] = {-1, 0, true, "p_y", pgrouting::ANY_NUMERICAL};
-        info[4] = {-1, 0, true, "p_open", pgrouting::ANY_NUMERICAL};
-        info[5] = {-1, 0, true, "p_close", pgrouting::ANY_NUMERICAL};
-        info[6] = {-1, 0, false, "p_service", pgrouting::ANY_NUMERICAL};
-        info[7] = {-1, 0, true, "d_x", pgrouting::ANY_NUMERICAL};
-        info[8] = {-1, 0, true, "d_y", pgrouting::ANY_NUMERICAL};
-        info[9] = {-1, 0, true, "d_open", pgrouting::ANY_NUMERICAL};
-        info[10] = {-1, 0, true, "d_close", pgrouting::ANY_NUMERICAL};
-        info[11] = {-1, 0, false, "d_service", pgrouting::ANY_NUMERICAL};
-        /* nodes are going to be ignored*/
-        info[12] = {-1, 0, false, "p_node_id", pgrouting::ANY_INTEGER};
-        info[13] = {-1, 0, false, "d_node_id", pgrouting::ANY_INTEGER};
+    info[0] = {-1, 0, true, "id", ANY_INTEGER};
+    info[1] = {-1, 0, true, "demand", ANY_NUMERICAL};
+    info[2] = {-1, 0, true, "p_x", ANY_NUMERICAL};
+    info[3] = {-1, 0, true, "p_y", ANY_NUMERICAL};
+    info[4] = {-1, 0, true, "p_open", ANY_NUMERICAL};
+    info[5] = {-1, 0, true, "p_close", ANY_NUMERICAL};
+    info[6] = {-1, 0, false, "p_service", ANY_NUMERICAL};
+    info[7] = {-1, 0, true, "d_x", ANY_NUMERICAL};
+    info[8] = {-1, 0, true, "d_y", ANY_NUMERICAL};
+    info[9] = {-1, 0, true, "d_open", ANY_NUMERICAL};
+    info[10] = {-1, 0, true, "d_close", ANY_NUMERICAL};
+    info[11] = {-1, 0, false, "d_service", ANY_NUMERICAL};
+    /* nodes are going to be ignored*/
+    info[12] = {-1, 0, false, "p_node_id", ANY_INTEGER};
+    info[13] = {-1, 0, false, "d_node_id", ANY_INTEGER};
 
-        if (with_id) {
-            /* (x,y) values are ignored*/
-            info[2].strict = false;
-            info[3].strict = false;
-            info[7].strict = false;
-            info[8].strict = false;
-            /* nodes are compulsory*/
-            info[12].strict = true;
-            info[13].strict = true;
-        }
-
-        pgrouting::get_data(sql, rows, total_rows, with_id, info, &pgrouting::fetch_orders);
-    } catch (const std::string &ex) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg(ex.c_str());
-    } catch(...) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg("Caught unknown exception!");
+    if (with_id) {
+        /* (x,y) values are ignored*/
+        info[2].strict = false;
+        info[3].strict = false;
+        info[7].strict = false;
+        info[8].strict = false;
+        /* nodes are compulsory*/
+        info[12].strict = true;
+        info[13].strict = true;
     }
+
+    return get_data1<Orders_t>(sql, with_id, info, &fetch_orders);
 }
 
 
@@ -507,31 +418,19 @@ void pgr_get_orders(
   @param[out] total_rows size of points
   @param[out] err_msg when not null, there was an error and contains the message
   */
-void pgr_get_points(
-        char *sql,
-        Point_on_edge_t **rows,
-        size_t *total_rows,
-        char **err_msg) {
+std::vector<Point_on_edge_t> pgr_get_points(
+        const std::string &sql
+        ) {
     using pgrouting::pgr_free;
     using pgrouting::pgr_msg;
     using pgrouting::Column_info_t;
-    try {
-        std::vector<Column_info_t> info{4};
+    std::vector<Column_info_t> info{4};
 
-        info[0] = {-1, 0, false, "pid", pgrouting::ANY_INTEGER};
-        info[1] = {-1, 0, true, "edge_id", pgrouting::ANY_INTEGER};
-        info[2] = {-1, 0, true, "fraction", pgrouting::ANY_NUMERICAL};
-        info[3] = {-1, 0, false, "side", pgrouting::CHAR1};
-        pgrouting::get_data(sql, rows, total_rows, true, info, &pgrouting::fetch_point);
-    } catch (const std::string &ex) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg(ex.c_str());
-    } catch(...) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg("Caught unknown exception!");
-    }
+    info[0] = {-1, 0, false, "pid", ANY_INTEGER};
+    info[1] = {-1, 0, true, "edge_id", ANY_INTEGER};
+    info[2] = {-1, 0, true, "fraction", ANY_NUMERICAL};
+    info[3] = {-1, 0, false, "side", pgrouting::CHAR1};
+    return get_data1<Point_on_edge_t>(sql, true, info, &fetch_point);
 }
 
 
@@ -546,29 +445,17 @@ void pgr_get_points(
   @param[out] total_rows size of restrictions
   @param[out] err_msg when not null, there was an error and contains the message
   */
-void pgr_get_restrictions(
-        char *sql,
-        Restriction_t **rows,
-        size_t *total_rows,
-        char **err_msg) {
+std::vector<Restriction_t> pgr_get_restrictions(
+        const std::string &sql
+        ) {
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
     using pgrouting::Column_info_t;
-    try {
-        std::vector<Column_info_t> info{2};
+    std::vector<Column_info_t> info{2};
 
-        info[0] = {-1, 0, true, "cost", pgrouting::ANY_NUMERICAL};
-        info[1] = {-1, 0, true, "path", pgrouting::ANY_INTEGER_ARRAY};
-        pgrouting::get_data(sql, rows, total_rows, true, info, &pgrouting::fetch_restriction);
-    } catch (const std::string &ex) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg(ex.c_str());
-    } catch(...) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg("Caught unknown exception!");
-    }
+    info[0] = {-1, 0, true, "cost", ANY_NUMERICAL};
+    info[1] = {-1, 0, true, "path", ANY_INTEGER_ARRAY};
+    return get_data1<Restriction_t>(sql, true, info, &fetch_restriction);
 }
 
 
@@ -576,8 +463,8 @@ void pgr_get_restrictions(
   For queries of the type:
   ~~~~{.c}
   SELECT id, capacity, speed, number
-    [start_node_id | start_x, start_y], start_open, start_close, start_service,
-    [end_node_id | end_x, end_y], end_open, end_close, end_service,
+  [start_node_id | start_x, start_y], start_open, start_close, start_service,
+  [end_node_id | end_x, end_y], end_open, end_close, end_service,
   FROM orders;
   ~~~~
 
@@ -587,56 +474,43 @@ void pgr_get_restrictions(
   @param[out] with_id flag to choose if its euclidean or matrix
   @param[out] err_msg when not null, there was an error and contains the message
   */
-void pgr_get_vehicles(
-        char *sql,
-        Vehicle_t **rows,
-        size_t *total_rows,
-        bool with_id,
-        char **err_msg) {
+std::vector<Vehicle_t> pgr_get_vehicles(
+        const std::string &sql,
+        bool with_id
+        ) {
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
     using pgrouting::Column_info_t;
-    try {
-        std::vector<Column_info_t> info{16};
+    std::vector<Column_info_t> info{16};
 
-        info[0] = {-1, 0, true, "id", pgrouting::ANY_INTEGER};
-        info[1] = {-1, 0, true, "capacity", pgrouting::ANY_NUMERICAL};
-        info[2] = {-1, 0, true, "start_x", pgrouting::ANY_NUMERICAL};
-        info[3] = {-1, 0, true, "start_y", pgrouting::ANY_NUMERICAL};
-        info[4] = {-1, 0, false, "number", pgrouting::ANY_INTEGER};
-        info[5] = {-1, 0, false, "start_open", pgrouting::ANY_NUMERICAL};
-        info[6] = {-1, 0, false, "start_close", pgrouting::ANY_NUMERICAL};
-        info[7] = {-1, 0, false, "start_service", pgrouting::ANY_NUMERICAL};
-        info[8] = {-1, 0, false, "end_x", pgrouting::ANY_NUMERICAL};
-        info[9] = {-1, 0, false, "end_y", pgrouting::ANY_NUMERICAL};
-        info[10] = {-1, 0, false, "end_open", pgrouting::ANY_NUMERICAL};
-        info[11] = {-1, 0, false, "end_close", pgrouting::ANY_NUMERICAL};
-        info[12] = {-1, 0, false, "end_service", pgrouting::ANY_NUMERICAL};
-        info[13] = {-1, 0, false, "speed", pgrouting::ANY_NUMERICAL};
-        /* nodes are going to be ignored*/
-        info[14] = {-1, 0, false, "start_node_id", pgrouting::ANY_INTEGER};
-        info[15] = {-1, 0, false, "end_node_id", pgrouting::ANY_INTEGER};
+    info[0] = {-1, 0, true, "id", ANY_INTEGER};
+    info[1] = {-1, 0, true, "capacity", ANY_NUMERICAL};
+    info[2] = {-1, 0, true, "start_x", ANY_NUMERICAL};
+    info[3] = {-1, 0, true, "start_y", ANY_NUMERICAL};
+    info[4] = {-1, 0, false, "number", ANY_INTEGER};
+    info[5] = {-1, 0, false, "start_open", ANY_NUMERICAL};
+    info[6] = {-1, 0, false, "start_close", ANY_NUMERICAL};
+    info[7] = {-1, 0, false, "start_service", ANY_NUMERICAL};
+    info[8] = {-1, 0, false, "end_x", ANY_NUMERICAL};
+    info[9] = {-1, 0, false, "end_y", ANY_NUMERICAL};
+    info[10] = {-1, 0, false, "end_open", ANY_NUMERICAL};
+    info[11] = {-1, 0, false, "end_close", ANY_NUMERICAL};
+    info[12] = {-1, 0, false, "end_service", ANY_NUMERICAL};
+    info[13] = {-1, 0, false, "speed", ANY_NUMERICAL};
+    /* nodes are going to be ignored*/
+    info[14] = {-1, 0, false, "start_node_id", ANY_INTEGER};
+    info[15] = {-1, 0, false, "end_node_id", ANY_INTEGER};
 
-        if (with_id) {
-            /* (x,y) values are ignored*/
-            info[2].strict = false;
-            info[3].strict = false;
-            /* start nodes are compulsory*/
-            info[14].strict = false;
-        }
-
-        pgrouting::get_data(sql, rows, total_rows, with_id, info, &pgrouting::fetch_vehicle);
-    } catch (const std::string &ex) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg(ex.c_str());
-    } catch(...) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg("Caught unknown exception!");
+    if (with_id) {
+        /* (x,y) values are ignored*/
+        info[2].strict = false;
+        info[3].strict = false;
+        /* start nodes are compulsory*/
+        info[14].strict = false;
     }
-}
-#endif
 
-}  // namespace getters
+    return get_data1<Vehicle_t>(sql, with_id, info, &fetch_vehicle);
+}
+
+}  // namespace pgget
 }  // namespace pgrouting
