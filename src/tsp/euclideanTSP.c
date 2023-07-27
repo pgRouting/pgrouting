@@ -59,25 +59,7 @@ process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-#if 0
-    Coordinate_t *coordinates = NULL;
-    size_t total_coordinates = 0;
-    pgr_get_coordinates(coordinates_sql, &coordinates, &total_coordinates, &err_msg);
-    throw_error(err_msg, coordinates_sql);
-
-    if (total_coordinates == 0) {
-        ereport(WARNING,
-                (errmsg("Insufficient data found on inner query."),
-                 errhint("%s", coordinates_sql)));
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
-        pgr_SPI_finish();
-        return;
-    }
-#endif
-
     clock_t start_t = clock();
-
     pgr_do_euclideanTSP(
             coordinates_sql,
             start_vid,
@@ -102,9 +84,6 @@ process(
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-#if 0
-    if (coordinates) pfree(coordinates);
-#endif
 
     pgr_SPI_finish();
 }

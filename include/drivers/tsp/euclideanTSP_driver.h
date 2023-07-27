@@ -36,12 +36,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <cstddef>
 #   include <cstdint>
 using TSP_tour_rt = struct TSP_tour_rt;
-using Coordinate_t = struct Coordinate_t;
 #else
 #   include <stddef.h>
 #   include <stdint.h>
 typedef struct TSP_tour_rt TSP_tour_rt;
-typedef struct Coordinate_t Coordinate_t;
 #endif
 
 #ifdef __cplusplus
@@ -56,8 +54,8 @@ pgr_do_euclideanTSP(
         int64_t,
         bool,
 
-        TSP_tour_rt **, size_t *,
-        char **, char **, char **);
+        TSP_tour_rt**, size_t*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }
