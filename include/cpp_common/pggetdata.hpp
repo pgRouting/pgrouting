@@ -49,6 +49,7 @@ extern "C" {
 #include <string>
 #include <vector>
 
+#if 0
 using IID_t_rt = struct IID_t_rt;
 using II_t_rt = struct II_t_rt;
 using Coordinate_t = struct Coordinate_t;
@@ -62,6 +63,7 @@ using Orders_t = struct Orders_t;
 using Point_on_edge_t = struct Point_on_edge_t;
 using Vehicle_t = struct Vehicle_t;
 using Restriction_t = struct Restriction_t;
+#endif
 
 #include "c_types/info_t.hpp"
 #include "c_types/ii_t_rt.h"
@@ -82,17 +84,17 @@ namespace pgget {
 
 #if 0
 /** @brief Enforces the input array to be @b NOT empty */
-int64_t* pgr_get_bigIntArray(size_t*, ArrayType*, bool);
+int64_t* get_bigIntArray(size_t*, ArrayType*, bool);
 #endif
 
 /** @brief Read rows of combinations, called from C file*/
 std::vector<II_t_rt> get_combinations(const std::string&);
 
 /** @brief Read rows of matrix, called from C file*/
-std::vector<Coordinate_t> pgr_get_coordinates(const std::string&);
+std::vector<Coordinate_t> get_coordinates(const std::string&);
 
 /** @brief Read rows of delauny triangles, called from C file*/
-std::vector<Delauny_t> pgr_get_delauny(const std::string&, Delauny_t**, size_t*);
+std::vector<Delauny_t> get_delauny(const std::string&, Delauny_t**, size_t*);
 
 /** @brief Read edges called from C++ file*/
 std::vector<Edge_t> get_edges(const std::string&, bool, bool);
@@ -101,28 +103,28 @@ std::vector<Edge_t> get_edges(const std::string&, bool, bool);
 std::vector<Edge_xy_t> get_edges_xy(const std::string&, bool);
 
 /** @brief Read edges for flow called from C file */
-std::vector<Edge_t> pgr_get_flow_edges(const std::string&);
+std::vector<Edge_t> get_flow_edges(const std::string&);
 
 /** @brief Read edges for cost called from C fileflow */
-std::vector<CostFlow_t> pgr_get_costFlow_edges(const std::string&);
+std::vector<CostFlow_t> get_costFlow_edges(const std::string&);
 
 /** @brief Read "basic edges" called from C file */
-std::vector<Edge_bool_t> pgr_get_basic_edges(const std::string&);
+std::vector<Edge_bool_t> get_basic_edges(const std::string&);
 
 /** @brief Read rows of matrix, called from C file*/
-std::vector<IID_t_rt> pgr_get_matrixRows(const std::string&);
+std::vector<IID_t_rt> get_matrixRows(const std::string&);
 
 /** @brief Reads the pick-Deliver orders */
-std::vector<Orders_t> pgr_get_orders(const std::string&, bool);
+std::vector<Orders_t> get_orders(const std::string&, bool);
 
 /** @brief Read rows of points, called from C file*/
-std::vector<Point_on_edge_t> pgr_get_points(const std::string&);
+std::vector<Point_on_edge_t> get_points(const std::string&);
 
 /** @brief Read rows of matrix, called from C file*/
-std::vector<Restriction_t> pgr_get_restrictions(const std::string&);
+std::vector<Restriction_t> get_restrictions(const std::string&);
 
 /** @brief Reads the vehicles */
-std::vector<Vehicle_t> pgr_get_vehicles(const std::string&, bool);
+std::vector<Vehicle_t> get_vehicles(const std::string&, bool);
 
 }  // namespace getters
 }  // namespace pgrouting

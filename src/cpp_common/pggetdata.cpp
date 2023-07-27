@@ -68,7 +68,7 @@ namespace pgget {
  * @param[out] err_msg when not null, there was an error and contains the message
  * @returns Returns a C array of integers
  */
-int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input, bool allow_empty, char** err_msg) {
+int64_t* get_bigIntArray(size_t *arrlen, ArrayType *input, bool allow_empty, char** err_msg) {
     using pgrouting::pgr_msg;
     try {
         return pgrouting::get_array(input, arrlen, allow_empty);
@@ -119,7 +119,7 @@ get_combinations(const std::string &sql) {
   @param[out] total_rows size of coordinates
   @param[out] err_msg when not null, there was an error and contains the message
   */
-std::vector<Coordinate_t> pgr_get_coordinates(
+std::vector<Coordinate_t> get_coordinates(
         const std::string &sql
         ) {
     using pgrouting::pgr_msg;
@@ -146,7 +146,7 @@ std::vector<Coordinate_t> pgr_get_coordinates(
   @param[out] total_rows size of delauny
   @param[out] err_msg when not null, there was an error and contains the message
   */
-std::vector<Delauny_t> pgr_get_delauny(const std::string &sql) {
+std::vector<Delauny_t> get_delauny(const std::string &sql) {
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
     using pgrouting::Column_info_t;
@@ -172,7 +172,7 @@ std::vector<Delauny_t> pgr_get_delauny(const std::string &sql) {
   @param[out] err_msg when not null, there was an error and contains the message
   */
 std::vector<Edge_t>
-pgr_get_flow_edges(
+get_flow_edges(
         const std::string &sql
         ) {
     using pgrouting::pgr_msg;
@@ -202,7 +202,7 @@ pgr_get_flow_edges(
   @param[out] err_msg when not null, there was an error and contains the message
   */
 std::vector<CostFlow_t>
-pgr_get_costFlow_edges(
+get_costFlow_edges(
         const std::string &sql
         ) {
     using pgrouting::pgr_msg;
@@ -240,7 +240,7 @@ pgr_get_costFlow_edges(
   @param[out] err_msg when not null, there was an error and contains the message
   */
 std::vector<Edge_bool_t>
-pgr_get_basic_edges(
+get_basic_edges(
         const std::string &sql
         ) {
     using pgrouting::pgr_msg;
@@ -337,7 +337,7 @@ get_edges(
   @param[out] total_rows size of matrix rows
   @param[out] err_msg when not null, there was an error and contains the message
   */
-std::vector<IID_t_rt> pgr_get_matrixRows(
+std::vector<IID_t_rt> get_matrixRows(
         const std::string &sql
         ) {
     using pgrouting::pgr_msg;
@@ -367,7 +367,7 @@ std::vector<IID_t_rt> pgr_get_matrixRows(
   @param[out] with_id flag to choose if its euclidean or matrix
   @param[out] err_msg when not null, there was an error and contains the message
   */
-std::vector<Orders_t> pgr_get_orders(
+std::vector<Orders_t> get_orders(
         const std::string &sql,
         bool with_id
         ) {
@@ -418,7 +418,7 @@ std::vector<Orders_t> pgr_get_orders(
   @param[out] total_rows size of points
   @param[out] err_msg when not null, there was an error and contains the message
   */
-std::vector<Point_on_edge_t> pgr_get_points(
+std::vector<Point_on_edge_t> get_points(
         const std::string &sql
         ) {
     using pgrouting::pgr_free;
@@ -445,7 +445,7 @@ std::vector<Point_on_edge_t> pgr_get_points(
   @param[out] total_rows size of restrictions
   @param[out] err_msg when not null, there was an error and contains the message
   */
-std::vector<Restriction_t> pgr_get_restrictions(
+std::vector<Restriction_t> get_restrictions(
         const std::string &sql
         ) {
     using pgrouting::pgr_msg;
@@ -474,7 +474,7 @@ std::vector<Restriction_t> pgr_get_restrictions(
   @param[out] with_id flag to choose if its euclidean or matrix
   @param[out] err_msg when not null, there was an error and contains the message
   */
-std::vector<Vehicle_t> pgr_get_vehicles(
+std::vector<Vehicle_t> get_vehicles(
         const std::string &sql,
         bool with_id
         ) {
