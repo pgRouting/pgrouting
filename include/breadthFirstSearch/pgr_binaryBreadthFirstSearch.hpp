@@ -79,29 +79,17 @@ class Pgr_binaryBreadthFirstSearch {
         return paths;
     }
 
-    // preparation for parallel arrays
+
     std::deque<Path> binaryBreadthFirstSearch(
         G &graph,
-        const std::vector<II_t_rt> &combinations) {
+        const std::map<int64_t, std::set<int64_t>> &combinations) {
         std::deque<Path> paths;
 
-        // group targets per distinct source
-        std::map< int64_t, std::vector<int64_t> > vertex_map;
-        for (const II_t_rt &comb : combinations) {
-            std::map< int64_t, std::vector<int64_t> >::iterator it = vertex_map.find(comb.d1.source);
-            if (it != vertex_map.end()) {
-                it->second.push_back(comb.d2.target);
-            } else {
-                std::vector<int64_t > targets{comb.d2.target};
-                vertex_map[comb.d1.source] = targets;
-            }
-        }
+        for (const auto &c : combinations) {
+            if (!graph.has_vertex(c.first)) continue;
 
-        for (const auto &start_ends : vertex_map) {
             std::deque<Path> result_paths = one_to_many_binaryBreadthFirstSearch(
-                graph,
-                start_ends.first,
-                start_ends.second);
+                graph, c.first, c.second);
             paths.insert(
                 paths.begin(),
                 std::make_move_iterator(result_paths.begin()),
@@ -121,52 +109,46 @@ class Pgr_binaryBreadthFirstSearch {
     }
 
  private:
-        E DEFAULT_EDGE;
+    E default_edge;
 
-        std::deque<Path> one_to_many_binaryBreadthFirstSearch(
+    std::deque<Path> one_to_many_binaryBreadthFirstSearch(
             G &graph,
             int64_t start_vertex,
-            std::vector<int64_t> end_vertex) {
-            std::deque<Path> paths;
+            std::set<int64_t> end_vertex) {
+        std::deque<Path> paths;
 
-            if (graph.has_vertex(start_vertex) == false) {
-                return paths;
-            }
+        if (!graph.has_vertex(start_vertex)) return paths;
 
-            std::vector<double> current_cost(graph.num_vertices(), std::numeric_limits<double>::infinity());
-            std::vector<E> from_edge(graph.num_vertices());
-            std::deque<V> dq;
-            DEFAULT_EDGE = from_edge[0];
+        std::vector<double> current_cost(graph.num_vertices(), std::numeric_limits<double>::infinity());
+        std::vector<E> from_edge(graph.num_vertices());
+        std::deque<V> dq;
+        default_edge = from_edge[0];
 
-            auto bgl_start_vertex = graph.get_V(start_vertex);
+        auto bgl_start_vertex = graph.get_V(start_vertex);
 
-            current_cost[bgl_start_vertex] = 0;
-            dq.push_front(bgl_start_vertex);
+        current_cost[bgl_start_vertex] = 0;
+        dq.push_front(bgl_start_vertex);
 
-            while (dq.empty() == false) {
-                auto head_vertex = dq.front();
+        while (dq.empty() == false) {
+            auto head_vertex = dq.front();
 
-                dq.pop_front();
+            dq.pop_front();
 
-                updateVertexCosts(graph, current_cost, from_edge, dq, head_vertex);
-            }
+            updateVertexCosts(graph, current_cost, from_edge, dq, head_vertex);
+        }
 
-            for (auto target_vertex : end_vertex) {
-                if (graph.has_vertex(target_vertex) == false) {
-                    continue;
-                }
+        for (auto target_vertex : end_vertex) {
+            if (!graph.has_vertex(target_vertex)) continue;
 
-                auto bgl_target_vertex = graph.get_V(target_vertex);
+            auto bgl_target_vertex = graph.get_V(target_vertex);
 
-                if (from_edge[bgl_target_vertex] == DEFAULT_EDGE) {
-                    continue;
-                }
+            if (from_edge[bgl_target_vertex] == default_edge)  continue;
 
-                paths.push_front(
+            paths.push_front(
                     getPath(graph, bgl_start_vertex, target_vertex, bgl_target_vertex, from_edge, current_cost));
-            }
+        }
 
-            return paths;
+        return paths;
     }
 
     Path getPath(
@@ -189,7 +171,7 @@ class Pgr_binaryBreadthFirstSearch {
             path.push_back({graph[from].id, graph[e].id, graph[e].cost, current_cost[from]});
 
             current_node = from;
-        } while (from_edge[current_node] != DEFAULT_EDGE);
+        } while (from_edge[current_node] != default_edge);
 
         std::reverse(path.begin(), path.end());
         return path;

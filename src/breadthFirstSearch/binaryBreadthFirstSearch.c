@@ -107,22 +107,16 @@ process(
 
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
-    do_pgr_binaryBreadthFirstSearch(
-        edges,
-        total_edges,
-        combinations,
-        total_combinations,
+    pgr_do_binaryBreadthFirstSearch(
+        edges_sql,
+        combinations_sql,
         start_vidsArr, size_start_vidsArr,
         end_vidsArr, size_end_vidsArr,
 
         directed,
 
-        result_tuples,
-        result_count,
-
-        &log_msg,
-        &notice_msg,
-        &err_msg);
+        result_tuples, result_count,
+        &log_msg, &notice_msg, &err_msg);
 
     time_msg(" processing pgr_binaryBreadthFirstSearch", start_t, clock());
     PGR_DBG("Returning %ld tuples", *result_count);
