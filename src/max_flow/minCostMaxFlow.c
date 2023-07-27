@@ -65,47 +65,12 @@ process(
     int64_t *sinkVertices = NULL;
     size_t sizeSinkVerticesArr = 0;
 
-#if 0
-    PGR_DBG("Load data");
-    CostFlow_t *edges = NULL;
-    size_t total_edges = 0;
-
-    II_t_rt *combinations = NULL;
-    size_t total_combinations = 0;
-#endif
-
     if (starts && ends) {
         sourceVertices = pgr_get_bigIntArray(&sizeSourceVerticesArr, starts, false, &err_msg);
         throw_error(err_msg, "While getting start vids");
         sinkVertices = pgr_get_bigIntArray(&sizeSinkVerticesArr, ends, false, &err_msg);
         throw_error(err_msg, "While getting end vids");
     }
-#if 0
-    else if (combinations_sql) {
-        pgr_get_combinations(combinations_sql, &combinations, &total_combinations, &err_msg);
-        throw_error(err_msg, combinations_sql);
-        if (total_combinations == 0) {
-            if (combinations)
-                pfree(combinations);
-            pgr_SPI_finish();
-            return;
-        }
-    }
-
-    pgr_get_costFlow_edges(edges_sql, &edges, &total_edges, &err_msg);
-    throw_error(err_msg, edges_sql);
-    PGR_DBG("Total %ld edges in query:", total_edges);
-
-    if (total_edges == 0) {
-        if (sourceVertices)
-            pfree(sourceVertices);
-        if (sinkVertices)
-            pfree(sinkVertices);
-        PGR_DBG("No edges found");
-        pgr_SPI_finish();
-        return;
-    }
-#endif
 
     clock_t start_t = clock();
     pgr_do_minCostMaxFlow(

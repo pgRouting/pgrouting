@@ -92,16 +92,6 @@ pgr_do_minCostMaxFlow(
             pgrouting::utilities::get_combinations(sourceVertices, sizeSourceVerticesArr, sinkVertices, sizeSinkVerticesArr)
             : pgrouting::utilities::get_combinations(combinationsArr);
 
-#if 0
-        std::vector<CostFlow_t> edges(data_edges, data_edges + total_edges);
-        std::set<int64_t> sources(
-                sourceVertices, sourceVertices + sizeSourceVerticesArr);
-        std::set<int64_t> targets(
-                sinkVertices, sinkVertices + sizeSinkVerticesArr);
-        std::vector< II_t_rt > combinations_vector(
-                combinations, combinations + total_combinations);
-#endif
-
         if (combinations.empty()) {
             *notice_msg = pgr_msg("No combinations found");
             *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
