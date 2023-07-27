@@ -66,6 +66,7 @@ pgr_do_tsp(
     std::ostringstream notice;
     std::ostringstream err;
     char *hint;
+
     try {
         hint = matrix_sql;
         auto distances = pgrouting::pgget::get_matrixRows(std::string(matrix_sql));
