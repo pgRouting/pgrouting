@@ -28,21 +28,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-/** @file minCostMaxFlow.c
- * @brief Connecting code with postgres.
- *
- * This file is fully documented for understanding
- *  how the postgres connectinon works
- *
- * TODO Remove unnecessary comments before submiting the function.
- * some comments are in form of PGR_DBG message
- */
-
-/**
- *  postgres_connection.h
- *
- *  - should always be first in the C code
- */
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
 
@@ -59,8 +44,6 @@ PGDLLEXPORT Datum _pgr_maxflowmincost(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_maxflowmincost);
 
 
-/******************************************************************************/
-/*                          MODIFY AS NEEDED                                  */
 static
 void
 process(
@@ -71,9 +54,6 @@ process(
         bool only_cost,
         Flow_t **result_tuples,
         size_t *result_count) {
-    /*
-     *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
-     */
     pgr_SPI_connect();
     char* log_msg = NULL;
     char* notice_msg = NULL;
@@ -85,19 +65,23 @@ process(
     int64_t *sinkVertices = NULL;
     size_t sizeSinkVerticesArr = 0;
 
+#if 0
     PGR_DBG("Load data");
     CostFlow_t *edges = NULL;
     size_t total_edges = 0;
 
     II_t_rt *combinations = NULL;
     size_t total_combinations = 0;
+#endif
 
     if (starts && ends) {
         sourceVertices = pgr_get_bigIntArray(&sizeSourceVerticesArr, starts, false, &err_msg);
         throw_error(err_msg, "While getting start vids");
         sinkVertices = pgr_get_bigIntArray(&sizeSinkVerticesArr, ends, false, &err_msg);
         throw_error(err_msg, "While getting end vids");
-    } else if (combinations_sql) {
+    }
+#if 0
+    else if (combinations_sql) {
         pgr_get_combinations(combinations_sql, &combinations, &total_combinations, &err_msg);
         throw_error(err_msg, combinations_sql);
         if (total_combinations == 0) {
@@ -121,13 +105,12 @@ process(
         pgr_SPI_finish();
         return;
     }
+#endif
 
-    PGR_DBG("Starting processing");
     clock_t start_t = clock();
-
-    do_pgr_minCostMaxFlow(
-            edges, total_edges,
-            combinations, total_combinations,
+    pgr_do_minCostMaxFlow(
+            edges_sql,
+            combinations_sql,
             sourceVertices, sizeSourceVerticesArr,
             sinkVertices, sizeSinkVerticesArr,
             only_cost,
@@ -137,21 +120,11 @@ process(
             &log_msg,
             &notice_msg,
             &err_msg);
-
     if (only_cost) {
         time_msg(" processing pgr_minCostMaxFlow_Cost", start_t, clock());
     } else {
         time_msg(" processing pgr_minCostMaxFlow", start_t, clock());
     }
-
-    PGR_DBG("Returning %ld tuples", *result_count);
-
-    if (edges)
-        pfree(edges);
-    if (sourceVertices)
-        pfree(sourceVertices);
-    if (sinkVertices)
-        pfree(sinkVertices);
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
@@ -164,40 +137,24 @@ process(
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
+    if (sourceVertices) pfree(sourceVertices);
+    if (sinkVertices) pfree(sinkVertices);
 
     pgr_SPI_finish();
 }
-/*                                                                            */
-/******************************************************************************/
 
 PGDLLEXPORT Datum _pgr_maxflowmincost(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
-    /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
     Flow_t *result_tuples = NULL;
     size_t result_count = 0;
-    /*                                                                        */
-    /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-
-        /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
-        /*
-           TEXT,
-    BIGINT,
-    BIGINT,
-         **********************************************************************/
-
-
-        PGR_DBG("Calling process");
 
         if (PG_NARGS() == 4) {
             /*
@@ -226,9 +183,6 @@ PGDLLEXPORT Datum _pgr_maxflowmincost(PG_FUNCTION_ARGS) {
                 &result_count);
         }
 
-        /*                                                                    */
-        /**********************************************************************/
-
         funcctx->max_calls = result_count;
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
@@ -252,44 +206,27 @@ PGDLLEXPORT Datum _pgr_maxflowmincost(PG_FUNCTION_ARGS) {
         Datum        result;
         Datum        *values;
         bool*        nulls;
-
-        /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
-        /*
-         ***********************************************************************/
-
         values = palloc(8 * sizeof(Datum));
         nulls = palloc(8 * sizeof(bool));
-
 
         size_t i;
         for (i = 0; i < 8; ++i) {
             nulls[i] = false;
         }
 
-        // postgres starts counting from 1
         values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
         values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].flow);
-        values[5] = Int64GetDatum(
-                result_tuples[funcctx->call_cntr].residual_capacity);
+        values[5] = Int64GetDatum( result_tuples[funcctx->call_cntr].residual_capacity);
         values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
-        /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
-
-        PGR_DBG("Clean up code");
-
-        /**********************************************************************/
-
         SRF_RETURN_DONE(funcctx);
     }
 }

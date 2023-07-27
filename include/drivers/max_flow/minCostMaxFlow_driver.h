@@ -35,15 +35,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifdef __cplusplus
 #   include <cstddef>
 #   include <cstdint>
-using CostFlow_t = struct CostFlow_t;
 using Flow_t = struct Flow_t;
-using II_t_rt = struct II_t_rt;
 #else
 #   include <stddef.h>
 #   include <stdint.h>
 typedef struct Flow_t Flow_t;
-typedef struct Flow_t Flow_t;
-typedef struct II_t_rt II_t_rt;
 #endif
 
 
@@ -52,22 +48,16 @@ typedef struct II_t_rt II_t_rt;
 extern "C" {
 #endif
 
-    void
-        do_pgr_minCostMaxFlow(
-                CostFlow_t  *data_edges,
-                size_t total_edges,
-                II_t_rt  *combinations,
-                size_t total_combinations,
-                int64_t* source_vertices,
-                size_t size_source_verticesArr,
-                int64_t* sink_vertices,
-                size_t size_sink_verticesArr,
-                bool only_cost,
-                Flow_t **return_tuples,
-                size_t *return_count,
-                char ** log_msg,
-                char ** notice_msg,
-                char ** err_msg);
+void pgr_do_minCostMaxFlow(
+        char*,
+        char*,
+        int64_t*, size_t,
+        int64_t*, size_t,
+
+        bool,
+
+        Flow_t**, size_t*,
+        char**, char**, char**);
 
 
 #ifdef __cplusplus

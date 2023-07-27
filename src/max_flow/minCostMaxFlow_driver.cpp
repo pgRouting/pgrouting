@@ -34,26 +34,30 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <set>
 
-#include "max_flow/pgr_minCostMaxFlow.hpp"
-
-#include "cpp_common/pgr_alloc.hpp"
-#include "cpp_common/pgr_assert.h"
 
 #include "c_types/costFlow_t.h"
 #include "c_types/ii_t_rt.h"
 
+#include "cpp_common/combinations.h"
+#include "cpp_common/pggetdata.hpp"
+#include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/pgr_assert.h"
+
+#include "max_flow/pgr_minCostMaxFlow.hpp"
+
 void
-do_pgr_minCostMaxFlow(
-        CostFlow_t  *data_edges, size_t total_edges,
-        II_t_rt *combinations, size_t total_combinations,
+pgr_do_minCostMaxFlow(
+        char *edges_sql,
+        char *combinations_sql,
         int64_t *sourceVertices, size_t sizeSourceVerticesArr,
         int64_t *sinkVertices, size_t sizeSinkVerticesArr,
+
         bool only_cost,
 
         Flow_t **return_tuples, size_t *return_count,
-        char ** log_msg,
-        char ** notice_msg,
-        char ** err_msg) {
+        char **log_msg,
+        char **notice_msg,
+        char **err_msg) {
     using pgrouting::pgr_alloc;
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
@@ -61,17 +65,34 @@ do_pgr_minCostMaxFlow(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char *hint;
+
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(data_edges);
-        pgassert(total_edges != 0);
-        pgassert((sourceVertices && sinkVertices) || combinations);
-        pgassert((sizeSourceVerticesArr && sizeSinkVerticesArr) || total_combinations);
 
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_costFlow_edges(std::string(edges_sql));
+
+        if (edges.size() == 0) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
+
+        hint = combinations_sql;
+        auto combinationsArr = combinations_sql?
+            pgrouting::pgget::get_combinations(std::string(combinations_sql)) : std::vector<II_t_rt>();
+
+        auto combinations = combinationsArr.empty()?
+            pgrouting::utilities::get_combinations(sourceVertices, sizeSourceVerticesArr, sinkVertices, sizeSinkVerticesArr)
+            : pgrouting::utilities::get_combinations(combinationsArr);
+
+#if 0
         std::vector<CostFlow_t> edges(data_edges, data_edges + total_edges);
         std::set<int64_t> sources(
                 sourceVertices, sourceVertices + sizeSourceVerticesArr);
@@ -79,22 +100,28 @@ do_pgr_minCostMaxFlow(
                 sinkVertices, sinkVertices + sizeSinkVerticesArr);
         std::vector< II_t_rt > combinations_vector(
                 combinations, combinations + total_combinations);
+#endif
 
-        if (!combinations_vector.empty()) {
-            pgassert(sources.empty());
-            pgassert(targets.empty());
+        if (combinations.empty()) {
+            *notice_msg = pgr_msg("No combinations found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
 
-            for (const II_t_rt &comb : combinations_vector) {
-                sources.insert(comb.d1.source);
-                targets.insert(comb.d2.target);
+        std::set<int64_t> sources;
+        std::set<int64_t> targets;
+        for (const auto &c : combinations) {
+            sources.insert(c.first);
+            for (const auto &t : c.second) {
+                targets.insert(t);
             }
         }
 
         std::set<int64_t> vertices(sources);
         vertices.insert(targets.begin(), targets.end());
 
-        if (vertices.size()
-                != (sources.size() + targets.size())) {
+        if (vertices.size() != (sources.size() + targets.size())) {
             *err_msg = pgr_msg("A source found as sink");
             return;
         }
@@ -139,19 +166,21 @@ do_pgr_minCostMaxFlow(
         (*return_count) = 0;
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch(...) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << "Caught unknown exception!";
         *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     }
 }
-
