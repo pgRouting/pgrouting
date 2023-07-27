@@ -35,14 +35,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifdef __cplusplus
 #   include <cstdint>
 #   include <cstddef>
-using Edge_t = struct Edge_t;
-using Restriction_t = struct Restriction_t;
 using Path_rt = struct Path_rt;
 #else
 #   include <stddef.h>
 #   include <stdint.h>
-typedef struct Edge_t Edge_t;
-typedef struct Restriction_t Restriction_t;
 typedef struct Path_rt Path_rt;
 #endif
 
@@ -51,39 +47,21 @@ typedef struct Path_rt Path_rt;
 extern "C" {
 #endif
 
-    /*********************************************************
+void pgr_do_turnRestrictedPath(
+        char*,
+        char*,
 
-      TEXT, -- edges_sql
-      TEXT, -- restrictions_sql
-      BIGINT, -- source
-      BIGINT, -- target
-      directed BOOLEAN DEFAULT true,
-      only_cost BOOLEAN DEFAULT false,
-      strict BOOLEAN DEFAULT false
-     ********************************************************/
+        int64_t,
+        int64_t,
 
+        size_t,
+        bool,
+        bool,
+        bool,
+        bool,
 
-    void do_pgr_turnRestrictedPath(
-            Edge_t  *data_edges,
-            size_t total_edges,
-
-            Restriction_t *restrictions,
-            size_t total_restrictions,
-
-            int64_t start_vid,
-            int64_t end_vid,
-
-            size_t k,
-            bool directed,
-            bool heap_paths,
-            bool stop_on_first,
-            bool strict,
-
-            Path_rt **return_tuples,
-            size_t *return_count,
-            char ** log_msg,
-            char ** notice_msg,
-            char ** err_msg);
+        Path_rt **, size_t *,
+        char**, char**, char**);
 
 
 #ifdef __cplusplus
