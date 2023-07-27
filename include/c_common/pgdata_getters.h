@@ -61,7 +61,6 @@ extern "C" {
 using IID_t_rt = struct IID_t_rt;
 using II_t_rt = struct II_t_rt;
 using Coordinate_t = struct Coordinate_t;
-using Delauny_t = struct Delauny_t;
 using Edge_xy_t = struct Edge_xy_t;
 using Flow_t = struct Flow_t;
 using Edge_bool_t = struct Edge_bool_t;
@@ -75,7 +74,6 @@ using Restriction_t = struct Restriction_t;
 typedef struct IID_t_rt IID_t_rt;
 typedef struct II_t_rt II_t_rt;
 typedef struct Coordinate_t Coordinate_t;
-typedef struct Delauny_t Delauny_t;
 typedef struct Edge_xy_t Edge_xy_t;
 typedef struct Flow_t Flow_t;
 typedef struct Edge_bool_t Edge_bool_t;
@@ -97,9 +95,6 @@ void pgr_get_combinations(char *, II_t_rt **, size_t *, char**);
 
 /** @brief Read rows of matrix, called from C file*/
 void pgr_get_coordinates(char*, Coordinate_t**, size_t*, char**);
-
-/** @brief Read rows of delauny triangles, called from C file*/
-void pgr_get_delauny(char*, Delauny_t**, size_t*, char**);
 
 /** @brief Read edges called from C file*/
 void pgr_get_edges(char*, Edge_t**, size_t*, bool, bool, char**);

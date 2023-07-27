@@ -158,46 +158,6 @@ void pgr_get_coordinates(
 /**
   For queries of the type:
   ~~~~{.c}
-  SELECT tid, pid, x, y FROM delauny;
-  SELECT pid, pid, x, y FROM delauny;
-  ~~~~
-
-  @param[in] sql The query
-  @param[out] rows the delauny array
-  @param[out] total_rows size of delauny
-  @param[out] err_msg when not null, there was an error and contains the message
-  */
-void pgr_get_delauny(
-        char *sql,
-        Delauny_t **rows,
-        size_t *total_rows,
-        char **err_msg) {
-    using pgrouting::pgr_msg;
-    using pgrouting::pgr_free;
-    using pgrouting::Column_info_t;
-    try {
-        std::vector<Column_info_t> info{4};
-
-        info[0] = {-1, 0, true, "tid", pgrouting::ANY_INTEGER};
-        info[1] = {-1, 0, true, "pid", pgrouting::ANY_INTEGER};
-        info[2] = {-1, 0, true, "x", pgrouting::ANY_NUMERICAL};
-        info[3] = {-1, 0, true, "y", pgrouting::ANY_NUMERICAL};
-        pgrouting::get_data(sql, rows, total_rows, true, info, &pgrouting::fetch_delauny);
-    } catch (const std::string &ex) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg(ex.c_str());
-    } catch(...) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg("Caught unknown exception!");
-    }
-}
-
-
-/**
-  For queries of the type:
-  ~~~~{.c}
   SELECT id, source, target, capacity, [reverse_capacity] FROM edge_table;
   ~~~~
 
