@@ -84,9 +84,6 @@ void pgr_get_combinations(char *, II_t_rt **, size_t *, char**);
 /** @brief Read edges called from C file*/
 void pgr_get_edges(char*, Edge_t**, size_t*, bool, bool, char**);
 
-/** @brief Read edges for flow called from C file */
-void pgr_get_flow_edges(char*, Edge_t**, size_t*, char**);
-
 /** @brief Read rows of points, called from C file*/
 void pgr_get_points(char*, Point_on_edge_t**, size_t*, char**);
 
