@@ -62,19 +62,15 @@ using II_t_rt = struct II_t_rt;
 using Edge_xy_t = struct Edge_xy_t;
 using Flow_t = struct Flow_t;
 using Edge_t = struct Edge_t;
-using Orders_t = struct Orders_t;
 using Point_on_edge_t = struct Point_on_edge_t;
-using Vehicle_t = struct Vehicle_t;
 using Restriction_t = struct Restriction_t;
 #else
 typedef struct II_t_rt II_t_rt;
 typedef struct Edge_xy_t Edge_xy_t;
 typedef struct Flow_t Flow_t;
 typedef struct Edge_t Edge_t;
-typedef struct Orders_t Orders_t;
 typedef struct Point_on_edge_t Point_on_edge_t;
 typedef struct Restriction_t Restriction_t;
-typedef struct Vehicle_t Vehicle_t;
 #endif
 
 
@@ -91,17 +87,11 @@ void pgr_get_edges(char*, Edge_t**, size_t*, bool, bool, char**);
 /** @brief Read edges for flow called from C file */
 void pgr_get_flow_edges(char*, Edge_t**, size_t*, char**);
 
-/** @brief Reads the pick-Deliver orders */
-void pgr_get_orders(char *, Orders_t **, size_t *, bool, char**);
-
 /** @brief Read rows of points, called from C file*/
 void pgr_get_points(char*, Point_on_edge_t**, size_t*, char**);
 
 /** @brief Read rows of matrix, called from C file*/
 void pgr_get_restrictions(char*, Restriction_t**, size_t*, char**);
-
-/** @brief Reads the vehicles */
-void pgr_get_vehicles(char*, Vehicle_t**, size_t*, bool, char**);
 
 /** @brief Enforces the input array to be @b NOT empty */
 int64_t* pgr_get_bigIntArray(size_t*, ArrayType*, bool, char**);
