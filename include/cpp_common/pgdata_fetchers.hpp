@@ -62,13 +62,6 @@ void fetch_combination(
         const std::vector<Column_info_t> &,
         int64_t*, II_t_rt*, size_t*, bool);
 
-namespace pgget {
-II_t_rt fetch_combination(
-        const HeapTuple, const TupleDesc &,
-        const std::vector<Column_info_t> &,
-        int64_t*, size_t*, bool);
-}  // namespace pgget
-
 void fetch_coordinate(
         const HeapTuple, const TupleDesc &,
         const std::vector<Column_info_t> &,
@@ -88,18 +81,6 @@ void fetch_edge(
         const HeapTuple, const TupleDesc &,
         const std::vector<Column_info_t> &,
         int64_t*, Edge_t*, size_t*, bool);
-
-namespace pgget {
-Edge_t fetch_edge(
-        const HeapTuple, const TupleDesc &,
-        const std::vector<Column_info_t> &,
-        int64_t*, size_t*, bool);
-
-Edge_xy_t fetch_edge_xy(
-        const HeapTuple, const TupleDesc &,
-        const std::vector<Column_info_t> &,
-        int64_t*, size_t*, bool);
-}  // namespace pgget
 
 void fetch_costFlow_edge(
         const HeapTuple, const TupleDesc &,
@@ -135,8 +116,6 @@ void fetch_vehicle(
         const HeapTuple, const TupleDesc &,
         const std::vector<Column_info_t> &,
         int64_t*, Vehicle_t*, size_t*, bool);
-
-
 
 }  // namespace pgrouting
 

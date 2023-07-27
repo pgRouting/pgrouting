@@ -69,21 +69,6 @@ void fetch_combination(
     *valid_combinations = *valid_combinations + 1;
 }
 
-namespace pgget {
-II_t_rt fetch_combination(
-        const HeapTuple tuple,
-        const TupleDesc &tupdesc,
-        const std::vector<Column_info_t> &info,
-        int64_t*,
-        size_t*,
-        bool) {
-    II_t_rt combination;
-    combination.d1.source = pgrouting::getBigInt(tuple, tupdesc, info[0]);
-    combination.d2.target = pgrouting::getBigInt(tuple, tupdesc, info[1]);
-    return combination;
-}
-}  // namespace pgget
-
 void fetch_coordinate(
         const HeapTuple tuple,
         const TupleDesc &tupdesc,
@@ -191,51 +176,6 @@ void fetch_edge(
     *valid_edges = edge->reverse_cost < 0? *valid_edges: *valid_edges + 1;
 }
 
-namespace pgget {
-Edge_t fetch_edge(
-        const HeapTuple tuple,
-        const TupleDesc &tupdesc,
-        const std::vector<Column_info_t> &info,
-        int64_t *default_id,
-        size_t *valid_edges,
-        bool normal) {
-    Edge_t edge;
-    if (pgrouting::column_found(info[0].colNumber)) {
-        edge.id = pgrouting::getBigInt(tuple, tupdesc, info[0]);
-    } else {
-        edge.id = *default_id;
-        ++(*default_id);
-    }
-
-    if (normal) {
-        edge.source = pgrouting::getBigInt(tuple, tupdesc,  info[1]);
-        edge.target = pgrouting::getBigInt(tuple, tupdesc, info[2]);
-    } else {
-        edge.target = pgrouting::getBigInt(tuple, tupdesc,  info[1]);
-        edge.source = pgrouting::getBigInt(tuple, tupdesc, info[2]);
-    }
-
-    edge.cost = pgrouting::getFloat8(tuple, tupdesc, info[3]);
-
-    if (pgrouting::column_found(info[4].colNumber)) {
-        edge.reverse_cost = pgrouting::getFloat8(tuple, tupdesc, info[4]);
-    } else {
-        edge.reverse_cost = -1;
-    }
-
-    edge.cost = std::isinf(edge.cost)?
-        DBL_MAX : edge.cost;
-
-    edge.reverse_cost = std::isinf(edge.reverse_cost)?
-        DBL_MAX : edge.reverse_cost;
-
-    *valid_edges = edge.cost < 0? *valid_edges: *valid_edges + 1;
-    *valid_edges = edge.reverse_cost < 0? *valid_edges: *valid_edges + 1;
-
-    return edge;
-}
-}  // namespace pgget
-
 
 void fetch_costFlow_edge(
         const HeapTuple tuple,
@@ -278,47 +218,6 @@ void fetch_costFlow_edge(
     *valid_edges = edge->reverse_capacity < 0? *valid_edges: *valid_edges + 1;
 }
 
-namespace pgget {
-Edge_xy_t fetch_edge_xy(
-        const HeapTuple tuple,
-        const TupleDesc &tupdesc,
-        const std::vector<Column_info_t> &info,
-        int64_t *default_id,
-        size_t *valid_edges,
-        bool normal) {
-    Edge_xy_t edge;
-    if (pgrouting::column_found(info[0].colNumber)) {
-        edge.id = pgrouting::getBigInt(tuple, tupdesc, info[0]);
-    } else {
-        edge.id = *default_id;
-        ++(*default_id);
-    }
-
-    if (normal) {
-        edge.source = pgrouting::getBigInt(tuple, tupdesc,  info[1]);
-        edge.target = pgrouting::getBigInt(tuple, tupdesc, info[2]);
-    } else {
-        edge.target = pgrouting::getBigInt(tuple, tupdesc,  info[1]);
-        edge.source = pgrouting::getBigInt(tuple, tupdesc, info[2]);
-    }
-    edge.cost = pgrouting::getFloat8(tuple, tupdesc, info[3]);
-
-    if (pgrouting::column_found(info[4].colNumber)) {
-        edge.reverse_cost = pgrouting::getFloat8(tuple, tupdesc, info[4]);
-    } else {
-        edge.reverse_cost = -1;
-    }
-
-    edge.x1 = pgrouting::getFloat8(tuple, tupdesc, info[5]);
-    edge.y1 = pgrouting::getFloat8(tuple, tupdesc, info[6]);
-    edge.x2 = pgrouting::getFloat8(tuple, tupdesc, info[7]);
-    edge.y2 = pgrouting::getFloat8(tuple, tupdesc, info[8]);
-
-    *valid_edges = edge.cost < 0? *valid_edges: *valid_edges + 1;
-    *valid_edges = edge.reverse_cost < 0? *valid_edges: *valid_edges + 1;
-    return edge;
-}
-}  // namespace pgget
 
 void fetch_edge_with_xy(
         const HeapTuple tuple,
