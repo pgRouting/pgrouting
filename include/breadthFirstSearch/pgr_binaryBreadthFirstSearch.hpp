@@ -57,24 +57,19 @@ class Pgr_binaryBreadthFirstSearch {
         std::deque<Path> paths;
 
         for (const auto &source : start_vertex) {
-            std::deque<Path> result_paths = one_to_many_binaryBreadthFirstSearch(
+            auto result_paths = one_to_many_binaryBreadthFirstSearch(
                 graph,
                 source,
                 end_vertex);
+            std::sort(result_paths.begin(), result_paths.end(),
+                    [](const Path &e1, const Path &e2) -> bool {
+                    return e1.end_id() < e2.end_id();
+                    });
             paths.insert(
-                paths.begin(),
-                std::make_move_iterator(result_paths.begin()),
-                std::make_move_iterator(result_paths.end()));
+                    paths.begin(),
+                    std::make_move_iterator(result_paths.begin()),
+                    std::make_move_iterator(result_paths.end()));
         }
-
-        std::sort(paths.begin(), paths.end(),
-                  [](const Path &e1, const Path &e2) -> bool {
-                      return e1.end_id() < e2.end_id();
-                  });
-        std::stable_sort(paths.begin(), paths.end(),
-                         [](const Path &e1, const Path &e2) -> bool {
-                             return e1.start_id() < e2.start_id();
-                         });
 
         return paths;
     }
