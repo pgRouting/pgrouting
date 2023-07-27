@@ -117,6 +117,10 @@ pgr_do_euclideanTSP(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+    } catch (const std::pair<std::string, std::string>& ex) {
+        (*return_count) = 0;
+        *err_msg = pgr_msg(ex.first.c_str());
+        *log_msg = pgr_msg(ex.second.c_str());
     } catch (const std::string &ex) {
         *err_msg = pgr_msg(ex.c_str());
         *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());

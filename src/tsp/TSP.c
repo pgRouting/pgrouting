@@ -58,6 +58,7 @@ process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
+#if 0
     IID_t_rt *distances = NULL;
     size_t total_distances = 0;
     pgr_get_matrixRows(matrix_sql, &distances, &total_distances, &err_msg);
@@ -71,13 +72,12 @@ process(
         pgr_SPI_finish();
         return;
     }
+#endif
 
 
-    PGR_DBG("Starting timer");
     clock_t start_t = clock();
-
-    do_pgr_tsp(
-            distances, total_distances,
+    pgr_do_tsp(
+            matrix_sql,
             start_vid,
             end_vid,
             max_cycles,
@@ -87,7 +87,6 @@ process(
             &log_msg,
             &notice_msg,
             &err_msg);
-
     time_msg("TSP", start_t, clock());
 
     if (err_msg && (*result_tuples)) {
@@ -101,7 +100,9 @@ process(
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
+#if 0
     if (distances) pfree(distances);
+#endif
 
     pgr_SPI_finish();
 }

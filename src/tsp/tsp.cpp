@@ -282,22 +282,20 @@ TSP::crossover_optimize(std::deque<std::pair<int64_t, double>> result, size_t li
 
 
 
-TSP::TSP(
-    IID_t_rt *distances,
-    size_t total_distances, bool) {
+TSP::TSP(std::vector<IID_t_rt> &distances) {
     /*
      * Inserting vertices
      */
     Identifiers<int64_t> ids;
-    for (size_t i = 0; i < total_distances; ++i) {
-        ids += distances[i].from_vid;
-        ids += distances[i].to_vid;
+    for (auto &d : distances) {
+        ids += d.from_vid;
+        ids += d.to_vid;
         /*
          * Its undirected graph:
          * keeping from_vid < to_vid
          */
-        if (distances[i].to_vid > distances[i].from_vid) {
-            std::swap(distances[i].to_vid, distances[i].from_vid);
+        if (d.to_vid > d.from_vid) {
+            std::swap(d.to_vid, d.from_vid);
         }
     }
 
@@ -312,8 +310,7 @@ TSP::TSP(
     /*
      * Inserting edges
      */
-    for (size_t i = 0; i < total_distances; ++i) {
-        auto edge = distances[i];
+    for (const auto &edge : distances) {
         /*
          * skip loops
          */
