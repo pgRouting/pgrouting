@@ -176,7 +176,6 @@ void fetch_edge(
     *valid_edges = edge->reverse_cost < 0? *valid_edges: *valid_edges + 1;
 }
 
-
 void fetch_costFlow_edge(
         const HeapTuple tuple,
         const TupleDesc &tupdesc,
@@ -217,7 +216,6 @@ void fetch_costFlow_edge(
     *valid_edges = edge->capacity < 0? *valid_edges: *valid_edges + 1;
     *valid_edges = edge->reverse_capacity < 0? *valid_edges: *valid_edges + 1;
 }
-
 
 void fetch_edge_with_xy(
         const HeapTuple tuple,

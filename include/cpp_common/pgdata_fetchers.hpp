@@ -117,6 +117,8 @@ void fetch_vehicle(
         const std::vector<Column_info_t> &,
         int64_t*, Vehicle_t*, size_t*, bool);
 
+
+
 }  // namespace pgrouting
 
 #endif  // INCLUDE_C_COMMON_PGDATA_FETCHERS_HPP_
