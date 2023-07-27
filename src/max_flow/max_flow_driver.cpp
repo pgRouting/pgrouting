@@ -35,17 +35,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "max_flow/pgr_maxflow.hpp"
 
+#include "cpp_common/combinations.h"
+#include "cpp_common/pggetdata.hpp"
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/pgr_alloc.hpp"
 
 #include "c_types/ii_t_rt.h"
 
 void
-do_pgr_max_flow(
-        Edge_t *data_edges, size_t total_edges,
-        II_t_rt *combinations, size_t total_combinations,
-        int64_t *source_vertices, size_t size_source_verticesArr,
-        int64_t *sink_vertices, size_t size_sink_verticesArr,
+pgr_do_max_flow(
+        char *edges_sql,
+        char *combinations_sql,
+        int64_t *sourceVertices, size_t sizeSourceVerticesArr,
+        int64_t *sinkVertices, size_t sizeSinkVerticesArr,
         int algorithm,
         bool only_flow,
 
@@ -60,6 +62,7 @@ do_pgr_max_flow(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
+    char* hint;
 
     try {
         pgassert(!(*log_msg));
@@ -67,40 +70,47 @@ do_pgr_max_flow(
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(data_edges);
-        pgassert(total_edges != 0);
-        pgassert((source_vertices && sink_vertices) || combinations);
-        pgassert((size_source_verticesArr && size_sink_verticesArr) || total_combinations);
 
-        std::vector<Edge_t> edges(data_edges, data_edges + total_edges);
-        std::set<int64_t> sources(
-                source_vertices, source_vertices + size_source_verticesArr);
-        std::set<int64_t> targets(
-                sink_vertices, sink_vertices + size_sink_verticesArr);
-        std::vector< II_t_rt > combinations_vector(
-                combinations, combinations + total_combinations);
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_flow_edges(std::string(edges_sql));
 
-        if (!combinations_vector.empty()) {
-            pgassert(sources.empty());
-            pgassert(targets.empty());
+        if (edges.size() == 0) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
 
-            for (const II_t_rt &comb : combinations_vector) {
-                sources.insert(comb.d1.source);
-                targets.insert(comb.d2.target);
+        hint = combinations_sql;
+        auto combinationsArr = combinations_sql?
+            pgrouting::pgget::get_combinations(std::string(combinations_sql)) : std::vector<II_t_rt>();
+
+        auto combinations = combinationsArr.empty()?
+            pgrouting::utilities::get_combinations(sourceVertices, sizeSourceVerticesArr, sinkVertices, sizeSinkVerticesArr)
+            : pgrouting::utilities::get_combinations(combinationsArr);
+
+        if (combinations.empty()) {
+            *notice_msg = pgr_msg("No combinations found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
+
+        std::set<int64_t> sources;
+        std::set<int64_t> targets;
+        for (const auto &c : combinations) {
+            sources.insert(c.first);
+            for (const auto &t : c.second) {
+                targets.insert(t);
             }
         }
 
         std::set<int64_t> vertices(sources);
         vertices.insert(targets.begin(), targets.end());
 
-        if (vertices.size()
-                != (sources.size() + targets.size())) {
+        if (vertices.size() != (sources.size() + targets.size())) {
             *err_msg = pgr_msg("A source found as sink");
-            // TODO(vicky) return as hint the sources that are also sinks
             return;
         }
-
-
 
         pgrouting::graph::PgrFlowGraph digraph(
                 edges, sources, targets, algorithm);
@@ -160,6 +170,9 @@ do_pgr_max_flow(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch(...) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
