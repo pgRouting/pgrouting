@@ -81,7 +81,7 @@ pgr_do_pickDeliver(
         pgassert(*return_count == 0);
         pgassert(!(*return_tuples));
 
-        hint = matrix_sql;
+        hint = customers_sql;
         auto orders = pgrouting::pgget::get_orders(std::string(customers_sql), true);
         if (orders.size() == 0) {
             *notice_msg = pgr_msg("Insufficient data found on inner query");
@@ -89,7 +89,7 @@ pgr_do_pickDeliver(
             return;
         }
 
-        hint = matrix_sql;
+        hint = vehicles_sql;
         auto vehicles = pgrouting::pgget::get_vehicles(std::string(vehicles_sql), true);
         if (vehicles.size() == 0) {
             *notice_msg = pgr_msg("Insufficient data found on inner query");

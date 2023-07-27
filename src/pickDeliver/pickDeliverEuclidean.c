@@ -88,6 +88,7 @@ process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
+#if 0
     PGR_DBG("Load orders");
     Orders_t *pd_orders_arr = NULL;
     size_t total_pd_orders = 0;
@@ -158,10 +159,11 @@ process(
     PGR_DBG("Total %ld orders in query:", total_pd_orders);
 
     PGR_DBG("Starting processing");
+#endif
     clock_t start_t = clock();
-    do_pgr_pickDeliverEuclidean(
-            pd_orders_arr, total_pd_orders,
-            vehicles_arr, total_vehicles,
+    pgr_do_pickDeliverEuclidean(
+            pd_orders_sql,
+            vehicles_sql,
 
             factor,
             max_cycles,
@@ -186,8 +188,10 @@ process(
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
+#if 0
     if (pd_orders_arr) pfree(pd_orders_arr);
     if (vehicles_arr) pfree(vehicles_arr);
+#endif
 
     pgr_SPI_finish();
 }
