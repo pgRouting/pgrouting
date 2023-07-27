@@ -44,7 +44,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/info_t.hpp"
 #include "c_types/costFlow_t.h"
 #include "c_types/ii_t_rt.h"
-#include "c_types/iid_t_rt.h"
 #include "c_types/delauny_t.h"
 #include "c_types/edge_t.h"
 #include "c_types/edge_bool_t_rt.h"
@@ -191,44 +190,6 @@ pgr_get_edges(
         info[4] = {-1, 0, false, "reverse_cost", pgrouting::ANY_NUMERICAL};
 
         pgrouting::get_data(sql, rows, total_rows, normal, info, &pgrouting::fetch_edge);
-    } catch (const std::string &ex) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg(ex.c_str());
-    } catch(...) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg("Caught unknown exception!");
-    }
-}
-
-
-/**
-  For queries of the type:
-  ~~~~{.c}
-  SELECT start_vid, end_vid, agg_cost FROM matrix_data;
-  ~~~~
-
-  @param[in] sql The query
-  @param[out] rows of the matrix array
-  @param[out] total_rows size of matrix rows
-  @param[out] err_msg when not null, there was an error and contains the message
-  */
-void pgr_get_matrixRows(
-        char *sql,
-        IID_t_rt **rows,
-        size_t *total_rows,
-        char **err_msg) {
-    using pgrouting::pgr_msg;
-    using pgrouting::pgr_free;
-    using pgrouting::Column_info_t;
-    try {
-        std::vector<Column_info_t> info{3};
-
-        info[0] = {-1, 0, true, "start_vid", pgrouting::ANY_INTEGER};
-        info[1] = {-1, 0, true, "end_vid", pgrouting::ANY_INTEGER};
-        info[2] = {-1, 0, true, "agg_cost", pgrouting::ANY_NUMERICAL};
-        pgrouting::get_data(sql, rows, total_rows, true, info, &pgrouting::pgr_fetch_row);
     } catch (const std::string &ex) {
         (*rows) = pgr_free(*rows);
         (*total_rows) = 0;
