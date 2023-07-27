@@ -43,13 +43,13 @@ PG_FUNCTION_INFO_V1(_pgr_breadthfirstsearch);
 
 static void
 process(
-    char *edges_sql,
-    ArrayType *starts,
-    int64_t max_depth,
-    bool directed,
+        char *edges_sql,
+        ArrayType *starts,
+        int64_t max_depth,
+        bool directed,
 
-    MST_rt **result_tuples,
-    size_t *result_count) {
+        MST_rt **result_tuples,
+        size_t *result_count) {
     pgr_SPI_connect();
     char* log_msg = NULL;
     char* notice_msg = NULL;
@@ -64,20 +64,18 @@ process(
 
     clock_t start_t = clock();
     pgr_do_breadthFirstSearch(
-        edges_sql,
-        start_vidsArr, size_start_vidsArr,
-        max_depth,
-        directed,
+            edges_sql,
+            start_vidsArr, size_start_vidsArr,
+            max_depth,
+            directed,
 
-        result_tuples,
-        result_count,
+            result_tuples,
+            result_count,
 
-        &log_msg,
-        &notice_msg,
-        &err_msg);
-
+            &log_msg,
+            &notice_msg,
+            &err_msg);
     time_msg(" processing pgr_breadthFirstSearch", start_t, clock());
-
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
@@ -108,12 +106,12 @@ PGDLLEXPORT Datum _pgr_breadthfirstsearch(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
         process(
-            text_to_cstring(PG_GETARG_TEXT_P(0)),
-            PG_GETARG_ARRAYTYPE_P(1),
-            PG_GETARG_INT64(2),
-            PG_GETARG_BOOL(3),
-            &result_tuples,
-            &result_count);
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                PG_GETARG_ARRAYTYPE_P(1),
+                PG_GETARG_INT64(2),
+                PG_GETARG_BOOL(3),
+                &result_tuples,
+                &result_count);
 
         funcctx->max_calls = result_count;
         funcctx->user_fctx = result_tuples;

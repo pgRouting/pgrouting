@@ -45,20 +45,20 @@ PG_FUNCTION_INFO_V1(_pgr_binarybreadthfirstsearch);
 
 static void
 process(
-    char *edges_sql,
-    char *combinations_sql,
-    ArrayType *starts,
-    ArrayType *ends,
-    bool directed,
+        char *edges_sql,
+        char *combinations_sql,
+        ArrayType *starts,
+        ArrayType *ends,
+        bool directed,
 
-    Path_rt **result_tuples,
-    size_t *result_count) {
+        Path_rt **result_tuples,
+        size_t *result_count) {
     pgr_SPI_connect();
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char* err_msg = NULL;
-
-    PGR_DBG("Initializing arrays");
+    (*result_tuples) = NULL;
+    (*result_count) = 0;
 
     size_t size_start_vidsArr = 0;
     int64_t *start_vidsArr = NULL;
@@ -66,81 +66,41 @@ process(
     size_t size_end_vidsArr = 0;
     int64_t *end_vidsArr = NULL;
 
-    size_t total_combinations = 0;
-    II_t_rt *combinations = NULL;
 
     if (starts && ends) {
         start_vidsArr = pgr_get_bigIntArray(&size_start_vidsArr, starts, false, &err_msg);
         throw_error(err_msg, "While getting start vids");
         end_vidsArr = pgr_get_bigIntArray(&size_end_vidsArr, ends, false, &err_msg);
         throw_error(err_msg, "While getting end vids");
-    } else if (combinations_sql) {
-        pgr_get_combinations(combinations_sql, &combinations, &total_combinations, &err_msg);
-        throw_error(err_msg, combinations_sql);
-        if (total_combinations == 0) {
-            if (combinations)
-                pfree(combinations);
-            pgr_SPI_finish();
-            return;
-        }
     }
 
-    (*result_tuples) = NULL;
-    (*result_count) = 0;
-
-    PGR_DBG("Load data");
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-    PGR_DBG("Total %ld edges in query:", total_edges);
-
-    if (total_edges == 0) {
-        if (start_vidsArr)
-            pfree(start_vidsArr);
-        if (end_vidsArr)
-            pfree(end_vidsArr);
-        pgr_SPI_finish();
-        return;
-    }
-
-    PGR_DBG("Starting processing");
     clock_t start_t = clock();
     pgr_do_binaryBreadthFirstSearch(
-        edges_sql,
-        combinations_sql,
-        start_vidsArr, size_start_vidsArr,
-        end_vidsArr, size_end_vidsArr,
+            edges_sql,
+            combinations_sql,
+            start_vidsArr, size_start_vidsArr,
+            end_vidsArr, size_end_vidsArr,
 
-        directed,
+            directed,
 
-        result_tuples, result_count,
-        &log_msg, &notice_msg, &err_msg);
-
+            result_tuples, result_count,
+            &log_msg, &notice_msg, &err_msg);
     time_msg(" processing pgr_binaryBreadthFirstSearch", start_t, clock());
-    PGR_DBG("Returning %ld tuples", *result_count);
 
-    if (err_msg) {
-        if (*result_tuples)
-            pfree(*result_tuples);
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_tuples) = NULL;
+        (*result_count) = 0;
     }
 
     pgr_global_report(log_msg, notice_msg, err_msg);
 
-    if (edges)
-        pfree(edges);
-    if (log_msg)
-        pfree(log_msg);
-    if (notice_msg)
-        pfree(notice_msg);
-    if (err_msg)
-        pfree(err_msg);
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
 
-    if (start_vidsArr)
-        pfree(start_vidsArr);
-    if (end_vidsArr)
-        pfree(end_vidsArr);
+    if (start_vidsArr) pfree(start_vidsArr);
+    if (end_vidsArr) pfree(end_vidsArr);
     pgr_SPI_finish();
 }
 
@@ -172,26 +132,26 @@ PGDLLEXPORT Datum _pgr_binarybreadthfirstsearch(PG_FUNCTION_ARGS) {
              * many to many
              */
             process(
-                text_to_cstring(PG_GETARG_TEXT_P(0)),
-                NULL,
-                PG_GETARG_ARRAYTYPE_P(1),
-                PG_GETARG_ARRAYTYPE_P(2),
-                PG_GETARG_BOOL(3),
-                &result_tuples,
-                &result_count);
+                    text_to_cstring(PG_GETARG_TEXT_P(0)),
+                    NULL,
+                    PG_GETARG_ARRAYTYPE_P(1),
+                    PG_GETARG_ARRAYTYPE_P(2),
+                    PG_GETARG_BOOL(3),
+                    &result_tuples,
+                    &result_count);
 
         } else if (PG_NARGS() == 3) {
             /*
              * combinations
              */
             process(
-                text_to_cstring(PG_GETARG_TEXT_P(0)),
-                text_to_cstring(PG_GETARG_TEXT_P(1)),
-                NULL,
-                NULL,
-                PG_GETARG_BOOL(2),
-                &result_tuples,
-                &result_count);
+                    text_to_cstring(PG_GETARG_TEXT_P(0)),
+                    text_to_cstring(PG_GETARG_TEXT_P(1)),
+                    NULL,
+                    NULL,
+                    PG_GETARG_BOOL(2),
+                    &result_tuples,
+                    &result_count);
         }
 
 
@@ -204,7 +164,7 @@ PGDLLEXPORT Datum _pgr_binarybreadthfirstsearch(PG_FUNCTION_ARGS) {
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
-                            "that cannot accept type record")));
+                         "that cannot accept type record")));
         }
 
         funcctx->tuple_desc = tuple_desc;
@@ -223,15 +183,15 @@ PGDLLEXPORT Datum _pgr_binarybreadthfirstsearch(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
         /*
-            OUT seq BIGINT,
-            OUT path_seq BIGINT,
-            OUT start_vid BIGINT,
-            OUT end_vid BIGINT,
-            OUT node BIGINT,
-            OUT edge BIGINT,
-            OUT cost FLOAT,
-            OUT agg_cost FLOAT
-        */
+           OUT seq BIGINT,
+           OUT path_seq BIGINT,
+           OUT start_vid BIGINT,
+           OUT end_vid BIGINT,
+           OUT node BIGINT,
+           OUT edge BIGINT,
+           OUT cost FLOAT,
+           OUT agg_cost FLOAT
+           */
         /**********************************************************************/
         size_t numb = 8;
         values = palloc(numb * sizeof(Datum));
