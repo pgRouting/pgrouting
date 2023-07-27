@@ -74,7 +74,10 @@ class TSP : public Pgr_messages {
             size_t limit, int cycles);
 
     TSP(IID_t_rt *, size_t, bool);
+#if 0
     TSP(Coordinate_t *, size_t, bool);
+#endif
+    TSP(const std::vector<Coordinate_t>&);
     TSP() = delete;
 
 #if Boost_VERSION_MACRO >= 106800

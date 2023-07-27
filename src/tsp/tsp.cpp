@@ -373,6 +373,77 @@ TSP::TSP(
  * 2 , 3.6 1
  * but when the remove_duplicates flag is on, keep only the first row that has the same id
  */
+TSP::TSP(const std::vector<Coordinate_t> &coordinates) {
+    log << "before total_coordinates" << coordinates.size();
+
+    /*
+     * keeping the vertex identifiers
+     */
+    Identifiers<int64_t> ids;
+    for (const auto c : coordinates) {
+        ids += c.id;
+    }
+
+    /*
+     * Inserting vertices
+     */
+    size_t i{0};
+    for (const auto &id : ids) {
+        auto v = add_vertex(i, graph);
+        id_to_V.insert(std::make_pair(id, v));
+        V_to_id.insert(std::make_pair(v, id));
+        ++i;
+    }
+
+    /*
+     * Inserting edges
+     */
+    for (size_t i = 0; i < coordinates.size(); ++i) {
+        auto u = get_boost_vertex(coordinates[i].id);
+        auto ux = coordinates[i].x;
+        auto uy = coordinates[i].y;
+
+        /*
+         *  undirected, so only need traverse higher coordinates for connections
+         */
+        for (size_t j = i + 1; j < coordinates.size(); ++j) {
+            auto v = get_boost_vertex(coordinates[j].id);
+
+            /*
+             * ignoring duplicated coordinates
+             */
+            if (boost::edge(u, v, graph).second) continue;
+
+            auto vx = coordinates[j].x;
+            auto vy = coordinates[j].y;
+
+            auto const dx = ux - vx;
+            auto const dy = uy - vy;
+
+            /*
+             * weight is euclidean distance
+             */
+            auto add_result = boost::add_edge(u, v, sqrt(dx * dx + dy * dy), graph);
+            if (!add_result.second) {
+                throw std::make_pair(
+                        std::string("INTERNAL: something went wrong adding and edge\n"),
+                        std::string(__PGR_PRETTY_FUNCTION__));
+            }
+        }
+    }
+}
+
+#if 0
+/**
+ * The postgres user might inadvertently give duplicate points with the same id
+ * the approximation is quite right, for example
+ * 1, 3.5, 1
+ * 1, 3.499999999999 0.9999999
+ * the approximation is quite wrong, for example
+ * 2 , 3.5 1
+ * 2 , 3.6 1
+ * but when the remove_duplicates flag is on, keep only the first row that has the same id
+ */
 TSP::TSP(Coordinate_t *coordinates,
         size_t total_coordinates,
         bool ) {
@@ -434,7 +505,7 @@ TSP::TSP(Coordinate_t *coordinates,
         }
     }
 }
-
+#endif
 
 
 

@@ -49,17 +49,15 @@ extern "C" {
 #endif
 
 void
-do_pgr_euclideanTSP(
-        Coordinate_t *coordinates, size_t total_coordinates,
-        int64_t start_vid,
-        int64_t end_vid,
-        bool strict,
+pgr_do_euclideanTSP(
+        char*,
 
-        TSP_tour_rt **results,
-        size_t *total_results,
-        char **log_msg,
-        char **notice_msg,
-        char **err_msg);
+        int64_t,
+        int64_t,
+        bool,
+
+        TSP_tour_rt **, size_t *,
+        char **, char **, char **);
 
 #ifdef __cplusplus
 }
