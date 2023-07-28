@@ -181,4 +181,3 @@ pgr_do_max_flow(
         *log_msg = pgr_msg(log.str().c_str());
     }
 }
-

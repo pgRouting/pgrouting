@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: edge_disjoint_paths_many_to_many_driver.cpp
+File: edge_disjoint_paths_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -37,8 +37,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/combinations.h"
 #include "cpp_common/identifiers.hpp"
-#include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/pggetdata.hpp"
 #include "cpp_common/pgr_assert.h"
+#include "cpp_common/pgr_alloc.hpp"
 
 #include "c_types/ii_t_rt.h"
 
@@ -69,15 +70,11 @@ single_execution(
 }  // namespace
 
 void
-do_pgr_edge_disjoint_paths(
-    Edge_t *data_edges,
-    size_t total_edges,
-    II_t_rt *combinations,
-    size_t total_combinations,
-    int64_t *sources,
-    size_t size_source_verticesArr,
-    int64_t *sinks,
-    size_t size_sink_verticesArr,
+pgr_do_edge_disjoint_paths(
+    char *edges_sql,
+        char *combinations_sql,
+        int64_t *sourceVertices, size_t sizeSourceVerticesArr,
+        int64_t *sinkVertices, size_t sizeSinkVerticesArr,
     bool directed,
     Path_rt **return_tuples,
     size_t *return_count,
@@ -91,26 +88,41 @@ do_pgr_edge_disjoint_paths(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
+    char* hint;
+
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(data_edges);
-        pgassert(total_edges != 0);
-        pgassert((sources && sinks) || combinations);
-        pgassert((size_source_verticesArr && size_sink_verticesArr) || total_combinations);
 
-        auto combinations_data = total_combinations?
-            pgrouting::utilities::get_combinations(combinations, total_combinations)
-            : pgrouting::utilities::get_combinations(sources, size_source_verticesArr, sinks, size_sink_verticesArr);
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
 
-        std::vector<Edge_t> edges(
-                data_edges, data_edges + total_edges);
+        if (edges.size() == 0) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+
+        hint = combinations_sql;
+        auto combinationsArr = combinations_sql?
+            pgrouting::pgget::get_combinations(std::string(combinations_sql)) : std::vector<II_t_rt>();
+
+        auto combinations = combinationsArr.empty()?
+            pgrouting::utilities::get_combinations(sourceVertices, sizeSourceVerticesArr, sinkVertices, sizeSinkVerticesArr)
+            : pgrouting::utilities::get_combinations(combinationsArr);
+
+        if (combinations.empty()) {
+            *notice_msg = pgr_msg("No combinations found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
 
         std::vector<Path_rt> paths;
-        for (const auto &c : combinations_data) {
+        for (const auto &c : combinations) {
             for (const auto &t : c.second) {
                 /*
                  * a source can not be a sink
@@ -192,6 +204,9 @@ do_pgr_edge_disjoint_paths(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch(...) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
