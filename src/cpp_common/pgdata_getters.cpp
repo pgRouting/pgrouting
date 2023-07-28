@@ -43,7 +43,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/info_t.hpp"
 #include "c_types/edge_t.h"
-#include "c_types/point_on_edge_t.h"
 
 
 /**
@@ -103,45 +102,6 @@ pgr_get_edges(
         info[4] = {-1, 0, false, "reverse_cost", pgrouting::ANY_NUMERICAL};
 
         pgrouting::get_data(sql, rows, total_rows, normal, info, &pgrouting::fetch_edge);
-    } catch (const std::string &ex) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg(ex.c_str());
-    } catch(...) {
-        (*rows) = pgr_free(*rows);
-        (*total_rows) = 0;
-        *err_msg = pgr_msg("Caught unknown exception!");
-    }
-}
-
-
-/**
-  For queries of the type:
-  ~~~~{.c}
-  SELECT pid, edge_id, fraction side FROM points;
-  ~~~~
-
-  @param[in] sql The query
-  @param[out] rows the points array
-  @param[out] total_rows size of points
-  @param[out] err_msg when not null, there was an error and contains the message
-  */
-void pgr_get_points(
-        char *sql,
-        Point_on_edge_t **rows,
-        size_t *total_rows,
-        char **err_msg) {
-    using pgrouting::pgr_free;
-    using pgrouting::pgr_msg;
-    using pgrouting::Column_info_t;
-    try {
-        std::vector<Column_info_t> info{4};
-
-        info[0] = {-1, 0, false, "pid", pgrouting::ANY_INTEGER};
-        info[1] = {-1, 0, true, "edge_id", pgrouting::ANY_INTEGER};
-        info[2] = {-1, 0, true, "fraction", pgrouting::ANY_NUMERICAL};
-        info[3] = {-1, 0, false, "side", pgrouting::CHAR1};
-        pgrouting::get_data(sql, rows, total_rows, true, info, &pgrouting::fetch_point);
     } catch (const std::string &ex) {
         (*rows) = pgr_free(*rows);
         (*total_rows) = 0;

@@ -59,10 +59,8 @@ extern "C" {
 
 #ifdef __cplusplus
 using Edge_t = struct Edge_t;
-using Point_on_edge_t = struct Point_on_edge_t;
 #else
 typedef struct Edge_t Edge_t;
-typedef struct Point_on_edge_t Point_on_edge_t;
 #endif
 
 
@@ -72,9 +70,6 @@ extern "C" {
 
 /** @brief Read edges called from C file*/
 void pgr_get_edges(char*, Edge_t**, size_t*, bool, bool, char**);
-
-/** @brief Read rows of points, called from C file*/
-void pgr_get_points(char*, Point_on_edge_t**, size_t*, char**);
 
 /** @brief Enforces the input array to be @b NOT empty */
 int64_t* pgr_get_bigIntArray(size_t*, ArrayType*, bool, char**);
