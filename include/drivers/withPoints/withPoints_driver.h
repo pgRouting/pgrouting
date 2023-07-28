@@ -54,6 +54,7 @@ void pgr_do_withPoints(
         int64_t*, size_t,
 
         char, bool, bool, bool, bool,
+
         Path_rt**, size_t*,
         char**, char**, char**);
 

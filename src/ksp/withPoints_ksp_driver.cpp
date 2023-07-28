@@ -7,7 +7,7 @@ Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail:
+Mail: vicky at erosion.dev
 
 ------
 
@@ -34,62 +34,73 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "yen/pgr_ksp.hpp"
 
-#include "withPoints/pgr_withPoints.hpp"
+#include "cpp_common/pggetdata.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
-
-using pgrouting::yen::Pgr_ksp;
-
-// CREATE OR REPLACE FUNCTION pgr_withPointsKSP(
-// edges_sql TEXT,
-// points_sql TEXT,
-// start_pid BIGINT,
-// end_pid BIGINT,
-// directed BOOLEAN DEFAULT true
+#include "withPoints/pgr_withPoints.hpp"
+#include "yen/pgr_ksp.hpp"
 
 
-int
-do_pgr_withPointsKsp(
-        Edge_t  *edges,           size_t total_edges,
-        Point_on_edge_t  *points_p,   size_t total_points,
-        Edge_t  *edges_of_points, size_t total_edges_of_points,
-        int64_t start_pid,
-        int64_t end_pid,
+void
+pgr_do_withPointsKsp(
+        char *edges_sql,
+        char *points_sql,
+        char *edges_of_points_sql,
+
+        int64_t start_vid,
+        int64_t end_vid,
         size_t k,
         bool directed,
         bool heap_paths,
         char driving_side,
         bool details,
-        Path_rt **return_tuples,
-        size_t *return_count,
-        char ** log_msg,
-        char ** notice_msg,
-        char ** err_msg) {
+
+        Path_rt **return_tuples, size_t *return_count,
+
+        char** log_msg,
+        char** notice_msg,
+        char** err_msg) {
     using pgrouting::Path;
     using pgrouting::pgr_alloc;
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
+    using pgrouting::yen::Pgr_ksp;
 
     std::ostringstream log;
-    std::ostringstream err;
     std::ostringstream notice;
+    std::ostringstream err;
+    char *hint;
+
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(total_edges != 0);
 
-        pgrouting::Pg_points_graph pg_graph(
-                std::vector<Point_on_edge_t>(
-                    points_p,
-                    points_p + total_points),
-                std::vector< Edge_t >(
-                    edges_of_points,
-                    edges_of_points + total_edges_of_points),
+	graphType gType = directed? DIRECTED: UNDIRECTED;
+
+        hint = points_sql;
+        auto points = pgrouting::pgget::get_points(std::string(points_sql));
+
+        hint = edges_of_points_sql;
+        auto edges_of_points = pgrouting::pgget::get_edges(std::string(edges_of_points_sql), true, false);
+
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+
+        if (edges.size() + edges_of_points.size() == 0) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
+
+        /*
+         * processing points
+         */
+        pgrouting::Pg_points_graph pg_graph(points, edges_of_points,
                 true,
                 driving_side,
                 directed);
@@ -99,66 +110,42 @@ do_pgr_withPointsKsp(
             err << pg_graph.get_error();
             *log_msg = pgr_msg(log.str().c_str());
             *err_msg = pgr_msg(err.str().c_str());
-            return -1;
+            return;
         }
 
-
-        int64_t start_vid(start_pid);
-        int64_t end_vid(end_pid);
-
-        log << "start_pid" << start_pid << "\n";
-        log << "end_pid" << end_pid << "\n";
-        log << "driving_side" << driving_side << "\n";
-        log << "start_vid" << start_vid << "\n";
-        log << "end_vid" << end_vid << "\n";
-        graphType gType = directed? DIRECTED: UNDIRECTED;
-
-        std::deque< Path > paths;
-
-        auto vertices(pgrouting::extract_vertices(edges, total_edges));
+        auto vertices(pgrouting::extract_vertices(edges));
         vertices = pgrouting::extract_vertices(vertices, pg_graph.new_edges());
 
-        log << "extracted vertices: ";
-        for (const auto& v : vertices) {
-            log << v.id << ", ";
-        }
-        log << "\n";
-
+        std::deque<Path> paths;
         if (directed) {
-            log << "Working with directed Graph\n";
-            pgrouting::DirectedGraph digraph(vertices, gType);
-            digraph.insert_edges(edges, total_edges);
-            log << "graph after inserting edges\n";
-            log << digraph << "\n";
-
+            pgrouting::DirectedGraph digraph(gType);
+            digraph.insert_edges(edges);
             digraph.insert_edges(pg_graph.new_edges());
-            log << "graph after inserting new edges\n";
-            log << digraph << "\n";
 
-            Pgr_ksp< pgrouting::DirectedGraph  > fn_yen;
+            Pgr_ksp<pgrouting::DirectedGraph> fn_yen;
             paths = fn_yen.Yen(digraph, start_vid, end_vid, k, heap_paths);
-            // pgassert(true==false);
+
         } else {
-            log << "Working with undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(edges, total_edges);
+            undigraph.insert_edges(edges);
             undigraph.insert_edges(pg_graph.new_edges());
 
-            Pgr_ksp< pgrouting::UndirectedGraph > fn_yen;
+            Pgr_ksp<pgrouting::UndirectedGraph> fn_yen;
             paths = fn_yen.Yen(undigraph, start_vid, end_vid, k, heap_paths);
         }
 
-
         if (!details) {
-            for (auto &path : paths) {
-                path = pg_graph.eliminate_details(path);
-            }
+            for (auto &path : paths) path = pg_graph.eliminate_details(path);
         }
 
         auto count(count_tuples(paths));
 
         if (count == 0) {
-            return 0;
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
+            notice << "No paths found";
+            *log_msg = pgr_msg(notice.str().c_str());
+            return;
         }
 
 
@@ -174,7 +161,7 @@ do_pgr_withPointsKsp(
         }
 
         if (count != sequence) {
-            return 2;
+            throw std::string("ERROR, something went wrong");
         }
         (*return_count) = sequence;
 
@@ -184,13 +171,15 @@ do_pgr_withPointsKsp(
         *notice_msg = notice.str().empty()?
             *notice_msg :
             pgr_msg(notice.str().c_str());
-        return 0;
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
@@ -204,5 +193,4 @@ do_pgr_withPointsKsp(
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
     }
-    return 1000;
 }

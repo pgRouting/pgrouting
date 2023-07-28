@@ -174,8 +174,7 @@ pgr_do_dijkstra(
         post_process(paths, only_cost, normal, n, global);
         combinations.clear();
 
-        size_t count(0);
-        count = count_tuples(paths);
+        auto count = count_tuples(paths);
 
         if (count == 0) {
             (*return_tuples) = NULL;

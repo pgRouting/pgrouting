@@ -78,11 +78,6 @@ process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    Point_on_edge_t *points = NULL;
-    size_t total_points = 0;
-    pgr_get_points(points_sql, &points, &total_points, &err_msg);
-    throw_error(err_msg, points_sql);
-
     char *edges_of_points_query = NULL;
     char *edges_no_points_query = NULL;
     get_new_queries(
@@ -91,42 +86,14 @@ process(
             &edges_no_points_query);
 
 
-    Edge_t *edges_of_points = NULL;
-    size_t total_edges_of_points = 0;
-    pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points, true, false, &err_msg);
-    throw_error(err_msg, edges_of_points_query);
-
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-    pgr_get_edges(edges_no_points_query, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_no_points_query);
-
-    PGR_DBG("freeing allocated memory not used anymore");
-    pfree(edges_of_points_query);
-    pfree(edges_no_points_query);
-
-    if ((total_edges + total_edges_of_points) == 0) {
-        PGR_DBG("No edges found");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
-        pgr_SPI_finish();
-        return;
-    }
-
-    PGR_DBG("Starting processing");
     clock_t start_t = clock();
+    pgr_do_withPointsKsp(
+            edges_no_points_query,
+            points_sql,
+            edges_of_points_query,
+            start_pid, end_pid,
 
-    do_pgr_withPointsKsp(
-            edges,
-            total_edges,
-            points,
-            total_points,
-            edges_of_points,
-            total_edges_of_points,
-            start_pid,
-            end_pid,
             k,
-
             directed,
             heap_paths,
             driving_side[0],
@@ -152,10 +119,6 @@ process(
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
 
-    pfree(edges);
-    pfree(edges_of_points);
-    pfree(points);
-
     pgr_SPI_finish();
 }
 
@@ -174,24 +137,6 @@ PGDLLEXPORT Datum _pgr_withpointsksp(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-
-        /*
-           CREATE OR REPLACE FUNCTION pgr_withPoint(
-           edges_sql TEXT,
-           points_sql TEXT,
-           start_pid INTEGER,
-           end_pid BIGINT,
-           k BIGINT,
-
-           directed BOOLEAN -- DEFAULT true,
-           heap_paths BOOLEAN -- DEFAULT false,
-           driving_side CHAR -- DEFAULT 'b',
-           details BOOLEAN -- DEFAULT false
-        */
-
-        PGR_DBG("Calling process");
-        PGR_DBG("initial driving side:%s",
-                text_to_cstring(PG_GETARG_TEXT_P(7)));
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
@@ -238,14 +183,6 @@ PGDLLEXPORT Datum _pgr_withpointsksp(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        /*
-           OUT seq INTEGER, OUT path_id INTEGER, OUT path_seq INTEGER,
-           OUT node BIGINT, OUT edge BIGINT,
-           OUT cost FLOAT, OUT agg_cost FLOAT)
-           */
-
-
-        // postgres starts counting from 1
         values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
         values[1] = Int32GetDatum((int)
                 (result_tuples[funcctx->call_cntr].start_id + 1));
