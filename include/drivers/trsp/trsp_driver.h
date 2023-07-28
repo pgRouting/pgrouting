@@ -50,15 +50,15 @@ extern "C" {
 #endif
 
 void pgr_do_trsp(
-        char *,
-        char *,
-        char *,
-        int64_t *, size_t,
-        int64_t *, size_t,
+        char*,
+        char*,
+        char*,
+        int64_t*, size_t,
+        int64_t*, size_t,
 
         bool,
 
-        Path_rt **, size_t *,
+        Path_rt**, size_t*,
         char**, char**, char**);
 
 #ifdef __cplusplus

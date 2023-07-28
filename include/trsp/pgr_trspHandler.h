@@ -104,6 +104,11 @@ class Pgr_trspHandler : public pgrouting::Pgr_messages {
  public:
     Pgr_trspHandler(
             std::vector<Edge_t> &edges,
+            const std::vector<Edge_t> &new_edges,
+            const bool directed,
+            const std::vector<Rule> &ruleList);
+    Pgr_trspHandler(
+            std::vector<Edge_t> &edges,
             const bool directed,
             const std::vector<Rule> &ruleList);
     Pgr_trspHandler(
@@ -182,8 +187,9 @@ class Pgr_trspHandler : public pgrouting::Pgr_messages {
     double construct_path(int64_t ed_id, Position pos);
 
     void renumber_edges(Edge_t*, const size_t);
-    void renumber_edges(std::vector<Edge_t>&);
     void renumber_edges(Edge_t*, const size_t, std::vector<Edge_t>&);
+    void renumber_edges(std::vector<Edge_t>&);
+    void renumber_edges(std::vector<Edge_t>&, std::vector<Edge_t>&);
 
     void  add_to_que(
             double cost,

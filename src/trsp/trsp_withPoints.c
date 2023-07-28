@@ -81,9 +81,6 @@ process(
     size_t size_end_pidsArr = 0;
     int64_t* end_pidsArr = NULL;
 
-    II_t_rt *combinations = NULL;
-    size_t total_combinations = 0;
-
     /* managing edges */
     char *edges_of_points_query = NULL;
     char *edges_no_points_query = NULL;
@@ -92,60 +89,21 @@ process(
             &edges_of_points_query,
             &edges_no_points_query);
 
-    Edge_t *edges_of_points = NULL;
-    size_t total_edges_of_points = 0;
-
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-
-    pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points, true, false, &err_msg);
-    throw_error(err_msg, edges_of_points_query);
-    pgr_get_edges(edges_no_points_query, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_no_points_query);
-
-    pfree(edges_of_points_query);
-    pfree(edges_no_points_query);
-    edges_of_points_query = NULL;
-    edges_no_points_query = NULL;
-
-    if ((total_edges + total_edges_of_points) == 0) {
-        pgr_SPI_finish();
-        return;
-    }
-
-    /* Managing departure & destination */
     if (starts && ends) {
         start_pidsArr = (int64_t*) pgr_get_bigIntArray(&size_start_pidsArr, starts, false, &err_msg);
         throw_error(err_msg, "While getting start vids");
         end_pidsArr = (int64_t*) pgr_get_bigIntArray(&size_end_pidsArr, ends, false, &err_msg);
         throw_error(err_msg, "While getting end vids");
-    } else if (combinations_sql) {
-        pgr_get_combinations(combinations_sql, &combinations, &total_combinations, &err_msg);
-        throw_error(err_msg, combinations_sql);
     }
-
-    /* Managing Points */
-    Point_on_edge_t *points = NULL;
-    size_t total_points = 0;
-    pgr_get_points(points_sql, &points, &total_points, &err_msg);
-    throw_error(err_msg, points_sql);
-
-    /* Managing restrictions */
-    Restriction_t *restrictions = NULL;
-    size_t restrictions_size = 0;
-    pgr_get_restrictions(restrictions_sql, &restrictions, &restrictions_size, &err_msg);
-    throw_error(err_msg, restrictions_sql);
-
 
     clock_t start_t = clock();
 
-    do_trsp_withPoints(
-            edges, total_edges,
-            restrictions, restrictions_size,
-            points, total_points,
-            edges_of_points, total_edges_of_points,
-
-            combinations, total_combinations,
+    pgr_do_trsp_withPoints(
+            edges_no_points_query,
+            restrictions_sql,
+            points_sql,
+            edges_of_points_query,
+            combinations_sql,
 
             start_pidsArr, size_start_pidsArr,
             end_pidsArr, size_end_pidsArr,
@@ -172,12 +130,8 @@ process(
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-    if (edges) {pfree(edges); edges = NULL;}
-    if (edges_of_points) {pfree(edges_of_points); edges_of_points = NULL;}
-    if (edges_of_points) {pfree(edges_of_points); edges_of_points = NULL;}
     if (start_pidsArr) {pfree(start_pidsArr); start_pidsArr = NULL;}
     if (end_pidsArr) {pfree(end_pidsArr); end_pidsArr = NULL;}
-    if (combinations) {pfree(combinations); combinations = NULL;}
 
     pgr_SPI_finish();
 }
