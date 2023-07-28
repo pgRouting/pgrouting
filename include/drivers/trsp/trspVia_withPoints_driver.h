@@ -49,26 +49,19 @@ extern "C" {
 
 /** @brief Process pgr_trsp_withPointsVia */
 void
-do_trspVia_withPoints(
-        Edge_t*,  size_t,           // edges
-        Restriction_t *, size_t,    // restrictions
-        Point_on_edge_t *, size_t,  // Points
-        Edge_t*, size_t,            // edges of points
-        int64_t *,    size_t,       // via vertices
+pgr_do_trspVia_withPoints(
+        char*,
+        char*,
+        char*,
+        char*,
+        int64_t*, size_t,
 
-        bool,  // directed
+        bool,
+        char, bool,
+        bool, bool,
 
-        char,  // driving_side
-        bool,  // details
-
-        bool,  // strict
-        bool,  // U_turn_on_edge,
-
-        Routes_t**, size_t*,  // results
-
-        char**,   // log
-        char**,   // notice
-        char**);  // error
+        Routes_t**, size_t*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }
