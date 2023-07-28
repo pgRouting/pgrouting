@@ -34,11 +34,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 
-#include "dagShortestPath/pgr_dagShortestPath.hpp"
 
+#include "cpp_common/combinations.h"
+#include "cpp_common/pggetdata.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
-
+#include "dagShortestPath/pgr_dagShortestPath.hpp"
 
 
 
@@ -48,25 +49,10 @@ template < class G >
 std::deque<pgrouting::Path>
 pgr_dagShortestPath(
         G &graph,
-        std::vector <II_t_rt> &combinations,
-        std::vector < int64_t > sources,
-        std::vector < int64_t > targets,
+        std::map<int64_t, std::set<int64_t>> &combinations,
         bool only_cost = false) {
-    std::sort(sources.begin(), sources.end());
-    sources.erase(
-            std::unique(sources.begin(), sources.end()),
-            sources.end());
-
-    std::sort(targets.begin(), targets.end());
-    targets.erase(
-            std::unique(targets.begin(), targets.end()),
-            targets.end());
-
-
-    pgrouting::Pgr_dag< G > fn_dag;
-    auto paths = combinations.empty() ?
-            fn_dag.dag(graph, sources, targets, only_cost)
-            : fn_dag.dag(graph, combinations, only_cost);
+    pgrouting::Pgr_dag<G> fn_dag;
+    auto paths = fn_dag.dag(graph, combinations, only_cost);
 
     return paths;
 }
@@ -74,23 +60,21 @@ pgr_dagShortestPath(
 }  // namespace
 
 void
-do_pgr_dagShortestPath(
-        Edge_t  *data_edges,
-        size_t total_edges,
-        II_t_rt *combinations,
-        size_t total_combinations,
-        int64_t  *start_vidsArr,
-        size_t size_start_vidsArr,
-        int64_t  *end_vidsArr,
-        size_t size_end_vidsArr,
+pgr_do_dagShortestPath(
+        char *edges_sql,
+        char *combinations_sql,
+
+        int64_t *start_vidsArr, size_t size_start_vidsArr,
+        int64_t *end_vidsArr, size_t size_end_vidsArr,
+
         bool directed,
         bool only_cost,
 
         Path_rt **return_tuples,
         size_t *return_count,
-        char ** log_msg,
-        char ** notice_msg,
-        char ** err_msg) {
+        char **log_msg,
+        char **notice_msg,
+        char **err_msg) {
     using pgrouting::Path;
     using pgrouting::pgr_alloc;
     using pgrouting::pgr_msg;
@@ -99,63 +83,59 @@ do_pgr_dagShortestPath(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char *hint;
+
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(total_edges != 0);
-        pgassert(data_edges);
-        pgassert((start_vidsArr && end_vidsArr) || combinations);
-        pgassert((size_start_vidsArr && size_end_vidsArr) || total_combinations);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        log << "Inserting vertices into a c++ vector structure";
-        std::vector<int64_t>
-            start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
-        std::vector< int64_t >
-            end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
-        std::vector< II_t_rt >
-            combinations_vector(combinations, combinations + total_combinations);
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
 
-        std::deque< Path >paths;
+        if (edges.size() == 0) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
+
+        hint = combinations_sql;
+        auto combinationsArr = combinations_sql?
+            pgrouting::pgget::get_combinations(std::string(combinations_sql)) : std::vector<II_t_rt>();
+        hint = nullptr;
+
+        auto combinations = combinationsArr.empty()?
+            pgrouting::utilities::get_combinations(start_vidsArr, size_start_vidsArr, end_vidsArr, size_end_vidsArr)
+            : pgrouting::utilities::get_combinations(combinationsArr);
+
+        std::deque<Path> paths;
 
         if (directed) {
-            log << "Working with directed Graph\n";
-            pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(data_edges, total_edges);
-            paths = pgr_dagShortestPath(digraph,
-                    combinations_vector,
-                    start_vertices,
-                    end_vertices,
-                    only_cost);
+            pgrouting::DirectedGraph graph(gType);
+            graph.insert_edges(edges);
+            paths = pgr_dagShortestPath(graph, combinations, only_cost);
         } else {
-            log << "Working with Undirected Graph\n";
-            pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(data_edges, total_edges);
-            paths = pgr_dagShortestPath(
-                    undigraph,
-                    combinations_vector,
-                    start_vertices,
-                    end_vertices,
-                    only_cost);
+            pgrouting::UndirectedGraph graph(gType);
+            graph.insert_edges(edges);
+            paths = pgr_dagShortestPath( graph, combinations, only_cost);
         }
 
-        size_t count(0);
-        count = count_tuples(paths);
+        auto count = count_tuples(paths);
 
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            notice <<
-                "No paths found between start_vid and end_vid vertices";
+            notice << "No paths found";
+            *log_msg = pgr_msg(notice.str().c_str());
             return;
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        log << "\nConverting a set of paths into the tuples";
         (*return_count) = (collapse_paths(return_tuples, paths));
 
         *log_msg = log.str().empty()?
@@ -169,18 +149,21 @@ do_pgr_dagShortestPath(
         (*return_count) = 0;
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch(...) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << "Caught unknown exception!";
         *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     }
 }
