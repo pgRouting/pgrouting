@@ -49,21 +49,17 @@ typedef struct II_t_rt II_t_rt;
 extern "C" {
 #endif
 
-void do_trsp(
-        Edge_t *, size_t,           // edges
-        Restriction_t *, size_t,    // restrictions
+void pgr_do_trsp(
+        char *,
+        char *,
+        char *,
+        int64_t *, size_t,
+        int64_t *, size_t,
 
-        II_t_rt *, size_t,  // combinations
-        int64_t *, size_t,  // starts
-        int64_t *, size_t,  // ends
+        bool,
 
-        bool,  // directed
-
-        Path_rt **, size_t *,  // tuples
-
-        char**,   // log
-        char**,   // notice
-        char**);  // err
+        Path_rt **, size_t *,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }

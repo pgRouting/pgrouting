@@ -44,6 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/combinations.h"
+#include "cpp_common/pggetdata.hpp"
 #include "c_types/restriction_t.h"
 #include "c_types/ii_t_rt.h"
 #include "dijkstra/dijkstra.hpp"
@@ -93,13 +94,12 @@ pgr_dijkstra(
 }  // namespace
 
 void
-do_trsp(
-        Edge_t *edges, size_t total_edges,
-        Restriction_t *restrictions, size_t restrictions_size,
-
-        II_t_rt *combinations_arr, size_t total_combinations,
-        int64_t *starts_arr, size_t size_starts_arr,
-        int64_t *ends_arr, size_t size_ends_arr,
+pgr_do_trsp(
+        char *edges_sql,
+        char *restrictions_sql,
+        char *combinations_sql,
+        int64_t *start_vidsArr, size_t size_start_vidsArr,
+        int64_t *end_vidsArr, size_t size_end_vidsArr,
 
         bool directed,
 
@@ -116,33 +116,45 @@ do_trsp(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
+    char *hint;
     try {
-        pgassert(edges);
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+
+        if (edges.size() == 0) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+
+        hint = combinations_sql;
+        auto combinationsArr = combinations_sql?
+            pgrouting::pgget::get_combinations(std::string(combinations_sql)) : std::vector<II_t_rt>();
+        hint = nullptr;
+
+        auto combinations = combinationsArr.empty()?
+            pgrouting::utilities::get_combinations(start_vidsArr, size_start_vidsArr, end_vidsArr, size_end_vidsArr)
+            : pgrouting::utilities::get_combinations(combinationsArr);
+
         graphType gType = directed? DIRECTED: UNDIRECTED;
-
-        auto vertices(pgrouting::extract_vertices(edges, total_edges));
-
-        auto combinations = total_combinations?
-            pgrouting::utilities::get_combinations(combinations_arr, total_combinations)
-            : pgrouting::utilities::get_combinations(starts_arr, size_starts_arr, ends_arr, size_ends_arr);
 
         std::deque<Path> paths;
         if (directed) {
-            pgrouting::DirectedGraph digraph(vertices, gType);
-            digraph.insert_edges(edges, total_edges);
+            pgrouting::DirectedGraph digraph(gType);
+            digraph.insert_edges(edges);
 
             paths = pgr_dijkstra(
                     digraph,
                     combinations);
         } else {
-            pgrouting::UndirectedGraph undigraph(vertices, gType);
-            undigraph.insert_edges(edges, total_edges);
+            pgrouting::UndirectedGraph undigraph(gType);
+            undigraph.insert_edges(edges);
 
             paths = pgr_dijkstra(
                     undigraph,
@@ -159,7 +171,7 @@ do_trsp(
             return;
         }
 
-        if (restrictions_size == 0) {
+        if (!restrictions_sql) {
             (*return_tuples) = pgr_alloc(count, (*return_tuples));
             (*return_count) = (collapse_paths(return_tuples, paths));
             return;
@@ -168,18 +180,26 @@ do_trsp(
         /*
          * When there are turn restrictions
          */
-        std::vector<pgrouting::trsp::Rule> ruleList;
-        for (size_t i = 0; i < restrictions_size; ++i) {
-            if (restrictions[i].via_size == 0) continue;
-            ruleList.push_back(pgrouting::trsp::Rule(*(restrictions + i)));
+        hint = restrictions_sql;
+        auto restrictions = restrictions_sql?
+            pgrouting::pgget::get_restrictions(std::string(restrictions_sql)) : std::vector<Restriction_t>();
+        if (restrictions.empty()) {
+            (*return_tuples) = pgr_alloc(count, (*return_tuples));
+            (*return_count) = (collapse_paths(return_tuples, paths));
+            return;
         }
+
+        std::vector<pgrouting::trsp::Rule> ruleList;
+        for (const auto &r : restrictions) {
+            if (r.via) ruleList.push_back(pgrouting::trsp::Rule(r));
+        }
+        hint = nullptr;
 
         auto new_combinations = pgrouting::utilities::get_combinations(paths, ruleList);
 
         if (!new_combinations.empty()) {
             pgrouting::trsp::Pgr_trspHandler gdef(
                     edges,
-                    total_edges,
                     directed,
                     ruleList);
             auto new_paths = gdef.process(new_combinations);
@@ -216,6 +236,9 @@ do_trsp(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch(...) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
