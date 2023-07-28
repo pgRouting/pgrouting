@@ -31,12 +31,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "dijkstra/pgr_dijkstraVia.hpp"
-#include "withPoints/pgr_withPoints.hpp"
+
 #include "c_types/routes_t.h"
+#include "cpp_common/pggetdata.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
-
+#include "dijkstra/pgr_dijkstraVia.hpp"
+#include "withPoints/pgr_withPoints.hpp"
 
 namespace {
 
@@ -90,21 +91,20 @@ get_route(
 }  // namespace
 
 void
-do_withPointsVia(
-        Edge_t* edges,    size_t total_edges,
-        Point_on_edge_t *points_p, size_t total_points,
-        Edge_t *edges_of_points, size_t total_edges_of_points,
+pgr_do_withPointsVia(
+        char *edges_sql,
+        char *points_sql,
+        char *edges_of_points_sql,
+
         int64_t* via_vidsArr,     size_t size_via_vidsArr,
 
         bool directed,
-
         char driving_side,
         bool details,
-
         bool strict,
         bool U_turn_on_edge,
 
-        Routes_t** return_tuples,   size_t* return_count,
+        Routes_t** return_tuples, size_t *return_count,
 
         char** log_msg,
         char** notice_msg,
@@ -115,20 +115,34 @@ do_withPointsVia(
     using pgrouting::pgr_free;
 
     std::ostringstream log;
-    std::ostringstream err;
     std::ostringstream notice;
+    std::ostringstream err;
+    char *hint;
 
     try {
-        pgassert(total_edges != 0);
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        std::deque<Path>paths;
+	graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
+        hint = points_sql;
+        auto points = pgrouting::pgget::get_points(std::string(points_sql));
+
+        hint = edges_of_points_sql;
+        auto edges_of_points = pgrouting::pgget::get_edges(std::string(edges_of_points_sql), true, false);
+
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+
+        if (edges.size() + edges_of_points.size() == 0) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
 
         /*
          * processing via
@@ -138,13 +152,7 @@ do_withPointsVia(
         /*
          * processing points
          */
-        pgrouting::Pg_points_graph pg_graph(
-                std::vector<Point_on_edge_t>(
-                    points_p,
-                    points_p + total_points),
-                std::vector< Edge_t >(
-                    edges_of_points,
-                    edges_of_points + total_edges_of_points),
+        pgrouting::Pg_points_graph pg_graph(points, edges_of_points,
                 true,
                 driving_side,
                 directed);
@@ -157,12 +165,13 @@ do_withPointsVia(
             return;
         }
 
-        auto vertices(pgrouting::extract_vertices(edges, total_edges));
+        auto vertices(pgrouting::extract_vertices(edges));
         vertices = pgrouting::extract_vertices(vertices, pg_graph.new_edges());
 
+        std::deque<Path> paths;
         if (directed) {
             pgrouting::DirectedGraph digraph(vertices, gType);
-            digraph.insert_edges(edges, total_edges);
+            digraph.insert_edges(edges);
             digraph.insert_edges(pg_graph.new_edges());
             pgrouting::pgr_dijkstraVia(
                     digraph,
@@ -173,7 +182,7 @@ do_withPointsVia(
                     log);
         } else {
             pgrouting::UndirectedGraph undigraph(vertices, gType);
-            undigraph.insert_edges(edges, total_edges);
+            undigraph.insert_edges(edges);
             undigraph.insert_edges(pg_graph.new_edges());
             pgrouting::pgr_dijkstraVia(
                     undigraph,
@@ -215,6 +224,9 @@ do_withPointsVia(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
