@@ -236,6 +236,10 @@ sub generate_upgrade_script {
             push @commands, drop_special_case_function("pgr_astar(text,anyarray,bigint,boolean,integer,double precision,double precision)");
             push @commands, drop_special_case_function("pgr_astar(text,bigint,anyarray,boolean,integer,double precision,double precision)");
             push @commands, drop_special_case_function("pgr_astar(text,bigint,bigint,boolean,integer,double precision,double precision)");
+            push @commands, drop_special_case_function("pgr_bdastar(text,bigint,bigint,boolean,integer,numeric,numeric)");
+            push @commands, drop_special_case_function("pgr_bdastar(text,bigint,anyarray,boolean,integer,numeric,numeric)");
+            push @commands, drop_special_case_function("pgr_bdastar(text,anyarray,bigint,boolean,integer,numeric,numeric)");
+
         }
 
     }
@@ -345,8 +349,8 @@ sub drop_special_case_function {
     my @commands = ();
 
     push @commands,  "-- $old_version  **WARN: DROP $function (something changed for $new_version)\n" if $DEBUG;
-    push @commands, "\nALTER EXTENSION pgrouting DROP FUNCTION $function;\n";
-    push @commands, "DROP FUNCTION IF EXISTS $function;\n\n\n";
+    push @commands, "ALTER EXTENSION pgrouting DROP FUNCTION $function;\n";
+    push @commands, "DROP FUNCTION IF EXISTS $function;\n";
     return @commands;
 }
 

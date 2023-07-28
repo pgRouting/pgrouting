@@ -75,6 +75,7 @@ process(
     size_t size_end_pidsArr = 0;
     int64_t* end_pidsArr = NULL;
 
+#if 0
     II_t_rt *combinations = NULL;
     size_t total_combinations = 0;
 
@@ -83,7 +84,6 @@ process(
     pgr_get_points(points_sql, &points, &total_points, &err_msg);
     throw_error(err_msg, points_sql);
 
-#ifndef NDEBUG
     size_t i;
     for (i = 0; i< total_points; i++) {
         PGR_DBG("%ld ", points[i].pid);
@@ -97,24 +97,35 @@ process(
             &edges_no_points_query);
 
 
+#if 0
     Edge_t *edges_of_points = NULL;
     size_t total_edges_of_points = 0;
 
     Edge_t *edges = NULL;
     size_t total_edges = 0;
 
-    if (normal) {
         pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points, true, false, &err_msg);
         throw_error(err_msg, edges_of_points_query);
         pgr_get_edges(edges_no_points_query, &edges, &total_edges, true, false, &err_msg);
         throw_error(err_msg, edges_no_points_query);
+#endif
 
-        if (starts && ends) {
-            start_pidsArr = pgr_get_bigIntArray(&size_start_pidsArr, starts, false, &err_msg);
-            throw_error(err_msg, "While getting start vids");
-            end_pidsArr = pgr_get_bigIntArray(&size_end_pidsArr, ends, false, &err_msg);
-            throw_error(err_msg, "While getting end vids");
-        } else if (combinations_sql) {
+     if (starts && ends) {
+         if (normal) {
+             start_pidsArr = pgr_get_bigIntArray(&size_start_pidsArr, starts, false, &err_msg);
+             throw_error(err_msg, "While getting start vids");
+             end_pidsArr = pgr_get_bigIntArray(&size_end_pidsArr, ends, false, &err_msg);
+             throw_error(err_msg, "While getting end vids");
+         } else {
+             end_pidsArr = pgr_get_bigIntArray(&size_end_pidsArr, starts, false, &err_msg);
+             throw_error(err_msg, "While getting start vids");
+             start_pidsArr = pgr_get_bigIntArray(&size_start_pidsArr, ends, false, &err_msg);
+             throw_error(err_msg, "While getting end vids");
+         }
+     }
+
+#if 0
+        else if (combinations_sql) {
             pgr_get_combinations(combinations_sql, &combinations, &total_combinations, &err_msg);
             throw_error(err_msg, combinations_sql);
         }
@@ -129,26 +140,26 @@ process(
         start_pidsArr = pgr_get_bigIntArray(&size_start_pidsArr, ends, false, &err_msg);
         throw_error(err_msg, "While getting end vids");
     }
+#endif
 
-
+#if 0
     pfree(edges_of_points_query);
     pfree(edges_no_points_query);
     edges_of_points_query = NULL;
     edges_no_points_query = NULL;
-
     if ((total_edges + total_edges_of_points) == 0) {
         pgr_SPI_finish();
         return;
     }
+#endif
+
 
     clock_t start_t = clock();
-
-    do_pgr_withPoints(
-            edges, total_edges,
-            points, total_points,
-            edges_of_points, total_edges_of_points,
-
-            combinations, total_combinations,
+    pgr_do_withPoints(
+            edges_no_points_query,
+            points_sql,
+            edges_of_points_query,
+            combinations_sql,
 
             start_pidsArr, size_start_pidsArr,
             end_pidsArr, size_end_pidsArr,

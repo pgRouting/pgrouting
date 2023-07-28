@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "dijkstra/dijkstra.hpp"
 #include "withPoints/pgr_withPoints.hpp"
-
+#include "cpp_common/pggetdata.hpp"
 #include "cpp_common/combinations.h"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
@@ -71,20 +71,14 @@ pgr_dijkstra(
 
 }  // namespace
 
-// CREATE OR REPLACE FUNCTION pgr_withPoint(
-// edges_sql TEXT,
-// points_sql TEXT,
-// start_pid ANYARRAY,
-// end_pid BIGINT,
-// directed BOOLEAN DEFAULT true
+
 
 void
-do_pgr_withPoints(
-        Edge_t *edges, size_t total_edges,
-        Point_on_edge_t *points_p, size_t total_points,
-        Edge_t *edges_of_points, size_t total_edges_of_points,
-
-        II_t_rt *combinationsArr, size_t total_combinations,
+pgr_do_withPoints(
+        char *edges_sql,
+        char *points_sql,
+        char *edges_of_points_sql,
+        char *combinations_sql,
 
         int64_t *start_vidsArr, size_t size_start_vidsArr,
         int64_t *end_vidsArr, size_t size_end_vidsArr,
@@ -108,21 +102,46 @@ do_pgr_withPoints(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
+    char *hint;
+
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
-        pgassert((*return_count) == 0);
-        pgassert(edges || edges_of_points);
+        pgassert(*return_count == 0);
 
-        pgrouting::Pg_points_graph pg_graph(
-                std::vector<Point_on_edge_t>(
-                    points_p,
-                    points_p + total_points),
-                std::vector< Edge_t >(
-                    edges_of_points,
-                    edges_of_points + total_edges_of_points),
+	graphType gType = directed? DIRECTED: UNDIRECTED;
+
+        hint = points_sql;
+        auto points = pgrouting::pgget::get_points(std::string(points_sql));
+
+        hint = edges_of_points_sql;
+        auto edges_of_points = pgrouting::pgget::get_edges(std::string(edges_of_points_sql), normal, false);
+
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), normal, false);
+
+        if (edges.size() + edges_of_points.size() == 0) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
+
+        hint = combinations_sql;
+        auto combinationsArr = combinations_sql?
+            pgrouting::pgget::get_combinations(std::string(combinations_sql)) : std::vector<II_t_rt>();
+        hint = nullptr;
+
+        auto combinations = combinationsArr.empty()?
+            pgrouting::utilities::get_combinations(start_vidsArr, size_start_vidsArr, end_vidsArr, size_end_vidsArr)
+            : pgrouting::utilities::get_combinations(combinationsArr);
+
+        /*
+         * processing points
+         */
+        pgrouting::Pg_points_graph pg_graph(points, edges_of_points,
                 normal,
                 driving_side,
                 directed);
@@ -135,21 +154,13 @@ do_pgr_withPoints(
             return;
         }
 
-        auto combinations = total_combinations?
-            pgrouting::utilities::get_combinations(combinationsArr, total_combinations)
-            : pgrouting::utilities::get_combinations(start_vidsArr, size_start_vidsArr, end_vidsArr, size_end_vidsArr);
-
-        auto vertices(pgrouting::extract_vertices(edges, total_edges));
+        auto vertices(pgrouting::extract_vertices(edges));
         vertices = pgrouting::extract_vertices(vertices, pg_graph.new_edges());
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
-
-        std::deque< Path > paths;
-
+        std::deque<Path> paths;
         if (directed) {
-            log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(vertices, gType);
-            digraph.insert_edges(edges, total_edges);
+            digraph.insert_edges(edges);
             digraph.insert_edges(pg_graph.new_edges());
 
             paths = pgr_dijkstra(
@@ -157,9 +168,8 @@ do_pgr_withPoints(
                     combinations,
                     only_cost, normal);
         } else {
-            log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(vertices, gType);
-            undigraph.insert_edges(edges, total_edges);
+            undigraph.insert_edges(edges);
             undigraph.insert_edges(pg_graph.new_edges());
             paths = pgr_dijkstra(
                     undigraph,
@@ -168,9 +178,7 @@ do_pgr_withPoints(
         }
 
         if (!details) {
-            for (auto &path : paths) {
-                path = pg_graph.eliminate_details(path);
-            }
+            for (auto &path : paths) path = pg_graph.eliminate_details(path);
         }
 
         /*
@@ -192,16 +200,13 @@ do_pgr_withPoints(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
+            notice << "No paths found";
+            *log_msg = pgr_msg(notice.str().c_str());
             return;
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        log << "Converting a set of paths into the tuples\n";
         (*return_count) = (collapse_paths(return_tuples, paths));
-
-        log << "************************************************";
-        log << pg_graph.get_log();
-        log << "************************************************";
 
         *log_msg = log.str().empty()?
             *log_msg :
@@ -215,6 +220,9 @@ do_pgr_withPoints(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

@@ -143,7 +143,7 @@ pgr_do_trspVia_withPoints(
         bool strict,
         bool U_turn_on_edge,
 
-        Routes_t** return_tuples, size_t* return_count,
+        Routes_t** return_tuples, size_t *return_count,
 
         char** log_msg,
         char** notice_msg,
