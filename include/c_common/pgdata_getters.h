@@ -58,15 +58,9 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-using II_t_rt = struct II_t_rt;
-using Edge_xy_t = struct Edge_xy_t;
-using Flow_t = struct Flow_t;
 using Edge_t = struct Edge_t;
 using Point_on_edge_t = struct Point_on_edge_t;
 #else
-typedef struct II_t_rt II_t_rt;
-typedef struct Edge_xy_t Edge_xy_t;
-typedef struct Flow_t Flow_t;
 typedef struct Edge_t Edge_t;
 typedef struct Point_on_edge_t Point_on_edge_t;
 #endif
@@ -75,9 +69,6 @@ typedef struct Point_on_edge_t Point_on_edge_t;
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-/** @brief Read rows of combinations, called from C file*/
-void pgr_get_combinations(char *, II_t_rt **, size_t *, char**);
 
 /** @brief Read edges called from C file*/
 void pgr_get_edges(char*, Edge_t**, size_t*, bool, bool, char**);
