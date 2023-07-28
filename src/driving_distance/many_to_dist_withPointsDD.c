@@ -54,7 +54,6 @@ void process(
         Path_rt **result_tuples,
         size_t *result_count) {
     driving_side[0] = estimate_drivingSide(driving_side[0]);
-    PGR_DBG("estimated driving side:%c", driving_side[0]);
 
     pgr_SPI_connect();
     char* log_msg = NULL;
@@ -64,12 +63,6 @@ void process(
     size_t total_starts = 0;
     int64_t* start_pidsArr = pgr_get_bigIntArray(&total_starts, starts, false, &err_msg);
     throw_error(err_msg, "While getting start vids");
-    PGR_DBG("sourcesArr size %ld ", total_starts);
-
-    Point_on_edge_t *points = NULL;
-    size_t total_points = 0;
-    pgr_get_points(points_sql, &points, &total_points, &err_msg);
-    throw_error(err_msg, points_sql);
 
     char *edges_of_points_query = NULL;
     char *edges_no_points_query = NULL;
@@ -78,36 +71,13 @@ void process(
             &edges_of_points_query,
             &edges_no_points_query);
 
-
-    Edge_t *edges_of_points = NULL;
-    size_t total_edges_of_points = 0;
-    pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points, true, false, &err_msg);
-    throw_error(err_msg, edges_of_points_query);
-
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-    pgr_get_edges(edges_no_points_query, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_no_points_query);
-
-    PGR_DBG("freeing allocated memory not used anymore");
-    pfree(edges_of_points_query);
-    pfree(edges_no_points_query);
-
-    if ((total_edges + total_edges_of_points) == 0) {
-        if (edges) pfree(edges);
-        if (edges_of_points) pfree(edges_of_points);
-        if (points) pfree(points);
-        pgr_SPI_finish();
-        return;
-    }
-
-    PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    do_pgr_many_withPointsDD(
-            edges,              total_edges,
-            points,             total_points,
-            edges_of_points,    total_edges_of_points,
-            start_pidsArr,      total_starts,
+    pgr_do_withPointsDD(
+            edges_no_points_query,
+            points_sql,
+            edges_of_points_query,
+            start_pidsArr, total_starts,
+
             distance,
 
             directed,
@@ -120,7 +90,7 @@ void process(
             &log_msg,
             &notice_msg,
             &err_msg);
-    time_msg(" processing withPointsDD many starts", start_t, clock());
+    time_msg(" processing withPointsDD", start_t, clock());
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
@@ -133,10 +103,8 @@ void process(
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-    if (edges) pfree(edges);
-    if (edges_of_points) pfree(edges_of_points);
-    if (points) pfree(points);
     if (start_pidsArr) pfree(start_pidsArr);
+
     pgr_SPI_finish();
 }
 
@@ -147,30 +115,13 @@ _pgr_withpointsdd(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc               tuple_desc;
 
-    /**********************************************************************/
     Path_rt  *result_tuples = 0;
     size_t result_count = 0;
-    /**********************************************************************/
-
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-
-
-        /**********************************************************************/
-        // CREATE OR REPLACE FUNCTION pgr_withPointsDD(
-        // edges_sql TEXT,
-        // points_sql TEXT,
-        // start_pids anyarray,
-        // distance FLOAT,
-        //
-        // directed BOOLEAN -- DEFAULT true,
-        // driving_side CHAR -- DEFAULT 'b',
-        // details BOOLEAN -- DEFAULT false,
-        // equicost BOOLEAN -- DEFAULT false,
-
 
         PGR_DBG("Calling driving_many_to_dist_driver");
         process(
@@ -184,8 +135,6 @@ _pgr_withpointsdd(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(6),
                 PG_GETARG_BOOL(7),
                 &result_tuples, &result_count);
-
-        /**********************************************************************/
 
         funcctx->max_calls = result_count;
 
@@ -213,7 +162,6 @@ _pgr_withpointsdd(PG_FUNCTION_ARGS) {
         Datum *values;
         bool* nulls;
 
-        /**********************************************************************/
         size_t numb = 6;
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
@@ -229,8 +177,6 @@ _pgr_withpointsdd(PG_FUNCTION_ARGS) {
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
-
-        /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

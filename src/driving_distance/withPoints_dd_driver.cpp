@@ -35,31 +35,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 
+#include "cpp_common/pggetdata.hpp"
+#include "cpp_common/pgr_alloc.hpp"
+
 #include "dijkstra/drivingDist.hpp"
 #include "withPoints/pgr_withPoints.hpp"
 
 
-#include "cpp_common/pgr_alloc.hpp"
-
-
-/**********************************************************************/
-// CREATE OR REPLACE FUNCTION pgr_withPointsDD(
-// edges_sql TEXT,
-// points_sql TEXT,
-// start_pids anyarray,
-// distance FLOAT,
-//
-// driving_side CHAR -- DEFAULT 'b',
-// details BOOLEAN -- DEFAULT false,
-// directed BOOLEAN -- DEFAULT true,
-// equicost BOOLEAN -- DEFAULT false,
-
-
 void
-do_pgr_many_withPointsDD(
-        Edge_t      *edges,             size_t total_edges,
-        Point_on_edge_t *points_p,          size_t total_points,
-        Edge_t      *edges_of_points,   size_t total_edges_of_points,
+pgr_do_withPointsDD(
+        char *edges_sql,
+        char *points_sql,
+        char *edges_of_points_sql,
 
         int64_t  *start_pidsArr,    size_t s_len,
         double distance,
@@ -70,6 +57,7 @@ do_pgr_many_withPointsDD(
         bool equiCost,
 
         Path_rt **return_tuples, size_t *return_count,
+
         char** log_msg,
         char** notice_msg,
         char** err_msg) {
@@ -81,25 +69,37 @@ do_pgr_many_withPointsDD(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
+    char *hint;
+
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
-        pgassert((*return_count) == 0);
-        pgassert(edges);
-        pgassert(points_p);
-        pgassert(edges_of_points);
-        pgassert(start_pidsArr);
+        pgassert(*return_count == 0);
 
+        graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        pgrouting::Pg_points_graph pg_graph(
-                std::vector<Point_on_edge_t>(
-                    points_p,
-                    points_p + total_points),
-                std::vector< Edge_t >(
-                    edges_of_points,
-                    edges_of_points + total_edges_of_points),
+        hint = points_sql;
+        auto points = pgrouting::pgget::get_points(std::string(points_sql));
+
+        hint = edges_of_points_sql;
+        auto edges_of_points = pgrouting::pgget::get_edges(std::string(edges_of_points_sql), true, false);
+
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+
+        if (edges.size() + edges_of_points.size() == 0) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
+
+        /*
+         * processing points
+         */
+        pgrouting::Pg_points_graph pg_graph(points, edges_of_points,
                 true,
                 driving_side,
                 directed);
@@ -112,41 +112,27 @@ do_pgr_many_withPointsDD(
             return;
         }
 
+        std::vector<int64_t> starts(start_pidsArr, start_pidsArr + s_len);
 
-
-        /*
-         * storing on C++ containers
-         */
-        std::vector<int64_t> start_vids(
-                start_pidsArr, start_pidsArr + s_len);
-
-
-        graphType gType = directed? DIRECTED: UNDIRECTED;
-
-        std::deque< Path >paths;
+        std::deque<Path> paths;
 
         if (directed) {
             pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(edges, total_edges);
+            digraph.insert_edges(edges);
             digraph.insert_edges(pg_graph.new_edges());
-            paths = pgr_drivingDistance(
-                    digraph, start_vids, distance, equiCost, log);
+            paths = pgr_drivingDistance(digraph, starts, distance, equiCost, log);
         } else {
             pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(edges, total_edges);
+            undigraph.insert_edges(edges);
             undigraph.insert_edges(pg_graph.new_edges());
 
             paths = pgr_drivingDistance(
-                    undigraph, start_vids, distance, equiCost, log);
+                    undigraph, starts, distance, equiCost, log);
         }
 
         for (auto &path : paths) {
-            log << path;
+            if (!details) pg_graph.eliminate_details_dd(path);
 
-            if (!details) {
-                pg_graph.eliminate_details_dd(path);
-            }
-            log << path;
             std::sort(path.begin(), path.end(),
                     [](const Path_t &l, const  Path_t &r)
                     {return l.node < r.node;});
@@ -156,15 +142,20 @@ do_pgr_many_withPointsDD(
             log << path;
         }
 
-        size_t count(count_tuples(paths));
+        auto count(count_tuples(paths));
 
 
         if (count == 0) {
-            *notice_msg = pgr_msg("No return values was found");
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
+            notice << "No paths found";
+            *log_msg = pgr_msg(notice.str().c_str());
             return;
         }
-        *return_tuples = pgr_alloc(count, (*return_tuples));
-        *return_count = collapse_paths(return_tuples, paths);
+
+        (*return_tuples) = pgr_alloc(count, (*return_tuples));
+        (*return_count) = (collapse_paths(return_tuples, paths));
+
         *log_msg = log.str().empty()?
             *log_msg :
             pgr_msg(log.str().c_str());
@@ -177,6 +168,9 @@ do_pgr_many_withPointsDD(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
@@ -191,5 +185,3 @@ do_pgr_many_withPointsDD(
         *log_msg = pgr_msg(log.str().c_str());
     }
 }
-
-

@@ -193,8 +193,7 @@ pgr_do_withPoints(
                 return a.end_id() < b.end_id();
                 });
 
-        size_t count(0);
-        count = count_tuples(paths);
+        auto count(count_tuples(paths));
 
 
         if (count == 0) {
