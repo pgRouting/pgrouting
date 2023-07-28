@@ -20,8 +20,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.4.0') THEN plan(5) ELSE plan(1) END;
-SET client_min_messages TO ERROR;
+SELECT CASE WHEN min_version('3.4.0') THEN plan(6) ELSE plan(1) END;
+SET client_min_messages TO NOTICE;
 
 CREATE OR REPLACE FUNCTION edge_cases()
 RETURNS SETOF TEXT AS
@@ -36,6 +36,12 @@ BEGIN
     RETURN QUERY SELECT skip(1, 'New function on 3.4');
     RETURN;
   END IF;
+
+  RETURN QUERY SELECT lives_ok($q$
+  SELECT * FROM pgr_trspVia(
+  $$SELECT * FROM edge_table$$,
+  NULL::TEXT,
+  ARRAY[2,3])$q$, $q$NULL query on restrictions lives$q$);
 
   RETURN QUERY SELECT lives_ok($q$
   SELECT * FROM pgr_trspVia(

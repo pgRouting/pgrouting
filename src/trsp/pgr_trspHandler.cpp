@@ -45,6 +45,21 @@ namespace trsp {
 
 // -------------------------------------------------------------------------
 Pgr_trspHandler::Pgr_trspHandler(
+        std::vector<Edge_t> &edges,
+        const bool directed,
+        const std::vector<Rule> &ruleList) :
+    m_ruleTable() {
+    initialize_restrictions(ruleList);
+
+    renumber_edges(edges);
+    for (const auto& id :  m_id_to_idx) {
+        m_idx_to_id[id.second] = id.first;
+    }
+
+    construct_graph(edges, directed);
+}
+
+Pgr_trspHandler::Pgr_trspHandler(
         Edge_t *edges,
         const size_t edge_count,
         const bool directed,
@@ -91,6 +106,23 @@ Pgr_trspHandler::Pgr_trspHandler(
 
 
 // -------------------------------------------------------------------------
+void
+Pgr_trspHandler::renumber_edges(std::vector<Edge_t> &edges) {
+    int64_t idx(0);
+    for (auto &e : edges) {
+        if (m_id_to_idx.find(e.source) == m_id_to_idx.end()) {
+            m_id_to_idx[e.source] = idx;
+            ++idx;
+        }
+        if (m_id_to_idx.find(e.target) == m_id_to_idx.end()) {
+            m_id_to_idx[e.target] = idx;
+            ++idx;
+        }
+        e.source = m_id_to_idx.at(e.source);
+        e.target = m_id_to_idx.at(e.target);
+    }
+}
+
 void
 Pgr_trspHandler::renumber_edges(
         Edge_t *edges,
@@ -512,6 +544,15 @@ Pgr_trspHandler::process_trsp(
 
 
 // -------------------------------------------------------------------------
+void Pgr_trspHandler::construct_graph(
+        const std::vector<Edge_t> &edges,
+        const bool directed) {
+    for (const auto &e: edges) {
+        addEdge(e, directed);
+    }
+    m_mapEdgeId2Index.clear();
+}
+
 void Pgr_trspHandler::construct_graph(
         Edge_t* edges,
         const size_t edge_count,

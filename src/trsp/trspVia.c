@@ -54,27 +54,10 @@ process(
     int64_t* via = pgr_get_bigIntArray(&size_via, via_arr, false, &err_msg);
     throw_error(err_msg, "While getting via vertices");
 
-    Edge_t* edges = NULL;
-    size_t size_edges = 0;
-    pgr_get_edges(edges_sql, &edges, &size_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-
-    if (size_edges == 0) {
-        if (via) pfree(via);
-        pgr_SPI_finish();
-        return;
-    }
-
-    Restriction_t * restrictions = NULL;
-    size_t size_restrictions = 0;
-
-    pgr_get_restrictions(restrictions_sql, &restrictions, &size_restrictions, &err_msg);
-    throw_error(err_msg, restrictions_sql);
-
     clock_t start_t = clock();
-    do_trspVia(
-            edges, size_edges,
-            restrictions, size_restrictions,
+    pgr_do_trspVia(
+            edges_sql,
+            restrictions_sql,
             via, size_via,
             directed,
             strict,
@@ -97,9 +80,8 @@ process(
     if (log_msg) {pfree(log_msg); log_msg = NULL;}
     if (notice_msg) {pfree(notice_msg); notice_msg = NULL;}
     if (err_msg) {pfree(err_msg); err_msg = NULL;}
-    if (edges) {pfree(edges); edges = NULL;}
     if (via) {pfree(via); via = NULL;}
-    if (restrictions) {pfree(restrictions); restrictions = NULL;}
+
     pgr_SPI_finish();
 }
 
@@ -109,24 +91,13 @@ _pgr_trspvia(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
-    /**********************************************************************/
     Routes_t  *result_tuples = 0;
     size_t result_count = 0;
-    /**********************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-
-
-        /**********************************************************************
-         * pgr_trspVia(edges_sql text,
-         *   vertices anyarray,
-         *   directed boolean default true,
-         *   strict boolean default false,
-         *   U_turn_on_edge boolean default false,
-         **********************************************************************/
 
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
@@ -137,8 +108,6 @@ _pgr_trspvia(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(5),
                 &result_tuples,
                 &result_count);
-
-        /**********************************************************************/
 
         funcctx->max_calls = result_count;
 
@@ -165,20 +134,6 @@ _pgr_trspvia(PG_FUNCTION_ARGS) {
         bool*        nulls;
         size_t       call_cntr = funcctx->call_cntr;
 
-        /**********************************************************************/
-        /*
-           OUT seq INTEGER,
-           OUT path_id INTEGER,
-           OUT path_seq INTEGER,
-           OUT start_vid BIGINT,
-           OUT end_vid BIGINT,
-           OUT node BIGINT,
-           OUT edge BIGINT,
-           OUT cost FLOAT,
-           OUT agg_cost FLOAT,
-           OUT route_agg_cost FLOAT
-           */
-
         size_t numb_out = 10;
         values = palloc(numb_out * sizeof(Datum));
         nulls = palloc(numb_out * sizeof(bool));
@@ -187,7 +142,6 @@ _pgr_trspvia(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        // postgres starts counting from 1
         values[0] = Int32GetDatum((int32_t)call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[call_cntr].path_id);
         values[2] = Int32GetDatum(result_tuples[call_cntr].path_seq + 1);
@@ -198,8 +152,6 @@ _pgr_trspvia(PG_FUNCTION_ARGS) {
         values[7] = Float8GetDatum(result_tuples[call_cntr].cost);
         values[8] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
         values[9] = Float8GetDatum(result_tuples[call_cntr].route_agg_cost);
-
-        /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
