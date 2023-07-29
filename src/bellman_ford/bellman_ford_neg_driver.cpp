@@ -95,7 +95,7 @@ pgr_do_bellman_ford_neg(
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-	hint = neg_edges_sql;
+        hint = neg_edges_sql;
         auto neg_edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
 
         hint = edges_sql;

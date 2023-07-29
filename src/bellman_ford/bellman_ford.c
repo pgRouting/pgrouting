@@ -73,7 +73,7 @@ process(
         throw_error(err_msg, "While getting start vids");
         end_vidsArr = pgr_get_bigIntArray(&size_end_vidsArr, ends, false, &err_msg);
         throw_error(err_msg, "While getting end vids");
-    };
+    }
 
     clock_t start_t = clock();
     pgr_do_bellman_ford(

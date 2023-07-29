@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <vector>
 #include <deque>
+#include <set>
 #include <map>
 
 #include "cpp_common/basePath_SSEC.hpp"
