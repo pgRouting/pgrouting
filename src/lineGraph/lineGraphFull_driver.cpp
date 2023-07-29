@@ -88,7 +88,6 @@ pgr_do_lineGraphFull(
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        
 
         hint = edges_sql;
         auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
@@ -104,9 +103,6 @@ pgr_do_lineGraphFull(
         pgrouting::DirectedGraph digraph(gType);
         digraph.insert_edges_neg(edges);
 
-#if 0
-        log << digraph << "\n";
-#endif
         pgrouting::graph::Pgr_lineGraphFull<
             pgrouting::LinearDirectedGraph,
             pgrouting::Line_vertex,
