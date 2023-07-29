@@ -138,7 +138,7 @@ pgr_do_bddijkstra(
         } else {
             pgrouting::UndirectedGraph graph(gType);
             graph.insert_edges(edges);
-            paths = pgr_bdDijkstra( graph, combinations, only_cost);
+            paths = pgr_bdDijkstra(graph, combinations, only_cost);
         }
 
         auto count = count_tuples(paths);

@@ -74,6 +74,7 @@ process(
     pgr_do_bddijkstra(
             edges_sql,
             combinations_sql,
+
             start_vidsArr, size_start_vidsArr,
             end_vidsArr, size_end_vidsArr,
 
@@ -85,7 +86,6 @@ process(
             &log_msg,
             &notice_msg,
             &err_msg);
-
     time_msg(" processing pgr_bdDijkstra", start_t, clock());
 
 
