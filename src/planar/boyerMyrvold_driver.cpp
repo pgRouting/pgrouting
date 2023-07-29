@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <string>
 
+#include "cpp_common/pggetdata.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 #include "c_types/iid_t_rt.h"
@@ -40,18 +41,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "planar/pgr_boyerMyrvold.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 
-
-
 void
-do_pgr_boyerMyrvold(
-                Edge_t  *data_edges,
-                size_t total_edges,
+pgr_do_boyerMyrvold(
+        char *edges_sql,
 
-                IID_t_rt **return_tuples,
-                size_t *return_count,
-                char ** log_msg,
-                char ** notice_msg,
-                char ** err_msg) {
+        IID_t_rt **return_tuples,
+        size_t *return_count,
+        char ** log_msg,
+        char ** notice_msg,
+        char ** err_msg) {
     using pgrouting::pgr_alloc;
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
@@ -59,19 +57,29 @@ do_pgr_boyerMyrvold(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char *hint;
+
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(total_edges != 0);
 
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+        if (edges.size() == 0) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
+
+        graphType gType = UNDIRECTED;
         std::vector<IID_t_rt> results;
         std::string logstr;
 
         graphType gType = UNDIRECTED;
-        log << "Working with Undirected Graph\n";
         pgrouting::UndirectedGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
         pgrouting::functions::Pgr_boyerMyrvold<pgrouting::UndirectedGraph> fn_boyerMyrvold;
@@ -85,14 +93,12 @@ do_pgr_boyerMyrvold(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            notice <<
-                "No Vertices";
+            notice << "No Vertices";
             *log_msg = pgr_msg(notice.str().c_str());
             return;
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        log << "\nConverting a set of traversals into the tuples";
         for (size_t i = 0; i < count; i++) {
             *((*return_tuples) + i) = results[i];
         }
@@ -111,6 +117,9 @@ do_pgr_boyerMyrvold(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

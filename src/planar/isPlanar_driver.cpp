@@ -33,43 +33,46 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <string>
 
-#include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/pggetdata.hpp"
 #include "cpp_common/pgr_assert.h"
+#include "cpp_common/pgr_alloc.hpp"
 
 #include "planar/pgr_boyerMyrvold.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 
 
-
 bool
-do_pgr_isPlanar(
-                Edge_t  *data_edges,
-                size_t total_edges,
+pgr_do_isPlanar(
+        char *edges_sql,
 
-                char ** log_msg,
-                char ** notice_msg,
-                char ** err_msg) {
-    using pgrouting::pgr_alloc;
+        char **log_msg,
+        char **notice_msg,
+        char **err_msg) {
     using pgrouting::pgr_msg;
-    using pgrouting::pgr_free;
 
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
-    bool result = false;
+    char *hint;
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
-        pgassert(total_edges != 0);
+
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+        if (edges.size() == 0) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return false;
+        }
+        hint = nullptr;
 
         graphType gType = UNDIRECTED;
-        log << "Working with Undirected Graph\n";
+
         pgrouting::UndirectedGraph undigraph(gType);
-        undigraph.insert_edges(data_edges, total_edges);
+        undigraph.insert_edges(edges);
         pgrouting::functions::Pgr_boyerMyrvold<pgrouting::UndirectedGraph> fn_isPlanar;
-        result = fn_isPlanar.isPlanar(undigraph);
-        return result;
 
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
@@ -78,10 +81,15 @@ do_pgr_isPlanar(
         *notice_msg = notice.str().empty()?
             *notice_msg :
             pgr_msg(notice.str().c_str());
+
+        return fn_isPlanar.isPlanar(undigraph);
     } catch (AssertFailedException &except) {
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
@@ -91,5 +99,5 @@ do_pgr_isPlanar(
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
     }
-      return result;
+    return false;
 }

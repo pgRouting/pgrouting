@@ -42,61 +42,32 @@ PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_isplanar);
 
 static bool
-process(
-    char *edges_sql
-  ) {
+process( char *edges_sql) {
     bool planarity = false;
     pgr_SPI_connect();
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-
-    if (total_edges == 0) {
-        pgr_SPI_finish();
-        return (false);
-    }
-
     clock_t start_t = clock();
-
-    planarity = do_pgr_isPlanar(
-        edges,
-        total_edges,
+    planarity = pgr_do_isPlanar(
+        edges_sql,
 
         &log_msg,
         &notice_msg,
         &err_msg);
-
     time_msg(" processing pgr_isPlanar", start_t, clock());
 
     pgr_global_report(log_msg, notice_msg, err_msg);
 
-    if (edges)
-        pfree(edges);
-    if (log_msg)
-        pfree(log_msg);
-    if (notice_msg)
-        pfree(notice_msg);
-    if (err_msg)
-        pfree(err_msg);
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
 
     pgr_SPI_finish();
-
     return planarity;
 }
 
 PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS) {
-        /**********************************************************************/
-        /*
-        pgr_isPlanar(
-            edge_sql TEXT)
-        */
-        /**********************************************************************/
-        PG_RETURN_BOOL(process(text_to_cstring(PG_GETARG_TEXT_P(0))));
-        /**********************************************************************/
+    PG_RETURN_BOOL(process(text_to_cstring(PG_GETARG_TEXT_P(0))));
 }

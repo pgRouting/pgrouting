@@ -33,22 +33,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #ifdef __cplusplus
 #   include <cstddef>
-using Edge_t = struct Edge_t;
 #else
 #   include <stddef.h>
-typedef struct Edge_t Edge_t;
 #endif
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-    bool do_pgr_isPlanar(
-                Edge_t  *data_edges,
-                size_t total_tuples,
-                char ** log_msg,
-                char ** notice_msg,
-                char ** err_msg);
 
+bool pgr_do_isPlanar(
+        char*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }
