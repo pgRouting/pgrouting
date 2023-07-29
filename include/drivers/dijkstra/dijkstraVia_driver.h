@@ -49,13 +49,13 @@ extern "C" {
 
 void pgr_do_dijkstraVia(
         char*,
-        int64_t*,size_t size_via_vidsArr,
+        int64_t*, size_t size_via_vidsArr,
         bool,
         bool,
         bool,
-        Routes_t **, size_t *,
+        Routes_t**, size_t *,
 
-        char**, char**, char** );
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }
