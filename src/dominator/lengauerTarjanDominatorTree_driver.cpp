@@ -44,9 +44,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "dominator/pgr_lengauerTarjanDominatorTree_driver.hpp"
 
 
-/************************************************************
-  edges_sql TEXT
- ***********************************************************/
 void
 pgr_do_LTDTree(
         char *edges_sql,
@@ -68,7 +65,6 @@ pgr_do_LTDTree(
     char *hint;
 
     try {
-        
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
@@ -85,8 +81,6 @@ pgr_do_LTDTree(
         hint = nullptr;
 
         std::string logstr;
-
-/***********************Working with graph**************************/
 
         graphType gType = DIRECTED;
         pgrouting::DirectedGraph digraph(gType);
