@@ -126,7 +126,7 @@ std::vector<Restriction_t> get_restrictions(const std::string&);
 /** @brief Reads the vehicles */
 std::vector<Vehicle_t> get_vehicles(const std::string&, bool);
 
-}  // namespace getters
+}  // namespace pgget
 }  // namespace pgrouting
 
 #endif  // INCLUDE_C_COMMON_PGDATA_GETTERS_H_
