@@ -26,11 +26,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-/** @file depthFirstSearch.c
- * @brief Connecting code with postgres.
- *
- */
-
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
 
@@ -47,21 +42,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_depthfirstsearch);
 
-/** @brief Static function, loads the data from postgres to C types for further processing.
- *
- * It first connects the C function to the SPI manager. Then converts
- * the postgres array to C array and loads the edges belonging to the graph
- * in C types. Then it calls the function `do_pgr_depthFirstSearch` defined
- * in the `depthFirstSearch_driver.h` file for further processing.
- * Finally, it frees the memory and disconnects the C function to the SPI manager.
- *
- * @param edges_sql      the edges of the SQL query
- * @param roots          the root vertices
- * @param directed       whether the graph is directed or undirected
- * @param max_depth      the maximum depth of traversal
- * @param result_tuples  the rows in the result
- * @param result_count   the count of rows in the result
- */
 static
 void
 process(
@@ -85,15 +65,9 @@ process(
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-
     clock_t start_t = clock();
-    do_pgr_depthFirstSearch(
-            edges, total_edges,
+    pgr_do_depthFirstSearch(
+            edges_sql,
             rootsArr, size_rootsArr,
 
             directed,
@@ -104,7 +78,6 @@ process(
             &log_msg,
             &notice_msg,
             &err_msg);
-
     time_msg("processing pgr_depthFirstSearch", start_t, clock());
 
     if (err_msg && (*result_tuples)) {
@@ -118,42 +91,22 @@ process(
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-    if (edges) pfree(edges);
     if (rootsArr) pfree(rootsArr);
 
     pgr_SPI_finish();
 }
-/*                                                                            */
-/******************************************************************************/
-
-/** @brief Helps in converting postgres variables to C variables, and returns the result.
- *
- */
 
 PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
-    /**********************************************************************/
     MST_rt *result_tuples = NULL;
     size_t result_count = 0;
-    /**********************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-
-        /***********************************************************************
-         *
-         *   pgr_depthFirstSearch(
-         *       edges_sql TEXT,
-         *       root_vids ANYARRAY,
-         *       directed BOOLEAN DEFAULT true
-         *       max_depth BIGINT DEFAULT 9223372036854775807,
-         *   );
-         *
-         **********************************************************************/
 
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
@@ -163,12 +116,7 @@ PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-        /**********************************************************************/
-
-
-
         funcctx->max_calls = result_count;
-
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
@@ -192,18 +140,6 @@ PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool*        nulls;
 
-        /***********************************************************************
-         *
-         *   OUT seq BIGINT,
-         *   OUT depth BIGINT,
-         *   OUT start_vid BIGINT,
-         *   OUT node BIGINT,
-         *   OUT edge BIGINT,
-         *   OUT cost FLOAT,
-         *   OUT agg_cost FLOAT
-         *
-         **********************************************************************/
-
         size_t num  = 7;
         values = palloc(num * sizeof(Datum));
         nulls = palloc(num * sizeof(bool));
@@ -221,8 +157,6 @@ PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS) {
         values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
-
-        /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

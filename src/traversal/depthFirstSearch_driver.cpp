@@ -32,6 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <string>
 
+#include "cpp_common/pggetdata.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
@@ -77,37 +78,9 @@ pgr_depthFirstSearch(
 
 }  // namespace
 
-/** @brief Performs exception handling and converts the results to postgres.
- *
- * @pre log_msg is empty
- * @pre notice_msg is empty
- * @pre err_msg is empty
- * @pre return_tuples is empty
- * @pre return_count is 0
- *
- * It builds the graph using the `data_edges`, depending on whether
- * the graph is directed or undirected. It also converts the C types
- * to the C++ types, such as the `rootsArr` to `roots` vector and
- * passes these variables to the template function `pgr_depthFirstSearch`
- * which calls the main function defined in the C++ Header file. It also does
- * exception handling.
- *
- * @param data_edges     the set of edges from the SQL query
- * @param total_edges    the total number of edges in the SQL query
- * @param rootsArr       the array containing the root vertices
- * @param size_rootsArr  the size of the array containing the root vertices
- * @param directed       whether the graph is directed or undirected
- * @param max_depth      the maximum depth of traversal
- * @param return_tuples  the rows in the result
- * @param return_count   the count of rows in the result
- * @param log_msg        stores the log message
- * @param notice_msg     stores the notice message
- * @param err_msg        stores the error message
- */
 void
-do_pgr_depthFirstSearch(
-        Edge_t  *data_edges,
-        size_t total_edges,
+pgr_do_depthFirstSearch(
+        char *edges_sql,
 
         int64_t *rootsArr,
         size_t size_rootsArr,
@@ -128,12 +101,23 @@ do_pgr_depthFirstSearch(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char *hint;
+
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
+
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+        if (edges.size() == 0) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
 
         std::vector < int64_t > roots(rootsArr, rootsArr + size_rootsArr);
 
@@ -143,7 +127,7 @@ do_pgr_depthFirstSearch(
 
         if (directed) {
             pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(data_edges, total_edges);
+            digraph.insert_edges(edges);
 
             results = pgr_depthFirstSearch(
                     digraph,
@@ -152,7 +136,7 @@ do_pgr_depthFirstSearch(
                     max_depth);
         } else {
             pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(data_edges, total_edges);
+            undigraph.insert_edges(edges);
 
             results = pgr_depthFirstSearch(
                     undigraph,
@@ -190,6 +174,9 @@ do_pgr_depthFirstSearch(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
