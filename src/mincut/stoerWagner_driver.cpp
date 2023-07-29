@@ -74,7 +74,6 @@ pgr_do_stoerWagner(
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        
 
         hint = edges_sql;
         auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
