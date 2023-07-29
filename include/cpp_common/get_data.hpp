@@ -98,7 +98,7 @@ void get_data(
     (*total_pgtuples) = total_tuples;
 }
 
-
+namespace pgget {
 /** @brief Retrives the tuples
  * @tparam Data_type Scructure of data
  * @tparam Func fetcher function
@@ -110,7 +110,7 @@ void get_data(
  * @param[in] func fetcher function to be used
  */
 template <typename Data_type, typename Func>
-std::vector<Data_type> get_data1(
+std::vector<Data_type> get_data(
         const std::string& sql,
         bool flag,
         std::vector<Column_info_t> info,
@@ -155,6 +155,7 @@ std::vector<Data_type> get_data1(
     return tuples;
 }
 
+}  // namespace pgget
 }  // namespace pgrouting
 
 #endif  // INCLUDE_CPP_COMMON_GET_DATA_HPP_

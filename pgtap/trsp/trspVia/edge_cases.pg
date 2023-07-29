@@ -21,7 +21,7 @@ BEGIN;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT CASE WHEN min_version('3.4.0') THEN plan(6) ELSE plan(1) END;
-SET client_min_messages TO NOTICE;
+SET client_min_messages TO ERROR;
 
 CREATE OR REPLACE FUNCTION edge_cases()
 RETURNS SETOF TEXT AS

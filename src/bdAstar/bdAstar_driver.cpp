@@ -134,7 +134,7 @@ void pgr_do_bdAstar(
         (*return_count) = 0;
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     } catch (const std::string &ex) {
         *err_msg = pgr_msg(ex.c_str());
         *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
@@ -143,12 +143,12 @@ void pgr_do_bdAstar(
         (*return_count) = 0;
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     } catch(...) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << "Caught unknown exception!";
         *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     }
 }

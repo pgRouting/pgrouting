@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgdata_getters.cpp
+File: pgget.cpp
 
 Copyright (c) 2023 Celia Virginia Vergara Castillo
 mail: vicky at erosion.dev
@@ -105,7 +105,7 @@ get_combinations(const std::string &sql) {
 
     info[0] = {-1, 0, true, "source", ANY_INTEGER};
     info[1] = {-1, 0, true, "target", ANY_INTEGER};
-    return get_data1<II_t_rt>(sql, true, info, &fetch_combination);
+    return get_data<II_t_rt>(sql, true, info, &fetch_combination);
 }
 
 /**
@@ -130,7 +130,7 @@ std::vector<Coordinate_t> get_coordinates(
     info[0] = {-1, 0, true, "id", ANY_INTEGER};
     info[1] = {-1, 0, true, "x", ANY_NUMERICAL};
     info[2] = {-1, 0, true, "y", ANY_NUMERICAL};
-    return get_data1<Coordinate_t>(sql, true, info, &fetch_coordinate);
+    return get_data<Coordinate_t>(sql, true, info, &fetch_coordinate);
 }
 
 
@@ -156,7 +156,7 @@ std::vector<Delauny_t> get_delauny(const std::string &sql) {
     info[1] = {-1, 0, true, "pid", ANY_INTEGER};
     info[2] = {-1, 0, true, "x", ANY_NUMERICAL};
     info[3] = {-1, 0, true, "y", ANY_NUMERICAL};
-    return get_data1<Delauny_t>(sql, true, info, &fetch_delauny);
+    return get_data<Delauny_t>(sql, true, info, &fetch_delauny);
 }
 
 
@@ -186,7 +186,7 @@ get_flow_edges(
     info[3] = {-1, 0, true, "capacity", ANY_INTEGER};
     info[4] = {-1, 0, false, "reverse_capacity", ANY_INTEGER};
 
-    return get_data1<Edge_t>(sql, true, info, &fetch_edge);
+    return get_data<Edge_t>(sql, true, info, &fetch_edge);
 }
 
 /**
@@ -218,7 +218,7 @@ get_costFlow_edges(
     info[5] = {-1, 0, true, "cost", ANY_NUMERICAL};
     info[6] = {-1, 0, false, "reverse_cost", ANY_NUMERICAL};
 
-    return get_data1<CostFlow_t>(sql, true, info, &fetch_costFlow_edge);
+    return get_data<CostFlow_t>(sql, true, info, &fetch_costFlow_edge);
 }
 
 
@@ -256,7 +256,7 @@ get_basic_edges(
     info[5] = {-1, 0, false, "cost", ANY_NUMERICAL};
     info[6] = {-1, 0, false, "reverse_cost", ANY_NUMERICAL};
 
-    return get_data1<Edge_bool_t>(sql, true, info, &fetch_basic_edge);
+    return get_data<Edge_bool_t>(sql, true, info, &fetch_basic_edge);
 }
 
 /**
@@ -290,7 +290,7 @@ get_edges_xy(
     info[7] = {-1, 0, true, "x2", ANY_NUMERICAL};
     info[8] = {-1, 0, true, "y2", ANY_NUMERICAL};
 
-    return get_data1<Edge_xy_t>(sql, normal, info, &fetch_edge_xy);
+    return get_data<Edge_xy_t>(sql, normal, info, &fetch_edge_xy);
 }
 
 /**
@@ -322,7 +322,7 @@ get_edges(
     info[3] = {-1, 0, true, "cost", ANY_NUMERICAL};
     info[4] = {-1, 0, false, "reverse_cost", ANY_NUMERICAL};
 
-    return get_data1<Edge_t>(sql, normal, info, &fetch_edge);
+    return get_data<Edge_t>(sql, normal, info, &fetch_edge);
 }
 
 
@@ -348,7 +348,7 @@ std::vector<IID_t_rt> get_matrixRows(
     info[0] = {-1, 0, true, "start_vid", ANY_INTEGER};
     info[1] = {-1, 0, true, "end_vid", ANY_INTEGER};
     info[2] = {-1, 0, true, "agg_cost", ANY_NUMERICAL};
-    return get_data1<IID_t_rt>(sql, true, info, &pgr_fetch_row);
+    return get_data<IID_t_rt>(sql, true, info, &pgr_fetch_row);
 }
 
 
@@ -403,7 +403,7 @@ std::vector<Orders_t> get_orders(
         info[13].strict = true;
     }
 
-    return get_data1<Orders_t>(sql, with_id, info, &fetch_orders);
+    return get_data<Orders_t>(sql, with_id, info, &fetch_orders);
 }
 
 
@@ -430,7 +430,7 @@ std::vector<Point_on_edge_t> get_points(
     info[1] = {-1, 0, true, "edge_id", ANY_INTEGER};
     info[2] = {-1, 0, true, "fraction", ANY_NUMERICAL};
     info[3] = {-1, 0, false, "side", pgrouting::CHAR1};
-    return get_data1<Point_on_edge_t>(sql, true, info, &fetch_point);
+    return get_data<Point_on_edge_t>(sql, true, info, &fetch_point);
 }
 
 
@@ -455,7 +455,7 @@ std::vector<Restriction_t> get_restrictions(
 
     info[0] = {-1, 0, true, "cost", ANY_NUMERICAL};
     info[1] = {-1, 0, true, "path", ANY_INTEGER_ARRAY};
-    return get_data1<Restriction_t>(sql, true, info, &fetch_restriction);
+    return get_data<Restriction_t>(sql, true, info, &fetch_restriction);
 }
 
 
@@ -509,7 +509,7 @@ std::vector<Vehicle_t> get_vehicles(
         info[14].strict = false;
     }
 
-    return get_data1<Vehicle_t>(sql, with_id, info, &fetch_vehicle);
+    return get_data<Vehicle_t>(sql, with_id, info, &fetch_vehicle);
 }
 
 }  // namespace pgget

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgdata_getters.h
+File: pgget.hpp
 
 Copyright (c) 2023 Celia Virginia Vergara Castillo
 mail: vicky at erosion.dev
@@ -29,8 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_C_COMMON_PGDATA_GETTERS_H_
-#define INCLUDE_C_COMMON_PGDATA_GETTERS_H_
+#ifndef INCLUDE_CPP_COMMON_PGGET_H_
+#define INCLUDE_CPP_COMMON_PGGET_H_
 #pragma once
 
 extern "C" {
@@ -129,4 +129,4 @@ std::vector<Vehicle_t> get_vehicles(const std::string&, bool);
 }  // namespace pgget
 }  // namespace pgrouting
 
-#endif  // INCLUDE_C_COMMON_PGDATA_GETTERS_H_
+#endif  // INCLUDE_CPP_COMMON_PGGET_H_
