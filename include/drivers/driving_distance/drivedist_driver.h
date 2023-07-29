@@ -29,12 +29,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifdef __cplusplus
 #   include <cstdint>
 #   include <cstddef>
-using Edge_t = struct Edge_t;
 using Path_rt = struct Path_rt;
 #else
 #   include <stddef.h>
 #   include <stdint.h>
-typedef struct Edge_t Edge_t;
 typedef struct Path_rt Path_rt;
 #endif
 
@@ -42,16 +40,14 @@ typedef struct Path_rt Path_rt;
 extern "C" {
 #endif
 
-    void do_pgr_driving_many_to_dist(
-            Edge_t* edges, size_t total_edges,
-            int64_t* start_vertex, size_t s_len,
-            double distance,
-            bool directed,
-            bool equicost,
-            Path_rt** return_tuples, size_t* return_count,
-            char **log_msg,
-            char **notice_msg,
-            char **err_msg);
+    void pgr_do_drivingDistance(
+            char*,
+            int64_t*, size_t,
+
+            double, bool, bool,
+
+            Path_rt**, size_t*,
+            char **, char **, char **);
 
 #ifdef __cplusplus
 }

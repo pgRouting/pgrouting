@@ -46,16 +46,11 @@ typedef struct Line_graph_full_rt Line_graph_full_rt;
 extern "C" {
 #endif
 
-    void
-        do_pgr_lineGraphFull(
-                Edge_t  *data_edges,
-                size_t total_edges,
-                Line_graph_full_rt **return_tuples,
-                size_t *return_count,
-                char ** log_msg,
-                char ** notice_msg,
-                char ** err_msg);
+void pgr_do_lineGraphFull(
+        char*,
 
+        Line_graph_full_rt**, size_t*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }

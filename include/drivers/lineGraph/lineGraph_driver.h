@@ -45,23 +45,13 @@ typedef struct Edge_t Edge_t;
 extern "C" {
 #endif
 
-    /*********************************************************
-      TEXT,
-    directed BOOLEAN DEFAULT true,
-     ********************************************************/
+void pgr_do_lineGraph(
+        char*,
 
+        bool,
 
-    void
-        do_pgr_lineGraph(
-                Edge_t  *data_edges,
-                size_t total_edges,
-                bool directed,
-                Edge_t **return_tuples,
-                size_t *return_count,
-                char ** log_msg,
-                char ** notice_msg,
-                char ** err_msg);
-
+        Edge_t**, size_t*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }

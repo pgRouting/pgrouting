@@ -46,16 +46,11 @@ extern "C" {
 #endif
 
 void
-do_hawickCircuits(
-        Edge_t  *,        // data_edges
-        size_t,           // total_tuples
-        circuits_rt **,   // return_tuples
-        size_t *,         // return_count
+pgr_do_hawickCircuits(
+        char*,
 
-        char **,          // log_msg
-        char **,          // notice_msg
-        char **);         // err_msg
-
+        circuits_rt**, size_t*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }
