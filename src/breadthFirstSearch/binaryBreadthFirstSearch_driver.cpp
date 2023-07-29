@@ -95,8 +95,8 @@ void
 pgr_do_binaryBreadthFirstSearch(
         char *edges_sql,
         char *combinations_sql,
-        int64_t  *start_vidsArr, size_t size_start_vidsArr,
-        int64_t  *end_vidsArr, size_t size_end_vidsArr,
+        int64_t *start_vidsArr, size_t size_start_vidsArr,
+        int64_t *end_vidsArr, size_t size_end_vidsArr,
 
         bool directed,
 
@@ -113,7 +113,7 @@ pgr_do_binaryBreadthFirstSearch(
     std::ostringstream err;
     std::ostringstream notice;
     char *hint;
-    const char cost_err_msg[] =  "Graph Condition Failed: Graph should have atmost two distinct non-negative edge costs! "
+    const char c_err_msg[] = "Graph Condition Failed: Graph should have atmost two distinct non-negative edge costs! "
                              "If there are exactly two distinct edge costs, one of them must equal zero!";
 
     try {
@@ -150,7 +150,7 @@ pgr_do_binaryBreadthFirstSearch(
             digraph.insert_edges(edges);
 
             if (!(costCheck(digraph))) {
-                err << cost_err_msg;
+                err << c_err_msg;
                 *err_msg = pgr_msg(err.str().c_str());
                 return;
             }
@@ -162,7 +162,7 @@ pgr_do_binaryBreadthFirstSearch(
             undigraph.insert_edges(edges);
 
             if (!(costCheck(undigraph))) {
-                err << cost_err_msg;
+                err << c_err_msg;
                 *err_msg = pgr_msg(err.str().c_str());
                 return;
             }

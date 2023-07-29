@@ -108,12 +108,12 @@ pgr_do_breadthFirstSearch(
         if (directed) {
             pgrouting::DirectedGraph graph(gType);
             graph.insert_edges(edges);
-            results = pgr_breadthFirstSearch(graph,start_vertices, max_depth);
+            results = pgr_breadthFirstSearch(graph, start_vertices, max_depth);
 
         } else {
             pgrouting::UndirectedGraph graph(gType);
             graph.insert_edges(edges);
-            results = pgr_breadthFirstSearch(graph,start_vertices, max_depth);
+            results = pgr_breadthFirstSearch(graph, start_vertices, max_depth);
         }
 
         auto count = results.size();
