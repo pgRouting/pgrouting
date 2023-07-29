@@ -111,7 +111,6 @@ pgr_do_transitiveClosure(
     char *hint;
 
     try {
-
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
