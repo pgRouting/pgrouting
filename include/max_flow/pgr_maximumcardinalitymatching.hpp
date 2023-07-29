@@ -77,7 +77,7 @@ class PgrCardinalityGraph {
       return E_to_id[e];
   }
 
-  PgrCardinalityGraph(const std::vector<Edge_bool_t> &edges) {
+  explicit PgrCardinalityGraph(const std::vector<Edge_bool_t> &edges) {
       std::set<int64_t> vertices;
       for (const auto &e : edges) {
           vertices.insert(e.source);

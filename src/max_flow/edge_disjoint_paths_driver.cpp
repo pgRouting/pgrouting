@@ -111,7 +111,8 @@ pgr_do_edge_disjoint_paths(
             pgrouting::pgget::get_combinations(std::string(combinations_sql)) : std::vector<II_t_rt>();
 
         auto combinations = combinationsArr.empty()?
-            pgrouting::utilities::get_combinations(sourceVertices, sizeSourceVerticesArr, sinkVertices, sizeSinkVerticesArr)
+            pgrouting::utilities::get_combinations(sourceVertices, sizeSourceVerticesArr,
+                    sinkVertices, sizeSinkVerticesArr)
             : pgrouting::utilities::get_combinations(combinationsArr);
 
         if (combinations.empty()) {
