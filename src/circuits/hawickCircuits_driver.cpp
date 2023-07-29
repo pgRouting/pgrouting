@@ -34,21 +34,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <string>
 
+#include "cpp_common/pggetdata.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
 #include "drivers/circuits/hawickcircuits_driver.h"
 #include "circuits/hawickcircuits.hpp"
-
-/** @file hawickCircuits_driver.cpp */
-
-
-/** @brief Calls the main function defined in the C++ Header file.
- *
- * @param graph      the graph containing the edges
- *
- * @returns results, when results are found
- */
 
 template < class G >
 std::deque <circuits_rt>
@@ -58,32 +49,9 @@ pgr_hawickCircuits(G &graph) {
     return results;
 }
 
-/** @brief Performs exception handling and converts the results to postgres.
- *
- * @pre log_msg is empty
- * @pre notice_msg is empty
- * @pre err_msg is empty
- * @pre return_tuples is empty
- * @pre return_count is 0
- *
- * It builds the undirected graph using the `data_edges` variable.
- * Then, it passes the required variables to the template function
- * `cuthillMckeeOrdering` which calls the main function
- * defined in the C++ Header file. It also does exception handling.
- *
- * @param data_edges     the set of edges from the SQL query
- * @param total_edges    the total number of edges in the SQL query
- * @param return_tuples  the rows in the result
- * @param return_count   the count of rows in the result
- * @param log_msg        stores the log message
- * @param notice_msg     stores the notice message
- * @param err_msg        stores the error message
- */
-
 void
-do_hawickCircuits(
-        Edge_t  *data_edges,
-        size_t total_edges,
+pgr_do_hawickCircuits(
+        char *edges_sql,
 
         circuits_rt **return_tuples,
         size_t *return_count,
@@ -99,20 +67,29 @@ do_hawickCircuits(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char *hint;
+
     try {
         pgassert(!(*log_msg));
-        pgassert(total_edges != 0);
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        std::deque < circuits_rt > results;
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+        if (edges.size() == 0) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
+
+        std::deque <circuits_rt> results;
 
         graphType gType = DIRECTED;
         pgrouting::DirectedGraph digraph(gType);
-
-        digraph.insert_edges(data_edges, total_edges);
+        digraph.insert_edges(edges);
 
         results = pgr_hawickCircuits(digraph);
 
@@ -145,6 +122,9 @@ do_hawickCircuits(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
