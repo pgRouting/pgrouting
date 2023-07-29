@@ -111,7 +111,7 @@ pgr_do_withPoints(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-	graphType gType = directed? DIRECTED: UNDIRECTED;
+        graphType gType = directed? DIRECTED: UNDIRECTED;
 
         hint = points_sql;
         auto points = pgrouting::pgget::get_points(std::string(points_sql));
