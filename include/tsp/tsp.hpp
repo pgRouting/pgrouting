@@ -73,8 +73,8 @@ class TSP : public Pgr_messages {
             std::deque<std::pair<int64_t, double>> result,
             size_t limit, int cycles);
 
-    TSP(std::vector<IID_t_rt>&);
-    TSP(const std::vector<Coordinate_t>&);
+    explicit TSP(std::vector<IID_t_rt>&);
+    explicit TSP(const std::vector<Coordinate_t>&);
     TSP() = delete;
 
 #if Boost_VERSION_MACRO >= 106800
