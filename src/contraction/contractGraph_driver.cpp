@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 
+#include "cpp_common/pggetdata.hpp"
 #include "contraction/ch_graphs.hpp"
 #include "contraction/pgr_contract.hpp"
 
@@ -168,21 +169,13 @@ void get_postgres_result(
 
 
 
-/************************************************************
-  edges_sql TEXT,
-  contraction_order BIGINT[],
-  forbidden_vertices BIGINT[] DEFAULT ARRAY[]::BIGINT[],
-  max_cycles integer DEFAULT 1,
-  directed BOOLEAN DEFAULT true
- ***********************************************************/
 void
-do_pgr_contractGraph(
-        Edge_t  *data_edges,
-        size_t total_edges,
-        int64_t *forbidden_vertices,
-        size_t size_forbidden_vertices,
-        int64_t *contraction_order,
-        size_t size_contraction_order,
+pgr_do_contractGraph(
+        char *edges_sql,
+
+        int64_t *forbidden_vertices, size_t size_forbidden_vertices,
+        int64_t *contraction_order, size_t size_contraction_order,
+
         int64_t max_cycles,
         bool directed,
         contracted_rt **return_tuples,
@@ -197,8 +190,10 @@ do_pgr_contractGraph(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
+    char *hint;
+
     try {
-        pgassert(total_edges != 0);
+
         pgassert(size_contraction_order != 0);
         pgassert(max_cycles != 0);
         pgassert(!(*log_msg));
@@ -207,10 +202,15 @@ do_pgr_contractGraph(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        /*
-         * Converting to C++ structures
-         */
-        std::vector<Edge_t> edges(data_edges, data_edges + total_edges);
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+        if (edges.size() == 0) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
+
         std::vector<int64_t> forbid(
                 forbidden_vertices,
                 forbidden_vertices + size_forbidden_vertices);
@@ -265,6 +265,9 @@ do_pgr_contractGraph(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
