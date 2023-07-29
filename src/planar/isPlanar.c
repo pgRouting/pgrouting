@@ -42,7 +42,7 @@ PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_isplanar);
 
 static bool
-process( char *edges_sql) {
+process(char *edges_sql) {
     bool planarity = false;
     pgr_SPI_connect();
     char* log_msg = NULL;
