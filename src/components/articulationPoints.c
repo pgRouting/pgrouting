@@ -59,36 +59,23 @@ process(
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-
-    if (total_edges == 0) {
-        pgr_SPI_finish();
-        return;
-    }
-
     clock_t start_t = clock();
-    do_pgr_articulationPoints(
-            edges,
-            total_edges,
+    pgr_do_articulationPoints(
+            edges_sql,
 
             result_tuples,
             result_count,
             &log_msg,
             &notice_msg,
             &err_msg);
-
     time_msg(" processing pgr_articulationPoints", start_t, clock());
 
     if (err_msg) {
         if (*result_tuples) pfree(*result_tuples);
+        (*result_count) = 0;
     }
     pgr_global_report(log_msg, notice_msg, err_msg);
 
-    if (edges) pfree(edges);
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
