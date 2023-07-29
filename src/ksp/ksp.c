@@ -57,35 +57,15 @@ void compute(
 
     size_t k = (size_t)p_k;
 
-    PGR_DBG("Load data");
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-
-
     if (start_vertex == end_vertex) {
         pgr_SPI_finish();
         return;
     }
 
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-    PGR_DBG("Total %ld edges in query:", total_edges);
-
-    if (total_edges == 0) {
-        PGR_DBG("No edges found");
-        pgr_SPI_finish();
-        return;
-    }
-
-
-    PGR_DBG("Calling do_pgr_ksp\n");
-    PGR_DBG("heap_paths = %i\n", heap_paths);
-
     clock_t start_t = clock();
+    pgr_do_ksp(
+            edges_sql,
 
-    do_pgr_ksp(
-            edges,
-            total_edges,
             start_vertex,
             end_vertex,
             k,
@@ -110,10 +90,6 @@ void compute(
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
 
-
-    pgr_global_report(log_msg, notice_msg, err_msg);
-
-    pfree(edges);
     pgr_SPI_finish();
 }
 
@@ -130,17 +106,6 @@ _pgr_ksp(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-
-        /*
-           CREATE OR REPLACE FUNCTION _pgr_ksp(
-           sql text,
-           start_vid bigint,
-           end_vid bigint,
-           k integer,
-           directed boolean,
-           heap_paths boolean
-           */
-        PGR_DBG("Calling process");
         compute(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT64(1),
@@ -150,7 +115,6 @@ _pgr_ksp(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(5),
                 &path,
                 &result_count);
-        PGR_DBG("Total number of tuples to be returned %ld \n", result_count);
 
 
         funcctx->max_calls = result_count;
@@ -200,7 +164,7 @@ _pgr_ksp(PG_FUNCTION_ARGS) {
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
-    } else {   /* do when there is no more left */
+    } else {
         SRF_RETURN_DONE(funcctx);
     }
 }

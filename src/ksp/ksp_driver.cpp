@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "yen/pgr_ksp.hpp"
 
+#include "cpp_common/pggetdata.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
@@ -40,9 +41,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 using pgrouting::yen::Pgr_ksp;
 
 
-void  do_pgr_ksp(
-        Edge_t *data_edges,
-        size_t total_edges,
+void  pgr_do_ksp(
+        char *edges_sql,
+
         int64_t  start_vid,
         int64_t  end_vid,
         size_t k,
@@ -61,13 +62,24 @@ void  do_pgr_ksp(
     std::ostringstream err;
     std::ostringstream log;
     std::ostringstream notice;
+    char *hint;
+
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(total_edges != 0);
+
+
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+        if (edges.size() == 0) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
@@ -76,12 +88,12 @@ void  do_pgr_ksp(
         if (directed) {
             pgrouting::DirectedGraph digraph(gType);
             Pgr_ksp< pgrouting::DirectedGraph > fn_yen;
-            digraph.insert_edges(data_edges, total_edges);
+            digraph.insert_edges(edges);
             paths = fn_yen.Yen(digraph, start_vid, end_vid, k, heap_paths);
         } else {
             pgrouting::UndirectedGraph undigraph(gType);
             Pgr_ksp< pgrouting::UndirectedGraph > fn_yen;
-            undigraph.insert_edges(data_edges, total_edges);
+            undigraph.insert_edges(edges);
             paths = fn_yen.Yen(undigraph, start_vid, end_vid, k, heap_paths);
         }
 
@@ -115,6 +127,9 @@ void  do_pgr_ksp(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
