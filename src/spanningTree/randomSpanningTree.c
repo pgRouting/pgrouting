@@ -59,23 +59,8 @@ process(
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
-    PGR_DBG("Load data");
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-    PGR_DBG("Total %ld edges in query:", total_edges);
-
-    if (total_edges == 0) {
-        PGR_DBG("No edges found");
-        pgr_SPI_finish();
-        return;
-    }
-
-    PGR_DBG("Starting processing");
     clock_t start_t = clock();
-    do_pgr_randomSpanningTree(
+    pgr_do_randomSpanningTree(
             edges,
             total_edges,
             root_vertex,
@@ -94,15 +79,14 @@ process(
     }
     pgr_global_report(log_msg, notice_msg, err_msg);
 
-    if (edges) pfree(edges);
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
+    if (roots) pfree(roots);
 
     pgr_SPI_finish();
 }
 /*                                                                            */
-/******************************************************************************/
 
 PGDLLEXPORT Datum randomSpanningTree(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
@@ -158,14 +142,12 @@ PGDLLEXPORT Datum randomSpanningTree(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        // postgres starts counting from 1
         values[0] = Int64GetDatum((int64_t)funcctx->call_cntr + 1);
         values[1] =
             Int64GetDatum(result_tuples[funcctx->call_cntr].root_vertex);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].tree_cost);
-        /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

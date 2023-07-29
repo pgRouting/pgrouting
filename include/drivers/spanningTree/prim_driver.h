@@ -47,24 +47,14 @@ typedef struct MST_rt MST_rt;
 extern "C" {
 #endif
 
-void do_pgr_prim(
-        Edge_t  *data_edges,
-        size_t total_edges,
+void pgr_do_prim(
+        char*,
+        int64_t *, size_t,
 
-        int64_t *rootsArr,
-        size_t size_rootsArr,
+        char*, int64_t, double,
 
-        char* fn_suffix,
-
-        int64_t max_depth,
-        double distance,
-
-        MST_rt **return_tuples,
-        size_t *return_count,
-
-        char ** log_msg,
-        char ** notice_msg,
-        char ** err_msg);
+        MST_rt**, size_t*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }

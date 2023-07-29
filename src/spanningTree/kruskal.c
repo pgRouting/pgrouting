@@ -74,15 +74,9 @@ process(
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-
     clock_t start_t = clock();
-    do_pgr_kruskal(
-            edges, total_edges,
+    pgr_do_kruskal(
+            edges_sql,
             rootsArr, size_rootsArr,
             fn_suffix,
             max_depth,
@@ -101,10 +95,10 @@ process(
     }
     pgr_global_report(log_msg, notice_msg, err_msg);
 
-    if (edges) pfree(edges);
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
+    if (roots) pfree(roots);
 
     pgr_SPI_finish();
 }
@@ -173,7 +167,6 @@ PGDLLEXPORT Datum _pgr_kruskal(PG_FUNCTION_ARGS) {
         values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
-        /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

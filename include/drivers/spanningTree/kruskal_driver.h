@@ -35,36 +35,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifdef __cplusplus
 #   include <cstddef>
 #   include <cstdint>
-using Edge_t = struct Edge_t;
 using MST_rt = struct MST_rt;
 #else
 #   include <stddef.h>
 #   include <stdint.h>
-typedef struct Edge_t Edge_t;
 typedef struct MST_rt MST_rt;
 #endif
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-    void
-        do_pgr_kruskal(
-                Edge_t  *data_edges,
-                size_t total_edges,
 
-                int64_t *root,
-                size_t total_roots,
+void pgr_do_kruskal(
+        char*,
+        int64_t *, size_t,
 
-                char* fn_suffix,
+        char*, int64_t, double,
 
-                int64_t max_depth,
-                double distance,
-
-                MST_rt **return_tuples,
-                size_t *return_count,
-                char ** log_msg,
-                char ** notice_msg,
-                char ** err_msg);
+        MST_rt**, size_t*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }

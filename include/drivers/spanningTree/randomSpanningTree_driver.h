@@ -45,17 +45,14 @@ typedef SpanTree_rt SpanTree_rt;
 extern "C" {
 #endif
 
-    void
-        do_pgr_randomSpanningTree(
-                Edge_t  *data_edges,
-                size_t total_edges,
-                int64_t root_vertex,
-                bool directed,
-                SpanTree_rt **return_tuples,
-                size_t *return_count,
-                char ** log_msg,
-                char ** notice_msg,
-                char ** err_msg);
+void pgr_do_randomSpanningTree(
+        char*,
+        int64_t*, size_t,
+
+        int64_t, double,
+
+        SpanTree_rt**, size_t*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }

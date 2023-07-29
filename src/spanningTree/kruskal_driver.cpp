@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <string>
 
+#include "cpp_common/pggetdata.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
@@ -41,9 +42,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 void
-do_pgr_kruskal(
-        Edge_t  *data_edges,
-        size_t total_edges,
+pgr_do_kruskal(
+        char *edges_sql,
 
         int64_t *rootsArr,
         size_t size_rootsArr,
@@ -66,6 +66,8 @@ do_pgr_kruskal(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char *hint;
+
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
@@ -73,20 +75,24 @@ do_pgr_kruskal(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+        hint = nullptr;
+
         std::vector<int64_t> roots(rootsArr, rootsArr + size_rootsArr);
         std::string suffix(fn_suffix);
 
         std::vector<MST_rt> results;
 
-        if (total_edges == 0) {
+        pgrouting::UndirectedGraph undigraph(UNDIRECTED);
+        undigraph.insert_edges(edges);
+        pgrouting::functions::Pgr_kruskal<pgrouting::UndirectedGraph> kruskal;
+
+        if (edges.empty()) {
             results = pgrouting::details::get_no_edge_graph_result(roots);
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = pgr_msg(edges_sql);
         } else {
-            pgrouting::UndirectedGraph undigraph(UNDIRECTED);
-            undigraph.insert_edges(data_edges, total_edges);
-
-            pgrouting::functions::Pgr_kruskal
-                <pgrouting::UndirectedGraph> kruskal;
-
             if (suffix == "") {
                 results = kruskal.kruskal(undigraph);
             } else if (suffix == "BFS") {
@@ -103,13 +109,6 @@ do_pgr_kruskal(
         }
 
         auto count = results.size();
-
-        if (count == 0) {
-            (*return_tuples) = NULL;
-            (*return_count) = 0;
-            notice << "No spanning tree found";
-            return;
-        }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
         for (size_t i = 0; i < count; i++) {
@@ -130,6 +129,9 @@ do_pgr_kruskal(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

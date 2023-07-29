@@ -417,9 +417,12 @@ class Pgr_base_graph {
      template <typename T>
      void
      insert_min_edges_no_parallel(const std::vector<T> &edges) {
-         for (const auto edge : edges) {
+         insert_edges(edges);
+#if 0
+         for (const auto &edge : edges) {
              graph_add_min_edge_no_parallel(edge);
          }
+#endif
      }
 
      template < typename T >
