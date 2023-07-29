@@ -40,6 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <cassert>
 
 #include "trsp/pgr_trspHandler.h"
+#include "cpp_common/pggetdata.hpp"
 #include "cpp_common/rule.h"
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/pgr_alloc.hpp"
@@ -117,6 +118,7 @@ pgr_do_trsp(
     std::ostringstream notice;
     std::ostringstream err;
     char *hint;
+
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
