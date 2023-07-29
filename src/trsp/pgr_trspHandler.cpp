@@ -601,7 +601,7 @@ Pgr_trspHandler::process_trsp(
 void Pgr_trspHandler::construct_graph(
         const std::vector<Edge_t> &edges,
         const bool directed) {
-    for (const auto &e: edges) {
+    for (const auto &e : edges) {
         addEdge(e, directed);
     }
     m_mapEdgeId2Index.clear();
