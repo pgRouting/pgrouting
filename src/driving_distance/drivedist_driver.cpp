@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
+#include "cpp_common/pggetdata.hpp"
 #include "dijkstra/drivingDist.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
@@ -81,8 +82,8 @@ end_timing(
 #endif
 
 void
-do_pgr_driving_many_to_dist(
-        Edge_t  *data_edges, size_t total_edges,
+pgr_do_drivingDistance(
+        char *edges_sql,
         int64_t *start_vertex, size_t s_len,
         double distance,
         bool directedFlag,
@@ -99,9 +100,9 @@ do_pgr_driving_many_to_dist(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char *hint;
 
     try {
-        pgassert(total_edges != 0);
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
@@ -109,12 +110,22 @@ do_pgr_driving_many_to_dist(
         pgassert(*return_count == 0);
         pgassert((*return_tuples) == NULL);
 
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+
+        if (edges.size()) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
+
         graphType gType = directedFlag? DIRECTED: UNDIRECTED;
 
         std::deque<Path> paths;
         std::vector<int64_t> start_vertices(start_vertex, start_vertex + s_len);
 
-        auto vertices(pgrouting::extract_vertices(data_edges, total_edges));
+        auto vertices(pgrouting::extract_vertices(edges));
 
 #ifdef WITH_TIME
         clock_t begin;
@@ -138,7 +149,7 @@ do_pgr_driving_many_to_dist(
             log << "********Inserting edges at time: " << std::ctime(&start_t)
                 << "\n";
 #endif
-            digraph.insert_edges(data_edges, total_edges, true);
+            digraph.insert_edges(edges, true);
 #ifdef WITH_TIME
             end_timing(start_t, begin_elapsed, begin, log);
 #endif
@@ -169,7 +180,7 @@ do_pgr_driving_many_to_dist(
             log << "*******Inserting edges at time: " << std::ctime(&start_t)
                 << "\n";
 #endif
-            undigraph.insert_edges(data_edges, total_edges, true);
+            undigraph.insert_edges(edges, true);
 #ifdef WITH_TIME
             end_timing(start_t, begin_elapsed, begin, log);
 #endif
@@ -211,6 +222,9 @@ do_pgr_driving_many_to_dist(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

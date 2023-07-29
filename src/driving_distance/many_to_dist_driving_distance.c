@@ -56,19 +56,11 @@ void process(
     int64_t* start_vidsArr = pgr_get_bigIntArray(&size_start_vidsArr, starts, false, &err_msg);
     throw_error(err_msg, "While getting start vids");
 
-    Edge_t *edges = NULL;
-    size_t total_tuples = 0;
-    pgr_get_edges(edges_sql, &edges, &total_tuples, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
 
-    if (total_tuples == 0) {
-        return;
-    }
-
-    PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    do_pgr_driving_many_to_dist(
-            edges, total_tuples,
+    pgr_do_drivingDistance(
+            edges_sql,
+
             start_vidsArr, size_start_vidsArr,
             distance,
             directed,
@@ -92,7 +84,6 @@ void process(
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-    if (edges) pfree(edges);
     if (start_vidsArr) pfree(start_vidsArr);
 
     pgr_SPI_finish();
@@ -104,18 +95,14 @@ _pgr_drivingdistance(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
-    /**********************************************************************/
     Path_rt* result_tuples = 0;
     size_t result_count = 0;
-    /**********************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
 
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-
-        /**********************************************************************/
 
         PGR_DBG("Calling driving_many_to_dist_driver");
         process(
@@ -125,8 +112,6 @@ _pgr_drivingdistance(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(3),
                 PG_GETARG_BOOL(4),
                 &result_tuples, &result_count);
-
-        /**********************************************************************/
 
         funcctx->max_calls = result_count;
 
@@ -154,7 +139,6 @@ _pgr_drivingdistance(PG_FUNCTION_ARGS) {
         Datum *values;
         bool* nulls;
 
-        /**********************************************************************/
         size_t numb = 6;
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
@@ -170,7 +154,6 @@ _pgr_drivingdistance(PG_FUNCTION_ARGS) {
         values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
 
-        /**********************************************************************/
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
 
