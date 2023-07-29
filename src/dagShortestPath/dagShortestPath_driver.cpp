@@ -122,7 +122,7 @@ pgr_do_dagShortestPath(
         } else {
             pgrouting::UndirectedGraph graph(gType);
             graph.insert_edges(edges);
-            paths = pgr_dagShortestPath( graph, combinations, only_cost);
+            paths = pgr_dagShortestPath(graph, combinations, only_cost);
         }
 
         auto count = count_tuples(paths);
