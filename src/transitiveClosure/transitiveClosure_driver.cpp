@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "transitiveClosure/pgr_transitiveClosure.hpp"
 
-#include "cpp_common/pggetdata.hpp"
+#include "cpp_common/pgget.hpp"
 #include "cpp_common/identifiers.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/basePath_SSEC.hpp"

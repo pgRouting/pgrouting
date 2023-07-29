@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/geom_text_rt.h"
 #include "cpp_common/pgr_assert.h"
-#include "cpp_common/pggetdata.hpp"
+#include "cpp_common/pgget.hpp"
 #include "alphaShape/pgr_alphaShape.h"
 
 #include "cpp_common/pgr_alloc.hpp"

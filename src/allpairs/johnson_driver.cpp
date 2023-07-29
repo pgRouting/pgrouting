@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include "allpairs/pgr_allpairs.hpp"
-#include "cpp_common/pggetdata.hpp"
+#include "cpp_common/pgget.hpp"
 
 #include "cpp_common/pgr_assert.h"
 

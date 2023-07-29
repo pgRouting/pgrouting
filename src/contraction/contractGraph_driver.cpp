@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 
-#include "cpp_common/pggetdata.hpp"
+#include "cpp_common/pgget.hpp"
 #include "contraction/ch_graphs.hpp"
 #include "contraction/pgr_contract.hpp"
 
