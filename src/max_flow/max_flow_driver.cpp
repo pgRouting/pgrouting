@@ -74,7 +74,7 @@ pgr_do_max_flow(
         hint = edges_sql;
         auto edges = pgrouting::pgget::get_flow_edges(std::string(edges_sql));
 
-        if (edges.size() == 0) {
+        if (edges.empty()) {
             *notice_msg = pgr_msg("No edges found");
             *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
             return;

@@ -66,7 +66,7 @@ pgr_do_floydWarshall(
         hint = edges_sql;
         auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, true);
 
-        if (edges.size() == 0) {
+        if (edges.empty()) {
             throw std::string("No edges found");
         }
         hint = nullptr;

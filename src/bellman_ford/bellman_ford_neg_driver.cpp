@@ -101,7 +101,7 @@ pgr_do_bellman_ford_neg(
         hint = edges_sql;
         auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
 
-        if (edges.size() + neg_edges.size() == 0) {
+        if (edges.size() + neg_edges.empty()) {
             *notice_msg = pgr_msg("No edges found");
             *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
             return;
