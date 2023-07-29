@@ -193,7 +193,6 @@ pgr_do_contractGraph(
     char *hint;
 
     try {
-
         pgassert(size_contraction_order != 0);
         pgassert(max_cycles != 0);
         pgassert(!(*log_msg));
