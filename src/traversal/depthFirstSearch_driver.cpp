@@ -112,11 +112,15 @@ pgr_do_depthFirstSearch(
 
         hint = edges_sql;
         auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
-        if (edges.size() == 0) {
+
+#if 0
+        /* TODO test for empty edges */
+        if (edges.empty()) {
             *notice_msg = pgr_msg("No edges found");
             *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
             return;
         }
+#endif
         hint = nullptr;
 
         std::vector < int64_t > roots(rootsArr, rootsArr + size_rootsArr);
