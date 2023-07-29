@@ -48,7 +48,7 @@ namespace graph {
 
 class PgrDirectedChPPGraph {
  public:
-     PgrDirectedChPPGraph(const std::vector<Edge_t>&);
+     explicit PgrDirectedChPPGraph(const std::vector<Edge_t>&);
 
      double DirectedChPP() const {
          return m_cost;

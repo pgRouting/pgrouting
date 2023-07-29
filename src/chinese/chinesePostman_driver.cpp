@@ -65,7 +65,7 @@ pgr_do_directedChPP(
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        
+
 
         hint = edges_sql;
         auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
@@ -94,7 +94,6 @@ pgr_do_directedChPP(
         } else {
             pathEdges = digraph.GetPathEdges();
         }
-
 
         size_t count = pathEdges.size();
 
