@@ -62,7 +62,7 @@ void  pgr_do_ksp(
     std::ostringstream err;
     std::ostringstream log;
     std::ostringstream notice;
-    char *hint;
+    char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));

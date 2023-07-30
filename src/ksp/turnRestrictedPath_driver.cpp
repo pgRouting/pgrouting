@@ -107,7 +107,7 @@ pgr_do_turnRestrictedPath(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
-    char *hint;
+    char *hint = nullptr;
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));

@@ -62,7 +62,7 @@ pgr_do_max_flow(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
-    char* hint;
+    char* hint = nullptr;
 
     try {
         pgassert(!(*log_msg));

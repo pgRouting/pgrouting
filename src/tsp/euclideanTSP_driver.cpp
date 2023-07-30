@@ -62,7 +62,7 @@ pgr_do_euclideanTSP(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
-    char *hint;
+    char *hint = nullptr;
 
     try {
         hint = coordinates_sql;

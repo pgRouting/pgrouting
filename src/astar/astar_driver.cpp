@@ -67,7 +67,7 @@ void pgr_do_astar(
     std::ostringstream notice;
     std::ostringstream err;
 
-    char* hint;
+    char* hint = nullptr;
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));

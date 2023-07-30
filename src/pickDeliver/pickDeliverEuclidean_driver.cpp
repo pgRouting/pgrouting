@@ -67,7 +67,7 @@ pgr_do_pickDeliverEuclidean(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
-    char* hint;
+    char* hint = nullptr;
 
     try {
         *return_tuples = nullptr;

@@ -63,7 +63,7 @@ pgr_do_maximum_cardinality_matching(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
-    char* hint;
+    char* hint = nullptr;
 
     try {
         hint = edges_sql;

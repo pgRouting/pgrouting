@@ -65,7 +65,7 @@ pgr_do_tsp(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
-    char *hint;
+    char *hint = nullptr;
 
     try {
         hint = matrix_sql;

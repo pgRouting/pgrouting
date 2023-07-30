@@ -102,7 +102,7 @@ pgr_do_withPoints(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
-    char *hint;
+    char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));

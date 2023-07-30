@@ -190,7 +190,7 @@ pgr_do_contractGraph(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
-    char *hint;
+    char *hint = nullptr;
 
     try {
         pgassert(size_contraction_order != 0);

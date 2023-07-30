@@ -76,7 +76,7 @@ do_alphaShape(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
-    char* hint;
+    char* hint = nullptr;
 
     try {
         pgassert(*return_count == 0);

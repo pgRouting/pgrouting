@@ -148,7 +148,7 @@ pgr_do_trspVia(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
-    char *hint;
+    char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));

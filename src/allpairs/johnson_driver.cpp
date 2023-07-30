@@ -53,7 +53,7 @@ pgr_do_johnson(
 
     std::ostringstream log;
     std::ostringstream err;
-    char *hint;
+    char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));

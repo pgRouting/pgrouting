@@ -84,7 +84,7 @@ pgr_do_bellman_ford_neg(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
-    char *hint;
+    char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));
