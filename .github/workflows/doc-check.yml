@@ -14,6 +14,7 @@ name: Check Documentation
 # - es
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - '.github/workflows/doc-check.yml'
