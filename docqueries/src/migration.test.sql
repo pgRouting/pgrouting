@@ -245,19 +245,19 @@ SELECT seq, path_seq, node, edge, cost, agg_cost FROM pgr_aStar(
   6, 10);
 /* --astar5 */
 /* --bdastar1 */
-SELECT * FROM pgr_aStar(
+SELECT * FROM pgr_bdAstar(
   $$SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges$$,
   6, 10);
 /* --bdastar2 */
-SELECT * FROM pgr_aStar(
+SELECT * FROM pgr_bdAstar(
   $$SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges$$,
   6, ARRAY[3, 10]);
 /* --bdastar3 */
-SELECT * FROM pgr_aStar(
+SELECT * FROM pgr_bdAstar(
   $$SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges$$,
   ARRAY[3, 6], 10);
 /* --bdastar4 */
-SELECT seq, path_seq, node, edge, cost, agg_cost FROM pgr_aStar(
+SELECT seq, path_seq, node, edge, cost, agg_cost FROM pgr_bdAstar(
   $$SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges$$,
   6, 10);
 /* --bdastar5 */
