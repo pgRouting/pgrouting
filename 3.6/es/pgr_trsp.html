@@ -5,7 +5,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>pgr_trsp - Proposed &#8212; pgRouting Manual (3.6-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -263,7 +263,7 @@ real world navigable road networks.</p>
 <div class="line">pgr_trsp(<a class="reference internal" href="#restrictions-sql">SQL de aristas</a>, <a class="reference internal" href="#edges-sql">SQL de restricciones</a>, <strong>salida</strong>, <strong>destinos</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 <div class="line">pgr_trsp(<a class="reference internal" href="#restrictions-sql">SQL de aristas</a>, <a class="reference internal" href="#edges-sql">SQL de restricciones</a>, <strong>salidas</strong>, <strong>destino</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 <div class="line">pgr_trsp(<a class="reference internal" href="#restrictions-sql">SQL de aristas</a>, <a class="reference internal" href="#edges-sql">SQL de restricciones</a>, <strong>salidas</strong>, <strong>destinos</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
-<div class="line">pgr_trsp(<a class="reference internal" href="#restrictions-sql">SQL de aristas</a>, <a class="reference internal" href="#edges-sql">SQL de restricciones</a>, <a class="reference internal" href="#combinations-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_trsp(<a class="reference internal" href="#combinations-sql">SQL de aristas</a>, <a class="reference internal" href="#restrictions-sql">SQL de restricciones</a>, <a class="reference internal" href="#edges-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
 <div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
@@ -423,7 +423,7 @@ undirected graph.</p>
 <span id="index-4"></span><h3>Combinaciones<a class="headerlink" href="#combinations" title="Enlace permanente a este encabezado">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<p>pgr_trsp(<a class="reference internal" href="#restrictions-sql">SQL de aristas</a>, <a class="reference internal" href="#edges-sql">SQL de restricciones</a>, <a class="reference internal" href="#combinations-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
+<p>pgr_trsp(<a class="reference internal" href="#combinations-sql">SQL de aristas</a>, <a class="reference internal" href="#restrictions-sql">SQL de restricciones</a>, <a class="reference internal" href="#edges-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
 <div class="line-block">
 <div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
@@ -762,8 +762,8 @@ undirected graph.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
-      Actualizado por última vez en jul 17, 2023.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.0.1.<br/>
+      Actualizado por última vez en jul 31, 2023.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br/>
     </p>
   </div>
 </footer>
