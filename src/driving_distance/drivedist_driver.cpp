@@ -33,53 +33,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-#undef WITH_TIME
-#ifdef WITH_TIME
-#include <ctime>
-#include <chrono>   // NOLINT [build/c++11]
-
-namespace {
-
-void
-start_timing(
-        std::time_t &start_t,
-        std::chrono::steady_clock::time_point &begin_elapsed,
-        clock_t &begin) {
-    begin = clock();
-    start_t = std::time(NULL);
-    begin_elapsed = std::chrono::steady_clock::now();
-}
-
-void
-end_timing(
-        const std::time_t start_t,
-        std::chrono::steady_clock::time_point& begin_elapsed,
-        clock_t &begin,
-        std::ostringstream &log) {
-    clock_t end = clock();
-    double elapsed_secs =
-        static_cast<double>(end - begin)
-        / static_cast<double>(CLOCKS_PER_SEC);
-
-    std::time_t end_t = std::time(NULL);
-    std::chrono::steady_clock::time_point end_elapsed =
-        std::chrono::steady_clock::now();
-
-    typedef std::chrono::duration<int, std::milli> millisecs_t;
-    millisecs_t duration = std::chrono::duration_cast<millisecs_t>(
-            end_elapsed - begin_elapsed);
-
-    log << "Execution started at: " << std::ctime(&start_t);
-    log << "Execution ended at:   " << std::ctime(&end_t);
-    log << "Elapsed time: "
-        << static_cast<double>(duration.count())/static_cast<double>(1000)
-        << " Seconds.\n";
-    log << "User CPU time: -> " << elapsed_secs << " seconds\n";
-}
-
-}  // namespace
-#endif
-
 void
 do_pgr_driving_many_to_dist(
         Edge_t  *data_edges, size_t total_edges,
@@ -116,74 +69,34 @@ do_pgr_driving_many_to_dist(
 
         auto vertices(pgrouting::extract_vertices(data_edges, total_edges));
 
-#ifdef WITH_TIME
-        clock_t begin;
-        std::time_t start_t;
-        std::chrono::steady_clock::time_point begin_elapsed;
-#endif
+
 
         if (directedFlag) {
-#ifdef WITH_TIME
-            start_timing(start_t, begin_elapsed, begin);
-            log << "*********Creating graph at time: " << std::ctime(&start_t)
-                << "\n";
-#endif
+
             pgrouting::DirectedGraph digraph(vertices, gType);
-#ifdef WITH_TIME
-            end_timing(start_t, begin_elapsed, begin, log);
-#endif
 
-#ifdef WITH_TIME
-            start_timing(start_t, begin_elapsed, begin);
-            log << "********Inserting edges at time: " << std::ctime(&start_t)
-                << "\n";
-#endif
+
+
             digraph.insert_edges(data_edges, total_edges, true);
-#ifdef WITH_TIME
-            end_timing(start_t, begin_elapsed, begin, log);
-#endif
 
-#ifdef WITH_TIME
-            start_timing(start_t, begin_elapsed, begin);
-            log << "*******Calling the C++ call to pgr_drivingDistance: "
-                << std::ctime(&start_t) << "\n";
-#endif
+
+
             paths = pgr_drivingDistance(
                     digraph, start_vertices, distance, equiCostFlag, log);
-#ifdef WITH_TIME
-            end_timing(start_t, begin_elapsed, begin, log);
-#endif
+
         } else {
-#ifdef WITH_TIME
-            start_timing(start_t, begin_elapsed, begin);
-            log << "******Creating graph at time: " << std::ctime(&start_t)
-                << "\n";
-#endif
+
             pgrouting::UndirectedGraph undigraph(vertices, gType);
-#ifdef WITH_TIME
-            end_timing(start_t, begin_elapsed, begin, log);
-#endif
 
-#ifdef WITH_TIME
-            start_timing(start_t, begin_elapsed, begin);
-            log << "*******Inserting edges at time: " << std::ctime(&start_t)
-                << "\n";
-#endif
+
+
             undigraph.insert_edges(data_edges, total_edges, true);
-#ifdef WITH_TIME
-            end_timing(start_t, begin_elapsed, begin, log);
-#endif
 
-#ifdef WITH_TIME
-            start_timing(start_t, begin_elapsed, begin);
-            log << "*******Calling the C++ call to pgr_drivingDistance: "
-                << std::ctime(&start_t) << "\n";
-#endif
+
+
             paths = pgr_drivingDistance(
                     undigraph, start_vertices, distance, equiCostFlag, log);
-#ifdef WITH_TIME
-            end_timing(start_t, begin_elapsed, begin, log);
-#endif
+
         }
 
         size_t count(count_tuples(paths));
