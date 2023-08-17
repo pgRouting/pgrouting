@@ -261,3 +261,25 @@ SELECT seq, path_seq, node, edge, cost, agg_cost FROM pgr_bdAstar(
   $$SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges$$,
   6, 10);
 /* --bdastar5 */
+/* --withpointsdd1 */
+SELECT * FROM pgr_withPointsDD(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
+  $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
+  -5, 2.3,
+  driving_side => 'r');
+/* --withpointsdd2 */
+SELECT * FROM pgr_withPointsDD(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
+  $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
+  -5, 2.3, 'r');
+/* --withpointsdd3 */
+SELECT * FROM pgr_withPointsDD(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
+  $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
+  ARRAY[-3, 16], 3.3, 'r');
+/* --withpointsdd4 */
+SELECT seq, node, edge, cost, agg_cost FROM pgr_withPointsDD(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
+  $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
+  -5, 2.3, 'r');
+/* --withpointsdd5 */
