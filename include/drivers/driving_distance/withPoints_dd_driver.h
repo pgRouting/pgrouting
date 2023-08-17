@@ -2,11 +2,14 @@
 File: withPoints_driver.h
 
 Copyright (c) 2015 pgRouting developers
-Mail: project@pgrouting.org
+Mail: project at pgrouting.org
 
 Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail:
+Mail: vicky at erosion.dev
+
+Copyright (c) 2023 Yige Huang
+Mail: square1ge at gmail.com
 
 ------
 
@@ -37,37 +40,32 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 using Point_on_edge_t = struct Point_on_edge_t;
 using Edge_t = struct Edge_t;
 using Path_rt = struct Path_rt;
+using MST_rt = struct MST_rt;
 #else
 #   include <stddef.h>
 #   include <stdint.h>
 typedef struct Point_on_edge_t Point_on_edge_t;
 typedef struct Edge_t Edge_t;
 typedef struct Path_rt Path_rt;
+typedef struct MST_rt MST_rt;
 #endif
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+    void pgr_do_withPointsDD(
+            Edge_t*,          size_t,
+            Point_on_edge_t*, size_t,
+            Edge_t*,          size_t,
+            int64_t*,         size_t,
 
-    void do_pgr_many_withPointsDD(
-            Edge_t      *edges,             size_t total_edges,
-            Point_on_edge_t *points_p,          size_t total_points,
-            Edge_t      *edges_of_points,   size_t total_edges_of_points,
+            double, char, bool, bool, bool, bool,
 
-            int64_t  *start_pids_arr,    size_t s_len,
-            double distance,
-
-            bool directed,
-            char driving_side,
-            bool details,
-            bool equiCost,
-
-            Path_rt **return_tuples, size_t *return_count,
-            char** log_msg,
-            char** notice_msg,
-            char ** err_msg);
-
+            /* TODO  remove the following line on v4 */
+            Path_rt**, size_t*,
+            MST_rt**, size_t*,
+            char**, char**, char **);
 
 #ifdef __cplusplus
 }
