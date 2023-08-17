@@ -3,12 +3,14 @@ File: withPoints_dd_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
-Mail: project@pgrouting.org
+Mail: project at pgrouting.org
 
 Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky at erosion.dev
 
+Copyright (c) 2023 Yige Huang
+Mail: square1ge at gmail.com
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -37,39 +39,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "dijkstra/drivingDist.hpp"
 #include "withPoints/pgr_withPoints.hpp"
-
+#include "driving_distance/withPointsDD.hpp"
+#include "c_types/mst_rt.h"
 
 #include "cpp_common/pgr_alloc.hpp"
 
 
-/**********************************************************************/
-// CREATE OR REPLACE FUNCTION pgr_withPointsDD(
-// edges_sql TEXT,
-// points_sql TEXT,
-// start_pids anyarray,
-// distance FLOAT,
-//
-// driving_side CHAR -- DEFAULT 'b',
-// details BOOLEAN -- DEFAULT false,
-// directed BOOLEAN -- DEFAULT true,
-// equicost BOOLEAN -- DEFAULT false,
-
-
 void
-do_pgr_many_withPointsDD(
-        Edge_t      *edges,             size_t total_edges,
+pgr_do_withPointsDD(
+        Edge_t          *edges,             size_t total_edges,
         Point_on_edge_t *points_p,          size_t total_points,
-        Edge_t      *edges_of_points,   size_t total_edges_of_points,
+        Edge_t          *edges_of_points,   size_t total_edges_of_points,
+        int64_t         *start_pidsArr,     size_t s_len,
 
-        int64_t  *start_pidsArr,    size_t s_len,
         double distance,
+        char driving_side,
 
         bool directed,
-        char driving_side,
         bool details,
         bool equiCost,
+        bool do_new,
 
-        Path_rt **return_tuples, size_t *return_count,
+        Path_rt **return_old_tuples, size_t *return_old_count,
+        MST_rt  **return_tuples,     size_t *return_count,
         char** log_msg,
         char** notice_msg,
         char** err_msg) {
@@ -123,7 +115,8 @@ do_pgr_many_withPointsDD(
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        std::deque< Path >paths;
+        std::deque<Path> paths;
+        std::deque<MST_rt> results;
 
         if (directed) {
             pgrouting::DirectedGraph digraph(gType);
@@ -131,40 +124,57 @@ do_pgr_many_withPointsDD(
             digraph.insert_edges(pg_graph.new_edges());
             paths = pgr_drivingDistance(
                     digraph, start_vids, distance, equiCost, log);
+            if (do_new) {
+                pgrouting::functions::ShortestPath_tree<pgrouting::DirectedGraph> spt;
+                results = spt.get_depths(digraph, pg_graph, paths, details);
+            }
         } else {
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(edges, total_edges);
             undigraph.insert_edges(pg_graph.new_edges());
-
             paths = pgr_drivingDistance(
                     undigraph, start_vids, distance, equiCost, log);
-        }
-
-        for (auto &path : paths) {
-            log << path;
-
-            if (!details) {
-                pg_graph.eliminate_details_dd(path);
+            if (do_new) {
+                pgrouting::functions::ShortestPath_tree<pgrouting::UndirectedGraph> spt;
+                results = spt.get_depths(undigraph, pg_graph, paths, details);
             }
-            log << path;
-            std::sort(path.begin(), path.end(),
-                    [](const Path_t &l, const  Path_t &r)
-                    {return l.node < r.node;});
-            std::stable_sort(path.begin(), path.end(),
-                    [](const Path_t &l, const  Path_t &r)
-                    {return l.agg_cost < r.agg_cost;});
-            log << path;
         }
 
-        size_t count(count_tuples(paths));
-
+    if (do_new) {
+        size_t count(results.size());
 
         if (count == 0) {
             *notice_msg = pgr_msg("No return values was found");
             return;
         }
         *return_tuples = pgr_alloc(count, (*return_tuples));
-        *return_count = collapse_paths(return_tuples, paths);
+        for (size_t i = 0; i < count; i++) {
+            *((*return_tuples) + i) = results[i];
+        }
+        (*return_count) = count;
+
+    } else {
+        /* old code */
+        for (auto &path : paths) {
+            if (!details) {
+                pg_graph.eliminate_details_dd(path);
+            }
+            std::sort(path.begin(), path.end(),
+                    [](const Path_t &l, const  Path_t &r)
+                    {return l.node < r.node;});
+            std::stable_sort(path.begin(), path.end(),
+                    [](const Path_t &l, const  Path_t &r)
+                    {return l.agg_cost < r.agg_cost;});
+        }
+        size_t count(count_tuples(paths));
+
+        if (count == 0) {
+            *notice_msg = pgr_msg("No return values was found");
+            return;
+        }
+        *return_old_tuples = pgr_alloc(count, (*return_old_tuples));
+        *return_old_count = collapse_paths(return_old_tuples, paths);
+    }
         *log_msg = log.str().empty()?
             *log_msg :
             pgr_msg(log.str().c_str());

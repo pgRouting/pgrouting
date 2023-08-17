@@ -1,9 +1,16 @@
 /*PGR-GNU*****************************************************************
 File: many_to_dist_driving_distance.c
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_Vergara@hotmail.com
+Generated with Template by:
+Copyright (c) 2015 pgRouting developers
+Mail: project at pgrouting.org
 
+Function's developer:
+Copyright (c) 2015 Celia Virginia Vergara Castillo
+Mail: vicky at erosion.dev
+
+Copyright (c) 2023 Yige Huang
+Mail: square1ge at gmail.com
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -29,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
+#include "c_types/mst_rt.h"
 
 #include "c_common/pgdata_getters.h"
 
@@ -36,8 +44,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "drivers/driving_distance/withPoints_dd_driver.h"
 
 
-PGDLLEXPORT Datum _pgr_withpointsdd(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(_pgr_withpointsdd);
+PGDLLEXPORT Datum _pgr_v4withpointsdd(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_v4withpointsdd);
 
 static
 void process(
@@ -50,11 +58,32 @@ void process(
         char *driving_side,
         bool details,
         bool equicost,
+        bool is_new,
 
-        Path_rt **result_tuples,
+        Path_rt **result_old_tuples,
+        size_t *result_old_count,
+        MST_rt **result_tuples,
         size_t *result_count) {
-    driving_side[0] = estimate_drivingSide(driving_side[0]);
-    PGR_DBG("estimated driving side:%c", driving_side[0]);
+    char d_side = ' ';
+    if (is_new) {
+        d_side = estimate_drivingSide(driving_side[0]);
+        if (d_side == ' ') {
+            throw_error("Invalid value of 'driving side'", "Valid value are 'r', 'l', 'b'");
+            return;
+        }
+        if (!(d_side == 'r' || d_side == 'l') && directed) {
+            throw_error("Graph is directed", "Valid values are 'r', 'l'");
+            return;
+        }
+        if (!(d_side == 'b') && !directed) {
+            throw_error("Graph is undirected", "Valid value is only 'b'");
+            return;
+        }
+    } else {
+        /* TODO remove on v4 */
+        char d_side = (char)tolower(driving_side[0]);
+        if (!((d_side == 'r') || (d_side == 'l'))) d_side = 'b';
+    }
 
     pgr_SPI_connect();
     char* log_msg = NULL;
@@ -103,24 +132,25 @@ void process(
 
     PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    do_pgr_many_withPointsDD(
+    pgr_do_withPointsDD(
             edges,              total_edges,
             points,             total_points,
             edges_of_points,    total_edges_of_points,
             start_pidsArr,      total_starts,
             distance,
+            d_side,
 
             directed,
-            driving_side[0],
             details,
             equicost,
+            is_new,
 
-            result_tuples,
-            result_count,
+            result_old_tuples, result_old_count,
+            result_tuples, result_count,
             &log_msg,
             &notice_msg,
             &err_msg);
-    time_msg(" processing withPointsDD many starts", start_t, clock());
+    time_msg(" processing withPointsDD starts", start_t, clock());
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
@@ -143,36 +173,107 @@ void process(
 
 
 PGDLLEXPORT Datum
-_pgr_withpointsdd(PG_FUNCTION_ARGS) {
+_pgr_v4withpointsdd(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    TupleDesc               tuple_desc;
+    TupleDesc           tuple_desc;
 
-    /**********************************************************************/
-    Path_rt  *result_tuples = 0;
+    Path_rt  *result_old_tuples = 0;
+    size_t result_old_count = 0;
+    MST_rt  *result_tuples = 0;
     size_t result_count = 0;
-    /**********************************************************************/
-
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
+        process(
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                text_to_cstring(PG_GETARG_TEXT_P(1)),
+                PG_GETARG_ARRAYTYPE_P(2),
+                PG_GETARG_FLOAT8(3),
 
-        /**********************************************************************/
-        // CREATE OR REPLACE FUNCTION pgr_withPointsDD(
-        // edges_sql TEXT,
-        // points_sql TEXT,
-        // start_pids anyarray,
-        // distance FLOAT,
-        //
-        // directed BOOLEAN -- DEFAULT true,
-        // driving_side CHAR -- DEFAULT 'b',
-        // details BOOLEAN -- DEFAULT false,
-        // equicost BOOLEAN -- DEFAULT false,
+                PG_GETARG_BOOL(5),
+                text_to_cstring(PG_GETARG_TEXT_P(4)),
+                PG_GETARG_BOOL(6),
+                PG_GETARG_BOOL(7),
+
+                true,
+                &result_old_tuples, &result_old_count,
+                &result_tuples, &result_count);
+
+        funcctx->max_calls = result_count;
+        funcctx->user_fctx = result_tuples;
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
+                != TYPEFUNC_COMPOSITE)
+            ereport(ERROR,
+                    (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+                     errmsg("function returning record called in context "
+                         "that cannot accept type record")));
+
+        funcctx->tuple_desc = tuple_desc;
+        MemoryContextSwitchTo(oldcontext);
+    }
+    funcctx = SRF_PERCALL_SETUP();
+
+    tuple_desc = funcctx->tuple_desc;
+    result_tuples = (MST_rt*) funcctx->user_fctx;
+
+    if (funcctx->call_cntr < funcctx->max_calls) {
+        HeapTuple    tuple;
+        Datum        result;
+        Datum        *values;
+        bool*        nulls;
+
+        size_t numb = 7;
+        values = palloc(numb * sizeof(Datum));
+        nulls = palloc(numb * sizeof(bool));
+
+        size_t i;
+        for (i = 0; i < numb; ++i) {
+            nulls[i] = false;
+        }
+
+        values[0] = Int64GetDatum(funcctx->call_cntr + 1);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].depth);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_v);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
+        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
+        result = HeapTupleGetDatum(tuple);
+
+        pfree(values);
+        pfree(nulls);
+
+        SRF_RETURN_NEXT(funcctx, result);
+    } else {
+        SRF_RETURN_DONE(funcctx);
+    }
+}
 
 
-        PGR_DBG("Calling driving_many_to_dist_driver");
+/* TODO remove old code in v4 */
+PGDLLEXPORT Datum _pgr_withpointsdd(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_withpointsdd);
+
+PGDLLEXPORT Datum
+_pgr_withpointsdd(PG_FUNCTION_ARGS) {
+    FuncCallContext     *funcctx;
+    TupleDesc               tuple_desc;
+
+    Path_rt  *result_tuples = 0;
+    size_t result_count = 0;
+    MST_rt  *result_new_tuples = 0;
+    size_t result_new_count = 0;
+
+    if (SRF_IS_FIRSTCALL()) {
+        MemoryContext   oldcontext;
+        funcctx = SRF_FIRSTCALL_INIT();
+        oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
+
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
@@ -183,9 +284,10 @@ _pgr_withpointsdd(PG_FUNCTION_ARGS) {
                 text_to_cstring(PG_GETARG_TEXT_P(5)),
                 PG_GETARG_BOOL(6),
                 PG_GETARG_BOOL(7),
-                &result_tuples, &result_count);
 
-        /**********************************************************************/
+                false,
+                &result_tuples, &result_count,
+                &result_new_tuples, &result_new_count);
 
         funcctx->max_calls = result_count;
 
@@ -198,10 +300,8 @@ _pgr_withpointsdd(PG_FUNCTION_ARGS) {
                          "that cannot accept type record")));
 
         funcctx->tuple_desc = tuple_desc;
-
         MemoryContextSwitchTo(oldcontext);
     }
-
     funcctx = SRF_PERCALL_SETUP();
 
     tuple_desc = funcctx->tuple_desc;
@@ -213,7 +313,6 @@ _pgr_withpointsdd(PG_FUNCTION_ARGS) {
         Datum *values;
         bool* nulls;
 
-        /**********************************************************************/
         size_t numb = 6;
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
@@ -230,8 +329,6 @@ _pgr_withpointsdd(PG_FUNCTION_ARGS) {
         values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
 
-        /**********************************************************************/
-
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
 
@@ -243,4 +340,3 @@ _pgr_withpointsdd(PG_FUNCTION_ARGS) {
         SRF_RETURN_DONE(funcctx);
     }
 }
-
