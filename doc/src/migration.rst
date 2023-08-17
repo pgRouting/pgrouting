@@ -27,6 +27,11 @@ Migrating functions:
 signatures. This section will show how to migrate from the old signatures to the
 new replacement functions. This also affects the restrictions.
 
+:doc:`pgr_withPointsDD` signatures have changed, with the addition of new columns
+in the new signatures. It works mainly for driving cases, therefore the ``driving side``
+parameter changed from optional to compulsory, and its valid values differ for
+directed and undirected graphs.
+
 .. warning::
    All deprecated functions will be removed on next mayor version 4.0.0
 
@@ -232,6 +237,76 @@ Signatures to be migrated:
    :end-before: --dijkstra5
 
 * If needed add the new columns, for example:
+
+  * In `v3.0 <https://docs.pgrouting.org/3.0/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph>`__
+    the function ``my_dijkstra`` uses ``pgr_dijkstra``.
+  * Starting from `v3.5 <https://docs.pgrouting.org/3.5/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph>`__
+    the function ``my_dijkstra`` returns the new additional columns of
+    ``pgr_dijkstra``.
+
+Migration of ``pgr_withPointsDD``
+-------------------------------------------------------------------------------
+
+Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
+
+Signatures to be migrated:
+
+* ``pgr_withPointsDD`` (`Single vertex`)
+* ``pgr_withPointsDD`` (`Multiple vertices`)
+
+:Before Migration:
+
+.. literalinclude:: migration.queries
+   :start-after: --withpointsdd1
+   :end-before: --withpointsdd2
+
+* ``driving_side`` parameter is optional.
+* Output columns were |result-generic-no-seq|
+
+  * Depending on the overload used, the columns ``start_vid`` might be missing:
+
+    * ``pgr_withPointsDD`` (`Single vertex`) does not have ``start_vid``
+
+:Migration:
+
+* ``driving side`` parameter is compulsory, and valid values differ for directed
+  and undirected graphs.
+
+  * Does not have a default value.
+
+  * In directed graph, valid values are [``r``, ``R``, ``l``, ``L``]
+
+  * In undirected graph, valid values are [``b``, ``B``]
+
+
+* Be aware of the existance of the additional columns.
+
+* In ``pgr_withPointsDD`` (`Single vertex`)
+
+  * ``start_vid`` contains the **start vid** parameter value.
+  * ``depth`` contains the **depth** parameter value.
+
+.. literalinclude:: migration.queries
+   :start-after: --withpointsdd2
+   :end-before: --withpointsdd3
+
+* In ``pgr_withPointsDD`` (`Multiple vertices`)
+
+  * ``depth`` contains the **depth** parameter value.
+
+.. literalinclude:: migration.queries
+   :start-after: --withpointsdd3
+   :end-before: --withpointsdd4
+
+* If needed filter out the added columns, for example:
+
+.. literalinclude:: migration.queries
+   :start-after: --withpointsdd4
+   :end-before: --withpointsdd5
+
+* If needed add the new columns, similar to the following example where
+  ``pgr_dijkstra`` is used, and the function had to be modified to be able to
+  return the new columns:
 
   * In `v3.0 <https://docs.pgrouting.org/3.0/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph>`__
     the function ``my_dijkstra`` uses ``pgr_dijkstra``.

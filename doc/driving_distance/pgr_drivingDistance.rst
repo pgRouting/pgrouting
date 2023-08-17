@@ -122,7 +122,7 @@ Driving distance optional parameters
    * - ``equicost``
      - ``BOOLEAN``
      - ``true``
-     - * When ``true`` the node will only appear in the closest ``from_v``
+     - * When ``true`` the node will only appear in the closest ``start_vid``
          list.
        * When ``false`` which resembles several calls using the single starting
          point signatures. Tie brakes are arbitrary.
