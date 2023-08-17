@@ -2,7 +2,7 @@
 /*PGR-GNU*****************************************************************
 
 Copyright (c) 2018  pgRouting developers
-Mail: project@pgrouting.org
+Mail: project at pgrouting.org
 
 ------
 This program is free software; you can redistribute it and/or modify
@@ -20,14 +20,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 BEGIN;
 
-SELECT PLAN(6);
+SELECT CASE WHEN min_version('3.6.0') THEN plan(3) ELSE plan(6) END;
 
-
----
---- DIRECTED GRAPH
----
--------- both driving sides
-
+/* TODO remove test_old on v4 */
+CREATE OR REPLACE FUNCTION test_old()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
 PREPARE q1 AS
 SELECT node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPointsDD(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
@@ -35,10 +34,10 @@ SELECT node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12
     -1, 6.8, driving_side := 'b', details := false)
 ORDER BY seq;
 
-
+EXECUTE
+'CREATE TABLE test1 AS 
 SELECT
     node::BIGINT, edge::BIGINT, round(cost, 12) AS cost, round(agg_cost, 12) AS agg_cost
-INTO test1
 FROM
 (VALUES
     (  -1 ,   -1 ,    0 ,        0),
@@ -55,16 +54,13 @@ FROM
     (   4 ,   16 ,    1 ,      4.6),
     (  12 ,   13 ,    1 ,      4.6),
     (   3 ,    3 ,    1 ,      5.6)
-) AS t (node, edge, cost, agg_cost);
+) AS t (node, edge, cost, agg_cost)';
 
-
+RETURN QUERY
 SELECT set_eq('q1',
     $$SELECT node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM test1$$,
     'Should be aggregating individual costs: both driving sides, DIR');
 
-
-
--------- right driving side
 
 PREPARE q2 AS
 SELECT node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPointsDD(
@@ -72,10 +68,10 @@ SELECT node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 6.8, driving_side := 'r', details := false);
 
-
+EXECUTE
+'CREATE TABLE test2 AS 
 SELECT
     node::BIGINT, edge::BIGINT, cost::FLOAT, agg_cost::FLOAT
-INTO test2
 FROM
 (VALUES
     (  -1 ,   -1 ,    0 ,        0),
@@ -92,14 +88,13 @@ FROM
     (   4 ,   16 ,    1 ,      5.4),
     (  12 ,   13 ,    1 ,      5.4),
     (   3 ,    3 ,    1 ,      6.4)
-) AS t (node, edge, cost, agg_cost);
+) AS t (node, edge, cost, agg_cost)';
 
-
+RETURN QUERY
 SELECT set_eq('q2',
     $$SELECT node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM test2$$,
     'Should be aggregating individual costs: right driving side, DIR');
 
--------- left driving side
 
 PREPARE q3 AS
 SELECT node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPointsDD(
@@ -108,10 +103,10 @@ SELECT node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12
     -1, 6.8, driving_side := 'l', details := false)
 ORDER BY seq;
 
-
+EXECUTE
+'CREATE TABLE test3 AS 
 SELECT
     node::BIGINT, edge::BIGINT, cost::FLOAT, agg_cost::FLOAT
-INTO test3
 FROM
 (VALUES
    (-1 ,   -1 ,    0 ,        0),
@@ -128,22 +123,18 @@ FROM
   (  4 ,   16 ,    1 ,      4.6),
   ( 12 ,   15 ,    1 ,      4.6),
   (  3 ,    3 ,    1 ,      5.6)
-) AS t (node, edge, cost, agg_cost);
+) AS t (node, edge, cost, agg_cost)';
 
-
-SELECT todo('test failing with postgres 16',1);
+RETURN QUERY
 SELECT set_eq('q3',
     $$SELECT node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM test3$$,
     'Should be aggregating individual costs: left driving side, DIR');
 
----
---- UNDIRECTED GRAPH
----
 
--- all results on udirected graph are "allegedly" equal
+EXECUTE
+'CREATE TABLE test4 AS 
 SELECT
     node::BIGINT, cost::FLOAT, agg_cost::FLOAT
-INTO test4
 FROM
 (VALUES
     (  -1 ,    0 ,        0),
@@ -160,9 +151,7 @@ FROM
     (  11 ,    1 ,      3.6),
     (  13 ,    1 ,      3.6),
     (  12 ,    1 ,      4.6)
-) AS t (node, cost, agg_cost);
-
--------- both driving sides
+) AS t (node, cost, agg_cost)';
 
 PREPARE q4 AS
 SELECT node, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPointsDD(
@@ -170,13 +159,10 @@ SELECT node, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS a
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 6.8, driving_side := 'b', details := false, directed:=false);
 
+RETURN QUERY
 SELECT set_eq('q4',
     $$SELECT node, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM test4$$,
     'Should be aggregating individual costs: both driving sides, UNDI');
-
-
-
--------- right driving side
 
 PREPARE q5 AS
 SELECT node, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPointsDD(
@@ -184,12 +170,10 @@ SELECT node, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS a
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 6.8, driving_side := 'r', details := false, directed:=false);
 
-
+RETURN QUERY
 SELECT set_eq('q5',
     $$SELECT node, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM test4$$,
     'Should be aggregating individual costs: right driving side, UNDI');
-
--------- left driving side
 
 PREPARE q6 AS
 SELECT node, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPointsDD(
@@ -197,10 +181,165 @@ SELECT node, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS a
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 6.8, driving_side := 'l', details := false, directed:=false);
 
-
+RETURN QUERY
 SELECT set_eq('q6',
     $$SELECT node, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM test4$$,
     'Should be aggregating individual costs: left driving side, UNDI');
 
-SELECT * FROM finish();
+DROP TABLE IF EXISTS test1;
+DROP TABLE IF EXISTS test2;
+DROP TABLE IF EXISTS test3;
+DROP TABLE IF EXISTS test4;
+
+END;
+$BODY$
+language plpgsql;
+
+
+CREATE OR REPLACE FUNCTION test_new()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+---
+--- DIRECTED GRAPH
+---
+-------- right driving side
+
+PREPARE q1 AS
+SELECT node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPointsDD(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT pid, edge_id, fraction, side from pointsOfInterest',
+    -1, 6.8, 'r', details := false);
+
+EXECUTE
+'CREATE TABLE test1 AS 
+SELECT
+    node::BIGINT, edge::BIGINT, cost::FLOAT, agg_cost::FLOAT
+FROM
+(VALUES
+    (  -1 ,   -1 ,    0 ,        0),
+    (   1 ,    1 ,  0.4 ,      0.4),
+    (   2 ,    1 ,    1 ,      1.4),
+    (   5 ,    4 ,    1 ,      2.4),
+    (   6 ,    8 ,    1 ,      3.4),
+    (   8 ,    7 ,    1 ,      3.4),
+    (  10 ,   10 ,    1 ,      3.4),
+    (   7 ,    6 ,    1 ,      4.4),
+    (   9 ,    9 ,    1 ,      4.4),
+    (  11 ,   11 ,    1 ,      4.4),
+    (  13 ,   14 ,    1 ,      4.4),
+    (   4 ,   16 ,    1 ,      5.4),
+    (  12 ,   13 ,    1 ,      5.4),
+    (   3 ,    3 ,    1 ,      6.4)
+) AS t (node, edge, cost, agg_cost)';
+
+RETURN QUERY
+SELECT set_eq('q1',
+    $$SELECT node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM test1$$,
+    'Should be aggregating individual costs: right driving side, DIR');
+
+
+-------- left driving side
+
+PREPARE q2 AS
+SELECT node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPointsDD(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT pid, edge_id, fraction, side from pointsOfInterest',
+    -1, 6.8, 'l', details := false)
+ORDER BY seq;
+
+EXECUTE
+'CREATE TABLE test2 AS 
+SELECT
+    node::BIGINT, edge::BIGINT, cost::FLOAT, agg_cost::FLOAT
+FROM
+(VALUES
+   (-1 ,   -1 ,    0 ,        0),
+   ( 2 ,    1 ,  0.6 ,      0.6),
+   ( 5 ,    4 ,    1 ,      1.6),
+   ( 1 ,    1 ,    1 ,      1.6),
+   ( 6 ,    8 ,    1 ,      2.6),
+   ( 8 ,    7 ,    1 ,      2.6),
+   (10 ,   10 ,    1 ,      2.6),
+   ( 7 ,    6 ,    1 ,      3.6),
+   ( 9 ,    9 ,    1 ,      3.6),
+  ( 11 ,   11 ,    1 ,      3.6),
+  ( 13 ,   14 ,    1 ,      3.6),
+  (  4 ,   16 ,    1 ,      4.6),
+  ( 12 ,   15 ,    1 ,      4.6),
+  (  3 ,    3 ,    1 ,      5.6)
+) AS t (node, edge, cost, agg_cost)';
+
+EXECUTE 'SELECT todo($1, $2)' USING 'test failing with postgres 16', 1;
+RETURN QUERY
+SELECT set_eq('q2',
+    $$SELECT node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM test2$$,
+    'Should be aggregating individual costs: left driving side, DIR');
+
+---
+--- UNDIRECTED GRAPH
+---
+
+-- all results on udirected graph are "allegedly" equal
+
+-------- both driving sides
+
+PREPARE q3 AS
+SELECT node, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPointsDD(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT pid, edge_id, fraction, side from pointsOfInterest',
+    -1, 6.8, 'b', details := false, directed:=false);
+
+EXECUTE
+'CREATE TABLE test3 AS 
+SELECT
+    node::BIGINT, cost::FLOAT, agg_cost::FLOAT
+FROM
+(VALUES
+    (  -1 ,    0 ,        0),
+    (   1 ,  0.4 ,      0.4),
+    (   2 ,  0.6 ,      0.6),
+    (   5 ,    1 ,      1.6),
+    (   3 ,    1 ,      1.6),
+    (   6 ,    1 ,      2.6),
+    (   8 ,    1 ,      2.6),
+    (  10 ,    1 ,      2.6),
+    (   4 ,    1 ,      2.6),
+    (   7 ,    1 ,      3.6),
+    (   9 ,    1 ,      3.6),
+    (  11 ,    1 ,      3.6),
+    (  13 ,    1 ,      3.6),
+    (  12 ,    1 ,      4.6)
+) AS t (node, cost, agg_cost)';
+
+RETURN QUERY
+SELECT set_eq('q3',
+    $$SELECT node, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM test3$$,
+    'Should be aggregating individual costs: both driving sides, UNDI');
+
+DROP TABLE IF EXISTS test1;
+DROP TABLE IF EXISTS test2;
+DROP TABLE IF EXISTS test3;
+
+END;
+$BODY$
+language plpgsql;
+
+
+CREATE OR REPLACE FUNCTION do_test()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+    IF min_version('3.6.0') THEN
+        RETURN QUERY SELECT * FROM test_new();
+    ELSE
+        RETURN QUERY SELECT * FROM test_old();
+    END IF;
+END;
+$BODY$
+language plpgsql;
+
+SELECT do_test();
+SELECT finish();
 ROLLBACK;
