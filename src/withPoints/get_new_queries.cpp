@@ -35,9 +35,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 char
 estimate_drivingSide(char driving_side) {
     char d_side = static_cast<char>(tolower(driving_side));
-    if (!((d_side == 'r')
-                || (d_side == 'l'))) {
-        d_side = 'b';
+    if (!((d_side == 'r') || (d_side == 'l') || (d_side == 'b'))) {
+        d_side = ' ';
     }
     return d_side;
 }
