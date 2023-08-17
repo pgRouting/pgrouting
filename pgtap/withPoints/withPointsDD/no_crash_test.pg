@@ -2,7 +2,7 @@
 /*PGR-GNU*****************************************************************
 
 Copyright (c) 2018  pgRouting developers
-Mail: project@pgrouting.org
+Mail: project at pgrouting.org
 
 ------
 This program is free software; you can redistribute it and/or modify
@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(42);
+SELECT CASE WHEN min_version('3.6.0') THEN plan(50) ELSE plan(42) END;
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost  FROM edge_table;
@@ -42,6 +42,66 @@ DECLARE
 params TEXT[];
 subs TEXT[];
 BEGIN
+IF min_version('3.6.0') THEN
+
+    -- 1 to distance
+    params = ARRAY[
+    '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
+    '$$SELECT pid, edge_id, fraction from pointsOfInterest$$',
+    '1',
+    '1.3::FLOAT',
+	'$$r$$'
+    ]::TEXT[];
+    subs = ARRAY[
+    'NULL',
+    'NULL',
+    '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+    'NULL',
+	'NULL'
+    ]::TEXT[];
+
+    RETURN query SELECT * FROM no_crash_test('pgr_withPointsDD', params, subs);
+
+    subs = ARRAY[
+    'NULL',
+    'NULL',
+    'NULL::BIGINT',
+    'NULL',
+	'NULL'
+    ]::TEXT[];
+    RETURN query SELECT * FROM no_crash_test('pgr_withPointsDD', params, subs);
+
+    -- many to distance
+    params = ARRAY[
+    '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
+    '$$SELECT pid, edge_id, fraction from pointsOfInterest$$',
+    'ARRAY[1]',
+    '1.3::FLOAT',
+	'$$r$$'
+    ]::TEXT[];
+    subs = ARRAY[
+    'NULL',
+    'NULL',
+    '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+    'NULL',
+	'NULL'
+    ]::TEXT[];
+
+    RETURN query SELECT * FROM no_crash_test('pgr_withPointsDD', params, subs);
+
+    subs = ARRAY[
+    'NULL',
+    'NULL',
+    'NULL::BIGINT[]',
+    'NULL',
+	'NULL'
+    ]::TEXT[];
+    RETURN query SELECT * FROM no_crash_test('pgr_withPointsDD', params, subs);
+
+ELSE
+
+/* TODO remove tests on v4 of the old signatures */
+SET client_min_messages TO ERROR;
     -- 1 to distance
     params = ARRAY[
     '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
@@ -89,6 +149,8 @@ BEGIN
     'NULL'
     ]::TEXT[];
     RETURN query SELECT * FROM no_crash_test('pgr_withPointsDD', params, subs);
+
+END IF;
 
 END
 $BODY$

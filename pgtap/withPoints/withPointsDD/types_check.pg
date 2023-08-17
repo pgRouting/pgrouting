@@ -2,7 +2,7 @@
 /*PGR-GNU*****************************************************************
 
 Copyright (c) 2018  pgRouting developers
-Mail: project@pgrouting.org
+Mail: project at pgrouting.org
 
 ------
 This program is free software; you can redistribute it and/or modify
@@ -19,29 +19,82 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT plan(7);
+SELECT CASE WHEN min_version('3.6.0') THEN plan(11) ELSE plan(7) END;
 
 SELECT has_function('pgr_withpointsdd');
 
+CREATE OR REPLACE FUNCTION test_types_check()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF min_version('3.6.0') THEN
+
+RETURN QUERY
+SELECT has_function('pgr_withpointsdd', ARRAY['text','text','bigint','double precision','character','boolean','boolean']);
+RETURN QUERY
+SELECT has_function('pgr_withpointsdd', ARRAY['text','text','anyarray','double precision','character','boolean','boolean','boolean']);
+
+RETURN QUERY
+SELECT function_returns('pgr_withpointsdd', ARRAY['text','text','bigint','double precision','character','boolean','boolean'],'setof record');
+RETURN QUERY
+SELECT function_returns('pgr_withpointsdd', ARRAY['text','text','anyarray','double precision','character','boolean','boolean','boolean'],'setof record');
+
+END IF;
+
+/* TODO remove last 2 rows on v4 */
+RETURN QUERY
+SELECT CASE WHEN min_version('3.6.0')
+THEN collect_tap (
+  set_eq(
+    $$SELECT  proargnames from pg_proc where proname = 'pgr_withpointsdd'$$,
+    $$VALUES
+    ('{"","","","","","directed","details","seq","depth","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),
+    ('{"","","","","","directed","details","equicost","seq","depth","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),
+    ('{"","","","","directed","driving_side","details","seq","node","edge","cost","agg_cost"}'::TEXT[]),
+    ('{"","","","","directed","driving_side","details","equicost","seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[])
+    $$),
+  set_eq(
+    $$SELECT  proallargtypes from pg_proc where proname = 'pgr_withpointsdd'$$,
+    $$VALUES
+    ('{25,25,20,701,1042,16,16,20,20,20,20,20,701,701}'::OID[]),
+    ('{25,25,2277,701,1042,16,16,16,20,20,20,20,20,701,701}'::OID[]),
+    ('{25,25,20,701,16,1042,16,23,20,20,701,701}'::OID[]),
+    ('{25,25,2277,701,16,1042,16,16,23,20,20,20,701,701}'::OID[])
+    $$)
+)
+ELSE collect_tap(
+  set_eq(
+    $$SELECT  proargnames from pg_proc where proname = 'pgr_withpointsdd'$$,
+    $$VALUES
+    ('{"","","","","directed","driving_side","details","seq","node","edge","cost","agg_cost"}'::TEXT[]),
+    ('{"","","","","directed","driving_side","details","equicost","seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[])
+    $$),
+  set_eq(
+    $$SELECT  proallargtypes from pg_proc where proname = 'pgr_withpointsdd'$$,
+    $$VALUES
+    ('{25,25,20,701,16,1042,16,23,20,20,701,701}'::OID[]),
+    ('{25,25,2277,701,16,1042,16,16,23,20,20,20,701,701}'::OID[])
+    $$)
+)
+END;
+
+/* TODO remove on v4 this are the old signatures */
+RETURN QUERY
 SELECT has_function('pgr_withpointsdd', ARRAY['text','text','bigint','double precision','boolean','character','boolean']);
+RETURN QUERY
 SELECT has_function('pgr_withpointsdd', ARRAY['text','text','anyarray','double precision','boolean','character','boolean','boolean']);
 
+RETURN QUERY
 SELECT function_returns('pgr_withpointsdd', ARRAY['text','text','bigint','double precision','boolean','character','boolean'],'setof record');
+RETURN QUERY
 SELECT function_returns('pgr_withpointsdd', ARRAY['text','text','anyarray','double precision','boolean','character','boolean','boolean'],'setof record');
 
-SELECT set_eq(
-  $$SELECT  proargnames from pg_proc where proname = 'pgr_withpointsdd'$$,
-  $$VALUES
-  ('{"","","","","directed","driving_side","details","seq","node","edge","cost","agg_cost"}'::TEXT[]),
-  ('{"","","","","directed","driving_side","details","equicost","seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[])
-  $$);
+END;
+$BODY$
+language plpgsql;
 
-SELECT set_eq(
-  $$SELECT  proallargtypes from pg_proc where proname = 'pgr_withpointsdd'$$,
-  $$VALUES
-  ('{25,25,20,701,16,1042,16,23,20,20,701,701}'::OID[]),
-  ('{25,25,2277,701,16,1042,16,16,23,20,20,20,701,701}'::OID[])
-  $$);
+SELECT test_types_check();
 
 SELECT finish();
 ROLLBACK;

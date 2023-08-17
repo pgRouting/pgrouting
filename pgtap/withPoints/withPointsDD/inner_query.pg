@@ -2,7 +2,7 @@
 /*PGR-GNU*****************************************************************
 
 Copyright (c) 2018  pgRouting developers
-Mail: project@pgrouting.org
+Mail: project at pgrouting.org
 
 ------
 This program is free software; you can redistribute it and/or modify
@@ -22,12 +22,43 @@ BEGIN;
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(168);
 
--- SINGLE VERTEX
-SELECT style_dijkstra('pgr_withPointsDD(', ', $$SELECT * from pointsOfInterest$$, 2, 3.8, true)');
-SELECT innerquery_points('pgr_withPointsDD($$SELECT * FROM edge_table$$,', ', 2, 3.8, true)');
--- MULTIPLE VERTEX
-SELECT style_dijkstra('pgr_withPointsDD(', ', $$SELECT * from pointsOfInterest$$, ARRAY[2,3], 3.8, true)');
-SELECT innerquery_points('pgr_withPointsDD($$SELECT * FROM edge_table$$,', ', ARRAY[2,3], 3.8, true)');
+CREATE OR REPLACE FUNCTION test_innerquery()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
 
+IF min_version('3.6.0') THEN
+    -- SINGLE VERTEX
+    RETURN QUERY
+    SELECT style_dijkstra('pgr_withPointsDD(', ', $$SELECT * from pointsOfInterest$$, 2, 3.8, $$r$$, true)');
+    RETURN QUERY
+    SELECT innerquery_points('pgr_withPointsDD($$SELECT * FROM edge_table$$,', ', 2, 3.8, $$l$$,true)');
+    -- MULTIPLE VERTEX
+    RETURN QUERY
+    SELECT style_dijkstra('pgr_withPointsDD(', ', $$SELECT * from pointsOfInterest$$, ARRAY[2,3], 3.8, $$l$$,true)');
+    RETURN QUERY
+    SELECT innerquery_points('pgr_withPointsDD($$SELECT * FROM edge_table$$,', ', ARRAY[2,3], 3.8, $$r$$,true)');
+
+ELSE
+
+SET client_min_messages TO ERROR;
+    -- SINGLE VERTEX
+    RETURN QUERY
+    SELECT style_dijkstra('pgr_withPointsDD(', ', $$SELECT * from pointsOfInterest$$, 2, 3.8, true)');
+    RETURN QUERY
+    SELECT innerquery_points('pgr_withPointsDD($$SELECT * FROM edge_table$$,', ', 2, 3.8, true)');
+    -- MULTIPLE VERTEX
+    RETURN QUERY
+    SELECT style_dijkstra('pgr_withPointsDD(', ', $$SELECT * from pointsOfInterest$$, ARRAY[2,3], 3.8, true)');
+    RETURN QUERY
+    SELECT innerquery_points('pgr_withPointsDD($$SELECT * FROM edge_table$$,', ', ARRAY[2,3], 3.8, true)');
+
+END IF;
+
+END;
+$BODY$
+language plpgsql;
+
+SELECT test_innerquery();
 SELECT finish();
 ROLLBACK;
