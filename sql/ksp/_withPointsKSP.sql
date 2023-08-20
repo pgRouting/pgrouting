@@ -26,6 +26,64 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- pgr_withPointsKSP
 --------------------
 
+--v3.6
+CREATE FUNCTION _pgr_v4withPointsKSP(
+    edges_sql TEXT,
+    points_sql TEXT,
+    start_vids ANYARRAY,
+    end_vids ANYARRAY,
+    k INTEGER,
+    driving_side CHAR,
+
+    directed BOOLEAN,
+    heap_paths BOOLEAN,
+    details BOOLEAN,
+
+    OUT seq INTEGER,
+    OUT path_id INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+  RETURNS SETOF RECORD AS
+    'MODULE_PATHNAME'
+    LANGUAGE c STABLE STRICT;
+
+--v3.6
+CREATE FUNCTION _pgr_v4withPointsKSP(
+    edges_sql TEXT,
+    points_sql TEXT,
+    combinations_sql TEXT,
+    k INTEGER,
+    driving_side CHAR,
+
+    directed BOOLEAN,
+    heap_paths BOOLEAN,
+    details BOOLEAN,
+
+    OUT seq INTEGER,
+    OUT path_id INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+  RETURNS SETOF RECORD AS
+    'MODULE_PATHNAME'
+    LANGUAGE c STABLE STRICT;
+
+COMMENT ON FUNCTION _pgr_v4withPointsKSP(TEXT, TEXT, ANYARRAY, ANYARRAY, INTEGER, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';
+
+COMMENT ON FUNCTION _pgr_v4withPointsKSP(TEXT, TEXT, TEXT, INTEGER, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';
+
+/*TODO remove on v4*/
 --v3.0
 CREATE FUNCTION _pgr_withPointsKSP(
     edges_sql TEXT,
@@ -49,4 +107,4 @@ CREATE FUNCTION _pgr_withPointsKSP(
 -- COMMENTS
 
 COMMENT ON FUNCTION _pgr_withPointsKSP(TEXT, TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN, CHAR, BOOLEAN)
-IS 'pgRouting internal function';
+IS 'pgRouting deprecated function';
