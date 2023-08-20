@@ -4,6 +4,8 @@ File: pgr_ksp.hpp
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
 
+Copyright (c) 2023 Abhinav Jain
+Mail: this.abhinav AT gmail.com
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -33,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <set>
 #include <limits>
+#include <map>
 
 #include "dijkstra/dijkstra.hpp"
 #include "cpp_common/pgr_assert.h"
@@ -236,6 +239,38 @@ class Pgr_ksp :  public Pgr_messages {
 
 
 }  // namespace yen
+
+namespace algorithms {
+
+    template <class G>
+    std::deque<Path> Yen(
+        G &graph,
+        const std::map<int64_t, std::set<int64_t>> &combinations,
+        size_t k,
+        bool heap_paths) {
+        std::deque<Path> paths;
+        pgrouting::yen::Pgr_ksp<G> fn_yen;
+
+        for (const auto &c : combinations) {
+            if (!graph.has_vertex(c.first))
+                continue;
+
+            for (const auto &destination : c.second) {
+                if (!graph.has_vertex(destination))
+                    continue;
+
+                fn_yen.clear();
+                auto result_path = fn_yen.Yen(graph, c.first, destination, k, heap_paths);
+                paths.insert(paths.end(), result_path.begin(), result_path.end());
+            }
+        }
+
+        return paths;
+    }
+
+}  // namespace algorithms
+
 }  // namespace pgrouting
+
 
 #endif  // INCLUDE_YEN_PGR_KSP_HPP_
