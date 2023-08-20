@@ -138,6 +138,10 @@ class Path {
             Path_rt **ret_path,
             size_t &sequence, int routeId) const;
 
+    void get_pg_nksp_path(
+            Path_rt **ret_path,
+            size_t &sequence) const;
+
     void get_pg_turn_restricted_path(
             Path_rt **ret_path,
             size_t &sequence, int routeId) const;
