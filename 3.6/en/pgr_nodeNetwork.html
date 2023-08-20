@@ -2,20 +2,20 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pgr_nodeNetwork &#8212; pgRouting Manual (3.6-dev)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/page_history.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
+    <script src="_static/documentation_options.js?v=a8fd7d16"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=22781fca"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -153,7 +153,7 @@
 <div class="line"><br /></div>
 </div>
 <section id="pgr-nodenetwork">
-<h1>pgr_nodeNetwork<a class="headerlink" href="#pgr-nodenetwork" title="Permalink to this heading">¶</a></h1>
+<h1>pgr_nodeNetwork<a class="headerlink" href="#pgr-nodenetwork" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code> - Nodes an network edge table.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Author<span class="colon">:</span></dt>
@@ -178,7 +178,7 @@ edges into a new table.</p>
 </li>
 </ul>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p><strong>The main characteristics are:</strong></p>
 <p>A common problem associated with bringing GIS data into pgRouting is the fact
 that the data is often not “noded” correctly. This will create invalid
@@ -195,7 +195,7 @@ It uses the <code class="docutils literal notranslate"><span class="pre">toleran
 are considered the same node.</p>
 </section>
 <section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">edge_table<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Network table name. (may contain the schema name as well)</p>
@@ -240,7 +240,7 @@ are considered the same node.</p>
 </dl>
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h2>
 <p>Let’s create the topology for the data in <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
@@ -380,14 +380,14 @@ segmented</p>
 </div>
 </section>
 <section id="images">
-<h2>Images<a class="headerlink" href="#images" title="Permalink to this heading">¶</a></h2>
+<h2>Images<a class="headerlink" href="#images" title="Link to this heading">¶</a></h2>
 <p class="rubric">Before Image</p>
 <a class="reference internal image-reference" href="_images/before_node_net.png"><img alt="before image" class="align-left" src="_images/before_node_net.png" style="width: 460.2px; height: 440.4px;" /></a>
 <p class="rubric">After Image</p>
 <a class="reference internal image-reference" href="_images/after_node_net.png"><img alt="after image" class="align-left" src="_images/after_node_net.png" style="width: 456.0px; height: 439.2px;" /></a>
 </section>
 <section id="comparing-the-results">
-<h2>Comparing the results<a class="headerlink" href="#comparing-the-results" title="Permalink to this heading">¶</a></h2>
+<h2>Comparing the results<a class="headerlink" href="#comparing-the-results" title="Link to this heading">¶</a></h2>
 <p>Comparing with the Analysis in the original edge_table, we see that.</p>
 <table class="docutils align-default">
 <thead>
@@ -558,7 +558,7 @@ with edges 17 and 13.</p>
 </div>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <p><a class="reference internal" href="topology-functions.html"><span class="doc">Topology - Family of Functions</span></a> for an overview of a topology for routing algorithms.
 <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> to analyze directionality of the edges.
 <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> to create a topology based on the geometry.
@@ -584,8 +584,8 @@ with edges 17 and 13.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
-      Last updated on Jul 31, 2023.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br/>
+      Last updated on Aug 20, 2023.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.2.<br/>
     </p>
   </div>
 </footer>
