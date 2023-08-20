@@ -18,21 +18,66 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
-SELECT plan(5);
+SELECT CASE WHEN min_version('3.6.0') THEN plan(15) ELSE plan(5) END;
 
 SELECT has_function('pgr_withpointsksp');
-SELECT has_function('pgr_withpointsksp',ARRAY['text','text','bigint','bigint','integer','boolean','boolean','character','boolean']);
-SELECT function_returns('pgr_withpointsksp',ARRAY['text','text','bigint','bigint','integer','boolean','boolean','character','boolean'],'setof record');
 
-SELECT set_eq(
-  $$SELECT proargnames from pg_proc WHERE proname = 'pgr_withpointsksp'$$,
-  $$SELECT '{"","","","","","directed","heap_paths","driving_side","details","seq","path_id","path_seq","node","edge","cost","agg_cost"}'::TEXT[] $$
-);
+CREATE FUNCTION withPointsKSP_types_check()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+  IF min_version('3.6.0') THEN
+    RETURN QUERY SELECT has_function('pgr_withpointsksp',ARRAY['text','text','bigint','bigint','integer','character','boolean','boolean','boolean']);
+    RETURN QUERY SELECT has_function('pgr_withpointsksp',ARRAY['text','text','bigint','anyarray','integer','character','boolean','boolean','boolean']);
+    RETURN QUERY SELECT has_function('pgr_withpointsksp',ARRAY['text','text','anyarray','bigint','integer','character','boolean','boolean','boolean']);
+    RETURN QUERY SELECT has_function('pgr_withpointsksp',ARRAY['text','text','anyarray','anyarray','integer','character','boolean','boolean','boolean']);
+    RETURN QUERY SELECT has_function('pgr_withpointsksp',ARRAY['text','text','text','integer','character','boolean','boolean','boolean']);
 
-SELECT set_eq(
-  $$SELECT proallargtypes FROM pg_proc WHERE proname = 'pgr_withpointsksp'$$,
-  $$SELECT '{25,25,20,20,23,16,16,1042,16,23,23,23,20,20,701,701}'::OID[] $$
-);
+    RETURN QUERY SELECT function_returns('pgr_withpointsksp',ARRAY['text','text','bigint','bigint','integer','character','boolean','boolean','boolean'],'setof record');
+    RETURN QUERY SELECT function_returns('pgr_withpointsksp',ARRAY['text','text','bigint','anyarray','integer','character','boolean','boolean','boolean'],'setof record');
+    RETURN QUERY SELECT function_returns('pgr_withpointsksp',ARRAY['text','text','anyarray','bigint','integer','character','boolean','boolean','boolean'],'setof record');
+    RETURN QUERY SELECT function_returns('pgr_withpointsksp',ARRAY['text','text','anyarray','anyarray','integer','character','boolean','boolean','boolean'],'setof record');
+    RETURN QUERY SELECT function_returns('pgr_withpointsksp',ARRAY['text','text','text','integer','character','boolean','boolean','boolean'],'setof record');
+  END IF;
+  /*Remove last 1 row on v4*/
+  RETURN QUERY SELECT CASE WHEN min_version('3.6.0')
+    THEN collect_tap(
+      set_eq(
+        $$SELECT proargnames from pg_proc WHERE proname = 'pgr_withpointsksp'$$,
+        $$VALUES 
+        ('{"","","","","","","directed","heap_paths","details","seq","path_id","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
+        ('{"","","","","","directed","heap_paths","details","seq","path_id","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
+        ('{"","","","","","directed","heap_paths","driving_side","details","seq","path_id","path_seq","node","edge","cost","agg_cost"}'::TEXT[])
+        $$),
+      set_eq(
+        $$SELECT proallargtypes FROM pg_proc WHERE proname = 'pgr_withpointsksp'$$,
+        $$VALUES
+        ('{25,25,20,20,23,1042,16,16,16,23,23,23,20,20,20,20,701,701}'::OID[]),
+        ('{25,25,20,2277,23,1042,16,16,16,23,23,23,20,20,20,20,701,701}'::OID[]),
+        ('{25,25,2277,20,23,1042,16,16,16,23,23,23,20,20,20,20,701,701}'::OID[]),
+        ('{25,25,2277,2277,23,1042,16,16,16,23,23,23,20,20,20,20,701,701}'::OID[]),
+        ('{25,25,25,23,1042,16,16,16,23,23,23,20,20,20,20,701,701}'::OID[]),
+        ('{25,25,20,20,23,16,16,1042,16,23,23,23,20,20,701,701}'::OID[]) 
+        $$) 
+    )
+    ELSE collect_tap(
+      set_eq(
+        $$SELECT proargnames from pg_proc WHERE proname = 'pgr_withpointsksp'$$,
+        $$SELECT '{"","","","","","directed","heap_paths","driving_side","details","seq","path_id","path_seq","node","edge","cost","agg_cost"}'::TEXT[] $$
+      ),
+      set_eq(
+        $$SELECT proallargtypes FROM pg_proc WHERE proname = 'pgr_withpointsksp'$$,
+        $$SELECT '{25,25,20,20,23,16,16,1042,16,23,23,23,20,20,701,701}'::OID[] $$
+      )
+    )END;
 
+  /* TODO remove on v4*/
+  RETURN QUERY SELECT has_function('pgr_withpointsksp',ARRAY['text','text','bigint','bigint','integer','boolean','boolean','character','boolean']);
+  RETURN QUERY SELECT function_returns('pgr_withpointsksp',ARRAY['text','text','bigint','bigint','integer','boolean','boolean','character','boolean'],'setof record');
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE;
+
+SELECT withPointsKSP_types_check();
 SELECT finish();
 ROLLBACK;
