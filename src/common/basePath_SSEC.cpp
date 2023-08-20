@@ -280,6 +280,24 @@ void Path::get_pg_ksp_path(
     }
 }
 
+/* used by new ksp */
+void Path::get_pg_nksp_path(
+        Path_rt **ret_path,
+        size_t &sequence) const {
+    for (unsigned int i = 0; i < path.size(); i++) {
+        (*ret_path)[sequence].seq = static_cast<int>(i + 1);
+        (*ret_path)[sequence].start_id = start_id();
+        (*ret_path)[sequence].end_id = end_id();
+        (*ret_path)[sequence].node = path[i].node;
+        (*ret_path)[sequence].edge = path[i].edge;
+        (*ret_path)[sequence].cost = path[i].cost;
+        (*ret_path)[sequence].agg_cost = (i == 0)?
+            0 :
+            (*ret_path)[sequence-1].agg_cost +  path[i-1].cost;
+        sequence++;
+    }
+}
+
 /* used by turn restricted */
 void Path::get_pg_turn_restricted_path(
         Path_rt **ret_path,
