@@ -24,7 +24,7 @@ pgRouting 3.6.0 Release Notes
 
 .. rubric:: Official functions changes
 
-* `2516 <https://github.com/pgRouting/pgrouting/pull/2516>` Standarize output
+* `#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__ Standarize output
   pgr_aStar
 
   * Standarizing output columns to |short-generic-result|
@@ -33,7 +33,7 @@ pgRouting 3.6.0 Release Notes
     * ``pgr_aStar`` (`One to Many`) added ``end_vid`` column.
     * ``pgr_aStar`` (`Many to One`) added ``start_vid`` column.
 
-* `2523 <https://github.com/pgRouting/pgrouting/pull/2523>` Standarize output
+* `#2523 <https://github.com/pgRouting/pgrouting/pull/2523>`__ Standarize output
   pgr_bdAstar
 
   * Standarizing output columns to |short-generic-result|
@@ -42,27 +42,46 @@ pgRouting 3.6.0 Release Notes
     * ``pgr_bdAstar`` (`One to Many`) added ``end_vid`` column.
     * ``pgr_bdAstar`` (`Many to One`) added ``start_vid`` column.
 
+.. rubric:: Proposed functions changes
+
+* `#2544 <https://github.com/pgRouting/pgrouting/pull/2544>`__ Standarize output and modifying signature
+  pgr_withPointsDD
+
+  * New proposed signatures: ``driving side`` parameter changed from optional to compulsory
+
+    * ``pgr_withPointsDD`` (`Single vertex`)
+    * ``pgr_withPointsDD`` (`Multiple vertices`)
+
+  * Deprecated signatures:
+
+    * ``pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)``
+    * ``pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)``
+
+  * Standarizing output columns to |result-bfs|
+
+    * ``pgr_withPointsDD`` (`Single vertex`) added ``depth`` and ``start_vid`` column.
+    * ``pgr_withPointsDD`` (`Multiple vertices`) added ``depth`` column.
 
 .. rubric:: C/C++ code enhancements
 
-* `2504 <https://github.com/pgRouting/pgrouting/pull/2504>` To C++ pg data get,
+* `#2504 <https://github.com/pgRouting/pgrouting/pull/2504>`__ To C++ pg data get,
   fetch and check.
 
   * Stopping support for compilation with MSVC.
 
-* `2505 <https://github.com/pgRouting/pgrouting/pull/2505>` Using namespace.
-* `2512 <https://github.com/pgRouting/pgrouting/pull/2512>` [Dijkstra] Removing
+* `#2505 <https://github.com/pgRouting/pgrouting/pull/2505>`__ Using namespace.
+* `#2512 <https://github.com/pgRouting/pgrouting/pull/2512>`__ [Dijkstra] Removing
   duplicate code on Dijkstra.
-* `2517 <https://github.com/pgRouting/pgrouting/pull/2517>` Astar code
+* `#2517 <https://github.com/pgRouting/pgrouting/pull/2517>`__ Astar code
   simplification.
-* `2521 <https://github.com/pgRouting/pgrouting/pull/2521>` Dijkstra code
+* `#2521 <https://github.com/pgRouting/pgrouting/pull/2521>`__ Dijkstra code
   simplification.
-* `2522 <https://github.com/pgRouting/pgrouting/pull/2522>` bdAstar code
+* `#2522 <https://github.com/pgRouting/pgrouting/pull/2522>`__ bdAstar code
   simplification.
 
 .. rubric:: Documentation
 
-* `2490 <https://github.com/pgRouting/pgrouting/pull/2490>` Automatic page
+* `#2490 <https://github.com/pgRouting/pgrouting/pull/2490>`__ Automatic page
   history links.
 
 pgRouting 3.5.1 Release Notes
