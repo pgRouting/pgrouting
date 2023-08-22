@@ -32,6 +32,11 @@ in the new signatures. It works mainly for driving cases, therefore the ``drivin
 parameter changed from optional to compulsory, and its valid values differ for
 directed and undirected graphs.
 
+:doc:`pgr_withPointsKSP` signature have changed, with the addition of new columns
+in the new signature. It works mainly for driving cases, therefore the ``driving side``
+parameter changed from optional to compulsory, and its valid values differ for
+directed and undirected graphs.
+
 .. warning::
    All deprecated functions will be removed on next mayor version 4.0.0
 
@@ -1024,6 +1029,43 @@ values of the function been migrated then:
 * ``id1`` is the path identifier
 * ``id2`` is the node
 * ``id3`` is the edge
+
+Migration of ``pgr_withPointsKSP``
+-------------------------------------------------------------------------------
+
+Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
+
+Signatures to be migrated:
+
+* ``pgr_withPointsKSP`` (`One to One`)
+
+:Before Migration:
+
+* Output columns were |old-pid-result|
+
+  * Depending on the overload used, the columns ``start_vid`` and ``end_vid``
+    might be missing:
+
+    * ``pgr_withPointsKSP`` (`One to One`) does not have ``start_vid`` and ``end_vid``.
+
+:Migration:
+
+* Be aware of the existance of the additional columns.
+
+* In ``pgr_withPointsKSP`` (`One to One`)
+
+  * ``start_vid`` contains the **start vid** parameter value.
+  * ``end_vid`` contains the **end vid** parameter value.
+
+.. literalinclude:: migration.queries
+   :start-after: --withPointsKSP1
+   :end-before: --withPointsKSP2
+
+* If needed filter out the added columns, for example:
+
+.. literalinclude:: migration.queries
+   :start-after: --withPointsKSP2
+   :end-before: --withPointsKSP3
 
 See Also
 -------------------------------------------------------------------------------

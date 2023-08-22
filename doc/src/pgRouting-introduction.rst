@@ -100,6 +100,7 @@ Individuals (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Aasheesh Tiwari,
+Abhinav Jain,
 Aditya Pratap Singh,
 Adrien Berchet,
 Akio Takubo,

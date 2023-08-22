@@ -26,6 +26,22 @@ pgr_withPointsKSP - Proposed
 
 .. rubric:: Availability
 
+* Version 3.6.0
+
+  * New **proposed** function:
+
+    * ``pgr_withPointsKSP`` (`One to Many`_)
+    * ``pgr_withPointsKSP`` (`Many to One`_)
+    * ``pgr_withPointsKSP`` (`Many to Many`_)
+    * ``pgr_withPointsKSP`` (`Combinations`_)
+
+  * Standarizing output columns to |nksp-result|
+
+    * ``pgr_withPointsKSP`` (`One to One`_) added ``start_vid`` and ``end_vid`` columns.
+
+  * Signature change on ``pgr_withPointsKSP`` (`One to One`_)
+
+
 * Version 2.2.0
 
   * New **proposed** function
@@ -46,24 +62,128 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_ **start vid**, **end vid**, **K**, [**options**])
-   | **options:**  ``[directed, heap_paths, driving_side, details]``
+   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, **K**, **driving_side**, [**options**])
+   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, **K**, **driving_side**, [**options**])
+   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, **K**, **driving_side**, [**options**])
+   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, **K**, **driving_side**, [**options**])
+   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **K**, **driving_side**, [**options**])
+   | **options:**  ``[directed, heap_paths, details]``
 
    | RETURNS SET OF |ksp-result|
    | OR EMPTY SET
 
+.. index::
+    single: withPointsKSP(One to One)
+
+One to One
+...............................................................................
+
+.. admonition:: \ \
+   :class: signatures
+
+   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, **K**, **driving_side**, [**options**])
+   | **options:**  ``[directed, heap_paths, details]``
+
+   | RETURNS SET OF |nksp-result|
+   | OR EMTPY SET
+
 :Example: Get 2 paths from Point :math:`1` to point :math:`2` on a directed
-          graph.
+          graph with **left** side driving.
 
 * For a directed graph.
-* The driving side is set as **b** both. So arriving/departing to/from the
-  point(s) can be in any direction.
 * No details are given about distance of other points of the query.
 * No heap paths are returned.
 
 .. literalinclude:: doc-pgr_withPointsKSP.queries
    :start-after: --q1
    :end-before: --q2
+
+.. index::
+    single: withPointsKSP(One to Many)
+
+One to Many
+...............................................................................
+
+.. admonition:: \ \
+   :class: signatures
+
+   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, **K**, **driving_side**, [**options**])
+   | **options:**  ``[directed, heap_paths, details]``
+
+   | RETURNS SET OF |ksp-result|
+   | OR EMTPY SET
+
+:Example: Get 2 paths from point :math:`1` to point :math:`3` and vertex :math:`7` on an
+          undirected graph
+
+.. literalinclude:: doc-pgr_withPointsKSP.queries
+   :start-after: --q2
+   :end-before: --q3
+
+.. index::
+    single: withPointsKSP(Many to One)
+
+Many to One
+...............................................................................
+
+.. admonition:: \ \
+   :class: signatures
+
+   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, **K**, **driving_side**, [**options**])
+   | **options:**  ``[directed, heap_paths, details]``
+
+   | RETURNS SET OF |ksp-result|
+   | OR EMTPY SET
+
+:Example: Get a path from point :math:`1` and vertex :math:`6` to point :math:`3` on a **directed**
+          graph with **right** side driving and **details** set to **True**
+
+.. literalinclude:: doc-pgr_withPointsKSP.queries
+   :start-after: --q3
+   :end-before: --q4
+
+.. index::
+    single: withPointsKSP(Many to Many)
+
+Many to Many
+...............................................................................
+
+.. admonition:: \ \
+   :class: signatures
+
+   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, **K**, **driving_side**, [**options**])
+   | **options:**  ``[directed, heap_paths, details]``
+
+   | RETURNS SET OF |nksp-result|
+   | OR EMTPY SET
+
+:Example: Get a path from point :math:`1` and vertex :math:`6` to point :math:`3` and vertex :math:`1` on a **directed**
+          graph with **left** side driving and **heap_paths** set to **True**
+
+.. literalinclude:: doc-pgr_withPointsKSP.queries
+   :start-after: --q4
+   :end-before: --q5
+
+.. index::
+    single: withPointsKSP(Combinations)
+
+Combinations
+...............................................................................
+
+.. admonition:: \ \
+   :class: signatures
+
+   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **K**, **driving_side**, [**options**])
+   | **options:**  ``[directed, heap_paths, details]``
+
+   | RETURNS SET OF |ksp-result|
+   | OR EMTPY SET
+
+:Example: Using a combinations table on an **directed** graph
+
+.. literalinclude:: doc-pgr_withPointsKSP.queries
+    :start-after: --q5
+    :end-before: --q6
 
 Parameters
 -------------------------------------------------------------------------------
@@ -95,6 +215,13 @@ Parameters
    * - **K**
      - **ANY-INTEGER**
      - Number of required paths
+   * - **driving_side**
+     - **CHAR**
+     - Value in [``r``, ``R``, ``l``, ``L``, ``b``, ``B``] indicating if the driving side is:
+
+       - [``r``, ``R``] for right driving side (for directed graph only)
+       - [``l``, ``L``] for left driving side (for directed graph only)
+       - [``b``, ``B``] for both (only for undirected graph)
 
 Where:
 
@@ -114,12 +241,24 @@ KSP Optional parameters
     :start-after: ksp_optionals_start
     :end-before: ksp_optionals_end
 
-With points optional parameters
+withPointsKSP optional parameters
 ...............................................................................
 
-.. include:: withPoints-family.rst
-    :start-after: withPoints_optionals_start
-    :end-before: withPoints_optionals_end
+.. list-table::
+   :width: 81
+   :widths: 14 7 7 60
+   :header-rows: 1
+
+   * - Parameter
+     - Type
+     - Default
+     - Description
+   * - ``details``
+     - ``BOOLEAN``
+     - ``false``
+     - - When ``true`` the results will include the points that are in the path.
+       - When ``false`` the results will not include the points that are in the
+         path.
 
 Inner Queries
 -------------------------------------------------------------------------------
@@ -137,6 +276,13 @@ Points SQL
 .. include:: withPoints-category.rst
     :start-after: points_sql_start
     :end-before: points_sql_end
+
+Combinations SQL
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_combinations_sql_start
+    :end-before: basic_combinations_sql_end
 
 Result Columns
 -------------------------------------------------------------------------------
@@ -158,8 +304,8 @@ Get :math:`2` paths using left side driving topology, from vertex :math:`1` to
 the closest location on the graph of point `(2.9, 1.8)`.
 
 .. literalinclude:: doc-pgr_withPointsKSP.queries
-    :start-after: --q4
-    :end-before: -- q5
+    :start-after: --q6
+    :end-before: --q7
 
 * Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`.
 
@@ -167,11 +313,11 @@ Left driving side
 ...............................................................................
 
 Get :math:`2` paths using left side driving topology, from point :math:`1` to
-point :math:`2` with details.
+point :math:`3` with details.
 
 .. literalinclude:: doc-pgr_withPointsKSP.queries
-   :start-after: --q2
-   :end-before: --q3
+   :start-after: --q7
+   :end-before: --q8
 
 Right driving side
 ...............................................................................
@@ -180,8 +326,8 @@ Get :math:`2` paths using right side driving topology from, point :math:`1` to
 point :math:`2` with heap paths and details.
 
 .. literalinclude:: doc-pgr_withPointsKSP.queries
-   :start-after: --q3
-   :end-before: --q4
+   :start-after: --q8
+   :end-before: --q9
 
 The queries use the :doc:`sampledata` network.
 
