@@ -346,6 +346,7 @@ rst_epilog="""
 .. |matrix-pid| replace:: ``(start_pid, end_pid, agg_cost)``
 .. |ksp-result| replace:: ``(seq, path_id, path_seq, node, edge, cost, agg_cost)``
 .. |tsp-result| replace:: ``(seq, node, cost, agg_cost)``
+.. |nksp-result| replace:: ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
 .. |old-generic-result| replace:: ``(seq, path_seq, [start_vid], [end_vid], node, edge, cost, agg_cost)``
 .. |old-pid-result| replace:: ``(seq, path_seq, [start_pid], [end_pid], node, edge, cost, agg_cost)``
 .. |pid-1-m| replace:: ``(seq, path_seq, end_pid, node, edge, cost, agg_cost)``

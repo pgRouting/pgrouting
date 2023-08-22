@@ -41,6 +41,28 @@ pgRouting 3.6.0 Release Notes
     * ``pgr_withPointsDD`` (`Single vertex`) added ``depth`` and ``start_vid`` column.
     * ``pgr_withPointsDD`` (`Multiple vertices`) added ``depth`` column.
 
+* [#2546](https://github.com/pgRouting/pgrouting/pull/2546) Standarize output and modifying signature
+  pgr_withPointsKSP
+
+  * New proposed functions:
+    * ``pgr_withPointsKSP`` (`One to Many`)
+    * ``pgr_withPointsKSP`` (`Many to One`)
+    * ``pgr_withPointsKSP`` (`Many to Many`)
+    * ``pgr_withPointsKSP`` (`Combinations`)
+
+  * New proposed signatures: ``driving side`` parameter changed from optional to compulsory
+
+    * ``pgr_withPointsKSP`` (`One to One`)
+
+  * Deprecated signatures:
+
+    * ``pgr_withpointsksp(text, text, bigint, bigint, integer, boolean, boolean, char, boolean)``
+
+  * Standarizing output columns to |nksp-result|
+
+    * ``pgr_withPointsKSP`` (`One To One`) added ``start_vid`` and ``end_vid`` column.
+
+
 **C/C++ code enhancements**
 
 * [#2504](https://github.com/pgRouting/pgrouting/pull/2504) To C++ pg data get,
