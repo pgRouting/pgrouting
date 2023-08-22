@@ -286,7 +286,7 @@
 <h2><a class="toc-backref" href="#id1" role="doc-backlink">pgRouting 3.6.0 Release Notes</a><a class="headerlink" href="#pgrouting-3-6-0-release-notes" title="Link to this heading">¶</a></h2>
 <p class="rubric">Official functions changes</p>
 <ul class="simple">
-<li><p><cite>2516 &lt;https://github.com/pgRouting/pgrouting/pull/2516&gt;</cite> Standarize output
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2516">#2516</a> Standarize output
 pgr_aStar</p>
 <ul>
 <li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
@@ -298,7 +298,7 @@ pgr_aStar</p>
 </li>
 </ul>
 </li>
-<li><p><cite>2523 &lt;https://github.com/pgRouting/pgrouting/pull/2523&gt;</cite> Standarize output
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2523">#2523</a> Standarize output
 pgr_bdAstar</p>
 <ul>
 <li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
@@ -311,27 +311,53 @@ pgr_bdAstar</p>
 </ul>
 </li>
 </ul>
+<p class="rubric">Proposed functions changes</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2544">#2544</a> Standarize output and modifying signature
+pgr_withPointsDD</p>
+<ul>
+<li><p>New proposed signatures: <code class="docutils literal notranslate"><span class="pre">driving</span> <span class="pre">side</span></code> parameter changed from optional to compulsory</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<cite>Single vertex</cite>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<cite>Multiple vertices</cite>)</p></li>
+</ul>
+</li>
+<li><p>Deprecated signatures:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withpointsdd(text,text,bigint,double</span> <span class="pre">precision,boolean,character,boolean)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withpointsdd(text,text,anyarray,double</span> <span class="pre">precision,boolean,character,boolean,boolean)</span></code></p></li>
+</ul>
+</li>
+<li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<cite>Single vertex</cite>) added <code class="docutils literal notranslate"><span class="pre">depth</span></code> and <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<cite>Multiple vertices</cite>) added <code class="docutils literal notranslate"><span class="pre">depth</span></code> column.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <p class="rubric">C/C++ code enhancements</p>
 <ul class="simple">
-<li><p><cite>2504 &lt;https://github.com/pgRouting/pgrouting/pull/2504&gt;</cite> To C++ pg data get,
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2504">#2504</a> To C++ pg data get,
 fetch and check.</p>
 <ul>
 <li><p>Stopping support for compilation with MSVC.</p></li>
 </ul>
 </li>
-<li><p><cite>2505 &lt;https://github.com/pgRouting/pgrouting/pull/2505&gt;</cite> Using namespace.</p></li>
-<li><p><cite>2512 &lt;https://github.com/pgRouting/pgrouting/pull/2512&gt;</cite> [Dijkstra] Removing
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2505">#2505</a> Using namespace.</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2512">#2512</a> [Dijkstra] Removing
 duplicate code on Dijkstra.</p></li>
-<li><p><cite>2517 &lt;https://github.com/pgRouting/pgrouting/pull/2517&gt;</cite> Astar code
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2517">#2517</a> Astar code
 simplification.</p></li>
-<li><p><cite>2521 &lt;https://github.com/pgRouting/pgrouting/pull/2521&gt;</cite> Dijkstra code
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2521">#2521</a> Dijkstra code
 simplification.</p></li>
-<li><p><cite>2522 &lt;https://github.com/pgRouting/pgrouting/pull/2522&gt;</cite> bdAstar code
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2522">#2522</a> bdAstar code
 simplification.</p></li>
 </ul>
 <p class="rubric">Documentation</p>
 <ul class="simple">
-<li><p><cite>2490 &lt;https://github.com/pgRouting/pgrouting/pull/2490&gt;</cite> Automatic page
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2490">#2490</a> Automatic page
 history links.</p></li>
 </ul>
 </section>
@@ -1699,7 +1725,7 @@ FindPostgreSQL.cmake</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
-      Actualizado por última vez en ago 20, 2023.<br/>
+      Actualizado por última vez en ago 22, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.2.<br/>
     </p>
   </div>
