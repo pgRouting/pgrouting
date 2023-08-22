@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-20 16:42+0000\n"
+"POT-Creation-Date: 2023-08-22 15:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14583,6 +14583,33 @@ msgid ""
 "point."
 msgstr ""
 
+msgid "``pgr_withPointsDD`` (`Single vertex`_)"
+msgstr ""
+
+msgid "``pgr_withPointsDD`` (`Multiple vertices`_)"
+msgstr ""
+
+msgid ""
+"``pgr_withpointsdd(text,text,bigint,double "
+"precision,boolean,character,boolean)``"
+msgstr ""
+
+msgid ""
+"``pgr_withpointsdd(text,text,anyarray,double "
+"precision,boolean,character,boolean,boolean)``"
+msgstr ""
+
+msgid "Standarizing output columns to |result-bfs|"
+msgstr ""
+
+msgid ""
+"``pgr_withPointsDD`` (`Single vertex`_) added ``depth`` and ``start_vid``"
+" column."
+msgstr ""
+
+msgid "``pgr_withPointsDD`` (`Multiple vertices`_) added ``depth`` column."
+msgstr ""
+
 msgid ""
 "Modify the graph to include points and using Dijkstra algorithm, extracts"
 " all the nodes and points that have costs less than or equal to the value"
@@ -14592,26 +14619,26 @@ msgstr ""
 
 msgid ""
 "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**,"
-" [**options A**])"
+" **driving side**, [**options A**])"
 msgstr ""
 
 msgid ""
 "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, "
-"**distance**, [**options B**])"
+"**distance**, **driving side**, [**options B**])"
 msgstr ""
 
-msgid "**options A:** ``[directed, driving_side, details]``"
+msgid "**options A:** ``[directed, details]``"
 msgstr ""
 
-msgid "**options B:** ``[directed, driving_side, details, equicost]``"
-msgstr ""
-
-msgid "RETURNS SET OF |result-generic-no-seq|"
+msgid "**options B:** ``[directed, details, equicost]``"
 msgstr ""
 
 msgid ""
 "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**,"
-" [**options**])"
+" **driving side**, [**options**])"
+msgstr ""
+
+msgid "**options:** ``[directed, details]``"
 msgstr ""
 
 msgid ""
@@ -14621,13 +14648,10 @@ msgstr ""
 
 msgid ""
 "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, "
-"**distance**, [**options**])"
+"**distance**, **driving side**, [**options**])"
 msgstr ""
 
-msgid "**options:** ``[directed, driving_side, details, equicost]``"
-msgstr ""
-
-msgid "RETURNS SET OF |result-m-1-no-seq|"
+msgid "**options:** ``[directed, details, equicost]``"
 msgstr ""
 
 msgid ""
@@ -14638,7 +14662,30 @@ msgstr ""
 msgid "Negative values represent a point"
 msgstr ""
 
-msgid "``[start_vid]``"
+msgid "**driving side**"
+msgstr ""
+
+msgid ""
+"Value in [``r``, ``R``, ``l``, ``L``, ``b``, ``B``] indicating if the "
+"driving side is:"
+msgstr ""
+
+msgid "``r``, ``R`` for right driving side,"
+msgstr ""
+
+msgid "``l``, ``L`` for left driving side."
+msgstr ""
+
+msgid "``b``, ``B`` for both."
+msgstr ""
+
+msgid "Valid values differ for directed and undirected graphs:"
+msgstr ""
+
+msgid "In directed graphs: [``r``, ``R``, ``l``, ``L``]."
+msgstr ""
+
+msgid "In undirected graphs: [``b``, ``B``]."
 msgstr ""
 
 msgid ""
@@ -14870,7 +14917,7 @@ msgid "Official functions changes"
 msgstr ""
 
 msgid ""
-"`2516 <https://github.com/pgRouting/pgrouting/pull/2516>` Standarize "
+"`#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__ Standarize "
 "output pgr_aStar"
 msgstr ""
 
@@ -14884,7 +14931,7 @@ msgid "``pgr_aStar`` (`Many to One`) added ``start_vid`` column."
 msgstr ""
 
 msgid ""
-"`2523 <https://github.com/pgRouting/pgrouting/pull/2523>` Standarize "
+"`#2523 <https://github.com/pgRouting/pgrouting/pull/2523>`__ Standarize "
 "output pgr_bdAstar"
 msgstr ""
 
@@ -14899,46 +14946,69 @@ msgstr ""
 msgid "``pgr_bdAstar`` (`Many to One`) added ``start_vid`` column."
 msgstr ""
 
+msgid "Proposed functions changes"
+msgstr ""
+
+msgid ""
+"`#2544 <https://github.com/pgRouting/pgrouting/pull/2544>`__ Standarize "
+"output and modifying signature pgr_withPointsDD"
+msgstr ""
+
+msgid ""
+"New proposed signatures: ``driving side`` parameter changed from optional"
+" to compulsory"
+msgstr ""
+
+msgid ""
+"``pgr_withPointsDD`` (`Single vertex`) added ``depth`` and ``start_vid`` "
+"column."
+msgstr ""
+
+msgid "``pgr_withPointsDD`` (`Multiple vertices`) added ``depth`` column."
+msgstr ""
+
 msgid "C/C++ code enhancements"
 msgstr ""
 
 msgid ""
-"`2504 <https://github.com/pgRouting/pgrouting/pull/2504>` To C++ pg data "
-"get, fetch and check."
+"`#2504 <https://github.com/pgRouting/pgrouting/pull/2504>`__ To C++ pg "
+"data get, fetch and check."
 msgstr ""
 
 msgid "Stopping support for compilation with MSVC."
 msgstr ""
 
-msgid "`2505 <https://github.com/pgRouting/pgrouting/pull/2505>` Using namespace."
+msgid ""
+"`#2505 <https://github.com/pgRouting/pgrouting/pull/2505>`__ Using "
+"namespace."
 msgstr ""
 
 msgid ""
-"`2512 <https://github.com/pgRouting/pgrouting/pull/2512>` [Dijkstra] "
+"`#2512 <https://github.com/pgRouting/pgrouting/pull/2512>`__ [Dijkstra] "
 "Removing duplicate code on Dijkstra."
 msgstr ""
 
 msgid ""
-"`2517 <https://github.com/pgRouting/pgrouting/pull/2517>` Astar code "
+"`#2517 <https://github.com/pgRouting/pgrouting/pull/2517>`__ Astar code "
 "simplification."
 msgstr ""
 
 msgid ""
-"`2521 <https://github.com/pgRouting/pgrouting/pull/2521>` Dijkstra code "
-"simplification."
+"`#2521 <https://github.com/pgRouting/pgrouting/pull/2521>`__ Dijkstra "
+"code simplification."
 msgstr ""
 
 msgid ""
-"`2522 <https://github.com/pgRouting/pgrouting/pull/2522>` bdAstar code "
-"simplification."
+"`#2522 <https://github.com/pgRouting/pgrouting/pull/2522>`__ bdAstar code"
+" simplification."
 msgstr ""
 
 msgid "Documentation"
 msgstr ""
 
 msgid ""
-"`2490 <https://github.com/pgRouting/pgrouting/pull/2490>` Automatic page "
-"history links."
+"`#2490 <https://github.com/pgRouting/pgrouting/pull/2490>`__ Automatic "
+"page history links."
 msgstr ""
 
 msgid "pgRouting 3.5.1 Release Notes"
