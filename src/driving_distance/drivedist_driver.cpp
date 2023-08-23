@@ -85,7 +85,7 @@ do_pgr_driving_many_to_dist(
             paths = pgr_drivingdistance(
                     digraph, start_vertices, distance, equiCostFlag, log);
             if (do_new) {
-                pgrouting::functions::ShortestPath_tree<pgrouting::DirectedGraph> spt;
+                pgrouting::functions::ShortestPath_trees<pgrouting::DirectedGraph> spt;
                 results = spt.get_depths(digraph, paths);
             }
         } else {
@@ -97,7 +97,7 @@ do_pgr_driving_many_to_dist(
             paths = pgr_drivingdistance(
                     undigraph, start_vertices, distance, equiCostFlag, log);
             if (do_new) {
-                pgrouting::functions::ShortestPath_tree<pgrouting::UndirectedGraph> spt;
+                pgrouting::functions::ShortestPath_trees<pgrouting::UndirectedGraph> spt;
                 results = spt.get_depths(undigraph, paths);
             }
         }

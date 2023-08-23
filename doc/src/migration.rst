@@ -140,46 +140,6 @@ Signatures to be migrated:
    :start-after: --ksp2
    :end-before: --ksp3
 
-Migration of ``pgr_KSP``
--------------------------------------------------------------------------------
-
-Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
-
-Signatures to be migrated:
-
-* ``pgr_KSP`` (`One to One`)
-
-:Before Migration:
-
-* Output columns were |ksp-result|
-
-  * the columns ``start_vid`` and ``end_vid`` will be missing:
-
-    * ``pgr_KSP`` (`One to One`) does not have ``start_vid`` and ``end_vid``.
-    * ``pgr_KSP`` did not have (`One to Many`), (`Many to One`), (`Many to Many`) and (`Combinations`) overloads.
-
-:Migration:
-
-* Be aware of the existance of the additional columns.
-
-* In ``pgr_KSP`` (`One to One`)
-* In ``pgr_KSP`` (`One to Many`)
-* In ``pgr_KSP`` (`Many to One`)
-* In ``pgr_KSP`` (`Many to Many`)
-
-  * ``start_vid`` contains the **start vid** parameter value.
-  * ``end_vid`` contains the **end vid** parameter value.
-
-.. literalinclude:: migration.queries
-   :start-after: --ksp1
-   :end-before: --ksp2
-
-* If needed filter out the added columns, for example:
-
-.. literalinclude:: migration.queries
-   :start-after: --ksp2
-   :end-before: --ksp3
-
 Migration of ``pgr_aStar``
 -------------------------------------------------------------------------------
 

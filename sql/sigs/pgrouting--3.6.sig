@@ -296,7 +296,6 @@ pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double preci
 _pgr_turnrestrictedpath(text,text,bigint,bigint,integer,boolean,boolean,boolean,boolean)
 pgr_turnrestrictedpath(text,text,bigint,bigint,integer,boolean,boolean,boolean,boolean)
 _pgr_v4drivingdistance(text,anyarray,double precision,boolean,boolean)
-_pgr_v4drivingdistance(text,anyarray,double precision,boolean,boolean)
 _pgr_v4withpointsdd(text,text,anyarray,double precision,character,boolean,boolean,boolean)
 _pgr_v4withpointsksp(text,text,anyarray,anyarray,integer,character,boolean,boolean,boolean)
 _pgr_v4withpointsksp(text,text,text,integer,character,boolean,boolean,boolean)

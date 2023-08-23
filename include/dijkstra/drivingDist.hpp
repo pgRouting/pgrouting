@@ -489,7 +489,7 @@ class Pgr_dijkstra {
 namespace functions {
 
 template <class G>
-class ShortestPath_tree{
+class ShortestPath_trees{
      typedef typename G::V V;
      typedef typename G::E E;
      typedef typename G::B_G B_G;
@@ -534,7 +534,7 @@ class ShortestPath_tree{
 template <class G>
 template <typename T>
 std::deque<MST_rt>
-ShortestPath_tree<G>::get_results(
+ShortestPath_trees<G>::get_results(
         T order,
         int64_t p_root,
         const G &graph) {
@@ -591,7 +591,7 @@ ShortestPath_tree<G>::get_results(
 
 template <class G>
 std::deque<MST_rt>
-ShortestPath_tree<G>::dfs_order(const G &graph, int64_t root) {
+ShortestPath_trees<G>::dfs_order(const G &graph, int64_t root) {
         boost::filtered_graph<B_G, InSpanning, boost::keep_all>
             mstGraph(graph.graph, m_spanning_tree, {});
 
@@ -630,7 +630,7 @@ ShortestPath_tree<G>::dfs_order(const G &graph, int64_t root) {
 
 template <class G>
 void
-ShortestPath_tree<G>::get_edges_from_path(
+ShortestPath_trees<G>::get_edges_from_path(
          const G& graph,
          const Path path) {
     m_spanning_tree.clear();
@@ -658,7 +658,7 @@ ShortestPath_tree<G>::get_edges_from_path(
 
 template <class G>
 std::deque<MST_rt>
-ShortestPath_tree<G>::get_depths(
+ShortestPath_trees<G>::get_depths(
         G &graph,
         std::deque<Path> paths) {
     std::deque<MST_rt> results;
