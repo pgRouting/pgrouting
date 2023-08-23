@@ -84,6 +84,23 @@ pgRouting 3.6.0 Release Notes
     * ``pgr_withPointsKSP`` (`One To One`) added ``start_vid`` and ``end_vid`` column.
 
 
+* [#2547](https://github.com/pgRouting/pgrouting/pull/2547) Standarize output and modifying signature
+  pgr_KSP
+
+  * New proposed functions:
+    * ``pgr_KSP`` (`One to Many`)
+    * ``pgr_KSP`` (`Many to One`)
+    * ``pgr_KSP`` (`Many to Many`)
+    * ``pgr_KSP`` (`Combinations`)
+
+  * Deprecated signatures:
+
+    * ``pgr_ksp(text, bigint, bigint, integer, boolean, boolean)``
+
+  * Standarizing output columns to |nksp-result|
+
+    * ``pgr_KSP`` (`One To One`) added ``start_vid`` and ``end_vid`` column.
+
 .. rubric:: C/C++ code enhancements
 
 * `#2504 <https://github.com/pgRouting/pgrouting/pull/2504>`__ To C++ pg data get,

@@ -23,6 +23,17 @@ pgr_KSP
 
 .. rubric:: Availability
 
+* Version 3.6.0
+
+  * ``pgr_ksp`` (`One to One`_) added ``start_vid`` and ``end_vid`` columns.
+
+  * New **overloades** functions:
+
+    * ``pgr_ksp`` (`One to Many`_)
+    * ``pgr_ksp`` (`Many to One`_)
+    * ``pgr_ksp`` (`Many to Many`_)
+    * ``pgr_ksp`` (`Combinations`_)
+
 * Version 2.1.0
 
   * Signature change
@@ -49,9 +60,27 @@ Signatures
    :class: signatures
 
    | pgr_KSP(`Edges SQL`_, **start vid**, **end vid**, **K**, [**options**])
+   | pgr_KSP(`Edges SQL`_, **start vid**, **end vids**, **K**, [**options**])
+   | pgr_KSP(`Edges SQL`_, **start vids**, **end vid**, **K**, [**options**])
+   | pgr_KSP(`Edges SQL`_, **start vids**, **end vids**, **K**, [**options**])
+   | pgr_KSP(`Edges SQL`_, `Combinations SQL`_, **K**, [**options**])
    | **options:** ``[directed, heap_paths]``
 
-   | RETURNS SET OF |ksp-result|
+   | RETURNS SET OF |nksp-result|
+   | OR EMPTY SET
+
+.. index::
+    single: ksp(One to One)
+
+One to One
+...............................................................................
+
+.. admonition:: \ \
+   :class: signatures
+
+   | pgr_KSP(`Edges SQL`_, **start vid**, **end vid**, **K**, [**options**])
+
+   | RETURNS SET OF |nksp-result|
    | OR EMPTY SET
 
 :Example: Get 2 paths from :math:`6` to :math:`17` on a directed graph.
@@ -59,6 +88,95 @@ Signatures
 .. literalinclude:: doc-ksp.queries
     :start-after: --q1
     :end-before: --q2
+
+.. index::
+    single: ksp(One to Many)
+
+One to Many
+...............................................................................
+
+.. admonition:: \ \
+   :class: signatures
+
+   | pgr_KSP(`Edges SQL`_, **start vid**, **end vids**, **K**, [**options**])
+
+   | RETURNS SET OF |nksp-result|
+   | OR EMPTY SET
+
+:Example: Get 2 paths from vertex :math:`6` to vertices :math:`\{10, 17\}` on a directed graph.
+
+.. literalinclude:: doc-ksp.queries
+    :start-after: --q3
+    :end-before: --q4
+
+.. index::
+    single: ksp(Many to One)
+
+Many to One
+...............................................................................
+
+.. admonition:: \ \
+   :class: signatures
+
+   | pgr_KSP(`Edges SQL`_, **start vids**, **end vid**, **K**, [**options**])
+
+   | RETURNS SET OF |nksp-result|
+   | OR EMPTY SET
+
+:Example: Get 2 paths from vertices :math:`\{6, 1\}` to vertex :math:`17` on a directed graph.
+
+.. literalinclude:: doc-ksp.queries
+    :start-after: --q4
+    :end-before: --q5
+
+.. index::
+    single: ksp(Many to Many)
+
+Many to Many
+...............................................................................
+
+.. admonition:: \ \
+   :class: signatures
+
+   | pgr_KSP(`Edges SQL`_, **start vids**, **end vids**, **K**, [**options**])
+
+   | RETURNS SET OF |nksp-result|
+   | OR EMPTY SET
+
+:Example: Get 2 paths vertices :math:`\{6, 1\}` to vertices :math:`\{10, 17\}` on a directed graph.
+
+.. literalinclude:: doc-ksp.queries
+    :start-after: --q5
+    :end-before: --q6
+
+.. index::
+   single: ksp(Combinations)
+
+Combinations
+...............................................................................
+
+.. admonition:: \ \
+   :class: signatures
+
+   | pgr_KSP(`Edges SQL`_, `Combinations SQL`_, **K**, [**options**])
+
+   | RETURNS SET OF |nksp-result|
+   | OR EMPTY SET
+
+:Example: Using a combinations table on an directed graph
+
+The combinations table:
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+    :start-after: -- q51
+    :end-before: -- q52
+
+The query:
+
+.. literalinclude:: doc-ksp.queries
+    :start-after: --q6
+    :end-before: --q7
+
 
 Parameters
 -------------------------------------------------------------------------------
@@ -81,7 +199,7 @@ Parameters
      - Identifier of the departure vertex.
    * - **end vid**
      - **ANY-INTEGER**
-     - Identifier of the departure vertex.
+     - Identifier of the destination vertex.
    * - **K**
      - **ANY-INTEGER**
      - Number of required paths
@@ -134,13 +252,19 @@ Edges SQL
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
+Combinations SQL
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_combinations_sql_start
+    :end-before: basic_combinations_sql_end
+
 Result Columns
 -------------------------------------------------------------------------------
 
 .. ksp_returns_start
 
-Returns set of ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost,
-agg_cost)``
+Returns set of |nksp-result|
 
 .. list-table::
    :width: 81
@@ -158,7 +282,7 @@ agg_cost)``
      - Path identifier.
 
        * Has value **1** for the first of a path from **start vid** to
-         **end_vid**
+         **end vid**
    * - ``path_seq``
      - ``INTEGER``
      - Relative position in the path. Has value **1** for the beginning of a
@@ -193,6 +317,28 @@ Also get the paths in the heap.
 .. literalinclude:: doc-ksp.queries
     :start-after: --q2
     :end-before: --q3
+
+:Example: Get 2 paths using combinations table on an undirecte graph
+
+Also get the paths in the heap.
+
+.. literalinclude:: doc-ksp.queries
+    :start-after: --q7
+    :end-before: --q8
+
+:Example: Get 2 paths from vertices :math:`\{6, 1\}` to vertex :math:`17` on a undirected graph.
+
+.. literalinclude:: doc-ksp.queries
+    :start-after: --q8
+    :end-before: --q9
+
+:Example: Get 2 paths vertices :math:`\{6, 1\}` to vertices :math:`\{10, 17\}` on a directed graph.
+
+Also get the paths in the heap.
+
+.. literalinclude:: doc-ksp.queries
+    :start-after: --q9
+    :end-before: --q10
 
 See Also
 -------------------------------------------------------------------------------
