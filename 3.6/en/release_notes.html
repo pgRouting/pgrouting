@@ -360,6 +360,26 @@ pgr_withPointsKSP</p>
 </li>
 </ul>
 </li>
+<li><p>[#2547](<a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2547">https://github.com/pgRouting/pgrouting/pull/2547</a>) Standarize output and modifying signature
+pgr_KSP</p>
+<ul>
+<li><p>New proposed functions:
+* <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code> (<cite>One to Many</cite>)
+* <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code> (<cite>Many to One</cite>)
+* <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code> (<cite>Many to Many</cite>)
+* <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code> (<cite>Combinations</cite>)</p></li>
+<li><p>Deprecated signatures:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp(text,</span> <span class="pre">bigint,</span> <span class="pre">bigint,</span> <span class="pre">integer,</span> <span class="pre">boolean,</span> <span class="pre">boolean)</span></code></p></li>
+</ul>
+</li>
+<li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code> (<cite>One To One</cite>) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> column.</p></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p class="rubric">C/C++ code enhancements</p>
 <ul class="simple">
