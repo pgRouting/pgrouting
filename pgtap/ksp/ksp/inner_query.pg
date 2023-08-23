@@ -20,10 +20,38 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(54);
+SELECT CASE WHEN min_version('3.6.0') THEN plan(282) ELSE plan(54) END;
 
--- ONE TO ONE
-SELECT style_dijkstra('pgr_ksp(', ', 2, 3, 2, true)');
+CREATE OR REPLACE FUNCTION KSP_inner_query() RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+  IF min_version('3.6.0') THEN
+
+    -- ONE TO ONE
+    RETURN QUERY SELECT style_dijkstra('pgr_ksp(', ', 2, 3, 2, true)');
+
+    -- ONE TO MANY
+    RETURN QUERY SELECT style_dijkstra('pgr_ksp(', ', 2, ARRAY[3], 2, true)');
+
+    -- MANY TO ONE
+    RETURN QUERY SELECT style_dijkstra('pgr_ksp(', ', ARRAY[2], 3, 2, true)');
+
+    -- MANY TO MANY
+    RETURN QUERY SELECT style_dijkstra('pgr_ksp(', ', ARRAY[2], ARRAY[3], 2, true)');
+
+    -- Combinations
+    RETURN QUERY SELECT style_dijkstra('pgr_ksp(', ', $$SELECT * FROM combinations_table$$, 2, true)');
+    RETURN QUERY SELECT innerquery_combinations('pgr_ksp($$SELECT * FROM edge_table$$,',', 2, true)');
+
+  ELSE
+    -- ONE TO ONE
+    RETURN QUERY SELECT style_dijkstra('pgr_ksp(', ', 2, 3, 2, true)');
+  END IF;
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE;
+
+SELECT KSP_inner_query();
 
 SELECT finish();
 ROLLBACK;

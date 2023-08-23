@@ -18,21 +18,67 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
-SELECT plan(5);
+SELECT CASE WHEN min_version('3.6.0') THEN plan(13) ELSE plan(5) END;
 
 SELECT has_function('pgr_ksp');
-SELECT has_function('pgr_ksp',ARRAY['text','bigint','bigint','integer','boolean','boolean']);
-SELECT function_returns('pgr_ksp',ARRAY['text','bigint','bigint','integer','boolean','boolean'],'setof record');
 
-SELECT set_eq(
-  $$SELECT  proargnames from pg_proc WHERE proname = 'pgr_ksp'$$,
-  $$SELECT  '{"","","","","directed","heap_paths","seq","path_id","path_seq","node","edge","cost","agg_cost"}'::TEXT[] $$
-);
+CREATE FUNCTION KSP_types_check()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+  IF min_version('3.6.0') THEN
+    RETURN QUERY SELECT has_function('pgr_ksp',ARRAY['text','bigint','bigint','integer','boolean','boolean']);
+    RETURN QUERY SELECT has_function('pgr_ksp',ARRAY['text','bigint','anyarray','integer','boolean','boolean']);
+    RETURN QUERY SELECT has_function('pgr_ksp',ARRAY['text','anyarray','bigint','integer','boolean','boolean']);
+    RETURN QUERY SELECT has_function('pgr_ksp',ARRAY['text','anyarray','anyarray','integer','boolean','boolean']);
+    RETURN QUERY SELECT has_function('pgr_ksp',ARRAY['text','text','integer','boolean','boolean']);
 
-SELECT set_eq(
-  $$SELECT  proallargtypes FROM pg_proc WHERE proname = 'pgr_ksp'$$,
-  $$SELECT  '{25,20,20,23,16,16,23,23,23,20,20,701,701}'::OID[] $$
-);
+    RETURN QUERY SELECT function_returns('pgr_ksp',ARRAY['text','bigint','bigint','integer','boolean','boolean'],'setof record');
+    RETURN QUERY SELECT function_returns('pgr_ksp',ARRAY['text','bigint','anyarray','integer','boolean','boolean'],'setof record');
+    RETURN QUERY SELECT function_returns('pgr_ksp',ARRAY['text','anyarray','bigint','integer','boolean','boolean'],'setof record');
+    RETURN QUERY SELECT function_returns('pgr_ksp',ARRAY['text','anyarray','anyarray','integer','boolean','boolean'],'setof record');
+    RETURN QUERY SELECT function_returns('pgr_ksp',ARRAY['text','text','integer','boolean','boolean'],'setof record');
+  ELSE
+    RETURN QUERY  SELECT has_function('pgr_ksp',ARRAY['text','bigint','bigint','integer','boolean','boolean']);
 
+    RETURN QUERY  SELECT function_returns('pgr_ksp',ARRAY['text','bigint','bigint','integer','boolean','boolean'],'setof record');
+  END IF;
+
+  RETURN QUERY SELECT CASE WHEN min_version('3.6.0') THEN 
+    collect_tap(
+      set_eq(
+          $$SELECT  proargnames from pg_proc WHERE proname = 'pgr_ksp'$$,
+          $$VALUES
+          ('{"","","","directed","heap_paths","seq","path_id","path_seq",start_vid,end_vid,"node","edge","cost","agg_cost"}'::TEXT[]),
+          ('{"","","","","directed","heap_paths","seq","path_id","path_seq",start_vid,end_vid,"node","edge","cost","agg_cost"}'::TEXT[])
+          $$),
+      set_eq(
+        $$SELECT  proallargtypes FROM pg_proc WHERE proname = 'pgr_ksp'$$,
+        $$VALUES
+        ('{25,25,23,16,16,23,23,23,20,20,20,20,701,701}'::OID[]),
+        ('{25,20,20,23,16,16,23,23,23,20,20,20,20,701,701}'::OID[]),
+        ('{25,20,2277,23,16,16,23,23,23,20,20,20,20,701,701}'::OID[]),
+        ('{25,2277,20,23,16,16,23,23,23,20,20,20,20,701,701}'::OID[]),
+        ('{25,2277,2277,23,16,16,23,23,23,20,20,20,20,701,701}'::OID[])
+        $$
+      )
+    )
+  ELSE 
+    collect_tap(
+      set_eq(
+        $$SELECT  proargnames from pg_proc WHERE proname = 'pgr_ksp'$$,
+        $$SELECT  '{"","","","","directed","heap_paths","seq","path_id","path_seq","node","edge","cost","agg_cost"}'::TEXT[] $$
+      ),
+      set_eq(
+        $$SELECT  proallargtypes FROM pg_proc WHERE proname = 'pgr_ksp'$$,
+        $$SELECT  '{25,20,20,23,16,16,23,23,23,20,20,701,701}'::OID[] $$
+      )
+    )
+  END;
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE;
+
+SELECT KSP_types_check();
 SELECT finish();
 ROLLBACK;

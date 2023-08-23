@@ -44,7 +44,7 @@ RETURN QUERY
 SELECT is(have, 5);
 
 prepare q2 AS
-SELECT * FROM
+SELECT seq, path_id, path_seq, node, edge, cost, agg_cost FROM
 pgr_ksp('SELECT * FROM fiber', 1, 4, 10, directed => false, heap_paths => true);
 
 PREPARE r2 AS
