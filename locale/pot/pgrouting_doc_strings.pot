@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-22 15:51+0000\n"
+"POT-Creation-Date: 2023-08-23 03:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3955,6 +3955,9 @@ msgstr ""
 msgid ":doc:`pgr_withPointsDD` signatures have changed, with the addition of new columns in the new signatures. It works mainly for driving cases, therefore the ``driving side`` parameter changed from optional to compulsory, and its valid values differ for directed and undirected graphs."
 msgstr ""
 
+msgid ":doc:`pgr_withPointsKSP` signature have changed, with the addition of new columns in the new signature. It works mainly for driving cases, therefore the ``driving side`` parameter changed from optional to compulsory, and its valid values differ for directed and undirected graphs."
+msgstr ""
+
 msgid "All deprecated functions will be removed on next mayor version 4.0.0"
 msgstr ""
 
@@ -4556,6 +4559,21 @@ msgid "Use :doc:`pgr_trspVia_withPoints` instead."
 msgstr ""
 
 msgid ":doc:`pgr_trspVia_withPoints`:"
+msgstr ""
+
+msgid "Migration of ``pgr_withPointsKSP``"
+msgstr ""
+
+msgid "``pgr_withPointsKSP`` (`One to One`)"
+msgstr ""
+
+msgid "Output columns were |old-pid-result|"
+msgstr ""
+
+msgid "``pgr_withPointsKSP`` (`One to One`) does not have ``start_vid`` and ``end_vid``."
+msgstr ""
+
+msgid "In ``pgr_withPointsKSP`` (`One to One`)"
 msgstr ""
 
 msgid ":doc:`withPoints-category`"
@@ -6130,7 +6148,7 @@ msgstr ""
 msgid "Individuals (in alphabetical order)"
 msgstr ""
 
-msgid "Aasheesh Tiwari, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Ashraf Hossain, Ashish Kumar, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
+msgid "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Ashraf Hossain, Ashish Kumar, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
 msgstr ""
 
 msgid "Corporate Sponsors (in alphabetical order)"
@@ -12550,22 +12568,55 @@ msgstr ""
 msgid "``pgr_withPointsKSP`` — Yen's algorithm for K shortest paths using Dijkstra."
 msgstr ""
 
+msgid "``pgr_withPointsKSP`` (`One to Many`_)"
+msgstr ""
+
+msgid "``pgr_withPointsKSP`` (`Many to One`_)"
+msgstr ""
+
+msgid "``pgr_withPointsKSP`` (`Many to Many`_)"
+msgstr ""
+
+msgid "``pgr_withPointsKSP`` (`Combinations`_)"
+msgstr ""
+
+msgid "Standarizing output columns to |nksp-result|"
+msgstr ""
+
+msgid "``pgr_withPointsKSP`` (`One to One`_) added ``start_vid`` and ``end_vid`` columns."
+msgstr ""
+
+msgid "Signature change on ``pgr_withPointsKSP`` (`One to One`_)"
+msgstr ""
+
 msgid "Modifies the graph to include the points defined in the `Points SQL`_ and using Yen algorithm, finds the :math:`K` shortest paths."
 msgstr ""
 
-msgid "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_ **start vid**, **end vid**, **K**, [**options**])"
+msgid "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, **K**, **driving_side**, [**options**])"
 msgstr ""
 
-msgid "**options:**  ``[directed, heap_paths, driving_side, details]``"
+msgid "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, **K**, **driving_side**, [**options**])"
 msgstr ""
 
-msgid "Get 2 paths from Point :math:`1` to point :math:`2` on a directed graph."
+msgid "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, **K**, **driving_side**, [**options**])"
+msgstr ""
+
+msgid "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, **K**, **driving_side**, [**options**])"
+msgstr ""
+
+msgid "pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, **K**, **driving_side**, [**options**])"
+msgstr ""
+
+msgid "**options:**  ``[directed, heap_paths, details]``"
+msgstr ""
+
+msgid "RETURNS SET OF |nksp-result|"
+msgstr ""
+
+msgid "Get 2 paths from Point :math:`1` to point :math:`2` on a directed graph with **left** side driving."
 msgstr ""
 
 msgid "For a directed graph."
-msgstr ""
-
-msgid "The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction."
 msgstr ""
 
 msgid "No details are given about distance of other points of the query."
@@ -12574,10 +12625,40 @@ msgstr ""
 msgid "No heap paths are returned."
 msgstr ""
 
+msgid "Get 2 paths from point :math:`1` to point :math:`3` and vertex :math:`7` on an undirected graph"
+msgstr ""
+
+msgid "Get a path from point :math:`1` and vertex :math:`6` to point :math:`3` on a **directed** graph with **right** side driving and **details** set to **True**"
+msgstr ""
+
+msgid "Get a path from point :math:`1` and vertex :math:`6` to point :math:`3` and vertex :math:`1` on a **directed** graph with **left** side driving and **heap_paths** set to **True**"
+msgstr ""
+
+msgid "Using a combinations table on an **directed** graph"
+msgstr ""
+
 msgid "`Points SQL`_ query as described."
 msgstr ""
 
 msgid "Identifier of the destination vertex."
+msgstr ""
+
+msgid "**driving_side**"
+msgstr ""
+
+msgid "**CHAR**"
+msgstr ""
+
+msgid "[``r``, ``R``] for right driving side (for directed graph only)"
+msgstr ""
+
+msgid "[``l``, ``L``] for left driving side (for directed graph only)"
+msgstr ""
+
+msgid "[``b``, ``B``] for both (only for undirected graph)"
+msgstr ""
+
+msgid "withPointsKSP optional parameters"
 msgstr ""
 
 msgid "Get :math:`2` paths using left side driving topology, from vertex :math:`1` to the closest location on the graph of point `(2.9, 1.8)`."
@@ -12586,7 +12667,7 @@ msgstr ""
 msgid "Left driving side"
 msgstr ""
 
-msgid "Get :math:`2` paths using left side driving topology, from point :math:`1` to point :math:`2` with details."
+msgid "Get :math:`2` paths using left side driving topology, from point :math:`1` to point :math:`3` with details."
 msgstr ""
 
 msgid "Right driving side"
@@ -12740,6 +12821,18 @@ msgid "``pgr_withPointsDD`` (`Single vertex`) added ``depth`` and ``start_vid`` 
 msgstr ""
 
 msgid "``pgr_withPointsDD`` (`Multiple vertices`) added ``depth`` column."
+msgstr ""
+
+msgid "`#2546 <https://github.com/pgRouting/pgrouting/pull/2546>`__ Standarize output and modifying signature pgr_withPointsKSP"
+msgstr ""
+
+msgid "New proposed functions: * ``pgr_withPointsKSP`` (`One to Many`) * ``pgr_withPointsKSP`` (`Many to One`) * ``pgr_withPointsKSP`` (`Many to Many`) * ``pgr_withPointsKSP`` (`Combinations`)"
+msgstr ""
+
+msgid "``pgr_withpointsksp(text, text, bigint, bigint, integer, boolean, boolean, char, boolean)``"
+msgstr ""
+
+msgid "``pgr_withPointsKSP`` (`One To One`) added ``start_vid`` and ``end_vid`` column."
 msgstr ""
 
 msgid "C/C++ code enhancements"
