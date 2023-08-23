@@ -11,7 +11,7 @@ UPDATE edges AS edge_table
 SET node_count=count.sum
 FROM
         (SELECT
-        from_v,
+        start_vid,
         sum(node) AS sum
         FROM
             pgr_drivingDistance(
@@ -19,19 +19,18 @@ FROM
             ARRAY(SELECT DISTINCT source FROM edges),
             1,
             false)
-    GROUP BY from_v) AS count
-    WHERE edges.source=count.from_v
+    GROUP BY start_vid) AS count
+    WHERE edge_table.source=count.start_vid
     ;
-ERROR:  invalid reference to FROM-clause entry for table "edges"
-LINE 14:     WHERE edges.source=count.from_v
-                   ^
-HINT:  Perhaps you meant to reference the table alias "edge_table".
+UPDATE 16
 ALTER TABLE edges
 DROP COLUMN IF EXISTS another_column,
 ADD COLUMN another_column INTEGER;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
+NOTICE:  column "another_column" of relation "edges" does not exist, skipping
+ALTER TABLE
 DROP TABLE IF EXISTS network;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
+NOTICE:  table "network" does not exist, skipping
+DROP TABLE
 CREATE TABLE network AS
 SELECT *
 from (
@@ -41,16 +40,17 @@ from (
     (3::int, 3::int, 4::int, 100::int),
     (4::int, 5::int, 6::int, 100::int)
 ) as t (id, source,target,cost);
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
+SELECT 4
 ALTER TABLE network
 DROP COLUMN IF EXISTS node_count,
 ADD COLUMN node_count INTEGER;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
+NOTICE:  column "node_count" of relation "network" does not exist, skipping
+ALTER TABLE
 UPDATE network AS network
 SET node_count=count.sum
 FROM
 (SELECT
-    from_v,
+    start_vid,
     sum(node) AS sum
     FROM
     pgr_drivingDistance(
@@ -58,13 +58,16 @@ FROM
         ARRAY(SELECT DISTINCT source FROM network),
         1,
         false)
-    GROUP BY from_v) AS count
-WHERE network.source=count.from_v
+    GROUP BY start_vid) AS count
+WHERE network.source=count.start_vid
 ;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
+NOTICE:
+No return values were found
+UPDATE 0
 ALTER TABLE network
 DROP COLUMN IF EXISTS another_column,
 ADD COLUMN another_column INTEGER;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
+NOTICE:  column "another_column" of relation "network" does not exist, skipping
+ALTER TABLE
 ROLLBACK;
 ROLLBACK
