@@ -1,9 +1,12 @@
 /*PGR-GNU*****************************************************************
 File: drivedist_driver.cpp
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky at erosion.dev
+Generated with Template by:                                                                                             
+Copyright (c) 2023 pgRouting developers                                                                                 
+Mail: project AT pgrouting.org   
 
+Copyright (c) 2023 Aryan Gupta
+guptaaryan1010 AT gmail.com
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -41,7 +44,9 @@ do_pgr_driving_many_to_dist(
         double distance,
         bool directedFlag,
         bool equiCostFlag,
-        Path_rt **return_tuples, size_t *return_count,
+        bool do_new,
+        Path_rt **return_old_tuples, size_t *return_old_count,
+        MST_rt  **return_tuples,     size_t *return_count,
         char **log_msg,
         char **notice_msg,
         char **err_msg) {
@@ -66,6 +71,7 @@ do_pgr_driving_many_to_dist(
         graphType gType = directedFlag? DIRECTED: UNDIRECTED;
 
         std::deque<Path> paths;
+        std::deque<MST_rt> results;
         std::vector<int64_t> start_vertices(start_vertex, start_vertex + s_len);
 
         auto vertices(pgrouting::extract_vertices(data_edges, total_edges));
@@ -73,17 +79,31 @@ do_pgr_driving_many_to_dist(
 
         if (directedFlag) {
             pgrouting::DirectedGraph digraph(vertices, gType);
+
             digraph.insert_edges(data_edges, total_edges, true);
-            paths = pgr_drivingDistance(
+
+            paths = pgr_drivingdistance(
                     digraph, start_vertices, distance, equiCostFlag, log);
+            if (do_new) {
+                pgrouting::functions::ShortestPath_tree<pgrouting::DirectedGraph> spt;
+                results = spt.get_depths(digraph, paths);
+            }
         } else {
             pgrouting::UndirectedGraph undigraph(vertices, gType);
+
             undigraph.insert_edges(data_edges, total_edges, true);
-            paths = pgr_drivingDistance(
+
+
+            paths = pgr_drivingdistance(
                     undigraph, start_vertices, distance, equiCostFlag, log);
+            if (do_new) {
+                pgrouting::functions::ShortestPath_tree<pgrouting::UndirectedGraph> spt;
+                results = spt.get_depths(undigraph, paths);
+            }
         }
 
-        size_t count(count_tuples(paths));
+        if (do_new) {
+        size_t count(results.size());
 
 
         if (count == 0) {
@@ -92,9 +112,29 @@ do_pgr_driving_many_to_dist(
             return;
         }
         *return_tuples = pgr_alloc(count, (*return_tuples));
-        auto trueCount(collapse_paths(return_tuples, paths));
-        *return_count = trueCount;
+        for (size_t i = 0; i < count; i++) {
+            *((*return_tuples) + i) = results[i];
+        }
+        (*return_count) = count;
+        } else {
+        /* old code to be removed on v4 */
+        for (auto &path : paths) {
+            std::sort(path.begin(), path.end(),
+                    [](const Path_t &l, const  Path_t &r)
+                    {return l.node < r.node;});
+            std::stable_sort(path.begin(), path.end(),
+                    [](const Path_t &l, const  Path_t &r)
+                    {return l.agg_cost < r.agg_cost;});
+        }
+        size_t count(count_tuples(paths));
 
+        if (count == 0) {
+            *notice_msg = pgr_msg("No return values was found");
+            return;
+        }
+        *return_old_tuples = pgr_alloc(count, (*return_old_tuples));
+        *return_old_count = collapse_paths(return_old_tuples, paths);
+        }
 
         *log_msg = log.str().empty()?
             *log_msg :
