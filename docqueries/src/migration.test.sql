@@ -288,11 +288,18 @@ SELECT * FROM pgr_withPointsKSP(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
   6, 10, 1,'r');
-
 /* --withPointsKSP2 */
 SELECT seq, path_seq, node, edge, cost, agg_cost FROM pgr_withPointsKSP(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
   6, 10, 1,'r');
-
 /* --withPointsKSP3 */
+/* --ksp1 */
+SELECT * FROM pgr_KSP(
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
+  6, 17, 2);
+/* --ksp2 */
+SELECT seq, path_id, path_seq, node, edge, cost, agg_cost FROM pgr_KSP(
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
+  6, 17, 2);
+/* --ksp3 */
