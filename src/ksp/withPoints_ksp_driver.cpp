@@ -151,6 +151,7 @@ pgr_do_withPointsKsp(
         *return_tuples = pgr_alloc(count, (*return_tuples));
 
         size_t sequence = 0;
+        int route_id = 0;
         for (const auto &path : paths) {
             if (path.size() > 0)
                 path.get_pg_nksp_path(return_tuples, sequence);
