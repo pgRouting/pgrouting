@@ -2,7 +2,10 @@
 File: _ksp.sql
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+vicky at erosion.dev
+
+Copyright (c) 2023 Aniket Agarwal
+aniketgarg187 at gmail.com
 
 ------
 
@@ -51,4 +54,58 @@ LANGUAGE C VOLATILE STRICT;
 -- COMMENTS
 
 COMMENT ON FUNCTION _pgr_ksp(TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';
+
+--v3.6
+CREATE FUNCTION _v4pgr_ksp(
+    edges_sql TEXT,
+    start_vids ANYARRAY,
+    end_vids ANYARRAY,
+    k INTEGER,
+
+    directed BOOLEAN,
+    heap_paths BOOLEAN,
+
+    OUT seq INTEGER,
+    OUT path_id INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE C VOLATILE STRICT;
+
+--v3.6
+CREATE FUNCTION _v4pgr_ksp(
+    edges_sql TEXT,
+    combinations TEXT,
+
+    k INTEGER,
+
+    directed BOOLEAN,
+    heap_paths BOOLEAN,
+
+    OUT seq INTEGER,
+    OUT path_id INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE C VOLATILE STRICT;
+
+-- COMMENTS
+
+COMMENT ON FUNCTION _v4pgr_ksp(TEXT, ANYARRAY, ANYARRAY, INTEGER, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';
+
+COMMENT ON FUNCTION _v4pgr_ksp(TEXT, TEXT, INTEGER, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';
