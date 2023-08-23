@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-23 03:01+0000\n"
+"POT-Creation-Date: 2023-08-23 11:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3946,6 +3946,9 @@ msgstr ""
 msgid "Migrating functions:"
 msgstr ""
 
+msgid ":doc:`pgr_KSP` signatures have been changed, with the addition of new columns start_vid & end_vid in the new signatures. one to many, many to one, many to many, and combinations overloads have been added."
+msgstr ""
+
 msgid ":doc:`pgr_maxCardinalityMatch` works only for undirected graphs, therefore the ``directed`` flag has been removed."
 msgstr ""
 
@@ -3964,13 +3967,61 @@ msgstr ""
 msgid "Migration of functions that add new columns"
 msgstr ""
 
-msgid "Migration of ``pgr_aStar``"
+msgid "Migration of ``pgr_KSP``"
 msgstr ""
 
 msgid "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__"
 msgstr ""
 
 msgid "Signatures to be migrated:"
+msgstr ""
+
+msgid "``pgr_KSP`` (`One to One`)"
+msgstr ""
+
+msgid "Before Migration"
+msgstr ""
+
+msgid "Output columns were |ksp-result|"
+msgstr ""
+
+msgid "the columns ``start_vid`` and ``end_vid`` will be missing:"
+msgstr ""
+
+msgid "``pgr_KSP`` (`One to One`) does not have ``start_vid`` and ``end_vid``."
+msgstr ""
+
+msgid "``pgr_KSP`` did not have (`One to Many`), (`Many to One`), (`Many to Many`) and (`Combinations`) overloads."
+msgstr ""
+
+msgid "Migration"
+msgstr ""
+
+msgid "Be aware of the existance of the additional columns."
+msgstr ""
+
+msgid "In ``pgr_KSP`` (`One to One`)"
+msgstr ""
+
+msgid "In ``pgr_KSP`` (`One to Many`)"
+msgstr ""
+
+msgid "In ``pgr_KSP`` (`Many to One`)"
+msgstr ""
+
+msgid "In ``pgr_KSP`` (`Many to Many`)"
+msgstr ""
+
+msgid "``start_vid`` contains the **start vid** parameter value."
+msgstr ""
+
+msgid "``end_vid`` contains the **end vid** parameter value."
+msgstr ""
+
+msgid "If needed filter out the added columns, for example:"
+msgstr ""
+
+msgid "Migration of ``pgr_aStar``"
 msgstr ""
 
 msgid "``pgr_aStar`` (`One to One`)"
@@ -3980,9 +4031,6 @@ msgid "``pgr_aStar`` (`One to Many`)"
 msgstr ""
 
 msgid "``pgr_aStar`` (`Many to One`)"
-msgstr ""
-
-msgid "Before Migration"
 msgstr ""
 
 msgid "Output columns were |old-generic-result|"
@@ -4000,28 +4048,13 @@ msgstr ""
 msgid "``pgr_aStar`` (`Many to One`) does not have ``end_vid``."
 msgstr ""
 
-msgid "Migration"
-msgstr ""
-
-msgid "Be aware of the existance of the additional columns."
-msgstr ""
-
 msgid "In ``pgr_aStar`` (`One to One`)"
-msgstr ""
-
-msgid "``start_vid`` contains the **start vid** parameter value."
-msgstr ""
-
-msgid "``end_vid`` contains the **end vid** parameter value."
 msgstr ""
 
 msgid "In ``pgr_aStar`` (`One to Many`)"
 msgstr ""
 
 msgid "In ``pgr_aStar`` (`Many to One`)"
-msgstr ""
-
-msgid "If needed filter out the added columns, for example:"
 msgstr ""
 
 msgid "If needed add the new columns, similar to the following example where ``pgr_dijkstra`` is used, and the function had to be modified to be able to return the new columns:"
@@ -6121,7 +6154,7 @@ msgstr ""
 msgid "Individuals in this release (in alphabetical order)"
 msgstr ""
 
-msgid "Ashish Kumar, Cayetano Benavent, Daniel Kastl, Nitish Chauhan, Rajat Shinde, Regina Obe, Shobhit Chaurasia, Swapnil Joshi, Virginia Vergara, Yige Huang"
+msgid "Aniket Agarwal Ashish Kumar, Cayetano Benavent, Daniel Kastl, Nitish Chauhan, Rajat Shinde, Regina Obe, Shobhit Chaurasia, Swapnil Joshi, Virginia Vergara, Yige Huang"
 msgstr ""
 
 msgid "And all the people that give us a little of their time making comments, finding issues, making pull requests etc.  in any of our products: osm2pgrouting, pgRouting, pgRoutingLayer, workshop."
@@ -6208,6 +6241,27 @@ msgstr ""
 msgid "Availability"
 msgstr ""
 
+msgid "Version 3.6.0"
+msgstr ""
+
+msgid "``pgr_ksp`` (`One to One`_) added ``start_vid`` and ``end_vid`` columns."
+msgstr ""
+
+msgid "New **overloades** functions:"
+msgstr ""
+
+msgid "``pgr_ksp`` (`One to Many`_)"
+msgstr ""
+
+msgid "``pgr_ksp`` (`Many to One`_)"
+msgstr ""
+
+msgid "``pgr_ksp`` (`Many to Many`_)"
+msgstr ""
+
+msgid "``pgr_ksp`` (`Combinations`_)"
+msgstr ""
+
 msgid "Version 2.1.0"
 msgstr ""
 
@@ -6235,10 +6289,22 @@ msgstr ""
 msgid "pgr_KSP(`Edges SQL`_, **start vid**, **end vid**, **K**, [**options**])"
 msgstr ""
 
+msgid "pgr_KSP(`Edges SQL`_, **start vid**, **end vids**, **K**, [**options**])"
+msgstr ""
+
+msgid "pgr_KSP(`Edges SQL`_, **start vids**, **end vid**, **K**, [**options**])"
+msgstr ""
+
+msgid "pgr_KSP(`Edges SQL`_, **start vids**, **end vids**, **K**, [**options**])"
+msgstr ""
+
+msgid "pgr_KSP(`Edges SQL`_, `Combinations SQL`_, **K**, [**options**])"
+msgstr ""
+
 msgid "**options:** ``[directed, heap_paths]``"
 msgstr ""
 
-msgid "RETURNS SET OF |ksp-result|"
+msgid "RETURNS SET OF |nksp-result|"
 msgstr ""
 
 msgid "OR EMPTY SET"
@@ -6248,6 +6314,27 @@ msgid "Example"
 msgstr ""
 
 msgid "Get 2 paths from :math:`6` to :math:`17` on a directed graph."
+msgstr ""
+
+msgid "Get 2 paths from vertex :math:`6` to vertices :math:`\\{10, 17\\}` on a directed graph."
+msgstr ""
+
+msgid "Get 2 paths from vertices :math:`\\{6, 1\\}` to vertex :math:`17` on a directed graph."
+msgstr ""
+
+msgid "Get 2 paths vertices :math:`\\{6, 1\\}` to vertices :math:`\\{10, 17\\}` on a directed graph."
+msgstr ""
+
+msgid "Using a combinations table on an directed graph"
+msgstr ""
+
+msgid "The combinations table:"
+msgstr ""
+
+msgid "The query:"
+msgstr ""
+
+msgid "Identifier of the destination vertex."
 msgstr ""
 
 msgid "**K**"
@@ -6271,7 +6358,10 @@ msgstr ""
 msgid "Roughly, when the shortest path has ``N`` edges, the heap will contain about than ``N * K`` paths for small value of ``K`` and ``K > 5``."
 msgstr ""
 
-msgid "Has value **1** for the first of a path from **start vid** to **end_vid**"
+msgid "Returns set of |nksp-result|"
+msgstr ""
+
+msgid "Has value **1** for the first of a path from **start vid** to **end vid**"
 msgstr ""
 
 msgid "Identifier of the node in the path from **start vid** to **end vid**"
@@ -6290,6 +6380,12 @@ msgid "Get 2 paths from :math:`6` to :math:`17` on an undirected graph"
 msgstr ""
 
 msgid "Also get the paths in the heap."
+msgstr ""
+
+msgid "Get 2 paths using combinations table on an undirecte graph"
+msgstr ""
+
+msgid "Get 2 paths from vertices :math:`\\{6, 1\\}` to vertex :math:`17` on a undirected graph."
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/K_shortest_path_routing"
@@ -6565,9 +6661,6 @@ msgstr ""
 msgid "``pgr_aStar`` — Shortest path using the A* algorithm."
 msgstr ""
 
-msgid "Version 3.6.0"
-msgstr ""
-
 msgid "Standarizing output columns to |short-generic-result|"
 msgstr ""
 
@@ -6662,12 +6755,6 @@ msgid "From vertices :math:`\\{6, 8\\}` to vertices :math:`\\{10, 12\\}` on a **
 msgstr ""
 
 msgid "Using a combinations table on a **directed** graph with factor :math:`0.5`."
-msgstr ""
-
-msgid "The combinations table:"
-msgstr ""
-
-msgid "The query:"
 msgstr ""
 
 msgid "Example 1"
@@ -12157,6 +12244,9 @@ msgstr ""
 msgid "**options:** ``[directed, heap_paths, stop_on_first, strict]``"
 msgstr ""
 
+msgid "RETURNS SET OF |ksp-result|"
+msgstr ""
+
 msgid "From vertex :math:`3` to vertex  :math:`8` on a directed graph"
 msgstr ""
 
@@ -12610,9 +12700,6 @@ msgstr ""
 msgid "**options:**  ``[directed, heap_paths, details]``"
 msgstr ""
 
-msgid "RETURNS SET OF |nksp-result|"
-msgstr ""
-
 msgid "Get 2 paths from Point :math:`1` to point :math:`2` on a directed graph with **left** side driving."
 msgstr ""
 
@@ -12638,9 +12725,6 @@ msgid "Using a combinations table on an **directed** graph"
 msgstr ""
 
 msgid "`Points SQL`_ query as described."
-msgstr ""
-
-msgid "Identifier of the destination vertex."
 msgstr ""
 
 msgid "**driving_side**"
@@ -12833,6 +12917,18 @@ msgid "``pgr_withpointsksp(text, text, bigint, bigint, integer, boolean, boolean
 msgstr ""
 
 msgid "``pgr_withPointsKSP`` (`One To One`) added ``start_vid`` and ``end_vid`` column."
+msgstr ""
+
+msgid "[#2547](https://github.com/pgRouting/pgrouting/pull/2547) Standarize output and modifying signature pgr_KSP"
+msgstr ""
+
+msgid "New proposed functions: * ``pgr_KSP`` (`One to Many`) * ``pgr_KSP`` (`Many to One`) * ``pgr_KSP`` (`Many to Many`) * ``pgr_KSP`` (`Combinations`)"
+msgstr ""
+
+msgid "``pgr_ksp(text, bigint, bigint, integer, boolean, boolean)``"
+msgstr ""
+
+msgid "``pgr_KSP`` (`One To One`) added ``start_vid`` and ``end_vid`` column."
 msgstr ""
 
 msgid "C/C++ code enhancements"
