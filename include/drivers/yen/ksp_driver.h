@@ -2,7 +2,10 @@
 File: ksp_driver.h
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Mail: vicky at erosion.dev
+
+Copyright (c) 2023 Aniket Agarwal
+Mail: aniketgarg187 at gmail.com
 
 ------
 
@@ -32,17 +35,33 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <cstddef>
 using Edge_t = struct Edge_t;
 using Path_rt = struct Path_rt;
+using II_t_rt = struct II_t_rt;
 #else
 #   include <stddef.h>
 #   include <stdint.h>
 typedef struct Edge_t Edge_t;
 typedef struct Path_rt Path_rt;
+typedef struct II_t_rt II_t_rt;
 #endif
 
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+    void  pgr_do_ksp(
+            Edge_t*, size_t,
+            II_t_rt*, size_t,
+            int64_t*, size_t,
+            int64_t*, size_t,
+            size_t,
+            bool,
+            bool,
+            Path_rt**,
+            size_t*,
+            char**,
+            char**,
+            char**);
 
     void  do_pgr_ksp(
             Edge_t  *data_edges,
