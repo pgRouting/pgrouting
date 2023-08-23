@@ -107,24 +107,53 @@ SELECT lives_ok($$
     )
     $$);
 
-SELECT bag_has($$
-    SELECT from_v, node, edge, cost, agg_cost
-    FROM pgr_drivingdistance(
-        'SELECT * FROM tmp_net',
-        ARRAY[
-            28143,37447,43401,50409,91800,
-            98234,108908,1888,1897,85914,
-            1898,85930,112714,11851,31406,
-            37961,43534,50994,57875,71749,
-            77860,4424,4641,35309,53002,
-            57762,75549,79856,80019,88626,
-            89435,116859,37736,51812,97808]::INTEGER[],
-        2680,
-        equicost:=TRUE,
-        directed:=TRUE
-    )$$,
-    $$ VALUES (85930, 85930, -1, 0, 0) $$
-);
+CREATE OR REPLACE FUNCTION test_function() RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+    IF min_version('3.6.0') THEN
 
+        RETURN QUERY SELECT bag_has($$
+        SELECT start_vid, node, edge, cost, agg_cost
+            FROM pgr_drivingdistance(
+                'SELECT * FROM tmp_net',
+                ARRAY[
+                    28143,37447,43401,50409,91800,
+                    98234,108908,1888,1897,85914,
+                    1898,85930,112714,11851,31406,
+                    37961,43534,50994,57875,71749,
+                    77860,4424,4641,35309,53002,
+                    57762,75549,79856,80019,88626,
+                    89435,116859,37736,51812,97808]::INTEGER[],
+                2680,
+                equicost:=TRUE,
+                directed:=TRUE
+            )$$,
+            $$ VALUES (85930, 85930, -1, 0, 0) $$ );
+
+    ELSE
+
+        RETURN QUERY SELECT bag_has($$
+        SELECT from_v, node, edge, cost, agg_cost
+            FROM pgr_drivingdistance(
+                'SELECT * FROM tmp_net',
+                ARRAY[
+                    28143,37447,43401,50409,91800,
+                    98234,108908,1888,1897,85914,
+                    1898,85930,112714,11851,31406,
+                    37961,43534,50994,57875,71749,
+                    77860,4424,4641,35309,53002,
+                    57762,75549,79856,80019,88626,
+                    89435,116859,37736,51812,97808]::INTEGER[],
+                2680,
+                equicost:=TRUE,
+                directed:=TRUE
+            )$$,
+            $$ VALUES (85930, 85930, -1, 0, 0) $$ );
+    END IF;
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT * FROM test_function();
 SELECT finish();
 ROLLBACK;
