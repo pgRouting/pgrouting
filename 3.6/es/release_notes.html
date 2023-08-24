@@ -381,6 +381,26 @@ pgr_KSP</p>
 </li>
 </ul>
 </li>
+<li><p>[#2548](<a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2548">https://github.com/pgRouting/pgrouting/pull/2548</a>) Standarize output and modifying signature
+pgr_drivingdistance</p>
+<ul>
+<li><p>New proposed functions:
+* <code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (<cite>Single vertex</cite>)
+* <code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (<cite>Multiple vertices</cite>)</p></li>
+<li><p>Deprecated signatures:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance(text,anyarray,double</span> <span class="pre">precision,boolean,boolean)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance(text,bigint,double</span> <span class="pre">precision,boolean,boolean)</span></code></p></li>
+</ul>
+</li>
+<li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (<cite>Single vertex</cite>) added <code class="docutils literal notranslate"><span class="pre">depth</span></code> and <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivindistance</span></code> (<cite>Multiple vertices</cite>) added <code class="docutils literal notranslate"><span class="pre">depth</span></code> column.</p></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p class="rubric">C/C++ code enhancements</p>
 <ul class="simple">
@@ -1770,8 +1790,8 @@ FindPostgreSQL.cmake</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
-      Actualizado por última vez en ago 23, 2023.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.2.<br/>
+      Actualizado por última vez en ago 24, 2023.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.3.<br/>
     </p>
   </div>
 </footer>
