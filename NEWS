@@ -80,6 +80,25 @@ pgRouting 3.6.0 Release Notes
 
     * ``pgr_KSP`` (`One To One`) added ``start_vid`` and ``end_vid`` column.
 
+
+* [#2548](https://github.com/pgRouting/pgrouting/pull/2548) Standarize output and modifying signature
+  pgr_drivingdistance
+
+  * New proposed functions:
+    * ``pgr_drivingdistance`` (`Single vertex`)
+    * ``pgr_drivingdistance`` (`Multiple vertices`)
+
+  * Deprecated signatures:
+
+    * ``pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)``
+    * ``pgr_drivingdistance(text,bigint,double precision,boolean,boolean)``
+
+  * Standarizing output columns to |result-bfs|
+
+    * ``pgr_drivingdistance`` (`Single vertex`) added ``depth`` and ``start_vid`` column.
+    * ``pgr_drivindistance`` (`Multiple vertices`) added ``depth`` column.
+
+
 **C/C++ code enhancements**
 
 * [#2504](https://github.com/pgRouting/pgrouting/pull/2504) To C++ pg data get,
