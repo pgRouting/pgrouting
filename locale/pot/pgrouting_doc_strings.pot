@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-23 11:15+0000\n"
+"POT-Creation-Date: 2023-08-24 19:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3946,6 +3946,9 @@ msgstr ""
 msgid "Migrating functions:"
 msgstr ""
 
+msgid ":doc:`pgr_drivingDistance` signatures have changed, with the addition of new columns in the new signatures."
+msgstr ""
+
 msgid ":doc:`pgr_KSP` signatures have been changed, with the addition of new columns start_vid & end_vid in the new signatures. one to many, many to one, many to many, and combinations overloads have been added."
 msgstr ""
 
@@ -3967,7 +3970,7 @@ msgstr ""
 msgid "Migration of functions that add new columns"
 msgstr ""
 
-msgid "Migration of ``pgr_KSP``"
+msgid "Migration of ``pgr_drivingdistance``"
 msgstr ""
 
 msgid "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__"
@@ -3976,10 +3979,52 @@ msgstr ""
 msgid "Signatures to be migrated:"
 msgstr ""
 
-msgid "``pgr_KSP`` (`One to One`)"
+msgid "``pgr_drivingdistance`` (`Single vertex`)"
+msgstr ""
+
+msgid "``pgr_drivingdistance`` (`Multiple vertices`)"
 msgstr ""
 
 msgid "Before Migration"
+msgstr ""
+
+msgid "Output columns were |result-dij-dd-m|"
+msgstr ""
+
+msgid "Depending on the vertices, the column ``start_vid`` might be missing and the depth column is not in any one of them:"
+msgstr ""
+
+msgid "``pgr_drivingdistance`` (`Single vertex`) does not have ``start_vid`` and ``depth``."
+msgstr ""
+
+msgid "``pgr_drivingdistance`` (`Multiple vertices`) does not have ``depth``."
+msgstr ""
+
+msgid "Migration"
+msgstr ""
+
+msgid "Be aware of the existance of the additional columns."
+msgstr ""
+
+msgid "In ``pgr_drivingdistance`` (`Single vertex`)"
+msgstr ""
+
+msgid "``start_vid`` contains the **start vid** parameter value."
+msgstr ""
+
+msgid "``depth`` contains the **depth** parameter value."
+msgstr ""
+
+msgid "In ``pgr_drivingdistance`` (`Multiple vertices`)"
+msgstr ""
+
+msgid "If needed filter out the added columns, for example:"
+msgstr ""
+
+msgid "Migration of ``pgr_KSP``"
+msgstr ""
+
+msgid "``pgr_KSP`` (`One to One`)"
 msgstr ""
 
 msgid "Output columns were |ksp-result|"
@@ -3994,12 +4039,6 @@ msgstr ""
 msgid "``pgr_KSP`` did not have (`One to Many`), (`Many to One`), (`Many to Many`) and (`Combinations`) overloads."
 msgstr ""
 
-msgid "Migration"
-msgstr ""
-
-msgid "Be aware of the existance of the additional columns."
-msgstr ""
-
 msgid "In ``pgr_KSP`` (`One to One`)"
 msgstr ""
 
@@ -4012,13 +4051,7 @@ msgstr ""
 msgid "In ``pgr_KSP`` (`Many to Many`)"
 msgstr ""
 
-msgid "``start_vid`` contains the **start vid** parameter value."
-msgstr ""
-
 msgid "``end_vid`` contains the **end vid** parameter value."
-msgstr ""
-
-msgid "If needed filter out the added columns, for example:"
 msgstr ""
 
 msgid "Migration of ``pgr_aStar``"
@@ -4166,9 +4199,6 @@ msgid "In undirected graph, valid values are [``b``, ``B``]"
 msgstr ""
 
 msgid "In ``pgr_withPointsDD`` (`Single vertex`)"
-msgstr ""
-
-msgid "``depth`` contains the **depth** parameter value."
 msgstr ""
 
 msgid "In ``pgr_withPointsDD`` (`Multiple vertices`)"
@@ -6154,7 +6184,7 @@ msgstr ""
 msgid "Individuals in this release (in alphabetical order)"
 msgstr ""
 
-msgid "Aniket Agarwal Ashish Kumar, Cayetano Benavent, Daniel Kastl, Nitish Chauhan, Rajat Shinde, Regina Obe, Shobhit Chaurasia, Swapnil Joshi, Virginia Vergara, Yige Huang"
+msgid "Aniket Agarwal, Aryan Gupta, Ashish Kumar, Cayetano Benavent, Daniel Kastl, Nitish Chauhan, Rajat Shinde, Regina Obe, Shobhit Chaurasia, Swapnil Joshi, Virginia Vergara, Yige Huang"
 msgstr ""
 
 msgid "And all the people that give us a little of their time making comments, finding issues, making pull requests etc.  in any of our products: osm2pgrouting, pgRouting, pgRoutingLayer, workshop."
@@ -6181,7 +6211,7 @@ msgstr ""
 msgid "Individuals (in alphabetical order)"
 msgstr ""
 
-msgid "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Ashraf Hossain, Ashish Kumar, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
+msgid "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
 msgstr ""
 
 msgid "Corporate Sponsors (in alphabetical order)"
@@ -9406,6 +9436,15 @@ msgstr ""
 msgid "``pgr_drivingDistance`` - Returns the driving distance from a start node."
 msgstr ""
 
+msgid "Standarizing output columns to |result-bfs|"
+msgstr ""
+
+msgid "``pgr_drivingdistance`` (`Single vertex`_) added ``depth`` and ``start_vid`` column."
+msgstr ""
+
+msgid "``pgr_drivingdistance`` (`Multiple vertices`_) added ``depth`` column."
+msgstr ""
+
 msgid "Version 2.1.0:"
 msgstr ""
 
@@ -9433,9 +9472,6 @@ msgstr ""
 msgid "**options:** [directed, equicost]"
 msgstr ""
 
-msgid "RETURNS SET OF |result-dij-dd|"
-msgstr ""
-
 msgid "Single Vertex"
 msgstr ""
 
@@ -9443,9 +9479,6 @@ msgid "From vertex :math:`11` for a distance of :math:`3.0`"
 msgstr ""
 
 msgid "Multiple Vertices"
-msgstr ""
-
-msgid "RETURNS SET OF |result-dij-dd-m|"
 msgstr ""
 
 msgid "From vertices :math:`\\{11, 16\\}` for a distance of :math:`3.0` with equi-cost on a directed graph"
@@ -9461,21 +9494,6 @@ msgid "When ``true`` the node will only appear in the closest ``start_vid`` list
 msgstr ""
 
 msgid "When ``false`` which resembles several calls using the single starting point signatures. Tie brakes are arbitrary."
-msgstr ""
-
-msgid "Returns SET OF ``(seq, from_v, node, edge, cost, agg_cost)``"
-msgstr ""
-
-msgid "``[from_v]``"
-msgstr ""
-
-msgid "Identifier of ``node`` within the limits from ``from_v``."
-msgstr ""
-
-msgid ":math:`0` when ``node`` = ``from_v``."
-msgstr ""
-
-msgid "Aggregate cost from ``from_v`` to ``node``."
 msgstr ""
 
 msgid "From vertices :math:`\\{11, 16\\}` for a distance of :math:`3.0` on an undirected graph"
@@ -12571,9 +12589,6 @@ msgstr ""
 msgid "``pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)``"
 msgstr ""
 
-msgid "Standarizing output columns to |result-bfs|"
-msgstr ""
-
 msgid "``pgr_withPointsDD`` (`Single vertex`_) added ``depth`` and ``start_vid`` column."
 msgstr ""
 
@@ -12929,6 +12944,24 @@ msgid "``pgr_ksp(text, bigint, bigint, integer, boolean, boolean)``"
 msgstr ""
 
 msgid "``pgr_KSP`` (`One To One`) added ``start_vid`` and ``end_vid`` column."
+msgstr ""
+
+msgid "[#2548](https://github.com/pgRouting/pgrouting/pull/2548) Standarize output and modifying signature pgr_drivingdistance"
+msgstr ""
+
+msgid "New proposed functions: * ``pgr_drivingdistance`` (`Single vertex`) * ``pgr_drivingdistance`` (`Multiple vertices`)"
+msgstr ""
+
+msgid "``pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)``"
+msgstr ""
+
+msgid "``pgr_drivingdistance(text,bigint,double precision,boolean,boolean)``"
+msgstr ""
+
+msgid "``pgr_drivingdistance`` (`Single vertex`) added ``depth`` and ``start_vid`` column."
+msgstr ""
+
+msgid "``pgr_drivindistance`` (`Multiple vertices`) added ``depth`` column."
 msgstr ""
 
 msgid "C/C++ code enhancements"
