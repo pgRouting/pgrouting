@@ -66,7 +66,8 @@ This Release Contributors
 Individuals in this release (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Aniket Agarwal
+Aniket Agarwal,
+Aryan Gupta,
 Ashish Kumar,
 Cayetano Benavent,
 Daniel Kastl,
@@ -108,6 +109,7 @@ Akio Takubo,
 Andrea Nardelli,
 Anthony Tasca,
 Anton Patrushev,
+Aryan Gupta,
 Ashraf Hossain,
 Ashish Kumar,
 Cayetano Benavent,

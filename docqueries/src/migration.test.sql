@@ -303,3 +303,17 @@ SELECT seq, path_id, path_seq, node, edge, cost, agg_cost FROM pgr_KSP(
   'SELECT id, source, target, cost, reverse_cost FROM edges',
   6, 17, 2);
 /* --ksp3 */
+/* --drivingdistance1 */
+SELECT * FROM pgr_drivingDistance(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
+  7, 2.0);
+/* --drivingdistance2 */
+SELECT * FROM pgr_drivingDistance(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
+  array[7, 16], 2.0, directed => false);
+/* --drivingdistance3 */
+SELECT seq, start_vid, node, edge, cost, agg_cost FROM pgr_drivingDistance(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
+  array[7, 16], 2.0, directed => false);
+/* --drivingdistance4 */
+

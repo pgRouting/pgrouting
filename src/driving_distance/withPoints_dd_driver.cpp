@@ -122,7 +122,7 @@ pgr_do_withPointsDD(
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(edges, total_edges);
             digraph.insert_edges(pg_graph.new_edges());
-            paths = pgr_drivingDistance(
+            paths = pgr_drivingdistance(
                     digraph, start_vids, distance, equiCost, log);
             if (do_new) {
                 pgrouting::functions::ShortestPath_tree<pgrouting::DirectedGraph> spt;
@@ -132,7 +132,8 @@ pgr_do_withPointsDD(
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(edges, total_edges);
             undigraph.insert_edges(pg_graph.new_edges());
-            paths = pgr_drivingDistance(
+
+            paths = pgr_drivingdistance(
                     undigraph, start_vids, distance, equiCost, log);
             if (do_new) {
                 pgrouting::functions::ShortestPath_tree<pgrouting::UndirectedGraph> spt;
