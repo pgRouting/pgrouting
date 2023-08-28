@@ -1,11 +1,6 @@
 /*PGR-GNU*****************************************************************
 File: many_to_dist_driving_distance.c
 
-Generated with Template by:
-Copyright (c) 2015 pgRouting developers
-Mail: project at pgrouting.org
-
-Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky at erosion.dev
 
@@ -72,11 +67,11 @@ void process(
             return;
         }
         if (!(d_side == 'r' || d_side == 'l') && directed) {
-            throw_error("Graph is directed", "Valid values are 'r', 'l'");
+            throw_error("Invalid value of 'driving side'", "Valid values are for directed graph are: 'r', 'l'");
             return;
         }
         if (!(d_side == 'b') && !directed) {
-            throw_error("Graph is undirected", "Valid value is only 'b'");
+            throw_error("Invalid value of 'driving side'", "Valid values are for undirected graph is: 'b'");
             return;
         }
     } else {

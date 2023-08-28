@@ -21,22 +21,28 @@
    Boost Graph Inside
 
 .. rubric:: Availability
-   
-* Version 3.6.0
 
-  * Standarizing output columns to |result-bfs|
+:Version 3.6.0:
 
-    * ``pgr_drivingdistance`` (`Single vertex`_) added ``depth`` and ``start_vid`` column.
-    * ``pgr_drivingdistance`` (`Multiple vertices`_) added ``depth`` column.
+* Standarizing output columns to |result-bfs|
 
-* Version 2.1.0:
+  * ``pgr_drivingdistance`` (Single vertex)
 
-  * Signature change pgr_drivingDistance(single vertex)
-  * New **Official** pgr_drivingDistance(multiple vertices)
+    * Added ``depth`` and ``start_vid`` result columns.
 
-* Version 2.0.0:
+  * ``pgr_drivingdistance`` (Multiple vertices)
 
-  * **Official** pgr_drivingDistance(single vertex)
+    * Result column name change: ``from_v`` to ``start_vid``.
+    * Added ``depth`` result column.
+
+:Version 2.1.0:
+
+* Signature change pgr_drivingDistance(single vertex)
+* New **Official** pgr_drivingDistance(multiple vertices)
+
+:Version 2.0.0:
+
+* Official:: pgr_drivingDistance(single vertex)
 
 
 Description
@@ -130,9 +136,9 @@ Driving distance optional parameters
      - ``BOOLEAN``
      - ``true``
      - * When ``true`` the node will only appear in the closest ``start_vid``
-         list.
-       * When ``false`` which resembles several calls using the single starting
-         point signatures. Tie brakes are arbitrary.
+         list. Tie brakes are arbitrary.
+       * When ``false`` which resembles several calls using the single vertex
+         signature.
 
 .. equicost_end
 
