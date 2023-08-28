@@ -26,25 +26,29 @@ pgr_withPointsKSP - Proposed
 
 .. rubric:: Availability
 
-* Version 3.6.0
+.. rubric:: Version 3.6.0
 
-  * New **proposed** function:
+* Standarizing output columns to |nksp-result|
+* ``pgr_withPointsKSP`` (One to One)
 
-    * ``pgr_withPointsKSP`` (`One to Many`_)
-    * ``pgr_withPointsKSP`` (`Many to One`_)
-    * ``pgr_withPointsKSP`` (`Many to Many`_)
-    * ``pgr_withPointsKSP`` (`Combinations`_)
+  * Signature change: ``driving_side`` parameter changed from named optional to
+    unnamed compulsory **driving side**.
+  * Added ``start_vid`` and ``end_vid`` result columns.
 
-  * Standarizing output columns to |nksp-result|
+* New overload functions:
 
-    * ``pgr_withPointsKSP`` (`One to One`_) added ``start_vid`` and ``end_vid`` columns.
+  * ``pgr_withPointsKSP`` (One to Many)
+  * ``pgr_withPointsKSP`` (Many to One)
+  * ``pgr_withPointsKSP`` (Many to Many)
+  * ``pgr_withPointsKSP`` (Combinations)
 
-  * Signature change on ``pgr_withPointsKSP`` (`One to One`_)
+* Deprecated signature:
 
+  * ``pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,boolean)``
 
-* Version 2.2.0
+.. rubric:: Version 2.2.0
 
-  * New **proposed** function
+* New **proposed** function
 
 
 Description

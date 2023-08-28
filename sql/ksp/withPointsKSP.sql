@@ -2,7 +2,7 @@
 File: withPointsKSP.sql
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara AT erosion.dev
+vicky AT erosion.dev
 
 Copyright (c) 2023 Abhinav Jain
 this.abhinav AT gmail.com

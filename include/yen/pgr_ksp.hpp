@@ -3,6 +3,7 @@ File: pgr_ksp.hpp
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky AT erosion.dev
+
 Copyright (c) 2023 Aniket Agarwal
 Mail: aniketgarg187 AT gmail.com
 
@@ -25,7 +26,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-
 
 #ifndef INCLUDE_YEN_PGR_KSP_HPP_
 #define INCLUDE_YEN_PGR_KSP_HPP_
@@ -273,6 +273,5 @@ namespace algorithms {
 }  // namespace algorithms
 
 }  // namespace pgrouting
-
 
 #endif  // INCLUDE_YEN_PGR_KSP_HPP_

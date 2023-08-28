@@ -16,12 +16,12 @@ SELECT * FROM pgr_withPointsKSP(
 SELECT * FROM pgr_withPointsKSP(
   'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-  ARRAY[-1, 6], -3, 1,'r', details:= true);
+  ARRAY[-1, 6], -3, 1, 'r', details=> true);
 /* --q4 */
 SELECT * FROM pgr_withPointsKSP(
   'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-  ARRAY[-1, 6], ARRAY[-3, 1], 1, 'l', heap_paths:= true);
+  ARRAY[-1, 6], ARRAY[-3, 1], 1, 'l', heap_paths => true);
 /* --q5 */
 SELECT * FROM pgr_withPointsKSP(
   'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
@@ -42,11 +42,11 @@ SELECT * FROM pgr_withPointsKSP(
 SELECT * FROM pgr_withPointsKSP(
     'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    -1, -3, 2, 'l', details := true);
+    -1, -3, 2, 'l', details => true);
 /* --q8 */
 SELECT * FROM pgr_withPointsKSP(
     'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, -2, 2, 'r',
-    heap_paths := true, details := true);
+    heap_paths => true, details => true);
 /* --q9 */

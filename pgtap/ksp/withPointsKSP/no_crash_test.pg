@@ -1,4 +1,3 @@
-
 /*PGR-GNU*****************************************************************
 
 Copyright (c) 2018  pgRouting developers
@@ -107,7 +106,7 @@ IF min_version('3.6.0') THEN
     -- many to one
     params = ARRAY['$$edges$$',
     '$$SELECT pid, edge_id, fraction from pointsOfInterest$$',
-    'ARRAY[2,5]::BIGINT[]', 
+    'ARRAY[2,5]::BIGINT[]',
     '1',
     '2',
     '$$r$$'
