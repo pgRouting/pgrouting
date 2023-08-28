@@ -18,127 +18,17 @@ replaced by new functions.
 
 Results can be different because of the changes.
 
-Migrating functions:
-
-:doc:`pgr_drivingDistance` signatures have changed, with the addition of new columns
-in the new signatures.
-
-:doc:`pgr_KSP` signatures have been changed, with the addition of new columns start_vid & end_vid
-in the new signatures. one to many, many to one, many to many, and combinations overloads have been added.
-
-:doc:`pgr_maxCardinalityMatch` works only for undirected graphs, therefore the
-``directed`` flag has been removed.
-
-:doc:`pgr_trsp` signatures have changed and many issues have been fixed in the new
-signatures. This section will show how to migrate from the old signatures to the
-new replacement functions. This also affects the restrictions.
-
-:doc:`pgr_withPointsDD` signatures have changed, with the addition of new columns
-in the new signatures. It works mainly for driving cases, therefore the ``driving side``
-parameter changed from optional to compulsory, and its valid values differ for
-directed and undirected graphs.
-
-:doc:`pgr_withPointsKSP` signature have changed, with the addition of new columns
-in the new signature. It works mainly for driving cases, therefore the ``driving side``
-parameter changed from optional to compulsory, and its valid values differ for
-directed and undirected graphs.
-
 .. warning::
    All deprecated functions will be removed on next mayor version 4.0.0
 
 .. contents:: Contents
 
-Migration of functions that add new columns
+Migration of functions
 *******************************************************************************
 
-.. contents:: Contents
+.. contents:: Migrating functions
    :local:
 
-Migration of ``pgr_drivingdistance``
--------------------------------------------------------------------------------
-
-Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
-
-Signatures to be migrated:
-
-* ``pgr_drivingdistance`` (`Single vertex`)
-* ``pgr_drivingdistance`` (`Multiple vertices`)
-
-:Before Migration:
-
-* Output columns were |result-dij-dd-m|
-
-  * Depending on the vertices, the column ``start_vid`` might be missing and the depth column is not in any one of them:
-
-    * ``pgr_drivingdistance`` (`Single vertex`) does not have ``start_vid`` and ``depth``.
-    * ``pgr_drivingdistance`` (`Multiple vertices`) does not have ``depth``.
-
-:Migration:
-
-* Be aware of the existance of the additional columns.
-
-* In ``pgr_drivingdistance`` (`Single vertex`)
-
-  * ``start_vid`` contains the **start vid** parameter value.
-  * ``depth`` contains the **depth** parameter value.
-
-.. literalinclude:: migration.queries
-   :start-after: --drivingdistance1
-   :end-before: --drivingdistance2
-
-* In ``pgr_drivingdistance`` (`Multiple vertices`)
-
-  * ``depth`` contains the **depth** parameter value.
-
-.. literalinclude:: migration.queries
-   :start-after: --drivingdistance2
-   :end-before: --drivingdistance3
-
-* If needed filter out the added columns, for example:
-
-.. literalinclude:: migration.queries
-   :start-after: --drivingdistance3
-   :end-before: --drivingdistance4
-
-Migration of ``pgr_KSP``
--------------------------------------------------------------------------------
-
-Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
-
-Signatures to be migrated:
-
-* ``pgr_KSP`` (`One to One`)
-
-:Before Migration:
-
-* Output columns were |ksp-result|
-
-  * the columns ``start_vid`` and ``end_vid`` will be missing:
-
-    * ``pgr_KSP`` (`One to One`) does not have ``start_vid`` and ``end_vid``.
-    * ``pgr_KSP`` did not have (`One to Many`), (`Many to One`), (`Many to Many`) and (`Combinations`) overloads.
-
-:Migration:
-
-* Be aware of the existance of the additional columns.
-
-* In ``pgr_KSP`` (`One to One`)
-* In ``pgr_KSP`` (`One to Many`)
-* In ``pgr_KSP`` (`Many to One`)
-* In ``pgr_KSP`` (`Many to Many`)
-
-  * ``start_vid`` contains the **start vid** parameter value.
-  * ``end_vid`` contains the **end vid** parameter value.
-
-.. literalinclude:: migration.queries
-   :start-after: --ksp1
-   :end-before: --ksp2
-
-* If needed filter out the added columns, for example:
-
-.. literalinclude:: migration.queries
-   :start-after: --ksp2
-   :end-before: --ksp3
 
 Migration of ``pgr_aStar``
 -------------------------------------------------------------------------------
@@ -201,9 +91,11 @@ Signatures to be migrated:
   ``pgr_dijkstra`` is used, and the function had to be modified to be able to
   return the new columns:
 
-  * In `v3.0 <https://docs.pgrouting.org/3.0/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph>`__
+  * In `v3.0
+    <https://docs.pgrouting.org/3.0/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph>`__
     the function ``my_dijkstra`` uses ``pgr_dijkstra``.
-  * Starting from `v3.5 <https://docs.pgrouting.org/3.5/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph>`__
+  * Starting from `v3.5
+    <https://docs.pgrouting.org/3.5/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph>`__
     the function ``my_dijkstra`` returns the new additional columns of
     ``pgr_dijkstra``.
 
@@ -341,84 +233,130 @@ Signatures to be migrated:
     the function ``my_dijkstra`` returns the new additional columns of
     ``pgr_dijkstra``.
 
-Migration of ``pgr_withPointsDD``
+Migration of ``pgr_drivingdistance``
 -------------------------------------------------------------------------------
 
 Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
+:doc:`pgr_drivingDistance` result columns are being standarized.
+
+:from: |result-dij-dd|
+:to: |result-bfs|
 
 Signatures to be migrated:
 
-* ``pgr_withPointsDD`` (`Single vertex`)
-* ``pgr_withPointsDD`` (`Multiple vertices`)
+* ``pgr_drivingdistance`` (Single vertex)
+* ``pgr_drivingdistance`` (Multiple vertices)
 
 :Before Migration:
 
-.. literalinclude:: migration.queries
-   :start-after: --withpointsdd1
-   :end-before: --withpointsdd2
+Output columns were |result-dij-dd|
 
-* ``driving_side`` parameter is optional.
-* Output columns were |result-generic-no-seq|
+* ``pgr_drivingdistance`` (Single vertex)
 
-  * Depending on the overload used, the columns ``start_vid`` might be missing:
+  * Does not have ``start_vid`` and ``depth`` result columns.
 
-    * ``pgr_withPointsDD`` (`Single vertex`) does not have ``start_vid``
+* ``pgr_drivingdistance`` (Multiple vertices)
+
+  * Has ``from_v`` instead of ``start_vid`` result column.
+  * does not have ``depth`` result column.
 
 :Migration:
 
-* ``driving side`` parameter is compulsory, and valid values differ for directed
-  and undirected graphs.
+* Be aware of the existance and name change of the result columns.
 
-  * Does not have a default value.
+``pgr_drivingdistance`` (Single vertex)
+...............................................................................
 
-  * In directed graph, valid values are [``r``, ``R``, ``l``, ``L``]
+Using `this
+<https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html#single-vertex>`__
+example.
 
-  * In undirected graph, valid values are [``b``, ``B``]
+* ``start_vid`` contains the **start vid** parameter value.
+* ``depth`` contains the depth of the ``node``.
 
+  .. literalinclude:: migration.queries
+     :start-after: --drivingdistance1
+     :end-before: --drivingdistance2
+
+If needed filter out the added columns, for example, to return the original columns
+
+.. literalinclude:: migration.queries
+   :start-after: --drivingdistance2
+   :end-before: --drivingdistance3
+
+``pgr_drivingdistance`` (Multiple vertices)
+...............................................................................
+
+Using `this
+<https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html#multiple-vertices>`__
+example.
+
+* The ``from_v`` result column name changes to ``start_vid``.
+* ``depth`` contains the depth of the ``node``.
+
+  .. literalinclude:: migration.queries
+     :start-after: --drivingdistance3
+     :end-before: --drivingdistance4
+
+If needed filter out and rename colums, for example, to return the original
+columns:
+
+.. literalinclude:: migration.queries
+   :start-after: --drivingdistance4
+   :end-before: --drivingdistance5
+
+
+Migration of ``pgr_KSP``
+-------------------------------------------------------------------------------
+
+Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
+:doc:`pgr_KSP` result columns are being standarized.
+
+:from: |ksp-result|
+:from: |nksp-result|
+
+Signatures to be migrated:
+
+* ``pgr_KSP`` (One to One)
+
+:Before Migration:
+
+* Output columns were |ksp-result|
+
+  * the columns ``start_vid`` and ``end_vid`` do not exist.
+
+    * ``pgr_KSP`` (One to One) does not have ``start_vid`` and ``end_vid``.
+
+:Migration:
 
 * Be aware of the existance of the additional columns.
 
-* In ``pgr_withPointsDD`` (`Single vertex`)
+``pgr_KSP`` (One to One)
+...............................................................................
 
-  * ``start_vid`` contains the **start vid** parameter value.
-  * ``depth`` contains the **depth** parameter value.
+Using
+`this <https://docs.pgrouting.org/3.5/en/pgr_KSP.html#signatures>`__
+example.
 
-.. literalinclude:: migration.queries
-   :start-after: --withpointsdd2
-   :end-before: --withpointsdd3
-
-* In ``pgr_withPointsDD`` (`Multiple vertices`)
-
-  * ``depth`` contains the **depth** parameter value.
+* ``start_vid`` contains the **start vid** parameter value.
+* ``end_vid`` contains the **end vid** parameter value.
 
 .. literalinclude:: migration.queries
-   :start-after: --withpointsdd3
-   :end-before: --withpointsdd4
+   :start-after: --ksp1
+   :end-before: --ksp2
 
-* If needed filter out the added columns, for example:
+If needed filter out the added columns, for example, to return the original
+columns:
 
 .. literalinclude:: migration.queries
-   :start-after: --withpointsdd4
-   :end-before: --withpointsdd5
-
-* If needed add the new columns, similar to the following example where
-  ``pgr_dijkstra`` is used, and the function had to be modified to be able to
-  return the new columns:
-
-  * In `v3.0 <https://docs.pgrouting.org/3.0/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph>`__
-    the function ``my_dijkstra`` uses ``pgr_dijkstra``.
-  * Starting from `v3.5 <https://docs.pgrouting.org/3.5/en/contraction-family.html#case-1-both-source-and-target-belong-to-the-contracted-graph>`__
-    the function ``my_dijkstra`` returns the new additional columns of
-    ``pgr_dijkstra``.
-
-Migration of functions that change inner query columns names
-*******************************************************************************
-
-.. contents:: Contents
-   :local:
+   :start-after: --ksp2
+   :end-before: --ksp3
 
 Migration of ``pgr_maxCardinalityMatch``
 -------------------------------------------------------------------------------
+
+:doc:`pgr_maxCardinalityMatch` works only for undirected graphs, therefore the
+``directed`` flag has been removed.
 
 Starting from `v3.4.0 <https://docs.pgrouting.org/3.4/en/migration.html>`__
 
@@ -465,6 +403,175 @@ Migration is needed, because:
 .. literalinclude:: migration.queries
    :start-after: --maxcard2
    :end-before: --maxcard3
+
+Migration of ``pgr_withPointsDD``
+-------------------------------------------------------------------------------
+
+Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
+:doc:`pgr_withPointsDD` result columns are being standarized.
+
+:from: |result-generic-no-seq|
+:to: |result-bfs|
+
+And ``driving side`` parameter changed from named optional to unnamed compulsory
+**driving side** and its validity differ for directed and undirected graphs.
+
+Signatures to be migrated:
+
+* ``pgr_withPointsDD`` (Single vertex)
+* ``pgr_withPointsDD`` (Multiple vertices)
+
+:Before Migration:
+
+* ``pgr_withPointsDD`` (Single vertex)
+
+  * Output columns were |result-1-1-no-seq|
+  * Does not have ``start_vid`` and ``depth`` result columns.
+  * ``driving_side`` parameter was named optional.
+
+* ``pgr_withPointsDD`` (`Multiple vertices`)
+
+  * Output columns were |result-m-1-no-seq|
+  * Does not have ``depth`` result column.
+  * ``driving_side`` parameter was named optional.
+
+.. rubric:: Driving side was optional
+
+.. literalinclude:: migration.queries
+   :start-after: --withpointsdd1
+   :end-before: --withpointsdd2
+
+.. rubric:: Driving side was named optional
+
+.. literalinclude:: migration.queries
+   :start-after: --withpointsdd2
+   :end-before: --withpointsdd3
+
+.. rubric:: On directed graph ``b`` could be used as **driving side**
+
+.. literalinclude:: migration.queries
+   :start-after: --withpointsdd3
+   :end-before: --withpointsdd4
+
+.. rubric:: On undirected graph ``r`` could be used as **driving side**
+
+.. literalinclude:: migration.queries
+   :start-after: --withpointsdd3
+   :end-before: --withpointsdd4
+
+:After Migration:
+
+* Be aware of the existance of the additional return columns.
+* New output columns are |result-bfs|
+* **driving side** parameter is unnamed compulsory, and valid values differ for
+  directed and undirected graphs.
+
+  * Does not have a default value.
+  * In directed graph: valid values are [``r``, ``R``, ``l``, ``L``]
+  * In undirected graph: valid values are [``b``, ``B``]
+  * Using an invalid value throws an ``ERROR``.
+
+``pgr_withPointsDD`` (Single vertex)
+...............................................................................
+
+Using
+`this <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-vertex>`__
+example.
+
+* |result-bfs|
+* ``start_vid`` contains the **start vid** parameter value.
+* ``depth`` contains the **depth** parameter value.
+
+
+To migrate, use an unnamed valid value for **driving side** after the
+**distance** parameter:
+
+.. literalinclude:: migration.queries
+   :start-after: --withpointsdd4
+   :end-before: --withpointsdd5
+
+If needed filter out the additional columns, for example, to return the original columns:
+
+.. literalinclude:: migration.queries
+   :start-after: --withpointsdd5
+   :end-before: --withpointsdd6
+
+``pgr_withPointsDD`` (Multiple vertices)
+...............................................................................
+
+Using
+`this <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#multiple-vertices>`__
+example.
+
+* |result-bfs|
+* ``depth`` contains the **depth** parameter value.
+
+.. literalinclude:: migration.queries
+   :start-after: --withpointsdd6
+   :end-before: --withpointsdd7
+
+If needed filter out the additional columns, for example, to return the original
+columns:
+
+.. literalinclude:: migration.queries
+   :start-after: --withpointsdd7
+   :end-before: --withpointsdd8
+
+Migration of ``pgr_withPointsKSP``
+-------------------------------------------------------------------------------
+
+Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
+:doc:`pgr_withPointsKSP` result columns are being standarized.
+
+:from: |ksp-result|
+:from: |nksp-result|
+
+And ``driving side`` parameter changed from named optional to unnamed compulsory
+**driving side** and its validity differ for directed and undirected graphs.
+
+Signatures to be migrated:
+
+* ``pgr_withPointsKSP`` (`One to One`)
+
+:Before Migration:
+
+* Output columns were |old-pid-result|
+
+  * the columns ``start_vid`` and ``end_vid`` do not exist.
+
+
+:Migration:
+
+* Be aware of the existance of the additional return columns.
+* New output columns are |nksp-result|
+* **driving side** parameter is unnamed compulsory, and valid values differ for
+  directed and undirected graphs.
+
+  * Does not have a default value.
+  * In directed graph: valid values are [``r``, ``R``, ``l``, ``L``]
+  * In undirected graph: valid values are [``b``, ``B``]
+  * Using an invalid value throws an ``ERROR``.
+
+``pgr_withPointsKSP`` (`One to One`)
+...............................................................................
+
+Using
+`this <https://docs.pgrouting.org/3.5/en/pgr_withPointsKSP.html#signatures>`__
+example.
+
+* ``start_vid`` contains the **start vid** parameter value.
+* ``end_vid`` contains the **end vid** parameter value.
+
+.. literalinclude:: migration.queries
+   :start-after: --withPointsKSP1
+   :end-before: --withPointsKSP2
+
+If needed filter out the additional columns, for example, to return the original
+columns:
+
+.. literalinclude:: migration.queries
+   :start-after: --withPointsKSP2
+   :end-before: --withPointsKSP3
 
 Migration of turn restrictions
 *******************************************************************************
@@ -588,6 +695,10 @@ The migrated table contents:
 
 Migration of ``pgr_trsp`` (Vertices)
 -------------------------------------------------------------------------------
+
+:doc:`pgr_trsp` signatures have changed and many issues have been fixed in the
+new signatures. This section will show how to migrate from the old signatures to
+the new replacement functions. This also affects the restrictions.
 
 Starting from `v3.4.0 <https://docs.pgrouting.org/3.4/en/migration.html>`__
 
@@ -1122,42 +1233,6 @@ values of the function been migrated then:
 * ``id2`` is the node
 * ``id3`` is the edge
 
-Migration of ``pgr_withPointsKSP``
--------------------------------------------------------------------------------
-
-Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
-
-Signatures to be migrated:
-
-* ``pgr_withPointsKSP`` (`One to One`)
-
-:Before Migration:
-
-* Output columns were |old-pid-result|
-
-  * Depending on the overload used, the columns ``start_vid`` and ``end_vid``
-    might be missing:
-
-    * ``pgr_withPointsKSP`` (`One to One`) does not have ``start_vid`` and ``end_vid``.
-
-:Migration:
-
-* Be aware of the existance of the additional columns.
-
-* In ``pgr_withPointsKSP`` (`One to One`)
-
-  * ``start_vid`` contains the **start vid** parameter value.
-  * ``end_vid`` contains the **end vid** parameter value.
-
-.. literalinclude:: migration.queries
-   :start-after: --withPointsKSP1
-   :end-before: --withPointsKSP2
-
-* If needed filter out the added columns, for example:
-
-.. literalinclude:: migration.queries
-   :start-after: --withPointsKSP2
-   :end-before: --withPointsKSP3
 
 See Also
 -------------------------------------------------------------------------------
