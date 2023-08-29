@@ -205,30 +205,33 @@
 </figcaption>
 </figure>
 <p class="rubric">Availability</p>
+<p class="rubric">Version 3.6.0</p>
 <ul class="simple">
-<li><p>Version 3.6.0</p>
+<li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (One to One)</p>
 <ul>
-<li><p>New <strong>proposed</strong> function:</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<a class="reference internal" href="#one-to-many">One to Many</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<a class="reference internal" href="#many-to-one">Many to One</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<a class="reference internal" href="#many-to-many">Many to Many</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<a class="reference internal" href="#combinations">Combinations</a>)</p></li>
+<li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
+unnamed compulsory <strong>driving side</strong>.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> result columns.</p></li>
 </ul>
 </li>
-<li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<li><p>New overload functions:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<a class="reference internal" href="#one-to-one">One to One</a>) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> columns.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (One to Many)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (Many to One)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (Many to Many)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (Combinations)</p></li>
 </ul>
 </li>
-<li><p>Signature change on <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<a class="reference internal" href="#one-to-one">One to One</a>)</p></li>
+<li><p>Deprecated signature:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,boolean)</span></code></p></li>
 </ul>
 </li>
-<li><p>Version 2.2.0</p>
-<ul>
+</ul>
+<p class="rubric">Version 2.2.0</p>
+<ul class="simple">
 <li><p>New <strong>proposed</strong> function</p></li>
-</ul>
-</li>
 </ul>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -372,7 +375,7 @@ graph with <strong>right</strong> side driving and <strong>details</strong> set 
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsKSP</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">details</span><span class="o">:=</span> <span class="n">true</span><span class="p">);</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">details</span><span class="o">=&gt;</span> <span class="n">true</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+---------+----------+-----------+---------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.4</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -414,7 +417,7 @@ graph with <strong>left</strong> side driving and <strong>heap_paths</strong> se
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsKSP</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="n">heap_paths</span><span class="o">:=</span> <span class="n">true</span><span class="p">);</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="n">heap_paths</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+---------+----------+-----------+---------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -596,7 +599,7 @@ graph with <strong>left</strong> side driving and <strong>heap_paths</strong> se
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 <td><ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> Returns at most K paths</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> Returns at most K paths.</p></li>
 <li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> all the calculated paths while processing are returned.</p></li>
 <li><p>Roughly, when the shortest path has <code class="docutils literal notranslate"><span class="pre">N</span></code> edges, the heap will contain
 about than <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">*</span> <span class="pre">K</span></code> paths for small value of <code class="docutils literal notranslate"><span class="pre">K</span></code> and <code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">&gt;</span> <span class="pre">5</span></code>.</p></li>
@@ -813,8 +816,8 @@ point of the edge.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>Path identifier.</p>
 <ul class="simple">
-<li><p>Has value <strong>1</strong> for the first of a path from <strong>start vid</strong> to
-<strong>end vid</strong></p></li>
+<li><p>Has value <strong>1</strong> for the first of a path from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to
+<code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></li>
 </ul>
 </td>
 </tr>
@@ -825,7 +828,7 @@ path.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the node in the path from <strong>start vid</strong> to <strong>end vid</strong></p></td>
+<td><p>Identifier of the node in the path from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -905,7 +908,7 @@ point <span class="math notranslate nohighlight">\(3\)</span> with details.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsKSP</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
     <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-    <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="n">details</span> <span class="o">:=</span> <span class="n">true</span><span class="p">);</span>
+    <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="n">details</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+---------+----------+-----------+---------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -927,7 +930,7 @@ point <span class="math notranslate nohighlight">\(2\)</span> with heap paths an
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
     <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
     <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span>
-    <span class="n">heap_paths</span> <span class="o">:=</span> <span class="n">true</span><span class="p">,</span> <span class="n">details</span> <span class="o">:=</span> <span class="n">true</span><span class="p">);</span>
+    <span class="n">heap_paths</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span> <span class="n">details</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+---------+----------+-----------+---------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.4</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -994,8 +997,8 @@ point <span class="math notranslate nohighlight">\(2\)</span> with heap paths an
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
-      Last updated on Aug 24, 2023.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.3.<br/>
+      Last updated on Aug 29, 2023.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.4.<br/>
     </p>
   </div>
 </footer>

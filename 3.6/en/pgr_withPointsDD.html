@@ -198,13 +198,27 @@
 </figcaption>
 </figure>
 <p class="rubric">Availability</p>
+<p class="rubric">Version 3.6.0</p>
 <ul class="simple">
-<li><p>Version 3.6.0</p>
+<li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
+unnamed compulsory <strong>driving side</strong>.</p>
 <ul>
-<li><p>New proposed signatures:</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<cite>Single vertex</cite>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<cite>Multiple vertices</cite>)</p></li>
+</ul>
+</li>
+<li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<a class="reference internal" href="#single-vertex">Single vertex</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<a class="reference internal" href="#multiple-vertices">Multiple vertices</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<cite>Single vertex</cite>)</p>
+<ul>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">depth</span></code> and <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<cite>Multiple vertices</cite>)</p>
+<ul>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">depth</span></code> column.</p></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p>Deprecated signatures:</p>
@@ -213,19 +227,10 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_withpointsdd(text,text,anyarray,double</span> <span class="pre">precision,boolean,character,boolean,boolean)</span></code></p></li>
 </ul>
 </li>
-<li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<a class="reference internal" href="#single-vertex">Single vertex</a>) added <code class="docutils literal notranslate"><span class="pre">depth</span></code> and <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<a class="reference internal" href="#multiple-vertices">Multiple vertices</a>) added <code class="docutils literal notranslate"><span class="pre">depth</span></code> column.</p></li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>Version 2.2.0</p>
-<ul>
+<p class="rubric">Version 2.2.0</p>
+<ul class="simple">
 <li><p>New <strong>proposed</strong> function</p></li>
-</ul>
-</li>
 </ul>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -476,9 +481,9 @@ path.</p></li>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
 <li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the node will only appear in the closest <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>
-list.</p></li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> which resembles several calls using the single starting
-point signatures. Tie brakes are arbitrary.</p></li>
+list. Tie brakes are arbitrary.</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> which resembles several calls using the single vertex
+signature.</p></li>
 </ul>
 </td>
 </tr>
@@ -784,8 +789,8 @@ side, with details.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
-      Last updated on Aug 24, 2023.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.3.<br/>
+      Last updated on Aug 29, 2023.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.4.<br/>
     </p>
   </div>
 </footer>

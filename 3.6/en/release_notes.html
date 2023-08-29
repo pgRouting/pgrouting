@@ -283,6 +283,8 @@
 </nav>
 <section id="pgrouting-3-6-0-release-notes">
 <h2><a class="toc-backref" href="#id1" role="doc-backlink">pgRouting 3.6.0 Release Notes</a><a class="headerlink" href="#pgrouting-3-6-0-release-notes" title="Link to this heading">¶</a></h2>
+<p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.6.0%22">Git closed
+milestone for 3.6.0</a></p>
 <p class="rubric">Official functions changes</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2516">#2516</a> Standarize output
@@ -302,9 +304,49 @@ pgr_bdAstar</p>
 <ul>
 <li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>One to One</cite>) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> columns.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>One to One</cite>) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>
+columns.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>One to Many</cite>) added <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> column.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>Many to One</cite>) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2547">#2547</a> Standarize output
+and modifying signature pgr_KSP</p>
+<ul>
+<li><p>Return columns standarized to: <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (One to One)</p>
+<ul>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> result columns.</p></li>
+</ul>
+</li>
+<li><p>New overload functions:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (One to Many)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (Many to One)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (Many to Many)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (Combinations)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2548">#2548</a> Standarize output
+pgr_drivingdistance</p>
+<ul>
+<li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (Single vertex)</p>
+<ul>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">depth</span></code> and <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> result columns.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (Multiple vertices)</p>
+<ul>
+<li><p>Result column name change: <code class="docutils literal notranslate"><span class="pre">from_v</span></code> to <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">depth</span></code> result column.</p></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -312,13 +354,28 @@ pgr_bdAstar</p>
 </ul>
 <p class="rubric">Proposed functions changes</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2544">#2544</a> Standarize output and modifying signature
-pgr_withPointsDD</p>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2544">#2544</a> Standarize output
+and modifying signature pgr_withPointsDD</p>
 <ul>
-<li><p>New proposed signatures: <code class="docutils literal notranslate"><span class="pre">driving</span> <span class="pre">side</span></code> parameter changed from optional to compulsory</p>
+<li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
+unnamed compulsory <strong>driving side</strong>.</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<cite>Single vertex</cite>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<cite>Multiple vertices</cite>)</p></li>
+</ul>
+</li>
+<li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<cite>Single vertex</cite>)</p>
+<ul>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">depth</span></code> and <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<cite>Multiple vertices</cite>)</p>
+<ul>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">depth</span></code> column.</p></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p>Deprecated signatures:</p>
@@ -327,75 +384,30 @@ pgr_withPointsDD</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_withpointsdd(text,text,anyarray,double</span> <span class="pre">precision,boolean,character,boolean,boolean)</span></code></p></li>
 </ul>
 </li>
-<li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<cite>Single vertex</cite>) added <code class="docutils literal notranslate"><span class="pre">depth</span></code> and <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<cite>Multiple vertices</cite>) added <code class="docutils literal notranslate"><span class="pre">depth</span></code> column.</p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2546">#2546</a> Standarize output
+and modifying signature pgr_withPointsKSP</p>
+<ul>
+<li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (One to One)</p>
+<ul>
+<li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
+unnamed compulsory <strong>driving side</strong>.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> result columns.</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2546">#2546</a> Standarize output and modifying signature
-pgr_withPointsKSP</p>
+<li><p>New overload functions:</p>
 <ul>
-<li><p>New proposed functions:
-* <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>One to Many</cite>)
-* <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>Many to One</cite>)
-* <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>Many to Many</cite>)
-* <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>Combinations</cite>)</p></li>
-<li><p>New proposed signatures: <code class="docutils literal notranslate"><span class="pre">driving</span> <span class="pre">side</span></code> parameter changed from optional to compulsory</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>One to One</cite>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (One to Many)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (Many to One)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (Many to Many)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (Combinations)</p></li>
 </ul>
 </li>
-<li><p>Deprecated signatures:</p>
+<li><p>Deprecated signature:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withpointsksp(text,</span> <span class="pre">text,</span> <span class="pre">bigint,</span> <span class="pre">bigint,</span> <span class="pre">integer,</span> <span class="pre">boolean,</span> <span class="pre">boolean,</span> <span class="pre">char,</span> <span class="pre">boolean)</span></code></p></li>
-</ul>
-</li>
-<li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>One To One</cite>) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> column.</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>[#2547](<a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2547">https://github.com/pgRouting/pgrouting/pull/2547</a>) Standarize output and modifying signature
-pgr_KSP</p>
-<ul>
-<li><p>New proposed functions:
-* <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code> (<cite>One to Many</cite>)
-* <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code> (<cite>Many to One</cite>)
-* <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code> (<cite>Many to Many</cite>)
-* <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code> (<cite>Combinations</cite>)</p></li>
-<li><p>Deprecated signatures:</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp(text,</span> <span class="pre">bigint,</span> <span class="pre">bigint,</span> <span class="pre">integer,</span> <span class="pre">boolean,</span> <span class="pre">boolean)</span></code></p></li>
-</ul>
-</li>
-<li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code> (<cite>One To One</cite>) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> column.</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>[#2548](<a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2548">https://github.com/pgRouting/pgrouting/pull/2548</a>) Standarize output and modifying signature
-pgr_drivingdistance</p>
-<ul>
-<li><p>New proposed functions:
-* <code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (<cite>Single vertex</cite>)
-* <code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (<cite>Multiple vertices</cite>)</p></li>
-<li><p>Deprecated signatures:</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance(text,anyarray,double</span> <span class="pre">precision,boolean,boolean)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance(text,bigint,double</span> <span class="pre">precision,boolean,boolean)</span></code></p></li>
-</ul>
-</li>
-<li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (<cite>Single vertex</cite>) added <code class="docutils literal notranslate"><span class="pre">depth</span></code> and <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivindistance</span></code> (<cite>Multiple vertices</cite>) added <code class="docutils literal notranslate"><span class="pre">depth</span></code> column.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,boolean)</span></code></p></li>
 </ul>
 </li>
 </ul>
@@ -1917,8 +1929,8 @@ file and are kept as a reference.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
-      Last updated on Aug 24, 2023.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.3.<br/>
+      Last updated on Aug 29, 2023.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.4.<br/>
     </p>
   </div>
 </footer>

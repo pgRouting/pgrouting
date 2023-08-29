@@ -180,34 +180,34 @@
 </figcaption>
 </figure>
 <p class="rubric">Disponibilidad</p>
+<p class="rubric">Version 3.6.0</p>
 <ul class="simple">
-<li><p>Version 3.6.0</p>
+<li><p>Return columns standarized to: <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (One to One)</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (<a class="reference internal" href="#one-to-one">One to One</a>) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> columns.</p></li>
-<li><p>New <strong>overloades</strong> functions:</p>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> result columns.</p></li>
+</ul>
+</li>
+<li><p>New overload functions:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (<a class="reference internal" href="#one-to-many">One to Many</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (<a class="reference internal" href="#many-to-one">Many to One</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (<a class="reference internal" href="#many-to-many">Many to Many</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (<a class="reference internal" href="#combinations">Combinations</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (One to Many)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (Many to One)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (Many to Many)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (Combinations)</p></li>
 </ul>
 </li>
 </ul>
-</li>
-<li><p>Versión 2.1.0</p>
-<ul>
+<p class="rubric">Versión 2.1.0</p>
+<ul class="simple">
 <li><p>Cambio de firma</p>
 <ul>
 <li><p>Firma antigua ya no soportada</p></li>
 </ul>
 </li>
 </ul>
-</li>
-<li><p>Versión 2.0.0</p>
-<ul>
+<p class="rubric">Versión 2.0.0</p>
+<ul class="simple">
 <li><p>Función <strong>oficial</strong></p></li>
-</ul>
-</li>
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -237,6 +237,7 @@
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_KSP(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salida</strong>, <strong>destino</strong>, <strong>K</strong>, [<strong>opciones</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">heap_paths]</span></code></div>
 </div>
 <div class="line-block">
 <div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
@@ -274,6 +275,7 @@
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_KSP(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, <strong>K</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">heap_paths]</span></code></div>
 </div>
 <div class="line-block">
 <div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
@@ -286,7 +288,7 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
-  <span class="s1">&#39;select id, source, target, cost, reverse_cost from edges&#39;</span><span class="p">,</span> 
+  <span class="s1">&#39;select id, source, target, cost, reverse_cost from edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">17</span><span class="p">],</span> <span class="mi">2</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+---------+----------+-----------+---------+------+------+------+----------</span>
@@ -325,6 +327,7 @@
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_KSP(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>, <strong>K</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">heap_paths]</span></code></div>
 </div>
 <div class="line-block">
 <div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
@@ -337,7 +340,7 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
-  <span class="s1">&#39;select id, source, target, cost, reverse_cost from edges&#39;</span><span class="p">,</span> 
+  <span class="s1">&#39;select id, source, target, cost, reverse_cost from edges&#39;</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+---------+----------+-----------+---------+------+------+------+----------</span>
@@ -374,6 +377,7 @@
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_KSP(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>, <strong>K</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">heap_paths]</span></code></div>
 </div>
 <div class="line-block">
 <div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
@@ -453,6 +457,7 @@
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_KSP(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, <strong>K</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">heap_paths]</span></code></div>
 </div>
 <div class="line-block">
 <div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
@@ -550,7 +555,7 @@
 </tr>
 <tr class="row-odd"><td><p><strong>K</strong></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
-<td><p>Cantidad de rutas requeridas</p></td>
+<td><p>Number of required paths.</p></td>
 </tr>
 </tbody>
 </table>
@@ -599,7 +604,7 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 <td><ul class="simple">
-<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> Regresa a lo más K caminos</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> Returns at most K paths.</p></li>
 <li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> se regresan todos los caminos calulados mientras se procesa.</p></li>
 <li><p>Aproximadamente, si la ruta más corta tiene <code class="docutils literal notranslate"><span class="pre">N</span></code> aristas, las procesadas contendrán aproximadamente <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">*</span> <span class="pre">K</span></code> rutas para valores pequeños de <code class="docutils literal notranslate"><span class="pre">K</span></code> y <code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">&gt;</span> <span class="pre">5</span></code>.</p></li>
 </ul>
@@ -720,8 +725,8 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>Identificador del camino.</p>
 <ul class="simple">
-<li><p>Has value <strong>1</strong> for the first of a path from <strong>start vid</strong> to
-<strong>end vid</strong></p></li>
+<li><p>Has value <strong>1</strong> for the first of a path from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to
+<code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></li>
 </ul>
 </td>
 </tr>
@@ -731,7 +736,7 @@
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del nodo en la ruta como <strong>nodo de salida</strong> o <strong>nodo destino</strong></p></td>
+<td><p>Identifier of the node in the path from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -793,12 +798,12 @@
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Get 2 paths using combinations table on an undirecte graph</p>
+<dd class="field-odd"><p>Get 2 paths using combinations table on an undirected graph</p>
 </dd>
 </dl>
 <p>También obtener los caminos procesados.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span> 
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT source, target FROM combinations&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span> <span class="n">heap_paths</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+---------+----------+-----------+---------+------+------+------+----------</span>
@@ -837,7 +842,7 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
-  <span class="s1">&#39;select id, source, target, cost, reverse_cost from edges&#39;</span><span class="p">,</span> 
+  <span class="s1">&#39;select id, source, target, cost, reverse_cost from edges&#39;</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+---------+----------+-----------+---------+------+------+------+----------</span>
@@ -991,8 +996,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
-      Actualizado por última vez en ago 24, 2023.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.3.<br/>
+      Actualizado por última vez en ago 29, 2023.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.4.<br/>
     </p>
   </div>
 </footer>
