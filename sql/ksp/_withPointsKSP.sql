@@ -4,6 +4,9 @@ File: _withPointsKSP.sql
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 vicky_vergara@hotmail.com
 
+Copyright (c) 2023 Abhinav Jain
+Mail: this.abhinav at gmail.com
+
 ------
 
 This program is free software; you can redistribute it and/or modify

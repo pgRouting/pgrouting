@@ -1,4 +1,3 @@
-
 /*PGR-GNU*****************************************************************
 
 Copyright (c) 2018  pgRouting developers
@@ -44,7 +43,7 @@ BEGIN
     RETURN QUERY  SELECT function_returns('pgr_ksp',ARRAY['text','bigint','bigint','integer','boolean','boolean'],'setof record');
   END IF;
 
-  RETURN QUERY SELECT CASE WHEN min_version('3.6.0') THEN 
+  RETURN QUERY SELECT CASE WHEN min_version('3.6.0') THEN
     collect_tap(
       set_eq(
           $$SELECT  proargnames from pg_proc WHERE proname = 'pgr_ksp'$$,
@@ -63,7 +62,7 @@ BEGIN
         $$
       )
     )
-  ELSE 
+  ELSE
     collect_tap(
       set_eq(
         $$SELECT  proargnames from pg_proc WHERE proname = 'pgr_ksp'$$,

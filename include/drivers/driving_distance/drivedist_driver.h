@@ -1,9 +1,8 @@
 /*PGR-GNU*****************************************************************
 File: drivedist_driver.h
 
-Generated with Template by:                                                                                             
-Copyright (c) 2023 pgRouting developers                                                                                 
-Mail: project AT pgrouting.org   
+Copyright (c) 2015 Celia Virginia Vergara Castillo
+vicky at erosion.dev
 
 Copyright (c) 2023 Aryan Gupta
 guptaaryan1010 AT gmail.com

@@ -76,11 +76,11 @@ processv4(
     driving_side[0] = (char) tolower(driving_side[0]);
     if (directed) {
         if (!((driving_side[0] == 'r') || (driving_side[0] == 'l'))) {
-                    elog(ERROR, "Driving side is not selected or Invalid Values");
-                    return;
-                }
+            throw_error("Invalid value of 'driving side'", "Valid values are for directed graph are: 'r', 'l'");
+            return;
+        }
     } else if (!(driving_side[0] == 'b')) {
-        elog(ERROR, "Driving side is not selected or Invalid Values");
+        throw_error("Invalid value of 'driving side'", "Valid values are for undirected graph is: 'b'");
         return;
     }
 

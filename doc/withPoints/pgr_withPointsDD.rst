@@ -24,29 +24,35 @@
 
    Boost Graph Inside
 
+
 .. rubric:: Availability
 
-* Version 3.6.0
+.. rubric:: Version 3.6.0
 
-  * New proposed signatures:
+* Signature change: ``driving_side`` parameter changed from named optional to
+  unnamed compulsory **driving side**.
 
-    * ``pgr_withPointsDD`` (`Single vertex`_)
-    * ``pgr_withPointsDD`` (`Multiple vertices`_)
+  * ``pgr_withPointsDD`` (`Single vertex`)
+  * ``pgr_withPointsDD`` (`Multiple vertices`)
 
-  * Deprecated signatures:
+* Standarizing output columns to |result-bfs|
 
-    * ``pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)``
-    * ``pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)``
+  * ``pgr_withPointsDD`` (`Single vertex`)
 
-  * Standarizing output columns to |result-bfs|
+    * Added ``depth`` and ``start_vid`` column.
 
-    * ``pgr_withPointsDD`` (`Single vertex`_) added ``depth`` and ``start_vid`` column.
-    * ``pgr_withPointsDD`` (`Multiple vertices`_) added ``depth`` column.
+  * ``pgr_withPointsDD`` (`Multiple vertices`)
 
+    * Added ``depth`` column.
 
-* Version 2.2.0
+* Deprecated signatures:
 
-  * New **proposed** function
+  * ``pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)``
+  * ``pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)``
+
+.. rubric:: Version 2.2.0
+
+* New **proposed** function
 
 
 Description

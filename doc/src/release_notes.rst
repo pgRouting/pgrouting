@@ -22,6 +22,10 @@ To see the full list of changes check the list of `Git commits
 pgRouting 3.6.0 Release Notes
 -------------------------------------------------------------------------------
 
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.6.0
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.0%22>`_
+
 .. rubric:: Official functions changes
 
 * `#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__ Standarize output
@@ -38,87 +42,40 @@ pgRouting 3.6.0 Release Notes
 
   * Standarizing output columns to |short-generic-result|
 
-    * ``pgr_bdAstar`` (`One to One`) added ``start_vid`` and ``end_vid`` columns.
+    * ``pgr_bdAstar`` (`One to One`) added ``start_vid`` and ``end_vid``
+      columns.
     * ``pgr_bdAstar`` (`One to Many`) added ``end_vid`` column.
     * ``pgr_bdAstar`` (`Many to One`) added ``start_vid`` column.
 
-.. rubric:: Proposed functions changes
+* `#2547 <https://github.com/pgRouting/pgrouting/pull/2547>`__ Standarize output
+  and modifying signature pgr_KSP
 
-* `#2544 <https://github.com/pgRouting/pgrouting/pull/2544>`__ Standarize output and modifying signature
-  pgr_withPointsDD
+  .. include:: pgr_KSP.rst
+     :start-after: Version 3.6.0
+     :end-before: .. rubric
 
-  * New proposed signatures: ``driving side`` parameter changed from optional to compulsory
-
-    * ``pgr_withPointsDD`` (`Single vertex`)
-    * ``pgr_withPointsDD`` (`Multiple vertices`)
-
-  * Deprecated signatures:
-
-    * ``pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)``
-    * ``pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)``
-
-  * Standarizing output columns to |result-bfs|
-
-    * ``pgr_withPointsDD`` (`Single vertex`) added ``depth`` and ``start_vid`` column.
-    * ``pgr_withPointsDD`` (`Multiple vertices`) added ``depth`` column.
-
-* `#2546 <https://github.com/pgRouting/pgrouting/pull/2546>`__ Standarize output and modifying signature
-  pgr_withPointsKSP
-
-  * New proposed functions:
-    * ``pgr_withPointsKSP`` (`One to Many`)
-    * ``pgr_withPointsKSP`` (`Many to One`)
-    * ``pgr_withPointsKSP`` (`Many to Many`)
-    * ``pgr_withPointsKSP`` (`Combinations`)
-
-  * New proposed signatures: ``driving side`` parameter changed from optional to compulsory
-
-    * ``pgr_withPointsKSP`` (`One to One`)
-
-  * Deprecated signatures:
-
-    * ``pgr_withpointsksp(text, text, bigint, bigint, integer, boolean, boolean, char, boolean)``
-
-  * Standarizing output columns to |nksp-result|
-
-    * ``pgr_withPointsKSP`` (`One To One`) added ``start_vid`` and ``end_vid`` column.
-
-
-* [#2547](https://github.com/pgRouting/pgrouting/pull/2547) Standarize output and modifying signature
-  pgr_KSP
-
-  * New proposed functions:
-    * ``pgr_KSP`` (`One to Many`)
-    * ``pgr_KSP`` (`Many to One`)
-    * ``pgr_KSP`` (`Many to Many`)
-    * ``pgr_KSP`` (`Combinations`)
-
-  * Deprecated signatures:
-
-    * ``pgr_ksp(text, bigint, bigint, integer, boolean, boolean)``
-
-  * Standarizing output columns to |nksp-result|
-
-    * ``pgr_KSP`` (`One To One`) added ``start_vid`` and ``end_vid`` column.
-
-
-* [#2548](https://github.com/pgRouting/pgrouting/pull/2548) Standarize output and modifying signature
+* `#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ Standarize output
   pgr_drivingdistance
 
-  * New proposed functions:
-    * ``pgr_drivingdistance`` (`Single vertex`)
-    * ``pgr_drivingdistance`` (`Multiple vertices`)
+  .. include:: pgr_drivingDistance.rst
+     :start-after: Version 3.6.0:
+     :end-before: :Version
 
-  * Deprecated signatures:
+.. rubric:: Proposed functions changes
 
-    * ``pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)``
-    * ``pgr_drivingdistance(text,bigint,double precision,boolean,boolean)``
+* `#2544 <https://github.com/pgRouting/pgrouting/pull/2544>`__ Standarize output
+  and modifying signature pgr_withPointsDD
 
-  * Standarizing output columns to |result-bfs|
+  .. include:: pgr_withPointsDD.rst
+     :start-after: Version 3.6.0
+     :end-before: .. rubric
 
-    * ``pgr_drivingdistance`` (`Single vertex`) added ``depth`` and ``start_vid`` column.
-    * ``pgr_drivindistance`` (`Multiple vertices`) added ``depth`` column.
+* `#2546 <https://github.com/pgRouting/pgrouting/pull/2546>`__ Standarize output
+  and modifying signature pgr_withPointsKSP
 
+  .. include:: pgr_withPointsKSP.rst
+     :start-after: Version 3.6.0
+     :end-before: .. rubric
 
 .. rubric:: C/C++ code enhancements
 

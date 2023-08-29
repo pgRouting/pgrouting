@@ -23,26 +23,29 @@ pgr_KSP
 
 .. rubric:: Availability
 
-* Version 3.6.0
+.. rubric:: Version 3.6.0
 
-  * ``pgr_ksp`` (`One to One`_) added ``start_vid`` and ``end_vid`` columns.
+* Return columns standarized to: |nksp-result|
+* ``pgr_ksp`` (One to One)
 
-  * New **overloades** functions:
+  * Added ``start_vid`` and ``end_vid`` result columns.
 
-    * ``pgr_ksp`` (`One to Many`_)
-    * ``pgr_ksp`` (`Many to One`_)
-    * ``pgr_ksp`` (`Many to Many`_)
-    * ``pgr_ksp`` (`Combinations`_)
+* New overload functions:
 
-* Version 2.1.0
+  * ``pgr_ksp`` (One to Many)
+  * ``pgr_ksp`` (Many to One)
+  * ``pgr_ksp`` (Many to Many)
+  * ``pgr_ksp`` (Combinations)
 
-  * Signature change
+.. rubric:: Version 2.1.0
 
-    * Old signature no longer supported
+* Signature change
 
-* Version 2.0.0
+  * Old signature no longer supported
 
-  * **Official** function
+.. rubric:: Version 2.0.0
+
+* **Official** function
 
 
 Description
@@ -79,6 +82,7 @@ One to One
    :class: signatures
 
    | pgr_KSP(`Edges SQL`_, **start vid**, **end vid**, **K**, [**options**])
+   | **options:** ``[directed, heap_paths]``
 
    | RETURNS SET OF |nksp-result|
    | OR EMPTY SET
@@ -99,6 +103,7 @@ One to Many
    :class: signatures
 
    | pgr_KSP(`Edges SQL`_, **start vid**, **end vids**, **K**, [**options**])
+   | **options:** ``[directed, heap_paths]``
 
    | RETURNS SET OF |nksp-result|
    | OR EMPTY SET
@@ -106,8 +111,8 @@ One to Many
 :Example: Get 2 paths from vertex :math:`6` to vertices :math:`\{10, 17\}` on a directed graph.
 
 .. literalinclude:: doc-ksp.queries
-    :start-after: --q3
-    :end-before: --q4
+    :start-after: --q2
+    :end-before: --q3
 
 .. index::
     single: ksp(Many to One)
@@ -119,6 +124,7 @@ Many to One
    :class: signatures
 
    | pgr_KSP(`Edges SQL`_, **start vids**, **end vid**, **K**, [**options**])
+   | **options:** ``[directed, heap_paths]``
 
    | RETURNS SET OF |nksp-result|
    | OR EMPTY SET
@@ -126,8 +132,8 @@ Many to One
 :Example: Get 2 paths from vertices :math:`\{6, 1\}` to vertex :math:`17` on a directed graph.
 
 .. literalinclude:: doc-ksp.queries
-    :start-after: --q4
-    :end-before: --q5
+    :start-after: --q3
+    :end-before: --q4
 
 .. index::
     single: ksp(Many to Many)
@@ -139,6 +145,7 @@ Many to Many
    :class: signatures
 
    | pgr_KSP(`Edges SQL`_, **start vids**, **end vids**, **K**, [**options**])
+   | **options:** ``[directed, heap_paths]``
 
    | RETURNS SET OF |nksp-result|
    | OR EMPTY SET
@@ -146,8 +153,8 @@ Many to Many
 :Example: Get 2 paths vertices :math:`\{6, 1\}` to vertices :math:`\{10, 17\}` on a directed graph.
 
 .. literalinclude:: doc-ksp.queries
-    :start-after: --q5
-    :end-before: --q6
+    :start-after: --q4
+    :end-before: --q5
 
 .. index::
    single: ksp(Combinations)
@@ -159,6 +166,7 @@ Combinations
    :class: signatures
 
    | pgr_KSP(`Edges SQL`_, `Combinations SQL`_, **K**, [**options**])
+   | **options:** ``[directed, heap_paths]``
 
    | RETURNS SET OF |nksp-result|
    | OR EMPTY SET
@@ -174,8 +182,8 @@ The combinations table:
 The query:
 
 .. literalinclude:: doc-ksp.queries
-    :start-after: --q6
-    :end-before: --q7
+    :start-after: --q5
+    :end-before: --q6
 
 
 Parameters
@@ -202,7 +210,7 @@ Parameters
      - Identifier of the destination vertex.
    * - **K**
      - **ANY-INTEGER**
-     - Number of required paths
+     - Number of required paths.
 
 Where:
 
@@ -234,7 +242,7 @@ KSP Optional parameters
    * - ``heap_paths``
      - ``BOOLEAN``
      - ``false``
-     - * When ``false`` Returns at most K paths
+     - * When ``false`` Returns at most K paths.
        * When ``true`` all the calculated paths while processing are returned.
        * Roughly, when the shortest path has ``N`` edges, the heap will contain
          about than ``N * K`` paths for small value of ``K`` and ``K > 5``.
@@ -281,15 +289,15 @@ Returns set of |nksp-result|
      - ``INTEGER``
      - Path identifier.
 
-       * Has value **1** for the first of a path from **start vid** to
-         **end vid**
+       * Has value **1** for the first of a path from ``start_vid`` to
+         ``end_vid``
    * - ``path_seq``
      - ``INTEGER``
      - Relative position in the path. Has value **1** for the beginning of a
        path.
    * - ``node``
      - ``BIGINT``
-     - Identifier of the node in the path from **start vid** to **end vid**
+     - Identifier of the node in the path from ``start_vid`` to ``end_vid``
    * - ``edge``
      - ``BIGINT``
      - Identifier of the edge used to go from ``node`` to the next node in the
@@ -315,10 +323,10 @@ Additional Examples
 Also get the paths in the heap.
 
 .. literalinclude:: doc-ksp.queries
-    :start-after: --q2
-    :end-before: --q3
+    :start-after: --q6
+    :end-before: --q7
 
-:Example: Get 2 paths using combinations table on an undirecte graph
+:Example: Get 2 paths using combinations table on an undirected graph
 
 Also get the paths in the heap.
 
