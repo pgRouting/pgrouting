@@ -75,7 +75,7 @@ void process(
 
     PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    do_pgr_driving_many_to_dist(
+    pgr_do_drivingdist(
             edges, total_tuples,
             start_vidsArr, size_start_vidsArr,
             distance,
@@ -88,7 +88,7 @@ void process(
             &notice_msg,
             &err_msg);
 
-    time_msg("processing pgr_v4drivingDistance()",
+    time_msg("processing pgr_drivingDistance",
             start_t, clock());
 
     if (err_msg && (*result_tuples)) {
