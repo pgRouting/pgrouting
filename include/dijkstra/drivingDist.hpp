@@ -58,40 +58,151 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/interruption.h"
 #include "visitors/dijkstra_visitors.hpp"
 
-#include <visitors/dfs_visitor_with_root.hpp>
-#include <visitors/edges_order_dfs_visitor.hpp>
-#include <boost/graph/filtered_graph.hpp>
 
-#include"c_types/mst_rt.h"
+namespace detail {
 
+/* notation:
+ * node: vertex or point
+ * vertex: node with id >= 0
+ * point: node with id < 0
+ */
+template <typename G, typename V>
+void remove_details(const G &graph,
+             std::vector<double> &distances,
+             std::vector<V>      &predecessors) {
+    /*
+     * find all the points that are predecessors
+     */
+    std::set<V> node_with_predecessor_point;
+    for (V v = 0; v < predecessors.size() ; ++v) {
+        /*
+         * skipping unreachable nodes and or initial node
+         * skipping predecessors that are vertices
+         */
+        if (predecessors[v] == v) continue;
+        if (graph[predecessors[v]].id >= 0) continue;
+        node_with_predecessor_point.insert(v);
+    }
+
+    /*
+     * Compact all nodes that have predecessor point
+     */
+    for (const auto node : node_with_predecessor_point) {
+        /*
+         * Cycle predecessors
+         * u -> v  cost to arrive to v is distances[v]
+         */
+        auto v = node;
+        auto u = predecessors[v];
+        pgassert(graph[u].id < 0);
+
+        /*
+         * while u is a point and its predecessor is not itself
+         */
+        while (graph[u].id < 0 && predecessors[u] != u) {
+            CHECK_FOR_INTERRUPTS();
+            pgassert(graph[u].id < 0);
+            pgassert(distances[v] !=  std::numeric_limits<double>::infinity());
+            v = u;
+            u = predecessors[v];
+        }
+
+        /* the vertex (or initial point) that is a predecesor of p */
+        predecessors[node] = u;
+    }
+}
+
+/** @brief gets results in form of a container of paths with depth
+ *
+ * @param [in] graph The graph that is being worked
+ * @param [in] root The starting node
+ * @param [in] distances An array of vertices @b id
+ * @param [in] predecessors an array of predecessors
+ * @param [in] distance the max distance
+ */
+template <typename G, typename V>
+std::map<int64_t, int64_t> get_depth(
+        const G &graph,
+        V root,
+        std::vector<double> &distances,
+        std::vector<V>      &predecessors,
+        double distance,
+        bool details) {
+    std::map<int64_t, int64_t> depth;
+    if (predecessors.empty()) return depth;
+    if (predecessors.size() != distances.size()) return depth;
+    depth[graph[root].id] = 0;
+
+    std::set<V> vertices;
+    vertices.insert(root);
+
+    if (!details) {
+        remove_details(graph, distances, predecessors);
+    }
+
+    /* cycle depth max depth can be number of nodes*/
+    for (int64_t d = 1; static_cast<size_t>(d) < graph.num_vertices() ; ++d) {
+        /*
+         * there is no more to search for
+         */
+        if (vertices.empty()) break;
+
+        /*
+         * One next cycle these vertices have the next depth
+         */
+        std::set<V> vertices_next;
+        std::set<V> point_vertices;
+
+
+        for (const auto v : vertices) {
+            /*
+             * Cycle predecessors looking for vertices on the depth d
+             * v -> p
+             */
+            for (V p = 0; p < graph.num_vertices() ; ++p) {
+                /*
+                 * Sikiping unassigned predecessors
+                 * Sikiping distances greater than the one asked for
+                 */
+                if (predecessors[p] == p) continue;
+                if (!(distances[p] <= distance)) continue;
+                if (!(predecessors[p] == v)) continue;
+
+
+                /* found */
+                depth[graph[p].id] = d;
+                vertices_next.insert(p);
+            }
+        }
+        vertices = vertices_next;
+    }
+    return depth;
+}
+
+}  // namespace detail
 
 
 namespace pgrouting {
-// TODO(gsoc) namespace algorithm
-// TODO(gsoc) convert to functions
+// TODO(v4) convert to functions
 
+namespace algorithm {
 template < class G > class Pgr_dijkstra;
-// user's functions
-// for development
+}  // namespace algorithm
 
-template < class G >
+template <class G>
 std::deque<Path>
 pgr_drivingdistance(
         G &graph,
-        std::vector< int64_t > start_vids,
+        const std::vector<int64_t> &start_vids,
         double distance,
         bool equicost,
-        std::ostringstream &log) {
-    Pgr_dijkstra< G > fn_dijkstra;
-    return fn_dijkstra.drivingDistance(
-            graph,
-            start_vids,
-            distance,
-            equicost,
-            log);
+        std::vector<std::map<int64_t, int64_t>> &depths,
+        bool details) {
+    algorithm::Pgr_dijkstra<G> fn_dijkstra;
+    return fn_dijkstra.drivingDistance(graph, start_vids, distance, equicost, depths, details);
 }
 
-
+namespace algorithm {
 
 template < class G >
 class Pgr_dijkstra {
@@ -132,24 +243,25 @@ class Pgr_dijkstra {
      }
 
      // preparation for many to distance
-     std::deque< Path > drivingDistance(
+     std::deque<Path> drivingDistance(
              G &graph,
-             const std::vector< int64_t > &start_vertex,
+             const std::vector<int64_t> &start_vertex,
              double distance,
              bool equicost,
-             std::ostringstream &the_log) {
+             std::vector<std::map<int64_t, int64_t>> &depths,
+             bool details) {
          if (equicost) {
-             auto paths = drivingDistance_with_equicost(
+             return drivingDistance_with_equicost(
                      graph,
                      start_vertex,
-                     distance);
-             the_log << log.str();
-             return paths;
+                     depths,
+                     distance, details);
          } else {
              return drivingDistance_no_equicost(
                      graph,
                      start_vertex,
-                     distance);
+                     depths,
+                     distance, details);
          }
      }
 
@@ -320,13 +432,15 @@ class Pgr_dijkstra {
       *         - values < distance
       *   Don't know yet what happens to predecessors
       */
-     std::deque< Path > drivingDistance_with_equicost(
+     std::deque<Path> drivingDistance_with_equicost(
              G &graph,
-             const std::vector< int64_t > &start_vertex,
-             double distance) {
+             const std::vector<int64_t> &start_vertex,
+             std::vector<std::map<int64_t, int64_t>> &depths,
+             double distance, bool details) {
          clear();
          log << "Number of edges:" << boost::num_edges(graph.graph) << "\n";
 
+         depths.resize(start_vertex.size());
          predecessors.resize(graph.num_vertices());
          distances.resize(
                  graph.num_vertices(),
@@ -339,7 +453,8 @@ class Pgr_dijkstra {
           * TODO(gsoc)
           * - figure out less storage if possible
           */
-         std::deque< std::vector< V > > pred(start_vertex.size());
+         std::deque< std::vector<V>> pred(start_vertex.size());
+         std::deque< std::vector<V>> nodetailspred(start_vertex.size());
 
          // perform the algorithm
          size_t i = 0;
@@ -349,12 +464,14 @@ class Pgr_dijkstra {
               * The vertex does not exist
               *   Nothing to do
               */
-             if (graph.has_vertex(vertex)) {
-                 if (execute_drivingDistance_no_init(
-                             graph,
-                             graph.get_V(vertex),
-                             distance)) {
-                     pred[i] = predecessors;
+             if (!(graph.has_vertex(vertex))) continue;
+
+             if (execute_drivingDistance_no_init(
+                         graph, graph.get_V(vertex), distance)) {
+                 pred[i] = predecessors;
+                 depths[i] = detail::get_depth(graph, graph.get_V(vertex), distances, predecessors, distance, details);
+                 if (!details) {
+                     nodetailspred[i] = predecessors;
                  }
              }
              ++i;
@@ -376,7 +493,8 @@ class Pgr_dijkstra {
                 graph,
                 start_vertex,
                 pred,
-                distance);
+                nodetailspred,
+                distance, details);
      }
 
      /** @brief gets results in form of a container of paths
@@ -385,12 +503,14 @@ class Pgr_dijkstra {
       * @param [in] start_vertex An array of vertices @b id
       * @param [in] pred an array of predecessors
       * @param [in] distance the max distance
+      * @pre one predecessor per root
       */
      std::deque< Path > get_drivingDistance_with_equicost_paths(
              G &graph,
-             const std::vector< int64_t > &start_vertex,
-             std::deque< std::vector< V > > &pred,
-             double distance) {
+             const std::vector<int64_t> &start_vertex,
+             std::deque<std::vector<V>> &pred,
+             std::deque<std::vector<V>> &nodetailspred,
+             double distance, bool details) {
          /*
           * precondition
           */
@@ -434,7 +554,8 @@ class Pgr_dijkstra {
                  pgassert(edge_id != -1);
                  paths[i - 1].push_back(
                          {graph[d].id,
-                         edge_id, cost,
+                         edge_id,
+                         details? cost : distances[d] - distances[nodetailspred[i - 1][d]],
                          distances[d]});
                  break;
              }
@@ -448,10 +569,11 @@ class Pgr_dijkstra {
 
 
      // preparation for many to distance No equicost
-     std::deque< Path > drivingDistance_no_equicost(
+     std::deque<Path> drivingDistance_no_equicost(
              G &graph,
              const std::vector< int64_t > &start_vertex,
-             double distance) {
+             std::vector<std::map<int64_t, int64_t>> &depths,
+             double distance, bool details) {
          // perform the algorithm
          std::deque<Path> paths;
          for (const auto &vertex : start_vertex) {
@@ -463,11 +585,31 @@ class Pgr_dijkstra {
                          predecessors,
                          distances);
                  path.sort_by_node_agg_cost();
-                 paths.push_back(path);
+                 auto root = graph.get_V(vertex);
+                 depths.push_back(detail::get_depth(graph, root, distances, predecessors, distance, details));
+                 /*
+                  * When details are not wanted update costs
+                  */
+                 if (!details) {
+                     for (auto &pathstop : path) {
+                         auto node = graph.get_V(pathstop.node);
+
+                         /* skip points */
+                         if (graph[node].id < 0) continue;
+
+                         pathstop.cost = distances[node] - distances[predecessors[node]];
+                     }
+                     log << "Updated costs of path " << path;
+                 }
+                     paths.push_back(path);
+
              } else {
                  Path p(vertex, vertex);
                  p.push_back({vertex, -1, 0, 0});
                  paths.push_back(p);
+                 std::map<int64_t, int64_t> m;
+                 m[vertex] = 0;
+                 depths.push_back(m);
              }
          }
          return paths;
@@ -488,204 +630,8 @@ class Pgr_dijkstra {
      std::ostringstream log;
      //@}
 };
-/* This code has been wrote with reference to pgr_mst.hpp*/
-namespace functions {
 
-template <class G>
-class ShortestPath_trees{
-     typedef typename G::V V;
-     typedef typename G::E E;
-     typedef typename G::B_G B_G;
-
-
- public:
-     std::deque<MST_rt> get_depths(
-             G&,
-             std::deque<Path>);
-
-
- private:
-     /* Functions */
-
-     template <typename T>
-     std::deque<MST_rt> get_results(
-             T,
-             int64_t,
-             const G&);
-
-     std::deque<MST_rt> dfs_order(
-             const G&,
-             int64_t);
-
-     void get_edges_from_path(
-             const G&,
-             const Path);
-
-
- private:
-     /* Member */
-     Path m_path;
-
-     struct InSpanning {
-         std::set<E> edges;
-         bool operator()(E e) const { return edges.count(e); }
-         void clear() { edges.clear(); }
-     } m_spanning_tree;
-};
-
-
-template <class G>
-template <typename T>
-std::deque<MST_rt>
-ShortestPath_trees<G>::get_results(
-        T order,
-        int64_t p_root,
-        const G &graph) {
-    std::deque<MST_rt> results;
-
-    std::vector<int64_t> depth(graph.num_vertices(), 0);
-    int64_t root(p_root);
-
-    for (const auto edge : order) {
-        auto u = graph.source(edge);
-        auto v = graph.target(edge);
-        if (depth[u] == 0 && depth[v] != 0) {
-            std::swap(u, v);
-        }
-
-        if (depth[u] == 0 && depth[v] == 0) {
-        if (graph[u].id != root) {
-            std::swap(u, v);
-        }
-            if (!p_root && graph[u].id > graph[v].id) std::swap(u, v);
-
-            root = p_root? p_root: graph[u].id;
-            depth[u] = -1;
-            results.push_back({
-                root,
-                    0,
-                    graph[u].id,
-                    -1,
-                    0.0,
-                    0.0 });
-        }
-        depth[v] = depth[u] == -1? 1 : depth[u] + 1;
-
-        int64_t node_id = graph[v].id;
-        auto path_index = std::find_if(m_path.begin(), m_path.end(),
-                [&node_id](Path_t &path_item)
-                {return node_id == path_item.node;});
-
-        if (graph[v].id < 0) depth[v] = depth[u];
-        if (graph[v].id > 0) {
-            results.push_back({
-                root,
-                    depth[v],
-                    path_index->node,
-                    path_index->edge,
-                    path_index->cost,
-                    path_index->agg_cost
-            });
-        }
-    }
-    return results;
-}
-
-
-template <class G>
-std::deque<MST_rt>
-ShortestPath_trees<G>::dfs_order(const G &graph, int64_t root) {
-        boost::filtered_graph<B_G, InSpanning, boost::keep_all>
-            mstGraph(graph.graph, m_spanning_tree, {});
-
-        std::deque<MST_rt> results;
-        std::vector<E> visited_order;
-
-        using dfs_visitor = visitors::Dfs_visitor_with_root<V, E>;
-        if (graph.has_vertex(root)) {
-            /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
-            CHECK_FOR_INTERRUPTS();
-            try {
-                boost::depth_first_search(
-                        mstGraph,
-                        visitor(dfs_visitor(graph.get_V(root), visited_order))
-                        .root_vertex(graph.get_V(root)));
-            } catch(found_goals &) {
-                {}
-            } catch (boost::exception const& ex) {
-                (void)ex;
-                throw;
-            } catch (std::exception &e) {
-                (void)e;
-                throw;
-            } catch (...) {
-                throw;
-            }
-            auto result = get_results(visited_order, root, graph);
-            results.insert(results.end(), result.begin(), result.end());
-        } else {
-            results.push_back({root, 0, root, -1, 0.0, 0.0});
-        }
-
-        return results;
-    }
-
-
-template <class G>
-void
-ShortestPath_trees<G>::get_edges_from_path(
-         const G& graph,
-         const Path path) {
-    m_spanning_tree.clear();
-
-    for (size_t i = 0; i < path.size(); i++) {
-        if (graph.has_vertex(path[i].node)) {
-        auto u = graph.get_V(path[i].node);
-
-        for (size_t j = i+1; j < path.size(); j++) {
-            if (graph.has_vertex(path[i].node)) {
-            auto v = graph.get_V(path[j].node);
-            double cost = path[j].cost;
-            auto edge = graph.get_edge(u, v, cost);
-            if (graph.target(edge) == v
-                    && path[i].agg_cost+cost == path[j].agg_cost
-                    && graph[edge].id == path[j].edge) {
-                this->m_spanning_tree.edges.insert(edge);
-            }
-            }
-            }
-        }
-    }
-}
-
-
-template <class G>
-std::deque<MST_rt>
-ShortestPath_trees<G>::get_depths(
-        G &graph,
-        std::deque<Path> paths) {
-    std::deque<MST_rt> results;
-
-    for (const Path& path : paths) {
-        m_path = path;
-        get_edges_from_path(graph, path);
-        int64_t root = path.start_id();
-        auto result = this->dfs_order(graph, root);
-
-        std::sort(result.begin(), result.end(),
-                [](const MST_rt &l, const  MST_rt &r)
-                {return l.node < r.node;});
-        std::stable_sort(result.begin(), result.end(),
-                [](const MST_rt &l, const  MST_rt &r)
-                {return l.agg_cost < r.agg_cost;});
-
-        results.insert(results.end(), result.begin(), result.end());
-    }
-    return results;
-}
-
-
-}  // namespace functions
+}  // namespace algorithm
 }  // namespace pgrouting
 
 
