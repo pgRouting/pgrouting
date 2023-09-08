@@ -81,6 +81,11 @@ milestone for 3.6.0
   
       * Added ``depth`` column.
   
+  * When ``details`` is ``false``:
+  
+    * Only points that are visited are removed, that is, points reached within the
+      distance are included
+  
   * Deprecated signatures:
   
     * ``pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)``
