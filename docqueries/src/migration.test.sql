@@ -275,12 +275,12 @@ SELECT * FROM pgr_withPointsDD(
 SELECT * FROM pgr_withPointsDD(
   $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
-  -1, 3.3, directed => false, driving_side => 'r');
+  -1, 3.3, directed => true, driving_side => 'b');
 /* --withpointsdd4 */
 SELECT * FROM pgr_withPointsDD(
   $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
-  -1, 3.3, 'r', details => true);
+  -1, 3.3, 'r', directed => true);
 /* --withpointsdd5 */
 SELECT seq, node, edge, cost, agg_cost FROM pgr_withPointsDD(
   $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
@@ -295,7 +295,7 @@ SELECT * FROM pgr_withPointsDD(
 SELECT seq, start_vid, node, edge, cost, agg_cost FROM pgr_withPointsDD(
   $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
-  ARRAY[-1, 16], 3.3, 'l', equicost => true);
+  ARRAY[-1, 16], 3.3, 'l', equicost => true) WHERE node >= 0 OR cost = 0;
 /* --withpointsdd8 */
 /* --withPointsKSP1 */
 SELECT * FROM pgr_withPointsKSP(

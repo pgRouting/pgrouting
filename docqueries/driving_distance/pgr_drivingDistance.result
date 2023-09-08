@@ -73,7 +73,7 @@ SELECT * FROM pgr_drivingDistance(
   21 |     3 |        16 |    3 |    7 |    1 |        3
   22 |     3 |        16 |    6 |    4 |    1 |        3
   23 |     3 |        16 |    8 |   10 |    1 |        3
-(23 rows) 
+(23 rows)
 
 /* --q15 */
 ROLLBACK;

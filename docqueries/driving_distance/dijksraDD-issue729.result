@@ -22,7 +22,7 @@ FROM
     GROUP BY start_vid) AS count
     WHERE edge_table.source=count.start_vid
     ;
-UPDATE 16
+UPDATE 18
 ALTER TABLE edges
 DROP COLUMN IF EXISTS another_column,
 ADD COLUMN another_column INTEGER;
@@ -61,9 +61,7 @@ FROM
     GROUP BY start_vid) AS count
 WHERE network.source=count.start_vid
 ;
-NOTICE:
-No return values were found
-UPDATE 0
+UPDATE 4
 ALTER TABLE network
 DROP COLUMN IF EXISTS another_column,
 ADD COLUMN another_column INTEGER;
