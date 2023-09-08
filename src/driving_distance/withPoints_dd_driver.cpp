@@ -3,7 +3,7 @@ File: withPoints_dd_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
-Mail: project at pgrouting.org
+Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
@@ -39,8 +39,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "dijkstra/drivingDist.hpp"
 #include "withPoints/pgr_withPoints.hpp"
-#include "driving_distance/withPointsDD.hpp"
 #include "c_types/mst_rt.h"
+#include "c_types/path_rt.h"
 
 #include "cpp_common/pgr_alloc.hpp"
 
@@ -80,8 +80,6 @@ pgr_do_withPointsDD(
         pgassert(!(*return_tuples));
         pgassert((*return_count) == 0);
         pgassert(edges);
-        pgassert(points_p);
-        pgassert(edges_of_points);
         pgassert(start_pidsArr);
 
 
@@ -104,78 +102,76 @@ pgr_do_withPointsDD(
             return;
         }
 
-
-
-        /*
-         * storing on C++ containers
-         */
-        std::vector<int64_t> start_vids(
-                start_pidsArr, start_pidsArr + s_len);
-
+        std::vector<int64_t> start_vids(start_pidsArr, start_pidsArr + s_len);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
         std::deque<Path> paths;
-        std::deque<MST_rt> results;
+        std::vector<std::map<int64_t, int64_t>> depths;
 
         if (directed) {
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(edges, total_edges);
             digraph.insert_edges(pg_graph.new_edges());
-            paths = pgr_drivingdistance(
-                    digraph, start_vids, distance, equiCost, log);
-            if (do_new) {
-                pgrouting::functions::ShortestPath_tree<pgrouting::DirectedGraph> spt;
-                results = spt.get_depths(digraph, pg_graph, paths, details);
-            }
+            paths = pgr_drivingdistance(digraph, start_vids, distance, equiCost, depths, details);
         } else {
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(edges, total_edges);
             undigraph.insert_edges(pg_graph.new_edges());
-
-            paths = pgr_drivingdistance(
-                    undigraph, start_vids, distance, equiCost, log);
-            if (do_new) {
-                pgrouting::functions::ShortestPath_tree<pgrouting::UndirectedGraph> spt;
-                results = spt.get_depths(undigraph, pg_graph, paths, details);
-            }
+            paths = pgr_drivingdistance(undigraph, start_vids, distance, equiCost, depths, details);
         }
 
-    if (do_new) {
-        size_t count(results.size());
-
-        if (count == 0) {
-            *notice_msg = pgr_msg("No return values was found");
-            return;
-        }
-        *return_tuples = pgr_alloc(count, (*return_tuples));
-        for (size_t i = 0; i < count; i++) {
-            *((*return_tuples) + i) = results[i];
-        }
-        (*return_count) = count;
-
-    } else {
-        /* old code */
-        for (auto &path : paths) {
-            if (!details) {
+        if (!details) {
+            for (auto &path : paths) {
                 pg_graph.eliminate_details_dd(path);
             }
-            std::sort(path.begin(), path.end(),
-                    [](const Path_t &l, const  Path_t &r)
-                    {return l.node < r.node;});
-            std::stable_sort(path.begin(), path.end(),
-                    [](const Path_t &l, const  Path_t &r)
-                    {return l.agg_cost < r.agg_cost;});
         }
+
+
         size_t count(count_tuples(paths));
 
         if (count == 0) {
-            *notice_msg = pgr_msg("No return values was found");
+            log << "\nNo return values were found";
+            *notice_msg = pgr_msg(log.str().c_str());
             return;
         }
+
+        /* TODO remove old code on v4 */
         *return_old_tuples = pgr_alloc(count, (*return_old_tuples));
         *return_old_count = collapse_paths(return_old_tuples, paths);
-    }
+
+        if (do_new) {
+            std::vector<MST_rt> new_results;
+
+            *return_tuples = pgr_alloc(count, (*return_tuples));
+
+            for (size_t i = 0; i < count; i++) {
+                auto row = (*return_old_tuples)[i];
+                /* given the depth assign the correct depth */
+                int64_t depth = -1;
+                for (const auto &d : depths) {
+                    /* look for the correct path */
+                    auto itr = d.find(row.start_id);
+                    if (itr == d.end() || !(itr->second == 0)) continue;
+                    depth = d.at(row.node);
+                }
+                new_results.push_back(MST_rt{row.start_id, depth, row.node, row.edge, row.cost, row.agg_cost});
+            }
+            /* sort to get depths in order*/
+            std::sort(new_results.begin(), new_results.end(),
+                    [](const MST_rt &l, const MST_rt &r) {return l.agg_cost < r.agg_cost;});
+            std::stable_sort(new_results.begin(), new_results.end(),
+                    [](const MST_rt &l, const MST_rt &r) {return l.depth < r.depth;});
+            std::stable_sort(new_results.begin(), new_results.end(),
+                    [](const MST_rt &l, const MST_rt &r) {return l.from_v < r.from_v;});
+
+            size_t i = 0;
+            for (const auto &r : new_results) {
+                (*return_tuples)[i++] = r;
+            }
+            (*return_count) = count;
+        }
+
         *log_msg = log.str().empty()?
             *log_msg :
             pgr_msg(log.str().c_str());
@@ -202,5 +198,3 @@ pgr_do_withPointsDD(
         *log_msg = pgr_msg(log.str().c_str());
     }
 }
-
-
