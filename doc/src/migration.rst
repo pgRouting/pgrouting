@@ -413,7 +413,7 @@ Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
 :from: |result-generic-no-seq|
 :to: |result-bfs|
 
-And ``driving side`` parameter changed from named optional to unnamed compulsory
+And ``driving_side`` parameter changed from named optional to unnamed compulsory
 **driving side** and its validity differ for directed and undirected graphs.
 
 Signatures to be migrated:
@@ -427,15 +427,21 @@ Signatures to be migrated:
 
   * Output columns were |result-1-1-no-seq|
   * Does not have ``start_vid`` and ``depth`` result columns.
-  * ``driving_side`` parameter was named optional.
+  * ``driving_side`` parameter was named optional now it is compulsory unamed.
 
 * ``pgr_withPointsDD`` (`Multiple vertices`)
 
   * Output columns were |result-m-1-no-seq|
   * Does not have ``depth`` result column.
-  * ``driving_side`` parameter was named optional.
+  * ``driving_side`` parameter was named optional now it is compulsory unamed.
 
 .. rubric:: Driving side was optional
+
+The default values on this query are:
+
+:directed: true
+:driving_side: 'b'
+:details: false
 
 .. literalinclude:: migration.queries
    :start-after: --withpointsdd1
@@ -443,11 +449,20 @@ Signatures to be migrated:
 
 .. rubric:: Driving side was named optional
 
+The default values on this query are:
+
+:directed: true
+:details: false
+
 .. literalinclude:: migration.queries
    :start-after: --withpointsdd2
    :end-before: --withpointsdd3
 
 .. rubric:: On directed graph ``b`` could be used as **driving side**
+
+The default values on this query are:
+
+:details: false
 
 .. literalinclude:: migration.queries
    :start-after: --withpointsdd3
@@ -455,9 +470,11 @@ Signatures to be migrated:
 
 .. rubric:: On undirected graph ``r`` could be used as **driving side**
 
+Also ``l`` could be used as  **driving side**
+
 .. literalinclude:: migration.queries
-   :start-after: --withpointsdd3
-   :end-before: --withpointsdd4
+   :start-after: --withpointsdd4
+   :end-before: --withpointsdd5
 
 :After Migration:
 
@@ -480,7 +497,8 @@ example.
 
 * |result-bfs|
 * ``start_vid`` contains the **start vid** parameter value.
-* ``depth`` contains the **depth** parameter value.
+* ``depth`` contains the **depth** from the ``start_vid`` vertex to the
+  ``node``.
 
 
 To migrate, use an unnamed valid value for **driving side** after the
@@ -490,7 +508,11 @@ To migrate, use an unnamed valid value for **driving side** after the
    :start-after: --withpointsdd4
    :end-before: --withpointsdd5
 
-If needed filter out the additional columns, for example, to return the original columns:
+To get results from previous versions:
+
+* filter out the additional columns, for example;
+* When ``details => false`` to remove the points use ``WHERE node >= 0 OR cost =
+  0``
 
 .. literalinclude:: migration.queries
    :start-after: --withpointsdd5
@@ -504,14 +526,18 @@ Using
 example.
 
 * |result-bfs|
-* ``depth`` contains the **depth** parameter value.
+* ``depth`` contains the **depth** from the ``start_vid`` vertex to the
+  ``node``.
 
 .. literalinclude:: migration.queries
    :start-after: --withpointsdd6
    :end-before: --withpointsdd7
 
-If needed filter out the additional columns, for example, to return the original
-columns:
+To get results from previous versions:
+
+* Filter out the additional columns
+* When ``details => false`` to remove the points use ``WHERE node >= 0 OR cost =
+  0``
 
 .. literalinclude:: migration.queries
    :start-after: --withpointsdd7
