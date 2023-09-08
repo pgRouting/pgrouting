@@ -172,6 +172,39 @@ Pg_points_graph::get_edge_data(int64_t eid) const {
 }
 
 
+/**
+data gets here as follows
+ - all nodes are within the distance
+ - some points show up that shouldnt
+
+Before:
+  seq   node    edge    cost    agg_cost
+  0     10      -1      0       0
+  1     -5      5       0.82    0.82   <---delete
+  2     6       2       1.004   1.004
+  3     11      5       1.025   1.025
+  4     -1      1       0.6006  1.6046   <---delete
+  5     -6      4       0.7112  1.7152   <---delete
+  6     5       1       1.001   2.005
+  7     7       4       1.016   2.02
+  8     16      9       1.081   2.106
+  9     12      11      1.121   2.146
+  10    -2      15      0.49    2.596
+
+After:
+  seq   node    edge    cost    agg_cost
+  0     10      -1      0       0
+  1     6       2       1.004   1.004
+  2     11      5       1.025   1.025
+  3     5       1       1.001   2.005
+  4     7       4       1.016   2.02
+  5     16      9       1.081   2.106
+  6     12      11      1.121   2.146
+  7     -2      15      0.49    2.596
+
+ * post all edges must be different
+ */
+
 void
 Pg_points_graph::eliminate_details_dd(
         Path &path) const {
@@ -179,45 +212,28 @@ Pg_points_graph::eliminate_details_dd(
      * There is no path nothing to do
      */
     if (path.empty()) return;
+
+    /* TODO maybe look for duplicate edges and remove the ones that node < 0 */
+    /*
+     * do not remove
+     * - first node of path
+     * - node of path that is reachable but not the next node on the edge
+     */
     Path newPath(path.start_id(), path.end_id());
-
-    auto edge_id = path.start_id() < 0?
-        get_edge_id(path.start_id()) :
-        -1;
-
-    for (auto pathstop : path) {
-        /*
-         * skip points (no details)
-         *  except if ithe point its the starting point
-         */
-        if (!((pathstop.node == path.start_id())
-                || (pathstop.node > 0))) {
+    for (const auto &ps : path) {
+        if (ps.node == path.start_id() || (ps.node >= 0)) {
+            newPath.push_back(ps);
             continue;
         }
+        auto edge_ptr = get_edge_data(ps.edge);
+        pgassert(edge_ptr);
 
-        /*
-         * Change costs only when the node is not:
-         * - start_id
-         * - directly connected to start_id
-         */
-        if (pathstop.node != path.start_id()) {
-            auto edge_ptr = get_edge_data(pathstop.edge);
-            /*
-             * edge found
-             * and its not the edge directly connected to start_id()
-             */
-            if (edge_ptr
-                    && edge_ptr->id != edge_id) {
-                pathstop.cost = pathstop.node == edge_ptr->source?
-                    edge_ptr->cost :
-                        edge_ptr->reverse_cost;
-                }
-        }
-
-        /*
-         * add to the new path
-         */
-        newPath.push_back(pathstop);
+        auto s_exists = std::find_if(path.begin(), path.end(),
+                [&](const Path_t& x) { return x.node == edge_ptr->source;}) != path.end();
+        auto t_exists = std::find_if(path.begin(), path.end(),
+                [&](const Path_t& x) { return x.node == edge_ptr->target;}) != path.end();
+        if (s_exists && t_exists) continue;
+        newPath.push_back(ps);
     }
 
     path = newPath;
@@ -286,8 +302,8 @@ Pg_points_graph::adjust_pids(
      */
     if (path.empty()) return;
     /* from, to:
-     *      * are constant along the path
-     *           */
+     * are constant along the path
+     */
     int64_t start_vid = path.start_id();
     int64_t end_vid = path.end_id();
 
@@ -343,14 +359,7 @@ Pg_points_graph::create_new_edges() {
                 << ", must be an error\n";
             return;
         }
-#if 0
-        log << "breaking: \n"
-            << edge.id << "\t"
-            << edge.source << "\t"
-            << edge.target << "\t"
-            << edge.cost << "\t"
-            << edge.reverse_cost << "\n";
-#endif
+
         int64_t prev_target = edge.source;
         int64_t prev_rtarget = edge.source;
         double prev_fraction = 0;
