@@ -45,6 +45,11 @@
 
     * Added ``depth`` column.
 
+* When ``details`` is ``false``:
+
+  * Only points that are visited are removed, that is, points reached within the
+    distance are included
+
 * Deprecated signatures:
 
   * ``pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)``
@@ -243,8 +248,8 @@ Find the driving distance from the two closest locations on the graph of point
     :start-after: -- q5
     :end-before: -- q6
 
-* Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`.
-* Point :math:`-2` corresponds to the next close edge from point `(2.9,1.8)`.
+* Point :math:`-1` corresponds to the closest edge from point :math:`(2.9,1.8)`.
+* Point :math:`-2` corresponds to the next close edge from point :math:`(2.9,1.8)`.
 
 Driving side does not matter
 ...............................................................................
