@@ -32,12 +32,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "dijkstra/drivingDist.hpp"
 
+#include "c_types/mst_rt.h"
+#include "c_types/path_rt.h"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
 
 void
-do_pgr_driving_many_to_dist(
+pgr_do_drivingdist(
         Edge_t  *data_edges, size_t total_edges,
         int64_t *start_vertex, size_t s_len,
         double distance,
@@ -70,69 +72,49 @@ do_pgr_driving_many_to_dist(
         graphType gType = directedFlag? DIRECTED: UNDIRECTED;
 
         std::deque<Path> paths;
-        std::deque<MST_rt> results;
         std::vector<int64_t> start_vertices(start_vertex, start_vertex + s_len);
 
-        auto vertices(pgrouting::extract_vertices(data_edges, total_edges));
-
+        std::deque<MST_rt> results;
+        std::vector<std::map<int64_t, int64_t>> depths;
 
         if (directedFlag) {
-            pgrouting::DirectedGraph digraph(vertices, gType);
-
-            digraph.insert_edges(data_edges, total_edges, true);
-
-            paths = pgr_drivingdistance(
-                    digraph, start_vertices, distance, equiCostFlag, log);
-            if (do_new) {
-                pgrouting::functions::ShortestPath_trees<pgrouting::DirectedGraph> spt;
-                results = spt.get_depths(digraph, paths);
-            }
+            pgrouting::DirectedGraph digraph(gType);
+            digraph.insert_edges(data_edges, total_edges);
+            paths = pgr_drivingdistance(digraph, start_vertices, distance, equiCostFlag, depths, true);
         } else {
-            pgrouting::UndirectedGraph undigraph(vertices, gType);
-
-            undigraph.insert_edges(data_edges, total_edges, true);
-
-
-            paths = pgr_drivingdistance(
-                    undigraph, start_vertices, distance, equiCostFlag, log);
-            if (do_new) {
-                pgrouting::functions::ShortestPath_trees<pgrouting::UndirectedGraph> spt;
-                results = spt.get_depths(undigraph, paths);
-            }
+            pgrouting::UndirectedGraph undigraph(gType);
+            undigraph.insert_edges(data_edges, total_edges);
+            paths = pgr_drivingdistance(undigraph, start_vertices, distance, equiCostFlag, depths, true);
         }
 
-        if (do_new) {
-        size_t count(results.size());
-
+        size_t count(count_tuples(paths));
 
         if (count == 0) {
             log << "\nNo return values were found";
             *notice_msg = pgr_msg(log.str().c_str());
             return;
         }
-        *return_tuples = pgr_alloc(count, (*return_tuples));
-        for (size_t i = 0; i < count; i++) {
-            *((*return_tuples) + i) = results[i];
-        }
-        (*return_count) = count;
-        } else {
-        /* old code to be removed on v4 */
-        for (auto &path : paths) {
-            std::sort(path.begin(), path.end(),
-                    [](const Path_t &l, const  Path_t &r)
-                    {return l.node < r.node;});
-            std::stable_sort(path.begin(), path.end(),
-                    [](const Path_t &l, const  Path_t &r)
-                    {return l.agg_cost < r.agg_cost;});
-        }
-        size_t count(count_tuples(paths));
 
-        if (count == 0) {
-            *notice_msg = pgr_msg("No return values was found");
-            return;
-        }
+        /* old code to be removed on v4 */
         *return_old_tuples = pgr_alloc(count, (*return_old_tuples));
         *return_old_count = collapse_paths(return_old_tuples, paths);
+
+        if (do_new) {
+            *return_tuples = pgr_alloc(count, (*return_tuples));
+
+            for (size_t i = 0; i < count; i++) {
+                auto row = (*return_old_tuples)[i];
+                /* given the depth assign the correct depth */
+                int64_t depth = -1;
+                for (const auto &d : depths) {
+                    /* look for the correct path */
+                    auto itr = d.find(row.start_id);
+                    if (itr == d.end() || !(itr->second == 0)) continue;
+                    depth = d.at(row.node);
+                }
+                (*return_tuples)[i] = MST_rt{row.start_id, depth, row.node, row.edge, row.cost, row.agg_cost};
+            }
+            (*return_count) = count;
         }
 
         *log_msg = log.str().empty()?
