@@ -59,18 +59,15 @@ void process(
         size_t *result_old_count,
         MST_rt **result_tuples,
         size_t *result_count) {
-    char d_side = ' ';
+    char d_side = estimate_drivingSide(driving_side[0]);
     if (is_new) {
-        d_side = estimate_drivingSide(driving_side[0]);
         if (d_side == ' ') {
             throw_error("Invalid value of 'driving side'", "Valid value are 'r', 'l', 'b'");
             return;
-        }
-        if (!(d_side == 'r' || d_side == 'l') && directed) {
+        } else if (directed && !(d_side == 'r' || d_side == 'l')) {
             throw_error("Invalid value of 'driving side'", "Valid values are for directed graph are: 'r', 'l'");
             return;
-        }
-        if (!(d_side == 'b') && !directed) {
+        } else if (!directed && !(d_side == 'b')) {
             throw_error("Invalid value of 'driving side'", "Valid values are for undirected graph is: 'b'");
             return;
         }
@@ -145,7 +142,7 @@ void process(
             &log_msg,
             &notice_msg,
             &err_msg);
-    time_msg(" processing withPointsDD starts", start_t, clock());
+    time_msg(" processing withPointsDD", start_t, clock());
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
