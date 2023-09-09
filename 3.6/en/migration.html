@@ -1093,7 +1093,7 @@ edge.</p></li>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 </dd>
 </dl>
-<p>And <code class="docutils literal notranslate"><span class="pre">driving</span> <span class="pre">side</span></code> parameter changed from named optional to unnamed compulsory
+<p>And <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to unnamed compulsory
 <strong>driving side</strong> and its validity differ for directed and undirected graphs.</p>
 <p>Signatures to be migrated:</p>
 <ul class="simple">
@@ -1109,18 +1109,30 @@ edge.</p></li>
 <ul>
 <li><p>Output columns were <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 <li><p>Does not have <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">depth</span></code> result columns.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter was named optional.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter was named optional now it is compulsory unamed.</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<cite>Multiple vertices</cite>)</p>
 <ul>
 <li><p>Output columns were <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 <li><p>Does not have <code class="docutils literal notranslate"><span class="pre">depth</span></code> result column.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter was named optional.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter was named optional now it is compulsory unamed.</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">Driving side was optional</p>
+<p>The default values on this query are:</p>
+<dl class="field-list simple">
+<dt class="field-odd">directed<span class="colon">:</span></dt>
+<dd class="field-odd"><p>true</p>
+</dd>
+<dt class="field-even">driving_side<span class="colon">:</span></dt>
+<dd class="field-even"><p>‘b’</p>
+</dd>
+<dt class="field-odd">details<span class="colon">:</span></dt>
+<dd class="field-odd"><p>false</p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsDD(
   $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
@@ -1130,13 +1142,27 @@ WARNING:  pgr_withpointsdd(text,text,bigint,double precision,boolean,character,b
 -----+------+------+------+----------
    1 |   -1 |   -1 |    0 |        0
    2 |    5 |    1 |  0.4 |      0.4
-   3 |    6 |    1 |    1 |      1.4
-   4 |    7 |    4 |    1 |      2.4
-(4 rows)
+   3 |    6 |    1 |  0.6 |      0.6
+   4 |    7 |    4 |    1 |      1.6
+   5 |    3 |    7 |    1 |      2.6
+   6 |    8 |   10 |    1 |      2.6
+   7 |   11 |    8 |    1 |      2.6
+   8 |   -3 |   12 |  0.6 |      3.2
+   9 |   -4 |    6 |  0.7 |      3.3
+(9 rows)
 
 </pre></div>
 </div>
 <p class="rubric">Driving side was named optional</p>
+<p>The default values on this query are:</p>
+<dl class="field-list simple">
+<dt class="field-odd">directed<span class="colon">:</span></dt>
+<dd class="field-odd"><p>true</p>
+</dd>
+<dt class="field-even">details<span class="colon">:</span></dt>
+<dd class="field-even"><p>false</p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsDD(
   $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
@@ -1153,10 +1179,16 @@ WARNING:  pgr_withpointsdd(text,text,bigint,double precision,boolean,character,b
 </pre></div>
 </div>
 <p class="rubric">On directed graph <code class="docutils literal notranslate"><span class="pre">b</span></code> could be used as <strong>driving side</strong></p>
+<p>The default values on this query are:</p>
+<dl class="field-list simple">
+<dt class="field-odd">details<span class="colon">:</span></dt>
+<dd class="field-odd"><p>false</p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsDD(
   $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
-  -1, 3.3, directed =&gt; false, driving_side =&gt; &#39;r&#39;);
+  -1, 3.3, directed =&gt; true, driving_side =&gt; &#39;b&#39;);
 WARNING:  pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean) is been deprecated
  seq | node | edge | cost | agg_cost
 -----+------+------+------+----------
@@ -1164,33 +1196,28 @@ WARNING:  pgr_withpointsdd(text,text,bigint,double precision,boolean,character,b
    2 |    5 |    1 |  0.4 |      0.4
    3 |    6 |    1 |  0.6 |      0.6
    4 |    7 |    4 |    1 |      1.6
-   5 |   10 |    2 |    1 |      1.6
-   6 |    3 |    7 |    1 |      2.6
-   7 |    8 |   10 |    1 |      2.6
-   8 |   11 |    8 |    1 |      2.6
-   9 |   15 |    3 |    1 |      2.6
+   5 |    3 |    7 |    1 |      2.6
+   6 |    8 |   10 |    1 |      2.6
+   7 |   11 |    8 |    1 |      2.6
+   8 |   -3 |   12 |  0.6 |      3.2
+   9 |   -4 |    6 |  0.7 |      3.3
 (9 rows)
 
 </pre></div>
 </div>
 <p class="rubric">On undirected graph <code class="docutils literal notranslate"><span class="pre">r</span></code> could be used as <strong>driving side</strong></p>
+<p>Also <code class="docutils literal notranslate"><span class="pre">l</span></code> could be used as  <strong>driving side</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsDD(
   $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
-  -1, 3.3, directed =&gt; false, driving_side =&gt; &#39;r&#39;);
-WARNING:  pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean) is been deprecated
- seq | node | edge | cost | agg_cost
------+------+------+------+----------
-   1 |   -1 |   -1 |    0 |        0
-   2 |    5 |    1 |  0.4 |      0.4
-   3 |    6 |    1 |  0.6 |      0.6
-   4 |    7 |    4 |    1 |      1.6
-   5 |   10 |    2 |    1 |      1.6
-   6 |    3 |    7 |    1 |      2.6
-   7 |    8 |   10 |    1 |      2.6
-   8 |   11 |    8 |    1 |      2.6
-   9 |   15 |    3 |    1 |      2.6
-(9 rows)
+  -1, 3.3, &#39;r&#39;, directed =&gt; true);
+ seq | depth | start_vid | node | edge | cost | agg_cost
+-----+-------+-----------+------+------+------+----------
+   1 |     0 |        -1 |   -1 |   -1 |    0 |        0
+   2 |     1 |        -1 |    5 |    1 |  0.4 |      0.4
+   3 |     2 |        -1 |    6 |    1 |    1 |      1.4
+   4 |     3 |        -1 |    7 |    4 |    1 |      2.4
+(4 rows)
 
 </pre></div>
 </div>
@@ -1219,26 +1246,31 @@ example.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> contains the <strong>start vid</strong> parameter value.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">depth</span></code> contains the <strong>depth</strong> parameter value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">depth</span></code> contains the <strong>depth</strong> from the <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> vertex to the
+<code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></li>
 </ul>
 <p>To migrate, use an unnamed valid value for <strong>driving side</strong> after the
 <strong>distance</strong> parameter:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsDD(
   $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
-  -1, 3.3, &#39;r&#39;, details =&gt; true);
+  -1, 3.3, &#39;r&#39;, directed =&gt; true);
  seq | depth | start_vid | node | edge | cost | agg_cost
 -----+-------+-----------+------+------+------+----------
    1 |     0 |        -1 |   -1 |   -1 |    0 |        0
    2 |     1 |        -1 |    5 |    1 |  0.4 |      0.4
    3 |     2 |        -1 |    6 |    1 |    1 |      1.4
-   4 |     3 |        -1 |   -6 |    4 |  0.7 |      2.1
-   5 |     4 |        -1 |    7 |    4 |  0.3 |      2.4
-(5 rows)
+   4 |     3 |        -1 |    7 |    4 |    1 |      2.4
+(4 rows)
 
 </pre></div>
 </div>
-<p>If needed filter out the additional columns, for example, to return the original columns:</p>
+<p>To get results from previous versions:</p>
+<ul class="simple">
+<li><p>filter out the additional columns, for example;</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">details</span> <span class="pre">=&gt;</span> <span class="pre">false</span></code> to remove the points use <code class="docutils literal notranslate"><span class="pre">WHERE</span> <span class="pre">node</span> <span class="pre">&gt;=</span> <span class="pre">0</span> <span class="pre">OR</span> <span class="pre">cost</span> <span class="pre">=</span>
+<span class="pre">0</span></code></p></li>
+</ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT seq, node, edge, cost, agg_cost FROM pgr_withPointsDD(
   $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
@@ -1262,7 +1294,8 @@ example.</p>
 example.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">depth</span></code> contains the <strong>depth</strong> parameter value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">depth</span></code> contains the <strong>depth</strong> from the <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> vertex to the
+<code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsDD(
   $$SELECT * FROM edges ORDER BY id$$,
@@ -1276,22 +1309,28 @@ example.</p>
    4 |     2 |        -1 |    5 |    1 |    1 |      1.6
    5 |     3 |        -1 |    3 |    7 |    1 |      2.6
    6 |     3 |        -1 |    8 |   10 |    1 |      2.6
-   7 |     0 |        16 |   16 |   -1 |    0 |        0
-   8 |     1 |        16 |   11 |    9 |    1 |        1
-   9 |     1 |        16 |   15 |   16 |    1 |        1
-  10 |     1 |        16 |   17 |   15 |    1 |        1
-  11 |     2 |        16 |   10 |    3 |    1 |        2
-  12 |     2 |        16 |   12 |   11 |    1 |        2
-(12 rows)
+   7 |     4 |        -1 |   -3 |   12 |  0.6 |      3.2
+   8 |     4 |        -1 |   -4 |    6 |  0.7 |      3.3
+   9 |     0 |        16 |   16 |   -1 |    0 |        0
+  10 |     1 |        16 |   11 |    9 |    1 |        1
+  11 |     1 |        16 |   15 |   16 |    1 |        1
+  12 |     1 |        16 |   17 |   15 |    1 |        1
+  13 |     2 |        16 |   10 |    3 |    1 |        2
+  14 |     2 |        16 |   12 |   11 |    1 |        2
+(14 rows)
 
 </pre></div>
 </div>
-<p>If needed filter out the additional columns, for example, to return the original
-columns:</p>
+<p>To get results from previous versions:</p>
+<ul class="simple">
+<li><p>Filter out the additional columns</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">details</span> <span class="pre">=&gt;</span> <span class="pre">false</span></code> to remove the points use <code class="docutils literal notranslate"><span class="pre">WHERE</span> <span class="pre">node</span> <span class="pre">&gt;=</span> <span class="pre">0</span> <span class="pre">OR</span> <span class="pre">cost</span> <span class="pre">=</span>
+<span class="pre">0</span></code></p></li>
+</ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT seq, start_vid, node, edge, cost, agg_cost FROM pgr_withPointsDD(
   $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
-  ARRAY[-1, 16], 3.3, &#39;l&#39;, equicost =&gt; true);
+  ARRAY[-1, 16], 3.3, &#39;l&#39;, equicost =&gt; true) WHERE node &gt;= 0 OR cost = 0;
  seq | start_vid | node | edge | cost | agg_cost
 -----+-----------+------+------+------+----------
    1 |        -1 |   -1 |   -1 |    0 |        0
@@ -1300,12 +1339,12 @@ columns:</p>
    4 |        -1 |    5 |    1 |    1 |      1.6
    5 |        -1 |    3 |    7 |    1 |      2.6
    6 |        -1 |    8 |   10 |    1 |      2.6
-   7 |        16 |   16 |   -1 |    0 |        0
-   8 |        16 |   11 |    9 |    1 |        1
-   9 |        16 |   15 |   16 |    1 |        1
-  10 |        16 |   17 |   15 |    1 |        1
-  11 |        16 |   10 |    3 |    1 |        2
-  12 |        16 |   12 |   11 |    1 |        2
+   9 |        16 |   16 |   -1 |    0 |        0
+  10 |        16 |   11 |    9 |    1 |        1
+  11 |        16 |   15 |   16 |    1 |        1
+  12 |        16 |   17 |   15 |    1 |        1
+  13 |        16 |   10 |    3 |    1 |        2
+  14 |        16 |   12 |   11 |    1 |        2
 (12 rows)
 
 </pre></div>
@@ -2687,8 +2726,8 @@ FROM pgr_trspVia_withPoints(
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
-      Last updated on Aug 29, 2023.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.4.<br/>
+      Last updated on Sep 09, 2023.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.5.<br/>
     </p>
   </div>
 </footer>
