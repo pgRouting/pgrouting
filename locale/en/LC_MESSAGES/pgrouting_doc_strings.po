@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-29 14:55+0000\n"
+"POT-Creation-Date: 2023-09-09 00:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4752,7 +4752,7 @@ msgid "|result-generic-no-seq|"
 msgstr ""
 
 msgid ""
-"And ``driving side`` parameter changed from named optional to unnamed "
+"And ``driving_side`` parameter changed from named optional to unnamed "
 "compulsory **driving side** and its validity differ for directed and "
 "undirected graphs."
 msgstr ""
@@ -4766,7 +4766,7 @@ msgstr ""
 msgid "Output columns were |result-1-1-no-seq|"
 msgstr ""
 
-msgid "``driving_side`` parameter was named optional."
+msgid "``driving_side`` parameter was named optional now it is compulsory unamed."
 msgstr ""
 
 msgid "``pgr_withPointsDD`` (`Multiple vertices`)"
@@ -4781,6 +4781,27 @@ msgstr ""
 msgid "Driving side was optional"
 msgstr ""
 
+msgid "The default values on this query are:"
+msgstr ""
+
+msgid "directed"
+msgstr ""
+
+msgid "true"
+msgstr ""
+
+msgid "driving_side"
+msgstr ""
+
+msgid "'b'"
+msgstr ""
+
+msgid "details"
+msgstr ""
+
+msgid "false"
+msgstr ""
+
 msgid "Driving side was named optional"
 msgstr ""
 
@@ -4788,6 +4809,9 @@ msgid "On directed graph ``b`` could be used as **driving side**"
 msgstr ""
 
 msgid "On undirected graph ``r`` could be used as **driving side**"
+msgstr ""
+
+msgid "Also ``l`` could be used as  **driving side**"
 msgstr ""
 
 msgid "After Migration"
@@ -4821,7 +4845,9 @@ msgid ""
 "#single-vertex>`__ example."
 msgstr ""
 
-msgid "``depth`` contains the **depth** parameter value."
+msgid ""
+"``depth`` contains the **depth** from the ``start_vid`` vertex to the "
+"``node``."
 msgstr ""
 
 msgid ""
@@ -4829,14 +4855,23 @@ msgid ""
 "**distance** parameter:"
 msgstr ""
 
+msgid "To get results from previous versions:"
+msgstr ""
+
+msgid "filter out the additional columns, for example;"
+msgstr ""
+
 msgid ""
-"If needed filter out the additional columns, for example, to return the "
-"original columns:"
+"When ``details => false`` to remove the points use ``WHERE node >= 0 OR "
+"cost = 0``"
 msgstr ""
 
 msgid ""
 "Using `this <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html"
 "#multiple-vertices>`__ example."
+msgstr ""
+
+msgid "Filter out the additional columns"
 msgstr ""
 
 msgid "Migration of ``pgr_withPointsKSP``"
@@ -4846,6 +4881,12 @@ msgid ""
 "Starting from `v3.6.0 "
 "<https://docs.pgrouting.org/3.6/en/migration.html>`__ "
 ":doc:`pgr_withPointsKSP` result columns are being standarized."
+msgstr ""
+
+msgid ""
+"And ``driving side`` parameter changed from named optional to unnamed "
+"compulsory **driving side** and its validity differ for directed and "
+"undirected graphs."
 msgstr ""
 
 msgid "``pgr_withPointsKSP`` (`One to One`)"
@@ -4861,6 +4902,11 @@ msgid ""
 "Using `this "
 "<https://docs.pgrouting.org/3.5/en/pgr_withPointsKSP.html#signatures>`__ "
 "example."
+msgstr ""
+
+msgid ""
+"If needed filter out the additional columns, for example, to return the "
+"original columns:"
 msgstr ""
 
 msgid "Migration of turn restrictions"
@@ -14828,6 +14874,14 @@ msgstr ""
 msgid "Added ``depth`` column."
 msgstr ""
 
+msgid "When ``details`` is ``false``:"
+msgstr ""
+
+msgid ""
+"Only points that are visited are removed, that is, points reached within "
+"the distance are included"
+msgstr ""
+
 msgid ""
 "``pgr_withpointsdd(text,text,bigint,double "
 "precision,boolean,character,boolean)``"
@@ -14919,6 +14973,16 @@ msgstr ""
 msgid ""
 "Find the driving distance from the two closest locations on the graph of "
 "point `(2.9, 1.8)`."
+msgstr ""
+
+msgid ""
+"Point :math:`-1` corresponds to the closest edge from point "
+":math:`(2.9,1.8)`."
+msgstr ""
+
+msgid ""
+"Point :math:`-2` corresponds to the next close edge from point "
+":math:`(2.9,1.8)`."
 msgstr ""
 
 msgid "Driving side does not matter"
