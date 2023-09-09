@@ -2,20 +2,20 @@
 
 <!DOCTYPE html>
 
-<html lang="en" data-content_root="./">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>pgr_floydWarshall &#8212; pgRouting Manual (3.6-dev)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=a8fd7d16"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=22781fca"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/page_history.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -160,13 +160,13 @@
 <div class="line"><br /></div>
 </div>
 <section id="pgr-floydwarshall">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_floydWarshall</span></code><a class="headerlink" href="#pgr-floydwarshall" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_floydWarshall</span></code><a class="headerlink" href="#pgr-floydwarshall" title="Permalink to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_floydWarshall</span></code> - Returns the sum of the costs of the shortest path for
 each pair of nodes in the graph using Floyd-Warshall algorithm.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
-<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 <p class="rubric">Availability</p>
@@ -184,7 +184,7 @@ each pair of nodes in the graph using Floyd-Warshall algorithm.</p>
 </li>
 </ul>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <p>The Floyd-Warshall algorithm, also known as Floyd’s algorithm, is a good choice
 to calculate the sum of the costs of the shortest path for each pair of nodes in
 the graph, for <em>dense graphs</em>.
@@ -214,7 +214,7 @@ would be the pair: <cite>(start_vid, end_vid)</cite>.</p></li>
 </ul>
 </section>
 <section id="signatures">
-<h2>Signatures<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Summary</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
@@ -254,7 +254,7 @@ would be the pair: <cite>(start_vid, end_vid)</cite>.</p></li>
 </div>
 </section>
 <section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
@@ -272,7 +272,7 @@ would be the pair: <cite>(start_vid, end_vid)</cite>.</p></li>
 </tbody>
 </table>
 <section id="optional-parameters">
-<h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Link to this heading">¶</a></h3>
+<h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
@@ -296,9 +296,9 @@ would be the pair: <cite>(start_vid, end_vid)</cite>.</p></li>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 17.7%" />
@@ -353,7 +353,7 @@ it’s not part of the graph.</p></li>
 </section>
 </section>
 <section id="result-columns">
-<h2>Result Columns<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
 <p>Set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
@@ -384,7 +384,7 @@ it’s not part of the graph.</p></li>
 </table>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_johnson.html"><span class="doc">pgr_johnson</span></a></p></li>
 <li><p>Boost <a class="reference external" href="https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html">floyd-Warshall</a></p></li>
@@ -411,8 +411,8 @@ it’s not part of the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
-      Last updated on Sep 09, 2023.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.5.<br/>
+      Last updated on Sep 04, 2023.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br/>
     </p>
   </div>
 </footer>

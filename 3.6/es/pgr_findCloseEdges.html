@@ -2,21 +2,21 @@
 
 <!DOCTYPE html>
 
-<html lang="es" data-content_root="./">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>pgr_findCloseEdges &#8212; pgRouting Manual (3.6-dev)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=d72ce231"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=22781fca"></script>
-    <script src="_static/translations.js?v=efdbd0b9"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/page_history.js"></script>
+    <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
@@ -199,12 +199,12 @@
 <div class="line"><br /></div>
 </div>
 <section id="pgr-findcloseedges">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code><a class="headerlink" href="#pgr-findcloseedges" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code><a class="headerlink" href="#pgr-findcloseedges" title="Enlace permanente a este encabezado">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code> - Finds the close edges to a point geometry.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
-<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
 </figcaption>
 </figure>
 <p class="rubric">Disponibilidad</p>
@@ -221,7 +221,7 @@
 </li>
 </ul>
 <section id="description">
-<h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<h2>Descripción<a class="headerlink" href="#description" title="Enlace permanente a este encabezado">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code> - An utility function that finds the closest edge to a
 point geometry.</p>
 <ul class="simple">
@@ -232,7 +232,7 @@ adjustments needed by the application.</p></li>
 </ul>
 </section>
 <section id="signatures">
-<h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
 <p class="rubric">Resumen</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
@@ -247,7 +247,7 @@ adjustments needed by the application.</p></li>
 </div>
 </div>
 <section id="one-point">
-<span id="index-0"></span><h3>One point<a class="headerlink" href="#one-point" title="Link to this heading">¶</a></h3>
+<span id="index-0"></span><h3>One point<a class="headerlink" href="#one-point" title="Enlace permanente a este encabezado">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -301,7 +301,7 @@ FROM pgr_findCloseEdges(
 </div>
 </section>
 <section id="many-points">
-<span id="index-1"></span><h3>Many points<a class="headerlink" href="#many-points" title="Link to this heading">¶</a></h3>
+<span id="index-1"></span><h3>Many points<a class="headerlink" href="#many-points" title="Enlace permanente a este encabezado">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -344,7 +344,7 @@ point geometry the row belongs to.</p>
 </section>
 </section>
 <section id="parameters">
-<span id="index-2"></span><h2>Parámetros<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<span id="index-2"></span><h2>Parámetros<a class="headerlink" href="#parameters" title="Enlace permanente a este encabezado">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -372,7 +372,7 @@ point geometry the row belongs to.</p>
 </tbody>
 </table>
 <section id="optional-parameters">
-<h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Link to this heading">¶</a></h3>
+<h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Enlace permanente a este encabezado">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -412,9 +412,9 @@ calculations is exposed in a PostgreSQL <code class="docutils literal notranslat
 </section>
 </section>
 <section id="inner-queries">
-<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Enlace permanente a este encabezado">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Enlace permanente a este encabezado">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -436,7 +436,7 @@ calculations is exposed in a PostgreSQL <code class="docutils literal notranslat
 </section>
 </section>
 <section id="result-columns">
-<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">fraction,</span> <span class="pre">side,</span> <span class="pre">distance,</span> <span class="pre">geom,</span> <span class="pre">edge)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <thead>
@@ -587,7 +587,7 @@ connects the <strong>original point</strong> with the closest point on the <span
 }" class="graphviz" /></div>
 </section>
 <section id="additional-examples">
-<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
+<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlace permanente a este encabezado">¶</a></h2>
 <nav class="contents local" id="contenido">
 <ul class="simple">
 <li><p><a class="reference internal" href="#one-point-examples" id="id2">One point examples</a></p>
@@ -628,9 +628,9 @@ connects the <strong>original point</strong> with the closest point on the <span
 </ul>
 </nav>
 <section id="one-point-examples">
-<h3><a class="toc-backref" href="#id2" role="doc-backlink">One point examples</a><a class="headerlink" href="#one-point-examples" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">One point examples</a><a class="headerlink" href="#one-point-examples" title="Enlace permanente a este encabezado">¶</a></h3>
 <section id="at-most-two-answers">
-<h4><a class="toc-backref" href="#id3" role="doc-backlink">At most two answers</a><a class="headerlink" href="#at-most-two-answers" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id3" role="doc-backlink">At most two answers</a><a class="headerlink" href="#at-most-two-answers" title="Enlace permanente a este encabezado">¶</a></h4>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">cap</span> <span class="pre">=&gt;</span> <span class="pre">2</span></code></p>
 <ul>
@@ -693,7 +693,7 @@ from edge <span class="math notranslate nohighlight">\(8\)</span>.</p></li>
 </ul>
 </section>
 <section id="one-answer-all-columns">
-<h4><a class="toc-backref" href="#id4" role="doc-backlink">One answer, all columns</a><a class="headerlink" href="#one-answer-all-columns" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">One answer, all columns</a><a class="headerlink" href="#one-answer-all-columns" title="Enlace permanente a este encabezado">¶</a></h4>
 <ul class="simple">
 <li><p>Default: <code class="docutils literal notranslate"><span class="pre">cap</span> <span class="pre">=&gt;</span> <span class="pre">1</span></code></p>
 <ul>
@@ -750,7 +750,7 @@ the closest point on on edge <span class="math notranslate nohighlight">\(5\)</s
 </ul>
 </section>
 <section id="at-most-two-answers-with-all-columns">
-<h4><a class="toc-backref" href="#id5" role="doc-backlink">At most two answers with all columns</a><a class="headerlink" href="#at-most-two-answers-with-all-columns" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">At most two answers with all columns</a><a class="headerlink" href="#at-most-two-answers-with-all-columns" title="Enlace permanente a este encabezado">¶</a></h4>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">cap</span> <span class="pre">=&gt;</span> <span class="pre">2</span></code></p>
 <ul>
@@ -822,7 +822,7 @@ the closest point on on edge <span class="math notranslate nohighlight">\(8\)</s
 </ul>
 </section>
 <section id="one-point-dry-run-execution">
-<h4><a class="toc-backref" href="#id6" role="doc-backlink">One point dry run execution</a><a class="headerlink" href="#one-point-dry-run-execution" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id6" role="doc-backlink">One point dry run execution</a><a class="headerlink" href="#one-point-dry-run-execution" title="Enlace permanente a este encabezado">¶</a></h4>
 <ul class="simple">
 <li><p>Returns <code class="docutils literal notranslate"><span class="pre">EMPTY</span> <span class="pre">SET</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">partial</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
@@ -878,9 +878,9 @@ NOTICE:
 </section>
 </section>
 <section id="many-points-examples">
-<h3><a class="toc-backref" href="#id7" role="doc-backlink">Many points examples</a><a class="headerlink" href="#many-points-examples" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Many points examples</a><a class="headerlink" href="#many-points-examples" title="Enlace permanente a este encabezado">¶</a></h3>
 <section id="at-most-two-answers-per-point">
-<h4><a class="toc-backref" href="#id8" role="doc-backlink">At most two answers per point</a><a class="headerlink" href="#at-most-two-answers-per-point" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id8" role="doc-backlink">At most two answers per point</a><a class="headerlink" href="#at-most-two-answers-per-point" title="Enlace permanente a este encabezado">¶</a></h4>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">cap</span> <span class="pre">=&gt;</span> <span class="pre">2</span></code></p>
 <ul>
@@ -963,7 +963,7 @@ units from edge <span class="math notranslate nohighlight">\(8\)</span>.</p></li
 </ul>
 </section>
 <section id="one-answer-per-point-all-columns">
-<h4><a class="toc-backref" href="#id9" role="doc-backlink">One answer per point, all columns</a><a class="headerlink" href="#one-answer-per-point-all-columns" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id9" role="doc-backlink">One answer per point, all columns</a><a class="headerlink" href="#one-answer-per-point-all-columns" title="Enlace permanente a este encabezado">¶</a></h4>
 <ul class="simple">
 <li><p>Default: <code class="docutils literal notranslate"><span class="pre">cap</span> <span class="pre">=&gt;</span> <span class="pre">1</span></code></p>
 <ul>
@@ -1025,7 +1025,7 @@ from edge <span class="math notranslate nohighlight">\(5\)</span>.</p></li>
 </ul>
 </section>
 <section id="many-points-dry-run-execution">
-<h4><a class="toc-backref" href="#id10" role="doc-backlink">Many points dry run execution</a><a class="headerlink" href="#many-points-dry-run-execution" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id10" role="doc-backlink">Many points dry run execution</a><a class="headerlink" href="#many-points-dry-run-execution" title="Enlace permanente a este encabezado">¶</a></h4>
 <ul class="simple">
 <li><p>Returns <code class="docutils literal notranslate"><span class="pre">EMPTY</span> <span class="pre">SET</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">partial</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
@@ -1085,7 +1085,7 @@ WHERE rn &lt;= 1
 </section>
 </section>
 <section id="find-at-most-two-routes-to-a-given-point">
-<h3><a class="toc-backref" href="#id11" role="doc-backlink">Find at most two routes to a given point</a><a class="headerlink" href="#find-at-most-two-routes-to-a-given-point" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Find at most two routes to a given point</a><a class="headerlink" href="#find-at-most-two-routes-to-a-given-point" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Using <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
   $e$ SELECT * FROM edges $e$,
@@ -1116,10 +1116,10 @@ WHERE rn &lt;= 1
 </div>
 </section>
 <section id="a-point-of-interest-table">
-<h3><a class="toc-backref" href="#id12" role="doc-backlink">A point of interest table</a><a class="headerlink" href="#a-point-of-interest-table" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">A point of interest table</a><a class="headerlink" href="#a-point-of-interest-table" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Handling points outside the graph.</p>
 <section id="points-of-interest">
-<h4><a class="toc-backref" href="#id13" role="doc-backlink">Puntos de interés</a><a class="headerlink" href="#points-of-interest" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id13" role="doc-backlink">Puntos de interés</a><a class="headerlink" href="#points-of-interest" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Some times the applications work «on the fly» starting from a location that is
 not a vertex in the graph.
 Those locations, in pgRrouting are called points of interest.</p>
@@ -1166,7 +1166,7 @@ will be stored on a table.</p>
 </div>
 </section>
 <section id="points-of-interest-geometry">
-<h4><a class="toc-backref" href="#id14" role="doc-backlink">Geometría de los puntos de interés</a><a class="headerlink" href="#points-of-interest-geometry" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id14" role="doc-backlink">Geometría de los puntos de interés</a><a class="headerlink" href="#points-of-interest-geometry" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Inserting the data of the points of interest:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">pointsOfInterest</span> <span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="n">VALUES</span>
 <span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mf">1.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)),</span>
@@ -1180,7 +1180,7 @@ will be stored on a table.</p>
 </div>
 </section>
 <section id="points-of-interest-fillup">
-<h4><a class="toc-backref" href="#id15" role="doc-backlink">LLenado de puntos de interés</a><a class="headerlink" href="#points-of-interest-fillup" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id15" role="doc-backlink">LLenado de puntos de interés</a><a class="headerlink" href="#points-of-interest-fillup" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Using <a class="reference internal" href="#"><span class="doc">pgr_findCloseEdges</span></a>
 Calculating for visual purposes the points over the graph.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>UPDATE pointsOfInterest AS p SET
@@ -1198,7 +1198,7 @@ UPDATE 6
 </div>
 </section>
 <section id="a-special-case-to-arrive-from-both-sides-of-the-edge">
-<h4><a class="toc-backref" href="#id16" role="doc-backlink">A special case to arrive from both sides of the edge.</a><a class="headerlink" href="#a-special-case-to-arrive-from-both-sides-of-the-edge" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id16" role="doc-backlink">A special case to arrive from both sides of the edge.</a><a class="headerlink" href="#a-special-case-to-arrive-from-both-sides-of-the-edge" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">pointsOfInterest</span> <span class="n">SET</span> <span class="n">side</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span>
 <span class="n">WHERE</span> <span class="n">pid</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
 <span class="n">UPDATE</span> <span class="mi">1</span>
@@ -1206,7 +1206,7 @@ UPDATE 6
 </div>
 </section>
 <section id="points-of-interest-data">
-<h4><a class="toc-backref" href="#id17" role="doc-backlink">Datos de puntos de interés</a><a class="headerlink" href="#points-of-interest-data" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id17" role="doc-backlink">Datos de puntos de interés</a><a class="headerlink" href="#points-of-interest-data" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pid</span><span class="p">,</span> <span class="n">edge_id</span><span class="p">,</span> <span class="n">side</span><span class="p">,</span> <span class="n">fraction</span><span class="p">,</span>
        <span class="n">ST_AsText</span><span class="p">(</span><span class="n">geom</span><span class="p">),</span> <span class="n">ST_AsText</span><span class="p">(</span><span class="n">newPoint</span><span class="p">)</span>
 <span class="n">FROM</span> <span class="n">pointsOfInterest</span>
@@ -1226,7 +1226,7 @@ UPDATE 6
 </section>
 </section>
 <section id="connecting-disconnected-components">
-<h3><a class="toc-backref" href="#id18" role="doc-backlink">Conectando componentes desconectados</a><a class="headerlink" href="#connecting-disconnected-components" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id18" role="doc-backlink">Conectando componentes desconectados</a><a class="headerlink" href="#connecting-disconnected-components" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Para obtener la conectividad del grafo:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
@@ -1264,7 +1264,7 @@ and both vertices are also part of the dead end result set.</p>
 the crossing edge in this graph is a different component.</p>
 </div>
 <section id="prepare-storage-for-connection-information">
-<h4><a class="toc-backref" href="#id19" role="doc-backlink">Prepare storage for connection information</a><a class="headerlink" href="#prepare-storage-for-connection-information" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id19" role="doc-backlink">Prepare storage for connection information</a><a class="headerlink" href="#prepare-storage-for-connection-information" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">vertices</span> <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">component</span> <span class="n">BIGINT</span><span class="p">;</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">component</span> <span class="n">BIGINT</span><span class="p">;</span>
@@ -1273,7 +1273,7 @@ the crossing edge in this graph is a different component.</p>
 </div>
 </section>
 <section id="save-the-vertices-connection-information">
-<h4><a class="toc-backref" href="#id20" role="doc-backlink">Save the vertices connection information</a><a class="headerlink" href="#save-the-vertices-connection-information" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id20" role="doc-backlink">Save the vertices connection information</a><a class="headerlink" href="#save-the-vertices-connection-information" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span> <span class="n">SET</span> <span class="n">component</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">component</span>
 <span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
@@ -1284,7 +1284,7 @@ the crossing edge in this graph is a different component.</p>
 </div>
 </section>
 <section id="save-the-edges-connection-information">
-<h4><a class="toc-backref" href="#id21" role="doc-backlink">Save the edges connection information</a><a class="headerlink" href="#save-the-edges-connection-information" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id21" role="doc-backlink">Save the edges connection information</a><a class="headerlink" href="#save-the-edges-connection-information" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">SET</span> <span class="n">component</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">component</span>
 <span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">component</span> <span class="n">FROM</span> <span class="n">vertices</span><span class="p">)</span> <span class="n">AS</span> <span class="n">v</span>
 <span class="n">WHERE</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
@@ -1293,7 +1293,7 @@ the crossing edge in this graph is a different component.</p>
 </div>
 </section>
 <section id="get-the-closest-vertex">
-<h4><a class="toc-backref" href="#id22" role="doc-backlink">Get the closest vertex</a><a class="headerlink" href="#get-the-closest-vertex" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id22" role="doc-backlink">Get the closest vertex</a><a class="headerlink" href="#get-the-closest-vertex" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Using <a class="reference internal" href="#"><span class="doc">pgr_findCloseEdges</span></a> the closest vertex to component <span class="math notranslate nohighlight">\(1\)</span> is
 vertex <span class="math notranslate nohighlight">\(4\)</span>. And the closest edge to vertex <span class="math notranslate nohighlight">\(4\)</span> is edge <span class="math notranslate nohighlight">\(14\)</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge_id, fraction, ST_AsText(edge) AS edge, id AS closest_vertex
@@ -1312,7 +1312,7 @@ FROM pgr_findCloseEdges(
 information about the edge <span class="math notranslate nohighlight">\(14\)</span> to split the connecting edge.</p>
 </section>
 <section id="connecting-components">
-<h4><a class="toc-backref" href="#id23" role="doc-backlink">Conectando componentes</a><a class="headerlink" href="#connecting-components" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id23" role="doc-backlink">Conectando componentes</a><a class="headerlink" href="#connecting-components" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>There are three basic ways to connect the components</p>
 <ul class="simple">
 <li><p>From the vertex to the starting point of the edge</p></li>
@@ -1374,7 +1374,7 @@ INSERT 0 2
 </div>
 </section>
 <section id="checking-components">
-<h4><a class="toc-backref" href="#id24" role="doc-backlink">Revisando componentes</a><a class="headerlink" href="#checking-components" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id24" role="doc-backlink">Revisando componentes</a><a class="headerlink" href="#checking-components" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Ignoring the edge that requires further work. The graph is now fully connected
 as there is only one component.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
@@ -1408,7 +1408,7 @@ as there is only one component.</p>
 </section>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="withPoints-category.html"><span class="doc">withPoints- Categoría</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
@@ -1435,7 +1435,7 @@ as there is only one component.</p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
       Actualizado por última vez en sept 09, 2023.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.5.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br/>
     </p>
   </div>
 </footer>

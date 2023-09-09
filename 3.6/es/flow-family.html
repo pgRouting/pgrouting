@@ -2,21 +2,21 @@
 
 <!DOCTYPE html>
 
-<html lang="es" data-content_root="./">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Flow - Familia de funciones &#8212; pgRouting Manual (3.6-dev)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=d72ce231"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=22781fca"></script>
-    <script src="_static/translations.js?v=efdbd0b9"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/page_history.js"></script>
+    <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
@@ -158,7 +158,7 @@
 <div class="line"><br /></div>
 </div>
 <section id="flow-family-of-functions">
-<h1>Flow - Familia de funciones<a class="headerlink" href="#flow-family-of-functions" title="Link to this heading">¶</a></h1>
+<h1>Flow - Familia de funciones<a class="headerlink" href="#flow-family-of-functions" title="Enlace permanente a este encabezado">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> - Solo el flujo máximo se calcula usando el algoritmo empuja y reetiquetado.</p></li>
 <li><p><a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a> - Algoritmo Boykov y Kolmogorov con detalles del flujo en aristas.</p></li>
@@ -209,7 +209,7 @@
 <div class="toctree-wrapper compound">
 </div>
 <section id="flow-functions-general-information">
-<h2>Información General de las Funciones de Flujo<a class="headerlink" href="#flow-functions-general-information" title="Link to this heading">¶</a></h2>
+<h2>Información General de las Funciones de Flujo<a class="headerlink" href="#flow-functions-general-information" title="Enlace permanente a este encabezado">¶</a></h2>
 <p><strong>Las principales características son:</strong></p>
 <ul class="simple">
 <li><p>El grafo es <strong>dirigido</strong>.</p></li>
@@ -236,9 +236,9 @@
 <p><a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> es el flujo máximo y este máximo tiene garantía de ser el mismo en las funciones <a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a>, <a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a>, <a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a>, pero el flujo actual para cada arista puede variar.</p>
 </section>
 <section id="inner-queries">
-<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Enlace permanente a este encabezado">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Enlace permanente a este encabezado">¶</a></h3>
 <p class="rubric">Aristas de capacidad</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a></p></li>
@@ -435,7 +435,7 @@
 </dl>
 </section>
 <section id="combinations-sql">
-<h3>SQL Combinaciones<a class="headerlink" href="#combinations-sql" title="Link to this heading">¶</a></h3>
+<h3>SQL Combinaciones<a class="headerlink" href="#combinations-sql" title="Enlace permanente a este encabezado">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14.0%" />
@@ -468,7 +468,7 @@
 </section>
 </section>
 <section id="result-columns">
-<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Usado en</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a></p></li>
@@ -554,7 +554,7 @@
 </table>
 </section>
 <section id="advanced-documentation">
-<h2>Advanced Documentation<a class="headerlink" href="#advanced-documentation" title="Link to this heading">¶</a></h2>
+<h2>Advanced Documentation<a class="headerlink" href="#advanced-documentation" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Una red de flujo es un gráfico dirigido donde cada arista tiene una capacidad y un flujo. El flujo a través de una arista no debe exceder la capacidad de la misma. Además, el flujo entrante y saliente de un nodo debe ser igual, excepto para el origen que solo tiene flujo saliente, y el destino (receptor) que solo tiene flujo entrante.</p>
 <p>Los algoritmos de Flujo Máximo se calculan a través del grafo del flujo máximo y el flujo de cada arista.</p>
 <p>Se garantiza que el flujo máximo a través del grafo sea el mismo con todas las implementaciones, pero el flujo real a través de cada arista puede variar.</p>
@@ -596,7 +596,7 @@
 </ul>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Maximum_flow_problem">https://en.wikipedia.org/wiki/Maximum_flow_problem</a></p></li>
 </ul>
@@ -622,7 +622,7 @@
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
       Actualizado por última vez en sept 09, 2023.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.5.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br/>
     </p>
   </div>
 </footer>
