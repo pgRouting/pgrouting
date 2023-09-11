@@ -68,7 +68,7 @@ jobs:
           boost_minor: [56, 68, 75]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Get postgres version
         run: |
