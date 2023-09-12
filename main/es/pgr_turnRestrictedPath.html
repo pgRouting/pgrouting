@@ -2,21 +2,21 @@
 
 <!DOCTYPE html>
 
-<html lang="es">
+<html lang="es" data-content_root="./">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pgr_turnRestrictedPath - Experimental &#8212; pgRouting Manual (3.5)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/page_history.js"></script>
-    <script src="_static/translations.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
+    <script src="_static/documentation_options.js?v=ad3010e5"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=8e7fbbe4"></script>
+    <script src="_static/translations.js?v=efdbd0b9"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
@@ -165,7 +165,7 @@
 <div class="line"><br /></div>
 </div>
 <section id="pgr-turnrestrictedpath-experimental">
-<h1>pgr_turnRestrictedPath - Experimental<a class="headerlink" href="#pgr-turnrestrictedpath-experimental" title="Enlace permanente a este encabezado">¶</a></h1>
+<h1>pgr_turnRestrictedPath - Experimental<a class="headerlink" href="#pgr-turnrestrictedpath-experimental" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_turnRestrictedPath</span></code> Using Yen’s algorithm Vertex -Vertex routing with
 restrictions</p>
 <div class="admonition warning">
@@ -207,16 +207,16 @@ restrictions</p>
 </li>
 </ul>
 <section id="description">
-<h2>Descripción<a class="headerlink" href="#description" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p>Using Yen’s algorithm to obtain K shortest paths and analyze the paths to select
 the paths that do not use the restrictions</p>
 </section>
 <section id="signatures">
-<h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
 <div class="signatures admonition" id="index-0">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_turnRestrictedPath(<a class="reference internal" href="#restrictions-sql">SQL de aristas</a>, <a class="reference internal" href="#edges-sql">SQL de restricciones</a>, <strong>salida</strong>, <strong>destino</strong>, <strong>K</strong>, [<strong>opciones</strong>])</div>
+<div class="line">pgr_turnRestrictedPath(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#restrictions-sql">SQL de restricciones</a>, <strong>salida</strong>, <strong>destino</strong>, <strong>K</strong>, [<strong>opciones</strong>])</div>
 <div class="line"><strong>opciones:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">heap_paths,</span> <span class="pre">stop_on_first,</span> <span class="pre">strict]</span></code></div>
 </div>
 <div class="line-block">
@@ -244,7 +244,7 @@ the paths that do not use the restrictions</p>
 </div>
 </section>
 <section id="parameters">
-<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 20.5%" />
@@ -283,7 +283,7 @@ the paths that do not use the restrictions</p>
 </dd>
 </dl>
 <section id="optional-parameters">
-<h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -307,7 +307,7 @@ the paths that do not use the restrictions</p>
 </section>
 </section>
 <section id="ksp-optional-parameters">
-<h2>Parámetros opcionales de KSP<a class="headerlink" href="#ksp-optional-parameters" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Parámetros opcionales de KSP<a class="headerlink" href="#ksp-optional-parameters" title="Link to this heading">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -331,7 +331,7 @@ the paths that do not use the restrictions</p>
 </table>
 </section>
 <section id="special-optional-parameters">
-<h2>Special optional parameters<a class="headerlink" href="#special-optional-parameters" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Special optional parameters<a class="headerlink" href="#special-optional-parameters" title="Link to this heading">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -364,9 +364,9 @@ restrictions</p></li>
 </table>
 </section>
 <section id="inner-queries">
-<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 17.7%" />
@@ -424,7 +424,7 @@ restrictions</p></li>
 </dl>
 </section>
 <section id="restrictions-sql">
-<h3>SQL restricciones<a class="headerlink" href="#restrictions-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>SQL restricciones<a class="headerlink" href="#restrictions-sql" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 10.3%" />
@@ -460,7 +460,7 @@ restrictions</p></li>
 </section>
 </section>
 <section id="result-columns">
-<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
 <p>Devuelve el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
@@ -519,7 +519,7 @@ restrictions</p></li>
 </table>
 </section>
 <section id="additional-examples">
-<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(3\)</span> to <span class="math notranslate nohighlight">\(8\)</span> with <code class="docutils literal notranslate"><span class="pre">strict</span></code> flag on.</p>
@@ -594,7 +594,7 @@ restrictions</p></li>
 </div>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="KSP-category.html"><span class="doc">Rutas más cortas K - Categoría</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
@@ -620,8 +620,8 @@ restrictions</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.5.1.<br/>
-      Actualizado por última vez en jul 15, 2023.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.0.1.<br/>
+      Actualizado por última vez en sept 12, 2023.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.5.<br/>
     </p>
   </div>
 </footer>
