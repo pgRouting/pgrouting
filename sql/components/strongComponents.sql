@@ -36,7 +36,7 @@ CREATE FUNCTION pgr_strongComponents(
     OUT node BIGINT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
+    SELECT seq, component, node
     FROM _pgr_strongComponents(_pgr_get_statement($1));
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;

@@ -50,8 +50,8 @@ BEGIN
     END IF;
 
     RETURN QUERY
-    SELECT *
-    FROM _pgr_prim(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DD', -1, $3::FLOAT);
+    SELECT a.seq, a.depth, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_prim(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DD', -1, $3::FLOAT) AS a;
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
@@ -78,8 +78,8 @@ BEGIN
     END IF;
 
     RETURN QUERY
-    SELECT *
-    FROM _pgr_prim(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DD', -1, $3::FLOAT);
+    SELECT a.seq, a.depth, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_prim(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DD', -1, $3::FLOAT) AS a;
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
@@ -109,8 +109,8 @@ BEGIN
     END IF;
 
     RETURN QUERY
-    SELECT *
-    FROM _pgr_prim(_pgr_get_statement($1), $2, 'DD', -1, $3);
+    SELECT a.seq, a.depth, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_prim(_pgr_get_statement($1), $2, 'DD', -1, $3) AS a;
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
@@ -139,8 +139,8 @@ BEGIN
     END IF;
 
     RETURN QUERY
-    SELECT *
-    FROM _pgr_prim(_pgr_get_statement($1), $2, 'DD', -1, $3::FLOAT);
+    SELECT a.seq, a.depth, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_prim(_pgr_get_statement($1), $2, 'DD', -1, $3::FLOAT) AS a;
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;

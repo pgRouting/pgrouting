@@ -55,7 +55,7 @@ CREATE FUNCTION pgr_contraction(
     OUT cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
+    SELECT type, id, contracted_vertices, source, target, cost
     FROM _pgr_contraction(_pgr_get_statement($1), $2::BIGINT[],  $3, $4, $5);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;

@@ -38,7 +38,7 @@ CREATE FUNCTION pgr_transitiveClosure(
     OUT target_array BIGINT[])
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
+    SELECT seq, vid, target_array
     FROM _pgr_transitiveClosure(_pgr_get_statement($1));
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;

@@ -40,7 +40,7 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN QUERY
-    SELECT *
+    SELECT node, color
     FROM _pgr_bipartite(_pgr_get_statement($1));
 END;
 $BODY$

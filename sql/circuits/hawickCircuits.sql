@@ -48,8 +48,8 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN QUERY
-    SELECT *
-    FROM _pgr_hawickCircuits(_pgr_get_statement($1));
+    SELECT a.seq, a.path_id, a.path_seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_hawickCircuits(_pgr_get_statement($1)) AS a;
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;

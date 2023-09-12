@@ -198,11 +198,11 @@ DECLARE
     naming record;
     err boolean;
 BEGIN
-    select * into naming from _pgr_getTableName(tab,reportErrs, fnName) ;
+    select a.sname, a.tname into naming from _pgr_getTableName(tab,reportErrs, fnName) AS a;
     sname=naming.sname;
     tname=naming.tname;
 
-    select * into cname from _pgr_getColumnName(sname,tname,col,reportErrs, fnName);
+    select _pgr_getColumnName into cname from _pgr_getColumnName(sname,tname,col,reportErrs, fnName);
     RETURN cname;
 END;
 
@@ -239,7 +239,7 @@ $BODY$
 DECLARE
     cname text;
 BEGIN
-    select * from _pgr_getColumnName(tab,col,0, '_pgr_isColumnInTable') into cname;
+    select _pgr_getColumnName from _pgr_getColumnName(tab,col,0, '_pgr_isColumnInTable') into cname;
     return cname is not null;
 END;
 $BODY$
@@ -342,17 +342,17 @@ DECLARE
     pkey text;
     value boolean;
 BEGIN
-    SELECT * into naming FROM _pgr_getTableName(tab, 0, fnName);
+    SELECT a.sname, a.tname into naming FROM _pgr_getTableName(tab, 0, fnName) AS a;
     sname=naming.sname;
     tname=naming.tname;
     IF sname IS NULL OR tname IS NULL THEN
         RETURN FALSE;
     END IF;
-    SELECT * into cname from _pgr_getColumnName(sname, tname, col, 0, fnName) ;
+    SELECT _pgr_getColumnName into cname from _pgr_getColumnName(sname, tname, col, 0, fnName) ;
     IF cname IS NULL THEN
         RETURN FALSE;
     END IF;
-    select * into value  from _pgr_isColumnIndexed(sname, tname, cname, reportErrs, fnName);
+    select _pgr_isColumnIndexed into value  from _pgr_isColumnIndexed(sname, tname, cname, reportErrs, fnName);
     return value;
 END
 $BODY$

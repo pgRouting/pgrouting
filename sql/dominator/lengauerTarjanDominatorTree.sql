@@ -42,8 +42,8 @@ $BODY$
 BEGIN
 
     RETURN QUERY
-    SELECT *
-    FROM _pgr_lengauerTarjanDominatorTree(_pgr_get_statement($1),$2);
+    SELECT a.seq, vid, a.idom
+    FROM _pgr_lengauerTarjanDominatorTree(_pgr_get_statement($1),$2) AS a;
 END;
 $BODY$
 LANGUAGE  plpgsql VOLATILE STRICT;

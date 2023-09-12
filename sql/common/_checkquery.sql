@@ -65,4 +65,4 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 -- COMMENTS
 COMMENT ON FUNCTION _pgr_checkquery(TEXT)
-IS '_pgr_checkquery is an internal function';
+IS 'Internal function deprecated on V3.5.1';

@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -----------------------
 
 
---v3.0
+--vnone
 CREATE FUNCTION pgr_randomSpanTree(
     TEXT,   -- edges_sql (required)
     BIGINT, -- root (required)
@@ -56,10 +56,10 @@ BEGIN
     );
 
     IF (connectedComponent = 1) THEN
-       SELECT *
+       SELECT seq, root_vertex, edge, cost, tree_cost
        FROM _pgr_randomSpanTree(_pgr_get_statement($1), $2, $3, TRUE);
     ELSE
-       SELECT *
+       SELECT seq, root_vertex, edge, cost, tree_cost
        FROM _pgr_randomSpanTree(_pgr_get_statement($1), $2, $3, FALSE);
     END IF;
 END;
