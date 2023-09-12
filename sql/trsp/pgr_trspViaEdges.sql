@@ -68,7 +68,7 @@ declare
     f float;
 
 begin
-  RAISE WARNING 'pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated on v3.4.0';
+  RAISE WARNING 'pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated function on v3.4.0';
     SELECT 0::INTEGER AS seq, NULL::INTEGER AS id1, NULL::INTEGER AS id2, NULL::INTEGER AS id3, NULL::FLOAT AS cost INTO lrr;
     has_reverse =_pgr_parameter_check('dijkstra', sql, false);
     edges_sql := sql;
@@ -173,8 +173,5 @@ rows 1000;
 -- COMMENTS
 
 COMMENT ON FUNCTION pgr_trspViaEdges(TEXT, INTEGER[], FLOAT[], BOOLEAN, BOOLEAN, TEXT)
-IS 'pgr_trspViaEdges
-- DEPRECATED function on v3.4.0
-- Documentation:
-  - ${PROJECT_DOC_LINK}/pgr_trspVia_withPoints.html
-';
+IS 'pgr_trspViaEdges deprecated function on v3.4.0
+- Documentation: ${PROJECT_DOC_LINK}/pgr_trspVia_withPoints.html';
