@@ -99,6 +99,12 @@ milestone for 3.6.0
 * `#2490 <https://github.com/pgRouting/pgrouting/pull/2490>`__ Automatic page
   history links.
 
+* ..rubric:: SQL standarization
+
+* `#2555 <https://github.com/pgRouting/pgrouting/pull/2555>`__ standarize
+  deprecated messages
+
+
 pgRouting 3.5.1 Release Notes
 -------------------------------------------------------------------------------
 
