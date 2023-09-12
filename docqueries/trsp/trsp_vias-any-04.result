@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
         true,  /* has_reverse_cost? */
         /* include the turn restrictions */
         'SELECT to_cost, target_id::INTEGER, via_path FROM old_restrictions');
-WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) is been deprecated
+WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) deprecated function on v3.4.0
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |   6 |   4 |    1
@@ -62,9 +62,9 @@ SELECT * FROM pgr_trspViaEdges(
         true,  /* has_reverse_cost? */
         /* include the turn restrictions */
         'SELECT to_cost, target_id::INTEGER, via_path FROM old_restrictions');
-WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated on v3.4.0
-WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0
-WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0
+WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated function on v3.4.0
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated signature on v3.4.0
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated signature on v3.4.0
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   4 |  0.5
@@ -93,9 +93,9 @@ SELECT * FROM pgr_trspViaEdges(
         true,  /* has_reverse_cost? */
         /* include the turn restrictions */
         'SELECT to_cost, target_id::INTEGER, via_path FROM old_restrictions');
-WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated on v3.4.0
-WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0
-WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0
+WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated function on v3.4.0
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated signature on v3.4.0
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated signature on v3.4.0
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
@@ -122,9 +122,9 @@ SELECT * FROM pgr_trspViaEdges(
         true,  /* has_reverse_cost? */
         /* include the turn restrictions */
         'SELECT to_cost, target_id::INTEGER, via_path FROM old_restrictions');
-WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated on v3.4.0
-WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0
-WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0
+WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated function on v3.4.0
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated signature on v3.4.0
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated signature on v3.4.0
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
