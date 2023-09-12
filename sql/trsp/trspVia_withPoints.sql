@@ -51,7 +51,7 @@ CREATE FUNCTION pgr_trspVia_withPoints(
   OUT route_agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-SELECT *
+SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost, route_agg_cost
 FROM _pgr_trspVia_withPoints(
   _pgr_get_statement($1),
   _pgr_get_statement($2),

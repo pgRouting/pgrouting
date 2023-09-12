@@ -38,7 +38,7 @@ CREATE FUNCTION pgr_cuthillMckeeOrdering(
     OUT node BIGINT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
+    SELECT seq, node
     FROM _pgr_cuthillMckeeOrdering(_pgr_get_statement($1));
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;

@@ -47,7 +47,7 @@ CREATE FUNCTION pgr_trsp_withPoints(
   OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-SELECT *
+SELECT seq, path_seq, departure, end_vid, node, edge, cost, agg_cost
 FROM _pgr_trsp_withPoints(
   _pgr_get_statement($1),
   _pgr_get_statement($2),
@@ -82,7 +82,7 @@ CREATE FUNCTION pgr_trsp_withPoints(
   OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-SELECT *
+SELECT seq, path_seq, departure, end_vid, node, edge, cost, agg_cost
 FROM _pgr_trsp_withPoints(
   _pgr_get_statement($1),
   _pgr_get_statement($2),
@@ -116,7 +116,7 @@ CREATE FUNCTION pgr_trsp_withPoints(
   OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-SELECT *
+SELECT seq, path_seq, departure, end_vid, node, edge, cost, agg_cost
 FROM _pgr_trsp_withPoints(
   _pgr_get_statement($1),
   _pgr_get_statement($2),
@@ -150,7 +150,7 @@ CREATE FUNCTION pgr_trsp_withPoints(
   OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-SELECT *
+SELECT seq, path_seq, departure, end_vid, node, edge, cost, agg_cost
 FROM _pgr_trsp_withPoints(
   _pgr_get_statement($1),
   _pgr_get_statement($2),
@@ -184,7 +184,7 @@ CREATE FUNCTION pgr_trsp_withPoints(
   OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-SELECT *
+SELECT seq, path_seq, departure, end_vid, node, edge, cost, agg_cost
 FROM _pgr_trsp_withPoints(
   _pgr_get_statement($1),
   _pgr_get_statement($2),

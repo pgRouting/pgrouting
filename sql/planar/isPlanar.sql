@@ -37,8 +37,7 @@ CREATE FUNCTION pgr_isPlanar(
 
 RETURNS BOOLEAN AS
 $BODY$
-    SELECT *
-    FROM _pgr_isPlanar(_pgr_get_statement($1)) AS a;
+    SELECT _pgr_isPlanar(_pgr_get_statement($1));
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 

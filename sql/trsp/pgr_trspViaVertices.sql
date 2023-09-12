@@ -81,7 +81,7 @@ BEGIN
 
 
     -- make the call without contradiction from part of the user
-    RETURN query SELECT * FROM _pgr_trspViaVertices(new_sql, via_vids::INTEGER[], directed, has_rcost, restrictions_sql);
+    RETURN query SELECT a.seq, a.id1, a.id2, a.id3, a.cost FROM _pgr_trspViaVertices(new_sql, via_vids::INTEGER[], directed, has_rcost, restrictions_sql) AS a;
     IF NOT FOUND THEN
         RAISE EXCEPTION 'Error computing path: Path Not Found';
     END IF;

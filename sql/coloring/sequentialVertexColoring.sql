@@ -42,8 +42,8 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN QUERY
-    SELECT *
-    FROM _pgr_sequentialVertexColoring(_pgr_get_statement($1));
+    SELECT a.vertex_id, a.color_id
+    FROM _pgr_sequentialVertexColoring(_pgr_get_statement($1)) AS a;
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;

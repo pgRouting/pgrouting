@@ -187,8 +187,8 @@ BEGIN
     select * into naming from _pgr_getTableName(tab,reportErrs, fnName) ;
     sname=naming.sname;
     tname=naming.tname;
-    select * into cname from _pgr_getColumnName(tab,col,reportErrs, fnName) ;
-    select * into ctype from _pgr_getColumnType(sname,tname,cname,reportErrs, fnName);
+    select _pgr_getColumnName into cname from _pgr_getColumnName(tab,col,reportErrs, fnName) ;
+    select _pgr_getColumnType into ctype from _pgr_getColumnType(sname,tname,cname,reportErrs, fnName);
     RETURN ctype;
 END;
 

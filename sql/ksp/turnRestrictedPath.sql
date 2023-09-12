@@ -49,7 +49,7 @@ CREATE FUNCTION pgr_turnRestrictedPath(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
+    SELECT seq, path_id, path_seq, node, edge, cost, agg_cost
     FROM _pgr_turnRestrictedPath(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4, $5, $6, $7, $8, $9);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
