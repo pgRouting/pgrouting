@@ -55,7 +55,7 @@ CREATE FUNCTION pgr_withPointsVia(
   OUT route_agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-  SELECT *
+  SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost, route_agg_cost
   FROM _pgr_withPointsVia( _pgr_get_statement($1), _pgr_get_statement($2), $3, $4, $5, $6, $7, $8);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
@@ -224,4 +224,4 @@ CREATE FUNCTION  _pgr_withPointsVia(
 
 
 COMMENT ON FUNCTION _pgr_withPointsVia(TEXT, BIGINT[], FLOAT[], BOOLEAN)
-IS 'pgRouting internal function DEPRECATED on v3.4.0';
+IS 'pgRouting internal deprecated on v3.4.0';

@@ -67,7 +67,8 @@ BEGIN
             SELECT pindex AS id, x as d_x, y as d_y, opentime as d_open, closetime as d_close, servicetime as d_service
             FROM  customer_data WHERE dindex = 0 AND id != 0
         )
-        SELECT * FROM pickups JOIN deliveries USING(id) ORDER BY pickups.id
+        SELECT id, demand, p_x, p_y, p_open, p_close, p_service, d_x, d_y, d_open, d_close, d_service
+        FROM pickups JOIN deliveries USING(id) ORDER BY pickups.id
     $$;
 
     vehicles_sql = $$WITH

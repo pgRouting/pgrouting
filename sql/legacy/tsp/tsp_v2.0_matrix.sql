@@ -38,10 +38,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 CREATE OR REPLACE FUNCTION _pgr_unnest_matrix
-    (matrix float8[][], 
+    (matrix float8[][],
 
-    OUT start_vid integer, 
-    OUT end_vid integer, 
+    OUT start_vid integer,
+    OUT end_vid integer,
     out agg_cost float8)
 RETURNS SETOF record AS
 
@@ -83,7 +83,8 @@ debuglevel TEXT;
 BEGIN
     RAISE NOTICE 'Deprecated Signature pgr_tsp(float8[][], integer, integer)';
 
-    CREATE TEMP TABLE ___tmp2 ON COMMIT DROP AS SELECT * FROM _pgr_unnest_matrix( matrix );
+    CREATE TEMP TABLE ___tmp2 ON COMMIT DROP AS 
+    SELECT start_vid, end_vid, agg_cost FROM _pgr_unnest_matrix( matrix );
 
 
     startpt := startpt + 1;
@@ -94,8 +95,8 @@ BEGIN
     RETURN QUERY
     WITH
     result AS (
-        SELECT * FROM pgr_TSP(
-        $$SELECT * FROM ___tmp2 $$,
+        SELECT seq, id FROM pgr_TSP(
+        $$SELECT start_vid, end_vid, agg_cost FROM ___tmp2 $$,
         startpt, endpt,
 
         tries_per_temperature :=  500 :: INTEGER,

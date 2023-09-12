@@ -40,8 +40,8 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN QUERY
-    SELECT *
-    FROM _pgr_edgeColoring(_pgr_get_statement($1));
+    SELECT a.edge_id, a.color_id
+    FROM _pgr_edgeColoring(_pgr_get_statement($1)) AS a;
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;

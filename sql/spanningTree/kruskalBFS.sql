@@ -57,8 +57,8 @@ BEGIN
 
 
     RETURN QUERY
-    SELECT *
-    FROM _pgr_kruskal(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'BFS', $3, -1);
+    SELECT a.seq, a.depth, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_kruskal(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'BFS', $3, -1) AS a;
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
@@ -88,8 +88,8 @@ BEGIN
 
 
     RETURN QUERY
-    SELECT *
-    FROM _pgr_kruskal(_pgr_get_statement($1), $2, 'BFS', $3, -1);
+    SELECT a.seq, a.depth, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
+    FROM _pgr_kruskal(_pgr_get_statement($1), $2, 'BFS', $3, -1) AS a;
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;

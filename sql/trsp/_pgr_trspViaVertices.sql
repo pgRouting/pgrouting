@@ -122,4 +122,4 @@ rows 1000;
 -- COMMENTS
 
 COMMENT ON FUNCTION _pgr_trspViaVertices(TEXT, INTEGER [], BOOLEAN, BOOLEAN, TEXT)
-IS 'pgRouting internal function';
+IS 'pgRouting internal function deprecated on v3.4.0';

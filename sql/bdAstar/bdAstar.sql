@@ -48,8 +48,8 @@ CREATE FUNCTION pgr_bdAstar(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_bdAstar(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, false) AS a;
+    SELECT seq, path_seq, node, edge, cost, agg_cost
+    FROM _pgr_bdAstar(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, false);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -76,8 +76,8 @@ CREATE FUNCTION pgr_bdAstar(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_bdAstar(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, false) AS a;
+    SELECT seq, path_seq, end_vid, node, edge, cost, agg_cost
+    FROM _pgr_bdAstar(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, false);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -104,8 +104,8 @@ CREATE FUNCTION pgr_bdAstar(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_bdAstar(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, false) AS a;
+    SELECT seq, path_seq, start_vid, node, edge, cost, agg_cost
+    FROM _pgr_bdAstar(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, false);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -133,7 +133,7 @@ CREATE FUNCTION pgr_bdAstar(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
+    SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM _pgr_bdAstar(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, false);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
@@ -161,7 +161,7 @@ CREATE FUNCTION pgr_bdAstar(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
+    SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM _pgr_bdAstar(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4, $5::FLOAT, $6::FLOAT, false);
 $BODY$
 LANGUAGE sql VOLATILE STRICT

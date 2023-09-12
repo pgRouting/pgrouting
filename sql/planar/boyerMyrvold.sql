@@ -40,7 +40,7 @@ CREATE FUNCTION pgr_boyerMyrvold(
 
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
+    SELECT seq, source, target, cost
     FROM _pgr_boyerMyrvold(_pgr_get_statement($1)) AS a;
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
