@@ -224,4 +224,4 @@ CREATE FUNCTION  _pgr_withPointsVia(
 
 
 COMMENT ON FUNCTION _pgr_withPointsVia(TEXT, BIGINT[], FLOAT[], BOOLEAN)
-IS 'pgRouting internal function DEPRECATED on v3.4.0';
+IS 'pgRouting internal function deprecated on v3.4.0';

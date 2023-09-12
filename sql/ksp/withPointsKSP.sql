@@ -289,7 +289,7 @@ CREATE FUNCTION pgr_withPointsKSP(
 RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
-    RAISE WARNING 'pgr_withPointsKSP(text,text,bigint,bigint,integer,boolean,boolean,char,boolean) deprecated on v3.6.0';
+    RAISE WARNING 'pgr_withPointsKSP(text,text,bigint,bigint,integer,boolean,boolean,char,boolean) deprecated signature on v3.6.0';
     RETURN QUERY
     SELECT * FROM _pgr_withPointsKSP(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4, $5, $6, $7, $8, $9);
 END
@@ -301,20 +301,5 @@ ROWS 1000;
 -- COMMENTS
 
 COMMENT ON FUNCTION pgr_withPointsKSP(TEXT, TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN, CHAR, BOOLEAN)
-IS 'pgr_withPointsKSP
-- Deprecated signature in v3.6.0
-- PROPOSED
-- Parameters:
-    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - Points SQL with columns: [pid], edge_id, fraction[,side]
-    - From vertex identifier
-    - To vertex identifier
-    - K
-- Optional Parameters
-    - directed := true
-    - heap paths := false
-    - driving side := b
-    - details := false
-- Documentation:
-    - ${PROJECT_DOC_LINK}/pgr_withPointsKSP.html
-';
+IS 'pgr_withPointsKSP deprecated signature on v3.6.0
+- Documentation: ${PROJECT_DOC_LINK}/pgr_withPointsKSP.html';

@@ -74,4 +74,4 @@ LANGUAGE c VOLATILE STRICT;
 -- COMMENTS
 
 COMMENT ON FUNCTION _pgr_drivingDistance(TEXT, ANYARRAY, FLOAT, BOOLEAN, BOOLEAN)
-IS 'pgRouting deprecated function';
+IS 'pgRouting internal function deprecated on v3.6.0';

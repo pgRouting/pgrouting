@@ -88,4 +88,4 @@ LANGUAGE C VOLATILE STRICT;
 -- COMMENTS
 
 COMMENT ON FUNCTION _pgr_withPointsDD(TEXT, TEXT, ANYARRAY, FLOAT, BOOLEAN, CHAR, BOOLEAN, BOOLEAN)
-IS 'pgRouting deprecated function';
+IS 'pgRouting internal function deprecated on v3.6.0';
