@@ -39,8 +39,8 @@ CREATE FUNCTION pgr_makeConnected(
 
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
-    FROM _pgr_makeConnected(_pgr_get_statement($1)) AS a;
+    SELECT seq, start_vid, end_vid
+    FROM _pgr_makeConnected(_pgr_get_statement($1));
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 

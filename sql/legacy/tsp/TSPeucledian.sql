@@ -53,7 +53,7 @@ CREATE OR REPLACE FUNCTION pgr_euclideanTSP(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
+    SELECT seq, node, cost, agg_cost
     FROM pgr_TSPeuclidean(_pgr_get_statement($1), $2,$3, $4, $5,$6,$7, $8,$9,$10, $11);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT

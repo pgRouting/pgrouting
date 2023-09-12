@@ -40,7 +40,7 @@ CREATE FUNCTION pgr_lineGraph(
     OUT reverse_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
+    SELECT seq, source, target, cost, reverse_cost
     FROM _pgr_lineGraph(_pgr_get_statement($1), $2)
 $BODY$
 LANGUAGE SQL VOLATILE STRICT

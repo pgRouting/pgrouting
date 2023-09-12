@@ -56,7 +56,7 @@ THE SOFTWARE.
 
 .. code-block:: sql
 
-       SELECT * FROM vertices_tmp WHERE in=0 OR out=0;
+       SELECT <columns> FROM vertices_tmp WHERE in=0 OR out=0;
 
    The rules are defined as an array of text strings that if match the "col"
    value would be counted as true for the source or target in or out condition.
@@ -86,7 +86,7 @@ THE SOFTWARE.
         true);
 
    -- now we can see the problem nodes
-   SELECT * FROM vertices_tmp WHERE ein=0 OR eout=0;
+   SELECT <columns> FROM vertices_tmp WHERE ein=0 OR eout=0;
 
    -- and the problem edges connected to those nodes
    SELECT gid
@@ -151,7 +151,7 @@ BEGIN
 
   BEGIN
     RAISE DEBUG 'Checking % exists',edge_table;
-    EXECUTE 'SELECT * FROM _pgr_getTableName('||quote_literal(edge_table)||',2)' INTO naming;
+    EXECUTE 'SELECT sname, tname FROM _pgr_getTableName('||quote_literal(edge_table)||',2)' INTO naming;
     sname=naming.sname;
     tname=naming.tname;
     tabname=sname||'.'||tname;
@@ -165,7 +165,7 @@ BEGIN
 
   BEGIN
        RAISE DEBUG 'Checking Vertices table';
-       EXECUTE 'SELECT * FROM  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","ein","eout"}''::TEXT[])' INTO naming;
+       EXECUTE 'SELECT sname, vname FROM  _pgr_checkVertTab('||quote_literal(vertname) ||', ''{"id","ein","eout"}''::TEXT[])' INTO naming;
        EXECUTE 'UPDATE '||_pgr_quote_ident(vertname)||' SET eout=0 ,ein=0';
        RAISE DEBUG '     --> OK';
        EXCEPTION WHEN raise_exception THEN
@@ -176,9 +176,9 @@ BEGIN
 
   BEGIN
        RAISE DEBUG 'Checking column names in edge table';
-       SELECT * INTO sourcename FROM _pgr_getColumnName(sname, tname,source,2);
-       SELECT * INTO targetname FROM _pgr_getColumnName(sname, tname,target,2);
-       SELECT * INTO owname FROM _pgr_getColumnName(sname, tname,oneway,2);
+       SELECT _pgr_getColumnName INTO sourcename FROM _pgr_getColumnName(sname, tname,source,2);
+       SELECT _pgr_getColumnName INTO targetname FROM _pgr_getColumnName(sname, tname,target,2);
+       SELECT _pgr_getColumnName INTO owname FROM _pgr_getColumnName(sname, tname,oneway,2);
 
 
        perform _pgr_onError( sourcename IN (targetname,owname) or  targetname=owname, 2,
@@ -193,8 +193,8 @@ BEGIN
 
   BEGIN
        RAISE DEBUG 'Checking column types in edge table';
-       SELECT * INTO sourcetype FROM _pgr_getColumnType(sname,tname,sourcename,1);
-       SELECT * INTO targettype FROM _pgr_getColumnType(sname,tname,targetname,1);
+       SELECT _pgr_getColumnType INTO sourcetype FROM _pgr_getColumnType(sname,tname,sourcename,1);
+       SELECT _pgr_getColumnType INTO targettype FROM _pgr_getColumnType(sname,tname,targetname,1);
 
 
        perform _pgr_onError(sourcetype NOT IN('integer','smallint','bigint') , 2,

@@ -36,8 +36,8 @@ CREATE FUNCTION pgr_biconnectedComponents(
     OUT edge BIGINT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
-    FROM _pgr_biconnectedComponents(_pgr_get_statement($1));
+    SELECT seq, component, edge
+    FROM _pgr_biconnectedComponents(_pgr_get_statement($1)) ;
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 

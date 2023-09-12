@@ -54,7 +54,7 @@ THE SOFTWARE.
 
 .. code-block:: sql
 
-       SELECT * FROM vertices_tmp WHERE chk = 1;
+       SELECT <columns> FROM vertices_tmp WHERE chk = 1;
 
 HISOTRY
 :Author: Stephen Woodbridge <woodbri@swoodbridge.com>
@@ -171,10 +171,10 @@ BEGIN
 
   BEGIN
        RAISE DEBUG 'Checking column names in edge table';
-       SELECT * INTO idname     FROM _pgr_getColumnName(sname, tname,id,2);
-       SELECT * INTO sourcename FROM _pgr_getColumnName(sname, tname,source,2);
-       SELECT * INTO targetname FROM _pgr_getColumnName(sname, tname,target,2);
-       SELECT * INTO gname      FROM _pgr_getColumnName(sname, tname,the_geom,2);
+       SELECT _pgr_getColumnName INTO idname     FROM _pgr_getColumnName(sname, tname,id,2);
+       SELECT _pgr_getColumnName INTO sourcename FROM _pgr_getColumnName(sname, tname,source,2);
+       SELECT _pgr_getColumnName INTO targetname FROM _pgr_getColumnName(sname, tname,target,2);
+       SELECT _pgr_getColumnName INTO gname      FROM _pgr_getColumnName(sname, tname,the_geom,2);
 
 
        perform _pgr_onError( sourcename IN (targetname,idname,gname) OR  targetname IN (idname,gname) OR idname=gname, 2,
@@ -190,8 +190,8 @@ BEGIN
 
   BEGIN
        RAISE DEBUG 'Checking column types in edge table';
-       SELECT * INTO sourcetype FROM _pgr_getColumnType(sname,tname,sourcename,1);
-       SELECT * INTO targettype FROM _pgr_getColumnType(sname,tname,targetname,1);
+       SELECT _pgr_getColumnType INTO sourcetype FROM _pgr_getColumnType(sname,tname,sourcename,1);
+       SELECT _pgr_getColumnType INTO targettype FROM _pgr_getColumnType(sname,tname,targetname,1);
 
        perform _pgr_onError(sourcetype NOT in('integer','smallint','bigint') , 2,
                        'pgr_analyzeGraph',  'Wrong type of Column '|| sourcename, ' Expected type of '|| sourcename || ' is integer, smallint or bigint but '||sourcetype||' was found',

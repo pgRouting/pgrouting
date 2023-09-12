@@ -44,7 +44,7 @@ CREATE FUNCTION pgr_drivingDistance(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
+    SELECT seq, depth, start_vid, node, edge, cost, agg_cost
     FROM _pgr_v4drivingDistance(_pgr_get_statement($1), $2, $3, $4, $5);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
@@ -70,7 +70,7 @@ CREATE FUNCTION pgr_drivingDistance(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
+    SELECT seq, depth, start_vid, node, edge, cost, agg_cost
     FROM _pgr_v4drivingDistance(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3, $4, false);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT

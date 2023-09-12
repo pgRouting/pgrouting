@@ -81,7 +81,7 @@ BEGIN
 
   BEGIN
     RAISE DEBUG 'Checking % exists',edge_table;
-    EXECUTE 'SELECT * FROM _pgr_getTableName('||quote_literal(edge_table)||',0)' INTO naming;
+    EXECUTE 'SELECT sname, tname FROM _pgr_getTableName('||quote_literal(edge_table)||',0)' INTO naming;
     sname=naming.sname;
     tname=naming.tname;
     IF sname IS NULL OR tname IS NULL THEN
@@ -169,7 +169,7 @@ BEGIN
 ---------------
   BEGIN
     RAISE DEBUG 'initializing %', outtab;
-    EXECUTE 'SELECT * FROM _pgr_getTableName('||quote_literal(outtab)||',0)' INTO naming;
+    EXECUTE 'SELECT sname, tname FROM _pgr_getTableName('||quote_literal(outtab)||',0)' INTO naming;
     IF sname=naming.sname  AND outname=naming.tname  THEN
       EXECUTE 'TRUNCATE TABLE '||_pgr_quote_ident(outtab)||' RESTART IDENTITY';
       EXECUTE 'SELECT DROPGEOMETRYCOLUMN('||quote_literal(sname)||','||quote_literal(outname)||','||quote_literal(n_geom)||')';
@@ -214,8 +214,8 @@ BEGIN
          _pgr_startpoint(l2.' || quote_ident(n_geom) || ') AS source,
          _pgr_endpoint(l2.' || quote_ident(n_geom) || ') AS target,
          st_closestPoint(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ') AS geom
-    FROM (SELECT * FROM ' || _pgr_quote_ident(intab) || rows_where || ') AS l1
-    JOIN (SELECT * FROM ' || _pgr_quote_ident(intab) || rows_where || ') AS l2
+    FROM (SELECT ' || quote_ident(n_pkey) ||','|| quote_ident(n_geom) || ' FROM ' || _pgr_quote_ident(intab) || rows_where || ') AS l1
+    JOIN (SELECT ' || quote_ident(n_pkey) ||','|| quote_ident(n_geom) || ' FROM ' || _pgr_quote_ident(intab) || rows_where || ') AS l2
     ON (st_dwithin(l1.' || quote_ident(n_geom) || ', l2.' || quote_ident(n_geom) || ', ' || tolerance || '))'||
     'WHERE l1.' || quote_ident(n_pkey) || ' <> l2.' || quote_ident(n_pkey)||' AND
     st_equals(_pgr_startpoint(l1.' || quote_ident(n_geom) || '),_pgr_startpoint(l2.' || quote_ident(n_geom) || '))=false AND
@@ -281,7 +281,7 @@ BEGIN
   EXECUTE 'INSERT INTO ' || _pgr_quote_ident(outtab) || ' (old_id , sub_id, ' || quote_ident(n_geom) || ')
     ( WITH used AS (SELECT DISTINCT old_id FROM '|| _pgr_quote_ident(outtab)||')
     SELECT ' ||  quote_ident(n_pkey) || ', 1 AS sub_id, ' ||  quote_ident(n_geom) ||
-    ' FROM '|| _pgr_quote_ident(intab) ||' WHERE  '||quote_ident(n_pkey)||' NOT IN (SELECT * FROM used)' || rows_where_out || ')';
+    ' FROM '|| _pgr_quote_ident(intab) ||' WHERE  '||quote_ident(n_pkey)||' NOT IN (SELECT old_id FROM used)' || rows_where_out || ')';
   GET DIAGNOSTICS untouched = ROW_COUNT;
 
   RAISE NOTICE '  Split Edges: %', touched;

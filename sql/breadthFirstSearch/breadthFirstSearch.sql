@@ -58,7 +58,7 @@ BEGIN
 
 
     RETURN QUERY
-    SELECT *
+    SELECT a.seq, a.depth, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
     FROM _pgr_breadthFirstSearch(_pgr_get_statement($1),  ARRAY[$2]::BIGINT[], max_depth, directed) AS a;
 END;
 $BODY$
@@ -92,7 +92,7 @@ BEGIN
 
 
     RETURN QUERY
-    SELECT *
+    SELECT a.seq, a.depth, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
     FROM _pgr_breadthFirstSearch(_pgr_get_statement($1), $2::BIGINT[], max_depth, directed) AS a;
 END;
 $BODY$
@@ -107,7 +107,7 @@ IS 'pgr_breadthFirstSearch(One to Depth)
 - Parameters:
   - edges SQL with columns: id, source, target, cost [,reverse_cost]
   - From vertex identifier
-- Optional Parameters: 
+- Optional Parameters:
   - Maximum Depth := 9223372036854775807
   - directed := true
 - Documentation:

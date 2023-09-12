@@ -92,4 +92,4 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 -- COMMENTS
 COMMENT ON FUNCTION _pgr_checkColumn(TEXT, TEXT, TEXT, BOOLEAN, BOOLEAN)
-IS '_pgr_checkColumn is an internal function';
+IS 'pgRouting internal function';
