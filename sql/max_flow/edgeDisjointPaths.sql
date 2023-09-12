@@ -43,8 +43,8 @@ CREATE FUNCTION pgr_edgeDisjointPaths(
     OUT agg_cost FLOAT)
   RETURNS SEtoF RECORD AS
   $BODY$
-    SELECT a.seq, a.path_id, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
-    From _pgr_edgeDisjointPaths(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4) AS a;
+    SELECT seq, path_id, path_seq, node, edge, cost, agg_cost
+    From _pgr_edgeDisjointPaths(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4);
   $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
@@ -69,8 +69,8 @@ CREATE FUNCTION pgr_edgeDisjointPaths(
     )
   RETURNS SEtoF RECORD AS
   $BODY$
-    SELECT a.seq, a.path_id, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
-    From _pgr_edgeDisjointPaths(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4) AS a;
+    SELECT seq, path_id, path_seq, end_vid, node, edge, cost, agg_cost
+    FROM _pgr_edgeDisjointPaths(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4);
   $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
@@ -95,8 +95,8 @@ CREATE FUNCTION pgr_edgeDisjointPaths(
     )
   RETURNS SEtoF RECORD AS
   $BODY$
-    SELECT a.seq, a.path_id, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
-    From _pgr_edgeDisjointPaths(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4) AS a;
+    SELECT seq, path_id, path_seq, start_vid, node, edge, cost, agg_cost
+    FROM _pgr_edgeDisjointPaths(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4);
   $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
@@ -121,8 +121,8 @@ CREATE FUNCTION pgr_edgeDisjointPaths(
     OUT agg_cost FLOAT)
   RETURNS SEtoF RECORD AS
   $BODY$
-    SELECT *
-    From _pgr_edgeDisjointPaths(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4) AS a;
+  SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+    FROM _pgr_edgeDisjointPaths(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4);
   $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 
@@ -146,8 +146,8 @@ CREATE FUNCTION pgr_edgeDisjointPaths(
     OUT agg_cost FLOAT)
   RETURNS SEtoF RECORD AS
   $BODY$
-    SELECT *
-    From _pgr_edgeDisjointPaths(_pgr_get_statement($1), _pgr_get_statement($2), $3) AS a;
+    SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+    FROM _pgr_edgeDisjointPaths(_pgr_get_statement($1), _pgr_get_statement($2), $3)
   $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 

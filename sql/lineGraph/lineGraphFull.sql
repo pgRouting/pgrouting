@@ -38,7 +38,7 @@ CREATE FUNCTION pgr_lineGraphFull(
     OUT edge BIGINT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
+    SELECT seq, source, target, cost, edge
     FROM _pgr_lineGraphFull(_pgr_get_statement($1))
 $BODY$
 LANGUAGE SQL VOLATILE STRICT

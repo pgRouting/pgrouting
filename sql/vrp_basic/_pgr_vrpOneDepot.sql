@@ -87,7 +87,9 @@ BEGIN
     $$;
 
     final_sql = '
-    SELECT * FROM _pgr_pickDeliver(
+    SELECT seq, vehicle_seq, vehicle_id, stop_seq, stop_type, stop_id, order_id, cargo, travel_time, arrival_time,
+           wait_time, service_time, departure_time
+    FROM _pgr_pickDeliver(
             $$' || orders_sql || '$$,
             $$' || trucks_sql || '$$,
             $$' || $3 || '$$,

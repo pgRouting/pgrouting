@@ -37,7 +37,7 @@ CREATE FUNCTION pgr_stoerWagner(
     OUT mincut FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
+    SELECT seq, edge, cost, mincut
     FROM _pgr_stoerWagner(_pgr_get_statement($1));
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;

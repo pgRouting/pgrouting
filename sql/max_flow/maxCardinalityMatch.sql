@@ -52,9 +52,9 @@ CREATE FUNCTION pgr_maxCardinalityMatch(
 RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
-RAISE WARNING 'pgr_maxCardinalityMatch(text,boolean) deprecated on v3.4.0';
-RETURN QUERY SELECT *
-FROM _pgr_maxCardinalityMatch(_pgr_get_statement($1), $2);
+RAISE WARNING 'pgr_maxCardinalityMatch(text,boolean) deprecated signature on v3.4.0';
+RETURN QUERY SELECT a.seq, a.edge, a.source, a.target
+FROM _pgr_maxCardinalityMatch(_pgr_get_statement($1), $2) AS a;
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT

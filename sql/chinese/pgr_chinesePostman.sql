@@ -46,7 +46,7 @@ CREATE FUNCTION pgr_chinesePostman(
 
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
+    SELECT seq, node, edge, cost, agg_cost
     FROM _pgr_chinesePostman(_pgr_get_statement($1), only_cost := false);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;

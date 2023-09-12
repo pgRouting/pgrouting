@@ -46,7 +46,8 @@ CREATE FUNCTION pgr_trsp(
 RETURNS SETOF record AS
 $BODY$
 
-  SELECT * FROM _v4trsp(
+  SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+  FROM _v4trsp(
     _pgr_get_statement($1),
     _pgr_get_statement($2),
     ARRAY[$3]::BIGINT[],
@@ -78,7 +79,8 @@ CREATE FUNCTION pgr_trsp(
 
 RETURNS SETOF RECORD AS
 $BODY$
-  SELECT * FROM _v4trsp(
+  SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+  FROM _v4trsp(
     _pgr_get_statement($1),
     _pgr_get_statement($2),
     ARRAY[$3]::BIGINT[],
@@ -109,7 +111,8 @@ CREATE FUNCTION pgr_trsp(
 
 RETURNS SETOF RECORD AS
 $BODY$
-  SELECT * FROM _v4trsp(
+  SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+  FROM _v4trsp(
     _pgr_get_statement($1),
     _pgr_get_statement($2),
     $3::BIGINT[],
@@ -140,7 +143,8 @@ CREATE FUNCTION pgr_trsp(
 
 RETURNS SETOF RECORD AS
 $BODY$
-  SELECT * FROM _v4trsp(
+  SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+  FROM _v4trsp(
     _pgr_get_statement($1),
     _pgr_get_statement($2),
     $3::BIGINT[],
@@ -170,7 +174,8 @@ CREATE FUNCTION pgr_trsp(
 
 RETURNS SETOF RECORD AS
 $BODY$
-  SELECT * FROM _v4trsp(
+  SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+  FROM _v4trsp(
     _pgr_get_statement($1),
     _pgr_get_statement($2),
     _pgr_get_statement($3),

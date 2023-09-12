@@ -44,7 +44,7 @@ CREATE FUNCTION pgr_boykovKolmogorov(
     OUT residual_capacity BIGINT)
   RETURNS SETOF RECORD AS
   $BODY$
-        SELECT *
+        SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], 2);
   $BODY$
   LANGUAGE sql VOLATILE STRICT;
@@ -65,7 +65,7 @@ CREATE FUNCTION pgr_boykovKolmogorov(
     OUT residual_capacity BIGINT)
   RETURNS SETOF RECORD AS
   $BODY$
-        SELECT *
+        SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], 2);
   $BODY$
   LANGUAGE sql VOLATILE STRICT;
@@ -86,7 +86,7 @@ CREATE FUNCTION pgr_boykovKolmogorov(
     OUT residual_capacity BIGINT)
   RETURNS SETOF RECORD AS
   $BODY$
-        SELECT *
+        SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], 2);
   $BODY$
   LANGUAGE sql VOLATILE STRICT;
@@ -107,7 +107,7 @@ CREATE FUNCTION pgr_boykovKolmogorov(
     OUT residual_capacity BIGINT)
   RETURNS SETOF RECORD AS
   $BODY$
-        SELECT *
+        SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], 2);
   $BODY$
   LANGUAGE sql VOLATILE STRICT;
@@ -127,7 +127,7 @@ CREATE FUNCTION pgr_boykovKolmogorov(
     OUT residual_capacity BIGINT)
   RETURNS SETOF RECORD AS
   $BODY$
-        SELECT *
+        SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM _pgr_maxflow(_pgr_get_statement($1), _pgr_get_statement($2), 2);
   $BODY$
   LANGUAGE sql VOLATILE STRICT;

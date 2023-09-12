@@ -37,7 +37,7 @@ CREATE FUNCTION pgr_topologicalSort(
     OUT sorted_v BIGINT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
+    SELECT seq, sorted_v
     FROM _pgr_topologicalSort(_pgr_get_statement($1));
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;

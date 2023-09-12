@@ -39,7 +39,7 @@ CREATE FUNCTION pgr_johnson(
 RETURNS SETOF RECORD AS
 $BODY$
 
-    SELECT *
+    SELECT start_vid, end_vid, agg_cost
     FROM _pgr_johnson(_pgr_get_statement($1), $2);
 
 $BODY$
