@@ -20,7 +20,7 @@ FROM pgr_trsp(
     true,      /* has_reverse_cost? */
     null /* include the turn restrictions */
 ) PG ;
-WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated signature on v3.4.0
  seq |  node  |  edge  |   cost
 -----+--------+--------+----------
    0 | 408918 | 582877 | 229.0450
@@ -38,7 +38,7 @@ FROM pgr_trsp(
     true,      /* has_reverse_cost? */
     null /* include the turn restrictions */
 ) PG ;
-WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated signature on v3.4.0
  seq | node |  edge  |   cost
 -----+------+--------+----------
    0 |   -1 | 582877 | 229.0450
@@ -56,7 +56,7 @@ FROM pgr_trsp(
     true,      /* has_reverse_cost? */
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 ) PG ;
-WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated signature on v3.4.0
  seq | node |  edge  |   cost
 -----+------+--------+----------
    0 |   -1 | 582877 | 229.0450
@@ -73,7 +73,7 @@ FROM pgr_trsp(
     true,      /* has_reverse_cost? */
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 ) PG ;
-WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated signature on v3.4.0
  seq | node |  edge  |   cost
 -----+------+--------+----------
    0 |   -1 | 582877 | 229.0450
@@ -89,7 +89,7 @@ FROM pgr_trsp(
     true,        /* directed graph? */
     true      /* has_reverse_cost? */
 );
-WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated signature on v3.4.0
  seq |  node  |  edge  |   cost
 -----+--------+--------+----------
    0 | 408918 | 582877 | 458.0900
