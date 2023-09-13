@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-09 00:31+0000\n"
+"POT-Creation-Date: 2023-09-13 18:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13073,6 +13073,12 @@ msgid "Documentation"
 msgstr ""
 
 msgid "`#2490 <https://github.com/pgRouting/pgrouting/pull/2490>`__ Automatic page history links."
+msgstr ""
+
+msgid "..rubric:: SQL standarization"
+msgstr ""
+
+msgid "`#2555 <https://github.com/pgRouting/pgrouting/pull/2555>`__ standarize deprecated messages"
 msgstr ""
 
 msgid "pgRouting 3.5.1 Release Notes"
