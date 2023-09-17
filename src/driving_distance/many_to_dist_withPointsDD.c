@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: many_to_dist_driving_distance.c
+File: many_to_dist_withpointsDD.c
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky at erosion.dev
