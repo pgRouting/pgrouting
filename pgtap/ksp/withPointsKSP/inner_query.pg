@@ -42,16 +42,12 @@ BEGIN
     RETURN QUERY SELECT style_dijkstra('pgr_withPointsKSP(', ', $$SELECT * from pointsOfInterest$$, $$SELECT * FROM combinations_table$$, 2, $$r$$, true)');
     RETURN QUERY SELECT innerquery_points('pgr_withPointsKSP($$SELECT * FROM edge_table$$,', ', $$SELECT * FROM combinations_table$$, 2, $$r$$, true)');
     RETURN QUERY SELECT innerquery_combinations('pgr_withPointsKSP($$SELECT * FROM edge_table$$, $$SELECT * from pointsOfInterest$$,',', 2, $$r$$, true)');
-    /* TODO Remove on v4*/
-    -- ONE TO ONE
-    RETURN QUERY SELECT style_dijkstra('pgr_withPointsKSP(', ', $$SELECT * from pointsOfInterest$$, 2, 3, 2, true)');
-    RETURN QUERY SELECT innerquery_points('pgr_withPointsKSP($$SELECT * FROM edge_table$$,', ', 2, 3, 2, true)');
-  ELSE
-    /* TODO Remove on v4*/
-    -- ONE TO ONE
-    RETURN QUERY SELECT style_dijkstra('pgr_withPointsKSP(', ', $$SELECT * from pointsOfInterest$$, 2, 3, 2, true)');
-    RETURN QUERY SELECT innerquery_points('pgr_withPointsKSP($$SELECT * FROM edge_table$$,', ', 2, 3, 2, true)');
   END IF;
+  /* TODO Remove on v4*/
+  SET client_min_messages TO ERROR;
+  -- ONE TO ONE
+  RETURN QUERY SELECT style_dijkstra('pgr_withPointsKSP(', ', $$SELECT * from pointsOfInterest$$, 2, 3, 2, true)');
+  RETURN QUERY SELECT innerquery_points('pgr_withPointsKSP($$SELECT * FROM edge_table$$,', ', 2, 3, 2, true)');
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE;

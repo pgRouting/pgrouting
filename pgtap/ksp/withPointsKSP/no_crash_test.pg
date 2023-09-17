@@ -200,6 +200,7 @@ IF min_version('3.6.0') THEN
 END IF;
 
 /* TODO remove tests on v4*/
+    SET client_min_messages TO ERROR;
     -- 1 to distance
     params = ARRAY[
     '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
