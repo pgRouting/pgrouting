@@ -65,4 +65,4 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 -- COMMENTS
 COMMENT ON FUNCTION _pgr_checkquery(TEXT)
-IS 'Internal function deprecated on V3.5.1';
+IS 'pgRouting internal function';

@@ -112,10 +112,10 @@ ROWS 1000;
 -- COMMENTS
 
 COMMENT ON FUNCTION _pgr_dijkstraNear(TEXT, BIGINT, ANYARRAY, BIGINT, BOOLEAN)
-IS 'pgRouting internal function';
+IS 'pgRouting internal function deprecated on v3.6.0';
 
 COMMENT ON FUNCTION  _pgr_dijkstraNear(TEXT, ANYARRAY, BIGINT, BIGINT, BOOLEAN)
-IS 'pgRouting internal function';
+IS 'pgRouting internal function deprecated on v3.6.0';
 
 COMMENT ON FUNCTION  _pgr_dijkstraNear(TEXT, ANYARRAY, ANYARRAY, BIGINT, BOOLEAN)
-IS 'pgRouting internal function';
+IS 'pgRouting internal function deprecated on v3.6.0';
