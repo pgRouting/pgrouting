@@ -102,6 +102,7 @@ INSERT INTO pointsOfInterest (edge_id, side, fraction, geom) VALUES
 (6, 'r' , 0.3, ST_POINT(0.3, 1.8)),
 (5, 'l' , 0.8, ST_POINT(2.9, 1.8)),
 (4, 'b' , 0.7, ST_POINT(2.2, 1.7));
+/* -- p3 */
 /* --POINTS CREATE end */
 
 /* --COMBINATIONS CREATE start */

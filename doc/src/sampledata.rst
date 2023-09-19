@@ -211,37 +211,12 @@ will be stored on a table.
    :start-after: -- p1
    :end-before: -- p2
 
-Points of interest geometry
+Points of interest fillup
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Inserting the data of the points of interest:
 
 .. literalinclude:: sampledata.queries
    :start-after: -- p2
    :end-before: -- p3
-
-Points of interest fillup
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-Using :doc:`pgr_findCloseEdges`
-Calculating for visual purposes the points over the graph.
-
-.. literalinclude:: sampledata.queries
-   :start-after: -- p3
-   :end-before: -- p4
-
-A special case to arrive from both sides of the edge.
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. literalinclude:: sampledata.queries
-   :start-after: -- p4
-   :end-before: -- p5
-
-Points of interest data
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. literalinclude:: sampledata.queries
-   :start-after: -- p5
-   :end-before: -- p6
 
 .. pois_end
 
