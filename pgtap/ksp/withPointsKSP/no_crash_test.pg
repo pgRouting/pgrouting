@@ -18,20 +18,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT CASE WHEN min_version('3.6.0') THEN plan(164) ELSE plan(26) END;
 
 PREPARE edges AS
-SELECT id, source, target, cost, reverse_cost  FROM edge_table;
+SELECT id, source, target, cost, reverse_cost FROM edges;
 
 PREPARE pois AS
 SELECT pid, edge_id, fraction from pointsOfInterest;
 
 PREPARE null_ret AS
-SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1);
+SELECT array_agg(id) FROM vertices WHERE id IN (-1);
 
 PREPARE null_ret_arr AS
-SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1);
+SELECT array_agg(id) FROM vertices WHERE id IN (-1);
 
 SELECT isnt_empty('edges', 'Should be not empty to tests be meaningful');
 SELECT set_eq('null_ret', 'SELECT NULL::BIGINT[]', 'Should be empty to tests be meaningful');
@@ -48,16 +48,16 @@ IF min_version('3.6.0') THEN
     params = ARRAY[
     '$$edges$$',
     '$$SELECT pid, edge_id, fraction from pointsOfInterest$$',
-    '1::BIGINT',
-    '2::BIGINT',
+    '5::BIGINT',
+    '6::BIGINT',
     '3',
     '$$r$$'
     ]::TEXT[];
     subs = ARRAY[
     'NULL',
     'NULL',
-    '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-    '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+    '(SELECT id FROM vertices WHERE id IN (-1))',
+    '(SELECT id FROM vertices WHERE id IN (-1))',
     'NULL',
     'NULL'
     ]::TEXT[];
@@ -77,16 +77,16 @@ IF min_version('3.6.0') THEN
     -- one to many
     params = ARRAY['$$edges$$',
     '$$SELECT pid, edge_id, fraction from pointsOfInterest$$',
-    '1::BIGINT',
-    'ARRAY[2,5]::BIGINT[]',
+    '5::BIGINT',
+    'ARRAY[6,7]::BIGINT[]',
     '2',
     '$$l$$'
     ]::TEXT[];
     subs = ARRAY[
     'NULL',
     'NULL',
-    '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-    '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+    '(SELECT id FROM vertices WHERE id IN (-1))',
+    '(SELECT array_agg(id) FROM vertices WHERE id IN (-1))',
     'NULL',
     'NULL'
     ]::TEXT[];
@@ -106,16 +106,16 @@ IF min_version('3.6.0') THEN
     -- many to one
     params = ARRAY['$$edges$$',
     '$$SELECT pid, edge_id, fraction from pointsOfInterest$$',
-    'ARRAY[2,5]::BIGINT[]',
-    '1',
+    'ARRAY[6,7]::BIGINT[]',
+    '5',
     '2',
     '$$r$$'
     ]::TEXT[];
     subs = ARRAY[
     'NULL',
     'NULL',
-    '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-    '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+    '(SELECT array_agg(id) FROM vertices WHERE id IN (-1))',
+    '(SELECT id FROM vertices WHERE id IN (-1))',
     'NULL',
     'NULL'
     ]::TEXT[];
@@ -135,15 +135,15 @@ IF min_version('3.6.0') THEN
     -- many to many
     params = ARRAY['$$edges$$',
     '$$SELECT pid, edge_id, fraction from pointsOfInterest$$',
-    'ARRAY[1]::BIGINT[]', 'ARRAY[2,5]::BIGINT[]',
+    'ARRAY[5]::BIGINT[]', 'ARRAY[6,7]::BIGINT[]',
     '1',
     '$$l$$'
     ]::TEXT[];
     subs = ARRAY[
     'NULL',
     'NULL',
-    '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-    '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+    '(SELECT array_agg(id) FROM vertices WHERE id IN (-1))',
+    '(SELECT array_agg(id) FROM vertices WHERE id IN (-1))',
     'NULL',
     'NULL'
     ]::TEXT[];
@@ -163,10 +163,10 @@ IF min_version('3.6.0') THEN
     -- Combinations SQL
 
     PREPARE null_combinations AS
-    SELECT source, target FROM combinations_table WHERE source IN (-1);
+    SELECT source, target FROM combinations WHERE source IN (-1);
 
     PREPARE combinations AS
-    SELECT source, target  FROM combinations_table WHERE target > 2;
+    SELECT source, target FROM combinations;
 
     RETURN QUERY
     SELECT isnt_empty('combinations', 'Should be not empty to tests be meaningful');
@@ -182,7 +182,7 @@ IF min_version('3.6.0') THEN
     subs = ARRAY[
     'NULL',
     'NULL',
-    '$$(SELECT source, target FROM combinations_table  WHERE source IN (-1))$$',
+    '$$(SELECT source, target FROM combinations WHERE source IN (-1))$$',
     'NULL',
     'NULL'
     ]::TEXT[];
@@ -202,17 +202,17 @@ END IF;
 /* TODO remove tests on v4*/
     -- 1 to distance
     params = ARRAY[
-    '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
+    '$$SELECT id, source, target, cost, reverse_cost FROM edges$$',
     '$$SELECT pid, edge_id, fraction from pointsOfInterest$$',
-    '1',
-    '2',
+    '5',
+    '6',
     '2'
     ]::TEXT[];
     subs = ARRAY[
     'NULL',
     'NULL',
-    '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-    '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+    '(SELECT id FROM vertices WHERE id IN (-1))',
+    '(SELECT id FROM vertices WHERE id IN (-1))',
     'NULL'
     ]::TEXT[];
 

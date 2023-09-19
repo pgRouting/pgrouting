@@ -19,22 +19,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(4);
 
 PREPARE q0 AS
-SELECT agg_cost FROM pgr_dijkstra( 'select id, source, target, cost from edge_table',
-    7, 6) ORDER BY seq DESC LIMIT 1;
+SELECT agg_cost FROM pgr_dijkstra( 'select id, source, target, cost from edges',
+    1, 11) ORDER BY seq DESC LIMIT 1;
 
 PREPARE update2infinity9 AS
-UPDATE edge_table SET cost = 'Infinity' WHERE id = 9;
+UPDATE edges SET cost = 'Infinity' WHERE id = 9;
 
 PREPARE update2k13 AS
-UPDATE edge_table SET cost = 10 WHERE id = 13;
+UPDATE edges SET cost = 10 WHERE id = 13;
 
 PREPARE q1 AS
-SELECT agg_cost FROM pgr_dijkstra( 'select id, source, target, cost from edge_table',
-    5, 12) ORDER BY seq DESC LIMIT 1;
+SELECT agg_cost FROM pgr_dijkstra( 'select id, source, target, cost from edges',
+    7, 17) ORDER BY seq DESC LIMIT 1;
 
 -- test for infinity if alternative is available
 SELECT results_eq('q0', 'SELECT cast(3 as double precision) as agg_cost;');

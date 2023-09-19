@@ -24,7 +24,7 @@ SELECT PLAN(6);
 
 PREPARE q1 AS
 SELECT node, edge, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, -5,
     driving_side := 'r',
@@ -33,7 +33,7 @@ SELECT node, edge, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPoints(
 
 PREPARE q2 AS
 SELECT node, edge, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, -5,
     driving_side := 'r',
@@ -48,7 +48,7 @@ SELECT set_has('q1', 'q21', '2: Right: from p1 to p5 pass in front of  p6');
 
 PREPARE q3 AS
 SELECT seq, path_seq, node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, -5,
     driving_side := 'l',
@@ -58,7 +58,7 @@ SELECT seq, path_seq, node, edge, round(cost::numeric, 12) AS cost, round(agg_co
 
 PREPARE q4 AS
 SELECT  seq, path_seq, node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, -5,
     driving_side := 'l',
@@ -69,7 +69,7 @@ SELECT set_has('q1', 'q2', '3: Right: from p1 to p5 pass dont pass in front of p
 
 PREPARE q5 AS
 SELECT node, edge, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, -5,
     driving_side := 'b',
@@ -78,7 +78,7 @@ SELECT node, edge, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPoints(
 
 PREPARE q6 AS
 SELECT node, edge, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, -5,
     driving_side := 'b',
@@ -94,7 +94,7 @@ SELECT set_has('q5', 'q61', '5: both: from p1 to p5 pass in front of  p6');
 
 PREPARE q7 AS
 SELECT  -3 AS start_vid, -1 AS end_vid,  agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -3, -1,
     driving_side := 'r',
@@ -104,7 +104,7 @@ SELECT  -3 AS start_vid, -1 AS end_vid,  agg_cost FROM pgr_withPoints(
 
 PREPARE q8 AS
 SELECT *  FROM pgr_withPointsCost(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -3, -1,
     driving_side := 'r',

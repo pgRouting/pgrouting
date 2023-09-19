@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(9);
 
 SET client_min_messages TO WARNING;
@@ -30,19 +30,19 @@ SET client_min_messages TO WARNING;
 
 PREPARE r1 AS
 SELECT path_seq, node::BIGINT, edge::BIGINT, agg_cost FROM ( VALUES
-   (1,      2,   4,   0),
-   (2,      5,   8,   1),
-   (3,      6,   9,   2),
-   (4,      9,  15,   3),
-   (5,     12,  -1,   4))
+   (1,      6,   4,   0),
+   (2,      7,   8,   1),
+   (3,     11,   9,   2),
+   (4,     16,  15,   3),
+   (5,     17,  -1,   4))
 AS t(path_seq, node, edge, agg_cost);
 
 PREPARE q1 AS
 SELECT path_seq, node, edge, agg_cost
 FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT * FROM restrictions WHERE id < 3',
-    2, 12,
+    6, 17,
     1
 );
 
@@ -50,9 +50,9 @@ FROM pgr_turnRestrictedPath(
 PREPARE q2 AS
 SELECT  path_seq, node, edge, agg_cost
 FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT * FROM restrictions WHERE id < 3',
-    2, 12,
+    6, 17,
     1,
     stop_on_first:=false
 );
@@ -65,24 +65,24 @@ SELECT set_eq('q2', 'r1', 'Should return r1 result (one cycle, Dont stop_on_firs
 
 PREPARE r2 AS
 SELECT path_seq, node::BIGINT, edge::BIGINT, agg_cost FROM ( VALUES
-   (1,      2,   4,   0),
-   (2,      5,   8,   1),
-   (3,      6,   9,   2),
-   (4,      9,  15,   3),
-   (5,     12,  -1,   4),
-   (1,      2,   4,   0),
-   (2,      5,  10,   1),
-   (3,     10,  12,   2),
-   (4,     11,  13,   3),
-   (5,     12,  -1,   4))
+   (1,      6,   4,   0),
+   (2,      7,   8,   1),
+   (3,     11,   9,   2),
+   (4,     16,  15,   3),
+   (5,     17,  -1,   4),
+   (1,      6,   4,   0),
+   (2,      7,  10,   1),
+   (3,      8,  12,   2),
+   (4,     12,  13,   3),
+   (5,     17,  -1,   4))
 AS t(path_seq, node, edge, agg_cost);
 
 PREPARE q3 AS
 SELECT path_seq, node, edge, agg_cost
 FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT * FROM restrictions WHERE id < 3',
-    2, 12,
+    6, 17,
     3,
     stop_on_first:=false
 );
@@ -94,25 +94,25 @@ SELECT set_eq('q3', 'r2', 'Should return r2 result (3 cycle, Dont stop_on_first)
 
 PREPARE r3 AS
 SELECT path_seq, node::BIGINT, edge::BIGINT FROM (VALUES
-   (2,    8,    7))
+   (2,    3,    7))
 AS t(path_seq, node, edge);
 
 
 PREPARE q4 AS
 SELECT path_seq, node, edge
 FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT * FROM restrictions',
-    7, 10,
+    1, 8,
     1
 ) WHERE agg_cost = FLOAT8 '+infinity';
 
 PREPARE q7 AS
 SELECT path_seq, node, edge
 FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT * FROM restrictions',
-    7, 10,
+    1, 8,
     1,
     heap_paths:=true
 )  WHERE agg_cost = FLOAT8 '+infinity';
@@ -125,15 +125,15 @@ SELECT set_eq('q7', 'r3', 'Should return r3 result (1 cycle, Heap paths)');
 
 PREPARE r4 AS
 SELECT path_seq, node::BIGINT, edge::BIGINT FROM ( VALUES
-   (2,    8,    7))
+   (2,    3,    7))
 AS t(path_seq, node, edge);
 
 PREPARE q5 AS
 SELECT path_seq, node, edge
 FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT * FROM restrictions',
-    7,10,
+    1, 8,
     2,
     stop_on_first:=false
 ) WHERE agg_cost = FLOAT8 '+infinity';
@@ -143,9 +143,9 @@ FROM pgr_turnRestrictedPath(
 PREPARE q6 AS
 SELECT path_seq, node, edge
 FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT * FROM restrictions',
-    7, 10,
+    1, 8,
     3,
     stop_on_first:=false
 ) WHERE agg_cost = FLOAT8 '+infinity';
@@ -159,15 +159,15 @@ SELECT set_eq('q6', 'r4', 'q6 Should return r4 result (2 cycle, Dont stop_on_fir
 
 PREPARE r5 AS
 SELECT path_seq, node::BIGINT, edge::BIGINT FROM ( VALUES
-   (2,    8,    7))
+   (2,    3,    7))
 AS t(path_seq, node, edge);
 
 PREPARE q8 AS
 SELECT path_seq, node, edge
 FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT * FROM restrictions',
-    7, 10,
+    1, 8,
     2,
     heap_paths:=true,
     stop_on_first:=false
@@ -176,16 +176,16 @@ FROM pgr_turnRestrictedPath(
 PREPARE q9 AS
 SELECT path_seq, node, edge
 FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT * FROM restrictions',
-    7, 10,
+    1, 8,
     3,
     heap_paths:=true,
     stop_on_first:=false
 ) WHERE agg_cost = FLOAT8 '+infinity';
 
-SELECT set_eq('q8', 'r5', 'Should return r4 result (2 cycle, Dont stop_on_first, heap paths)');
-SELECT set_eq('q9', 'r5', 'Should return r4 result (3 cycle, Dont stop_on_first, heap paths)');
+SELECT set_eq('q8', 'r5', 'Should return r5 result (2 cycle, Dont stop_on_first, heap paths)');
+SELECT set_eq('q9', 'r5', 'Should return r5 result (3 cycle, Dont stop_on_first, heap paths)');
 
 
 SELECT finish();

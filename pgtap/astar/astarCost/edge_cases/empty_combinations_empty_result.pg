@@ -35,8 +35,8 @@ BEGIN
   RETURN query
   SELECT is_empty(
     'SELECT start_vid,  end_vid, agg_cost FROM pgr_aStarCost(
-      $$SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table$$,
-      $$SELECT * FROM combinations_table WHERE source IN (-1)$$ ) '
+      $$SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges$$,
+      $$SELECT * FROM combinations WHERE source IN (-1)$$ ) '
   );
 END
 $BODY$

@@ -19,17 +19,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(19);
 
 PREPARE edges AS
-SELECT id, source, target, cost, reverse_cost  FROM edge_table;
+SELECT id, source, target, cost, reverse_cost  FROM edges;
 
 PREPARE pois AS
 SELECT pid, edge_id, fraction from pointsOfInterest;
 
 PREPARE null_ret AS
-SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1);
+SELECT array_agg(id) FROM vertices  WHERE id IN (-1);
 
 SELECT isnt_empty('edges', 'Should be not empty to tests be meaningful');
 SELECT isnt_empty('pois', 'Should be not empty to tests be meaningful');
@@ -44,13 +44,13 @@ params TEXT[];
 subs TEXT[];
 BEGIN
     params = ARRAY[
-    '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
+    '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$',
     '$$SELECT pid, edge_id, fraction from pointsOfInterest$$',
-    'ARRAY[1,2]']::TEXT[];
+    'ARRAY[5,6]']::TEXT[];
     subs = ARRAY[
     'NULL',
     'NULL',
-    '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))'
+    '(SELECT array_agg(id) FROM vertices  WHERE id IN (-1))'
     ]::TEXT[];
 
     RETURN query SELECT * FROM no_crash_test('pgr_withPointsCostMatrix', params, subs);

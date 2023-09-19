@@ -19,12 +19,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(66);
 
 -- ONE TO ONE
-SELECT style_dijkstra('pgr_turnRestrictedPath(', ', $$SELECT * FROM restrictions$$, 2, 3, 2, true)');
-SELECT innerquery_restrictions('pgr_turnRestrictedPath($$SELECT * FROM edge_table$$, ', ', 2, 3, 2, true)');
+SELECT style_dijkstra('pgr_turnRestrictedPath(', ', $$SELECT * FROM restrictions$$, 6, 10, 2, true)');
+SELECT innerquery_restrictions('pgr_turnRestrictedPath($$SELECT * FROM edges$$, ', ', 6, 10, 2, true)');
 
 SELECT finish();
 ROLLBACK;

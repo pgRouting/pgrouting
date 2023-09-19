@@ -27,7 +27,7 @@ SELECT plan(68);
 
 SET client_min_messages TO ERROR;
 
-UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
+UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
 CREATE or REPLACE FUNCTION astarCompareDijkstra(cant INTEGER default 17)
 RETURNS SETOF TEXT AS
@@ -53,7 +53,7 @@ BEGIN
         -- with reverse cost
         -----------------------
         -- DIRECTED
-        inner_sql := 'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table';
+        inner_sql := 'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges';
         dijkstra_sql := 'SELECT ' || data || ' FROM pgr_dijkstra($$' || inner_sql || '$$, ' || vids
             || ',' || i || ',  true)';
 
@@ -73,7 +73,7 @@ BEGIN
         -- NO reverse cost
         -----------------------
         -- DIRECTED
-        inner_sql := 'SELECT id, source, target, cost, x1, y1, x2, y2 FROM edge_table';
+        inner_sql := 'SELECT id, source, target, cost, x1, y1, x2, y2 FROM edges';
         dijkstra_sql := 'SELECT ' || data || ' FROM pgr_dijkstra($$' || inner_sql || '$$,  ' || vids
             || ',' || i || ',  true)';
 
