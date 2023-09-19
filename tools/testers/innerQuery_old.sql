@@ -2,7 +2,7 @@
 DROP TABLE IF EXISTS edge_table_old;
 SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost
 INTO edge_table_old
-FROM edge_table;
+FROM edges;
 
 
 CREATE OR REPLACE FUNCTION test_Integer(fn TEXT, rest_sql TEXT, params TEXT[], parameter TEXT)

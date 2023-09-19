@@ -28,15 +28,17 @@ BEGIN
 
         q1 := q1 || ')';
 
-        -- RAISE WARNING '%', q1;
+        --RAISE WARNING '%', q1;
 
 
-        RETURN query SELECT * FROM lives_ok(q1, 'lives_ok' || q1);
+        RETURN query SELECT * FROM lives_ok(q1, 'lives_ok ' || q1);
         IF i = 0 THEN
-            RETURN query SELECT * FROM isnt_empty(q1, 'isnt_empty' || q1);
+            RETURN query SELECT * FROM isnt_empty(q1, 'isnt_empty ' || q1);
         ELSE
             IF func='pgr_alphashape' THEN
                 RETURN query SELECT * FROM isnt_empty(q1, 'isnt_empty' || q1);
+            ELSIF func='pgr_maxFlow' OR func='pgr_maxFlowMinCost_Cost' THEN
+                RETURN query SELECT * FROM set_eq(q1, 'SELECT NULL::BIGINT', 'set_eq' || q1);
             ELSE
                 RETURN query SELECT * FROM is_empty(q1, 'is_empty' || q1);
             END IF;

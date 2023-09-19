@@ -5,27 +5,36 @@ DECLARE
 params TEXT[];
 subs TEXT[];
 BEGIN
+
+  IF NOT min_version('3.2.0') AND fn_name IN ('pgr_maxFlowMinCost', 'pgr_maxFlowMinCost_Cost') THEN
+    RETURN QUERY
+    SELECT skip(1, 'Can not test before 3.2.0 on ' || fn_name);
+    RETURN;
+  END IF;
+
   IF fn_name = 'pgr_edgeDisjointPaths' THEN
     PREPARE edges AS
-    SELECT id, source, target, cost, reverse_cost  FROM edge_table;
+    SELECT id, source, target, cost, reverse_cost  FROM edges;
   ELSE
     PREPARE edges AS
     SELECT id,
     source,
     target,
     capacity,
-    reverse_capacity
-    FROM edge_table
+    reverse_capacity,
+    cost,
+    reverse_cost
+    FROM edges
     ORDER BY id;
   END IF;
 
 
 
   PREPARE null_ret AS
-  SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1);
+  SELECT id FROM vertices  WHERE id IN (-1);
 
   PREPARE null_ret_arr AS
-  SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1);
+  SELECT array_agg(id) FROM vertices  WHERE id IN (-1);
 
 
   RETURN QUERY
@@ -37,13 +46,13 @@ BEGIN
 
   -- one to one
   params = ARRAY['$$edges$$',
-  '1::BIGINT',
-  '2::BIGINT'
+  '5::BIGINT',
+  '6::BIGINT'
   ]::TEXT[];
   subs = ARRAY[
   'NULL',
-  '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-  '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))'
+  '(SELECT id FROM vertices  WHERE id IN (-1))',
+  '(SELECT id FROM vertices  WHERE id IN (-1))'
   ]::TEXT[];
 
   RETURN query SELECT * FROM no_crash_test(fn_name,params, subs);
@@ -58,12 +67,12 @@ BEGIN
 
   params = ARRAY['$$edges$$',
   '1::BIGINT',
-  'ARRAY[2,5]::BIGINT[]'
+  'ARRAY[6,7]::BIGINT[]'
   ]::TEXT[];
   subs = ARRAY[
   'NULL',
-  '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-  '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))'
+  '(SELECT id FROM vertices  WHERE id IN (-1))',
+  '(SELECT array_agg(id) FROM vertices  WHERE id IN (-1))'
   ]::TEXT[];
 
   RETURN query SELECT * FROM no_crash_test(fn_name,params, subs);
@@ -77,13 +86,13 @@ BEGIN
 
   -- many to one
   params = ARRAY['$$edges$$',
-  'ARRAY[2,5]::BIGINT[]',
-  '1'
+  'ARRAY[6,7]::BIGINT[]',
+  '5'
   ]::TEXT[];
   subs = ARRAY[
   'NULL',
-  '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-  '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))'
+  '(SELECT array_agg(id) FROM vertices  WHERE id IN (-1))',
+  '(SELECT id FROM vertices  WHERE id IN (-1))'
   ]::TEXT[];
 
   RETURN query SELECT * FROM no_crash_test(fn_name,params, subs);
@@ -97,13 +106,13 @@ BEGIN
 
   -- many to many
   params = ARRAY['$$edges$$',
-  'ARRAY[1]::BIGINT[]',
-  'ARRAY[2,5]::BIGINT[]'
+  'ARRAY[5]::BIGINT[]',
+  'ARRAY[6,7]::BIGINT[]'
   ]::TEXT[];
   subs = ARRAY[
   'NULL',
-  '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-  '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))'
+  '(SELECT array_agg(id) FROM vertices  WHERE id IN (-1))',
+  '(SELECT array_agg(id) FROM vertices  WHERE id IN (-1))'
   ]::TEXT[];
 
   RETURN query SELECT * FROM no_crash_test(fn_name,params, subs);
@@ -122,9 +131,9 @@ BEGIN
   END IF;
 
   PREPARE combinations AS
-  SELECT source, target  FROM combinations_table WHERE target > 2;
+  SELECT source, target  FROM combinations WHERE target NOT IN (5,6);
   PREPARE null_combinations AS
-  SELECT source, target FROM combinations_table WHERE source IN (-1);
+  SELECT source, target FROM combinations WHERE source IN (-1);
   RETURN QUERY
   SELECT isnt_empty('combinations', 'Should be not empty to tests be meaningful');
   RETURN QUERY
@@ -133,7 +142,7 @@ BEGIN
   params = ARRAY['$$edges$$', '$$combinations$$']::TEXT[];
   subs = ARRAY[
   'NULL',
-  '$$(SELECT source, target FROM combinations_table  WHERE source IN (-1))$$'
+  '$$(SELECT source, target FROM combinations  WHERE source IN (-1))$$'
   ]::TEXT[];
 
   RETURN query SELECT * FROM no_crash_test(fn_name, params, subs);
