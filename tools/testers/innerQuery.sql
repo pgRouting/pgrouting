@@ -3,7 +3,7 @@ CREATE OR REPLACE FUNCTION test_anyInteger(
   begin_sql TEXT,
   rest_sql TEXT,
   params TEXT[], parameter TEXT,
-  tbl TEXT DEFAULT 'edge_table')
+  tbl TEXT DEFAULT 'edges')
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -68,7 +68,7 @@ CREATE OR REPLACE FUNCTION test_anyNumerical(
 begin_sql TEXT,
 rest_sql TEXT,
 params TEXT[], parameter TEXT,
-tbl TEXT DEFAULT 'edge_table')
+tbl TEXT DEFAULT 'edges')
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
