@@ -26,7 +26,7 @@ SELECT PLAN(7);
 
 PREPARE q1 AS
 SELECT  path_seq, node, agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, ARRAY[-5],
     driving_side := 'r',
@@ -35,7 +35,7 @@ SELECT  path_seq, node, agg_cost FROM pgr_withPoints(
 
 PREPARE q2 AS
 SELECT path_seq, node, agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, -5,
     driving_side := 'r',
@@ -46,7 +46,7 @@ SELECT set_eq('q1', 'q2', '1: Right: from point -1 to -5 same as one to one');
 
 PREPARE q3 AS
 SELECT path_seq, node, agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, ARRAY[-4],
     driving_side := 'r',
@@ -55,7 +55,7 @@ SELECT path_seq, node, agg_cost FROM pgr_withPoints(
 
 PREPARE q4 AS
 SELECT path_seq, node, agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, -4,
     driving_side := 'r',
@@ -66,7 +66,7 @@ SELECT set_eq('q3','q4','2: Right: from -1 to -4 same as one to one');
 
 PREPARE q5 AS
 SELECT path_seq, node, agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, ARRAY[-4, -5],
     driving_side := 'r',
@@ -82,7 +82,7 @@ SELECT set_has('q5', 'q4', '6: Right: from point -1 to -4 & -5 has results of fr
 
 PREPARE q9 AS
 SELECT  -1 AS start_vid, -5 AS end_vid,  agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, ARRAY[-5],
     driving_side := 'r',
@@ -92,7 +92,7 @@ SELECT  -1 AS start_vid, -5 AS end_vid,  agg_cost FROM pgr_withPoints(
 
 PREPARE q10 AS
 SELECT *  FROM pgr_withPointsCost(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, -5,
     driving_side := 'r',

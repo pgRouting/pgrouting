@@ -19,39 +19,39 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(8);
 
 PREPARE q0 AS
-SELECT agg_cost FROM pgr_dijkstra( 'select id, source, target, cost from edge_table',
-    7, 6) ORDER BY seq DESC LIMIT 1;
+SELECT agg_cost FROM pgr_dijkstra( 'select id, source, target, cost from edges',
+    1, 11) ORDER BY seq DESC LIMIT 1;
 
 PREPARE update2infinity AS
-UPDATE edge_table SET cost = 'Infinity' WHERE id = 7;
+UPDATE edges SET cost = 'Infinity' WHERE id = 7;
 
 PREPARE q1 AS
-SELECT agg_cost FROM pgr_dijkstra( 'select id, source, target, cost from edge_table',
-    7, 8) ORDER BY seq DESC LIMIT 1;
+SELECT agg_cost FROM pgr_dijkstra( 'select id, source, target, cost from edges',
+    1, 3) ORDER BY seq DESC LIMIT 1;
 
 PREPARE q2 AS
-SELECT agg_cost FROM pgr_dijkstra( 'select id, source, target, cost from edge_table',
-    8, 5) ORDER BY seq DESC LIMIT 1;
+SELECT agg_cost FROM pgr_dijkstra( 'select id, source, target, cost from edges',
+    3, 7) ORDER BY seq DESC LIMIT 1;
 
 PREPARE q3 AS
-SELECT agg_cost FROM pgr_dijkstra( 'select id, source, target, cost from edge_table',
-    5, 6) ORDER BY seq DESC LIMIT 1;
+SELECT agg_cost FROM pgr_dijkstra( 'select id, source, target, cost from edges',
+    7, 11) ORDER BY seq DESC LIMIT 1;
 
 PREPARE q4 AS
-SELECT agg_cost FROM pgr_dijkstra( 'select id, source, target, cost from edge_table',
-    7, 5) ORDER BY seq DESC LIMIT 1;
+SELECT agg_cost FROM pgr_dijkstra( 'select id, source, target, cost from edges',
+    1, 7) ORDER BY seq DESC LIMIT 1;
 
 PREPARE q5 AS
-SELECT agg_cost FROM pgr_dijkstra( 'select id, source, target, cost from edge_table',
-    8, 6) ORDER BY seq DESC LIMIT 1;
+SELECT agg_cost FROM pgr_dijkstra( 'select id, source, target, cost from edges',
+    3, 11) ORDER BY seq DESC LIMIT 1;
 
 PREPARE q6 AS
-SELECT agg_cost FROM pgr_dijkstra( 'select id, source, target, cost from edge_table',
-    7, 6) ORDER BY seq DESC LIMIT 1;
+SELECT agg_cost FROM pgr_dijkstra( 'select id, source, target, cost from edges',
+    1, 11) ORDER BY seq DESC LIMIT 1;
 
 -- test for infinity if there is no alternative
 SELECT results_eq('q0', 'SELECT cast(3 as double precision) as agg_cost;');

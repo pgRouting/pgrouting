@@ -22,7 +22,7 @@ BEGIN;
 
 SELECT plan(2);
 
-UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
+UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
 CREATE OR REPLACE FUNCTION test_function(sql_TestFunction TEXT, cant INTEGER default 18)
 RETURNS SETOF TEXT AS
@@ -57,12 +57,12 @@ BEGIN
     sql_Combinations := trim(trailing ',' from sql_Combinations);
 
     sql_Many := ( sql_TestFunction || '(
-        ''SELECT id, source, target, cost, reverse_cost FROM edge_table''::text,
+        ''SELECT id, source, target, cost, reverse_cost FROM edges''::text,
         ''SELECT pid, edge_id, fraction, side from pointsOfInterest'',
         ARRAY[' || sql_Many  ||'], ARRAY[' || sql_Many || '] ) ');
 
     sql_Combinations := ( sql_TestFunction || '(
-        ''SELECT id, source, target, cost, reverse_cost FROM edge_table''::text,
+        ''SELECT id, source, target, cost, reverse_cost FROM edges''::text,
         ''SELECT pid, edge_id, fraction, side from pointsOfInterest'',
         ''SELECT * FROM (VALUES' || sql_Combinations  ||') AS combinations (source, target)'' ) ');
 
