@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT CASE WHEN min_version('3.2.0') THEN plan (16) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION edge_cases()
@@ -37,7 +37,7 @@ END IF;
 
 PREPARE q1 AS
 SELECT id, source, target, cost, reverse_cost
-FROM edge_table
+FROM edges
 WHERE id > 18;
 
 -- Graph is empty - it has 0 edge and 0 vertex
@@ -58,7 +58,7 @@ SELECT set_eq('zeroEdgeTest2',$$VALUES('f'::bool) $$, '2: False, since vertex do
 
 PREPARE q3 AS
 SELECT id, source, target, cost, reverse_cost
-FROM edge_table WHERE source = 50;
+FROM edges WHERE source = 50;
 
 RETURN QUERY
 SELECT is_empty('q3','3: Vertex 50 does not exist in sample data');
@@ -73,36 +73,36 @@ SELECT set_eq('vertexNotPresent4',$$VALUES('f'::bool) $$, '4:False, Vertex not p
 -- 1 vertex test
 
 PREPARE q5 AS
-SELECT id, source, 6 AS target, cost, reverse_cost
-FROM edge_table
+SELECT id, source, source AS target, cost, reverse_cost
+FROM edges
 WHERE id = 9;
 
 -- Graph with only vertex 9
 RETURN QUERY
-SELECT set_eq('q5', $$VALUES (9, 6, 6, 1, 1)$$, 'q5: Graph with only vertex 6');
+SELECT set_eq('q5', $$VALUES (9, 11, 11, 1, 1)$$, 'q5: source<->source');
 
 PREPARE oneVertexTest6 AS
 SELECT *
 FROM pgr_isPlanar('q5');
 
 RETURN QUERY
-SELECT set_eq('oneVertexTest6',$$VALUES('t'::bool) $$, '6:Planar Graph with only vertex 6');
+SELECT set_eq('oneVertexTest6',$$VALUES('t'::bool) $$, 'true: source->source');
 
 PREPARE q7 AS
-SELECT id, source, 3 AS target, cost, reverse_cost
-FROM edge_table
+SELECT id, source, source AS target, cost, reverse_cost
+FROM edges
 WHERE id = 3;
 
 -- Graph with only vertex 3
 RETURN QUERY
-SELECT set_eq('q7', $$VALUES (3, 3, 3, -1, 1)$$, 'q7: Graph with only vertex 3');
+SELECT set_eq('q7', $$VALUES (3, 10, 10, -1, 1)$$, 'q7: source<-source');
 
 PREPARE oneVertexTest8 AS
 SELECT *
 FROM pgr_isPlanar('q7');
 
 RETURN QUERY
-SELECT set_eq('oneVertexTest8',$$VALUES('t'::bool) $$, '8:Planar Graph with only vertex 3');
+SELECT set_eq('oneVertexTest8',$$VALUES('t'::bool) $$, 'true: source<-source');
 
 
 
@@ -111,29 +111,29 @@ SELECT set_eq('oneVertexTest8',$$VALUES('t'::bool) $$, '8:Planar Graph with only
 
 PREPARE q9 AS
 SELECT id, source, target, cost, reverse_cost
-FROM edge_table
+FROM edges
 WHERE id = 1;
 
 RETURN QUERY
-SELECT set_eq('q9', $$VALUES (1, 1, 2, 1, 1)$$, 'q9: Graph with two vertices 1 and 2');
+SELECT set_eq('q9', $$VALUES (1, 5, 6, 1, 1)$$, 'q9: u<->v');
 
 PREPARE twoVerticesTest10 AS
 SELECT *
 FROM pgr_isPlanar('q9');
 
 RETURN QUERY
-SELECT set_eq('twoVerticesTest10', $$VALUES('t'::bool) $$, '10:Planar Graph with two vertices 1 and 2');
+SELECT set_eq('twoVerticesTest10', $$VALUES('t'::bool) $$, 'true:  u<->v');
 
 
 -- 3 vertices test
 
 PREPARE q11 AS
 SELECT id, source, target, cost, reverse_cost
-FROM edge_table
+FROM edges
 WHERE id IN (1,2);
 
 RETURN QUERY
-SELECT set_eq('q11', $$VALUES (1, 1, 2, 1, 1), (2, 2, 3, -1, 1)$$, 'q11: Graph with three vertices 1, 2 and 3');
+SELECT set_eq('q11', $$VALUES (1, 5, 6, 1, 1), (2, 6, 10, -1, 1)$$, 'q11: u<->v<-w');
 
 PREPARE threeVerticesTest12 AS
 SELECT *
@@ -142,22 +142,22 @@ FROM pgr_isPlanar(
 );
 
 RETURN QUERY
-SELECT set_eq('threeVerticesTest12', $$VALUES('t'::bool) $$, '12: Planar graph with 3 vertices');
+SELECT set_eq('threeVerticesTest12', $$VALUES('t'::bool) $$, 'true: u<->v<-w');
 
 -- 4 vertices test
 
 PREPARE q13 AS
 SELECT id, source, target, cost, reverse_cost
-FROM edge_table
+FROM edges
 WHERE id IN (1,2,3);
 
 RETURN QUERY
 SELECT set_eq('q13',
-  $$VALUES (1, 1, 2, 1, 1),
-           (2, 2, 3, -1, 1),
-           (3, 3, 4, -1, 1)
+  $$VALUES (1, 5, 6, 1, 1),
+           (2, 6, 10, -1, 1),
+           (3, 10, 15, -1, 1)
   $$,
- 'q13: Graph with three vertices 1, 2 and 3');
+ 'q13: u<->v<-w<-z');
 
 PREPARE fourVerticesTest14 AS
 SELECT *
@@ -166,24 +166,24 @@ FROM pgr_isPlanar(
 );
 
 RETURN QUERY
-SELECT set_eq('fourVerticesTest14', $$VALUES('t'::bool) $$, '14: Planar graph with 4 vertices');
+SELECT set_eq('fourVerticesTest14', $$VALUES('t'::bool) $$, 'true: u<->v<-w<-z');
 
 -- 4 vertices test (cyclic)
 
 PREPARE q15 AS
 SELECT id, source, target, cost, reverse_cost
-FROM edge_table
+FROM edges
 WHERE id IN (8, 10, 11, 12);
 
 RETURN QUERY
 SELECT set_eq('q15',
     $$VALUES
-        (8, 5, 6, 1, 1),
-        (10, 5, 10, 1, 1),
-        (11, 6, 11, 1, -1),
-        (12, 10, 11, 1, -1)
+        (8, 7, 11, 1, 1),
+        (10, 7, 8, 1, 1),
+        (11, 11, 12, 1, -1),
+        (12, 8, 12, 1, -1)
     $$,
-    'q15: Graph with four vertices 5, 6, 10 and 11 (cyclic)'
+    'q15:  8<->7<->11->12->8'
 );
 
 PREPARE fourVerticesCyclicTest16 AS
@@ -193,7 +193,7 @@ FROM pgr_isPlanar(
 );
 
 RETURN QUERY
-SELECT set_eq('fourVerticesCyclicTest16', $$VALUES('t'::bool) $$, '16: Planar cyclic graph with 4 vertices');
+SELECT set_eq('fourVerticesCyclicTest16', $$VALUES('t'::bool) $$, 'true: cyclic  8<->7<->11->12->8');
 
 END;
 $BODY$

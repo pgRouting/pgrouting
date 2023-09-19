@@ -28,27 +28,27 @@ SET client_min_messages = WARNING;
 
 -- The following should be OK
 -- id INTEGER
-SELECT * INTO edges2 FROM edge_table;
-SELECT pgr_createVerticesTable('edges2');
+SELECT * INTO edges2 FROM edges;
+SELECT pgr_createVerticesTable('edges2','geom');
 ALTER TABLE edges2 ALTER COLUMN id SET DATA TYPE INTEGER;
 
-SELECT is(pgr_analyzegraph('edges2', 0.000001), 'OK', '1');
+SELECT is(pgr_analyzegraph('edges2', 0.000001, 'geom'), 'OK', '1');
 
 
 -- source INTEGER
 DROP TABLE IF EXISTS public.edges2;
-SELECT * INTO edges2 FROM edge_table;
+SELECT * INTO edges2 FROM edges;
 ALTER TABLE edges2 ALTER COLUMN source SET DATA TYPE INTEGER;
 
-SELECT is(pgr_analyzegraph('edges2', 0.000001), 'OK', '1');
+SELECT is(pgr_analyzegraph('edges2', 0.000001, 'geom'), 'OK', '1');
 
 
 -- target INTEGER
 DROP TABLE IF EXISTS public.edges2;
-SELECT * INTO edges2 FROM edge_table;
+SELECT * INTO edges2 FROM edges;
 ALTER TABLE edges2 ALTER COLUMN target SET DATA TYPE INTEGER;
 
-SELECT is(pgr_analyzegraph('edges2', 0.000001), 'OK', '1');
+SELECT is(pgr_analyzegraph('edges2', 0.000001, 'geom'), 'OK', '1');
 
 SELECT finish();
 ROLLBACK;

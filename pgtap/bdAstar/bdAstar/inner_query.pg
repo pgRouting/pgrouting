@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT CASE WHEN min_version('3.2.0') THEN plan(522) ELSE plan(410) END;
 
 
@@ -37,8 +37,8 @@ CREATE OR REPLACE FUNCTION inner_query() RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
   IF min_version('3.2.0') THEN
-    RETURN QUERY SELECT style_astar('pgr_bdastar(', ', $$SELECT * FROM combinations_table$$, true)');
-    RETURN QUERY SELECT innerquery_combinations('pgr_bdastar($$SELECT * FROM edge_table$$,',', true)');
+    RETURN QUERY SELECT style_astar('pgr_bdastar(', ', $$SELECT * FROM combinations$$, true)');
+    RETURN QUERY SELECT innerquery_combinations('pgr_bdastar($$SELECT * FROM edges$$,',', true)');
   ELSE
     RETURN QUERY SELECT skip(2, 'Combinations signature added on 3.2.0');
   END IF;

@@ -19,11 +19,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(145);
 
 CREATE TABLE matrix AS
-SELECT * from pgr_dijkstraCostMatrix($$SELECT * FROM edge_table$$,
+SELECT * from pgr_dijkstraCostMatrix($$SELECT * FROM edges$$,
   (SELECT array_agg(id) FROM (SELECT p_node_id AS id FROM orders
       UNION
       SELECT d_node_id FROM orders

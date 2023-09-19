@@ -19,15 +19,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT CASE WHEN min_version('3.4.0') THEN plan(147) ELSE plan(1) END;
 SET client_min_messages TO ERROR;
 
 PREPARE all_edges AS
-SELECT id, source, target, cost, reverse_cost FROM edge_table;
+SELECT id, source, target, cost, reverse_cost FROM edges;
 
 PREPARE empty_edges AS
-SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id > 20;
+SELECT id, source, target, cost, reverse_cost FROM edges WHERE id > 20;
 
 PREPARE all_restrictions AS
 SELECT * FROM restrictions;
@@ -36,13 +36,13 @@ PREPARE empty_restrictions AS
 SELECT * FROM restrictions WHERE id > 7;
 
 PREPARE all_combinations AS
-SELECT * FROM combinations_table;
+SELECT * FROM combinations;
 
 PREPARE empty_combinations AS
-SELECT * FROM combinations_table WHERE source = 20;
+SELECT * FROM combinations WHERE source = 20;
 
 PREPARE null_ret AS
-SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1);
+SELECT id FROM vertices  WHERE id IN (-1);
 
 CREATE OR REPLACE FUNCTION no_crash_test(func TEXT, params TEXT[], subs TEXT[])
 RETURNS SETOF TEXT AS
@@ -101,12 +101,12 @@ BEGIN
   RETURN QUERY SELECT is_empty('null_ret', 'Should be empty to tests be meaningful');
 
   -- ONE TO ONE
-  params = ARRAY['$$all_edges$$', '$$all_restrictions$$', '1', '2', 'true']::TEXT[];
-  params1 = ARRAY['$$all_edges$$', '$$empty_restrictions$$', '1', '2', 'true']::TEXT[];
+  params = ARRAY['$$all_edges$$', '$$all_restrictions$$', '5', '6', 'true']::TEXT[];
+  params1 = ARRAY['$$all_edges$$', '$$empty_restrictions$$', '5', '6', 'true']::TEXT[];
 
   subs = ARRAY['$$empty_edges$$', 'NULL',
-  '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-  '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+  '(SELECT id FROM vertices  WHERE id IN (-1))',
+  '(SELECT id FROM vertices  WHERE id IN (-1))',
   'NULL'
   ]::TEXT[];
   RETURN query SELECT * FROM no_crash_test('pgr_trsp', params, subs);
@@ -117,10 +117,10 @@ BEGIN
   RETURN query SELECT * FROM no_crash_test('pgr_trsp', params1, subs);
 
   params = ARRAY[
-  '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
+  '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$',
   '$$SELECT * FROM restrictions$$',
-  '1',
-  '2',
+  '5',
+  '6',
   'true'
   ]::TEXT[];
   RETURN query SELECT * FROM no_crash_test('pgr_trsp', params, subs);
@@ -130,8 +130,8 @@ BEGIN
   params1 = ARRAY['$$all_edges$$', '$$empty_restrictions$$', '1', 'ARRAY[2,3]', 'true']::TEXT[];
 
   subs = ARRAY['$$empty_edges$$', 'NULL',
-  '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-  '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+  '(SELECT id FROM vertices  WHERE id IN (-1))',
+  '(SELECT array_agg(id) FROM vertices  WHERE id IN (-1))',
   'NULL'
   ]::TEXT[];
   RETURN query SELECT * FROM no_crash_test('pgr_trsp', params, subs);
@@ -148,10 +148,10 @@ BEGIN
   RETURN query SELECT * FROM no_crash_test('pgr_trsp', params1, subs);
 
   params = ARRAY[
-  '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
+  '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$',
   '$$SELECT * FROM restrictions$$',
-  '1',
-  'ARRAY[2,3]',
+  '5',
+  'ARRAY[6,10]',
   'true'
   ]::TEXT[];
   RETURN query SELECT * FROM no_crash_test('pgr_trsp', params, subs);
@@ -161,8 +161,8 @@ BEGIN
   params1 = ARRAY['$$all_edges$$', '$$empty_restrictions$$', 'ARRAY[2,3]', '1', 'true']::TEXT[];
 
   subs = ARRAY['$$empty_edges$$', 'NULL',
-  '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-  '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+  '(SELECT array_agg(id) FROM vertices  WHERE id IN (-1))',
+  '(SELECT id FROM vertices  WHERE id IN (-1))',
   'NULL'
   ]::TEXT[];
   RETURN query SELECT * FROM no_crash_test('pgr_trsp', params, subs);
@@ -179,10 +179,10 @@ BEGIN
   RETURN query SELECT * FROM no_crash_test('pgr_trsp', params1, subs);
 
   params = ARRAY[
-  '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
+  '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$',
   '$$SELECT * FROM restrictions$$',
-  'ARRAY[2,3]',
-  '1',
+  'ARRAY[6,10]',
+  '5',
   'true'
   ]::TEXT[];
   RETURN query SELECT * FROM no_crash_test('pgr_trsp', params, subs);
@@ -192,8 +192,8 @@ BEGIN
   params1 = ARRAY['$$all_edges$$', '$$empty_restrictions$$', 'ARRAY[2,3]::BIGINT[]', 'ARRAY[1,10]::BIGINT[]', 'true']::TEXT[];
 
   subs = ARRAY['$$empty_edges$$', 'NULL',
-  '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-  '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+  '(SELECT array_agg(id) FROM vertices  WHERE id IN (-1))',
+  '(SELECT array_agg(id) FROM vertices  WHERE id IN (-1))',
   'NULL'
   ]::TEXT[];
   RETURN query SELECT * FROM no_crash_test('pgr_trsp', params, subs);
@@ -210,10 +210,10 @@ BEGIN
   RETURN query SELECT * FROM no_crash_test('pgr_trsp', params1, subs);
 
   params = ARRAY[
-  '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
+  '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$',
   '$$SELECT * FROM restrictions$$',
-  'ARRAY[2,3]::BIGINT[]',
-  'ARRAY[1,10]::BIGINT[]',
+  'ARRAY[6,10]::BIGINT[]',
+  'ARRAY[5,8]::BIGINT[]',
   'true'
   ]::TEXT[];
   RETURN query SELECT * FROM no_crash_test('pgr_trsp', params, subs);
@@ -236,9 +236,9 @@ BEGIN
   RETURN query SELECT * FROM no_crash_test('pgr_trsp', params1, subs);
 
   params = ARRAY[
-  '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
+  '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$',
   '$$SELECT * FROM restrictions$$',
-  '$$SELECT * FROM combinations_table$$',
+  '$$SELECT * FROM combinations$$',
   'true'
   ]::TEXT[];
   RETURN query SELECT * FROM no_crash_test('pgr_trsp', params, subs);

@@ -19,15 +19,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(32);
 SET client_min_messages TO ERROR;
 
 PREPARE edges AS
-SELECT id, source, target, cost, reverse_cost FROM edge_table;
+SELECT id, source, target, cost, reverse_cost FROM edges;
 
 PREPARE null_ret AS
-SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1);
+SELECT id FROM vertices  WHERE id IN (-1);
 
 SELECT isnt_empty('edges', 'Should not be empty to tests be meaningful');
 SELECT is_empty('null_ret', 'Should be empty to tests be meaningful');
@@ -81,7 +81,7 @@ DECLARE
 params TEXT[];
 subs TEXT[];
 BEGIN
-    params = ARRAY['SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT  FROM edge_table',
+    params = ARRAY['SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT  FROM edges',
     '1',
     '0.5::FLOAT',
     '2',
@@ -91,9 +91,9 @@ BEGIN
     ]::TEXT[];
     subs = ARRAY[
     NULL,
-    '(SELECT id::INTEGER FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+    '(SELECT id::INTEGER FROM vertices  WHERE id IN (-1))',
     'NULL',
-    '(SELECT id::INTEGER FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+    '(SELECT id::INTEGER FROM vertices  WHERE id IN (-1))',
     'NULL',
     'NULL',
     'NULL'

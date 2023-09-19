@@ -19,15 +19,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT CASE WHEN min_version('3.4.0') THEN plan(479) ELSE plan(1) END;
 SET client_min_messages TO ERROR;
 
 PREPARE all_edges AS
-SELECT id, source, target, cost, reverse_cost FROM edge_table;
+SELECT id, source, target, cost, reverse_cost FROM edges;
 
 PREPARE empty_edges AS
-SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id > 20;
+SELECT id, source, target, cost, reverse_cost FROM edges WHERE id > 20;
 
 PREPARE all_restrictions AS
 SELECT * FROM restrictions;
@@ -36,13 +36,13 @@ PREPARE empty_restrictions AS
 SELECT * FROM restrictions WHERE id > 7;
 
 PREPARE all_combinations AS
-SELECT * FROM combinations_table;
+SELECT * FROM combinations;
 
 PREPARE empty_combinations AS
-SELECT * FROM combinations_table WHERE source = 20;
+SELECT * FROM combinations WHERE source = 20;
 
 PREPARE null_ret AS
-SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1);
+SELECT id FROM vertices  WHERE id IN (-1);
 
 PREPARE all_points AS
 SELECT * FROM pointsofinterest;
@@ -110,13 +110,13 @@ BEGIN
   RETURN QUERY SELECT is_empty('null_ret', 'Should be empty to tests be meaningful');
 
   -- ONE TO ONE
-  params = ARRAY['$$all_edges$$', '$$all_restrictions$$', '$$all_points$$','1', '2', 'false']::TEXT[];
-  params1 = ARRAY['$$all_edges$$', '$$empty_restrictions$$', '$$all_points$$', '1', '2', 'false']::TEXT[];
-  params2 = ARRAY['$$all_edges$$', '$$all_restrictions$$', '$$empty_points$$', '1', '2', 'false']::TEXT[];
+  params = ARRAY['$$all_edges$$', '$$all_restrictions$$', '$$all_points$$','5', '6', 'false']::TEXT[];
+  params1 = ARRAY['$$all_edges$$', '$$empty_restrictions$$', '$$all_points$$', '5', '6', 'false']::TEXT[];
+  params2 = ARRAY['$$all_edges$$', '$$all_restrictions$$', '$$empty_points$$', '5', '6', 'false']::TEXT[];
 
   subs = ARRAY['$$empty_edges$$', 'NULL', 'NULL',
-  '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-  '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+  '(SELECT id FROM vertices  WHERE id IN (-1))',
+  '(SELECT id FROM vertices  WHERE id IN (-1))',
   'NULL'
   ]::TEXT[];
   RETURN query SELECT * FROM no_crash_test('pgr_trsp_withpoints', params, subs);
@@ -129,23 +129,23 @@ BEGIN
   RETURN query SELECT * FROM no_crash_test('pgr_trsp_withpoints', params2, subs);
 
   params = ARRAY[
-  '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
+  '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$',
   '$$SELECT * FROM restrictions$$',
   '$$SELECT * FROM pointsofinterest$$',
-  '1',
-  '2',
+  '5',
+  '6',
   'false'
   ]::TEXT[];
   RETURN query SELECT * FROM no_crash_test('pgr_trsp_withpoints', params, subs);
 
   -- ONE TO MANY
-  params = ARRAY['$$all_edges$$', '$$all_restrictions$$', '$$all_points$$','1', 'ARRAY[2,3]', 'false']::TEXT[];
-  params1 = ARRAY['$$all_edges$$', '$$empty_restrictions$$','$$all_points$$', '1', 'ARRAY[2,3]', 'false']::TEXT[];
-  params2 = ARRAY['$$all_edges$$', '$$all_restrictions$$','$$empty_points$$', '1', 'ARRAY[2,3]', 'false']::TEXT[];
+  params = ARRAY['$$all_edges$$', '$$all_restrictions$$', '$$all_points$$','5', 'ARRAY[6,10]', 'false']::TEXT[];
+  params1 = ARRAY['$$all_edges$$', '$$empty_restrictions$$','$$all_points$$', '5', 'ARRAY[6,10]', 'false']::TEXT[];
+  params2 = ARRAY['$$all_edges$$', '$$all_restrictions$$','$$empty_points$$', '5', 'ARRAY[6,10]', 'false']::TEXT[];
 
   subs = ARRAY['$$empty_edges$$', 'NULL','NULL',
-  '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-  '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+  '(SELECT id FROM vertices  WHERE id IN (-1))',
+  '(SELECT array_agg(id) FROM vertices  WHERE id IN (-1))',
   'NULL'
   ]::TEXT[];
   RETURN query SELECT * FROM no_crash_test('pgr_trsp_withpoints', params, subs);
@@ -165,23 +165,23 @@ BEGIN
   RETURN query SELECT * FROM no_crash_test('pgr_trsp_withpoints', params2, subs);
 
   params = ARRAY[
-  '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
+  '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$',
   '$$SELECT * FROM restrictions$$',
   '$$SELECT * FROM pointsofinterest$$',
   '1',
-  'ARRAY[2,3]',
+  'ARRAY[6,10]',
   'false'
   ]::TEXT[];
   RETURN query SELECT * FROM no_crash_test('pgr_trsp_withpoints', params, subs);
 
   -- MANY TO ONE
-  params = ARRAY['$$all_edges$$', '$$all_restrictions$$', '$$all_points$$','ARRAY[2,3]', '1', 'false']::TEXT[];
-  params1 = ARRAY['$$all_edges$$', '$$empty_restrictions$$', '$$all_points$$','ARRAY[2,3]', '1', 'false']::TEXT[];
-  params2 = ARRAY['$$all_edges$$', '$$empty_restrictions$$', '$$empty_points$$','ARRAY[2,3]', '1', 'false']::TEXT[];
+  params = ARRAY['$$all_edges$$', '$$all_restrictions$$', '$$all_points$$','ARRAY[6,10]', '5', 'false']::TEXT[];
+  params1 = ARRAY['$$all_edges$$', '$$empty_restrictions$$', '$$all_points$$','ARRAY[6,10]', '5', 'false']::TEXT[];
+  params2 = ARRAY['$$all_edges$$', '$$empty_restrictions$$', '$$empty_points$$','ARRAY[6,10]', '5', 'false']::TEXT[];
 
   subs = ARRAY['$$empty_edges$$', 'NULL','NULL',
-  '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-  '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+  '(SELECT array_agg(id) FROM vertices  WHERE id IN (-1))',
+  '(SELECT id FROM vertices  WHERE id IN (-1))',
   'NULL'
   ]::TEXT[];
   RETURN query SELECT * FROM no_crash_test('pgr_trsp_withpoints', params, subs);
@@ -201,23 +201,23 @@ BEGIN
   RETURN query SELECT * FROM no_crash_test('pgr_trsp_withpoints', params2, subs);
 
   params = ARRAY[
-  '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
+  '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$',
   '$$SELECT * FROM restrictions$$',
   '$$SELECT * FROM pointsofinterest$$',
-  'ARRAY[2,3]',
+  'ARRAY[6,10]',
   '1',
   'false'
   ]::TEXT[];
   RETURN query SELECT * FROM no_crash_test('pgr_trsp_withpoints', params, subs);
 
   -- MANY TO MANY
-  params = ARRAY['$$all_edges$$', '$$all_restrictions$$', '$$all_points$$','ARRAY[2,3]::BIGINT[]', 'ARRAY[1,10]::BIGINT[]', 'false']::TEXT[];
-  params1 = ARRAY['$$all_edges$$', '$$empty_restrictions$$','$$all_points$$', 'ARRAY[2,3]::BIGINT[]', 'ARRAY[1,10]::BIGINT[]', 'false']::TEXT[];
-  params2 = ARRAY['$$all_edges$$', '$$empty_restrictions$$','$$empty_points$$', 'ARRAY[2,3]::BIGINT[]', 'ARRAY[1,10]::BIGINT[]', 'false']::TEXT[];
+  params = ARRAY['$$all_edges$$', '$$all_restrictions$$', '$$all_points$$','ARRAY[6,10]::BIGINT[]', 'ARRAY[5,8]::BIGINT[]', 'false']::TEXT[];
+  params1 = ARRAY['$$all_edges$$', '$$empty_restrictions$$','$$all_points$$', 'ARRAY[6,10]::BIGINT[]', 'ARRAY[5,8]::BIGINT[]', 'false']::TEXT[];
+  params2 = ARRAY['$$all_edges$$', '$$empty_restrictions$$','$$empty_points$$', 'ARRAY[6,10]::BIGINT[]', 'ARRAY[5,8]::BIGINT[]', 'false']::TEXT[];
 
   subs = ARRAY['$$empty_edges$$', 'NULL','NULL',
-  '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-  '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+  '(SELECT array_agg(id) FROM vertices  WHERE id IN (-1))',
+  '(SELECT array_agg(id) FROM vertices  WHERE id IN (-1))',
   'NULL'
   ]::TEXT[];
   RETURN query SELECT * FROM no_crash_test('pgr_trsp_withpoints', params, subs);
@@ -237,11 +237,11 @@ BEGIN
   RETURN query SELECT * FROM no_crash_test('pgr_trsp_withpoints', params2, subs);
 
   params = ARRAY[
-  '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
+  '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$',
   '$$SELECT * FROM restrictions$$',
   '$$SELECT * FROM pointsofinterest$$',
-  'ARRAY[2,3]::BIGINT[]',
-  'ARRAY[1,10]::BIGINT[]',
+  'ARRAY[6,10]::BIGINT[]',
+  'ARRAY[5,8]::BIGINT[]',
   'false'
   ]::TEXT[];
   RETURN query SELECT * FROM no_crash_test('pgr_trsp_withpoints', params, subs);
@@ -268,10 +268,10 @@ BEGIN
   RETURN query SELECT * FROM no_crash_test('pgr_trsp_withpoints', params2, subs);
 
   params = ARRAY[
-  '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
+  '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$',
   '$$SELECT * FROM restrictions$$',
   '$$SELECT * FROM pointsofinterest$$',
-  '$$SELECT * FROM combinations_table$$',
+  '$$SELECT * FROM combinations$$',
   'false'
   ]::TEXT[];
   RETURN query SELECT * FROM no_crash_test('pgr_trsp_withpoints', params, subs);

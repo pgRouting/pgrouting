@@ -21,19 +21,19 @@ BEGIN;
 
 SELECT plan(3);
 
-UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
+UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
 --
 PREPARE prim AS
 SELECT edge, cost::TEXT
 FROM pgr_prim(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table'
+  'SELECT id, source, target, cost, reverse_cost FROM edges'
 );
 
 PREPARE kruskal AS
 SELECT edge, cost::TEXT
 FROM pgr_kruskal(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table'
+  'SELECT id, source, target, cost, reverse_cost FROM edges'
 );
 
 SELECT set_eq('prim', 'kruskal', '1: Prim & kruskal should return same values');
@@ -41,13 +41,13 @@ SELECT set_eq('prim', 'kruskal', '1: Prim & kruskal should return same values');
 PREPARE kruskal1 AS
 SELECT edge, cost
 FROM pgr_kruskal(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table'
+    'SELECT id, source, target, cost, reverse_cost FROM edges'
 );
 
 PREPARE prim1 AS
 SELECT edge, cost
 FROM pgr_prim(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table'
+    'SELECT id, source, target, cost, reverse_cost FROM edges'
 );
 
 SELECT bag_has('kruskal1',

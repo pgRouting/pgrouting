@@ -26,7 +26,8 @@ SELECT PLAN(95);
 
 SET client_min_messages = WARNING;
 
-SELECT * INTO edges2 FROM edge_table;
+SELECT id, source, target, cost, reverse_cost, geom AS the_geom INTO edges2 FROM edges;
+UPDATE edges2 SET source = NULL, target = NULL;
 
 -- The following should be OK
 

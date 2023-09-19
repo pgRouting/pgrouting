@@ -19,17 +19,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT CASE WHEN min_version('3.4.0') THEN plan(19) ELSE plan(4) END;
 
 PREPARE edges AS
-SELECT id, source, target, cost, reverse_cost  FROM edge_table;
+SELECT id, source, target, cost, reverse_cost  FROM edges;
 
 PREPARE null_ret AS
-SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1);
+SELECT id FROM vertices  WHERE id IN (-1);
 
 PREPARE null_ret_arr AS
-SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1);
+SELECT array_agg(id) FROM vertices  WHERE id IN (-1);
 
 SELECT isnt_empty('edges', 'Should be not empty to tests be meaningful');
 SELECT is_empty('null_ret', 'Should be empty to tests be meaningful');
@@ -51,15 +51,15 @@ END IF;
 
 -- ONE VIA
 params = ARRAY[
-'$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
+'$$SELECT id, source, target, cost, reverse_cost  FROM edges$$',
 '$$SELECT path, cost  FROM restrictions$$',
-'ARRAY[2,5]::BIGINT[]'
+'ARRAY[6,7]::BIGINT[]'
 ]::TEXT[];
 
 subs = ARRAY[
 'NULL',
 'NULL',
-'(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))'
+'(SELECT array_agg(id) FROM vertices  WHERE id IN (-1))'
 ]::TEXT[];
 
 RETURN query SELECT * FROM no_crash_test('pgr_trspvia', params, subs);

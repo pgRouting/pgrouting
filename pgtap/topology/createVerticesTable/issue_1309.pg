@@ -28,7 +28,7 @@ SET client_min_messages = WARNING;
 
 -- The following should be OK
 -- id INTEGER
-SELECT * INTO edges2 FROM edge_table;
+SELECT id, source, target, cost, reverse_cost, geom AS the_geom INTO edges2 FROM edges;
 ALTER TABLE edges2 ALTER COLUMN id SET DATA TYPE INTEGER;
 
 SELECT is(pgr_createVerticesTable('edges2'), 'OK', '1');
@@ -37,7 +37,7 @@ DROP TABLE IF EXISTS public.edges2_vertices_pgr;
 
 -- source INTEGER
 DROP TABLE IF EXISTS public.edges2;
-SELECT * INTO edges2 FROM edge_table;
+SELECT id, source, target, cost, reverse_cost, geom AS the_geom INTO edges2 FROM edges;
 ALTER TABLE edges2 ALTER COLUMN source SET DATA TYPE INTEGER;
 
 SELECT is(pgr_createVerticesTable('edges2'), 'OK', '1');
@@ -46,7 +46,7 @@ DROP TABLE IF EXISTS public.edges2_vertices_pgr;
 
 -- target INTEGER
 DROP TABLE IF EXISTS public.edges2;
-SELECT * INTO edges2 FROM edge_table;
+SELECT id, source, target, cost, reverse_cost, geom AS the_geom INTO edges2 FROM edges;
 ALTER TABLE edges2 ALTER COLUMN target SET DATA TYPE INTEGER;
 
 SELECT is(pgr_createVerticesTable('edges2'), 'OK', '1');

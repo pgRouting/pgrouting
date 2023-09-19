@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT CASE WHEN min_version('3.4.0') THEN plan(66) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION inner_query()
@@ -33,7 +33,7 @@ BEGIN
 
   -- ONE VIA
   RETURN QUERY SELECT style_dijkstra('pgr_trspVia(', ', $$SELECT * from restrictions$$, ARRAY[2,9,12])');
-  RETURN QUERY SELECT innerquery_restrictions('pgr_trspVia($$SELECT * FROM edge_table$$,', ', ARRAY[2,9,12])');
+  RETURN QUERY SELECT innerquery_restrictions('pgr_trspVia($$SELECT * FROM edges$$,', ', ARRAY[2,9,12])');
 
 END;
 $BODY$

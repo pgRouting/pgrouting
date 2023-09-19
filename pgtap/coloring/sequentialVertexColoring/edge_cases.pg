@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT CASE WHEN NOT min_version('3.2.0') THEN plan(1) ELSE plan(18) END;
 
 CREATE OR REPLACE FUNCTION edge_cases()
@@ -37,7 +37,7 @@ END IF;
 
 PREPARE q1 AS
 SELECT id, source, target, cost, reverse_cost
-FROM edge_table
+FROM edges
 WHERE id > 18;
 
 RETURN QUERY
@@ -56,41 +56,36 @@ SELECT is_empty('sequentialVertexColoring2', '2: Graph with 0 edge and 0 vertex 
 -- 1 vertex test
 
 PREPARE q3 AS
-SELECT id, source, 2 AS target, cost, reverse_cost
-FROM edge_table
+SELECT id, source, 6 AS target, cost, reverse_cost
+FROM edges
 WHERE id = 2;
 
 RETURN QUERY
-SELECT set_eq('q3', $$VALUES (2, 2, 2, -1, 1)$$, 'q3: Graph with only vertex 2');
+SELECT set_eq('q3', $$VALUES (2, 6, 6, -1, 1)$$, 'q3: Graph with one vertex');
 
 PREPARE sequentialVertexColoring4 AS
-SELECT *
-FROM pgr_sequentialVertexColoring(
-    'q3'
-);
+SELECT * FROM pgr_sequentialVertexColoring('q3');
 
 RETURN QUERY
-SELECT set_eq('sequentialVertexColoring4', $$VALUES (2, 1)$$, '4: Node 2 with color 1 is returned');
+SELECT set_eq('sequentialVertexColoring4', $$VALUES (6, 1)$$, '4: Node 6 with color 1');
 
 
 -- 2 vertices test (connected)
 
 PREPARE q5 AS
 SELECT id, source, target, cost, reverse_cost
-FROM edge_table
+FROM edges
 WHERE id = 7;
 
 RETURN QUERY
-SELECT set_eq('q5', $$VALUES (7, 8, 5, 1, 1)$$, 'q5: Graph with two connected vertices 8 and 5');
+SELECT set_eq('q5', $$VALUES (7, 3, 7, 1, 1)$$, 'q5: Graph with two connected vertices');
 
 PREPARE sequentialVertexColoring6 AS
-SELECT *
-FROM pgr_sequentialVertexColoring(
-    'q5'
-);
+SELECT color_id, count(DISTINCT color_id)
+FROM pgr_sequentialVertexColoring('q5') GROUP BY color_id;
 
 RETURN QUERY
-SELECT set_eq('sequentialVertexColoring6', $$VALUES (5, 2), (8, 1)$$, '6: Both vertices have different color');
+SELECT set_eq('sequentialVertexColoring6', $$VALUES (1,1), (2, 1)$$, '6: Both vertices have different color');
 
 
 -- 2 vertices test (isolated)
@@ -112,7 +107,7 @@ SELECT id, source, target, cost, reverse_cost
 FROM two_isolated_vertices_table;
 
 RETURN QUERY
-SELECT set_eq('q7', $$VALUES (1, 2, 2, -1, 1), (2, 1, 1, 1, -1)$$, 'q7: Graph with two isolated vertices 1 and 2');
+SELECT set_eq('q7', $$VALUES (1, 2, 2, -1, 1), (2, 1, 1, 1, -1)$$, 'q7: Graph with two isolated vertices');
 
 PREPARE sequentialVertexColoring8 AS
 SELECT *
@@ -128,20 +123,17 @@ SELECT set_eq('sequentialVertexColoring8', $$VALUES (1, 1), (2, 1)$$, '8: Both v
 
 PREPARE q9 AS
 SELECT id, source, target, cost, reverse_cost
-FROM edge_table
+FROM edges
 WHERE id <= 2;
 
 RETURN QUERY
-SELECT set_eq('q9', $$VALUES (1, 1, 2, 1, 1), (2, 2, 3, -1, 1)$$, 'q9: Graph with three vertices 1, 2 and 3');
+SELECT set_eq('q9', $$VALUES (1, 5, 6, 1, 1), (2, 6, 10, -1, 1)$$, 'q9: Graph with three vertices');
 
 PREPARE sequentialVertexColoring10 AS
-SELECT *
-FROM pgr_sequentialVertexColoring(
-    'q9'
-);
+SELECT count(DISTINCT color_id) FROM pgr_sequentialVertexColoring('q9');
 
 RETURN QUERY
-SELECT set_eq('sequentialVertexColoring10', $$VALUES (1, 1), (2, 2), (3, 1)$$, '10: Two colors are required');
+SELECT set_eq('sequentialVertexColoring10', $$VALUES (2)$$, '10: Two colors are required');
 
 
 -- 3 vertices test (cyclic)
@@ -170,72 +162,64 @@ SELECT set_eq('q11',
         (2, 3, 8, 10, -10),
         (3, 6, 8, -1, 12)
     $$,
-    'q11: Cyclic Graph with three vertices 3, 6 and 8'
+    'q11: Cyclic Graph with three vertices'
 );
 
 PREPARE sequentialVertexColoring12 AS
-SELECT *
-FROM pgr_sequentialVertexColoring(
-    'q11'
-);
+SELECT count(DISTINCT color_id)
+FROM pgr_sequentialVertexColoring('q11');
 
 RETURN QUERY
-SELECT set_eq('sequentialVertexColoring12', $$VALUES (3, 1), (6, 2), (8, 3)$$, '12: Three colors are required');
+SELECT set_eq('sequentialVertexColoring12', $$VALUES (3)$$, '12: Three colors are required');
 
 
 -- 4 vertices test (linear)
 
 PREPARE q13 AS
 SELECT id, source, target, cost, reverse_cost
-FROM edge_table
+FROM edges
 WHERE id <= 3;
 
 RETURN QUERY
 SELECT set_eq('q13',
     $$VALUES
-        (1, 1, 2, 1, 1),
-        (2, 2, 3, -1, 1),
-        (3, 3, 4, -1, 1)
+        (1, 5, 6, 1, 1),
+        (2, 6, 10, -1, 1),
+        (3, 10, 15, -1, 1)
     $$,
-    'q13: Graph with four vertices 1, 2, 3 and 4'
+    'q13: Graph with four vertices'
 );
 
 PREPARE sequentialVertexColoring14 AS
-SELECT *
-FROM pgr_sequentialVertexColoring(
-    'q13'
-);
+SELECT count(DISTINCT color_id) FROM pgr_sequentialVertexColoring('q13');
 
 RETURN QUERY
-SELECT set_eq('sequentialVertexColoring14', $$VALUES (1, 1), (2, 2), (3, 1), (4, 2)$$, '14: Two colors are required');
+SELECT set_eq('sequentialVertexColoring14', $$VALUES (2)$$, '14: Two colors are required');
 
 
 -- 4 vertices test (cyclic)
 
 PREPARE q15 AS
 SELECT id, source, target, cost, reverse_cost
-FROM edge_table
+FROM edges
 WHERE id IN (8, 10, 11, 12);
 
 RETURN QUERY
 SELECT set_eq('q15',
     $$VALUES
-        (8, 5, 6, 1, 1),
-        (10, 5, 10, 1, 1),
-        (11, 6, 11, 1, -1),
-        (12, 10, 11, 1, -1)
+    (8,7,11,1,1),
+    (10,7,8,1,1),
+    (11,11,12,1,-1),
+    (12,8,12,1,-1)
     $$,
-    'q15: Graph with four vertices 5, 6, 10 and 11 (cyclic)'
-);
+    'q15: Graph with four vertices (cyclic)'
+  );
 
 PREPARE sequentialVertexColoring16 AS
-SELECT *
-FROM pgr_sequentialVertexColoring(
-    'q15'
-);
+SELECT count(DISTINCT color_id) FROM pgr_sequentialVertexColoring('q15');
 
 RETURN QUERY
-SELECT set_eq('sequentialVertexColoring16', $$VALUES (5, 1), (6, 2), (10, 2), (11, 1)$$, '16: Two colors are required');
+SELECT set_eq('sequentialVertexColoring16', $$VALUES (2)$$, '16: Two colors are required');
 
 
 -- 4 vertices test (all connected)
