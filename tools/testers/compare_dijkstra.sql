@@ -45,7 +45,7 @@ BEGIN
     FOR j IN 1.. cant LOOP
 
       -- with reverse cost
-      inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edge_table';
+      inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edges';
       dijkstra_sql := 'SELECT ' || ret_c || ' FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
         || ', directed => ' || directed || ') ' || where_c;
 
@@ -55,7 +55,7 @@ BEGIN
 
 
       -- no reverse cost
-      inner_sql := 'SELECT id, source, target, cost FROM edge_table';
+      inner_sql := 'SELECT id, source, target, cost FROM edges';
       dijkstra_sql := 'SELECT ' || ret_c || ' FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
         || ', directed => ' || directed || ') ' || where_c;
 
@@ -88,13 +88,13 @@ BEGIN
     arr := 'ARRAY[1,2,3,4,5,6,7,8]';
 
     -- with reverse cost
-    inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edge_table';
+    inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edges';
     dijkstra_sql := 'SELECT ' || ret_c || ' FROM pgr_dijkstra($$' || inner_sql || '$$, ' || arr || ', ' || j || ', directed => ' || directed || ')' || where_c;
     fn_sql := 'SELECT ' || ret_c || ' FROM '|| fn || '($$'        || inner_sql || '$$, ' || arr || ', ' || j || ', directed => ' || directed || ')' || where_c;
     RETURN query SELECT set_eq(fn_sql, dijkstra_sql, fn_sql);
 
     -- no reverse cost
-    inner_sql := 'SELECT id, source, target, cost FROM edge_table';
+    inner_sql := 'SELECT id, source, target, cost FROM edges';
     dijkstra_sql := 'SELECT ' || ret_c || ' FROM pgr_dijkstra($$' || inner_sql || '$$, ' || arr || ', ' || j || ', directed => ' || directed || ')' || where_c;
     fn_sql := 'SELECT ' || ret_c || ' FROM '|| fn || '($$'        || inner_sql || '$$, ' || arr || ', ' || j || ', directed => ' || directed || ')' || where_c;
     RETURN query SELECT set_eq(fn_sql, dijkstra_sql, fn_sql);
@@ -122,13 +122,13 @@ BEGIN
     arr := 'ARRAY[1,2,3,4,5,6,7,8]';
 
     -- with reverse cost
-    inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edge_table';
+    inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edges';
     dijkstra_sql := 'SELECT ' || ret_c || ' FROM pgr_dijkstra($$' || inner_sql || '$$, ' || j || ', ' || arr || ', directed => ' || directed || ') ' || where_c;
     fn_sql := 'SELECT ' || ret_c || ' FROM '|| fn || '($$'        || inner_sql || '$$, ' || j || ', ' || arr || ', directed => ' || directed || ') ' || where_c;
     RETURN query SELECT set_eq(fn_sql, dijkstra_sql, fn_sql);
 
     -- no reverse cost
-    inner_sql := 'SELECT id, source, target, cost FROM edge_table';
+    inner_sql := 'SELECT id, source, target, cost FROM edges';
     dijkstra_sql := 'SELECT ' || ret_c || ' FROM pgr_dijkstra($$' || inner_sql || '$$, ' || j || ', ' || arr || ', directed => ' || directed || ') ' || where_c;
     fn_sql := 'SELECT ' || ret_c || ' FROM '|| fn || '($$'        || inner_sql || '$$, ' || j || ', ' || arr || ', directed => ' || directed || ') ' || where_c;
     RETURN query SELECT set_eq(fn_sql, dijkstra_sql, fn_sql);
@@ -156,13 +156,13 @@ BEGIN
   arr2 := 'ARRAY[9,10,11,12,13,14,15]';
 
   -- with reverse cost
-  inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edge_table';
+  inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edges';
   dijkstra_sql := 'SELECT ' || ret_c || ' FROM pgr_dijkstra($$' || inner_sql || '$$, ' || arr1 || ', ' || arr2 || ', directed => ' || directed || ') ' || where_c;
   fn_sql := 'SELECT ' || ret_c || ' FROM '|| fn || '($$'        || inner_sql || '$$, ' || arr1 || ', ' || arr2 || ', directed => ' || directed || ') ' || where_c;
   RETURN query SELECT set_eq(fn_sql, dijkstra_sql, fn_sql);
 
   -- no reverse cost
-  inner_sql := 'SELECT id, source, target, cost FROM edge_table';
+  inner_sql := 'SELECT id, source, target, cost FROM edges';
   dijkstra_sql := 'SELECT ' || ret_c || ' FROM pgr_dijkstra($$' || inner_sql || '$$, ' || arr1 || ', ' || arr2 || ', directed => ' || directed || ') ' || where_c;
   fn_sql := 'SELECT ' || ret_c || ' FROM '|| fn || '($$'        || inner_sql || '$$, ' || arr1 || ', ' || arr2 || ', directed => ' || directed || ') ' || where_c;
   RETURN query SELECT set_eq(fn_sql, dijkstra_sql, fn_sql);
@@ -184,15 +184,15 @@ DECLARE
 BEGIN
 
   -- with reverse cost
-  inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edge_table';
-  dijkstra_sql := 'SELECT ' || ret_c || ' FROM pgr_dijkstra($$' || inner_sql || '$$, $$SELECT source, target FROM combinations_table$$, directed => ' || directed || ') ' || where_c;
-  fn_sql := 'SELECT ' || ret_c || ' FROM ' || fn || '($$' || inner_sql || '$$, $$SELECT source, target FROM combinations_table$$, directed => ' || directed || ') ' || where_c;
+  inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edges';
+  dijkstra_sql := 'SELECT ' || ret_c || ' FROM pgr_dijkstra($$' || inner_sql || '$$, $$SELECT source, target FROM combinations$$, directed => ' || directed || ') ' || where_c;
+  fn_sql := 'SELECT ' || ret_c || ' FROM ' || fn || '($$' || inner_sql || '$$, $$SELECT source, target FROM combinations$$, directed => ' || directed || ') ' || where_c;
   RETURN query SELECT set_eq(fn_sql, dijkstra_sql, fn_sql);
 
   -- no reverse cost
-  inner_sql := 'SELECT id, source, target, cost FROM edge_table';
-  dijkstra_sql := 'SELECT ' || ret_c || ' FROM pgr_dijkstra($$' || inner_sql || '$$, $$SELECT source, target FROM combinations_table$$, directed => ' || directed || ') ' || where_c;
-  fn_sql := 'SELECT ' || ret_c || ' FROM ' || fn || '($$' || inner_sql || '$$, $$SELECT source, target FROM combinations_table$$, directed => ' || directed || ') ' || where_c;
+  inner_sql := 'SELECT id, source, target, cost FROM edges';
+  dijkstra_sql := 'SELECT ' || ret_c || ' FROM pgr_dijkstra($$' || inner_sql || '$$, $$SELECT source, target FROM combinations$$, directed => ' || directed || ') ' || where_c;
+  fn_sql := 'SELECT ' || ret_c || ' FROM ' || fn || '($$' || inner_sql || '$$, $$SELECT source, target FROM combinations$$, directed => ' || directed || ') ' || where_c;
   RETURN query SELECT set_eq(fn_sql, dijkstra_sql, fn_sql);
 
 END

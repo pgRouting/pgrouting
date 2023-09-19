@@ -56,7 +56,7 @@ do
     psql "${PGFLAGS}" -d "$PGDATABASE" -c "SELECT * FROM pgr_full_version();"
 
     psql "${PGFLAGS}" -d "$PGDATABASE" -X -q --set client_min_messages=WARNING --set ON_ERROR_STOP=1 --pset pager=off \
-        -f sampledata_pgtap.sql \
+        -f sampledata.sql \
         -f vrppdtw_data.sql \
         -f solomon_100_rc101.data.sql \
         -f innerQuery.sql \
@@ -65,11 +65,9 @@ do
         -f old_inner_styles.sql \
         -f no_crash_test.sql \
         -f alphaShapeTester.sql \
-        -f binaryBreadthFirstSearch_pgtap_data.sql \
         -f general_pgtap_tests.sql \
         -f no_crash_general.sql \
         -f dijkstra_pgtap_tests.sql \
-        -f tmp_net.sql \
         -f flow_pgtap_tests.sql \
         -f trsp_tests.sql \
         -f spanningtree.sql \

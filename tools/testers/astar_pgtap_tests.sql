@@ -39,7 +39,7 @@ BEGIN
       ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),
       ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
       ('{"","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
-      $$);
+      $$, 'Old column names');
 
     RETURN QUERY SELECT set_eq(
       format($$SELECT  proallargtypes FROM pg_proc WHERE proname = %1$L$$,fn),
@@ -49,7 +49,7 @@ BEGIN
       ('{25,2277,20,16,23,%1$s,%1$s,23,23,20,20,20,701,701}'::OID[]),
       ('{25,2277,2277,16,23,%1$s,%1$s,23,23,20,20,20,20,701,701}'::OID[]),
       ('{25,25,16,23,%1$s,%1$s,23,23,20,20,20,20,701,701}'::OID[])
-      $$,the_type_numb));
+      $$,the_type_numb), 'Old column types');
   ELSE
     RETURN QUERY SELECT set_eq(
       format($$SELECT  proargnames FROM pg_proc WHERE proname = %1$L$$,fn),
@@ -58,7 +58,7 @@ BEGIN
       ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
       ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),
       ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
-      $$);
+      $$, 'Before combinations column names');
 
     RETURN QUERY SELECT set_eq(
       format($$SELECT  proallargtypes FROM pg_proc WHERE proname = %1$L$$,fn),
@@ -67,7 +67,7 @@ BEGIN
       ('{25,20,2277,16,23,%1$s,%1$s,23,23,20,20,20,701,701}'::OID[]),
       ('{25,2277,20,16,23,%1$s,%1$s,23,23,20,20,20,701,701}'::OID[]),
       ('{25,2277,2277,16,23,%1$s,%1$s,23,23,20,20,20,20,701,701}'::OID[])
-      $$,the_type_numb));
+      $$,the_type_numb), 'Before combinations column types');
   END IF;
 
 END;

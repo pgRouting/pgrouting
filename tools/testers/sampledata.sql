@@ -93,36 +93,15 @@ CREATE TABLE pointsOfInterest(
     edge_id BIGINT,
     side CHAR,
     fraction FLOAT,
-    geom geometry,
-    newPoint geometry);
+    geom geometry);
 /* -- p2 */
-INSERT INTO pointsOfInterest (geom) VALUES
-(ST_POINT(1.8, 0.4)),
-(ST_POINT(4.2, 2.4)),
-(ST_POINT(2.6, 3.2)),
-(ST_POINT(0.3, 1.8)),
-(ST_POINT(2.9, 1.8)),
-(ST_POINT(2.2, 1.7));
-/* -- p3 */
-UPDATE pointsOfInterest AS p SET
-  edge_id = q.edge_id,
-  side = q.side,
-  fraction = q.fraction,
-  newPoint = ST_endPoint(q.edge)
-FROM (SELECT * FROM pgr_findCloseEdges(
-  $$SELECT id, geom FROM edges$$,
-  (SELECT array_agg(geom) FROM pointsOfInterest),
-  0.5, partial => false)) AS q
-WHERE p.geom = q.geom;
-/* -- p4 */
-UPDATE pointsOfInterest SET side = 'b'
-WHERE pid = 6;
-/* -- p5 */
-SELECT pid, edge_id, side, fraction,
-       ST_AsText(geom), ST_AsText(newPoint)
-FROM pointsOfInterest
-ORDER BY pid;
-/* -- p6 */
+INSERT INTO pointsOfInterest (edge_id, side, fraction, geom) VALUES
+(1, 'l' , 0.4, ST_POINT(1.8, 0.4)),
+(15, 'r' , 0.4, ST_POINT(4.2, 2.4)),
+(12, 'l' , 0.6, ST_POINT(2.6, 3.2)),
+(6, 'r' , 0.3, ST_POINT(0.3, 1.8)),
+(5, 'l' , 0.8, ST_POINT(2.9, 1.8)),
+(4, 'b' , 0.7, ST_POINT(2.2, 1.7));
 /* --POINTS CREATE end */
 
 /* --COMBINATIONS CREATE start */
