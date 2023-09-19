@@ -23,22 +23,22 @@ SELECT plan(4);
 
 PREPARE t1 AS
 SELECT * FROM pgr_pushrelabel(
-  'SELECT id, source, target, capacity, reverse_capacity FROM edge_table',
+  'SELECT id, source, target, capacity, reverse_capacity FROM edges',
   3, 5
 );
 PREPARE t2 AS
 SELECT * FROM pgr_pushrelabel(
-  'SELECT id, source, target, capacity, reverse_capacity FROM edge_table',
+  'SELECT id, source, target, capacity, reverse_capacity FROM edges',
   3, ARRAY[5]
 );
 PREPARE t3 AS
 SELECT * FROM pgr_pushrelabel(
-  'SELECT id, source, target, capacity, reverse_capacity FROM edge_table',
+  'SELECT id, source, target, capacity, reverse_capacity FROM edges',
   ARRAY[3], 5
 );
 PREPARE t4 AS
 SELECT * FROM pgr_pushrelabel(
-  'SELECT id, source, target, capacity, reverse_capacity FROM edge_table',
+  'SELECT id, source, target, capacity, reverse_capacity FROM edges',
   ARRAY[3], ARRAY[5]
 );
 

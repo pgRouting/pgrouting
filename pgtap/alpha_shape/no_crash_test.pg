@@ -19,11 +19,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(5);
 
 PREPARE alpha_sql AS
-SELECT the_geom FROM edge_table_vertices_pgr;
+SELECT geom FROM vertices;
 
 SELECT isnt_empty('alpha_sql', 'Should not be empty true to tests be meaningful');
 
@@ -38,7 +38,7 @@ DECLARE
 params TEXT[];
 subs TEXT[];
 BEGIN
-    params = ARRAY[$$(SELECT ST_Collect(the_geom) FROM edge_table_vertices_pgr)$$]::TEXT[];
+    params = ARRAY[$$(SELECT ST_Collect(geom) FROM vertices)$$]::TEXT[];
     subs = ARRAY[
     'NULL::geometry'
     ]::TEXT[];

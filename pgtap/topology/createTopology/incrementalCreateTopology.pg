@@ -25,7 +25,15 @@ BEGIN;
 SET client_min_messages TO warning;
 SELECT PLAN(31);
 
-SELECT * INTO incr_table FROM edge_table WHERE id < 9;
+SELECT id, source, target, cost, reverse_cost, geom AS the_geom, NULL::TEXT AS dir, x1,x2,y1,y2
+INTO incr_table FROM edges WHERE id < 9;
+UPDATE incr_table SET
+dir = CASE WHEN (cost>0 AND reverse_cost>0) THEN 'B'   -- both ways
+           WHEN (cost>0 AND reverse_cost<0) THEN 'FT'  -- direction of the LINESSTRING
+           WHEN (cost<0 AND reverse_cost>0) THEN 'TF'  -- reverse direction of the LINESTRING
+           ELSE '' END;
+
+
 UPDATE incr_table SET source = NULL, target = NULL;                                -- unknown
 SELECT is((SELECT count(*)::INTEGER FROM incr_table), 8, 'initial table has 8 edges');
 
@@ -44,8 +52,13 @@ SELECT is((SELECT count(*)::INTEGER FROM incr_table_vertices_pgr WHERE chk is NU
 SELECT is((SELECT count(*)::INTEGER FROM incr_table_vertices_pgr WHERE ein is NULL), 8, '8 vertices are missing ein');
 SELECT is((SELECT count(*)::INTEGER FROM incr_table_vertices_pgr WHERE eout is NULL), 8, '8 vertices are missing eout');
 
-INSERT INTO incr_table(id, dir, cost, reverse_cost, x1, y1, x2, y2, the_geom)
-SELECT  id, dir, cost, reverse_cost, x1, y1, x2, y2, the_geom FROM edge_table WHERE id >= 9;
+INSERT INTO incr_table(id, cost, reverse_cost, x1, y1, x2, y2, the_geom)
+SELECT  id,cost, reverse_cost, x1, y1, x2, y2, geom FROM edges WHERE id >= 9;
+UPDATE incr_table SET
+dir = CASE WHEN (cost>0 AND reverse_cost>0) THEN 'B'   -- both ways
+           WHEN (cost>0 AND reverse_cost<0) THEN 'FT'  -- direction of the LINESSTRING
+           WHEN (cost<0 AND reverse_cost>0) THEN 'TF'  -- reverse direction of the LINESTRING
+           ELSE '' END;
 SELECT is((SELECT count(*)::INTEGER FROM incr_table), 18, 'After inserting table has 18 edges');
 
 SELECT is((SELECT count(*)::INTEGER FROM incr_table WHERE source is NULL), 10, '10 edges are missing source');

@@ -21,14 +21,14 @@ BEGIN;
 
 SELECT plan(9);
 
-UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
+UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
 --
 PREPARE kruskal1 AS
 SELECT *
 FROM pgr_kruskalDD(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table WHERE id > 18 ORDER BY id',
+    FROM edges WHERE id > 18 ORDER BY id',
     21, 3.5
 );
 
@@ -41,7 +41,7 @@ PREPARE kruskal2 AS
 SELECT *
 FROM pgr_kruskalDD(
     'SELECT id, source, target, cost
-     FROM edge_table WHERE id > 18 ORDER BY id',
+     FROM edges WHERE id > 18 ORDER BY id',
     ARRAY[21, 45],
     3.5
 );
@@ -59,7 +59,7 @@ PREPARE kruskal3 AS
 SELECT *
 FROM pgr_kruskalDD(
     'SELECT id, source, target, cost, reverse_cost
-     FROM edge_table ORDER BY id',
+     FROM edges ORDER BY id',
     21, 3
 );
 
@@ -69,50 +69,50 @@ SELECT set_eq('kruskal3',
 
 --
 PREPARE kruskal4 AS
-SELECT seq, start_vid, depth, node, edge, agg_cost <= 3.5
+SELECT seq, start_vid, depth, edge, agg_cost <= 3.5
 FROM pgr_kruskalDD(
     'SELECT id, source, target, cost
-     FROM edge_table ORDER BY id',
-    ARRAY[21, 4],
+     FROM edges ORDER BY id',
+    ARRAY[21, 15],
     3.5
 );
 
 SELECT set_eq('kruskal4',
     $$VALUES
-        (1,4,0,4,-1,true),
-        (2,4,1,9,16,true),
-        (3,4,2,6,9,true),
-        (4,4,3,3,5,true),
-        (5,4,3,5,8,true),
-        (6,4,3,11,11,true),
-        (7,21,0,21,-1,true)
+        (1,15,0,-1,true),
+        (2,15,1,16,true),
+        (3,15,2,9,true),
+        (4,15,3,5,true),
+        (5,15,3,8,true),
+        (6,15,3,11,true),
+        (7,21,0,-1,true)
     $$,
     '4: Root not in Graph -> Only root vertex is returned, Root in graph -> spanning tree is returned');
 
 
 --
 PREPARE kruskal5 AS
-SELECT seq, start_vid, depth, node, edge, agg_cost <= 3.5
+SELECT seq, start_vid, depth, edge, agg_cost <= 3.5
 FROM pgr_kruskalDD(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table ORDER BY id',
+    FROM edges ORDER BY id',
     0, 3.5
 );
 
 SELECT set_eq('kruskal5',
     $$VALUES
-        (1,1,0,1,-1,true),
-        (2,1,1,2,1,true),
-        (3,1,2,3,2,true),
-        (4,1,3,4,3,true),
-        (5,1,3,6,5,true),
-        (6,1,2,5,4,true),
-        (7,1,3,8,7,true),
-        (8,1,3,10,10,true),
-        (9,14,0,14,-1,true),
-        (10,14,1,15,17,true),
-        (11,16,0,16,-1,true),
-        (12,16,1,17,18,true)
+        (1,5,0,-1,true),
+        (2,5,1,1,true),
+        (3,5,2,2,true),
+        (4,5,3,3,true),
+        (5,5,3,5,true),
+        (6,5,2,4,true),
+        (7,5,3,7,true),
+        (8,5,3,10,true),
+        (9,2,0,-1,true),
+        (10,2,1,17,true),
+        (11,13,0,-1,true),
+        (12,13,1,18,true)
     $$,
     '5: root = 0 -> forset (with random root vertices)');
 
@@ -121,8 +121,8 @@ PREPARE kruskal6 AS
 SELECT *
 FROM pgr_kruskalDD(
     'SELECT id, source, target, cost, reverse_cost
-     FROM edge_table ORDER BY id',
-    4, -3
+     FROM edges ORDER BY id',
+    15, -3
 );
 
 SELECT throws_ok('kruskal6',
@@ -136,8 +136,8 @@ PREPARE kruskal7 AS
 SELECT *
 FROM pgr_kruskalDD(
     'SELECT id, source, target, cost, reverse_cost
-     FROM edge_table ORDER BY id',
-    ARRAY[4, 10], -3
+     FROM edges ORDER BY id',
+    ARRAY[15, 8], -3
 );
 
 SELECT throws_ok('kruskal7',
@@ -150,41 +150,41 @@ PREPARE kruskal8 AS
 SELECT *
 FROM pgr_kruskalDD(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table ORDER BY id',
-    4, 0
+    FROM edges ORDER BY id',
+    15, 0
 );
 
 SELECT set_eq('kruskal8',
-    $$VALUES (1,0,4,4,-1,0,0) $$,
+    $$VALUES (1,0,15,15,-1,0,0) $$,
     '8: 0 distance -> Only root vertex is returned');
 
 
 --
 PREPARE kruskal9 AS
-SELECT seq, depth, start_vid, node, edge
+SELECT seq, depth, edge
 FROM pgr_kruskalDD(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table ORDER BY id',
-    4, 'Infinity'
+    FROM edges ORDER BY id',
+    15, 'Infinity'
 );
 
 SELECT set_eq('kruskal9',
     $$VALUES
-       (1,  0,      4, 4,-1),
-       (2,  1,      4, 3, 3),
-       (3,  2,      4, 2, 2),
-       (4,  3,      4, 1, 1),
-       (5,  3,      4, 5, 4),
-       (6,  4,      4, 8, 7),
-       (7,  5,      4, 7, 6),
-       (8,  4,      4,10,10),
-       (9,  5,      4,13,14),
-      (10,  2,      4, 6, 5),
-      (11,  3,      4, 9, 9),
-      (12,  3,      4,11,11),
-      (13,  4,      4,12,13)
+       (1,  0,-1),
+       (2,  1, 3),
+       (3,  2, 2),
+       (4,  3, 1),
+       (5,  3, 4),
+       (6,  4, 7),
+       (7,  5, 6),
+       (8,  4,10),
+       (9,  5,14),
+      (10,  2, 5),
+      (11,  3, 9),
+      (12,  3,11),
+      (13,  4,13)
     $$,
-    '9: 0 distance -> Only root vertex is returned');
+    '9: Infinity distance');
 
 
 SELECT * FROM finish();

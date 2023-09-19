@@ -22,8 +22,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 SET client_min_messages TO WARNING;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(2);
+
+DROP TABLE IF EXISTS edge_table;
+SELECT *, NULL::TEXT AS dir INTO edge_table FROM edges;
+SELECT pgr_createVerticesTable('edge_table', 'geom');
+
+UPDATE edge_table SET
+dir = CASE WHEN (cost>0 AND reverse_cost>0) THEN 'B'   -- both ways
+           WHEN (cost>0 AND reverse_cost<0) THEN 'FT'  -- direction of the LINESSTRING
+           WHEN (cost<0 AND reverse_cost>0) THEN 'TF'  -- reverse direction of the LINESTRING
+           ELSE '' END;
 
 SELECT pgr_analyzeOneway('edge_table',
     ARRAY['', 'B', 'TF'],

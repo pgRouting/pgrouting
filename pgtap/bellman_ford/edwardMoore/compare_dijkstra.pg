@@ -21,7 +21,7 @@ BEGIN;
 
 SELECT CASE WHEN min_version('3.1.1') THEN plan(1300) ELSE plan(1) END;
 
-UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
+UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
 CREATE or REPLACE FUNCTION edwardMoore_compare_dijkstra(cant INTEGER default 17)
 RETURNS SETOF TEXT AS

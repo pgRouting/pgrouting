@@ -19,38 +19,38 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(6);
 
 PREPARE noflag AS
 SELECT * FROM pgr_maxCardinalityMatch(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table'
+  'SELECT id, source, target, cost, reverse_cost FROM edges'
 );
 
 PREPARE mcm_dir AS
 SELECT * FROM pgr_maxCardinalityMatch(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   directed := true
 );
 PREPARE mcm_undir AS
 SELECT * FROM pgr_maxCardinalityMatch(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   directed := false
 );
 
 PREPARE mcm_noflag AS
 SELECT * FROM pgr_maxCardinalityMatch(
-  'SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table'
+  'SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edges'
 );
 
 PREPARE mcm_dir1 AS
 SELECT * FROM pgr_maxCardinalityMatch(
-  'SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table',
+  'SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edges',
   directed := true
 );
 PREPARE mcm_undir1 AS
 SELECT * FROM pgr_maxCardinalityMatch(
-  'SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table',
+  'SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edges',
   directed := false
 );
 

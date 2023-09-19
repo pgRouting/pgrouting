@@ -19,11 +19,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT CASE WHEN min_version('3.4.0') THEN plan(32) ELSE plan(2) END;
 
 PREPARE edges AS
-SELECT id FROM edge_table;
+SELECT id FROM edges;
 
 SELECT isnt_empty('edges', 'Should be not empty to tests be meaningful');
 
@@ -42,13 +42,13 @@ BEGIN
 
   PREPARE vert AS
   SELECT id, in_edges, out_edges
-  FROM pgr_extractVertices('SELECT id, the_geom AS geom FROM edge_table');
+  FROM pgr_extractVertices('SELECT id, geom FROM edges');
 
   RETURN QUERY SELECT isnt_empty('vert', 'Should be not empty to tests be meaningful');
 
   params = ARRAY[
-  '$$SELECT * FROM edge_table$$',
-  '$$SELECT * FROM pgr_extractVertices($q$ SELECT id, the_geom AS geom FROM edge_table $q$) $$'
+  '$$SELECT * FROM edges$$',
+  '$$SELECT * FROM pgr_extractVertices($q$ SELECT id, geom FROM edges $q$) $$'
   ]::TEXT[];
 
   subs = ARRAY[
@@ -64,10 +64,10 @@ BEGIN
   params[2] := '$$vert$$';
   RETURN query SELECT * FROM no_crash_test('pgr_degree', params, subs);
 
-  params[2] := '$$SELECT id, in_edges FROM pgr_extractVertices($q$ SELECT id, the_geom AS geom FROM edge_table $q$) $$';
+  params[2] := '$$SELECT id, in_edges FROM pgr_extractVertices($q$ SELECT id, geom FROM edges $q$) $$';
   RETURN query SELECT * FROM no_crash_test('pgr_degree', params, subs);
 
-  params[2] := '$$SELECT id, out_edges FROM pgr_extractVertices($q$ SELECT id, the_geom AS geom FROM edge_table $q$) $$';
+  params[2] := '$$SELECT id, out_edges FROM pgr_extractVertices($q$ SELECT id, geom FROM edges $q$) $$';
   RETURN query SELECT * FROM no_crash_test('pgr_degree', params, subs);
 
 END

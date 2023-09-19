@@ -23,7 +23,7 @@ BEGIN;
 -- Tentatively trsp will accepts ANY-INTEGER and ANY-NUMERICAL on 4.0.0
 -- Adjust style_dijkstra_trsp -> style_dijkstra when that happens
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(324);
 SET client_min_messages TO ERROR;
 

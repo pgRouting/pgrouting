@@ -19,44 +19,44 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(6);
 
 PREPARE stoerWagner1 AS
 SELECT * FROM pgr_stoerWagner(
   'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table ORDER BY id'
+  FROM edges ORDER BY id'
 );
 
 PREPARE stoerWagner2 AS
 SELECT *
 FROM pgr_stoerWagner(
-    'SELECT id, source, target, cost
-       FROM edge_table WHERE id > 18 ORDER BY id'
+  'SELECT id, source, target, cost
+  FROM edges WHERE id > 18 ORDER BY id'
 );
 
 PREPARE stoerWagner3 AS
 SELECT *
 FROM pgr_stoerWagner(
-    'SELECT id, source, target, cost, reverse_cost
-       FROM edge_table ORDER BY id'
+  'SELECT id, source, target, cost, reverse_cost
+  FROM edges ORDER BY id'
 ) WHERE cost < 0;
 
 PREPARE stoerWagner4 AS
 SELECT * FROM pgr_stoerWagner(
-$$
- SELECT id, source, target, cost, reverse_cost FROM edge_table
-    WHERE source = ANY (ARRAY(SELECT node FROM pgr_connectedComponents(
-                            'SELECT id, source, target, cost, reverse_cost FROM edge_table ')
-                        WHERE component = 2)
-                       )
-                   OR
-          target = ANY (ARRAY(SELECT node FROM pgr_connectedComponents(
-                            'SELECT id, source, target, cost, reverse_cost FROM edge_table ')
-                        WHERE component = 2)
-                       )
-$$
- );
+  $$
+  SELECT id, source, target, cost, reverse_cost FROM edges
+  WHERE source = ANY (ARRAY(SELECT node FROM pgr_connectedComponents(
+        'SELECT id, source, target, cost, reverse_cost FROM edges ')
+      WHERE component = 6)
+  )
+  OR
+  target = ANY (ARRAY(SELECT node FROM pgr_connectedComponents(
+        'SELECT id, source, target, cost, reverse_cost FROM edges ')
+      WHERE component = 6)
+  )
+  $$
+);
 
 SELECT is_empty('stoerWagner1', '1: Disconnected graph');
 SELECT is_empty('stoerWagner2', '2: No edge');
@@ -66,31 +66,31 @@ SELECT is_empty('stoerWagner4', '4: Wrong component');
 PREPARE stoerWagner5 AS
 SELECT *
 FROM pgr_stoerWagner(
-    'SELECT id, source, target, cost, reverse_cost
-       FROM edge_table where id = 17 ORDER BY id'
+  'SELECT id, source, target, cost, reverse_cost
+  FROM edges where id = 17 ORDER BY id'
 );
 
 PREPARE stoerWagner6 AS
 SELECT * FROM pgr_stoerWagner(
-$$
- SELECT id, source, target, cost, reverse_cost FROM edge_table
-    WHERE source = ANY (ARRAY(SELECT node FROM pgr_connectedComponents(
-                            'SELECT id, source, target, cost, reverse_cost FROM edge_table ')
-                        WHERE component = 14)
-                       )
-                   OR
-          target = ANY (ARRAY(SELECT node FROM pgr_connectedComponents(
-                            'SELECT id, source, target, cost, reverse_cost FROM edge_table ')
-                        WHERE component = 14)
-                       )
-$$
- );
+  $$
+  SELECT id, source, target, cost, reverse_cost FROM edges
+  WHERE source = ANY (ARRAY(SELECT node FROM pgr_connectedComponents(
+        'SELECT id, source, target, cost, reverse_cost FROM edges ')
+      WHERE component = 2)
+  )
+  OR
+  target = ANY (ARRAY(SELECT node FROM pgr_connectedComponents(
+        'SELECT id, source, target, cost, reverse_cost FROM edges ')
+      WHERE component = 2)
+  )
+  $$
+);
 
 PREPARE stoerWagner7 AS
 SELECT *
 FROM pgr_stoerWagner(
-    'SELECT id, source, target, cost, reverse_cost
-       FROM edge_table WHERE id < 17 ORDER BY id'
+  'SELECT id, source, target, cost, reverse_cost
+  FROM edges WHERE id < 17 ORDER BY id'
 );
 
 SELECT set_eq('stoerWagner5', 'stoerWagner6', '5: Mincut of edge 17');

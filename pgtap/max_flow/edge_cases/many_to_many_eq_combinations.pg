@@ -85,49 +85,49 @@ BEGIN
   RETURN QUERY
   SELECT * FROM flow_combinations_eq_test(
     'pgr_maxFlow',
-    'SELECT id, source, target, capacity, reverse_capacity FROM edge_table'
+    'SELECT id, source, target, capacity, reverse_capacity FROM edges'
   );
 
   -- test pgr_boykovKolmogorov
   RETURN QUERY
   SELECT * FROM flow_combinations_eq_test(
     'pgr_boykovKolmogorov',
-    'SELECT id, source, target, capacity, reverse_capacity FROM edge_table'
+    'SELECT id, source, target, capacity, reverse_capacity FROM edges'
   );
 
   -- test pgr_edmondsKarp
   RETURN QUERY
   SELECT * FROM flow_combinations_eq_test(
     'pgr_edmondsKarp',
-    'SELECT id, source, target, capacity, reverse_capacity FROM edge_table'
+    'SELECT id, source, target, capacity, reverse_capacity FROM edges'
   );
 
   -- test pgr_pushRelabel
   RETURN QUERY
   SELECT * FROM flow_combinations_eq_test(
     'pgr_pushRelabel',
-    'SELECT id, source, target, capacity, reverse_capacity FROM edge_table'
+    'SELECT id, source, target, capacity, reverse_capacity FROM edges'
   );
 
   -- test pgr_edgeDisjointPaths
   RETURN QUERY
   SELECT * FROM flow_combinations_eq_test(
     'pgr_edgeDisjointPaths',
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table'
+    'SELECT id, source, target, cost, reverse_cost FROM edges'
   );
 
   -- test pgr_maxFlowMinCost
   RETURN QUERY
   SELECT * FROM flow_combinations_eq_test(
     'pgr_maxFlowMinCost',
-    'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost FROM edge_table'
+    'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost FROM edges'
   );
 
   -- test pgr_maxFlowMinCost_Cost
   RETURN QUERY
   SELECT * FROM flow_combinations_eq_test(
     'pgr_maxFlowMinCost_Cost',
-    'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost FROM edge_table'
+    'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost FROM edges'
   );
 
 END;
