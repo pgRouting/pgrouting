@@ -29,7 +29,7 @@ ELSE plan(1156) END;
 
 SET extra_float_digits = -3;
 
-UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
+UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
 CREATE or REPLACE FUNCTION withPointsCompareDijkstra(cant INTEGER default 17)
 RETURNS SETOF TEXT AS
@@ -54,7 +54,7 @@ BEGIN
         FOR j IN 1.. cant LOOP
 
             -- DIRECTED WITH REVERSE COST
-            inner_sql := 'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table';
+            inner_sql := 'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges';
             dijkstra_sql := 'SELECT ' || result_columns || ' FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', directed => true)';
 
@@ -63,7 +63,7 @@ BEGIN
             RETURN query SELECT set_eq(withPoints_sql, dijkstra_sql, withPoints_sql);
 
             -- DIRECTED WITHOUT REVERSE COST
-            inner_sql := 'SELECT id, source, target, cost, x1, y1, x2, y2 FROM edge_table';
+            inner_sql := 'SELECT id, source, target, cost, x1, y1, x2, y2 FROM edges';
             dijkstra_sql := 'SELECT ' || result_columns || ' FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', directed => true)';
 
@@ -73,7 +73,7 @@ BEGIN
 
 
             -- UNDIRECTED WITH REVERSE COST
-            inner_sql := 'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table';
+            inner_sql := 'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges';
             dijkstra_sql := 'SELECT ' || result_columns || ' FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', directed => false)';
 
@@ -82,7 +82,7 @@ BEGIN
             RETURN query SELECT set_eq(withPoints_sql, dijkstra_sql, withPoints_sql);
 
             -- UNDIRECTED WITHOUT REVERSE COST
-            inner_sql := 'SELECT id, source, target, cost, x1, y1, x2, y2 FROM edge_table';
+            inner_sql := 'SELECT id, source, target, cost, x1, y1, x2, y2 FROM edges';
             dijkstra_sql := 'SELECT ' || result_columns || ' FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', directed => false)';
 

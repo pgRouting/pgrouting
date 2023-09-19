@@ -19,12 +19,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(84);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT plan(252);
 
--- ONE TO ONE
-SELECT style_dijkstra('pgr_withPointsKSP(', ', $$SELECT * from pointsOfInterest$$, 2, 3, 2, true)');
-SELECT innerquery_points('pgr_withPointsKSP($$SELECT * FROM edge_table$$,', ', 2, 3, 2, true)');
+CREATE OR REPLACE FUNCTION withPointsKSP_inner_query() RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+  -- ONE TO ONE
+  RETURN QUERY SELECT style_dijkstra('pgr_withPointsKSP(', ', $$SELECT * from pointsOfInterest$$, 5, 10, 2, driving_side => $$r$$, directed => true)');
+  RETURN QUERY SELECT innerquery_points('pgr_withPointsKSP($$SELECT * FROM edges$$,', ', 5, 10, 2, driving_side => $$r$$, directed => true)');
+  RETURN QUERY SELECT style_dijkstra('pgr_withPointsKSP(', ', $$SELECT * from pointsOfInterest$$, 5, 10, 2, true, true, $$r$$)');
+  RETURN QUERY SELECT innerquery_points('pgr_withPointsKSP($$SELECT * FROM edges$$,', ', 5, 10, 2, true, true, $$r$$)');
+  RETURN QUERY SELECT style_dijkstra('pgr_withPointsKSP(', ', $$SELECT * from pointsOfInterest$$, 5, 10, 2, true)');
+  RETURN QUERY SELECT innerquery_points('pgr_withPointsKSP($$SELECT * FROM edges$$,', ', 5, 10, 2, true)');
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE;
 
+SELECT withPointsKSP_inner_query();
 SELECT finish();
 ROLLBACK;

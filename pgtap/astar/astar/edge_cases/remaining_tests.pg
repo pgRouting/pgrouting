@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(116);
 SET client_min_messages TO ERROR;
 
@@ -75,7 +75,7 @@ BEGIN
         END IF;
         start_sql = start_sql || p || ', ';
     END LOOP;
-    end_sql = ' FROM edge_table $$, 2, 3, true)';
+    end_sql = ' FROM edges $$, 2, 3, true)';
 
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
@@ -112,7 +112,7 @@ BEGIN
         END IF;
         start_sql = start_sql || p || ', ';
     END LOOP;
-    end_sql = ' FROM edge_table $$, 2, 3, true)';
+    end_sql = ' FROM edges $$, 2, 3, true)';
 
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
@@ -191,7 +191,7 @@ SELECT test_anyNumerical('pgr_astar',
     'y2');
 
 SELECT throws_ok(
-    $$SELECT * FROM pgr_astar('SELECT * FROM edge_table',
+    $$SELECT * FROM pgr_astar('SELECT * FROM edges',
         2, 3,
         true, 6, 1, 1)$$,
     'XX000',
@@ -200,7 +200,7 @@ SELECT throws_ok(
 );
 
 SELECT throws_ok(
-    $$SELECT * FROM pgr_astar('SELECT * FROM edge_table',
+    $$SELECT * FROM pgr_astar('SELECT * FROM edges',
         2, 3,
         true, -1, 1, 1)$$,
     'XX000',
@@ -209,7 +209,7 @@ SELECT throws_ok(
 );
 
 SELECT throws_ok(
-    $$SELECT * FROM pgr_astar('SELECT * FROM edge_table',
+    $$SELECT * FROM pgr_astar('SELECT * FROM edges',
         2, 3,
         true, 0, 0, 1)$$,
     'XX000',
@@ -218,7 +218,7 @@ SELECT throws_ok(
 );
 
 SELECT throws_ok(
-    $$SELECT * FROM pgr_astar('SELECT * FROM edge_table',
+    $$SELECT * FROM pgr_astar('SELECT * FROM edges',
         2, 3,
         true, 0, -1.4, 1)$$,
     'XX000',
@@ -227,7 +227,7 @@ SELECT throws_ok(
 );
 
 SELECT throws_ok(
-    $$SELECT * FROM pgr_astar('SELECT * FROM edge_table',
+    $$SELECT * FROM pgr_astar('SELECT * FROM edges',
         2, 3,
         true, 0, 1, -3)$$,
     'XX000',
@@ -235,7 +235,7 @@ SELECT throws_ok(
     'SHOULD THROW because epsilon < 0'
 );
 SELECT throws_ok(
-    $$SELECT * FROM pgr_astar('SELECT * FROM edge_table',
+    $$SELECT * FROM pgr_astar('SELECT * FROM edges',
         2, 3,
         true, 0, 1, 0.9)$$,
     'XX000',

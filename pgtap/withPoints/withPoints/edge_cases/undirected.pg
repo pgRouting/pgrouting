@@ -43,10 +43,10 @@ INTO test1
 FROM
 (VALUES
     (   1 ,   -1 ,    1 ,  0.6 ,        0),
-    (   2 ,    2 ,    4 ,    1 ,      0.6),
-    (   3 ,    5 ,    7 ,    1 ,      1.6),
-    (   4 ,    8 ,    6 ,    1 ,      2.6),
-    (   5 ,    7 ,   -1 ,    0 ,      3.6)
+    (   2 ,    6 ,    4 ,    1 ,      0.6),
+    (   3 ,    7 ,    7 ,    1 ,      1.6),
+    (   4 ,    3 ,    6 ,    1 ,      2.6),
+    (   5 ,    1 ,   -1 ,    0 ,      3.6)
 ) AS t (seq, node, edge, cost, agg_cost)
 ORDER BY seq;
 
@@ -54,9 +54,9 @@ ORDER BY seq;
 
 PREPARE q1 AS
 SELECT  node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    -1, 7, driving_side := 'b', details := false, directed:=false)
+    -1, 1, driving_side := 'b', details := false, directed:=false)
 ORDER BY seq;
 
 SELECT set_eq('q1',
@@ -69,9 +69,9 @@ SELECT set_eq('q1',
 
 PREPARE q2 AS
 SELECT  node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    -1, 7, driving_side := 'r', details := false, directed:=false)
+    -1, 1, driving_side := 'r', details := false, directed:=false)
 ORDER BY seq;
 
 
@@ -83,9 +83,9 @@ SELECT set_eq('q2',
 
 PREPARE q3 AS
 SELECT  node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    -1, 7, driving_side := 'l', details := false, directed:=false)
+    -1, 1, driving_side := 'l', details := false, directed:=false)
 ORDER BY seq;
 
 
@@ -105,11 +105,11 @@ SELECT
 INTO test2
 FROM
 (VALUES
-    (   1 ,   12 ,   15 , 1    , 0),
-    (   2 ,    9 ,   16 , 1    , 1),
-    (   3 ,    4 ,    3 , 1    , 2),
-    (   4 ,    3 ,    2 , 1    , 3),
-    (   5 ,    2 ,    1 , 0.6  , 4),
+    (   1 ,   17 ,   15 , 1    , 0),
+    (   2 ,   16 ,   16 , 1    , 1),
+    (   3 ,   15 ,   3 , 1    , 2),
+    (   4 ,   10 ,    2 , 1    , 3),
+    (   5 ,    6 ,    1 , 0.6  , 4),
     (   6 ,   -1 ,   -1 , 0    , 4.6)
 ) AS t (seq, node, edge, cost, agg_cost)
 ORDER BY seq;
@@ -118,9 +118,9 @@ ORDER BY seq;
 
 PREPARE q4 AS
 SELECT  node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    12, -1, driving_side := 'b', details := false, directed:=false)
+    17, -1, driving_side := 'b', details := false, directed:=false)
 ORDER BY seq;
 
 SELECT set_eq('q4',
@@ -133,9 +133,9 @@ SELECT set_eq('q4',
 
 PREPARE q5 AS
 SELECT  node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    12, -1, driving_side := 'r', details := false, directed:=false)
+    17, -1, driving_side := 'r', details := false, directed:=false)
 ORDER BY seq;
 
 
@@ -147,9 +147,9 @@ SELECT set_eq('q5',
 
 PREPARE q6 AS
 SELECT  node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    12, -1, driving_side := 'l', details := false, directed:=false)
+    17, -1, driving_side := 'l', details := false, directed:=false)
 ORDER BY seq;
 
 
@@ -171,27 +171,27 @@ SELECT
 INTO test3
 FROM
 (VALUES
-   (     1 ,    1 , 0.4  , 0),
+   (     5 ,    1 , 0.4  , 0),
    (    -1 ,    1 , 0.6  , 0.4),
-   (     2 ,    4 , 0.7  , 1),
+   (     6 ,    4 , 0.7  , 1),
    (    -6 ,    4 , 0.3  , 1.7),
-   (     5 ,    7 , 1    , 2),
-   (     8 ,    6 , 0.7  , 3),
+   (     7 ,    7 , 1    , 2),
+   (     3 ,    6 , 0.7  , 3),
    (    -4 ,    6 , 0.3  , 3.7),
-   (     7 ,   -1 , 0    , 4)
+   (     1 ,   -1 , 0    , 4)
 ) AS t (node, edge, cost, agg_cost);
 
 -------- both driving sides
 
 PREPARE q7 AS
 SELECT  node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    1, 7, driving_side := 'b', details := true, directed:=false);
+    5, 1, driving_side := 'b', details := true, directed:=false);
 
 SELECT set_eq('q7',
     $$SELECT  node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM test3$$,
-    '1, 7, driving_side := b, details := true, directed:=false');
+    '5, 1, driving_side := b, details := true, directed:=false');
 
 
 
@@ -200,29 +200,29 @@ SELECT set_eq('q7',
 
 PREPARE q8 AS
 SELECT  node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    1, 7, driving_side := 'r', details := true, directed:=false)
+    5, 1, driving_side := 'r', details := true, directed:=false)
 ORDER BY seq;
 
 
 SELECT set_eq('q8',
     $$SELECT  node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM test3$$,
-    '1, 7, driving_side := r, details := true, directed:=false');
+    '5, 1, driving_side := r, details := true, directed:=false');
 
 -------- left driving side
 
 PREPARE q9 AS
 SELECT  node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    1, 7, driving_side := 'l', details := true, directed:=false)
+    5, 1, driving_side := 'l', details := true, directed:=false)
 ORDER BY seq;
 
 
 SELECT set_eq('q9',
     $$SELECT  node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM test3$$,
-    '1, 7, driving_side := l, details := true, directed:=false');
+    '5, 1, driving_side := l, details := true, directed:=false');
 
 
 ------------------
@@ -235,12 +235,12 @@ SELECT
 INTO test4
 FROM
 (VALUES
-    (  12 ,   15 , 0.6  , 0),
+    (  17 ,   15 , 0.6  , 0),
     (  -2 ,   15 , 0.4  , 0.6),
-    (   9 ,   16 , 1    , 1),
-    (   4 ,    3 , 1    , 2),
-    (   3 ,    2 , 1    , 3),
-    (   2 ,    1 , 0.6  , 4),
+    (   16 ,   16 , 1    , 1),
+    (   15 ,    3 , 1    , 2),
+    (   10 ,    2 , 1    , 3),
+    (   6 ,    1 , 0.6  , 4),
     (  -1 ,   -1 , 0    , 4.6)
 ) AS t (node, edge, cost, agg_cost);
 
@@ -248,13 +248,13 @@ FROM
 
 PREPARE q10 AS
 SELECT  node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    12, -1, driving_side := 'b', details := true, directed:=false);
+    17, -1, driving_side := 'b', details := true, directed:=false);
 
 SELECT set_eq('q10',
     $$SELECT  node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM test4$$,
-    '12, -1, driving_side := b, details := true, directed:=false');
+    '17, -1, driving_side := b, details := true, directed:=false');
 
 
 
@@ -262,27 +262,27 @@ SELECT set_eq('q10',
 
 PREPARE q11 AS
 SELECT  node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    12, -1, driving_side := 'r', details := true, directed:=false);
+    17, -1, driving_side := 'r', details := true, directed:=false);
 
 
 SELECT set_eq('q11',
     $$SELECT  node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM test4$$,
-    '12, -1, driving_side := r, details := true, directed:=false');
+    '17, -1, driving_side := r, details := true, directed:=false');
 
 -------- left driving side
 
 PREPARE q12 AS
 SELECT  node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM pgr_withPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-    12, -1, driving_side := 'l', details := true, directed:=false);
+    17, -1, driving_side := 'l', details := true, directed:=false);
 
 
 SELECT set_eq('q12',
     $$SELECT  node, edge, round(cost::numeric, 12) AS cost, round(agg_cost::numeric, 12) AS agg_cost FROM test4$$,
-    '12, -1, driving_side := l, details := true, directed:=false');
+    '17, -1, driving_side := l, details := true, directed:=false');
 
 
 

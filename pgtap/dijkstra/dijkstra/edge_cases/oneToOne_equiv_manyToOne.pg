@@ -22,7 +22,7 @@ BEGIN;
 
 SELECT plan(18);
 
-UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
+UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
 
 create or REPLACE FUNCTION foo(cant INTEGER default 18 )
@@ -44,15 +44,15 @@ BEGIN
                 sql_Many := sql_Many ||', ';
     END IF;
     sql_OneToOne := sql_OneToOne ||
-    '( SELECT seq, ' || j || ' as start_vid, ' || i || ' as end_vid, node, edge, round(cost::numeric,8) AS cost, round(agg_cost::numeric,8) AS agg_cost   FROM pgr_dijkstra(
-            ''SELECT id, source, target, cost, reverse_cost FROM edge_table'', '
+    '( SELECT seq, ' || j || ' AS start_vid, ' || i || ' AS end_vid, node, edge, round(cost::numeric,8) AS cost, round(agg_cost::numeric,8) AS agg_cost   FROM pgr_dijkstra(
+            ''SELECT id, source, target, cost, reverse_cost FROM edges'', '
             || j || ', ' || i ||
             ') )';
     sql_Many := sql_Many || j ;
 END LOOP;
 sql_Many :=
-' SELECT path_seq, start_vid, ' || i || ' as end_vid, node, edge, round(cost::numeric,8) AS cost, round(agg_cost::numeric,8) AS agg_cost  FROM pgr_dijkstra(
-    ''SELECT id, source, target, cost, reverse_cost FROM edge_table'', '
+' SELECT path_seq, start_vid, ' || i || ' AS end_vid, node, edge, round(cost::numeric,8) AS cost, round(agg_cost::numeric,8) AS agg_cost  FROM pgr_dijkstra(
+    ''SELECT id, source, target, cost, reverse_cost FROM edges'', '
     ' ARRAY[' || sql_Many || '], ' || i ||
     ' ) ';
 

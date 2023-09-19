@@ -22,7 +22,7 @@ BEGIN;
 
 SET client_min_messages TO WARNING;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(30);
 
 
@@ -35,7 +35,7 @@ SELECT pg_typeof(seq)::text AS t1, pg_typeof(path_id)::text AS path_id, pg_typeo
     pg_typeof(route_agg_cost)::TEXT AS t9
     FROM (
         SELECT * FROM pgr_dijkstravia(
-            'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT FROM edge_table',
+            'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT FROM edges',
             ARRAY[2,3,11]) ) AS a
     limit 1
 ;
@@ -54,11 +54,11 @@ SELECT set_eq('v21q30', 'v21q31','many to many: Expected returning, columns name
 
 PREPARE v20q1 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT FROM edges',
     ARRAY[2,3,11]);
 PREPARE v20q3 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT FROM edges',
     ARRAY[2,3,11]);
 
 SELECT lives_ok('v20q1','with reverse cost 1');
@@ -66,12 +66,12 @@ SELECT lives_ok('v20q3','with reverse cost 3');
 
 PREPARE v20q5 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT FROM edges',
     ARRAY[2,3,11]);
 
 PREPARE v20q6 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT FROM edges',
     ARRAY[2,3,11]);
 
 
@@ -87,23 +87,23 @@ SELECT lives_ok('v20q6','without reverse cost 2');
 --id ANY-INTEGER
 PREPARE v200id1 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::SMALLINT, source::INTEGER, target::INTEGER, cost::FLOAT FROM edge_table',
+    'SELECT id::SMALLINT, source::INTEGER, target::INTEGER, cost::FLOAT FROM edges',
     ARRAY[2,3,11]);
 PREPARE v200id2 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::BIGINT, source::INTEGER, target::INTEGER, cost::FLOAT FROM edge_table',
+    'SELECT id::BIGINT, source::INTEGER, target::INTEGER, cost::FLOAT FROM edges',
     ARRAY[2,3,11]);
 PREPARE v200id3 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::FLOAT, source::INTEGER, target::INTEGER, cost::FLOAT FROM edge_table',
+    'SELECT id::FLOAT, source::INTEGER, target::INTEGER, cost::FLOAT FROM edges',
     ARRAY[2,3,11]);
 PREPARE v200id4 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::REAL, source::INTEGER, target::INTEGER, cost::FLOAT FROM edge_table',
+    'SELECT id::REAL, source::INTEGER, target::INTEGER, cost::FLOAT FROM edges',
     ARRAY[2,3,11]);
 PREPARE v200id5 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::TEXT, source::INTEGER, target::INTEGER, cost::FLOAT FROM edge_table',
+    'SELECT id::TEXT, source::INTEGER, target::INTEGER, cost::FLOAT FROM edges',
     ARRAY[2,3,11]);
 
 SELECT lives_ok('v200id1',
@@ -123,23 +123,23 @@ SELECT throws_ok('v200id5',
 --source is only integer
 PREPARE v200s1 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::INTEGER, source::SMALLINT, target::INTEGER, cost::FLOAT FROM edge_table',
+    'SELECT id::INTEGER, source::SMALLINT, target::INTEGER, cost::FLOAT FROM edges',
     ARRAY[2,3,11]);
 PREPARE v200s2 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::INTEGER, source::BIGINT, target::INTEGER, cost::FLOAT FROM edge_table',
+    'SELECT id::INTEGER, source::BIGINT, target::INTEGER, cost::FLOAT FROM edges',
     ARRAY[2,3,11]);
 PREPARE v200s3 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::INTEGER, source::REAL, target::INTEGER, cost::FLOAT FROM edge_table',
+    'SELECT id::INTEGER, source::REAL, target::INTEGER, cost::FLOAT FROM edges',
     ARRAY[2,3,11]);
 PREPARE v200s4 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::INTEGER, source::FLOAT, target::INTEGER, cost::FLOAT FROM edge_table',
+    'SELECT id::INTEGER, source::FLOAT, target::INTEGER, cost::FLOAT FROM edges',
     ARRAY[2,3,11]);
 PREPARE v200s5 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::INTEGER, source::TEXT, target::INTEGER, cost::FLOAT FROM edge_table',
+    'SELECT id::INTEGER, source::TEXT, target::INTEGER, cost::FLOAT FROM edges',
     ARRAY[2,3,11]);
 
 SELECT lives_ok('v200s1',
@@ -160,23 +160,23 @@ SELECT throws_ok('v200s5',
 --target is only integer
 PREPARE v200t1 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::INTEGER, source::INTEGER, target::SMALLINT, cost::FLOAT FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::SMALLINT, cost::FLOAT FROM edges',
     ARRAY[2,3,11]);
 PREPARE v200t2 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::INTEGER, source::INTEGER, target::BIGINT, cost::FLOAT FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::BIGINT, cost::FLOAT FROM edges',
     ARRAY[2,3,11]);
 PREPARE v200t3 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::INTEGER, source::INTEGER, target::FLOAT, cost::FLOAT FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::FLOAT, cost::FLOAT FROM edges',
     ARRAY[2,3,11]);
 PREPARE v200t4 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::INTEGER, source::INTEGER, target::REAL, cost::FLOAT FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::REAL, cost::FLOAT FROM edges',
     ARRAY[2,3,11]);
 PREPARE v200t5 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::INTEGER, source::INTEGER, target::TEXT, cost::FLOAT FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::TEXT, cost::FLOAT FROM edges',
     ARRAY[2,3,11]);
 
 SELECT lives_ok('v200t1',
@@ -196,23 +196,23 @@ SELECT throws_ok('v200t5',
 -- cost
 PREPARE v200c1 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::SMALLINT FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::SMALLINT FROM edges',
     ARRAY[2,3,11]);
 PREPARE v200c2 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::INTEGER FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::INTEGER FROM edges',
     ARRAY[2,3,11]);
 PREPARE v200c3 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::BIGINT FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::BIGINT FROM edges',
     ARRAY[2,3,11]);
 PREPARE v200c4 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::REAL FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::REAL FROM edges',
     ARRAY[2,3,11]);
 PREPARE v200c5 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::TEXT FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::TEXT FROM edges',
     ARRAY[2,3,11]);
 
 SELECT lives_ok('v200c1',
@@ -230,23 +230,23 @@ SELECT throws_ok('v200c5',
 -- reverse_cost
 PREPARE v200r1 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::INTEGER, reverse_cost::SMALLINT FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::INTEGER, reverse_cost::SMALLINT FROM edges',
     ARRAY[2,3,11]);
 PREPARE v200r2 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::INTEGER, reverse_cost::INTEGER FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::INTEGER, reverse_cost::INTEGER FROM edges',
     ARRAY[2,3,11]);
 PREPARE v200r3 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::INTEGER, reverse_cost::BIGINT FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::INTEGER, reverse_cost::BIGINT FROM edges',
     ARRAY[2,3,11]);
 PREPARE v200r4 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::INTEGER, reverse_cost::REAL FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::INTEGER, reverse_cost::REAL FROM edges',
     ARRAY[2,3,11]);
 PREPARE v200r5 AS
 SELECT * FROM pgr_dijkstravia(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::INTEGER, reverse_cost::TEXT FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::INTEGER, reverse_cost::TEXT FROM edges',
     ARRAY[2,3,11]);
 
 SELECT lives_ok('v200r1',

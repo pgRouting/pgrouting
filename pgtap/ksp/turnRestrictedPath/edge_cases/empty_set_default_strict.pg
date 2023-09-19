@@ -19,8 +19,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(16);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT plan(20);
 
 ----------------------------------------------------------------------------------------------------------------
 -- testing from an existing starting vertex to a non-existing destination
@@ -30,9 +30,9 @@ SELECT plan(16);
 -- with restrictions
 PREPARE q1 AS
 SELECT * FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT id, source, target, cost, reverse_cost FROM edges WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions WHERE id IN (1)',
-    2, 3,
+    6, 10,
     3
 );
 
@@ -40,9 +40,9 @@ SELECT * FROM pgr_turnRestrictedPath(
 -- with restrictions
 PREPARE q2 AS
 SELECT * FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT id, source, target, cost, reverse_cost FROM edges WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions WHERE id IN (1)',
-    2, 3,
+    6, 10,
     3,
     FALSE
 );
@@ -51,9 +51,9 @@ SELECT * FROM pgr_turnRestrictedPath(
 -- without restrictions
 PREPARE q3 AS
 SELECT * FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT id, source, target, cost, reverse_cost FROM edges WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
-    2, 3,
+    6, 10,
     3
 );
 
@@ -61,9 +61,9 @@ SELECT * FROM pgr_turnRestrictedPath(
 -- without restrictions
 PREPARE q4 AS
 SELECT * FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT id, source, target, cost, reverse_cost FROM edges WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
-    2, 3,
+    6, 10,
     3,
     FALSE
 );
@@ -80,7 +80,7 @@ SELECT is_empty('q4');
 -- with restrictions
 PREPARE q5 AS
 SELECT * FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT id, source, target, cost, reverse_cost FROM edges WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions WHERE id IN (1)',
     6, 8,
     3
@@ -90,7 +90,7 @@ SELECT * FROM pgr_turnRestrictedPath(
 -- with restrictions
 PREPARE q6 AS
 SELECT * FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT id, source, target, cost, reverse_cost FROM edges WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions WHERE id IN (1)',
     6, 8,
     3,
@@ -101,7 +101,7 @@ SELECT * FROM pgr_turnRestrictedPath(
 -- without restrictions
 PREPARE q7 AS
 SELECT * FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT id, source, target, cost, reverse_cost FROM edges WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
     6, 8,
     3
@@ -111,7 +111,7 @@ SELECT * FROM pgr_turnRestrictedPath(
 -- without restrictions
 PREPARE q8 AS
 SELECT * FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT id, source, target, cost, reverse_cost FROM edges WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
     6, 8,
     3,
@@ -130,9 +130,9 @@ SELECT is_empty('q8');
 -- with restrictions
 PREPARE q9 AS
 SELECT * FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT id, source, target, cost, reverse_cost FROM edges WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions WHERE id IN (1)',
-    1, 17,
+    5, 14,
     3
 );
 
@@ -140,9 +140,9 @@ SELECT * FROM pgr_turnRestrictedPath(
 -- with restrictions
 PREPARE q10 AS
 SELECT * FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT id, source, target, cost, reverse_cost FROM edges WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions WHERE id IN (1)',
-    1, 17,
+    5, 14,
     3,
     FALSE
 );
@@ -151,9 +151,9 @@ SELECT * FROM pgr_turnRestrictedPath(
 -- without restrictions
 PREPARE q11 AS
 SELECT * FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT id, source, target, cost, reverse_cost FROM edges WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
-    1, 17,
+    5, 14,
     3
 );
 
@@ -161,9 +161,9 @@ SELECT * FROM pgr_turnRestrictedPath(
 -- without restrictions
 PREPARE q12 AS
 SELECT * FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT id, source, target, cost, reverse_cost FROM edges WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
-    1, 17,
+    5, 14,
     3,
     FALSE
 );
@@ -180,9 +180,9 @@ SELECT is_empty('q12');
 -- with restrictions
 PREPARE q13 AS
 SELECT * FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT id, source, target, cost, reverse_cost FROM edges WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions WHERE id IN (1)',
-    2, 2,
+    6, 6,
     3
 );
 
@@ -190,9 +190,9 @@ SELECT * FROM pgr_turnRestrictedPath(
 -- with restrictions
 PREPARE q14 AS
 SELECT * FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT id, source, target, cost, reverse_cost FROM edges WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions WHERE id IN (1)',
-    2, 2,
+    6, 6,
     3,
     FALSE
 );
@@ -201,9 +201,9 @@ SELECT * FROM pgr_turnRestrictedPath(
 -- without restrictions
 PREPARE q15 AS
 SELECT * FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT id, source, target, cost, reverse_cost FROM edges WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
-    2, 2,
+    6, 6,
     3
 );
 
@@ -211,9 +211,9 @@ SELECT * FROM pgr_turnRestrictedPath(
 -- without restrictions
 PREPARE q16 AS
 SELECT * FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 OR id = 7',
+    'SELECT id, source, target, cost, reverse_cost FROM edges WHERE id = 4 OR id = 7',
     'SELECT * FROM restrictions where id > 10',
-    2, 2,
+    6, 6,
     3,
     FALSE
 );
@@ -229,9 +229,9 @@ SELECT is_empty('q16');
 -- with restrictions
 PREPARE q17 AS
 SELECT * FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (4, 7, 17)',
+    'SELECT id, source, target, cost, reverse_cost FROM edges WHERE id IN (4, 7, 17)',
     'SELECT * FROM restrictions WHERE id IN (1)',
-    2, 14,
+    6, 2,
     3
 );
 
@@ -239,9 +239,9 @@ SELECT * FROM pgr_turnRestrictedPath(
 -- with restrictions
 PREPARE q18 AS
 SELECT * FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (4, 7, 17)',
+    'SELECT id, source, target, cost, reverse_cost FROM edges WHERE id IN (4, 7, 17)',
     'SELECT * FROM restrictions WHERE id IN (1)',
-    2, 14,
+    6, 2,
     3,
     FALSE
 );
@@ -250,9 +250,9 @@ SELECT * FROM pgr_turnRestrictedPath(
 -- without restrictions
 PREPARE q19 AS
 SELECT * FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (4, 7, 17)',
+    'SELECT id, source, target, cost, reverse_cost FROM edges WHERE id IN (4, 7, 17)',
     'SELECT * FROM restrictions where id > 10',
-    2, 14,
+    6, 2,
     3
 );
 
@@ -260,19 +260,18 @@ SELECT * FROM pgr_turnRestrictedPath(
 -- without restrictions
 PREPARE q20 AS
 SELECT * FROM pgr_turnRestrictedPath(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (4, 7, 17)',
+    'SELECT id, source, target, cost, reverse_cost FROM edges WHERE id IN (4, 7, 17)',
     'SELECT * FROM restrictions where id > 10',
-    2, 14,
+    6, 2,
     3,
     FALSE
 );
-/*
+
 SELECT is_empty('q17');
 SELECT is_empty('q18');
 SELECT is_empty('q19');
 SELECT is_empty('q20');
 ----------------------------------------------------------------------------------------------------------------
-*/
 
 SELECT * FROM finish();
 ROLLBACK;

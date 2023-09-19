@@ -21,31 +21,31 @@ BEGIN;
 
 SELECT CASE WHEN NOT min_version('3.2.0') THEN plan(1) ELSE plan(122) END;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 
 
 CREATE TABLE expected AS
 WITH
 a AS (SELECT start_vid, d_w_1, u_w_1, d_n_1, u_n_1
   FROM (VALUES
-    (1::BIGINT,
-        ARRAY[2]::BIGINT[],   ARRAY[2]::BIGINT[],    ARRAY[2]::BIGINT[],   ARRAY[2]::BIGINT[]),
-    (2,  ARRAY[ 1, 5],          ARRAY[ 1, 3, 5],     ARRAY[ 5],     ARRAY[  1, 5]),
-    (3,  ARRAY[ 2, 6],          ARRAY[ 2, 4, 6],     ARRAY[ 6],     ARRAY[  6]),
-    (4,  ARRAY[ 3, 9],          ARRAY[ 3, 9],        ARRAY[ 9],     ARRAY[  9]),
-    (5,  ARRAY[ 2, 6, 8, 10],   ARRAY[ 2, 6, 8, 10], ARRAY[ 6, 10], ARRAY[  2, 6, 8, 10]),
-    (6,  ARRAY[ 5, 9, 11],      ARRAY[ 3, 5, 9, 11], ARRAY[ 9, 11], ARRAY[  3, 5, 9, 11]),
-    (7,  ARRAY[ 8],             ARRAY[ 8],           ARRAY[ 8],     ARRAY[  8]),
-    (8,  ARRAY[ 5, 7],          ARRAY[ 5, 7],        ARRAY[ 5],     ARRAY[  5, 7]),
-    (9,  ARRAY[ 4, 6, 12],      ARRAY[ 4, 6, 12],    ARRAY[12],     ARRAY[  4, 6, 12]),
-    (10, ARRAY[ 5, 11, 13],     ARRAY[ 5, 11, 13],   ARRAY[11, 13], ARRAY[  5, 11, 13]),
-    (11, ARRAY[12],             ARRAY[ 6, 10, 12],   ARRAY[12],     ARRAY[  6, 10, 12]),
-    (12, ARRAY[ 9],             ARRAY[9, 11],        NULL,          ARRAY[ 9, 11]),
-    (13, ARRAY[10],             ARRAY[10],           NULL,          ARRAY[ 10]),
-    (14, ARRAY[15],             ARRAY[15],           ARRAY[15],     ARRAY[ 15]),
-    (15, ARRAY[14],             ARRAY[14],           NULL,          ARRAY[ 14]),
-    (16, ARRAY[17],             ARRAY[17],           ARRAY[17],     ARRAY[ 17]),
-    (17, ARRAY[16],             ARRAY[16],           NULL,          ARRAY[ 16])
+    (5::BIGINT,
+        ARRAY[6]::BIGINT[],   ARRAY[6]::BIGINT[],    ARRAY[6]::BIGINT[],   ARRAY[6]::BIGINT[]),
+    (6,  ARRAY[ 5, 7],          ARRAY[ 5, 10, 7],     ARRAY[ 7],     ARRAY[  5, 7]),
+    (10,  ARRAY[ 6, 11],          ARRAY[ 6, 15, 11],     ARRAY[ 11],     ARRAY[  11]),
+    (15,  ARRAY[ 10, 16],          ARRAY[ 10, 16],        ARRAY[ 16],     ARRAY[  16]),
+    (7,  ARRAY[ 6, 11, 3, 8],   ARRAY[ 6, 11, 3, 8], ARRAY[ 11, 8], ARRAY[  6, 11, 3, 8]),
+    (11,  ARRAY[ 7, 16, 12],      ARRAY[ 10, 7, 16, 12], ARRAY[ 16, 12], ARRAY[  10, 7, 16, 12]),
+    (1,  ARRAY[ 3],             ARRAY[ 3],           ARRAY[ 3],     ARRAY[  3]),
+    (3,  ARRAY[ 7, 1],          ARRAY[ 7, 1],        ARRAY[ 7],     ARRAY[  7, 1]),
+    (16,  ARRAY[ 15, 11, 17],      ARRAY[ 15, 11, 17],    ARRAY[17],     ARRAY[  15, 11, 17]),
+    (8, ARRAY[ 7, 12, 9],     ARRAY[ 7, 12, 9],   ARRAY[12, 9], ARRAY[  7, 12, 9]),
+    (12, ARRAY[17],             ARRAY[17, 8, 11],   ARRAY[17],     ARRAY[  17, 8, 11]),
+    (11, ARRAY[ 16],             ARRAY[16, 12],        NULL,          ARRAY[ 16, 12]),
+    (9, ARRAY[8],             ARRAY[8],           NULL,          ARRAY[ 8]),
+    (2, ARRAY[4],             ARRAY[4],           ARRAY[4],     ARRAY[ 4]),
+    (4, ARRAY[2],             ARRAY[2],           NULL,          ARRAY[ 2]),
+    (13, ARRAY[14],             ARRAY[14],           ARRAY[14],     ARRAY[ 14]),
+    (14, ARRAY[13],             ARRAY[13],           NULL,          ARRAY[ 13])
   ) t(start_vid, d_w_1, u_w_1, d_n_1, u_n_1))
 SELECT * from a;
 
@@ -84,7 +84,7 @@ BEGIN
                 FROM pgr_dijkstraNearCost(
                     %1$L,
                     %2$s,
-                    (SELECT array_agg(id) FROM edge_table_vertices_pgr where id != %2$s),
+                    (SELECT array_agg(id) FROM vertices where id != %2$s),
                     %3$s)
                 $$, inner_query, id, optionals);
             expected_query := format($$
@@ -112,52 +112,52 @@ IF NOT min_version('3.2.0') THEN
 END IF;
 
 RETURN QUERY
-SELECT is_empty($$SELECT distinct cost FROM edge_table WHERE cost != 1 AND cost != -1$$);
+SELECT is_empty($$SELECT distinct cost FROM edges WHERE cost != 1 AND cost != -1$$);
 RETURN QUERY
-SELECT is_empty($$SELECT distinct reverse_cost FROM edge_table WHERE cost != 1 AND cost != -1$$);
+SELECT is_empty($$SELECT distinct reverse_cost FROM edges WHERE cost != 1 AND cost != -1$$);
 
 -- Initial tables are good to work
 
 RETURN QUERY
-SELECT isnt_empty($$SELECT id, source, target, cost, reverse_cost FROM edge_table$$);
+SELECT isnt_empty($$SELECT id, source, target, cost, reverse_cost FROM edges$$);
 RETURN QUERY
-SELECT isnt_empty($$SELECT id FROM edge_table_vertices_pgr$$);
+SELECT isnt_empty($$SELECT id FROM vertices$$);
 
 -- vertex id values that dont exist
 RETURN QUERY
-SELECT is_empty($$SELECT id FROM edge_table_vertices_pgr WHERE id > 18$$);
+SELECT is_empty($$SELECT id FROM vertices WHERE id > 18$$);
 RETURN QUERY
-SELECT is_empty($$SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE source > 18$$);
+SELECT is_empty($$SELECT id, source, target, cost, reverse_cost FROM edges WHERE source > 18$$);
 RETURN QUERY
-SELECT is_empty($$SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE target > 18$$);
+SELECT is_empty($$SELECT id, source, target, cost, reverse_cost FROM edges WHERE target > 18$$);
 RETURN QUERY
-SELECT is_empty($$SELECT id FROM edge_table WHERE id > 18$$);
+SELECT is_empty($$SELECT id FROM edges WHERE id > 18$$);
 
 
 RETURN QUERY
 SELECT * from check_expected(
-    $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id DESC$$,
+    $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id DESC$$,
     $$SELECT start_vid AS frst, d_w_1 AS scnd FROM expected$$,
     'directed => true, cap => 1'
 );
 
 RETURN QUERY
 SELECT * from check_expected(
-    $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id DESC$$,
+    $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id DESC$$,
     $$SELECT start_vid AS frst, u_w_1 AS scnd FROM expected$$,
     'directed => false, cap => 1'
 );
 
 RETURN QUERY
 SELECT * from check_expected(
-    $$SELECT id, source, target, cost  FROM edge_table ORDER BY id DESC$$,
+    $$SELECT id, source, target, cost  FROM edges ORDER BY id DESC$$,
     $$SELECT start_vid AS frst, d_n_1 AS scnd FROM expected$$,
     'directed => true, cap => 1'
 );
 
 RETURN QUERY
 SELECT * from check_expected(
-    $$SELECT id, source, target, cost  FROM edge_table ORDER BY id DESC$$,
+    $$SELECT id, source, target, cost  FROM edges ORDER BY id DESC$$,
     $$SELECT start_vid AS frst, u_n_1 AS scnd FROM expected$$,
     'directed => false, cap => 1'
 );
