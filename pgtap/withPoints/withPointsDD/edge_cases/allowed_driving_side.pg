@@ -25,39 +25,41 @@ CREATE OR REPLACE FUNCTION compare_old_new()
 RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
+  SET client_min_messages TO ERROR;
   -- the only change is an additional column
   RETURN QUERY SELECT set_eq(
     $$SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-      'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+      'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
       'SELECT pid, edge_id, fraction, side from pointsOfInterest',
       -1, 4.8, driving_side => 'r', directed => true)$$,
     $$SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-      'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+      'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
       'SELECT pid, edge_id, fraction, side from pointsOfInterest',
       -1, 4.8, 'r', directed => true)$$,
     'old = new: directed right');
 
   RETURN QUERY SELECT set_eq(
     $$SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-      'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+      'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
       'SELECT pid, edge_id, fraction, side from pointsOfInterest',
       -1, 4.8, driving_side => 'l', directed => true)$$,
     $$SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-      'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+      'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
       'SELECT pid, edge_id, fraction, side from pointsOfInterest',
       -1, 4.8, 'l', directed => true)$$,
     'old = new: directed left');
 
   RETURN QUERY SELECT set_eq(
     $$SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-      'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+      'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
       'SELECT pid, edge_id, fraction, side from pointsOfInterest',
       -1, 4.8, driving_side => 'b', directed => false)$$,
     $$SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-      'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+      'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
       'SELECT pid, edge_id, fraction, side from pointsOfInterest',
       -1, 4.8, 'b', directed => false)$$,
     'old = new: undirected both');
+SET client_min_messages TO WARNING;
 
 END;
 $BODY$
@@ -69,111 +71,113 @@ RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
+SET client_min_messages TO ERROR;
 -- everything lives as it gets a default
 -- directed r, R
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, driving_side => 'r', directed => true)$$, 'old lives: directed right');
 
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, driving_side => 'R', directed => true)$$, 'old lives: directed Right');
 
 -- directed l, L
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, driving_side => 'l', directed => true)$$, 'old lives: directed left');
 
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, driving_side => 'L', directed => true)$$, 'old lives: directed Left');
 
 -- directed b, B
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, driving_side => 'b', directed => true)$$, 'old lives: directed both');
 
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, driving_side => 'B', directed => true)$$, 'old lives: directed Both');
 
 -- directed Invalid
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, driving_side => 'i', directed => true)$$, 'old lives: directed invalid');
 
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, driving_side => 'I', directed => true)$$, 'old lives: directed Invalid');
 
 -- undirected r, R
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, driving_side => 'r', directed => false)$$, 'old lives: undirected right');
 
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, driving_side => 'R', directed => false)$$, 'old lives: undirected Right');
 
 -- undirected l, L
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, driving_side => 'l', directed => false)$$, 'old lives: undirected left');
 
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, driving_side => 'L', directed => false)$$, 'old lives: undirected Left');
 
 -- undirected b, B
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, driving_side => 'b', directed => false)$$, 'old lives: undirected both');
 
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, driving_side => 'B', directed => false)$$, 'old lives: undirected Both');
 
 -- undirected Invalid
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, driving_side => 'i', directed => false)$$, 'old lives: undirected invalid');
 
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, driving_side => 'I', directed => false)$$, 'old lives: undirected Invalid');
 
+SET client_min_messages TO WARNING;
 END;
 $BODY$
 language plpgsql;
@@ -187,7 +191,7 @@ RETURN QUERY SELECT test_old_cases();
 
 IF NOT min_version('3.6.0') THEN
   RETURN QUERY SELECT skip(1, 'new signature on 3.6.0');
-  return;
+  RETURN;
 END IF;
 
 RETURN QUERY SELECT compare_old_new();
@@ -196,40 +200,40 @@ RETURN QUERY SELECT compare_old_new();
 -- directed r, R
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, 'r', directed => true)$$, 'lives: directed right');
 
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, 'R', directed => true)$$, 'lives: directed Right');
 
 -- directed l, L
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, 'l', directed => true)$$, 'lives: directed left');
 
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, 'L', directed => true)$$, 'lives: directed Left');
 
 -- directed b, B
 RETURN QUERY SELECT throws_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, 'b', directed => true)$$,
   'XX000',$$Invalid value of 'driving side'$$, 'throws: directed both');
 
 RETURN QUERY SELECT throws_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, 'B', directed => true)$$,
     'XX000',$$Invalid value of 'driving side'$$, 'throws: directed Both');
@@ -237,14 +241,14 @@ SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
 -- directed Invalid
 RETURN QUERY SELECT throws_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, 'i', directed => true)$$,
     'XX000',$$Invalid value of 'driving side'$$, 'throws: directed invalid');
 
 RETURN QUERY SELECT throws_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, 'I', directed => true)$$,
   'XX000',$$Invalid value of 'driving side'$$, 'throws: directed Invalid');
@@ -253,14 +257,14 @@ SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
 -- undirected r, R
 RETURN QUERY SELECT throws_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, 'r', directed => false)$$,
     'XX000',$$Invalid value of 'driving side'$$, 'throws: undirected right');
 
 RETURN QUERY SELECT throws_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, 'R', directed => false)$$,
     'XX000',$$Invalid value of 'driving side'$$, 'throws: undirected Right');
@@ -268,14 +272,14 @@ SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
 -- undirected l, L
 RETURN QUERY SELECT throws_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, 'l', directed => false)$$,
     'XX000',$$Invalid value of 'driving side'$$, 'throws: undirected left');
 
 RETURN QUERY SELECT throws_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, 'L', directed => false)$$,
     'XX000',$$Invalid value of 'driving side'$$, 'throws: undirected Left');
@@ -283,27 +287,27 @@ SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
 -- undirected b, B
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, 'b', directed => false)$$, 'lives: undirected both');
 
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, 'B', directed => false)$$, 'lives: undirected Both');
 
 -- undirected Invalid
 RETURN QUERY SELECT throws_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, 'i', directed => false)$$,
     'XX000',$$Invalid value of 'driving side'$$, 'throws: undirected invalid');
 
 RETURN QUERY SELECT throws_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 4.8, 'I', directed => false)$$,
     'XX000',$$Invalid value of 'driving side'$$, 'throws: undirected Invalid');
@@ -313,40 +317,40 @@ SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
 -- directed r, R
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,9], 4.8, 'r', directed => true)$$, 'lives: directed right');
 
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,9], 4.8, 'R', directed => true)$$, 'lives: directed Right');
 
 -- directed l, L
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,9], 4.8, 'l', directed => true)$$, 'lives: directed left');
 
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,9], 4.8, 'L', directed => true)$$, 'lives: directed Left');
 
 -- directed b, B
 RETURN QUERY SELECT throws_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,9], 4.8, 'b', directed => true)$$,
   'XX000',$$Invalid value of 'driving side'$$, 'throws: directed both');
 
 RETURN QUERY SELECT throws_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,9], 4.8, 'B', directed => true)$$,
     'XX000',$$Invalid value of 'driving side'$$, 'throws: directed Both');
@@ -354,14 +358,14 @@ SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
 -- directed Invalid
 RETURN QUERY SELECT throws_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,9], 4.8, 'i', directed => true)$$,
     'XX000',$$Invalid value of 'driving side'$$, 'throws: directed invalid');
 
 RETURN QUERY SELECT throws_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,9], 4.8, 'I', directed => true)$$,
   'XX000',$$Invalid value of 'driving side'$$, 'throws: directed Invalid');
@@ -370,14 +374,14 @@ SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
 -- undirected r, R
 RETURN QUERY SELECT throws_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,9], 4.8, 'r', directed => false)$$,
     'XX000',$$Invalid value of 'driving side'$$, 'throws: undirected right');
 
 RETURN QUERY SELECT throws_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,9], 4.8, 'R', directed => false)$$,
     'XX000',$$Invalid value of 'driving side'$$, 'throws: undirected Right');
@@ -385,14 +389,14 @@ SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
 -- undirected l, L
 RETURN QUERY SELECT throws_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,9], 4.8, 'l', directed => false)$$,
     'XX000',$$Invalid value of 'driving side'$$, 'throws: undirected left');
 
 RETURN QUERY SELECT throws_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,9], 4.8, 'L', directed => false)$$,
     'XX000',$$Invalid value of 'driving side'$$, 'throws: undirected Left');
@@ -400,27 +404,27 @@ SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
 -- undirected b, B
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,9], 4.8, 'b', directed => false)$$, 'lives: undirected both');
 
 RETURN QUERY SELECT lives_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,9], 4.8, 'B', directed => false)$$, 'lives: undirected Both');
 
 -- undirected Invalid
 RETURN QUERY SELECT throws_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,9], 4.8, 'i', directed => false)$$,
     'XX000',$$Invalid value of 'driving side'$$, 'throws: undirected invalid');
 
 RETURN QUERY SELECT throws_ok($$
 SELECT seq, node, edge, cost::TEXT, agg_cost::TEXT FROM pgr_withPointsDD(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,9], 4.8, 'I', directed => false)$$,
     'XX000',$$Invalid value of 'driving side'$$, 'throws: undirected Invalid');

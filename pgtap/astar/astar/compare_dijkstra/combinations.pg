@@ -25,7 +25,7 @@ BEGIN;
 
 SELECT CASE WHEN min_version('3.2.0') THEN plan(4) ELSE plan(1) END;
 
-UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
+UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
 CREATE or REPLACE FUNCTION astarCompareDijkstra(cant INTEGER default 17)
 RETURNS SETOF TEXT AS
@@ -44,13 +44,13 @@ BEGIN
   END IF;
 
   data := ' path_seq, start_vid, end_vid, round(cost::numeric,8) AS cost, round(agg_cost::numeric,8) AS agg_cost ';
-  vids := ' SELECT * FROM combinations_table ';
+  vids := ' SELECT * FROM combinations ';
 
 
   -----------------------
   -- with reverse cost
   -----------------------
-  inner_sql := 'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table';
+  inner_sql := 'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges';
   -- DIRECTED
   dijkstra_sql := 'SELECT ' || data || ' FROM pgr_dijkstra($$' || inner_sql || '$$, $$' || vids || '$$, true)';
   astar_sql := 'SELECT ' || data || ' FROM pgr_astar($$' || inner_sql || '$$, $$' || vids || '$$, true, heuristic := 0)';
@@ -65,7 +65,7 @@ BEGIN
   -- NO reverse cost
   -----------------------
   -- DIRECTED
-  inner_sql := 'SELECT id, source, target, cost, x1, y1, x2, y2 FROM edge_table';
+  inner_sql := 'SELECT id, source, target, cost, x1, y1, x2, y2 FROM edges';
   dijkstra_sql := 'SELECT ' || data || ' FROM pgr_dijkstra($$' || inner_sql || '$$, $$' || vids || '$$, true)';
   astar_sql := 'SELECT ' || data || ' FROM pgr_astar($$' || inner_sql || '$$, $$' || vids || '$$, true, heuristic := 0)';
   RETURN query SELECT set_eq(astar_sql, dijkstra_sql, astar_sql);
