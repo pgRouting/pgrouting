@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(1296);
 SET client_min_messages TO ERROR;
 
@@ -43,8 +43,8 @@ BEGIN
     blank := quote_literal('');
     IF flag THEN directed = 'Directed'; END IF;
         k := 1;
-        inner_sql1 = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost from edge_table ORDER BY id');
-        inner_sql2 = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost from edge_table ORDER BY id');
+        inner_sql1 = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost from edges ORDER BY id');
+        inner_sql2 = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost from edges ORDER BY id');
         FOR i IN 1.. cant LOOP
             FOR j IN 1..cant LOOP
                 dijkstra_sql := 'SELECT seq-1, node::integer, edge::integer, cost

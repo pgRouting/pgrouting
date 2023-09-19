@@ -19,18 +19,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(2);
 
 
 PREPARE edp_dir AS
 SELECT * FROM pgr_edgeDisjointPaths(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   3, 5
 );
 PREPARE edp_undir AS
 SELECT * FROM pgr_edgeDisjointPaths(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   3, 5,
   directed := false
 );

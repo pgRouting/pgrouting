@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT CASE WHEN min_version('3.2.0') THEN plan(81) ELSE plan(68) END;
 
 CREATE OR REPLACE FUNCTION no_crash()
@@ -30,13 +30,13 @@ params TEXT[];
 subs TEXT[];
 BEGIN
   PREPARE edges AS
-  SELECT id, source, target, cost  FROM edge_table;
+  SELECT id, source, target, cost  FROM edges;
 
   PREPARE null_ret AS
-  SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1);
+  SELECT id FROM vertices  WHERE id IN (-1);
 
   PREPARE null_ret_arr AS
-  SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1);
+  SELECT array_agg(id) FROM vertices  WHERE id IN (-1);
 
   RETURN QUERY
   SELECT isnt_empty('edges', 'Should be not empty to tests be meaningful');
@@ -48,14 +48,14 @@ BEGIN
 
   -- one to one
   params = ARRAY[
-  '$$SELECT id, source, target, cost  FROM edge_table$$'
-  ,'1::BIGINT',
-  '2::BIGINT'
+  '$$SELECT id, source, target, cost  FROM edges$$',
+  '5::BIGINT',
+  '6::BIGINT'
   ]::TEXT[];
   subs = ARRAY[
   'NULL',
-  '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-  '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))'
+  '(SELECT id FROM vertices  WHERE id IN (-1))',
+  '(SELECT id FROM vertices  WHERE id IN (-1))'
   ]::TEXT[];
 
   RETURN query SELECT * FROM no_crash_test('pgr_dagShortestPath', params, subs);
@@ -68,11 +68,11 @@ BEGIN
   RETURN query SELECT * FROM no_crash_test('pgr_dagShortestPath', params, subs);
 
   -- one to many
-  params = ARRAY['$$edges$$','1', 'ARRAY[2,5]::BIGINT[]']::TEXT[];
+  params = ARRAY['$$edges$$','1', 'ARRAY[6,7]::BIGINT[]']::TEXT[];
   subs = ARRAY[
   'NULL',
-  '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-  '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))'
+  '(SELECT id FROM vertices  WHERE id IN (-1))',
+  '(SELECT array_agg(id) FROM vertices  WHERE id IN (-1))'
   ]::TEXT[];
 
   RETURN query SELECT * FROM no_crash_test('pgr_dagShortestPath', params, subs);
@@ -85,11 +85,11 @@ BEGIN
   RETURN query SELECT * FROM no_crash_test('pgr_dagShortestPath', params, subs);
 
   -- many to one
-  params = ARRAY['$$edges$$', 'ARRAY[1]::BIGINT[]', '2']::TEXT[];
+  params = ARRAY['$$edges$$', 'ARRAY[5]::BIGINT[]', '6']::TEXT[];
   subs = ARRAY[
   'NULL',
-  '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-  '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))'
+  '(SELECT array_agg(id) FROM vertices  WHERE id IN (-1))',
+  '(SELECT id FROM vertices  WHERE id IN (-1))'
   ]::TEXT[];
 
   RETURN query SELECT * FROM no_crash_test('pgr_dagShortestPath', params, subs);
@@ -102,11 +102,11 @@ BEGIN
   RETURN query SELECT * FROM no_crash_test('pgr_dagShortestPath', params, subs);
 
   -- many to many
-  params = ARRAY['$$edges$$','ARRAY[1]::BIGINT[]', 'ARRAY[2,5]::BIGINT[]']::TEXT[];
+  params = ARRAY['$$edges$$','ARRAY[1]::BIGINT[]', 'ARRAY[6,7]::BIGINT[]']::TEXT[];
   subs = ARRAY[
   'NULL',
-  '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-  '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))'
+  '(SELECT array_agg(id) FROM vertices  WHERE id IN (-1))',
+  '(SELECT array_agg(id) FROM vertices  WHERE id IN (-1))'
   ]::TEXT[];
 
   RETURN query SELECT * FROM no_crash_test('pgr_dagShortestPath', params, subs);
@@ -125,10 +125,10 @@ BEGIN
   END IF;
 
   PREPARE combinations AS
-  SELECT source, target  FROM combinations_table;
+  SELECT source, target  FROM combinations;
 
   PREPARE null_combinations AS
-  SELECT source, target FROM combinations_table WHERE source IN (-1);
+  SELECT source, target FROM combinations WHERE source IN (-1);
 
   RETURN QUERY
   SELECT isnt_empty('combinations', 'Should be not empty to tests be meaningful');
@@ -139,7 +139,7 @@ BEGIN
   params = ARRAY['$$edges$$', '$$combinations$$']::TEXT[];
   subs = ARRAY[
   'NULL',
-  '$$(SELECT source, target FROM combinations_table  WHERE source IN (-1))$$'
+  '$$(SELECT source, target FROM combinations  WHERE source IN (-1))$$'
   ]::TEXT[];
 
   RETURN query SELECT * FROM no_crash_test('pgr_dagShortestPath', params, subs);

@@ -20,12 +20,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 SELECT plan(1);
-UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
+UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 SET client_min_messages TO ERROR;
 
 PREPARE q1 AS
 SELECT seq, id1, id2, cost::TEXT FROM pgr_trsp(
-    'select id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost from edge_table',
+    'select id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost from edges',
     1,     -- edge_id for start
     0.5,   -- midpoint of edge
     6,     -- edge_id of route end
@@ -37,7 +37,7 @@ SELECT seq, id1, id2, cost::TEXT FROM pgr_trsp(
 
 PREPARE q2 AS
 SELECT seq-1, node::INTEGER, edge::INTEGER, cost::TEXT FROM pgr_withPoints(
-    $$SELECT id, source, target, cost, reverse_cost from edge_table$$,
+    $$SELECT id, source, target, cost, reverse_cost from edges$$,
     $$(SELECT 1 AS pid, 1 AS edge_id, 0.5::float  AS fraction)
     UNION
     (SELECT 2, 6, 0.5)$$,

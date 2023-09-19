@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT CASE WHEN min_version('3.4.0') THEN plan(12) ELSE plan(1) END;
 SET client_min_messages TO 'WARNING';
 
@@ -37,23 +37,23 @@ BEGIN
 
   -- One point
   PREPARE edges AS
-  SELECT id, the_geom AS geom FROM edge_table;
+  SELECT id, geom  FROM edges;
   PREPARE edges1 AS
-  SELECT id FROM edge_table;
+  SELECT id FROM edges;
   PREPARE edges2 AS
-  SELECT the_geom AS geom FROM edge_table;
+  SELECT geom FROM edges;
 
   PREPARE query_1 AS
-  SELECT * FROM pgr_findCloseEdges('edges', (SELECT the_geom FROM pointsOfInterest WHERE pid = 5), 0.5);
+  SELECT * FROM pgr_findCloseEdges('edges', (SELECT geom FROM pointsOfInterest WHERE pid = 5), 0.5);
   PREPARE query_2 AS
-  SELECT * FROM pgr_findCloseEdges('edges', (SELECT the_geom FROM pointsOfInterest WHERE pid = 5), 0.5, 2);
+  SELECT * FROM pgr_findCloseEdges('edges', (SELECT geom FROM pointsOfInterest WHERE pid = 5), 0.5, 2);
   PREPARE query_3 AS
-  SELECT * FROM pgr_findCloseEdges('edges', (SELECT the_geom FROM pointsOfInterest WHERE pid = 5), 0.5, 2, dryrun => true);
+  SELECT * FROM pgr_findCloseEdges('edges', (SELECT geom FROM pointsOfInterest WHERE pid = 5), 0.5, 2, dryrun => true);
 
   PREPARE err1 AS
-  SELECT * FROM pgr_findCloseEdges('edges1',(SELECT the_geom FROM pointsOfInterest WHERE pid = 5), 0.5);
+  SELECT * FROM pgr_findCloseEdges('edges1',(SELECT geom FROM pointsOfInterest WHERE pid = 5), 0.5);
   PREPARE err2 AS
-  SELECT * FROM pgr_findCloseEdges('edges2',(SELECT the_geom FROM pointsOfInterest WHERE pid = 5), 0.5);
+  SELECT * FROM pgr_findCloseEdges('edges2',(SELECT geom FROM pointsOfInterest WHERE pid = 5), 0.5);
 
   RETURN QUERY SELECT lives_ok('query_1', 'With defaults');
   RETURN QUERY SELECT lives_ok('query_2', 'two rows');
@@ -66,16 +66,16 @@ BEGIN
 
   -- Many points
   PREPARE query_4 AS
-  SELECT * FROM pgr_findCloseEdges('edges', (SELECT array_agg(the_geom) FROM pointsOfInterest), 0.5);
+  SELECT * FROM pgr_findCloseEdges('edges', (SELECT array_agg(geom) FROM pointsOfInterest), 0.5);
   PREPARE query_5 AS
-  SELECT * FROM pgr_findCloseEdges('edges', (SELECT array_agg(the_geom) FROM pointsOfInterest), 0.5, 2);
+  SELECT * FROM pgr_findCloseEdges('edges', (SELECT array_agg(geom) FROM pointsOfInterest), 0.5, 2);
   PREPARE query_6 AS
-  SELECT * FROM pgr_findCloseEdges('edges', (SELECT array_agg(the_geom) FROM pointsOfInterest), 0.5, 2, dryrun => true);
+  SELECT * FROM pgr_findCloseEdges('edges', (SELECT array_agg(geom) FROM pointsOfInterest), 0.5, 2, dryrun => true);
 
   PREPARE err3 AS
-  SELECT * FROM pgr_findCloseEdges('edges1',(SELECT array_agg(the_geom) FROM pointsOfInterest), 0.5);
+  SELECT * FROM pgr_findCloseEdges('edges1',(SELECT array_agg(geom) FROM pointsOfInterest), 0.5);
   PREPARE err4 AS
-  SELECT * FROM pgr_findCloseEdges('edges2',(SELECT array_agg(the_geom) FROM pointsOfInterest), 0.5);
+  SELECT * FROM pgr_findCloseEdges('edges2',(SELECT array_agg(geom) FROM pointsOfInterest), 0.5);
 
   RETURN QUERY SELECT lives_ok('query_4', 'With defaults');
   RETURN QUERY SELECT lives_ok('query_5', 'two rows');

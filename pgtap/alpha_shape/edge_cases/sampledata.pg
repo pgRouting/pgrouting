@@ -23,14 +23,14 @@ BEGIN;
 Test for old code VS new code results
 Data from sample data of the documentation
 */
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(54);
 
 PREPARE q1 AS
-SELECT ST_area(pgr_alphaShape) FROM pgr_alphaShape((SELECT ST_Collect(the_geom) FROM edge_table));
+SELECT ST_area(pgr_alphaShape) FROM pgr_alphaShape((SELECT ST_Collect(geom) FROM edges));
 
 PREPARE q2 AS
-SELECT ST_area(pgr_alphaShape((SELECT ST_Collect(the_geom) FROM edge_table), 1.582));
+SELECT ST_area(pgr_alphaShape((SELECT ST_Collect(geom) FROM edges), 1.582));
 
 SELECT CASE WHEN _pgr_versionless((SELECT boost from pgr_full_version()), '1.54.0')
     THEN skip('pgr_alphaSahpe not supported when compiled with Boost version < 1.54.0', 2)
@@ -40,25 +40,25 @@ SELECT CASE WHEN _pgr_versionless((SELECT boost from pgr_full_version()), '1.54.
         )
     END;
 
-SELECT alphaShape_tester('edge_table', 'the_geom', 0, false, 11.75, 9);
-SELECT alphaShape_tester('edge_table', 'the_geom', 1.582, false, 11.75, 9);
+SELECT alphaShape_tester('edges', 'geom', 0, false, 11.75, 9);
+SELECT alphaShape_tester('edges', 'geom', 1.582, false, 11.75, 9);
 
 -- next area
-SELECT alphaShape_tester('edge_table', 'the_geom', 1.581, false, 9.75, 12);
+SELECT alphaShape_tester('edges', 'geom', 1.581, false, 9.75, 12);
 
 -- some additional values for spoon radius
-SELECT alphaShape_tester('edge_table', 'the_geom', 1.5, false, 9.75, 12);
-SELECT alphaShape_tester('edge_table', 'the_geom', 1.4, false, 9.75, 12);
-SELECT alphaShape_tester('edge_table', 'the_geom', 1.3, false, 9.75, 12);
-SELECT alphaShape_tester('edge_table', 'the_geom', 1.2, false, 9.75, 12);
-SELECT alphaShape_tester('edge_table', 'the_geom', 1.1, false, 9.75, 12);
-SELECT alphaShape_tester('edge_table', 'the_geom', 1.0, false, 9.75, 12);
-SELECT alphaShape_tester('edge_table', 'the_geom', 0.9, false, 9.75, 12);
-SELECT alphaShape_tester('edge_table', 'the_geom', 0.8, false, 8, 12);
-SELECT alphaShape_tester('edge_table', 'the_geom', 0.7, false, 1.75, 10);
+SELECT alphaShape_tester('edges', 'geom', 1.5, false, 9.75, 12);
+SELECT alphaShape_tester('edges', 'geom', 1.4, false, 9.75, 12);
+SELECT alphaShape_tester('edges', 'geom', 1.3, false, 9.75, 12);
+SELECT alphaShape_tester('edges', 'geom', 1.2, false, 9.75, 12);
+SELECT alphaShape_tester('edges', 'geom', 1.1, false, 9.75, 12);
+SELECT alphaShape_tester('edges', 'geom', 1.0, false, 9.75, 12);
+SELECT alphaShape_tester('edges', 'geom', 0.9, false, 9.75, 12);
+SELECT alphaShape_tester('edges', 'geom', 0.8, false, 8, 12);
+SELECT alphaShape_tester('edges', 'geom', 0.7, false, 1.75, 10);
 
 -- no area
-SELECT alphaShape_tester('edge_table', 'the_geom', 0.4301, true, 0, 0);
+SELECT alphaShape_tester('edges', 'geom', 0.4301, true, 0, 0);
 
 SELECT finish();
 ROLLBACK;

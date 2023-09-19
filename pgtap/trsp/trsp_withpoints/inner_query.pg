@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT CASE WHEN min_version('3.4.0') THEN plan(492) ELSE plan(1) END;
 
 
@@ -33,25 +33,25 @@ BEGIN
 
   -- ONE TO ONE
   RETURN QUERY SELECT style_dijkstra('pgr_trsp_withPoints(', ', $$SELECT * from restrictions$$, $$SELECT * from pointsOfInterest$$, 2, 3, false)');
-  RETURN QUERY SELECT innerquery_restrictions('pgr_trsp_withPoints($$SELECT * FROM edge_table$$,', ',$$SELECT * from pointsOfInterest$$, 2, 3, false)');
-  RETURN QUERY SELECT innerquery_points('pgr_trsp_withPoints($$SELECT * FROM edge_table$$,$$SELECT * from restrictions$$,', ', 2, 3, false)');
+  RETURN QUERY SELECT innerquery_restrictions('pgr_trsp_withPoints($$SELECT * FROM edges$$,', ',$$SELECT * from pointsOfInterest$$, 2, 3, false)');
+  RETURN QUERY SELECT innerquery_points('pgr_trsp_withPoints($$SELECT * FROM edges$$,$$SELECT * from restrictions$$,', ', 2, 3, false)');
   -- ONE TO MANY
   RETURN QUERY SELECT style_dijkstra('pgr_trsp_withPoints(', ', $$SELECT * from restrictions$$,$$SELECT * from pointsOfInterest$$, 2, ARRAY[3], false)');
-  RETURN QUERY SELECT innerquery_restrictions('pgr_trsp_withPoints($$SELECT * FROM edge_table$$,', ',$$SELECT * from pointsOfInterest$$, 2, ARRAY[3], false)');
-  RETURN QUERY SELECT innerquery_points('pgr_trsp_withPoints($$SELECT * FROM edge_table$$,$$SELECT * from restrictions$$,', ', 2, ARRAY[3], false)');
+  RETURN QUERY SELECT innerquery_restrictions('pgr_trsp_withPoints($$SELECT * FROM edges$$,', ',$$SELECT * from pointsOfInterest$$, 2, ARRAY[3], false)');
+  RETURN QUERY SELECT innerquery_points('pgr_trsp_withPoints($$SELECT * FROM edges$$,$$SELECT * from restrictions$$,', ', 2, ARRAY[3], false)');
   -- MANY TO ONE
   RETURN QUERY SELECT style_dijkstra('pgr_trsp_withPoints(', ', $$SELECT * from restrictions$$,$$SELECT * from pointsOfInterest$$, ARRAY[2], 3, false)');
-  RETURN QUERY SELECT innerquery_restrictions('pgr_trsp_withPoints($$SELECT * FROM edge_table$$,', ',$$SELECT * from pointsOfInterest$$, ARRAY[2], 3, false)');
-  RETURN QUERY SELECT innerquery_points('pgr_trsp_withPoints($$SELECT * FROM edge_table$$,$$SELECT * from restrictions$$,', ', ARRAY[2], 3, false)');
+  RETURN QUERY SELECT innerquery_restrictions('pgr_trsp_withPoints($$SELECT * FROM edges$$,', ',$$SELECT * from pointsOfInterest$$, ARRAY[2], 3, false)');
+  RETURN QUERY SELECT innerquery_points('pgr_trsp_withPoints($$SELECT * FROM edges$$,$$SELECT * from restrictions$$,', ', ARRAY[2], 3, false)');
   -- MANY TO MANY
   RETURN QUERY SELECT style_dijkstra('pgr_trsp_withPoints(', ', $$SELECT * from restrictions$$,$$SELECT * from pointsOfInterest$$, ARRAY[2], ARRAY[3], false)');
-  RETURN QUERY SELECT innerquery_restrictions('pgr_trsp_withPoints($$SELECT * FROM edge_table$$,', ',$$SELECT * from pointsOfInterest$$, ARRAY[2], ARRAY[3], false)');
-  RETURN QUERY SELECT innerquery_points('pgr_trsp_withPoints($$SELECT * FROM edge_table$$,$$SELECT * from restrictions$$,', ', ARRAY[2], ARRAY[3], false)');
+  RETURN QUERY SELECT innerquery_restrictions('pgr_trsp_withPoints($$SELECT * FROM edges$$,', ',$$SELECT * from pointsOfInterest$$, ARRAY[2], ARRAY[3], false)');
+  RETURN QUERY SELECT innerquery_points('pgr_trsp_withPoints($$SELECT * FROM edges$$,$$SELECT * from restrictions$$,', ', ARRAY[2], ARRAY[3], false)');
   -- COMBINATIONS
-  RETURN QUERY SELECT style_dijkstra('pgr_trsp_withPoints(', ', $$SELECT * from restrictions$$,$$SELECT * from pointsOfInterest$$, $$SELECT * FROM combinations_table$$, false)');
-  RETURN QUERY SELECT innerquery_restrictions('pgr_trsp_withPoints($$SELECT * FROM edge_table$$,', ',$$SELECT * from pointsOfInterest$$, $$SELECT * FROM combinations_table$$, false)');
-  RETURN QUERY SELECT innerquery_points('pgr_trsp_withPoints($$SELECT * FROM edge_table$$,$$SELECT * from restrictions$$,', ', $$SELECT * FROM combinations_table$$, false)');
-  RETURN QUERY SELECT innerquery_combinations('pgr_trsp_withPoints($$SELECT * FROM edge_table$$,$$SELECT * from restrictions$$,$$SELECT * from pointsOfInterest$$,',', false)');
+  RETURN QUERY SELECT style_dijkstra('pgr_trsp_withPoints(', ', $$SELECT * from restrictions$$,$$SELECT * from pointsOfInterest$$, $$SELECT * FROM combinations$$, false)');
+  RETURN QUERY SELECT innerquery_restrictions('pgr_trsp_withPoints($$SELECT * FROM edges$$,', ',$$SELECT * from pointsOfInterest$$, $$SELECT * FROM combinations$$, false)');
+  RETURN QUERY SELECT innerquery_points('pgr_trsp_withPoints($$SELECT * FROM edges$$,$$SELECT * from restrictions$$,', ', $$SELECT * FROM combinations$$, false)');
+  RETURN QUERY SELECT innerquery_combinations('pgr_trsp_withPoints($$SELECT * FROM edges$$,$$SELECT * from restrictions$$,$$SELECT * from pointsOfInterest$$,',', false)');
 
 END
 $BODY$

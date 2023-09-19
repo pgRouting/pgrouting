@@ -18,7 +18,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(49);
 SET client_min_messages TO WARNING;
 SELECT has_function('pgr_contraction');
@@ -69,7 +69,7 @@ BEGIN
     END IF;
     start_sql = start_sql || p || ', ';
 END LOOP;
-end_sql = ' FROM edge_table $$, ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true)';
+end_sql = ' FROM edges $$, ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true)';
 
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
@@ -109,7 +109,7 @@ BEGIN
     END IF;
     start_sql = start_sql || p || ', ';
 END LOOP;
-end_sql = ' FROM edge_table $$, ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true)';
+end_sql = ' FROM edges $$, ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true)';
 
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
@@ -162,27 +162,27 @@ SELECT test_anyNumerical('pgr_contraction',
 PREPARE q10 AS
 SELECT *
 FROM pgr_contraction(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT id, source, target, cost, reverse_cost FROM edges',
     ARRAY[1]::integer[]);
 
 
 PREPARE q11 AS
 SELECT *
 FROM pgr_contraction(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT id, source, target, cost, reverse_cost FROM edges',
     ARRAY[1]::integer[], directed:= true);
 
 PREPARE q12 AS
 SELECT *
 FROM pgr_contraction(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT id, source, target, cost, reverse_cost FROM edges',
     ARRAY[1]::integer[], directed:= false);
 
 
 PREPARE q13 AS
 SELECT *
 FROM pgr_contraction(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT id, source, target, cost, reverse_cost FROM edges',
     ARRAY[1]::integer[], max_cycles:= 1, directed:= false);
 
 
@@ -191,53 +191,53 @@ FROM pgr_contraction(
 PREPARE q1 AS
 SELECT *
 FROM pgr_contraction(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT id, source, target, cost, reverse_cost FROM edges',
     ARRAY[1]::integer[], 1, ARRAY[ [2,3,4,5], [4,5,6,7] ]::integer[][], true);
 
 -- Contraction order array cannot be empty
 PREPARE q2 AS
 SELECT *
 FROM pgr_contraction(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT id, source, target, cost, reverse_cost FROM edges',
     ARRAY[]::integer[], 1, ARRAY[]::integer[], true);
 
 -- Forbidden vertices should be an integer array
 PREPARE q3 AS
 SELECT * FROM pgr_contraction(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT id, source, target, cost, reverse_cost FROM edges',
 ARRAY[1]::integer[], 1, ARRAY[ ]::integer[], true);
 
 PREPARE q4 AS
 SELECT * FROM pgr_contraction(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT id, source, target, cost, reverse_cost FROM edges',
 ARRAY[1]::integer[], 1, ARRAY[ ]::bigint[], true);
 
 PREPARE q5 AS
 SELECT * FROM pgr_contraction(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT id, source, target, cost, reverse_cost FROM edges',
 ARRAY[1]::integer[], 1, ARRAY[ ]::smallint[], true);
 
 /*
 PREPARE q5 AS
 SELECT * FROM pgr_contraction(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT id, source, target, cost, reverse_cost FROM edges',
 ARRAY[ ]::bigint[], ARRAY[0]::FLOAT8[], 1, true);
 */
 
 -- Contraction order array should be an integer array
 PREPARE q7 AS
 SELECT * FROM pgr_contraction(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT id, source, target, cost, reverse_cost FROM edges',
 ARRAY[1]::bigint[], 1, ARRAY[ ]::bigint[], true);
 
 PREPARE q8 AS
 SELECT * FROM pgr_contraction(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT id, source, target, cost, reverse_cost FROM edges',
 ARRAY[1]::integer[], 1, ARRAY[ ]::bigint[]);
 
 PREPARE q9 AS
 SELECT * FROM pgr_contraction(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    'SELECT id, source, target, cost, reverse_cost FROM edges',
 ARRAY[1]::smallint[], 1, ARRAY[ ]::bigint[]);
 
 SELECT throws_ok('q1', 'XX000', 'One dimension expected',

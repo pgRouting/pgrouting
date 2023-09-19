@@ -19,646 +19,646 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(39);
 
 SET client_min_messages TO WARNING;
 -- TESTING ONE CYCLE OF DEAD END CONTRACTION FOR A DIRECTED GRAPH
 
--- GRAPH: 1 <=> 2
-PREPARE graph_e_1 AS
-SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1 ORDER BY id;
+-- GRAPH: 5 <=> 6
+PREPARE graph_e_5 AS
+SELECT id, source, target, cost, reverse_cost FROM edges WHERE id = 5 ORDER BY id;
 
--- GRAPH: 4 -> 3 -> 2
-PREPARE graph_e_2_3 AS
-SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (2, 3) ORDER BY id;
+-- GRAPH: 15 -> 10 -> 6
+PREPARE graph_e_6_10 AS
+SELECT id, source, target, cost, reverse_cost FROM edges WHERE id IN (2, 3) ORDER BY id;
 
--- GRAPH: 6 -> 11 <- 10
-PREPARE graph_e_11_12 AS
-SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (11, 12) ORDER BY id;
+-- GRAPH: 11 -> 12 <- 8
+PREPARE graph_e_12_17 AS
+SELECT id, source, target, cost, reverse_cost FROM edges WHERE id IN (11, 12) ORDER BY id;
 
--- GRAPH: 3 -> 2   10 -> 11
-PREPARE graph_e_2_12 AS
-SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (2, 12) ORDER BY id;
+-- GRAPH: 10 -> 6   8 -> 12
+PREPARE graph_e_6_17 AS
+SELECT id, source, target, cost, reverse_cost FROM edges WHERE id IN (2, 12) ORDER BY id;
 
--- GRAPH: 3 -> 6 -> 11 -> 12
-PREPARE graph_e_5_11_13 AS
-SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (5, 11, 13) ORDER BY id;
+-- GRAPH: 10 -> 11 -> 12 -> 17
+PREPARE graph_e_7_12_9 AS
+SELECT id, source, target, cost, reverse_cost FROM edges WHERE id IN (5, 11, 13) ORDER BY id;
 
--- GRAPH: 4-> 3 -> 2   10 -> 11
-PREPARE graph_e_2_3_12 AS
-SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (2, 3, 12) ORDER BY id;
+-- GRAPH: 15-> 10 -> 6   8 -> 12
+PREPARE graph_e_6_10_17 AS
+SELECT id, source, target, cost, reverse_cost FROM edges WHERE id IN (2, 3, 12) ORDER BY id;
 
--- GRAPH: 1 <=> 2  4 -> 3  7 <=> 8
-PREPARE graph_e_1_3_6 AS
-SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (1, 3, 6) ORDER BY id;
+-- GRAPH: 5 <=> 6  15 -> 10  1 <=> 3
+PREPARE graph_e_5_10_11 AS
+SELECT id, source, target, cost, reverse_cost FROM edges WHERE id IN (1, 3, 6) ORDER BY id;
 
--- GRAPH: 4 -> 3 -> 2   3 -> 6 -> 11
-PREPARE graph_e_2_3_5_11 AS
-SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (2, 3, 5, 11) ORDER BY id;
+-- GRAPH: 15 -> 10 -> 6   10 -> 11 -> 12
+PREPARE graph_e_6_10_7_12 AS
+SELECT id, source, target, cost, reverse_cost FROM edges WHERE id IN (2, 3, 5, 11) ORDER BY id;
 
 -- SINGLE EDGE
--- GRAPH: 1 <=> 2
+-- GRAPH: 5 <=> 6
 -- no forbidden vertices
-PREPARE v2e1q10 AS
+PREPARE v6e5q8 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_1',
-    ARRAY[1]::integer[], 1, ARRAY[]::integer[], true);
+    'graph_e_5',
+    ARRAY[1]::integer[], 5, ARRAY[]::integer[], true);
 
-PREPARE v2e1q11 AS
+PREPARE v6e5q12 AS
 SELECT *
-FROM (VALUES ('v', 2, ARRAY[1]::BIGINT[], -1, -1, -1) ) AS t(type, id, contracted_vertices, source, target, cost ) ;
+FROM (VALUES ('v', 11, ARRAY[10]::BIGINT[], -1, -1, -1) ) AS t(type, id, contracted_vertices, source, target, cost ) ;
 
-SELECT set_eq('v2e1q10', 'v2e1q11', 'graph_e_1 QUERY 1: Directed graph with single edge and no forbidden vertices');
+SELECT set_eq('v6e5q8', 'v6e5q12', 'graph_e_5 QUERY 5: Directed graph with single edge and no forbidden vertices');
 
--- GRAPH: 1 <=> 2
--- 1 is forbidden vertex
+-- GRAPH: 5 <=> 6
+-- 5 is forbidden vertex
 
-PREPARE v2e1q20 AS
+PREPARE v6e5q60 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_1',
-    ARRAY[1]::integer[], 1, ARRAY[1]::INTEGER[], true);
+    'graph_e_5',
+    ARRAY[1]::integer[], 5, ARRAY[5]::INTEGER[], true);
 
-PREPARE v2e1q21 AS
+PREPARE v6e5q65 AS
 SELECT *
-FROM ( VALUES ('v', 1, ARRAY[2]::BIGINT[], -1, -1, -1) ) AS t(type, id, contracted_vertices, source, target, cost ) ;
+FROM ( VALUES ('v', 11, ARRAY[10]::BIGINT[], -1, -1, -1) ) AS t(type, id, contracted_vertices, source, target, cost ) ;
 
 
-SELECT set_eq('v2e1q20', 'v2e1q21', 'graph_e_1 QUERY 2: Directed graph with single edge and 1 as forbidden vertex');
+SELECT set_eq('v6e5q60', 'v6e5q65', 'graph_e_5 QUERY 6: Directed graph with single edge and 5 as forbidden vertex');
 
 
 -- TWO QUERY
--- GRAPH: 4 -> 3 -> 2
+-- GRAPH: 15 -> 10 -> 6
 -- no forbidden vertices
-PREPARE v3e2q10 AS
+PREPARE v10e6q8 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_2_3',
-    ARRAY[1]::integer[], 1, ARRAY[]::integer[], true);
+    'graph_e_6_10',
+    ARRAY[1]::integer[], 5, ARRAY[]::integer[], true);
 
-PREPARE v3e2q11 AS
+PREPARE v10e6q12 AS
 SELECT *
-FROM ( VALUES ('v', 4, ARRAY[2, 3]::BIGINT[], -1, -1, -1) ) AS t(type, id, contracted_vertices, source, target, cost ) ;
+FROM ( VALUES ('v', 15, ARRAY[6, 10]::BIGINT[], -1, -1, -1) ) AS t(type, id, contracted_vertices, source, target, cost ) ;
 
-SELECT set_eq('v3e2q10', 'v3e2q11', 'graph_e_2_3 QUERY 1: Directed graph two edges and no forbidden vertices');
+SELECT set_eq('v10e6q8', 'v10e6q12', 'graph_e_6_10 QUERY 5: Directed graph two edges and no forbidden vertices');
 
--- GRAPH: 4 -> 3 -> 2
--- 3 is forbidden
-PREPARE v3e2q20 AS
+-- GRAPH: 15 -> 10 -> 6
+-- 10 is forbidden
+PREPARE v10e6q60 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_2_3',
-    ARRAY[1]::INTEGER[], 1, ARRAY[3]::integer[], true);
+    'graph_e_6_10',
+    ARRAY[1]::INTEGER[], 5, ARRAY[10]::integer[], true);
 
-PREPARE v3e2q21 AS
+PREPARE v10e6q65 AS
 SELECT type, id, contracted_vertices, source, target, cost
-FROM ( VALUES ('v', 3, ARRAY[2,4]::BIGINT[], -1, -1, -1) ) AS t(type, id, contracted_vertices, source, target, cost ) ;
+FROM ( VALUES ('v', 10, ARRAY[6,15]::BIGINT[], -1, -1, -1) ) AS t(type, id, contracted_vertices, source, target, cost ) ;
 
-SELECT set_eq('v3e2q20', 'v3e2q21', 'graph_e_2_3 QUERY 2: Directed graph with two edges and vertex 3 as forbidden vertex');
+SELECT set_eq('v10e6q60', 'v10e6q65', 'graph_e_6_10 QUERY 6: Directed graph with two edges and vertex 10 as forbidden vertex');
 
--- GRAPH: 4 -> 3 -> 2
--- 2 is forbidden
-PREPARE v3e2q30 AS
+-- GRAPH: 15 -> 10 -> 6
+-- 6 is forbidden
+PREPARE v10e6q100 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_2_3',
-    ARRAY[1]::INTEGER[], 1, ARRAY[2]::integer[], true);
+    'graph_e_6_10',
+    ARRAY[1]::INTEGER[], 5, ARRAY[6]::integer[], true);
 
-PREPARE v3e2q31 AS
+PREPARE v10e6q105 AS
 SELECT *
-FROM ( VALUES ('v', 2, ARRAY[3,4]::BIGINT[], -1, -1, -1) ) AS t(type, id, contracted_vertices, source, target, cost ) ;
+FROM ( VALUES ('v', 6, ARRAY[10,15]::BIGINT[], -1, -1, -1) ) AS t(type, id, contracted_vertices, source, target, cost ) ;
 
-SELECT set_eq('v3e2q30', 'v3e2q31', 'graph_e_2_3 QUERY 3: Directed graph with two edges and vertex 2 as forbidden vertex');
+SELECT set_eq('v10e6q100', 'v10e6q105', 'graph_e_6_10 QUERY 10: Directed graph with two edges and vertex 6 as forbidden vertex');
 
--- GRAPH: 6 -> 11 <- 10
+-- GRAPH: 11 -> 12 <- 8
 -- no forbidden vertices
-PREPARE v3e2q40 AS
+PREPARE v10e6q150 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_11_12',
-    ARRAY[1]::integer[], 1, ARRAY[]::integer[], true);
+    'graph_e_12_17',
+    ARRAY[1]::integer[], 5, ARRAY[]::integer[], true);
 
-PREPARE v3e2q41 AS
+PREPARE v10e6q155 AS
 SELECT *
-FROM (VALUES ('v', 10, ARRAY[6,11]::BIGINT[], -1, -1, -1) ) AS t(type, id, contracted_vertices, source, target, cost ) ;
+FROM (VALUES ('v', 8, ARRAY[11,12]::BIGINT[], -1, -1, -1) ) AS t(type, id, contracted_vertices, source, target, cost ) ;
 
-SELECT set_eq('v3e2q40', 'v3e2q41', 'graph_e_11_12 QUERY 1: Directed graph with two edges and no forbidden vertices');
+SELECT set_eq('v10e6q150', 'v10e6q155', 'graph_e_12_17 QUERY 5: Directed graph with two edges and no forbidden vertices');
 
 
--- GRAPH: 6 -> 11 <- 10
--- 11 is forbidden
-PREPARE v3e2q50 AS
+-- GRAPH: 11 -> 12 <- 8
+-- 12 is forbidden
+PREPARE v10e6q70 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_11_12',
-    ARRAY[1]::INTEGER[], 1, ARRAY[11]::integer[], true);
+    'graph_e_12_17',
+    ARRAY[1]::INTEGER[], 5, ARRAY[12]::integer[], true);
 
-PREPARE v3e2q51 AS
+PREPARE v10e6q75 AS
 SELECT *
-FROM (VALUES ('v', 11, ARRAY[6,10]::BIGINT[], -1, -1, -1) ) AS t(type, id, contracted_vertices, source, target, cost ) ;
+FROM (VALUES ('v', 12, ARRAY[8,11]::BIGINT[], -1, -1, -1) ) AS t(type, id, contracted_vertices, source, target, cost ) ;
 
-SELECT set_eq('v3e2q50', 'v3e2q51', 'graph_e_11_12 QUERY 2: Directed graph with two edges and no forbidden vertices');
+SELECT set_eq('v10e6q70', 'v10e6q75', 'graph_e_12_17 QUERY 6: Directed graph with two edges and no forbidden vertices');
 
--- GRAPH: 3 -> 2   10 <=> 11
+-- GRAPH: 10 -> 6   8 <=> 12
 -- no forbidden
-PREPARE v3e2q60 AS
+PREPARE v10e6q110 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_2_12',
-    ARRAY[1]::integer[], 1, ARRAY[]::integer[], true);
+    'graph_e_6_17',
+    ARRAY[1]::integer[], 5, ARRAY[]::integer[], true);
 
-PREPARE v3e2q61 AS
+PREPARE v10e6q115 AS
 SELECT *
 FROM (VALUES
-    ('v', 3, ARRAY[2]::BIGINT[], -1, -1, -1),
-    ('v', 11, ARRAY[10]::integer[], -1, -1, -1)
+    ('v', 10, ARRAY[6]::BIGINT[], -1, -1, -1),
+    ('v', 12, ARRAY[8]::integer[], -1, -1, -1)
 ) AS t(type, id, contracted_vertices, source, target, cost );
 
-SELECT set_eq('v3e2q60', 'v3e2q61', 'graph_e_2_12 QUERY 1: Directed graph with two edges and no forbidden vertices');
+SELECT set_eq('v10e6q110', 'v10e6q115', 'graph_e_6_17 QUERY 5: Directed graph with two edges and no forbidden vertices');
 
--- GRAPH: 3 -> 2   10 <=> 11
--- 2 is forbidden
-PREPARE v3e2q70 AS
+-- GRAPH: 10 -> 6   8 <=> 12
+-- 6 is forbidden
+PREPARE v10e6q10 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_2_12',
-    ARRAY[1]::INTEGER[], 1, ARRAY[2]::integer[], true);
+    'graph_e_6_17',
+    ARRAY[1]::INTEGER[], 5, ARRAY[6]::integer[], true);
 
-PREPARE v3e2q71 AS
+PREPARE v10e6q15 AS
 SELECT *
 FROM (VALUES
-    ('v', 2, ARRAY[3]::BIGINT[], -1, -1, -1),
-    ('v', 11, ARRAY[10]::BIGINT[], -1, -1, -1)
+    ('v', 6, ARRAY[10]::BIGINT[], -1, -1, -1),
+    ('v', 12, ARRAY[8]::BIGINT[], -1, -1, -1)
 ) AS t(type, id, contracted_vertices, source, target, cost );
 
-SELECT set_eq('v3e2q70', 'v3e2q71', 'graph_e_2_12 QUERY 2: Directed graph with two edges and 2 is forbidden vertex');
+SELECT set_eq('v10e6q10', 'v10e6q15', 'graph_e_6_17 QUERY 6: Directed graph with two edges and 6 is forbidden vertex');
 
--- GRAPH: 3 -> 2   10 <=> 11
--- 11 is forbidden
-PREPARE v3e2q80 AS
+-- GRAPH: 10 -> 6   8 <=> 12
+-- 12 is forbidden
+PREPARE v10e6q30 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_2_12',
-    ARRAY[1]::INTEGER[], 1, ARRAY[11]::integer[], true);
+    'graph_e_6_17',
+    ARRAY[1]::INTEGER[], 5, ARRAY[12]::integer[], true);
 
-PREPARE v3e2q81 AS
+PREPARE v10e6q35 AS
 SELECT *
 FROM (VALUES
-    ('v', 3, ARRAY[2]::BIGINT[], -1, -1, -1),
-    ('v', 11, ARRAY[10]::BIGINT[], -1, -1, -1)
+    ('v', 10, ARRAY[6]::BIGINT[], -1, -1, -1),
+    ('v', 12, ARRAY[8]::BIGINT[], -1, -1, -1)
 ) AS t(type, id, contracted_vertices, source, target, cost );
 
-SELECT set_eq('v3e2q80', 'v3e2q81', 'graph_e_2_12 QUERY 3: Directed graph with two edges and 11 is forbidden vertex');
+SELECT set_eq('v10e6q30', 'v10e6q35', 'graph_e_6_17 QUERY 10: Directed graph with two edges and 12 is forbidden vertex');
 
 
 -- THREE QUERY
--- GRAPH: 3 -> 6 -> 11 -> 12
+-- GRAPH: 10 -> 11 -> 12 -> 17
 -- no forbidden vertices
-PREPARE v4e3q10 AS
+PREPARE v15e10q8 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_5_11_13',
-    ARRAY[1]::integer[], 1, ARRAY[]::integer[], true);
+    'graph_e_7_12_9',
+    ARRAY[1]::integer[], 5, ARRAY[]::integer[], true);
 
-PREPARE v4e3q11 AS
+PREPARE v15e10q12 AS
 SELECT *
 FROM (VALUES
-    ('v', 12, ARRAY[3, 6, 11]::BIGINT[], -1, -1, -1)
+    ('v', 17, ARRAY[10, 11, 12]::BIGINT[], -1, -1, -1)
 ) AS t(type, id, contracted_vertices, source, target, cost );
 
-SELECT set_eq('v4e3q10', 'v4e3q11', 'graph_e_5_11_13 QUERY 1: Directed graph with three edges and no forbidden vertices');
+SELECT set_eq('v15e10q8', 'v15e10q12', 'graph_e_7_12_9 QUERY 5: Directed graph with three edges and no forbidden vertices');
 
--- GRAPH: 3 -> 6 -> 11 -> 12
--- 3 is forbidden
-PREPARE v4e3q20 AS
+-- GRAPH: 10 -> 11 -> 12 -> 17
+-- 10 is forbidden
+PREPARE v15e10q60 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_5_11_13',
-    ARRAY[1]::INTEGER[], 1, ARRAY[3]::integer[], true);
+    'graph_e_7_12_9',
+    ARRAY[1]::INTEGER[], 5, ARRAY[10]::integer[], true);
 
-PREPARE v4e3q21 AS
+PREPARE v15e10q65 AS
 SELECT *
 FROM (VALUES
-    ('v', 3, ARRAY[6, 11, 12]::BIGINT[], -1, -1, -1)
+    ('v', 10, ARRAY[11, 12, 17]::BIGINT[], -1, -1, -1)
 ) AS t(type, id, contracted_vertices, source, target, cost );
 
-SELECT set_eq('v4e3q20', 'v4e3q21', 'graph_e_5_11_13 QUERY 2: Directed graph with three edges and 3 is forbidden vertex');
+SELECT set_eq('v15e10q60', 'v15e10q65', 'graph_e_7_12_9 QUERY 6: Directed graph with three edges and 10 is forbidden vertex');
 
 
--- GRAPH: 3 -> 6 -> 11 -> 12
+-- GRAPH: 10 -> 11 -> 12 -> 17
+-- 11 is forbidden
+PREPARE v15e10q100 AS
+SELECT * FROM pgr_contraction(
+    'graph_e_7_12_9',
+    ARRAY[1]::INTEGER[], 5, ARRAY[11]::integer[], true);
+
+PREPARE v15e10q105 AS
+SELECT *
+FROM (VALUES
+    ('v', 11, ARRAY[10, 12, 17]::BIGINT[], -1, -1, -1)
+) AS t(type, id, contracted_vertices, source, target, cost );
+
+SELECT set_eq('v15e10q100', 'v15e10q105', 'graph_e_7_12_9 QUERY 10: Directed graph with three edges and 11 is forbidden vertex');
+
+
+-- GRAPH: 10 -> 11 -> 12 -> 17
+-- 12 is forbidden
+PREPARE v15e10q150 AS
+SELECT * FROM pgr_contraction(
+    'graph_e_7_12_9',
+    ARRAY[1]::INTEGER[], 5, ARRAY[12]::integer[], true);
+
+PREPARE v15e10q155 AS
+SELECT *
+FROM (VALUES
+    ('v', 12, ARRAY[10,11,17]::BIGINT[], -1, -1, -1)
+) AS t(type, id, contracted_vertices, source, target, cost );
+SELECT set_eq('v15e10q150', 'v15e10q155', 'graph_e_7_12_9 QUERY 15: Directed graph with three edges and 12 is forbidden vertex');
+
+-- GRAPH: 10 -> 11 -> 12 -> 17
+-- forbidden: 10, 11, 17
+PREPARE v15e10q70 AS
+SELECT * FROM pgr_contraction(
+    'graph_e_7_12_9',
+    ARRAY[1]::INTEGER[], 5, ARRAY[10,11,17]::integer[], true);
+
+SELECT is_empty('v15e10q70', 'graph_e_7_12_9 QUERY 7: Directed graph with three edges and 17 is forbidden vertex');
+
+-- GRAPH: 15-> 10 -> 6   8 -> 12
+-- no forbidden vertices
+PREPARE v7e10q8 AS
+SELECT * FROM pgr_contraction(
+    'graph_e_6_10_17',
+    ARRAY[1]::integer[], 5, ARRAY[]::integer[], true);
+
+PREPARE v7e10q12 AS
+SELECT *
+FROM (VALUES
+    ('v', 15, ARRAY[6, 10]::BIGINT[], -1, -1, -1),
+    ('v', 12, ARRAY[8], -1, -1, -1)
+) AS t(type, id, contracted_vertices, source, target, cost );
+
+SELECT set_eq('v7e10q8', 'v7e10q12', 'graph_e_6_10_17 QUERY 5: Directed graph with three edges and no forbidden vertices');
+
+-- GRAPH: 15-> 10 -> 6   8 -> 12
+-- 12 is forbidden
+PREPARE v7e10q60 AS
+SELECT * FROM pgr_contraction(
+    'graph_e_6_10_17',
+    ARRAY[1]::INTEGER[], 5, ARRAY[12]::integer[], true);
+
+PREPARE v7e10q65 AS
+SELECT *
+FROM (VALUES
+    ('v', 15, ARRAY[6, 10]::BIGINT[], -1, -1, -1),
+    ('v', 12, ARRAY[8], -1, -1, -1)
+) AS t(type, id, contracted_vertices, source, target, cost );
+
+SELECT set_eq('v7e10q60', 'v7e10q65', 'graph_e_6_10_17 QUERY 6: Directed graph with three edges and 12 is forbidden vertex');
+
+-- GRAPH: 15-> 10 -> 6   8 -> 12
 -- 6 is forbidden
-PREPARE v4e3q30 AS
+PREPARE v7e10q100 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_5_11_13',
-    ARRAY[1]::INTEGER[], 1, ARRAY[6]::integer[], true);
+    'graph_e_6_10_17',
+    ARRAY[1]::INTEGER[], 5, ARRAY[6]::integer[], true);
 
-PREPARE v4e3q31 AS
+PREPARE v7e10q105 AS
 SELECT *
 FROM (VALUES
-    ('v', 6, ARRAY[3, 11, 12]::BIGINT[], -1, -1, -1)
+    ('v', 6, ARRAY[10,15]::BIGINT[], -1, -1, -1),
+    ('v', 12, ARRAY[8], -1, -1, -1)
 ) AS t(type, id, contracted_vertices, source, target, cost );
 
-SELECT set_eq('v4e3q30', 'v4e3q31', 'graph_e_5_11_13 QUERY 3: Directed graph with three edges and 6 is forbidden vertex');
+SELECT set_eq('v7e10q100', 'v7e10q105', 'graph_e_6_10_17 QUERY 10: Directed graph with three edges and 6 is forbidden vertex');
 
-
--- GRAPH: 3 -> 6 -> 11 -> 12
--- 11 is forbidden
-PREPARE v4e3q40 AS
+-- GRAPH: 15-> 10 -> 6   8 -> 12
+-- 10 is forbidden
+PREPARE v7e10q150 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_5_11_13',
-    ARRAY[1]::INTEGER[], 1, ARRAY[11]::integer[], true);
+    'graph_e_6_10_17',
+    ARRAY[1]::INTEGER[], 5, ARRAY[10]::integer[], true);
 
-PREPARE v4e3q41 AS
+PREPARE v7e10q155 AS
 SELECT *
 FROM (VALUES
-    ('v', 11, ARRAY[3,6,12]::BIGINT[], -1, -1, -1)
-) AS t(type, id, contracted_vertices, source, target, cost );
-SELECT set_eq('v4e3q40', 'v4e3q41', 'graph_e_5_11_13 QUERY 4: Directed graph with three edges and 11 is forbidden vertex');
-
--- GRAPH: 3 -> 6 -> 11 -> 12
--- forbidden: 3, 6, 12
-PREPARE v4e3q50 AS
-SELECT * FROM pgr_contraction(
-    'graph_e_5_11_13',
-    ARRAY[1]::INTEGER[], 1, ARRAY[3,6,12]::integer[], true);
-
-SELECT is_empty('v4e3q50', 'graph_e_5_11_13 QUERY 5: Directed graph with three edges and 12 is forbidden vertex');
-
--- GRAPH: 4-> 3 -> 2   10 -> 11
--- no forbidden vertices
-PREPARE v5e3q10 AS
-SELECT * FROM pgr_contraction(
-    'graph_e_2_3_12',
-    ARRAY[1]::integer[], 1, ARRAY[]::integer[], true);
-
-PREPARE v5e3q11 AS
-SELECT *
-FROM (VALUES
-    ('v', 4, ARRAY[2, 3]::BIGINT[], -1, -1, -1),
-    ('v', 11, ARRAY[10], -1, -1, -1)
-) AS t(type, id, contracted_vertices, source, target, cost );
-
-SELECT set_eq('v5e3q10', 'v5e3q11', 'graph_e_2_3_12 QUERY 1: Directed graph with three edges and no forbidden vertices');
-
--- GRAPH: 4-> 3 -> 2   10 -> 11
--- 11 is forbidden
-PREPARE v5e3q20 AS
-SELECT * FROM pgr_contraction(
-    'graph_e_2_3_12',
-    ARRAY[1]::INTEGER[], 1, ARRAY[11]::integer[], true);
-
-PREPARE v5e3q21 AS
-SELECT *
-FROM (VALUES
-    ('v', 4, ARRAY[2, 3]::BIGINT[], -1, -1, -1),
-    ('v', 11, ARRAY[10], -1, -1, -1)
-) AS t(type, id, contracted_vertices, source, target, cost );
-
-SELECT set_eq('v5e3q20', 'v5e3q21', 'graph_e_2_3_12 QUERY 2: Directed graph with three edges and 11 is forbidden vertex');
-
--- GRAPH: 4-> 3 -> 2   10 -> 11
--- 2 is forbidden
-PREPARE v5e3q30 AS
-SELECT * FROM pgr_contraction(
-    'graph_e_2_3_12',
-    ARRAY[1]::INTEGER[], 1, ARRAY[2]::integer[], true);
-
-PREPARE v5e3q31 AS
-SELECT *
-FROM (VALUES
-    ('v', 2, ARRAY[3,4]::BIGINT[], -1, -1, -1),
-    ('v', 11, ARRAY[10], -1, -1, -1)
-) AS t(type, id, contracted_vertices, source, target, cost );
-
-SELECT set_eq('v5e3q30', 'v5e3q31', 'graph_e_2_3_12 QUERY 3: Directed graph with three edges and 2 is forbidden vertex');
-
--- GRAPH: 4-> 3 -> 2   10 -> 11
--- 3 is forbidden
-PREPARE v5e3q40 AS
-SELECT * FROM pgr_contraction(
-    'graph_e_2_3_12',
-    ARRAY[1]::INTEGER[], 1, ARRAY[3]::integer[], true);
-
-PREPARE v5e3q41 AS
-SELECT *
-FROM (VALUES
-    ('v', 3, ARRAY[2,4]::BIGINT[], -1, -1, -1),
-    ('v', 11, ARRAY[10], -1, -1, -1)
+    ('v', 10, ARRAY[6,15]::BIGINT[], -1, -1, -1),
+    ('v', 12, ARRAY[8], -1, -1, -1)
 ) AS t(type, id, contracted_vertices, source, target, cost);
 
-SELECT set_eq('v5e3q40', 'v5e3q41', 'graph_e_2_3_12 QUERY 4: Directed graph with three edges and 3 is forbidden vertex');
+SELECT set_eq('v7e10q150', 'v7e10q155', 'graph_e_6_10_17 QUERY 15: Directed graph with three edges and 10 is forbidden vertex');
 
--- GRAPH: 4-> 3 -> 2   10 -> 11
--- 2 and 11 are forbidden
-PREPARE v5e3q50 AS
+-- GRAPH: 15-> 10 -> 6   8 -> 12
+-- 6 and 12 are forbidden
+PREPARE v7e10q70 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_2_3_12',
-    ARRAY[1]::INTEGER[], 1, ARRAY[2, 11]::integer[], true);
+    'graph_e_6_10_17',
+    ARRAY[1]::INTEGER[], 5, ARRAY[6, 12]::integer[], true);
 
-PREPARE v5e3q51 AS
+PREPARE v7e10q75 AS
 SELECT *
 FROM (VALUES
-    ('v', 2, ARRAY[3,4]::BIGINT[], -1, -1, -1),
-    ('v', 11, ARRAY[10], -1, -1, -1)
+    ('v', 6, ARRAY[10,15]::BIGINT[], -1, -1, -1),
+    ('v', 12, ARRAY[8], -1, -1, -1)
 ) AS t(type, id, contracted_vertices, source, target, cost);
 
-SELECT set_eq('v5e3q50', 'v5e3q51', 'graph_e_2_3_12 QUERY 5: Directed graph with three edges and 2 and 11 are forbidden vertices');
+SELECT set_eq('v7e10q70', 'v7e10q75', 'graph_e_6_10_17 QUERY 7: Directed graph with three edges and 6 and 12 are forbidden vertices');
 
--- GRAPH: 4-> 3 -> 2   10 -> 11
--- 3 and 11 are forbidden
-PREPARE v5e3q60 AS
+-- GRAPH: 15-> 10 -> 6   8 -> 12
+-- 10 and 12 are forbidden
+PREPARE v7e10q110 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_2_3_12',
-    ARRAY[1]::INTEGER[], 1, ARRAY[3, 11]::integer[], true);
+    'graph_e_6_10_17',
+    ARRAY[1]::INTEGER[], 5, ARRAY[10, 12]::integer[], true);
 
-PREPARE v5e3q61 AS
+PREPARE v7e10q115 AS
 SELECT *
 FROM (VALUES
-    ('v', 3, ARRAY[2,4]::BIGINT[], -1, -1, -1),
-    ('v', 11, ARRAY[10], -1, -1, -1)
+    ('v', 10, ARRAY[6,15]::BIGINT[], -1, -1, -1),
+    ('v', 12, ARRAY[8], -1, -1, -1)
 ) AS t(type, id, contracted_vertices, source, target, cost );
 
-SELECT set_eq('v5e3q60', 'v5e3q61', 'graph_e_2_3_12 QUERY 6: Directed graph with three edges and 3 and 11 are forbidden vertices');
+SELECT set_eq('v7e10q110', 'v7e10q115', 'graph_e_6_10_17 QUERY 11: Directed graph with three edges and 10 and 12 are forbidden vertices');
 
--- GRAPH: 1 <=> 2  4 -> 3  7 <=> 8
+-- GRAPH: 5 <=> 6  15 -> 10  1 <=> 3
 -- no forbidden vertices
-PREPARE v6e3q10 AS
+PREPARE v11e10q8 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_1_3_6',
-    ARRAY[1]::integer[], 1, ARRAY[]::integer[], true);
+    'graph_e_5_10_11',
+    ARRAY[1]::integer[], 5, ARRAY[]::integer[], true);
 
-PREPARE v6e3q11 AS
+PREPARE v11e10q12 AS
 SELECT *
 FROM (VALUES
-    ('v', 2, ARRAY[1]::BIGINT[], -1, -1, -1),
-    ('v', 4, ARRAY[3]::integer[], -1, -1, -1),
-    ('v', 8, ARRAY[7]::integer[], -1, -1, -1)
+    ('v', 6, ARRAY[5]::BIGINT[], -1, -1, -1),
+    ('v', 15, ARRAY[10]::integer[], -1, -1, -1),
+    ('v', 3, ARRAY[1]::integer[], -1, -1, -1)
 ) AS t(type, id, contracted_vertices, source, target, cost );
 
-SELECT set_eq('v6e3q10', 'v6e3q11', 'graph_e_1_3_6 QUERY 1: Directed graph with three edges and no forbidden vertices');
+SELECT set_eq('v11e10q8', 'v11e10q12', 'graph_e_5_10_11 QUERY 5: Directed graph with three edges and no forbidden vertices');
 
--- GRAPH: 1 <=> 2  4 -> 3  7 <=> 8
+-- GRAPH: 5 <=> 6  15 -> 10  1 <=> 3
+-- 5 is forbidden
+PREPARE v11e10q60 AS
+SELECT * FROM pgr_contraction(
+    'graph_e_5_10_11',
+    ARRAY[1]::INTEGER[], 5, ARRAY[5]::integer[], true);
+
+PREPARE v11e10q65 AS
+SELECT *
+FROM (VALUES
+    ('v', 5, ARRAY[6]::BIGINT[], -1, -1, -1),
+    ('v', 15, ARRAY[10]::integer[], -1, -1, -1),
+    ('v', 3, ARRAY[1]::integer[], -1, -1, -1)
+) AS t(type, id, contracted_vertices, source, target, cost );
+
+SELECT set_eq('v11e10q60', 'v11e10q65', 'graph_e_5_10_11 QUERY 6: Directed graph with three edges and 5 is forbidden vertex');
+
+-- GRAPH: 5 <=> 6  15 -> 10  1 <=> 3
+-- 10 is forbidden
+PREPARE v11e10q100 AS
+SELECT * FROM pgr_contraction(
+    'graph_e_5_10_11',
+    ARRAY[1]::INTEGER[], 5, ARRAY[10]::integer[], true);
+
+PREPARE v11e10q105 AS
+SELECT *
+FROM (VALUES
+    ('v', 6, ARRAY[5]::BIGINT[], -1, -1, -1),
+    ('v', 10, ARRAY[15]::BIGINT[], -1, -1, -1),
+    ('v', 3, ARRAY[1]::BIGINT[], -1, -1, -1)
+) AS t(type, id, contracted_vertices, source, target, cost );
+
+SELECT set_eq('v11e10q100', 'v11e10q105', 'graph_e_5_10_11 QUERY 10: Directed graph with three edges and 10 is forbidden vertex');
+
+-- GRAPH: 5 <=> 6  15 -> 10  1 <=> 3
 -- 1 is forbidden
-PREPARE v6e3q20 AS
+PREPARE v11e10q150 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_1_3_6',
-    ARRAY[1]::INTEGER[], 1, ARRAY[1]::integer[], true);
+    'graph_e_5_10_11',
+    ARRAY[1]::INTEGER[], 5, ARRAY[1]::integer[], true);
 
-PREPARE v6e3q21 AS
+PREPARE v11e10q155 AS
 SELECT *
 FROM (VALUES
-    ('v', 1, ARRAY[2]::BIGINT[], -1, -1, -1),
-    ('v', 4, ARRAY[3]::integer[], -1, -1, -1),
-    ('v', 8, ARRAY[7]::integer[], -1, -1, -1)
+    ('v', 6, ARRAY[5]::BIGINT[], -1, -1, -1),
+    ('v', 15, ARRAY[10]::integer[], -1, -1, -1),
+    ('v', 1, ARRAY[3]::integer[], -1, -1, -1)
 ) AS t(type, id, contracted_vertices, source, target, cost );
 
-SELECT set_eq('v6e3q20', 'v6e3q21', 'graph_e_1_3_6 QUERY 2: Directed graph with three edges and 1 is forbidden vertex');
+SELECT set_eq('v11e10q150', 'v11e10q155', 'graph_e_5_10_11 QUERY 15: Directed graph with three edges and 1 is forbidden vertex');
 
--- GRAPH: 1 <=> 2  4 -> 3  7 <=> 8
--- 3 is forbidden
-PREPARE v6e3q30 AS
+-- GRAPH: 5 <=> 6  15 -> 10  1 <=> 3
+-- 5 and 10 are forbidden
+PREPARE v11e10q70 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_1_3_6',
-    ARRAY[1]::INTEGER[], 1, ARRAY[3]::integer[], true);
+    'graph_e_5_10_11',
+    ARRAY[1]::INTEGER[], 5, ARRAY[5, 10]::integer[], true);
 
-PREPARE v6e3q31 AS
+PREPARE v11e10q75 AS
 SELECT *
 FROM (VALUES
-    ('v', 2, ARRAY[1]::BIGINT[], -1, -1, -1),
-    ('v', 3, ARRAY[4]::BIGINT[], -1, -1, -1),
-    ('v', 8, ARRAY[7]::BIGINT[], -1, -1, -1)
+    ('v', 5, ARRAY[6]::BIGINT[], -1, -1, -1),
+    ('v', 10, ARRAY[15]::BIGINT[], -1, -1, -1),
+    ('v', 3, ARRAY[1]::BIGINT[], -1, -1, -1)
 ) AS t(type, id, contracted_vertices, source, target, cost );
 
-SELECT set_eq('v6e3q30', 'v6e3q31', 'graph_e_1_3_6 QUERY 3: Directed graph with three edges and 3 is forbidden vertex');
+SELECT set_eq('v11e10q70', 'v11e10q75', 'graph_e_5_10_11 QUERY 7: Directed graph with three edges and 5 and 10 are forbidden vertices');
 
--- GRAPH: 1 <=> 2  4 -> 3  7 <=> 8
--- 7 is forbidden
-PREPARE v6e3q40 AS
+-- GRAPH: 5 <=> 6  15 -> 10  1 <=> 3
+-- 10 and 1 are forbidden
+PREPARE v11e10q110 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_1_3_6',
-    ARRAY[1]::INTEGER[], 1, ARRAY[7]::integer[], true);
+    'graph_e_5_10_11',
+    ARRAY[1]::INTEGER[], 5, ARRAY[10, 1]::integer[], true);
 
-PREPARE v6e3q41 AS
+PREPARE v11e10q115 AS
 SELECT *
 FROM (VALUES
-    ('v', 2, ARRAY[1]::BIGINT[], -1, -1, -1),
-    ('v', 4, ARRAY[3]::integer[], -1, -1, -1),
-    ('v', 7, ARRAY[8]::integer[], -1, -1, -1)
+    ('v', 6, ARRAY[5]::BIGINT[], -1, -1, -1),
+    ('v', 10, ARRAY[15]::BIGINT[], -1, -1, -1),
+    ('v', 1, ARRAY[3]::BIGINT[], -1, -1, -1)
 ) AS t(type, id, contracted_vertices, source, target, cost );
 
-SELECT set_eq('v6e3q40', 'v6e3q41', 'graph_e_1_3_6 QUERY 4: Directed graph with three edges and 7 is forbidden vertex');
+SELECT set_eq('v11e10q110', 'v11e10q115', 'graph_e_5_10_11 QUERY 11: Directed graph with three edges and 10 and 1 are forbidden vertices');
 
--- GRAPH: 1 <=> 2  4 -> 3  7 <=> 8
--- 1 and 3 are forbidden
-PREPARE v6e3q50 AS
+-- GRAPH: 5 <=> 6  15 -> 10  1 <=> 3
+-- 5 and 1 are forbidden
+PREPARE v11e10q10 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_1_3_6',
-    ARRAY[1]::INTEGER[], 1, ARRAY[1, 3]::integer[], true);
+    'graph_e_5_10_11',
+    ARRAY[1]::INTEGER[], 5, ARRAY[5, 1]::integer[], true);
 
-PREPARE v6e3q51 AS
+PREPARE v11e10q15 AS
 SELECT *
 FROM (VALUES
-    ('v', 1, ARRAY[2]::BIGINT[], -1, -1, -1),
-    ('v', 3, ARRAY[4]::BIGINT[], -1, -1, -1),
-    ('v', 8, ARRAY[7]::BIGINT[], -1, -1, -1)
+    ('v', 5, ARRAY[6]::BIGINT[], -1, -1, -1),
+    ('v', 15, ARRAY[10]::BIGINT[], -1, -1, -1),
+    ('v', 1, ARRAY[3]::BIGINT[], -1, -1, -1)
 ) AS t(type, id, contracted_vertices, source, target, cost );
 
-SELECT set_eq('v6e3q50', 'v6e3q51', 'graph_e_1_3_6 QUERY 5: Directed graph with three edges and 1 and 3 are forbidden vertices');
-
--- GRAPH: 1 <=> 2  4 -> 3  7 <=> 8
--- 3 and 7 are forbidden
-PREPARE v6e3q60 AS
-SELECT * FROM pgr_contraction(
-    'graph_e_1_3_6',
-    ARRAY[1]::INTEGER[], 1, ARRAY[3, 7]::integer[], true);
-
-PREPARE v6e3q61 AS
-SELECT *
-FROM (VALUES
-    ('v', 2, ARRAY[1]::BIGINT[], -1, -1, -1),
-    ('v', 3, ARRAY[4]::BIGINT[], -1, -1, -1),
-    ('v', 7, ARRAY[8]::BIGINT[], -1, -1, -1)
-) AS t(type, id, contracted_vertices, source, target, cost );
-
-SELECT set_eq('v6e3q60', 'v6e3q61', 'graph_e_1_3_6 QUERY 6: Directed graph with three edges and 3 and 7 are forbidden vertices');
-
--- GRAPH: 1 <=> 2  4 -> 3  7 <=> 8
--- 1 and 7 are forbidden
-PREPARE v6e3q70 AS
-SELECT * FROM pgr_contraction(
-    'graph_e_1_3_6',
-    ARRAY[1]::INTEGER[], 1, ARRAY[1, 7]::integer[], true);
-
-PREPARE v6e3q71 AS
-SELECT *
-FROM (VALUES
-    ('v', 1, ARRAY[2]::BIGINT[], -1, -1, -1),
-    ('v', 4, ARRAY[3]::BIGINT[], -1, -1, -1),
-    ('v', 7, ARRAY[8]::BIGINT[], -1, -1, -1)
-) AS t(type, id, contracted_vertices, source, target, cost );
-
-SELECT set_eq('v6e3q70', 'v6e3q71', 'graph_e_1_3_6 QUERY 7: Directed graph with three edges and 1 and 7 are forbidden vertices');
+SELECT set_eq('v11e10q10', 'v11e10q15', 'graph_e_5_10_11 QUERY 1: Directed graph with three edges and 5 and 1 are forbidden vertices');
 
 
 -- FOUR EDGES
--- GRAPH: 4 -> 3 -> 2   3 -> 6 -> 11
+-- GRAPH: 15 -> 10 -> 6   10 -> 11 -> 12
 -- no forbidden vertices
-PREPARE v4e4q10 AS
+PREPARE v15e15q8 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_2_3_5_11',
-    ARRAY[1]::integer[], 1, ARRAY[]::integer[], true);
+    'graph_e_6_10_7_12',
+    ARRAY[1]::integer[], 5, ARRAY[]::integer[], true);
 
-PREPARE v4e4q11 AS
+PREPARE v15e15q12 AS
 SELECT *
 FROM (VALUES
-    ('v', 11, ARRAY[2, 3, 4, 6]::BIGINT[], -1, -1, -1)
+    ('v', 12, ARRAY[6, 10, 11, 15]::BIGINT[], -1, -1, -1)
 ) AS t(type, id, contracted_vertices, source, target, cost );
 
-SELECT set_eq('v4e4q10', 'v4e4q11', 'graph_e_2_3_5_11 QUERY 1: Directed graph with four edges and no forbidden vertices');
+SELECT set_eq('v15e15q8', 'v15e15q12', 'graph_e_6_10_7_12 QUERY 5: Directed graph with four edges and no forbidden vertices');
 
--- GRAPH: 4 -> 3 -> 2   3 -> 6 -> 11
--- 2 is forbidden
-PREPARE v4e4q20 AS
-SELECT * FROM pgr_contraction(
-    'graph_e_2_3_5_11',
-    ARRAY[1]::INTEGER[], 1, ARRAY[2]::integer[], true);
-
-PREPARE v4e4q21 AS
-SELECT *
-FROM (VALUES
-    ('v', 2, ARRAY[3, 4, 6, 11]::BIGINT[], -1, -1, -1)
-) AS t(type, id, contracted_vertices, source, target, cost );
-
-SELECT set_eq('v4e4q20', 'v4e4q21', 'graph_e_2_3_5_11 QUERY 2: Directed graph with four edges and 2 is forbidden vertex');
-
--- GRAPH: 4 -> 3 -> 2   3 -> 6 -> 11
--- 3 is forbidden
-PREPARE v4e4q30 AS
-SELECT * FROM pgr_contraction(
-    'graph_e_2_3_5_11',
-    ARRAY[1]::INTEGER[], 1, ARRAY[3]::integer[], true);
-
-PREPARE v4e4q31 AS
-SELECT *
-FROM (VALUES
-    ('v', 3, ARRAY[2, 4, 6, 11]::BIGINT[], -1, -1, -1)
-) AS t(type, id, contracted_vertices, source, target, cost );
-
-SELECT set_eq('v4e4q30', 'v4e4q31', 'FOUR QUERY 3: Directed graph with four edges and 3 is forbidden vertex');
-
--- GRAPH: 4 -> 3 -> 2   3 -> 6 -> 11
+-- GRAPH: 15 -> 10 -> 6   10 -> 11 -> 12
 -- 6 is forbidden
-PREPARE v4e4q40 AS
+PREPARE v15e15q60 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_2_3_5_11',
-    ARRAY[1]::INTEGER[], 1, ARRAY[6]::integer[], true);
+    'graph_e_6_10_7_12',
+    ARRAY[1]::INTEGER[], 5, ARRAY[6]::integer[], true);
 
-PREPARE v4e4q41 AS
+PREPARE v15e15q65 AS
 SELECT *
 FROM (VALUES
-    ('v', 6, ARRAY[2,3,4,11]::BIGINT[], -1, -1, -1)
+    ('v', 6, ARRAY[10, 11, 12, 15]::BIGINT[], -1, -1, -1)
 ) AS t(type, id, contracted_vertices, source, target, cost );
 
-SELECT set_eq('v4e4q40', 'v4e4q41', 'graph_e_2_3_5_11 QUERY 4: Directed graph with four edges and 6 is forbidden vertex');
+SELECT set_eq('v15e15q60', 'v15e15q65', 'graph_e_6_10_7_12 QUERY 6: Directed graph with four edges and 6 is forbidden vertex');
 
--- GRAPH: 4 -> 3 -> 2   3 -> 6 -> 11
+-- GRAPH: 15 -> 10 -> 6   10 -> 11 -> 12
+-- 10 is forbidden
+PREPARE v15e15q100 AS
+SELECT * FROM pgr_contraction(
+    'graph_e_6_10_7_12',
+    ARRAY[1]::INTEGER[], 5, ARRAY[10]::integer[], true);
+
+PREPARE v15e15q105 AS
+SELECT *
+FROM (VALUES
+    ('v', 10, ARRAY[6, 11, 12, 15]::BIGINT[], -1, -1, -1)
+) AS t(type, id, contracted_vertices, source, target, cost );
+
+SELECT set_eq('v15e15q100', 'v15e15q105', 'FOUR QUERY 10: Directed graph with four edges and 10 is forbidden vertex');
+
+-- GRAPH: 15 -> 10 -> 6   10 -> 11 -> 12
 -- 11 is forbidden
-PREPARE v4e4q50 AS
+PREPARE v15e15q150 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_2_3_5_11',
-    ARRAY[1]::INTEGER[], 1, ARRAY[11]::integer[], true);
+    'graph_e_6_10_7_12',
+    ARRAY[1]::INTEGER[], 5, ARRAY[11]::integer[], true);
 
-PREPARE v4e4q51 AS
+PREPARE v15e15q155 AS
 SELECT *
 FROM (VALUES
-    ('v', 11, ARRAY[2,3,4,6]::BIGINT[], -1, -1, -1)
+    ('v', 11, ARRAY[6,10,12,15]::BIGINT[], -1, -1, -1)
 ) AS t(type, id, contracted_vertices, source, target, cost );
 
-SELECT set_eq('v4e4q50', 'v4e4q51', 'graph_e_2_3_5_11 QUERY 5: Directed graph with four edges and 11 is forbidden vertex');
+SELECT set_eq('v15e15q150', 'v15e15q155', 'graph_e_6_10_7_12 QUERY 15: Directed graph with four edges and 11 is forbidden vertex');
 
-
--- GRAPH: 4 -> 3 -> 2   3 -> 6 -> 11
--- 2,3 are forbidden
-PREPARE v4e4q60 AS
+-- GRAPH: 15 -> 10 -> 6   10 -> 11 -> 12
+-- 12 is forbidden
+PREPARE v15e15q70 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_2_3_5_11',
-    ARRAY[1]::INTEGER[], 1, ARRAY[2, 3]::integer[], true);
+    'graph_e_6_10_7_12',
+    ARRAY[1]::INTEGER[], 5, ARRAY[12]::integer[], true);
 
-PREPARE v4e4q61 AS
+PREPARE v15e15q75 AS
 SELECT *
 FROM (VALUES
-    ('v', 3, ARRAY[4, 6, 11]::BIGINT[], -1, -1, -1)
+    ('v', 12, ARRAY[6,10,11,15]::BIGINT[], -1, -1, -1)
 ) AS t(type, id, contracted_vertices, source, target, cost );
 
-SELECT set_eq('v4e4q60', 'v4e4q61', 'graph_e_2_3_5_11 QUERY 6: Directed graph with four edges and 2 and 3 is forbidden vertex');
+SELECT set_eq('v15e15q70', 'v15e15q75', 'graph_e_6_10_7_12 QUERY 7: Directed graph with four edges and 12 is forbidden vertex');
 
 
--- GRAPH: 4 -> 3 -> 2   3 -> 6 -> 11
--- 2,6 are forbidden
-PREPARE v4e4q70 AS
+-- GRAPH: 15 -> 10 -> 6   10 -> 11 -> 12
+-- 6,10 are forbidden
+PREPARE v15e15q110 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_2_3_5_11',
-    ARRAY[1]::INTEGER[], 1, ARRAY[2, 6]::integer[], true);
+    'graph_e_6_10_7_12',
+    ARRAY[1]::INTEGER[], 5, ARRAY[6, 10]::integer[], true);
 
-PREPARE v4e4q71 AS
+PREPARE v15e15q115 AS
 SELECT *
 FROM (VALUES
-    ('v', 3, ARRAY[4]::BIGINT[], -1, -1, -1),
-    ('v', 6, ARRAY[11]::BIGINT[], -1, -1, -1)
+    ('v', 10, ARRAY[11, 12, 15]::BIGINT[], -1, -1, -1)
 ) AS t(type, id, contracted_vertices, source, target, cost );
 
-SELECT set_eq('v4e4q70', 'v4e4q71', 'graph_e_2_3_5_11 QUERY 7: Directed graph with four edges and 2 and 6 forbidden vertex');
+SELECT set_eq('v15e15q110', 'v15e15q115', 'graph_e_6_10_7_12 QUERY 11: Directed graph with four edges and 6 and 10 is forbidden vertex');
 
--- GRAPH: 4 -> 3 -> 2   3 -> 6 -> 11
--- 2,11 are forbidden
-PREPARE v4e4q80 AS
-SELECT * FROM pgr_contraction(
-    'graph_e_2_3_5_11',
-    ARRAY[1]::INTEGER[], 1, ARRAY[2, 11]::integer[], true);
 
-PREPARE v4e4q81 AS
-SELECT *
-FROM (VALUES
-    ('v', 3, ARRAY[4]::BIGINT[], -1, -1, -1)
-) AS t(type, id, contracted_vertices, source, target, cost );
-
-SELECT set_eq('v4e4q80', 'v4e4q81', 'graph_e_2_3_5_11 QUERY 8: Directed graph with four edges and 2 and 11 forbidden vertex');
-
--- GRAPH: 4 -> 3 -> 2   3 -> 6 -> 11
--- 3,6 are forbidden
-PREPARE v4e4q90 AS
-SELECT * FROM pgr_contraction(
-    'graph_e_2_3_5_11',
-    ARRAY[1]::INTEGER[], 1, ARRAY[3, 6]::integer[], true);
-
-PREPARE v4e4q91 AS
-SELECT *
-FROM (VALUES
-    ('v', 3, ARRAY[2,4]::BIGINT[], -1, -1, -1),
-    ('v', 6, ARRAY[11]::BIGINT[], -1, -1, -1)
-) AS t(type, id, contracted_vertices, source, target, cost );
-
-SELECT set_eq('v4e4q90', 'v4e4q91', 'graph_e_2_3_5_11 QUERY 9: Directed graph with four edges and 3 and 6 forbidden vertex');
-
--- GRAPH: 4 -> 3 -> 2   3 -> 6 -> 11
--- 3,11 are forbidden
-PREPARE v4e4q100 AS
-SELECT * FROM pgr_contraction(
-    'graph_e_2_3_5_11',
-    ARRAY[1]::INTEGER[], 1, ARRAY[3, 11]::integer[], true);
-
-PREPARE v4e4q101 AS
-SELECT *
-FROM (VALUES
-    ('v', 3, ARRAY[2,4]::BIGINT[], -1, -1, -1)
-) AS t(type, id, contracted_vertices, source, target, cost );
-
-SELECT set_eq('v4e4q100', 'v4e4q101', 'graph_e_2_3_5_11 QUERY 10: Directed graph with four edges and 3 and 11 forbidden vertex');
-
--- GRAPH: 4 -> 3 -> 2   3 -> 6 -> 11
+-- GRAPH: 15 -> 10 -> 6   10 -> 11 -> 12
 -- 6,11 are forbidden
-PREPARE v4e4q110 AS
+PREPARE v15e15q10 AS
 SELECT * FROM pgr_contraction(
-    'graph_e_2_3_5_11',
-    ARRAY[1]::INTEGER[], 1, ARRAY[6, 11]::integer[], true);
+    'graph_e_6_10_7_12',
+    ARRAY[1]::INTEGER[], 5, ARRAY[6, 11]::integer[], true);
 
-PREPARE v4e4q111 AS
+PREPARE v15e15q15 AS
 SELECT *
 FROM (VALUES
-    ('v', 6, ARRAY[2,3,4]::BIGINT[], -1, -1, -1)
+    ('v', 10, ARRAY[15]::BIGINT[], -1, -1, -1),
+    ('v', 11, ARRAY[12]::BIGINT[], -1, -1, -1)
 ) AS t(type, id, contracted_vertices, source, target, cost );
 
-SELECT set_eq('v4e4q110', 'v4e4q111', 'graph_e_2_3_5_11 QUERY 11: Directed graph with four edges and 6 and 11 forbidden vertex');
+SELECT set_eq('v15e15q10', 'v15e15q15', 'graph_e_6_10_7_12 QUERY 1: Directed graph with four edges and 6 and 11 forbidden vertex');
+
+-- GRAPH: 15 -> 10 -> 6   10 -> 11 -> 12
+-- 6,12 are forbidden
+PREPARE v15e15q30 AS
+SELECT * FROM pgr_contraction(
+    'graph_e_6_10_7_12',
+    ARRAY[1]::INTEGER[], 5, ARRAY[6, 12]::integer[], true);
+
+PREPARE v15e15q35 AS
+SELECT *
+FROM (VALUES
+    ('v', 10, ARRAY[15]::BIGINT[], -1, -1, -1)
+) AS t(type, id, contracted_vertices, source, target, cost );
+
+SELECT set_eq('v15e15q30', 'v15e15q35', 'graph_e_6_10_7_12 QUERY 3: Directed graph with four edges and 6 and 12 forbidden vertex');
+
+-- GRAPH: 15 -> 10 -> 6   10 -> 11 -> 12
+-- 10,11 are forbidden
+PREPARE v15e15q160 AS
+SELECT * FROM pgr_contraction(
+    'graph_e_6_10_7_12',
+    ARRAY[1]::INTEGER[], 5, ARRAY[10, 11]::integer[], true);
+
+PREPARE v15e15q165 AS
+SELECT *
+FROM (VALUES
+    ('v', 10, ARRAY[6,15]::BIGINT[], -1, -1, -1),
+    ('v', 11, ARRAY[12]::BIGINT[], -1, -1, -1)
+) AS t(type, id, contracted_vertices, source, target, cost );
+
+SELECT set_eq('v15e15q160', 'v15e15q165', 'graph_e_6_10_7_12 QUERY 16: Directed graph with four edges and 10 and 11 forbidden vertex');
+
+-- GRAPH: 15 -> 10 -> 6   10 -> 11 -> 12
+-- 10,12 are forbidden
+PREPARE v15e15q80 AS
+SELECT * FROM pgr_contraction(
+    'graph_e_6_10_7_12',
+    ARRAY[1]::INTEGER[], 5, ARRAY[10, 12]::integer[], true);
+
+PREPARE v15e15q85 AS
+SELECT *
+FROM (VALUES
+    ('v', 10, ARRAY[6,15]::BIGINT[], -1, -1, -1)
+) AS t(type, id, contracted_vertices, source, target, cost );
+
+SELECT set_eq('v15e15q80', 'v15e15q85', 'graph_e_6_10_7_12 QUERY 8: Directed graph with four edges and 10 and 12 forbidden vertex');
+
+-- GRAPH: 15 -> 10 -> 6   10 -> 11 -> 12
+-- 11,12 are forbidden
+PREPARE v15e15q58 AS
+SELECT * FROM pgr_contraction(
+    'graph_e_6_10_7_12',
+    ARRAY[1]::INTEGER[], 5, ARRAY[11, 12]::integer[], true);
+
+PREPARE v15e15q125 AS
+SELECT *
+FROM (VALUES
+    ('v', 11, ARRAY[6,10,15]::BIGINT[], -1, -1, -1)
+) AS t(type, id, contracted_vertices, source, target, cost );
+
+SELECT set_eq('v15e15q58', 'v15e15q125', 'graph_e_6_10_7_12 QUERY 12: Directed graph with four edges and 11 and 12 forbidden vertex');
 
 SELECT finish();
 ROLLBACK;

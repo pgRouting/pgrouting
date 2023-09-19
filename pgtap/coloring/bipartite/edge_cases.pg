@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT CASE WHEN NOT min_version('3.2.0') THEN plan(1) ELSE plan(16) END;
 
 CREATE OR REPLACE FUNCTION edge_cases()
@@ -37,7 +37,7 @@ END IF;
 
 PREPARE q1 AS
 SELECT id, source, target, cost, reverse_cost
-FROM edge_table
+FROM edges
 WHERE id > 18;
 
 RETURN QUERY
@@ -56,12 +56,12 @@ SELECT is_empty('bipartite1', '2: Graph with 0 edge and 0 vertex -> Empty row is
 -- 1 vertex test
 
 PREPARE q2 AS
-SELECT id, source, 2 AS target, cost, reverse_cost
-FROM edge_table
+SELECT id, source, 6 AS target, cost, reverse_cost
+FROM edges
 WHERE id = 2;
 
 RETURN QUERY
-SELECT set_eq('q2', $$VALUES (2, 2, 2, -1, 1)$$, '3: Graph with only vertex 2');
+SELECT set_eq('q2', $$VALUES (2, 6, 6, -1, 1)$$, '3: Graph with only vertex 2');
 
 PREPARE bipartite2 AS
 SELECT *
@@ -77,11 +77,11 @@ SELECT is_empty('bipartite2', '4: One vertex graph can not be bipartite-> Empty 
 
 PREPARE q3 AS
 SELECT id, source, target, cost, reverse_cost
-FROM edge_table
+FROM edges
 WHERE id = 7;
 
 RETURN QUERY
-SELECT set_eq('q3', $$VALUES (7, 8, 5, 1, 1)$$, '5: Graph with two connected vertices 8 and 5');
+SELECT set_eq('q3', $$VALUES (7, 3, 7, 1, 1)$$, '5: Graph with two connected vertices 3 and 7');
 
 PREPARE bipartite3 AS
 SELECT *
@@ -90,7 +90,7 @@ FROM pgr_bipartite(
 );
 
 RETURN QUERY
-SELECT set_eq('bipartite3', $$VALUES (8, 0), (5, 1)$$, '6: Graph is bi-partite');
+SELECT set_eq('bipartite3', $$VALUES (3, 0), (7, 1)$$, '6: Graph is bi-partite');
 
 
 -- linear tests
@@ -99,11 +99,11 @@ SELECT set_eq('bipartite3', $$VALUES (8, 0), (5, 1)$$, '6: Graph is bi-partite')
 
 PREPARE q4 AS
 SELECT id, source, target, cost, reverse_cost
-FROM edge_table
+FROM edges
 WHERE id <= 2;
 
 RETURN QUERY
-SELECT set_eq('q4', $$VALUES (1, 1, 2, 1, 1), (2, 2, 3, -1, 1)$$, '7: Graph with three vertices 1, 2 and 3');
+SELECT set_eq('q4', $$VALUES (1, 5, 6, 1, 1), (2, 6, 10, -1, 1)$$, '7: Graph with three vertices 1, 2 and 3');
 
 PREPARE bipartite4 AS
 SELECT *
@@ -112,22 +112,22 @@ FROM pgr_bipartite(
 );
 
 RETURN QUERY
-SELECT set_eq('bipartite4', $$VALUES (1, 0), (2, 1), (3, 0)$$, '8: Bi-partite graph with 3 vertices');
+SELECT set_eq('bipartite4', $$VALUES (5, 0), (6, 1), (10, 0)$$, '8: Bi-partite graph with 3 vertices');
 
 
 -- 4 vertices test
 
 PREPARE q5 AS
 SELECT id, source, target, cost, reverse_cost
-FROM edge_table
+FROM edges
 WHERE id <= 3;
 
 RETURN QUERY
 SELECT set_eq('q5',
     $$VALUES
-        (1, 1, 2, 1, 1),
-        (2, 2, 3, -1, 1),
-        (3, 3, 4, -1, 1)
+        (1, 5, 6, 1, 1),
+        (2, 6, 10, -1, 1),
+        (3, 10, 15, -1, 1)
     $$,
     '9: Graph with four vertices 1, 2, 3 and 4'
 );
@@ -139,7 +139,7 @@ FROM pgr_bipartite(
 );
 
 RETURN QUERY
-SELECT set_eq('bipartite5', $$VALUES (1, 0), (2, 1), (3, 0), (4, 1)$$, '10: Bi-partite graph with 4 vertices');
+SELECT set_eq('bipartite5', $$VALUES (5, 0), (6, 1), (10, 0), (15, 1)$$, '10: Bi-partite graph with 4 vertices');
 
 
 
@@ -150,16 +150,16 @@ SELECT set_eq('bipartite5', $$VALUES (1, 0), (2, 1), (3, 0), (4, 1)$$, '10: Bi-p
 -- 4 vertices length
 PREPARE q6 AS
 SELECT id, source, target, cost, reverse_cost
-FROM edge_table
+FROM edges
 WHERE id IN (8, 10, 11, 12);
 
 RETURN QUERY
 SELECT set_eq('q6',
     $$VALUES
-        (8, 5, 6, 1, 1),
-        (10, 5, 10, 1, 1),
-        (11, 6, 11, 1, -1),
-        (12, 10, 11, 1, -1)
+        (8, 7, 11, 1, 1),
+        (10, 7, 8, 1, 1),
+        (11, 11, 12, 1, -1),
+        (12, 8, 12, 1, -1)
     $$,
     '11: Graph with four vertices 5, 6, 10 and 11 (cyclic)'
 );
@@ -171,7 +171,7 @@ FROM pgr_bipartite(
 );
 
 RETURN QUERY
-SELECT set_eq('bipartite6', $$VALUES (5, 0), (6, 1), (10, 1), (11, 0)$$, '12: Cyclic and bipartite graph');
+SELECT set_eq('bipartite6', $$VALUES (7, 0), (8, 1), (11, 1), (12, 0)$$, '12: Cyclic and bipartite graph');
 
 
 -- odd length cycle test
