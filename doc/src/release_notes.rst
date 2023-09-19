@@ -38,6 +38,9 @@ Changes on the documentation to the following:
 
   * using bootstrap_version 2 because 3+ does not do dropdowns
 
+.. rubric:: pgtap tests
+
+* `#2559 <https://github.com/pgRouting/pgrouting/issues/2559>`__ pgtap test using sampledata
 
 .. rubric:: Build fixes
 
