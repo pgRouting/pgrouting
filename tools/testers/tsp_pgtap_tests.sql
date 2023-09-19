@@ -125,8 +125,8 @@ subs TEXT[];
 BEGIN
   params = ARRAY[
   '$fn$SELECT * FROM data$fn$',
-  '1::BIGINT',
-  '2::BIGINT'
+  '5::BIGINT',
+  '6::BIGINT'
   ]::TEXT[];
 
   subs = ARRAY[

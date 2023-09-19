@@ -24,8 +24,8 @@ BEGIN
   IF flag THEN directed = 'Directed'; END IF;
 
   k := 1;
-  with_reverse_cost = quote_literal('SELECT id, source, target, cost, reverse_cost from edge_table ORDER BY id');
-  no_reverse_cost = quote_literal('SELECT id, source, target, cost from edge_table ORDER BY id');
+  with_reverse_cost = quote_literal('SELECT id, source, target, cost, reverse_cost from edges ORDER BY id');
+  no_reverse_cost = quote_literal('SELECT id, source, target, cost from edges ORDER BY id');
   empty_restrictions =  quote_literal('SELECT * FROM restrictions WHERE id > 7');
   --msg_end = E'\n' || trsp_sql || E'\n' || dijkstraVia_sql;
   msg_end = ' ';
@@ -102,8 +102,8 @@ BEGIN
   IF flag THEN directed = 'Directed'; END IF;
 
   k := 1;
-  with_reverse_cost = quote_literal('SELECT id, source, target, cost, reverse_cost from edge_table ORDER BY id');
-  no_reverse_cost = quote_literal('SELECT id, source, target, cost from edge_table ORDER BY id');
+  with_reverse_cost = quote_literal('SELECT id, source, target, cost, reverse_cost from edges ORDER BY id');
+  no_reverse_cost = quote_literal('SELECT id, source, target, cost from edges ORDER BY id');
   the_points =  quote_literal('SELECT * FROM pointsOfInterest');
   msg_end = ' ';
 
@@ -180,8 +180,8 @@ BEGIN
   IF flag THEN directed = 'Directed'; END IF;
 
   k := 1;
-  with_reverse_cost = quote_literal('SELECT id, source, target, cost, reverse_cost from edge_table ORDER BY id');
-  no_reverse_cost = quote_literal('SELECT id, source, target, cost from edge_table ORDER BY id');
+  with_reverse_cost = quote_literal('SELECT id, source, target, cost, reverse_cost from edges ORDER BY id');
+  no_reverse_cost = quote_literal('SELECT id, source, target, cost from edges ORDER BY id');
   the_points =  quote_literal('SELECT * FROM pointsOfInterest');
   empty_restrictions =  quote_literal('SELECT * FROM restrictions WHERE id > 7');
   msg_end = ' ';

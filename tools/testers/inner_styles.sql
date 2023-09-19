@@ -46,11 +46,11 @@ $BODY$
 BEGIN
   RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
     ARRAY['source', 'target'],
-    'source','combinations_table WHERE target NOT IN (1,2)');
+    'source','combinations WHERE target NOT IN (5,6)');
 
   RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
     ARRAY['source', 'target'],
-    'target','combinations_table WHERE target NOT IN (1,2)');
+    'target','combinations WHERE target NOT IN (5,6)');
 END;
 $BODY$
 LANGUAGE plpgsql;
@@ -265,8 +265,8 @@ RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-ALTER TABLE edge_table RENAME cost TO going;
-ALTER TABLE edge_table RENAME reverse_cost TO coming;
+ALTER TABLE edges RENAME cost TO going;
+ALTER TABLE edges RENAME reverse_cost TO coming;
 
 --with reverse cost
 RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
@@ -300,8 +300,8 @@ RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
     ARRAY['id', 'source', 'target', 'going'],
     'going');
 
-ALTER TABLE edge_table RENAME going TO cost;
-ALTER TABLE edge_table RENAME coming TO reverse_cost;
+ALTER TABLE edges RENAME going TO cost;
+ALTER TABLE edges RENAME coming TO reverse_cost;
 
 END;
 $BODY$

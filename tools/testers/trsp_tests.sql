@@ -63,8 +63,8 @@ BEGIN
   IF flag THEN directed = 'Directed'; END IF;
 
   k := 1;
-  with_reverse_cost = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost from edge_table ORDER BY id');
-  no_reverse_cost = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost from edge_table ORDER BY id');
+  with_reverse_cost = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost from edges ORDER BY id');
+  no_reverse_cost = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost from edges ORDER BY id');
   FOR i IN 1.. cant BY 2 LOOP
     FOR j IN 1..cant LOOP
 
@@ -137,8 +137,8 @@ BEGIN
   IF flag THEN directed = 'Directed'; END IF;
 
   k := 1;
-  with_reverse_cost = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost from edge_table ORDER BY id');
-  no_reverse_cost = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost from edge_table ORDER BY id');
+  with_reverse_cost = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost from edges ORDER BY id');
+  no_reverse_cost = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost from edges ORDER BY id');
   FOR i IN 1.. cant LOOP
     FOR j IN 1..cant LOOP
 
