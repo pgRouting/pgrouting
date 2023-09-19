@@ -19,27 +19,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.2.0') THEN plan(282) ELSE plan(218) END;
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN min_version('3.2.0') THEN plan(282) ELSE plan(221) END;
 
 -- ONE TO ONE
-SELECT style_dijkstra('pgr_edgedisjointpaths(', ', 2, 3)');
+SELECT style_dijkstra('pgr_edgedisjointpaths(', ', 5, 10)');
 -- ONE TO MANY
-SELECT style_dijkstra('pgr_edgedisjointpaths(', ', 2, ARRAY[3])');
+SELECT style_dijkstra('pgr_edgedisjointpaths(', ', 5, ARRAY[10])');
 -- MANY TO ONE
-SELECT style_dijkstra('pgr_edgedisjointpaths(', ', ARRAY[2], 3)');
+SELECT style_dijkstra('pgr_edgedisjointpaths(', ', ARRAY[5], 10)');
 -- MANY TO MANY
-SELECT style_dijkstra('pgr_edgedisjointpaths(', ', ARRAY[2], ARRAY[3])');
+SELECT style_dijkstra('pgr_edgedisjointpaths(', ', ARRAY[5], ARRAY[10])');
 
 -- COMBINATIONS
 CREATE OR REPLACE FUNCTION inner_query() RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
   IF min_version('3.2.0') THEN
-    RETURN QUERY SELECT style_dijkstra('pgr_edgedisjointpaths(', ', $$SELECT * FROM combinations_table WHERE target NOT IN (1,2)$$)');
-    RETURN QUERY SELECT innerquery_combinations('pgr_edgedisjointpaths($$SELECT * FROM edge_table$$,',')');
+    RETURN QUERY SELECT style_dijkstra('pgr_edgedisjointpaths(', ', $$SELECT * FROM combinations WHERE target NOT IN (6,10)$$)');
+    RETURN QUERY SELECT innerquery_combinations('pgr_edgedisjointpaths($$SELECT * FROM edges$$,',')');
   ELSE
-    RETURN QUERY SELECT skip(2, 'Combinations signature added on 3.2.0');
+    RETURN QUERY SELECT skip(5, 'Combinations signature added on 3.2.0');
   END IF;
 END
 $BODY$

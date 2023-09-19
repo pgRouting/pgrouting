@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT CASE WHEN min_version('3.4.0') THEN plan(24) ELSE plan(2) END;
 
 
@@ -34,7 +34,7 @@ BEGIN
 
   CREATE TABLE vert AS
   SELECT id, in_edges, out_edges
-  FROM pgr_extractVertices('SELECT id, the_geom AS geom FROM edge_table');
+  FROM pgr_extractVertices('SELECT id, geom FROM edges');
 
 
   RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
@@ -76,7 +76,7 @@ LANGUAGE plpgsql;
 
 
 SELECT chk_edges_sql('pgr_degree(', ', $q$ SELECT * FROM vert$q$)');
-SELECT chk_vertices_sql('pgr_degree($$SELECT id FROM edge_table$$,',')');
+SELECT chk_vertices_sql('pgr_degree($$SELECT id FROM edges$$,',')');
 
 SELECT finish();
 ROLLBACK;

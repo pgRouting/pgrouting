@@ -20,18 +20,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 SET client_min_messages TO WARNING;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(3);
 
 
-SELECT pgr_analyzegraph('edge_table', 0.000001);
+SELECT pgr_createTopology('edges',0.001, 'geom', clean := true);
+SELECT pgr_analyzegraph('edges', 0.000001, 'geom');
 
 
-SELECT is((SELECT count(*)::INTEGER cnt FROM edge_table_vertices_pgr WHERE chk = 1), 1, '1: One vertex has a problem');
-SELECT is((SELECT id::INTEGER FROM edge_table_vertices_pgr WHERE chk = 1), 15, '2: vertex #15 has the problem');
+SELECT is((SELECT count(*)::INTEGER cnt FROM edges_vertices_pgr WHERE chk = 1), 1, '1: One vertex has a problem');
+SELECT is((SELECT id::INTEGER FROM edges_vertices_pgr WHERE chk = 1), 10, '2: vertex #15 has the problem');
 
 PREPARE q1 AS
-SELECT cnt, count(*) AS M  FROM edge_table_vertices_pgr GROUP BY cnt ORDER BY cnt;
+SELECT cnt, count(*) AS M  FROM edges_vertices_pgr GROUP BY cnt ORDER BY cnt;
 
 PREPARE vals AS
 VALUES (1, 7), (2,3), (3,5), (4,2);

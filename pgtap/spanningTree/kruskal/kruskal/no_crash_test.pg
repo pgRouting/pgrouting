@@ -19,11 +19,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(9);
 
 PREPARE edges AS
-SELECT id, source, target, cost, reverse_cost  FROM edge_table;
+SELECT id, source, target, cost, reverse_cost  FROM edges;
 
 SELECT isnt_empty('edges', 'Should be not empty to tests be meaningful');
 
@@ -37,7 +37,7 @@ subs TEXT[];
 BEGIN
     -- kruskal with no root vertex
     params = ARRAY[
-    '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$'
+    '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$'
     ]::TEXT[];
 
     subs = ARRAY[

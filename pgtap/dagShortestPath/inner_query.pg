@@ -19,11 +19,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT CASE WHEN min_version('3.2.0') THEN plan(132) ELSE plan(98) END;
 
 -- TODO the column has to be dropped because it creates a cycle when cost and reverse cost both have positive values
-ALTER TABLE edge_table DROP COLUMN reverse_cost;
+ALTER TABLE edges DROP COLUMN reverse_cost;
 
 -- ONE TO ONE
 SELECT style_dijkstra('pgr_dagshortestpath(', ', 2, 3)');
@@ -39,8 +39,8 @@ CREATE OR REPLACE FUNCTION inner_query() RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
   IF min_version('3.2.0') THEN
-    RETURN QUERY SELECT style_dijkstra('pgr_dagshortestpath(', ', $$SELECT * FROM combinations_table$$)');
-    RETURN QUERY SELECT innerquery_combinations('pgr_dagshortestpath($$SELECT * FROM edge_table$$,',')');
+    RETURN QUERY SELECT style_dijkstra('pgr_dagshortestpath(', ', $$SELECT * FROM combinations$$)');
+    RETURN QUERY SELECT innerquery_combinations('pgr_dagshortestpath($$SELECT * FROM edges$$,',')');
   ELSE
     RETURN QUERY SELECT skip(2, 'Combinations signature added on 3.2.0');
   END IF;

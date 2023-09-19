@@ -19,15 +19,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT CASE WHEN min_version('4.0.0') THEN plan(22) ELSE plan(19) END;
 SET client_min_messages TO ERROR;
 
 PREPARE edges AS
-SELECT id, source, target, cost, reverse_cost FROM edge_table;
+SELECT id, source, target, cost, reverse_cost FROM edges;
 
 PREPARE null_ret AS
-SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1);
+SELECT id FROM vertices  WHERE id IN (-1);
 
 CREATE OR REPLACE FUNCTION test(params TEXT[], subs TEXT[])
 RETURNS SETOF TEXT AS
@@ -75,14 +75,14 @@ BEGIN
     RETURN QUERY SELECT isnt_empty('edges', 'Should not be empty to tests be meaningful');
     RETURN QUERY SELECT is_empty('null_ret', 'Should be empty to tests be meaningful');
 
-    params = ARRAY['$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
+    params = ARRAY['$$SELECT id, source, target, cost, reverse_cost  FROM edges$$',
     'ARRAY[1, 3]',
     'true',
     'true'
     ]::TEXT[];
     subs = ARRAY[
     'NULL',
-    '(SELECT array_agg(id)::INTEGER[] FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+    '(SELECT array_agg(id)::INTEGER[] FROM vertices  WHERE id IN (-1))',
     'NULL',
     'NULL'
     ]::TEXT[];
@@ -99,14 +99,14 @@ BEGIN
 
   ELSE
 
-    params = ARRAY['SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT  FROM edge_table',
+    params = ARRAY['SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT  FROM edges',
     'ARRAY[1]',
     'true',
     'true'
     ]::TEXT[];
     subs = ARRAY[
     NULL,
-    '(SELECT array_agg(id)::INTEGER[] FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+    '(SELECT array_agg(id)::INTEGER[] FROM vertices  WHERE id IN (-1))',
     'NULL',
     'NULL'
     ]::TEXT[];

@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(1);
 
 CREATE or REPLACE FUNCTION lineGraphFullOriginalEdgeCheck(cant INTEGER default 17)
@@ -35,9 +35,9 @@ original_sql TEXT;
 inner_sql TEXT;
 BEGIN
 
-  original_sql := 'WITH going_edges AS (SELECT count(*) FROM edge_table WHERE cost > 0), coming_edges AS (SELECT count(*) FROM edge_table WHERE reverse_cost > 0) SELECT a.count + b.count FROM going_edges AS a, coming_edges AS b';
+  original_sql := 'WITH going_edges AS (SELECT count(*) FROM edges WHERE cost > 0), coming_edges AS (SELECT count(*) FROM edges WHERE reverse_cost > 0) SELECT a.count + b.count FROM going_edges AS a, coming_edges AS b';
 
-  inner_sql := 'SELECT id AS id, source AS source, target AS target, cost, reverse_cost FROM edge_table';
+  inner_sql := 'SELECT id AS id, source AS source, target AS target, cost, reverse_cost FROM edges';
 
   turnpenalty_sql := 'SELECT count(*) FROM pgr_lineGraphFull($$'||inner_sql||'$$) where cost = 1';
 

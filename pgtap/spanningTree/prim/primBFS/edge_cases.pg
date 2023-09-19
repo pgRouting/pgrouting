@@ -21,13 +21,13 @@ BEGIN;
 
 SELECT plan(13);
 
-UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
+UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
 --
 PREPARE prim1 AS
 SELECT * FROM pgr_primBFS(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table WHERE id > 18 ORDER BY id',
+    FROM edges WHERE id > 18 ORDER BY id',
     21, 3
 );
 
@@ -40,7 +40,7 @@ PREPARE prim2 AS
 SELECT *
 FROM pgr_primBFS(
     'SELECT id, source, target, cost
-     FROM edge_table WHERE id > 18 ORDER BY id',
+     FROM edges WHERE id > 18 ORDER BY id',
     ARRAY[21, 45],
     3
 );
@@ -58,7 +58,7 @@ PREPARE prim3 AS
 SELECT *
 FROM pgr_primBFS(
     'SELECT id, source, target, cost, reverse_cost
-     FROM edge_table ORDER BY id',
+     FROM edges ORDER BY id',
     21, 3
 );
 
@@ -68,50 +68,47 @@ SELECT set_eq('prim3',
 
 --
 PREPARE prim4 AS
-SELECT seq, start_vid, depth, node, edge, agg_cost <= 3.5
+SELECT seq, start_vid, depth, edge, agg_cost <= 3.5
 FROM pgr_primBFS(
     'SELECT id, source, target, cost
-     FROM edge_table ORDER BY id',
-    ARRAY[21, 4],
+     FROM edges ORDER BY id',
+    ARRAY[21, 15],
     3
 );
 
 SELECT set_eq('prim4',
     $$VALUES
-        (1, 4, 0, 4, -1, true),
-        (2, 4, 1, 9, 16, true),
-        (3, 4, 2, 6, 9, true),
-        (4, 4, 3, 3, 5, true),
-        (5, 4, 3, 5, 8, true),
-        (6, 4, 3, 11, 11, true),
-        (7, 21, 0, 21, -1, true)
+        (1, 15, 0, -1, true),
+        (2, 15, 1, 16, true),
+        (3, 15, 2,  9, true),
+        (4, 15, 3,  5, true),
+        (5, 15, 3,  8, true),
+        (6, 15, 3, 11, true),
+        (7, 21, 0, -1, true)
     $$,
     '4: Root not in Graph -> Only root vertex is returned, Root in graph -> spanning tree is returned');
 
 
 --
 PREPARE prim5 AS
-SELECT seq, start_vid, depth, node, edge, depth <= 3
+SELECT seq, start_vid, depth, edge, depth <= 3
 FROM pgr_primBFS(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table ORDER BY id',
+    FROM edges ORDER BY id',
     0, 3
 );
 
 SELECT set_eq('prim5',
     $$VALUES
-        (1, 1, 0, 1, -1, true),
-        (2, 1, 1, 2, 1, true),
-        (3, 1, 2, 3, 2, true),
-        (4, 1, 2, 5, 4, true),
-        (5, 1, 3, 4, 3, true),
-        (6, 1, 3, 6, 5, true),
-        (7, 1, 3, 8, 7, true),
-        (8, 1, 3, 10, 10, true),
-        (9, 14, 0, 14, -1, true),
-        (10, 14, 1, 15, 17, true),
-        (11, 16, 0, 16, -1, true),
-        (12, 16, 1, 17, 18, true)
+        (1, 1, 0, -1, true),
+        (2, 1, 1, 6, true),
+        (3, 1, 2, 7, true),
+        (4, 1, 3, 4, true),
+        (5, 1, 3, 10, true),
+        (6, 2, 0, -1, true),
+        (7, 2, 1, 17, true),
+        (8, 13, 0, -1, true),
+        (9, 13, 1, 18, true)
     $$,
     '5: root = 0 -> forest (with random root vertices)');
 
@@ -120,7 +117,7 @@ PREPARE prim6 AS
 SELECT *
 FROM pgr_primBFS(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table ORDER BY id',
+    FROM edges ORDER BY id',
     4, -3
 );
 
@@ -136,8 +133,8 @@ PREPARE prim7 AS
 SELECT *
 FROM pgr_primBFS(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table ORDER BY id',
-    ARRAY[4, 10], -3
+    FROM edges ORDER BY id',
+    ARRAY[15, 8], -3
 );
 
 SELECT throws_ok('prim7',
@@ -150,69 +147,69 @@ PREPARE prim8 AS
 SELECT *
 FROM pgr_primBFS(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table ORDER BY id',
-    4, 0
+    FROM edges ORDER BY id',
+    15, 0
 );
 
 SELECT set_eq('prim8',
-    $$VALUES (1, 0, 4, 4, -1, 0, 0) $$,
+    $$VALUES (1, 0, 15, 15, -1, 0, 0) $$,
     '8: 0 max_depth -> Only root vertex is returned');
 
 --
 PREPARE prim9 AS
-SELECT seq, depth, start_vid, node, edge, depth <= 9223372036854775807
+SELECT seq, depth, edge, depth <= 9223372036854775807
 FROM pgr_primBFS(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table ORDER BY id',
-    4
+    FROM edges ORDER BY id',
+    15
 );
 
 SELECT set_eq('prim9',
     $$VALUES
-        (1,  0, 4,  4, -1, true),
-        (2,  1, 4,  3,  3, true),
-        (3,  2, 4,  2,  2, true),
-        (4,  2, 4,  6,  5, true),
-        (5,  3, 4,  1,  1, true),
-        (6,  3, 4,  5,  4, true),
-        (7,  3, 4,  9,  9, true),
-        (8,  3, 4, 11, 11, true),
-        (9,  4, 4,  8,  7, true),
-        (10, 4, 4, 10, 10, true),
-        (11, 4, 4, 12, 13, true),
-        (12, 5, 4,  7,  6, true),
-        (13, 5, 4, 13, 14, true)
+        (1,  0,  -1, true),
+        (2,  1,   3, true),
+        (3,  2,   2, true),
+        (4,  2,   5, true),
+        (5,  3,   1, true),
+        (6,  3,   4, true),
+        (7,  3,   9, true),
+        (8,  3,  11, true),
+        (9,  4,   7, true),
+        (10, 4,  10, true),
+        (11, 4,  13, true),
+        (12, 5,   6, true),
+        (13, 5,  14, true)
     $$,
     '9: default max_depth -> complete tree from root');
 
 --
 PREPARE prim10 AS
-SELECT seq, start_vid, depth, node, edge, depth <= 9223372036854775807
+SELECT seq, start_vid, depth, edge, depth <= 9223372036854775807
 FROM pgr_primBFS(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table ORDER BY id',
+    FROM edges ORDER BY id',
     0
 );
 
 SELECT set_eq('prim10',
     $$VALUES
-       (1,  1, 0, 1,-1, true),
-       (2,  1, 1, 2, 1, true),
-       (3,  1, 2, 3, 2, true),
-       (4,  1, 2, 5, 4, true),
-       (5,  1, 3, 4, 3, true),
-       (6,  1, 3, 6, 5, true),
-       (7,  1, 3, 8, 7, true),
-       (8,  1, 3,10,10, true),
-       (9,  1, 4, 9, 9, true),
-       (10,  1, 4,11,11, true),
-       (11,  1, 4, 7, 6, true),
-       (12,  1, 4,13,14, true),
-       (13,  1, 5,12,13, true),
-       (14, 14, 0,14,-1, true),
-       (15, 14, 1,15,17, true),
-       (16, 16, 0,16,-1, true),
-       (17, 16, 1,17,18, true)
+       (1,  1, 0, -1, true),
+       (2,  1, 1, 6, true),
+       (3,  1, 2, 7, true),
+       (4,  1, 3, 4, true),
+       (5,  1, 3,10, true),
+       (6,  1, 4, 1, true),
+       (7,  1, 4, 2, true),
+       (8,  1, 4,14, true),
+       (9,  1, 5, 3, true),
+       (10, 1, 5, 5, true),
+       (11, 1, 6, 9, true),
+       (12, 1, 6,11, true),
+       (13, 1, 7,13, true),
+       (14, 2, 0,-1, true),
+       (15, 2, 1,17, true),
+       (16, 13, 0,-1, true),
+       (17, 13, 1,18, true)
     $$,
     '10: root = 0 -> forest (with random root vertices)');
 
@@ -220,7 +217,7 @@ SELECT set_eq('prim10',
 PREPARE prim11 AS
 SELECT * FROM pgr_primBFS(
   'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table', 18
+    FROM edges', 18
 );
 
 SELECT set_eq('prim11', 'VALUES (1, 0, 18, 18, -1, 0, 0)', 'Vertex 18 does not exist');
@@ -230,7 +227,7 @@ PREPARE prim12 AS
 SELECT *
 FROM pgr_primBFS(
     'SELECT id, source, target, cost, reverse_cost
-       FROM edge_table ORDER BY id', 4)
+       FROM edges ORDER BY id', 4)
 WHERE cost < 0;
 
 SELECT is_empty('prim12', 'No cost can be negative');
@@ -240,10 +237,13 @@ PREPARE prim13 AS
 SELECT *
 FROM pgr_primBFS(
     'SELECT id, source, target, cost, reverse_cost
-       FROM edge_table ', 16
+       FROM edges ', 13
 );
 
-SELECT set_eq('prim13', 'VALUES (1, 0, 16, 16, -1, 0, 0), (2, 1, 16, 17, 18, 1.324, 1.324)' , 'Compare when node is 16 with expected result');
+SELECT set_eq('prim13',
+  'VALUES
+   (1, 0, 13, 13, -1, 0, 0),
+   (2, 1, 13, 14, 18, 1.324, 1.324)' , 'Compare when node is 16 with expected result');
 
 SELECT * FROM finish();
 ROLLBACK;

@@ -22,10 +22,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 BEGIN;
 
-SELECT * INTO edges2 FROM edge_table;
+SELECT id, source, target, cost, reverse_cost, geom AS the_geom INTO edges2 FROM edges;
 UPDATE edges2 SET source = NULL, target = NULL;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(108);
 
 

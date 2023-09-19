@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT CASE WHEN min_version('3.2.0') THEN plan (16) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION edge_cases()
@@ -37,7 +37,7 @@ END IF;
 
 PREPARE sample_data AS
 SELECT id, source, target, cost, reverse_cost
-FROM edge_table;
+FROM edges;
 
 -- max_depth 1 cases (directed)
 

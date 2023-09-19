@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT CASE WHEN min_version('3.4.0') THEN plan(12) ELSE plan(1) END;
 
 
@@ -35,14 +35,10 @@ BEGIN
   END IF;
 
   PREPARE edges AS
-  SELECT id FROM edge_table;
-
-  CREATE TABLE vertices AS
-  SELECT id, in_edges, out_edges
-  FROM pgr_extractVertices('SELECT id, the_geom AS geom FROM edge_table');
+  SELECT id FROM edges;
 
   PREPARE edges1 AS
-  SELECT source FROM edge_table;
+  SELECT source FROM edges;
 
   PREPARE query_1 AS
   SELECT * FROM pgr_degree('edges', 'SELECT * FROM vertices');
@@ -70,10 +66,10 @@ BEGIN
   RETURN QUERY SELECT lives_ok('query_5', 'Missing column in_edges but usable');
 
   PREPARE subedges AS
-  SELECT id FROM edge_table WHERE id < 17;
+  SELECT id FROM edges WHERE id < 17;
 
   PREPARE edges2 AS
-  SELECT source FROM edge_table WHERE id < 17;
+  SELECT source FROM edges WHERE id < 17;
 
   PREPARE query_7 AS
   SELECT * FROM pgr_degree('subedges', 'SELECT * FROM vertices');

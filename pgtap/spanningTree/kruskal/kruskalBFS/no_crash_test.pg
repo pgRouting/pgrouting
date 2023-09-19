@@ -19,14 +19,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(86);
 
 PREPARE edges AS
-SELECT id, source, target, cost, reverse_cost  FROM edge_table;
+SELECT id, source, target, cost, reverse_cost  FROM edges;
 
 PREPARE null_vertex AS
-SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1);
+SELECT id FROM vertices  WHERE id IN (-1);
 
 
 SELECT isnt_empty('edges', 'Should be not empty to tests be meaningful');
@@ -42,12 +42,12 @@ subs TEXT[];
 BEGIN
     -- kruskalBFS
     params = ARRAY[
-    '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
+    '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$',
     '5'
     ]::TEXT[];
     subs = ARRAY[
     'NULL',
-    '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))'
+    '(SELECT id FROM vertices  WHERE id IN (-1))'
     ]::TEXT[];
 
     RETURN query SELECT * FROM no_crash_test('pgr_kruskalBFS', params, subs);
@@ -60,13 +60,13 @@ BEGIN
 
     -- kruskalBFS with depth
     params = ARRAY[
-    '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
+    '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$',
     '5',
     '3'
     ]::TEXT[];
     subs = ARRAY[
     'NULL',
-    '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+    '(SELECT id FROM vertices  WHERE id IN (-1))',
     'NULL::INTEGER'
     ]::TEXT[];
 
@@ -80,12 +80,12 @@ BEGIN
 
     -- kruskalBFS Multiple vertices
     params = ARRAY[
-    '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
+    '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$',
     'ARRAY[5,3]'
     ]::TEXT[];
     subs = ARRAY[
     'NULL',
-    '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))'
+    '(SELECT array_agg(id) FROM vertices  WHERE id IN (-1))'
     ]::TEXT[];
 
     RETURN query SELECT * FROM no_crash_test('pgr_kruskalBFS', params, subs);
@@ -98,13 +98,13 @@ BEGIN
 
     -- kruskalBFS with depth Multiple vertices
     params = ARRAY[
-    '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
+    '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$',
     'ARRAY[5,3]',
     '3'
     ]::TEXT[];
     subs = ARRAY[
     'NULL',
-    '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+    '(SELECT array_agg(id) FROM vertices  WHERE id IN (-1))',
     'NULL::INTEGER'
     ]::TEXT[];
 

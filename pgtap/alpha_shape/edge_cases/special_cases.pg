@@ -19,29 +19,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(2);
 
 -- duplicated points are removed
 PREPARE q1 AS
 SELECT ST_Area(pgr_alphaShape(
-    (SELECT ST_Collect(the_geom) FROM edge_table_vertices_pgr)
+    (SELECT ST_Collect(geom) FROM vertices)
     ));
 
 PREPARE q2 AS
 SELECT ST_Area(pgr_alphaShape(
     (WITH data AS (
-            SELECT the_geom FROM edge_table_vertices_pgr
+            SELECT geom FROM vertices
         UNION ALL
-     SELECT the_geom FROM edge_table_vertices_pgr)
-    SELECT  ST_Collect(the_geom) FROM data)
+     SELECT geom FROM vertices)
+    SELECT  ST_Collect(geom) FROM data)
 ));
 
 
 -- Ordering does not affect the result
 PREPARE q3 AS
 SELECT ST_Area(pgr_alphaShape(
-    (SELECT ST_Collect(the_geom) FROM edge_table)
+    (SELECT ST_Collect(geom) FROM edges)
 ));
 
 SELECT CASE WHEN _pgr_versionless((SELECT boost from pgr_full_version()), '1.54.0')

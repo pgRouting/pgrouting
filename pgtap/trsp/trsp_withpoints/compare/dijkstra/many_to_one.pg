@@ -21,7 +21,7 @@ BEGIN;
 
 SELECT CASE WHEN min_version('3.4.0') THEN plan(68) ELSE plan(1) END;
 SET extra_float_digits = -3;
-UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
+UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
 CREATE or REPLACE FUNCTION compareDijkstra(cant INTEGER default 17)
 RETURNS SETOF TEXT AS
@@ -45,8 +45,8 @@ BEGIN
   result_columns := 'seq, start_vid, node, edge, cost';
   empty_points := 'SELECT * FROM pointsofinterest WHERE pid IN (-1)';
   empty_restrictions := 'SELECT * FROM restrictions WHERE id > 10';
-  with_reverse := 'SELECT * FROM edge_table';
-  no_reverse := 'SELECT id, source, target, cost FROM edge_table';
+  with_reverse := 'SELECT * FROM edges';
+  no_reverse := 'SELECT id, source, target, cost FROM edges';
 
   FOR j IN 1.. cant LOOP
     arr := 'ARRAY[1,2,3,4,5,6,7,8]';

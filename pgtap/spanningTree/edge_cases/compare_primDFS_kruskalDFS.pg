@@ -25,7 +25,7 @@ BEGIN;
 
 SELECT plan(28);
 
-UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
+UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
 CREATE or REPLACE FUNCTION ComparePrimDFSKruskalDFS()
 RETURNS SETOF TEXT AS
@@ -38,8 +38,8 @@ kruskal_sql TEXT;
 vids TEXT;
 data TEXT;
 BEGIN
-    inner1_sql := 'SELECT id, source, target, cost, reverse_cost FROM edge_table';
-    inner2_sql := 'SELECT id, source, target, cost FROM edge_table';
+    inner1_sql := 'SELECT id, source, target, cost, reverse_cost FROM edges';
+    inner2_sql := 'SELECT id, source, target, cost FROM edges';
 
     data := ' seq, depth, start_vid, node, edge,  cost::text, agg_cost::text ';
     vids := ' ARRAY[2, 5] ';
@@ -93,8 +93,8 @@ kruskal_sql TEXT;
 vids TEXT;
 data TEXT;
 BEGIN
-    inner1_sql := 'SELECT id, source, target, cost, reverse_cost FROM edge_table';
-    inner2_sql := 'SELECT id, source, target, cost FROM edge_table';
+    inner1_sql := 'SELECT id, source, target, cost, reverse_cost FROM edges';
+    inner2_sql := 'SELECT id, source, target, cost FROM edges';
 
     data := ' seq, depth, start_vid, node, edge,  cost::text, agg_cost::text ';
     vids := ' ARRAY[2, 5] ';

@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 SELECT plan(1);
-UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
+UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
 -- should be a procedure
 CREATE OR REPLACE FUNCTION edge_cases()
@@ -30,27 +30,27 @@ BEGIN
   IF min_version('3.4.0') THEN
     PREPARE q1 AS
       SELECT seq, node, edge, cost::text FROM pgr_trsp(
-        $$SELECT id, source, target, cost FROM edge_table$$,
+        $$SELECT id, source, target, cost FROM edges$$,
         $$SELECT * FROM restrictions WHERE id > 10$$,
         7, 12, false);
     PREPARE q2 AS
       (SELECT seq, node, edge, cost::text
-      FROM pgr_dijkstra('SELECT id, source, target, cost FROM edge_table order by id',7, 12, FALSE))
+      FROM pgr_dijkstra('SELECT id, source, target, cost FROM edges order by id',7, 12, FALSE))
       UNION
       (SELECT seq, node, edge, cost::text
-      FROM pgr_dijkstra('SELECT id, source, target, cost FROM edge_table order by source',7, 12, FALSE));
+      FROM pgr_dijkstra('SELECT id, source, target, cost FROM edges order by source',7, 12, FALSE));
 
   ELSE
 
     PREPARE q1 AS
       SELECT seq, id1, id2, cost::text
-      FROM pgr_trsp($$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table$$, 7, 12, FALSE, false);
+      FROM pgr_trsp($$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edges$$, 7, 12, FALSE, false);
     PREPARE q2 AS
       (SELECT seq-1, node::INTEGER, edge::INTEGER, cost::text
-        FROM pgr_dijkstra('SELECT id, source, target, cost FROM edge_table order by id',7, 12, FALSE))
+        FROM pgr_dijkstra('SELECT id, source, target, cost FROM edges order by id',7, 12, FALSE))
       UNION ALL
       (SELECT seq-1, node::INTEGER, edge::INTEGER, cost::text
-        FROM pgr_dijkstra('SELECT id, source, target, cost FROM edge_table order by source',7, 12, FALSE));
+        FROM pgr_dijkstra('SELECT id, source, target, cost FROM edges order by source',7, 12, FALSE));
 
   END IF;
 END;
