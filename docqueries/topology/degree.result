@@ -14,7 +14,7 @@ SELECT * FROM pgr_degree(
   $$SELECT id FROM edges$$,
   $$SELECT id, in_edges, out_edges
     FROM tmp_edges_vertices_pgr$$);
- node | degree 
+ node | degree
 ------+--------
     1 |      1
     2 |      1
@@ -40,7 +40,7 @@ SELECT * FROM pgr_degree(
   $$SELECT id FROM edges WHERE id < 17$$,
   $$SELECT id, in_edges, out_edges
     FROM pgr_extractVertices('SELECT id, geom FROM edges')$$);
- node | degree 
+ node | degree
 ------+--------
     1 |      1
     2 |      0
@@ -67,38 +67,38 @@ SELECT * FROM pgr_degree(
   $$SELECT id, in_edges, out_edges
     FROM pgr_extractVertices('SELECT id, geom FROM edges')$$,
   dryrun => true);
-NOTICE:  
-    WITH
-
-    -- a sub set of edges of the graph goes here
-    g_edges AS (
-      SELECT id FROM edges WHERE id < 17
-    ),
-
-    -- sub set of vertices of the graph goes here
-    all_vertices AS (
+NOTICE:
+    WITH
+
+    -- a sub set of edges of the graph goes here
+    g_edges AS (
+      SELECT id FROM edges WHERE id < 17
+    ),
+
+    -- sub set of vertices of the graph goes here
+    all_vertices AS (
       SELECT id, in_edges, out_edges
-    FROM pgr_extractVertices('SELECT id, geom FROM edges')
-    ),
-
-    g_vertices AS (
-      SELECT id,
+    FROM pgr_extractVertices('SELECT id, geom FROM edges')
+    ),
+
+    g_vertices AS (
+      SELECT id,
         unnest(
           coalesce(in_edges::BIGINT[], '{}'::BIGINT[])
           ||
-          coalesce(out_edges::BIGINT[], '{}'::BIGINT[])) AS eid
-      FROM all_vertices
-    ),
-
-    totals AS (
-      SELECT v.id, count(*)
-      FROM g_vertices AS v
-      JOIN g_edges AS e ON (e.id = eid) GROUP BY v.id
-    )
-
-    SELECT id::BIGINT, coalesce(count, 0)::BIGINT FROM all_vertices LEFT JOIN totals USING (id)
+          coalesce(out_edges::BIGINT[], '{}'::BIGINT[])) AS eid
+      FROM all_vertices
+    ),
+
+    totals AS (
+      SELECT v.id, count(*)
+      FROM g_vertices AS v
+      JOIN g_edges AS e ON (e.id = eid) GROUP BY v.id
+    )
+
+    SELECT id::BIGINT, coalesce(count, 0)::BIGINT FROM all_vertices LEFT JOIN totals USING (id)
     ;
- node | degree 
+ node | degree
 ------+--------
 (0 rows)
 
