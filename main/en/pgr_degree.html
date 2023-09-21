@@ -231,7 +231,7 @@ SELECT * FROM pgr_degree(
   $$SELECT id FROM edges$$,
   $$SELECT id, in_edges, out_edges
     FROM tmp_edges_vertices_pgr$$);
- node | degree 
+ node | degree
 ------+--------
     1 |      1
     2 |      1
@@ -401,7 +401,7 @@ end point</em>.</p>
   $$SELECT id FROM edges WHERE id &lt; 17$$,
   $$SELECT id, in_edges, out_edges
     FROM pgr_extractVertices(&#39;SELECT id, geom FROM edges&#39;)$$);
- node | degree 
+ node | degree
 ------+--------
     1 |      1
     2 |      0
@@ -436,7 +436,7 @@ development needs.</p>
   $$SELECT id, in_edges, out_edges
     FROM pgr_extractVertices(&#39;SELECT id, geom FROM edges&#39;)$$,
   dryrun =&gt; true);
-NOTICE:  
+NOTICE:
     WITH
 
     -- a sub set of edges of the graph goes here
@@ -467,7 +467,7 @@ NOTICE:
 
     SELECT id::BIGINT, coalesce(count, 0)::BIGINT FROM all_vertices LEFT JOIN totals USING (id)
     ;
- node | degree 
+ node | degree
 ------+--------
 (0 rows)
 
@@ -565,8 +565,8 @@ functions can be used to divide the problem.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.5.1.<br/>
-      Last updated on Sep 12, 2023.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.5.<br/>
+      Last updated on Sep 21, 2023.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
 </footer>
