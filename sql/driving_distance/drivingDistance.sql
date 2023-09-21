@@ -88,7 +88,7 @@ IS 'pgr_v4drivingDistance(Single_vertex)
 - Optional Parameters
    - directed := true
 - Documentation:
-   - ${PROJECT_DOC_LINK}/pgr_v4drivingDistance.html
+   - ${PROJECT_DOC_LINK}/pgr_drivingDistance.html
 ';
 
 COMMENT ON FUNCTION pgr_drivingDistance(TEXT, ANYARRAY, FLOAT, BOOLEAN, BOOLEAN)
@@ -101,7 +101,7 @@ IS 'pgr_v4drivingDistance(Multiple vertices)
    - directed := true
    - equicost := false
 - Documentation:
-   - ${PROJECT_DOC_LINK}/pgr_v4drivingDistance.html
+   - ${PROJECT_DOC_LINK}/pgr_drivingDistance.html
 ';
 
 

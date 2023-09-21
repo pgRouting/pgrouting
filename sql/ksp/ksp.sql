@@ -47,7 +47,7 @@ CREATE FUNCTION pgr_ksp(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
+    SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM _v4pgr_ksp(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, $5, $6);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
@@ -76,7 +76,7 @@ CREATE FUNCTION pgr_ksp(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
+    SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM  _v4pgr_ksp(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, $5, $6);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
@@ -104,7 +104,7 @@ CREATE FUNCTION pgr_ksp(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
+    SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM  _v4pgr_ksp(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, $5, $6);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
@@ -132,7 +132,7 @@ CREATE FUNCTION pgr_ksp(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
+    SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM  _v4pgr_ksp(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, $5, $6);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
@@ -159,7 +159,7 @@ CREATE FUNCTION pgr_ksp(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
+    SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
     FROM  _v4pgr_ksp(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4, $5);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
