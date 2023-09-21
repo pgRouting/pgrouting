@@ -241,7 +241,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
   RETURNS SETOF RECORD AS
   $BODY$
   BEGIN
-        RETURN QUERY SELECT *
+        RETURN QUERY SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM pgr_PushRelabel($1, $2, $3);
   END
   $BODY$
@@ -261,7 +261,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
   RETURNS SETOF RECORD AS
   $BODY$
   BEGIN
-        RETURN QUERY SELECT *
+        RETURN QUERY SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM pgr_PushRelabel($1, $2, $3);
   END
   $BODY$
@@ -281,7 +281,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
   RETURNS SETOF RECORD AS
   $BODY$
   BEGIN
-        RETURN QUERY SELECT *
+        RETURN QUERY SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM pgr_PushRelabel($1, $2, $3);
   END
   $BODY$
@@ -301,7 +301,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
   RETURNS SETOF RECORD AS
   $BODY$
   BEGIN
-        RETURN QUERY SELECT *
+        RETURN QUERY SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM pgr_PushRelabel($1, $2, $3);
   END
   $BODY$
@@ -324,7 +324,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
   RETURNS SETOF RECORD AS
   $BODY$
   BEGIN
-        RETURN QUERY SELECT *
+        RETURN QUERY SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM pgr_boykovKolmogorov($1, $2, $3);
   END
   $BODY$
@@ -344,7 +344,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
   RETURNS SETOF RECORD AS
   $BODY$
   BEGIN
-        RETURN QUERY SELECT *
+        RETURN QUERY SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM pgr_boykovKolmogorov($1, $2, $3);
   END
   $BODY$
@@ -364,7 +364,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
   RETURNS SETOF RECORD AS
   $BODY$
   BEGIN
-        RETURN QUERY SELECT *
+        RETURN QUERY SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM pgr_boykovKolmogorov($1, $2, $3);
   END
   $BODY$
@@ -384,7 +384,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
   RETURNS SETOF RECORD AS
   $BODY$
   BEGIN
-        RETURN QUERY SELECT *
+        RETURN QUERY SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM pgr_boykovKolmogorov($1, $2, $3);
   END
   $BODY$
@@ -407,7 +407,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
   RETURNS SETOF RECORD AS
   $BODY$
   BEGIN
-        RETURN QUERY SELECT *
+        RETURN QUERY SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM pgr_edmondsKarp($1, $2, $3);
   END
   $BODY$
@@ -428,7 +428,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
   RETURNS SETOF RECORD AS
   $BODY$
   BEGIN
-        RETURN QUERY SELECT *
+        RETURN QUERY SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM pgr_edmondsKarp($1, $2, $3);
   END
   $BODY$
@@ -448,7 +448,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
   RETURNS SETOF RECORD AS
   $BODY$
   BEGIN
-        RETURN QUERY SELECT *
+        RETURN QUERY SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM pgr_edmondsKarp($1, $2, $3);
   END
   $BODY$
@@ -468,7 +468,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
   RETURNS SETOF RECORD AS
   $BODY$
   BEGIN
-        RETURN QUERY SELECT *
+        RETURN QUERY SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM pgr_edmondsKarp($1, $2, $3);
   END
   $BODY$
@@ -489,7 +489,7 @@ CREATE OR REPLACE FUNCTION pgr_maximumcardinalitymatching(
   RETURNS SETOF RECORD AS
   $BODY$
   BEGIN
-        RETURN QUERY SELECT *
+        RETURN QUERY SELECT seq, edge_id, source, target, flow, residual_capacity
         FROM pgr_maxCardinalityMatch($1, $2);
   END
   $BODY$
