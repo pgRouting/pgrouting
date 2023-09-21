@@ -557,7 +557,7 @@ SELECT * FROM pgr_maxCardinalityMatch(
   $$SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edges$$,
   directed => true
 );
-WARNING:  pgr_maxCardinalityMatch(text,boolean) deprecated on v3.4.0
+WARNING:  pgr_maxCardinalityMatch(text,boolean) deprecated signature on v3.4.0
  seq | edge | source | target
 -----+------+--------+--------
    1 |    1 |      5 |      6
