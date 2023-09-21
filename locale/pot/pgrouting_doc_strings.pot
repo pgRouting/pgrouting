@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-13 18:09+0000\n"
+"POT-Creation-Date: 2023-09-21 15:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10315,22 +10315,7 @@ msgstr ""
 msgid "The geometry of the points moved on top of the segment."
 msgstr ""
 
-msgid "Points of interest geometry"
-msgstr ""
-
-msgid "Inserting the data of the points of interest:"
-msgstr ""
-
 msgid "Points of interest fillup"
-msgstr ""
-
-msgid "Using :doc:`pgr_findCloseEdges` Calculating for visual purposes the points over the graph."
-msgstr ""
-
-msgid "A special case to arrive from both sides of the edge."
-msgstr ""
-
-msgid "Points of interest data"
 msgstr ""
 
 msgid "``pgr_floydWarshall``"
@@ -13106,6 +13091,12 @@ msgid "Automatic page history links"
 msgstr ""
 
 msgid "using bootstrap_version 2 because 3+ does not do dropdowns"
+msgstr ""
+
+msgid "pgtap tests"
+msgstr ""
+
+msgid "`#2559 <https://github.com/pgRouting/pgrouting/issues/2559>`__ pgtap test using sampledata"
 msgstr ""
 
 msgid "Build fixes"
