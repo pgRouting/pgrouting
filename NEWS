@@ -161,6 +161,11 @@ Changes on the documentation to the following:
 
   * using bootstrap_version 2 because 3+ does not do dropdowns
 
+**SQL enhancements**
+
+* [#2561](https://github.com/pgRouting/pgrouting/issues/2561) Not use
+  wildcards on SQL
+
 **pgtap tests**
 
 * [#2559](https://github.com/pgRouting/pgrouting/issues/2559) pgtap test using sampledata
