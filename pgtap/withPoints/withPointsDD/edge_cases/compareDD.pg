@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
+UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 SELECT plan(1);
 
 CREATE OR REPLACE FUNCTION test_cases()
@@ -34,14 +34,14 @@ BEGIN
 /* withPoinstsDD starting from a vertex NO details*/
 prepare nodetails1 AS
 SELECT seq, depth, start_vid,  node, edge, round(cost::numeric, 3) AS cost, round(agg_cost::numeric, 3)  AS agg_cost FROM pgr_withPointsDD(
-      'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+      'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
       'SELECT pid, edge_id, fraction, side from pointsOfInterest where pid > 100',
       1, 4.8, 'r', directed => true, details => false)
 WHERE node > 0;
 
 prepare expected1 AS
 SELECT seq, depth, start_vid,  node, edge, round(cost::numeric, 3) AS cost, round(agg_cost::numeric, 3)  AS agg_cost FROM pgr_drivingDistance(
-      'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+      'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
       1, 4.8, directed => true);
 
 RETURN QUERY

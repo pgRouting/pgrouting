@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 BEGIN;
 SET extra_float_digits=-3;
-UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
+UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
 SELECT CASE WHEN min_version('3.6.0') THEN PLAN(13) ELSE plan(1) END;
 
@@ -34,17 +34,17 @@ BEGIN
 
 PREPARE dbigset AS
 SELECT depth, start_vid, node, edge,  cost , agg_cost FROM pgr_withPointsDD(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
   3, 3.2, 'r',details => true);
 PREPARE dmediumset AS
 SELECT depth, start_vid, node, edge,  cost , agg_cost FROM pgr_withPointsDD(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
   3, 2.8, 'r',details => true);
 PREPARE dsmallset AS
 SELECT depth, start_vid, node, edge,  cost , agg_cost FROM pgr_withPointsDD(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
   3, 1.8, 'r', details => true);
 
@@ -57,17 +57,17 @@ SELECT set_has('dmediumset', 'dsmallset', '3 with details: dist 2.8 has results 
 
 PREPARE ndbigset AS
 SELECT depth, start_vid, node, edge,  cost , agg_cost FROM pgr_withPointsDD(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
   10, 3.2, 'r',details => false) WHERE node > 0;
 PREPARE ndmediumset AS
 SELECT depth, start_vid, node, edge,  cost , agg_cost FROM pgr_withPointsDD(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
   10, 2.8, 'r',details => false) WHERE node > 0;
 PREPARE ndsmallset AS
 SELECT depth, start_vid, node, edge,  cost , agg_cost FROM pgr_withPointsDD(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
   10, 1.8, 'r', details => false) WHERE node > 0;
 
@@ -80,17 +80,17 @@ SELECT set_has('ndmediumset', 'ndsmallset', '3 no details: dist 2.8 has results 
 
 PREPARE dfrom16 AS
 SELECT depth, start_vid, node, edge, agg_cost FROM pgr_withPointsDD(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
   16, 3.2, 'r',details => true);
 PREPARE dfromNeg1 AS
 SELECT depth, start_vid, node, edge, agg_cost FROM pgr_withPointsDD(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
   -1, 3.2, 'r',details => true);
 PREPARE dfrom16andNeg1 AS
 SELECT depth, start_vid, node, edge, agg_cost FROM pgr_withPointsDD(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
   ARRAY[-1,16], 3.2, 'r',details => true);
 
@@ -101,7 +101,7 @@ SELECT set_has('dfrom16andNeg1', 'dfromNeg1', '2 with details, aggregate query h
 
 PREPARE dequicost AS
 SELECT depth, start_vid, node, edge, agg_cost FROM pgr_withPointsDD(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
   ARRAY[-1,16], 3.2, 'r',details => true, equicost => true);
 
@@ -110,17 +110,17 @@ SELECT set_has('dfrom16andNeg1', 'dequicost',  '3, aggregate query with details 
 
 PREPARE ndfrom16 AS
 SELECT depth, start_vid, node, edge, agg_cost FROM pgr_withPointsDD(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
   16, 3.2, 'r',details => false) WHERE node > 0;
 PREPARE ndfromNeg1 AS
 SELECT depth, start_vid, node, edge, agg_cost FROM pgr_withPointsDD(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
   -1, 3.2, 'r',details => false) WHERE node > 0;
 PREPARE ndfrom16andNeg1 AS
 SELECT depth, start_vid, node, edge, agg_cost FROM pgr_withPointsDD(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
   ARRAY[-1,16], 3.2, 'r',details => false) WHERE node > 0;
 
@@ -131,7 +131,7 @@ SELECT set_has('ndfrom16andNeg1', 'ndfromNeg1', '2 no details, aggregate query h
 
 PREPARE ndequicost AS
 SELECT depth, start_vid, node, edge, agg_cost FROM pgr_withPointsDD(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
   ARRAY[-1,16], 3.2, 'r', details => false, equicost => true) WHERE node > 0;
 
@@ -141,12 +141,12 @@ SELECT set_has('ndfrom16andNeg1', 'ndequicost', '3, aggregate query no details h
 /* checking ordering */
 prepare tocheck AS
 SELECT seq, depth, start_vid, node, edge,  cost , agg_cost FROM pgr_withPointsDD(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
   ARRAY[-1,-2], 3.2, 'r',details => true) ORDER BY start_vid, depth, agg_cost;
 prepare ordered AS
 SELECT row_number() over (ORDER BY start_vid, depth, agg_cost) AS seq, depth, start_vid, node, edge,  cost , agg_cost FROM pgr_withPointsDD(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
   ARRAY[-1,-2], 3.2, 'r',details => true);
 
