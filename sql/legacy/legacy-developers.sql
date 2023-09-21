@@ -86,11 +86,11 @@ DECLARE
 BEGIN
     table_oid := $1::regclass;
     -- $1 := replace($1, '"', '');
-    SELECT * FROM _pgr_getTableName($1, 0, 'pgr_getTableName') into sname,tname;
+    SELECT sname, tname FROM _pgr_getTableName($1, 0, 'pgr_getTableName') into sname,tname;
     EXCEPTION WHEN others THEN
     BEGIN
         table_oid := lower($1)::regclass;
-        SELECT * FROM _pgr_getTableName(lower($1), 0, 'pgr_getTableName') into sname,tname;
+        SELECT sname, tname FROM _pgr_getTableName(lower($1), 0, 'pgr_getTableName') into sname,tname;
         EXCEPTION WHEN others THEN
         sname = 'public';
         tname = NULL;
@@ -436,7 +436,7 @@ DECLARE
     debuglevel text;
 
 BEGIN
-    execute 'SELECT * FROM ' || quote_ident(edges) ||
+    execute 'SELECT source, target, the_geom FROM ' || quote_ident(edges) ||
             ' where ST_dwithin(''' || pnt::text ||
             '''::geometry, the_geom, ' || tol || ') ORDER BY ST_distance(''' || pnt::text ||
             '''::geometry, the_geom) asc limit 1' into rr;
