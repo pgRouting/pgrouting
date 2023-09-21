@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: reginabook.sql
+File: _gsoc_vrppdtw.sql
 
 Generated with Template by:
 Copyright (c) 2017 pgRouting developers
