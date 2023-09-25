@@ -49,16 +49,16 @@ THEN collect_tap (
   set_eq(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_withpointsdd'$$,
     $$VALUES
-    ('{"","","","","","directed","details","seq","depth","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-    ('{"","","","","","directed","details","equicost","seq","depth","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),
+    ('{"","","","","","directed","details","seq","depth","start_vid","pred","node","edge","cost","agg_cost"}'::TEXT[]),
+    ('{"","","","","","directed","details","equicost","seq","depth","start_vid","pred","node","edge","cost","agg_cost"}'::TEXT[]),
     ('{"","","","","directed","driving_side","details","seq","node","edge","cost","agg_cost"}'::TEXT[]),
     ('{"","","","","directed","driving_side","details","equicost","seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[])
     $$),
   set_eq(
     $$SELECT  proallargtypes from pg_proc where proname = 'pgr_withpointsdd'$$,
     $$VALUES
-    ('{25,25,20,701,1042,16,16,20,20,20,20,20,701,701}'::OID[]),
-    ('{25,25,2277,701,1042,16,16,16,20,20,20,20,20,701,701}'::OID[]),
+    ('{25,25,20,701,1042,16,16,20,20,20,20,20,20,701,701}'::OID[]),
+    ('{25,25,2277,701,1042,16,16,16,20,20,20,20,20,20,701,701}'::OID[]),
     ('{25,25,20,701,16,1042,16,23,20,20,701,701}'::OID[]),
     ('{25,25,2277,701,16,1042,16,16,23,20,20,20,701,701}'::OID[])
     $$)
