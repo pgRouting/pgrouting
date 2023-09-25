@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN NOT min_version('3.2.0') THEN plan(1) ELSE plan(11) END;
+SELECT CASE WHEN NOT min_version('3.2.0') THEN plan(1) ELSE plan(12) END;
 
 CREATE OR REPLACE FUNCTION edge_cases()
 RETURNS SETOF TEXT AS
@@ -63,8 +63,8 @@ WHERE id = 1;
 RETURN QUERY
 SELECT set_eq('q2', $$VALUES (1, 5, 5, 1, 1)$$, 'graph2: u<->u');
 
-/*
-PERFORM todo('triggers an assertion when the vertex does not exist', 1);
+IF min_version('3.5.1') THEN
+
 PREPARE ltd_test2_1 AS
 SELECT *
 FROM pgr_lengauerTarjanDominatorTree(
@@ -72,7 +72,13 @@ FROM pgr_lengauerTarjanDominatorTree(
 );
 RETURN QUERY
 SELECT lives_ok('ltd_test2_1', 'test2: Triggers an assertion');
-*/
+
+ELSE
+
+  RETURN QUERY
+  SELECT skip(1, 'triggers an assertion when the vertex does not exist');
+
+END IF;
 
 PREPARE ltd_test2 AS
 SELECT *
