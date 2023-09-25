@@ -247,8 +247,8 @@ BEGIN
     END IF;
 
     -- with restrictions calls the original code
-    RETURN query 
-    SELECT a.seq, a.id1, a.id2, a.cost 
+    RETURN query
+    SELECT a.seq, a.id1, a.id2, a.cost
     FROM _pgr_trsp(new_sql, source_eid, source_pos, target_eid, target_pos, directed, has_reverse_cost, turn_restrict_sql) AS a;
     RETURN;
 

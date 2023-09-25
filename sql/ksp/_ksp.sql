@@ -57,14 +57,14 @@ COMMENT ON FUNCTION _pgr_ksp(TEXT, BIGINT, BIGINT, INTEGER, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';
 
 --v3.6
-CREATE FUNCTION _v4pgr_ksp(
-    edges_sql TEXT,
-    start_vids ANYARRAY,
-    end_vids ANYARRAY,
-    k INTEGER,
+CREATE FUNCTION _pgr_kspv4(
+    TEXT,     -- edges
+    ANYARRAY, -- start_vids
+    ANYARRAY, -- end_vids
+    INTEGER,  -- k
 
-    directed BOOLEAN,
-    heap_paths BOOLEAN,
+    BOOLEAN,  -- directed
+    BOOLEAN,  -- heap_paths
 
     OUT seq INTEGER,
     OUT path_id INTEGER,
@@ -80,14 +80,14 @@ RETURNS SETOF RECORD AS
 LANGUAGE C VOLATILE STRICT;
 
 --v3.6
-CREATE FUNCTION _v4pgr_ksp(
-    edges_sql TEXT,
-    combinations TEXT,
+CREATE FUNCTION _pgr_kspv4(
+    TEXT,     -- edges
+    TEXT,     -- combinations
 
-    k INTEGER,
+    INTEGER,  -- k
 
-    directed BOOLEAN,
-    heap_paths BOOLEAN,
+    BOOLEAN,  -- directed
+    BOOLEAN,  -- heap_paths
 
     OUT seq INTEGER,
     OUT path_id INTEGER,
@@ -104,8 +104,8 @@ LANGUAGE C VOLATILE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION _v4pgr_ksp(TEXT, ANYARRAY, ANYARRAY, INTEGER, BOOLEAN, BOOLEAN)
+COMMENT ON FUNCTION _pgr_kspv4(TEXT, ANYARRAY, ANYARRAY, INTEGER, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';
 
-COMMENT ON FUNCTION _v4pgr_ksp(TEXT, TEXT, INTEGER, BOOLEAN, BOOLEAN)
+COMMENT ON FUNCTION _pgr_kspv4(TEXT, TEXT, INTEGER, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';

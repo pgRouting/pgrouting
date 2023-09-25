@@ -30,12 +30,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ----------------------
 
 --v3.6
-CREATE FUNCTION _pgr_v4drivingDistance(
-    edges_sql TEXT,
-    start_vids ANYARRAY,
-    distance FLOAT,
-    directed BOOLEAN DEFAULT TRUE,
-    equicost BOOLEAN DEFAULT FALSE,
+CREATE FUNCTION _pgr_drivingDistancev4(
+    TEXT,     -- edges_sql
+    ANYARRAY, -- start_vids
+    FLOAT,    -- distance
+    BOOLEAN,  -- directed
+    BOOLEAN,  -- equicost
     OUT seq BIGINT,
     OUT depth  BIGINT,
     OUT start_vid  BIGINT,
@@ -50,7 +50,7 @@ LANGUAGE c VOLATILE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION _pgr_v4drivingDistance(TEXT, ANYARRAY, FLOAT, BOOLEAN, BOOLEAN)
+COMMENT ON FUNCTION _pgr_drivingDistancev4(TEXT, ANYARRAY, FLOAT, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';
 
 /* Below functions are for backward compatibility to be removed on v4*/

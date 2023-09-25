@@ -49,4 +49,4 @@ LANGUAGE 'c' IMMUTABLE;
 
 
 COMMENT ON FUNCTION _pgr_trsp(TEXT, INTEGER, FLOAT, INTEGER, FLOAT, BOOLEAN, BOOLEAN, TEXT)
-IS 'pgRouting internal function';
+IS 'pgRouting internal function deprecated on v3.4.0';

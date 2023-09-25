@@ -46,8 +46,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 PGDLLEXPORT Datum _pgr_withpointsksp(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_withpointsksp);
 
-PGDLLEXPORT Datum _pgr_v4withpointsksp(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(_pgr_v4withpointsksp);
+PGDLLEXPORT Datum _pgr_withpointskspv4(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_withpointskspv4);
 
 static
 void
@@ -193,7 +193,7 @@ processv4(
 
 
 
-PGDLLEXPORT Datum _pgr_v4withpointsksp(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum _pgr_withpointskspv4(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
