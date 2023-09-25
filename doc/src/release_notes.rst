@@ -123,6 +123,11 @@ Changes on the documentation to the following:
 
   * using bootstrap_version 2 because 3+ does not do dropdowns
 
+.. rubric:: Issue fixes
+
+* `#2565 <https://github.com/pgRouting/pgrouting/issues/2565>`__
+  pgr_pgr_lengauerTarjanDominatorTree triggers an assertion
+
 .. rubric:: SQL enhancements
 
 * `#2561 <https://github.com/pgRouting/pgrouting/issues/2561>`__ Not use

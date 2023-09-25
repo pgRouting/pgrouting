@@ -60,6 +60,7 @@ class Pgr_LTDTree : public pgrouting::Pgr_messages {
                     int64_t root
                     ){
                 std::vector<II_t_rt> results;
+                if (!graph.has_vertex(root)) return results;
                 std::vector<int64_t> idoms = std::vector<int64_t>(boost::num_vertices(graph.graph), -1);
                 auto dominatorTree =
                 make_iterator_property_map
