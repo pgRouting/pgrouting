@@ -40,7 +40,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "dijkstra/drivingDist.hpp"
 #include "withPoints/pgr_withPoints.hpp"
 #include "c_types/mst_rt.h"
-#include "c_types/path_rt.h"
 
 #include "cpp_common/pgr_alloc.hpp"
 
@@ -58,9 +57,7 @@ pgr_do_withPointsDD(
         bool directed,
         bool details,
         bool equiCost,
-        bool do_new,
 
-        Path_rt **return_old_tuples, size_t *return_old_count,
         MST_rt  **return_tuples,     size_t *return_count,
         char** log_msg,
         char** notice_msg,
@@ -136,41 +133,29 @@ pgr_do_withPointsDD(
             return;
         }
 
-        /* TODO remove old code on v4 */
-        *return_old_tuples = pgr_alloc(count, (*return_old_tuples));
-        *return_old_count = collapse_paths(return_old_tuples, paths);
+        *return_tuples = pgr_alloc(count, (*return_tuples));
+        *return_count = collapse_paths(return_tuples, paths);
 
-        if (do_new) {
-            std::vector<MST_rt> new_results;
-
-            *return_tuples = pgr_alloc(count, (*return_tuples));
-
-            for (size_t i = 0; i < count; i++) {
-                auto row = (*return_old_tuples)[i];
-                /* given the depth assign the correct depth */
-                int64_t depth = -1;
-                for (const auto &d : depths) {
-                    /* look for the correct path */
-                    auto itr = d.find(row.start_id);
-                    if (itr == d.end() || !(itr->second == 0)) continue;
-                    depth = d.at(row.node);
-                }
-                new_results.push_back(MST_rt{row.start_id, depth, row.node, row.edge, row.cost, row.agg_cost});
+        for (size_t i = 0; i < count; i++) {
+            auto row = (*return_tuples)[i];
+            /* given the depth assign the correct depth */
+            int64_t depth = -1;
+            for (const auto &d : depths) {
+                /* look for the correct path */
+                auto itr = d.find(row.from_v);
+                if (itr == d.end() || !(itr->second == 0)) continue;
+                depth = d.at(row.node);
             }
-            /* sort to get depths in order*/
-            std::sort(new_results.begin(), new_results.end(),
-                    [](const MST_rt &l, const MST_rt &r) {return l.agg_cost < r.agg_cost;});
-            std::stable_sort(new_results.begin(), new_results.end(),
-                    [](const MST_rt &l, const MST_rt &r) {return l.depth < r.depth;});
-            std::stable_sort(new_results.begin(), new_results.end(),
-                    [](const MST_rt &l, const MST_rt &r) {return l.from_v < r.from_v;});
-
-            size_t i = 0;
-            for (const auto &r : new_results) {
-                (*return_tuples)[i++] = r;
-            }
-            (*return_count) = count;
+            (*return_tuples)[i].depth = depth;
         }
+
+        /* sort to get depths in order*/
+        std::sort((*return_tuples), (*return_tuples) + count,
+                [](const MST_rt &l, const MST_rt &r) {return l.agg_cost < r.agg_cost;});
+        std::stable_sort((*return_tuples), (*return_tuples) + count,
+                [](const MST_rt &l, const MST_rt &r) {return l.depth < r.depth;});
+        std::stable_sort((*return_tuples), (*return_tuples) + count,
+                [](const MST_rt &l, const MST_rt &r) {return l.from_v < r.from_v;});
 
         *log_msg = log.str().empty()?
             *log_msg :

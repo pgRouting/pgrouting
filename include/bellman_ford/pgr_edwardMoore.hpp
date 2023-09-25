@@ -181,13 +181,15 @@ class Pgr_edwardMoore {
 
         Path path = Path(graph[bgl_start_vertex].id, graph[current_node].id);
 
-        path.push_back({target, -1, 0, current_cost[current_node]});
+        /* TODO(v4) add correct predecessor node */
+        path.push_back({target, -1, 0, current_cost[current_node], 0});
 
         do {
             E e = from_edge[current_node];
             auto from = graph.source(e);
 
-            path.push_back({graph[from].id, graph[e].id, graph[e].cost, current_cost[from]});
+            /* TODO(v4) add correct predecessor node */
+            path.push_back({graph[from].id, graph[e].id, graph[e].cost, current_cost[from], 0});
 
             current_node = from;
         } while (from_edge[current_node] != DEFAULT_EDGE);

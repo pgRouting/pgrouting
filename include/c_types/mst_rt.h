@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 struct MST_rt {
     int64_t from_v;
     int64_t depth;
+    int64_t pred;
     int64_t node;
     int64_t edge;
     double cost;

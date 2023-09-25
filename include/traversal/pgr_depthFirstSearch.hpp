@@ -85,7 +85,7 @@ class Pgr_depthFirstSearch {
          std::vector < MST_rt > results;
 
          for (auto root : roots) {
-             results.push_back({root, 0, root, -1, 0.0, 0.0});
+             results.push_back({root, 0, root, root, -1, 0.0, 0.0});
 
              if (graph.has_vertex(root)) {
                  std::vector<E> visited_order;
@@ -198,6 +198,8 @@ class Pgr_depthFirstSearch {
                  results.push_back({
                      root,
                      depth[v],
+                     /* TODO(cvvc) get predecessor */
+                     0,
                      graph[v].id,
                      graph[edge].id,
                      graph[edge].cost,
