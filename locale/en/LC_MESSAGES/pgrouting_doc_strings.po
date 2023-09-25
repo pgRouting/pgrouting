@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-21 15:57+0000\n"
+"POT-Creation-Date: 2023-09-25 17:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15413,6 +15413,22 @@ msgstr ""
 msgid "using bootstrap_version 2 because 3+ does not do dropdowns"
 msgstr ""
 
+msgid "Issue fixes"
+msgstr ""
+
+msgid ""
+"`#2565 <https://github.com/pgRouting/pgrouting/issues/2565>`__ "
+"pgr_pgr_lengauerTarjanDominatorTree triggers an assertion"
+msgstr ""
+
+msgid "SQL enhancements"
+msgstr ""
+
+msgid ""
+"`#2561 <https://github.com/pgRouting/pgrouting/issues/2561>`__ Not use "
+"wildcards on SQL"
+msgstr ""
+
 msgid "pgtap tests"
 msgstr ""
 
@@ -15468,9 +15484,6 @@ msgid ""
 "To see all issues & pull requests closed by this release see the `Git "
 "closed milestone for 3.4.2 "
 "<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.2%22>`_"
-msgstr ""
-
-msgid "Issue fixes"
 msgstr ""
 
 msgid ""
