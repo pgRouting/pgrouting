@@ -38,13 +38,14 @@ CREATE FUNCTION pgr_drivingDistance(
     OUT seq BIGINT,
     OUT depth  BIGINT,
     OUT start_vid  BIGINT,
+    OUT pred BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT seq, depth, start_vid, node, edge, cost, agg_cost
+    SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
     FROM _pgr_v4drivingDistance(_pgr_get_statement($1), $2, $3, $4, $5);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
@@ -64,13 +65,14 @@ CREATE FUNCTION pgr_drivingDistance(
     OUT seq BIGINT,
     OUT depth  BIGINT,
     OUT start_vid  BIGINT,
+    OUT pred BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT seq, depth, start_vid, node, edge, cost, agg_cost
+    SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
     FROM _pgr_v4drivingDistance(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3, $4, false);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT

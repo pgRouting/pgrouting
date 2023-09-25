@@ -45,13 +45,14 @@ CREATE FUNCTION pgr_withPointsDD(
     OUT seq BIGINT,
     OUT depth BIGINT,
     OUT start_vid BIGINT,
+    OUT pred BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT seq, depth, start_vid, node, edge, cost, agg_cost
+    SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
     FROM _pgr_v4withPointsDD(_pgr_get_statement($1), _pgr_get_statement($2), ARRAY[$3]::BIGINT[], $4, $5, $6, $7, false);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
@@ -74,13 +75,14 @@ CREATE FUNCTION pgr_withPointsDD(
     OUT seq BIGINT,
     OUT depth BIGINT,
     OUT start_vid BIGINT,
+    OUT pred BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT seq, depth, start_vid, node, edge, cost, agg_cost
+    SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
     FROM _pgr_v4withPointsDD(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4, $5, $6, $7, $8);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
