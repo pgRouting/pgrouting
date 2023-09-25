@@ -523,7 +523,7 @@ class Pgr_dijkstra {
          std::deque<Path> paths;
          for (const auto vertex : start_vertex) {
              paths.push_back(Path(vertex, vertex));
-             paths.back().push_back({vertex, -1, 0, 0});
+             paths.back().push_back({vertex, -1, 0, 0, vertex});
          }
 
          /*
@@ -551,12 +551,13 @@ class Pgr_dijkstra {
 
                  auto cost = distances[d] - distances[pred[i - 1][d]];
                  auto edge_id = graph.get_edge_id(pred[i - 1][d], d, cost);
+                 int64_t pred_node =  details? graph[pred[i - 1][d]].id : graph[nodetailspred[i - 1][d]].id;
                  pgassert(edge_id != -1);
                  paths[i - 1].push_back(
                          {graph[d].id,
                          edge_id,
                          details? cost : distances[d] - distances[nodetailspred[i - 1][d]],
-                         distances[d]});
+                         distances[d], pred_node});
                  break;
              }
          }
@@ -605,7 +606,7 @@ class Pgr_dijkstra {
 
              } else {
                  Path p(vertex, vertex);
-                 p.push_back({vertex, -1, 0, 0});
+                 p.push_back({vertex, -1, 0, 0, vertex});
                  paths.push_back(p);
                  std::map<int64_t, int64_t> m;
                  m[vertex] = 0;

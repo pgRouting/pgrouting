@@ -261,12 +261,14 @@ Pg_points_graph::eliminate_details(
            cost += pathstop.cost;
            continue;
         }
-        newPath.push_back({current_node, current_edge, cost, 0});
+        /* TODO(v4) add correct predecessor node */
+        newPath.push_back({current_node, current_edge, cost, 0, 0});
         cost = pathstop.cost;
         current_node = pathstop.node;
         current_edge = pathstop.edge;
     }
-    newPath.push_back({current_node, current_edge, cost, 0});
+    /* TODO(v4) add correct predecessor node */
+    newPath.push_back({current_node, current_edge, cost, 0, 0});
     newPath.recalculate_agg_cost();
 
     return newPath;

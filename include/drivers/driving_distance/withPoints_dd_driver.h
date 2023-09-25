@@ -46,7 +46,6 @@ using MST_rt = struct MST_rt;
 #   include <stdint.h>
 typedef struct Point_on_edge_t Point_on_edge_t;
 typedef struct Edge_t Edge_t;
-typedef struct Path_rt Path_rt;
 typedef struct MST_rt MST_rt;
 #endif
 
@@ -60,10 +59,8 @@ extern "C" {
             Edge_t*,          size_t,
             int64_t*,         size_t,
 
-            double, char, bool, bool, bool, bool,
+            double, char, bool, bool, bool,
 
-            /* TODO  remove the following line on v4 */
-            Path_rt**, size_t*,
             MST_rt**, size_t*,
             char**, char**, char **);
 

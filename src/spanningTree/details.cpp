@@ -46,7 +46,7 @@ get_no_edge_graph_result(const std::vector<int64_t> &vids) {
     std::vector<MST_rt> results;
     if (vids.empty()) return results;
     for (auto const root : clean_vids(vids)) {
-        results.push_back({root, 0, root, -1, 0.0, 0.0});
+        results.push_back({root, 0, root, root, -1, 0.0, 0.0});
     }
     return results;
 }
