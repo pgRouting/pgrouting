@@ -53,7 +53,7 @@ CREATE FUNCTION pgr_withPointsDD(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
-    FROM _pgr_v4withPointsDD(_pgr_get_statement($1), _pgr_get_statement($2), ARRAY[$3]::BIGINT[], $4, $5, $6, $7, false);
+    FROM _pgr_withPointsDDv4(_pgr_get_statement($1), _pgr_get_statement($2), ARRAY[$3]::BIGINT[], $4, $5, $6, $7, false);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100
@@ -83,7 +83,7 @@ CREATE FUNCTION pgr_withPointsDD(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
-    FROM _pgr_v4withPointsDD(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4, $5, $6, $7, $8);
+    FROM _pgr_withPointsDDv4(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4, $5, $6, $7, $8);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100

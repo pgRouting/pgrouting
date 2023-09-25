@@ -35,16 +35,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -------------------
 
 --v3.6
-CREATE FUNCTION _pgr_v4withPointsDD(
-    edges_sql TEXT,
-    points_sql TEXT,
-    start_pid ANYARRAY,
-    distance FLOAT,
-    driving_side CHAR,
+CREATE FUNCTION _pgr_withPointsDDv4(
+    TEXT,     -- edges SQL
+    TEXT,     -- points SQL
+    ANYARRAY, -- roots
+    FLOAT,    -- distance
+    CHAR,     -- driving_side,
 
-    directed BOOLEAN DEFAULT true,
-    details BOOLEAN DEFAULT false,
-    equicost BOOLEAN DEFAULT false,
+    BOOLEAN,  -- directed
+    BOOLEAN,  -- details
+    BOOLEAN,  -- equicost
 
     OUT seq BIGINT,
     OUT depth BIGINT,
@@ -60,7 +60,7 @@ LANGUAGE C VOLATILE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION _pgr_v4withPointsDD(TEXT, TEXT, ANYARRAY, FLOAT, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
+COMMENT ON FUNCTION _pgr_withPointsDDv4(TEXT, TEXT, ANYARRAY, FLOAT, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';
 
 /* TODO remove on v4 */

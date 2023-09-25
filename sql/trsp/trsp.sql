@@ -47,7 +47,7 @@ RETURNS SETOF record AS
 $BODY$
 
   SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-  FROM _v4trsp(
+  FROM _pgr_trspv4(
     _pgr_get_statement($1),
     _pgr_get_statement($2),
     ARRAY[$3]::BIGINT[],
@@ -80,7 +80,7 @@ CREATE FUNCTION pgr_trsp(
 RETURNS SETOF RECORD AS
 $BODY$
   SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-  FROM _v4trsp(
+  FROM _pgr_trspv4(
     _pgr_get_statement($1),
     _pgr_get_statement($2),
     ARRAY[$3]::BIGINT[],
@@ -112,7 +112,7 @@ CREATE FUNCTION pgr_trsp(
 RETURNS SETOF RECORD AS
 $BODY$
   SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-  FROM _v4trsp(
+  FROM _pgr_trspv4(
     _pgr_get_statement($1),
     _pgr_get_statement($2),
     $3::BIGINT[],
@@ -144,7 +144,7 @@ CREATE FUNCTION pgr_trsp(
 RETURNS SETOF RECORD AS
 $BODY$
   SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-  FROM _v4trsp(
+  FROM _pgr_trspv4(
     _pgr_get_statement($1),
     _pgr_get_statement($2),
     $3::BIGINT[],
@@ -175,7 +175,7 @@ CREATE FUNCTION pgr_trsp(
 RETURNS SETOF RECORD AS
 $BODY$
   SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-  FROM _v4trsp(
+  FROM _pgr_trspv4(
     _pgr_get_statement($1),
     _pgr_get_statement($2),
     _pgr_get_statement($3),
@@ -388,8 +388,8 @@ ROWS 1000;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION _pgr_trsp(TEXT, TEXT, BIGINT, BIGINT, BOOLEAN) IS 'pgRouting internal function';
-COMMENT ON FUNCTION _pgr_trsp(TEXT, TEXT, BIGINT, ANYARRAY, BOOLEAN) IS 'pgRouting internal function';
-COMMENT ON FUNCTION _pgr_trsp(TEXT, TEXT, ANYARRAY, BIGINT, BOOLEAN) IS 'pgRouting internal function';
-COMMENT ON FUNCTION _pgr_trsp(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN) IS 'pgRouting internal function';
+COMMENT ON FUNCTION _pgr_trsp(TEXT, TEXT, BIGINT, BIGINT, BOOLEAN) IS 'pgRouting internal function deprecated on v3.4.0';
+COMMENT ON FUNCTION _pgr_trsp(TEXT, TEXT, BIGINT, ANYARRAY, BOOLEAN) IS 'pgRouting internal function deprecated on v3.4.0';
+COMMENT ON FUNCTION _pgr_trsp(TEXT, TEXT, ANYARRAY, BIGINT, BOOLEAN) IS 'pgRouting internal function deprecated on v3.4.0';
+COMMENT ON FUNCTION _pgr_trsp(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN) IS 'pgRouting internal function deprecated on v3.4.0';
 

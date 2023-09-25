@@ -46,7 +46,7 @@ CREATE FUNCTION pgr_drivingDistance(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
-    FROM _pgr_v4drivingDistance(_pgr_get_statement($1), $2, $3, $4, $5);
+    FROM _pgr_drivingDistancev4(_pgr_get_statement($1), $2, $3, $4, $5);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100
@@ -73,7 +73,7 @@ CREATE FUNCTION pgr_drivingDistance(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
-    FROM _pgr_v4drivingDistance(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3, $4, false);
+    FROM _pgr_drivingDistancev4(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3, $4, false);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100
@@ -82,7 +82,7 @@ ROWS 1000;
 -- COMMENTS
 
 COMMENT ON FUNCTION pgr_drivingDistance(TEXT, BIGINT, FLOAT, BOOLEAN)
-IS 'pgr_v4drivingDistance(Single_vertex)
+IS 'pgr_drivingDistance(Single_vertex)
 - Parameters:
    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
    - From vertex identifier
@@ -94,7 +94,7 @@ IS 'pgr_v4drivingDistance(Single_vertex)
 ';
 
 COMMENT ON FUNCTION pgr_drivingDistance(TEXT, ANYARRAY, FLOAT, BOOLEAN, BOOLEAN)
-IS 'pgr_v4drivingDistance(Multiple vertices)
+IS 'pgr_drivingDistance(Multiple vertices)
 - Parameters:
    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
    - From ARRAY[vertices identifiers]
