@@ -35,15 +35,15 @@
   * ``pgr_withPointsDD`` (`Single vertex`)
   * ``pgr_withPointsDD`` (`Multiple vertices`)
 
-* Standarizing output columns to |result-bfs|
+* Standarizing output columns to |result-spantree|
 
   * ``pgr_withPointsDD`` (`Single vertex`)
 
-    * Added ``depth`` and ``start_vid`` column.
+    * Added ``depth``, ``pred`` and ``start_vid`` column.
 
   * ``pgr_withPointsDD`` (`Multiple vertices`)
 
-    * Added ``depth`` column.
+    * Added ``depth``, ``pred`` columns.
 
 * When ``details`` is ``false``:
 
@@ -79,7 +79,7 @@ Signatures
    | **options A:** ``[directed, details]``
    | **options B:** ``[directed, details, equicost]``
 
-   | RETURNS SET OF |result-bfs|
+   | RETURNS SET OF |result-spantree|
    | OR EMPTY SET
 
 .. index::
@@ -94,7 +94,7 @@ Single vertex
    | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, **driving side**, [**options**])
    | **options:** ``[directed, details]``
 
-   | RETURNS SET OF |result-bfs|
+   | RETURNS SET OF |result-spantree|
    | OR EMPTY SET
 
 :Example: Right side driving topology, from point :math:`1` within a distance of
@@ -116,7 +116,7 @@ Multiple vertices
    | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, **driving side**, [**options**])
    | **options:** ``[directed, details, equicost]``
 
-   | RETURNS SET OF |result-bfs|
+   | RETURNS SET OF |result-spantree|
    | OR EMPTY SET
 
 :Example: From point :math:`1` and vertex :math:`16` within a distance of
@@ -228,9 +228,9 @@ Points SQL
 Result Columns
 -------------------------------------------------------------------------------
 
-.. include:: BFS-category.rst
-   :start-after: mst-bfs-dfs-dd-result-columns-start
-   :end-before: mst-bfs-dfs-dd-result-columns-end
+.. include:: drivingDistance-category.rst
+   :start-after: spantree-result-columns-start
+   :end-before: spantree-result-columns-end
 
 Additional Examples
 -------------------------------------------------------------------------------

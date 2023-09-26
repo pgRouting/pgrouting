@@ -240,7 +240,7 @@ Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
 :doc:`pgr_drivingDistance` result columns are being standarized.
 
 :from: |result-dij-dd|
-:to: |result-bfs|
+:to: |result-spantree|
 
 Signatures to be migrated:
 
@@ -273,6 +273,7 @@ example.
 
 * ``start_vid`` contains the **start vid** parameter value.
 * ``depth`` contains the depth of the ``node``.
+* ``pred`` contains the predecessor of the ``node``.
 
   .. literalinclude:: migration.queries
      :start-after: --drivingdistance1
@@ -293,6 +294,7 @@ example.
 
 * The ``from_v`` result column name changes to ``start_vid``.
 * ``depth`` contains the depth of the ``node``.
+* ``pred`` contains the predecessor of the ``node``.
 
   .. literalinclude:: migration.queries
      :start-after: --drivingdistance3
@@ -411,7 +413,7 @@ Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
 :doc:`pgr_withPointsDD` result columns are being standarized.
 
 :from: |result-generic-no-seq|
-:to: |result-bfs|
+:to: |result-spantree|
 
 And ``driving_side`` parameter changed from named optional to unnamed compulsory
 **driving side** and its validity differ for directed and undirected graphs.
@@ -426,13 +428,13 @@ Signatures to be migrated:
 * ``pgr_withPointsDD`` (Single vertex)
 
   * Output columns were |result-1-1-no-seq|
-  * Does not have ``start_vid`` and ``depth`` result columns.
+  * Does not have ``start_vid``, ``pred`` and ``depth`` result columns.
   * ``driving_side`` parameter was named optional now it is compulsory unamed.
 
 * ``pgr_withPointsDD`` (`Multiple vertices`)
 
   * Output columns were |result-m-1-no-seq|
-  * Does not have ``depth`` result column.
+  * Does not have ``depth`` and ``pred`` result columns.
   * ``driving_side`` parameter was named optional now it is compulsory unamed.
 
 .. rubric:: Driving side was optional
@@ -479,7 +481,7 @@ Also ``l`` could be used as  **driving side**
 :After Migration:
 
 * Be aware of the existance of the additional return columns.
-* New output columns are |result-bfs|
+* New output columns are |result-spantree|
 * **driving side** parameter is unnamed compulsory, and valid values differ for
   directed and undirected graphs.
 
@@ -495,10 +497,11 @@ Using
 `this <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-vertex>`__
 example.
 
-* |result-bfs|
+* |result-spantree|
 * ``start_vid`` contains the **start vid** parameter value.
 * ``depth`` contains the **depth** from the ``start_vid`` vertex to the
   ``node``.
+* ``pred`` contains the predecessor of the ``node``.
 
 
 To migrate, use an unnamed valid value for **driving side** after the
@@ -525,9 +528,10 @@ Using
 `this <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#multiple-vertices>`__
 example.
 
-* |result-bfs|
+* |result-spantree|
 * ``depth`` contains the **depth** from the ``start_vid`` vertex to the
   ``node``.
+* ``pred`` contains the predecessor of the ``node``.
 
 .. literalinclude:: migration.queries
    :start-after: --withpointsdd6
