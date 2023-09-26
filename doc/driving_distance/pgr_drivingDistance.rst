@@ -24,7 +24,7 @@
 
 :Version 3.6.0:
 
-* Standarizing output columns to |result-bfs|
+* Standarizing output columns to |result-spantree|
 
   * ``pgr_drivingdistance`` (Single vertex)
 
@@ -33,7 +33,7 @@
   * ``pgr_drivingdistance`` (Multiple vertices)
 
     * Result column name change: ``from_v`` to ``start_vid``.
-    * Added ``depth`` result column.
+    * Added ``depth`` and ``pred`` result columns.
 
 :Version 2.1.0:
 
@@ -50,7 +50,7 @@ Description
 
 Using the Dijkstra algorithm, extracts all the nodes that have costs less than
 or equal to the value ``distance``.
-The edges extracted will conform to the corresponding spanning tree.
+The edges extracted will conform to the corresponding spaning tree.
 
 Signatures
 -------------------------------------------------------------------------------
@@ -62,7 +62,7 @@ Signatures
    | pgr_drivingDistance(`Edges SQL`_, **Root vids**, **distance**, [**options**])
    | **options:** [directed, equicost]
 
-   | RETURNS SET OF |result-bfs|
+   | RETURNS SET OF |result-spantree|
 
 .. index::
    single: drivingDistance(Single vertex)
@@ -75,7 +75,7 @@ Single Vertex
 
    | pgr_drivingDistance(`Edges SQL`_, **Root vid**,  **distance**, [``directed``])
 
-   | RETURNS SET OF |result-bfs|
+   | RETURNS SET OF |result-spantree|
 
 :Example: From vertex :math:`11` for a distance of :math:`3.0`
 
@@ -95,7 +95,7 @@ Multiple Vertices
    | pgr_drivingDistance(`Edges SQL`_, **Root vids**, **distance**, [**options**])
    | **options:** [directed, equicost]
 
-   | RETURNS SET OF |result-bfs|
+   | RETURNS SET OF |result-spantree|
 
 :Example: From vertices :math:`\{11, 16\}` for a distance of :math:`3.0` with
           equi-cost on a directed graph
@@ -155,9 +155,9 @@ Edges SQL
 Result Columns
 -------------------------------------------------------------------------------
 
-.. include:: BFS-category.rst
-   :start-after: mst-bfs-dfs-dd-result-columns-start
-   :end-before: mst-bfs-dfs-dd-result-columns-end
+.. include:: drivingDistance-category.rst
+   :start-after: spantree-result-columns-start
+   :end-before: spantree-result-columns-end
 
 Additional Examples
 -------------------------------------------------------------------------------

@@ -356,6 +356,7 @@ rst_epilog="""
 .. |result-1-m| replace:: ``(seq, path_seq, end_vid, node, edge, cost, agg_cost)``
 .. |result-m-1| replace:: ``(seq, path_seq, start_vid, node, edge, cost, agg_cost)``
 .. |result-bfs| replace:: ``(seq, depth, start_vid, node, edge, cost, agg_cost)``
+.. |result-spantree| replace:: ``(seq, depth, start_vid, pred, node, edge, cost, agg_cost)``
 .. |result-mst| replace:: ``(edge, cost)``
 .. |result-generic-no-seq| replace:: ``(seq, [start_vid], node, edge, cost, agg_cost)``
 .. |result-1-1-no-seq| replace:: ``(seq, node, edge, cost, agg_cost)``
