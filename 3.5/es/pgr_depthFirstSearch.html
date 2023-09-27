@@ -1,20 +1,22 @@
+
+
 <!DOCTYPE html>
 
-<html lang="es">
+<html lang="es" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pgr_depthFirstSearch - Propusto &#8212; pgRouting Manual (3.5)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-<script src="_static/page_history.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/translations.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
+    <script src="_static/documentation_options.js?v=ad3010e5"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=8e7fbbe4"></script>
+    <script src="_static/translations.js?v=efdbd0b9"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
@@ -44,7 +46,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.5.0</b></span>
+        <span class="navbar-text pull-left"><b>v3.5.1</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -137,6 +139,8 @@
             
             
             
+              <li></li>
+            
           </ul>
 
           
@@ -155,22 +159,20 @@
   </div>
 
 <div class="container">
-  <div class="row">
-    <div class="body span12 content" role="main">
- <div class="line"><br/></div> <script> document.write(get_history("pgr_depthFirstSearch","es")); </script>
-      
+    <div class="row">
+        <div class="body span12 content" role="main">
+            <script> document.write(get_history('pgr_depthFirstSearch','es'));  </script>
+            
   <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<ul class="simple">
-</ul>
 <section id="pgr-depthfirstsearch-proposed">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_depthFirstSearch</span></code> - Propusto<a class="headerlink" href="#pgr-depthfirstsearch-proposed" title="Enlace permanente a este encabezado">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_depthFirstSearch</span></code> - Propusto<a class="headerlink" href="#pgr-depthfirstsearch-proposed" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_depthFirstSearch</span></code> — Devuelve un recorrido de búsqueda de profundidad del grafo. El grafo puede ser dirigido o no dirigido.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/depth_first_search.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
-<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <div class="admonition warning">
@@ -209,7 +211,7 @@
 </li>
 </ul>
 <section id="description">
-<h2>Descripción<a class="headerlink" href="#description" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p>El algoritmo de Primera Búsqueda de Profundidad es un algoritmo de recorrido que comienza desde un vértice raíz, va lo más profundo posible y retrocede una vez que se alcanza un vértice sin vértices adyacentes o con todos los vértices adyacentes visitados. El recorrido continúa hasta que se visitan todos los vértices accesibles desde el vértice raíz.</p>
 <p><strong>Las características principales son:</strong></p>
 <ul class="simple">
@@ -224,7 +226,7 @@
 </ul>
 </section>
 <section id="signatures">
-<h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
 <p class="rubric">Resumen</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
@@ -238,7 +240,7 @@
 </div>
 </div>
 <section id="single-vertex">
-<span id="index-0"></span><h3>Vértice único<a class="headerlink" href="#single-vertex" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="index-0"></span><h3>Vértice único<a class="headerlink" href="#single-vertex" title="Link to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -279,7 +281,7 @@
 </div>
 </section>
 <section id="multiple-vertices">
-<span id="index-1"></span><h3>Múltiples vértices<a class="headerlink" href="#multiple-vertices" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="index-1"></span><h3>Múltiples vértices<a class="headerlink" href="#multiple-vertices" title="Link to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -324,7 +326,7 @@
 </section>
 </section>
 <section id="parameters">
-<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 12.0%" />
@@ -371,7 +373,7 @@
 </dd>
 </dl>
 <section id="optional-parameters">
-<h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -394,7 +396,7 @@
 </table>
 </section>
 <section id="dfs-optional-parameters">
-<h3>Parámetros opcionales de DFS<a class="headerlink" href="#dfs-optional-parameters" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Parámetros opcionales de DFS<a class="headerlink" href="#dfs-optional-parameters" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -418,9 +420,9 @@
 </section>
 </section>
 <section id="inner-queries">
-<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 17.7%" />
@@ -479,7 +481,7 @@
 </section>
 </section>
 <section id="return-columns">
-<h2>Columnas de Resultados<a class="headerlink" href="#return-columns" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Columnas de Resultados<a class="headerlink" href="#return-columns" title="Link to this heading">¶</a></h2>
 <p>Regresa <code class="docutils literal notranslate"><span class="pre">SET</span> <span class="pre">OF</span> <span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <thead>
@@ -538,7 +540,7 @@
 </dl>
 </section>
 <section id="additional-examples">
-<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Igual que <a class="reference internal" href="#single-vertex">Vértice único</a> pero con aristas en orden descendente de <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
@@ -572,7 +574,7 @@
 <p><a class="reference internal" href="_images/Fig1-AscendingOrder.png"><img alt="ascendente" src="_images/Fig1-AscendingOrder.png" style="width: 466.0px; height: 432.5px;" /></a> <a class="reference internal" href="_images/Fig2-DescendingOrder.png"><img alt="descendente" src="_images/Fig2-DescendingOrder.png" style="width: 476.0px; height: 430.0px;" /></a></p>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="DFS-category.html"><span class="doc">DFS - Categoría</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
@@ -589,9 +591,9 @@
 </section>
 
 
+        </div>
+          
     </div>
-      
-  </div>
 </div>
 <footer class="footer">
   <div class="container">
@@ -600,9 +602,9 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.5.0.<br/>
-      Actualizado por última vez en mar 08, 2023.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.5.1.<br/>
+      Actualizado por última vez en sept 27, 2023.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
 </footer>

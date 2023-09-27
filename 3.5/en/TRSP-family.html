@@ -1,19 +1,21 @@
+
+
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>TRSP - Family of functions &#8212; pgRouting Manual (3.5)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-<script src="_static/page_history.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
+    <script src="_static/documentation_options.js?v=d2e18fc2"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=8e7fbbe4"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -42,7 +44,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.5.0</b></span>
+        <span class="navbar-text pull-left"><b>v3.5.1</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -128,6 +130,8 @@
             
             
             
+              <li></li>
+            
           </ul>
 
           
@@ -146,17 +150,15 @@
   </div>
 
 <div class="container">
-  <div class="row">
-    <div class="body span12 content" role="main">
- <div class="line"><br/></div> <script> document.write(get_history("TRSP-family","en")); </script>
-      
+    <div class="row">
+        <div class="body span12 content" role="main">
+            <script> document.write(get_history('TRSP-family','en'));  </script>
+            
   <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<ul class="simple">
-</ul>
 <section id="trsp-family-of-functions">
-<h1>TRSP - Family of functions<a class="headerlink" href="#trsp-family-of-functions" title="Permalink to this heading">¶</a></h1>
+<h1>TRSP - Family of functions<a class="headerlink" href="#trsp-family-of-functions" title="Link to this heading">¶</a></h1>
 <p>When points are also given as input:</p>
 <p class="rubric">Proposed</p>
 <div class="admonition warning">
@@ -224,7 +226,7 @@ deprecated TRSP functionality to the new signatures or replacement functions.</p
 <div class="toctree-wrapper compound">
 </div>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
 <p>Road restrictions are a sequence of road segments that can not be taken in a
 sequential manner.
 Some restrictions are implicit on a directed graph, for example, one way roads
@@ -233,13 +235,13 @@ But normally on turns like no left turn or no right turn, hence the name turn
 restrictions, there are sometimes restrictions.</p>
 <img alt="_images/restrictions.png" src="_images/restrictions.png" />
 <section id="trsp-algorithm">
-<h3>TRSP algorithm<a class="headerlink" href="#trsp-algorithm" title="Permalink to this heading">¶</a></h3>
+<h3>TRSP algorithm<a class="headerlink" href="#trsp-algorithm" title="Link to this heading">¶</a></h3>
 <p>The internal TRSP algorithm performs a lookahead over the dijkstra algorithm in
 order to find out if the attempted path has a restriction. This allows the
 algorithm to pass twice on the same vertex.</p>
 </section>
 <section id="parameters">
-<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 23.1%" />
@@ -275,7 +277,7 @@ algorithm to pass twice on the same vertex.</p>
 </dl>
 </section>
 <section id="restrictions">
-<h3>Restrictions<a class="headerlink" href="#restrictions" title="Permalink to this heading">¶</a></h3>
+<h3>Restrictions<a class="headerlink" href="#restrictions" title="Link to this heading">¶</a></h3>
 <p>On road networks, there are restrictions such as left or right turn restrictions,
 no U turn restrictions.</p>
 <p>A restriction is a sequence of edges, called path and that path is to be
@@ -283,7 +285,7 @@ avoided.</p>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="_images/with_restrictions.png"><img alt="_images/with_restrictions.png" src="_images/with_restrictions.png" style="width: 475.5px; height: 433.0px;" /></a>
 <figcaption>
-<p><span class="caption-text"><strong>Restrictions on the road network</strong></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text"><strong>Restrictions on the road network</strong></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>These restrictions are represented on a table as follows:</p>
@@ -313,7 +315,7 @@ information. If given it will be ignored.</p>
 </div>
 </section>
 <section id="edges-sql">
-<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 17.7%" />
@@ -371,7 +373,7 @@ it’s not part of the graph.</p></li>
 </dd>
 </dl>
 <section id="restrictions-sql">
-<h4>Restrictions SQL<a class="headerlink" href="#restrictions-sql" title="Permalink to this heading">¶</a></h4>
+<h4>Restrictions SQL<a class="headerlink" href="#restrictions-sql" title="Link to this heading">¶</a></h4>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 10.3%" />
@@ -411,7 +413,7 @@ taken.
 </section>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
@@ -421,9 +423,9 @@ taken.
 </section>
 
 
+        </div>
+          
     </div>
-      
-  </div>
 </div>
 <footer class="footer">
   <div class="container">
@@ -432,9 +434,9 @@ taken.
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.5.0.<br/>
-      Last updated on Mar 08, 2023.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.5.1.<br/>
+      Last updated on Sep 27, 2023.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
 </footer>

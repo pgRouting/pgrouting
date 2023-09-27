@@ -1,20 +1,22 @@
+
+
 <!DOCTYPE html>
 
-<html lang="es">
+<html lang="es" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pgr_nodeNetwork &#8212; pgRouting Manual (3.5)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-<script src="_static/page_history.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/translations.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
+    <script src="_static/documentation_options.js?v=ad3010e5"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=8e7fbbe4"></script>
+    <script src="_static/translations.js?v=efdbd0b9"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -43,7 +45,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.5.0</b></span>
+        <span class="navbar-text pull-left"><b>v3.5.1</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -124,6 +126,8 @@
             
             
             
+              <li></li>
+            
           </ul>
 
           
@@ -142,17 +146,15 @@
   </div>
 
 <div class="container">
-  <div class="row">
-    <div class="body span12 content" role="main">
- <div class="line"><br/></div> <script> document.write(get_history("pgr_nodeNetwork","es")); </script>
-      
+    <div class="row">
+        <div class="body span12 content" role="main">
+            <script> document.write(get_history('pgr_nodeNetwork','es'));  </script>
+            
   <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<ul class="simple">
-</ul>
 <section id="pgr-nodenetwork">
-<h1>pgr_nodeNetwork<a class="headerlink" href="#pgr-nodenetwork" title="Enlace permanente a este encabezado">¶</a></h1>
+<h1>pgr_nodeNetwork<a class="headerlink" href="#pgr-nodenetwork" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code> - Crea los nodos de una tabla de aristas de la red.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Autor<span class="colon">:</span></dt>
@@ -176,14 +178,14 @@
 </li>
 </ul>
 <section id="description">
-<h2>Descripción<a class="headerlink" href="#description" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p><strong>Las principales características son:</strong></p>
 <p>Un problema común asociado con la incorporación de datos SIG en pgRouting es el hecho de que los datos a menudo no están correctamente referenciados con nodos. Esto provoca topologías no válidas, que resultan en rutas que son incorrectas.</p>
 <p>Que los bordes estén indicados como anudados significa que, en cada intersección de la red de caminos, las aristas se descompondrán en segmentos separados . Los casos como una intersección por puente o túnel donde no existe conexión vial no son detectados por esta función.</p>
 <p>Esta función lee la tabla <code class="docutils literal notranslate"><span class="pre">edge_table</span></code>, que tiene una columna de clave principal <code class="docutils literal notranslate"><span class="pre">id</span></code> y columna de la geometría llamada <code class="docutils literal notranslate"><span class="pre">the_geom</span></code>, y verifica la intersección de todos los segmentos contra todos los demás segmentos creando una tabla de salida <code class="docutils literal notranslate"><span class="pre">edge_table_noded</span></code>. Usa la tolerancia <code class="docutils literal notranslate"><span class="pre">tolerance</span></code> para decidir cuáles nodos son considerados como mismo nodo.</p>
 </section>
 <section id="parameters">
-<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">edge_table<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> La tabla de la red. (puede contener el nombre del esquema)</p>
@@ -224,7 +226,7 @@
 </dl>
 </section>
 <section id="examples">
-<h2>Ejemplos<a class="headerlink" href="#examples" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Ejemplos<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h2>
 <p>Vamos a crear la topología para los datos en <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
@@ -362,14 +364,14 @@
 </div>
 </section>
 <section id="images">
-<h2>Imágenes<a class="headerlink" href="#images" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Imágenes<a class="headerlink" href="#images" title="Link to this heading">¶</a></h2>
 <p class="rubric">Imágen del Antes</p>
 <a class="reference internal image-reference" href="_images/before_node_net.png"><img alt="Imágen del Antes" class="align-left" src="_images/before_node_net.png" style="width: 460.2px; height: 440.4px;" /></a>
 <p class="rubric">Imágen del Después</p>
 <a class="reference internal image-reference" href="_images/after_node_net.png"><img alt="Imágen del Después" class="align-left" src="_images/after_node_net.png" style="width: 456.0px; height: 439.2px;" /></a>
 </section>
 <section id="comparing-the-results">
-<h2>Comparando los resultados<a class="headerlink" href="#comparing-the-results" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Comparando los resultados<a class="headerlink" href="#comparing-the-results" title="Link to this heading">¶</a></h2>
 <p>Comparando con el análisis del edge_table original, vemos que.</p>
 <table class="docutils align-default">
 <thead>
@@ -524,7 +526,7 @@
 </div>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <p><a class="reference internal" href="topology-functions.html"><span class="doc">Topología - Familia de Funciones</span></a> para obtener una visión general de una topología para algoritmos de enrutamiento. <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> para analizar la direccionalidad de los bordes. <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> para crear una topología basada en la geometría. <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> para analizar los bordes y vértices de la tabla de bordes.</p>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
@@ -535,9 +537,9 @@
 </section>
 
 
+        </div>
+          
     </div>
-      
-  </div>
 </div>
 <footer class="footer">
   <div class="container">
@@ -546,9 +548,9 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.5.0.<br/>
-      Actualizado por última vez en mar 08, 2023.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.5.1.<br/>
+      Actualizado por última vez en sept 27, 2023.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
 </footer>

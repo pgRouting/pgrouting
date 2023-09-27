@@ -1,20 +1,22 @@
+
+
 <!DOCTYPE html>
 
-<html lang="es">
+<html lang="es" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pgr_lineGraphFull - Experimental &#8212; pgRouting Manual (3.5)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-<script src="_static/page_history.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/translations.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
+    <script src="_static/documentation_options.js?v=ad3010e5"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=8e7fbbe4"></script>
+    <script src="_static/translations.js?v=efdbd0b9"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
@@ -44,7 +46,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.5.0</b></span>
+        <span class="navbar-text pull-left"><b>v3.5.1</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -155,6 +157,8 @@
             
             
             
+              <li></li>
+            
           </ul>
 
           
@@ -173,18 +177,15 @@
   </div>
 
 <div class="container">
-  <div class="row">
-    <div class="body span12 content" role="main">
- <div class="line"><br/></div> <script> document.write(get_history("pgr_lineGraphFull","es")); </script>
-      
+    <div class="row">
+        <div class="body span12 content" role="main">
+            <script> document.write(get_history('pgr_lineGraphFull','es'));  </script>
+            
   <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<ul class="simple">
-<li><p><strong>Supported versions:</strong>
-</ul>
 <section id="pgr-linegraphfull-experimental">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> - Experimental<a class="headerlink" href="#pgr-linegraphfull-experimental" title="Enlace permanente a este encabezado">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> - Experimental<a class="headerlink" href="#pgr-linegraphfull-experimental" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> — Transforma un grafo dado en uno nuevo donde todos los vértices del grafo original se convierten en grafos de líneas.</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
@@ -225,7 +226,7 @@
 </li>
 </ul>
 <section id="description">
-<h2>Descripción<a class="headerlink" href="#description" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code>, convierte un grafo dirigido a un grafo dirigido lineal, convirtiendo cada vértice en un grafo completo y manteniendo todas las aristas originales. Las nuevas aristas de conexión tienen un costo de 0 y van entre las aristas originales adyacentes, respetando la direccionalidad.</p>
 <p>Una posible aplicación del grafo resultante es <strong>«ruteo con restricciones en dos aristas»</strong>:</p>
 <ul class="simple">
@@ -242,7 +243,7 @@
 </ul>
 </section>
 <section id="signatures">
-<span id="index-0"></span><h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
+<span id="index-0"></span><h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
 <p class="rubric">Resumen</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
@@ -299,7 +300,7 @@
 </div>
 </section>
 <section id="parameters">
-<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -316,9 +317,9 @@
 </table>
 </section>
 <section id="inner-queries">
-<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 17.7%" />
@@ -377,7 +378,7 @@
 </section>
 </section>
 <section id="result-columns">
-<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
 <p>RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">edge)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <thead>
@@ -431,7 +432,7 @@
 </table>
 </section>
 <section id="additional-examples">
-<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="contenido">
 <ul class="simple">
 <li><p><a class="reference internal" href="#the-data" id="id1">The data</a></p></li>
@@ -466,7 +467,7 @@
 </nav>
 <p>Los ejemplos de esta sección se basan en la red <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a>. Los ejemplos incluyen el subgrafo que incluye las aristas 4, 7, 8 y 10 con <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>.</p>
 <section id="the-data">
-<h3><a class="toc-backref" href="#id1" role="doc-backlink">The data</a><a class="headerlink" href="#the-data" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id1" role="doc-backlink">The data</a><a class="headerlink" href="#the-data" title="Link to this heading">¶</a></h3>
 <p>En este ejemplo se muestra cómo funciona esta transformación de grafo para crear aristas adicionales para cada giro posible en un grafoáfico.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span>
 <span class="n">FROM</span> <span class="n">edges</span>
@@ -486,7 +487,7 @@
 </div>
 </section>
 <section id="the-transformation">
-<h3><a class="toc-backref" href="#id2" role="doc-backlink">The transformation</a><a class="headerlink" href="#the-transformation" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">The transformation</a><a class="headerlink" href="#the-transformation" title="Link to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_lineGraphFull(
   $$SELECT id, source, target, cost, reverse_cost
   FROM edges
@@ -531,12 +532,12 @@
 <p>En el grafo transformado, todas las aristas del grafo original siguen presentes (amarillos), pero ahora hay aristas adicionales para cada giro que se podría hacer a través del vértice 7 (naranja).</p>
 </section>
 <section id="creating-table-that-identifies-transformed-vertices">
-<h3><a class="toc-backref" href="#id3" role="doc-backlink">Crear una tabla que identifica los vértices transformados</a><a class="headerlink" href="#creating-table-that-identifies-transformed-vertices" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Crear una tabla que identifica los vértices transformados</a><a class="headerlink" href="#creating-table-that-identifies-transformed-vertices" title="Link to this heading">¶</a></h3>
 <p>Los vértices del grafo transformado se crean dividiendo los vértices en el grafo original. A menos que un vértice en el grafo original sea un vértice hoja, generará más de un vértice en el grafo transformado. A uno de los vértices recién creados en el grafo transformado se le dará el mismo identificador del vértice desde el cual se creó en el grafo original, pero el resto de los vértices recién creados tendrán identificadores de vértices negativos.</p>
 <p>Following is an example of how to generate a table that maps the ids of the
 newly created vertices with the original vertex that they were created from</p>
 <section id="store-edge-results">
-<h4><a class="toc-backref" href="#id4" role="doc-backlink">Store edge results</a><a class="headerlink" href="#store-edge-results" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">Store edge results</a><a class="headerlink" href="#store-edge-results" title="Link to this heading">¶</a></h4>
 <p>The first step is to store the results of the <code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> call into a
 table</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT seq AS id, source, target, cost, edge
@@ -550,7 +551,7 @@ SELECT 28
 </div>
 </section>
 <section id="create-the-mapping-table">
-<h4><a class="toc-backref" href="#id5" role="doc-backlink">Create the mapping table</a><a class="headerlink" href="#create-the-mapping-table" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">Create the mapping table</a><a class="headerlink" href="#create-the-mapping-table" title="Link to this heading">¶</a></h4>
 <p>From the original graph’s vertex information</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">NULL</span><span class="p">::</span><span class="n">BIGINT</span> <span class="n">original_id</span>
 <span class="n">INTO</span> <span class="n">vertex_map</span>
@@ -568,7 +569,7 @@ INSERT 0 11
 </div>
 </section>
 <section id="filling-the-mapping-table">
-<h4><a class="toc-backref" href="#id6" role="doc-backlink">Filling the mapping table</a><a class="headerlink" href="#filling-the-mapping-table" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id6" role="doc-backlink">Filling the mapping table</a><a class="headerlink" href="#filling-the-mapping-table" title="Link to this heading">¶</a></h4>
 <p>The positive vertex identifiers are the original identifiers</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertex_map</span>
 <span class="n">SET</span> <span class="n">original_id</span> <span class="o">=</span> <span class="nb">id</span>
@@ -705,10 +706,10 @@ source has an original value.</p>
 </section>
 </section>
 <section id="adding-a-soft-restriction">
-<h3><a class="toc-backref" href="#id7" role="doc-backlink">Adding a soft restriction</a><a class="headerlink" href="#adding-a-soft-restriction" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Adding a soft restriction</a><a class="headerlink" href="#adding-a-soft-restriction" title="Link to this heading">¶</a></h3>
 <p>A soft restriction going from vertex 6 to vertex 3 using edges 4 -&gt; 7 is wanted.</p>
 <section id="idenifying-the-restriction">
-<h4><a class="toc-backref" href="#id8" role="doc-backlink">Idenifying the restriction</a><a class="headerlink" href="#idenifying-the-restriction" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id8" role="doc-backlink">Idenifying the restriction</a><a class="headerlink" href="#idenifying-the-restriction" title="Link to this heading">¶</a></h4>
 <p>Running a <a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - Propuesto</span></a> the edge with cost 0, edge 8, is where the
 cost will be increased</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT seq, path_seq, start_vid, end_vid, node, original_id, edge, cost, agg_cost
@@ -743,7 +744,7 @@ WHERE cost = 0 AND seq != 1 AND edge != -1;
 </div>
 </section>
 <section id="adding-a-value-to-the-restriction">
-<h4><a class="toc-backref" href="#id9" role="doc-backlink">Adding a value to the restriction</a><a class="headerlink" href="#adding-a-value-to-the-restriction" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id9" role="doc-backlink">Adding a value to the restriction</a><a class="headerlink" href="#adding-a-value-to-the-restriction" title="Link to this heading">¶</a></h4>
 <p>Updating the cost to the edge:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>UPDATE lineGraph_edges
 SET cost = 100
@@ -788,10 +789,10 @@ LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
 </section>
 </section>
 <section id="simplifying-leaf-vertices">
-<h3><a class="toc-backref" href="#id10" role="doc-backlink">Simplifying leaf vertices</a><a class="headerlink" href="#simplifying-leaf-vertices" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Simplifying leaf vertices</a><a class="headerlink" href="#simplifying-leaf-vertices" title="Link to this heading">¶</a></h3>
 <p>In this example, there is no additional cost for traversing a leaf vertex.</p>
 <section id="using-the-vertex-map-give-the-leaf-verices-their-original-value">
-<h4><a class="toc-backref" href="#id11" role="doc-backlink">Using the vertex map give the leaf verices their original value.</a><a class="headerlink" href="#using-the-vertex-map-give-the-leaf-verices-their-original-value" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id11" role="doc-backlink">Using the vertex map give the leaf verices their original value.</a><a class="headerlink" href="#using-the-vertex-map-give-the-leaf-verices-their-original-value" title="Link to this heading">¶</a></h4>
 <p>On the source column</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">u_turns</span> <span class="n">AS</span> <span class="p">(</span>
@@ -822,7 +823,7 @@ LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
 </div>
 </section>
 <section id="removing-self-loops-on-leaf-nodes">
-<h4><a class="toc-backref" href="#id12" role="doc-backlink">Removing self loops on leaf nodes</a><a class="headerlink" href="#removing-self-loops-on-leaf-nodes" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id12" role="doc-backlink">Removing self loops on leaf nodes</a><a class="headerlink" href="#removing-self-loops-on-leaf-nodes" title="Link to this heading">¶</a></h4>
 <p>The self loops of the leaf nodes are</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">linegraph_edges</span>
 <span class="n">WHERE</span> <span class="n">source</span> <span class="o">=</span> <span class="n">target</span>
@@ -872,9 +873,9 @@ LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
 </section>
 </section>
 <section id="complete-routing-graph">
-<h3><a class="toc-backref" href="#id13" role="doc-backlink">Complete routing graph</a><a class="headerlink" href="#complete-routing-graph" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">Complete routing graph</a><a class="headerlink" href="#complete-routing-graph" title="Link to this heading">¶</a></h3>
 <section id="add-edges-from-the-original-graph">
-<h4><a class="toc-backref" href="#id14" role="doc-backlink">Add edges from the original graph</a><a class="headerlink" href="#add-edges-from-the-original-graph" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id14" role="doc-backlink">Add edges from the original graph</a><a class="headerlink" href="#add-edges-from-the-original-graph" title="Link to this heading">¶</a></h4>
 <p>Add all the edges that are not involved in the line graph process to the new
 table</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span>
@@ -902,7 +903,7 @@ table</p>
 </div>
 </section>
 <section id="add-the-newly-calculated-edges">
-<h4><a class="toc-backref" href="#id15" role="doc-backlink">Add the newly calculated edges</a><a class="headerlink" href="#add-the-newly-calculated-edges" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id15" role="doc-backlink">Add the newly calculated edges</a><a class="headerlink" href="#add-the-newly-calculated-edges" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">new_graph</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">)</span>
 <span class="n">SELECT</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span> <span class="n">FROM</span> <span class="n">lineGraph_edges</span><span class="p">;</span>
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">24</span>
@@ -911,7 +912,7 @@ table</p>
 </section>
 </section>
 <section id="using-the-routing-graph">
-<h3><a class="toc-backref" href="#id16" role="doc-backlink">Using the routing graph</a><a class="headerlink" href="#using-the-routing-graph" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">Using the routing graph</a><a class="headerlink" href="#using-the-routing-graph" title="Link to this heading">¶</a></h3>
 <p>When using this method for routing with soft restrictions there will be uturns</p>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
@@ -968,7 +969,7 @@ LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
 </section>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Line_graph">https://en.wikipedia.org/wiki/Line_graph</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Complete_graph">https://en.wikipedia.org/wiki/Complete_graph</a></p></li>
@@ -982,9 +983,9 @@ LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
 </section>
 
 
+        </div>
+          
     </div>
-      
-  </div>
 </div>
 <footer class="footer">
   <div class="container">
@@ -993,9 +994,9 @@ LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.5.0.<br/>
-      Actualizado por última vez en mar 08, 2023.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.5.1.<br/>
+      Actualizado por última vez en sept 27, 2023.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
 </footer>

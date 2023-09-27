@@ -1,20 +1,22 @@
+
+
 <!DOCTYPE html>
 
-<html lang="es">
+<html lang="es" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Conceptos de pgRouting &#8212; pgRouting Manual (3.5)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-<script src="_static/page_history.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/translations.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
+    <script src="_static/documentation_options.js?v=ad3010e5"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=8e7fbbe4"></script>
+    <script src="_static/translations.js?v=efdbd0b9"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
@@ -44,7 +46,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.5.0</b></span>
+        <span class="navbar-text pull-left"><b>v3.5.1</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -217,6 +219,8 @@
             
             
             
+              <li></li>
+            
           </ul>
 
           
@@ -235,17 +239,15 @@
   </div>
 
 <div class="container">
-  <div class="row">
-    <div class="body span12 content" role="main">
- <div class="line"><br/></div> <script> document.write(get_history("pgRouting-concepts","es")); </script>
-      
+    <div class="row">
+        <div class="body span12 content" role="main">
+            <script> document.write(get_history('pgRouting-concepts','es'));  </script>
+            
   <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<ul class="simple">
-</ul>
 <section id="pgrouting-concepts">
-<h1>Conceptos de pgRouting<a class="headerlink" href="#pgrouting-concepts" title="Enlace permanente a este encabezado">¶</a></h1>
+<h1>Conceptos de pgRouting<a class="headerlink" href="#pgrouting-concepts" title="Link to this heading">¶</a></h1>
 <p>Esta es una guía simple que va a través de los pasos básicos para empezar trabajar con pgRouting. Esta guía cubre:</p>
 <nav class="contents local" id="contenido">
 <ul class="simple">
@@ -263,7 +265,7 @@
 </ul>
 </nav>
 <section id="graphs">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">Grafos</a><a class="headerlink" href="#graphs" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Grafos</a><a class="headerlink" href="#graphs" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="id1">
 <ul class="simple">
 <li><p><a class="reference internal" href="#graph-definition" id="id19">Definición de grafo</a></p></li>
@@ -272,7 +274,7 @@
 </ul>
 </nav>
 <section id="graph-definition">
-<h3><a class="toc-backref" href="#id19" role="doc-backlink">Definición de grafo</a><a class="headerlink" href="#graph-definition" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">Definición de grafo</a><a class="headerlink" href="#graph-definition" title="Link to this heading">¶</a></h3>
 <p>Un grafo es un par ordenado <span class="math notranslate nohighlight">\(G = (V ,E)\)</span> donde:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(V\)</span> es un conjunto de vértices, también llamados nodos.</p></li>
@@ -356,7 +358,7 @@
 <p>La decisión del grafo de ser <strong>directed</strong> o <strong>undirected</strong> es resultado al ejecutar el algoritmo de pgRouting.</p>
 </section>
 <section id="graph-with-cost">
-<h3><a class="toc-backref" href="#id20" role="doc-backlink">Grafo con <code class="docutils literal notranslate"><span class="pre">cost</span></code></a><a class="headerlink" href="#graph-with-cost" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id20" role="doc-backlink">Grafo con <code class="docutils literal notranslate"><span class="pre">cost</span></code></a><a class="headerlink" href="#graph-with-cost" title="Link to this heading">¶</a></h3>
 <p>El grafo ponderado dirigido, <span class="math notranslate nohighlight">\(G_d(V,E)\)</span>:</p>
 <ul>
 <li><p>Datos de l grafo se obtienen mediante una consulta</p>
@@ -420,7 +422,7 @@
 }" class="graphviz" /></div>
 </section>
 <section id="graph-with-cost-and-reverse-cost">
-<h3><a class="toc-backref" href="#id21" role="doc-backlink">Grafo con <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a><a class="headerlink" href="#graph-with-cost-and-reverse-cost" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id21" role="doc-backlink">Grafo con <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a><a class="headerlink" href="#graph-with-cost-and-reverse-cost" title="Link to this heading">¶</a></h3>
 <p>El ponderado del grafo dirigido, <span class="math notranslate nohighlight">\(G_d(V,E)\)</span>, se define por:</p>
 <ul>
 <li><p>Datos de l grafo se obtienen mediante una consulta</p>
@@ -515,7 +517,7 @@
 </section>
 </section>
 <section id="graphs-without-geometries">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">Grafos sin geometrías</a><a class="headerlink" href="#graphs-without-geometries" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Grafos sin geometrías</a><a class="headerlink" href="#graphs-without-geometries" title="Link to this heading">¶</a></h2>
 <p>Relaciones personales, genealogía, problemas de dependencia de archivos puede ser resueltos usando pgRouting. Esos problemas, normalmente, no vienen con las geometrías asociadas con el grafo.</p>
 <nav class="contents local" id="id2">
 <ul class="simple">
@@ -531,7 +533,7 @@
 </ul>
 </nav>
 <section id="wiki-example">
-<h3><a class="toc-backref" href="#id22" role="doc-backlink">Ejemplo de Wiki</a><a class="headerlink" href="#wiki-example" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id22" role="doc-backlink">Ejemplo de Wiki</a><a class="headerlink" href="#wiki-example" title="Link to this heading">¶</a></h3>
 <p>Resuelva el problema de ejemplo tomado de <a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">wikipedia</a>):</p>
 <figure class="align-default">
 <img alt="_images/Dijkstra_Animation.gif" src="_images/Dijkstra_Animation.gif" />
@@ -572,7 +574,7 @@ E = &amp; \{(1,2,7), (1,3,9), (1,6,14), \\
  4 -- 5 [label=&quot;  (6)&quot;];
 }" class="graphviz" /></div>
 <section id="prepare-the-database">
-<h4><a class="toc-backref" href="#id23" role="doc-backlink">Prepara la base de datos</a><a class="headerlink" href="#prepare-the-database" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id23" role="doc-backlink">Prepara la base de datos</a><a class="headerlink" href="#prepare-the-database" title="Link to this heading">¶</a></h4>
 <p>Crea una base de datos para el ejemplo, acceda a la base de datos e instala pgRouting:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ createdb wiki
 $ psql wiki
@@ -581,7 +583,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </div>
 </section>
 <section id="create-a-table">
-<h4><a class="toc-backref" href="#id24" role="doc-backlink">Crear una tabla</a><a class="headerlink" href="#create-a-table" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id24" role="doc-backlink">Crear una tabla</a><a class="headerlink" href="#create-a-table" title="Link to this heading">¶</a></h4>
 <p>Los elementos básicos necesarios para realizar routing básico en un grafo no dirigido son:</p>
 <table class="docutils align-default" style="width: 81">
 <thead>
@@ -629,7 +631,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </div>
 </section>
 <section id="insert-the-data">
-<h4><a class="toc-backref" href="#id25" role="doc-backlink">Introduzca los datos</a><a class="headerlink" href="#insert-the-data" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id25" role="doc-backlink">Introduzca los datos</a><a class="headerlink" href="#insert-the-data" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">wiki</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">)</span> <span class="n">VALUES</span>
 <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
 <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
@@ -641,7 +643,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </div>
 </section>
 <section id="find-the-shortest-path">
-<h4><a class="toc-backref" href="#id26" role="doc-backlink">En cuentre el camino más corto</a><a class="headerlink" href="#find-the-shortest-path" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id26" role="doc-backlink">En cuentre el camino más corto</a><a class="headerlink" href="#find-the-shortest-path" title="Link to this heading">¶</a></h4>
 <p>Para resolver el ejemplo se usa <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM wiki&#39;</span><span class="p">,</span>
@@ -673,7 +675,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 }" class="graphviz" /></div>
 </section>
 <section id="vertex-information">
-<h4><a class="toc-backref" href="#id27" role="doc-backlink">Información de vertices</a><a class="headerlink" href="#vertex-information" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id27" role="doc-backlink">Información de vertices</a><a class="headerlink" href="#vertex-information" title="Link to this heading">¶</a></h4>
 <p>Para obtener la información de los vértices, use <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Propuesto</span></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span>
 <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target FROM wiki&#39;</span><span class="p">);</span>
@@ -693,7 +695,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </section>
 </section>
 <section id="graphs-with-geometries">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">Grafos con geometrías</a><a class="headerlink" href="#graphs-with-geometries" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Grafos con geometrías</a><a class="headerlink" href="#graphs-with-geometries" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="id3">
 <ul class="simple">
 <li><p><a class="reference internal" href="#create-a-routing-database" id="id28">Crear una Base de Datos de Ruteo</a></p></li>
@@ -708,7 +710,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </ul>
 </nav>
 <section id="create-a-routing-database">
-<h3><a class="toc-backref" href="#id28" role="doc-backlink">Crear una Base de Datos de Ruteo</a><a class="headerlink" href="#create-a-routing-database" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id28" role="doc-backlink">Crear una Base de Datos de Ruteo</a><a class="headerlink" href="#create-a-routing-database" title="Link to this heading">¶</a></h3>
 <p>El primer paso para crear una base de datos y cargar pgRouting en la base de datos.</p>
 <p>Típicamente se crea una base de datos para cada proyecto.</p>
 <p>Una vez que se tenga una base de datos, cargue sus datos y construya la aplicación de routeo en esa base de datos.</p>
@@ -718,7 +720,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </div>
 </section>
 <section id="load-data">
-<h3><a class="toc-backref" href="#id29" role="doc-backlink">Cargar Datos</a><a class="headerlink" href="#load-data" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id29" role="doc-backlink">Cargar Datos</a><a class="headerlink" href="#load-data" title="Link to this heading">¶</a></h3>
 <p>Hay varias maneras de cargar tus datos en pgRouting.</p>
 <ul class="simple">
 <li><p>Creando manualmente la base de datos.</p>
@@ -780,7 +782,7 @@ how to prepare a graph using Open Street Map data, for a small application.</p>
 documentation and the <a class="reference external" href="https://postgis.net/">PostGIS</a> documentation.</p>
 </section>
 <section id="build-a-routing-topology">
-<h3><a class="toc-backref" href="#id30" role="doc-backlink">Construir una topología de ruteo</a><a class="headerlink" href="#build-a-routing-topology" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id30" role="doc-backlink">Construir una topología de ruteo</a><a class="headerlink" href="#build-a-routing-topology" title="Link to this heading">¶</a></h3>
 <p>The basic information to use the majority of the pgRouting functions <code class="docutils literal notranslate"><span class="pre">id,</span>
 <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">[reverse_cost]</span></code> is what in pgRouting is called the
 routing topology.</p>
@@ -805,11 +807,11 @@ based on the edge identifier and the geometry of the edge of the graph.</p>
 the routing topology. See an example of using <code class="docutils literal notranslate"><span class="pre">osm2pgrouting</span></code> on the <a class="reference external" href="https://workshop.pgrouting.org/latest/en/basic/data.html">workshop</a>.</p>
 </section>
 <section id="adjust-costs">
-<h3><a class="toc-backref" href="#id31" role="doc-backlink">Adjust costs</a><a class="headerlink" href="#adjust-costs" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id31" role="doc-backlink">Adjust costs</a><a class="headerlink" href="#adjust-costs" title="Link to this heading">¶</a></h3>
 <p>For this example the <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> values are going to be the
 double of the length of the geometry.</p>
 <section id="update-costs-to-length-of-geometry">
-<h4><a class="toc-backref" href="#id32" role="doc-backlink">Update costs to length of geometry</a><a class="headerlink" href="#update-costs-to-length-of-geometry" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id32" role="doc-backlink">Update costs to length of geometry</a><a class="headerlink" href="#update-costs-to-length-of-geometry" title="Link to this heading">¶</a></h4>
 <p>Suppose that <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> columns in the sample data represent:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(1\)</span> when the edge exists in the graph</p></li>
@@ -859,7 +861,7 @@ on the original graph.</p>
 </div>
 </section>
 <section id="update-costs-based-on-codes">
-<h4><a class="toc-backref" href="#id33" role="doc-backlink">Update costs based on codes</a><a class="headerlink" href="#update-costs-based-on-codes" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id33" role="doc-backlink">Update costs based on codes</a><a class="headerlink" href="#update-costs-based-on-codes" title="Link to this heading">¶</a></h4>
 <p>Other datasets, can have a column with values like</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">FT</span></code> vehicle flow on the direction of the geometry</p></li>
@@ -928,7 +930,7 @@ on the original graph.</p>
 </section>
 </section>
 <section id="check-the-routing-topology">
-<h2><a class="toc-backref" href="#id11" role="doc-backlink">Compruebe la Topología de Ruteo</a><a class="headerlink" href="#check-the-routing-topology" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">Compruebe la Topología de Ruteo</a><a class="headerlink" href="#check-the-routing-topology" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="id4">
 <ul class="simple">
 <li><p><a class="reference internal" href="#crossing-edges" id="id34">Crossing edges</a></p>
@@ -971,7 +973,7 @@ on the original graph.</p>
 developer might encounter.</p></li>
 </ul>
 <section id="crossing-edges">
-<h3><a class="toc-backref" href="#id34" role="doc-backlink">Crossing edges</a><a class="headerlink" href="#crossing-edges" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id34" role="doc-backlink">Crossing edges</a><a class="headerlink" href="#crossing-edges" title="Link to this heading">¶</a></h3>
 <p>To get the crossing edges:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">a</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">id</span>
 <span class="n">FROM</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">a</span><span class="p">,</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">b</span>
@@ -1036,7 +1038,7 @@ the edges need to be <a class="reference external" href="https://postgis.net/doc
 need to be updated in the new edges, the old edges need to be
 removed and the routing topology needs to be updated.</p>
 <section id="adding-split-edges">
-<h4><a class="toc-backref" href="#id35" role="doc-backlink">Adding split edges</a><a class="headerlink" href="#adding-split-edges" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id35" role="doc-backlink">Adding split edges</a><a class="headerlink" href="#adding-split-edges" title="Link to this heading">¶</a></h4>
 <p>For each pair of crossing edges a process similar to this one must be performed.</p>
 <p>The columns inserted and the way are calculated are based on the application.
 For example, if the edges have a trait <strong>name</strong>, then that column is to be
@@ -1096,7 +1098,7 @@ to change when splitting edges.</p></li>
 </div>
 </section>
 <section id="adding-new-vertices">
-<h4><a class="toc-backref" href="#id36" role="doc-backlink">Añadiendo nuevos vértices</a><a class="headerlink" href="#adding-new-vertices" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id36" role="doc-backlink">Añadiendo nuevos vértices</a><a class="headerlink" href="#adding-new-vertices" title="Link to this heading">¶</a></h4>
 <p>After adding all the split edges required by the application, the newly created
 vertices need to be added to the vertices table.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">vertices</span> <span class="p">(</span><span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
@@ -1108,7 +1110,7 @@ vertices need to be added to the vertices table.</p>
 </div>
 </section>
 <section id="updating-edges-topology">
-<h4><a class="toc-backref" href="#id37" role="doc-backlink">Actualizar la topología de aristas</a><a class="headerlink" href="#updating-edges-topology" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id37" role="doc-backlink">Actualizar la topología de aristas</a><a class="headerlink" href="#updating-edges-topology" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">source</span> <span class="n">information</span> <span class="o">*/</span>
 <span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
 <span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span>
@@ -1125,7 +1127,7 @@ vertices need to be added to the vertices table.</p>
 </div>
 </section>
 <section id="removing-the-surplus-edges">
-<h4><a class="toc-backref" href="#id38" role="doc-backlink">Removing the surplus edges</a><a class="headerlink" href="#removing-the-surplus-edges" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id38" role="doc-backlink">Removing the surplus edges</a><a class="headerlink" href="#removing-the-surplus-edges" title="Link to this heading">¶</a></h4>
 <p>Once all significant information needed by the application has been transported
 to the new edges, then the crossing edges can be deleted.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">18</span><span class="p">);</span>
@@ -1136,7 +1138,7 @@ to the new edges, then the crossing edges can be deleted.</p>
 view.</p>
 </section>
 <section id="updating-vertices-topology">
-<h4><a class="toc-backref" href="#id39" role="doc-backlink">Actializar la topología de vértices</a><a class="headerlink" href="#updating-vertices-topology" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id39" role="doc-backlink">Actializar la topología de vértices</a><a class="headerlink" href="#updating-vertices-topology" title="Link to this heading">¶</a></h4>
 <p>To keep the graph consistent, the vertices topology needs to be updated</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span> <span class="n">SET</span>
 <span class="n">in_edges</span> <span class="o">=</span> <span class="n">nv</span><span class="o">.</span><span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span> <span class="o">=</span> <span class="n">nv</span><span class="o">.</span><span class="n">out_edges</span>
@@ -1147,7 +1149,7 @@ view.</p>
 </div>
 </section>
 <section id="checking-for-crossing-edges">
-<h4><a class="toc-backref" href="#id40" role="doc-backlink">Checking for crossing edges</a><a class="headerlink" href="#checking-for-crossing-edges" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id40" role="doc-backlink">Checking for crossing edges</a><a class="headerlink" href="#checking-for-crossing-edges" title="Link to this heading">¶</a></h4>
 <p>There are no crossing edges on the graph.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">a</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">id</span>
 <span class="n">FROM</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">a</span><span class="p">,</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">b</span>
@@ -1161,7 +1163,7 @@ view.</p>
 </section>
 </section>
 <section id="disconnected-graphs">
-<h3><a class="toc-backref" href="#id41" role="doc-backlink">Disconnected graphs</a><a class="headerlink" href="#disconnected-graphs" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id41" role="doc-backlink">Disconnected graphs</a><a class="headerlink" href="#disconnected-graphs" title="Link to this heading">¶</a></h3>
 <p>Para obtener la conectividad del grafo:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
@@ -1199,7 +1201,7 @@ and both vertices are also part of the dead end result set.</p>
 the crossing edge in this graph is a different component.</p>
 </div>
 <section id="prepare-storage-for-connection-information">
-<h4><a class="toc-backref" href="#id42" role="doc-backlink">Prepare storage for connection information</a><a class="headerlink" href="#prepare-storage-for-connection-information" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id42" role="doc-backlink">Prepare storage for connection information</a><a class="headerlink" href="#prepare-storage-for-connection-information" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">vertices</span> <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">component</span> <span class="n">BIGINT</span><span class="p">;</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">component</span> <span class="n">BIGINT</span><span class="p">;</span>
@@ -1208,7 +1210,7 @@ the crossing edge in this graph is a different component.</p>
 </div>
 </section>
 <section id="save-the-vertices-connection-information">
-<h4><a class="toc-backref" href="#id43" role="doc-backlink">Save the vertices connection information</a><a class="headerlink" href="#save-the-vertices-connection-information" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id43" role="doc-backlink">Save the vertices connection information</a><a class="headerlink" href="#save-the-vertices-connection-information" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span> <span class="n">SET</span> <span class="n">component</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">component</span>
 <span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
@@ -1219,7 +1221,7 @@ the crossing edge in this graph is a different component.</p>
 </div>
 </section>
 <section id="save-the-edges-connection-information">
-<h4><a class="toc-backref" href="#id44" role="doc-backlink">Save the edges connection information</a><a class="headerlink" href="#save-the-edges-connection-information" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id44" role="doc-backlink">Save the edges connection information</a><a class="headerlink" href="#save-the-edges-connection-information" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">SET</span> <span class="n">component</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">component</span>
 <span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">component</span> <span class="n">FROM</span> <span class="n">vertices</span><span class="p">)</span> <span class="n">AS</span> <span class="n">v</span>
 <span class="n">WHERE</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
@@ -1228,7 +1230,7 @@ the crossing edge in this graph is a different component.</p>
 </div>
 </section>
 <section id="get-the-closest-vertex">
-<h4><a class="toc-backref" href="#id45" role="doc-backlink">Get the closest vertex</a><a class="headerlink" href="#get-the-closest-vertex" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id45" role="doc-backlink">Get the closest vertex</a><a class="headerlink" href="#get-the-closest-vertex" title="Link to this heading">¶</a></h4>
 <p>Using <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> the closest vertex to component <span class="math notranslate nohighlight">\(1\)</span> is
 vertex <span class="math notranslate nohighlight">\(4\)</span>. And the closest edge to vertex <span class="math notranslate nohighlight">\(4\)</span> is edge <span class="math notranslate nohighlight">\(14\)</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge_id, fraction, ST_AsText(edge) AS edge, id AS closest_vertex
@@ -1247,7 +1249,7 @@ FROM pgr_findCloseEdges(
 information about the edge <span class="math notranslate nohighlight">\(14\)</span> to split the connecting edge.</p>
 </section>
 <section id="connecting-components">
-<h4><a class="toc-backref" href="#id46" role="doc-backlink">Conectando componentes</a><a class="headerlink" href="#connecting-components" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id46" role="doc-backlink">Conectando componentes</a><a class="headerlink" href="#connecting-components" title="Link to this heading">¶</a></h4>
 <p>There are three basic ways to connect the components</p>
 <ul class="simple">
 <li><p>From the vertex to the starting point of the edge</p></li>
@@ -1309,7 +1311,7 @@ INSERT 0 2
 </div>
 </section>
 <section id="checking-components">
-<h4><a class="toc-backref" href="#id47" role="doc-backlink">Checking components</a><a class="headerlink" href="#checking-components" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id47" role="doc-backlink">Checking components</a><a class="headerlink" href="#checking-components" title="Link to this heading">¶</a></h4>
 <p>Ignoring the edge that requires further work. The graph is now fully connected
 as there is only one component.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
@@ -1342,7 +1344,7 @@ as there is only one component.</p>
 </section>
 </section>
 <section id="contraction-of-a-graph">
-<h3><a class="toc-backref" href="#id48" role="doc-backlink">Contraction of a graph</a><a class="headerlink" href="#contraction-of-a-graph" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id48" role="doc-backlink">Contraction of a graph</a><a class="headerlink" href="#contraction-of-a-graph" title="Link to this heading">¶</a></h3>
 <p>The graph can be reduced in size using <a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Familia de funciones</span></a></p>
 <p>When to contract will depend on the size of the graph, processing times,
 correctness of the data, on the final application, or any other factor not
@@ -1352,7 +1354,7 @@ the number of dead ends and/or the number of linear edges.</p>
 <p>A complete method on how to contract and how to use the contracted graph is
 described on <a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Familia de funciones</span></a></p>
 <section id="dead-ends">
-<h4><a class="toc-backref" href="#id49" role="doc-backlink">Callejones sin salida</a><a class="headerlink" href="#dead-ends" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id49" role="doc-backlink">Callejones sin salida</a><a class="headerlink" href="#dead-ends" title="Link to this heading">¶</a></h4>
 <p>To get the dead ends:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">vertices</span>
 <span class="n">WHERE</span> <span class="n">array_length</span><span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
@@ -1390,7 +1392,7 @@ the segment?</p></li>
 functions can be used to divide the problem.</p>
 </section>
 <section id="linear-edges">
-<h4><a class="toc-backref" href="#id50" role="doc-backlink">Linear edges</a><a class="headerlink" href="#linear-edges" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id50" role="doc-backlink">Linear edges</a><a class="headerlink" href="#linear-edges" title="Link to this heading">¶</a></h4>
 <p>To get the linear edges:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">vertices</span>
 <span class="n">WHERE</span> <span class="n">array_length</span><span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
@@ -1411,7 +1413,7 @@ functions can be used to divide the problem.</p>
 </section>
 </section>
 <section id="function-s-structure">
-<h2><a class="toc-backref" href="#id12" role="doc-backlink">Function’s structure</a><a class="headerlink" href="#function-s-structure" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Function’s structure</a><a class="headerlink" href="#function-s-structure" title="Link to this heading">¶</a></h2>
 <p>Once the graph preparation work has been done above, it is time to use a</p>
 <p>La forma general de una llamada a una función de pgRouting es:</p>
 <div class="signatures admonition">
@@ -1473,7 +1475,7 @@ parameter’s value should contain</p></li>
 each function.</p>
 </section>
 <section id="function-s-overloads">
-<h2><a class="toc-backref" href="#id13" role="doc-backlink">Function’s overloads</a><a class="headerlink" href="#function-s-overloads" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">Function’s overloads</a><a class="headerlink" href="#function-s-overloads" title="Link to this heading">¶</a></h2>
 <p>A function might have different overloads. The most common are called:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#one-to-one">Uno a Uno</a></p></li>
@@ -1490,7 +1492,7 @@ each function.</p>
 <p>Depending of the function the overloads may vary. But the concept of parameter
 type change remains the same.</p>
 <section id="one-to-one">
-<h3>Uno a Uno<a class="headerlink" href="#one-to-one" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Uno a Uno<a class="headerlink" href="#one-to-one" title="Link to this heading">¶</a></h3>
 <p>Cuando se rutea desde:</p>
 <ul class="simple">
 <li><p>Desde <strong>un</strong> vértice inicial</p></li>
@@ -1498,7 +1500,7 @@ type change remains the same.</p>
 </ul>
 </section>
 <section id="one-to-many">
-<h3>Uno a Muchos<a class="headerlink" href="#one-to-many" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Uno a Muchos<a class="headerlink" href="#one-to-many" title="Link to this heading">¶</a></h3>
 <p>Cuando se rutea desde:</p>
 <ul class="simple">
 <li><p>Desde <strong>un</strong> vértice inicial</p></li>
@@ -1506,7 +1508,7 @@ type change remains the same.</p>
 </ul>
 </section>
 <section id="many-to-one">
-<h3>Muchos a Uno<a class="headerlink" href="#many-to-one" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Muchos a Uno<a class="headerlink" href="#many-to-one" title="Link to this heading">¶</a></h3>
 <p>Cuando se rutea desde:</p>
 <ul class="simple">
 <li><p>Desde <strong>muchos</strong> vértices iniciales</p></li>
@@ -1514,7 +1516,7 @@ type change remains the same.</p>
 </ul>
 </section>
 <section id="many-to-many">
-<h3>Muchos a Muchos<a class="headerlink" href="#many-to-many" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Muchos a Muchos<a class="headerlink" href="#many-to-many" title="Link to this heading">¶</a></h3>
 <p>Cuando se rutea desde:</p>
 <ul class="simple">
 <li><p>Desde <strong>muchos</strong> vértices iniciales</p></li>
@@ -1522,7 +1524,7 @@ type change remains the same.</p>
 </ul>
 </section>
 <section id="combinations">
-<h3>Combinaciones<a class="headerlink" href="#combinations" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Combinaciones<a class="headerlink" href="#combinations" title="Link to this heading">¶</a></h3>
 <p>Cuando se rutea desde:</p>
 <ul class="simple">
 <li><p>A partir de <strong>muchos</strong> diferentes vértices de inicio</p></li>
@@ -1534,7 +1536,7 @@ type change remains the same.</p>
 </section>
 </section>
 <section id="inner-queries">
-<h2><a class="toc-backref" href="#id14" role="doc-backlink">Consultas Internas</a><a class="headerlink" href="#inner-queries" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Consultas Internas</a><a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="id5">
 <ul class="simple">
 <li><p><a class="reference internal" href="#edges-sql" id="id51">SQL aristas</a></p>
@@ -1561,9 +1563,9 @@ type change remains the same.</p>
 </dd>
 </dl>
 <section id="edges-sql">
-<h3><a class="toc-backref" href="#id51" role="doc-backlink">SQL aristas</a><a class="headerlink" href="#edges-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id51" role="doc-backlink">SQL aristas</a><a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
 <section id="general">
-<h4><a class="toc-backref" href="#id52" role="doc-backlink">General</a><a class="headerlink" href="#general" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id52" role="doc-backlink">General</a><a class="headerlink" href="#general" title="Link to this heading">¶</a></h4>
 <p class="rubric">SQL de aristas para</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - Familia de funciones</span></a></p></li>
@@ -1631,7 +1633,7 @@ type change remains the same.</p>
 </dl>
 </section>
 <section id="general-without-id">
-<h4><a class="toc-backref" href="#id53" role="doc-backlink">General without <code class="docutils literal notranslate"><span class="pre">id</span></code></a><a class="headerlink" href="#general-without-id" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id53" role="doc-backlink">General without <code class="docutils literal notranslate"><span class="pre">id</span></code></a><a class="headerlink" href="#general-without-id" title="Link to this heading">¶</a></h4>
 <p class="rubric">SQL de aristas para</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="allpairs-family.html"><span class="doc">Todos los Pares - Familia de Funciones</span></a></p></li>
@@ -1688,7 +1690,7 @@ type change remains the same.</p>
 </dl>
 </section>
 <section id="general-with-x-y">
-<h4><a class="toc-backref" href="#id54" role="doc-backlink">General with (X,Y)</a><a class="headerlink" href="#general-with-x-y" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id54" role="doc-backlink">General with (X,Y)</a><a class="headerlink" href="#general-with-x-y" title="Link to this heading">¶</a></h4>
 <p class="rubric">SQL de aristas para</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="aStar-family.html"><span class="doc">A* - Familia de Funciones</span></a></p></li>
@@ -1775,7 +1777,7 @@ type change remains the same.</p>
 </dl>
 </section>
 <section id="flow">
-<h4><a class="toc-backref" href="#id55" role="doc-backlink">Flujo</a><a class="headerlink" href="#flow" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id55" role="doc-backlink">Flujo</a><a class="headerlink" href="#flow" title="Link to this heading">¶</a></h4>
 <p class="rubric">Edges SQL for <a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones</span></a></p>
 <p class="rubric">SQL de aristas para</p>
 <ul class="simple">
@@ -1915,7 +1917,7 @@ type change remains the same.</p>
 </section>
 </section>
 <section id="combinations-sql">
-<h3><a class="toc-backref" href="#id56" role="doc-backlink">SQL Combinaciones</a><a class="headerlink" href="#combinations-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id56" role="doc-backlink">SQL Combinaciones</a><a class="headerlink" href="#combinations-sql" title="Link to this heading">¶</a></h3>
 <p class="rubric">Used on combination signatures</p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
@@ -1948,7 +1950,7 @@ type change remains the same.</p>
 </dl>
 </section>
 <section id="restrictions-sql">
-<h3><a class="toc-backref" href="#id57" role="doc-backlink">SQL restricciones</a><a class="headerlink" href="#restrictions-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id57" role="doc-backlink">SQL restricciones</a><a class="headerlink" href="#restrictions-sql" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 10.3%" />
@@ -1983,7 +1985,7 @@ type change remains the same.</p>
 </dl>
 </section>
 <section id="points-sql">
-<h3><a class="toc-backref" href="#id58" role="doc-backlink">SQL de puntos</a><a class="headerlink" href="#points-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id58" role="doc-backlink">SQL de puntos</a><a class="headerlink" href="#points-sql" title="Link to this heading">¶</a></h3>
 <p class="rubric">SQL de puntos para</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Familia de funciones</span></a></p></li>
@@ -2049,7 +2051,7 @@ type change remains the same.</p>
 </section>
 </section>
 <section id="parameters">
-<h2><a class="toc-backref" href="#id15" role="doc-backlink">Parámetros</a><a class="headerlink" href="#parameters" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">Parámetros</a><a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
 <p>The main parameter of the majority of the pgRouting functions is a query that
 selects the edges of the graph.</p>
 <table class="docutils align-default" style="width: 81">
@@ -2071,7 +2073,7 @@ parameters, some of them are compulsory and some are optional.</p>
 <p>The compulsory parameters are nameless and must be given in the required order.
 The optional parameters are named parameters and will have a default value.</p>
 <section id="parameters-for-the-via-functions">
-<h3>Párametros para las funciones Via<a class="headerlink" href="#parameters-for-the-via-functions" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Párametros para las funciones Via<a class="headerlink" href="#parameters-for-the-via-functions" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a></p></li>
 </ul>
@@ -2131,7 +2133,7 @@ The optional parameters are named parameters and will have a default value.</p>
 </table>
 </section>
 <section id="for-the-trsp-functions">
-<h3>Para las funciones de TRSP<a class="headerlink" href="#for-the-trsp-functions" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Para las funciones de TRSP<a class="headerlink" href="#for-the-trsp-functions" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Proposed</span></a></p></li>
 </ul>
@@ -2187,7 +2189,7 @@ The optional parameters are named parameters and will have a default value.</p>
 </section>
 </section>
 <section id="return-columns">
-<h2><a class="toc-backref" href="#id16" role="doc-backlink">Columnas de Resultados</a><a class="headerlink" href="#return-columns" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">Columnas de Resultados</a><a class="headerlink" href="#return-columns" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="id6">
 <ul class="simple">
 <li><p><a class="reference internal" href="#return-columns-for-a-path" id="id59">Columnas devueltas para una trayectoria</a></p></li>
@@ -2204,7 +2206,7 @@ The optional parameters are named parameters and will have a default value.</p>
 </nav>
 <p>Hay varios tipos de columnas devueltas que dependen de la función.</p>
 <section id="return-columns-for-a-path">
-<h3><a class="toc-backref" href="#id59" role="doc-backlink">Columnas devueltas para una trayectoria</a><a class="headerlink" href="#return-columns-for-a-path" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id59" role="doc-backlink">Columnas devueltas para una trayectoria</a><a class="headerlink" href="#return-columns-for-a-path" title="Link to this heading">¶</a></h3>
 <p class="rubric">Used on functions that return one path solution</p>
 <p>Devuelve el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
@@ -2403,9 +2405,9 @@ The optional parameters are named parameters and will have a default value.</p>
 </table>
 </section>
 <section id="multiple-paths">
-<h3><a class="toc-backref" href="#id60" role="doc-backlink">Multiple paths</a><a class="headerlink" href="#multiple-paths" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id60" role="doc-backlink">Multiple paths</a><a class="headerlink" href="#multiple-paths" title="Link to this heading">¶</a></h3>
 <section id="selective-for-multiple-paths">
-<h4><a class="toc-backref" href="#id61" role="doc-backlink">Selective for multiple paths.</a><a class="headerlink" href="#selective-for-multiple-paths" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id61" role="doc-backlink">Selective for multiple paths.</a><a class="headerlink" href="#selective-for-multiple-paths" title="Link to this heading">¶</a></h4>
 <p>The columns depend on the function call.</p>
 <p>Conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
@@ -2477,7 +2479,7 @@ The optional parameters are named parameters and will have a default value.</p>
 </table>
 </section>
 <section id="non-selective-for-multiple-paths">
-<h4><a class="toc-backref" href="#id62" role="doc-backlink">Non selective for multiple paths</a><a class="headerlink" href="#non-selective-for-multiple-paths" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><a class="toc-backref" href="#id62" role="doc-backlink">Non selective for multiple paths</a><a class="headerlink" href="#non-selective-for-multiple-paths" title="Link to this heading">¶</a></h4>
 <p>Regardless of the call, al the columns are returned.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Proposed</span></a></p></li>
@@ -2541,7 +2543,7 @@ The optional parameters are named parameters and will have a default value.</p>
 </section>
 </section>
 <section id="return-columns-for-cost-functions">
-<h3><a class="toc-backref" href="#id63" role="doc-backlink">Columnas devueltas para funciones de costo</a><a class="headerlink" href="#return-columns-for-cost-functions" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id63" role="doc-backlink">Columnas devueltas para funciones de costo</a><a class="headerlink" href="#return-columns-for-cost-functions" title="Link to this heading">¶</a></h3>
 <p class="rubric">Used in the following</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="cost-category.html"><span class="doc">Costo - Categoría</span></a></p></li>
@@ -2582,7 +2584,7 @@ The optional parameters are named parameters and will have a default value.</p>
 </div>
 </section>
 <section id="return-columns-for-flow-functions">
-<h3><a class="toc-backref" href="#id64" role="doc-backlink">Columnas devueltas para funciones de flujo</a><a class="headerlink" href="#return-columns-for-flow-functions" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id64" role="doc-backlink">Columnas devueltas para funciones de flujo</a><a class="headerlink" href="#return-columns-for-flow-functions" title="Link to this heading">¶</a></h3>
 <p class="rubric">Edges SQL for the following</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones</span></a></p></li>
@@ -2669,7 +2671,7 @@ The optional parameters are named parameters and will have a default value.</p>
 </table>
 </section>
 <section id="return-columns-for-spanning-tree-functions">
-<h3><a class="toc-backref" href="#id65" role="doc-backlink">Return columns for spanning tree functions</a><a class="headerlink" href="#return-columns-for-spanning-tree-functions" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id65" role="doc-backlink">Return columns for spanning tree functions</a><a class="headerlink" href="#return-columns-for-spanning-tree-functions" title="Link to this heading">¶</a></h3>
 <p class="rubric">Edges SQL for the following</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_prim.html"><span class="doc">pgr_prim</span></a></p></li>
@@ -2697,14 +2699,14 @@ The optional parameters are named parameters and will have a default value.</p>
 </section>
 </section>
 <section id="performance-tips">
-<h2><a class="toc-backref" href="#id17" role="doc-backlink">Consejos de Rendimiento</a><a class="headerlink" href="#performance-tips" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">Consejos de Rendimiento</a><a class="headerlink" href="#performance-tips" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="id7">
 <ul class="simple">
 <li><p><a class="reference internal" href="#for-the-routing-functions" id="id66">Para las funciones de Ruteo</a></p></li>
 </ul>
 </nav>
 <section id="for-the-routing-functions">
-<h3><a class="toc-backref" href="#id66" role="doc-backlink">Para las funciones de Ruteo</a><a class="headerlink" href="#for-the-routing-functions" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><a class="toc-backref" href="#id66" role="doc-backlink">Para las funciones de Ruteo</a><a class="headerlink" href="#for-the-routing-functions" title="Link to this heading">¶</a></h3>
 <p>Para obtener resultados más rápidos, delimitar las consultas a un área de interés para el ruteo.</p>
 <p>En este ejemplo, usar una consulta SQL interna que no incluya algunas aristas en la función de ruteo y dentro del área de los resultados.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra($$
@@ -2721,7 +2723,7 @@ The optional parameters are named parameters and will have a default value.</p>
 </section>
 </section>
 <section id="how-to-contribute">
-<h2><a class="toc-backref" href="#id18" role="doc-backlink">Cómo contribuir</a><a class="headerlink" href="#how-to-contribute" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><a class="toc-backref" href="#id18" role="doc-backlink">Cómo contribuir</a><a class="headerlink" href="#how-to-contribute" title="Link to this heading">¶</a></h2>
 <p class="rubric">Wiki</p>
 <ul class="simple">
 <li><p>Edita una página existente <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki">Wiki de pgRouting</a>.</p></li>
@@ -2744,9 +2746,9 @@ The optional parameters are named parameters and will have a default value.</p>
 </section>
 
 
+        </div>
+          
     </div>
-      
-  </div>
 </div>
 <footer class="footer">
   <div class="container">
@@ -2755,9 +2757,9 @@ The optional parameters are named parameters and will have a default value.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.5.0.<br/>
-      Actualizado por última vez en mar 08, 2023.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.5.1.<br/>
+      Actualizado por última vez en sept 27, 2023.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
 </footer>
