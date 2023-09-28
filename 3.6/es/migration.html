@@ -755,7 +755,7 @@ the function <code class="docutils literal notranslate"><span class="pre">my_dij
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[from_v,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 </dd>
 <dt class="field-even">to<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 </dd>
 </dl>
 <p>Firmas que serán migradas:</p>
@@ -794,25 +794,26 @@ the function <code class="docutils literal notranslate"><span class="pre">my_dij
 example.</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> contains the <strong>start vid</strong> parameter value.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">depth</span></code> contains the depth of the <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">depth</span></code> contains the depth of the <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pred</span></code> contains the predecessor of the <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_drivingDistance(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   11, 3.0);
- seq | depth | start_vid | node | edge | cost | agg_cost
------+-------+-----------+------+------+------+----------
-   1 |     0 |        11 |   11 |   -1 |    0 |        0
-   2 |     1 |        11 |    7 |    8 |    1 |        1
-   3 |     1 |        11 |   12 |   11 |    1 |        1
-   4 |     1 |        11 |   16 |    9 |    1 |        1
-   5 |     2 |        11 |    3 |    7 |    1 |        2
-   6 |     2 |        11 |    6 |    4 |    1 |        2
-   7 |     2 |        11 |    8 |   10 |    1 |        2
-   8 |     2 |        11 |   15 |   16 |    1 |        2
-   9 |     2 |        11 |   17 |   15 |    1 |        2
-  10 |     3 |        11 |    1 |    6 |    1 |        3
-  11 |     3 |        11 |    5 |    1 |    1 |        3
-  12 |     3 |        11 |    9 |   14 |    1 |        3
-  13 |     3 |        11 |   10 |    3 |    1 |        3
+ seq | depth | start_vid | pred | node | edge | cost | agg_cost
+-----+-------+-----------+------+------+------+------+----------
+   1 |     0 |        11 |   11 |   11 |   -1 |    0 |        0
+   2 |     1 |        11 |   11 |    7 |    8 |    1 |        1
+   3 |     1 |        11 |   11 |   12 |   11 |    1 |        1
+   4 |     1 |        11 |   11 |   16 |    9 |    1 |        1
+   5 |     2 |        11 |    7 |    3 |    7 |    1 |        2
+   6 |     2 |        11 |    7 |    6 |    4 |    1 |        2
+   7 |     2 |        11 |    7 |    8 |   10 |    1 |        2
+   8 |     2 |        11 |   16 |   15 |   16 |    1 |        2
+   9 |     2 |        11 |   16 |   17 |   15 |    1 |        2
+  10 |     3 |        11 |    3 |    1 |    6 |    1 |        3
+  11 |     3 |        11 |    6 |    5 |    1 |    1 |        3
+  12 |     3 |        11 |    8 |    9 |   14 |    1 |        3
+  13 |     3 |        11 |   15 |   10 |    3 |    1 |        3
 (13 rows)
 
 </pre></div>
@@ -850,26 +851,27 @@ FROM pgr_drivingDistance(
 example.</p>
 <ul>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">from_v</span></code> result column name changes to <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">depth</span></code> contains the depth of the <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">depth</span></code> contains the depth of the <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pred</span></code> contains the predecessor of the <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT *
 FROM pgr_drivingDistance(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   ARRAY[11, 16], 3.0, equicost =&gt; true);
- seq | depth | start_vid | node | edge | cost | agg_cost
------+-------+-----------+------+------+------+----------
-   1 |     0 |        11 |   11 |   -1 |    0 |        0
-   2 |     1 |        11 |    7 |    8 |    1 |        1
-   3 |     1 |        11 |   12 |   11 |    1 |        1
-   4 |     2 |        11 |    3 |    7 |    1 |        2
-   5 |     2 |        11 |    6 |    4 |    1 |        2
-   6 |     2 |        11 |    8 |   10 |    1 |        2
-   7 |     3 |        11 |    1 |    6 |    1 |        3
-   8 |     3 |        11 |    5 |    1 |    1 |        3
-   9 |     3 |        11 |    9 |   14 |    1 |        3
-  10 |     0 |        16 |   16 |   -1 |    0 |        0
-  11 |     1 |        16 |   15 |   16 |    1 |        1
-  12 |     1 |        16 |   17 |   15 |    1 |        1
-  13 |     2 |        16 |   10 |    3 |    1 |        2
+ seq | depth | start_vid | pred | node | edge | cost | agg_cost
+-----+-------+-----------+------+------+------+------+----------
+   1 |     0 |        11 |   11 |   11 |   -1 |    0 |        0
+   2 |     1 |        11 |   11 |    7 |    8 |    1 |        1
+   3 |     1 |        11 |   11 |   12 |   11 |    1 |        1
+   4 |     2 |        11 |    7 |    3 |    7 |    1 |        2
+   5 |     2 |        11 |    7 |    6 |    4 |    1 |        2
+   6 |     2 |        11 |    7 |    8 |   10 |    1 |        2
+   7 |     3 |        11 |    3 |    1 |    6 |    1 |        3
+   8 |     3 |        11 |    6 |    5 |    1 |    1 |        3
+   9 |     3 |        11 |    8 |    9 |   14 |    1 |        3
+  10 |     0 |        16 |   16 |   16 |   -1 |    0 |        0
+  11 |     1 |        16 |   16 |   15 |   16 |    1 |        1
+  12 |     1 |        16 |   16 |   17 |   15 |    1 |        1
+  13 |     2 |        16 |   15 |   10 |    3 |    1 |        2
 (13 rows)
 
 </pre></div>
@@ -1084,7 +1086,7 @@ WARNING:  pgr_maxCardinalityMatch(text,boolean) deprecated signature on v3.4.0
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[start_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 </dd>
 <dt class="field-even">to<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 </dd>
 </dl>
 <p>And <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to unnamed compulsory
@@ -1102,14 +1104,14 @@ WARNING:  pgr_maxCardinalityMatch(text,boolean) deprecated signature on v3.4.0
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (Single vertex)</p>
 <ul>
 <li><p>Output columns were <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p>Does not have <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">depth</span></code> result columns.</p></li>
+<li><p>Does not have <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>, <code class="docutils literal notranslate"><span class="pre">pred</span></code> and <code class="docutils literal notranslate"><span class="pre">depth</span></code> result columns.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter was named optional now it is compulsory unamed.</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<cite>Multiple vertices</cite>)</p>
 <ul>
 <li><p>Output columns were <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p>Does not have <code class="docutils literal notranslate"><span class="pre">depth</span></code> result column.</p></li>
+<li><p>Does not have <code class="docutils literal notranslate"><span class="pre">depth</span></code> and <code class="docutils literal notranslate"><span class="pre">pred</span></code> result columns.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter was named optional now it is compulsory unamed.</p></li>
 </ul>
 </li>
@@ -1205,12 +1207,12 @@ WARNING:  pgr_withpointsdd(text,text,bigint,double precision,boolean,character,b
   $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
   -1, 3.3, &#39;r&#39;, directed =&gt; true);
- seq | depth | start_vid | node | edge | cost | agg_cost
------+-------+-----------+------+------+------+----------
-   1 |     0 |        -1 |   -1 |   -1 |    0 |        0
-   2 |     1 |        -1 |    5 |    1 |  0.4 |      0.4
-   3 |     2 |        -1 |    6 |    1 |    1 |      1.4
-   4 |     3 |        -1 |    7 |    4 |    1 |      2.4
+ seq | depth | start_vid | pred | node | edge | cost | agg_cost
+-----+-------+-----------+------+------+------+------+----------
+   1 |     0 |        -1 |   -1 |   -1 |   -1 |    0 |        0
+   2 |     1 |        -1 |   -1 |    5 |    1 |  0.4 |      0.4
+   3 |     2 |        -1 |    5 |    6 |    1 |    1 |      1.4
+   4 |     3 |        -1 |   -6 |    7 |    4 |    1 |      2.4
 (4 rows)
 
 </pre></div>
@@ -1221,7 +1223,7 @@ WARNING:  pgr_withpointsdd(text,text,bigint,double precision,boolean,character,b
 </dl>
 <ul class="simple">
 <li><p>Be aware of the existance of the additional return columns.</p></li>
-<li><p>New output columns are <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p>New output columns are <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 <li><p><strong>driving side</strong> parameter is unnamed compulsory, and valid values differ for
 directed and undirected graphs.</p>
 <ul>
@@ -1238,10 +1240,11 @@ directed and undirected graphs.</p>
 <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-vertex">this</a>
 example.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> contains the <strong>start vid</strong> parameter value.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">depth</span></code> contains the <strong>depth</strong> from the <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> vertex to the
 <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pred</span></code> contains the predecessor of the <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></li>
 </ul>
 <p>To migrate, use an unnamed valid value for <strong>driving side</strong> after the
 <strong>distance</strong> parameter:</p>
@@ -1249,12 +1252,12 @@ example.</p>
   $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
   -1, 3.3, &#39;r&#39;, directed =&gt; true);
- seq | depth | start_vid | node | edge | cost | agg_cost
------+-------+-----------+------+------+------+----------
-   1 |     0 |        -1 |   -1 |   -1 |    0 |        0
-   2 |     1 |        -1 |    5 |    1 |  0.4 |      0.4
-   3 |     2 |        -1 |    6 |    1 |    1 |      1.4
-   4 |     3 |        -1 |    7 |    4 |    1 |      2.4
+ seq | depth | start_vid | pred | node | edge | cost | agg_cost
+-----+-------+-----------+------+------+------+------+----------
+   1 |     0 |        -1 |   -1 |   -1 |   -1 |    0 |        0
+   2 |     1 |        -1 |   -1 |    5 |    1 |  0.4 |      0.4
+   3 |     2 |        -1 |    5 |    6 |    1 |    1 |      1.4
+   4 |     3 |        -1 |   -6 |    7 |    4 |    1 |      2.4
 (4 rows)
 
 </pre></div>
@@ -1287,30 +1290,31 @@ example.</p>
 <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#multiple-vertices">this</a>
 example.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">depth</span></code> contains the <strong>depth</strong> from the <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> vertex to the
 <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pred</span></code> contains the predecessor of the <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsDD(
   $$SELECT * FROM edges ORDER BY id$$,
   $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
   ARRAY[-1, 16], 3.3, &#39;l&#39;, equicost =&gt; true);
- seq | depth | start_vid | node | edge | cost | agg_cost
------+-------+-----------+------+------+------+----------
-   1 |     0 |        -1 |   -1 |   -1 |    0 |        0
-   2 |     1 |        -1 |    6 |    1 |  0.6 |      0.6
-   3 |     2 |        -1 |    7 |    4 |    1 |      1.6
-   4 |     2 |        -1 |    5 |    1 |    1 |      1.6
-   5 |     3 |        -1 |    3 |    7 |    1 |      2.6
-   6 |     3 |        -1 |    8 |   10 |    1 |      2.6
-   7 |     4 |        -1 |   -3 |   12 |  0.6 |      3.2
-   8 |     4 |        -1 |   -4 |    6 |  0.7 |      3.3
-   9 |     0 |        16 |   16 |   -1 |    0 |        0
-  10 |     1 |        16 |   11 |    9 |    1 |        1
-  11 |     1 |        16 |   15 |   16 |    1 |        1
-  12 |     1 |        16 |   17 |   15 |    1 |        1
-  13 |     2 |        16 |   10 |    3 |    1 |        2
-  14 |     2 |        16 |   12 |   11 |    1 |        2
+ seq | depth | start_vid | pred | node | edge | cost | agg_cost
+-----+-------+-----------+------+------+------+------+----------
+   1 |     0 |        -1 |   -1 |   -1 |   -1 |    0 |        0
+   2 |     1 |        -1 |   -1 |    6 |    1 |  0.6 |      0.6
+   3 |     2 |        -1 |    6 |    7 |    4 |    1 |      1.6
+   4 |     2 |        -1 |    6 |    5 |    1 |    1 |      1.6
+   5 |     3 |        -1 |    7 |    3 |    7 |    1 |      2.6
+   6 |     3 |        -1 |    7 |    8 |   10 |    1 |      2.6
+   7 |     4 |        -1 |    8 |   -3 |   12 |  0.6 |      3.2
+   8 |     4 |        -1 |    3 |   -4 |    6 |  0.7 |      3.3
+   9 |     0 |        16 |   16 |   16 |   -1 |    0 |        0
+  10 |     1 |        16 |   16 |   11 |    9 |    1 |        1
+  11 |     1 |        16 |   16 |   15 |   16 |    1 |        1
+  12 |     1 |        16 |   16 |   17 |   15 |    1 |        1
+  13 |     2 |        16 |   15 |   10 |    3 |    1 |        2
+  14 |     2 |        16 |   11 |   12 |   11 |    1 |        2
 (14 rows)
 
 </pre></div>
@@ -2695,7 +2699,7 @@ FROM pgr_trspVia_withPoints(
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
-      Actualizado por última vez en sept 25, 2023.<br/>
+      Actualizado por última vez en sept 28, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
