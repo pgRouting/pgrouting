@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-25 17:06+0000\n"
+"POT-Creation-Date: 2023-09-28 18:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3853,6 +3853,29 @@ msgstr ""
 msgid "Upper limit for the inclusion of a node in the result."
 msgstr ""
 
+msgid "Returns SET OF |result-spantree|"
+msgstr ""
+
+msgid ":math:`depth-1` is the depth of ``pred``"
+msgstr ""
+
+msgid "``pred``"
+msgstr ""
+
+msgid "Predecessor of ``node``."
+msgstr ""
+
+msgid "When ``node`` = ``start_vid`` then has the value ``node``."
+msgstr ""
+
+msgid "Identifier of the ``edge`` used to arrive from ``pred`` to ``node``."
+msgstr ""
+
+msgid ""
+"Column ``pred`` only applies to :doc:`pgr_drivingDistance` and "
+":doc:`pgr_withPointsDD`."
+msgstr ""
+
 msgid "Experimental Functions"
 msgstr ""
 
@@ -4583,7 +4606,7 @@ msgstr ""
 msgid "to"
 msgstr ""
 
-msgid "|result-bfs|"
+msgid "|result-spantree|"
 msgstr ""
 
 msgid "``pgr_drivingdistance`` (Single vertex)"
@@ -4613,6 +4636,9 @@ msgid ""
 msgstr ""
 
 msgid "``depth`` contains the depth of the ``node``."
+msgstr ""
+
+msgid "``pred`` contains the predecessor of the ``node``."
 msgstr ""
 
 msgid ""
@@ -4766,6 +4792,9 @@ msgstr ""
 msgid "Output columns were |result-1-1-no-seq|"
 msgstr ""
 
+msgid "Does not have ``start_vid``, ``pred`` and ``depth`` result columns."
+msgstr ""
+
 msgid "``driving_side`` parameter was named optional now it is compulsory unamed."
 msgstr ""
 
@@ -4775,7 +4804,7 @@ msgstr ""
 msgid "Output columns were |result-m-1-no-seq|"
 msgstr ""
 
-msgid "Does not have ``depth`` result column."
+msgid "Does not have ``depth`` and ``pred`` result columns."
 msgstr ""
 
 msgid "Driving side was optional"
@@ -4820,7 +4849,7 @@ msgstr ""
 msgid "Be aware of the existance of the additional return columns."
 msgstr ""
 
-msgid "New output columns are |result-bfs|"
+msgid "New output columns are |result-spantree|"
 msgstr ""
 
 msgid ""
@@ -11058,7 +11087,7 @@ msgstr ""
 msgid "``pgr_drivingDistance`` - Returns the driving distance from a start node."
 msgstr ""
 
-msgid "Standarizing output columns to |result-bfs|"
+msgid "Standarizing output columns to |result-spantree|"
 msgstr ""
 
 msgid "Added ``depth`` and ``start_vid`` result columns."
@@ -11067,7 +11096,7 @@ msgstr ""
 msgid "Result column name change: ``from_v`` to ``start_vid``."
 msgstr ""
 
-msgid "Added ``depth`` result column."
+msgid "Added ``depth`` and ``pred`` result columns."
 msgstr ""
 
 msgid "Signature change pgr_drivingDistance(single vertex)"
@@ -11082,7 +11111,7 @@ msgstr ""
 msgid ""
 "Using the Dijkstra algorithm, extracts all the nodes that have costs less"
 " than or equal to the value ``distance``. The edges extracted will "
-"conform to the corresponding spanning tree."
+"conform to the corresponding spaning tree."
 msgstr ""
 
 msgid ""
@@ -11096,6 +11125,9 @@ msgid ""
 msgstr ""
 
 msgid "**options:** [directed, equicost]"
+msgstr ""
+
+msgid "RETURNS SET OF |result-spantree|"
 msgstr ""
 
 msgid "Single Vertex"
@@ -14851,10 +14883,10 @@ msgstr ""
 msgid "``pgr_withPointsDD`` (`Single vertex`)"
 msgstr ""
 
-msgid "Added ``depth`` and ``start_vid`` column."
+msgid "Added ``depth``, ``pred`` and ``start_vid`` column."
 msgstr ""
 
-msgid "Added ``depth`` column."
+msgid "Added ``depth``, ``pred`` columns."
 msgstr ""
 
 msgid "When ``details`` is ``false``:"
@@ -15380,6 +15412,11 @@ msgstr ""
 msgid ""
 "`#2555 <https://github.com/pgRouting/pgrouting/pull/2555>`__ standarize "
 "deprecated messages"
+msgstr ""
+
+msgid ""
+"On new internal function: do not use named parameters and default "
+"parameters."
 msgstr ""
 
 msgid "pgRouting 3.5.1 Release Notes"
