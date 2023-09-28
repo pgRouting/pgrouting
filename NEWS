@@ -47,7 +47,7 @@ milestone for 3.6.0
   pgr_drivingdistance
 
   
-  * Standarizing output columns to |result-bfs|
+  * Standarizing output columns to |result-spantree|
   
     * ``pgr_drivingdistance`` (Single vertex)
   
@@ -56,7 +56,7 @@ milestone for 3.6.0
     * ``pgr_drivingdistance`` (Multiple vertices)
   
       * Result column name change: ``from_v`` to ``start_vid``.
-      * Added ``depth`` result column.
+      * Added ``depth`` and ``pred`` result columns.
   
 
 **Proposed functions changes**
@@ -71,15 +71,15 @@ milestone for 3.6.0
     * ``pgr_withPointsDD`` (`Single vertex`)
     * ``pgr_withPointsDD`` (`Multiple vertices`)
   
-  * Standarizing output columns to |result-bfs|
+  * Standarizing output columns to |result-spantree|
   
     * ``pgr_withPointsDD`` (`Single vertex`)
   
-      * Added ``depth`` and ``start_vid`` column.
+      * Added ``depth``, ``pred`` and ``start_vid`` column.
   
     * ``pgr_withPointsDD`` (`Multiple vertices`)
   
-      * Added ``depth`` column.
+      * Added ``depth``, ``pred`` columns.
   
   * When ``details`` is ``false``:
   
@@ -141,6 +141,7 @@ milestone for 3.6.0
 
 * [#2555](https://github.com/pgRouting/pgrouting/pull/2555) standarize
   deprecated messages
+* On new internal function: do not use named parameters and default parameters.
 
 
 pgRouting 3.5.1 Release Notes

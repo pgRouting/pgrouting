@@ -103,6 +103,7 @@ milestone for 3.6.0
 
 * `#2555 <https://github.com/pgRouting/pgrouting/pull/2555>`__ standarize
   deprecated messages
+* On new internal function: do not use named parameters and default parameters.
 
 
 pgRouting 3.5.1 Release Notes
