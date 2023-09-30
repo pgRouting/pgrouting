@@ -51,7 +51,7 @@ CREATE FUNCTION pgr_withPointsKSP(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM _pgr_withPointsKSPv4(_pgr_get_statement($1), _pgr_get_statement($2), ARRAY[$3]::BIGINT[], ARRAY[$4]::BIGINT[], $5, $6, $7, $8, $9);
+    FROM _pgr_withPointsKSP(_pgr_get_statement($1), _pgr_get_statement($2), ARRAY[$3]::BIGINT[], ARRAY[$4]::BIGINT[], $5, $6, $7, $8, $9, true);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100
@@ -83,7 +83,7 @@ CREATE FUNCTION pgr_withPointsKSP(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM _pgr_withPointsKSPv4(_pgr_get_statement($1), _pgr_get_statement($2), ARRAY[$3]::BIGINT[], $4::BIGINT[], $5, $6, $7, $8, $9);
+    FROM _pgr_withPointsKSP(_pgr_get_statement($1), _pgr_get_statement($2), ARRAY[$3]::BIGINT[], $4::BIGINT[], $5, $6, $7, $8, $9, true);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100
@@ -115,7 +115,7 @@ CREATE FUNCTION pgr_withPointsKSP(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM _pgr_withPointsKSPv4(_pgr_get_statement($1), _pgr_get_statement($2), $3::BIGINT[], ARRAY[$4]::BIGINT[], $5, $6, $7, $8, $9);
+    FROM _pgr_withPointsKSP(_pgr_get_statement($1), _pgr_get_statement($2), $3::BIGINT[], ARRAY[$4]::BIGINT[], $5, $6, $7, $8, $9, true);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100
@@ -147,7 +147,7 @@ CREATE FUNCTION pgr_withPointsKSP(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM _pgr_withPointsKSPv4(_pgr_get_statement($1), _pgr_get_statement($2), $3::BIGINT[], $4::BIGINT[], $5, $6, $7, $8, $9);
+    FROM _pgr_withPointsKSP(_pgr_get_statement($1), _pgr_get_statement($2), $3::BIGINT[], $4::BIGINT[], $5, $6, $7, $8, $9, true);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100
@@ -178,7 +178,7 @@ CREATE FUNCTION pgr_withPointsKSP(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM _pgr_withPointsKSPv4(_pgr_get_statement($1), _pgr_get_statement($2), _pgr_get_statement($3), $4, $5, $6, $7, $8);
+    FROM _pgr_withPointsKSP(_pgr_get_statement($1), _pgr_get_statement($2), _pgr_get_statement($3), $4, $5, $6, $7, $8);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100

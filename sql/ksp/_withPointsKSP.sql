@@ -30,60 +30,61 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --------------------
 
 --v3.6
-CREATE FUNCTION _pgr_withPointsKSPv4(
-    edges_sql TEXT,
-    points_sql TEXT,
-    start_vids ANYARRAY,
-    end_vids ANYARRAY,
-    k INTEGER,
-    driving_side CHAR,
+CREATE FUNCTION _pgr_withPointsKSP(
+  TEXT, -- edges
+  TEXT, -- points
+  ANYARRAY, -- departures
+  ANYARRAY, -- destinations
+  INTEGER, -- k
+  CHAR, -- driving side
 
-    directed BOOLEAN,
-    heap_paths BOOLEAN,
-    details BOOLEAN,
+  BOOLEAN, -- directed
+  BOOLEAN, -- heaps
+  BOOLEAN, -- details
+  BOOLEAN, -- new ksp
 
-    OUT seq INTEGER,
-    OUT path_id INTEGER,
-    OUT path_seq INTEGER,
-    OUT start_vid BIGINT,
-    OUT end_vid BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-  RETURNS SETOF RECORD AS
-    'MODULE_PATHNAME'
-    LANGUAGE c STABLE STRICT;
+  OUT seq INTEGER,
+  OUT path_id INTEGER,
+  OUT path_seq INTEGER,
+  OUT start_vid BIGINT,
+  OUT end_vid BIGINT,
+  OUT node BIGINT,
+  OUT edge BIGINT,
+  OUT cost FLOAT,
+  OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE c STABLE STRICT;
 
 --v3.6
-CREATE FUNCTION _pgr_withPointsKSPv4(
-    edges_sql TEXT,
-    points_sql TEXT,
-    combinations_sql TEXT,
-    k INTEGER,
-    driving_side CHAR,
+CREATE FUNCTION _pgr_withPointsKSP(
+  TEXT, -- edges
+  TEXT, -- points
+  TEXT, -- combinations
+  INTEGER, -- k
+  CHAR, -- driving side
 
-    directed BOOLEAN,
-    heap_paths BOOLEAN,
-    details BOOLEAN,
+  BOOLEAN, -- directed
+  BOOLEAN, -- heaps
+  BOOLEAN, -- details
 
-    OUT seq INTEGER,
-    OUT path_id INTEGER,
-    OUT path_seq INTEGER,
-    OUT start_vid BIGINT,
-    OUT end_vid BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-  RETURNS SETOF RECORD AS
-    'MODULE_PATHNAME'
-    LANGUAGE c STABLE STRICT;
+  OUT seq INTEGER,
+  OUT path_id INTEGER,
+  OUT path_seq INTEGER,
+  OUT start_vid BIGINT,
+  OUT end_vid BIGINT,
+  OUT node BIGINT,
+  OUT edge BIGINT,
+  OUT cost FLOAT,
+  OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE c STABLE STRICT;
 
-COMMENT ON FUNCTION _pgr_withPointsKSPv4(TEXT, TEXT, ANYARRAY, ANYARRAY, INTEGER, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
+COMMENT ON FUNCTION _pgr_withPointsKSP(TEXT, TEXT, ANYARRAY, ANYARRAY, INTEGER, CHAR, BOOLEAN, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';
 
-COMMENT ON FUNCTION _pgr_withPointsKSPv4(TEXT, TEXT, TEXT, INTEGER, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
+COMMENT ON FUNCTION _pgr_withPointsKSP(TEXT, TEXT, TEXT, INTEGER, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';
 
 /*TODO remove on v4*/
