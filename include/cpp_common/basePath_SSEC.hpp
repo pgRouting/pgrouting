@@ -131,13 +131,7 @@ class Path {
     void append(const Path &other);
     void empty_path(unsigned int d_vertex);
 
-    void get_pg_ksp_path(
-            Path_rt **ret_path,
-            size_t &sequence, int routeId) const;
-
-    void get_pg_nksp_path(
-            Path_rt **ret_path,
-            size_t &sequence) const;
+    void get_pg_nksp_path(Path_rt**, size_t&) const;
 
     void get_pg_turn_restricted_path(
             Path_rt **ret_path,
