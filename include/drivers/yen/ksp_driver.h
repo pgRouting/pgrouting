@@ -49,33 +49,16 @@ typedef struct II_t_rt II_t_rt;
 extern "C" {
 #endif
 
-    void  pgr_do_ksp(
-            Edge_t*, size_t,
-            II_t_rt*, size_t,
-            int64_t*, size_t,
-            int64_t*, size_t,
-            size_t,
-            bool,
-            bool,
-            Path_rt**,
-            size_t*,
-            char**,
-            char**,
-            char**);
-
-    void  do_pgr_ksp(
-            Edge_t  *data_edges,
-            size_t total_edges,
-            int64_t  start_vid,
-            int64_t end_vid,
-            size_t K,
-            bool directed,
-            bool heap_paths,
-            Path_rt **return_tuples,
-            size_t *return_count,
-            char ** log_msg,
-            char ** notice_msg,
-            char ** err_msg);
+void  pgr_do_ksp(
+        Edge_t*, size_t,
+        II_t_rt*, size_t,
+        int64_t*, size_t,
+        int64_t*, size_t,
+        size_t,
+        bool,
+        bool,
+        Path_rt**, size_t*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }
