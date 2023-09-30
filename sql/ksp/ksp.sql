@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 -- one-to-one
---v2.6
+--v3.6
 CREATE FUNCTION pgr_ksp(
     TEXT,
     BIGINT,
@@ -48,7 +48,7 @@ CREATE FUNCTION pgr_ksp(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM _pgr_kspv4(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, $5, $6);
+    FROM _pgr_ksp(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, $5, $6, true);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100
@@ -77,7 +77,7 @@ CREATE FUNCTION pgr_ksp(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM  _pgr_kspv4(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, $5, $6);
+    FROM  _pgr_ksp(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, $5, $6, true);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100
@@ -105,7 +105,7 @@ CREATE FUNCTION pgr_ksp(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM  _pgr_kspv4(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, $5, $6);
+    FROM  _pgr_ksp(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, $5, $6, true);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100
@@ -133,7 +133,7 @@ CREATE FUNCTION pgr_ksp(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM  _pgr_kspv4(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, $5, $6);
+    FROM  _pgr_ksp(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, $5, $6, true);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100
@@ -160,7 +160,7 @@ CREATE FUNCTION pgr_ksp(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM  _pgr_kspv4(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4, $5);
+    FROM  _pgr_ksp(_pgr_get_statement($1), _pgr_get_statement($2), $3, $4, $5);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100
