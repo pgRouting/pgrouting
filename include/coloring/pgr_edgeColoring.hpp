@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
+#include <boost/version.hpp>
 
 #include "cpp_common/edge_t.hpp"
 #include "c_types/ii_t_rt.h"
@@ -59,7 +60,7 @@ class Pgr_edgeColoring : public Pgr_messages {
     explicit Pgr_edgeColoring(const std::vector<Edge_t>&);
     Pgr_edgeColoring() = delete;
 
-#if Boost_VERSION_MACRO >= 106800
+#if BOOST_VERSION >= 106800
     friend std::ostream& operator<<(std::ostream &, const Pgr_edgeColoring&);
 #endif
 

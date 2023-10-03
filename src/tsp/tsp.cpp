@@ -37,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/connected_components.hpp>
 #include <boost/graph/dijkstra_shortest_paths.hpp>
 #include <boost/graph/graph_utility.hpp>
+#include <boost/version.hpp>
 
 #include "cpp_common/identifiers.hpp"
 #include "cpp_common/pgr_messages.hpp"
@@ -503,7 +504,7 @@ TSP::get_edge_id(E e) const {
 
 
 
-#if Boost_VERSION_MACRO >= 106800
+#if BOOST_VERSION >= 106800
 std::ostream& operator<<(std::ostream &log, const TSP& data) {
     log << "Number of Vertices is:" << num_vertices(data.graph) << "\n";
     log << "Number of Edges is:" << num_edges(data.graph) << "\n";
