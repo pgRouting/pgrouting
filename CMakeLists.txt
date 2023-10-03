@@ -87,7 +87,6 @@ find_package(Boost ${BOOST_MINIMUM_VERSION} REQUIRED)
 if (NOT Boost_VERSION_MACRO)
     set(Boost_VERSION_MACRO ${Boost_VERSION})
 endif()
-add_definitions(-DBoost_VERSION_MACRO=${Boost_VERSION_MACRO})
 set(BOOST_VERSION "${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}")
 
 include(CheckCCompilerFlag)
