@@ -51,9 +51,9 @@ The main characteristics are:
 
 - For the undirected graph, the results are symmetric.
 
-  - The  `agg_cost` of `(u, v)` is the same as for `(v, u)`.
+  - The `agg_cost` of `(u, v)` is the same as for `(v, u)`.
 
-- When  `start_vid` = `end_vid`, the `agg_cost` = 0.
+- When `start_vid` = `end_vid`, the `agg_cost` = 0.
 
 - **Recommended, use a bounding box of no more than 3500 edges.**
 
@@ -153,11 +153,11 @@ The tested query is:
 
      SELECT count(*) FROM pgr_floydWarshall(
         'SELECT gid as id, source, target, cost, reverse_cost
-         FROM ways where id <=  <SIZE>');
+         FROM ways where id <= <SIZE>');
 
      SELECT count(*) FROM pgr_johnson(
         'SELECT gid as id, source, target, cost, reverse_cost
-         FROM ways where id <=  <SIZE>');
+         FROM ways where id <= <SIZE>');
 
 The results of this tests are presented as:
 
