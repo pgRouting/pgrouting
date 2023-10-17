@@ -57,8 +57,8 @@ The main Characteristics are:
 
 - The returned values include
 
-  -  the added edges by linear contraction.
-  -  the modified vertices by dead end contraction.
+  - the added edges by linear contraction.
+  - the modified vertices by dead end contraction.
 
 - The returned values are ordered as follows:
 
@@ -154,7 +154,7 @@ Edges SQL
 Result Columns
 -------------------------------------------------------------------------------
 
-Returns set of  |result-contract|
+Returns set of |result-contract|
 
 The function returns a single row. The columns of the row are:
 

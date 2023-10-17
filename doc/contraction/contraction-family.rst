@@ -124,7 +124,7 @@ Dead end vertex on directed graph
 
         rankdir=LR;
         G -> {u, v, w} [dir=none, weight=1, penwidth=3];
-        {x, y} -> G  [dir=none, weight=1, penwidth=3];
+        {x, y} -> G [dir=none, weight=1, penwidth=3];
         u -> a -> u;
         v -> b;
         {w, v} -> c;
@@ -358,7 +358,7 @@ nodes:
 Contracting :math:`w`,
 
 * The vertex :math:`w` is removed from the graph
-* The edges :math:`v \rightarrow w` and  :math:`w \rightarrow z` are removed
+* The edges :math:`v \rightarrow w` and :math:`w \rightarrow z` are removed
   from the graph.
 * A new edge :math:`v \rightarrow z` is inserted represented with red color.
 
@@ -379,7 +379,7 @@ Contracting :math:`w`,
 Contracting :math:`v`:
 
 * The vertex :math:`v` is removed from the graph
-* The edges :math:`u \rightarrow v` and  :math:`v \rightarrow z` are removed
+* The edges :math:`u \rightarrow v` and :math:`v \rightarrow z` are removed
   from the graph.
 * A new edge :math:`u \rightarrow z` is inserted represented with red color.
 
