@@ -103,7 +103,7 @@ One to One
    | RETURNS SET OF |short-generic-result|
    | OR EMPTY SET
 
-:Example: From vertex :math:`6` to vertex  :math:`10` on an undirected graph.
+:Example: From vertex :math:`6` to vertex :math:`10` on an undirected graph.
 
 .. literalinclude:: doc-trsp.queries
    :start-after: -- q2

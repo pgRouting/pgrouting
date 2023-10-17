@@ -47,7 +47,7 @@ Signatures
    | RETURNS SET OF |ksp-result|
    | OR EMPTY SET
 
-:Example: From vertex :math:`3` to vertex  :math:`8` on a directed graph
+:Example: From vertex :math:`3` to vertex :math:`8` on a directed graph
 
 .. literalinclude:: doc-pgr_turnRestrictedPath.queries
    :start-after: -- q1
@@ -134,13 +134,13 @@ No results because the only path available follows a restriction.
    :start-after: -- q2
    :end-before: -- q3
 
-:Example: From vertex :math:`3` to vertex  :math:`8` on an undirected graph
+:Example: From vertex :math:`3` to vertex :math:`8` on an undirected graph
 
 .. literalinclude:: doc-pgr_turnRestrictedPath.queries
    :start-after: -- q3
    :end-before: -- q4
 
-:Example: From vertex :math:`3` to vertex  :math:`8` with more alternatives
+:Example: From vertex :math:`3` to vertex :math:`8` with more alternatives
 
 .. literalinclude:: doc-pgr_turnRestrictedPath.queries
    :start-after: -- q4
