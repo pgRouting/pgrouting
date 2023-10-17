@@ -87,8 +87,8 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_dagShortestPath(`Edges SQL`_, **start vid**,  **end vid**)
-   | pgr_dagShortestPath(`Edges SQL`_, **start vid**,  **end vids**)
+   | pgr_dagShortestPath(`Edges SQL`_, **start vid**, **end vid**)
+   | pgr_dagShortestPath(`Edges SQL`_, **start vid**, **end vids**)
    | pgr_dagShortestPath(`Edges SQL`_, **start vids**, **end vid**)
    | pgr_dagShortestPath(`Edges SQL`_, **start vids**, **end vids**)
    | pgr_dagShortestPath(`Edges SQL`_, `Combinations SQL`_)
@@ -106,12 +106,12 @@ One to One
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_dagShortestPath(`Edges SQL`_, **start vid**,  **end vid**)
+   | pgr_dagShortestPath(`Edges SQL`_, **start vid**, **end vid**)
 
    | RETURNS SET OF |result-1-1|
    | OR EMPTY SET
 
-:Example: From vertex :math:`5` to vertex  :math:`11` on a **directed** graph
+:Example: From vertex :math:`5` to vertex :math:`11` on a **directed** graph
 
 .. literalinclude:: doc-pgr_dagShortestPath.queries
    :start-after: -- q2
@@ -126,7 +126,7 @@ One to Many
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_dagShortestPath(`Edges SQL`_, **start vid**,  **end vids**)
+   | pgr_dagShortestPath(`Edges SQL`_, **start vid**, **end vids**)
 
    | RETURNS SET OF |result-1-1|
    | OR EMPTY SET
