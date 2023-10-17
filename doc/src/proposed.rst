@@ -13,7 +13,7 @@
 Proposed Functions
 ==================================
 
-..  stable-begin-warning
+.. stable-begin-warning
 
 .. warning:: Proposed functions for next mayor release.
 
@@ -27,7 +27,7 @@ Proposed Functions
     - pgTap tests have being done. But might need more.
     - Documentation might need refinement.
 
-..  stable-end-warning
+.. stable-end-warning
 
 .. rubric:: Families
 

@@ -126,7 +126,7 @@ Parameters
      - `Edges SQL`_ as described below
    * - **start vids**
      - ``ARRAY[BIGINT]``
-     -  Array of identifiers of starting vertices.
+     - Array of identifiers of starting vertices.
 
 .. costMatrix_parameters_end
 
@@ -152,7 +152,7 @@ Parameters
      - `Points SQL`_ as described below
    * - **start vids**
      - ``ARRAY[BIGINT]``
-     -  Array of identifiers of starting vertices.
+     - Array of identifiers of starting vertices.
 
 .. costMatrix_withPoints_parameters_end
 

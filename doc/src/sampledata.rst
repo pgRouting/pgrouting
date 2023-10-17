@@ -86,7 +86,7 @@ corresponds to the segment on the oposite direction of the geometry.
    :start-after: --EDGE TABLE CREATE start
    :end-before: --EDGE TABLE CREATE end
 
-Starting on  PostgreSQL 12::
+Starting on PostgreSQL 12::
 
    ...
    x1 FLOAT GENERATED ALWAYS AS (ST_X(ST_StartPoint(geom))) STORED,
