@@ -38,13 +38,13 @@ Additional functions to analyze a graph:
 The following functions modify the database directly therefore the user must
 have special permissions given by the administrators to use them.
 
-- :doc:`pgr_createTopology` -  create a topology based on the geometry.
+- :doc:`pgr_createTopology` - create a topology based on the geometry.
 - :doc:`pgr_createVerticesTable` - reconstruct the vertices table based on
   the source and target information.
-- :doc:`pgr_analyzeGraph`  - to analyze the edges and vertices of the edge
+- :doc:`pgr_analyzeGraph` - to analyze the edges and vertices of the edge
   table.
 - :doc:`pgr_analyzeOneWay` - to analyze directionality of the edges.
-- :doc:`pgr_nodeNetwork`  -to create nodes to a not noded edge table.
+- :doc:`pgr_nodeNetwork` - to create nodes to a not noded edge table.
 
 .. topology_index_end
 

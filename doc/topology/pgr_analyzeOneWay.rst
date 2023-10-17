@@ -50,7 +50,7 @@ your network to make repairs and/or report the problem back to your data vendor.
 
 .. rubric:: Prerequisites
 
-The  edge table to be analyzed must contain a source column and a target column
+The edge table to be analyzed must contain a source column and a target column
 filled with id's of the vertices of the segments and the corresponding vertices
 table <edge_table>_vertices_pgr that stores the vertices information.
 
@@ -80,10 +80,10 @@ Parameters
          ``oneway``.
 :source: ``text`` Source column name of the network table. Default value is
          ``source``.
-:target: ``text``  Target column name of the network table.  Default value is
+:target: ``text`` Target column name of the network table. Default value is
          ``target``.
 :two_way_if_null: ``boolean`` flag to treat oneway NULL values as
-                  bi-directional.  Default value is ``true``.
+                  bi-directional. Default value is ``true``.
 
 .. note::
    It is strongly recommended to use the named notation. See
@@ -117,7 +117,7 @@ The structure of the vertices table is:
 :id: ``bigint`` Identifier of the vertex.
 :cnt: ``integer`` Number of vertices in the edge_table that reference this
       vertex. See :doc:`pgr_analyzeGgraph <pgr_analyzeGraph>`.
-:chk: ``integer``  Indicator that the vertex might have a problem. See
+:chk: ``integer`` Indicator that the vertex might have a problem. See
       :doc:`pgr_analyzeGraph <pgr_analyzeGraph>`.
 :ein: ``integer`` Number of vertices in the edge_table that reference this
       vertex as incoming.

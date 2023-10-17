@@ -70,7 +70,7 @@ Parameters
            ``the_geom``.
 :table_ending: ``text`` Suffix for the new table's. Default value is ``noded``.
 
-The output table will have for  ``edge_table_noded``
+The output table will have for ``edge_table_noded``
 
 :id: ``bigint`` Unique identifier for the table
 :old_id: ``bigint``  Identifier of the edge in original table
