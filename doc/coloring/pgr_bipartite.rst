@@ -44,7 +44,7 @@ colored with the same color.
 - The algorithm works in undirected graph only.
 - The returned values are not ordered.
 - The algorithm checks graph is bipartite or not. If it is bipartite then it
-  returns the node along with two    colors `0` and `1` which represents two
+  returns the node along with two colors `0` and `1` which represents two
   different sets.
 - If graph is not bipartite then algorithm returns empty set.
 - Running time: :math:`O(V + E)`
