@@ -391,7 +391,7 @@
 <h3>La definición de problema (Documentación avanzada)<a class="headerlink" href="#the-problem-definition-advanced-documentation" title="Link to this heading">¶</a></h3>
 <p>Dada la siguiente consulta:</p>
 <p>pgr_dijkstra(<span class="math notranslate nohighlight">\(sql, start_{vid}, end_{vid}, directed\)</span>)</p>
-<p>Donde <span class="math notranslate nohighlight">\(sql = \{(id_i, source_i, target_i, cost_i, reverse\_cost_i)\}\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(sql = \{(id_i, source_i, target_i, cost_i, reverse\_cost_i)\}\)</span></p>
 <p>y</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(source = \bigcup source_i\)</span>,</p></li>
@@ -401,7 +401,7 @@
 <p class="rubric">Grafo dirigido</p>
 <p>El gráfico dirigido ponderado, <span class="math notranslate nohighlight">\(G_d(V,E)\)</span>, se define por:</p>
 <ul class="simple">
-<li><p>Conjunto de vértices <span class="math notranslate nohighlight">\(V\)</span></p>
+<li><p>the set of vertices <span class="math notranslate nohighlight">\(V\)</span></p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(V = source \cup target \cup {start_{vid}} \cup {end_{vid}}\)</span></p></li>
 </ul>
@@ -415,7 +415,7 @@
 <p class="rubric">Grafo no dirigido</p>
 <p>El grafo ponderado no dirigido <span class="math notranslate nohighlight">\(G_u(V,E)\)</span>, es definido por:</p>
 <ul class="simple">
-<li><p>Conjunto de vértices <span class="math notranslate nohighlight">\(V\)</span></p>
+<li><p>the set of vertices <span class="math notranslate nohighlight">\(V\)</span></p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(V = source \cup target \cup {start_v{vid}} \cup {end_{vid}}\)</span></p></li>
 </ul>
@@ -454,7 +454,9 @@ G_u(V,E) &amp; \quad \text{ if5 } directed = false \\
 </ul>
 </dd>
 </dl>
-<p>En otras palabras: El algoritmo devuelve la ruta más corta entre <span class="math notranslate nohighlight">\(start_{vid}\)</span> y <span class="math notranslate nohighlight">\(end_{vid}\)</span>, si es que existe, en términos de una secuencia de nodos y de aristas,</p>
+<p>In other words: The algorithm returns a the shortest path between
+<span class="math notranslate nohighlight">\(start_{vid}\)</span> and <span class="math notranslate nohighlight">\(end_{vid}\)</span>, if it exists, in terms of a sequence
+of nodes and of edges,</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(path\_seq\)</span> indica la posición relativa en el camino de <span class="math notranslate nohighlight">\(node\)</span> o <span class="math notranslate nohighlight">\(edge\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(cost\)</span> es el coste del borde que se utilizará para ir al siguiente nodo.</p></li>
@@ -486,7 +488,7 @@ G_u(V,E) &amp; \quad \text{ if5 } directed = false \\
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
-      Actualizado por última vez en sept 28, 2023.<br/>
+      Actualizado por última vez en oct 17, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

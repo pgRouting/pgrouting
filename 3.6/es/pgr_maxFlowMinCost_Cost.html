@@ -278,7 +278,7 @@
 <div class="line">pgr_maxFlowMinCost_Cost(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salida</strong> , <strong>destinos</strong>)</div>
 <div class="line">pgr_maxFlowMinCost_Cost(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salidas</strong> , <strong>destino</strong>)</div>
 <div class="line">pgr_maxFlowMinCost_Cost(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salidas</strong> , <strong>destinos</strong>)</div>
-<div class="line">pgr_maxFlowMinCost_Cost(<a class="reference internal" href="#combinations-sql">SQL de aristas</a>, <a class="reference internal" href="#edges-sql">SQL de combinaciones</a>)</div>
+<div class="line">pgr_maxFlowMinCost_Cost(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#combinations-sql">SQL de combinaciones</a>)</div>
 </div>
 <div class="line-block">
 <div class="line">RETURNS FLOAT</div>
@@ -401,7 +401,7 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_maxFlowMinCost_Cost(<a class="reference internal" href="#combinations-sql">SQL de aristas</a>, <a class="reference internal" href="#edges-sql">SQL de combinaciones</a>)</div>
+<div class="line">pgr_maxFlowMinCost_Cost(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#combinations-sql">SQL de combinaciones</a>)</div>
 </div>
 <div class="line-block">
 <div class="line">RETURNS FLOAT</div>
@@ -517,7 +517,7 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">capacity</span></code></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
 <td></td>
-<td><p>Capacidad de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p>
+<td><p>Capacity of the edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p>
 <ul class="simple">
 <li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
@@ -535,7 +535,7 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>FLOTANTES</strong></p></td>
 <td></td>
-<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) si existe</p></td>
+<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) if it exist</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>FLOTANTES</strong></p></td>
@@ -648,7 +648,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
-      Actualizado por última vez en sept 28, 2023.<br/>
+      Actualizado por última vez en oct 17, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

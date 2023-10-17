@@ -376,7 +376,7 @@ executing a pgRouting algorithm.</p>
 <li><p>Edges where <code class="docutils literal notranslate"><span class="pre">cost</span></code> is non negative are part of the graph.</p></li>
 </ul>
 </li>
-<li><p>the set of vertices  <span class="math notranslate nohighlight">\(V\)</span></p>
+<li><p>the set of vertices <span class="math notranslate nohighlight">\(V\)</span></p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(V = \{source_{id} \cup target_{id}\}\)</span></p></li>
 <li><p>All vertices in <code class="docutils literal notranslate"><span class="pre">source</span></code> and <code class="docutils literal notranslate"><span class="pre">target</span></code> are part of the graph.</p></li>
@@ -400,8 +400,8 @@ directionality: <span class="math notranslate nohighlight">\(source_{id} \righta
 </div>
 <p>Edge <span class="math notranslate nohighlight">\(2\)</span> (<span class="math notranslate nohighlight">\(1 \rightarrow 3\)</span>) is not part of the graph.</p>
 <p>The data is representing the following graph:</p>
-<div class="graphviz"><img src="_images/graphviz-fea3ff0c3c30969d4fcc1a5452438952118b0036.png" alt="digraph G {
- 1 -&gt; 2 [label=&quot;  1(5)&quot;];
+<div class="graphviz"><img src="_images/graphviz-311471c350eede57d78e4053ee1cdb27310770db.png" alt="digraph G {
+ 1 -&gt; 2 [label=&quot;1(5)&quot;];
  3;
 }" class="graphviz" /></div>
 <p class="rubric">Undirected graph</p>
@@ -424,10 +424,10 @@ target_{id}\)</span></p>
 
 </pre></div>
 </div>
-<p>Edge <span class="math notranslate nohighlight">\(2\)</span> (<span class="math notranslate nohighlight">\(1  \frac{\;\;\;\;\;}{} 3\)</span>) is not part of the graph.</p>
+<p>Edge <span class="math notranslate nohighlight">\(2\)</span> (<span class="math notranslate nohighlight">\(1 \frac{\;\;\;\;\;}{} 3\)</span>) is not part of the graph.</p>
 <p>The data is representing the following graph:</p>
-<div class="graphviz"><img src="_images/graphviz-15ad35e043b1329141358020162ef62da0f2d5e0.png" alt="graph G {
- 1 -- 2 [label=&quot;  1(5)&quot;];
+<div class="graphviz"><img src="_images/graphviz-4a2c8c325cd12cd65d1f2ccc1426147b8fd92851.png" alt="graph G {
+ 1 -- 2 [label=&quot;1(5)&quot;];
  3;
 }" class="graphviz" /></div>
 </section>
@@ -451,7 +451,7 @@ part of the graph.</p></li>
 negative are part of the graph.</p></li>
 </ul>
 </li>
-<li><p>The set of vertices  <span class="math notranslate nohighlight">\(V\)</span>:</p>
+<li><p>The set of vertices <span class="math notranslate nohighlight">\(V\)</span>:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(V = \{source_{id} \cup target_{id}\}\)</span></p></li>
 <li><p>All vertices in <code class="docutils literal notranslate"><span class="pre">source</span></code> and <code class="docutils literal notranslate"><span class="pre">target</span></code> are part of the graph.</p></li>
@@ -481,15 +481,15 @@ negative are part of the graph.</p></li>
 </div>
 <p>Edges not part of the graph:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(2\)</span> (<span class="math notranslate nohighlight">\(1  \rightarrow 3\)</span>)</p></li>
-<li><p><span class="math notranslate nohighlight">\(3\)</span> (<span class="math notranslate nohighlight">\(3  \rightarrow 2\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(2\)</span> (<span class="math notranslate nohighlight">\(1 \rightarrow 3\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(3\)</span> (<span class="math notranslate nohighlight">\(3 \rightarrow 2\)</span>)</p></li>
 </ul>
 <p>The data is representing the following graph:</p>
-<div class="graphviz"><img src="_images/graphviz-30736f62adc8dbf11ad4115151b7af7577cda635.png" alt="digraph G {
- 1 -&gt; 2 [label=&quot;  1(5)&quot;];
- 2 -&gt; 1 [label=&quot;  1(2)&quot;];
- 3 -&gt; 1 [label=&quot;  2(4)&quot;];
- 2 -&gt; 3 [label=&quot;  3(7)&quot;];
+<div class="graphviz"><img src="_images/graphviz-2ffb3e19dfa42469de3c0dbeae38d3c3fabbe46e.png" alt="digraph G {
+ 1 -&gt; 2 [label=&quot;1(5)&quot;];
+ 2 -&gt; 1 [label=&quot;1(2)&quot;];
+ 3 -&gt; 1 [label=&quot;2(4)&quot;];
+ 2 -&gt; 3 [label=&quot;3(7)&quot;];
 }" class="graphviz" /></div>
 <p class="rubric">Undirected graph</p>
 <p>In a directed graph both edges do not have directionality</p>
@@ -520,22 +520,22 @@ negative are part of the graph.</p></li>
 </div>
 <p>Edges not part of the graph:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(2\)</span> (<span class="math notranslate nohighlight">\(1  \frac{\;\;\;\;\;}{} 3\)</span>)</p></li>
-<li><p><span class="math notranslate nohighlight">\(3\)</span> (<span class="math notranslate nohighlight">\(3  \frac{\;\;\;\;\;}{} 2\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(2\)</span> (<span class="math notranslate nohighlight">\(1 \frac{\;\;\;\;\;}{} 3\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(3\)</span> (<span class="math notranslate nohighlight">\(3 \frac{\;\;\;\;\;}{} 2\)</span>)</p></li>
 </ul>
 <p>The data is representing the following graph:</p>
-<div class="graphviz"><img src="_images/graphviz-d3e0d812756609c1050c29940fd38b77a9a039cd.png" alt="graph G {
- 1 -- 2 [label=&quot;  1(5)&quot;];
- 2 -- 1 [label=&quot;  1(2)&quot;];
- 3 -- 1 [label=&quot;  2(4)&quot;];
- 2 -- 3 [label=&quot;  3(7)&quot;];
+<div class="graphviz"><img src="_images/graphviz-f0b404daf87c33bf9aa2266d41344252fae292c4.png" alt="graph G {
+ 1 -- 2 [label=&quot;1(5)&quot;];
+ 2 -- 1 [label=&quot;1(2)&quot;];
+ 3 -- 1 [label=&quot;2(4)&quot;];
+ 2 -- 3 [label=&quot;3(7)&quot;];
 }" class="graphviz" /></div>
 </section>
 </section>
 <section id="graphs-without-geometries">
 <h2><a class="toc-backref" href="#id9" role="doc-backlink">Graphs without geometries</a><a class="headerlink" href="#graphs-without-geometries" title="Link to this heading">¶</a></h2>
 <p>Personal relationships, genealogy, file dependency problems can be solved
-using pgRouting. Those problems, normally,  do not come with geometries associated
+using pgRouting. Those problems, normally, do not come with geometries associated
 with the graph.</p>
 <nav class="contents local" id="id2">
 <ul class="simple">
@@ -577,19 +577,19 @@ E = &amp; \{(1,2,7), (1,3,9), (1,6,14), \\
 </li>
 <li><p>The graph can be represented in many ways for example:</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-f7be590ac01a366380dea45ade8a60068b4b9db9.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-d51736a9a379dc345a098208529517edc64febe5.png" alt="graph G {
  rankdir=&quot;LR&quot;;
  1 [color=&quot;red&quot;];
  5 [color=&quot;green&quot;];
- 1 -- 2 [label=&quot;  (7)&quot;];
- 5 -- 6 [label=&quot;  (9)&quot;];
- 1 -- 3 [label=&quot;  (9)&quot;];
- 1 -- 6 [label=&quot;  (14)&quot;];
- 2 -- 3 [label=&quot;  (10)&quot;];
- 2 -- 4 [label=&quot;  (13)&quot;];
- 3 -- 4 [label=&quot;  (11)&quot;];
- 3 -- 6 [label=&quot;  (2)&quot;];
- 4 -- 5 [label=&quot;  (6)&quot;];
+ 1 -- 2 [label=&quot;(7)&quot;];
+ 5 -- 6 [label=&quot;(9)&quot;];
+ 1 -- 3 [label=&quot;(9)&quot;];
+ 1 -- 6 [label=&quot;(14)&quot;];
+ 2 -- 3 [label=&quot;(10)&quot;];
+ 2 -- 4 [label=&quot;(13)&quot;];
+ 3 -- 4 [label=&quot;(11)&quot;];
+ 3 -- 6 [label=&quot;(2)&quot;];
+ 4 -- 5 [label=&quot;(6)&quot;];
 }" class="graphviz" /></div>
 <section id="prepare-the-database">
 <h4><a class="toc-backref" href="#id23" role="doc-backlink">Prepare the database</a><a class="headerlink" href="#prepare-the-database" title="Link to this heading">¶</a></h4>
@@ -678,19 +678,19 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </div>
 <p>To go from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(5\)</span> the path goes thru the following vertices:
 <span class="math notranslate nohighlight">\(1 \rightarrow 3 \rightarrow 6 \rightarrow 5\)</span></p>
-<div class="graphviz"><img src="_images/graphviz-5ad5eec8c89b5f62e851c73f0c5ed9e9286be10c.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-31e22cea577dbbddb941861ec00cb02c61d479f4.png" alt="graph G {
  rankdir=&quot;LR&quot;;
  1 [color=&quot;red&quot;];
  5 [color=&quot;green&quot;];
- 1 -- 2 [label=&quot;  (7)&quot;];
- 5 -- 6 [label=&quot;  (9)&quot;, color=&quot;blue&quot;];
- 1 -- 3 [label=&quot;  (9)&quot;, color=&quot;blue&quot;];
- 1 -- 6 [label=&quot;  (14)&quot;];
- 2 -- 3 [label=&quot;  (10)&quot;];
- 2 -- 4 [label=&quot;  (13)&quot;];
- 3 -- 4 [label=&quot;  (11)&quot;];
- 3 -- 6 [label=&quot;  (2)&quot;, color=&quot;blue&quot;];
- 4 -- 5 [label=&quot;  (6)&quot;];
+ 1 -- 2 [label=&quot;(7)&quot;];
+ 5 -- 6 [label=&quot;(9)&quot;, color=&quot;blue&quot;];
+ 1 -- 3 [label=&quot;(9)&quot;, color=&quot;blue&quot;];
+ 1 -- 6 [label=&quot;(14)&quot;];
+ 2 -- 3 [label=&quot;(10)&quot;];
+ 2 -- 4 [label=&quot;(13)&quot;];
+ 3 -- 4 [label=&quot;(11)&quot;];
+ 3 -- 6 [label=&quot;(2)&quot;, color=&quot;blue&quot;];
+ 4 -- 5 [label=&quot;(6)&quot;];
 }" class="graphviz" /></div>
 </section>
 <section id="vertex-information">
@@ -1458,7 +1458,7 @@ named parameters.</p>
 <p>For example, for this <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> signature:</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<p>pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>  [, <code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
+<p>pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong> [, <code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
 </div>
 <ul class="simple">
 <li><p><a class="reference internal" href="#edges-sql">Edges SQL</a>:</p>
@@ -1693,7 +1693,7 @@ it’s not part of the graph.</p></li>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>Weight of the edge  (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
+<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
@@ -1757,7 +1757,7 @@ it’s not part of the graph.</p></li>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>Weight of the edge  (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p>
+<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p>
 <ul class="simple">
 <li><p>When negative: edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) does not exist, therefore
 it’s not part of the graph.</p></li>
@@ -1848,7 +1848,7 @@ it’s not part of the graph.</p></li>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">capacity</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Weight of the edge  (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
+<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_capacity</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
@@ -1909,7 +1909,7 @@ it’s not part of the graph.</p></li>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">capacity</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Capacity of the edge  (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p>
+<td><p>Capacity of the edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p>
 <ul class="simple">
 <li><p>When negative: edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) does not exist, therefore
 it’s not part of the graph.</p></li>
@@ -1929,7 +1929,7 @@ it’s not part of the graph.</p></li>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>Weight of the edge  (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) if it exist</p></td>
+<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) if it exist</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
@@ -2164,10 +2164,10 @@ The optional parameters are named parameters and will have a default value.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
 <li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> departing from a visited vertex will not try to avoid
-using the edge used to reach it.  In other words, U turn using the edge
+using the edge used to reach it. In other words, U turn using the edge
 with same identifier is allowed.</p></li>
 <li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> when a departing from a visited vertex tries to avoid
-using the edge used to reach it.  In other words, U turn using the edge
+using the edge used to reach it. In other words, U turn using the edge
 with same identifier is used when no other path is found.</p></li>
 </ul>
 </td>
@@ -2352,7 +2352,7 @@ path sequence.</p></td>
 <ul class="simple">
 <li><p>When positive is the identifier of the starting vertex.</p></li>
 <li><p>When negative is the identifier of the starting point.</p></li>
-<li><p>Returned on <a class="reference internal" href="#many-to-one">Many to One</a>  and <a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
+<li><p>Returned on <a class="reference internal" href="#many-to-one">Many to One</a> and <a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
 </ul>
 </td>
 </tr>
@@ -2806,7 +2806,7 @@ routing function and is within the area of the results.</p>
 <h2><a class="toc-backref" href="#id18" role="doc-backlink">How to contribute</a><a class="headerlink" href="#how-to-contribute" title="Link to this heading">¶</a></h2>
 <p class="rubric">Wiki</p>
 <ul class="simple">
-<li><p>Edit an existing  <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki">pgRouting Wiki</a> page.</p></li>
+<li><p>Edit an existing <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki">pgRouting Wiki</a> page.</p></li>
 <li><p>Or create a new Wiki page</p>
 <ul>
 <li><p>Create a page on the <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki">pgRouting Wiki</a></p></li>
@@ -2838,7 +2838,7 @@ routing function and is within the area of the results.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
-      Last updated on Sep 28, 2023.<br/>
+      Last updated on Oct 17, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

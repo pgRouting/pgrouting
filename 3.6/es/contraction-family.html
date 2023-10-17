@@ -277,7 +277,7 @@
 <li><p>Los nodos verdes son nodos <a class="reference internal" href="#dead-end">dead end</a></p></li>
 <li><p>Los nodos azules tienen un número ilimitado de aristas entrantes y/o salientes.</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-5efe3d7b813da1c75d98039a1a2825ccb5f14744.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-c8e8001a0f075b45b5ef94157808fa302e8b62a7.png" alt="digraph G {
     u, v, w, x, y [shape=circle;style=filled;width=.4;color=deepskyblue];
     a, b, c, d, e [style=filled; color=green];
     G [shape=tripleoctagon;width=1.5;style=filled;
@@ -285,7 +285,7 @@
 
     rankdir=LR;
     G -&gt; {u, v, w} [dir=none, weight=1, penwidth=3];
-    {x, y} -&gt; G  [dir=none, weight=1, penwidth=3];
+    {x, y} -&gt; G [dir=none, weight=1, penwidth=3];
     u -&gt; a -&gt; u;
     v -&gt; b;
     {w, v} -&gt; c;
@@ -501,7 +501,8 @@
 <p>Contrayendo <span class="math notranslate nohighlight">\(w\)</span>,</p>
 <ul class="simple">
 <li><p>El vértice <span class="math notranslate nohighlight">\(w\)</span> se elimina del grafo</p></li>
-<li><p>Los aristas <span class="math notranslate nohighlight">\(v \rightarrow w\)</span> y  <span class="math notranslate nohighlight">\(w \rightarrow z\)</span> fueron eliminados del grafo.</p></li>
+<li><p>The edges <span class="math notranslate nohighlight">\(v \rightarrow w\)</span> and <span class="math notranslate nohighlight">\(w \rightarrow z\)</span> are removed
+from the graph.</p></li>
 <li><p>Se inserta un nuevo arista <span class="math notranslate nohighlight">\(v \rightarrow z\)</span> y se representa con color rojo.</p></li>
 </ul>
 <div class="graphviz"><img src="_images/graphviz-14be5626ee411f35a47287f42c24255e0dc350bb.png" alt="digraph G {
@@ -518,7 +519,8 @@
 <p>Contrayendo <span class="math notranslate nohighlight">\(v\)</span>:</p>
 <ul class="simple">
 <li><p>El vértice <span class="math notranslate nohighlight">\(v\)</span> se elimina del grafo</p></li>
-<li><p>Los aristas <span class="math notranslate nohighlight">\(u \rightarrow v\)</span>  y  <span class="math notranslate nohighlight">\(v \rightarrow z\)</span>  son removidos del grafo.</p></li>
+<li><p>The edges <span class="math notranslate nohighlight">\(u \rightarrow v\)</span> and <span class="math notranslate nohighlight">\(v \rightarrow z\)</span> are removed
+from the graph.</p></li>
 <li><p>Se inserta un nuevo arista <span class="math notranslate nohighlight">\(u \rightarrow z\)</span> y se representa con color rojo.</p></li>
 </ul>
 <div class="graphviz"><img src="_images/graphviz-12be2629d707913e64a07fee1e387ff25af98fb6.png" alt="digraph G {
@@ -1123,7 +1125,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
-      Actualizado por última vez en sept 28, 2023.<br/>
+      Actualizado por última vez en oct 17, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
