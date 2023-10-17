@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-28 18:11+0000\n"
+"POT-Creation-Date: 2023-10-17 21:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.12.1\n"
+"Generated-By: Babel 2.13.0\n"
 
 msgid "BFS - Category"
 msgstr ""
@@ -544,7 +544,7 @@ msgstr ""
 
 msgid ""
 "A discussion about the work of Hamilton & Kirkman can be found in the "
-"book **Graph Theory (Biggs et  al. 1976)**."
+"book **Graph Theory (Biggs et al. 1976)**."
 msgstr ""
 
 msgid "ISBN-13: 978-0198539162"
@@ -571,10 +571,10 @@ msgstr ""
 msgid "There are :math:`n-1` choices for the second city,"
 msgstr ""
 
-msgid "And  :math:`n-2` choices for the third city, etc."
+msgid "And :math:`n-2` choices for the third city, etc."
 msgstr ""
 
-msgid "Multiplying these together we get :math:`(n-1)!  = (n-1) (n-2) . .  1`."
+msgid "Multiplying these together we get :math:`(n-1)! = (n-1) (n-2) . . 1`."
 msgstr ""
 
 msgid ""
@@ -1340,8 +1340,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"To handle problems like:  10 (equal dimension) boxes of apples and 5 kg "
-"of feathers that are to be transported (not packed in boxes)."
+"To handle problems like: 10 (equal dimension) boxes of apples and 5 kg of"
+" feathers that are to be transported (not packed in boxes)."
 msgstr ""
 
 msgid ""
@@ -1745,7 +1745,7 @@ msgstr ""
 
 msgid ""
 "Working with cost/reverse_cost as length in degrees, x/y in lat/lon: "
-"Factor = 1   (no need to change units)"
+"Factor = 1 (no need to change units)"
 msgstr ""
 
 msgid "Analysis 2"
@@ -1753,10 +1753,10 @@ msgstr ""
 
 msgid ""
 "Working with cost/reverse_cost as length in meters, x/y in lat/lon: "
-"Factor =  would depend on the location of the points:"
+"Factor = would depend on the location of the points:"
 msgstr ""
 
-msgid "1 longitude degree is  78846.81 m"
+msgid "1 longitude degree is 78846.81 m"
 msgstr ""
 
 msgid "78846"
@@ -1827,10 +1827,10 @@ msgstr ""
 msgid "For the undirected graph, the results are symmetric."
 msgstr ""
 
-msgid "The  `agg_cost` of `(u, v)` is the same as for `(v, u)`."
+msgid "The `agg_cost` of `(u, v)` is the same as for `(v, u)`."
 msgstr ""
 
-msgid "When  `start_vid` = `end_vid`, the `agg_cost` = 0."
+msgid "When `start_vid` = `end_vid`, the `agg_cost` = 0."
 msgstr ""
 
 msgid "**Recommended, use a bounding box of no more than 3500 edges.**"
@@ -1852,9 +1852,6 @@ msgid "When ``true`` the graph is considered `Directed`"
 msgstr ""
 
 msgid "When ``false`` the graph is considered as `Undirected`."
-msgstr ""
-
-msgid "Weight of the edge  (``source``, ``target``)"
 msgstr ""
 
 msgid "Performance"
@@ -2610,7 +2607,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-":doc:`pgr_bdDijkstraCostMatrix` - Bidirectional Dijkstra algorithm  to "
+":doc:`pgr_bdDijkstraCostMatrix` - Bidirectional Dijkstra algorithm to "
 "create a matrix of costs of the shortest paths."
 msgstr ""
 
@@ -3039,7 +3036,7 @@ msgid "The vertex :math:`w` is removed from the graph"
 msgstr ""
 
 msgid ""
-"The edges :math:`v \\rightarrow w` and  :math:`w \\rightarrow z` are "
+"The edges :math:`v \\rightarrow w` and :math:`w \\rightarrow z` are "
 "removed from the graph."
 msgstr ""
 
@@ -3055,7 +3052,7 @@ msgid "The vertex :math:`v` is removed from the graph"
 msgstr ""
 
 msgid ""
-"The edges :math:`u \\rightarrow v` and  :math:`v \\rightarrow z` are "
+"The edges :math:`u \\rightarrow v` and :math:`v \\rightarrow z` are "
 "removed from the graph."
 msgstr ""
 
@@ -3364,7 +3361,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"The  **aggregate cost** of :math:`(u, v)` is the same as for :math:`(v, "
+"The **aggregate cost** of :math:`(u, v)` is the same as for :math:`(v, "
 "u)`."
 msgstr ""
 
@@ -3637,7 +3634,7 @@ msgid "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 msgstr ""
 
 msgid ""
-"where  :math:`sql = \\{(id_i, source_i, target_i, cost_i, "
+"where :math:`sql = \\{(id_i, source_i, target_i, cost_i, "
 "reverse\\_cost_i)\\}`"
 msgstr ""
 
@@ -3659,7 +3656,7 @@ msgstr ""
 msgid "The weighted directed graph, :math:`G_d(V,E)`, is definied by:"
 msgstr ""
 
-msgid "the set of vertices  :math:`V`"
+msgid "the set of vertices :math:`V`"
 msgstr ""
 
 msgid ":math:`V = source \\cup target \\cup {start_{vid}} \\cup  {end_{vid}}`"
@@ -3768,7 +3765,7 @@ msgstr ""
 msgid ""
 "In other words: The algorithm returns a the shortest path between "
 ":math:`start_{vid}` and :math:`end_{vid}`, if it exists, in terms of a "
-"sequence of nodes  and of edges,"
+"sequence of nodes and of edges,"
 msgstr ""
 
 msgid ""
@@ -4083,13 +4080,13 @@ msgstr ""
 msgid ":doc:`pgr_maxFlowMinCost_Cost`"
 msgstr ""
 
-msgid "Capacity of the edge  (``source``, ``target``)"
+msgid "Capacity of the edge (``source``, ``target``)"
 msgstr ""
 
 msgid "Capacity of the edge (``target``, ``source``)"
 msgstr ""
 
-msgid "Weight of the edge  (``source``, ``target``) if it exist"
+msgid "Weight of the edge (``source``, ``target``) if it exist"
 msgstr ""
 
 msgid "Weight of the edge (``target``, ``source``) if it exist"
@@ -4198,6 +4195,9 @@ msgid "Graph definition"
 msgstr ""
 
 msgid "The weighted directed graph, :math:`G(V,E)`, is defined as:"
+msgstr ""
+
+msgid "the set of vertices  :math:`V`"
 msgstr ""
 
 msgid ""
@@ -4334,7 +4334,7 @@ msgid ""
 "must have special permissions given by the administrators to use them."
 msgstr ""
 
-msgid ":doc:`pgr_createTopology` -  create a topology based on the geometry."
+msgid ":doc:`pgr_createTopology` - create a topology based on the geometry."
 msgstr ""
 
 msgid ""
@@ -4343,14 +4343,14 @@ msgid ""
 msgstr ""
 
 msgid ""
-":doc:`pgr_analyzeGraph`  - to analyze the edges and vertices of the edge "
+":doc:`pgr_analyzeGraph` - to analyze the edges and vertices of the edge "
 "table."
 msgstr ""
 
 msgid ":doc:`pgr_analyzeOneWay` - to analyze directionality of the edges."
 msgstr ""
 
-msgid ":doc:`pgr_nodeNetwork`  -to create nodes to a not noded edge table."
+msgid ":doc:`pgr_nodeNetwork` - to create nodes to a not noded edge table."
 msgstr ""
 
 msgid ":doc:`pgr_trsp` - Turn Restriction Shortest Path (TRSP)"
@@ -4840,7 +4840,7 @@ msgstr ""
 msgid "On undirected graph ``r`` could be used as **driving side**"
 msgstr ""
 
-msgid "Also ``l`` could be used as  **driving side**"
+msgid "Also ``l`` could be used as **driving side**"
 msgstr ""
 
 msgid "After Migration"
@@ -5473,8 +5473,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Edge :math:`2` (:math:`1  \\frac{\\;\\;\\;\\;\\;}{} 3`) is not part of "
-"the graph."
+"Edge :math:`2` (:math:`1 \\frac{\\;\\;\\;\\;\\;}{} 3`) is not part of the"
+" graph."
 msgstr ""
 
 msgid "Graph with ``cost`` and ``reverse_cost``"
@@ -5506,7 +5506,7 @@ msgid ""
 "negative are part of the graph."
 msgstr ""
 
-msgid "The set of vertices  :math:`V`:"
+msgid "The set of vertices :math:`V`:"
 msgstr ""
 
 msgid "In a directed graph both edges have directionality"
@@ -5525,10 +5525,10 @@ msgstr ""
 msgid "Edges not part of the graph:"
 msgstr ""
 
-msgid ":math:`2` (:math:`1  \\rightarrow 3`)"
+msgid ":math:`2` (:math:`1 \\rightarrow 3`)"
 msgstr ""
 
-msgid ":math:`3` (:math:`3  \\rightarrow 2`)"
+msgid ":math:`3` (:math:`3 \\rightarrow 2`)"
 msgstr ""
 
 msgid "In a directed graph both edges do not have directionality"
@@ -5553,10 +5553,10 @@ msgstr ""
 msgid ":math:`target_i \\leftrightarrow source_i`"
 msgstr ""
 
-msgid ":math:`2` (:math:`1  \\frac{\\;\\;\\;\\;\\;}{} 3`)"
+msgid ":math:`2` (:math:`1 \\frac{\\;\\;\\;\\;\\;}{} 3`)"
 msgstr ""
 
-msgid ":math:`3` (:math:`3  \\frac{\\;\\;\\;\\;\\;}{} 2`)"
+msgid ":math:`3` (:math:`3 \\frac{\\;\\;\\;\\;\\;}{} 2`)"
 msgstr ""
 
 msgid "Graphs without geometries"
@@ -5564,7 +5564,7 @@ msgstr ""
 
 msgid ""
 "Personal relationships, genealogy, file dependency problems can be solved"
-" using pgRouting. Those problems, normally,  do not come with geometries "
+" using pgRouting. Those problems, normally, do not come with geometries "
 "associated with the graph."
 msgstr ""
 
@@ -6235,7 +6235,7 @@ msgstr ""
 msgid "For example, for this :doc:`pgr_dijkstra` signature:"
 msgstr ""
 
-msgid "pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  [, ``directed``])"
+msgid "pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid** [, ``directed``])"
 msgstr ""
 
 msgid "`Edges SQL`_:"
@@ -6485,13 +6485,13 @@ msgstr ""
 
 msgid ""
 "When ``true`` departing from a visited vertex will not try to avoid using"
-" the edge used to reach it.  In other words, U turn using the edge with "
+" the edge used to reach it. In other words, U turn using the edge with "
 "same identifier is allowed."
 msgstr ""
 
 msgid ""
 "When ``false`` when a departing from a visited vertex tries to avoid "
-"using the edge used to reach it.  In other words, U turn using the edge "
+"using the edge used to reach it. In other words, U turn using the edge "
 "with same identifier is used when no other path is found."
 msgstr ""
 
@@ -6578,7 +6578,7 @@ msgstr ""
 msgid "When negative is the identifier of the starting point."
 msgstr ""
 
-msgid "Returned on `Many to One`_  and `Many to Many`_"
+msgid "Returned on `Many to One`_ and `Many to Many`_"
 msgstr ""
 
 msgid "``end_pid``"
@@ -6711,7 +6711,7 @@ msgid "Wiki"
 msgstr ""
 
 msgid ""
-"Edit an existing  `pgRouting Wiki "
+"Edit an existing `pgRouting Wiki "
 "<https://github.com/pgRouting/pgrouting/wiki>`__ page."
 msgstr ""
 
@@ -7192,7 +7192,7 @@ msgstr ""
 
 msgid ""
 "And all the people that give us a little of their time making comments, "
-"finding issues, making pull requests etc.  in any of our products: "
+"finding issues, making pull requests etc. in any of our products: "
 "osm2pgrouting, pgRouting, pgRoutingLayer, workshop."
 msgstr ""
 
@@ -7564,7 +7564,7 @@ msgstr ""
 
 msgid ""
 "The minimum value of the ``agg_cost`` all instances of edge `(u, v)` is "
-"going to be considered as the ``agg_cost`` of edge  `(u, v)`"
+"going to be considered as the ``agg_cost`` of edge `(u, v)`"
 msgstr ""
 
 msgid ""
@@ -7780,7 +7780,7 @@ msgstr ""
 
 msgid ""
 "Visualy, The first image is the `optimal solution "
-"<https://www.math.uwaterloo.ca/tsp/world/witour.html>`__  and the second "
+"<https://www.math.uwaterloo.ca/tsp/world/witour.html>`__ and the second "
 "image is the solution obtained with ``pgr_TSPeuclidean``."
 msgstr ""
 
@@ -8150,7 +8150,7 @@ msgid "Prerequisites"
 msgstr ""
 
 msgid ""
-"The  edge table to be analyzed must contain a source column and a target "
+"The edge table to be analyzed must contain a source column and a target "
 "column filled with id's of the vertices of the segments and the "
 "corresponding vertices table <edge_table>_vertices_pgr that stores the "
 "vertices information."
@@ -8183,7 +8183,7 @@ msgid "the_geom"
 msgstr ""
 
 msgid ""
-"``text``  Geometry column name of the network table. Default value is "
+"``text`` Geometry column name of the network table. Default value is "
 "``the_geom``."
 msgstr ""
 
@@ -8191,7 +8191,7 @@ msgid "id"
 msgstr ""
 
 msgid ""
-"``text``  Primary key column name of the network table. Default value is "
+"``text`` Primary key column name of the network table. Default value is "
 "``id``."
 msgstr ""
 
@@ -8207,7 +8207,7 @@ msgid "target"
 msgstr ""
 
 msgid ""
-"``text``  Target column name of the network table.  Default value is "
+"``text`` Target column name of the network table. Default value is "
 "``target``."
 msgstr ""
 
@@ -8215,8 +8215,8 @@ msgid "rows_where"
 msgstr ""
 
 msgid ""
-"``text``   Condition to select  a subset or rows.  Default value is "
-"``true`` to indicate all rows."
+"``text`` Condition to select a subset or rows. Default value is ``true`` "
+"to indicate all rows."
 msgstr ""
 
 msgid "Uses the vertices table: <edge_table>_vertices_pgr."
@@ -8226,7 +8226,7 @@ msgid "Fills completely the ``cnt`` and ``chk`` columns of the vertices table."
 msgstr ""
 
 msgid ""
-"Returns the analysis of the section of the network defined by  "
+"Returns the analysis of the section of the network defined by "
 "``rows_where``"
 msgstr ""
 
@@ -8273,7 +8273,7 @@ msgstr ""
 msgid "chk"
 msgstr ""
 
-msgid "``integer``  Indicator that the vertex might have a problem."
+msgid "``integer`` Indicator that the vertex might have a problem."
 msgstr ""
 
 msgid "ein"
@@ -8486,7 +8486,7 @@ msgid "two_way_if_null"
 msgstr ""
 
 msgid ""
-"``boolean`` flag to treat oneway NULL values as bi-directional.  Default "
+"``boolean`` flag to treat oneway NULL values as bi-directional. Default "
 "value is ``true``."
 msgstr ""
 
@@ -8518,7 +8518,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"``integer``  Indicator that the vertex might have a problem. See "
+"``integer`` Indicator that the vertex might have a problem. See "
 ":doc:`pgr_analyzeGraph <pgr_analyzeGraph>`."
 msgstr ""
 
@@ -8756,7 +8756,7 @@ msgstr ""
 msgid "RETURNS SET OF |result-1-1|"
 msgstr ""
 
-msgid "From vertex :math:`6` to vertex  :math:`10` on a **directed** graph"
+msgid "From vertex :math:`6` to vertex :math:`10` on a **directed** graph"
 msgstr ""
 
 msgid "RETURNS SET OF |result-1-m|"
@@ -8949,9 +8949,6 @@ msgstr ""
 msgid "pgr_bellmanFord(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
 
-msgid "From vertex :math:`6` to vertex :math:`10` on a **directed** graph"
-msgstr ""
-
 msgid ""
 "From vertex :math:`6` to vertices :math:`\\{ 10, 17\\}` on a **directed**"
 " graph"
@@ -9066,7 +9063,7 @@ msgid ""
 "that you need to traverse from the source to another vertex. We can "
 "interpret such a graph also as a weighted graph, where every edge has the"
 " weight :math:`1`. If not alledges in graph have the same weight, that we"
-" need a more general algorithm, like Dijkstra's Algorithm  which runs in "
+" need a more general algorithm, like Dijkstra's Algorithm which runs in "
 ":math:`O(|E|log|V|)` time."
 msgstr ""
 
@@ -9154,8 +9151,8 @@ msgstr ""
 
 msgid ""
 "The algorithm checks graph is bipartite or not. If it is bipartite then "
-"it returns the node along with two    colors `0` and `1` which represents"
-" two different sets."
+"it returns the node along with two colors `0` and `1` which represents "
+"two different sets."
 msgstr ""
 
 msgid "If graph is not bipartite then algorithm returns empty set."
@@ -9593,7 +9590,7 @@ msgid ""
 "be performed."
 msgstr ""
 
-msgid "Returns set of  |result-contract|"
+msgid "Returns set of |result-contract|"
 msgstr ""
 
 msgid "The function returns a single row. The columns of the row are:"
@@ -9693,15 +9690,15 @@ msgid "``text`` Network table name. (may contain the schema name AS well)"
 msgstr ""
 
 msgid ""
-"``text``   Condition to SELECT a subset or rows.  Default value is "
-"``true`` to indicate all rows that where ``source`` or ``target`` have a "
-"null value, otherwise the condition is used."
+"``text`` Condition to SELECT a subset or rows. Default value is ``true`` "
+"to indicate all rows that where ``source`` or ``target`` have a null "
+"value, otherwise the condition is used."
 msgstr ""
 
 msgid "clean"
 msgstr ""
 
-msgid "``boolean`` Clean any previous topology.  Default value is ``false``."
+msgid "``boolean`` Clean any previous topology. Default value is ``false``."
 msgstr ""
 
 msgid "The ``edge_table`` will be affected"
@@ -9749,7 +9746,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"``integer``  Indicator that the vertex might have a problem. See "
+"``integer`` Indicator that the vertex might have a problem. See "
 ":doc:`pgr_analyzeGraph`."
 msgstr ""
 
@@ -9894,13 +9891,13 @@ msgid ""
 msgstr ""
 
 msgid ""
-"The reconstruction of the vertices table  function accepts the following "
+"The reconstruction of the vertices table function accepts the following "
 "parameters:"
 msgstr ""
 
 msgid ""
-"``text``   Condition to SELECT a subset or rows.  Default value is "
-"``true`` to indicate all rows."
+"``text`` Condition to SELECT a subset or rows. Default value is ``true`` "
+"to indicate all rows."
 msgstr ""
 
 msgid ""
@@ -10015,7 +10012,7 @@ msgid "Example 17"
 msgstr ""
 
 msgid ""
-":doc:`topology-functions`  for an overview of a topology for routing "
+":doc:`topology-functions` for an overview of a topology for routing "
 "algorithms."
 msgstr ""
 
@@ -10147,10 +10144,10 @@ msgstr ""
 msgid "Running time: :math:`O(| start\\_vids | * (V + E))`"
 msgstr ""
 
-msgid "pgr_dagShortestPath(`Edges SQL`_, **start vid**,  **end vid**)"
+msgid "pgr_dagShortestPath(`Edges SQL`_, **start vid**, **end vid**)"
 msgstr ""
 
-msgid "pgr_dagShortestPath(`Edges SQL`_, **start vid**,  **end vids**)"
+msgid "pgr_dagShortestPath(`Edges SQL`_, **start vid**, **end vids**)"
 msgstr ""
 
 msgid "pgr_dagShortestPath(`Edges SQL`_, **start vids**, **end vid**)"
@@ -10162,7 +10159,7 @@ msgstr ""
 msgid "pgr_dagShortestPath(`Edges SQL`_, `Combinations SQL`_)"
 msgstr ""
 
-msgid "From vertex :math:`5` to vertex  :math:`11` on a **directed** graph"
+msgid "From vertex :math:`5` to vertex :math:`11` on a **directed** graph"
 msgstr ""
 
 msgid "From vertex :math:`5` to vertices :math:`\\{7, 11\\}`"
@@ -11115,7 +11112,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"pgr_drivingDistance(`Edges SQL`_, **Root vid**,  **distance**, "
+"pgr_drivingDistance(`Edges SQL`_, **Root vid**, **distance**, "
 "[``directed``])"
 msgstr ""
 
@@ -11203,8 +11200,8 @@ msgstr ""
 
 msgid ""
 "the chromatic number :math:`x'(G)` (minimum number of colors needed for "
-"proper edge coloring of graph)  is equal to the degree :math:`\\Delta + "
-"1` of the graph, (:math:`x'(G) = \\Delta`)"
+"proper edge coloring of graph) is equal to the degree :math:`\\Delta + 1`"
+" of the graph, (:math:`x'(G) = \\Delta`)"
 msgstr ""
 
 msgid "The algorithm tries to assign the least possible color to every edge."
@@ -11364,7 +11361,7 @@ msgid "``pgr_edwardMoore - Experimental``"
 msgstr ""
 
 msgid ""
-"``pgr_edwardMoore`` —  Returns the shortest path using Edward-Moore "
+"``pgr_edwardMoore`` — Returns the shortest path using Edward-Moore "
 "algorithm."
 msgstr ""
 
@@ -11766,7 +11763,7 @@ msgid "The green nodes are the **original points**"
 msgstr ""
 
 msgid ""
-"The geometry ``geom``, marked as **g1** and **g2**  are the **original "
+"The geometry ``geom``, marked as **g1** and **g2** are the **original "
 "points**"
 msgstr ""
 
@@ -12130,7 +12127,7 @@ msgid "``pgr_hawickCircuits - Experimental``"
 msgstr ""
 
 msgid ""
-"``pgr_hawickCircuits`` —  Returns the list of cirucits using hawick "
+"``pgr_hawickCircuits`` — Returns the list of cirucits using hawick "
 "circuits algorithm."
 msgstr ""
 
@@ -13094,23 +13091,13 @@ msgstr ""
 msgid "``float8`` tolerance for coincident points (in projection unit)dd"
 msgstr ""
 
-msgid ""
-"``text`` Primary key column name of the network table. Default value is "
-"``id``."
-msgstr ""
-
-msgid ""
-"``text`` Geometry column name of the network table. Default value is "
-"``the_geom``."
-msgstr ""
-
 msgid "table_ending"
 msgstr ""
 
 msgid "``text`` Suffix for the new table's. Default value is ``noded``."
 msgstr ""
 
-msgid "The output table will have for  ``edge_table_noded``"
+msgid "The output table will have for ``edge_table_noded``"
 msgstr ""
 
 msgid "``bigint`` Unique identifier for the table"
@@ -14023,7 +14010,7 @@ msgid ""
 "[``directed``])"
 msgstr ""
 
-msgid "From vertex :math:`6` to vertex  :math:`10` on an undirected graph."
+msgid "From vertex :math:`6` to vertex :math:`10` on an undirected graph."
 msgstr ""
 
 msgid ""
@@ -14481,7 +14468,7 @@ msgstr ""
 msgid "RETURNS SET OF |ksp-result|"
 msgstr ""
 
-msgid "From vertex :math:`3` to vertex  :math:`8` on a directed graph"
+msgid "From vertex :math:`3` to vertex :math:`8` on a directed graph"
 msgstr ""
 
 msgid "Special optional parameters"
@@ -14508,10 +14495,10 @@ msgstr ""
 msgid "No results because the only path available follows a restriction."
 msgstr ""
 
-msgid "From vertex :math:`3` to vertex  :math:`8` on an undirected graph"
+msgid "From vertex :math:`3` to vertex :math:`8` on an undirected graph"
 msgstr ""
 
-msgid "From vertex :math:`3` to vertex  :math:`8` with more alternatives"
+msgid "From vertex :math:`3` to vertex :math:`8` with more alternatives"
 msgstr ""
 
 msgid "``pgr_version``"
@@ -14626,7 +14613,7 @@ msgid "RETURNS SET OF |pid-m-m|"
 msgstr ""
 
 msgid ""
-"From point :math:`1` and vertex :math:`6`  to point :math:`3` and vertex "
+"From point :math:`1` and vertex :math:`6` to point :math:`3` and vertex "
 ":math:`1`"
 msgstr ""
 
@@ -14762,7 +14749,7 @@ msgid ""
 "[**options**])"
 msgstr ""
 
-msgid "**options:**  ``[directed, driving_side]``"
+msgid "**options:** ``[directed, driving_side]``"
 msgstr ""
 
 msgid "RETURNS SET OF |matrix-pid|"
@@ -14792,8 +14779,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"From point :math:`15` and vertex :math:`6`  to point :math:`3` and vertex"
-" :math:`1`"
+"From point :math:`15` and vertex :math:`6` to point :math:`3` and vertex "
+":math:`1`"
 msgstr ""
 
 msgid ""
@@ -15073,7 +15060,7 @@ msgid ""
 "**K**, **driving_side**, [**options**])"
 msgstr ""
 
-msgid "**options:**  ``[directed, heap_paths, details]``"
+msgid "**options:** ``[directed, heap_paths, details]``"
 msgstr ""
 
 msgid ""
@@ -16215,7 +16202,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"`#232 <https://github.com/pgRouting/pgrouting/issues/232>`__:  Honor "
+"`#232 <https://github.com/pgRouting/pgrouting/issues/232>`__: Honor "
 "client cancel requests in C /C++ code"
 msgstr ""
 
@@ -16551,7 +16538,7 @@ msgstr ""
 msgid "Moved to legacy"
 msgstr ""
 
-msgid "pgr_labelGraph  -  Use the components family of functions instead."
+msgid "pgr_labelGraph - Use the components family of functions instead."
 msgstr ""
 
 msgid "Max flow - functions were renamed on v2.5.0"
@@ -17240,7 +17227,7 @@ msgstr ""
 msgid "Signature fix"
 msgstr ""
 
-msgid "pgr_dijkstra  -- to match what is documented"
+msgid "pgr_dijkstra -- to match what is documented"
 msgstr ""
 
 msgid "pgr_Johnson"
@@ -17300,10 +17287,10 @@ msgstr ""
 msgid "Deprecated functions:"
 msgstr ""
 
-msgid "pgr_apspWarshall  use pgr_floydWarshall instead"
+msgid "pgr_apspWarshall use pgr_floydWarshall instead"
 msgstr ""
 
-msgid "pgr_apspJohnson   use pgr_Johnson instead"
+msgid "pgr_apspJohnson use pgr_Johnson instead"
 msgstr ""
 
 msgid "pgr_kDijkstraCost use pgr_dijkstraCost instead"
@@ -17758,7 +17745,7 @@ msgstr ""
 msgid "The geometry of the segments."
 msgstr ""
 
-msgid "Starting on  PostgreSQL 12::"
+msgid "Starting on PostgreSQL 12::"
 msgstr ""
 
 msgid ""
