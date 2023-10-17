@@ -13,7 +13,7 @@
 ``pgr_edwardMoore - Experimental``
 ===============================================================================
 
-``pgr_edwardMoore`` —  Returns the shortest path using Edward-Moore algorithm.
+``pgr_edwardMoore`` — Returns the shortest path using Edward-Moore algorithm.
 
 
 .. include:: experimental.rst
