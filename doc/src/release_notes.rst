@@ -142,7 +142,7 @@ Changes on the documentation to the following:
 
 * Fix winnie build
 
-.. rubric::  Code fixes
+.. rubric:: Code fixes
 
 * Fix clang warnings
 
@@ -712,7 +712,7 @@ on Github.
 
 .. rubric:: Issues fixes
 
-* `#232 <https://github.com/pgRouting/pgrouting/issues/232>`__:  Honor client
+* `#232 <https://github.com/pgRouting/pgrouting/issues/232>`__: Honor client
   cancel requests in C /C++ code
 
 
@@ -870,7 +870,7 @@ on Github.
 
 * Experimental functions
 
-  * pgr_labelGraph  -  Use the components family of functions instead.
+  * pgr_labelGraph - Use the components family of functions instead.
   * Max flow - functions were renamed on v2.5.0
 
     * pgr_maxFlowPushRelabel
@@ -974,7 +974,7 @@ on Github.
 
 .. rubric:: New experimental functions
 
-*  pgr_lineGraphFull
+* pgr_lineGraphFull
 
 .. rubric:: Bug fixes
 
@@ -1389,7 +1389,7 @@ on Github.
 
 - Signature fix
 
-  - pgr_dijkstra  -- to match what is documented
+  - pgr_dijkstra -- to match what is documented
 
 
 .. rubric:: New Functions
@@ -1419,8 +1419,8 @@ on Github.
 
 .. rubric:: Deprecated functions:
 
-- pgr_apspWarshall  use pgr_floydWarshall instead
-- pgr_apspJohnson   use pgr_Johnson instead
+- pgr_apspWarshall use pgr_floydWarshall instead
+- pgr_apspJohnson use pgr_Johnson instead
 - pgr_kDijkstraCost use pgr_dijkstraCost instead
 - pgr_kDijkstraPath use pgr_dijkstra instead
 

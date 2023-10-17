@@ -81,7 +81,7 @@ Yige Huang
 
 
 And all the people that give us a little of their time making comments, finding
-issues, making pull requests etc.  in any of our products: osm2pgrouting,
+issues, making pull requests etc. in any of our products: osm2pgrouting,
 pgRouting, pgRoutingLayer, workshop.
 
 

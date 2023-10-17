@@ -472,7 +472,7 @@ The default values on this query are:
 
 .. rubric:: On undirected graph ``r`` could be used as **driving side**
 
-Also ``l`` could be used as  **driving side**
+Also ``l`` could be used as **driving side**
 
 .. literalinclude:: migration.queries
    :start-after: --withpointsdd4
@@ -757,8 +757,8 @@ Signature to be migrated:
 
 Migrate by using:
 
-*  :doc:`pgr_dijkstra` when there are no restrictions,
-*  :doc:`pgr_trsp` (One to One) when there are restrictions.
+* :doc:`pgr_dijkstra` when there are no restrictions,
+* :doc:`pgr_trsp` (One to One) when there are restrictions.
 
 
 Migrating ``pgr_trsp`` (Vertices) using ``pgr_dijkstra``
@@ -891,8 +891,8 @@ For these migration guide the following points will be used:
 
 Migrate by using:
 
-*  :doc:`pgr_withPoints` when there are no restrictions,
-*  :doc:`pgr_trsp_withPoints` (One to One) when there are restrictions.
+* :doc:`pgr_withPoints` when there are no restrictions,
+* :doc:`pgr_trsp_withPoints` (One to One) when there are restrictions.
 
 Migrating ``pgr_trsp`` (Edges) using ``pgr_withPoints``
 ...............................................................................
@@ -1022,8 +1022,8 @@ Signature to be migrated:
 
 Migrate by using:
 
-*  :doc:`pgr_dijkstraVia` when there are no restrictions,
-*  :doc:`pgr_trspVia` when there are restrictions.
+* :doc:`pgr_dijkstraVia` when there are no restrictions,
+* :doc:`pgr_trspVia` when there are restrictions.
 
 Migrating ``pgr_trspViaVertices`` using ``pgr_dijkstraVia``
 ...............................................................................
@@ -1160,8 +1160,8 @@ And will travel thru the following Via points :math:`4\rightarrow3\rightarrow6`
 
 Migrate by using:
 
-*  :doc:`pgr_withPointsVia` when there are no restrictions,
-*  :doc:`pgr_trspVia_withPoints` when there are restrictions.
+* :doc:`pgr_withPointsVia` when there are no restrictions,
+* :doc:`pgr_trspVia_withPoints` when there are restrictions.
 
 Migrating ``pgr_trspViaEdges`` using ``pgr_withPointsVia``
 ...............................................................................
