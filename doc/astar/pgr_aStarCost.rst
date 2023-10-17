@@ -56,7 +56,7 @@ using the A* algorithm.
 
 - For undirected graphs, the results are symmetric.
 
-  - The  `agg_cost` of `(u, v)` is the same as for `(v, u)`.
+  - The `agg_cost` of `(u, v)` is the same as for `(v, u)`.
 
 - The returned values are ordered in ascending order:
 
@@ -91,7 +91,7 @@ One to One
    :class: signatures
 
    | pgr_aStarCost(`Edges SQL`_, **start vid**, **end vid**, [**options**])
-   |  **options:** ``[directed, heuristic, factor, epsilon]``
+   | **options:** ``[directed, heuristic, factor, epsilon]``
 
    | RETURNS SET OF |matrix-result|
    | OR EMPTY SET

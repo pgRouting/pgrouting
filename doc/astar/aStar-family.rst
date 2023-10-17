@@ -42,8 +42,8 @@ The main Characteristics are:
 * Process works for directed and undirected graphs.
 * Ordering is:
 
-  *  first by ``start_vid`` (if exists)
-  *  then by ``end_vid``
+  * first by ``start_vid`` (if exists)
+  * then by ``end_vid``
 
 * Values are returned when there is a path.
 * Let :math:`v` and :math:`u` be nodes on the graph:
@@ -132,12 +132,12 @@ Factor
 .. rubric:: Analysis 1
 
 Working with cost/reverse_cost as length in degrees, x/y in lat/lon:
-Factor = 1   (no need to change units)
+Factor = 1 (no need to change units)
 
 .. rubric:: Analysis 2
 
 Working with cost/reverse_cost as length in meters, x/y in lat/lon:
-Factor =  would depend on the location of the points:
+Factor = would depend on the location of the points:
 
 .. list-table::
    :width: 81
@@ -148,7 +148,7 @@ Factor =  would depend on the location of the points:
      - Conversion
      - Factor
    * - 45
-     - 1 longitude degree is  78846.81 m
+     - 1 longitude degree is 78846.81 m
      - 78846
    * - 0
      - 1 longitude degree is 111319.46 m
