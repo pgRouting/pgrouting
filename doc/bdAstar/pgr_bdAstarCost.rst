@@ -57,7 +57,7 @@ using the bidirectional A* algorithm.
 
 - For undirected graphs, the results are symmetric.
 
-  - The  `agg_cost` of `(u, v)` is the same as for `(v, u)`.
+  - The `agg_cost` of `(u, v)` is the same as for `(v, u)`.
 
 - The returned values are ordered in ascending order:
 
