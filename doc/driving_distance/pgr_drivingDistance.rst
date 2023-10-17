@@ -58,7 +58,7 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_drivingDistance(`Edges SQL`_, **Root vid**,  **distance**, [``directed``])
+   | pgr_drivingDistance(`Edges SQL`_, **Root vid**, **distance**, [``directed``])
    | pgr_drivingDistance(`Edges SQL`_, **Root vids**, **distance**, [**options**])
    | **options:** [directed, equicost]
 
@@ -73,7 +73,7 @@ Single Vertex
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_drivingDistance(`Edges SQL`_, **Root vid**,  **distance**, [``directed``])
+   | pgr_drivingDistance(`Edges SQL`_, **Root vid**, **distance**, [``directed``])
 
    | RETURNS SET OF |result-spantree|
 
