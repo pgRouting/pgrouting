@@ -75,7 +75,7 @@ The main characteristics are:
 
   - For **undirected** graphs, the results are **symmetric**.
 
-    - The  `agg_cost` of `(u, v)` is the same as for `(v, u)`.
+    - The `agg_cost` of `(u, v)` is the same as for `(v, u)`.
 
   - For optimization purposes, any duplicated value in the `start_vids` or
     `end_vids` is ignored.
@@ -100,7 +100,7 @@ Signatures
    | pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vids**, **end vid**, [**options**])
    | pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vids**, **end vids**, [**options**])
    | pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, `Combinations SQL`_, [**options**])
-   | **options:**  ``[directed, driving_side]``
+   | **options:** ``[directed, driving_side]``
 
    | RETURNS SET OF |matrix-pid|
    | OR EMPTY SET
@@ -118,7 +118,7 @@ One to One
    :class: signatures
 
    | pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vid**, **end vid**, [**options**])
-   | **options:**  ``[directed, driving_side]``
+   | **options:** ``[directed, driving_side]``
 
    | RETURNS SET OF |matrix-pid|
    | OR EMPTY SET
@@ -139,7 +139,7 @@ One to Many
    :class: signatures
 
    | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, [**options**])
-   | **options:**  ``[directed, driving_side]``
+   | **options:** ``[directed, driving_side]``
 
    | RETURNS SET OF |matrix-pid|
    | OR EMPTY SET
@@ -161,7 +161,7 @@ Many to One
    :class: signatures
 
    | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, [**options**])
-   | **options:**  ``[directed, driving_side]``
+   | **options:** ``[directed, driving_side]``
 
    | RETURNS SET OF |matrix-pid|
    | OR EMPTY SET
@@ -182,12 +182,12 @@ Many to Many
    :class: signatures
 
    | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, [**options**])
-   | **options:**  ``[directed, driving_side]``
+   | **options:** ``[directed, driving_side]``
 
    | RETURNS SET OF |matrix-pid|
    | OR EMPTY SET
 
-:Example: From point :math:`15` and vertex :math:`6`  to point :math:`3` and
+:Example: From point :math:`15` and vertex :math:`6` to point :math:`3` and
           vertex :math:`1`
 
 .. literalinclude:: doc-pgr_withPointsCost.queries
@@ -204,7 +204,7 @@ Combinations
    :class: signatures
 
    | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, [**options**])
-   | **options:**  ``[directed, driving_side]``
+   | **options:** ``[directed, driving_side]``
 
    | RETURNS SET OF |matrix-pid|
    | OR EMPTY SET

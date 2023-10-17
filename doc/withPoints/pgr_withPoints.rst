@@ -165,7 +165,7 @@ Many to Many
    | RETURNS SET OF |pid-m-m|
    | OR EMTPY SET
 
-:Example: From point :math:`1` and vertex :math:`6`  to point :math:`3` and
+:Example: From point :math:`1` and vertex :math:`6` to point :math:`3` and
           vertex :math:`1`
 
 .. literalinclude:: doc-pgr_withPoints.queries
