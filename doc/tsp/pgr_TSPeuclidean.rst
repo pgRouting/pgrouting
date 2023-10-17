@@ -99,7 +99,7 @@ Parameters
 =================== ===========  ======================================
 Parameter           Type         Description
 =================== ===========  ======================================
-`Coordinates SQL`_ ``TEXT``      `Coordinates SQL`_ as described below
+`Coordinates SQL`_  ``TEXT``      `Coordinates SQL`_ as described below
 =================== ===========  ======================================
 
 TSP optional parameters
