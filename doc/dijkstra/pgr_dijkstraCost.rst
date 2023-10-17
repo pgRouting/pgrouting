@@ -84,7 +84,7 @@ One to One
    | RETURNS SET OF |matrix-result|
    | OR EMPTY SET
 
-:Example: From vertex :math:`6` to vertex  :math:`10` on a **directed** graph
+:Example: From vertex :math:`6` to vertex :math:`10` on a **directed** graph
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
     :start-after: -- q2

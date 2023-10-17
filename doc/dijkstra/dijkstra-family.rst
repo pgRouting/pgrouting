@@ -121,13 +121,13 @@ Parameters
      - Identifier of the starting vertex of the path.
    * - **start vids**
      - ``ARRAY[BIGINT]``
-     -  Array of identifiers of starting vertices.
+     - Array of identifiers of starting vertices.
    * - **end vid**
      - ``BIGINT``
      - Identifier of the ending vertex of the path.
    * - **end vids**
      - ``ARRAY[BIGINT]``
-     -  Array of identifiers of ending vertices.
+     - Array of identifiers of ending vertices.
 
 .. dijkstra_parameters_end
 
@@ -180,7 +180,7 @@ Given the following query:
 
 pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)
 
-where  :math:`sql = \{(id_i, source_i, target_i, cost_i, reverse\_cost_i)\}`
+where :math:`sql = \{(id_i, source_i, target_i, cost_i, reverse\_cost_i)\}`
 
 and
 
@@ -193,7 +193,7 @@ The graphs are defined as follows:
 
 The weighted directed graph, :math:`G_d(V,E)`, is definied by:
 
-* the set of vertices  :math:`V`
+* the set of vertices :math:`V`
 
   - :math:`V = source \cup target \cup {start_{vid}} \cup  {end_{vid}}`
 
@@ -212,7 +212,7 @@ The weighted directed graph, :math:`G_d(V,E)`, is definied by:
 
 The weighted undirected graph, :math:`G_u(V,E)`, is definied by:
 
-* the set of vertices  :math:`V`
+* the set of vertices :math:`V`
 
   - :math:`V = source \cup target \cup {start_v{vid}} \cup  {end_{vid}}`
 
@@ -268,7 +268,7 @@ where:
 
 In other words: The algorithm returns a the shortest path between
 :math:`start_{vid}` and :math:`end_{vid}`, if it exists, in terms of a sequence
-of nodes  and of edges,
+of nodes and of edges,
 
 - :math:`path\_seq` indicates the relative position in the path of the
   :math:`node` or :math:`edge`.
