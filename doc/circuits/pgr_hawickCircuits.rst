@@ -13,7 +13,7 @@
 ``pgr_hawickCircuits - Experimental``
 ===============================================================================
 
-``pgr_hawickCircuits`` —  Returns the list of cirucits using hawick circuits algorithm.
+``pgr_hawickCircuits`` — Returns the list of cirucits using hawick circuits algorithm.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/hawick_circuits.html
