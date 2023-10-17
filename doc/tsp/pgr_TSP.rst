@@ -97,7 +97,7 @@ Description
         `(u, v)`
       - if ``agg_cost`` differs between one or more instances of edge `(u, v)`
       - The minimum value of the ``agg_cost`` all instances of edge `(u, v)`
-        is going to be considered as the ``agg_cost`` of edge  `(u, v)`
+        is going to be considered as the ``agg_cost`` of edge `(u, v)`
       - Some (or all) traveling costs on edges will still might not obey the
         triangle inequality.
 
