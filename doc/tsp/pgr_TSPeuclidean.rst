@@ -99,7 +99,7 @@ Parameters
 =================== ===========  ======================================
 Parameter           Type         Description
 =================== ===========  ======================================
-`Coordinates SQL`_  ``TEXT``      `Coordinates SQL`_ as described below
+`Coordinates SQL`_ ``TEXT``      `Coordinates SQL`_ as described below
 =================== ===========  ======================================
 
 TSP optional parameters
@@ -181,7 +181,7 @@ Getting a geometry of the tour
 Visual results
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Visualy, The first image is the `optimal solution
-<https://www.math.uwaterloo.ca/tsp/world/witour.html>`__  and the second image
+<https://www.math.uwaterloo.ca/tsp/world/witour.html>`__ and the second image
 is the solution obtained with ``pgr_TSPeuclidean``.
 
 .. image:: images/wi29optimal.png

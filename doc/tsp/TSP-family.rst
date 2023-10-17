@@ -54,7 +54,7 @@ The traveling sales person problem was studied in the 18th century by
 mathematicians **Sir William Rowam Hamilton** and **Thomas Penyngton Kirkman**.
 
 A discussion about the work of Hamilton & Kirkman
-can be found in the book **Graph Theory (Biggs et  al. 1976)**.
+can be found in the book **Graph Theory (Biggs et al. 1976)**.
 
 * ISBN-13: 978-0198539162
 * ISBN-10: 0198539169
@@ -70,8 +70,8 @@ To calculate the number of different tours through :math:`n` cities:
 
 - Given a starting city,
 - There are :math:`n-1` choices for the second city,
-- And  :math:`n-2` choices for the third city, etc.
-- Multiplying these together we get :math:`(n-1)!  = (n-1) (n-2) . .  1`.
+- And :math:`n-2` choices for the third city, etc.
+- Multiplying these together we get :math:`(n-1)! = (n-1) (n-2) . . 1`.
 - Now since the travel costs do not depend on the direction taken around the
   tour:
 
