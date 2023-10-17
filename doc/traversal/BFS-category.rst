@@ -63,7 +63,7 @@ Parameters
 
    * - **root vids**
      - ``ARRAY`` [ **ANY-INTEGER** ]
-     -  Array of identifiers of the root vertices.
+     - Array of identifiers of the root vertices.
 
         * :math:`0` values are ignored
         * For optimization purposes, any duplicated value is ignored.
