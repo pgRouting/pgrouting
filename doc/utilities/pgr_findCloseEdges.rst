@@ -291,7 +291,7 @@ Returns set of |result-find|
 .. rubric:: Many point results
 
 * The green nodes are the **original points**
-* The geometry ``geom``, marked as **g1** and **g2**  are the **original
+* The geometry ``geom``, marked as **g1** and **g2** are the **original
   points**
 * The geometry ``edge``, marked as **edge1** and **edge2** is a line that
   connects the **original point** with the closest point on the :math:`sp
