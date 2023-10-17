@@ -54,7 +54,7 @@ unweighted graph, i.e. the distance is the minimal number of edges that you
 need to traverse from the source to another vertex. We can interpret such a
 graph also as a weighted graph, where every edge has the weight :math:`1`.
 If not alledges in graph have the same weight, that we need a more general
-algorithm, like Dijkstra's Algorithm  which runs in :math:`O(|E|log|V|)` time.
+algorithm, like Dijkstra's Algorithm which runs in :math:`O(|E|log|V|)` time.
 
 However if the weights are more constrained, we can use a faster algorithm.
 This algorithm, termed as 'Binary Breadth First Search' as well as '0-1 BFS',
@@ -111,7 +111,7 @@ One to One
    | RETURNS SET OF |result-1-1|
    | OR EMPTY SET
 
-:Example: From vertex :math:`6` to vertex  :math:`10` on a **directed** graph
+:Example: From vertex :math:`6` to vertex :math:`10` on a **directed** graph
 
 .. literalinclude:: doc-pgr_binaryBreadthFirstSearch.queries
    :start-after: -- q1
