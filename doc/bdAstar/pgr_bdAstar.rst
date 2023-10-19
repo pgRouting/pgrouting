@@ -225,7 +225,7 @@ Optional parameters
     :start-after: dijkstra_optionals_start
     :end-before: dijkstra_optionals_end
 
-aStar optional Parameters
+aStar optional parameters
 ...............................................................................
 
 .. include:: aStar-family.rst

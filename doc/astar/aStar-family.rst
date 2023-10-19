@@ -66,7 +66,7 @@ The main Characteristics are:
 
 .. astar general info end
 
-aStar optional Parameters
+aStar optional parameters
 ...............................................................................
 
 .. astar_optionals_start
