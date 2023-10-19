@@ -110,7 +110,7 @@ Experimental Functions
 
   VRP-category
 
-.. rubric:: Not classified
+.. rubric:: Unclassified
 
 - :doc:`pgr_bellmanFord`
 - :doc:`pgr_dagShortestPath`

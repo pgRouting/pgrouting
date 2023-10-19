@@ -85,7 +85,7 @@ The main characteristics are:
     - `start_vid` ascending
     - `end_vid` ascending
 
-  - Running time: :math:`O(| start\_vids | * (V \log V + E))`
+  - Running time: :math:`O(|start\_vids|\times(V \log V + E))`
 
 Signatures
 -------------------------------------------------------------------------------
@@ -324,8 +324,8 @@ on the graph of point `(2.9, 1.8)`.
     :start-after: -- q9
     :end-before: -- q10
 
-* Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`.
-* Point :math:`-2` corresponds to the next close edge from point `(2.9,1.8)`.
+* Point :math:`-1` corresponds to the closest edge from point `(2.9, 1.8)`.
+* Point :math:`-2` corresponds to the next close edge from point `(2.9, 1.8)`.
 * Being close to the graph does not mean have a shorter route.
 
 Right side driving topology

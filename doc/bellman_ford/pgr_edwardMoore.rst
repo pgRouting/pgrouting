@@ -73,8 +73,8 @@ and is at-worst,as good as Bellman-Ford algorithm
 
 * The returned values are ordered:
 
-  * `start vid` ascending
-  * `end vid` ascending
+  * `start_vid` ascending
+  * `end_vid` ascending
 
 * Running time:
 

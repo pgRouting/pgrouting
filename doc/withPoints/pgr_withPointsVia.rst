@@ -148,8 +148,8 @@ Visit from vertex :math:`1` to the two locations on the graph of point `(2.9,
     :start-after: -- q7
     :end-before: -- q8
 
-* Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`.
-* Point :math:`-2` corresponds to the next close edge from point `(2.9,1.8)`.
+* Point :math:`-1` corresponds to the closest edge from point `(2.9, 1.8)`.
+* Point :math:`-2` corresponds to the next close edge from point `(2.9, 1.8)`.
 * Point :math:`-2` is visited on the route to from vertex :math:`1` to Point
   :math:`-1` (See row where :math:`seq = 4`).
 

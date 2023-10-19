@@ -45,7 +45,7 @@ given.
 Parameters
 -------------------------------------------------------------------------------
 
-**Used on:**
+**Used in:**
 
 * :doc:`pgr_dijkstraVia`
 * :doc:`pgr_trspVia`
@@ -76,7 +76,7 @@ Where:
 
 .. via_parameters_end
 
-**Used on:**
+**Used in:**
 
 * :doc:`pgr_withPointsVia`
 * :doc:`pgr_trspVia_withPoints`
@@ -121,7 +121,7 @@ parameters that exist due to the kind of function.
 Via optional parameters
 ...............................................................................
 
-.. rubric:: Used on all Via functions
+.. rubric:: Used in all Via functions
 
 .. via_optionals_start
 
@@ -154,7 +154,7 @@ Depending on the function one or more inner queries are needed.
 Edges SQL
 ...............................................................................
 
-.. rubric:: Used on all Via functions
+.. rubric:: Used in all Via functions
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
@@ -163,7 +163,7 @@ Edges SQL
 Restrictions SQL
 ...............................................................................
 
-Used on
+Used in
 
 * :doc:`pgr_trspVia`
 
@@ -174,7 +174,7 @@ Used on
 Points SQL
 ...............................................................................
 
-Used on
+Used in
 
 * :doc:`pgr_withPointsVia`
 

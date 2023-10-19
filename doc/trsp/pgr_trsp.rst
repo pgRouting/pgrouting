@@ -28,7 +28,7 @@ pgr_trsp - Proposed
 
 * Version 3.4.0
 
-  * New proposed signatures:
+  * New proposed signatures
 
     * ``pgr_trsp`` (`One to One`_)
     * ``pgr_trsp`` (`One to Many`_)
@@ -36,7 +36,7 @@ pgr_trsp - Proposed
     * ``pgr_trsp`` (`Many to Many`_)
     * ``pgr_trsp`` (`Combinations`_)
 
-  * Deprecated signatures:
+  * Deprecated signatures
 
     * ``pgr_trsp(text,integer,integer,boolean,boolean,text)``
     * ``pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)``
@@ -45,7 +45,7 @@ pgr_trsp - Proposed
 
 * Version 2.1.0
 
-  * New prototypes:
+  * New prototypes
 
     * ``pgr_trspViaVertices``
     * ``pgr_trspViaEdges``

@@ -129,7 +129,7 @@ Images
 
 .. image:: images/before_node_net.png
    :scale: 60%
-   :alt: before image
+   :alt: Before image
    :align: left
 
 
@@ -137,7 +137,7 @@ Images
 
 .. image:: images/after_node_net.png
    :scale: 60%
-   :alt: after image
+   :alt: After image
    :align: left
 
 

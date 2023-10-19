@@ -35,14 +35,14 @@ pgr_withPointsKSP - Proposed
     unnamed compulsory **driving side**.
   * Added ``start_vid`` and ``end_vid`` result columns.
 
-* New overload functions:
+* New overload functions
 
   * ``pgr_withPointsKSP`` (One to Many)
   * ``pgr_withPointsKSP`` (Many to One)
   * ``pgr_withPointsKSP`` (Many to Many)
   * ``pgr_withPointsKSP`` (Combinations)
 
-* Deprecated signature:
+* Deprecated signature
 
   * ``pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,boolean)``
 
@@ -311,7 +311,7 @@ the closest location on the graph of point `(2.9, 1.8)`.
     :start-after: --q6
     :end-before: --q7
 
-* Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`.
+* Point :math:`-1` corresponds to the closest edge from point `(2.9, 1.8)`.
 
 Left driving side
 ...............................................................................
