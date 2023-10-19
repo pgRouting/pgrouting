@@ -4,13 +4,14 @@
 # Regina Obe <regina@arrival3d.com>, 2023.
 # Wangdapeng <wangdapeng20191008@gmail.com>, 2023.
 # Zuochenwei <zuochenwei5@gmail.com>, 2023.
+# Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-28 18:11+0000\n"
 "PO-Revision-Date: 2023-10-20 02:20+0000\n"
-"Last-Translator: Zuochenwei <zuochenwei5@gmail.com>\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -1256,7 +1257,7 @@ msgid "Summary has the **total traveling time**:"
 msgstr "总结一下**总的行程时间**："
 
 msgid "The sum of all the ``travel_time``."
-msgstr "所有  ``travel_time`` 的总和。"
+msgstr "所有 ``travel_time`` 的总和。"
 
 msgid "``arrival_time``"
 msgstr "``arrival_time``"
@@ -3277,7 +3278,7 @@ msgstr "顶点表更新"
 
 msgid ""
 "Use ``is_contracted`` column to indicate the vertices that are contracted."
-msgstr "使用  ``is_contracted``列来指示收缩的顶点。"
+msgstr "使用 ``is_contracted``列来指示收缩的顶点。"
 
 msgid ""
 "Fill ``contracted_vertices`` with the information from the results tha "
@@ -15106,9 +15107,9 @@ msgid ""
 "conflicting paths and builds the solution with the results of the :doc:"
 "`pgr_trsp` algorithm. In this case a U turn is been done using the same edge."
 msgstr ""
-"因此，当设置为 ``false`` 时，结果会忽略 ``U_turn_on_edge`` 标志。 从  :doc:"
-"`pgr_withPointsVia`结果中，它删除了冲突路径，并使用 :doc:`pgr_trsp` 算法的结"
-"果构建解决方案。 在这种情况下，使用相同的边缘完成 U 形转弯。"
+"因此，当设置为 ``false`` 时，结果会忽略 ``U_turn_on_edge`` 标志。 从 "
+":doc:`pgr_withPointsVia`结果中，它删除了冲突路径，并使用 :doc:`pgr_trsp` "
+"算法的结果构建解决方案。 在这种情况下，使用相同的边缘完成 U 形转弯。"
 
 msgid "pgr_trsp_withPoints - Proposed"
 msgstr "pgr_trsp_withPoints - 拟议"
@@ -19497,8 +19498,7 @@ msgstr ""
 msgid ""
 "The minimum value of the ``agg_cost`` all instances of edge `(u, v)` is "
 "going to be considered as the ``agg_cost`` of edge `(u, v)`"
-msgstr ""
-"边 `(u, v)` 的所有实例的 ``agg_cost`` 最小值将被视为边`(u, v)`的  "
+msgstr "边 `(u, v)` 的所有实例的 ``agg_cost`` 最小值将被视为边 `(u, v)` 的 "
 "``agg_cost``"
 
 msgid ""
@@ -19637,11 +19637,10 @@ msgid ""
 "points**"
 msgstr ""
 
-#, fuzzy
 msgid ""
 "``pgr_hawickCircuits`` — Returns the list of cirucits using hawick circuits "
 "algorithm."
-msgstr "``pgr_hawickCircuits`` —  使用 Hawick 回路算法返回回路列表。"
+msgstr "``pgr_hawickCircuits`` — 使用 Hawick 回路算法返回回路列表。"
 
 #, fuzzy
 msgid "The output table will have for ``edge_table_noded``"
@@ -19669,9 +19668,8 @@ msgid ""
 "math:`1`"
 msgstr "从点:math:`1`和顶点 :math:`6`到点 :math:`3`和顶点:math:`1`。"
 
-#, fuzzy
 msgid "**options:** ``[directed, driving_side]``"
-msgstr "**options:**  ``[directed, driving_side]``"
+msgstr "**options:** ``[directed, driving_side]``"
 
 #, fuzzy
 msgid ""
@@ -19679,9 +19677,8 @@ msgid ""
 "math:`1`"
 msgstr "从点:math:`15`和顶点 :math:`6`到点 :math:`3` 和顶点:math:`1`"
 
-#, fuzzy
 msgid "**options:** ``[directed, heap_paths, details]``"
-msgstr "**options:**  ``[directed, heap_paths, details]``"
+msgstr "**options:** ``[directed, heap_paths, details]``"
 
 #, fuzzy
 msgid ""
