@@ -264,8 +264,8 @@ of point `(2.9, 1.8)`.
     :start-after: -- q9
     :end-before: -- q10
 
-* Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`.
-* Point :math:`-2` corresponds to the next close edge from point `(2.9,1.8)`.
+* Point :math:`-1` corresponds to the closest edge from point `(2.9, 1.8)`.
+* Point :math:`-2` corresponds to the next close edge from point `(2.9, 1.8)`.
 
 Usage variations
 ...............................................................................

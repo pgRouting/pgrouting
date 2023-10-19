@@ -30,7 +30,7 @@ milestone for 3.6.0
   and modifying signature pgr_KSP
 
   
-  * Return columns standarized to: |nksp-result|
+  * Result columns standarized to: |nksp-result|
   * ``pgr_ksp`` (One to One)
   
     * Added ``start_vid`` and ``end_vid`` result columns.
@@ -86,7 +86,7 @@ milestone for 3.6.0
     * Only points that are visited are removed, that is, points reached within the
       distance are included
   
-  * Deprecated signatures:
+  * Deprecated signatures
   
     * ``pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)``
     * ``pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)``
@@ -103,14 +103,14 @@ milestone for 3.6.0
       unnamed compulsory **driving side**.
     * Added ``start_vid`` and ``end_vid`` result columns.
   
-  * New overload functions:
+  * New overload functions
   
     * ``pgr_withPointsKSP`` (One to Many)
     * ``pgr_withPointsKSP`` (Many to One)
     * ``pgr_withPointsKSP`` (Many to Many)
     * ``pgr_withPointsKSP`` (Combinations)
   
-  * Deprecated signature:
+  * Deprecated signature
   
     * ``pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,boolean)``
   
@@ -299,7 +299,7 @@ milestone for 3.4.0
 
     * Deprecating ``pgr_maxCardinalityMatch(text,boolean)``
 
-**Deprecated functions**
+**Deprecated Functions**
 
 * Turn Restrictions
 
@@ -460,7 +460,7 @@ milestone for 3.2.2
 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.2%22>`_
 on Github.
 
-**Issues**
+**Issue fixes**
 
 * [#2093](https://github.com/pgRouting/pgrouting/issues/2093): Compilation on Visual Studio
 * [#2189](https://github.com/pgRouting/pgrouting/issues/2189): Build error on RHEL 7
@@ -675,7 +675,7 @@ milestone for 3.0.5
 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.5%22>`_
 on Github.
 
-**Backport issues fixes**
+**Backport issue fixes**
 
 * [#1825](https://github.com/pgRouting/pgrouting/issues/1825): Boost versions
   are not honored
@@ -693,7 +693,7 @@ milestone for 3.0.4
 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`_
 on Github.
 
-**Backport issues fixes**
+**Backport issue fixes**
 
 * [#1304](https://github.com/pgRouting/pgrouting/issues/1304): FreeBSD 12
   64-bit crashes on pgr_vrOneDepot tests Experimental Function
@@ -711,7 +711,7 @@ on Github.
 pgRouting 3.0.3 Release Notes
 -------------------------------------------------------------------------------
 
-**Backport issues fixes**
+**Backport issue fixes**
 
 * [#1733](https://github.com/pgRouting/pgrouting/issues/1733): pgr_bdAstar
   fails when source or target vertex does not exist in the graph
@@ -874,7 +874,7 @@ on Github.
   * Bug Fixes
 
 
-**New Experimental functions**
+**New experimental functions**
 
 * pgr_maxFlowMinCost
 * pgr_maxFlowMinCost_Cost
@@ -1149,7 +1149,7 @@ on Github.
   * Parameter names changed
   * The many version results are the union of the one to one version
 
-**New Signatures:**
+**New Signatures**
 
 * pgr_bdAstar(one to one)
 
@@ -1179,18 +1179,18 @@ on Github.
 * pgr_articulationPoints
 * pgr_bridges
 
-**Deprecated Signatures**
+**Deprecated signatures**
 
 * pgr_bdastar - use pgr_bdAstar instead
 
-**Renamed Functions**
+**Renamed functions**
 
 * pgr_maxFlowPushRelabel - use pgr_pushRelabel instead
 * pgr_maxFlowEdmondsKarp -use pgr_edmondsKarp instead
 * pgr_maxFlowBoykovKolmogorov - use pgr_boykovKolmogorov instead
 * pgr_maximumCardinalityMatching - use pgr_maxCardinalityMatch instead
 
-**Deprecated function**
+**Deprecated Function**
 
 * pgr_pointToEdgeNode
 
@@ -1252,7 +1252,7 @@ on Github.
 * pgr_astarCost(many to many)
 * pgr_astarCostMatrix
 
-**Deprecated Signatures**
+**Deprecated signatures**
 
 * pgr_bddijkstra - use pgr_bdDijkstra instead
 
@@ -1342,7 +1342,7 @@ on Github.
 * pgr_contractGraph
 
 
-**Deprecated Signatures**
+**Deprecated signatures**
 
 * pgr_tsp - use pgr_TSP or pgr_eucledianTSP instead
 * pgr_astar - use pgr_aStar instead
@@ -1439,7 +1439,7 @@ on Github.
 - pgr_dijkstraCost(many to one)
 - pgr_dijkstraCost(many to many)
 
-**Proposed functionality**
+**Proposed Functionality**
 
 - pgr_withPoints(one to one)
 - pgr_withPoints(one to many)
@@ -1455,14 +1455,14 @@ on Github.
 - pgr_dijkstraVia
 
 
-**Deprecated functions:**
+**Deprecated Functions**
 
 - pgr_apspWarshall use pgr_floydWarshall instead
 - pgr_apspJohnson use pgr_Johnson instead
 - pgr_kDijkstraCost use pgr_dijkstraCost instead
 - pgr_kDijkstraPath use pgr_dijkstra instead
 
-**Renamed and deprecated function**
+**Renamed and Deprecated Function**
 
 - pgr_makeDistanceMatrix renamed to _pgr_makeDistanceMatrix
 
@@ -1493,7 +1493,7 @@ on Github.
 - pgr_alphaShape function now can generate better (multi)polygon with holes and
   alpha parameter.
 
-**Proposed functionality**
+**Proposed Functionality**
 
 - Proposed functions from Steve Woodbridge, (Classified as Convenience by the
   author.)
@@ -1514,7 +1514,7 @@ on Github.
   - pgr_vrppdtw
   - pgr_vrponedepot
 
-**Deprecated functions**
+**Deprecated Functions**
 
 - pgr_getColumnName
 - pgr_getTableName

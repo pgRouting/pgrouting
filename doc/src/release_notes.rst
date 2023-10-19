@@ -261,7 +261,7 @@ milestone for 3.4.0
 
     * Deprecating ``pgr_maxCardinalityMatch(text,boolean)``
 
-.. rubric:: Deprecated functions
+.. rubric:: Deprecated Functions
 
 * Turn Restrictions
 
@@ -422,7 +422,7 @@ milestone for 3.2.2
 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.2%22>`_
 on Github.
 
-.. rubric:: Issues
+.. rubric:: Issue fixes
 
 * `#2093 <https://github.com/pgRouting/pgrouting/issues/2093>`__: Compilation on Visual Studio
 * `#2189 <https://github.com/pgRouting/pgrouting/issues/2189>`__: Build error on RHEL 7
@@ -637,7 +637,7 @@ milestone for 3.0.5
 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.5%22>`_
 on Github.
 
-.. rubric:: Backport issues fixes
+.. rubric:: Backport issue fixes
 
 * `#1825 <https://github.com/pgRouting/pgrouting/issues/1825>`__: Boost versions
   are not honored
@@ -655,7 +655,7 @@ milestone for 3.0.4
 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`_
 on Github.
 
-.. rubric:: Backport issues fixes
+.. rubric:: Backport issue fixes
 
 * `#1304 <https://github.com/pgRouting/pgrouting/issues/1304>`__: FreeBSD 12
   64-bit crashes on pgr_vrOneDepot tests Experimental Function
@@ -673,7 +673,7 @@ on Github.
 pgRouting 3.0.3 Release Notes
 -------------------------------------------------------------------------------
 
-.. rubric:: Backport issues fixes
+.. rubric:: Backport issue fixes
 
 * `#1733 <https://github.com/pgRouting/pgrouting/issues/1733>`__: pgr_bdAstar
   fails when source or target vertex does not exist in the graph
@@ -836,7 +836,7 @@ on Github.
   * Bug Fixes
 
 
-.. rubric:: New Experimental functions
+.. rubric:: New experimental functions
 
 * pgr_maxFlowMinCost
 * pgr_maxFlowMinCost_Cost
@@ -1111,7 +1111,7 @@ on Github.
   * Parameter names changed
   * The many version results are the union of the one to one version
 
-.. rubric:: New Signatures:
+.. rubric:: New Signatures
 
 * pgr_bdAstar(one to one)
 
@@ -1141,18 +1141,18 @@ on Github.
 * pgr_articulationPoints
 * pgr_bridges
 
-.. rubric:: Deprecated Signatures
+.. rubric:: Deprecated signatures
 
 * pgr_bdastar - use pgr_bdAstar instead
 
-.. rubric:: Renamed Functions
+.. rubric:: Renamed functions
 
 * pgr_maxFlowPushRelabel - use pgr_pushRelabel instead
 * pgr_maxFlowEdmondsKarp -use pgr_edmondsKarp instead
 * pgr_maxFlowBoykovKolmogorov - use pgr_boykovKolmogorov instead
 * pgr_maximumCardinalityMatching - use pgr_maxCardinalityMatch instead
 
-.. rubric:: Deprecated function
+.. rubric:: Deprecated Function
 
 * pgr_pointToEdgeNode
 
@@ -1214,7 +1214,7 @@ on Github.
 * pgr_astarCost(many to many)
 * pgr_astarCostMatrix
 
-.. rubric:: Deprecated Signatures
+.. rubric:: Deprecated signatures
 
 * pgr_bddijkstra - use pgr_bdDijkstra instead
 
@@ -1304,7 +1304,7 @@ on Github.
 * pgr_contractGraph
 
 
-.. rubric:: Deprecated Signatures
+.. rubric:: Deprecated signatures
 
 * pgr_tsp - use pgr_TSP or pgr_eucledianTSP instead
 * pgr_astar - use pgr_aStar instead
@@ -1401,7 +1401,7 @@ on Github.
 - pgr_dijkstraCost(many to one)
 - pgr_dijkstraCost(many to many)
 
-.. rubric:: Proposed functionality
+.. rubric:: Proposed Functionality
 
 - pgr_withPoints(one to one)
 - pgr_withPoints(one to many)
@@ -1417,14 +1417,14 @@ on Github.
 - pgr_dijkstraVia
 
 
-.. rubric:: Deprecated functions:
+.. rubric:: Deprecated Functions
 
 - pgr_apspWarshall use pgr_floydWarshall instead
 - pgr_apspJohnson use pgr_Johnson instead
 - pgr_kDijkstraCost use pgr_dijkstraCost instead
 - pgr_kDijkstraPath use pgr_dijkstra instead
 
-.. rubric:: Renamed and deprecated function
+.. rubric:: Renamed and Deprecated Function
 
 - pgr_makeDistanceMatrix renamed to _pgr_makeDistanceMatrix
 
@@ -1455,7 +1455,7 @@ on Github.
 - pgr_alphaShape function now can generate better (multi)polygon with holes and
   alpha parameter.
 
-.. rubric:: Proposed functionality
+.. rubric:: Proposed Functionality
 
 - Proposed functions from Steve Woodbridge, (Classified as Convenience by the
   author.)
@@ -1476,7 +1476,7 @@ on Github.
   - pgr_vrppdtw
   - pgr_vrponedepot
 
-.. rubric:: Deprecated functions
+.. rubric:: Deprecated Functions
 
 - pgr_getColumnName
 - pgr_getTableName

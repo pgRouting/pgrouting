@@ -441,7 +441,7 @@ There are several ways to load your data into pgRouting.
 * Manually creating a database.
 
   * `Graphs without geometries`_
-  * :doc:`sampledata`: a small graph used on the documentation examples
+  * :doc:`sampledata`: a small graph used in the documentation examples
 
 * Using `osm2pgrouting
   <https://workshop.pgrouting.org/latest/en/basic/data.html>`__
@@ -675,7 +675,7 @@ For pgRouting calculations
 
 * **factor** based on the position of the intersection of the edges can be used
   to adjust the ``cost`` and ``reverse_cost`` columns.
-* Capacity information, used on the :doc:`flow-family` functions does not need
+* Capacity information, used in the :doc:`flow-family` functions does not need
   to change when splitting edges.
 
 .. literalinclude:: concepts.queries
@@ -1308,7 +1308,7 @@ Where:
 Combinations SQL
 ...............................................................................
 
-.. rubric:: Used on combination signatures
+.. rubric:: Used in combination signatures
 
 .. basic_combinations_sql_start
 
@@ -1504,7 +1504,7 @@ There are several kinds of columns returned are depending of the function.
 Result columns for a path
 ...............................................................................
 
-.. rubric:: Used on functions that return one path solution
+.. rubric:: Used in functions that return one path solution
 
 .. return_path_short_start
 
@@ -1557,7 +1557,7 @@ agg_cost)``
 
 .. return_path_short_end
 
-.. rubric:: Used on functions the following:
+.. rubric:: Used in functions the following:
 
 * :doc:`pgr_withPoints`
 
@@ -1624,7 +1624,7 @@ agg_cost)``
 .. return_withpoint_path_short_end
 
 
-.. rubric:: Used on functions the following:
+.. rubric:: Used in functions the following:
 
 * :doc:`pgr_dijkstraNear`
 
