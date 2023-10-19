@@ -82,7 +82,7 @@ The pgr_contraction function has the following signature:
    | pgr_contraction(`Edges SQL`_, **contraction order**, [**options**])
 
    | **options:** ``[ max_cycles, forbidden_vertices, directed]``
-   | RETURNS SET OF |result-contract|
+   | Returns set of |result-contract|
 
 :Example: Making a dead end and linear contraction in that order on an
           undirected graph.

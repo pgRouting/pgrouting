@@ -58,7 +58,7 @@ Signatures
    | pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, [**options**])
    | **options:** ``[directed, driving_side]``
 
-   | RETURNS SET OF |matrix-result|
+   | Returns set of |matrix-result|
    | OR EMPTY SET
 
 .. note:: There is no **details** flag, unlike the other members of the

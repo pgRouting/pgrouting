@@ -83,7 +83,7 @@ Signatures
 
    | pgr_maxCardinalityMatch(`Edges SQL`_)
 
-   | RETURNS SET OF |result-edge|
+   | Returns set of |result-edge|
    | OR EMPTY SET
 
 :Example: Using all edges.

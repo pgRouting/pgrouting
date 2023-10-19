@@ -53,7 +53,7 @@ Signatures
    | pgr_findCloseEdges(`Edges SQL`_, **points**, **tolerance**, [**options**])
    | **options:** ``[cap, partial, dryrun]``
 
-   | RETURNS SET OF |result-find|
+   | Returns set of |result-find|
    | OR EMPTY SET
 
 .. index::
@@ -68,7 +68,7 @@ One point
    | pgr_findCloseEdges(`Edges SQL`_, **point**, **tolerance**, [**options**])
    | **options:** ``[cap, partial, dryrun]``
 
-   | RETURNS SET OF |result-find|
+   | Returns set of |result-find|
    | OR EMPTY SET
 
 :Example: With default values
@@ -103,7 +103,7 @@ Many points
    | pgr_findCloseEdges(`Edges SQL`_, **points**, **tolerance**, [**options**])
    | **options:** ``[cap, partial, dryrun]``
 
-   | RETURNS SET OF |result-find|
+   | Returns set of |result-find|
    | OR EMPTY SET
 
 :Example: Find at most :math:`2` edges close to all vertices on the points of

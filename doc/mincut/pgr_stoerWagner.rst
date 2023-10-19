@@ -77,7 +77,7 @@ Signatures
 
    | pgr_stoerWagner(`Edges SQL`_)
 
-   | RETURNS SET OF |result-mincut|
+   | Returns set of |result-mincut|
    | OR EMPTY SET
 
 :Example: min cut of the main subgraph

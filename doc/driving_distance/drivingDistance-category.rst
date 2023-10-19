@@ -109,7 +109,7 @@ Result columns
 
 .. spantree-result-columns-start
 
-Returns SET OF |result-spantree|
+Returns set of |result-spantree|
 
 .. list-table::
    :width: 81

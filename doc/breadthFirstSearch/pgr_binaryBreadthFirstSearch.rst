@@ -91,7 +91,7 @@ Signatures
    | pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vids**, [``directed``])
    | pgr_binaryBreadthFirstSearch(`Edges SQL`_, `Combinations SQL`_, [``directed``])
 
-   | RETURNS SET OF |old-generic-result|
+   | Returns set of |old-generic-result|
    | OR EMPTY SET
 
 **Note:** Using the :doc:`sampledata` Network as all weights are same (i.e
@@ -108,7 +108,7 @@ One to One
 
    | pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**, **end vid**, [``directed``])
 
-   | RETURNS SET OF |result-1-1|
+   | Returns set of |result-1-1|
    | OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertex :math:`10` on a **directed** graph
@@ -128,7 +128,7 @@ One to Many
 
    | pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**, **end vids**, [``directed``])
 
-   | RETURNS SET OF |result-1-m|
+   | Returns set of |result-1-m|
    | OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertices :math:`\{10, 17\}` on a **directed**
@@ -149,7 +149,7 @@ Many to One
 
    | pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vid**, [``directed``])
 
-   | RETURNS SET OF |result-m-1|
+   | Returns set of |result-m-1|
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 1\}` to vertex :math:`17` on a **directed**
@@ -170,7 +170,7 @@ Many to Many
 
    | pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vids**, [``directed``])
 
-   | RETURNS SET OF |short-generic-result|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 17\}` on an
@@ -191,7 +191,7 @@ Combinations
 
    | pgr_binaryBreadthFirstSearch(`Edges SQL`_, `Combinations SQL`_, [``directed``])
 
-   | RETURNS SET OF |short-generic-result|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: Using a combinations table on an **undirected** graph

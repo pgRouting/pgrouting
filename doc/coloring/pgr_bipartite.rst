@@ -61,7 +61,7 @@ Signatures
 
    | pgr_bipartite(`Edges SQL`_)
 
-   | RETURNS SET OF |result-node-color|
+   | Returns set of |result-node-color|
    | OR EMPTY SET
 
 :Example: When the graph is bipartite

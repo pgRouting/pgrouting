@@ -58,7 +58,7 @@ Signatures
 
    | pgr_bridges(`Edges SQL`_)
 
-   | RETURNS SET OF |result-edge|
+   | Returns set of |result-edge|
    | OR EMPTY SET
 
 :Example: The bridges of the graph

@@ -118,7 +118,7 @@ Signatures
 
    | pgr_TSP(`Matrix SQL`_, ``[start_id, end_id]``)
 
-   | RETURNS SET OF |tsp-result|
+   | Returns set of |tsp-result|
    | OR EMTPY SET
 
 :Example: Using :doc:`pgr_dijkstraCostMatrix` to generate the matrix information

@@ -113,7 +113,7 @@ Result columns
 
 .. mst-bfs-dfs-dd-result-columns-start
 
-Returns SET OF ``(seq, depth, start_vid, node, edge, cost, agg_cost)``
+Returns set of ``(seq, depth, start_vid, node, edge, cost, agg_cost)``
 
 .. list-table::
    :width: 81

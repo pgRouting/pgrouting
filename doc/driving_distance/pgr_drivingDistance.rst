@@ -62,7 +62,7 @@ Signatures
    | pgr_drivingDistance(`Edges SQL`_, **Root vids**, **distance**, [**options**])
    | **options:** [directed, equicost]
 
-   | RETURNS SET OF |result-spantree|
+   | Returns set of |result-spantree|
 
 .. index::
    single: drivingDistance(Single vertex)
@@ -75,7 +75,7 @@ Single Vertex
 
    | pgr_drivingDistance(`Edges SQL`_, **Root vid**, **distance**, [``directed``])
 
-   | RETURNS SET OF |result-spantree|
+   | Returns set of |result-spantree|
 
 :Example: From vertex :math:`11` for a distance of :math:`3.0`
 
@@ -95,7 +95,7 @@ Multiple Vertices
    | pgr_drivingDistance(`Edges SQL`_, **Root vids**, **distance**, [**options**])
    | **options:** [directed, equicost]
 
-   | RETURNS SET OF |result-spantree|
+   | Returns set of |result-spantree|
 
 :Example: From vertices :math:`\{11, 16\}` for a distance of :math:`3.0` with
           equi-cost on a directed graph

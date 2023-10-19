@@ -84,7 +84,7 @@ Signatures
 
    | pgr_TSPeuclidean(`Coordinates SQL`_, ``[start_id, end_id]``)
 
-   | RETURNS SET OF |tsp-result|
+   | Returns set of |tsp-result|
    | OR EMTPY SET
 
 :Example: With default values

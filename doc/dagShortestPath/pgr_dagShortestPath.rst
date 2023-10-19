@@ -93,7 +93,7 @@ Signatures
    | pgr_dagShortestPath(`Edges SQL`_, **start vids**, **end vids**)
    | pgr_dagShortestPath(`Edges SQL`_, `Combinations SQL`_)
 
-   | RETURNS SET OF |result-1-1|
+   | Returns set of |result-1-1|
    | OR EMPTY SET
 
 
@@ -108,7 +108,7 @@ One to One
 
    | pgr_dagShortestPath(`Edges SQL`_, **start vid**, **end vid**)
 
-   | RETURNS SET OF |result-1-1|
+   | Returns set of |result-1-1|
    | OR EMPTY SET
 
 :Example: From vertex :math:`5` to vertex :math:`11` on a **directed** graph
@@ -128,7 +128,7 @@ One to Many
 
    | pgr_dagShortestPath(`Edges SQL`_, **start vid**, **end vids**)
 
-   | RETURNS SET OF |result-1-1|
+   | Returns set of |result-1-1|
    | OR EMPTY SET
 
 :Example: From vertex :math:`5` to vertices :math:`\{7, 11\}`
@@ -148,7 +148,7 @@ Many to One
 
    | pgr_dagShortestPath(`Edges SQL`_, **start vids**, **end vid**)
 
-   | RETURNS SET OF |result-1-1|
+   | Returns set of |result-1-1|
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{5, 10\}` to vertex :math:`11`
@@ -168,7 +168,7 @@ Many to Many
 
    | pgr_dagShortestPath(`Edges SQL`_, **start vids**, **end vids**)
 
-   | RETURNS SET OF |result-1-1|
+   | Returns set of |result-1-1|
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{5, 15\}` to vertices :math:`\{11, 17\}` on an
@@ -189,7 +189,7 @@ Combinations
 
    | pgr_dagShortestPath(`Edges SQL`_, `Combinations SQL`_)
 
-   | RETURNS SET OF |result-1-1|
+   | Returns set of |result-1-1|
    | OR EMPTY SET
 
 :Example: Using a combinations table on an **undirected** graph

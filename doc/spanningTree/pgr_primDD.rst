@@ -55,7 +55,7 @@ Signatures
    | pgr_primDD(`Edges SQL`_, **root vid**, **distance**)
    | pgr_primDD(`Edges SQL`_, **root vids**, **distance**)
 
-   | RETURNS SET OF |result-bfs|
+   | Returns set of |result-bfs|
 
 .. index::
     single: primDD(Single vertex)
@@ -68,7 +68,7 @@ Single vertex
 
    | pgr_primDD(`Edges SQL`_, **root vid**, **distance**)
 
-   | RETURNS SET OF |result-bfs|
+   | Returns set of |result-bfs|
 
 :Example: The Minimum Spanning Tree starting on vertex :math:`6` with
           :math:`distance \leq 3.5`
@@ -88,7 +88,7 @@ Multiple vertices
 
    | pgr_primDD(`Edges SQL`_, **root vids**, **distance**)
 
-   | RETURNS SET OF |result-bfs|
+   | Returns set of |result-bfs|
 
 :Example: The Minimum Spanning Tree starting on vertices :math:`\{9, 6\}` with
           :math:`distance \leq 3.5`

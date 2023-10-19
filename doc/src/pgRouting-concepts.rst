@@ -1863,7 +1863,7 @@ Result columns for spanning tree functions
 
 .. r-edge-cost-start
 
-Returns SET OF ``(edge, cost)``
+Returns set of ``(edge, cost)``
 
 .. list-table::
    :width: 81

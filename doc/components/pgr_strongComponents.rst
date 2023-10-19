@@ -65,7 +65,7 @@ Signatures
 
    | pgr_strongComponents(`Edges SQL`_)
 
-   | RETURNS SET OF |result-component-V|
+   | Returns set of |result-component-V|
    | OR EMPTY SET
 
 :Example: The strong components of the graph

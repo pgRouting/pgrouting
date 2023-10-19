@@ -58,7 +58,7 @@ Signatures
 
    | pgr_bdDijkstraCostMatrix(`Edges SQL`_, **start vids**, [``directed``])
 
-   | RETURNS SET OF |matrix-result|
+   | Returns set of |matrix-result|
    | OR EMPTY SET
 
 :Example: Symmetric cost matrix for vertices :math:`\{5, 6, 10, 15\}` on an

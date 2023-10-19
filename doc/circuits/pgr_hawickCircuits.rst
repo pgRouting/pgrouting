@@ -68,7 +68,7 @@ Signatures
 
    | pgr_hawickCircuits(`Edges SQL`_)
 
-   | RETURNS SET OF |generic-result|
+   | Returns set of |generic-result|
    | OR EMPTY SET
 
 .. index::

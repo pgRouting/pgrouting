@@ -79,7 +79,7 @@ Signatures
    | **options A:** ``[directed, details]``
    | **options B:** ``[directed, details, equicost]``
 
-   | RETURNS SET OF |result-spantree|
+   | Returns set of |result-spantree|
    | OR EMPTY SET
 
 .. index::
@@ -94,7 +94,7 @@ Single vertex
    | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, **driving side**, [**options**])
    | **options:** ``[directed, details]``
 
-   | RETURNS SET OF |result-spantree|
+   | Returns set of |result-spantree|
    | OR EMPTY SET
 
 :Example: Right side driving topology, from point :math:`1` within a distance of
@@ -116,7 +116,7 @@ Multiple vertices
    | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, **driving side**, [**options**])
    | **options:** ``[directed, details, equicost]``
 
-   | RETURNS SET OF |result-spantree|
+   | Returns set of |result-spantree|
    | OR EMPTY SET
 
 :Example: From point :math:`1` and vertex :math:`16` within a distance of
