@@ -439,7 +439,7 @@ Result columns
 
 .. parsed-literal::
 
-     RETURNS SET OF
+     Returns set of
       (seq, vehicle_seq, vehicle_id, stop_seq, stop_type,
           travel_time, arrival_time, wait_time, service_time, departure_time)
       UNION

@@ -52,7 +52,7 @@ Signatures
    | pgr_primBFS(`Edges SQL`_, **root vid**, [``max_depth``])
    | pgr_primBFS(`Edges SQL`_, **root vids**, [``max_depth``])
 
-   | RETURNS SET OF |result-bfs|
+   | Returns set of |result-bfs|
 
 .. index::
     single: primBFS(Single vertex)
@@ -65,7 +65,7 @@ Single vertex
 
    | pgr_primBFS(`Edges SQL`_, **root vid**, [``max_depth``])
 
-   | RETURNS SET OF |result-bfs|
+   | Returns set of |result-bfs|
 
 :Example: The Minimum Spanning Tree having as root vertex :math:`6`
 
@@ -84,7 +84,7 @@ Multiple vertices
 
    | pgr_primBFS(`Edges SQL`_, **root vids**, [``max_depth``])
 
-   | RETURNS SET OF |result-bfs|
+   | Returns set of |result-bfs|
 
 :Example: The Minimum Spanning Tree starting on vertices :math:`\{9, 6\}` with
           :math:`depth \leq 3`

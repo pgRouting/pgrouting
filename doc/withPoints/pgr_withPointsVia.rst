@@ -66,7 +66,7 @@ One Via
    | pgr_withPointsVia(`Edges SQL`_, `Points SQL`_, **via vertices**, [**options**])
    | **options:** ``[directed, strict, U_turn_on_edge]``
 
-   | RETURNS SET OF |via-result|
+   | Returns set of |via-result|
    | OR EMPTY SET
 
 :Example: Find the route that visits the vertices :math:`\{ -6, 15, -1\}` in

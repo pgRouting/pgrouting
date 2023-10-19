@@ -71,7 +71,7 @@ Signatures
 
    | pgr_sequentialVertexColoring(`Edges SQL`_)
 
-   | RETURNS SET OF |result-node-color|
+   | Returns set of |result-node-color|
    | OR EMPTY SET
 
 :Example: Graph coloring of pgRouting :doc:`sampledata`

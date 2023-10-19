@@ -83,7 +83,7 @@ Signatures
    | pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, [**options**])
    | **options:** ``[directed, driving_side, details])``
 
-   | RETURNS SET OF |old-pid-result|
+   | Returns set of |old-pid-result|
    | OR EMTPY SET
 
 .. index::
@@ -98,7 +98,7 @@ One to One
    | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**, [**options**])
    | **options:** [directed, driving_side, details])
 
-   | RETURNS SET OF |result-1-1|
+   | Returns set of |result-1-1|
    | OR EMTPY SET
 
 :Example: From point :math:`1` to vertex :math:`10` with details
@@ -119,7 +119,7 @@ One to Many
    | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, [**options**])
    | **options:** [directed, driving_side, details])
 
-   | RETURNS SET OF |pid-1-m|
+   | Returns set of |pid-1-m|
    | OR EMTPY SET
 
 :Example: From point :math:`1` to point :math:`3` and vertex :math:`7` on an
@@ -141,7 +141,7 @@ Many to One
    | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, [**options**])
    | **options:** [directed, driving_side, details])
 
-   | RETURNS SET OF |pid-m-1|
+   | Returns set of |pid-m-1|
    | OR EMTPY SET
 
 :Example: From point :math:`1` and vertex :math:`6` to point :math:`3`
@@ -162,7 +162,7 @@ Many to Many
    | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, [**options**])
    | **options:** [directed, driving_side, details])
 
-   | RETURNS SET OF |pid-m-m|
+   | Returns set of |pid-m-m|
    | OR EMTPY SET
 
 :Example: From point :math:`1` and vertex :math:`6` to point :math:`3` and
@@ -184,7 +184,7 @@ Combinations
    | pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, [**options**])
    | **options:** [directed, driving_side, details])
 
-   | RETURNS SET OF |pid-m-m|
+   | Returns set of |pid-m-m|
    | OR EMTPY SET
 
 :Example: Two combinations

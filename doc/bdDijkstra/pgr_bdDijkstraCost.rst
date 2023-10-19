@@ -66,7 +66,7 @@ Signatures
    | pgr_bdDijkstraCost(`Edges SQL`_, **start vids**, **end vids**, [``directed``])
    | pgr_bdDijkstraCost(`Edges SQL`_, `Combinations SQL`_, [ ``directed``])
 
-   | RETURNS SET OF |matrix-result|
+   | Returns set of |matrix-result|
    | OR EMPTY SET
 
 .. index::
@@ -80,7 +80,7 @@ One to One
 
    | pgr_bdDijkstraCost(`Edges SQL`_, **start vid**, **end vid** , [``directed``])
 
-   | RETURNS SET OF |matrix-result|
+   | Returns set of |matrix-result|
    | OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertex :math:`10` on a **directed** graph
@@ -100,7 +100,7 @@ One to Many
 
    | pgr_bdDijkstraCost(`Edges SQL`_, **start vid**, **end vids**, [``directed``])
 
-   | RETURNS SET OF |matrix-result|
+   | Returns set of |matrix-result|
    | OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertices :math:`\{10, 17\}` on a **directed**
@@ -121,7 +121,7 @@ Many to One
 
    | pgr_bdDijkstraCost(`Edges SQL`_, **start vids**, **end vid** , [``directed``])
 
-   | RETURNS SET OF |matrix-result|
+   | Returns set of |matrix-result|
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 1\}` to vertex :math:`17` on a **directed**
@@ -142,7 +142,7 @@ Many to Many
 
    | pgr_bdDijkstraCost(`Edges SQL`_, **start vids**, **end vids**, [``directed``])
 
-   | RETURNS SET OF |matrix-result|
+   | Returns set of |matrix-result|
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 17\}` on an
@@ -163,7 +163,7 @@ Combinations
 
    | pgr_bdDijkstraCost(`Edges SQL`_, `Combinations SQL`_, [``directed``])
 
-   | RETURNS SET OF |matrix-result|
+   | Returns set of |matrix-result|
    | OR EMPTY SET
 
 :Example: Using a combinations table on an **undirected** graph

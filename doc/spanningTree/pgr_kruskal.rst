@@ -54,7 +54,7 @@ Signatures
 
    | pgr_kruskal(`Edges SQL`_)
 
-   | RETURNS SET OF |result-mst|
+   | Returns set of |result-mst|
    | OR EMPTY SET
 
 :Example: Minimum spanning forest

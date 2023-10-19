@@ -102,7 +102,7 @@ Signatures
    | pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, `Combinations SQL`_, [**options**])
    | **options:** ``[directed, driving_side]``
 
-   | RETURNS SET OF |matrix-pid|
+   | Returns set of |matrix-pid|
    | OR EMPTY SET
 
 .. note:: There is no **details** flag, unlike the other members of the
@@ -120,7 +120,7 @@ One to One
    | pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vid**, **end vid**, [**options**])
    | **options:** ``[directed, driving_side]``
 
-   | RETURNS SET OF |matrix-pid|
+   | Returns set of |matrix-pid|
    | OR EMPTY SET
 
 :Example: From point :math:`1` to vertex :math:`10` with defaults
@@ -141,7 +141,7 @@ One to Many
    | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, [**options**])
    | **options:** ``[directed, driving_side]``
 
-   | RETURNS SET OF |matrix-pid|
+   | Returns set of |matrix-pid|
    | OR EMPTY SET
 
 :Example: From point :math:`1` to point :math:`3` and vertex :math:`7` on an
@@ -163,7 +163,7 @@ Many to One
    | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, [**options**])
    | **options:** ``[directed, driving_side]``
 
-   | RETURNS SET OF |matrix-pid|
+   | Returns set of |matrix-pid|
    | OR EMPTY SET
 
 :Example: From point :math:`1` and vertex :math:`6` to point :math:`3`
@@ -184,7 +184,7 @@ Many to Many
    | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, [**options**])
    | **options:** ``[directed, driving_side]``
 
-   | RETURNS SET OF |matrix-pid|
+   | Returns set of |matrix-pid|
    | OR EMPTY SET
 
 :Example: From point :math:`15` and vertex :math:`6` to point :math:`3` and
@@ -206,7 +206,7 @@ Combinations
    | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, [**options**])
    | **options:** ``[directed, driving_side]``
 
-   | RETURNS SET OF |matrix-pid|
+   | Returns set of |matrix-pid|
    | OR EMPTY SET
 
 :Example: Two combinations

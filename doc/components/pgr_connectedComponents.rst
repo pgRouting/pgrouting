@@ -67,7 +67,7 @@ Signatures
 
    | pgr_connectedComponents(`Edges SQL`_)
 
-   | RETURNS SET OF |result-component-V|
+   | Returns set of |result-component-V|
    | OR EMPTY SET
 
 :Example: The connected components of the graph

@@ -47,7 +47,7 @@ Signatures
 
    | pgr_chinesePostman(`Edges SQL`_)
 
-   | RETURNS SET OF |result-1-1-no-seq|
+   | Returns set of |result-1-1-no-seq|
    | OR EMPTY SET
 
 :Example:

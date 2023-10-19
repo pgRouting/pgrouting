@@ -70,7 +70,7 @@ Signatures
 
    | pgr_biconnectedComponents(`Edges SQL`_)
 
-   | RETURNS SET OF |result-component-E|
+   | Returns set of |result-component-E|
    | OR EMPTY SET
 
 :Example: The biconnected components of the graph

@@ -62,7 +62,7 @@ Signatures
 
    | pgr_articulationPoints(`Edges SQL`_)
 
-   | RETURNS SET OF |result-node|
+   | Returns set of |result-node|
    | OR EMPTY SET
 
 :Example: The articulation points of the graph

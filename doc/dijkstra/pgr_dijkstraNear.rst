@@ -89,7 +89,7 @@ Signatures
    | **options A:** ``[directed, cap]``
    | **options B:** ``[directed, cap, global]``
 
-   | RETURNS SET OF |short-generic-result|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 .. index::
@@ -104,7 +104,7 @@ One to Many
    | pgr_dijkstraNear(`Edges SQL`_, **start vid**, **end vids**, [**options**])
    | **options:** ``[directed, cap]``
 
-   | RETURNS SET OF |short-generic-result|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: Departing on car from vertex :math:`6` find the nearest subway
@@ -137,7 +137,7 @@ Many to One
    | pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid**, [**options**])
    | **options:** ``[directed, cap]``
 
-   | RETURNS SET OF |short-generic-result|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: Departing on a car from a subway station find the nearest **two**
@@ -168,7 +168,7 @@ Many to Many
    | pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids**, [**options**])
    | **options:** ``[directed, cap, global]``
 
-   | RETURNS SET OF |short-generic-result|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: Find the best pedestrian connection between two lines of buses
@@ -204,7 +204,7 @@ Combinations
    | pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_, [**options**])
    | **options:** ``[directed, cap, global]``
 
-   | RETURNS SET OF |short-generic-result|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: Find the best car connection between all the stations of two subway

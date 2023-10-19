@@ -52,7 +52,7 @@ Signatures
 
    | pgr_lineGraph(`Edges SQL`_, [``directed``])
 
-   | RETURNS SET OF |result-lineg|
+   | Returns set of |result-lineg|
    | OR EMPTY SET
 
 :Example: For a **directed** graph
@@ -88,7 +88,7 @@ Edges SQL
 Result columns
 -------------------------------------------------------------------------------
 
-RETURNS SET OF |result-lineg|
+Returns set of |result-lineg|
 
 .. list-table::
    :width: 81
