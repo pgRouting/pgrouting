@@ -907,7 +907,7 @@ For example, for this :doc:`pgr_dijkstra` signature:
 .. admonition:: \ \
    :class: signatures
 
-   pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid** [, ``directed``])
+   pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids**, [``directed``])
 
 * `Edges SQL`_:
 

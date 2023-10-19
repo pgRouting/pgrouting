@@ -70,10 +70,10 @@ Description
 * The results are equivalent to the union of the results of the `pgr_aStar(`
   `One to One`_ `)` on the:
 
-  * `pgr_aStar(` `One to Many`_ `)`
-  * `pgr_aStar(` `Many to One`_ `)`
-  * `pgr_aStar(` `Many to Many`_ `)`
-  * `pgr_aStar(` `Combinations`_ `)`
+  * ``pgr_aStar`` (`One to Many`_)
+  * ``pgr_aStar`` (`Many to One`_)
+  * ``pgr_aStar`` (`Many to Many`_)
+  * ``pgr_aStar`` (`Combinations`_)
 
 Signatures
 -------------------------------------------------------------------------------
