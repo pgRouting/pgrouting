@@ -626,7 +626,7 @@ To get the crossing edges:
 .. figure:: images/crossing_edges.png
 
 That information is correct, for example, when in terms of vehicles, is it a
-tunnel or bride crossing over another road.
+tunnel or bridge crossing over another road.
 
 It might be incorrect, for example:
 
