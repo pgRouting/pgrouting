@@ -86,7 +86,7 @@ The function returns:
 
 .. rubric:: The Vertices Table
 
-The vertices table is a requierment of the :doc:`pgr_analyzeGraph` and the
+The vertices table is a requirement of the :doc:`pgr_analyzeGraph` and the
 :doc:`pgr_analyzeOneWay` functions.
 
 The structure of the vertices table is:

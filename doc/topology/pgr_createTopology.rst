@@ -48,7 +48,7 @@ Parameters
 
 The topology creation function accepts the following parameters:
 
-:edge_table: ``text`` Network table name. (may contain the schema name AS well)
+:edge_table: ``text`` Network table name. (may contain the schema name as well)
 :tolerance: ``float8`` Snapping tolerance of disconnected edges. (in projection
             unit)
 :the_geom: ``text`` Geometry column name of the network table. Default value is
@@ -124,9 +124,10 @@ The simplest way to use pgr_createTopology is:
    :start-after: --q1
    :end-before: --q1.1
 
-.. rubric:: When the arguments are given in the order described:
+.. rubric:: When the arguments are given in the order described in the
+   parameters:
 
-We get the same result AS the simplest way to use the function.
+We get the sameresult as the simplest way to use the function.
 
 .. literalinclude:: doc-pgr_createTopology.queries
    :start-after: --q2

@@ -215,7 +215,7 @@ Parameters
     :start-after: dijkstra_parameters_start
     :end-before: dijkstra_parameters_end
 
-Optional Parameters
+Optional parameters
 -------------------------------------------------------------------------------
 
 .. include:: dijkstra-family.rst

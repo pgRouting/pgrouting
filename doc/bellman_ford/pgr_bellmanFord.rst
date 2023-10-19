@@ -89,7 +89,7 @@ Signatures
 
    | pgr_bellmanFord(`Edges SQL`_, **start vid**, **end vid**, [``directed``])
    | pgr_bellmanFord(`Edges SQL`_, **start vid**, **end vids**, [``directed``])
-   | pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vid** , [``directed``])
+   | pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vid**, [``directed``])
    | pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vids**, [``directed``])
    | pgr_bellmanFord(`Edges SQL`_, `Combinations SQL`_, [``directed``])
 

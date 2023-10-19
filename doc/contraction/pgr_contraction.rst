@@ -112,7 +112,7 @@ Parameters
        - 1 = Dead end contraction
        - 2 = Linear contraction
 
-Optional Parameters
+Optional parameters
 ...............................................................................
 
 .. include:: dijkstra-family.rst
