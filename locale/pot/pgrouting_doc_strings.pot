@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-19 18:19+0000\n"
+"POT-Creation-Date: 2023-10-19 19:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -5254,7 +5254,7 @@ msgstr ""
 msgid "To get the crossing edges:"
 msgstr ""
 
-msgid "That information is correct, for example, when in terms of vehicles, is it a tunnel or bride crossing over another road."
+msgid "That information is correct, for example, when in terms of vehicles, is it a tunnel or bridge crossing over another road."
 msgstr ""
 
 msgid "It might be incorrect, for example:"
@@ -5491,7 +5491,7 @@ msgstr ""
 msgid "For example, for this :doc:`pgr_dijkstra` signature:"
 msgstr ""
 
-msgid "pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid** [, ``directed``])"
+msgid "pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids**, [``directed``])"
 msgstr ""
 
 msgid "`Edges SQL`_:"
@@ -6862,18 +6862,6 @@ msgstr ""
 msgid "The results are equivalent to the union of the results of the `pgr_aStar(` `One to One`_ `)` on the:"
 msgstr ""
 
-msgid "`pgr_aStar(` `One to Many`_ `)`"
-msgstr ""
-
-msgid "`pgr_aStar(` `Many to One`_ `)`"
-msgstr ""
-
-msgid "`pgr_aStar(` `Many to Many`_ `)`"
-msgstr ""
-
-msgid "`pgr_aStar(` `Combinations`_ `)`"
-msgstr ""
-
 msgid "pgr_aStar(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
 msgstr ""
 
@@ -7517,18 +7505,6 @@ msgid "**Official** ``pgr_bdAstar`` (`One to One`_)"
 msgstr ""
 
 msgid "The results are equivalent to the union of the results of the `pgr_bdAStar(` `One to One`_ `)` on the:"
-msgstr ""
-
-msgid "`pgr_bdAstar(` `One to Many`_ `)`"
-msgstr ""
-
-msgid "`pgr_bdAstar(` `Many to One`_ `)`"
-msgstr ""
-
-msgid "`pgr_bdAstar(` `Many to Many`_ `)`"
-msgstr ""
-
-msgid "`pgr_bdAstar(` `Combinations`_ `)`"
 msgstr ""
 
 msgid "pgr_bdAstar(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
@@ -8746,7 +8722,7 @@ msgstr ""
 msgid "From vertices :math:`\\{5, 15\\}` to vertices :math:`\\{11, 17\\}` on an **undirected** graph"
 msgstr ""
 
-msgid "Resturn Columns"
+msgid "Return columns"
 msgstr ""
 
 msgid "Making **start_vids** the same as **end_vids**"
@@ -8963,9 +8939,6 @@ msgid "pgr_dijkstra(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
 msgstr ""
 
 msgid "pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid**, [``directed``])"
-msgstr ""
-
-msgid "pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids**, [``directed``])"
 msgstr ""
 
 msgid "pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
