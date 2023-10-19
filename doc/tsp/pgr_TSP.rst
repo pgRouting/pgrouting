@@ -165,7 +165,7 @@ Column        Type              Description
 
 .. Matrix SQL definition end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: ../../include/c_types/tsp_tour_rt.h

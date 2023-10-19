@@ -60,7 +60,7 @@ Inner Queries
 
 * TBD
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 *Description of the return values for pgr_randomSpanTree algorithms*

@@ -69,7 +69,7 @@ Inner Queries
    :start-after: inner_query-start
    :end-before: inner_query-end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. list-table::

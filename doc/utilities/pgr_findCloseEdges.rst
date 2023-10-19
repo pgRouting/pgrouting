@@ -199,7 +199,7 @@ Edges SQL
      - ``geometry``
      - The ``LINESTRING`` geometry of the edge.
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 Returns set of |result-find|

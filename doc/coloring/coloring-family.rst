@@ -50,7 +50,7 @@ Coloring - Family of functions
     pgr_edgeColoring
 
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. result columns start

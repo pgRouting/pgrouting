@@ -238,7 +238,7 @@ Combinations SQL
     :start-after: basic_combinations_sql_start
     :end-before: basic_combinations_sql_end
 
-Return columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst

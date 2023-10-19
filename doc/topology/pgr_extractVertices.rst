@@ -149,7 +149,7 @@ Column        Type            Description
 ============= =============== ==========================================
 
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. list-table::
@@ -197,7 +197,7 @@ Additional Examples
 .. contents::
    :local:
 
-Dryrun execution
+Dry run execution
 ...............................................................................
 
 To get the query generated used to get the vertex information, use ``dryrun :=

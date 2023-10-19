@@ -93,7 +93,7 @@ Edges SQL
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 RETURNS SET OF |result-linegf|

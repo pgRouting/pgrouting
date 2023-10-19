@@ -147,7 +147,7 @@ Edges SQL
    :start-after: basic_edges_sql_start
    :end-before: basic_edges_sql_end
 
-Return columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: BFS-category.rst

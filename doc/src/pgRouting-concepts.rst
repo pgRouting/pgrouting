@@ -1493,7 +1493,7 @@ Where:
 
 .. restriction_parameters_end
 
-Return columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. contents::
@@ -1501,7 +1501,7 @@ Return columns
 
 There are several kinds of columns returned are depending of the function.
 
-Return columns for a path
+Result columns for a path
 ...............................................................................
 
 .. rubric:: Used on functions that return one path solution
@@ -1793,7 +1793,7 @@ agg_cost)``
 
 .. return_path_all_columns_end
 
-Return columns for cost functions
+Result columns for cost functions
 ...............................................................................
 
 .. rubric:: Used in the following
@@ -1834,7 +1834,7 @@ Set of |matrix-result|
 
 .. return_cost_withPoints_end
 
-Return columns for flow functions
+Result columns for flow functions
 ...............................................................................
 
 .. rubric:: Edges SQL for the following
@@ -1853,7 +1853,7 @@ Return columns for flow functions
     :start-after: result_costFlow_start
     :end-before: result_costFlow_end
 
-Return columns for spanning tree functions
+Result columns for spanning tree functions
 ...............................................................................
 
 .. rubric:: Edges SQL for the following

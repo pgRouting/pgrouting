@@ -145,7 +145,7 @@ Where:
 :ANY-INTEGER: ``SMALLINT``, ``INTEGER``, ``BIGINT``
 :ANY-NUMERICAL: ``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 ========== ========== =================================================

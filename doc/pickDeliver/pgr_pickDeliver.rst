@@ -173,7 +173,7 @@ Matrix SQL
     :start-after: where_definition_starts
     :end-before: where_definition_ends
 
-Return columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: VRP-category.rst

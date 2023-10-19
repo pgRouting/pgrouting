@@ -137,7 +137,7 @@ Points SQL
     :start-after: points_sql_start
     :end-before: points_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: via-category.rst

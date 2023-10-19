@@ -220,7 +220,7 @@ Combinations SQL
     :start-after: basic_combinations_sql_start
     :end-before: basic_combinations_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst

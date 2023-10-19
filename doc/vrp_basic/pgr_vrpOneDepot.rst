@@ -48,7 +48,7 @@ Inner Queries
 
 * TBD
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 * TBD

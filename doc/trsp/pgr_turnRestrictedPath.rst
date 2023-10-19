@@ -116,7 +116,7 @@ Restrictions SQL
    :end-before: restrictions_columns_end
 
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
