@@ -68,10 +68,10 @@ Description
 * The results are equivalent to the union of the results of the `pgr_bdAStar(`
   `One to One`_ `)` on the:
 
-  * `pgr_bdAstar(` `One to Many`_ `)`
-  * `pgr_bdAstar(` `Many to One`_ `)`
-  * `pgr_bdAstar(` `Many to Many`_ `)`
-  * `pgr_bdAstar(` `Combinations`_ `)`
+  * ``pgr_bdAstar`` (`One to Many`_)
+  * ``pgr_bdAstar`` (`Many to One`_)
+  * ``pgr_bdAstar`` (`Many to Many`_)
+  * ``pgr_bdAstar`` (`Combinations`_)
 
 Signatures
 -------------------------------------------------------------------------------
