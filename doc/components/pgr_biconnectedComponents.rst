@@ -25,7 +25,7 @@
 
 * Version 3.0.0
 
-  * Return columns change:
+  * Result columns change:
 
     * ``n_seq`` is removed
     * ``seq`` changed type to ``BIGINT``
@@ -99,7 +99,7 @@ Edges SQL
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 Returns set of |result-component-E|

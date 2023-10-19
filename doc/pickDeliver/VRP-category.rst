@@ -432,7 +432,7 @@ Matrix SQL
     :start-after: return_cost_start
     :end-before: return_cost_end
 
-Return columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. pd_returns_start

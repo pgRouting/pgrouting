@@ -107,7 +107,7 @@ Edges SQL
     :start-after: xy_edges_sql_start
     :end-before: xy_edges_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst

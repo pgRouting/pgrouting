@@ -480,7 +480,7 @@ Also ``l`` could be used as **driving side**
 
 :After Migration:
 
-* Be aware of the existance of the additional return columns.
+* Be aware of the existance of the additional result Columns.
 * New output columns are |result-spantree|
 * **driving side** parameter is unnamed compulsory, and valid values differ for
   directed and undirected graphs.
@@ -572,7 +572,7 @@ Signatures to be migrated:
 
 :Migration:
 
-* Be aware of the existance of the additional return columns.
+* Be aware of the existance of the additional result Columns.
 * New output columns are |nksp-result|
 * **driving side** parameter is unnamed compulsory, and valid values differ for
   directed and undirected graphs.

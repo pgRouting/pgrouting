@@ -26,7 +26,7 @@ vertices and edges.
 
 * Version 3.0.0
 
-  * Return columns change: ``seq`` is removed
+  * Result columns change: ``seq`` is removed
   * Name change from ``pgr_contractGraph``
   * Bug fixes
   * **Official** function
@@ -151,7 +151,7 @@ Edges SQL
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 Returns set of |result-contract|

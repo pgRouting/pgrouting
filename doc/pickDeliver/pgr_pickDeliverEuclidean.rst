@@ -168,7 +168,7 @@ where:
     :end-before: pd_vehicle_sql_euclidean_end
 
 
-Return columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: VRP-category.rst

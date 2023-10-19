@@ -25,7 +25,7 @@ pgr_KSP
 
 .. rubric:: Version 3.6.0
 
-* Return columns standarized to: |nksp-result|
+* Result columns standarized to: |nksp-result|
 * ``pgr_ksp`` (One to One)
 
   * Added ``start_vid`` and ``end_vid`` result columns.
@@ -267,7 +267,7 @@ Combinations SQL
     :start-after: basic_combinations_sql_start
     :end-before: basic_combinations_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. ksp_returns_start

@@ -182,7 +182,7 @@ Used on
     :start-after: points_sql_start
     :end-before: points_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. result_via_start

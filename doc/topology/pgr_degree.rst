@@ -127,7 +127,7 @@ Vertex SQL
        * When missing, ``in_edges`` must exist.
 
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. TODO move to pgRouting concepts

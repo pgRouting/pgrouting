@@ -25,7 +25,7 @@ using Tarjan's algorithm based on DFS.
 
 * Version 3.0.0
 
-  * Return columns change:
+  * Result columns change:
 
     * ``n_seq`` is removed
     * ``seq`` changed type to ``BIGINT``
@@ -95,7 +95,7 @@ Edges SQL
     :end-before: basic_edges_sql_end
 
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgr_connectedComponents.rst

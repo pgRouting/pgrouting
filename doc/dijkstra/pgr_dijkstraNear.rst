@@ -144,7 +144,7 @@ Many to One
           stations to vertex :math:`2`
 
 * Using a **directed** graph for car routing.
-* The subway stations are on the following vertices :math:`\{ 1, 10, 11\}`
+* The subway stations are on the following vertices :math:`\{1, 10, 11\}`
 * On line `4`: using the positional parameter: `directed` set to ``true``
 * In line `5`: using named parameter `cap => 2`
 
@@ -313,7 +313,7 @@ Combinations SQL
     :start-after: basic_combinations_sql_start
     :end-before: basic_combinations_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
