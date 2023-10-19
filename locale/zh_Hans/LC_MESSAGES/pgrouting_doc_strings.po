@@ -2,27 +2,31 @@
 # Copyright (C) pgRouting Contributors - Version v3.6.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # Regina Obe <regina@arrival3d.com>, 2023.
+# Wangdapeng <wangdapeng20191008@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-13 18:09+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-09-21 03:23+0000\n"
+"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
+"Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
+"pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.0\n"
 
 msgid "BFS - Category"
 msgstr ""
 
 msgid ":doc:`pgr_kruskalBFS`"
-msgstr ""
+msgstr ":doc:`pgr_kruskalBFS`"
 
 msgid ":doc:`pgr_primBFS`"
-msgstr ""
+msgstr ":doc:`pgr_primBFS`"
 
 msgid "Traversal using breadth first search."
 msgstr ""
@@ -259,13 +263,13 @@ msgid "`Wikipedia: Kruskal's algorithm <https://en.wikipedia.org/wiki/Kruskal's_
 msgstr ""
 
 msgid "Indices and tables"
-msgstr ""
+msgstr "索引和表格"
 
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`genindex`"
 
 msgid ":ref:`search`"
-msgstr ""
+msgstr ":ref:`search`"
 
 msgid "DFS - Category"
 msgstr ""
@@ -274,10 +278,10 @@ msgid "Traversal using Depth First Search."
 msgstr ""
 
 msgid ":doc:`pgr_kruskalDFS`"
-msgstr ""
+msgstr ":doc:`pgr_kruskalDFS`"
 
 msgid ":doc:`pgr_primDFS`"
-msgstr ""
+msgstr ":doc:`pgr_primDFS`"
 
 msgid "Proposed"
 msgstr ""
@@ -319,7 +323,7 @@ msgid "K shortest paths - Category"
 msgstr ""
 
 msgid ":doc:`pgr_KSP` - Yen's algorithm based on pgr_dijkstra"
-msgstr ""
+msgstr ":doc:`pgr_KSP` - 基于 pgr_dijkstra 的 Yen 算法"
 
 msgid ":doc:`pgr_withPointsKSP` - Yen's algorithm based on pgr_withPoints"
 msgstr ""
@@ -472,13 +476,13 @@ msgid "Traveling Sales Person - Family of functions"
 msgstr ""
 
 msgid ":doc:`pgr_TSP` - When input is given as matrix cell information."
-msgstr ""
+msgstr ":doc:`pgr_TSP` - 当输入作为矩阵单元信息给出时。"
 
 msgid ":doc:`pgr_TSPeuclidean` - When input are coordinates."
-msgstr ""
+msgstr ":doc:`pgr_TSPeuclidean` - 当输入为坐标时。"
 
 msgid "Table of Contents"
-msgstr ""
+msgstr "目录"
 
 msgid "General Information"
 msgstr ""
@@ -1498,13 +1502,13 @@ msgid "The A* (pronounced \"A Star\") algorithm is based on Dijkstra's algorithm
 msgstr ""
 
 msgid ":doc:`pgr_aStar` - A* algorithm for the shortest path."
-msgstr ""
+msgstr ":doc:`pgr_aStar` - 最短路径的A*算法。"
 
 msgid ":doc:`pgr_aStarCost` - Get the aggregate cost of the shortest paths."
-msgstr ""
+msgstr ":doc:`pgr_aStarCost` - 获取最短路径的总成本。"
 
 msgid ":doc:`pgr_aStarCostMatrix` - Get the cost matrix of the shortest paths."
-msgstr ""
+msgstr ":doc:`pgr_aStarCostMatrix` - 获取最短路径的成本矩阵。"
 
 msgid "The main Characteristics are:"
 msgstr ""
@@ -1636,7 +1640,7 @@ msgid "Working with cost/reverse_cost as time in seconds, x/y in lat/lon: Factor
 msgstr ""
 
 msgid ":doc:`bdAstar-family`"
-msgstr ""
+msgstr ":doc:`bdAstar-family`"
 
 msgid "https://www.boost.org/libs/graph/doc/astar_search.html"
 msgstr ""
@@ -1651,10 +1655,10 @@ msgid "The following functions work on all vertices pair combinations"
 msgstr ""
 
 msgid ":doc:`pgr_floydWarshall` - Floyd-Warshall's algorithm."
-msgstr ""
+msgstr ":doc:`pgr_floydWarshall` - Floyd-Warshall算法。"
 
 msgid ":doc:`pgr_johnson` - Johnson's algorithm"
-msgstr ""
+msgstr ":doc:`pgr_johnson` - Johnson算法"
 
 msgid "The main characteristics are:"
 msgstr ""
@@ -2401,13 +2405,13 @@ msgid "The bidirectional A* (pronounced \"A Star\") algorithm is based on the A*
 msgstr ""
 
 msgid ":doc:`pgr_bdAstar` - Bidirectional A* algorithm for obtaining paths."
-msgstr ""
+msgstr ":doc:`pgr_bdAstar` - 获取路径的双向A*算法。"
 
 msgid ":doc:`pgr_bdAstarCost` - Bidirectional A* algorithm to calculate the cost of the paths."
-msgstr ""
+msgstr ":doc:`pgr_bdAstarCost` - 双向 A* 算法计算路径成本。"
 
 msgid ":doc:`pgr_bdAstarCostMatrix` - Bidirectional A* algorithm to calculate a cost matrix of paths."
-msgstr ""
+msgstr ":doc:`pgr_bdAstarCostMatrix` - 用于计算路径成本矩阵的双向 A* 算法。"
 
 msgid "Based on A* algorithm, the bidirectional search finds a shortest path from a starting vertex (``start_vid``) to an ending vertex (``end_vid``). It runs two simultaneous searches: one forward from the ``start_vid``, and one backward from the ``end_vid``, stopping when the two meet in the middle. This implementation can be used with a directed graph and an undirected graph."
 msgstr ""
@@ -2419,7 +2423,7 @@ msgid "It is expected to terminate faster than pgr_astar"
 msgstr ""
 
 msgid ":doc:`aStar-family`"
-msgstr ""
+msgstr ":doc:`aStar-family`"
 
 msgid "Previous versions of this page"
 msgstr ""
@@ -2428,13 +2432,13 @@ msgid "Bidirectional Dijkstra - Family of functions"
 msgstr ""
 
 msgid ":doc:`pgr_bdDijkstra` - Bidirectional Dijkstra algorithm for the shortest paths."
-msgstr ""
+msgstr ":doc:`pgr_bdDijkstra` - 最短路径的双向 Dijkstra 算法。"
 
 msgid ":doc:`pgr_bdDijkstraCost` - Bidirectional Dijkstra to calculate the cost of the shortest paths"
-msgstr ""
+msgstr ":doc:`pgr_bdDijkstraCost` - 双向 Dijkstra 计算最短路径的成本"
 
 msgid ":doc:`pgr_bdDijkstraCostMatrix` - Bidirectional Dijkstra algorithm  to create a matrix of costs of the shortest paths."
-msgstr ""
+msgstr ":doc:`pgr_bdDijkstraCostMatrix` - 双向 Dijkstra 算法创建最短路径成本矩阵。"
 
 msgid "Synopsis"
 msgstr ""
@@ -2560,19 +2564,19 @@ msgid "Components - Family of functions"
 msgstr ""
 
 msgid ":doc:`pgr_connectedComponents` - Connected components of an undirected graph."
-msgstr ""
+msgstr ":doc:`pgr_connectedComponents` - 无向图的连通分量。"
 
 msgid ":doc:`pgr_strongComponents` - Strongly connected components of a directed graph."
-msgstr ""
+msgstr ":doc:`pgr_strongComponents` - 有向图的强连通分量。"
 
 msgid ":doc:`pgr_biconnectedComponents` - Biconnected components of an undirected graph."
-msgstr ""
+msgstr ":doc:`pgr_biconnectedComponents` - 无向图的双连通分量。"
 
 msgid ":doc:`pgr_articulationPoints` - Articulation points of an undirected graph."
-msgstr ""
+msgstr ":doc:`pgr_articulationPoints` - 无向图的连接点。"
 
 msgid ":doc:`pgr_bridges` - Bridges of an undirected graph."
-msgstr ""
+msgstr ":doc:`pgr_bridges` - 无向图的桥。"
 
 msgid ":doc:`pgr_makeConnected` - Details of edges to make graph connected."
 msgstr ""
@@ -2581,7 +2585,7 @@ msgid "Contraction - Family of functions"
 msgstr ""
 
 msgid ":doc:`pgr_contraction`"
-msgstr ""
+msgstr ":doc:`pgr_contraction`"
 
 msgid "In large graphs, like the road graphs, or electric networks, graph contraction can be used to speed up some graph algorithms. Contraction reduces the size of the graph by removing some of the vertices and edges and, for example, might add edges that represent a sequence of original edges decreasing the total time and space used in graph algorithms."
 msgstr ""
@@ -3031,19 +3035,19 @@ msgid "Cost - Category"
 msgstr ""
 
 msgid ":doc:`pgr_aStarCost`"
-msgstr ""
+msgstr ":doc:`pgr_aStarCost`"
 
 msgid ":doc:`pgr_bdAstarCost`"
-msgstr ""
+msgstr ":doc:`pgr_bdAstarCost`"
 
 msgid ":doc:`pgr_dijkstraCost`"
-msgstr ""
+msgstr ":doc:`pgr_dijkstraCost`"
 
 msgid ":doc:`pgr_bdDijkstraCost`"
-msgstr ""
+msgstr ":doc:`pgr_bdDijkstraCost`"
 
 msgid ":doc:`pgr_dijkstraNearCost`"
-msgstr ""
+msgstr ":doc:`pgr_dijkstraNearCost`"
 
 msgid ":doc:`pgr_withPointsCost`"
 msgstr ""
@@ -3079,16 +3083,16 @@ msgid "Cost Matrix - Category"
 msgstr ""
 
 msgid ":doc:`pgr_aStarCostMatrix`"
-msgstr ""
+msgstr ":doc:`pgr_aStarCostMatrix`"
 
 msgid ":doc:`pgr_bdAstarCostMatrix`"
-msgstr ""
+msgstr ":doc:`pgr_bdAstarCostMatrix`"
 
 msgid ":doc:`pgr_bdDijkstraCostMatrix`"
-msgstr ""
+msgstr ":doc:`pgr_bdDijkstraCostMatrix`"
 
 msgid ":doc:`pgr_dijkstraCostMatrix`"
-msgstr ""
+msgstr ":doc:`pgr_dijkstraCostMatrix`"
 
 msgid "proposed"
 msgstr ""
@@ -3226,25 +3230,25 @@ msgid "In both sides ``b``, ``NULL``"
 msgstr ""
 
 msgid ":doc:`TSP-family`"
-msgstr ""
+msgstr ":doc:`TSP-family`"
 
 msgid "Dijkstra - Family of functions"
 msgstr ""
 
 msgid ":doc:`pgr_dijkstra` - Dijkstra's algorithm for the shortest paths."
-msgstr ""
+msgstr ":doc:`pgr_dijkstra` - Dijkstra 最短路径算法。"
 
 msgid ":doc:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths."
-msgstr ""
+msgstr ":doc:`pgr_dijkstraCost` - 获取最短路径的总成本。"
 
 msgid ":doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix."
-msgstr ""
+msgstr ":doc:`pgr_dijkstraCostMatrix` - 使用 pgr_dijkstra 创建成本矩阵。"
 
 msgid ":doc:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament information."
-msgstr ""
+msgstr ":doc:`pgr_drivingDistance` - 使用 pgr_dijkstra 计算流域信息。"
 
 msgid ":doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K shortest paths."
-msgstr ""
+msgstr ":doc:`pgr_KSP` - 使用 Yen 算法和 pgr_dijkstra 来获得 K 条最短路径。"
 
 msgid ":doc:`pgr_dijkstraVia` - Get a route of a seuence of vertices."
 msgstr ""
@@ -3421,19 +3425,19 @@ msgid "Driving Distance - Category"
 msgstr ""
 
 msgid ":doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's algorithm"
-msgstr ""
+msgstr ":doc:`pgr_drivingDistance` - 基于 Dijkstra 算法的行驶距离"
 
 msgid ":doc:`pgr_primDD` - Driving Distance based on Prim's algorithm"
-msgstr ""
+msgstr ":doc:`pgr_primDD` - 基于Prim算法的行驶距离"
 
 msgid ":doc:`pgr_kruskalDD` - Driving Distance based on Kruskal's algorithm"
-msgstr ""
+msgstr ":doc:`pgr_kruskalDD` - 基于Kruskal算法的行驶距离"
 
 msgid "Post pocessing"
-msgstr ""
+msgstr "后期处理"
 
 msgid ":doc:`pgr_alphaShape` - Alpha shape computation"
-msgstr ""
+msgstr ":doc:`pgr_alphaShape` - Alpha 形状计算"
 
 msgid ":doc:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints"
 msgstr ""
@@ -3484,7 +3488,7 @@ msgid "Families"
 msgstr ""
 
 msgid ":doc:`flow-family`"
-msgstr ""
+msgstr ":doc:`flow-family`"
 
 msgid ":doc:`pgr_maxFlowMinCost` - Details of flow and cost on edges."
 msgstr ""
@@ -3517,7 +3521,7 @@ msgid ":doc:`pgr_binaryBreadthFirstSearch` - Breath first search traversal of th
 msgstr ""
 
 msgid ":doc:`components-family`"
-msgstr ""
+msgstr ":doc:`components-family`"
 
 msgid ":doc:`ordering-family`"
 msgstr ""
@@ -3568,25 +3572,25 @@ msgid "Flow - Family of functions"
 msgstr ""
 
 msgid ":doc:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel algorithm."
-msgstr ""
+msgstr ":doc:`pgr_maxFlow` - 仅使用 Push 和 Relabel 算法进行最大流量计算。"
 
 msgid ":doc:`pgr_boykovKolmogorov` - Boykov and Kolmogorov with details of flow on edges."
-msgstr ""
+msgstr ":doc:`pgr_boykovKolmogorov` - Boykov 和 Kolmogorov 的边流动细节。"
 
 msgid ":doc:`pgr_edmondsKarp` - Edmonds and Karp algorithm with details of flow on edges."
-msgstr ""
+msgstr ":doc:`pgr_edmondsKarp` - 带有边流量详细信息的 Edmonds 和 Karp 算法"
 
 msgid ":doc:`pgr_pushRelabel` - Push and relabel algorithm with details of flow on edges."
-msgstr ""
+msgstr ":doc:`pgr_pushRelabel` - 推送和重新标记算法以及边流量的详细信息"
 
 msgid "Applications"
-msgstr ""
+msgstr "应用"
 
 msgid ":doc:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two groups of vertices."
-msgstr ""
+msgstr ":doc:`pgr_edgeDisjointPaths` - 计算两组顶点之间的边不相交路径。"
 
 msgid ":doc:`pgr_maxCardinalityMatch` - Calculates a maximum cardinality matching in a graph."
-msgstr ""
+msgstr ":doc:`pgr_maxCardinalityMatch` - 计算图中的最大基数匹配。"
 
 msgid "Flow Functions General Information"
 msgstr ""
@@ -3794,126 +3798,133 @@ msgstr ""
 
 msgid "pgRouting extends the `PostGIS <https://postgis.net>`__/`PostgreSQL <https://www.postgresql.org>`__ geospatial database to provide geospatial routing and other network analysis functionality."
 msgstr ""
+"pgRouting 扩展了 `PostGIS <https://postgis.net>`__/`PostgreSQL <https://www."
+"postgresql.org>`__ 地理空间数据库，以提供地理空间路由和其他网络分析功能。"
 
 msgid "This is the manual for pgRouting |release|."
-msgstr ""
+msgstr "这是pgRouting|release|的手册"
 
 msgid "Creative Commons Attribution-Share Alike 3.0 License"
-msgstr ""
+msgstr "知识共享署名 - 相同方式共享 3.0 许可证。"
 
 msgid "The pgRouting Manual is licensed under a `Creative Commons Attribution-Share Alike 3.0 License <https://creativecommons.org/licenses/by-sa/3.0/>`_. Feel free to use this material any way you like, but we ask that you attribute credit to the pgRouting Project and wherever possible, a link back to https://pgrouting.org. For other licenses used in pgRouting see the :ref:`license` page."
 msgstr ""
+"pgRouting 手册根据`知识共享署名-相同方式共享3.0许可证 "
+"<https://creativecommons.org/licenses/by-sa/3.0/>`_。 您可以随意使用本材料，"
+"但我们要求您将功劳归功于 pgRouting 项目，并尽可能提供返回 https://"
+"pgrouting.org 的链接。 有关 pgRouting "
+"中使用的其他许可证，请参阅:ref:`license` page.。"
 
 msgid "General"
-msgstr ""
+msgstr "常规"
 
 msgid ":doc:`sampledata` that is used in the examples of this manual."
-msgstr ""
+msgstr "本手册示例中使用的 :doc:`sampledata`"
 
 msgid "Pgrouting Concepts"
-msgstr ""
+msgstr "Pgrouting概念"
 
 msgid ":doc:`routingFunctions`"
-msgstr ""
+msgstr ":doc:`routingFunctions`"
 
 msgid ":doc:`allpairs-family`"
-msgstr ""
+msgstr ":doc:`allpairs-family`"
 
 msgid ":doc:`bdDijkstra-family`"
-msgstr ""
+msgstr ":doc:`bdDijkstra-family`"
 
 msgid ":doc:`contraction-family`"
-msgstr ""
+msgstr ":doc:`contraction-family`"
 
 msgid ":doc:`dijkstra-family`"
-msgstr ""
+msgstr ":doc:`dijkstra-family`"
 
 msgid ":doc:`kruskal-family`"
-msgstr ""
+msgstr ":doc:`kruskal-family`"
 
 msgid ":doc:`pgr_kruskal`"
-msgstr ""
+msgstr ":doc:`pgr_kruskal`"
 
 msgid ":doc:`pgr_kruskalDD`"
-msgstr ""
+msgstr ":doc:`pgr_kruskalDD`"
 
 msgid ":doc:`prim-family`"
-msgstr ""
+msgstr ":doc:`prim-family`"
 
 msgid ":doc:`pgr_prim`"
-msgstr ""
+msgstr ":doc:`pgr_prim`"
 
 msgid ":doc:`pgr_primDD`"
-msgstr ""
+msgstr ":doc:`pgr_primDD`"
 
 msgid ":doc:`reference`"
-msgstr ""
+msgstr ":doc:`reference`"
 
 msgid ":doc:`pgr_version`"
-msgstr ""
+msgstr ":doc:`pgr_version`"
 
 msgid ":doc:`pgr_full_version`"
-msgstr ""
+msgstr ":doc:`pgr_full_version`"
 
 msgid ":doc:`topology-functions`"
-msgstr ""
+msgstr ":doc:`topology-functions`"
 
 msgid "The following functions modify the database directly therefore the user must have special permissions given by the administrators to use them."
-msgstr ""
+msgstr "以下函数直接修改数据库，因此用户必须具有管理员授予的特殊权限才能使用它们。"
 
 msgid ":doc:`pgr_createTopology` -  create a topology based on the geometry."
-msgstr ""
+msgstr ":doc:`pgr_createTopology` - 根据几何形状创建拓扑。"
 
 msgid ":doc:`pgr_createVerticesTable` - reconstruct the vertices table based on the source and target information."
-msgstr ""
+msgstr ":doc:`pgr_createVerticesTable` - 根据源和目标信息重建顶点表。"
 
 msgid ":doc:`pgr_analyzeGraph`  - to analyze the edges and vertices of the edge table."
-msgstr ""
+msgstr ":doc:`pgr_analyzeGraph` - 分析边表的边和顶点。"
 
 msgid ":doc:`pgr_analyzeOneWay` - to analyze directionality of the edges."
-msgstr ""
+msgstr ":doc:`pgr_analyzeOneWay` - 分析边的方向性。"
 
 msgid ":doc:`pgr_nodeNetwork`  -to create nodes to a not noded edge table."
-msgstr ""
+msgstr ":doc:`pgr_nodeNetwork` -为无节点边表创建节点。"
 
 msgid ":doc:`pgr_trsp` - Turn Restriction Shortest Path (TRSP)"
-msgstr ""
+msgstr ":doc:`pgr_trsp` - 转弯限制最短路径 (TRSP)"
 
 msgid "Functions by categories"
-msgstr ""
+msgstr "按类别划分的函数"
 
 msgid ":doc:`cost-category`"
-msgstr ""
+msgstr ":doc:`cost-category`"
 
 msgid ":doc:`costMatrix-category`"
-msgstr ""
+msgstr ":doc:`costMatrix-category`"
 
 msgid ":doc:`drivingDistance-category`"
-msgstr ""
+msgstr ":doc:`drivingDistance-category`"
 
 msgid ":doc:`KSP-category`"
-msgstr ""
+msgstr ":doc:`KSP-category`"
 
 msgid ":doc:`spanningTree-family`"
-msgstr ""
+msgstr ":doc:`spanningTree-family`"
 
 msgid ":doc:`BFS-category`"
-msgstr ""
+msgstr ":doc:`BFS-category`"
 
 msgid ":doc:`DFS-category`"
-msgstr ""
+msgstr ":doc:`DFS-category`"
 
 msgid "Available Functions but not official pgRouting functions"
-msgstr ""
+msgstr "可用函数，但不是官方 pgRouting 函数"
 
 msgid ":doc:`proposed`"
-msgstr ""
+msgstr ":doc:`proposed`"
 
 msgid ":doc:`experimental`"
-msgstr ""
+msgstr ":doc:`experimental`"
 
 msgid ":doc:`release_notes`"
-msgstr ""
+msgstr ":doc:`release_notes`"
 
 msgid "Kruskal - Family of functions"
 msgstr ""
