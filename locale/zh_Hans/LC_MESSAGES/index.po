@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: 2023-09-21 03:23+0000\n"
-"Last-Translator: Wangdapeng <wangdapeng20191008@gmail.com>\n"
+"PO-Revision-Date: 2023-10-07 08:23+0000\n"
+"Last-Translator: Zuochenwei <zuochenwei5@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/index/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -87,7 +87,7 @@ msgstr ":doc:`allpairs-family`"
 
 #: ../../build/doc/allpairs-family.rst:3
 msgid ":doc:`pgr_floydWarshall` - Floyd-Warshall's algorithm."
-msgstr ":doc:`pgr_floydWarshall` - Floyd-Warshall算法。"
+msgstr ":doc:`pgr_floydWarshall` - Floyd-Warshall 算法。"
 
 #: ../../build/doc/allpairs-family.rst:4
 msgid ":doc:`pgr_johnson` - Johnson's algorithm"
@@ -99,7 +99,7 @@ msgstr ":doc:`aStar-family`"
 
 #: ../../build/doc/aStar-family.rst:3
 msgid ":doc:`pgr_aStar` - A* algorithm for the shortest path."
-msgstr ":doc:`pgr_aStar` - 最短路径的A*算法。"
+msgstr ":doc:`pgr_aStar` - A* 最短路径算法。"
 
 #: ../../build/doc/aStar-family.rst:4
 msgid ":doc:`pgr_aStarCost` - Get the aggregate cost of the shortest paths."
@@ -159,7 +159,7 @@ msgstr ":doc:`pgr_biconnectedComponents` - 无向图的双连通分量。"
 
 #: ../../build/doc/components-family.rst:8
 msgid ":doc:`pgr_articulationPoints` - Articulation points of an undirected graph."
-msgstr ":doc:`pgr_articulationPoints` - 无向图的连接点。"
+msgstr ":doc:`pgr_articulationPoints` - 无向图的铰接点。"
 
 #: ../../build/doc/components-family.rst:9
 msgid ":doc:`pgr_bridges` - Bridges of an undirected graph."
@@ -321,11 +321,11 @@ msgstr ":doc:`TSP-family`"
 
 #: ../../build/doc/TSP-family.rst:3
 msgid ":doc:`pgr_TSP` - When input is given as matrix cell information."
-msgstr ":doc:`pgr_TSP` - 当输入作为矩阵单元信息给出时。"
+msgstr ":doc:`pgr_TSP`- 当输入作为矩阵单元信息给出时。"
 
 #: ../../build/doc/TSP-family.rst:4
 msgid ":doc:`pgr_TSPeuclidean` - When input are coordinates."
-msgstr ":doc:`pgr_TSPeuclidean` - 当输入为坐标时。"
+msgstr ":doc:`pgr_TSPeuclidean` - 当输入是坐标时。"
 
 #: ../../build/doc/routingFunctions.rst:83
 msgid ":doc:`pgr_trsp` - Turn Restriction Shortest Path (TRSP)"
