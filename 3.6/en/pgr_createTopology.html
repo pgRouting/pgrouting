@@ -207,7 +207,7 @@ created.</p></li>
 <p>The topology creation function accepts the following parameters:</p>
 <dl class="field-list simple">
 <dt class="field-odd">edge_table<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Network table name. (may contain the schema name AS well)</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Network table name. (may contain the schema name as well)</p>
 </dd>
 <dt class="field-even">tolerance<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code> Snapping tolerance of disconnected edges. (in projection
@@ -325,8 +325,9 @@ vertex AS outgoing. See <a class="reference internal" href="pgr_analyzeOneWay.ht
 
 </pre></div>
 </div>
-<p class="rubric">When the arguments are given in the order described:</p>
-<p>We get the same result AS the simplest way to use the function.</p>
+<p class="rubric">When the arguments are given in the order described in the
+parameters:</p>
+<p>We get the sameresult as the simplest way to use the function.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
     <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
@@ -753,7 +754,7 @@ the rest of the edges.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
-      Last updated on Oct 17, 2023.<br/>
+      Last updated on Oct 19, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
