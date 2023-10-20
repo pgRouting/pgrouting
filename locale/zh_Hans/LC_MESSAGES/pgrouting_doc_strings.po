@@ -12,7 +12,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-28 18:11+0000\n"
 "PO-Revision-Date: 2023-10-21 03:23+0000\n"
-"Last-Translator: Wang Dapeng <wangdapeng20191008@gmail.com>\n"
+"Last-Translator: Zuochenwei <zuochenwei5@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -154,7 +154,7 @@ msgid "**ANY-INTEGER**"
 msgstr "**ANY-INTEGER**"
 
 msgid "Identifier of the edge."
-msgstr "边的标识符"
+msgstr "边的标识符。"
 
 msgid "``source``"
 msgstr "``source``"
@@ -216,7 +216,7 @@ msgid "``depth``"
 msgstr "``depth``"
 
 msgid "Depth of the ``node``."
-msgstr "``node``的深度"
+msgstr "``node``的深度。"
 
 msgid ":math:`0` when ``node`` = ``start_vid``."
 msgstr ":math:`0` 当``node`` = ``start_vid``。"
@@ -261,29 +261,25 @@ msgid ""
 "`Boost: Prim's algorithm <https://www.boost.org/libs/graph/doc/"
 "prim_minimum_spanning_tree.html>`__"
 msgstr ""
-"`Boost: Prim's algorithm <https://www.boost.org/libs/graph/doc/"
+"`Boost: Prim算法 <https://www.boost.org/libs/graph/doc/"
 "prim_minimum_spanning_tree.html>`__"
 
 msgid ""
 "`Boost: Kruskal's algorithm <https://www.boost.org/libs/graph/doc/"
 "kruskal_min_spanning_tree.html>`__"
 msgstr ""
-"`Boost: Kruskal's algorithm <https://www.boost.org/libs/graph/doc/"
+"`Boost: Kruskal算法 <https://www.boost.org/libs/graph/doc/"
 "kruskal_min_spanning_tree.html>`__"
 
 msgid ""
 "`Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim"
 "%27s_algorithm>`__"
-msgstr ""
-"`Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim"
-"%27s_algorithm>`__"
+msgstr "`维基百科: Prim算法 <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
 
 msgid ""
 "`Wikipedia: Kruskal's algorithm <https://en.wikipedia.org/wiki/"
 "Kruskal's_algorithm>`__"
-msgstr ""
-"`Wikipedia: Kruskal's algorithm <https://en.wikipedia.org/wiki/"
-"Kruskal's_algorithm>`__"
+msgstr "`维基百科: Kruskal算法 <https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
 
 msgid "Indices and tables"
 msgstr "索引和表格"
@@ -444,9 +440,9 @@ msgid ""
 "graph. But normally on turns like no left turn or no right turn, hence the "
 "name turn restrictions, there are sometimes restrictions."
 msgstr ""
-"道路限制是一系列不能按顺序采取的路段。 有向图上隐含了一些限制，例如单向道路，"
-"其中错误的边甚至不会插入到图上。 但通常在转弯时如不许左转或不许右转，因此得名"
-"转弯限制，这儿是一些常见限制"
+"道路限制是一系列不能按顺序采取的路段。 "
+"有向图上隐含了一些限制，例如单向道路，其中错误的边甚至不会插入到图上。 "
+"但通常在转弯时如不许左转或不许右转，因此得名转弯限制，这儿是一些常见限制。"
 
 msgid "TRSP algorithm"
 msgstr "TRSP算法"
@@ -455,9 +451,8 @@ msgid ""
 "The internal TRSP algorithm performs a lookahead over the dijkstra algorithm "
 "in order to find out if the attempted path has a restriction. This allows "
 "the algorithm to pass twice on the same vertex."
-msgstr ""
-"内部 TRSP 算法对 dijkstra 算法执行前瞻，以查明尝试的路径是否有限制。 这允许算"
-"法在同一顶点上传递两次"
+msgstr "内部 TRSP 算法对 dijkstra 算法执行前瞻，以查明尝试的路径是否有限制。 "
+"这允许算法在同一顶点上传递两次。"
 
 msgid "`Edges SQL`_ query as described."
 msgstr "`Edges SQL`_按描述查询。"
@@ -589,10 +584,9 @@ msgid ""
 "homepages.cwi.nl/~lex/files/histco.ps>`__"
 msgstr ""
 "人们认为旅行推销员问题（TSP）的一般形式最早由维也纳和哈佛的卡尔·门格尔（Karl "
-"Menger）研究。后来，普林斯顿的哈斯勒、惠特尼和梅里尔（Hassler, Whitney & "
-"Merrill）进一步推动了这个问题。关于门格尔和惠特尼之间的联系以及TSP的发展，可"
-"以在`组合优化的历史(直到1960年) <https://homepages.cwi.nl/~lex/files/histco."
-"ps>`__。"
+"Menger）研究。后来，普林斯顿的哈斯勒、惠特尼和梅里尔（Hassler, Whitney & Merr"
+"ill）进一步推动了这个问题。关于门格尔和惠特尼之间的联系以及TSP的发展，可以在`"
+"组合优化的历史(直到1960年) <https://homepages.cwi.nl/~lex/files/histco.ps>`__"
 
 msgid "To calculate the number of different tours through :math:`n` cities:"
 msgstr "计算经过:math:`n` 城市的不同旅行次数："
@@ -798,7 +792,7 @@ msgid "have opening and closing times for the start and ending locations."
 msgstr "有开始和结束地点的开放和关闭时间。"
 
 msgid "have a capacity."
-msgstr "具有容量"
+msgstr "具有容量。"
 
 msgid "The orders"
 msgstr "订单"
@@ -896,10 +890,10 @@ msgid "``1`` One order per truck"
 msgstr "``1`` 每辆卡车一份订单"
 
 msgid "``2`` Push front order."
-msgstr "``2`` 提前订单"
+msgstr "``2`` 提前订单。"
 
 msgid "``3`` Push back order."
-msgstr "``3`` 推迟订单"
+msgstr "``3`` 推迟订单。"
 
 msgid "``4`` Optimize insert."
 msgstr "``4`` 优化插入。"
@@ -1172,7 +1166,7 @@ msgid ""
 msgstr "当前车辆从 **1** 开始的顺序值。 解决方案中的第 :math:`n_{th}` 辆车。"
 
 msgid "Value :math:`-2` indicates it is the summary row."
-msgstr "值 :math:`-2` 表示它是汇总行"
+msgstr "值 :math:`-2` 表示它是汇总行。"
 
 msgid "``vehicle_id``"
 msgstr "``vehicle_id``"
@@ -1705,7 +1699,7 @@ msgid "Process works for directed and undirected graphs."
 msgstr "流程适用于有向图和无向图。"
 
 msgid "Ordering is:"
-msgstr "顺序是"
+msgstr "顺序是："
 
 msgid "first by ``start_vid`` (if exists)"
 msgstr "首先按``start_vid``（如果存在）"
@@ -2942,7 +2936,7 @@ msgstr "没有传入边缘，但至少有一个传出边缘。"
 msgid ""
 "When the conditions are true then the `Operation: Dead End Contraction`_ can "
 "be done."
-msgstr "当条件成立时，可以进行当条件成立时，可以进行`操作: 死端收缩`_"
+msgstr "当条件成立时，可以进行当条件成立时，可以进行`操作: 死端收缩`_。"
 
 msgid "Dead end vertex on undirected graph"
 msgstr "无向图上的死端顶点"
@@ -3051,13 +3045,13 @@ msgstr "线性"
 
 msgid ""
 "In case of an undirected graph, a node is considered a `linear` node when"
-msgstr "在无向图的情况下，当满足以下条件时，节点被视为`线性`节点："
+msgstr "在无向图的情况下，当满足以下条件时，节点被视为`线性`节点"
 
 msgid "The number of adjacent vertices is 2."
 msgstr "相邻顶点的数量为2。"
 
 msgid "In case of a directed graph, a node is considered a `linear` node when"
-msgstr "在有向图的情况下，当满足以下条件时，节点被视为`线性`节点："
+msgstr "在有向图的情况下，当满足以下条件时，节点被视为`线性`节点"
 
 msgid "Linearity is symmetrical"
 msgstr "线性是对称的"
@@ -3199,7 +3193,7 @@ msgid ""
 msgstr "以下查询显示了收缩操作所涉及的原始数据。"
 
 msgid "The original graph:"
-msgstr "原始图"
+msgstr "原始图："
 
 msgid "Contraction results"
 msgstr "收缩结果"
@@ -3744,8 +3738,8 @@ msgid ""
 "where  :math:`sql = \\{(id_i, source_i, target_i, cost_i, reverse"
 "\\_cost_i)\\}`"
 msgstr ""
-"where  :math:`sql = \\{(id_i, source_i, target_i, cost_i, reverse"
-"\\_cost_i)\\}`"
+"其中  :math:`sql = \\{(id_i, source_i, target_i, cost_i, reverse\\_cost_i)\\"
+"}`"
 
 msgid "and"
 msgstr "和"
@@ -4123,12 +4117,12 @@ msgstr ":doc:`pgr_boykovKolmogorov` - Boykov 和 Kolmogorov 的边流动细节�
 msgid ""
 ":doc:`pgr_edmondsKarp` - Edmonds and Karp algorithm with details of flow on "
 "edges."
-msgstr ":doc:`pgr_edmondsKarp` - 带有边流量详细信息的 Edmonds 和 Karp 算法"
+msgstr ":doc:`pgr_edmondsKarp` - 带有边流量详细信息的 Edmonds 和 Karp 算法。"
 
 msgid ""
 ":doc:`pgr_pushRelabel` - Push and relabel algorithm with details of flow on "
 "edges."
-msgstr ":doc:`pgr_pushRelabel` - 推送和重新标记算法以及边流量的详细信息"
+msgstr ":doc:`pgr_pushRelabel` - 推送和重新标记算法以及边流量的详细信息。"
 
 msgid "Applications"
 msgstr "应用"
@@ -4420,10 +4414,10 @@ msgstr ""
 "postgresql.org>`__ 地理空间数据库，以提供地理空间路由和其他网络分析功能。"
 
 msgid "This is the manual for pgRouting |release|."
-msgstr "这是pgRouting|release|的手册"
+msgstr "这是pgRouting|release|的手册。"
 
 msgid "Creative Commons Attribution-Share Alike 3.0 License"
-msgstr "知识共享署名 - 相同方式共享 3.0 许可证。"
+msgstr "知识共享署名 - 相同方式共享 3.0 许可证"
 
 msgid ""
 "The pgRouting Manual is licensed under a `Creative Commons Attribution-Share "
@@ -4442,7 +4436,7 @@ msgid "General"
 msgstr "常规"
 
 msgid ":doc:`sampledata` that is used in the examples of this manual."
-msgstr "本手册示例中使用的 :doc:`sampledata`"
+msgstr "本手册示例中使用的 :doc:`sampledata`。"
 
 msgid "Pgrouting Concepts"
 msgstr "Pgrouting概念"
@@ -11672,10 +11666,10 @@ msgid "Status of \"passes in front\" or \"visits\" of the nodes."
 msgstr "节点的 \"前方通过 \"或 \"访问 \"状态。"
 
 msgid ":doc:`via-category`."
-msgstr ":doc:`via-category`."
+msgstr ":doc:`via-category`。"
 
 msgid ":doc:`dijkstra-family`."
-msgstr ":doc:`dijkstra-family`."
+msgstr ":doc:`dijkstra-family`。"
 
 msgid "``pgr_drivingDistance``"
 msgstr "驾驶距离"
@@ -11811,6 +11805,8 @@ msgid ""
 "proper edge coloring of graph)  is equal to the degree :math:`\\Delta + 1` "
 "of the graph, (:math:`x'(G) = \\Delta`)"
 msgstr ""
+"色数 :math:`x'(G)`（适当的图边着色所需的最小颜色数）等于图的度 :math:`\\Delta"
+" + 1`，即 :math:`x'(G) = \\Delta`"
 
 msgid "The algorithm tries to assign the least possible color to every edge."
 msgstr "该算法尝试为每条边分配尽可能少的颜色。"
@@ -12190,155 +12186,158 @@ msgid "``pgr_findCloseEdges``"
 msgstr "``pgr_findCloseEdges``"
 
 msgid "``pgr_findCloseEdges`` - Finds the close edges to a point geometry."
-msgstr ""
+msgstr "``pgr_findCloseEdges`` -查找点几何图形的闭合边。"
 
 msgid "New **proposed** signatures:"
-msgstr ""
+msgstr "新的**拟议**签名："
 
 msgid "``pgr_findCloseEdges`` (`One point`_)"
-msgstr ""
+msgstr "``pgr_findCloseEdges`` (`一个点`_)"
 
 msgid "``pgr_findCloseEdges`` (`Many points`_)"
-msgstr ""
+msgstr "``pgr_findCloseEdges`` (`多个点`_)"
 
 msgid ""
 "``pgr_findCloseEdges`` - An utility function that finds the closest edge to "
 "a point geometry."
-msgstr ""
+msgstr "``pgr_findCloseEdges`` - 一个用于找到离点几何最近的边的实用函数。"
 
 msgid ""
 "The geometries must be in the same coordinate system (have the same SRID)."
-msgstr ""
+msgstr "几何图形必须位于同一坐标系中（具有相同的 SRID）。"
 
 msgid ""
 "The code to do the calculations can be obtained for further specific "
 "adjustments needed by the application."
-msgstr ""
+msgstr "可以获得进行计算的代码，以便应用程序需要进行进一步的具体调整。"
 
 msgid "``EMTPY SET`` is returned on dryrun executions"
-msgstr ""
+msgstr "空运行执行时返回 ``EMTPY SET``"
 
 msgid ""
 "pgr_findCloseEdges(`Edges SQL`_, **point**, **tolerance**, [**options**])"
 msgstr ""
+"pgr_findCloseEdges(`Edges SQL`_, **point**, **tolerance**, [**options**])"
 
 msgid ""
 "pgr_findCloseEdges(`Edges SQL`_, **points**, **tolerance**, [**options**])"
 msgstr ""
+"pgr_findCloseEdges(`Edges SQL`_, **points**, **tolerance**, [**options**])"
 
 msgid "**options:** ``[cap, partial, dryrun]``"
-msgstr ""
+msgstr "**options:** ``[cap, partial, dryrun]``"
 
 msgid "RETURNS SET OF |result-find|"
-msgstr ""
+msgstr "RETURNS SET OF |result-find|"
 
 msgid "One point"
-msgstr ""
+msgstr "一个点"
 
 msgid "Default: ``cap => 1``"
-msgstr ""
+msgstr "默认： ``cap => 1``"
 
 msgid "Maximum one row answer."
-msgstr ""
+msgstr "最多一行的答案。"
 
 msgid "Default: ``partial => true``"
-msgstr ""
+msgstr "默认：``partial => true``"
 
 msgid "With less calculations as possible."
-msgstr ""
+msgstr "尽可能少的计算。"
 
 msgid "Default: ``dryrun => false``"
-msgstr ""
+msgstr "默认： ``dryrun => false``"
 
 msgid "Process query"
-msgstr ""
+msgstr "流程查询"
 
 msgid "Returns"
-msgstr ""
+msgstr "返回"
 
 msgid "values on ``edge_id``, ``fraction``, ``side`` columns."
-msgstr ""
+msgstr "``edge_id``, ``fraction``, ``side``列的值。"
 
 msgid "``NULL`` on ``distance``, ``geom``, ``edge`` columns."
-msgstr ""
+msgstr "``distance``, ``geom``, ``edge``列上为``NULL``。"
 
 msgid "Many points"
-msgstr ""
+msgstr "多点"
 
 msgid ""
 "Find at most :math:`2` edges close to all vertices on the points of interest "
 "table."
-msgstr ""
+msgstr "查找最多靠近兴趣点表上所有顶点的边。"
 
 msgid "One answer per point, as small as possible."
-msgstr ""
+msgstr "每点一个答案，越小越好。"
 
 msgid ""
 "Columns ``edge_id``, ``fraction``, ``side`` and ``geom`` are returned with "
 "values."
-msgstr ""
+msgstr "返回了带有值的列 ``edge_id``, ``fraction``, ``side`` 和 ``geom``。"
 
 msgid ""
 "``geom`` contains the original point geometry to assist on deterpartialing "
 "to which point geometry the row belongs to."
-msgstr ""
+msgstr "``geom`` 包含原始的点几何信息，以帮助确定该行属于哪个点几何。"
 
 msgid "**point**"
-msgstr ""
+msgstr "**point**"
 
 msgid "The point geometry"
-msgstr ""
+msgstr "点几何"
 
 msgid "**points**"
-msgstr ""
+msgstr "**points**"
 
 msgid "``POINT[]``"
-msgstr ""
+msgstr "``POINT[]``"
 
 msgid "An array of point geometries"
-msgstr ""
+msgstr "点几何数组"
 
 msgid "**tolerance**"
-msgstr ""
+msgstr "**tolerance**"
 
 msgid "Max distance between geometries"
-msgstr ""
+msgstr "几何图形之间的最大距离"
 
 msgid "Limit output rows"
-msgstr ""
+msgstr "限制输出行数"
 
 msgid "``partial``"
-msgstr ""
+msgstr "``partial``"
 
 msgid ""
 "When ``true`` only columns needed for :doc:`withPoints-category` are "
 "calculated."
-msgstr ""
+msgstr "当为 ``true``时，只计算 :doc:`withPoints-category` 需要的列。"
 
 msgid "When ``false`` all columns are calculated"
-msgstr ""
+msgstr "当为``false``时，所有的列都计算"
 
 msgid "When ``false`` calculations are performed."
-msgstr ""
+msgstr "当为 ``false`` 时，执行计算。"
 
 msgid ""
 "When ``true`` calculations are not performed and the query to do the "
 "calculations is exposed in a PostgreSQL ``NOTICE``."
-msgstr ""
+msgstr "当为``true``时，不执行计算，而是将执行计算的查询暴露在 PostgreSQL "
+"的``NOTICE`` 中。"
 
 msgid "The ``LINESTRING`` geometry of the edge."
-msgstr ""
+msgstr "边的 ``LINESTRING``几何。"
 
 msgid "Returns set of |result-find|"
-msgstr ""
+msgstr "返回集合 |result-find|"
 
 msgid "When :math:`cap = 1`, it is the closest edge."
-msgstr ""
+msgstr "当 :math:`cap = 1` 时，它是最近的边。"
 
 msgid ""
 "Value in <0,1> that indicates the relative postition from the first end-"
 "point of the edge."
-msgstr ""
+msgstr "在 <0,1> 范围内的值，表示相对于边的第一个端点的相对位置。"
 
 msgid "Value in ``[r, l]`` indicating if the point is:"
 msgstr ""
@@ -15091,8 +15090,8 @@ msgid ""
 "U turn on the same edge. But the path :math:`9 \\rightarrow 16` (Rows 4 and "
 "5) is restricted and the result is using it."
 msgstr ""
-"第一步，执行 :doc:`pgr_withPointsVia`不考虑在同一边上掉头。 但路径 :math:`9 "
-"\\rightarrow 16`（第 4 行和第 5 行）受到限制，结果正在使用它。"
+"第一步，执行 :doc:`pgr_withPointsVia` 不考虑在同一条边上进行掉头。但是路径 "
+":math:`9 \\rightarrow 16`（第4行和第5行）受到限制，结果中使用了它。"
 
 msgid ""
 "When executing the :doc:`pgr_trsp_withPoints` algorithm for the conflicting "
@@ -19656,11 +19655,10 @@ msgstr "从无向图上的顶点 :math:`3` 到顶点 :math:`8`"
 msgid "From vertex :math:`3` to vertex :math:`8` with more alternatives"
 msgstr "从顶点 :math:`3` 到顶点 :math:`8` 更多选择"
 
-#, fuzzy
 msgid ""
 "From point :math:`1` and vertex :math:`6` to point :math:`3` and vertex :"
 "math:`1`"
-msgstr "从点:math:`1`和顶点 :math:`6`到点 :math:`3`和顶点:math:`1`。"
+msgstr "从点:math:`1`和顶点 :math:`6`到点 :math:`3`和顶点:math:`1`"
 
 msgid "**options:** ``[directed, driving_side]``"
 msgstr "**options:** ``[directed, driving_side]``"
@@ -19692,9 +19690,8 @@ msgstr ""
 msgid "pgr_apspJohnson use pgr_Johnson instead"
 msgstr ""
 
-#, fuzzy
 msgid "Starting on PostgreSQL 12::"
-msgstr "创建 PostgreSQL 角色"
+msgstr "从PostgreSQL 12开始::"
 
 msgid "Result columns"
 msgstr "结果列"
@@ -19866,17 +19863,14 @@ msgstr "返回|result-mincut|的集合"
 msgid "Returns set of |result-closure|"
 msgstr "Returns set of |result-node|"
 
-#, fuzzy
 msgid "New proposed signatures"
-msgstr "新拟议的签名："
+msgstr "新拟议的签名"
 
-#, fuzzy
 msgid "Deprecated signatures"
-msgstr "弃用签名："
+msgstr "弃用签名"
 
-#, fuzzy
 msgid "New prototypes"
-msgstr "新原型："
+msgstr "新原型"
 
 msgid "Returns set of |ksp-result|"
 msgstr "返回 |ksp-result| 的集合"
@@ -19906,9 +19900,8 @@ msgid ""
 "1.8)`."
 msgstr "点 :math:`-2` 对应于点 :math:`(2.9, 1.8)` 的下一条近边。"
 
-#, fuzzy
 msgid "New overload functions"
-msgstr "新的重载函数："
+msgstr "新的重载函数"
 
 msgid "Backport issue fixes"
 msgstr ""
