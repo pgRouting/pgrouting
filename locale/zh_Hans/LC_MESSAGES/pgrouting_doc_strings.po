@@ -5,13 +5,14 @@
 # Wangdapeng <wangdapeng20191008@gmail.com>, 2023.
 # Zuochenwei <zuochenwei5@gmail.com>, 2023.
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023.
+# Wang Dapeng <wangdapeng20191008@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-28 18:11+0000\n"
-"PO-Revision-Date: 2023-10-20 02:20+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
+"PO-Revision-Date: 2023-10-21 03:23+0000\n"
+"Last-Translator: Wang Dapeng <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -6813,8 +6814,8 @@ msgid ""
 "Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, cost, "
 "agg_cost)``"
 msgstr ""
-"返回集合``(seq, path_seq [, start_vid] [, end_vid], node, edge, cost, "
-"agg_cost)``"
+"返回``(seq, path_seq [, start_vid] [, end_vid], node, edge, cost, "
+"agg_cost)``的集合"
 
 msgid "``path_seq``"
 msgstr "``path_seq``"
@@ -6858,8 +6859,8 @@ msgid ""
 "Returns set of ``(seq, path_seq [, start_pid] [, end_pid], node, edge, cost, "
 "agg_cost)``"
 msgstr ""
-"返回集合``(seq, path_seq [, start_pid] [, end_pid], node, edge, cost, "
-"agg_cost)``"
+"返回``(seq, path_seq [, start_pid] [, end_pid], node, edge, cost, "
+"agg_cost)``的集合"
 
 msgid "Relative position in the path."
 msgstr "路径中的相对位置。"
@@ -9673,26 +9674,26 @@ msgstr "该算法检查图是否是二分图。如果是二分图，它将返回
 "的两种颜色，分别为 `0` 和 `1`。"
 
 msgid "If graph is not bipartite then algorithm returns empty set."
-msgstr "如果图不是二分图，则算法返回空集。"
+msgstr "如果图不是两部分的，那么算法会返回空集。"
 
 msgid "pgr_bipartite(`Edges SQL`_)"
 msgstr "pgr_bipartite(`Edges SQL`_)"
 
 msgid "When the graph is bipartite"
-msgstr "当图是二分图时"
+msgstr "当图形为两方时"
 
 msgid "Additional Example"
 msgstr "附加示例"
 
 msgid "The odd length cyclic graph can not be bipartite."
-msgstr "奇数长度循环图不能是二分图。"
+msgstr "奇长循环图不可能是两部分的。"
 
 msgid ""
 "The edge :math:`5 \\rightarrow 1` will make subgraph with vertices :math:`"
 "\\{1, 3, 7, 6, 5\\}` an odd length cyclic graph, as the cycle has 5 vertices."
 msgstr ""
-"边 :math:`5 \\rightarrow 1` 会使子图的顶点集 :math:`\\{1, 3, 7, 6, 5\\}` 成为"
-"一个奇数长度的循环图，因为这个循环有 5 个顶点。"
+"边 :math:`5 \\rightarrow 1` 将使顶点为 :math:`\\{1, 3, 7, 6, 5\\}` "
+"的子图成为奇数长度的循环图，因为循环有 5 个顶点。"
 
 msgid "Edges in blue represent odd length cycle subgraph."
 msgstr "蓝色边代表奇数长度循环子图。"
@@ -9704,9 +9705,8 @@ msgid ""
 "``pgr_boykovKolmogorov`` — Calculates the flow on the graph edges that "
 "maximizes the flow from the sources to the targets using Boykov Kolmogorov "
 "algorithm."
-msgstr ""
-"``pgr_boykovKolmogorov`` — 使用 Boykov Kolmogorov 算法计算图边上的流量，以最"
-"大化从sources到 targets的流量。"
+msgstr "`pgr_boykovKolmogorov`` - 使用 Boykov Kolmogorov "
+"算法计算图边的流量，使从源到目标的流量最大。"
 
 msgid "New **proposed** signature"
 msgstr "新的**拟议**签名"
@@ -10402,7 +10402,7 @@ msgstr ""
 "这个例子开始一个干净的拓扑结构，包括 5 条边，然后将其逐渐扩展到其余的边。"
 
 msgid "The example uses the :doc:`sampledata` network."
-msgstr "该示例使用:doc:`示例数据`网络。"
+msgstr "本例使用 :doc:`sampledata` 网络。"
 
 msgid "pgr_createVerticesTable"
 msgstr "pgr_createVerticesTable"
@@ -10618,7 +10618,7 @@ msgid "pgr_cuthillMckeeOrdering(`Edges SQL`_)"
 msgstr "pgr_cuthillMckeeOrdering(`Edges SQL`_)"
 
 msgid "Graph ordering of pgRouting :doc:`sampledata`"
-msgstr "pgRouting :doc:`示例数据`的图排序"
+msgstr "pgRouting :doc:`sampledata` 的图形排序"
 
 msgid "Returns SET OF ``(seq, node)``"
 msgstr "Returns SET OF ``(seq, node)``"
@@ -19627,10 +19627,9 @@ msgstr ""
 "色数（chromatic number）:math:`x'(G)`（用于图的适当边着色所需的最小颜色数）等"
 "于图的度:math:`\\Delta + 1`（:math:`x'(G) = \\Delta`）"
 
-#, fuzzy
 msgid ""
 "``pgr_edwardMoore`` — Returns the shortest path using Edward-Moore algorithm."
-msgstr "``pgr_bdDijkstra`` — 使用双向 Dijkstra 算法返回最短路径。"
+msgstr "`pgr_edwardMoore`` - 使用 Edward-Moore 算法返回最短路径。"
 
 msgid ""
 "The geometry ``geom``, marked as **g1** and **g2** are the **original "
@@ -19642,25 +19641,20 @@ msgid ""
 "algorithm."
 msgstr "``pgr_hawickCircuits`` — 使用 Hawick 回路算法返回回路列表。"
 
-#, fuzzy
 msgid "The output table will have for ``edge_table_noded``"
-msgstr "输出表将具有``edge_table_noded``"
+msgstr "输出表中将包含``edge_table_noded``内容"
 
-#, fuzzy
 msgid "From vertex :math:`6` to vertex :math:`10` on an undirected graph."
-msgstr "无向图上从一个顶点 :math:`6`到另一个顶点:math:`10`。"
+msgstr "从无向图上的顶点 :math:`6` 到顶点 :math:`10`."
 
-#, fuzzy
 msgid "From vertex :math:`3` to vertex :math:`8` on a directed graph"
-msgstr "有向图上从顶点 :math:`3`到顶点:math:`8`"
+msgstr "从有向图上的顶点 :math:`3` 到顶点 :math:`8`"
 
-#, fuzzy
 msgid "From vertex :math:`3` to vertex :math:`8` on an undirected graph"
-msgstr "无向图中从顶点:math:`3`到顶点:math:`8`"
+msgstr "从无向图上的顶点 :math:`3` 到顶点 :math:`8`"
 
-#, fuzzy
 msgid "From vertex :math:`3` to vertex :math:`8` with more alternatives"
-msgstr "从一个顶点 :math:`3`到另一个顶点 :math:`8`有更多的选择"
+msgstr "从顶点 :math:`3` 到顶点 :math:`8` 更多选择"
 
 #, fuzzy
 msgid ""
@@ -19671,22 +19665,20 @@ msgstr "从点:math:`1`和顶点 :math:`6`到点 :math:`3`和顶点:math:`1`。"
 msgid "**options:** ``[directed, driving_side]``"
 msgstr "**options:** ``[directed, driving_side]``"
 
-#, fuzzy
 msgid ""
 "From point :math:`15` and vertex :math:`6` to point :math:`3` and vertex :"
 "math:`1`"
-msgstr "从点:math:`15`和顶点 :math:`6`到点 :math:`3` 和顶点:math:`1`"
+msgstr "从点 :math:`15` 和顶点 :math:`6` 到点 :math:`3` 和顶点 :math:`1`"
 
 msgid "**options:** ``[directed, heap_paths, details]``"
 msgstr "**options:** ``[directed, heap_paths, details]``"
 
-#, fuzzy
 msgid ""
 "`#232 <https://github.com/pgRouting/pgrouting/issues/232>`__: Honor client "
 "cancel requests in C /C++ code"
 msgstr ""
-"`#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__标准化输出"
-"pgr_aStar"
+"`#232 <https://github.com/pgRouting/pgrouting/issues/232>`__：在 C /C++ "
+"代码中尊重客户端取消请求"
 
 msgid "pgr_labelGraph - Use the components family of functions instead."
 msgstr ""
@@ -19704,115 +19696,92 @@ msgstr ""
 msgid "Starting on PostgreSQL 12::"
 msgstr "创建 PostgreSQL 角色"
 
-#, fuzzy
 msgid "Result columns"
 msgstr "结果列"
 
-#, fuzzy
 msgid "Returns set of ``(seq, depth, start_vid, node, edge, cost, agg_cost)``"
 msgstr "返回一组``(seq, depth, start_vid, node, edge, cost, agg_cost)``"
 
-#, fuzzy
 msgid "aStar optional parameters"
-msgstr "aStar可选参数"
+msgstr "aStar 可选参数"
 
 #, fuzzy
 msgid "Returns set of ``(vertex_id, color_id)``"
 msgstr "返回``(vertex_id, color_id)``的集合"
 
-#, fuzzy
 msgid "Returns set of ``(edge_id, color_id)``"
-msgstr "返回``(edge_id, color_id)``的集合"
+msgstr "返回 ``(edge_id, color_id)`` 的集合"
 
-#, fuzzy
 msgid "Returns set of |result-spantree|"
-msgstr "Returns set of |result-node|"
+msgstr "Returns set of |result-spantree| 返回结果树集"
 
-#, fuzzy
 msgid "Be aware of the existance of the additional result Columns."
-msgstr "请注意附加返回列的存在。"
+msgstr "注意附加结果列的存在。"
 
-#, fuzzy
 msgid ":doc:`sampledata`: a small graph used in the documentation examples"
-msgstr ":doc:`sampledata`: 文档示例中使用的小图"
+msgstr ":doc:`sampledata`: 文档示例中使用的小图形"
 
-#, fuzzy
 msgid ""
 "Capacity information, used in the :doc:`flow-family` functions does not need "
 "to change when splitting edges."
-msgstr "分割边时， :doc:`flow-family` 函数上使用的容量信息不需要更改。"
+msgstr "分割边时，在 :doc:`flow-family` 函数中使用的容量信息不需要改变。"
 
-#, fuzzy
 msgid "Used in combination signatures"
-msgstr "用于组合签名"
+msgstr "结合签名使用"
 
-#, fuzzy
 msgid "Result columns for a path"
-msgstr "返回路径的列"
+msgstr "路径的结果列"
 
-#, fuzzy
 msgid "Used in functions that return one path solution"
-msgstr "用于返回单路径解决方案的函数"
+msgstr "在返回一个路径解的函数中使用"
 
 #, fuzzy
 msgid "Used in functions the following:"
 msgstr "用于以下函数："
 
-#, fuzzy
 msgid "Result columns for cost functions"
-msgstr "返回成本函数的列"
+msgstr "成本函数结果列"
 
-#, fuzzy
 msgid "Result columns for flow functions"
-msgstr "流函数的返回列"
+msgstr "流量函数的结果列"
 
-#, fuzzy
 msgid "Result columns for spanning tree functions"
-msgstr "返回生成树函数的列"
+msgstr "生成树函数的结果列"
 
 #, fuzzy
 msgid "Returns set of ``(edge, cost)``"
 msgstr "返回集合``(edge, cost)``"
 
-#, fuzzy
 msgid "Result columns standarized to: |nksp-result|"
-msgstr "返回标准化后的列：|nksp-result|"
+msgstr "结果列标准化为|nksp-result|"
 
-#, fuzzy
 msgid "Returns set of |tsp-result|"
-msgstr "返回集合|nksp-result|"
+msgstr "返回 |tsp-result| 的集合"
 
 #, fuzzy
 msgid "Returns set of |short-generic-result|"
 msgstr "返回集合|nksp-result|"
 
-#, fuzzy
 msgid "Returns set of |matrix-result|"
-msgstr "返回集合|nksp-result|"
+msgstr "返回 |matrix-result| 的集合"
 
-#, fuzzy
 msgid "Result columns change: ``seq`` is removed"
-msgstr "返回列更改：``seq``被删除"
+msgstr "结果列更改：删除了 ``seq``"
 
-#, fuzzy
 msgid "Returns set of |old-generic-result|"
-msgstr "返回集合|nksp-result|"
+msgstr "返回 |old-generic-result| 的集合"
 
-#, fuzzy
 msgid "Returns set of |result-1-1|"
-msgstr "Returns set of |result-node|"
+msgstr "返回 |result-1-1| 的集合"
 
-#, fuzzy
 msgid "Returns set of |result-1-m|"
-msgstr "Returns set of |result-node|"
+msgstr "返回 |result-1-m| 的集合"
 
-#, fuzzy
 msgid "Returns set of |result-m-1|"
-msgstr "Returns set of |result-node|"
+msgstr "返回 |result-m-1| 的集合"
 
-#, fuzzy
 msgid "Result columns change:"
-msgstr "返回列更改："
+msgstr "结果列发生变化："
 
 #, fuzzy
 msgid "Returns set of |result-node-color|"
@@ -19822,29 +19791,24 @@ msgstr "Returns set of |result-node|"
 msgid "Returns set of |result-flow|"
 msgstr "Returns set of |result-node|"
 
-#, fuzzy
 msgid "Returns set of |result-bfs|"
-msgstr "Returns set of |result-node|"
+msgstr "返回 |result-bfs| 的集合"
 
-#, fuzzy
 msgid "Returns set of |result-1-1-no-seq|"
-msgstr "Returns set of |result-node|"
+msgstr "返回|result-1-1-no-seq|的集合"
 
-#, fuzzy
 msgid "We get the sameresult as the simplest way to use the function."
-msgstr "我们得到与使用该函数的最简单方法相同的结果。"
+msgstr "我们得到的结果与使用该函数的最简单方法相同。"
 
 #, fuzzy
 msgid "Returns set of |result-node-order|"
 msgstr "Returns set of |result-node|"
 
-#, fuzzy
 msgid "Returns set of ``(seq, node)``"
-msgstr "Returns SET OF ``(seq, node)``"
+msgstr "返回 ``(seq, node)`` 的集合"
 
-#, fuzzy
 msgid "Returns set of |via-result|"
-msgstr "返回集合|nksp-result|"
+msgstr "返回 |via-result| 的集合"
 
 #, fuzzy
 msgid "Returns set of |result-edge-color|"
@@ -19854,61 +19818,49 @@ msgstr "Returns set of |result-edge|"
 msgid "Returns set of |result-disjoint|"
 msgstr "Returns set of |result-toposort|"
 
-#, fuzzy
 msgid "Returns set of |result-disjoint-1-1|"
-msgstr "Returns set of |result-toposort|"
+msgstr "返回 |result-disjoint-1-1|的集合"
 
-#, fuzzy
 msgid "Returns set of |result-disjoint-1-m|"
-msgstr "Returns set of |result-toposort|"
+msgstr "返回|result-disjoint-1-m|的集合"
 
 #, fuzzy
 msgid "Returns set of |result-disjoint-m-1|"
 msgstr "Returns set of |result-toposort|"
 
-#, fuzzy
 msgid "Returns set of |result-disjoint-m-m|"
-msgstr "Returns set of |result-toposort|"
+msgstr "返回|result-disjoint-m-m|的集合"
 
-#, fuzzy
 msgid "Returns set of |generic-result|"
-msgstr "返回集合|nksp-result|"
+msgstr "返回 |eneric-result| 的集合"
 
-#, fuzzy
 msgid "Returns set of |result-mst|"
-msgstr "Returns set of |result-toposort|"
+msgstr "返回 |result-mst| 的集合"
 
-#, fuzzy
 msgid "Returns set of |result-idom|"
-msgstr "Returns set of |result-node|"
+msgstr "返回 |result-idom| 的集合"
 
 #, fuzzy
 msgid "Returns set of |result-lineg|"
 msgstr "Returns set of |result-node|"
 
-#, fuzzy
 msgid "Returns set of |result-linegf|"
-msgstr "Returns set of |result-node|"
+msgstr "返回 |result-linegf| 的集合"
 
-#, fuzzy
 msgid "Returns set of |result-flow-mincost|"
-msgstr "Returns set of |result-toposort|"
+msgstr "返回 |result-flow-mincost| 的集合"
 
-#, fuzzy
 msgid "Before image"
-msgstr "之前的图像"
+msgstr "图片前"
 
-#, fuzzy
 msgid "After image"
-msgstr "后面的图像"
+msgstr "图像后"
 
-#, fuzzy
 msgid "Returns set of |result-pickdrop|"
-msgstr "Returns set of |result-node|"
+msgstr "返回 |result-pickdrop| 的集合"
 
-#, fuzzy
 msgid "Returns set of |result-mincut|"
-msgstr "Returns set of |result-toposort|"
+msgstr "返回|result-mincut|的集合"
 
 #, fuzzy
 msgid "Returns set of |result-closure|"
@@ -19926,41 +19878,33 @@ msgstr "弃用签名："
 msgid "New prototypes"
 msgstr "新原型："
 
-#, fuzzy
 msgid "Returns set of |ksp-result|"
-msgstr "返回集合|nksp-result|"
+msgstr "返回 |ksp-result| 的集合"
 
-#, fuzzy
 msgid "Returns set of |old-pid-result|"
-msgstr "返回集合|nksp-result|"
+msgstr "返回 |old-pid-result| 的集合"
 
-#, fuzzy
 msgid "Returns set of |pid-1-m|"
-msgstr "返回集合|nksp-result|"
+msgstr "返回 |pid-1-m| 的集合"
 
-#, fuzzy
 msgid "Returns set of |pid-m-1|"
-msgstr "返回集合|nksp-result|"
+msgstr "返回 |pid-m-1| 的集合"
 
-#, fuzzy
 msgid "Returns set of |pid-m-m|"
-msgstr "返回集合|nksp-result|"
+msgstr "返回 |pid-m-m| 的集合"
 
-#, fuzzy
 msgid "Returns set of |matrix-pid|"
-msgstr "Returns set of |result-node|"
+msgstr "返回|matrix-pid|的集合"
 
-#, fuzzy
 msgid ""
 "Point :math:`-1` corresponds to the closest edge from point :math:`(2.9, "
 "1.8)`."
-msgstr "点:math:`-1`对应于距离点 :math:`(2.9,1.8)`最近的边。"
+msgstr "点 :math:`-1` 对应距离点 :math:`(2.9, 1.8)` 最近的边。"
 
-#, fuzzy
 msgid ""
 "Point :math:`-2` corresponds to the next close edge from point :math:`(2.9, "
 "1.8)`."
-msgstr "点:math:`-2`对应于点 :math:`(2.9,1.8)`的下一个闭合边。"
+msgstr "点 :math:`-2` 对应于点 :math:`(2.9, 1.8)` 的下一条近边。"
 
 #, fuzzy
 msgid "New overload functions"
@@ -19969,35 +19913,28 @@ msgstr "新的重载函数："
 msgid "Backport issue fixes"
 msgstr ""
 
-#, fuzzy
 msgid "Renamed functions"
-msgstr "一些未分类的函数"
+msgstr "重新命名的功能"
 
-#, fuzzy
 msgid "Deprecated Function"
-msgstr "已弃用的签名"
+msgstr "已废弃的功能"
 
-#, fuzzy
 msgid "Proposed Functionality"
-msgstr "拟议的功能"
+msgstr "建议的功能"
 
 msgid "Renamed and Deprecated Function"
 msgstr ""
 
-#, fuzzy
 msgid "**Used in:**"
-msgstr "**用于:**"
+msgstr "**用于：**"
 
-#, fuzzy
 msgid "Used in all Via functions"
-msgstr "用于所有 Via 函数"
+msgstr "用于所有 Via 功能"
 
-#, fuzzy
 msgid ""
 "That information is correct, for example, when in terms of vehicles, is it a "
 "tunnel or bridge crossing over another road."
-msgstr ""
-"这些信息是正确的，例如，在车辆方面，它是一个穿越另一条道路的隧道或桥梁。"
+msgstr "这些信息是正确的，例如，就车辆而言，是隧道还是横跨另一条道路的桥梁。"
 
 msgid "RETURNS SET OF |result-node-color|"
 msgstr "RETURNS SET OF |result-node-color|"
