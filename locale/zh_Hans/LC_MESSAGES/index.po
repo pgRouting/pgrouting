@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: 2023-10-07 08:23+0000\n"
+"PO-Revision-Date: 2023-10-21 03:23+0000\n"
 "Last-Translator: Zuochenwei <zuochenwei5@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/index/zh_Hans/>\n"
@@ -50,11 +50,11 @@ msgstr ""
 
 #: ../../build/doc/index.rst:36
 msgid "This is the manual for pgRouting |release|."
-msgstr "这是pgRouting|release|的手册"
+msgstr "这是pgRouting|release|的手册。"
 
 #: ../../build/doc/index.rst:None
 msgid "Creative Commons Attribution-Share Alike 3.0 License"
-msgstr "知识共享署名 - 相同方式共享 3.0 许可证。"
+msgstr "知识共享署名 - 相同方式共享 3.0 许可证"
 
 #: ../../build/doc/index.rst:42
 msgid "The pgRouting Manual is licensed under a `Creative Commons Attribution-Share Alike 3.0 License <https://creativecommons.org/licenses/by-sa/3.0/>`_. Feel free to use this material any way you like, but we ask that you attribute credit to the pgRouting Project and wherever possible, a link back to https://pgrouting.org. For other licenses used in pgRouting see the :ref:`license` page."
@@ -71,7 +71,7 @@ msgstr "常规"
 
 #: ../../build/doc/index.rst:60
 msgid ":doc:`sampledata` that is used in the examples of this manual."
-msgstr "本手册示例中使用的 :doc:`sampledata`"
+msgstr "本手册示例中使用的 :doc:`sampledata`。"
 
 #: ../../build/doc/index.rst:68
 msgid "Pgrouting Concepts"
@@ -211,11 +211,11 @@ msgstr ":doc:`pgr_boykovKolmogorov` - Boykov 和 Kolmogorov 的边流动细节�
 
 #: ../../build/doc/flow-family.rst:7
 msgid ":doc:`pgr_edmondsKarp` - Edmonds and Karp algorithm with details of flow on edges."
-msgstr ":doc:`pgr_edmondsKarp` - 带有边流量详细信息的 Edmonds 和 Karp 算法"
+msgstr ":doc:`pgr_edmondsKarp` - 带有边流量详细信息的 Edmonds 和 Karp 算法。"
 
 #: ../../build/doc/flow-family.rst:9
 msgid ":doc:`pgr_pushRelabel` - Push and relabel algorithm with details of flow on edges."
-msgstr ":doc:`pgr_pushRelabel` - 推送和重新标记算法以及边流量的详细信息"
+msgstr ":doc:`pgr_pushRelabel` - 推送和重新标记算法以及边流量的详细信息。"
 
 #: ../../build/doc/flow-family.rst:11
 msgid "Applications"
