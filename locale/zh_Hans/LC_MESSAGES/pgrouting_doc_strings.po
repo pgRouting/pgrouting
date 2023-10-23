@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-28 18:11+0000\n"
-"PO-Revision-Date: 2023-10-21 03:23+0000\n"
+"PO-Revision-Date: 2023-10-27 06:23+0000\n"
 "Last-Translator: Zuochenwei <zuochenwei5@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -9709,7 +9709,7 @@ msgid "``pgr_boykovKolmogorov`` (`Combinations`_)"
 msgstr "``pgr_boykovKolmogorov`` (`组合`_)"
 
 msgid "Renamed from ``pgr_maxFlowBoykovKolmogorov``"
-msgstr "由 ``pgr_maxFlowBoykovKolmogorov`` 重命名"
+msgstr "从``pgr_maxFlowBoykovKolmogorov``更名而来"
 
 msgid "**Proposed** function"
 msgstr "**拟议**函数"
@@ -9736,17 +9736,17 @@ msgid "pgr_boykovKolmogorov(`Edges SQL`_, `Combinations SQL`_)"
 msgstr "pgr_boykovKolmogorov(`Edges SQL`_, `Combinations SQL`_)"
 
 msgid "From vertex :math:`11` to vertex :math:`12`"
-msgstr "从顶点:math:`11`到顶点 :math:`12`"
+msgstr "从顶点 :math:`11` 到顶点 :math:`12`"
 
 msgid "From vertex :math:`11` to vertices :math:`\\{5, 10, 12\\}`"
-msgstr "从顶点:math:`11`到顶点 :math:`\\{5, 10, 12\\}`"
+msgstr "从顶点 :math:`11` 到顶点 :math:`\\{5, 10, 12\\}`"
 
 msgid "From vertices :math:`\\{11, 3, 17\\}` to vertex :math:`12`"
-msgstr "从顶点:math:`\\{11, 3, 17\\}`到顶点:math:`12`"
+msgstr "从顶点 :math:`\\{11, 3, 17\\}`到顶点 :math:`12`"
 
 msgid ""
 "From vertices :math:`\\{11, 3, 17\\}` to vertices :math:`\\{5, 10, 12\\}`"
-msgstr "从顶点:math:`\\{11, 3, 17\\}`到顶点:math:`\\{5, 10, 12\\}`"
+msgstr "从顶点 :math:`\\{11, 3, 17\\}`到顶点 :math:`\\{5, 10, 12\\}`"
 
 msgid ""
 "Using a combinations table, equivalent to calculating result from vertices :"
@@ -9767,10 +9767,10 @@ msgid ""
 msgstr "``pgr_breadthFirstSearch`` —使用广度优先搜索算法返回遍历顺序。"
 
 msgid "``pgr_breadthFirstSearch`` (`Single Vertex`_)"
-msgstr "``pgr_breadthFirstSearch`` (`单个顶点`_)"
+msgstr "``pgr_breadthFirstSearch`` (`单顶点搜索`_)"
 
 msgid "``pgr_breadthFirstSearch`` (`Multiple Vertices`_)"
-msgstr "``pgr_breadthFirstSearch`` (`多个顶点`_)"
+msgstr "``pgr_breadthFirstSearch`` (`多顶点搜索`_)"
 
 msgid ""
 "Provides the Breadth First Search traversal order from a root vertex to a "
@@ -9786,7 +9786,7 @@ msgid ""
 msgstr "提供从源节点到目标深度级别的广度优先搜索遍历顺序。"
 
 msgid "Running time: :math:`O(E + V)`"
-msgstr "运行时间：:math:`O(E + V)`"
+msgstr "运行时间： :math:`O(E + V)`"
 
 msgid "pgr_breadthFirstSearch(`Edges SQL`_, **root vid**, [**options**])"
 msgstr "pgr_breadthFirstSearch(`Edges SQL`_, **root vid**, [**options**])"
@@ -9807,17 +9807,16 @@ msgstr ""
 "从根顶点:math:`6` 开始，该顶点位于一个**有向**图中，其边按 ``id``升序排列"
 
 msgid "Multiple vertices"
-msgstr "多点"
+msgstr "多个顶点"
 
 msgid ""
 "From root vertices :math:`\\{12, 6\\}` on an **undirected** graph with "
 "**depth** :math:`<= 2` and edges in ascending order of ``id``"
-msgstr ""
-"从根顶点 :math:`\\{12, 6\\}` 开始，在一个**无向**图中，**深度**限制为 :math:"
-"`<= 2`，并且边按 ``id`` 升序排列"
+msgstr "从根顶点开始 :math:`{12, 6\\}` 在一个**无向**图上，**depth** "
+":math:`<=2`，边按``id``升序排列"
 
 msgid "DFS optional parameters"
-msgstr "DFS可选参数"
+msgstr "DFS 可选参数"
 
 msgid "Same as `Single vertex`_ with edges in ascending order of ``id``."
 msgstr "与 `单个顶点`_ 相同，边按 ``id`` 升序排列。"
@@ -9831,8 +9830,7 @@ msgstr "由此产生的遍历是不同的。"
 msgid ""
 "The left image shows the result with ascending order of ids and the right "
 "image shows with descending order of the edge identifiers."
-msgstr ""
-"左侧图像显示了按id升序排列的结果，右侧图像显示了按边标识降序排列的结果。"
+msgstr "左图显示的是按 ID 升序排列的结果，右图显示的是按边缘标识符降序排列的结果。"
 
 msgid "|ascending| |descending|"
 msgstr "|ascending| |descending|"
@@ -9847,14 +9845,13 @@ msgid ""
 "`Boost: Breadth First Search algorithm documentation <https://www.boost.org/"
 "libs/graph/doc/breadth_first_search.html>`__"
 msgstr ""
-"`Boost: 广度优先搜索算法文档 <https://www.boost.org/libs/graph/doc/"
+"`Boost：广度优先搜索算法文档 <https://www.boost.org/libs/graph/doc/"
 "breadth_first_search.html>`__"
 
 msgid ""
 "`Wikipedia: Breadth First Search algorithm <https://en.wikipedia.org/wiki/"
 "Breadth-first_search>`__"
-msgstr ""
-"`维基百科: 广度优先搜索算法<https://en.wikipedia.org/wiki/Breadth-"
+msgstr "`维基百科：广度优先搜索算法 <https://en.wikipedia.org/wiki/Breadth-"
 "first_search>`__"
 
 msgid "``pgr_bridges``"
@@ -9875,7 +9872,7 @@ msgid "``edge`` ascending"
 msgstr "``edge``升序"
 
 msgid "Running time: :math:`O(E * (V + E))`"
-msgstr "运行时间：:math:`O(E * (V + E))`"
+msgstr "运行时间： :math:`O(E * (V + E))`"
 
 msgid "pgr_bridges(`Edges SQL`_)"
 msgstr "pgr_bridges(`Edges SQL`_)"
@@ -9884,7 +9881,7 @@ msgid "The bridges of the graph"
 msgstr "图的桥"
 
 msgid "Returns set of |result-edge|"
-msgstr "Returns set of |result-edge|"
+msgstr "返回集合 |result-edge|"
 
 msgid "Identifier of the edge that is a bridge."
 msgstr "作为桥的边的标识符。"
@@ -9901,9 +9898,8 @@ msgstr "``pgr_chinesePostman`` - 实验"
 msgid ""
 "``pgr_chinesePostman`` — Calculates the shortest circuit path which contains "
 "every edge in a directed graph and starts and ends on the same vertex."
-msgstr ""
-"`pgr_chinesePostman` — 计算包含有向图中的每条边并从同一顶点开始和结束的最短回"
-"路路径。"
+msgstr "``pgr_chinesePostman`` — "
+"计算包含有向图中的每条边并从同一顶点开始和结束的最短回路路径。"
 
 msgid "Returns ``EMPTY SET`` on a disconnected graph"
 msgstr "在一个不连通的图上返回 ``EMPTY SET``"
@@ -9915,7 +9911,7 @@ msgid "Returns set of ``(seq, node, edge, cost, agg_cost)``"
 msgstr "Returns set of ``(seq, node, edge, cost, agg_cost)``"
 
 msgid "Sequential value starting from ``1``"
-msgstr "从 ``1``开始的顺序值"
+msgstr "从 ``1`` 开始的顺序值"
 
 msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the path "
@@ -9966,7 +9962,7 @@ msgstr ""
 msgid ""
 "A connected component of an undirected graph is a set of vertices that are "
 "all reachable from each other."
-msgstr "无向图的一个连通分量是一组顶点，它们之间都可以相互到达。"
+msgstr "无向图的连通部分是指相互之间均可到达的顶点集合。"
 
 msgid "Components are described by vertices"
 msgstr "连通分量由顶点描述"
@@ -9981,10 +9977,10 @@ msgid "The connected components of the graph"
 msgstr "图的连通分量"
 
 msgid "Returns set of |result-component-V|"
-msgstr "Returns set of |result-component-V|"
+msgstr "返回集合|result-component-V|"
 
 msgid "Has the value of the minimum node identifier in the component."
-msgstr "具有组件中的最小节点标识符值。"
+msgstr "具有组件中最小节点标识符的值。"
 
 msgid "Identifier of the vertex that belongs to the ``component``."
 msgstr "属于该 ``组件``的顶点的标识符。"
@@ -9996,8 +9992,8 @@ msgid ""
 "Boost: `Connected components <https://www.boost.org/libs/graph/doc/"
 "connected_components.html>`__"
 msgstr ""
-"Boost: `连接组件 <https://www.boost.org/libs/graph/doc/connected_components."
-"html>`__"
+"Boost: `已连接组件 <https://www.boost.org/libs/graph/doc/connected_components"
+".html>`__"
 
 msgid ""
 "wikipedia: `Connected component <https://en.wikipedia.org/wiki/"
@@ -10024,9 +10020,8 @@ msgid ""
 "Contraction reduces the size of the graph by removing some of the vertices "
 "and edges and, for example, might add edges that represent a sequence of "
 "original edges decreasing the total time and space used in graph algorithms."
-msgstr ""
-"收缩通过移除一些顶点和边来减小图的规模，例如，可能添加表示原始边序列的边，从"
-"而减少了在图算法中使用的总时间和空间。"
+msgstr "收缩通过移除部分顶点和边来减小图的大小，例如，可以添加代表原始边序列的边，从"
+"而减少图算法所用的总时间和空间。"
 
 msgid "Does not return the full contracted graph"
 msgstr "不返回完整的收缩图"
@@ -10082,10 +10077,10 @@ msgid "Ordered contraction operations."
 msgstr "有序收缩操作。"
 
 msgid "1 = Dead end contraction"
-msgstr "1=死端收缩"
+msgstr "1 = 死端收缩"
 
 msgid "2 = Linear contraction"
-msgstr "2=线性收缩"
+msgstr "2 = 线性收缩"
 
 msgid "Contraction optional parameters"
 msgstr "可选收缩参数"
@@ -10105,7 +10100,7 @@ msgstr ":math:`1`"
 msgid ""
 "Number of times the contraction operations on ``contraction_order`` will be "
 "performed."
-msgstr "对于 ``contraction_order`` 上的收缩操作将执行的次数。"
+msgstr "对 ``contraction_order`` 执行收缩操作的次数。"
 
 msgid "Returns set of  |result-contract|"
 msgstr "返回集合 |result-contract|"
@@ -10117,7 +10112,7 @@ msgid "``type``"
 msgstr "``type``"
 
 msgid "Type of the ``id``."
-msgstr "``id``的类型。"
+msgstr "``id`` 的类型。"
 
 msgid "``v`` when the row is a vertex."
 msgstr "当该行表示一个顶点时，列为``v``。"
@@ -10126,7 +10121,7 @@ msgid "Column ``id`` has a positive value"
 msgstr "列``id`` 具有正值"
 
 msgid "``e`` when the row is an edge."
-msgstr "``e`` 当该行是一条边时。"
+msgstr "当行是边时，则为 ``e``。"
 
 msgid "Column ``id`` has a negative value"
 msgstr "列 ``id`` 具有负值"
@@ -10149,10 +10144,10 @@ msgstr "从**-1**开始递减序列。"
 msgid ""
 "Representing a pseudo `id` as is not incorporated in the set of original "
 "edges."
-msgstr "将一个伪 `id` 表示为不包括在原始边集中。"
+msgstr "表示未包含在原始边集中的伪`id` 。"
 
 msgid "Array of contracted vertex identifiers."
-msgstr "收缩的顶点标识符数组。"
+msgstr "收缩顶点标识符数组。"
 
 msgid "When ``type`` = **'v'**: :math:`-1`"
 msgstr "当 ``type`` = **'v'**: :math:`-1`时"
@@ -10292,15 +10287,14 @@ msgid ""
 "passed to the function as the geometry column, and the geometry column "
 "``the_geom`` is passed to the function as the id column."
 msgstr ""
-"当参数未按适当顺序给出时会导致错误：在此示例中，表格 ``ege_table`` 的列"
-"``id`` 被错误地传递给函数作为几何列，而几何列 ``the_geom``被错误地传递给函数"
-"作为 id 列。"
+"当参数未按适当顺序给出时会导致错误：在此示例中，表 ``ege_table`` 的列``id`` "
+"被错误地传递给函数作为几何列，而几何列 ``the_geom``被错误地传递给函数作为 id "
+"列。"
 
 msgid ""
 "Parameters defined with a default value can be omitted, as long as the value "
 "matches the default And The order of the parameters would not matter."
-msgstr ""
-"定义有默认值的参数可以省略，只要该值与默认值匹配并且参数的顺序无关紧要。"
+msgstr "带有默认值的参数可以省略，只要其值与默认值一致即可。"
 
 msgid ""
 "Selecting the rows where the geometry is near the geometry of row with ``id "
@@ -10330,12 +10324,11 @@ msgid ""
 "In this scenario omitting a parameter would create an error because the "
 "default values for the column names do not match the column names of the "
 "table. The order of the parameters do not matter:"
-msgstr ""
-"在这种情况下，省略参数会产生错误，因为列名的默认值与表的列名不匹配。 参数的顺"
-"序并不重要："
+msgstr "在这种情况下，省略参数会产生错误，因为列名的默认值与表中的列名不一致。参数的"
+"顺序并不重要："
 
 msgid "Based on id:"
-msgstr "基于id："
+msgstr "根据 id："
 
 msgid "Create a routing topology"
 msgstr "创建路由拓扑"
@@ -10363,7 +10356,7 @@ msgid "For big edge tables that are been prepared,"
 msgstr "对于已经准备好的大型边表，"
 
 msgid "Create it as ``UNLOGGED`` and"
-msgstr "创建它为 ``UNLOGGED`` 并"
+msgstr "将其创建为 ``UNLOGGED`` 并"
 
 msgid "After the table is created ``ALTER TABLE .. SET LOGGED``"
 msgstr "创建表后，执行 ``ALTER TABLE .. SET LOGGED`` 操作"
@@ -10384,7 +10377,7 @@ msgid "Inspect the routing topology"
 msgstr "检查路由拓扑"
 
 msgid "**Generated topology**"
-msgstr "**生成的拓扑结构**"
+msgstr "**生成拓扑**"
 
 msgid "With full output"
 msgstr "带有完整输出"
@@ -10392,8 +10385,7 @@ msgstr "带有完整输出"
 msgid ""
 "This example start a clean topology, with 5 edges, and then its incremented "
 "to the rest of the edges."
-msgstr ""
-"这个例子开始一个干净的拓扑结构，包括 5 条边，然后将其逐渐扩展到其余的边。"
+msgstr "该示例以 5 条边的简洁拓扑结构为起点，然后递增到其余的边。"
 
 msgid "The example uses the :doc:`sampledata` network."
 msgstr "本例使用 :doc:`sampledata` 网络。"
@@ -10470,19 +10462,19 @@ msgstr ""
 "函数作为源列。"
 
 msgid "Example 4"
-msgstr "示例4"
+msgstr "示例 4"
 
 msgid "Using a different ordering"
 msgstr "使用不同的排序"
 
 msgid "Example 5"
-msgstr "示例5"
+msgstr "示例 5"
 
 msgid "Example 6"
-msgstr "示例6"
+msgstr "例 6"
 
 msgid "Example 7"
-msgstr "示例7"
+msgstr "示例 7"
 
 msgid ""
 "Selecting the rows where the geometry is near the geometry of row with "
@@ -10490,13 +10482,13 @@ msgid ""
 msgstr "选择几何与具有``id``=5的行的几何接近的行。"
 
 msgid "Example 8"
-msgstr "示例8"
+msgstr "示例 8"
 
 msgid "Using the following table"
 msgstr "使用下表"
 
 msgid "Example 9"
-msgstr "示例9"
+msgstr "示例 9"
 
 msgid ""
 "An error would occur when the arguments are not given in the appropriate "
@@ -10509,25 +10501,25 @@ msgstr ""
 "为源列。"
 
 msgid "Example 10"
-msgstr "示例10"
+msgstr "示例 10"
 
 msgid "Example 11"
-msgstr "示例11"
+msgstr "示例 11"
 
 msgid "Example 12"
-msgstr "示例12"
+msgstr "示例 12"
 
 msgid "Selecting rows based on the gid. (positional notation)"
 msgstr "根据 gid 选择行（使用位置表示法）"
 
 msgid "Example 13"
-msgstr "示例13"
+msgstr "示例 13"
 
 msgid "Selecting rows based on the gid. (named notation)"
 msgstr "根据 gid 选择行。（使用命名表示法）"
 
 msgid "Example 14"
-msgstr "示例14"
+msgstr "示例 14"
 
 msgid ""
 "Selecting the rows where the geometry is near the geometry of row with "
@@ -10535,16 +10527,16 @@ msgid ""
 msgstr "选择几何与具有``gid``=5的行的几何接近的行。"
 
 msgid "Example 15"
-msgstr "示例15"
+msgstr "示例 15"
 
 msgid "TBD"
 msgstr "TBD"
 
 msgid "Example 16"
-msgstr "示例16"
+msgstr "示例 16"
 
 msgid "Example 17"
-msgstr "示例17"
+msgstr "示例 17"
 
 msgid ""
 ":doc:`topology-functions`  for an overview of a topology for routing "
@@ -10558,13 +10550,13 @@ msgstr ":doc:`pgr_createTopology` <pgr_create_topology>`根据几何图形创建
 
 msgid ""
 ":doc:`pgr_analyzeGraph` to analyze the edges and vertices of the edge table."
-msgstr ":doc:`pgr_analyzeGraph`分析边表的边和顶点。"
+msgstr ":doc:`pgr_analyzeGraph` 分析边表的边和顶点。"
 
 msgid ":doc:`pgr_analyzeOneWay` to analyze directionality of the edges."
-msgstr ":doc:`pgr_analyzeOneWay`分析边方向性的方法。"
+msgstr ":doc:`pgr_analyzeOneWay` 分析边缘的方向性。"
 
 msgid "``pgr_cuthillMckeeOrdering`` - Experimental"
-msgstr "``pgr_cuthillMckeeOrdering`` - 实验"
+msgstr "pgr_cuthillMckeeOrdering`` - 试验性的"
 
 msgid ""
 "``pgr_cuthillMckeeOrdering`` — Returns the reverse Cuthill-Mckee ordering of "
@@ -10572,7 +10564,7 @@ msgid ""
 msgstr "``pgr_cuthillMckeeOrdering`` — 返回无向图的反向 Cuthill-Mckee 排序"
 
 msgid "Version 3.4.0"
-msgstr "版本3.4.0"
+msgstr "版本 3.4.0"
 
 msgid ""
 "In numerical linear algebra, the Cuthill-McKee algorithm (CM), named after "
@@ -10580,17 +10572,16 @@ msgid ""
 "matrix that has a symmetric sparsity pattern into a band matrix form with a "
 "small bandwidth."
 msgstr ""
-"在数值线性代数中，Cuthill-McKee算法（CM），以Elizabeth Cuthill和James McKee的"
-"名字命名，是一种用于对具有对称稀疏模式的稀疏矩阵进行置换的算法，以使其转化为"
-"带状矩阵形式，带宽较小。"
+"在数值线性代数中，Cuthill-McKee 算法（CM）以 Elizabeth Cuthill 和 James "
+"McKee 的名字命名，是一种将具有对称稀疏性模式的稀疏矩阵置换为带宽较小的带状矩"
+"阵形式的算法。"
 
 msgid ""
 "The vertices are basically assigned a breadth-first search order, except "
 "that at each step, the adjacent vertices are placed in the queue in order of "
 "increasing degree."
-msgstr ""
-"顶点基本上按照广度优先搜索的顺序进行分配，不过在每一步中，相邻的顶点按照递增"
-"的度数顺序排列放入队列。"
+msgstr "顶点的搜索顺序基本上是广度优先，只不过在每一步中，相邻的顶点会按照度数递增的"
+"顺序排列在队列中。"
 
 msgid "The implementation is for **undirected** graphs."
 msgstr "该实现适用于**无向**图。"
@@ -10606,7 +10597,7 @@ msgid "where :math:`|V|` is the number of vertices,"
 msgstr "其中 :math:`|V|`是顶点数，"
 
 msgid ":math:`m` is the maximum degree of the vertices in the graph."
-msgstr ":math:`m`是图中顶点的最大度数。"
+msgstr ":math:`m` 是图中顶点的最大度数。"
 
 msgid "pgr_cuthillMckeeOrdering(`Edges SQL`_)"
 msgstr "pgr_cuthillMckeeOrdering(`Edges SQL`_)"
@@ -10649,7 +10640,7 @@ msgstr ""
 "是，由Boost.Graph实现的DAG最短路径算法。"
 
 msgid "New **experimental** function:"
-msgstr "新**实验**函数："
+msgstr "新的**实验**函数："
 
 msgid "pgr_dagShortestPath(Combinations)"
 msgstr "pgr_dagShortestPath(组合)"
@@ -10672,9 +10663,8 @@ msgid ""
 "The algorithm relies on topological sorting the dag to impose a linear "
 "ordering on the vertices, and thus is more efficient for DAG's than either "
 "the Dijkstra or Bellman-Ford algorithm."
-msgstr ""
-"该算法依靠对 DAG 进行拓扑排序来对顶点进行线性排序，因此对于 DAG 来说比 "
-"Dijkstra 或 Bellman-Ford 算法更有效。"
+msgstr "该算法依靠对 DAG 进行拓扑排序来对顶点进行线性排序，因此比 Dijkstra 或 "
+"Bellman-Ford 算法更有效率。"
 
 msgid ""
 "Process is valid for weighted directed acyclic graphs only. otherwise it "
@@ -10811,12 +10801,12 @@ msgid "Degree of a sub graph"
 msgstr "子图的度数"
 
 msgid "Dry run execution"
-msgstr "试运行执行"
+msgstr "模拟执行"
 
 msgid ""
 "To get the query generated used to get the vertex information, use ``dryrun "
 "=> true``."
-msgstr "要获取生成的用于获取顶点信息的查询，请使用 ``dryrun => true``。"
+msgstr "要获取用于生成顶点信息的查询，请使用 ``dryrun => true``。"
 
 msgid "Degree from an existing table"
 msgstr "来自现有表的度数"
@@ -10844,7 +10834,7 @@ msgstr ""
 "图。"
 
 msgid "Version 3.3.0"
-msgstr "版本3.3.0"
+msgstr "版本 3.3.0"
 
 msgid "Promoted to **proposed** function"
 msgstr "升级至**拟议**函数"
@@ -10914,7 +10904,7 @@ msgid ""
 "`Boost: Depth First Search algorithm documentation <https://www.boost.org/"
 "libs/graph/doc/depth_first_search.html>`__"
 msgstr ""
-"`Boost: 深度优先搜索算法文档 <https://www.boost.org/libs/graph/doc/"
+"`Boost：深度优先搜索算法文档 <https://www.boost.org/libs/graph/doc/"
 "depth_first_search.html>`__"
 
 msgid ""
@@ -11816,7 +11806,7 @@ msgstr "并不总是产生最佳的着色。"
 
 msgid ""
 "The returned rows are ordered in ascending order of the edge identifier."
-msgstr "返回的行按边标识符的升序排列。"
+msgstr "返回的行按边标识符升序排列。"
 
 msgid "Efficient graph coloring is an NP-Hard problem, and therefore:"
 msgstr "高效图形着色是一个 NP-Hard问题，因此："
@@ -11945,10 +11935,10 @@ msgid "``pgr_edmondsKarp`` (`Combinations`_)"
 msgstr "``pgr_edmondsKarp`` (`组合`_)"
 
 msgid "Renamed from ``pgr_maxFlowEdmondsKarp``"
-msgstr "由 ``pgr_maxFlowEdmondsKarp`` 重命名"
+msgstr "从 ``pgr_maxFlowEdmondsKarp`` 更名而来"
 
 msgid "Running time: :math:`O( V * E ^ 2)`"
-msgstr "运行时间：:math:`O( V * E ^ 2)`"
+msgstr "运行时间： :math:`O( V * E ^ 2)`"
 
 msgid "pgr_edmondsKarp(`Edges SQL`_, **start vid**, **end vid**)"
 msgstr "pgr_edmondsKarp(`Edges SQL`_, **start vid**, **end vid**)"
@@ -11963,7 +11953,7 @@ msgid "pgr_edmondsKarp(`Edges SQL`_, **start vids**, **end vids**)"
 msgstr "pgr_edmondsKarp(`Edges SQL`_, **start vids**, **end vids**)"
 
 msgid "pgr_edmondsKarp(`Edges SQL`_, `Combinations SQL`_)"
-msgstr "pgr_edmondsKarp(`Edges SQL`_, `Combinations SQL`_)"
+msgstr "pgr_edmondsKarp(`Edges SQL`_,`Combinations SQL`_)"
 
 msgid "https://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html"
 msgstr "https://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html"
@@ -12137,10 +12127,10 @@ msgid "``POINT``"
 msgstr "``POINT``"
 
 msgid "POINT geometry of the starting vertex."
-msgstr "POINT 起始顶点的几何图形。"
+msgstr "起始顶点的 POINT 几何图形。"
 
 msgid "POINT geometry of the ending vertex."
-msgstr "POINT结束顶点的几何图形。"
+msgstr "结束顶点POINT的几何图形。"
 
 msgid ""
 "This inner query takes precedence over the next inner query, therefore other "
@@ -12180,7 +12170,7 @@ msgstr "要获取用于生成顶点信息的查询，请使用 ``dryrun := true`
 msgid ""
 "The results can be used as base code to make a refinement based on the "
 "backend development needs."
-msgstr "结果可以作为基础代码，根据后端开发需求进行细化。"
+msgstr "结果可作为基础代码，根据后台开发需要进行改进。"
 
 msgid "``pgr_findCloseEdges``"
 msgstr "``pgr_findCloseEdges``"
@@ -12209,7 +12199,7 @@ msgstr "几何图形必须位于同一坐标系中（具有相同的 SRID）。"
 msgid ""
 "The code to do the calculations can be obtained for further specific "
 "adjustments needed by the application."
-msgstr "可以获得进行计算的代码，以便应用程序需要进行进一步的具体调整。"
+msgstr "可以获取计算代码，以便根据应用需要进行进一步的具体调整。"
 
 msgid "``EMTPY SET`` is returned on dryrun executions"
 msgstr "空运行执行时返回 ``EMTPY SET``"
@@ -12237,19 +12227,19 @@ msgid "Default: ``cap => 1``"
 msgstr "默认： ``cap => 1``"
 
 msgid "Maximum one row answer."
-msgstr "最多一行的答案。"
+msgstr "最多回答一行。"
 
 msgid "Default: ``partial => true``"
 msgstr "默认：``partial => true``"
 
 msgid "With less calculations as possible."
-msgstr "尽可能少的计算。"
+msgstr "尽可能减少计算。"
 
 msgid "Default: ``dryrun => false``"
 msgstr "默认： ``dryrun => false``"
 
 msgid "Process query"
-msgstr "流程查询"
+msgstr "过程查询"
 
 msgid "Returns"
 msgstr "返回"
@@ -12266,7 +12256,7 @@ msgstr "多点"
 msgid ""
 "Find at most :math:`2` edges close to all vertices on the points of interest "
 "table."
-msgstr "查找最多靠近兴趣点表上所有顶点的边。"
+msgstr "最多找出 :math:`2` 接近兴趣点表上所有顶点的边。"
 
 msgid "One answer per point, as small as possible."
 msgstr "每点一个答案，越小越好。"
@@ -12322,8 +12312,8 @@ msgstr "当为 ``false`` 时，执行计算。"
 msgid ""
 "When ``true`` calculations are not performed and the query to do the "
 "calculations is exposed in a PostgreSQL ``NOTICE``."
-msgstr "当为``true``时，不执行计算，而是将执行计算的查询暴露在 PostgreSQL "
-"的``NOTICE`` 中。"
+msgstr "当为``true`` 时，不执行计算，并在 PostgreSQL 的 "
+"``NOTICE``中显示执行计算的查询。"
 
 msgid "The ``LINESTRING`` geometry of the edge."
 msgstr "边的 ``LINESTRING``几何。"
@@ -12340,318 +12330,329 @@ msgid ""
 msgstr "在 <0,1> 范围内的值，表示相对于边的第一个端点的相对位置。"
 
 msgid "Value in ``[r, l]`` indicating if the point is:"
-msgstr ""
+msgstr "``[r, l]``中的值指示该点是否为："
 
 msgid "In the right ``r``."
-msgstr ""
+msgstr "在右边的 ``r``。"
 
 msgid "In the left ``l``."
-msgstr ""
+msgstr "在左边的 ``l``。"
 
 msgid "When the point is on the line it is considered to be on the right."
-msgstr ""
+msgstr "当点在直线上时，它被认为是在右边。"
 
 msgid "``distance``"
-msgstr ""
+msgstr "``distance``"
 
 msgid "Distance from point to edge."
-msgstr ""
+msgstr "点到边缘的距离。"
 
 msgid "``NULL`` when ``cap = 1`` on the `One point`_ signature"
-msgstr ""
+msgstr "``NULL``当在 `一个点`_签名，``cap = 1``时"
 
 msgid "``POINT`` geometry"
-msgstr ""
+msgstr "``POINT``几何"
 
 msgid ""
 "`One Point`_: Contains the point on the edge that is ``fraction`` away from "
 "the starting point of the edge."
-msgstr ""
+msgstr "`一个点`_：包含边缘上距边缘起点一小部分的点。"
 
 msgid "`Many Points`_: Contains the corresponding **original point**"
-msgstr ""
+msgstr "`多个点`_：包含对应的**原始点**"
 
 msgid ""
 "``LINESTRING`` geometry from the **original point** to the closest point of "
 "the edge with identifier ``edge_id``"
-msgstr ""
+msgstr "从**原始点**到具有标识符``edge_id``的边的最近点的``LINESTRING``几何图形"
 
 msgid "One point results"
-msgstr ""
+msgstr "单一点的结果"
 
 msgid "The green nodes is the **original point**"
-msgstr ""
+msgstr "绿色节点是**原始点**"
 
 msgid ""
 "The geometry ``geom`` is a point on the :math:`sp \\rightarrow ep` edge."
-msgstr ""
+msgstr "几何``geom`` 是 :math:`sp \\rightarrow ep` 边上的一个点。"
 
 msgid ""
 "The geometry ``edge`` is a line that connects the **original point** with "
 "``geom``"
-msgstr ""
+msgstr "几何``edge``是连接**original point**和``geom``的线"
 
 msgid "Many point results"
-msgstr ""
+msgstr "多点成果"
 
 msgid "The green nodes are the **original points**"
-msgstr ""
+msgstr "绿色节点为**原始点**"
 
 msgid ""
 "The geometry ``geom``, marked as **g1** and **g2**  are the **original "
 "points**"
-msgstr ""
+msgstr "几何体 ``geom``，标记 **g1** 和**g2**是**原始点**"
 
 msgid ""
 "The geometry ``edge``, marked as **edge1** and **edge2** is a line that "
 "connects the **original point** with the closest point on the :math:`sp "
 "\\rightarrow ep` edge."
 msgstr ""
+"标为 **edge1** 和 **edge2** 的几何图形 ``edge`` 是一条连接 ** 原始点** 和 "
+":math:`sp \\rightarrow ep` 边上最近点的线。"
 
 msgid "One point examples"
-msgstr ""
+msgstr "单点示例"
 
 msgid "At most two answers"
-msgstr ""
+msgstr "最多两个答案"
 
 msgid "``cap => 2``"
-msgstr ""
+msgstr "``cap => 2``"
 
 msgid "Maximum two row answer."
-msgstr ""
+msgstr "最多回答两行。"
 
 msgid "Understanding the result"
-msgstr ""
+msgstr "了解结果"
 
 msgid "``NULL`` on ``geom``, ``edge``"
-msgstr ""
+msgstr "``NULL`` 在 ``geom``, ``edge``上"
 
 msgid "``edge_id`` identifier of the edge close to the **original point**"
-msgstr ""
+msgstr "``edge_id``靠近**原始点**的边的标识符"
 
 msgid ""
 "Two edges are withing :math:`0.5` distance units from the **original "
 "point**: :math:`{5, 8}`"
-msgstr ""
+msgstr "有两条边与 **原始点** : :math:`{5, 8}` 的距离在 :math:`0.5` 单位范围内"
 
 msgid "For edge :math:`5`:"
-msgstr ""
+msgstr "对于边 :math:`5`:"
 
 msgid ""
 "``fraction``: The closest point from the **original point** is at the :math:"
 "`0.8` fraction of the edge :math:`5`."
-msgstr ""
+msgstr "``fraction``：离 **原始点** 最近的点位于边 :math:`5` 处的 :math:`0.8` "
+"分数位置。"
 
 msgid ""
 "``side``: The **original point** is located to the left side of edge :math:"
 "`5`."
-msgstr ""
+msgstr "``side``：**原始点** 位于边:math:`5`的左侧。"
 
 msgid ""
 "``distance``: The **original point** is located :math:`0.1` length units "
 "from edge :math:`5`."
-msgstr ""
+msgstr "``distance``：**原始点** 位于边 :math:`5` 的 :math:`0.1` 长度单位处。"
 
 msgid "For edge :math:`8`:"
-msgstr ""
+msgstr "对于边 :math:`8`："
 
 msgid ""
 "``fraction``: The closest point from the **original point** is at the :math:"
 "`0.89..` fraction of the edge :math:`8`."
-msgstr ""
+msgstr "``fraction``：离 **原始点** 最近的点位于边 :math:`8` 的 :math:`0.89..` "
+"分数位置。"
 
 msgid ""
 "``side``: The **original point** is located to the right side of edge :math:"
 "`8`."
-msgstr ""
+msgstr "``side``：**原始点** 位于边:math:`8` 的右侧。"
 
 msgid ""
 "``distance``: The **original point** is located :math:`0.19..` length units "
 "from edge :math:`8`."
-msgstr ""
+msgstr "``distance``：**原始点** 距离边 :math:`8`有 :math:`0.19..` 长度单位。"
 
 msgid "One answer, all columns"
-msgstr ""
+msgstr "一个答案，所有列"
 
 msgid "``partial => false``"
-msgstr ""
+msgstr "``partial => false``"
 
 msgid "Calculate all columns"
-msgstr ""
+msgstr "计算所有列"
 
 msgid ""
 "``edge_id`` identifier of the edge **closest** to the **original point**"
-msgstr ""
+msgstr "``edge_id``与**原始点**最**接近**的边的标识符"
 
 msgid ""
 "From all edges within :math:`0.5` distance units from the **original "
 "point**: :math:`{5}` is the closest one."
-msgstr ""
+msgstr "从距离**原始点**不超过 :math:`0.5` 距离单位的所有边中，边 :math:`{5}` "
+"是最近的一条。"
 
 msgid ""
 "``geom``: Contains the geometry of the closest point on edge :math:`5` from "
 "the **original point**."
-msgstr ""
+msgstr "``geom``:包含了从**原始点**到边 :math:`5` 上最近点的几何形状。"
 
 msgid ""
 "``edge``: Contains the ``LINESTRING`` geometry of the **original point** to "
 "the closest point on on edge :math:`5` ``geom``"
-msgstr ""
+msgstr "``edge``：包含了从**原始点**到边 :math:`5```geom`` "
+"上最近点的``LINESTRING``几何形状"
 
 msgid "At most two answers with all columns"
-msgstr ""
+msgstr "所有列最多有两个答案"
 
 msgid "Understanding the result:"
-msgstr ""
+msgstr "了解结果："
 
 msgid ""
 "``geom``: Contains the geometry of the closest point on edge :math:`8` from "
 "the **original point**."
-msgstr ""
+msgstr "``geom``：包含了从**原始点**到边 :math:`8` 上最近点的几何形状。"
 
 msgid ""
 "``edge``: Contains the ``LINESTRING`` geometry of the **original point** to "
 "the closest point on on edge :math:`8` ``geom``"
-msgstr ""
+msgstr "``edge``：包含了从**原始点**到边 :math:`8` "
+"``geom``上最近点的``LINESTRING``几何形状"
 
 msgid "One point dry run execution"
-msgstr ""
+msgstr "单点模拟执行"
 
 msgid "Returns ``EMPTY SET``."
-msgstr ""
+msgstr "返回 ``EMPTY SET``。"
 
 msgid "``partial => true``"
-msgstr ""
+msgstr "``partial => true``"
 
 msgid "Is ignored"
-msgstr ""
+msgstr "被忽略"
 
 msgid ""
 "Because it is a **dry run** excecution, the code for all calculations are "
 "shown on the PostgreSQL ``NOTICE``."
-msgstr ""
+msgstr "由于这是一次 **模拟** 执行，所有计算的代码都显示在 PostgreSQL 的 "
+"``NOTICE``中。"
 
 msgid "``dryrun => true``"
-msgstr ""
+msgstr "``dryrun => true``"
 
 msgid "Do not process query"
-msgstr ""
+msgstr "不处理查询"
 
 msgid ""
 "Generate a PostgreSQL ``NOTICE`` with the code used to calculate all columns"
-msgstr ""
+msgstr "生成一个包含用于计算所有列的代码的 PostgreSQL ``NOTICE``"
 
 msgid "``cap`` and **original point** are used in the code"
-msgstr ""
+msgstr "代码中使用了``cap``和 **原始点**"
 
 msgid "Many points examples"
-msgstr ""
+msgstr "多点示例"
 
 msgid "At most two answers per point"
-msgstr ""
+msgstr "每个点最多两个答案"
 
 msgid "``NULL`` on ``edge``"
-msgstr ""
+msgstr "``edge``为``NULL``"
 
 msgid ""
 "``edge_id`` identifier of the edge close to a **original point** (``geom``)"
-msgstr ""
+msgstr "``edge_id``是与一个**原始点**（``geom``）靠近的边的标识符"
 
 msgid ""
 "Two edges at most withing :math:`0.5` distance units from each of the "
 "**original points**:"
-msgstr ""
+msgstr "每个**原始点**中，最多有两条边位于距离不超过 :math:`0.5`距离单位的范围内："
 
 msgid "For ``POINT(1.8 0.4)`` and ``POINT(0.3 1.8)`` only one edge was found."
-msgstr ""
+msgstr "对于 ``POINT(1.8 0.4)`` 和 ``POINT(0.3 1.8)`` ，只找到一条边。"
 
 msgid "For the rest of the points two edges were found."
-msgstr ""
+msgstr "其余的点有两条边。"
 
 msgid "For point ``POINT(2.9 1.8)``"
-msgstr ""
+msgstr "对于点 ``POINT(2.9 1.8)``"
 
 msgid ""
 "Edge :math:`5` is before :math:`8` therefore edge :math:`5` has the shortest "
 "distance to ``POINT(2.9 1.8)``."
-msgstr ""
+msgstr "边 :math:`5` 在:math:`8` 之前，因此边 :math:`5` 到``POINT(2.9 1."
+"8)``的距离最短。"
 
 msgid "One answer per point, all columns"
-msgstr ""
+msgstr "每点一个答案，所有列"
 
 msgid "For the **original point** ``POINT(2.9 1.8)``"
-msgstr ""
+msgstr "对于**原始点** ``POINT(2.9 1.8)``"
 
 msgid "Edge :math:`5` is the closest edge to the **original point**"
-msgstr ""
+msgstr "边 :math:`5`是距离**原始点**最近的边"
 
 msgid ""
 "``geom``: Contains the geometry of the **original point** ``POINT(2.9 1.8)``"
-msgstr ""
+msgstr "``geom``：包含了**原始点**的几何形状，即 ``POINT(2.9 1.8)``"
 
 msgid ""
 "``edge``: Contains the ``LINESTRING`` geometry of the **original point** "
 "(``geom``) to the closest point on on edge."
-msgstr ""
+msgstr "``edge``：包含了**原始点**（``geom``）到最接近的边上的``LINESTRING``几何形状"
+"。"
 
 msgid "Many points dry run execution"
-msgstr ""
+msgstr "多点模拟执行"
 
 msgid "Find at most two routes to a given point"
-msgstr ""
+msgstr "最多找到两条到达给定点的路线"
 
 msgid "Using :doc:`pgr_withPoints`"
-msgstr ""
+msgstr "使用:doc:`pgr_withPoints`"
 
 msgid "A point of interest table"
-msgstr ""
+msgstr "兴趣点表"
 
 msgid "Handling points outside the graph."
-msgstr ""
+msgstr "处理图外的点。"
 
 msgid "Points of interest"
-msgstr ""
+msgstr "兴趣点"
 
 msgid ""
 "Some times the applications work \"on the fly\" starting from a location "
 "that is not a vertex in the graph. Those locations, in pgRrouting are called "
 "points of interest."
-msgstr ""
+msgstr "有时应用程序会“即时执行”，从不是图中顶点的位置开始。在pgRouting中，这些位置被"
+"称为兴趣点。"
 
 msgid ""
 "The information needed in the points of interest is ``pid``, ``edge_id``, "
 "``side``, ``fraction``."
-msgstr ""
+msgstr "兴趣点所需的信息包括``pid``, ``edge_id``, ``side``, ``fraction``。"
 
 msgid ""
 "On this documentation there will be some 6 fixed points of interest and they "
 "will be stored on a table."
-msgstr ""
+msgstr "在这份文档中，将有6个固定的兴趣点，并且它们将被存储在一个表中。"
 
 msgid "A unique identifier."
-msgstr ""
+msgstr "唯一标识符。"
 
 msgid ""
 "Identifier of the edge nearest edge that allows an arrival to the point."
-msgstr ""
+msgstr "允许到达该点的最近边的标识符。"
 
 msgid "Is it on the left, right or both sides of the segment ``edge_id``"
-msgstr ""
+msgstr "它位于边 ``edge_id`` 的左侧、右侧还是两侧"
 
 msgid "Where in the segment is the point located."
-msgstr ""
+msgstr "该点位于边的哪个位置。"
 
 msgid "The geometry of the points."
-msgstr ""
+msgstr "点的几何形状。"
 
 msgid "``newPoint``"
-msgstr ""
+msgstr "``newPoint``"
 
 msgid "The geometry of the points moved on top of the segment."
-msgstr ""
+msgstr "在线段顶部移动的点的几何形状。"
 
 msgid "Points of interest fillup"
-msgstr ""
+msgstr "兴趣点填充"
 
 msgid "``pgr_floydWarshall``"
 msgstr "``pgr_floydWarshall``"
@@ -15729,34 +15730,40 @@ msgstr "``pgr_withPointsDD`` -返回从起点开始的行驶**距离**。"
 msgid ""
 "Signature change: ``driving_side`` parameter changed from named optional to "
 "unnamed compulsory **driving side**."
-msgstr ""
+msgstr "签名更改：``driving_side``参数从已命名的可选参数改为未命名的必选参数**"
+"driving side**。"
 
 msgid "``pgr_withPointsDD`` (`Single vertex`)"
-msgstr ""
+msgstr "``pgr_withPointsDD``（`单顶点`）"
 
 msgid "Added ``depth``, ``pred`` and ``start_vid`` column."
-msgstr ""
+msgstr "添加了 ``depth``、``pred`` 和 ``start_vid`` 列。"
 
 msgid "Added ``depth``, ``pred`` columns."
-msgstr ""
+msgstr "添加了 ``depth``，``pred`` 列。"
 
 msgid "When ``details`` is ``false``:"
-msgstr ""
+msgstr "当 ``details`` 为``false`` 时："
 
 msgid ""
 "Only points that are visited are removed, that is, points reached within the "
 "distance are included"
-msgstr ""
+msgstr "只有那些被访问的兴趣点会被移除，也就是说，位于一定距离范围内被到达的兴趣点会"
+"被包含在内"
 
 msgid ""
 "``pgr_withpointsdd(text,text,bigint,double precision,boolean,character,"
 "boolean)``"
 msgstr ""
+"``pgr_withpointsdd(text,text,bigint,double "
+"precision,boolean,character,boolean)``"
 
 msgid ""
 "``pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
 "boolean,boolean)``"
 msgstr ""
+"``pgr_withpointsdd(text,text,anyarray,double "
+"precision,boolean,character,boolean,boolean)``"
 
 msgid ""
 "Modify the graph to include points and using Dijkstra algorithm, extracts "
@@ -16230,2210 +16237,2469 @@ msgstr ""
 
 msgid ""
 "``pgr_aStar`` (`One to One`) added ``start_vid`` and ``end_vid`` columns."
-msgstr ""
+msgstr "``pgr_aStar`` （`一对一`）增加了 ``start_vid``和 ``end_vid``列。"
 
 msgid "``pgr_aStar`` (`One to Many`) added ``end_vid`` column."
-msgstr ""
+msgstr "``pgr_aStar``（`一对多`）添加了 ``end_vid`` 列。"
 
 msgid "``pgr_aStar`` (`Many to One`) added ``start_vid`` column."
-msgstr ""
+msgstr "``pgr_aStar``（`多对一`）添加了 ``start_vid``列。"
 
 msgid ""
 "`#2523 <https://github.com/pgRouting/pgrouting/pull/2523>`__ Standarize "
 "output pgr_bdAstar"
 msgstr ""
+"`#2523 <https://github.com/pgRouting/pgrouting/pull/2523>`__ 标准化输出 "
+"pgr_bdAstar"
 
 msgid ""
 "``pgr_bdAstar`` (`One to One`) added ``start_vid`` and ``end_vid`` columns."
-msgstr ""
+msgstr "``pgr_bdAstar``（`一对一`）增加了 ``start_vid`` 和``end_vid`` 列。"
 
 msgid "``pgr_bdAstar`` (`One to Many`) added ``end_vid`` column."
-msgstr ""
+msgstr "``pgr_bdAstar``（`一对多）添加了``end_vid``列。"
 
 msgid "``pgr_bdAstar`` (`Many to One`) added ``start_vid`` column."
-msgstr ""
+msgstr "``pgr_bdAstar``（`多对一`）添加了``start_vid``列。"
 
 msgid ""
 "`#2547 <https://github.com/pgRouting/pgrouting/pull/2547>`__ Standarize "
 "output and modifying signature pgr_KSP"
 msgstr ""
+"`#2547 <https://github.com/pgRouting/pgrouting/pull/2547>`__ "
+"标准化输出并修改签名 pgr_KSP"
 
 msgid ""
 "`#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ Standarize "
 "output pgr_drivingdistance"
 msgstr ""
+"`#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ 标准化输出 "
+"pgr_drivingdistance"
 
 msgid "Proposed functions changes"
-msgstr ""
+msgstr "拟议函数改变"
 
 msgid ""
 "`#2544 <https://github.com/pgRouting/pgrouting/pull/2544>`__ Standarize "
 "output and modifying signature pgr_withPointsDD"
 msgstr ""
+"`#2544 <https://github.com/pgRouting/pgrouting/pull/2544>`__ "
+"标准化输出并修改签名 pgr_withPointsDD"
 
 msgid ""
 "`#2546 <https://github.com/pgRouting/pgrouting/pull/2546>`__ Standarize "
 "output and modifying signature pgr_withPointsKSP"
 msgstr ""
+"`#2546 <https://github.com/pgRouting/pgrouting/pull/2546>`__ "
+"标准化输出并修改签名pgr_withPointsKSP"
 
 msgid "C/C++ code enhancements"
-msgstr ""
+msgstr "C/C++ 代码增强"
 
 msgid ""
 "`#2504 <https://github.com/pgRouting/pgrouting/pull/2504>`__ To C++ pg data "
 "get, fetch and check."
 msgstr ""
+"`#2504 <https://github.com/pgRouting/pgrouting/pull/2504>`__ "
+"获取、提取和检查C++ pg数据。"
 
 msgid "Stopping support for compilation with MSVC."
-msgstr ""
+msgstr "停止支持使用 MSVC 进行编译。"
 
 msgid ""
 "`#2505 <https://github.com/pgRouting/pgrouting/pull/2505>`__ Using namespace."
-msgstr ""
+msgstr "`#2505 <https://github.com/pgRouting/pgrouting/pull/2505>`__ 使用命名空间。"
 
 msgid ""
 "`#2512 <https://github.com/pgRouting/pgrouting/pull/2512>`__ [Dijkstra] "
 "Removing duplicate code on Dijkstra."
 msgstr ""
+"`#2512 <https://github.com/pgRouting/pgrouting/pull/2512>`__ [Dijkstra] 删除 "
+"Dijkstra 上的重复代码。"
 
 msgid ""
 "`#2517 <https://github.com/pgRouting/pgrouting/pull/2517>`__ Astar code "
 "simplification."
 msgstr ""
+"`#2517 <https://github.com/pgRouting/pgrouting/pull/2517>`__ Astar 代码简化。"
 
 msgid ""
 "`#2521 <https://github.com/pgRouting/pgrouting/pull/2521>`__ Dijkstra code "
 "simplification."
 msgstr ""
+"`#2521 <https://github.com/pgRouting/pgrouting/pull/2521>`__ Dijkstra "
+"代码简化。"
 
 msgid ""
 "`#2522 <https://github.com/pgRouting/pgrouting/pull/2522>`__ bdAstar code "
 "simplification."
 msgstr ""
+"`#2522 <https://github.com/pgRouting/pgrouting/pull/2522>`__ bdAstar "
+"代码简化。"
 
 msgid "Documentation"
-msgstr ""
+msgstr "文档"
 
 msgid ""
 "`#2490 <https://github.com/pgRouting/pgrouting/pull/2490>`__ Automatic page "
 "history links."
-msgstr ""
+msgstr "`#2490 <https://github.com/pgRouting/pgrouting/pull/2490>`__ "
+"自动页面历史链接。"
 
 msgid "..rubric:: SQL standarization"
-msgstr ""
+msgstr "..rubric::SQL 标准化"
 
 msgid ""
 "`#2555 <https://github.com/pgRouting/pgrouting/pull/2555>`__ standarize "
 "deprecated messages"
-msgstr ""
+msgstr "`#2555 <https://github.com/pgRouting/pgrouting/pull/"
+"2555>`__标准化已弃用的消息"
 
 msgid ""
 "On new internal function: do not use named parameters and default parameters."
-msgstr ""
+msgstr "新内部函数：不使用命名参数和默认参数。"
 
 msgid "pgRouting 3.5.1 Release Notes"
-msgstr ""
+msgstr "pgRouting 3.5.1 发布说明"
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.5.1 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.5.1%22>`_"
 msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `3.5.1 Git "
+"关闭里程碑<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.1%22>`_"
 
 msgid "Documentation fixes"
-msgstr ""
+msgstr "文档修复"
 
 msgid "Changes on the documentation to the following:"
-msgstr ""
+msgstr "将文件修改如下："
 
 msgid "pgr_degree"
-msgstr ""
+msgstr "pgr_degree"
 
 msgid "pgr_dijkstra"
-msgstr ""
+msgstr "pgr_dijkstra"
 
 msgid "pgr_ksp"
-msgstr ""
+msgstr "pgr_ksp"
 
 msgid "Automatic page history links"
-msgstr ""
+msgstr "自动页面历史链接"
 
 msgid "using bootstrap_version 2 because 3+ does not do dropdowns"
-msgstr ""
+msgstr "使用 bootstrap_version 2，因为 3+ 不支持下拉菜单"
 
 msgid "Issue fixes"
-msgstr ""
+msgstr "问题修复"
 
 msgid ""
 "`#2565 <https://github.com/pgRouting/pgrouting/issues/2565>`__ "
 "pgr_pgr_lengauerTarjanDominatorTree triggers an assertion"
 msgstr ""
+"`#2565 <https://github.com/pgRouting/pgrouting/issues/2565>`__ "
+"pgr_pgr_lengauerTarjanDominatorTree 触发了一个断言"
 
 msgid "SQL enhancements"
-msgstr ""
+msgstr "SQL 增强功能"
 
 msgid ""
 "`#2561 <https://github.com/pgRouting/pgrouting/issues/2561>`__ Not use "
 "wildcards on SQL"
 msgstr ""
+"`#2561 <https://github.com/pgRouting/pgrouting/issues/2561>`__ 在 SQL "
+"中不使用通配符"
 
 msgid "pgtap tests"
-msgstr ""
+msgstr "pgtap 测试"
 
 msgid ""
 "`#2559 <https://github.com/pgRouting/pgrouting/issues/2559>`__ pgtap test "
 "using sampledata"
 msgstr ""
+"`#2559 <https://github.com/pgRouting/pgrouting/issues/2559>`__ pgtap "
+"测试使用 示例数据"
 
 msgid "Build fixes"
-msgstr ""
+msgstr "构建修复"
 
 msgid "Fix winnie build"
-msgstr ""
+msgstr "修复 Winnie 构建"
 
 msgid "Code fixes"
-msgstr ""
+msgstr "代码修正"
 
 msgid "Fix clang warnings"
-msgstr ""
+msgstr "修复 clang 警告"
 
 msgid "Grouping headers of postgres readers"
-msgstr ""
+msgstr "将postgres读取器的头部进行分组"
 
 msgid "pgRouting 3.5.0 Release Notes"
-msgstr ""
+msgstr "pgRouting 3.5.0 发布说明"
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.5.0 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.5.0%22>`_"
 msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `3.5.0 Git 关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.0%22>`_"
 
 msgid "Dijkstra"
-msgstr ""
+msgstr "Dijkstra"
 
 msgid ""
 "``pgr_dijkstra`` (`One to One`) added ``start_vid`` and ``end_vid`` columns."
-msgstr ""
+msgstr "``pgr_dijkstra``（`一对一`）增加了``start_vid`` 和``end_vid``列。"
 
 msgid "``pgr_dijkstra`` (`One to Many`) added ``end_vid`` column."
-msgstr ""
+msgstr "``pgr_dijkstra``（`一对多`）添加了 ``end_vid``列。"
 
 msgid "``pgr_dijkstra`` (`Many to One`) added ``start_vid`` column."
-msgstr ""
+msgstr "``pgr_dijkstra`` （`多对一`）添加了 ``start_vid`` 列。"
 
 msgid "pgRouting 3.4.2 Release Notes"
-msgstr ""
+msgstr "pgRouting 3.4.2 发布说明"
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.4.2 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.4.2%22>`_"
 msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `3.4.2Git 关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.2%22>`_"
 
 msgid ""
 "`#2394 <https://github.com/pgRouting/pgrouting/issues/2394>`__: pgr_bdAstar "
 "accumulates heuristic cost in visited node cost."
 msgstr ""
+"`#2394 <https://github.com/pgRouting/pgrouting/issues/2394>`__：pgr_bdAstar "
+"在访问的节点成本中累积了启发式成本。"
 
 msgid ""
 "`#2427 <https://github.com/pgRouting/pgrouting/issues/2427>`__: "
 "pgr_createVerticesTable & pgr_createTopology, variable should be of type "
 "Record."
 msgstr ""
+"`#2427 <https://github.com/pgRouting/pgrouting/issues/2427>`__: "
+"pgr_createVerticesTable & pgr_createTopology，变量应为 Record 类型。"
 
 msgid "pgRouting 3.4.1 Release Notes"
-msgstr ""
+msgstr "pgRouting 3.4.1 发布说明"
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.4.1 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.4.1%22>`_"
 msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `3.4.1Git 关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.1%22>`_"
 
 msgid ""
 "`#2401 <https://github.com/pgRouting/pgrouting/issues/2401>`__: pgRouting "
 "3.4.0 do not build docs when sphinx is too low or missing"
 msgstr ""
+"`#2401 <https://github.com/pgRouting/pgrouting/issues/2401>`__: pgRouting "
+"3.4.0 在 sphinx 过低或丢失时不构建文档"
 
 msgid ""
 "`#2398 <https://github.com/pgRouting/pgrouting/issues/2398>`__: v3.4.0 does "
 "not upgrade from 3.3.3"
 msgstr ""
+"`#2398 <https://github.com/pgRouting/pgrouting/issues/2398>`__: v3.4.0 "
+"不能从 3.3.3 升级"
 
 msgid "pgRouting 3.4.0 Release Notes"
-msgstr ""
+msgstr "pgRouting 3.4.0 发布说明"
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.4.0 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.4.0%22>`_"
 msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `3.4.0 Git 关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.0%22>`_"
 
 msgid ""
 "`#1891 <https://github.com/pgRouting/pgrouting/issues/1891>`__: pgr_ksp "
 "doesn't give all correct shortest path"
 msgstr ""
+"`#1891 <https://github.com/pgRouting/pgrouting/issues/1891>`__: pgr_ksp "
+"没有给出所有正确的最短路径"
 
 msgid "New proposed functions"
-msgstr ""
+msgstr "新的拟议函数"
 
 msgid "With points"
-msgstr ""
+msgstr "带点"
 
 msgid "``pgr_withPointsVia`` (One Via)"
-msgstr ""
+msgstr "``pgr_withPointsVia`` (One Via)"
 
 msgid "Turn Restrictions"
-msgstr ""
+msgstr "转弯限制"
 
 msgid "Via with turn restrictions"
-msgstr ""
+msgstr "有转弯限制的通道"
 
 msgid "``pgr_trspVia`` (One Via)"
-msgstr ""
+msgstr "``pgr_trspVia`` (One Via)"
 
 msgid "``pgr_trspVia_withPoints`` (One Via)"
-msgstr ""
+msgstr "pgr_trspVia_withPoints``（一次通过）"
 
 msgid "``pgr_trsp``"
-msgstr ""
+msgstr "``pgr_trsp``"
 
 msgid "``pgr_trsp`` (One to One)"
-msgstr ""
+msgstr "``pgr_trsp`` （一对一）"
 
 msgid "``pgr_trsp`` (One to Many)"
-msgstr ""
+msgstr "``pgr_trsp``（一对多）"
 
 msgid "``pgr_trsp`` (Many to One)"
-msgstr ""
+msgstr "``pgr_trsp``（多对一）"
 
 msgid "``pgr_trsp`` (Many to Many)"
-msgstr ""
+msgstr "``pgr_trsp``（多对多）"
 
 msgid "``pgr_trsp`` (Combinations)"
-msgstr ""
+msgstr "``pgr_trsp``（组合）"
 
 msgid "``pgr_trsp_withPoints``"
-msgstr ""
+msgstr "``pgr_trsp_withPoints``"
 
 msgid "``pgr_trsp_withPoints`` (One to One)"
-msgstr ""
+msgstr "``pgr_trsp_withPoints``（一对一）"
 
 msgid "``pgr_trsp_withPoints`` (One to Many)"
-msgstr ""
+msgstr "``pgr_trsp_withPoints`` （一对多）"
 
 msgid "``pgr_trsp_withPoints`` (Many to One)"
-msgstr ""
+msgstr "pgr_trsp_withPoints``（多对一）"
 
 msgid "``pgr_trsp_withPoints`` (Many to Many)"
-msgstr ""
+msgstr "``pgr_trsp_withPoints``（多对多）"
 
 msgid "``pgr_trsp_withPoints`` (Combinations)"
-msgstr ""
+msgstr "``pgr_trsp_withPoints`` （组合）"
 
 msgid "Topology"
-msgstr ""
+msgstr "拓扑结构"
 
 msgid "``pgr_degree``"
-msgstr ""
+msgstr "``pgr_degree``"
 
 msgid "``pgr_findCloseEdges`` (One point)"
-msgstr ""
+msgstr "``pgr_findCloseEdges``（单点）"
 
 msgid "``pgr_findCloseEdges`` (Many points)"
-msgstr ""
+msgstr "``pgr_findCloseEdges``（多点）"
 
 msgid "New experimental functions"
-msgstr ""
+msgstr "新的实验函数"
 
 msgid "Ordering"
-msgstr ""
+msgstr "排序"
 
 msgid "``pgr_cuthillMckeeOrdering``"
-msgstr ""
+msgstr "``pgr_cuthillMckeeOrdering``"
 
 msgid "Unclassified"
-msgstr ""
+msgstr "未分类"
 
 msgid "Flow functions"
-msgstr ""
+msgstr "流程函数"
 
 msgid "``pgr_maxCardinalityMatch(text)``"
-msgstr ""
+msgstr "``pgr_maxCardinalityMatch(text)``"
 
 msgid "Deprecating ``pgr_maxCardinalityMatch(text,boolean)``"
-msgstr ""
+msgstr "弃用``pgr_maxCardinalityMatch(text,boolean)``"
 
 msgid "Deprecated functions"
-msgstr ""
+msgstr "已废弃的函数"
 
 msgid "``pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text)``"
-msgstr ""
+msgstr "``pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text)``"
 
 msgid "``pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)``"
-msgstr ""
+msgstr "``pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)``"
 
 msgid "pgRouting 3.3.5 Release Notes"
-msgstr ""
+msgstr "pgRouting 3.3.5 发布说明"
 
 msgid "pgRouting 3.3.4 Release Notes"
-msgstr ""
+msgstr "pgRouting 3.3.4 发布说明"
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.3.4 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.3.4%22>`_"
 msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `3.3.4Git 关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.4%22>`_"
 
 msgid ""
 "`#2400 <https://github.com/pgRouting/pgrouting/issues/2400>`__: pgRouting "
 "3.3.3 does not build in focal"
 msgstr ""
+"`#2400 <https://github.com/pgRouting/pgrouting/issues/2400>`__: pgRouting "
+"3.3.3 在 Focal 上无法构建"
 
 msgid "pgRouting 3.3.3 Release Notes"
-msgstr ""
+msgstr "pgRouting 3.3.3 发布说明"
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.3.3 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.3.3%22>`_"
 msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅` 3.3.3Git 关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.3%22>`_"
 
 msgid ""
 "Ignoring optional boolean parameter, as the algorithm works only for "
 "undirected graphs."
-msgstr ""
+msgstr "忽略可选的布尔参数，因为该算法只适用于无向图。"
 
 msgid "pgRouting 3.3.2 Release Notes"
-msgstr ""
+msgstr "pgRouting 3.3.2 发布说明"
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.3.2 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.3.2%22>`_"
 msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 ` 3.3.2Git 关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.2%22>`_"
 
 msgid "Revised documentation"
-msgstr ""
+msgstr "修订文档"
 
 msgid "Simplifying table names and table columns, for example:"
-msgstr ""
+msgstr "简化表名和表列，例如："
 
 msgid "``edges`` instead of ``edge_table``"
-msgstr ""
+msgstr "``edges``而不是 ``edge_table``"
 
 msgid "Removing unused columns ``category_id`` and ``reverse_category_id``."
-msgstr ""
+msgstr "删除未使用的列 ``category_id`` 和 ``reverse_category_id``。"
 
 msgid "``combinations`` instead of ``combinations_table``"
-msgstr ""
+msgstr "``combinations``而不是 ``combinations_table``"
 
 msgid "Using PostGIS standard for geometry column."
-msgstr ""
+msgstr "使用 PostGIS 标准的几何列。"
 
 msgid "``geom`` instead of ``the_geom``"
-msgstr ""
+msgstr "``geom``而不是 ``the_geom``"
 
 msgid "Avoiding usage of functions that modify indexes, columns etc on tables."
-msgstr ""
+msgstr "避免使用修改表中索引、列等的函数。"
 
 msgid "Using ``pgr_extractVertices`` to create a routing topology"
-msgstr ""
+msgstr "使用 ``pgr_extractVertices`` 创建路由拓扑"
 
 msgid "Restructure of the pgRouting concepts page."
-msgstr ""
+msgstr "pgRouting概念页面的重构。"
 
 msgid ""
 "`#2276 <https://github.com/pgRouting/pgrouting/issues/2276>`__: "
 "edgeDisjointPaths issues with start_vid and combinations"
 msgstr ""
+"`#2276 <https://github.com/pgRouting/pgrouting/issues/2276>`__: "
+"edgeDisjointPaths 与 start_vid 和组合的问题"
 
 msgid ""
 "`#2312 <https://github.com/pgRouting/pgrouting/issues/2312>`__: "
 "pgr_extractVertices error when target is not BIGINT"
 msgstr ""
+"`#2312 <https://github.com/pgRouting/pgrouting/issues/2312>`__：当目标不是 "
+"BIGINT 时 pgr_extractVertices 错误"
 
 msgid ""
 "`#2357 <https://github.com/pgRouting/pgrouting/issues/2357>`__: Apply clang-"
 "tidy performance-*"
 msgstr ""
+"`#2357 <https://github.com/pgRouting/pgrouting/issues/2357>`__：应用 clang-"
+"tidy performance-*"
 
 msgid "pgRouting 3.3.1 Release Notes"
-msgstr ""
+msgstr "pgRouting 3.3.1 发布说明"
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.3.1 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.3.1%22>`_ on Github."
 msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 ` "
+"3.3.1Git关闭里程碑 <https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.1%22>`_。"
 
 msgid ""
 "`#2216 <https://github.com/pgRouting/pgrouting/issues/2216>`__: Warnings "
 "when using clang"
 msgstr ""
+"`#2216 <https://github.com/pgRouting/pgrouting/issues/2216>`__：使用 clang "
+"时发出警告"
 
 msgid ""
 "`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__: Error "
 "processing restrictions"
-msgstr ""
+msgstr "`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__：错误处理限制"
 
 msgid "pgRouting 3.3.0 Release Notes"
-msgstr ""
+msgstr "pgRouting 3.3.0 发布说明"
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.3.0 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.3.0%22>`_ on Github."
 msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 ` 3.3.0 "
+"Git关闭里程碑<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.0%22>`_。"
 
 msgid ""
 "`#2057 <https://github.com/pgRouting/pgrouting/issues/2057>`__: trspViaEdges "
 "columns in different order"
 msgstr ""
+"`#2057 <https://github.com/pgRouting/pgrouting/issues/2057>`__: trspViaEdges "
+"列的顺序不同"
 
 msgid ""
 "`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__: "
 "pgr_extractVertices to proposed"
 msgstr ""
+"`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__:拟议的 "
+"pgr_extractVertices"
 
 msgid ""
 "`#2201 <https://github.com/pgRouting/pgrouting/issues/2201>`__: "
 "pgr_depthFirstSearch to proposed"
 msgstr ""
+"`#2201 <https://github.com/pgRouting/pgrouting/issues/2201>`__: "
+"拟议的pgr_depthFirstSearch"
 
 msgid ""
 "`#2202 <https://github.com/pgRouting/pgrouting/issues/2202>`__: "
 "pgr_sequentialVertexColoring to proposed"
 msgstr ""
+"`#2202 <https://github.com/pgRouting/pgrouting/issues/2202>`__: "
+"拟议的pgr_sequentialVertexColoring"
 
 msgid ""
 "`#2203 <https://github.com/pgRouting/pgrouting/issues/2203>`__: "
 "pgr_dijkstraNear and pgr_dijkstraNearCost to proposed"
 msgstr ""
+"`#2203 <https://github.com/pgRouting/pgrouting/issues/2203>`__: "
+"拟议的pgr_dijkstraNear 和 pgr_dijkstraNearCost"
 
 msgid "Coloring"
-msgstr ""
+msgstr "着色"
 
 msgid "pgr_edgeColoring"
-msgstr ""
+msgstr "pgr_edgeColoring"
 
 msgid "Experimental promoted to Proposed"
-msgstr ""
+msgstr "实验提升为拟议"
 
 msgid "pgr_dijkstraNear"
-msgstr ""
+msgstr "pgr_dijkstraNear"
 
 msgid "pgr_dijkstraNear(Combinations)"
-msgstr ""
+msgstr "pgr_dijkstraNear(组合)"
 
 msgid "pgr_dijkstraNear(Many to Many)"
-msgstr ""
+msgstr "pgr_dijkstraNear（多对多）"
 
 msgid "pgr_dijkstraNear(Many to One)"
-msgstr ""
+msgstr "pgr_dijkstraNear(多对一)"
 
 msgid "pgr_dijkstraNear(One to Many)"
-msgstr ""
+msgstr "pgr_dijkstraNear(一对多)"
 
 msgid "pgr_dijkstraNearCost"
-msgstr ""
+msgstr "pgr_dijkstraNearCost"
 
 msgid "pgr_dijkstraNearCost(Combinations)"
-msgstr ""
+msgstr "pgr_dijkstraNearCost(组合)"
 
 msgid "pgr_dijkstraNearCost(Many to Many)"
-msgstr ""
+msgstr "pgr_dijkstraNearCost (多对多)"
 
 msgid "pgr_dijkstraNearCost(Many to One)"
-msgstr ""
+msgstr "pgr_dijkstraNearCost(多对一)"
 
 msgid "pgr_dijkstraNearCost(One to Many)"
-msgstr ""
+msgstr "pgr_dijkstraNearCost(一对多)"
 
 msgid "pgr_sequentialVertexColoring"
-msgstr ""
+msgstr "pgr_sequentialVertexColoring"
 
 msgid "pgr_extractVertices"
-msgstr ""
+msgstr "pgr_extractVertices"
 
 msgid "Traversal"
-msgstr ""
+msgstr "遍历"
 
 msgid "pgr_depthFirstSearch(Multiple vertices)"
-msgstr ""
+msgstr "pgr_depthFirstSearch（多顶点）"
 
 msgid "pgr_depthFirstSearch(Single vertex)"
-msgstr ""
+msgstr "pgr_depthFirstSearch( 单顶点 )"
 
 msgid "pgRouting 3.2.2 Release Notes"
-msgstr ""
+msgstr "pgRouting 3.2.2 发布说明"
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.2.2 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.2.2%22>`_ on Github."
 msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.2.2 "
+"Git关闭里程碑<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.2%22>`_。"
 
 msgid "Issues"
-msgstr ""
+msgstr "问题"
 
 msgid ""
 "`#2093 <https://github.com/pgRouting/pgrouting/issues/2093>`__: Compilation "
 "on Visual Studio"
 msgstr ""
+"`#2093 <https://github.com/pgRouting/pgrouting/issues/2093>`__：在 Visual "
+"Studio 上编译"
 
 msgid ""
 "`#2189 <https://github.com/pgRouting/pgrouting/issues/2189>`__: Build error "
 "on RHEL 7"
 msgstr ""
+"`#2189 <https://github.com/pgRouting/pgrouting/issues/2189>`__：RHEL 7 "
+"上的构建错误"
 
 msgid "pgRouting 3.2.1 Release Notes"
-msgstr ""
+msgstr "pgRouting 3.2.1 发布说明"
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.2.1 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.2.1%22>`_ on Github."
 msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.2.1Git关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.1%22>`_。"
 
 msgid ""
 "`#1883 <https://github.com/pgRouting/pgrouting/issues/1883>`__: "
 "pgr_TSPEuclidean crashes connection on Windows"
 msgstr ""
+"`#1883 <https://github.com/pgRouting/pgrouting/issues/1883>`__:"
+"pgr_TSPEuclidean 在 Windows 上导致连接崩溃"
 
 msgid "The solution is to use Boost::graph::metric_tsp_approx"
-msgstr ""
+msgstr "解决方案是使用 Boost::graph::metric_tsp_approx"
 
 msgid ""
 "To not break user's code the optional parameters related to the TSP "
 "Annaeling are ignored"
-msgstr ""
+msgstr "为避免破坏用户代码，与 TSP Annaeling 有关的可选参数将被忽略"
 
 msgid "The function with the annaeling optional parameters is deprecated"
-msgstr ""
+msgstr "带有 annaeling 可选参数的函数已被弃用"
 
 msgid "pgRouting 3.2.0 Release Notes"
-msgstr ""
+msgstr "pgRouting 3.2.0 发布说明"
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.2.0 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.2.0%22>`_ on Github."
 msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 ` "
+"3.2.0Git关闭里程碑 <https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.0%22>`_。"
 
 msgid "Build"
-msgstr ""
+msgstr "构建"
 
 msgid ""
 "`#1850 <https://github.com/pgRouting/pgrouting/issues/1850>`__: Change Boost "
 "min version to 1.56"
 msgstr ""
+"`#1850 <https://github.com/pgRouting/pgrouting/issues/1850>`__：将 Boost "
+"最低版本更改为 1.56"
 
 msgid "Removing support for Boost v1.53, v1.54 & v1.55"
-msgstr ""
+msgstr "删除对 Boost v1.53、v1.54 和 v1.55 的支持"
 
 msgid "pgr_bellmanFord(Combinations)"
-msgstr ""
+msgstr "pgr_bellmanFord(组合)"
 
 msgid "pgr_binaryBreadthFirstSearch(Combinations)"
-msgstr ""
+msgstr "pgr_binaryBreadthFirstSearch(组合)"
 
 msgid "pgr_bipartite"
-msgstr ""
+msgstr "pgr_bipartite"
 
 msgid "pgr_depthFirstSearch"
-msgstr ""
+msgstr "pgr_depthFirstSearch"
 
 msgid "Dijkstra Near"
-msgstr ""
+msgstr "Dijkstra Near"
 
 msgid "pgr_edwardMoore(Combinations)"
-msgstr ""
+msgstr "pgr_edwardMoore(组合)"
 
 msgid "pgr_isPlanar"
-msgstr ""
+msgstr "pgr_isPlanar"
 
 msgid "pgr_lengauerTarjanDominatorTree"
-msgstr ""
+msgstr "pgr_lengauerTarjanDominatorTree"
 
 msgid "pgr_makeConnected"
-msgstr ""
+msgstr "pgr_makeConnected"
 
 msgid "pgr_maxFlowMinCost(Combinations)"
-msgstr ""
+msgstr "pgr_maxFlowMinCost(组合)"
 
 msgid "pgr_maxFlowMinCost_Cost(Combinations)"
-msgstr ""
+msgstr "pgr_maxFlowMinCost_Cost(组合)"
 
 msgid "Astar"
-msgstr ""
+msgstr "Astar"
 
 msgid "pgr_aStar(Combinations)"
-msgstr ""
+msgstr "pgr_aStar(组合)"
 
 msgid "pgr_aStarCost(Combinations)"
-msgstr ""
+msgstr "pgr_aStarCost(组合)"
 
 msgid "Bidirectional Astar"
-msgstr ""
+msgstr "双向Astar"
 
 msgid "pgr_bdAstar(Combinations)"
-msgstr ""
+msgstr "pgr_bdAstar(组合)"
 
 msgid "pgr_bdAstarCost(Combinations)"
-msgstr ""
+msgstr "pgr_bdAstarCost(组合)"
 
 msgid "Bidirectional Dijkstra"
-msgstr ""
+msgstr "双向 Dijkstra"
 
 msgid "pgr_bdDijkstra(Combinations)"
-msgstr ""
+msgstr "pgr_bdDijkstra(组合)"
 
 msgid "pgr_bdDijkstraCost(Combinations)"
-msgstr ""
+msgstr "pgr_bdDijkstraCost(组合)"
 
 msgid "pgr_boykovKolmogorov(Combinations)"
-msgstr ""
+msgstr "pgr_boykovKolmogorov (组合)"
 
 msgid "pgr_edmondsKarp(Combinations)"
-msgstr ""
+msgstr "pgr_edmondsKarp(组合)"
 
 msgid "pgr_maxFlow(Combinations)"
-msgstr ""
+msgstr "pgr_maxFlow(组合)"
 
 msgid "pgr_pushRelabel(Combinations)"
-msgstr ""
+msgstr "pgr_pushRelabel(组合)"
 
 msgid "pgRouting 3.1.4 Release Notes"
-msgstr ""
+msgstr "pgRouting 3.1.4 发布说明"
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.1.4 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.1.4%22>`_ on Github."
 msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.1.4Git关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.4%22>`_。"
 
 msgid "Issues fixes"
-msgstr ""
+msgstr "问题修复"
 
 msgid "pgRouting 3.1.3 Release Notes"
-msgstr ""
+msgstr "pgRouting 3.1.3 发布说明"
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.1.3 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.1.3%22>`_ on Github."
 msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.1.3 "
+"Git关闭里程碑<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.3%22>`_。"
 
 msgid ""
 "`#1825 <https://github.com/pgRouting/pgrouting/issues/1825>`__: Boost "
 "versions are not honored"
 msgstr ""
+"`#1825 <https://github.com/pgRouting/pgrouting/issues/1825>`__：Boost "
+"版本不受支持"
 
 msgid ""
 "`#1849 <https://github.com/pgRouting/pgrouting/issues/1849>`__: Boost 1.75.0 "
 "geometry \"point_xy.hpp\" build error on macOS environment"
 msgstr ""
+"`#1849 <https://github.com/pgRouting/pgrouting/issues/1849>`__：macOS "
+"环境中的 Boost 1.75.0 几何“point_xy.hpp”构建错误"
 
 msgid ""
 "`#1861 <https://github.com/pgRouting/pgrouting/issues/1861>`__: vrp "
 "functions crash server"
 msgstr ""
+"`#1861 <https://github.com/pgRouting/pgrouting/issues/"
+"1861>`__：vrp功能使服务器崩溃"
 
 msgid "pgRouting 3.1.2 Release Notes"
-msgstr ""
+msgstr "pgRouting 3.1.2 发布说明"
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.1.2 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.1.2%22>`_ on Github."
 msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.1.2Git关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.2%22>`_。"
 
 msgid ""
 "`#1304 <https://github.com/pgRouting/pgrouting/issues/1304>`__: FreeBSD 12 "
 "64-bit crashes on pgr_vrOneDepot tests Experimental Function"
 msgstr ""
+"`#1304 <https://github.com/pgRouting/pgrouting/issues/1304>`__：FreeBSD 12 "
+"64 位在 pgr_vrOneDepot 测试实验功能上崩溃"
 
 msgid ""
 "`#1356 <https://github.com/pgRouting/pgrouting/issues/1356>`__: tools/"
 "testers/pg_prove_tests.sh fails when PostgreSQL port is not passed"
 msgstr ""
+"`#1356 <https://github.com/pgRouting/pgrouting/issues/1356>`__：tools/"
+"testers/pg_prove_tests.sh 在未传递 PostgreSQL 端口时失败"
 
 msgid ""
 "`#1725 <https://github.com/pgRouting/pgrouting/issues/1725>`__: Server crash "
 "on pgr_pickDeliver and pgr_vrpOneDepot on openbsd"
 msgstr ""
+"`#1725 <https://github.com/pgRouting/pgrouting/issues/"
+"1725>`___：openbsd上的pgr_pickDeliver和pgr_vrpOneDepot服务器崩溃"
 
 msgid ""
 "`#1760 <https://github.com/pgRouting/pgrouting/issues/1760>`__: TSP server "
 "crash on ubuntu 20.04 #1760"
 msgstr ""
+"`#1760 <https://github.com/pgRouting/pgrouting/issues/1760>`__：TSP 服务器在 "
+"ubuntu 20.04 上崩溃 #1760"
 
 msgid ""
 "`#1770 <https://github.com/pgRouting/pgrouting/issues/1770>`__: Remove "
 "warnings when using clang compiler"
 msgstr ""
+"`#1770 <https://github.com/pgRouting/pgrouting/issues/1770>`__：删除使用 "
+"clang 编译器时的警告"
 
 msgid "pgRouting 3.1.1 Release Notes"
-msgstr ""
+msgstr "pgRouting 3.1.1 发布说明"
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.1.1 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.1.1%22>`_ on Github."
 msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.1.1 "
+"Git关闭里程碑<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.1%22>`_。"
 
 msgid ""
 "`#1733 <https://github.com/pgRouting/pgrouting/issues/1733>`__: pgr_bdAstar "
 "fails when source or target vertex does not exist in the graph"
 msgstr ""
+"`#1733 <https://github.com/pgRouting/pgrouting/issues/"
+"1733>`__：当图中不存在源顶点或目标顶点时，pgr_bdAstar 失败"
 
 msgid ""
 "`#1647 <https://github.com/pgRouting/pgrouting/issues/1647>`__: Linear "
 "Contraction contracts self loops"
 msgstr ""
+"`#1647 <https://github.com/pgRouting/pgrouting/issues/"
+"1647>`__：线性收缩收缩自循环"
 
 msgid ""
 "`#1640 <https://github.com/pgRouting/pgrouting/issues/1640>`__: "
 "pgr_withPoints fails when points_sql is empty"
 msgstr ""
+"`#1640 <https://github.com/pgRouting/pgrouting/issues/1640>`__: "
+"pgr_withPoints 在 points_sql 为空时失败"
 
 msgid ""
 "`#1616 <https://github.com/pgRouting/pgrouting/issues/1616>`__: Path "
 "evaluation on C++ not updated before the results go back to C"
 msgstr ""
+"`#1616 <https://github.com/pgRouting/pgrouting/issues/1616>`___：C++ "
+"上的路径评估在结果返回 C 之前没有更新"
 
 msgid ""
 "`#1300 <https://github.com/pgRouting/pgrouting/issues/1300>`__: "
 "pgr_chinesePostman crash on test data"
 msgstr ""
+"`#1300 <https://github.com/pgRouting/pgrouting/issues/1300>`__:"
+"pgr_chinesePostman 在测试数据上崩溃"
 
 msgid "pgRouting 3.1.0 Release Notes"
-msgstr ""
+msgstr "pgRouting 3.1.0 发布说明"
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.1.0%22>`_ on Github."
 msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.1.0 "
+"Git关闭里程碑<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.0%22>`_。"
 
 msgid "pgr_dijkstra(combinations)"
-msgstr ""
+msgstr "pgr_dijkstra(组合)"
 
 msgid "pgr_dijkstraCost(combinations)"
-msgstr ""
+msgstr "pgr_dijkstraCost(组合)"
 
 msgid "Build changes"
-msgstr ""
+msgstr "构建变更"
 
 msgid "Minimal requirement for Sphinx: version 1.8"
-msgstr ""
+msgstr "对 Sphinx 的最低要求：1.8 版本"
 
 msgid "pgRouting 3.0.6 Release Notes"
-msgstr ""
+msgstr "pgRouting 3.0.6 发布说明"
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.0.6 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.0.6%22>`_ on Github."
 msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 ` "
+"3.0.6Git关闭里程碑 <https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.6%22>`_。"
 
 msgid "pgRouting 3.0.5 Release Notes"
-msgstr ""
+msgstr "pgRouting 3.0.5 发布说明"
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.0.5 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.0.5%22>`_ on Github."
 msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.0.5Git关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.5%22>`_。"
 
 msgid "Backport issues fixes"
-msgstr ""
+msgstr "回溯问题修复"
 
 msgid "pgRouting 3.0.4 Release Notes"
-msgstr ""
+msgstr "pgRouting 3.0.4 发布说明"
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.0.4 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`_ on Github."
 msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 ` "
+"3.0.4Git关闭里程碑 <https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`_。"
 
 msgid "pgRouting 3.0.3 Release Notes"
-msgstr ""
+msgstr "pgRouting 3.0.3 发布说明"
 
 msgid "pgRouting 3.0.2 Release Notes"
-msgstr ""
+msgstr "pgRouting 3.0.2 发布说明"
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.0.2 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`_ on Github."
 msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.0.2Git关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`_。"
 
 msgid ""
 "`#1378 <https://github.com/pgRouting/pgrouting/issues/1378>`__: Visual "
 "Studio build failing"
 msgstr ""
+"`#1378 <https://github.com/pgRouting/pgrouting/issues/1378>`__：Visual "
+"Studio 构建失败"
 
 msgid "pgRouting 3.0.1 Release Notes"
-msgstr ""
+msgstr "pgRouting 3.0.1 发布说明"
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.0.1%22>`_ on Github."
 msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.0.1Git关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.1%22>`_。"
 
 msgid ""
 "`#232 <https://github.com/pgRouting/pgrouting/issues/232>`__:  Honor client "
 "cancel requests in C /C++ code"
 msgstr ""
+"`#232 <https://github.com/pgRouting/pgrouting/issues/232>`__：在C/"
+"C++代码中响应客户端取消请求"
 
 msgid "pgRouting 3.0.0 Release Notes"
-msgstr ""
+msgstr "pgRouting 3.0.0 发布说明"
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8="
 "%E2%9C%93&q=milestone%3A%22Release%203.0.0%22>`_ on Github."
 msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 `3.0.0Git关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.0%22>`_。"
 
 msgid "Fixed Issues"
-msgstr ""
+msgstr "问题修复"
 
 msgid ""
 "`#1153 <https://github.com/pgRouting/pgrouting/issues/1153>`__: Renamed "
 "pgr_eucledianTSP to pgr_TSPeuclidean"
 msgstr ""
+"`#1153 <https://github.com/pgRouting/pgrouting/issues/1153>`__：将 "
+"pgr_eucledianTSP 更名为 pgr_TSPeuclidean"
 
 msgid ""
 "`#1188 <https://github.com/pgRouting/pgrouting/issues/1188>`__: Removed CGAL "
 "dependency"
 msgstr ""
+"`#1188 <https://github.com/pgRouting/pgrouting/issues/1188>`__：删除了 CGAL "
+"依赖"
 
 msgid ""
 "`#1002 <https://github.com/pgRouting/pgrouting/issues/1002>`__: Fixed "
 "contraction issues:"
-msgstr ""
+msgstr "`#1002 <https://github.com/pgRouting/pgrouting/issues/"
+"1002>`__：修复收缩问题："
 
 msgid ""
 "`#1004 <https://github.com/pgRouting/pgrouting/issues/1004>`__: Contracts "
 "when forbidden vertices do not belong to graph"
 msgstr ""
+"`#1004 <https://github.com/pgRouting/pgrouting/issues/"
+"1004>`___：当禁止的顶点不属于图时的收缩"
 
 msgid ""
 "`#1005 <https://github.com/pgRouting/pgrouting/issues/1005>`__: Intermideate "
 "results eliminated"
-msgstr ""
+msgstr "`#1005 <https://github.com/pgRouting/pgrouting/issues/1005>`__：消除中间结果"
 
 msgid ""
 "`#1006 <https://github.com/pgRouting/pgrouting/issues/1006>`__: No loss of "
 "information"
-msgstr ""
+msgstr "`#1006 <https://github.com/pgRouting/pgrouting/issues/1006>`__：无信息丢失"
 
 msgid "New functions"
-msgstr ""
+msgstr "新函数"
 
 msgid "Kruskal family"
-msgstr ""
+msgstr "Kruskal族"
 
 msgid "pgr_kruskal"
-msgstr ""
+msgstr "pgr_kruskal"
 
 msgid "pgr_kruskalBFS"
-msgstr ""
+msgstr "pgr_kruskalBFS"
 
 msgid "pgr_kruskalDD"
-msgstr ""
+msgstr "pgr_kruskalDD"
 
 msgid "pgr_kruskalDFS"
-msgstr ""
+msgstr "pgr_kruskalDFS"
 
 msgid "Prim family"
-msgstr ""
+msgstr "Prim族"
 
 msgid "pgr_prim"
-msgstr ""
+msgstr "pgr_prim"
 
 msgid "pgr_primDD"
-msgstr ""
+msgstr "pgr_primDD"
 
 msgid "pgr_primDFS"
-msgstr ""
+msgstr "pgr_primDFS"
 
 msgid "pgr_primBFS"
-msgstr ""
+msgstr "pgr_primBFS"
 
 msgid "Proposed moved to official on pgRouting"
-msgstr ""
+msgstr "pgRouting 中的拟议已升级为正式版本"
 
 msgid "aStar Family"
-msgstr ""
+msgstr "aStar族"
 
 msgid "pgr_aStar(one to many)"
-msgstr ""
+msgstr "pgr_aStar（一对多）"
 
 msgid "pgr_aStar(many to one)"
-msgstr ""
+msgstr "pgr_aStar（多对一）"
 
 msgid "pgr_aStar(many to many)"
-msgstr ""
+msgstr "pgr_aStar（多对多）"
 
 msgid "pgr_aStarCost(one to one)"
-msgstr ""
+msgstr "pgr_aStarCost(一对一)"
 
 msgid "pgr_aStarCost(one to many)"
-msgstr ""
+msgstr "pgr_aStarCost(一对多)"
 
 msgid "pgr_aStarCost(many to one)"
-msgstr ""
+msgstr "pgr_aStarCost(多对一)"
 
 msgid "pgr_aStarCost(many to many)"
-msgstr ""
+msgstr "pgr_aStarCost（多对多）"
 
 msgid "pgr_aStarCostMatrix(one to one)"
-msgstr ""
+msgstr "pgr_aStarCostMatrix(一对一)"
 
 msgid "pgr_aStarCostMatrix(one to many)"
-msgstr ""
+msgstr "pgr_aStarCostMatrix (一对多)"
 
 msgid "pgr_aStarCostMatrix(many to one)"
-msgstr ""
+msgstr "pgr_aStarCostMatrix (多对一)"
 
 msgid "pgr_aStarCostMatrix(many to many)"
-msgstr ""
+msgstr "pgr_aStarCostMatrix（多对多）"
 
 msgid "bdAstar Family"
-msgstr ""
+msgstr "bdAstar 族"
 
 msgid "pgr_bdAstar(one to many)"
-msgstr ""
+msgstr "pgr_bdAstar（一对多）"
 
 msgid "pgr_bdAstar(many to one)"
-msgstr ""
+msgstr "pgr_bdAstar（多对一）"
 
 msgid "pgr_bdAstar(many to many)"
-msgstr ""
+msgstr "pgr_bdAstar（多对多）"
 
 msgid "pgr_bdAstarCost(one to one)"
-msgstr ""
+msgstr "pgr_bdAstarCost(一对一)"
 
 msgid "pgr_bdAstarCost(one to many)"
-msgstr ""
+msgstr "pgr_bdAstarCost(一对多)"
 
 msgid "pgr_bdAstarCost(many to one)"
-msgstr ""
+msgstr "pgr_bdAstarCost （多对一）"
 
 msgid "pgr_bdAstarCost(many to many)"
-msgstr ""
+msgstr "pgr_bdAstarCost (多对多)"
 
 msgid "pgr_bdAstarCostMatrix(one to one)"
-msgstr ""
+msgstr "pgr_bdAstarCostMatrix(一对一)"
 
 msgid "pgr_bdAstarCostMatrix(one to many)"
-msgstr ""
+msgstr "pgr_bdAstarCostMatrix(一对多)"
 
 msgid "pgr_bdAstarCostMatrix(many to one)"
-msgstr ""
+msgstr "pgr_bdAstarCostMatrix （多对一）"
 
 msgid "pgr_bdAstarCostMatrix(many to many)"
-msgstr ""
+msgstr "pgr_bdAstarCostMatrix （多对多）"
 
 msgid "bdDijkstra Family"
-msgstr ""
+msgstr "bdDijkstra族"
 
 msgid "pgr_bdDijkstra(one to many)"
-msgstr ""
+msgstr "pgr_bdDijkstra（一对多）"
 
 msgid "pgr_bdDijkstra(many to one)"
-msgstr ""
+msgstr "pgr_bdDijkstra（多对一）"
 
 msgid "pgr_bdDijkstra(many to many)"
-msgstr ""
+msgstr "pgr_bdDijkstra（多对多）"
 
 msgid "pgr_bdDijkstraCost(one to one)"
-msgstr ""
+msgstr "pgr_bdDijkstraCost (一对一)"
 
 msgid "pgr_bdDijkstraCost(one to many)"
-msgstr ""
+msgstr "pgr_bdDijkstraCost(一对多)"
 
 msgid "pgr_bdDijkstraCost(many to one)"
-msgstr ""
+msgstr "pgr_bdDijkstraCost (多对一)"
 
 msgid "pgr_bdDijkstraCost(many to many)"
-msgstr ""
+msgstr "pgr_bdDijkstraCost（多对多）"
 
 msgid "pgr_bdDijkstraCostMatrix(one to one)"
-msgstr ""
+msgstr "pgr_bdDijkstraCostMatrix(一对一)"
 
 msgid "pgr_bdDijkstraCostMatrix(one to many)"
-msgstr ""
+msgstr "pgr_bdDijkstraCostMatrix(一对多)"
 
 msgid "pgr_bdDijkstraCostMatrix(many to one)"
-msgstr ""
+msgstr "pgr_bdDijkstraCostMatrix (多对一)"
 
 msgid "pgr_bdDijkstraCostMatrix(many to many)"
-msgstr ""
+msgstr "pgr_bdDijkstraCostMatrix（多对多）"
 
 msgid "Flow Family"
-msgstr ""
+msgstr "Flow族"
 
 msgid "pgr_pushRelabel(one to one)"
-msgstr ""
+msgstr "pgr_pushRelabel(一对一)"
 
 msgid "pgr_pushRelabel(one to many)"
-msgstr ""
+msgstr "pgr_pushRelabel(一对多)"
 
 msgid "pgr_pushRelabel(many to one)"
-msgstr ""
+msgstr "pgr_pushRelabel(多对一)"
 
 msgid "pgr_pushRelabel(many to many)"
-msgstr ""
+msgstr "pgr_pushRelabel(多对多)"
 
 msgid "pgr_edmondsKarp(one to one)"
-msgstr ""
+msgstr "pgr_edmondsKarp（一对一）"
 
 msgid "pgr_edmondsKarp(one to many)"
-msgstr ""
+msgstr "pgr_edmondsKarp（一对多）"
 
 msgid "pgr_edmondsKarp(many to one)"
-msgstr ""
+msgstr "pgr_edmondsKarp（多对一）"
 
 msgid "pgr_edmondsKarp(many to many)"
-msgstr ""
+msgstr "pgr_edmondsKarp（多对多）"
 
 msgid "pgr_boykovKolmogorov (one to one)"
-msgstr ""
+msgstr "pgr_boykovKolmogorov (一对一)"
 
 msgid "pgr_boykovKolmogorov (one to many)"
-msgstr ""
+msgstr "pgr_boykovKolmogorov (一对多)"
 
 msgid "pgr_boykovKolmogorov (many to one)"
-msgstr ""
+msgstr "pgr_boykovKolmogorov (多对一)"
 
 msgid "pgr_boykovKolmogorov (many to many)"
-msgstr ""
+msgstr "pgr_boykovKolmogorov (多对多)"
 
 msgid "pgr_maxCardinalityMatching"
-msgstr ""
+msgstr "pgr_maxCardinalityMatching"
 
 msgid "pgr_maxFlow"
-msgstr ""
+msgstr "pgr_maxFlow"
 
 msgid "pgr_edgeDisjointPaths(one to one)"
-msgstr ""
+msgstr "pgr_edgeDisjointPaths (一对一)"
 
 msgid "pgr_edgeDisjointPaths(one to many)"
-msgstr ""
+msgstr "pgr_edgeDisjointPaths （一对多）"
 
 msgid "pgr_edgeDisjointPaths(many to one)"
-msgstr ""
+msgstr "pgr_edgeDisjointPaths (多对一)"
 
 msgid "pgr_edgeDisjointPaths(many to many)"
-msgstr ""
+msgstr "pgr_edgeDisjointPaths （多对多）"
 
 msgid "Components family"
-msgstr ""
+msgstr "分量族"
 
 msgid "pgr_strongComponents"
-msgstr ""
+msgstr "pgr_strongComponents"
 
 msgid "pgr_biconnectedComponents"
-msgstr ""
+msgstr "pgr_biconnectedComponents"
 
 msgid "pgr_articulationPoints"
-msgstr ""
+msgstr "pgr_articulationPoints"
 
 msgid "pgr_bridges"
-msgstr ""
+msgstr "pgr_bridges"
 
 msgid "Contraction:"
-msgstr ""
+msgstr "收缩："
 
 msgid "Removed unnecessary column seq"
-msgstr ""
+msgstr "删除了不必要的列 seq"
 
 msgid "Bug Fixes"
-msgstr ""
+msgstr "Bug修复"
 
 msgid "New Experimental functions"
-msgstr ""
+msgstr "新的实验函数"
 
 msgid "pgr_maxFlowMinCost"
-msgstr ""
+msgstr "pgr_maxFlowMinCost"
 
 msgid "pgr_maxFlowMinCost_Cost"
-msgstr ""
+msgstr "pgr_maxFlowMinCost_Cost"
 
 msgid "pgr_turnRestrictedPath"
-msgstr ""
+msgstr "pgr_turnRestrictedPath"
 
 msgid "pgr_stoerWagner"
-msgstr ""
+msgstr "pgr_stoerWagner"
 
 msgid "pgr_dagShortestpath"
-msgstr ""
+msgstr "pgr_dagShortestpath"
 
 msgid "pgr_topologicalSort"
-msgstr ""
+msgstr "pgr_topologicalSort"
 
 msgid "pgr_transitiveClosure"
-msgstr ""
+msgstr "pgr_transitiveClosure"
 
 msgid "VRP category"
-msgstr ""
+msgstr "VRP（车辆路径问题）类别"
 
 msgid "pgr_pickDeliverEuclidean"
-msgstr ""
+msgstr "pgr_pickDeliverEuclidean"
 
 msgid "pgr_pickDeliver"
-msgstr ""
+msgstr "pgr_pickDeliver"
 
 msgid "Chinese Postman family"
-msgstr ""
+msgstr "中国邮递员问题族"
 
 msgid "pgr_chinesePostman"
-msgstr ""
+msgstr "pgr_chinesePostman"
 
 msgid "pgr_chinesePostmanCost"
-msgstr ""
+msgstr "pgr_chinesePostmanCost"
 
 msgid "Breadth First Search family"
-msgstr ""
+msgstr "广度优先搜索族"
 
 msgid "pgr_breadthFirstSearch"
-msgstr ""
+msgstr "pgr_breadthFirstSearch"
 
 msgid "pgr_binaryBreadthFirstSearch"
-msgstr ""
+msgstr "pgr_binaryBreadthFirstSearch"
 
 msgid "Bellman Ford family"
-msgstr ""
+msgstr "Bellman Ford族"
 
 msgid "pgr_bellmanFord"
-msgstr ""
+msgstr "pgr_bellmanFord"
 
 msgid "pgr_edwardMoore"
-msgstr ""
+msgstr "pgr_edwardMoore"
 
 msgid "Moved to legacy"
-msgstr ""
+msgstr "已移至旧版"
 
 msgid "pgr_labelGraph  -  Use the components family of functions instead."
-msgstr ""
+msgstr "pgr_labelGraph - 使用分量系列函数。"
 
 msgid "Max flow - functions were renamed on v2.5.0"
-msgstr ""
+msgstr "Max flow - 2.5.0 版对函数进行了重命名"
 
 msgid "pgr_maxFlowPushRelabel"
-msgstr ""
+msgstr "pgr_maxFlowPushRelabel"
 
 msgid "pgr_maxFlowBoykovKolmogorov"
-msgstr ""
+msgstr "pgr_maxFlowBoykovKolmogorov"
 
 msgid "pgr_maxFlowEdmondsKarp"
-msgstr ""
+msgstr "pgr_maxFlowEdmondsKarp"
 
 msgid "pgr_maximumcardinalitymatching"
-msgstr ""
+msgstr "pgr_maximumcardinalitymatching"
 
 msgid "VRP"
-msgstr ""
+msgstr "VRP（车辆路径问题）"
 
 msgid "pgr_gsoc_vrppdtw"
-msgstr ""
+msgstr "pgr_gsoc_vrppdtw"
 
 msgid "TSP old signatures"
-msgstr ""
+msgstr "TSP 旧签名"
 
 msgid "pgr_pointsAsPolygon"
-msgstr ""
+msgstr "pgr_pointsAsPolygon"
 
 msgid "pgr_alphaShape old signature"
-msgstr ""
+msgstr "pgr_alphaShape 旧签名"
 
 msgid "pgRouting 2.6.3 Release Notes"
-msgstr ""
+msgstr "pgRouting 2.6.3 发布说明"
 
 msgid ""
 "To see the issues closed by this release see the `Git closed milestone for "
 "2.6.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
 "%93&q=milestone%3A%22Release%202.6.3%22%20>`_ on Github."
 msgstr ""
+"要查看此版本关闭的问题，请参阅 Github 上的 `2.6.3Git关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.3%22%20>`_。"
 
 msgid ""
 "`#1219 <https://github.com/pgRouting/pgrouting/pull/1219>`__ Implicit cast "
 "for via_path integer to text"
 msgstr ""
+"`#1219 <https://github.com/pgRouting/pgrouting/pull/1219>`__ via_path "
+"整数到文本的隐式转换"
 
 msgid ""
 "`#1193 <https://github.com/pgRouting/pgrouting/pull/1193>`__ Fixed "
 "pgr_pointsAsPolygon breaking when comparing strings in WHERE clause"
 msgstr ""
+"`#1193 <https://github.com/pgRouting/pgrouting/pull/1193>`__ 修复了比较 "
+"WHERE 子句中的字符串时 pgr_pointsAsPolygon 中断的问题"
 
 msgid ""
 "`#1185 <https://github.com/pgRouting/pgrouting/pull/1185>`__ Improve "
 "FindPostgreSQL.cmake"
 msgstr ""
+"`#1185 <https://github.com/pgRouting/pgrouting/pull/1185>`__ 改进 "
+"FindPostgreSQL.cmake"
 
 msgid "pgRouting 2.6.2 Release Notes"
-msgstr ""
+msgstr "pgRouting 2.6.2 发布说明"
 
 msgid ""
 "To see the issues closed by this release see the `Git closed milestone for "
 "2.6.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
 "%93&q=milestone%3A%22Release%202.6.2%22%20>`_ on Github."
 msgstr ""
+"要查看此版本关闭的问题，请参阅 Github 上的 `2.6.2Git关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.2%22%20>`_。"
 
 msgid ""
 "`#1152 <https://github.com/pgRouting/pgrouting/issues/1152>`__ Fixes driving "
 "distance when vertex is not part of the graph"
 msgstr ""
+"`#1152 <https://github.com/pgRouting/pgrouting/issues/"
+"1152>`__修复了顶点不属于图时的行驶距离问题"
 
 msgid ""
 "`#1098 <https://github.com/pgRouting/pgrouting/issues/1098>`__ Fixes windows "
 "test"
 msgstr ""
+"`#1098 <https://github.com/pgRouting/pgrouting/issues/1098>`__ 修复 Windows "
+"测试"
 
 msgid ""
 "`#1165 <https://github.com/pgRouting/pgrouting/issues/1165>`__ Fixes build "
 "for python3 and perl5"
 msgstr ""
+"`#1165 <https://github.com/pgRouting/pgrouting/issues/1165>`__ 修复了 "
+"python3 和 perl5 的构建问题"
 
 msgid "pgRouting 2.6.1 Release Notes"
-msgstr ""
+msgstr "pgRouting 2.6.1 发布说明"
 
 msgid ""
 "To see the issues closed by this release see the `Git closed milestone for "
 "2.6.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
 "%93&q=milestone%3A%22Release%202.6.1%22%20>`_ on Github."
 msgstr ""
+"要查看此版本关闭的问题，请参阅 Github 上的 `2.6.1Git关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.1%22%20>`_。"
 
 msgid "Fixes server crash on several functions."
-msgstr ""
+msgstr "修复了多个函数导致服务器崩溃的问题。"
 
 msgid "pgr_floydWarshall"
-msgstr ""
+msgstr "pgr_floydWarshall"
 
 msgid "pgr_johnson"
-msgstr ""
+msgstr "pgr_johnson"
 
 msgid "pgr_astar"
-msgstr ""
+msgstr "pgr_astar"
 
 msgid "pgr_bdAstar"
-msgstr ""
+msgstr "pgr_bdAstar"
 
 msgid "pgr_bdDijstra"
-msgstr ""
+msgstr "pgr_bdDijstra"
 
 msgid "pgr_alphashape"
-msgstr ""
+msgstr "pgr_alphashape"
 
 msgid "pgr_dijkstraCostMatrix"
-msgstr ""
+msgstr "pgr_dijkstraCostMatrix"
 
 msgid "pgr_dijkstraCost"
-msgstr ""
+msgstr "pgr_dijkstraCost"
 
 msgid "pgr_drivingDistance"
-msgstr ""
+msgstr "pgr_drivingDistance"
 
 msgid "pgr_dijkstraVia (proposed)"
-msgstr ""
+msgstr "pgr_dijkstraVia (拟议)"
 
 msgid "pgr_boykovKolmogorov (proposed)"
-msgstr ""
+msgstr "pgr_boykovKolmogorov (拟议)"
 
 msgid "pgr_edgeDisjointPaths (proposed)"
-msgstr ""
+msgstr "pgr_edgeDisjointPaths （拟议）"
 
 msgid "pgr_edmondsKarp (proposed)"
-msgstr ""
+msgstr "pgr_edmondsKarp (拟议)"
 
 msgid "pgr_maxCardinalityMatch (proposed)"
-msgstr ""
+msgstr "pgr_maxCardinalityMatch （拟议）"
 
 msgid "pgr_maxFlow (proposed)"
-msgstr ""
+msgstr "pgr_maxFlow （拟议）"
 
 msgid "pgr_withPoints (proposed)"
-msgstr ""
+msgstr "pgr_withPoints （拟议）"
 
 msgid "pgr_withPointsCost (proposed)"
-msgstr ""
+msgstr "pgr_withPointsCost （拟议）"
 
 msgid "pgr_withPointsKSP (proposed)"
-msgstr ""
+msgstr "pgr_withPointsKSP（拟议）"
 
 msgid "pgr_withPointsDD (proposed)"
-msgstr ""
+msgstr "pgr_withPointsDD （拟议）"
 
 msgid "pgr_withPointsCostMatrix (proposed)"
-msgstr ""
+msgstr "pgr_withPointsCostMatrix （拟议）"
 
 msgid "pgr_contractGraph (experimental)"
-msgstr ""
+msgstr "pgr_contractGraph （实验）"
 
 msgid "pgr_pushRelabel (experimental)"
-msgstr ""
+msgstr "pgr_pushRelabel （实验）"
 
 msgid "pgr_vrpOneDepot (experimental)"
-msgstr ""
+msgstr "pgr_vrpOneDepot （实验）"
 
 msgid "pgr_gsoc_vrppdtw (experimental)"
-msgstr ""
+msgstr "pgr_gsoc_vrppdtw （实验）"
 
 msgid "Fixes for deprecated functions where also applied but not tested"
-msgstr ""
+msgstr "修复了已应用但未测试的已弃用函数"
 
 msgid "Removed compilation warning for g++8"
-msgstr ""
+msgstr "删除了 g++8 的编译警告"
 
 msgid "Fixed a fallthrugh on Astar and bdAstar."
-msgstr ""
+msgstr "修复了 Astar 和 bdAstar 上的一个故障。"
 
 msgid "pgRouting 2.6.0 Release Notes"
-msgstr ""
+msgstr "pgRouting 2.6.0 发布说明"
 
 msgid ""
 "To see the issues closed by this release see the `Git closed milestone for "
 "2.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
 "%93&q=milestone%3A%22Release%202.6.0%22%20>`_ on Github."
 msgstr ""
+"要查看此版本关闭的问题，请参阅 Github 上的 ` 2.6.0Git关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22%20>`_。"
 
 msgid "pgr_lineGraphFull"
-msgstr ""
+msgstr "pgr_lineGraphFull"
 
 msgid ""
 "Fix pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
 "boolean[,text])"
 msgstr ""
+"修复pgr_trsp(text,integer,double precision,integer,double "
+"precision,boolean,boolean[,text])"
 
 msgid "without restrictions"
-msgstr ""
+msgstr "无限制"
 
 msgid "calls pgr_dijkstra when both end points have a fraction IN (0,1)"
-msgstr ""
+msgstr "当两个端点的分数都在 (0,1) 内时，调用 pgr_dijkstra"
 
 msgid "calls pgr_withPoints when at least one fraction NOT IN (0,1)"
-msgstr ""
+msgstr "当至少有一个分数不在 (0,1) 范围内时，调用 pgr_withPoints"
 
 msgid "with restrictions"
-msgstr ""
+msgstr "有限制"
 
 msgid "calls original trsp code"
-msgstr ""
+msgstr "调用原始 TRSP 代码"
 
 msgid "Internal code"
-msgstr ""
+msgstr "内部代码"
 
 msgid ""
 "Cleaned the internal code of trsp(text,integer,integer,boolean,boolean [, "
 "text])"
-msgstr ""
+msgstr "清除了 trsp(text,integer,integer,boolean,boolean [, text]) 的内部代码"
 
 msgid "Removed the use of pointers"
-msgstr ""
+msgstr "删除了指针的使用"
 
 msgid "Internal code can accept BIGINT"
-msgstr ""
+msgstr "内部代码可接受 BIGINT"
 
 msgid "Cleaned the internal code of withPoints"
-msgstr ""
+msgstr "清理了 withPoints 的内部代码"
 
 msgid "pgRouting 2.5.5 Release Notes"
-msgstr ""
+msgstr "pgRouting 2.5.5 发布说明"
 
 msgid ""
 "To see the issues closed by this release see the `Git closed milestone for "
 "2.5.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
 "%93&q=milestone%3A%22Release%202.5.5%22%20>`_ on Github."
 msgstr ""
+"要查看此版本关闭的问题，请参阅 Github 上的 `2.5.5Git关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.5%22%20>`_。"
 
 msgid "Fixes driving distance when vertex is not part of the graph"
-msgstr ""
+msgstr "修复顶点不在图中时的行驶距离问题"
 
 msgid "Fixes windows test"
-msgstr ""
+msgstr "修复 windows测试"
 
 msgid "Fixes build for python3 and perl5"
-msgstr ""
+msgstr "修复了 python3 和 perl5 的构建问题"
 
 msgid "pgRouting 2.5.4 Release Notes"
-msgstr ""
+msgstr "pgRouting 2.5.4 发布说明"
 
 msgid ""
 "To see the issues closed by this release see the `Git closed milestone for "
 "2.5.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
 "%93&q=milestone%3A%22Release%202.5.4%22%20>`_ on Github."
 msgstr ""
+"要查看此版本关闭的问题，请参阅 Github 上的 `2.5.4 "
+"Git关闭里程碑<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22%20>`_。"
 
 msgid "pgRouting 2.5.3 Release Notes"
-msgstr ""
+msgstr "pgRouting 2.5.3 发布说明"
 
 msgid ""
 "To see the issues closed by this release see the `Git closed milestone for "
 "2.5.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
 "%93&q=milestone%3A%22Release%202.5.3%22%20>`_ on Github."
 msgstr ""
+"要查看此版本关闭的问题，请参阅 Github 上的 ` 2.5.3Git关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.3%22%20>`_。"
 
 msgid ""
 "Fix for postgresql 11: Removed a compilation error when compiling with "
 "postgreSQL"
-msgstr ""
+msgstr "postgresql 11 的修复：删除了与 postgreSQL 一起编译时出现的编译错误"
 
 msgid "pgRouting 2.5.2 Release Notes"
-msgstr ""
+msgstr "pgRouting 2.5.2 发布说明"
 
 msgid ""
 "To see the issues closed by this release see the `Git closed milestone for "
 "2.5.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
 "%93&q=milestone%3A%22Release%202.5.2%22%20>`_ on Github."
 msgstr ""
+"要查看此版本关闭的问题，请参阅 Github 上的 `2.5.2Git关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.2%22%20>`_。"
 
 msgid "Fix for postgresql 10.1: Removed a compiler condition"
-msgstr ""
+msgstr "postgresql 10.1 的修复：删除了一个编译器条件"
 
 msgid "pgRouting 2.5.1 Release Notes"
-msgstr ""
+msgstr "pgRouting 2.5.1 发布说明"
 
 msgid ""
 "To see the issues closed by this release see the `Git closed milestone for "
 "2.5.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
 "%93&q=milestone%3A%22Release%202.5.1%22%20>`_ on Github."
 msgstr ""
+"要查看此版本关闭的问题，请参阅 Github 上的 `2.5.1Git关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.1%22%20>`_。"
 
 msgid "Fixed prerequisite minimum version of: cmake"
-msgstr ""
+msgstr "修正了 cmake 的最低版本要求"
 
 msgid "pgRouting 2.5.0 Release Notes"
-msgstr ""
+msgstr "pgRouting 2.5.0 发布说明"
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
 "2.5.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
 "+2.5.0%22+is%3Aclosed>`_ on Github."
 msgstr ""
+"要查看此版本关闭的问题，请参阅 Github 上的 `2.5.0Git关闭里程碑<https://github"
+".com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.5."
+"0%22+is%3Aclosed>`_ 。"
 
 msgid "enhancement:"
-msgstr ""
+msgstr "增强："
 
 msgid "pgr_version is now on SQL language"
-msgstr ""
+msgstr "pgr_version 现在使用 SQL 语言"
 
 msgid "Breaking change on:"
-msgstr ""
+msgstr "重大变更："
 
 msgid "pgr_edgeDisjointPaths:"
-msgstr ""
+msgstr "pgr_edgeDisjointPaths："
 
 msgid "Added path_id, cost and agg_cost columns on the result"
-msgstr ""
+msgstr "在结果中添加了 path_id、cost 和 agg_cost 列"
 
 msgid "Parameter names changed"
-msgstr ""
+msgstr "更改参数名称"
 
 msgid "The many version results are the union of the one to one version"
-msgstr ""
+msgstr "多版本结果是一对一版本的并集"
 
 msgid "New Signatures:"
-msgstr ""
+msgstr "新签名："
 
 msgid "pgr_bdAstar(one to one)"
-msgstr ""
+msgstr "pgr_bdAstar（一对一）"
 
 msgid "New Proposed functions"
-msgstr ""
+msgstr "新的拟议函数"
 
 msgid "pgr_bdAstarCostMatrix"
-msgstr ""
+msgstr "pgr_bdAstarCostMatrix"
 
 msgid "pgr_bdDijkstraCostMatrix"
-msgstr ""
+msgstr "pgr_bdDijkstraCostMatrix"
 
 msgid "pgr_lineGraph"
-msgstr ""
+msgstr "pgr_lineGraph"
 
 msgid "Deprecated Signatures"
-msgstr ""
+msgstr "废弃的签名"
 
 msgid "pgr_bdastar - use pgr_bdAstar instead"
-msgstr ""
+msgstr "pgr_bdastar - 使用 pgr_bdAstar 代替"
 
 msgid "Renamed Functions"
-msgstr ""
+msgstr "已重命名的函数"
 
 msgid "pgr_maxFlowPushRelabel - use pgr_pushRelabel instead"
-msgstr ""
+msgstr "pgr_maxFlowPushRelabel - 使用 pgr_pushRelabel 代替"
 
 msgid "pgr_maxFlowEdmondsKarp -use pgr_edmondsKarp instead"
-msgstr ""
+msgstr "pgr_maxFlowEdmondsKarp - 使用 pgr_edmondsKarp 代替"
 
 msgid "pgr_maxFlowBoykovKolmogorov - use pgr_boykovKolmogorov instead"
-msgstr ""
+msgstr "pgr_maxFlowBoykovKolmogorov - 使用 pgr_boykovKolmogorov代替"
 
 msgid "pgr_maximumCardinalityMatching - use pgr_maxCardinalityMatch instead"
-msgstr ""
+msgstr "pgr_maximumCardinalityMatching - 使用 pgr_maximumCardinalityMatch 代替"
 
 msgid "Deprecated function"
-msgstr ""
+msgstr "已废弃的函数"
 
 msgid "pgr_pointToEdgeNode"
-msgstr ""
+msgstr "pgr_pointtoEdgeNode"
 
 msgid "pgRouting 2.4.2 Release Notes"
-msgstr ""
+msgstr "pgRouting 2.4.2 发布说明"
 
 msgid ""
 "To see the issues closed by this release see the `Git closed milestone for "
 "2.4.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
 "%93&q=milestone%3A%22Release%202.4.2%22%20>`_ on Github."
 msgstr ""
+"要查看此版本关闭的问题，请参阅 Github 上的 `2.4.2Git关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.2%22%20>`_。"
 
 msgid "Improvement"
-msgstr ""
+msgstr "改进"
 
 msgid "Works for postgreSQL 10"
-msgstr ""
+msgstr "适用于 postgreSQL 10"
 
 msgid "Fixed: Unexpected error column \"cname\""
-msgstr ""
+msgstr "已修复：列 \"cname \"出现意外错误"
 
 msgid ""
 "Replace __linux__ with __GLIBC__ for glibc-specific headers and functions"
-msgstr ""
+msgstr "将 __linux__ 替换为 __GLIBC__ 以获取 glibc 特定的标头和函数"
 
 msgid "pgRouting 2.4.1 Release Notes"
-msgstr ""
+msgstr "pgRouting 2.4.1 发布说明"
 
 msgid ""
 "To see the issues closed by this release see the `Git closed milestone for "
 "2.4.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
 "%93&q=milestone%3A%22Release%202.4.1%22%20>`_ on Github."
 msgstr ""
+"要查看此版本关闭的问题，请参阅 Github 上的 `2.4.1Git关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22%20>`_。"
 
 msgid "Fixed compiling error on macOS"
-msgstr ""
+msgstr "修正了 macOS 上的编译错误"
 
 msgid "Condition error on pgr_withPoints"
-msgstr ""
+msgstr "pgr_withPoints 上的条件错误"
 
 msgid "pgRouting 2.4.0 Release Notes"
-msgstr ""
+msgstr "pgRouting 2.4.0 发布说明"
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
 "2.4.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
 "+2.4.0%22+is%3Aclosed>`_ on Github."
 msgstr ""
+"要查看此版本关闭的问题，请参阅 Github 上的 ` 2.4.0Git关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.4."
+"0%22+is%3Aclosed>`_ 。"
 
 msgid "New Signatures"
-msgstr ""
+msgstr "新签名"
 
 msgid "pgr_bdDijkstra"
-msgstr ""
+msgstr "pgr_bdDijkstra"
 
 msgid "New Proposed Signatures"
-msgstr ""
+msgstr "新的拟议签名"
 
 msgid "pgr_astar(one to many)"
-msgstr ""
+msgstr "pgr_astar（一对多）"
 
 msgid "pgr_astar(many to one)"
-msgstr ""
+msgstr "pgr_astar（多对一）"
 
 msgid "pgr_astar(many to many)"
-msgstr ""
+msgstr "pgr_astar（多对多）"
 
 msgid "pgr_astarCost(one to one)"
-msgstr ""
+msgstr "pgr_astarCost(一对一)"
 
 msgid "pgr_astarCost(one to many)"
-msgstr ""
+msgstr "pgr_astarCost(一对多)"
 
 msgid "pgr_astarCost(many to one)"
-msgstr ""
+msgstr "pgr_astarCost(多对一)"
 
 msgid "pgr_astarCost(many to many)"
-msgstr ""
+msgstr "pgr_astarCost（多对多）"
 
 msgid "pgr_astarCostMatrix"
-msgstr ""
+msgstr "pgr_astarCostMatrix"
 
 msgid "pgr_bddijkstra - use pgr_bdDijkstra instead"
-msgstr ""
+msgstr "pgr_bddijkstra - 使用 pgr_bdDijkstra代替"
 
 msgid "Deprecated Functions"
-msgstr ""
+msgstr "已废弃的函数"
 
 msgid "pgr_pointsToVids"
-msgstr ""
+msgstr "pgr_pointsToVids"
 
 msgid "Bug fixes on proposed functions"
-msgstr ""
+msgstr "拟议函数的Bug修复"
 
 msgid "pgr_withPointsKSP: fixed ordering"
-msgstr ""
+msgstr "pgr_withPointsKSP:修复了排序问题"
 
 msgid "TRSP original code is used with no changes on the compilation warnings"
-msgstr ""
+msgstr "使用 TRSP 原始代码，未对编译警告进行任何修改"
 
 msgid "pgRouting 2.3.2 Release Notes"
-msgstr ""
+msgstr "pgRouting 2.3.2 发布说明"
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
 "2.3.2 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
 "+2.3.2%22+is%3Aclosed>`_ on Github."
 msgstr ""
+"要查看此版本关闭的问题，请参阅 Github 上的 ` 2.3.2 "
+"Git关闭里程碑<https://github.com/pgRouting/pgrouting/"
+"issues?q=milestone%3A%22Release+2.3.2%22+is%3Aclosed>`_ 。"
 
 msgid "Fixed pgr_gsoc_vrppdtw crash when all orders fit on one truck."
-msgstr ""
+msgstr "修正了当所有订单都装在一辆卡车上时 pgr_gsoc_vrppdtw 崩溃的问题。"
 
 msgid "Fixed pgr_trsp:"
-msgstr ""
+msgstr "修正了 pgr_trsp："
 
 msgid "Alternate code is not executed when the point is in reality a vertex"
-msgstr ""
+msgstr "当实际上的点是一个顶点时，替代代码不会被执行"
 
 msgid "Fixed ambiguity on seq"
-msgstr ""
+msgstr "修正了 seq 上的歧义"
 
 msgid "pgRouting 2.3.1 Release Notes"
-msgstr ""
+msgstr "pgRouting 2.3.1 发布说明"
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
 "2.3.1 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
 "+2.3.1%22+is%3Aclosed>`_ on Github."
 msgstr ""
+"要查看此版本关闭的问题，请参阅 Github 上的 ` 2.3.1Git关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3."
+"1%22+is%3Aclosed>`_ 。"
 
 msgid "Leaks on proposed max_flow functions"
-msgstr ""
+msgstr "拟议 max_flow 函数的泄漏问题"
 
 msgid "Regression error on pgr_trsp"
-msgstr ""
+msgstr "pgr_trsp出现的回归错误"
 
 msgid "Types discrepancy on pgr_createVerticesTable"
-msgstr ""
+msgstr "pgr_createVerticesTable 上的类型差异"
 
 msgid "pgRouting 2.3.0 Release Notes"
-msgstr ""
+msgstr "pgRouting 2.3.0 发布说明"
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
 "2.3.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
 "+2.3.0%22+is%3Aclosed>`_ on Github."
 msgstr ""
+"要查看此版本关闭的问题，请参阅 Github 上的 `2.3.0Git关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3."
+"0%22+is%3Aclosed>`_ 。"
 
 msgid "pgr_TSP"
-msgstr ""
+msgstr "pgr_TSP"
 
 msgid "pgr_aStar"
-msgstr ""
+msgstr "pgr_aStar"
 
 msgid "New Functions"
-msgstr ""
+msgstr "新函数"
 
 msgid "pgr_eucledianTSP"
-msgstr ""
+msgstr "pgr_eucledianTSP"
 
 msgid "pgr_withPointsCostMatrix"
-msgstr ""
+msgstr "pgr_withPointsCostMatrix"
 
 msgid "pgr_maxFlowPushRelabel(one to one)"
-msgstr ""
+msgstr "pgr_maxFlowPushRelabel(一对一)"
 
 msgid "pgr_maxFlowPushRelabel(one to many)"
-msgstr ""
+msgstr "pgr_maxFlowPushRelabel(一对多)"
 
 msgid "pgr_maxFlowPushRelabel(many to one)"
-msgstr ""
+msgstr "pgr_maxFlowPushRelabel(多对一)"
 
 msgid "pgr_maxFlowPushRelabel(many to many)"
-msgstr ""
+msgstr "pgr_maxFlowPushRelabel(多对多)"
 
 msgid "pgr_maxFlowEdmondsKarp(one to one)"
-msgstr ""
+msgstr "pgr_maxFlowEdmondsKarp（一对一）"
 
 msgid "pgr_maxFlowEdmondsKarp(one to many)"
-msgstr ""
+msgstr "pgr_maxFlowEdmondsKarp（一对多）"
 
 msgid "pgr_maxFlowEdmondsKarp(many to one)"
-msgstr ""
+msgstr "pgr_maxFlowEdmondsKarp（多对一）"
 
 msgid "pgr_maxFlowEdmondsKarp(many to many)"
-msgstr ""
+msgstr "pgr_maxFlowEdmondsKarp（多对多）"
 
 msgid "pgr_maxFlowBoykovKolmogorov (one to one)"
-msgstr ""
+msgstr "pgr_maxFlowBoykovKolmogorov （一对一）"
 
 msgid "pgr_maxFlowBoykovKolmogorov (one to many)"
-msgstr ""
+msgstr "pgr_maxFlowBoykovKolmogorov （一对多）"
 
 msgid "pgr_maxFlowBoykovKolmogorov (many to one)"
-msgstr ""
+msgstr "pgr_maxFlowBoykovKolmogorov （多对一）"
 
 msgid "pgr_maxFlowBoykovKolmogorov (many to many)"
-msgstr ""
+msgstr "pgr_maxFlowBoykovKolmogorov （多对多）"
 
 msgid "pgr_maximumCardinalityMatching"
-msgstr ""
+msgstr "pgr_maximumCardinalityMatching"
 
 msgid "pgr_contractGraph"
-msgstr ""
+msgstr "pgr_contractGraph"
 
 msgid "pgr_tsp - use pgr_TSP or pgr_eucledianTSP instead"
-msgstr ""
+msgstr "pgr_tsp - 使用 pgr_TSP 或 pgr_eucledianTSP 代替"
 
 msgid "pgr_astar - use pgr_aStar instead"
-msgstr ""
+msgstr "pgr_astar - 使用 pgr_aStar 代替"
 
 msgid "pgr_flip_edges"
-msgstr ""
+msgstr "pgr_flip_edges"
 
 msgid "pgr_vidsToDmatrix"
-msgstr ""
+msgstr "pgr_vidsToDmatrix"
 
 msgid "pgr_pointsToDMatrix"
-msgstr ""
+msgstr "pgr_pointsToDMatrix"
 
 msgid "pgr_textToPoints"
-msgstr ""
+msgstr "pgr_textToPoints"
 
 msgid "pgRouting 2.2.4 Release Notes"
-msgstr ""
+msgstr "pgRouting 2.2.4 发布说明"
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
 "2.2.4 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
 "+2.2.4%22+is%3Aclosed>`_ on Github."
 msgstr ""
+"要查看此版本关闭的问题，请参阅 Github 上的 `2.2.4Git关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2."
+"4%22+is%3Aclosed>`_ 。"
 
 msgid "Bogus uses of extern \"C\""
-msgstr ""
+msgstr "无效的extern \"C\""
 
 msgid "Build error on Fedora 24 + GCC 6.0"
-msgstr ""
+msgstr "Fedora 24 + GCC 6.0 上的构建错误"
 
 msgid "Regression error pgr_nodeNetwork"
-msgstr ""
+msgstr "pgr_nodeNetwork的回归错误"
 
 msgid "pgRouting 2.2.3 Release Notes"
-msgstr ""
+msgstr "pgRouting 2.2.3 发布说明"
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
 "2.2.3 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
 "+2.2.3%22+is%3Aclosed>`_ on Github."
 msgstr ""
+"要查看此版本关闭的问题，请参阅 Github 上的 ` 2.2.3Git关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2."
+"3%22+is%3Aclosed>`_ 。"
 
 msgid "Fixed compatibility issues with PostgreSQL 9.6."
-msgstr ""
+msgstr "修复了 PostgreSQL 9.6 的兼容性问题。"
 
 msgid "pgRouting 2.2.2 Release Notes"
-msgstr ""
+msgstr "pgRouting 2.2.2 发布说明"
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
 "2.2.2 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
 "+2.2.2%22+is%3Aclosed>`_ on Github."
 msgstr ""
+"要查看此版本关闭的问题，请参阅 Github 上的 `2.2.2 "
+"Git关闭里程碑<https://github.com/pgRouting/pgrouting/"
+"issues?q=milestone%3A%22Release+2.2.2%22+is%3Aclosed>`_ 。"
 
 msgid "Fixed regression error on pgr_drivingDistance"
-msgstr ""
+msgstr "修正了 pgr_drivingDistance 的回归错误"
 
 msgid "pgRouting 2.2.1 Release Notes"
-msgstr ""
+msgstr "pgRouting 2.2.1 发布说明"
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
 "2.2.1 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A2.2.1+is"
 "%3Aclosed>`_ on Github."
 msgstr ""
+"要查看此版本关闭的问题，请参阅 Github 上的 ` 2.2.1Git关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A2.2."
+"1+is%3Aclosed>`_ 。"
 
 msgid "Server crash fix on pgr_alphaShape"
-msgstr ""
+msgstr "修复 pgr_alphaShape 使服务器崩溃问题"
 
 msgid "Bug fix on With Points family of functions"
-msgstr ""
+msgstr "在 With Points 函数族中的Bug修复"
 
 msgid "pgRouting 2.2.0 Release Notes"
-msgstr ""
+msgstr "pgRouting 2.2.0 发布说明"
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
 "2.2.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
 "+2.2.0%22+is%3Aclosed>`_ on Github."
 msgstr ""
+"要查看此版本关闭的问题，请参阅 Github 上的 `2.2.0Git关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2."
+"0%22+is%3Aclosed>`_ 。"
 
 msgid "Improvements"
-msgstr ""
+msgstr "改进"
 
 msgid "Adding a row_where and outall optional parameters"
-msgstr ""
+msgstr "添加 row_where 和 outall 可选参数"
 
 msgid "Signature fix"
-msgstr ""
+msgstr "签名修复"
 
 msgid "pgr_dijkstra  -- to match what is documented"
-msgstr ""
+msgstr "pgr_dijkstra -- 与文档中的内容相匹配"
 
 msgid "pgr_Johnson"
-msgstr ""
+msgstr "pgr_Johnson"
 
 msgid "pgr_dijkstraCost(one to one)"
-msgstr ""
+msgstr "pgr_dijkstraCost(一对一)"
 
 msgid "pgr_dijkstraCost(one to many)"
-msgstr ""
+msgstr "pgr_dijkstraCost(一对多)"
 
 msgid "pgr_dijkstraCost(many to one)"
-msgstr ""
+msgstr "pgr_dijkstraCost（多对一）"
 
 msgid "pgr_dijkstraCost(many to many)"
-msgstr ""
+msgstr "pgr_dijkstraCost（多对多）"
 
 msgid "Proposed functionality"
-msgstr ""
+msgstr "拟议函数"
 
 msgid "pgr_withPoints(one to one)"
-msgstr ""
+msgstr "pgr_withPoints(一对一)"
 
 msgid "pgr_withPoints(one to many)"
-msgstr ""
+msgstr "pgr_withPoints（一对多）"
 
 msgid "pgr_withPoints(many to one)"
-msgstr ""
+msgstr "pgr_withPoints(多对一)"
 
 msgid "pgr_withPoints(many to many)"
-msgstr ""
+msgstr "pgr_withPoints(多对多)"
 
 msgid "pgr_withPointsCost(one to one)"
-msgstr ""
+msgstr "pgr_withPointsCost(一对一)"
 
 msgid "pgr_withPointsCost(one to many)"
-msgstr ""
+msgstr "pgr_withPointsCost(一对多)"
 
 msgid "pgr_withPointsCost(many to one)"
-msgstr ""
+msgstr "pgr_withPointsCost(多对一)"
 
 msgid "pgr_withPointsCost(many to many)"
-msgstr ""
+msgstr "pgr_withPointsCost(多对多)"
 
 msgid "pgr_withPointsDD(single vertex)"
-msgstr ""
+msgstr "pgr_withPointsDD （单顶点）"
 
 msgid "pgr_withPointsDD(multiple vertices)"
-msgstr ""
+msgstr "pgr_withPointsDD（多顶点）"
 
 msgid "pgr_withPointsKSP"
-msgstr ""
+msgstr "pgr_withPointsKSP"
 
 msgid "pgr_dijkstraVia"
-msgstr ""
+msgstr "pgr_dijkstraVia"
 
 msgid "Deprecated functions:"
-msgstr ""
+msgstr "已废弃的函数："
 
 msgid "pgr_apspWarshall  use pgr_floydWarshall instead"
-msgstr ""
+msgstr "pgr_apspWarshall 改用 pgr_floydWarshall"
 
 msgid "pgr_apspJohnson   use pgr_Johnson instead"
-msgstr ""
+msgstr "pgr_apspJohnson 改用 pgr_Johnson"
 
 msgid "pgr_kDijkstraCost use pgr_dijkstraCost instead"
-msgstr ""
+msgstr "pgr_kDijkstraCost 改用 pgr_dijkstraCost"
 
 msgid "pgr_kDijkstraPath use pgr_dijkstra instead"
-msgstr ""
+msgstr "pgr_kDijkstraPath 改用 pgr_dijkstra"
 
 msgid "Renamed and deprecated function"
-msgstr ""
+msgstr "已更名和废弃的函数"
 
 msgid "pgr_makeDistanceMatrix renamed to _pgr_makeDistanceMatrix"
-msgstr ""
+msgstr "pgr_makeDistanceMatrix 更名为 _pgr_makeDistanceMatrix"
 
 msgid "pgRouting 2.1.0 Release Notes"
-msgstr ""
+msgstr "pgRouting 2.1.0 发布说明"
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
 "2.1.0 <https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone"
 "%3A%22Release+2.1.0%22+is%3Aclosed>`_ on Github."
 msgstr ""
+"要查看此版本关闭的问题，请参阅 Github 上的 `2.1.0Git关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/"
+"issues?q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed>`_ 。"
 
 msgid "pgr_dijkstra(one to many)"
-msgstr ""
+msgstr "pgr_dijkstra（一对多）"
 
 msgid "pgr_dijkstra(many to one)"
-msgstr ""
+msgstr "pgr_dijkstra（多对一）"
 
 msgid "pgr_dijkstra(many to many)"
-msgstr ""
+msgstr "pgr_dijkstra（多对多）"
 
 msgid "pgr_drivingDistance(multiple vertices)"
-msgstr ""
+msgstr "pgr_drivingDistance （多顶点）"
 
 msgid "Refactored"
-msgstr ""
+msgstr "重构"
 
 msgid "pgr_dijkstra(one to one)"
-msgstr ""
+msgstr "pgr_dijkstra（一对一）"
 
 msgid "pgr_drivingDistance(single vertex)"
-msgstr ""
+msgstr "pgr_drivingDistance （单顶点）"
 
 msgid ""
 "pgr_alphaShape function now can generate better (multi)polygon with holes "
 "and alpha parameter."
-msgstr ""
+msgstr "pgr_alphaShape 函数现在可以生成带有孔和 alpha 参数的更好的（多）多边形。"
 
 msgid ""
 "Proposed functions from Steve Woodbridge, (Classified as Convenience by the "
 "author.)"
-msgstr ""
+msgstr "Steve Woodbridge 提出的函数（作者分类为便利性函数。）"
 
 msgid ""
 "pgr_pointToEdgeNode - convert a point geometry to a vertex_id based on "
 "closest edge."
-msgstr ""
+msgstr "pgr_pointToEdgeNode - 根据最近的边将点几何体转换为基于 vertex_id 的函数。"
 
 msgid ""
 "pgr_flipEdges - flip the edges in an array of geometries so the connect end "
 "to end."
-msgstr ""
+msgstr "pgr_flipEdges - 翻转几何体数组中的边，以便它们端对端连接。"
 
 msgid ""
 "pgr_textToPoints - convert a string of x,y;x,y;... locations into point "
 "geometries."
-msgstr ""
+msgstr "pgr_textToPoints - 将一串 x,y;x,y;... 位置字符串转换为点几何体。"
 
 msgid ""
 "pgr_pointsToVids - convert an array of point geometries into vertex ids."
-msgstr ""
+msgstr "pgr_pointsToVids - 将点几何数组转换为顶点id。"
 
 msgid "pgr_pointsToDMatrix - Create a distance matrix from an array of points."
-msgstr ""
+msgstr "pgr_pointsToDMatrix - 从点数组创建距离矩阵。"
 
 msgid ""
 "pgr_vidsToDMatrix - Create a distance matrix from an array of vertix_id."
-msgstr ""
+msgstr "pgr_vidsToDMatrix - 从 vertix_id 数组创建距离矩阵。"
 
 msgid "Added proposed functions from GSoc Projects:"
-msgstr ""
+msgstr "添加了 GSoc 项目的拟议函数："
 
 msgid "pgr_vrppdtw"
-msgstr ""
+msgstr "pgr_vrppdtw"
 
 msgid "pgr_vrponedepot"
-msgstr ""
+msgstr "pgr_vrponedepot"
 
 msgid "pgr_getColumnName"
-msgstr ""
+msgstr "pgr_getColumnName"
 
 msgid "pgr_getTableName"
-msgstr ""
+msgstr "pgr_getTableName"
 
 msgid "pgr_isColumnCndexed"
-msgstr ""
+msgstr "pgr_isColumnCndexed"
 
 msgid "pgr_isColumnInTable"
-msgstr ""
+msgstr "pgr_isColumnInTable"
 
 msgid "pgr_quote_ident"
-msgstr ""
+msgstr "pgr_quote_ident"
 
 msgid "pgr_versionless"
-msgstr ""
+msgstr "pgr_versionless"
 
 msgid "pgr_startPoint"
-msgstr ""
+msgstr "pgr_startPoint"
 
 msgid "pgr_endPoint"
-msgstr ""
+msgstr "pgr_endPoint"
 
 msgid "pgr_pointToId"
-msgstr ""
+msgstr "pgr_pointToId"
 
 msgid "No longer supported"
-msgstr ""
+msgstr "不再支持"
 
 msgid "Removed the 1.x legacy functions"
-msgstr ""
+msgstr "删除了 1.x 版遗留函数"
 
 msgid "Some bug fixes in other functions"
-msgstr ""
+msgstr "修复了其他函数中的一些bug"
 
 msgid "Refactoring Internal Code"
-msgstr ""
+msgstr "重构内部代码"
 
 msgid "A C and C++ library for developer was created"
-msgstr ""
+msgstr "为开发人员创建了一个 C 和 C++ 库"
 
 msgid "encapsulates postgreSQL related functions"
-msgstr ""
+msgstr "封装了与 postgreSQL 相关的函数"
 
 msgid "encapsulates Boost.Graph graphs"
-msgstr ""
+msgstr "封装了 Boost.Graph 图"
 
 msgid "Directed Boost.Graph"
-msgstr ""
+msgstr "有向 Boost.Graph"
 
 msgid "Undirected Boost.graph."
-msgstr ""
+msgstr "无向 Boost.graph。"
 
 msgid "allow any-integer in the id's"
-msgstr ""
+msgstr "允许任何整数作为id"
 
 msgid "allow any-numerical on the cost/reverse_cost columns"
-msgstr ""
+msgstr "允许在 cost/reverse_cost 列中使用任何数值"
 
 msgid ""
 "Instead of generating many libraries: - All functions are encapsulated in "
 "one library - The library has the prefix 2-1-0"
-msgstr ""
+msgstr "无需生成多个程序库： - 所有功能都封装在一个程序库中 - 程序库的前缀为 2-1-0"
 
 msgid "pgRouting 2.0.1 Release Notes"
-msgstr ""
+msgstr "pgRouting 2.0.1 发布说明"
 
 msgid "Minor bug fixes."
-msgstr ""
+msgstr "小bug修复。"
 
 msgid "No track of the bug fixes were kept."
-msgstr ""
+msgstr "没有记录错误修复情况。"
 
 msgid "pgRouting 2.0.0 Release Notes"
-msgstr ""
+msgstr "pgRouting 2.0.0 发布说明"
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
 "2.0.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
 "+2.0.0%22+is%3Aclosed>`_ on Github."
 msgstr ""
+"要查看此版本关闭的问题，请参阅 Github 上的 ` 2.0.0Git关闭里程碑 "
+"<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.0."
+"0%22+is%3Aclosed>`_ 。"
 
 msgid ""
 "With the release of pgRouting 2.0.0 the library has abandoned backwards "
 "compatibility to `pgRouting 1.x Release Notes`_ releases. The main Goals for "
 "this release are:"
 msgstr ""
+"随着 pgRouting 2.0.0 版本的发布，该库已放弃与 `pgRouting 1.x 发行说明`_ "
+"版本的向后兼容性。该版本的主要目标是："
 
 msgid "Major restructuring of pgRouting."
-msgstr ""
+msgstr "对 pgRouting 进行重大重组。"
 
 msgid "Standardization of the function naming"
-msgstr ""
+msgstr "函数命名标准化"
 
 msgid "Preparation of the project for future development."
-msgstr ""
+msgstr "为项目的未来发展做好准备。"
 
 msgid "As a result of this effort:"
-msgstr ""
+msgstr "作为这一努力的结果："
 
 msgid "pgRouting has a simplified structure"
-msgstr ""
+msgstr "pgRouting 具有简化的结构"
 
 msgid "Significant new functionality has being added"
-msgstr ""
+msgstr "新增重要函数"
 
 msgid "Documentation has being integrated"
-msgstr ""
+msgstr "文件已整合"
 
 msgid "Testing has being integrated"
-msgstr ""
+msgstr "测试已经被整合"
 
 msgid "And made it easier for multiple developers to make contributions."
-msgstr ""
+msgstr "并使多个开发人员更容易做出贡献。"
 
 msgid "Important Changes"
-msgstr ""
+msgstr "重要变更"
 
 msgid ""
 "Graph Analytics - tools for detecting and fixing connection some problems in "
 "a graph"
-msgstr ""
+msgstr "图分析--用于检测和修复图中某些连接问题的工具"
 
 msgid "A collection of useful utility functions"
-msgstr ""
+msgstr "一组有用的实用函数"
 
 msgid ""
 "Two new All Pairs Short Path algorithms (pgr_apspJohnson, pgr_apspWarshall)"
-msgstr ""
+msgstr "两种新的全对最短路径算法（pgr_apspJohnson 和 pgr_apspWarshall）"
 
 msgid ""
 "Bi-directional Dijkstra and A-star search algorithms (pgr_bdAstar, "
 "pgr_bdDijkstra)"
-msgstr ""
+msgstr "双向 Dijkstra 和 A-star 搜索算法 (pgr_bdAstar, pgr_bdDijkstra)"
 
 msgid "One to many nodes search (pgr_kDijkstra)"
-msgstr ""
+msgstr "一对多节点的搜索 (pgr_kDijkstra)"
 
 msgid "K alternate paths shortest path (pgr_ksp)"
-msgstr ""
+msgstr "K 条备选路径最短路径（pgr_ksp）"
 
 msgid ""
 "New TSP solver that simplifies the code and the build process (pgr_tsp), "
 "dropped \"Gaul Library\" dependency"
-msgstr ""
+msgstr "新的 TSP 求解器简化了代码和构建过程（pgr_tsp），放弃了对 \"Gaul 库 \"的依赖"
 
 msgid "Turn Restricted shortest path (pgr_trsp) that replaces Shooting Star"
-msgstr ""
+msgstr "取代了 Shooting Star的转向受限最短路径（pgr_trsp）"
 
 msgid "Dropped support for Shooting Star"
-msgstr ""
+msgstr "放弃对 Shooting Star的支持"
 
 msgid ""
 "Built a test infrastructure that is run before major code changes are "
 "checked in"
-msgstr ""
+msgstr "构建了在签入主要代码更改之前运行的测试基础架构"
 
 msgid ""
 "Tested and fixed most all of the outstanding bugs reported against 1.x that "
 "existing in the 2.0-dev code base."
-msgstr ""
+msgstr "测试并修复了 2.0-dev 代码库中存在的几乎所有已报告的 1.x 版本中的未解决问题。"
 
 msgid "Improved build process for Windows"
-msgstr ""
+msgstr "改进了 Windows 的构建过程"
 
 msgid ""
 "Automated testing on Linux and Windows platforms trigger by every commit"
-msgstr ""
+msgstr "每次提交都会触发 Linux 和 Windows 平台上的自动测试"
 
 msgid "Modular library design"
-msgstr ""
+msgstr "模块化库设计"
 
 msgid "Compatibility with PostgreSQL 9.1 or newer"
-msgstr ""
+msgstr "与 PostgreSQL 9.1 或更新版本兼容"
 
 msgid "Compatibility with PostGIS 2.0 or newer"
-msgstr ""
+msgstr "与 PostGIS 2.0 或更新版本兼容"
 
 msgid "Installs as PostgreSQL EXTENSION"
-msgstr ""
+msgstr "作为 PostgreSQL 扩展程序安装"
 
 msgid "Return types re factored and unified"
-msgstr ""
+msgstr "返回类型重构和统一"
 
 msgid "Support for table SCHEMA in function parameters"
-msgstr ""
+msgstr "在函数参数中支持表 SCHEMA"
 
 msgid "Support for ``st_`` PostGIS function prefix"
-msgstr ""
+msgstr "支持 ``st_`` PostGIS 函数前缀"
 
 msgid "Added ``pgr_`` prefix to functions and types"
-msgstr ""
+msgstr "为函数和类型添加了 ``pgr_`` 前缀"
 
 msgid "Better documentation: https://docs.pgrouting.org"
-msgstr ""
+msgstr "更好的文档：https://docs.pgrouting.org"
 
 msgid "shooting_star is discontinued"
-msgstr ""
+msgstr "shooting_star 已停用"
 
 msgid "pgRouting 1.x Release Notes"
-msgstr ""
+msgstr "pgRouting 1.x 发布说明"
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for 1.x "
@@ -18441,107 +18707,112 @@ msgid ""
 "%22+is%3Aclosed>`_ on Github. The following release notes have been copied "
 "from the previous ``RELEASE_NOTES`` file and are kept as a reference."
 msgstr ""
+"要查看此版本关闭的问题，请参阅 Github 上的 `1.x Git 已关闭问题 "
+"<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+1."
+"x%22+is%3Aclosed>`_。以下的发行说明已从之前的 ``RELEASE_NOTES`` "
+"文件中复制，并作为参考保留。"
 
 msgid "Changes for release 1.05"
-msgstr ""
+msgstr "1.05 版的更改"
 
 msgid "Changes for release 1.03"
-msgstr ""
+msgstr "1.03 版的更改"
 
 msgid "Much faster topology creation"
-msgstr ""
+msgstr "拓扑创建速度更快"
 
 msgid "Changes for release 1.02"
-msgstr ""
+msgstr "1.02 版的更改"
 
 msgid "Shooting* bug fixes"
-msgstr ""
+msgstr "Shooting*错误修复"
 
 msgid "Compilation problems solved"
-msgstr ""
+msgstr "编译问题已解决"
 
 msgid "Changes for release 1.01"
-msgstr ""
+msgstr "1.01 版的更改"
 
 msgid "Changes for release 1.0"
-msgstr ""
+msgstr "1.0 版的更改"
 
 msgid "Core and extra functions are separated"
-msgstr ""
+msgstr "核心函数和附加函数分开"
 
 msgid "Cmake build process"
-msgstr ""
+msgstr "Cmake 构建过程"
 
 msgid "Changes for release 1.0.0b"
-msgstr ""
+msgstr "1.0.0b 版的更改"
 
 msgid "Additional SQL file with more simple names for wrapper functions"
-msgstr ""
+msgstr "带有更简单的包装函数名称的附加 SQL 文件"
 
 msgid "Changes for release 1.0.0a"
-msgstr ""
+msgstr "1.0.0a 版的更改"
 
 msgid "Shooting* shortest path algorithm for real road networks"
-msgstr ""
+msgstr "Shooting* 真实道路网络的最短路径算法"
 
 msgid "Several SQL bugs were fixed"
-msgstr ""
+msgstr "修复了多个 SQL 错误"
 
 msgid "Changes for release 0.9.9"
-msgstr ""
+msgstr "0.9.9 版的更改"
 
 msgid "PostgreSQL 8.2 support"
-msgstr ""
+msgstr "支持 PostgreSQL 8.2"
 
 msgid ""
 "Shortest path functions return empty result if they could not find any path"
-msgstr ""
+msgstr "如果找不到任何路径，最短路径函数会返回空结果"
 
 msgid "Changes for release 0.9.8"
-msgstr ""
+msgstr "0.9.8 版的更改"
 
 msgid "Renumbering scheme was added to shortest path functions"
-msgstr ""
+msgstr "为最短路径函数添加了重新编号方案"
 
 msgid "Directed shortest path functions were added"
-msgstr ""
+msgstr "增加了有向最短路径函数"
 
 msgid "routing_postgis.sql was modified to use dijkstra in TSP search"
-msgstr ""
+msgstr "修改routing_postgis.sql以在TSP搜索中使用dijkstra"
 
 msgid "Function Families"
-msgstr ""
+msgstr "函数族"
 
 msgid "Sample Data"
-msgstr ""
+msgstr "示例数据"
 
 msgid ""
 "The documentation provides very simple example queries based on a small "
 "sample network that resembles a city. To be able to execute the mayority of "
 "the examples queries, follow the instructions bellow."
-msgstr ""
+msgstr "该文档提供了基于类似于城市的小型示例网络的非常简单的示例查询。 "
+"为了能够执行大部分示例查询，请按照以下说明进行操作。"
 
 msgid "Main graph"
-msgstr ""
+msgstr "主图"
 
 msgid "A graph consists of a set of edges and a set of vertices."
-msgstr ""
+msgstr "图由一组边和一组顶点组成。"
 
 msgid "The following city is to be inserted into the database:"
-msgstr ""
+msgstr "要在数据库中插入以下城市："
 
 msgid ""
 "Information known at this point is the geometry of the edges, cost values, "
 "cpacity values, category values and some locations that are not in the graph."
-msgstr ""
+msgstr "此时已知的信息是边的几何形状、成本值、容量值、类别值和一些不在图中的位置。"
 
 msgid ""
 "The process to have working topology starts by inserting the edges. After "
 "that everything else is calculated."
-msgstr ""
+msgstr "拓扑结构的工作流程从插入边开始。然后再计算其他所有内容。"
 
 msgid "Edges"
-msgstr ""
+msgstr "边"
 
 msgid ""
 "The database design for the documentation of pgRouting, keeps in the same "
@@ -18549,196 +18820,202 @@ msgid ""
 "oposite direction. Therfore some information has the ``reverse_`` prefix "
 "which corresponds to the segment on the oposite direction of the geometry."
 msgstr ""
+"pgRouting文档的数据库设计将同一行中的两段保留在一个方向上，其中一个是与几何形"
+"状相同方向的，另一个是与几何形状相反方向的。因此，一些信息具有 ``reverse_`` "
+"前缀，对应于几何形状相反方向的段。"
 
 msgid "Identifier of the starting vertex of the geometry ``geom``."
-msgstr ""
+msgstr "几何体 ``geom`` 的起始顶点的标识符。"
 
 msgid "Identifier of the ending vertex of the geometry ``geom``"
-msgstr ""
+msgstr "几何体 ``geom`` 终止顶点的标识符"
 
 msgid "Cost to traverse from `source` to ``target``."
-msgstr ""
+msgstr "从`source` 到 ``target`` 的遍历成本。"
 
 msgid "Cost to traverse from `target` to ``source``."
-msgstr ""
+msgstr "从 `target`到 ``source``的遍历成本。"
 
 msgid "Flow capacity from `source` to ``target``."
-msgstr ""
+msgstr "从`source`到``target``的流量。"
 
 msgid "Flow capacity from `target` to ``source``."
-msgstr ""
+msgstr "从`target`到``source``的流量。"
 
 msgid "``category``"
-msgstr ""
+msgstr "``category``"
 
 msgid "``reverse_category``"
-msgstr ""
+msgstr "``reverse_category``"
 
 msgid ":math:`x` coordinate of the starting vertex of the geometry."
-msgstr ""
+msgstr ":math:`x` 几何图形起始顶点的坐标。"
 
 msgid ""
 "For convinience it is saved on the table but can be calculated as "
 "``ST_X(ST_StartPoint(geom))``."
-msgstr ""
+msgstr "为了方便起见，它被保存在表格中，但也可以计算为 ``ST_X(ST_StartPoint(geom)) "
+"``。"
 
 msgid ":math:`y` coordinate of the ending vertex of the geometry."
-msgstr ""
+msgstr ":math:`y`几何图形结束顶点的坐标。"
 
 msgid ""
 "For convinience it is saved on the table but can be calculated as "
 "``ST_Y(ST_EndPoint(geom))``."
-msgstr ""
+msgstr "为方便起见，它保存在表格中，但也可以计算为``ST_Y(ST_EndPoint(geom))``。"
 
 msgid "The geometry of the segments."
-msgstr ""
+msgstr "分段的几何形状。"
 
 msgid "Starting on  PostgreSQL 12::"
-msgstr ""
+msgstr "从 PostgreSQL 12 开始::"
 
 msgid ""
 "Optionally indexes on different columns can be created. The recomendation is "
 "to have"
-msgstr ""
+msgstr "可以选择在不同的列上创建索引。建议的做法是"
 
 msgid "``id`` indexed."
-msgstr ""
+msgstr "``id``列创建索引 。"
 
 msgid ""
 "``source`` and ``target`` columns indexed to speed up pgRouting queries."
-msgstr ""
+msgstr "``source``和``target``列建立索引以加快 pgRouting 查询。"
 
 msgid ""
 "``geom`` indexed to speed up gemetry processes that might be needed in the "
 "front end."
-msgstr ""
+msgstr "``geom`` 列建立索引以加快前端可能需要的 gemetry 处理。"
 
 msgid "For this small example the indexes are skipped, except for ``id``"
-msgstr ""
+msgstr "在这个小例子中，除了 ``id``以外，其他索引都被跳过"
 
 msgid "Edges data"
-msgstr ""
+msgstr "边数据"
 
 msgid "Inserting into the database the information of the edges:"
-msgstr ""
+msgstr "将边的信息插入数据库："
 
 msgid ""
 "Negative values on the cost, capacity and category means that the edge do "
 "not exist."
-msgstr ""
+msgstr "成本、容量和类别上的负值表示不存在边。"
 
 msgid "Vertices"
-msgstr ""
+msgstr "顶点"
 
 msgid ""
 "The vertex information is calculated based on the identifier of the edge and "
 "the geometry and saved on a table. Saving all the information provided by :"
 "doc:`pgr_extractVertices`:"
-msgstr ""
+msgstr "根据边的标识符和几何形状计算顶点信息并保存在表中。 保存 "
+":doc:`pgr_extractVertices` 提供的所有信息 ："
 
 msgid ""
 "In this case the because the ``CREATE`` statement was not used, the "
 "definition of an index on the table is needed."
-msgstr ""
+msgstr "在本例中，由于未使用``CREATE``语句，因此需要在表上定义索引。"
 
 msgid "The structure of the table is:"
-msgstr ""
+msgstr "表的结构如下："
 
 msgid "Vertices data"
-msgstr ""
+msgstr "顶点数据"
 
 msgid "The saved information of the vertices is:"
-msgstr ""
+msgstr "保存的顶点信息为："
 
 msgid ""
 "Here is where adding more columns to the vertices table can be done. "
 "Additional columns names and types will depend on the application."
-msgstr ""
+msgstr "这里可以为顶点表添加更多的列。附加列的名称和类型取决于应用程序。"
 
 msgid "The topology"
-msgstr ""
+msgstr "拓扑结构"
 
 msgid ""
 "This queries based on the vertices data create a topology by filling the "
 "``source`` and ``target`` columns in the edges table."
-msgstr ""
+msgstr "此查询基于顶点数据，通过填充边表中的``source``列和``target``列来创建拓扑。"
 
 msgid "Topology data"
-msgstr ""
+msgstr "拓扑数据"
 
 msgid "Points outside the graph"
-msgstr ""
+msgstr "图之外的点"
 
 msgid "Support tables"
-msgstr ""
+msgstr "支持表"
 
 msgid ""
 "Many functions can be used with a combinations of ``(source, target)`` pairs "
 "when wanting a route from ``source`` to ``target``."
-msgstr ""
+msgstr "当需要从 ``source`` 到 ``target`` 的路由时，许多函数都可以与 ``(source, "
+"target)`` 对组合使用。"
 
 msgid ""
 "For convinence of this documentations, some combinations will be stored on a "
 "table:"
-msgstr ""
+msgstr "为便于阅读，某些组合将存储在一个表中："
 
 msgid "Inserting the data:"
-msgstr ""
+msgstr "插入数据："
 
 msgid "Combinations data"
-msgstr ""
+msgstr "组合数据"
 
 msgid "Some functions accept soft restrictions about the segments."
-msgstr ""
+msgstr "一些函数接受关于段的软约束。"
 
 msgid "Red arrows correspond when ``cost`` > 0 in the edge table."
-msgstr ""
+msgstr "红色箭头对应边表中``cost`` > 0的情况。"
 
 msgid "Blue arrows correspond when ``reverse_cost`` > 0 in the edge table."
-msgstr ""
+msgstr "蓝色箭头对应边表中的``reverse_cost`` > 0 的情况。"
 
 msgid "Points are outside the graph."
-msgstr ""
+msgstr "点位于图之外。"
 
 msgid "Click on the graph to enlarge."
-msgstr ""
+msgstr "点击图可放大。"
 
 msgid "Directed graph with ``cost`` and ``reverse_cost``"
-msgstr ""
+msgstr "带 ``cost`` 和 ``reverse_cost`` 的有向图"
 
 msgid ""
 "When working with city networks, this is recommended for point of view of "
 "vehicles."
-msgstr ""
+msgstr "在使用城市网络时，建议从车辆的角度考虑。"
 
 msgid "Directed, with cost and reverse_cost"
-msgstr ""
+msgstr "具有cost和reverse_cost的有向图"
 
 msgid "Undirected graph with ``cost`` and ``reverse_cost``"
-msgstr ""
+msgstr "具有``cost``和``reverse_cost``的无向图"
 
 msgid ""
 "When working with city networks, this is recommended for point of view of "
 "pedestrians."
-msgstr ""
+msgstr "在使用城市网络时，建议从行人的角度考虑。"
 
 msgid "Undirected, with cost and reverse cost"
-msgstr ""
+msgstr "带有cost和 reverse cost的无向图"
 
 msgid "Directed graph with ``cost``"
-msgstr ""
+msgstr "有``cost``的有向图"
 
 msgid "Directed, with cost"
-msgstr ""
+msgstr "有向，有成本"
 
 msgid "Undirected graph with ``cost``"
-msgstr ""
+msgstr "带有 ``cost``的无向图"
 
 msgid "Undirected, with cost"
-msgstr ""
+msgstr "无向，有成本"
 
 msgid "Pick & Deliver Data"
-msgstr ""
+msgstr "取货和送货数据"
 
 msgid "Spanning Tree - Category"
 msgstr "生成树 - 类别"
@@ -18746,12 +19023,12 @@ msgstr "生成树 - 类别"
 msgid ""
 "A spanning tree of an undirected graph is a tree that includes all the "
 "vertices of G with the minimum possible number of edges."
-msgstr ""
+msgstr "一个无向图的生成树是包括图 G 的所有顶点并具有可能的最小数量的边的树。"
 
 msgid ""
 "For a disconnected graph, there there is no single tree, but a spanning "
 "forest, consisting of a spanning tree of each connected component."
-msgstr ""
+msgstr "对于不连通的图，不存在单棵树，而是由每个连通分量的生成树组成的生成林。"
 
 msgid ""
 "pgRouting community support is available through the `pgRouting website "
@@ -19423,10 +19700,10 @@ msgid ""
 msgstr ":doc:`pgr_analyzeGraph` - 分析边表的边和顶点。"
 
 msgid ":doc:`pgr_nodeNetwork` - to create nodes to a not noded edge table."
-msgstr ":doc:`pgr_nodeNetwork` -为无节点边表创建节点。"
+msgstr ":doc:`pgr_nodeNetwork` - 为无节点边表创建节点。"
 
 msgid "Also ``l`` could be used as **driving side**"
-msgstr "此外，``l`` 也可用作**行驶方向**"
+msgstr "此外，``l``也可用作**驾驶侧**"
 
 msgid ""
 "Edge :math:`2` (:math:`1 \\frac{\\;\\;\\;\\;\\;}{} 3`) is not part of the "
@@ -19437,10 +19714,10 @@ msgid "The set of vertices :math:`V`:"
 msgstr "顶点集 :math:`V`："
 
 msgid ":math:`2` (:math:`1 \\rightarrow 3`)"
-msgstr ":math:`2` (:math:`1 \\rightarrow 3`)"
+msgstr ":math:`2` (:math:`1\\rightarrow 3`)"
 
 msgid ":math:`3` (:math:`3 \\rightarrow 2`)"
-msgstr ":math:`3` (:math:`3 \\rightarrow 2`)"
+msgstr ":math:`3` (:math:`3\\rightarrow 2`)"
 
 msgid ":math:`2` (:math:`1 \\frac{\\;\\;\\;\\;\\;}{} 3`)"
 msgstr ":math:`2` (:math:`1 \\frac{\\;\\;\\;\\;\\;}{} 3`)"
@@ -19571,7 +19848,7 @@ msgstr ""
 "的两种颜色 `0` 和`1`。"
 
 msgid "Returns set of |result-contract|"
-msgstr "Returns set of |result-toposort|"
+msgstr "Returns set of |result-contract|"
 
 msgid ""
 "``text`` Condition to SELECT a subset or rows. Default value is ``true`` to "
@@ -19602,7 +19879,7 @@ msgstr "``text`` 用于选择行的条件。默认值为 ``true`` 表示选择�
 msgid ""
 ":doc:`topology-functions` for an overview of a topology for routing "
 "algorithms."
-msgstr ":doc:`topology-functions`用于路由算法的拓扑概述。"
+msgstr ":doc:`topology-functions` 用于路由算法的拓扑概述。"
 
 msgid "pgr_dagShortestPath(`Edges SQL`_, **start vid**, **end vid**)"
 msgstr "pgr_dagShortestPath(`Edges SQL`_, **start vid**, **end vid**)"
@@ -19616,7 +19893,7 @@ msgstr "在**有向**图上，从顶点:math:`5`到顶点 :math:`11`"
 msgid ""
 "pgr_drivingDistance(`Edges SQL`_, **Root vid**, **distance**, [``directed``])"
 msgstr ""
-"pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vids**, [``directed``])"
+"pgr_drivingDistance(`Edges SQL`_, **Root vid**, **distance**, [``directed``])"
 
 msgid ""
 "the chromatic number :math:`x'(G)` (minimum number of colors needed for "
@@ -19633,7 +19910,7 @@ msgstr "`pgr_edwardMoore`` - 使用 Edward-Moore 算法返回最短路径。"
 msgid ""
 "The geometry ``geom``, marked as **g1** and **g2** are the **original "
 "points**"
-msgstr ""
+msgstr "标为**g1**和**g2**的几何体``geom``是**原始点**"
 
 msgid ""
 "``pgr_hawickCircuits`` — Returns the list of cirucits using hawick circuits "
@@ -19658,7 +19935,7 @@ msgstr "从顶点 :math:`3` 到顶点 :math:`8` 更多选择"
 msgid ""
 "From point :math:`1` and vertex :math:`6` to point :math:`3` and vertex :"
 "math:`1`"
-msgstr "从点:math:`1`和顶点 :math:`6`到点 :math:`3`和顶点:math:`1`"
+msgstr "从点 :math:`1` 和顶点 :math:`6` 到点 :math:`3` 和顶点 :math:`1`"
 
 msgid "**options:** ``[directed, driving_side]``"
 msgstr "**options:** ``[directed, driving_side]``"
@@ -19679,19 +19956,19 @@ msgstr ""
 "代码中尊重客户端取消请求"
 
 msgid "pgr_labelGraph - Use the components family of functions instead."
-msgstr ""
+msgstr "pgr_labelGraph - 使用组件系列函数。"
 
 msgid "pgr_dijkstra -- to match what is documented"
-msgstr ""
+msgstr "pgr_dijkstra -- 与文档中的内容相匹配"
 
 msgid "pgr_apspWarshall use pgr_floydWarshall instead"
-msgstr ""
+msgstr "pgr_apspWarshall 改用 pgr_floydWarshall"
 
 msgid "pgr_apspJohnson use pgr_Johnson instead"
-msgstr ""
+msgstr "pgr_apspJohnson 改用 pgr_Johnson"
 
 msgid "Starting on PostgreSQL 12::"
-msgstr "从PostgreSQL 12开始::"
+msgstr "从 PostgreSQL 12 开始：："
 
 msgid "Result columns"
 msgstr "结果列"
@@ -19702,15 +19979,14 @@ msgstr "返回一组``(seq, depth, start_vid, node, edge, cost, agg_cost)``"
 msgid "aStar optional parameters"
 msgstr "aStar 可选参数"
 
-#, fuzzy
 msgid "Returns set of ``(vertex_id, color_id)``"
-msgstr "返回``(vertex_id, color_id)``的集合"
+msgstr "返回集合``(vertex_id, color_id)``"
 
 msgid "Returns set of ``(edge_id, color_id)``"
 msgstr "返回 ``(edge_id, color_id)`` 的集合"
 
 msgid "Returns set of |result-spantree|"
-msgstr "Returns set of |result-spantree| 返回结果树集"
+msgstr "Returns set of |result-spantree|"
 
 msgid "Be aware of the existance of the additional result Columns."
 msgstr "注意附加结果列的存在。"
@@ -19732,7 +20008,6 @@ msgstr "路径的结果列"
 msgid "Used in functions that return one path solution"
 msgstr "在返回一个路径解的函数中使用"
 
-#, fuzzy
 msgid "Used in functions the following:"
 msgstr "用于以下函数："
 
@@ -19745,7 +20020,6 @@ msgstr "流量函数的结果列"
 msgid "Result columns for spanning tree functions"
 msgstr "生成树函数的结果列"
 
-#, fuzzy
 msgid "Returns set of ``(edge, cost)``"
 msgstr "返回集合``(edge, cost)``"
 
@@ -19755,9 +20029,8 @@ msgstr "结果列标准化为|nksp-result|"
 msgid "Returns set of |tsp-result|"
 msgstr "返回 |tsp-result| 的集合"
 
-#, fuzzy
 msgid "Returns set of |short-generic-result|"
-msgstr "返回集合|nksp-result|"
+msgstr "Returns set of |short-generic-result|"
 
 msgid "Returns set of |matrix-result|"
 msgstr "返回 |matrix-result| 的集合"
@@ -19780,13 +20053,11 @@ msgstr "返回 |result-m-1| 的集合"
 msgid "Result columns change:"
 msgstr "结果列发生变化："
 
-#, fuzzy
 msgid "Returns set of |result-node-color|"
-msgstr "Returns set of |result-node|"
+msgstr "Returns set of |result-node-color|"
 
-#, fuzzy
 msgid "Returns set of |result-flow|"
-msgstr "Returns set of |result-node|"
+msgstr "Returns set of |result-flow|"
 
 msgid "Returns set of |result-bfs|"
 msgstr "返回 |result-bfs| 的集合"
@@ -19797,9 +20068,8 @@ msgstr "返回|result-1-1-no-seq|的集合"
 msgid "We get the sameresult as the simplest way to use the function."
 msgstr "我们得到的结果与使用该函数的最简单方法相同。"
 
-#, fuzzy
 msgid "Returns set of |result-node-order|"
-msgstr "Returns set of |result-node|"
+msgstr "Returns set of |result-node-order|"
 
 msgid "Returns set of ``(seq, node)``"
 msgstr "返回 ``(seq, node)`` 的集合"
@@ -19807,13 +20077,11 @@ msgstr "返回 ``(seq, node)`` 的集合"
 msgid "Returns set of |via-result|"
 msgstr "返回 |via-result| 的集合"
 
-#, fuzzy
 msgid "Returns set of |result-edge-color|"
-msgstr "Returns set of |result-edge|"
+msgstr "Returns set of |result-edge-color|"
 
-#, fuzzy
 msgid "Returns set of |result-disjoint|"
-msgstr "Returns set of |result-toposort|"
+msgstr "Returns set of |result-disjoint|"
 
 msgid "Returns set of |result-disjoint-1-1|"
 msgstr "返回 |result-disjoint-1-1|的集合"
@@ -19821,9 +20089,8 @@ msgstr "返回 |result-disjoint-1-1|的集合"
 msgid "Returns set of |result-disjoint-1-m|"
 msgstr "返回|result-disjoint-1-m|的集合"
 
-#, fuzzy
 msgid "Returns set of |result-disjoint-m-1|"
-msgstr "Returns set of |result-toposort|"
+msgstr "Returns set of |result-disjoint-m-1|"
 
 msgid "Returns set of |result-disjoint-m-m|"
 msgstr "返回|result-disjoint-m-m|的集合"
@@ -19837,9 +20104,8 @@ msgstr "返回 |result-mst| 的集合"
 msgid "Returns set of |result-idom|"
 msgstr "返回 |result-idom| 的集合"
 
-#, fuzzy
 msgid "Returns set of |result-lineg|"
-msgstr "Returns set of |result-node|"
+msgstr "Returns set of |result-lineg|"
 
 msgid "Returns set of |result-linegf|"
 msgstr "返回 |result-linegf| 的集合"
@@ -19859,9 +20125,8 @@ msgstr "返回 |result-pickdrop| 的集合"
 msgid "Returns set of |result-mincut|"
 msgstr "返回|result-mincut|的集合"
 
-#, fuzzy
 msgid "Returns set of |result-closure|"
-msgstr "Returns set of |result-node|"
+msgstr "Returns set of |result-closure|"
 
 msgid "New proposed signatures"
 msgstr "新拟议的签名"
@@ -19904,7 +20169,7 @@ msgid "New overload functions"
 msgstr "新的重载函数"
 
 msgid "Backport issue fixes"
-msgstr ""
+msgstr "回溯问题修复"
 
 msgid "Renamed functions"
 msgstr "重新命名的功能"
@@ -19916,7 +20181,7 @@ msgid "Proposed Functionality"
 msgstr "建议的功能"
 
 msgid "Renamed and Deprecated Function"
-msgstr ""
+msgstr "已更名和废弃的函数"
 
 msgid "**Used in:**"
 msgstr "**用于：**"
