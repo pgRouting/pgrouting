@@ -18349,6 +18349,3 @@ msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
 
 #, fuzzy
-#~ msgid ""
-#~ "pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid** [, ``directed``])"
-#~ msgstr "p"
