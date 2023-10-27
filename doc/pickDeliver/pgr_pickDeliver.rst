@@ -82,7 +82,7 @@ Signature
    | pgr_pickDeliver(`Orders SQL`_, `Vehicles SQL`_, `Matrix SQL`_, [**options**])
    | **options:** ``[factor, max_cycles, initial_sol]``
 
-   | RETURNS SET OF |result-pickdrop|
+   | Returns set of |result-pickdrop|
 
 :Example: Solve the following problem
 
@@ -173,7 +173,7 @@ Matrix SQL
     :start-after: where_definition_starts
     :end-before: where_definition_ends
 
-Return columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: VRP-category.rst

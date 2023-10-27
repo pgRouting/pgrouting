@@ -30,7 +30,7 @@ SELECT * FROM pgr_trspViaVertices(
     true,  /* directed graph? */
     true  /* has_reverse_cost? */
 );
-WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) is been deprecated
+WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) deprecated function on v3.4.0
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |   6 |   4 |    1
@@ -50,7 +50,7 @@ SELECT * FROM pgr_trspViaEdges(
     true,  /* directed graph? */
     true  /* has_reverse_cost? */
 );
-WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated on v3.4.0
+WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated function on v3.4.0
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   4 |  0.5
@@ -71,7 +71,7 @@ SELECT * FROM pgr_trspViaEdges(
     true,  /* directed graph? */
     true  /* has_reverse_cost? */
 );
-WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated on v3.4.0
+WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated function on v3.4.0
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
@@ -96,7 +96,7 @@ SELECT * FROM pgr_trspViaEdges(
     true,  /* directed graph? */
     true  /* has_reverse_cost? */
 );
-WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated on v3.4.0
+WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated function on v3.4.0
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
@@ -120,7 +120,7 @@ SELECT * FROM pgr_trspViaVertices(
     true,  /* directed graph? */
     false  /* has_reverse_cost? */
 );
-WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) is been deprecated
+WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) deprecated function on v3.4.0
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
 (0 rows)
@@ -132,7 +132,7 @@ SELECT * FROM pgr_trspViaEdges(
     true,  /* directed graph? */
     false  /* has_reverse_cost? */
 );
-WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated on v3.4.0
+WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated function on v3.4.0
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   2 |  -2 |   6 |  0.5
@@ -149,7 +149,7 @@ SELECT * FROM pgr_trspViaEdges(
     true,  /* directed graph? */
     false  /* has_reverse_cost? */
 );
-WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated on v3.4.0
+WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated function on v3.4.0
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
@@ -166,7 +166,7 @@ SELECT * FROM pgr_trspViaEdges(
     true,  /* directed graph? */
     false  /* has_reverse_cost? */
 );
-WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated on v3.4.0
+WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated function on v3.4.0
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
@@ -182,7 +182,7 @@ SELECT * FROM pgr_trspViaVertices(
     false,  /* directed graph? */
     true  /* has_reverse_cost? */
 );
-WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) is been deprecated
+WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) deprecated function on v3.4.0
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |   6 |   4 |    1
@@ -202,7 +202,7 @@ SELECT * FROM pgr_trspViaEdges(
     false,  /* directed graph? */
     true  /* has_reverse_cost? */
 );
-WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated on v3.4.0
+WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated function on v3.4.0
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   4 |  0.5
@@ -223,7 +223,7 @@ SELECT * FROM pgr_trspViaEdges(
     false,  /* directed graph? */
     true  /* has_reverse_cost? */
 );
-WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated on v3.4.0
+WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated function on v3.4.0
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
@@ -245,7 +245,7 @@ SELECT * FROM pgr_trspViaEdges(
     false,  /* directed graph? */
     true  /* has_reverse_cost? */
 );
-WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated on v3.4.0
+WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated function on v3.4.0
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
@@ -266,7 +266,7 @@ SELECT * FROM pgr_trspViaVertices(
     false,  /* directed graph? */
     false  /* has_reverse_cost? */
 );
-WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) is been deprecated
+WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) deprecated function on v3.4.0
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |   6 |   4 |    1
@@ -286,7 +286,7 @@ SELECT * FROM pgr_trspViaEdges(
     false,  /* directed graph? */
     false  /* has_reverse_cost? */
 );
-WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated on v3.4.0
+WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated function on v3.4.0
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   4 |  0.5
@@ -307,7 +307,7 @@ SELECT * FROM pgr_trspViaEdges(
     false,  /* directed graph? */
     false  /* has_reverse_cost? */
 );
-WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated on v3.4.0
+WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated function on v3.4.0
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
@@ -329,7 +329,7 @@ SELECT * FROM pgr_trspViaEdges(
     false,  /* directed graph? */
     false  /* has_reverse_cost? */
 );
-WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated on v3.4.0
+WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated function on v3.4.0
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5

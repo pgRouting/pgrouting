@@ -65,7 +65,7 @@ One Via
    | pgr_trspVia(`Edges SQL`_, `Restrictions SQL`_, **via vertices**, [**options**])
    | **options:** ``[directed, strict, U_turn_on_edge]``
 
-   | RETURNS SET OF |via-result|
+   | Returns set of |via-result|
    | OR EMPTY SET
 
 :Example: Find the route that visits the vertices :math:`\{ 5, 1, 8\}` in that
@@ -113,7 +113,7 @@ Restrictions SQL
    :start-after: restrictions_columns_start
    :end-before: restrictions_columns_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: via-category.rst

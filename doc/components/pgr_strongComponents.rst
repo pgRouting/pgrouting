@@ -25,9 +25,9 @@ using Tarjan's algorithm based on DFS.
 
 * Version 3.0.0
 
-  * Return columns change:
+  * Result columns change:
 
-    *  ``n_seq`` is removed
+    * ``n_seq`` is removed
     * ``seq`` changed type to ``BIGINT``
 
   * **Official** function
@@ -65,7 +65,7 @@ Signatures
 
    | pgr_strongComponents(`Edges SQL`_)
 
-   | RETURNS SET OF |result-component-V|
+   | Returns set of |result-component-V|
    | OR EMPTY SET
 
 :Example: The strong components of the graph
@@ -95,7 +95,7 @@ Edges SQL
     :end-before: basic_edges_sql_end
 
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgr_connectedComponents.rst

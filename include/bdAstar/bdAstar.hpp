@@ -1,13 +1,12 @@
 /*PGR-GNU*****************************************************************
 File: pgr_bdAstar.hpp
 
-Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail:
+Mail: vicky at erosion.dev
 
 ------
 
@@ -32,25 +31,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 
+#include <map>
+#include <set>
+#include <deque>
+
 #include "cpp_common/pgr_bidirectional.hpp"
-
-#include <string>
-#include <queue>
-#include <utility>
-#include <vector>
-#include <limits>
-#include <functional>
-
 #include "cpp_common/basePath_SSEC.hpp"
 
 namespace pgrouting {
+
 namespace bidirectional {
 
-template < typename G >
+template <typename G>
 class Pgr_bdAstar : public Pgr_bidirectional<G> {
-    typedef typename Pgr_bidirectional<G>::V V;
-    typedef typename Pgr_bidirectional<G>::E E;
-    typedef typename Pgr_bidirectional<G>::Cost_Vertex_pair Cost_Vertex_pair;
+    using V = typename Pgr_bidirectional<G>::V;
+    using E = typename Pgr_bidirectional<G>::E;
+    using Cost_Vertex_pair = typename Pgr_bidirectional<G>::Cost_Vertex_pair;
 
     using Pgr_bidirectional<G>::graph;
     using Pgr_bidirectional<G>::m_log;
@@ -192,6 +188,39 @@ class Pgr_bdAstar : public Pgr_bidirectional<G> {
 };
 
 }  // namespace bidirectional
+
+
+namespace algorithms {
+
+template <class G>
+std::deque<Path> bdastar(
+        G &graph,
+        const std::map<int64_t, std::set<int64_t>> &combinations,
+        int heuristic,
+        double factor,
+        double epsilon,
+        bool only_cost) {
+    std::deque<Path> paths;
+    pgrouting::bidirectional::Pgr_bdAstar<G> fn_bdAstar(graph);
+
+    for (const auto &c : combinations) {
+        if (!graph.has_vertex(c.first)) continue;
+
+        for (const auto &destination : c.second) {
+            if (!graph.has_vertex(destination)) continue;
+
+            fn_bdAstar.clear();
+
+            paths.push_back(fn_bdAstar.pgr_bdAstar(
+                        graph.get_V(c.first), graph.get_V(destination),
+                        heuristic, factor, epsilon, only_cost));
+        }
+    }
+
+    return paths;
+}
+
+}  // namespace algorithms
 }  // namespace pgrouting
 
 #endif  // INCLUDE_BDASTAR_PGR_BDASTAR_HPP_

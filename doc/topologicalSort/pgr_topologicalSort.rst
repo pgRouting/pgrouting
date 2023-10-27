@@ -64,7 +64,7 @@ Signatures
 
    | pgr_topologicalSort(`Edges SQL`_)
 
-   | RETURNS SET OF |result-toposort|
+   | Returns set of |result-toposort|
    | OR EMPTY SET
 
 :Example: Topologically sorting the graph
@@ -90,7 +90,7 @@ Edges SQL
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 Returns set of |result-toposort|

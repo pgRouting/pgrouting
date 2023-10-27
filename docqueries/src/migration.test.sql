@@ -227,3 +227,114 @@ SELECT seq, path_seq, node, edge, cost, agg_cost FROM pgr_dijkstra(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   6, 10);
 /* --dijkstra5 */
+/* --astar1 */
+SELECT * FROM pgr_aStar(
+  $$SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges$$,
+  6, 10);
+/* --astar2 */
+SELECT * FROM pgr_aStar(
+  $$SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges$$,
+  6, ARRAY[3, 10]);
+/* --astar3 */
+SELECT * FROM pgr_aStar(
+  $$SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges$$,
+  ARRAY[3, 6], 10);
+/* --astar4 */
+SELECT seq, path_seq, node, edge, cost, agg_cost FROM pgr_aStar(
+  $$SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges$$,
+  6, 10);
+/* --astar5 */
+/* --bdastar1 */
+SELECT * FROM pgr_bdAstar(
+  $$SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges$$,
+  6, 10);
+/* --bdastar2 */
+SELECT * FROM pgr_bdAstar(
+  $$SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges$$,
+  6, ARRAY[3, 10]);
+/* --bdastar3 */
+SELECT * FROM pgr_bdAstar(
+  $$SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges$$,
+  ARRAY[3, 6], 10);
+/* --bdastar4 */
+SELECT seq, path_seq, node, edge, cost, agg_cost FROM pgr_bdAstar(
+  $$SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges$$,
+  6, 10);
+/* --bdastar5 */
+/* --withpointsdd1 */
+SELECT * FROM pgr_withPointsDD(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
+  $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
+  -1, 3.3);
+/* --withpointsdd2 */
+SELECT * FROM pgr_withPointsDD(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
+  $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
+  -1, 3.3, driving_side => 'r');
+/* --withpointsdd3 */
+SELECT * FROM pgr_withPointsDD(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
+  $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
+  -1, 3.3, directed => true, driving_side => 'b');
+/* --withpointsdd4 */
+SELECT * FROM pgr_withPointsDD(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
+  $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
+  -1, 3.3, 'r', directed => true);
+/* --withpointsdd5 */
+SELECT seq, node, edge, cost, agg_cost FROM pgr_withPointsDD(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
+  $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
+  -1, 3.3, 'r', details => true);
+/* --withpointsdd6 */
+SELECT * FROM pgr_withPointsDD(
+  $$SELECT * FROM edges ORDER BY id$$,
+  $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
+  ARRAY[-1, 16], 3.3, 'l', equicost => true);
+/* --withpointsdd7 */
+SELECT seq, start_vid, node, edge, cost, agg_cost FROM pgr_withPointsDD(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
+  $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
+  ARRAY[-1, 16], 3.3, 'l', equicost => true) WHERE node >= 0 OR cost = 0;
+/* --withpointsdd8 */
+/* --withPointsKSP1 */
+SELECT * FROM pgr_withPointsKSP(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
+  $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
+  -1, -2, 2, 'l');
+/* --withPointsKSP2 */
+SELECT seq, path_id, path_seq, node, edge, cost, agg_cost FROM pgr_withPointsKSP(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
+  $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
+  -1, -2, 2, 'l');
+/* --withPointsKSP3 */
+/* --ksp1 */
+SELECT * FROM pgr_KSP(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
+  6, 17, 2);
+/* --ksp2 */
+SELECT seq, path_id, path_seq, node, edge, cost, agg_cost FROM pgr_KSP(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
+  6, 17, 2);
+/* --ksp3 */
+/* --drivingdistance1 */
+SELECT * FROM pgr_drivingDistance(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
+  11, 3.0);
+/* --drivingdistance2 */
+SELECT seq, node, edge, cost, agg_cost
+FROM pgr_drivingDistance(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
+  11, 3.0);
+/* --drivingdistance3 */
+SELECT *
+FROM pgr_drivingDistance(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
+  ARRAY[11, 16], 3.0, equicost => true);
+/* --drivingdistance4 */
+SELECT seq, start_vid AS from_v, node, edge, cost, agg_cost
+FROM pgr_drivingDistance(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
+  ARRAY[11, 16], 3.0, equicost => true);
+/* --drivingdistance5 */
+

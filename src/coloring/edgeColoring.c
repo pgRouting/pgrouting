@@ -57,8 +57,6 @@ PG_FUNCTION_INFO_V1(_pgr_edgecoloring);
  * @param edges_sql      the edges of the SQL query
  * @param result_tuples  the rows in the result
  * @param result_count   the count of rows in the result
- *
- * @returns void
  */
 
 static
@@ -69,6 +67,9 @@ process(
         II_t_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
@@ -76,7 +77,8 @@ process(
     Edge_t *edges = NULL;
     size_t total_edges = 0;
 
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false);
+    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
+    throw_error(err_msg, edges_sql);
 
      if (total_edges == 0) {
         ereport(WARNING,
@@ -89,9 +91,6 @@ process(
     }
 
     clock_t start_t = clock();
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
 
     do_pgr_edgeColoring(
             edges, total_edges,

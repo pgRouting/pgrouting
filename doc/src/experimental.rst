@@ -13,7 +13,7 @@
 Experimental Functions
 ===============================================================================
 
-..  begin-warn-expr
+.. begin-warn-expr
 
 .. warning:: Possible server crash
 
@@ -37,7 +37,7 @@ Experimental Functions
     - Might depend on a proposed function of pgRouting
     - Might depend on a deprecated function of pgRouting
 
-..  end-warn-expr
+.. end-warn-expr
 
 .. rubric:: Families
 
@@ -110,7 +110,7 @@ Experimental Functions
 
   VRP-category
 
-.. rubric:: Not classified
+.. rubric:: Unclassified
 
 - :doc:`pgr_bellmanFord`
 - :doc:`pgr_dagShortestPath`

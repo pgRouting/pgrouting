@@ -69,7 +69,7 @@ Signatures
    | pgr_edgeDisjointPaths(`Edges SQL`_, **start vids**, **end vids**, [``directed``])
    | pgr_edgeDisjointPaths(`Edges SQL`_, `Combinations SQL`_, [``directed``])
 
-   | RETURNS SET OF |result-disjoint|
+   | Returns set of |result-disjoint|
    | OR EMPTY SET
 
 .. index::
@@ -83,7 +83,7 @@ One to One
 
    | pgr_edgeDisjointPaths(`Edges SQL`_, **start vid**, **end vid**, [``directed``])
 
-   | RETURNS SET OF |result-disjoint-1-1|
+   | Returns set of |result-disjoint-1-1|
    | OR EMPTY SET
 
 :Example: From vertex :math:`11` to vertex :math:`12`
@@ -103,7 +103,7 @@ One to Many
 
    | pgr_edgeDisjointPaths(`Edges SQL`_, **start vid**, **end vids**, [``directed``])
 
-   | RETURNS SET OF |result-disjoint-1-m|
+   | Returns set of |result-disjoint-1-m|
    | OR EMPTY SET
 
 :Example: From vertex :math:`11` to vertices :math:`\{5, 10, 12\}`
@@ -124,7 +124,7 @@ Many to One
 
    | pgr_edgeDisjointPaths(`Edges SQL`_, **start vids**, **end vid**, [``directed``])
 
-   | RETURNS SET OF |result-disjoint-m-1|
+   | Returns set of |result-disjoint-m-1|
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{11, 3, 17\}` to vertex :math:`12`
@@ -144,7 +144,7 @@ Many to Many
 
    | pgr_edgeDisjointPaths(`Edges SQL`_, **start vids**, **end vids**, [``directed``])
 
-   | RETURNS SET OF |result-disjoint-m-m|
+   | Returns set of |result-disjoint-m-m|
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{11, 3, 17\}` to vertices :math:`\{5, 10, 12\}`
@@ -164,7 +164,7 @@ Combinations
 
    | pgr_edgeDisjointPaths(`Edges SQL`_, `Combinations SQL`_, [``directed``])
 
-   | RETURNS SET OF |result-disjoint-m-m|
+   | Returns set of |result-disjoint-m-m|
    | OR EMPTY SET
 
 :Example: Using a combinations table, equivalent to calculating result from
@@ -214,7 +214,7 @@ Combinations SQL
     :start-after: basic_combinations_sql_start
     :end-before: basic_combinations_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst

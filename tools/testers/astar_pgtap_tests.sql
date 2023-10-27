@@ -30,7 +30,28 @@ BEGIN
     RETURN QUERY SELECT skip(2, 'Combinations signature added on 3.2.0');
   END IF;
 
-  IF min_version('3.2.0') THEN
+  IF min_version('3.6.0') AND fn IN('pgr_astar', 'pgr_bdastar') THEN
+    RETURN QUERY SELECT set_eq(
+      format($$SELECT  proargnames FROM pg_proc WHERE proname = %1$L$$,fn),
+      $$VALUES
+      ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
+      ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
+      ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
+      ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
+      ('{"","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
+      $$, 'Column names');
+
+    RETURN QUERY SELECT set_eq(
+      format($$SELECT  proallargtypes FROM pg_proc WHERE proname = %1$L$$,fn),
+      format($$VALUES
+      ('{25,20,20,16,23,%1$s,%1$s,    23,23,20,20,20,20,701,701}'::OID[]),
+      ('{25,20,2277,16,23,%1$s,%1$s,  23,23,20,20,20,20,701,701}'::OID[]),
+      ('{25,2277,20,16,23,%1$s,%1$s,  23,23,20,20,20,20,701,701}'::OID[]),
+      ('{25,2277,2277,16,23,%1$s,%1$s,23,23,20,20,20,20,701,701}'::OID[]),
+      ('{25,25,16,23,%1$s,%1$s,       23,23,20,20,20,20,701,701}'::OID[])
+      $$,the_type_numb), 'Column types');
+
+  ELSIF min_version('3.2.0') THEN
     RETURN QUERY SELECT set_eq(
       format($$SELECT  proargnames FROM pg_proc WHERE proname = %1$L$$,fn),
       $$VALUES

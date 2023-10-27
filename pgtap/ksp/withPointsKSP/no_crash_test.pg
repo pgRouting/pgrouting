@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(26) END;
+SELECT CASE WHEN min_version('3.6.0') THEN plan(164) ELSE plan(26) END;
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost FROM edges;
@@ -43,7 +43,163 @@ DECLARE
 params TEXT[];
 subs TEXT[];
 BEGIN
+IF min_version('3.6.0') THEN
+    -- one to one
+    params = ARRAY[
+    '$$edges$$',
+    '$$SELECT pid, edge_id, fraction from pointsOfInterest$$',
+    '5::BIGINT',
+    '6::BIGINT',
+    '3',
+    '$$r$$'
+    ]::TEXT[];
+    subs = ARRAY[
+    'NULL',
+    'NULL',
+    '(SELECT id FROM vertices WHERE id IN (-1))',
+    '(SELECT id FROM vertices WHERE id IN (-1))',
+    'NULL',
+    'NULL'
+    ]::TEXT[];
 
+    RETURN query SELECT * FROM no_crash_test('pgr_withPointsKSP', params, subs);
+
+    subs = ARRAY[
+    'NULL',
+    'NULL',
+    'NULL::BIGINT',
+    'NULL::BIGINT',
+    'NULL',
+    'NULL'
+    ]::TEXT[];
+    RETURN query SELECT * FROM no_crash_test('pgr_withPointsKSP', params, subs);
+
+    -- one to many
+    params = ARRAY['$$edges$$',
+    '$$SELECT pid, edge_id, fraction from pointsOfInterest$$',
+    '5::BIGINT',
+    'ARRAY[6,7]::BIGINT[]',
+    '2',
+    '$$l$$'
+    ]::TEXT[];
+    subs = ARRAY[
+    'NULL',
+    'NULL',
+    '(SELECT id FROM vertices WHERE id IN (-1))',
+    '(SELECT array_agg(id) FROM vertices WHERE id IN (-1))',
+    'NULL',
+    'NULL'
+    ]::TEXT[];
+
+    RETURN query SELECT * FROM no_crash_test('pgr_withPointsKSP', params, subs);
+
+    subs = ARRAY[
+    'NULL',
+    'NULL',
+    'NULL::BIGINT',
+    'NULL::BIGINT[]',
+    'NULL',
+    'NULL'
+    ]::TEXT[];
+    RETURN query SELECT * FROM no_crash_test('pgr_withPointsKSP', params, subs);
+
+    -- many to one
+    params = ARRAY['$$edges$$',
+    '$$SELECT pid, edge_id, fraction from pointsOfInterest$$',
+    'ARRAY[6,7]::BIGINT[]',
+    '5',
+    '2',
+    '$$r$$'
+    ]::TEXT[];
+    subs = ARRAY[
+    'NULL',
+    'NULL',
+    '(SELECT array_agg(id) FROM vertices WHERE id IN (-1))',
+    '(SELECT id FROM vertices WHERE id IN (-1))',
+    'NULL',
+    'NULL'
+    ]::TEXT[];
+
+    RETURN query SELECT * FROM no_crash_test('pgr_withPointsKSP', params, subs);
+
+    subs = ARRAY[
+    'NULL',
+    'NULL',
+    'NULL::BIGINT[]',
+    'NULL::BIGINT',
+    'NULL',
+    'NULL'
+    ]::TEXT[];
+    RETURN query SELECT * FROM no_crash_test('pgr_withPointsKSP', params, subs);
+
+    -- many to many
+    params = ARRAY['$$edges$$',
+    '$$SELECT pid, edge_id, fraction from pointsOfInterest$$',
+    'ARRAY[5]::BIGINT[]', 'ARRAY[6,7]::BIGINT[]',
+    '1',
+    '$$l$$'
+    ]::TEXT[];
+    subs = ARRAY[
+    'NULL',
+    'NULL',
+    '(SELECT array_agg(id) FROM vertices WHERE id IN (-1))',
+    '(SELECT array_agg(id) FROM vertices WHERE id IN (-1))',
+    'NULL',
+    'NULL'
+    ]::TEXT[];
+
+    RETURN query SELECT * FROM no_crash_test('pgr_withPointsKSP', params, subs);
+
+    subs = ARRAY[
+    'NULL',
+    'NULL',
+    'NULL::BIGINT[]',
+    'NULL::BIGINT[]',
+    'NULL',
+    'NULL'
+    ]::TEXT[];
+    RETURN query SELECT * FROM no_crash_test('pgr_withPointsKSP', params, subs);
+
+    -- Combinations SQL
+
+    PREPARE null_combinations AS
+    SELECT source, target FROM combinations WHERE source IN (-1);
+
+    PREPARE combinations AS
+    SELECT source, target FROM combinations;
+
+    RETURN QUERY
+    SELECT isnt_empty('combinations', 'Should be not empty to tests be meaningful');
+    RETURN QUERY
+    SELECT is_empty('null_combinations', 'Should be empty to tests be meaningful');
+
+    params = ARRAY['$$edges$$',
+    '$$SELECT pid, edge_id, fraction from pointsOfInterest$$',
+    '$$combinations$$',
+    '1',
+    '$$l$$'
+    ]::TEXT[];
+    subs = ARRAY[
+    'NULL',
+    'NULL',
+    '$$(SELECT source, target FROM combinations WHERE source IN (-1))$$',
+    'NULL',
+    'NULL'
+    ]::TEXT[];
+
+    RETURN query SELECT * FROM no_crash_test('pgr_withPointsKSP', params, subs);
+
+    subs = ARRAY[
+    'NULL',
+    'NULL',
+    'NULL::TEXT',
+    'NULL',
+    'NULL'
+    ]::TEXT[];
+    RETURN query SELECT * FROM no_crash_test('pgr_withPointsKSP', params, subs);
+END IF;
+
+/* TODO remove tests on v4*/
     -- 1 to distance
     params = ARRAY[
     '$$SELECT id, source, target, cost, reverse_cost FROM edges$$',

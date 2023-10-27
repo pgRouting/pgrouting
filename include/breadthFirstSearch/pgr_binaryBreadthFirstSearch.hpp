@@ -52,11 +52,11 @@ class Pgr_binaryBreadthFirstSearch {
 
     std::deque<Path> binaryBreadthFirstSearch(
         G &graph,
-        std::vector<int64_t> start_vertex,
-        std::vector<int64_t> end_vertex) {
+        const std::vector<int64_t> &start_vertex,
+        const std::vector<int64_t> &end_vertex) {
         std::deque<Path> paths;
 
-        for (auto source : start_vertex) {
+        for (const auto &source : start_vertex) {
             std::deque<Path> result_paths = one_to_many_binaryBreadthFirstSearch(
                 graph,
                 source,
@@ -180,13 +180,15 @@ class Pgr_binaryBreadthFirstSearch {
 
         Path path = Path(graph[bgl_start_vertex].id, graph[current_node].id);
 
-        path.push_back({target, -1, 0, current_cost[current_node]});
+        /* TODO(v4) add correct predecessor node */
+        path.push_back({target, -1, 0, current_cost[current_node], 0});
 
         do {
             E e = from_edge[current_node];
             auto from = graph.source(e);
 
-            path.push_back({graph[from].id, graph[e].id, graph[e].cost, current_cost[from]});
+            /* TODO(v4) add correct predecessor node */
+            path.push_back({graph[from].id, graph[e].id, graph[e].cost, current_cost[from], 0});
 
             current_node = from;
         } while (from_edge[current_node] != DEFAULT_EDGE);

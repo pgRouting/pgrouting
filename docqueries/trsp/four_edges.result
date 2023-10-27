@@ -30,7 +30,7 @@ SELECT * FROM pgr_trsp(
   719, 0,
   718, 0,
   true, true, NULL);
-WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated signature on v3.4.0
  seq |  id1  | id2 |    cost
 -----+-------+-----+------------
    0 | 52163 | 717 | 977.000001
@@ -51,7 +51,7 @@ SELECT * FROM pgr_trsp(
   (SELECT source::int  FROM four_edges WHERE id = 719),
   (SELECT source::int  FROM four_edges WHERE id = 718),
   true, true, NULL);
-WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) deprecated on v3.4.0
+WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) deprecated signature on v3.4.0
  seq |  id1  | id2 | cost
 -----+-------+-----+------
    0 | 52163 | 717 |  977
@@ -66,7 +66,7 @@ SELECT * FROM pgr_trsp(
   719, 0,
   718, 0,
   true, true, NULL);
-WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated signature on v3.4.0
  seq |  id1  | id2 |    cost
 -----+-------+-----+------------
    0 | 52163 | 717 | 977.000001
@@ -110,7 +110,7 @@ SELECT * FROM pgr_trsp(
   719, 0.5,
   718, 0,
   true, true, NULL);
-WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated signature on v3.4.0
  seq |  id1  | id2 |    cost
 -----+-------+-----+------------
    0 |    -1 | 719 | 89.7000005
@@ -157,7 +157,7 @@ SELECT * FROM pgr_trsp(
   719, 0,
   718, 0.5,
   true, true, NULL);
-WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated signature on v3.4.0
  seq |  id1  | id2 |    cost
 -----+-------+-----+-------------
    0 | 52163 | 717 |  977.000001
@@ -202,7 +202,7 @@ SELECT * FROM pgr_trsp(
   719, 0.5,
   718, 0.5,
   true, true, NULL);
-WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated signature on v3.4.0
  seq |  id1  | id2 |    cost
 -----+-------+-----+-------------
    0 |    -1 | 719 |  89.7000005

@@ -6,6 +6,7 @@ Copyright (c) 2015 pgRouting developers
 
 Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
+mail: vicky at erosion.dev
 
 ------
 
@@ -33,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "dijkstra/pgr_dijkstra.hpp"
+#include "dijkstra/dijkstra.hpp"
 
 #include "cpp_common/pgr_assert.h"
 
@@ -90,7 +91,7 @@ pgr_dijkstraVia(
         }
 
         log << "\nfrom " << prev_vertex << " to " << vertex;
-        path = pgr_dijkstra(graph, prev_vertex, vertex);
+        path = algorithms::dijkstra(graph, prev_vertex, vertex);
 
         if (!U_turn_on_edge && i > 1) {
             graph.restore_graph();
@@ -101,7 +102,7 @@ pgr_dijkstraVia(
                  */
                 log << "\nEmpty so again from "
                     << prev_vertex << " to " << vertex;
-                path = pgr_dijkstra(graph, prev_vertex, vertex);
+                path = algorithms::dijkstra(graph, prev_vertex, vertex);
             }
         }
 

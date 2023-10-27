@@ -55,10 +55,14 @@ process(
         TSP_tour_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     Coordinate_t *coordinates = NULL;
     size_t total_coordinates = 0;
-    pgr_get_coordinates(coordinates_sql, &coordinates, &total_coordinates);
+    pgr_get_coordinates(coordinates_sql, &coordinates, &total_coordinates, &err_msg);
+    throw_error(err_msg, coordinates_sql);
 
     if (total_coordinates == 0) {
         ereport(WARNING,
@@ -72,9 +76,6 @@ process(
 
     PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
 
     do_pgr_euclideanTSP(
             coordinates, total_coordinates,
@@ -172,7 +173,7 @@ _pgr_tspeuclidean(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
         values[2] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);

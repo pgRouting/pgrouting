@@ -6,8 +6,9 @@ Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
+Copyright (c) 2023 Celia Virginia Vergara Castillo
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail:
+Mail: vicky at erosion.dev
 
 ------
 
@@ -32,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -----------------
 
 
---v2.6
+--v3.6
 CREATE FUNCTION pgr_aStar(
     TEXT,     -- edges sql (required)
     BIGINT,   -- from_vid (required)
@@ -45,6 +46,8 @@ CREATE FUNCTION pgr_aStar(
 
     OUT seq INTEGER,
     OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
@@ -52,15 +55,15 @@ CREATE FUNCTION pgr_aStar(
 
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_aStar(_pgr_get_statement($1), ARRAY[$2]::BIGINT[],  ARRAY[$3]::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT) AS a;
+    SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+    FROM _pgr_aStar(_pgr_get_statement($1), ARRAY[$2]::BIGINT[],  ARRAY[$3]::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
 
---v2.6
+--v3.6
 CREATE FUNCTION pgr_aStar(
     TEXT,       -- edges sql (required)
     BIGINT,     -- from_vid (required)
@@ -73,6 +76,7 @@ CREATE FUNCTION pgr_aStar(
 
     OUT seq INTEGER,
     OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
@@ -81,15 +85,15 @@ CREATE FUNCTION pgr_aStar(
 
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_aStar(_pgr_get_statement($1), ARRAY[$2]::BIGINT[],  $3::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT) AS a;
+    SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+    FROM _pgr_aStar(_pgr_get_statement($1), ARRAY[$2]::BIGINT[],  $3::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
 
---v2.6
+--v3.6
 CREATE FUNCTION pgr_aStar(
     TEXT,       -- edges sql (required)
     ANYARRAY,   -- from_vids (required)
@@ -103,6 +107,7 @@ CREATE FUNCTION pgr_aStar(
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
@@ -110,8 +115,8 @@ CREATE FUNCTION pgr_aStar(
 
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_aStar(_pgr_get_statement($1), $2::BIGINT[],  ARRAY[$3]::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, normal:=false) AS a;
+    SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+    FROM _pgr_aStar(_pgr_get_statement($1), $2::BIGINT[],  ARRAY[$3]::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, normal:=false);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100

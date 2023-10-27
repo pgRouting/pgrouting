@@ -7,7 +7,7 @@ Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2017 Anthony Nicola Tasca
-Mail: atasca10@gmail.com
+Mail: atasca10 at gmail.com
 
 ------
 
@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "dijkstra/pgr_dijkstra.hpp"
+#include "dijkstra/dijkstra.hpp"
 
 #include "c_types/line_graph_full_rt.h"
 #include "cpp_common/pgr_alloc.hpp"
@@ -42,10 +42,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "lineGraph/pgr_lineGraphFull.hpp"
 #include "cpp_common/linear_directed_graph.h"
 
+namespace {
+
 void get_turn_penalty_postgres_result(
         std::vector< Line_graph_full_rt > edge_result,
         Line_graph_full_rt **return_tuples,
         size_t &sequence) {
+    using pgrouting::pgr_alloc;
     (*return_tuples) = pgr_alloc(edge_result.size(), (*return_tuples));
 
     for (const auto &edge : edge_result) {
@@ -59,6 +62,8 @@ void get_turn_penalty_postgres_result(
     }
 }
 
+}  // namespace
+
 void
 do_pgr_lineGraphFull(
         Edge_t  *data_edges,
@@ -68,6 +73,9 @@ do_pgr_lineGraphFull(
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;

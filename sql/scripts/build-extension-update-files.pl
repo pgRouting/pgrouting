@@ -62,6 +62,7 @@ my $version_3_2 = qr/(3.2.[\d+])/;
 my $version_3_3 = qr/(3.3.[\d+])/;
 my $version_3_4 = qr/(3.4.[\d+])/;
 my $version_3_5 = qr/(3.5.[\d+])/;
+my $version_3_6 = qr/(3.6.[\d+])/;
 # add minor here
 
 my $version_2 = qr/(2.[\d+].[\d+])/;
@@ -71,7 +72,7 @@ my $minor_format   = qr/([\d+].[\d+]).[\d+]/;
 my $mayor_format   = qr/([\d+]).[\d+].[\d+]/;
 
 
-my $current = $version_3_5;
+my $current = $version_3_6;
 
 
 sub Usage {
@@ -230,6 +231,22 @@ sub generate_upgrade_script {
             push @commands, drop_special_case_function("pgr_dijkstra(text,bigint,bigint,boolean)");
         }
 
+        # updating to 3.6+
+        if ($old_mayor == 2 or $old_minor < 6) {
+            push @commands, drop_special_case_function("pgr_withpointsksp(text, text, bigint, bigint, integer, boolean, boolean, char, boolean)");
+            push @commands, drop_special_case_function("pgr_astar(text,anyarray,bigint,boolean,integer,double precision,double precision)");
+            push @commands, drop_special_case_function("pgr_astar(text,bigint,anyarray,boolean,integer,double precision,double precision)");
+            push @commands, drop_special_case_function("pgr_astar(text,bigint,bigint,boolean,integer,double precision,double precision)");
+            push @commands, drop_special_case_function("pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)");
+            push @commands, drop_special_case_function("pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)");
+            push @commands, drop_special_case_function("pgr_ksp(text,bigint,bigint,integer,boolean,boolean)");
+            push @commands, drop_special_case_function("pgr_bdastar(text,bigint,bigint,boolean,integer,numeric,numeric)");
+            push @commands, drop_special_case_function("pgr_bdastar(text,bigint,anyarray,boolean,integer,numeric,numeric)");
+            push @commands, drop_special_case_function("pgr_bdastar(text,anyarray,bigint,boolean,integer,numeric,numeric)");
+            push @commands, drop_special_case_function("pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)");
+            push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean)");
+        }
+
     }
 
     #------------------------------------
@@ -337,8 +354,8 @@ sub drop_special_case_function {
     my @commands = ();
 
     push @commands,  "-- $old_version  **WARN: DROP $function (something changed for $new_version)\n" if $DEBUG;
-    push @commands, "\nALTER EXTENSION pgrouting DROP FUNCTION $function;\n";
-    push @commands, "DROP FUNCTION IF EXISTS $function;\n\n\n";
+    push @commands, "ALTER EXTENSION pgrouting DROP FUNCTION $function;\n";
+    push @commands, "DROP FUNCTION IF EXISTS $function;\n";
     return @commands;
 }
 

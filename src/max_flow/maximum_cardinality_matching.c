@@ -54,10 +54,14 @@ process(
     Only_int_rt** result_tuples,
     size_t* result_count) {
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     Edge_bool_t* edges = NULL;
     size_t total_edges = 0;
-    pgr_get_basic_edges(edges_sql, &edges, &total_edges);
+    pgr_get_basic_edges(edges_sql, &edges, &total_edges, &err_msg);
+    throw_error(err_msg, edges_sql);
 
     if (total_edges == 0) {
         pgr_SPI_finish();
@@ -66,9 +70,6 @@ process(
 
     PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char *err_msg = NULL;
 
     do_pgr_maximum_cardinality_matching(
             edges, total_edges,
@@ -161,7 +162,7 @@ _pgr_maxcardinalitymatch(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge_id);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);

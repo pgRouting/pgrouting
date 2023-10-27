@@ -50,7 +50,7 @@ typedef struct II_t_rt II_t_rt;
 extern "C" {
 #endif
 
-    void do_pgr_bdAstar(
+    void pgr_do_bdAstar(
             Edge_xy_t  *data_edges,
             size_t total_edges,
 

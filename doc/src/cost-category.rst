@@ -59,7 +59,7 @@ The main Characteristics are:
 
 * Depending on the function and its parameters, the results can be symmetric.
 
-  * The  **aggregate cost** of :math:`(u, v)` is the same as for :math:`(v, u)`.
+  * The **aggregate cost** of :math:`(u, v)` is the same as for :math:`(v, u)`.
 
 * Any duplicated value in the start or end vertex identifiers are ignored.
 

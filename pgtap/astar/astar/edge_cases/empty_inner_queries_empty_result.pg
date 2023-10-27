@@ -29,6 +29,11 @@ DECLARE result2 TEXT = ' seq, path_seq, end_vid, node, edge, cost, agg_cost ';
 DECLARE result3 TEXT = ' seq, path_seq, start_vid, node, edge, cost, agg_cost ';
 DECLARE result_all TEXT = ' seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost ';
 BEGIN
+  IF (min_version('3.6.0')) THEN
+    result1 := result_all;
+    result2 := result_all;
+    result3 := result_all;
+  END IF;
 
   RETURN query
   SELECT is_empty(

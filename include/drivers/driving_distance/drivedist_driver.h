@@ -1,9 +1,11 @@
 /*PGR-GNU*****************************************************************
-File: boost_interface_drivedist.h
+File: drivedist_driver.h
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+vicky at erosion.dev
 
+Copyright (c) 2023 Aryan Gupta
+guptaaryan1010 AT gmail.com
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -25,33 +27,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef INCLUDE_DRIVERS_DRIVING_DISTANCE_DRIVEDIST_DRIVER_H_
 #define INCLUDE_DRIVERS_DRIVING_DISTANCE_DRIVEDIST_DRIVER_H_
 
-/* for size-t */
 #ifdef __cplusplus
 #   include <cstdint>
 #   include <cstddef>
 using Edge_t = struct Edge_t;
-using Path_rt = struct Path_rt;
+using MST_rt = struct MST_rt;
 #else
 #   include <stddef.h>
 #   include <stdint.h>
 typedef struct Edge_t Edge_t;
-typedef struct Path_rt Path_rt;
+typedef struct MST_rt MST_rt;
 #endif
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-    void do_pgr_driving_many_to_dist(
-            Edge_t* edges, size_t total_edges,
-            int64_t* start_vertex, size_t s_len,
-            double distance,
-            bool directed,
-            bool equicost,
-            Path_rt** return_tuples, size_t* return_count,
-            char **log_msg,
-            char **notice_msg,
-            char **err_msg);
+void pgr_do_drivingdist(
+        Edge_t* , size_t ,
+        int64_t* , size_t ,
+        double ,
+        bool, bool,
+        MST_rt** , size_t* r,
+        char **, char **, char **);
 
 #ifdef __cplusplus
 }

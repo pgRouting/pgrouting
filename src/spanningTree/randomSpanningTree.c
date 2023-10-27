@@ -52,6 +52,9 @@ process(
      *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
      */
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
@@ -60,7 +63,8 @@ process(
     Edge_t *edges = NULL;
     size_t total_edges = 0;
 
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false);
+    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
+    throw_error(err_msg, edges_sql);
     PGR_DBG("Total %ld edges in query:", total_edges);
 
     if (total_edges == 0) {
@@ -71,9 +75,6 @@ process(
 
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
     do_pgr_randomSpanningTree(
             edges,
             total_edges,
@@ -158,7 +159,7 @@ PGDLLEXPORT Datum randomSpanningTree(PG_FUNCTION_ARGS) {
         }
 
         // postgres starts counting from 1
-        values[0] = Int64GetDatum(funcctx->call_cntr + 1);
+        values[0] = Int64GetDatum((int64_t)funcctx->call_cntr + 1);
         values[1] =
             Int64GetDatum(result_tuples[funcctx->call_cntr].root_vertex);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);

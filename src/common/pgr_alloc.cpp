@@ -26,6 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <cstring>
 #include <string>
 
+namespace pgrouting {
+
 char *
 pgr_msg(const std::string &msg) {
     char* duplicate = NULL;
@@ -35,3 +37,4 @@ pgr_msg(const std::string &msg) {
     return duplicate;
 }
 
+}  // namespace pgrouting

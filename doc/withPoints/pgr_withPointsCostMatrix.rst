@@ -56,9 +56,9 @@ Signatures
    :class: signatures
 
    | pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, [**options**])
-   | **options:**  ``[directed, driving_side]``
+   | **options:** ``[directed, driving_side]``
 
-   | RETURNS SET OF |matrix-result|
+   | Returns set of |matrix-result|
    | OR EMPTY SET
 
 .. note:: There is no **details** flag, unlike the other members of the
@@ -113,7 +113,7 @@ Points SQL
     :start-after: points_sql_start
     :end-before: points_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
@@ -140,8 +140,8 @@ locations on the graph of point `(2.9, 1.8)`.
     :start-after: -- q3
     :end-before: -- q4
 
-* Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`.
-* Point :math:`-2` corresponds to the next close edge from point `(2.9,1.8)`.
+* Point :math:`-1` corresponds to the closest edge from point `(2.9, 1.8)`.
+* Point :math:`-2` corresponds to the next close edge from point `(2.9, 1.8)`.
 
 Use with :doc:`pgr_TSP`.
 ...............................................................................

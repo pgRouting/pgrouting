@@ -50,6 +50,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 //******************************************
+namespace pgrouting {
 
 template < class G >
 class Pgr_bellman_ford : public pgrouting::Pgr_messages {
@@ -311,5 +312,7 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
 
      //@}
 };
+
+}  // namespace pgrouting
 
 #endif  // INCLUDE_BELLMAN_FORD_PGR_BELLMAN_FORD_HPP_

@@ -64,7 +64,7 @@ Signatures
 
    | pgr_makeConnected(`Edges SQL`_)
 
-   | RETURNS SET OF |result-component-make|
+   | Returns set of |result-component-make|
    | OR EMPTY SET
 
 :Example: Query done on :doc:`sampledata` network gives the list of edges that
@@ -91,7 +91,7 @@ Edges SQL
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 Returns set of |result-component-make|

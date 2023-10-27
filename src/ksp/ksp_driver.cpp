@@ -2,7 +2,10 @@
 File: ksp_driver.cpp
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+vicky at erosion.dev
+
+Copyright (c) 2023 Aniket Agarwal
+aniketgarg187 at gmail.com
 
 ------
 
@@ -31,20 +34,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "yen/pgr_ksp.hpp"
 
+#include "cpp_common/combinations.h"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
 #include "cpp_common/pgr_base_graph.hpp"
 
+#include "c_types/ii_t_rt.h"
 
-using pgrouting::yen::Pgr_ksp;
-
-
-void  do_pgr_ksp(
-        Edge_t *data_edges,
-        size_t total_edges,
-        int64_t  start_vid,
-        int64_t  end_vid,
+void  pgr_do_ksp(
+        Edge_t *data_edges, size_t total_edges,
+        II_t_rt *combinationsArr, size_t total_combinations,
+        int64_t*  start_vids, size_t size_start_vids,
+        int64_t * end_vids, size_t size_end_vids,
         size_t k,
         bool directed,
         bool heap_paths,
@@ -53,6 +55,12 @@ void  do_pgr_ksp(
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
+    using pgrouting::Path;
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+    using pgrouting::yen::Pgr_ksp;
+
     std::ostringstream err;
     std::ostringstream log;
     std::ostringstream notice;
@@ -64,20 +72,22 @@ void  do_pgr_ksp(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
+        auto combinations = total_combinations?
+            pgrouting::utilities::get_combinations(combinationsArr, total_combinations)
+            : pgrouting::utilities::get_combinations(start_vids, size_start_vids, end_vids, size_end_vids);
+
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
         std::deque< Path > paths;
 
         if (directed) {
             pgrouting::DirectedGraph digraph(gType);
-            Pgr_ksp< pgrouting::DirectedGraph > fn_yen;
             digraph.insert_edges(data_edges, total_edges);
-            paths = fn_yen.Yen(digraph, start_vid, end_vid, k, heap_paths);
+            paths = pgrouting::algorithms::Yen(digraph, combinations, k, heap_paths);
         } else {
             pgrouting::UndirectedGraph undigraph(gType);
-            Pgr_ksp< pgrouting::UndirectedGraph > fn_yen;
             undigraph.insert_edges(data_edges, total_edges);
-            paths = fn_yen.Yen(undigraph, start_vid, end_vid, k, heap_paths);
+            paths = pgrouting::algorithms::Yen(undigraph, combinations, k, heap_paths);
         }
 
 
@@ -88,11 +98,9 @@ void  do_pgr_ksp(
             *return_tuples = pgr_alloc(count, (*return_tuples));
 
             size_t sequence = 0;
-            int route_id = 0;
             for (const auto &path : paths) {
                 if (path.size() > 0)
-                    path.get_pg_ksp_path(return_tuples, sequence, route_id);
-                ++route_id;
+                    path.get_pg_nksp_path(return_tuples, sequence);
             }
         }
         *return_count = count;

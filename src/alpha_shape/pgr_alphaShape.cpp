@@ -5,7 +5,7 @@ Copyright (c) 2018 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2018 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Mail: vicky at erosion.dev
 
 ------
 
@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 #include <map>
 
-#include <visitors/dijkstra_one_goal_visitor.hpp>
+#include <visitors/dijkstra_visitors.hpp>
 #include <boost/graph/dijkstra_shortest_paths.hpp>
 #include <boost/graph/filtered_graph.hpp>
 

@@ -127,7 +127,7 @@ Vertex SQL
        * When missing, ``in_edges`` must exist.
 
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. TODO move to pgRouting concepts
@@ -166,7 +166,7 @@ Dry run execution
 To get the query generated used to get the vertex information, use ``dryrun =>
 true``.
 
-The results can be used as base code to make a refinement based on the back end
+The results can be used as base code to make a refinement based on the backend
 development needs.
 
 .. literalinclude:: degree.queries

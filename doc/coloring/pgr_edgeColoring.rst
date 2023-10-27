@@ -55,7 +55,7 @@ no two adjacent edges have the same color.
   - When the graph is bipartite
 
     - the chromatic number :math:`x'(G)` (minimum number of
-      colors needed for proper edge coloring of graph)  is equal to the degree
+      colors needed for proper edge coloring of graph) is equal to the degree
       :math:`\Delta + 1` of the graph, (:math:`x'(G) = \Delta`)
 
 - The algorithm tries to assign the least possible color to every edge.
@@ -81,7 +81,7 @@ Signatures
 
    | pgr_edgeColoring(`Edges SQL`_)
 
-   | RETURNS SET OF |result-edge-color|
+   | Returns set of |result-edge-color|
    | OR EMPTY SET
 
 :Example: Graph coloring of pgRouting :doc:`sampledata`
@@ -109,7 +109,7 @@ Edges SQL
    :start-after: basic_edges_sql_start
    :end-before: basic_edges_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: coloring-family.rst

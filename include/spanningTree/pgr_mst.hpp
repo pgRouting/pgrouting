@@ -196,6 +196,7 @@ class Pgr_mst {
                      root,
                          0,
                          graph[u].id,
+                         graph[u].id,
                          -1,
                          0.0,
                          0.0 });
@@ -211,6 +212,7 @@ class Pgr_mst {
                  results.push_back({
                      root,
                          m_suffix != ""? depth[v] : 0,
+                         graph[u].id,
                          graph[v].id,
                          graph[edge].id,
                          graph[edge].cost,
@@ -286,11 +288,9 @@ class Pgr_mst {
              } else {
                  std::vector<MST_rt> results;
                  for (const auto root : m_roots) {
-                     std::vector<E> visited_order;
-
                      using dfs_visitor = visitors::Dfs_visitor_with_root<V, E>;
                      if (graph.has_vertex(root)) {
-                         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+                         std::vector<E> visited_order;
                          CHECK_FOR_INTERRUPTS();
                          try {
                              boost::depth_first_search(
@@ -311,7 +311,7 @@ class Pgr_mst {
                          auto result = get_results(visited_order, root, graph);
                          results.insert(results.end(), result.begin(), result.end());
                      } else {
-                         results.push_back({root, 0, root, -1, 0.0, 0.0});
+                         results.push_back({root, 0, root, root, -1, 0.0, 0.0});
                      }
                  }
                  return results;
@@ -347,7 +347,7 @@ class Pgr_mst {
                  auto tree_results = get_results(visited_order, root, graph);
                  results.insert(results.end(), tree_results.begin(), tree_results.end());
              } else {
-                 results.push_back({root, 0, root, -1, 0.0, 0.0});
+                 results.push_back({root, 0, root, root, -1, 0.0, 0.0});
              }
              /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
              CHECK_FOR_INTERRUPTS();

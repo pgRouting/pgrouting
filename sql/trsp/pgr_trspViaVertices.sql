@@ -56,7 +56,7 @@ DECLARE
 has_reverse BOOLEAN;
 new_sql TEXT;
 BEGIN
-  RAISE WARNING 'pgr_trspViaVertices(text,anyarray,boolean,boolean,text) is been deprecated';
+  RAISE WARNING 'pgr_trspViaVertices(text,anyarray,boolean,boolean,text) deprecated function on v3.4.0';
 
     has_reverse =_pgr_parameter_check('dijkstra', edges_sql, false);
 
@@ -94,8 +94,5 @@ ROWS 1000;
 -- COMMENTS
 
 COMMENT ON FUNCTION pgr_trspViaVertices(TEXT, ANYARRAY, BOOLEAN, BOOLEAN, TEXT)
-IS 'pgr_trspViaVertices
-- DEPRECATED function on v3.4.0
-- Documentation:
-  - ${PROJECT_DOC_LINK}/pgr_trspVia.html
-';
+IS 'pgr_trspViaVertices deprecated function on v3.4.0
+- Documentation: ${PROJECT_DOC_LINK}/pgr_trspVia.html';

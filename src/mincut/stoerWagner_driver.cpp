@@ -38,8 +38,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_assert.h"
 #include "c_types/stoerWagner_t.h"
 
+namespace {
 template < class G >
-static
 std::vector<StoerWagner_t>
 pgr_stoerWagner(
         G &graph ) {
@@ -47,6 +47,7 @@ pgr_stoerWagner(
     return fn_stoerWagner.stoerWagner(graph);
 }
 
+}  // namespace
 
 void
 do_pgr_stoerWagner(
@@ -57,6 +58,10 @@ do_pgr_stoerWagner(
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;

@@ -46,11 +46,15 @@ static void process(
         GeomText_t **res,
         size_t *result_count) {
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     Edge_xy_t *edgesArr = NULL;
     size_t edgesSize = 0;
 
-    pgr_get_edges_xy(edges_sql, &edgesArr, &edgesSize, true);
+    pgr_get_edges_xy(edges_sql, &edgesArr, &edgesSize, true, &err_msg);
+    throw_error(err_msg, edges_sql);
 
     PGR_DBG("total edges %ld", edgesSize);
     PGR_DBG("alpha %f", alpha);
@@ -71,9 +75,6 @@ static void process(
 
     PGR_DBG("Calling alpha-shape driver\n");
 
-    char *err_msg = NULL;
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
 
     do_alphaShape(
             edgesArr, edgesSize,
@@ -160,7 +161,7 @@ Datum _pgr_alphashape(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        values[0] = Int64GetDatum(call_cntr + 1);
+        values[0] = Int64GetDatum((int64_t)call_cntr + 1);
         values[1] = CStringGetTextDatum(result_tuples[call_cntr].geom);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

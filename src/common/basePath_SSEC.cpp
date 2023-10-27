@@ -33,7 +33,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 
 #include "c_types/path_rt.h"
+#include "c_types/mst_rt.h"
 #include "cpp_common/pgr_assert.h"
+
+namespace pgrouting {
 
 Path& Path::renumber_vertices(const std::map<int64_t, int64_t>& idx_to_id) {
     for (auto &r : path) {
@@ -68,11 +71,12 @@ void Path::reverse() {
     if (path.size() <= 1) return;
     std::deque< Path_t > newpath;
     for (size_t i = 0; i < path.size(); ++i) {
+        /* TODO(v4) add correct predecessor node */
         newpath.push_front({
                 path[i].node,
                 (i == 0? -1 : path[i - 1].edge),
                 (i == 0? 0 : path[i - 1].cost),
-                0
+                0, 0
                 });
     }
     for (size_t i = 0; i < newpath.size(); ++i) {
@@ -244,29 +248,29 @@ void Path::generate_postgres_data(
     }
 }
 
-/* used by driving distance */
-void Path::get_pg_dd_path(
-        Path_rt **ret_path,
+void Path::generate_tuples(
+        MST_rt **tuples,
         size_t &sequence) const {
-    for (unsigned int i = 0; i < path.size(); i++) {
-        (*ret_path)[sequence].seq = static_cast<int>(i);
-        (*ret_path)[sequence].start_id = start_id();
-        (*ret_path)[sequence].end_id = start_id();
-        (*ret_path)[sequence].node = path[i].node;
-        (*ret_path)[sequence].edge = path[i].edge;
-        (*ret_path)[sequence].cost = path[i].cost;
-        (*ret_path)[sequence].agg_cost = path[i].agg_cost;
-        sequence++;
+    for (const auto e : path) {
+        auto agg_cost = std::fabs(
+                e.agg_cost - (std::numeric_limits<double>::max)()) < 1?
+            std::numeric_limits<double>::infinity() : e.agg_cost;
+        auto cost = std::fabs(e.cost - (std::numeric_limits<double>::max)()) < 1?
+            std::numeric_limits<double>::infinity() : e.cost;
+
+        (*tuples)[sequence] = {start_id(), 0, e.pred, e.node, e.edge, cost, agg_cost};
+        ++sequence;
     }
 }
 
+
 /* used by ksp */
-void Path::get_pg_ksp_path(
+void Path::get_pg_nksp_path(
         Path_rt **ret_path,
-        size_t &sequence, int routeId) const {
+        size_t &sequence) const {
     for (unsigned int i = 0; i < path.size(); i++) {
         (*ret_path)[sequence].seq = static_cast<int>(i + 1);
-        (*ret_path)[sequence].start_id = routeId;
+        (*ret_path)[sequence].start_id = start_id();
         (*ret_path)[sequence].end_id = end_id();
         (*ret_path)[sequence].node = path[i].node;
         (*ret_path)[sequence].edge = path[i].edge;
@@ -323,6 +327,17 @@ collapse_paths(
     for (const Path &path : paths) {
         if (path.path.size() > 0)
             path.generate_postgres_data(ret_path, sequence);
+    }
+    return sequence;
+}
+
+size_t
+collapse_paths(
+        MST_rt **tuples,
+        const std::deque<Path> &paths) {
+    size_t sequence = 0;
+    for (const Path &path : paths) {
+        if (path.path.size() > 0) path.generate_tuples(tuples, sequence);
     }
     return sequence;
 }
@@ -400,3 +415,5 @@ count_tuples(const std::deque< Path > &paths) {
     }
     return count;
 }
+
+}  // namespace pgrouting

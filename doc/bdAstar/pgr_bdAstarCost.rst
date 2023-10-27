@@ -57,7 +57,7 @@ using the bidirectional A* algorithm.
 
 - For undirected graphs, the results are symmetric.
 
-  - The  `agg_cost` of `(u, v)` is the same as for `(v, u)`.
+  - The `agg_cost` of `(u, v)` is the same as for `(v, u)`.
 
 - The returned values are ordered in ascending order:
 
@@ -79,7 +79,7 @@ Signatures
    | pgr_bdAstarCost(`Edges SQL`_, `Combinations SQL`_, [**options**])
    | **options:** ``[directed, heuristic, factor, epsilon]``
 
-   | RETURNS SET OF |matrix-result|
+   | Returns set of |matrix-result|
    | OR EMPTY SET
 
 .. index::
@@ -94,7 +94,7 @@ One to One
    | pgr_bdAstarCost(`Edges SQL`_, **start vid**, **end vid**, [**options**])
    | **options:** ``[directed, heuristic, factor, epsilon]``
 
-   | RETURNS SET OF |matrix-result|
+   | Returns set of |matrix-result|
    | OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertex :math:`12` on a **directed** graph
@@ -116,7 +116,7 @@ One to Many
    | pgr_bdAstarCost(`Edges SQL`_, **start vid**, **end vids**, [**options**])
    | **options:** ``[directed, heuristic, factor, epsilon]``
 
-   | RETURNS SET OF |matrix-result|
+   | Returns set of |matrix-result|
    | OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertices :math:`\{10, 12\}` on a **directed**
@@ -138,7 +138,7 @@ Many to One
    | pgr_bdAstarCost(`Edges SQL`_, **start vids**, **end vid**, [**options**])
    | **options:** ``[directed, heuristic, factor, epsilon]``
 
-   | RETURNS SET OF |matrix-result|
+   | Returns set of |matrix-result|
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 8\}` to vertex :math:`10` on an
@@ -160,7 +160,7 @@ Many to Many
    | pgr_bdAstarCost(`Edges SQL`_, **start vids**, **end vids**, [**options**])
    | **options:** ``[directed, heuristic, factor, epsilon]``
 
-   | RETURNS SET OF |matrix-result|
+   | Returns set of |matrix-result|
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 8\}` to vertices :math:`\{10, 12\}` on a
@@ -182,7 +182,7 @@ Combinations
    | pgr_bdAstarCost(`Edges SQL`_, `Combinations SQL`_, [**options**])
    | **options:** ``[directed, heuristic, factor, epsilon]``
 
-   | RETURNS SET OF |matrix-result|
+   | Returns set of |matrix-result|
    | OR EMPTY SET
 
 :Example: Using a combinations table on a **directed** graph with factor
@@ -214,7 +214,7 @@ Optional parameters
     :start-after: dijkstra_optionals_start
     :end-before: dijkstra_optionals_end
 
-aStar optional Parameters
+aStar optional parameters
 ...............................................................................
 
 .. include:: aStar-family.rst
@@ -238,7 +238,7 @@ Combinations SQL
     :start-after: basic_combinations_sql_start
     :end-before: basic_combinations_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst

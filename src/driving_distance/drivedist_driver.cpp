@@ -1,9 +1,11 @@
 /*PGR-GNU*****************************************************************
-File: boost_interface_drivedist.cpp
+File: drivedist_driver.cpp
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Mail: vicky at erosion.dev
 
+Copyright (c) 2023 Aryan Gupta
+guptaaryan1010 AT gmail.com
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -28,67 +30,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "dijkstra/pgr_dijkstra.hpp"
+#include "dijkstra/drivingDist.hpp"
 
+#include "c_types/mst_rt.h"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-#undef WITH_TIME
-#ifdef WITH_TIME
-#include <ctime>
-#include <chrono>   // NOLINT [build/c++11]
-
-static
-void
-start_timing(
-        std::time_t &start_t,
-        std::chrono::steady_clock::time_point &begin_elapsed,
-        clock_t &begin) {
-    begin = clock();
-    start_t = std::time(NULL);
-    begin_elapsed = std::chrono::steady_clock::now();
-}
-
-static
-void
-end_timing(
-        const std::time_t start_t,
-        std::chrono::steady_clock::time_point& begin_elapsed,
-        clock_t &begin,
-        std::ostringstream &log) {
-    clock_t end = clock();
-    double elapsed_secs =
-        static_cast<double>(end - begin)
-        / static_cast<double>(CLOCKS_PER_SEC);
-
-    std::time_t end_t = std::time(NULL);
-    std::chrono::steady_clock::time_point end_elapsed =
-        std::chrono::steady_clock::now();
-
-    typedef std::chrono::duration<int, std::milli> millisecs_t;
-    millisecs_t duration = std::chrono::duration_cast<millisecs_t>(
-            end_elapsed - begin_elapsed);
-
-    log << "Execution started at: " << std::ctime(&start_t);
-    log << "Execution ended at:   " << std::ctime(&end_t);
-    log << "Elapsed time: "
-        << static_cast<double>(duration.count())/static_cast<double>(1000)
-        << " Seconds.\n";
-    log << "User CPU time: -> " << elapsed_secs << " seconds\n";
-}
-#endif
 
 void
-do_pgr_driving_many_to_dist(
+pgr_do_drivingdist(
         Edge_t  *data_edges, size_t total_edges,
         int64_t *start_vertex, size_t s_len,
         double distance,
         bool directedFlag,
         bool equiCostFlag,
-        Path_rt **return_tuples, size_t *return_count,
+        MST_rt  **return_tuples,     size_t *return_count,
         char **log_msg,
         char **notice_msg,
         char **err_msg) {
+    using pgrouting::Path;
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
@@ -107,90 +71,42 @@ do_pgr_driving_many_to_dist(
         std::deque<Path> paths;
         std::vector<int64_t> start_vertices(start_vertex, start_vertex + s_len);
 
-        auto vertices(pgrouting::extract_vertices(data_edges, total_edges));
-
-#ifdef WITH_TIME
-        clock_t begin;
-        std::time_t start_t;
-        std::chrono::steady_clock::time_point begin_elapsed;
-#endif
+        std::vector<std::map<int64_t, int64_t>> depths;
 
         if (directedFlag) {
-#ifdef WITH_TIME
-            start_timing(start_t, begin_elapsed, begin);
-            log << "*********Creating graph at time: " << std::ctime(&start_t)
-                << "\n";
-#endif
-            pgrouting::DirectedGraph digraph(vertices, gType);
-#ifdef WITH_TIME
-            end_timing(start_t, begin_elapsed, begin, log);
-#endif
-
-#ifdef WITH_TIME
-            start_timing(start_t, begin_elapsed, begin);
-            log << "********Inserting edges at time: " << std::ctime(&start_t)
-                << "\n";
-#endif
-            digraph.insert_edges(data_edges, total_edges, true);
-#ifdef WITH_TIME
-            end_timing(start_t, begin_elapsed, begin, log);
-#endif
-
-#ifdef WITH_TIME
-            start_timing(start_t, begin_elapsed, begin);
-            log << "*******Calling the C++ call to pgr_drivingDistance: "
-                << std::ctime(&start_t) << "\n";
-#endif
-            paths = pgr_drivingDistance(
-                    digraph, start_vertices, distance, equiCostFlag, log);
-#ifdef WITH_TIME
-            end_timing(start_t, begin_elapsed, begin, log);
-#endif
+            pgrouting::DirectedGraph digraph(gType);
+            digraph.insert_edges(data_edges, total_edges);
+            paths = pgr_drivingdistance(digraph, start_vertices, distance, equiCostFlag, depths, true);
         } else {
-#ifdef WITH_TIME
-            start_timing(start_t, begin_elapsed, begin);
-            log << "******Creating graph at time: " << std::ctime(&start_t)
-                << "\n";
-#endif
-            pgrouting::UndirectedGraph undigraph(vertices, gType);
-#ifdef WITH_TIME
-            end_timing(start_t, begin_elapsed, begin, log);
-#endif
-
-#ifdef WITH_TIME
-            start_timing(start_t, begin_elapsed, begin);
-            log << "*******Inserting edges at time: " << std::ctime(&start_t)
-                << "\n";
-#endif
-            undigraph.insert_edges(data_edges, total_edges, true);
-#ifdef WITH_TIME
-            end_timing(start_t, begin_elapsed, begin, log);
-#endif
-
-#ifdef WITH_TIME
-            start_timing(start_t, begin_elapsed, begin);
-            log << "*******Calling the C++ call to pgr_drivingDistance: "
-                << std::ctime(&start_t) << "\n";
-#endif
-            paths = pgr_drivingDistance(
-                    undigraph, start_vertices, distance, equiCostFlag, log);
-#ifdef WITH_TIME
-            end_timing(start_t, begin_elapsed, begin, log);
-#endif
+            pgrouting::UndirectedGraph undigraph(gType);
+            undigraph.insert_edges(data_edges, total_edges);
+            paths = pgr_drivingdistance(undigraph, start_vertices, distance, equiCostFlag, depths, true);
         }
 
         size_t count(count_tuples(paths));
-
 
         if (count == 0) {
             log << "\nNo return values were found";
             *notice_msg = pgr_msg(log.str().c_str());
             return;
         }
-        *return_tuples = pgr_alloc(count, (*return_tuples));
-        auto trueCount(collapse_paths(return_tuples, paths));
-        *return_count = trueCount;
 
+        *return_tuples = pgr_alloc(count, (*return_tuples));
+        *return_count = collapse_paths(return_tuples, paths);
+
+        for (size_t i = 0; i < count; i++) {
+            auto row = (*return_tuples)[i];
+            /* given the depth assign the correct depth */
+            int64_t depth = -1;
+            for (const auto &d : depths) {
+                /* look for the correct path */
+                auto itr = d.find(row.from_v);
+                if (itr == d.end() || !(itr->second == 0)) continue;
+                depth = d.at(row.node);
+            }
+            (*return_tuples)[i].depth = depth;
+        }
+        (*return_count) = count;
 
         *log_msg = log.str().empty()?
             *log_msg :

@@ -104,6 +104,65 @@ Edges SQL
    :start-after: basic_edges_sql_start
    :end-before: basic_edges_sql_end
 
+Result columns
+...............................................................................
+
+.. spantree-result-columns-start
+
+Returns set of |result-spantree|
+
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
+
+   * - Parameter
+     - Type
+     - Description
+   * - ``seq``
+     - ``BIGINT``
+     - Sequential value starting from :math:`1`.
+   * - ``depth``
+     - ``BIGINT``
+     - Depth of the ``node``.
+
+       - :math:`0` when ``node`` = ``start_vid``.
+       - :math:`depth-1` is the depth of ``pred``
+
+   * - ``start_vid``
+     - ``BIGINT``
+     - Identifier of the root vertex.
+   * - ``pred``
+     - ``BIGINT``
+     - Predecessor of ``node``.
+
+       - When ``node`` = ``start_vid`` then has the value ``node``.
+   * - ``node``
+     - ``BIGINT``
+     - Identifier of ``node`` reached using ``edge``.
+   * - ``edge``
+     - ``BIGINT``
+     - Identifier of the ``edge`` used to arrive from ``pred`` to ``node``.
+
+       - :math:`-1` when ``node`` = ``start_vid``.
+
+   * - ``cost``
+     - ``FLOAT``
+     - Cost to traverse ``edge``.
+   * - ``agg_cost``
+     - ``FLOAT``
+     - Aggregate cost from ``start_vid`` to ``node``.
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+:ANY-NUMERIC: SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC
+
+.. spantree-result-columns-end
+
+.. NOTE:: Column ``pred`` only applies to :doc:`pgr_drivingDistance` and
+   :doc:`pgr_withPointsDD`.
+
 See Also
 -------------------------------------------------------------------------------
 

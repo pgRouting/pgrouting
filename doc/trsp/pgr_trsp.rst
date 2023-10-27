@@ -28,7 +28,7 @@ pgr_trsp - Proposed
 
 * Version 3.4.0
 
-  * New proposed signatures:
+  * New proposed signatures
 
     * ``pgr_trsp`` (`One to One`_)
     * ``pgr_trsp`` (`One to Many`_)
@@ -36,7 +36,7 @@ pgr_trsp - Proposed
     * ``pgr_trsp`` (`Many to Many`_)
     * ``pgr_trsp`` (`Combinations`_)
 
-  * Deprecated signatures:
+  * Deprecated signatures
 
     * ``pgr_trsp(text,integer,integer,boolean,boolean,text)``
     * ``pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)``
@@ -45,7 +45,7 @@ pgr_trsp - Proposed
 
 * Version 2.1.0
 
-  * New prototypes:
+  * New prototypes
 
     * ``pgr_trspViaVertices``
     * ``pgr_trspViaEdges``
@@ -86,7 +86,7 @@ Signatures
    | pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vids**, **end vids**, [``directed``])
    | pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, [``directed``])
 
-   | RETURNS SET OF |short-generic-result|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 .. index::
@@ -100,10 +100,10 @@ One to One
 
    pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vid**, **end vid**, [``directed``])
 
-   | RETURNS SET OF |short-generic-result|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
-:Example: From vertex :math:`6` to vertex  :math:`10` on an undirected graph.
+:Example: From vertex :math:`6` to vertex :math:`10` on an undirected graph.
 
 .. literalinclude:: doc-trsp.queries
    :start-after: -- q2
@@ -120,7 +120,7 @@ One to Many
 
    pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vid**, **end vids**, [``directed``])
 
-   | RETURNS SET OF |short-generic-result|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertices :math:`\{10, 1\}` on an
@@ -141,7 +141,7 @@ Many to One
 
    pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vids**, **end vid**, [``directed``])
 
-   | RETURNS SET OF |short-generic-result|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 1\}` to vertex :math:`8` on a directed
@@ -163,7 +163,7 @@ Many to Many
    pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, **start vids**, **end vids**,
    [``directed``])
 
-   | RETURNS SET OF |short-generic-result|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 8\}` on an
@@ -184,7 +184,7 @@ Combinations
 
    pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, [``directed``])
 
-   | RETURNS SET OF |short-generic-result|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: Using a combinations table on an undirected graph.
@@ -233,7 +233,7 @@ Combinations SQL
     :start-after: basic_combinations_sql_start
     :end-before: basic_combinations_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst

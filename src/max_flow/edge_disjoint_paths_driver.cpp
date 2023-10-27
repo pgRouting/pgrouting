@@ -43,7 +43,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/ii_t_rt.h"
 
 
-static
+namespace {
+
 std::vector<Path_rt>
 single_execution(
         std::vector<Edge_t> edges,
@@ -65,6 +66,8 @@ single_execution(
     return G.edge_disjoint_paths();
 }
 
+}  // namespace
+
 void
 do_pgr_edge_disjoint_paths(
     Edge_t *data_edges,
@@ -81,6 +84,10 @@ do_pgr_edge_disjoint_paths(
     char** log_msg,
     char** notice_msg,
     char **err_msg) {
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;

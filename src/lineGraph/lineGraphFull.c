@@ -49,6 +49,9 @@ process(
     PGR_DBG("\nSQL QUERY: %s\n", edges_sql);
     PGR_DBG("\nDirectedGraph\n");
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
@@ -57,7 +60,8 @@ process(
     Edge_t *edges = NULL;
     size_t total_edges = 0;
 
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false);
+    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
+    throw_error(err_msg, edges_sql);
     PGR_DBG("Total %ld edges in query:", total_edges);
 
     if (total_edges == 0) {
@@ -68,9 +72,6 @@ process(
 
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
     do_pgr_lineGraphFull(
             edges,
             total_edges,
@@ -151,7 +152,7 @@ PGDLLEXPORT Datum _pgr_linegraphfull(PG_FUNCTION_ARGS) {
 
         size_t c_cntr = funcctx->call_cntr;
 
-        values[0] = Int32GetDatum(c_cntr + 1);
+        values[0] = Int32GetDatum((int32_t)c_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[c_cntr].source);
         values[2] = Int64GetDatum(result_tuples[c_cntr].target);
         values[3] = Float8GetDatum(result_tuples[c_cntr].cost);

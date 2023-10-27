@@ -66,7 +66,7 @@ Signatures
    | pgr_bdAstarCostMatrix(`Edges SQL`_, **start vids**, [**options**])
    | **options:** ``[directed, heuristic, factor, epsilon]``
 
-   | RETURNS SET OF |matrix-result|
+   | Returns set of |matrix-result|
    | OR EMPTY SET
 
 :Example: Symmetric cost matrix for vertices :math:`\{5, 6, 10, 15\}` on an
@@ -90,7 +90,7 @@ Optional parameters
     :start-after: dijkstra_optionals_start
     :end-before: dijkstra_optionals_end
 
-aStar optional Parameters
+aStar optional parameters
 ...............................................................................
 
 .. include:: aStar-family.rst
@@ -107,7 +107,7 @@ Edges SQL
     :start-after: xy_edges_sql_start
     :end-before: xy_edges_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst

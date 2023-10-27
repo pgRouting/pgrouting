@@ -59,7 +59,7 @@ Signatures
    | pgr_breadthFirstSearch(`Edges SQL`_, **root vids**, [**options**])
    | **options:** ``[max_depth, directed]``
 
-   | RETURNS SET OF |result-bfs|
+   | Returns set of |result-bfs|
 
 .. index::
     single: breadthFirstSearch(Single vertex) - Experimental on v3.0
@@ -73,7 +73,7 @@ Single vertex
    | pgr_breadthFirstSearch(`Edges SQL`_, **root vid**, [**options**])
    | **options:** ``[max_depth, directed]``
 
-   | RETURNS SET OF |result-bfs|
+   | Returns set of |result-bfs|
 
 :Example: From root vertex :math:`6` on a **directed** graph with edges in
           ascending order of ``id``
@@ -94,7 +94,7 @@ Multiple vertices
    | pgr_breadthFirstSearch(`Edges SQL`_, **root vids**, [**options**])
    | **options:** ``[max_depth, directed]``
 
-   | RETURNS SET OF |result-bfs|
+   | Returns set of |result-bfs|
 
 :Example: From root vertices :math:`\{12, 6\}` on an **undirected** graph with
           **depth** :math:`<= 2` and edges in ascending order of ``id``
@@ -134,7 +134,7 @@ Edges SQL
    :start-after: basic_edges_sql_start
    :end-before: basic_edges_sql_end
 
-Return columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: BFS-category.rst

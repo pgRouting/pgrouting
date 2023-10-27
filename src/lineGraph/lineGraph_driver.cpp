@@ -7,7 +7,7 @@ Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2017 Vidhan Jain
-Mail: vidhanj1307@gmail.com
+Mail: vidhanj1307 at gmail.com
 
 ------
 
@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <utility>
 
-#include "dijkstra/pgr_dijkstra.hpp"
+#include "dijkstra/dijkstra.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
@@ -42,11 +42,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "lineGraph/pgr_lineGraph.hpp"
 #include "cpp_common/linear_directed_graph.h"
 
+namespace {
 
 void get_postgres_result(
         std::vector< Edge_t > edge_result,
         Edge_t **return_tuples,
         size_t &sequence) {
+    using pgrouting::pgr_alloc;
     (*return_tuples) = pgr_alloc(edge_result.size(), (*return_tuples));
 
     for (const auto &edge : edge_result) {
@@ -55,6 +57,7 @@ void get_postgres_result(
         sequence++;
     }
 }
+}  // namespace
 
 void
 do_pgr_lineGraph(
@@ -66,6 +69,9 @@ do_pgr_lineGraph(
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;

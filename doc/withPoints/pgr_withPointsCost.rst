@@ -75,7 +75,7 @@ The main characteristics are:
 
   - For **undirected** graphs, the results are **symmetric**.
 
-    - The  `agg_cost` of `(u, v)` is the same as for `(v, u)`.
+    - The `agg_cost` of `(u, v)` is the same as for `(v, u)`.
 
   - For optimization purposes, any duplicated value in the `start_vids` or
     `end_vids` is ignored.
@@ -85,7 +85,7 @@ The main characteristics are:
     - `start_vid` ascending
     - `end_vid` ascending
 
-  - Running time: :math:`O(| start\_vids | * (V \log V + E))`
+  - Running time: :math:`O(|start\_vids|\times(V \log V + E))`
 
 Signatures
 -------------------------------------------------------------------------------
@@ -100,9 +100,9 @@ Signatures
    | pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vids**, **end vid**, [**options**])
    | pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vids**, **end vids**, [**options**])
    | pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, `Combinations SQL`_, [**options**])
-   | **options:**  ``[directed, driving_side]``
+   | **options:** ``[directed, driving_side]``
 
-   | RETURNS SET OF |matrix-pid|
+   | Returns set of |matrix-pid|
    | OR EMPTY SET
 
 .. note:: There is no **details** flag, unlike the other members of the
@@ -118,9 +118,9 @@ One to One
    :class: signatures
 
    | pgr_withPointsCost(`Edges SQL`_, 'Points SQL`_, **start vid**, **end vid**, [**options**])
-   | **options:**  ``[directed, driving_side]``
+   | **options:** ``[directed, driving_side]``
 
-   | RETURNS SET OF |matrix-pid|
+   | Returns set of |matrix-pid|
    | OR EMPTY SET
 
 :Example: From point :math:`1` to vertex :math:`10` with defaults
@@ -139,9 +139,9 @@ One to Many
    :class: signatures
 
    | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**, [**options**])
-   | **options:**  ``[directed, driving_side]``
+   | **options:** ``[directed, driving_side]``
 
-   | RETURNS SET OF |matrix-pid|
+   | Returns set of |matrix-pid|
    | OR EMPTY SET
 
 :Example: From point :math:`1` to point :math:`3` and vertex :math:`7` on an
@@ -161,9 +161,9 @@ Many to One
    :class: signatures
 
    | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**, [**options**])
-   | **options:**  ``[directed, driving_side]``
+   | **options:** ``[directed, driving_side]``
 
-   | RETURNS SET OF |matrix-pid|
+   | Returns set of |matrix-pid|
    | OR EMPTY SET
 
 :Example: From point :math:`1` and vertex :math:`6` to point :math:`3`
@@ -182,12 +182,12 @@ Many to Many
    :class: signatures
 
    | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**, [**options**])
-   | **options:**  ``[directed, driving_side]``
+   | **options:** ``[directed, driving_side]``
 
-   | RETURNS SET OF |matrix-pid|
+   | Returns set of |matrix-pid|
    | OR EMPTY SET
 
-:Example: From point :math:`15` and vertex :math:`6`  to point :math:`3` and
+:Example: From point :math:`15` and vertex :math:`6` to point :math:`3` and
           vertex :math:`1`
 
 .. literalinclude:: doc-pgr_withPointsCost.queries
@@ -204,9 +204,9 @@ Combinations
    :class: signatures
 
    | pgr_withPointsCost(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_, [**options**])
-   | **options:**  ``[directed, driving_side]``
+   | **options:** ``[directed, driving_side]``
 
-   | RETURNS SET OF |matrix-pid|
+   | Returns set of |matrix-pid|
    | OR EMPTY SET
 
 :Example: Two combinations
@@ -281,7 +281,7 @@ Combinations SQL
     :start-after: basic_combinations_sql_start
     :end-before: basic_combinations_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. list-table::
@@ -324,8 +324,8 @@ on the graph of point `(2.9, 1.8)`.
     :start-after: -- q9
     :end-before: -- q10
 
-* Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`.
-* Point :math:`-2` corresponds to the next close edge from point `(2.9,1.8)`.
+* Point :math:`-1` corresponds to the closest edge from point `(2.9, 1.8)`.
+* Point :math:`-2` corresponds to the next close edge from point `(2.9, 1.8)`.
 * Being close to the graph does not mean have a shorter route.
 
 Right side driving topology

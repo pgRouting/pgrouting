@@ -133,5 +133,5 @@ jobs:
           sudo service postgresql start
           psql -c "CREATE DATABASE ___pgr___test___;"
           DIR=$(git rev-parse --show-toplevel)
-          bash "${DIR}/tools/testers/setup_db.sh" "${PGPORT}" ___pgr___test___ "${PG_RUNNER_USER}" "3.5.1"
+          bash "${DIR}/tools/testers/setup_db.sh" "${PGPORT}" ___pgr___test___ "${PG_RUNNER_USER}" "3.6.0"
           pg_prove  -Q -f --normalize --directives --recurse -U "${PG_RUNNER_USER}" -d ___pgr___test___ "pgtap"

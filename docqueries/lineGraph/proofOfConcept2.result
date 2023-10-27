@@ -2,11 +2,13 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
-DROP TABLE edges;
+DROP TABLE IF EXISTS edges_lg;
+NOTICE:  table "edges_lg" does not exist, skipping
 DROP TABLE
-DROP TABLE vertices;
+DROP TABLE IF EXISTS vertices_lg;
+NOTICE:  table "vertices_lg" does not exist, skipping
 DROP TABLE
-CREATE TABLE edges (
+CREATE TABLE edges_lg (
     id integer,
     source integer,
     target integer,
@@ -14,7 +16,7 @@ CREATE TABLE edges (
     the_geom geometry(MultiLineString)
 );
 CREATE TABLE
-INSERT INTO edges (id, source, target, cost, the_geom) VALUES
+INSERT INTO edges_lg (id, source, target, cost, the_geom) VALUES
 (664, 75242, 13078, 1, '01050000000100000001020000000500000006BB5C440B595D413FE94F59BAA125410134DD6412595D41A025BB1FD6A125413849F7A815595D41640C555DEBA12541336449FE18595D41899CBB7916A225418F8280C419595D412B03161742A22541'),
 (700, 41613, 6810, 1, '010500000001000000010200000004000000E44CC814E05C5D41C9DAE107B8AB254139C51DD7E25C5D41B9326524F9AB25415226091BE65C5D415F2F44630EAC25414C05189BEA5C5D411C439CCD14AC2541'),
 (716, 45339, 41613, 1, '01050000000100000001020000000500000064F3864EEB5C5D410656760257AB254164869F7DE75C5D41AB83AD0C5FAB25414810CFBDE35C5D4189D7B9F57CAB2541EA0FD53FE15C5D41DA0C855493AB2541E44CC814E05C5D41C9DAE107B8AB2541'),
@@ -318,80 +320,293 @@ INSERT INTO edges (id, source, target, cost, the_geom) VALUES
 (169454, 24021, 63826, 1, '010500000001000000010200000017000000BD23BFFDD15D5D4159262F5FB8862541E9B9D8CEAD5D5D4182EB07411E872541A5F82FB7955D5D419DEA93E56B872541783CD8EC7E5D5D41D785B894C08725417AE9A9266F5D5D419909469A0C882541CB237BB3605D5D4106AE8BF466882541A0384395585D5D417A217730AA8825419AC5BD7C505D5D41BE7BAEB6F488254133271439475D5D41DFC134F06389254159E5F07E405D5D41F97A9F5FCB892541FAB7B8063B5D5D411298D9442B8A25417EC26407325D5D416868B2F9F18A254170E3939A2C5D5D41D68D7F73608B2541C663AE3C255D5D41D651F702C88B254163B04D351D5D5D41C9C42968288C2541EA547811155D5D41EB48095A648C2541DF070CA60B5D5D413FF4E58BA08C25418A7522B1FF5C5D419C730088E48C2541C74525CBF15C5D419BF2DA99218D25416B3B2BA5E75C5D41C4CDC2C2408D2541B3FFCD93DB5C5D41B0EFAF4B608D2541457AD91AD05C5D4127B42220718D2541E4C78096C45C5D41E9CF1860738D2541'),
 (170151, 11736, 70733, 1, '0105000000010000000102000000050000001448CDD103595D4139CEAC9C859B254144BF53FFF9585D4192F23763DE9C2541B3737717F5585D41E289758BF49D254130783A6DF6585D4183DA6569D69E2541D3473EF6F9585D4197B02122439F2541');
 INSERT 0 302
-WITH a AS (SELECT source FROM edges UNION select target FROM edge_table)
-SELECT source AS id INTO vertices FROM a;
-ERROR:  relation "edge_table" does not exist
-LINE 1: ...SELECT source FROM edges UNION select target FROM edge_table...
-                                                             ^
+SELECT count(*)=302 FROM edges_lg;
+ ?column?
+----------
+ t
+(1 row)
+
+WITH a AS (SELECT source FROM edges_lg UNION select target FROM edges_lg)
+SELECT source AS id INTO vertices_lg FROM a;
+SELECT 256
+SELECT count(*) = 256 FROM vertices_lg;
+ ?column?
+----------
+ t
+(1 row)
+
 DROP TABLE IF EXISTS result2;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
+NOTICE:  table "result2" does not exist, skipping
+DROP TABLE
 SELECT  * INTO result2 FROM pgr_lineGraphFull(
     $$SELECT id, source, target, cost
-    FROM edges$$
+    FROM edges_lg$$
 );
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
-SELECT count(*) FROM result2;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
-DROP TABLE IF EXISTS result2_vertices_pgr;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
-WITH foo AS (SELECT source AS id FROM result2
-    UNION
-    SELECT target FROM result2)
-SELECT *, NULL::BIGINT AS original_id
-INTO result2_vertices_pgr
-FROM foo
+SELECT 638
+SELECT count(*) = 638 FROM result2;
+ ?column?
+----------
+ t
+(1 row)
+
+SELECT * FROM result2 limit 10;
+ seq | source | target | cost |  edge
+-----+--------+--------+------+--------
+   1 |     -1 |  13078 |    1 |    664
+   2 |     -2 |  53021 |    1 | 168309
+   3 |  75242 |     -1 |    0 |      0
+   4 |  75242 |     -2 |    0 |      0
+   5 |     -3 |    -71 |    1 |  93083
+   6 |  13078 |     -3 |    0 |      0
+   7 |     -4 |     -3 |    0 |      0
+   8 |     -5 |   6810 |    1 |    700
+   9 |  41613 |     -5 |    0 |      0
+  10 |     -6 |     -5 |    0 |      0
+(10 rows)
+
+SELECT id, NULL::BIGINT AS original_id, in_edges, out_edges
+INTO result2_v
+FROM pgr_extractVertices($$SELECT seq as id, * FROM result2$$)
 ORDER BY id;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
-SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
-SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
-UPDATE result2_vertices_pgr AS r SET original_id = v.id
-FROM vertices AS v WHERE v.id = r.id;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
-SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
-SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
-WITH a AS (SELECT e.id, e.original_id FROM result2_vertices_pgr AS e WHERE original_id IS NOT NULL),
+SELECT 604
+SELECT count(*) = 604 FROM result2_v;
+ ?column?
+----------
+ t
+(1 row)
+
+SELECT count(*) = 0 FROM result2_v WHERE original_id IS NOT NULL;
+ ?column?
+----------
+ t
+(1 row)
+
+SELECT count(*) = 604 FROM result2_v WHERE original_id IS NULL;
+ ?column?
+----------
+ t
+(1 row)
+
+/* original graph does not have negative vertices values
+All positives are from the original graph */
+UPDATE result2_v
+SET original_id = id
+WHERE id > 0;
+UPDATE 256
+SELECT count(*) = 256 FROM result2_v WHERE original_id IS NOT NULL;
+ ?column?
+----------
+ t
+(1 row)
+
+SELECT count(*) = 348 FROM result2_v WHERE original_id IS NULL;
+ ?column?
+----------
+ t
+(1 row)
+
+WITH
+a AS (SELECT e.id, e.original_id FROM result2_v AS e WHERE original_id IS NOT NULL),
 b AS (SELECT * FROM result2 WHERE cost = 0 and source IN (SELECT id FROM a)),
-c AS (SELECT * FROM b JOIN result2_vertices_pgr ON(source = id)),
-d AS (SELECT c.source, v.original_id FROM c JOIN result2_vertices_pgr as v ON (target=v.id)),
-e AS (SELECT DISTINCT c.target, c.original_id FROM c JOIN result2_vertices_pgr AS r ON(target = r.id AND r.original_id IS NULL))
-UPDATE result2_vertices_pgr SET original_id = e.original_id FROM e WHERE e.target = id;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
-SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
-SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
-WITH a AS (SELECT e.id, e.original_id FROM result2_vertices_pgr AS e WHERE original_id IS NOT NULL),
+c AS (SELECT * FROM b JOIN result2_v ON (source = id)),
+d AS (SELECT c.source, v.original_id FROM c JOIN result2_v as v ON (target = v.id)),
+e AS (
+  SELECT DISTINCT c.target, c.original_id
+  FROM c JOIN result2_v AS r ON(target = r.id AND r.original_id IS NULL))
+UPDATE result2_v SET original_id = e.original_id FROM e WHERE e.target = id;
+UPDATE 240
+SELECT count(*) = 496 FROM result2_v WHERE original_id IS NOT NULL;
+ ?column?
+----------
+ t
+(1 row)
+
+SELECT count(*) = 108 FROM result2_v WHERE original_id IS NULL;
+ ?column?
+----------
+ t
+(1 row)
+
+SELECT * FROM result2_v WHERE original_id IS NULL;
+  id  | original_id | in_edges | out_edges
+------+-------------+----------+------------
+ -348 |             |          | {495}
+ -347 |             |          | {625}
+ -346 |             |          | {593}
+ -345 |             | {634}    |
+ -344 |             |          | {515}
+ -343 |             | {520}    |
+ -342 |             | {461}    |
+ -341 |             |          | {472}
+ -340 |             | {475}    |
+ -339 |             |          | {475}
+ -338 |             | {406}    |
+ -337 |             | {414}    |
+ -336 |             |          | {476}
+ -335 |             | {564}    |
+ -334 |             | {477}    |
+ -333 |             |          | {389}
+ -332 |             |          | {359}
+ -331 |             | {338}    |
+ -330 |             | {450}    |
+ -329 |             | {309}    |
+ -328 |             |          | {301}
+ -327 |             | {294}    |
+ -326 |             |          | {178}
+ -325 |             | {111}    |
+ -324 |             | {184}    |
+ -323 |             |          | {181}
+ -322 |             |          | {180}
+ -321 |             |          | {52}
+ -320 |             |          | {46}
+ -319 |             | {113}    |
+ -305 |             | {607}    | {604}
+ -304 |             | {611}    | {603}
+ -297 |             | {559}    | {587}
+ -295 |             | {579}    | {583}
+ -292 |             | {354}    | {577}
+ -286 |             | {370}    | {566}
+ -284 |             | {248}    | {563}
+ -279 |             | {529}    | {554}
+ -275 |             | {511}    | {546}
+ -272 |             | {504}    | {541}
+ -268 |             | {626}    | {534}
+ -266 |             | {548}    | {531}
+ -264 |             | {547}    | {528}
+ -255 |             | {517}    | {509}
+ -250 |             | {219}    | {500}
+ -247 |             | {629}    | {492,493}
+ -242 |             | {206}    | {483}
+ -236 |             | {473}    | {464,465}
+ -231 |             | {457}    | {454,455}
+ -228 |             | {456}    | {449}
+ -226 |             | {445}    | {444}
+ -222 |             | {415}    | {437}
+ -220 |             | {391}    | {434}
+ -216 |             | {401}    | {426}
+ -212 |             | {390}    | {418,419}
+ -205 |             | {476}    | {404,405}
+ -197 |             | {344}    | {387}
+ -195 |             | {19}     | {384}
+ -189 |             | {568}    | {372}
+ -187 |             | {388}    | {369}
+ -184 |             | {359}    | {364}
+ -177 |             | {339}    | {347,348}
+ -164 |             | {329}    | {319}
+ -160 |             | {312}    | {311}
+ -156 |             | {295}    | {304}
+ -154 |             | {306}    | {298,299}
+ -148 |             | {161}    | {286}
+ -146 |             | {276}    | {283}
+ -137 |             | {589}    | {265}
+ -135 |             | {237}    | {262}
+ -133 |             | {324}    | {259}
+ -126 |             | {266}    | {246}
+ -123 |             | {242}    | {241}
+ -116 |             | {279}    | {227}
+ -112 |             | {365}    | {217}
+ -110 |             | {218}    | {214}
+ -109 |             | {215}    | {213}
+ -104 |             | {588}    | {202}
+ -101 |             | {188}    | {196}
+  -99 |             | {222}    | {193}
+  -97 |             | {181}    | {190}
+  -93 |             | {105}    | {174}
+  -85 |             | {247}    | {159}
+  -84 |             | {244}    | {158}
+  -82 |             | {74}     | {154,155}
+  -75 |             | {47}     | {141}
+  -74 |             | {362}    | {140}
+  -71 |             | {5}      | {134,135}
+  -61 |             | {427}    | {115}
+  -58 |             | {182}    | {110}
+  -56 |             | {175}    | {107}
+  -52 |             | {146}    | {99,100}
+  -45 |             | {595}    | {85,86}
+  -44 |             | {120}    | {83,84}
+  -40 |             | {498}    | {76}
+  -35 |             | {561}    | {66,67}
+  -34 |             | {68}     | {64,65}
+  -31 |             | {552}    | {59}
+  -29 |             | {373}    | {56}
+  -28 |             | {52}     | {55}
+  -26 |             | {585}    | {50}
+  -25 |             | {51}     | {49}
+  -22 |             | {544}    | {40,41,42}
+  -21 |             | {43}     | {37,38,39}
+  -14 |             | {127}    | {24}
+   -8 |             | {439}    | {13}
+   -6 |             | {420}    | {10}
+   -4 |             | {637}    | {7}
+(108 rows)
+
+WITH
+a AS (SELECT e.id, e.original_id FROM result2_v AS e WHERE original_id IS NOT NULL),
 b AS (SELECT * FROM result2 WHERE cost = 0 and target IN (SELECT id FROM a)),
-c AS (SELECT * FROM b JOIN result2_vertices_pgr ON(target = id)),
-d AS (SELECT c.target, v.original_id FROM c JOIN result2_vertices_pgr as v ON (source=v.id)),
-e AS (SELECT DISTINCT c.source, c.original_id FROM c JOIN result2_vertices_pgr AS r ON(source = r.id AND r.original_id IS NULL))
-UPDATE result2_vertices_pgr SET original_id = e.original_id FROM e WHERE e.source = id;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
-SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
-SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
-WITH a AS (SELECT id FROM result2_vertices_pgr WHERE original_id IS NULL),
-b AS (SELECT source,edge FROM result2 WHERE source IN (SELECT id FROM a)),
-c AS (SELECT id,source FROM edges WHERE id IN (SELECT edge FROM b))
-UPDATE result2_vertices_pgr AS d SET original_id = (SELECT source FROM c WHERE c.id = (SELECT edge FROM b WHERE b.source = d.id)) WHERE id IN (SELECT id FROM a);
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
-SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
-SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
-WITH a AS (SELECT id FROM result2_vertices_pgr WHERE original_id IS NULL),
-b AS (SELECT target,edge FROM result2 WHERE target IN (SELECT id FROM a)),
-c AS (SELECT id,target FROM edges WHERE id IN (SELECT edge FROM b))
-UPDATE result2_vertices_pgr AS d SET original_id = (SELECT target FROM c WHERE c.id = (SELECT edge FROM b WHERE b.target = d.id)) WHERE id IN (SELECT id FROM a);
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
-SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
-SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
-ERROR:  current transaction is aborted, commands ignored until end of transaction block
+c AS (SELECT * FROM b JOIN result2_v ON(target = id)),
+d AS (SELECT c.target, v.original_id FROM c JOIN result2_v as v ON (source=v.id)),
+e AS (
+  SELECT DISTINCT c.source, c.original_id
+  FROM c JOIN result2_v AS r ON(source = r.id AND r.original_id IS NULL))
+UPDATE result2_v SET original_id = e.original_id
+FROM e WHERE e.source = id;
+UPDATE 78
+SELECT count(*) = 574 FROM result2_v WHERE original_id IS NOT NULL;
+ ?column?
+----------
+ t
+(1 row)
+
+SELECT count(*) = 30 FROM result2_v WHERE original_id IS NULL;
+ ?column?
+----------
+ t
+(1 row)
+
+WITH
+a AS (SELECT id FROM result2_v WHERE original_id IS NULL),
+b AS (SELECT source, edge FROM result2 WHERE source IN (SELECT id FROM a)),
+c AS (SELECT id, source FROM edges_lg WHERE id IN (SELECT edge FROM b))
+UPDATE result2_v AS r
+SET original_id = (SELECT source FROM c WHERE c.id = (SELECT edge FROM b WHERE b.source = r.id))
+WHERE id IN (SELECT id FROM a);
+UPDATE 30
+SELECT count(*) = 589 FROM result2_v WHERE original_id IS NOT NULL;
+ ?column?
+----------
+ t
+(1 row)
+
+SELECT count(*) = 15  FROM result2_v WHERE original_id IS NULL;
+ ?column?
+----------
+ t
+(1 row)
+
+WITH
+a AS (SELECT id FROM result2_v WHERE original_id IS NULL),
+b AS (SELECT target, edge FROM result2 WHERE target IN (SELECT id FROM a)),
+c AS (SELECT id, target FROM edges_lg WHERE id IN (SELECT edge FROM b))
+UPDATE result2_v AS d
+SET original_id = (SELECT target FROM c WHERE c.id = (SELECT edge FROM b WHERE b.target = d.id))
+WHERE id IN (SELECT id FROM a);
+UPDATE 15
+SELECT count(*) = 604 FROM result2_v WHERE original_id IS NOT NULL;
+ ?column?
+----------
+ t
+(1 row)
+
+SELECT count(*) = 0 FROM result2_v WHERE original_id IS NULL;
+ ?column?
+----------
+ t
+(1 row)
+
+SELECT * FROM result2_v WHERE original_id IS NULL;
+ id | original_id | in_edges | out_edges
+----+-------------+----------+-----------
+(0 rows)
+
 ROLLBACK;
 ROLLBACK

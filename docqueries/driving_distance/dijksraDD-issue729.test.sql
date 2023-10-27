@@ -10,7 +10,7 @@ UPDATE edges AS edge_table
 SET node_count=count.sum
 FROM
         (SELECT
-        from_v,
+        start_vid,
         sum(node) AS sum
         FROM
             pgr_drivingDistance(
@@ -18,8 +18,8 @@ FROM
             ARRAY(SELECT DISTINCT source FROM edges),
             1,
             false)
-    GROUP BY from_v) AS count
-    WHERE edges.source=count.from_v
+    GROUP BY start_vid) AS count
+    WHERE edge_table.source=count.start_vid
     ;
 
 ALTER TABLE edges
@@ -46,7 +46,7 @@ UPDATE network AS network
 SET node_count=count.sum
 FROM
 (SELECT
-    from_v,
+    start_vid,
     sum(node) AS sum
     FROM
     pgr_drivingDistance(
@@ -54,8 +54,8 @@ FROM
         ARRAY(SELECT DISTINCT source FROM network),
         1,
         false)
-    GROUP BY from_v) AS count
-WHERE network.source=count.from_v
+    GROUP BY start_vid) AS count
+WHERE network.source=count.start_vid
 ;
 
 ALTER TABLE network

@@ -54,7 +54,7 @@ Signatures
 
    | pgr_prim(`Edges SQL`_)
 
-   | RETURNS SET OF |result-mst|
+   | Returns set of |result-mst|
    | OR EMPTY SET
 
 
@@ -81,7 +81,7 @@ Edges SQL
    :start-after: basic_edges_sql_start
    :end-before: basic_edges_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst

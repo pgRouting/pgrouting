@@ -50,12 +50,12 @@ Coloring - Family of functions
     pgr_edgeColoring
 
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. result columns start
 
-Returns SET OF ``(vertex_id, color_id)``
+Returns set of ``(vertex_id, color_id)``
 
 ===============  =========== ======================================
 Column           Type        Description
@@ -71,7 +71,7 @@ Column           Type        Description
 
 .. result columns start edgeColoring
 
-Returns SET OF ``(edge_id, color_id)``
+Returns set of ``(edge_id, color_id)``
 
 ===============  =========== =====================================
 Column           Type        Description

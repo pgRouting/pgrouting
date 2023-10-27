@@ -38,10 +38,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/adjacency_list.hpp>
 
 #include "c_types/path_rt.h"
+#include "c_types/mst_rt.h"
 #include "cpp_common/path_t.h"
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/rule.h"
 
+namespace pgrouting {
 
 class Path {
     typedef std::deque< Path_t >::iterator pthIt;
@@ -129,13 +131,7 @@ class Path {
     void append(const Path &other);
     void empty_path(unsigned int d_vertex);
 
-    void get_pg_dd_path(
-            Path_rt **ret_path,
-            size_t &sequence) const;
-
-    void get_pg_ksp_path(
-            Path_rt **ret_path,
-            size_t &sequence, int routeId) const;
+    void get_pg_nksp_path(Path_rt**, size_t&) const;
 
     void get_pg_turn_restricted_path(
             Path_rt **ret_path,
@@ -144,6 +140,9 @@ class Path {
     void generate_postgres_data(
             Path_rt **postgres_data,
             size_t &sequence) const;
+
+    void generate_tuples(MST_rt**, size_t&) const;
+    friend size_t collapse_paths(MST_rt**, const std::deque<Path>&);
 
     friend size_t collapse_paths(
             Path_rt **ret_path,
@@ -173,7 +172,7 @@ class Path {
                     push_back(
                             {graph[i].id,
                             edge_id, cost,
-                            distances[i]});
+                            distances[i], graph[predecessors[i]].id});
                 }
             }
         }
@@ -197,26 +196,29 @@ class Path {
                         graph.graph);
 
                 if (p.edge == -1) {
-                    path.push_back({m_end_id, -1, 0, 0});
+                    /* TODO(v4) add correct predecessor node */
+                    path.push_back({m_end_id, -1, 0, 0, 0});
                 } else {
                     for ( ; ei != ei_end; ++ei) {
                         if (graph[*ei].id == p.edge) {
                             auto cost = graph[*ei].cost;
-                            push_back({p.node, p.edge, cost, 0});
+                            /* TODO(v4) add correct predecessor node */
+                            push_back({p.node, p.edge, cost, 0, 0});
                         }
                     }
                 }
-//                last_node = p.node;
+                //                last_node = p.node;
             }
             recalculate_agg_cost();
 
             if (only_cost) {
                 path.clear();
+                /* TODO(v4) add correct predecessor node */
                 path.push_back(
                         {m_end_id,
                         -1,
                         m_tot_cost,
-                        m_tot_cost});
+                        m_tot_cost, 0});
             }
         }
 
@@ -265,11 +267,13 @@ class Path {
              * only_cost
              */
             if (v_target != predecessors[v_target]) {
+                /* TODO(v4) add correct predecessor node */
                 push_front(
                         {graph.graph[v_target].id,
                         -1,
                         distances[v_target],
-                        distances[v_target]});
+                        distances[v_target],
+                        0});
             }
             return;
         }
@@ -298,9 +302,10 @@ class Path {
         /*
          * the last stop is the target
          */
+        /* TODO(v4) add correct predecessor node */
         push_front(
                 {graph.graph[target].id, -1,
-                0,  distances[target]});
+                0,  distances[target], 0});
 
         /*
          * get the path
@@ -320,11 +325,12 @@ class Path {
                 graph.get_edge_id(predecessors[target], target, cost)
                 : graph.get_edge_id(target, predecessors[target], cost);
 
+            /* TODO(v4) add correct predecessor node */
             push_front({
                     vertex_id,
                     edge_id,
                     cost,
-                    distances[target] - cost});
+                    distances[target] - cost, 0});
             target = predecessors[target];
         }
 
@@ -332,5 +338,6 @@ class Path {
     }
 };
 
+}  // namespace pgrouting
 
 #endif  // INCLUDE_CPP_COMMON_BASEPATH_SSEC_HPP_

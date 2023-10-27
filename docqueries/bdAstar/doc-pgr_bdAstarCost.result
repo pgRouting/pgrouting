@@ -123,8 +123,6 @@ SELECT * FROM pgr_bdAstarCost(
         12 |      10 |        4
 (3 rows)
 
--/* -- q9 */
+/* -- q9 */
 ROLLBACK;
-ERROR:  syntax error at or near "-"
-LINE 1: -/* -- q9 */
-        ^
+ROLLBACK

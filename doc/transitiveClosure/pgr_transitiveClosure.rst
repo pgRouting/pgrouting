@@ -65,7 +65,7 @@ The pgr_transitiveClosure function has the following signature:
 
    | pgr_transitiveClosure(`Edges SQL`_)
 
-   | RETURNS SET OF |result-closure|
+   | Returns set of |result-closure|
 
 :Example: Rechability of a subgraph
 
@@ -90,10 +90,10 @@ Edges SQL
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
-RETURNS SET OF |result-closure|
+Returns set of |result-closure|
 
 .. list-table::
    :width: 81

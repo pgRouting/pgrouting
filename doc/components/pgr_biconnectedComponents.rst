@@ -25,9 +25,9 @@
 
 * Version 3.0.0
 
-  * Return columns change:
+  * Result columns change:
 
-    *  ``n_seq`` is removed
+    * ``n_seq`` is removed
     * ``seq`` changed type to ``BIGINT``
 
   * **Official** function
@@ -70,7 +70,7 @@ Signatures
 
    | pgr_biconnectedComponents(`Edges SQL`_)
 
-   | RETURNS SET OF |result-component-E|
+   | Returns set of |result-component-E|
    | OR EMPTY SET
 
 :Example: The biconnected components of the graph
@@ -99,7 +99,7 @@ Edges SQL
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 Returns set of |result-component-E|

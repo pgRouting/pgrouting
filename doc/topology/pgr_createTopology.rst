@@ -48,21 +48,21 @@ Parameters
 
 The topology creation function accepts the following parameters:
 
-:edge_table: ``text`` Network table name. (may contain the schema name AS well)
+:edge_table: ``text`` Network table name. (may contain the schema name as well)
 :tolerance: ``float8`` Snapping tolerance of disconnected edges. (in projection
             unit)
-:the_geom: ``text``  Geometry column name of the network table. Default value is
+:the_geom: ``text`` Geometry column name of the network table. Default value is
            ``the_geom``.
-:id: ``text``  Primary key column name of the network table. Default value is
+:id: ``text`` Primary key column name of the network table. Default value is
      ``id``.
 :source: ``text`` Source column name of the network table. Default value is
          ``source``.
-:target: ``text``  Target column name of the network table.  Default value is
+:target: ``text`` Target column name of the network table. Default value is
          ``target``.
-:rows_where: ``text``   Condition to SELECT a subset or rows.  Default value is
+:rows_where: ``text`` Condition to SELECT a subset or rows. Default value is
              ``true`` to indicate all rows that where ``source`` or ``target``
              have a null value, otherwise the condition is used.
-:clean: ``boolean`` Clean any previous topology.  Default value is ``false``.
+:clean: ``boolean`` Clean any previous topology. Default value is ``false``.
 
 .. warning::
 
@@ -107,7 +107,7 @@ The structure of the vertices table is:
 :id: ``bigint`` Identifier of the vertex.
 :cnt: ``integer`` Number of vertices in the edge_table that reference this
       vertex. See :doc:`pgr_analyzeGraph`.
-:chk: ``integer``  Indicator that the vertex might have a problem. See
+:chk: ``integer`` Indicator that the vertex might have a problem. See
       :doc:`pgr_analyzeGraph`.
 :ein: ``integer`` Number of vertices in the edge_table that reference this
       vertex AS incoming. See :doc:`pgr_analyzeOneWay`.
@@ -124,9 +124,10 @@ The simplest way to use pgr_createTopology is:
    :start-after: --q1
    :end-before: --q1.1
 
-.. rubric:: When the arguments are given in the order described:
+.. rubric:: When the arguments are given in the order described in the
+   parameters:
 
-We get the same result AS the simplest way to use the function.
+We get the sameresult as the simplest way to use the function.
 
 .. literalinclude:: doc-pgr_createTopology.queries
    :start-after: --q2

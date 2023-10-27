@@ -2,7 +2,10 @@
 FILE: _drivingDistance.sql
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: project@pgrouting.org
+Mail: vicky AT erosion.dev
+
+Copyright (c) 2023 Aryan Gupta
+Mail: guptaaryan1010 AT gmail.com
 
 ------
 
@@ -26,6 +29,32 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- pgr_drivingDistance
 ----------------------
 
+--v3.6
+CREATE FUNCTION _pgr_drivingDistancev4(
+    TEXT,     -- edges_sql
+    ANYARRAY, -- start_vids
+    FLOAT,    -- distance
+    BOOLEAN,  -- directed
+    BOOLEAN,  -- equicost
+    OUT seq BIGINT,
+    OUT depth  BIGINT,
+    OUT start_vid  BIGINT,
+    OUT pred BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE c VOLATILE STRICT;
+
+-- COMMENTS
+
+COMMENT ON FUNCTION _pgr_drivingDistancev4(TEXT, ANYARRAY, FLOAT, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';
+
+/* Below functions are for backward compatibility to be removed on v4*/
+
 --v3.0
 CREATE FUNCTION _pgr_drivingDistance(
     edges_sql TEXT,
@@ -46,4 +75,4 @@ LANGUAGE c VOLATILE STRICT;
 -- COMMENTS
 
 COMMENT ON FUNCTION _pgr_drivingDistance(TEXT, ANYARRAY, FLOAT, BOOLEAN, BOOLEAN)
-IS 'pgRouting internal function';
+IS 'pgRouting internal function deprecated on v3.6.0';

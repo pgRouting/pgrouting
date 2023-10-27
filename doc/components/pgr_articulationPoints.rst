@@ -26,7 +26,7 @@ graph.
 
 * Version 3.0.0
 
-  * Return columns change: ``seq`` is removed
+  * Result columns change: ``seq`` is removed
   * **Official** function
 
 * Version 2.5.0
@@ -62,7 +62,7 @@ Signatures
 
    | pgr_articulationPoints(`Edges SQL`_)
 
-   | RETURNS SET OF |result-node|
+   | Returns set of |result-node|
    | OR EMPTY SET
 
 :Example: The articulation points of the graph
@@ -93,7 +93,7 @@ Edges SQL
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 Returns set of |result-node|

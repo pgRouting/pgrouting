@@ -24,11 +24,40 @@
 
    Boost Graph Inside
 
+
 .. rubric:: Availability
 
-* Version 2.2.0
+.. rubric:: Version 3.6.0
 
-  * New **proposed** function
+* Signature change: ``driving_side`` parameter changed from named optional to
+  unnamed compulsory **driving side**.
+
+  * ``pgr_withPointsDD`` (`Single vertex`)
+  * ``pgr_withPointsDD`` (`Multiple vertices`)
+
+* Standarizing output columns to |result-spantree|
+
+  * ``pgr_withPointsDD`` (`Single vertex`)
+
+    * Added ``depth``, ``pred`` and ``start_vid`` column.
+
+  * ``pgr_withPointsDD`` (`Multiple vertices`)
+
+    * Added ``depth``, ``pred`` columns.
+
+* When ``details`` is ``false``:
+
+  * Only points that are visited are removed, that is, points reached within the
+    distance are included
+
+* Deprecated signatures
+
+  * ``pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)``
+  * ``pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)``
+
+.. rubric:: Version 2.2.0
+
+* New **proposed** function
 
 
 Description
@@ -45,12 +74,12 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, [**options A**])
-   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, [**options B**])
-   | **options A:** ``[directed, driving_side, details]``
-   | **options B:** ``[directed, driving_side, details, equicost]``
+   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, **driving side**, [**options A**])
+   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, **driving side**, [**options B**])
+   | **options A:** ``[directed, details]``
+   | **options B:** ``[directed, details, equicost]``
 
-   | RETURNS SET OF |result-generic-no-seq|
+   | Returns set of |result-spantree|
    | OR EMPTY SET
 
 .. index::
@@ -62,10 +91,10 @@ Single vertex
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, [**options**])
-   | **options:** ``[directed, driving_side, details]``
+   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, **driving side**, [**options**])
+   | **options:** ``[directed, details]``
 
-   | RETURNS SET OF |result-1-1-no-seq|
+   | Returns set of |result-spantree|
    | OR EMPTY SET
 
 :Example: Right side driving topology, from point :math:`1` within a distance of
@@ -84,10 +113,10 @@ Multiple vertices
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, [**options**])
-   | **options:** ``[directed, driving_side, details, equicost]``
+   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vids**, **distance**, **driving side**, [**options**])
+   | **options:** ``[directed, details, equicost]``
 
-   | RETURNS SET OF |result-m-1-no-seq|
+   | Returns set of |result-spantree|
    | OR EMPTY SET
 
 :Example: From point :math:`1` and vertex :math:`16` within a distance of
@@ -123,13 +152,28 @@ Parameters
      - ``ARRAY`` [**ANY-INTEGER**]
      - Array of identifiers of the root vertices.
 
-
        - Negative values represent a point
        - :math:`0` values are ignored
        - For optimization purposes, any duplicated value is ignored.
    * - **distance**
      - ``FLOAT``
      - Upper limit for the inclusion of a node in the result.
+   * - **driving side**
+     - ``CHAR``
+     - - Value in [``r``, ``R``, ``l``, ``L``, ``b``, ``B``] indicating if the driving side is:
+
+         - ``r``, ``R`` for right driving side,
+         - ``l``, ``L`` for left driving side.
+         - ``b``, ``B`` for both.
+
+       - Valid values differ for directed and undirected graphs:
+
+         - In directed graphs: [``r``, ``R``, ``l``, ``L``].
+         - In undirected graphs: [``b``, ``B``].
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
 
 Optional parameters
 ...............................................................................
@@ -141,9 +185,21 @@ Optional parameters
 With points optional parameters
 ...............................................................................
 
-.. include:: withPoints-family.rst
-   :start-after: withPoints_optionals_start
-   :end-before: withPoints_optionals_end
+.. list-table::
+   :width: 81
+   :widths: 14 7 7 60
+   :header-rows: 1
+
+   * - Parameter
+     - Type
+     - Default
+     - Description
+   * - ``details``
+     - ``BOOLEAN``
+     - ``false``
+     - - When ``true`` the results will include the points that are in the path.
+       - When ``false`` the results will not include the points that are in the
+         path.
 
 Driving distance optional parameters
 ...............................................................................
@@ -169,46 +225,12 @@ Points SQL
     :start-after: points_sql_start
     :end-before: points_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
-RETURNS SET OF |result-generic-no-seq|
-
-.. list-table::
-   :width: 81
-   :widths: auto
-   :header-rows: 1
-
-   * - Parameter
-     - Type
-     - Description
-   * - ``seq``
-     - ``BIGINT``
-     - Sequential value starting from :math:`1`.
-   * - ``[start_vid]``
-     - ``BIGINT``
-     - Identifier of the root vertex.
-
-   * - ``node``
-     - ``BIGINT``
-     - Identifier of ``node`` within the limits from ``from_v``.
-   * - ``edge``
-     - ``BIGINT``
-     - Identifier of the ``edge`` used to arrive to ``node``.
-
-       - :math:`0` when ``node`` = ``from_v``.
-
-   * - ``cost``
-     - ``FLOAT``
-     - Cost to traverse ``edge``.
-   * - ``agg_cost``
-     - ``FLOAT``
-     - Aggregate cost from ``from_v`` to ``node``.
-
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERIC: SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC
+.. include:: drivingDistance-category.rst
+   :start-after: spantree-result-columns-start
+   :end-before: spantree-result-columns-end
 
 Additional Examples
 -------------------------------------------------------------------------------
@@ -226,8 +248,8 @@ Find the driving distance from the two closest locations on the graph of point
     :start-after: -- q5
     :end-before: -- q6
 
-* Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`.
-* Point :math:`-2` corresponds to the next close edge from point `(2.9,1.8)`.
+* Point :math:`-1` corresponds to the closest edge from point :math:`(2.9, 1.8)`.
+* Point :math:`-2` corresponds to the next close edge from point :math:`(2.9, 1.8)`.
 
 Driving side does not matter
 ...............................................................................

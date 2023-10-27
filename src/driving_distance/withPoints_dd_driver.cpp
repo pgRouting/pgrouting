@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: withPoints_driver.cpp
+File: withPoints_dd_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -7,8 +7,10 @@ Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail:
+Mail: vicky at erosion.dev
 
+Copyright (c) 2023 Yige Huang
+Mail: square1ge at gmail.com
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -35,44 +37,36 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 
-#include "dijkstra/pgr_dijkstra.hpp"
+#include "dijkstra/drivingDist.hpp"
 #include "withPoints/pgr_withPoints.hpp"
-
+#include "c_types/mst_rt.h"
 
 #include "cpp_common/pgr_alloc.hpp"
 
 
-/**********************************************************************/
-// CREATE OR REPLACE FUNCTION pgr_withPointsDD(
-// edges_sql TEXT,
-// points_sql TEXT,
-// start_pids anyarray,
-// distance FLOAT,
-//
-// driving_side CHAR -- DEFAULT 'b',
-// details BOOLEAN -- DEFAULT false,
-// directed BOOLEAN -- DEFAULT true,
-// equicost BOOLEAN -- DEFAULT false,
-
-
 void
-do_pgr_many_withPointsDD(
-        Edge_t      *edges,             size_t total_edges,
+pgr_do_withPointsDD(
+        Edge_t          *edges,             size_t total_edges,
         Point_on_edge_t *points_p,          size_t total_points,
-        Edge_t      *edges_of_points,   size_t total_edges_of_points,
+        Edge_t          *edges_of_points,   size_t total_edges_of_points,
+        int64_t         *start_pidsArr,     size_t s_len,
 
-        int64_t  *start_pidsArr,    size_t s_len,
         double distance,
+        char driving_side,
 
         bool directed,
-        char driving_side,
         bool details,
         bool equiCost,
 
-        Path_rt **return_tuples, size_t *return_count,
+        MST_rt  **return_tuples,     size_t *return_count,
         char** log_msg,
         char** notice_msg,
         char** err_msg) {
+    using pgrouting::Path;
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
@@ -83,8 +77,6 @@ do_pgr_many_withPointsDD(
         pgassert(!(*return_tuples));
         pgassert((*return_count) == 0);
         pgassert(edges);
-        pgassert(points_p);
-        pgassert(edges_of_points);
         pgassert(start_pidsArr);
 
 
@@ -107,59 +99,64 @@ do_pgr_many_withPointsDD(
             return;
         }
 
-
-
-        /*
-         * storing on C++ containers
-         */
-        std::vector<int64_t> start_vids(
-                start_pidsArr, start_pidsArr + s_len);
-
+        std::vector<int64_t> start_vids(start_pidsArr, start_pidsArr + s_len);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        std::deque< Path >paths;
+        std::deque<Path> paths;
+        std::vector<std::map<int64_t, int64_t>> depths;
 
         if (directed) {
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(edges, total_edges);
             digraph.insert_edges(pg_graph.new_edges());
-            paths = pgr_drivingDistance(
-                    digraph, start_vids, distance, equiCost, log);
+            paths = pgr_drivingdistance(digraph, start_vids, distance, equiCost, depths, details);
         } else {
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(edges, total_edges);
             undigraph.insert_edges(pg_graph.new_edges());
-
-            paths = pgr_drivingDistance(
-                    undigraph, start_vids, distance, equiCost, log);
+            paths = pgr_drivingdistance(undigraph, start_vids, distance, equiCost, depths, details);
         }
 
-        for (auto &path : paths) {
-            log << path;
-
-            if (!details) {
+        if (!details) {
+            for (auto &path : paths) {
                 pg_graph.eliminate_details_dd(path);
             }
-            log << path;
-            std::sort(path.begin(), path.end(),
-                    [](const Path_t &l, const  Path_t &r)
-                    {return l.node < r.node;});
-            std::stable_sort(path.begin(), path.end(),
-                    [](const Path_t &l, const  Path_t &r)
-                    {return l.agg_cost < r.agg_cost;});
-            log << path;
         }
+
 
         size_t count(count_tuples(paths));
 
-
         if (count == 0) {
-            *notice_msg = pgr_msg("No return values was found");
+            log << "\nNo return values were found";
+            *notice_msg = pgr_msg(log.str().c_str());
             return;
         }
+
         *return_tuples = pgr_alloc(count, (*return_tuples));
         *return_count = collapse_paths(return_tuples, paths);
+
+        for (size_t i = 0; i < count; i++) {
+            auto row = (*return_tuples)[i];
+            /* given the depth assign the correct depth */
+            int64_t depth = -1;
+            for (const auto &d : depths) {
+                /* look for the correct path */
+                auto itr = d.find(row.from_v);
+                if (itr == d.end() || !(itr->second == 0)) continue;
+                depth = d.at(row.node);
+            }
+            (*return_tuples)[i].depth = depth;
+        }
+
+        /* sort to get depths in order*/
+        std::sort((*return_tuples), (*return_tuples) + count,
+                [](const MST_rt &l, const MST_rt &r) {return l.agg_cost < r.agg_cost;});
+        std::stable_sort((*return_tuples), (*return_tuples) + count,
+                [](const MST_rt &l, const MST_rt &r) {return l.depth < r.depth;});
+        std::stable_sort((*return_tuples), (*return_tuples) + count,
+                [](const MST_rt &l, const MST_rt &r) {return l.from_v < r.from_v;});
+
         *log_msg = log.str().empty()?
             *log_msg :
             pgr_msg(log.str().c_str());
@@ -186,5 +183,3 @@ do_pgr_many_withPointsDD(
         *log_msg = pgr_msg(log.str().c_str());
     }
 }
-
-

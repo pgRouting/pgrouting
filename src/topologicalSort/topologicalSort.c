@@ -32,7 +32,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_common/postgres_connection.h"
 #include "c_types/i_rt.h"
-#include "utils/array.h"
 
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
@@ -52,16 +51,17 @@ process(
         I_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
-
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false);
-
-    PGR_DBG("Starting timer");
-    clock_t start_t = clock();
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char* err_msg = NULL;
+
+    Edge_t *edges = NULL;
+    size_t total_edges = 0;
+    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
+    throw_error(err_msg, edges_sql);
+
+    PGR_DBG("Starting timer");
+    clock_t start_t = clock();
     do_pgr_topologicalSort(
             edges, total_edges,
             result_tuples,
@@ -154,7 +154,7 @@ _pgr_topologicalsort(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        values[0] = Int32GetDatum(call_cntr + 1);
+        values[0] = Int32GetDatum((int32_t)call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[call_cntr].id);
         /**********************************************************************/
 

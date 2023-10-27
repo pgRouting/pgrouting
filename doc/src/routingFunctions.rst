@@ -146,7 +146,7 @@ Functions by categories
    :start-after: index from here
    :end-before: index to here
 
-..  to-here
+.. to-here
 
 .. toctree::
     :hidden:

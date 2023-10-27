@@ -89,7 +89,7 @@ Signatures
    | **options A:** ``[directed, cap]``
    | **options B:** ``[directed, cap, global]``
 
-   | RETURNS SET OF |short-generic-result|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 .. index::
@@ -104,7 +104,7 @@ One to Many
    | pgr_dijkstraNear(`Edges SQL`_, **start vid**, **end vids**, [**options**])
    | **options:** ``[directed, cap]``
 
-   | RETURNS SET OF |short-generic-result|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: Departing on car from vertex :math:`6` find the nearest subway
@@ -137,14 +137,14 @@ Many to One
    | pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid**, [**options**])
    | **options:** ``[directed, cap]``
 
-   | RETURNS SET OF |short-generic-result|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: Departing on a car from a subway station find the nearest **two**
           stations to vertex :math:`2`
 
 * Using a **directed** graph for car routing.
-* The subway stations are on the following vertices :math:`\{ 1, 10, 11\}`
+* The subway stations are on the following vertices :math:`\{1, 10, 11\}`
 * On line `4`: using the positional parameter: `directed` set to ``true``
 * In line `5`: using named parameter `cap => 2`
 
@@ -168,7 +168,7 @@ Many to Many
    | pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids**, [**options**])
    | **options:** ``[directed, cap, global]``
 
-   | RETURNS SET OF |short-generic-result|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: Find the best pedestrian connection between two lines of buses
@@ -204,7 +204,7 @@ Combinations
    | pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_, [**options**])
    | **options:** ``[directed, cap, global]``
 
-   | RETURNS SET OF |short-generic-result|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: Find the best car connection between all the stations of two subway
@@ -313,7 +313,7 @@ Combinations SQL
     :start-after: basic_combinations_sql_start
     :end-before: basic_combinations_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst

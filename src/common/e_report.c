@@ -68,6 +68,20 @@ pgr_error(char* err) {
     }
 }
 
+/**
+ * @param[in] err string with an error message
+ * @param[in] hint string with the hint to be used
+ *
+ * Generates an ERROR on postgres when err in not null
+ */
+void
+throw_error(char *err, char *hint) {
+    if (err) {
+        ereport(ERROR, (errmsg("%s", err), errhint("%s", hint)));
+    }
+}
+
+
 void
 pgr_error2(
         char* log,

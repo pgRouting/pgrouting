@@ -66,7 +66,7 @@ One Via
    | pgr_withPointsVia(`Edges SQL`_, `Points SQL`_, **via vertices**, [**options**])
    | **options:** ``[directed, strict, U_turn_on_edge]``
 
-   | RETURNS SET OF |via-result|
+   | Returns set of |via-result|
    | OR EMPTY SET
 
 :Example: Find the route that visits the vertices :math:`\{ -6, 15, -1\}` in
@@ -121,7 +121,7 @@ Points SQL
     :start-after: points_sql_start
     :end-before: points_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: via-category.rst
@@ -148,8 +148,8 @@ Visit from vertex :math:`1` to the two locations on the graph of point `(2.9,
     :start-after: -- q7
     :end-before: -- q8
 
-* Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`.
-* Point :math:`-2` corresponds to the next close edge from point `(2.9,1.8)`.
+* Point :math:`-1` corresponds to the closest edge from point `(2.9, 1.8)`.
+* Point :math:`-2` corresponds to the next close edge from point `(2.9, 1.8)`.
 * Point :math:`-2` is visited on the route to from vertex :math:`1` to Point
   :math:`-1` (See row where :math:`seq = 4`).
 

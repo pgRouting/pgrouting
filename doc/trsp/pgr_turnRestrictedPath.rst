@@ -44,10 +44,10 @@ Signatures
    | pgr_turnRestrictedPath(`Edges SQL`_, `Restrictions SQL`_, **start vid**, **end vid**, **K**, [**options**])
    | **options:** ``[directed, heap_paths, stop_on_first, strict]``
 
-   | RETURNS SET OF |ksp-result|
+   | Returns set of |ksp-result|
    | OR EMPTY SET
 
-:Example: From vertex :math:`3` to vertex  :math:`8` on a directed graph
+:Example: From vertex :math:`3` to vertex :math:`8` on a directed graph
 
 .. literalinclude:: doc-pgr_turnRestrictedPath.queries
    :start-after: -- q1
@@ -116,7 +116,7 @@ Restrictions SQL
    :end-before: restrictions_columns_end
 
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
@@ -134,13 +134,13 @@ No results because the only path available follows a restriction.
    :start-after: -- q2
    :end-before: -- q3
 
-:Example: From vertex :math:`3` to vertex  :math:`8` on an undirected graph
+:Example: From vertex :math:`3` to vertex :math:`8` on an undirected graph
 
 .. literalinclude:: doc-pgr_turnRestrictedPath.queries
    :start-after: -- q3
    :end-before: -- q4
 
-:Example: From vertex :math:`3` to vertex  :math:`8` with more alternatives
+:Example: From vertex :math:`3` to vertex :math:`8` with more alternatives
 
 .. literalinclude:: doc-pgr_turnRestrictedPath.queries
    :start-after: -- q4

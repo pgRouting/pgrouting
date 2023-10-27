@@ -41,7 +41,7 @@ The function returns:
 
 .. rubric:: Prerequisites
 
-The  edge table to be analyzed must contain a source column and a target column
+The edge table to be analyzed must contain a source column and a target column
 filled with id's of the vertices of the segments and the corresponding vertices
 table <edge_table>_vertices_pgr that stores the vertices information.
 
@@ -56,15 +56,15 @@ The analyze graph function accepts the following parameters:
 :edge_table: ``text`` Network table name. (may contain the schema name as well)
 :tolerance: ``float8`` Snapping tolerance of disconnected edges. (in projection
             unit)
-:the_geom: ``text``  Geometry column name of the network table. Default value is
+:the_geom: ``text`` Geometry column name of the network table. Default value is
            ``the_geom``.
-:id: ``text``  Primary key column name of the network table. Default value is
+:id: ``text`` Primary key column name of the network table. Default value is
      ``id``.
 :source: ``text`` Source column name of the network table. Default value is
          ``source``.
-:target: ``text``  Target column name of the network table.  Default value is
+:target: ``text`` Target column name of the network table. Default value is
          ``target``.
-:rows_where: ``text``   Condition to select  a subset or rows.  Default value is
+:rows_where: ``text`` Condition to select a subset or rows. Default value is
              ``true`` to indicate all rows.
 
 The function returns:
@@ -73,7 +73,7 @@ The function returns:
 
   * Uses the vertices table: <edge_table>_vertices_pgr.
   * Fills completely the ``cnt`` and ``chk`` columns of the vertices table.
-  * Returns the analysis of the section of the network defined by  ``rows_where``
+  * Returns the analysis of the section of the network defined by ``rows_where``
 
 - ``FAIL`` when the analysis was not completed due to an error.
 
@@ -94,7 +94,7 @@ The structure of the vertices table is:
 :id: ``bigint`` Identifier of the vertex.
 :cnt: ``integer`` Number of vertices in the edge_table that reference this
       vertex.
-:chk: ``integer``  Indicator that the vertex might have a problem.
+:chk: ``integer`` Indicator that the vertex might have a problem.
 :ein: ``integer`` Number of vertices in the edge_table that reference this
       vertex as incoming. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`.
 :eout: ``integer`` Number of vertices in the edge_table that reference this
@@ -118,7 +118,7 @@ Usage when the edge table's columns MATCH the default values:
 
 We get the same result as the simplest way to use the function.
 
-.. warning::  An error would occur when
+.. warning:: An error would occur when
 
    the arguments are not given in the appropriate order:
 
@@ -190,7 +190,7 @@ The arguments need to be given in the order described in the parameters:
    :start-after: -- q13
    :end-before: -- q13.1
 
-.. warning::  An error would occur when
+.. warning:: An error would occur when
    the arguments are not given in the appropriate order: In this example, the
    column ``gid`` of the table ``mytable`` is passed to the function as the
    geometry column, and the geometry column ``mygeom`` is passed to the function

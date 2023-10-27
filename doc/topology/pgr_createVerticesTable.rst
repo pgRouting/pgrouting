@@ -44,17 +44,17 @@ Signatures
 Parameters
 -------------------------------------------------------------------------------
 
-The reconstruction of the vertices table  function accepts the following
+The reconstruction of the vertices table function accepts the following
 parameters:
 
 :edge_table: ``text`` Network table name. (may contain the schema name as well)
-:the_geom: ``text``  Geometry column name of the network table. Default value is
+:the_geom: ``text`` Geometry column name of the network table. Default value is
            ``the_geom``.
 :source: ``text`` Source column name of the network table. Default value is
          ``source``.
-:target: ``text``  Target column name of the network table.  Default value is
+:target: ``text`` Target column name of the network table. Default value is
          ``target``.
-:rows_where: ``text``   Condition to SELECT a subset or rows.  Default value is
+:rows_where: ``text`` Condition to SELECT a subset or rows. Default value is
              ``true`` to indicate all rows.
 
 .. warning::
@@ -86,7 +86,7 @@ The function returns:
 
 .. rubric:: The Vertices Table
 
-The vertices table is a requierment of the :doc:`pgr_analyzeGraph` and the
+The vertices table is a requirement of the :doc:`pgr_analyzeGraph` and the
 :doc:`pgr_analyzeOneWay` functions.
 
 The structure of the vertices table is:
@@ -94,7 +94,7 @@ The structure of the vertices table is:
 :id: ``bigint`` Identifier of the vertex.
 :cnt: ``integer`` Number of vertices in the edge_table that reference this
       vertex. See :doc:`pgr_analyzeGraph`.
-:chk: ``integer``  Indicator that the vertex might have a problem. See
+:chk: ``integer`` Indicator that the vertex might have a problem. See
       :doc:`pgr_analyzeGraph`.
 :ein: ``integer`` Number of vertices in the edge_table that reference this
       vertex as incoming. See :doc:`pgr_analyzeOneWay`.
@@ -276,7 +276,7 @@ The example uses the :doc:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`topology-functions`  for an overview of a topology for routing
+* :doc:`topology-functions` for an overview of a topology for routing
   algorithms.
 * :doc:`pgr_createTopology` <pgr_create_topology>` to create a topology based on
   the geometry.

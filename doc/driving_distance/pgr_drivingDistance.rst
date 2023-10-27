@@ -22,14 +22,27 @@
 
 .. rubric:: Availability
 
-* Version 2.1.0:
+:Version 3.6.0:
 
-  * Signature change pgr_drivingDistance(single vertex)
-  * New **Official** pgr_drivingDistance(multiple vertices)
+* Standarizing output columns to |result-spantree|
 
-* Version 2.0.0:
+  * ``pgr_drivingdistance`` (Single vertex)
 
-  * **Official** pgr_drivingDistance(single vertex)
+    * Added ``depth`` and ``start_vid`` result columns.
+
+  * ``pgr_drivingdistance`` (Multiple vertices)
+
+    * Result column name change: ``from_v`` to ``start_vid``.
+    * Added ``depth`` and ``pred`` result columns.
+
+:Version 2.1.0:
+
+* Signature change pgr_drivingDistance(single vertex)
+* New **Official** pgr_drivingDistance(multiple vertices)
+
+:Version 2.0.0:
+
+* Official:: pgr_drivingDistance(single vertex)
 
 
 Description
@@ -37,7 +50,7 @@ Description
 
 Using the Dijkstra algorithm, extracts all the nodes that have costs less than
 or equal to the value ``distance``.
-The edges extracted will conform to the corresponding spanning tree.
+The edges extracted will conform to the corresponding spaning tree.
 
 Signatures
 -------------------------------------------------------------------------------
@@ -45,11 +58,11 @@ Signatures
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_drivingDistance(`Edges SQL`_, **Root vid**,  **distance**, [``directed``])
+   | pgr_drivingDistance(`Edges SQL`_, **Root vid**, **distance**, [``directed``])
    | pgr_drivingDistance(`Edges SQL`_, **Root vids**, **distance**, [**options**])
    | **options:** [directed, equicost]
 
-   | RETURNS SET OF |result-dij-dd|
+   | Returns set of |result-spantree|
 
 .. index::
    single: drivingDistance(Single vertex)
@@ -60,13 +73,13 @@ Single Vertex
 .. admonition:: \ \
    :class: signatures
 
-   | pgr_drivingDistance(`Edges SQL`_, **Root vid**,  **distance**, [``directed``])
+   | pgr_drivingDistance(`Edges SQL`_, **Root vid**, **distance**, [``directed``])
 
-   | RETURNS SET OF |result-1-1|
+   | Returns set of |result-spantree|
 
 :Example: From vertex :math:`11` for a distance of :math:`3.0`
 
-.. literalinclude:: doc-pgr_drivingDistance.queries
+.. literalinclude:: pgr_drivingDistance.queries
    :start-after: --q5
    :end-before: --q6
 
@@ -82,12 +95,12 @@ Multiple Vertices
    | pgr_drivingDistance(`Edges SQL`_, **Root vids**, **distance**, [**options**])
    | **options:** [directed, equicost]
 
-   | RETURNS SET OF |result-dij-dd-m|
+   | Returns set of |result-spantree|
 
 :Example: From vertices :math:`\{11, 16\}` for a distance of :math:`3.0` with
           equi-cost on a directed graph
 
-.. literalinclude:: doc-pgr_drivingDistance.queries
+.. literalinclude:: pgr_drivingDistance.queries
    :start-after: --q6
    :end-before: --q10
 
@@ -122,10 +135,10 @@ Driving distance optional parameters
    * - ``equicost``
      - ``BOOLEAN``
      - ``true``
-     - * When ``true`` the node will only appear in the closest ``from_v``
-         list.
-       * When ``false`` which resembles several calls using the single starting
-         point signatures. Tie brakes are arbitrary.
+     - * When ``true`` the node will only appear in the closest ``start_vid``
+         list. Tie brakes are arbitrary.
+       * When ``false`` which resembles several calls using the single vertex
+         signature.
 
 .. equicost_end
 
@@ -139,46 +152,12 @@ Edges SQL
    :start-after: basic_edges_sql_start
    :end-before: basic_edges_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
-Returns SET OF ``(seq, from_v, node, edge, cost, agg_cost)``
-
-.. list-table::
-   :width: 81
-   :widths: auto
-   :header-rows: 1
-
-   * - Parameter
-     - Type
-     - Description
-   * - ``seq``
-     - ``BIGINT``
-     - Sequential value starting from :math:`1`.
-   * - ``[from_v]``
-     - ``BIGINT``
-     - Identifier of the root vertex.
-
-   * - ``node``
-     - ``BIGINT``
-     - Identifier of ``node`` within the limits from ``from_v``.
-   * - ``edge``
-     - ``BIGINT``
-     - Identifier of the ``edge`` used to arrive to ``node``.
-
-       - :math:`0` when ``node`` = ``from_v``.
-
-   * - ``cost``
-     - ``FLOAT``
-     - Cost to traverse ``edge``.
-   * - ``agg_cost``
-     - ``FLOAT``
-     - Aggregate cost from ``from_v`` to ``node``.
-
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERIC: SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC
+.. include:: drivingDistance-category.rst
+   :start-after: spantree-result-columns-start
+   :end-before: spantree-result-columns-end
 
 Additional Examples
 -------------------------------------------------------------------------------
@@ -186,7 +165,7 @@ Additional Examples
 :Example: From vertices :math:`\{11, 16\}` for a distance of :math:`3.0` on an
           undirected graph
 
-.. literalinclude:: doc-pgr_drivingDistance.queries
+.. literalinclude:: pgr_drivingDistance.queries
    :start-after: --q10
    :end-before: --q15
 

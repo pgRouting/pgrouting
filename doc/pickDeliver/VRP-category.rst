@@ -432,16 +432,16 @@ Matrix SQL
     :start-after: return_cost_start
     :end-before: return_cost_end
 
-Return columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. pd_returns_start
 
 .. parsed-literal::
 
-     RETURNS SET OF
+     Returns set of
       (seq, vehicle_seq, vehicle_id, stop_seq, stop_type,
-          travel_time, arrival_time, wait_time, service_time,  departure_time)
+          travel_time, arrival_time, wait_time, service_time, departure_time)
       UNION
       (summary row)
 
@@ -629,7 +629,7 @@ The `capacity` of a vehicle, can be measured in:
 The `demand` request of the pickup-deliver orders must use the same units as the
 units used in the vehicle's `capacity`.
 
-To handle problems like:  10 (equal dimension) boxes of apples and 5 kg of
+To handle problems like: 10 (equal dimension) boxes of apples and 5 kg of
 feathers that are to be transported (not packed in boxes).
 
 * If the vehicle's **capacity** is measured in `boxes`, a conversion of `kg of

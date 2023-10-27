@@ -24,7 +24,7 @@
 
 * Version 3.0.0
 
-  * Return columns change: ``seq`` is removed
+  * Result columns change: ``seq`` is removed
   * **Official** function
 
 * Version 2.5.0
@@ -58,7 +58,7 @@ Signatures
 
    | pgr_bridges(`Edges SQL`_)
 
-   | RETURNS SET OF |result-edge|
+   | Returns set of |result-edge|
    | OR EMPTY SET
 
 :Example: The bridges of the graph
@@ -87,7 +87,7 @@ Edges SQL
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 Returns set of |result-edge|

@@ -77,19 +77,23 @@ process(
     }
 
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
 
     Edge_t *edges = NULL;
     size_t total_edges = 0;
 
 
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false);
+    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
+    throw_error(err_msg, edges_sql);
 
     Restriction_t *restrictions = NULL;
     size_t total_restrictions = 0;
 
-    pgr_get_restrictions(restrictions_sql, &restrictions,
-        &total_restrictions);
+    pgr_get_restrictions(restrictions_sql, &restrictions, &total_restrictions, &err_msg);
+    throw_error(err_msg, restrictions_sql);
 
     if (total_edges == 0) {
         PGR_DBG("No edges found");
@@ -98,9 +102,6 @@ process(
     }
 
     clock_t start_t = clock();
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
     do_pgr_turnRestrictedPath(
             edges,
             total_edges,
@@ -231,8 +232,8 @@ _pgr_turnrestrictedpath(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int32GetDatum(path[funcctx->call_cntr].start_id + 1);
+        values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
+        values[1] = Int32GetDatum((int32_t)path[funcctx->call_cntr].start_id + 1);
         values[2] = Int32GetDatum(path[funcctx->call_cntr].seq);
         values[3] = Int64GetDatum(path[funcctx->call_cntr].node);
         values[4] = Int64GetDatum(path[funcctx->call_cntr].edge);

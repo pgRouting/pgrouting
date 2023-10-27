@@ -58,7 +58,7 @@ new_sql TEXT;
 restrictions_query TEXT;
 trsp_sql TEXT;
 BEGIN
-  RAISE WARNING 'pgr_trsp(text,integer,integer,boolean,boolean) deprecated on v3.4.0';
+  RAISE WARNING 'pgr_trsp(text,integer,integer,boolean,boolean) deprecated signature on v3.4.0';
     has_reverse =_pgr_parameter_check('dijkstra', edges_sql, false);
 
     new_sql := edges_sql;
@@ -159,7 +159,7 @@ BEGIN
     IF $2 IS NULL OR $3 IS NULL OR $4 IS NULL OR $5 IS NULL OR $6 IS NULL THEN
         RETURN;
     END IF;
-  RAISE WARNING 'pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated on v3.4.0';
+  RAISE WARNING 'pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated signature on v3.4.0';
     has_reverse =_pgr_parameter_check('dijkstra', sql, false);
 
     new_sql := sql;
@@ -247,8 +247,8 @@ BEGIN
     END IF;
 
     -- with restrictions calls the original code
-    RETURN query 
-    SELECT a.seq, a.id1, a.id2, a.cost 
+    RETURN query
+    SELECT a.seq, a.id1, a.id2, a.cost
     FROM _pgr_trsp(new_sql, source_eid, source_pos, target_eid, target_pos, directed, has_reverse_cost, turn_restrict_sql) AS a;
     RETURN;
 
@@ -261,16 +261,10 @@ ROWS 1000;
 -- COMMENTS
 
 COMMENT ON FUNCTION pgr_trsp(TEXT, INTEGER, INTEGER, BOOLEAN, BOOLEAN, TEXT)
-IS 'pgr_trsp
-- DEPRECATED signature on v3.4.0
-- Documentation:
-  - ${PROJECT_DOC_LINK}/pgr_trsp.html
-';
+IS 'pgr_trsp deprecated signature on v3.4.0
+- Documentation: ${PROJECT_DOC_LINK}/pgr_trsp.html';
 
 
 COMMENT ON FUNCTION pgr_trsp(TEXT, INTEGER, FLOAT, INTEGER, FLOAT, BOOLEAN, BOOLEAN, TEXT)
-IS 'pgr_trsp
-- DEPRECATED signature on v3.4.0
-- Documentation:
-  - ${PROJECT_DOC_LINK}/pgr_trsp_withPoints.html
-';
+IS 'pgr_trsp deprecated signature on v3.4.0
+- Documentation: ${PROJECT_DOC_LINK}/pgr_trsp_withPoints.html';

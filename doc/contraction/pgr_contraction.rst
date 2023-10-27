@@ -26,7 +26,7 @@ vertices and edges.
 
 * Version 3.0.0
 
-  * Return columns change: ``seq`` is removed
+  * Result columns change: ``seq`` is removed
   * Name change from ``pgr_contractGraph``
   * Bug fixes
   * **Official** function
@@ -57,8 +57,8 @@ The main Characteristics are:
 
 - The returned values include
 
-  -  the added edges by linear contraction.
-  -  the modified vertices by dead end contraction.
+  - the added edges by linear contraction.
+  - the modified vertices by dead end contraction.
 
 - The returned values are ordered as follows:
 
@@ -82,7 +82,7 @@ The pgr_contraction function has the following signature:
    | pgr_contraction(`Edges SQL`_, **contraction order**, [**options**])
 
    | **options:** ``[ max_cycles, forbidden_vertices, directed]``
-   | RETURNS SET OF |result-contract|
+   | Returns set of |result-contract|
 
 :Example: Making a dead end and linear contraction in that order on an
           undirected graph.
@@ -112,7 +112,7 @@ Parameters
        - 1 = Dead end contraction
        - 2 = Linear contraction
 
-Optional Parameters
+Optional parameters
 ...............................................................................
 
 .. include:: dijkstra-family.rst
@@ -151,10 +151,10 @@ Edges SQL
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
-Returns set of  |result-contract|
+Returns set of |result-contract|
 
 The function returns a single row. The columns of the row are:
 

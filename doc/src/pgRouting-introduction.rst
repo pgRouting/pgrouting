@@ -66,6 +66,8 @@ This Release Contributors
 Individuals in this release (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Aniket Agarwal,
+Aryan Gupta,
 Ashish Kumar,
 Cayetano Benavent,
 Daniel Kastl,
@@ -74,11 +76,12 @@ Rajat Shinde,
 Regina Obe,
 Shobhit Chaurasia,
 Swapnil Joshi,
-Virginia Vergara
+Virginia Vergara,
+Yige Huang
 
 
 And all the people that give us a little of their time making comments, finding
-issues, making pull requests etc.  in any of our products: osm2pgrouting,
+issues, making pull requests etc. in any of our products: osm2pgrouting,
 pgRouting, pgRoutingLayer, workshop.
 
 
@@ -99,12 +102,14 @@ Individuals (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Aasheesh Tiwari,
+Abhinav Jain,
 Aditya Pratap Singh,
 Adrien Berchet,
 Akio Takubo,
 Andrea Nardelli,
 Anthony Tasca,
 Anton Patrushev,
+Aryan Gupta,
 Ashraf Hossain,
 Ashish Kumar,
 Cayetano Benavent,
@@ -150,7 +155,8 @@ Sylvain Housseman,
 Sylvain Pasche,
 Veenit Kumar,
 Vidhan Jain,
-Virginia Vergara
+Virginia Vergara,
+Yige Huang
 
 Corporate Sponsors (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

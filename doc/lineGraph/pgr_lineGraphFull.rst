@@ -67,7 +67,7 @@ Signatures
 
    | pgr_lineGraphFull(`Edges SQL`_)
 
-   | RETURNS SET OF |result-linegf|
+   | Returns set of |result-linegf|
    | OR EMPTY SET
 
 :Example: Full line graph of subgraph of edges :math:`\{4, 7, 8, 10\}`
@@ -93,10 +93,10 @@ Edges SQL
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
-RETURNS SET OF |result-linegf|
+Returns set of |result-linegf|
 
 .. list-table::
    :width: 81

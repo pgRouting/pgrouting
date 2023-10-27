@@ -115,7 +115,7 @@ The weighted directed graph, :math:`G_d(V,E)`:
     \ge 0 \}`
   * Edges where ``cost`` is non negative are part of the graph.
 
-* the set of vertices  :math:`V`
+* the set of vertices :math:`V`
 
   * :math:`V = \{source_{id} \cup target_{id}\}`
   * All vertices in ``source`` and ``target`` are part of the graph.
@@ -138,7 +138,7 @@ The data is representing the following graph:
 .. graphviz::
 
    digraph G {
-    1 -> 2 [label="  1(5)"];
+    1 -> 2 [label="1(5)"];
     3;
    }
 
@@ -157,14 +157,14 @@ For the following data:
    :start-after: -- g1
    :end-before: -- g2
 
-Edge :math:`2` (:math:`1  \frac{\;\;\;\;\;}{} 3`) is not part of the graph.
+Edge :math:`2` (:math:`1 \frac{\;\;\;\;\;}{} 3`) is not part of the graph.
 
 The data is representing the following graph:
 
 .. graphviz::
 
    graph G {
-    1 -- 2 [label="  1(5)"];
+    1 -- 2 [label="1(5)"];
     3;
    }
 
@@ -189,7 +189,7 @@ The weighted directed graph, :math:`G_d(V,E)`, is defined by:
   * Edges :math:`(target \rightarrow source)` where ``reverse_cost`` is non
     negative are part of the graph.
 
-* The set of vertices  :math:`V`:
+* The set of vertices :math:`V`:
 
   * :math:`V = \{source_{id} \cup target_{id}\}`
   * All vertices in ``source`` and ``target`` are part of the graph.
@@ -211,18 +211,18 @@ For the following data:
 
 Edges not part of the graph:
 
-* :math:`2` (:math:`1  \rightarrow 3`)
-* :math:`3` (:math:`3  \rightarrow 2`)
+* :math:`2` (:math:`1 \rightarrow 3`)
+* :math:`3` (:math:`3 \rightarrow 2`)
 
 The data is representing the following graph:
 
 .. graphviz::
 
    digraph G {
-    1 -> 2 [label="  1(5)"];
-    2 -> 1 [label="  1(2)"];
-    3 -> 1 [label="  2(4)"];
-    2 -> 3 [label="  3(7)"];
+    1 -> 2 [label="1(5)"];
+    2 -> 1 [label="1(2)"];
+    3 -> 1 [label="2(4)"];
+    2 -> 3 [label="3(7)"];
    }
 
 .. rubric:: Undirected graph
@@ -246,25 +246,25 @@ For the following data:
 
 Edges not part of the graph:
 
-* :math:`2` (:math:`1  \frac{\;\;\;\;\;}{} 3`)
-* :math:`3` (:math:`3  \frac{\;\;\;\;\;}{} 2`)
+* :math:`2` (:math:`1 \frac{\;\;\;\;\;}{} 3`)
+* :math:`3` (:math:`3 \frac{\;\;\;\;\;}{} 2`)
 
 The data is representing the following graph:
 
 .. graphviz::
 
    graph G {
-    1 -- 2 [label="  1(5)"];
-    2 -- 1 [label="  1(2)"];
-    3 -- 1 [label="  2(4)"];
-    2 -- 3 [label="  3(7)"];
+    1 -- 2 [label="1(5)"];
+    2 -- 1 [label="1(2)"];
+    3 -- 1 [label="2(4)"];
+    2 -- 3 [label="3(7)"];
    }
 
 Graphs without geometries
 -------------------------------------------------------------------------------
 
 Personal relationships, genealogy, file dependency problems can be solved
-using pgRouting. Those problems, normally,  do not come with geometries associated
+using pgRouting. Those problems, normally, do not come with geometries associated
 with the graph.
 
 .. contents::
@@ -305,15 +305,15 @@ Where:
     rankdir="LR";
     1 [color="red"];
     5 [color="green"];
-    1 -- 2 [label="  (7)"];
-    5 -- 6 [label="  (9)"];
-    1 -- 3 [label="  (9)"];
-    1 -- 6 [label="  (14)"];
-    2 -- 3 [label="  (10)"];
-    2 -- 4 [label="  (13)"];
-    3 -- 4 [label="  (11)"];
-    3 -- 6 [label="  (2)"];
-    4 -- 5 [label="  (6)"];
+    1 -- 2 [label="(7)"];
+    5 -- 6 [label="(9)"];
+    1 -- 3 [label="(9)"];
+    1 -- 6 [label="(14)"];
+    2 -- 3 [label="(10)"];
+    2 -- 4 [label="(13)"];
+    3 -- 4 [label="(11)"];
+    3 -- 6 [label="(2)"];
+    4 -- 5 [label="(6)"];
    }
 
 
@@ -390,15 +390,15 @@ To go from :math:`1` to :math:`5` the path goes thru the following vertices:
     rankdir="LR";
     1 [color="red"];
     5 [color="green"];
-    1 -- 2 [label="  (7)"];
-    5 -- 6 [label="  (9)", color="blue"];
-    1 -- 3 [label="  (9)", color="blue"];
-    1 -- 6 [label="  (14)"];
-    2 -- 3 [label="  (10)"];
-    2 -- 4 [label="  (13)"];
-    3 -- 4 [label="  (11)"];
-    3 -- 6 [label="  (2)", color="blue"];
-    4 -- 5 [label="  (6)"];
+    1 -- 2 [label="(7)"];
+    5 -- 6 [label="(9)", color="blue"];
+    1 -- 3 [label="(9)", color="blue"];
+    1 -- 6 [label="(14)"];
+    2 -- 3 [label="(10)"];
+    2 -- 4 [label="(13)"];
+    3 -- 4 [label="(11)"];
+    3 -- 6 [label="(2)", color="blue"];
+    4 -- 5 [label="(6)"];
    }
 
 Vertex information
@@ -441,7 +441,7 @@ There are several ways to load your data into pgRouting.
 * Manually creating a database.
 
   * `Graphs without geometries`_
-  * :doc:`sampledata`: a small graph used on the documentation examples
+  * :doc:`sampledata`: a small graph used in the documentation examples
 
 * Using `osm2pgrouting
   <https://workshop.pgrouting.org/latest/en/basic/data.html>`__
@@ -626,7 +626,7 @@ To get the crossing edges:
 .. figure:: images/crossing_edges.png
 
 That information is correct, for example, when in terms of vehicles, is it a
-tunnel or bride crossing over another road.
+tunnel or bridge crossing over another road.
 
 It might be incorrect, for example:
 
@@ -675,7 +675,7 @@ For pgRouting calculations
 
 * **factor** based on the position of the intersection of the edges can be used
   to adjust the ``cost`` and ``reverse_cost`` columns.
-* Capacity information, used on the :doc:`flow-family` functions does not need
+* Capacity information, used in the :doc:`flow-family` functions does not need
   to change when splitting edges.
 
 .. literalinclude:: concepts.queries
@@ -907,7 +907,7 @@ For example, for this :doc:`pgr_dijkstra` signature:
 .. admonition:: \ \
    :class: signatures
 
-   pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  [, ``directed``])
+   pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids**, [``directed``])
 
 * `Edges SQL`_:
 
@@ -1109,7 +1109,7 @@ General without ``id``
    * - ``cost``
      - **ANY-NUMERICAL**
      -
-     - Weight of the edge  (``source``, ``target``)
+     - Weight of the edge (``source``, ``target``)
    * - ``reverse_cost``
      - **ANY-NUMERICAL**
      - -1
@@ -1159,7 +1159,7 @@ General with (X,Y)
    * - ``cost``
      - **ANY-NUMERICAL**
      -
-     - Weight of the edge  (``source``, ``target``)
+     - Weight of the edge (``source``, ``target``)
 
        * When negative: edge (``source``, ``target``) does not exist, therefore
          it's not part of the graph.
@@ -1231,7 +1231,7 @@ Flow
    * - ``capacity``
      - **ANY-INTEGER**
      -
-     - Weight of the edge  (``source``, ``target``)
+     - Weight of the edge (``source``, ``target``)
    * - ``reverse_capacity``
      - **ANY-INTEGER**
      - -1
@@ -1278,7 +1278,7 @@ Where:
    * - ``capacity``
      - **ANY-INTEGER**
      -
-     - Capacity of the edge  (``source``, ``target``)
+     - Capacity of the edge (``source``, ``target``)
 
        - When negative: edge (``target``, ``source``) does not exist, therefore
          it's not part of the graph.
@@ -1292,7 +1292,7 @@ Where:
    * - ``cost``
      - **ANY-NUMERICAL**
      -
-     - Weight of the edge  (``source``, ``target``) if it exist
+     - Weight of the edge (``source``, ``target``) if it exist
    * - ``reverse_cost``
      - **ANY-NUMERICAL**
      - :math:`-1`
@@ -1308,7 +1308,7 @@ Where:
 Combinations SQL
 ...............................................................................
 
-.. rubric:: Used on combination signatures
+.. rubric:: Used in combination signatures
 
 .. basic_combinations_sql_start
 
@@ -1441,10 +1441,10 @@ Parameters for the Via functions
      - ``BOOLEAN``
      - ``true``
      - * When ``true`` departing from a visited vertex will not try to avoid
-         using the edge used to reach it.  In other words, U turn using the edge
+         using the edge used to reach it. In other words, U turn using the edge
          with same identifier is allowed.
        * When ``false`` when a departing from a visited vertex tries to avoid
-         using the edge used to reach it.  In other words, U turn using the edge
+         using the edge used to reach it. In other words, U turn using the edge
          with same identifier is used when no other path is found.
 
 
@@ -1493,7 +1493,7 @@ Where:
 
 .. restriction_parameters_end
 
-Return columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. contents::
@@ -1501,10 +1501,10 @@ Return columns
 
 There are several kinds of columns returned are depending of the function.
 
-Return columns for a path
+Result columns for a path
 ...............................................................................
 
-.. rubric:: Used on functions that return one path solution
+.. rubric:: Used in functions that return one path solution
 
 .. return_path_short_start
 
@@ -1557,7 +1557,7 @@ agg_cost)``
 
 .. return_path_short_end
 
-.. rubric:: Used on functions the following:
+.. rubric:: Used in functions the following:
 
 * :doc:`pgr_withPoints`
 
@@ -1589,7 +1589,7 @@ agg_cost)``
 
        * When positive is the identifier of the starting vertex.
        * When negative is the identifier of the starting point.
-       * Returned on `Many to One`_  and `Many to Many`_
+       * Returned on `Many to One`_ and `Many to Many`_
    * - ``end_pid``
      - ``BIGINT``
      - Identifier of an ending vertex/point of the path.
@@ -1624,7 +1624,7 @@ agg_cost)``
 .. return_withpoint_path_short_end
 
 
-.. rubric:: Used on functions the following:
+.. rubric:: Used in functions the following:
 
 * :doc:`pgr_dijkstraNear`
 
@@ -1793,7 +1793,7 @@ agg_cost)``
 
 .. return_path_all_columns_end
 
-Return columns for cost functions
+Result columns for cost functions
 ...............................................................................
 
 .. rubric:: Used in the following
@@ -1834,7 +1834,7 @@ Set of |matrix-result|
 
 .. return_cost_withPoints_end
 
-Return columns for flow functions
+Result columns for flow functions
 ...............................................................................
 
 .. rubric:: Edges SQL for the following
@@ -1853,7 +1853,7 @@ Return columns for flow functions
     :start-after: result_costFlow_start
     :end-before: result_costFlow_end
 
-Return columns for spanning tree functions
+Result columns for spanning tree functions
 ...............................................................................
 
 .. rubric:: Edges SQL for the following
@@ -1863,7 +1863,7 @@ Return columns for spanning tree functions
 
 .. r-edge-cost-start
 
-Returns SET OF ``(edge, cost)``
+Returns set of ``(edge, cost)``
 
 .. list-table::
    :width: 81
@@ -1905,7 +1905,7 @@ How to contribute
 
 .. rubric:: Wiki
 
-* Edit an existing  `pgRouting Wiki
+* Edit an existing `pgRouting Wiki
   <https://github.com/pgRouting/pgrouting/wiki>`__ page.
 * Or create a new Wiki page
 

@@ -52,7 +52,7 @@ Signatures
    | pgr_kruskalDFS(`Edges SQL`_, **root vid**, [``max_depth``])
    | pgr_kruskalDFS(`Edges SQL`_, **root vids**, [``max_depth``])
 
-   | RETURNS SET OF |result-bfs|
+   | Returns set of |result-bfs|
 
 .. index::
     single: kruskalDFS(Single vertex)
@@ -65,7 +65,7 @@ Single vertex
 
    | pgr_kruskalDFS(`Edges SQL`_, **root vid**, [``max_depth``])
 
-   | RETURNS SET OF |result-bfs|
+   | Returns set of |result-bfs|
 
 :Example: The Minimum Spanning Tree having as root vertex :math:`6`
 
@@ -84,7 +84,7 @@ Multiple vertices
 
    | pgr_kruskalDFS(`Edges SQL`_, **root vids**, [``max_depth``])
 
-   | RETURNS SET OF |result-bfs|
+   | Returns set of |result-bfs|
 
 :Example: The Minimum Spanning Tree starting on vertices :math:`\{9, 6\}` with
           :math:`depth \leq 3`
@@ -117,7 +117,7 @@ Edges SQL
    :start-after: basic_edges_sql_start
    :end-before: basic_edges_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: BFS-category.rst

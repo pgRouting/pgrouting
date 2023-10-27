@@ -7,12 +7,13 @@ Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
+Copyright (c) 2023 Celia Virginia Vergara Castillo
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Mail: vicky at erosion.dev
 
 Copyright (c) 2020 The combinations_sql signature is added by Mahmoud SAKR
 and Esteban ZIMANYI
-mail: m_attia_sakr@yahoo.com, estebanzimanyi@gmail.com
+mail: m_attia_sakr at yahoo.com, estebanzimanyi at gmail.com
 
 ------
 
@@ -35,7 +36,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef INCLUDE_DRIVERS_DIJKSTRA_DIJKSTRA_DRIVER_H_
 #define INCLUDE_DRIVERS_DIJKSTRA_DIJKSTRA_DRIVER_H_
 
-/* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
 #   include <cstdint>
@@ -54,50 +54,21 @@ typedef struct II_t_rt II_t_rt;
 extern "C" {
 #endif
 
-    void do_pgr_many_to_many_dijkstra(
-            Edge_t  *data_edges,
-            size_t total_tuples,
-            int64_t  *start_vidsArr,
-            size_t size_start_vidsArr,
-            int64_t  *end_vidsArr,
-            size_t size_end_vidsArr,
-            bool directed,
-            bool only_cost,
-            bool normal,
-            int64_t n_goals,
-            bool global,
+void pgr_do_dijkstra(
+        Edge_t*, size_t,
+        II_t_rt*, size_t,
+        int64_t*, size_t,
+        int64_t*, size_t,
 
-            Path_rt **return_tuples,
-            size_t *return_count,
+        bool, bool, bool,
+        int64_t, bool,
 
-            char** log_msg,
-            char** notice_msg,
-            char** err_msg);
+        Path_rt**, size_t*,
+        char**, char**, char**);
 
 
-    //  CREATE OR REPLACE FUNCTION pgr_dijkstra(
-    //  sql text,
-    //  combinations_sql text,
-    //  directed boolean default true,
-    void do_pgr_combinations_dijkstra(
-            Edge_t  *data_edges,
-            size_t total_tuples,
-            II_t_rt  *combinations,
-            size_t total_combinations,
-            bool directed,
-            bool only_cost,
-            bool normal,
-            int64_t n_goals,
-            bool global,
-
-            Path_rt **return_tuples,
-            size_t *return_count,
-
-            char** log_msg,
-            char** notice_msg,
-            char** err_msg);
 #ifdef __cplusplus
-    }
+}
 #endif
 
 #endif  // INCLUDE_DRIVERS_DIJKSTRA_DIJKSTRA_DRIVER_H_

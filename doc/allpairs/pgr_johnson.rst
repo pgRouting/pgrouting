@@ -53,7 +53,7 @@ Signatures
 
    pgr johnson(`Edges SQL`_, [``directed``])
 
-   | RETURNS SET OF |matrix-result|
+   | Returns set of |matrix-result|
    | OR EMPTY SET
 
 :Example: For a directed subgraph with edges :math:`\{1, 2, 3, 4\}`.
@@ -86,7 +86,7 @@ Edges SQL
     :start-after: no_id_edges_sql_start
     :end-before: no_id_edges_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst

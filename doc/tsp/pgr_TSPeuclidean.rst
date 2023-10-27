@@ -84,7 +84,7 @@ Signatures
 
    | pgr_TSPeuclidean(`Coordinates SQL`_, ``[start_id, end_id]``)
 
-   | RETURNS SET OF |tsp-result|
+   | Returns set of |tsp-result|
    | OR EMTPY SET
 
 :Example: With default values
@@ -115,11 +115,20 @@ Inner Queries
 Coordinates SQL
 ...............................................................................
 
-.. include:: ../../src/common/coordinates_input.c
-   :start-after: Coordinates SQL definition start
-   :end-before: Coordinates SQL definition end
+.. Coordinates SQL definition start
 
-Result Columns
+========= ================= =================================================
+Column        Type               Description
+========= ================= =================================================
+``id``    ``ANY-INTEGER``    Identifier of the starting vertex.
+``x``     ``ANY-NUMERICAL``  X value of the coordinate.
+``y``     ``ANY-NUMERICAL``  Y value of the coordinate.
+========= ================= =================================================
+
+.. Coordinates SQL definition end
+
+
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: ../../include/c_types/tsp_tour_rt.h
@@ -172,7 +181,7 @@ Getting a geometry of the tour
 Visual results
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Visualy, The first image is the `optimal solution
-<https://www.math.uwaterloo.ca/tsp/world/witour.html>`__  and the second image
+<https://www.math.uwaterloo.ca/tsp/world/witour.html>`__ and the second image
 is the solution obtained with ``pgr_TSPeuclidean``.
 
 .. image:: images/wi29optimal.png

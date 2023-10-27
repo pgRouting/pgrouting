@@ -63,7 +63,7 @@ Signatures
 
    | pgr_cuthillMckeeOrdering(`Edges SQL`_)
 
-   | RETURNS SET OF |result-node-order|
+   | Returns set of |result-node-order|
    | OR EMPTY SET
 
 :Example: Graph ordering of pgRouting :doc:`sampledata`
@@ -91,10 +91,10 @@ Edges SQL
    :start-after: basic_edges_sql_start
    :end-before: basic_edges_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
-Returns SET OF ``(seq, node)``
+Returns set of ``(seq, node)``
 
 ===============  =========== ======================================
 Column           Type        Description

@@ -13,7 +13,7 @@
 ``pgr_hawickCircuits - Experimental``
 ===============================================================================
 
-``pgr_hawickCircuits`` —  Returns the list of cirucits using hawick circuits algorithm.
+``pgr_hawickCircuits`` — Returns the list of cirucits using hawick circuits algorithm.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/hawick_circuits.html
@@ -68,7 +68,7 @@ Signatures
 
    | pgr_hawickCircuits(`Edges SQL`_)
 
-   | RETURNS SET OF |generic-result|
+   | Returns set of |generic-result|
    | OR EMPTY SET
 
 .. index::
@@ -104,7 +104,7 @@ Edges SQL
     :start-after: no_id_edges_sql_start
     :end-before: no_id_edges_sql_end
 
-Return columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. list-table::

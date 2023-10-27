@@ -63,7 +63,7 @@ Parameters
 
    * - **root vids**
      - ``ARRAY`` [ **ANY-INTEGER** ]
-     -  Array of identifiers of the root vertices.
+     - Array of identifiers of the root vertices.
 
         * :math:`0` values are ignored
         * For optimization purposes, any duplicated value is ignored.
@@ -108,12 +108,12 @@ Edges SQL
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. mst-bfs-dfs-dd-result-columns-start
 
-Returns SET OF ``(seq, depth, start_vid, node, edge, cost, agg_cost)``
+Returns set of ``(seq, depth, start_vid, node, edge, cost, agg_cost)``
 
 .. list-table::
    :width: 81

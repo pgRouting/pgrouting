@@ -1,8 +1,16 @@
 /*PGR-GNU*****************************************************************
 File: _withPointsDD.sql
 
+Generated with Template by:
+Copyright (c) 2015 pgRouting developers
+Mail: project at pgrouting.org
+
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Mail: vicky at erosion.dev
+
+Copyright (c) 2023 Yige Huang
+Mail: square1ge at gmail.com
 
 ------
 
@@ -26,6 +34,36 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- pgr_withPointsDD
 -------------------
 
+--v3.6
+CREATE FUNCTION _pgr_withPointsDDv4(
+    TEXT,     -- edges SQL
+    TEXT,     -- points SQL
+    ANYARRAY, -- roots
+    FLOAT,    -- distance
+    CHAR,     -- driving_side,
+
+    BOOLEAN,  -- directed
+    BOOLEAN,  -- details
+    BOOLEAN,  -- equicost
+
+    OUT seq BIGINT,
+    OUT depth BIGINT,
+    OUT start_vid BIGINT,
+    OUT pred BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE C VOLATILE STRICT;
+
+-- COMMENTS
+
+COMMENT ON FUNCTION _pgr_withPointsDDv4(TEXT, TEXT, ANYARRAY, FLOAT, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
+IS 'pgRouting internal function';
+
+/* TODO remove on v4 */
 --v3.0
 CREATE FUNCTION _pgr_withPointsDD(
     edges_sql TEXT,
@@ -51,4 +89,4 @@ LANGUAGE C VOLATILE STRICT;
 -- COMMENTS
 
 COMMENT ON FUNCTION _pgr_withPointsDD(TEXT, TEXT, ANYARRAY, FLOAT, BOOLEAN, CHAR, BOOLEAN, BOOLEAN)
-IS 'pgRouting internal function';
+IS 'pgRouting internal function deprecated on v3.6.0';

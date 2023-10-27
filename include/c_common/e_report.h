@@ -116,6 +116,10 @@ pgr_notice2(
 void
 pgr_error(char* error_msg);
 
+/* @brief throws postgres error when first string is not null */
+void throw_error(char*, char*);
+
+
 /*! @brief error with hint
  *
  *  ~~~~{.c}

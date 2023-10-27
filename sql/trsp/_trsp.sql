@@ -34,6 +34,50 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- _trsp
 --------------
 
+--v3.6
+CREATE FUNCTION _pgr_trspv4(
+    TEXT,     -- edges SQL
+    TEXT,     -- restrictions SQL
+    ANYARRAY, -- departures
+    ANYARRAY, -- destinations
+    BOOLEAN,  -- directed
+
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE 'c' VOLATILE;
+
+--v3.6
+CREATE FUNCTION _pgr_trspv4(
+    TEXT, -- edges SQL
+    TEXT, -- restrictions SQL
+    TEXT, -- combinations SQL
+    BOOLEAN,  -- directed
+
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE 'c' VOLATILE;
+
+COMMENT ON FUNCTION _pgr_trspv4(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
+IS 'pgRouting internal function';
+
+COMMENT ON FUNCTION _pgr_trspv4(TEXT, TEXT, TEXT, BOOLEAN)
+IS 'pgRouting internal function';
 
 --v2.6
 CREATE FUNCTION _trsp(
@@ -72,8 +116,11 @@ CREATE FUNCTION _v4trsp(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-'MODULE_PATHNAME'
-LANGUAGE 'c' VOLATILE;
+$BODY$
+  SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+  FROM _pgr_trspv4( $1, $2, $3, $4, $5);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT;
 
 --v3.4
 CREATE FUNCTION _v4trsp(
@@ -91,15 +138,18 @@ CREATE FUNCTION _v4trsp(
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
-'MODULE_PATHNAME'
-LANGUAGE 'c' VOLATILE;
+$BODY$
+  SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+  FROM _pgr_trspv4( $1, $2, $3, $4);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT;
 
 -- COMMENTS
 COMMENT ON FUNCTION _trsp(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
-IS 'pgRouting internal function';
+IS 'pgRouting internal function deprecated on v3.4.0';
 
 COMMENT ON FUNCTION _v4trsp(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
-IS 'pgRouting internal function';
+IS 'pgRouting internal function deprecated on v3.6.0';
 
 COMMENT ON FUNCTION _v4trsp(TEXT, TEXT, TEXT, BOOLEAN)
-IS 'pgRouting internal function';
+IS 'pgRouting internal function deprecated on v3.6.0';

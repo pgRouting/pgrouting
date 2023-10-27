@@ -45,6 +45,8 @@ SPI_pfree(void *pointer);
 }
 
 
+namespace pgrouting {
+
 /*! \fn pgr_alloc(std::size_t size, T *ptr)
 
 \brief allocates memory
@@ -83,5 +85,7 @@ pgr_free(T* ptr) {
 
 char *
 pgr_msg(const std::string &msg);
+
+}  // namespace pgrouting
 
 #endif  // INCLUDE_CPP_COMMON_PGR_ALLOC_HPP_

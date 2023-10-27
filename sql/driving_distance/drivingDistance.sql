@@ -2,7 +2,10 @@
 FILE: drivingDistance.sql
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: project@pgrouting.org
+Mail: vicky AT erosion.dev
+
+Copyright (c) 2023 Aryan Gupta
+Mail: guptaaryan1010 AT gmail.com
 
 ------
 
@@ -23,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 -- MULTIPLE
---v2.6
+--v3.6
 CREATE FUNCTION pgr_drivingDistance(
     TEXT,     -- edges_sql (required)
     ANYARRAY, -- from_vids (required)
@@ -32,16 +35,18 @@ CREATE FUNCTION pgr_drivingDistance(
     directed BOOLEAN DEFAULT TRUE,
     equicost BOOLEAN DEFAULT FALSE,
 
-    OUT seq INTEGER,
-    OUT from_v  BIGINT,
+    OUT seq BIGINT,
+    OUT depth  BIGINT,
+    OUT start_vid  BIGINT,
+    OUT pred BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT seq, from_v, node, edge, cost, agg_cost
-    FROM _pgr_drivingDistance(_pgr_get_statement($1), $2, $3, $4, $5);
+    SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
+    FROM _pgr_drivingDistancev4(_pgr_get_statement($1), $2, $3, $4, $5);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100
@@ -49,7 +54,7 @@ ROWS 1000;
 
 
 -- SINGLE
---v3.0
+--v3.6
 CREATE FUNCTION pgr_drivingDistance(
     TEXT,   -- edges_sql (required)
     BIGINT, -- from_vid (requierd)
@@ -57,15 +62,18 @@ CREATE FUNCTION pgr_drivingDistance(
 
     directed BOOLEAN DEFAULT TRUE,
 
-    OUT seq INTEGER,
+    OUT seq BIGINT,
+    OUT depth  BIGINT,
+    OUT start_vid  BIGINT,
+    OUT pred BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT seq, node, edge, cost, agg_cost
-    FROM _pgr_drivingDistance(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3, $4, false);
+    SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
+    FROM _pgr_drivingDistancev4(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3, $4, false);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100
@@ -97,3 +105,5 @@ IS 'pgr_drivingDistance(Multiple vertices)
 - Documentation:
    - ${PROJECT_DOC_LINK}/pgr_drivingDistance.html
 ';
+
+

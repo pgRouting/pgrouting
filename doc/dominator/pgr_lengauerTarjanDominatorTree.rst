@@ -56,7 +56,7 @@ Signatures
 
    | pgr_lengauerTarjanDominatorTree(`Edges SQL`_, **root vertex**)
 
-   | RETURNS SET OF |result-idom|
+   | Returns set of |result-idom|
    | OR EMPTY SET
 
 
@@ -91,7 +91,7 @@ Edges SQL
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 Returns set of ``(seq, vertex_id, idom)``

@@ -22,6 +22,14 @@
 
 .. rubric:: Availability
 
+* Version 3.6.0
+
+  * Standarizing output columns to |short-generic-result|
+
+    * ``pgr_bdAstar`` (`One to One`_) added ``start_vid`` and ``end_vid`` columns.
+    * ``pgr_bdAstar`` (`One to Many`_) added ``end_vid`` column.
+    * ``pgr_bdAstar`` (`Many to One`_) added ``start_vid`` column.
+
 * Version 3.2.0
 
   * New **proposed** signature:
@@ -48,7 +56,6 @@
 
   * **Official** ``pgr_bdAstar`` (`One to One`_)
 
-
 Description
 -------------------------------------------------------------------------------
 
@@ -61,12 +68,10 @@ Description
 * The results are equivalent to the union of the results of the `pgr_bdAStar(`
   `One to One`_ `)` on the:
 
-  * `pgr_bdAstar(` `One to Many`_ `)`
-  * `pgr_bdAstar(` `Many to One`_ `)`
-  * `pgr_bdAstar(` `Many to Many`_ `)`
-
-* ``start_vid`` and ``end_vid`` in the result is used to distinguish to which
-  path it belongs.
+  * ``pgr_bdAstar`` (`One to Many`_)
+  * ``pgr_bdAstar`` (`Many to One`_)
+  * ``pgr_bdAstar`` (`Many to Many`_)
+  * ``pgr_bdAstar`` (`Combinations`_)
 
 Signatures
 -------------------------------------------------------------------------------
@@ -83,7 +88,7 @@ Signatures
    | pgr_bdAstar(`Edges SQL`_, `Combinations SQL`_, [**options**])
    | **options:** ``[directed, heuristic, factor, epsilon]``
 
-   | RETURNS SET OF |old-generic-result|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 Optional parameters are `named parameters` and have a default value.
@@ -100,7 +105,7 @@ One to One
    | pgr_bdAstar(`Edges SQL`_, **start vid**, **end vid**, [**options**])
    | **options:** ``[directed, heuristic, factor, epsilon]``
 
-   | RETURNS SET OF |result-1-1|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertex :math:`12` on a **directed** graph
@@ -122,7 +127,7 @@ One to Many
    | pgr_bdAstar(`Edges SQL`_, **start vid**, **end vids**, [**options**])
    | **options:** ``[directed, heuristic, factor, epsilon]``
 
-   | RETURNS SET OF |result-1-m|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertices :math:`\{10, 12\}` on a **directed**
@@ -144,7 +149,7 @@ Many to One
    | pgr_bdAstar(`Edges SQL`_, **start vids**, **end vid**, [**options**])
    | **options:** ``[directed, heuristic, factor, epsilon]``
 
-   | RETURNS SET OF |result-m-1|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 8\}` to vertex :math:`10` on an
@@ -166,7 +171,7 @@ Many to Many
    | pgr_bdAstar(`Edges SQL`_, **start vids**, **end vids**, [**options**])
    | **options:** ``[directed, heuristic, factor, epsilon]``
 
-   | RETURNS SET OF |short-generic-result|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 8\}` to vertices :math:`\{10, 12\}` on a
@@ -188,7 +193,7 @@ Combinations
    | pgr_bdAstar(`Edges SQL`_, `Combinations SQL`_, [**options**])
    | **options:** ``[directed, heuristic, factor, epsilon]``
 
-   | RETURNS SET OF |short-generic-result|
+   | Returns set of |short-generic-result|
    | OR EMPTY SET
 
 :Example: Using a combinations table on a **directed** graph with factor
@@ -220,7 +225,7 @@ Optional parameters
     :start-after: dijkstra_optionals_start
     :end-before: dijkstra_optionals_end
 
-aStar optional Parameters
+aStar optional parameters
 ...............................................................................
 
 .. include:: aStar-family.rst
@@ -244,7 +249,7 @@ Combinations SQL
     :start-after: basic_combinations_sql_start
     :end-before: basic_combinations_sql_end
 
-Result Columns
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst

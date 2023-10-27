@@ -5,6 +5,7 @@ Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org
 
 Copyright (c) 2022 Celia Virginia Vergara Castillo
+Mail: vicky at erosion.dev
 * Added combinations functionality
 
 ------
@@ -45,14 +46,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/combinations.h"
 #include "c_types/restriction_t.h"
 #include "c_types/ii_t_rt.h"
-#include "dijkstra/pgr_dijkstra.hpp"
+#include "dijkstra/dijkstra.hpp"
 #include "withPoints/pgr_withPoints.hpp"
 
 
 namespace {
 
 void
-post_process_trsp(std::deque<Path> &paths, bool sort) {
+post_process_trsp(std::deque<pgrouting::Path> &paths, bool sort) {
+    using pgrouting::Path;
     paths.erase(std::remove_if(paths.begin(), paths.end(),
                 [](const Path &p) {
                 return p.size() == 0;
@@ -75,13 +77,12 @@ post_process_trsp(std::deque<Path> &paths, bool sort) {
 }
 
 template <class G>
-std::deque<Path>
+std::deque<pgrouting::Path>
 pgr_dijkstra(
         G &graph,
         std::map<int64_t, std::set<int64_t>> &combinations
         ) {
-    pgrouting::Pgr_dijkstra<G> fn_dijkstra;
-    auto paths = fn_dijkstra.dijkstra(
+    auto paths = pgrouting::algorithms::dijkstra(
             graph,
             combinations,
             false, (std::numeric_limits<size_t>::max)());
@@ -107,6 +108,11 @@ do_trsp(
         char** log_msg,
         char** notice_msg,
         char** err_msg) {
+    using pgrouting::Path;
+    using pgrouting::pgr_alloc;
+    using pgrouting::pgr_msg;
+    using pgrouting::pgr_free;
+
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;

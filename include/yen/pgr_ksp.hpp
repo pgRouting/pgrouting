@@ -2,8 +2,13 @@
 File: pgr_ksp.hpp
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Mail: vicky AT erosion.dev
 
+Copyright (c) 2023 Aniket Agarwal
+Mail: aniketgarg187 AT gmail.com
+
+Copyright (c) 2023 Abhinav Jain
+Mail: this.abhinav AT gmail.com
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -26,8 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_YEN_PGR_KSP_HPP_
 #pragma once
 
-#include "dijkstra/pgr_dijkstra.hpp"
-
+#include <map>
 #include <sstream>
 #include <deque>
 #include <vector>
@@ -35,6 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <limits>
 
+#include "dijkstra/dijkstra.hpp"
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/compPaths.h"
 #include "cpp_common/pgr_messages.h"
@@ -150,8 +155,7 @@ class Pgr_ksp :  public Pgr_messages {
      Path getFirstSolution(G &graph) {
          Path path;
 
-         Pgr_dijkstra< G > fn_dijkstra;
-         path = fn_dijkstra.dijkstra(graph, m_start, m_end);
+         path = algorithms::dijkstra(graph, m_start, m_end);
          path.recalculate_agg_cost();
 
          if (path.empty()) return path;
@@ -179,8 +183,7 @@ class Pgr_ksp :  public Pgr_messages {
 
              removeVertices(graph, rootPath);
 
-             Pgr_dijkstra< G > fn_dijkstra;
-             auto spurPath = fn_dijkstra.dijkstra(graph, spurNodeId, m_end);
+             auto spurPath = algorithms::dijkstra(graph, spurNodeId, m_end);
 
              if (spurPath.size() > 0) {
                  rootPath.appendPath(spurPath);
@@ -238,6 +241,37 @@ class Pgr_ksp :  public Pgr_messages {
 
 
 }  // namespace yen
+
+namespace algorithms {
+
+    template <class G>
+    std::deque<Path> Yen(
+        G &graph,
+        const std::map<int64_t, std::set<int64_t>> &combinations,
+        size_t k,
+        bool heap_paths) {
+        std::deque<Path> paths;
+        pgrouting::yen::Pgr_ksp<G> fn_yen;
+
+        for (const auto &c : combinations) {
+            if (!graph.has_vertex(c.first))
+                continue;
+
+            for (const auto &destination : c.second) {
+                if (!graph.has_vertex(destination))
+                    continue;
+
+                fn_yen.clear();
+                auto result_path = fn_yen.Yen(graph, c.first, destination, k, heap_paths);
+                paths.insert(paths.end(), result_path.begin(), result_path.end());
+            }
+        }
+
+        return paths;
+    }
+
+}  // namespace algorithms
+
 }  // namespace pgrouting
 
 #endif  // INCLUDE_YEN_PGR_KSP_HPP_

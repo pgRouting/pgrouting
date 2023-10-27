@@ -30,7 +30,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
 
 #include "c_types/ii_t_rt.h"
 #include "c_common/debug_macro.h"
@@ -50,6 +49,9 @@ process(
     II_t_rt **result_tuples,
     size_t *result_count) {
     pgr_SPI_connect();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
     PGR_DBG("Initializing arrays");
 
@@ -61,7 +63,8 @@ process(
     Edge_t *edges = NULL;
     size_t total_edges = 0;
 
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false);
+    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
+    throw_error(err_msg, edges_sql);
     PGR_DBG("Total %ld edges in query:", total_edges);
 
     if (total_edges == 0) {
@@ -71,9 +74,6 @@ process(
 
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
-    char *log_msg = NULL;
-    char *notice_msg = NULL;
-    char *err_msg = NULL;
     do_pgr_makeConnected(
         edges,
         total_edges,
@@ -174,7 +174,7 @@ PGDLLEXPORT Datum _pgr_makeconnected(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].d1.start_vid);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].d2.end_vid);
 

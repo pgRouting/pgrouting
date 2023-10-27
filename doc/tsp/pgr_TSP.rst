@@ -97,7 +97,7 @@ Description
         `(u, v)`
       - if ``agg_cost`` differs between one or more instances of edge `(u, v)`
       - The minimum value of the ``agg_cost`` all instances of edge `(u, v)`
-        is going to be considered as the ``agg_cost`` of edge  `(u, v)`
+        is going to be considered as the ``agg_cost`` of edge `(u, v)`
       - Some (or all) traveling costs on edges will still might not obey the
         triangle inequality.
 
@@ -118,7 +118,7 @@ Signatures
 
    | pgr_TSP(`Matrix SQL`_, ``[start_id, end_id]``)
 
-   | RETURNS SET OF |tsp-result|
+   | Returns set of |tsp-result|
    | OR EMTPY SET
 
 :Example: Using :doc:`pgr_dijkstraCostMatrix` to generate the matrix information
@@ -153,11 +153,19 @@ Inner Queries
 Matrix SQL
 ...............................................................................
 
-.. include:: ../../src/common/matrixRows_input.c
-   :start-after: Matrix SQL definition start
-   :end-before: Matrix SQL definition end
+.. Matrix SQL definition start
 
-Result Columns
+============= ================= =================================================
+Column        Type              Description
+============= ================= =================================================
+``start_vid`` ``ANY-INTEGER``   Identifier of the starting vertex.
+``end_vid``   ``ANY-INTEGER``   Identifier of the ending vertex.
+``agg_cost``  ``ANY-NUMERICAL`` Cost for going from start_vid to end_vid
+============= ================= =================================================
+
+.. Matrix SQL definition end
+
+Result columns
 -------------------------------------------------------------------------------
 
 .. include:: ../../include/c_types/tsp_tour_rt.h
