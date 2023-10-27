@@ -7,15 +7,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_connectedComponents &#8212; pgRouting Manual (3.5)</title>
+    <title>pgr_connectedComponents &#8212; pgRouting Manual (3.6-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=ad3010e5"></script>
+    <script src="_static/documentation_options.js?v=d72ce231"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=8e7fbbe4"></script>
+    <script src="_static/page_history.js?v=22781fca"></script>
     <script src="_static/translations.js?v=efdbd0b9"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
@@ -46,7 +46,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.5.1</b></span>
+        <span class="navbar-text pull-left"><b>v3.6.0-dev</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -105,15 +105,15 @@
 <li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
+<li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
 <li><a class="reference internal" href="#connecting-disconnected-components">Conectando componentes desconectados</a><ul>
-<li><a class="reference internal" href="#prepare-storage-for-connection-information">Prepare storage for connection information</a></li>
-<li><a class="reference internal" href="#save-the-vertices-connection-information">Save the vertices connection information</a></li>
-<li><a class="reference internal" href="#save-the-edges-connection-information">Save the edges connection information</a></li>
-<li><a class="reference internal" href="#get-the-closest-vertex">Get the closest vertex</a></li>
+<li><a class="reference internal" href="#prepare-storage-for-connection-information">Preparar el almacenamiento de la información de conexión</a></li>
+<li><a class="reference internal" href="#save-the-vertices-connection-information">Guardar la información de conexión de los vértices</a></li>
+<li><a class="reference internal" href="#save-the-edges-connection-information">Guardar la información de conexión de las aristas</a></li>
+<li><a class="reference internal" href="#get-the-closest-vertex">Obtener el vértice más cercano</a></li>
 <li><a class="reference internal" href="#connecting-components">Conectando componentes</a></li>
-<li><a class="reference internal" href="#checking-components">Checking components</a></li>
+<li><a class="reference internal" href="#checking-components">Revisando componentes</a></li>
 </ul>
 </li>
 </ul>
@@ -182,7 +182,7 @@
 <ul class="simple">
 <li><p>Versión 3.0.0</p>
 <ul>
-<li><p>Las columnas de retorno cambian:</p>
+<li><p>Las columnas de resultados cambian:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">n_seq</span></code> se elimina</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">seq</span></code> cambió el tipo a <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>”</p></li>
@@ -221,7 +221,7 @@
 <div class="line">pgr_connectedComponents(<a class="reference internal" href="#edges-sql">SQL de aristas</a>)</div>
 </div>
 <div class="line-block">
-<div class="line">REGRESA CONJUNTO DE <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">component,</span> <span class="pre">node)</span></code></div>
+<div class="line">Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">component,</span> <span class="pre">node)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -339,7 +339,7 @@
 </section>
 </section>
 <section id="result-columns">
-<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<h2>Columnas de resultados<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
 <p>Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">component,</span> <span class="pre">node)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <thead>
@@ -400,16 +400,14 @@
 
 </pre></div>
 </div>
-<p>In this example, the component <span class="math notranslate nohighlight">\(2\)</span> consists of vertices <span class="math notranslate nohighlight">\(\{2, 4\}\)</span>
-and both vertices are also part of the dead end result set.</p>
-<p>This graph needs to be connected.</p>
+<p>En este ejemplo, el componente <span class="math notranslate nohighlight">\(2\)</span> está formado por vértices <span class="math notranslate nohighlight">\(\{2, 4\}\)</span> y ambos vértices también forman parte del conjunto de resultados sin salida.</p>
+<p>Este grafo debe estar conectado.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>With the original graph of this documentation, there would be 3 components as
-the crossing edge in this graph is a different component.</p>
+<p>Con el grafo original de esta documentación, habría 3 componentes, ya que la arista de cruce en este grafo es un componente diferente.</p>
 </div>
 <section id="prepare-storage-for-connection-information">
-<h4>Prepare storage for connection information<a class="headerlink" href="#prepare-storage-for-connection-information" title="Link to this heading">¶</a></h4>
+<h4>Preparar el almacenamiento de la información de conexión<a class="headerlink" href="#prepare-storage-for-connection-information" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">vertices</span> <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">component</span> <span class="n">BIGINT</span><span class="p">;</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">component</span> <span class="n">BIGINT</span><span class="p">;</span>
@@ -418,7 +416,7 @@ the crossing edge in this graph is a different component.</p>
 </div>
 </section>
 <section id="save-the-vertices-connection-information">
-<h4>Save the vertices connection information<a class="headerlink" href="#save-the-vertices-connection-information" title="Link to this heading">¶</a></h4>
+<h4>Guardar la información de conexión de los vértices<a class="headerlink" href="#save-the-vertices-connection-information" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span> <span class="n">SET</span> <span class="n">component</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">component</span>
 <span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
@@ -429,7 +427,7 @@ the crossing edge in this graph is a different component.</p>
 </div>
 </section>
 <section id="save-the-edges-connection-information">
-<h4>Save the edges connection information<a class="headerlink" href="#save-the-edges-connection-information" title="Link to this heading">¶</a></h4>
+<h4>Guardar la información de conexión de las aristas<a class="headerlink" href="#save-the-edges-connection-information" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">SET</span> <span class="n">component</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">component</span>
 <span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">component</span> <span class="n">FROM</span> <span class="n">vertices</span><span class="p">)</span> <span class="n">AS</span> <span class="n">v</span>
 <span class="n">WHERE</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
@@ -438,9 +436,8 @@ the crossing edge in this graph is a different component.</p>
 </div>
 </section>
 <section id="get-the-closest-vertex">
-<h4>Get the closest vertex<a class="headerlink" href="#get-the-closest-vertex" title="Link to this heading">¶</a></h4>
-<p>Using <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> the closest vertex to component <span class="math notranslate nohighlight">\(1\)</span> is
-vertex <span class="math notranslate nohighlight">\(4\)</span>. And the closest edge to vertex <span class="math notranslate nohighlight">\(4\)</span> is edge <span class="math notranslate nohighlight">\(14\)</span>.</p>
+<h4>Obtener el vértice más cercano<a class="headerlink" href="#get-the-closest-vertex" title="Link to this heading">¶</a></h4>
+<p>Usando <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> el vértice más cercano al componente <span class="math notranslate nohighlight">\(1\)</span> es el vértice <span class="math notranslate nohighlight">\(4\)</span>. Y la arista más cercana al vértice <span class="math notranslate nohighlight">\(4\)</span> es la arista <span class="math notranslate nohighlight">\(14\)</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge_id, fraction, ST_AsText(edge) AS edge, id AS closest_vertex
 FROM pgr_findCloseEdges(
   $$SELECT id, geom FROM edges WHERE component = 1$$,
@@ -453,22 +450,21 @@ FROM pgr_findCloseEdges(
 
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">edge</span></code> can be used to connect the components, using the <code class="docutils literal notranslate"><span class="pre">fraction</span></code>
-information about the edge <span class="math notranslate nohighlight">\(14\)</span> to split the connecting edge.</p>
+<p>La arista <code class="docutils literal notranslate"><span class="pre">edge</span></code> se puede utilizar para conectar los componentes, utilizando la información <code class="docutils literal notranslate"><span class="pre">fraction</span></code> sobre la arista <span class="math notranslate nohighlight">\(14\)</span> para dividir la arista de conexión.</p>
 </section>
 <section id="connecting-components">
 <h4>Conectando componentes<a class="headerlink" href="#connecting-components" title="Link to this heading">¶</a></h4>
-<p>There are three basic ways to connect the components</p>
+<p>Existen tres formas básicas de conectar los componentes</p>
 <ul class="simple">
-<li><p>From the vertex to the starting point of the edge</p></li>
-<li><p>From the vertex to the ending point of the edge</p></li>
-<li><p>From the vertex to the closest vertex on the edge</p>
+<li><p>Del vértice al punto inicial de la arista</p></li>
+<li><p>Desde el vértice hasta el punto final de la arista</p></li>
+<li><p>Del vértice al vértice más cercano de la arista</p>
 <ul>
-<li><p>This solution requires the edge to be split.</p></li>
+<li><p>Esta solución requiere dividir el borde.</p></li>
 </ul>
 </li>
 </ul>
-<p>The following query shows the three ways to connect the components:</p>
+<p>La siguiente consulta muestra las tres formas de conectar los componentes:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WITH
 info AS (
   SELECT
@@ -519,9 +515,8 @@ INSERT 0 2
 </div>
 </section>
 <section id="checking-components">
-<h4>Checking components<a class="headerlink" href="#checking-components" title="Link to this heading">¶</a></h4>
-<p>Ignoring the edge that requires further work. The graph is now fully connected
-as there is only one component.</p>
+<h4>Revisando componentes<a class="headerlink" href="#checking-components" title="Link to this heading">¶</a></h4>
+<p>Ignorando la arista que requiere más trabajo. El grafo está ahora totalmente conectado, ya que sólo hay un componente.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
 <span class="p">);</span>
@@ -580,8 +575,8 @@ as there is only one component.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.5.1.<br/>
-      Actualizado por última vez en sept 25, 2023.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
+      Actualizado por última vez en oct 27, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

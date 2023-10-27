@@ -7,15 +7,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Dijkstra - Familia de funciones &#8212; pgRouting Manual (3.5)</title>
+    <title>Dijkstra - Familia de funciones &#8212; pgRouting Manual (3.6-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=ad3010e5"></script>
+    <script src="_static/documentation_options.js?v=d72ce231"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=8e7fbbe4"></script>
+    <script src="_static/page_history.js?v=22781fca"></script>
     <script src="_static/translations.js?v=efdbd0b9"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
@@ -46,7 +46,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.5.1</b></span>
+        <span class="navbar-text pull-left"><b>v3.6.0-dev</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -191,7 +191,7 @@
 </ul>
 </div>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a> - Obtenga una ruta a partir de una secuencia de vértices.</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Propuesto</span></a> - Obtenga una ruta a partir de una secuencia de vértices.</p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - Propuesto</span></a> - Obtener la ruta al vértice más cercano.</p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - Propuesto</span></a> - Consigue el costo del vértice más cercano.</p></li>
 </ul>
@@ -401,7 +401,7 @@
 <p class="rubric">Grafo dirigido</p>
 <p>El gráfico dirigido ponderado, <span class="math notranslate nohighlight">\(G_d(V,E)\)</span>, se define por:</p>
 <ul class="simple">
-<li><p>Conjunto de vértices <span class="math notranslate nohighlight">\(V\)</span></p>
+<li><p>El conjunto de vértices <span class="math notranslate nohighlight">\(V\)</span></p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(V = source \cup target \cup {start_{vid}} \cup {end_{vid}}\)</span></p></li>
 </ul>
@@ -415,7 +415,7 @@
 <p class="rubric">Grafo no dirigido</p>
 <p>El grafo ponderado no dirigido <span class="math notranslate nohighlight">\(G_u(V,E)\)</span>, es definido por:</p>
 <ul class="simple">
-<li><p>Conjunto de vértices <span class="math notranslate nohighlight">\(V\)</span></p>
+<li><p>El conjunto de vértices <span class="math notranslate nohighlight">\(V\)</span></p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(V = source \cup target \cup {start_v{vid}} \cup {end_{vid}}\)</span></p></li>
 </ul>
@@ -441,7 +441,7 @@ G_u(V,E) &amp; \quad \text{ if5 } directed = false \\
 <li><p><span class="math notranslate nohighlight">\(\boldsymbol{\pi} = \{(path\_seq_i, node_i, edge_i, cost_i, agg\_cost_i)\}\)</span></p></li>
 </ul>
 <dl class="simple">
-<dt>Donde:</dt><dd><ul class="simple">
+<dt>donde:</dt><dd><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(path\_seq_i = i\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(path\_seq_{| \pi |} = | \pi |\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(node_i \in V\)</span></p></li>
@@ -485,8 +485,8 @@ G_u(V,E) &amp; \quad \text{ if5 } directed = false \\
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.5.1.<br/>
-      Actualizado por última vez en sept 25, 2023.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
+      Actualizado por última vez en oct 27, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

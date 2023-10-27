@@ -7,15 +7,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_trspVia_withPoints - Proposed &#8212; pgRouting Manual (3.5)</title>
+    <title>pgr_trspVia_withPoints - Proposed &#8212; pgRouting Manual (3.6-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=ad3010e5"></script>
+    <script src="_static/documentation_options.js?v=d72ce231"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=8e7fbbe4"></script>
+    <script src="_static/page_history.js?v=22781fca"></script>
     <script src="_static/translations.js?v=efdbd0b9"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
@@ -46,7 +46,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.5.1</b></span>
+        <span class="navbar-text pull-left"><b>v3.6.0-dev</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -115,7 +115,7 @@
 <li><a class="reference internal" href="#points-sql">SQL de puntos</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
+<li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
 <li><a class="reference internal" href="#use-pgr-findcloseedges-for-points-on-the-fly">Use <code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code> for points on the fly</a></li>
 <li><a class="reference internal" href="#usage-variations">Variaciones de uso</a><ul>
@@ -225,7 +225,7 @@ shortest path between <span class="math notranslate nohighlight">\(vertex_i\)</s
 <span class="math notranslate nohighlight">\(vertex\)</span> can be a vertex or a point on the graph) for all <span class="math notranslate nohighlight">\(i &lt;
 size\_of(via\;vertices)\)</span> trying not to use restricted paths.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Route<span class="colon">:</span></dt>
+<dt class="field-odd">Ruta<span class="colon">:</span></dt>
 <dd class="field-odd"><p>is a sequence of paths</p>
 </dd>
 <dt class="field-even">Path<span class="colon">:</span></dt>
@@ -260,11 +260,11 @@ size\_of(via\;vertices)\)</span> trying not to use restricted paths.</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_trspVia_withPoints(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#points-sql">SQL de restricciones</a>, <a class="reference internal" href="#points-sql">SQL de puntos</a>, <strong>vertices</strong>, [<strong>opciones</strong>])</div>
-<div class="line"><strong>opciones:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">strict,</span> <span class="pre">U_turn_on_edge]</span></code></div>
+<div class="line">pgr_trspVia_withPoints(<a class="reference internal" href="#restrictions-sql">SQL de aristas</a>, <a class="reference internal" href="#points-sql">SQL de restricciones</a>, <a class="reference internal" href="#points-sql">SQL de puntos</a>, <strong>vertices</strong>, [<strong>opciones</strong>])</div>
+<div class="line"><strong>opcionales:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">strict,</span> <span class="pre">U_turn_on_edge]</span></code></div>
 </div>
 <div class="line-block">
-<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost,</span> <span class="pre">route_agg_cost)</span></code></div>
+<div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost,</span> <span class="pre">route_agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -342,7 +342,7 @@ order on an directed graph.</p>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT,</span> <span class="pre">INTEGER,</span> <span class="pre">BIGINT</span></code></p>
 </dd>
 <dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+<dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
 </dd>
 </dl>
 <section id="optional-parameters">
@@ -604,7 +604,7 @@ order on an directed graph.</p>
 </section>
 </section>
 <section id="result-columns">
-<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<h2>Columnas de resultados<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14.0%" />
@@ -1074,8 +1074,8 @@ In this case a U turn is been done using the same edge.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.5.1.<br/>
-      Actualizado por última vez en sept 25, 2023.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
+      Actualizado por última vez en oct 27, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

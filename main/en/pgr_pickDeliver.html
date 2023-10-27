@@ -7,15 +7,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_pickDeliver - Experimental &#8212; pgRouting Manual (3.5)</title>
+    <title>pgr_pickDeliver - Experimental &#8212; pgRouting Manual (3.6-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=d2e18fc2"></script>
+    <script src="_static/documentation_options.js?v=a8fd7d16"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=8e7fbbe4"></script>
+    <script src="_static/page_history.js?v=22781fca"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -45,7 +45,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.5.1</b></span>
+        <span class="navbar-text pull-left"><b>v3.6.0-dev</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -107,7 +107,7 @@
 <li><a class="reference internal" href="#matrix-sql">Matrix SQL</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#return-columns">Return columns</a></li>
+<li><a class="reference internal" href="#result-columns">Result columns</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -258,7 +258,7 @@ vehicles.</p>
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[factor,</span> <span class="pre">max_cycles,</span> <span class="pre">initial_sol]</span></code></div>
 </div>
 <div class="line-block">
-<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">vehicle_number,</span> <span class="pre">vehicle_id,</span> <span class="pre">stop,</span> <span class="pre">order_id,</span> <span class="pre">stop_type,</span> <span class="pre">cargo,</span> <span class="pre">travel_time,</span> <span class="pre">arrival_time,</span> <span class="pre">wait_time,</span> <span class="pre">service_time,</span> <span class="pre">departure_time)</span></code></div>
+<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">vehicle_number,</span> <span class="pre">vehicle_id,</span> <span class="pre">stop,</span> <span class="pre">order_id,</span> <span class="pre">stop_type,</span> <span class="pre">cargo,</span> <span class="pre">travel_time,</span> <span class="pre">arrival_time,</span> <span class="pre">wait_time,</span> <span class="pre">service_time,</span> <span class="pre">departure_time)</span></code></div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -602,11 +602,11 @@ in the <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p>
 </dl>
 </section>
 </section>
-<section id="return-columns">
-<h2>Return columns<a class="headerlink" href="#return-columns" title="Link to this heading">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RETURNS</span> <span class="n">SET</span> <span class="n">OF</span>
+<section id="result-columns">
+<h2>Result columns<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Returns</span> <span class="nb">set</span> <span class="n">of</span>
  <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">vehicle_seq</span><span class="p">,</span> <span class="n">vehicle_id</span><span class="p">,</span> <span class="n">stop_seq</span><span class="p">,</span> <span class="n">stop_type</span><span class="p">,</span>
-     <span class="n">travel_time</span><span class="p">,</span> <span class="n">arrival_time</span><span class="p">,</span> <span class="n">wait_time</span><span class="p">,</span> <span class="n">service_time</span><span class="p">,</span>  <span class="n">departure_time</span><span class="p">)</span>
+     <span class="n">travel_time</span><span class="p">,</span> <span class="n">arrival_time</span><span class="p">,</span> <span class="n">wait_time</span><span class="p">,</span> <span class="n">service_time</span><span class="p">,</span> <span class="n">departure_time</span><span class="p">)</span>
  <span class="n">UNION</span>
  <span class="p">(</span><span class="n">summary</span> <span class="n">row</span><span class="p">)</span>
 </pre></div>
@@ -783,8 +783,8 @@ vehicle.</p></li>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.5.1.<br/>
-      Last updated on Sep 25, 2023.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
+      Last updated on Oct 27, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

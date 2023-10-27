@@ -7,15 +7,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_createTopology &#8212; pgRouting Manual (3.5)</title>
+    <title>pgr_createTopology &#8212; pgRouting Manual (3.6-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=d2e18fc2"></script>
+    <script src="_static/documentation_options.js?v=a8fd7d16"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=8e7fbbe4"></script>
+    <script src="_static/page_history.js?v=22781fca"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -44,7 +44,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.5.1</b></span>
+        <span class="navbar-text pull-left"><b>v3.6.0-dev</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -207,18 +207,18 @@ created.</p></li>
 <p>The topology creation function accepts the following parameters:</p>
 <dl class="field-list simple">
 <dt class="field-odd">edge_table<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Network table name. (may contain the schema name AS well)</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Network table name. (may contain the schema name as well)</p>
 </dd>
 <dt class="field-even">tolerance<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code> Snapping tolerance of disconnected edges. (in projection
 unit)</p>
 </dd>
 <dt class="field-odd">the_geom<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  Geometry column name of the network table. Default value is
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Geometry column name of the network table. Default value is
 <code class="docutils literal notranslate"><span class="pre">the_geom</span></code>.</p>
 </dd>
 <dt class="field-even">id<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  Primary key column name of the network table. Default value is
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Primary key column name of the network table. Default value is
 <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
 </dd>
 <dt class="field-odd">source<span class="colon">:</span></dt>
@@ -226,16 +226,16 @@ unit)</p>
 <code class="docutils literal notranslate"><span class="pre">source</span></code>.</p>
 </dd>
 <dt class="field-even">target<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  Target column name of the network table.  Default value is
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Target column name of the network table. Default value is
 <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
 </dd>
 <dt class="field-odd">rows_where<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>   Condition to SELECT a subset or rows.  Default value is
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Condition to SELECT a subset or rows. Default value is
 <code class="docutils literal notranslate"><span class="pre">true</span></code> to indicate all rows that where <code class="docutils literal notranslate"><span class="pre">source</span></code> or <code class="docutils literal notranslate"><span class="pre">target</span></code>
 have a null value, otherwise the condition is used.</p>
 </dd>
 <dt class="field-even">clean<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code> Clean any previous topology.  Default value is <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code> Clean any previous topology. Default value is <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
 </dd>
 </dl>
 <div class="admonition warning">
@@ -291,7 +291,7 @@ appropriate type.</p></li>
 vertex. See <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</p>
 </dd>
 <dt class="field-odd">chk<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code>  Indicator that the vertex might have a problem. See
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Indicator that the vertex might have a problem. See
 <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</p>
 </dd>
 <dt class="field-even">ein<span class="colon">:</span></dt>
@@ -325,8 +325,9 @@ vertex AS outgoing. See <a class="reference internal" href="pgr_analyzeOneWay.ht
 
 </pre></div>
 </div>
-<p class="rubric">When the arguments are given in the order described:</p>
-<p>We get the same result AS the simplest way to use the function.</p>
+<p class="rubric">When the arguments are given in the order described in the
+parameters:</p>
+<p>We get the sameresult as the simplest way to use the function.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
     <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
@@ -752,8 +753,8 @@ the rest of the edges.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.5.1.<br/>
-      Last updated on Sep 25, 2023.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
+      Last updated on Oct 27, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

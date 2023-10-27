@@ -7,15 +7,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_createTopology &#8212; pgRouting Manual (3.5)</title>
+    <title>pgr_createTopology &#8212; pgRouting Manual (3.6-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=ad3010e5"></script>
+    <script src="_static/documentation_options.js?v=d72ce231"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=8e7fbbe4"></script>
+    <script src="_static/page_history.js?v=22781fca"></script>
     <script src="_static/translations.js?v=efdbd0b9"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
@@ -45,7 +45,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.5.1</b></span>
+        <span class="navbar-text pull-left"><b>v3.6.0-dev</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -194,7 +194,7 @@
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_createTopology(edge_table, tolerance, [<strong>options</strong>])</div>
-<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[the_geom,</span> <span class="pre">id,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">rows_where,</span> <span class="pre">clean]</span></code></div>
+<div class="line"><strong>opcionales:</strong> <code class="docutils literal notranslate"><span class="pre">[the_geom,</span> <span class="pre">id,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">rows_where,</span> <span class="pre">clean]</span></code></div>
 </div>
 <div class="line-block">
 <div class="line">RETURNS <code class="docutils literal notranslate"><span class="pre">VARCHAR</span></code></div>
@@ -212,22 +212,22 @@
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code> ajuste tolerancia de bordes desconectados. (en la unidad de proyección)</p>
 </dd>
 <dt class="field-odd">the_geom<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  nombre de la columna de la geometría en la tabla de la red. El valor por defecto es <code class="docutils literal notranslate"><span class="pre">the_geom</span></code>.</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> nombre de la columna de la geometría en la tabla de la red. El valor por defecto es <cite>the_geom`</cite>.</p>
 </dd>
 <dt class="field-even">id<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text``Nombre</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">columna</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">clave</span> <span class="pre">principal</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">tabla</span> <span class="pre">de</span> <span class="pre">red.</span> <span class="pre">Valor</span> <span class="pre">por</span> <span class="pre">defecto</span> <span class="pre">es</span> <span class="pre">``id</span></code>.</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text``Nombre</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">columna</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">clave</span> <span class="pre">principal</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">tabla</span> <span class="pre">de</span> <span class="pre">red.</span> <span class="pre">Valor</span> <span class="pre">por</span> <span class="pre">defecto</span> <span class="pre">es</span> <span class="pre">``id</span></code>”.</p>
 </dd>
 <dt class="field-odd">source<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">id``Nombre</span> <span class="pre">de</span> <span class="pre">columna</span> <span class="pre">de</span> <span class="pre">origen</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">tabla</span> <span class="pre">de</span> <span class="pre">red.</span> <span class="pre">El</span> <span class="pre">valor</span> <span class="pre">predeterminado</span> <span class="pre">es``source</span></code>.</p>
 </dd>
 <dt class="field-even">target<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> El nombre de la columna del nodo de llegada del segmento.  El valor por defecto es <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> El nombre de la columna del destino del segmento. El valor por defecto es <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
 </dd>
 <dt class="field-odd">rows_where<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>   Condición para SELECCIONAR un subconjunto de filas.  El valor predeterminado es <code class="docutils literal notranslate"><span class="pre">true</span></code> para indicar todas las filas donde <code class="docutils literal notranslate"><span class="pre">source</span></code> o <code class="docutils literal notranslate"><span class="pre">target</span></code> tienen un valor nulo, de lo contrario se utiliza la condición.</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Condición para SELECCIONAR un subconjunto de filas. El valor predeterminado es <code class="docutils literal notranslate"><span class="pre">true</span></code> para indicar todas las filas donde <code class="docutils literal notranslate"><span class="pre">source</span></code> o <code class="docutils literal notranslate"><span class="pre">target</span></code> tienen un valor nulo, de lo contrario se utiliza la condición.</p>
 </dd>
 <dt class="field-even">limpio<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code> Limpie cualquier topología previa. El valor predeterminado es <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code> Limpia cualquier topología anterior. El valor por defecto es <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
 </dd>
 </dl>
 <div class="admonition warning">
@@ -278,7 +278,7 @@
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Número de vértices en la edge_table que referencian este vértice. Ver <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</p>
 </dd>
 <dt class="field-odd">chk<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Indicador de que el vértice podría tener un problema. Consulte <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Indicador de que el vértice puede tener un problema. Véase <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</p>
 </dd>
 <dt class="field-even">ein<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Número de vértices en edge_table que referencian a este vértice como (AS) entrante. Ver <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</p>
@@ -310,7 +310,7 @@
 </pre></div>
 </div>
 <p class="rubric">Cuando los argumentos se escriben en el orden descrito en los parámetros:</p>
-<p>Obtenemos el mismo resultado que la forma más sencilla de utilizar la función.</p>
+<p>Se obtiene el mismo resultado que la forma más sencilla de utilizar la función.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
     <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
@@ -330,10 +330,7 @@
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
-<p>An error would occur when the arguments are not given in the appropriate
-order: In this example, the column <code class="docutils literal notranslate"><span class="pre">id</span></code> of the table <code class="docutils literal notranslate"><span class="pre">ege_table</span></code> is
-passed to the function as the geometry column, and the geometry column
-<code class="docutils literal notranslate"><span class="pre">the_geom</span></code> is passed to the function as the id column.</p>
+<p>Un error puede ocurrir cuando los argumentos no se dan en el orden adecuado: en este ejemplo, la columna <code class="docutils literal notranslate"><span class="pre">id</span></code> de la tabla <code class="docutils literal notranslate"><span class="pre">egde_table</span></code> se pasa a la función como columna de geometría, y la columna de geometría``the_geom`` se pasa a la función como columna <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
     <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
@@ -431,10 +428,7 @@ passed to the function as the geometry column, and the geometry column
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
-<p>An error would occur when the arguments are not given in the appropiriate
-order: In this example, the column <code class="docutils literal notranslate"><span class="pre">gid</span></code> of the table <code class="docutils literal notranslate"><span class="pre">mytable</span></code> is passed
-to the function AS the geometry column, and the geometry column <code class="docutils literal notranslate"><span class="pre">mygeom</span></code> is
-passed to the function AS the id column.</p>
+<p>Un error puede ocurrir cuando los argumentos no se dan en el orden adecuado: en este ejemplo, la columna <code class="docutils literal notranslate"><span class="pre">gid</span></code> de la tabla <code class="docutils literal notranslate"><span class="pre">mytable</span></code> se pasa a la función como la columna de geometría, y la columna de geometría``mygeom`` se pasa a la función como columna <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
@@ -728,8 +722,8 @@ passed to the function AS the id column.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.5.1.<br/>
-      Actualizado por última vez en sept 25, 2023.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
+      Actualizado por última vez en oct 27, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

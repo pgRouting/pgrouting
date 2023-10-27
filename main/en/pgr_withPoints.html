@@ -7,15 +7,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_withPoints - Proposed &#8212; pgRouting Manual (3.5)</title>
+    <title>pgr_withPoints - Proposed &#8212; pgRouting Manual (3.6-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=d2e18fc2"></script>
+    <script src="_static/documentation_options.js?v=a8fd7d16"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=8e7fbbe4"></script>
+    <script src="_static/page_history.js?v=22781fca"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -45,7 +45,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.5.1</b></span>
+        <span class="navbar-text pull-left"><b>v3.6.0-dev</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -117,7 +117,7 @@
 <li><a class="reference internal" href="#combinations-sql">Combinations SQL</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#result-columns">Result Columns</a></li>
+<li><a class="reference internal" href="#result-columns">Result columns</a></li>
 <li><a class="reference internal" href="#additional-examples">Additional Examples</a><ul>
 <li><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql">Use <span class="xref std std-doc">pgr_findCloseEdges</span> in the Points SQL.</a></li>
 <li><a class="reference internal" href="#usage-variations">Usage variations</a><ul>
@@ -268,7 +268,7 @@ are ignored.</p></li>
 <div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">driving_side,</span> <span class="pre">details])</span></code></div>
 </div>
 <div class="line-block">
-<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">[start_pid],</span> <span class="pre">[end_pid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">[start_pid],</span> <span class="pre">[end_pid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMTPY SET</div>
 </div>
 </div>
@@ -281,7 +281,7 @@ are ignored.</p></li>
 <div class="line"><strong>options:</strong> [directed, driving_side, details])</div>
 </div>
 <div class="line-block">
-<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMTPY SET</div>
 </div>
 </div>
@@ -319,7 +319,7 @@ are ignored.</p></li>
 <div class="line"><strong>options:</strong> [directed, driving_side, details])</div>
 </div>
 <div class="line-block">
-<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">end_pid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">end_pid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMTPY SET</div>
 </div>
 </div>
@@ -358,7 +358,7 @@ undirected graph</p>
 <div class="line"><strong>options:</strong> [directed, driving_side, details])</div>
 </div>
 <div class="line-block">
-<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_pid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_pid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMTPY SET</div>
 </div>
 </div>
@@ -396,13 +396,13 @@ undirected graph</p>
 <div class="line"><strong>options:</strong> [directed, driving_side, details])</div>
 </div>
 <div class="line-block">
-<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMTPY SET</div>
 </div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> and vertex <span class="math notranslate nohighlight">\(6\)</span>  to point <span class="math notranslate nohighlight">\(3\)</span> and
+<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> and vertex <span class="math notranslate nohighlight">\(6\)</span> to point <span class="math notranslate nohighlight">\(3\)</span> and
 vertex <span class="math notranslate nohighlight">\(1\)</span></p>
 </dd>
 </dl>
@@ -444,7 +444,7 @@ vertex <span class="math notranslate nohighlight">\(1\)</span></p>
 <div class="line"><strong>options:</strong> [directed, driving_side, details])</div>
 </div>
 <div class="line-block">
-<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_pid,</span> <span class="pre">end_pid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMTPY SET</div>
 </div>
 </div>
@@ -755,7 +755,7 @@ point of the edge.</p></td>
 </section>
 </section>
 <section id="result-columns">
-<h2>Result Columns<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<h2>Result columns<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
 <p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_pid]</span> <span class="pre">[,</span> <span class="pre">end_pid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span>
 <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
@@ -789,7 +789,7 @@ point of the edge.</p></td>
 <ul class="simple">
 <li><p>When positive is the identifier of the starting vertex.</p></li>
 <li><p>When negative is the identifier of the starting point.</p></li>
-<li><p>Returned on <a class="reference internal" href="#many-to-one">Many to One</a>  and <a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
+<li><p>Returned on <a class="reference internal" href="#many-to-one">Many to One</a> and <a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
 </ul>
 </td>
 </tr>
@@ -886,8 +886,8 @@ of point <cite>(2.9, 1.8)</cite>.</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Point <span class="math notranslate nohighlight">\(-1\)</span> corresponds to the closest edge from point <cite>(2.9,1.8)</cite>.</p></li>
-<li><p>Point <span class="math notranslate nohighlight">\(-2\)</span> corresponds to the next close edge from point <cite>(2.9,1.8)</cite>.</p></li>
+<li><p>Point <span class="math notranslate nohighlight">\(-1\)</span> corresponds to the closest edge from point <cite>(2.9, 1.8)</cite>.</p></li>
+<li><p>Point <span class="math notranslate nohighlight">\(-2\)</span> corresponds to the next close edge from point <cite>(2.9, 1.8)</cite>.</p></li>
 </ul>
 </section>
 <section id="usage-variations">
@@ -1078,8 +1078,8 @@ to points <span class="math notranslate nohighlight">\(\{2, 3, 6\}\)</span> and 
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.5.1.<br/>
-      Last updated on Sep 25, 2023.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
+      Last updated on Oct 27, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

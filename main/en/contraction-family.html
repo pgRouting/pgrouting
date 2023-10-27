@@ -7,15 +7,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Contraction - Family of functions &#8212; pgRouting Manual (3.5)</title>
+    <title>Contraction - Family of functions &#8212; pgRouting Manual (3.6-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=d2e18fc2"></script>
+    <script src="_static/documentation_options.js?v=a8fd7d16"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=8e7fbbe4"></script>
+    <script src="_static/page_history.js?v=22781fca"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -45,7 +45,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.5.1</b></span>
+        <span class="navbar-text pull-left"><b>v3.6.0-dev</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -283,7 +283,7 @@ done.</p>
 <li><p>The green nodes are <a class="reference internal" href="#dead-end">dead end</a> nodes</p></li>
 <li><p>The blue nodes have an unlimited number of incoming and/or outgoing edges.</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-5efe3d7b813da1c75d98039a1a2825ccb5f14744.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-c8e8001a0f075b45b5ef94157808fa302e8b62a7.png" alt="digraph G {
     u, v, w, x, y [shape=circle;style=filled;width=.4;color=deepskyblue];
     a, b, c, d, e [style=filled; color=green];
     G [shape=tripleoctagon;width=1.5;style=filled;
@@ -291,7 +291,7 @@ done.</p>
 
     rankdir=LR;
     G -&gt; {u, v, w} [dir=none, weight=1, penwidth=3];
-    {x, y} -&gt; G  [dir=none, weight=1, penwidth=3];
+    {x, y} -&gt; G [dir=none, weight=1, penwidth=3];
     u -&gt; a -&gt; u;
     v -&gt; b;
     {w, v} -&gt; c;
@@ -514,7 +514,7 @@ nodes:</p>
 <p>Contracting <span class="math notranslate nohighlight">\(w\)</span>,</p>
 <ul class="simple">
 <li><p>The vertex <span class="math notranslate nohighlight">\(w\)</span> is removed from the graph</p></li>
-<li><p>The edges <span class="math notranslate nohighlight">\(v \rightarrow w\)</span> and  <span class="math notranslate nohighlight">\(w \rightarrow z\)</span> are removed
+<li><p>The edges <span class="math notranslate nohighlight">\(v \rightarrow w\)</span> and <span class="math notranslate nohighlight">\(w \rightarrow z\)</span> are removed
 from the graph.</p></li>
 <li><p>A new edge <span class="math notranslate nohighlight">\(v \rightarrow z\)</span> is inserted represented with red color.</p></li>
 </ul>
@@ -532,7 +532,7 @@ from the graph.</p></li>
 <p>Contracting <span class="math notranslate nohighlight">\(v\)</span>:</p>
 <ul class="simple">
 <li><p>The vertex <span class="math notranslate nohighlight">\(v\)</span> is removed from the graph</p></li>
-<li><p>The edges <span class="math notranslate nohighlight">\(u \rightarrow v\)</span> and  <span class="math notranslate nohighlight">\(v \rightarrow z\)</span> are removed
+<li><p>The edges <span class="math notranslate nohighlight">\(u \rightarrow v\)</span> and <span class="math notranslate nohighlight">\(v \rightarrow z\)</span> are removed
 from the graph.</p></li>
 <li><p>A new edge <span class="math notranslate nohighlight">\(u \rightarrow z\)</span> is inserted represented with red color.</p></li>
 </ul>
@@ -1155,8 +1155,8 @@ to an edge subgraph, a path is still found.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.5.1.<br/>
-      Last updated on Sep 25, 2023.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
+      Last updated on Oct 27, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
