@@ -111,7 +111,7 @@
 <li><a class="reference internal" href="#restrictions-sql">SQL restricciones</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#result-columns">Result columns</a></li>
+<li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a></li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
@@ -217,16 +217,16 @@ the paths that do not use the restrictions</p>
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_turnRestrictedPath(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#restrictions-sql">SQL de restricciones</a>, <strong>salida</strong>, <strong>destino</strong>, <strong>K</strong>, [<strong>opciones</strong>])</div>
-<div class="line"><strong>opciones:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">heap_paths,</span> <span class="pre">stop_on_first,</span> <span class="pre">strict]</span></code></div>
+<div class="line"><strong>opcionales:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">heap_paths,</span> <span class="pre">stop_on_first,</span> <span class="pre">strict]</span></code></div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(3\)</span> to vertex <span class="math notranslate nohighlight">\(8\)</span> on a directed graph</p>
+<dd class="field-odd"><p>Del vértice <span class="math notranslate nohighlight">\(3\)</span> al vértice <span class="math notranslate nohighlight">\(8\)</span> en un grafo dirigido</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_turnRestrictedPath(
@@ -272,7 +272,7 @@ the paths that do not use the restrictions</p>
 </tr>
 <tr class="row-odd"><td><p><strong>K</strong></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
-<td><p>Number of required paths.</p></td>
+<td><p>Cantidad de rutas requeridas.</p></td>
 </tr>
 </tbody>
 </table>
@@ -321,7 +321,7 @@ the paths that do not use the restrictions</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 <td><ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> Returns at most K paths.</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> Regresa a lo más K caminos.</p></li>
 <li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> se regresan todos los caminos calulados mientras se procesa.</p></li>
 <li><p>Aproximadamente, si la ruta más corta tiene <code class="docutils literal notranslate"><span class="pre">N</span></code> aristas, las procesadas contendrán aproximadamente <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">*</span> <span class="pre">K</span></code> rutas para valores pequeños de <code class="docutils literal notranslate"><span class="pre">K</span></code> y <code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">&gt;</span> <span class="pre">5</span></code>.</p></li>
 </ul>
@@ -460,7 +460,7 @@ restrictions</p></li>
 </section>
 </section>
 <section id="result-columns">
-<h2>Result columns<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<h2>Columnas de resultados<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
 <p>Devuelve el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
@@ -497,7 +497,7 @@ restrictions</p></li>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del vértice destino.</p></td>
+<td><p>Identificador del vértice final.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -539,7 +539,7 @@ restrictions</p></li>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(3\)</span> to vertex <span class="math notranslate nohighlight">\(8\)</span> on an undirected graph</p>
+<dd class="field-odd"><p>Del vértice <span class="math notranslate nohighlight">\(3\)</span> al vértice <span class="math notranslate nohighlight">\(8\)</span> en un grafo no dirigido</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_turnRestrictedPath(
@@ -562,7 +562,7 @@ restrictions</p></li>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(3\)</span> to vertex <span class="math notranslate nohighlight">\(8\)</span> with more alternatives</p>
+<dd class="field-odd"><p>Del vértice <span class="math notranslate nohighlight">\(3\)</span> al vértice <span class="math notranslate nohighlight">\(8\)</span> con más alternativas</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_turnRestrictedPath(
@@ -620,7 +620,7 @@ restrictions</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
-      Actualizado por última vez en oct 19, 2023.<br/>
+      Actualizado por última vez en oct 27, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

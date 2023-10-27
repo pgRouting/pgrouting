@@ -113,7 +113,7 @@
 <li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#result-columns">Result columns</a></li>
+<li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a></li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
@@ -177,21 +177,21 @@
 </figure>
 <p class="rubric">Disponibilidad</p>
 <dl class="field-list simple">
-<dt class="field-odd">Version 3.6.0<span class="colon">:</span></dt>
+<dt class="field-odd">Versión 3.6.0<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <ul class="simple">
-<li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<li><p>Estandarización de columnas de resultados a <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (Single vertex)</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code> (Vértice único)</p>
 <ul>
-<li><p>Added <code class="docutils literal notranslate"><span class="pre">depth</span></code> and <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> result columns.</p></li>
+<li><p>Agregado las columnas de resultados``depth`` y <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (Multiple vertices)</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code> (Múltiples vértices)</p>
 <ul>
 <li><p>Result column name change: <code class="docutils literal notranslate"><span class="pre">from_v</span></code> to <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
-<li><p>Added <code class="docutils literal notranslate"><span class="pre">depth</span></code> and <code class="docutils literal notranslate"><span class="pre">pred</span></code> result columns.</p></li>
+<li><p>Agregado las columnas de resultados``depth`` y <code class="docutils literal notranslate"><span class="pre">pred</span></code>.</p></li>
 </ul>
 </li>
 </ul>
@@ -210,25 +210,23 @@
 <dd class="field-odd"><p></p></dd>
 </dl>
 <ul class="simple">
-<li><p>Official:: pgr_drivingDistance(single vertex)</p></li>
+<li><p>Oficial:: pgr_drivingDistance(vértice único)</p></li>
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>Using the Dijkstra algorithm, extracts all the nodes that have costs less than
-or equal to the value <code class="docutils literal notranslate"><span class="pre">distance</span></code>.
-The edges extracted will conform to the corresponding spaning tree.</p>
+<p>Usando el algoritmo Dijkstra, se extraen todos los nodos que tienen costes menores o iguales al valor <code class="docutils literal notranslate"><span class="pre">distance</span></code>. Los bordes extraídos se ajustarán al árbol de expansión correspondiente.</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong>, <strong>distance</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>Raíz</strong>, <strong>distancia</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 <div class="line">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>raices</strong>, <strong>distancia</strong>, [<strong>opciones</strong>])</div>
-<div class="line"><strong>opciones:</strong> [directed, equicost]</div>
+<div class="line"><strong>opcionales:</strong> [directed, equicost]</div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 </div>
 </div>
 <section id="single-vertex">
@@ -236,10 +234,10 @@ The edges extracted will conform to the corresponding spaning tree.</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong>, <strong>distance</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>Raíz</strong>, <strong>distancia</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -276,10 +274,10 @@ The edges extracted will conform to the corresponding spaning tree.</p>
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_drivingDistance(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>raices</strong>, <strong>distancia</strong>, [<strong>opciones</strong>])</div>
-<div class="line"><strong>opciones:</strong> [directed, equicost]</div>
+<div class="line"><strong>opcionales:</strong> [directed, equicost]</div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -354,7 +352,7 @@ The edges extracted will conform to the corresponding spaning tree.</p>
 <dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
+<dt class="field-even">FLOTANTE<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
@@ -402,10 +400,8 @@ The edges extracted will conform to the corresponding spaning tree.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the node will only appear in the closest <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>
-list. Tie brakes are arbitrary.</p></li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> which resembles several calls using the single vertex
-signature.</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> el nodo solo aparece en la lista más cercana a <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>. Empates son rotos arbitrareamente.</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> se asemeja a varias llamadas usando la firma de vértice único.</p></li>
 </ul>
 </td>
 </tr>
@@ -475,8 +471,8 @@ signature.</p></li>
 </section>
 </section>
 <section id="result-columns">
-<h2>Result columns<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
-<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<h2>Columnas de resultados<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<p>Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -494,7 +490,7 @@ signature.</p></li>
 <td><p>Profundidad del <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(0\)</span> cuando <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(depth-1\)</span> is the depth of <code class="docutils literal notranslate"><span class="pre">pred</span></code></p></li>
+<li><p><span class="math notranslate nohighlight">\(depth-1\)</span> es la profundidad de <code class="docutils literal notranslate"><span class="pre">pred</span></code></p></li>
 </ul>
 </td>
 </tr>
@@ -504,9 +500,9 @@ signature.</p></li>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pred</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Predecessor of <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
+<td><p>Presdecesor de <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
 <ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> then has the value <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> entonces tiene el valor <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></li>
 </ul>
 </td>
 </tr>
@@ -516,7 +512,7 @@ signature.</p></li>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the <code class="docutils literal notranslate"><span class="pre">edge</span></code> used to arrive from <code class="docutils literal notranslate"><span class="pre">pred</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
+<td><p>Identificador del <code class="docutils literal notranslate"><span class="pre">edge</span></code> utilizado para llegar desde <code class="docutils literal notranslate"><span class="pre">pred</span></code> hasta <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(-1\)</span> cuando <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
 </ul>
@@ -537,7 +533,7 @@ signature.</p></li>
 <dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT,</span> <span class="pre">INTEGER,</span> <span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
+<dt class="field-even">FLOTANTE<span class="colon">:</span></dt>
 <dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC</p>
 </dd>
 </dl>
@@ -609,7 +605,7 @@ signature.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
-      Actualizado por última vez en oct 19, 2023.<br/>
+      Actualizado por última vez en oct 27, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

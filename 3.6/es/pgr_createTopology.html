@@ -194,7 +194,7 @@
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_createTopology(edge_table, tolerance, [<strong>options</strong>])</div>
-<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[the_geom,</span> <span class="pre">id,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">rows_where,</span> <span class="pre">clean]</span></code></div>
+<div class="line"><strong>opcionales:</strong> <code class="docutils literal notranslate"><span class="pre">[the_geom,</span> <span class="pre">id,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">rows_where,</span> <span class="pre">clean]</span></code></div>
 </div>
 <div class="line-block">
 <div class="line">RETURNS <code class="docutils literal notranslate"><span class="pre">VARCHAR</span></code></div>
@@ -221,16 +221,13 @@
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">id``Nombre</span> <span class="pre">de</span> <span class="pre">columna</span> <span class="pre">de</span> <span class="pre">origen</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">tabla</span> <span class="pre">de</span> <span class="pre">red.</span> <span class="pre">El</span> <span class="pre">valor</span> <span class="pre">predeterminado</span> <span class="pre">es``source</span></code>.</p>
 </dd>
 <dt class="field-even">target<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Target column name of the network table. Default value is
-<code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> El nombre de la columna del destino del segmento. El valor por defecto es <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
 </dd>
 <dt class="field-odd">rows_where<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Condition to SELECT a subset or rows. Default value is
-<code class="docutils literal notranslate"><span class="pre">true</span></code> to indicate all rows that where <code class="docutils literal notranslate"><span class="pre">source</span></code> or <code class="docutils literal notranslate"><span class="pre">target</span></code>
-have a null value, otherwise the condition is used.</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Condición para SELECCIONAR un subconjunto de filas. El valor predeterminado es <code class="docutils literal notranslate"><span class="pre">true</span></code> para indicar todas las filas donde <code class="docutils literal notranslate"><span class="pre">source</span></code> o <code class="docutils literal notranslate"><span class="pre">target</span></code> tienen un valor nulo, de lo contrario se utiliza la condición.</p>
 </dd>
 <dt class="field-even">limpio<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code> Clean any previous topology. Default value is <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code> Limpia cualquier topología anterior. El valor por defecto es <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
 </dd>
 </dl>
 <div class="admonition warning">
@@ -281,8 +278,7 @@ have a null value, otherwise the condition is used.</p>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Número de vértices en la edge_table que referencian este vértice. Ver <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</p>
 </dd>
 <dt class="field-odd">chk<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Indicator that the vertex might have a problem. See
-<a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Indicador de que el vértice puede tener un problema. Véase <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</p>
 </dd>
 <dt class="field-even">ein<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Número de vértices en edge_table que referencian a este vértice como (AS) entrante. Ver <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</p>
@@ -314,7 +310,7 @@ have a null value, otherwise the condition is used.</p>
 </pre></div>
 </div>
 <p class="rubric">Cuando los argumentos se escriben en el orden descrito en los parámetros:</p>
-<p>We get the sameresult as the simplest way to use the function.</p>
+<p>Se obtiene el mismo resultado que la forma más sencilla de utilizar la función.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
     <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
@@ -727,7 +723,7 @@ have a null value, otherwise the condition is used.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
-      Actualizado por última vez en oct 19, 2023.<br/>
+      Actualizado por última vez en oct 27, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

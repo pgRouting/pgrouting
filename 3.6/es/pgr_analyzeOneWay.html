@@ -170,9 +170,7 @@
 <p>Así que ¿por qué nos importa si no es factibles? Si la dirección de un borde se revirtió por error podríamos generar exactamente en estas condiciones. Pensar en una carretera dividida y en el carril que va al norte un segmento o varios segmentos fueron introducidos al revés, o tal vez esto sucedió en una glorieta. El resultado sería potencialmente un nodo <cite>source</cite> y/o a <cite>sink</cite> node.</p>
 <p>Así contando el número de aristas entrantes y salientes de cada nodo podemos identificar los nodos <cite>source</cite> y <cite>sink</cite>, así que usted puede mirar esas áreas de su red para hacer reparaciones o informar del problema a su proveedor de datos.</p>
 <p class="rubric">Pre-requisitos</p>
-<p>The edge table to be analyzed must contain a source column and a target column
-filled with id’s of the vertices of the segments and the corresponding vertices
-table &lt;edge_table&gt;_vertices_pgr that stores the vertices information.</p>
+<p>La tabla de aristas a analizar debe contener una columna origen y una columna destino rellenas con identificadores de los vértices de los segmentos y la correspondiente tabla de vértices &lt;edge_table&gt;_vertices_pgr que almacena la información de los vértices.</p>
 <ul class="simple">
 <li><p>Use <a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> para crear la tabla de vértices.</p></li>
 <li><p>Use <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> para crear la topología y los vértices.</p></li>
@@ -184,7 +182,7 @@ table &lt;edge_table&gt;_vertices_pgr that stores the vertices information.</p>
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_analyzeOneWay(<strong>geom_table</strong>, <strong>s_in_rules</strong>, <strong>s_out_rules</strong>, <strong>t_in_rules</strong>, <strong>t_out_rules</strong>, [<strong>options</strong>])</div>
-<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[oneway,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">two_way_if_null]</span></code></div>
+<div class="line"><strong>opcionales:</strong> <code class="docutils literal notranslate"><span class="pre">[oneway,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">two_way_if_null]</span></code></div>
 </div>
 <div class="line-block">
 <div class="line">RETURNS <code class="docutils literal notranslate"><span class="pre">TEXT</span></code></div>
@@ -216,12 +214,10 @@ table &lt;edge_table&gt;_vertices_pgr that stores the vertices information.</p>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">id``Nombre</span> <span class="pre">de</span> <span class="pre">columna</span> <span class="pre">de</span> <span class="pre">origen</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">tabla</span> <span class="pre">de</span> <span class="pre">red.</span> <span class="pre">El</span> <span class="pre">valor</span> <span class="pre">predeterminado</span> <span class="pre">es``source</span></code>.</p>
 </dd>
 <dt class="field-even">target<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Target column name of the network table. Default value is
-<code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> El nombre de la columna del destino del segmento. El valor por defecto es <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
 </dd>
 <dt class="field-odd">two_way_if_null<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code> flag to treat oneway NULL values as
-bi-directional. Default value is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code> bandera para tratar los valores NULL de oneway como bidireccional. Valor predeterminado es``true``.</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -256,8 +252,7 @@ bi-directional. Default value is <code class="docutils literal notranslate"><spa
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Número de vértices en edge_table que hacen referencia a este vértice. Consulte <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGgraph</span></a>.</p>
 </dd>
 <dt class="field-odd">chk<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Indicator that the vertex might have a problem. See
-<a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Indicador de que el vértice podría tener un problema. Consulte <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</p>
 </dd>
 <dt class="field-even">ein<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> número de vértices en la edge_table que hacen referencia a este vértice como entrante.</p>
@@ -346,7 +341,7 @@ bi-directional. Default value is <code class="docutils literal notranslate"><spa
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
-      Actualizado por última vez en oct 19, 2023.<br/>
+      Actualizado por última vez en oct 27, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

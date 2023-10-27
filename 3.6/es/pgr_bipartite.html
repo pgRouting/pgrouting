@@ -105,7 +105,7 @@
 <li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#result-columns">Result columns</a></li>
+<li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
 <li><a class="reference internal" href="#additional-example">Ejemplo Adicional</a></li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
@@ -201,7 +201,7 @@
 <ul class="simple">
 <li><p>Versión 3.2.0</p>
 <ul>
-<li><p>Nueva función <strong>experimental</strong></p></li>
+<li><p>Nueva firma <strong>experimental</strong></p></li>
 </ul>
 </li>
 </ul>
@@ -212,9 +212,7 @@
 <ul class="simple">
 <li><p>El algoritmo solo funciona en un grafo no dirigido.</p></li>
 <li><p>Los valores devueltos no están ordenados.</p></li>
-<li><p>The algorithm checks graph is bipartite or not. If it is bipartite then it
-returns the node along with two colors <cite>0</cite> and <cite>1</cite> which represents two
-different sets.</p></li>
+<li><p>El algoritmo comprueba si el grafo es bipartito o no. Si es bipartito entonces devuelve el nodo junto con dos colores <cite>0</cite> y <cite>1</cite> que representan dos conjuntos diferentes.</p></li>
 <li><p>Si el grafo no es bipartito, el algoritmo devuelve un conjunto vacío.</p></li>
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O(V + E)\)</span></p></li>
 </ul>
@@ -227,7 +225,7 @@ different sets.</p></li>
 <div class="line">pgr_bipartite(<a class="reference internal" href="#edges-sql">SQL de aristas</a>)</div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(vertex_id,</span> <span class="pre">color_id)</span></code></div>
+<div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(vertex_id,</span> <span class="pre">color_id)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -342,8 +340,8 @@ different sets.</p></li>
 </section>
 </section>
 <section id="result-columns">
-<h2>Result columns<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
-<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(vertex_id,</span> <span class="pre">color_id)</span></code></p>
+<h2>Columnas de resultados<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<p>Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(vertex_id,</span> <span class="pre">color_id)</span></code></p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -422,7 +420,7 @@ different sets.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
-      Actualizado por última vez en oct 19, 2023.<br/>
+      Actualizado por última vez en oct 27, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

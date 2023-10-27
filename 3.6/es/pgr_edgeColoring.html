@@ -105,7 +105,7 @@
 <li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#result-columns">Result columns</a></li>
+<li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
 </li>
@@ -200,7 +200,7 @@
 <ul class="simple">
 <li><p>Versión 3.3.0</p>
 <ul>
-<li><p>Nueva función <strong>experimental</strong></p></li>
+<li><p>Nueva firma <strong>experimental</strong></p></li>
 </ul>
 </li>
 </ul>
@@ -225,9 +225,7 @@
 <li><p>Esto es óptimo para algunos gráfos. y por el teorema de Vizing, utiliza a lo más un color extra que el óptimo para todos los demás.</p></li>
 <li><p>Cuando el grafo es bi-partido</p>
 <ul>
-<li><p>the chromatic number <span class="math notranslate nohighlight">\(x'(G)\)</span> (minimum number of
-colors needed for proper edge coloring of graph) is equal to the degree
-<span class="math notranslate nohighlight">\(\Delta + 1\)</span> of the graph, (<span class="math notranslate nohighlight">\(x'(G) = \Delta\)</span>)</p></li>
+<li><p>el número cromático <span class="math notranslate nohighlight">\(x'(G)\)</span> (número mínimo de colores necesarios para colorear correctamente las aristas del grafo) es igual al grado <span class="math notranslate nohighlight">\(\Delta + 1\)</span> del grafo, (<span class="math notranslate nohighlight">\(x'(G) = \Delta\)</span>)</p></li>
 </ul>
 </li>
 </ul>
@@ -258,7 +256,7 @@ colors needed for proper edge coloring of graph) is equal to the degree
 <div class="line">pgr_edgeColoring(<a class="reference internal" href="#edges-sql">SQL de aristas</a>)</div>
 </div>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">color_id)</span></code></div>
+<div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">color_id)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -375,8 +373,8 @@ colors needed for proper edge coloring of graph) is equal to the degree
 </section>
 </section>
 <section id="result-columns">
-<h2>Result columns<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
-<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">color_id)</span></code></p>
+<h2>Columnas de resultados<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<p>Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">color_id)</span></code></p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -430,7 +428,7 @@ colors needed for proper edge coloring of graph) is equal to the degree
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
-      Actualizado por última vez en oct 19, 2023.<br/>
+      Actualizado por última vez en oct 27, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

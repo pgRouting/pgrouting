@@ -114,7 +114,7 @@
 <li><a class="reference internal" href="#matrix-sql">SQL de matriz</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#result-columns">Result columns</a><ul>
+<li><a class="reference internal" href="#result-columns">Columnas de resultados</a><ul>
 <li><a class="reference internal" href="#summary-row">Fila de Resumen</a></li>
 </ul>
 </li>
@@ -245,7 +245,7 @@
 <li><p><a class="reference internal" href="#matrix-sql" id="id11">SQL de matriz</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#result-columns" id="id12">Result columns</a></p>
+<li><p><a class="reference internal" href="#result-columns" id="id12">Columnas de resultados</a></p>
 <ul>
 <li><p><a class="reference internal" href="#summary-row" id="id13">Fila de Resumen</a></p></li>
 </ul>
@@ -681,7 +681,7 @@
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del vértice destino.</p></td>
+<td><p>Identificador del vértice final.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
@@ -692,7 +692,7 @@
 </section>
 </section>
 <section id="result-columns">
-<h2><a class="toc-backref" href="#id12" role="doc-backlink">Result columns</a><a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Columnas de resultados</a><a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Returns</span> <span class="nb">set</span> <span class="n">of</span>
  <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">vehicle_seq</span><span class="p">,</span> <span class="n">vehicle_id</span><span class="p">,</span> <span class="n">stop_seq</span><span class="p">,</span> <span class="n">stop_type</span><span class="p">,</span>
      <span class="n">travel_time</span><span class="p">,</span> <span class="n">arrival_time</span><span class="p">,</span> <span class="n">wait_time</span><span class="p">,</span> <span class="n">service_time</span><span class="p">,</span> <span class="n">departure_time</span><span class="p">)</span>
@@ -945,8 +945,7 @@
 <li><p>Número de asientos en el vehículo</p></li>
 </ul>
 <p>La solicitud de <cite>demanda</cite> de las órdenes de recogida-entrega debe utilizar las mismas unidades que las utilizadas en la <cite>capacidad</cite> del vehículo.</p>
-<p>To handle problems like: 10 (equal dimension) boxes of apples and 5 kg of
-feathers that are to be transported (not packed in boxes).</p>
+<p>Para manejar problemas como: 10 cajas de manzanas de dimesiones iguales y 5 kg de plumas que se van a transportar (no embaladas en cajas).</p>
 <ul class="simple">
 <li><p>Si la <strong>capacidad</strong> del vehículo se mide mediante <cite>cajas</cite>, se necesita una conversión de <cite>kg de plumas</cite> a <cite>número equivalente de cajas</cite>.</p></li>
 <li><p>Si la <strong>capacidad</strong> del vehículo se mide en <cite>kg</cite>, se necesita una conversión de <cite>cajas de manzanas</cite> a <cite>kg</cite>.</p></li>
@@ -1138,7 +1137,7 @@ feathers that are to be transported (not packed in boxes).</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
-      Actualizado por última vez en oct 19, 2023.<br/>
+      Actualizado por última vez en oct 27, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>

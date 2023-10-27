@@ -177,16 +177,14 @@
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_analyzeGraph(<strong>edge_table</strong>, <strong>tolerancia</strong>, [<strong>opciones</strong>])</div>
-<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[the_geom,</span> <span class="pre">id,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">rows_where]</span></code></div>
+<div class="line"><strong>opcionales:</strong> <code class="docutils literal notranslate"><span class="pre">[the_geom,</span> <span class="pre">id,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">rows_where]</span></code></div>
 </div>
 <div class="line-block">
 <div class="line">RETURNS <code class="docutils literal notranslate"><span class="pre">VARCHAR</span></code></div>
 </div>
 </div>
 <p class="rubric">Pre-requisitos</p>
-<p>The edge table to be analyzed must contain a source column and a target column
-filled with id’s of the vertices of the segments and the corresponding vertices
-table &lt;edge_table&gt;_vertices_pgr that stores the vertices information.</p>
+<p>La tabla de aristas a analizar debe contener una columna origen y una columna destino rellenas con identificadores de los vértices de los segmentos y la correspondiente tabla de vértices &lt;edge_table&gt;_vertices_pgr que almacena la información de los vértices.</p>
 <ul class="simple">
 <li><p>Use <a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> para crear la tabla de vértices.</p></li>
 <li><p>Use <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> para crear la topología y los vértices.</p></li>
@@ -212,12 +210,10 @@ table &lt;edge_table&gt;_vertices_pgr that stores the vertices information.</p>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">id``Nombre</span> <span class="pre">de</span> <span class="pre">columna</span> <span class="pre">de</span> <span class="pre">origen</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">tabla</span> <span class="pre">de</span> <span class="pre">red.</span> <span class="pre">El</span> <span class="pre">valor</span> <span class="pre">predeterminado</span> <span class="pre">es``source</span></code>.</p>
 </dd>
 <dt class="field-even">target<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Target column name of the network table. Default value is
-<code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> El nombre de la columna del destino del segmento. El valor por defecto es <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
 </dd>
 <dt class="field-odd">rows_where<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Condition to select a subset or rows. Default value is
-<code class="docutils literal notranslate"><span class="pre">true</span></code> to indicate all rows.</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Condición para seleccionar un subconjunto o filas. Valor predeterminado es <code class="docutils literal notranslate"><span class="pre">true</span></code> para indicar todas las filas.</p>
 </dd>
 </dl>
 <p>La función devuelve:</p>
@@ -226,7 +222,7 @@ table &lt;edge_table&gt;_vertices_pgr that stores the vertices information.</p>
 <ul>
 <li><p>Utiliza la tabla de los vértices: &lt;edge_table&gt;_vertices_pgr.</p></li>
 <li><p>Llena totalmente las columnas <code class="docutils literal notranslate"><span class="pre">cnt</span></code> y <code class="docutils literal notranslate"><span class="pre">chk</span></code> de la tabla de vértices.</p></li>
-<li><p>Returns the analysis of the section of the network defined by <code class="docutils literal notranslate"><span class="pre">rows_where</span></code></p></li>
+<li><p>Devuelve el análisis de la sección de la red definida por <code class="docutils literal notranslate"><span class="pre">rows_where</span></code></p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">FAIL</span></code> cuando el análisis no se completó debido a un error.</p>
@@ -250,7 +246,7 @@ table &lt;edge_table&gt;_vertices_pgr that stores the vertices information.</p>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Número de vértices en edge_table que hacen referencia a este vértice.</p>
 </dd>
 <dt class="field-odd">chk<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Indicator that the vertex might have a problem.</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Indicador de que el vértice puede tener un problema.</p>
 </dd>
 <dt class="field-even">ein<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Número de vértices en edge_table que hacen referencia a este vértice como entrante. Consulte <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</p>
@@ -906,7 +902,7 @@ table &lt;edge_table&gt;_vertices_pgr that stores the vertices information.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
-      Actualizado por última vez en oct 19, 2023.<br/>
+      Actualizado por última vez en oct 27, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
