@@ -1,6 +1,9 @@
 /*PGR-GNU*****************************************************************
 File: trspiVia_withPoints_driver.h
 
+Copyright (c) 2022 pgRouting developers
+Mail: project@pgrouting.org
+
 Function's developer:
 Copyright (c) 2022 Celia Virginia Vergara Castillo
 

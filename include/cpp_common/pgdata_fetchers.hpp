@@ -1,6 +1,9 @@
 /*PGR-GNU*****************************************************************
 File: pgdata_fetchers.hpp
 
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
 Copyright (c) 2023 Celia Virginia Vergara Castillo
 mail: vicky at erosion.dev
 Copyright (c) 2020 Mahmoud SAKR and Esteban ZIMANYI

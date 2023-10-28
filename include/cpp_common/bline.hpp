@@ -1,6 +1,9 @@
 /*PGR-GNU*****************************************************************
 File: bline.hpp
 
+Copyright (c) 2019 pgRouting developers
+Mail: project@pgrouting.org
+
 Copyright (c) 2019 Celia Virginia Vergara Castillo
 vicky_vergara@hotmail.com
 

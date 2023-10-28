@@ -1,6 +1,9 @@
 /*PGR-GNU*****************************************************************
 File: details.hpp
 
+Copyright (c) 2018 pgRouting developers
+Mail: project@pgrouting.org
+
 Copyright (c) 2018 Vicky Vergara
 
 

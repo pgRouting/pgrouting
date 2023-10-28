@@ -1,6 +1,9 @@
 /*PGR-GNU*****************************************************************
 File: e_report.h
 
+Copyright (c) 2016 pgRouting developers
+Mail: project@pgrouting.org
+
 Function's developer:
 Copyright (c) 2016 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com

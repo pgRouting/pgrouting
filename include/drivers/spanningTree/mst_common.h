@@ -1,6 +1,9 @@
 /*PGR-GNU*****************************************************************
 File: mst_common.h
 
+Copyright (c) 2018 pgRouting developers
+Mail: project@pgrouting.org
+
 Copyright (c) 2018 Vicky Vergara
 Mail: vicky at georepublic dot de
 

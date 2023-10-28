@@ -1,6 +1,9 @@
 /*PGR-GNU*****************************************************************
 File: get_check_data.hpp
 
+Copyright (c) 2023 pgRouting developers
+Mail: project@pgrouting.org
+
 Copyright (c) 2023 Celia Virginia Vergara Castillo
 vicky at erosion.dev
 

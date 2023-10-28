@@ -1,6 +1,10 @@
 /*PGR-GNU*****************************************************************
 
 File: basePath_SSEC.hpp
+
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 vicky_vergara@hotmail.com
 
