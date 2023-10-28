@@ -1,6 +1,9 @@
 /*PGR-GNU*****************************************************************
 FILE: alphaShape_driver.cpp
 
+Copyright (c) 2018 pgRouting developers
+Mail: project@pgrouting.org
+
 Copyright (c) 2018 Vicky Vergara
 Mail: project@pgrouting.org
 

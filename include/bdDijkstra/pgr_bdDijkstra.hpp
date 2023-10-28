@@ -2,6 +2,9 @@
 
 File: pgr_bdDijkstra.hpp
 
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
 Copyright (c) 2016 Celia Virginia Vergara Castillo
 vicky_vergara@hotmail.com
 

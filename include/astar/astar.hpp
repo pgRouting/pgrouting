@@ -2,6 +2,9 @@
 
 File: astar.hpp
 
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
 Copyright (c) 2023 Vicky Vergara
 Copyright (c) 2015 Vicky Vergara
 Mail: vicky at erosion.dev

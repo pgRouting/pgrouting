@@ -1,6 +1,9 @@
 /*PGR-GNU*****************************************************************
 File: drivedist_driver.cpp
 
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky at erosion.dev
 

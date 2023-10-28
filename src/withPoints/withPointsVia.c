@@ -1,6 +1,9 @@
 /*PGR-GNU*****************************************************************
 File: withPointsVia.c
 
+Copyright (c) 2022 pgRouting developers
+Mail: project@pgrouting.org
+
 Function's developer:
 Copyright (c) 2022 Celia Virginia Vergara Castillo
 

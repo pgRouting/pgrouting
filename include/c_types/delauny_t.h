@@ -1,6 +1,9 @@
 /*PGR-GNU*****************************************************************
 File: delauny_t.h
 
+Copyright (c) 2019 pgRouting developers
+Mail: project@pgrouting.org
+
 Copyright (c) 2019 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
 

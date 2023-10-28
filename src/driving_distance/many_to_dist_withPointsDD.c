@@ -1,6 +1,9 @@
 /*PGR-GNU*****************************************************************
 File: many_to_dist_driving_distance.c
 
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky at erosion.dev
 

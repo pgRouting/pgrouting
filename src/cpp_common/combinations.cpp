@@ -1,6 +1,9 @@
 /*PGR-GNU*****************************************************************
 File: combinations.cpp
 
+Copyright (c) 2022 pgRouting developers
+Mail: project@pgrouting.org
+
 Copyright (c) 2022 Celia Virginia Vergara Castillo
 
 ------

@@ -2,6 +2,9 @@
 
 File: debug_macro.h
 
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
 

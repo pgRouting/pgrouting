@@ -1,6 +1,9 @@
 /*PGR-GNU*****************************************************************
 File: Edge_t.h
 
+Copyright (c) 2017 pgRouting developers
+Mail: project@pgrouting.org
+
 Copyright (c) 2017 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
 
