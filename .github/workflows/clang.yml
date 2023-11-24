@@ -58,7 +58,7 @@ jobs:
       - name: Get postgres version
         run: |
           sudo service postgresql start
-          pgver=$(psql --version | grep -Po '(?<=psql \(PostgreSQL\) )[^;]+(?=\.\d \()')
+          pgver=$(psql --version | grep -Po '(?<=psql \(PostgreSQL\) )[^;]+(?=\.\d+ \()')
           echo "PGVER=${pgver}" >> $GITHUB_ENV
           echo "PGIS=3" >> $GITHUB_ENV
           echo "PGPORT=5432" >> $GITHUB_ENV
