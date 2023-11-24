@@ -354,7 +354,7 @@ int64_t* getBigIntArr(
         const HeapTuple tuple,
         const TupleDesc &tupdesc,
         const Column_info_t &info,
-        uint64_t *the_size) {
+        size_t *the_size) {
     bool is_null = false;
 
     Datum raw_array = SPI_getbinval(tuple, tupdesc, info.colNumber, &is_null);
