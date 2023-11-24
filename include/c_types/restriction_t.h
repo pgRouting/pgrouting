@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 struct Restriction_t {
     double cost;
     int64_t * via;
-    uint64_t via_size;
+    size_t via_size;
 };
 
 #endif  // INCLUDE_C_TYPES_RESTRICTION_T_H_

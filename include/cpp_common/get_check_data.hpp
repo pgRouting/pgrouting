@@ -59,7 +59,7 @@ char getChar(const HeapTuple, const TupleDesc&, const Column_info_t&, bool, char
 int64_t* get_array(ArrayType*, size_t*, bool);
 
 /** @brief Function returns the values of specified columns in array. */
-int64_t* getBigIntArr(const HeapTuple, const TupleDesc&, const Column_info_t&, uint64_t*);
+int64_t* getBigIntArr(const HeapTuple, const TupleDesc&, const Column_info_t&, size_t*);
 
 /** @brief Function returns the value of specified column in integer type.  */
 int64_t getBigInt(const HeapTuple, const TupleDesc&, const Column_info_t&);
