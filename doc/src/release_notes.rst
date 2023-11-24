@@ -19,6 +19,12 @@ To see the full list of changes check the list of `Git commits
 .. contents:: Contents
    :local:
 
+
+pgRouting 3.6.1 Release Notes
+-------------------------------------------------------------------------------
+
+No Changes Yet
+
 pgRouting 3.6.0 Release Notes
 -------------------------------------------------------------------------------
 
