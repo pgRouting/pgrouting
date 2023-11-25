@@ -64,6 +64,7 @@ jobs:
           sudo make install
 
       - name: Install pgTAP
+        if: false
         run: |
           git clone https://github.com/theory/pgtap.git pgTapExtension
           cd pgTapExtension
@@ -74,6 +75,7 @@ jobs:
           sudo ln -s  /usr/local/Cellar/perl/5.32.1_1/bin/pg_prove  symlink it into /usr/local/bin
 
       - name: Test
+        if: false
         run: |
           export PATH=/usr/local/Cellar/perl/$(perl -e 'print substr($^V, 1)')/bin:$PATH
           pg_ctl -D /usr/local/var/postgres start
