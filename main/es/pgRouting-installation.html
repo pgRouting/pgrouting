@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=feb5848f"></script>
+    <script src="_static/documentation_options.js?v=9a7a54cb"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=e87c01b6"></script>
@@ -45,7 +45,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.6.0</b></span>
+        <span class="navbar-text pull-left"><b>v3.6.1</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -177,8 +177,8 @@ be found in <a class="reference external" href="https://github.com/pgRouting/pgr
 <section id="short-version">
 <span id="install-short"></span><h2>Versión corta<a class="headerlink" href="#short-version" title="Link to this heading">¶</a></h2>
 <p>Extraer la bola de alquitrán</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="n">xvfz</span> <span class="n">pgrouting</span><span class="o">-</span><span class="mf">3.6.0</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
-<span class="n">cd</span> <span class="n">pgrouting</span><span class="o">-</span><span class="mf">3.6.0</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="n">xvfz</span> <span class="n">pgrouting</span><span class="o">-</span><span class="mf">3.6.1</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">cd</span> <span class="n">pgrouting</span><span class="o">-</span><span class="mf">3.6.1</span>
 </pre></div>
 </div>
 <p>Para compilar suponiendo que tiene todas las dependencias en su ruta de búsqueda:</p>
@@ -201,13 +201,13 @@ be found in <a class="reference external" href="https://github.com/pgRouting/pgr
 <p>La última versión de pgRouting se puede encontrar en <a class="reference external" href="https://github.com/pgRouting/pgrouting/releases/latest">https://github.com/pgRouting/pgrouting/releases/latest</a></p>
 <p class="rubric">Wget</p>
 <p>Para descargar esta versión:</p>
-<pre class="literal-block">wget -O pgrouting-3.6.0.tar.gz    <a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/v3.6.0.tar.gz">https://github.com/pgRouting/pgrouting/archive/v3.6.0.tar.gz</a></pre>
+<pre class="literal-block">wget -O pgrouting-3.6.1.tar.gz    <a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/v3.6.1.tar.gz">https://github.com/pgRouting/pgrouting/archive/v3.6.1.tar.gz</a></pre>
 <p>Ir a <a class="reference internal" href="#install-short"><span class="std std-ref">Versión corta</span></a> para más instrucciones sobre la extraccion de la bola tar y la compilación de pgRouting.</p>
 <p class="rubric">git</p>
 <p>Para descargar el repositorio</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pgRouting</span><span class="o">/</span><span class="n">pgrouting</span><span class="o">.</span><span class="n">git</span>
 <span class="n">cd</span> <span class="n">pgrouting</span>
-<span class="n">git</span> <span class="n">checkout</span> <span class="n">v3</span><span class="mf">.6.0</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">v3</span><span class="mf">.6.1</span>
 </pre></div>
 </div>
 <p>Go to <a class="reference internal" href="#install-short"><span class="std std-ref">Versión corta</span></a> for more instructions on compiling pgRouting
@@ -230,8 +230,9 @@ pgRouting in the database.</p>
 </pre></div>
 </div>
 <p class="rubric">Actualización de la base de datos</p>
-<p>Para actualizar pgRouting en la base de datos a la versión 3.6.0 utilice el siguiente comando:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="n">UPDATE</span> <span class="n">TO</span> <span class="s2">&quot;3.6.0&quot;</span><span class="p">;</span>
+<p>To upgrade pgRouting in the database to version 3.6.1 use the
+following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="n">UPDATE</span> <span class="n">TO</span> <span class="s2">&quot;3.6.1&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Puede hallar más información en <a class="reference external" href="https://www.postgresql.org/docs/current/sql-createextension.html">https://www.postgresql.org/docs/current/sql-createextension.html</a></p>
@@ -491,8 +492,8 @@ code:</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.6.0.<br/>
-      Actualizado por última vez en nov 24, 2023.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.6.1.<br/>
+      Actualizado por última vez en nov 25, 2023.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
