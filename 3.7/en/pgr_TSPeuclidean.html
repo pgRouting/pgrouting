@@ -1,0 +1,575 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>pgr_TSPeuclidean &#8212; pgRouting Manual (3.6-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/page_history.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Spanning Tree - Category" href="spanningTree-family.html" />
+    <link rel="prev" title="pgr_TSP" href="pgr_TSP.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v3.6.0-dev</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code></a><ul>
+<li><a class="reference internal" href="#description">Description</a><ul>
+<li><a class="reference internal" href="#problem-definition">Problem Definition</a></li>
+<li><a class="reference internal" href="#characteristics">Characteristics</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a><ul>
+<li><a class="reference internal" href="#tsp-optional-parameters">TSP optional parameters</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
+<li><a class="reference internal" href="#coordinates-sql">Coordinates SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">Result Columns</a></li>
+<li><a class="reference internal" href="#additional-examples">Additional Examples</a><ul>
+<li><a class="reference internal" href="#test-29-cities-of-western-sahara">Test 29 cities of Western Sahara</a><ul>
+<li><a class="reference internal" href="#creating-a-table-for-the-data-and-storing-the-data">Creating a table for the data and storing the data</a></li>
+<li><a class="reference internal" href="#adding-a-geometry-for-visual-purposes">Adding a geometry (for visual purposes)</a></li>
+<li><a class="reference internal" href="#total-tour-cost">Total tour cost</a></li>
+<li><a class="reference internal" href="#getting-a-geometry-of-the-tour">Getting a geometry of the tour</a></li>
+<li><a class="reference internal" href="#visual-results">Visual results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_TSP.html" title="Previous Chapter: pgr_TSP"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_TSP</span>
+    </a>
+  </li>
+  <li>
+    <a href="spanningTree-family.html" title="Next Chapter: Spanning Tree - Category"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Spanning Tree... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+        <div class="body span12 content" role="main">
+            <script> document.write(get_history('pgr_TSPeuclidean','en'));  </script>
+            
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="pgr-tspeuclidean">
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code><a class="headerlink" href="#pgr-tspeuclidean" title="Permalink to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code> - Aproximation using <em>metric</em> algorithm.</p></li>
+</ul>
+<figure class="align-default" id="id1">
+<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
+<figcaption>
+<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p class="rubric">Availability:</p>
+<ul class="simple">
+<li><p>Version 3.2.1</p>
+<ul>
+<li><p>Metric Algorithm from <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost library</a></p></li>
+<li><p>Simulated Annealing Algorithm no longer supported</p>
+<ul>
+<li><p>The Simulated Annealing Algorithm related parameters are ignored:
+<cite>max_processing_time</cite>, <cite>tries_per_temperature</cite>,
+<cite>max_changes_per_temperature</cite>, <cite>max_consecutive_non_changes</cite>,
+<cite>initial_temperature</cite>, <cite>final_temperature</cite>, <cite>cooling_factor</cite>,
+<cite>randomize</cite></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Version 3.0.0</p>
+<ul>
+<li><p>Name change from pgr_eucledianTSP</p></li>
+</ul>
+</li>
+<li><p>Version 2.3.0</p>
+<ul>
+<li><p>New <strong>Official</strong> function</p></li>
+</ul>
+</li>
+</ul>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
+<section id="problem-definition">
+<h3>Problem Definition<a class="headerlink" href="#problem-definition" title="Permalink to this heading">¶</a></h3>
+<p>The travelling salesperson problem (TSP) asks the following question:</p>
+<blockquote>
+<div><p><em>Given a list of cities and the distances between each pair of cities, which
+is the shortest possible route that visits each city exactly once and returns
+to the origin city?</em></p>
+</div></blockquote>
+</section>
+<section id="characteristics">
+<h3>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>This problem is an NP-hard optimization problem.</p></li>
+<li><p>Metric Algorithm is used</p></li>
+<li><p>Implementation generates solutions that <em>are twice as long as the optimal tour
+in the worst case</em> when:</p>
+<ul>
+<li><p>Graph is undirected</p></li>
+<li><p>Graph is fully connected</p></li>
+<li><p>Graph where traveling costs on edges obey the triangle inequality.</p></li>
+</ul>
+</li>
+<li><p>On an undirected graph:</p>
+<ul>
+<li><p>The traveling costs are symmetric:</p></li>
+<li><p>Traveling costs from <code class="docutils literal notranslate"><span class="pre">u</span></code> to <code class="docutils literal notranslate"><span class="pre">v</span></code> are just as much as traveling from
+<code class="docutils literal notranslate"><span class="pre">v</span></code> to <code class="docutils literal notranslate"><span class="pre">u</span></code></p></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><dl class="simple">
+<dt>Any duplicated identifier will be ignored. The coordinates that will be kept</dt><dd><p>is arbitrarly.</p>
+</dd>
+</dl>
+<ul>
+<li><p>The coordinates are quite similar for the same identifier, for example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mi">1</span>
+<span class="mi">1</span><span class="p">,</span> <span class="mf">3.499999999999</span> <span class="mf">0.9999999</span>
+</pre></div>
+</div>
+</li>
+<li><p>The coordinates are quite different for the same identifier, for example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">1.0</span>
+<span class="mi">2</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">,</span> <span class="mf">1.1</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
+<p class="rubric">Summary</p>
+<div class="signatures admonition" id="index-0">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_TSPeuclidean(<a class="reference internal" href="#coordinates-sql">Coordinates SQL</a>, <code class="docutils literal notranslate"><span class="pre">[start_id,</span> <span class="pre">end_id]</span></code>)</div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMTPY SET</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><p>With default values</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TSPeuclidean(
+  $$
+  SELECT id, st_X(geom) AS x, st_Y(geom)AS y  FROM vertices
+  $$);
+ seq | node |      cost      |   agg_cost
+-----+------+----------------+---------------
+   1 |    1 |              0 |             0
+   2 |    6 |   2.2360679775 |  2.2360679775
+   3 |    5 |              1 |  3.2360679775
+   4 |   10 |  1.41421356237 | 4.65028153987
+   5 |    7 |  1.41421356237 | 6.06449510225
+   6 |    2 |  2.12132034356 | 8.18581544581
+   7 |    9 |  1.58113883008 | 9.76695427589
+   8 |    4 |            0.5 | 10.2669542759
+   9 |   14 |  1.58113883009 |  11.848093106
+  10 |   17 |  1.11803398875 | 12.9661270947
+  11 |   16 |              1 | 13.9661270947
+  12 |   15 |              1 | 14.9661270947
+  13 |   11 |  1.41421356237 | 16.3803406571
+  14 |   13 | 0.583095189485 | 16.9634358466
+  15 |   12 | 0.860232526704 | 17.8236683733
+  16 |    8 |              1 | 18.8236683733
+  17 |    3 |  1.41421356237 | 20.2378819357
+  18 |    1 |              1 | 21.2378819357
+(18 rows)
+
+</pre></div>
+</div>
+</section>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#coordinates-sql">Coordinates SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#coordinates-sql">Coordinates SQL</a> as described below</p></td>
+</tr>
+</tbody>
+</table>
+<section id="tsp-optional-parameters">
+<h3>TSP optional parameters<a class="headerlink" href="#tsp-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_id</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>The first visiting vertex</p>
+<ul class="simple">
+<li><p>When <cite>0</cite> any vertex can become the first visiting vertex.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_id</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Last visiting vertex before returning to <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p>
+<ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">0</span></code> any vertex can become the last visiting vertex before
+returning to <code class="docutils literal notranslate"><span class="pre">start_id</span></code>.</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">start_id</span> <span class="pre">=</span> <span class="pre">0</span></code> then it is the first and last
+vertex</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="inner-queries">
+<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<section id="coordinates-sql">
+<h3>Coordinates SQL<a class="headerlink" href="#coordinates-sql" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td><p>Identifier of the starting vertex.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td><p>X value of the coordinate.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">y</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td><p>Y value of the coordinate.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="result-columns">
+<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
+<p>Returns SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>seq</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>Row sequence.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>node</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the node/coordinate/point.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Cost to traverse from the current <code class="docutils literal notranslate"><span class="pre">node</span></code> to the next <code class="docutils literal notranslate"><span class="pre">node</span></code> in the path sequence.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> for the last row in the tour sequence.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>agg_cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Aggregate cost from the <code class="docutils literal notranslate"><span class="pre">node</span></code> at <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> to the current node.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> for the first row in the tour sequence.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="additional-examples">
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#test-29-cities-of-western-sahara" id="id2">Test 29 cities of Western Sahara</a></p>
+<ul>
+<li><p><a class="reference internal" href="#creating-a-table-for-the-data-and-storing-the-data" id="id3">Creating a table for the data and storing the data</a></p></li>
+<li><p><a class="reference internal" href="#adding-a-geometry-for-visual-purposes" id="id4">Adding a geometry (for visual purposes)</a></p></li>
+<li><p><a class="reference internal" href="#total-tour-cost" id="id5">Total tour cost</a></p></li>
+<li><p><a class="reference internal" href="#getting-a-geometry-of-the-tour" id="id6">Getting a geometry of the tour</a></p></li>
+<li><p><a class="reference internal" href="#visual-results" id="id7">Visual results</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="test-29-cities-of-western-sahara">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Test 29 cities of Western Sahara</a><a class="headerlink" href="#test-29-cities-of-western-sahara" title="Permalink to this heading">¶</a></h3>
+<p>This example shows how to make performance tests using University of Waterloo’s
+<a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/countries.html">example data</a> using
+the 29 cities of <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/wi29.tsp">Western Sahara dataset</a></p>
+<section id="creating-a-table-for-the-data-and-storing-the-data">
+<h4><a class="toc-backref" href="#id3" role="doc-backlink">Creating a table for the data and storing the data</a><a class="headerlink" href="#creating-a-table-for-the-data-and-storing-the-data" title="Permalink to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">wi29</span> <span class="p">(</span><span class="nb">id</span> <span class="n">BIGINT</span><span class="p">,</span> <span class="n">x</span> <span class="n">FLOAT</span><span class="p">,</span> <span class="n">y</span> <span class="n">FLOAT</span><span class="p">,</span> <span class="n">geom</span> <span class="n">geometry</span><span class="p">);</span>
+<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">wi29</span> <span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">20833.3333</span><span class="p">,</span><span class="mf">17100.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mf">20900.0000</span><span class="p">,</span><span class="mf">17066.6667</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mf">21300.0000</span><span class="p">,</span><span class="mf">13016.6667</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mf">21600.0000</span><span class="p">,</span><span class="mf">14150.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mf">21600.0000</span><span class="p">,</span><span class="mf">14966.6667</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mf">21600.0000</span><span class="p">,</span><span class="mf">16500.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mf">22183.3333</span><span class="p">,</span><span class="mf">13133.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mf">22583.3333</span><span class="p">,</span><span class="mf">14300.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mf">22683.3333</span><span class="p">,</span><span class="mf">12716.6667</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mf">23616.6667</span><span class="p">,</span><span class="mf">15866.6667</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mf">23700.0000</span><span class="p">,</span><span class="mf">15933.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mf">23883.3333</span><span class="p">,</span><span class="mf">14533.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mf">24166.6667</span><span class="p">,</span><span class="mf">13250.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mf">25149.1667</span><span class="p">,</span><span class="mf">12365.8333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mf">26133.3333</span><span class="p">,</span><span class="mf">14500.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mf">26150.0000</span><span class="p">,</span><span class="mf">10550.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">17</span><span class="p">,</span><span class="mf">26283.3333</span><span class="p">,</span><span class="mf">12766.6667</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mf">26433.3333</span><span class="p">,</span><span class="mf">13433.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">19</span><span class="p">,</span><span class="mf">26550.0000</span><span class="p">,</span><span class="mf">13850.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mf">26733.3333</span><span class="p">,</span><span class="mf">11683.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">21</span><span class="p">,</span><span class="mf">27026.1111</span><span class="p">,</span><span class="mf">13051.9444</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">22</span><span class="p">,</span><span class="mf">27096.1111</span><span class="p">,</span><span class="mf">13415.8333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">23</span><span class="p">,</span><span class="mf">27153.6111</span><span class="p">,</span><span class="mf">13203.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">24</span><span class="p">,</span><span class="mf">27166.6667</span><span class="p">,</span><span class="mf">9833.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mf">27233.3333</span><span class="p">,</span><span class="mf">10450.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">26</span><span class="p">,</span><span class="mf">27233.3333</span><span class="p">,</span><span class="mf">11783.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">27</span><span class="p">,</span><span class="mf">27266.6667</span><span class="p">,</span><span class="mf">10383.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mf">27433.3333</span><span class="p">,</span><span class="mf">12400.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">29</span><span class="p">,</span><span class="mf">27462.5000</span><span class="p">,</span><span class="mf">12992.2222</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-a-geometry-for-visual-purposes">
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">Adding a geometry (for visual purposes)</a><a class="headerlink" href="#adding-a-geometry-for-visual-purposes" title="Permalink to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">wi29</span> <span class="n">SET</span> <span class="n">geom</span> <span class="o">=</span> <span class="n">ST_makePoint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="total-tour-cost">
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">Total tour cost</a><a class="headerlink" href="#total-tour-cost" title="Permalink to this heading">¶</a></h4>
+<p>Getting a total cost of the tour, compare the value with the length of an
+optimal tour is 27603, given on the dataset</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT *
+FROM pgr_TSPeuclidean($$SELECT * FROM wi29$$)
+WHERE seq = 30;
+ seq | node |     cost      |   agg_cost
+-----+------+---------------+---------------
+  30 |    1 | 2266.91173136 | 28777.4854127
+(1 row)
+
+</pre></div>
+</div>
+</section>
+<section id="getting-a-geometry-of-the-tour">
+<h4><a class="toc-backref" href="#id6" role="doc-backlink">Getting a geometry of the tour</a><a class="headerlink" href="#getting-a-geometry-of-the-tour" title="Permalink to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WITH
+tsp_results AS (SELECT seq, geom FROM pgr_TSPeuclidean($$SELECT * FROM wi29$$) JOIN wi29 ON (node = id))
+SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    st_makeline
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 01020000001E000000F085C9545558D4400000000000B3D040000000000069D440107A36ABAAAAD040000000000018D54000000000001DD040107A36AB2A10D7401FF46C5655FDCE40000000000025D740E10B93A9AA1ECF40F085C954D552D740E10B93A9AA62CC40107A36ABAA99D7400000000000E1C940107A36AB4A8FD840E10B93A9EA26C840F085C954D5AAD9401FF46C5655EFC840F085C95455D0D940E10B93A9AA3CCA40F085C9545585D940000000000052CC400000000080EDD94000000000000DCB40A52C431C0776DA40E10B93A9EA33CA40A52C431C6784DA40E10B93A9AAC9C940A52C431C8764DA402C6519E2F87DC94000000000A0D1DA4096B20C711C60C940F085C95455CADA40000000000038C840F085C9545598DA40E10B93A9AA03C740F085C954551BDA40E10B93A9AAD1C640F085C9545598DA40000000000069C440107A36ABAAA0DA40E10B93A9AA47C440107A36ABAA87DA40E10B93A9AA34C340000000008089D94000000000009BC440F085C954D526D6401FF46C5655D6C840F085C954D5A9D540E10B93A9AAA6C9400000000000CDD4401FF46C56556CC940000000000018D5400000000000A3CB40F085C954D50DD6400000000000EECB40000000000018D5401FF46C56553BCD40F085C9545558D4400000000000B3D040
+(1 row)
+
+</pre></div>
+</div>
+</section>
+<section id="visual-results">
+<h4><a class="toc-backref" href="#id7" role="doc-backlink">Visual results</a><a class="headerlink" href="#visual-results" title="Permalink to this heading">¶</a></h4>
+<p>Visualy, The first image is the <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/witour.html">optimal solution</a>  and the second image
+is the solution obtained with <code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code>.</p>
+<a class="reference internal image-reference" href="_images/wi29optimal.png"><img alt="_images/wi29optimal.png" src="_images/wi29optimal.png" style="width: 383.5px; height: 311.0px;" /></a>
+<a class="reference internal image-reference" href="_images/wi29Solution.png"><img alt="_images/wi29Solution.png" src="_images/wi29Solution.png" style="width: 357.0px; height: 313.0px;" /></a>
+</section>
+</section>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Traveling Sales Person - Family of functions</span></a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost’s metric appro’s metric approximation</a></p></li>
+<li><p><a class="reference external" href="https://www.math.uwaterloo.ca/tsp/">University of Waterloo TSP</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Traveling_salesman_problem">Wikipedia: Traveling Salesman Problem</a></p></li>
+</ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
+      Last updated on Sep 04, 2023.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

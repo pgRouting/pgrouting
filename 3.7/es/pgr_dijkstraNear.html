@@ -1,0 +1,785 @@
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>pgr_dijkstraNear - Propuesto &#8212; pgRouting Manual (3.6-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/page_history.js"></script>
+    <script src="_static/translations.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="pgr_dijkstraNearCost - Propuesto" href="pgr_dijkstraNearCost.html" />
+    <link rel="prev" title="pgr_dijkstraVia - Propuesto" href="pgr_dijkstraVia.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v3.6.0-dev</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Soporte</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Datos Muestra</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Guía de migración</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNear</span></code> - Propuesto</a><ul>
+<li><a class="reference internal" href="#description">Descripción</a><ul>
+<li><a class="reference internal" href="#characteristics">Características</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#signatures">Firmas</a><ul>
+<li><a class="reference internal" href="#one-to-many">Uno a Muchos</a></li>
+<li><a class="reference internal" href="#many-to-one">Muchos a Uno</a></li>
+<li><a class="reference internal" href="#many-to-many">Muchos a Muchos</a></li>
+<li><a class="reference internal" href="#combinations">Combinaciones</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#parameters">Parámetros</a><ul>
+<li><a class="reference internal" href="#dijkstra-optional-parameters">Parámetros opcionales de Dijkstra</a></li>
+<li><a class="reference internal" href="#near-optional-parameters">Parámetros opcionales de Cercanía</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
+<li><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_dijkstraVia.html" title="Previous Chapter: pgr_dijkstraVia - Propuesto"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_dijkstraV...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_dijkstraNearCost.html" title="Next Chapter: pgr_dijkstraNearCost - Propuesto"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_dijkstraN... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+        <div class="body span12 content" role="main">
+            <script> document.write(get_history('pgr_dijkstraNear','es'));  </script>
+            
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="pgr-dijkstranear-proposed">
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNear</span></code> - Propuesto<a class="headerlink" href="#pgr-dijkstranear-proposed" title="Enlace permanente a este encabezado">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNear</span></code> — Utilizando el algoritmo dijkstra, encuentra la ruta que conduce al vértice más cercano.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Funciones propuestas para la próxima versión mayor.</p>
+<ul class="simple">
+<li><p>No están oficialmente en la versión actual.</p></li>
+<li><p>Es probable que oficialmente formen parte del próximo lanzamiento:</p>
+<ul>
+<li><p>Las funciones hacen uso de ENTEROS y FLOTANTES</p></li>
+<li><p>Probablemente el nombre no cambie. (Pero todavía puede)</p></li>
+<li><p>Es posible que la firma no cambie. (Pero todavía puede)</p></li>
+<li><p>Probablemente la funcionalidad no cambie. (Pero todavía puede)</p></li>
+<li><p>Se han hecho pruebas con pgTap. Pero tal vez se necesiten más.</p></li>
+<li><p>Es posible que la documentación necesite un refinamiento.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<figure class="align-default" id="id1">
+<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/table_of_contents.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
+<figcaption>
+<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+</figcaption>
+</figure>
+<p class="rubric">Disponibilidad</p>
+<ul class="simple">
+<li><p>Versión 3.3.0</p>
+<ul>
+<li><p>Promovido a función <strong>propuesta</strong></p></li>
+</ul>
+</li>
+<li><p>Versión 3.2.0</p>
+<ul>
+<li><p>Nueva función <strong>experimental</strong></p></li>
+</ul>
+</li>
+</ul>
+<section id="description">
+<h2>Descripción<a class="headerlink" href="#description" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Dado un grafo, un vértice inicial y un conjunto de vértices finales, esta función encuentra la ruta más corta desde el vértice inicial hasta el vértice final más cercano.</p>
+<section id="characteristics">
+<h3>Características<a class="headerlink" href="#characteristics" title="Enlace permanente a este encabezado">¶</a></h3>
+<ul class="simple">
+<li><p>Utiliza el algoritmo Dijkstra.</p></li>
+<li><p>Funciona para grafos <strong>dirigidos</strong> y <strong>no dirigidos</strong>.</p></li>
+<li><p>Cuando hay más de una ruta al mismo vértice con el mismo coste:</p>
+<ul>
+<li><p>El algoritmo devolverá solo una ruta</p></li>
+</ul>
+</li>
+<li><p>Opcionalmente permite encontrar más de una ruta.</p>
+<ul>
+<li><p>Cuando se va a devolver más de una ruta:</p>
+<ul>
+<li><p>Los resultados se ordenan en orden creciente de:</p>
+<ul>
+<li><p>costo agregado</p></li>
+<li><p>Dentro del mismo valor de los costes agregados:</p>
+<ul>
+<li><p>los resultados se ordenan por (fuente, destino)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Tiempo de ejecución: Dijkstra tiempo de ejecución: <span class="math notranslate nohighlight">\(drt = O((|E| + |V|)log|V|)\)</span></p>
+<ul>
+<li><p>Uno a Muchos; <span class="math notranslate nohighlight">\(drt\)</span></p></li>
+<li><p>Muchos a Uno: <span class="math notranslate nohighlight">\(drt\)</span></p></li>
+<li><p>Muchos a Muchos: <span class="math notranslate nohighlight">\(drt * |Starting vids|\)</span></p></li>
+<li><p>Combinaciones: <span class="math notranslate nohighlight">\(drt * |Starting vids|\)</span></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="signatures">
+<h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
+<p class="rubric">Resumen</p>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salida</strong>, <strong>destinos</strong>, [<strong>opciones A</strong>])</div>
+<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salidas</strong>, <strong>destino</strong>, [<strong>opciones A</strong>])</div>
+<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salidas</strong>, <strong>destinos</strong>, [<strong>opciones B</strong>])</div>
+<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#combinations-sql">SQL de aristas</a>, <a class="reference internal" href="#edges-sql">SQL de combinaciones</a>, [<strong>opciones B</strong>])</div>
+<div class="line"><strong>options A:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">cap]</span></code></div>
+<div class="line"><strong>options B:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">cap,</span> <span class="pre">global]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
+<section id="one-to-many">
+<span id="index-0"></span><h3>Uno a Muchos<a class="headerlink" href="#one-to-many" title="Enlace permanente a este encabezado">¶</a></h3>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salida</strong>, <strong>destinos</strong>, [<strong>opciones</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">cap]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Saliendo en coche desde el vértice <span class="math notranslate nohighlight">\(6\)</span> encontrar la estación de metro más cercana.</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>Usando un grafo <strong>dirigido</strong> para el ruteo de automóviles.</p></li>
+<li><p>Las estaciones de metro se encuentran en los siguientes vértices <span class="math notranslate nohighlight">\(\{ 1, 10, 11\}\)</span></p></li>
+<li><p>Los valores predeterminados utilizados:</p>
+<ul>
+<li><p><cite>directed =&gt; true</cite></p></li>
+<li><p><cite>cap =&gt; 1</cite></p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraNear</span><span class="p">(</span>
+<span class="linenos"> 2</span>  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+<span class="linenos"> 3</span>  <span class="mi">6</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">]);</span>
+<span class="linenos"> 4</span> <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="linenos"> 5</span><span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
+<span class="linenos"> 6</span>   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+<span class="linenos"> 7</span>   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="linenos"> 8</span>   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">2</span>
+<span class="linenos"> 9</span><span class="p">(</span><span class="mi">3</span> <span class="n">rows</span><span class="p">)</span>
+<span class="linenos">10</span>
+</pre></div>
+</div>
+<p>El resultado muestra que la estación en el vértice <span class="math notranslate nohighlight">\(11\)</span> es la más cercana.</p>
+</section>
+<section id="many-to-one">
+<span id="index-1"></span><h3>Muchos a Uno<a class="headerlink" href="#many-to-one" title="Enlace permanente a este encabezado">¶</a></h3>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salidas</strong>, <strong>destino</strong>, [<strong>opciones</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">cap]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Saliendo en coche desde una estación de metro encontrar las <strong>dos</strong> estaciones más cercanas al vértice <span class="math notranslate nohighlight">\(2\)</span></p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>Usando un grafo <strong>dirigido</strong> para el ruteo de automóviles.</p></li>
+<li><p>Las estaciones de metro se encuentran en los siguientes vértices <span class="math notranslate nohighlight">\(\{ 1, 10, 11\}\)</span></p></li>
+<li><p>En la línea <cite>4</cite>: utilizando el parámetro posicional: <cite>directed</cite> configurado en <code class="docutils literal notranslate"><span class="pre">true</span></code></p></li>
+<li><p>En la línea <cite>5</cite>: usando el parámetro con nombre <cite>cap =&gt; 2</cite></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraNear</span><span class="p">(</span>
+<span class="linenos"> 2</span>  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+<span class="linenos"> 3</span>  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">6</span><span class="p">,</span>
+<span class="linenos"> 4</span>  <span class="n">true</span><span class="p">,</span>
+<span class="linenos"> 5</span>  <span class="n">cap</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">);</span>
+<span class="linenos"> 6</span> <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="linenos"> 7</span><span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
+<span class="linenos"> 8</span>   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="mi">10</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+<span class="linenos"> 9</span>   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>        <span class="mi">10</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="linenos">10</span>   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="mi">11</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+<span class="linenos">11</span>   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>        <span class="mi">11</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="linenos">12</span>   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>        <span class="mi">11</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">2</span>
+<span class="linenos">13</span><span class="p">(</span><span class="mi">5</span> <span class="n">rows</span><span class="p">)</span>
+<span class="linenos">14</span>
+</pre></div>
+</div>
+<p>El resultado muestra que la estación en el vértice <span class="math notranslate nohighlight">\(10\)</span> es la más cercana y la siguiente mejor es <span class="math notranslate nohighlight">\(11\)</span>.</p>
+</section>
+<section id="many-to-many">
+<span id="index-2"></span><h3>Muchos a Muchos<a class="headerlink" href="#many-to-many" title="Enlace permanente a este encabezado">¶</a></h3>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salidas</strong>, <strong>destinos</strong>, [<strong>opciones</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">cap,</span> <span class="pre">global]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Encuentra la mejor conexión peatonal entre dos líneas de autobuses</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>Usando un grafo <strong>no dirigido</strong> para el ruteo de peatones</p></li>
+<li><p>Las estaciones de la primera línea de metro están en <span class="math notranslate nohighlight">\(\{15, 16\}\)</span></p></li>
+<li><p>Las estaciones de la segunda línea de metro están en <span class="math notranslate nohighlight">\(\{1, 10, 11\}\)</span></p></li>
+<li><p>En la línea <cite>4</cite>: utilizando el parámetro con nombre: <cite>directed =&gt; false</cite></p></li>
+<li><p>Los valores predeterminados utilizados:</p>
+<ul>
+<li><p><cite>cap =&gt; 1</cite></p></li>
+<li><p><cite>global =&gt; true</cite></p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraNear</span><span class="p">(</span>
+<span class="linenos"> 2</span>  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+<span class="linenos"> 3</span>  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="linenos"> 4</span>  <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
+<span class="linenos"> 5</span> <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="linenos"> 6</span><span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
+<span class="linenos"> 7</span>   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="mi">15</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+<span class="linenos"> 8</span>   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>        <span class="mi">15</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="linenos"> 9</span><span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
+<span class="linenos">10</span>
+</pre></div>
+</div>
+<p>Para un peatón la mejor conexión es subir/bajar en el vértice <span class="math notranslate nohighlight">\(15\)</span> de la primera línea de metro y en el vértice <span class="math notranslate nohighlight">\(10\)</span> de la segunda línea de metro.</p>
+<p>Solo se devuelve <cite>una</cite> ruta porque <cite>global</cite> es <code class="docutils literal notranslate"><span class="pre">true</span></code> y <cite>cap</cite> es <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+</section>
+<section id="combinations">
+<span id="index-3"></span><h3>Combinaciones<a class="headerlink" href="#combinations" title="Enlace permanente a este encabezado">¶</a></h3>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_dijkstraNear(<a class="reference internal" href="#combinations-sql">SQL de aristas</a>, <a class="reference internal" href="#edges-sql">SQL de combinaciones</a>, [<strong>opciones</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">cap,</span> <span class="pre">global]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Encuentra la mejor conexión de coche entre todas las estaciones de dos líneas de metro</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>Usando un grafo <strong>dirigido</strong> para el ruteo de automóviles.</p></li>
+<li><p>Las estaciones de la primera línea de metro están en <span class="math notranslate nohighlight">\(\{1, 10, 11\}\)</span></p></li>
+<li><p>Las estaciones de la segunda línea de metro están en <span class="math notranslate nohighlight">\(\{15, 16\}\)</span></p></li>
+</ul>
+<p>El contenido de las combinaciones:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">unnest</span><span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="k">as</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span>
+<span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">unnest</span><span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">])</span> <span class="n">AS</span> <span class="n">target</span><span class="p">)</span> <span class="n">a</span>
+  <span class="n">UNION</span>
+<span class="n">SELECT</span> <span class="n">unnest</span><span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">]),</span> <span class="n">target</span>
+<span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">unnest</span><span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="n">AS</span> <span class="n">target</span><span class="p">)</span> <span class="n">b</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">;</span>
+ <span class="n">source</span> <span class="o">|</span> <span class="n">target</span>
+<span class="o">--------+--------</span>
+      <span class="mi">1</span> <span class="o">|</span>     <span class="mi">15</span>
+      <span class="mi">1</span> <span class="o">|</span>     <span class="mi">16</span>
+     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">15</span>
+     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">16</span>
+     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">15</span>
+     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">16</span>
+     <span class="mi">15</span> <span class="o">|</span>      <span class="mi">1</span>
+     <span class="mi">15</span> <span class="o">|</span>     <span class="mi">10</span>
+     <span class="mi">15</span> <span class="o">|</span>     <span class="mi">11</span>
+     <span class="mi">16</span> <span class="o">|</span>      <span class="mi">1</span>
+     <span class="mi">16</span> <span class="o">|</span>     <span class="mi">10</span>
+     <span class="mi">16</span> <span class="o">|</span>     <span class="mi">11</span>
+<span class="p">(</span><span class="mi">12</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>La consulta:</p>
+<ul class="simple">
+<li><p>líneas <cite>3~4</cite> establece los vértices de inicio de la primera línea de metro y los vértices finales de la segunda línea de metro</p></li>
+<li><p>la línea <cite>6~7</cite> establecen los vértices de inicio de la primera línea de metro y los vértices finales de la primera línea de metro</p></li>
+<li><p>En la línea <cite>8</cite>: usando el parámetro con nombre <cite>global =&gt; false</cite></p></li>
+<li><p>Los valores predeterminados utilizados:</p>
+<ul>
+<li><p><cite>directed =&gt; true</cite></p></li>
+<li><p><cite>cap =&gt; 1</cite></p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraNear</span><span class="p">(</span>
+<span class="linenos"> 2</span>  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+<span class="linenos"> 3</span>  <span class="s1">&#39;SELECT unnest(ARRAY[10, 11, 1]) as source, target</span>
+<span class="linenos"> 4</span>  <span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">unnest</span><span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">])</span> <span class="n">AS</span> <span class="n">target</span><span class="p">)</span> <span class="n">a</span>
+<span class="linenos"> 5</span>  <span class="n">UNION</span>
+<span class="linenos"> 6</span>  <span class="n">SELECT</span> <span class="n">unnest</span><span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">]),</span> <span class="n">target</span>
+<span class="linenos"> 7</span>  <span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">unnest</span><span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="n">AS</span> <span class="n">target</span><span class="p">)</span> <span class="sa">b</span><span class="s1">&#39;,</span>
+<span class="linenos"> 8</span>  <span class="k">global</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
+<span class="linenos"> 9</span> <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="linenos">10</span><span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
+<span class="linenos">11</span>   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="mi">11</span> <span class="o">|</span>      <span class="mi">16</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+<span class="linenos">12</span>   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>        <span class="mi">11</span> <span class="o">|</span>      <span class="mi">16</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="linenos">13</span>   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="mi">15</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+<span class="linenos">14</span>   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>        <span class="mi">15</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="linenos">15</span>   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="mi">16</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+<span class="linenos">16</span>   <span class="mi">6</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>        <span class="mi">16</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="linenos">17</span>   <span class="mi">7</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="mi">10</span> <span class="o">|</span>      <span class="mi">16</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+<span class="linenos">18</span>   <span class="mi">8</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>        <span class="mi">10</span> <span class="o">|</span>      <span class="mi">16</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="linenos">19</span>   <span class="mi">9</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>        <span class="mi">10</span> <span class="o">|</span>      <span class="mi">16</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">2</span>
+<span class="linenos">20</span>  <span class="mi">10</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+<span class="linenos">21</span>  <span class="mi">11</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">16</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="linenos">22</span>  <span class="mi">12</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">16</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+<span class="linenos">23</span>  <span class="mi">13</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">16</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+<span class="linenos">24</span>  <span class="mi">14</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">16</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">4</span>
+<span class="linenos">25</span><span class="p">(</span><span class="mi">14</span> <span class="n">rows</span><span class="p">)</span>
+<span class="linenos">26</span>
+</pre></div>
+</div>
+<p>A partir de los resultados:</p>
+<ul class="simple">
+<li><p>haciendo una conexión desde la primera línea de metro <span class="math notranslate nohighlight">\(\{1, 10, 11\}\)</span> a la segunda <span class="math notranslate nohighlight">\(\{15, 16\}\)</span>:</p>
+<ul>
+<li><p>Las mejores conecciones de todas las estaciones desde la primera línea son: <span class="math notranslate nohighlight">\({(1 \rightarrow 16) (10 \rightarrow 16) (11 \rightarrow 16)}\)</span></p></li>
+<li><p>La mejor es:math:<cite>(11 rightarrow 16)</cite> con un costo de <span class="math notranslate nohighlight">\(1\)</span> (líneas: <cite>11</cite> y <cite>12</cite>)</p></li>
+</ul>
+</li>
+<li><p>haciendo una conexión desde la segunda línea de metro <span class="math notranslate nohighlight">\(\{15, 16\}\)</span> a la primera <span class="math notranslate nohighlight">\(\{1, 10, 11\}\)</span>:</p>
+<ul>
+<li><p>Las mejores conecciones de todas las estaciones desde la segunda línea son: <span class="math notranslate nohighlight">\({(15 \rightarrow 10) (16 \rightarrow 11)}\)</span></p></li>
+<li><p>Ambas son igualmente buenas, como también tienen el mismo costo. (lines: <cite>13</cite> and <cite>14</cite> and lines: <cite>15</cite> and <cite>16</cite>)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="parameters">
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlace permanente a este encabezado">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 19.4%" />
+<col style="width: 19.4%" />
+<col style="width: 61.1%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a> como se describe a continuación</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#combinations-sql">SQL de combinaciones</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#combinations-sql">SQL de combinaciones</a> como se describe a abajo</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>salida</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del vértice inicial de la ruta.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>salidas</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td><p>Arreglo de identificadores de vértices iniciales.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>destino</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del vértice final de la ruta.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>destinos</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td><p>Arreglo de identificadores de vértices finales.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="dijkstra-optional-parameters">
+<h3>Parámetros opcionales de Dijkstra<a class="headerlink" href="#dijkstra-optional-parameters" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><ul class="simple">
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> el gráfo se considera <cite>Dirigido</cite></p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> el gráfo se considera <cite>No Dirigido</cite>.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="near-optional-parameters">
+<h3>Parámetros opcionales de Cercanía<a class="headerlink" href="#near-optional-parameters" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 15.9%" />
+<col style="width: 8.0%" />
+<col style="width: 8.0%" />
+<col style="width: 68.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cap</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p>Encuentra como máximo el número <code class="docutils literal notranslate"><span class="pre">cap</span></code> de los caminos más cortos y más cercanos</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">global</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><ul class="simple">
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code>: solo se devolverán los resultados del límite <code class="docutils literal notranslate"><span class="pre">cap</span></code></p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code>: <code class="docutils literal notranslate"><span class="pre">cap</span></code> límite por <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">vid</span></code> será devuelto</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="inner-queries">
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Enlace permanente a este encabezado">¶</a></h2>
+<section id="edges-sql">
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td></td>
+<td><p>Identificador de la arista.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td></td>
+<td><p>Identificador del primer vértice de la arista.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td></td>
+<td><p>Identificador del segundo vértice de la arista.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
+<td></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
+<td><p>-1</p></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
+<ul class="simple">
+<li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Donde:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+</section>
+<section id="combinations-sql">
+<h3>SQL Combinaciones<a class="headerlink" href="#combinations-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 14.0%" />
+<col style="width: 16.3%" />
+<col style="width: 69.8%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td><p>Identificador del vértice de salida.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td><p>Identificador del vértice de llegada.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Donde:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="result-columns">
+<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Regresa <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 14.0%" />
+<col style="width: 16.3%" />
+<col style="width: 69.8%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>Valor secuencial a partir de <strong>1</strong>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>Posición relativa en la ruta. Tiene el valor <strong>1</strong> para el inicio de una ruta.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del vértice inicial de la ruta actual.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del vértice final de la ruta actual.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del nodo en la ruta de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador de la arista utilizado para ir del <code class="docutils literal notranslate"><span class="pre">node</span></code> al siguiente nodo de la secuencia de ruta. <code class="docutils literal notranslate"><span class="pre">-1</span></code> para el último nodo de la ruta.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Costo para atravesar desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando <code class="docutils literal notranslate"><span class="pre">edge</span></code> hasta el siguiente nodo en la secuencia de la ruta.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Costo agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="see-also">
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - Familia de funciones</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - Propuesto</span></a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
+<li><p>boost: <a class="reference external" href="https://www.boost.org/libs/graph/doc/table_of_contents.html">https://www.boost.org/libs/graph/doc/table_of_contents.html</a></p></li>
+<li><p>Wikipedia: <a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a></p></li>
+</ul>
+<p class="rubric">Índices y tablas</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
+      Actualizado por última vez en sept 09, 2023.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

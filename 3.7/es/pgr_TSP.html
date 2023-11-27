@@ -1,0 +1,635 @@
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>pgr_TSP &#8212; pgRouting Manual (3.6-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/page_history.js"></script>
+    <script src="_static/translations.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="pgr_TSPeuclidean" href="pgr_TSPeuclidean.html" />
+    <link rel="prev" title="Vendedor Viajante - Familia de funciones" href="TSP-family.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v3.6.0-dev</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Soporte</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Datos Muestra</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Guía de migración</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code></a><ul>
+<li><a class="reference internal" href="#description">Descripción</a><ul>
+<li><a class="reference internal" href="#problem-definition">Definición del Problema</a></li>
+<li><a class="reference internal" href="#characteristics">Características</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#signatures">Firmas</a></li>
+<li><a class="reference internal" href="#parameters">Parámetros</a><ul>
+<li><a class="reference internal" href="#tsp-optional-parameters">Parámetros opcionales de TSP</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#matrix-sql">SQL de matriz</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
+<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
+<li><a class="reference internal" href="#start-from-vertex-1">Inicio en el vértice <span class="math notranslate nohighlight">\(1\)</span></a></li>
+<li><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymetric-matrix">Uso de puntos de interés para generar una matriz asimétrica.</a></li>
+<li><a class="reference internal" href="#connected-incomplete-data">Datos incompletos conectados</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="TSP-family.html" title="Previous Chapter: Vendedor Viajante - Familia de funciones"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Vendedor Viaj...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_TSPeuclidean.html" title="Next Chapter: pgr_TSPeuclidean"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_TSPeuclidean &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+        <div class="body span12 content" role="main">
+            <script> document.write(get_history('pgr_TSP','es'));  </script>
+            
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="pgr-tsp">
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code><a class="headerlink" href="#pgr-tsp" title="Enlace permanente a este encabezado">¶</a></h1>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code> - Aproximación usando el algoritmo*metrico*.</p></li>
+</ul>
+<figure class="align-default" id="id1">
+<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
+<figcaption>
+<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+</figcaption>
+</figure>
+<p class="rubric">Disponibilidad:</p>
+<ul class="simple">
+<li><p>Versión 3.2.1</p>
+<ul>
+<li><p>Algoritmo Metrico de la <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Librería Boost</a></p></li>
+<li><p>El algoritmo de recocido simulado ya no es utilizado</p>
+<ul>
+<li><p>Se ignoran los parámetros relacionados con el algoritmo de recocido simulado: <cite>max_processing_time</cite>, <cite>tries_per_temperature</cite>, <cite>max_changes_per_temperature</cite>, <cite>max_consecutive_non_changes</cite>, <cite>initial_temperature</cite>, <cite>final_temperature</cite>, <cite>cooling_factor</cite>, <cite>randomize</cite></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Versión 2.3.0</p>
+<ul>
+<li><p>Cambio de firma</p>
+<ul>
+<li><p>Firma antigua ya no soportada</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Versión 2.0.0</p>
+<ul>
+<li><p>Función <strong>oficial</strong></p></li>
+</ul>
+</li>
+</ul>
+<section id="description">
+<h2>Descripción<a class="headerlink" href="#description" title="Enlace permanente a este encabezado">¶</a></h2>
+<section id="problem-definition">
+<h3>Definición del Problema<a class="headerlink" href="#problem-definition" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>En el problema del vendedor viajante (TSP) hace la siguiente pregunta:</p>
+<blockquote>
+<div><p><em>Dada una lista de ciudades y las distancias entre cada par de ciudades, que corresponde con la ruta más corta posible que para visite cada ciudad exactamente una vez y regrese a la ciudad de origen?</em></p>
+</div></blockquote>
+</section>
+<section id="characteristics">
+<h3>Características<a class="headerlink" href="#characteristics" title="Enlace permanente a este encabezado">¶</a></h3>
+<ul class="simple">
+<li><p>Este problema es un problema de optimización NP-duro.</p></li>
+<li><p>Se utiliza el algoritmo métrico</p></li>
+<li><p>La implementación genera soluciones que <em>son el doble de largas que el recorrido óptimo en el peor de los casos</em> cuando:</p>
+<ul>
+<li><p>El grafo es no dirigido</p></li>
+<li><p>El grafo está completamente conectado</p></li>
+<li><p>Grafo donde los costos de viaje en los segmentos cumplen con la desigualdad del triángulo.</p></li>
+</ul>
+</li>
+<li><p>En un grafo no dirigido:</p>
+<ul>
+<li><p>Los costos del viaje son simétricos:</p></li>
+<li><p>Los costos del viaje de <code class="docutils literal notranslate"><span class="pre">u</span></code> a <code class="docutils literal notranslate"><span class="pre">v</span></code> son tanto como viajar de <code class="docutils literal notranslate"><span class="pre">v</span></code> a <code class="docutils literal notranslate"><span class="pre">u</span></code></p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>Se puede utilizar con funciones <a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Categoría</span></a> preferiblemente con <cite>directed =&gt; false</cite>.</p>
+<ul>
+<li><p>Con <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">false</span></code></p>
+<ul>
+<li><p>Generará un grafo que:</p>
+<ul>
+<li><p>es no dirigido</p></li>
+<li><p>está completamente conectado (siempre que el grafo tenga un componente)</p></li>
+<li><p>todos los costos de viaje en los segmentos vumplen con la desigualdad del triángulo.</p></li>
+</ul>
+</li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">=</span> <span class="pre">0</span> <span class="pre">Ó</span> <span class="pre">end_vid</span> <span class="pre">=</span> <span class="pre">0</span></code></p>
+<ul>
+<li><p>Las soluciones generadas están garantizadas para ser <em>el doble de largas que el recorrido óptimo en el peor de los casos</em></p></li>
+</ul>
+</li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">Y</span> <span class="pre">end_vid</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">Y</span> <span class="pre">start_vid</span> <span class="pre">!=</span> <span class="pre">end_vid</span></code></p>
+<ul>
+<li><p><strong>No está garantizado</strong> que la solución sea, en el peor de los casos, el doble de larga que el recorrido óptimo, debido al hecho de que <cite>end_vid</cite> se ve obligado a estar en una posición fija.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Con <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
+<ul>
+<li><p><strong>No está garantizado</strong> que la solución sea, en el peor de los casos, el doble de larga que el recorrido óptimo</p></li>
+<li><p>Generará un grafo que:</p>
+<ul>
+<li><p>es dirigido</p></li>
+<li><p>está completamente conectado (siempre que el grafo tenga un componente)</p></li>
+<li><p>algunos (o todos) los costos de viaje en los segmentos podrían no obedecer a la desigualdad del triángulo.</p></li>
+</ul>
+</li>
+<li><p>Como se requiere un grafo no dirigido, el grafo dirigido se transforma de la siguiente manera:</p>
+<ul>
+<li><p>los segmentos <cite>(u, v)</cite> y <cite>(v, u)</cite> se consideran el mismo segmentos (denotado <cite>(u, v)</cite></p></li>
+<li><p>Si “<code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> difiere entre una o más instancias del segmento <cite>(u, v)</cite></p></li>
+<li><p>El valor mínimo de <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code>  en todas las instancias del segmento <cite>(u, v)</cite> se considera como el <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> de la arista <cite>(u, v)</cite></p></li>
+<li><p>Algunos (o todos) los costos de viaje en los segmentos aún podrían no obedecer a la desigualdad del triángulo.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Cuando los datos están incompletos, pero es un grafo conectado:</p>
+<ul>
+<li><p>los datos están incompletos se calcularán con el algoritmo de Dijkstra.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="signatures">
+<h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
+<p class="rubric">Resumen</p>
+<div class="signatures admonition" id="index-0">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_TSP(<a class="reference internal" href="#matrix-sql">SQL de martiz</a>, <code class="docutils literal notranslate"><span class="pre">[start_id,</span> <span class="pre">end_id]</span></code>)</div>
+</div>
+<div class="line-block">
+<div class="line">REGRESA CONJUNTO DE <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">OR EMTPY SET</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Usando <a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a> para generar la información de la matriz</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p><strong>Línea 5</strong> Los vértices <span class="math notranslate nohighlight">\(\{2, 4, 13, 14\}\)</span> no están incluidos porque no están conectados.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
+<span class="linenos"> 2</span>  $$SELECT * FROM pgr_dijkstraCostMatrix(
+<span class="linenos"> 3</span>    &#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;,
+<span class="linenos"> 4</span>    (SELECT array_agg(id) FROM vertices WHERE id NOT IN (2, 4, 13, 14)),
+<span class="linenos"> 5</span>    directed =&gt; false) $$);
+<span class="linenos"> 6</span> seq | node | cost | agg_cost
+<span class="linenos"> 7</span>-----+------+------+----------
+<span class="linenos"> 8</span>   1 |    1 |    0 |        0
+<span class="linenos"> 9</span>   2 |    3 |    1 |        1
+<span class="linenos">10</span>   3 |    7 |    1 |        2
+<span class="linenos">11</span>   4 |    6 |    1 |        3
+<span class="linenos">12</span>   5 |    5 |    1 |        4
+<span class="linenos">13</span>   6 |   10 |    2 |        6
+<span class="linenos">14</span>   7 |   11 |    1 |        7
+<span class="linenos">15</span>   8 |   12 |    1 |        8
+<span class="linenos">16</span>   9 |   16 |    2 |       10
+<span class="linenos">17</span>  10 |   15 |    1 |       11
+<span class="linenos">18</span>  11 |   17 |    2 |       13
+<span class="linenos">19</span>  12 |    9 |    3 |       16
+<span class="linenos">20</span>  13 |    8 |    1 |       17
+<span class="linenos">21</span>  14 |    1 |    3 |       20
+<span class="linenos">22</span>(14 rows)
+<span class="linenos">23</span>
+</pre></div>
+</div>
+</section>
+<section id="parameters">
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlace permanente a este encabezado">¶</a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#matrix-sql">SQL de matriz</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#matrix-sql">SQL de matriz</a> como se describe más adelante</p></td>
+</tr>
+</tbody>
+</table>
+<section id="tsp-optional-parameters">
+<h3>Parámetros opcionales de TSP<a class="headerlink" href="#tsp-optional-parameters" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_id</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>El primer vértice visitado</p>
+<ul class="simple">
+<li><p>Cuando <cite>0</cite> cualquier vértice puede convertirse en el primer vértice visitado.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_id</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Último vértice visitado antes de regresar a <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p>
+<ul class="simple">
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">0</span></code> cualquier vértice puede convertirse en el último vértice visitado antes de regresar a <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">0</span></code> y <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">=</span> <span class="pre">0</span></code> entonces es el primer y último vértice</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="inner-queries">
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Enlace permanente a este encabezado">¶</a></h2>
+<section id="matrix-sql">
+<h3>SQL de matriz<a class="headerlink" href="#matrix-sql" title="Enlace permanente a este encabezado">¶</a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td><p>Identificador del vértice de salida.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td><p>Identificador del vértice destino.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td><p>Costo para pasar de start_vid a end_vid</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="result-columns">
+<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Devuelve el CONJUNTO DE <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>Secuencia de filas.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>node</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del nodo/coordenada/punto.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>costo</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Coste que se debe recorrer desde el <code class="docutils literal notranslate"><span class="pre">nodo</span></code> al siguiente <code class="docutils literal notranslate"><span class="pre">nodo</span></code> en la secuencia de ruta.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> para la última fila en la secuencia del recorrido.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Costo agregado del <code class="docutils literal notranslate"><span class="pre">nodo</span></code> en <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> hacia el nodo actual.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> para la primera fila en la secuencia del recorrido.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="additional-examples">
+<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlace permanente a este encabezado">¶</a></h2>
+<nav class="contents local" id="contenido">
+<ul class="simple">
+<li><p><a class="reference internal" href="#start-from-vertex-1" id="id2">Inicio en el vértice <span class="math notranslate nohighlight">\(1\)</span></a></p></li>
+<li><p><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymetric-matrix" id="id3">Uso de puntos de interés para generar una matriz asimétrica.</a></p></li>
+<li><p><a class="reference internal" href="#connected-incomplete-data" id="id4">Datos incompletos conectados</a></p></li>
+</ul>
+</nav>
+<section id="start-from-vertex-1">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Inicio en el vértice <span class="math notranslate nohighlight">\(1\)</span></a><a class="headerlink" href="#start-from-vertex-1" title="Enlace permanente a este encabezado">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Linea 6</strong> <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">=&gt;</span> <span class="pre">1</span></code></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
+<span class="linenos"> 2</span>  $$SELECT * FROM pgr_dijkstraCostMatrix(
+<span class="linenos"> 3</span>    &#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;,
+<span class="linenos"> 4</span>    (SELECT array_agg(id) FROM vertices WHERE id NOT IN (2, 4, 13, 14)),
+<span class="linenos"> 5</span>    directed =&gt; false) $$,
+<span class="linenos"> 6</span>  start_id =&gt; 1);
+<span class="linenos"> 7</span> seq | node | cost | agg_cost
+<span class="linenos"> 8</span>-----+------+------+----------
+<span class="linenos"> 9</span>   1 |    1 |    0 |        0
+<span class="linenos">10</span>   2 |    3 |    1 |        1
+<span class="linenos">11</span>   3 |    7 |    1 |        2
+<span class="linenos">12</span>   4 |    6 |    1 |        3
+<span class="linenos">13</span>   5 |    5 |    1 |        4
+<span class="linenos">14</span>   6 |   10 |    2 |        6
+<span class="linenos">15</span>   7 |   11 |    1 |        7
+<span class="linenos">16</span>   8 |   12 |    1 |        8
+<span class="linenos">17</span>   9 |   16 |    2 |       10
+<span class="linenos">18</span>  10 |   15 |    1 |       11
+<span class="linenos">19</span>  11 |   17 |    2 |       13
+<span class="linenos">20</span>  12 |    9 |    3 |       16
+<span class="linenos">21</span>  13 |    8 |    1 |       17
+<span class="linenos">22</span>  14 |    1 |    3 |       20
+<span class="linenos">23</span>(14 rows)
+<span class="linenos">24</span>
+</pre></div>
+</div>
+</section>
+<section id="using-points-of-interest-to-generate-an-asymetric-matrix">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Uso de puntos de interés para generar una matriz asimétrica.</a><a class="headerlink" href="#using-points-of-interest-to-generate-an-asymetric-matrix" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Para generar una matriz asimétrica:</p>
+<ul class="simple">
+<li><p><strong>Línea 4</strong> La información <code class="docutils literal notranslate"><span class="pre">side</span></code> de <code class="docutils literal notranslate"><span class="pre">pointsOfInterset</span></code> se ignora al no incluirla en la consulta</p></li>
+<li><p><strong>Línea 6</strong> Generación de una matriz asimétrica con <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(min(agg\_cost(u, v), agg\_cost(v, u))\)</span> se considera como el <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></li>
+<li><p>La solución que puede ser mayor que <em>el doble de larga que el tour óptimo</em> porque:</p>
+<ul>
+<li><p>La desigualdad del triángulo podría no estar satisfecha.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_id</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">Y</span> <span class="pre">end_id</span> <span class="pre">!=</span> <span class="pre">0</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
+<span class="linenos"> 2</span>  $$SELECT * FROM pgr_withPointsCostMatrix(
+<span class="linenos"> 3</span>    &#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;,
+<span class="linenos"> 4</span>    &#39;SELECT pid, edge_id, fraction from pointsOfInterest&#39;,
+<span class="linenos"> 5</span>    array[-1, 10, 7, 11, -6],
+<span class="linenos"> 6</span>    directed =&gt; true) $$,
+<span class="linenos"> 7</span>  start_id =&gt; 7,
+<span class="linenos"> 8</span>  end_id =&gt; 11);
+<span class="linenos"> 9</span> seq | node | cost | agg_cost
+<span class="linenos">10</span>-----+------+------+----------
+<span class="linenos">11</span>   1 |    7 |    0 |        0
+<span class="linenos">12</span>   2 |   -6 |  0.3 |      0.3
+<span class="linenos">13</span>   3 |   -1 |  1.3 |      1.6
+<span class="linenos">14</span>   4 |   10 |  1.6 |      3.2
+<span class="linenos">15</span>   5 |   11 |    1 |      4.2
+<span class="linenos">16</span>   6 |    7 |    1 |      5.2
+<span class="linenos">17</span>(6 rows)
+<span class="linenos">18</span>
+</pre></div>
+</div>
+</section>
+<section id="connected-incomplete-data">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Datos incompletos conectados</a><a class="headerlink" href="#connected-incomplete-data" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Usando aristas seleccionadas <span class="math notranslate nohighlight">\(\{2, 4, 5, 8, 9, 15\}\)</span> la matriz no es completa.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_dijkstraCostMatrix(
+<span class="linenos"> 2</span>  $q1$SELECT id, source, target, cost, reverse_cost FROM edges WHERE id IN (2, 4, 5, 8, 9, 15)$q1$,
+<span class="linenos"> 3</span>  (SELECT ARRAY[6, 7, 10, 11, 16, 17]),
+<span class="linenos"> 4</span>  directed =&gt; true);
+<span class="linenos"> 5</span> start_vid | end_vid | agg_cost
+<span class="linenos"> 6</span>-----------+---------+----------
+<span class="linenos"> 7</span>         6 |       7 |        1
+<span class="linenos"> 8</span>         6 |      11 |        2
+<span class="linenos"> 9</span>         6 |      16 |        3
+<span class="linenos">10</span>         6 |      17 |        4
+<span class="linenos">11</span>         7 |       6 |        1
+<span class="linenos">12</span>         7 |      11 |        1
+<span class="linenos">13</span>         7 |      16 |        2
+<span class="linenos">14</span>         7 |      17 |        3
+<span class="linenos">15</span>        10 |       6 |        1
+<span class="linenos">16</span>        10 |       7 |        2
+<span class="linenos">17</span>        10 |      11 |        1
+<span class="linenos">18</span>        10 |      16 |        2
+<span class="linenos">19</span>        10 |      17 |        3
+<span class="linenos">20</span>        11 |       6 |        2
+<span class="linenos">21</span>        11 |       7 |        1
+<span class="linenos">22</span>        11 |      16 |        1
+<span class="linenos">23</span>        11 |      17 |        2
+<span class="linenos">24</span>        16 |       6 |        3
+<span class="linenos">25</span>        16 |       7 |        2
+<span class="linenos">26</span>        16 |      11 |        1
+<span class="linenos">27</span>        16 |      17 |        1
+<span class="linenos">28</span>        17 |       6 |        4
+<span class="linenos">29</span>        17 |       7 |        3
+<span class="linenos">30</span>        17 |      11 |        2
+<span class="linenos">31</span>        17 |      16 |        1
+<span class="linenos">32</span>(25 rows)
+<span class="linenos">33</span>
+</pre></div>
+</div>
+<p>Valor del cost para <span class="math notranslate nohighlight">\(17 \rightarrow 10\)</span> no existe en la matriz, pero el valor se toma de <span class="math notranslate nohighlight">\(10 \rightarrow 17\)</span>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
+<span class="linenos"> 2</span>  $$SELECT * FROM pgr_dijkstraCostMatrix(
+<span class="linenos"> 3</span>  $q1$SELECT id, source, target, cost, reverse_cost FROM edges WHERE id IN (2, 4, 5, 8, 9, 15)$q1$,
+<span class="linenos"> 4</span>  (SELECT ARRAY[6, 7, 10, 11, 16, 17]),
+<span class="linenos"> 5</span>  directed =&gt; true)$$);
+<span class="linenos"> 6</span> seq | node | cost | agg_cost
+<span class="linenos"> 7</span>-----+------+------+----------
+<span class="linenos"> 8</span>   1 |    6 |    0 |        0
+<span class="linenos"> 9</span>   2 |    7 |    1 |        1
+<span class="linenos">10</span>   3 |   11 |    1 |        2
+<span class="linenos">11</span>   4 |   16 |    1 |        3
+<span class="linenos">12</span>   5 |   17 |    1 |        4
+<span class="linenos">13</span>   6 |   10 |    3 |        7
+<span class="linenos">14</span>   7 |    6 |    1 |        8
+<span class="linenos">15</span>(7 rows)
+<span class="linenos">16</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="see-also">
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Vendedor Viajante - Familia de funciones</span></a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Algoritmo Métrico de la Librería Boost</a></p></li>
+<li><p><a class="reference external" href="https://es.wikipedia.org/wiki/Problema_del_viajante">Wikipedia: Problema del viajante</a></p></li>
+</ul>
+<p class="rubric">Índices y tablas</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
+      Actualizado por última vez en sept 09, 2023.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
