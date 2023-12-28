@@ -213,6 +213,57 @@ bool dijkstra_1_to_distance(
     return true;
 }
 
+/** Call to Dijkstra  1 to distance no init
+ *
+ * Used on:
+ *   On the subsequent calls of many to distance with equi_cost
+ */
+template <typename G, typename V>
+bool dijkstra_1_to_distance_no_init(
+        G &graph,
+        V source,
+        double distance) {
+    pgassert(predecessors.size() == graph.num_vertices());
+    pgassert(distances.size() == graph.num_vertices());
+    distances[source] = 0;
+    std::vector<boost::default_color_type> color_map(graph.num_vertices());
+    /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+    CHECK_FOR_INTERRUPTS();
+    try {
+        boost::dijkstra_shortest_paths_no_init(graph.graph, source,
+                make_iterator_property_map(
+                    predecessors.begin(),
+                    graph.vertIndex),
+                make_iterator_property_map(
+                    distances.begin(),
+                    graph.vertIndex),
+                get(&G::G_T_E::cost, graph.graph),
+                graph.vertIndex,
+                std::less<double>(),
+                boost::closed_plus<double>(),
+                static_cast<double>(0),
+                visitors::dijkstra_distance_visitor_no_init<V, E>(log, source, distance, predecessors, distances,
+                    color_map),
+                boost::make_iterator_property_map(
+                    color_map.begin(),
+                    graph.vertIndex,
+                    color_map[0]));
+    } catch(found_goals &) {
+        return true;
+    } catch (boost::exception const& ex) {
+        (void)ex;
+        throw;
+    } catch (std::exception &e) {
+        (void)e;
+        throw;
+    } catch (...) {
+             throw;
+         }
+
+         return true;
+     }
+
+
 }  // namespace detail
 
 
@@ -276,56 +327,6 @@ class Pgr_dijkstra {
 
 
  private:
-
-     /** Call to Dijkstra  1 to distance no init
-      *
-      * Used on:
-      *   On the subsequent calls of many to distance with equi_cost
-      */
-     bool dijkstra_1_to_distance_no_init(
-             G &graph,
-             V source,
-             double distance) {
-         pgassert(predecessors.size() == graph.num_vertices());
-         pgassert(distances.size() == graph.num_vertices());
-         distances[source] = 0;
-         std::vector<boost::default_color_type> color_map(graph.num_vertices());
-         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
-         CHECK_FOR_INTERRUPTS();
-         try {
-             boost::dijkstra_shortest_paths_no_init(graph.graph, source,
-                     make_iterator_property_map(
-                         predecessors.begin(),
-                         graph.vertIndex),
-                     make_iterator_property_map(
-                         distances.begin(),
-                         graph.vertIndex),
-                     get(&G::G_T_E::cost, graph.graph),
-                     graph.vertIndex,
-                     std::less<double>(),
-                     boost::closed_plus<double>(),
-                     static_cast<double>(0),
-                     visitors::dijkstra_distance_visitor_no_init<V, E>(log, source, distance, predecessors, distances,
-                         color_map),
-                     boost::make_iterator_property_map(
-                         color_map.begin(),
-                         graph.vertIndex,
-                         color_map[0]));
-         } catch(found_goals &) {
-             return true;
-         } catch (boost::exception const& ex) {
-             (void)ex;
-             throw;
-         } catch (std::exception &e) {
-             (void)e;
-             throw;
-         } catch (...) {
-             throw;
-         }
-
-         return true;
-     }
-
 
      /** @brief to use with driving distance
       *
