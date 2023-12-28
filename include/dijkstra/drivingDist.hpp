@@ -186,33 +186,29 @@ std::map<int64_t, int64_t> get_depth(
  *   many to distance
  *   On the first call of many to distance with equi_cost
  */
-template <typename B_G, typename V, typename T_E>
-bool dijkstra_1_to_distance(
-        B_G &graph,
-        V source,
-        double distance,
-        std::vector<V> &predecessors,
-        std::vector<double> &distances,
-        std::deque<V> &nodesInDistance) {
-    /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
-    CHECK_FOR_INTERRUPTS();
-    try {
-        boost::dijkstra_shortest_paths(graph, source,
-                boost::predecessor_map(&predecessors[0])
-                .weight_map(get(&T_E::cost, graph))
-                .distance_map(&distances[0])
-                .visitor(pgrouting::visitors::dijkstra_distance_visitor<V>(distance, nodesInDistance, distances)));
-    } catch(pgrouting::found_goals &) {
-        /*No op*/
-    } catch (boost::exception const&) {
-        throw;
-    } catch (std::exception&) {
-        throw;
-    } catch (...) {
-        throw;
-    }
-    return true;
-}
+     bool dijkstra_1_to_distance(
+             G &graph,
+             V source,
+             double distance) {
+         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+         CHECK_FOR_INTERRUPTS();
+         try {
+             boost::dijkstra_shortest_paths(graph.graph, source,
+                     boost::predecessor_map(&predecessors[0])
+                     .weight_map(get(&G::G_T_E::cost, graph.graph))
+                     .distance_map(&distances[0])
+                     .visitor(visitors::dijkstra_distance_visitor<V>(distance, nodesInDistance, distances)));
+         } catch(found_goals &) {
+             /*No op*/
+         } catch (boost::exception const&) {
+             throw;
+         } catch (std::exception&) {
+             throw;
+         } catch (...) {
+             throw;
+         }
+         return true;
+     }
 
 }  // namespace detail
 
