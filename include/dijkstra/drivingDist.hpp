@@ -58,6 +58,97 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/interruption.h"
 #include "visitors/dijkstra_visitors.hpp"
 
+namespace bg_detail {
+
+/** @brief Dijkstra 1 to distance
+ *
+ * Used on:
+ *   1 to distance
+ *   many to distance
+ *   On the first call of many to distance with equi_cost
+ */
+template <typename G, typename V>
+bool dijkstra_1_to_distance(
+        G &graph,
+        V source,
+        std::vector<V> &predecessors,
+        std::vector<double> &distances,
+        std::deque<V> &nodesInDistance,
+        double distance) {
+    CHECK_FOR_INTERRUPTS();
+    try {
+        boost::dijkstra_shortest_paths(graph.graph, source,
+                boost::predecessor_map(&predecessors[0])
+                .weight_map(get(&G::G_T_E::cost, graph.graph))
+                .distance_map(&distances[0])
+                .visitor(pgrouting::visitors::dijkstra_distance_visitor<V>(distance, nodesInDistance, distances)));
+    } catch(pgrouting::found_goals &) {
+        /*No op*/
+    } catch (boost::exception const&) {
+        throw;
+    } catch (std::exception&) {
+        throw;
+    } catch (...) {
+        throw;
+    }
+    return true;
+}
+
+/** Call to Dijkstra  1 to distance no init
+ *
+ * Used on:
+ *   On the subsequent calls of many to distance with equi_cost
+ */
+template <typename G, typename V>
+bool dijkstra_1_to_distance_no_init(
+        G &graph,
+        V source,
+        std::vector<V> &predecessors,
+        std::vector<double> &distances,
+        double distance) {
+    typedef typename G::E E;
+    pgassert(predecessors.size() == graph.num_vertices());
+    pgassert(distances.size() == graph.num_vertices());
+    distances[source] = 0;
+    std::vector<boost::default_color_type> color_map(graph.num_vertices());
+    /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+    CHECK_FOR_INTERRUPTS();
+    try {
+        boost::dijkstra_shortest_paths_no_init(graph.graph, source,
+                make_iterator_property_map(
+                    predecessors.begin(),
+                    graph.vertIndex),
+                make_iterator_property_map(
+                    distances.begin(),
+                    graph.vertIndex),
+                get(&G::G_T_E::cost, graph.graph),
+                graph.vertIndex,
+                std::less<double>(),
+                boost::closed_plus<double>(),
+                static_cast<double>(0),
+                pgrouting::visitors::dijkstra_distance_visitor_no_init<V, E>(source, distance, predecessors, distances,
+                    color_map),
+                boost::make_iterator_property_map(
+                    color_map.begin(),
+                    graph.vertIndex,
+                    color_map[0]));
+    } catch(pgrouting::found_goals &) {
+        return true;
+    } catch (boost::exception const& ex) {
+        (void)ex;
+        throw;
+    } catch (std::exception &e) {
+        (void)e;
+        throw;
+    } catch (...) {
+             throw;
+         }
+
+         return true;
+     }
+
+}  // namespace bg_detail
+
 
 namespace detail {
 
@@ -179,94 +270,6 @@ std::map<int64_t, int64_t> get_depth(
     return depth;
 }
 
-/** @brief Dijkstra 1 to distance
- *
- * Used on:
- *   1 to distance
- *   many to distance
- *   On the first call of many to distance with equi_cost
- */
-template <typename G, typename V>
-bool dijkstra_1_to_distance(
-        G &graph,
-        V source,
-        std::vector<V> &predecessors,
-        std::vector<double> &distances,
-        std::deque<V> &nodesInDistance,
-        double distance) {
-    CHECK_FOR_INTERRUPTS();
-    try {
-        boost::dijkstra_shortest_paths(graph.graph, source,
-                boost::predecessor_map(&predecessors[0])
-                .weight_map(get(&G::G_T_E::cost, graph.graph))
-                .distance_map(&distances[0])
-                .visitor(pgrouting::visitors::dijkstra_distance_visitor<V>(distance, nodesInDistance, distances)));
-    } catch(pgrouting::found_goals &) {
-        /*No op*/
-    } catch (boost::exception const&) {
-        throw;
-    } catch (std::exception&) {
-        throw;
-    } catch (...) {
-        throw;
-    }
-    return true;
-}
-
-/** Call to Dijkstra  1 to distance no init
- *
- * Used on:
- *   On the subsequent calls of many to distance with equi_cost
- */
-template <typename G, typename V>
-bool dijkstra_1_to_distance_no_init(
-        G &graph,
-        V source,
-        std::vector<V> &predecessors,
-        std::vector<double> &distances,
-        double distance) {
-    typedef typename G::E E;
-    pgassert(predecessors.size() == graph.num_vertices());
-    pgassert(distances.size() == graph.num_vertices());
-    distances[source] = 0;
-    std::vector<boost::default_color_type> color_map(graph.num_vertices());
-    /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
-    CHECK_FOR_INTERRUPTS();
-    try {
-        boost::dijkstra_shortest_paths_no_init(graph.graph, source,
-                make_iterator_property_map(
-                    predecessors.begin(),
-                    graph.vertIndex),
-                make_iterator_property_map(
-                    distances.begin(),
-                    graph.vertIndex),
-                get(&G::G_T_E::cost, graph.graph),
-                graph.vertIndex,
-                std::less<double>(),
-                boost::closed_plus<double>(),
-                static_cast<double>(0),
-                pgrouting::visitors::dijkstra_distance_visitor_no_init<V, E>(source, distance, predecessors, distances,
-                    color_map),
-                boost::make_iterator_property_map(
-                    color_map.begin(),
-                    graph.vertIndex,
-                    color_map[0]));
-    } catch(pgrouting::found_goals &) {
-        return true;
-    } catch (boost::exception const& ex) {
-        (void)ex;
-        throw;
-    } catch (std::exception &e) {
-        (void)e;
-        throw;
-    } catch (...) {
-             throw;
-         }
-
-         return true;
-     }
-
-
 }  // namespace detail
 
 
@@ -359,7 +362,7 @@ class Pgr_dijkstra {
              return false;
          }
 
-         return detail::dijkstra_1_to_distance(
+         return bg_detail::dijkstra_1_to_distance(
                  graph,
                  graph.get_V(start_vertex),
                  predecessors,
@@ -390,7 +393,7 @@ class Pgr_dijkstra {
 
          std::iota(predecessors.begin(), predecessors.end(), 0);
 
-         return detail::dijkstra_1_to_distance_no_init(
+         return bg_detail::dijkstra_1_to_distance_no_init(
                  graph,
                  start_vertex,
                  predecessors, distances,
