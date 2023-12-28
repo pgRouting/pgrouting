@@ -222,7 +222,10 @@ template <typename G, typename V>
 bool dijkstra_1_to_distance_no_init(
         G &graph,
         V source,
+        std::vector<V> &predecessors,
+        std::vector<double> &distances,
         double distance) {
+    typedef typename G::E E;
     pgassert(predecessors.size() == graph.num_vertices());
     pgassert(distances.size() == graph.num_vertices());
     distances[source] = 0;
@@ -242,13 +245,13 @@ bool dijkstra_1_to_distance_no_init(
                 std::less<double>(),
                 boost::closed_plus<double>(),
                 static_cast<double>(0),
-                visitors::dijkstra_distance_visitor_no_init<V, E>(log, source, distance, predecessors, distances,
+                pgrouting::visitors::dijkstra_distance_visitor_no_init<V, E>(source, distance, predecessors, distances,
                     color_map),
                 boost::make_iterator_property_map(
                     color_map.begin(),
                     graph.vertIndex,
                     color_map[0]));
-    } catch(found_goals &) {
+    } catch(pgrouting::found_goals &) {
         return true;
     } catch (boost::exception const& ex) {
         (void)ex;
@@ -387,9 +390,10 @@ class Pgr_dijkstra {
 
          std::iota(predecessors.begin(), predecessors.end(), 0);
 
-         return dijkstra_1_to_distance_no_init(
+         return detail::dijkstra_1_to_distance_no_init(
                  graph,
                  start_vertex,
+                 predecessors, distances,
                  distance);
      }
 

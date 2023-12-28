@@ -118,13 +118,11 @@ template <typename V, typename E>
 class dijkstra_distance_visitor_no_init : public boost::default_dijkstra_visitor {
  public:
      explicit dijkstra_distance_visitor_no_init(
-             std::ostringstream &p_log,
              V source,
              double distance_goal,
              std::vector<V> &predecessors,
              std::vector<double> &distances,
              std::vector<boost::default_color_type> &color_map) :
-         log(p_log),
          first(source),
          m_distance_goal(distance_goal),
          m_num_examined(0),
@@ -179,7 +177,6 @@ class dijkstra_distance_visitor_no_init : public boost::default_dijkstra_visitor
          }
 
  private:
-     std::ostringstream &log;
      V first;
      double m_distance_goal;
      size_t m_num_examined;
