@@ -244,6 +244,7 @@ class Pgr_dijkstra {
      typedef typename G::V V;
      typedef typename G::E E;
 
+#if 0
      //! @name drivingDistance
      //@{
      //! 1 to distance
@@ -275,6 +276,7 @@ class Pgr_dijkstra {
         p.push_back({start_vertex, -1, 0, 0});
         return p;
      }
+#endif
 
      // preparation for many to distance
      std::deque<Path> drivingDistance(
