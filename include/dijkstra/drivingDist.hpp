@@ -244,40 +244,6 @@ class Pgr_dijkstra {
      typedef typename G::V V;
      typedef typename G::E E;
 
-#if 0
-     //! @name drivingDistance
-     //@{
-     //! 1 to distance
-     Path drivingDistance(
-             G &graph,
-             int64_t start_vertex,
-             double distance) {
-        if (execute_drivingDistance(
-                graph,
-                start_vertex,
-                distance)) {
-            auto path = Path(graph,
-                    start_vertex,
-                    distance,
-                    predecessors,
-                    distances);
-
-            std::sort(path.begin(), path.end(),
-                    [](const Path_t &l, const  Path_t &r)
-                    {return l.node < r.node;});
-            std::stable_sort(path.begin(), path.end(),
-                    [](const Path_t &l, const  Path_t &r)
-                    {return l.agg_cost < r.agg_cost;});
-            return path;
-        }
-
-        /* The result is empty */
-        Path p(start_vertex, start_vertex);
-        p.push_back({start_vertex, -1, 0, 0});
-        return p;
-     }
-#endif
-
      // preparation for many to distance
      std::deque<Path> drivingDistance(
              G &graph,
