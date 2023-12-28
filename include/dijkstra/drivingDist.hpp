@@ -186,9 +186,13 @@ std::map<int64_t, int64_t> get_depth(
  *   many to distance
  *   On the first call of many to distance with equi_cost
  */
+template <typename G, typename V>
 bool dijkstra_1_to_distance(
         G &graph,
         V source,
+        std::vector<V> &predecessors,
+        std::vector<double> &distances,
+        std::deque<V> &nodesInDistance,
         double distance) {
     CHECK_FOR_INTERRUPTS();
     try {
@@ -196,8 +200,8 @@ bool dijkstra_1_to_distance(
                 boost::predecessor_map(&predecessors[0])
                 .weight_map(get(&G::G_T_E::cost, graph.graph))
                 .distance_map(&distances[0])
-                .visitor(visitors::dijkstra_distance_visitor<V>(distance, nodesInDistance, distances)));
-    } catch(found_goals &) {
+                .visitor(pgrouting::visitors::dijkstra_distance_visitor<V>(distance, nodesInDistance, distances)));
+    } catch(pgrouting::found_goals &) {
         /*No op*/
     } catch (boost::exception const&) {
         throw;
@@ -383,9 +387,12 @@ class Pgr_dijkstra {
              return false;
          }
 
-         return dijkstra_1_to_distance(
+         return detail::dijkstra_1_to_distance(
                  graph,
                  graph.get_V(start_vertex),
+                 predecessors,
+                 distances,
+                 nodesInDistance,
                  distance);
      }
 
