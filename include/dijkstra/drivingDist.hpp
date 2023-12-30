@@ -503,13 +503,20 @@ std::deque<pgrouting::Path> drivingDistance_with_equicost(
 }
 
 // preparation for many to distance No equicost
-std::deque<Path> drivingDistance_no_equicost(
+template <typename G>
+std::deque<pgrouting::Path> drivingDistance_no_equicost(
         G &graph,
-        const std::vector< int64_t > &start_vertex,
+        const std::vector<int64_t> &start_vertex,
         std::vector<std::map<int64_t, int64_t>> &depths,
         double distance, bool details) {
-    // perform the algorithm
+    using Path = pgrouting::Path;
+    typedef typename G::V V;
+
+    std::vector<V> predecessors;
+    std::vector<double> distances;
+    std::deque<V> nodesInDistance;
     std::deque<Path> paths;
+
     for (const auto &vertex : start_vertex) {
         if (detail::execute_drivingDistance(graph, vertex, predecessors, distances, nodesInDistance, distance)) {
             auto path = Path(
@@ -533,7 +540,6 @@ std::deque<Path> drivingDistance_no_equicost(
 
                     pathstop.cost = distances[node] - distances[predecessors[node]];
                 }
-                log << "Updated costs of path " << path;
             }
             paths.push_back(path);
 
@@ -595,7 +601,7 @@ class Pgr_dijkstra {
                      depths,
                      distance, details);
          } else {
-             return drivingDistance_no_equicost(
+             return detail::drivingDistance_no_equicost(
                      graph,
                      start_vertex,
                      depths,
