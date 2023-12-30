@@ -270,6 +270,42 @@ std::map<int64_t, int64_t> get_depth(
     return depth;
 }
 
+/** @brief to use with driving distance
+ *
+ * Prepares the execution for a driving distance:
+ *
+ * @param graph
+ * @param start_vertex
+ * @param distance
+ *
+ * Results are kept on predecessor & distances
+ *
+ * @returns bool  @b True when results are found
+ */
+bool execute_drivingDistance(
+        G &graph,
+        int64_t start_vertex,
+        double distance) {
+    clear();
+
+    predecessors.resize(graph.num_vertices());
+    distances.resize(
+            graph.num_vertices(),
+            std::numeric_limits<double>::infinity());
+
+    // get source;
+    if (!graph.has_vertex(start_vertex)) {
+        return false;
+    }
+
+    return bg_detail::dijkstra_1_to_distance(
+            graph,
+            graph.get_V(start_vertex),
+            predecessors,
+            distances,
+            nodesInDistance,
+            distance);
+}
 }  // namespace detail
 
 
@@ -334,42 +370,6 @@ class Pgr_dijkstra {
 
  private:
 
-     /** @brief to use with driving distance
-      *
-      * Prepares the execution for a driving distance:
-      *
-      * @param graph
-      * @param start_vertex
-      * @param distance
-      *
-      * Results are kept on predecessor & distances
-      *
-      * @returns bool  @b True when results are found
-      */
-     bool execute_drivingDistance(
-             G &graph,
-             int64_t start_vertex,
-             double distance) {
-         clear();
-
-         predecessors.resize(graph.num_vertices());
-         distances.resize(
-                 graph.num_vertices(),
-                 std::numeric_limits<double>::infinity());
-
-         // get source;
-         if (!graph.has_vertex(start_vertex)) {
-             return false;
-         }
-
-         return bg_detail::dijkstra_1_to_distance(
-                 graph,
-                 graph.get_V(start_vertex),
-                 predecessors,
-                 distances,
-                 nodesInDistance,
-                 distance);
-     }
 
 
      /** @brief to use with driving distance
