@@ -314,6 +314,35 @@ bool execute_drivingDistance(
             distance);
 }
 
+
+/** @brief to use with driving distance
+ *
+ * Prepares the execution for a driving distance:
+ *
+ * @param graph
+ * @param start_vertex
+ * @param distance
+ *
+ * Results are kept on predecessor & distances
+ *
+ * @returns bool  @b True when results are found
+ */
+bool execute_drivingDistance_no_init(
+        G &graph,
+        V start_vertex,
+        double distance) {
+    pgassert(predecessors.size() == graph.num_vertices());
+    pgassert(distances.size() == graph.num_vertices());
+
+    std::iota(predecessors.begin(), predecessors.end(), 0);
+
+    return bg_detail::dijkstra_1_to_distance_no_init(
+            graph,
+            start_vertex,
+            predecessors, distances,
+            distance);
+}
+
 }  // namespace detail
 
 
@@ -378,35 +407,6 @@ class Pgr_dijkstra {
 
  private:
 
-
-
-     /** @brief to use with driving distance
-      *
-      * Prepares the execution for a driving distance:
-      *
-      * @param graph
-      * @param start_vertex
-      * @param distance
-      *
-      * Results are kept on predecessor & distances
-      *
-      * @returns bool  @b True when results are found
-      */
-     bool execute_drivingDistance_no_init(
-             G &graph,
-             V start_vertex,
-             double distance) {
-         pgassert(predecessors.size() == graph.num_vertices());
-         pgassert(distances.size() == graph.num_vertices());
-
-         std::iota(predecessors.begin(), predecessors.end(), 0);
-
-         return bg_detail::dijkstra_1_to_distance_no_init(
-                 graph,
-                 start_vertex,
-                 predecessors, distances,
-                 distance);
-     }
 
      /* preparation for many to distance with equicost
       *
