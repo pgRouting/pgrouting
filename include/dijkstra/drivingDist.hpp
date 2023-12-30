@@ -139,7 +139,7 @@ void dijkstra_1_to_distance_no_init(
                 static_cast<double>(0),
                 pgrouting::visitors::dijkstra_distance_visitor_no_init<V, E>(root, distance, predecessors, distances,
                     color_map),
-                boost::make_iterator_property_map(color_map.begin(), vidx, color_map[0]));
+                make_iterator_property_map(color_map.begin(), vidx, color_map[0]));
     } catch(pgrouting::found_goals &) {
         /* no op */
     } catch (boost::exception const& ex) {
@@ -277,18 +277,17 @@ std::map<int64_t, int64_t> get_depth(
     return depth;
 }
 
-
 /** @brief to use with driving distance
  *
  * Prepares the execution for a driving distance:
  *
- * @param graph
- * @param root
- * @param distance
+ * @param [in] graph The graph that is being worked
+ * @param [in] root A boost vertex id
+ * @param [in,out] predecessors the predecessors map
+ * @param [in,out] distances the distance map
+ * @param [in] distance
  *
  * Results are kept on predecessor & distances
- *
- * @returns bool  @b True when results are found
  */
 template <typename G, typename V>
 void execute_drivingDistance_no_init(
