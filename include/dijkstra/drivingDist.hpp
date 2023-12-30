@@ -365,7 +365,7 @@ bool execute_drivingDistance_no_init(
 template <typename G, typename V>
 std::deque<pgrouting::Path> get_drivingDistance_with_equicost_paths(
         G &graph,
-        const std::vector<int64_t> &start_vertex,
+        const std::set<int64_t> &start_vertex,
         std::deque<std::vector<V>> &pred,
         std::vector<double> &distances,
         std::deque<std::vector<V>> &nodetailspred,
@@ -447,7 +447,7 @@ std::deque<pgrouting::Path> get_drivingDistance_with_equicost_paths(
 template <typename G>
 std::deque<pgrouting::Path> drivingDistance_with_equicost(
         G &graph,
-        const std::vector<int64_t> &start_vertex,
+        const std::set<int64_t> &start_vertex,
         std::vector<std::map<int64_t, int64_t>> &depths,
         double distance, bool details) {
     typedef typename G::V V;
@@ -514,7 +514,7 @@ std::deque<pgrouting::Path> drivingDistance_with_equicost(
 template <typename G>
 std::deque<pgrouting::Path> drivingDistance_no_equicost(
         G &graph,
-        const std::vector<int64_t> &start_vertex,
+        const std::set<int64_t> &start_vertex,
         std::vector<std::map<int64_t, int64_t>> &depths,
         double distance, bool details) {
     using Path = pgrouting::Path;

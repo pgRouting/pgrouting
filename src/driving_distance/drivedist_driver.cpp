@@ -73,7 +73,7 @@ pgr_do_drivingdist(
         graphType gType = directedFlag? DIRECTED: UNDIRECTED;
 
         std::deque<Path> paths;
-        std::vector<int64_t> start_vertices(start_vertex, start_vertex + s_len);
+        std::set<int64_t> start_vertices(start_vertex, start_vertex + s_len);
 
         std::vector<std::map<int64_t, int64_t>> depths;
 

@@ -100,7 +100,7 @@ pgr_do_withPointsDD(
             return;
         }
 
-        std::vector<int64_t> start_vids(start_pidsArr, start_pidsArr + s_len);
+        std::set<int64_t> start_vids(start_pidsArr, start_pidsArr + s_len);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
