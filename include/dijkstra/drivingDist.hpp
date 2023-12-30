@@ -502,6 +502,53 @@ std::deque<pgrouting::Path> drivingDistance_with_equicost(
             distance, details);
 }
 
+// preparation for many to distance No equicost
+std::deque<Path> drivingDistance_no_equicost(
+        G &graph,
+        const std::vector< int64_t > &start_vertex,
+        std::vector<std::map<int64_t, int64_t>> &depths,
+        double distance, bool details) {
+    // perform the algorithm
+    std::deque<Path> paths;
+    for (const auto &vertex : start_vertex) {
+        if (detail::execute_drivingDistance(graph, vertex, predecessors, distances, nodesInDistance, distance)) {
+            auto path = Path(
+                    graph,
+                    vertex,
+                    distance,
+                    predecessors,
+                    distances);
+            path.sort_by_node_agg_cost();
+            auto root = graph.get_V(vertex);
+            depths.push_back(detail::get_depth(graph, root, distances, predecessors, distance, details));
+            /*
+             * When details are not wanted update costs
+             */
+            if (!details) {
+                for (auto &pathstop : path) {
+                    auto node = graph.get_V(pathstop.node);
+
+                    /* skip points */
+                    if (graph[node].id < 0) continue;
+
+                    pathstop.cost = distances[node] - distances[predecessors[node]];
+                }
+                log << "Updated costs of path " << path;
+            }
+            paths.push_back(path);
+
+        } else {
+            Path p(vertex, vertex);
+            p.push_back({vertex, -1, 0, 0, vertex});
+            paths.push_back(p);
+            std::map<int64_t, int64_t> m;
+            m[vertex] = 0;
+            depths.push_back(m);
+        }
+    }
+    return paths;
+}
+
 }  // namespace detail
 
 
@@ -567,54 +614,6 @@ class Pgr_dijkstra {
  private:
 
 
-
-
-     // preparation for many to distance No equicost
-     std::deque<Path> drivingDistance_no_equicost(
-             G &graph,
-             const std::vector< int64_t > &start_vertex,
-             std::vector<std::map<int64_t, int64_t>> &depths,
-             double distance, bool details) {
-         // perform the algorithm
-         std::deque<Path> paths;
-         for (const auto &vertex : start_vertex) {
-             if (detail::execute_drivingDistance(graph, vertex, predecessors, distances, nodesInDistance, distance)) {
-                 auto path = Path(
-                         graph,
-                         vertex,
-                         distance,
-                         predecessors,
-                         distances);
-                 path.sort_by_node_agg_cost();
-                 auto root = graph.get_V(vertex);
-                 depths.push_back(detail::get_depth(graph, root, distances, predecessors, distance, details));
-                 /*
-                  * When details are not wanted update costs
-                  */
-                 if (!details) {
-                     for (auto &pathstop : path) {
-                         auto node = graph.get_V(pathstop.node);
-
-                         /* skip points */
-                         if (graph[node].id < 0) continue;
-
-                         pathstop.cost = distances[node] - distances[predecessors[node]];
-                     }
-                     log << "Updated costs of path " << path;
-                 }
-                     paths.push_back(path);
-
-             } else {
-                 Path p(vertex, vertex);
-                 p.push_back({vertex, -1, 0, 0, vertex});
-                 paths.push_back(p);
-                 std::map<int64_t, int64_t> m;
-                 m[vertex] = 0;
-                 depths.push_back(m);
-             }
-         }
-         return paths;
-     }
 
 
      void clear() {
