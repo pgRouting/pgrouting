@@ -67,19 +67,19 @@ namespace bg_detail {
  *   many to distance
  *   On the first call of many to distance with equi_cost
  */
-template <typename G, typename V>
+template <typename B_G, typename V, typename T_E>
 bool dijkstra_1_to_distance(
-        G &graph,
-        V source,
+        B_G &bg,
+        V root,
         std::vector<V> &predecessors,
         std::vector<double> &distances,
         std::deque<V> &nodesInDistance,
         double distance) {
     CHECK_FOR_INTERRUPTS();
     try {
-        boost::dijkstra_shortest_paths(graph.graph, source,
+        boost::dijkstra_shortest_paths(bg, root,
                 boost::predecessor_map(&predecessors[0])
-                .weight_map(get(&G::G_T_E::cost, graph.graph))
+                .weight_map(get(&T_E::cost, bg))
                 .distance_map(&distances[0])
                 .visitor(pgrouting::visitors::dijkstra_distance_visitor<V>(distance, nodesInDistance, distances)));
     } catch(pgrouting::found_goals &) {
@@ -290,6 +290,8 @@ bool execute_drivingDistance(
         std::vector<double> &distances,
         std::deque<V> &nodesInDistance,
         double distance) {
+    using T_E = typename G::G_T_E;
+    using B_G = typename G::B_G;
 
     // get root;
     if (!graph.has_vertex(root)) {
@@ -305,8 +307,8 @@ bool execute_drivingDistance(
             std::numeric_limits<double>::infinity());
 
 
-    return bg_detail::dijkstra_1_to_distance(
-            graph,
+    return bg_detail::dijkstra_1_to_distance<B_G, V, T_E>(
+            graph.graph,
             graph.get_V(root),
             predecessors,
             distances,
