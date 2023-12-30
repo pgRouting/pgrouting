@@ -346,6 +346,76 @@ bool execute_drivingDistance_no_init(
             distance);
 }
 
+/** @brief gets results in form of a container of paths
+*
+* @param [in] graph The graph that is being worked
+* @param [in] start_vertex An array of vertices @b id
+* @param [in] pred an array of predecessors
+* @param [in] distance the max distance
+* @pre one predecessor per root
+*/
+std::deque<Path> get_drivingDistance_with_equicost_paths(
+        G &graph,
+        const std::vector<int64_t> &start_vertex,
+        std::deque<std::vector<V>> &pred,
+        std::deque<std::vector<V>> &nodetailspred,
+        double distance, bool details) {
+    /*
+     * precondition
+     */
+    pgassert(start_vertex.size() == pred.size());
+
+
+    /*
+     * Creating all the result "paths"
+     */
+    std::deque<Path> paths;
+    for (const auto vertex : start_vertex) {
+        paths.push_back(Path(vertex, vertex));
+        paths.back().push_back({vertex, -1, 0, 0, vertex});
+    }
+
+    /*
+     *  Ciclying the distances:
+     *  To which vertex do they belong to?
+     */
+    for (V d = 0; d < distances.size(); ++d) {
+        /*
+         * Sikiping distances greater than the one asked for
+         */
+        if (!(distances[d] <= distance)) continue;
+
+        for (auto i = start_vertex.size(); i > 0; --i) {
+            /*
+             * The vertex does not exist on the graph
+             */
+            if (pred[i - 1].empty()) break;
+
+
+            /*
+             * The predecessor = current then
+             *  its unreachable to this vertex
+             */
+            if (pred[i - 1][d] == d) continue;
+
+            auto cost = distances[d] - distances[pred[i - 1][d]];
+            auto edge_id = graph.get_edge_id(pred[i - 1][d], d, cost);
+            int64_t pred_node =  details? graph[pred[i - 1][d]].id : graph[nodetailspred[i - 1][d]].id;
+            pgassert(edge_id != -1);
+            paths[i - 1].push_back(
+                    {graph[d].id,
+                    edge_id,
+                    details? cost : distances[d] - distances[nodetailspred[i - 1][d]],
+                         distances[d], pred_node});
+            break;
+        }
+    }
+
+    for (auto &path : paths) {
+        path.sort_by_node_agg_cost();
+    }
+    return paths;
+}
 
 /* preparation for many to distance with equicost
  *
@@ -492,76 +562,6 @@ class Pgr_dijkstra {
  private:
 
 
-     /** @brief gets results in form of a container of paths
-      *
-      * @param [in] graph The graph that is being worked
-      * @param [in] start_vertex An array of vertices @b id
-      * @param [in] pred an array of predecessors
-      * @param [in] distance the max distance
-      * @pre one predecessor per root
-      */
-     std::deque< Path > get_drivingDistance_with_equicost_paths(
-             G &graph,
-             const std::vector<int64_t> &start_vertex,
-             std::deque<std::vector<V>> &pred,
-             std::deque<std::vector<V>> &nodetailspred,
-             double distance, bool details) {
-         /*
-          * precondition
-          */
-         pgassert(start_vertex.size() == pred.size());
-
-
-         /*
-          * Creating all the result "paths"
-          */
-         std::deque<Path> paths;
-         for (const auto vertex : start_vertex) {
-             paths.push_back(Path(vertex, vertex));
-             paths.back().push_back({vertex, -1, 0, 0, vertex});
-         }
-
-         /*
-          *  Ciclying the distances:
-          *  To which vertex do they belong to?
-          */
-         for (V d = 0; d < distances.size(); ++d) {
-             /*
-              * Sikiping distances greater than the one asked for
-              */
-             if (!(distances[d] <= distance)) continue;
-
-             for (auto i = start_vertex.size(); i > 0; --i) {
-                 /*
-                  * The vertex does not exist on the graph
-                  */
-                 if (pred[i - 1].empty()) break;
-
-
-                 /*
-                  * The predecessor = current then
-                  *  its unreachable to this vertex
-                  */
-                 if (pred[i - 1][d] == d) continue;
-
-                 auto cost = distances[d] - distances[pred[i - 1][d]];
-                 auto edge_id = graph.get_edge_id(pred[i - 1][d], d, cost);
-                 int64_t pred_node =  details? graph[pred[i - 1][d]].id : graph[nodetailspred[i - 1][d]].id;
-                 pgassert(edge_id != -1);
-                 paths[i - 1].push_back(
-                         {graph[d].id,
-                         edge_id,
-                         details? cost : distances[d] - distances[nodetailspred[i - 1][d]],
-                         distances[d], pred_node});
-                 break;
-             }
-         }
-
-         for (auto &path : paths) {
-             path.sort_by_node_agg_cost();
-         }
-         return paths;
-     }
 
 
      // preparation for many to distance No equicost
