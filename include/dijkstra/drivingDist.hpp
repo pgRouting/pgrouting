@@ -514,7 +514,7 @@ std::deque<pgrouting::Path> drivingDistance_with_equicost(
 template <typename G>
 std::deque<pgrouting::Path> drivingDistance_no_equicost(
         const G &graph,
-        const std::set<int64_t> &start_vertex,
+        const std::set<int64_t> &roots,
         std::vector<std::map<int64_t, int64_t>> &depths,
         double distance, bool details) {
     using Path = pgrouting::Path;
@@ -525,17 +525,16 @@ std::deque<pgrouting::Path> drivingDistance_no_equicost(
     std::deque<V> nodesInDistance;
     std::deque<Path> paths;
 
-    for (const auto &vertex : start_vertex) {
-        if (detail::execute_drivingDistance(graph, vertex, predecessors, distances, distance)) {
+    for (const auto &root : roots) {
+        if (detail::execute_drivingDistance(graph, root, predecessors, distances, distance)) {
             auto path = Path(
                     graph,
-                    vertex,
+                    root,
                     distance,
                     predecessors,
                     distances);
             path.sort_by_node_agg_cost();
-            auto root = graph.get_V(vertex);
-            depths.push_back(detail::get_depth(graph, root, distances, predecessors, distance, details));
+            depths.push_back(detail::get_depth(graph, graph.get_V(root), distances, predecessors, distance, details));
             /*
              * When details are not wanted update costs
              */
@@ -552,11 +551,11 @@ std::deque<pgrouting::Path> drivingDistance_no_equicost(
             paths.push_back(path);
 
         } else {
-            Path p(vertex, vertex);
-            p.push_back({vertex, -1, 0, 0, vertex});
+            Path p(root, root);
+            p.push_back({root, -1, 0, 0, root});
             paths.push_back(p);
             std::map<int64_t, int64_t> m;
-            m[vertex] = 0;
+            m[root] = 0;
             depths.push_back(m);
         }
     }
