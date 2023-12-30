@@ -113,66 +113,55 @@ template <typename V, typename E>
 class dijkstra_distance_visitor_no_init : public boost::default_dijkstra_visitor {
  public:
      explicit dijkstra_distance_visitor_no_init(
-             V source,
+             V root,
              double distance_goal,
              std::vector<V> &predecessors,
              std::vector<double> &distances,
              std::vector<boost::default_color_type> &color_map) :
-         first(source),
+         m_root(root),
          m_distance_goal(distance_goal),
          m_num_examined(0),
          m_predecessors(predecessors),
          m_dist(distances),
          m_color(color_map) {
-             pgassert(m_num_examined == 0);
              pgassert(m_distance_goal > 0);
          }
 
      template <class B_G>
          void examine_vertex(V u, B_G &) {
-             if ( 0 == m_num_examined++) first = u;
+             if ( 0 == m_num_examined++) m_root = u;
              if (m_dist[u] > m_distance_goal) {
                  throw found_goals();
              }
-             if (u != first && m_predecessors[u] == u) {
+             if (u != m_root && m_predecessors[u] == u) {
                  m_color[u] = boost::black_color;
              }
          }
 
      template <class B_G>
          void examine_edge(E e, B_G &g) {
-             if (source(e, g) != first
-                     && m_predecessors[source(e, g)] == source(e, g)) {
+             if (source(e, g) != m_root && m_predecessors[source(e, g)] == source(e, g)) {
                  m_color[target(e, g)] = boost::black_color;
              }
          }
 
-
-     template <class B_G>
-         void edge_relaxed(E, B_G &) {
-         }
 
      template <class B_G>
          void edge_not_relaxed(E e, B_G &g) {
-             if (source(e, g) != first
-                     && m_predecessors[source(e, g)] == source(e, g)) {
+             if (source(e, g) != m_root && m_predecessors[source(e, g)] == source(e, g)) {
                  m_color[target(e, g)] = boost::black_color;
              }
-         }
-
-     template <class B_G>
-         void finish_vertex(V, B_G &) {
          }
 
      template <class B_G>
          void discover_vertex(V u, B_G &) {
-             if (u  != first && m_predecessors[u] == u) {
+             if (u  != m_root && m_predecessors[u] == u) {
                  m_color[u] = boost::black_color;
              }
          }
 
  private:
-     V first;
+     V m_root;
      double m_distance_goal;
      size_t m_num_examined;
      std::vector<V > &m_predecessors;

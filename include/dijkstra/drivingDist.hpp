@@ -80,7 +80,6 @@ bool dijkstra_1_to_distance(
         V root,
         std::vector<V> &predecessors,
         std::vector<double> &distances,
-        std::deque<V> &nodesInDistance,
         double distance) {
     CHECK_FOR_INTERRUPTS();
     try {
@@ -88,7 +87,7 @@ bool dijkstra_1_to_distance(
                 boost::predecessor_map(&predecessors[0])
                 .weight_map(get(&T_E::cost, bg))
                 .distance_map(&distances[0])
-                .visitor(pgrouting::visitors::dijkstra_distance_visitor<V>(distance, nodesInDistance, distances)));
+                .visitor(pgrouting::visitors::dijkstra_distance_visitor<V>(distance, distances)));
     } catch(pgrouting::found_goals &) {
         /*No op*/
     } catch (boost::exception const&) {
@@ -299,7 +298,6 @@ bool execute_drivingDistance(
         int64_t root,
         std::vector<V> &predecessors,
         std::vector<double> &distances,
-        std::deque<V> &nodesInDistance,
         double distance) {
     using T_E = typename G::G_T_E;
     using B_G = typename G::B_G;
@@ -311,19 +309,16 @@ bool execute_drivingDistance(
 
     predecessors.clear();
     distances.clear();
-    nodesInDistance.clear();
     predecessors.resize(graph.num_vertices());
     distances.resize(
             graph.num_vertices(),
             std::numeric_limits<double>::infinity());
-
 
     return bg_detail::dijkstra_1_to_distance<B_G, V, T_E>(
             graph.graph,
             graph.get_V(root),
             predecessors,
             distances,
-            nodesInDistance,
             distance);
 }
 
@@ -531,7 +526,7 @@ std::deque<pgrouting::Path> drivingDistance_no_equicost(
     std::deque<Path> paths;
 
     for (const auto &vertex : start_vertex) {
-        if (detail::execute_drivingDistance(graph, vertex, predecessors, distances, nodesInDistance, distance)) {
+        if (detail::execute_drivingDistance(graph, vertex, predecessors, distances, distance)) {
             auto path = Path(
                     graph,
                     vertex,
