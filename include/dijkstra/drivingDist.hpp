@@ -168,7 +168,7 @@ namespace detail {
 template <typename G, typename V>
 void remove_details(const G &graph,
         const std::vector<double> &distances,
-         std::vector<V> &predecessors) {
+        std::vector<V> &predecessors) {
     /*
      * find all the points that are predecessors
      */
@@ -225,8 +225,8 @@ template <typename G, typename V>
 std::map<int64_t, int64_t> get_depth(
         const G &graph,
         V root,
-        std::vector<double> &distances,
-        std::vector<V>      &predecessors,
+        const std::vector<double>& distances,
+        std::vector<V>& predecessors,
         double distance,
         bool details) {
     std::map<int64_t, int64_t> depth;
@@ -294,7 +294,7 @@ std::map<int64_t, int64_t> get_depth(
  */
 template <typename G, typename V>
 bool execute_drivingDistance(
-        G &graph,
+        const G &graph,
         int64_t root,
         std::vector<V> &predecessors,
         std::vector<double> &distances,
@@ -337,7 +337,7 @@ bool execute_drivingDistance(
  */
 template <typename G, typename V>
 bool execute_drivingDistance_no_init(
-        G &graph,
+        const G &graph,
         V root,
         std::vector<V> &predecessors,
         std::vector<double> &distances,
@@ -364,7 +364,7 @@ bool execute_drivingDistance_no_init(
 */
 template <typename G, typename V>
 std::deque<pgrouting::Path> get_drivingDistance_with_equicost_paths(
-        G &graph,
+        const G &graph,
         const std::set<int64_t> &start_vertex,
         std::deque<std::vector<V>> &pred,
         std::vector<double> &distances,
@@ -446,7 +446,7 @@ std::deque<pgrouting::Path> get_drivingDistance_with_equicost_paths(
  */
 template <typename G>
 std::deque<pgrouting::Path> drivingDistance_with_equicost(
-        G &graph,
+        const G &graph,
         const std::set<int64_t> &start_vertex,
         std::vector<std::map<int64_t, int64_t>> &depths,
         double distance, bool details) {
@@ -513,7 +513,7 @@ std::deque<pgrouting::Path> drivingDistance_with_equicost(
 // preparation for many to distance No equicost
 template <typename G>
 std::deque<pgrouting::Path> drivingDistance_no_equicost(
-        G &graph,
+        const G &graph,
         const std::set<int64_t> &start_vertex,
         std::vector<std::map<int64_t, int64_t>> &depths,
         double distance, bool details) {
@@ -572,7 +572,7 @@ namespace algorithm {
 template <class G>
 std::deque<Path>
 drivingDistance(
-        G &graph,
+        const G &graph,
         const std::set<int64_t> &roots,
         double distance,
         bool equicost,
