@@ -275,39 +275,6 @@ std::map<int64_t, int64_t> get_depth(
     return depth;
 }
 
-#if 0
-/** @brief to use with driving distance
- *
- * Prepares the execution for a driving distance:
- *
- * @param [in] graph The graph that is being worked
- * @param [in] root A boost vertex id
- * @param [in,out] predecessors the predecessors map
- * @param [in,out] distances the distance map
- * @param [in] distance
- *
- * Results are kept on predecessor & distances
- */
-template <typename G, typename V>
-void execute_drivingDistance_no_init(
-        const G &graph,
-        V root,
-        std::vector<V> &predecessors,
-        std::vector<double> &distances,
-        double distance) {
-    using E = typename G::E;
-    using T_E = typename G::G_T_E;
-    using B_G = typename G::B_G;
-
-    pgassert(predecessors.size() == graph.num_vertices());
-    pgassert(distances.size() == graph.num_vertices());
-
-    std::iota(predecessors.begin(), predecessors.end(), 0);
-
-    bg_detail::dijkstra_1_to_distance_no_init<B_G, V, E, T_E>(graph.graph, root, predecessors, distances, distance);
-}
-#endif
-
 /** @brief gets results for many vertices and equi costs
  *
  * @param [in] graph The graph that is being worked
