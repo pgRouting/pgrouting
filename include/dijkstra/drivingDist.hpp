@@ -573,7 +573,7 @@ template <class G>
 std::deque<Path>
 drivingDistance(
         G &graph,
-        const std::vector<int64_t> &roots,
+        const std::set<int64_t> &roots,
         double distance,
         bool equicost,
         std::vector<std::map<int64_t, int64_t>> &depths,
