@@ -66,6 +66,7 @@ pgr_do_withPointsDD(
     using pgrouting::pgr_alloc;
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
+    using pgrouting::algorithm::drivingDistance;
 
     std::ostringstream log;
     std::ostringstream notice;
@@ -110,12 +111,12 @@ pgr_do_withPointsDD(
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(edges, total_edges);
             digraph.insert_edges(pg_graph.new_edges());
-            paths = pgr_drivingdistance(digraph, start_vids, distance, equiCost, depths, details);
+            paths = drivingDistance(digraph, start_vids, distance, equiCost, depths, details);
         } else {
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(edges, total_edges);
             undigraph.insert_edges(pg_graph.new_edges());
-            paths = pgr_drivingdistance(undigraph, start_vids, distance, equiCost, depths, details);
+            paths = drivingDistance(undigraph, start_vids, distance, equiCost, depths, details);
         }
 
         if (!details) {

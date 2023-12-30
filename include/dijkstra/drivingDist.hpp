@@ -563,7 +563,7 @@ namespace algorithm {
 
 template <class G>
 std::deque<Path>
-pgr_drivingdistance(
+drivingDistance(
         G &graph,
         const std::vector<int64_t> &roots,
         double distance,
