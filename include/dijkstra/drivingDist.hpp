@@ -275,37 +275,45 @@ std::map<int64_t, int64_t> get_depth(
  * Prepares the execution for a driving distance:
  *
  * @param graph
- * @param start_vertex
+ * @param root
  * @param distance
  *
  * Results are kept on predecessor & distances
  *
  * @returns bool  @b True when results are found
  */
+template <typename G, typename V>
 bool execute_drivingDistance(
         G &graph,
-        int64_t start_vertex,
+        int64_t root,
+        std::vector<V> &predecessors,
+        std::vector<double> &distances,
+        std::deque<V> &nodesInDistance,
         double distance) {
-    clear();
 
+    // get root;
+    if (!graph.has_vertex(root)) {
+        return false;
+    }
+
+    predecessors.clear();
+    distances.clear();
+    nodesInDistance.clear();
     predecessors.resize(graph.num_vertices());
     distances.resize(
             graph.num_vertices(),
             std::numeric_limits<double>::infinity());
 
-    // get source;
-    if (!graph.has_vertex(start_vertex)) {
-        return false;
-    }
 
     return bg_detail::dijkstra_1_to_distance(
             graph,
-            graph.get_V(start_vertex),
+            graph.get_V(root),
             predecessors,
             distances,
             nodesInDistance,
             distance);
 }
+
 }  // namespace detail
 
 
@@ -561,7 +569,7 @@ class Pgr_dijkstra {
          // perform the algorithm
          std::deque<Path> paths;
          for (const auto &vertex : start_vertex) {
-             if (execute_drivingDistance(graph, vertex, distance)) {
+             if (detail::execute_drivingDistance(graph, vertex, predecessors, distances, nodesInDistance, distance)) {
                  auto path = Path(
                          graph,
                          vertex,
