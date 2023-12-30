@@ -346,6 +346,87 @@ bool execute_drivingDistance_no_init(
             distance);
 }
 
+
+/* preparation for many to distance with equicost
+ *
+ * Idea:
+ *   The distances vector does not change
+ *   The predecessors vector does not change
+ *   The first @b valid execution is done normally:
+ *     - The distances will have:
+ *       - inf
+ *       - values < distance
+ *       - values > distance
+ *   Subsequent @b valid executions
+ *       - will not change the:
+ *         - values < distance
+ *   Don't know yet what happens to predecessors
+ */
+std::deque<Path> drivingDistance_with_equicost(
+        G &graph,
+        const std::vector<int64_t> &start_vertex,
+        std::vector<std::map<int64_t, int64_t>> &depths,
+        double distance, bool details) {
+    clear();
+    log << "Number of edges:" << boost::num_edges(graph.graph) << "\n";
+
+    depths.resize(start_vertex.size());
+    predecessors.resize(graph.num_vertices());
+    distances.resize(
+            graph.num_vertices(),
+            std::numeric_limits<double>::infinity());
+
+    /*
+     * Vector to store the different predessesors
+     * each is of size = graph.num_vertices()
+     *
+     * TODO(gsoc)
+     * - figure out less storage if possible
+     */
+    std::deque< std::vector<V>> pred(start_vertex.size());
+    std::deque< std::vector<V>> nodetailspred(start_vertex.size());
+
+    // perform the algorithm
+    size_t i = 0;
+    for (const auto &vertex : start_vertex) {
+        nodesInDistance.clear();
+        /*
+         * The vertex does not exist
+         *   Nothing to do
+         */
+        if (!(graph.has_vertex(vertex))) continue;
+
+        if (detail::execute_drivingDistance_no_init(
+                    graph, graph.get_V(vertex), predecessors, distances, distance)) {
+            pred[i] = predecessors;
+            depths[i] = detail::get_depth(graph, graph.get_V(vertex), distances, predecessors, distance, details);
+            if (!details) {
+                nodetailspred[i] = predecessors;
+            }
+        }
+        ++i;
+    }
+
+
+    /*
+     * predecessors of vertices in the set are themselves
+     */
+    for (const auto &vertex : start_vertex) {
+        for (auto &p : pred) {
+            if (!p.empty() && graph.has_vertex(vertex))
+                p[graph.get_V(vertex)] = graph.get_V(vertex);
+        }
+    }
+
+
+    return get_drivingDistance_with_equicost_paths(
+            graph,
+            start_vertex,
+            pred,
+            nodetailspred,
+            distance, details);
+}
+
 }  // namespace detail
 
 
@@ -410,86 +491,6 @@ class Pgr_dijkstra {
 
  private:
 
-
-     /* preparation for many to distance with equicost
-      *
-      * Idea:
-      *   The distances vector does not change
-      *   The predecessors vector does not change
-      *   The first @b valid execution is done normally:
-      *     - The distances will have:
-      *       - inf
-      *       - values < distance
-      *       - values > distance
-      *   Subsequent @b valid executions
-      *       - will not change the:
-      *         - values < distance
-      *   Don't know yet what happens to predecessors
-      */
-     std::deque<Path> drivingDistance_with_equicost(
-             G &graph,
-             const std::vector<int64_t> &start_vertex,
-             std::vector<std::map<int64_t, int64_t>> &depths,
-             double distance, bool details) {
-         clear();
-         log << "Number of edges:" << boost::num_edges(graph.graph) << "\n";
-
-         depths.resize(start_vertex.size());
-         predecessors.resize(graph.num_vertices());
-         distances.resize(
-                 graph.num_vertices(),
-                 std::numeric_limits<double>::infinity());
-
-         /*
-          * Vector to store the different predessesors
-          * each is of size = graph.num_vertices()
-          *
-          * TODO(gsoc)
-          * - figure out less storage if possible
-          */
-         std::deque< std::vector<V>> pred(start_vertex.size());
-         std::deque< std::vector<V>> nodetailspred(start_vertex.size());
-
-         // perform the algorithm
-         size_t i = 0;
-         for (const auto &vertex : start_vertex) {
-             nodesInDistance.clear();
-             /*
-              * The vertex does not exist
-              *   Nothing to do
-              */
-             if (!(graph.has_vertex(vertex))) continue;
-
-             if (detail::execute_drivingDistance_no_init(
-                         graph, graph.get_V(vertex), predecessors, distances, distance)) {
-                 pred[i] = predecessors;
-                 depths[i] = detail::get_depth(graph, graph.get_V(vertex), distances, predecessors, distance, details);
-                 if (!details) {
-                     nodetailspred[i] = predecessors;
-                 }
-             }
-             ++i;
-         }
-
-
-         /*
-          * predecessors of vertices in the set are themselves
-          */
-         for (const auto &vertex : start_vertex) {
-             for (auto &p : pred) {
-                 if (!p.empty() && graph.has_vertex(vertex))
-                     p[graph.get_V(vertex)] = graph.get_V(vertex);
-             }
-         }
-
-
-        return get_drivingDistance_with_equicost_paths(
-                graph,
-                start_vertex,
-                pred,
-                nodetailspred,
-                distance, details);
-     }
 
      /** @brief gets results in form of a container of paths
       *
