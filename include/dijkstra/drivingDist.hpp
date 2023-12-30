@@ -58,18 +58,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/interruption.h"
 #include "visitors/dijkstra_visitors.hpp"
 
+
 namespace bg_detail {
 
 /** @brief Dijkstra 1 to distance
  *
  * Used on:
- *   1 to distance
- *   many to distance
- *   On the first call of many to distance with equi_cost
+ * - 1 to distance
+ * - many to distance
+ * - On the first call of many to distance with equi_cost
+ *
+ * @param [in] bg  boost graph
+ * @param [in] root  vertex root of the spanning tree
+ * @param [in] distance  maximum distance.
+ * @param [in] predecessors  predecessors list
+ * @param [in] distances  distances from root
  */
 template <typename B_G, typename V, typename T_E>
 bool dijkstra_1_to_distance(
-        B_G &bg,
+        const B_G &bg,
         V root,
         std::vector<V> &predecessors,
         std::vector<double> &distances,
@@ -94,44 +101,47 @@ bool dijkstra_1_to_distance(
     return true;
 }
 
-/** Call to Dijkstra  1 to distance no init
+/** @brief Dijkstra 1 to distance no initialization
  *
  * Used on:
  *   On the subsequent calls of many to distance with equi_cost
+ *
+ * @param [in] bg  boost graph
+ * @param [in] root  vertex root of the spanning tree
+ * @param [in] distance  maximum distance.
+ * @param [in] predecessors  predecessors list
+ * @param [in] distances  distances from root
  */
-template <typename G, typename V>
+template <typename B_G, typename V, typename E, typename G_T_E>
 bool dijkstra_1_to_distance_no_init(
-        G &graph,
-        V source,
+        const B_G &bg,
+        V root,
         std::vector<V> &predecessors,
         std::vector<double> &distances,
         double distance) {
-    typedef typename G::E E;
-    pgassert(predecessors.size() == graph.num_vertices());
-    pgassert(distances.size() == graph.num_vertices());
-    distances[source] = 0;
-    std::vector<boost::default_color_type> color_map(graph.num_vertices());
-    /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+    pgassert(predecessors.size() == num_vertices(bg));
+    pgassert(distances.size() == num_vertices(bg));
+
+    distances[root] = 0;
+    /*
+     * Not using the default, because vertices visited from other roots are marked color black
+     */
+    std::vector<boost::default_color_type> color_map(num_vertices(bg));
+    auto vidx(boost::get(boost::vertex_index, bg));
+
     CHECK_FOR_INTERRUPTS();
     try {
-        boost::dijkstra_shortest_paths_no_init(graph.graph, source,
-                make_iterator_property_map(
-                    predecessors.begin(),
-                    graph.vertIndex),
-                make_iterator_property_map(
-                    distances.begin(),
-                    graph.vertIndex),
-                get(&G::G_T_E::cost, graph.graph),
-                graph.vertIndex,
+        boost::dijkstra_shortest_paths_no_init(bg, root,
+                make_iterator_property_map(predecessors.begin(), vidx),
+                make_iterator_property_map(distances.begin(), vidx),
+                get(&G_T_E::cost, bg),
+                vidx,
                 std::less<double>(),
                 boost::closed_plus<double>(),
                 static_cast<double>(0),
-                pgrouting::visitors::dijkstra_distance_visitor_no_init<V, E>(source, distance, predecessors, distances,
+                pgrouting::visitors::dijkstra_distance_visitor_no_init<V, E>(root, distance, predecessors, distances,
                     color_map),
-                boost::make_iterator_property_map(
-                    color_map.begin(),
-                    graph.vertIndex,
-                    color_map[0]));
+                boost::make_iterator_property_map(color_map.begin(), vidx, color_map[0]));
     } catch(pgrouting::found_goals &) {
         return true;
     } catch (boost::exception const& ex) {
@@ -141,14 +151,13 @@ bool dijkstra_1_to_distance_no_init(
         (void)e;
         throw;
     } catch (...) {
-             throw;
-         }
+        throw;
+    }
 
-         return true;
-     }
+    return true;
+}
 
 }  // namespace bg_detail
-
 
 namespace detail {
 
@@ -159,12 +168,13 @@ namespace detail {
  */
 template <typename G, typename V>
 void remove_details(const G &graph,
-             std::vector<double> &distances,
-             std::vector<V>      &predecessors) {
+        const std::vector<double> &distances,
+         std::vector<V> &predecessors) {
     /*
      * find all the points that are predecessors
      */
     std::set<V> node_with_predecessor_point;
+    CHECK_FOR_INTERRUPTS();
     for (V v = 0; v < predecessors.size() ; ++v) {
         /*
          * skipping unreachable nodes and or initial node
@@ -188,10 +198,10 @@ void remove_details(const G &graph,
         pgassert(graph[u].id < 0);
 
         /*
-         * while u is a point and its predecessor is not itself
+         * while u is a point and it's predecessor is not itself
          */
+        CHECK_FOR_INTERRUPTS();
         while (graph[u].id < 0 && predecessors[u] != u) {
-            CHECK_FOR_INTERRUPTS();
             pgassert(graph[u].id < 0);
             pgassert(distances[v] !=  std::numeric_limits<double>::infinity());
             v = u;
@@ -210,6 +220,7 @@ void remove_details(const G &graph,
  * @param [in] distances An array of vertices @b id
  * @param [in] predecessors an array of predecessors
  * @param [in] distance the max distance
+ * @param [in] details the max distance
  */
 template <typename G, typename V>
 std::map<int64_t, int64_t> get_depth(
@@ -336,16 +347,16 @@ bool execute_drivingDistance_no_init(
         std::vector<V> &predecessors,
         std::vector<double> &distances,
         double distance) {
+    using E = typename G::E;
+    using T_E = typename G::G_T_E;
+    using B_G = typename G::B_G;
+
     pgassert(predecessors.size() == graph.num_vertices());
     pgassert(distances.size() == graph.num_vertices());
 
     std::iota(predecessors.begin(), predecessors.end(), 0);
 
-    return bg_detail::dijkstra_1_to_distance_no_init(
-            graph,
-            root,
-            predecessors, distances,
-            distance);
+    return bg_detail::dijkstra_1_to_distance_no_init<B_G, V, E, T_E>(graph.graph, root, predecessors, distances, distance);
 }
 
 /** @brief gets results in form of a container of paths
