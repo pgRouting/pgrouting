@@ -384,7 +384,6 @@ std::deque<pgrouting::Path> get_drivingDistance_with_equicost_paths(
 
 /* preparation for many to distance with equicost
  *
- * Idea:
  *   The distances vector does not change
  *   The predecessors vector does not change
  *   The first @b valid execution is done normally:
@@ -399,65 +398,51 @@ std::deque<pgrouting::Path> get_drivingDistance_with_equicost_paths(
  */
 template <typename G>
 std::deque<pgrouting::Path> drivingDistance_with_equicost(
-        const G &graph,
-        const std::set<int64_t> &start_vertex,
+        G &graph,
+        const std::set<int64_t> &roots,
         std::vector<std::map<int64_t, int64_t>> &depths,
         double distance, bool details) {
     using V = typename G::V;
 
-    std::vector<V> predecessors;
-    std::vector<double> distances;
-    std::deque<V> nodesInDistance;
-    depths.resize(start_vertex.size());
-    predecessors.resize(graph.num_vertices());
-    distances.resize(
-            graph.num_vertices(),
-            std::numeric_limits<double>::infinity());
+    depths.resize(roots.size());
+    std::vector<V> predecessors(graph.num_vertices());
+    std::vector<double> distances(graph.num_vertices(), std::numeric_limits<double>::infinity());
 
-    /*
-     * Vector to store the different predessesors
-     * each is of size = graph.num_vertices()
-     */
-    std::deque< std::vector<V>> pred(start_vertex.size());
-    std::deque< std::vector<V>> nodetailspred(start_vertex.size());
+    std::deque<std::vector<V>> pred(roots.size());
+    std::deque<std::vector<V>> noDetailsPredecessors(roots.size());
 
-    // perform the algorithm
     size_t i = 0;
-    for (const auto &vertex : start_vertex) {
-        nodesInDistance.clear();
+    for (const auto &root : roots) {
         /*
-         * The vertex does not exist
-         *   Nothing to do
+         * The vertex does not exist Nothing to do
          */
-        if (!(graph.has_vertex(vertex))) continue;
+        if (!(graph.has_vertex(root))) continue;
 
-        execute_drivingDistance_no_init( graph, graph.get_V(vertex), predecessors, distances, distance);
+        execute_drivingDistance_no_init(graph, graph.get_V(root), predecessors, distances, distance);
         pred[i] = predecessors;
-        depths[i] = detail::get_depth(graph, graph.get_V(vertex), distances, predecessors, distance, details);
+        depths[i] = detail::get_depth(graph, graph.get_V(root), distances, predecessors, distance, details);
         if (!details) {
-            nodetailspred[i] = predecessors;
+            noDetailsPredecessors[i] = predecessors;
         }
         ++i;
     }
 
-
     /*
-     * predecessors of vertices in the set are themselves
+     * predecessors of root vertices are themselves
      */
-    for (const auto &vertex : start_vertex) {
+    for (const auto &root : roots) {
         for (auto &p : pred) {
-            if (!p.empty() && graph.has_vertex(vertex))
-                p[graph.get_V(vertex)] = graph.get_V(vertex);
+            if (!p.empty() && graph.has_vertex(root))
+                p[graph.get_V(root)] = graph.get_V(root);
         }
     }
 
-
     return get_drivingDistance_with_equicost_paths(
             graph,
-            start_vertex,
+            roots,
             pred,
             distances,
-            nodetailspred,
+            noDetailsPredecessors,
             distance, details);
 }
 
