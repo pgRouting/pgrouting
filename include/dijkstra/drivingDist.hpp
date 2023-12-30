@@ -275,6 +275,7 @@ std::map<int64_t, int64_t> get_depth(
     return depth;
 }
 
+#if 0
 /** @brief to use with driving distance
  *
  * Prepares the execution for a driving distance:
@@ -305,6 +306,7 @@ void execute_drivingDistance_no_init(
 
     bg_detail::dijkstra_1_to_distance_no_init<B_G, V, E, T_E>(graph.graph, root, predecessors, distances, distance);
 }
+#endif
 
 /** @brief gets results for many vertices and equi costs
  *
@@ -401,6 +403,9 @@ std::deque<pgrouting::Path> drivingDistance_with_equicost(
         std::vector<std::map<int64_t, int64_t>> &depths,
         double distance, bool details) {
     using V = typename G::V;
+    using E = typename G::E;
+    using T_E = typename G::G_T_E;
+    using B_G = typename G::B_G;
 
     depths.resize(roots.size());
     std::vector<V> predecessors(graph.num_vertices());
@@ -416,15 +421,9 @@ std::deque<pgrouting::Path> drivingDistance_with_equicost(
          */
         if (!(graph.has_vertex(root))) continue;
 
-#if 0
-        execute_drivingDistance_no_init(graph, graph.get_V(root), predecessors, distances, distance);
-#else
-    using E = typename G::E;
-    using T_E = typename G::G_T_E;
-    using B_G = typename G::B_G;
         std::iota(predecessors.begin(), predecessors.end(), 0);
         bg_detail::dijkstra_1_to_distance_no_init<B_G, V, E, T_E>(graph.graph, graph.get_V(root), predecessors, distances, distance);
-#endif
+
         pred[i] = predecessors;
         depths[i] = detail::get_depth(graph, graph.get_V(root), distances, predecessors, distance, details);
         if (!details) {
