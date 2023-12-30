@@ -518,7 +518,7 @@ std::deque<pgrouting::Path> drivingDistance_no_equicost(
         std::vector<std::map<int64_t, int64_t>> &depths,
         double distance, bool details) {
     using Path = pgrouting::Path;
-    typedef typename G::V V;
+    using V = typename G::V;
 
     std::vector<V> predecessors;
     std::vector<double> distances;
