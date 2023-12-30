@@ -41,13 +41,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <set>
 #include <vector>
-#include <algorithm>
-#include <sstream>
 #include <functional>
 #include <limits>
 #include <map>
 #include <numeric>
-#include <utility>
+
 
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
