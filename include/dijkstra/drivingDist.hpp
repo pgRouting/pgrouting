@@ -75,7 +75,7 @@ namespace bg_detail {
  * @param [in] distances  distances from root
  */
 template <typename B_G, typename V, typename T_E>
-bool dijkstra_1_to_distance(
+void dijkstra_1_to_distance(
         const B_G &bg,
         V root,
         std::vector<V> &predecessors,
@@ -97,7 +97,6 @@ bool dijkstra_1_to_distance(
     } catch (...) {
         throw;
     }
-    return true;
 }
 
 /** @brief Dijkstra 1 to distance no initialization
@@ -293,7 +292,7 @@ std::map<int64_t, int64_t> get_depth(
  * @returns bool  @b True when results are found
  */
 template <typename G, typename V>
-bool execute_drivingDistance(
+void execute_drivingDistance(
         const G &graph,
         int64_t root,
         std::vector<V> &predecessors,
@@ -314,7 +313,7 @@ bool execute_drivingDistance(
             graph.num_vertices(),
             std::numeric_limits<double>::infinity());
 
-    return bg_detail::dijkstra_1_to_distance<B_G, V, T_E>(
+    bg_detail::dijkstra_1_to_distance<B_G, V, T_E>(
             graph.graph,
             graph.get_V(root),
             predecessors,
@@ -450,7 +449,7 @@ std::deque<pgrouting::Path> drivingDistance_with_equicost(
         const std::set<int64_t> &start_vertex,
         std::vector<std::map<int64_t, int64_t>> &depths,
         double distance, bool details) {
-    typedef typename G::V V;
+    using V = typename G::V;
 
     std::vector<V> predecessors;
     std::vector<double> distances;
@@ -526,7 +525,8 @@ std::deque<pgrouting::Path> drivingDistance_no_equicost(
     std::deque<Path> paths;
 
     for (const auto &root : roots) {
-        if (detail::execute_drivingDistance(graph, root, predecessors, distances, distance)) {
+        if (graph.has_vertex(vertex)) {
+            detail::execute_drivingDistance(graph, root, predecessors, distances, distance);
             auto path = Path(graph, root, distance, predecessors, distances);
             path.sort_by_node_agg_cost();
             depths.push_back(detail::get_depth(graph, graph.get_V(root), distances, predecessors, distance, details));
