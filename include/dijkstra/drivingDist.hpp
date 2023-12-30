@@ -279,6 +279,7 @@ std::map<int64_t, int64_t> get_depth(
     return depth;
 }
 
+#if 0
 /** @brief to use with driving distance
  *
  * Prepares the execution for a driving distance:
@@ -317,7 +318,7 @@ void execute_drivingDistance(
             distances,
             distance);
 }
-
+#endif
 
 /** @brief to use with driving distance
  *
@@ -506,7 +507,14 @@ std::deque<pgrouting::Path> drivingDistance_with_equicost(
             distance, details);
 }
 
-// preparation for many to distance No equicost
+/** @brief gets results for many vertices and equi costs
+ *
+ * @param [in] graph The graph that is being worked
+ * @param [in] roots a set of roots
+ * @param [in] depths a vector of map of depths
+ * @param [in] distance maximum distance
+ * @param [in] details flag to indicate to include points
+ */
 template <typename G>
 std::deque<pgrouting::Path> drivingDistance_no_equicost(
         const G &graph,
@@ -514,7 +522,9 @@ std::deque<pgrouting::Path> drivingDistance_no_equicost(
         std::vector<std::map<int64_t, int64_t>> &depths,
         double distance, bool details) {
     using Path = pgrouting::Path;
+    using B_G = typename G::B_G;
     using V = typename G::V;
+    using T_E = typename G::G_T_E;
 
     std::deque<Path> paths;
 
@@ -523,7 +533,9 @@ std::deque<pgrouting::Path> drivingDistance_no_equicost(
             std::vector<V> predecessors(graph.num_vertices());
             std::vector<double> distances(graph.num_vertices(), std::numeric_limits<double>::infinity());
 
-            detail::execute_drivingDistance(graph, root, predecessors, distances, distance);
+            bg_detail::dijkstra_1_to_distance<B_G, V, T_E>(
+                    graph.graph, graph.get_V(root), predecessors, distances, distance);
+
             auto path = Path(graph, root, distance, predecessors, distances);
             path.sort_by_node_agg_cost();
             depths.push_back(detail::get_depth(graph, graph.get_V(root), distances, predecessors, distance, details));
