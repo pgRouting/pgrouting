@@ -308,74 +308,73 @@ void execute_drivingDistance_no_init(
     bg_detail::dijkstra_1_to_distance_no_init<B_G, V, E, T_E>(graph.graph, root, predecessors, distances, distance);
 }
 
-/** @brief gets results in form of a container of paths
-*
-* @param [in] graph The graph that is being worked
-* @param [in] start_vertex An array of vertices @b id
-* @param [in] pred an array of predecessors
-* @param [in] distance the max distance
-* @pre one predecessor per root
-*/
+/** @brief gets results for many vertices and equi costs
+ *
+ * @param [in] graph The graph that is being worked
+ * @param [in] roots a set of roots
+ * @param [in] predecessors an array of predecessors
+ * @param [in] noDetailsPredecessors veritces that do not have a predecessor
+ * @param [in] distances a map of distances
+ * @param [in] distance maximum distance
+ * @param [in] details flag to indicate to include points
+ *
+ * @pre one predecessor per root
+ */
 template <typename G, typename V>
 std::deque<pgrouting::Path> get_drivingDistance_with_equicost_paths(
         const G &graph,
-        const std::set<int64_t> &start_vertex,
-        std::deque<std::vector<V>> &pred,
+        const std::set<int64_t> &roots,
+        std::deque<std::vector<V>> &predecessors,
         std::vector<double> &distances,
-        std::deque<std::vector<V>> &nodetailspred,
+        std::deque<std::vector<V>> &noDetailsPredecessors,
         double distance, bool details) {
     using Path = pgrouting::Path;
 
-    /*
-     * precondition
-     */
-    pgassert(start_vertex.size() == pred.size());
-
+    pgassert(roots.size() == predecessors.size());
 
     /*
      * Creating all the result "paths"
      */
     std::deque<Path> paths;
-    for (const auto vertex : start_vertex) {
-        paths.push_back(Path(vertex, vertex));
-        paths.back().push_back({vertex, -1, 0, 0, vertex});
+    for (const auto r : roots) {
+        paths.push_back(Path(r, r));
+        paths.back().push_back({r, -1, 0, 0, r});
     }
 
     /*
-     *  Ciclying the distances:
+     *  Ciclying the vertices:
      *  To which vertex do they belong to?
      */
-    for (V d = 0; d < distances.size(); ++d) {
+    for (V v = 0; v < distances.size(); ++v) {
         /*
          * Sikiping distances greater than the one asked for
          */
-        if (!(distances[d] <= distance)) continue;
+        if (!(distances[v] <= distance)) continue;
 
-        for (auto i = start_vertex.size(); i > 0; --i) {
+        for (auto i = roots.size(); i > 0; --i) {
+            const auto &predecessor = predecessors[i - 1];
             /*
              * The vertex does not exist on the graph
+             * The predecessor = current then its unreachable to this vertex
              */
-            if (pred[i - 1].empty()) break;
+            if (predecessor.empty()) break;
+            if (predecessor[v] == v) continue;
 
-
+            auto u =  details? predecessor[v] : noDetailsPredecessors[i - 1][v];
             /*
-             * The predecessor = current then
-             *  its unreachable to this vertex
+             * precalculating cost to find the edge
              */
-            if (pred[i - 1][d] == d) continue;
-
-            auto cost = distances[d] - distances[pred[i - 1][d]];
-            auto edge_id = graph.get_edge_id(pred[i - 1][d], d, cost);
-            int64_t pred_node =  details? graph[pred[i - 1][d]].id : graph[nodetailspred[i - 1][d]].id;
+            auto cost = distances[v] - distances[predecessor[v]];
+            auto edge_id = graph.get_edge_id(predecessor[v], v, cost);
             pgassert(edge_id != -1);
-            paths[i - 1].push_back(
-                    {graph[d].id,
-                    edge_id,
-                    details? cost : distances[d] - distances[nodetailspred[i - 1][d]],
-                         distances[d], pred_node});
-            break;
-        }
-    }
+            /*
+             * real cost is with real predecessor
+             */
+            cost = details? cost : distances[v] - distances[u];
+                 paths[i - 1].push_back({graph[v].id, edge_id, cost, distances[v], graph[u].id});
+                 break;
+             }
+         }
 
     for (auto &path : paths) {
         path.sort_by_node_agg_cost();
