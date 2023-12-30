@@ -320,16 +320,19 @@ bool execute_drivingDistance(
  * Prepares the execution for a driving distance:
  *
  * @param graph
- * @param start_vertex
+ * @param root
  * @param distance
  *
  * Results are kept on predecessor & distances
  *
  * @returns bool  @b True when results are found
  */
+template <typename G, typename V>
 bool execute_drivingDistance_no_init(
         G &graph,
-        V start_vertex,
+        V root,
+        std::vector<V> &predecessors,
+        std::vector<double> &distances,
         double distance) {
     pgassert(predecessors.size() == graph.num_vertices());
     pgassert(distances.size() == graph.num_vertices());
@@ -338,7 +341,7 @@ bool execute_drivingDistance_no_init(
 
     return bg_detail::dijkstra_1_to_distance_no_init(
             graph,
-            start_vertex,
+            root,
             predecessors, distances,
             distance);
 }
@@ -457,8 +460,8 @@ class Pgr_dijkstra {
               */
              if (!(graph.has_vertex(vertex))) continue;
 
-             if (execute_drivingDistance_no_init(
-                         graph, graph.get_V(vertex), distance)) {
+             if (detail::execute_drivingDistance_no_init(
+                         graph, graph.get_V(vertex), predecessors, distances, distance)) {
                  pred[i] = predecessors;
                  depths[i] = detail::get_depth(graph, graph.get_V(vertex), distances, predecessors, distance, details);
                  if (!details) {
