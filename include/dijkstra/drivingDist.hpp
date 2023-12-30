@@ -279,46 +279,6 @@ std::map<int64_t, int64_t> get_depth(
     return depth;
 }
 
-#if 0
-/** @brief to use with driving distance
- *
- * Prepares the execution for a driving distance:
- *
- * @param graph
- * @param root
- * @param distance
- *
- * Results are kept on predecessor & distances
- *
- * @returns bool  @b True when results are found
- */
-template <typename G, typename V>
-void execute_drivingDistance(
-        const G &graph,
-        int64_t root,
-        std::vector<V> &predecessors,
-        std::vector<double> &distances,
-        double distance) {
-    using T_E = typename G::G_T_E;
-    using B_G = typename G::B_G;
-
-    if (!graph.has_vertex(root)) return;
-
-    predecessors.clear();
-    distances.clear();
-    predecessors.resize(graph.num_vertices());
-    distances.resize(
-            graph.num_vertices(),
-            std::numeric_limits<double>::infinity());
-
-    bg_detail::dijkstra_1_to_distance<B_G, V, T_E>(
-            graph.graph,
-            graph.get_V(root),
-            predecessors,
-            distances,
-            distance);
-}
-#endif
 
 /** @brief to use with driving distance
  *
