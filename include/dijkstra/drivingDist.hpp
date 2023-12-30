@@ -354,12 +354,16 @@ bool execute_drivingDistance_no_init(
 * @param [in] distance the max distance
 * @pre one predecessor per root
 */
-std::deque<Path> get_drivingDistance_with_equicost_paths(
+template <typename G, typename V>
+std::deque<pgrouting::Path> get_drivingDistance_with_equicost_paths(
         G &graph,
         const std::vector<int64_t> &start_vertex,
         std::deque<std::vector<V>> &pred,
+        std::vector<double> &distances,
         std::deque<std::vector<V>> &nodetailspred,
         double distance, bool details) {
+    using Path = pgrouting::Path;
+
     /*
      * precondition
      */
@@ -493,6 +497,7 @@ std::deque<pgrouting::Path> drivingDistance_with_equicost(
             graph,
             start_vertex,
             pred,
+            distances,
             nodetailspred,
             distance, details);
 }
