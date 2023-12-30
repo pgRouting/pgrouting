@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.6.1
+# Copyright (C) pgRouting Contributors - Version v3.7.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.6.0-dev\n"
+"Project-Id-Version: pgRouting v3.7.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-19 19:56+0000\n"
+"POT-Creation-Date: 2023-12-30 16:20-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -6013,7 +6013,7 @@ msgstr ""
 msgid "Upgrading the database"
 msgstr ""
 
-msgid "To upgrade pgRouting in the database to version 3.6.0 use the following command:"
+msgid "To upgrade pgRouting in the database to version 3.7.0 use the following command:"
 msgstr ""
 
 msgid "More information can be found in https://www.postgresql.org/docs/current/sql-createextension.html"
@@ -12905,6 +12905,21 @@ msgid "Release Notes"
 msgstr ""
 
 msgid "To see the full list of changes check the list of `Git commits <https://github.com/pgRouting/pgrouting/commits>`_ on Github."
+msgstr ""
+
+msgid "pgRouting 3.7.0 Release Notes"
+msgstr ""
+
+msgid "No Changes Yet"
+msgstr ""
+
+msgid "pgRouting 3.6.1 Release Notes"
+msgstr ""
+
+msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.6.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.1%22>`_"
+msgstr ""
+
+msgid "`#2588 <https://github.com/pgRouting/pgrouting/pull/2588>`__ pgrouting 3.6.0 fails to build on OSX"
 msgstr ""
 
 msgid "pgRouting 3.6.0 Release Notes"

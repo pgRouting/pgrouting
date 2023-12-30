@@ -4,7 +4,7 @@ function createInfo(file, newat, altnames = '') {
     this.altnames = altnames;
 }
 
-var versionsArr = ['3.6', '3.5', '3.4', '3.3', '3.2', '3.1', '3.0'];
+var versionsArr = ['3.7', '3.6', '3.5', '3.4', '3.3', '3.2', '3.1', '3.0'];
 var unsuportedArr = ['2.6', '2.5', '2.4', '2.3', '2.2', '2.1', '2.0'];
 var titles = [
     {k: 'en', v: ['Supported versions', 'Unsupported versions']},
