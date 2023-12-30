@@ -301,10 +301,7 @@ void execute_drivingDistance(
     using T_E = typename G::G_T_E;
     using B_G = typename G::B_G;
 
-    // get root;
-    if (!graph.has_vertex(root)) {
-        return false;
-    }
+    if (!graph.has_vertex(root)) return;
 
     predecessors.clear();
     distances.clear();
@@ -519,13 +516,13 @@ std::deque<pgrouting::Path> drivingDistance_no_equicost(
     using Path = pgrouting::Path;
     using V = typename G::V;
 
-    std::vector<V> predecessors;
-    std::vector<double> distances;
-    std::deque<V> nodesInDistance;
     std::deque<Path> paths;
 
     for (const auto &root : roots) {
-        if (graph.has_vertex(vertex)) {
+        if (graph.has_vertex(root)) {
+            std::vector<V> predecessors(graph.num_vertices());
+            std::vector<double> distances(graph.num_vertices(), std::numeric_limits<double>::infinity());
+
             detail::execute_drivingDistance(graph, root, predecessors, distances, distance);
             auto path = Path(graph, root, distance, predecessors, distances);
             path.sort_by_node_agg_cost();
@@ -558,34 +555,34 @@ std::deque<pgrouting::Path> drivingDistance_no_equicost(
     return paths;
 }
 
+
 }  // namespace detail
 
 
 namespace pgrouting {
 namespace algorithm {
 
-template <class G>
-std::deque<Path>
-drivingDistance(
+template <typename G>
+std::deque<Path> drivingDistance(
         const G &graph,
         const std::set<int64_t> &roots,
         double distance,
         bool equicost,
         std::vector<std::map<int64_t, int64_t>> &depths,
         bool details) {
-     if (equicost) {
-         return detail::drivingDistance_with_equicost(
-                 graph,
-                 roots,
-                 depths,
-                 distance, details);
-     } else {
-         return detail::drivingDistance_no_equicost(
-                 graph,
-                 roots,
-                 depths,
-                 distance, details);
-     }
+    if (equicost) {
+        return detail::drivingDistance_with_equicost(
+                graph,
+                roots,
+                depths,
+                distance, details);
+    } else {
+        return detail::drivingDistance_no_equicost(
+                graph,
+                roots,
+                depths,
+                distance, details);
+    }
 }
 
 }  // namespace algorithm
