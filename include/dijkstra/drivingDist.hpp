@@ -527,12 +527,7 @@ std::deque<pgrouting::Path> drivingDistance_no_equicost(
 
     for (const auto &root : roots) {
         if (detail::execute_drivingDistance(graph, root, predecessors, distances, distance)) {
-            auto path = Path(
-                    graph,
-                    root,
-                    distance,
-                    predecessors,
-                    distances);
+            auto path = Path(graph, root, distance, predecessors, distances);
             path.sort_by_node_agg_cost();
             depths.push_back(detail::get_depth(graph, graph.get_V(root), distances, predecessors, distance, details));
             /*
@@ -554,6 +549,7 @@ std::deque<pgrouting::Path> drivingDistance_no_equicost(
             Path p(root, root);
             p.push_back({root, -1, 0, 0, root});
             paths.push_back(p);
+
             std::map<int64_t, int64_t> m;
             m[root] = 0;
             depths.push_back(m);
