@@ -559,83 +559,31 @@ std::deque<pgrouting::Path> drivingDistance_no_equicost(
 
 
 namespace pgrouting {
-// TODO(v4) convert to functions
-
 namespace algorithm {
-template < class G > class Pgr_dijkstra;
-}  // namespace algorithm
 
 template <class G>
 std::deque<Path>
 pgr_drivingdistance(
         G &graph,
-        const std::vector<int64_t> &start_vids,
+        const std::vector<int64_t> &roots,
         double distance,
         bool equicost,
         std::vector<std::map<int64_t, int64_t>> &depths,
         bool details) {
-    algorithm::Pgr_dijkstra<G> fn_dijkstra;
-    return fn_dijkstra.drivingDistance(graph, start_vids, distance, equicost, depths, details);
+     if (equicost) {
+         return detail::drivingDistance_with_equicost(
+                 graph,
+                 roots,
+                 depths,
+                 distance, details);
+     } else {
+         return detail::drivingDistance_no_equicost(
+                 graph,
+                 roots,
+                 depths,
+                 distance, details);
+     }
 }
-
-namespace algorithm {
-
-template < class G >
-class Pgr_dijkstra {
- public:
-     typedef typename G::V V;
-     typedef typename G::E E;
-
-     // preparation for many to distance
-     std::deque<Path> drivingDistance(
-             G &graph,
-             const std::vector<int64_t> &start_vertex,
-             double distance,
-             bool equicost,
-             std::vector<std::map<int64_t, int64_t>> &depths,
-             bool details) {
-         if (equicost) {
-             return detail::drivingDistance_with_equicost(
-                     graph,
-                     start_vertex,
-                     depths,
-                     distance, details);
-         } else {
-             return detail::drivingDistance_no_equicost(
-                     graph,
-                     start_vertex,
-                     depths,
-                     distance, details);
-         }
-     }
-
-
-
-
-
-
-     //@}
-
-
- private:
-
-
-
-
-     void clear() {
-         predecessors.clear();
-         distances.clear();
-         nodesInDistance.clear();
-     }
-
-     //! @name members
-     //@{
-     std::vector<V> predecessors;
-     std::vector<double> distances;
-     std::deque<V> nodesInDistance;
-     std::ostringstream log;
-     //@}
-};
 
 }  // namespace algorithm
 }  // namespace pgrouting
