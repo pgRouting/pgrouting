@@ -92,12 +92,9 @@ class dijkstra_distance_visitor : public boost::default_dijkstra_visitor {
  public:
      explicit dijkstra_distance_visitor(
              double distance_goal,
-             std::deque<V> &nodesInDistance,
              std::vector<double> &distances) :
          m_distance_goal(distance_goal),
-         m_nodes(nodesInDistance),
          m_dist(distances) {
-             pgassert(m_nodes.empty());
              pgassert(m_distance_goal > 0);
          }
      template <class B_G>
@@ -105,12 +102,10 @@ class dijkstra_distance_visitor : public boost::default_dijkstra_visitor {
              if (m_dist[u] > m_distance_goal) {
                  throw found_goals();
              }
-             m_nodes.push_back(u);
          }
 
  private:
      double m_distance_goal;
-     std::deque<V> &m_nodes;
      std::vector<double> &m_dist;
 };
 
