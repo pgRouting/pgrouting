@@ -362,14 +362,17 @@ bool execute_drivingDistance_no_init(
  *         - values < distance
  *   Don't know yet what happens to predecessors
  */
-std::deque<Path> drivingDistance_with_equicost(
+template <typename G>
+std::deque<pgrouting::Path> drivingDistance_with_equicost(
         G &graph,
         const std::vector<int64_t> &start_vertex,
         std::vector<std::map<int64_t, int64_t>> &depths,
         double distance, bool details) {
-    clear();
-    log << "Number of edges:" << boost::num_edges(graph.graph) << "\n";
+    typedef typename G::V V;
 
+    std::vector<V> predecessors;
+    std::vector<double> distances;
+    std::deque<V> nodesInDistance;
     depths.resize(start_vertex.size());
     predecessors.resize(graph.num_vertices());
     distances.resize(
@@ -379,9 +382,6 @@ std::deque<Path> drivingDistance_with_equicost(
     /*
      * Vector to store the different predessesors
      * each is of size = graph.num_vertices()
-     *
-     * TODO(gsoc)
-     * - figure out less storage if possible
      */
     std::deque< std::vector<V>> pred(start_vertex.size());
     std::deque< std::vector<V>> nodetailspred(start_vertex.size());
@@ -396,7 +396,7 @@ std::deque<Path> drivingDistance_with_equicost(
          */
         if (!(graph.has_vertex(vertex))) continue;
 
-        if (detail::execute_drivingDistance_no_init(
+        if (execute_drivingDistance_no_init(
                     graph, graph.get_V(vertex), predecessors, distances, distance)) {
             pred[i] = predecessors;
             depths[i] = detail::get_depth(graph, graph.get_V(vertex), distances, predecessors, distance, details);
@@ -467,7 +467,7 @@ class Pgr_dijkstra {
              std::vector<std::map<int64_t, int64_t>> &depths,
              bool details) {
          if (equicost) {
-             return drivingDistance_with_equicost(
+             return detail::drivingDistance_with_equicost(
                      graph,
                      start_vertex,
                      depths,
