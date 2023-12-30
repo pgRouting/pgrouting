@@ -111,7 +111,7 @@ void dijkstra_1_to_distance(
  * @param [in] distances  distances from root
  */
 template <typename B_G, typename V, typename E, typename G_T_E>
-bool dijkstra_1_to_distance_no_init(
+void dijkstra_1_to_distance_no_init(
         const B_G &bg,
         V root,
         std::vector<V> &predecessors,
@@ -141,7 +141,7 @@ bool dijkstra_1_to_distance_no_init(
                     color_map),
                 boost::make_iterator_property_map(color_map.begin(), vidx, color_map[0]));
     } catch(pgrouting::found_goals &) {
-        return true;
+        /* no op */
     } catch (boost::exception const& ex) {
         (void)ex;
         throw;
@@ -151,8 +151,6 @@ bool dijkstra_1_to_distance_no_init(
     } catch (...) {
         throw;
     }
-
-    return true;
 }
 
 }  // namespace bg_detail
@@ -293,7 +291,7 @@ std::map<int64_t, int64_t> get_depth(
  * @returns bool  @b True when results are found
  */
 template <typename G, typename V>
-bool execute_drivingDistance_no_init(
+void execute_drivingDistance_no_init(
         const G &graph,
         V root,
         std::vector<V> &predecessors,
@@ -308,7 +306,7 @@ bool execute_drivingDistance_no_init(
 
     std::iota(predecessors.begin(), predecessors.end(), 0);
 
-    return bg_detail::dijkstra_1_to_distance_no_init<B_G, V, E, T_E>(graph.graph, root, predecessors, distances, distance);
+    bg_detail::dijkstra_1_to_distance_no_init<B_G, V, E, T_E>(graph.graph, root, predecessors, distances, distance);
 }
 
 /** @brief gets results in form of a container of paths
@@ -435,13 +433,11 @@ std::deque<pgrouting::Path> drivingDistance_with_equicost(
          */
         if (!(graph.has_vertex(vertex))) continue;
 
-        if (execute_drivingDistance_no_init(
-                    graph, graph.get_V(vertex), predecessors, distances, distance)) {
-            pred[i] = predecessors;
-            depths[i] = detail::get_depth(graph, graph.get_V(vertex), distances, predecessors, distance, details);
-            if (!details) {
-                nodetailspred[i] = predecessors;
-            }
+        execute_drivingDistance_no_init( graph, graph.get_V(vertex), predecessors, distances, distance);
+        pred[i] = predecessors;
+        depths[i] = detail::get_depth(graph, graph.get_V(vertex), distances, predecessors, distance, details);
+        if (!details) {
+            nodetailspred[i] = predecessors;
         }
         ++i;
     }
