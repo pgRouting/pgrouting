@@ -56,7 +56,7 @@ ROWS 1000;
 
 
 -- one-to-many
--- v3.6
+--v3.6
 CREATE FUNCTION pgr_ksp(
     TEXT,
     BIGINT,
@@ -84,7 +84,7 @@ COST 100
 ROWS 1000;
 
 -- many-to-one
--- v3.6
+--v3.6
 CREATE FUNCTION pgr_ksp(
     TEXT,
     ANYARRAY,
@@ -112,7 +112,7 @@ COST 100
 ROWS 1000;
 
 -- many-to-many
--- v3.6
+--v3.6
 CREATE FUNCTION pgr_ksp(
     TEXT,
     ANYARRAY,
@@ -140,7 +140,7 @@ COST 100
 ROWS 1000;
 
 -- combinations
--- v3.6
+--v3.6
 CREATE FUNCTION pgr_ksp(
     TEXT,
     TEXT,
