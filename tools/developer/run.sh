@@ -30,7 +30,7 @@ VERSION=$(grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt)
 echo "pgRouting VERSION ${VERSION}"
 
 # set up your postgres version, port and compiler (if more than one)
-PGVERSION="13"
+PGVERSION="15"
 PGPORT="5432"
 PGBIN="/usr/lib/postgresql/${PGVERSION}/bin"
 # When more than one compiler is installed
@@ -40,7 +40,7 @@ QUERIES_DIRS=$(ls docqueries -1)
 TAP_DIRS=$(ls pgtap -1)
 
 QUERIES_DIRS="dijkstra"
-TAP_DIRS=""
+TAP_DIRS="dijkstra"
 
 function set_cmake {
     # Using all defaults
@@ -57,6 +57,17 @@ function set_cmake {
 
     # with developers documentation
     #cmake  -DWITH_DOC=ON -DBUILD_DOXY=ON ..
+
+    # Building using clang
+    #CXX=clang++ CC=clang cmake -DPOSTGRESQL_BIN=${PGBIN} -DCMAKE_BUILD_TYPE=Debug ..
+
+    #cmake  -DPOSTGRESQL_BIN=${PGBIN} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON -DCMAKE_BUILD_TYPE=Debug -DES=ON -DPROJECT_DEBUG=ON ..
+
+    # building languages -DES=ON -DJA=ON -DZH_HANS=ON -DDE=ON -DKO=ON
+    #cmake  -DPOSTGRESQL_BIN=${PGBIN}  -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON -DES=ON  -DCMAKE_BUILD_TYPE=Debug ..
+
+    # check link in documentation
+    #cmake  -DPOSTGRESQL_BIN=${PGBIN} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DES=ON -DLINKCHECK=ON -DCMAKE_BUILD_TYPE=Release ..
 
     cmake  -DPOSTGRESQL_BIN=${PGBIN} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON  -DCMAKE_BUILD_TYPE=Debug ..
 }
@@ -100,32 +111,41 @@ function set_compiler {
 
 function build_doc {
     pushd build > /dev/null || exit 1
-    #rm -rf doc/*
+    #rm -rf doc/* ; rm -rf locale/*/*/*.mo
+    rm -rf doc/*
     make doc
+    #example on how to only build spanish html
+    #make html-es
+
+    # developers documentation
     #rm -rf doxygen/*
     make doxy
     popd > /dev/null || exit 1
 }
 
+function build {
+    pushd build > /dev/null || exit 1
+    set_cmake
+    #make  -j 16 VERBOSE=1
+    make -j 16
+    #make
+    sudo make install
+    popd > /dev/null || exit 1
+
+}
 
 function test_compile {
 
     set_compiler "${GCC}"
 
-
-    pushd build > /dev/null || exit 1
-    set_cmake
-    make -j 4
-    sudo make install
-    popd > /dev/null || exit 1
-
+    build
 
     echo --------------------------------------------
     echo  Execute tap_directories
     echo --------------------------------------------
     for d in ${TAP_DIRS}
     do
-        bash taptest.sh  "${d}" "-p ${PGPORT}"
+        time bash taptest.sh  "${d}" "-p ${PGPORT}"
     done
 
     echo --------------------------------------------
@@ -134,9 +154,12 @@ function test_compile {
     for d in ${QUERIES_DIRS}
     do
         #tools/testers/doc_queries_generator.pl  -alg "${d}" -documentation  -pgport "${PGPORT}"
+        #tools/testers/doc_queries_generator.pl  -alg "${d}" -debug1  -pgport "${PGPORT}"
         tools/testers/doc_queries_generator.pl  -alg "${d}" -pgport "${PGPORT}"
     done
 
+    build_doc
+    #exit 0
     tap_test
     action_tests
 }
