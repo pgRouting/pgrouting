@@ -2,20 +2,20 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_dijkstra &#8212; pgRouting Manual (3.6-dev)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/page_history.js"></script>
+    <title>pgr_dijkstra &#8212; pgRouting Manual (3.7-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
+    <script src="_static/documentation_options.js?v=d431d799"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=f9d5993e"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -45,7 +45,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.6.0-dev</b></span>
+        <span class="navbar-text pull-left"><b>v3.7.0-dev</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -115,7 +115,7 @@
 <li><a class="reference internal" href="#combinations-sql">Combinations SQL</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#result-columns">Result Columns</a></li>
+<li><a class="reference internal" href="#result-columns">Result columns</a></li>
 <li><a class="reference internal" href="#additional-examples">Additional Examples</a><ul>
 <li><a class="reference internal" href="#for-directed-graphs-with-cost-and-reverse-cost-columns">For <strong>directed</strong> graphs with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> columns</a><ul>
 <li><a class="reference internal" href="#path-from-6-to-10">1) Path from <span class="math notranslate nohighlight">\(6\)</span> to <span class="math notranslate nohighlight">\(10\)</span></a></li>
@@ -223,12 +223,12 @@
 <div class="line"><br /></div>
 </div>
 <section id="pgr-dijkstra">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code><a class="headerlink" href="#pgr-dijkstra" title="Permalink to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code><a class="headerlink" href="#pgr-dijkstra" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> — Shortest path(s) using Dijkstra algorithm.</p>
 <figure class="align-default" id="id13">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
-<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id13" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p class="rubric">Availability</p>
@@ -281,7 +281,7 @@
 </li>
 </ul>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p>Dijkstra’s algorithm, conceived by Dutch computer scientist Edsger Dijkstra in
 1956.
 It is a graph search algorithm that solves the shortest path problem for a graph
@@ -318,7 +318,7 @@ the ending vertices are ignored.</p></li>
 </ul>
 </section>
 <section id="signatures">
-<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
+<h2>Signatures<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
 <p class="rubric">Summary</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
@@ -330,7 +330,7 @@ the ending vertices are ignored.</p></li>
 <div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
-<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -341,20 +341,20 @@ the ending vertices are ignored.</p></li>
 the new result columns.</p>
 </div>
 <section id="one-to-one">
-<span id="index-0"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this heading">¶</a></h3>
+<span id="index-0"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Link to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
-<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(6\)</span> to vertex  <span class="math notranslate nohighlight">\(10\)</span> on a <strong>directed</strong> graph</p>
+<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(6\)</span> to vertex <span class="math notranslate nohighlight">\(10\)</span> on a <strong>directed</strong> graph</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_Dijkstra</span><span class="p">(</span>
@@ -374,14 +374,14 @@ the new result columns.</p>
 </div>
 </section>
 <section id="one-to-many">
-<span id="index-1"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this heading">¶</a></h3>
+<span id="index-1"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Link to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
-<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -412,14 +412,14 @@ the new result columns.</p>
 </div>
 </section>
 <section id="many-to-one">
-<span id="index-2"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this heading">¶</a></h3>
+<span id="index-2"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Link to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
-<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -451,14 +451,14 @@ graph</p>
 </div>
 </section>
 <section id="many-to-many">
-<span id="index-3"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this heading">¶</a></h3>
+<span id="index-3"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Link to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
-<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -498,14 +498,14 @@ graph</p>
 </div>
 </section>
 <section id="combinations">
-<span id="index-4"></span><h3>Combinations<a class="headerlink" href="#combinations" title="Permalink to this heading">¶</a></h3>
+<span id="index-4"></span><h3>Combinations<a class="headerlink" href="#combinations" title="Link to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
-<div class="line">RETURNS SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
+<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">OR EMPTY SET</div>
 </div>
 </div>
@@ -551,7 +551,7 @@ graph</p>
 </section>
 </section>
 <section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 19.4%" />
@@ -592,7 +592,7 @@ graph</p>
 </tbody>
 </table>
 <section id="optional-parameters">
-<h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this heading">¶</a></h3>
+<h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
@@ -616,9 +616,9 @@ graph</p>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 17.7%" />
@@ -677,7 +677,7 @@ it’s not part of the graph.</p></li>
 </dl>
 </section>
 <section id="combinations-sql">
-<h3>Combinations SQL<a class="headerlink" href="#combinations-sql" title="Permalink to this heading">¶</a></h3>
+<h3>Combinations SQL<a class="headerlink" href="#combinations-sql" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14.0%" />
@@ -710,7 +710,7 @@ it’s not part of the graph.</p></li>
 </section>
 </section>
 <section id="result-columns">
-<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
+<h2>Result columns<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
 <p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span>
 <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
@@ -777,7 +777,7 @@ path sequence.</p></td>
 </table>
 </section>
 <section id="additional-examples">
-<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Demonstration of repeated values are ignored, and result is sorted.</p>
@@ -940,15 +940,15 @@ path sequence.</p></td>
 </ul>
 </nav>
 <section id="for-directed-graphs-with-cost-and-reverse-cost-columns">
-<h3><a class="toc-backref" href="#id18" role="doc-backlink">For <strong>directed</strong> graphs with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> columns</a><a class="headerlink" href="#for-directed-graphs-with-cost-and-reverse-cost-columns" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id18" role="doc-backlink">For <strong>directed</strong> graphs with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> columns</a><a class="headerlink" href="#for-directed-graphs-with-cost-and-reverse-cost-columns" title="Link to this heading">¶</a></h3>
 <figure class="align-default" id="id14">
 <a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 475.5px; height: 433.0px;" /></a>
 <figcaption>
-<p><span class="caption-text">Directed graph with cost and reverse cost columns</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text">Directed graph with cost and reverse cost columns</span><a class="headerlink" href="#id14" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="path-from-6-to-10">
-<h4><a class="toc-backref" href="#id19" role="doc-backlink">1) Path from <span class="math notranslate nohighlight">\(6\)</span> to <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#path-from-6-to-10" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id19" role="doc-backlink">1) Path from <span class="math notranslate nohighlight">\(6\)</span> to <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#path-from-6-to-10" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span>
@@ -967,7 +967,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="path-from-6-to-7">
-<h4><a class="toc-backref" href="#id20" role="doc-backlink">2) Path from <span class="math notranslate nohighlight">\(6\)</span> to <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#path-from-6-to-7" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id20" role="doc-backlink">2) Path from <span class="math notranslate nohighlight">\(6\)</span> to <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#path-from-6-to-7" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span>
@@ -982,7 +982,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="path-from-12-to-10">
-<h4><a class="toc-backref" href="#id21" role="doc-backlink">3) Path from <span class="math notranslate nohighlight">\(12\)</span> to <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#path-from-12-to-10" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id21" role="doc-backlink">3) Path from <span class="math notranslate nohighlight">\(12\)</span> to <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#path-from-12-to-10" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span>
@@ -1000,7 +1000,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="path-from-12-to-7">
-<h4><a class="toc-backref" href="#id22" role="doc-backlink">4) Path from <span class="math notranslate nohighlight">\(12\)</span> to <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#path-from-12-to-7" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id22" role="doc-backlink">4) Path from <span class="math notranslate nohighlight">\(12\)</span> to <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#path-from-12-to-7" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">7</span>
@@ -1018,7 +1018,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="using-one-to-many-to-get-the-solution-of-examples-1-and-2">
-<h4>5) Using <a class="reference internal" href="#one-to-many">One to Many</a> to get the solution of examples 1 and 2<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-1-and-2" title="Permalink to this heading">¶</a></h4>
+<h4>5) Using <a class="reference internal" href="#one-to-many">One to Many</a> to get the solution of examples 1 and 2<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-1-and-2" title="Link to this heading">¶</a></h4>
 <p>Paths <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
@@ -1040,7 +1040,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="using-many-to-one-to-get-the-solution-of-examples-2-and-4">
-<h4>6) Using <a class="reference internal" href="#many-to-one">Many to One</a> to get the solution of examples 2 and 4<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-2-and-4" title="Permalink to this heading">¶</a></h4>
+<h4>6) Using <a class="reference internal" href="#many-to-one">Many to One</a> to get the solution of examples 2 and 4<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-2-and-4" title="Link to this heading">¶</a></h4>
 <p>Paths <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
@@ -1061,7 +1061,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="using-many-to-many-to-get-the-solution-of-examples-1-to-4">
-<h4>7) Using <a class="reference internal" href="#many-to-many">Many to Many</a> to get the solution of examples 1 to 4<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-1-to-4" title="Permalink to this heading">¶</a></h4>
+<h4>7) Using <a class="reference internal" href="#many-to-many">Many to Many</a> to get the solution of examples 1 to 4<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-1-to-4" title="Link to this heading">¶</a></h4>
 <p>Paths <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
@@ -1093,7 +1093,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="using-combinations-to-get-the-solution-of-examples-1-to-3">
-<h4>8) Using <a class="reference internal" href="#combinations">Combinations</a> to get the solution of examples 1 to 3<a class="headerlink" href="#using-combinations-to-get-the-solution-of-examples-1-to-3" title="Permalink to this heading">¶</a></h4>
+<h4>8) Using <a class="reference internal" href="#combinations">Combinations</a> to get the solution of examples 1 to 3<a class="headerlink" href="#using-combinations-to-get-the-solution-of-examples-1-to-3" title="Link to this heading">¶</a></h4>
 <p>Paths <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\cup\{12\}\rightarrow\{10\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
@@ -1121,15 +1121,15 @@ path sequence.</p></td>
 </section>
 </section>
 <section id="for-undirected-graphs-with-cost-and-reverse-cost-columns">
-<h3><a class="toc-backref" href="#id27" role="doc-backlink">For <strong>undirected</strong> graphs with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> columns</a><a class="headerlink" href="#for-undirected-graphs-with-cost-and-reverse-cost-columns" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id27" role="doc-backlink">For <strong>undirected</strong> graphs with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> columns</a><a class="headerlink" href="#for-undirected-graphs-with-cost-and-reverse-cost-columns" title="Link to this heading">¶</a></h3>
 <figure class="align-default" id="id15">
 <a class="reference internal image-reference" href="_images/Fig6-undirected.png"><img alt="_images/Fig6-undirected.png" src="_images/Fig6-undirected.png" style="width: 482.0px; height: 435.0px;" /></a>
 <figcaption>
-<p><span class="caption-text">Undirected graph with cost and reverse cost columns</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text">Undirected graph with cost and reverse cost columns</span><a class="headerlink" href="#id15" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="id1">
-<h4><a class="toc-backref" href="#id28" role="doc-backlink">9) Path from <span class="math notranslate nohighlight">\(6\)</span> to <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id28" role="doc-backlink">9) Path from <span class="math notranslate nohighlight">\(6\)</span> to <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>
@@ -1145,7 +1145,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="id2">
-<h4><a class="toc-backref" href="#id29" role="doc-backlink">10) Path from <span class="math notranslate nohighlight">\(6\)</span> to <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id29" role="doc-backlink">10) Path from <span class="math notranslate nohighlight">\(6\)</span> to <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id2" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span>
@@ -1161,7 +1161,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="id3">
-<h4><a class="toc-backref" href="#id30" role="doc-backlink">11) Path from <span class="math notranslate nohighlight">\(12\)</span> to <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id30" role="doc-backlink">11) Path from <span class="math notranslate nohighlight">\(12\)</span> to <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>
@@ -1178,7 +1178,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="id4">
-<h4><a class="toc-backref" href="#id31" role="doc-backlink">12) Path from <span class="math notranslate nohighlight">\(12\)</span> to <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id31" role="doc-backlink">12) Path from <span class="math notranslate nohighlight">\(12\)</span> to <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span>
@@ -1195,7 +1195,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="using-one-to-many-to-get-the-solution-of-examples-9-and-10">
-<h4>13) Using <a class="reference internal" href="#one-to-many">One to Many</a> to get the solution of examples 9 and 10<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-9-and-10" title="Permalink to this heading">¶</a></h4>
+<h4>13) Using <a class="reference internal" href="#one-to-many">One to Many</a> to get the solution of examples 9 and 10<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-9-and-10" title="Link to this heading">¶</a></h4>
 <p>Paths <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
@@ -1214,7 +1214,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="using-many-to-one-to-get-the-solution-of-examples-10-and-12">
-<h4>14) Using <a class="reference internal" href="#many-to-one">Many to One</a> to get the solution of examples 10 and 12<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-10-and-12" title="Permalink to this heading">¶</a></h4>
+<h4>14) Using <a class="reference internal" href="#many-to-one">Many to One</a> to get the solution of examples 10 and 12<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-10-and-12" title="Link to this heading">¶</a></h4>
 <p>Paths <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
@@ -1234,7 +1234,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="using-many-to-many-to-get-the-solution-of-examples-9-to-12">
-<h4>15) Using <a class="reference internal" href="#many-to-many">Many to Many</a> to get the solution of examples 9 to 12<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-9-to-12" title="Permalink to this heading">¶</a></h4>
+<h4>15) Using <a class="reference internal" href="#many-to-many">Many to Many</a> to get the solution of examples 9 to 12<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-9-to-12" title="Link to this heading">¶</a></h4>
 <p>Paths <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
@@ -1259,7 +1259,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="using-combinations-to-get-the-solution-of-examples-9-to-11">
-<h4>16) Using <a class="reference internal" href="#combinations">Combinations</a> to get the solution of examples 9 to 11<a class="headerlink" href="#using-combinations-to-get-the-solution-of-examples-9-to-11" title="Permalink to this heading">¶</a></h4>
+<h4>16) Using <a class="reference internal" href="#combinations">Combinations</a> to get the solution of examples 9 to 11<a class="headerlink" href="#using-combinations-to-get-the-solution-of-examples-9-to-11" title="Link to this heading">¶</a></h4>
 <p>Paths <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\cup\{12\}\rightarrow\{10\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
@@ -1282,15 +1282,15 @@ path sequence.</p></td>
 </section>
 </section>
 <section id="for-directed-graphs-only-with-cost-column">
-<h3><a class="toc-backref" href="#id36" role="doc-backlink">For <strong>directed</strong> graphs only with <code class="docutils literal notranslate"><span class="pre">cost</span></code> column</a><a class="headerlink" href="#for-directed-graphs-only-with-cost-column" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id36" role="doc-backlink">For <strong>directed</strong> graphs only with <code class="docutils literal notranslate"><span class="pre">cost</span></code> column</a><a class="headerlink" href="#for-directed-graphs-only-with-cost-column" title="Link to this heading">¶</a></h3>
 <figure class="align-default" id="id16">
 <a class="reference internal image-reference" href="_images/Fig2-cost.png"><img alt="_images/Fig2-cost.png" src="_images/Fig2-cost.png" style="width: 484.5px; height: 434.0px;" /></a>
 <figcaption>
-<p><span class="caption-text">Directed graph only with cost column</span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text">Directed graph only with cost column</span><a class="headerlink" href="#id16" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="id5">
-<h4><a class="toc-backref" href="#id37" role="doc-backlink">17) Path from <span class="math notranslate nohighlight">\(6\)</span> to <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id37" role="doc-backlink">17) Path from <span class="math notranslate nohighlight">\(6\)</span> to <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span>
@@ -1303,7 +1303,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="id6">
-<h4><a class="toc-backref" href="#id38" role="doc-backlink">18) Path from <span class="math notranslate nohighlight">\(6\)</span> to <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id38" role="doc-backlink">18) Path from <span class="math notranslate nohighlight">\(6\)</span> to <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span>
@@ -1318,7 +1318,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="id7">
-<h4><a class="toc-backref" href="#id39" role="doc-backlink">19) Path from <span class="math notranslate nohighlight">\(12\)</span> to <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id39" role="doc-backlink">19) Path from <span class="math notranslate nohighlight">\(12\)</span> to <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id7" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span>
@@ -1331,7 +1331,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="id8">
-<h4><a class="toc-backref" href="#id40" role="doc-backlink">20) Path from <span class="math notranslate nohighlight">\(12\)</span> to <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id8" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id40" role="doc-backlink">20) Path from <span class="math notranslate nohighlight">\(12\)</span> to <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id8" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">7</span>
@@ -1344,7 +1344,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="using-one-to-many-to-get-the-solution-of-examples-17-and-18">
-<h4>21) Using <a class="reference internal" href="#one-to-many">One to Many</a> to get the solution of examples 17 and 18<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-17-and-18" title="Permalink to this heading">¶</a></h4>
+<h4>21) Using <a class="reference internal" href="#one-to-many">One to Many</a> to get the solution of examples 17 and 18<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-17-and-18" title="Link to this heading">¶</a></h4>
 <p>Paths <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
@@ -1360,7 +1360,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="using-many-to-one-to-get-the-solution-of-examples-18-and-20">
-<h4>22) Using <a class="reference internal" href="#many-to-one">Many to One</a> to get the solution of examples 18 and 20<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-18-and-20" title="Permalink to this heading">¶</a></h4>
+<h4>22) Using <a class="reference internal" href="#many-to-one">Many to One</a> to get the solution of examples 18 and 20<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-18-and-20" title="Link to this heading">¶</a></h4>
 <p>Paths <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
@@ -1376,7 +1376,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="using-many-to-many-to-get-the-solution-of-examples-17-to-20">
-<h4>23) Using <a class="reference internal" href="#many-to-many">Many to Many</a> to get the solution of examples 17 to 20<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-17-to-20" title="Permalink to this heading">¶</a></h4>
+<h4>23) Using <a class="reference internal" href="#many-to-many">Many to Many</a> to get the solution of examples 17 to 20<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-17-to-20" title="Link to this heading">¶</a></h4>
 <p>Paths <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
@@ -1392,7 +1392,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="using-combinations-to-get-the-solution-of-examples-17-to-19">
-<h4>24) Using <a class="reference internal" href="#combinations">Combinations</a> to get the solution of examples 17 to 19<a class="headerlink" href="#using-combinations-to-get-the-solution-of-examples-17-to-19" title="Permalink to this heading">¶</a></h4>
+<h4>24) Using <a class="reference internal" href="#combinations">Combinations</a> to get the solution of examples 17 to 19<a class="headerlink" href="#using-combinations-to-get-the-solution-of-examples-17-to-19" title="Link to this heading">¶</a></h4>
 <p>Paths <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\cup\{12\}\rightarrow\{10\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
@@ -1409,15 +1409,15 @@ path sequence.</p></td>
 </section>
 </section>
 <section id="for-undirected-graphs-only-with-cost-column">
-<h3><a class="toc-backref" href="#id45" role="doc-backlink">For <strong>undirected</strong> graphs only with <code class="docutils literal notranslate"><span class="pre">cost</span></code> column</a><a class="headerlink" href="#for-undirected-graphs-only-with-cost-column" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id45" role="doc-backlink">For <strong>undirected</strong> graphs only with <code class="docutils literal notranslate"><span class="pre">cost</span></code> column</a><a class="headerlink" href="#for-undirected-graphs-only-with-cost-column" title="Link to this heading">¶</a></h3>
 <figure class="align-default" id="id17">
 <a class="reference internal image-reference" href="_images/Fig4-costUndirected.png"><img alt="_images/Fig4-costUndirected.png" src="_images/Fig4-costUndirected.png" style="width: 487.5px; height: 438.0px;" /></a>
 <figcaption>
-<p><span class="caption-text">Undirected graph only with cost column</span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text">Undirected graph only with cost column</span><a class="headerlink" href="#id17" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="id9">
-<h4><a class="toc-backref" href="#id46" role="doc-backlink">25) Path from <span class="math notranslate nohighlight">\(6\)</span> to <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id9" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id46" role="doc-backlink">25) Path from <span class="math notranslate nohighlight">\(6\)</span> to <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id9" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>
@@ -1435,7 +1435,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="id10">
-<h4><a class="toc-backref" href="#id47" role="doc-backlink">26) Path from <span class="math notranslate nohighlight">\(6\)</span> to <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id10" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id47" role="doc-backlink">26) Path from <span class="math notranslate nohighlight">\(6\)</span> to <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id10" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span>
@@ -1451,7 +1451,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="id11">
-<h4><a class="toc-backref" href="#id48" role="doc-backlink">27) Path from <span class="math notranslate nohighlight">\(12\)</span> to <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id11" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id48" role="doc-backlink">27) Path from <span class="math notranslate nohighlight">\(12\)</span> to <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id11" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>
@@ -1468,7 +1468,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="id12">
-<h4><a class="toc-backref" href="#id49" role="doc-backlink">28) Path from <span class="math notranslate nohighlight">\(12\)</span> to <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id12" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id49" role="doc-backlink">28) Path from <span class="math notranslate nohighlight">\(12\)</span> to <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id12" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span>
@@ -1485,7 +1485,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="using-one-to-many-to-get-the-solution-of-examples-25-and-26">
-<h4>29) Using <a class="reference internal" href="#one-to-many">One to Many</a> to get the solution of examples 25 and 26<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-25-and-26" title="Permalink to this heading">¶</a></h4>
+<h4>29) Using <a class="reference internal" href="#one-to-many">One to Many</a> to get the solution of examples 25 and 26<a class="headerlink" href="#using-one-to-many-to-get-the-solution-of-examples-25-and-26" title="Link to this heading">¶</a></h4>
 <p>Paths <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
@@ -1506,7 +1506,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="using-many-to-one-to-get-the-solution-of-examples-26-and-28">
-<h4>30) Using <a class="reference internal" href="#many-to-one">Many to One</a> to get the solution of examples 26 and 28<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-26-and-28" title="Permalink to this heading">¶</a></h4>
+<h4>30) Using <a class="reference internal" href="#many-to-one">Many to One</a> to get the solution of examples 26 and 28<a class="headerlink" href="#using-many-to-one-to-get-the-solution-of-examples-26-and-28" title="Link to this heading">¶</a></h4>
 <p>Paths <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
@@ -1526,7 +1526,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="using-many-to-many-to-get-the-solution-of-examples-25-to-28">
-<h4>31) Using <a class="reference internal" href="#many-to-many">Many to Many</a> to get the solution of examples 25 to 28<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-25-to-28" title="Permalink to this heading">¶</a></h4>
+<h4>31) Using <a class="reference internal" href="#many-to-many">Many to Many</a> to get the solution of examples 25 to 28<a class="headerlink" href="#using-many-to-many-to-get-the-solution-of-examples-25-to-28" title="Link to this heading">¶</a></h4>
 <p>Paths <span class="math notranslate nohighlight">\(\{6, 12\}\rightarrow\{10, 7\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
@@ -1553,7 +1553,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="using-combinations-to-get-the-solution-of-examples-25-to-27">
-<h4>32) Using <a class="reference internal" href="#combinations">Combinations</a> to get the solution of examples 25 to 27<a class="headerlink" href="#using-combinations-to-get-the-solution-of-examples-25-to-27" title="Permalink to this heading">¶</a></h4>
+<h4>32) Using <a class="reference internal" href="#combinations">Combinations</a> to get the solution of examples 25 to 27<a class="headerlink" href="#using-combinations-to-get-the-solution-of-examples-25-to-27" title="Link to this heading">¶</a></h4>
 <p>Paths <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10, 7\}\cup\{12\}\rightarrow\{10\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
@@ -1578,10 +1578,10 @@ path sequence.</p></td>
 </section>
 </section>
 <section id="equvalences-between-signatures">
-<h3><a class="toc-backref" href="#id54" role="doc-backlink">Equvalences between signatures</a><a class="headerlink" href="#equvalences-between-signatures" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id54" role="doc-backlink">Equvalences between signatures</a><a class="headerlink" href="#equvalences-between-signatures" title="Link to this heading">¶</a></h3>
 <p>The following examples find the path for <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10\}\)</span></p>
 <section id="using-one-to-one">
-<h4>33) Using <a class="reference internal" href="#one-to-one">One to One</a><a class="headerlink" href="#using-one-to-one" title="Permalink to this heading">¶</a></h4>
+<h4>33) Using <a class="reference internal" href="#one-to-one">One to One</a><a class="headerlink" href="#using-one-to-one" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span>
@@ -1600,7 +1600,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="using-one-to-many">
-<h4>34) Using <a class="reference internal" href="#one-to-many">One to Many</a><a class="headerlink" href="#using-one-to-many" title="Permalink to this heading">¶</a></h4>
+<h4>34) Using <a class="reference internal" href="#one-to-many">One to Many</a><a class="headerlink" href="#using-one-to-many" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
@@ -1619,7 +1619,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="using-many-to-one">
-<h4>35) Using <a class="reference internal" href="#many-to-one">Many to One</a><a class="headerlink" href="#using-many-to-one" title="Permalink to this heading">¶</a></h4>
+<h4>35) Using <a class="reference internal" href="#many-to-one">Many to One</a><a class="headerlink" href="#using-many-to-one" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="mi">10</span>
@@ -1638,7 +1638,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="using-many-to-many">
-<h4>36) Using <a class="reference internal" href="#many-to-many">Many to Many</a><a class="headerlink" href="#using-many-to-many" title="Permalink to this heading">¶</a></h4>
+<h4>36) Using <a class="reference internal" href="#many-to-many">Many to Many</a><a class="headerlink" href="#using-many-to-many" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
@@ -1657,7 +1657,7 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="using-combinations">
-<h4>37) Using <a class="reference internal" href="#combinations">Combinations</a><a class="headerlink" href="#using-combinations" title="Permalink to this heading">¶</a></h4>
+<h4>37) Using <a class="reference internal" href="#combinations">Combinations</a><a class="headerlink" href="#using-combinations" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT * FROM (VALUES(6, 10)) AS combinations (source, target)&#39;</span>
@@ -1678,7 +1678,7 @@ path sequence.</p></td>
 </section>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a></p></li>
 <li><p>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p></li>
@@ -1703,9 +1703,9 @@ path sequence.</p></td>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.6.0-dev.<br/>
-      Last updated on Sep 04, 2023.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 6.1.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.7.0-dev.<br/>
+      Last updated on Jan 03, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
     </p>
   </div>
 </footer>
