@@ -63,21 +63,13 @@ Contributors
 This Release Contributors
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Individuals in this release (in alphabetical order)
+Individuals in this release v3.7.x (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Aniket Agarwal,
-Aryan Gupta,
-Ashish Kumar,
-Cayetano Benavent,
-Daniel Kastl,
-Nitish Chauhan,
-Rajat Shinde,
+(Alphabetical order)
+
 Regina Obe,
-Shobhit Chaurasia,
-Swapnil Joshi,
-Virginia Vergara,
-Yige Huang
+Vicky Vergara
 
 
 And all the people that give us a little of their time making comments, finding
@@ -91,7 +83,8 @@ Corporate Sponsors in this release (in alphabetical order)
 These are corporate entities that have contributed developer time, hosting, or
 direct monetary funding to the pgRouting project:
 
-- `Georepublic <https://georepublic.info/en/>`__
+- `OSGeo <https://www.osgeo.org>`__
+- `OSGeo UK <https://uk.osgeo.org>`__
 - `Google Summer of Code <https://summerofcode.withgoogle.com>`__
 - `Paragon Corporation <https://www.paragoncorporation.com/>`__
 
@@ -171,6 +164,8 @@ direct monetary funding to the pgRouting project:
 - iMaptools
 - Leopark
 - Orkney
+- OSGeo
+- OSGeo UK
 - Paragon Corporation
 - Versaterm Inc.
 
@@ -184,5 +179,4 @@ More Information
   https://www.postgresql.org.
 * PostGIS extension at the PostGIS project web site https://postgis.net.
 * Boost C++ source libraries at https://www.boost.org.
-* The Migration guide from 2.6 can be found at
-  https://github.com/pgRouting/pgrouting/wiki/Migration-Guide.
+* :doc:`migration`
