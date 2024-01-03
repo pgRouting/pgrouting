@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-30 16:20-0600\n"
+"POT-Creation-Date: 2024-01-03 19:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.12.1\n"
+"Generated-By: Babel 2.14.0\n"
 
 msgid "BFS - Category"
 msgstr ""
@@ -7178,13 +7178,13 @@ msgstr ""
 msgid "This Release Contributors"
 msgstr ""
 
-msgid "Individuals in this release (in alphabetical order)"
+msgid "Individuals in this release v3.7.x (in alphabetical order)"
 msgstr ""
 
-msgid ""
-"Aniket Agarwal, Aryan Gupta, Ashish Kumar, Cayetano Benavent, Daniel "
-"Kastl, Nitish Chauhan, Rajat Shinde, Regina Obe, Shobhit Chaurasia, "
-"Swapnil Joshi, Virginia Vergara, Yige Huang"
+msgid "(Alphabetical order)"
+msgstr ""
+
+msgid "Regina Obe, Vicky Vergara"
 msgstr ""
 
 msgid ""
@@ -7201,7 +7201,10 @@ msgid ""
 "hosting, or direct monetary funding to the pgRouting project:"
 msgstr ""
 
-msgid "`Georepublic <https://georepublic.info/en/>`__"
+msgid "`OSGeo <https://www.osgeo.org>`__"
+msgstr ""
+
+msgid "`OSGeo UK <https://uk.osgeo.org>`__"
 msgstr ""
 
 msgid "`Google Summer of Code <https://summerofcode.withgoogle.com>`__"
@@ -7256,6 +7259,12 @@ msgstr ""
 msgid "Orkney"
 msgstr ""
 
+msgid "OSGeo"
+msgstr ""
+
+msgid "OSGeo UK"
+msgstr ""
+
 msgid "Paragon Corporation"
 msgstr ""
 
@@ -7281,9 +7290,7 @@ msgstr ""
 msgid "Boost C++ source libraries at https://www.boost.org."
 msgstr ""
 
-msgid ""
-"The Migration guide from 2.6 can be found at "
-"https://github.com/pgRouting/pgrouting/wiki/Migration-Guide."
+msgid ":doc:`migration`"
 msgstr ""
 
 msgid "pgr_KSP"
@@ -12783,9 +12790,6 @@ msgid ""
 msgstr ""
 
 msgid "Identifier of the edge in the original query."
-msgstr ""
-
-msgid ":doc:`migration`"
 msgstr ""
 
 msgid "https://www.boost.org/libs/graph/doc/maximum_matching.html"
