@@ -389,7 +389,8 @@ std::deque<pgrouting::Path> drivingDistance_with_equicost(
         if (!(graph.has_vertex(root))) continue;
 
         std::iota(predecessors.begin(), predecessors.end(), 0);
-        bg_detail::dijkstra_1_to_distance_no_init<B_G, V, E, T_E>(graph.graph, graph.get_V(root), predecessors, distances, distance);
+        bg_detail::dijkstra_1_to_distance_no_init<B_G, V, E, T_E>(graph.graph, graph.get_V(root), predecessors,
+                distances, distance);
 
         pred[i] = predecessors;
         depths[i] = detail::get_depth(graph, graph.get_V(root), distances, predecessors, distance, details);
