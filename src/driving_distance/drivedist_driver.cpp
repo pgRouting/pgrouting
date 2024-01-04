@@ -55,6 +55,7 @@ pgr_do_drivingdist(
     using pgrouting::pgr_alloc;
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
+    using pgrouting::algorithm::drivingDistance;
 
     std::ostringstream log;
     std::ostringstream err;
@@ -72,18 +73,18 @@ pgr_do_drivingdist(
         graphType gType = directedFlag? DIRECTED: UNDIRECTED;
 
         std::deque<Path> paths;
-        std::vector<int64_t> start_vertices(start_vertex, start_vertex + s_len);
+        std::set<int64_t> start_vertices(start_vertex, start_vertex + s_len);
 
         std::vector<std::map<int64_t, int64_t>> depths;
 
         if (directedFlag) {
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
-            paths = pgr_drivingdistance(digraph, start_vertices, distance, equiCostFlag, depths, true);
+            paths = drivingDistance(digraph, start_vertices, distance, equiCostFlag, depths, true);
         } else {
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
-            paths = pgr_drivingdistance(undigraph, start_vertices, distance, equiCostFlag, depths, true);
+            paths = drivingDistance(undigraph, start_vertices, distance, equiCostFlag, depths, true);
         }
 
         size_t count(count_tuples(paths));
