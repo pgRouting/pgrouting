@@ -78,7 +78,7 @@ message(STATUS "PROJECT_DOC_TARGETS = ${PROJECT_DOC_TARGETS}")
 # Available Languages
 # English is always built
 #---------------------------------------------
-set(PROJECT_SUPPORTED_LANGUAGES  "de"   "es"  "fr"  "it"  "ja"  "ru")
+set(PROJECT_SUPPORTED_LANGUAGES  "de"   "es"  "fr"  "it"  "ja"  "zh_Hans")
 set(PROJECT_ENGLISH "en")
 
 #---------------------------------------------
