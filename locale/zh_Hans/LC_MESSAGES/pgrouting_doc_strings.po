@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the pgRouting package.
 # Regina Obe <regina@arrival3d.com>, 2023.
 # Wangdapeng <wangdapeng20191008@gmail.com>, 2023.
-# Zuochenwei <zuochenwei5@gmail.com>, 2023.
+# Zuochenwei <zuochenwei5@gmail.com>, 2023, 2024.
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023, 2024.
 # Wang Dapeng <wangdapeng20191008@gmail.com>, 2023.
 msgid ""
@@ -12,7 +12,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-04 04:09+0000\n"
 "PO-Revision-Date: 2024-01-05 02:56+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
+"Last-Translator: Zuochenwei <zuochenwei5@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -7162,11 +7162,10 @@ msgstr "在数据库中启用 PostGIS 和 pgRouting 后检查它们的版本。"
 msgid "Upgrading the database"
 msgstr "升级数据库"
 
-#, fuzzy
 msgid ""
 "To upgrade pgRouting in the database to version 3.7.0 use the following "
 "command:"
-msgstr "要将数据库中的 pgRouting 升级到版本 3.5.1，请使用以下命令："
+msgstr "要将数据库中的 pgRouting 升级到版本3.7.0，请使用以下命令："
 
 msgid ""
 "More information can be found in https://www.postgresql.org/docs/current/sql-"
@@ -7521,16 +7520,15 @@ msgstr "贡献者"
 msgid "This Release Contributors"
 msgstr "此版本贡献者"
 
-#, fuzzy
 msgid "Individuals in this release v3.7.x (in alphabetical order)"
-msgstr "本版本的个人贡献者 (按字母顺序)"
+msgstr "在此版本 v3.7.x 中的个人贡献者（按字母顺序排列）"
 
 #, fuzzy
 msgid "(Alphabetical order)"
 msgstr "个人贡献者（按字母排序）"
 
 msgid "Regina Obe, Vicky Vergara"
-msgstr ""
+msgstr "Regina Obe, Vicky Vergara"
 
 msgid ""
 "And all the people that give us a little of their time making comments, "
@@ -7622,7 +7620,7 @@ msgid "OSGeo"
 msgstr ""
 
 msgid "OSGeo UK"
-msgstr ""
+msgstr "OSGeo UK"
 
 msgid "Paragon Corporation"
 msgstr "Paragon Corporation"
