@@ -4,15 +4,15 @@
 # Regina Obe <regina@arrival3d.com>, 2023.
 # Wangdapeng <wangdapeng20191008@gmail.com>, 2023.
 # Zuochenwei <zuochenwei5@gmail.com>, 2023.
-# Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023.
+# Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023, 2024.
 # Wang Dapeng <wangdapeng20191008@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-04 04:09+0000\n"
-"PO-Revision-Date: 2023-10-27 06:23+0000\n"
-"Last-Translator: Zuochenwei <zuochenwei5@gmail.com>\n"
+"PO-Revision-Date: 2024-01-05 02:56+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.0\n"
+"X-Generator: Weblate 5.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS-类别"
@@ -74,7 +74,7 @@ msgid "``TEXT``"
 msgstr "``TEXT``"
 
 msgid "`Edges SQL`_ as described below."
-msgstr "`Edges SQL`_如下所述。"
+msgstr "`Edges SQL`_ 如下所述。"
 
 msgid "**root vid**"
 msgstr "**root vid**"
@@ -458,7 +458,7 @@ msgstr ""
 "法在同一顶点上传递两次。"
 
 msgid "`Edges SQL`_ query as described."
-msgstr "`Edges SQL`_按描述查询。"
+msgstr "`Edges SQL`_ 按描述查询。"
 
 msgid "`Restrictions SQL`_"
 msgstr "`Restrictions SQL`_"
@@ -5344,7 +5344,7 @@ msgid ":doc:`pgr_dijkstra`:"
 msgstr ":doc:`pgr_dijkstra`:"
 
 msgid "Autodetects if ``reverse_cost`` column is in the edges SQL."
-msgstr "自动检测``reverse_cost``列是否在边SQL中。"
+msgstr "自动检测 ``reverse_cost`` 列是否在边SQL中。"
 
 msgid "Accepts ``ANY-INTEGER`` on integral types"
 msgstr "接受整数类型``ANY-INTEGER``"
