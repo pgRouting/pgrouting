@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-04 04:09+0000\n"
-"PO-Revision-Date: 2024-01-05 02:56+0000\n"
+"PO-Revision-Date: 2024-01-05 02:58+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -16207,30 +16207,25 @@ msgstr ""
 "pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7."
 "0%22>`_ 的 Git 关闭里程碑\"。"
 
-#, fuzzy
 msgid "Code enhancement"
-msgstr "C/C++ 代码增强"
+msgstr "代码改进"
 
-#, fuzzy
 msgid ""
 "`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__  Driving "
 "distance cleanup"
-msgstr ""
-"`#2505 <https://github.com/pgRouting/pgrouting/pull/2505>`__ 使用命名空间。"
+msgstr "`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ 行车距离清理"
 
-#, fuzzy
 msgid "pgRouting 3.6.1 Release Notes"
-msgstr "pgRouting 3.6.0 发布说"
+msgstr "pgRouting 3.6.1 发布说明"
 
-#, fuzzy
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.6.1 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.1%22>`_"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请访问 `Git 3.6.0 里程碑的已关闭问题和"
-"拉取请求 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.0%22>`_"
+"要查看此版本关闭的所有问题和拉取请求，请参阅 3.6.1 <https://github.com/"
+"pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6."
+"1%22>``_ 的 \"Git 关闭里程碑\"。"
 
 #, fuzzy
 msgid ""
