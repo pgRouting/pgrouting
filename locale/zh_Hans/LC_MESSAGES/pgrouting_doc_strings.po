@@ -6,13 +6,14 @@
 # Zuochenwei <zuochenwei5@gmail.com>, 2023, 2024.
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023, 2024.
 # Wang Dapeng <wangdapeng20191008@gmail.com>, 2023.
+# DeepL <noreply-mt-deepl@weblate.org>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-04 04:09+0000\n"
 "PO-Revision-Date: 2024-01-05 02:56+0000\n"
-"Last-Translator: Zuochenwei <zuochenwei5@gmail.com>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -7523,9 +7524,8 @@ msgstr "此版本贡献者"
 msgid "Individuals in this release v3.7.x (in alphabetical order)"
 msgstr "在此版本 v3.7.x 中的个人贡献者（按字母顺序排列）"
 
-#, fuzzy
 msgid "(Alphabetical order)"
-msgstr "个人贡献者（按字母排序）"
+msgstr "(按字母顺序排列）"
 
 msgid "Regina Obe, Vicky Vergara"
 msgstr "Regina Obe, Vicky Vergara"
@@ -7548,10 +7548,10 @@ msgstr ""
 "这些是为 pgRouting 项目贡献了开发人员时间、托管或直接货币资金的公司实体："
 
 msgid "`OSGeo <https://www.osgeo.org>`__"
-msgstr ""
+msgstr "`OSGeo <https://www.osgeo.org>`__"
 
 msgid "`OSGeo UK <https://uk.osgeo.org>`__"
-msgstr ""
+msgstr "`OSGeo UK <https://uk.osgeo.org>`__"
 
 msgid "`Google Summer of Code <https://summerofcode.withgoogle.com>`__"
 msgstr "`Google Summer of Code <https://summerofcode.withgoogle.com>`__"
@@ -7617,7 +7617,7 @@ msgid "Orkney"
 msgstr "Orkney"
 
 msgid "OSGeo"
-msgstr ""
+msgstr "OSGeo"
 
 msgid "OSGeo UK"
 msgstr "OSGeo UK"
@@ -16195,19 +16195,17 @@ msgstr ""
 "要查看完整的更改列表，请检查 Github 上的 `Git提交列表 <https://github.com/"
 "pgRouting/pgrouting/commits>`_。"
 
-#, fuzzy
 msgid "pgRouting 3.7.0 Release Notes"
-msgstr "pgRouting 3.6.0 发布说"
+msgstr "pgRouting 3.7.0 发布说明"
 
-#, fuzzy
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.7.0 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`_"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请访问 `Git 3.6.0 里程碑的已关闭问题和"
-"拉取请求 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.0%22>`_"
+"要查看此版本关闭的所有问题和拉取请求，请参阅 \"3.7.0 <https://github.com/"
+"pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7."
+"0%22>`_ 的 Git 关闭里程碑\"。"
 
 #, fuzzy
 msgid "Code enhancement"
