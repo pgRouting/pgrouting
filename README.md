@@ -1,6 +1,9 @@
 # pgRouting - Routing on PostgreSQL
 
-[![Join the chat at https://gitter.im/pgRouting/pgrouting](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/pgRouting/pgrouting?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at
+https://gitter.im/pgRouting/pgrouting](https://badges.gitter.im/Join%20Chat.svg)](https://app.gitter.im/#/room/#pgrouting:osgeo.org)
+[Join discourse](https://discourse.osgeo.org/c/pgrouting/15)
+
 
 ## Branches
 
@@ -9,6 +12,9 @@
 
 For the complete list of releases go to:
 https://github.com/pgRouting/pgrouting/releases
+
+For the release notes go to: https://docs.pgrouting.org/latest/en/release_notes.html
+
 
 ## LINKS
 
@@ -27,44 +33,32 @@ pgRouting extends the PostGIS/PostgreSQL geospatial database to provide geospati
 This library contains the following features:
 
 * All Pairs Shortest Path Algorithms
-
 * A-star algorithm
-
 * Bi-directional algorithms
-
 * A variety of applications of Dijkstra algorithms
-
   * Cost functions
   * With points
-
 * Driving Distance
   * With points
-
 * Yen's algorithm
-
 * Traveling Sales Person (TSP)
 
 and many more.
 
-The latest documentation: http://docs.pgrouting.org/latest
+The latest documentation: https://docs.pgrouting.org/latest
 
 ## REQUIREMENTS
 
 ### Building requirements
 
 * perl
-
 * C and C++ compilers
   * Compiling with Boost 1.56 up to Boost 1.74 requires C++ Compiler with C++03 or C++11 standard support
   * Compiling with Boost 1.75 requires C++ Compiler with C++14 standard support
-
-* Postgresql = Supported version by PostgreSQL
-
+* Postgresql = Supported [version](https://www.postgresql.org/support/versioning/) by PostgreSQL
 * The Boost Graph Library (BGL) >= 1.56
-
 * CMake >= 3.2
-
-* Sphinx >= 4.0.0
+* 7.0 > Sphinx >= 4.0.0
 
 ### User's requirements
 
