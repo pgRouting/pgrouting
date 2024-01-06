@@ -20,6 +20,7 @@ name: Boost supported versions
 #
 # boost::graph
 # - 1.84 is failing its own tests (Jul 2022)
+# - 1.83 transitive closure & stoer wagner changed on 83 (Jul 2022)
 # - 1.80 changed on 1.80 (Aug 2022)
 # - 1.75 requires C++14 (Dec 2020)
 # - 1.68 changed on 1.68 (Aug 2018)
@@ -67,7 +68,7 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-          boost_minor: [56, 68, 75, 76, 77, 78, 79, 80, 84]
+          boost_minor: [56, 68, 75, 76, 77, 78, 79, 80, 83, 84]
 
     steps:
       - uses: actions/checkout@v4
