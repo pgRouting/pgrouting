@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-04 04:09+0000\n"
+"POT-Creation-Date: 2024-01-06 18:14+0000\n"
 "PO-Revision-Date: 2022-09-29 19:13+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/"
@@ -3938,11 +3938,6 @@ msgstr ""
 msgid "Identifier of the ``edge`` used to arrive from ``pred`` to ``node``."
 msgstr "start_vid から end_vid まで行くのにかかるコスト"
 
-msgid ""
-"Column ``pred`` only applies to :doc:`pgr_drivingDistance` and :doc:"
-"`pgr_withPointsDD`."
-msgstr ""
-
 msgid "Experimental Functions"
 msgstr ""
 
@@ -4456,6 +4451,32 @@ msgid ":doc:`experimental`"
 msgstr ""
 
 msgid ":doc:`release_notes`"
+msgstr ""
+
+msgid "Current release"
+msgstr ""
+
+msgid "_"
+msgstr ""
+
+msgid "Code enhancement"
+msgstr ""
+
+msgid ""
+"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__  Driving "
+"distance cleanup"
+msgstr ""
+
+msgid "Others"
+msgstr ""
+
+msgid "Adjust NEWS generator"
+msgstr ""
+
+msgid "Name change to `NEWS.md` for better visualization on GitHub"
+msgstr ""
+
+msgid "All releases"
 msgstr ""
 
 msgid "Kruskal - Family of functions"
@@ -15287,21 +15308,28 @@ msgid ""
 "github.com/pgRouting/pgrouting/commits>`_ on Github."
 msgstr ""
 
+msgid "Mayors"
+msgstr ""
+
+msgid "pgRouting 3"
+msgstr ""
+
+msgid "Minors 3.x"
+msgstr ""
+
+msgid "pgRouting 3.7"
+msgstr ""
+
 msgid "pgRouting 3.7.0 Release Notes"
 msgstr ""
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.7.0 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`_"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
 msgstr ""
 
-msgid "Code enhancement"
-msgstr ""
-
-msgid ""
-"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__  Driving "
-"distance cleanup"
+msgid "pgRouting 3.6"
 msgstr ""
 
 msgid "pgRouting 3.6.1 Release Notes"
@@ -15439,6 +15467,9 @@ msgid ""
 "On new internal function: do not use named parameters and default parameters."
 msgstr ""
 
+msgid "pgRouting 3.5"
+msgstr ""
+
 msgid "pgRouting 3.5.1 Release Notes"
 msgstr ""
 
@@ -15529,6 +15560,9 @@ msgid "``pgr_dijkstra`` (`One to Many`) added ``end_vid`` column."
 msgstr ""
 
 msgid "``pgr_dijkstra`` (`Many to One`) added ``start_vid`` column."
+msgstr ""
+
+msgid "pgRouting 3.4"
 msgstr ""
 
 msgid "pgRouting 3.4.2 Release Notes"
@@ -15678,6 +15712,9 @@ msgid "``pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text)``"
 msgstr ""
 
 msgid "``pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)``"
+msgstr ""
+
+msgid "pgRouting 3.3"
 msgstr ""
 
 msgid "pgRouting 3.3.5 Release Notes"
@@ -15872,6 +15909,9 @@ msgstr ""
 msgid "pgr_depthFirstSearch(Single vertex)"
 msgstr ""
 
+msgid "pgRouting 3.2"
+msgstr ""
+
 msgid "pgRouting 3.2.2 Release Notes"
 msgstr ""
 
@@ -16008,6 +16048,9 @@ msgstr ""
 msgid "pgr_pushRelabel(Combinations)"
 msgstr ""
 
+msgid "pgRouting 3.1"
+msgstr ""
+
 msgid "pgRouting 3.1.4 Release Notes"
 msgstr ""
 
@@ -16131,6 +16174,9 @@ msgid "Build changes"
 msgstr ""
 
 msgid "Minimal requirement for Sphinx: version 1.8"
+msgstr ""
+
+msgid "pgRouting 3.0"
 msgstr ""
 
 msgid "pgRouting 3.0.6 Release Notes"
@@ -16554,6 +16600,15 @@ msgstr ""
 msgid "pgr_alphaShape old signature"
 msgstr ""
 
+msgid "pgRouting 2"
+msgstr ""
+
+msgid "Minors 2.x"
+msgstr ""
+
+msgid "pgRouting 2.6"
+msgstr ""
+
 msgid "pgRouting 2.6.3 Release Notes"
 msgstr ""
 
@@ -16744,6 +16799,9 @@ msgstr ""
 msgid "Cleaned the internal code of withPoints"
 msgstr ""
 
+msgid "pgRouting 2.5"
+msgstr ""
+
 msgid "pgRouting 2.5.5 Release Notes"
 msgstr ""
 
@@ -16882,6 +16940,9 @@ msgstr ""
 msgid "pgr_pointToEdgeNode"
 msgstr ""
 
+msgid "pgRouting 2.4"
+msgstr ""
+
 msgid "pgRouting 2.4.2 Release Notes"
 msgstr ""
 
@@ -16971,6 +17032,9 @@ msgid "pgr_withPointsKSP: fixed ordering"
 msgstr ""
 
 msgid "TRSP original code is used with no changes on the compilation warnings"
+msgstr ""
+
+msgid "pgRouting 2.3"
 msgstr ""
 
 msgid "pgRouting 2.3.2 Release Notes"
@@ -17094,6 +17158,9 @@ msgid "pgr_pointsToDMatrix"
 msgstr ""
 
 msgid "pgr_textToPoints"
+msgstr ""
+
+msgid "pgRouting 2.2"
 msgstr ""
 
 msgid "pgRouting 2.2.4 Release Notes"
@@ -17247,6 +17314,9 @@ msgstr ""
 msgid "pgr_makeDistanceMatrix renamed to _pgr_makeDistanceMatrix"
 msgstr ""
 
+msgid "pgRouting 2.1"
+msgstr ""
+
 msgid "pgRouting 2.1.0 Release Notes"
 msgstr ""
 
@@ -17387,6 +17457,9 @@ msgid ""
 "one library - The library has the prefix 2-1-0"
 msgstr ""
 
+msgid "pgRouting 2.0"
+msgstr ""
+
 msgid "pgRouting 2.0.1 Release Notes"
 msgstr ""
 
@@ -17407,8 +17480,8 @@ msgstr ""
 
 msgid ""
 "With the release of pgRouting 2.0.0 the library has abandoned backwards "
-"compatibility to `pgRouting 1.x Release Notes`_ releases. The main Goals for "
-"this release are:"
+"compatibility to `pgRouting 1.0`_ releases. The main Goals for this release "
+"are:"
 msgstr ""
 
 msgid "Major restructuring of pgRouting."
@@ -17522,7 +17595,10 @@ msgstr ""
 msgid "shooting_star is discontinued"
 msgstr ""
 
-msgid "pgRouting 1.x Release Notes"
+msgid "pgRouting 1"
+msgstr ""
+
+msgid "pgRouting 1.0"
 msgstr ""
 
 msgid ""
