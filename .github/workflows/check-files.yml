@@ -33,8 +33,8 @@ jobs:
       - name: News file up to date
         run: |
           tools/release-scripts/notes2news.pl
-          if git status | grep 'NEWS'; then echo "NEWS is not up to date"; exit 1; fi
-          if ! grep -q $(grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt) NEWS; then echo "Missing section in NEWS"; exit 1; fi
+          if git status | grep 'NEWS.md'; then echo "NEWS.md is not up to date"; exit 1; fi
+          if ! grep -q $(grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt) NEWS.md; then echo "Missing section in NEWS"; exit 1; fi
 
   License_check:
     runs-on: ubuntu-latest
