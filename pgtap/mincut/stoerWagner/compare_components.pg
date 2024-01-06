@@ -85,6 +85,7 @@ SELECT * FROM pgr_stoerWagner(
   )
   $$
 );
+SELECT set_eq('stoerWagner5', 'stoerWagner6', '5: Mincut of edge 17');
 
 PREPARE stoerWagner7 AS
 SELECT *
@@ -92,9 +93,10 @@ FROM pgr_stoerWagner(
   'SELECT id, source, target, cost, reverse_cost
   FROM edges WHERE id < 17 ORDER BY id'
 );
-
-SELECT set_eq('stoerWagner5', 'stoerWagner6', '5: Mincut of edge 17');
-SELECT set_eq('stoerWagner7', 'VALUES (1, 1, 1, 1)', '6: Compare the mincut of subgraph with actual result');
-
+IF (select boost < '1.80' from pgr_full_version()) THEN
+  SELECT set_eq('stoerWagner7', 'VALUES (1, 1, 1, 1)', '6: Compare the mincut of subgraph with actual result');
+ELSE
+  SELECT set_eq('stoerWagner7', 'VALUES (1, 14, 1, 1)', '6: Compare the mincut of subgraph with actual result');
+END IF;
 SELECT * FROM finish();
 ROLLBACK;
