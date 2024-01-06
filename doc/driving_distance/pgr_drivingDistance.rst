@@ -22,7 +22,7 @@
 
 .. rubric:: Availability
 
-:Version 3.6.0:
+.. rubric:: Version 3.6.0
 
 * Standarizing output columns to |result-spantree|
 
@@ -35,12 +35,12 @@
     * Result column name change: ``from_v`` to ``start_vid``.
     * Added ``depth`` and ``pred`` result columns.
 
-:Version 2.1.0:
+.. rubric:: Version 2.1.0
 
 * Signature change pgr_drivingDistance(single vertex)
 * New **Official** pgr_drivingDistance(multiple vertices)
 
-:Version 2.0.0:
+.. rubric:: Version 2.0.0
 
 * Official:: pgr_drivingDistance(single vertex)
 

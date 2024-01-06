@@ -21,20 +21,25 @@
 use strict;
 use warnings;
 use File::Find;
+use Data::Dumper;
 
 sub Usage {
   die "Usage: notes2news.pl (from the root of the repository or pre-commit hook)\n";
 }
 
-
+my $DEBUG = '';
 my $in_file = "doc/src/release_notes.rst";
-my $out_file = "NEWS";
+my $out_file = "NEWS.md";
 
 my $ofh;
 open($ofh, ">$out_file") || die "ERROR: failed to open '$out_file' for write! : $!\n";
 
 my $ifh;
 open($ifh, "$in_file") || die "ERROR: failed to open '$in_file' for read! : $!\n";
+
+my %conversions = get_substitutions();
+my $check = join '|', keys %conversions;
+print Dumper(\%conversions) if $DEBUG;
 
 
 my $skipping = 1;
@@ -44,6 +49,25 @@ my $end = '';
 while (my $line = <$ifh>) {
   next if $skipping and $line !~ /^pgRouting/;
   $skipping = 0;
+
+  next if $line =~ /contents|:local:|:depth:|\*\*\*\*\*\*\*|\=\=\=\=\=\=\=|\-\-\-\-\-\-\-|\+\+\+\+\+\+\+\+/;
+
+  $line =~ s/[\|]+//g;
+  $line =~ s/($check)/$conversions{$1}/go;
+
+  # Handling the headers
+  if ($line =~ m/^pgRouting [0-9]$/i) {
+      print $ofh "# $line";
+      next;
+  };
+  if ($line =~ m/^pgRouting [0-9].[0-9]$/i) {
+      print $ofh "## $line";
+      next;
+  };
+  if ($line =~ m/^pgRouting [0-9].[0-9].[0-9] Release Notes$/i) {
+      print $ofh "### $line";
+      next;
+  };
 
   # get include filename
   if ($line =~ /include/) {
@@ -59,10 +83,10 @@ while (my $line = <$ifh>) {
           }, "doc"
       );
       foreach(@wanted_files){
-          print "wanted: $_\n"
+          print "wanted: $_\n" if $DEBUG;
       }
       $file = $wanted_files[0];
-      print "rewanted: $file\n";
+      print "rewanted: $file\n" if $DEBUG;
       next;
   };
 
@@ -81,7 +105,7 @@ while (my $line = <$ifh>) {
       chomp $line;
       $line =~ s/^\s+//;
       $end = $line;
-      print "--->      $file from $start to $end \n";
+      print "--->      $file from $start to $end \n" if $DEBUG;
       find_stuff($file, $start, $end);
       next;
   }
@@ -89,8 +113,10 @@ while (my $line = <$ifh>) {
 
 
   # convert urls to markdown
-  $line =~ s/`([^<]+?)\s*<([^>]+)>`__/\[$1\]($2)/g;
-  $line =~ s/`([^<]+?)\s*<([^>]+)>`_/\[$1\]($2)/g;
+  $line =~ s/`([^<]+?)\s*<([^>]+)>`_*/\[$1\]($2)/g;
+
+  $line =~ s/`(Git closed)/\[$1/g;
+  $line =~ s/<([^>]+)>`_*/\]($1)/g;
 
   # convert rubric to bold
   $line =~ s/^\.\. rubric::\s*(.+)$/**$1**/;
@@ -106,18 +132,44 @@ close($ofh);
 
 sub find_stuff {
     my ($file, $mstart, $mend) = @_;
-    print "$file from $mstart to $mend \n";
+    print "find_stuff $file from $mstart to $mend \n" if $DEBUG;
     my $fh;
     open($fh, "$file") || die "ERROR: failed to open '$file' for read! : $!\n";
 
-    print "different '$mstart'\n" if $mstart ne "Version 3.6.0";
     my $skipping = 1;
     while (my $line = <$fh>) {
         next if $skipping and $line !~ /$mstart/;
         $skipping = 0;
         next if $line =~ /$mstart/;
+        $line =~ s/[\|]+//g;
+        $line =~ s/($check)/$conversions{$1}/go;
         print $ofh "  $line" if $line !~ /$mend/;
         last if $line =~ /$mend/;
     }
     close($fh);
+}
+
+sub get_substitutions {
+    my $file = "doc/conf.py.in";
+    my $mstart = "rst_epilog";
+    my $mend = "epilog_end";
+    print "get_substitutions $file from $mstart to $mend \n" if $DEBUG;
+    my $fh;
+    open($fh, "$file") || die "ERROR: failed to open '$file' for read! : $!\n";
+    my %data;
+
+    my $skipping = 1;
+    while (my $line = <$fh>) {
+        next if $skipping and $line !~ /$mstart/;
+        $skipping = 0;
+        next if $line =~ /$mstart/;
+        last if $line =~ /$mend/;
+        my ($key) = substr($line, 4, index(substr($line, 4), "|"));
+        my ($value) = substr($line, index($line,"`"));
+        $value =~ s/\R//g;
+        $data{$key} = $value;
+        print "$key $data{$key} \n" if $DEBUG;
+    }
+    close($fh);
+    return %data;
 }
