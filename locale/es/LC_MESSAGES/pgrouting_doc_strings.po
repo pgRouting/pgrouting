@@ -5,13 +5,14 @@
 # Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
 # Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023.
+# DeepL <noreply-mt-deepl@weblate.org>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-06 18:14+0000\n"
-"PO-Revision-Date: 2023-10-21 03:23+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
+"PO-Revision-Date: 2024-01-06 22:00+0000\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
 "Language: es\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.0\n"
+"X-Generator: Weblate 5.3\n"
 "Generated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
@@ -4930,14 +4931,13 @@ msgid ":doc:`release_notes`"
 msgstr ":doc:`release_notes`"
 
 msgid "Current release"
-msgstr ""
+msgstr "Versión actual"
 
 msgid "_"
 msgstr ""
 
-#, fuzzy
 msgid "Code enhancement"
-msgstr "Mejora de código C/C++"
+msgstr "Mejora del código"
 
 #, fuzzy
 msgid ""
@@ -4947,18 +4947,17 @@ msgstr ""
 "`#2505 <https://github.com/pgRouting/pgrouting/pull/2505>`__ Usando "
 "namespace."
 
-#, fuzzy
 msgid "Others"
-msgstr "plumas"
+msgstr "Otros"
 
 msgid "Adjust NEWS generator"
-msgstr ""
+msgstr "Ajustar el generador NEWS"
 
 msgid "Name change to `NEWS.md` for better visualization on GitHub"
-msgstr ""
+msgstr "Cambio de nombre a `NEWS.md` para una mejor visualización en GitHub"
 
 msgid "All releases"
-msgstr ""
+msgstr "Todas las ediciones"
 
 msgid "Kruskal - Family of functions"
 msgstr "Kruskal - Familia de funciones"
@@ -7738,12 +7737,11 @@ msgstr ""
 msgid "Upgrading the database"
 msgstr "Actualización de la base de datos"
 
-#, fuzzy
 msgid ""
 "To upgrade pgRouting in the database to version 3.7.0 use the following "
 "command:"
 msgstr ""
-"Para actualizar pgRouting en la base de datos a la versión 3.6.0 utilice el "
+"Para actualizar pgRouting en la base de datos a la versión 3.7.0 utilice el "
 "siguiente comando:"
 
 msgid ""
@@ -8119,13 +8117,11 @@ msgstr "Colaboradores"
 msgid "This Release Contributors"
 msgstr "Colaboradores de esta Versión"
 
-#, fuzzy
 msgid "Individuals in this release v3.7.x (in alphabetical order)"
-msgstr "Personas en este lanzamiento (en orden alfabético)"
+msgstr "Elementos de esta versión v3.7.x (por orden alfabético)"
 
-#, fuzzy
 msgid "(Alphabetical order)"
-msgstr "Personas (en orden alfabético)"
+msgstr "(Orden alfabético)"
 
 msgid "Regina Obe, Vicky Vergara"
 msgstr ""
@@ -17500,20 +17496,17 @@ msgstr ""
 msgid "Mayors"
 msgstr ""
 
-#, fuzzy
 msgid "pgRouting 3"
-msgstr "Versión de pgRouting"
+msgstr "pgRouting 3"
 
 msgid "Minors 3.x"
 msgstr ""
 
-#, fuzzy
 msgid "pgRouting 3.7"
-msgstr "Versión de pgRouting"
+msgstr "pgRouting 3.7"
 
-#, fuzzy
 msgid "pgRouting 3.7.0 Release Notes"
-msgstr "Notas de la versión 3.6.0 de pgRouting"
+msgstr "Notas de la versión de pgRouting 3.7.0"
 
 #, fuzzy
 msgid ""
@@ -17525,9 +17518,8 @@ msgstr ""
 "versión, consulte la `meta cerrada 3.6.0 <https://github.com/pgRouting/"
 "pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.0%22>`_"
 
-#, fuzzy
 msgid "pgRouting 3.6"
-msgstr "Versión de pgRouting"
+msgstr "pgRouting 3.6"
 
 #, fuzzy
 msgid "pgRouting 3.6.1 Release Notes"
@@ -17706,9 +17698,8 @@ msgid ""
 "On new internal function: do not use named parameters and default parameters."
 msgstr ""
 
-#, fuzzy
 msgid "pgRouting 3.5"
-msgstr "Versión de pgRouting"
+msgstr "pgRouting 3.5"
 
 msgid "pgRouting 3.5.1 Release Notes"
 msgstr "Notas de la versión 3.5.1 de pgRouting"
@@ -17815,9 +17806,8 @@ msgstr "``pgr_dijkstra`` (`Uno a Muchos`) ha añadido la columna ``end_vid``."
 msgid "``pgr_dijkstra`` (`Many to One`) added ``start_vid`` column."
 msgstr "``pgr_dijkstra`` (`Muchos a Uno`) ha añadido la columna ``start_vid``."
 
-#, fuzzy
 msgid "pgRouting 3.4"
-msgstr "Versión de pgRouting"
+msgstr "pgRouting 3.4"
 
 msgid "pgRouting 3.4.2 Release Notes"
 msgstr "Notas de la versión 3.4.2 de pgRouting"
@@ -17986,9 +17976,8 @@ msgstr "``pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text)``"
 msgid "``pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)``"
 msgstr ""
 
-#, fuzzy
 msgid "pgRouting 3.3"
-msgstr "Versión de pgRouting"
+msgstr "pgRouting 3.3"
 
 msgid "pgRouting 3.3.5 Release Notes"
 msgstr "Notas de la versión 3.3.5 de pgRouting"
@@ -18215,9 +18204,8 @@ msgstr "pgr_depthFirstSearch (Vértices múltiples)"
 msgid "pgr_depthFirstSearch(Single vertex)"
 msgstr "pgr_depthFirstSearch (Vértice único)"
 
-#, fuzzy
 msgid "pgRouting 3.2"
-msgstr "Versión de pgRouting"
+msgstr "pgRouting 3.2"
 
 msgid "pgRouting 3.2.2 Release Notes"
 msgstr "Notas de la Versión 3.2.2 de pgRouting"
@@ -18379,9 +18367,8 @@ msgstr "pgr_maxFlow(Combinaciones)"
 msgid "pgr_pushRelabel(Combinations)"
 msgstr "pgr_pushRelabel(Combinaciones)"
 
-#, fuzzy
 msgid "pgRouting 3.1"
-msgstr "Versión de pgRouting"
+msgstr "pgRouting 3.1"
 
 msgid "pgRouting 3.1.4 Release Notes"
 msgstr "Notas de la Versión 3.1.4 de pgRouting"
@@ -18554,9 +18541,8 @@ msgstr "Crear cambios"
 msgid "Minimal requirement for Sphinx: version 1.8"
 msgstr "Requerimientos mínimos para Sphinx: versión 1.8"
 
-#, fuzzy
 msgid "pgRouting 3.0"
-msgstr "Versión de pgRouting"
+msgstr "pgRouting 3.0"
 
 msgid "pgRouting 3.0.6 Release Notes"
 msgstr "Notas de la Versión 3.0.6 de pgRouting"
@@ -19016,16 +19002,14 @@ msgstr "pgr_pointsAsPolygon"
 msgid "pgr_alphaShape old signature"
 msgstr "pgr_alphaShape firma antigua"
 
-#, fuzzy
 msgid "pgRouting 2"
-msgstr "Versión de pgRouting"
+msgstr "pgRouting 2"
 
 msgid "Minors 2.x"
 msgstr ""
 
-#, fuzzy
 msgid "pgRouting 2.6"
-msgstr "Versión de pgRouting"
+msgstr "pgRouting 2.6"
 
 msgid "pgRouting 2.6.3 Release Notes"
 msgstr "pgRouting 2.6.3 Notas de la Versión"
@@ -19244,9 +19228,8 @@ msgstr "El código interno puede aceptar BIGINT"
 msgid "Cleaned the internal code of withPoints"
 msgstr "Limpiado el código interno de withPoints"
 
-#, fuzzy
 msgid "pgRouting 2.5"
-msgstr "Versión de pgRouting"
+msgstr "pgRouting 2.5"
 
 msgid "pgRouting 2.5.5 Release Notes"
 msgstr "Notas de la versión de PgRouting 2.5.5"
@@ -19409,9 +19392,8 @@ msgstr "Funcion Obsoleta"
 msgid "pgr_pointToEdgeNode"
 msgstr "pgr_pointToEdgeNode"
 
-#, fuzzy
 msgid "pgRouting 2.4"
-msgstr "Versión de pgRouting"
+msgstr "pgRouting 2.4"
 
 msgid "pgRouting 2.4.2 Release Notes"
 msgstr "Notas de la versión de pgRouting 2.4.2"
@@ -19517,9 +19499,8 @@ msgstr ""
 "El código original de TRSP se utiliza sin cambios en las advertencias de "
 "compilación"
 
-#, fuzzy
 msgid "pgRouting 2.3"
-msgstr "Versión de pgRouting"
+msgstr "pgRouting 2.3"
 
 msgid "pgRouting 2.3.2 Release Notes"
 msgstr "Notas de la versión de pgRouting 2.3.2"
@@ -19656,9 +19637,8 @@ msgstr "pgr_pointsToDMatrix"
 msgid "pgr_textToPoints"
 msgstr "pgr_textToPoints"
 
-#, fuzzy
 msgid "pgRouting 2.2"
-msgstr "Versión de pgRouting"
+msgstr "pgRouting 2.2"
 
 msgid "pgRouting 2.2.4 Release Notes"
 msgstr "Notas de la versión de pgRouting 2.2.4"
@@ -19825,9 +19805,8 @@ msgstr "Función Renombrada y Obsoleta"
 msgid "pgr_makeDistanceMatrix renamed to _pgr_makeDistanceMatrix"
 msgstr "pgr_makeDistanceMatrix renombrado a _pgr_makeDistanceMatrix"
 
-#, fuzzy
 msgid "pgRouting 2.1"
-msgstr "Versión de pgRouting"
+msgstr "pgRouting 2.1"
 
 msgid "pgRouting 2.1.0 Release Notes"
 msgstr "Notas de la versión de pgRouting 2.1.0"
@@ -19991,9 +19970,8 @@ msgstr ""
 "En lugar de generar muchas bibliotecas: - Todas las funciones están "
 "encapsuladas en una biblioteca - La biblioteca tiene el prefijo 2-1-0"
 
-#, fuzzy
 msgid "pgRouting 2.0"
-msgstr "Versión de pgRouting"
+msgstr "pgRouting 2.0"
 
 msgid "pgRouting 2.0.1 Release Notes"
 msgstr "Notas de la versión de pgRouting 2.0.1"
@@ -20153,13 +20131,11 @@ msgstr "Mejor documentación: https://docs.pgrouting.org"
 msgid "shooting_star is discontinued"
 msgstr "shooting_star está descontinuado"
 
-#, fuzzy
 msgid "pgRouting 1"
-msgstr "Versión de pgRouting"
+msgstr "pgRouting 1"
 
-#, fuzzy
 msgid "pgRouting 1.0"
-msgstr "Versión de pgRouting"
+msgstr "pgRouting 1.0"
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for 1.x "
