@@ -16,15 +16,36 @@ Release Notes
 To see the full list of changes check the list of `Git commits
 <https://github.com/pgRouting/pgrouting/commits>`_ on Github.
 
-.. contents:: Contents
+.. contents:: Mayors
    :local:
+   :depth: 1
 
+pgRouting 3
+*******************************************************************************
 
+.. contents:: Minors 3.x
+   :local:
+   :depth: 1
 
 pgRouting 3.6.2 Release Notes
 -------------------------------------------------------------------------------
 
-No Changes Yet
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.6.2
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.2%22>`__
+
+.. rubric:: Others
+
+* Adjust NEWS generator
+
+  * Name change to `NEWS.md` for better visualization on GitHub
+
+pgRouting 3.6
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. contents:: Contents
+   :local:
+   :depth: 1
 
 pgRouting 3.6.1 Release Notes
 -------------------------------------------------------------------------------
@@ -75,8 +96,8 @@ milestone for 3.6.0
   pgr_drivingdistance
 
   .. include:: pgr_drivingDistance.rst
-     :start-after: Version 3.6.0:
-     :end-before: :Version
+     :start-after: Version 3.6.0
+     :end-before: .. rubric
 
 .. rubric:: Proposed functions changes
 
@@ -122,6 +143,12 @@ milestone for 3.6.0
   deprecated messages
 * On new internal function: do not use named parameters and default parameters.
 
+pgRouting 3.5
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. contents:: Contents
+   :local:
+   :depth: 1
 
 pgRouting 3.5.1 Release Notes
 -------------------------------------------------------------------------------
@@ -181,6 +208,13 @@ milestone for 3.5.0
     * ``pgr_dijkstra`` (`One to One`) added ``start_vid`` and ``end_vid`` columns.
     * ``pgr_dijkstra`` (`One to Many`) added ``end_vid`` column.
     * ``pgr_dijkstra`` (`Many to One`) added ``start_vid`` column.
+
+pgRouting 3.4
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. contents:: Contents
+   :local:
+   :depth: 1
 
 pgRouting 3.4.2 Release Notes
 -------------------------------------------------------------------------------
@@ -286,6 +320,13 @@ milestone for 3.4.0
   * ``pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text)``
   * ``pgr_trspViaVertices(text,anyarray,boolean,boolean,text)``
   * ``pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)``
+
+pgRouting 3.3
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. contents:: Contents
+   :local:
+   :depth: 1
 
 pgRouting 3.3.5 Release Notes
 -------------------------------------------------------------------------------
@@ -431,6 +472,13 @@ on Github.
   * pgr_depthFirstSearch(Multiple vertices)
   * pgr_depthFirstSearch(Single vertex)
 
+pgRouting 3.2
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. contents:: Contents
+   :local:
+   :depth: 1
+
 pgRouting 3.2.2 Release Notes
 -------------------------------------------------------------------------------
 
@@ -538,6 +586,13 @@ on Github.
 * pgr_withPoints(Combinations)
 * pgr_withPointsCost(Combinations)
 
+pgRouting 3.1
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. contents:: Contents
+   :local:
+   :depth: 1
+
 pgRouting 3.1.4 Release Notes
 --------------------------------------------------------------------------------
 
@@ -631,6 +686,13 @@ on Github.
 .. rubric:: Build changes
 
 * Minimal requirement for Sphinx: version 1.8
+
+pgRouting 3.0
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. contents:: Contents
+   :local:
+   :depth: 1
 
 pgRouting 3.0.6 Release Notes
 --------------------------------------------------------------------------------
@@ -735,6 +797,10 @@ on Github.
 
 pgRouting 3.0.0 Release Notes
 -------------------------------------------------------------------------------
+
+.. contents:: Contents
+   :local:
+   :depth: 1
 
 To see all issues & pull requests closed by this release see the `Git closed
 milestone for 3.0.0
@@ -903,7 +969,19 @@ on Github.
 * pgr_pointsAsPolygon
 * pgr_alphaShape old signature
 
+pgRouting 2
+*******************************************************************************
 
+.. contents:: Minors 2.x
+   :local:
+   :depth: 1
+
+pgRouting 2.6
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. contents:: Contents
+   :local:
+   :depth: 1
 
 pgRouting 2.6.3 Release Notes
 -------------------------------------------------------------------------------
@@ -1017,6 +1095,12 @@ on Github.
 
 * Cleaned the internal code of withPoints
 
+pgRouting 2.5
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. contents:: Contents
+   :local:
+   :depth: 1
 
 pgRouting 2.5.5 Release Notes
 -------------------------------------------------------------------------------
@@ -1174,6 +1258,12 @@ on Github.
 * pgr_pointToEdgeNode
 
 
+pgRouting 2.4
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. contents:: Contents
+   :local:
+   :depth: 1
 
 pgRouting 2.4.2 Release Notes
 -------------------------------------------------------------------------------
@@ -1247,6 +1337,8 @@ on Github.
 
 * TRSP original code is used with no changes on the compilation warnings
 
+pgRouting 2.3
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 pgRouting 2.3.2 Release Notes
 -------------------------------------------------------------------------------
@@ -1334,8 +1426,12 @@ on Github.
 * pgr_pointsToDMatrix
 * pgr_textToPoints
 
+pgRouting 2.2
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-
+.. contents:: Contents
+   :local:
+   :depth: 1
 
 pgRouting 2.2.4 Release Notes
 -------------------------------------------------------------------------------
@@ -1445,7 +1541,12 @@ on Github.
 
 - pgr_makeDistanceMatrix renamed to _pgr_makeDistanceMatrix
 
+pgRouting 2.1
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+.. contents:: Contents
+   :local:
+   :depth: 1
 
 pgRouting 2.1.0 Release Notes
 -------------------------------------------------------------------------------
@@ -1532,6 +1633,12 @@ on Github.
   - The library has the prefix 2-1-0
 
 
+pgRouting 2.0
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. contents:: Contents
+   :local:
+   :depth: 1
 
 pgRouting 2.0.1 Release Notes
 -------------------------------------------------------------------------------
@@ -1542,8 +1649,6 @@ Minor bug fixes.
 
 * No track of the bug fixes were kept.
 
-
-
 pgRouting 2.0.0 Release Notes
 -------------------------------------------------------------------------------
 
@@ -1552,7 +1657,7 @@ To see the issues closed by this release see the `Git closed issues for 2.0.0
 on Github.
 
 With the release of pgRouting 2.0.0 the library has abandoned backwards
-compatibility to `pgRouting 1.x Release Notes`_ releases.
+compatibility to `pgRouting 1.0`_ releases.
 The main Goals for this release are:
 
 * Major restructuring of pgRouting.
@@ -1599,11 +1704,15 @@ As a result of this effort:
 * Better documentation: https://docs.pgrouting.org
 * shooting_star is discontinued
 
+pgRouting 1
+*******************************************************************************
 
+pgRouting 1.0
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-
-pgRouting 1.x Release Notes
--------------------------------------------------------------------------------
+.. contents:: Contents
+   :local:
+   :depth: 1
 
 To see the issues closed by this release see the `Git closed issues for 1.x
 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+1.x%22+is%3Aclosed>`_
@@ -1613,33 +1722,32 @@ file and are kept as a reference.
 
 
 Changes for release 1.05
-...............................................................................
+-------------------------------------------------------------------------------
 
 * Bug fixes
 
 
 Changes for release 1.03
-...............................................................................
+-------------------------------------------------------------------------------
 
 * Much faster topology creation
 * Bug fixes
 
 
 Changes for release 1.02
-...............................................................................
+-------------------------------------------------------------------------------
 
 * Shooting* bug fixes
 * Compilation problems solved
 
-
 Changes for release 1.01
-...............................................................................
+-------------------------------------------------------------------------------
 
 * Shooting* bug fixes
 
 
 Changes for release 1.0
-...............................................................................
+-------------------------------------------------------------------------------
 
 * Core and extra functions are separated
 * Cmake build process
@@ -1647,28 +1755,28 @@ Changes for release 1.0
 
 
 Changes for release 1.0.0b
-...............................................................................
+-------------------------------------------------------------------------------
 
 * Additional SQL file with more simple names for wrapper functions
 * Bug fixes
 
 
 Changes for release 1.0.0a
-...............................................................................
+-------------------------------------------------------------------------------
 
 * Shooting* shortest path algorithm for real road networks
 * Several SQL bugs were fixed
 
 
 Changes for release 0.9.9
-...............................................................................
+-------------------------------------------------------------------------------
 
 * PostgreSQL 8.2 support
 * Shortest path functions return empty result if they could not find any path
 
 
 Changes for release 0.9.8
-...............................................................................
+-------------------------------------------------------------------------------
 
 * Renumbering scheme was added to shortest path functions
 * Directed shortest path functions were added

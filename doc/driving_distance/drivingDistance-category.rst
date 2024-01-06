@@ -89,7 +89,6 @@ Parameters
 
 Where:
 
-:ANY-INTEGER: ``SMALLINT``, ``INTEGER``, ``BIGINT``
 :ANY-NUMERIC: ``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``
 
 .. mst-dd-params_end
@@ -153,15 +152,7 @@ Returns set of |result-spantree|
      - ``FLOAT``
      - Aggregate cost from ``start_vid`` to ``node``.
 
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERIC: SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC
-
 .. spantree-result-columns-end
-
-.. NOTE:: Column ``pred`` only applies to :doc:`pgr_drivingDistance` and
-   :doc:`pgr_withPointsDD`.
 
 See Also
 -------------------------------------------------------------------------------
