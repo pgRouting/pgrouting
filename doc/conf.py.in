@@ -390,7 +390,7 @@ rst_epilog="""
 .. |result-disjoint-m-m| replace:: ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
 .. |result-mincut| replace:: ``(seq, edge, cost, mincut)``
 .. |result-pickdrop| replace:: ``(seq, vehicle_number, vehicle_id, stop, order_id, stop_type, cargo, travel_time, arrival_time, wait_time, service_time, departure_time)``
-
+.. |epilog_end| replace:: just a marker for notes2news
 """
 
 # Create a compressed PDF
