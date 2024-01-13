@@ -1079,5 +1079,74 @@ FROM pgr_drivingDistance(
 (13 rows)
 
 /* --drivingdistance5 */
+/* --kruskalDD1 */
+SELECT * FROM pgr_kruskalDD(
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+  6, 3.5);
+ seq | depth | start_vid | pred | node | edge | cost | agg_cost
+-----+-------+-----------+------+------+------+------+----------
+   1 |     0 |         6 |    6 |    6 |   -1 |    0 |        0
+   2 |     1 |         6 |    5 |    5 |    1 |    1 |        1
+   3 |     1 |         6 |   10 |   10 |    2 |    1 |        1
+   4 |     2 |         6 |   15 |   15 |    3 |    1 |        2
+   5 |     3 |         6 |   16 |   16 |   16 |    1 |        3
+(5 rows)
+
+/* --kruskalDD2 */
+SELECT seq, depth, start_vid, node, edge, cost, agg_cost
+FROM pgr_kruskalDD(
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+  6, 3.5);
+ seq | depth | start_vid | node | edge | cost | agg_cost
+-----+-------+-----------+------+------+------+----------
+   1 |     0 |         6 |    6 |   -1 |    0 |        0
+   2 |     1 |         6 |    5 |    1 |    1 |        1
+   3 |     1 |         6 |   10 |    2 |    1 |        1
+   4 |     2 |         6 |   15 |    3 |    1 |        2
+   5 |     3 |         6 |   16 |   16 |    1 |        3
+(5 rows)
+
+/* --kruskalDD3 */
+SELECT * FROM pgr_kruskalDD(
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+  ARRAY[9, 6], 3.5);
+ seq | depth | start_vid | pred | node | edge | cost | agg_cost
+-----+-------+-----------+------+------+------+------+----------
+   1 |     0 |         6 |    6 |    6 |   -1 |    0 |        0
+   2 |     1 |         6 |    5 |    5 |    1 |    1 |        1
+   3 |     1 |         6 |   10 |   10 |    2 |    1 |        1
+   4 |     2 |         6 |   15 |   15 |    3 |    1 |        2
+   5 |     3 |         6 |   16 |   16 |   16 |    1 |        3
+   6 |     0 |         9 |    9 |    9 |   -1 |    0 |        0
+   7 |     1 |         9 |    8 |    8 |   14 |    1 |        1
+   8 |     2 |         9 |    7 |    7 |   10 |    1 |        2
+   9 |     3 |         9 |    3 |    3 |    7 |    1 |        3
+  10 |     2 |         9 |   12 |   12 |   12 |    1 |        2
+  11 |     3 |         9 |   11 |   11 |   11 |    1 |        3
+  12 |     3 |         9 |   17 |   17 |   13 |    1 |        3
+(12 rows)
+
+/* --kruskalDD4 */
+SELECT seq, depth, start_vid, node, edge, cost, agg_cost
+FROM pgr_kruskalDD(
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+  ARRAY[9, 6], 3.5);
+ seq | depth | start_vid | node | edge | cost | agg_cost
+-----+-------+-----------+------+------+------+----------
+   1 |     0 |         6 |    6 |   -1 |    0 |        0
+   2 |     1 |         6 |    5 |    1 |    1 |        1
+   3 |     1 |         6 |   10 |    2 |    1 |        1
+   4 |     2 |         6 |   15 |    3 |    1 |        2
+   5 |     3 |         6 |   16 |   16 |    1 |        3
+   6 |     0 |         9 |    9 |   -1 |    0 |        0
+   7 |     1 |         9 |    8 |   14 |    1 |        1
+   8 |     2 |         9 |    7 |   10 |    1 |        2
+   9 |     3 |         9 |    3 |    7 |    1 |        3
+  10 |     2 |         9 |   12 |   12 |    1 |        2
+  11 |     3 |         9 |   11 |   11 |    1 |        3
+  12 |     3 |         9 |   17 |   13 |    1 |        3
+(12 rows)
+
+/* --kruskalDD5 */
 ROLLBACK;
 ROLLBACK
