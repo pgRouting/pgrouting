@@ -108,8 +108,8 @@ Parameters
 -------------------------------------------------------------------------------
 
 .. include:: drivingDistance-category.rst
-    :start-after: mst-dd-params_start
-    :end-before: mst-dd-params_end
+    :start-after: spantree-params_start
+    :end-before: spantree-params_end
 
 Optional parameters
 ...............................................................................
