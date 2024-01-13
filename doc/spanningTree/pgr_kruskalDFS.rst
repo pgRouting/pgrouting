@@ -23,7 +23,13 @@ First Search ordering.
 
 .. rubric:: Availability
 
-* Version 3.0.0
+:Version 3.7.0:
+
+* Standarizing output columns to |result-spantree|
+
+  * Added ``pred`` result columns.
+
+:Version 3.0.0:
 
   * New **Official** function
 
@@ -52,7 +58,7 @@ Signatures
    | pgr_kruskalDFS(`Edges SQL`_, **root vid**, [``max_depth``])
    | pgr_kruskalDFS(`Edges SQL`_, **root vids**, [``max_depth``])
 
-   | Returns set of |result-bfs|
+   | Returns set of |result-spantree|
 
 .. index::
     single: kruskalDFS(Single vertex)
@@ -65,7 +71,7 @@ Single vertex
 
    | pgr_kruskalDFS(`Edges SQL`_, **root vid**, [``max_depth``])
 
-   | Returns set of |result-bfs|
+   | Returns set of |result-spantree|
 
 :Example: The Minimum Spanning Tree having as root vertex :math:`6`
 
@@ -84,7 +90,7 @@ Multiple vertices
 
    | pgr_kruskalDFS(`Edges SQL`_, **root vids**, [``max_depth``])
 
-   | Returns set of |result-bfs|
+   | Returns set of |result-spantree|
 
 :Example: The Minimum Spanning Tree starting on vertices :math:`\{9, 6\}` with
           :math:`depth \leq 3`
@@ -96,9 +102,9 @@ Multiple vertices
 Parameters
 -------------------------------------------------------------------------------
 
-.. include:: BFS-category.rst
-   :start-after: mst-bfs-dfs-params_start
-   :end-before: mst-bfs-dfs-params_end
+.. include:: drivingDistance-category.rst
+    :start-after: spantree-params_start
+    :end-before: spantree-params_end
 
 DFS optional parameters
 ...............................................................................
@@ -111,7 +117,7 @@ Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
-...............................................................................
+..............................................................................
 
 .. include:: pgRouting-concepts.rst
    :start-after: basic_edges_sql_start
@@ -120,9 +126,9 @@ Edges SQL
 Result columns
 -------------------------------------------------------------------------------
 
-.. include:: BFS-category.rst
-   :start-after: mst-bfs-dfs-dd-result-columns-start
-   :end-before: mst-bfs-dfs-dd-result-columns-end
+.. include:: drivingDistance-category.rst
+   :start-after: spantree-result-columns-start
+   :end-before: spantree-result-columns-end
 
 See Also
 -------------------------------------------------------------------------------
