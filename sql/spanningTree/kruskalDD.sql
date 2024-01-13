@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 -- SINGLE VERTEX
---v3.0
+--v3.7
 CREATE FUNCTION pgr_kruskalDD (
     TEXT,   -- Edge sql
     BIGINT, -- root vertex
@@ -43,26 +43,19 @@ CREATE FUNCTION pgr_kruskalDD (
     OUT seq BIGINT,
     OUT depth BIGINT,
     OUT start_vid BIGINT,
+    OUT pred BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    IF $3 < 0 THEN
-        RAISE EXCEPTION 'Negative value found on ''distance'''
-        USING HINT = format('Value found: %s', $3);
-    END IF;
-
-    RETURN QUERY
-    SELECT a.seq, a.depth, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_kruskal(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DD', -1, $3::FLOAT) AS a;
-END;
+    SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
+    FROM _pgr_kruskalv4(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DD', -1, $3::FLOAT);
 $BODY$
-LANGUAGE plpgsql VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT;
 
---v3.0
+--v3.7
 CREATE FUNCTION pgr_kruskalDD (
     TEXT,   -- Edge sql
     BIGINT, -- root vertex
@@ -71,28 +64,20 @@ CREATE FUNCTION pgr_kruskalDD (
     OUT seq BIGINT,
     OUT depth BIGINT,
     OUT start_vid BIGINT,
+    OUT pred BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    IF $3 < 0 THEN
-        RAISE EXCEPTION 'Negative value found on ''distance'''
-        USING HINT = format('Value found: %s', $3);
-    END IF;
-
-    RETURN QUERY
-    SELECT a.seq, a.depth, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_kruskal(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DD', -1, $3::FLOAT) AS a;
-END;
+    SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
+    FROM _pgr_kruskalv4(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'DD', -1, $3::FLOAT);
 $BODY$
-LANGUAGE plpgsql VOLATILE STRICT;
-
+LANGUAGE SQL VOLATILE STRICT;
 
 -- MULTIPLE VERTICES
---v3.0
+--v3.7
 CREATE FUNCTION pgr_kruskalDD (
     TEXT,   -- Edge sql
     ANYARRAY, -- root vertex
@@ -102,27 +87,20 @@ CREATE FUNCTION pgr_kruskalDD (
     OUT seq BIGINT,
     OUT depth BIGINT,
     OUT start_vid BIGINT,
+    OUT pred BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    IF $3 < 0 THEN
-        RAISE EXCEPTION 'Negative value found on ''distance'''
-        USING HINT = format('Value found: %s', $3);
-    END IF;
-
-    RETURN QUERY
-    SELECT a.seq, a.depth, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_kruskal(_pgr_get_statement($1), $2, 'DD', -1, $3) AS a;
-END;
+    SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
+    FROM _pgr_kruskalv4(_pgr_get_statement($1), $2, 'DD', -1, $3);
 $BODY$
-LANGUAGE plpgsql VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT;
 
 
---v3.0
+--v3.7
 CREATE FUNCTION pgr_kruskalDD (
     TEXT,   -- Edge sql
     ANYARRAY, -- root vertex
@@ -132,24 +110,17 @@ CREATE FUNCTION pgr_kruskalDD (
     OUT seq BIGINT,
     OUT depth BIGINT,
     OUT start_vid BIGINT,
+    OUT pred BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    IF $3 < 0 THEN
-        RAISE EXCEPTION 'Negative value found on ''distance'''
-        USING HINT = format('Value found: %s', $3);
-    END IF;
-
-    RETURN QUERY
-    SELECT a.seq, a.depth, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_kruskal(_pgr_get_statement($1), $2, 'DD', -1, $3::FLOAT) AS a;
-END;
+    SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
+    FROM _pgr_kruskalv4(_pgr_get_statement($1), $2, 'DD', -1, $3::FLOAT);
 $BODY$
-LANGUAGE plpgsql VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT;
 
 
 -- COMMENTS
