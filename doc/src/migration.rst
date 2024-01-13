@@ -489,6 +489,90 @@ Migration is needed, because:
    :start-after: --maxcard2
    :end-before: --maxcard3
 
+Migration of ``pgr_primDD`` / ``pgr_primBFS`` / ``pgr_primDFS``
+-------------------------------------------------------------------------------
+
+Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__
+:doc:`pgr_primDD`, :doc:`pgr_primBFS` and :doc:`pgr_primDFS` result columns are
+being standarized.
+
+:from: |result-bfs|
+:to: |result-spantree|
+
+* ``pgr_primDD``
+
+  * Single vertex
+  * Multiple vertices
+
+* ``pgr_primDFS``
+
+  * Single vertex
+  * Multiple vertices
+
+* ``pgr_primBFS``
+
+  * Single vertex
+  * Multiple vertices
+
+
+:Before Migration:
+
+Output columns were |result-bfs|
+
+* Single vertex and Multiple vertices
+
+  * Do not have ``pred`` result column.
+
+:Migration:
+
+* Be aware of the existance of `pred` result columns.
+* If needed filter out the added columns
+
+Prim single vertex
+...............................................................................
+
+Using ``pgr_primDD`` as example.
+Migration is similar to al the affected functions.
+
+Comparing with `this
+<https://docs.pgrouting.org/3.6/en/pgr_primDD.html#single-vertex>`__ example.
+
+Now column ``pred`` exists and contains the predecessor of the ``node``.
+
+.. literalinclude:: migration.queries
+   :start-after: --primDD1
+   :end-before: --primDD2
+
+If needed filter out the added columns, for example, to return the original
+columns
+
+.. literalinclude:: migration.queries
+   :start-after: --primDD2
+   :end-before: --primDD3
+
+Prim multiple vertices
+...............................................................................
+
+Using ``pgr_primDD`` as example.
+Migration is similar to al the affected functions.
+
+Comparing with `this
+<https://docs.pgrouting.org/3.6/en/pgr_primDD.html#multiple-vertex>`__
+example.
+
+Now column ``pred`` exists and contains the predecessor of the ``node``.
+
+.. literalinclude:: migration.queries
+   :start-after: --primDD3
+   :end-before: --primDD4
+
+If needed filter out the added columns, for example, to return the original
+columns
+
+.. literalinclude:: migration.queries
+   :start-after: --primDD4
+   :end-before: --primDD5
+
 Migration of ``pgr_withPointsDD``
 -------------------------------------------------------------------------------
 
