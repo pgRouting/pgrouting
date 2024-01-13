@@ -338,7 +338,6 @@ FROM pgr_drivingDistance(
   ARRAY[11, 16], 3.0, equicost => true);
 /* --drivingdistance5 */
 
-
 /* --kruskalDD1 */
 SELECT * FROM pgr_kruskalDD(
   'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
@@ -358,3 +357,23 @@ FROM pgr_kruskalDD(
   'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
   ARRAY[9, 6], 3.5);
 /* --kruskalDD5 */
+
+/* --primDD1 */
+SELECT * FROM pgr_primDD(
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+  6, 3.5);
+/* --primDD2 */
+SELECT seq, depth, start_vid, node, edge, cost, agg_cost
+FROM pgr_primDD(
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+  6, 3.5);
+/* --primDD3 */
+SELECT * FROM pgr_primDD(
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+  ARRAY[9, 6], 3.5);
+/* --primDD4 */
+SELECT seq, depth, start_vid, node, edge, cost, agg_cost
+FROM pgr_primDD(
+  'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+  ARRAY[9, 6], 3.5);
+/* --primDD5 */
