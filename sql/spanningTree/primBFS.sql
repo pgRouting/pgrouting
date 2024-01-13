@@ -2,7 +2,7 @@
 File: primBFS.sql
 
 Copyright (c) 2018 Vicky Vergara
-Mail: vicky at georepublic dot de
+Mail: vicky at erosion dot dev
 
 ------
 
@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 -- SINGLE VERTEX
---v3.0
+--v3.7
 CREATE FUNCTION pgr_primBFS(
     TEXT,   -- Edge sql
     BIGINT, -- root vertex
@@ -39,29 +39,20 @@ CREATE FUNCTION pgr_primBFS(
     OUT seq BIGINT,
     OUT depth BIGINT,
     OUT start_vid BIGINT,
+    OUT pred BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    IF $3 < 0 THEN
-        RAISE EXCEPTION 'Negative value found on ''max_depth'''
-        USING HINT = format('Value found: %s', $3);
-    END IF;
-
-
-    RETURN QUERY
-    SELECT a.seq, a.depth, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_prim(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'BFS', $3, -1) AS a;
-END;
+    SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
+    FROM _pgr_primv4(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], 'BFS', $3, -1);
 $BODY$
-LANGUAGE plpgsql VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT;
 
 
--- MULTIPLE VERTICES
---v3.0
+--v3.7
 CREATE FUNCTION pgr_primBFS(
     TEXT,     -- Edge sql
     ANYARRAY, -- root vertices
@@ -71,25 +62,17 @@ CREATE FUNCTION pgr_primBFS(
     OUT seq BIGINT,
     OUT depth BIGINT,
     OUT start_vid BIGINT,
+    OUT pred BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    IF $3 < 0 THEN
-        RAISE EXCEPTION 'Negative value found on ''max_depth'''
-        USING HINT = format('Value found: %s', $3);
-    END IF;
-
-
-    RETURN QUERY
-    SELECT a.seq, a.depth, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_prim(_pgr_get_statement($1), $2, 'BFS', $3, -1) AS a;
-END;
+    SELECT seq, depth, start_vid, pred, node, edge, cost, agg_cost
+    FROM _pgr_primv4(_pgr_get_statement($1), $2, 'BFS', $3, -1);
 $BODY$
-LANGUAGE plpgsql VOLATILE STRICT;
+LANGUAGE SQL VOLATILE STRICT;
 
 
 -- COMMENTS
