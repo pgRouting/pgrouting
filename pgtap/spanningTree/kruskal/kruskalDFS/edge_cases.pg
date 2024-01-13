@@ -25,7 +25,8 @@ UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(revers
 
 --
 PREPARE kruskal1 AS
-SELECT * FROM pgr_kruskalDFS(
+SELECT seq, depth, start_vid, node, edge, cost, agg_cost
+FROM pgr_kruskalDFS(
     'SELECT id, source, target, cost, reverse_cost
     FROM edges WHERE id > 18 ORDER BY id',
     21, 3
@@ -37,7 +38,7 @@ SELECT set_eq('kruskal1',
 
 
 PREPARE kruskal2 AS
-SELECT *
+SELECT seq, depth, start_vid, node, edge, cost, agg_cost
 FROM pgr_kruskalDFS(
     'SELECT id, source, target, cost
      FROM edges WHERE id > 18 ORDER BY id',
@@ -55,7 +56,7 @@ SELECT set_eq('kruskal2',
 
 --
 PREPARE kruskal3 AS
-SELECT *
+SELECT seq, depth, start_vid, node, edge, cost, agg_cost
 FROM pgr_kruskalDFS(
     'SELECT id, source, target, cost, reverse_cost
      FROM edges ORDER BY id',
@@ -126,11 +127,9 @@ FROM pgr_kruskalDFS(
 
 
 SELECT throws_ok('kruskal6',
-    'P0001',
+    CASE WHEN min_version('3.7.0') THEN 'XX000' ELSE 'P0001' END,
     'Negative value found on ''max_depth''',
     '6: Negative max_depth throws');
-
-
 
 PREPARE kruskal7 AS
 SELECT *
@@ -141,13 +140,13 @@ FROM pgr_kruskalDFS(
 );
 
 SELECT throws_ok('kruskal7',
-    'P0001',
+    CASE WHEN min_version('3.7.0') THEN 'XX000' ELSE 'P0001' END,
     'Negative value found on ''max_depth''',
     '7: Negative max_depth throws');
 
 --
 PREPARE kruskal8 AS
-SELECT *
+SELECT seq, depth, start_vid, node, edge, cost, agg_cost
 FROM pgr_kruskalDFS(
     'SELECT id, source, target, cost, reverse_cost
     FROM edges ORDER BY id',
