@@ -54,7 +54,7 @@ Signatures to be migrated:
 
 :Migration:
 
-* Be aware of the existance of the additional columns.
+* Be aware of the existence of the additional columns.
 
 * In ``pgr_aStar`` (`One to One`)
 
@@ -123,7 +123,7 @@ Signatures to be migrated:
 
 :Migration:
 
-* Be aware of the existance of the additional columns.
+* Be aware of the existence of the additional columns.
 
 * In ``pgr_bdAstar`` (`One to One`)
 
@@ -192,7 +192,7 @@ Signatures to be migrated:
 
 :Migration:
 
-* Be aware of the existance of the additional columns.
+* Be aware of the existence of the additional columns.
 
 * In ``pgr_dijkstra`` (`One to One`)
 
@@ -237,7 +237,7 @@ Migration of ``pgr_drivingdistance``
 -------------------------------------------------------------------------------
 
 Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
-:doc:`pgr_drivingDistance` result columns are being standarized.
+:doc:`pgr_drivingDistance` result columns are being standardized.
 
 :from: |result-dij-dd|
 :to: |result-spantree|
@@ -262,7 +262,7 @@ Output columns were |result-dij-dd|
 
 :Migration:
 
-* Be aware of the existance and name change of the result columns.
+* Be aware of the existence and name change of the result columns.
 
 ``pgr_drivingdistance`` (Single vertex)
 ...............................................................................
@@ -300,7 +300,7 @@ example.
      :start-after: --drivingdistance3
      :end-before: --drivingdistance4
 
-If needed filter out and rename colums, for example, to return the original
+If needed filter out and rename columns, for example, to return the original
 columns:
 
 .. literalinclude:: migration.queries
@@ -312,7 +312,7 @@ Migration of ``pgr_kruskalDD`` / ``pgr_kruskalBFS`` / ``pgr_kruskalDFS``
 
 Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__
 :doc:`pgr_kruskalDD`, :doc:`pgr_kruskalBFS` and
-:doc:`pgr_kruskalDFS` result columns are being standarized.
+:doc:`pgr_kruskalDFS` result columns are being standardized.
 
 :from: |result-bfs|
 :to: |result-spantree|
@@ -343,7 +343,7 @@ Output columns were |result-bfs|
 
 :Migration:
 
-* Be aware of the existance of `pred` result columns.
+* Be aware of the existence of `pred` result columns.
 * If needed filter out the added columns
 
 Kruskal single vertex
@@ -395,7 +395,7 @@ Migration of ``pgr_KSP``
 -------------------------------------------------------------------------------
 
 Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
-:doc:`pgr_KSP` result columns are being standarized.
+:doc:`pgr_KSP` result columns are being standardized.
 
 :from: |ksp-result|
 :from: |nksp-result|
@@ -414,7 +414,7 @@ Signatures to be migrated:
 
 :Migration:
 
-* Be aware of the existance of the additional columns.
+* Be aware of the existence of the additional columns.
 
 ``pgr_KSP`` (One to One)
 ...............................................................................
@@ -494,7 +494,7 @@ Migration of ``pgr_primDD`` / ``pgr_primBFS`` / ``pgr_primDFS``
 
 Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__
 :doc:`pgr_primDD`, :doc:`pgr_primBFS` and :doc:`pgr_primDFS` result columns are
-being standarized.
+being standardized.
 
 :from: |result-bfs|
 :to: |result-spantree|
@@ -525,7 +525,7 @@ Output columns were |result-bfs|
 
 :Migration:
 
-* Be aware of the existance of `pred` result columns.
+* Be aware of the existence of `pred` result columns.
 * If needed filter out the added columns
 
 Prim single vertex
@@ -577,7 +577,7 @@ Migration of ``pgr_withPointsDD``
 -------------------------------------------------------------------------------
 
 Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
-:doc:`pgr_withPointsDD` result columns are being standarized.
+:doc:`pgr_withPointsDD` result columns are being standardized.
 
 :from: |result-generic-no-seq|
 :to: |result-spantree|
@@ -596,13 +596,13 @@ Signatures to be migrated:
 
   * Output columns were |result-1-1-no-seq|
   * Does not have ``start_vid``, ``pred`` and ``depth`` result columns.
-  * ``driving_side`` parameter was named optional now it is compulsory unamed.
+  * ``driving_side`` parameter was named optional now it is compulsory unnamed.
 
 * ``pgr_withPointsDD`` (`Multiple vertices`)
 
   * Output columns were |result-m-1-no-seq|
   * Does not have ``depth`` and ``pred`` result columns.
-  * ``driving_side`` parameter was named optional now it is compulsory unamed.
+  * ``driving_side`` parameter was named optional now it is compulsory unnamed.
 
 .. rubric:: Driving side was optional
 
@@ -647,7 +647,7 @@ Also ``l`` could be used as **driving side**
 
 :After Migration:
 
-* Be aware of the existance of the additional result Columns.
+* Be aware of the existence of the additional result Columns.
 * New output columns are |result-spantree|
 * **driving side** parameter is unnamed compulsory, and valid values differ for
   directed and undirected graphs.
@@ -718,7 +718,7 @@ Migration of ``pgr_withPointsKSP``
 -------------------------------------------------------------------------------
 
 Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
-:doc:`pgr_withPointsKSP` result columns are being standarized.
+:doc:`pgr_withPointsKSP` result columns are being standardized.
 
 :from: |ksp-result|
 :from: |nksp-result|
@@ -739,7 +739,7 @@ Signatures to be migrated:
 
 :Migration:
 
-* Be aware of the existance of the additional result Columns.
+* Be aware of the existence of the additional result Columns.
 * New output columns are |nksp-result|
 * **driving side** parameter is unnamed compulsory, and valid values differ for
   directed and undirected graphs.
