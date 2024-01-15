@@ -18,10 +18,12 @@ name: Boost supported versions
 # Currently
 # - boost::geometry has not changed anything we use
 #
-# - boost::graph changed on 1.80
-# - boost::graph 1.75 requires C++14
-# - boost::graph changed on 1.68
-# - 1.56 is the minimum version we ask
+# boost::graph
+# - 1.84 is failing its own tests (Jul 2022)
+# - 1.80 changed on 1.80 (Aug 2022)
+# - 1.75 requires C++14 (Dec 2020)
+# - 1.68 changed on 1.68 (Aug 2018)
+# - 1.56 is the minimum version we ask (Aug 2014)
 
 on:
   push:
@@ -65,7 +67,7 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-          boost_minor: [56, 68, 75]
+          boost_minor: [56, 68, 75, 76, 77, 78, 79, 80, 84]
 
     steps:
       - uses: actions/checkout@v4
