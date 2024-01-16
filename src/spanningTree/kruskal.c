@@ -176,7 +176,7 @@ PGDLLEXPORT Datum _pgr_kruskalv4(PG_FUNCTION_ARGS) {
         values[0] = Int64GetDatum((int64_t)funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].depth);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_v);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].pred);
         values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
         values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
