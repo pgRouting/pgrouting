@@ -221,19 +221,19 @@ sub generate_upgrade_script {
         }
 
         # updating to 3.4+
-        if ($old_mayor == 2 or $old_minor < 4) {
+        if ($old_mayor == 2 or ($old_mayor == 3 and $old_minor < 4)) {
             push @commands, drop_special_case_function("pgr_maxcardinalitymatch(text,boolean)");
         }
 
         # updating to 3.5+
-        if ($old_mayor == 2 or $old_minor < 5) {
+        if ($old_mayor == 2 or ($old_mayor == 3 && $old_minor < 5)) {
             push @commands, drop_special_case_function("pgr_dijkstra(text,anyarray,bigint,boolean)");
             push @commands, drop_special_case_function("pgr_dijkstra(text,bigint,anyarray,boolean)");
             push @commands, drop_special_case_function("pgr_dijkstra(text,bigint,bigint,boolean)");
         }
 
         # updating to 3.6+
-        if ($old_mayor == 2 or $old_minor < 6) {
+        if ($old_mayor == 2 or ($old_mayor == 3 && $old_minor < 6)) {
             push @commands, drop_special_case_function("pgr_withpointsksp(text, text, bigint, bigint, integer, boolean, boolean, char, boolean)");
             push @commands, drop_special_case_function("pgr_astar(text,anyarray,bigint,boolean,integer,double precision,double precision)");
             push @commands, drop_special_case_function("pgr_astar(text,bigint,anyarray,boolean,integer,double precision,double precision)");
@@ -246,6 +246,26 @@ sub generate_upgrade_script {
             push @commands, drop_special_case_function("pgr_bdastar(text,anyarray,bigint,boolean,integer,numeric,numeric)");
             push @commands, drop_special_case_function("pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)");
             push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean)");
+        }
+
+        # updating to 3.7+
+        if ($old_mayor == 2 or ($old_mayor == 3 && $old_minor < 7)) {
+            push @commands, drop_special_case_function("pgr_primbfs(text,anyarray,bigint)");
+            push @commands, drop_special_case_function("pgr_primbfs(text,bigint,bigint)");
+            push @commands, drop_special_case_function("pgr_primdfs(text,anyarray,bigint)");
+            push @commands, drop_special_case_function("pgr_primdfs(text,bigint,bigint)");
+            push @commands, drop_special_case_function("pgr_primdd(text,bigint,numeric)");
+            push @commands, drop_special_case_function("pgr_primdd(text,bigint,double precision)");
+            push @commands, drop_special_case_function("pgr_primdd(text,anyarray,numeric)");
+            push @commands, drop_special_case_function("pgr_primdd(text,anyarray,double precision)");
+            push @commands, drop_special_case_function("pgr_kruskalbfs(text,anyarray,bigint)");
+            push @commands, drop_special_case_function("pgr_kruskalbfs(text,bigint,bigint)");
+            push @commands, drop_special_case_function("pgr_kruskaldfs(text,anyarray,bigint)");
+            push @commands, drop_special_case_function("pgr_kruskaldfs(text,bigint,bigint)");
+            push @commands, drop_special_case_function("pgr_kruskaldd(text,bigint,numeric)");
+            push @commands, drop_special_case_function("pgr_kruskaldd(text,bigint,double precision)");
+            push @commands, drop_special_case_function("pgr_kruskaldd(text,anyarray,numeric)");
+            push @commands, drop_special_case_function("pgr_kruskaldd(text,anyarray,double precision)");
         }
 
     }
