@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-06 18:14+0000\n"
-"PO-Revision-Date: 2024-01-05 03:00+0000\n"
+"PO-Revision-Date: 2024-01-19 06:48+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -4548,10 +4548,10 @@ msgid ":doc:`release_notes`"
 msgstr ":doc:`release_notes`"
 
 msgid "Current release"
-msgstr ""
+msgstr "当前版本"
 
 msgid "_"
-msgstr ""
+msgstr "_"
 
 msgid "Code enhancement"
 msgstr "代码改进"
@@ -4562,18 +4562,17 @@ msgid ""
 msgstr ""
 "`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ 行车距离清理"
 
-#, fuzzy
 msgid "Others"
-msgstr "羽毛"
+msgstr "其他"
 
 msgid "Adjust NEWS generator"
-msgstr ""
+msgstr "调整新闻生成器"
 
 msgid "Name change to `NEWS.md` for better visualization on GitHub"
-msgstr ""
+msgstr "更名为 \"NEWS.md\"，以便在 GitHub 上更好地可视化"
 
 msgid "All releases"
-msgstr ""
+msgstr "所有版本"
 
 msgid "Kruskal - Family of functions"
 msgstr "Kruskal - 函数族"
