@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-06 18:14+0000\n"
-"PO-Revision-Date: 2024-01-19 06:48+0000\n"
+"PO-Revision-Date: 2024-01-19 09:21+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -16219,12 +16219,11 @@ msgstr ""
 msgid "Mayors"
 msgstr ""
 
-#, fuzzy
 msgid "pgRouting 3"
-msgstr "pgRouting 版本"
+msgstr "pgRouting 3"
 
 msgid "Minors 3.x"
-msgstr ""
+msgstr "未成年人 3.x"
 
 #, fuzzy
 msgid "pgRouting 3.7"
