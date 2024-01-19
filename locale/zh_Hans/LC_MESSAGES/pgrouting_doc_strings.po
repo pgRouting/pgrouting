@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-06 18:14+0000\n"
-"PO-Revision-Date: 2024-01-19 09:26+0000\n"
-"Last-Translator: Zuochenwei <zuochenwei5@gmail.com>\n"
+"PO-Revision-Date: 2024-01-19 09:46+0000\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -18781,13 +18781,11 @@ msgstr "更好的文档：https://docs.pgrouting.org"
 msgid "shooting_star is discontinued"
 msgstr "shooting_star 已停用"
 
-#, fuzzy
 msgid "pgRouting 1"
-msgstr "pgRouting 版本"
+msgstr "pgRouting 1"
 
-#, fuzzy
 msgid "pgRouting 1.0"
-msgstr "pgRouting 版本"
+msgstr "pgRouting 1.0"
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for 1.x "
