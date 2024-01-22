@@ -46,7 +46,7 @@ extern "C" {
 #endif
 
 void
-do_pgr_johnson(
+pgr_do_johnson(
         char*,
         bool,
 

@@ -47,7 +47,7 @@ extern "C" {
 #endif
 
 void
-do_pgr_floydWarshall(
+pgr_do_floydWarshall(
     char*,
     bool,
 
