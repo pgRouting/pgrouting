@@ -40,6 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/geom_text_rt.h"
 #include "cpp_common/pgr_assert.h"
+#include "cpp_common/pgdata_getters.hpp"
 #include "alphaShape/pgr_alphaShape.h"
 
 #include "cpp_common/pgr_alloc.hpp"
@@ -61,10 +62,8 @@ data_eq(const Edge_xy_t &lhs, const Edge_xy_t &rhs, int64_t round) {
 }
 
 void
-do_alphaShape(
-        Edge_xy_t *edgesArr,
-        size_t edgesSize,
-
+pgr_do_alphaShape(
+        char* edges_sql,
         double alpha,
 
         GeomText_t **return_tuples,
@@ -80,13 +79,20 @@ do_alphaShape(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char* hint = nullptr;
+
     try {
-        pgassert(edgesArr);
-        pgassert(edgesSize > 2);
         pgassert(*return_count == 0);
         const int64_t round = 100000000000000;
 
-        std::vector<Edge_xy_t> edges(edgesArr, edgesArr + edgesSize);
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges_xy(std::string(edges_sql), true);
+
+        if (edges.size() < 3) {
+            throw std::string("Less than 3 vertices. pgr_alphaShape needs at least 3 vertices.");
+        }
+        hint = nullptr;
+
         /*
           id   | source | target | cost |     x1     |     y1     | x2 | y2
         -------+--------+--------+------+------------+------------+----+----
@@ -107,8 +113,6 @@ do_alphaShape(
             return
                 std::floor(lhs.x1 *  static_cast<double>(round)) < std::floor(rhs.x1 *  static_cast<double>(round));
         });
-        log << "ending sort";
-
 
 
         int64_t source_id(0);
@@ -201,15 +205,21 @@ do_alphaShape(
         (*return_count) = 0;
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     } catch(...) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << "Caught unknown exception!";
         *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     }
 }

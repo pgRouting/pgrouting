@@ -29,10 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifdef __cplusplus
 #   include <cstddef>
 using GeomText_t = struct GeomText_t;
-using Edge_xy_t = struct Edge_xy_t;
 #else
 #   include <stddef.h>
-typedef struct Edge_xy_t Edge_xy_t;
 typedef struct GeomText_t GeomText_t;
 #endif
 
@@ -40,18 +38,13 @@ typedef struct GeomText_t GeomText_t;
 extern "C" {
 #endif
 
-    void do_alphaShape(
-            Edge_xy_t *edgesArr,
-            size_t edgesTotal,
+void do_alphaShape(
+        char*,
 
-            double alpha,
+        double,
 
-            GeomText_t **return_tuples,
-            size_t *return_count,
-            char **log_msg,
-            char **notice_msg,
-
-            char **err_msg);
+        GeomText_t**, size_t*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }

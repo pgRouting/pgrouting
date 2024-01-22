@@ -35,7 +35,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 
 
-#include "c_common/trsp_pgget.h"
 #include "c_types/geom_text_rt.h"
 
 #include "drivers/alpha_shape/alphaShape_driver.h"
@@ -53,34 +52,8 @@ static void process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    Edge_xy_t *edgesArr = NULL;
-    size_t edgesSize = 0;
-
-    pgr_get_edges_xy(edges_sql, &edgesArr, &edgesSize, true, &err_msg);
-    throw_error(err_msg, edges_sql);
-
-    PGR_DBG("total edges %ld", edgesSize);
-    PGR_DBG("alpha %f", alpha);
-#if 0
-    for (size_t i = 0; i < edgesSize; ++i) {
-        PGR_DBG("x1=%f y1=%f", edgesArr[i].x1, edgesArr[i].y1);
-        PGR_DBG("x2=%f y2=%f", edgesArr[i].x2, edgesArr[i].y2);
-    }
-#endif
-
-    if (edgesSize < 3) {
-        if (edgesArr) pfree(edgesArr);
-        elog(ERROR, "Less than 3 vertices."
-                " pgr_alphaShape needs at least 3 vertices.");
-        pgr_SPI_finish();
-        return;
-    }
-
-    PGR_DBG("Calling alpha-shape driver\n");
-
-
-    do_alphaShape(
-            edgesArr, edgesSize,
+    pgr_do_alphaShape(
+            edges_sql,
             alpha,
 
             res,
@@ -100,7 +73,6 @@ static void process(
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-    if (edgesArr) pfree(edgesArr);
     pgr_SPI_finish();
 }
 
@@ -111,25 +83,19 @@ Datum _pgr_alphashape(PG_FUNCTION_ARGS) {
     FuncCallContext      *funcctx;
     TupleDesc            tuple_desc;
 
-    /**********************************************************************/
     GeomText_t *result_tuples = NULL;
     size_t      result_count = 0;
-    /**********************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        /******************************************************************/
-
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_FLOAT8(1),
                 &result_tuples,
                 &result_count);
-
-        /******************************************************************/
 
         funcctx->max_calls = result_count;
         funcctx->user_fctx = result_tuples;
