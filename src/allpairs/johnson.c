@@ -34,9 +34,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#if 0
-#include "c_common/trsp_pgget.h"
-#endif
 
 #include "drivers/allpairs/johnson_driver.h"
 
@@ -54,24 +51,6 @@ void process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-#if 0
-    PGR_DBG("Load data");
-    Edge_t *edges = NULL;
-    size_t total_tuples = 0;
-    pgr_get_edges(edges_sql, &edges, &total_tuples, true, true, &err_msg);
-    throw_error(err_msg, edges_sql);
-
-    if (total_tuples == 0) {
-        PGR_DBG("No edges found");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
-        pgr_SPI_finish();
-        return;
-    }
-    PGR_DBG("Total %ld tuples in query:", total_tuples);
-
-    PGR_DBG("Starting processing");
-#endif
 
     clock_t start_t = clock();
     pgr_do_johnson(
@@ -96,9 +75,6 @@ void process(
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
 
-#if 0
-    pfree(edges);
-#endif
     pgr_SPI_finish();
 }
 
