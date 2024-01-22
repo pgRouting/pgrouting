@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <boost/graph/kruskal_min_spanning_tree.hpp>
 #include "spanningTree/pgr_mst.hpp"
-#include "cpp_common/interruption.h"
+#include "cpp_common/interruption.hpp"
 
 namespace pgrouting {
 namespace functions {
