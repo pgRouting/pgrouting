@@ -43,7 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/flow_t.h"
 #include "c_types/edge_t.h"
 #include "c_types/path_rt.h"
-#include "cpp_common/interruption.h"
+#include "cpp_common/interruption.hpp"
 
 
 namespace pgrouting {

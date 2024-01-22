@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/prim_minimum_spanning_tree.hpp>
 
 #include "spanningTree/pgr_mst.hpp"
-#include "cpp_common/interruption.h"
+#include "cpp_common/interruption.hpp"
 
 //******************************************
 

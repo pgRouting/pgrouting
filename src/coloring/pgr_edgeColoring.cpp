@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/graph_utility.hpp>
 
 #include "cpp_common/pgr_assert.h"
-#include "cpp_common/interruption.h"
+#include "cpp_common/interruption.hpp"
 
 
 namespace pgrouting {

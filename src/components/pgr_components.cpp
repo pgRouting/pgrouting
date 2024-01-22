@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/biconnected_components.hpp>
 
 #include "cpp_common/identifiers.hpp"
-#include "cpp_common/interruption.h"
+#include "cpp_common/interruption.hpp"
 
 namespace pgrouting {
 namespace algorithms {
