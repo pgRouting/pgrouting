@@ -24,8 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_CPP_COMMON_INTERRUPTION_H_
-#define INCLUDE_CPP_COMMON_INTERRUPTION_H_
+#ifndef INCLUDE_CPP_COMMON_INTERRUPTION_HPP_
+#define INCLUDE_CPP_COMMON_INTERRUPTION_HPP_
 
 #ifdef _MSC_VER
 #define __PGR_PRETTY_FUNCTION__ __FUNCSIG__
@@ -86,5 +86,6 @@ extern "C" {
 
 }
 
+#include "cpp_common/undefPostgresDefine.hpp"
 
-#endif  // INCLUDE_CPP_COMMON_INTERRUPTION_H_
+#endif  // INCLUDE_CPP_COMMON_INTERRUPTION_HPP_
