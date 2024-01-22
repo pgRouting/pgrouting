@@ -7,7 +7,7 @@ Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail:vicky at erosion.dev
+Mail: vicky at erosion.dev
 
 ------
 
@@ -34,9 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/trsp_pgget.h"
 #include "c_common/check_parameters.h"
-
 #include "drivers/bdAstar/bdAstar_driver.h"
 
 PGDLLEXPORT Datum _pgr_bdastar(PG_FUNCTION_ARGS);
@@ -63,47 +61,12 @@ process(char* edges_sql,
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    int64_t* start_vidsArr = NULL;
-    size_t size_start_vidsArr = 0;
-
-    int64_t* end_vidsArr = NULL;
-    size_t size_end_vidsArr = 0;
-
-    Edge_xy_t *edges = NULL;
-    size_t total_edges = 0;
-
-    II_t_rt *combinations = NULL;
-    size_t total_combinations = 0;
-
-    if (starts && ends) {
-        start_vidsArr = pgr_get_bigIntArray(&size_start_vidsArr, starts, false, &err_msg);
-        throw_error(err_msg, "While getting start vids");
-        end_vidsArr = pgr_get_bigIntArray(&size_end_vidsArr, ends, false, &err_msg);
-        throw_error(err_msg, "While getting end vids");
-    } else if (combinations_sql) {
-        pgr_get_combinations(combinations_sql, &combinations, &total_combinations, &err_msg);
-        throw_error(err_msg, combinations_sql);
-    }
-
-    pgr_get_edges_xy(edges_sql, &edges, &total_edges, true, &err_msg);
-    throw_error(err_msg, edges_sql);
-
-    if (total_edges == 0) {
-        PGR_DBG("No edges found");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
-        pgr_SPI_finish();
-        return;
-    }
-
     clock_t start_t = clock();
     pgr_do_bdAstar(
-            edges, total_edges,
+            edges_sql,
+            combinations_sql,
+            starts, ends,
 
-            combinations, total_combinations,
-
-            start_vidsArr, size_start_vidsArr,
-            end_vidsArr, size_end_vidsArr,
             directed,
             heuristic,
             factor,
@@ -131,9 +94,6 @@ process(char* edges_sql,
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-    if (edges) pfree(edges);
-    if (start_vidsArr) pfree(start_vidsArr);
-    if (end_vidsArr) pfree(end_vidsArr);
 
     pgr_SPI_finish();
 }
@@ -161,7 +121,6 @@ _pgr_bdastar(PG_FUNCTION_ARGS) {
                 NULL,
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_ARRAYTYPE_P(2),
-
                 PG_GETARG_BOOL(3),
                 PG_GETARG_INT32(4),
                 PG_GETARG_FLOAT8(5),
