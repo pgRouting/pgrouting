@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 
-/** @brief Retrives the tuples for TRSP
+/** @brief Retrives the tuples
  * @tparam Data_type Scructure of data
  * @tparam Func fetcher function
  * @param[in] sql  Query to be processed
@@ -48,8 +48,6 @@ namespace pgrouting {
  * @param[in] flag useful flag depending on data
  * @param[in] info information about the data
  * @param[in] func fetcher function to be used
- *
- * @todo: V4 remove this template function
  */
 template <typename Data_type, typename Func>
 void get_data(
