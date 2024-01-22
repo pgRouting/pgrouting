@@ -34,15 +34,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
+#if 0
 #include "c_common/trsp_pgget.h"
+#endif
 
 #include "drivers/allpairs/johnson_driver.h"
 
 PGDLLEXPORT Datum _pgr_johnson(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_johnson);
 
-/******************************************************************************/
-/*                          MODIFY AS NEEDED                                  */
 static
 void process(
         char* edges_sql,
@@ -54,6 +54,7 @@ void process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
+#if 0
     PGR_DBG("Load data");
     Edge_t *edges = NULL;
     size_t total_tuples = 0;
@@ -70,10 +71,11 @@ void process(
     PGR_DBG("Total %ld tuples in query:", total_tuples);
 
     PGR_DBG("Starting processing");
+#endif
+
     clock_t start_t = clock();
-    do_pgr_johnson(
-            edges,
-            total_tuples,
+    pgr_do_johnson(
+            edges_sql,
             directed,
             result_tuples,
             result_count,
@@ -94,24 +96,19 @@ void process(
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
 
+#if 0
     pfree(edges);
+#endif
     pgr_SPI_finish();
 }
-/*                                                                            */
-/******************************************************************************/
 
 PGDLLEXPORT Datum
 _pgr_johnson(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
-    /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
     IID_t_rt *result_tuples = NULL;
     size_t result_count = 0;
-    /*                                                                        */
-    /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
@@ -119,21 +116,11 @@ _pgr_johnson(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-        /*********************************************************************/
-        /*                          MODIFY AS NEEDED                         */
-        // CREATE OR REPLACE FUNCTION pgr_johnson(
-        // edges_sql TEXT,
-        // directed BOOLEAN,
-
-        PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_BOOL(1),
                 &result_tuples,
                 &result_count);
-
-        /*                                                                   */
-        /*********************************************************************/
 
         funcctx->max_calls = result_count;
         funcctx->user_fctx = result_tuples;
@@ -158,13 +145,6 @@ _pgr_johnson(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool         *nulls;
 
-        /*********************************************************************/
-        /*                          MODIFY AS NEEDED                         */
-        // OUT seq BIGINT,
-        // OUT from_vid BIGINT,
-        // OUT to_vid BIGINT,
-        // OUT cost float)
-
         values = palloc(3 * sizeof(Datum));
         nulls = palloc(3 * sizeof(bool));
 
@@ -175,8 +155,6 @@ _pgr_johnson(PG_FUNCTION_ARGS) {
         nulls[1] = false;
         values[2] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         nulls[2] = false;
-
-        /*********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
