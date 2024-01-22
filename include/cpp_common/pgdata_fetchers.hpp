@@ -4,8 +4,10 @@ File: pgdata_fetchers.hpp
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
+Copyright (c) 2024 Celia Virginia Vergara Castillo
+- Return (C++) structure
 Copyright (c) 2023 Celia Virginia Vergara Castillo
-mail: vicky at erosion.dev
+- cat into one file
 Copyright (c) 2020 Mahmoud SAKR and Esteban ZIMANYI
 mail: m_attia_sakrcw at yahoo.com, estebanzimanyicw at gmail.com
 Copyright (c) 2016 Rohith Reddy
@@ -44,84 +46,86 @@ extern "C" {
 
 #include <vector>
 
-using II_t_rt = struct II_t_rt;
-using IID_t_rt = struct IID_t_rt;
-using Coordinate_t = struct Coordinate_t;
-using Delauny_t = struct Delauny_t;
-using Edge_bool_t = struct Edge_bool_t;
-using Edge_t = struct Edge_t;
-using CostFlow_t = struct CostFlow_t;
-using Edge_xy_t = struct Edge_xy_t;
-using Orders_t = struct Orders_t;
-using Restriction_t = struct Restriction_t;
-using Point_on_edge_t = struct Point_on_edge_t;
-using Vehicle_t = struct Vehicle_t;
+#include "cpp_common/undefPostgresDefine.hpp"
+
+#include "c_types/info_t.hpp"
+#include "c_types/ii_t_rt.h"
+#include "c_types/coordinate_t.h"
+#include "c_types/delauny_t.h"
+#include "c_types/edge_bool_t_rt.h"
+#include "c_types/costFlow_t.h"
+#include "c_types/edge_xy_t.h"
+#include "c_types/edge_t.h"
+#include "c_types/iid_t_rt.h"
+#include "c_types/pickDeliver/orders_t.h"
+#include "c_types/restriction_t.h"
+#include "c_types/point_on_edge_t.h"
+#include "c_types/pickDeliver/vehicle_t.h"
 
 namespace pgrouting {
-using Column_info_t = struct Column_info_t;
+namespace pgget {
 
-void fetch_combination(
+II_t_rt fetch_combination(
         const HeapTuple, const TupleDesc &,
         const std::vector<Column_info_t> &,
-        int64_t*, II_t_rt*, size_t*, bool);
+        int64_t*, size_t*, bool);
 
-void fetch_coordinate(
+Coordinate_t fetch_coordinate(
         const HeapTuple, const TupleDesc &,
         const std::vector<Column_info_t> &,
-        int64_t*, Coordinate_t*, size_t*, bool);
+        int64_t*, size_t*, bool);
 
-void fetch_delauny(
+Delauny_t fetch_delauny(
         const HeapTuple, const TupleDesc &,
         const std::vector<Column_info_t> &,
-        int64_t*, Delauny_t*, size_t*, bool);
+        int64_t*, size_t*, bool);
 
-void fetch_basic_edge(
+Edge_bool_t fetch_basic_edge(
         const HeapTuple, const TupleDesc &,
         const std::vector<Column_info_t> &,
-        int64_t*, Edge_bool_t*, size_t*, bool);
+        int64_t*, size_t*, bool);
 
-void fetch_edge(
+Edge_t fetch_edge(
         const HeapTuple, const TupleDesc &,
         const std::vector<Column_info_t> &,
-        int64_t*, Edge_t*, size_t*, bool);
+        int64_t*, size_t*, bool);
 
-void fetch_costFlow_edge(
+Edge_xy_t fetch_edge_xy(
         const HeapTuple, const TupleDesc &,
         const std::vector<Column_info_t> &,
-        int64_t*, CostFlow_t*, size_t*, bool);
+        int64_t*, size_t*, bool);
 
-void fetch_edge_with_xy(
+CostFlow_t fetch_costFlow_edge(
         const HeapTuple, const TupleDesc &,
         const std::vector<Column_info_t> &,
-        int64_t*, Edge_xy_t*, size_t*, bool);
+        int64_t*, size_t*, bool);
 
-void pgr_fetch_row(
+IID_t_rt pgr_fetch_row(
         const HeapTuple, const TupleDesc &,
         const std::vector<Column_info_t> &,
-        int64_t*, IID_t_rt*, size_t*, bool);
+        int64_t*, size_t*, bool);
 
-void fetch_orders(
+Orders_t fetch_orders(
         const HeapTuple, const TupleDesc &,
         const std::vector<Column_info_t> &,
-        int64_t*, Orders_t*, size_t*, bool);
+        int64_t*, size_t*, bool);
 
-void fetch_restriction(
+Restriction_t fetch_restriction(
         const HeapTuple, const TupleDesc &,
         const std::vector<Column_info_t> &,
-        int64_t*, Restriction_t*, size_t*, bool);
+        int64_t*, size_t*, bool);
 
-void fetch_point(
+Point_on_edge_t fetch_point(
         const HeapTuple, const TupleDesc &,
         const std::vector<Column_info_t> &,
-        int64_t*, Point_on_edge_t*, size_t*, bool);
+        int64_t*, size_t*, bool);
 
-void fetch_vehicle(
+Vehicle_t fetch_vehicle(
         const HeapTuple, const TupleDesc &,
         const std::vector<Column_info_t> &,
-        int64_t*, Vehicle_t*, size_t*, bool);
+        int64_t*, size_t*, bool);
 
-
-
+}  // namespace pgget
 }  // namespace pgrouting
 
 #endif  // INCLUDE_C_COMMON_PGDATA_FETCHERS_HPP_

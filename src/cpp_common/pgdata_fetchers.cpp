@@ -4,8 +4,10 @@ File: pgdata_fetchers.cpp
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
+Copyright (c) 2024 Celia Virginia Vergara Castillo
+- Return (C++) structure
 Copyright (c) 2023 Celia Virginia Vergara Castillo
-mail: vicky at erosion.dev
+- cat into one file
 Copyright (c) 2020 Mahmoud SAKR and Esteban ZIMANYI
 mail: m_attia_sakrcw at yahoo.com, estebanzimanyicw at gmail.com
 Copyright (c) 2016 Rohith Reddy
@@ -36,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgdata_fetchers.hpp"
 
 #include <vector>
-#include <cfloat>
+#include <limits>
 #include <cmath>
 
 #include "cpp_common/get_check_data.hpp"
@@ -57,398 +59,412 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 namespace pgrouting {
+namespace pgget {
 
-void fetch_combination(
+II_t_rt fetch_combination(
         const HeapTuple tuple,
         const TupleDesc &tupdesc,
         const std::vector<Column_info_t> &info,
         int64_t*,
-        II_t_rt *combination,
-        size_t* valid_combinations,
+        size_t*,
         bool) {
-    combination->d1.source = pgrouting::getBigInt(tuple, tupdesc, info[0]);
-    combination->d2.target = pgrouting::getBigInt(tuple, tupdesc, info[1]);
-
-    *valid_combinations = *valid_combinations + 1;
+    II_t_rt combination;
+    combination.d1.source = getBigInt(tuple, tupdesc, info[0]);
+    combination.d2.target = getBigInt(tuple, tupdesc, info[1]);
+    return combination;
 }
 
-void fetch_coordinate(
+Coordinate_t fetch_coordinate(
         const HeapTuple tuple,
         const TupleDesc &tupdesc,
         const std::vector<Column_info_t> &info,
         int64_t *default_id,
-        Coordinate_t* coordinate,
         size_t*,
         bool) {
-    if (pgrouting::column_found(info[0].colNumber)) {
-        coordinate->id = pgrouting::getBigInt(tuple, tupdesc, info[0]);
+    Coordinate_t coordinate;
+    if (column_found(info[0].colNumber)) {
+        coordinate.id = getBigInt(tuple, tupdesc, info[0]);
     } else {
-        coordinate->id = *default_id;
+        coordinate.id = *default_id;
         ++(*default_id);
     }
-    coordinate->x = pgrouting::getFloat8(tuple, tupdesc, info[1]);
-    coordinate->y = pgrouting::getFloat8(tuple, tupdesc, info[2]);
+    coordinate.x = getFloat8(tuple, tupdesc, info[1]);
+    coordinate.y = getFloat8(tuple, tupdesc, info[2]);
+    return coordinate;
 }
 
-void fetch_delauny(
+Delauny_t fetch_delauny(
         const HeapTuple tuple,
         const TupleDesc &tupdesc,
         const std::vector<Column_info_t> &info,
         int64_t*,
-        Delauny_t* delauny,
         size_t*,
         bool) {
-    delauny->tid = pgrouting::getBigInt(tuple, tupdesc, info[0]);
-    delauny->pid = pgrouting::getBigInt(tuple, tupdesc, info[1]);
-    delauny->x = pgrouting::getFloat8(tuple, tupdesc, info[2]);
-    delauny->y = pgrouting::getFloat8(tuple, tupdesc, info[3]);
+    Delauny_t delauny;
+    delauny.tid = getBigInt(tuple, tupdesc, info[0]);
+    delauny.pid = getBigInt(tuple, tupdesc, info[1]);
+    delauny.x = getFloat8(tuple, tupdesc, info[2]);
+    delauny.y = getFloat8(tuple, tupdesc, info[3]);
+    return delauny;
 }
 
 /* edges have many fetchers */
 
-void fetch_basic_edge(
+Edge_bool_t fetch_basic_edge(
         const HeapTuple tuple,
         const TupleDesc &tupdesc,
         const std::vector<Column_info_t> &info,
         int64_t *default_id,
-        Edge_bool_t *edge,
         size_t *valid_edges,
         bool) {
-    if (pgrouting::column_found(info[0].colNumber)) {
-        edge->id = pgrouting::getBigInt(tuple, tupdesc, info[0]);
+    Edge_bool_t edge;
+    if (column_found(info[0].colNumber)) {
+        edge.id = getBigInt(tuple, tupdesc, info[0]);
     } else {
-        edge->id = *default_id;
+        edge.id = *default_id;
         ++(*default_id);
     }
-    bool new_columns = pgrouting::column_found(info[5].colNumber);
+    bool new_columns = column_found(info[5].colNumber);
 
-    edge->source = pgrouting::getBigInt(tuple, tupdesc, info[1]);
-    edge->target = pgrouting::getBigInt(tuple, tupdesc, info[2]);
+    edge.source = getBigInt(tuple, tupdesc, info[1]);
+    edge.target = getBigInt(tuple, tupdesc, info[2]);
 
     if (new_columns) {
-        edge->going = pgrouting::getFloat8(tuple, tupdesc, info[5]) > 0
-            || (pgrouting::column_found(info[6].colNumber)
-                    && pgrouting::getFloat8(tuple, tupdesc, info[6]) > 0);
+        edge.going = getFloat8(tuple, tupdesc, info[5]) > 0
+            || (column_found(info[6].colNumber)
+                    && getFloat8(tuple, tupdesc, info[6]) > 0);
     } else {
-        edge->going = pgrouting::getFloat8(tuple, tupdesc, info[3]) > 0
-            || (pgrouting::column_found(info[4].colNumber)
-                    && pgrouting::getFloat8(tuple, tupdesc, info[4]) > 0);
+        edge.going = getFloat8(tuple, tupdesc, info[3]) > 0
+            || (column_found(info[4].colNumber)
+                    && getFloat8(tuple, tupdesc, info[4]) > 0);
     }
 
     (*valid_edges)++;
+    return edge;
 }
 
-void fetch_edge(
+Edge_t fetch_edge(
         const HeapTuple tuple,
         const TupleDesc &tupdesc,
         const std::vector<Column_info_t> &info,
         int64_t *default_id,
-        Edge_t *edge,
         size_t *valid_edges,
         bool normal) {
-    if (pgrouting::column_found(info[0].colNumber)) {
-        edge->id = pgrouting::getBigInt(tuple, tupdesc, info[0]);
+    Edge_t edge;
+    if (column_found(info[0].colNumber)) {
+        edge.id = getBigInt(tuple, tupdesc, info[0]);
     } else {
-        edge->id = *default_id;
+        edge.id = *default_id;
         ++(*default_id);
     }
 
     if (normal) {
-        edge->source = pgrouting::getBigInt(tuple, tupdesc,  info[1]);
-        edge->target = pgrouting::getBigInt(tuple, tupdesc, info[2]);
+        edge.source = getBigInt(tuple, tupdesc,  info[1]);
+        edge.target = getBigInt(tuple, tupdesc, info[2]);
     } else {
-        edge->target = pgrouting::getBigInt(tuple, tupdesc,  info[1]);
-        edge->source = pgrouting::getBigInt(tuple, tupdesc, info[2]);
+        edge.target = getBigInt(tuple, tupdesc,  info[1]);
+        edge.source = getBigInt(tuple, tupdesc, info[2]);
     }
 
-    edge->cost = pgrouting::getFloat8(tuple, tupdesc, info[3]);
+    edge.cost = getFloat8(tuple, tupdesc, info[3]);
 
-    if (pgrouting::column_found(info[4].colNumber)) {
-        edge->reverse_cost = pgrouting::getFloat8(tuple, tupdesc, info[4]);
+    if (column_found(info[4].colNumber)) {
+        edge.reverse_cost = getFloat8(tuple, tupdesc, info[4]);
     } else {
-        edge->reverse_cost = -1;
+        edge.reverse_cost = -1;
     }
 
-    edge->cost = std::isinf(edge->cost)?
-        DBL_MAX : edge->cost;
+    edge.cost = std::isinf(edge.cost)?
+        std::numeric_limits<double>::max() : edge.cost;
 
-    edge->reverse_cost = std::isinf(edge->reverse_cost)?
-        DBL_MAX : edge->reverse_cost;
+    edge.reverse_cost = std::isinf(edge.reverse_cost)?
+        std::numeric_limits<double>::max() : edge.reverse_cost;
 
-    *valid_edges = edge->cost < 0? *valid_edges: *valid_edges + 1;
-    *valid_edges = edge->reverse_cost < 0? *valid_edges: *valid_edges + 1;
+    *valid_edges = edge.cost < 0? *valid_edges: *valid_edges + 1;
+    *valid_edges = edge.reverse_cost < 0? *valid_edges: *valid_edges + 1;
+
+    return edge;
 }
 
-void fetch_costFlow_edge(
+
+CostFlow_t fetch_costFlow_edge(
         const HeapTuple tuple,
         const TupleDesc &tupdesc,
         const std::vector<Column_info_t> &info,
         int64_t *default_id,
-        CostFlow_t *edge,
         size_t *valid_edges,
         bool normal) {
-    if (pgrouting::column_found(info[0].colNumber)) {
-        edge->edge_id = pgrouting::getBigInt(tuple, tupdesc, info[0]);
+    CostFlow_t edge;
+    if (column_found(info[0].colNumber)) {
+        edge.edge_id = getBigInt(tuple, tupdesc, info[0]);
     } else {
-        edge->edge_id = *default_id;
+        edge.edge_id = *default_id;
         ++(*default_id);
     }
 
     if (normal) {
-        edge->source = pgrouting::getBigInt(tuple, tupdesc,  info[1]);
-        edge->target = pgrouting::getBigInt(tuple, tupdesc, info[2]);
+        edge.source = getBigInt(tuple, tupdesc,  info[1]);
+        edge.target = getBigInt(tuple, tupdesc, info[2]);
     } else {
-        edge->target = pgrouting::getBigInt(tuple, tupdesc,  info[1]);
-        edge->source = pgrouting::getBigInt(tuple, tupdesc, info[2]);
+        edge.target = getBigInt(tuple, tupdesc,  info[1]);
+        edge.source = getBigInt(tuple, tupdesc, info[2]);
     }
 
-    edge->capacity = pgrouting::getBigInt(tuple, tupdesc, info[3]);
-    if (pgrouting::column_found(info[4].colNumber)) {
-        edge->reverse_capacity = pgrouting::getBigInt(tuple, tupdesc, info[4]);
+    edge.capacity = getBigInt(tuple, tupdesc, info[3]);
+    if (column_found(info[4].colNumber)) {
+        edge.reverse_capacity = getBigInt(tuple, tupdesc, info[4]);
     } else {
-        edge->reverse_capacity = -1;
+        edge.reverse_capacity = -1;
     }
 
-    edge->cost = pgrouting::getFloat8(tuple, tupdesc, info[5]);
-    if (pgrouting::column_found(info[6].colNumber)) {
-        edge->reverse_cost = pgrouting::getFloat8(tuple, tupdesc, info[6]);
+    edge.cost = getFloat8(tuple, tupdesc, info[5]);
+    if (column_found(info[6].colNumber)) {
+        edge.reverse_cost = getFloat8(tuple, tupdesc, info[6]);
     } else {
-        edge->reverse_cost = 0;
+        edge.reverse_cost = 0;
     }
 
-    *valid_edges = edge->capacity < 0? *valid_edges: *valid_edges + 1;
-    *valid_edges = edge->reverse_capacity < 0? *valid_edges: *valid_edges + 1;
+    *valid_edges = edge.capacity < 0? *valid_edges: *valid_edges + 1;
+    *valid_edges = edge.reverse_capacity < 0? *valid_edges: *valid_edges + 1;
+    return edge;
 }
 
-void fetch_edge_with_xy(
+Edge_xy_t fetch_edge_xy(
         const HeapTuple tuple,
         const TupleDesc &tupdesc,
         const std::vector<Column_info_t> &info,
         int64_t *default_id,
-        Edge_xy_t *edge,
         size_t *valid_edges,
         bool normal) {
-    if (pgrouting::column_found(info[0].colNumber)) {
-        edge->id = pgrouting::getBigInt(tuple, tupdesc, info[0]);
+    Edge_xy_t edge;
+    if (column_found(info[0].colNumber)) {
+        edge.id = getBigInt(tuple, tupdesc, info[0]);
     } else {
-        edge->id = *default_id;
+        edge.id = *default_id;
         ++(*default_id);
     }
 
     if (normal) {
-        edge->source = pgrouting::getBigInt(tuple, tupdesc,  info[1]);
-        edge->target = pgrouting::getBigInt(tuple, tupdesc, info[2]);
+        edge.source = getBigInt(tuple, tupdesc,  info[1]);
+        edge.target = getBigInt(tuple, tupdesc, info[2]);
     } else {
-        edge->target = pgrouting::getBigInt(tuple, tupdesc,  info[1]);
-        edge->source = pgrouting::getBigInt(tuple, tupdesc, info[2]);
+        edge.target = getBigInt(tuple, tupdesc,  info[1]);
+        edge.source = getBigInt(tuple, tupdesc, info[2]);
     }
-    edge->cost = pgrouting::getFloat8(tuple, tupdesc, info[3]);
+    edge.cost = getFloat8(tuple, tupdesc, info[3]);
 
-    if (pgrouting::column_found(info[4].colNumber)) {
-        edge->reverse_cost = pgrouting::getFloat8(tuple, tupdesc, info[4]);
+    if (column_found(info[4].colNumber)) {
+        edge.reverse_cost = getFloat8(tuple, tupdesc, info[4]);
     } else {
-        edge->reverse_cost = -1;
+        edge.reverse_cost = -1;
     }
 
-    edge->x1 = pgrouting::getFloat8(tuple, tupdesc, info[5]);
-    edge->y1 = pgrouting::getFloat8(tuple, tupdesc, info[6]);
-    edge->x2 = pgrouting::getFloat8(tuple, tupdesc, info[7]);
-    edge->y2 = pgrouting::getFloat8(tuple, tupdesc, info[8]);
+    edge.x1 = getFloat8(tuple, tupdesc, info[5]);
+    edge.y1 = getFloat8(tuple, tupdesc, info[6]);
+    edge.x2 = getFloat8(tuple, tupdesc, info[7]);
+    edge.y2 = getFloat8(tuple, tupdesc, info[8]);
 
-    *valid_edges = edge->cost < 0? *valid_edges: *valid_edges + 1;
-    *valid_edges = edge->reverse_cost < 0? *valid_edges: *valid_edges + 1;
+    *valid_edges = edge.cost < 0? *valid_edges: *valid_edges + 1;
+    *valid_edges = edge.reverse_cost < 0? *valid_edges: *valid_edges + 1;
+    return edge;
 }
 
-void pgr_fetch_row(
+IID_t_rt pgr_fetch_row(
         const HeapTuple tuple,
         const TupleDesc &tupdesc,
         const std::vector<Column_info_t> &info,
         int64_t*,
-        IID_t_rt *distance,
         size_t*,
         bool) {
-    distance->from_vid = pgrouting::getBigInt(tuple, tupdesc,  info[0]);
-    distance->to_vid = pgrouting::getBigInt(tuple, tupdesc,  info[1]);
-    distance->cost = pgrouting::getFloat8(tuple, tupdesc, info[2]);
+    IID_t_rt distance;
+    distance.from_vid = getBigInt(tuple, tupdesc,  info[0]);
+    distance.to_vid = getBigInt(tuple, tupdesc,  info[1]);
+    distance.cost = getFloat8(tuple, tupdesc, info[2]);
+    return distance;
 }
 
 
-void fetch_orders(
+Orders_t fetch_orders(
         const HeapTuple tuple,
         const TupleDesc &tupdesc,
         const std::vector<Column_info_t> &info,
         int64_t*,
-        Orders_t* pd_order,
         size_t*,
         bool with_id) {
-    pd_order->id = pgrouting::getBigInt(tuple, tupdesc, info[0]);
-    pd_order->demand = pgrouting::getFloat8(tuple, tupdesc, info[1]);
+    Orders_t pd_order;
+    pd_order.id = getBigInt(tuple, tupdesc, info[0]);
+    pd_order.demand = getFloat8(tuple, tupdesc, info[1]);
 
     /*
      * the pickups
      */
-    pd_order->pick_x = with_id ?
-        0 : pgrouting::getFloat8(tuple, tupdesc, info[2]);
-    pd_order->pick_y =  with_id ?
-        0 : pgrouting::getFloat8(tuple, tupdesc, info[3]);
-    pd_order->pick_open_t = pgrouting::getFloat8(tuple, tupdesc, info[4]);
-    pd_order->pick_close_t = pgrouting::getFloat8(tuple, tupdesc, info[5]);
-    pd_order->pick_service_t = pgrouting::column_found(info[6].colNumber) ?
-        pgrouting::getFloat8(tuple, tupdesc, info[6]) : 0;
+    pd_order.pick_x = with_id ?
+        0 : getFloat8(tuple, tupdesc, info[2]);
+    pd_order.pick_y =  with_id ?
+        0 : getFloat8(tuple, tupdesc, info[3]);
+    pd_order.pick_open_t = getFloat8(tuple, tupdesc, info[4]);
+    pd_order.pick_close_t = getFloat8(tuple, tupdesc, info[5]);
+    pd_order.pick_service_t = column_found(info[6].colNumber) ?
+        getFloat8(tuple, tupdesc, info[6]) : 0;
 
     /*
      * the deliveries
      */
-    pd_order->deliver_x =  with_id ?
-        0 : pgrouting::getFloat8(tuple, tupdesc, info[7]);
-    pd_order->deliver_y =  with_id ?
-        0 : pgrouting::getFloat8(tuple, tupdesc, info[8]);
-    pd_order->deliver_open_t = pgrouting::getFloat8(tuple, tupdesc, info[9]);
-    pd_order->deliver_close_t = pgrouting::getFloat8(tuple, tupdesc, info[10]);
-    pd_order->deliver_service_t = pgrouting::column_found(info[11].colNumber) ?
-        pgrouting::getFloat8(tuple, tupdesc, info[11]) : 0;
+    pd_order.deliver_x =  with_id ?
+        0 : getFloat8(tuple, tupdesc, info[7]);
+    pd_order.deliver_y =  with_id ?
+        0 : getFloat8(tuple, tupdesc, info[8]);
+    pd_order.deliver_open_t = getFloat8(tuple, tupdesc, info[9]);
+    pd_order.deliver_close_t = getFloat8(tuple, tupdesc, info[10]);
+    pd_order.deliver_service_t = column_found(info[11].colNumber) ?
+        getFloat8(tuple, tupdesc, info[11]) : 0;
 
-    pd_order->pick_node_id = with_id ?
-        pgrouting::getBigInt(tuple, tupdesc, info[12]) : 0;
-    pd_order->deliver_node_id = with_id ?
-        pgrouting::getBigInt(tuple, tupdesc, info[13]) : 0;
+    pd_order.pick_node_id = with_id ?
+        getBigInt(tuple, tupdesc, info[12]) : 0;
+    pd_order.deliver_node_id = with_id ?
+        getBigInt(tuple, tupdesc, info[13]) : 0;
+    return pd_order;
 }
 
 
-void fetch_restriction(
+Restriction_t fetch_restriction(
         const HeapTuple tuple,
         const TupleDesc &tupdesc,
         const std::vector<Column_info_t> &info,
         int64_t*,
-        Restriction_t *restriction,
         size_t*,
         bool) {
-    restriction->cost = pgrouting::getFloat8(tuple, tupdesc, info[0]);
+    Restriction_t restriction;
+    restriction.cost = getFloat8(tuple, tupdesc, info[0]);
 
-    restriction->via = NULL;
-    restriction->via_size = 0;
-    restriction->via = pgrouting::getBigIntArr(tuple, tupdesc, info[1], &restriction->via_size);
+    restriction.via = NULL;
+    restriction.via_size = 0;
+    restriction.via = getBigIntArr(tuple, tupdesc, info[1], &restriction.via_size);
+    return restriction;
 }
 
 
-void fetch_point(
+Point_on_edge_t fetch_point(
         const HeapTuple tuple,
         const TupleDesc &tupdesc,
         const std::vector<Column_info_t> &info,
         int64_t *default_pid,
-        Point_on_edge_t* point,
         size_t*,
         bool) {
-    if (pgrouting::column_found(info[0].colNumber)) {
-        point->pid = pgrouting::getBigInt(tuple, tupdesc, info[0]);
+    Point_on_edge_t point;
+    if (column_found(info[0].colNumber)) {
+        point.pid = getBigInt(tuple, tupdesc, info[0]);
     } else {
         ++(*default_pid);
-        point->pid = *default_pid;
+        point.pid = *default_pid;
     }
 
-    point->edge_id = pgrouting::getBigInt(tuple, tupdesc, info[1]);
-    point->fraction = pgrouting::getFloat8(tuple, tupdesc, info[2]);
+    point.edge_id = getBigInt(tuple, tupdesc, info[1]);
+    point.fraction = getFloat8(tuple, tupdesc, info[2]);
 
-    if (pgrouting::column_found(info[3].colNumber)) {
-        point->side = pgrouting::getChar(tuple, tupdesc, info[3], false, 'b');
+    if (column_found(info[3].colNumber)) {
+        point.side = getChar(tuple, tupdesc, info[3], false, 'b');
     } else {
-        point->side = 'b';
+        point.side = 'b';
     }
+    return point;
 }
 
-void fetch_vehicle(
+Vehicle_t fetch_vehicle(
         const HeapTuple tuple,
         const TupleDesc &tupdesc,
         const std::vector<Column_info_t> &info,
         int64_t*,
-        Vehicle_t *vehicle,
         size_t*,
         bool with_id) {
-    vehicle->id = pgrouting::getBigInt(tuple, tupdesc, info[0]);
-    vehicle->capacity = pgrouting::getFloat8(tuple, tupdesc, info[1]);
+    Vehicle_t vehicle;
+    vehicle.id = getBigInt(tuple, tupdesc, info[0]);
+    vehicle.capacity = getFloat8(tuple, tupdesc, info[1]);
 
-    vehicle->start_x = with_id ?
+    vehicle.start_x = with_id ?
         0 :
-        pgrouting::getFloat8(tuple, tupdesc, info[2]);
-    vehicle->start_y = with_id ?
+        getFloat8(tuple, tupdesc, info[2]);
+    vehicle.start_y = with_id ?
         0 :
-        pgrouting::getFloat8(tuple, tupdesc, info[3]);
+        getFloat8(tuple, tupdesc, info[3]);
 
-    vehicle->speed = pgrouting::column_found(info[13].colNumber) ?
-        pgrouting::getFloat8(tuple, tupdesc, info[13]) :
+    vehicle.speed = column_found(info[13].colNumber) ?
+        getFloat8(tuple, tupdesc, info[13]) :
         1;
-    vehicle->cant_v =  pgrouting::column_found(info[4].colNumber) ?
-        pgrouting::getBigInt(tuple, tupdesc, info[4]) :
+    vehicle.cant_v =  column_found(info[4].colNumber) ?
+        getBigInt(tuple, tupdesc, info[4]) :
         1;
-    vehicle->start_open_t = pgrouting::column_found(info[5].colNumber) ?
-        pgrouting::getFloat8(tuple, tupdesc, info[5]) :
+    vehicle.start_open_t = column_found(info[5].colNumber) ?
+        getFloat8(tuple, tupdesc, info[5]) :
         0;
-    vehicle->start_close_t = pgrouting::column_found(info[6].colNumber) ?
-        pgrouting::getFloat8(tuple, tupdesc, info[6]) :
-        DBL_MAX;
-    vehicle->start_service_t = pgrouting::column_found(info[7].colNumber) ?
-        pgrouting::getFloat8(tuple, tupdesc, info[7]) :
+    vehicle.start_close_t = column_found(info[6].colNumber) ?
+        getFloat8(tuple, tupdesc, info[6]) :
+        std::numeric_limits<double>::max();
+    vehicle.start_service_t = column_found(info[7].colNumber) ?
+        getFloat8(tuple, tupdesc, info[7]) :
         0;
 
 
-    if (!(pgrouting::column_found(info[8].colNumber))
-            && pgrouting::column_found(info[9].colNumber)) {
+    if (!(column_found(info[8].colNumber))
+            && column_found(info[9].colNumber)) {
         ereport(ERROR,
                 (errmsg("Column \'%s\' not Found", info[8].name.c_str()),
                  errhint("%s was found, also column is expected %s ",
                      info[9].name.c_str(), info[8].name.c_str())));
     }
-    if (pgrouting::column_found(info[8].colNumber)
-            && !(pgrouting::column_found(info[9].colNumber))) {
+    if (column_found(info[8].colNumber)
+            && !(column_found(info[9].colNumber))) {
         ereport(ERROR,
                 (errmsg("Column \'%s\' not Found", info[9].name.c_str()),
                  errhint("%s was found, also column is expected %s ",
                      info[8].name.c_str(), info[9].name.c_str())));
     }
 
-    vehicle->end_x = pgrouting::column_found(info[8].colNumber) ?
-        pgrouting::getFloat8(tuple, tupdesc, info[8]) :
-        vehicle->start_x;
-    vehicle->end_y = pgrouting::column_found(info[9].colNumber) ?
-        pgrouting::getFloat8(tuple, tupdesc, info[9]) :
-        vehicle->start_y;
+    vehicle.end_x = column_found(info[8].colNumber) ?
+        getFloat8(tuple, tupdesc, info[8]) :
+        vehicle.start_x;
+    vehicle.end_y = column_found(info[9].colNumber) ?
+        getFloat8(tuple, tupdesc, info[9]) :
+        vehicle.start_y;
 
-    if (!(pgrouting::column_found(info[10].colNumber))
-            && pgrouting::column_found(info[11].colNumber)) {
+    if (!(column_found(info[10].colNumber))
+            && column_found(info[11].colNumber)) {
         ereport(ERROR,
                 (errmsg("Column \'%s\' not Found", info[10].name.c_str()),
                  errhint("%s was found, also column is expected %s ",
                      info[10].name.c_str(), info[11].name.c_str())));
     }
 
-    if (pgrouting::column_found(info[10].colNumber)
-            && !(pgrouting::column_found(info[11].colNumber))) {
+    if (column_found(info[10].colNumber)
+            && !(column_found(info[11].colNumber))) {
         ereport(ERROR,
                 (errmsg("Column \'%s\' not Found", info[11].name.c_str()),
                  errhint("%s was found, also column is expected %s ",
                      info[11].name.c_str(), info[10].name.c_str())));
     }
-    vehicle->end_open_t = pgrouting::column_found(info[10].colNumber) ?
-        pgrouting::getFloat8(tuple, tupdesc, info[10]) :
-        vehicle->start_open_t;
-    vehicle->end_close_t = pgrouting::column_found(info[11].colNumber) ?
-        pgrouting::getFloat8(tuple, tupdesc, info[11]) :
-        vehicle->start_close_t;
-    vehicle->end_service_t = pgrouting::column_found(info[12].colNumber) ?
-        pgrouting::getFloat8(tuple, tupdesc, info[12]) :
-        vehicle->start_service_t;
+    vehicle.end_open_t = column_found(info[10].colNumber) ?
+        getFloat8(tuple, tupdesc, info[10]) :
+        vehicle.start_open_t;
+    vehicle.end_close_t = column_found(info[11].colNumber) ?
+        getFloat8(tuple, tupdesc, info[11]) :
+        vehicle.start_close_t;
+    vehicle.end_service_t = column_found(info[12].colNumber) ?
+        getFloat8(tuple, tupdesc, info[12]) :
+        vehicle.start_service_t;
 
-    vehicle->speed = pgrouting::column_found(info[13].colNumber) ?
-        pgrouting::getFloat8(tuple, tupdesc, info[13]) :
+    vehicle.speed = column_found(info[13].colNumber) ?
+        getFloat8(tuple, tupdesc, info[13]) :
         1;
-    vehicle->start_node_id = with_id ?
-        pgrouting::getBigInt(tuple, tupdesc, info[14]) :
+    vehicle.start_node_id = with_id ?
+        getBigInt(tuple, tupdesc, info[14]) :
         0;
-    vehicle->end_node_id = with_id ?
-        (pgrouting::column_found(info[12].colNumber) ?
-            pgrouting::getBigInt(tuple, tupdesc, info[15]) :
-            vehicle->start_node_id) :
+    vehicle.end_node_id = with_id ?
+        (column_found(info[12].colNumber) ?
+         getBigInt(tuple, tupdesc, info[15]) :
+         vehicle.start_node_id) :
         0;
+    return vehicle;
 }
 
+}  // namespace pgget
 }  // namespace pgrouting
