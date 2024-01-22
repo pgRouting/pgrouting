@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/pgdata_getters.h"
+#include "c_common/trsp_pgget.h"
 #include "drivers/dagShortestPath/dagShortestPath_driver.h"  // the link to the C++ code of the function
 
 PGDLLEXPORT Datum _pgr_dagshortestpath(PG_FUNCTION_ARGS);

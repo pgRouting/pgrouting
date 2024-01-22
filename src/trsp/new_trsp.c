@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/restriction_t.h"
 #include "c_types/path_rt.h"
 
-#include "c_common/pgdata_getters.h"
+#include "c_common/trsp_pgget.h"
 
 PGDLLEXPORT Datum _pgr_trspv4(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_trspv4);

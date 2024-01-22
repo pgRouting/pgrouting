@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 
-#include "c_common/pgdata_getters.h"
+#include "c_common/trsp_pgget.h"
 
 #include "drivers/planar/isPlanar_driver.h"
 PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS);
