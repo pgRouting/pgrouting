@@ -37,10 +37,12 @@ extern "C" {
 #include <catalog/pg_type.h>
 }
 
-#include <vector>
-#include <string>
 #include <cstdint>
+#include <set>
+#include <string>
+#include <vector>
 
+#include "cpp_common/undefPostgresDefine.hpp"
 
 
 namespace pgrouting {
@@ -54,6 +56,12 @@ void fetch_column_info(const TupleDesc&, std::vector<Column_info_t>&);
 
 /** @brief Function return the value of specified column in char type. */
 char getChar(const HeapTuple, const TupleDesc&, const Column_info_t&, bool, char);
+
+/** @brief get postgres array into c++ set container */
+std::set<int64_t> get_pgset(ArrayType*);
+
+/** @brief get postgres array into c++ vector container */
+std::vector<int64_t> get_pgarray(ArrayType*, bool);
 
 /** @brief Enforces the input array to be @b NOT empty */
 int64_t* get_array(ArrayType*, size_t*, bool);
