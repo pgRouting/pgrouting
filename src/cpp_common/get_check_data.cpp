@@ -35,7 +35,9 @@ extern "C" {
 }
 
 #include <vector>
+#include <set>
 
+#include "cpp_common/undefPostgresDefine.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "c_types/info_t.hpp"
 
@@ -238,6 +240,183 @@ char getChar(
         value = default_value;
     }
     return value;
+}
+
+/** @brief get the array contents from postgres
+ *
+ * @details This function generates the array inputs according to their type
+ * received through @a ArrayType *v parameter and store them in @a c_array. It
+ * can be empty also if received @a allow_empty true. The cases of failure are:-
+ * 1. When @a ndim is not equal to one dimension.
+ * 2. When no element is found i.e. nitems is zero or negative.
+ * 3. If the element type doesn't lie in switch cases, give the error of expected array of any integer type
+ * 4. When size of @a c_array is out of range or memory.
+ * 5. When null value is found in the array.
+ *
+ * All these failures are represented as error through @a elog.
+ * @param[in] v Pointer to the postgres C array
+ *
+ * @pre the array has to be one dimension
+ * @pre Must have elements (when allow_empty is false)
+ *
+ * @returns set of elements on the PostgreSQL array
+ */
+std::set<int64_t>
+get_pgset(ArrayType *v) {
+    std::set<int64_t> results;
+
+    if (!v) return results;
+
+    auto    element_type = ARR_ELEMTYPE(v);
+    auto    dim = ARR_DIMS(v);
+    auto    ndim = ARR_NDIM(v);
+    auto    nitems = ArrayGetNItems(ndim, dim);
+    Datum  *elements = nullptr;
+    bool   *nulls = nullptr;
+    int16   typlen;
+    bool    typbyval;
+    char    typalign;
+
+
+    if (ndim == 0 || nitems <= 0) {
+        return results;
+    }
+
+    if (ndim != 1) {
+        throw std::string("One dimension expected");
+    }
+
+    get_typlenbyvalalign(element_type, &typlen, &typbyval, &typalign);
+
+    switch (element_type) {
+        case INT2OID:
+        case INT4OID:
+        case INT8OID:
+            break;
+        default:
+            throw std::string("Expected array of ANY-INTEGER");
+    }
+
+    deconstruct_array(v, element_type, typlen, typbyval,
+            typalign, &elements, &nulls,
+            &nitems);
+
+    int64_t data(0);
+
+    for (int i = 0; i < nitems; i++) {
+        if (nulls[i]) {
+            throw std::string("NULL value found in Array!");
+        } else {
+            switch (element_type) {
+                case INT2OID:
+                    data = static_cast<int64_t>(DatumGetInt16(elements[i]));
+                    break;
+                case INT4OID:
+                    data = static_cast<int64_t>(DatumGetInt32(elements[i]));
+                    break;
+                case INT8OID:
+                    data = DatumGetInt64(elements[i]);
+                    break;
+            }
+        }
+        results.insert(data);
+    }
+
+    pfree(elements);
+    pfree(nulls);
+    return results;
+}
+
+/** @brief get the array contents from postgres
+ *
+ * @details This function generates the array inputs according to their type
+ * received through @a ArrayType *v parameter and store them in @a c_array. It
+ * can be empty also if received @a allow_empty true. The cases of failure are:-
+ * 1. When @a ndim is not equal to one dimension.
+ * 2. When no element is found i.e. nitems is zero or negative.
+ * 3. If the element type doesn't lie in switch cases, give the error of expected array of any integer type
+ * 4. When size of @a c_array is out of range or memory.
+ * 5. When null value is found in the array.
+ *
+ * All these failures are represented as error through @a elog.
+ * @param[in] v Pointer to the postgres C array
+ * @param[in] allow_empty flag to allow empty arrays
+ *
+ * @pre the array has to be one dimension
+ * @pre Must have elements (when allow_empty is false)
+ *
+ * @returns Vector of elements of the PostgreSQL array
+ */
+std::vector<int64_t>
+get_pgarray(ArrayType *v, bool allow_empty) {
+    std::vector<int64_t> results;
+    if (!v) return results;
+
+    auto    element_type = ARR_ELEMTYPE(v);
+    auto    dim = ARR_DIMS(v);
+    auto    ndim = ARR_NDIM(v);
+    auto    nitems = ArrayGetNItems(ndim, dim);
+    Datum  *elements = nullptr;
+    bool   *nulls = nullptr;
+    int16   typlen;
+    bool    typbyval;
+    char    typalign;
+
+
+    if (allow_empty && (ndim == 0 || nitems <= 0)) {
+        return results;
+    }
+
+    if (ndim != 1) {
+        throw std::string("One dimension expected");
+    }
+
+    if (nitems <= 0) {
+        throw std::string("No elements found");
+    }
+
+    get_typlenbyvalalign(element_type, &typlen, &typbyval, &typalign);
+
+    /* validate input data type */
+    switch (element_type) {
+        case INT2OID:
+        case INT4OID:
+        case INT8OID:
+            break;
+        default:
+            throw std::string("Expected array of ANY-INTEGER");
+    }
+
+    deconstruct_array(v, element_type, typlen, typbyval,
+            typalign, &elements, &nulls,
+            &nitems);
+
+    int64_t data(0);
+
+    results.reserve(static_cast<size_t>(nitems));
+
+    for (int i = 0; i < nitems; i++) {
+        if (nulls[i]) {
+            throw std::string("NULL value found in Array!");
+        } else {
+            switch (element_type) {
+                case INT2OID:
+                    data = static_cast<int64_t>(DatumGetInt16(elements[i]));
+                    break;
+                case INT4OID:
+                    data = static_cast<int64_t>(DatumGetInt32(elements[i]));
+                    break;
+                case INT8OID:
+                    data = DatumGetInt64(elements[i]);
+                    break;
+            }
+        }
+        results.push_back(data);
+    }
+
+    pfree(elements);
+    pfree(nulls);
+    return results;
 }
 
 /** @brief get the array contents from postgres
