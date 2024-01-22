@@ -998,7 +998,7 @@ Pgr_base_graph< G, T_V, T_E >::graph_add_min_edge_no_parallel(const T &edge) {
     if (edge.cost >= 0) {
         E e1;
         bool found;
-        boost::tie(e1, found) = edge(vm_s, vm_t, graph);
+        boost::tie(e1, found) = boost::edge(vm_s, vm_t, graph);
         if (found) {
             if (edge.cost < graph[e1].cost) {
                 graph[e1].cost = edge.cost;
@@ -1017,7 +1017,7 @@ Pgr_base_graph< G, T_V, T_E >::graph_add_min_edge_no_parallel(const T &edge) {
                 || (m_gType == UNDIRECTED && edge.cost != edge.reverse_cost))) {
         E e1;
         bool found;
-        boost::tie(e1, found) = edge(vm_t, vm_s, graph);
+        boost::tie(e1, found) = boost::edge(vm_t, vm_s, graph);
         if (found) {
             if (edge.reverse_cost < graph[e1].cost) {
                 graph[e1].cost = edge.reverse_cost;
