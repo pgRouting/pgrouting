@@ -8,7 +8,10 @@ ADD_LIBRARY(cpp_common OBJECT
 
     get_check_data.cpp
     pgdata_fetchers.cpp
+    pgdata_getters.cpp
+
+    # for old trsp code
     trsp_pgfetch.cpp
     # linked as C, but compiled as C++
-    pgdata_getters.cpp
+    trsp_pgget.cpp
     )
