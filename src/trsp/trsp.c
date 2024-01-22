@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/trsp/trsp.h"
 #include "c_types/edge_t.h"
 
-#include "c_common/pgdata_getters.h"
+#include "c_common/trsp_pgget.h"
 
 #include "trsp/trsp_core.h"
 typedef struct restrict_t restrict_t;
