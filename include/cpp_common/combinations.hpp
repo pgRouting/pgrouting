@@ -1,6 +1,5 @@
-
 /*PGR-GNU*****************************************************************
-File: combinations.h
+File: combinations.hpp
 
 Copyright (c) 2021 pgRouting developers
 Mail: project@pgrouting.org
@@ -25,9 +24,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_CPP_COMMON_COMBINATIONS_H_
-#define INCLUDE_CPP_COMMON_COMBINATIONS_H_
+#ifndef INCLUDE_CPP_COMMON_COMBINATIONS_HPP_
+#define INCLUDE_CPP_COMMON_COMBINATIONS_HPP_
 #pragma once
+
+extern "C" {
+#include <postgres.h>
+#include <utils/array.h>
+}
 
 #include <cstddef>
 #include <cstdint>
@@ -36,24 +40,39 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
+#include "cpp_common/undefPostgresDefine.hpp"
+
 #include "c_types/ii_t_rt.h"
 #include "cpp_common/basePath_SSEC.hpp"
+#include "cpp_common/rule.h"
 
 namespace pgrouting {
+
+class Path;
+
 namespace utilities {
 
+#if 1
 std::map<int64_t, std::set<int64_t>>
 get_combinations(const II_t_rt *, size_t);
 
 std::map<int64_t, std::set<int64_t>>
 get_combinations(int64_t*, size_t, int64_t*, size_t);
+#endif
 
 std::map<int64_t, std::set<int64_t>>
 get_combinations(
         std::deque<Path>&,
         const std::vector<pgrouting::trsp::Rule>&);
 
+std::map<int64_t, std::set<int64_t>>
+get_combinations(const std::vector<II_t_rt>&);
+
+
+std::map<int64_t, std::set<int64_t>>
+get_combinations(char*, ArrayType*, ArrayType*, bool);
+
 }  // namespace utilities
 }  // namespace pgrouting
 
-#endif  // INCLUDE_CPP_COMMON_COMBINATIONS_H_
+#endif  // INCLUDE_CPP_COMMON_COMBINATIONS_HPP_
