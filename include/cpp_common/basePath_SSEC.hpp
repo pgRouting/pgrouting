@@ -38,6 +38,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <map>
 
+#include "cpp_common/undefPostgresDefine.hpp"
+
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 

@@ -364,6 +364,11 @@ class Pgr_base_graph {
              insert_edges(std::vector < T >(edges, edges + count));
          }
 
+     template <typename T>
+         void insert_edges_neg(const std::vector<T> &edges) {
+             insert_edges(edges, false);
+         }
+
      template < typename T >
          void insert_edges_neg(const T *edges, size_t count) {
              insert_edges(std::vector < T >(edges, edges + count), false);
