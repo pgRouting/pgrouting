@@ -37,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "astar/astar.hpp"
 
 #include "cpp_common/combinations.hpp"
+#include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
@@ -44,12 +45,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/ii_t_rt.h"
 
 void pgr_do_astar(
-        Edge_xy_t *edges, size_t total_edges,
+        char *edges_sql,
+        char *combinations_sql,
+        ArrayType *starts,
+        ArrayType *ends,
 
-        II_t_rt *combinationsArr, size_t total_combinations,
-
-        int64_t  *start_vidsArr, size_t size_start_vidsArr,
-        int64_t  *end_vidsArr, size_t size_end_vidsArr,
         bool directed,
         int heuristic,
         double factor,
@@ -62,37 +62,58 @@ void pgr_do_astar(
     using pgrouting::pgr_alloc;
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
+    using pgrouting::utilities::get_combinations;
 
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
+
+    char* hint = nullptr;
     try {
         pgassert(!(*log_msg));
+        pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(total_edges != 0);
 
-        auto combinations = total_combinations?
-            pgrouting::utilities::get_combinations(combinationsArr, total_combinations)
-            : pgrouting::utilities::get_combinations(start_vidsArr, size_start_vidsArr, end_vidsArr, size_end_vidsArr);
+        (*return_tuples) = nullptr;
+        (*return_count) = 0;
+
+        hint = combinations_sql;
+        auto combinations = get_combinations(combinations_sql, starts, ends, normal);
+        hint = nullptr;
+
+        if (combinations.empty() && combinations_sql) {
+            *notice_msg = pgr_msg("No (source, target) pairs found");
+            *log_msg = pgr_msg(combinations_sql);
+            return;
+        }
+
+
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges_xy(std::string(edges_sql), normal);
+        hint = nullptr;
+
+        if (edges.empty()) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = pgr_msg(edges_sql);
+            return;
+        }
+
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
         std::deque<Path> paths;
         if (directed) {
-            pgrouting::xyDirectedGraph graph(
-                    pgrouting::extract_vertices(edges, total_edges),
-                    gType);
-            graph.insert_edges(edges, total_edges);
+            pgrouting::xyDirectedGraph graph(gType);
+            graph.insert_edges(edges);
             paths = pgrouting::algorithms::astar(graph, combinations, heuristic, factor, epsilon, only_cost);
         } else {
-            pgrouting::xyUndirectedGraph graph(
-                    pgrouting::extract_vertices(edges, total_edges),
-                    gType);
-            graph.insert_edges(edges, total_edges);
+            pgrouting::xyUndirectedGraph graph(gType);
+            graph.insert_edges(edges);
             paths = pgrouting::algorithms::astar(graph, combinations, heuristic, factor, epsilon, only_cost);
         }
+
         if (!normal) {
             for (auto &path : paths) {
                 path.reverse();
@@ -103,7 +124,7 @@ void pgr_do_astar(
         count = count_tuples(paths);
 
         if (count == 0) {
-            (*return_tuples) = NULL;
+            (*return_tuples) = nullptr;
             (*return_count) = 0;
             notice << "No paths found\n";
             *log_msg = pgr_msg(notice.str().c_str());
@@ -125,6 +146,9 @@ void pgr_do_astar(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

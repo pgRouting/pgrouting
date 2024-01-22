@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: astarOneToOne.c
+File: astar.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -7,7 +7,7 @@ Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail:
+Mail: vicky at erosion.dev
 
 ------
 
@@ -29,15 +29,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
 
 #include "c_types/path_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/trsp_pgget.h"
 #include "c_common/check_parameters.h"
-
 #include "drivers/astar/astar_driver.h"
 
 PGDLLEXPORT Datum _pgr_astar(PG_FUNCTION_ARGS);
@@ -64,55 +61,13 @@ process(char* edges_sql,
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    int64_t* start_vidsArr = NULL;
-    size_t size_start_vidsArr = 0;
-
-    int64_t* end_vidsArr = NULL;
-    size_t size_end_vidsArr = 0;
-
-    Edge_xy_t *edges = NULL;
-    size_t total_edges = 0;
-
-    II_t_rt *combinations = NULL;
-    size_t total_combinations = 0;
-
-    if (normal) {
-        pgr_get_edges_xy(edges_sql, &edges, &total_edges, true, &err_msg);
-        throw_error(err_msg, edges_sql);
-        if (starts && ends) {
-            start_vidsArr = pgr_get_bigIntArray(&size_start_vidsArr, starts, false, &err_msg);
-            throw_error(err_msg, "While getting start vids");
-            end_vidsArr = pgr_get_bigIntArray(&size_end_vidsArr, ends, false, &err_msg);
-            throw_error(err_msg, "While getting end vids");
-        } else if (combinations_sql) {
-            pgr_get_combinations(combinations_sql, &combinations, &total_combinations, &err_msg);
-            throw_error(err_msg, combinations_sql);
-        }
-    } else {
-        pgr_get_edges_xy(edges_sql, &edges, &total_edges, false, &err_msg);
-        throw_error(err_msg, edges_sql);
-        end_vidsArr = pgr_get_bigIntArray(&size_end_vidsArr, starts, false, &err_msg);
-        throw_error(err_msg, "While getting start vids");
-        start_vidsArr = pgr_get_bigIntArray(&size_start_vidsArr, ends, false, &err_msg);
-        throw_error(err_msg, "While getting end vids");
-    }
-
-    if (total_edges == 0) {
-        PGR_DBG("No edges found");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
-        pgr_SPI_finish();
-        return;
-    }
-
     clock_t start_t = clock();
     pgr_do_astar(
-            edges, total_edges,
+            edges_sql,
+            combinations_sql,
+            starts,
+            ends,
 
-            combinations, total_combinations,
-
-            start_vidsArr, size_start_vidsArr,
-            end_vidsArr, size_end_vidsArr,
             directed,
             heuristic,
             factor,
@@ -130,7 +85,6 @@ process(char* edges_sql,
         time_msg("processing pgr_astar", start_t, clock());
     }
 
-
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
         (*result_tuples) = NULL;
@@ -142,9 +96,6 @@ process(char* edges_sql,
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-    if (edges) pfree(edges);
-    if (start_vidsArr) pfree(start_vidsArr);
-    if (end_vidsArr) pfree(end_vidsArr);
 
     pgr_SPI_finish();
 }
@@ -222,6 +173,8 @@ _pgr_astar(PG_FUNCTION_ARGS) {
         Datum        result;
         Datum        *values;
         bool*        nulls;
+        size_t       call_cntr = funcctx->call_cntr;
+
 
         size_t numb = 8;
         values = palloc(numb * sizeof(Datum));
@@ -232,15 +185,14 @@ _pgr_astar(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-
-        values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_id);
-        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
-        values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[0] = Int32GetDatum((int32_t)call_cntr + 1);
+        values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].end_id);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].node);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].edge);
+        values[6] = Float8GetDatum(result_tuples[call_cntr].cost);
+        values[7] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
 
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
