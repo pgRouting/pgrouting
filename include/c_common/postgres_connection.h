@@ -41,11 +41,13 @@ extern "C" {
 #include <utils/array.h>
 #include <catalog/pg_type.h>
 
+#include "cpp_common/undefPostgresDefine.hpp"
+
 
 void pgr_send_error(int errcode);
 void pgr_SPI_finish(void);
 void pgr_SPI_connect(void);
-SPIPlanPtr pgr_SPI_prepare(char* sql);
+SPIPlanPtr pgr_SPI_prepare(const char* sql);
 Portal pgr_SPI_cursor_open(SPIPlanPtr SPIplan);
 
 #ifdef __cplusplus
