@@ -32,17 +32,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "coloring/pgr_edgeColoring.hpp"
 
+#include "cpp_common/pgdata_getters.hpp"
 #include "c_types/graph_enum.h"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
-/************************************************************
-  edges_sql TEXT
- ***********************************************************/
-
-void do_pgr_edgeColoring(
-    Edge_t *data_edges,
-    size_t total_edges,
+void pgr_do_edgeColoring(
+        char *edges_sql,
 
     II_t_rt **return_tuples,
     size_t *return_count,
@@ -57,6 +53,8 @@ void do_pgr_edgeColoring(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char *hint = nullptr;
+
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
@@ -64,9 +62,19 @@ void do_pgr_edgeColoring(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+        if (edges.empty()) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
+
+
         std::vector<II_t_rt> results;
 
-        pgrouting::functions::Pgr_edgeColoring fn_edgeColoring {data_edges, total_edges};
+        pgrouting::functions::Pgr_edgeColoring fn_edgeColoring(edges);
 
         results = fn_edgeColoring.edgeColoring();
 
@@ -95,6 +103,9 @@ void do_pgr_edgeColoring(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

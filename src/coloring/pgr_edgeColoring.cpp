@@ -65,15 +65,14 @@ Pgr_edgeColoring::edgeColoring() {
     return results;
 }
 
-Pgr_edgeColoring::Pgr_edgeColoring(Edge_t *edges,
-                                   size_t total_edges) {
+Pgr_edgeColoring::Pgr_edgeColoring(const std::vector<Edge_t> &edges) {
     /*
      * Inserting vertices
      */
     Identifiers<int64_t> ids;
-    for (size_t i = 0; i < total_edges; ++i) {
-        ids += edges[i].source;
-        ids += edges[i].target;
+    for (const auto &e : edges) {
+        ids += e.source;
+        ids += e.target;
     }
 
     for (const auto id : ids) {
@@ -86,8 +85,7 @@ Pgr_edgeColoring::Pgr_edgeColoring(Edge_t *edges,
      * Inserting edges
      */
     bool added;
-    for (size_t i = 0; i < total_edges; ++i) {
-        auto edge = edges[i];
+    for (const auto &edge : edges) {
         auto v1 = get_boost_vertex(edge.source);
         auto v2 = get_boost_vertex(edge.target);
         auto e_exists = boost::edge(v1, v2, graph);

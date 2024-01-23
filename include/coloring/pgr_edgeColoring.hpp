@@ -56,7 +56,7 @@ class Pgr_edgeColoring : public Pgr_messages {
  public:
     std::vector<II_t_rt> edgeColoring();
 
-    Pgr_edgeColoring(Edge_t*, size_t);
+    explicit Pgr_edgeColoring(const std::vector<Edge_t>&);
     Pgr_edgeColoring() = delete;
 
 #if Boost_VERSION_MACRO >= 106800
