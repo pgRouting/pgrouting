@@ -26,10 +26,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-/** @file hawickCircuits.c
- * @brief Connecting code with postgres.
- *
- */
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
 #include "c_types/circuits_rt.h"
@@ -37,24 +33,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/trsp_pgget.h"
-#include "drivers/circuits/hawickcircuits_driver.h"
+#include "drivers/circuits/hawickCircuits_driver.h"
 
 PGDLLEXPORT Datum _pgr_hawickcircuits(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_hawickcircuits);
-
-/** @brief Static function, loads the data from postgres to C types for further processing.
- *
- * It first connects the C function to the SPI manager. Then converts
- * the postgres array to C array and loads the edges belonging to the graph
- * in C types. Then it calls the function `do_cuthillMckeeOrdering` defined
- * in the `cuthillMckeeOrdering_driver.h` file for further processing.
- * Finally, it frees the memory and disconnects the C function to the SPI manager.
- *
- * @param edges_sql      the edges of the SQL query
- * @param result_tuples  the rows in the result
- * @param result_count   the count of rows in the result
- */
 
 static void
 process(
@@ -70,27 +52,15 @@ process(
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-    if (total_edges == 0) {
-        pgr_SPI_finish();
-        return;
-    }
-
-    PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    do_hawickCircuits(
-            edges, total_edges,
+    pgr_do_hawickCircuits(
+            edges_sql,
 
             result_tuples,
             result_count,
             &log_msg,
             &notice_msg,
             &err_msg);
-
     time_msg("processing hawickCircuits", start_t, clock());
 
     if (err_msg && (*result_tuples)) {
@@ -104,36 +74,21 @@ process(
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-    if (edges) pfree(edges);
 
     pgr_SPI_finish();
 }
-/*                                                                            */
-/******************************************************************************/
-
-/** @brief Helps in converting postgres variables to C variables, and returns the result.
- *
- */
 
 PGDLLEXPORT Datum _pgr_hawickcircuits(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
-    /**********************************************************************/
     circuits_rt *result_tuples = NULL;
     size_t result_count = 0;
-    /**********************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-
-        /***********************************************************************
-         *
-         *   pgr_hawickCircuits(edges_sql TEXT);
-         *
-         **********************************************************************/
 
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
@@ -184,20 +139,6 @@ PGDLLEXPORT Datum _pgr_hawickcircuits(PG_FUNCTION_ARGS) {
         values[6] = Int64GetDatum(result_tuples[call_cntr].edge);
         values[7] = Float8GetDatum(result_tuples[call_cntr].cost);
         values[8] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
-
-        /***********************************************************************
-         *
-         *   OUT  seq INTEGER,
-         *   OUT path_id INTEGER,
-         *   OUT path_seq INTEGER,
-         *   OUT start_vid BIGINT,
-         *   OUT end_vid BIGINT,
-         *   OUT node BIGINT,
-         *   OUT edge FLOAT,
-         *   OUT cost FLOAT,
-         *   OUT agg_cost FLOAT
-         *
-         **********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
