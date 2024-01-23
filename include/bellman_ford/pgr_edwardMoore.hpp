@@ -1,7 +1,9 @@
 /*PGR-GNU*****************************************************************
 File: pgr_edwardMoore.hpp
+
 Copyright (c) 2019 pgRouting developers
 Mail: project@pgrouting.org
+
 Copyright (c) 2019 Gudesa Venkata Sai AKhil
 Mail: gvs.akhil1997@gmail.com
 ------
@@ -26,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <vector>
 #include <deque>
+#include <set>
 #include <map>
 
 #include "cpp_common/basePath_SSEC.hpp"
@@ -42,10 +45,9 @@ class Pgr_edwardMoore {
  public:
     typedef typename G::V V;
     typedef typename G::E E;
-    typedef typename G::B_G B_G;
     typedef typename G::EO_i EO_i;
-    typedef typename G::E_i E_i;
 
+#if 0
     std::deque<Path> edwardMoore(
         G &graph,
         const std::vector<int64_t> &start_vertex,
@@ -117,14 +119,37 @@ class Pgr_edwardMoore {
 
         return paths;
     }
+#endif
+
+    /** @brief edwardMoore for combinations */
+    std::deque<Path> edwardMoore(
+        G &graph,
+        const std::map<int64_t, std::set<int64_t>> &combinations) {
+        std::deque<Path> paths;
+
+         for (const auto &comb : combinations) {
+             if (!graph.has_vertex(comb.first)) continue;
+             auto tmp_paths = one_to_many_edwardMoore(graph, comb.first, comb.second);
+             paths.insert(paths.end(), tmp_paths.begin(), tmp_paths.end());
+         }
+         std::sort(paths.begin(), paths.end(),
+                 [](const Path &e1, const Path &e2) -> bool {
+                 return e1.end_id() < e2.end_id();
+                 });
+         std::stable_sort(paths.begin(), paths.end(),
+                 [](const Path &e1, const Path &e2) -> bool {
+                 return e1.start_id() < e2.start_id();
+                 });
+         return paths;
+    }
 
  private:
-    E DEFAULT_EDGE;
+    E default_edge;
 
     std::deque<Path> one_to_many_edwardMoore(
         G &graph,
         int64_t start_vertex,
-        std::vector<int64_t> end_vertex) {
+        std::set<int64_t> end_vertex) {
         std::deque<Path> paths;
 
         if (graph.has_vertex(start_vertex) == false) {
@@ -135,7 +160,7 @@ class Pgr_edwardMoore {
         std::vector<bool> isInQ(graph.num_vertices(), false);
         std::vector<E> from_edge(graph.num_vertices());
         std::deque<V> dq;
-        DEFAULT_EDGE = from_edge[0];
+        default_edge = from_edge[0];
 
         auto bgl_start_vertex = graph.get_V(start_vertex);
 
@@ -159,7 +184,7 @@ class Pgr_edwardMoore {
 
             auto bgl_target_vertex = graph.get_V(target_vertex);
 
-            if (from_edge[bgl_target_vertex] == DEFAULT_EDGE) {
+            if (from_edge[bgl_target_vertex] == default_edge) {
                 continue;
             }
 
@@ -192,7 +217,7 @@ class Pgr_edwardMoore {
             path.push_back({graph[from].id, graph[e].id, graph[e].cost, current_cost[from], 0});
 
             current_node = from;
-        } while (from_edge[current_node] != DEFAULT_EDGE);
+        } while (from_edge[current_node] != default_edge);
 
         std::reverse(path.begin(), path.end());
         return path;
