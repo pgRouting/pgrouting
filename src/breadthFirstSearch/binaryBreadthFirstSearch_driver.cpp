@@ -39,11 +39,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "breadthFirstSearch/pgr_binaryBreadthFirstSearch.hpp"
 
+#include "cpp_common/combinations.hpp"
+#include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
 namespace {
 
+#if 0
 template < class G >
 std::deque<pgrouting::Path>
 pgr_binaryBreadthFirstSearch(
@@ -72,12 +75,15 @@ pgr_binaryBreadthFirstSearch(
 const size_t MAX_UNIQUE_EDGE_COSTS = 2;
 const char COST_ERR_MSG[] =  "Graph Condition Failed: Graph should have atmost two distinct non-negative edge costs! "
                              "If there are exactly two distinct edge costs, one of them must equal zero!";
+#endif
+
 template < class G >
 bool
 costCheck(G &graph)  {
     typedef typename G::E E;
     typedef typename G::E_i E_i;
 
+    const size_t max_unique_edge_costs = 2;
     auto edges = boost::edges(graph.graph);
     E e;
     E_i out_i;
@@ -88,7 +94,7 @@ costCheck(G &graph)  {
         e = *out_i;
         cost_set.insert(graph[e].cost);
 
-        if (cost_set.size() > MAX_UNIQUE_EDGE_COSTS) {
+        if (cost_set.size() > max_unique_edge_costs) {
             return false;
         }
     }
@@ -102,19 +108,24 @@ costCheck(G &graph)  {
     return true;
 }
 
+template <class G> std::deque<pgrouting::Path> binaryBreadthFirstSearch(
+        G &graph,
+        std::map<int64_t, std::set<int64_t>> &combinations) {
+    pgrouting::functions::Pgr_binaryBreadthFirstSearch< G > fn_binaryBreadthFirstSearch;
+    auto paths = fn_binaryBreadthFirstSearch.binaryBreadthFirstSearch(graph, combinations);
+
+    return paths;
+}
+
 }  // namespace
 
 
 void
-do_pgr_binaryBreadthFirstSearch(
-        Edge_t  *data_edges,
-        size_t total_edges,
-        II_t_rt *combinations,
-        size_t total_combinations,
-        int64_t  *start_vidsArr,
-        size_t size_start_vidsArr,
-        int64_t  *end_vidsArr,
-        size_t size_end_vidsArr,
+pgr_do_binaryBreadthFirstSearch(
+        char *edges_sql,
+        char *combinations_sql,
+        ArrayType *starts,
+        ArrayType *ends,
         bool directed,
 
         Path_rt **return_tuples,
@@ -126,65 +137,68 @@ do_pgr_binaryBreadthFirstSearch(
     using pgrouting::pgr_alloc;
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
+    using pgrouting::utilities::get_combinations;
+    using pgrouting::pgget::get_edges;
 
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char *hint = nullptr;
+    const char c_err_msg[] = "Graph Condition Failed: Graph should have atmost two distinct non-negative edge costs! "
+                             "If there are exactly two distinct edge costs, one of them must equal zero!";
 
     try {
-        pgassert(total_edges != 0);
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(data_edges);
-        pgassert((start_vidsArr && end_vidsArr) || combinations);
-        pgassert((size_start_vidsArr && size_end_vidsArr) || total_combinations);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        // log << "Inserting vertices into a c++ vector structure";
-        std::vector<int64_t>
-            start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
-        std::vector< int64_t >
-            end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
-        std::vector< II_t_rt >
-            combinations_vector(combinations, combinations + total_combinations);
+        hint = combinations_sql;
+        auto combinations = get_combinations(combinations_sql, starts, ends, true);
+        hint = nullptr;
+
+        if (combinations.empty() && combinations_sql) {
+            *notice_msg = pgr_msg("No (source, target) pairs found");
+            *log_msg = pgr_msg(combinations_sql);
+            return;
+        }
+
+
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+
+        if (edges.empty()) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
 
         std::deque< Path >paths;
         if (directed) {
-            // log << "\nWorking with directed Graph";
             pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(data_edges, total_edges);
+            digraph.insert_edges(edges);
 
             if (!(costCheck(digraph))) {
-                err << COST_ERR_MSG;
+                err << c_err_msg;
                 *err_msg = pgr_msg(err.str().c_str());
                 return;
             }
-            paths = pgr_binaryBreadthFirstSearch(
-                digraph,
-                combinations_vector,
-                start_vertices,
-                end_vertices);
+            paths = binaryBreadthFirstSearch(digraph, combinations);
 
         } else {
-            // log << "\nWorking with Undirected Graph";
             pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(data_edges, total_edges);
+            undigraph.insert_edges(edges);
 
             if (!(costCheck(undigraph))) {
-                err << COST_ERR_MSG;
+                err << c_err_msg;
                 *err_msg = pgr_msg(err.str().c_str());
                 return;
             }
 
-            paths = pgr_binaryBreadthFirstSearch(
-                undigraph,
-                combinations_vector,
-                start_vertices,
-                end_vertices);
+            paths = binaryBreadthFirstSearch(undigraph, combinations);
         }
 
         size_t count(0);
@@ -215,6 +229,9 @@ do_pgr_binaryBreadthFirstSearch(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

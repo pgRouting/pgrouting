@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <vector>
+#include <set>
 
 #include <visitors/edges_order_bfs_visitor.hpp>
 #include <boost/graph/breadth_first_search.hpp>
@@ -49,7 +50,7 @@ class Pgr_breadthFirstSearch {
 
     std::vector<MST_rt> breadthFirstSearch(
         G &graph,
-        std::vector<int64_t> start_vertex,
+        std::set<int64_t> start_vertex,
         int64_t depth) {
         std::vector<MST_rt> results;
         using bfs_visitor = visitors::Edges_order_bfs_visitor<E>;
