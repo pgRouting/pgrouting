@@ -30,8 +30,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef INCLUDE_DRIVERS_CIRCUITS_HAWICKCIRCUITS_DRIVER_H_
 #define INCLUDE_DRIVERS_CIRCUITS_HAWICKCIRCUITS_DRIVER_H_
 
-
-/* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
 #else
@@ -46,16 +44,11 @@ extern "C" {
 #endif
 
 void
-do_hawickCircuits(
-        Edge_t  *,        // data_edges
-        size_t,           // total_tuples
-        circuits_rt **,   // return_tuples
-        size_t *,         // return_count
+pgr_do_hawickCircuits(
+        char*,
 
-        char **,          // log_msg
-        char **,          // notice_msg
-        char **);         // err_msg
-
+        circuits_rt**, size_t*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }
