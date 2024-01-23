@@ -35,13 +35,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 
-#include <set>
-#include <functional>
-#include <limits>
-#include <numeric>
-
 #include "bellman_ford/pgr_edwardMoore.hpp"
 
+#include "cpp_common/combinations.hpp"
+#include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/pgr_alloc.hpp"
@@ -51,6 +48,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace {
 
+#if 0
 template < class G >
 std::deque< pgrouting::Path >
 pgr_edwardMoore(
@@ -75,19 +73,26 @@ pgr_edwardMoore(
 
     return paths;
 }
+#endif
+
+template <class G>
+std::deque<pgrouting::Path>
+edwardMoore(
+        G &graph,
+        const std::map<int64_t, std::set<int64_t>> &combinations) {
+    pgrouting::functions::Pgr_edwardMoore<G> fn_edwardMoore;
+    return fn_edwardMoore.edwardMoore(graph, combinations);
+}
 
 }  // namespace
 
 void
-do_pgr_edwardMoore(
-        Edge_t  *data_edges,
-        size_t total_edges,
-        II_t_rt *combinations,
-        size_t total_combinations,
-        int64_t  *start_vidsArr,
-        size_t size_start_vidsArr,
-        int64_t  *end_vidsArr,
-        size_t size_end_vidsArr,
+pgr_do_edwardMoore(
+        char *edges_sql,
+        char *combinations_sql,
+        ArrayType *starts,
+        ArrayType *ends,
+
         bool directed,
 
         Path_rt **return_tuples,
@@ -99,53 +104,52 @@ do_pgr_edwardMoore(
     using pgrouting::pgr_alloc;
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
+    using pgrouting::utilities::get_combinations;
+    using pgrouting::pgget::get_edges;
 
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char *hint = nullptr;
 
     try {
-        pgassert(total_edges != 0);
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(data_edges);
-        pgassert((start_vidsArr && end_vidsArr) || combinations);
-        pgassert((size_start_vidsArr && size_end_vidsArr) || total_combinations);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        log << "Inserting vertices into a c++ vector structure";
-        std::vector<int64_t>
-            start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
-        std::vector< int64_t >
-            end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
-        std::vector< II_t_rt >
-            combinations_vector(combinations, combinations + total_combinations);
+        hint = combinations_sql;
+        auto combinations = get_combinations(combinations_sql, starts, ends, true);
+        hint = nullptr;
 
+        if (combinations.empty() && combinations_sql) {
+            *notice_msg = pgr_msg("No (source, target) pairs found");
+            *log_msg = pgr_msg(combinations_sql);
+            return;
+        }
 
-        std::deque< Path >paths;
+        hint = edges_sql;
+        auto edges = get_edges(std::string(edges_sql), true, false);
+
+        if (edges.empty()) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
+
+        std::deque<Path> paths;
         if (directed) {
-            log << "\nWorking with directed Graph";
             pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(data_edges, total_edges);
-            paths = pgr_edwardMoore(
-                digraph,
-                combinations_vector,
-                start_vertices,
-                end_vertices);
+            digraph.insert_edges(edges);
+            paths = edwardMoore(digraph, combinations);
         } else {
-            log << "\nWorking with Undirected Graph";
             pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(data_edges, total_edges);
-
-            paths = pgr_edwardMoore(
-                undigraph,
-                combinations_vector,
-                start_vertices,
-                end_vertices);
+            undigraph.insert_edges(edges);
+           paths = edwardMoore(undigraph, combinations);
         }
 
         size_t count(0);
@@ -154,14 +158,12 @@ do_pgr_edwardMoore(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            notice <<
-                "No paths found";
+            notice << "No paths found";
             *log_msg = pgr_msg(notice.str().c_str());
             return;
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        log << "\nConverting a set of paths into the tuples";
         (*return_count) = (collapse_paths(return_tuples, paths));
 
         *log_msg = log.str().empty()?
@@ -176,6 +178,9 @@ do_pgr_edwardMoore(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

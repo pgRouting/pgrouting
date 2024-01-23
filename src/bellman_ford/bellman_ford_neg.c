@@ -31,13 +31,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
 
+#include "c_types/path_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-
-#include "c_common/trsp_pgget.h"
-
-#include "drivers/bellman_ford/bellman_ford_neg_driver.h"  // the link to the C++ code of the function
+#include "drivers/bellman_ford/bellman_ford_neg_driver.h"
 
 PGDLLEXPORT Datum _pgr_bellmanfordneg(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_bellmanfordneg);
@@ -59,78 +57,15 @@ process(
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char* err_msg = NULL;
-
-    PGR_DBG("Initializing arrays");
-
-    size_t size_start_vidsArr = 0;
-    int64_t* start_vidsArr = NULL;
-
-    size_t size_end_vidsArr = 0;
-    int64_t* end_vidsArr = NULL;
-
-    size_t total_combinations = 0;
-    II_t_rt *combinations = NULL;
-
-    if (starts && ends) {
-        start_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_start_vidsArr, starts, false);
-        end_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_end_vidsArr, ends, false);
-    } else if (combinations_sql) {
-        pgr_get_combinations(combinations_sql, &combinations, &total_combinations, &err_msg);
-        throw_error(err_msg, combinations_sql);
-        if (total_combinations == 0) {
-            if (combinations)
-                pfree(combinations);
-            pgr_SPI_finish();
-            return;
-        }
-    }
-
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
-    PGR_DBG("Load data");
-    Edge_t *positive_edges = NULL;
-    size_t total_positive_edges = 0;
-
-    pgr_get_edges(edges_sql, &positive_edges, &total_positive_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-    PGR_DBG(
-            "Total positive weighted edges in query: %ld",
-            total_positive_edges);
-
-    Edge_t *negative_edges = NULL;
-    size_t total_negative_edges = 0;
-
-    pgr_get_edges(neg_edges_sql, &negative_edges, &total_negative_edges, true, false, &err_msg);
-    throw_error(err_msg, neg_edges_sql);
-    PGR_DBG(
-            "Total negative weighted edges in query: %ld",
-            total_negative_edges);
-
-    size_t total_edges = total_positive_edges + total_negative_edges;
-
-    if (total_edges == 0) {
-        if (end_vidsArr) pfree(end_vidsArr);
-        if (start_vidsArr) pfree(start_vidsArr);
-        pgr_SPI_finish();
-        return;
-    }
-
-    PGR_DBG("Starting processing");
     clock_t start_t = clock();
-    do_pgr_bellman_ford_neg(
-            positive_edges,
-            total_positive_edges,
-            negative_edges,
-            total_negative_edges,
-            combinations,
-            total_combinations,
-            start_vidsArr,
-            size_start_vidsArr,
-            end_vidsArr,
-            size_end_vidsArr,
+    pgr_do_bellman_ford_neg(
+            edges_sql,
+            neg_edges_sql,
+            combinations_sql,
+            starts, ends,
             directed,
             only_cost,
 
@@ -142,42 +77,34 @@ process(
             &err_msg);
 
     time_msg(" processing pgr_bellman_ford", start_t, clock());
-    PGR_DBG("Returning %ld tuples", *result_count);
 
-    if (err_msg) {
-        if (*result_tuples) pfree(*result_tuples);
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_tuples) = NULL;
+        (*result_count) = 0;
     }
 
     pgr_global_report(log_msg, notice_msg, err_msg);
 
-    if (positive_edges) pfree(positive_edges);
-    if (negative_edges) pfree(negative_edges);
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
 
-    if (end_vidsArr) pfree(end_vidsArr);
-    if (start_vidsArr) pfree(start_vidsArr);
     pgr_SPI_finish();
 }
-
 
 PGDLLEXPORT Datum _pgr_bellmanfordneg(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
-    /**************************************************************************/
     Path_rt  *result_tuples = NULL;
     size_t result_count = 0;
-    /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-
-        PGR_DBG("Calling process");
         if (PG_NARGS() == 6) {
             /*
              * many to many
@@ -208,9 +135,6 @@ PGDLLEXPORT Datum _pgr_bellmanfordneg(PG_FUNCTION_ARGS) {
                 &result_count);
         }
 
-
-        /**********************************************************************/
-
         funcctx->max_calls = result_count;
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
@@ -235,18 +159,6 @@ PGDLLEXPORT Datum _pgr_bellmanfordneg(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool*        nulls;
 
-        /**********************************************************************/
-        /*
-            OUT seq INTEGER,
-            OUT path_seq INTEGER,
-            OUT start_vid BIGINT,
-            OUT end_vid BIGINT,
-            OUT node BIGINT,
-            OUT edge BIGINT,
-            OUT cost FLOAT,
-            OUT agg_cost FLOAT
-        */
-        /**********************************************************************/
         size_t numb = 8;
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
@@ -266,18 +178,11 @@ PGDLLEXPORT Datum _pgr_bellmanfordneg(PG_FUNCTION_ARGS) {
         values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
 
-        /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        /**********************************************************************/
-
-        PGR_DBG("Clean up code");
-
-        /**********************************************************************/
-
         SRF_RETURN_DONE(funcctx);
     }
 }
