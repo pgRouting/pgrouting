@@ -7,7 +7,7 @@ Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2016 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Mail: vicky at erosion.dev
 
 
 ------
@@ -31,29 +31,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
 
-
 #include "c_types/path_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-
-#include "c_common/trsp_pgget.h"
-
 #include "drivers/bdDijkstra/bdDijkstra_driver.h"
 
 PGDLLEXPORT Datum _pgr_bddijkstra(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_bddijkstra);
 
-
-/******************************************************************************/
-/*                          MODIFY AS NEEDED                                  */
-static
-void
+static void
 process(
-        char* edges_sql,
-        char* combinations_sql,
+        char *edges_sql,
+        char *combinations_sql,
         ArrayType *starts,
         ArrayType *ends,
+
         bool directed,
         bool only_cost,
         Path_rt **result_tuples,
@@ -63,45 +56,11 @@ process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    int64_t* start_vidsArr = NULL;
-    size_t size_start_vidsArr = 0;
-
-    int64_t* end_vidsArr = NULL;
-    size_t size_end_vidsArr = 0;
-
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-
-    II_t_rt *combinations = NULL;
-    size_t total_combinations = 0;
-
-    if (starts && ends) {
-        start_vidsArr = pgr_get_bigIntArray(&size_start_vidsArr, starts, false, &err_msg);
-        throw_error(err_msg, "While getting start vids");
-        end_vidsArr = pgr_get_bigIntArray(&size_end_vidsArr, ends, false, &err_msg);
-        throw_error(err_msg, "While getting end vids");
-    } else if (combinations_sql) {
-        pgr_get_combinations(combinations_sql, &combinations, &total_combinations, &err_msg);
-        throw_error(err_msg, combinations_sql);
-    }
-
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-    PGR_DBG("Total %ld edges in query:", total_edges);
-
-    if (total_edges == 0) {
-        PGR_DBG("No edges found");
-        pgr_SPI_finish();
-        return;
-    }
-
-    PGR_DBG("Starting processing");
     clock_t start_t = clock();
-    do_pgr_bdDijkstra(
-            edges, total_edges,
-            combinations, total_combinations,
-            start_vidsArr, size_start_vidsArr,
-            end_vidsArr, size_end_vidsArr,
+    pgr_do_bdDijkstra(
+            edges_sql,
+            combinations_sql,
+            starts, ends,
 
             directed,
             only_cost,
@@ -111,7 +70,6 @@ process(
             &log_msg,
             &notice_msg,
             &err_msg);
-
     time_msg(" processing pgr_bdDijkstra", start_t, clock());
 
 
@@ -126,31 +84,22 @@ process(
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-    if (edges) pfree(edges);
 
     pgr_SPI_finish();
 }
-/*                                                                            */
-/******************************************************************************/
+
 
 PGDLLEXPORT Datum _pgr_bddijkstra(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    TupleDesc           tuple_desc;
+    TupleDesc            tuple_desc;
 
-    /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
     Path_rt  *result_tuples = NULL;
     size_t result_count = 0;
-    /*                                                                        */
-    /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-
-
         if (PG_NARGS() == 5) {
             /*
              * many to many
@@ -180,11 +129,7 @@ PGDLLEXPORT Datum _pgr_bddijkstra(PG_FUNCTION_ARGS) {
                 &result_count);
         }
 
-        /*                                                                    */
-        /**********************************************************************/
-
         funcctx->max_calls = result_count;
-
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
@@ -200,7 +145,6 @@ PGDLLEXPORT Datum _pgr_bddijkstra(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-
     result_tuples = (Path_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
@@ -210,22 +154,9 @@ PGDLLEXPORT Datum _pgr_bddijkstra(PG_FUNCTION_ARGS) {
         bool*        nulls;
         size_t       call_cntr = funcctx->call_cntr;
 
-
-        /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
-        /*
-           OUT seq INTEGER,
-           OUT path_seq INTEGER,
-           OUT node BIGINT,
-           OUT edge BIGINT,
-           OUT cost FLOAT,
-           OUT agg_cost FLOAT
-         ***********************************************************************/
-
         size_t numb = 8;
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
-
 
         size_t i;
         for (i = 0; i < numb; ++i) {
@@ -240,8 +171,6 @@ PGDLLEXPORT Datum _pgr_bddijkstra(PG_FUNCTION_ARGS) {
         values[5] = Int64GetDatum(result_tuples[call_cntr].edge);
         values[6] = Float8GetDatum(result_tuples[call_cntr].cost);
         values[7] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
-
-        /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
