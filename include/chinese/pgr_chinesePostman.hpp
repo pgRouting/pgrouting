@@ -48,9 +48,7 @@ namespace graph {
 
 class PgrDirectedChPPGraph {
  public:
-     PgrDirectedChPPGraph(
-             const Edge_t *dataEdges,
-             const size_t totalEdges);
+     explicit PgrDirectedChPPGraph(const std::vector<Edge_t>&);
 
      double DirectedChPP() const {
          return m_cost;
@@ -105,39 +103,36 @@ class PgrDirectedChPPGraph {
 PgrDirectedChPPGraph::~PgrDirectedChPPGraph() {
     edgeToIdx.clear();
 }
-PgrDirectedChPPGraph::PgrDirectedChPPGraph(
-        const Edge_t *dataEdges,
-        const size_t totalEdges) :
+PgrDirectedChPPGraph::PgrDirectedChPPGraph(const std::vector<Edge_t> &dataEdges) :
     totalDeg(0), totalCost(0), vertices(),
     edgeToIdx(), originalEdges(),
     resultGraph(), VToVecid(), edgeVisited(),
     pathStack(), resultPath(),
     edges(), sources(), targets() {
-    pgassert(totalEdges > 0);
     pgassert(pathStack.empty());
 
     pgassert(originalEdges.empty());
     startPoint = dataEdges[0].source;
-    for (size_t i = 0; i < totalEdges; ++i) {
-        if (dataEdges[i].cost > 0) {
-            auto edge(dataEdges[i]);
+    for (const auto e : dataEdges) {
+        if (e.cost > 0) {
+            auto edge = e;
             edge.reverse_cost = -1.0;
             totalCost += edge.cost;
             originalEdges.push_back(edge);
-            vertices += dataEdges[i].source;
-            vertices += dataEdges[i].target;
+            vertices += e.source;
+            vertices += e.target;
         }
-        if (dataEdges[i].reverse_cost > 0) {
-            auto edge(dataEdges[i]);
+        if (e.reverse_cost > 0) {
+            auto edge = e;
             std::swap(edge.source, edge.target);
             std::swap(edge.cost, edge.reverse_cost);
             edge.reverse_cost = -1.0;
             totalCost += edge.cost;
             originalEdges.push_back(edge);
-            vertices += dataEdges[i].source;
-            vertices += dataEdges[i].target;
-            pgassert(dataEdges[i].source == edge.target);
-            pgassert(dataEdges[i].target == edge.source);
+            vertices += e.source;
+            vertices += e.target;
+            pgassert(e.source == edge.target);
+            pgassert(e.target == edge.source);
         }
     }
 

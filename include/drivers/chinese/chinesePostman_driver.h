@@ -31,14 +31,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_CHINESE_CHINESEPOSTMAN_DRIVER_H_
 #pragma once
 
-/* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
-using Edge_t = struct Edge_t;
 using Path_rt = struct Path_rt;
 #else
 #   include <stddef.h>
-typedef struct Edge_t Edge_t;
 typedef struct Path_rt Path_rt;
 #endif
 
@@ -47,24 +44,13 @@ typedef struct Path_rt Path_rt;
 extern "C" {
 #endif
 
-    /*********************************************************
-      TEXT,
-    BIGINT,
-    BIGINT,
-     ********************************************************/
+void pgr_do_directedChPP(
+        char*,
 
+        bool,
 
-    void
-        do_pgr_directedChPP(
-                Edge_t  *data_edges,
-                size_t total_edges,
-                bool only_cost,
-                Path_rt **return_tuples,
-                size_t *return_count,
-                char ** log_msg,
-                char ** notice_msg,
-                char ** err_msg);
-
+        Path_rt**, size_t*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }
