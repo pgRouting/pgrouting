@@ -34,10 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stddef.h>
 
 #ifdef __cplusplus
-using Edge_bool_t = struct Edge_bool_t;
 using Only_int_rt = struct Only_int_rt;
 #else
-typedef struct Edge_bool_t Edge_bool_t;
 typedef struct Only_int_rt Only_int_rt;
 #endif
 
@@ -45,9 +43,11 @@ typedef struct Only_int_rt Only_int_rt;
 extern "C" {
 #endif
 
-    void
-        do_pgr_maximum_cardinality_matching(
-            Edge_bool_t*, size_t, bool,
+void pgr_do_maximum_cardinality_matching(
+            char*,
+
+            bool,
+
             Only_int_rt **, size_t *,
             char**, char**, char **);
 

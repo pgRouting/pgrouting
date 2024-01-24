@@ -77,11 +77,11 @@ class PgrCardinalityGraph {
       return E_to_id[e];
   }
 
-  PgrCardinalityGraph(Edge_bool_t *data_edges, size_t total_tuples) {
+  explicit PgrCardinalityGraph(const std::vector<Edge_bool_t> &edges) {
       std::set<int64_t> vertices;
-      for (size_t i = 0; i < total_tuples; ++i) {
-          vertices.insert(data_edges[i].source);
-          vertices.insert(data_edges[i].target);
+      for (const auto &e : edges) {
+          vertices.insert(e.source);
+          vertices.insert(e.target);
       }
       for (int64_t id : vertices) {
           V v = add_vertex(boost_graph);
@@ -90,14 +90,14 @@ class PgrCardinalityGraph {
       }
       bool added;
 
-      for (size_t i = 0; i < total_tuples; ++i) {
-          V v1 = get_boost_vertex(data_edges[i].source);
-          V v2 = get_boost_vertex(data_edges[i].target);
+      for (const auto &e : edges) {
+          V v1 = get_boost_vertex(e.source);
+          V v2 = get_boost_vertex(e.target);
           E e1;
           E e2;
-          if (data_edges[i].going) {
+          if (e.going) {
               boost::tie(e1, added) = boost::add_edge(v1, v2, boost_graph);
-              E_to_id.insert(std::pair<E, int64_t>(e1, data_edges[i].id));
+              E_to_id.insert(std::pair<E, int64_t>(e1, e.id));
           }
       }
   }

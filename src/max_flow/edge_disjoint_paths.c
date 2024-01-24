@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: edge_disjoint_paths_many_to_many.c
+File: edge_disjoint_paths.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -35,7 +35,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/trsp_pgget.h"
 #include "drivers/max_flow/edge_disjoint_paths_driver.h"
 
 PGDLLEXPORT Datum
@@ -57,54 +56,11 @@ process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    int64_t *source_vertices = NULL;
-    size_t size_source_verticesArr = 0;
-
-    int64_t *sink_vertices = NULL;
-    size_t size_sink_verticesArr = 0;
-
-
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-
-    II_t_rt *combinations = NULL;
-    size_t total_combinations = 0;
-
-    if (starts && ends) {
-        source_vertices = pgr_get_bigIntArray(&size_source_verticesArr, starts, false, &err_msg);
-        throw_error(err_msg, "While getting start vids");
-        sink_vertices = pgr_get_bigIntArray(&size_sink_verticesArr, ends, false, &err_msg);
-        throw_error(err_msg, "While getting end_vids");
-    } else if (combinations_sql) {
-        pgr_get_combinations(combinations_sql, &combinations, &total_combinations, &err_msg);
-        throw_error(err_msg, combinations_sql);
-        if (total_combinations == 0) {
-            if (combinations)
-                pfree(combinations);
-            pgr_SPI_finish();
-            return;
-        }
-    }
-
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-
-    if (total_edges == 0) {
-        if (source_vertices) pfree(source_vertices);
-        if (sink_vertices) pfree(sink_vertices);
-        pgr_SPI_finish();
-        return;
-    }
-
-
-    PGR_DBG("Starting timer");
     clock_t start_t = clock();
-
-    do_pgr_edge_disjoint_paths(
-        edges, total_edges,
-        combinations, total_combinations,
-        source_vertices, size_source_verticesArr,
-        sink_vertices, size_sink_verticesArr,
+    pgr_do_edge_disjoint_paths(
+        edges_sql,
+        combinations_sql,
+        starts, ends,
         directed,
 
         result_tuples, result_count,
@@ -112,12 +68,7 @@ process(
         &log_msg,
         &notice_msg,
         &err_msg);
-
     time_msg("pgr_edgeDisjointPaths(many to many)", start_t, clock());
-
-    if (edges) pfree(edges);
-    if (source_vertices) pfree(source_vertices);
-    if (sink_vertices) pfree(sink_vertices);
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);

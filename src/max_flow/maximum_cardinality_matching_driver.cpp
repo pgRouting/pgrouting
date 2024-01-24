@@ -36,17 +36,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <vector>
 
-#include "max_flow/pgr_maximumcardinalitymatching.hpp"
-
-#include "cpp_common/pgr_alloc.hpp"
-#include "cpp_common/pgr_assert.h"
-
 #include "c_types/edge_bool_t_rt.h"
 
+#include "cpp_common/pgdata_getters.hpp"
+#include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/pgr_assert.h"
+#include "max_flow/pgr_maximumcardinalitymatching.hpp"
+
+
 void
-do_pgr_maximum_cardinality_matching(
-    Edge_bool_t *data_edges,
-    size_t total_tuples,
+pgr_do_maximum_cardinality_matching(
+    char *edges_sql,
     /* TODO(v4) flag directed is to be removed */
     bool,
 
@@ -63,9 +63,20 @@ do_pgr_maximum_cardinality_matching(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
+    char* hint = nullptr;
 
     try {
-        pgrouting::flow::PgrCardinalityGraph G(data_edges, total_tuples);
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_basic_edges(std::string(edges_sql));
+
+        if (edges.empty()) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
+
+        pgrouting::flow::PgrCardinalityGraph G(edges);
         auto matched_vertices = G.get_matched_vertices();
 
         (*return_tuples) = pgr_alloc(matched_vertices.size(), (*return_tuples));
@@ -86,6 +97,9 @@ do_pgr_maximum_cardinality_matching(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
