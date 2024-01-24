@@ -38,7 +38,7 @@ typedef struct GeomText_t GeomText_t;
 extern "C" {
 #endif
 
-void do_alphaShape(
+void pgr_do_alphaShape(
         char*,
 
         double,
