@@ -28,7 +28,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
 
@@ -37,7 +36,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 
-#include "c_common/trsp_pgget.h"
 
 #include "drivers/yen/ksp_driver.h"
 
@@ -45,9 +43,10 @@ PGDLLEXPORT Datum _pgr_ksp(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_ksp);
 
 static
-void process(
-        char* edges_sql,
-        char* combinations_sql,
+void
+process(
+        char *edges_sql,
+        char *combinations_sql,
         ArrayType *starts,
         ArrayType *ends,
 
@@ -57,59 +56,25 @@ void process(
         int p_k,
         bool directed,
         bool heap_paths,
-        Path_rt **result_tuples, size_t *result_count) {
+        Path_rt **result_tuples,
+        size_t *result_count) {
     pgr_SPI_connect();
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char* err_msg = NULL;
     if (p_k < 0) {
-        return;
-    }
-
-    size_t k = (size_t)p_k;
-
-    int64_t* start_vidsArr = NULL;
-    size_t size_start_vidsArr = 0;
-
-    int64_t* end_vidsArr = NULL;
-    size_t size_end_vidsArr = 0;
-
-    II_t_rt *combinations = NULL;
-    size_t total_combinations = 0;
-
-    if (start_vertex && end_vertex) {
-        start_vidsArr = start_vertex; size_start_vidsArr = 1;
-        end_vidsArr = end_vertex; size_end_vidsArr = 1;
-    } else if (starts && ends) {
-        start_vidsArr = pgr_get_bigIntArray(&size_start_vidsArr, starts, false, &err_msg);
-        throw_error(err_msg, "While getting start vids");
-        end_vidsArr = pgr_get_bigIntArray(&size_end_vidsArr, ends, false, &err_msg);
-        throw_error(err_msg, "While getting end vids");
-    } else if (combinations_sql) {
-        pgr_get_combinations(combinations_sql, &combinations, &total_combinations, &err_msg);
-        throw_error(err_msg, combinations_sql);
-    }
-
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-
-    if (total_edges == 0) {
-        PGR_DBG("No edges found");
-        pgr_SPI_finish();
+        /* TODO return error message */
         return;
     }
 
     clock_t start_t = clock();
-
     pgr_do_ksp(
-            edges, total_edges,
-            combinations, total_combinations,
-            start_vidsArr, size_start_vidsArr,
-            end_vidsArr, size_end_vidsArr,
-            k,
+            edges_sql,
+            combinations_sql,
+            starts, ends,
+
+            start_vertex, end_vertex,
+            (size_t) p_k,
             directed,
             heap_paths,
             result_tuples,
@@ -131,34 +96,21 @@ void process(
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
 
-    if (start_vertex && end_vertex) {
-        start_vidsArr = NULL;
-        end_vidsArr = NULL;
-    }
-    if (start_vidsArr) pfree(start_vidsArr);
-    if (end_vidsArr) pfree(end_vidsArr);
-
-
-    pgr_global_report(log_msg, notice_msg, err_msg);
-
-    pfree(edges);
     pgr_SPI_finish();
 }
-
-
 
 PGDLLEXPORT Datum
 _pgr_ksp(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
     Path_rt      *path = NULL;
+
     size_t result_count = 0;
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-
 
         if (PG_NARGS() == 7) {
             /*
@@ -207,37 +159,32 @@ _pgr_ksp(PG_FUNCTION_ARGS) {
         }
 
         funcctx->max_calls = result_count;
-
         funcctx->user_fctx = path;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
-                != TYPEFUNC_COMPOSITE)
+                != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
-                         "that cannot accept type record\n")));
+                         "that cannot accept type record")));
+        }
 
         funcctx->tuple_desc = tuple_desc;
         MemoryContextSwitchTo(oldcontext);
     }
 
-
     funcctx = SRF_PERCALL_SETUP();
-
-
     tuple_desc = funcctx->tuple_desc;
     path = (Path_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
         Datum        result;
-        Datum *values;
-        bool* nulls;
+        Datum        *values;
+        bool*        nulls;
 
         size_t n = (PG_NARGS() == 6)? 7 : 9;
-
         values = palloc(n * sizeof(Datum));
         nulls = palloc(n * sizeof(bool));
-
 
         size_t i;
         for (i = 0; i < n; ++i) {
@@ -270,7 +217,7 @@ _pgr_ksp(PG_FUNCTION_ARGS) {
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
-    } else {   /* do when there is no more left */
+    } else {
         SRF_RETURN_DONE(funcctx);
     }
 }

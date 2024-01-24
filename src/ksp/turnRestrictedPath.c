@@ -38,7 +38,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 
-#include "c_common/trsp_pgget.h"
 
 #include "drivers/yen/turnRestrictedPath_driver.h"
 
@@ -81,32 +80,11 @@ process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-
-
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-
-    Restriction_t *restrictions = NULL;
-    size_t total_restrictions = 0;
-
-    pgr_get_restrictions(restrictions_sql, &restrictions, &total_restrictions, &err_msg);
-    throw_error(err_msg, restrictions_sql);
-
-    if (total_edges == 0) {
-        PGR_DBG("No edges found");
-        pgr_SPI_finish();
-        return;
-    }
-
     clock_t start_t = clock();
-    do_pgr_turnRestrictedPath(
-            edges,
-            total_edges,
-            restrictions,
-            total_restrictions,
+    pgr_do_turnRestrictedPath(
+            edges_sql,
+            restrictions_sql,
+
             start_vid,
             end_vid,
             k,
@@ -128,11 +106,9 @@ process(
     }
     pgr_global_report(log_msg, notice_msg, err_msg);
 
-    if (edges) {pfree(edges); edges = NULL;}
     if (log_msg) {pfree(log_msg); log_msg = NULL;}
     if (notice_msg) {pfree(notice_msg); notice_msg = NULL;}
     if (err_msg) {pfree(err_msg); err_msg = NULL;}
-    if (restrictions) {pfree(restrictions); edges = NULL;}
 
     pgr_SPI_finish();
 }
@@ -149,26 +125,6 @@ _pgr_turnrestrictedpath(PG_FUNCTION_ARGS) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-
-
-        /**********************************************************************/
-        /*
-           TEXT,   -- edges_sql
-           TEXT,   -- restrictions_sql
-           BIGINT, -- start_vertex
-           BIGINT, -- end_vertex
-           INTEGER,-- K cycles
-           directed BOOLEAN DEFAULT true,
-           heap_paths BOOLEAN DEFAULT false,
-           stop_on_first BOOLEAN DEFAULT true,
-
-           OUT seq INTEGER,
-           OUT path_seq INTEGER,
-           OUT node BIGINT,
-           OUT edge BIGINT,
-           OUT cost FLOAT,
-           OUT agg_cost FLOAT)
-         **********************************************************************/
 
 
         PGR_DBG("Calling process");
@@ -209,17 +165,6 @@ _pgr_turnrestrictedpath(PG_FUNCTION_ARGS) {
         Datum        result;
         Datum        *values;
         bool*        nulls;
-
-        /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
-        /*
-               OUT seq INTEGER,
-               OUT path_seq INTEGER,
-               OUT node BIGINT,
-               OUT edge BIGINT,
-               OUT cost FLOAT,
-               OUT agg_cost FLOAT
-         ***********************************************************************/
 
         size_t v_count = 7;
 
