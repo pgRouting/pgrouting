@@ -39,13 +39,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "tsp/tsp.hpp"
 
 #include "c_types/tsp_tour_rt.h"
+#include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
 void
-do_pgr_euclideanTSP(
-        Coordinate_t *coordinates,
-        size_t total_coordinates,
+pgr_do_euclideanTSP(
+        char *coordinates_sql,
         int64_t start_vid,
         int64_t end_vid,
         bool max_cycles,
@@ -62,9 +62,20 @@ do_pgr_euclideanTSP(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
+    char *hint = nullptr;
 
     try {
-        pgrouting::algorithm::TSP fn_tsp{coordinates, total_coordinates, true};
+        hint = coordinates_sql;
+        auto coordinates = pgrouting::pgget::get_coordinates(std::string(coordinates_sql));
+
+        if (coordinates.size() == 0) {
+            *notice_msg = pgr_msg("No coordinates found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
+
+        pgrouting::algorithm::TSP fn_tsp{coordinates};
 
         if (start_vid != 0 && !fn_tsp.has_vertex(start_vid)) {
             err << "Parameter 'start_id' do not exist on the data";
@@ -110,6 +121,9 @@ do_pgr_euclideanTSP(
         (*return_count) = 0;
         *err_msg = pgr_msg(ex.first.c_str());
         *log_msg = pgr_msg(ex.second.c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

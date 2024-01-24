@@ -36,18 +36,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <utility>
 
-#include "tsp/tsp.hpp"
 
 #include "c_types/tsp_tour_rt.h"
+#include "c_types/ii_t_rt.h"
+#include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
-#include "c_types/ii_t_rt.h"
+
+#include "tsp/tsp.hpp"
 
 
 void
-do_pgr_tsp(
-        IID_t_rt *distances,
-        size_t total_distances,
+pgr_do_tsp(
+        char *matrix_sql,
         int64_t start_vid,
         int64_t end_vid,
         bool max_cycles,
@@ -64,8 +65,20 @@ do_pgr_tsp(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
+    char *hint = nullptr;
+
     try {
-        pgrouting::algorithm::TSP fn_tsp{distances, total_distances, true};
+        hint = matrix_sql;
+        auto distances = pgrouting::pgget::get_matrixRows(std::string(matrix_sql));
+
+        if (distances.size() == 0) {
+            *notice_msg = pgr_msg("Insufficient data found on inner query");
+            *log_msg = hint? pgr_msg(hint) : nullptr;
+            return;
+        }
+        hint = nullptr;
+
+        pgrouting::algorithm::TSP fn_tsp{distances};
 
         if (start_vid != 0 && !fn_tsp.has_vertex(start_vid)) {
             err << "Parameter 'start_id' do not exist on the data";
@@ -111,6 +124,9 @@ do_pgr_tsp(
         (*return_count) = 0;
         *err_msg = pgr_msg(ex.first.c_str());
         *log_msg = pgr_msg(ex.second.c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
