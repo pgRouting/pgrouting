@@ -29,15 +29,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 
-#include "dijkstra/pgr_dijkstraVia.hpp"
-#include "withPoints/pgr_withPoints.hpp"
+
 #include "c_types/routes_t.h"
-#include "c_types/restriction_t.h"
-#include "cpp_common/rule.h"
-#include "cpp_common/combinations.hpp"
+#include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
+#include "cpp_common/rule.h"
+#include "cpp_common/combinations.hpp"
 
+#include "dijkstra/pgr_dijkstraVia.hpp"
+#include "withPoints/pgr_withPoints.hpp"
 #include "trsp/pgr_trspHandler.h"
 
 
@@ -127,22 +128,20 @@ get_route(
 }  // namespace
 
 void
-do_trspVia_withPoints(
-        Edge_t* edges, size_t total_edges,
-        Restriction_t *restrictions, size_t restrictions_size,
-        Point_on_edge_t *points_p, size_t total_points,
-        Edge_t *edges_of_points, size_t total_edges_of_points,
-        int64_t* via_vidsArr, size_t size_via_vidsArr,
+pgr_do_trspVia_withPoints(
+        char *edges_sql,
+        char *restrictions_sql,
+        char *points_sql,
+        char *edges_of_points_sql,
+        ArrayType* viaArr,
 
         bool directed,
-
         char driving_side,
         bool details,
-
         bool strict,
         bool U_turn_on_edge,
 
-        Routes_t** return_tuples, size_t* return_count,
+        Routes_t** return_tuples, size_t *return_count,
 
         char** log_msg,
         char** notice_msg,
@@ -151,41 +150,51 @@ do_trspVia_withPoints(
     using pgrouting::pgr_alloc;
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
+    using pgrouting::pgget::get_intArray;
 
     std::ostringstream log;
-    std::ostringstream err;
     std::ostringstream notice;
+    std::ostringstream err;
+    char *hint = nullptr;
 
     try {
-        pgassert((total_edges + total_edges_of_points) != 0);
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        std::deque<Path>paths;
+        auto via = get_intArray(viaArr, false);
+
+        hint = points_sql;
+        auto points = pgrouting::pgget::get_points(std::string(points_sql));
+
+        hint = edges_of_points_sql;
+        auto edges_of_points = pgrouting::pgget::get_edges(std::string(edges_of_points_sql), true, false);
+
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+
+        if (edges.size() + edges_of_points.size() == 0) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+
+        hint = restrictions_sql;
+        auto restrictions = restrictions_sql?
+            pgrouting::pgget::get_restrictions(std::string(restrictions_sql)) : std::vector<Restriction_t>();
+
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        /*
-         * processing via
-         */
-        std::vector<int64_t> via_vertices(via_vidsArr, via_vidsArr + size_via_vidsArr);
-
-        /*
-         * processing points
-         */
+        /* Dealing with points */
         pgrouting::Pg_points_graph pg_graph(
-                std::vector<Point_on_edge_t>(
-                    points_p,
-                    points_p + total_points),
-                std::vector< Edge_t >(
-                    edges_of_points,
-                    edges_of_points + total_edges_of_points),
+                points, edges_of_points,
                 true,
                 driving_side,
                 directed);
+        log << pg_graph.get_log();
 
         if (pg_graph.has_error()) {
             log << pg_graph.get_log();
@@ -195,27 +204,28 @@ do_trspVia_withPoints(
             return;
         }
 
-        auto vertices(pgrouting::extract_vertices(edges, total_edges));
+        auto vertices(pgrouting::extract_vertices(edges));
         vertices = pgrouting::extract_vertices(vertices, pg_graph.new_edges());
 
+        std::deque<Path> paths;
         if (directed) {
             pgrouting::DirectedGraph digraph(vertices, gType);
-            digraph.insert_edges(edges, total_edges);
+            digraph.insert_edges(edges);
             digraph.insert_edges(pg_graph.new_edges());
             pgrouting::pgr_dijkstraVia(
                     digraph,
-                    via_vertices,
+                    via,
                     paths,
                     strict,
                     U_turn_on_edge,
                     log);
         } else {
             pgrouting::UndirectedGraph undigraph(vertices, gType);
-            undigraph.insert_edges(edges, total_edges);
+            undigraph.insert_edges(edges);
             undigraph.insert_edges(pg_graph.new_edges());
             pgrouting::pgr_dijkstraVia(
                     undigraph,
-                    via_vertices,
+                    via,
                     paths,
                     strict,
                     U_turn_on_edge,
@@ -234,35 +244,32 @@ do_trspVia_withPoints(
             return;
         }
 
-        if (restrictions_size == 0) {
+        if (!restrictions_sql || restrictions.empty()) {
             (*return_tuples) = pgr_alloc(count, (*return_tuples));
             (*return_count) = (get_route(return_tuples, paths));
             (*return_tuples)[count - 1].edge = -2;
             return;
         }
 
-        /*
-         * When there are turn restrictions
-         */
+
         std::vector<pgrouting::trsp::Rule> ruleList;
-        for (size_t i = 0; i < restrictions_size; ++i) {
-            if (restrictions[i].via_size == 0) continue;
-            ruleList.push_back(pgrouting::trsp::Rule(*(restrictions + i)));
+        for (const auto &r : restrictions) {
+            if (r.via) ruleList.push_back(pgrouting::trsp::Rule(r));
         }
+        hint = nullptr;
 
         auto new_combinations = pgrouting::utilities::get_combinations(paths, ruleList);
 
         if (!new_combinations.empty()) {
             pgrouting::trsp::Pgr_trspHandler gdef(
                     edges,
-                    total_edges,
                     pg_graph.new_edges(),
                     directed,
                     ruleList);
             auto new_paths = gdef.process(new_combinations);
             paths.insert(paths.end(), new_paths.begin(), new_paths.end());
         }
-        post_process_trspvia(paths, via_vertices);
+        post_process_trspvia(paths, via);
         if (!details) {
             for (auto &path : paths) path = pg_graph.eliminate_details(path);
         }
@@ -292,6 +299,9 @@ do_trspVia_withPoints(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

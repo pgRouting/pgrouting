@@ -103,6 +103,15 @@ class Pgr_trspHandler : public pgrouting::Pgr_messages {
 
  public:
     Pgr_trspHandler(
+            std::vector<Edge_t> &edges,
+            const std::vector<Edge_t> &new_edges,
+            const bool directed,
+            const std::vector<Rule> &ruleList);
+    Pgr_trspHandler(
+            std::vector<Edge_t> &edges,
+            const bool directed,
+            const std::vector<Rule> &ruleList);
+    Pgr_trspHandler(
             Edge_t *edges,
             const size_t edge_count,
             const bool directed,
@@ -135,6 +144,7 @@ class Pgr_trspHandler : public pgrouting::Pgr_messages {
     void clear();
 
  private:
+    void construct_graph(const std::vector<Edge_t>&, const bool);
     void construct_graph(
             Edge_t *edges,
             const size_t edge_count,
@@ -178,6 +188,8 @@ class Pgr_trspHandler : public pgrouting::Pgr_messages {
 
     void renumber_edges(Edge_t*, const size_t);
     void renumber_edges(Edge_t*, const size_t, std::vector<Edge_t>&);
+    void renumber_edges(std::vector<Edge_t>&);
+    void renumber_edges(std::vector<Edge_t>&, std::vector<Edge_t>&);
 
     void  add_to_que(
             double cost,

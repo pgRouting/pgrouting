@@ -32,15 +32,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "utils/array.h"
 
 #include "c_types/path_rt.h"
-#include "c_types/point_on_edge_t.h"
-#include "c_types/restriction_t.h"
-
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-
-#include "c_common/trsp_pgget.h"
-
 #include "drivers/withPoints/get_new_queries.h"
 #include "drivers/trsp/trsp_withPoints_driver.h"
 
@@ -65,26 +59,20 @@ process(
 
         Path_rt **result_tuples,
         size_t *result_count) {
-    driving_side[0] = estimate_drivingSide(driving_side[0]);
-    if (driving_side[0] != 'r' && driving_side[0] != 'l') {
-        driving_side[0] = 'l';
-    }
-
     pgr_SPI_connect();
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    size_t size_start_pidsArr = 0;
-    int64_t* start_pidsArr = NULL;
 
-    size_t size_end_pidsArr = 0;
-    int64_t* end_pidsArr = NULL;
+    /*
+     * Estimate driving side
+     */
+    driving_side[0] = estimate_drivingSide(driving_side[0]);
+    if (driving_side[0] != 'r' && driving_side[0] != 'l') {
+        driving_side[0] = 'l';
+    }
 
-    II_t_rt *combinations = NULL;
-    size_t total_combinations = 0;
-
-    /* managing edges */
     char *edges_of_points_query = NULL;
     char *edges_no_points_query = NULL;
     get_new_queries(
@@ -92,65 +80,18 @@ process(
             &edges_of_points_query,
             &edges_no_points_query);
 
-    Edge_t *edges_of_points = NULL;
-    size_t total_edges_of_points = 0;
-
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-
-    pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points, true, false, &err_msg);
-    throw_error(err_msg, edges_of_points_query);
-    pgr_get_edges(edges_no_points_query, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_no_points_query);
-
-    pfree(edges_of_points_query);
-    pfree(edges_no_points_query);
-    edges_of_points_query = NULL;
-    edges_no_points_query = NULL;
-
-    if ((total_edges + total_edges_of_points) == 0) {
-        pgr_SPI_finish();
-        return;
-    }
-
-    /* Managing departure & destination */
-    if (starts && ends) {
-        start_pidsArr = (int64_t*) pgr_get_bigIntArray(&size_start_pidsArr, starts, false, &err_msg);
-        throw_error(err_msg, "While getting start vids");
-        end_pidsArr = (int64_t*) pgr_get_bigIntArray(&size_end_pidsArr, ends, false, &err_msg);
-        throw_error(err_msg, "While getting end vids");
-    } else if (combinations_sql) {
-        pgr_get_combinations(combinations_sql, &combinations, &total_combinations, &err_msg);
-        throw_error(err_msg, combinations_sql);
-    }
-
-    /* Managing Points */
-    Point_on_edge_t *points = NULL;
-    size_t total_points = 0;
-    pgr_get_points(points_sql, &points, &total_points, &err_msg);
-    throw_error(err_msg, points_sql);
-
-    /* Managing restrictions */
-    Restriction_t *restrictions = NULL;
-    size_t restrictions_size = 0;
-    pgr_get_restrictions(restrictions_sql, &restrictions, &restrictions_size, &err_msg);
-    throw_error(err_msg, restrictions_sql);
-
 
     clock_t start_t = clock();
-
-    do_trsp_withPoints(
-            edges, total_edges,
-            restrictions, restrictions_size,
-            points, total_points,
-            edges_of_points, total_edges_of_points,
-
-            combinations, total_combinations,
-
-            start_pidsArr, size_start_pidsArr,
-            end_pidsArr, size_end_pidsArr,
+    pgr_do_trsp_withPoints(
+            edges_no_points_query,
+            restrictions_sql,
+            points_sql,
+            edges_of_points_query,
+            combinations_sql,
+            starts, ends,
 
             directed,
+
             driving_side[0],
             details,
 
@@ -163,8 +104,8 @@ process(
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
-        (*result_count) = 0;
         (*result_tuples) = NULL;
+        (*result_count) = 0;
     }
 
     pgr_global_report(log_msg, notice_msg, err_msg);
@@ -172,12 +113,8 @@ process(
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-    if (edges) {pfree(edges); edges = NULL;}
-    if (edges_of_points) {pfree(edges_of_points); edges_of_points = NULL;}
-    if (edges_of_points) {pfree(edges_of_points); edges_of_points = NULL;}
-    if (start_pidsArr) {pfree(start_pidsArr); start_pidsArr = NULL;}
-    if (end_pidsArr) {pfree(end_pidsArr); end_pidsArr = NULL;}
-    if (combinations) {pfree(combinations); combinations = NULL;}
+    if (edges_of_points_query) {pfree(edges_of_points_query); edges_of_points_query = NULL;}
+    if (edges_no_points_query) {pfree(edges_no_points_query); edges_no_points_query = NULL;}
 
     pgr_SPI_finish();
 }
@@ -236,7 +173,6 @@ _pgr_trsp_withpoints(PG_FUNCTION_ARGS) {
         }
 
         funcctx->max_calls = result_count;
-
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE)
@@ -290,4 +226,3 @@ _pgr_trsp_withpoints(PG_FUNCTION_ARGS) {
         SRF_RETURN_DONE(funcctx);
     }
 }
-

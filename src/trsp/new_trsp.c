@@ -29,17 +29,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
 
-#include "drivers/trsp/trsp_driver.h"
-
+#include "c_types/path_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-
-#include "c_types/edge_t.h"
-#include "c_types/restriction_t.h"
-#include "c_types/path_rt.h"
-
-#include "c_common/trsp_pgget.h"
+#include "drivers/trsp/trsp_driver.h"
 
 PGDLLEXPORT Datum _pgr_trspv4(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_trspv4);
@@ -69,49 +63,12 @@ void process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    size_t size_start_vidsArr = 0;
-    int64_t* start_vidsArr = NULL;
-
-    size_t size_end_vidsArr = 0;
-    int64_t* end_vidsArr = NULL;
-
-    II_t_rt *combinations = NULL;
-    size_t total_combinations = 0;
-
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-
-    Restriction_t * restrictions = NULL;
-    size_t total_restrictions = 0;
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-
-    if (total_edges == 0) {
-        pgr_SPI_finish();
-        return;
-    }
-    pgr_get_restrictions(restrictions_sql, &restrictions, &total_restrictions, &err_msg);
-    throw_error(err_msg, restrictions_sql);
-
-    if (starts && ends) {
-        start_vidsArr = pgr_get_bigIntArray(&size_start_vidsArr, starts, false, &err_msg);
-        throw_error(err_msg, "While getting start vids");
-        end_vidsArr = pgr_get_bigIntArray(&size_end_vidsArr, ends, false, &err_msg);
-        throw_error(err_msg, "While getting end vids");
-    } else if (combinations_sql) {
-        pgr_get_combinations(combinations_sql, &combinations, &total_combinations, &err_msg);
-        throw_error(err_msg, combinations_sql);
-    }
-
     clock_t start_t = clock();
-
-    do_trsp(
-            edges, total_edges,
-            restrictions, total_restrictions,
-
-            combinations, total_combinations,
-            start_vidsArr, size_start_vidsArr,
-            end_vidsArr, size_end_vidsArr,
+    pgr_do_trsp(
+            edges_sql,
+            restrictions_sql,
+            combinations_sql,
+            starts, ends,
 
             directed,
 
@@ -128,11 +85,6 @@ void process(
     }
 
     pgr_global_report(log_msg, notice_msg, err_msg);
-    if (edges) {pfree(edges); edges=NULL;}
-    if (restrictions) {pfree(restrictions); restrictions=NULL;}
-    if (combinations) {pfree(combinations); combinations=NULL;}
-    if (start_vidsArr) {pfree(start_vidsArr); start_vidsArr=NULL;}
-    if (end_vidsArr) {pfree(end_vidsArr); end_vidsArr=NULL;}
     if (log_msg) {pfree(log_msg); log_msg=NULL;}
     if (notice_msg) {pfree(notice_msg); notice_msg=NULL;}
     if (err_msg) {pfree(err_msg); err_msg=NULL;}
