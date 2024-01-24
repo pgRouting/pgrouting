@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-06 18:14+0000\n"
+"POT-Creation-Date: 2024-01-24 17:44+0000\n"
 "PO-Revision-Date: 2022-09-29 19:13+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/"
@@ -4459,6 +4459,41 @@ msgstr ""
 msgid "_"
 msgstr ""
 
+msgid "Official functions changes"
+msgstr ""
+
+msgid ""
+"`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standarize "
+"spanning tree functions output"
+msgstr ""
+
+msgid "Functions:"
+msgstr ""
+
+msgid "``pgr_kruskalDD``"
+msgstr ""
+
+msgid "``pgr_kruskalDFS``"
+msgstr ""
+
+msgid "``pgr_kruskalBFS``"
+msgstr ""
+
+msgid "``pgr_primDD``"
+msgstr ""
+
+msgid "``pgr_primDFS``"
+msgstr ""
+
+msgid "``pgr_primBFS``"
+msgstr ""
+
+msgid "Standarizing output columns to |result-spantree|"
+msgstr ""
+
+msgid "Added ``pred`` result columns."
+msgstr ""
+
 msgid "Code enhancement"
 msgstr ""
 
@@ -4565,7 +4600,7 @@ msgstr ""
 msgid "Migration"
 msgstr ""
 
-msgid "Be aware of the existance of the additional columns."
+msgid "Be aware of the existence of the additional columns."
 msgstr ""
 
 msgid "In ``pgr_aStar`` (`One to One`)"
@@ -4679,7 +4714,7 @@ msgstr ""
 
 msgid ""
 "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :"
-"doc:`pgr_drivingDistance` result columns are being standarized."
+"doc:`pgr_drivingDistance` result columns are being standardized."
 msgstr ""
 
 msgid "from"
@@ -4712,7 +4747,7 @@ msgstr ""
 msgid "does not have ``depth`` result column."
 msgstr ""
 
-msgid "Be aware of the existance and name change of the result columns."
+msgid "Be aware of the existence and name change of the result columns."
 msgstr ""
 
 msgid ""
@@ -4742,8 +4777,69 @@ msgid "The ``from_v`` result column name changes to ``start_vid``."
 msgstr ""
 
 msgid ""
-"If needed filter out and rename colums, for example, to return the original "
+"If needed filter out and rename columns, for example, to return the original "
 "columns:"
+msgstr ""
+
+msgid ""
+"Migration of ``pgr_kruskalDD`` / ``pgr_kruskalBFS`` / ``pgr_kruskalDFS``"
+msgstr ""
+
+msgid ""
+"Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__ :"
+"doc:`pgr_kruskalDD`, :doc:`pgr_kruskalBFS` and :doc:`pgr_kruskalDFS` result "
+"columns are being standardized."
+msgstr ""
+
+msgid "|result-bfs|"
+msgstr ""
+
+msgid "Single vertex"
+msgstr ""
+
+msgid "Multiple vertices"
+msgstr ""
+
+msgid "Output columns were |result-bfs|"
+msgstr ""
+
+msgid "Single vertex and Multiple vertices"
+msgstr ""
+
+msgid "Do not have ``pred`` result column."
+msgstr ""
+
+msgid "Be aware of the existence of `pred` result columns."
+msgstr ""
+
+msgid "If needed filter out the added columns"
+msgstr ""
+
+msgid "Kruskal single vertex"
+msgstr ""
+
+msgid ""
+"Using ``pgr_KruskalDD`` as example. Migration is similar to al the affected "
+"functions."
+msgstr ""
+
+msgid ""
+"Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_kruskalDD."
+"html#single-vertex>`__ example."
+msgstr ""
+
+#, fuzzy
+msgid ""
+"Now column ``pred`` exists and contains the predecessor of the ``node``."
+msgstr ""
+":math:'agg\\_cost' は、:math:'start_{vid}' からノードまでのコストです。"
+
+msgid "Kruskal multiple vertices"
+msgstr ""
+
+msgid ""
+"Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_kruskalDD."
+"html#multiple-vertex>`__ example."
 msgstr ""
 
 msgid "Migration of ``pgr_KSP``"
@@ -4751,7 +4847,7 @@ msgstr ""
 
 msgid ""
 "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :"
-"doc:`pgr_KSP` result columns are being standarized."
+"doc:`pgr_KSP` result columns are being standardized."
 msgstr ""
 
 msgid "|ksp-result|"
@@ -4851,12 +4947,42 @@ msgstr ""
 msgid "In the query returns only ``edge`` column."
 msgstr ""
 
+msgid "Migration of ``pgr_primDD`` / ``pgr_primBFS`` / ``pgr_primDFS``"
+msgstr ""
+
+msgid ""
+"Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__ :"
+"doc:`pgr_primDD`, :doc:`pgr_primBFS` and :doc:`pgr_primDFS` result columns "
+"are being standardized."
+msgstr ""
+
+msgid "Prim single vertex"
+msgstr ""
+
+msgid ""
+"Using ``pgr_primDD`` as example. Migration is similar to al the affected "
+"functions."
+msgstr ""
+
+msgid ""
+"Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_primDD."
+"html#single-vertex>`__ example."
+msgstr ""
+
+msgid "Prim multiple vertices"
+msgstr ""
+
+msgid ""
+"Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_primDD."
+"html#multiple-vertex>`__ example."
+msgstr ""
+
 msgid "Migration of ``pgr_withPointsDD``"
 msgstr ""
 
 msgid ""
 "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :"
-"doc:`pgr_withPointsDD` result columns are being standarized."
+"doc:`pgr_withPointsDD` result columns are being standardized."
 msgstr ""
 
 msgid "|result-generic-no-seq|"
@@ -4881,7 +5007,7 @@ msgid "Does not have ``start_vid``, ``pred`` and ``depth`` result columns."
 msgstr ""
 
 msgid ""
-"``driving_side`` parameter was named optional now it is compulsory unamed."
+"``driving_side`` parameter was named optional now it is compulsory unnamed."
 msgstr ""
 
 msgid "``pgr_withPointsDD`` (`Multiple vertices`)"
@@ -4934,7 +5060,7 @@ msgstr ""
 msgid "After Migration"
 msgstr "もっと詳しく知る"
 
-msgid "Be aware of the existance of the additional result Columns."
+msgid "Be aware of the existence of the additional result Columns."
 msgstr ""
 
 msgid "New output columns are |result-spantree|"
@@ -4998,7 +5124,7 @@ msgstr ""
 
 msgid ""
 "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :"
-"doc:`pgr_withPointsKSP` result columns are being standarized."
+"doc:`pgr_withPointsKSP` result columns are being standardized."
 msgstr ""
 
 msgid ""
@@ -9371,15 +9497,9 @@ msgstr ""
 msgid "Returns set of |result-bfs|"
 msgstr ""
 
-msgid "Single vertex"
-msgstr ""
-
 msgid ""
 "From root vertex :math:`6` on a **directed** graph with edges in ascending "
 "order of ``id``"
-msgstr ""
-
-msgid "Multiple vertices"
 msgstr ""
 
 msgid ""
@@ -11139,9 +11259,6 @@ msgid ""
 "``pgr_drivingDistance`` - Returns the driving distance from a start node."
 msgstr ""
 
-msgid "Standarizing output columns to |result-spantree|"
-msgstr ""
-
 msgid "Added ``depth`` and ``start_vid`` result columns."
 msgstr ""
 
@@ -12347,13 +12464,14 @@ msgstr ""
 msgid "Minimum spanning forest"
 msgstr ""
 
-msgid "``pgr_kruskalBFS``"
-msgstr ""
-
 msgid ""
 "``pgr_kruskalBFS`` — Kruskal's algorithm for Minimum Spanning Tree with "
 "breadth First Search ordering."
 msgstr ""
+
+#, fuzzy
+msgid "Version 3.7.0"
+msgstr "バージョン 3.0.0"
 
 msgid ""
 "Visits and extracts the nodes information in Breath First Search ordering of "
@@ -12378,9 +12496,6 @@ msgstr ""
 msgid ""
 "The Minimum Spanning Tree starting on vertices :math:`\\{9, 6\\}` with :math:"
 "`depth \\leq 3`"
-msgstr ""
-
-msgid "``pgr_kruskalDD``"
 msgstr ""
 
 msgid "``pgr_kruskalDD`` — Catchament nodes using Kruskal's algorithm."
@@ -12412,9 +12527,6 @@ msgstr ""
 msgid ""
 "The Minimum Spanning Tree starting on vertices :math:`\\{9, 6\\}` with :math:"
 "`distance \\leq 3.5`"
-msgstr ""
-
-msgid "``pgr_kruskalDFS``"
 msgstr ""
 
 msgid ""
@@ -13563,9 +13675,6 @@ msgid ""
 "prim_minimum_spanning_tree.html>`__"
 msgstr ""
 
-msgid "``pgr_primBFS``"
-msgstr ""
-
 msgid ""
 "``pgr_primBFS`` — Prim's algorithm for Minimum Spanning Tree with Depth "
 "First Search ordering."
@@ -13573,7 +13682,7 @@ msgstr ""
 
 msgid ""
 "Visits and extracts the nodes information in Breath First Search ordering of "
-"the Minimum Spanning Tree created with Prims's algorithm."
+"the Minimum Spanning Tree created using Prims's algorithm."
 msgstr ""
 
 msgid "pgr_primBFS(`Edges SQL`_, **root vid**, [``max_depth``])"
@@ -13582,25 +13691,19 @@ msgstr ""
 msgid "pgr_primBFS(`Edges SQL`_, **root vids**, [``max_depth``])"
 msgstr ""
 
-msgid "``pgr_primDD``"
-msgstr ""
-
 msgid "``pgr_primDD`` — Catchament nodes using Prim's algorithm."
 msgstr ""
 
 msgid ""
 "Using Prim's algorithm, extracts the nodes that have aggregate costs less "
-"than or equal to a **distance** from a **root** vertex (or vertices) within "
-"the calculated minimum spanning tree."
+"than or equal to a distance from a root vertex (or vertices) within the "
+"calculated minimum spanning tree."
 msgstr ""
 
 msgid "pgr_primDD(`Edges SQL`_, **root vid**, **distance**)"
 msgstr ""
 
 msgid "pgr_primDD(`Edges SQL`_, **root vids**, **distance**)"
-msgstr ""
-
-msgid "``pgr_primDFS``"
 msgstr ""
 
 msgid ""
@@ -15353,9 +15456,6 @@ msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.6.0 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.0%22>`_"
-msgstr ""
-
-msgid "Official functions changes"
 msgstr ""
 
 msgid ""
