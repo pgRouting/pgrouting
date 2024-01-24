@@ -54,6 +54,8 @@ SELECT id FROM vertices;
 SELECT  *  FROM pgr_lineGraphFull(
     $$SELECT id, source, target, cost FROM edges WHERE id = 1$$
 );
+NOTICE:  No edges found
+HINT:  SELECT id, source, target, cost FROM edges WHERE id = 1
  seq | source | target | cost | edge
 -----+--------+--------+------+------
 (0 rows)

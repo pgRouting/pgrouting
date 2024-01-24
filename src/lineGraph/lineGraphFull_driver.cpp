@@ -33,14 +33,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "dijkstra/dijkstra.hpp"
-
 #include "c_types/line_graph_full_rt.h"
+#include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
 #include "lineGraph/pgr_lineGraphFull.hpp"
 #include "cpp_common/linear_directed_graph.h"
+
+#include "dijkstra/dijkstra.hpp"
 
 namespace {
 
@@ -65,9 +66,9 @@ void get_turn_penalty_postgres_result(
 }  // namespace
 
 void
-do_pgr_lineGraphFull(
-        Edge_t  *data_edges,
-        size_t total_edges,
+pgr_do_lineGraphFull(
+        char *edges_sql,
+
         Line_graph_full_rt **return_tuples,
         size_t *return_count,
         char ** log_msg,
@@ -79,22 +80,29 @@ do_pgr_lineGraphFull(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char *hint = nullptr;
+
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(total_edges != 0);
+
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+        if (edges.empty()) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
 
         graphType gType = DIRECTED;
 
         pgrouting::DirectedGraph digraph(gType);
-        digraph.insert_edges_neg(data_edges, total_edges);
+        digraph.insert_edges_neg(edges);
 
-#if 0
-        log << digraph << "\n";
-#endif
         pgrouting::graph::Pgr_lineGraphFull<
             pgrouting::LinearDirectedGraph,
             pgrouting::Line_vertex,
@@ -137,6 +145,9 @@ do_pgr_lineGraphFull(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

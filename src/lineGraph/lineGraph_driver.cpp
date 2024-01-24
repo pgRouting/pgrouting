@@ -34,13 +34,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <utility>
 
-#include "dijkstra/dijkstra.hpp"
-
+#include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
+#include "cpp_common/linear_directed_graph.h"
 
 #include "lineGraph/pgr_lineGraph.hpp"
-#include "cpp_common/linear_directed_graph.h"
 
 namespace {
 
@@ -60,9 +59,9 @@ void get_postgres_result(
 }  // namespace
 
 void
-do_pgr_lineGraph(
-        Edge_t  *data_edges,
-        size_t total_edges,
+pgr_do_lineGraph(
+        char *edges_sql,
+
         bool directed,
         Edge_t **return_tuples,
         size_t *return_count,
@@ -75,18 +74,29 @@ do_pgr_lineGraph(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char *hint = nullptr;
+
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(total_edges != 0);
+
+
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+        if (edges.empty()) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
         pgrouting::DirectedGraph digraph(gType);
-        digraph.insert_edges_neg(data_edges, total_edges);
+        digraph.insert_edges_neg(edges);
 
         log << digraph << "\n";
         pgrouting::graph::Pgr_lineGraph<
@@ -125,6 +135,9 @@ do_pgr_lineGraph(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
