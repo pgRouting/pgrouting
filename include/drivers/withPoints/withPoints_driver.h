@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: many_to_many_withPoints_driver.h
+File: withPoints_driver.h
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -30,58 +30,45 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_WITHPOINTS_WITHPOINTS_DRIVER_H_
 #pragma once
 
-/* for size-t */
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include <postgres.h>
+#include <utils/array.h>
+
+#ifdef __cplusplus
+}
+#endif
+
+#include "cpp_common/undefPostgresDefine.hpp"
+
 #ifdef __cplusplus
 #   include <cstddef>
 #   include <cstdint>
-using Point_on_edge_t = struct Point_on_edge_t;
-using Edge_t = struct Edge_t;
 using Path_rt = struct Path_rt;
-using II_t_rt = struct II_t_rt;
 #else
 #   include <stddef.h>
 #   include <stdint.h>
-typedef struct Point_on_edge_t Point_on_edge_t;
-typedef struct Edge_t Edge_t;
 typedef struct Path_rt Path_rt;
-typedef struct II_t_rt II_t_rt;
 #endif
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-    void do_pgr_withPoints(
-            Edge_t *edges,
-            size_t total_edges,
+void pgr_do_withPoints(
+        char*,
+        char*,
+        char*,
+        char*,
+        ArrayType*, ArrayType*,
 
-            Point_on_edge_t *points,
-            size_t total_points,
+        char, bool, bool, bool, bool,
 
-            Edge_t *edges_of_points,
-            size_t total_edges_of_points,
-
-            II_t_rt  *combinations,
-            size_t total_combinations,
-
-            int64_t *start_pidsArr,
-            size_t size_start_pidsArr,
-
-            int64_t *end_pidsArr,
-            size_t size_end_pidsArr,
-
-
-            char driving_side,
-            bool details,
-            bool directed,
-            bool only_cost,
-            bool normal,
-
-            Path_rt **return_tuples,
-            size_t *return_count,
-            char** log_msg,
-            char** notice_msg,
-            char** err_msg);
+        Path_rt**, size_t*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }
