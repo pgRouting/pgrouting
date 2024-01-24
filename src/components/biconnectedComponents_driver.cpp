@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "components/pgr_components.hpp"
 
+#include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
@@ -42,9 +43,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 void
-do_pgr_biconnectedComponents(
-        Edge_t  *data_edges,
-        size_t total_edges,
+pgr_do_biconnectedComponents(
+        char *edges_sql,
+
         II_t_rt **return_tuples,
         size_t *return_count,
         char ** log_msg,
@@ -53,23 +54,34 @@ do_pgr_biconnectedComponents(
     using pgrouting::pgr_alloc;
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
+    using pgrouting::pgget::get_edges;
 
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char *hint = nullptr;
+
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(total_edges != 0);
+
+        hint = edges_sql;
+        auto edges = get_edges(std::string(edges_sql), true, false);
+        if (edges.empty()) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
 
         graphType gType = UNDIRECTED;
 
         log << "Working with Undirected Graph\n";
         pgrouting::UndirectedGraph undigraph(gType);
-        undigraph.insert_edges(data_edges, total_edges);
+        undigraph.insert_edges(edges);
         auto results(pgrouting::algorithms::biconnectedComponents(undigraph));
 
         auto count = results.size();
@@ -101,6 +113,9 @@ do_pgr_biconnectedComponents(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

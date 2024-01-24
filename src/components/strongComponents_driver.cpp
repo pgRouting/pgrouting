@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 
+#include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/pgr_base_graph.hpp"
@@ -42,9 +43,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 void
-do_pgr_strongComponents(
-        Edge_t  *data_edges,
-        size_t total_edges,
+pgr_do_strongComponents(
+        char *edges_sql,
+
         II_t_rt **return_tuples,
         size_t *return_count,
         char ** log_msg,
@@ -53,22 +54,35 @@ do_pgr_strongComponents(
     using pgrouting::pgr_alloc;
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
+    using pgrouting::pgget::get_edges;
 
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char *hint = nullptr;
+
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(total_edges != 0);
 
         graphType gType = DIRECTED;
 
+        hint = edges_sql;
+        auto edges = get_edges(std::string(edges_sql), true, false);
+        if (edges.empty()) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
+
+
+
         pgrouting::DirectedGraph digraph(gType);
-        digraph.insert_edges(data_edges, total_edges);
+        digraph.insert_edges(edges);
         auto results(pgrouting::algorithms::strongComponents(digraph));
 
         auto count = results.size();
@@ -76,8 +90,7 @@ do_pgr_strongComponents(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            notice <<
-                "No components found";
+            notice << "No components found";
             return;
         }
 
@@ -100,6 +113,9 @@ do_pgr_strongComponents(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
