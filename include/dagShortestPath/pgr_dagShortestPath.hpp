@@ -50,13 +50,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 
-template < class G >
+template <class G>
 class Pgr_dag {
  public:
      typedef typename G::V V;
      typedef typename G::E E;
 
-
+#if 0
      //! Dijkstra 1 to 1
      Path dag(
              G &graph,
@@ -91,15 +91,20 @@ class Pgr_dag {
                  predecessors, distances,
                  only_cost, true);
      }
+#endif
 
-
-     //! Dijkstra 1 to many
+     /** dag 1 to many */
      std::deque<Path> dag(
              G &graph,
              int64_t start_vertex,
-             const std::vector< int64_t > &end_vertex,
+             const std::set<int64_t> &end_vertex,
              bool only_cost) {
-         // adjust predecessors and distances vectors
+         std::deque<Path> paths;
+
+         /* precondition */
+         if (!graph.has_vertex(start_vertex)) return paths;
+
+         /* adjust predecessors and distances vectors */
          clear();
          size_t n_goals = (std::numeric_limits<size_t>::max)();
          predecessors.resize(graph.num_vertices());
@@ -108,24 +113,15 @@ class Pgr_dag {
                  std::numeric_limits<double>::infinity());
 
 
-         // get the graphs source and target
-         if (!graph.has_vertex(start_vertex))
-             return std::deque<Path>();
          auto v_source(graph.get_V(start_vertex));
 
-         std::set< V > s_v_targets;
+         std::set<V> v_targets;
          for (const auto &vertex : end_vertex) {
-             if (graph.has_vertex(vertex)) {
-                 s_v_targets.insert(graph.get_V(vertex));
-             }
+             if (graph.has_vertex(vertex)) v_targets.insert(graph.get_V(vertex));
          }
+         if (v_targets.empty()) return paths;
 
-         std::vector< V > v_targets(s_v_targets.begin(), s_v_targets.end());
-         // perform the algorithm
          dag_1_to_many(graph, v_source, v_targets, n_goals);
-
-         std::deque< Path > paths;
-         // get the results // route id are the targets
          paths = get_paths(graph, v_source, v_targets, only_cost);
 
          std::stable_sort(paths.begin(), paths.end(),
@@ -136,6 +132,7 @@ class Pgr_dag {
          return paths;
      }
 
+#if 0
      // preparation for many to 1
      std::deque<Path> dag(
              G &graph,
@@ -155,7 +152,6 @@ class Pgr_dag {
                  });
          return paths;
      }
-
 
      // preparation for many to many
      std::deque<Path> dag(
@@ -184,32 +180,17 @@ class Pgr_dag {
                  });
          return paths;
      }
+#endif
 
-     // preparation for parallel arrays
+     /** combinations */
      std::deque<Path> dag(
              G &graph,
-             const std::vector<II_t_rt> &combinations,
+             const std::map<int64_t, std::set<int64_t>> &combinations,
              bool only_cost) {
          std::deque<Path> paths;
 
-         // group targets per distinct source
-         std::map< int64_t, std::vector<int64_t> > vertex_map;
-         for (const II_t_rt &comb : combinations) {
-             std::map< int64_t, std::vector<int64_t> >::iterator it = vertex_map.find(comb.d1.source);
-             if (it != vertex_map.end()) {
-                 it->second.push_back(comb.d2.target);
-             } else {
-                 std::vector<int64_t > targets{comb.d2.target};
-                 vertex_map[comb.d1.source] = targets;
-             }
-         }
-
-         for (const auto &start_ends : vertex_map) {
-             auto result_paths = dag(
-                     graph,
-                     start_ends.first,
-                     start_ends.second,
-                     only_cost);
+         for (const auto &c : combinations) {
+             auto result_paths = dag(graph, c.first, c.second, only_cost);
              paths.insert(
                      paths.end(),
                      std::make_move_iterator(result_paths.begin()),
@@ -222,6 +203,7 @@ class Pgr_dag {
      //@}
 
  private:
+#if 0
      //! Call to Dijkstra  1 source to 1 target
      bool dag_1_to_1(
                  G &graph,
@@ -248,14 +230,14 @@ class Pgr_dag {
          }
          return true;
      }
+#endif
 
-     //! Dijkstra  1 source to many targets
+     /** DAG  1 source to many targets */
      bool dag_1_to_many(
              G &graph,
              V source,
-             const std::vector< V > &targets,
+             const std::set<V> &targets,
              size_t n_goals = (std::numeric_limits<size_t>::max)()) {
-         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
          CHECK_FOR_INTERRUPTS();
          try {
              boost::dag_shortest_paths(graph.graph, source,
@@ -292,7 +274,7 @@ class Pgr_dag {
      std::deque<Path> get_paths(
              const G &graph,
              V source,
-             std::vector< V > &targets,
+             std::set<V> &targets,
              bool only_cost) const {
          std::deque<Path> paths;
          for (const auto target : targets) {
@@ -317,6 +299,7 @@ class Pgr_dag {
      //@}
 
 
+#if 0
      //! @name Stopping classes
      //@{
      //! class for stopping when 1 target is found
@@ -331,15 +314,16 @@ class Pgr_dag {
       private:
           V m_goal;
      };
+#endif
 
      //! class for stopping when all targets are found
      class dijkstra_many_goal_visitor : public boost::default_dijkstra_visitor {
       public:
           explicit dijkstra_many_goal_visitor(
-                  const std::vector< V > &goals,
+                  const std::set<V> &goals,
                   size_t n_goals) :
-              m_goals(goals.begin(), goals.end()),
-              m_n_goals(n_goals)   {}
+              m_goals(goals),
+              m_n_goals(n_goals) {}
           template <class B_G>
               void examine_vertex(V u, B_G &) {
                   auto s_it = m_goals.find(u);
@@ -357,7 +341,7 @@ class Pgr_dag {
               }
 
       private:
-          std::set< V > m_goals;
+          std::set<V> m_goals;
           size_t m_n_goals;
      };
 };
