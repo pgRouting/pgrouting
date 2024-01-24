@@ -34,7 +34,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/trsp_pgget.h"
 #include "drivers/lineGraph/lineGraphFull_driver.h"
 
 PGDLLEXPORT Datum _pgr_linegraphfull(PG_FUNCTION_ARGS);
@@ -46,8 +45,6 @@ process(
         char* edges_sql,
         Line_graph_full_rt **result_tuples,
         size_t *result_count) {
-    PGR_DBG("\nSQL QUERY: %s\n", edges_sql);
-    PGR_DBG("\nDirectedGraph\n");
     pgr_SPI_connect();
     char* log_msg = NULL;
     char* notice_msg = NULL;
@@ -56,33 +53,16 @@ process(
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
-    PGR_DBG("Load data");
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-    PGR_DBG("Total %ld edges in query:", total_edges);
-
-    if (total_edges == 0) {
-        PGR_DBG("No edges found");
-        pgr_SPI_finish();
-        return;
-    }
-
-    PGR_DBG("Starting processing");
     clock_t start_t = clock();
-    do_pgr_lineGraphFull(
-            edges,
-            total_edges,
+    pgr_do_lineGraphFull(
+            edges_sql,
+
             result_tuples,
             result_count,
             &log_msg,
             &notice_msg,
             &err_msg);
-
     time_msg(" processing pgr_lineGraphFull", start_t, clock());
-    PGR_DBG("Returning %ld tuples", *result_count);
 
     if (err_msg) {
         if (*result_tuples) pfree(*result_tuples);
@@ -90,15 +70,12 @@ process(
 
     pgr_global_report(log_msg, notice_msg, err_msg);
 
-    if (edges) pfree(edges);
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
 
     pgr_SPI_finish();
 }
-/*                                                                            */
-/******************************************************************************/
 
 PGDLLEXPORT Datum _pgr_linegraphfull(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
