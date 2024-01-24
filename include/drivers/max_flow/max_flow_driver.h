@@ -31,45 +31,42 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_MAX_FLOW_MAX_FLOW_DRIVER_H_
 #pragma once
 
-/* for size-t */
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include <postgres.h>
+#include <utils/array.h>
+
+#ifdef __cplusplus
+}
+#endif
+
+#include "cpp_common/undefPostgresDefine.hpp"
+
 #ifdef __cplusplus
 #   include <cstddef>
 #   include <cstdint>
-using Edge_t = struct Edge_t;
 using Flow_t = struct Flow_t;
-using II_t_rt = struct II_t_rt;
 #else
 #   include <stddef.h>
 #   include <stdint.h>
-typedef struct Edge_t Edge_t;
 typedef struct Flow_t Flow_t;
-typedef struct II_t_rt II_t_rt;
 #endif
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-    void
-        do_pgr_max_flow(
-            Edge_t *data_edges,
-            size_t total_tuples,
+void pgr_do_max_flow(
+        char*,
+        char*,
+        ArrayType*, ArrayType*,
 
-            II_t_rt  *combinations,
-            size_t total_combinations,
+        int, bool,
 
-            int64_t* source_vertices,
-            size_t size_source_verticesArr,
-            int64_t* sink_vertices,
-            size_t size_sink_verticesArr,
-            int algorithm,
-            bool only_flow,
-            Flow_t **return_tuples,
-            size_t *return_count,
-            char** log_msg,
-            char** notice_msg,
-            char** err_msg);
-
+        Flow_t**, size_t*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }

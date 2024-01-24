@@ -34,7 +34,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/trsp_pgget.h"
 
 #include "c_types/edge_bool_t_rt.h"
 
@@ -44,8 +43,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 PGDLLEXPORT Datum
 _pgr_maxcardinalitymatch(PG_FUNCTION_ARGS);
 
-/******************************************************************************/
-/*                          MODIFY AS NEEDED                                  */
 static
 void
 process(
@@ -58,21 +55,9 @@ process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    Edge_bool_t* edges = NULL;
-    size_t total_edges = 0;
-    pgr_get_basic_edges(edges_sql, &edges, &total_edges, &err_msg);
-    throw_error(err_msg, edges_sql);
-
-    if (total_edges == 0) {
-        pgr_SPI_finish();
-        return;
-    }
-
-    PGR_DBG("Starting timer");
     clock_t start_t = clock();
-
-    do_pgr_maximum_cardinality_matching(
-            edges, total_edges,
+    pgr_do_maximum_cardinality_matching(
+            edges_sql,
             directed,
             result_tuples,
             result_count,
@@ -80,10 +65,7 @@ process(
             &log_msg,
             &notice_msg,
             &err_msg);
-
     time_msg("pgr_maximumCardinalityMatching()", start_t, clock());
-
-    if (edges) pfree(edges);
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
@@ -97,7 +79,6 @@ process(
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
 
-
     pgr_SPI_finish();
 }
 
@@ -109,7 +90,6 @@ _pgr_maxcardinalitymatch(PG_FUNCTION_ARGS) {
 
     Only_int_rt* result_tuples = NULL;
     size_t result_count = 0;
-    /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext oldcontext;
@@ -117,15 +97,11 @@ _pgr_maxcardinalitymatch(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-        /**********************************************************************/
-        PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_BOOL(1),
                 &result_tuples,
                 &result_count);
-
-        /**********************************************************************/
 
         funcctx->max_calls = result_count;
         funcctx->user_fctx = result_tuples;
@@ -151,8 +127,6 @@ _pgr_maxcardinalitymatch(PG_FUNCTION_ARGS) {
         Datum *values;
         bool *nulls;
 
-        /**********************************************************************/
-
         values = palloc(4 * sizeof(Datum));
         nulls = palloc(4 * sizeof(bool));
 
@@ -166,8 +140,6 @@ _pgr_maxcardinalitymatch(PG_FUNCTION_ARGS) {
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge_id);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
-
-        /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
