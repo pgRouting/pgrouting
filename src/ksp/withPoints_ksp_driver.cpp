@@ -14,8 +14,6 @@ Mail: this.abhinav at gmail.com
 
 ------
 
-
-
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License, or
@@ -39,25 +37,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "c_types/ii_t_rt.h"
+#include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/combinations.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
-
-#include "yen/pgr_ksp.hpp"
 #include "withPoints/pgr_withPoints.hpp"
 
-using pgrouting::yen::Pgr_ksp;
+#include "yen/pgr_ksp.hpp"
 
-int
+void
 pgr_do_withPointsKsp(
-        Edge_t  *edges,           size_t total_edges,
-        Point_on_edge_t  *points_p,   size_t total_points,
-        Edge_t  *edges_of_points, size_t total_edges_of_points,
+        char *edges_sql,
+        char *points_sql,
+        char *edges_of_points_sql,
+        char *combinations_sql,
+        ArrayType *starts,
+        ArrayType *ends,
 
-        II_t_rt *combinationsArr, size_t total_combinations,
-        int64_t *start_pidsArr, size_t size_start_pidsArr,
-        int64_t *end_pidsArr, size_t size_end_pidsArr,
+        int64_t *start_vid,
+        int64_t *end_vid,
 
         size_t k,
         bool directed,
@@ -73,27 +71,57 @@ pgr_do_withPointsKsp(
     using pgrouting::pgr_alloc;
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
+    using pgrouting::yen::Pgr_ksp;
+    using pgrouting::utilities::get_combinations;
+    using pgrouting::pgget::get_points;
+    using pgrouting::pgget::get_edges;
 
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char *hint = nullptr;
+
     try {
-        pgassert(total_edges != 0);
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(total_combinations != 0 || (size_start_pidsArr != 0 && size_end_pidsArr != 0));
 
 
-        pgrouting::Pg_points_graph pg_graph(
-                std::vector<Point_on_edge_t>(
-                    points_p,
-                    points_p + total_points),
-                std::vector< Edge_t >(
-                    edges_of_points,
-                    edges_of_points + total_edges_of_points),
+        hint = combinations_sql;
+        auto combinations = get_combinations(combinations_sql, starts, ends, true);
+        hint = nullptr;
+
+        if (start_vid && end_vid) {
+            combinations[*start_vid].insert(*end_vid);
+        }
+
+        if (combinations.empty() && combinations_sql) {
+            *notice_msg = pgr_msg("No (source, target) pairs found");
+            *log_msg = pgr_msg(combinations_sql);
+            return;
+        }
+
+        log << "Combinations size " << combinations.size();
+
+        hint = points_sql;
+        auto points = get_points(std::string(points_sql));
+
+        hint = edges_of_points_sql;
+        auto edges_of_points = get_edges(std::string(edges_of_points_sql), true, false);
+
+        hint = edges_sql;
+        auto edges = get_edges(std::string(edges_sql), true, false);
+
+        if (edges.size() + edges_of_points.size() == 0) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
+
+        pgrouting::Pg_points_graph pg_graph(points, edges_of_points,
                 true,
                 driving_side,
                 directed);
@@ -103,31 +131,27 @@ pgr_do_withPointsKsp(
             err << pg_graph.get_error();
             *log_msg = pgr_msg(log.str().c_str());
             *err_msg = pgr_msg(err.str().c_str());
-            return -1;
+            return;
         }
 
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        std::deque< Path > paths;
+        std::deque<Path> paths;
 
-        auto combinations = total_combinations?
-            pgrouting::utilities::get_combinations(combinationsArr, total_combinations)
-            : pgrouting::utilities::get_combinations(start_pidsArr, size_start_pidsArr, end_pidsArr, size_end_pidsArr);
-
-        auto vertices(pgrouting::extract_vertices(edges, total_edges));
+        auto vertices(pgrouting::extract_vertices(edges));
         vertices = pgrouting::extract_vertices(vertices, pg_graph.new_edges());
 
 
         if (directed) {
             pgrouting::DirectedGraph digraph(vertices, gType);
-            digraph.insert_edges(edges, total_edges);
+            digraph.insert_edges(edges);
             digraph.insert_edges(pg_graph.new_edges());
 
             paths = pgrouting::algorithms::Yen(digraph, combinations, k, heap_paths);
         } else {
             pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(edges, total_edges);
+            undigraph.insert_edges(edges);
             undigraph.insert_edges(pg_graph.new_edges());
 
             paths = pgrouting::algorithms::Yen(undigraph, combinations, k, heap_paths);
@@ -143,7 +167,11 @@ pgr_do_withPointsKsp(
         auto count(count_tuples(paths));
 
         if (count == 0) {
-            return 0;
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
+            notice << "No paths found";
+            *log_msg = pgr_msg(notice.str().c_str());
+            return;
         }
 
 
@@ -157,7 +185,10 @@ pgr_do_withPointsKsp(
         }
 
         if (count != sequence) {
-            return 2;
+            (*return_count) = 0;
+            notice << "Something went wrong";
+            *log_msg = pgr_msg(notice.str().c_str());
+            return;
         }
         (*return_count) = sequence;
 
@@ -167,13 +198,15 @@ pgr_do_withPointsKsp(
         *notice_msg = notice.str().empty()?
             *notice_msg :
             pgr_msg(notice.str().c_str());
-        return 0;
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
@@ -187,5 +220,4 @@ pgr_do_withPointsKsp(
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
     }
-    return 1000;
 }
