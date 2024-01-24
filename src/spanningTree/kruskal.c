@@ -68,6 +68,13 @@ process(
         return;
     }
 
+    /* checks previously done on sql now done here */
+    if (strcmp(fn_suffix, "DD") == 0 && distance < 0) {
+        throw_error("Negative value found on 'distance'", "Must be positive");
+    } else if ((strcmp(fn_suffix, "BFS") == 0 || strcmp(fn_suffix, "DFS") == 0) && max_depth < 0) {
+        throw_error("Negative value found on 'max_depth'", "Must be positive");
+    }
+
     clock_t start_t = clock();
     pgr_do_kruskal(
             edges_sql,
