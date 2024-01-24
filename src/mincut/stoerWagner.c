@@ -33,7 +33,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 
-#include "c_common/trsp_pgget.h"
 #include "c_types/stoerWagner_t.h"
 
 #include "drivers/mincut/stoerWagner_driver.h"
@@ -50,9 +49,6 @@ process(
         char* edges_sql,
         StoerWagner_t **result_tuples,
         size_t *result_count) {
-    /*
-     *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
-     */
     pgr_SPI_connect();
     char* log_msg = NULL;
     char* notice_msg = NULL;
@@ -61,60 +57,35 @@ process(
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
-    PGR_DBG("Load data");
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-    PGR_DBG("Total %ld edges in query:", total_edges);
-
-    if (total_edges == 0) {
-        PGR_DBG("No edges found");
-        pgr_SPI_finish();
-        return;
-    }
-
-    PGR_DBG("Starting processing");
     clock_t start_t = clock();
-    do_pgr_stoerWagner(
-            edges,
-            total_edges,
+    pgr_do_stoerWagner(
+            edges_sql,
+
             result_tuples,
             result_count,
             &log_msg,
             &notice_msg,
             &err_msg);
-
     time_msg(" processing pgr_stoerWagner", start_t, clock());
-    PGR_DBG("Returning %ld tuples", *result_count);
 
     if (err_msg) {
         if (*result_tuples) pfree(*result_tuples);
     }
     pgr_global_report(log_msg, notice_msg, err_msg);
 
-    if (edges) pfree(edges);
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
 
     pgr_SPI_finish();
 }
-/*                                                                            */
-/******************************************************************************/
 
 PGDLLEXPORT Datum _pgr_stoerwagner(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
-    /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
     StoerWagner_t *result_tuples = NULL;
     size_t result_count = 0;
-    /*                                                                        */
-    /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
@@ -128,13 +99,7 @@ PGDLLEXPORT Datum _pgr_stoerwagner(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-
-        /*                                                                    */
-        /**********************************************************************/
-
-
         funcctx->max_calls = result_count;
-
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
@@ -167,24 +132,15 @@ PGDLLEXPORT Datum _pgr_stoerwagner(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        // postgres starts counting from 1
         values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[2] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].mincut);
-        /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
-
-        PGR_DBG("Clean up code");
-
-        /**********************************************************************/
-
         SRF_RETURN_DONE(funcctx);
     }
 }
