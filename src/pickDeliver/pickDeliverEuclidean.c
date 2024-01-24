@@ -33,7 +33,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/trsp_pgget.h"
 #include "c_types/iid_t_rt.h"
 #include "c_types/pickDeliver/orders_t.h"
 #include "c_types/pickDeliver/vehicle_t.h"
@@ -88,80 +87,10 @@ process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    PGR_DBG("Load orders");
-    Orders_t *pd_orders_arr = NULL;
-    size_t total_pd_orders = 0;
-    pgr_get_orders(pd_orders_sql, &pd_orders_arr, &total_pd_orders, false, &err_msg);
-    throw_error(err_msg, pd_orders_sql);
-
-    PGR_DBG("Load vehicles");
-    Vehicle_t *vehicles_arr = NULL;
-    size_t total_vehicles = 0;
-    pgr_get_vehicles(vehicles_sql, &vehicles_arr, &total_vehicles, false, &err_msg);
-    throw_error(err_msg, vehicles_sql);
-    PGR_DBG("total vehicles %ld", total_vehicles);
-
-    size_t i;
-    for (i = 0; i < total_pd_orders; i++) {
-        PGR_DBG("%ld %f pick %f %f %ld - "
-                "%f %f %f deliver %f %f %ld - %f %f %f ",
-                pd_orders_arr[i].id,
-                pd_orders_arr[i].demand,
-
-                pd_orders_arr[i].pick_x,
-                pd_orders_arr[i].pick_y,
-                pd_orders_arr[i].pick_node_id,
-
-                pd_orders_arr[i].pick_open_t,
-                pd_orders_arr[i].pick_close_t,
-                pd_orders_arr[i].pick_service_t,
-
-                pd_orders_arr[i].deliver_x,
-                pd_orders_arr[i].deliver_y,
-                pd_orders_arr[i].deliver_node_id,
-
-                pd_orders_arr[i].deliver_open_t,
-                pd_orders_arr[i].deliver_close_t,
-                pd_orders_arr[i].deliver_service_t);
-    }
-
-
-
-    for (i = 0; i < total_vehicles; i++) {
-        PGR_DBG("%ld %f %f , start %f %f %f %f %f "
-                "end %f %f %f %f %f number %ld ",
-               vehicles_arr[i].id,
-               vehicles_arr[i].capacity,
-               vehicles_arr[i].speed,
-
-               vehicles_arr[i].start_x,
-               vehicles_arr[i].start_y,
-               vehicles_arr[i].start_open_t,
-               vehicles_arr[i].start_close_t,
-               vehicles_arr[i].start_service_t,
-
-               vehicles_arr[i].end_x,
-               vehicles_arr[i].end_y,
-               vehicles_arr[i].end_open_t,
-               vehicles_arr[i].end_close_t,
-               vehicles_arr[i].end_service_t,
-
-               vehicles_arr[i].cant_v);
-    }
-
-    if (total_pd_orders == 0 || total_vehicles == 0) {
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
-        pgr_SPI_finish();
-        return;
-    }
-    PGR_DBG("Total %ld orders in query:", total_pd_orders);
-
-    PGR_DBG("Starting processing");
     clock_t start_t = clock();
-    do_pgr_pickDeliverEuclidean(
-            pd_orders_arr, total_pd_orders,
-            vehicles_arr, total_vehicles,
+    pgr_do_pickDeliverEuclidean(
+            pd_orders_sql,
+            vehicles_sql,
 
             factor,
             max_cycles,
@@ -186,40 +115,22 @@ process(
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-    if (pd_orders_arr) pfree(pd_orders_arr);
-    if (vehicles_arr) pfree(vehicles_arr);
 
     pgr_SPI_finish();
 }
-/*                                                                            */
-/******************************************************************************/
 
 PGDLLEXPORT Datum
 _pgr_pickdelivereuclidean(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
-    /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
     Schedule_rt *result_tuples = 0;
     size_t result_count = 0;
-    /*                                                                        */
-    /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-
-        /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
-        /*
-           orders_sql TEXT,
-           vehicles_sql INTEGER,
-           max_cycles INTEGER,
-           initial_id INTEGER,
-         **********************************************************************/
 
         PGR_DBG("Calling process");
         process(
@@ -230,10 +141,6 @@ _pgr_pickdelivereuclidean(PG_FUNCTION_ARGS) {
                 PG_GETARG_INT32(4),
                 &result_tuples,
                 &result_count);
-
-        /*                                                                   */
-        /*********************************************************************/
-
 
         funcctx->max_calls = result_count;
 
@@ -261,19 +168,6 @@ _pgr_pickdelivereuclidean(PG_FUNCTION_ARGS) {
         bool*       nulls;
         size_t      call_cntr = funcctx->call_cntr;
 
-        /*********************************************************************/
-        /*                          MODIFY!!!!!                              */
-        /* This has to match you output otherwise the server crashes          */
-        /*
-           OUT seq INTEGER,
-           OUT vehicle_id INTEGER,
-           OUT vehicle_seq INTEGER,
-           OUT order_id BIGINT,
-           OUT cost FLOAT,
-           OUT agg_cost FLOAT
-         *********************************************************************/
-
-
         size_t numb = 12;
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
@@ -284,7 +178,6 @@ _pgr_pickdelivereuclidean(PG_FUNCTION_ARGS) {
         }
 
 
-        // postgres starts counting from 1
         values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[call_cntr].vehicle_seq);
         values[2] = Int64GetDatum(result_tuples[call_cntr].vehicle_id);
@@ -297,8 +190,6 @@ _pgr_pickdelivereuclidean(PG_FUNCTION_ARGS) {
         values[9] = Float8GetDatum(result_tuples[call_cntr].waitTime);
         values[10] = Float8GetDatum(result_tuples[call_cntr].serviceTime);
         values[11] = Float8GetDatum(result_tuples[call_cntr].departureTime);
-
-        /*********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
