@@ -1,11 +1,13 @@
 /*PGR-GNU*****************************************************************
-File: dijkstraViaVertex.c
+File: dijkstraVia_driver.h
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
+Mail: vicky at erosion.dev
 
 ------
 
@@ -29,42 +31,41 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_DIJKSTRA_DIJKSTRAVIA_DRIVER_H_
 #pragma once
 
-/* for size-t */
 #ifdef __cplusplus
-#   include <cstdint>
+extern "C" {
+#endif
+
+#include <postgres.h>
+#include <utils/array.h>
+
+#ifdef __cplusplus
+}
+#endif
+
+#include "cpp_common/undefPostgresDefine.hpp"
+
+#ifdef __cplusplus
 #   include <cstddef>
-using Edge_t = struct Edge_t;
+#   include <cstdint>
 using Routes_t = struct Routes_t;
 #else
 #   include <stddef.h>
 #   include <stdint.h>
-typedef struct Edge_t Edge_t;
 typedef struct Routes_t Routes_t;
 #endif
-
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-    /*
-       CREATE OR REPLACE FUNCTION pgr_dijkstraViaVertices(
-       sql text,
-       vertices anyarray,
-       directed boolean default true,
-       */
-    void
-        do_pgr_dijkstraVia(
-                Edge_t  *data_edges,  size_t total_edges,
-                int64_t  *via_vidsArr,    size_t size_via_vidsArr,
-                bool directed,
-                bool strict,
-                bool U_turn_on_edge,
-                Routes_t **return_tuples, size_t *return_count,
+void pgr_do_dijkstraVia(
+        char*,
+        ArrayType*,
 
-                char** log_msg,
-                char** notice_msg,
-                char** err_msg);
+        bool, bool, bool,
+
+        Routes_t**, size_t *,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }

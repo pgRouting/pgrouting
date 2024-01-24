@@ -1,11 +1,12 @@
 /*PGR-GNU*****************************************************************
-File: dijkstraViaVertex.c
+File: dijkstraVia.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 
 Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
+Mail: vicky at erosion.dev
 
 ------
 
@@ -26,13 +27,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include <stdbool.h>
+
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
+
 #include "c_types/routes_t.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/trsp_pgget.h"
 #include "drivers/dijkstra/dijkstraVia_driver.h"
 
 PGDLLEXPORT Datum _pgr_dijkstravia(PG_FUNCTION_ARGS);
@@ -52,26 +53,11 @@ process(char* edges_sql,
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    size_t size_via_vidsArr = 0;
-    int64_t* via_vidsArr = pgr_get_bigIntArray(&size_via_vidsArr, vias, false, &err_msg);
-    throw_error(err_msg, "While getting via vertices");
-
-    Edge_t* edges = NULL;
-    size_t total_edges = 0;
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-
-    if (total_edges == 0) {
-        if (via_vidsArr) pfree(via_vidsArr);
-        pgr_SPI_finish();
-        return;
-    }
-
     PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    do_pgr_dijkstraVia(
-            edges, total_edges,
-            via_vidsArr, size_via_vidsArr,
+    pgr_do_dijkstraVia(
+            edges_sql,
+            vias,
             directed,
             strict,
             U_turn_on_edge,
@@ -87,14 +73,12 @@ process(char* edges_sql,
         (*result_tuples) = NULL;
         (*result_count) = 0;
     }
-
     pgr_global_report(log_msg, notice_msg, err_msg);
 
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-    if (edges) pfree(edges);
-    if (via_vidsArr) pfree(via_vidsArr);
+
     pgr_SPI_finish();
 }
 
@@ -104,24 +88,13 @@ _pgr_dijkstravia(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
-    /**********************************************************************/
     Routes_t  *result_tuples = 0;
     size_t result_count = 0;
-    /**********************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-
-
-        /**********************************************************************
-         * pgr_dijkstraVia(edges_sql text,
-         *   vertices anyarray,
-         *   directed boolean default true,
-         *   strict boolean default false,
-         *   U_turn_on_edge boolean default false,
-         **********************************************************************/
 
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
@@ -131,8 +104,6 @@ _pgr_dijkstravia(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
-
-        /**********************************************************************/
 
         funcctx->max_calls = result_count;
 
@@ -159,20 +130,6 @@ _pgr_dijkstravia(PG_FUNCTION_ARGS) {
         bool*        nulls;
         size_t       call_cntr = funcctx->call_cntr;
 
-        /**********************************************************************/
-        /*
-           OUT seq INTEGER,
-           OUT path_id INTEGER,
-           OUT path_seq INTEGER,
-           OUT start_vid BIGINT,
-           OUT end_vid BIGINT,
-           OUT node BIGINT,
-           OUT edge BIGINT,
-           OUT cost FLOAT,
-           OUT agg_cost FLOAT,
-           OUT route_agg_cost FLOAT
-           */
-
         size_t numb_out = 10;
         values = palloc(numb_out * sizeof(Datum));
         nulls = palloc(numb_out * sizeof(bool));
@@ -181,7 +138,6 @@ _pgr_dijkstravia(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        // postgres starts counting from 1
         values[0] = Int32GetDatum((int32_t)call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[call_cntr].path_id);
         values[2] = Int32GetDatum(result_tuples[call_cntr].path_seq + 1);
@@ -192,8 +148,6 @@ _pgr_dijkstravia(PG_FUNCTION_ARGS) {
         values[7] = Float8GetDatum(result_tuples[call_cntr].cost);
         values[8] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
         values[9] = Float8GetDatum(result_tuples[call_cntr].route_agg_cost);
-
-        /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
