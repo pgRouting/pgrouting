@@ -35,7 +35,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 #include "c_types/ii_t_rt.h"
-#include "c_common/trsp_pgget.h"
 
 #include "drivers/dominator/lengauerTarjanDominatorTree_driver.h"
 
@@ -55,26 +54,15 @@ process(char* edges_sql,
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    size_t total_edges = 0;
-    Edge_t* edges = NULL;
-
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-    if (total_edges == 0) {
-        pgr_SPI_finish();
-        return;
-    }
-
-    PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    do_pgr_LTDTree(
-            edges, total_edges,
+    pgr_do_LTDTree(
+            edges_sql,
+
             root_vertex,
             result_tuples, result_count,
             &log_msg,
             &notice_msg,
             &err_msg);
-
     time_msg("processing pgr_LTDTree()", start_t, clock());
 
 
@@ -89,7 +77,6 @@ process(char* edges_sql,
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-    if (edges) pfree(edges);
     pgr_SPI_finish();
 }
 
@@ -98,17 +85,13 @@ _pgr_lengauertarjandominatortree(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
-    /**********************************************************************/
     II_t_rt *result_tuples = NULL;
     size_t result_count = 0;
-    /**********************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-        /**********************************************************************/
-
 
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
@@ -116,8 +99,6 @@ _pgr_lengauertarjandominatortree(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-
-        /**********************************************************************/
         funcctx->max_calls = result_count;
 
         funcctx->user_fctx = result_tuples;

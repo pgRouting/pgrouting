@@ -27,30 +27,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-
-
+#include "drivers/dominator/lengauerTarjanDominatorTree_driver.h"
 
 #include <string>
 #include <sstream>
 #include <deque>
 #include <vector>
 #include <algorithm>
+
+#include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/identifiers.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 #include "c_types/ii_t_rt.h"
-#include "drivers/dominator/lengauerTarjanDominatorTree_driver.h"
 #include "dominator/pgr_lengauerTarjanDominatorTree_driver.hpp"
 
 
-/************************************************************
-  edges_sql TEXT
- ***********************************************************/
 void
-do_pgr_LTDTree(
-        Edge_t  *data_edges,
-        size_t total_edges,
+pgr_do_LTDTree(
+        char *edges_sql,
+
         int64_t root_vertex,
         II_t_rt **return_tuples,
         size_t *return_count,
@@ -65,23 +62,29 @@ do_pgr_LTDTree(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
-
+    char *hint = nullptr;
 
     try {
-        pgassert(total_edges != 0);
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        std::string logstr;
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+        if (edges.empty()) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
 
-/***********************Working with graph**************************/
+        std::string logstr;
 
         graphType gType = DIRECTED;
         pgrouting::DirectedGraph digraph(gType);
-        digraph.insert_edges(data_edges, total_edges);
+        digraph.insert_edges(edges);
         std::vector<II_t_rt> results;
         pgrouting::functions::Pgr_LTDTree<pgrouting::DirectedGraph> fn_LTDTree;
         results = fn_LTDTree.pgr_ltdtree(digraph, root_vertex);
@@ -122,6 +125,9 @@ do_pgr_LTDTree(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
