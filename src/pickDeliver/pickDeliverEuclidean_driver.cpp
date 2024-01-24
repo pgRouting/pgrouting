@@ -41,23 +41,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "vrp/pgr_pickDeliver.h"
 
+#include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/pgr_alloc.hpp"
 
-/************************************************************
-  customers_sql TEXT,
-  max_vehicles INTEGER,
-  factor FLOAT,
-  capacity FLOAT,
-  max_cycles INTEGER,
- ***********************************************************/
 void
-do_pgr_pickDeliverEuclidean(
-        Orders_t *customers_arr,
-        size_t total_customers,
-
-        Vehicle_t *vehicles_arr,
-        size_t total_vehicles,
+pgr_do_pickDeliverEuclidean(
+        char *customers_sql,
+        char *vehicles_sql,
 
         double factor,
         int max_cycles,
@@ -76,17 +67,29 @@ do_pgr_pickDeliverEuclidean(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
+    char* hint = nullptr;
+
     try {
         *return_tuples = nullptr;
         *return_count = 0;
 
-        /*
-         * transform to C++ containers
-         */
-        std::vector<Orders_t> orders(
-                customers_arr, customers_arr + total_customers);
-        std::vector<Vehicle_t> vehicles(
-                vehicles_arr, vehicles_arr + total_vehicles);
+        hint = customers_sql;
+        auto orders = pgrouting::pgget::get_orders(std::string(customers_sql), false);
+        if (orders.size() == 0) {
+            *notice_msg = pgr_msg("Insufficient data found on inner query");
+            *log_msg = hint? pgr_msg(hint) : nullptr;
+            return;
+        }
+
+        hint = vehicles_sql;
+        auto vehicles = pgrouting::pgget::get_vehicles(std::string(vehicles_sql), false);
+        if (vehicles.size() == 0) {
+            *notice_msg = pgr_msg("Insufficient data found on inner query");
+            *log_msg = hint? pgr_msg(hint) : nullptr;
+            return;
+        }
+
+        hint = nullptr;
 
         std::map<std::pair<double, double>, int64_t> matrix_data;
 
@@ -194,6 +197,9 @@ do_pgr_pickDeliverEuclidean(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (const std::pair<std::string, std::string>& ex) {
         (*return_count) = 0;
         err << ex.first;

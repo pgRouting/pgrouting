@@ -38,6 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "vrp/pgr_pickDeliver.h"
 #include "vrp/initials_code.h"
+#include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/Dmatrix.h"
 
 #include "cpp_common/pgr_assert.h"
@@ -49,15 +50,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/pickDeliver/schedule_rt.h"
 
 void
-do_pgr_pickDeliver(
-        Orders_t customers_arr[],
-        size_t total_customers,
-
-        Vehicle_t *vehicles_arr,
-        size_t total_vehicles,
-
-        IID_t_rt *matrix_cells_arr,
-        size_t total_cells,
+pgr_do_pickDeliver(
+        char* customers_sql,
+        char *vehicles_sql,
+        char *matrix_sql,
 
         double factor,
         int max_cycles,
@@ -76,30 +72,40 @@ do_pgr_pickDeliver(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
+    char *hint = nullptr;
+
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
-        pgassert(total_customers);
-        pgassert(total_vehicles);
-        pgassert(total_vehicles);
         pgassert(*return_count == 0);
         pgassert(!(*return_tuples));
-        log << "do_pgr_pickDeliver\n";
 
+        hint = customers_sql;
+        auto orders = pgrouting::pgget::get_orders(std::string(customers_sql), true);
+        if (orders.size() == 0) {
+            *notice_msg = pgr_msg("Insufficient data found on inner query");
+            *log_msg = hint? pgr_msg(hint) : nullptr;
+            return;
+        }
 
-        /*
-         * transform to C++ containers
-         */
-        std::vector<Orders_t> orders(
-                customers_arr, customers_arr + total_customers);
+        hint = vehicles_sql;
+        auto vehicles = pgrouting::pgget::get_vehicles(std::string(vehicles_sql), true);
+        if (vehicles.size() == 0) {
+            *notice_msg = pgr_msg("Insufficient data found on inner query");
+            *log_msg = hint? pgr_msg(hint) : nullptr;
+            return;
+        }
 
-        std::vector<Vehicle_t> vehicles(
-                vehicles_arr, vehicles_arr + total_vehicles);
+        hint = matrix_sql;
+        auto data_costs = pgrouting::pgget::get_matrixRows(std::string(matrix_sql));
 
-        std::vector <IID_t_rt> data_costs(
-                matrix_cells_arr,
-                matrix_cells_arr + total_cells);
+        if (data_costs.size() == 0) {
+            *notice_msg = pgr_msg("Insufficient data found on inner query");
+            *log_msg = hint? pgr_msg(hint) : nullptr;
+            return;
+        }
+        hint = nullptr;
 
         pgrouting::tsp::Dmatrix cost_matrix(data_costs);
 
@@ -210,6 +216,9 @@ do_pgr_pickDeliver(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (const std::pair<std::string, std::string>& ex) {
         (*return_count) = 0;
         err << ex.first;
