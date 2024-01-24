@@ -31,40 +31,42 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_SPANNINGTREE_PRIM_DRIVER_H_
 #pragma once
 
-/* for size-t */
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include <postgres.h>
+#include <utils/array.h>
+
+#ifdef __cplusplus
+}
+#endif
+
+#include "cpp_common/undefPostgresDefine.hpp"
+
 #ifdef __cplusplus
 #   include <cstddef>
 #   include <cstdint>
+using MST_rt = struct MST_rt;
 #else
 #   include <stddef.h>
 #   include <stdint.h>
+typedef struct MST_rt MST_rt;
 #endif
 
-typedef struct Edge_t Edge_t;
-typedef struct MST_rt MST_rt;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void do_pgr_prim(
-        Edge_t  *data_edges,
-        size_t total_edges,
+void pgr_do_prim(
+        char*,
+        ArrayType*,
 
-        int64_t *rootsArr,
-        size_t size_rootsArr,
+        char*, int64_t, double,
 
-        char* fn_suffix,
-
-        int64_t max_depth,
-        double distance,
-
-        MST_rt **return_tuples,
-        size_t *return_count,
-
-        char ** log_msg,
-        char ** notice_msg,
-        char ** err_msg);
+        MST_rt**, size_t*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }

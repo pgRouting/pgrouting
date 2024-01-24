@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <string>
 
+#include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
@@ -43,12 +44,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 void
-do_pgr_prim(
-        Edge_t  *data_edges,
-        size_t total_edges,
-
-        int64_t *rootsArr,
-        size_t size_rootsArr,
+pgr_do_prim(
+        char *edges_sql,
+        ArrayType* starts,
 
         char* fn_suffix,
 
@@ -64,10 +62,13 @@ do_pgr_prim(
     using pgrouting::pgr_alloc;
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
+    using pgrouting::pgget::get_intArray;
 
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char *hint = nullptr;
+
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
@@ -75,17 +76,25 @@ do_pgr_prim(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        std::vector<int64_t> roots(rootsArr, rootsArr + size_rootsArr);
+        auto roots = get_intArray(starts, false);
+
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+        hint = nullptr;
+
         std::string suffix(fn_suffix);
 
         std::vector<MST_rt> results;
 
-        if (total_edges == 0) {
+        pgrouting::UndirectedGraph undigraph(UNDIRECTED);
+        undigraph.insert_min_edges_no_parallel(edges);
+        pgrouting::functions::Pgr_prim<pgrouting::UndirectedGraph> prim;
+
+        if (edges.empty()) {
             results = pgrouting::details::get_no_edge_graph_result(roots);
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = pgr_msg(edges_sql);
         } else {
-            pgrouting::UndirectedGraph undigraph(UNDIRECTED);
-            undigraph.insert_min_edges_no_parallel(data_edges, total_edges);
-            pgrouting::functions::Pgr_prim<pgrouting::UndirectedGraph> prim;
             if (suffix == "") {
                 results = prim.prim(undigraph);
             } else if (suffix == "BFS") {
@@ -102,13 +111,6 @@ do_pgr_prim(
         }
 
         auto count = results.size();
-
-        if (count == 0) {
-            (*return_tuples) = NULL;
-            (*return_count) = 0;
-            notice << "No spanning tree found";
-            return;
-        }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
         for (size_t i = 0; i < count; i++) {
@@ -129,6 +131,9 @@ do_pgr_prim(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

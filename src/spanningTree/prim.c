@@ -27,13 +27,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include <stdbool.h>
-#include <string.h>
 #include "c_common/postgres_connection.h"
 
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/trsp_pgget.h"
 #include "c_types/mst_rt.h"
 
 #include "drivers/spanningTree/mst_common.h"
@@ -65,30 +63,10 @@ process(
         return;
     }
 
-    if (strcmp(fn_suffix, "DD") == 0 && distance < 0) {
-        throw_error("Negative value found on 'distance'", "Must be positive");
-    } else if ((strcmp(fn_suffix, "BFS") == 0 || strcmp(fn_suffix, "DFS") == 0) && max_depth < 0) {
-        throw_error("Negative value found on 'max_depth'", "Must be positive");
-    }
-
-    size_t size_rootsArr = 0;
-    int64_t* rootsArr = pgr_get_bigIntArray(&size_rootsArr, roots, false, &err_msg);
-    throw_error(err_msg, "While getting start vids");
-
-    (*result_tuples) = NULL;
-    (*result_count) = 0;
-
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-
-
     clock_t start_t = clock();
-    do_pgr_prim(
-            edges, total_edges,
-            rootsArr, size_rootsArr,
+    pgr_do_prim(
+            edges_sql,
+            roots,
 
             fn_suffix,
 
@@ -109,7 +87,6 @@ process(
     }
     pgr_global_report(log_msg, notice_msg, err_msg);
 
-    if (edges) pfree(edges);
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
@@ -209,7 +186,6 @@ PGDLLEXPORT Datum _pgr_prim(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        /* Edge sql, tree roots, fn_suffix, max_depth, distance */
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_ARRAYTYPE_P(1),
@@ -261,8 +237,6 @@ PGDLLEXPORT Datum _pgr_prim(PG_FUNCTION_ARGS) {
         values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
-
-        /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
