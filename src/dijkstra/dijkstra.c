@@ -1,5 +1,4 @@
 /*PGR-GNU*****************************************************************
-
 File: dijkstra.c
 
 Generated with Template by:
@@ -34,14 +33,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include <stdbool.h>
-
 #include "c_common/postgres_connection.h"
 
 #include "c_types/path_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/trsp_pgget.h"
 #include "drivers/dijkstra/dijkstra_driver.h"
 
 PG_MODULE_MAGIC;
@@ -53,7 +50,7 @@ static
 void
 process(
         char *edges_sql,
-        char* combinations_sql,
+        char *combinations_sql,
         ArrayType *starts,
         ArrayType *ends,
 
@@ -70,60 +67,11 @@ process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    int64_t* start_vidsArr = NULL;
-    size_t size_start_vidsArr = 0;
-
-    int64_t* end_vidsArr = NULL;
-    size_t size_end_vidsArr = 0;
-
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-
-    II_t_rt *combinationsArr = NULL;
-    size_t total_combinations = 0;
-
-    if (normal) {
-        pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-        throw_error(err_msg, edges_sql);
-
-        if (combinations_sql) {
-            pgr_get_combinations(combinations_sql, &combinationsArr, &total_combinations, &err_msg);
-            throw_error(err_msg, combinations_sql);
-        } else {
-            start_vidsArr = pgr_get_bigIntArray(&size_start_vidsArr, starts, false, &err_msg);
-            throw_error(err_msg, "While getting start vids");
-            end_vidsArr = pgr_get_bigIntArray(&size_end_vidsArr, ends, false, &err_msg);
-            throw_error(err_msg, "While getting end vids");
-        }
-    } else {
-        pgr_get_edges(edges_sql, &edges, &total_edges, false, false, &err_msg);
-        throw_error(err_msg, edges_sql);
-        end_vidsArr = pgr_get_bigIntArray(&size_end_vidsArr, starts, false, &err_msg);
-        throw_error(err_msg, "While getting start vids");
-        start_vidsArr = pgr_get_bigIntArray(&size_start_vidsArr, ends, false, &err_msg);
-        throw_error(err_msg, "While getting end vids");
-    }
-
-    if (total_edges == 0) {
-        if (end_vidsArr) pfree(end_vidsArr);
-        if (start_vidsArr) pfree(start_vidsArr);
-        if (combinationsArr) pfree(combinationsArr);
-        pgr_SPI_finish();
-        return;
-    }
-
-    if (total_combinations == 0 && (size_end_vidsArr== 0 || size_start_vidsArr == 0)) {
-        if (edges) pfree(edges);
-        pgr_SPI_finish();
-        return;
-    }
-
     clock_t start_t = clock();
     pgr_do_dijkstra(
-            edges, total_edges,
-            combinationsArr, total_combinations,
-            start_vidsArr, size_start_vidsArr,
-            end_vidsArr, size_end_vidsArr,
+            edges_sql,
+            combinations_sql,
+            starts, ends,
 
             directed,
             only_cost,
@@ -164,10 +112,7 @@ process(
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-    if (edges) pfree(edges);
-    if (start_vidsArr) pfree(start_vidsArr);
-    if (end_vidsArr) pfree(end_vidsArr);
-    if (combinationsArr) pfree(combinationsArr);
+
     pgr_SPI_finish();
 }
 
@@ -183,6 +128,7 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
+
         if (PG_NARGS() == 7) {
             /* kept for backwards compatibility
              * TODO remove on 4.0.0 */
@@ -290,4 +236,3 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
         SRF_RETURN_DONE(funcctx);
     }
 }
-

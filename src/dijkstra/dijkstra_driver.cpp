@@ -41,14 +41,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 
 
-#include "c_types/ii_t_rt.h"
+#include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/combinations.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
 #include "dijkstra/dijkstra.hpp"
 
-namespace detail {
+namespace {
 
 void
 post_process(std::deque<pgrouting::Path> &paths, bool only_cost, bool normal, size_t n_goals, bool global) {
@@ -98,16 +98,15 @@ post_process(std::deque<pgrouting::Path> &paths, bool only_cost, bool normal, si
     }
 }
 
-}  // namespace detail
+}  // namespace
 
 
 void
 pgr_do_dijkstra(
-        Edge_t  *data_edges, size_t total_edges,
-
-        II_t_rt *combinationsArr, size_t total_combinations,
-        int64_t *start_vidsArr, size_t size_start_vidsArr,
-        int64_t *end_vidsArr, size_t size_end_vidsArr,
+        char *edges_sql,
+        char *combinations_sql,
+        ArrayType *starts,
+        ArrayType *ends,
 
         bool directed,
         bool only_cost,
@@ -117,50 +116,66 @@ pgr_do_dijkstra(
 
         Path_rt **return_tuples,
         size_t *return_count,
-        char ** log_msg,
-        char ** notice_msg,
-        char ** err_msg) {
+        char **log_msg,
+        char **notice_msg,
+        char **err_msg) {
     using pgrouting::Path;
     using pgrouting::pgr_alloc;
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
+    using pgrouting::utilities::get_combinations;
+    using pgrouting::pgget::get_edges;
 
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char *hint = nullptr;
 
     try {
-        pgassert(total_edges != 0);
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(total_combinations != 0 || (size_start_vidsArr != 0 && size_end_vidsArr != 0));
+
+        hint = combinations_sql;
+        auto combinations = get_combinations(combinations_sql, starts, ends, normal);
+        hint = nullptr;
+
+        if (combinations.empty() && combinations_sql) {
+            *notice_msg = pgr_msg("No (source, target) pairs found");
+            *log_msg = pgr_msg(combinations_sql);
+            return;
+        }
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
+
+        hint = edges_sql;
+        auto edges = get_edges(std::string(edges_sql), normal, false);
+
+        if (edges.empty()) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
 
         size_t n = n_goals <= 0? (std::numeric_limits<size_t>::max)() : static_cast<size_t>(n_goals);
         std::deque<Path>paths;
 
-        auto combinations = total_combinations?
-            pgrouting::utilities::get_combinations(combinationsArr, total_combinations)
-            : pgrouting::utilities::get_combinations(start_vidsArr, size_start_vidsArr, end_vidsArr, size_end_vidsArr);
-
         if (directed) {
             pgrouting::DirectedGraph graph(gType);
-            graph.insert_edges(data_edges, total_edges);
+            graph.insert_edges(edges);
             paths =  pgrouting::algorithms::dijkstra(graph, combinations, only_cost, n);
         } else {
             pgrouting::UndirectedGraph graph(gType);
-            graph.insert_edges(data_edges, total_edges);
+            graph.insert_edges(edges);
             paths =  pgrouting::algorithms::dijkstra(graph, combinations, only_cost, n);
         }
-        detail::post_process(paths, only_cost, normal, n, global);
+        post_process(paths, only_cost, normal, n, global);
         combinations.clear();
 
-        size_t count(0);
-        count = count_tuples(paths);
+        auto count = count_tuples(paths);
 
         if (count == 0) {
             (*return_tuples) = NULL;
@@ -185,6 +200,9 @@ pgr_do_dijkstra(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

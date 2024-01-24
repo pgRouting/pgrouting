@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: dijkstraViaVertex_driver.cpp
+File: dijkstraVia_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -31,10 +31,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "dijkstra/pgr_dijkstraVia.hpp"
 #include "c_types/routes_t.h"
+#include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
+#include "dijkstra/pgr_dijkstraVia.hpp"
 
 
 namespace  {
@@ -87,9 +88,10 @@ get_route(
 }  // namespace
 
 void
-do_pgr_dijkstraVia(
-        Edge_t* data_edges,    size_t total_edges,
-        int64_t* via_vidsArr,     size_t size_via_vidsArr,
+pgr_do_dijkstraVia(
+        char *edges_sql,
+        ArrayType* viaArr,
+
         bool directed,
         bool strict,
         bool U_turn_on_edge,
@@ -102,13 +104,15 @@ do_pgr_dijkstraVia(
     using pgrouting::pgr_alloc;
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
+    using pgrouting::pgget::get_intArray;
+    using pgrouting::pgget::get_edges;
 
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char *hint = nullptr;
 
     try {
-        pgassert(total_edges != 0);
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
@@ -117,29 +121,35 @@ do_pgr_dijkstraVia(
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        std::deque< Path >paths;
-        log << "\nInserting vertices into a c++ vector structure";
-        std::vector< int64_t > via_vertices(
-                via_vidsArr, via_vidsArr + size_via_vidsArr);
+        auto via = get_intArray(viaArr, false);
 
+        hint = edges_sql;
+        auto edges = get_edges(std::string(edges_sql), true, false);
+
+        if (edges.empty()) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
+
+        std::deque<Path>paths;
         if (directed) {
-            log << "\nWorking with directed Graph";
             pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(data_edges, total_edges);
+            digraph.insert_edges(edges);
             pgrouting::pgr_dijkstraVia(
                     digraph,
-                    via_vertices,
+                    via,
                     paths,
                     strict,
                     U_turn_on_edge,
                     log);
         } else {
-            log << "\nWorking with Undirected Graph";
             pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(data_edges, total_edges);
+            undigraph.insert_edges(edges);
             pgrouting::pgr_dijkstraVia(
                     undigraph,
-                    via_vertices,
+                    via,
                     paths,
                     strict,
                     U_turn_on_edge,
@@ -175,6 +185,9 @@ do_pgr_dijkstraVia(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
@@ -189,5 +202,3 @@ do_pgr_dijkstraVia(
         *log_msg = pgr_msg(log.str().c_str());
     }
 }
-
-
