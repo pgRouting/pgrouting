@@ -41,7 +41,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 #include "c_types/transitiveClosure_rt.h"
-#include "c_common/trsp_pgget.h"
 #include "drivers/transitiveClosure/transitiveClosure_driver.h"
 
 PGDLLEXPORT Datum _pgr_transitiveclosure(PG_FUNCTION_ARGS);
@@ -59,25 +58,14 @@ process(char* edges_sql,
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    size_t total_edges = 0;
-    Edge_t* edges = NULL;
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-    if (total_edges == 0) {
-        pgr_SPI_finish();
-        return;
-    }
-
-    PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    do_pgr_transitiveClosure(
-            edges, total_edges,
+    pgr_do_transitiveClosure(
+            edges_sql,
 
             result_tuples, result_count,
             &log_msg,
             &notice_msg,
             &err_msg);
-
     time_msg("processing pgr_transitiveClosure()", start_t, clock());
 
 
@@ -92,7 +80,7 @@ process(char* edges_sql,
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-    if (edges) pfree(edges);
+
     pgr_SPI_finish();
 }
 
@@ -101,30 +89,20 @@ _pgr_transitiveclosure(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
-    /**********************************************************************/
     TransitiveClosure_rt  *result_tuples = NULL;
     size_t result_count = 0;
-    /**********************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-        /**********************************************************************/
-        /*
-           edges_sql TEXT,
-
-         **********************************************************************/
 
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 &result_tuples,
                 &result_count);
 
-
-        /**********************************************************************/
         funcctx->max_calls = result_count;
-
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE)
@@ -148,7 +126,6 @@ _pgr_transitiveclosure(PG_FUNCTION_ARGS) {
         int16 typlen;
         size_t      call_cntr = funcctx->call_cntr;
 
-        /**********************************************************************/
         size_t numb = 3;
         values =(Datum *)palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
@@ -205,7 +182,6 @@ _pgr_transitiveclosure(PG_FUNCTION_ARGS) {
         values[1] = Int64GetDatum(result_tuples[call_cntr].vid);
         values[2] = PointerGetDatum(arrayType);
 
-        /*********************************************************************/
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
 
