@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-06 18:14+0000\n"
+"POT-Creation-Date: 2024-01-24 17:44+0000\n"
 "PO-Revision-Date: 2024-01-19 09:46+0000\n"
 "Last-Translator: Zuochenwei <zuochenwei5@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
@@ -4553,6 +4553,46 @@ msgstr "当前版本"
 msgid "_"
 msgstr "_"
 
+msgid "Official functions changes"
+msgstr "官方功能变更"
+
+#, fuzzy
+msgid ""
+"`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standarize "
+"spanning tree functions output"
+msgstr ""
+"`#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__标准化输出"
+"pgr_aStar"
+
+#, fuzzy
+msgid "Functions:"
+msgstr "新函数"
+
+msgid "``pgr_kruskalDD``"
+msgstr "``pgr_kruskalDD``"
+
+msgid "``pgr_kruskalDFS``"
+msgstr "``pgr_kruskalDFS``"
+
+msgid "``pgr_kruskalBFS``"
+msgstr "``pgr_kruskalBFS``"
+
+msgid "``pgr_primDD``"
+msgstr "``pgr_primDD``"
+
+msgid "``pgr_primDFS``"
+msgstr "``pgr_primDFS``"
+
+msgid "``pgr_primBFS``"
+msgstr "``pgr_primBFS``"
+
+msgid "Standarizing output columns to |result-spantree|"
+msgstr "将输出列标准化为 |result-spantree|"
+
+#, fuzzy
+msgid "Added ``pred`` result columns."
+msgstr "添加了 ``depth``和``pred``结果列。"
+
 msgid "Code enhancement"
 msgstr "代码改进"
 
@@ -4660,7 +4700,8 @@ msgstr "``pgr_aStar`` (`多对一`)没有 ``end_vid``。"
 msgid "Migration"
 msgstr "迁移"
 
-msgid "Be aware of the existance of the additional columns."
+#, fuzzy
+msgid "Be aware of the existence of the additional columns."
 msgstr "请注意附加列的存在。"
 
 msgid "In ``pgr_aStar`` (`One to One`)"
@@ -4781,9 +4822,10 @@ msgstr "如果需要，过滤掉添加的列，例如："
 msgid "Migration of ``pgr_drivingdistance``"
 msgstr "迁移``pgr_drivingdistance``"
 
+#, fuzzy
 msgid ""
 "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :"
-"doc:`pgr_drivingDistance` result columns are being standarized."
+"doc:`pgr_drivingDistance` result columns are being standardized."
 msgstr ""
 "从 `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__开始， :doc:"
 "`pgr_drivingDistance`结果列正在标准化。"
@@ -4818,7 +4860,8 @@ msgstr "有 ``from_v`` 而不是 ``start_vid``结果列。"
 msgid "does not have ``depth`` result column."
 msgstr "没有``depth``结果列。"
 
-msgid "Be aware of the existance and name change of the result columns."
+#, fuzzy
+msgid "Be aware of the existence and name change of the result columns."
 msgstr "请注意结果列的存在和名称更改。"
 
 msgid ""
@@ -4849,17 +4892,96 @@ msgstr ""
 msgid "The ``from_v`` result column name changes to ``start_vid``."
 msgstr "``from_v`结果列名称更改为 ``start_vid``。"
 
+#, fuzzy
 msgid ""
-"If needed filter out and rename colums, for example, to return the original "
+"If needed filter out and rename columns, for example, to return the original "
 "columns:"
 msgstr "如果需要，过滤掉并重命名列，例如，返回原始列："
+
+msgid ""
+"Migration of ``pgr_kruskalDD`` / ``pgr_kruskalBFS`` / ``pgr_kruskalDFS``"
+msgstr ""
+
+#, fuzzy
+msgid ""
+"Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__ :"
+"doc:`pgr_kruskalDD`, :doc:`pgr_kruskalBFS` and :doc:`pgr_kruskalDFS` result "
+"columns are being standardized."
+msgstr ""
+"从 `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__开始， :doc:"
+"`pgr_drivingDistance`结果列正在标准化。"
+
+#, fuzzy
+msgid "|result-bfs|"
+msgstr "|result-spantree|"
+
+msgid "Single vertex"
+msgstr "单顶点"
+
+msgid "Multiple vertices"
+msgstr "多个顶点"
+
+#, fuzzy
+msgid "Output columns were |result-bfs|"
+msgstr "输出列是 |ksp-result|"
+
+#, fuzzy
+msgid "Single vertex and Multiple vertices"
+msgstr "多个顶点"
+
+#, fuzzy
+msgid "Do not have ``pred`` result column."
+msgstr "没有``depth``结果列。"
+
+#, fuzzy
+msgid "Be aware of the existence of `pred` result columns."
+msgstr "注意附加结果列的存在。"
+
+#, fuzzy
+msgid "If needed filter out the added columns"
+msgstr "如果需要，过滤掉添加的列，例如："
+
+#, fuzzy
+msgid "Kruskal single vertex"
+msgstr "单顶点"
+
+msgid ""
+"Using ``pgr_KruskalDD`` as example. Migration is similar to al the affected "
+"functions."
+msgstr ""
+
+#, fuzzy
+msgid ""
+"Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_kruskalDD."
+"html#single-vertex>`__ example."
+msgstr ""
+"使用`这个 <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
+"vertex>`__ 示例。"
+
+#, fuzzy
+msgid ""
+"Now column ``pred`` exists and contains the predecessor of the ``node``."
+msgstr "``pred`` 包含``node``的前驱。"
+
+#, fuzzy
+msgid "Kruskal multiple vertices"
+msgstr "多个顶点"
+
+#, fuzzy
+msgid ""
+"Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_kruskalDD."
+"html#multiple-vertex>`__ example."
+msgstr ""
+"使用`这个 <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#multiple-"
+"vertices>`__ 示例。"
 
 msgid "Migration of ``pgr_KSP``"
 msgstr "迁移``pgr_KSP``"
 
+#, fuzzy
 msgid ""
 "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :"
-"doc:`pgr_KSP` result columns are being standarized."
+"doc:`pgr_KSP` result columns are being standardized."
 msgstr ""
 "从 `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ 开始， :doc:"
 "`pgr_KSP`结果列正在标准化。"
@@ -4962,12 +5084,54 @@ msgstr "不要使用``directed``标志。"
 msgid "In the query returns only ``edge`` column."
 msgstr "查询中仅返回``边``列。"
 
+msgid "Migration of ``pgr_primDD`` / ``pgr_primBFS`` / ``pgr_primDFS``"
+msgstr ""
+
+#, fuzzy
+msgid ""
+"Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__ :"
+"doc:`pgr_primDD`, :doc:`pgr_primBFS` and :doc:`pgr_primDFS` result columns "
+"are being standardized."
+msgstr ""
+"从 `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__开始， :doc:"
+"`pgr_drivingDistance`结果列正在标准化。"
+
+#, fuzzy
+msgid "Prim single vertex"
+msgstr "单顶点"
+
+msgid ""
+"Using ``pgr_primDD`` as example. Migration is similar to al the affected "
+"functions."
+msgstr ""
+
+#, fuzzy
+msgid ""
+"Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_primDD."
+"html#single-vertex>`__ example."
+msgstr ""
+"使用`这个 <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
+"vertex>`__ 示例。"
+
+#, fuzzy
+msgid "Prim multiple vertices"
+msgstr "多个顶点"
+
+#, fuzzy
+msgid ""
+"Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_primDD."
+"html#multiple-vertex>`__ example."
+msgstr ""
+"使用`这个 <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#multiple-"
+"vertices>`__ 示例。"
+
 msgid "Migration of ``pgr_withPointsDD``"
 msgstr "迁移``pgr_withPointsDD``"
 
+#, fuzzy
 msgid ""
 "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :"
-"doc:`pgr_withPointsDD` result columns are being standarized."
+"doc:`pgr_withPointsDD` result columns are being standardized."
 msgstr ""
 "从`v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__开始 :doc:"
 "`pgr_withPointsDD`结果列正在标准化。"
@@ -4995,8 +5159,9 @@ msgstr "输出列为|result-1-1-no-seq|"
 msgid "Does not have ``start_vid``, ``pred`` and ``depth`` result columns."
 msgstr "没有``start_vid``，``pred``和``depth``结果列。"
 
+#, fuzzy
 msgid ""
-"``driving_side`` parameter was named optional now it is compulsory unamed."
+"``driving_side`` parameter was named optional now it is compulsory unnamed."
 msgstr "``driving_side`` 参数被命名为可选，现在强制未命名。"
 
 msgid "``pgr_withPointsDD`` (`Multiple vertices`)"
@@ -5047,7 +5212,8 @@ msgstr "此外，``l``也可用作**驾驶侧**"
 msgid "After Migration"
 msgstr "迁移后"
 
-msgid "Be aware of the existance of the additional result Columns."
+#, fuzzy
+msgid "Be aware of the existence of the additional result Columns."
 msgstr "注意附加结果列的存在。"
 
 msgid "New output columns are |result-spantree|"
@@ -5114,9 +5280,10 @@ msgstr "过滤掉额外的列"
 msgid "Migration of ``pgr_withPointsKSP``"
 msgstr "迁移``pgr_withPointsKSP``"
 
+#, fuzzy
 msgid ""
 "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :"
-"doc:`pgr_withPointsKSP` result columns are being standarized."
+"doc:`pgr_withPointsKSP` result columns are being standardized."
 msgstr ""
 "从`v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ 开始 ，:doc:"
 "`pgr_withPointsKSP`结果列正在标准化。"
@@ -9801,17 +9968,11 @@ msgstr "**options:** ``[max_depth, directed]``"
 msgid "Returns set of |result-bfs|"
 msgstr "返回 |result-bfs| 的集合"
 
-msgid "Single vertex"
-msgstr "单顶点"
-
 msgid ""
 "From root vertex :math:`6` on a **directed** graph with edges in ascending "
 "order of ``id``"
 msgstr ""
 "从根顶点:math:`6` 开始，该顶点位于一个**有向**图中，其边按 ``id``升序排列"
-
-msgid "Multiple vertices"
-msgstr "多个顶点"
 
 msgid ""
 "From root vertices :math:`\\{12, 6\\}` on an **undirected** graph with "
@@ -11692,9 +11853,6 @@ msgid ""
 "``pgr_drivingDistance`` - Returns the driving distance from a start node."
 msgstr "``pgr_drivingDistance`` - 返回起始节点的行驶距离。"
 
-msgid "Standarizing output columns to |result-spantree|"
-msgstr "将输出列标准化为 |result-spantree|"
-
 msgid "Added ``depth`` and ``start_vid`` result columns."
 msgstr "添加了 ``depth`` 和 ``start_vid`` 结果列。"
 
@@ -12995,13 +13153,14 @@ msgstr "返回 |result-mst| 的集合"
 msgid "Minimum spanning forest"
 msgstr "最小生成森林"
 
-msgid "``pgr_kruskalBFS``"
-msgstr "``pgr_kruskalBFS``"
-
 msgid ""
 "``pgr_kruskalBFS`` — Kruskal's algorithm for Minimum Spanning Tree with "
 "breadth First Search ordering."
 msgstr "``pgr_kruskalBFS`` — Kruskal 的最小生成树算法，具有广度优先搜索排序。"
+
+#, fuzzy
+msgid "Version 3.7.0"
+msgstr "版本3.6.0"
 
 msgid ""
 "Visits and extracts the nodes information in Breath First Search ordering of "
@@ -13028,9 +13187,6 @@ msgid ""
 "The Minimum Spanning Tree starting on vertices :math:`\\{9, 6\\}` with :math:"
 "`depth \\leq 3`"
 msgstr "以顶点 :math:`\\{9, 6\\}` 为起点， :math:`depth \\leq 3` 的最小生成树"
-
-msgid "``pgr_kruskalDD``"
-msgstr "``pgr_kruskalDD``"
 
 msgid "``pgr_kruskalDD`` — Catchament nodes using Kruskal's algorithm."
 msgstr "``pgr_kruskalDD`` — 使用 Kruskal 算法的汇流节点。"
@@ -13067,9 +13223,6 @@ msgid ""
 "`distance \\leq 3.5`"
 msgstr ""
 "以顶点:math:`\\{9, 6\\}` 为起点， :math:`distance \\leq 3.5`的最小生成树"
-
-msgid "``pgr_kruskalDFS``"
-msgstr "``pgr_kruskalDFS``"
 
 msgid ""
 "``pgr_kruskalDFS`` — Kruskal's algorithm for Minimum Spanning Tree with "
@@ -14273,18 +14426,17 @@ msgstr ""
 "`Boost: Prim算法文档 <https://www.boost.org/libs/graph/doc/"
 "prim_minimum_spanning_tree.html>`__"
 
-msgid "``pgr_primBFS``"
-msgstr "``pgr_primBFS``"
-
 msgid ""
 "``pgr_primBFS`` — Prim's algorithm for Minimum Spanning Tree with Depth "
 "First Search ordering."
 msgstr "``pgr_primBFS`` — Prim 的深度优先搜索排序最小生成树算法。"
 
+#, fuzzy
 msgid ""
 "Visits and extracts the nodes information in Breath First Search ordering of "
-"the Minimum Spanning Tree created with Prims's algorithm."
-msgstr "访问并提取Prims算法创建的最小生成树的呼吸优先搜索排序中的节点信息。"
+"the Minimum Spanning Tree created using Prims's algorithm."
+msgstr ""
+"访问并提取使用 Prims 算法创建的最小生成树的深度优先搜索顺序中的节点信息。"
 
 msgid "pgr_primBFS(`Edges SQL`_, **root vid**, [``max_depth``])"
 msgstr "pgr_primBFS(`Edges SQL`_, **root vid**, [``max_depth``])"
@@ -14292,16 +14444,14 @@ msgstr "pgr_primBFS(`Edges SQL`_, **root vid**, [``max_depth``])"
 msgid "pgr_primBFS(`Edges SQL`_, **root vids**, [``max_depth``])"
 msgstr "pgr_primBFS(`Edges SQL`_, **root vids**, [``max_depth``])"
 
-msgid "``pgr_primDD``"
-msgstr "``pgr_primDD``"
-
 msgid "``pgr_primDD`` — Catchament nodes using Prim's algorithm."
 msgstr "``pgr_primDD`` — 使用 Prim 算法的集水区节点。"
 
+#, fuzzy
 msgid ""
 "Using Prim's algorithm, extracts the nodes that have aggregate costs less "
-"than or equal to a **distance** from a **root** vertex (or vertices) within "
-"the calculated minimum spanning tree."
+"than or equal to a distance from a root vertex (or vertices) within the "
+"calculated minimum spanning tree."
 msgstr ""
 "使用 Prim 算法，在计算的最小生成树中提取总成本小于或等于距根顶点（或多个顶"
 "点）距离的节点。"
@@ -14311,9 +14461,6 @@ msgstr "pgr_primDD(`Edges SQL`_, **root vid**, **distance**)"
 
 msgid "pgr_primDD(`Edges SQL`_, **root vids**, **distance**)"
 msgstr "pgr_primDD(`Edges SQL`_, **root vids**, **distance**)"
-
-msgid "``pgr_primDFS``"
-msgstr "``pgr_primDFS``"
 
 msgid ""
 "``pgr_primDFS`` — Prim algorithm for Minimum Spanning Tree with Depth First "
@@ -16237,8 +16384,8 @@ msgid ""
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
 msgstr ""
 "要查看此版本关闭的所有问题和拉取请求，请参阅 `3.7.0 <https://github.com/"
-"pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7."
-"0%22>`__ 的 Git 关闭里程碑"
+"pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__ 的 Git 关闭里程碑"
 
 msgid "pgRouting 3.6"
 msgstr "pgRouting 3.6"
@@ -16273,9 +16420,6 @@ msgstr ""
 "要查看此版本关闭的所有问题和拉取请求，请访问 `Git 3.6.0 里程碑的已关闭问题和"
 "拉取请求 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.0%22>`_"
-
-msgid "Official functions changes"
-msgstr "官方功能变更"
 
 msgid ""
 "`#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__ Standarize "
@@ -18665,8 +18809,9 @@ msgid ""
 "With the release of pgRouting 2.0.0 the library has abandoned backwards "
 "compatibility to `pgRouting 1.0`_ releases. The main Goals for this release "
 "are:"
-msgstr "随着 pgRouting 2.0.0 的发布，该库已放弃向后兼容 `pgRouting 1.0`_ "
-"版本。此版本的主要目标是："
+msgstr ""
+"随着 pgRouting 2.0.0 的发布，该库已放弃向后兼容 `pgRouting 1.0`_ 版本。此版本"
+"的主要目标是："
 
 msgid "Major restructuring of pgRouting."
 msgstr "对 pgRouting 进行重大重组。"
@@ -19697,6 +19842,11 @@ msgstr "pgr_withPointsDD 是**带有点**的 pgr_drivenDistance"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia 是**带有点**的 pgr_dijkstraVia"
+
+#~ msgid ""
+#~ "Visits and extracts the nodes information in Breath First Search ordering "
+#~ "of the Minimum Spanning Tree created with Prims's algorithm."
+#~ msgstr "访问并提取Prims算法创建的最小生成树的呼吸优先搜索排序中的节点信息。"
 
 #~ msgid ""
 #~ "Column ``pred`` only applies to :doc:`pgr_drivingDistance` and :doc:"
