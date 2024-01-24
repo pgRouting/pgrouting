@@ -31,15 +31,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_COMPONENTS_BRIDGES_DRIVER_H_
 #pragma once
 
-/* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
 #   include <cstdint>
-using Edge_t = struct Edge_t;
 #else
 #   include <stddef.h>
 #   include <stdint.h>
-typedef struct Edge_t Edge_t;
 #endif
 
 
@@ -48,23 +45,11 @@ typedef struct Edge_t Edge_t;
 extern "C" {
 #endif
 
-    /*********************************************************
-      TEXT,
-    BIGINT,
-    BIGINT,
-     ********************************************************/
+void pgr_do_bridges(
+        char*,
 
-
-    void
-        do_pgr_bridges(
-                Edge_t  *data_edges,
-                size_t total_edges,
-                int64_t **return_tuples,
-                size_t *return_count,
-                char ** log_msg,
-                char ** notice_msg,
-                char ** err_msg);
-
+        int64_t**, size_t*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }

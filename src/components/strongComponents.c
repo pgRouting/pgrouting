@@ -38,7 +38,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/trsp_pgget.h"
 
 #include "drivers/components/strongComponents_driver.h"
 
@@ -60,21 +59,9 @@ process(
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-
-    if (total_edges == 0) {
-        pgr_SPI_finish();
-        return;
-    }
-
     clock_t start_t = clock();
-    do_pgr_strongComponents(
-            edges,
-            total_edges,
+    pgr_do_strongComponents(
+            edges_sql,
 
             result_tuples,
             result_count,
@@ -86,10 +73,10 @@ process(
 
     if (err_msg) {
         if (*result_tuples) pfree(*result_tuples);
+        (*result_count) = 0;
     }
     pgr_global_report(log_msg, notice_msg, err_msg);
 
-    if (edges) pfree(edges);
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
