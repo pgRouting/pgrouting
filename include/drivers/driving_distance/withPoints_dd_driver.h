@@ -33,19 +33,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_DRIVING_DISTANCE_WITHPOINTS_DD_DRIVER_H_
 #pragma once
 
-/* for size-t */
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include <postgres.h>
+#include <utils/array.h>
+
+#ifdef __cplusplus
+}
+#endif
+
+#include "cpp_common/undefPostgresDefine.hpp"
+
 #ifdef __cplusplus
 #   include <cstddef>
 #   include <cstdint>
-using Point_on_edge_t = struct Point_on_edge_t;
-using Edge_t = struct Edge_t;
-using Path_rt = struct Path_rt;
 using MST_rt = struct MST_rt;
 #else
 #   include <stddef.h>
 #   include <stdint.h>
-typedef struct Point_on_edge_t Point_on_edge_t;
-typedef struct Edge_t Edge_t;
 typedef struct MST_rt MST_rt;
 #endif
 
@@ -53,16 +61,16 @@ typedef struct MST_rt MST_rt;
 extern "C" {
 #endif
 
-    void pgr_do_withPointsDD(
-            Edge_t*,          size_t,
-            Point_on_edge_t*, size_t,
-            Edge_t*,          size_t,
-            int64_t*,         size_t,
+void pgr_do_withPointsDD(
+        char*,
+        char*,
+        char*,
+        ArrayType*,
 
-            double, char, bool, bool, bool,
+        double, char, bool, bool, bool,
 
-            MST_rt**, size_t*,
-            char**, char**, char **);
+        MST_rt**, size_t*,
+        char**, char**, char **);
 
 #ifdef __cplusplus
 }

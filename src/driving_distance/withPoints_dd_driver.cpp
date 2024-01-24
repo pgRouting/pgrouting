@@ -37,19 +37,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 
+#include "cpp_common/pgdata_getters.hpp"
 #include "dijkstra/drivingDist.hpp"
 #include "withPoints/pgr_withPoints.hpp"
 #include "c_types/mst_rt.h"
-
+#include "cpp_common/combinations.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 
 
 void
 pgr_do_withPointsDD(
-        Edge_t          *edges,             size_t total_edges,
-        Point_on_edge_t *points_p,          size_t total_points,
-        Edge_t          *edges_of_points,   size_t total_edges_of_points,
-        int64_t         *start_pidsArr,     size_t s_len,
+        char *edges_sql,
+        char *points_sql,
+        char *edges_of_points_sql,
+        ArrayType* starts,
 
         double distance,
         char driving_side,
@@ -66,31 +67,47 @@ pgr_do_withPointsDD(
     using pgrouting::pgr_alloc;
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
+    using pgrouting::pgget::get_intSet;
+    using pgrouting::utilities::get_combinations;
+    using pgrouting::pgget::get_points;
+    using pgrouting::pgget::get_edges;
     using pgrouting::algorithm::drivingDistance;
 
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
+    char *hint = nullptr;
+
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
-        pgassert((*return_count) == 0);
-        pgassert(edges);
-        pgassert(start_pidsArr);
+        pgassert(*return_count == 0);
 
+        auto roots = get_intSet(starts);
 
-        pgrouting::Pg_points_graph pg_graph(
-                std::vector<Point_on_edge_t>(
-                    points_p,
-                    points_p + total_points),
-                std::vector< Edge_t >(
-                    edges_of_points,
-                    edges_of_points + total_edges_of_points),
-                true,
-                driving_side,
-                directed);
+        hint = points_sql;
+        auto points = get_points(std::string(points_sql));
+
+        hint = edges_of_points_sql;
+        auto edges_of_points = get_edges(std::string(edges_of_points_sql), true, false);
+
+        hint = edges_sql;
+        auto edges = get_edges(std::string(edges_sql), true, false);
+
+        if (edges.size() + edges_of_points.size() == 0) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
+
+        /*
+         * processing points
+         */
+        pgrouting::Pg_points_graph pg_graph(points, edges_of_points,
+                true, driving_side, directed);
 
         if (pg_graph.has_error()) {
             log << pg_graph.get_log();
@@ -100,8 +117,6 @@ pgr_do_withPointsDD(
             return;
         }
 
-        std::set<int64_t> start_vids(start_pidsArr, start_pidsArr + s_len);
-
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
         std::deque<Path> paths;
@@ -109,33 +124,34 @@ pgr_do_withPointsDD(
 
         if (directed) {
             pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(edges, total_edges);
+            digraph.insert_edges(edges);
             digraph.insert_edges(pg_graph.new_edges());
-            paths = drivingDistance(digraph, start_vids, distance, equiCost, depths, details);
+            paths = drivingDistance(digraph, roots, distance, equiCost, depths, details);
         } else {
             pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(edges, total_edges);
+            undigraph.insert_edges(edges);
             undigraph.insert_edges(pg_graph.new_edges());
-            paths = drivingDistance(undigraph, start_vids, distance, equiCost, depths, details);
+            paths = drivingDistance(undigraph, roots, distance, equiCost, depths, details);
         }
 
         if (!details) {
-            for (auto &path : paths) {
-                pg_graph.eliminate_details_dd(path);
-            }
+            for (auto &path : paths) pg_graph.eliminate_details_dd(path);
         }
 
 
-        size_t count(count_tuples(paths));
+        auto count(count_tuples(paths));
+
 
         if (count == 0) {
-            log << "\nNo return values were found";
-            *notice_msg = pgr_msg(log.str().c_str());
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
+            notice << "No paths found";
+            *log_msg = pgr_msg(notice.str().c_str());
             return;
         }
 
-        *return_tuples = pgr_alloc(count, (*return_tuples));
-        *return_count = collapse_paths(return_tuples, paths);
+        (*return_tuples) = pgr_alloc(count, (*return_tuples));
+        (*return_count) = (collapse_paths(return_tuples, paths));
 
         for (size_t i = 0; i < count; i++) {
             auto row = (*return_tuples)[i];
@@ -170,6 +186,9 @@ pgr_do_withPointsDD(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

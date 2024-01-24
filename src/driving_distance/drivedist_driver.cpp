@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
+#include "cpp_common/pgdata_getters.hpp"
 #include "dijkstra/drivingDist.hpp"
 
 #include "c_types/mst_rt.h"
@@ -41,9 +42,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 void
-pgr_do_drivingdist(
-        Edge_t  *data_edges, size_t total_edges,
-        int64_t *start_vertex, size_t s_len,
+pgr_do_drivingDistance(
+        char *edges_sql,
+        ArrayType* starts,
         double distance,
         bool directedFlag,
         bool equiCostFlag,
@@ -56,13 +57,14 @@ pgr_do_drivingdist(
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
     using pgrouting::algorithm::drivingDistance;
+    using pgrouting::pgget::get_intSet;
 
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char *hint = nullptr;
 
     try {
-        pgassert(total_edges != 0);
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
@@ -70,21 +72,31 @@ pgr_do_drivingdist(
         pgassert(*return_count == 0);
         pgassert((*return_tuples) == NULL);
 
+        auto roots = get_intSet(starts);
+
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+
+        if (edges.empty()) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
+
         graphType gType = directedFlag? DIRECTED: UNDIRECTED;
 
         std::deque<Path> paths;
-        std::set<int64_t> start_vertices(start_vertex, start_vertex + s_len);
-
         std::vector<std::map<int64_t, int64_t>> depths;
 
         if (directedFlag) {
             pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(data_edges, total_edges);
-            paths = drivingDistance(digraph, start_vertices, distance, equiCostFlag, depths, true);
+            digraph.insert_edges(edges);
+            paths = drivingDistance(digraph, roots, distance, equiCostFlag, depths, true);
         } else {
             pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(data_edges, total_edges);
-            paths = drivingDistance(undigraph, start_vertices, distance, equiCostFlag, depths, true);
+            undigraph.insert_edges(edges);
+            paths = drivingDistance(undigraph, roots, distance, equiCostFlag, depths, true);
         }
 
         size_t count(count_tuples(paths));
@@ -124,6 +136,9 @@ pgr_do_drivingdist(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
