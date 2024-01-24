@@ -36,11 +36,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/trsp_pgget.h"
 #include "drivers/topologicalSort/topologicalSort_driver.h"
-#if 0
-PG_MODULE_MAGIC;
-#endif
+
 PGDLLEXPORT Datum _pgr_topologicalsort(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_topologicalsort);
 
@@ -55,15 +52,9 @@ process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-
-    PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    do_pgr_topologicalSort(
-            edges, total_edges,
+    pgr_do_topologicalSort(
+            edges_sql,
             result_tuples,
             result_count,
             &log_msg,
@@ -71,7 +62,6 @@ process(
             &err_msg);
 
     time_msg("processing pgr_topologicalSort", start_t, clock());
-
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
@@ -84,7 +74,6 @@ process(
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-    if (edges) pfree(edges);
     pgr_SPI_finish();
 }
 
@@ -93,27 +82,18 @@ _pgr_topologicalsort(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
-    /**********************************************************************/
     I_rt *result_tuples = NULL;
     size_t result_count = 0;
-    /**********************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-
-        /**********************************************************************/
-        // pgr_topologicalSort(
-        // sql TEXT,
-
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 &result_tuples,
                 &result_count);
-
-        /**********************************************************************/
 
         funcctx->max_calls = result_count;
 
@@ -141,10 +121,6 @@ _pgr_topologicalsort(PG_FUNCTION_ARGS) {
         bool*        nulls;
         size_t       call_cntr = funcctx->call_cntr;
 
-        /**********************************************************************/
-        // OUT seq INTEGER,
-        // OUT sorted_v BIGINT)
-
         size_t numb = 2;
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
@@ -156,7 +132,6 @@ _pgr_topologicalsort(PG_FUNCTION_ARGS) {
 
         values[0] = Int32GetDatum((int32_t)call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[call_cntr].id);
-        /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
