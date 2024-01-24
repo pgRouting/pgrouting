@@ -73,7 +73,7 @@ process(
 
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
-    do_pgr_boyerMyrvold(
+    pgr_do_boyerMyrvold(
         edges,
         total_edges,
 

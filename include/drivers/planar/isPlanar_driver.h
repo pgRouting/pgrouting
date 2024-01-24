@@ -42,7 +42,7 @@ typedef struct Edge_t Edge_t;
 #ifdef __cplusplus
 extern "C" {
 #endif
-    bool do_pgr_isPlanar(
+    bool pgr_do_isPlanar(
                 Edge_t  *data_edges,
                 size_t total_tuples,
                 char ** log_msg,

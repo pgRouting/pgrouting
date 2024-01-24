@@ -64,7 +64,7 @@ process(
 
     clock_t start_t = clock();
 
-    planarity = do_pgr_isPlanar(
+    planarity = pgr_do_isPlanar(
         edges,
         total_edges,
 
