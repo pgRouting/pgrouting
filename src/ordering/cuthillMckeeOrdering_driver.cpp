@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <string>
 
+#include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 #include "c_types/ii_t_rt.h"
@@ -67,31 +68,9 @@ cuthillMckeeOrdering(G &graph) {
 
 }  // namespace
 
-/** @brief Performs exception handling and converts the results to postgres.
- *
- * @pre log_msg is empty
- * @pre notice_msg is empty
- * @pre err_msg is empty
- * @pre return_tuples is empty
- * @pre return_count is 0
- *
- * It builds the undirected graph using the `data_edges` variable.
- * Then, it passes the required variables to the template function
- * `cuthillMckeeOrdering` which calls the main function
- * defined in the C++ Header file. It also does exception handling.
- *
- * @param data_edges     the set of edges from the SQL query
- * @param total_edges    the total number of edges in the SQL query
- * @param return_tuples  the rows in the result
- * @param return_count   the count of rows in the result
- * @param log_msg        stores the log message
- * @param notice_msg     stores the notice message
- * @param err_msg        stores the error message
- */
 
-void do_cuthillMckeeOrdering(
-    Edge_t *data_edges,
-    size_t total_edges,
+void pgr_do_cuthillMckeeOrdering(
+    char *edges_sql,
 
     II_t_rt **return_tuples,
     size_t *return_count,
@@ -106,6 +85,8 @@ void do_cuthillMckeeOrdering(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char *hint = nullptr;
+
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
@@ -113,12 +94,21 @@ void do_cuthillMckeeOrdering(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+        if (edges.empty()) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
+
         graphType gType = UNDIRECTED;
 
         std::vector<II_t_rt>results;
 
         pgrouting::UndirectedGraph undigraph(gType);
-        undigraph.insert_edges(data_edges, total_edges);
+        undigraph.insert_edges(edges);
         results = cuthillMckeeOrdering(undigraph);
 
         auto count = results.size();
@@ -149,6 +139,9 @@ void do_cuthillMckeeOrdering(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
