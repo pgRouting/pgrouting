@@ -30,22 +30,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
 
+#include "c_types/mst_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_types/mst_rt.h"
-
-#include "c_common/trsp_pgget.h"
-
 #include "drivers/withPoints/get_new_queries.h"
 #include "drivers/driving_distance/withPoints_dd_driver.h"
-
 
 PGDLLEXPORT Datum _pgr_withpointsddv4(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_withpointsddv4);
 
 static
-void process(
+void
+process(
         char* edges_sql,
         char* points_sql,
         ArrayType* starts,
@@ -82,16 +79,6 @@ void process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    size_t total_starts = 0;
-    int64_t* start_pidsArr = pgr_get_bigIntArray(&total_starts, starts, false, &err_msg);
-    throw_error(err_msg, "While getting start vids");
-    PGR_DBG("sourcesArr size %ld ", total_starts);
-
-    Point_on_edge_t *points = NULL;
-    size_t total_points = 0;
-    pgr_get_points(points_sql, &points, &total_points, &err_msg);
-    throw_error(err_msg, points_sql);
-
     char *edges_of_points_query = NULL;
     char *edges_no_points_query = NULL;
     get_new_queries(
@@ -100,35 +87,12 @@ void process(
             &edges_no_points_query);
 
 
-    Edge_t *edges_of_points = NULL;
-    size_t total_edges_of_points = 0;
-    pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points, true, false, &err_msg);
-    throw_error(err_msg, edges_of_points_query);
-
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-    pgr_get_edges(edges_no_points_query, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_no_points_query);
-
-    PGR_DBG("freeing allocated memory not used anymore");
-    pfree(edges_of_points_query);
-    pfree(edges_no_points_query);
-
-    if ((total_edges + total_edges_of_points) == 0) {
-        if (edges) pfree(edges);
-        if (edges_of_points) pfree(edges_of_points);
-        if (points) pfree(points);
-        pgr_SPI_finish();
-        return;
-    }
-
-    PGR_DBG("Starting timer");
     clock_t start_t = clock();
     pgr_do_withPointsDD(
-            edges,              total_edges,
-            points,             total_points,
-            edges_of_points,    total_edges_of_points,
-            start_pidsArr,      total_starts,
+            edges_no_points_query,
+            points_sql,
+            edges_of_points_query,
+            starts,
             distance,
             d_side,
 
@@ -153,14 +117,9 @@ void process(
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-    if (edges) pfree(edges);
-    if (edges_of_points) pfree(edges_of_points);
-    if (points) pfree(points);
-    if (start_pidsArr) pfree(start_pidsArr);
+
     pgr_SPI_finish();
 }
-
-
 
 PGDLLEXPORT Datum
 _pgr_withpointsddv4(PG_FUNCTION_ARGS) {
@@ -201,8 +160,8 @@ _pgr_withpointsddv4(PG_FUNCTION_ARGS) {
         funcctx->tuple_desc = tuple_desc;
         MemoryContextSwitchTo(oldcontext);
     }
-    funcctx = SRF_PERCALL_SETUP();
 
+    funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (MST_rt*) funcctx->user_fctx;
 

@@ -31,14 +31,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_DRIVING_DISTANCE_DRIVEDIST_DRIVER_H_
 
 #ifdef __cplusplus
+extern "C" {
+#endif
+
+#include <postgres.h>
+#include <utils/array.h>
+
+#ifdef __cplusplus
+}
+#endif
+
+#include "cpp_common/undefPostgresDefine.hpp"
+
+#ifdef __cplusplus
 #   include <cstdint>
 #   include <cstddef>
-using Edge_t = struct Edge_t;
 using MST_rt = struct MST_rt;
 #else
 #   include <stddef.h>
 #   include <stdint.h>
-typedef struct Edge_t Edge_t;
 typedef struct MST_rt MST_rt;
 #endif
 
@@ -46,13 +57,12 @@ typedef struct MST_rt MST_rt;
 extern "C" {
 #endif
 
-void pgr_do_drivingdist(
-        Edge_t* , size_t ,
-        int64_t* , size_t ,
-        double ,
-        bool, bool,
-        MST_rt** , size_t* r,
-        char **, char **, char **);
+void pgr_do_drivingDistance(
+        char*,
+        ArrayType*,
+        double, bool, bool,
+        MST_rt**, size_t*,
+        char**, char**, char **);
 
 #ifdef __cplusplus
 }
