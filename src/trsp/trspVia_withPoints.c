@@ -31,7 +31,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_common/trsp_pgget.h"
 #include "drivers/withPoints/get_new_queries.h"
 #include "drivers/trsp/trspVia_withPoints_driver.h"
 
@@ -44,7 +43,7 @@ process(
         char* edges_sql,
         char* restrictions_sql,
         char* points_sql,
-        ArrayType *viasArr,
+        ArrayType *vias,
         bool directed,
 
         bool strict,
@@ -60,73 +59,26 @@ process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    /*
-     * Processing Via
-     */
-    size_t size_via = 0;
-    int64_t* via = pgr_get_bigIntArray(&size_via, viasArr, false, &err_msg);
-    throw_error(err_msg, "While getting via vertices");
-
-    // TODO(vicky) figure out what happens when one point or 0 points are given
 
     /*
-     * Processing Points
+     * Estimate driving side
      */
     driving_side[0] = estimate_drivingSide(driving_side[0]);
     if (driving_side[0] != 'r' && driving_side[0] != 'l') {
-        driving_side[0] = 'l';
+        driving_side[0] = 'r';
     }
-
-    Point_on_edge_t *points = NULL;
-    size_t total_points = 0;
-    pgr_get_points(points_sql, &points, &total_points, &err_msg);
-    throw_error(err_msg, points_sql);
 
     char *edges_of_points_query = NULL;
     char *edges_no_points_query = NULL;
     get_new_queries(edges_sql, points_sql, &edges_of_points_query, &edges_no_points_query);
 
-    /*
-     * Processing Edges
-     */
-    Edge_t *edges_of_points = NULL;
-    size_t total_edges_of_points = 0;
-
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-
-    pgr_get_edges(edges_no_points_query, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_no_points_query);
-    pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points, true, false, &err_msg);
-    throw_error(err_msg, edges_of_points_query);
-
-    {pfree(edges_of_points_query); edges_of_points_query = NULL;}
-    {pfree(edges_no_points_query); edges_no_points_query = NULL;}
-
-    if ((total_edges + total_edges_of_points) == 0) {
-        if (edges) {pfree(edges); edges = NULL;}
-        if (edges_of_points) {pfree(edges_of_points); edges_of_points = NULL;}
-        if (via) {pfree(via); via = NULL;}
-        pgr_SPI_finish();
-        return;
-    }
-
-    /*
-     * Processing restrictions
-     */
-    Restriction_t * restrictions = NULL;
-    size_t size_restrictions = 0;
-
-    pgr_get_restrictions(restrictions_sql, &restrictions, &size_restrictions, &err_msg);
-    throw_error(err_msg, restrictions_sql);
-
     clock_t start_t = clock();
-    do_trspVia_withPoints(
-            edges, total_edges,
-            restrictions, size_restrictions,
-            points, total_points,
-            edges_of_points, total_edges_of_points,
-            via, size_via,
+    pgr_do_trspVia_withPoints(
+            edges_no_points_query,
+            restrictions_sql,
+            points_sql,
+            edges_of_points_query,
+            vias,
 
             directed,
 
@@ -151,11 +103,9 @@ process(
     if (log_msg) {pfree(log_msg); log_msg = NULL;}
     if (notice_msg) {pfree(notice_msg); notice_msg = NULL;}
     if (err_msg) {pfree(err_msg); err_msg = NULL;}
-    if (edges) {pfree(edges); edges = NULL;}
-    if (via) {pfree(via); via = NULL;}
-    if (restrictions) {pfree(restrictions); restrictions = NULL;}
-    if (edges_of_points) {pfree(edges_of_points); edges_of_points = NULL;}
-    if (points) {pfree(points); points = NULL;}
+    if (edges_of_points_query) {pfree(edges_of_points_query); edges_of_points_query = NULL;}
+    if (edges_no_points_query) {pfree(edges_no_points_query); edges_no_points_query = NULL;}
+
     pgr_SPI_finish();
 }
 
