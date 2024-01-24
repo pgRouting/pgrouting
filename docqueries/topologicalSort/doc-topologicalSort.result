@@ -62,6 +62,7 @@ SELECT * FROM pgr_topologicalsort(
 SELECT * FROM pgr_topologicalsort(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$);
 ERROR:  Graph is not DAG
+HINT:
 CONTEXT:  SQL function "pgr_topologicalsort" statement 1
 /* -- q4 */
 ROLLBACK;
