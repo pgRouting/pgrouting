@@ -44,7 +44,7 @@ typedef struct IID_t_rt IID_t_rt;
 #ifdef __cplusplus
 extern "C" {
 #endif
-    void do_pgr_boyerMyrvold(
+    void pgr_do_pgr_boyerMyrvold(
                 Edge_t  *data_edges,
                 size_t total_tuples,
                 IID_t_rt **return_tuples,

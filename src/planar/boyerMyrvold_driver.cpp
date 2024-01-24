@@ -43,7 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 void
-do_pgr_boyerMyrvold(
+pgr_do_boyerMyrvold(
                 Edge_t  *data_edges,
                 size_t total_edges,
 
