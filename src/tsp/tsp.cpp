@@ -282,22 +282,20 @@ TSP::crossover_optimize(std::deque<std::pair<int64_t, double>> result, size_t li
 
 
 
-TSP::TSP(
-    IID_t_rt *distances,
-    size_t total_distances, bool) {
+TSP::TSP(std::vector<IID_t_rt> &distances) {
     /*
      * Inserting vertices
      */
     Identifiers<int64_t> ids;
-    for (size_t i = 0; i < total_distances; ++i) {
-        ids += distances[i].from_vid;
-        ids += distances[i].to_vid;
+    for (auto &d : distances) {
+        ids += d.from_vid;
+        ids += d.to_vid;
         /*
          * Its undirected graph:
          * keeping from_vid < to_vid
          */
-        if (distances[i].to_vid > distances[i].from_vid) {
-            std::swap(distances[i].to_vid, distances[i].from_vid);
+        if (d.to_vid > d.from_vid) {
+            std::swap(d.to_vid, d.from_vid);
         }
     }
 
@@ -312,8 +310,7 @@ TSP::TSP(
     /*
      * Inserting edges
      */
-    for (size_t i = 0; i < total_distances; ++i) {
-        auto edge = distances[i];
+    for (const auto &edge : distances) {
         /*
          * skip loops
          */
@@ -373,24 +370,22 @@ TSP::TSP(
  * 2 , 3.6 1
  * but when the remove_duplicates flag is on, keep only the first row that has the same id
  */
-TSP::TSP(Coordinate_t *coordinates,
-        size_t total_coordinates,
-        bool ) {
-    log << "before total_coordinates" << total_coordinates;
+TSP::TSP(const std::vector<Coordinate_t> &coordinates) {
+    log << "before total_coordinates" << coordinates.size();
 
     /*
      * keeping the vertex identifiers
      */
     Identifiers<int64_t> ids;
-    for (size_t i = 0; i < total_coordinates; ++i) {
-        ids += coordinates[i].id;
+    for (const auto c : coordinates) {
+        ids += c.id;
     }
 
     /*
      * Inserting vertices
      */
     size_t i{0};
-    for (const auto id : ids) {
+    for (const auto &id : ids) {
         auto v = add_vertex(i, graph);
         id_to_V.insert(std::make_pair(id, v));
         V_to_id.insert(std::make_pair(v, id));
@@ -400,7 +395,7 @@ TSP::TSP(Coordinate_t *coordinates,
     /*
      * Inserting edges
      */
-    for (size_t i = 0; i < total_coordinates; ++i) {
+    for (size_t i = 0; i < coordinates.size(); ++i) {
         auto u = get_boost_vertex(coordinates[i].id);
         auto ux = coordinates[i].x;
         auto uy = coordinates[i].y;
@@ -408,7 +403,7 @@ TSP::TSP(Coordinate_t *coordinates,
         /*
          *  undirected, so only need traverse higher coordinates for connections
          */
-        for (size_t j = i + 1; j < total_coordinates; ++j) {
+        for (size_t j = i + 1; j < coordinates.size(); ++j) {
             auto v = get_boost_vertex(coordinates[j].id);
 
             /*
@@ -434,7 +429,6 @@ TSP::TSP(Coordinate_t *coordinates,
         }
     }
 }
-
 
 
 
