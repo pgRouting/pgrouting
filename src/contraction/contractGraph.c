@@ -41,7 +41,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 #include "c_types/contracted_rt.h"
-#include "c_common/trsp_pgget.h"
 #include "drivers/contraction/contractGraph_driver.h"
 
 PGDLLEXPORT Datum _pgr_contraction(PG_FUNCTION_ARGS);
@@ -68,41 +67,17 @@ process(char* edges_sql,
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    size_t size_forbidden_vertices = 0;
-    int64_t* forbidden_vertices = pgr_get_bigIntArray(&size_forbidden_vertices, forbidden, true, &err_msg);
-    throw_error(err_msg, "While getting forbidden_vertices");
-    PGR_DBG("size_forbidden_vertices %ld", size_forbidden_vertices);
-
-    size_t size_contraction_order = 0;
-    int64_t* contraction_order = pgr_get_bigIntArray(&size_contraction_order, order, false, &err_msg);
-    throw_error(err_msg, "While getting contraction order");
-    PGR_DBG("size_contraction_order %ld ", size_contraction_order);
-
-
-    size_t total_edges = 0;
-    Edge_t* edges = NULL;
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-    if (total_edges == 0) {
-        if (forbidden_vertices) pfree(forbidden_vertices);
-        if (contraction_order) pfree(contraction_order);
-        pgr_SPI_finish();
-        return;
-    }
-
-    PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    do_pgr_contractGraph(
-            edges, total_edges,
-            forbidden_vertices, size_forbidden_vertices,
-            contraction_order, size_contraction_order,
+    pgr_do_contractGraph(
+            edges_sql,
+            forbidden,
+            order,
             num_cycles,
             directed,
             result_tuples, result_count,
             &log_msg,
             &notice_msg,
             &err_msg);
-
     time_msg("processing pgr_contraction()", start_t, clock());
 
 
@@ -111,15 +86,11 @@ process(char* edges_sql,
         (*result_tuples) = NULL;
         (*result_count) = 0;
     }
-
     pgr_global_report(log_msg, notice_msg, err_msg);
 
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
-    if (edges) pfree(edges);
-    if (forbidden_vertices) pfree(forbidden_vertices);
-    if (contraction_order) pfree(contraction_order);
     pgr_SPI_finish();
 }
 
@@ -128,24 +99,13 @@ _pgr_contraction(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
-    /**********************************************************************/
     contracted_rt  *result_tuples = NULL;
     size_t result_count = 0;
-    /**********************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-        /**********************************************************************/
-        /*
-           edges_sql TEXT,
-           contraction_order BIGINT[],
-           max_cycles integer DEFAULT 1,
-           forbidden_vertices BIGINT[] DEFAULT ARRAY[]::BIGINT[],
-           directed BOOLEAN DEFAULT true,
-
-         **********************************************************************/
 
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
@@ -156,8 +116,6 @@ _pgr_contraction(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-
-        /**********************************************************************/
         funcctx->max_calls = result_count;
 
         funcctx->user_fctx = result_tuples;
@@ -183,7 +141,6 @@ _pgr_contraction(PG_FUNCTION_ARGS) {
         int16 typlen;
         size_t      call_cntr = funcctx->call_cntr;
 
-        /**********************************************************************/
         size_t numb = 6;
         values =(Datum *)palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
@@ -243,7 +200,6 @@ _pgr_contraction(PG_FUNCTION_ARGS) {
         values[4] = Int64GetDatum(result_tuples[call_cntr].target);
         values[5] = Float8GetDatum(result_tuples[call_cntr].cost);
 
-        /*********************************************************************/
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
 
