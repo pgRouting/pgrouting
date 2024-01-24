@@ -49,14 +49,11 @@ extern "C" {
 #endif
 
 void
-do_cuthillMckeeOrdering(
-        Edge_t*,  size_t,   // edges
+pgr_do_cuthillMckeeOrdering(
+        char*,
 
-        II_t_rt**,  size_t*,  // results
-
-        char **,  // log msg
-        char **,  // notice msg
-        char **);  // err msg
+        II_t_rt**,  size_t*,
+        char **, char **, char **);
 
 
 #ifdef __cplusplus
