@@ -31,7 +31,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_TRAVERSAL_DEPTHFIRSTSEARCH_DRIVER_H_
 #pragma once
 
-/* for size-t */
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include <postgres.h>
+#include <utils/array.h>
+
+#ifdef __cplusplus
+}
+#endif
+
+#include "cpp_common/undefPostgresDefine.hpp"
+
 #ifdef __cplusplus
 #   include <cstddef>
 #   include <cstdint>
@@ -48,32 +60,14 @@ typedef struct MST_rt MST_rt;
 extern "C" {
 #endif
 
-    /**************************************************
-     *
-     *   pgr_depthFirstSearch(
-     *      edges_sql TEXT,
-     *      root_vids ANYARRAY,
-     *      directed BOOLEAN DEFAULT true
-     *      max_depth BIGINT DEFAULT 9223372036854775807,
-     *   );
-     *
-     *************************************************/
-    void do_pgr_depthFirstSearch(
-            Edge_t  *data_edges,
-            size_t total_edges,
+void pgr_do_depthFirstSearch(
+        char*,
+        ArrayType*,
 
-            int64_t *rootsArr,
-            size_t size_rootsArr,
+        bool, int64_t,
 
-            bool directed,
-            int64_t max_depth,
-
-            MST_rt **return_tuples,
-            size_t *return_count,
-
-            char ** log_msg,
-            char ** notice_msg,
-            char ** err_msg);
+        MST_rt**, size_t*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }
