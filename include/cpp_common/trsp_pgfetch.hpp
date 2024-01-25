@@ -43,7 +43,7 @@ The old version of TRSP
 @note
 - The only function that should remain after all functions read the data on the
   C++ code is `fetch_edge`
-- The code to be removed is marked with "if 1 ... endif" directives
+- The code to be removed is marked with "if 0 ... endif" directives
 - The old version of TRSP will be removed on V4
 
  @todo: Remove marked code
@@ -62,7 +62,7 @@ extern "C" {
 #include <vector>
 #include "cpp_common/undefPostgresDefine.hpp"
 
-#if 1
+#if 0
 using II_t_rt = struct II_t_rt;
 using IID_t_rt = struct IID_t_rt;
 using Coordinate_t = struct Coordinate_t;
@@ -70,7 +70,7 @@ using Delauny_t = struct Delauny_t;
 using Edge_bool_t = struct Edge_bool_t;
 #endif
 using Edge_t = struct Edge_t;
-#if 1
+#if 0
 using CostFlow_t = struct CostFlow_t;
 using Edge_xy_t = struct Edge_xy_t;
 using Orders_t = struct Orders_t;
@@ -82,7 +82,7 @@ using Vehicle_t = struct Vehicle_t;
 namespace pgrouting {
 using Column_info_t = struct Column_info_t;
 
-#if 1
+#if 0
 void fetch_combination(
         const HeapTuple, const TupleDesc &,
         const std::vector<Column_info_t> &,
@@ -109,7 +109,7 @@ void fetch_edge(
         const std::vector<Column_info_t> &,
         int64_t*, Edge_t*, size_t*, bool);
 
-#if 1
+#if 0
 void fetch_costFlow_edge(
         const HeapTuple, const TupleDesc &,
         const std::vector<Column_info_t> &,
