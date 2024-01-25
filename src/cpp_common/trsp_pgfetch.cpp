@@ -44,7 +44,7 @@ The old version of TRSP
 
 Notes
 - The only function that should remain after all functions read the data on the C++ code is `fetch_edge`
-- The code to be removed is marked with "if 1 ... endif" directives
+- The code to be removed is marked with "if 0 ... endif" directives
 - The old version of TRSP will be removed on V4
 
 @todo: Remove marked code
@@ -60,7 +60,7 @@ Notes
 #include "cpp_common/get_check_data.hpp"
 
 #include "c_types/info_t.hpp"
-#if 1
+#if 0
 #include "c_types/ii_t_rt.h"
 #include "c_types/coordinate_t.h"
 #include "c_types/delauny_t.h"
@@ -70,7 +70,7 @@ Notes
 #endif
 #include "c_types/edge_t.h"
 
-#if 1
+#if 0
 #include "c_types/iid_t_rt.h"
 #include "c_types/pickDeliver/orders_t.h"
 #include "c_types/restriction_t.h"
@@ -79,7 +79,7 @@ Notes
 #endif
 
 namespace pgrouting {
-#if 1
+#if 0
 void fetch_combination(
         const HeapTuple tuple,
         const TupleDesc &tupdesc,
@@ -202,7 +202,7 @@ void fetch_edge(
     *valid_edges = edge->reverse_cost < 0? *valid_edges: *valid_edges + 1;
 }
 
-#if 1
+#if 0
 void fetch_costFlow_edge(
         const HeapTuple tuple,
         const TupleDesc &tupdesc,
