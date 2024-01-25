@@ -49,8 +49,8 @@ class Pgr_breadthFirstSearch {
 
 
     std::vector<MST_rt> breadthFirstSearch(
-        G &graph,
-        std::set<int64_t> start_vertex,
+        const G &graph,
+        const std::set<int64_t> &start_vertex,
         int64_t depth) {
         std::vector<MST_rt> results;
         using bfs_visitor = visitors::Edges_order_bfs_visitor<E>;

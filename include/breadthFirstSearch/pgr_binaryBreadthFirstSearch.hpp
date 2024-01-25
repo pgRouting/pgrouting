@@ -139,9 +139,9 @@ class Pgr_binaryBreadthFirstSearch {
         E default_edge;
 
         std::deque<Path> one_to_many_binaryBreadthFirstSearch(
-            G &graph,
+            const G &graph,
             int64_t start_vertex,
-            std::set<int64_t> end_vertex) {
+            const std::set<int64_t> end_vertex) {
             std::deque<Path> paths;
 
         if (!graph.has_vertex(start_vertex)) return paths;
@@ -179,7 +179,7 @@ class Pgr_binaryBreadthFirstSearch {
     }
 
     Path getPath(
-        G &graph,
+        const G &graph,
         V bgl_start_vertex,
         int64_t target,
         V bgl_target_vertex,
@@ -208,7 +208,7 @@ class Pgr_binaryBreadthFirstSearch {
 
 
     void updateVertexCosts(
-        G &graph,
+        const G &graph,
         std::vector<double> &current_cost,
         std::vector<E> &from_edge,
         std::deque<V> &dq,
