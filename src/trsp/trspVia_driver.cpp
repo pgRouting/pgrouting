@@ -169,7 +169,7 @@ pgr_do_trspVia(
 
         if (edges.empty()) {
             *notice_msg = pgr_msg("No edges found");
-            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            *log_msg = pgr_msg(edges_sql);
             return;
         }
         hint = nullptr;
@@ -219,8 +219,7 @@ pgr_do_trspVia(
          * When there are turn restrictions
          */
         hint = restrictions_sql;
-        auto restrictions = restrictions_sql?
-            pgrouting::pgget::get_restrictions(std::string(restrictions_sql)) : std::vector<Restriction_t>();
+        auto restrictions = pgrouting::pgget::get_restrictions(std::string(restrictions_sql));
         if (restrictions.empty()) {
             (*return_tuples) = pgr_alloc(count, (*return_tuples));
             (*return_count) = (get_route(return_tuples, paths));
