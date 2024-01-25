@@ -351,7 +351,7 @@ Point_on_edge_t fetch_point(
         int64_t *default_pid,
         size_t*,
         bool) {
-    Point_on_edge_t point;
+    Point_on_edge_t point = {};
     if (column_found(info[0].colNumber)) {
         point.pid = getBigInt(tuple, tupdesc, info[0]);
     } else {
