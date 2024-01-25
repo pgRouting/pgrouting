@@ -114,7 +114,7 @@ pgr_do_edge_disjoint_paths(
 
         if (edges.empty()) {
             *notice_msg = pgr_msg("No edges found");
-            *log_msg = hint? pgr_msg(edges_sql) : pgr_msg(log.str().c_str());
+            *log_msg = pgr_msg(edges_sql);
             return;
         }
 
