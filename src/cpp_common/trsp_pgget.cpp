@@ -45,7 +45,7 @@ The old version of TRSP
 @note
 - The only function that should remain after all functions read the data on the
 C++ code is `fetch_edge`
-- The code to be removed is marked with "if 1 ... endif" directives
+- The code to be removed is marked with "if 0 ... endif" directives
 - The old version of TRSP will be removed on V4
 
  @todo: Remove marked code
@@ -64,7 +64,7 @@ C++ code is `fetch_edge`
 #include "cpp_common/trsp_pgfetch.hpp"
 
 #include "c_types/info_t.hpp"
-#if 1
+#if 0
 #include "c_types/coordinate_t.h"
 #include "c_types/costFlow_t.h"
 #include "c_types/ii_t_rt.h"
@@ -72,7 +72,7 @@ C++ code is `fetch_edge`
 #include "c_types/delauny_t.h"
 #endif
 #include "c_types/edge_t.h"
-#if 1
+#if 0
 #include "c_types/edge_bool_t_rt.h"
 #include "c_types/edge_xy_t.h"
 #include "c_types/flow_t.h"
@@ -82,7 +82,7 @@ C++ code is `fetch_edge`
 #include "c_types/restriction_t.h"
 #endif
 
-#if 1
+#if 0
 /**
  * @param[out] arrlen Length of the array
  * @param[in] input the postgres array
@@ -447,7 +447,7 @@ pgr_get_edges(
     }
 }
 
-#if 1
+#if 0
 /**
   For queries of the type:
   ~~~~{.c}
