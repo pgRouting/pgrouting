@@ -149,7 +149,7 @@ class Pgr_edwardMoore {
     std::deque<Path> one_to_many_edwardMoore(
         G &graph,
         int64_t start_vertex,
-        std::set<int64_t> end_vertex) {
+        const std::set<int64_t> &end_vertex) {
         std::deque<Path> paths;
 
         if (graph.has_vertex(start_vertex) == false) {
