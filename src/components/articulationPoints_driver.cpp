@@ -77,9 +77,7 @@ pgr_do_articulationPoints(
         }
         hint = nullptr;
 
-        graphType gType = UNDIRECTED;
-
-        pgrouting::UndirectedGraph undigraph(gType);
+        pgrouting::UndirectedGraph undigraph(false);
         undigraph.insert_edges(edges);
         auto results(pgrouting::algorithms::articulationPoints(undigraph));
 

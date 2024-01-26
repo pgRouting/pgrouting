@@ -78,10 +78,7 @@ pgr_do_biconnectedComponents(
         }
         hint = nullptr;
 
-        graphType gType = UNDIRECTED;
-
-        log << "Working with Undirected Graph\n";
-        pgrouting::UndirectedGraph undigraph(gType);
+        pgrouting::UndirectedGraph undigraph(false);
         undigraph.insert_edges(edges);
         auto results(pgrouting::algorithms::biconnectedComponents(undigraph));
 

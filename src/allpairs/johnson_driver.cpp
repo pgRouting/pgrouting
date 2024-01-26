@@ -61,8 +61,6 @@ pgr_do_johnson(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
-
         hint = edges_sql;
         auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, true);
 
@@ -73,12 +71,12 @@ pgr_do_johnson(
 
         if (directed) {
             log << "Processing Directed graph\n";
-            pgrouting::DirectedGraph digraph(gType);
+            pgrouting::DirectedGraph digraph(directed);
             digraph.insert_edges(edges);
             pgr_johnson(digraph, *return_count, return_tuples);
         } else {
             log << "Processing Undirected graph\n";
-            pgrouting::UndirectedGraph undigraph(gType);
+            pgrouting::UndirectedGraph undigraph(directed);
             undigraph.insert_edges(edges);
             pgr_johnson(undigraph, *return_count, return_tuples);
         }

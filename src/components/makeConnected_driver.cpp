@@ -79,8 +79,7 @@ pgr_do_makeConnected(
         }
         hint = nullptr;
 
-        graphType gType = UNDIRECTED;
-        pgrouting::UndirectedGraph undigraph(gType);
+        pgrouting::UndirectedGraph undigraph(false);
         undigraph.insert_edges(edges);
         pgrouting::functions::Pgr_makeConnected<pgrouting::UndirectedGraph> fn_makeConnected;
         results = fn_makeConnected.makeConnected(undigraph);

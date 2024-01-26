@@ -69,8 +69,6 @@ pgr_do_strongComponents(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        graphType gType = DIRECTED;
-
         hint = edges_sql;
         auto edges = get_edges(std::string(edges_sql), true, false);
         if (edges.empty()) {
@@ -80,9 +78,7 @@ pgr_do_strongComponents(
         }
         hint = nullptr;
 
-
-
-        pgrouting::DirectedGraph digraph(gType);
+        pgrouting::DirectedGraph digraph(true);
         digraph.insert_edges(edges);
         auto results(pgrouting::algorithms::strongComponents(digraph));
 

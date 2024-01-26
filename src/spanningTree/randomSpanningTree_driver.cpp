@@ -87,20 +87,20 @@ pgr_do_randomSpanningTree(
         }
         hint = nullptr;
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
+
 
         std::vector<SpanTree_rt> results;
 
         if (directed) {
             log << "Working with directed Graph\n";
-            pgrouting::DirectedGraph digraph(gType);
+            pgrouting::DirectedGraph digraph(directed);
             digraph.insert_edges(data_edges, total_edges);
             results = pgr_randomSpanningTree(
                     digraph,
                     root_vertex);
         } else {
             log << "Working with Undirected Graph\n";
-            pgrouting::UndirectedGraph undigraph(gType);
+            pgrouting::UndirectedGraph undigraph(directed);
             undigraph.insert_edges(data_edges, total_edges);
             results = pgr_randomSpanningTree(
                     undigraph,

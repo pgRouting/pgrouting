@@ -142,7 +142,7 @@ pgr_do_trsp_withPoints(
             pgrouting::pgget::get_restrictions(std::string(restrictions_sql)) : std::vector<Restriction_t>();
 
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
+
 
         /* Dealing with points */
         pgrouting::Pg_points_graph pg_graph(
@@ -165,7 +165,7 @@ pgr_do_trsp_withPoints(
 
         std::deque<Path> paths;
         if (directed) {
-            pgrouting::DirectedGraph digraph(vertices, gType);
+            pgrouting::DirectedGraph digraph(vertices, directed);
             digraph.insert_edges(edges);
             digraph.insert_edges(pg_graph.new_edges());
 
@@ -174,7 +174,7 @@ pgr_do_trsp_withPoints(
                     combinations,
                     false, (std::numeric_limits<size_t>::max)());
         } else {
-            pgrouting::UndirectedGraph undigraph(vertices, gType);
+            pgrouting::UndirectedGraph undigraph(vertices, directed);
             undigraph.insert_edges(edges);
             undigraph.insert_edges(pg_graph.new_edges());
 

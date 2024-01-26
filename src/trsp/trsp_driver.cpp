@@ -147,18 +147,18 @@ pgr_do_trsp(
             return;
         }
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
+
 
         std::deque<Path> paths;
         if (directed) {
-            pgrouting::DirectedGraph digraph(gType);
+            pgrouting::DirectedGraph digraph(directed);
             digraph.insert_edges(edges);
 
             paths = pgr_dijkstra(
                     digraph,
                     combinations);
         } else {
-            pgrouting::UndirectedGraph undigraph(gType);
+            pgrouting::UndirectedGraph undigraph(directed);
             undigraph.insert_edges(edges);
 
             paths = pgr_dijkstra(

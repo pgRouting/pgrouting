@@ -77,9 +77,7 @@ pgr_do_connectedComponents(
         }
         hint = nullptr;
 
-        graphType gType = UNDIRECTED;
-
-        pgrouting::UndirectedGraph undigraph(gType);
+        pgrouting::UndirectedGraph undigraph(false);
         undigraph.insert_edges(edges);
         auto results(pgrouting::algorithms::pgr_connectedComponents(undigraph));
 

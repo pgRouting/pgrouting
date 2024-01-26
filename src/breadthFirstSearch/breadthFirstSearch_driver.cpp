@@ -102,7 +102,7 @@ pgr_do_breadthFirstSearch(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
+
 
         hint = edges_sql;
         auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
@@ -118,12 +118,12 @@ pgr_do_breadthFirstSearch(
 
         std::vector<MST_rt> results;
         if (directed) {
-            pgrouting::DirectedGraph digraph(gType);
+            pgrouting::DirectedGraph digraph(directed);
             digraph.insert_edges(edges);
             results = breadthFirstSearch(digraph, roots, max_depth);
 
         } else {
-            pgrouting::UndirectedGraph undigraph(gType);
+            pgrouting::UndirectedGraph undigraph(directed);
             undigraph.insert_edges(edges);
             results = breadthFirstSearch(undigraph, roots, max_depth);
         }

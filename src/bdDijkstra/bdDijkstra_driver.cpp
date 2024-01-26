@@ -121,7 +121,7 @@ pgr_do_bdDijkstra(
             return;
         }
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
+
 
         hint = edges_sql;
         auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
@@ -136,11 +136,11 @@ pgr_do_bdDijkstra(
         std::deque<Path> paths;
 
         if (directed) {
-            pgrouting::DirectedGraph graph(gType);
+            pgrouting::DirectedGraph graph(directed);
             graph.insert_edges(edges);
             paths = pgr_bdDijkstra(graph, combinations, only_cost);
         } else {
-            pgrouting::UndirectedGraph graph(gType);
+            pgrouting::UndirectedGraph graph(directed);
             graph.insert_edges(edges);
             paths = pgr_bdDijkstra(graph, combinations, only_cost);
         }

@@ -48,7 +48,7 @@ pgr_do_drivingDistance(
         char *edges_sql,
         ArrayType* starts,
         double distance,
-        bool directedFlag,
+        bool directed,
         bool equiCostFlag,
         MST_rt  **return_tuples,     size_t *return_count,
         char **log_msg,
@@ -86,17 +86,15 @@ pgr_do_drivingDistance(
         }
         hint = nullptr;
 
-        graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-
         std::deque<Path> paths;
         std::vector<std::map<int64_t, int64_t>> depths;
 
-        if (directedFlag) {
-            pgrouting::DirectedGraph digraph(gType);
+        if (directed) {
+            pgrouting::DirectedGraph digraph(directed);
             digraph.insert_edges(edges);
             paths = drivingDistance(digraph, roots, distance, equiCostFlag, depths, true);
         } else {
-            pgrouting::UndirectedGraph undigraph(gType);
+            pgrouting::UndirectedGraph undigraph(directed);
             undigraph.insert_edges(edges);
             paths = drivingDistance(undigraph, roots, distance, equiCostFlag, depths, true);
         }

@@ -81,7 +81,7 @@ void pgr_do_ksp(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
+
 
         hint = combinations_sql;
         auto combinations = get_combinations(combinations_sql, starts, ends, true);
@@ -110,11 +110,11 @@ void pgr_do_ksp(
         std::deque<Path>paths;
 
         if (directed) {
-            pgrouting::DirectedGraph graph(gType);
+            pgrouting::DirectedGraph graph(directed);
             graph.insert_edges(edges);
             paths = pgrouting::algorithms::Yen(graph, combinations, k, heap_paths);
         } else {
-            pgrouting::UndirectedGraph graph(gType);
+            pgrouting::UndirectedGraph graph(directed);
             graph.insert_edges(edges);
             paths = pgrouting::algorithms::Yen(graph, combinations, k, heap_paths);
         }

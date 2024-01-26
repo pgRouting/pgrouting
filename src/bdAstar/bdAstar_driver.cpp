@@ -98,15 +98,15 @@ void pgr_do_bdAstar(
         }
         hint = nullptr;
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
+
 
         std::deque<Path> paths;
         if (directed) {
-            pgrouting::xyDirectedGraph graph(gType);
+            pgrouting::xyDirectedGraph graph(directed);
             graph.insert_edges(edges);
             paths = pgrouting::algorithms::bdastar(graph, combinations, heuristic, factor, epsilon, only_cost);
         } else {
-            pgrouting::xyUndirectedGraph graph(gType);
+            pgrouting::xyUndirectedGraph graph(directed);
             graph.insert_edges(edges);
             paths = pgrouting::algorithms::bdastar(graph, combinations, heuristic, factor, epsilon, only_cost);
         }

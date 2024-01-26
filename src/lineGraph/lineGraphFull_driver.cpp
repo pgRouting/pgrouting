@@ -99,9 +99,7 @@ pgr_do_lineGraphFull(
         }
         hint = nullptr;
 
-        graphType gType = DIRECTED;
-
-        pgrouting::DirectedGraph digraph(gType);
+        pgrouting::DirectedGraph digraph(true);
         digraph.insert_edges_neg(edges);
 
         pgrouting::graph::Pgr_lineGraphFull<

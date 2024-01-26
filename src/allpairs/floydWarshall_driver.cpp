@@ -43,7 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 void
 pgr_do_floydWarshall(
         char *edges_sql,
-        bool directedFlag,
+        bool directed,
 
         IID_t_rt **return_tuples,
         size_t *return_count,
@@ -62,8 +62,6 @@ pgr_do_floydWarshall(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-
         hint = edges_sql;
         auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, true);
 
@@ -72,14 +70,14 @@ pgr_do_floydWarshall(
         }
         hint = nullptr;
 
-        if (directedFlag) {
+        if (directed) {
             log << "Processing Directed graph\n";
-            pgrouting::DirectedGraph digraph(gType);
+            pgrouting::DirectedGraph digraph(directed);
             digraph.insert_edges(edges);
             pgr_floydWarshall(digraph, *return_count, return_tuples);
         } else {
             log << "Processing Undirected graph\n";
-            pgrouting::UndirectedGraph undigraph(gType);
+            pgrouting::UndirectedGraph undigraph(directed);
             undigraph.insert_edges(edges);
             pgr_floydWarshall(undigraph, *return_count, return_tuples);
         }

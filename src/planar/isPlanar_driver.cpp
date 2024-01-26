@@ -64,7 +64,6 @@ pgr_do_isPlanar(
         pgassert(!(*err_msg));
 
         bool result = false;
-        graphType gType = UNDIRECTED;
 
         hint = edges_sql;
         auto edges = get_edges(std::string(edges_sql), true, true);
@@ -74,8 +73,7 @@ pgr_do_isPlanar(
         }
         hint = nullptr;
 
-        log << "Working with Undirected Graph\n";
-        pgrouting::UndirectedGraph undigraph(gType);
+        pgrouting::UndirectedGraph undigraph(false);
         undigraph.insert_edges(edges);
         pgrouting::functions::Pgr_boyerMyrvold<pgrouting::UndirectedGraph> fn_isPlanar;
         result = fn_isPlanar.isPlanar(undigraph);

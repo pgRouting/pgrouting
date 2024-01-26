@@ -95,9 +95,9 @@ pgr_do_lineGraph(
         }
         hint = nullptr;
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        pgrouting::DirectedGraph digraph(gType);
+
+        pgrouting::DirectedGraph digraph(directed);
         digraph.insert_edges_neg(edges);
 
         log << digraph << "\n";

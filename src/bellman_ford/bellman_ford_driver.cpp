@@ -127,7 +127,7 @@ pgr_do_bellman_ford(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
+
 
         hint = combinations_sql;
         auto combinations = get_combinations(combinations_sql, starts, ends, true);
@@ -151,11 +151,11 @@ pgr_do_bellman_ford(
 
         std::deque<Path> paths;
         if (directed) {
-            pgrouting::DirectedGraph digraph(gType);
+            pgrouting::DirectedGraph digraph(directed);
             digraph.insert_edges(edges);
             paths = bellman_ford(digraph, combinations, only_cost);
         } else {
-            pgrouting::UndirectedGraph undigraph(gType);
+            pgrouting::UndirectedGraph undigraph(directed);
             undigraph.insert_edges(edges);
             paths = bellman_ford(undigraph, combinations, only_cost);
         }

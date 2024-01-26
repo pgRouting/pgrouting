@@ -117,7 +117,7 @@ pgr_do_turnRestrictedPath(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
+
 
         hint = edges_sql;
         auto edges = get_edges(std::string(edges_sql), true, false);
@@ -145,7 +145,7 @@ pgr_do_turnRestrictedPath(
         std::string logstr;
         if (directed) {
             log << "Working with directed Graph\n";
-            pgrouting::DirectedGraph digraph(gType);
+            pgrouting::DirectedGraph digraph(directed);
             Pgr_turnRestrictedPath < pgrouting::DirectedGraph > fn_TRSP;
             digraph.insert_edges(edges);
             log << digraph;
@@ -162,7 +162,7 @@ pgr_do_turnRestrictedPath(
                     strict);
         } else {
             log << "TODO Working with Undirected Graph\n";
-            pgrouting::UndirectedGraph undigraph(gType);
+            pgrouting::UndirectedGraph undigraph(directed);
             Pgr_turnRestrictedPath < pgrouting::UndirectedGraph > fn_TRSP;
             undigraph.insert_edges(edges);
             paths = pgr_dijkstraTR(undigraph,

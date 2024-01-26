@@ -41,8 +41,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/graph_utility.hpp>
 
-#include "cpp_common/graph_enum.hpp"
-
 #include "cpp_common/basic_vertex.hpp"
 #include "cpp_common/xy_vertex.hpp"
 #include "cpp_common/basic_edge.hpp"
@@ -129,20 +127,20 @@ std::vector< Basic_Vertex > vertices(pgrouting::extract_vertices(my_edges));
 There are several ways to initialize the graph
 ~~~~{.c}
 // 1. Initializes an empty graph
-pgrouting::DirectedGraph digraph(gType);
+pgrouting::DirectedGraph digraph(true);
 // 2. Initializes a graph based on the vertices
 pgrouting::DirectedGraph digraph(
     verices,
-    gType);
+    true);
 vertices.clear();
 3. Initializes a graph based on the extracted vertices
 pgrouting::DirectedGraph digraph(
     pgrouting::extract_vertices(my_edges, total_edges);
-    gType);
+    true);
 4. Initializes a graph based on the extracted vertices
 pgrouting::DirectedGraph digraph(
     pgrouting::extract_vertices(my_edges);
-    gType);
+    true);
 ~~~~
 1. Initializes an empty graph
   - vertices vector size is 0
@@ -262,7 +260,7 @@ class Pgr_base_graph {
      //! @name The Graph
      //@{
      G graph;                //!< The graph
-     graphType m_gType;      //!< type (DIRECTED or UNDIRECTED)
+     bool m_is_directed;      //!< type (DIRECTED or UNDIRECTED)
      //@}
 
      //! @name Id mapping handling
@@ -297,12 +295,12 @@ class Pgr_base_graph {
        - The vertices must be checked (if necessary)  before calling the constructor
        */
      Pgr_base_graph< G , T_V, T_E >(
-             const std::vector< T_V > &vertices, graphType gtype)
+             const std::vector< T_V > &vertices, bool directed)
          : graph(vertices.size()),
 #if 0
          m_num_vertices(vertices.size()),
 #endif
-         m_gType(gtype),
+         m_is_directed(directed),
          vertIndex(boost::get(boost::vertex_index, graph)),
          propmapIndex(mapIndex) {
              // add_vertices(vertices);
@@ -339,12 +337,12 @@ class Pgr_base_graph {
      /*!
        Prepares the _graph_ to be of type gtype with 0 vertices
        */
-     explicit Pgr_base_graph< G , T_V, T_E >(graphType gtype)
+     explicit Pgr_base_graph< G , T_V, T_E >(bool directed)
          : graph(0),
 #if 0
          m_num_vertices(0),
 #endif
-         m_gType(gtype),
+         m_is_directed(directed),
          vertIndex(boost::get(boost::vertex_index, graph)),
          propmapIndex(mapIndex) {
          }
@@ -552,8 +550,8 @@ class Pgr_base_graph {
      //! @name to be or not to be
      //@{
 
-     bool is_directed() const {return m_gType == DIRECTED;}
-     bool is_undirected() const {return m_gType == UNDIRECTED;}
+     bool is_directed() const {return m_is_directed;}
+     bool is_undirected() const {return !m_is_directed;}
      bool is_source(V v_idx, E e_idx) const {return v_idx == source(e_idx);}
      bool is_target(V v_idx, E e_idx) const {return v_idx == target(e_idx);}
 
@@ -857,7 +855,7 @@ Pgr_base_graph< G, T_V, T_E >::disconnect_vertex(V vertex) {
     }
 
     // special case
-    if (m_gType == DIRECTED) {
+    if (m_is_directed) {
         EI_i in, in_end;
         for (boost::tie(in, in_end) = in_edges(vertex, graph);
                 in != in_end; ++in) {
@@ -968,8 +966,7 @@ Pgr_base_graph< G, T_V, T_E >::graph_add_edge(const T &edge, bool normal) {
     }
 
     if (edge.reverse_cost >= 0
-            && (m_gType == DIRECTED
-                || (m_gType == UNDIRECTED && edge.cost != edge.reverse_cost))) {
+            && (m_is_directed || (!m_is_directed && edge.cost != edge.reverse_cost))) {
         boost::tie(e, inserted) =
             boost::add_edge(vm_t, vm_s, graph);
 
@@ -1014,8 +1011,7 @@ Pgr_base_graph< G, T_V, T_E >::graph_add_min_edge_no_parallel(const T &edge) {
     }
 
     if (edge.reverse_cost >= 0
-            && (m_gType == DIRECTED
-                || (m_gType == UNDIRECTED && edge.cost != edge.reverse_cost))) {
+            && (m_is_directed || (!m_is_directed && edge.cost != edge.reverse_cost))) {
         E e1;
         bool found;
         boost::tie(e1, found) = boost::edge(vm_t, vm_s, graph);
@@ -1064,8 +1060,8 @@ Pgr_base_graph< G, T_V, T_E >::graph_add_neg_edge(const T &edge, bool normal) {
         }
         graph[e].id = edge.id;
 
-    if (m_gType == DIRECTED
-              || (m_gType == UNDIRECTED && edge.cost > edge.reverse_cost)) {
+    if (m_is_directed
+              || (!m_is_directed && edge.cost > edge.reverse_cost)) {
         boost::tie(e, inserted) =
             boost::add_edge(vm_t, vm_s, graph);
         if (edge.reverse_cost < 0) {
