@@ -82,7 +82,7 @@ pgr_do_boyerMyrvold(
         hint = nullptr;
 
         log << "Working with Undirected Graph\n";
-        pgrouting::UndirectedGraph undigraph(gType);
+        pgrouting::UndirectedGraph undigraph(directed);
         undigraph.insert_edges(edges);
         pgrouting::functions::Pgr_boyerMyrvold<pgrouting::UndirectedGraph> fn_boyerMyrvold;
         results = fn_boyerMyrvold.boyerMyrvold(undigraph);

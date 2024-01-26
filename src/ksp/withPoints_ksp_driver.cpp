@@ -135,23 +135,15 @@ pgr_do_withPointsKsp(
             return;
         }
 
-
-        graphType gType = directed? DIRECTED: UNDIRECTED;
-
         std::deque<Path> paths;
-
-        auto vertices(pgrouting::extract_vertices(edges));
-        vertices = pgrouting::extract_vertices(vertices, pg_graph.new_edges());
-
-
         if (directed) {
-            pgrouting::DirectedGraph digraph(vertices, gType);
+            pgrouting::DirectedGraph digraph(directed);
             digraph.insert_edges(edges);
             digraph.insert_edges(pg_graph.new_edges());
 
             paths = pgrouting::algorithms::Yen(digraph, combinations, k, heap_paths);
         } else {
-            pgrouting::UndirectedGraph undigraph(gType);
+            pgrouting::UndirectedGraph undigraph(directed);
             undigraph.insert_edges(edges);
             undigraph.insert_edges(pg_graph.new_edges());
 

@@ -120,7 +120,7 @@ pgr_do_dijkstraVia(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
+
 
         auto via = get_intArray(viaArr, false);
 
@@ -136,7 +136,7 @@ pgr_do_dijkstraVia(
 
         std::deque<Path>paths;
         if (directed) {
-            pgrouting::DirectedGraph digraph(gType);
+            pgrouting::DirectedGraph digraph(directed);
             digraph.insert_edges(edges);
             pgrouting::pgr_dijkstraVia(
                     digraph,
@@ -146,7 +146,7 @@ pgr_do_dijkstraVia(
                     U_turn_on_edge,
                     log);
         } else {
-            pgrouting::UndirectedGraph undigraph(gType);
+            pgrouting::UndirectedGraph undigraph(directed);
             undigraph.insert_edges(edges);
             pgrouting::pgr_dijkstraVia(
                     undigraph,

@@ -224,10 +224,10 @@ pgr_do_contractGraph(
         }
 
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
+
         if (directed) {
             using DirectedGraph = pgrouting::graph::CHDirectedGraph;
-            DirectedGraph digraph(gType);
+            DirectedGraph digraph(directed);
 
             process_contraction(digraph, edges, forbid, ordering,
                     max_cycles);
@@ -238,7 +238,7 @@ pgr_do_contractGraph(
                     return_count);
         } else {
             using UndirectedGraph = pgrouting::graph::CHUndirectedGraph;
-            UndirectedGraph undigraph(gType);
+            UndirectedGraph undigraph(directed);
             process_contraction(undigraph, edges, forbid, ordering,
                     max_cycles);
 

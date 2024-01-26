@@ -56,10 +56,10 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge> {
      typedef typename boost::graph_traits < G >::in_edge_iterator EI_i;
 
      /*!
-       Prepares the _graph_ to be of type *gtype*
+       Prepares the _graph_ to be of type *directed*
        */
-     explicit Pgr_contractionGraph<G>(graphType gtype)
-         : Pgr_base_graph<G, CH_vertex, CH_edge >(gtype) {
+     explicit Pgr_contractionGraph<G>(bool directed)
+         : Pgr_base_graph<G, CH_vertex, CH_edge >(directed) {
          }
 
      /*! @brief get the vertex descriptors of adjacent vertices of *v*

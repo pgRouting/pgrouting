@@ -114,7 +114,7 @@ pgr_do_withPoints(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
+
 
         hint = combinations_sql;
         auto combinations = get_combinations(combinations_sql, starts, ends, normal);
@@ -164,7 +164,7 @@ pgr_do_withPoints(
 
         std::deque<Path> paths;
         if (directed) {
-            pgrouting::DirectedGraph digraph(vertices, gType);
+            pgrouting::DirectedGraph digraph(vertices, directed);
             digraph.insert_edges(edges);
             digraph.insert_edges(pg_graph.new_edges());
 
@@ -173,7 +173,7 @@ pgr_do_withPoints(
                     combinations,
                     only_cost, normal);
         } else {
-            pgrouting::UndirectedGraph undigraph(vertices, gType);
+            pgrouting::UndirectedGraph undigraph(vertices, directed);
             undigraph.insert_edges(edges);
             undigraph.insert_edges(pg_graph.new_edges());
             paths = pgr_dijkstra(

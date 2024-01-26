@@ -91,8 +91,7 @@ pgr_do_sequentialVertexColoring(
 
         std::vector <II_t_rt> results;
 
-        graphType gType = UNDIRECTED;
-        pgrouting::UndirectedGraph undigraph(gType);
+        pgrouting::UndirectedGraph undigraph(false);
 
         undigraph.insert_edges(edges);
 

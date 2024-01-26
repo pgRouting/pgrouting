@@ -103,11 +103,8 @@ void pgr_do_cuthillMckeeOrdering(
         }
         hint = nullptr;
 
-        graphType gType = UNDIRECTED;
-
         std::vector<II_t_rt>results;
-
-        pgrouting::UndirectedGraph undigraph(gType);
+        pgrouting::UndirectedGraph undigraph(false);
         undigraph.insert_edges(edges);
         results = cuthillMckeeOrdering(undigraph);
 

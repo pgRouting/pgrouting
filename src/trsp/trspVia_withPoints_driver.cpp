@@ -186,9 +186,6 @@ pgr_do_trspVia_withPoints(
         auto restrictions = restrictions_sql?
             pgrouting::pgget::get_restrictions(std::string(restrictions_sql)) : std::vector<Restriction_t>();
 
-
-        graphType gType = directed? DIRECTED: UNDIRECTED;
-
         /* Dealing with points */
         pgrouting::Pg_points_graph pg_graph(
                 points, edges_of_points,
@@ -210,7 +207,7 @@ pgr_do_trspVia_withPoints(
 
         std::deque<Path> paths;
         if (directed) {
-            pgrouting::DirectedGraph digraph(vertices, gType);
+            pgrouting::DirectedGraph digraph(vertices, directed);
             digraph.insert_edges(edges);
             digraph.insert_edges(pg_graph.new_edges());
             pgrouting::pgr_dijkstraVia(
@@ -221,7 +218,7 @@ pgr_do_trspVia_withPoints(
                     U_turn_on_edge,
                     log);
         } else {
-            pgrouting::UndirectedGraph undigraph(vertices, gType);
+            pgrouting::UndirectedGraph undigraph(vertices, directed);
             undigraph.insert_edges(edges);
             undigraph.insert_edges(pg_graph.new_edges());
             pgrouting::pgr_dijkstraVia(

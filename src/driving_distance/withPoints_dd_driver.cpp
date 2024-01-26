@@ -119,18 +119,18 @@ pgr_do_withPointsDD(
             return;
         }
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
+
 
         std::deque<Path> paths;
         std::vector<std::map<int64_t, int64_t>> depths;
 
         if (directed) {
-            pgrouting::DirectedGraph digraph(gType);
+            pgrouting::DirectedGraph digraph(directed);
             digraph.insert_edges(edges);
             digraph.insert_edges(pg_graph.new_edges());
             paths = drivingDistance(digraph, roots, distance, equiCost, depths, details);
         } else {
-            pgrouting::UndirectedGraph undigraph(gType);
+            pgrouting::UndirectedGraph undigraph(directed);
             undigraph.insert_edges(edges);
             undigraph.insert_edges(pg_graph.new_edges());
             paths = drivingDistance(undigraph, roots, distance, equiCost, depths, details);

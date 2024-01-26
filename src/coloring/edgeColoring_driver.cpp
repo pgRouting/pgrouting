@@ -34,7 +34,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "coloring/pgr_edgeColoring.hpp"
 
 #include "cpp_common/pgdata_getters.hpp"
-#include "cpp_common/graph_enum.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.hpp"
 

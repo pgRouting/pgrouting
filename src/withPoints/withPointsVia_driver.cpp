@@ -129,7 +129,7 @@ pgr_do_withPointsVia(
 
         auto via_vertices = get_intArray(starts, false);
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
+
 
         hint = points_sql;
         auto points = pgrouting::pgget::get_points(std::string(points_sql));
@@ -169,7 +169,7 @@ pgr_do_withPointsVia(
 
         std::deque<Path> paths;
         if (directed) {
-            pgrouting::DirectedGraph digraph(vertices, gType);
+            pgrouting::DirectedGraph digraph(vertices, directed);
             digraph.insert_edges(edges);
             digraph.insert_edges(pg_graph.new_edges());
             pgrouting::pgr_dijkstraVia(
@@ -180,7 +180,7 @@ pgr_do_withPointsVia(
                     U_turn_on_edge,
                     log);
         } else {
-            pgrouting::UndirectedGraph undigraph(vertices, gType);
+            pgrouting::UndirectedGraph undigraph(vertices, directed);
             undigraph.insert_edges(edges);
             undigraph.insert_edges(pg_graph.new_edges());
             pgrouting::pgr_dijkstraVia(

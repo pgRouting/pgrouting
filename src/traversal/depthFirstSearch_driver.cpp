@@ -112,7 +112,6 @@ pgr_do_depthFirstSearch(
 
         auto roots = get_intArray(starts, false);
         std::vector<MST_rt> results;
-        graphType gType = directed ? DIRECTED : UNDIRECTED;
 
         hint = edges_sql;
         auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
@@ -124,7 +123,7 @@ pgr_do_depthFirstSearch(
             *log_msg = pgr_msg(edges_sql);
         } else {
             if (directed) {
-                pgrouting::DirectedGraph digraph(gType);
+                pgrouting::DirectedGraph digraph(directed);
                 digraph.insert_edges(edges);
 
             results = pgr_depthFirstSearch(
@@ -133,7 +132,7 @@ pgr_do_depthFirstSearch(
                     directed,
                     max_depth);
             } else {
-                pgrouting::UndirectedGraph undigraph(gType);
+                pgrouting::UndirectedGraph undigraph(directed);
                 undigraph.insert_edges(edges);
 
                 results = pgr_depthFirstSearch(

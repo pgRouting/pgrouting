@@ -84,7 +84,7 @@ pgr_do_kruskal(
 
         std::vector<MST_rt> results;
 
-        pgrouting::UndirectedGraph undigraph(UNDIRECTED);
+        pgrouting::UndirectedGraph undigraph(false);
         undigraph.insert_edges(edges);
         pgrouting::functions::Pgr_kruskal<pgrouting::UndirectedGraph> kruskal;
 

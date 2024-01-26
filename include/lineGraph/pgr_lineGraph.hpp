@@ -56,12 +56,12 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
     typedef typename boost::graph_traits < G >::in_edge_iterator EI_i;
 
 
-    explicit Pgr_lineGraph< G, T_V, T_E >(graphType gtype)
-        : Pgr_base_graph< G, T_V, T_E >(gtype) {
+    explicit Pgr_lineGraph< G, T_V, T_E >(bool directed)
+        : Pgr_base_graph< G, T_V, T_E >(directed) {
         }
 
     explicit Pgr_lineGraph< G, T_V, T_E >(const pgrouting::DirectedGraph &digraph)
-        : Pgr_base_graph< G, T_V, T_E >(graphType::DIRECTED) {
+        : Pgr_base_graph< G, T_V, T_E >(true) {
             insert_vertices(digraph);
             create_edges(digraph);
         }

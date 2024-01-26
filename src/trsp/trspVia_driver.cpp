@@ -176,11 +176,11 @@ pgr_do_trspVia(
         hint = nullptr;
 
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
+
 
         std::deque<Path> paths;
         if (directed) {
-            pgrouting::DirectedGraph digraph(gType);
+            pgrouting::DirectedGraph digraph(directed);
             digraph.insert_edges(edges);
             pgrouting::pgr_dijkstraVia(
                     digraph,
@@ -190,7 +190,7 @@ pgr_do_trspVia(
                     U_turn_on_edge,
                     log);
         } else {
-            pgrouting::UndirectedGraph undigraph(gType);
+            pgrouting::UndirectedGraph undigraph(directed);
             undigraph.insert_edges(edges);
             pgrouting::pgr_dijkstraVia(
                     undigraph,

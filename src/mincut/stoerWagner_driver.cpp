@@ -85,13 +85,9 @@ pgr_do_stoerWagner(
         }
         hint = nullptr;
 
-        graphType gType = UNDIRECTED;
-
         std::vector<StoerWagner_t> results;
 
-        log << "Working with Undirected Graph\n";
-
-        pgrouting::UndirectedGraph undigraph(gType);
+        pgrouting::UndirectedGraph undigraph(false);
         undigraph.insert_edges(edges);
         results = pgr_stoerWagner(
                     undigraph);
