@@ -34,10 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-
-#include "c_common/trsp_pgget.h"
-
 #include "drivers/planar/isPlanar_driver.h"
+
 PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_isplanar);
 
@@ -51,39 +49,20 @@ process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-
-    if (total_edges == 0) {
-        pgr_SPI_finish();
-        return (false);
-    }
-
     clock_t start_t = clock();
-
     planarity = pgr_do_isPlanar(
-        edges,
-        total_edges,
+        edges_sql,
 
         &log_msg,
         &notice_msg,
         &err_msg);
-
     time_msg(" processing pgr_isPlanar", start_t, clock());
 
     pgr_global_report(log_msg, notice_msg, err_msg);
 
-    if (edges)
-        pfree(edges);
-    if (log_msg)
-        pfree(log_msg);
-    if (notice_msg)
-        pfree(notice_msg);
-    if (err_msg)
-        pfree(err_msg);
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
 
     pgr_SPI_finish();
 
@@ -91,12 +70,5 @@ process(
 }
 
 PGDLLEXPORT Datum _pgr_isplanar(PG_FUNCTION_ARGS) {
-        /**********************************************************************/
-        /*
-        pgr_isPlanar(
-            edge_sql TEXT)
-        */
-        /**********************************************************************/
         PG_RETURN_BOOL(process(text_to_cstring(PG_GETARG_TEXT_P(0))));
-        /**********************************************************************/
 }

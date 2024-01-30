@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
+#include "cpp_common/pgdata_getters.hpp"
 
 #include "planar/pgr_boyerMyrvold.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
@@ -43,8 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 bool
 pgr_do_isPlanar(
-                Edge_t  *data_edges,
-                size_t total_edges,
+                char *edges_sql,
 
                 char ** log_msg,
                 char ** notice_msg,
@@ -52,24 +52,32 @@ pgr_do_isPlanar(
     using pgrouting::pgr_alloc;
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
+    using pgrouting::pgget::get_edges;
 
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char* hint = nullptr;
     bool result = false;
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
-        pgassert(total_edges != 0);
-
         graphType gType = UNDIRECTED;
+
+        hint = edges_sql;
+        auto edges = get_edges(std::string(edges_sql), true, true);
+
+        if (edges.empty()) {
+            throw std::string("No edges found");
+        }
+        hint = nullptr;
+
         log << "Working with Undirected Graph\n";
         pgrouting::UndirectedGraph undigraph(gType);
-        undigraph.insert_edges(data_edges, total_edges);
+        undigraph.insert_edges(edges);
         pgrouting::functions::Pgr_boyerMyrvold<pgrouting::UndirectedGraph> fn_isPlanar;
         result = fn_isPlanar.isPlanar(undigraph);
-        return result;
 
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
@@ -78,10 +86,14 @@ pgr_do_isPlanar(
         *notice_msg = notice.str().empty()?
             *notice_msg :
             pgr_msg(notice.str().c_str());
+        return result;
     } catch (AssertFailedException &except) {
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
@@ -91,5 +103,5 @@ pgr_do_isPlanar(
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
     }
-      return result;
+    return false;
 }

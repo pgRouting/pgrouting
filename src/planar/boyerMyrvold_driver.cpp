@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
+#include "cpp_common/pgdata_getters.hpp"
 #include "c_types/iid_t_rt.h"
 
 #include "planar/pgr_boyerMyrvold.hpp"
@@ -44,8 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 void
 pgr_do_boyerMyrvold(
-                Edge_t  *data_edges,
-                size_t total_edges,
+                char *edges_sql,
 
                 IID_t_rt **return_tuples,
                 size_t *return_count,
@@ -55,25 +55,35 @@ pgr_do_boyerMyrvold(
     using pgrouting::pgr_alloc;
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
+    using pgrouting::pgget::get_edges;
 
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char* hint = nullptr;
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(total_edges != 0);
 
         std::vector<IID_t_rt> results;
         std::string logstr;
 
         graphType gType = UNDIRECTED;
+
+        hint = edges_sql;
+        auto edges = get_edges(std::string(edges_sql), true, true);
+
+        if (edges.empty()) {
+            throw std::string("No edges found");
+        }
+        hint = nullptr;
+
         log << "Working with Undirected Graph\n";
         pgrouting::UndirectedGraph undigraph(gType);
-        undigraph.insert_edges(data_edges, total_edges);
+        undigraph.insert_edges(edges);
         pgrouting::functions::Pgr_boyerMyrvold<pgrouting::UndirectedGraph> fn_boyerMyrvold;
         results = fn_boyerMyrvold.boyerMyrvold(undigraph);
         logstr += fn_boyerMyrvold.get_log();
@@ -92,7 +102,6 @@ pgr_do_boyerMyrvold(
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        log << "\nConverting a set of traversals into the tuples";
         for (size_t i = 0; i < count; i++) {
             *((*return_tuples) + i) = results[i];
         }
@@ -111,6 +120,9 @@ pgr_do_boyerMyrvold(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

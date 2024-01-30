@@ -33,11 +33,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #ifdef __cplusplus
 #   include <cstddef>
-using Edge_t = struct Edge_t;
 using IID_t_rt = struct IID_t_rt;
 #else
 #   include <stddef.h>
-typedef struct Edge_t Edge_t;
 typedef struct IID_t_rt IID_t_rt;
 #endif
 
@@ -45,13 +43,9 @@ typedef struct IID_t_rt IID_t_rt;
 extern "C" {
 #endif
     void pgr_do_pgr_boyerMyrvold(
-                Edge_t  *data_edges,
-                size_t total_tuples,
-                IID_t_rt **return_tuples,
-                size_t *return_count,
-                char ** log_msg,
-                char ** notice_msg,
-                char ** err_msg);
+                char*,
+                IID_t_rt**, size_t*,
+                char**, char**, char**);
 
 
 #ifdef __cplusplus
