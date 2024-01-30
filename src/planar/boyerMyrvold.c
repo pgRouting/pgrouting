@@ -31,13 +31,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
 
+#include "c_types/iid_t_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-
-#include "c_common/trsp_pgget.h"
-
 #include "drivers/planar/boyerMyrvold_driver.h"
+
 PGDLLEXPORT Datum _pgr_boyermyrvold(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_boyermyrvold);
 
@@ -52,40 +51,19 @@ process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    PGR_DBG("Initializing arrays");
-
-
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
-    PGR_DBG("Load data");
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-
-    pgr_get_edges(edges_sql, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_sql);
-    PGR_DBG("Total %ld edges in query:", total_edges);
-
-    if (total_edges == 0) {
-        pgr_SPI_finish();
-        return;
-    }
-
-    PGR_DBG("Starting processing");
     clock_t start_t = clock();
     pgr_do_boyerMyrvold(
-        edges,
-        total_edges,
+        edges_sql,
 
-        result_tuples,
-        result_count,
+        result_tuples, result_count,
 
         &log_msg,
         &notice_msg,
         &err_msg);
-
     time_msg(" processing pgr_boyerMyrvold", start_t, clock());
-    PGR_DBG("Returning %ld tuples", *result_count);
 
     if (err_msg) {
         if (*result_tuples)
@@ -94,14 +72,9 @@ process(
 
     pgr_global_report(log_msg, notice_msg, err_msg);
 
-    if (edges)
-        pfree(edges);
-    if (log_msg)
-        pfree(log_msg);
-    if (notice_msg)
-        pfree(notice_msg);
-    if (err_msg)
-        pfree(err_msg);
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
 
     pgr_SPI_finish();
 }
@@ -110,22 +83,14 @@ PGDLLEXPORT Datum _pgr_boyermyrvold(PG_FUNCTION_ARGS) {
     FuncCallContext *funcctx;
     TupleDesc tuple_desc;
 
-    /**************************************************************************/
     IID_t_rt *result_tuples = NULL;
     size_t result_count = 0;
-    /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        /**********************************************************************/
-        /*
-        pgr_boyerMyrvold(
-            edge_sql TEXT)
-        */
-        /**********************************************************************/
 
         PGR_DBG("Calling process");
         process(
@@ -133,10 +98,7 @@ PGDLLEXPORT Datum _pgr_boyermyrvold(PG_FUNCTION_ARGS) {
             &result_tuples,
             &result_count);
 
-        /**********************************************************************/
-
         funcctx->max_calls = result_count;
-
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
@@ -159,13 +121,6 @@ PGDLLEXPORT Datum _pgr_boyermyrvold(PG_FUNCTION_ARGS) {
         Datum *values;
         bool *nulls;
 
-        /**********************************************************************/
-        /*
-            OUT source BIGINT,
-            OUT target_vid BIGINT,
-            OUT cost FLOAT,
-        */
-        /**********************************************************************/
         size_t numb = 4;
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
@@ -180,18 +135,10 @@ PGDLLEXPORT Datum _pgr_boyermyrvold(PG_FUNCTION_ARGS) {
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
         values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
 
-        /**********************************************************************/
-
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        /**********************************************************************/
-
-        PGR_DBG("Clean up code");
-
-        /**********************************************************************/
-
         SRF_RETURN_DONE(funcctx);
     }
 }

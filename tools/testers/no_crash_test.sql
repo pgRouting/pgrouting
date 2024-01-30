@@ -35,7 +35,7 @@ BEGIN
         IF i = 0 THEN
             RETURN query SELECT * FROM isnt_empty(q1, 'isnt_empty ' || q1);
         ELSE
-            IF func='pgr_alphashape' THEN
+            IF func='pgr_alphashape' OR func='pgr_isplanar' THEN
                 RETURN query SELECT * FROM isnt_empty(q1, 'isnt_empty' || q1);
             ELSIF func='pgr_maxFlow' OR func='pgr_maxFlowMinCost_Cost' THEN
                 RETURN query SELECT * FROM set_eq(q1, 'SELECT NULL::BIGINT', 'set_eq' || q1);
