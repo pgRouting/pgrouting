@@ -60,6 +60,8 @@ milestone for 3.7.0
 
 * `#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__  Driving distance
   cleanup
+* `#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__  Read postgresql
+  data on C++
 
 .. rubric:: Others
 
