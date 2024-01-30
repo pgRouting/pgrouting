@@ -42,13 +42,10 @@ The old version of TRSP
 
 
 @note
-- The only function that should remain after all functions read the data on the
-  C++ code is `fetch_edge`
-- The code to be removed is marked with "if 0 ... endif" directives
+- The only function that remains is `fetch_edge`
 - The old version of TRSP will be removed on V4
 
- @todo: Remove marked code
- @todo: V4 Delete this file
+ @todo: TODO V4 Delete this file
 */
 #ifndef INCLUDE_C_COMMON_TRSP_PGGET_H_
 #define INCLUDE_C_COMMON_TRSP_PGGET_H_
@@ -81,92 +78,19 @@ extern "C" {
 #include "cpp_common/undefPostgresDefine.hpp"
 
 #ifdef __cplusplus
-#if 0
-using IID_t_rt = struct IID_t_rt;
-using II_t_rt = struct II_t_rt;
-using Coordinate_t = struct Coordinate_t;
-using Delauny_t = struct Delauny_t;
-using Edge_xy_t = struct Edge_xy_t;
-using Flow_t = struct Flow_t;
-using Edge_bool_t = struct Edge_bool_t;
-using CostFlow_t = struct CostFlow_t;
-#endif
 using Edge_t = struct Edge_t;
-#if 0
-using Orders_t = struct Orders_t;
-using Point_on_edge_t = struct Point_on_edge_t;
-using Vehicle_t = struct Vehicle_t;
-using Restriction_t = struct Restriction_t;
-#endif
 #else
-#if 0
-typedef struct IID_t_rt IID_t_rt;
-typedef struct II_t_rt II_t_rt;
-typedef struct Coordinate_t Coordinate_t;
-typedef struct Delauny_t Delauny_t;
-typedef struct Edge_xy_t Edge_xy_t;
-typedef struct Flow_t Flow_t;
-typedef struct Edge_bool_t Edge_bool_t;
-typedef struct CostFlow_t CostFlow_t;
-#endif
 typedef struct Edge_t Edge_t;
-#if 0
-typedef struct Orders_t Orders_t;
-typedef struct Point_on_edge_t Point_on_edge_t;
-typedef struct Restriction_t Restriction_t;
-typedef struct Vehicle_t Vehicle_t;
-#endif
 #endif
 
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-#if 0
-/** @brief Read rows of combinations, called from C file*/
-void pgr_get_combinations(char *, II_t_rt **, size_t *, char**);
-
-/** @brief Read rows of matrix, called from C file*/
-void pgr_get_coordinates(char*, Coordinate_t**, size_t*, char**);
-
-/** @brief Read rows of delauny triangles, called from C file*/
-void pgr_get_delauny(char*, Delauny_t**, size_t*, char**);
-#endif
 
 /** @brief Read edges called from C file*/
 void pgr_get_edges(char*, Edge_t**, size_t*, bool, bool, char**);
 
-#if 0
-/** @brief Read edges with x, y endpointscalled from C file */
-void pgr_get_edges_xy(char*, Edge_xy_t**, size_t*, bool, char**);
-
-/** @brief Read edges for flow called from C file */
-void pgr_get_flow_edges(char*, Edge_t**, size_t*, char**);
-
-/** @brief Read edges for cost called from C fileflow */
-void pgr_get_costFlow_edges(char*, CostFlow_t**, size_t*, char**);
-
-/** @brief Read "basic edges" called from C file */
-void pgr_get_basic_edges(char*, Edge_bool_t**, size_t*, char**);
-
-/** @brief Read rows of matrix, called from C file*/
-void pgr_get_matrixRows(char*, IID_t_rt**, size_t *, char **);
-
-/** @brief Reads the pick-Deliver orders */
-void pgr_get_orders(char *, Orders_t **, size_t *, bool, char**);
-
-/** @brief Read rows of points, called from C file*/
-void pgr_get_points(char*, Point_on_edge_t**, size_t*, char**);
-
-/** @brief Read rows of matrix, called from C file*/
-void pgr_get_restrictions(char*, Restriction_t**, size_t*, char**);
-
-/** @brief Reads the vehicles */
-void pgr_get_vehicles(char*, Vehicle_t**, size_t*, bool, char**);
-
-/** @brief Enforces the input array to be @b NOT empty */
-int64_t* pgr_get_bigIntArray(size_t*, ArrayType*, bool, char**);
-#endif
 #ifdef __cplusplus
 }
 #endif
