@@ -41,13 +41,10 @@ The old version of TRSP
 
 
 @note
-- The only function that should remain after all functions read the data on the
-  C++ code is `fetch_edge`
-- The code to be removed is marked with "if 0 ... endif" directives
+- The only function that remains is `fetch_edge`
 - The old version of TRSP will be removed on V4
 
- @todo: Remove marked code
- @todo: V4 Delete this file
+ @todo: V4 TODO Delete this file
 */
 
 #ifndef INCLUDE_CPP_COMMON_TRSP_PGFETCH_HPP_
@@ -62,89 +59,17 @@ extern "C" {
 #include <vector>
 #include "cpp_common/undefPostgresDefine.hpp"
 
-#if 0
-using II_t_rt = struct II_t_rt;
-using IID_t_rt = struct IID_t_rt;
-using Coordinate_t = struct Coordinate_t;
-using Delauny_t = struct Delauny_t;
-using Edge_bool_t = struct Edge_bool_t;
-#endif
 using Edge_t = struct Edge_t;
-#if 0
-using CostFlow_t = struct CostFlow_t;
-using Edge_xy_t = struct Edge_xy_t;
-using Orders_t = struct Orders_t;
-using Restriction_t = struct Restriction_t;
-using Point_on_edge_t = struct Point_on_edge_t;
-using Vehicle_t = struct Vehicle_t;
-#endif
 
 namespace pgrouting {
 using Column_info_t = struct Column_info_t;
 
-#if 0
-void fetch_combination(
-        const HeapTuple, const TupleDesc &,
-        const std::vector<Column_info_t> &,
-        int64_t*, II_t_rt*, size_t*, bool);
-
-void fetch_coordinate(
-        const HeapTuple, const TupleDesc &,
-        const std::vector<Column_info_t> &,
-        int64_t*, Coordinate_t*, size_t*, bool);
-
-void fetch_delauny(
-        const HeapTuple, const TupleDesc &,
-        const std::vector<Column_info_t> &,
-        int64_t*, Delauny_t*, size_t*, bool);
-
-void fetch_basic_edge(
-        const HeapTuple, const TupleDesc &,
-        const std::vector<Column_info_t> &,
-        int64_t*, Edge_bool_t*, size_t*, bool);
-#endif
 
 void fetch_edge(
         const HeapTuple, const TupleDesc &,
         const std::vector<Column_info_t> &,
         int64_t*, Edge_t*, size_t*, bool);
 
-#if 0
-void fetch_costFlow_edge(
-        const HeapTuple, const TupleDesc &,
-        const std::vector<Column_info_t> &,
-        int64_t*, CostFlow_t*, size_t*, bool);
-
-void fetch_edge_with_xy(
-        const HeapTuple, const TupleDesc &,
-        const std::vector<Column_info_t> &,
-        int64_t*, Edge_xy_t*, size_t*, bool);
-
-void pgr_fetch_row(
-        const HeapTuple, const TupleDesc &,
-        const std::vector<Column_info_t> &,
-        int64_t*, IID_t_rt*, size_t*, bool);
-
-void fetch_orders(
-        const HeapTuple, const TupleDesc &,
-        const std::vector<Column_info_t> &,
-        int64_t*, Orders_t*, size_t*, bool);
-
-void fetch_restriction(
-        const HeapTuple, const TupleDesc &,
-        const std::vector<Column_info_t> &,
-        int64_t*, Restriction_t*, size_t*, bool);
-
-void fetch_point(
-        const HeapTuple, const TupleDesc &,
-        const std::vector<Column_info_t> &,
-        int64_t*, Point_on_edge_t*, size_t*, bool);
-
-void fetch_vehicle(
-        const HeapTuple, const TupleDesc &,
-        const std::vector<Column_info_t> &,
-        int64_t*, Vehicle_t*, size_t*, bool);
-#endif
 
 }  // namespace pgrouting
 
