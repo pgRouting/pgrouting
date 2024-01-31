@@ -210,7 +210,7 @@ PgrFlowGraph::get_flow_edges() const {
         if (((capacity[*e] - residual_capacity[*e]) > 0) &&
                 ((*e).m_source != supersource) &&
                 ((*e).m_target != supersink)) {
-            Flow_t edge;
+            Flow_t edge = {};
             edge.edge = get_edge_id(*e);
             edge.source = get_vertex_id((*e).m_source);
             edge.target = get_vertex_id((*e).m_target);
@@ -280,7 +280,7 @@ PgrFlowGraph::get_edge_disjoint_paths(
         bool exists;
         size_t j;
         for (j = 0; j < size - 1; j++) {
-            Path_rt edge;
+            Path_rt edge = {};
             edge.seq = static_cast<int>(j + 1);
             edge.start_id = paths[i][0];
             edge.end_id = paths[i][size - 1];
@@ -291,7 +291,7 @@ PgrFlowGraph::get_edge_disjoint_paths(
             edge.edge = get_edge_id(e);
             path_elements.push_back(edge);
         }
-        Path_rt edge;
+        Path_rt edge = {};
         edge.seq = static_cast<int>(j + 1);
         edge.start_id = paths[i][0];
         edge.end_id = paths[i][size - 1];

@@ -132,12 +132,7 @@ pgr_do_max_flow(
         std::vector<Flow_t> flow_edges;
 
         if (only_flow) {
-            Flow_t edge;
-            edge.edge = -1;
-            edge.source = -1;
-            edge.target = -1;
-            edge.flow = max_flow;
-            edge.residual_capacity = -1;
+            Flow_t edge = {-1, -1, -1, max_flow, -1, 0, 0};
             flow_edges.push_back(edge);
         } else {
             flow_edges = digraph.get_flow_edges();
