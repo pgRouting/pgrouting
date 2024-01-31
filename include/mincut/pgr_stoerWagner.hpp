@@ -86,7 +86,7 @@ class Pgr_stoerWagner {
           auto t = target(*ei, graph.graph);
 
           if (get(parities, s) != get(parities, t)) {
-               StoerWagner_t tmp;
+               StoerWagner_t tmp = {};
 
                tmp.cost = graph[*ei].cost;
 
