@@ -84,7 +84,7 @@ pgr_do_directedChPP(
         std::vector<Path_rt> pathEdges;
         if (only_cost) {
             if (minCost >= 0.0) {
-                Path_rt edge;
+                Path_rt edge = {};
                 edge.seq = -1;
                 edge.node = edge.edge = -1;
                 edge.cost = edge.agg_cost = minCost;
