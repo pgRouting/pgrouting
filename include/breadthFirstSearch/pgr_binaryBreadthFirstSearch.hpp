@@ -141,7 +141,7 @@ class Pgr_binaryBreadthFirstSearch {
         std::deque<Path> one_to_many_binaryBreadthFirstSearch(
             const G &graph,
             int64_t start_vertex,
-            const std::set<int64_t> end_vertex) {
+            const std::set<int64_t> &end_vertex) {
             std::deque<Path> paths;
 
         if (!graph.has_vertex(start_vertex)) return paths;
