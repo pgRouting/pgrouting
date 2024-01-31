@@ -179,18 +179,13 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(const std::vector<Edge_t> &dataEdges)
     for (iter = deg.begin(); iter != deg.end(); ++iter) {
         int64_t p = iter->first;
         int d = iter->second;
-        if (d == 0)
-            continue;
-        if (d > 0)
-            totalDeg += d;
-        CostFlow_t edge;
+        if (d == 0) continue;
+        if (d > 0) totalDeg += d;
+        CostFlow_t edge = {};
         edge.reverse_capacity = -1;
         edge.reverse_cost = -1.0;
         edge.cost = 0.0;
-        if (d > 0)
-            edge.capacity = d;
-        else
-            edge.capacity = -d;
+        edge.capacity = std::abs(d);
         edge.edge_id = 0;
         if (d > 0)
             edge.source = p, edge.target = superTarget;
@@ -267,7 +262,7 @@ PgrDirectedChPPGraph::BuildResultPath() {
     int64_t preNode = pathStack.top();
     pathStack.pop();
 
-    Path_rt newElement;
+    Path_rt newElement = {};
     while (!pathStack.empty()) {
         int64_t nowNode = pathStack.top();
         pathStack.pop();
