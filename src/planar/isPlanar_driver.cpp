@@ -58,11 +58,12 @@ pgr_do_isPlanar(
     std::ostringstream err;
     std::ostringstream notice;
     char* hint = nullptr;
-    bool result = false;
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
+
+        bool result = false;
         graphType gType = UNDIRECTED;
 
         hint = edges_sql;
