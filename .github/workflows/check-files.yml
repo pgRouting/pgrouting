@@ -67,7 +67,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: 'cpplint/cpplint'
-          ref: "develop"
+          ref: "1.6.1"
           path: "code_linter/cpplint"
       - name: Run linter
         run: |
