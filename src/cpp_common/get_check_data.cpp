@@ -35,6 +35,7 @@ extern "C" {
 }
 
 #include <vector>
+#include <string>
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "c_types/info_t.hpp"
