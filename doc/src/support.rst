@@ -54,7 +54,9 @@ Mailing List and GIS StackExchange
 There are two mailing lists for pgRouting hosted on OSGeo mailing list server:
 
 * User mailing list: https://lists.osgeo.org/mailman/listinfo/pgrouting-users
-* Developer mailing list: https://lists.osgeo.org/mailman/listinfo/pgrouting-dev
+* Developer mailing list: https://discourse.osgeo.org/c/pgrouting/pgrouting-dev/
+
+  * Subscribe: https://discourse.osgeo.org/g/pgrouting-dev
 
 For general questions and topics about how to use pgRouting, please write to the
 user mailing list.
