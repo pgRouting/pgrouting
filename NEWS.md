@@ -12,6 +12,14 @@ To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.6.2
 ](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.2%22)
 
+**Upgrade fix**
+
+* The upgrade was failing for same minor
+
+**Code fixes**
+
+* Fix warnings from cpplint
+
 **Others**
 
 * Adjust NEWS generator
