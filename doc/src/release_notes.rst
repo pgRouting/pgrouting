@@ -27,6 +27,15 @@ pgRouting 3
    :local:
    :depth: 1
 
+pgRouting 3.6
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. contents:: Contents
+   :local:
+   :depth: 1
+
+.. current
+
 pgRouting 3.6.2 Release Notes
 -------------------------------------------------------------------------------
 
@@ -39,13 +48,6 @@ milestone for 3.6.2
 * Adjust NEWS generator
 
   * Name change to `NEWS.md` for better visualization on GitHub
-
-pgRouting 3.6
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. contents:: Contents
-   :local:
-   :depth: 1
 
 pgRouting 3.6.1 Release Notes
 -------------------------------------------------------------------------------

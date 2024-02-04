@@ -1,6 +1,11 @@
 # pgRouting 3
 
 
+## pgRouting 3.6
+
+
+.. current
+
 ### pgRouting 3.6.2 Release Notes
 
 To see all issues & pull requests closed by this release see the [Git closed
@@ -12,9 +17,6 @@ milestone for 3.6.2
 * Adjust NEWS generator
 
   * Name change to `NEWS.md` for better visualization on GitHub
-
-## pgRouting 3.6
-
 
 ### pgRouting 3.6.1 Release Notes
 
