@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-01 17:51+0000\n"
+"POT-Creation-Date: 2024-02-06 15:37+0000\n"
 "PO-Revision-Date: 2024-01-19 09:46+0000\n"
 "Last-Translator: Zuochenwei <zuochenwei5@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
@@ -19349,9 +19349,14 @@ msgid ""
 "User mailing list: https://lists.osgeo.org/mailman/listinfo/pgrouting-users"
 msgstr "用户邮件列表：https://lists.osgeo.org/mailman/listinfo/pgrouting-users"
 
+#, fuzzy
 msgid ""
-"Developer mailing list: https://lists.osgeo.org/mailman/listinfo/pgrouting-"
-"dev"
+"Developer mailing list: https://discourse.osgeo.org/c/pgrouting/pgrouting-"
+"dev/"
+msgstr "开发者邮件列表：https://lists.osgeo.org/mailman/listinfo/pgrouting-dev"
+
+#, fuzzy
+msgid "Subscribe: https://discourse.osgeo.org/g/pgrouting-dev"
 msgstr "开发者邮件列表：https://lists.osgeo.org/mailman/listinfo/pgrouting-dev"
 
 msgid ""
