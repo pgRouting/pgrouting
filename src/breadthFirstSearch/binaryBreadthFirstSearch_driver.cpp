@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <string>
 #include <set>
+#include <map>
 
 #include "breadthFirstSearch/pgr_binaryBreadthFirstSearch.hpp"
 

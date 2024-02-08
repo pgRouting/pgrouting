@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 #include <algorithm>
+#include <string>
 
 #include "dijkstra/pgr_dijkstraVia.hpp"
 #include "c_types/routes_t.h"

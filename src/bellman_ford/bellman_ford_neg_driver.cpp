@@ -34,6 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 #include <string>
+#include <map>
+#include <set>
 
 #include "bellman_ford/pgr_bellman_ford.hpp"
 

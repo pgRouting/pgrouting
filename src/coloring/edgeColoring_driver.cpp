@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "drivers/coloring/edgeColoring_driver.h"
 
 #include <vector>
+#include <string>
 
 #include "coloring/pgr_edgeColoring.hpp"
 
