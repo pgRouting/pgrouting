@@ -41,6 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <cmath>
 #include <cfloat>
 #include <sstream>
+#include <set>
 
 #include "cpp_common/get_data.hpp"
 #include "cpp_common/get_check_data.hpp"

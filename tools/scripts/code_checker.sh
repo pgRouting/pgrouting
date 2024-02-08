@@ -33,14 +33,18 @@ if ! test -d code_linter; then
     # Get our fork of codespell that adds --words-white-list and full filename support for -S option
     mkdir code_linter
     pushd code_linter || exit 1
-    git clone --branch 1.6.1 https://github.com/cpplint/cpplint
+    git clone --branch develop https://github.com/cpplint/cpplint
     # cd styleguide || exit 1
     # git checkout gh-pages
     popd || exit 1
-    ls code_linter
-    ls code_linter/cpplint
-    echo code_linter installed
 fi
+
+pushd code_linter || exit 1
+git pull
+popd || exit 1
+ls code_linter
+ls code_linter/cpplint
+echo code_linter installed
 
 DIRECTORY="$1"
 

@@ -38,6 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 #include <set>
 #include <map>
+#include <string>
 
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/pgr_alloc.hpp"

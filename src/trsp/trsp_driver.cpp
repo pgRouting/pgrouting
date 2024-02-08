@@ -38,6 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <map>
 #include <cassert>
+#include <string>
 
 #include "trsp/pgr_trspHandler.h"
 #include "cpp_common/pgdata_getters.hpp"

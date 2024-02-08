@@ -36,6 +36,7 @@ extern "C" {
 
 #include <vector>
 #include <set>
+#include <string>
 
 #include "cpp_common/undefPostgresDefine.hpp"
 #include "cpp_common/pgr_alloc.hpp"

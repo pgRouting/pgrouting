@@ -35,7 +35,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <cassert>
 #include <limits>
-
+#include <string>
+#include <map>
+#include <set>
 
 #include "withPoints/pgr_withPoints.hpp"
 #include "cpp_common/pgdata_getters.hpp"
