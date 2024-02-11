@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 typedef struct restrict_t restrict_t;
-typedef struct Edge_t Edge_t;
+typedef struct Edge_rt Edge_t;
 typedef struct path_element_tt path_element_tt;
 
 #ifdef __cplusplus

@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_VRP_OPTIMIZE_HPP_
 #pragma once
 
-#include "vrp/optimize.h"
+#include "vrp/optimize.hpp"
 
 namespace pgrouting {
 namespace vrp {

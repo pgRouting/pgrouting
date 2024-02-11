@@ -43,19 +43,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/get_check_data.hpp"
 
-#include "c_types/info_t.hpp"
+#include "cpp_common/info_t.hpp"
 #include "c_types/ii_t_rt.h"
-#include "c_types/coordinate_t.h"
-#include "c_types/delauny_t.h"
+#include "cpp_common/coordinate_t.hpp"
+#include "cpp_common/delauny_t.hpp"
 #include "c_types/edge_bool_t_rt.h"
-#include "c_types/costFlow_t.h"
-#include "c_types/edge_xy_t.h"
-#include "c_types/edge_t.h"
+#include "cpp_common/costFlow_t.hpp"
+#include "cpp_common/edge_xy_t.hpp"
+#include "cpp_common/edge_t.hpp"
 #include "c_types/iid_t_rt.h"
-#include "c_types/pickDeliver/orders_t.h"
-#include "c_types/restriction_t.h"
-#include "c_types/point_on_edge_t.h"
-#include "c_types/pickDeliver/vehicle_t.h"
+#include "cpp_common/orders_t.hpp"
+#include "cpp_common/restriction_t.hpp"
+#include "cpp_common/point_on_edge_t.hpp"
+#include "cpp_common/vehicle_t.hpp"
 
 
 namespace pgrouting {

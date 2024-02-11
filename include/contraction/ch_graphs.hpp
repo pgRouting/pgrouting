@@ -38,8 +38,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "contraction/pgr_contractionGraph.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
-#include "cpp_common/ch_vertex.h"
-#include "cpp_common/ch_edge.h"
+#include "cpp_common/ch_vertex.hpp"
+#include "cpp_common/ch_edge.hpp"
 
 
 namespace pgrouting {

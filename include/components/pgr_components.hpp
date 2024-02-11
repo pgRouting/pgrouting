@@ -41,7 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/identifiers.hpp"
-#include "components/componentsResult.h"
+#include "components/componentsResult.hpp"
 
 namespace pgrouting {
 namespace algorithms {

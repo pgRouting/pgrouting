@@ -59,7 +59,7 @@ extern "C" {
 #include <vector>
 #include "cpp_common/undefPostgresDefine.hpp"
 
-using Edge_t = struct Edge_t;
+using Edge_t = struct Edge_rt;
 
 namespace pgrouting {
 using Column_info_t = struct Column_info_t;

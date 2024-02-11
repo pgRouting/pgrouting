@@ -37,16 +37,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/pgr_alloc.hpp"
-#include "cpp_common/pgr_assert.h"
-#include "cpp_common/linear_directed_graph.h"
+#include "cpp_common/pgr_assert.hpp"
+#include "cpp_common/linear_directed_graph.hpp"
+#include "c_types/edge_rt.h"
 
 #include "lineGraph/pgr_lineGraph.hpp"
 
 namespace {
 
 void get_postgres_result(
-        std::vector< Edge_t > edge_result,
-        Edge_t **return_tuples,
+        std::vector< Edge_rt > edge_result,
+        Edge_rt **return_tuples,
         size_t &sequence) {
     using pgrouting::pgr_alloc;
     (*return_tuples) = pgr_alloc(edge_result.size(), (*return_tuples));
@@ -64,7 +65,7 @@ pgr_do_lineGraph(
         char *edges_sql,
 
         bool directed,
-        Edge_t **return_tuples,
+        Edge_rt **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
@@ -104,7 +105,7 @@ pgr_do_lineGraph(
             pgrouting::LinearDirectedGraph,
             pgrouting::Line_vertex,
             pgrouting::Basic_edge> line(digraph);
-        std::vector< Edge_t > line_graph_edges;
+        std::vector< Edge_rt > line_graph_edges;
         line_graph_edges = line.get_postgres_results_directed();
         auto count = line_graph_edges.size();
 

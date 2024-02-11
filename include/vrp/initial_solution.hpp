@@ -31,9 +31,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <set>
 #include <deque>
-#include "vrp/pd_orders.h"
-#include "vrp/solution.h"
-#include "vrp/initials_code.h"
+#include "vrp/pd_orders.hpp"
+#include "vrp/solution.hpp"
+#include "vrp/initials_code.hpp"
 #include "cpp_common/identifiers.hpp"
 
 namespace pgrouting {

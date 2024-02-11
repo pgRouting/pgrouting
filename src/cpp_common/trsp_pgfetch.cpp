@@ -57,8 +57,8 @@ Notes
 
 #include "cpp_common/get_check_data.hpp"
 
-#include "c_types/info_t.hpp"
-#include "c_types/edge_t.h"
+#include "cpp_common/info_t.hpp"
+#include "c_types/edge_rt.h"
 
 
 namespace pgrouting {

@@ -34,10 +34,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 
-#include "c_types/edge_t.h"
+#include "cpp_common/edge_t.hpp"
 #include "c_types/ii_t_rt.h"
-#include "cpp_common/pgr_assert.h"
-#include "cpp_common/pgr_messages.h"
+#include "cpp_common/pgr_assert.hpp"
+#include "cpp_common/pgr_messages.hpp"
 
 namespace pgrouting {
 namespace functions {

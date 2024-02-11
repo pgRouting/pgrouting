@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "cpp_common/identifier.h"
+#include "cpp_common/identifier.hpp"
 
 
 namespace pgrouting {

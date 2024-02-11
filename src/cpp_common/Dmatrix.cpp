@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "cpp_common/Dmatrix.h"
+#include "cpp_common/Dmatrix.hpp"
 
 #include <string>
 #include <utility>
@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 #include <cmath>
 
-#include "cpp_common/pgr_assert.h"
+#include "cpp_common/pgr_assert.hpp"
 #include "c_types/iid_t_rt.h"
 
 

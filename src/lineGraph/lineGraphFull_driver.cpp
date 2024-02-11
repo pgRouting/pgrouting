@@ -37,10 +37,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/line_graph_full_rt.h"
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/pgr_alloc.hpp"
-#include "cpp_common/pgr_assert.h"
+#include "cpp_common/pgr_assert.hpp"
 
 #include "lineGraph/pgr_lineGraphFull.hpp"
-#include "cpp_common/linear_directed_graph.h"
+#include "cpp_common/linear_directed_graph.hpp"
 
 #include "dijkstra/dijkstra.hpp"
 

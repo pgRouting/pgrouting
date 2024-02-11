@@ -33,10 +33,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <memory>
 #include <utility>
 
-#include "c_types/pickDeliver/orders_t.h"
+#include "cpp_common/orders_t.hpp"
 #include "cpp_common/identifiers.hpp"
 
-#include "vrp/pd_problem.h"
+#include "vrp/pd_problem.hpp"
 
 
 namespace pgrouting {

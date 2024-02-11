@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "vrp/fleet.h"
+#include "vrp/fleet.hpp"
 
 #include <vector>
 #include <memory>
@@ -31,8 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 #include <string>
 
-#include "vrp/dnode.h"
-#include "vrp/pgr_pickDeliver.h"
+#include "vrp/dnode.hpp"
+#include "vrp/pgr_pickDeliver.hpp"
 
 namespace pgrouting {
 namespace vrp {

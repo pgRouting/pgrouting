@@ -38,8 +38,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 #include <algorithm>
 
+#include "c_types/edge_rt.h"
 #include "cpp_common/pgr_base_graph.hpp"
-#include "cpp_common/line_vertex.h"
+#include "cpp_common/line_vertex.hpp"
 
 namespace pgrouting {
 
@@ -87,12 +88,12 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
     }
 
 
-    std::vector< Edge_t >
+    std::vector< Edge_rt >
         get_postgres_results_directed() {
-            std::vector< Edge_t > results;
+            std::vector< Edge_rt > results;
 
             typename boost::graph_traits < G >::edge_iterator edgeIt, edgeEnd;
-            std::map < std::pair<int64_t, int64_t >, Edge_t > unique;
+            std::map < std::pair<int64_t, int64_t >, Edge_rt > unique;
             int64_t count = 0;
 
             for (boost::tie(edgeIt, edgeEnd) = boost::edges(this->graph);
@@ -116,7 +117,7 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
                 e_source *= -1;
                 e_target *= -1;
 
-                Edge_t edge = {
+                Edge_rt edge = {
                     ++count,
                     e_source,
                     e_target,
@@ -208,9 +209,6 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
         pgassert(boost::num_vertices(this->graph) == this->num_vertices());
         return v;
     }
-
- private:
-    std::map < int64_t, Edge_t > m_edges;
 
  public:
     std::ostringstream log;

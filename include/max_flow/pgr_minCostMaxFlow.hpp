@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/find_flow_cost.hpp>
 
 #include "c_types/flow_t.h"
-#include "c_types/costFlow_t.h"
+#include "cpp_common/costFlow_t.hpp"
 #include "max_flow/pgr_costFlowGraph.hpp"
 
 namespace pgrouting {

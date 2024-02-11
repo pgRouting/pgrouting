@@ -34,8 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 #include <vector>
 
-#include "vrp/vehicle_pickDeliver.h"
-#include "vrp/fleet.h"
+#include "vrp/vehicle_pickDeliver.hpp"
+#include "vrp/fleet.hpp"
 
 using Schedule_rt = struct Schedule_rt;
 

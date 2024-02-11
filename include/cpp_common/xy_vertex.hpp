@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include "cpp_common/bpoint.hpp"
-#include "c_types/edge_xy_t.h"
+#include "cpp_common/edge_xy_t.hpp"
 
 
 namespace pgrouting {

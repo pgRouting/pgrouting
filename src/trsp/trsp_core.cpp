@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "trsp/trsp_core.h"
+#include "drivers/trsp/trsp_core.h"
 
 #ifdef __MINGW32__
 #include <winsock2.h>
@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <vector>
 #include <utility>
-#include "trsp/GraphDefinition.h"
+#include "trsp/GraphDefinition.hpp"
 
 
 int trsp_edge_wrapper(

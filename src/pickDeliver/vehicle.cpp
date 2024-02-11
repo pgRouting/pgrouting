@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "vrp/vehicle.h"
+#include "vrp/vehicle.hpp"
 
 #include <deque>
 #include <iostream>
@@ -34,11 +34,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 #include <vector>
 
-#include "c_types/pickDeliver/schedule_rt.h"
+#include "c_types/schedule_rt.h"
 
-#include "cpp_common/pgr_assert.h"
+#include "cpp_common/pgr_assert.hpp"
 
-#include "vrp/pgr_pickDeliver.h"
+#include "vrp/pgr_pickDeliver.hpp"
 
 
 namespace pgrouting {

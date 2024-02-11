@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/is_kuratowski_subgraph.hpp>
 #include <boost/ref.hpp>
 
-#include "cpp_common/pgr_messages.h"
+#include "cpp_common/pgr_messages.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/interruption.hpp"
 #include "c_types/iid_t_rt.h"

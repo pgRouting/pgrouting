@@ -34,10 +34,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
-using Edge_t = struct Edge_t;
+using Edge_rt = struct Edge_rt;
 #else
 #   include <stddef.h>
-typedef struct Edge_t Edge_t;
+typedef struct Edge_rt Edge_rt;
 #endif
 
 
@@ -50,7 +50,7 @@ void pgr_do_lineGraph(
 
         bool,
 
-        Edge_t**, size_t*,
+        Edge_rt**, size_t*,
         char**, char**, char**);
 
 #ifdef __cplusplus

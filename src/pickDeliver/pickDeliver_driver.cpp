@@ -36,18 +36,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <utility>
 
-#include "vrp/pgr_pickDeliver.h"
-#include "vrp/initials_code.h"
+#include "vrp/pgr_pickDeliver.hpp"
+#include "vrp/initials_code.hpp"
 #include "cpp_common/pgdata_getters.hpp"
-#include "cpp_common/Dmatrix.h"
+#include "cpp_common/Dmatrix.hpp"
 
-#include "cpp_common/pgr_assert.h"
+#include "cpp_common/pgr_assert.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 
 #include "c_types/iid_t_rt.h"
-#include "c_types/pickDeliver/orders_t.h"
-#include "c_types/pickDeliver/vehicle_t.h"
-#include "c_types/pickDeliver/schedule_rt.h"
+#include "cpp_common/orders_t.hpp"
+#include "cpp_common/vehicle_t.hpp"
+#include "c_types/schedule_rt.h"
 
 void
 pgr_do_pickDeliver(

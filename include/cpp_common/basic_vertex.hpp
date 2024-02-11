@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <ostream>
 
-#include "c_types/edge_t.h"
+#include "cpp_common/edge_t.hpp"
 
 
 

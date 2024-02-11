@@ -31,13 +31,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <string>
 
-#include "c_types/pickDeliver/orders_t.h"
-#include "c_types/pickDeliver/vehicle_t.h"
-#include "cpp_common/pgr_assert.h"
-#include "cpp_common/identifier.h"
+#include "cpp_common/orders_t.hpp"
+#include "cpp_common/vehicle_t.hpp"
+#include "cpp_common/pgr_assert.hpp"
+#include "cpp_common/identifier.hpp"
 
-#include "vrp/pd_problem.h"
-#include "vrp/dnode.h"
+#include "vrp/pd_problem.hpp"
+#include "vrp/dnode.hpp"
 
 namespace pgrouting {
 namespace vrp {
