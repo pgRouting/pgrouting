@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_TRSP_EDGEINFO_H_
-#define INCLUDE_TRSP_EDGEINFO_H_
+#ifndef INCLUDE_TRSP_EDGEINFO_HPP_
+#define INCLUDE_TRSP_EDGEINFO_HPP_
 
 #include <vector>
 
@@ -94,4 +94,4 @@ class EdgeInfo {
 }  // namespace trsp
 }  // namespace pgrouting
 
-#endif  // INCLUDE_TRSP_EDGEINFO_H_
+#endif  // INCLUDE_TRSP_EDGEINFO_HPP_

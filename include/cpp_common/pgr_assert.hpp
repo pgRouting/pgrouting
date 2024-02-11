@@ -26,8 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef  INCLUDE_CPP_COMMON_PGR_ASSERT_H_
-#define  INCLUDE_CPP_COMMON_PGR_ASSERT_H_
+#ifndef  INCLUDE_CPP_COMMON_PGR_ASSERT_HPP_
+#define  INCLUDE_CPP_COMMON_PGR_ASSERT_HPP_
 #pragma once
 
 #include <string>
@@ -149,4 +149,4 @@ class AssertFailedException : public std::exception {
      virtual ~AssertFailedException() throw() {}
 };
 
-#endif  //  INCLUDE_CPP_COMMON_PGR_ASSERT_H_
+#endif  //  INCLUDE_CPP_COMMON_PGR_ASSERT_HPP_

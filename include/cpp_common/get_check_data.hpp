@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_C_COMMON_GET_CHECK_DATA_HPP_
-#define INCLUDE_C_COMMON_GET_CHECK_DATA_HPP_
+#ifndef INCLUDE_CPP_COMMON_GET_CHECK_DATA_HPP_
+#define INCLUDE_CPP_COMMON_GET_CHECK_DATA_HPP_
 #pragma once
 
 
@@ -81,4 +81,4 @@ char* getText(const HeapTuple, const TupleDesc&, const Column_info_t&);
 }  // namespace pgrouting
 
 
-#endif  // INCLUDE_C_COMMON_GET_CHECK_DATA_HPP_
+#endif  // INCLUDE_CPP_COMMON_GET_CHECK_DATA_HPP_

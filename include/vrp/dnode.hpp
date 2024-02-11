@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /*! @file dnode.h */
 
-#ifndef INCLUDE_VRP_DNODE_H_
-#define INCLUDE_VRP_DNODE_H_
+#ifndef INCLUDE_VRP_DNODE_HPP_
+#define INCLUDE_VRP_DNODE_HPP_
 #pragma once
 
 #include <string>
@@ -73,4 +73,4 @@ class Dnode : public Identifier {
 }  // namespace vrp
 }  // namespace pgrouting
 
-#endif  // INCLUDE_VRP_DNODE_H_
+#endif  // INCLUDE_VRP_DNODE_HPP_

@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /*! @file */
 
-#ifndef INCLUDE_CPP_COMMON_BASIC_EDGE_H_
-#define INCLUDE_CPP_COMMON_BASIC_EDGE_H_
+#ifndef INCLUDE_CPP_COMMON_BASIC_EDGE_HPP_
+#define INCLUDE_CPP_COMMON_BASIC_EDGE_HPP_
 #pragma once
 
 #include <stdint.h>
@@ -49,4 +49,4 @@ class Basic_edge{
 
 }  // namespace pgrouting
 
-#endif  // INCLUDE_CPP_COMMON_BASIC_EDGE_H_
+#endif  // INCLUDE_CPP_COMMON_BASIC_EDGE_HPP_

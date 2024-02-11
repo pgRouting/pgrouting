@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_CPP_COMMON_RULE_H_
-#define INCLUDE_CPP_COMMON_RULE_H_
+#ifndef INCLUDE_CPP_COMMON_RULE_HPP_
+#define INCLUDE_CPP_COMMON_RULE_HPP_
 
 
 #include <vector>
@@ -76,4 +76,4 @@ class Rule {
 }  // namespace trsp
 }  // namespace pgrouting
 
-#endif  // INCLUDE_CPP_COMMON_RULE_H_
+#endif  // INCLUDE_CPP_COMMON_RULE_HPP_

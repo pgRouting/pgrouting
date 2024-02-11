@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_TRSP_PGR_TRSPHANDLER_H_
-#define INCLUDE_TRSP_PGR_TRSPHANDLER_H_
+#ifndef INCLUDE_TRSP_PGR_TRSPHANDLER_HPP_
+#define INCLUDE_TRSP_PGR_TRSPHANDLER_HPP_
 
 #include <stdlib.h>
 
@@ -246,4 +246,4 @@ class Pgr_trspHandler : public pgrouting::Pgr_messages {
 }  // namespace trsp
 }  // namespace pgrouting
 
-#endif  // INCLUDE_TRSP_PGR_TRSPHANDLER_H_
+#endif  // INCLUDE_TRSP_PGR_TRSPHANDLER_HPP_

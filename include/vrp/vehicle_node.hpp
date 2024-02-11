@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /*! @file */
 
-#ifndef INCLUDE_VRP_VEHICLE_NODE_H_
-#define INCLUDE_VRP_VEHICLE_NODE_H_
+#ifndef INCLUDE_VRP_VEHICLE_NODE_HPP_
+#define INCLUDE_VRP_VEHICLE_NODE_HPP_
 #pragma once
 
 
@@ -175,4 +175,4 @@ class Vehicle_node: public Tw_node {
 }  //  namespace vrp
 }  //  namespace pgrouting
 
-#endif  // INCLUDE_VRP_VEHICLE_NODE_H_
+#endif  // INCLUDE_VRP_VEHICLE_NODE_HPP_

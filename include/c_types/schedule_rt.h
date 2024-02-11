@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: general_vehicle_orders_t.h
+File: schedule_rt.h
 
 Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org
@@ -26,8 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_PICKDELIVER_SCHEDULE_RT_H_
-#define INCLUDE_C_TYPES_PICKDELIVER_SCHEDULE_RT_H_
+#ifndef INCLUDE_C_TYPES_SCHEDULE_RT_H_
+#define INCLUDE_C_TYPES_SCHEDULE_RT_H_
 #pragma once
 
 /* for int64_t */
@@ -66,4 +66,4 @@ struct  Schedule_rt {
 
 /*************************************************************************/
 
-#endif  // INCLUDE_C_TYPES_PICKDELIVER_SCHEDULE_RT_H_
+#endif  // INCLUDE_C_TYPES_SCHEDULE_RT_H_

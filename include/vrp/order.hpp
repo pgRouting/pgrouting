@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /*! @file */
 
-#ifndef INCLUDE_VRP_ORDER_H_
-#define INCLUDE_VRP_ORDER_H_
+#ifndef INCLUDE_VRP_ORDER_HPP_
+#define INCLUDE_VRP_ORDER_HPP_
 #pragma once
 
 
@@ -183,4 +183,4 @@ class Order : public Identifier {
 }  //  namespace vrp
 }  //  namespace pgrouting
 
-#endif  // INCLUDE_VRP_ORDER_H_
+#endif  // INCLUDE_VRP_ORDER_HPP_

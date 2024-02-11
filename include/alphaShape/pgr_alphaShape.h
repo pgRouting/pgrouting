@@ -26,8 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_ALPHASHAPE_PGR_ALPHASHAPE_H_
-#define INCLUDE_ALPHASHAPE_PGR_ALPHASHAPE_H_
+#ifndef INCLUDE_ALPHASHAPE_PGR_ALPHASHAPE_HPP_
+#define INCLUDE_ALPHASHAPE_PGR_ALPHASHAPE_HPP_
 #pragma once
 
 #ifndef __cplusplus
@@ -99,4 +99,4 @@ class Pgr_alphaShape : public Pgr_messages {
 }  // namespace alphashape
 }  // namespace pgrouting
 
-#endif  // INCLUDE_ALPHASHAPE_PGR_ALPHASHAPE_H_
+#endif  // INCLUDE_ALPHASHAPE_PGR_ALPHASHAPE_HPP_

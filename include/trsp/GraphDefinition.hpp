@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_TRSP_GRAPHDEFINITION_H_
-#define INCLUDE_TRSP_GRAPHDEFINITION_H_
+#ifndef INCLUDE_TRSP_GRAPHDEFINITION_HPP_
+#define INCLUDE_TRSP_GRAPHDEFINITION_HPP_
 
 #include <stdlib.h>
 
@@ -161,4 +161,4 @@ class GraphDefinition {
     bool m_bIsGraphConstructed;
 };
 
-#endif  // INCLUDE_TRSP_GRAPHDEFINITION_H_
+#endif  // INCLUDE_TRSP_GRAPHDEFINITION_HPP_
