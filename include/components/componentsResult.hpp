@@ -24,8 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_COMPONENTS_COMPONENTSRESULT_H_
-#define INCLUDE_COMPONENTS_COMPONENTSRESULT_H_
+#ifndef INCLUDE_COMPONENTS_COMPONENTSRESULT_HPP_
+#define INCLUDE_COMPONENTS_COMPONENTSRESULT_HPP_
 #pragma once
 
 #include <vector>
@@ -47,4 +47,4 @@ componentsResult(
 }  // namespace algorithms
 }  // namespace pgrouting
 
-#endif  // INCLUDE_COMPONENTS_COMPONENTSRESULT_H_
+#endif  // INCLUDE_COMPONENTS_COMPONENTSRESULT_HPP_

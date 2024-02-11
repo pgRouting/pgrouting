@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /*! @file */
 
-#ifndef INCLUDE_CPP_COMMON_IDENTIFIER_H_
-#define INCLUDE_CPP_COMMON_IDENTIFIER_H_
+#ifndef INCLUDE_CPP_COMMON_IDENTIFIER_HPP_
+#define INCLUDE_CPP_COMMON_IDENTIFIER_HPP_
 #pragma once
 
 #if defined(__MINGW32__) || defined(_MSC_VER)
@@ -58,4 +58,4 @@ class Identifier {
 
 }  // namespace pgrouting
 
-#endif  // INCLUDE_CPP_COMMON_IDENTIFIER_H_
+#endif  // INCLUDE_CPP_COMMON_IDENTIFIER_HPP_

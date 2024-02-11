@@ -34,8 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_C_COMMON_PGDATA_GETTERS_HPP_
-#define INCLUDE_C_COMMON_PGDATA_GETTERS_HPP_
+#ifndef INCLUDE_CPP_COMMON_PGDATA_GETTERS_HPP_
+#define INCLUDE_CPP_COMMON_PGDATA_GETTERS_HPP_
 #pragma once
 
 extern "C" {
@@ -116,4 +116,4 @@ std::vector<Vehicle_t> get_vehicles(const std::string&, bool);
 }  // namespace pgget
 }  // namespace pgrouting
 
-#endif  // INCLUDE_CPP_COMMON_PGGET_H_
+#endif  // INCLUDE_CPP_COMMON_PGGET_HPP_

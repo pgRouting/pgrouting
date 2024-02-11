@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /*! @file */
 
-#ifndef INCLUDE_VRP_BOOK_KEEPING_H_
-#define INCLUDE_VRP_BOOK_KEEPING_H_
+#ifndef INCLUDE_VRP_BOOK_KEEPING_HPP_
+#define INCLUDE_VRP_BOOK_KEEPING_HPP_
 #pragma once
 
 #include <queue>
@@ -112,4 +112,4 @@ class Swap_bk {
 }  // namespace vrp
 }  // namespace pgrouting
 
-#endif  // INCLUDE_VRP_BOOK_KEEPING_H_
+#endif  // INCLUDE_VRP_BOOK_KEEPING_HPP_

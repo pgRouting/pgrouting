@@ -26,8 +26,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-#ifndef INCLUDE_CPP_COMMON_CH_VERTEX_H_
-#define INCLUDE_CPP_COMMON_CH_VERTEX_H_
+#ifndef INCLUDE_CPP_COMMON_CH_VERTEX_HPP_
+#define INCLUDE_CPP_COMMON_CH_VERTEX_HPP_
 #include <iostream>
 #include <sstream>
 #include <vector>
@@ -73,4 +73,4 @@ extract_vertices(
 #endif
 }  // namespace pgrouting
 
-#endif  // INCLUDE_CPP_COMMON_CH_VERTEX_H_
+#endif  // INCLUDE_CPP_COMMON_CH_VERTEX_HPP_

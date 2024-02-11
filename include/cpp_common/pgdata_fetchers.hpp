@@ -34,8 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_C_COMMON_PGDATA_FETCHERS_HPP_
-#define INCLUDE_C_COMMON_PGDATA_FETCHERS_HPP_
+#ifndef INCLUDE_CPP_COMMON_PGDATA_FETCHERS_HPP_
+#define INCLUDE_CPP_COMMON_PGDATA_FETCHERS_HPP_
 #pragma once
 
 /* for HeapTuple, TupleDesc */
@@ -128,4 +128,4 @@ Vehicle_t fetch_vehicle(
 }  // namespace pgget
 }  // namespace pgrouting
 
-#endif  // INCLUDE_C_COMMON_PGDATA_FETCHERS_HPP_
+#endif  // INCLUDE_CPP_COMMON_PGDATA_FETCHERS_HPP_

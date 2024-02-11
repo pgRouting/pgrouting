@@ -32,8 +32,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  *****************************************************************PGR-MIT*/
 
-#ifndef INCLUDE_CPP_COMMON_SIGNALHANDLER_H_
-#define INCLUDE_CPP_COMMON_SIGNALHANDLER_H_
+#ifndef INCLUDE_CPP_COMMON_SIGNALHANDLER_HPP_
+#define INCLUDE_CPP_COMMON_SIGNALHANDLER_HPP_
 #pragma once
 
 // defines NULL
@@ -150,5 +150,5 @@ class SIGQUIT_Handler: public EventHandler {
         throw(UserQuitException("Abort on User Request!")); \
     } while (0);
 
-#endif  // INCLUDE_CPP_COMMON_SIGNALHANDLER_H_
+#endif  // INCLUDE_CPP_COMMON_SIGNALHANDLER_HPP_
 

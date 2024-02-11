@@ -26,11 +26,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_GRAPH_ENUM_H_
-#define INCLUDE_C_TYPES_GRAPH_ENUM_H_
+#ifndef INCLUDE_CPP_COMMON_GRAPH_ENUM_HPP_
+#define INCLUDE_CPP_COMMON_GRAPH_ENUM_HPP_
 #pragma once
 
 enum graphType {UNDIRECTED = 0, DIRECTED};
 
 
-#endif  // INCLUDE_C_TYPES_GRAPH_ENUM_H_
+#endif  // INCLUDE_CPP_COMMON_GRAPH_ENUM_HPP_
