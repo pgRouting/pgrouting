@@ -23,13 +23,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "vrp/tw_node.h"
+#include "vrp/tw_node.hpp"
 
 #include <limits>
 #include <string>
 
-#include "cpp_common/pgr_assert.h"
-#include "vrp/pgr_pickDeliver.h"
+#include "cpp_common/pgr_assert.hpp"
+#include "vrp/pgr_pickDeliver.hpp"
 
 
 namespace pgrouting {

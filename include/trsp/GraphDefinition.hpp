@@ -43,7 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 // using namespace std;
 
-using Edge_t = struct Edge_t;
+using Edge_t = struct Edge_rt;
 typedef std::vector<int64> LongVector;
 typedef std::vector<LongVector> VectorOfLongVector;
 typedef std::pair<int64, bool> PIB;

@@ -40,7 +40,7 @@ extern "C" {
 
 #include "cpp_common/undefPostgresDefine.hpp"
 #include "cpp_common/pgr_alloc.hpp"
-#include "c_types/info_t.hpp"
+#include "cpp_common/info_t.hpp"
 
 
 namespace {

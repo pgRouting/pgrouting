@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#include "vrp/vehicle_node.h"
+#include "vrp/vehicle_node.hpp"
 
 
 namespace pgrouting {

@@ -40,13 +40,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/graph_utility.hpp>
 
-#include "c_types/graph_enum.h"
+#include "cpp_common/graph_enum.hpp"
 
-#include "cpp_common/basic_vertex.h"
-#include "cpp_common/xy_vertex.h"
-#include "cpp_common/basic_edge.h"
+#include "cpp_common/basic_vertex.hpp"
+#include "cpp_common/xy_vertex.hpp"
+#include "cpp_common/basic_edge.hpp"
 
-#include "cpp_common/pgr_assert.h"
+#include "cpp_common/pgr_assert.hpp"
 
 namespace pgrouting {
 

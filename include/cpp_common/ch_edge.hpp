@@ -33,8 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <iostream>
 #include <sstream>
-#include "./ch_vertex.h"
-// #include "./basic_edge.h"
+#include "cpp_common/ch_vertex.hpp"
 
 namespace pgrouting {
 

@@ -78,9 +78,9 @@ extern "C" {
 #include "cpp_common/undefPostgresDefine.hpp"
 
 #ifdef __cplusplus
-using Edge_t = struct Edge_t;
+using Edge_t = struct Edge_rt;
 #else
-typedef struct Edge_t Edge_t;
+typedef struct Edge_rt Edge_t;
 #endif
 
 

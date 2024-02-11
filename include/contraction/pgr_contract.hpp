@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <deque>
 #include <vector>
-#include "cpp_common/pgr_assert.h"
+#include "cpp_common/pgr_assert.hpp"
 
 #include "contraction/pgr_contractionGraph.hpp"
 #include "contraction/ch_graphs.hpp"

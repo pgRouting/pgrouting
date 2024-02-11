@@ -25,14 +25,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "cpp_common/xy_vertex.h"
+#include "cpp_common/xy_vertex.hpp"
 
 #include <vector>
 #include <limits>
 #include <algorithm>
 
 #include <boost/geometry/io/wkt/write.hpp>
-#include "cpp_common/pgr_assert.h"
+#include "cpp_common/pgr_assert.hpp"
 
 namespace {
 

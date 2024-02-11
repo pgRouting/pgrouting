@@ -27,18 +27,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_common/postgres_connection.h"
 #include "catalog/pg_type.h"
+
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
-
-
 #include "c_types/trsp/trsp.h"
-#include "c_types/edge_t.h"
-
+#include "c_types/edge_rt.h"
 #include "c_common/trsp_pgget.h"
+#include "drivers/trsp/trsp_core.h"
 
-#include "trsp/trsp_core.h"
 typedef struct restrict_t restrict_t;
-typedef struct Edge_t Edge_t;
+typedef struct Edge_rt Edge_t;
 typedef struct path_element_tt path_element_tt;
 
 PGDLLEXPORT Datum _pgr_trsp(PG_FUNCTION_ARGS);

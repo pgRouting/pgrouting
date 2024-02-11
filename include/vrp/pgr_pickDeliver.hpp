@@ -35,13 +35,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <memory>
 #include <utility>
 
-#include "c_types/pickDeliver/vehicle_t.h"
-#include "c_types/pickDeliver/orders_t.h"
-#include "vrp/pd_problem.h"
-#include "cpp_common/Dmatrix.h"
-#include "vrp/fleet.h"
-#include "vrp/pd_orders.h"
-#include "vrp/solution.h"
+#include "cpp_common/vehicle_t.hpp"
+#include "cpp_common/orders_t.hpp"
+#include "vrp/pd_problem.hpp"
+#include "cpp_common/Dmatrix.hpp"
+#include "vrp/fleet.hpp"
+#include "vrp/pd_orders.hpp"
+#include "vrp/solution.hpp"
 
 using Schedule_rt = struct Schedule_rt;
 

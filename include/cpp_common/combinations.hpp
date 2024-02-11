@@ -44,7 +44,7 @@ extern "C" {
 
 #include "c_types/ii_t_rt.h"
 #include "cpp_common/basePath_SSEC.hpp"
-#include "cpp_common/rule.h"
+#include "cpp_common/rule.hpp"
 
 namespace pgrouting {
 

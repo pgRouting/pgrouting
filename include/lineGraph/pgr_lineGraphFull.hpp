@@ -37,8 +37,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 #include <map>
 
+#include"c_types/line_graph_full_rt.h"
 #include "cpp_common/pgr_base_graph.hpp"
-#include "cpp_common/line_vertex.h"
+#include "cpp_common/line_vertex.hpp"
 
 namespace pgrouting {
 namespace graph {

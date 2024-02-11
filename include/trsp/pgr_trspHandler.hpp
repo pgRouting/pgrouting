@@ -41,9 +41,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "cpp_common/basePath_SSEC.hpp"
-#include "trsp/edgeInfo.h"
-#include "cpp_common/rule.h"
-#include "cpp_common/pgr_messages.h"
+#include "trsp/edgeInfo.hpp"
+#include "cpp_common/rule.hpp"
+#include "cpp_common/pgr_messages.hpp"
 
 namespace pgrouting {
 namespace trsp {

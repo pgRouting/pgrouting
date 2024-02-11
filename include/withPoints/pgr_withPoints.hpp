@@ -31,8 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 #include <vector>
 
-#include "c_types/point_on_edge_t.h"
-#include "cpp_common/pgr_messages.h"
+#include "cpp_common/point_on_edge_t.hpp"
+#include "cpp_common/pgr_messages.hpp"
 #include "cpp_common/basePath_SSEC.hpp"
 
 namespace pgrouting {

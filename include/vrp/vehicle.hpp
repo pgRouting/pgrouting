@@ -38,8 +38,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 
-#include "cpp_common/identifier.h"
-#include "vrp/vehicle_node.h"
+#include "cpp_common/identifier.hpp"
+#include "vrp/vehicle_node.hpp"
 using Schedule_rt = struct Schedule_rt;
 
 namespace pgrouting {

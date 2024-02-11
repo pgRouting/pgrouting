@@ -26,7 +26,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-#include "cpp_common/pgr_assert.h"
+#include "cpp_common/pgr_assert.hpp"
 
 #include <stdio.h>
 #include <stdlib.h>

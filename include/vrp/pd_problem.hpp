@@ -29,8 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_VRP_PD_PROBLEM_HPP_
 #pragma once
 
-#include "cpp_common/pgr_messages.h"
-#include "vrp/initials_code.h"
+#include "cpp_common/pgr_messages.hpp"
+#include "vrp/initials_code.hpp"
 
 
 

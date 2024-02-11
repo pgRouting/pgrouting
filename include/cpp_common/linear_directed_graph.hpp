@@ -29,8 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
-#include "cpp_common/basic_edge.h"
-#include "cpp_common/line_vertex.h"
+#include "cpp_common/basic_edge.hpp"
+#include "cpp_common/line_vertex.hpp"
 
 namespace pgrouting {
 

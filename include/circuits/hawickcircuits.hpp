@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/interruption.hpp"
-#include "cpp_common/pgr_assert.h"
+#include "cpp_common/pgr_assert.hpp"
 #include "c_types/circuits_rt.h"
 
 /**

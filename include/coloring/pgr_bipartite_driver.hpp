@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/bipartite.hpp>
 
 #include "cpp_common/pgr_base_graph.hpp"
-#include "cpp_common/pgr_messages.h"
+#include "cpp_common/pgr_messages.hpp"
 #include "cpp_common/interruption.hpp"
 typedef struct II_t_rt II_t_rt;
 

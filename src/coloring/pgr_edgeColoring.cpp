@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/edge_coloring.hpp>
 #include <boost/graph/graph_utility.hpp>
 
-#include "cpp_common/pgr_assert.h"
+#include "cpp_common/pgr_assert.hpp"
 #include "cpp_common/interruption.hpp"
 
 

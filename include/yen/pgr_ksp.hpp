@@ -43,9 +43,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 
 #include "dijkstra/dijkstra.hpp"
-#include "cpp_common/pgr_assert.h"
-#include "cpp_common/compPaths.h"
-#include "cpp_common/pgr_messages.h"
+#include "cpp_common/pgr_assert.hpp"
+#include "cpp_common/compPaths.hpp"
+#include "cpp_common/pgr_messages.hpp"
 #include "cpp_common/basePath_SSEC.hpp"
 
 namespace pgrouting {

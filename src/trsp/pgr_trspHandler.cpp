@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "trsp/pgr_trspHandler.h"
+#include "trsp/pgr_trspHandler.hpp"
 
 #include <functional>
 #include <utility>
@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 
 #include "cpp_common/basePath_SSEC.hpp"
-#include "cpp_common/pgr_assert.h"
+#include "cpp_common/pgr_assert.hpp"
 
 namespace pgrouting {
 namespace trsp {

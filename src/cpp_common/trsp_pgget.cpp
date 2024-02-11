@@ -60,8 +60,8 @@ The old version of TRSP
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/trsp_pgfetch.hpp"
 
-#include "c_types/info_t.hpp"
-#include "c_types/edge_t.h"
+#include "cpp_common/info_t.hpp"
+#include "c_types/edge_rt.h"
 
 
 /**
