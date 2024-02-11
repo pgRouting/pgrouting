@@ -98,7 +98,7 @@ SELECT CASE WHEN (SELECT boost FROM pgr_full_version()) < '1.80' THEN
   collect_tap(set_eq('stoerWagner7', 'VALUES (1, 1, 1, 1)', '6: Compare the mincut of subgraph with actual result'))
 ELSE
   collect_tap(set_eq('stoerWagner7', 'VALUES (1, 14, 1, 1)', '6: Compare the mincut of subgraph with actual result'))
-END CASE;
+END;
 
 SELECT * FROM finish();
 ROLLBACK;
