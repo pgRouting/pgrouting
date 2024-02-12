@@ -30,6 +30,12 @@ pgRouting 3
 pgRouting 3.7
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+.. contents:: Contents
+   :local:
+   :depth: 1
+
+.. current
+
 pgRouting 3.7.0 Release Notes
 -------------------------------------------------------------------------------
 
@@ -62,6 +68,9 @@ milestone for 3.7.0
   cleanup
 * `#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__  Read postgresql
   data on C++
+* `#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__  Clang tidy does
+  not work
+
 
 .. rubric:: Others
 

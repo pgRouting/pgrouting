@@ -3,6 +3,9 @@
 
 ## pgRouting 3.7
 
+
+.. current
+
 ### pgRouting 3.7.0 Release Notes
 
 To see all issues & pull requests closed by this release see the [Git closed
@@ -36,6 +39,9 @@ milestone for 3.7.0
   cleanup
 * [#2607](https://github.com/pgRouting/pgrouting/pull/2607)  Read postgresql
   data on C++
+* [#2614](https://github.com/pgRouting/pgrouting/pull/2614)  Clang tidy does
+  not work
+
 
 **Others**
 
