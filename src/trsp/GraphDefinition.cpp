@@ -1,5 +1,4 @@
 /*PGR-GNU*****************************************************************
-
 File: GraphDefinition.cpp
 
 Copyright (c) 2015 pgRouting developers

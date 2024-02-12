@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: bellman_ford.c
+File: bellman_ford_neg.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers

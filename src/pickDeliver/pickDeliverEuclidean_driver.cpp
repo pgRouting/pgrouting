@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pickDeliver_driver.cpp
+File: pickDeliverEuclidean_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers

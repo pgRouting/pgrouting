@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_dijkstraTR.hpp
+File: pgr_turnRestrictedPath.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers

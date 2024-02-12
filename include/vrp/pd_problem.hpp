@@ -1,6 +1,5 @@
 /*PGR-GNU*****************************************************************
-
-FILE: pd_problem.h
+File: pd_problem.hpp
 
 Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org

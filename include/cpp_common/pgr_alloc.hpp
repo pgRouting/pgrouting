@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_palloc.hpp
+File: pgr_alloc.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

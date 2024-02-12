@@ -1,5 +1,4 @@
 /*PGR-GNU*****************************************************************
-
 File: basePath_SSEC.hpp
 
 Copyright (c) 2015 pgRouting developers

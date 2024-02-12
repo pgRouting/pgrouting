@@ -1,5 +1,4 @@
 /*PGR-GNU*****************************************************************
-
 File: new_trsp.c
 
 Copyright (c) 2017 pgRouting developers

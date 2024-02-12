@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: path_t.h
+File: path_t.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

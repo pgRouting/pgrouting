@@ -1,4 +1,5 @@
 /*PGR-GNU*****************************************************************
+File: componentsResult.cpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

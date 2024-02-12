@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-file: dijkstra_visitors.hpp
+File: dijkstra_visitors.hpp
 
 Copyright (c) 2018 pgRouting developers
 Mail: project@pgrouting.org

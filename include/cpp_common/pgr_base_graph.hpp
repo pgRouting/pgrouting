@@ -1,5 +1,6 @@
 /*PGR-GNU*****************************************************************
- *
+File: pgr_base_graph.hpp
+
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 

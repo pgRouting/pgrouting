@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: lengauerTarjanDominatorTree_driver.pp
+File: lengauerTarjanDominatorTree_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers

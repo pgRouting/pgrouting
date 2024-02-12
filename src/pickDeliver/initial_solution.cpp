@@ -1,6 +1,5 @@
 /*PGR-GNU*****************************************************************
-
-FILE: initial_solution.cpp
+File: initial_solution.cpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

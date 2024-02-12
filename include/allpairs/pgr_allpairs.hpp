@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File:  pgr_allpairs.hpp
+File: pgr_allpairs.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

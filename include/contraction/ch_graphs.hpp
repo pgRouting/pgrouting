@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_CH_graphs.hpp
+File: ch_graphs.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers

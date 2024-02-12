@@ -1,6 +1,5 @@
 /*PGR-GNU*****************************************************************
-
-file: drivingDist.hpp
+File: drivingDist.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: mst_common.c
+File: mst_common.cpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

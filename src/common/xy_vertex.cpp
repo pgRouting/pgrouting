@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
- *
+File: xy_vertex.cpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

@@ -1,5 +1,4 @@
 /*PGR-GNU*****************************************************************
-
 File: debug_macro.h
 
 Copyright (c) 2015 pgRouting developers

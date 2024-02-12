@@ -1,6 +1,5 @@
 /*PGR-GNU*****************************************************************
-
-FILE: vehicle.cpp
+File: vehicle.cpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

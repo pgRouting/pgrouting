@@ -1,7 +1,6 @@
 /*PGR-GNU*****************************************************************
- *
- * FILE: book_keeping.h
- *
+File: book_keeping.hpp
+
  * Copyright (c) 2017 pgRouting developers
  * Mail: project@pgrouting.org
  *

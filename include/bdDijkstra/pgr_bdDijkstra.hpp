@@ -1,5 +1,4 @@
 /*PGR-GNU*****************************************************************
-
 File: pgr_bdDijkstra.hpp
 
 Copyright (c) 2015 pgRouting developers

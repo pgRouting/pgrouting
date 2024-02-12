@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_linear.c
+File: pgr_linearContraction.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers

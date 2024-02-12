@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: point_on_edge_t.h
+File: point_on_edge_t.hpp
 
 Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org

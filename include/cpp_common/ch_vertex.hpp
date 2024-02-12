@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: ch_vertex.h
+File: ch_vertex.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: many_to_dist_driving_distance.c
+File: many_to_dist_withPointsDD.c
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

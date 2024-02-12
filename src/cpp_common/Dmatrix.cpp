@@ -1,6 +1,5 @@
 /*PGR-GNU*****************************************************************
-
-FILE: Dmatrix.cpp
+File: Dmatrix.cpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

@@ -1,5 +1,4 @@
 /*PGR-GNU*****************************************************************
-
 File: trsp_core.cpp
 
 Generated with Template by:
