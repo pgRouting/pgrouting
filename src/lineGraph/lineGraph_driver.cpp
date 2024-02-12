@@ -46,7 +46,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace {
 
 void get_postgres_result(
-        std::vector< Edge_rt > edge_result,
+        const std::vector<Edge_rt> &edge_result,
         Edge_rt **return_tuples,
         size_t &sequence) {
     using pgrouting::pgr_alloc;
