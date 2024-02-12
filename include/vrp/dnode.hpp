@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-/*! @file dnode.h */
+/*! @file dnode.hpp */
 
 #ifndef INCLUDE_VRP_DNODE_HPP_
 #define INCLUDE_VRP_DNODE_HPP_
