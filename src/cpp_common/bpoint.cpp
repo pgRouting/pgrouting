@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-file: bpoint.cpp
+File: bpoint.cpp
 
 Copyright (c) 2018 pgRouting developers
 Mail: project@pgrouting.org

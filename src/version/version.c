@@ -1,6 +1,5 @@
 /*PGR-GNU*****************************************************************
-
-File: _version.c
+File: version.c
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

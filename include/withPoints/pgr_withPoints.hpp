@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: withPoints.hpp
+File: pgr_withPoints.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

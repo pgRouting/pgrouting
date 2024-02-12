@@ -1,6 +1,5 @@
 /*PGR-GNU*****************************************************************
-
-FILE: solution.cpp
+File: pd_orders.cpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

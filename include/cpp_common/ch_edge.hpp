@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: ch_edge.h
+File: ch_edge.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers

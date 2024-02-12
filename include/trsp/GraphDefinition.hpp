@@ -1,7 +1,5 @@
 /*PGR-GNU*****************************************************************
-
-FILE: GraphDefinition.h
-
+File: GraphDefinition.hpp
 
 Copyright (c) 2012 pgRouting developers
 Mail: project@pgrouting.org

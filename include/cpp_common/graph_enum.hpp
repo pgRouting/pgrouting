@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_types.h
+File: graph_enum.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

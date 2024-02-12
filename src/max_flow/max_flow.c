@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: max_flow_many_to_many.c
+File: max_flow.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers

@@ -1,5 +1,4 @@
 /*PGR-GNU*****************************************************************
-
 File: astar.hpp
 
 Copyright (c) 2015 pgRouting developers

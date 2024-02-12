@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
- *
+File: linear_directed_graph.hpp
 
 Copyright (c) 2017 Anthony Nicola Tasca
 atasca10@gmail.com

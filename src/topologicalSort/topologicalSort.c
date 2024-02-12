@@ -1,5 +1,4 @@
 /*PGR-GNU*****************************************************************
-
 File: topologicalSort.c
 
 Generated with Template by:

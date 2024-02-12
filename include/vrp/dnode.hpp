@@ -1,6 +1,5 @@
 /*PGR-GNU*****************************************************************
-
-FILE: dnode.h
+File: dnode.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

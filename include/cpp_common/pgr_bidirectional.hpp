@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_bdAstar.hpp
+File: pgr_bidirectional.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_bdAstar.hpp
+File: bdAstar.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

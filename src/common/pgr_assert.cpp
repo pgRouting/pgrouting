@@ -1,6 +1,5 @@
 /*PGR-GNU*****************************************************************
-
-FILE: pgr_assert.cpp
+File: pgr_assert.cpp
 
 Copyright (c) 2014 pgRouting developers
 Mail: project@pgrouting.org

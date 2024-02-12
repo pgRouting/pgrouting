@@ -1,6 +1,5 @@
 /*PGR-GNU*****************************************************************
-
-FILE: vehicle_node.h
+File: vehicle_node.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

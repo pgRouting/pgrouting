@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-file: pgr_alphaShape.h
+File: pgr_alphaShape.h
 
 Copyright (c) 2018 pgRouting developers
 Mail: project@pgrouting.org

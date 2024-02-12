@@ -1,4 +1,5 @@
 /*PGR-GNU*****************************************************************
+File: pgr_minCostMaxFlow.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: restrict_t.h
+File: restriction_t.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

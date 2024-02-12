@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: Edge_rt.h
+File: edge_rt.h
 
 Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org

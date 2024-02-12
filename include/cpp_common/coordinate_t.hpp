@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: coordinate_t.h
+File: coordinate_t.hpp
 
 Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org

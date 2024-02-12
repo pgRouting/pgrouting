@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: max_flow_many_to_many_driver.cpp
+File: max_flow_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers

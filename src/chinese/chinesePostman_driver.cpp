@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: directedChPP_driver.cpp
+File: chinesePostman_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers

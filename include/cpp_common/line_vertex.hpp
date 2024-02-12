@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: line_vertex.h
+File: line_vertex.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers

@@ -1,5 +1,4 @@
 /*PGR-GNU*****************************************************************
-
 File: pgr_trspHandler.cpp
 
 Copyright (c) 2011 pgRouting developers

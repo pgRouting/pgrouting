@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: costFlow_t.h
+File: costFlow_t.hpp
 
 Copyright (c) 2018 Maoguang Wang
 Mail: xjtumg1007@gmail.com

@@ -1,6 +1,5 @@
 /*PGR-GNU*****************************************************************
-
-FILE: tw_node.h
+File: tw_node.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

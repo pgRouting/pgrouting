@@ -1,6 +1,5 @@
 /*PGR-GNU*****************************************************************
-
-FILE: optimize.cpp
+File: optimize.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: bellman_ford_driver.cpp
+File: bellman_ford_neg_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers

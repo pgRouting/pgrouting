@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
- *
+File: basic_vertex.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
