@@ -79,7 +79,7 @@ jobs:
       - name: Test
         run: |
           export PATH=$(brew --prefix)/Cellar/perl/$(perl -e 'print substr($^V, 1)')/bin:$PATH
-          brew services start postgresql
+          pg_ctl -D $(brew --prefix)/var/postgresql@14 start
           createuser -s postgres
           createdb ___pgr___test___
           bash ./tools/testers/pg_prove_tests.sh postgres 5432 Release
