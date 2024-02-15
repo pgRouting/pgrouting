@@ -75,6 +75,7 @@ jobs:
           make -j
           make install
           cpan TAP::Parser::SourceHandler::pgTAP
+          ln -s $(find `brew --prefix` -name pg_prove) symlink it into $(brew --prefix)/bin
 
       - name: Test
         run: |
