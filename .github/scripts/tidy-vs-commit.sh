@@ -10,7 +10,7 @@ POSTGRES_SERVER=$(grep -o -m1 '\-isystem .*' "${BUILD_DIR}/compile_commands.json
 
 CHECKS="-checks=clang-analyzer-*"
 
-if [ -z ${MODIFIED_FILES} ] && [ -z ${MODIFIED_HEADERS} ]; then
+if [ -z "${MODIFIED_FILES}" ] && [ -z "${MODIFIED_HEADERS}" ]; then
   echo "No paths modified"
   exit 0
 fi
