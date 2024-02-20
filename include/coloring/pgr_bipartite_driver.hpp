@@ -45,6 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_messages.hpp"
 #include "cpp_common/interruption.hpp"
 typedef struct II_t_rt II_t_rt;
+#include "c_types/ii_t_rt.h"
 
 namespace pgrouting {
 namespace functions {
@@ -78,7 +79,7 @@ class Pgr_Bipartite : public pgrouting::Pgr_messages {
                     int64_t vid = graph[*v].id;
                     boost::get(partition_map, *v) ==
                         boost::color_traits <boost::default_color_type>::white() ?
-                        results.push_back({{vid}, {0}}) :results.push_back({{vid}, {1}});
+                        results.push_back({{vid}, {0}}) : results.push_back({{vid}, {1}});
                 }
                 return results;
             }

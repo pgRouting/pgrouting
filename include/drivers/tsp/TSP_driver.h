@@ -40,6 +40,7 @@ using TSP_tour_rt = struct TSP_tour_rt;
 #else
 #   include <stddef.h>
 #   include <stdint.h>
+#include <stdbool.h>
 typedef struct TSP_tour_rt TSP_tour_rt;
 #endif
 

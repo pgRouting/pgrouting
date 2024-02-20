@@ -31,10 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_PLANAR_ISPLANAR_DRIVER_H_
 #pragma once
 
-#ifdef __cplusplus
-#   include <cstddef>
-#else
-#   include <stddef.h>
+#ifndef __cplusplus
+#include <stdbool.h>
 #endif
 
 #ifdef __cplusplus

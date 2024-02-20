@@ -90,7 +90,7 @@ class Path {
     ConstpthIt end() const {return path.end();}
 
 
-    void erase(pthIt pos) {path.erase(pos);}
+    void erase(const pthIt &pos) {path.erase(pos);}
     const Path_t& back() const {return path.back();}
     Path_t& back() {return path.back();}
     const Path_t& front() const {return path.front();}

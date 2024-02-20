@@ -27,13 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_CPP_COMMON_COSTFLOW_T_HPP_
 #pragma once
 
-/* for int64_t */
-#ifdef __cplusplus
-#   include <cstdint>
-#else
-#   include <stdint.h>
-#endif
-
+#include <cstdint>
 
 struct CostFlow_t {
   int64_t edge_id;
