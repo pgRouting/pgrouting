@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 # Runs clang-tidy only on changed files
 
-set -e
-
 readonly BASE=$1
 readonly BUILD_DIR=build
 
@@ -12,7 +10,7 @@ POSTGRES_SERVER=$(grep -o -m1 '\-isystem .*' "${BUILD_DIR}/compile_commands.json
 
 CHECKS="-checks=clang-analyzer-*"
 
-if [ ${#MODIFIED_FILES[@]} = 0 ] && [ ${#MODIFIED_HEADERS[@]} = 0 ]; then
+if [ -z ${MODIFIED_FILES} ] && [ -z ${MODIFIED_HEADERS} ]; then
   echo "No paths modified"
   exit 0
 fi
