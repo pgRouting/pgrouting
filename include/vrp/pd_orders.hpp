@@ -36,13 +36,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/identifiers.hpp"
 
 #include "vrp/pd_problem.hpp"
+#include "vrp/order.hpp"
+#include "vrp/vehicle_node.hpp"
 
 
 namespace pgrouting {
 namespace vrp {
-
-class Order;
-class Vehicle_node;
 
 class PD_Orders {
     /** PD_rpblem needs access to set up the problem pointer */

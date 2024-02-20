@@ -37,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 using Edge_rt = struct Edge_rt;
 #else
 #   include <stddef.h>
+#include <stdbool.h>
 typedef struct Edge_rt Edge_rt;
 #endif
 

@@ -30,16 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_CPP_COMMON_VEHICLE_T_H_
 #pragma once
 
-/* for int64_t */
-#ifdef __cplusplus
-#   include <cstdint>
-#else
-#   include <stdint.h>
-#endif
+#include <cstdint>
 
-/*
- * its with either (foo_x, foo_y) pairs for euclidean or with foo_node_id (for matrix)
- */
 struct  Vehicle_t {
     int64_t id;
     double capacity;

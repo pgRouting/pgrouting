@@ -48,7 +48,7 @@ static
 void process(
         char* edges_sql,
         ArrayType *starts,
-        float8 distance,
+        double distance,
         bool directed,
         bool equicost,
         MST_rt **result_tuples,

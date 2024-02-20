@@ -31,11 +31,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_MAX_FLOW_MAXIMUM_CARDINALITY_MATCHING_DRIVER_H_
 #pragma once
 
-#include <stddef.h>
-
 #ifdef __cplusplus
+#include <cstddef>
 using Only_int_rt = struct Only_int_rt;
 #else
+#include <stddef.h>
+#include <stdbool.h>
 typedef struct Only_int_rt Only_int_rt;
 #endif
 

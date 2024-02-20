@@ -38,7 +38,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <boost/graph/iteration_macros.hpp>
 #include <boost/graph/filtered_graph.hpp>
+#include <boost/graph/adjacency_list.hpp>
 
+#include "cpp_common/ch_edge.hpp"
 #include "cpp_common/identifiers.hpp"
 
 

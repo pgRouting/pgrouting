@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <vector>
 #include "visitors/found_goals.hpp"
+#include "cpp_common/pgr_assert.hpp"
 
 namespace pgrouting {
 namespace visitors {

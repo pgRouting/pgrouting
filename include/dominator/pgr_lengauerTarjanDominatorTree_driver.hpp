@@ -44,6 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/interruption.hpp"
 #include "cpp_common/pgr_messages.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
+#include "c_types/ii_t_rt.h"
 
 
 namespace pgrouting {

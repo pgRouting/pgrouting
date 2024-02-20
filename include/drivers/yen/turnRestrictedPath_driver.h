@@ -39,6 +39,7 @@ using Path_rt = struct Path_rt;
 #else
 #   include <stddef.h>
 #   include <stdint.h>
+#include <stdbool.h>
 typedef struct Path_rt Path_rt;
 #endif
 
