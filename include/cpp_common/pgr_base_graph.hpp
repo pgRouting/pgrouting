@@ -254,34 +254,6 @@ class Pgr_base_graph {
 
      /**@}*/
 
-     /** @name The Graph */
-     /**@{*/
-     G graph;                /**< The graph */
-     bool m_is_directed;      /**< type (DIRECTED or UNDIRECTED) */
-     /**@}*/
-
-     /** @name Id mapping handling */
-     /**@{*/
-
-     id_to_V  vertices_map;   /**< id -> graph id */
-
-     typename boost::property_map<G, boost::vertex_index_t>::type vertIndex;
-
-     using IndexMap = std::map<V, size_t>;
-     IndexMap mapIndex;
-     boost::associative_property_map<IndexMap> propmapIndex;
-
-     /**@}*/
-
-     /** @name Graph Modification */
-     /**@{*/
-     /** Used for storing the removed_edges */
-
-     std::deque< T_E > removed_edges;
-
-     /**@}*/
-
-
 
      /** @name The Graph */
      /**@{*/
@@ -1002,6 +974,35 @@ graph_add_neg_edge(const T &edge, bool normal = true) {
         graph[e].id = normal? edge.id : -edge.id;
       }
 }
+
+     /** @name The Graph */
+     /**@{*/
+     G graph;                /**< The graph */
+     id_to_V  vertices_map;   /**< id -> graph id */
+  private:
+     bool m_is_directed;      /**< type (DIRECTED or UNDIRECTED) */
+     /**@}*/
+
+     /** @name Id mapping handling */
+     /**@{*/
+
+
+     typename boost::property_map<G, boost::vertex_index_t>::type vertIndex;
+
+     using IndexMap = std::map<V, size_t>;
+     IndexMap mapIndex;
+     boost::associative_property_map<IndexMap> propmapIndex;
+
+     /**@}*/
+
+     /** @name Graph Modification */
+     /**@{*/
+     /** Used for storing the removed_edges */
+
+     std::deque< T_E > removed_edges;
+
+     /**@}*/
+
 
 };
 
