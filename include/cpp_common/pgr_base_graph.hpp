@@ -613,7 +613,9 @@ class Pgr_base_graph {
        @param [in] p_from original vertex id of the starting point of the edge
        @param [in] p_to   original vertex id of the ending point of the edge
        */
+#if 0
      void disconnect_edge(int64_t p_from, int64_t p_to);
+#endif
 
 
      //! @brief Disconnects the outgoing edges of a vertex
@@ -624,7 +626,9 @@ class Pgr_base_graph {
        @param [in] vertex_id original vertex
        @param [in] edge_id original edge_id
        */
+#if 0
      void disconnect_out_going_edge(int64_t vertex_id, int64_t edge_id);
+#endif
 
 
 
@@ -640,12 +644,15 @@ class Pgr_base_graph {
        ![disconnect_vertex(2) on a DIRECTED graph](disconnectVertexDirected.png)
        @param [in] p_vertex original vertex id of the starting point of the edge
        */
+#if 0
      void disconnect_vertex(int64_t p_vertex);
      void disconnect_vertex(V vertex);
-
+#endif
 
      //! @brief Reconnects all edges that were removed
+#if 0
      void restore_graph();
+#endif
 
      //@}
 
@@ -676,7 +683,9 @@ class Pgr_base_graph {
      //@}
 
 
+#if 0
      int64_t get_edge_id(V from, V to, double &distance) const;
+#endif
 
      E get_edge(
              V from,
@@ -714,6 +723,7 @@ class Pgr_base_graph {
      size_t num_edges() const { return boost::num_edges(graph);}
 
 
+#if 0
      void graph_add_edge(const T_E &edge);
 
      template < typename T >
@@ -724,6 +734,7 @@ class Pgr_base_graph {
 
       template < typename T >
          void graph_add_neg_edge(const T &edge, bool normal = true);
+#endif
      /**
       *  Use this function when the vertices are already inserted in the graph
       */
@@ -765,14 +776,12 @@ class Pgr_base_graph {
              graph[e].id = edge.id;
          }
      }
-};
 
 
 
 
-template < class G, typename T_V, typename T_E >
 void
-Pgr_base_graph< G, T_V, T_E >::disconnect_edge(int64_t p_from, int64_t p_to) {
+disconnect_edge(int64_t p_from, int64_t p_to) {
     T_E d_edge;
 
     // nothing to do, the vertex doesn't exist
@@ -799,9 +808,8 @@ Pgr_base_graph< G, T_V, T_E >::disconnect_edge(int64_t p_from, int64_t p_to) {
 
 
 
-template < class G, typename T_V, typename T_E >
 void
-Pgr_base_graph< G, T_V, T_E >::disconnect_out_going_edge(
+disconnect_out_going_edge(
         int64_t vertex_id, int64_t edge_id) {
     T_E d_edge;
 
@@ -831,16 +839,14 @@ Pgr_base_graph< G, T_V, T_E >::disconnect_out_going_edge(
 }
 
 
-template < class G, typename T_V, typename T_E >
 void
-Pgr_base_graph< G, T_V, T_E >::disconnect_vertex(int64_t vertex) {
+disconnect_vertex(int64_t vertex) {
     if (!has_vertex(vertex)) return;
     disconnect_vertex(get_V(vertex));
 }
 
-template < class G, typename T_V, typename T_E >
 void
-Pgr_base_graph< G, T_V, T_E >::disconnect_vertex(V vertex) {
+disconnect_vertex(V vertex) {
     T_E d_edge;
 
     EO_i out, out_end;
@@ -871,9 +877,8 @@ Pgr_base_graph< G, T_V, T_E >::disconnect_vertex(V vertex) {
     boost::clear_vertex(vertex, graph);
 }
 
-template < class G, typename T_V, typename T_E >
 void
-Pgr_base_graph< G, T_V, T_E >::restore_graph() {
+restore_graph() {
     while (removed_edges.size() != 0) {
         graph_add_edge(removed_edges[0]);
         removed_edges.pop_front();
@@ -883,9 +888,8 @@ Pgr_base_graph< G, T_V, T_E >::restore_graph() {
 
 
 
-template < class G, typename T_V, typename T_E >
 int64_t
-Pgr_base_graph< G, T_V, T_E >::get_edge_id(
+get_edge_id(
         V from,
         V to,
         double &distance) const {
@@ -913,9 +917,8 @@ Pgr_base_graph< G, T_V, T_E >::get_edge_id(
 }
 
 
-template < class G, typename T_V, typename T_E >
 void
-Pgr_base_graph< G, T_V, T_E >::graph_add_edge(const T_E &edge ) {
+graph_add_edge(const T_E &edge ) {
     typename Pgr_base_graph< G, T_V, T_E >::LI vm_s, vm_t;
     typename Pgr_base_graph< G, T_V, T_E >::E e;
 
@@ -940,10 +943,9 @@ Pgr_base_graph< G, T_V, T_E >::graph_add_edge(const T_E &edge ) {
 }
 
 
-template < class G, typename T_V, typename T_E >
 template < typename T>
 void
-Pgr_base_graph< G, T_V, T_E >::graph_add_edge(const T &edge, bool normal) {
+graph_add_edge(const T &edge, bool normal) {
     bool inserted;
     typename Pgr_base_graph< G, T_V, T_E >::E e;
     if ((edge.cost < 0) && (edge.reverse_cost < 0))
@@ -975,10 +977,9 @@ Pgr_base_graph< G, T_V, T_E >::graph_add_edge(const T &edge, bool normal) {
     }
 }
 
-template < class G, typename T_V, typename T_E >
 template < typename T>
 void
-Pgr_base_graph< G, T_V, T_E >::graph_add_min_edge_no_parallel(const T &edge) {
+graph_add_min_edge_no_parallel(const T &edge) {
     bool inserted;
     typename Pgr_base_graph< G, T_V, T_E >::E e;
     if ((edge.cost < 0) && (edge.reverse_cost < 0))
@@ -1037,10 +1038,9 @@ Reading them into graph as positive cost ( edge_cost = (-1)* edge_negative_cost)
 To Do: Read and apply edges with negative cost in function as it is
 */
 
-template < class G, typename T_V, typename T_E >
 template < typename T>
 void
-Pgr_base_graph< G, T_V, T_E >::graph_add_neg_edge(const T &edge, bool normal) {
+graph_add_neg_edge(const T &edge, bool normal = true) {
     bool inserted;
     typename Pgr_base_graph< G, T_V, T_E >::E e;
 
@@ -1076,7 +1076,7 @@ Pgr_base_graph< G, T_V, T_E >::graph_add_neg_edge(const T &edge, bool normal) {
 }
 #endif
 
-/******************  PRIVATE *******************/
+};
 
 }  // namespace graph
 }  // namespace pgrouting
