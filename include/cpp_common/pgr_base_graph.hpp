@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-/*! @file */
+/** @file */
 
 #ifndef INCLUDE_CPP_COMMON_PGR_BASE_GRAPH_HPP_
 #define INCLUDE_CPP_COMMON_PGR_BASE_GRAPH_HPP_
@@ -49,7 +49,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 
-/*! @brief boost::graph simplified to pgRouting needs
+/** @brief boost::graph simplified to pgRouting needs
   This class gives the handling basics of a boost::graph of kind G
   where G:
   can be an undirected graph or a directed graph.
@@ -180,7 +180,7 @@ class Pgr_base_graph;
   xyUndirectedGraph | X & Y values stored on the vertex
   xyDirectedGraph | X & Y values stored on the vertex
   */
-//@{
+/**@{*/
 typedef graph::Pgr_base_graph <
 boost::adjacency_list < boost::vecS, boost::vecS,
     boost::undirectedS,
@@ -205,7 +205,7 @@ boost::adjacency_list < boost::listS, boost::vecS,
     XY_vertex, Basic_edge >,
     XY_vertex, Basic_edge > xyDirectedGraph;
 
-//@}
+/**@}*/
 
 
 namespace graph {
@@ -224,7 +224,7 @@ class Pgr_base_graph {
        EO_i     | out_edge_iterator     |   To cycle the out going edges of a vertex
        EI_i     | in_edge_iterator      |   To cycle the in coming edges of a vertex (only in bidirectional graphs)
        */
-     //@{
+     /**@{*/
      typedef G B_G;
      typedef T_E G_T_E;
      typedef T_V G_T_V;
@@ -242,7 +242,7 @@ class Pgr_base_graph {
      typedef typename boost::graph_traits < G >::degree_size_type
          degree_size_type;
 
-     //@}
+     /**@}*/
 
      /** @name Id handling related types
        Type      |  Meaning       |   pgRouting Meaning
@@ -250,23 +250,23 @@ class Pgr_base_graph {
        id_to_V  | maps id -> V   | given an id store the V
        LI       | Left Iterator  | iterates over id_to_V
        */
-     //@{
+     /**@{*/
 
      typedef typename std::map< int64_t, V > id_to_V;
      typedef typename id_to_V::const_iterator LI;
 
-     //@}
+     /**@}*/
 
-     //! @name The Graph
-     //@{
-     G graph;                //!< The graph
-     bool m_is_directed;      //!< type (DIRECTED or UNDIRECTED)
-     //@}
+     /** @name The Graph */
+     /**@{*/
+     G graph;                /**< The graph */
+     bool m_is_directed;      /**< type (DIRECTED or UNDIRECTED) */
+     /**@}*/
 
-     //! @name Id mapping handling
-     //@{
+     /** @name Id mapping handling */
+     /**@{*/
 
-     id_to_V  vertices_map;   //!< id -> graph id
+     id_to_V  vertices_map;   /**< id -> graph id */
 
      typename boost::property_map<G, boost::vertex_index_t>::type vertIndex;
 
@@ -274,22 +274,22 @@ class Pgr_base_graph {
      IndexMap mapIndex;
      boost::associative_property_map<IndexMap> propmapIndex;
 
-     //@}
+     /**@}*/
 
-     //! @name Graph Modification
-     //@{
-     //! Used for storing the removed_edges
+     /** @name Graph Modification */
+     /**@{*/
+     /** Used for storing the removed_edges */
 
      std::deque< T_E > removed_edges;
 
-     //@}
+     /**@}*/
 
 
 
-     //! @name The Graph
-     //@{
-     //! @brief Constructor
-     /*!
+     /** @name The Graph */
+     /**@{*/
+     /** @brief Constructor */
+     /**
        - Prepares the graph to be of type gtype
        - inserts the vertices
        - The vertices must be checked (if necessary)  before calling the constructor
@@ -322,7 +322,7 @@ class Pgr_base_graph {
              // pgassert(mapIndex.size() == vertices.size());
          }
 
-     /*!
+     /**
        Prepares the _graph_ to be of type gtype with 0 vertices
        */
      explicit Pgr_base_graph< G , T_V, T_E >(bool directed)
@@ -333,9 +333,9 @@ class Pgr_base_graph {
          }
 
 
-     //! @name Insert edges
-     //@{
-     /*! @brief Inserts *count* edges of type *T* into the graph
+     /** @name Insert edges */
+     /**@{*/
+     /** @brief Inserts *count* edges of type *T* into the graph
       *
       *  Converts the edges to a std::vector<T> & calls the overloaded
       *  twin function.
@@ -372,7 +372,7 @@ class Pgr_base_graph {
              insert_negative_edges(std::vector < T >(edges, edges + count));
          }
 
-     /*! @brief Inserts *count* edges of type *Edge_t* into the graph
+     /** @brief Inserts *count* edges of type *Edge_t* into the graph
         The set of edges should not have an illegal vertex defined
         When the graph is empty calls:
         - @b extract_vertices
@@ -414,10 +414,10 @@ class Pgr_base_graph {
              graph_add_neg_edge(edge, normal);
          }
      }
-     //@}
+     /**@}*/
 
  private:
-     /*! @brief adds the vertices into the graph
+     /** @brief adds the vertices into the graph
       *
       * PRECONDITIONS:
       * - The graph has not being initialized before
@@ -465,11 +465,11 @@ class Pgr_base_graph {
 
 
  public:
-     //! @name boost wrappers with original id
-     //@{
-     //! @brief get the out-degree  of a vertex
+     /** @name boost wrappers with original id */
+     /**@{*/
+     /** @brief get the out-degree  of a vertex */
 
-     /*!
+     /**
        @returns 0: The out degree of a vertex that its not in the graph
        @param [in] vertex_id original vertex id
        */
@@ -491,7 +491,7 @@ class Pgr_base_graph {
      }
 
 
-     /*! @brief get the vertex descriptor of the vertex
+     /** @brief get the vertex descriptor of the vertex
        When the vertex does not exist
        - creates a new vetex
        @return V: The vertex descriptor of the vertex
@@ -508,7 +508,7 @@ class Pgr_base_graph {
          return vm_s->second;
      }
 
-     /*! @brief get the vertex descriptor of the vid
+     /** @brief get the vertex descriptor of the vid
        Call has_vertex(vid) before calling this function
        @return V: The vertex descriptor of the vertex
        */
@@ -517,25 +517,25 @@ class Pgr_base_graph {
          return vertices_map.find(vid)->second;
      }
 
-     //! @brief True when vid is in the graph
+     /** @brief True when vid is in the graph */
      bool has_vertex(int64_t vid) const {
          return vertices_map.find(vid) != vertices_map.end();
      }
 
 
 
-     //! @name to be or not to be
-     //@{
+     /** @name to be or not to be */
+     /**@{*/
 
      bool is_directed() const {return m_is_directed;}
      bool is_undirected() const {return !m_is_directed;}
      bool is_source(V v_idx, E e_idx) const {return v_idx == source(e_idx);}
      bool is_target(V v_idx, E e_idx) const {return v_idx == target(e_idx);}
 
-     //@}
+     /**@}*/
 
-     //! @name boost wrappers with V
-     //@{
+     /** @name boost wrappers with V */
+     /**@{*/
 
 
      T_E& operator[](E e_idx) {return graph[e_idx];}
@@ -554,7 +554,7 @@ class Pgr_base_graph {
      }
 
 
-     /*! @brief in degree of a vertex
+     /** @brief in degree of a vertex
       *
       * - when its undirected there is no "concept" of in degree
       *   - out degree is returned
@@ -566,7 +566,7 @@ class Pgr_base_graph {
              boost::out_degree(v, graph);
      }
 
-     /*! @brief out degree of a vertex
+     /** @brief out degree of a vertex
       *
       * regardles of undirected or directed graph
       * - out degree is returned
@@ -575,14 +575,14 @@ class Pgr_base_graph {
          return boost::out_degree(v, graph);
      }
 
-     //@}
+     /**@}*/
 
 
 
-     //@}
+     /**@}*/
 
-     //! @name only for stand by program
-     //@{
+     /** @name only for stand by program */
+     /**@{*/
 
      friend std::ostream& operator<<(
              std::ostream &log, const Pgr_base_graph< G, T_V, T_E > &g) {
@@ -605,7 +605,7 @@ class Pgr_base_graph {
          return log;
      }
 
-     //@}
+     /**@}*/
 
 
 
