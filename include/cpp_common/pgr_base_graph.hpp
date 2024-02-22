@@ -601,6 +601,7 @@ class Pgr_base_graph {
      //@}
 
 
+#if 0
      //! @name edge disconection/reconnection
      //@{
      //! @brief Disconnects all edges from p_from to p_to
@@ -613,9 +614,7 @@ class Pgr_base_graph {
        @param [in] p_from original vertex id of the starting point of the edge
        @param [in] p_to   original vertex id of the ending point of the edge
        */
-#if 0
      void disconnect_edge(int64_t p_from, int64_t p_to);
-#endif
 
 
      //! @brief Disconnects the outgoing edges of a vertex
@@ -626,9 +625,7 @@ class Pgr_base_graph {
        @param [in] vertex_id original vertex
        @param [in] edge_id original edge_id
        */
-#if 0
      void disconnect_out_going_edge(int64_t vertex_id, int64_t edge_id);
-#endif
 
 
 
@@ -644,13 +641,10 @@ class Pgr_base_graph {
        ![disconnect_vertex(2) on a DIRECTED graph](disconnectVertexDirected.png)
        @param [in] p_vertex original vertex id of the starting point of the edge
        */
-#if 0
      void disconnect_vertex(int64_t p_vertex);
      void disconnect_vertex(V vertex);
-#endif
 
      //! @brief Reconnects all edges that were removed
-#if 0
      void restore_graph();
 #endif
 
@@ -779,6 +773,17 @@ class Pgr_base_graph {
 
 
 
+     /** @name edge disconection/reconnection */
+     /**@{*/
+     /** @brief Disconnects all edges from p_from to p_to
+       - No edge is disconnected if the vertices id's do not exist in the graph
+       - All removed edges are stored for future reinsertion
+       - All parallel edges are disconnected (automatically by boost)
+       ![disconnect_edge(2,3) on an UNDIRECTED graph](disconnectEdgeUndirected.png)
+       ![disconnect_edge(2,3) on a DIRECTED graph](disconnectEdgeDirected.png)
+       @param [in] p_from original vertex id of the starting point of the edge
+       @param [in] p_to   original vertex id of the ending point of the edge
+       */
 
 void
 disconnect_edge(int64_t p_from, int64_t p_to) {
@@ -808,6 +813,14 @@ disconnect_edge(int64_t p_from, int64_t p_to) {
 
 
 
+     /** @brief Disconnects the outgoing edges of a vertex
+
+       - No edge is disconnected if it doesn't exist in the graph
+       - Removed edges are stored for future reinsertion
+       - all outgoing edges with the edge_id are removed if they exist
+       @param [in] vertex_id original vertex
+       @param [in] edge_id original edge_id
+      */
 void
 disconnect_out_going_edge(
         int64_t vertex_id, int64_t edge_id) {
@@ -839,6 +852,17 @@ disconnect_out_going_edge(
 }
 
 
+     /** @brief Disconnects all incoming and outgoing edges from the vertex
+
+       boost::graph doesn't recommend th to insert/remove vertices, so a vertex removal is
+       simulated by disconnecting the vertex from the graph
+       - No edge is disconnected if the vertices id's do not exist in the graph
+       - All removed edges are stored for future reinsertion
+       - All parallel edges are disconnected (automatically by boost)
+       ![disconnect_vertex(2) on an UNDIRECTED graph](disconnectVertexUndirected.png)
+       ![disconnect_vertex(2) on a DIRECTED graph](disconnectVertexDirected.png)
+       @param [in] p_vertex original vertex id of the starting point of the edge
+      */
 void
 disconnect_vertex(int64_t vertex) {
     if (!has_vertex(vertex)) return;
@@ -877,6 +901,7 @@ disconnect_vertex(V vertex) {
     boost::clear_vertex(vertex, graph);
 }
 
+     /** @brief Reconnects all edges that were removed */
 void
 restore_graph() {
     while (removed_edges.size() != 0) {
@@ -885,6 +910,7 @@ restore_graph() {
     }
 }
 
+     /**@}*/
 
 
 
@@ -1031,8 +1057,7 @@ graph_add_min_edge_no_parallel(const T &edge) {
     }
 }
 
-#if 1
-/*
+/**
 Add edges with negative cost(either cost or reverse_cost or both)
 Reading them into graph as positive cost ( edge_cost = (-1)* edge_negative_cost) [L931 & L941]
 To Do: Read and apply edges with negative cost in function as it is
@@ -1074,7 +1099,6 @@ graph_add_neg_edge(const T &edge, bool normal = true) {
         graph[e].id = normal? edge.id : -edge.id;
       }
 }
-#endif
 
 };
 
