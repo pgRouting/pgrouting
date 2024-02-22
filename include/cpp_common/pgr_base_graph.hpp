@@ -225,22 +225,19 @@ class Pgr_base_graph {
        EI_i     | in_edge_iterator      |   To cycle the in coming edges of a vertex (only in bidirectional graphs)
        */
      /**@{*/
-     typedef G B_G;
-     typedef T_E G_T_E;
-     typedef T_V G_T_V;
-     typedef typename boost::graph_traits < G >::vertex_descriptor V;
-     typedef typename boost::graph_traits < G >::edge_descriptor E;
-     typedef typename boost::graph_traits < G >::vertex_iterator V_i;
-     typedef typename boost::graph_traits < G >::edge_iterator E_i;
-     typedef typename boost::graph_traits < G >::out_edge_iterator EO_i;
-     typedef typename boost::graph_traits < G >::in_edge_iterator EI_i;
+     using B_G = G;
+     using G_T_E = T_E;
+     using G_T_V = T_V;
+     using V = typename boost::graph_traits<G>::vertex_descriptor;
+     using E = typename boost::graph_traits<G>::edge_descriptor;
+     using V_i = typename boost::graph_traits<G>::vertex_iterator;
+     using E_i = typename boost::graph_traits<G>::edge_iterator;
+     using EO_i = typename boost::graph_traits<G>::out_edge_iterator;
+     using EI_i = typename boost::graph_traits<G>::in_edge_iterator;
 
-     typedef typename boost::graph_traits < G >::vertices_size_type
-         vertices_size_type;
-     typedef typename boost::graph_traits < G >::edges_size_type
-         edges_size_type;
-     typedef typename boost::graph_traits < G >::degree_size_type
-         degree_size_type;
+     using vertices_size_type = typename boost::graph_traits<G>::vertices_size_type;
+     using edges_size_type = typename boost::graph_traits<G>::edges_size_type;
+     using degree_size_type = typename boost::graph_traits<G>::degree_size_type;
 
      /**@}*/
 
@@ -252,8 +249,8 @@ class Pgr_base_graph {
        */
      /**@{*/
 
-     typedef typename std::map< int64_t, V > id_to_V;
-     typedef typename id_to_V::const_iterator LI;
+     using id_to_V = typename std::map<int64_t, V>;
+     using LI = typename id_to_V::const_iterator;
 
      /**@}*/
 
@@ -270,7 +267,7 @@ class Pgr_base_graph {
 
      typename boost::property_map<G, boost::vertex_index_t>::type vertIndex;
 
-     typedef std::map<V, size_t> IndexMap;
+     using IndexMap = std::map<V, size_t>;
      IndexMap mapIndex;
      boost::associative_property_map<IndexMap> propmapIndex;
 
