@@ -297,17 +297,11 @@ class Pgr_base_graph {
      Pgr_base_graph< G , T_V, T_E >(
              const std::vector< T_V > &vertices, bool directed)
          : graph(vertices.size()),
-#if 0
-         m_num_vertices(vertices.size()),
-#endif
          m_is_directed(directed),
          vertIndex(boost::get(boost::vertex_index, graph)),
          propmapIndex(mapIndex) {
              // add_vertices(vertices);
              // This code does not work with contraction
-#if 0
-             pgassert(pgrouting::check_vertices(vertices) == 0);
-#endif
              size_t i = 0;
              for (auto vi = boost::vertices(graph).first;
                      vi != boost::vertices(graph).second; ++vi) {
@@ -325,12 +319,6 @@ class Pgr_base_graph {
                  log << "Key: "
                      << iter->first <<"\tValue:" << iter->second << "\n";
              }
-#if 0
-             /* expensive assertion */
-             for (const auto vertex : vertices) {
-                 pgassert(has_vertex(vertex.id));
-             }
-#endif
              // pgassert(mapIndex.size() == vertices.size());
          }
 
@@ -339,9 +327,6 @@ class Pgr_base_graph {
        */
      explicit Pgr_base_graph< G , T_V, T_E >(bool directed)
          : graph(0),
-#if 0
-         m_num_vertices(0),
-#endif
          m_is_directed(directed),
          vertIndex(boost::get(boost::vertex_index, graph)),
          propmapIndex(mapIndex) {
@@ -403,14 +388,6 @@ class Pgr_base_graph {
      template <typename T>
      void
      insert_edges(const std::vector<T> &edges, bool normal = true) {
-#if 0
-         // This code does not work with contraction
-         if (num_vertices() == 0) {
-             auto vertices = pgrouting::extract_vertices(edges);
-             pgassert(pgrouting::check_vertices(vertices) == 0);
-             add_vertices(vertices);
-         }
-#endif
          for (const auto &edge : edges) {
              graph_add_edge(edge, normal);
          }
@@ -601,52 +578,6 @@ class Pgr_base_graph {
      //@}
 
 
-#if 0
-     //! @name edge disconection/reconnection
-     //@{
-     //! @brief Disconnects all edges from p_from to p_to
-     /*!
-       - No edge is disconnected if the vertices id's do not exist in the graph
-       - All removed edges are stored for future reinsertion
-       - All parallel edges are disconnected (automatically by boost)
-       ![disconnect_edge(2,3) on an UNDIRECTED graph](disconnectEdgeUndirected.png)
-       ![disconnect_edge(2,3) on a DIRECTED graph](disconnectEdgeDirected.png)
-       @param [in] p_from original vertex id of the starting point of the edge
-       @param [in] p_to   original vertex id of the ending point of the edge
-       */
-     void disconnect_edge(int64_t p_from, int64_t p_to);
-
-
-     //! @brief Disconnects the outgoing edges of a vertex
-     /*!
-       - No edge is disconnected if it doesn't exist in the graph
-       - Removed edges are stored for future reinsertion
-       - all outgoing edges with the edge_id are removed if they exist
-       @param [in] vertex_id original vertex
-       @param [in] edge_id original edge_id
-       */
-     void disconnect_out_going_edge(int64_t vertex_id, int64_t edge_id);
-
-
-
-
-     //! @brief Disconnects all incoming and outgoing edges from the vertex
-     /*!
-       boost::graph doesn't recommend th to insert/remove vertices, so a vertex removal is
-       simulated by disconnecting the vertex from the graph
-       - No edge is disconnected if the vertices id's do not exist in the graph
-       - All removed edges are stored for future reinsertion
-       - All parallel edges are disconnected (automatically by boost)
-       ![disconnect_vertex(2) on an UNDIRECTED graph](disconnectVertexUndirected.png)
-       ![disconnect_vertex(2) on a DIRECTED graph](disconnectVertexDirected.png)
-       @param [in] p_vertex original vertex id of the starting point of the edge
-       */
-     void disconnect_vertex(int64_t p_vertex);
-     void disconnect_vertex(V vertex);
-
-     //! @brief Reconnects all edges that were removed
-     void restore_graph();
-#endif
 
      //@}
 
@@ -677,9 +608,6 @@ class Pgr_base_graph {
      //@}
 
 
-#if 0
-     int64_t get_edge_id(V from, V to, double &distance) const;
-#endif
 
      E get_edge(
              V from,
@@ -717,18 +645,6 @@ class Pgr_base_graph {
      size_t num_edges() const { return boost::num_edges(graph);}
 
 
-#if 0
-     void graph_add_edge(const T_E &edge);
-
-     template < typename T >
-         void graph_add_edge(const T &edge, bool normal = true);
-
-     template < typename T >
-         void graph_add_min_edge_no_parallel(const T &edge);
-
-      template < typename T >
-         void graph_add_neg_edge(const T &edge, bool normal = true);
-#endif
      /**
       *  Use this function when the vertices are already inserted in the graph
       */
@@ -739,16 +655,6 @@ class Pgr_base_graph {
          if ((edge.cost < 0) && (edge.reverse_cost < 0))
              return;
 
-#if 0
-         std::ostringstream log;
-         for (auto iter = vertices_map.begin();
-                 iter != vertices_map.end();
-                 iter++) {
-             log << "Key: " << iter->first <<"\tValue:" << iter->second << "\n";
-         }
-         pgassertwm(has_vertex(edge.source), log.str().c_str());
-         pgassert(has_vertex(edge.target));
-#endif
 
          auto vm_s = get_V(edge.source);
          auto vm_t = get_V(edge.target);
