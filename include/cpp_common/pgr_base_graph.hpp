@@ -613,9 +613,6 @@ class Pgr_base_graph {
        @param [in] p_to   vertex identifier of the ending point of the edge
        */
      void disconnect_edge(int64_t p_from, int64_t p_to) {
-#if 0
-         T_E d_edge;
-#endif
          /* nothing to do, a vertex doesn't exist */
          if (!has_vertex(p_from) || !has_vertex(p_to)) return;
 
@@ -626,15 +623,7 @@ class Pgr_base_graph {
          /* store the edges that are going to be removed */
          for (boost::tie(out, out_end) = out_edges(g_from, graph); out != out_end; ++out) {
              if (target(*out) == g_to) {
-#if 0
-                 d_edge.id = graph[*out].id;
-                 d_edge.source = graph[source(*out)].id;
-                 d_edge.target = graph[target(*out)].id;
-                 d_edge.cost = graph[*out].cost;
-                 removed_edges.push_back(d_edge);
-#else
                  removed_edges.push_back(get_edge_info(*out));
-#endif
              }
          }
          /* the actual removal */
@@ -652,9 +641,6 @@ class Pgr_base_graph {
        @param [in] edge_id original edge_id
        */
      void disconnect_out_going_edge(int64_t vertex_id, int64_t edge_id) {
-#if 0
-         T_E d_edge;
-#endif
          /* nothing to do, the vertex doesn't exist */
          if (!has_vertex(vertex_id)) return;
          auto v_from(get_V(vertex_id));
@@ -665,15 +651,7 @@ class Pgr_base_graph {
              change = false;
              for (boost::tie(out, out_end) = out_edges(v_from, graph); out != out_end; ++out) {
                  if (graph[*out].id  == edge_id) {
-#if 0
-                     d_edge.id = graph[*out].id;
-                     d_edge.source = graph[source(*out)].id;
-                     d_edge.target = graph[target(*out)].id;
-                     d_edge.cost = graph[*out].cost;
-                     removed_edges.push_back(d_edge);
-#else
                      removed_edges.push_back(get_edge_info(*out));
-#endif
                      boost::remove_edge((*out), graph);
                      change = true;
                      break;
@@ -703,35 +681,16 @@ class Pgr_base_graph {
        @param [in] vertex vertex descriptor
        */
      void disconnect_vertex(V vertex) {
-#if 0
-         T_E d_edge;
-#endif
          EO_i out, out_end;
          for (boost::tie(out, out_end) = out_edges(vertex, graph); out != out_end; ++out) {
-#if 0
-             d_edge.id = graph[*out].id;
-             d_edge.source = graph[source(*out)].id;
-             d_edge.target = graph[target(*out)].id;
-             d_edge.cost = graph[*out].cost;
-             removed_edges.push_back(d_edge);
-#else
                      removed_edges.push_back(get_edge_info(*out));
-#endif
          }
 
          /* special case */
          if (m_is_directed) {
              EI_i in, in_end;
              for (boost::tie(in, in_end) = in_edges(vertex, graph); in != in_end; ++in) {
-#if 0
-                 d_edge.id = graph[*in].id;
-                 d_edge.source = graph[source(*in)].id;
-                 d_edge.target = graph[target(*in)].id;
-                 d_edge.cost = graph[*in].cost;
-                 removed_edges.push_back(d_edge);
-#else
                      removed_edges.push_back(get_edge_info(*in));
-#endif
              }
          }
 
