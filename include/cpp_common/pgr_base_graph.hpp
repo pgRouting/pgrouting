@@ -301,46 +301,10 @@ class Pgr_base_graph {
          }
 
 
-#if 0
-     /** @name Insert edges */
-     /**@{*/
-     /** @brief Inserts *count* edges of type *T* into the graph
-      *
-      *  Converts the edges to a std::vector<T> & calls the overloaded
-      *  twin function.
-      *
-      *  @param edges
-      *  @param count
-      */
-     template < typename T >
-         void insert_edges(const T *edges, size_t count) {
-             insert_edges(std::vector < T >(edges, edges + count));
-         }
-#endif
      template <typename T> void insert_edges_neg(const std::vector<T> &edges) {
          insert_edges(edges, false);
      }
 
-#if 0
-     template < typename T >
-         void insert_edges_neg(const T *edges, size_t count) {
-             insert_edges(std::vector < T >(edges, edges + count), false);
-         }
-
-     template < typename T>
-         void insert_edges(T *edges, size_t count, bool) {
-             for (size_t i = 0; i < count; ++i) {
-                 pgassert(has_vertex(edges[i].source));
-                 pgassert(has_vertex(edges[i].target));
-                 graph_add_edge_no_create_vertex(edges[i]);
-             }
-         }
-
-      template < typename T >
-         void insert_negative_edges(const T *edges, int64_t count) {
-             insert_negative_edges(std::vector < T >(edges, edges + count));
-         }
-#endif
 
      /** @brief Inserts *count* edges of type *Edge_t* into the graph
         The set of edges should not have an illegal vertex defined
@@ -362,12 +326,6 @@ class Pgr_base_graph {
          }
      }
 
-#if 0
-     template <typename T>
-     void insert_min_edges_no_parallel(const T *edges, size_t count) {
-         insert_edges(std::vector<T>(edges, edges + count));
-     }
-#endif
 
      template <typename T> void insert_min_edges_no_parallel(const std::vector<T> &edges) {
          for (const auto edge : edges) {
@@ -383,53 +341,6 @@ class Pgr_base_graph {
      /**@}*/
 
  private:
-#if 0
-     /** @brief adds the vertices into the graph
-      *
-      * PRECONDITIONS:
-      * - The graph has not being initialized before
-      * - There are no dupicated vertices
-      *
-      * ~~~~~{.c}
-      * precondition(boost::num_vertices(graph) == 0);
-      * for (vertex : vertices)
-      *    precondition(!has_vertex(vertex.id));
-      * ~~~~~
-      *
-      *
-      * POSTCONDITIONS:
-      * ~~~~~{.c}
-      * postcondition(boost::num_vertices(graph) == vertices.size());
-      * for (vertex : vertices)
-      *    postcondition(has_vertex(vertex.id));
-      * ~~~~~
-      *
-      * Example use:
-      *
-      * ~~~~~{.c}
-      * pgrouting::DirectedGraph digraph(gType);
-      * auto vertices(pgrouting::extract_vertices(data_edges, total_edges));
-      * digraph.add_vertices(vertices);
-      * ~~~~~
-      *
-      */
-     void add_vertices(
-             std::vector< T_V > vertices) {
-         pgassert(num_vertices() == 0);
-         for (const auto vertex : vertices) {
-             pgassert(!has_vertex(vertex.id));
-
-             auto v =  add_vertex(graph);
-             vertices_map[vertex.id] =  v;
-             graph[v].cp_members(vertex);
-             // put(propmapIndex, v, num_vertices());
-
-             pgassert(has_vertex(vertex.id));
-         }
-         // pgassert(mapIndex.size() == vertices.size());
-         pgassert(num_vertices() == vertices.size());
-     }
-#endif
 
  public:
      /** @name boost wrappers with original id */
