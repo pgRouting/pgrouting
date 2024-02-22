@@ -263,7 +263,7 @@ class Pgr_base_graph {
        - inserts the vertices
        - The vertices must be checked (if necessary)  before calling the constructor
        */
-     Pgr_base_graph< G , T_V, T_E >(
+     Pgr_base_graph<G , T_V, T_E>(
              const std::vector< T_V > &vertices, bool directed)
          : graph(vertices.size()),
          m_is_directed(directed),
@@ -293,14 +293,16 @@ class Pgr_base_graph {
      /**
        Prepares the _graph_ to be of type gtype with 0 vertices
        */
-     explicit Pgr_base_graph< G , T_V, T_E >(bool directed)
+     explicit Pgr_base_graph<G , T_V, T_E >(bool directed)
          : graph(0),
          m_is_directed(directed),
          vertIndex(boost::get(boost::vertex_index, graph)),
          propmapIndex(mapIndex) {
          }
+     /**@}*/
 
-
+     /** @name Edges inserters */
+     /**@{*/
      template <typename T> void insert_edges_neg(const std::vector<T> &edges) {
          insert_edges(edges, false);
      }
@@ -340,10 +342,7 @@ class Pgr_base_graph {
      }
      /**@}*/
 
- private:
-
- public:
-     /** @name boost wrappers with original id */
+     /** @name in & out degree */
      /**@{*/
      /** @brief get the out-degree  of a vertex
        @returns 0: The out degree of a vertex that its not in the graph
@@ -367,7 +366,31 @@ class Pgr_base_graph {
              :  out_degree(get_V(vertex_id));
      }
 
+     /** @brief in degree of a vertex
+      *
+      * - when its undirected there is no "concept" of in degree
+      *   - out degree is returned
+      * - on directed in degree of vertex is returned
+      */
+     degree_size_type in_degree(V &v) const {
+         return is_directed()?
+             boost::in_degree(v, graph) :
+             boost::out_degree(v, graph);
+     }
 
+     /** @brief out degree of a vertex
+      *
+      * regardles of undirected or directed graph
+      * - out degree is returned
+      */
+     degree_size_type out_degree(V &v) const {
+         return boost::out_degree(v, graph);
+     }
+     /**@}*/
+
+
+     /** @name Get vertex descriptor */
+     /**@{*/
      /** @brief get the vertex descriptor of the vertex
        When the vertex does not exist
        - creates a new vetex
@@ -394,33 +417,6 @@ class Pgr_base_graph {
          return vertices_map.find(vid)->second;
      }
 
-     /** @brief True when vid is in the graph */
-     bool has_vertex(int64_t vid) const {
-         return vertices_map.find(vid) != vertices_map.end();
-     }
-
-
-
-     /** @name to be or not to be */
-     /**@{*/
-
-     bool is_directed() const {return m_is_directed;}
-     bool is_undirected() const {return !m_is_directed;}
-     bool is_source(V v_idx, E e_idx) const {return v_idx == source(e_idx);}
-     bool is_target(V v_idx, E e_idx) const {return v_idx == target(e_idx);}
-
-     /**@}*/
-
-     /** @name boost wrappers with V */
-     /**@{*/
-
-
-     T_E& operator[](E e_idx) {return graph[e_idx];}
-     const T_E& operator[](E e_idx) const {return graph[e_idx];}
-
-     T_V& operator[](V v_idx) {return graph[v_idx];}
-     const T_V& operator[](V v_idx) const {return graph[v_idx];}
-
      V source(E e_idx) const {return boost::source(e_idx, graph);}
      V target(E e_idx) const {return boost::target(e_idx, graph);}
      V adjacent(V v_idx, E e_idx) const {
@@ -429,36 +425,57 @@ class Pgr_base_graph {
              target(e_idx) :
              source(e_idx);
      }
+     /**@}*/
 
 
-     /** @brief in degree of a vertex
-      *
-      * - when its undirected there is no "concept" of in degree
-      *   - out degree is returned
-      * - on directed in degree of vertex is returned
-      */
-     degree_size_type in_degree(V &v) const {
-         return is_directed()?
-             boost::in_degree(v, graph) :
-             boost::out_degree(v, graph);
+     /** @name to be or not to be */
+     /**@{*/
+     /** @brief True when vid is in the graph */
+     bool has_vertex(int64_t vid) const {
+         return vertices_map.find(vid) != vertices_map.end();
      }
+     bool is_directed() const {return m_is_directed;}
+     bool is_undirected() const {return !m_is_directed;}
+     bool is_source(V v_idx, E e_idx) const {return v_idx == source(e_idx);}
+     bool is_target(V v_idx, E e_idx) const {return v_idx == target(e_idx);}
 
-     /** @brief out degree of a vertex
-      *
-      * regardles of undirected or directed graph
-      * - out degree is returned
-      */
-     degree_size_type out_degree(V &v) const {
-         return boost::out_degree(v, graph);
+     /**@}*/
+
+     /** @name get original edge/vertex data */
+     /**@{*/
+     T_E& operator[](E e_idx) {return graph[e_idx];}
+     const T_E& operator[](E e_idx) const {return graph[e_idx];}
+
+     T_V& operator[](V v_idx) {return graph[v_idx];}
+     const T_V& operator[](V v_idx) const {return graph[v_idx];}
+
+     int64_t get_edge_id(V from, V to, double &distance) const {
+         E e;
+         EO_i out_i, out_end;
+         V v_source, v_target;
+         double minCost =  (std::numeric_limits<double>::max)();
+         int64_t minEdge = -1;
+         for (boost::tie(out_i, out_end) = boost::out_edges(from, graph); out_i != out_end; ++out_i) {
+             e = *out_i;
+             v_target = target(e);
+             v_source = source(e);
+             if ((from == v_source) && (to == v_target)
+                     && (distance == graph[e].cost))
+                 return graph[e].id;
+             if ((from == v_source) && (to == v_target)
+                     && (minCost > graph[e].cost)) {
+                 minCost = graph[e].cost;
+                 minEdge = graph[e].id;
+             }
+         }
+         distance = minEdge == -1? 0: minCost;
+         return minEdge;
      }
-
      /**@}*/
 
 
 
-     /**@}*/
-
-     /** @name only for stand by program */
+     /** @name only for debug */
      /**@{*/
      friend std::ostream& operator<<(
              std::ostream &log, const Pgr_base_graph< G, T_V, T_E > &g) {
@@ -483,6 +500,8 @@ class Pgr_base_graph {
      /**@}*/
 
 
+     /** @name Get edge descriptor */
+     /**@{*/
      E get_edge(V from, V to, double &distance) const {
          E e;
          EO_i out_i, out_end;
@@ -511,15 +530,20 @@ class Pgr_base_graph {
          }
          return minEdge;
      }
+     /**@}*/
 
+     /** @name How big */
+     /**@{*/
      size_t num_vertices() const { return boost::num_vertices(graph);}
      size_t num_edges() const { return boost::num_edges(graph);}
+     /**@}*/
 
 
+#if 0
      /**
       *  Use this function when the vertices are already inserted in the graph
       */
-     template < typename T>
+     template <typename T>
      void graph_add_edge_no_create_vertex(const T &edge) {
          bool inserted;
          E e;
@@ -547,7 +571,7 @@ class Pgr_base_graph {
              graph[e].id = edge.id;
          }
      }
-
+#endif
 
 
      /** @name edge disconection/reconnection */
@@ -684,28 +708,6 @@ class Pgr_base_graph {
      /**@}*/
 
 
-     int64_t get_edge_id(V from, V to, double &distance) const {
-         E e;
-         EO_i out_i, out_end;
-         V v_source, v_target;
-         double minCost =  (std::numeric_limits<double>::max)();
-         int64_t minEdge = -1;
-         for (boost::tie(out_i, out_end) = boost::out_edges(from, graph); out_i != out_end; ++out_i) {
-             e = *out_i;
-             v_target = target(e);
-             v_source = source(e);
-             if ((from == v_source) && (to == v_target)
-                     && (distance == graph[e].cost))
-                 return graph[e].id;
-             if ((from == v_source) && (to == v_target)
-                     && (minCost > graph[e].cost)) {
-                 minCost = graph[e].cost;
-                 minEdge = graph[e].id;
-             }
-         }
-         distance = minEdge == -1? 0: minCost;
-         return minEdge;
-     }
 
 
      void graph_add_edge(const T_E &edge ) {
