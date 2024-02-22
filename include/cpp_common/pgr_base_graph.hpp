@@ -238,19 +238,20 @@ class Pgr_base_graph {
      using vertices_size_type = typename boost::graph_traits<G>::vertices_size_type;
      using edges_size_type = typename boost::graph_traits<G>::edges_size_type;
      using degree_size_type = typename boost::graph_traits<G>::degree_size_type;
+     using vertex_index_t = typename boost::property_map<G, boost::vertex_index_t>::type;
 
      /**@}*/
 
-     /** @name Id handling related types
+     /** @name Other types
        Type      |  Meaning       |   pgRouting Meaning
        :---------: | :------------- | :----------------------
+       IndexMap | maps V -> id |  given a V store the id
        id_to_V  | maps id -> V   | given an id store the V
-       LI       | Left Iterator  | iterates over id_to_V
        */
      /**@{*/
 
+     using IndexMap = std::map<V, size_t>;
      using id_to_V = typename std::map<int64_t, V>;
-     using LI = typename id_to_V::const_iterator;
 
      /**@}*/
 
@@ -371,6 +372,7 @@ class Pgr_base_graph {
       * - when its undirected there is no "concept" of in degree
       *   - out degree is returned
       * - on directed in degree of vertex is returned
+      * @param [in] v vertex descriptor
       */
      degree_size_type in_degree(V &v) const {
          return is_directed()?
@@ -410,65 +412,123 @@ class Pgr_base_graph {
 
      /** @brief get the vertex descriptor of the vid
        Call has_vertex(vid) before calling this function
+       @param[in] vid vertex identifier
        @return V: The vertex descriptor of the vertex
        */
      V get_V(int64_t vid) const {
-         pgassert(has_vertex(vid));
+         if (!has_vertex(vid)) throw std::string("Call to ") + __PRETTY_FUNCTION__ + "without checking with has_vertex";
          return vertices_map.find(vid)->second;
      }
 
-     V source(E e_idx) const {return boost::source(e_idx, graph);}
-     V target(E e_idx) const {return boost::target(e_idx, graph);}
-     V adjacent(V v_idx, E e_idx) const {
-         pgassert(is_source(v_idx, e_idx) || is_target(v_idx, e_idx));
-         return is_source(v_idx, e_idx)?
-             target(e_idx) :
-             source(e_idx);
+     /** @brief get source edge
+       @param[in] e edge descriptor
+       @return V vertex descriptor
+       */
+     V source(E e) const {return boost::source(e, graph);}
+
+     /** @brief get source edge
+       @param[in] e edge descriptor
+       @return V vertex descriptor
+       */
+     V target(E e) const {return boost::target(e, graph);}
+
+     /** @brief get source edge
+       @param[in] v vertex descriptor
+       @param[in] e edge descriptor
+       @return V vertex descriptor
+       */
+     V adjacent(V v, E e) const {
+         pgassert(is_source(v, e) || is_target(v, e));
+         return is_source(v, e)? target(e) : source(e);
      }
      /**@}*/
 
 
      /** @name to be or not to be */
      /**@{*/
-     /** @brief True when vid is in the graph */
+     /** @brief does vertex exist in the graph?
+       @param[in] vid vertex identifier
+       @return true: when vid is in the graph
+       @return false: when vid is not in the graph
+      */
      bool has_vertex(int64_t vid) const {
          return vertices_map.find(vid) != vertices_map.end();
      }
+     /** @brief is the graph directed?
+       @return true: when the graph is directed
+       @return false: when the graph is not directed
+      */
      bool is_directed() const {return m_is_directed;}
+     /** @brief is the graph undirected?
+       @return true: when the graph is undirected
+       @return false: when the graph is not undirected
+      */
      bool is_undirected() const {return !m_is_directed;}
-     bool is_source(V v_idx, E e_idx) const {return v_idx == source(e_idx);}
-     bool is_target(V v_idx, E e_idx) const {return v_idx == target(e_idx);}
+     /** @brief is v a source in the edge?
+       @param[in] v vertex descriptor
+       @param[in] e edge descriptor
+       @return true: when v is source on the edge
+       @return false: when v is not source on the edge
+      */
+     bool is_source(V v, E e) const {return v == source(e);}
+     /** @brief is v a target in the edge?
+       @param[in] v vertex descriptor
+       @param[in] e edge descriptor
+       @return true: when v is target on the edge
+       @return false: when v is not target on the edge
+      */
+     bool is_target(V v, E e) const {return v == target(e);}
 
      /**@}*/
 
      /** @name get original edge/vertex data */
      /**@{*/
-     T_E& operator[](E e_idx) {return graph[e_idx];}
-     const T_E& operator[](E e_idx) const {return graph[e_idx];}
+     /** @brief get the edge
+       @param[in] e edge descriptor
+       @return The edge information (allows modification)
+      */
+     T_E& operator[](E e) {return graph[e];}
 
-     T_V& operator[](V v_idx) {return graph[v_idx];}
-     const T_V& operator[](V v_idx) const {return graph[v_idx];}
+     /** @brief get the edge
+       @param[in] e edge descriptor
+       @return The edge information (does not allow modification)
+      */
+     const T_E& operator[](E e) const {return graph[e];}
 
-     int64_t get_edge_id(V from, V to, double &distance) const {
-         E e;
+     /** @brief get the vertex
+       @param[in] v vertex descriptor
+       @return The vertex information (allows modification)
+      */
+     T_V& operator[](V v) {return graph[v];}
+
+     /** @brief get the vertex
+       @param[in] v vertex descriptor
+       @return The vertex information (does not allow modification)
+      */
+     const T_V& operator[](V v) const {return graph[v];}
+
+     /** @brief get the edge id of from--to with the indicated distance
+       @param[in] from vertex descriptor
+       @param[in] to vertex descriptor
+       @param[in] weight edge's weight to match when several options are found
+       @return The edge identifier of edge from--to with @b weight
+       @return OR the edge identifier of edge from--to with @b min weight
+      */
+     int64_t get_edge_id(V from, V to, double &weight) const {
          EO_i out_i, out_end;
-         V v_source, v_target;
          double minCost =  (std::numeric_limits<double>::max)();
          int64_t minEdge = -1;
          for (boost::tie(out_i, out_end) = boost::out_edges(from, graph); out_i != out_end; ++out_i) {
-             e = *out_i;
-             v_target = target(e);
-             v_source = source(e);
-             if ((from == v_source) && (to == v_target)
-                     && (distance == graph[e].cost))
-                 return graph[e].id;
-             if ((from == v_source) && (to == v_target)
-                     && (minCost > graph[e].cost)) {
+             auto e = *out_i;
+             auto v_target = target(e);
+             auto v_source = source(e);
+             if ((from == v_source) && (to == v_target) && (weight == graph[e].cost)) return graph[e].id;
+             if ((from == v_source) && (to == v_target) && (minCost > graph[e].cost)) {
                  minCost = graph[e].cost;
                  minEdge = graph[e].id;
              }
          }
-         distance = minEdge == -1? 0: minCost;
+         weight = minEdge == -1? 0: minCost;
          return minEdge;
      }
      /**@}*/
@@ -616,6 +676,14 @@ class Pgr_base_graph {
      }
 
 
+     /** @brief Disconnects all incoming and outgoing edges from @b vertex
+       @param [in] vertex original vertex id
+       */
+     void disconnect_vertex(int64_t vertex) {
+         if (!has_vertex(vertex)) return;
+         disconnect_vertex(get_V(vertex));
+     }
+
      /** @brief Disconnects all incoming and outgoing edges from the vertex
 
        boost::graph doesn't recommend th to insert/remove vertices, so a vertex removal is
@@ -625,13 +693,8 @@ class Pgr_base_graph {
        - All parallel edges are disconnected (automatically by boost)
        ![disconnect_vertex(2) on an UNDIRECTED graph](disconnectVertexUndirected.png)
        ![disconnect_vertex(2) on a DIRECTED graph](disconnectVertexDirected.png)
-       @param [in] p_vertex original vertex id of the starting point of the edge
+       @param [in] vertex vertex descriptor
        */
-     void disconnect_vertex(int64_t vertex) {
-         if (!has_vertex(vertex)) return;
-         disconnect_vertex(get_V(vertex));
-     }
-
      void disconnect_vertex(V vertex) {
          T_E d_edge;
 
@@ -677,6 +740,7 @@ class Pgr_base_graph {
 
 
 
+ private:
      void graph_add_edge(const T_E &edge ) {
          E e;
 
@@ -702,7 +766,7 @@ class Pgr_base_graph {
 
      template <typename T> void graph_add_edge(const T &edge, bool normal) {
          bool inserted;
-         typename Pgr_base_graph< G, T_V, T_E >::E e;
+         E e;
          if ((edge.cost < 0) && (edge.reverse_cost < 0)) return;
 
          /*
@@ -733,7 +797,7 @@ class Pgr_base_graph {
 
      template <typename T> void graph_add_min_edge_no_parallel(const T &edge) {
          bool inserted;
-         typename Pgr_base_graph< G, T_V, T_E >::E e;
+         E e;
          if ((edge.cost < 0) && (edge.reverse_cost < 0)) return;
 
          /*
@@ -788,7 +852,7 @@ class Pgr_base_graph {
        */
      template <typename T> void graph_add_neg_edge(const T &edge, bool normal = true) {
          bool inserted;
-         typename Pgr_base_graph< G, T_V, T_E >::E e;
+         E e;
 
          auto vm_s = get_V(T_V(edge, true));
          auto vm_t = get_V(T_V(edge, false));
@@ -820,6 +884,7 @@ class Pgr_base_graph {
          }
      }
 
+ public:
      /** @name The Graph */
      /**@{*/
      G graph;                /**< The graph */
@@ -830,8 +895,7 @@ class Pgr_base_graph {
 
      /** @name Id mapping handling */
      /**@{*/
-     typename boost::property_map<G, boost::vertex_index_t>::type vertIndex;
-     using IndexMap = std::map<V, size_t>;
+     vertex_index_t vertIndex;
      IndexMap mapIndex;
      boost::associative_property_map<IndexMap> propmapIndex;
      /**@}*/
@@ -839,7 +903,7 @@ class Pgr_base_graph {
      /** @name Graph Modification */
      /**@{*/
      /** Used for storing the removed_edges */
-     std::deque< T_E > removed_edges;
+     std::deque<T_E> removed_edges;
      /**@}*/
 };
 
