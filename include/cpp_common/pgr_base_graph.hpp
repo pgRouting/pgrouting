@@ -598,9 +598,6 @@ class Pgr_base_graph {
      size_t num_edges() const { return boost::num_edges(graph);}
      /**@}*/
 
-
-
-
      /** @name edge disconection/reconnection */
      /**@{*/
      /** @brief Disconnects all edges from p_from to p_to
@@ -617,40 +614,37 @@ class Pgr_base_graph {
          if (!has_vertex(p_from) || !has_vertex(p_to)) return;
 
          EO_i out, out_end;
-         V g_from(get_V(p_from));
-         V g_to(get_V(p_to));
+         auto u (get_V(p_from));
+         auto v (get_V(p_to));
 
-         /* store the edges that are going to be removed */
-         for (boost::tie(out, out_end) = out_edges(g_from, graph); out != out_end; ++out) {
-             if (target(*out) == g_to) {
+         for (boost::tie(out, out_end) = out_edges(u, graph); out != out_end; ++out) {
+             if (target(*out) == v) {
                  removed_edges.push_back(get_edge_info(*out));
+                 break;
              }
          }
-         /* the actual removal */
-         boost::remove_edge(g_from, g_to, graph);
+         boost::remove_edge(u, v, graph);
      }
-
-
 
      /** @brief Disconnects the outgoing edges of a vertex
 
        - No edge is disconnected if it doesn't exist in the graph
        - Removed edges are stored for future reinsertion
        - all outgoing edges with the edge_id are removed if they exist
-       @param [in] vertex_id original vertex
-       @param [in] edge_id original edge_id
+       @param [in] vid original vertex
+       @param [in] eid original edge_id
        */
-     void disconnect_out_going_edge(int64_t vertex_id, int64_t edge_id) {
+     void disconnect_out_going_edge(int64_t vid, int64_t eid) {
          /* nothing to do, the vertex doesn't exist */
-         if (!has_vertex(vertex_id)) return;
-         auto v_from(get_V(vertex_id));
+         if (!has_vertex(vid)) return;
 
+         auto v (get_V(vid));
          EO_i out, out_end;
          bool change = true;
          while (change) {
              change = false;
-             for (boost::tie(out, out_end) = out_edges(v_from, graph); out != out_end; ++out) {
-                 if (graph[*out].id  == edge_id) {
+             for (boost::tie(out, out_end) = out_edges(v, graph); out != out_end; ++out) {
+                 if (graph[*out].id  == eid) {
                      removed_edges.push_back(get_edge_info(*out));
                      boost::remove_edge((*out), graph);
                      change = true;
@@ -660,13 +654,12 @@ class Pgr_base_graph {
          }
      }
 
-
      /** @brief Disconnects all incoming and outgoing edges from @b vertex
-       @param [in] vertex original vertex id
+       @param [in] vid vertex identifier
        */
-     void disconnect_vertex(int64_t vertex) {
-         if (!has_vertex(vertex)) return;
-         disconnect_vertex(get_V(vertex));
+     void disconnect_vertex(int64_t vid) {
+         if (!has_vertex(vid)) return;
+         disconnect_vertex(get_V(vid));
      }
 
      /** @brief Disconnects all incoming and outgoing edges from the vertex
@@ -678,24 +671,24 @@ class Pgr_base_graph {
        - All parallel edges are disconnected (automatically by boost)
        ![disconnect_vertex(2) on an UNDIRECTED graph](disconnectVertexUndirected.png)
        ![disconnect_vertex(2) on a DIRECTED graph](disconnectVertexDirected.png)
-       @param [in] vertex vertex descriptor
+       @param [in] v vertex descriptor
        */
-     void disconnect_vertex(V vertex) {
+     void disconnect_vertex(V v) {
          EO_i out, out_end;
-         for (boost::tie(out, out_end) = out_edges(vertex, graph); out != out_end; ++out) {
+         for (boost::tie(out, out_end) = out_edges(v, graph); out != out_end; ++out) {
                      removed_edges.push_back(get_edge_info(*out));
          }
 
          /* special case */
          if (m_is_directed) {
              EI_i in, in_end;
-             for (boost::tie(in, in_end) = in_edges(vertex, graph); in != in_end; ++in) {
+             for (boost::tie(in, in_end) = in_edges(v, graph); in != in_end; ++in) {
                      removed_edges.push_back(get_edge_info(*in));
              }
          }
 
          /* delete incoming and outgoing edges from the vertex */
-         boost::clear_vertex(vertex, graph);
+         boost::clear_vertex(v, graph);
      }
 
      /** @brief Reconnects all edges that were removed */
