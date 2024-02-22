@@ -539,39 +539,6 @@ class Pgr_base_graph {
      /**@}*/
 
 
-#if 0
-     /**
-      *  Use this function when the vertices are already inserted in the graph
-      */
-     template <typename T>
-     void graph_add_edge_no_create_vertex(const T &edge) {
-         bool inserted;
-         E e;
-         if ((edge.cost < 0) && (edge.reverse_cost < 0))
-             return;
-
-
-         auto vm_s = get_V(edge.source);
-         auto vm_t = get_V(edge.target);
-
-
-         if (edge.cost >= 0) {
-             boost::tie(e, inserted) =
-                 boost::add_edge(vm_s, vm_t, graph);
-             graph[e].cost = edge.cost;
-             graph[e].id = edge.id;
-         }
-
-
-         if (edge.reverse_cost >= 0 && (is_directed()
-                     || (is_undirected() && edge.cost != edge.reverse_cost))) {
-             boost::tie(e, inserted) =
-                 boost::add_edge(vm_t, vm_s, graph);
-             graph[e].cost = edge.reverse_cost;
-             graph[e].id = edge.id;
-         }
-     }
-#endif
 
 
      /** @name edge disconection/reconnection */
