@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <map>
 #include <limits>
+#include <string>
 
 #include <boost/graph/iteration_macros.hpp>
 #include <boost/config.hpp>
@@ -614,8 +615,8 @@ class Pgr_base_graph {
          if (!has_vertex(p_from) || !has_vertex(p_to)) return;
 
          EO_i out, out_end;
-         auto u (get_V(p_from));
-         auto v (get_V(p_to));
+         auto u(get_V(p_from));
+         auto v(get_V(p_to));
 
          for (boost::tie(out, out_end) = out_edges(u, graph); out != out_end; ++out) {
              if (target(*out) == v) {
@@ -638,7 +639,7 @@ class Pgr_base_graph {
          /* nothing to do, the vertex doesn't exist */
          if (!has_vertex(vid)) return;
 
-         auto v (get_V(vid));
+         auto v(get_V(vid));
          EO_i out, out_end;
          bool change = true;
          while (change) {
@@ -852,6 +853,7 @@ class Pgr_base_graph {
      /**@{*/
      G graph;                /**< The graph */
      id_to_V  vertices_map;   /**< id -> graph id */
+
  private:
      bool m_is_directed;      /**< type (DIRECTED or UNDIRECTED) */
      /**@}*/
