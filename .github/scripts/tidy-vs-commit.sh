@@ -8,6 +8,8 @@ MODIFIED_FILES=$(git diff-tree --no-commit-id --diff-filter=d --name-only -r "$B
 MODIFIED_HEADERS=$(git diff-tree --no-commit-id --diff-filter=d --name-only -r "$BASE" HEAD | grep '\.h')
 POSTGRES_SERVER=$(grep -o -m1 '\-isystem .*' "${BUILD_DIR}/compile_commands.json" | head -1 | awk '{print $1" "$2}')
 
+echo "POSTGRES_SERVER ${POSTGRES_SERVER}"
+
 CHECKS="-checks=clang-analyzer-*"
 
 if [ -z "${MODIFIED_FILES}" ] && [ -z "${MODIFIED_HEADERS}" ]; then
@@ -19,6 +21,7 @@ fi
 if [ ${#MODIFIED_FILES[@]} != 0 ] ; then
     for f in ${MODIFIED_FILES}
     do
+        if [ "${f##*.}" == 'conf' ]; then continue; fi
         echo "${f}"
         clang-tidy -p "${BUILD_DIR}" "${CHECKS}" -header-filter="^$(pwd).*" "${f}"
        done
