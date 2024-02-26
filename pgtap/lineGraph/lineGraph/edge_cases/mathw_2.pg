@@ -1,0 +1,113 @@
+/*PGR-GNU*****************************************************************
+
+Copyright (c) 2024  pgRouting developers
+Mail: project@pgrouting.org
+
+------
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ ********************************************************************PGR-GNU*/
+BEGIN;
+
+SELECT plan(6);
+
+/* example from https://mathworld.wolfram.com/LineGraph.html */
+CREATE TABLE mathw_2 (
+    id BIGINT,
+    source BIGINT,
+    target BIGINT,
+    cost FLOAT,
+    reverse_cost FLOAT,
+    geom geometry
+);
+
+INSERT INTO mathw_2 (id, source, target, cost, reverse_cost, geom) VALUES
+  (102, 10, 20 , 1, -1, ST_MakeLine(ST_POINT(0,  2), ST_POINT(2,  2))),
+  (104, 10, 40 , 1, -1, ST_MakeLine(ST_POINT(0,  2), ST_POINT(0,  0))),
+  (301, 30, 10 , 1, -1, ST_MakeLine(ST_POINT(2,  0), ST_POINT(0,  2))),
+  (203, 20, 30 , 1,  1, ST_MakeLine(ST_POINT(2,  2), ST_POINT(2,  0))),
+  (304, 30, 40 , 1,  1, ST_MakeLine(ST_POINT(0,  0), ST_POINT(2,  0)));
+
+PREPARE mathw_lg_2 AS
+SELECT *
+FROM pgr_lineGraph('SELECT id, source, target, cost, reverse_cost FROM mathw_2', true);
+
+SELECT lives_ok($$
+  SELECT *
+  FROM pgr_lineGraph('SELECT id, source, target, cost FROM mathw_2', false);
+  $$, 'Expected to live the main query');
+
+SELECT lives_ok('mathw_lg_2', 'Expected to live the prepared statatment');
+
+PREPARE expected_mathw_lg_2 AS
+SELECT id, source, target, cost, reverse_cost
+FROM (VALUES
+   (1, 102, 203, 1, -1),
+   (2, 104, 304, 1, -1),
+   (3, 203, 301, 1, -1),
+   (4, 203, 304, 1,  1),
+   (5, 301, 102, 1, -1),
+   (6, 301, 104, 1, -1),
+   (7, 304, 301, 1, -1))
+AS t(id, source, target, cost, reverse_cost);
+
+SELECT set_eq('mathw_lg_2', 'expected_mathw_lg_2');
+
+/* same example with expanded edges */
+CREATE TABLE mathw_3 (
+    id BIGINT,
+    source BIGINT,
+    target BIGINT,
+    cost FLOAT,
+    reverse_cost FLOAT,
+    geom geometry
+);
+
+INSERT INTO mathw_3 (id, source, target, cost, reverse_cost, geom) VALUES
+  (102, 10, 20 , 1, -1, ST_MakeLine(ST_POINT(0,  2), ST_POINT(2,  2))),
+  (104, 10, 40 , 1, -1, ST_MakeLine(ST_POINT(0,  2), ST_POINT(0,  0))),
+  (301, 30, 10 , 1, -1, ST_MakeLine(ST_POINT(2,  0), ST_POINT(0,  2))),
+  (203, 20, 30 , 1, -1, ST_MakeLine(ST_POINT(2,  2), ST_POINT(2,  0))),
+  (304, 30, 40 , 1, -1, ST_MakeLine(ST_POINT(2,  0), ST_POINT(0,  0))),
+  (302, 30, 20 , 1, -1, ST_MakeLine(ST_POINT(2,  0), ST_POINT(2,  2))),
+  (403, 40, 30 , 1, -1, ST_MakeLine(ST_POINT(0,  0), ST_POINT(2,  0)));
+
+PREPARE mathw_lg_3 AS
+SELECT *
+FROM pgr_lineGraph('SELECT id, source, target, cost FROM mathw_3', true);
+
+SELECT lives_ok($$
+  SELECT *
+  FROM pgr_lineGraph('SELECT id, source, target, cost FROM mathw_3', false);
+  $$, 'Expected to live the main query');
+
+SELECT lives_ok('mathw_lg_3', 'Expected to live the prepared statatment');
+
+PREPARE expected_mathw_lg_3 AS
+SELECT id, source, target, cost, reverse_cost
+FROM (VALUES
+   (1, 102, 203, 1, -1),
+   (2, 104, 403, 1, -1),
+   (3, 203, 301, 1, -1),
+   (4, 203, 304, 1, -1),
+   (5, 301, 102, 1, -1),
+   (6, 301, 104, 1, -1),
+   (7, 302, 203, 1, 1),
+   (8, 304, 403, 1, 1),
+   (9, 403, 301, 1, -1),
+  (10, 403, 302, 1, -1))
+AS t(id, source, target, cost, reverse_cost);
+
+SELECT set_eq('mathw_lg_3', 'expected_mathw_lg_3');
+
+SELECT finish();
+ROLLBACK;
