@@ -35,38 +35,33 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 #include <string>
 
+#include "bgraph/line_graph.hpp"
+#include "bgraph/graph_to_edges.hpp"
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.hpp"
-#include "cpp_common/linear_directed_graph.hpp"
+#include "cpp_common/pgr_base_graph.hpp"
 #include "c_types/edge_rt.h"
-
-#include "lineGraph/pgr_lineGraph.hpp"
 
 namespace {
 
-void get_postgres_result(
-        const std::vector<Edge_rt> &edge_result,
-        Edge_rt **return_tuples,
-        size_t &sequence) {
-    using pgrouting::pgr_alloc;
-    (*return_tuples) = pgr_alloc(edge_result.size(), (*return_tuples));
+template<typename G>
+std::vector<Edge_t> line_graph(const G& original) {
+    auto lg_result = pgrouting::b_g::line_graph(original.graph);
 
-    for (const auto &edge : edge_result) {
-        (*return_tuples)[sequence] = {edge.id, edge.source, edge.target,
-             edge.cost, edge.reverse_cost};
-        sequence++;
-    }
+    return pgrouting::b_g::graph_to_existing_edges(lg_result);
 }
+
 }  // namespace
 
 void
 pgr_do_lineGraph(
         char *edges_sql,
+        bool directed,
 
-        bool,
         Edge_rt **return_tuples,
         size_t *return_count,
+
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
@@ -95,42 +90,40 @@ pgr_do_lineGraph(
         }
         hint = nullptr;
 
+        std::vector<Edge_t> line_graph_edges;
+        if (directed) {
+            pgrouting::DirectedGraph ograph(directed);
+            ograph.insert_edges(edges);
+            line_graph_edges = line_graph(ograph);
+        } else {
+            pgrouting::UndirectedGraph ograph(directed);
+            ograph.insert_edges(edges);
+            line_graph_edges = line_graph(ograph);
+        }
 
-
-        pgrouting::DirectedGraph digraph;
-        digraph.insert_edges_neg(edges);
-
-        log << digraph << "\n";
-        pgrouting::graph::Pgr_lineGraph<
-            pgrouting::LinearDirectedGraph,
-            pgrouting::Line_vertex,
-            pgrouting::Basic_edge, true> line(digraph);
-        std::vector< Edge_rt > line_graph_edges;
-        line_graph_edges = line.get_postgres_results_directed();
         auto count = line_graph_edges.size();
 
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            notice <<
-                "Only vertices graph";
-        } else {
-            size_t sequence = 0;
-
-            get_postgres_result(
-                line_graph_edges,
-                return_tuples,
-                sequence);
-            (*return_count) = sequence;
+            *log_msg = pgr_msg(log.str().c_str());
+            return;
         }
 
+        size_t sequence = 0;
+        using pgrouting::pgr_alloc;
+        (*return_tuples) = pgr_alloc(line_graph_edges.size(), (*return_tuples));
+
+        for (const auto &e : line_graph_edges) {
+            auto rev_c = directed? e.reverse_cost : -1;
+            (*return_tuples)[sequence] = {e.id, e.source, e.target, e.cost, rev_c};
+            sequence++;
+        }
+        (*return_count) = sequence;
+
         pgassert(*err_msg == NULL);
-        *log_msg = log.str().empty()?
-            *log_msg :
-            pgr_msg(log.str().c_str());
-        *notice_msg = notice.str().empty()?
-            *notice_msg :
-            pgr_msg(notice.str().c_str());
+        *log_msg = log.str().empty()?  *log_msg : pgr_msg(log.str().c_str());
+        *notice_msg = notice.str().empty()?  *notice_msg : pgr_msg(notice.str().c_str());
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
