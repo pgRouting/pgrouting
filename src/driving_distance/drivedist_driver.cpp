@@ -90,11 +90,11 @@ pgr_do_drivingDistance(
         std::vector<std::map<int64_t, int64_t>> depths;
 
         if (directed) {
-            pgrouting::DirectedGraph digraph(directed);
+            pgrouting::DirectedGraph digraph;
             digraph.insert_edges(edges);
             paths = drivingDistance(digraph, roots, distance, equiCostFlag, depths, true);
         } else {
-            pgrouting::UndirectedGraph undigraph(directed);
+            pgrouting::UndirectedGraph undigraph;
             undigraph.insert_edges(edges);
             paths = drivingDistance(undigraph, roots, distance, equiCostFlag, depths, true);
         }
