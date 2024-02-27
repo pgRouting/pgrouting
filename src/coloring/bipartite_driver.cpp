@@ -79,7 +79,7 @@ pgr_do_bipartite(
         hint = nullptr;
 
         std::string logstr;
-        pgrouting::UndirectedGraph undigraph(false);
+        pgrouting::UndirectedGraph undigraph;
         undigraph.insert_edges(edges);
         std::vector<II_t_rt> results;
         pgrouting::functions::Pgr_Bipartite <pgrouting::UndirectedGraph> fn_Bipartite;
