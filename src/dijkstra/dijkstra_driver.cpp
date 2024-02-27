@@ -165,11 +165,11 @@ pgr_do_dijkstra(
         std::deque<Path>paths;
 
         if (directed) {
-            pgrouting::DirectedGraph graph(directed);
+            pgrouting::DirectedGraph graph;
             graph.insert_edges(edges);
             paths =  pgrouting::algorithms::dijkstra(graph, combinations, only_cost, n);
         } else {
-            pgrouting::UndirectedGraph graph(directed);
+            pgrouting::UndirectedGraph graph;
             graph.insert_edges(edges);
             paths =  pgrouting::algorithms::dijkstra(graph, combinations, only_cost, n);
         }
