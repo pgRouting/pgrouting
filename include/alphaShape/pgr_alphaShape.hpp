@@ -53,7 +53,7 @@ using BG = boost::adjacency_list<
         boost::setS, boost::vecS,
         boost::undirectedS,
         XY_vertex, Basic_edge >;
-using G = graph::Pgr_base_graph <BG, XY_vertex, Basic_edge>;
+using G = graph::Pgr_base_graph <BG, XY_vertex, Basic_edge, false>;
 using E = boost::graph_traits<BG>::edge_descriptor;
 using V = boost::graph_traits<BG>::vertex_descriptor;
 
