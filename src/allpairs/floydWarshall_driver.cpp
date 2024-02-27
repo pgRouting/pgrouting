@@ -72,12 +72,12 @@ pgr_do_floydWarshall(
 
         if (directed) {
             log << "Processing Directed graph\n";
-            pgrouting::DirectedGraph digraph(directed);
+            pgrouting::DirectedGraph digraph;
             digraph.insert_edges(edges);
             pgr_floydWarshall(digraph, *return_count, return_tuples);
         } else {
             log << "Processing Undirected graph\n";
-            pgrouting::UndirectedGraph undigraph(directed);
+            pgrouting::UndirectedGraph undigraph;
             undigraph.insert_edges(edges);
             pgr_floydWarshall(undigraph, *return_count, return_tuples);
         }
