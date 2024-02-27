@@ -104,7 +104,7 @@ void pgr_do_cuthillMckeeOrdering(
         hint = nullptr;
 
         std::vector<II_t_rt>results;
-        pgrouting::UndirectedGraph undigraph(false);
+        pgrouting::UndirectedGraph undigraph;
         undigraph.insert_edges(edges);
         results = cuthillMckeeOrdering(undigraph);
 
