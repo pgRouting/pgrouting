@@ -118,12 +118,12 @@ pgr_do_breadthFirstSearch(
 
         std::vector<MST_rt> results;
         if (directed) {
-            pgrouting::DirectedGraph digraph(directed);
+            pgrouting::DirectedGraph digraph;
             digraph.insert_edges(edges);
             results = breadthFirstSearch(digraph, roots, max_depth);
 
         } else {
-            pgrouting::UndirectedGraph undigraph(directed);
+            pgrouting::UndirectedGraph undigraph;
             undigraph.insert_edges(edges);
             results = breadthFirstSearch(undigraph, roots, max_depth);
         }
