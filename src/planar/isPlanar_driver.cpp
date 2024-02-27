@@ -73,7 +73,7 @@ pgr_do_isPlanar(
         }
         hint = nullptr;
 
-        pgrouting::UndirectedGraph undigraph(false);
+        pgrouting::UndirectedGraph undigraph;
         undigraph.insert_edges(edges);
         pgrouting::functions::Pgr_boyerMyrvold<pgrouting::UndirectedGraph> fn_isPlanar;
         result = fn_isPlanar.isPlanar(undigraph);
