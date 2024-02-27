@@ -48,12 +48,12 @@ namespace graph {
 using CHUndirectedGraph =  Pgr_contractionGraph <
     boost::adjacency_list < boost::listS, boost::vecS,
     boost::undirectedS,
-    CH_vertex, CH_edge>>;
+    CH_vertex, CH_edge>, false>;
 
 using CHDirectedGraph = Pgr_contractionGraph<
     boost::adjacency_list < boost::listS, boost::vecS,
     boost::bidirectionalS,
-    CH_vertex, CH_edge>>;
+    CH_vertex, CH_edge>, true>;
 
 
 }  // namespace graph

@@ -47,8 +47,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace graph {
 
-template <class G>
-class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge> {
+template <class G, bool t_directed>
+class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge, t_directed> {
  public:
      typedef typename boost::graph_traits < G >::vertex_descriptor V;
      typedef typename boost::graph_traits < G >::edge_descriptor E;
@@ -58,8 +58,8 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge> {
      /*!
        Prepares the _graph_ to be of type *directed*
        */
-     explicit Pgr_contractionGraph<G>(bool directed)
-         : Pgr_base_graph<G, CH_vertex, CH_edge >(directed) {
+     explicit Pgr_contractionGraph<G, t_directed>()
+         : Pgr_base_graph<G, CH_vertex, CH_edge, t_directed>() {
          }
 
      /*! @brief get the vertex descriptors of adjacent vertices of *v*
