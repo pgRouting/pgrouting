@@ -123,7 +123,7 @@ pgr_do_depthFirstSearch(
             *log_msg = pgr_msg(edges_sql);
         } else {
             if (directed) {
-                pgrouting::DirectedGraph digraph(directed);
+                pgrouting::DirectedGraph digraph;
                 digraph.insert_edges(edges);
 
             results = pgr_depthFirstSearch(
@@ -132,7 +132,7 @@ pgr_do_depthFirstSearch(
                     directed,
                     max_depth);
             } else {
-                pgrouting::UndirectedGraph undigraph(directed);
+                pgrouting::UndirectedGraph undigraph;
                 undigraph.insert_edges(edges);
 
                 results = pgr_depthFirstSearch(
