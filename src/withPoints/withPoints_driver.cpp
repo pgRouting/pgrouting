@@ -164,7 +164,7 @@ pgr_do_withPoints(
 
         std::deque<Path> paths;
         if (directed) {
-            pgrouting::DirectedGraph digraph(vertices, directed);
+            pgrouting::DirectedGraph digraph(vertices);
             digraph.insert_edges(edges);
             digraph.insert_edges(pg_graph.new_edges());
 
@@ -173,7 +173,7 @@ pgr_do_withPoints(
                     combinations,
                     only_cost, normal);
         } else {
-            pgrouting::UndirectedGraph undigraph(vertices, directed);
+            pgrouting::UndirectedGraph undigraph(vertices);
             undigraph.insert_edges(edges);
             undigraph.insert_edges(pg_graph.new_edges());
             paths = pgr_dijkstra(
