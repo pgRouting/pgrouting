@@ -179,7 +179,7 @@ pgr_do_binaryBreadthFirstSearch(
 
         std::deque< Path >paths;
         if (directed) {
-            pgrouting::DirectedGraph digraph(directed);
+            pgrouting::DirectedGraph digraph;
             digraph.insert_edges(edges);
 
             if (!(costCheck(digraph))) {
@@ -190,7 +190,7 @@ pgr_do_binaryBreadthFirstSearch(
             paths = binaryBreadthFirstSearch(digraph, combinations);
 
         } else {
-            pgrouting::UndirectedGraph undigraph(directed);
+            pgrouting::UndirectedGraph undigraph;
             undigraph.insert_edges(edges);
 
             if (!(costCheck(undigraph))) {
