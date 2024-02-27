@@ -44,8 +44,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace graph {
 
-template <class G, typename T_V, typename T_E>
-class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E> {
+template <class G, typename T_V, typename T_E, bool t_directed>
+class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E, t_directed> {
  public:
     typedef typename boost::graph_traits < G >::vertex_descriptor V;
     typedef typename boost::graph_traits < G >::edge_descriptor E;
@@ -55,20 +55,20 @@ class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E> {
     typedef typename boost::graph_traits < G >::in_edge_iterator EI_i;
 
 
-    explicit Pgr_lineGraphFull< G, T_V, T_E >(bool directed)
-        : Pgr_base_graph< G, T_V, T_E >(directed),
+    explicit Pgr_lineGraphFull< G, T_V, T_E, t_directed>(bool directed)
+        : Pgr_base_graph<G, T_V, T_E, t_directed>(),
         m_num_edges(0) {
         }
 
-    explicit Pgr_lineGraphFull< G, T_V, T_E >(const pgrouting::DirectedGraph &digraph)
-        : Pgr_base_graph< G, T_V, T_E >(true) {
+    explicit Pgr_lineGraphFull<G, T_V, T_E, t_directed>(const pgrouting::DirectedGraph &digraph)
+        : Pgr_base_graph<G, T_V, T_E, t_directed>() {
             apply_transformation(digraph);
             store_edge_costs(digraph);
         }
 
     friend std::ostream& operator<<(
-            std::ostream &log, const Pgr_lineGraphFull< G, T_V, T_E > &g) {
-        typename Pgr_base_graph< G, T_V, T_E >::EO_i out, out_end;
+            std::ostream &log, const Pgr_lineGraphFull<G, T_V, T_E, t_directed> &g) {
+        typename Pgr_base_graph<G, T_V, T_E, t_directed>::EO_i out, out_end;
 
         for (auto vi = vertices(g.graph).first;
                 vi != vertices(g.graph).second; ++vi) {
