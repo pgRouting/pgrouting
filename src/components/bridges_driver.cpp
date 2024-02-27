@@ -76,7 +76,7 @@ pgr_do_bridges(
         }
         hint = nullptr;
 
-        pgrouting::UndirectedGraph undigraph(false);
+        pgrouting::UndirectedGraph undigraph;
         undigraph.insert_edges(edges);
         auto results = pgrouting::algorithms::bridges(undigraph);
 

@@ -78,7 +78,7 @@ pgr_do_strongComponents(
         }
         hint = nullptr;
 
-        pgrouting::DirectedGraph digraph(true);
+        pgrouting::DirectedGraph digraph;
         digraph.insert_edges(edges);
         auto results(pgrouting::algorithms::strongComponents(digraph));
 
