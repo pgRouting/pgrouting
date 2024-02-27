@@ -87,7 +87,7 @@ pgr_do_stoerWagner(
 
         std::vector<StoerWagner_t> results;
 
-        pgrouting::UndirectedGraph undigraph(false);
+        pgrouting::UndirectedGraph undigraph;
         undigraph.insert_edges(edges);
         results = pgr_stoerWagner(
                     undigraph);
