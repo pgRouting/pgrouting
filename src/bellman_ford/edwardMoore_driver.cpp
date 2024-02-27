@@ -146,11 +146,11 @@ pgr_do_edwardMoore(
 
         std::deque<Path> paths;
         if (directed) {
-            pgrouting::DirectedGraph digraph(directed);
+            pgrouting::DirectedGraph digraph;
             digraph.insert_edges(edges);
             paths = edwardMoore(digraph, combinations);
         } else {
-            pgrouting::UndirectedGraph undigraph(directed);
+            pgrouting::UndirectedGraph undigraph;
             undigraph.insert_edges(edges);
            paths = edwardMoore(undigraph, combinations);
         }
