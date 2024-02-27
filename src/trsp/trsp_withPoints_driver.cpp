@@ -165,7 +165,7 @@ pgr_do_trsp_withPoints(
 
         std::deque<Path> paths;
         if (directed) {
-            pgrouting::DirectedGraph digraph(vertices, directed);
+            pgrouting::DirectedGraph digraph;
             digraph.insert_edges(edges);
             digraph.insert_edges(pg_graph.new_edges());
 
@@ -174,7 +174,7 @@ pgr_do_trsp_withPoints(
                     combinations,
                     false, (std::numeric_limits<size_t>::max)());
         } else {
-            pgrouting::UndirectedGraph undigraph(vertices, directed);
+            pgrouting::UndirectedGraph undigraph;
             undigraph.insert_edges(edges);
             undigraph.insert_edges(pg_graph.new_edges());
 
