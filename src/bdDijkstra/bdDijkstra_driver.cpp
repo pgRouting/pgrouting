@@ -136,11 +136,11 @@ pgr_do_bdDijkstra(
         std::deque<Path> paths;
 
         if (directed) {
-            pgrouting::DirectedGraph graph(directed);
+            pgrouting::DirectedGraph graph;
             graph.insert_edges(edges);
             paths = pgr_bdDijkstra(graph, combinations, only_cost);
         } else {
-            pgrouting::UndirectedGraph graph(directed);
+            pgrouting::UndirectedGraph graph;
             graph.insert_edges(edges);
             paths = pgr_bdDijkstra(graph, combinations, only_cost);
         }
