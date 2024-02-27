@@ -167,7 +167,7 @@ digraph.insert_edges(new_edges);
 */
 
 namespace graph {
-template <class G, typename Vertex, typename Edge>
+template <class G, typename Vertex, typename Edge, bool t_directed>
 class Pgr_base_graph;
 
 }  // namespace graph
@@ -186,32 +186,32 @@ typedef graph::Pgr_base_graph <
 boost::adjacency_list < boost::vecS, boost::vecS,
     boost::undirectedS,
     Basic_vertex, Basic_edge >,
-    Basic_vertex, Basic_edge > UndirectedGraph;
+    Basic_vertex, Basic_edge, false > UndirectedGraph;
 
 typedef graph::Pgr_base_graph <
 boost::adjacency_list < boost::vecS, boost::vecS,
     boost::bidirectionalS,
     Basic_vertex, Basic_edge >,
-    Basic_vertex, Basic_edge > DirectedGraph;
+    Basic_vertex, Basic_edge , true> DirectedGraph;
 
 typedef graph::Pgr_base_graph <
 boost::adjacency_list < boost::listS, boost::vecS,
     boost::undirectedS,
     XY_vertex, Basic_edge >,
-    XY_vertex, Basic_edge > xyUndirectedGraph;
+    XY_vertex, Basic_edge , false> xyUndirectedGraph;
 
 typedef graph::Pgr_base_graph <
 boost::adjacency_list < boost::listS, boost::vecS,
     boost::bidirectionalS,
     XY_vertex, Basic_edge >,
-    XY_vertex, Basic_edge > xyDirectedGraph;
+    XY_vertex, Basic_edge , true> xyDirectedGraph;
 
 /**@}*/
 
 
 namespace graph {
 
-template <typename G, typename T_V, typename T_E>
+template <typename G, typename T_V, typename T_E, bool t_directed>
 class Pgr_base_graph {
  public:
      /** @name Graph related types
@@ -265,10 +265,10 @@ class Pgr_base_graph {
        - inserts the vertices
        - The vertices must be checked (if necessary)  before calling the constructor
        */
-     Pgr_base_graph<G , T_V, T_E>(
+     Pgr_base_graph<G , T_V, T_E, t_directed>(
              const std::vector< T_V > &vertices, bool directed)
          : graph(vertices.size()),
-         m_is_directed(directed),
+         m_is_directed(t_directed),
          vertIndex(boost::get(boost::vertex_index, graph)),
          propmapIndex(mapIndex) {
              // This code does not work with contraction
@@ -295,9 +295,9 @@ class Pgr_base_graph {
      /**
        Prepares the _graph_ to be of type gtype with 0 vertices
        */
-     explicit Pgr_base_graph<G , T_V, T_E >(bool directed)
+     explicit Pgr_base_graph<G , T_V, T_E, t_directed>(bool directed)
          : graph(0),
-         m_is_directed(directed),
+         m_is_directed(t_directed),
          vertIndex(boost::get(boost::vertex_index, graph)),
          propmapIndex(mapIndex) {
          }
@@ -539,15 +539,15 @@ class Pgr_base_graph {
      /** @name only for debug */
      /**@{*/
      friend std::ostream& operator<<(
-             std::ostream &log, const Pgr_base_graph< G, T_V, T_E > &g) {
-         typename Pgr_base_graph< G, T_V, T_E >::EO_i out, out_end;
+             std::ostream &log, const Pgr_base_graph<G, T_V, T_E, t_directed> &g) {
+         typename Pgr_base_graph<G, T_V, T_E, t_directed>::EO_i out, out_end;
 
-         for (auto vi = vertices(g.graph).first;
-                 vi != vertices(g.graph).second; ++vi) {
+         auto vs = boost::vertices(g.graph);
+         for (auto vi = vs.first; vi != vs.second; ++vi) {
              if ((*vi) >= g.num_vertices()) break;
              log << (*vi) << ": " << " out_edges_of(" << g.graph[(*vi)] << "):";
-             for (boost::tie(out, out_end) = out_edges(*vi, g.graph);
-                     out != out_end; ++out) {
+             auto es = boost::out_edges(*vi, g.graph);
+             for (auto out = es.first; out != es.second; ++out) {
                  log << ' '
                      << g.graph[*out].id << "=("
                      << g[g.source(*out)].id << ", "
