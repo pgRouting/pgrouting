@@ -86,7 +86,7 @@ pgr_do_prim(
 
         std::vector<MST_rt> results;
 
-        pgrouting::UndirectedGraph undigraph(false);
+        pgrouting::UndirectedGraph undigraph;
         undigraph.insert_min_edges_no_parallel(edges);
         pgrouting::functions::Pgr_prim<pgrouting::UndirectedGraph> prim;
 
