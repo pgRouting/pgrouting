@@ -125,12 +125,12 @@ pgr_do_withPointsDD(
         std::vector<std::map<int64_t, int64_t>> depths;
 
         if (directed) {
-            pgrouting::DirectedGraph digraph(directed);
+            pgrouting::DirectedGraph digraph;
             digraph.insert_edges(edges);
             digraph.insert_edges(pg_graph.new_edges());
             paths = drivingDistance(digraph, roots, distance, equiCost, depths, details);
         } else {
-            pgrouting::UndirectedGraph undigraph(directed);
+            pgrouting::UndirectedGraph undigraph;
             undigraph.insert_edges(edges);
             undigraph.insert_edges(pg_graph.new_edges());
             paths = drivingDistance(undigraph, roots, distance, equiCost, depths, details);
