@@ -145,7 +145,7 @@ pgr_do_turnRestrictedPath(
         std::string logstr;
         if (directed) {
             log << "Working with directed Graph\n";
-            pgrouting::DirectedGraph digraph(directed);
+            pgrouting::DirectedGraph digraph;
             Pgr_turnRestrictedPath < pgrouting::DirectedGraph > fn_TRSP;
             digraph.insert_edges(edges);
             log << digraph;
@@ -162,7 +162,7 @@ pgr_do_turnRestrictedPath(
                     strict);
         } else {
             log << "TODO Working with Undirected Graph\n";
-            pgrouting::UndirectedGraph undigraph(directed);
+            pgrouting::UndirectedGraph undigraph;
             Pgr_turnRestrictedPath < pgrouting::UndirectedGraph > fn_TRSP;
             undigraph.insert_edges(edges);
             paths = pgr_dijkstraTR(undigraph,

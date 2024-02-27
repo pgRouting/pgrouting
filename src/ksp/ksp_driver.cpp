@@ -110,11 +110,11 @@ void pgr_do_ksp(
         std::deque<Path>paths;
 
         if (directed) {
-            pgrouting::DirectedGraph graph(directed);
+            pgrouting::DirectedGraph graph;
             graph.insert_edges(edges);
             paths = pgrouting::algorithms::Yen(graph, combinations, k, heap_paths);
         } else {
-            pgrouting::UndirectedGraph graph(directed);
+            pgrouting::UndirectedGraph graph;
             graph.insert_edges(edges);
             paths = pgrouting::algorithms::Yen(graph, combinations, k, heap_paths);
         }

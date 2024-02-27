@@ -137,13 +137,13 @@ pgr_do_withPointsKsp(
 
         std::deque<Path> paths;
         if (directed) {
-            pgrouting::DirectedGraph digraph(directed);
+            pgrouting::DirectedGraph digraph;
             digraph.insert_edges(edges);
             digraph.insert_edges(pg_graph.new_edges());
 
             paths = pgrouting::algorithms::Yen(digraph, combinations, k, heap_paths);
         } else {
-            pgrouting::UndirectedGraph undigraph(directed);
+            pgrouting::UndirectedGraph undigraph;
             undigraph.insert_edges(edges);
             undigraph.insert_edges(pg_graph.new_edges());
 
