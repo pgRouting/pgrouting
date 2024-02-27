@@ -151,11 +151,11 @@ pgr_do_bellman_ford(
 
         std::deque<Path> paths;
         if (directed) {
-            pgrouting::DirectedGraph digraph(directed);
+            pgrouting::DirectedGraph digraph;
             digraph.insert_edges(edges);
             paths = bellman_ford(digraph, combinations, only_cost);
         } else {
-            pgrouting::UndirectedGraph undigraph(directed);
+            pgrouting::UndirectedGraph undigraph;
             undigraph.insert_edges(edges);
             paths = bellman_ford(undigraph, combinations, only_cost);
         }
