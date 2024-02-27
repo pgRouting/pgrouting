@@ -96,7 +96,7 @@ pgr_do_hawickCircuits(
 
         std::deque <circuits_rt> results;
 
-        pgrouting::DirectedGraph digraph(true);
+        pgrouting::DirectedGraph digraph;
         digraph.insert_edges(edges);
 
         results = pgr_hawickCircuits(digraph);
