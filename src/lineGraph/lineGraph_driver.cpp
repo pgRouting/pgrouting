@@ -97,14 +97,14 @@ pgr_do_lineGraph(
 
 
 
-        pgrouting::DirectedGraph digraph(directed);
+        pgrouting::DirectedGraph digraph;
         digraph.insert_edges_neg(edges);
 
         log << digraph << "\n";
         pgrouting::graph::Pgr_lineGraph<
             pgrouting::LinearDirectedGraph,
             pgrouting::Line_vertex,
-            pgrouting::Basic_edge> line(digraph);
+            pgrouting::Basic_edge, true> line(digraph);
         std::vector< Edge_rt > line_graph_edges;
         line_graph_edges = line.get_postgres_results_directed();
         auto count = line_graph_edges.size();

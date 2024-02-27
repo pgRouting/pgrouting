@@ -99,13 +99,13 @@ pgr_do_lineGraphFull(
         }
         hint = nullptr;
 
-        pgrouting::DirectedGraph digraph(true);
+        pgrouting::DirectedGraph digraph;
         digraph.insert_edges_neg(edges);
 
         pgrouting::graph::Pgr_lineGraphFull<
             pgrouting::LinearDirectedGraph,
             pgrouting::Line_vertex,
-            pgrouting::Basic_edge > line(digraph);
+            pgrouting::Basic_edge, true> line(digraph);
 
         std::vector< Line_graph_full_rt > line_graph_edges;
         line_graph_edges = line.get_postgres_results_directed();
