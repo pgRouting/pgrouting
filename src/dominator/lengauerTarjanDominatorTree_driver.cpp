@@ -82,7 +82,7 @@ pgr_do_LTDTree(
 
         std::string logstr;
 
-        pgrouting::DirectedGraph digraph(true);
+        pgrouting::DirectedGraph digraph;
         digraph.insert_edges(edges);
         std::vector<II_t_rt> results;
         pgrouting::functions::Pgr_LTDTree<pgrouting::DirectedGraph> fn_LTDTree;
