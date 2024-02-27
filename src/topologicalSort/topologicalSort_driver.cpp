@@ -91,7 +91,7 @@ pgr_do_topologicalSort(
         hint = nullptr;
 
         std::vector<I_rt> results;
-        pgrouting::DirectedGraph digraph(true);
+        pgrouting::DirectedGraph digraph;
         digraph.insert_edges(edges);
         results = pgr_topologicalSort(
                 digraph);
