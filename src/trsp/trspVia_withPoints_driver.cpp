@@ -207,7 +207,7 @@ pgr_do_trspVia_withPoints(
 
         std::deque<Path> paths;
         if (directed) {
-            pgrouting::DirectedGraph digraph(vertices, directed);
+            pgrouting::DirectedGraph digraph;
             digraph.insert_edges(edges);
             digraph.insert_edges(pg_graph.new_edges());
             pgrouting::pgr_dijkstraVia(
@@ -218,7 +218,7 @@ pgr_do_trspVia_withPoints(
                     U_turn_on_edge,
                     log);
         } else {
-            pgrouting::UndirectedGraph undigraph(vertices, directed);
+            pgrouting::UndirectedGraph undigraph;
             undigraph.insert_edges(edges);
             undigraph.insert_edges(pg_graph.new_edges());
             pgrouting::pgr_dijkstraVia(

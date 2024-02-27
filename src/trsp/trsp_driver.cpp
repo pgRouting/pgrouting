@@ -151,14 +151,14 @@ pgr_do_trsp(
 
         std::deque<Path> paths;
         if (directed) {
-            pgrouting::DirectedGraph digraph(directed);
+            pgrouting::DirectedGraph digraph;
             digraph.insert_edges(edges);
 
             paths = pgr_dijkstra(
                     digraph,
                     combinations);
         } else {
-            pgrouting::UndirectedGraph undigraph(directed);
+            pgrouting::UndirectedGraph undigraph;
             undigraph.insert_edges(edges);
 
             paths = pgr_dijkstra(
