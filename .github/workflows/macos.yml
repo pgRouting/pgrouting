@@ -41,7 +41,12 @@ permissions:
 jobs:
   build:
     name: macos
-    runs-on: macos-latest
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, macos-14]
 
     steps:
       - name: Checkout repository
