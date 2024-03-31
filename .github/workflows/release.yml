@@ -153,7 +153,7 @@ jobs:
           tar -zcvf doc-v${PGROUTING_VERSION}-es.tar.gz doc-v${PGROUTING_VERSION}-es
 
           cd ../..
-          grep -Pzo "(?s)pgRouting ${PGROUTING_VERSION//./\\.} Release Notes.*?(?=pgRouting .\..\.. Release Notes)" NEWS | tr '\0' '\n' > release_body.txt
+          grep -Pzo "(?s)pgRouting ${PGROUTING_VERSION//./\\.} Release Notes.*?(?=pgRouting .\..\.. Release Notes)" NEWS.md | tr '\0' '\n' > release_body.txt
           echo "**Attachments**" >> release_body.txt
           echo "File | Contents" >> release_body.txt
           echo "| --- | --- |" >> release_body.txt
