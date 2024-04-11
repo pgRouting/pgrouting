@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-13 01:27+0000\n"
-"PO-Revision-Date: 2024-01-07 23:45+0000\n"
+"PO-Revision-Date: 2024-04-11 04:15+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.3\n"
+"X-Generator: Weblate 5.4.3\n"
 "Generated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
@@ -4945,17 +4945,15 @@ msgstr ""
 msgid "Official functions changes"
 msgstr ""
 
-#, fuzzy
 msgid ""
 "`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standarize "
 "spanning tree functions output"
 msgstr ""
-"`#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__ estandarización "
-"de resultados de pgr_aStar"
+"`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Estandarización "
+"de las salida de las funciones de árbol de expansión"
 
-#, fuzzy
 msgid "Functions:"
-msgstr "Nuevas Funciones"
+msgstr "Funciones:"
 
 msgid "``pgr_kruskalDD``"
 msgstr "``pgr_kruskalDD``"
@@ -4978,9 +4976,8 @@ msgstr "``pgr_primBFS``"
 msgid "Standarizing output columns to |result-spantree|"
 msgstr "Estandarización de columnas de resultados a |result-spantree|"
 
-#, fuzzy
 msgid "Added ``pred`` result columns."
-msgstr "Agregado las columnas de resultados``depth`` y ``pred``."
+msgstr "Agregado columna de resultados ``pred``."
 
 msgid "Code enhancement"
 msgstr "Mejora del código"
@@ -4992,21 +4989,19 @@ msgstr ""
 "`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Limpiando "
 "Driving Distance"
 
-#, fuzzy
 msgid ""
 "`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__  Read "
 "postgresql data on C++"
 msgstr ""
-"`#2517 <https://github.com/pgRouting/pgrouting/pull/2517>`__ Simplificación "
-"del código de Astar."
+"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Leer datos de "
+"postgresql en C++"
 
-#, fuzzy
 msgid ""
 "`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__  Clang tidy "
 "does not work"
 msgstr ""
-"`#2517 <https://github.com/pgRouting/pgrouting/pull/2517>`__ Simplificación "
-"del código de Astar."
+"`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy no "
+"funciona"
 
 msgid "Others"
 msgstr "Otros"
@@ -5114,7 +5109,6 @@ msgstr "``pgr_aStar`` (`Muchos a Uno`) no tiene ``end_vid``."
 msgid "Migration"
 msgstr "Migración"
 
-#, fuzzy
 msgid "Be aware of the existence of the additional columns."
 msgstr "Tener en cuenta la existencia de las columnas adicionales."
 
@@ -5238,12 +5232,11 @@ msgstr "Si es necesario, añadir las nuevas columnas, por ejemplo:"
 msgid "Migration of ``pgr_drivingdistance``"
 msgstr "Migración de ``pgr_drivingDistance``"
 
-#, fuzzy
 msgid ""
 "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :"
 "doc:`pgr_drivingDistance` result columns are being standardized."
 msgstr ""
-"A partir de `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__, "
+"A partir de `v3.6.0 <https://docs.pgrouting.org/3.6/es/migration.html>`__, "
 "las columnas resultantes de :doc:`pgr_drivingDistance` son estandarizadas."
 
 msgid "from"
@@ -5276,7 +5269,6 @@ msgstr "Tiene la columa de resultados ``from_v`` en vez de ``start_vid``."
 msgid "does not have ``depth`` result column."
 msgstr "no tiene la columna ``depth`` en los resultados."
 
-#, fuzzy
 msgid "Be aware of the existence and name change of the result columns."
 msgstr ""
 "Tener en cuenta la existencia y el cambio de nombre de las columnas de "
@@ -5313,7 +5305,6 @@ msgid "The ``from_v`` result column name changes to ``start_vid``."
 msgstr ""
 "El nombre de la columna de resultados ``from_v`` cambia a ``start_vid``."
 
-#, fuzzy
 msgid ""
 "If needed filter out and rename columns, for example, to return the original "
 "columns:"
@@ -5325,18 +5316,17 @@ msgid ""
 "Migration of ``pgr_kruskalDD`` / ``pgr_kruskalBFS`` / ``pgr_kruskalDFS``"
 msgstr ""
 
-#, fuzzy
 msgid ""
 "Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__ :"
 "doc:`pgr_kruskalDD`, :doc:`pgr_kruskalBFS` and :doc:`pgr_kruskalDFS` result "
 "columns are being standardized."
 msgstr ""
-"A partir de `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__, "
-"las columnas resultantes de :doc:`pgr_drivingDistance` son estandarizadas."
+"A partir de `v3.6.0 <https://docs.pgrouting.org/3.6/es/migration.html>`__, "
+"Las columnas resultantes de :doc:`pgr_kruskalDD`, :doc:`pgr_kruskalBFS` and "
+":doc:`pgr_kruskalDFS` son estandarizadas."
 
-#, fuzzy
 msgid "|result-bfs|"
-msgstr "Resultados"
+msgstr "|result-bfs|"
 
 msgid "Single vertex"
 msgstr "Vértice único"
@@ -5361,9 +5351,8 @@ msgid "Be aware of the existence of `pred` result columns."
 msgstr ""
 "Tener en cuenta la existencia de las columnas de adicionales de resultados."
 
-#, fuzzy
 msgid "If needed filter out the added columns"
-msgstr "Si es necesario, filtrar las columnas añadidas, por ejemplo:"
+msgstr "Si es necesario, filtrar las columnas añadidas"
 
 #, fuzzy
 msgid "Kruskal single vertex"
@@ -5374,41 +5363,37 @@ msgid ""
 "functions."
 msgstr ""
 
-#, fuzzy
 msgid ""
 "Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_kruskalDD."
 "html#single-vertex>`__ example."
 msgstr ""
-"Usando `éste <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
-"vertex>`__ ejemplo."
+"Comparación con `este ejemplo <https://docs.pgrouting.org/3.6/es/"
+"pgr_kruskalDD.html#single-vertex>`__."
 
-#, fuzzy
 msgid ""
 "Now column ``pred`` exists and contains the predecessor of the ``node``."
-msgstr "``pred`` contiene el predecesor del ``nodo``."
+msgstr "Ahora la columna ``pred`` existe y contiene el predecesor del ``node``."
 
 #, fuzzy
 msgid "Kruskal multiple vertices"
 msgstr "Múltiples vértices"
 
-#, fuzzy
 msgid ""
 "Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_kruskalDD."
 "html#multiple-vertex>`__ example."
 msgstr ""
-"Usando `éste <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD."
-"html#multiple-vertices>`__ ejemplo."
+"Comparación con `este ejemplo <https://docs.pgrouting.org/3.6/es/"
+"pgr_kruskalDD.html#multiple-vertex>`__."
 
 msgid "Migration of ``pgr_KSP``"
 msgstr "Migración de ``pgr_KSP``"
 
-#, fuzzy
 msgid ""
 "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :"
 "doc:`pgr_KSP` result columns are being standardized."
 msgstr ""
-"A partir de `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ "
-"las columnas resultantes de :doc:`pgr_KSP` son estandarizadas."
+"A partir de `v3.6.0 <https://docs.pgrouting.org/3.6/es/migration.html>`__ En "
+":doc:`pgr_KSP` las columnas de resultados están siendo estandarizadas."
 
 msgid "|ksp-result|"
 msgstr "|ksp-result|"
