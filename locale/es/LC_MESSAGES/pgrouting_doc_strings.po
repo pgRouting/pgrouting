@@ -8463,7 +8463,7 @@ msgid "OSGeo"
 msgstr "OSGeo"
 
 msgid "OSGeo UK"
-msgstr "OSGeo UK"
+msgstr "OSGeo Reino Unido"
 
 msgid "Paragon Corporation"
 msgstr "Paragon Corporation"
