@@ -12,7 +12,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-13 01:27+0000\n"
 "PO-Revision-Date: 2024-04-11 04:15+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
 "Language: es\n"
@@ -5334,29 +5334,23 @@ msgstr "Vértice único"
 msgid "Multiple vertices"
 msgstr "Múltiples vértices"
 
-#, fuzzy
 msgid "Output columns were |result-bfs|"
-msgstr "Columnas de resultados eran |ksp-result|"
+msgstr "Las columnas de salida fueron |result-bfs|"
 
-#, fuzzy
 msgid "Single vertex and Multiple vertices"
-msgstr "Múltiples vértices"
+msgstr "Vértice único y vértices múltiples"
 
-#, fuzzy
 msgid "Do not have ``pred`` result column."
-msgstr "No tiene un valor de facto."
+msgstr "No tiene columna de resultados ``pred``."
 
-#, fuzzy
 msgid "Be aware of the existence of `pred` result columns."
-msgstr ""
-"Tener en cuenta la existencia de las columnas de adicionales de resultados."
+msgstr "Tenga en cuenta la existencia de columnas de resultados `pred`."
 
 msgid "If needed filter out the added columns"
 msgstr "Si es necesario, filtrar las columnas añadidas"
 
-#, fuzzy
 msgid "Kruskal single vertex"
-msgstr "Vértice único"
+msgstr "Kruskal vértice único"
 
 msgid ""
 "Using ``pgr_KruskalDD`` as example. Migration is similar to al the affected "
@@ -5374,9 +5368,8 @@ msgid ""
 "Now column ``pred`` exists and contains the predecessor of the ``node``."
 msgstr "Ahora la columna ``pred`` existe y contiene el predecesor del ``node``."
 
-#, fuzzy
 msgid "Kruskal multiple vertices"
-msgstr "Múltiples vértices"
+msgstr "Kruskal vértices múltiples"
 
 msgid ""
 "Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_kruskalDD."
@@ -5510,31 +5503,29 @@ msgstr "En la consulta solo devuelve la columna ``edge``."
 msgid "Migration of ``pgr_primDD`` / ``pgr_primBFS`` / ``pgr_primDFS``"
 msgstr ""
 
-#, fuzzy
 msgid ""
 "Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__ :"
 "doc:`pgr_primDD`, :doc:`pgr_primBFS` and :doc:`pgr_primDFS` result columns "
 "are being standardized."
 msgstr ""
-"A partir de `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__, "
-"las columnas resultantes de :doc:`pgr_drivingDistance` son estandarizadas."
+"A partir de `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__ se "
+"estandarizan las columnas de resultados :doc:`pgr_primDD`, :doc:`pgr_primBFS`"
+" y :doc:`pgr_primDFS`."
 
-#, fuzzy
 msgid "Prim single vertex"
-msgstr "Vértice único"
+msgstr "Prim vértice único"
 
 msgid ""
 "Using ``pgr_primDD`` as example. Migration is similar to al the affected "
 "functions."
 msgstr ""
 
-#, fuzzy
 msgid ""
 "Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_primDD."
 "html#single-vertex>`__ example."
 msgstr ""
-"Usando `éste <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
-"vertex>`__ ejemplo."
+"Comparación con `este ejemplo <https://docs.pgrouting.org/3.6/en/pgr_primDD."
+"html#single-vertex>`__."
 
 #, fuzzy
 msgid "Prim multiple vertices"
