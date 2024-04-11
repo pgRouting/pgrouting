@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-13 01:27+0000\n"
-"PO-Revision-Date: 2024-04-11 04:47+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"PO-Revision-Date: 2024-04-12 05:45+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
 "Language: es\n"
@@ -8463,7 +8463,7 @@ msgid "OSGeo"
 msgstr "OSGeo"
 
 msgid "OSGeo UK"
-msgstr "OSGeo Reino Unido"
+msgstr "OSGeo UK"
 
 msgid "Paragon Corporation"
 msgstr "Paragon Corporation"
@@ -8496,7 +8496,7 @@ msgid "Boost C++ source libraries at https://www.boost.org."
 msgstr "Bibliotecas de código Boost C++ en https://www.boost.org."
 
 msgid ":doc:`migration`"
-msgstr ""
+msgstr ":doc:`migration`"
 
 msgid "pgr_KSP"
 msgstr "pgr_KSP"
@@ -8592,7 +8592,7 @@ msgid "Returns set of |nksp-result|"
 msgstr "Regresa conjunto de |nksp-result|"
 
 msgid "OR EMPTY SET"
-msgstr ""
+msgstr "O CONJUNTO VACÍO"
 
 msgid "Example"
 msgstr "Ejemplo"
@@ -8848,7 +8848,7 @@ msgid "Returns set of |tsp-result|"
 msgstr "Regresa el conjunto de |nksp-result|"
 
 msgid "OR EMTPY SET"
-msgstr ""
+msgstr "O CONJUNTO VACÍO"
 
 msgid "Using :doc:`pgr_dijkstraCostMatrix` to generate the matrix information"
 msgstr ""
@@ -9009,7 +9009,7 @@ msgstr ""
 "ejemplo:"
 
 msgid "pgr_TSPeuclidean(`Coordinates SQL`_, ``[start_id, end_id]``)"
-msgstr ""
+msgstr "pgr_TSPeuclidean(`SQL de Coordenadas`_, ``[start_id, end_id]``)"
 
 msgid "With default values"
 msgstr "Con valores predeterminados"
@@ -9090,7 +9090,7 @@ msgid "``pgr_aStar`` — Shortest path using the A* algorithm."
 msgstr "``pgr_aStar`` — La ruta más corta utilizando el algoritmo A*."
 
 msgid "Standarizing output columns to |short-generic-result|"
-msgstr ""
+msgstr "Estandarización de las columnas de salida a |short-generic-result|."
 
 msgid ""
 "``pgr_aStar`` (`One to One`_) added ``start_vid`` and ``end_vid`` columns."
@@ -9475,7 +9475,7 @@ msgid "**options:** ``[the_geom, id, source, target, rows_where]``"
 msgstr "**opcionales:** ``[the_geom, id, source, target, rows_where]``"
 
 msgid "RETURNS ``VARCHAR``"
-msgstr ""
+msgstr "DEVUELVE ``VARCHAR``"
 
 msgid "Prerequisites"
 msgstr "Pre-requisitos"
@@ -9852,12 +9852,14 @@ msgid ""
 "pgr_analyzeOneWay(**geom_table**, **s_in_rules**, **s_out_rules**, "
 "**t_in_rules**, **t_out_rules**, [**options**])"
 msgstr ""
+"pgr_analyzeOneWay(**geom_table**, **s_in_rules**, **s_out_rules**, "
+"**t_in_rules**, **t_out_rules**, [**opciones**])"
 
 msgid "**options:** ``[oneway, source, target, two_way_if_null]``"
 msgstr "**opcionales:** ``[oneway, source, target, two_way_if_null]``"
 
 msgid "RETURNS ``TEXT``"
-msgstr ""
+msgstr "DEVUELVE ``TEXT``"
 
 msgid "s_in_rules"
 msgstr "s_in_rules"
@@ -11025,7 +11027,7 @@ msgid "pgr_chinesePostmanCost(`Edges SQL`_)"
 msgstr "pgr_chinesePostmanCost(`SQL de aristas`_)"
 
 msgid "RETURNS ``FLOAT``"
-msgstr ""
+msgstr "DEVUELVE ``FLOAT``"
 
 msgid "``pgr_chinesepostmancost``"
 msgstr "``pgr_chinesepostmancost``"
