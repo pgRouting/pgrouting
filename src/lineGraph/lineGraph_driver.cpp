@@ -64,7 +64,7 @@ void
 pgr_do_lineGraph(
         char *edges_sql,
 
-        bool directed,
+        bool,
         Edge_rt **return_tuples,
         size_t *return_count,
         char ** log_msg,
