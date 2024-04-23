@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-13 01:27+0000\n"
-"PO-Revision-Date: 2024-04-12 05:45+0000\n"
+"PO-Revision-Date: 2024-04-24 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
@@ -13543,84 +13543,92 @@ msgid "One point"
 msgstr ""
 
 msgid "Default: ``cap => 1``"
-msgstr ""
+msgstr "Por defecto: ``cap => 1``"
 
 msgid "Maximum one row answer."
-msgstr ""
+msgstr "Respuesta de una fila como máximo."
 
 msgid "Default: ``partial => true``"
-msgstr ""
+msgstr "Por defecto: ``partial => true``"
 
 msgid "With less calculations as possible."
-msgstr ""
+msgstr "Con menos cálculos posibles."
 
 msgid "Default: ``dryrun => false``"
-msgstr ""
+msgstr "Por defecto: ``dryrun => false``"
 
 msgid "Process query"
-msgstr ""
+msgstr "Consulta del proceso"
 
 msgid "Returns"
-msgstr ""
+msgstr "Devuelve"
 
 msgid "values on ``edge_id``, ``fraction``, ``side`` columns."
-msgstr ""
+msgstr "valores en las columnas ``edge_id``, ``fraction``, ``side``."
 
 msgid "``NULL`` on ``distance``, ``geom``, ``edge`` columns."
-msgstr ""
+msgstr "``NULL`` en las columnas ``distance``, ``geom``, ``edge``."
 
 msgid "Many points"
-msgstr ""
+msgstr "Muchos puntos"
 
 msgid ""
 "Find at most :math:`2` edges close to all vertices on the points of interest "
 "table."
 msgstr ""
+"Encuentra como máximo :math:`2` aristas cercanas a todos los vértices de la "
+"tabla de puntos de interés."
 
 msgid "One answer per point, as small as possible."
-msgstr ""
+msgstr "Una respuesta por punto, lo más pequeña posible."
 
 msgid ""
 "Columns ``edge_id``, ``fraction``, ``side`` and ``geom`` are returned with "
 "values."
 msgstr ""
+"Las columnas ``edge_id``, ``fraction``, ``side`` y ``geom`` se devuelven con "
+"valores."
 
 msgid ""
 "``geom`` contains the original point geometry to assist on deterpartialing "
 "to which point geometry the row belongs to."
 msgstr ""
+"``geom`` contiene la geometría de puntos original para ayudar a determinar a "
+"qué geometría de puntos pertenece la fila."
 
 msgid "**point**"
 msgstr "**punto**"
 
 msgid "The point geometry"
-msgstr ""
+msgstr "La geometría del punto"
 
 msgid "**points**"
 msgstr "**puntos**"
 
 msgid "``POINT[]``"
-msgstr ""
+msgstr "``POINT``"
 
 msgid "An array of point geometries"
-msgstr ""
+msgstr "Una matriz de geometrías de puntos"
 
 msgid "**tolerance**"
 msgstr "**tolerancia**"
 
 msgid "Max distance between geometries"
-msgstr ""
+msgstr "Distancia máxima entre geometrías"
 
 msgid "Limit output rows"
-msgstr ""
+msgstr "Limitar las filas de salida"
 
 msgid "``partial``"
-msgstr ""
+msgstr "``parcial``"
 
 msgid ""
 "When ``true`` only columns needed for :doc:`withPoints-category` are "
 "calculated."
 msgstr ""
+"Cuando ``true`` sólo se calculan las columnas necesarias para :doc"
+":`withPoints-category`."
 
 msgid "When ``false`` all columns are calculated"
 msgstr ""
