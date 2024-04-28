@@ -69,7 +69,7 @@ pgr_do_isPlanar(
         auto edges = get_edges(std::string(edges_sql), true, true);
 
         if (edges.empty()) {
-            throw std::string("No edges found");
+            return false;
         }
         hint = nullptr;
 

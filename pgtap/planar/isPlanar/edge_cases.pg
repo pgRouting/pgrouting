@@ -51,7 +51,7 @@ SELECT *
 FROM pgr_isPlanar('q1');
 
 RETURN QUERY
-SELECT throws_ok('zeroEdgeTest2','XX000','No edges found', '2: throws, since graph is empty');
+SELECT set_eq('zeroEdgeTest2',$$VALUES('f'::bool) $$, '2: False, since vertex does not exist');
 
 
 -- vertex not present in graph test
@@ -68,7 +68,7 @@ SELECT *
 FROM pgr_isPlanar('q3');
 
 RETURN QUERY
-SELECT throws_ok('vertexNotPresent4','XX000','No edges found', '2: throws, since graph is empty');
+SELECT set_eq('vertexNotPresent4',$$VALUES('f'::bool) $$, '4:False, Vertex not present in graph');
 
 -- 1 vertex test
 
