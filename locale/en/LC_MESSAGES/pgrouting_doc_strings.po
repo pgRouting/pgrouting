@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-13 01:27+0000\n"
+"POT-Creation-Date: 2024-04-28 19:05-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.14.0\n"
+"Generated-By: Babel 2.12.1\n"
 
 msgid "BFS - Category"
 msgstr ""
@@ -1448,7 +1448,7 @@ msgstr ""
 msgid "16.5"
 msgstr ""
 
-msgid ":math:`10.5 / 60  = 0.175`"
+msgid ":math:`10.5 / 60 = 0.175`"
 msgstr ""
 
 msgid "minutes"
@@ -3380,13 +3380,13 @@ msgstr ""
 msgid ":doc:`pgr_aStarCostMatrix`"
 msgstr ""
 
+msgid ":doc:`pgr_dijkstraCostMatrix`"
+msgstr ""
+
 msgid ":doc:`pgr_bdAstarCostMatrix`"
 msgstr ""
 
 msgid ":doc:`pgr_bdDijkstraCostMatrix`"
-msgstr ""
-
-msgid ":doc:`pgr_dijkstraCostMatrix`"
 msgstr ""
 
 msgid "proposed"
@@ -3663,13 +3663,13 @@ msgid "the set of edges :math:`E`"
 msgstr ""
 
 msgid ""
-":math:`E = \\begin{cases} \\text{ }  \\{(source_i, target_i, cost_i) "
+":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, cost_i) "
 "\\text{ when } cost >=0 \\} & \\quad \\text{if } reverse\\_cost = "
-"\\varnothing \\\\ \\text{ }  \\text{ }  & \\quad \\text{ } \\\\ \\text{ }"
-"  \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} &  \\quad "
-"\\text{ } \\\\ \\cup      \\{(target_i, source_i, reverse\\_cost_i) "
-"\\text{ when } reverse\\_cost_i>=0 \\} & \\quad \\text{if } "
-"reverse\\_cost \\neq \\varnothing \\\\ \\end{cases}`"
+"\\varnothing \\\\ \\text{ } \\text{ }  & \\quad \\text{ } \\\\ \\text{ } "
+"\\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} &  \\quad "
+"\\text{ } \\\\ \\cup \\{(target_i, source_i, reverse\\_cost_i) \\text{ "
+"when } reverse\\_cost_i>=0 \\} & \\quad \\text{if } reverse\\_cost \\neq "
+"\\varnothing \\\\ \\end{cases}`"
 msgstr ""
 
 msgid "Undirected graph"
@@ -3682,17 +3682,17 @@ msgid ":math:`V = source \\cup target \\cup {start_v{vid}} \\cup  {end_{vid}}`"
 msgstr ""
 
 msgid ""
-":math:`E = \\begin{cases} \\text{ }  \\{(source_i, target_i, cost_i) "
-"\\text{ when } cost >=0 \\}  & \\quad \\text{ } \\\\ \\cup      "
-"\\{(target_i, source_i, cost_i) \\text{ when } cost >=0 \\}  & \\quad "
-"\\text{ if } reverse\\_cost = \\varnothing \\\\ \\text{ }  \\text{ }  & "
-"\\text{ } \\\\ \\text{ }  \\{(source_i, target_i, cost_i) \\text{ when } "
-"cost >=0 \\} & \\text{ } \\\\ \\cup  \\{(target_i, source_i, cost_i) "
-"\\text{ when } cost >=0 \\} & \\text{ } \\\\ \\cup  \\{(target_i, "
-"source_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} & "
-"\\text{ } \\\\ \\cup  \\{(source_i, target_i, reverse\\_cost_i) \\text{ "
-"when } reverse\\_cost_i >=0)\\} & \\quad \\text{ if } reverse\\_cost "
-"\\neq \\varnothing \\\\ \\end{cases}`"
+":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, cost_i) "
+"\\text{ when } cost >=0 \\}  & \\quad \\text{ } \\\\ \\cup \\{(target_i, "
+"source_i, cost_i) \\text{ when } cost >=0 \\}  & \\quad \\text{ if } "
+"reverse\\_cost = \\varnothing \\\\ \\text{ } \\text{ }  & \\text{ } \\\\ "
+"\\text{ } \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} & "
+"\\text{ } \\\\ \\cup \\{(target_i, source_i, cost_i) \\text{ when } cost "
+">=0 \\} & \\text{ } \\\\ \\cup \\{(target_i, source_i, reverse\\_cost_i) "
+"\\text{ when } reverse\\_cost_i >=0)\\} & \\text{ } \\\\ \\cup "
+"\\{(source_i, target_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i"
+" >=0)\\} & \\quad \\text{ if } reverse\\_cost \\neq \\varnothing \\\\ "
+"\\end{cases}`"
 msgstr ""
 
 msgid "The problem"
@@ -4445,15 +4445,6 @@ msgstr ""
 msgid ""
 "`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__  Clang tidy "
 "does not work"
-msgstr ""
-
-msgid "Others"
-msgstr ""
-
-msgid "Adjust NEWS generator"
-msgstr ""
-
-msgid "Name change to `NEWS.md` for better visualization on GitHub"
 msgstr ""
 
 msgid "All releases"
@@ -13165,7 +13156,7 @@ msgstr ""
 msgid "old_id"
 msgstr ""
 
-msgid "``bigint``  Identifier of the edge in original table"
+msgid "``bigint`` Identifier of the edge in original table"
 msgstr ""
 
 msgid "sub_id"
@@ -13260,7 +13251,7 @@ msgstr ""
 msgid "Edges with 1 dead end: 1,6,24"
 msgstr ""
 
-msgid "Edges with 2 dead ends  17,18"
+msgid "Edges with 2 dead ends: 17,18"
 msgstr ""
 
 msgid ""
@@ -13274,7 +13265,7 @@ msgstr ""
 msgid "Isolated segments"
 msgstr ""
 
-msgid "two isolated segments:  17 and 18 both they have 2 dead ends"
+msgid "two isolated segments: 17 and 18 both they have 2 dead ends"
 msgstr ""
 
 msgid "No Isolated segments"
@@ -15337,6 +15328,37 @@ msgstr ""
 msgid "pgRouting 3.6"
 msgstr ""
 
+msgid "pgRouting 3.6.2 Release Notes"
+msgstr ""
+
+#, python-format
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git "
+"closed milestone for 3.6.2 "
+"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.2%22>`__"
+msgstr ""
+
+msgid "Upgrade fix"
+msgstr ""
+
+msgid "The upgrade was failing for same minor"
+msgstr ""
+
+msgid "Code fixes"
+msgstr ""
+
+msgid "Fix warnings from cpplint"
+msgstr ""
+
+msgid "Others"
+msgstr ""
+
+msgid "Adjust NEWS generator"
+msgstr ""
+
+msgid "Name change to `NEWS.md` for better visualization on GitHub"
+msgstr ""
+
 msgid "pgRouting 3.6.1 Release Notes"
 msgstr ""
 
@@ -15534,9 +15556,6 @@ msgid "Build fixes"
 msgstr ""
 
 msgid "Fix winnie build"
-msgstr ""
-
-msgid "Code fixes"
 msgstr ""
 
 msgid "Fix clang warnings"
