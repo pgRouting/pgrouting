@@ -10,10 +10,10 @@
     <title>Contraction - Familia de funciones &#8212; pgRouting Manual (3.7-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=abe048be"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=f9d5993e"></script>
     <script src="_static/translations.js?v=efdbd0b9"></script>
@@ -186,7 +186,75 @@
 
 <div class="container">
     <div class="row">
-        <div class="body span12 content" role="main">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#">Contraction - Familia de funciones</a><ul>
+<li><a class="reference internal" href="#introduction">Introducción</a></li>
+<li><a class="reference internal" href="#dead-end-contraction">Contracción sin salida</a><ul>
+<li><a class="reference internal" href="#dead-end">Sin salida</a><ul>
+<li><a class="reference internal" href="#dead-end-vertex-on-undirected-graph">Vértice sin salida en un grafo sin dirigir</a></li>
+<li><a class="reference internal" href="#dead-end-vertex-on-directed-graph">Vértice sin salida en un grafo dirigido</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#operation-dead-end-contraction">Operación: Contracción sin salida</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#linear-contraction">Contracción lineal</a><ul>
+<li><a class="reference internal" href="#linear">Lineal</a><ul>
+<li><a class="reference internal" href="#linear-vertex-on-undirected-graph">Vértice lineal en grafo no dirigido</a></li>
+<li><a class="reference internal" href="#linear-vertex-on-directed-graph">Vértice lineal en grafo dirigido</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#operation-linear-contraction">Operación: Contracción Lineal</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-cycle">El ciclo</a></li>
+<li><a class="reference internal" href="#contracting-sample-data">Contracción de los datos de muestra</a><ul>
+<li><a class="reference internal" href="#construction-of-the-graph-in-the-database">Construcción del grafo en la base de datos</a><ul>
+<li><a class="reference internal" href="#contraction-results">Resultados de la Contracción</a></li>
+<li><a class="reference internal" href="#add-additional-columns">Añadir columnas adicionales</a></li>
+<li><a class="reference internal" href="#store-contraction-information">Almacenar información de contracción</a></li>
+<li><a class="reference internal" href="#the-vertex-table-update">Actualización de la tabla de vértices</a></li>
+<li><a class="reference internal" href="#the-edge-table-update">Actialización de la tabla de aristas</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-contracted-graph">El grafo contraído</a><ul>
+<li><a class="reference internal" href="#vertices-that-belong-to-the-contracted-graph">Vértices que pertenecen al grafo contraído.</a></li>
+<li><a class="reference internal" href="#edges-that-belong-to-the-contracted-graph">Aristas que pertenecen al grafo contraído.</a></li>
+<li><a class="reference internal" href="#contracted-graph">Grafo contraído</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#using-the-contracted-graph">Usando el grafo contraído</a><ul>
+<li><a class="reference internal" href="#case-1-both-source-and-target-belong-to-the-contracted-graph">Caso 1: Tanto el origen como el destino pertenecen al grafo contraído.</a></li>
+<li><a class="reference internal" href="#case-2-source-and-or-target-belong-to-an-edge-subgraph">Caso 2: El origen y/o el destino pertenecen a un subgrafo de aristas.</a></li>
+<li><a class="reference internal" href="#case-3-source-and-or-target-belong-to-a-vertex">Caso 3: El origen y/o el destino pertenecen a un vértice.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="pgr_makeConnected.html" title="Previous Chapter: pgr_makeConnected - Experimental"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_makeConne...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_contraction.html" title="Next Chapter: pgr_contraction"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_contraction &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
             <script> document.write(get_history('contraction-family','es'));  </script>
             
   <div class="line-block">
@@ -611,7 +679,8 @@
 </pre></div>
 </div>
 <p>El grafo original:</p>
-<a class="reference internal image-reference" href="_images/Fig6-undirected.png"><img alt="_images/Fig6-undirected.png" src="_images/Fig6-undirected.png" style="width: 241.0px; height: 217.5px;" /></a>
+<a class="reference internal image-reference" href="_images/Fig6-undirected.png"><img alt="_images/Fig6-undirected.png" src="_images/Fig6-undirected.png" style="width: 241.0px; height: 217.5px;" />
+</a>
 <section id="contraction-results">
 <h4><a class="toc-backref" href="#id3" role="doc-backlink">Resultados de la Contracción</a><a class="headerlink" href="#contraction-results" title="Link to this heading">¶</a></h4>
 <p>Los resultados no representan al grafo contraído. Representan los cambios realizados en el grafo después de aplicar el algoritmo de contracción.</p>
@@ -633,9 +702,11 @@
 </pre></div>
 </div>
 <p>Después de realizar la operación de contracción sin salida:</p>
-<a class="reference internal image-reference" href="_images/undirected_sampledata_b.png"><img alt="_images/undirected_sampledata_b.png" src="_images/undirected_sampledata_b.png" style="width: 175.75px; height: 198.5px;" /></a>
+<a class="reference internal image-reference" href="_images/undirected_sampledata_b.png"><img alt="_images/undirected_sampledata_b.png" src="_images/undirected_sampledata_b.png" style="width: 175.75px; height: 198.5px;" />
+</a>
 <p>Después de hacer la operación de contracción lineal al grafo anterior:</p>
-<a class="reference internal image-reference" href="_images/undirected_sampledata_c.png"><img alt="_images/undirected_sampledata_c.png" src="_images/undirected_sampledata_c.png" style="width: 184.25px; height: 193.75px;" /></a>
+<a class="reference internal image-reference" href="_images/undirected_sampledata_c.png"><img alt="_images/undirected_sampledata_c.png" src="_images/undirected_sampledata_c.png" style="width: 184.25px; height: 193.75px;" />
+</a>
 <p>El proceso para crear el grafo de contracción en la base de datos:</p>
 </section>
 <section id="add-additional-columns">
@@ -832,7 +903,8 @@
 </section>
 <section id="contracted-graph">
 <h4><a class="toc-backref" href="#id11" role="doc-backlink">Grafo contraído</a><a class="headerlink" href="#contracted-graph" title="Link to this heading">¶</a></h4>
-<a class="reference internal image-reference" href="_images/newgraph.png"><img alt="_images/newgraph.png" src="_images/newgraph.png" style="width: 184.25px; height: 193.75px;" /></a>
+<a class="reference internal image-reference" href="_images/newgraph.png"><img alt="_images/newgraph.png" src="_images/newgraph.png" style="width: 184.25px; height: 193.75px;" />
+</a>
 </section>
 </section>
 <section id="using-the-contracted-graph">
@@ -1123,8 +1195,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.7.0-dev.<br/>
-      Actualizado por última vez en feb 13, 2024.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+      Actualizado por última vez en abr 29, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.3.7.<br/>
     </p>
   </div>
 </footer>
