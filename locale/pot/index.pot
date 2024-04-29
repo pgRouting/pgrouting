@@ -117,7 +117,7 @@ msgid ":doc:`pgr_bdDijkstraCost` - Bidirectional Dijkstra to calculate the cost 
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:7
-msgid ":doc:`pgr_bdDijkstraCostMatrix` - Bidirectional Dijkstra algorithm  to create a matrix of costs of the shortest paths."
+msgid ":doc:`pgr_bdDijkstraCostMatrix` - Bidirectional Dijkstra algorithm to create a matrix of costs of the shortest paths."
 msgstr ""
 
 #: ../../build/doc/routingFunctions.rst:29
@@ -275,7 +275,7 @@ msgid "The following functions modify the database directly therefore the user m
 msgstr ""
 
 #: ../../build/doc/topology-functions.rst:6
-msgid ":doc:`pgr_createTopology` -  create a topology based on the geometry."
+msgid ":doc:`pgr_createTopology` - create a topology based on the geometry."
 msgstr ""
 
 #: ../../build/doc/topology-functions.rst:7
@@ -283,7 +283,7 @@ msgid ":doc:`pgr_createVerticesTable` - reconstruct the vertices table based on 
 msgstr ""
 
 #: ../../build/doc/topology-functions.rst:9
-msgid ":doc:`pgr_analyzeGraph`  - to analyze the edges and vertices of the edge table."
+msgid ":doc:`pgr_analyzeGraph` - to analyze the edges and vertices of the edge table."
 msgstr ""
 
 #: ../../build/doc/topology-functions.rst:11
@@ -291,7 +291,7 @@ msgid ":doc:`pgr_analyzeOneWay` - to analyze directionality of the edges."
 msgstr ""
 
 #: ../../build/doc/topology-functions.rst:12
-msgid ":doc:`pgr_nodeNetwork`  -to create nodes to a not noded edge table."
+msgid ":doc:`pgr_nodeNetwork` - to create nodes to a not noded edge table."
 msgstr ""
 
 #: ../../build/doc/routingFunctions.rst:77
