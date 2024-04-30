@@ -16,14 +16,14 @@
 # Jin Igarashi <wushilan0623@gmail.com>, 2021
 # Ko Nagase <nagase@georepublic.co.jp>, 2021
 # Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
-#
+# Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-28 19:05-0600\n"
-"PO-Revision-Date: 2022-09-29 19:13+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"PO-Revision-Date: 2024-05-01 03:45+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/ja/>\n"
 "Language: ja\n"
@@ -31,23 +31,23 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 5.4.3\n"
 "Generated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
-msgstr ""
+msgstr "BFS - カテゴリ"
 
 msgid ":doc:`pgr_kruskalBFS`"
-msgstr ""
+msgstr ":doc:`pgr_kruskalBFS`"
 
 msgid ":doc:`pgr_primBFS`"
-msgstr ""
+msgstr ":doc:`pgr_primBFS`"
 
 msgid "Traversal using breadth first search."
 msgstr ""
 
 msgid "It's implementation is only on **undirected** graph."
-msgstr ""
+msgstr "実装は**undirected**グラフのみです。"
 
 msgid "Process is done only on edges with positive costs."
 msgstr ""
