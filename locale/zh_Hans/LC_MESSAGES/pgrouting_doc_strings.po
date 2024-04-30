@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-28 19:05-0600\n"
-"PO-Revision-Date: 2024-04-29 03:40+0000\n"
+"PO-Revision-Date: 2024-05-01 03:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -36,7 +36,7 @@ msgid "Traversal using breadth first search."
 msgstr "使用广度优先搜索进行遍历。"
 
 msgid "It's implementation is only on **undirected** graph."
-msgstr "它的实现仅在**无向**图上。"
+msgstr "它的实现仅在 **无向** 图上。"
 
 msgid "Process is done only on edges with positive costs."
 msgstr "仅在具有正成本的边进行处理。"
@@ -1499,9 +1499,8 @@ msgstr "9"
 msgid "16.5"
 msgstr "16.5"
 
-#, fuzzy
 msgid ":math:`10.5 / 60 = 0.175`"
-msgstr ":math:`10.5 / 60  = 0.175`"
+msgstr ":math:`10.5 / 60 = 0.175`"
 
 msgid "minutes"
 msgstr "分钟"
@@ -4572,9 +4571,8 @@ msgstr ""
 "`#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__标准化输出"
 "pgr_aStar"
 
-#, fuzzy
 msgid "Functions:"
-msgstr "新函数"
+msgstr "新函数:"
 
 msgid "``pgr_kruskalDD``"
 msgstr "``pgr_kruskalDD``"
@@ -13048,7 +13046,7 @@ msgstr "``pgr_isPlanar`` - 实验"
 msgid ""
 "``pgr_isPlanar`` — Returns a boolean depending upon the planarity of the "
 "graph."
-msgstr "``pgr_isPlanar`` —根据图的平面性返回布尔值."
+msgstr "``pgr_isPlanar`` — 根据图的平面性返回布尔值."
 
 msgid ""
 "A graph is planar if it can be drawn in two-dimensional space with no two of "
