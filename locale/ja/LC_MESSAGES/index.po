@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: 2022-09-29 15:27+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"PO-Revision-Date: 2024-05-01 03:45+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/index/"
 "ja/>\n"
 "Language: ja\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 5.4.3\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/index.rst:12
@@ -283,7 +283,7 @@ msgstr ""
 
 #: ../../build/doc/BFS-category.rst:3 ../../build/doc/kruskal-family.rst:4
 msgid ":doc:`pgr_kruskalBFS`"
-msgstr ""
+msgstr ":doc:`pgr_kruskalBFS`"
 
 #: ../../build/doc/kruskal-family.rst:5
 msgid ":doc:`pgr_kruskalDD`"
@@ -304,7 +304,7 @@ msgstr ""
 
 #: ../../build/doc/BFS-category.rst:4 ../../build/doc/prim-family.rst:4
 msgid ":doc:`pgr_primBFS`"
-msgstr ""
+msgstr ":doc:`pgr_primBFS`"
 
 #: ../../build/doc/prim-family.rst:5
 msgid ":doc:`pgr_primDD`"
