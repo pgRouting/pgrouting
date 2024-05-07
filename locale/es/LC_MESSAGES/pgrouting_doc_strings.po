@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-28 19:05-0600\n"
+"POT-Creation-Date: 2024-05-07 21:31+0000\n"
 "PO-Revision-Date: 2024-04-29 03:40+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
@@ -4984,23 +4984,26 @@ msgstr "Agregado columna de resultados ``pred``."
 msgid "Code enhancement"
 msgstr "Mejora del código"
 
+#, fuzzy
 msgid ""
-"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__  Driving "
+"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Driving "
 "distance cleanup"
 msgstr ""
 "`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Limpiando "
 "Driving Distance"
 
+#, fuzzy
 msgid ""
-"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__  Read "
-"postgresql data on C++"
+"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Read postgresql "
+"data on C++"
 msgstr ""
 "`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Leer datos de "
 "postgresql en C++"
 
+#, fuzzy
 msgid ""
-"`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__  Clang tidy "
-"does not work"
+"`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy does "
+"not work"
 msgstr ""
 "`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy no "
 "funciona"
@@ -14576,13 +14579,18 @@ msgstr ""
 "Dos vértices de L(G) son adyacentes si y sólo si sus aristas "
 "correspondientes comparten un punto final común en G."
 
+#, fuzzy
+msgid "Currently works for undirected graph."
+msgstr "Funciona para grafos no dirigidos."
+
 msgid "pgr_lineGraph(`Edges SQL`_, [``directed``])"
 msgstr "pgr_lineGraph(`SQL de aristas`_, [``directed``])"
 
 msgid "Returns set of |result-lineg|"
 msgstr "Regresa el conjunto de |result-lineg|"
 
-msgid "For a **directed** graph"
+#, fuzzy
+msgid "For an **undirected** graph"
 msgstr "Para un grafo **dirigido**"
 
 msgid "Gives a local identifier for the edge"
