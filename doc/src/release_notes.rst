@@ -64,11 +64,11 @@ milestone for 3.7.0
 
 .. rubric:: Code enhancement
 
-* `#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__  Driving distance
+* `#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Driving distance
   cleanup
-* `#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__  Read postgresql
+* `#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Read postgresql
   data on C++
-* `#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__  Clang tidy does
+* `#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy does
   not work
 
 pgRouting 3.6

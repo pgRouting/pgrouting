@@ -265,7 +265,7 @@ class Pgr_base_graph {
        - inserts the vertices
        - The vertices must be checked (if necessary)  before calling the constructor
        */
-     Pgr_base_graph<G , T_V, T_E, t_directed>(
+     explicit Pgr_base_graph<G , T_V, T_E, t_directed>(
              const std::vector<T_V> &vertices)
          : graph(vertices.size()),
          m_is_directed(t_directed),
