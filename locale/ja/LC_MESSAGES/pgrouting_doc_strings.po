@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-28 19:05-0600\n"
+"POT-Creation-Date: 2024-05-07 21:31+0000\n"
 "PO-Revision-Date: 2024-05-01 03:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/"
@@ -4502,18 +4502,18 @@ msgid "Code enhancement"
 msgstr ""
 
 msgid ""
-"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__  Driving "
+"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Driving "
 "distance cleanup"
 msgstr ""
 
 msgid ""
-"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__  Read "
-"postgresql data on C++"
+"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Read postgresql "
+"data on C++"
 msgstr ""
 
 msgid ""
-"`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__  Clang tidy "
-"does not work"
+"`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy does "
+"not work"
 msgstr ""
 
 msgid "All releases"
@@ -12639,14 +12639,19 @@ msgid ""
 "share a common endpoint in G."
 msgstr ""
 
+#, fuzzy
+msgid "Currently works for undirected graph."
+msgstr "導かれないグラフ。"
+
 msgid "pgr_lineGraph(`Edges SQL`_, [``directed``])"
 msgstr ""
 
 msgid "Returns set of |result-lineg|"
 msgstr ""
 
-msgid "For a **directed** graph"
-msgstr ""
+#, fuzzy
+msgid "For an **undirected** graph"
+msgstr "導かれないグラフ"
 
 msgid "Gives a local identifier for the edge"
 msgstr ""
