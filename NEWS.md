@@ -35,11 +35,11 @@ milestone for 3.7.0
 
 **Code enhancement**
 
-* [#2599](https://github.com/pgRouting/pgrouting/pull/2599)  Driving distance
+* [#2599](https://github.com/pgRouting/pgrouting/pull/2599) Driving distance
   cleanup
-* [#2607](https://github.com/pgRouting/pgrouting/pull/2607)  Read postgresql
+* [#2607](https://github.com/pgRouting/pgrouting/pull/2607) Read postgresql
   data on C++
-* [#2614](https://github.com/pgRouting/pgrouting/pull/2614)  Clang tidy does
+* [#2614](https://github.com/pgRouting/pgrouting/pull/2614) Clang tidy does
   not work
 
 ## pgRouting 3.6
