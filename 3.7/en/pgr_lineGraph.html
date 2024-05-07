@@ -250,6 +250,7 @@ graph.</p>
 <li><p>Each vertex of L(G) represents an edge of G</p></li>
 <li><p>Two vertices of L(G) are adjacent if and only if their corresponding edges
 share a common endpoint in G.</p></li>
+<li><p>Currently works for undirected graph.</p></li>
 </ul>
 </section>
 <section id="signatures">
@@ -266,7 +267,7 @@ share a common endpoint in G.</p></li>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
-<dd class="field-odd"><p>For a <strong>directed</strong> graph</p>
+<dd class="field-odd"><p>For an <strong>undirected</strong> graph</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_lineGraph</span><span class="p">(</span>
@@ -504,7 +505,7 @@ therefore it’s not part of the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.7.0-dev.<br/>
-      Last updated on Apr 29, 2024.<br/>
+      Last updated on May 07, 2024.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.3.7.<br/>
     </p>
   </div>
