@@ -40,6 +40,7 @@ Given a graph G, its line graph L(G) is a graph such that:
 - Each vertex of L(G) represents an edge of G
 - Two vertices of L(G) are adjacent if and only if their corresponding edges
   share a common endpoint in G.
+- Currently works for undirected graph.
 
 .. index::
     single: lineGraph - Experimental on v2.5
@@ -55,7 +56,7 @@ Signatures
    | Returns set of |result-lineg|
    | OR EMPTY SET
 
-:Example: For a **directed** graph
+:Example: For an **undirected** graph
 
 .. literalinclude:: doc-pgr_lineGraph.queries
    :start-after: -- q1
