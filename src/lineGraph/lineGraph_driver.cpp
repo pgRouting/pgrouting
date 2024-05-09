@@ -92,11 +92,11 @@ pgr_do_lineGraph(
 
         std::vector<Edge_t> line_graph_edges;
         if (directed) {
-            pgrouting::DirectedGraph ograph(directed);
+            pgrouting::DirectedGraph ograph;
             ograph.insert_edges(edges);
             line_graph_edges = line_graph(ograph, directed);
         } else {
-            pgrouting::UndirectedGraph ograph(directed);
+            pgrouting::UndirectedGraph ograph;
             ograph.insert_edges(edges);
             line_graph_edges = line_graph(ograph, directed);
         }
