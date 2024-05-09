@@ -317,11 +317,13 @@ Line Graph of a directed graph represented with shared edges
 
          s102 -> s203 [label=1];
          s104 -> s304 [label=2];
-         s203 -> s301 [label=3];
-         s203 -> s304 [label=4,dir=both];
-         s301 -> s102[label=5];
-         s301 -> s104[label=6];
-         s304 -> s301[label=7];
+         s203 -> s203 [label=3,dir=both];
+         s203 -> s301 [label=4];
+         s203 -> s304 [label=5,dir=both];
+         s301 -> s102 [label=6];
+         s301 -> s104 [label=7];
+         s304 -> s301 [label=8];
+         s304 -> s304 [label=9,dir=both];
       }
     }
 

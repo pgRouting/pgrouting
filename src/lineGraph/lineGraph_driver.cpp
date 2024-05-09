@@ -46,10 +46,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace {
 
 template<typename G>
-std::vector<Edge_t> line_graph(const G& original) {
+std::vector<Edge_t> line_graph(const G& original, bool add_self_loop) {
     auto lg_result = pgrouting::b_g::line_graph(original.graph);
 
-    return pgrouting::b_g::graph_to_existing_edges(lg_result);
+    return pgrouting::b_g::graph_to_existing_edges(lg_result, add_self_loop);
 }
 
 }  // namespace
@@ -94,11 +94,11 @@ pgr_do_lineGraph(
         if (directed) {
             pgrouting::DirectedGraph ograph(directed);
             ograph.insert_edges(edges);
-            line_graph_edges = line_graph(ograph);
+            line_graph_edges = line_graph(ograph, directed);
         } else {
             pgrouting::UndirectedGraph ograph(directed);
             ograph.insert_edges(edges);
-            line_graph_edges = line_graph(ograph);
+            line_graph_edges = line_graph(ograph, directed);
         }
 
         auto count = line_graph_edges.size();

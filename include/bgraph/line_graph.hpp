@@ -70,10 +70,6 @@ B_G_R line_graph(const B_G& original) {
             for (auto eout = o_out_edges.first; eout != o_out_edges.second; ++eout) {
                 /* for( all outgoing edges out from vertex v) */
                 auto t = original[*eout].id;
-                /*
-                 *  Prevent self-edges from being created in the Line Graph
-                 */
-                if (s == t) continue;
                 auto rs = id_to_descriptor[s];
                 auto rt = id_to_descriptor[t];
                 auto e = boost::add_edge(rs, rt, result);
