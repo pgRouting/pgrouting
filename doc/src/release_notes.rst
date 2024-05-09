@@ -61,6 +61,16 @@ milestone for 3.7.0
      :start-after: Version 3.7.0
      :end-before: .. rubric
 
+.. rubric:: Experimental promoted to proposed.
+
+* `#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ pgr_LineGraph
+  ignores directed flag and use negative values for identifiers.
+
+  * ``pgr_lineGraph``
+
+  .. include:: pgr_lineGraph.rst
+     :start-after: Version 3.7.0
+     :end-before: Version 2.5.0
 
 .. rubric:: Code enhancement
 
