@@ -32,6 +32,17 @@ milestone for 3.7.0
     * Added ``pred`` result columns.
   
 
+**Experimental promoted to proposed.**
+
+* [#2635](https://github.com/pgRouting/pgrouting/pull/2635) pgr_LineGraph
+  ignores directed flag and use negative values for identifiers.
+
+  * ``pgr_lineGraph``
+
+  
+    * Promoted to **proposed** signature.
+    * Works for directed and undirected graphs.
+  
 
 **Code enhancement**
 

@@ -63,8 +63,8 @@ Proposed Functions
 :doc:`transformation-family`
 
 .. include:: transformation-family.rst
-   :start-after: index experimental from here
-   :end-before: index experimental to here
+   :start-after: index proposed from here
+   :end-before: index proposed to here
 
 :doc:`coloring-family`
 
