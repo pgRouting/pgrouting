@@ -9,20 +9,29 @@
 
 
 
-Transformation - Family of functions (Experimental)
+Transformation - Family of functions
 ===============================================================================
+
+.. include:: proposed.rst
+   :start-after: stable-begin-warning
+   :end-before: stable-end-warning
+
+.. index proposed from here
+
+* :doc:`pgr_lineGraph` - Transformation algorithm for generating a Line Graph.
+
+.. index proposed to here
 
 .. include:: experimental.rst
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
-.. index from here
+.. index experimental from here
 
-* :doc:`pgr_lineGraph` - Transformation algorithm for generating a Line Graph.
 * :doc:`pgr_lineGraphFull` - Transformation algorithm for generating a Line
   Graph out of each vertex in the input graph.
 
-.. index to here
+.. index experimental to here
 
 
 .. toctree::
@@ -33,7 +42,7 @@ Transformation - Family of functions (Experimental)
 
 
 Introduction
-------------------------
+-------------------------------------------------------------------------------
 
 This family of functions is used for transforming a given input graph
 :math:`G(V,E)` into a new graph :math:`G'(V',E')`.

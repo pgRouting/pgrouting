@@ -60,6 +60,12 @@ Proposed Functions
    :start-after: topology_proposed_start
    :end-before: topology_proposed_end
 
+:doc:`transformation-family`
+
+.. include:: transformation-family.rst
+   :start-after: index experimental from here
+   :end-before: index experimental to here
+
 :doc:`coloring-family`
 
 .. include:: coloring-family.rst
