@@ -4,40 +4,85 @@ SET client_min_messages TO NOTICE;
 SET
 /* -- q1 */
 SELECT * FROM pgr_lineGraph(
-  'SELECT id, source, target, cost, reverse_cost FROM edges'
-);
+  'SELECT id, source, target, cost, reverse_cost
+  FROM edges WHERE id IN (2,4,5,8)',
+  false);
  seq | source | target | cost | reverse_cost
 -----+--------+--------+------+--------------
-   1 |      2 |      1 |    1 |           -1
-   2 |      2 |      4 |    1 |           -1
-   3 |      3 |      2 |    1 |           -1
-   4 |      3 |      5 |    1 |           -1
-   5 |      4 |      1 |    1 |            1
-   6 |      4 |      8 |    1 |            1
-   7 |      4 |     10 |    1 |            1
-   8 |      5 |      8 |    1 |           -1
-   9 |      5 |      9 |    1 |           -1
-  10 |      5 |     11 |    1 |           -1
-  11 |      6 |      7 |    1 |            1
-  12 |      7 |      4 |    1 |            1
-  13 |      7 |      8 |    1 |            1
-  14 |      7 |     10 |    1 |            1
-  15 |      8 |      9 |    1 |            1
-  16 |      8 |     10 |    1 |            1
-  17 |      8 |     11 |    1 |           -1
-  18 |      9 |     11 |    1 |           -1
-  19 |     10 |     12 |    1 |           -1
-  20 |     10 |     14 |    1 |            1
-  21 |     11 |     13 |    1 |           -1
-  22 |     12 |     13 |    1 |           -1
-  23 |     13 |     15 |    1 |           -1
-  24 |     14 |     12 |    1 |           -1
-  25 |     15 |      9 |    1 |            1
-  26 |     15 |     16 |    1 |            1
-  27 |     16 |      3 |    1 |           -1
-  28 |     16 |      9 |    1 |            1
-(28 rows)
+   1 |      2 |      4 |    1 |           -1
+   2 |      2 |      5 |    1 |           -1
+   3 |      4 |      8 |    1 |           -1
+   4 |      5 |      8 |    1 |           -1
+(4 rows)
 
 /* -- q2 */
+CREATE TABLE edges_shared (
+    id BIGINT,
+    source BIGINT,
+    target BIGINT,
+    cost FLOAT,
+    reverse_cost FLOAT,
+    geom geometry
+);
+CREATE TABLE
+INSERT INTO edges_shared (id, source, target, cost, reverse_cost, geom) VALUES
+  (102, 1, 2, 1, -1, ST_MakeLine(ST_POINT(0,  2), ST_POINT(2,  2))),
+  (104, 1, 4, 1, -1, ST_MakeLine(ST_POINT(0,  2), ST_POINT(0,  0))),
+  (301, 3, 1, 1, -1, ST_MakeLine(ST_POINT(2,  0), ST_POINT(0,  2))),
+  (203, 2, 3, 1,  1, ST_MakeLine(ST_POINT(2,  2), ST_POINT(2,  0))),
+  (304, 3, 4, 1,  1, ST_MakeLine(ST_POINT(0,  0), ST_POINT(2,  0)));
+INSERT 0 5
+SELECT seq, source, target, cost, reverse_cost
+FROM pgr_lineGraph(
+  'SELECT id, source, target, cost, reverse_cost FROM edges_shared',
+  true);
+ seq | source | target | cost | reverse_cost
+-----+--------+--------+------+--------------
+   1 |    102 |    203 |    1 |           -1
+   2 |    104 |    304 |    1 |           -1
+   3 |    203 |    301 |    1 |           -1
+   4 |    203 |    304 |    1 |            1
+   5 |    301 |    102 |    1 |           -1
+   6 |    301 |    104 |    1 |           -1
+   7 |    304 |    301 |    1 |           -1
+(7 rows)
+
+/* -- q3 */
+CREATE TABLE edges_unique (
+    id BIGINT,
+    source BIGINT,
+    target BIGINT,
+    cost FLOAT,
+    geom geometry
+);
+CREATE TABLE
+INSERT INTO edges_unique (id, source, target, cost, geom) VALUES
+  (102, 1, 2, 1, ST_MakeLine(ST_POINT(0,  2), ST_POINT(2,  2))),
+  (104, 1, 4, 1, ST_MakeLine(ST_POINT(0,  2), ST_POINT(0,  0))),
+  (301, 3, 1, 1, ST_MakeLine(ST_POINT(2,  0), ST_POINT(0,  2))),
+  (203, 2, 3, 1, ST_MakeLine(ST_POINT(2,  2), ST_POINT(2,  0))),
+  (304, 3, 4, 1, ST_MakeLine(ST_POINT(2,  0), ST_POINT(0,  0))),
+  (302, 3, 2, 1, ST_MakeLine(ST_POINT(2,  0), ST_POINT(2,  2))),
+  (403, 4, 3, 1, ST_MakeLine(ST_POINT(0,  0), ST_POINT(2,  0)));
+INSERT 0 7
+SELECT seq, source, target, cost, reverse_cost
+FROM pgr_lineGraph(
+  'SELECT id, source, target, cost FROM edges_unique',
+  true);
+ seq | source | target | cost | reverse_cost
+-----+--------+--------+------+--------------
+   1 |    102 |    203 |    1 |           -1
+   2 |    104 |    403 |    1 |           -1
+   3 |    203 |    301 |    1 |           -1
+   4 |    203 |    304 |    1 |           -1
+   5 |    301 |    102 |    1 |           -1
+   6 |    301 |    104 |    1 |           -1
+   7 |    302 |    203 |    1 |            1
+   8 |    304 |    403 |    1 |            1
+   9 |    403 |    301 |    1 |           -1
+  10 |    403 |    302 |    1 |           -1
+(10 rows)
+
+/* -- q4 */
 ROLLBACK;
 ROLLBACK
