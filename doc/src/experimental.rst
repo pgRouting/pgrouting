@@ -62,8 +62,8 @@ Experimental Functions
 :doc:`transformation-family`
 
 .. include:: transformation-family.rst
-   :start-after: index from here
-   :end-before: index to here
+   :start-after: index experimental from here
+   :end-before: index experimental to here
 
 :doc:`traversal-family`
 
