@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-07 21:31+0000\n"
+"POT-Creation-Date: 2024-05-13 17:23+0000\n"
 "PO-Revision-Date: 2024-04-29 03:40+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
@@ -4358,12 +4358,6 @@ msgid ":doc:`transformation-family`"
 msgstr ":doc:`transformation-family`"
 
 msgid ""
-":doc:`pgr_lineGraph` - Transformation algorithm for generating a Line Graph."
-msgstr ""
-":doc:`pgr_lineGraph` - Algoritmo de transformación para generar un grafo de "
-"líneas."
-
-msgid ""
 ":doc:`pgr_lineGraphFull` - Transformation algorithm for generating a Line "
 "Graph out of each vertex in the input graph."
 msgstr ""
@@ -4980,6 +4974,30 @@ msgstr "Estandarización de columnas de resultados a |result-spantree|"
 
 msgid "Added ``pred`` result columns."
 msgstr "Agregado columna de resultados ``pred``."
+
+#, fuzzy
+msgid "Experimental promoted to proposed."
+msgstr "Experimental promovido a Propuesto"
+
+#, fuzzy
+msgid ""
+"`#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ pgr_LineGraph "
+"ignores directed flag and use negative values for identifiers."
+msgstr ""
+"`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Estandarización "
+"de las salida de las funciones de árbol de expansión"
+
+#, fuzzy
+msgid "``pgr_lineGraph``"
+msgstr "pgr_lineGraph"
+
+#, fuzzy
+msgid "Promoted to **proposed** signature."
+msgstr "Promovido a firma **propuesta**"
+
+#, fuzzy
+msgid "Works for directed and undirected graphs."
+msgstr "Funciona para grafos **dirigidos** y **no dirigidos**."
 
 msgid "Code enhancement"
 msgstr "Mejora del código"
@@ -14556,8 +14574,9 @@ msgstr ""
 "'Wikipedia: árbol de dominador' <https://en.wikipedia.org/wiki/"
 "Dominator_(graph_theory)>`__"
 
-msgid "``pgr_lineGraph`` - Experimental"
-msgstr "``pgr_lineGraph`` - Experimental"
+#, fuzzy
+msgid "pgr_lineGraph - Proposed"
+msgstr "pgr_lineGraph"
 
 msgid ""
 "``pgr_lineGraph`` — Transforms the given graph into its corresponding edge-"
@@ -14566,22 +14585,46 @@ msgstr ""
 "``pgr_lineGraph`` — Transforma un grafo dado en su grafo correspondiente "
 "basado en aristas."
 
-msgid "Given a graph G, its line graph L(G) is a graph such that:"
+#, fuzzy
+msgid ""
+"Given a graph :math:`G`, its line graph :math:`L(G)` is a graph such that:"
 msgstr "Dado un grafo G, su grafo de líneas L(G) es un grafo de tal forma que:"
 
-msgid "Each vertex of L(G) represents an edge of G"
+#, fuzzy
+msgid "Each vertex of :math:`L(G)` represents an edge of :math:`G`."
 msgstr "Cada vértice de L(G) representa una arista de G"
 
+#, fuzzy
 msgid ""
-"Two vertices of L(G) are adjacent if and only if their corresponding edges "
-"share a common endpoint in G."
+"Two vertices of :math:`L(G)` are adjacent if and only if their corresponding "
+"edges share a common endpoint in :math:`G`"
 msgstr ""
 "Dos vértices de L(G) son adyacentes si y sólo si sus aristas "
 "correspondientes comparten un punto final común en G."
 
 #, fuzzy
-msgid "Currently works for undirected graph."
-msgstr "Funciona para grafos no dirigidos."
+msgid ""
+"The ``cost`` and ``reverse_cost`` columns of the result represent existence "
+"of the edge."
+msgstr ""
+"Usa las columnas ``cost`` y ``reverse_cost`` para representar la existenica "
+"de una arista."
+
+#, fuzzy
+msgid "When the graph is directed the result is directed."
+msgstr "Cuando el grafo es **no dirigido**, la matriz de costes es simétrica"
+
+msgid ""
+"To get the complete Line Graph use unique identifiers on the double way "
+"edges (See `Additional Examples`_)."
+msgstr ""
+
+#, fuzzy
+msgid "When the graph is undirected the result is undirected."
+msgstr "Cuando el grafo es **no dirigido**, la matriz de costes es simétrica"
+
+msgid "The ``reverse_cost`` is always :math:`-1`."
+msgstr ""
 
 msgid "pgr_lineGraph(`Edges SQL`_, [``directed``])"
 msgstr "pgr_lineGraph(`SQL de aristas`_, [``directed``])"
@@ -14590,8 +14633,8 @@ msgid "Returns set of |result-lineg|"
 msgstr "Regresa el conjunto de |result-lineg|"
 
 #, fuzzy
-msgid "For an **undirected** graph"
-msgstr "Para un grafo **dirigido**"
+msgid "For an undirected graph with edges :math:'{2,4,5,8}'"
+msgstr "Para sub-grafo con aristas :math:`\\{1, 2, 3, 4\\}`."
 
 msgid "Gives a local identifier for the edge"
 msgstr "Da un identificador local de la arista"
@@ -14630,8 +14673,163 @@ msgstr ""
 "Cuando `negative`: la arista (``target``, ``source``) no existe, por lo "
 "tanto no es parte del grafo."
 
-msgid "https://en.wikipedia.org/wiki/Line_graph"
-msgstr "https://en.wikipedia.org/wiki/Line_graph"
+#, fuzzy
+msgid "Given the following directed graph"
+msgstr "Dada la siguiente consulta:"
+
+msgid ""
+":math:`G(V,E) = G(\\{1,2,3,4\\},\\{ 1 \\rightarrow 2, 1 \\rightarrow 4, 2 "
+"\\rightarrow 3, 3 \\rightarrow 1, 3 \\rightarrow 2, 3 \\rightarrow 4, 4 "
+"\\rightarrow 3\\})`"
+msgstr ""
+
+msgid "Representation as directed with shared edge identifiers"
+msgstr ""
+
+msgid ""
+"For the simplicity, the design of the edges table on the database, has the "
+"edge's identifiers are represented with 3 digits:"
+msgstr ""
+
+msgid "hundreds"
+msgstr ""
+
+#, fuzzy
+msgid "the source vertex"
+msgstr "Obtener el vértice más cercano"
+
+msgid "tens"
+msgstr ""
+
+msgid "always 0, acts as a separator"
+msgstr ""
+
+#, fuzzy
+msgid "units"
+msgstr "Unidades"
+
+#, fuzzy
+msgid "the target vertex"
+msgstr "Obtener el vértice más cercano"
+
+msgid "In this image,"
+msgstr ""
+
+msgid ""
+"Single or double head arrows represent one edge (row) on the edges table."
+msgstr ""
+
+#, fuzzy
+msgid "The numbers in the yellow shadow are the edge identifiers."
+msgstr ""
+"Las filas de resultados son ordenados ascendentemente respecto al "
+"identificador de la arista."
+
+msgid ""
+"Two pair of edges share the same identifier when the ``reverse_cost`` column "
+"is used."
+msgstr ""
+
+#, fuzzy
+msgid ""
+"Edges :math:`{2 \\rightarrow 3, 3 \\rightarrow 2}` are represented with one "
+"edge row with :math:`id=203`."
+msgstr ""
+"Los aristas :math:`v \\rightarrow w` y :math:`w \\rightarrow z` fueron "
+"eliminados del grafo."
+
+#, fuzzy
+msgid ""
+"Edges :math:`{3 \\rightarrow 4, 4 \\rightarrow 3}` are represented with one "
+"edge row with :math:`id=304`."
+msgstr ""
+"Los aristas :math:`v \\rightarrow w` y :math:`w \\rightarrow z` fueron "
+"eliminados del grafo."
+
+#, fuzzy
+msgid "The graph can be created as follows:"
+msgstr "Los gráficos se definen como sigue:"
+
+#, fuzzy
+msgid "Line Graph of a directed graph represented with shared edges"
+msgstr "En términos de un grafo dirigido es como tener cuatro aristas:"
+
+#, fuzzy
+msgid "The result is a directed graph."
+msgstr "Para un grafo dirigido."
+
+#, fuzzy
+msgid ""
+"For :math:`seq=4` from :math:`203 \\leftrightarrow 304` represent two edges"
+msgstr "La arista :math:`2` (:math:`1 \\rightarrow 3`) no es parte del grafo."
+
+msgid "For all the other values of ``seq`` represent one edge."
+msgstr ""
+
+#, fuzzy
+msgid ""
+"The ``cost`` and ``reverse_cost`` values represent the existence of the edge."
+msgstr ""
+"Usa las columnas ``cost`` y ``reverse_cost`` para representar la existenica "
+"de una arista."
+
+#, fuzzy
+msgid "When positive: the edge exists."
+msgstr "Cuando es positivo, es el identificador de un vértice."
+
+#, fuzzy
+msgid "When negative: the edge does not exist."
+msgstr "Cuando negativo arroja error."
+
+msgid "Representation as directed with unique edge identifiers"
+msgstr ""
+
+#, fuzzy
+msgid "Single head arrows represent one edge (row) on the edges table."
+msgstr ""
+"Las flechas rojas corresponden cuando ``cost`` > 0 en la tabla de aristas."
+
+msgid "There are no double head arrows"
+msgstr ""
+
+msgid ""
+"Two pair of edges share the same ending nodes and the ``reverse_cost`` "
+"column is not used."
+msgstr ""
+
+msgid ""
+"Edges :math:`{2 \\rightarrow 3, 3 \\rightarrow 2}` are represented with two "
+"edges :math:`id=203` and :math:`id=302` respectively."
+msgstr ""
+
+msgid ""
+"Edges :math:`{3 \\rightarrow 4, 4 \\rightarrow 3}` are represented with two "
+"edges :math:`id=304` and :math:`id=403` respectively."
+msgstr ""
+
+#, fuzzy
+msgid "Line Graph of a directed graph represented with unique edges"
+msgstr "En términos de un grafo dirigido es como tener cuatro aristas:"
+
+#, fuzzy
+msgid ""
+"For :math:`seq=7` from :math:`203 \\leftrightarrow 302` represent two edges."
+msgstr "La arista :math:`2` (:math:`1 \\rightarrow 3`) no es parte del grafo."
+
+#, fuzzy
+msgid ""
+"For :math:`seq=8` from :math:`304 \\leftrightarrow 403` represent two edges."
+msgstr "La arista :math:`2` (:math:`1 \\rightarrow 3`) no es parte del grafo."
+
+#, fuzzy
+msgid "wikipedia: `Line Graph <https://en.wikipedia.org/wiki/Line_graph>`__"
+msgstr ""
+"`Wikipedia: grafo bipartito <https://en.wikipedia.org/wiki/"
+"Bipartite_graph>`__"
+
+msgid ""
+"mathworld: `Line Graph <https://mathworld.wolfram.com/LineGraph.html>`__"
+msgstr ""
 
 msgid "``pgr_lineGraphFull`` - Experimental"
 msgstr "``pgr_lineGraphFull`` - Experimental"
@@ -14909,6 +15107,9 @@ msgstr ""
 
 msgid "Routing from :math:`5` to :math:`1`"
 msgstr ""
+
+msgid "https://en.wikipedia.org/wiki/Line_graph"
+msgstr "https://en.wikipedia.org/wiki/Line_graph"
 
 msgid "https://en.wikipedia.org/wiki/Complete_graph"
 msgstr "https://en.wikipedia.org/wiki/Complete_graph"
@@ -17782,6 +17983,12 @@ msgid ""
 msgstr ""
 ":doc:`pgr_extractVertices` - Extrae información de vértices basada en la "
 "tabla de aristas."
+
+msgid ""
+":doc:`pgr_lineGraph` - Transformation algorithm for generating a Line Graph."
+msgstr ""
+":doc:`pgr_lineGraph` - Algoritmo de transformación para generar un grafo de "
+"líneas."
 
 msgid ":doc:`pgr_withPointsVia`"
 msgstr ":doc:`pgr_withPointsVia`"
@@ -21004,8 +21211,9 @@ msgstr ""
 msgid "Additional functions to analyze a graph:"
 msgstr ""
 
-msgid "Transformation - Family of functions (Experimental)"
-msgstr "Transformation - Familia de funciones (Experimental)"
+#, fuzzy
+msgid "Transformation - Family of functions"
+msgstr "Contraction - Familia de funciones"
 
 msgid ""
 "This family of functions is used for transforming a given input graph :math:"
@@ -21446,6 +21654,20 @@ msgstr "pgr_withPointsDD es pgr_drivingDistance **con puntos**"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPoints es pgr_dijkstraVia **con puntos**"
+
+#~ msgid "``pgr_lineGraph`` - Experimental"
+#~ msgstr "``pgr_lineGraph`` - Experimental"
+
+#, fuzzy
+#~ msgid "Currently works for undirected graph."
+#~ msgstr "Funciona para grafos no dirigidos."
+
+#, fuzzy
+#~ msgid "For an **undirected** graph"
+#~ msgstr "Para un grafo **dirigido**"
+
+#~ msgid "Transformation - Family of functions (Experimental)"
+#~ msgstr "Transformation - Familia de funciones (Experimental)"
 
 #~ msgid "Current release"
 #~ msgstr "Versión actual"

@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-07 21:31+0000\n"
+"POT-Creation-Date: 2024-05-13 17:23+0000\n"
 "PO-Revision-Date: 2024-05-01 03:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/"
@@ -3964,10 +3964,6 @@ msgid ":doc:`transformation-family`"
 msgstr ""
 
 msgid ""
-":doc:`pgr_lineGraph` - Transformation algorithm for generating a Line Graph."
-msgstr ""
-
-msgid ""
 ":doc:`pgr_lineGraphFull` - Transformation algorithm for generating a Line "
 "Graph out of each vertex in the input graph."
 msgstr ""
@@ -4497,6 +4493,24 @@ msgstr ""
 
 msgid "Added ``pred`` result columns."
 msgstr ""
+
+msgid "Experimental promoted to proposed."
+msgstr ""
+
+msgid ""
+"`#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ pgr_LineGraph "
+"ignores directed flag and use negative values for identifiers."
+msgstr ""
+
+msgid "``pgr_lineGraph``"
+msgstr ""
+
+msgid "Promoted to **proposed** signature."
+msgstr ""
+
+#, fuzzy
+msgid "Works for directed and undirected graphs."
+msgstr "導かれないグラフ。"
 
 msgid "Code enhancement"
 msgstr ""
@@ -12620,7 +12634,7 @@ msgid ""
 "Dominator_(graph_theory)>`__"
 msgstr ""
 
-msgid "``pgr_lineGraph`` - Experimental"
+msgid "pgr_lineGraph - Proposed"
 msgstr ""
 
 msgid ""
@@ -12628,20 +12642,36 @@ msgid ""
 "based graph."
 msgstr ""
 
-msgid "Given a graph G, its line graph L(G) is a graph such that:"
+msgid ""
+"Given a graph :math:`G`, its line graph :math:`L(G)` is a graph such that:"
 msgstr ""
 
-msgid "Each vertex of L(G) represents an edge of G"
+msgid "Each vertex of :math:`L(G)` represents an edge of :math:`G`."
 msgstr ""
 
 msgid ""
-"Two vertices of L(G) are adjacent if and only if their corresponding edges "
-"share a common endpoint in G."
+"Two vertices of :math:`L(G)` are adjacent if and only if their corresponding "
+"edges share a common endpoint in :math:`G`"
 msgstr ""
 
-#, fuzzy
-msgid "Currently works for undirected graph."
-msgstr "導かれないグラフ。"
+msgid ""
+"The ``cost`` and ``reverse_cost`` columns of the result represent existence "
+"of the edge."
+msgstr ""
+
+msgid "When the graph is directed the result is directed."
+msgstr ""
+
+msgid ""
+"To get the complete Line Graph use unique identifiers on the double way "
+"edges (See `Additional Examples`_)."
+msgstr ""
+
+msgid "When the graph is undirected the result is undirected."
+msgstr ""
+
+msgid "The ``reverse_cost`` is always :math:`-1`."
+msgstr ""
 
 msgid "pgr_lineGraph(`Edges SQL`_, [``directed``])"
 msgstr ""
@@ -12649,9 +12679,8 @@ msgstr ""
 msgid "Returns set of |result-lineg|"
 msgstr ""
 
-#, fuzzy
-msgid "For an **undirected** graph"
-msgstr "導かれないグラフ"
+msgid "For an undirected graph with edges :math:'{2,4,5,8}'"
+msgstr ""
 
 msgid "Gives a local identifier for the edge"
 msgstr ""
@@ -12684,7 +12713,138 @@ msgid ""
 "it’s not part of the graph."
 msgstr ""
 
-msgid "https://en.wikipedia.org/wiki/Line_graph"
+#, fuzzy
+msgid "Given the following directed graph"
+msgstr "次のクエリを実行します。"
+
+msgid ""
+":math:`G(V,E) = G(\\{1,2,3,4\\},\\{ 1 \\rightarrow 2, 1 \\rightarrow 4, 2 "
+"\\rightarrow 3, 3 \\rightarrow 1, 3 \\rightarrow 2, 3 \\rightarrow 4, 4 "
+"\\rightarrow 3\\})`"
+msgstr ""
+
+msgid "Representation as directed with shared edge identifiers"
+msgstr ""
+
+msgid ""
+"For the simplicity, the design of the edges table on the database, has the "
+"edge's identifiers are represented with 3 digits:"
+msgstr ""
+
+msgid "hundreds"
+msgstr ""
+
+msgid "the source vertex"
+msgstr ""
+
+msgid "tens"
+msgstr ""
+
+msgid "always 0, acts as a separator"
+msgstr ""
+
+msgid "units"
+msgstr ""
+
+msgid "the target vertex"
+msgstr ""
+
+msgid "In this image,"
+msgstr ""
+
+msgid ""
+"Single or double head arrows represent one edge (row) on the edges table."
+msgstr ""
+
+msgid "The numbers in the yellow shadow are the edge identifiers."
+msgstr ""
+
+msgid ""
+"Two pair of edges share the same identifier when the ``reverse_cost`` column "
+"is used."
+msgstr ""
+
+msgid ""
+"Edges :math:`{2 \\rightarrow 3, 3 \\rightarrow 2}` are represented with one "
+"edge row with :math:`id=203`."
+msgstr ""
+
+msgid ""
+"Edges :math:`{3 \\rightarrow 4, 4 \\rightarrow 3}` are represented with one "
+"edge row with :math:`id=304`."
+msgstr ""
+
+#, fuzzy
+msgid "The graph can be created as follows:"
+msgstr "グラフは次のように定義されます:"
+
+msgid "Line Graph of a directed graph represented with shared edges"
+msgstr ""
+
+#, fuzzy
+msgid "The result is a directed graph."
+msgstr "導かれないグラフ。"
+
+msgid ""
+"For :math:`seq=4` from :math:`203 \\leftrightarrow 304` represent two edges"
+msgstr ""
+
+msgid "For all the other values of ``seq`` represent one edge."
+msgstr ""
+
+msgid ""
+"The ``cost`` and ``reverse_cost`` values represent the existence of the edge."
+msgstr ""
+
+msgid "When positive: the edge exists."
+msgstr ""
+
+msgid "When negative: the edge does not exist."
+msgstr ""
+
+msgid "Representation as directed with unique edge identifiers"
+msgstr ""
+
+msgid "Single head arrows represent one edge (row) on the edges table."
+msgstr ""
+
+msgid "There are no double head arrows"
+msgstr ""
+
+msgid ""
+"Two pair of edges share the same ending nodes and the ``reverse_cost`` "
+"column is not used."
+msgstr ""
+
+msgid ""
+"Edges :math:`{2 \\rightarrow 3, 3 \\rightarrow 2}` are represented with two "
+"edges :math:`id=203` and :math:`id=302` respectively."
+msgstr ""
+
+msgid ""
+"Edges :math:`{3 \\rightarrow 4, 4 \\rightarrow 3}` are represented with two "
+"edges :math:`id=304` and :math:`id=403` respectively."
+msgstr ""
+
+msgid "Line Graph of a directed graph represented with unique edges"
+msgstr ""
+
+msgid ""
+"For :math:`seq=7` from :math:`203 \\leftrightarrow 302` represent two edges."
+msgstr ""
+
+msgid ""
+"For :math:`seq=8` from :math:`304 \\leftrightarrow 403` represent two edges."
+msgstr ""
+
+#, fuzzy
+msgid "wikipedia: `Line Graph <https://en.wikipedia.org/wiki/Line_graph>`__"
+msgstr ""
+"`Wikipedia: 巡回セールスマン問題 <https://en.wikipedia.org/wiki/"
+"Traveling_salesman_problem>`__"
+
+msgid ""
+"mathworld: `Line Graph <https://mathworld.wolfram.com/LineGraph.html>`__"
 msgstr ""
 
 msgid "``pgr_lineGraphFull`` - Experimental"
@@ -12929,6 +13089,9 @@ msgid ""
 msgstr ""
 
 msgid "Routing from :math:`5` to :math:`1`"
+msgstr ""
+
+msgid "https://en.wikipedia.org/wiki/Line_graph"
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/Complete_graph"
@@ -15387,6 +15550,10 @@ msgstr ""
 msgid ""
 ":doc:`pgr_extractVertices` - Extracts vertex information based on the edge "
 "table information."
+msgstr ""
+
+msgid ""
+":doc:`pgr_lineGraph` - Transformation algorithm for generating a Line Graph."
 msgstr ""
 
 msgid ":doc:`pgr_withPointsVia`"
@@ -18193,8 +18360,9 @@ msgstr ""
 msgid "Additional functions to analyze a graph:"
 msgstr ""
 
-msgid "Transformation - Family of functions (Experimental)"
-msgstr ""
+#, fuzzy
+msgid "Transformation - Family of functions"
+msgstr "ダイクストラ関連機能"
 
 msgid ""
 "This family of functions is used for transforming a given input graph :math:"
@@ -18593,3 +18761,11 @@ msgstr ""
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Currently works for undirected graph."
+#~ msgstr "導かれないグラフ。"
+
+#, fuzzy
+#~ msgid "For an **undirected** graph"
+#~ msgstr "導かれないグラフ"
