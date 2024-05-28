@@ -153,9 +153,9 @@ function test_compile {
     echo --------------------------------------------
     for d in ${QUERIES_DIRS}
     do
-        #tools/testers/doc_queries_generator.pl  -alg "${d}" -documentation  -pgport "${PGPORT}"
-        #tools/testers/doc_queries_generator.pl  -alg "${d}" -debug1  -pgport "${PGPORT}"
-        tools/testers/doc_queries_generator.pl  -alg "${d}" -pgport "${PGPORT}"
+        #tools/testers/doc_queries_generator.pl  -alg "docqueries/${d}" -documentation  -pgport "${PGPORT}"
+        #tools/testers/doc_queries_generator.pl  -alg "docqueries/${d}" -debug1  -pgport "${PGPORT}"
+        tools/testers/doc_queries_generator.pl  -alg "docqueries/${d}" -pgport "${PGPORT}"
     done
 
     build_doc
