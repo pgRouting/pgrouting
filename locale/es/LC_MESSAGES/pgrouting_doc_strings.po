@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-13 17:23+0000\n"
-"PO-Revision-Date: 2024-05-28 15:23+0000\n"
+"PO-Revision-Date: 2024-05-28 15:24+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
@@ -14675,9 +14675,8 @@ msgstr ""
 msgid "hundreds"
 msgstr ""
 
-#, fuzzy
 msgid "the source vertex"
-msgstr "Obtener el vértice más cercano"
+msgstr "el vértice de origen"
 
 msgid "tens"
 msgstr ""
@@ -14685,13 +14684,11 @@ msgstr ""
 msgid "always 0, acts as a separator"
 msgstr ""
 
-#, fuzzy
 msgid "units"
-msgstr "Unidades"
+msgstr "unidades"
 
-#, fuzzy
 msgid "the target vertex"
-msgstr "Obtener el vértice más cercano"
+msgstr "el vértice de destino"
 
 msgid "In this image,"
 msgstr ""
@@ -14700,11 +14697,9 @@ msgid ""
 "Single or double head arrows represent one edge (row) on the edges table."
 msgstr ""
 
-#, fuzzy
 msgid "The numbers in the yellow shadow are the edge identifiers."
 msgstr ""
-"Las filas de resultados son ordenados ascendentemente respecto al "
-"identificador de la arista."
+"Los números en la sombra amarilla son los identificadores de los bordes."
 
 msgid ""
 "Two pair of edges share the same identifier when the ``reverse_cost`` column "
