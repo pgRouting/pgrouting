@@ -12,7 +12,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-13 17:23+0000\n"
 "PO-Revision-Date: 2024-05-28 15:22+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
 "Language: es\n"
@@ -4973,9 +4973,8 @@ msgstr "Estandarización de columnas de resultados a |result-spantree|"
 msgid "Added ``pred`` result columns."
 msgstr "Agregado columna de resultados ``pred``."
 
-#, fuzzy
 msgid "Experimental promoted to proposed."
-msgstr "Experimental promovido a Propuesto"
+msgstr "Experimental promovido a propuesto."
 
 msgid ""
 "`#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ pgr_LineGraph "
@@ -4990,30 +4989,26 @@ msgstr "``pgr_lineGraph``"
 msgid "Promoted to **proposed** signature."
 msgstr "Promovido a firma **propuesta**."
 
-#, fuzzy
 msgid "Works for directed and undirected graphs."
-msgstr "Funciona para grafos **dirigidos** y **no dirigidos**."
+msgstr "Funciona para grafos dirigidos y no dirigidos."
 
 msgid "Code enhancement"
 msgstr "Mejora del código"
 
-#, fuzzy
 msgid ""
 "`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Driving "
 "distance cleanup"
 msgstr ""
-"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Limpiando "
-"Driving Distance"
+"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Limpieza de la "
+"distancia de conducción"
 
-#, fuzzy
 msgid ""
 "`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Read postgresql "
 "data on C++"
 msgstr ""
-"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Leer datos de "
+"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Leer datos "
 "postgresql en C++"
 
-#, fuzzy
 msgid ""
 "`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy does "
 "not work"
@@ -14568,9 +14563,8 @@ msgstr ""
 "'Wikipedia: árbol de dominador' <https://en.wikipedia.org/wiki/"
 "Dominator_(graph_theory)>`__"
 
-#, fuzzy
 msgid "pgr_lineGraph - Proposed"
-msgstr "pgr_lineGraph"
+msgstr "pgr_lineGraph - Propuesto"
 
 msgid ""
 "``pgr_lineGraph`` — Transforms the given graph into its corresponding edge-"
@@ -14579,10 +14573,11 @@ msgstr ""
 "``pgr_lineGraph`` — Transforma un grafo dado en su grafo correspondiente "
 "basado en aristas."
 
-#, fuzzy
 msgid ""
 "Given a graph :math:`G`, its line graph :math:`L(G)` is a graph such that:"
-msgstr "Dado un grafo G, su grafo de líneas L(G) es un grafo de tal forma que:"
+msgstr ""
+"Dado un gráfico :math:`G`, su gráfico lineal :math:`L(G)` es un gráfico tal "
+"que:"
 
 msgid "Each vertex of :math:`L(G)` represents an edge of :math:`G`."
 msgstr "Cada vértice de :math:`L(G)` representa una arista de :math:`G`."
@@ -14795,9 +14790,8 @@ msgid ""
 "edges :math:`id=304` and :math:`id=403` respectively."
 msgstr ""
 
-#, fuzzy
 msgid "Line Graph of a directed graph represented with unique edges"
-msgstr "En términos de un grafo dirigido es como tener cuatro aristas:"
+msgstr "Gráfico lineal de un grafo dirigido representado con aristas únicas"
 
 #, fuzzy
 msgid ""
