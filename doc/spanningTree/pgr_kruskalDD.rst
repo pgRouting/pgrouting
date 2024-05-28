@@ -79,7 +79,7 @@ Single vertex
 :Example: The Minimum Spanning Tree starting on vertex :math:`6` with
           :math:`distance \leq 3.5`
 
-.. literalinclude:: doc-pgr_kruskalDD.queries
+.. literalinclude:: kruskalDD.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -99,7 +99,7 @@ Multiple vertices
 :Example: The Minimum Spanning Tree starting on vertices :math:`\{9, 6\}` with
           :math:`distance \leq 3.5`
 
-.. literalinclude:: doc-pgr_kruskalDD.queries
+.. literalinclude:: kruskalDD.queries
    :start-after: -- q2
    :end-before: -- q3
 

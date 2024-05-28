@@ -63,7 +63,7 @@ Signatures
 
 :Example: The bridges of the graph
 
-.. literalinclude:: doc-pgr_bridges.queries
+.. literalinclude:: bridges.queries
    :start-after: -- q1
    :end-before: -- q2
 

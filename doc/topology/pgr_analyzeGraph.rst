@@ -106,13 +106,13 @@ Usage when the edge table's columns MATCH the default values:
 
 .. rubric:: The simplest way to use pgr_analyzeGraph is:
 
-.. literalinclude:: doc-pgr_analyzeGraph.queries
+.. literalinclude:: analyzeGraph.queries
    :start-after: -- q1
    :end-before: -- q1.1
 
 .. rubric:: Arguments are given in the order described in the parameters:
 
-.. literalinclude:: doc-pgr_analyzeGraph.queries
+.. literalinclude:: analyzeGraph.queries
    :start-after: -- q3
    :end-before: -- q3.1
 
@@ -126,7 +126,7 @@ We get the same result as the simplest way to use the function.
    is passed to the function as the geometry column, and the geometry column
    ``the_geom`` is passed to the function as the id column.
 
-.. literalinclude:: doc-pgr_analyzeGraph.queries
+.. literalinclude:: analyzeGraph.queries
    :start-after: -- q5
    :end-before: -- q5.1
 
@@ -135,18 +135,18 @@ We get the same result as the simplest way to use the function.
 
 The order of the parameters do not matter:
 
-.. literalinclude:: doc-pgr_analyzeGraph.queries
+.. literalinclude:: analyzeGraph.queries
    :start-after: -- q6
    :end-before: -- q6.1
 
-.. literalinclude:: doc-pgr_analyzeGraph.queries
+.. literalinclude:: analyzeGraph.queries
    :start-after: -- q7
    :end-before: -- q7.1
 
 Parameters defined with a default value can be omitted, as long as the value
 matches the default:
 
-.. literalinclude:: doc-pgr_analyzeGraph.queries
+.. literalinclude:: analyzeGraph.queries
    :start-after: -- q8
    :end-before: -- q8.1
 
@@ -155,21 +155,21 @@ matches the default:
 Selecting rows based on the id. Displays the analysis a the section of the
 network.
 
-.. literalinclude:: doc-pgr_analyzeGraph.queries
+.. literalinclude:: analyzeGraph.queries
    :start-after: -- q9
    :end-before: -- q9.1
 
 Selecting the rows where the geometry is near the geometry of row with ``id`` =
 5
 
-.. literalinclude:: doc-pgr_analyzeGraph.queries
+.. literalinclude:: analyzeGraph.queries
    :start-after: -- q10
    :end-before: -- q10.1
 
 Selecting the rows where the geometry is near the geometry of the row with
 ``gid`` =100 of the table ``othertable``.
 
-.. literalinclude:: doc-pgr_analyzeGraph.queries
+.. literalinclude:: analyzeGraph.queries
    :start-after: -- q11
    :end-before: -- q11.1
 
@@ -178,7 +178,7 @@ Usage when the edge table's columns DO NOT MATCH the default values:
 
 For the following table
 
-.. literalinclude:: doc-pgr_analyzeGraph.queries
+.. literalinclude:: analyzeGraph.queries
    :start-after: -- q12
    :end-before: -- q12.1
 
@@ -186,7 +186,7 @@ For the following table
 
 The arguments need to be given in the order described in the parameters:
 
-.. literalinclude:: doc-pgr_analyzeGraph.queries
+.. literalinclude:: analyzeGraph.queries
    :start-after: -- q13
    :end-before: -- q13.1
 
@@ -196,7 +196,7 @@ The arguments need to be given in the order described in the parameters:
    geometry column, and the geometry column ``mygeom`` is passed to the function
    as the id column.
 
-.. literalinclude:: doc-pgr_analyzeGraph.queries
+.. literalinclude:: analyzeGraph.queries
    :start-after: -- q14
    :end-before: -- q14.1
 
@@ -204,11 +204,11 @@ The arguments need to be given in the order described in the parameters:
 
 The order of the parameters do not matter:
 
-.. literalinclude:: doc-pgr_analyzeGraph.queries
+.. literalinclude:: analyzeGraph.queries
    :start-after: -- q15
    :end-before: -- q15.1
 
-.. literalinclude:: doc-pgr_analyzeGraph.queries
+.. literalinclude:: analyzeGraph.queries
    :start-after: -- q16
    :end-before: -- q16.1
 
@@ -219,59 +219,59 @@ values for the column names do not match the column names of the table.
 
 Selecting rows based on the id.
 
-.. literalinclude:: doc-pgr_analyzeGraph.queries
+.. literalinclude:: analyzeGraph.queries
    :start-after: -- q17
    :end-before: -- q17.1
 
-.. literalinclude:: doc-pgr_analyzeGraph.queries
+.. literalinclude:: analyzeGraph.queries
    :start-after: -- q18
    :end-before: -- q18.1
 
 Selecting the rows WHERE the geometry is near the geometry of row with ``id`` =5 .
 
-.. literalinclude:: doc-pgr_analyzeGraph.queries
+.. literalinclude:: analyzeGraph.queries
    :start-after: -- q19
    :end-before: -- q19.1
 
-.. literalinclude:: doc-pgr_analyzeGraph.queries
+.. literalinclude:: analyzeGraph.queries
    :start-after: -- q20
    :end-before: -- q20.1
 
 Selecting the rows WHERE the geometry is near the place='myhouse' of the table
 ``othertable``. (note the use of quote_literal)
 
-.. literalinclude:: doc-pgr_analyzeGraph.queries
+.. literalinclude:: analyzeGraph.queries
    :start-after: -- q21
    :end-before: -- q21.1
 
-.. literalinclude:: doc-pgr_analyzeGraph.queries
+.. literalinclude:: analyzeGraph.queries
    :start-after: -- q22
    :end-before: -- q22.1
 
 Additional Examples
 -------------------------------------------------------------------------------
 
-.. literalinclude:: doc-pgr_analyzeGraph.queries
+.. literalinclude:: analyzeGraph.queries
    :start-after: -- q23
    :end-before: -- q23.1
 
-.. literalinclude:: doc-pgr_analyzeGraph.queries
+.. literalinclude:: analyzeGraph.queries
    :start-after: -- q24
    :end-before: -- q24.1
 
-.. literalinclude:: doc-pgr_analyzeGraph.queries
+.. literalinclude:: analyzeGraph.queries
    :start-after: -- q25
    :end-before: -- q25.1
 
-.. literalinclude:: doc-pgr_analyzeGraph.queries
+.. literalinclude:: analyzeGraph.queries
    :start-after: -- q26
    :end-before: -- q26.1
 
-.. literalinclude:: doc-pgr_analyzeGraph.queries
+.. literalinclude:: analyzeGraph.queries
    :start-after: -- q27
    :end-before: -- q27.1
 
-.. literalinclude:: doc-pgr_analyzeGraph.queries
+.. literalinclude:: analyzeGraph.queries
    :start-after: -- q28
    :end-before: -- q28.1
 

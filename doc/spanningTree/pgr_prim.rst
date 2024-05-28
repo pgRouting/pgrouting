@@ -60,7 +60,7 @@ Signatures
 
 :Example: Minimum spanning forest of a subgraph
 
-.. literalinclude:: doc-pgr_prim.queries
+.. literalinclude:: prim.queries
    :start-after: -- q1
    :end-before: -- q2
 

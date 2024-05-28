@@ -126,7 +126,7 @@ Signatures
 * **Line 4** Vertices :math:`\{2, 4, 13, 14\}` are not included because they are
   not connected.
 
-.. literalinclude:: doc-pgr_TSP.queries
+.. literalinclude:: TSP.queries
    :start-after: -- q1
    :end-before: -- q2
    :linenos:
@@ -183,7 +183,7 @@ Start from vertex :math:`1`
 
 * **Line 6** ``start_vid => 1``
 
-.. literalinclude:: doc-pgr_TSP.queries
+.. literalinclude:: TSP.queries
    :start-after: -- q2
    :end-before: -- q3
    :linenos:
@@ -205,7 +205,7 @@ To generate an asymmetric matrix:
     * Triangle inequality might not be satisfied.
     * ``start_id != 0 AND end_id != 0``
 
-.. literalinclude:: doc-pgr_TSP.queries
+.. literalinclude:: TSP.queries
    :start-after: -- q3
    :end-before: -- q4
    :linenos:
@@ -215,7 +215,7 @@ Connected incomplete data
 
 Using selected edges :math:`\{2, 4, 5, 8, 9, 15\}` the matrix is not complete.
 
-.. literalinclude:: doc-pgr_TSP.queries
+.. literalinclude:: TSP.queries
    :start-after: -- q4
    :end-before: -- q5
    :linenos:
@@ -223,7 +223,7 @@ Using selected edges :math:`\{2, 4, 5, 8, 9, 15\}` the matrix is not complete.
 Cost value for :math:`17 \rightarrow 10` do not exist on the matrix, but the
 value used is taken from :math:`10 \rightarrow 17`.
 
-.. literalinclude:: doc-pgr_TSP.queries
+.. literalinclude:: TSP.queries
    :start-after: -- q5
    :end-before: -- q6
    :linenos:

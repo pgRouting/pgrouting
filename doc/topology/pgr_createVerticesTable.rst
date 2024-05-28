@@ -104,7 +104,7 @@ The structure of the vertices table is:
 
 :Example 1: The simplest way to use pgr_createVerticesTable
 
-.. literalinclude:: doc-pgr_createVerticesTable.queries
+.. literalinclude:: createVerticesTable.queries
    :start-after: --q1
    :end-before: --q1.1
 
@@ -115,7 +115,7 @@ Additional Examples
 
 :Example 2: When the arguments are given in the order described in the parameters:
 
-.. literalinclude:: doc-pgr_createVerticesTable.queries
+.. literalinclude:: createVerticesTable.queries
    :start-after: --q2
    :end-before: --q2.1
 
@@ -128,7 +128,7 @@ We get the same result as the simplest way to use the function.
    ``mytable`` is passed to the function as the geometry column, and the
    geometry column ``the_geom`` is passed to the function as the source column.
 
-   .. literalinclude:: doc-pgr_createVerticesTable.queries
+   .. literalinclude:: createVerticesTable.queries
       :start-after: --q2.1
       :end-before: --q2.2
 
@@ -137,13 +137,13 @@ We get the same result as the simplest way to use the function.
 
 :Example 3: The order of the parameters do not matter:
 
-.. literalinclude:: doc-pgr_createVerticesTable.queries
+.. literalinclude:: createVerticesTable.queries
    :start-after: --q3.1
    :end-before: --q3.2
 
 :Example 4: Using a different ordering
 
-.. literalinclude:: doc-pgr_createVerticesTable.queries
+.. literalinclude:: createVerticesTable.queries
    :start-after: --q4
    :end-before: --q4.1
 
@@ -151,7 +151,7 @@ We get the same result as the simplest way to use the function.
 :Example 5: Parameters defined with a default value can be omitted, as long as
             the value matches the default:
 
-.. literalinclude:: doc-pgr_createVerticesTable.queries
+.. literalinclude:: createVerticesTable.queries
    :start-after: --q5
    :end-before: --q5.1
 
@@ -160,7 +160,7 @@ We get the same result as the simplest way to use the function.
 
 :Example 6: Selecting rows based on the id.
 
-.. literalinclude:: doc-pgr_createVerticesTable.queries
+.. literalinclude:: createVerticesTable.queries
    :start-after: --q6
    :end-before: --q6.1
 
@@ -168,7 +168,7 @@ We get the same result as the simplest way to use the function.
 :Example 7: Selecting the rows where the geometry is near the geometry of row
             with ``id`` =5 .
 
-.. literalinclude:: doc-pgr_createVerticesTable.queries
+.. literalinclude:: createVerticesTable.queries
    :start-after: --q7
    :end-before: --q7.1
 
@@ -176,7 +176,7 @@ We get the same result as the simplest way to use the function.
 :Example 8: Selecting the rows where the geometry is near the geometry of the
             row with ``gid`` =100 of the table ``othertable``.
 
-.. literalinclude:: doc-pgr_createVerticesTable.queries
+.. literalinclude:: createVerticesTable.queries
    :start-after: --q8
    :end-before: --q8.1
 
@@ -185,7 +185,7 @@ Usage when the edge table's columns DO NOT MATCH the default values:
 
 Using the following table
 
-.. literalinclude:: doc-pgr_createVerticesTable.queries
+.. literalinclude:: createVerticesTable.queries
    :start-after: --tab1
    :end-before: --tab2
 
@@ -194,7 +194,7 @@ Using the following table
 
 :Example 9: The arguments need to be given in the order described in the parameters:
 
-.. literalinclude:: doc-pgr_createVerticesTable.queries
+.. literalinclude:: createVerticesTable.queries
    :start-after: --q9
    :end-before: --q9.1
 
@@ -204,7 +204,7 @@ Using the following table
    to the function as the geometry column, and the geometry column ``mygeom`` is
    passed to the function as the source column.
 
-    .. literalinclude:: doc-pgr_createVerticesTable.queries
+    .. literalinclude:: createVerticesTable.queries
        :start-after: --q9.1
        :end-before: --q9.2
 
@@ -212,7 +212,7 @@ Using the following table
 
 :Example 10: The order of the parameters do not matter:
 
-.. literalinclude:: doc-pgr_createVerticesTable.queries
+.. literalinclude:: createVerticesTable.queries
    :start-after: --q10
    :end-before: --q10.1
 
@@ -221,7 +221,7 @@ Using the following table
 In this scenario omitting a parameter would create an error because the default
 values for the column names do not match the column names of the table.
 
-.. literalinclude:: doc-pgr_createVerticesTable.queries
+.. literalinclude:: createVerticesTable.queries
    :start-after: --q11
    :end-before: --q11.1
 
@@ -230,44 +230,44 @@ values for the column names do not match the column names of the table.
 
 :Example 12: Selecting rows based on the gid. (positional notation)
 
-.. literalinclude:: doc-pgr_createVerticesTable.queries
+.. literalinclude:: createVerticesTable.queries
     :start-after: --q12
     :end-before: --q12.1
 
 :Example 13: Selecting rows based on the gid. (named notation)
 
-.. literalinclude:: doc-pgr_createVerticesTable.queries
+.. literalinclude:: createVerticesTable.queries
    :start-after: --q13
    :end-before: --q13.1
 
 :Example 14: Selecting the rows where the geometry is near the geometry of row
              with ``gid`` = 5.
 
-.. literalinclude:: doc-pgr_createVerticesTable.queries
+.. literalinclude:: createVerticesTable.queries
    :start-after: --q14
    :end-before: --q14.1
 
 
 :Example 15: TBD
 
-.. literalinclude:: doc-pgr_createVerticesTable.queries
+.. literalinclude:: createVerticesTable.queries
    :start-after: --q15
    :end-before: --q15.1
 
 :Example 16: Selecting the rows where the geometry is near the geometry of the
              row with ``gid`` =100 of the table ``othertable``.
 
-.. literalinclude:: doc-pgr_createVerticesTable.queries
+.. literalinclude:: createVerticesTable.queries
    :start-after: --q16
    :end-before: --q16.1
 
-.. literalinclude:: doc-pgr_createVerticesTable.queries
+.. literalinclude:: createVerticesTable.queries
    :start-after: --q16.1
    :end-before: --q16.2
 
 :Example 17: TBD
 
-.. literalinclude:: doc-pgr_createVerticesTable.queries
+.. literalinclude:: createVerticesTable.queries
    :start-after: --q17
    :end-before: --q17.1
 

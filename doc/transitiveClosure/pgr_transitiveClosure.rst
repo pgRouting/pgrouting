@@ -69,7 +69,7 @@ The pgr_transitiveClosure function has the following signature:
 
 :Example: Rechability of a subgraph
 
-.. literalinclude:: doc-transitiveClosure.queries
+.. literalinclude:: transitiveClosure.queries
    :start-after: -- q1
    :end-before: -- q2
 

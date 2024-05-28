@@ -105,7 +105,7 @@ One to One
 
 :Example: From vertex :math:`6` to vertex :math:`10` on an undirected graph.
 
-.. literalinclude:: doc-trsp.queries
+.. literalinclude:: trsp.queries
    :start-after: -- q2
    :end-before: -- q3
 
@@ -126,7 +126,7 @@ One to Many
 :Example: From vertex :math:`6` to vertices :math:`\{10, 1\}` on an
           undirected graph.
 
-.. literalinclude:: doc-trsp.queries
+.. literalinclude:: trsp.queries
    :start-after: -- q3
    :end-before: -- q4
 
@@ -147,7 +147,7 @@ Many to One
 :Example: From vertices :math:`\{6, 1\}` to vertex :math:`8` on a directed
           graph.
 
-.. literalinclude:: doc-trsp.queries
+.. literalinclude:: trsp.queries
    :start-after: -- q4
    :end-before: -- q5
 
@@ -169,7 +169,7 @@ Many to Many
 :Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 8\}` on an
           undirected graph.
 
-.. literalinclude:: doc-trsp.queries
+.. literalinclude:: trsp.queries
    :start-after: -- q5
    :end-before: -- q6
 
@@ -189,7 +189,7 @@ Combinations
 
 :Example: Using a combinations table on an undirected graph.
 
-.. literalinclude:: doc-trsp.queries
+.. literalinclude:: trsp.queries
    :start-after: -- q6
    :end-before: -- q7
 

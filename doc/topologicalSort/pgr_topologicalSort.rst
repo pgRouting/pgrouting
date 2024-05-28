@@ -69,7 +69,7 @@ Signatures
 
 :Example: Topologically sorting the graph
 
-.. literalinclude:: doc-topologicalSort.queries
+.. literalinclude:: topologicalSort.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -115,13 +115,13 @@ Additional examples
 
 :Example: Topologically sorting the one way segments
 
-.. literalinclude:: doc-topologicalSort.queries
+.. literalinclude:: topologicalSort.queries
    :start-after: -- q2
    :end-before: -- q3
 
 :Example: Graph is not a DAG
 
-.. literalinclude:: doc-topologicalSort.queries
+.. literalinclude:: topologicalSort.queries
    :start-after: -- q3
    :end-before: -- q4
 

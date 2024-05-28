@@ -87,7 +87,7 @@ The pgr_contraction function has the following signature:
 :Example: Making a dead end and linear contraction in that order on an
           undirected graph.
 
-.. literalinclude:: doc-pgr_contraction.queries
+.. literalinclude:: contraction.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -213,13 +213,13 @@ Additional Examples
 
 :Example: Only dead end contraction
 
-.. literalinclude:: doc-pgr_contraction.queries
+.. literalinclude:: contraction.queries
    :start-after: -- q2
    :end-before: -- q3
 
 :Example: Only linear contraction
 
-.. literalinclude:: doc-pgr_contraction.queries
+.. literalinclude:: contraction.queries
    :start-after: -- q3
    :end-before: -- q4
 

@@ -62,7 +62,7 @@ Signatures
 :Example: Symmetric cost matrix for vertices :math:`\{5, 6, 10, 15\}` on an
           **undirected** graph
 
-.. literalinclude:: doc-pgr_dijkstraCostMatrix.queries
+.. literalinclude:: dijkstraCostMatrix.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -102,7 +102,7 @@ Additional Examples
 
 :Example: Use with :doc:`pgr_TSP`.
 
-.. literalinclude:: doc-pgr_dijkstraCostMatrix.queries
+.. literalinclude:: dijkstraCostMatrix.queries
    :start-after: -- q2
    :end-before: -- q3
 

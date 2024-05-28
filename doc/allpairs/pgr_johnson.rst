@@ -58,7 +58,7 @@ Signatures
 
 :Example: For a directed subgraph with edges :math:`\{1, 2, 3, 4\}`.
 
-.. literalinclude:: doc-johnson.queries
+.. literalinclude:: johnson.queries
    :start-after: -- q1
    :end-before: -- q2
 

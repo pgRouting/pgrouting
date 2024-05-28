@@ -76,7 +76,7 @@ Signatures
 
 :Example: For an undirected graph with edges :math:'{2,4,5,8}'
 
-.. literalinclude:: doc-pgr_lineGraph.queries
+.. literalinclude:: lineGraph.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -266,7 +266,7 @@ used.
 
 The graph can be created as follows:
 
-.. literalinclude:: doc-pgr_lineGraph.queries
+.. literalinclude:: lineGraph.queries
    :start-after: -- q2
    :end-before: INSERT 0 5
 
@@ -274,7 +274,7 @@ The graph can be created as follows:
 Line Graph of a directed graph represented with shared edges
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_lineGraph.queries
+.. literalinclude:: lineGraph.queries
    :start-after: INSERT 0 5
    :end-before: -- q3
 
@@ -386,14 +386,14 @@ not used.
 
 The graph can be created as follows:
 
-.. literalinclude:: doc-pgr_lineGraph.queries
+.. literalinclude:: lineGraph.queries
    :start-after: -- q3
    :end-before: INSERT 0 7
 
 Line Graph of a directed graph represented with unique edges
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_lineGraph.queries
+.. literalinclude:: lineGraph.queries
    :start-after: INSERT 0 7
    :end-before: -- q4
 

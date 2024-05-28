@@ -43,7 +43,7 @@ Signatures
 
 :Example: Information about when this documentation was built
 
-.. literalinclude:: doc-full_version.queries
+.. literalinclude:: full_version.queries
    :start-after: -- q1
    :end-before: -- q2
 

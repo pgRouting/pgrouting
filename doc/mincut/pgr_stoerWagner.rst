@@ -82,7 +82,7 @@ Signatures
 
 :Example: min cut of the main subgraph
 
-.. literalinclude:: doc-stoerWagner.queries
+.. literalinclude:: stoerWagner.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -122,13 +122,13 @@ Additional Example:
 
 :Example: min cut of an edge
 
-.. literalinclude:: doc-stoerWagner.queries
+.. literalinclude:: stoerWagner.queries
    :start-after: -- q2
    :end-before: -- q3
 
 :Example: Using :doc:`pgr_connectedComponents`
 
-.. literalinclude:: doc-stoerWagner.queries
+.. literalinclude:: stoerWagner.queries
    :start-after: -- q3
    :end-before: -- q4
 

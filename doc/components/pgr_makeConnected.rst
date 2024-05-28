@@ -70,7 +70,7 @@ Signatures
 :Example: Query done on :doc:`sampledata` network gives the list of edges that
           are needed to connect the graph.
 
-.. literalinclude:: doc-pgr_makeConnected.queries
+.. literalinclude:: makeConnected.queries
    :start-after: -- q1
    :end-before: -- q2
 
