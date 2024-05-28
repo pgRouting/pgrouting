@@ -89,7 +89,7 @@ One to One
 
 :Example: Get 2 paths from :math:`6` to :math:`17` on a directed graph.
 
-.. literalinclude:: doc-ksp.queries
+.. literalinclude:: ksp.queries
     :start-after: --q1
     :end-before: --q2
 
@@ -110,7 +110,7 @@ One to Many
 
 :Example: Get 2 paths from vertex :math:`6` to vertices :math:`\{10, 17\}` on a directed graph.
 
-.. literalinclude:: doc-ksp.queries
+.. literalinclude:: ksp.queries
     :start-after: --q2
     :end-before: --q3
 
@@ -131,7 +131,7 @@ Many to One
 
 :Example: Get 2 paths from vertices :math:`\{6, 1\}` to vertex :math:`17` on a directed graph.
 
-.. literalinclude:: doc-ksp.queries
+.. literalinclude:: ksp.queries
     :start-after: --q3
     :end-before: --q4
 
@@ -152,7 +152,7 @@ Many to Many
 
 :Example: Get 2 paths vertices :math:`\{6, 1\}` to vertices :math:`\{10, 17\}` on a directed graph.
 
-.. literalinclude:: doc-ksp.queries
+.. literalinclude:: ksp.queries
     :start-after: --q4
     :end-before: --q5
 
@@ -175,13 +175,13 @@ Combinations
 
 The combinations table:
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
     :start-after: -- q51
     :end-before: -- q52
 
 The query:
 
-.. literalinclude:: doc-ksp.queries
+.. literalinclude:: ksp.queries
     :start-after: --q5
     :end-before: --q6
 
@@ -322,7 +322,7 @@ Additional Examples
 
 Also get the paths in the heap.
 
-.. literalinclude:: doc-ksp.queries
+.. literalinclude:: ksp.queries
     :start-after: --q6
     :end-before: --q7
 
@@ -330,13 +330,13 @@ Also get the paths in the heap.
 
 Also get the paths in the heap.
 
-.. literalinclude:: doc-ksp.queries
+.. literalinclude:: ksp.queries
     :start-after: --q7
     :end-before: --q8
 
 :Example: Get 2 paths from vertices :math:`\{6, 1\}` to vertex :math:`17` on a undirected graph.
 
-.. literalinclude:: doc-ksp.queries
+.. literalinclude:: ksp.queries
     :start-after: --q8
     :end-before: --q9
 
@@ -344,7 +344,7 @@ Also get the paths in the heap.
 
 Also get the paths in the heap.
 
-.. literalinclude:: doc-ksp.queries
+.. literalinclude:: ksp.queries
     :start-after: --q9
     :end-before: --q10
 

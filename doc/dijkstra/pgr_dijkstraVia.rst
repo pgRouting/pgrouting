@@ -61,7 +61,7 @@ One Via
 :Example: Find the route that visits the vertices :math:`\{5, 1, 8\}` in that
           order on an **directed** graph.
 
-.. literalinclude:: doc-pgr_dijkstraVia.queries
+.. literalinclude:: dijkstraVia.queries
     :start-after: -- q01
     :end-before: -- q1
 
@@ -115,42 +115,42 @@ All this examples are about the route that visits the vertices :math:`\{5, 7, 1,
 The main query
 ...............................................................................
 
-.. literalinclude:: doc-pgr_dijkstraVia.queries
+.. literalinclude:: dijkstraVia.queries
     :start-after: -- q1
     :end-before: -- q2
 
 Aggregate cost of the third path.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_dijkstraVia.queries
+.. literalinclude:: dijkstraVia.queries
     :start-after: -- q2
     :end-before: -- q3
 
 Route's aggregate cost of the route at the end of the third path.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_dijkstraVia.queries
+.. literalinclude:: dijkstraVia.queries
     :start-after: -- q3
     :end-before: -- q4
 
 Nodes visited in the route.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_dijkstraVia.queries
+.. literalinclude:: dijkstraVia.queries
     :start-after: -- q4
     :end-before: -- q5
 
 The aggregate costs of the route when the visited vertices are reached.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_dijkstraVia.queries
+.. literalinclude:: dijkstraVia.queries
     :start-after: -- q5
     :end-before: -- q6
 
 Status of "passes in front" or "visits" of the nodes.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_dijkstraVia.queries
+.. literalinclude:: dijkstraVia.queries
     :start-after: -- q6
     :end-before: -- q7
 

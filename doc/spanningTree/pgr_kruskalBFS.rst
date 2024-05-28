@@ -74,7 +74,7 @@ Single vertex
 
 :Example: The Minimum Spanning Tree having as root vertex :math:`6`
 
-.. literalinclude:: doc-pgr_kruskalBFS.queries
+.. literalinclude:: kruskalBFS.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -94,7 +94,7 @@ Multiple vertices
 :Example: The Minimum Spanning Tree starting on vertices :math:`\{9, 6\}` with
           :math:`depth \leq 3`
 
-.. literalinclude:: doc-pgr_kruskalBFS.queries
+.. literalinclude:: kruskalBFS.queries
    :start-after: -- q2
    :end-before: -- q3
 

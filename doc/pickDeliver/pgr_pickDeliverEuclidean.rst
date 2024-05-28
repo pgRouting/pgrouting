@@ -90,19 +90,19 @@ Signature
 
 Given the vehicles:
 
-.. literalinclude:: ./doc-pickDeliverEuclidean.queries
+.. literalinclude:: ./pickDeliverEuclidean.queries
    :start-after: -- q1
    :end-before: -- q2
 
 and the orders:
 
-.. literalinclude:: ./doc-pickDeliverEuclidean.queries
+.. literalinclude:: ./pickDeliverEuclidean.queries
    :start-after: -- q2
    :end-before: -- q3
 
 The query:
 
-.. literalinclude:: ./doc-pickDeliverEuclidean.queries
+.. literalinclude:: ./pickDeliverEuclidean.queries
    :start-after: -- q3
    :end-before: -- q4
 
