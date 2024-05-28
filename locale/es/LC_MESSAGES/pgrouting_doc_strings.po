@@ -12,7 +12,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-13 17:23+0000\n"
 "PO-Revision-Date: 2024-05-28 15:29+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
 "Language: es\n"
@@ -14785,10 +14785,11 @@ msgstr ""
 "Para :math:`seq=7` desde :math:`203 \\leftrightarrow 302` representan dos "
 "aristas."
 
-#, fuzzy
 msgid ""
 "For :math:`seq=8` from :math:`304 \\leftrightarrow 403` represent two edges."
-msgstr "La arista :math:`2` (:math:`1 \\rightarrow 3`) no es parte del grafo."
+msgstr ""
+"Para :math:`seq=8` de :math:`304 \\leftrightarrow 403` representan dos "
+"aristas."
 
 #, fuzzy
 msgid "wikipedia: `Line Graph <https://en.wikipedia.org/wiki/Line_graph>`__"
