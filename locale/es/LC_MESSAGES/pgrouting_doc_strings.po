@@ -12,7 +12,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-13 17:23+0000\n"
 "PO-Revision-Date: 2024-05-28 15:28+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
 "Language: es\n"
@@ -14726,9 +14726,8 @@ msgstr "El grafo puede crearse del siguiente modo:"
 msgid "Line Graph of a directed graph represented with shared edges"
 msgstr "Grafo lineal de un grafo dirigido representado con aristas compartidas"
 
-#, fuzzy
 msgid "The result is a directed graph."
-msgstr "Para un grafo dirigido."
+msgstr "El resultado es un grafo dirigido."
 
 msgid ""
 "For :math:`seq=4` from :math:`203 \\leftrightarrow 304` represent two edges"
@@ -14739,28 +14738,25 @@ msgstr ""
 msgid "For all the other values of ``seq`` represent one edge."
 msgstr ""
 
-#, fuzzy
 msgid ""
 "The ``cost`` and ``reverse_cost`` values represent the existence of the edge."
 msgstr ""
-"Usa las columnas ``cost`` y ``reverse_cost`` para representar la existenica "
-"de una arista."
+"Los valores ``cost`` y ``reverse_cost`` representan la existencia de la "
+"arista."
 
-#, fuzzy
 msgid "When positive: the edge exists."
-msgstr "Cuando es positivo, es el identificador de un vértice."
+msgstr "Cuando es positivo: la arista existe."
 
-#, fuzzy
 msgid "When negative: the edge does not exist."
-msgstr "Cuando negativo arroja error."
+msgstr "Cuando es negativo: la arista no existe."
 
 msgid "Representation as directed with unique edge identifiers"
 msgstr ""
 
-#, fuzzy
 msgid "Single head arrows represent one edge (row) on the edges table."
 msgstr ""
-"Las flechas rojas corresponden cuando ``cost`` > 0 en la tabla de aristas."
+"Las flechas de una cabeza representan una arista (fila) en la tabla de "
+"aristas."
 
 msgid "There are no double head arrows"
 msgstr ""
@@ -14783,10 +14779,11 @@ msgstr ""
 msgid "Line Graph of a directed graph represented with unique edges"
 msgstr "Gráfico lineal de un grafo dirigido representado con aristas únicas"
 
-#, fuzzy
 msgid ""
 "For :math:`seq=7` from :math:`203 \\leftrightarrow 302` represent two edges."
-msgstr "La arista :math:`2` (:math:`1 \\rightarrow 3`) no es parte del grafo."
+msgstr ""
+"Para :math:`seq=7` de :math:`203 \\leftrightarrow 302` representan dos "
+"aristas."
 
 #, fuzzy
 msgid ""
