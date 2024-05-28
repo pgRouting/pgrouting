@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-13 17:23+0000\n"
-"PO-Revision-Date: 2024-05-28 15:30+0000\n"
+"PO-Revision-Date: 2024-05-28 15:32+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
@@ -15473,9 +15473,8 @@ msgstr "``bigint`` identificador único del vértice"
 msgid "old_id"
 msgstr "old_id"
 
-#, fuzzy
 msgid "``bigint`` Identifier of the edge in original table"
-msgstr "``bigint`` identificador del borde en la tabla original"
+msgstr "``bigint`` Identificador de la arista en la tabla original"
 
 msgid "sub_id"
 msgstr "sub_id"
@@ -15577,9 +15576,8 @@ msgstr "Tiene solamente campos básicos para hacer un análisis de topología"
 msgid "Edges with 1 dead end: 1,6,24"
 msgstr "Los bordes con 1 callejón sin salida: 1,6,24"
 
-#, fuzzy
 msgid "Edges with 2 dead ends: 17,18"
-msgstr "Bordes con 2 callejones sin salida 17,18"
+msgstr "Bordes con 2 callejones sin salida: 17,18"
 
 msgid ""
 "Edge 17's right node is a dead end because there is no other edge sharing "
