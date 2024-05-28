@@ -1,13 +1,13 @@
 # Do not use extensions
 SET(LOCAL_FILES
-    doc-pgr_boykovKolmogorov
-    doc-pgr_edgeDisjointPaths
-    doc-pgr_edmondsKarp
-    doc-pgr_maxCardinalityMatch
-    doc-pgr_maxFlow
-    doc-pgr_pushRelabel
-    doc-pgr_maxFlowMinCost
-    doc-pgr_maxFlowMinCost_Cost
+    boykovKolmogorov
+    edgeDisjointPaths
+    edmondsKarp
+    maxCardinalityMatch
+    maxFlow
+    pushRelabel
+    maxFlowMinCost
+    maxFlowMinCost_Cost
 
     )
 

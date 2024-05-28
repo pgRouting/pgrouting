@@ -1,6 +1,6 @@
 # Do not use extensions
 SET(LOCAL_FILES
-    pgr_drivingDistance
+    drivingDistance
     )
 
 foreach (f ${LOCAL_FILES})

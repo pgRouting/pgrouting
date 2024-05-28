@@ -1,7 +1,7 @@
 # Do not use extensions
 SET(LOCAL_FILES
-    doc-pgr_breadthFirstSearch
-    doc-pgr_binaryBreadthFirstSearch
+    breadthFirstSearch
+    binaryBreadthFirstSearch
     )
 
 foreach (f ${LOCAL_FILES})

@@ -1,6 +1,6 @@
 # Do not use extensions
 SET(LOCAL_FILES
-    doc-transitiveClosure
+    transitiveClosure
     )
 
 foreach (f ${LOCAL_FILES})
