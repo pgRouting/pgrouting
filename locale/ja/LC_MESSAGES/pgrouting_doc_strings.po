@@ -18763,9 +18763,3 @@ msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
 
 #, fuzzy
-#~ msgid "Currently works for undirected graph."
-#~ msgstr "導かれないグラフ。"
-
-#, fuzzy
-#~ msgid "For an **undirected** graph"
-#~ msgstr "導かれないグラフ"
