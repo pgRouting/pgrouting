@@ -385,7 +385,7 @@ sub createTestDB {
     unless version_greater_eq($dbver, $POSGRESQL_MIN_VERSION);
 
     # Create a database with postgis installed in it
-    mysystem("createdb $connopts $databaseName");
+    mysystem("createdb $connopts $databaseName") if !dbExists($databaseName);
     die "ERROR: Failed to create database '$databaseName'!\n" unless dbExists($databaseName);
     my $encoding = '';
     if ($OS =~ /msys/
@@ -398,6 +398,10 @@ sub createTestDB {
     if ($vpgr) {
         $myver = " VERSION '$vpgr'";
     }
+
+
+    mysystem("$psql $connopts -c \"DROP EXTENSION IF EXISTS pgrouting $myver\" $databaseName ");
+
     print "Installing pgrouting extension $myver\n" if $VERBOSE;
     mysystem("$psql $connopts -c \"CREATE EXTENSION pgrouting $myver CASCADE\" $databaseName");
 
