@@ -1,7 +1,7 @@
 # Do not use extensions
 SET(LOCAL_FILES
-    doc-pgr_lineGraphFull
-    doc-pgr_lineGraph
+    lineGraphFull
+    lineGraph
     )
 
 foreach (f ${LOCAL_FILES})

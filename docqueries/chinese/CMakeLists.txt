@@ -1,7 +1,7 @@
 # Do not use extensions
 SET(LOCAL_FILES
-    doc-pgr_chinesePostmanCost
-    doc-pgr_chinesePostman
+    chinesePostmanCost
+    chinesePostman
     )
 
 foreach (f ${LOCAL_FILES})

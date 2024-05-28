@@ -1,6 +1,6 @@
 # Do not use extensions
 SET(LOCAL_FILES
-    doc-pgr_vrpOneDepot
+    vrpOneDepot
     )
 
 foreach (f ${LOCAL_FILES})

@@ -1,7 +1,7 @@
 # Do not use extensions
 SET(LOCAL_FILES
-    doc-ksp
-    doc-pgr_turnRestrictedPath
+    ksp
+    turnRestrictedPath
     )
 
 foreach (f ${LOCAL_FILES})

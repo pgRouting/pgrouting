@@ -1,6 +1,6 @@
 # Do not use extensions
 SET(LOCAL_FILES
-    doc-stoerWagner
+    stoerWagner
     )
 
 foreach (f ${LOCAL_FILES})
