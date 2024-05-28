@@ -408,7 +408,7 @@
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
-<td><p>Identificador del vértice de salida.</p></td>
+<td><p>Identificador del vértice de partida.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
@@ -447,12 +447,7 @@
 </li>
 <li><p>El conjunto de aristas <span class="math notranslate nohighlight">\(E\)</span></p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(E = \begin{cases}
-\text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \quad \text{if } reverse\_cost = \varnothing \\
-\text{ } \text{ }  &amp; \quad \text{ } \\
-\text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp;  \quad \text{ } \\
-\cup \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i&gt;=0 \} &amp; \quad \text{if } reverse\_cost \neq \varnothing \\
-\end{cases}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E = \begin{cases} \text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \quad \text{if } reverse\_cost = \varnothing \\ \text{ } \text{ } &amp; \quad \text{ } \\ \text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \quad \text{ } \\ \cup \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i&gt;=0 \} &amp; \quad \text{if } reverse\_cost \neq \varnothing \\ \end{cases}\)</span></p></li>
 </ul>
 </li>
 </ul>
@@ -466,15 +461,7 @@
 </li>
 <li><p>El conjunto de aristas <span class="math notranslate nohighlight">\(E\)</span></p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(E = \begin{cases}
-\text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \}  &amp; \quad \text{ } \\
-\cup \{(target_i, source_i, cost_i) \text{ when } cost &gt;=0 \}  &amp; \quad \text{ if } reverse\_cost = \varnothing \\
-\text{ } \text{ }  &amp; \text{ } \\
-\text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \text{ } \\
-\cup \{(target_i, source_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \text{ } \\
-\cup \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} &amp; \text{ } \\
-\cup \{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} &amp; \quad \text{ if } reverse\_cost \neq \varnothing \\
-\end{cases}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E = \begin{cases} \text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \quad \text{ } \\ \cup \{(target_i, source_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \quad \text{ if } reverse\_cost = \varnothing \\ \text{ } \text{ } &amp; \text{ } \\ \text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \text{ } \\ \cup \{(target_i, source_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \text{ } \\ \cup \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} &amp; \text{ } \\ \cup \{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} &amp; \quad \text{ if } reverse\_cost \neq \varnothing \\ \end{cases}\)</span></p></li>
 </ul>
 </li>
 </ul>
@@ -538,7 +525,7 @@ G_u(V,E) &amp; \quad \text{ if5 } directed = false \\
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.7.0-dev.<br/>
-      Actualizado por última vez en may 13, 2024.<br/>
+      Actualizado por última vez en may 28, 2024.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.3.7.<br/>
     </p>
   </div>

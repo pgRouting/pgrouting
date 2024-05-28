@@ -309,11 +309,11 @@ real world navigable road networks.</p>
 <div class="line">pgr_trsp(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#restrictions-sql">SQL de restricciones</a>, <strong>salida</strong>, <strong>destinos</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 <div class="line">pgr_trsp(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#restrictions-sql">SQL de restricciones</a>, <strong>salidas</strong>, <strong>destino</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 <div class="line">pgr_trsp(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#restrictions-sql">SQL de restricciones</a>, <strong>salidas</strong>, <strong>destinos</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
-<div class="line">pgr_trsp(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#restrictions-sql">SQL de restricciones</a>, <a class="reference internal" href="#combinations-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_trsp(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#combinations-sql">SQL de restricciones</a>, <a class="reference internal" href="#restrictions-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
-<div class="line">OR EMPTY SET</div>
+<div class="line">O CONJUNTO VACÍO</div>
 </div>
 </div>
 <section id="one-to-one">
@@ -323,7 +323,7 @@ real world navigable road networks.</p>
 <p>pgr_trsp(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#restrictions-sql">SQL de restricciones</a>, <strong>salida</strong>, <strong>destino</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
-<div class="line">OR EMPTY SET</div>
+<div class="line">O CONJUNTO VACÍO</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -352,7 +352,7 @@ real world navigable road networks.</p>
 <p>pgr_trsp(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#restrictions-sql">SQL de restricciones</a>, <strong>salida</strong>, <strong>destinos</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
-<div class="line">OR EMPTY SET</div>
+<div class="line">O CONJUNTO VACÍO</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -392,7 +392,7 @@ undirected graph.</p>
 <p>pgr_trsp(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#restrictions-sql">SQL de restricciones</a>, <strong>salidas</strong>, <strong>destino</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
-<div class="line">OR EMPTY SET</div>
+<div class="line">O CONJUNTO VACÍO</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -426,7 +426,7 @@ graph.</p>
 <p>pgr_trsp(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#restrictions-sql">SQL de restricciones</a>, <strong>salidas</strong>, <strong>destinos</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
-<div class="line">OR EMPTY SET</div>
+<div class="line">O CONJUNTO VACÍO</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -469,10 +469,10 @@ undirected graph.</p>
 <span id="index-4"></span><h3>Combinaciones<a class="headerlink" href="#combinations" title="Link to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<p>pgr_trsp(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#restrictions-sql">SQL de restricciones</a>, <a class="reference internal" href="#combinations-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
+<p>pgr_trsp(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#combinations-sql">SQL de restricciones</a>, <a class="reference internal" href="#restrictions-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
-<div class="line">OR EMPTY SET</div>
+<div class="line">O CONJUNTO VACÍO</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -546,7 +546,7 @@ undirected graph.</p>
 </tr>
 <tr class="row-odd"><td><p><strong>salida</strong></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
-<td><p>Identificador del vértice de salida.</p></td>
+<td><p>Identificador del vértice de partida.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>salidas</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ENTEROS</strong>]</p></td>
@@ -554,7 +554,7 @@ undirected graph.</p>
 </tr>
 <tr class="row-odd"><td><p><strong>destino</strong></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
-<td><p>Identificador del vértice de salida.</p></td>
+<td><p>Identificador del vértice de partida.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>destinos</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [<strong>ENTEROS</strong>]</p></td>
@@ -704,7 +704,7 @@ undirected graph.</p>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
-<td><p>Identificador del vértice de salida.</p></td>
+<td><p>Identificador del vértice de partida.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
@@ -808,7 +808,7 @@ undirected graph.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.7.0-dev.<br/>
-      Actualizado por última vez en may 13, 2024.<br/>
+      Actualizado por última vez en may 28, 2024.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.3.7.<br/>
     </p>
   </div>
