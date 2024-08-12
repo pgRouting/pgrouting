@@ -12,6 +12,7 @@ name: Check queries
 # - the latest postgis version
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - '.github/workflows/check-queries.yml'

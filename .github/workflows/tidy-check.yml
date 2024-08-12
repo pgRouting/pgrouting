@@ -1,6 +1,7 @@
 name: clang-tidy check
 
 on:
+  workflow_dispatch:
   pull_request:
     branches-ignore:
       - 'gh-pages'

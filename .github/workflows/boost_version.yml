@@ -27,6 +27,7 @@ name: Boost supported versions
 # - 1.56 is the minimum version we ask (Aug 2014)
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - '.github/workflows/boost_version.yml'

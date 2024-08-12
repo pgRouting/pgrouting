@@ -11,6 +11,7 @@ name: Build for Ubuntu with clang
 # - postgis 3
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - '.github/workflows/clang.yml'
