@@ -40,7 +40,8 @@ namespace pgrouting {
 namespace b_g {
 
 /** @brief converts a bg to Edges_t
- * @param[in] bg the boost grah
+ * @param[in] bg the boost graph
+ * @param[in] add_self_loop flagg to include self loops on the graph
  * @returns a set of Edges_t that exist on the graph
  *   id, source, target, cost, reverse_cost
  *   source < target

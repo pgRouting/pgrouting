@@ -59,14 +59,14 @@ process(
 
     char * fn_name = get_name(1, fn_suffix, &err_msg);
     if (err_msg) {
-        pgr_global_report(log_msg, notice_msg, err_msg);
+        pgr_global_report(&log_msg, &notice_msg, &err_msg);
         return;
     }
 
     if (strcmp(fn_suffix, "DD") == 0 && distance < 0) {
-        throw_error("Negative value found on 'distance'", "Must be positive");
+        pgr_throw_error("Negative value found on 'distance'", "Must be positive");
     } else if ((strcmp(fn_suffix, "BFS") == 0 || strcmp(fn_suffix, "DFS") == 0) && max_depth < 0) {
-        throw_error("Negative value found on 'max_depth'", "Must be positive");
+        pgr_throw_error("Negative value found on 'max_depth'", "Must be positive");
     }
 
     clock_t start_t = clock();
@@ -91,11 +91,7 @@ process(
     if (err_msg) {
         if (*result_tuples) pfree(*result_tuples);
     }
-    pgr_global_report(log_msg, notice_msg, err_msg);
-
-    if (log_msg) pfree(log_msg);
-    if (notice_msg) pfree(notice_msg);
-    if (err_msg) pfree(err_msg);
+    pgr_global_report(&log_msg, &notice_msg, &err_msg);
 
     pgr_SPI_finish();
 }

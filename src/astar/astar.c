@@ -91,11 +91,7 @@ process(char* edges_sql,
         (*result_count) = 0;
     }
 
-    pgr_global_report(log_msg, notice_msg, err_msg);
-
-    if (log_msg) pfree(log_msg);
-    if (notice_msg) pfree(notice_msg);
-    if (err_msg) pfree(err_msg);
+    pgr_global_report(&log_msg, &notice_msg, &err_msg);
 
     pgr_SPI_finish();
 }

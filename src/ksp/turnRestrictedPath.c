@@ -104,11 +104,7 @@ process(
     if (err_msg) {
         if (*path) pfree(*path);
     }
-    pgr_global_report(log_msg, notice_msg, err_msg);
-
-    if (log_msg) {pfree(log_msg); log_msg = NULL;}
-    if (notice_msg) {pfree(notice_msg); notice_msg = NULL;}
-    if (err_msg) {pfree(err_msg); err_msg = NULL;}
+    pgr_global_report(&log_msg, &notice_msg, &err_msg);
 
     pgr_SPI_finish();
 }

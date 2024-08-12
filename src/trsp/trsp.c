@@ -152,7 +152,7 @@ static int compute_trsp(
   Edge_t *edges = NULL;
   size_t total_tuples = 0;
   pgr_get_edges(edges_sql, &edges, &total_tuples, true, false, &err_msg);
-  throw_error(err_msg, edges_sql);
+  pgr_throw_error(err_msg, edges_sql);
 
   // defining min and max vertex id
   int64_t v_max_id = 0;
