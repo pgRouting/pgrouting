@@ -95,7 +95,9 @@ get_combinations(
              */
             bool rule_breaker = true;
             for (const auto &e : r.precedences()) {
-                if (*ptr != e) {rule_breaker = false; break;}
+                if (*ptr != e) {
+                    rule_breaker = false; break;
+                }
                 ++ptr;
             }
             if (rule_breaker) {
