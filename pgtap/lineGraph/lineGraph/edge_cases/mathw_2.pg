@@ -62,7 +62,8 @@ FROM (VALUES
    (9, 304, 304, 1, 1))
 AS t(id, source, target, cost, reverse_cost);
 
-SELECT set_eq('mathw_lg_2', 'expected_mathw_lg_2');
+SELECT CASE WHEN min_version('3.7.0') THEN set_eq('mathw_lg_2', 'expected_mathw_lg_2', 'Expected Results')
+ELSE skip(1, 'pgr_lineGraph was fixed on 3.7.0') END;
 
 /* same example with expanded edges */
 CREATE TABLE mathw_3 (
@@ -109,7 +110,8 @@ FROM (VALUES
   (10, 403, 302, 1, -1))
 AS t(id, source, target, cost, reverse_cost);
 
-SELECT set_eq('mathw_lg_3', 'expected_mathw_lg_3');
+SELECT CASE WHEN min_version('3.7.0') THEN set_eq('mathw_lg_3', 'expected_mathw_lg_3', 'Expected Results')
+ELSE skip(1, 'pgr_lineGraph was fixed on 3.7.0') END;
 
 SELECT finish();
 ROLLBACK;
