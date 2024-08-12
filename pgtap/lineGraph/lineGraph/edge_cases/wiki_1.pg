@@ -62,7 +62,8 @@ FROM (VALUES
   (9, 405, 304, 1,        -1))
 AS t(id, source, target, cost, reverse_cost);
 
-SELECT set_eq('wiki_lg_1', 'expected_wiki_lg_1');
+SELECT CASE WHEN min_version('3.7.0') THEN set_eq('wiki_lg_1', 'expected_wiki_lg_1', 'Expected Results')
+ELSE skip(1, 'pgr_lineGraph was fixed on 3.7.0') END;
 
 SELECT finish();
 ROLLBACK;

@@ -38,10 +38,12 @@ SELECT is_empty($$
 SELECT lives_ok($$
   SELECT * FROM pgr_lineGraph('SELECT id, source, target, cost, reverse_cost  FROM edges WHERE id = 17')
   $$, '11-lives: one bi-edge directed');
-SELECT set_eq($$
+SELECT CASE WHEN min_version('3.7.0') THEN set_eq($$
   SELECT * FROM pgr_lineGraph('SELECT id, source, target, cost, reverse_cost FROM edges WHERE id = 17')
   $$, $$VALUES (1,17,17,1,1)$$,
-  '12-non empty: one bi-edge directed');
+  '12-non empty: one bi-edge directed')
+  ELSE skip(1, 'pgr_lineGraph was fixed on 3.7.0') END;
+
 SELECT lives_ok($$
   SELECT * FROM pgr_lineGraph('SELECT id, source, target, cost, reverse_cost FROM edges WHERE id = 17', false)
   $$, '13-lives: one bi-edge undirected');
@@ -71,11 +73,12 @@ SELECT lives_ok($$
 SELECT isnt_empty($$
   SELECT * FROM pgr_lineGraph('SELECT id, source, target, cost, reverse_cost FROM edges WHERE id IN (6,7)')
   $$, '5-not_empty: two bi-edge directed');
-SELECT set_eq($$
+SELECT CASE WHEN min_version('3.7.0') THEN set_eq($$
   SELECT * FROM pgr_lineGraph('SELECT id, source, target, cost, reverse_cost FROM edges WHERE id IN (6,7)')
   $$,
   $$VALUES (1,6,6,1,1),(2,6,7,1,1),(3,7,7,1,1)$$,
-  '5-set_eq: two bi-edge directed');
+  '5-set_eq: two bi-edge directed')
+  ELSE skip(1, 'pgr_lineGraph was fixed on 3.7.0') END;
 
 SELECT lives_ok($$
   SELECT * FROM pgr_lineGraph('SELECT id, source, target, cost, reverse_cost FROM edges WHERE id IN (6,7)', false)
