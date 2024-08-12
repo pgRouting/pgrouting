@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define PGR_DBG(...) \
     elog(DEBUG3, __VA_ARGS__)
 #else
-#define PGR_DBG(...) do { ; } while (0)
+#define PGR_DBG(...) do { ; } while (0)  // NOLINT [whitespace/newline]
 #endif
 
 #endif  // INCLUDE_C_COMMON_DEBUG_MACRO_H_
