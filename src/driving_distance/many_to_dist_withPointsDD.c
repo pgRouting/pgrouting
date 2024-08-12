@@ -59,13 +59,13 @@ process(
     char d_side = estimate_drivingSide(driving_side[0]);
     if (is_new) {
         if (d_side == ' ') {
-            throw_error("Invalid value of 'driving side'", "Valid value are 'r', 'l', 'b'");
+            pgr_throw_error("Invalid value of 'driving side'", "Valid value are 'r', 'l', 'b'");
             return;
         } else if (directed && !(d_side == 'r' || d_side == 'l')) {
-            throw_error("Invalid value of 'driving side'", "Valid values are for directed graph are: 'r', 'l'");
+            pgr_throw_error("Invalid value of 'driving side'", "Valid values are for directed graph are: 'r', 'l'");
             return;
         } else if (!directed && !(d_side == 'b')) {
-            throw_error("Invalid value of 'driving side'", "Valid values are for undirected graph is: 'b'");
+            pgr_throw_error("Invalid value of 'driving side'", "Valid values are for undirected graph is: 'b'");
             return;
         }
     } else {
@@ -112,11 +112,7 @@ process(
         (*result_tuples) = NULL;
     }
 
-    pgr_global_report(log_msg, notice_msg, err_msg);
-
-    if (log_msg) pfree(log_msg);
-    if (notice_msg) pfree(notice_msg);
-    if (err_msg) pfree(err_msg);
+    pgr_global_report(&log_msg, &notice_msg, &err_msg);
 
     pgr_SPI_finish();
 }
