@@ -39,7 +39,7 @@ THE SOFTWARE.
 
 
 create or replace function _pgr_makeDistanceMatrix
-  (sqlin text, 
+  (sqlin text,
 
   OUT dmatrix double precision[],
   OUT ids integer[])
