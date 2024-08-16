@@ -12,7 +12,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-16 18:52+0000\n"
 "PO-Revision-Date: 2024-08-16 20:24+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
 "Language: es\n"
@@ -4946,9 +4946,8 @@ msgstr ""
 msgid "New experimental functions"
 msgstr "Nuevas funciones experimentales"
 
-#, fuzzy
 msgid "Metrics"
-msgstr "Restricciones"
+msgstr "Métricas"
 
 msgid "pgr_betweennessCentrality"
 msgstr ""
@@ -5060,9 +5059,8 @@ msgstr "Se minimiza el peso total de todos los bordes del árbol o bosque."
 msgid "Kruskal's running time: :math:`O(E * log E)`"
 msgstr "Tiempo de ejecución de Kruskal: :math:`O(E * log E)`"
 
-#, fuzzy
 msgid "Metrics - Family of functions"
-msgstr "Prim - Familia de funciones"
+msgstr "Métricas - Familia de funciones"
 
 msgid "Migration guide"
 msgstr "Guía de migración"
@@ -10542,18 +10540,15 @@ msgid ""
 "as most of the shortest paths between vertices pass through them."
 msgstr ""
 
-#, fuzzy
 msgid "This implementation work for both directed and undirected graphs."
 msgstr ""
-"La implementación funciona para los grafos **dirigidos** y **no dirigidos**."
+"Esta implementación funciona tanto para grafos dirigidos como no dirigidos."
 
-#, fuzzy
 msgid "Running time:  :math:`\\Theta(VE)`"
-msgstr "Tiempo de ejecución: :math:`O(V + E)`"
+msgstr "Tiempo de ejecución: :math:`\\Theta(VE)`"
 
-#, fuzzy
 msgid "Running space: :math:`\\Theta(VE)`"
-msgstr "Tiempo de ejecución: :math:`O(V + E)`"
+msgstr "Espacio de ejecución: :math:`\\Theta(VE)`"
 
 msgid "Throws when there are no edges in the graph"
 msgstr "Lanza cuando no hay aristas en el grafo"
@@ -10564,9 +10559,8 @@ msgstr "pgr_betweennessCentrality(`SQL de aristas`_, [``directed``])"
 msgid "Returns set of ``(vid, centrality)``"
 msgstr "Regresa el conjunto de ``(vid, centrality)``"
 
-#, fuzzy
 msgid "For a directed graph with edges :math:`\\{1, 2, 3, 4\\}`."
-msgstr "Para sub-grafo con aristas :math:`\\{1, 2, 3, 4\\}`."
+msgstr "Para un grafo dirigido con aristas :math:`{1, 2, 3, 4\\}`."
 
 #, fuzzy
 msgid "Explanation"
