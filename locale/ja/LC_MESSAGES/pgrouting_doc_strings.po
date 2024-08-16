@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-13 17:23+0000\n"
+"POT-Creation-Date: 2024-08-16 18:52+0000\n"
 "PO-Revision-Date: 2024-05-01 03:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/"
@@ -3991,6 +3991,15 @@ msgid ""
 "an undirected graph."
 msgstr ""
 
+#, fuzzy
+msgid ":doc:`metrics-family`"
+msgstr ":doc:`ordering-family`"
+
+msgid ""
+":doc:`pgr_betweennessCentrality` - Calculates relative betweenness "
+"centrality using Brandes Algorithm"
+msgstr ""
+
 msgid ":doc:`TRSP-family`"
 msgstr ""
 
@@ -4459,6 +4468,15 @@ msgid ""
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
 msgstr ""
 
+msgid "New experimental functions"
+msgstr ""
+
+msgid "Metrics"
+msgstr ""
+
+msgid "pgr_betweennessCentrality"
+msgstr ""
+
 msgid "Official functions changes"
 msgstr ""
 
@@ -4553,6 +4571,10 @@ msgstr ""
 
 msgid "Kruskal's running time: :math:`O(E * log E)`"
 msgstr ""
+
+#, fuzzy
+msgid "Metrics - Family of functions"
+msgstr "ダイクストラ関連機能"
 
 msgid "Migration guide"
 msgstr ""
@@ -9195,6 +9217,105 @@ msgstr ""
 msgid "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
 msgstr ""
 
+msgid "``pgr_betweennessCentrality``"
+msgstr ""
+
+msgid ""
+"``pgr_betweennessCentrality`` - Calculates the relative betweeness "
+"centrality using Brandes Algorithm"
+msgstr ""
+
+#, fuzzy
+msgid "Version 3.7.0"
+msgstr "バージョン 3.0.0"
+
+msgid "New **experimental** function:"
+msgstr ""
+
+msgid ""
+"The Brandes Algorithm takes advantage of the sparse graphs for evaluating "
+"the betweenness centrality score of all vertices."
+msgstr ""
+
+msgid ""
+"Betweenness centrality measures the extent to which a vertex lies on the "
+"shortest paths between all other pairs of vertices. Vertices with a high "
+"betweenness centrality score may have considerable influence in a network by "
+"the virtue of their control over the shortest paths passing between them."
+msgstr ""
+
+msgid ""
+"The removal of these vertices will affect the network by disrupting the it, "
+"as most of the shortest paths between vertices pass through them."
+msgstr ""
+
+#, fuzzy
+msgid "This implementation work for both directed and undirected graphs."
+msgstr "導かれないグラフ。"
+
+msgid "Running time:  :math:`\\Theta(VE)`"
+msgstr ""
+
+msgid "Running space: :math:`\\Theta(VE)`"
+msgstr ""
+
+msgid "Throws when there are no edges in the graph"
+msgstr ""
+
+#, fuzzy
+msgid "pgr_betweennessCentrality(`Edges SQL`_, [``directed``])"
+msgstr "p"
+
+#, fuzzy
+msgid "Returns set of ``(vid, centrality)``"
+msgstr "``(seq, node, cost, agg_cost)`` の1セットを返却します"
+
+msgid "For a directed graph with edges :math:`\\{1, 2, 3, 4\\}`."
+msgstr ""
+
+msgid "Explanation"
+msgstr ""
+
+msgid "The betweenness centrality are between parenthesis."
+msgstr ""
+
+msgid "The leaf vertices have betweenness centrality :math:`0`."
+msgstr ""
+
+msgid ""
+"Betweenness centrality of vertex :math:`6` is higher than of vertex :math:"
+"`10`."
+msgstr ""
+
+msgid "Removing vertex :math:`6` will create three graph components."
+msgstr ""
+
+msgid "Removing vertex :math:`10` will create two graph components."
+msgstr ""
+
+msgid "``vid``"
+msgstr ""
+
+#, fuzzy
+msgid "Identifier of the vertex"
+msgstr "終了ノードの識別子。"
+
+msgid "``centrality``"
+msgstr ""
+
+msgid ""
+"Relative betweenness centrality score of the vertex (will be in range [0,1])"
+msgstr ""
+
+msgid ""
+"Boost's `betweenness_centrality <https://www.boost.org/doc/libs/1_84_0/libs/"
+"graph/doc/betweenness_centrality.html>`_"
+msgstr ""
+
+#, fuzzy
+msgid "Queries use the :doc:`sampledata` network."
+msgstr "クエリは :doc:`sampledata` ネットワークを使用します。"
+
 msgid "``pgr_biconnectedComponents``"
 msgstr ""
 
@@ -10300,9 +10421,6 @@ msgid ""
 "``pgr_dagShortestPath`` — Returns the shortest path(s) for weighted directed "
 "acyclic graphs(DAG). In particular, the DAG shortest paths algorithm "
 "implemented by Boost.Graph."
-msgstr ""
-
-msgid "New **experimental** function:"
 msgstr ""
 
 msgid "pgr_dagShortestPath(Combinations)"
@@ -12488,10 +12606,6 @@ msgid ""
 "breadth First Search ordering."
 msgstr ""
 
-#, fuzzy
-msgid "Version 3.7.0"
-msgstr "バージョン 3.0.0"
-
 msgid ""
 "Visits and extracts the nodes information in Breath First Search ordering of "
 "the Minimum Spanning Tree created using Kruskal's algorithm."
@@ -14198,9 +14312,6 @@ msgid "Returns set of |result-closure|"
 msgstr ""
 
 msgid "Rechability of a subgraph"
-msgstr ""
-
-msgid "``vid``"
 msgstr ""
 
 msgid "Identifier of the source of the edges"
@@ -15981,9 +16092,6 @@ msgid "``pgr_findCloseEdges`` (One point)"
 msgstr ""
 
 msgid "``pgr_findCloseEdges`` (Many points)"
-msgstr ""
-
-msgid "New experimental functions"
 msgstr ""
 
 msgid "Ordering"
@@ -18761,5 +18869,3 @@ msgstr ""
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
-
-#, fuzzy

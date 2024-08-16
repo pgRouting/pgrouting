@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-13 17:23+0000\n"
+"POT-Creation-Date: 2024-08-16 18:52+0000\n"
 "PO-Revision-Date: 2024-05-28 15:47+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
@@ -4093,13 +4093,13 @@ msgid ""
 "\\text{ when } reverse\\_cost_i>=0 \\} & \\quad \\text{if } reverse\\_cost "
 "\\neq \\varnothing \\\\ \\end{cases}`"
 msgstr ""
-":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, cost_i) \\text{ "
-"when } cost >=0 \\} & \\quad \\text{if } reverse\\_cost = \\varnothing \\\\ "
-"\\text{ } \\text{ } & \\quad \\text{ } \\\\ \\text{ } \\{(source_i, "
-"target_i, cost_i) \\text{ when } cost >=0 \\} & \\quad \\text{ } \\\\ \\cup "
-"\\{(target_i, source_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i>=0 "
-"\\} & \\quad \\text{if } reverse\\_cost \\n"
-"eq \\varnothing \\\\ \\end{cases}`"
+":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, cost_i) "
+"\\text{ when } cost >=0 \\} & \\quad \\text{if } reverse\\_cost = "
+"\\varnothing \\\\ \\text{ } \\text{ } & \\quad \\text{ } \\\\ \\text{ } "
+"\\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} & \\quad "
+"\\text{ } \\\\ \\cup \\{(target_i, source_i, reverse\\_cost_i) "
+"\\text{ when } reverse\\_cost_i>=0 \\} & \\quad \\text{if } reverse\\_cost "
+"\\neq \\varnothing \\\\ \\end{cases}`"
 
 msgid "Undirected graph"
 msgstr "Grafo no dirigido"
@@ -4122,17 +4122,16 @@ msgid ""
 "target_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} & \\quad "
 "\\text{ if } reverse\\_cost \\neq \\varnothing \\\\ \\end{cases}`"
 msgstr ""
-":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, cost_i) \\text{ "
-"when } cost >=0 \\} & \\quad \\text{ } \\\\ \\cup \\{(target_i, source_i, "
-"cost_i) \\text{ when } cost >=0 \\} & \\quad \\text{ if } reverse\\_cost = "
-"\\varnothing \\\\ \\text{ } \\text{ } & \\text{ } \\\\ \\text{ } \\{("
-"source_i, target_i, cost_i) \\text{ when } cost >=0 \\} & \\text{ } \\\\ "
-"\\cup \\{(target_i, source_i, cost_i) \\text{ when } cost >=0 \\} & \\text{ }"
-" \\\\ \\cup \\{(target_i, source_i, reverse\\_cost_i) \\text{ when } "
-"reverse\\_cost_i >=0)\\} & \\text{ } \\\\ \\cup \\{(source_i, target_i, "
-"reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} & \\quad \\text{ "
-"if } reverse\\_cost \\n"
-"eq \\varnothing \\\\ \\end{cases}`"
+":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, cost_i) "
+"\\text{ when } cost >=0 \\} & \\quad \\text{ } \\\\ \\cup \\{(target_i, "
+"source_i, cost_i) \\text{ when } cost >=0 \\} & \\quad \\text{ if } "
+"reverse\\_cost = \\varnothing \\\\ \\text{ } \\text{ } & \\text{ } \\\\ "
+"\\text{ } \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} & "
+"\\text{ } \\\\ \\cup \\{(target_i, source_i, cost_i) \\text{ when } cost >=0 "
+"\\} & \\text{ } \\\\ \\cup \\{(target_i, source_i, reverse\\_cost_i) "
+"\\text{ when } reverse\\_cost_i >=0)\\} & \\text{ } \\\\ \\cup \\{(source_i, "
+"target_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} & \\quad "
+"\\text{ if } reverse\\_cost \\neq \\varnothing \\\\ \\end{cases}`"
 
 msgid "The problem"
 msgstr "El problema"
@@ -4389,6 +4388,15 @@ msgid ""
 msgstr ""
 ":doc:`pgr_cuthillMckeeOrdering` - Ordenamiento Cuthill-McKee de grafo sin no "
 "dirigido."
+
+#, fuzzy
+msgid ":doc:`metrics-family`"
+msgstr ":doc:`prim-family`"
+
+msgid ""
+":doc:`pgr_betweennessCentrality` - Calculates relative betweenness "
+"centrality using Brandes Algorithm"
+msgstr ""
 
 msgid ":doc:`TRSP-family`"
 msgstr ":doc:`TRSP-family`"
@@ -4936,6 +4944,16 @@ msgstr ""
 "versión, consulte la `meta cerrada 3.7.0 <https://github.com/pgRouting/"
 "pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`_"
 
+msgid "New experimental functions"
+msgstr "Nuevas funciones experimentales"
+
+#, fuzzy
+msgid "Metrics"
+msgstr "Restricciones"
+
+msgid "pgr_betweennessCentrality"
+msgstr ""
+
 msgid "Official functions changes"
 msgstr "Cambios en las funciones oficiales"
 
@@ -5042,6 +5060,10 @@ msgstr "Se minimiza el peso total de todos los bordes del árbol o bosque."
 
 msgid "Kruskal's running time: :math:`O(E * log E)`"
 msgstr "Tiempo de ejecución de Kruskal: :math:`O(E * log E)`"
+
+#, fuzzy
+msgid "Metrics - Family of functions"
+msgstr "Prim - Familia de funciones"
 
 msgid "Migration guide"
 msgstr "Guía de migración"
@@ -10490,6 +10512,116 @@ msgstr "Uso de una tabla de combinaciones en un grafo **no dirigido**."
 msgid "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
 msgstr "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
 
+msgid "``pgr_betweennessCentrality``"
+msgstr ""
+
+msgid ""
+"``pgr_betweennessCentrality`` - Calculates the relative betweeness "
+"centrality using Brandes Algorithm"
+msgstr ""
+
+msgid "Version 3.7.0"
+msgstr "Versión 3.7.0"
+
+msgid "New **experimental** function:"
+msgstr "Nueva función **experimental**:"
+
+msgid ""
+"The Brandes Algorithm takes advantage of the sparse graphs for evaluating "
+"the betweenness centrality score of all vertices."
+msgstr ""
+
+msgid ""
+"Betweenness centrality measures the extent to which a vertex lies on the "
+"shortest paths between all other pairs of vertices. Vertices with a high "
+"betweenness centrality score may have considerable influence in a network by "
+"the virtue of their control over the shortest paths passing between them."
+msgstr ""
+
+msgid ""
+"The removal of these vertices will affect the network by disrupting the it, "
+"as most of the shortest paths between vertices pass through them."
+msgstr ""
+
+#, fuzzy
+msgid "This implementation work for both directed and undirected graphs."
+msgstr ""
+"La implementación funciona para los grafos **dirigidos** y **no dirigidos**."
+
+#, fuzzy
+msgid "Running time:  :math:`\\Theta(VE)`"
+msgstr "Tiempo de ejecución: :math:`O(V + E)`"
+
+#, fuzzy
+msgid "Running space: :math:`\\Theta(VE)`"
+msgstr "Tiempo de ejecución: :math:`O(V + E)`"
+
+#, fuzzy
+msgid "Throws when there are no edges in the graph"
+msgstr "EMPTY SET es regresado cuando no hay aristas en el grafo."
+
+#, fuzzy
+msgid "pgr_betweennessCentrality(`Edges SQL`_, [``directed``])"
+msgstr "pgr_lineGraph(`SQL de aristas`_, [``directed``])"
+
+#, fuzzy
+msgid "Returns set of ``(vid, centrality)``"
+msgstr "Regresa el conjunto de ``(edge, cost)``"
+
+#, fuzzy
+msgid "For a directed graph with edges :math:`\\{1, 2, 3, 4\\}`."
+msgstr "Para sub-grafo con aristas :math:`\\{1, 2, 3, 4\\}`."
+
+#, fuzzy
+msgid "Explanation"
+msgstr "Aplicaciones"
+
+msgid "The betweenness centrality are between parenthesis."
+msgstr ""
+
+msgid "The leaf vertices have betweenness centrality :math:`0`."
+msgstr ""
+
+#, fuzzy
+msgid ""
+"Betweenness centrality of vertex :math:`6` is higher than of vertex :math:"
+"`10`."
+msgstr "Del vértice :math:`11` al vértice :math:`12`"
+
+#, fuzzy
+msgid "Removing vertex :math:`6` will create three graph components."
+msgstr "El vértice :math:`w` se elimina del grafo"
+
+msgid "Removing vertex :math:`10` will create two graph components."
+msgstr ""
+
+msgid "``vid``"
+msgstr ""
+
+#, fuzzy
+msgid "Identifier of the vertex"
+msgstr "Identificador del vértice."
+
+#, fuzzy
+msgid "``centrality``"
+msgstr "``capacity``"
+
+msgid ""
+"Relative betweenness centrality score of the vertex (will be in range [0,1])"
+msgstr ""
+
+#, fuzzy
+msgid ""
+"Boost's `betweenness_centrality <https://www.boost.org/doc/libs/1_84_0/libs/"
+"graph/doc/betweenness_centrality.html>`_"
+msgstr ""
+"`Boost: Algoritmo de Circutios de Hawick <https://www.boost.org/doc/"
+"libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
+
+#, fuzzy
+msgid "Queries use the :doc:`sampledata` network."
+msgstr "Consultas utilizan la red :doc:`sampledata`."
+
 msgid "``pgr_biconnectedComponents``"
 msgstr "``pgr_biconnectedComponents``"
 
@@ -11483,8 +11615,8 @@ msgid ""
 "An alternate method to create a routing topology use :doc:"
 "`pgr_extractVertices`"
 msgstr ""
-"Un método alternativo para crear una topología de ruteo es utilizar "
-":doc:`pgr_extractVertices`"
+"Un método alternativo para crear una topología de ruteo es utilizar :doc:"
+"`pgr_extractVertices`"
 
 msgid "Make sure the database does not have the ``vertices_table``"
 msgstr "Asegurarse de que la base de datos no tiene ``vertices_table``"
@@ -11818,9 +11950,6 @@ msgstr ""
 "``pgr_dagShortestPath`` — Devuelve la(s) rutas más cortas para los grafos "
 "acíclicos dirigidos ponderados (DAG). En particular, el algoritmo de rutas "
 "más cortas de DAG implementado por Boost.Graph."
-
-msgid "New **experimental** function:"
-msgstr "Nueva función **experimental**:"
 
 msgid "pgr_dagShortestPath(Combinations)"
 msgstr "pgr_dagShortestPath(Combinaciones)"
@@ -14384,9 +14513,6 @@ msgstr ""
 "``pgr_kruskalBFS`` — Algoritmo de Kruskal para el Árbol de Expansión Mínimo "
 "con orden de Primera Búsqueda en Anchura."
 
-msgid "Version 3.7.0"
-msgstr "Versión 3.7.0"
-
 msgid ""
 "Visits and extracts the nodes information in Breath First Search ordering of "
 "the Minimum Spanning Tree created using Kruskal's algorithm."
@@ -16365,9 +16491,6 @@ msgid "Returns set of |result-closure|"
 msgstr "Regresa el conjunto de |result-closure|"
 
 msgid "Rechability of a subgraph"
-msgstr ""
-
-msgid "``vid``"
 msgstr ""
 
 msgid "Identifier of the source of the edges"
@@ -18456,9 +18579,6 @@ msgstr ""
 
 msgid "``pgr_findCloseEdges`` (Many points)"
 msgstr ""
-
-msgid "New experimental functions"
-msgstr "Nuevas funciones experimentales"
 
 msgid "Ordering"
 msgstr "Ordenamiento"
@@ -21617,4 +21737,3 @@ msgstr "pgr_withPointsDD es pgr_drivingDistance **con puntos**"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPoints es pgr_dijkstraVia **con puntos**"
-
