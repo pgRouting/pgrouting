@@ -1,0 +1,282 @@
+/*PGR-GNU*****************************************************************
+
+Copyright (c) 2024  pgRouting developers
+Mail: project@pgrouting.org
+
+------
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ ********************************************************************PGR-GNU*/
+
+BEGIN;
+
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN NOT min_version('3.7.0') THEN plan(1) ELSE plan(24) END;
+
+CREATE OR REPLACE FUNCTION edge_cases()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF NOT min_version('3.7.0') THEN
+  RETURN QUERY
+  SELECT skip(1, 'Function is new on 3.7.0');
+  RETURN;
+END IF;
+
+/* Implicit Test Cases */
+
+PREPARE idless5_q AS
+  SELECT * FROM pgr_betweennessCentrality(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edges WHERE id < 5'
+  ) ORDER BY vid;
+
+PREPARE idless5_r AS
+  SELECT * FROM (VALUES
+    (5::BIGINT , 0::FLOAT),
+    (6 , 0.5),
+    (7 , 0),
+    (10 , 0.25),
+    (15 , 0))
+  AS t(vid, centrality);
+
+RETURN QUERY
+SELECT lives_ok('idless5_q');
+
+RETURN QUERY
+SELECT results_eq('idless5_q', 'idless5_r');
+
+
+PREPARE idless4_q AS
+  SELECT * FROM pgr_betweennessCentrality(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edges WHERE id < 4'
+  ) ORDER BY vid;
+
+PREPARE idless4_r AS
+  SELECT * FROM (VALUES
+    (5::BIGINT , 0::FLOAT),
+    (6 , 0.3333333333333333),
+    (10 , 0.3333333333333333),
+    (15 , 0))
+  AS t(vid, centrality);
+
+RETURN QUERY
+SELECT lives_ok('idless4_q');
+
+RETURN QUERY
+SELECT results_eq('idless4_q', 'idless4_r');
+
+
+PREPARE idless3_q AS
+  SELECT * FROM pgr_betweennessCentrality(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edges WHERE id < 3'
+  ) ORDER BY vid;
+
+PREPARE idless3_r AS
+  SELECT * FROM (VALUES
+    (5::BIGINT , 0::FLOAT),
+    (6 , 0.5),
+    (10 , 0)
+  ) AS t(vid, centrality);
+
+RETURN QUERY
+SELECT lives_ok('idless3_q');
+
+RETURN QUERY
+SELECT results_eq('idless3_q', 'idless3_r');
+
+PREPARE idless2_q AS
+  SELECT * FROM pgr_betweennessCentrality(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edges WHERE id < 2'
+  ) ORDER BY vid;
+
+PREPARE idless2_r AS
+  SELECT * FROM (VALUES
+    (5::BIGINT , 0::FLOAT),
+    (6 , 0)
+  ) AS t(vid, centrality);
+
+RETURN QUERY
+SELECT lives_ok('idless2_q');
+
+RETURN QUERY
+SELECT results_eq('idless2_q', 'idless2_r');
+
+/* Explicit Undirected Cases */
+
+PREPARE idless5ud_q AS
+  SELECT * FROM pgr_betweennessCentrality(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edges WHERE id < 5', directed => false                                                                               ) ORDER BY vid;
+
+PREPARE idless5ud_r AS
+  SELECT * FROM (VALUES
+    (5::BIGINT , 0::FLOAT),
+    (6 , 0.8333333333333333),
+    (7 , 0),
+    (10 , 0.5),
+    (15 , 0))
+  AS t(vid, centrality);
+
+RETURN QUERY
+SELECT lives_ok('idless5ud_q');
+
+RETURN QUERY
+SELECT results_eq('idless5ud_q', 'idless5ud_r');
+
+PREPARE idless4ud_q AS
+  SELECT * FROM pgr_betweennessCentrality(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edges WHERE id < 4', directed => false                                                                               ) ORDER BY vid;
+
+PREPARE idless4ud_r AS
+  SELECT * FROM (VALUES
+    (5::BIGINT , 0::FLOAT),
+    (6 , 0.6666666666666666),
+    (10 , 0.6666666666666666),                                                                                                  (15 , 0))
+  AS t(vid, centrality);
+
+RETURN QUERY
+SELECT lives_ok('idless4ud_q');
+
+RETURN QUERY
+SELECT results_eq('idless4ud_q', 'idless4ud_r');
+
+
+PREPARE idless3ud_q AS
+  SELECT * FROM pgr_betweennessCentrality(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edges WHERE id < 3', directed => false                                                                               ) ORDER BY vid;
+
+PREPARE idless3ud_r AS
+  SELECT * FROM (VALUES
+    (5::BIGINT , 0::FLOAT),
+    (6 , 1),
+    (10 , 0))
+    AS t(vid, centrality);
+
+RETURN QUERY
+SELECT lives_ok('idless3ud_q');
+
+RETURN QUERY
+SELECT results_eq('idless3ud_q', 'idless3ud_r');
+
+PREPARE idless2ud_q AS
+  SELECT * FROM pgr_betweennessCentrality(
+	'SELECT id, source, target, cost, reverse_cost
+	FROM edges WHERE id < 2', directed => false
+  ) ORDER BY vid;
+
+PREPARE idless2ud_r AS
+  SELECT * FROM (VALUES
+	(5::BIGINT , 0::FLOAT),
+	(6 , 0))
+	AS t(vid, centrality);
+
+RETURN QUERY
+SELECT lives_ok('idless2ud_q');
+
+RETURN QUERY
+SELECT results_eq('idless2ud_q', 'idless2ud_r');
+
+/* Explicit Directed Cases */
+
+
+PREPARE idless5d_q AS
+  SELECT * FROM pgr_betweennessCentrality(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edges WHERE id < 5', directed => true                                                                                ) ORDER BY vid;
+
+PREPARE idless5d_r AS
+  SELECT * FROM (VALUES
+    (5::BIGINT , 0::FLOAT),
+    (6 , 0.5),
+    (7 , 0),
+    (10 , 0.25),
+    (15 , 0))
+  AS t(vid, centrality);
+
+RETURN QUERY
+SELECT lives_ok('idless5d_q');
+
+RETURN QUERY
+SELECT results_eq('idless5d_q', 'idless5d_r');
+
+
+PREPARE idless4d_q AS
+  SELECT * FROM pgr_betweennessCentrality(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edges WHERE id < 4', directed => true                                                                                ) ORDER BY vid;
+
+PREPARE idless4d_r AS
+  SELECT * FROM (VALUES
+    (5::BIGINT , 0::FLOAT),
+    (6 , 0.3333333333333333),
+    (10 , 0.3333333333333333),
+    (15 , 0))
+  AS t(vid, centrality);
+
+RETURN QUERY
+SELECT lives_ok('idless4d_q');
+
+RETURN QUERY
+SELECT results_eq('idless4d_q', 'idless4d_r');
+
+
+PREPARE idless3d_q AS
+  SELECT * FROM pgr_betweennessCentrality(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edges WHERE id < 3', directed => true                                                                                ) ORDER BY vid;
+
+PREPARE idless3d_r AS
+  SELECT * FROM (VALUES
+    (5::BIGINT , 0::FLOAT),
+    (6 , 0.5),
+    (10 , 0)
+  ) AS t(vid, centrality);
+
+RETURN QUERY
+SELECT lives_ok('idless3d_q');
+
+RETURN QUERY
+SELECT results_eq('idless3d_q', 'idless3d_r');
+
+PREPARE idless2d_q AS
+  SELECT * FROM pgr_betweennessCentrality(
+    'SELECT id, source, target, cost, reverse_cost
+    FROM edges WHERE id < 2', directed => true
+  ) ORDER BY vid;
+
+PREPARE idless2d_r AS
+  SELECT * FROM (VALUES
+    (5::BIGINT , 0::FLOAT),
+    (6 , 0)
+  ) AS t(vid, centrality);
+
+RETURN QUERY
+SELECT lives_ok('idless2d_q');
+
+RETURN QUERY
+SELECT results_eq('idless2d_q', 'idless2d_r');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT edge_cases();
+
+SELECT finish();
+ROLLBACK;
