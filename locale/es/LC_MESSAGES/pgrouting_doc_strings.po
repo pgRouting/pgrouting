@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-16 18:52+0000\n"
-"PO-Revision-Date: 2024-08-16 20:15+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"PO-Revision-Date: 2024-08-16 20:24+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
 "Language: es\n"
@@ -4389,9 +4389,8 @@ msgstr ""
 ":doc:`pgr_cuthillMckeeOrdering` - Ordenamiento Cuthill-McKee de grafo sin no "
 "dirigido."
 
-#, fuzzy
 msgid ":doc:`metrics-family`"
-msgstr ":doc:`prim-family`"
+msgstr ":doc:`metrics-family`"
 
 msgid ""
 ":doc:`pgr_betweennessCentrality` - Calculates relative betweenness "
@@ -10559,13 +10558,11 @@ msgstr "Tiempo de ejecución: :math:`O(V + E)`"
 msgid "Throws when there are no edges in the graph"
 msgstr "Lanza cuando no hay aristas en el grafo"
 
-#, fuzzy
 msgid "pgr_betweennessCentrality(`Edges SQL`_, [``directed``])"
-msgstr "pgr_lineGraph(`SQL de aristas`_, [``directed``])"
+msgstr "pgr_betweennessCentrality(`SQL de aristas`_, [``directed``])"
 
-#, fuzzy
 msgid "Returns set of ``(vid, centrality)``"
-msgstr "Regresa el conjunto de ``(edge, cost)``"
+msgstr "Regresa el conjunto de ``(vid, centrality)``"
 
 #, fuzzy
 msgid "For a directed graph with edges :math:`\\{1, 2, 3, 4\\}`."
@@ -10589,8 +10586,7 @@ msgstr ""
 "vértice :math:`10`."
 
 msgid "Removing vertex :math:`6` will create three graph components."
-msgstr ""
-"Al eliminar el vértice :math:`6` se crearán tres componentes del gráfico."
+msgstr "Al eliminar el vértice :math:`6` se crearían tres componentes."
 
 msgid "Removing vertex :math:`10` will create two graph components."
 msgstr ""
@@ -10598,9 +10594,8 @@ msgstr ""
 msgid "``vid``"
 msgstr ""
 
-#, fuzzy
 msgid "Identifier of the vertex"
-msgstr "Identificador del vértice."
+msgstr "Identificador del vértice"
 
 #, fuzzy
 msgid "``centrality``"
