@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-16 18:52+0000\n"
-"PO-Revision-Date: 2024-05-28 15:47+0000\n"
+"PO-Revision-Date: 2024-08-16 20:15+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
@@ -10556,9 +10556,8 @@ msgstr "Tiempo de ejecución: :math:`O(V + E)`"
 msgid "Running space: :math:`\\Theta(VE)`"
 msgstr "Tiempo de ejecución: :math:`O(V + E)`"
 
-#, fuzzy
 msgid "Throws when there are no edges in the graph"
-msgstr "EMPTY SET es regresado cuando no hay aristas en el grafo."
+msgstr "Lanza cuando no hay aristas en el grafo"
 
 #, fuzzy
 msgid "pgr_betweennessCentrality(`Edges SQL`_, [``directed``])"
@@ -10582,15 +10581,16 @@ msgstr ""
 msgid "The leaf vertices have betweenness centrality :math:`0`."
 msgstr ""
 
-#, fuzzy
 msgid ""
 "Betweenness centrality of vertex :math:`6` is higher than of vertex :math:"
 "`10`."
-msgstr "Del vértice :math:`11` al vértice :math:`12`"
+msgstr ""
+"La centralidad de entrecruzamiento del vértice :math:`6` es mayor que la del "
+"vértice :math:`10`."
 
-#, fuzzy
 msgid "Removing vertex :math:`6` will create three graph components."
-msgstr "El vértice :math:`w` se elimina del grafo"
+msgstr ""
+"Al eliminar el vértice :math:`6` se crearán tres componentes del gráfico."
 
 msgid "Removing vertex :math:`10` will create two graph components."
 msgstr ""
