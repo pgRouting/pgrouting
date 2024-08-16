@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-16 18:52+0000\n"
-"PO-Revision-Date: 2024-08-16 20:24+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"PO-Revision-Date: 2024-08-16 20:34+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
 "Language: es\n"
@@ -595,7 +595,7 @@ msgid ""
 "A discussion about the work of Hamilton & Kirkman can be found in the book "
 "**Graph Theory (Biggs et al. 1976)**."
 msgstr ""
-"Una discusión sobre el trabajo de Hamilton & Kirkman se puede encontrar en "
+"Se puede encontrar una discusión sobre el trabajo de Hamilton & Kirkman en "
 "el libro **Graph Theory (Biggs et al. 1976)**."
 
 msgid "ISBN-13: 978-0198539162"
@@ -1482,8 +1482,8 @@ msgid ""
 "To handle problems like: 10 (equal dimension) boxes of apples and 5 kg of "
 "feathers that are to be transported (not packed in boxes)."
 msgstr ""
-"Para manejar problemas como: 10 cajas de manzanas de dimesiones iguales y 5 "
-"kg de plumas que se van a transportar (no embaladas en cajas)."
+"Para manejar problemas como: 10 cajas (de igual dimensión) de manzanas y 5 "
+"kg de plumas que van a ser transportadas (no embaladas en cajas)."
 
 msgid ""
 "If the vehicle's **capacity** is measured in `boxes`, a conversion of `kg of "
@@ -4076,7 +4076,7 @@ msgid "The weighted directed graph, :math:`G_d(V,E)`, is definied by:"
 msgstr "El gráfico dirigido ponderado, :math:`G_d(V,E)`, se define por:"
 
 msgid "the set of vertices :math:`V`"
-msgstr "El conjunto de vértices :math:`V`"
+msgstr "el conjunto de vértices :math:`V`"
 
 msgid ":math:`V = source \\cup target \\cup {start_{vid}} \\cup  {end_{vid}}`"
 msgstr ":math:`V = source \\cup target \\cup {start_{vid}} \\cup {end_{vid}}`"
@@ -4950,7 +4950,7 @@ msgid "Metrics"
 msgstr "Métricas"
 
 msgid "pgr_betweennessCentrality"
-msgstr ""
+msgstr "pgr_betweennessCentrality"
 
 msgid "Official functions changes"
 msgstr "Cambios en las funciones oficiales"
@@ -10560,7 +10560,7 @@ msgid "Returns set of ``(vid, centrality)``"
 msgstr "Regresa el conjunto de ``(vid, centrality)``"
 
 msgid "For a directed graph with edges :math:`\\{1, 2, 3, 4\\}`."
-msgstr "Para un grafo dirigido con aristas :math:`{1, 2, 3, 4\\}`."
+msgstr "Para un grafo dirigido con aristas :math:`\\{1, 2, 3, 4\\}`."
 
 #, fuzzy
 msgid "Explanation"
@@ -10591,21 +10591,19 @@ msgstr ""
 msgid "Identifier of the vertex"
 msgstr "Identificador del vértice"
 
-#, fuzzy
 msgid "``centrality``"
-msgstr "``capacity``"
+msgstr "``centrality``"
 
 msgid ""
 "Relative betweenness centrality score of the vertex (will be in range [0,1])"
 msgstr ""
 
-#, fuzzy
 msgid ""
 "Boost's `betweenness_centrality <https://www.boost.org/doc/libs/1_84_0/libs/"
 "graph/doc/betweenness_centrality.html>`_"
 msgstr ""
-"`Boost: Algoritmo de Circutios de Hawick <https://www.boost.org/doc/"
-"libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
+"`Boost: Centralidad de intermediación <https://www.boost.org/doc/libs/1_84_0/"
+"libs/graph/doc/betweenness_centrality.html>`__"
 
 #, fuzzy
 msgid "Queries use the :doc:`sampledata` network."
