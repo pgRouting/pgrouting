@@ -83,6 +83,12 @@ Experimental Functions
    :start-after: index from here
    :end-before: index to here
 
+:doc:`metrics-family`
+
+.. include:: metrics-family.rst
+   :start-after: index experimental from here
+   :end-before: index experimental to here
+
 :doc:`TRSP-family`
 
 .. include:: TRSP-family.rst
@@ -96,6 +102,7 @@ Experimental Functions
    transformation-family
    components-family
    ordering-family
+   metrics-family
 
 .. rubric:: categories
 
