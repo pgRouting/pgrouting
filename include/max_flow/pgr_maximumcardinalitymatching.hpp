@@ -127,9 +127,9 @@ class PgrCardinalityGraph {
               ++vi) {
           boost::tie(e, exists) =
               boost::edge(*vi, mate_map[*vi], boost_graph);
-          if (((uint64_t)mate_map[*vi]
+          if ((static_cast<uint64_t>(mate_map[*vi])
                       != boost::graph_traits<G>::null_vertex())
-                  && (*vi < (uint64_t)mate_map[*vi])) {
+                  && (*vi < static_cast<uint64_t>(mate_map[*vi]))) {
               Only_int_rt matched_couple;
               matched_couple.source = get_vertex_id(*vi);
               matched_couple.target = get_vertex_id(mate_map[*vi]);

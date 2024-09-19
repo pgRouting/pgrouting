@@ -564,10 +564,10 @@ int64_t getBigInt(
         throw std::string("Unexpected Null value in column ") + info.name;
     switch (info.type) {
         case INT2OID:
-            value = (int64_t) DatumGetInt16(binval);
+            value = static_cast<int64_t>(DatumGetInt16(binval));
             break;
         case INT4OID:
-            value = (int64_t) DatumGetInt32(binval);
+            value = static_cast<int64_t>(DatumGetInt32(binval));
             break;
         case INT8OID:
             value = DatumGetInt64(binval);
