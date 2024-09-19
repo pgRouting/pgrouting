@@ -43,6 +43,7 @@ if ! test -d code_linter; then
 fi
 
 DIRECTORY="$1"
+INCLUDE_ORDER="-build/include_order:src/cpp_common/pgdata_getters.cpp,-build/include_order:include/cpp_common/get_data.hpp"
 
 if test -z "$DIRECTORY"; then
     echo "--------------------"
@@ -52,11 +53,15 @@ if test -z "$DIRECTORY"; then
     echo "--------------------"
     echo "------ *.cpp  ------"
     echo "--------------------"
-    code_linter/cpplint/cpplint.py --filter=-runtime/references,-whitespace/indent_namespace  --linelength=120 src/*/*.cpp
+    code_linter/cpplint/cpplint.py --linelength=120 \
+        --filter=-runtime/references,-whitespace/indent_namespace,"${INCLUDE_ORDER}"  \
+        --linelength=120 src/*/*.cpp
+
     echo "--------------------"
     echo "------ HEADERS  ------"
     echo "--------------------"
-    code_linter/cpplint/cpplint.py --extensions=hpp,h --headers=hpp,h  --linelength=120 --filter=-runtime/references,-whitespace/indent_namespace \
+    code_linter/cpplint/cpplint.py --extensions=hpp,h --headers=hpp,h  --linelength=120 \
+        --filter=-runtime/references,-whitespace/indent_namespace,"${INCLUDE_ORDER}" \
         include/*/*.h* \
         include/*/*/*.h*
 
@@ -66,7 +71,8 @@ else
     echo "--------------------"
     echo "------ IN PLACE HEADERS  ------"
     echo "--------------------"
-    code_linter/cpplint/cpplint.py --extensions=hpp,h --headers=hpp,h  --linelength=120 --filter=-runtime/references \
+    code_linter/cpplint/cpplint.py --extensions=hpp,h --headers=hpp,h  --linelength=120 \
+        --filter=-runtime/references,-whitespace/indent_namespace,"${INCLUDE_ORDER}" \
         include/*/*.h* \
         include/*/*/*.h*
 
@@ -74,11 +80,17 @@ else
         echo "--------------------"
         echo "------   *.c  ------"
         echo "--------------------"
-        code_linter/cpplint/cpplint.py --extensions=c  --linelength=120 --filter=-readability/casting src/"$DIRECTORY"/*.c
+        code_linter/cpplint/cpplint.py --extensions=c  --linelength=120 \
+            --filter=-readability/casting \
+            src/"$DIRECTORY"/*.c
+
         echo "--------------------"
         echo "------ *.cpp  ------"
         echo "--------------------"
-        code_linter/cpplint/cpplint.py  --linelength=120 --filter=-runtime/references,-whitespace/indent_namespace src/"$DIRECTORY"/*.cpp
+        code_linter/cpplint/cpplint.py  --linelength=120 \
+            --filter=-runtime/references,-whitespace/indent_namespace,"${INCLUDE_ORDER}" \
+            src/"$DIRECTORY"/*.cpp
+
         echo "--------------------"
         echo "------   C HEADER  ------"
         echo "--------------------"
@@ -89,11 +101,9 @@ else
         echo "--------------------"
         echo "------ C++ HEADER  ------"
         echo "--------------------"
-        code_linter/cpplint/cpplint.py  --extensions=hpp,h --headers=hpp  --linelength=120 --filter=-runtime/references,-whitespace/indent_namespace include/"$DIRECTORY"/*.h*
-        echo "--------------------"
-        echo "------ this shouild fail  ------"
-        echo "--------------------"
-        code_linter/cpplint/cpplint.py src/"$DIRECTORY"/src/*.h*
+        code_linter/cpplint/cpplint.py  --extensions=hpp,h --headers=hpp,h  --linelength=120 \
+            --filter=-runtime/references,-whitespace/indent_namespace,"${INCLUDE_ORDER}" \
+            include/"$DIRECTORY"/*.h*
     fi
 fi
 
