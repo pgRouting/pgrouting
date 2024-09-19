@@ -52,7 +52,9 @@ extern "C" {
     /*
      * https://doxygen.postgresql.org/c_8h.html#a166c1d950e659804f0e3247aad99a81f
      */
+#ifndef PGDLLIMPORT
 #define PGDLLIMPORT
+#endif
 
     /*
      * https://doxygen.postgresql.org/miscadmin_8h_source.html
