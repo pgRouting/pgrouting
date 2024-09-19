@@ -35,6 +35,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+extern "C" {
+
+#include <postgres.h>
+#include <executor/spi.h>
+#include <funcapi.h>
+#include <utils/builtins.h>
+#include <access/htup_details.h>
+#include <fmgr.h>
+#include <utils/array.h>
+#include <catalog/pg_type.h>
+
+}
+
 #include "cpp_common/pgdata_getters.hpp"
 #include <vector>
 #include <string>

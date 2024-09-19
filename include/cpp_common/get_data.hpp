@@ -29,10 +29,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_CPP_COMMON_GET_DATA_HPP_
 #pragma once
 
+#include "c_common/postgres_connection.h"
+
 #include <vector>
 #include <string>
 
-#include "c_common/postgres_connection.h"
 #include "cpp_common/info_t.hpp"
 #include "cpp_common/get_check_data.hpp"
 #include "cpp_common/pgr_alloc.hpp"
