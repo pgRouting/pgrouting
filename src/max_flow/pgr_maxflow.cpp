@@ -85,7 +85,7 @@ void PgrFlowGraph::insert_edges_push_relabel(
                 boost::add_edge(v2, v1, graph);
             E_to_id.insert(std::pair<E, int64_t>(e1, edge.id));
             E_to_id.insert(std::pair<E, int64_t>(e1_rev, edge.id));
-            capacity[e1] = (int64_t) edge.cost;
+            capacity[e1] = static_cast<int64_t>(edge.cost);
             capacity[e1_rev] = 0;
             rev[e1] = e1_rev;
             rev[e1_rev] = e1;
@@ -96,7 +96,7 @@ void PgrFlowGraph::insert_edges_push_relabel(
                 boost::add_edge(v1, v2, graph);
             E_to_id.insert(std::pair<E, int64_t>(e2, edge.id));
             E_to_id.insert(std::pair<E, int64_t>(e2_rev, edge.id));
-            capacity[e2] = (int64_t) edge.reverse_cost;
+            capacity[e2] = static_cast<int64_t>(edge.reverse_cost);
             capacity[e2_rev] = 0;
             rev[e2] = e2_rev;
             rev[e2_rev] = e2;
@@ -119,9 +119,9 @@ void PgrFlowGraph::insert_edges(
             boost::add_edge(v2, v1, graph);
         E_to_id.insert(std::pair<E, int64_t>(e, edge.id));
         E_to_id.insert(std::pair<E, int64_t>(e_rev, edge.id));
-        capacity[e] = edge.cost > 0 ? (int64_t) edge.cost : 0;
+        capacity[e] = edge.cost > 0 ? static_cast<int64_t>(edge.cost) : 0;
         capacity[e_rev] = edge.reverse_cost > 0
-            ? (int64_t) edge.reverse_cost : 0;
+            ? static_cast<int64_t>(edge.reverse_cost) : 0;
         rev[e] = e_rev;
         rev[e_rev] = e;
     }
