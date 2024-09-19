@@ -70,6 +70,14 @@ extern "C" {
 #undef vsnprintf
 #endif
 
+#ifdef unlink
+#undef unlink
+#endif
+
+#ifdef bind
+#undef bind
+#endif
+
 #endif
 
 #endif  // INCLUDE_CPP_COMMON_UNDEFPOSTGRESDEFINE_HPP_
