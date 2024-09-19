@@ -38,18 +38,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_CPP_COMMON_PGDATA_GETTERS_HPP_
 #pragma once
 
-extern "C" {
-#include <postgres.h>
-#include <utils/array.h>
-}
-
 #include <cstddef>
 #include <cstdint>
 #include <string>
 #include <set>
 #include <vector>
 
-#include "cpp_common/undefPostgresDefine.hpp"
 
 #include "cpp_common/info_t.hpp"
 #include "c_types/ii_t_rt.h"
@@ -64,6 +58,8 @@ extern "C" {
 #include "cpp_common/restriction_t.hpp"
 #include "cpp_common/point_on_edge_t.hpp"
 #include "cpp_common/vehicle_t.hpp"
+
+typedef struct ArrayType ArrayType;
 
 namespace pgrouting {
 namespace pgget {

@@ -28,11 +28,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_CPP_COMMON_COMBINATIONS_HPP_
 #pragma once
 
-extern "C" {
-#include <postgres.h>
-#include <utils/array.h>
-}
-
 #include <cstddef>
 #include <cstdint>
 #include <map>
@@ -40,11 +35,13 @@ extern "C" {
 #include <deque>
 #include <vector>
 
-#include "cpp_common/undefPostgresDefine.hpp"
 
 #include "c_types/ii_t_rt.h"
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/rule.hpp"
+
+
+typedef struct ArrayType ArrayType;
 
 namespace pgrouting {
 
