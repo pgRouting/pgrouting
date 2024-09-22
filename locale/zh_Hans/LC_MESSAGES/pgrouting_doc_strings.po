@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-13 17:23+0000\n"
+"POT-Creation-Date: 2024-08-16 18:52+0000\n"
 "PO-Revision-Date: 2024-05-28 16:17+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
@@ -3495,8 +3495,9 @@ msgstr ":doc:`pgr_withPointsCostMatrix`"
 msgid ""
 ":doc:`TSP-family` needs as input a symmetric cost matrix and no edge `(u, "
 "v)` must value :math:`\\infty`."
-msgstr ":doc:`TSP-family` 需要一个对称成本矩阵作为输入，并且没有边 `(u, v)` 必须值为 "
-":math:`\\infty`。"
+msgstr ""
+":doc:`TSP-family` 需要一个对称成本矩阵作为输入，并且没有边 `(u, v)` 必须值"
+"为 :math:`\\infty`。"
 
 msgid ""
 "This collection of functions will return a cost matrix in form of a table."
@@ -4052,6 +4053,15 @@ msgid ""
 "an undirected graph."
 msgstr ":doc:`pgr_cuthillMckeeOrdering` -返回无向图的反向 Cuthill-McKee 排序。"
 
+#, fuzzy
+msgid ":doc:`metrics-family`"
+msgstr ":doc:`prim-family`"
+
+msgid ""
+":doc:`pgr_betweennessCentrality` - Calculates relative betweenness "
+"centrality using Brandes Algorithm"
+msgstr ""
+
 msgid ":doc:`TRSP-family`"
 msgstr ":doc:`TRSP-family`"
 
@@ -4555,6 +4565,16 @@ msgstr ""
 "pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__ 的 Git 关闭里程碑"
 
+msgid "New experimental functions"
+msgstr "新的实验函数"
+
+#, fuzzy
+msgid "Metrics"
+msgstr "限制"
+
+msgid "pgr_betweennessCentrality"
+msgstr ""
+
 msgid "Official functions changes"
 msgstr "官方功能变更"
 
@@ -4602,8 +4622,8 @@ msgid ""
 "`#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ pgr_LineGraph "
 "ignores directed flag and use negative values for identifiers."
 msgstr ""
-"`#2516 <https://github.com/pgRouting/pgrouting/pull/"
-"2516>`__标准化输出pgr_aStar."
+"`#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__标准化输出"
+"pgr_aStar."
 
 #, fuzzy
 msgid "``pgr_lineGraph``"
@@ -4667,6 +4687,10 @@ msgstr "树或森林中所有边的总权重最小化。"
 
 msgid "Kruskal's running time: :math:`O(E * log E)`"
 msgstr "克鲁斯卡尔的运行时间： :math:`O(E * log E)`"
+
+#, fuzzy
+msgid "Metrics - Family of functions"
+msgstr "Prim - 函数族"
 
 msgid "Migration guide"
 msgstr "迁移指南"
@@ -6566,8 +6590,8 @@ msgid ""
 "vertex :math:`4`. And the closest edge to vertex :math:`4` is edge :math:"
 "`14`."
 msgstr ""
-"使用 :doc:`pgr_findCloseEdges` 距离组件 :math:`1` 最近的顶点是顶点 "
-":math:`4`。 距离顶点 :math:`4` 最近的边是 边 :math:`14`。"
+"使用 :doc:`pgr_findCloseEdges` 距离组件 :math:`1` 最近的顶点是顶点 :math:"
+"`4`。 距离顶点 :math:`4` 最近的边是 边 :math:`14`。"
 
 msgid ""
 "The ``edge`` can be used to connect the components, using the ``fraction`` "
@@ -9640,6 +9664,116 @@ msgstr "在**无向**图上使用组合表。"
 msgid "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
 msgstr "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
 
+msgid "``pgr_betweennessCentrality``"
+msgstr ""
+
+msgid ""
+"``pgr_betweennessCentrality`` - Calculates the relative betweeness "
+"centrality using Brandes Algorithm"
+msgstr ""
+
+#, fuzzy
+msgid "Version 3.7.0"
+msgstr "版本3.6.0"
+
+msgid "New **experimental** function:"
+msgstr "新的**实验**函数："
+
+msgid ""
+"The Brandes Algorithm takes advantage of the sparse graphs for evaluating "
+"the betweenness centrality score of all vertices."
+msgstr ""
+
+msgid ""
+"Betweenness centrality measures the extent to which a vertex lies on the "
+"shortest paths between all other pairs of vertices. Vertices with a high "
+"betweenness centrality score may have considerable influence in a network by "
+"the virtue of their control over the shortest paths passing between them."
+msgstr ""
+
+msgid ""
+"The removal of these vertices will affect the network by disrupting the it, "
+"as most of the shortest paths between vertices pass through them."
+msgstr ""
+
+#, fuzzy
+msgid "This implementation work for both directed and undirected graphs."
+msgstr "该实现适用于**有向**图和**无向**图。"
+
+#, fuzzy
+msgid "Running time:  :math:`\\Theta(VE)`"
+msgstr "运行时间：:math:`O(V + E)`"
+
+#, fuzzy
+msgid "Running space: :math:`\\Theta(VE)`"
+msgstr "运行时间：:math:`O(V + E)`"
+
+#, fuzzy
+msgid "Throws when there are no edges in the graph"
+msgstr "当图中没有边时，返回 EMPTY SET。"
+
+#, fuzzy
+msgid "pgr_betweennessCentrality(`Edges SQL`_, [``directed``])"
+msgstr "pgr_lineGraph(`Edges SQL`_, [``directed``])"
+
+#, fuzzy
+msgid "Returns set of ``(vid, centrality)``"
+msgstr "返回集合``(edge, cost)``"
+
+#, fuzzy
+msgid "For a directed graph with edges :math:`\\{1, 2, 3, 4\\}`."
+msgstr "对于有边 :math:`\\{1, 2, 3, 4\\}`的有向子图。"
+
+#, fuzzy
+msgid "Explanation"
+msgstr "应用"
+
+msgid "The betweenness centrality are between parenthesis."
+msgstr ""
+
+msgid "The leaf vertices have betweenness centrality :math:`0`."
+msgstr ""
+
+#, fuzzy
+msgid ""
+"Betweenness centrality of vertex :math:`6` is higher than of vertex :math:"
+"`10`."
+msgstr "从顶点 :math:`11` 到顶点 :math:`12`"
+
+#, fuzzy
+msgid "Removing vertex :math:`6` will create three graph components."
+msgstr "顶点 :math:`w`已从图中移除"
+
+msgid "Removing vertex :math:`10` will create two graph components."
+msgstr ""
+
+msgid "``vid``"
+msgstr "``vid``"
+
+#, fuzzy
+msgid "Identifier of the vertex"
+msgstr "顶点的标识符。"
+
+#, fuzzy
+msgid "``centrality``"
+msgstr "``capacity``"
+
+msgid ""
+"Relative betweenness centrality score of the vertex (will be in range [0,1])"
+msgstr ""
+
+#, fuzzy
+msgid ""
+"Boost's `betweenness_centrality <https://www.boost.org/doc/libs/1_84_0/libs/"
+"graph/doc/betweenness_centrality.html>`_"
+msgstr ""
+"`Boost：Hawick 电路算法<https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/"
+"hawick_circuits.html>`__"
+
+#, fuzzy
+msgid "Queries use the :doc:`sampledata` network."
+msgstr "查询使用 :doc:`示例数据`网络。"
+
 msgid "``pgr_biconnectedComponents``"
 msgstr "``pgr_biconnectedComponents``"
 
@@ -9744,12 +9878,11 @@ msgid ""
 "general algorithm, like Dijkstra's Algorithm which runs in :math:`O(|E|log|"
 "V|)` time."
 msgstr ""
-"众所周知，在无权重图中，使用广度优先搜索（Breadth First Search）可以在 "
-":math:`O(|E|)` 内找到单个源点与所有其他顶点之间的最短路径，也就是说，距离是指"
-"从源点到另一个顶点所需的最少边数。我们也可以把这样的图解释为加权图，"
-"其中每条边的权重为 "
-":math:`1`。如果图中不是所有边的权重都相同，我们就需要一种更通用的算法，比如 "
-"Dijkstra 算法，它的运行时间为 :math:`O(|E|log|V||)`。"
+"众所周知，在无权重图中，使用广度优先搜索（Breadth First Search）可以在 :math:"
+"`O(|E|)` 内找到单个源点与所有其他顶点之间的最短路径，也就是说，距离是指从源点"
+"到另一个顶点所需的最少边数。我们也可以把这样的图解释为加权图，其中每条边的权"
+"重为 :math:`1`。如果图中不是所有边的权重都相同，我们就需要一种更通用的算法，"
+"比如 Dijkstra 算法，它的运行时间为 :math:`O(|E|log|V||)`。"
 
 msgid ""
 "However if the weights are more constrained, we can use a faster algorithm. "
@@ -9813,7 +9946,8 @@ msgstr ""
 msgid ""
 "**Note:** Using the :doc:`sampledata` Network as all weights are same (i.e :"
 "math:`1``)"
-msgstr "**注意:** 使用 :doc:`sampledata` 网络，因为所有权重都相同（即为 :math:`1`）"
+msgstr ""
+"**注意:** 使用 :doc:`sampledata` 网络，因为所有权重都相同（即为 :math:`1`）"
 
 msgid "https://cp-algorithms.com/graph/01_bfs.html"
 msgstr "https://cp-algorithms.com/graph/01_bfs.html"
@@ -10851,9 +10985,6 @@ msgstr ""
 "``pgr_dagShortestPath`` — 返回加权有向无环图（DAG）的最短路径（path）。特别"
 "是，由Boost.Graph实现的DAG最短路径算法。"
 
-msgid "New **experimental** function:"
-msgstr "新的**实验**函数："
-
 msgid "pgr_dagShortestPath(Combinations)"
 msgstr "pgr_dagShortestPath(组合)"
 
@@ -11655,7 +11786,8 @@ msgstr ""
 msgid ""
 "The best one is :math:`(11 \\rightarrow 16)` with a cost of :math:`1` "
 "(lines: `11` and `12`)"
-msgstr "最好的方法是 :math:`(11/rightarrow 16)`，成本是 :math:`1` （行：`11`和`12`）"
+msgstr ""
+"最好的方法是 :math:`(11/rightarrow 16)`，成本是 :math:`1` （行：`11`和`12`）"
 
 msgid ""
 "making a connection from the second subway line :math:`\\{15, 16\\}` to the "
@@ -13188,10 +13320,6 @@ msgid ""
 "breadth First Search ordering."
 msgstr "``pgr_kruskalBFS`` — Kruskal 的最小生成树算法，具有广度优先搜索排序。"
 
-#, fuzzy
-msgid "Version 3.7.0"
-msgstr "版本3.6.0"
-
 msgid ""
 "Visits and extracts the nodes information in Breath First Search ordering of "
 "the Minimum Spanning Tree created using Kruskal's algorithm."
@@ -13368,7 +13496,8 @@ msgstr ":math:`L(G)` 的每个顶点代表 :math:`G` 的一条边。"
 msgid ""
 "Two vertices of :math:`L(G)` are adjacent if and only if their corresponding "
 "edges share a common endpoint in :math:`G`"
-msgstr ":math:`L(G)` 的两个顶点相邻当且仅当它们对应的边共享 :math:`G` 中的公共端点"
+msgstr ""
+":math:`L(G)` 的两个顶点相邻当且仅当它们对应的边共享 :math:`G` 中的公共端点"
 
 #, fuzzy
 msgid ""
@@ -15015,9 +15144,6 @@ msgstr "Returns set of |result-closure|"
 msgid "Rechability of a subgraph"
 msgstr "子图的可达性"
 
-msgid "``vid``"
-msgstr "``vid``"
-
 msgid "Identifier of the source of the edges"
 msgstr "边来源的标识符"
 
@@ -15263,8 +15389,9 @@ msgstr ""
 msgid ""
 "When executing the :doc:`pgr_trsp` algorithm for the conflicting path, there "
 "is no ``U_turn_on_edge`` flag."
-msgstr "当执行 :doc:`pgr_trsp` 针对冲突路径的拟议算法时，没有 ``U_turn_on_edge`` "
-"标志。"
+msgstr ""
+"当执行 :doc:`pgr_trsp` 针对冲突路径的拟议算法时，没有 ``U_turn_on_edge`` 标"
+"志。"
 
 msgid ""
 "Therefore the result ignores the ``U_turn_on_edge`` flag when set to "
@@ -15448,8 +15575,8 @@ msgid ""
 "U turn on the same edge. But the path :math:`9 \\rightarrow 16` (Rows 4 and "
 "5) is restricted and the result is using it."
 msgstr ""
-"第一步，执行 :doc:`pgr_withPointsVia` 不考虑在同一条边上进行掉头。但是路径 "
-":math:`9 \\rightarrow 16` （第4行和第5行）受到限制，结果中使用了它。"
+"第一步，执行 :doc:`pgr_withPointsVia` 不考虑在同一条边上进行掉头。但是路径 :"
+"math:`9 \\rightarrow 16` （第4行和第5行）受到限制，结果中使用了它。"
 
 msgid ""
 "When executing the :doc:`pgr_trsp_withPoints` algorithm for the conflicting "
@@ -15464,9 +15591,9 @@ msgid ""
 "conflicting paths and builds the solution with the results of the :doc:"
 "`pgr_trsp` algorithm. In this case a U turn is been done using the same edge."
 msgstr ""
-"因此，当设置为 ``false`` 时，结果会忽略 ``U_turn_on_edge`` 标志。 从 "
-":doc:`pgr_withPointsVia` 结果中，它删除了冲突路径，并使用 :doc:`pgr_trsp` "
-"算法的结果构建解决方案。 在这种情况下，使用相同的边缘完成 U 形转弯。"
+"因此，当设置为 ``false`` 时，结果会忽略 ``U_turn_on_edge`` 标志。 从 :doc:"
+"`pgr_withPointsVia` 结果中，它删除了冲突路径，并使用 :doc:`pgr_trsp` 算法的结"
+"果构建解决方案。 在这种情况下，使用相同的边缘完成 U 形转弯。"
 
 msgid "pgr_trsp_withPoints - Proposed"
 msgstr "pgr_trsp_withPoints - 拟议"
@@ -17034,9 +17161,6 @@ msgstr "``pgr_findCloseEdges``（单点）"
 
 msgid "``pgr_findCloseEdges`` (Many points)"
 msgstr "``pgr_findCloseEdges``（多点）"
-
-msgid "New experimental functions"
-msgstr "新的实验函数"
 
 msgid "Ordering"
 msgstr "排序"
@@ -20079,4 +20203,3 @@ msgstr "pgr_withPointsDD 是**带有点**的 pgr_drivenDistance"
 #, fuzzy
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia 是 **带有点** 的"
-
