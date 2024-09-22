@@ -22,7 +22,7 @@
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
     <link rel="next" title="Funciones de Ruteo de Vehículos - Categoría (Experimental)" href="VRP-category.html" />
-    <link rel="prev" title="Metrics - Family of functions" href="metrics-family.html" />
+    <link rel="prev" title="Métricas - Familia de funciones" href="metrics-family.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -121,7 +121,7 @@
               
                 
   <li>
-    <a href="metrics-family.html" title="Previous Chapter: Metrics - Family of functions"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Metrics - Fam...</span>
+    <a href="metrics-family.html" title="Previous Chapter: Métricas - Familia de funciones"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Métricas - Fa...</span>
     </a>
   </li>
   <li>
@@ -174,7 +174,7 @@
 </ul>
 
   <li>
-    <a href="metrics-family.html" title="Previous Chapter: Metrics - Family of functions"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Metrics - Fam...</span>
+    <a href="metrics-family.html" title="Previous Chapter: Métricas - Familia de funciones"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Métricas - Fa...</span>
     </a>
   </li>
   <li>
@@ -198,8 +198,7 @@
 </div>
 <section id="pgr-betweennesscentrality">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_betweennessCentrality</span></code><a class="headerlink" href="#pgr-betweennesscentrality" title="Link to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_betweennessCentrality</span></code> - Calculates the relative betweeness centrality
-using Brandes Algorithm</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_betweennessCentrality</span></code> - Calcula la centralidad intermedia relativa mediante el algoritmo de Brandes.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/doc/libs/1_84_0/libs/graph/doc/betweenness_centrality.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
 </a>
@@ -221,19 +220,14 @@ using Brandes Algorithm</p>
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>The Brandes Algorithm takes advantage of the sparse graphs for evaluating the
-betweenness centrality score of all vertices.</p>
-<p>Betweenness centrality measures the extent to which a vertex lies on the
-shortest paths between all other pairs of vertices. Vertices with a high
-betweenness centrality score may have considerable influence in a network by the
-virtue of their control over the shortest paths passing between them.</p>
-<p>The removal of these vertices will affect the network by disrupting the
-it, as most of the shortest paths between vertices pass through them.</p>
-<p>This implementation work for both directed and undirected graphs.</p>
+<p>El algoritmo Brandes aprovecha los grafos dispersos para evaluar la puntuación de centralidad intermedia de todos los vértices.</p>
+<p>La centralidad de interrelación mide hasta qué punto un vértice se encuentra en las rutas más cortas entre todos los demás pares de vértices. Los vértices con una alta centralidad entre pares pueden tener una influencia considerable en una red gracias a su control sobre los caminos más cortos que pasan entre ellos.</p>
+<p>La eliminación de estos vértices afectará a la red al perturbarla, ya que la mayoría de los caminos más cortos entre vértices pasan por ellos.</p>
+<p>Esta implementación funciona tanto para grafos dirigidos como no dirigidos.</p>
 <ul class="simple">
-<li><p>Running time:  <span class="math notranslate nohighlight">\(\Theta(VE)\)</span></p></li>
-<li><p>Running space: <span class="math notranslate nohighlight">\(\Theta(VE)\)</span></p></li>
-<li><p>Throws when there are no edges in the graph</p></li>
+<li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(\Theta(VE)\)</span></p></li>
+<li><p>Espacio de ejecución: <span class="math notranslate nohighlight">\(\Theta(VE)\)</span></p></li>
+<li><p>Lanza cuando no hay aristas en el grafo</p></li>
 </ul>
 </section>
 <section id="signatures">
@@ -241,14 +235,14 @@ it, as most of the shortest paths between vertices pass through them.</p>
 <p class="rubric">Resumen</p>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<p>pgr_betweennessCentrality(<a class="reference internal" href="#edges-sql">Edges SQL</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
+<p>pgr_betweennessCentrality(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
 <div class="line-block">
-<div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(vid,</span> <span class="pre">centrality)</span></code></div>
+<div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(vid,</span> <span class="pre">centrality)</span></code></div>
 </div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>For a directed graph with edges <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span>.</p>
+<dd class="field-odd"><p>Para un grafo dirigido con aristas <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span>.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_betweennessCentrality</span><span class="p">(</span>
@@ -266,14 +260,14 @@ it, as most of the shortest paths between vertices pass through them.</p>
 
 </pre></div>
 </div>
-<p class="rubric">Explanation</p>
+<p class="rubric">Explicación</p>
 <ul class="simple">
-<li><p>The betweenness centrality are between parenthesis.</p></li>
-<li><p>The leaf vertices have betweenness centrality <span class="math notranslate nohighlight">\(0\)</span>.</p></li>
-<li><p>Betweenness centrality of vertex <span class="math notranslate nohighlight">\(6\)</span> is higher than of vertex <span class="math notranslate nohighlight">\(10\)</span>.</p>
+<li><p>La centralidad intermedia está entre paréntesis.</p></li>
+<li><p>Los vértices de las hojas tienen una centralidad intermedia <span class="math notranslate nohighlight">\(0\)</span>.</p></li>
+<li><p>La centralidad de entrecruzamiento del vértice <span class="math notranslate nohighlight">\(6\)</span> es mayor que la del vértice <span class="math notranslate nohighlight">\(10\)</span>.</p>
 <ul>
-<li><p>Removing vertex <span class="math notranslate nohighlight">\(6\)</span> will create three graph components.</p></li>
-<li><p>Removing vertex <span class="math notranslate nohighlight">\(10\)</span> will create two graph components.</p></li>
+<li><p>Al eliminar el vértice <span class="math notranslate nohighlight">\(6\)</span> se crearían tres componentes.</p></li>
+<li><p>Al eliminar el vértice <span class="math notranslate nohighlight">\(10\)</span> se crearán dos componentes del grafo.</p></li>
 </ul>
 </li>
 </ul>
@@ -401,11 +395,11 @@ it, as most of the shortest paths between vertices pass through them.</p>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the vertex</p></td>
+<td><p>Identificador del vértice</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">centrality</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Relative betweenness centrality score of the vertex (will be in range [0,1])</p></td>
+<td><p>Puntuación relativa de centralidad entre vértices (estará en el rango [0,1])</p></td>
 </tr>
 </tbody>
 </table>
@@ -413,8 +407,8 @@ it, as most of the shortest paths between vertices pass through them.</p>
 <section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p>Boost’s <a class="reference external" href="https://www.boost.org/doc/libs/1_84_0/libs/graph/doc/betweenness_centrality.html">betweenness_centrality</a></p></li>
-<li><p>Queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> network.</p></li>
+<li><p><a class="reference external" href="https://www.boost.org/doc/libs/1_84_0/libs/graph/doc/betweenness_centrality.html">Boost: Centralidad de intermediación</a></p></li>
+<li><p>Las consultas utilizan la red <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a>.</p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
@@ -437,7 +431,7 @@ it, as most of the shortest paths between vertices pass through them.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.7.0-dev.<br/>
-      Actualizado por última vez en ago 26, 2024.<br/>
+      Actualizado por última vez en sept 22, 2024.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2.<br/>
     </p>
   </div>
