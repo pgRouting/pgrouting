@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-26 11:20+0000\n"
-"PO-Revision-Date: 2024-05-01 03:45+0000\n"
+"PO-Revision-Date: 2024-09-23 01:16+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/ja/>\n"
@@ -5767,9 +5767,8 @@ msgid ""
 "negative are part of the graph."
 msgstr ""
 
-#, fuzzy
 msgid "The set of vertices :math:`V`:"
-msgstr "ノードのセット :math:`V`"
+msgstr "ノードのセット :math:`V`:"
 
 msgid "In a directed graph both edges have directionality"
 msgstr ""
@@ -7580,9 +7579,8 @@ msgstr ""
 msgid "Added ``start_vid`` and ``end_vid`` result columns."
 msgstr ""
 
-#, fuzzy
 msgid "New overload functions:"
-msgstr "新しい **公式** 機能"
+msgstr "新しい **公式** 機能:"
 
 msgid "``pgr_ksp`` (One to Many)"
 msgstr ""
