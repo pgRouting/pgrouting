@@ -20175,29 +20175,3 @@ msgstr "pgr_withPointsDD 是 **带有点** 的 pgr_drivenDistance"
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia 是 **带有点** 的"
 
-#~ msgid ""
-#~ "`Wikipedia: Graph Coloring <https://en.wikipedia.org/wiki/"
-#~ "Graph_coloring>`__"
-#~ msgstr "`维基百科：图着色 <https://en.wikipedia.org/wiki/Graph_coloring>`__"
-
-#~ msgid ""
-#~ "Creates a **super source** and edges to all the source(s), and a **super "
-#~ "target** and the edges from all the targets(s)."
-#~ msgstr ""
-#~ "创建**super source**和所有源的边，以及 **super target** 和所有目标的边。"
-
-#~ msgid "wget"
-#~ msgstr "wget"
-
-#~ msgid "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_ , [``directed``])"
-#~ msgstr "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_ , [``directed``])"
-
-#, fuzzy
-#~ msgid "Identifier of the vertex"
-#~ msgstr "顶点的标识符。"
-
-#~ msgid ""
-#~ "Find the route that visits the vertices :math:`\\{5, 1, 8\\}` in that "
-#~ "order on an **directed** graph."
-#~ msgstr ""
-#~ "在一个**有向**图上，找出按此顺序访问顶点 :math:`\\{5, 1, 8\\}` 的路径。"

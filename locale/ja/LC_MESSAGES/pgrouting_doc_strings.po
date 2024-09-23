@@ -18856,5 +18856,3 @@ msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
 
 #, fuzzy
-#~ msgid "Identifier of the vertex"
-#~ msgstr "終了ノードの識別子。"
