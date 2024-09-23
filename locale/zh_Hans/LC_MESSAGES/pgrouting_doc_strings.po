@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-26 11:20+0000\n"
+"POT-Creation-Date: 2024-09-23 01:17+0000\n"
 "PO-Revision-Date: 2024-05-28 16:17+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
@@ -2840,10 +2840,6 @@ msgstr ""
 "`Boost：边缘着色算法文档 <https://www.boost.org/libs/graph/doc/edge_coloring."
 "html>`__"
 
-msgid ""
-"`Wikipedia: Graph Coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__"
-msgstr "`维基百科：图着色 <https://en.wikipedia.org/wiki/Graph_coloring>`__"
-
 msgid "Components - Family of functions"
 msgstr "分量 - 函数族"
 
@@ -4151,10 +4147,12 @@ msgid ""
 "returned."
 msgstr "当最大流量为0时则没有流量并返回**EMPTY SET**。"
 
-msgid "There is no flow when a **source** is the same as a **target**."
+#, fuzzy
+msgid "There is no flow when source has the same vaule as target."
 msgstr "当 **source**与 **target**相同时，就没有流量。"
 
-msgid "Any duplicated value in the source(s) or target(s) are ignored."
+#, fuzzy
+msgid "Any duplicated values in source or target are ignored."
 msgstr "source(s)或target(s) 中的任何重复值都将被忽略。"
 
 msgid "Calculates the flow/residual capacity for each edge. In the output"
@@ -4163,11 +4161,14 @@ msgstr "计算每条边的流量/剩余容量。 在输出中"
 msgid "Edges with zero flow are omitted."
 msgstr "流量为零的边被忽略。"
 
-msgid ""
-"Creates a **super source** and edges to all the source(s), and a **super "
-"target** and the edges from all the targets(s)."
+msgid "Creates"
 msgstr ""
-"创建**super source**和所有源的边，以及 **super target** 和所有目标的边。"
+
+msgid "a **super source** and edges from it to all the sources,"
+msgstr ""
+
+msgid "a **super target** and edges from it to all the targetss."
+msgstr ""
 
 msgid ""
 "The maximum flow through the graph is guaranteed to be the value returned "
@@ -6894,11 +6895,12 @@ msgstr "用户可以根据需要定义组合。"
 msgid "Needs a `Combinations SQL`_"
 msgstr "需要 `Combinations SQL`_"
 
+#, fuzzy
 msgid ""
 "There are several kinds of valid inner queries and also the columns returned "
 "are depending of the function. Which kind of inner query will depend on the "
-"function(s) requirements. To simplify variety of types, **ANY-INTEGER** and "
-"**ANY-NUMERICAL** is used."
+"function's requirements. To simplify the variety of types, **ANY-INTEGER** "
+"and **ANY-NUMERICAL** is used."
 msgstr ""
 "有多种有效的内部查询，返回的列也取决于函数。 哪种内部查询取决于函数的要求。 "
 "为了简化各种类型，使用 **ANY-INTEGER** 和 **ANY-NUMERICAL** 。"
@@ -7358,9 +7360,6 @@ msgid ""
 msgstr ""
 "pgRouting 最新版本可以在 https://github.com/pgRouting/pgrouting/releases/"
 "latest 中找到"
-
-msgid "wget"
-msgstr "wget"
 
 msgid "To download this release:"
 msgstr "要下载此版本："
@@ -8552,9 +8551,9 @@ msgstr "手动指定的顶点组合。"
 msgid "pgr_aStarCost"
 msgstr "pgr_aStarCost"
 
+#, fuzzy
 msgid ""
-"``pgr_aStarCost`` - Total cost of the shortest path(s) using the A* "
-"algorithm."
+"``pgr_aStarCost`` - Total cost of the shortest path using the A* algorithm."
 msgstr "``pgr_aStarCost`` -使用 A* 算法的最短路径的总成本。"
 
 msgid "``pgr_aStarCost`` (`Combinations`_)"
@@ -8563,8 +8562,9 @@ msgstr "``pgr_aStarCost`` (`组合`_)"
 msgid "New **proposed** function"
 msgstr "新**拟议**函数"
 
+#, fuzzy
 msgid ""
-"The ``pgr_aStarCost`` function sumarizes of the cost of the shortest path(s) "
+"The ``pgr_aStarCost`` function sumarizes of the cost of the shortest path "
 "using the A* algorithm."
 msgstr "``pgr_aStarCost`` 函数使用 A* 算法汇总最短路径的成本。"
 
@@ -9330,17 +9330,19 @@ msgstr "pgr_bdAstar(`Edges SQL`_, `Combinations SQL`_, [**options**])"
 msgid "pgr_bdAstarCost"
 msgstr "pgr_bdAstarCost"
 
+#, fuzzy
 msgid ""
-"``pgr_bdAstarCost`` - Total cost of the shortest path(s) using the "
+"``pgr_bdAstarCost`` - Total cost of the shortest path using the "
 "bidirectional A* algorithm."
 msgstr "``pgr_bdAstarCost`` -使用双向 A* 算法的最短路径的总成本。"
 
 msgid "``pgr_bdAstarCost`` (`Combinations`_)"
 msgstr "``pgr_bdAstarCost`` (`组合`_)"
 
+#, fuzzy
 msgid ""
-"The ``pgr_bdAstarCost`` function sumarizes of the cost of the shortest "
-"path(s) using the bidirectional A* algorithm."
+"The ``pgr_bdAstarCost`` function sumarizes of the cost of the shortest path "
+"using the bidirectional A* algorithm."
 msgstr "``pgr_bdAstarCost``函数使用双向 A* 算法汇总最短路径的成本。"
 
 msgid ""
@@ -9383,9 +9385,10 @@ msgstr "pgr_bdAstarCostMatrix(`Edges SQL`_, **start vids**, [**options**])"
 msgid "``pgr_bdDijkstra``"
 msgstr "``pgr_bdDijkstra``"
 
+#, fuzzy
 msgid ""
-"``pgr_bdDijkstra`` — Returns the shortest path(s) using Bidirectional "
-"Dijkstra algorithm."
+"``pgr_bdDijkstra`` — Returns the shortest path using Bidirectional Dijkstra "
+"algorithm."
 msgstr "``pgr_bdDijkstra`` — 使用双向 Dijkstra 算法返回最短路径。"
 
 msgid "pgr_bdDijkstra(`Combinations`_)"
@@ -9429,8 +9432,8 @@ msgid ""
 msgstr ""
 "pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vids**, [``directed``])"
 
-msgid "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_ , [``directed``])"
-msgstr "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_ , [``directed``])"
+msgid "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
+msgstr "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 
 msgid "Returns set of |old-generic-result|"
 msgstr "返回 |old-generic-result| 的集合"
@@ -9461,9 +9464,6 @@ msgid ""
 "**undirected** graph"
 msgstr "在**无向**图上从顶点 :math:`\\{6, 1\\}`到顶点 :math:`\\{10, 17\\}`"
 
-msgid "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
-msgstr "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
-
 msgid "Using a combinations table on an **undirected** graph"
 msgstr "在**无向**图上使用组合表"
 
@@ -9480,8 +9480,9 @@ msgstr "https://en.wikipedia.org/wiki/Bidirectional_search"
 msgid "``pgr_bdDijkstraCost``"
 msgstr "``pgr_bdDijkstraCost``"
 
+#, fuzzy
 msgid ""
-"``pgr_bdDijkstraCost`` — Returns the shortest path(s)'s cost using "
+"``pgr_bdDijkstraCost`` — Returns the shortest path's cost using "
 "Bidirectional Dijkstra algorithm."
 msgstr "``pgr_bdDijkstraCost`` — 使用双向 Dijkstra 算法返回最短路径的成本。"
 
@@ -9550,7 +9551,8 @@ msgstr "与 :doc:`pgr_TSP` 一起使用。"
 msgid "``pgr_bellmanFord - Experimental``"
 msgstr "``pgr_bellmanFord - 实验``"
 
-msgid "``pgr_bellmanFord`` — Shortest path(s) using Bellman-Ford algorithm."
+#, fuzzy
+msgid "``pgr_bellmanFord`` — Shortest path using Bellman-Ford algorithm."
 msgstr "``pgr_bellmanFord`` — 使用 Bellman-Ford 算法的最短路径。"
 
 msgid "New **experimental** signature:"
@@ -9751,10 +9753,6 @@ msgid "``vid``"
 msgstr "``vid``"
 
 #, fuzzy
-msgid "Identifier of the vertex"
-msgstr "顶点的标识符。"
-
-#, fuzzy
 msgid "``centrality``"
 msgstr "``capacity``"
 
@@ -9843,8 +9841,9 @@ msgstr ""
 msgid "``pgr_binaryBreadthFirstSearch`` - Experimental"
 msgstr "``pgr_binaryBreadthFirstSearch`` - 实验"
 
+#, fuzzy
 msgid ""
-"``pgr_binaryBreadthFirstSearch`` — Returns the shortest path(s) in a binary "
+"``pgr_binaryBreadthFirstSearch`` — Returns the shortest path in a binary "
 "graph."
 msgstr "``pgr_binaryBreadthFirstSearch`` — 返回二元图中的最短路径。"
 
@@ -10977,8 +10976,9 @@ msgstr ""
 msgid "pgr_dagShortestPath - Experimental"
 msgstr "pgr_dagShortestPath - 实验"
 
+#, fuzzy
 msgid ""
-"``pgr_dagShortestPath`` — Returns the shortest path(s) for weighted directed "
+"``pgr_dagShortestPath`` — Returns the shortest path for weighted directed "
 "acyclic graphs(DAG). In particular, the DAG shortest paths algorithm "
 "implemented by Boost.Graph."
 msgstr ""
@@ -11273,7 +11273,8 @@ msgstr ""
 msgid "``pgr_dijkstra``"
 msgstr "`pgr_dijkstra```"
 
-msgid "``pgr_dijkstra`` — Shortest path(s) using Dijkstra algorithm."
+#, fuzzy
+msgid "``pgr_dijkstra`` — Shortest path using Dijkstra algorithm."
 msgstr "`pgr_dijkstra`` - 使用 Dijkstra 算法的最短路径。"
 
 msgid "Version 3.5.0"
@@ -11510,17 +11511,19 @@ msgstr "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgid "``pgr_dijkstraCost``"
 msgstr "`pgr_dijkstraCost``"
 
+#, fuzzy
 msgid ""
-"``pgr_dijkstraCost`` - Total cost of the shortest path(s) using Dijkstra "
+"``pgr_dijkstraCost`` - Total cost of the shortest path using Dijkstra "
 "algorithm."
 msgstr "`pgr_dijkstraCost`` - 使用 Dijkstra 算法计算的最短路径总成本。"
 
 msgid "``pgr_dijkstraCost`` (`Combinations`_)"
 msgstr "``pgr_dijkstraCost`` (`组合`_)"
 
+#, fuzzy
 msgid ""
-"The ``pgr_dijkstraCost`` function sumarizes of the cost of the shortest "
-"path(s) using Dijkstra Algorithm."
+"The ``pgr_dijkstraCost`` function sumarizes of the cost of the shortest path "
+"using Dijkstra Algorithm."
 msgstr "``pgr_dijkstraCost`` 函数总结了使用Dijkstra算法的最短路径的成本。"
 
 msgid ""
@@ -11948,11 +11951,11 @@ msgstr "**选项：** ``[directed, strict, U_turn_on_edge]``"
 msgid "Returns set of |via-result|"
 msgstr "返回 |via-result| 的集合"
 
+#, fuzzy
 msgid ""
 "Find the route that visits the vertices :math:`\\{5, 1, 8\\}` in that order "
-"on an **directed** graph."
-msgstr ""
-"在一个**有向**图上，找出按此顺序访问顶点 :math:`\\{5, 1, 8\\}` 的路径。"
+"on an directed graph."
+msgstr "在有向图上查找按顺序访问顶点 :math:`\\{ 5, 1, 8\\}` 的路线。"
 
 msgid "Via optional parameters"
 msgstr "Via可选参数"
@@ -14106,7 +14109,8 @@ msgstr "``pgr_maxFlow`` (`组合`_)"
 msgid "New **Proposed** function"
 msgstr "新**拟议** 的函数"
 
-msgid "Calculates the maximum flow from the `source(s)` to the `target(s)`."
+#, fuzzy
+msgid "Calculates the maximum flow from the sources to the targets."
 msgstr "计算从 `source(s)`到 `target(s)`的最大流量。"
 
 msgid ""
@@ -15337,11 +15341,6 @@ msgstr ""
 "[**options**])"
 
 msgid ""
-"Find the route that visits the vertices :math:`\\{ 5, 1, 8\\}` in that order "
-"on an directed graph."
-msgstr "在有向图上查找按顺序访问顶点 :math:`\\{ 5, 1, 8\\}` 的路线。"
-
-msgid ""
 "All this examples are about the route that visits the vertices :math:`\\{5, "
 "7, 1, 8, 15\\}` in that order on a directed graph."
 msgstr ""
@@ -15619,9 +15618,10 @@ msgstr "``pgr_trsp_withPoints`` (`多对多`_)"
 msgid "``pgr_trsp_withPoints`` (`Combinations`_)"
 msgstr "``pgr_trsp_withPoints`` (`组合`_)"
 
+#, fuzzy
 msgid ""
 "Modify the graph to include points defined by points_sql. Using Dijkstra "
-"algorithm, find the shortest path(s)"
+"algorithm, find the shortest path"
 msgstr "修改图以包括由points_sql 定义的点。 使用 Dijkstra 算法，找到最短路径"
 
 msgid "Characteristics:"
@@ -15998,9 +15998,10 @@ msgstr "从前方超车或以左侧驾驶方式行驶。"
 msgid "``pgr_withPointsCost`` - Proposed"
 msgstr "``pgr_withPointsCost`` -拟议"
 
+#, fuzzy
 msgid ""
 "``pgr_withPointsCost`` - Calculates the shortest path and returns only the "
-"aggregate cost of the shortest path(s) found, for the combination of points "
+"aggregate cost of the shortest path found, for the combination of points "
 "given."
 msgstr ""
 "``pgr_withPointsCost`` -对于给定的点组合，计算最短路径并仅返回找到的最短路径"
@@ -16009,9 +16010,10 @@ msgstr ""
 msgid "pgr_withPointsCost(Combinations)"
 msgstr "pgr_withPointsCost（组合）"
 
+#, fuzzy
 msgid ""
 "Modify the graph to include points defined by points_sql. Using Dijkstra "
-"algorithm, return only the aggregate cost of the shortest path(s) found."
+"algorithm, return only the aggregate cost of the shortest path found."
 msgstr ""
 "修改图以包括由points_sql 定义的点。 使用 Dijkstra 算法，仅返回找到的最短路径"
 "的总成本。"
@@ -20203,3 +20205,30 @@ msgstr "pgr_withPointsDD 是**带有点**的 pgr_drivenDistance"
 #, fuzzy
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia 是 **带有点** 的"
+
+#~ msgid ""
+#~ "`Wikipedia: Graph Coloring <https://en.wikipedia.org/wiki/"
+#~ "Graph_coloring>`__"
+#~ msgstr "`维基百科：图着色 <https://en.wikipedia.org/wiki/Graph_coloring>`__"
+
+#~ msgid ""
+#~ "Creates a **super source** and edges to all the source(s), and a **super "
+#~ "target** and the edges from all the targets(s)."
+#~ msgstr ""
+#~ "创建**super source**和所有源的边，以及 **super target** 和所有目标的边。"
+
+#~ msgid "wget"
+#~ msgstr "wget"
+
+#~ msgid "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_ , [``directed``])"
+#~ msgstr "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_ , [``directed``])"
+
+#, fuzzy
+#~ msgid "Identifier of the vertex"
+#~ msgstr "顶点的标识符。"
+
+#~ msgid ""
+#~ "Find the route that visits the vertices :math:`\\{5, 1, 8\\}` in that "
+#~ "order on an **directed** graph."
+#~ msgstr ""
+#~ "在一个**有向**图上，找出按此顺序访问顶点 :math:`\\{5, 1, 8\\}` 的路径。"

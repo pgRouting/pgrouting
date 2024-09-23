@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-26 11:20+0000\n"
+"POT-Creation-Date: 2024-09-23 01:17+0000\n"
 "PO-Revision-Date: 2022-12-13 12:30+0000\n"
 "Last-Translator: Hyung-Gyu Ryoo <hyunggyu.ryoo@gmail.com>\n"
 "Language-Team: Korean <https://weblate.osgeo.org/projects/pgrouting/"
@@ -2765,10 +2765,6 @@ msgid ""
 "graph/doc/edge_coloring.html>`__"
 msgstr ""
 
-msgid ""
-"`Wikipedia: Graph Coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__"
-msgstr ""
-
 msgid "Components - Family of functions"
 msgstr ""
 
@@ -4020,10 +4016,10 @@ msgid ""
 "returned."
 msgstr ""
 
-msgid "There is no flow when a **source** is the same as a **target**."
+msgid "There is no flow when source has the same vaule as target."
 msgstr ""
 
-msgid "Any duplicated value in the source(s) or target(s) are ignored."
+msgid "Any duplicated values in source or target are ignored."
 msgstr ""
 
 msgid "Calculates the flow/residual capacity for each edge. In the output"
@@ -4032,9 +4028,13 @@ msgstr ""
 msgid "Edges with zero flow are omitted."
 msgstr ""
 
-msgid ""
-"Creates a **super source** and edges to all the source(s), and a **super "
-"target** and the edges from all the targets(s)."
+msgid "Creates"
+msgstr ""
+
+msgid "a **super source** and edges from it to all the sources,"
+msgstr ""
+
+msgid "a **super target** and edges from it to all the targetss."
 msgstr ""
 
 msgid ""
@@ -6564,8 +6564,8 @@ msgstr ""
 msgid ""
 "There are several kinds of valid inner queries and also the columns returned "
 "are depending of the function. Which kind of inner query will depend on the "
-"function(s) requirements. To simplify variety of types, **ANY-INTEGER** and "
-"**ANY-NUMERICAL** is used."
+"function's requirements. To simplify the variety of types, **ANY-INTEGER** "
+"and **ANY-NUMERICAL** is used."
 msgstr ""
 
 msgid "Edges SQL for"
@@ -6992,9 +6992,6 @@ msgid ""
 "The pgRouting latest release can be found in https://github.com/pgRouting/"
 "pgrouting/releases/latest"
 msgstr ""
-
-msgid "wget"
-msgstr "wget"
 
 msgid "To download this release:"
 msgstr ""
@@ -8109,10 +8106,10 @@ msgstr ""
 msgid "pgr_aStarCost"
 msgstr ""
 
+#, fuzzy
 msgid ""
-"``pgr_aStarCost`` - Total cost of the shortest path(s) using the A* "
-"algorithm."
-msgstr ""
+"``pgr_aStarCost`` - Total cost of the shortest path using the A* algorithm."
+msgstr ":doc:`pgr_aStarCost` - 최단 경로의 집계 비용 반환."
 
 msgid "``pgr_aStarCost`` (`Combinations`_)"
 msgstr ""
@@ -8120,10 +8117,11 @@ msgstr ""
 msgid "New **proposed** function"
 msgstr ""
 
+#, fuzzy
 msgid ""
-"The ``pgr_aStarCost`` function sumarizes of the cost of the shortest path(s) "
+"The ``pgr_aStarCost`` function sumarizes of the cost of the shortest path "
 "using the A* algorithm."
-msgstr ""
+msgstr ":doc:`pgr_aStarCost` - 최단 경로의 집계 비용 반환."
 
 msgid ""
 "Let be the case the values returned are stored in a table, so the unique "
@@ -8837,7 +8835,7 @@ msgid "pgr_bdAstarCost"
 msgstr ""
 
 msgid ""
-"``pgr_bdAstarCost`` - Total cost of the shortest path(s) using the "
+"``pgr_bdAstarCost`` - Total cost of the shortest path using the "
 "bidirectional A* algorithm."
 msgstr ""
 
@@ -8845,8 +8843,8 @@ msgid "``pgr_bdAstarCost`` (`Combinations`_)"
 msgstr ""
 
 msgid ""
-"The ``pgr_bdAstarCost`` function sumarizes of the cost of the shortest "
-"path(s) using the bidirectional A* algorithm."
+"The ``pgr_bdAstarCost`` function sumarizes of the cost of the shortest path "
+"using the bidirectional A* algorithm."
 msgstr ""
 
 msgid ""
@@ -8885,10 +8883,11 @@ msgstr ""
 msgid "``pgr_bdDijkstra``"
 msgstr ""
 
+#, fuzzy
 msgid ""
-"``pgr_bdDijkstra`` — Returns the shortest path(s) using Bidirectional "
-"Dijkstra algorithm."
-msgstr ""
+"``pgr_bdDijkstra`` — Returns the shortest path using Bidirectional Dijkstra "
+"algorithm."
+msgstr ":doc:`pgr_bdDijkstra` - 최단 경로를 위한 양방향 다익스트라 알고리즘."
 
 msgid "pgr_bdDijkstra(`Combinations`_)"
 msgstr ""
@@ -8927,7 +8926,7 @@ msgid ""
 "pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vids**, [``directed``])"
 msgstr ""
 
-msgid "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_ , [``directed``])"
+msgid "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
 
 msgid "Returns set of |old-generic-result|"
@@ -8959,9 +8958,6 @@ msgid ""
 "**undirected** graph"
 msgstr ""
 
-msgid "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
-msgstr ""
-
 msgid "Using a combinations table on an **undirected** graph"
 msgstr ""
 
@@ -8977,7 +8973,7 @@ msgid "``pgr_bdDijkstraCost``"
 msgstr ""
 
 msgid ""
-"``pgr_bdDijkstraCost`` — Returns the shortest path(s)'s cost using "
+"``pgr_bdDijkstraCost`` — Returns the shortest path's cost using "
 "Bidirectional Dijkstra algorithm."
 msgstr ""
 
@@ -9039,7 +9035,7 @@ msgstr ""
 msgid "``pgr_bellmanFord - Experimental``"
 msgstr ""
 
-msgid "``pgr_bellmanFord`` — Shortest path(s) using Bellman-Ford algorithm."
+msgid "``pgr_bellmanFord`` — Shortest path using Bellman-Ford algorithm."
 msgstr ""
 
 msgid "New **experimental** signature:"
@@ -9214,9 +9210,6 @@ msgstr ""
 msgid "``vid``"
 msgstr ""
 
-msgid "Identifier of the vertex"
-msgstr ""
-
 msgid "``centrality``"
 msgstr ""
 
@@ -9298,7 +9291,7 @@ msgid "``pgr_binaryBreadthFirstSearch`` - Experimental"
 msgstr ""
 
 msgid ""
-"``pgr_binaryBreadthFirstSearch`` — Returns the shortest path(s) in a binary "
+"``pgr_binaryBreadthFirstSearch`` — Returns the shortest path in a binary "
 "graph."
 msgstr ""
 
@@ -10333,7 +10326,7 @@ msgid "pgr_dagShortestPath - Experimental"
 msgstr ""
 
 msgid ""
-"``pgr_dagShortestPath`` — Returns the shortest path(s) for weighted directed "
+"``pgr_dagShortestPath`` — Returns the shortest path for weighted directed "
 "acyclic graphs(DAG). In particular, the DAG shortest paths algorithm "
 "implemented by Boost.Graph."
 msgstr ""
@@ -10606,7 +10599,7 @@ msgstr ""
 msgid "``pgr_dijkstra``"
 msgstr ""
 
-msgid "``pgr_dijkstra`` — Shortest path(s) using Dijkstra algorithm."
+msgid "``pgr_dijkstra`` — Shortest path using Dijkstra algorithm."
 msgstr ""
 
 msgid "Version 3.5.0"
@@ -10841,18 +10834,22 @@ msgstr ""
 msgid "``pgr_dijkstraCost``"
 msgstr ""
 
+#, fuzzy
 msgid ""
-"``pgr_dijkstraCost`` - Total cost of the shortest path(s) using Dijkstra "
+"``pgr_dijkstraCost`` - Total cost of the shortest path using Dijkstra "
 "algorithm."
-msgstr ""
+msgstr ":doc:`pgr_aStarCost` - 최단 경로의 집계 비용 반환."
 
 msgid "``pgr_dijkstraCost`` (`Combinations`_)"
 msgstr ""
 
+#, fuzzy
 msgid ""
-"The ``pgr_dijkstraCost`` function sumarizes of the cost of the shortest "
-"path(s) using Dijkstra Algorithm."
+"The ``pgr_dijkstraCost`` function sumarizes of the cost of the shortest path "
+"using Dijkstra Algorithm."
 msgstr ""
+":doc:`pgr_bdDijkstraCost` - 최단 경로의 비용을 계산하기 위한 양방향 다익스트"
+"라 알고리즘"
 
 msgid ""
 "pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
@@ -11241,7 +11238,7 @@ msgstr ""
 
 msgid ""
 "Find the route that visits the vertices :math:`\\{5, 1, 8\\}` in that order "
-"on an **directed** graph."
+"on an directed graph."
 msgstr ""
 
 msgid "Via optional parameters"
@@ -13236,7 +13233,7 @@ msgstr ""
 msgid "New **Proposed** function"
 msgstr ""
 
-msgid "Calculates the maximum flow from the `source(s)` to the `target(s)`."
+msgid "Calculates the maximum flow from the sources to the targets."
 msgstr ""
 
 msgid ""
@@ -14383,11 +14380,6 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Find the route that visits the vertices :math:`\\{ 5, 1, 8\\}` in that order "
-"on an directed graph."
-msgstr ""
-
-msgid ""
 "All this examples are about the route that visits the vertices :math:`\\{5, "
 "7, 1, 8, 15\\}` in that order on a directed graph."
 msgstr ""
@@ -14633,7 +14625,7 @@ msgstr ""
 
 msgid ""
 "Modify the graph to include points defined by points_sql. Using Dijkstra "
-"algorithm, find the shortest path(s)"
+"algorithm, find the shortest path"
 msgstr ""
 
 msgid "Characteristics:"
@@ -14978,7 +14970,7 @@ msgstr ""
 
 msgid ""
 "``pgr_withPointsCost`` - Calculates the shortest path and returns only the "
-"aggregate cost of the shortest path(s) found, for the combination of points "
+"aggregate cost of the shortest path found, for the combination of points "
 "given."
 msgstr ""
 
@@ -14987,7 +14979,7 @@ msgstr ""
 
 msgid ""
 "Modify the graph to include points defined by points_sql. Using Dijkstra "
-"algorithm, return only the aggregate cost of the shortest path(s) found."
+"algorithm, return only the aggregate cost of the shortest path found."
 msgstr ""
 
 msgid ""
@@ -18750,3 +18742,6 @@ msgstr ""
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
+
+#~ msgid "wget"
+#~ msgstr "wget"
