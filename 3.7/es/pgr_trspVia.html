@@ -293,7 +293,7 @@ shortest path between <span class="math notranslate nohighlight">\(vertex_i\)</s
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_trsp(<a class="reference internal" href="#restrictions-sql">SQL de aristas</a>, <a class="reference internal" href="#edges-sql">SQL de restricciones</a>,**vértices**, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_trsp(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#restrictions-sql">SQL de restricciones</a>,**vértices**, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 <div class="line"><strong>opcionales:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">strict,</span> <span class="pre">U_turn_on_edge]</span></code></div>
 </div>
 <div class="line-block">
@@ -303,7 +303,8 @@ shortest path between <span class="math notranslate nohighlight">\(vertex_i\)</s
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Encontrar la ruta que visita los vértices <span class="math notranslate nohighlight">\(\{ 5, 1, 8\}\)</span> en ese orden, en un grafo dirigido.</p>
+<dd class="field-odd"><p>Find the route that visits the vertices <span class="math notranslate nohighlight">\(\{5, 1, 8\}\)</span> in that
+order on an directed graph.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trspVia(
@@ -922,7 +923,7 @@ no <code class="docutils literal notranslate"><span class="pre">U_turn_on_edge</
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.7.0-dev.<br/>
-      Actualizado por última vez en sept 22, 2024.<br/>
+      Actualizado por última vez en sept 23, 2024.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2.<br/>
     </p>
   </div>

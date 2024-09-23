@@ -245,13 +245,13 @@ source(s) to the targets(s) using the Push Relabel algorithm.</p>
 <p><strong>The main characteristics are:</strong></p>
 <ul class="simple">
 <li><p>The graph is <strong>directed</strong>.</p></li>
-<li><p>Calculates the maximum flow from the <cite>source(s)</cite> to the <cite>target(s)</cite>.</p>
+<li><p>Calculates the maximum flow from the sources to the targets.</p>
 <ul>
 <li><p>When the maximum flow is <strong>0</strong> then there is no flow and <strong>0</strong> is returned.</p></li>
-<li><p>There is no flow when a <strong>source</strong> is the same as a <strong>target</strong>.</p></li>
+<li><p>There is no flow when source has the same vaule as target.</p></li>
 </ul>
 </li>
-<li><p>Any duplicated value in the source(s) or target(s) are ignored.</p></li>
+<li><p>Any duplicated values in source or target are ignored.</p></li>
 <li><p>Uses the <a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a> algorithm.</p></li>
 </ul>
 <ul class="simple">
@@ -631,7 +631,7 @@ it’s not part of the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.7.0-dev.<br/>
-      Last updated on Sep 22, 2024.<br/>
+      Last updated on Sep 23, 2024.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2.<br/>
     </p>
   </div>

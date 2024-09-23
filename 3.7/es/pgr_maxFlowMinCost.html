@@ -270,16 +270,21 @@
 <li><p>El proceso se realiza sólo en aristas con capacidades positivas.</p></li>
 <li><p>Cuando el flujo máximo es 0 entonces no hay flujo, se devolverá: <strong>EMPTY SET</strong>.</p>
 <ul>
-<li><p>No hay ningún flujo cuando el <strong>orígen</strong> es el mismo que el <strong>destino</strong>.</p></li>
+<li><p>There is no flow when source has the same vaule as target.</p></li>
 </ul>
 </li>
-<li><p>Cualquier valor duplicado en el/los orígen(es) o en el/los destino(s) será ignorado.</p></li>
+<li><p>Any duplicated values in source or target are ignored.</p></li>
 <li><p>Calcula la capacidad de flujo/residuo para cada arista. En la salida</p>
 <ul>
 <li><p>Se omiten las aristas con flujo cero.</p></li>
 </ul>
 </li>
-<li><p>Crea una <strong>súper origen</strong>, con aristas para todos las fuentes(es), y un <strong>súper destino</strong> con aristas para todos los destino(s).</p></li>
+<li><p>Creates</p>
+<ul>
+<li><p>a <strong>super source</strong> and edges from it to all the sources,</p></li>
+<li><p>a <strong>super target</strong> and edges from it to all the targetss.</p></li>
+</ul>
+</li>
 <li><p>Se garantiza que el flujo máximo a través del grafo es el valor devuelto por <a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> cuando es ejecutado con los mismos parámetros y se puede calcular:</p>
 <ul>
 <li><p>Mediante la suma de los flujos salientes de las fuentes</p></li>
@@ -750,7 +755,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.7.0-dev.<br/>
-      Actualizado por última vez en sept 22, 2024.<br/>
+      Actualizado por última vez en sept 23, 2024.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2.<br/>
     </p>
   </div>

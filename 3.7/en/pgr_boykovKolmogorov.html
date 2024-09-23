@@ -255,17 +255,21 @@ the flow from the sources to the targets using Boykov Kolmogorov algorithm.</p>
 <li><p>When the maximum flow is 0 then there is no flow and <strong>EMPTY SET</strong> is
 returned.</p>
 <ul>
-<li><p>There is no flow when a <strong>source</strong> is the same as a <strong>target</strong>.</p></li>
+<li><p>There is no flow when source has the same vaule as target.</p></li>
 </ul>
 </li>
-<li><p>Any duplicated value in the source(s) or target(s) are ignored.</p></li>
+<li><p>Any duplicated values in source or target are ignored.</p></li>
 <li><p>Calculates the flow/residual capacity for each edge. In the output</p>
 <ul>
 <li><p>Edges with zero flow are omitted.</p></li>
 </ul>
 </li>
-<li><p>Creates a <strong>super source</strong> and edges to all the source(s), and a <strong>super
-target</strong> and the edges from all the targets(s).</p></li>
+<li><p>Creates</p>
+<ul>
+<li><p>a <strong>super source</strong> and edges from it to all the sources,</p></li>
+<li><p>a <strong>super target</strong> and edges from it to all the targetss.</p></li>
+</ul>
+</li>
 <li><p>The maximum flow through the graph is guaranteed to be the value returned by
 <a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> when executed with the same parameters and
 can be calculated:</p>
@@ -715,7 +719,7 @@ the edge.</p></td>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.7.0-dev.<br/>
-      Last updated on Sep 22, 2024.<br/>
+      Last updated on Sep 23, 2024.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2.<br/>
     </p>
   </div>
