@@ -346,7 +346,7 @@ corresponds to the segment on the oposite direction of the geometry.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
-<td><p>A unique identifier.</p></td>
+<td><p>Un identificador único.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p>Identifier of the starting vertex of the geometry <code class="docutils literal notranslate"><span class="pre">geom</span></code>.</p></td>
@@ -582,13 +582,9 @@ Additional columns names and types will depend on the application.</p>
 <h3><a class="toc-backref" href="#id12" role="doc-backlink">Puntos fuera del grafo</a><a class="headerlink" href="#points-outside-the-graph" title="Link to this heading">¶</a></h3>
 <section id="points-of-interest">
 <h4><a class="toc-backref" href="#id13" role="doc-backlink">Puntos de interés</a><a class="headerlink" href="#points-of-interest" title="Link to this heading">¶</a></h4>
-<p>Some times the applications work «on the fly» starting from a location that is
-not a vertex in the graph.
-Those locations, in pgRrouting are called points of interest.</p>
-<p>The information needed in the points of interest is <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">edge_id</span></code>,
-<code class="docutils literal notranslate"><span class="pre">side</span></code>, <code class="docutils literal notranslate"><span class="pre">fraction</span></code>.</p>
-<p>On this documentation there will be some 6 fixed points of interest and they
-will be stored on a table.</p>
+<p>Algunas veces las aplicaciones trabajan «sobre la marcha» comenzando desde una localización que no es un vértice en el grafo. Esas localizaciones, en pgRrouting se llaman puntos de interés.</p>
+<p>La información necesaria en los puntos de interés es <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">edge_id</span></code>, <code class="docutils literal notranslate"><span class="pre">side</span></code>, <code class="docutils literal notranslate"><span class="pre">fraction</span></code>.</p>
+<p>En esta documentación habrá unos 6 puntos de interés fijos y se almacenarán en una tabla.</p>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -597,22 +593,22 @@ will be stored on a table.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pid</span></code></p></td>
-<td><p>A unique identifier.</p></td>
+<td><p>Un identificador único.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
-<td><p>Identifier of the edge nearest edge that allows an arrival to the point.</p></td>
+<td><p>Identificador de la arista más cercana que permite una llegada al punto.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">side</span></code></p></td>
-<td><p>Is it on the left, right or both sides of the segment <code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
+<td><p>¿Está a la izquierda, a la derecha o a ambos lados del segmento <code class="docutils literal notranslate"><span class="pre">edge_id</span></code>?</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code></p></td>
-<td><p>Where in the segment is the point located.</p></td>
+<td><p>En qué parte del segmento se encuentra el punto.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">geom</span></code></p></td>
-<td><p>The geometry of the points.</p></td>
+<td><p>La geometría de los puntos.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">newPoint</span></code></p></td>
-<td><p>The geometry of the points moved on top of the segment.</p></td>
+<td><p>La geometría de los puntos desplazados sobre el segmento.</p></td>
 </tr>
 </tbody>
 </table>

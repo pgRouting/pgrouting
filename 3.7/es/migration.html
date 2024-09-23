@@ -2350,7 +2350,7 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated 
 </ul>
 </li>
 </ul>
-<p>Utiliza en su lugar <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a>.</p>
+<p>Utilizar en su lugar <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (4, 3)$$,

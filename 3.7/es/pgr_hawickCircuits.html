@@ -247,23 +247,14 @@
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>Hawick Circuit algorithm, is published in 2008 by Ken Hawick and Health A. James.
-This algorithm solves the problem of detecting and enumerating circuits in graphs.
-It is capable of circuit enumeration in graphs with directed-arcs, multiple-arcs
-and self-arcs with a memory efficient and high-performance im-plementation.
-It is an extension of Johnson’s Algorithm of finding all the elementary circuits of
-a directed graph.</p>
-<p>There are 2 variations defined in the Boost Graph Library. Here, we have implemented only
-2nd as it serves the most suitable and practical usecase. In this variation we get the
-circuits after filtering out the circuits caused by parallel edges. Parallel edge circuits
-have more use cases when you want to count the no. of circuits.Maybe in future, we will also
-implemenent this variation.</p>
+<p>El algoritmo Hawick Circuit fue publicado en 2008 por Ken Hawick y Health A. James. Este algoritmo resuelve el problema de detectar y enumerar circuitos en grafos. Es capaz de enumerar circuitos en grafos con arcos dirigidos, arcos múltiples y autoarcos con una implementación eficiente en memoria y de alto rendimiento. Es una extensión del Algoritmo de Johnson para encontrar todos los circuitos elementales de un grafo dirigido.</p>
+<p>Hay 2 variaciones definidas en la librería Boost Graph. Aquí hemos implementado sólo la segunda, ya que es la más adecuada y práctica. En esta variación obtenemos los circuitos después de filtrar los circuitos causados por aristas paralelas. Los circuitos de aristas paralelas tienen más casos de uso cuando se quiere contar el número de circuitos.</p>
 <p><strong>Las características principales son:</strong></p>
 <ul class="simple">
 <li><p>La implementación del algoritmo sirve solo para grafos dirigidos</p></li>
-<li><p>It is a variation of Johnson’s algorithm for circuit enumeration.</p></li>
-<li><p>The algorithm outputs the distinct circuits present in the graph.</p></li>
-<li><p>Time Complexity: <span class="math notranslate nohighlight">\(O((V + E) (c + 1))\)</span></p>
+<li><p>Es una variación del algoritmo de Johnson para la enumeración de circuitos.</p></li>
+<li><p>El algoritmo da como resultado los distintos circuitos presentes en el grafo.</p></li>
+<li><p>Complejidad temporal: <span class="math notranslate nohighlight">\(O((V + E) (c + 1))\)</span></p>
 <ul>
 <li><p>donde <span class="math notranslate nohighlight">\(|E|\)</span> es la cantidad de arístas en el grafo,</p></li>
 <li><p><span class="math notranslate nohighlight">\(|V|\)</span> es la cantidad de vertices del grafo.</p></li>

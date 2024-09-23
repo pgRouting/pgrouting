@@ -254,19 +254,19 @@
 <li><p>El proceso se realiza sólo en aristas con capacidades positivas.</p></li>
 <li><p>Cuando el flujo máximo es 0 entonces no hay flujo, se devolverá: <strong>EMPTY SET</strong>.</p>
 <ul>
-<li><p>There is no flow when source has the same vaule as target.</p></li>
+<li><p>No hay flujo cuando el origen tiene el mismo valor que el destino.</p></li>
 </ul>
 </li>
-<li><p>Any duplicated values in source or target are ignored.</p></li>
+<li><p>Los valores duplicados en origen o destino se ignoran.</p></li>
 <li><p>Calcula la capacidad de flujo/residuo para cada arista. En la salida</p>
 <ul>
 <li><p>Se omiten las aristas con flujo cero.</p></li>
 </ul>
 </li>
-<li><p>Creates</p>
+<li><p>Crea</p>
 <ul>
-<li><p>a <strong>super source</strong> and edges from it to all the sources,</p></li>
-<li><p>a <strong>super target</strong> and edges from it to all the targetss.</p></li>
+<li><p>una <strong>super fuente</strong> y aristas desde ella a todas las fuentes,</p></li>
+<li><p>un <strong>super objetivo</strong> y aristas desde él a todos los objetivos.</p></li>
 </ul>
 </li>
 <li><p>Se garantiza que el flujo máximo a través del grafo es el valor devuelto por <a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> cuando es ejecutado con los mismos parámetros y se puede calcular:</p>
