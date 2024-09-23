@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-23 01:17+0000\n"
-"PO-Revision-Date: 2024-09-23 02:56+0000\n"
+"PO-Revision-Date: 2024-09-23 03:17+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -2650,8 +2650,8 @@ msgid ""
 msgstr ""
 "基于A*算法，双向搜索找到从起始顶点(``start_vid``)到结束顶点(``end_vid``)的最"
 "短路径。 它同时运行两项搜索：一项从 ``start_vid`` 向前搜索，一项从 "
-"``end_vid``向后搜索，当两者在中间相遇时停止。 该实现可以与有向图和无向图一起"
-"使用。"
+"``end_vid`` 向后搜索，当两者在中间相遇时停止。 "
+"该实现可以与有向图和无向图一起使用。"
 
 msgid ""
 "For large graphs where there is a path bewtween the starting vertex and "
@@ -3173,7 +3173,7 @@ msgid ""
 msgstr "在本节中，将通过示例展示构建和使用收缩图。"
 
 msgid "The :doc:`sampledata` for an undirected graph is used"
-msgstr "使用无向图的:doc:`sampledata`"
+msgstr "使用无向图的 :doc:`sampledata`"
 
 msgid "a dead end operation first followed by a linear operation."
 msgstr "首先是死端操作，然后是线性操作。"
@@ -3764,7 +3764,6 @@ msgstr ":math:`V = source \\cup target \\cup {start_{vid}} \\cup  {end_{vid}}`"
 msgid "the set of edges :math:`E`"
 msgstr "边集:math:`E`"
 
-#, fuzzy
 msgid ""
 ":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, cost_i) "
 "\\text{ when } cost >=0 \\} & \\quad \\text{if } reverse\\_cost = "
@@ -3774,13 +3773,13 @@ msgid ""
 "\\text{ when } reverse\\_cost_i>=0 \\} & \\quad \\text{if } reverse\\_cost "
 "\\neq \\varnothing \\\\ \\end{cases}`"
 msgstr ""
-":math:`E = \\begin{cases} \\text{ }  \\{(source_i, target_i, cost_i) "
-"\\text{ when } cost >=0 \\} & \\quad \\text{if } reverse\\_cost = "
-"\\varnothing \\\\ \\text{ }  \\text{ }  & \\quad \\text{ } \\\\ \\text{ }  "
-"\\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} &  \\quad "
-"\\text{ } \\\\ \\cup      \\{(target_i, source_i, reverse\\_cost_i) "
-"\\text{ when } reverse\\_cost_i>=0 \\} & \\quad \\text{if } reverse\\_cost "
-"\\neq \\varnothing \\\\ \\end{cases}`"
+":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, cost_i) \\text{ "
+"when } cost >=0 \\} & \\quad \\text{if } reverse\\_cost = \\varnothing \\\\ "
+"\\text{ } \\text{ }  & \\quad \\text{ } \\\\ \\text{ } \\{(source_i, "
+"target_i, cost_i) \\text{ when } cost >=0 \\} & \\quad \\text{ } \\\\ \\cup "
+"\\{(target_i, source_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i>=0 "
+"\\} & \\quad \\text{if } reverse\\_cost \\n"
+"eq \\varnothing \\\\ \\end{cases}`"
 
 msgid "Undirected graph"
 msgstr "无向图"
@@ -3792,7 +3791,6 @@ msgid ":math:`V = source \\cup target \\cup {start_v{vid}} \\cup  {end_{vid}}`"
 msgstr ""
 ":math:`V = source \\cup target \\cup {start_v{vid}} \\cup  {end_{vid}}`"
 
-#, fuzzy
 msgid ""
 ":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, cost_i) "
 "\\text{ when } cost >=0 \\}  & \\quad \\text{ } \\\\ \\cup \\{(target_i, "
@@ -3805,17 +3803,17 @@ msgid ""
 "target_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} & \\quad "
 "\\text{ if } reverse\\_cost \\neq \\varnothing \\\\ \\end{cases}`"
 msgstr ""
-":math:`E = \\begin{cases} \\text{ }  \\{(source_i, target_i, cost_i) "
-"\\text{ when } cost >=0 \\}  & \\quad \\text{ } \\\\ \\cup      "
-"\\{(target_i, source_i, cost_i) \\text{ when } cost >=0 \\}  & \\quad "
-"\\text{ if } reverse\\_cost = \\varnothing \\\\ \\text{ }  \\text{ }  & "
-"\\text{ } \\\\ \\text{ }  \\{(source_i, target_i, cost_i) \\text{ when } "
-"cost >=0 \\} & \\text{ } \\\\ \\cup  \\{(target_i, source_i, cost_i) "
-"\\text{ when } cost >=0 \\} & \\text{ } \\\\ \\cup  \\{(target_i, source_i, "
-"reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} & \\text{ } \\\\ "
-"\\cup  \\{(source_i, target_i, reverse\\_cost_i) \\text{ when } "
-"reverse\\_cost_i >=0)\\} & \\quad \\text{ if } reverse\\_cost \\neq "
-"\\varnothing \\\\ \\end{cases}`"
+":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, cost_i) \\text{ "
+"when } cost >=0 \\}  & \\quad \\text{ } \\\\ \\cup \\{(target_i, source_i, "
+"cost_i) \\text{ when } cost >=0 \\} & \\quad \\text{ if } reverse\\_cost = "
+"\\varnothing \\\\ \\text{ } \\text{ } & \\text{ } \\\\ \\text{ } \\{("
+"source_i, target_i, cost_i) \\text{ when } cost >=0 \\} & \\text{ } \\\\ "
+"\\cup \\{(target_i, source_i, cost_i) \\text{ when } cost >=0 \\} & \\text{ }"
+" \\\\ \\cup \\{(target_i, source_i, reverse\\_cost_i) \\text{ when } "
+"reverse\\_cost_i >=0)\\} & \\text{ } \\\\ \\cup \\{(source_i, target_i, "
+"reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} & \\quad \\text{ "
+"if } reverse\\_cost \\n"
+"eq \\varnothing \\\\ \\end{cases}`"
 
 msgid "The problem"
 msgstr "问题"
@@ -4049,9 +4047,8 @@ msgid ""
 "an undirected graph."
 msgstr ":doc:`pgr_cuthillMckeeOrdering` -返回无向图的反向 Cuthill-McKee 排序。"
 
-#, fuzzy
 msgid ":doc:`metrics-family`"
-msgstr ":doc:`prim-family`"
+msgstr ":doc:`metrics-family`"
 
 msgid ""
 ":doc:`pgr_betweennessCentrality` - Calculates relative betweenness "
@@ -4149,11 +4146,11 @@ msgstr "当最大流量为0时则没有流量并返回**EMPTY SET**。"
 
 #, fuzzy
 msgid "There is no flow when source has the same vaule as target."
-msgstr "当 **source**与 **target**相同时，就没有流量。"
+msgstr "当 source与 target相同时，就没有流量。"
 
 #, fuzzy
 msgid "Any duplicated values in source or target are ignored."
-msgstr "source(s)或target(s) 中的任何重复值都将被忽略。"
+msgstr "source或target 中的任何重复值都将被忽略。"
 
 msgid "Calculates the flow/residual capacity for each edge. In the output"
 msgstr "计算每条边的流量/剩余容量。 在输出中"
@@ -4579,13 +4576,10 @@ msgstr ""
 msgid "Official functions changes"
 msgstr "官方功能变更"
 
-#, fuzzy
 msgid ""
 "`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standarize "
 "spanning tree functions output"
 msgstr ""
-"`#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__标准化输出"
-"pgr_aStar"
 
 msgid "Functions:"
 msgstr "新函数:"
@@ -4626,16 +4620,14 @@ msgstr ""
 "`#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__标准化输出"
 "pgr_aStar."
 
-#, fuzzy
 msgid "``pgr_lineGraph``"
-msgstr "pgr_lineGraph"
+msgstr "``pgr_lineGraph``"
 
 msgid "Promoted to **proposed** signature."
 msgstr "晋升为 **拟议** 签名。"
 
-#, fuzzy
 msgid "Works for directed and undirected graphs."
-msgstr "适用于**有向**和**无向**图。"
+msgstr "适用于有向和无向图。"
 
 msgid "Code enhancement"
 msgstr "代码改进"
@@ -4689,9 +4681,8 @@ msgstr "树或森林中所有边的总权重最小化。"
 msgid "Kruskal's running time: :math:`O(E * log E)`"
 msgstr "克鲁斯卡尔的运行时间： :math:`O(E * log E)`"
 
-#, fuzzy
 msgid "Metrics - Family of functions"
-msgstr "Prim - 函数族"
+msgstr ""
 
 msgid "Migration guide"
 msgstr "迁移指南"
@@ -4878,13 +4869,12 @@ msgstr "如果需要，过滤掉添加的列，例如："
 msgid "Migration of ``pgr_drivingdistance``"
 msgstr "迁移``pgr_drivingdistance``"
 
-#, fuzzy
 msgid ""
 "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :"
 "doc:`pgr_drivingDistance` result columns are being standardized."
 msgstr ""
-"从 `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__开始， :doc:"
-"`pgr_drivingDistance`结果列正在标准化。"
+"从 `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__开始， "
+":doc:`pgr_drivingDistance` 结果列正在标准化。"
 
 msgid "from"
 msgstr "从"
@@ -4958,18 +4948,14 @@ msgid ""
 "Migration of ``pgr_kruskalDD`` / ``pgr_kruskalBFS`` / ``pgr_kruskalDFS``"
 msgstr ""
 
-#, fuzzy
 msgid ""
 "Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__ :"
 "doc:`pgr_kruskalDD`, :doc:`pgr_kruskalBFS` and :doc:`pgr_kruskalDFS` result "
 "columns are being standardized."
 msgstr ""
-"从 `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__开始， :doc:"
-"`pgr_drivingDistance`结果列正在标准化。"
 
-#, fuzzy
 msgid "|result-bfs|"
-msgstr "|result-spantree|"
+msgstr "|result-bfs|"
 
 msgid "Single vertex"
 msgstr "单顶点"
@@ -4977,17 +4963,15 @@ msgstr "单顶点"
 msgid "Multiple vertices"
 msgstr "多个顶点"
 
-#, fuzzy
 msgid "Output columns were |result-bfs|"
-msgstr "输出列是 |ksp-result|"
+msgstr ""
 
 #, fuzzy
 msgid "Single vertex and Multiple vertices"
 msgstr "多个顶点"
 
-#, fuzzy
 msgid "Do not have ``pred`` result column."
-msgstr "没有``depth``结果列。"
+msgstr ""
 
 #, fuzzy
 msgid "Be aware of the existence of `pred` result columns."
@@ -11350,7 +11334,7 @@ msgid ""
 msgstr "本节的示例基于 :doc:`sampledata` 网络。"
 
 msgid "For **directed** graphs with ``cost`` and ``reverse_cost`` columns"
-msgstr "对于带有 ``cost``和``reverse_cost``列的**有向**图"
+msgstr "对于带有 ``cost`` 和 ``reverse_cost`` 列的 **有向** 图"
 
 msgid "Directed graph with cost and reverse cost columns"
 msgstr "带成本列和反向成本列的有向图"
@@ -11424,7 +11408,7 @@ msgid "16) Using `Combinations`_ to get the solution of examples 9 to 11"
 msgstr "16) 使用 `组合`_ 来获取示例9到11的解决方案"
 
 msgid "For **directed** graphs only with ``cost`` column"
-msgstr "仅适用于**有向**图，且仅包含``cost``列"
+msgstr "仅适用于 **有向** 图，且仅包含 ``cost`` 列"
 
 msgid "Directed graph only with cost column"
 msgstr "仅有成本列的有向图"
@@ -19593,7 +19577,7 @@ msgid "Undirected, with cost and reverse cost"
 msgstr "带有cost和 reverse cost的无向图"
 
 msgid "Directed graph with ``cost``"
-msgstr "有``cost``的有向图"
+msgstr "有 ``cost`` 的有向图"
 
 msgid "Directed, with cost"
 msgstr "有向，有成本"
