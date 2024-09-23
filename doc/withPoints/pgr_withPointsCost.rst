@@ -14,7 +14,7 @@
 ===============================================================================
 
 ``pgr_withPointsCost`` - Calculates the shortest path and returns only the
-aggregate cost of the shortest path(s) found, for the combination of points
+aggregate cost of the shortest path found, for the combination of points
 given.
 
 .. include:: proposed.rst
@@ -43,7 +43,7 @@ Description
 -------------------------------------------------------------------------------
 
 Modify the graph to include points defined by points_sql.
-Using Dijkstra algorithm, return only the aggregate cost of the shortest path(s)
+Using Dijkstra algorithm, return only the aggregate cost of the shortest path
 found.
 
 The main characteristics are:
