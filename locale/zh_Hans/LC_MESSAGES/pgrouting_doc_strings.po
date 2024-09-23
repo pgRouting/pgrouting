@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-23 01:17+0000\n"
-"PO-Revision-Date: 2024-09-23 03:29+0000\n"
+"PO-Revision-Date: 2024-09-23 14:18+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -220,7 +220,7 @@ msgid "Depth of the ``node``."
 msgstr "``node`` 的深度。"
 
 msgid ":math:`0` when ``node`` = ``start_vid``."
-msgstr ":math:`0` 当``node`` = ``start_vid``。"
+msgstr ":math:`0` 当 ``node`` = ``start_vid``。"
 
 msgid "``start_vid``"
 msgstr "``start_vid``"
@@ -241,7 +241,7 @@ msgid "Identifier of the ``edge`` used to arrive to ``node``."
 msgstr "用于到达``node``的``edge``的标识符。"
 
 msgid ":math:`-1` when ``node`` = ``start_vid``."
-msgstr ":math:`-1` 当``node`` = ``start_vid``。"
+msgstr ":math:`-1` 当 ``node`` = ``start_vid``。"
 
 msgid "``FLOAT``"
 msgstr "``FLOAT``"
@@ -593,13 +593,13 @@ msgstr ""
 "ps>`__"
 
 msgid "To calculate the number of different tours through :math:`n` cities:"
-msgstr "计算经过:math:`n` 城市的不同旅行次数："
+msgstr "计算经过 : math:`n` 城市的不同旅行次数："
 
 msgid "Given a starting city,"
 msgstr "给定一个起始城市，"
 
 msgid "There are :math:`n-1` choices for the second city,"
-msgstr "第二个城市还有:math:`n-1`个选择，"
+msgstr "第二个城市还有 :math:`n-1` 个选择，"
 
 msgid "And :math:`n-2` choices for the third city, etc."
 msgstr "第三个城市的 :math:`n-2` 选项等。"
@@ -819,7 +819,7 @@ msgid "Time based calculations:"
 msgstr "基于时间的计算："
 
 msgid "Travel time between customers is :math:`distance / speed`"
-msgstr "客户之间的旅行时间为:math:`distance / speed`"
+msgstr "客户之间的旅行时间为 :math:`distance / speed`"
 
 msgid "Pickup and delivery order pair is done by the same vehicle."
 msgstr "取货和送货订单对由同一辆车完成。"
@@ -994,31 +994,31 @@ msgstr "送货的节点标识符必须与 `Matrix SQL`_中的顶点标识符匹�
 msgid ""
 "For :doc:`pgr_pickDeliverEuclidean` the :math:`(x, y)` values of the "
 "locations are needed:"
-msgstr "对于 :doc:`pgr_pickDeliverEuclidean`，这需要位置的:math:`(x, y)`值："
+msgstr "对于 :doc:`pgr_pickDeliverEuclidean`，这需要位置的 :math:`(x, y)` 值："
 
 msgid "``p_x``"
 msgstr "``p_x``"
 
 msgid ":math:`x` value of the pick up location"
-msgstr "取货地点的:math:`x`值"
+msgstr "取货地点的 :math:`x` 值"
 
 msgid "``p_y``"
 msgstr "``p_y``"
 
 msgid ":math:`y` value of the pick up location"
-msgstr "取货地点的:math:`y`值"
+msgstr "取货地点的 :math:`y` 值"
 
 msgid "``d_x``"
 msgstr "``d_x``"
 
 msgid ":math:`x` value of the delivery location"
-msgstr "送货地点的:math:`x`值"
+msgstr "送货地点的 :math:`x` 值"
 
 msgid "``d_y``"
 msgstr "``d_y``"
 
 msgid ":math:`y` value of the delivery location"
-msgstr "送货地点的:math:`y` 值"
+msgstr "送货地点的 :math:`y` 值"
 
 msgid "Vehicles SQL"
 msgstr "车辆 SQL"
@@ -1111,19 +1111,19 @@ msgid "``start_x``"
 msgstr "``start_x``"
 
 msgid ":math:`x` value of the starting location"
-msgstr "起始位置的:math:`x`值"
+msgstr "起始位置的 :math:`x` 值"
 
 msgid "``start_y``"
 msgstr "``start_y``"
 
 msgid ":math:`y` value of the starting location"
-msgstr "起始位置的:math:`y`值"
+msgstr "起始位置的 :math:`y` 值"
 
 msgid "[``end_x``]"
 msgstr "[``end_x``]"
 
 msgid ":math:`x` value of the ending location"
-msgstr "结束位置的:math:`x`值"
+msgstr "结束位置的 :math:`x` 值"
 
 msgid "When missing: ``start_x`` is used."
 msgstr "缺失时：使用``start_x``值。"
@@ -1132,7 +1132,7 @@ msgid "[``end_y``]"
 msgstr "[``end_y``]"
 
 msgid ":math:`y` value of the ending location"
-msgstr "结束位置的:math:`y`值"
+msgstr "结束位置的 :math:`y` 值"
 
 msgid "When missing: ``start_y`` is used."
 msgstr "缺失时：使用``start_y``值。"
@@ -1194,7 +1194,7 @@ msgstr "INTEGER"
 msgid ""
 "Sequential value starting from **1** for the stops made by the current "
 "vehicle. The :math:`m_{th}` stop of the current vehicle."
-msgstr "当前车辆停止的顺序值，从 **1** 开始。 当前第:math:`m_{th}`车辆的停止。"
+msgstr "当前车辆停止的顺序值，从 **1** 开始。 当前第 :math:`m_{th}` 车辆的停止。"
 
 msgid "Sumary row has the **total time windows violations**."
 msgstr "摘要行包含**总时间窗口违规情况**。"
@@ -1232,7 +1232,7 @@ msgstr "取货-送货订单对标识符。"
 
 msgid ""
 "Value :math:`-1`: When no order is involved on the current stop location."
-msgstr "值:math:`-1`: 当前停留位置没有订单参与。"
+msgstr "值 :math:`-1`: 当前停留位置没有订单参与。"
 
 msgid "``cargo``"
 msgstr "``cargo``"
@@ -1241,7 +1241,7 @@ msgid "Cargo units of the vehicle when leaving the stop."
 msgstr "车辆离开停车点时的货物单位。"
 
 msgid "Value :math:`-1` on solution summary row."
-msgstr "值:math:`-1`在解决方案摘要行。"
+msgstr "值 :math:`-1` 在解决方案摘要行。"
 
 msgid "``travel_time``"
 msgstr "``travel_time``"
@@ -1363,13 +1363,13 @@ msgid "The `capacity` of a vehicle, can be measured in:"
 msgstr "车辆的`容量`可以通过以下方式测量："
 
 msgid "Volume units like :math:`m^3`."
-msgstr "体积单位如:math:`m^3`。"
+msgstr "体积单位如 :math:`m^3`。"
 
 msgid "Area units like :math:`m^2` (when no stacking is allowed)."
-msgstr "面积单位如:math:`m^2`（不允许堆叠时）。"
+msgstr "面积单位如 : math:`m^2` （不允许堆叠时）。"
 
 msgid "Weight units like :math:`kg`."
-msgstr "重量单位如:math:`kg`。"
+msgstr "重量单位如 :math:`kg`。"
 
 msgid "Number of boxes that fit in the vehicle."
 msgstr "车辆内可容纳的箱子数量。"
@@ -1439,10 +1439,10 @@ msgid "When using :doc:`pgr_pickDeliverEuclidean`:"
 msgstr "当使用 :doc:`pgr_pickDeliverEuclidean`："
 
 msgid "The vehicles have :math:`(x, y)` pairs for start and ending locations."
-msgstr "车辆有起点和终点:math:`(x, y)`对。"
+msgstr "车辆有起点和终点 :math:`(x, y)` 对。"
 
 msgid "The orders Have :math:`(x, y)` pairs for pickup and delivery locations."
-msgstr "订单有取货和送货地点:math:`(x, y)`对。"
+msgstr "订单有取货和送货地点 :math:`(x, y)` 对。"
 
 msgid "When using :doc:`pgr_pickDeliver`:"
 msgstr "当使用:doc:`pgr_pickDeliver`:"
@@ -1584,8 +1584,7 @@ msgstr "用于:doc:`pgr_pickDeliver`:"
 msgid ""
 "Given :math:`v = d / t` therefore :math:`t = d / v` And the ``factor`` "
 "becomes :math:`1 / v`"
-msgstr ""
-"给定 :math:`v = d / t` 因此:math:`t = d / v` 并且``因子``变为:math:`1 / v`"
+msgstr "给定 :math:`v = d / t` 因此 :math:`t = d / v` 并且 ``因子`` 变为:math:`1 / v`"
 
 msgid "v"
 msgstr "v"
@@ -1703,10 +1702,10 @@ msgid "Ordering is:"
 msgstr "顺序是："
 
 msgid "first by ``start_vid`` (if exists)"
-msgstr "首先按``start_vid``（如果存在）"
+msgstr "首先按 ``start_vid`` （如果存在）"
 
 msgid "then by ``end_vid``"
-msgstr "然后按``end_vid``"
+msgstr "然后按 ``end_vid``"
 
 msgid "Values are returned when there is a path."
 msgstr "当存在路径时返回值。"
@@ -1715,28 +1714,28 @@ msgid "Let :math:`v` and :math:`u` be nodes on the graph:"
 msgstr "设 :math:`v` 和 :math:`u` 为图上的节点："
 
 msgid "If there is no path from :math:`v` to :math:`u`:"
-msgstr "如果没有从:math:`v` 到 :math:`u`的路径："
+msgstr "如果没有从 :math:`v` 到 :math:`u` 的路径："
 
 msgid "no corresponding row is returned"
 msgstr "没有返回对应的行"
 
 msgid "``agg_cost`` from :math:`v` to :math:`u` is :math:`\\infty`"
-msgstr "从:math:`v`到:math:`u`的``agg_cost`` 是 :math:`\\infty`"
+msgstr "从 :math:`v` 到 :math:`u` 的 ``agg_cost`` 是 :math:`\\infty`"
 
 msgid "There is no path when :math:`v = u` therefore"
-msgstr "当:math:`v = u`没有路径，因此"
+msgstr "当 :math:`v = u` 没有路径，因此"
 
 msgid "``agg_cost`` from `v` to `u` is :math:`0`"
-msgstr "从`v`到`u`的``agg_cost``是:math:`0`"
+msgstr "从 `v` 到 `u` 的 ``agg_cost`` 是 :math:`0`"
 
 msgid "When :math:`(x,y)` coordinates for the same vertex identifier differ:"
-msgstr "当同一顶点标识符的:math:`(x,y)` 坐标不同时："
+msgstr "当同一顶点标识符的 :math:`(x,y)` 坐标不同时："
 
 msgid "A random selection of the vertex's :math:`(x,y)` coordinates is used."
-msgstr "使用随机选择的顶点的:math:`(x,y)`坐标。"
+msgstr "使用随机选择的顶点的 :math:`(x,y)` 坐标。"
 
 msgid "Running time: :math:`O((E + V) * \\log V)`"
-msgstr "运行时间：:math:`O((E + V) * \\log V)`"
+msgstr "运行时间： :math:`O((E + V) * \\log V)`"
 
 msgid "aStar optional parameters"
 msgstr "aStar 可选参数"
@@ -1769,20 +1768,20 @@ msgid "``1``"
 msgstr "``1``"
 
 msgid "For units manipulation. :math:`factor > 0`."
-msgstr "对于单位操作。:math:`factor > 0`。"
+msgstr "对于单位操作。 :math:`factor > 0`。"
 
 msgid "``epsilon``"
 msgstr "``epsilon``"
 
 msgid "For less restricted results. :math:`epsilon >= 1`."
-msgstr "对于限制较少的结果。:math:`epsilon >= 1`。"
+msgstr "对于限制较少的结果。 :math:`epsilon >= 1`。"
 
 msgid ""
 "See :ref:`heuristics <astar_heuristics>` available and :ref:`factor "
 "<astar_factor>` handling."
 msgstr ""
-"查看可用的:ref:`heuristics <astar_heuristics>`和:ref:`factor <astar_factor>`"
-"处理。"
+"查看可用的 :ref:`heuristics <astar_heuristics>` 和 :ref:`factor "
+"<astar_factor>` 处理。"
 
 msgid "Advanced documentation"
 msgstr "高级文档"
@@ -1794,7 +1793,7 @@ msgid "Currently the heuristic functions available are:"
 msgstr "目前可用的heuristic函数有："
 
 msgid "where :math:`\\Delta x = x_1 - x_0` and :math:`\\Delta y = y_1 - y_0`"
-msgstr "其中 :math:`\\Delta x = x_1 - x_0`和:math:`\\Delta y = y_1 - y_0`"
+msgstr "其中 :math:`\\Delta x = x_1 - x_0` 和 :math:`\\Delta y = y_1 - y_0`"
 
 msgid "Analysis 1"
 msgstr "分析1"
@@ -1874,9 +1873,8 @@ msgstr "返回图中每对节点的最短路径成本之和。"
 msgid ""
 "Boost returns a :math:`V \\times V` matrix, where the infinity values. "
 "Represent the distance between vertices for which there is no path."
-msgstr ""
-"Boost 返回一个:math:`V \\times V`矩阵，其中无穷大值。 表示没有路径的顶点之间"
-"的距离。"
+msgstr "Boost 返回一个 :math:`V \\times V` 矩阵，其中无穷大值。 "
+"表示没有路径的顶点之间的距离。"
 
 msgid ""
 "We return only the non infinity values in form of a set of `(start_vid, "
@@ -1984,7 +1982,7 @@ msgid "DENSITY"
 msgstr "DENSITY"
 
 msgid "is the density of the data :math:`\\dfrac{E}{V \\times (V-1)}`."
-msgstr "是数据:math:`\\dfrac{E}{V \\times (V-1)}`的密度。"
+msgstr "是数据 :math:`\\dfrac{E}{V \\times (V-1)}` 的密度。"
 
 msgid "OUT ROWS"
 msgstr "OUT ROWS"
@@ -2718,7 +2716,7 @@ msgstr "当起始顶点和结束顶点相同时。"
 
 msgid ""
 "The **aggregate cost** of the non included values :math:`(v, v)` is :math:`0`"
-msgstr "未包含值:math:`(v, v)`的**aggregate cost**为:math:`0`"
+msgstr "未包含值 :math:`(v, v)` 的 **aggregate cost** 为 :math:`0`"
 
 msgid ""
 "When the starting vertex and ending vertex are the different and there is no "
@@ -2728,7 +2726,7 @@ msgstr "当起始顶点和结束顶点不同且不存在路径时："
 msgid ""
 "The **aggregate cost** the non included values :math:`(u, v)` is :math:"
 "`\\infty`"
-msgstr "未包含值:math:`(u, v)`的**aggregate cost**是:math:`\\infty`"
+msgstr "未包含值 :math:`(u, v)` 的 **aggregate cost** 是 :math:`\\infty`"
 
 msgid ""
 "For optimization purposes, any duplicated value in the starting vertices or "
@@ -2736,7 +2734,7 @@ msgid ""
 msgstr "出于优化目的，起始顶点或结束顶点中的任何重复值都将被忽略。"
 
 msgid "Running time (worse case scenario): :math:`O((V \\log V + E))`"
-msgstr "运行时间（最坏情况）：:math:`O((V \\log V + E))`"
+msgstr "运行时间（最坏情况）： :math:`O((V \\log V + E))`"
 
 msgid "It is expected to terminate faster than pgr_dijkstra"
 msgstr "预计终止速度比 pgr_dijkstra 更快"
@@ -2757,7 +2755,7 @@ msgid "Process is done only on edges with **positive** costs."
 msgstr "仅在具有**正**成本的边缘进行处理。"
 
 msgid "Running time: :math:`O(E * (E + V * logV))`"
-msgstr "运行时间：:math:`O(E * (E + V * logV))`"
+msgstr "运行时间： :math:`O(E * (E + V * logV))`"
 
 msgid "Graph must be connected."
 msgstr "图必须是连通的。"
@@ -3002,14 +3000,13 @@ msgstr ":math:`\\{x, y\\}`"
 msgid ""
 "From above, nodes :math:`\\{a, b, d\\}` are dead ends because the number of "
 "adjacent vertices is 1. No further checks are needed for those nodes."
-msgstr ""
-"从上面来看，节点:math:`\\{a, b, d\\}`是死端，因为相邻顶点的数量为 1。不需要对"
-"这些节点进行进一步检查。"
+msgstr "从上面来看，节点 :math:`\\{a, b, d\\}` 是死端，因为相邻顶点的数量为 "
+"1。不需要对这些节点进行进一步检查。"
 
 msgid ""
 "On the following table, nodes :math:`\\{c, e\\}` because the even that the "
 "number of adjacent vertices is not 1 for"
-msgstr "下表中，节点 :math:`\\{c, e\\}`因为相邻顶点数不为1的偶数为"
+msgstr "下表中，节点 :math:`\\{c, e\\}` 因为相邻顶点数不为1的偶数为"
 
 msgid "Operation: Dead End Contraction"
 msgstr "操作：死端收缩"
@@ -3017,19 +3014,18 @@ msgstr "操作：死端收缩"
 msgid ""
 "The dead end contraction will stop until there are no more dead end nodes. "
 "For example from the following graph where :math:`w` is the `dead end`_ node:"
-msgstr ""
-"死端收缩将停止，直到不再有死端节点。 例如，从下图中，其中:math:`w`是`死端`_节"
-"点："
+msgstr "死端收缩将停止，直到不再有死端节点。 例如，从下图中，其中 :math:`w` "
+"是`死端`_节点："
 
 msgid ""
 "After contracting :math:`w`, node :math:`v` is now a `dead end`_ node and is "
 "contracted:"
-msgstr "收缩 :math:`w`后，节点:math:`v`现在是一个`死端`_ 节点并且已收缩："
+msgstr "收缩 :math:`w` 后，节点 :math:`v` 现在是一个`死端`_ 节点并且已收缩："
 
 msgid ""
 "After contracting :math:`v`, stop. Node :math:`u` has the information of "
 "nodes that were contrcted."
-msgstr "在收缩:math:`v`之后，停止。节点:math:`u`有已收缩节点的信息。"
+msgstr "在收缩 :math:`v` 之后，停止。节点 :math:`u` 有已收缩节点的信息。"
 
 msgid "Node :math:`u` has the information of nodes that were contracted."
 msgstr "节点:math:`u`有已收缩节点的信息。"
@@ -3756,13 +3752,13 @@ msgid "The weighted directed graph, :math:`G_d(V,E)`, is definied by:"
 msgstr "加权有向图， :math:`G_d(V,E)`的定义如下："
 
 msgid "the set of vertices :math:`V`"
-msgstr "顶点集:math:`V`"
+msgstr "顶点集 :math:`V`"
 
 msgid ":math:`V = source \\cup target \\cup {start_{vid}} \\cup  {end_{vid}}`"
 msgstr ":math:`V = source \\cup target \\cup {start_{vid}} \\cup  {end_{vid}}`"
 
 msgid "the set of edges :math:`E`"
-msgstr "边集:math:`E`"
+msgstr "边集 :math:`E`"
 
 msgid ""
 ":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, cost_i) "
@@ -3785,7 +3781,7 @@ msgid "Undirected graph"
 msgstr "无向图"
 
 msgid "The weighted undirected graph, :math:`G_u(V,E)`, is definied by:"
-msgstr "加权无向图，:math:`G_u(V,E)`的定义如下："
+msgstr "加权无向图， :math:`G_u(V,E)` 的定义如下："
 
 msgid ":math:`V = source \\cup target \\cup {start_v{vid}} \\cup  {end_{vid}}`"
 msgstr ""
@@ -3893,8 +3889,8 @@ msgid ""
 "`start_{vid}` and :math:`end_{vid}`, if it exists, in terms of a sequence of "
 "nodes and of edges,"
 msgstr ""
-"换句话说：如果:math:`start_{vid}`和:math:`end_{vid}`之间存在最短路径，算法会"
-"根据节点和边的序列返回该路径、"
+"换句话说：如果 :math:`start_{vid}` 和 :math:`end_{vid}` "
+"之间存在最短路径，算法会根据节点和边的序列返回该路径、"
 
 msgid ""
 ":math:`path\\_seq` indicates the relative position in the path of the :math:"
@@ -3906,7 +3902,7 @@ msgstr ":math:`cost`是用于转到下一个节点的边的成本。"
 
 msgid ""
 ":math:`agg\\_cost` is the cost from the :math:`start_{vid}` up to the node."
-msgstr ":math:`agg\\_cost`是从 :math:`start_{vid}`到节点的成本。"
+msgstr ":math:`agg\\_cost` 是从 :math:`start_{vid}` 到节点的成本。"
 
 msgid "If there is no path, the resulting set is empty."
 msgstr "如果没有路径，则结果集为空。"
@@ -3948,7 +3944,7 @@ msgid "Edge :math:`(u, v)` will not be included when:"
 msgstr "在以下情况下，边:math:`(u, v)`将不包括在内："
 
 msgid "The distance from the **root** to :math:`u` > limit distance."
-msgstr "从 **root**到 :math:`u`的距离>限制距离。"
+msgstr "从 **root** 到 :math:`u` 的距离>限制距离。"
 
 msgid "The distance from the **root** to :math:`v` > limit distance."
 msgstr "从 **root**到 :math:`v`的距离>限制距离。"
@@ -4428,10 +4424,11 @@ msgid ""
 "https://pgrouting.org. For other licenses used in pgRouting see the :ref:"
 "`license` page."
 msgstr ""
-"pgRouting 手册根据`知识共享署名-相同方式共享3.0许可证 <https://"
-"creativecommons.org/licenses/by-sa/3.0/>`_。 您可以随意使用本材料，但我们要求"
-"您将功劳归功于 pgRouting 项目，并尽可能提供返回 https://pgrouting.org 的链"
-"接。 有关 pgRouting 中使用的其他许可证，请参阅:ref:`license` page.。"
+"pgRouting 手册根据 `知识共享署名-相同方式共享3.0许可证 "
+"<https://creativecommons.org/licenses/by-sa/3.0/>`_。 您可以随意使用本材料，"
+"但我们要求您将功劳归功于 pgRouting 项目，并尽可能提供返回 https://"
+"pgrouting.org 的链接。 有关 pgRouting 中使用的其他许可证，请参阅 "
+":ref:`license` page.。"
 
 msgid "General"
 msgstr "常规"
@@ -7347,8 +7344,7 @@ msgstr "要下载此版本："
 msgid ""
 "Go to :ref:`install-short` for more instructions on extracting tar ball and "
 "compiling pgRouting."
-msgstr ""
-"转到:ref:`install-short`以获取有关提取 tar 包和编译 pgRouting 的更多说明。"
+msgstr "转到 :ref:`install-short`以获取有关提取 tar 包和编译 pgRouting 的更多说明。"
 
 msgid "git"
 msgstr "git"
@@ -8034,7 +8030,7 @@ msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``"
 msgstr "从``start_vid`` 到 ``end_vid``路径中节点的标识符"
 
 msgid ":math:`0` for the last ``node`` of the path."
-msgstr ":math:`0`为路径的最后一个``node``。"
+msgstr ":math:`0` 为路径的最后一个 ``node``。"
 
 msgid "Aggregate cost from **start vid** to ``node``."
 msgstr "从 **start vid**到``node``的总成本。"
@@ -8611,16 +8607,16 @@ msgid "let `v` and `u` are nodes on the graph:"
 msgstr "设`v`和 `u` 是图上的节点："
 
 msgid "when there is no path from `v` to `u`:"
-msgstr "当没有从`v`到 `u` 的路径时："
+msgstr "当没有从 `v` 到 `u` 的路径时："
 
 msgid "cost from `v` to `u` is :math:`\\inf`"
-msgstr "从`v`到 `u`的成本是 :math:`\\inf`"
+msgstr "从 `v` 到 `u` 的成本是 :math:`\\inf`"
 
 msgid "when :math:`v = u` then"
 msgstr "当 :math:`v = u`时"
 
 msgid "cost from `v` to `u` is :math:`0`"
-msgstr "从`v`到`u`的成本是:math:`0`"
+msgstr "从 `v` 到 `u` 的成本是 :math:`0`"
 
 msgid "When the graph is **undirected** the cost matrix is symmetric"
 msgstr "当图 **无向** 时，成本矩阵是对称的"
@@ -9749,7 +9745,7 @@ msgstr ""
 "hawick_circuits.html>`__"
 
 msgid "Queries use the :doc:`sampledata` network."
-msgstr "查询使用 :doc:sampledata` 网络。"
+msgstr "查询使用 :doc:`sampledata` 网络。"
 
 msgid "``pgr_biconnectedComponents``"
 msgstr "``pgr_biconnectedComponents``"
@@ -11797,7 +11793,7 @@ msgid "Near optional parameters"
 msgstr "接近可选参数"
 
 msgid "``cap``"
-msgstr "`cap``"
+msgstr "``cap``"
 
 msgid "Find at most ``cap`` number of nearest shortest paths"
 msgstr "查找最多 ``cap`` 条最近的最短路径"
@@ -11806,10 +11802,10 @@ msgid "``global``"
 msgstr "``global``"
 
 msgid "When ``true``: only ``cap`` limit results will be returned"
-msgstr "``true``时：仅返回``cap``结果"
+msgstr "``true`` 时：仅返回 ``cap`` 结果"
 
 msgid "When ``false``: ``cap`` limit per ``Start vid`` will be returned"
-msgstr "当 ``false` 时：将返回每个 ``Start vid` 的 ``cap` 限值"
+msgstr "当 ``false`` 时：将返回每个 ``Start vid`` 的 ``cap`` 限值"
 
 msgid "boost: https://www.boost.org/libs/graph/doc/table_of_contents.html"
 msgstr "boost: https://www.boost.org/libs/graph/doc/table_of_contents.html"
@@ -12151,7 +12147,7 @@ msgid "Returns set of |result-edge-color|"
 msgstr "Returns set of |result-edge-color|"
 
 msgid "Graph coloring of pgRouting :doc:`sampledata`"
-msgstr "pgRouting :doc:`sampledata` 的图着色"
+msgstr ""
 
 msgid "``pgr_edgeDisjointPaths``"
 msgstr "``pgr_edgeDisjointPaths``"
@@ -12860,7 +12856,7 @@ msgid ""
 msgstr "生成一个包含用于计算所有列的代码的 PostgreSQL ``NOTICE``"
 
 msgid "``cap`` and **original point** are used in the code"
-msgstr "代码中使用了``cap``和 **原始点**"
+msgstr "代码中使用了 ``cap`` 和 **原始点**"
 
 msgid "Many points examples"
 msgstr "多点示例"
@@ -15536,7 +15532,7 @@ msgstr ""
 
 msgid ""
 "Executes the :ref:`TRSP-family:TRSP algorithm` for the conflicting paths."
-msgstr "对冲突路径执行 :ref:`TRSP-family:TRSP 算法`。"
+msgstr "对冲突路径执行 :ref:`TRSP-family:TRSP algorithm`。"
 
 msgid ""
 "From the :doc:`pgr_withPointsVia` result it removes the conflicting paths "
@@ -19607,9 +19603,9 @@ msgid ""
 "companies providing pgRouting development and consulting services."
 msgstr ""
 "pgRouting 社区支持可通过 `pgRouting 网站 <https://pgrouting.org/support."
-"html>`_、`文档<https://docs.pgrouting.org>`_、教程、邮件列表等获得。 如果您正"
-"在寻求:ref:`商业支持<support_commercial>`，请在下面找到提供 pgRouting 开发和"
-"咨询服务的公司列表。"
+"html>`_、`文档 <https://docs.pgrouting.org>`_、教程、邮件列表等获得。 "
+"如果您正在寻求 :ref:`商业支持 <support_commercial>`，请在下面找到提供 "
+"pgRouting 开发和咨询服务的公司列表。"
 
 msgid "Reporting Problems"
 msgstr "报告问题"
@@ -19962,10 +19958,10 @@ msgid ""
 msgstr "每个点位置显示它与边 ``(source, target)``的关系"
 
 msgid "On the right for points **2** and **4**."
-msgstr "在右侧为第** 2 **点和第** 4** 点。"
+msgstr "在右侧为第 **2** 点和第 **4** 点。"
 
 msgid "On the left for points **1**, **3** and **5**."
-msgstr "左侧为第 **1**、**3** 和** 5 **点。"
+msgstr "左侧为第 **1**、 **3** 和 **5** 点。"
 
 msgid "On both sides for point **6**."
 msgstr "在两侧为第**6**点。"
@@ -19993,10 +19989,10 @@ msgid ""
 msgstr "直观地显示不同驾驶侧数据解释方式的差异。"
 
 msgid "Point **1** located on edge ``(6, 5)``"
-msgstr "点** 1 **位于边``(6, 5)``"
+msgstr "点 **1** 位于边 ``(6, 5)``"
 
 msgid "Point **2** located on edge ``(16, 17)``"
-msgstr "点** 2 **位于边缘 ``(16, 17)``"
+msgstr "点 **2** 位于边缘 ``(16, 17)``"
 
 msgid "Point **3** located on edge ``(8, 12)``"
 msgstr "点 **3** 位于边缘``(8, 12)``"
@@ -20011,10 +20007,10 @@ msgid "Point **6** located on edges ``(6, 7)`` and ``(7, 6)``"
 msgstr "点** 6** 位于边``(6, 7)``和``(7, 6)``"
 
 msgid "Point **1** located on edge ``(5, 6)``"
-msgstr "点 **1 **位于边 ``(5, 6)``"
+msgstr "点 **1 ** 位于边 ``(5, 6)``"
 
 msgid "Point **2** located on edge ``(17, 16)``"
-msgstr "点** 2** 位于边 ``(17, 16)``"
+msgstr "点 **2** 位于边 ``(17, 16)``"
 
 msgid "Point **4** located on edge ``(3, 1)``"
 msgstr "点 4 位于边``(3, 1)``"
@@ -20029,10 +20025,10 @@ msgid "On the :doc:`TRSP-family` this option is not valid"
 msgstr "在 :doc:`TRSP-family` 上，此选项无效"
 
 msgid "Point **1** located on edge ``(5, 6)`` and ``(6, 5)``"
-msgstr "点**1**位于边``(5, 6)``和 ``(6, 5)``"
+msgstr "点 **1** 位于边 ``(5, 6)`` 和 ``(6, 5)``"
 
 msgid "Point **2** located on edge ``(17, 16)``and ``16, 17``"
-msgstr "点**2**位于边``(17, 16)``和 ``16, 17``"
+msgstr "点 **2** 位于边 ``(17, 16)`` 和 ``16, 17``"
 
 msgid "Point **4** located on edge ``(3, 1)`` and ``(1, 3)``"
 msgstr "点 **4**位于边``(3, 1)``和``(1, 3)``"
