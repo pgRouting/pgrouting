@@ -65,7 +65,7 @@ jobs:
           # allways processing english, no matter what the change was
           if [[ "${{ matrix.language }}" == "en" ]]; then echo "PROCESS=true" >> $GITHUB_ENV; exit 0; fi
 
-          if [[ "${{ matrix.language }}" == "zh_Hans" && "${{ github.repository_owner }}" != "pgRouting" ]]; then echo "PROCESS=false" >> $GITHUB_ENV; exit 0; fi
+          # if [[ "${{ matrix.language }}" == "zh_Hans" && "${{ github.repository_owner }}" != "pgRouting" ]]; then echo "PROCESS=false" >> $GITHUB_ENV; exit 0; fi
 
           # when this file changes  all languages are tested
           if git diff --name-only HEAD^ HEAD | grep -q '.github/workflows/doc-check.yml' ; then  echo "PROCESS=true" >> $GITHUB_ENV; exit 0; fi
