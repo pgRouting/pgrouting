@@ -13,7 +13,7 @@
 ``pgr_binaryBreadthFirstSearch`` - Experimental
 ===============================================================================
 
-``pgr_binaryBreadthFirstSearch`` — Returns the shortest path(s) in a binary
+``pgr_binaryBreadthFirstSearch`` — Returns the shortest path in a binary
 graph.
 
 Any graph whose edge-weights belongs to the set {0,X}, where 'X' is any

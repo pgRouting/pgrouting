@@ -13,7 +13,7 @@
 pgr_bdAstarCost
 ===============================================================================
 
-``pgr_bdAstarCost`` - Total cost of the shortest path(s) using the bidirectional
+``pgr_bdAstarCost`` - Total cost of the shortest path using the bidirectional
 A* algorithm.
 
 .. figure:: images/boost-inside.jpeg
@@ -40,7 +40,7 @@ A* algorithm.
 Description
 -------------------------------------------------------------------------------
 
-The ``pgr_bdAstarCost`` function sumarizes of the cost of the shortest path(s)
+The ``pgr_bdAstarCost`` function sumarizes of the cost of the shortest path
 using the bidirectional A* algorithm.
 
 **The main characteristics are:**

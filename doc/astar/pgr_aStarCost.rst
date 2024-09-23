@@ -13,7 +13,7 @@
 pgr_aStarCost
 ===============================================================================
 
-``pgr_aStarCost`` - Total cost of the shortest path(s) using the A* algorithm.
+``pgr_aStarCost`` - Total cost of the shortest path using the A* algorithm.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/astar_search.html
@@ -39,7 +39,7 @@ pgr_aStarCost
 Description
 -------------------------------------------------------------------------------
 
-The ``pgr_aStarCost`` function sumarizes of the cost of the shortest path(s)
+The ``pgr_aStarCost`` function sumarizes of the cost of the shortest path
 using the A* algorithm.
 
 **The main characteristics are:**

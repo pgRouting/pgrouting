@@ -130,7 +130,7 @@ Result columns
 	  - Description
 	* - ``vid``
 	  - ``BIGINT``
-	  - Identifier of the vertex
+	  - Identifier of the vertex.
 	* - ``centrality``
 	  - ``FLOAT``
 	  - Relative betweenness centrality score of the vertex (will be in range [0,1])

@@ -59,7 +59,7 @@ One Via
    | OR EMPTY SET
 
 :Example: Find the route that visits the vertices :math:`\{5, 1, 8\}` in that
-          order on an **directed** graph.
+          order on an directed graph.
 
 .. literalinclude:: dijkstraVia.queries
     :start-after: -- q01

@@ -44,12 +44,12 @@ Description
 **The main characteristics are:**
 
 - The graph is **directed**.
-- Calculates the maximum flow from the `source(s)` to the `target(s)`.
+- Calculates the maximum flow from the sources to the targets.
 
   - When the maximum flow is **0** then there is no flow and **0** is returned.
-  - There is no flow when a **source** is the same as a **target**.
+  - There is no flow when source has the same vaule as target.
 
-- Any duplicated value in the source(s) or target(s) are ignored.
+- Any duplicated values in source or target are ignored.
 - Uses the :doc:`pgr_pushRelabel <pgr_pushRelabel>` algorithm.
 
 * Running time: :math:`O( V ^ 3)`
