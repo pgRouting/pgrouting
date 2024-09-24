@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.7.0-dev
+#Copyright (C) pgRouting Contributors - Version v3.7.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # Regina Obe <regina@arrival3d.com>, 2023.
 # Wangdapeng <wangdapeng20191008@gmail.com>, 2023.
@@ -1405,7 +1405,7 @@ msgid ""
 "Let: - :math:`f\\_boxes`: number of boxes needed for `1` kg of feathers. - :"
 "math:`a\\_weight`: weight of `1` box of apples."
 msgstr ""
-"设：- :math:`f\\_boxes`：`1`公斤羽毛所需的箱子数量。- :math:`a\\_weight`：`1`"
+"设：- :math:`f\\_boxes`：`1` 公斤羽毛所需的箱子数量。- :math:`a\\_weight`：`1`"
 "箱子苹果的重量。"
 
 msgid "Capacity Units"
@@ -1529,7 +1529,7 @@ msgstr "因素处理"
 msgid ""
 "``factor`` acts as a multiplier to convert from distance values to time "
 "units the matrix values or the euclidean values."
-msgstr "`因子``充当乘数，将距离值转换为时间单位、矩阵值或欧几里得值。"
+msgstr "``因子`` 充当乘数，将距离值转换为时间单位、矩阵值或欧几里得值。"
 
 msgid "When the values are already in the desired time units"
 msgstr "当值已处于所需时间单位时"
@@ -1541,7 +1541,7 @@ msgid "When ``factor`` > 1 the travel times are faster"
 msgstr "当 ``因子`` > 1 时，行程时间更快"
 
 msgid "When ``factor`` < 1 the travel times are slower"
-msgstr "当 ``因子`` < 1 时，行程时间会变慢"
+msgstr "当 ``因子`` < 1  时，行程时间会变慢"
 
 msgid "For the :doc:`pgr_pickDeliverEuclidean`:"
 msgstr "用于 :doc:`pgr_pickDeliverEuclidean`:"
@@ -3504,7 +3504,7 @@ msgstr "可用作 :doc:`pgr_TSP` 的输入。"
 msgid ""
 "Use directly when the resulting matrix is symmetric and there is no :math:"
 "`\\infty` value."
-msgstr "当得到的矩阵是对称且没有 :math:`\\infty`值时直接使用。"
+msgstr "当得到的矩阵是对称且没有 :math:`\\infty` 值时直接使用。"
 
 msgid "It will be the users responsibility to make the matrix symmetric."
 msgstr "用户有责任使矩阵对称。"
@@ -3524,7 +3524,7 @@ msgid ""
 msgstr "通过将下三角形设置为上三角形的镜像。"
 
 msgid "It is also the users responsibility to fix an :math:`\\infty` value."
-msgstr "确定 :math:`\\infty`值也是用户的责任。"
+msgstr "确定 :math:`\\infty` 值也是用户的责任。"
 
 msgid ""
 "Returns the sum of the costs of the shortest path for pair combination of "
@@ -8558,10 +8558,10 @@ msgid "The returned values are ordered in ascending order:"
 msgstr "返回值按升序排列："
 
 msgid "`start_vid` ascending"
-msgstr "`start_vid`升序"
+msgstr "`start_vid` 升序"
 
 msgid "`end_vid` ascending"
-msgstr "`end_vid`升序"
+msgstr "`end_vid` 升序"
 
 msgid "pgr_aStarCost(`Edges SQL`_ , **start vid**, **end vid**, [**options**])"
 msgstr "pgr_aStarCost(`Edges SQL`_ , **start vid**, **end vid**, [**options**])"
@@ -8597,7 +8597,7 @@ msgid ""
 msgstr "``pgr_aStarCostMatrix`` -使用 :doc:`pgr_aStar` 计算成本矩阵。"
 
 msgid "Using internaly the :doc:`pgr_aStar` algorithm"
-msgstr "内部使用 :doc:`pgr_aStar`算法"
+msgstr "内部使用 :doc:`pgr_aStar` 算法"
 
 msgid "Returns a cost matrix."
 msgstr "返回成本矩阵。"
@@ -8615,7 +8615,7 @@ msgid "cost from `v` to `u` is :math:`\\inf`"
 msgstr "从 `v` 到 `u` 的成本是 :math:`\\inf`"
 
 msgid "when :math:`v = u` then"
-msgstr "当 :math:`v = u`时"
+msgstr "当 :math:`v = u` 时"
 
 msgid "cost from `v` to `u` is :math:`0`"
 msgstr "从 `v` 到 `u` 的成本是 :math:`0`"
