@@ -9,3 +9,5 @@ src/version/version.h
 .directory
 notUsed
 *.swp
+
+.vscode
