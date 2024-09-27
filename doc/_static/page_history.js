@@ -9,10 +9,13 @@ var unsuportedArr = ['2.6', '2.5', '2.4', '2.3', '2.2', '2.1', '2.0'];
 var titles = [
     {k: 'en', v: ['Supported versions', 'Unsupported versions']},
     {k: 'es', v: ['Versiones soportadas', 'Versiones no soportadas']},
+    {k: 'zh-Hans', v: ['Supported versions', 'Unsupported versions']},
 ];
 
 
 var newpages = [
+    {v: '3.7', pages: ['metrics-family', 'pgr_betweennessCentrality']},
+
     {v: '3.4', pages: ['TRSP-family', 'pgr_withPointsVia', 'pgr_trsp_withPoints', 'pgr_trspVia_withPoints',
             'pgr_trspVia', 'pgr_hawickCircuits', 'pgr_findCloseEdges', 'pgr_cuthillMckeeOrdering', 'ordering-family',
             'migration']},
@@ -356,20 +359,29 @@ function get_history(name, lang) {
     result += home + 'latest/' + validlang + '/' + data.file + '.html"> latest </a> ';
     latest = versionsArr[0];
     for (var i = 0; i < versionsArr.length; i++) {
+        validlang = lang;
+
         if (versionsArr[i] < data.newat) break;
+
+        /* for zh-Hans non translated versions use english */
+        validlang = (lang == 'zh-Hans' && versionsArr[i] == '3.7')? lang : 'en';
+
         var link = home + versionsArr[i] + '/';
         link += validlang + '/' + data.file + '.html">' + versionsArr[i] + '</a>';
         if (versionsArr[i] == latest) result += '(' + link + ') ';
         else result += link + ' ';
     }
-    result += home + 'main/' + validlang + '/' + data.file + '.html"> main </a> ';
-    result += home + 'dev/' + validlang + '/' + data.file + '.html"> dev </a> ';
+    result += home + 'main/' + lang + '/' + data.file + '.html"> main </a> ';
+    result += home + 'dev/' + lang + '/' + data.file + '.html"> dev </a> ';
 
     if (data.newat <= unsuportedArr[0]) {
         result += '<br/><strong>' + title.v[1] + ':</strong>';
         for (var i = 0; i < unsuportedArr.length; i++) {
+            /* basically 2.x has only english */
+            validlang = 'en';
+
             /* for spanish non translated versions use english */
-            validlang = (lang == 'es' && unsuportedArr[i] == '2.0')? lang : 'en';
+            validlang = (lang == 'es' && unsuportedArr[i] == '2.0')? 'es' : validlang;
 
             if (data.newat > unsuportedArr[i]) break;
             var link = home + unsuportedArr[i] + '/';
