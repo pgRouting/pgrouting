@@ -1,0 +1,237 @@
+
+
+<!DOCTYPE html>
+
+<html lang="zh-Hans" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>生成树 - 类别 &#8212; pgRouting Manual (3.7-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
+    <script src="_static/documentation_options.js?v=32422e27"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=8578d92c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="K最短路径 - 类别" href="KSP-category.html" />
+    <link rel="prev" title="pgr_TSPeuclidean" href="pgr_TSPeuclidean.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v3.7.0-dev</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">支持</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">生成树 - 类别</a><ul>
+<li><a class="reference internal" href="#see-also">另请参阅</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_TSPeuclidean.html" title="Previous Chapter: pgr_TSPeuclidean"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_TSPeuclidean</span>
+    </a>
+  </li>
+  <li>
+    <a href="KSP-category.html" title="Next Chapter: K最短路径 - 类别"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">K最短路径 - 类别 &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#">生成树 - 类别</a><ul>
+<li><a class="reference internal" href="#see-also">另请参阅</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="pgr_TSPeuclidean.html" title="Previous Chapter: pgr_TSPeuclidean"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_TSPeuclidean</span>
+    </a>
+  </li>
+  <li>
+    <a href="KSP-category.html" title="Next Chapter: K最短路径 - 类别"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">K最短路径 - 类别 &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
+            <script> document.write(get_history('spanningTree-family','zh-Hans'));  </script>
+            
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="spanning-tree-category">
+<h1>生成树 - 类别<a class="headerlink" href="#spanning-tree-category" title="Link to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="kruskal-family.html"><span class="doc">Kruskal - 函数族</span></a></p></li>
+<li><p><a class="reference internal" href="prim-family.html"><span class="doc">Prim - 函数族</span></a></p></li>
+</ul>
+<p>一个无向图的生成树是包括图 G 的所有顶点并具有可能的最小数量的边的树。</p>
+<p>对于不连通的图，不存在单棵树，而是由每个连通分量的生成树组成的生成林。</p>
+<div class="toctree-wrapper compound">
+</div>
+<p>特征：</p>
+<ul class="simple">
+<li><p>它的实现仅在 <strong>无向</strong> 图上。</p></li>
+<li><p>仅在具有正成本的边进行处理。</p></li>
+<li><p>当图连通时</p>
+<ul>
+<li><p>由此产生的边组成一棵树</p></li>
+</ul>
+</li>
+<li><p>当图不连通时</p>
+<ul>
+<li><p>为每个连通分量找到最小生成树。</p></li>
+<li><p>由此产生的边构成了一片森林。</p></li>
+</ul>
+</li>
+</ul>
+<section id="see-also">
+<h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html">Boost: Prim算法</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html">Boost: Kruskal算法</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Prim%27s_algorithm">维基百科: Prim算法</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Kruskal's_algorithm">维基百科: Kruskal算法</a></p></li>
+</ul>
+<p class="rubric">索引和表格</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.7.0-dev.<br/>
+      Last updated on 10月 01, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

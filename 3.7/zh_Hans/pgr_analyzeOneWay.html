@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+
+<html lang="zh-Hans" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>pgr_analyzeOneWay &#8212; pgRouting Manual (3.7-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
+    <script src="_static/documentation_options.js?v=32422e27"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=8578d92c"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pgr_nodeNetwork" href="pgr_nodeNetwork.html" />
+    <link rel="prev" title="pgr_analyzeGraph" href="pgr_analyzeGraph.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v3.7.0-dev</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">支持</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">pgr_analyzeOneWay</a><ul>
+<li><a class="reference internal" href="#description">描述</a></li>
+<li><a class="reference internal" href="#signatures">签名</a></li>
+<li><a class="reference internal" href="#parameters">参数</a></li>
+<li><a class="reference internal" href="#additional-examples">其他示例</a></li>
+<li><a class="reference internal" href="#see-also">另请参阅</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_analyzeGraph.html" title="Previous Chapter: pgr_analyzeGraph"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_analyzeGraph</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_nodeNetwork.html" title="Next Chapter: pgr_nodeNetwork"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_nodeNetwork &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#">pgr_analyzeOneWay</a><ul>
+<li><a class="reference internal" href="#description">描述</a></li>
+<li><a class="reference internal" href="#signatures">签名</a></li>
+<li><a class="reference internal" href="#parameters">参数</a></li>
+<li><a class="reference internal" href="#additional-examples">其他示例</a></li>
+<li><a class="reference internal" href="#see-also">另请参阅</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="pgr_analyzeGraph.html" title="Previous Chapter: pgr_analyzeGraph"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_analyzeGraph</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_nodeNetwork.html" title="Next Chapter: pgr_nodeNetwork"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_nodeNetwork &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
+            <script> document.write(get_history('pgr_analyzeOneWay','zh-Hans'));  </script>
+            
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="pgr-analyzeoneway">
+<h1>pgr_analyzeOneWay<a class="headerlink" href="#pgr-analyzeoneway" title="Link to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code> — 分析单向街道并识别翻转路段。</p>
+<p>该函数分析图中的单向街道并识别任何翻转的路段。</p>
+<p class="rubric">可用性</p>
+<ul class="simple">
+<li><p>版本2.0.0</p>
+<ul>
+<li><p><strong>官方</strong> 函数</p></li>
+</ul>
+</li>
+</ul>
+<section id="description">
+<h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p>单向路段的分析非常简单，但可以成为一种强大的工具，可以识别由于错误地设置路段方向而产生的一些潜在问题。 如果一个节点有从该节点出口的边并且没有边进入该节点，则该节点是`source` 。 相反，如果所有边都进入该节点但没有一条边退出该节点，则该节点是`sink`。 对于`source` 类型节点来说，逻辑上不可能存在，因为如果没有车辆进入该节点，则任何车辆都无法离开该节点。 同样，如果您有一个`sink`节点，那么您将在该节点上堆积无限数量的车辆，因为您可以进入它但不能离开它。</p>
+<p>那么我们为什么要关心这些是否不可行呢？ 如果边的方向被错误地反转，我们就可以准确地生成这些条件。 想象一下一条分开的高速公路，在北行车道上，有一个路段输入错误，或者可能是一系列多个路段输入错误，或者这可能发生在环岛上。 结果可能是 <cite>source</cite> 节点和/或`sink`节点。</p>
+<p>因此，通过计算进入和退出每个节点的边数，我们可以识别 <cite>source</cite> 节点和 <cite>sink</cite> 节点，以便您可以查看网络的这些区域以进行修复和/或将问题报告给数据供应商。</p>
+<p class="rubric">先决条件</p>
+<p>待分析的边表必须包含源列和目标列，其中填充了线段顶点的id以及对应的存储顶点信息的顶点表&lt;edge_table&gt;_vertices_pgr。</p>
+<ul class="simple">
+<li><p>使用 <a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> 建立顶点表。</p></li>
+<li><p>使用 <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> 建立拓扑和顶点表。</p></li>
+</ul>
+</section>
+<section id="signatures">
+<h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_analyzeOneWay(<strong>geom_table</strong>, <strong>s_in_rules</strong>, <strong>s_out_rules</strong>, <strong>t_in_rules</strong>, <strong>t_out_rules</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[oneway,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">two_way_if_null]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">RETURNS <code class="docutils literal notranslate"><span class="pre">TEXT</span></code></div>
+</div>
+</div>
+</section>
+<section id="parameters">
+<h2>参数<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">edge_table<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> 网络表的名称（可能包含模式名称）</p>
+</dd>
+<dt class="field-even">s_in_rules<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text[]</span></code> source节点 <strong>输入</strong> 规则</p>
+</dd>
+<dt class="field-odd">s_out_rules<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text[]</span></code> source节点 <strong>输出</strong> 规则</p>
+</dd>
+<dt class="field-even">t_in_rules<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text[]</span></code> target节点 <strong>输入</strong> 规则</p>
+</dd>
+<dt class="field-odd">t_out_rules<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text[]</span></code> target节点 <strong>输出</strong> 规则</p>
+</dd>
+<dt class="field-even">oneway<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text``oneway</span> <span class="pre">列名，网络表的名称。</span> <span class="pre">默认值为``oneway</span></code>。</p>
+</dd>
+<dt class="field-odd">source<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text``网络表的Source列名称。</span> <span class="pre">默认值为``source</span></code>。</p>
+</dd>
+<dt class="field-even">target<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text``网络表的Target列名称。</span> <span class="pre">默认值为</span> <span class="pre">``target</span></code>。</p>
+</dd>
+<dt class="field-odd">two_way_if_null<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code> 将单向 NULL 值视为双向的标志。 默认值为 <code class="docutils literal notranslate"><span class="pre">true</span></code>。</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>强烈建议使用命名符号。 有关示例，请参阅 <a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> 或 <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a>。</p>
+</div>
+<p>函数返回：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OK</span></code> 分析完成后。</p>
+<ul>
+<li><p>使用这个顶点表：&lt;edge_table&gt;_vertices_pgr。</p></li>
+<li><p>完全填充顶点表的 <code class="docutils literal notranslate"><span class="pre">ein</span></code> 和 <code class="docutils literal notranslate"><span class="pre">eout</span></code> 列。</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FAIL</span></code> 当分析因错误而未完成时。</p>
+<ul>
+<li><p>未找到顶点表。</p></li>
+<li><p>未找到网络表所需的列或该列的类型不正确。</p></li>
+<li><p>source 、 target 或 oneway 的名称相同。</p></li>
+</ul>
+</li>
+</ul>
+<p>这些规则被定义为文本字符串数组，如果与 <code class="docutils literal notranslate"><span class="pre">oneway</span></code> 值匹配，则 source或 target <strong>输入</strong> 或 <strong>输出</strong> 条件将被视为 <code class="docutils literal notranslate"><span class="pre">true</span></code>。</p>
+<p class="rubric">顶点表</p>
+<p>顶点表可以使用 <a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> 或 <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> 创建</p>
+<p>顶点表的结构为：</p>
+<dl class="field-list simple">
+<dt class="field-odd">id<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code> 顶点的标识符。</p>
+</dd>
+<dt class="field-even">cnt<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> edge_table 中引用该顶点的顶点数。 请参阅 <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGgraph</span></a>。</p>
+</dd>
+<dt class="field-odd">chk<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> 指示顶点可能有问题。 请参阅 <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>。</p>
+</dd>
+<dt class="field-even">ein<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> edge_table 中引用该顶点作为传入的顶点数。</p>
+</dd>
+<dt class="field-odd">eout<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Edge_table 中引用该顶点作为传出的顶点数。</p>
+</dd>
+<dt class="field-even">the_geom<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code> 顶点的点几何。</p>
+</dd>
+</dl>
+</section>
+<section id="additional-examples">
+<h2>其他示例<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="nb">dir</span> <span class="n">TEXT</span><span class="p">;</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+<span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Creating</span> <span class="n">Topology</span><span class="p">,</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">-------------&gt;</span> <span class="n">TOPOLOGY</span> <span class="n">CREATED</span> <span class="n">FOR</span>  <span class="mi">0</span> <span class="n">edges</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Rows</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span> <span class="ow">or</span> <span class="n">NULL</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edges</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edges_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
+ <span class="n">pgr_createtopology</span>
+<span class="o">--------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+<span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">SET</span>
+<span class="nb">dir</span> <span class="o">=</span> <span class="n">CASE</span> <span class="n">WHEN</span> <span class="p">(</span><span class="n">cost</span><span class="o">&gt;</span><span class="mi">0</span> <span class="n">AND</span> <span class="n">reverse_cost</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">THEN</span> <span class="s1">&#39;B&#39;</span>   <span class="o">/*</span> <span class="n">both</span> <span class="n">ways</span> <span class="o">*/</span>
+           <span class="n">WHEN</span> <span class="p">(</span><span class="n">cost</span><span class="o">&gt;</span><span class="mi">0</span> <span class="n">AND</span> <span class="n">reverse_cost</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">THEN</span> <span class="s1">&#39;FT&#39;</span>  <span class="o">/*</span> <span class="n">direction</span> <span class="n">of</span> <span class="n">the</span> <span class="n">LINESSTRING</span> <span class="o">*/</span>
+           <span class="n">WHEN</span> <span class="p">(</span><span class="n">cost</span><span class="o">&lt;</span><span class="mi">0</span> <span class="n">AND</span> <span class="n">reverse_cost</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">THEN</span> <span class="s1">&#39;TF&#39;</span>  <span class="o">/*</span> <span class="n">reverse</span> <span class="n">direction</span> <span class="n">of</span> <span class="n">the</span> <span class="n">LINESTRING</span> <span class="o">*/</span>
+           <span class="n">ELSE</span> <span class="s1">&#39;&#39;</span> <span class="n">END</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">18</span>
+<span class="o">/*</span> <span class="n">unknown</span> <span class="o">*/</span>
+	<span class="n">SELECT</span> <span class="n">pgr_analyzeOneWay</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span>
+        <span class="n">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;TF&#39;</span><span class="p">],</span>
+        <span class="n">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;FT&#39;</span><span class="p">],</span>
+        <span class="n">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;FT&#39;</span><span class="p">],</span>
+        <span class="n">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;TF&#39;</span><span class="p">],</span>
+        <span class="n">oneway</span><span class="o">:=</span><span class="s1">&#39;dir&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeOneway</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="s1">&#39;{&quot;&quot;,B,TF}&#39;</span><span class="p">,</span><span class="s1">&#39;{&quot;&quot;,B,FT}&#39;</span><span class="p">,</span><span class="s1">&#39;{&quot;&quot;,B,FT}&#39;</span><span class="p">,</span><span class="s1">&#39;{&quot;&quot;,B,TF}&#39;</span><span class="p">,</span><span class="s1">&#39;dir&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="n">graph</span> <span class="k">for</span> <span class="n">one</span> <span class="n">way</span> <span class="n">street</span> <span class="n">errors</span><span class="o">.</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analysis</span> <span class="mi">25</span><span class="o">%</span> <span class="n">complete</span> <span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analysis</span> <span class="mi">50</span><span class="o">%</span> <span class="n">complete</span> <span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analysis</span> <span class="mi">75</span><span class="o">%</span> <span class="n">complete</span> <span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analysis</span> <span class="mi">100</span><span class="o">%</span> <span class="n">complete</span> <span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Found</span> <span class="mi">0</span> <span class="n">potential</span> <span class="n">problems</span> <span class="ow">in</span> <span class="n">directionality</span>
+ <span class="n">pgr_analyzeoneway</span>
+<span class="o">-------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="see-also">
+<h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="topology-functions.html"><span class="doc">Topology - 函数族</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
+</ul>
+<p class="rubric">索引和表格</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.7.0-dev.<br/>
+      Last updated on 10月 01, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
