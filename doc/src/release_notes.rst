@@ -20,6 +20,28 @@ To see the full list of changes check the list of `Git commits
    :local:
    :depth: 1
 
+pgRouting 4
+*******************************************************************************
+
+.. contents:: Minors 4.x
+   :local:
+   :depth: 1
+
+pgRouting 4.0
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. contents:: Contents
+   :local:
+   :depth: 1
+
+.. current
+
+pgRouting 4.0.0 Release Notes
+-------------------------------------------------------------------------------
+
+No Changes Yet
+
+
 pgRouting 3
 *******************************************************************************
 
@@ -33,8 +55,6 @@ pgRouting 3.7
 .. contents:: Contents
    :local:
    :depth: 1
-
-.. current
 
 pgRouting 3.7.0 Release Notes
 -------------------------------------------------------------------------------
