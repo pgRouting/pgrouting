@@ -2,9 +2,7 @@
 SET(LOCAL_FILES
     _trsp.sql
     trsp.sql
-    _trsp_deprecated.sql
     _array_reverse.sql
-    trsp_deprecated.sql
 
     trsp_withPoints.sql
     _trsp_withPoints.sql
