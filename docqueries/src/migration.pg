@@ -115,11 +115,6 @@ FROM pgr_trsp_withPoints(
   details => false)
 WHERE edge != -1;
 /* --edgesv7 */
-/* --viav1 */
-SELECT * FROM pgr_trspViaVertices(
-  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges$$,
-  ARRAY[6, 3, 6],
-  true, true);
 /* --viav2 */
 SELECT * FROM pgr_dijkstraVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
@@ -133,11 +128,6 @@ FROM pgr_dijkstraVia(
   ARRAY[6, 3, 6])
 WHERE edge != -1;
 /* --viav4*/
-SELECT * FROM pgr_trspViaVertices(
-  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges$$,
-  ARRAY[6, 3, 6],
-  true, true,
-  $$SELECT to_cost, target_id::INTEGER, via_path FROM old_restrictions$$);
 /* --viav5 */
 SELECT * FROM pgr_trspVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
