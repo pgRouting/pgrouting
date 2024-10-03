@@ -6,9 +6,6 @@ SET(LOCAL_FILES
     _array_reverse.sql
     trsp_deprecated.sql
 
-    _trspViaVertices_deprecated.sql
-    trspViaVertices_deprecated.sql
-
     trsp_withPoints.sql
     _trsp_withPoints.sql
 
