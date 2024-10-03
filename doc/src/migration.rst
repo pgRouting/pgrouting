@@ -1160,136 +1160,53 @@ values of the function been migrated then:
 * ``id1`` is the node
 * ``id2`` is the edge
 
-Migration of ``pgr_trspViaVertices``
+Migration of pgr_trspViaVertices
 -------------------------------------------------------------------------------
 
-Signature to be migrated:
+.. contents::
+   :local:
+   :depth: 1
 
-.. parsed-literal::
-
-   pgr_trspViaVertices(sql text, vids integer[],
-                     directed boolean, has_rcost boolean
-                     [, turn_restrict_sql text]);
-   RETURNS SETOF (seq, id1, id2, id3, cost)
-
-
-* The integral types of the ``Edges SQL`` can only be ``INTEGER``.
-* The floating point type of the ``Edges SQL`` can only be ``FLOAT``.
-* ``directed`` flag is compulsory.
-
-  * Does not have a default value.
-
-* Does not autodetect if ``reverse_cost`` column exist.
-
-  * User must be careful to match the existence of the column with the value of
-    ``has_rcost`` parameter.
-
-* The restrictions inner query is optional.
-
-
-Migrate by using:
-
-* :doc:`pgr_dijkstraVia` when there are no restrictions,
-* :doc:`pgr_trspVia` when there are restrictions.
-
-Migrating ``pgr_trspViaVertices`` using ``pgr_dijkstraVia``
+Migrating pgr_trspViaVertices using pgr_dijkstraVia
 ...............................................................................
 
-The following query does not have restrictions.
-
-.. literalinclude:: migration.queries
-   :start-after: --viav1
-   :end-before: --viav2
-
-* A message about deprecation is shown
-
-  * Deprecated functions will be removed on the next mayor version 4.0.0
-
-Use :doc:`pgr_dijkstraVia` instead.
+Using :doc:`pgr_dijkstraVia`.
 
 .. literalinclude:: migration.queries
    :start-after: --viav2
    :end-before: --viav3
 
-* The types casting has been removed.
-* :doc:`pgr_dijkstraVia`:
+When the need of using the same (meaningless) names and and strict types then
+convert the result to the deprecated function columns:
 
-  * Autodetects if ``reverse_cost`` column is in the edges
-    SQL.
-  * Accepts ``ANY-INTEGER`` on integral types
-  * Accepts ``ANY-NUMERICAL`` on floating point types
-  * ``directed`` flag has a default value of ``true``.
-
-    * Use the same value that on the original query.
-    * In this example it is ``true`` which is the default value.
-
-      * The flag has been omitted and the default is been used.
-  * On the points query do not include the ``side`` column.
-
-When the need of using strictly the same (meaningless) names and types of the
-function been migrated then:
+* ``id1`` is the path identifier
+* ``id2`` is the node
+* ``id3`` is the edge
 
 .. literalinclude:: migration.queries
    :start-after: --viav3
    :end-before: --viav4
 
-* ``id1`` is the path identifier
-* ``id2`` is the node
-* ``id3`` is the edge
 
-
-Migrating ``pgr_trspViaVertices`` using ``pgr_trspVia``
+Migrating pgr_trspViaVertices using pgr_trspVia
 ...............................................................................
 
-The following query has restrictions.
-
-.. literalinclude:: migration.queries
-   :start-after: --viav4
-   :end-before: --viav5
-
-* A message about deprecation is shown
-
-  * Deprecated functions will be removed on the next mayor version 4.0.0
-
-* The restrictions are the last parameter of the function
-
-  * Using the old structure of restrictions
-
-Use :doc:`pgr_trspVia` instead.
+Using :doc:`pgr_trspVia`.
 
 .. literalinclude:: migration.queries
    :start-after: --viav5
    :end-before: --viav6
 
-* The new structure of restrictions is been used.
-
-  * It is the second parameter.
-
-* The types casting has been removed.
-* :doc:`pgr_trspVia`:
-
-  * Autodetects if ``reverse_cost`` column is in the edges
-    SQL.
-  * Accepts ``ANY-INTEGER`` on integral types
-  * Accepts ``ANY-NUMERICAL`` on floating point types
-  * ``directed`` flag has a default value of ``true``.
-
-    * Use the same value that on the original query.
-    * In this example it is ``true`` which is the default value.
-
-      * The flag has been omitted and the default is been used.
-  * On the points query do not include the ``side`` column.
-
-When the need of using strictly the same (meaningless) names and types of the
-function been migrated then:
-
-.. literalinclude:: migration.queries
-   :start-after: --viav6
-   :end-before: --viav7
+When the need of using the same (meaningless) names and and strict types then
+convert the result to the deprecated function columns:
 
 * ``id1`` is the path identifier
 * ``id2`` is the node
 * ``id3`` is the edge
+
+.. literalinclude:: migration.queries
+   :start-after: --viav6
+   :end-before: --viav7
 
 Migration of pgr_trspViaEdges
 -------------------------------------------------------------------------------

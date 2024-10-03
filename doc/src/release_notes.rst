@@ -42,6 +42,7 @@ pgRouting 4.0.0 Release Notes
 .. rubric:: Removal of deprecated functions and signatures
 
 * ``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``
+* ``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``
 
 
 
