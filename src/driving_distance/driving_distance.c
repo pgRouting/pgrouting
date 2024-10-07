@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: many_to_dist_driving_distance.c
+File: driving_distance.c
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 
-#include "drivers/driving_distance/drivedist_driver.h"
+#include "drivers/driving_distance/driving_distance_driver.h"
 
 
 PGDLLEXPORT Datum _pgr_drivingdistance(PG_FUNCTION_ARGS);
