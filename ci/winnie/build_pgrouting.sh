@@ -162,7 +162,6 @@ cmake --version
 cmake -G "MSYS Makefiles" -DCMAKE_VERBOSE_MAKEFILE=ON \
  -DBOOST_ROOT:PATH="${BOOSTROOT_PATH}" \
  -DBoost_USE_STATIC_LIBS=ON \
- -DBoost_USE_MULTITHREADED=ON \
  -DCMAKE_BUILD_TYPE=Release \
  "../branches/${PGROUTING_VER}"
 
