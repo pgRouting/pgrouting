@@ -61,9 +61,9 @@ include(pgr/Configure)
 #---------------------------------------------
 set(DOXYGEN_MINIMUM_VERSION "1.7")
 set(SPHINX_MINIMUM_VERSION "4.0")
-set(POSTGRESQL_MINIMUM_VERSION "9.2.0")
+set(POSTGRESQL_MINIMUM_VERSION "13.0.0")
 set(BOOST_MINIMUM_VERSION "1.56.0")
-set(POSTGIS_MINIMUM_VERSION "2.0.0")
+set(POSTGIS_MINIMUM_VERSION "3.0.0")
 
 message(STATUS "DOXYGEN_MINIMUM_VERSION=${DOXYGEN_MINIMUM_VERSION}")
 message(STATUS "SPHINX_MINIMUM_VERSION=${SPHINX_MINIMUM_VERSION}")
@@ -172,25 +172,25 @@ endif()
 # PostgreSQL
 #---------------------------------------------
 #---------------------------------------------
-find_package(PostgreSQL)
-if(NOT POSTGRESQL_FOUND OR NOT POSTGRESQL_VERSION_STRING)
-    message(FATAL_ERROR "PostgreSQL not found - Please check your PostgreSQL installation.")
-endif()
+find_package(PostgreSQL "${POSTGRESQL_MINIMUM_VERSION}")
 
+# removing type of release on postgres version
 # for XbetaY XalphaY XrcY -> X.Y
 string(REGEX REPLACE "([0-9]+)[beta|alpha|rc|devel].*" "\\1.0" POSTGRESQL_VERSION_STRING ${POSTGRESQL_VERSION_STRING})
 message(STATUS "POSTGRESQL_VERSION_STRING=${POSTGRESQL_VERSION_STRING}")
 
+# calcualte mayor.micro
 STRING(REGEX MATCH "([0-9]+)\.([0-9]+)" POSTGRESQL_VERSION "${POSTGRESQL_VERSION_STRING}")
 message(STATUS "POSTGRESQL_VERSION=${POSTGRESQL_VERSION}")
 
-#for X.Y.Z -> XY  Y<10
-string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1\\2" PGSQL_VERSION ${POSTGRESQL_VERSION})
-#message(STATUS "PGSQL_VERSION=${PGSQL_VERSION}")
+# split mayor minor
+string(REPLACE "." ";" VERSION_LIST ${POSTGRESQL_VERSION})
+list(GET VERSION_LIST 0 POSTGRESQL_VERSION_MAYOR)
+list(GET VERSION_LIST 1 POSTGRESQL_VERSION_MINOR)
 
-if("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
-    message(FATAL_ERROR " PostgreSQL ${POSTGRESQL_MINIMUM_VERSION} or greater is required.")
-endif("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
+# calculate math value of postgres version
+math(EXPR PGSQL_VERSION "${POSTGRESQL_VERSION_MAYOR} * 1000 + ${POSTGRESQL_VERSION_MINOR}")
+message(STATUS "PGSQL_VERSION=${PGSQL_VERSION}")
 
 #-------
 include_directories(SYSTEM ${POSTGRESQL_INCLUDE_DIR})
