@@ -70,7 +70,7 @@ process(
         }
     } else {
         /* TODO remove on v4 */
-        char d_side = (char)tolower(driving_side[0]);
+        d_side = (char)tolower(driving_side[0]);
         if (!((d_side == 'r') || (d_side == 'l'))) d_side = 'b';
     }
 
