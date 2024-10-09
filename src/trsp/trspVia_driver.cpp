@@ -57,7 +57,9 @@ post_process_trspvia(std::deque<pgrouting::Path> &paths, std::vector<int64_t> vi
     auto u = via.front();
     bool skip = true;
     for (const auto &v : via) {
-        if (skip) {skip = false; continue;}
+        if (skip) {
+            skip = false; continue;
+        }
         /*
          * look for the path (u,v)
          */
