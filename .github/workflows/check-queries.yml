@@ -111,7 +111,10 @@ jobs:
       - name: Test documentation queries are up to date
         run: |
           sudo -u postgres createdb -p ${PGPORT}  pgr_test__db__test
-          TESTDIRS="version"
+          # queries that might change
+          # version: will catch the current version
+          # mincut: results change depending on boost
+          TESTDIRS="version mincut"
           for d in ${TESTDIRS}
           do
             ./tools/testers/doc_queries_generator.pl -pgver "${PGVER}" -pguser runner -documentation -alg "docqueries/${d}"
