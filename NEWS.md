@@ -12,6 +12,14 @@ To see all issues & pull requests closed by this release see the [Git closed
 milestone for 3.7.0
 ](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22)
 
+**Support**
+
+* [#2656](https://github.com/pgRouting/pgrouting/pull/2656) Stop support of
+  PostgreSQL12 on pgrouting v3.7
+
+  * Stopping support of PostgreSQL 12
+  * CI does not test for PostgreSQL 12
+
 **New experimental functions**
 
 * Metrics
