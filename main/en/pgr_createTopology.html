@@ -10,10 +10,10 @@
     <title>pgr_createTopology &#8212; pgRouting Manual (3.6)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=48fbbb20"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=e87c01b6"></script>
     <link rel="icon" href="_static/favicon.ico"/>
@@ -161,7 +161,52 @@
 
 <div class="container">
     <div class="row">
-        <div class="body span12 content" role="main">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#">pgr_createTopology</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a><ul>
+<li><a class="reference internal" href="#usage-when-the-edge-table-s-columns-match-the-default-values">Usage when the edge table’s columns MATCH the default values:</a></li>
+<li><a class="reference internal" href="#usage-when-the-edge-table-s-columns-do-not-match-the-default-values">Usage when the edge table’s columns DO NOT MATCH the default values:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#additional-examples">Additional Examples</a><ul>
+<li><a class="reference internal" href="#create-a-routing-topology">Create a routing topology</a><ul>
+<li><a class="reference internal" href="#make-sure-the-database-does-not-have-the-vertices-table">Make sure the database does not have the <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a></li>
+<li><a class="reference internal" href="#clean-up-the-columns-of-the-routing-topology-to-be-created">Clean up the columns of the routing topology to be created</a></li>
+<li><a class="reference internal" href="#create-the-vertices-table">Create the vertices table</a></li>
+<li><a class="reference internal" href="#inspect-the-vertices-table">Inspect the vertices table</a></li>
+<li><a class="reference internal" href="#create-the-routing-topology-on-the-edge-table">Create the routing topology on the edge table</a></li>
+<li><a class="reference internal" href="#inspect-the-routing-topology">Inspect the routing topology</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#with-full-output">With full output</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="topology-functions.html" title="Previous Chapter: Topology - Family of Functions"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Topology - Fa...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_createVerticesTable.html" title="Next Chapter: pgr_createVerticesTable"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_createVer... &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_createTopology','en'));  </script>
             
   <div class="line-block">
@@ -682,7 +727,8 @@ The order of the parameters do not matter:</p>
 </pre></div>
 </div>
 <figure class="align-default" id="id1">
-<a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 475.5px; height: 433.0px;" /></a>
+<a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 475.5px; height: 433.0px;" />
+</a>
 <figcaption>
 <p><span class="caption-text"><strong>Generated topology</strong></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
@@ -754,8 +800,8 @@ the rest of the edges.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.2.<br/>
-      Last updated on Feb 06, 2024.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+      Last updated on Oct 09, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2.<br/>
     </p>
   </div>
 </footer>
