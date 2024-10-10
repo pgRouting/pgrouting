@@ -13,7 +13,7 @@
 pgr_dagShortestPath - Experimental
 ===============================================================================
 
-``pgr_dagShortestPath`` — Returns the shortest path(s) for weighted directed
+``pgr_dagShortestPath`` — Returns the shortest path for weighted directed
 acyclic graphs(DAG).
 In particular, the DAG shortest paths algorithm implemented by Boost.Graph.
 

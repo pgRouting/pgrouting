@@ -126,8 +126,7 @@ See Also
 
 * `Boost: Edge Coloring Algorithm documentation
   <https://www.boost.org/libs/graph/doc/edge_coloring.html>`__
-* `Wikipedia: Graph Coloring
-  <https://en.wikipedia.org/wiki/Graph_coloring>`__
+* `Wikipedia: Graph coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__
 
 .. see also end
 

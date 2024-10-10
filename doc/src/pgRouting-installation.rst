@@ -73,8 +73,6 @@ Get the sources
 The pgRouting latest release can be found in
 https://github.com/pgRouting/pgrouting/releases/latest
 
-.. rubric:: wget
-
 To download this release:
 
 .. parsed-literal::

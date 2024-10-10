@@ -1010,8 +1010,8 @@ Inner Queries
 
 There are several kinds of valid inner queries and also the columns returned are
 depending of the function.
-Which kind of inner query will depend on the function(s) requirements.
-To simplify variety of types, **ANY-INTEGER** and **ANY-NUMERICAL** is used.
+Which kind of inner query will depend on the function's requirements.
+To simplify the variety of types, **ANY-INTEGER** and **ANY-NUMERICAL** is used.
 
 .. where_definition_starts
 
