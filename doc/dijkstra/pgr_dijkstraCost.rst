@@ -14,7 +14,7 @@
 ``pgr_dijkstraCost``
 ===============================================================================
 
-``pgr_dijkstraCost`` - Total cost of the shortest path(s) using Dijkstra
+``pgr_dijkstraCost`` - Total cost of the shortest path using Dijkstra
 algorithm.
 
 .. figure:: images/boost-inside.jpeg
@@ -38,7 +38,7 @@ algorithm.
 Description
 -------------------------------------------------------------------------------
 
-The ``pgr_dijkstraCost`` function sumarizes of the cost of the shortest path(s)
+The ``pgr_dijkstraCost`` function sumarizes of the cost of the shortest path
 using Dijkstra Algorithm.
 
 .. include:: dijkstra-family.rst

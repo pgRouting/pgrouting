@@ -32,7 +32,7 @@ Description
 -------------------------------------------------------------------------------
 
 Visits and extracts the nodes information in Breath First Search ordering
-of the Minimum Spanning Tree created with Prims's algorithm.
+of the Minimum Spanning Tree created using Prims's algorithm.
 
 **The main Characteristics are:**
 
@@ -129,7 +129,7 @@ See Also
 
 * :doc:`spanningTree-family`
 * :doc:`prim-family`
-* The queries use the :doc:`sampledata` network.
+* :doc:`sampledata`
 * `Boost: Prim's algorithm documentation
   <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
 * `Wikipedia: Prim's algorithm

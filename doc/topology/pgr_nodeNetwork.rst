@@ -73,7 +73,7 @@ Parameters
 The output table will have for ``edge_table_noded``
 
 :id: ``bigint`` Unique identifier for the table
-:old_id: ``bigint``  Identifier of the edge in original table
+:old_id: ``bigint`` Identifier of the edge in original table
 :sub_id: ``integer`` Segment number of the original edge
 :source: ``integer`` Empty source column to be used with
          :doc:`pgr_createTopology` function
@@ -154,13 +154,13 @@ Comparing with the Analysis in the original edge_table, we see that.
 |Fields            | All original fields                     | Has only basic fields to do a topology analysis              |
 +------------------+-----------------------------------------+--------------------------------------------------------------+
 |Dead ends         | - Edges with 1 dead end: 1,6,24         | Edges with 1 dead end: 1-1 ,6-1,14-2, 18-1 17-1 18-2         |
-|                  | - Edges with 2 dead ends  17,18         |                                                              |
+|                  | - Edges with 2 dead ends: 17,18         |                                                              |
 |                  |                                         |                                                              |
 |                  | Edge 17's right node is a dead end      |                                                              |
 |                  | because there is no other edge sharing  |                                                              |
 |                  | that same node. (cnt=1)                 |                                                              |
 +------------------+-----------------------------------------+--------------------------------------------------------------+
-|Isolated segments | two isolated segments:  17 and 18 both  | No Isolated segments                                         |
+|Isolated segments | two isolated segments: 17 and 18 both   | No Isolated segments                                         |
 |                  | they have 2 dead ends                   |  - Edge 17 now shares a node with edges 14-1 and 14-2        |
 |                  |                                         |  - Edges 18-1 and 18-2 share a node with edges 13-1 and 13-2 |
 +------------------+-----------------------------------------+--------------------------------------------------------------+

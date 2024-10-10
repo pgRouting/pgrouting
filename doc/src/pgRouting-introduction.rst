@@ -91,7 +91,8 @@ Corporate Sponsors in this release (in alphabetical order)
 These are corporate entities that have contributed developer time, hosting, or
 direct monetary funding to the pgRouting project:
 
-- `Georepublic <https://georepublic.info/en/>`__
+- `OSGeo <https://www.osgeo.org>`__
+- `OSGeo UK <https://uk.osgeo.org>`__
 - `Google Summer of Code <https://summerofcode.withgoogle.com>`__
 - `Paragon Corporation <https://www.paragoncorporation.com/>`__
 
@@ -171,6 +172,8 @@ direct monetary funding to the pgRouting project:
 - iMaptools
 - Leopark
 - Orkney
+- OSGeo
+- OSGeo UK
 - Paragon Corporation
 - Versaterm Inc.
 
@@ -184,5 +187,4 @@ More Information
   https://www.postgresql.org.
 * PostGIS extension at the PostGIS project web site https://postgis.net.
 * Boost C++ source libraries at https://www.boost.org.
-* The Migration guide from 2.6 can be found at
-  https://github.com/pgRouting/pgrouting/wiki/Migration-Guide.
+* :doc:`migration`

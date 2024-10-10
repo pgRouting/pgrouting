@@ -13,7 +13,7 @@
 ``pgr_bellmanFord - Experimental``
 ===============================================================================
 
-``pgr_bellmanFord`` — Shortest path(s) using Bellman-Ford algorithm.
+``pgr_bellmanFord`` — Shortest path using Bellman-Ford algorithm.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html

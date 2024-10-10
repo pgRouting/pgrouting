@@ -13,7 +13,7 @@
 ``pgr_bdDijkstra``
 ===============================================================================
 
-``pgr_bdDijkstra`` — Returns the shortest path(s) using Bidirectional Dijkstra
+``pgr_bdDijkstra`` — Returns the shortest path using Bidirectional Dijkstra
 algorithm.
 
 .. figure:: images/boost-inside.jpeg
@@ -73,7 +73,7 @@ Signatures
    | pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vids**, [``directed``])
    | pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vid**, [``directed``])
    | pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vids**, [``directed``])
-   | pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_ , [``directed``])
+   | pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_, [``directed``])
 
    | Returns set of |old-generic-result|
    | OR EMPTY SET

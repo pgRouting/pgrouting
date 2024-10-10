@@ -70,15 +70,18 @@ Flow Functions General Information
 - When the maximum flow is 0 then there is no flow and **EMPTY SET** is
   returned.
 
-  - There is no flow when a **source** is the same as a **target**.
+  - There is no flow when source has the same vaule as target.
 
-- Any duplicated value in the source(s) or target(s) are ignored.
+- Any duplicated values in source or target are ignored.
 - Calculates the flow/residual capacity for each edge. In the output
 
   - Edges with zero flow are omitted.
 
-- Creates a **super source** and edges to all the source(s), and a **super
-  target** and the edges from all the targets(s).
+- Creates
+
+  - a **super source** and edges from it to all the sources,
+  - a **super target** and edges from it to all the targetss.
+
 - The maximum flow through the graph is guaranteed to be the value returned by
   :doc:`pgr_maxFlow <pgr_maxFlow>` when executed with the same parameters and
   can be calculated:

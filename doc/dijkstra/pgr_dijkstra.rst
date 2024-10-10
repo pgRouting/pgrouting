@@ -13,7 +13,7 @@
 ``pgr_dijkstra``
 ===============================================================================
 
-``pgr_dijkstra`` — Shortest path(s) using Dijkstra algorithm.
+``pgr_dijkstra`` — Shortest path using Dijkstra algorithm.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html

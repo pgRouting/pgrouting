@@ -24,13 +24,13 @@
 
 * Version 3.0.0
 
-  * New **Official** function
+* New **Official** function
 
 Description
 -------------------------------------------------------------------------------
 
 Using Prim's algorithm, extracts the nodes that have aggregate costs less than
-or equal to a **distance** from a **root** vertex (or vertices) within the
+or equal to a distance from a root vertex (or vertices) within the
 calculated minimum spanning tree.
 
 **The main Characteristics are:**

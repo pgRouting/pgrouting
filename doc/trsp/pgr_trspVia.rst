@@ -68,7 +68,7 @@ One Via
    | Returns set of |via-result|
    | OR EMPTY SET
 
-:Example: Find the route that visits the vertices :math:`\{ 5, 1, 8\}` in that
+:Example: Find the route that visits the vertices :math:`\{5, 1, 8\}` in that
           order on an directed graph.
 
 .. literalinclude:: trspVia.queries

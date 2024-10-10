@@ -200,10 +200,10 @@ The weighted directed graph, :math:`G_d(V,E)`, is definied by:
 * the set of edges :math:`E`
 
   - :math:`E = \begin{cases}
-    \text{ }  \{(source_i, target_i, cost_i) \text{ when } cost >=0 \} & \quad \text{if } reverse\_cost = \varnothing \\
-    \text{ }  \text{ }  & \quad \text{ } \\
-    \text{ }  \{(source_i, target_i, cost_i) \text{ when } cost >=0 \} &  \quad \text{ } \\
-    \cup      \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i>=0 \} & \quad \text{if } reverse\_cost \neq \varnothing \\
+    \text{ } \{(source_i, target_i, cost_i) \text{ when } cost >=0 \} & \quad \text{if } reverse\_cost = \varnothing \\
+    \text{ } \text{ }  & \quad \text{ } \\
+    \text{ } \{(source_i, target_i, cost_i) \text{ when } cost >=0 \} &  \quad \text{ } \\
+    \cup \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i>=0 \} & \quad \text{if } reverse\_cost \neq \varnothing \\
     \end{cases}`
 
 
@@ -220,13 +220,13 @@ The weighted undirected graph, :math:`G_u(V,E)`, is definied by:
 * the set of edges :math:`E`
 
   - :math:`E = \begin{cases}
-    \text{ }  \{(source_i, target_i, cost_i) \text{ when } cost >=0 \}  & \quad \text{ } \\
-    \cup      \{(target_i, source_i, cost_i) \text{ when } cost >=0 \}  & \quad \text{ if } reverse\_cost = \varnothing \\
-    \text{ }  \text{ }  & \text{ } \\
-    \text{ }  \{(source_i, target_i, cost_i) \text{ when } cost >=0 \} & \text{ } \\
-    \cup  \{(target_i, source_i, cost_i) \text{ when } cost >=0 \} & \text{ } \\
-    \cup  \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} & \text{ } \\
-    \cup  \{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} & \quad \text{ if } reverse\_cost \neq \varnothing \\
+    \text{ } \{(source_i, target_i, cost_i) \text{ when } cost >=0 \}  & \quad \text{ } \\
+    \cup \{(target_i, source_i, cost_i) \text{ when } cost >=0 \}  & \quad \text{ if } reverse\_cost = \varnothing \\
+    \text{ } \text{ }  & \text{ } \\
+    \text{ } \{(source_i, target_i, cost_i) \text{ when } cost >=0 \} & \text{ } \\
+    \cup \{(target_i, source_i, cost_i) \text{ when } cost >=0 \} & \text{ } \\
+    \cup \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} & \text{ } \\
+    \cup \{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0)\} & \quad \text{ if } reverse\_cost \neq \varnothing \\
     \end{cases}`
 
 
