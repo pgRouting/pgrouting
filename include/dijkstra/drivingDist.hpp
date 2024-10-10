@@ -238,7 +238,7 @@ class Pgr_dijkstra {
 
         /* The result is empty */
         Path p(start_vertex, start_vertex);
-        p.push_back({start_vertex, -1, 0, 0});
+        p.push_back({start_vertex, -1, 0, 0, 0});
         return p;
      }
 

@@ -313,8 +313,8 @@ PGDLLEXPORT Datum _pgr_withpointsksp(PG_FUNCTION_ARGS) {
             }
         }
 
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int32GetDatum(path_id);
+        values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
+        values[1] = Int32GetDatum((int32_t)path_id);
         values[2] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
         if (PG_NARGS() != 9) {
             values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id);
