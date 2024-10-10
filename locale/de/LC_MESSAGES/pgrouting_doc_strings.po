@@ -4,9 +4,9 @@
 # Regina Obe <regina@arrival3d.com>, 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.6.0-dev\n"
+"Project-Id-Version: pgRouting v3.6.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-19 19:56+0000\n"
+"POT-Creation-Date: 2024-10-10 03:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -261,8 +261,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"`Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim"
-"%27s_algorithm>`__"
+"`Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/"
+"Prim%27s_algorithm>`__"
 msgstr ""
 
 msgid ""
@@ -1446,7 +1446,7 @@ msgstr ""
 msgid "16.5"
 msgstr ""
 
-msgid ":math:`10.5 / 60  = 0.175`"
+msgid ":math:`10.5 / 60 = 0.175`"
 msgstr ""
 
 msgid "minutes"
@@ -2644,8 +2644,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"The **aggregate cost** the non included values :math:`(u, v)` is :math:`"
-"\\infty`"
+"The **aggregate cost** the non included values :math:`(u, v)` is :math:"
+"`\\infty`"
 msgstr ""
 
 msgid ""
@@ -2750,10 +2750,6 @@ msgstr ""
 msgid ""
 "`Boost: Edge Coloring Algorithm documentation <https://www.boost.org/libs/"
 "graph/doc/edge_coloring.html>`__"
-msgstr ""
-
-msgid ""
-"`Wikipedia: Graph Coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__"
 msgstr ""
 
 msgid "Components - Family of functions"
@@ -3373,13 +3369,13 @@ msgstr ""
 msgid ":doc:`pgr_aStarCostMatrix`"
 msgstr ""
 
+msgid ":doc:`pgr_dijkstraCostMatrix`"
+msgstr ""
+
 msgid ":doc:`pgr_bdAstarCostMatrix`"
 msgstr ""
 
 msgid ":doc:`pgr_bdDijkstraCostMatrix`"
-msgstr ""
-
-msgid ":doc:`pgr_dijkstraCostMatrix`"
 msgstr ""
 
 msgid "proposed"
@@ -3401,8 +3397,8 @@ msgid "Can be used as input to :doc:`pgr_TSP`."
 msgstr ""
 
 msgid ""
-"Use directly when the resulting matrix is symmetric and there is no :math:`"
-"\\infty` value."
+"Use directly when the resulting matrix is symmetric and there is no :math:"
+"`\\infty` value."
 msgstr ""
 
 msgid "It will be the users responsibility to make the matrix symmetric."
@@ -3659,11 +3655,11 @@ msgid "the set of edges :math:`E`"
 msgstr ""
 
 msgid ""
-":math:`E = \\begin{cases} \\text{ }  \\{(source_i, target_i, cost_i) "
+":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, cost_i) "
 "\\text{ when } cost >=0 \\} & \\quad \\text{if } reverse\\_cost = "
-"\\varnothing \\\\ \\text{ }  \\text{ }  & \\quad \\text{ } \\\\ \\text{ }  "
+"\\varnothing \\\\ \\text{ } \\text{ }  & \\quad \\text{ } \\\\ \\text{ } "
 "\\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} &  \\quad "
-"\\text{ } \\\\ \\cup      \\{(target_i, source_i, reverse\\_cost_i) "
+"\\text{ } \\\\ \\cup \\{(target_i, source_i, reverse\\_cost_i) "
 "\\text{ when } reverse\\_cost_i>=0 \\} & \\quad \\text{if } reverse\\_cost "
 "\\neq \\varnothing \\\\ \\end{cases}`"
 msgstr ""
@@ -3678,17 +3674,16 @@ msgid ":math:`V = source \\cup target \\cup {start_v{vid}} \\cup  {end_{vid}}`"
 msgstr ""
 
 msgid ""
-":math:`E = \\begin{cases} \\text{ }  \\{(source_i, target_i, cost_i) "
-"\\text{ when } cost >=0 \\}  & \\quad \\text{ } \\\\ \\cup      "
-"\\{(target_i, source_i, cost_i) \\text{ when } cost >=0 \\}  & \\quad "
-"\\text{ if } reverse\\_cost = \\varnothing \\\\ \\text{ }  \\text{ }  & "
-"\\text{ } \\\\ \\text{ }  \\{(source_i, target_i, cost_i) \\text{ when } "
-"cost >=0 \\} & \\text{ } \\\\ \\cup  \\{(target_i, source_i, cost_i) "
-"\\text{ when } cost >=0 \\} & \\text{ } \\\\ \\cup  \\{(target_i, source_i, "
-"reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} & \\text{ } \\\\ "
-"\\cup  \\{(source_i, target_i, reverse\\_cost_i) \\text{ when } reverse"
-"\\_cost_i >=0)\\} & \\quad \\text{ if } reverse\\_cost \\neq \\varnothing \\"
-"\\ \\end{cases}`"
+":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, cost_i) "
+"\\text{ when } cost >=0 \\}  & \\quad \\text{ } \\\\ \\cup \\{(target_i, "
+"source_i, cost_i) \\text{ when } cost >=0 \\}  & \\quad \\text{ if } "
+"reverse\\_cost = \\varnothing \\\\ \\text{ } \\text{ }  & \\text{ } \\\\ "
+"\\text{ } \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} & "
+"\\text{ } \\\\ \\cup \\{(target_i, source_i, cost_i) \\text{ when } cost >=0 "
+"\\} & \\text{ } \\\\ \\cup \\{(target_i, source_i, reverse\\_cost_i) "
+"\\text{ when } reverse\\_cost_i >=0)\\} & \\text{ } \\\\ \\cup \\{(source_i, "
+"target_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} & \\quad "
+"\\text{ if } reverse\\_cost \\neq \\varnothing \\\\ \\end{cases}`"
 msgstr ""
 
 msgid "The problem"
@@ -3712,8 +3707,8 @@ msgid "Then:"
 msgstr ""
 
 msgid ""
-":math:`\\boldsymbol{\\pi} = \\{(path\\_seq_i, node_i, edge_i, cost_i, agg"
-"\\_cost_i)\\}`"
+":math:`\\boldsymbol{\\pi} = \\{(path\\_seq_i, node_i, edge_i, cost_i, "
+"agg\\_cost_i)\\}`"
 msgstr ""
 
 msgid "where:"
@@ -3857,11 +3852,6 @@ msgstr ""
 msgid "Identifier of the ``edge`` used to arrive from ``pred`` to ``node``."
 msgstr ""
 
-msgid ""
-"Column ``pred`` only applies to :doc:`pgr_drivingDistance` and :doc:"
-"`pgr_withPointsDD`."
-msgstr ""
-
 msgid "Experimental Functions"
 msgstr ""
 
@@ -3884,10 +3874,6 @@ msgid ":doc:`coloring-family`"
 msgstr ""
 
 msgid ":doc:`transformation-family`"
-msgstr ""
-
-msgid ""
-":doc:`pgr_lineGraph` - Transformation algorithm for generating a Line Graph."
 msgstr ""
 
 msgid ""
@@ -3916,6 +3902,14 @@ msgstr ""
 msgid ""
 ":doc:`pgr_cuthillMckeeOrdering` - Return reverse Cuthill-McKee ordering of "
 "an undirected graph."
+msgstr ""
+
+msgid ":doc:`metrics-family`"
+msgstr ""
+
+msgid ""
+":doc:`pgr_betweennessCentrality` - Calculates relative betweenness "
+"centrality using Brandes Algorithm"
 msgstr ""
 
 msgid ":doc:`TRSP-family`"
@@ -4007,10 +4001,10 @@ msgid ""
 "returned."
 msgstr ""
 
-msgid "There is no flow when a **source** is the same as a **target**."
+msgid "There is no flow when source has the same vaule as target."
 msgstr ""
 
-msgid "Any duplicated value in the source(s) or target(s) are ignored."
+msgid "Any duplicated values in source or target are ignored."
 msgstr ""
 
 msgid "Calculates the flow/residual capacity for each edge. In the output"
@@ -4019,9 +4013,13 @@ msgstr ""
 msgid "Edges with zero flow are omitted."
 msgstr ""
 
-msgid ""
-"Creates a **super source** and edges to all the source(s), and a **super "
-"target** and the edges from all the targets(s)."
+msgid "Creates"
+msgstr ""
+
+msgid "a **super source** and edges from it to all the sources,"
+msgstr ""
+
+msgid "a **super target** and edges from it to all the targetss."
 msgstr ""
 
 msgid ""
@@ -4172,8 +4170,8 @@ msgid "pgr_maxFlow :math:`(edges\\_sql, source\\_vertex, sink\\_vertex)`"
 msgstr ""
 
 msgid ""
-"where :math:`edges\\_sql = \\{(id_i, source_i, target_i, capacity_i, reverse"
-"\\_capacity_i)\\}`"
+"where :math:`edges\\_sql = \\{(id_i, source_i, target_i, capacity_i, "
+"reverse\\_capacity_i)\\}`"
 msgstr ""
 
 msgid "Graph definition"
@@ -4195,8 +4193,8 @@ msgid ""
 "\\text{ when } capacity > 0 \\} & \\quad  \\text{ if } reverse\\_capacity = "
 "\\varnothing \\\\ \\text{ } & \\quad \\text{ } \\\\ \\{(source_i, target_i, "
 "capacity_i) \\text{ when } capacity > 0 \\} & \\text{ } \\\\ \\cup "
-"\\{(target_i, source_i, reverse\\_capacity_i) \\text{ when } reverse"
-"\\_capacity_i > 0)\\} & \\quad \\text{ if } reverse\\_capacity \\neq "
+"\\{(target_i, source_i, reverse\\_capacity_i) \\text{ when } "
+"reverse\\_capacity_i > 0)\\} & \\quad \\text{ if } reverse\\_capacity \\neq "
 "\\varnothing \\\\ \\end{cases}`"
 msgstr ""
 
@@ -4377,6 +4375,111 @@ msgstr ""
 msgid ":doc:`release_notes`"
 msgstr ""
 
+msgid "pgRouting 3.7.0 Release Notes"
+msgstr ""
+
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git closed "
+"milestone for 3.7.0 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
+msgstr ""
+
+msgid "Support"
+msgstr ""
+
+msgid ""
+"`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stop support of "
+"PostgreSQL12 on pgrouting v3.7"
+msgstr ""
+
+msgid "Stopping support of PostgreSQL 12"
+msgstr ""
+
+msgid "CI does not test for PostgreSQL 12"
+msgstr ""
+
+msgid "New experimental functions"
+msgstr ""
+
+msgid "Metrics"
+msgstr ""
+
+msgid "pgr_betweennessCentrality"
+msgstr ""
+
+msgid "Official functions changes"
+msgstr ""
+
+msgid ""
+"`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standarize "
+"spanning tree functions output"
+msgstr ""
+
+msgid "Functions:"
+msgstr ""
+
+msgid "``pgr_kruskalDD``"
+msgstr ""
+
+msgid "``pgr_kruskalDFS``"
+msgstr ""
+
+msgid "``pgr_kruskalBFS``"
+msgstr ""
+
+msgid "``pgr_primDD``"
+msgstr ""
+
+msgid "``pgr_primDFS``"
+msgstr ""
+
+msgid "``pgr_primBFS``"
+msgstr ""
+
+msgid "Standarizing output columns to |result-spantree|"
+msgstr ""
+
+msgid "Added ``pred`` result columns."
+msgstr ""
+
+msgid "Experimental promoted to proposed."
+msgstr ""
+
+msgid ""
+"`#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ pgr_LineGraph "
+"ignores directed flag and use negative values for identifiers."
+msgstr ""
+
+msgid "``pgr_lineGraph``"
+msgstr ""
+
+msgid "Promoted to **proposed** signature."
+msgstr ""
+
+msgid "Works for directed and undirected graphs."
+msgstr ""
+
+msgid "Code enhancement"
+msgstr ""
+
+msgid ""
+"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Driving "
+"distance cleanup"
+msgstr ""
+
+msgid ""
+"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Read postgresql "
+"data on C++"
+msgstr ""
+
+msgid ""
+"`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy does "
+"not work"
+msgstr ""
+
+msgid "All releases"
+msgstr ""
+
 msgid "Kruskal - Family of functions"
 msgstr ""
 
@@ -4396,6 +4499,9 @@ msgid "The total weight of all the edges in the tree or forest is minimized."
 msgstr ""
 
 msgid "Kruskal's running time: :math:`O(E * log E)`"
+msgstr ""
+
+msgid "Metrics - Family of functions"
 msgstr ""
 
 msgid "Migration guide"
@@ -4461,7 +4567,7 @@ msgstr ""
 msgid "Migration"
 msgstr ""
 
-msgid "Be aware of the existance of the additional columns."
+msgid "Be aware of the existence of the additional columns."
 msgstr ""
 
 msgid "In ``pgr_aStar`` (`One to One`)"
@@ -4575,7 +4681,7 @@ msgstr ""
 
 msgid ""
 "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :"
-"doc:`pgr_drivingDistance` result columns are being standarized."
+"doc:`pgr_drivingDistance` result columns are being standardized."
 msgstr ""
 
 msgid "from"
@@ -4608,7 +4714,7 @@ msgstr ""
 msgid "does not have ``depth`` result column."
 msgstr ""
 
-msgid "Be aware of the existance and name change of the result columns."
+msgid "Be aware of the existence and name change of the result columns."
 msgstr ""
 
 msgid ""
@@ -4636,8 +4742,67 @@ msgid "The ``from_v`` result column name changes to ``start_vid``."
 msgstr ""
 
 msgid ""
-"If needed filter out and rename colums, for example, to return the original "
+"If needed filter out and rename columns, for example, to return the original "
 "columns:"
+msgstr ""
+
+msgid ""
+"Migration of ``pgr_kruskalDD`` / ``pgr_kruskalBFS`` / ``pgr_kruskalDFS``"
+msgstr ""
+
+msgid ""
+"Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__ :"
+"doc:`pgr_kruskalDD`, :doc:`pgr_kruskalBFS` and :doc:`pgr_kruskalDFS` result "
+"columns are being standardized."
+msgstr ""
+
+msgid "|result-bfs|"
+msgstr ""
+
+msgid "Single vertex"
+msgstr ""
+
+msgid "Multiple vertices"
+msgstr ""
+
+msgid "Output columns were |result-bfs|"
+msgstr ""
+
+msgid "Single vertex and Multiple vertices"
+msgstr ""
+
+msgid "Do not have ``pred`` result column."
+msgstr ""
+
+msgid "Be aware of the existence of `pred` result columns."
+msgstr ""
+
+msgid "If needed filter out the added columns"
+msgstr ""
+
+msgid "Kruskal single vertex"
+msgstr ""
+
+msgid ""
+"Using ``pgr_KruskalDD`` as example. Migration is similar to al the affected "
+"functions."
+msgstr ""
+
+msgid ""
+"Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_kruskalDD."
+"html#single-vertex>`__ example."
+msgstr ""
+
+msgid ""
+"Now column ``pred`` exists and contains the predecessor of the ``node``."
+msgstr ""
+
+msgid "Kruskal multiple vertices"
+msgstr ""
+
+msgid ""
+"Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_kruskalDD."
+"html#multiple-vertex>`__ example."
 msgstr ""
 
 msgid "Migration of ``pgr_KSP``"
@@ -4645,7 +4810,7 @@ msgstr ""
 
 msgid ""
 "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :"
-"doc:`pgr_KSP` result columns are being standarized."
+"doc:`pgr_KSP` result columns are being standardized."
 msgstr ""
 
 msgid "|ksp-result|"
@@ -4744,12 +4909,42 @@ msgstr ""
 msgid "In the query returns only ``edge`` column."
 msgstr ""
 
+msgid "Migration of ``pgr_primDD`` / ``pgr_primBFS`` / ``pgr_primDFS``"
+msgstr ""
+
+msgid ""
+"Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__ :"
+"doc:`pgr_primDD`, :doc:`pgr_primBFS` and :doc:`pgr_primDFS` result columns "
+"are being standardized."
+msgstr ""
+
+msgid "Prim single vertex"
+msgstr ""
+
+msgid ""
+"Using ``pgr_primDD`` as example. Migration is similar to al the affected "
+"functions."
+msgstr ""
+
+msgid ""
+"Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_primDD."
+"html#single-vertex>`__ example."
+msgstr ""
+
+msgid "Prim multiple vertices"
+msgstr ""
+
+msgid ""
+"Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_primDD."
+"html#multiple-vertex>`__ example."
+msgstr ""
+
 msgid "Migration of ``pgr_withPointsDD``"
 msgstr ""
 
 msgid ""
 "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :"
-"doc:`pgr_withPointsDD` result columns are being standarized."
+"doc:`pgr_withPointsDD` result columns are being standardized."
 msgstr ""
 
 msgid "|result-generic-no-seq|"
@@ -4774,7 +4969,7 @@ msgid "Does not have ``start_vid``, ``pred`` and ``depth`` result columns."
 msgstr ""
 
 msgid ""
-"``driving_side`` parameter was named optional now it is compulsory unamed."
+"``driving_side`` parameter was named optional now it is compulsory unnamed."
 msgstr ""
 
 msgid "``pgr_withPointsDD`` (`Multiple vertices`)"
@@ -4825,7 +5020,7 @@ msgstr ""
 msgid "After Migration"
 msgstr ""
 
-msgid "Be aware of the existance of the additional result Columns."
+msgid "Be aware of the existence of the additional result Columns."
 msgstr ""
 
 msgid "New output columns are |result-spantree|"
@@ -4887,7 +5082,7 @@ msgstr ""
 
 msgid ""
 "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :"
-"doc:`pgr_withPointsKSP` result columns are being standarized."
+"doc:`pgr_withPointsKSP` result columns are being standardized."
 msgstr ""
 
 msgid ""
@@ -5473,8 +5668,8 @@ msgstr ""
 msgid ""
 ":math:`E = \\begin{split} \\begin{align} & {\\{(source_{id}, target_{id}, "
 "cost_{id}) \\text{ when } cost_{id} >=0 \\}} \\\\ & \\cup \\\\ & "
-"{\\{(target_{id}, source_{id}, reverse\\_cost_{id}) \\text{ when } reverse"
-"\\_cost_{id} >=0 \\}} \\end{align} \\end{split}`"
+"{\\{(target_{id}, source_{id}, reverse\\_cost_{id}) \\text{ when } "
+"reverse\\_cost_{id} >=0 \\}} \\end{align} \\end{split}`"
 msgstr ""
 
 msgid ""
@@ -6348,8 +6543,8 @@ msgstr ""
 msgid ""
 "There are several kinds of valid inner queries and also the columns returned "
 "are depending of the function. Which kind of inner query will depend on the "
-"function(s) requirements. To simplify variety of types, **ANY-INTEGER** and "
-"**ANY-NUMERICAL** is used."
+"function's requirements. To simplify the variety of types, **ANY-INTEGER** "
+"and **ANY-NUMERICAL** is used."
 msgstr ""
 
 msgid "Edges SQL for"
@@ -6776,9 +6971,6 @@ msgid ""
 "pgrouting/releases/latest"
 msgstr ""
 
-msgid "wget"
-msgstr ""
-
 msgid "To download this release:"
 msgstr ""
 
@@ -6819,7 +7011,7 @@ msgid "Upgrading the database"
 msgstr ""
 
 msgid ""
-"To upgrade pgRouting in the database to version 3.6.0 use the following "
+"To upgrade pgRouting in the database to version 3.7.0 use the following "
 "command:"
 msgstr ""
 
@@ -7153,13 +7345,13 @@ msgstr ""
 msgid "This Release Contributors"
 msgstr ""
 
-msgid "Individuals in this release (in alphabetical order)"
+msgid "Individuals in this release v3.7.x (in alphabetical order)"
 msgstr ""
 
-msgid ""
-"Aniket Agarwal, Aryan Gupta, Ashish Kumar, Cayetano Benavent, Daniel Kastl, "
-"Nitish Chauhan, Rajat Shinde, Regina Obe, Shobhit Chaurasia, Swapnil Joshi, "
-"Virginia Vergara, Yige Huang"
+msgid "(Alphabetical order)"
+msgstr ""
+
+msgid "Regina Obe, Vicky Vergara"
 msgstr ""
 
 msgid ""
@@ -7176,7 +7368,10 @@ msgid ""
 "or direct monetary funding to the pgRouting project:"
 msgstr ""
 
-msgid "`Georepublic <https://georepublic.info/en/>`__"
+msgid "`OSGeo <https://www.osgeo.org>`__"
+msgstr ""
+
+msgid "`OSGeo UK <https://uk.osgeo.org>`__"
 msgstr ""
 
 msgid "`Google Summer of Code <https://summerofcode.withgoogle.com>`__"
@@ -7230,6 +7425,12 @@ msgstr ""
 msgid "Orkney"
 msgstr ""
 
+msgid "OSGeo"
+msgstr ""
+
+msgid "OSGeo UK"
+msgstr ""
+
 msgid "Paragon Corporation"
 msgstr ""
 
@@ -7255,9 +7456,7 @@ msgstr ""
 msgid "Boost C++ source libraries at https://www.boost.org."
 msgstr ""
 
-msgid ""
-"The Migration guide from 2.6 can be found at https://github.com/pgRouting/"
-"pgrouting/wiki/Migration-Guide."
+msgid ":doc:`migration`"
 msgstr ""
 
 msgid "pgr_KSP"
@@ -7881,8 +8080,7 @@ msgid "pgr_aStarCost"
 msgstr ""
 
 msgid ""
-"``pgr_aStarCost`` - Total cost of the shortest path(s) using the A* "
-"algorithm."
+"``pgr_aStarCost`` - Total cost of the shortest path using the A* algorithm."
 msgstr ""
 
 msgid "``pgr_aStarCost`` (`Combinations`_)"
@@ -7892,7 +8090,7 @@ msgid "New **proposed** function"
 msgstr ""
 
 msgid ""
-"The ``pgr_aStarCost`` function sumarizes of the cost of the shortest path(s) "
+"The ``pgr_aStarCost`` function sumarizes of the cost of the shortest path "
 "using the A* algorithm."
 msgstr ""
 
@@ -8006,9 +8204,6 @@ msgid "Support to return multiple outer/inner ring"
 msgstr ""
 
 msgid "Renamed from version 1.x"
-msgstr ""
-
-msgid "Support"
 msgstr ""
 
 msgid "Returns the polygon part of an alpha shape."
@@ -8608,7 +8803,7 @@ msgid "pgr_bdAstarCost"
 msgstr ""
 
 msgid ""
-"``pgr_bdAstarCost`` - Total cost of the shortest path(s) using the "
+"``pgr_bdAstarCost`` - Total cost of the shortest path using the "
 "bidirectional A* algorithm."
 msgstr ""
 
@@ -8616,8 +8811,8 @@ msgid "``pgr_bdAstarCost`` (`Combinations`_)"
 msgstr ""
 
 msgid ""
-"The ``pgr_bdAstarCost`` function sumarizes of the cost of the shortest "
-"path(s) using the bidirectional A* algorithm."
+"The ``pgr_bdAstarCost`` function sumarizes of the cost of the shortest path "
+"using the bidirectional A* algorithm."
 msgstr ""
 
 msgid ""
@@ -8657,8 +8852,8 @@ msgid "``pgr_bdDijkstra``"
 msgstr ""
 
 msgid ""
-"``pgr_bdDijkstra`` — Returns the shortest path(s) using Bidirectional "
-"Dijkstra algorithm."
+"``pgr_bdDijkstra`` — Returns the shortest path using Bidirectional Dijkstra "
+"algorithm."
 msgstr ""
 
 msgid "pgr_bdDijkstra(`Combinations`_)"
@@ -8698,7 +8893,7 @@ msgid ""
 "pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vids**, [``directed``])"
 msgstr ""
 
-msgid "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_ , [``directed``])"
+msgid "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
 
 msgid "Returns set of |old-generic-result|"
@@ -8730,15 +8925,12 @@ msgid ""
 "**undirected** graph"
 msgstr ""
 
-msgid "pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
-msgstr ""
-
 msgid "Using a combinations table on an **undirected** graph"
 msgstr ""
 
 msgid ""
-"https://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP"
-"%20shortest%20path%20algorithms.pdf"
+"https://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/"
+"EPP%20shortest%20path%20algorithms.pdf"
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/Bidirectional_search"
@@ -8748,7 +8940,7 @@ msgid "``pgr_bdDijkstraCost``"
 msgstr ""
 
 msgid ""
-"``pgr_bdDijkstraCost`` — Returns the shortest path(s)'s cost using "
+"``pgr_bdDijkstraCost`` — Returns the shortest path's cost using "
 "Bidirectional Dijkstra algorithm."
 msgstr ""
 
@@ -8810,7 +9002,7 @@ msgstr ""
 msgid "``pgr_bellmanFord - Experimental``"
 msgstr ""
 
-msgid "``pgr_bellmanFord`` — Shortest path(s) using Bellman-Ford algorithm."
+msgid "``pgr_bellmanFord`` — Shortest path using Bellman-Ford algorithm."
 msgstr ""
 
 msgid "New **experimental** signature:"
@@ -8909,6 +9101,96 @@ msgstr ""
 msgid "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
 msgstr ""
 
+msgid "``pgr_betweennessCentrality``"
+msgstr ""
+
+msgid ""
+"``pgr_betweennessCentrality`` - Calculates the relative betweeness "
+"centrality using Brandes Algorithm"
+msgstr ""
+
+msgid "Version 3.7.0"
+msgstr ""
+
+msgid "New **experimental** function:"
+msgstr ""
+
+msgid ""
+"The Brandes Algorithm takes advantage of the sparse graphs for evaluating "
+"the betweenness centrality score of all vertices."
+msgstr ""
+
+msgid ""
+"Betweenness centrality measures the extent to which a vertex lies on the "
+"shortest paths between all other pairs of vertices. Vertices with a high "
+"betweenness centrality score may have considerable influence in a network by "
+"the virtue of their control over the shortest paths passing between them."
+msgstr ""
+
+msgid ""
+"The removal of these vertices will affect the network by disrupting the it, "
+"as most of the shortest paths between vertices pass through them."
+msgstr ""
+
+msgid "This implementation work for both directed and undirected graphs."
+msgstr ""
+
+msgid "Running time:  :math:`\\Theta(VE)`"
+msgstr ""
+
+msgid "Running space: :math:`\\Theta(VE)`"
+msgstr ""
+
+msgid "Throws when there are no edges in the graph"
+msgstr ""
+
+msgid "pgr_betweennessCentrality(`Edges SQL`_, [``directed``])"
+msgstr ""
+
+msgid "Returns set of ``(vid, centrality)``"
+msgstr ""
+
+msgid "For a directed graph with edges :math:`\\{1, 2, 3, 4\\}`."
+msgstr ""
+
+msgid "Explanation"
+msgstr ""
+
+msgid "The betweenness centrality are between parenthesis."
+msgstr ""
+
+msgid "The leaf vertices have betweenness centrality :math:`0`."
+msgstr ""
+
+msgid ""
+"Betweenness centrality of vertex :math:`6` is higher than of vertex :math:"
+"`10`."
+msgstr ""
+
+msgid "Removing vertex :math:`6` will create three graph components."
+msgstr ""
+
+msgid "Removing vertex :math:`10` will create two graph components."
+msgstr ""
+
+msgid "``vid``"
+msgstr ""
+
+msgid "``centrality``"
+msgstr ""
+
+msgid ""
+"Relative betweenness centrality score of the vertex (will be in range [0,1])"
+msgstr ""
+
+msgid ""
+"Boost's `betweenness_centrality <https://www.boost.org/doc/libs/1_84_0/libs/"
+"graph/doc/betweenness_centrality.html>`_"
+msgstr ""
+
+msgid "Queries use the :doc:`sampledata` network."
+msgstr ""
+
 msgid "``pgr_biconnectedComponents``"
 msgstr ""
 
@@ -8974,7 +9256,7 @@ msgid "``pgr_binaryBreadthFirstSearch`` - Experimental"
 msgstr ""
 
 msgid ""
-"``pgr_binaryBreadthFirstSearch`` — Returns the shortest path(s) in a binary "
+"``pgr_binaryBreadthFirstSearch`` — Returns the shortest path in a binary "
 "graph."
 msgstr ""
 
@@ -9113,8 +9395,9 @@ msgid "The odd length cyclic graph can not be bipartite."
 msgstr ""
 
 msgid ""
-"The edge :math:`5 \\rightarrow 1` will make subgraph with vertices :math:`"
-"\\{1, 3, 7, 6, 5\\}` an odd length cyclic graph, as the cycle has 5 vertices."
+"The edge :math:`5 \\rightarrow 1` will make subgraph with vertices :math:"
+"`\\{1, 3, 7, 6, 5\\}` an odd length cyclic graph, as the cycle has 5 "
+"vertices."
 msgstr ""
 
 msgid "Edges in blue represent odd length cycle subgraph."
@@ -9228,15 +9511,9 @@ msgstr ""
 msgid "Returns set of |result-bfs|"
 msgstr ""
 
-msgid "Single vertex"
-msgstr ""
-
 msgid ""
 "From root vertex :math:`6` on a **directed** graph with edges in ascending "
 "order of ``id``"
-msgstr ""
-
-msgid "Multiple vertices"
 msgstr ""
 
 msgid ""
@@ -10005,20 +10282,17 @@ msgid ""
 msgstr ""
 
 msgid ""
-"`Wikipedia: Cuthill-McKee Ordering <https://en.wikipedia.org/wiki/Cuthill"
-"%E2%80%93McKee_algorithm>`__"
+"`Wikipedia: Cuthill-McKee Ordering <https://en.wikipedia.org/wiki/"
+"Cuthill%E2%80%93McKee_algorithm>`__"
 msgstr ""
 
 msgid "pgr_dagShortestPath - Experimental"
 msgstr ""
 
 msgid ""
-"``pgr_dagShortestPath`` — Returns the shortest path(s) for weighted directed "
+"``pgr_dagShortestPath`` — Returns the shortest path for weighted directed "
 "acyclic graphs(DAG). In particular, the DAG shortest paths algorithm "
 "implemented by Boost.Graph."
-msgstr ""
-
-msgid "New **experimental** function:"
 msgstr ""
 
 msgid "pgr_dagShortestPath(Combinations)"
@@ -10288,7 +10562,7 @@ msgstr ""
 msgid "``pgr_dijkstra``"
 msgstr ""
 
-msgid "``pgr_dijkstra`` — Shortest path(s) using Dijkstra algorithm."
+msgid "``pgr_dijkstra`` — Shortest path using Dijkstra algorithm."
 msgstr ""
 
 msgid "Version 3.5.0"
@@ -10524,7 +10798,7 @@ msgid "``pgr_dijkstraCost``"
 msgstr ""
 
 msgid ""
-"``pgr_dijkstraCost`` - Total cost of the shortest path(s) using Dijkstra "
+"``pgr_dijkstraCost`` - Total cost of the shortest path using Dijkstra "
 "algorithm."
 msgstr ""
 
@@ -10532,8 +10806,8 @@ msgid "``pgr_dijkstraCost`` (`Combinations`_)"
 msgstr ""
 
 msgid ""
-"The ``pgr_dijkstraCost`` function sumarizes of the cost of the shortest "
-"path(s) using Dijkstra Algorithm."
+"The ``pgr_dijkstraCost`` function sumarizes of the cost of the shortest path "
+"using Dijkstra Algorithm."
 msgstr ""
 
 msgid ""
@@ -10923,7 +11197,7 @@ msgstr ""
 
 msgid ""
 "Find the route that visits the vertices :math:`\\{5, 1, 8\\}` in that order "
-"on an **directed** graph."
+"on an directed graph."
 msgstr ""
 
 msgid "Via optional parameters"
@@ -10983,9 +11257,6 @@ msgstr ""
 
 msgid ""
 "``pgr_drivingDistance`` - Returns the driving distance from a start node."
-msgstr ""
-
-msgid "Standarizing output columns to |result-spantree|"
 msgstr ""
 
 msgid "Added ``depth`` and ``start_vid`` result columns."
@@ -12189,9 +12460,6 @@ msgstr ""
 msgid "Minimum spanning forest"
 msgstr ""
 
-msgid "``pgr_kruskalBFS``"
-msgstr ""
-
 msgid ""
 "``pgr_kruskalBFS`` — Kruskal's algorithm for Minimum Spanning Tree with "
 "breadth First Search ordering."
@@ -12220,9 +12488,6 @@ msgstr ""
 msgid ""
 "The Minimum Spanning Tree starting on vertices :math:`\\{9, 6\\}` with :math:"
 "`depth \\leq 3`"
-msgstr ""
-
-msgid "``pgr_kruskalDD``"
 msgstr ""
 
 msgid "``pgr_kruskalDD`` — Catchament nodes using Kruskal's algorithm."
@@ -12254,9 +12519,6 @@ msgstr ""
 msgid ""
 "The Minimum Spanning Tree starting on vertices :math:`\\{9, 6\\}` with :math:"
 "`distance \\leq 3.5`"
-msgstr ""
-
-msgid "``pgr_kruskalDFS``"
 msgstr ""
 
 msgid ""
@@ -12345,7 +12607,7 @@ msgid ""
 "Dominator_(graph_theory)>`__"
 msgstr ""
 
-msgid "``pgr_lineGraph`` - Experimental"
+msgid "pgr_lineGraph - Proposed"
 msgstr ""
 
 msgid ""
@@ -12353,15 +12615,35 @@ msgid ""
 "based graph."
 msgstr ""
 
-msgid "Given a graph G, its line graph L(G) is a graph such that:"
+msgid ""
+"Given a graph :math:`G`, its line graph :math:`L(G)` is a graph such that:"
 msgstr ""
 
-msgid "Each vertex of L(G) represents an edge of G"
+msgid "Each vertex of :math:`L(G)` represents an edge of :math:`G`."
 msgstr ""
 
 msgid ""
-"Two vertices of L(G) are adjacent if and only if their corresponding edges "
-"share a common endpoint in G."
+"Two vertices of :math:`L(G)` are adjacent if and only if their corresponding "
+"edges share a common endpoint in :math:`G`"
+msgstr ""
+
+msgid ""
+"The ``cost`` and ``reverse_cost`` columns of the result represent existence "
+"of the edge."
+msgstr ""
+
+msgid "When the graph is directed the result is directed."
+msgstr ""
+
+msgid ""
+"To get the complete Line Graph use unique identifiers on the double way "
+"edges (See `Additional Examples`_)."
+msgstr ""
+
+msgid "When the graph is undirected the result is undirected."
+msgstr ""
+
+msgid "The ``reverse_cost`` is always :math:`-1`."
 msgstr ""
 
 msgid "pgr_lineGraph(`Edges SQL`_, [``directed``])"
@@ -12370,7 +12652,7 @@ msgstr ""
 msgid "Returns set of |result-lineg|"
 msgstr ""
 
-msgid "For a **directed** graph"
+msgid "For an undirected graph with edges :math:'{2,4,5,8}'"
 msgstr ""
 
 msgid "Gives a local identifier for the edge"
@@ -12404,7 +12686,132 @@ msgid ""
 "it’s not part of the graph."
 msgstr ""
 
-msgid "https://en.wikipedia.org/wiki/Line_graph"
+msgid "Given the following directed graph"
+msgstr ""
+
+msgid ""
+":math:`G(V,E) = G(\\{1,2,3,4\\},\\{ 1 \\rightarrow 2, 1 \\rightarrow 4, 2 "
+"\\rightarrow 3, 3 \\rightarrow 1, 3 \\rightarrow 2, 3 \\rightarrow 4, 4 "
+"\\rightarrow 3\\})`"
+msgstr ""
+
+msgid "Representation as directed with shared edge identifiers"
+msgstr ""
+
+msgid ""
+"For the simplicity, the design of the edges table on the database, has the "
+"edge's identifiers are represented with 3 digits:"
+msgstr ""
+
+msgid "hundreds"
+msgstr ""
+
+msgid "the source vertex"
+msgstr ""
+
+msgid "tens"
+msgstr ""
+
+msgid "always 0, acts as a separator"
+msgstr ""
+
+msgid "units"
+msgstr ""
+
+msgid "the target vertex"
+msgstr ""
+
+msgid "In this image,"
+msgstr ""
+
+msgid ""
+"Single or double head arrows represent one edge (row) on the edges table."
+msgstr ""
+
+msgid "The numbers in the yellow shadow are the edge identifiers."
+msgstr ""
+
+msgid ""
+"Two pair of edges share the same identifier when the ``reverse_cost`` column "
+"is used."
+msgstr ""
+
+msgid ""
+"Edges :math:`{2 \\rightarrow 3, 3 \\rightarrow 2}` are represented with one "
+"edge row with :math:`id=203`."
+msgstr ""
+
+msgid ""
+"Edges :math:`{3 \\rightarrow 4, 4 \\rightarrow 3}` are represented with one "
+"edge row with :math:`id=304`."
+msgstr ""
+
+msgid "The graph can be created as follows:"
+msgstr ""
+
+msgid "Line Graph of a directed graph represented with shared edges"
+msgstr ""
+
+msgid "The result is a directed graph."
+msgstr ""
+
+msgid ""
+"For :math:`seq=4` from :math:`203 \\leftrightarrow 304` represent two edges"
+msgstr ""
+
+msgid "For all the other values of ``seq`` represent one edge."
+msgstr ""
+
+msgid ""
+"The ``cost`` and ``reverse_cost`` values represent the existence of the edge."
+msgstr ""
+
+msgid "When positive: the edge exists."
+msgstr ""
+
+msgid "When negative: the edge does not exist."
+msgstr ""
+
+msgid "Representation as directed with unique edge identifiers"
+msgstr ""
+
+msgid "Single head arrows represent one edge (row) on the edges table."
+msgstr ""
+
+msgid "There are no double head arrows"
+msgstr ""
+
+msgid ""
+"Two pair of edges share the same ending nodes and the ``reverse_cost`` "
+"column is not used."
+msgstr ""
+
+msgid ""
+"Edges :math:`{2 \\rightarrow 3, 3 \\rightarrow 2}` are represented with two "
+"edges :math:`id=203` and :math:`id=302` respectively."
+msgstr ""
+
+msgid ""
+"Edges :math:`{3 \\rightarrow 4, 4 \\rightarrow 3}` are represented with two "
+"edges :math:`id=304` and :math:`id=403` respectively."
+msgstr ""
+
+msgid "Line Graph of a directed graph represented with unique edges"
+msgstr ""
+
+msgid ""
+"For :math:`seq=7` from :math:`203 \\leftrightarrow 302` represent two edges."
+msgstr ""
+
+msgid ""
+"For :math:`seq=8` from :math:`304 \\leftrightarrow 403` represent two edges."
+msgstr ""
+
+msgid "wikipedia: `Line Graph <https://en.wikipedia.org/wiki/Line_graph>`__"
+msgstr ""
+
+msgid ""
+"mathworld: `Line Graph <https://mathworld.wolfram.com/LineGraph.html>`__"
 msgstr ""
 
 msgid "``pgr_lineGraphFull`` - Experimental"
@@ -12651,6 +13058,9 @@ msgstr ""
 msgid "Routing from :math:`5` to :math:`1`"
 msgstr ""
 
+msgid "https://en.wikipedia.org/wiki/Line_graph"
+msgstr ""
+
 msgid "https://en.wikipedia.org/wiki/Complete_graph"
 msgstr ""
 
@@ -12758,9 +13168,6 @@ msgstr ""
 msgid "Identifier of the edge in the original query."
 msgstr ""
 
-msgid ":doc:`migration`"
-msgstr ""
-
 msgid "https://www.boost.org/libs/graph/doc/maximum_matching.html"
 msgstr ""
 
@@ -12784,7 +13191,7 @@ msgstr ""
 msgid "New **Proposed** function"
 msgstr ""
 
-msgid "Calculates the maximum flow from the `source(s)` to the `target(s)`."
+msgid "Calculates the maximum flow from the sources to the targets."
 msgstr ""
 
 msgid ""
@@ -12986,7 +13393,7 @@ msgstr ""
 msgid "old_id"
 msgstr ""
 
-msgid "``bigint``  Identifier of the edge in original table"
+msgid "``bigint`` Identifier of the edge in original table"
 msgstr ""
 
 msgid "sub_id"
@@ -13081,7 +13488,7 @@ msgstr ""
 msgid "Edges with 1 dead end: 1,6,24"
 msgstr ""
 
-msgid "Edges with 2 dead ends  17,18"
+msgid "Edges with 2 dead ends: 17,18"
 msgstr ""
 
 msgid ""
@@ -13095,7 +13502,7 @@ msgstr ""
 msgid "Isolated segments"
 msgstr ""
 
-msgid "two isolated segments:  17 and 18 both they have 2 dead ends"
+msgid "two isolated segments: 17 and 18 both they have 2 dead ends"
 msgstr ""
 
 msgid "No Isolated segments"
@@ -13406,9 +13813,6 @@ msgid ""
 "prim_minimum_spanning_tree.html>`__"
 msgstr ""
 
-msgid "``pgr_primBFS``"
-msgstr ""
-
 msgid ""
 "``pgr_primBFS`` — Prim's algorithm for Minimum Spanning Tree with Depth "
 "First Search ordering."
@@ -13416,7 +13820,7 @@ msgstr ""
 
 msgid ""
 "Visits and extracts the nodes information in Breath First Search ordering of "
-"the Minimum Spanning Tree created with Prims's algorithm."
+"the Minimum Spanning Tree created using Prims's algorithm."
 msgstr ""
 
 msgid "pgr_primBFS(`Edges SQL`_, **root vid**, [``max_depth``])"
@@ -13425,25 +13829,19 @@ msgstr ""
 msgid "pgr_primBFS(`Edges SQL`_, **root vids**, [``max_depth``])"
 msgstr ""
 
-msgid "``pgr_primDD``"
-msgstr ""
-
 msgid "``pgr_primDD`` — Catchament nodes using Prim's algorithm."
 msgstr ""
 
 msgid ""
 "Using Prim's algorithm, extracts the nodes that have aggregate costs less "
-"than or equal to a **distance** from a **root** vertex (or vertices) within "
-"the calculated minimum spanning tree."
+"than or equal to a distance from a root vertex (or vertices) within the "
+"calculated minimum spanning tree."
 msgstr ""
 
 msgid "pgr_primDD(`Edges SQL`_, **root vid**, **distance**)"
 msgstr ""
 
 msgid "pgr_primDD(`Edges SQL`_, **root vids**, **distance**)"
-msgstr ""
-
-msgid "``pgr_primDFS``"
 msgstr ""
 
 msgid ""
@@ -13765,9 +14163,6 @@ msgstr ""
 msgid "Rechability of a subgraph"
 msgstr ""
 
-msgid "``vid``"
-msgstr ""
-
 msgid "Identifier of the source of the edges"
 msgstr ""
 
@@ -13940,11 +14335,6 @@ msgstr ""
 msgid ""
 "pgr_trspVia(`Edges SQL`_, `Restrictions SQL`_, **via vertices**, "
 "[**options**])"
-msgstr ""
-
-msgid ""
-"Find the route that visits the vertices :math:`\\{ 5, 1, 8\\}` in that order "
-"on an directed graph."
 msgstr ""
 
 msgid ""
@@ -14193,7 +14583,7 @@ msgstr ""
 
 msgid ""
 "Modify the graph to include points defined by points_sql. Using Dijkstra "
-"algorithm, find the shortest path(s)"
+"algorithm, find the shortest path"
 msgstr ""
 
 msgid "Characteristics:"
@@ -14538,7 +14928,7 @@ msgstr ""
 
 msgid ""
 "``pgr_withPointsCost`` - Calculates the shortest path and returns only the "
-"aggregate cost of the shortest path(s) found, for the combination of points "
+"aggregate cost of the shortest path found, for the combination of points "
 "given."
 msgstr ""
 
@@ -14547,7 +14937,7 @@ msgstr ""
 
 msgid ""
 "Modify the graph to include points defined by points_sql. Using Dijkstra "
-"algorithm, return only the aggregate cost of the shortest path(s) found."
+"algorithm, return only the aggregate cost of the shortest path found."
 msgstr ""
 
 msgid ""
@@ -15066,8 +15456,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Wikipedia: `Prim's algorithm <https://en.wikipedia.org/wiki/Prim"
-"%27s_algorithm>`__"
+"Wikipedia: `Prim's algorithm <https://en.wikipedia.org/wiki/"
+"Prim%27s_algorithm>`__"
 msgstr ""
 
 msgid "Proposed Functions"
@@ -15104,6 +15494,10 @@ msgid ""
 "table information."
 msgstr ""
 
+msgid ""
+":doc:`pgr_lineGraph` - Transformation algorithm for generating a Line Graph."
+msgstr ""
+
 msgid ":doc:`pgr_withPointsVia`"
 msgstr ""
 
@@ -15136,16 +15530,128 @@ msgid ""
 "github.com/pgRouting/pgrouting/commits>`_ on Github."
 msgstr ""
 
+msgid "Mayors"
+msgstr ""
+
+msgid "pgRouting 3"
+msgstr ""
+
+msgid "Minors 3.x"
+msgstr ""
+
+msgid "pgRouting 3.7"
+msgstr ""
+
+msgid "pgRouting 3.6"
+msgstr ""
+
+msgid "pgRouting 3.6.3 Release Notes"
+msgstr ""
+
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git closed "
+"milestone for 3.6.3 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.3%22>`__"
+msgstr ""
+
+msgid "Build"
+msgstr ""
+
+msgid "Explicit minimum requirements:"
+msgstr ""
+
+msgid "postgres 11.0.0"
+msgstr ""
+
+msgid "postgis 3.0.0"
+msgstr ""
+
+msgid "Code fixes"
+msgstr ""
+
+msgid "Fix warnings from cpplint."
+msgstr ""
+
+msgid "Fix warnings from clang 18."
+msgstr ""
+
+msgid "CI tests"
+msgstr ""
+
+msgid "Add a clang tidy test on changed files."
+msgstr ""
+
+msgid ""
+"Update test not done on versions: 3.0.1, 3.0.2, 3.0.3, 3.0.4, 3.1.0, 3.1.1, "
+"3.1.2"
+msgstr ""
+
+msgid "Documentation"
+msgstr ""
+
+msgid "Results of documentation queries adujsted to boost 1.83.0 version:"
+msgstr ""
+
+msgid "pgr_edgeDisjointPaths"
+msgstr ""
+
+msgid "pgr_stoerWagner"
+msgstr ""
+
+msgid "pgtap tests"
+msgstr ""
+
+msgid "bug fixes"
+msgstr ""
+
+msgid "pgRouting 3.6.2 Release Notes"
+msgstr ""
+
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git closed "
+"milestone for 3.6.2 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.2%22>`__"
+msgstr ""
+
+msgid "Upgrade fix"
+msgstr ""
+
+msgid "The upgrade was failing for same minor"
+msgstr ""
+
+msgid "Fix warnings from cpplint"
+msgstr ""
+
+msgid "Others"
+msgstr ""
+
+msgid "Adjust NEWS generator"
+msgstr ""
+
+msgid "Name change to `NEWS.md` for better visualization on GitHub"
+msgstr ""
+
+msgid "pgRouting 3.6.1 Release Notes"
+msgstr ""
+
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git closed "
+"milestone for 3.6.1 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.1%22>`_"
+msgstr ""
+
+msgid ""
+"`#2588 <https://github.com/pgRouting/pgrouting/pull/2588>`__ pgrouting 3.6.0 "
+"fails to build on OSX"
+msgstr ""
+
 msgid "pgRouting 3.6.0 Release Notes"
 msgstr ""
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.6.0%22>`_"
-msgstr ""
-
-msgid "Official functions changes"
+"milestone for 3.6.0 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.0%22>`_"
 msgstr ""
 
 msgid ""
@@ -15236,9 +15742,6 @@ msgid ""
 "simplification."
 msgstr ""
 
-msgid "Documentation"
-msgstr ""
-
 msgid ""
 "`#2490 <https://github.com/pgRouting/pgrouting/pull/2490>`__ Automatic page "
 "history links."
@@ -15256,13 +15759,16 @@ msgid ""
 "On new internal function: do not use named parameters and default parameters."
 msgstr ""
 
+msgid "pgRouting 3.5"
+msgstr ""
+
 msgid "pgRouting 3.5.1 Release Notes"
 msgstr ""
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.5.1 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.5.1%22>`_"
+"milestone for 3.5.1 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.1%22>`_"
 msgstr ""
 
 msgid "Documentation fixes"
@@ -15302,9 +15808,6 @@ msgid ""
 "wildcards on SQL"
 msgstr ""
 
-msgid "pgtap tests"
-msgstr ""
-
 msgid ""
 "`#2559 <https://github.com/pgRouting/pgrouting/issues/2559>`__ pgtap test "
 "using sampledata"
@@ -15314,9 +15817,6 @@ msgid "Build fixes"
 msgstr ""
 
 msgid "Fix winnie build"
-msgstr ""
-
-msgid "Code fixes"
 msgstr ""
 
 msgid "Fix clang warnings"
@@ -15330,8 +15830,8 @@ msgstr ""
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.5.0 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.5.0%22>`_"
+"milestone for 3.5.0 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.0%22>`_"
 msgstr ""
 
 msgid "Dijkstra"
@@ -15347,13 +15847,16 @@ msgstr ""
 msgid "``pgr_dijkstra`` (`Many to One`) added ``start_vid`` column."
 msgstr ""
 
+msgid "pgRouting 3.4"
+msgstr ""
+
 msgid "pgRouting 3.4.2 Release Notes"
 msgstr ""
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.4.2 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.4.2%22>`_"
+"milestone for 3.4.2 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.2%22>`_"
 msgstr ""
 
 msgid ""
@@ -15372,8 +15875,8 @@ msgstr ""
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.4.1 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.4.1%22>`_"
+"milestone for 3.4.1 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.1%22>`_"
 msgstr ""
 
 msgid ""
@@ -15391,8 +15894,8 @@ msgstr ""
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.4.0 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.4.0%22>`_"
+"milestone for 3.4.0 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.0%22>`_"
 msgstr ""
 
 msgid ""
@@ -15469,9 +15972,6 @@ msgstr ""
 msgid "``pgr_findCloseEdges`` (Many points)"
 msgstr ""
 
-msgid "New experimental functions"
-msgstr ""
-
 msgid "Ordering"
 msgstr ""
 
@@ -15496,6 +15996,9 @@ msgstr ""
 msgid "``pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)``"
 msgstr ""
 
+msgid "pgRouting 3.3"
+msgstr ""
+
 msgid "pgRouting 3.3.5 Release Notes"
 msgstr ""
 
@@ -15504,8 +16007,8 @@ msgstr ""
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.3.4 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.3.4%22>`_"
+"milestone for 3.3.4 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.4%22>`_"
 msgstr ""
 
 msgid ""
@@ -15518,8 +16021,8 @@ msgstr ""
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.3.3 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.3.3%22>`_"
+"milestone for 3.3.3 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.3%22>`_"
 msgstr ""
 
 msgid ""
@@ -15532,8 +16035,8 @@ msgstr ""
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.3.2 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.3.2%22>`_"
+"milestone for 3.3.2 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.2%22>`_"
 msgstr ""
 
 msgid "Revised documentation"
@@ -15586,8 +16089,8 @@ msgstr ""
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.3.1 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.3.1%22>`_ on Github."
+"milestone for 3.3.1 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.1%22>`_ on Github."
 msgstr ""
 
 msgid ""
@@ -15605,8 +16108,8 @@ msgstr ""
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.3.0 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.3.0%22>`_ on Github."
+"milestone for 3.3.0 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.0%22>`_ on Github."
 msgstr ""
 
 msgid ""
@@ -15688,13 +16191,16 @@ msgstr ""
 msgid "pgr_depthFirstSearch(Single vertex)"
 msgstr ""
 
+msgid "pgRouting 3.2"
+msgstr ""
+
 msgid "pgRouting 3.2.2 Release Notes"
 msgstr ""
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.2.2 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.2.2%22>`_ on Github."
+"milestone for 3.2.2 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.2%22>`_ on Github."
 msgstr ""
 
 msgid ""
@@ -15712,8 +16218,8 @@ msgstr ""
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.2.1 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.2.1%22>`_ on Github."
+"milestone for 3.2.1 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.1%22>`_ on Github."
 msgstr ""
 
 msgid ""
@@ -15737,11 +16243,8 @@ msgstr ""
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.2.0 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.2.0%22>`_ on Github."
-msgstr ""
-
-msgid "Build"
+"milestone for 3.2.0 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.0%22>`_ on Github."
 msgstr ""
 
 msgid ""
@@ -15824,13 +16327,16 @@ msgstr ""
 msgid "pgr_pushRelabel(Combinations)"
 msgstr ""
 
+msgid "pgRouting 3.1"
+msgstr ""
+
 msgid "pgRouting 3.1.4 Release Notes"
 msgstr ""
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.1.4 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.1.4%22>`_ on Github."
+"milestone for 3.1.4 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.4%22>`_ on Github."
 msgstr ""
 
 msgid "Issues fixes"
@@ -15841,8 +16347,8 @@ msgstr ""
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.1.3 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.1.3%22>`_ on Github."
+"milestone for 3.1.3 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.3%22>`_ on Github."
 msgstr ""
 
 msgid ""
@@ -15865,8 +16371,8 @@ msgstr ""
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.1.2 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.1.2%22>`_ on Github."
+"milestone for 3.1.2 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.2%22>`_ on Github."
 msgstr ""
 
 msgid ""
@@ -15899,8 +16405,8 @@ msgstr ""
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.1.1 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.1.1%22>`_ on Github."
+"milestone for 3.1.1 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.1%22>`_ on Github."
 msgstr ""
 
 msgid ""
@@ -15933,8 +16439,8 @@ msgstr ""
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.1.0%22>`_ on Github."
+"milestone for 3.1.0 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.0%22>`_ on Github."
 msgstr ""
 
 msgid "pgr_dijkstra(combinations)"
@@ -15949,13 +16455,16 @@ msgstr ""
 msgid "Minimal requirement for Sphinx: version 1.8"
 msgstr ""
 
+msgid "pgRouting 3.0"
+msgstr ""
+
 msgid "pgRouting 3.0.6 Release Notes"
 msgstr ""
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.0.6 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.0.6%22>`_ on Github."
+"milestone for 3.0.6 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.6%22>`_ on Github."
 msgstr ""
 
 msgid "pgRouting 3.0.5 Release Notes"
@@ -15963,8 +16472,8 @@ msgstr ""
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.0.5 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.0.5%22>`_ on Github."
+"milestone for 3.0.5 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.5%22>`_ on Github."
 msgstr ""
 
 msgid "Backport issue fixes"
@@ -15975,8 +16484,8 @@ msgstr ""
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.0.4 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`_ on Github."
+"milestone for 3.0.4 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`_ on Github."
 msgstr ""
 
 msgid "pgRouting 3.0.3 Release Notes"
@@ -15987,8 +16496,8 @@ msgstr ""
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.0.2 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`_ on Github."
+"milestone for 3.0.2 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`_ on Github."
 msgstr ""
 
 msgid ""
@@ -16001,8 +16510,8 @@ msgstr ""
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.0.1%22>`_ on Github."
+"milestone for 3.0.1 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.1%22>`_ on Github."
 msgstr ""
 
 msgid ""
@@ -16015,8 +16524,8 @@ msgstr ""
 
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8="
-"%E2%9C%93&q=milestone%3A%22Release%203.0.0%22>`_ on Github."
+"milestone for 3.0.0 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.0%22>`_ on Github."
 msgstr ""
 
 msgid "Fixed Issues"
@@ -16286,9 +16795,6 @@ msgstr ""
 msgid "pgr_turnRestrictedPath"
 msgstr ""
 
-msgid "pgr_stoerWagner"
-msgstr ""
-
 msgid "pgr_dagShortestpath"
 msgstr ""
 
@@ -16370,13 +16876,22 @@ msgstr ""
 msgid "pgr_alphaShape old signature"
 msgstr ""
 
+msgid "pgRouting 2"
+msgstr ""
+
+msgid "Minors 2.x"
+msgstr ""
+
+msgid "pgRouting 2.6"
+msgstr ""
+
 msgid "pgRouting 2.6.3 Release Notes"
 msgstr ""
 
 msgid ""
 "To see the issues closed by this release see the `Git closed milestone for "
-"2.6.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
-"%93&q=milestone%3A%22Release%202.6.3%22%20>`_ on Github."
+"2.6.3 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.3%22%20>`_ on Github."
 msgstr ""
 
 msgid ""
@@ -16399,8 +16914,8 @@ msgstr ""
 
 msgid ""
 "To see the issues closed by this release see the `Git closed milestone for "
-"2.6.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
-"%93&q=milestone%3A%22Release%202.6.2%22%20>`_ on Github."
+"2.6.2 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.2%22%20>`_ on Github."
 msgstr ""
 
 msgid ""
@@ -16423,8 +16938,8 @@ msgstr ""
 
 msgid ""
 "To see the issues closed by this release see the `Git closed milestone for "
-"2.6.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
-"%93&q=milestone%3A%22Release%202.6.1%22%20>`_ on Github."
+"2.6.1 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.1%22%20>`_ on Github."
 msgstr ""
 
 msgid "Fixes server crash on several functions."
@@ -16516,8 +17031,8 @@ msgstr ""
 
 msgid ""
 "To see the issues closed by this release see the `Git closed milestone for "
-"2.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
-"%93&q=milestone%3A%22Release%202.6.0%22%20>`_ on Github."
+"2.6.0 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22%20>`_ on Github."
 msgstr ""
 
 msgid "pgr_lineGraphFull"
@@ -16560,13 +17075,16 @@ msgstr ""
 msgid "Cleaned the internal code of withPoints"
 msgstr ""
 
+msgid "pgRouting 2.5"
+msgstr ""
+
 msgid "pgRouting 2.5.5 Release Notes"
 msgstr ""
 
 msgid ""
 "To see the issues closed by this release see the `Git closed milestone for "
-"2.5.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
-"%93&q=milestone%3A%22Release%202.5.5%22%20>`_ on Github."
+"2.5.5 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.5%22%20>`_ on Github."
 msgstr ""
 
 msgid "Fixes driving distance when vertex is not part of the graph"
@@ -16583,8 +17101,8 @@ msgstr ""
 
 msgid ""
 "To see the issues closed by this release see the `Git closed milestone for "
-"2.5.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
-"%93&q=milestone%3A%22Release%202.5.4%22%20>`_ on Github."
+"2.5.4 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22%20>`_ on Github."
 msgstr ""
 
 msgid "pgRouting 2.5.3 Release Notes"
@@ -16592,8 +17110,8 @@ msgstr ""
 
 msgid ""
 "To see the issues closed by this release see the `Git closed milestone for "
-"2.5.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
-"%93&q=milestone%3A%22Release%202.5.3%22%20>`_ on Github."
+"2.5.3 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.3%22%20>`_ on Github."
 msgstr ""
 
 msgid ""
@@ -16606,8 +17124,8 @@ msgstr ""
 
 msgid ""
 "To see the issues closed by this release see the `Git closed milestone for "
-"2.5.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
-"%93&q=milestone%3A%22Release%202.5.2%22%20>`_ on Github."
+"2.5.2 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.2%22%20>`_ on Github."
 msgstr ""
 
 msgid "Fix for postgresql 10.1: Removed a compiler condition"
@@ -16618,8 +17136,8 @@ msgstr ""
 
 msgid ""
 "To see the issues closed by this release see the `Git closed milestone for "
-"2.5.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
-"%93&q=milestone%3A%22Release%202.5.1%22%20>`_ on Github."
+"2.5.1 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.1%22%20>`_ on Github."
 msgstr ""
 
 msgid "Fixed prerequisite minimum version of: cmake"
@@ -16630,8 +17148,8 @@ msgstr ""
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
-"2.5.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
-"+2.5.0%22+is%3Aclosed>`_ on Github."
+"2.5.0 <https://github.com/pgRouting/pgrouting/issues?"
+"q=milestone%3A%22Release+2.5.0%22+is%3Aclosed>`_ on Github."
 msgstr ""
 
 msgid "enhancement:"
@@ -16697,13 +17215,16 @@ msgstr ""
 msgid "pgr_pointToEdgeNode"
 msgstr ""
 
+msgid "pgRouting 2.4"
+msgstr ""
+
 msgid "pgRouting 2.4.2 Release Notes"
 msgstr ""
 
 msgid ""
 "To see the issues closed by this release see the `Git closed milestone for "
-"2.4.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
-"%93&q=milestone%3A%22Release%202.4.2%22%20>`_ on Github."
+"2.4.2 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.2%22%20>`_ on Github."
 msgstr ""
 
 msgid "Improvement"
@@ -16724,8 +17245,8 @@ msgstr ""
 
 msgid ""
 "To see the issues closed by this release see the `Git closed milestone for "
-"2.4.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C"
-"%93&q=milestone%3A%22Release%202.4.1%22%20>`_ on Github."
+"2.4.1 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22%20>`_ on Github."
 msgstr ""
 
 msgid "Fixed compiling error on macOS"
@@ -16739,8 +17260,8 @@ msgstr ""
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
-"2.4.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
-"+2.4.0%22+is%3Aclosed>`_ on Github."
+"2.4.0 <https://github.com/pgRouting/pgrouting/issues?"
+"q=milestone%3A%22Release+2.4.0%22+is%3Aclosed>`_ on Github."
 msgstr ""
 
 msgid "pgr_bdDijkstra"
@@ -16788,13 +17309,16 @@ msgstr ""
 msgid "TRSP original code is used with no changes on the compilation warnings"
 msgstr ""
 
+msgid "pgRouting 2.3"
+msgstr ""
+
 msgid "pgRouting 2.3.2 Release Notes"
 msgstr ""
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
-"2.3.2 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
-"+2.3.2%22+is%3Aclosed>`_ on Github."
+"2.3.2 <https://github.com/pgRouting/pgrouting/issues?"
+"q=milestone%3A%22Release+2.3.2%22+is%3Aclosed>`_ on Github."
 msgstr ""
 
 msgid "Fixed pgr_gsoc_vrppdtw crash when all orders fit on one truck."
@@ -16814,8 +17338,8 @@ msgstr ""
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
-"2.3.1 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
-"+2.3.1%22+is%3Aclosed>`_ on Github."
+"2.3.1 <https://github.com/pgRouting/pgrouting/issues?"
+"q=milestone%3A%22Release+2.3.1%22+is%3Aclosed>`_ on Github."
 msgstr ""
 
 msgid "Leaks on proposed max_flow functions"
@@ -16832,8 +17356,8 @@ msgstr ""
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
-"2.3.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
-"+2.3.0%22+is%3Aclosed>`_ on Github."
+"2.3.0 <https://github.com/pgRouting/pgrouting/issues?"
+"q=milestone%3A%22Release+2.3.0%22+is%3Aclosed>`_ on Github."
 msgstr ""
 
 msgid "pgr_TSP"
@@ -16911,13 +17435,16 @@ msgstr ""
 msgid "pgr_textToPoints"
 msgstr ""
 
+msgid "pgRouting 2.2"
+msgstr ""
+
 msgid "pgRouting 2.2.4 Release Notes"
 msgstr ""
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
-"2.2.4 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
-"+2.2.4%22+is%3Aclosed>`_ on Github."
+"2.2.4 <https://github.com/pgRouting/pgrouting/issues?"
+"q=milestone%3A%22Release+2.2.4%22+is%3Aclosed>`_ on Github."
 msgstr ""
 
 msgid "Bogus uses of extern \"C\""
@@ -16934,8 +17461,8 @@ msgstr ""
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
-"2.2.3 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
-"+2.2.3%22+is%3Aclosed>`_ on Github."
+"2.2.3 <https://github.com/pgRouting/pgrouting/issues?"
+"q=milestone%3A%22Release+2.2.3%22+is%3Aclosed>`_ on Github."
 msgstr ""
 
 msgid "Fixed compatibility issues with PostgreSQL 9.6."
@@ -16946,8 +17473,8 @@ msgstr ""
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
-"2.2.2 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
-"+2.2.2%22+is%3Aclosed>`_ on Github."
+"2.2.2 <https://github.com/pgRouting/pgrouting/issues?"
+"q=milestone%3A%22Release+2.2.2%22+is%3Aclosed>`_ on Github."
 msgstr ""
 
 msgid "Fixed regression error on pgr_drivingDistance"
@@ -16958,8 +17485,8 @@ msgstr ""
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
-"2.2.1 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A2.2.1+is"
-"%3Aclosed>`_ on Github."
+"2.2.1 <https://github.com/pgRouting/pgrouting/issues?"
+"q=milestone%3A2.2.1+is%3Aclosed>`_ on Github."
 msgstr ""
 
 msgid "Server crash fix on pgr_alphaShape"
@@ -16973,8 +17500,8 @@ msgstr ""
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
-"2.2.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
-"+2.2.0%22+is%3Aclosed>`_ on Github."
+"2.2.0 <https://github.com/pgRouting/pgrouting/issues?"
+"q=milestone%3A%22Release+2.2.0%22+is%3Aclosed>`_ on Github."
 msgstr ""
 
 msgid "Improvements"
@@ -17061,13 +17588,16 @@ msgstr ""
 msgid "pgr_makeDistanceMatrix renamed to _pgr_makeDistanceMatrix"
 msgstr ""
 
+msgid "pgRouting 2.1"
+msgstr ""
+
 msgid "pgRouting 2.1.0 Release Notes"
 msgstr ""
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
-"2.1.0 <https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone"
-"%3A%22Release+2.1.0%22+is%3Aclosed>`_ on Github."
+"2.1.0 <https://github.com/pgRouting/pgrouting/issues?"
+"q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed>`_ on Github."
 msgstr ""
 
 msgid "pgr_dijkstra(one to many)"
@@ -17201,6 +17731,9 @@ msgid ""
 "one library - The library has the prefix 2-1-0"
 msgstr ""
 
+msgid "pgRouting 2.0"
+msgstr ""
+
 msgid "pgRouting 2.0.1 Release Notes"
 msgstr ""
 
@@ -17215,14 +17748,14 @@ msgstr ""
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for "
-"2.0.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release"
-"+2.0.0%22+is%3Aclosed>`_ on Github."
+"2.0.0 <https://github.com/pgRouting/pgrouting/issues?"
+"q=milestone%3A%22Release+2.0.0%22+is%3Aclosed>`_ on Github."
 msgstr ""
 
 msgid ""
 "With the release of pgRouting 2.0.0 the library has abandoned backwards "
-"compatibility to `pgRouting 1.x Release Notes`_ releases. The main Goals for "
-"this release are:"
+"compatibility to `pgRouting 1.0`_ releases. The main Goals for this release "
+"are:"
 msgstr ""
 
 msgid "Major restructuring of pgRouting."
@@ -17336,13 +17869,16 @@ msgstr ""
 msgid "shooting_star is discontinued"
 msgstr ""
 
-msgid "pgRouting 1.x Release Notes"
+msgid "pgRouting 1"
+msgstr ""
+
+msgid "pgRouting 1.0"
 msgstr ""
 
 msgid ""
 "To see the issues closed by this release see the `Git closed issues for 1.x "
-"<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+1.x"
-"%22+is%3Aclosed>`_ on Github. The following release notes have been copied "
+"<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+1."
+"x%22+is%3Aclosed>`_ on Github. The following release notes have been copied "
 "from the previous ``RELEASE_NOTES`` file and are kept as a reference."
 msgstr ""
 
@@ -17717,8 +18253,11 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Developer mailing list: https://lists.osgeo.org/mailman/listinfo/pgrouting-"
-"dev"
+"Developer mailing list: https://discourse.osgeo.org/c/pgrouting/pgrouting-"
+"dev/"
+msgstr ""
+
+msgid "Subscribe: https://discourse.osgeo.org/g/pgrouting-dev"
 msgstr ""
 
 msgid ""
@@ -17799,7 +18338,7 @@ msgstr ""
 msgid "Additional functions to analyze a graph:"
 msgstr ""
 
-msgid "Transformation - Family of functions (Experimental)"
+msgid "Transformation - Family of functions"
 msgstr ""
 
 msgid ""
