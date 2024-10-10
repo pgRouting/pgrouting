@@ -20278,12 +20278,3 @@ msgstr "pgr_withPointsDD 是 **带有点** 的 pgr_drivenDistance"
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia 是 **带有点** 的"
 
-#~ msgid ""
-#~ ":math:`V = source \\cup target \\cup {start_{vid}} \\cup {end_{vid}}`"
-#~ msgstr ""
-#~ ":math:`V = source \\cup target \\cup {start_{vid}} \\cup {end_{vid}}`"
-
-#~ msgid ""
-#~ "From vertex :math:`6` to vertices :math:`\\{ 10, 17\\}` on a "
-#~ "**directed**graph"
-#~ msgstr "在 **有向** 图上从顶点 :math:`6` 到顶点 :math:`\\{ 10, 17\\}`"
