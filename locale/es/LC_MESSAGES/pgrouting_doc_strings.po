@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-10 03:40+0000\n"
-"PO-Revision-Date: 2024-09-23 19:49+0000\n"
+"PO-Revision-Date: 2024-10-10 19:40+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
@@ -4941,21 +4941,18 @@ msgstr ""
 msgid "Support"
 msgstr "Soporte"
 
-#, fuzzy
 msgid ""
 "`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stop support of "
 "PostgreSQL12 on pgrouting v3.7"
 msgstr ""
-"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Leer datos "
-"postgresql en C++"
+"`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ PostgreSQL 12 "
+"no se apya en pgrouting v3.7"
 
-#, fuzzy
 msgid "Stopping support of PostgreSQL 12"
-msgstr "A partir de PostgreSQL 12::"
+msgstr "PostgreSQL 12 ya no es soportado"
 
-#, fuzzy
 msgid "CI does not test for PostgreSQL 12"
-msgstr "Funciona para postgreSQL 10"
+msgstr "CI no hace pruebas con PostgreSQL 12"
 
 msgid "New experimental functions"
 msgstr "Nuevas funciones experimentales"
@@ -14122,7 +14119,7 @@ msgid "For the **original point** ``POINT(2.9 1.8)``"
 msgstr "Para el **punto original** ``POINT(2.9 1.8)``"
 
 msgid "Edge :math:`5` is the closest edge to the **original point**"
-msgstr "La arista :math:`5` es la más cercana al **punto original**."
+msgstr "La arista :math:`5` es la más cercana al **punto original**"
 
 msgid ""
 "``geom``: Contains the geometry of the **original point** ``POINT(2.9 1.8)``"
@@ -14187,7 +14184,7 @@ msgstr ""
 
 msgid "Is it on the left, right or both sides of the segment ``edge_id``"
 msgstr ""
-"¿Está a la izquierda, a la derecha o a ambos lados del segmento ``edge_id``?"
+"Está a la izquierda, a la derecha o a ambos lados del segmento ``edge_id``"
 
 msgid "Where in the segment is the point located."
 msgstr "En qué parte del segmento se encuentra el punto."
@@ -14832,6 +14829,9 @@ msgid ""
 "\\rightarrow 3, 3 \\rightarrow 1, 3 \\rightarrow 2, 3 \\rightarrow 4, 4 "
 "\\rightarrow 3\\})`"
 msgstr ""
+":math:`G(V,E) = G(\\{1,2,3,4\\},\\{ 1 \\rightarrow 2, 1 \\rightarrow 4, 2 "
+"\\rightarrow 3, 3 \\rightarrow 1, 3 \\rightarrow 2, 3 \\rightarrow 4, 4 "
+"\\rightarrow 3\\})`"
 
 msgid "Representation as directed with shared edge identifiers"
 msgstr ""
@@ -18162,19 +18162,17 @@ msgstr "pgRouting 3.7"
 msgid "pgRouting 3.6"
 msgstr "pgRouting 3.6"
 
-#, fuzzy
 msgid "pgRouting 3.6.3 Release Notes"
-msgstr "Notas de la versión de pgRouting 3.6.2"
+msgstr "Notas de la versión de pgRouting 3.6.3"
 
-#, fuzzy
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.6.3 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.3%22>`__"
 msgstr ""
 "Para ver todas las incidencias y pull requests cerrados por esta versión, "
-"consulte `Git closed milestone for 3.6.2 <https://github.com/pgRouting/"
-"pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.2%22>`__"
+"consulte `Git closed milestone for 3.6.3 <https://github.com/pgRouting/"
+"pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.3%22>`__"
 
 msgid "Build"
 msgstr "Construir"
@@ -18185,9 +18183,8 @@ msgstr ""
 msgid "postgres 11.0.0"
 msgstr ""
 
-#, fuzzy
 msgid "postgis 3.0.0"
-msgstr "Versión 3.0.0"
+msgstr "postgis 3.0.0"
 
 msgid "Code fixes"
 msgstr "Corrección de código"
@@ -18198,9 +18195,8 @@ msgstr ""
 msgid "Fix warnings from clang 18."
 msgstr ""
 
-#, fuzzy
 msgid "CI tests"
-msgstr "Pruebas pgtap"
+msgstr "Pruebas CI"
 
 msgid "Add a clang tidy test on changed files."
 msgstr ""
@@ -18216,9 +18212,8 @@ msgstr "Documentación"
 msgid "Results of documentation queries adujsted to boost 1.83.0 version:"
 msgstr ""
 
-#, fuzzy
 msgid "pgr_edgeDisjointPaths"
-msgstr "pgr_edgeDisjointPaths:"
+msgstr "pgr_edgeDisjointPaths"
 
 msgid "pgr_stoerWagner"
 msgstr "pgr_stoerWagner"
