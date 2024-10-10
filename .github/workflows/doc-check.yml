@@ -52,7 +52,7 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-          language: [en,es]
+          language: [en,es,zh_Hans]
 
     steps:
       - uses: actions/checkout@v4
@@ -119,7 +119,7 @@ jobs:
           mkdir build
           cd build
           cmake -DLINKCHECK=ON -DWITH_DOC=ON \
-                -DES=ON -DBUILD_DOXY=ON \
+                -DES=ON -DZH_HANS=ON -DBUILD_DOXY=ON \
                 -DPOSTGRESQL_VERSION=${PGVER} -DCMAKE_BUILD_TYPE=Release ..
 
       - name: Check Documentation
