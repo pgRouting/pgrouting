@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.7.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-23 01:17+0000\n"
+"POT-Creation-Date: 2024-10-10 02:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3943,6 +3943,18 @@ msgstr ""
 msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.7.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
 msgstr ""
 
+msgid "Support"
+msgstr ""
+
+msgid "`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stop support of PostgreSQL12 on pgrouting v3.7"
+msgstr ""
+
+msgid "Stopping support of PostgreSQL 12"
+msgstr ""
+
+msgid "CI does not test for PostgreSQL 12"
+msgstr ""
+
 msgid "New experimental functions"
 msgstr ""
 
@@ -7199,9 +7211,6 @@ msgid "Support to return multiple outer/inner ring"
 msgstr ""
 
 msgid "Renamed from version 1.x"
-msgstr ""
-
-msgid "Support"
 msgstr ""
 
 msgid "Returns the polygon part of an alpha shape."
