@@ -102,6 +102,43 @@ pgRouting 3.6
    :local:
    :depth: 1
 
+pgRouting 3.6.3 Release Notes
+-------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.6.3
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.3%22>`__
+
+.. rubric:: Build
+
+* Explicit minimum requirements:
+
+  * postgres 11.0.0
+  * postgis 3.0.0
+
+.. rubric:: Code fixes
+
+* Fix warnings from cpplint.
+* Fix warnings from clang 18.
+
+.. rubric:: CI tests
+
+* Add a clang tidy test on changed files.
+* Update test not done on versions: 3.0.1, 3.0.2, 3.0.3, 3.0.4, 3.1.0, 3.1.1,
+  3.1.2
+
+.. rubric:: Documentation
+
+* Results of documentation queries adujsted to boost 1.83.0 version:
+
+  * pgr_edgeDisjointPaths
+  * pgr_stoerWagner
+
+.. rubric:: pgtap tests
+
+* bug fixes
+
+
 pgRouting 3.6.2 Release Notes
 -------------------------------------------------------------------------------
 
