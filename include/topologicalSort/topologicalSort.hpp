@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_topologicalSort.hpp
+File: topologicalSort.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -22,8 +22,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_TOPOLOGICALSORT_PGR_TOPOLOGICALSORT_HPP_
-#define INCLUDE_TOPOLOGICALSORT_PGR_TOPOLOGICALSORT_HPP_
+#ifndef INCLUDE_TOPOLOGICALSORT_TOPOLOGICALSORT_HPP_
+#define INCLUDE_TOPOLOGICALSORT_TOPOLOGICALSORT_HPP_
 #pragma once
 
 
@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/topological_sort.hpp>
 
 #include "cpp_common/basePath_SSEC.hpp"
-#include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/base_graph.hpp"
 #include "cpp_common/interruption.hpp"
 #include "c_types//i_rt.h"
 
@@ -98,4 +98,4 @@ Pgr_topologicalSort< G >::topologicalSort(
 }
 
 
-#endif  // INCLUDE_TOPOLOGICALSORT_PGR_TOPOLOGICALSORT_HPP_
+#endif  // INCLUDE_TOPOLOGICALSORT_TOPOLOGICALSORT_HPP_

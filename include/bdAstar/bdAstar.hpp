@@ -26,8 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_BDASTAR_PGR_BDASTAR_HPP_
-#define INCLUDE_BDASTAR_PGR_BDASTAR_HPP_
+#ifndef INCLUDE_BDASTAR_BDASTAR_HPP_
+#define INCLUDE_BDASTAR_BDASTAR_HPP_
 #pragma once
 
 
@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <deque>
 
-#include "cpp_common/pgr_bidirectional.hpp"
+#include "cpp_common/bidirectional.hpp"
 #include "cpp_common/basePath_SSEC.hpp"
 
 namespace pgrouting {
@@ -223,4 +223,4 @@ std::deque<Path> bdastar(
 }  // namespace algorithms
 }  // namespace pgrouting
 
-#endif  // INCLUDE_BDASTAR_PGR_BDASTAR_HPP_
+#endif  // INCLUDE_BDASTAR_BDASTAR_HPP_

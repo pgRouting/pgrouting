@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_boyerMyrvold.hpp
+File: boyerMyrvold.hpp
 
 Copyright (c) 2020 pgRouting developers
 Mail: project@pgrouting.org
@@ -21,8 +21,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_PLANAR_PGR_BOYERMYRVOLD_HPP_
-#define INCLUDE_PLANAR_PGR_BOYERMYRVOLD_HPP_
+#ifndef INCLUDE_PLANAR_BOYERMYRVOLD_HPP_
+#define INCLUDE_PLANAR_BOYERMYRVOLD_HPP_
 #pragma once
 
 #include <vector>
@@ -35,8 +35,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/is_kuratowski_subgraph.hpp>
 #include <boost/ref.hpp>
 
-#include "cpp_common/pgr_messages.hpp"
-#include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/messages.hpp"
+#include "cpp_common/base_graph.hpp"
 #include "cpp_common/interruption.hpp"
 #include "c_types/iid_t_rt.h"
 //******************************************
@@ -89,4 +89,4 @@ class Pgr_boyerMyrvold : public pgrouting::Pgr_messages {
 }  // namespace functions
 }  // namespace pgrouting
 
-#endif  // INCLUDE_PLANAR_PGR_BOYERMYRVOLD_HPP_
+#endif  // INCLUDE_PLANAR_BOYERMYRVOLD_HPP_

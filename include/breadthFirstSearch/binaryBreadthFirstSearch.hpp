@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_binaryBreadthFirstSearch.hpp
+File: binaryBreadthFirstSearch.hpp
 
 Copyright (c) 2019 pgRouting developers
 Mail: project@pgrouting.org
@@ -21,8 +21,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_BREADTHFIRSTSEARCH_PGR_BINARYBREADTHFIRSTSEARCH_HPP_
-#define INCLUDE_BREADTHFIRSTSEARCH_PGR_BINARYBREADTHFIRSTSEARCH_HPP_
+#ifndef INCLUDE_BREADTHFIRSTSEARCH_BINARYBREADTHFIRSTSEARCH_HPP_
+#define INCLUDE_BREADTHFIRSTSEARCH_BINARYBREADTHFIRSTSEARCH_HPP_
 #pragma once
 
 #include <deque>
@@ -34,8 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 
 #include "cpp_common/basePath_SSEC.hpp"
-#include "cpp_common/pgr_base_graph.hpp"
-#include "cpp_common/pgr_assert.hpp"
+#include "cpp_common/base_graph.hpp"
+#include "cpp_common/assert.hpp"
 
 #include "c_types/ii_t_rt.h"
 
@@ -243,4 +243,4 @@ class Pgr_binaryBreadthFirstSearch {
 }  // namespace functions
 }  // namespace pgrouting
 
-#endif  // INCLUDE_BREADTHFIRSTSEARCH_PGR_BINARYBREADTHFIRSTSEARCH_HPP_
+#endif  // INCLUDE_BREADTHFIRSTSEARCH_BINARYBREADTHFIRSTSEARCH_HPP_

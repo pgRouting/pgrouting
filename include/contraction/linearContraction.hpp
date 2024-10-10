@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_linearContraction.hpp
+File: linearContraction.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_CONTRACTION_PGR_LINEARCONTRACTION_HPP_
-#define INCLUDE_CONTRACTION_PGR_LINEARCONTRACTION_HPP_
+#ifndef INCLUDE_CONTRACTION_LINEARCONTRACTION_HPP_
+#define INCLUDE_CONTRACTION_LINEARCONTRACTION_HPP_
 #pragma once
 
 
@@ -198,4 +198,4 @@ class Pgr_linear {
 }  // namespace contraction
 }  // namespace pgrouting
 
-#endif  // INCLUDE_CONTRACTION_PGR_LINEARCONTRACTION_HPP_
+#endif  // INCLUDE_CONTRACTION_LINEARCONTRACTION_HPP_

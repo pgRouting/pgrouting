@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_depthFirstSearch.hpp
+File: depthFirstSearch.hpp
 
 Copyright (c) 2020 pgRouting developers
 Mail: project@pgrouting.org
@@ -21,8 +21,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_TRAVERSAL_PGR_DEPTHFIRSTSEARCH_HPP_
-#define INCLUDE_TRAVERSAL_PGR_DEPTHFIRSTSEARCH_HPP_
+#ifndef INCLUDE_TRAVERSAL_DEPTHFIRSTSEARCH_HPP_
+#define INCLUDE_TRAVERSAL_DEPTHFIRSTSEARCH_HPP_
 #pragma once
 
 #include <vector>
@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/depth_first_search.hpp>
 #include <boost/graph/undirected_dfs.hpp>
 
-#include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/base_graph.hpp"
 #include "cpp_common/interruption.hpp"
 #include "c_types/mst_rt.h"
 
@@ -213,4 +213,4 @@ class Pgr_depthFirstSearch {
 }  // namespace functions
 }  // namespace pgrouting
 
-#endif  // INCLUDE_TRAVERSAL_PGR_DEPTHFIRSTSEARCH_HPP_
+#endif  // INCLUDE_TRAVERSAL_DEPTHFIRSTSEARCH_HPP_

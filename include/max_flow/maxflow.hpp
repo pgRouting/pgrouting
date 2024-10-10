@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_maxflow.hpp
+File: maxflow.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_MAX_FLOW_PGR_MAXFLOW_HPP_
-#define INCLUDE_MAX_FLOW_PGR_MAXFLOW_HPP_
+#ifndef INCLUDE_MAX_FLOW_MAXFLOW_HPP_
+#define INCLUDE_MAX_FLOW_MAXFLOW_HPP_
 #pragma once
 
 #include <map>
@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <limits>
 
-#include "max_flow/pgr_flowgraph.hpp"
+#include "max_flow/flowgraph.hpp"
 #include <boost/graph/push_relabel_max_flow.hpp>
 #include <boost/graph/edmonds_karp_max_flow.hpp>
 #include <boost/graph/boykov_kolmogorov_max_flow.hpp>
@@ -198,4 +198,4 @@ class PgrFlowGraph {
 }  // namespace graph
 }  // namespace pgrouting
 
-#endif  // INCLUDE_MAX_FLOW_PGR_MAXFLOW_HPP_
+#endif  // INCLUDE_MAX_FLOW_MAXFLOW_HPP_

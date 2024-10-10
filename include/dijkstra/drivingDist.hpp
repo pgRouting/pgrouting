@@ -33,8 +33,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DIJKSTRA_DRIVEDIST_HPP_
-#define INCLUDE_DIJKSTRA_DRIVEDIST_HPP_
+#ifndef INCLUDE_DIJKSTRA_DRIVINGDIST_HPP_
+#define INCLUDE_DIJKSTRA_DRIVINGDIST_HPP_
 #pragma once
 
 #include <deque>
@@ -51,7 +51,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/dijkstra_shortest_paths.hpp>
 
 #include "cpp_common/basePath_SSEC.hpp"
-#include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/base_graph.hpp"
 #include "cpp_common/interruption.hpp"
 #include "visitors/dijkstra_visitors.hpp"
 
@@ -512,4 +512,4 @@ std::deque<Path> drivingDistance(
 }  // namespace pgrouting
 
 
-#endif  // INCLUDE_DIJKSTRA_DRIVEDIST_HPP_
+#endif  // INCLUDE_DIJKSTRA_DRIVINGDIST_HPP_

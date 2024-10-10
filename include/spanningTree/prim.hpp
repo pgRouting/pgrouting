@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_prim.hpp
+File: prim.hpp
 
 Copyright (c) 2018 pgRouting developers
 Mail: project@pgrouting.org
@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_SPANNINGTREE_PGR_PRIM_HPP_
-#define INCLUDE_SPANNINGTREE_PGR_PRIM_HPP_
+#ifndef INCLUDE_SPANNINGTREE_PRIM_HPP_
+#define INCLUDE_SPANNINGTREE_PRIM_HPP_
 #pragma once
 
 #include <vector>
@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <visitors/prim_dijkstra_visitor.hpp>
 #include <boost/graph/prim_minimum_spanning_tree.hpp>
 
-#include "spanningTree/pgr_mst.hpp"
+#include "spanningTree/mst.hpp"
 #include "cpp_common/interruption.hpp"
 
 //******************************************
@@ -199,4 +199,4 @@ Pgr_prim<G>::primDD(
 }  // namespace functions
 }  // namespace pgrouting
 
-#endif  // INCLUDE_SPANNINGTREE_PGR_PRIM_HPP_
+#endif  // INCLUDE_SPANNINGTREE_PRIM_HPP_

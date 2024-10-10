@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_lineGraphFull.hpp
+File: lineGraphFull.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_LINEGRAPH_PGR_LINEGRAPHFULL_HPP_
-#define INCLUDE_LINEGRAPH_PGR_LINEGRAPHFULL_HPP_
+#ifndef INCLUDE_LINEGRAPH_LINEGRAPHFULL_HPP_
+#define INCLUDE_LINEGRAPH_LINEGRAPHFULL_HPP_
 #pragma once
 
 
@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 
 #include"c_types/line_graph_full_rt.h"
-#include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/base_graph.hpp"
 #include "cpp_common/line_vertex.hpp"
 
 namespace pgrouting {
@@ -307,4 +307,4 @@ class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E, t_directed> {
 }  // namespace graph
 }  // namespace pgrouting
 
-#endif  // INCLUDE_LINEGRAPH_PGR_LINEGRAPHFULL_HPP_
+#endif  // INCLUDE_LINEGRAPH_LINEGRAPHFULL_HPP_

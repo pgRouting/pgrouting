@@ -36,8 +36,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <vector>
 
-#include "contraction/pgr_contractionGraph.hpp"
-#include "cpp_common/pgr_base_graph.hpp"
+#include "contraction/contractionGraph.hpp"
+#include "cpp_common/base_graph.hpp"
 #include "cpp_common/ch_vertex.hpp"
 #include "cpp_common/ch_edge.hpp"
 

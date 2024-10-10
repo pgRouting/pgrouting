@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_chinesePostman.hpp
+File: chinesePostman.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_CHINESE_PGR_CHINESEPOSTMAN_HPP_
-#define INCLUDE_CHINESE_PGR_CHINESEPOSTMAN_HPP_
+#ifndef INCLUDE_CHINESE_CHINESEPOSTMAN_HPP_
+#define INCLUDE_CHINESE_CHINESEPOSTMAN_HPP_
 #pragma once
 
 #include <map>
@@ -36,11 +36,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 #include <stack>
 
-#include "max_flow/pgr_minCostMaxFlow.hpp"
+#include "max_flow/minCostMaxFlow.hpp"
 #include "c_types/path_rt.h"
 #include "cpp_common/edge_t.hpp"
 #include "c_types/flow_t.h"
-#include "cpp_common/pgr_assert.hpp"
+#include "cpp_common/assert.hpp"
 #include "cpp_common/identifiers.hpp"
 
 
@@ -332,4 +332,4 @@ PgrDirectedChPPGraph::BuildResultGraph() {
 }  // namespace graph
 }  // namespace pgrouting
 
-#endif  // INCLUDE_CHINESE_PGR_CHINESEPOSTMAN_HPP_
+#endif  // INCLUDE_CHINESE_CHINESEPOSTMAN_HPP_

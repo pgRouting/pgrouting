@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_kruskal.hpp
+File: kruskal.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -25,13 +25,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_SPANNINGTREE_PGR_KRUSKAL_HPP_
-#define INCLUDE_SPANNINGTREE_PGR_KRUSKAL_HPP_
+#ifndef INCLUDE_SPANNINGTREE_KRUSKAL_HPP_
+#define INCLUDE_SPANNINGTREE_KRUSKAL_HPP_
 #pragma once
 
 #include <vector>
 #include <boost/graph/kruskal_min_spanning_tree.hpp>
-#include "spanningTree/pgr_mst.hpp"
+#include "spanningTree/mst.hpp"
 #include "cpp_common/interruption.hpp"
 
 namespace pgrouting {
@@ -119,4 +119,4 @@ Pgr_kruskal<G>::kruskalDD(
 }  // namespace functions
 }  // namespace pgrouting
 
-#endif  // INCLUDE_SPANNINGTREE_PGR_KRUSKAL_HPP_
+#endif  // INCLUDE_SPANNINGTREE_KRUSKAL_HPP_

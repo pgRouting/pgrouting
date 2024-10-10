@@ -45,7 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/path_rt.h"
 #include "c_types/mst_rt.h"
 #include "cpp_common/path_t.hpp"
-#include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/base_graph.hpp"
 #include "cpp_common/rule.hpp"
 
 namespace pgrouting {

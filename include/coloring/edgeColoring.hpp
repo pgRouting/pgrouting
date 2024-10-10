@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_edgeColoring.hpp
+File: edgeColoring.hpp
 
 Generated with Template by:
 Copyright (c) 2021 pgRouting developers
@@ -23,8 +23,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_COLORING_PGR_EDGECOLORING_HPP_
-#define INCLUDE_COLORING_PGR_EDGECOLORING_HPP_
+#ifndef INCLUDE_COLORING_EDGECOLORING_HPP_
+#define INCLUDE_COLORING_EDGECOLORING_HPP_
 #pragma once
 
 #include <iostream>
@@ -37,8 +37,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/edge_t.hpp"
 #include "c_types/ii_t_rt.h"
-#include "cpp_common/pgr_assert.hpp"
-#include "cpp_common/pgr_messages.hpp"
+#include "cpp_common/assert.hpp"
+#include "cpp_common/messages.hpp"
 
 namespace pgrouting {
 namespace functions {
@@ -80,4 +80,4 @@ class Pgr_edgeColoring : public Pgr_messages {
 }  // namespace functions
 }  // namespace pgrouting
 
-#endif  // INCLUDE_COLORING_PGR_EDGECOLORING_HPP_
+#endif  // INCLUDE_COLORING_EDGECOLORING_HPP_

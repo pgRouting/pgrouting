@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_flowgraph.hpp
+File: flowgraph.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_MAX_FLOW_PGR_FLOWGRAPH_HPP_
-#define INCLUDE_MAX_FLOW_PGR_FLOWGRAPH_HPP_
+#ifndef INCLUDE_MAX_FLOW_FLOWGRAPH_HPP_
+#define INCLUDE_MAX_FLOW_FLOWGRAPH_HPP_
 #pragma once
 
 #include <boost/config.hpp>
@@ -52,4 +52,4 @@ typedef boost::adjacency_list<boost::listS, boost::vecS, boost::directedS,
 
 }  // namespace pgrouting
 
-#endif  // INCLUDE_MAX_FLOW_PGR_FLOWGRAPH_HPP_
+#endif  // INCLUDE_MAX_FLOW_FLOWGRAPH_HPP_

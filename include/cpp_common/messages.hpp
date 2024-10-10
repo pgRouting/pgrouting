@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_messages.hpp
+File: messages.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -24,8 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /*! @file */
 
-#ifndef INCLUDE_CPP_COMMON_PGR_MESSAGES_HPP_
-#define INCLUDE_CPP_COMMON_PGR_MESSAGES_HPP_
+#ifndef INCLUDE_CPP_COMMON_MESSAGES_HPP_
+#define INCLUDE_CPP_COMMON_MESSAGES_HPP_
 #pragma once
 
 
@@ -98,4 +98,4 @@ class Pgr_messages {
 
 }  // namespace pgrouting
 
-#endif  // INCLUDE_CPP_COMMON_PGR_MESSAGES_HPP_
+#endif  // INCLUDE_CPP_COMMON_MESSAGES_HPP_

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_bidirectional.hpp
+File: bidirectional.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -29,8 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /*! @file */
 
-#ifndef INCLUDE_CPP_COMMON_PGR_BIDIRECTIONAL_HPP_
-#define INCLUDE_CPP_COMMON_PGR_BIDIRECTIONAL_HPP_
+#ifndef INCLUDE_CPP_COMMON_BIDIRECTIONAL_HPP_
+#define INCLUDE_CPP_COMMON_BIDIRECTIONAL_HPP_
 #pragma once
 
 
@@ -46,10 +46,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/dijkstra_shortest_paths.hpp>
 #include <boost/graph/adjacency_list.hpp>
 
-#include "cpp_common/pgr_assert.hpp"
+#include "cpp_common/assert.hpp"
 
 #include "cpp_common/basePath_SSEC.hpp"
-#include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/base_graph.hpp"
 
 
 namespace pgrouting {
@@ -241,4 +241,4 @@ class Pgr_bidirectional {
 }  // namespace bidirectional
 }  // namespace pgrouting
 
-#endif  // INCLUDE_CPP_COMMON_PGR_BIDIRECTIONAL_HPP_
+#endif  // INCLUDE_CPP_COMMON_BIDIRECTIONAL_HPP_

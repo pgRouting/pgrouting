@@ -31,8 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DIJKSTRA_PGR_DIJKSTRA_HPP_
-#define INCLUDE_DIJKSTRA_PGR_DIJKSTRA_HPP_
+#ifndef INCLUDE_DIJKSTRA_DIJKSTRA_HPP_
+#define INCLUDE_DIJKSTRA_DIJKSTRA_HPP_
 #pragma once
 
 #include <deque>
@@ -51,7 +51,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/ii_t_rt.h"
 #include "cpp_common/basePath_SSEC.hpp"
-#include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/base_graph.hpp"
 #include "cpp_common/interruption.hpp"
 #include "visitors/dijkstra_visitors.hpp"
 
@@ -191,4 +191,4 @@ Path dijkstra(
 }  // namespace pgrouting
 
 
-#endif  // INCLUDE_DIJKSTRA_PGR_DIJKSTRA_HPP_
+#endif  // INCLUDE_DIJKSTRA_DIJKSTRA_HPP_

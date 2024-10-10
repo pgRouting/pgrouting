@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_turnRestrictedPath.hpp
+File: turnRestrictedPath.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -26,11 +26,9 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-#ifndef INCLUDE_YEN_PGR_TURNRESTRICTEDPATH_HPP_
-#define INCLUDE_YEN_PGR_TURNRESTRICTEDPATH_HPP_
+#ifndef INCLUDE_YEN_TURNRESTRICTEDPATH_HPP_
+#define INCLUDE_YEN_TURNRESTRICTEDPATH_HPP_
 #pragma once
-
-#include "yen/pgr_ksp.hpp"
 
 #include <sstream>
 #include <deque>
@@ -38,10 +36,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <limits>
 
-#include "cpp_common/pgr_assert.hpp"
+#include "yen/ksp.hpp"
+#include "cpp_common/assert.hpp"
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/compPaths.hpp"
-#include "cpp_common/pgr_messages.hpp"
+#include "cpp_common/messages.hpp"
 #include "cpp_common/rule.hpp"
 
 namespace pgrouting {
@@ -265,4 +264,4 @@ class Pgr_turnRestrictedPath : public Pgr_ksp< G > {
 
 
 
-#endif  // INCLUDE_YEN_PGR_TURNRESTRICTEDPATH_HPP_
+#endif  // INCLUDE_YEN_TURNRESTRICTEDPATH_HPP_

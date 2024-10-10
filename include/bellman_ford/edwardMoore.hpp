@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_edwardMoore.hpp
+File: edwardMoore.hpp
 
 Copyright (c) 2019 pgRouting developers
 Mail: project@pgrouting.org
@@ -20,8 +20,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_BELLMAN_FORD_PGR_EDWARDMOORE_HPP_
-#define INCLUDE_BELLMAN_FORD_PGR_EDWARDMOORE_HPP_
+#ifndef INCLUDE_BELLMAN_FORD_EDWARDMOORE_HPP_
+#define INCLUDE_BELLMAN_FORD_EDWARDMOORE_HPP_
 #pragma once
 
 #include <limits>
@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 
 #include "cpp_common/basePath_SSEC.hpp"
-#include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/base_graph.hpp"
 #include "cpp_common/interruption.hpp"
 
 #include "c_types/ii_t_rt.h"
@@ -262,4 +262,4 @@ class Pgr_edwardMoore {
 }  // namespace functions
 }  // namespace pgrouting
 
-#endif  // INCLUDE_BELLMAN_FORD_PGR_EDWARDMOORE_HPP_
+#endif  // INCLUDE_BELLMAN_FORD_EDWARDMOORE_HPP_

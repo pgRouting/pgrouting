@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_base_graph.hpp
+File: base_graph.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -26,8 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /** @file */
 
-#ifndef INCLUDE_CPP_COMMON_PGR_BASE_GRAPH_HPP_
-#define INCLUDE_CPP_COMMON_PGR_BASE_GRAPH_HPP_
+#ifndef INCLUDE_CPP_COMMON_BASE_GRAPH_HPP_
+#define INCLUDE_CPP_COMMON_BASE_GRAPH_HPP_
 #pragma once
 
 #include <deque>
@@ -46,7 +46,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/xy_vertex.hpp"
 #include "cpp_common/basic_edge.hpp"
 
-#include "cpp_common/pgr_assert.hpp"
+#include "cpp_common/assert.hpp"
 
 namespace pgrouting {
 
@@ -874,4 +874,4 @@ class Pgr_base_graph {
 
 }  // namespace graph
 }  // namespace pgrouting
-#endif  // INCLUDE_CPP_COMMON_PGR_BASE_GRAPH_HPP_
+#endif  // INCLUDE_CPP_COMMON_BASE_GRAPH_HPP_

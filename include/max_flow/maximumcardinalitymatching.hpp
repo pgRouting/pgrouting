@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_maximumcardinalitymatching.hpp
+File: maximumcardinalitymatching.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -30,8 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_MAX_FLOW_PGR_MAXIMUMCARDINALITYMATCHING_HPP_
-#define INCLUDE_MAX_FLOW_PGR_MAXIMUMCARDINALITYMATCHING_HPP_
+#ifndef INCLUDE_MAX_FLOW_MAXIMUMCARDINALITYMATCHING_HPP_
+#define INCLUDE_MAX_FLOW_MAXIMUMCARDINALITYMATCHING_HPP_
 #pragma once
 
 #include <map>
@@ -152,4 +152,4 @@ class PgrCardinalityGraph {
 }  // namespace flow
 }  // namespace pgrouting
 
-#endif  // INCLUDE_MAX_FLOW_PGR_MAXIMUMCARDINALITYMATCHING_HPP_
+#endif  // INCLUDE_MAX_FLOW_MAXIMUMCARDINALITYMATCHING_HPP_
