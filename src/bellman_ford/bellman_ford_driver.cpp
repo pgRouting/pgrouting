@@ -48,37 +48,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace {
 
-#if 0
-template <class G>
-std::deque<pgrouting::Path>
-pgr_bellman_ford(
-        G &graph,
-        std::vector <II_t_rt> &combinations,
-        std::vector < int64_t > sources,
-        std::vector < int64_t > targets,
-        std::string &log,
-        bool only_cost = false) {
-    std::sort(sources.begin(), sources.end());
-    sources.erase(
-            std::unique(sources.begin(), sources.end()),
-            sources.end());
-
-    std::sort(targets.begin(), targets.end());
-    targets.erase(
-            std::unique(targets.begin(), targets.end()),
-            targets.end());
-
-    pgrouting::Pgr_bellman_ford< G > fn_bellman_ford;
-    auto paths = combinations.empty() ?
-            fn_bellman_ford.bellman_ford(graph, sources, targets, only_cost)
-            : fn_bellman_ford.bellman_ford(graph, combinations, only_cost);
-    log += fn_bellman_ford.get_log();
-    for (auto &p : paths) {
-        p.recalculate_agg_cost();
-    }
-    return paths;
-}
-#endif
 
 template <class G>
 std::deque<pgrouting::Path>

@@ -56,9 +56,6 @@ pgr_send_error(int errcode) {
 // http://www.postgresql.org/docs/9.4/static/spi-spi-finish.html
 void
 pgr_SPI_finish(void) {
-#if 0
-    PGR_DBG("Disconnecting SPI");
-#endif
     int code = SPI_finish();
     if (code != SPI_OK_FINISH) {  // SPI_ERROR_UNCONNECTED
         elog(ERROR, "There was no connection to SPI");
@@ -67,9 +64,6 @@ pgr_SPI_finish(void) {
 
 void
 pgr_SPI_connect(void) {
-#if 0
-    PGR_DBG("Connecting to SPI");
-#endif
     int SPIcode;
     SPIcode = SPI_connect();
     if (SPIcode  != SPI_OK_CONNECT) {
@@ -79,9 +73,6 @@ pgr_SPI_connect(void) {
 
 SPIPlanPtr
 pgr_SPI_prepare(const char* sql) {
-#if 0
-    PGR_DBG("Preparing Plan");
-#endif
     SPIPlanPtr SPIplan;
     SPIplan = SPI_prepare(sql, 0, NULL);
     if (SPIplan  == NULL) {
@@ -92,9 +83,6 @@ pgr_SPI_prepare(const char* sql) {
 
 Portal
 pgr_SPI_cursor_open(SPIPlanPtr SPIplan) {
-#if 0
-    PGR_DBG("Opening Portal");
-#endif
     Portal SPIportal;
     SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true);
     if (SPIportal == NULL) {

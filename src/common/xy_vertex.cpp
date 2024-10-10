@@ -120,39 +120,5 @@ extract_vertices(
         std::vector <Edge_xy_t >(data_edges, data_edges + count));
 }
 
-#if 0
-/* the following might be needed when using withPoints */
-std::vector < XY_vertex > extract_vertices(
-    std::vector < XY_vertex > vertices,
-    const std::vector <Edge_xy_t > data_edges) {
-    if (data_edges.empty()) return vertices;
-
-    vertices.reserve(vertices.size() + data_edges.size() * 2);
-
-    for (const auto edge : data_edges) {
-        vertices.push_back(XY_vertex(edge.source, edge.x1, edge.y1));
-        vertices.push_back(XY_vertex(edge.target, edge.x2, edge.y2));
-    }
-
-    /*
-     * sort and delete duplicates
-     */
-    std::stable_sort(vertices.begin(), vertices.end(),
-                     [](const XY_vertex &lhs, const XY_vertex &rhs)
-                     {return lhs.id < rhs.id;});
-
-    vertices.erase(
-        std::unique(vertices.begin(), vertices.end(),
-                    [](const XY_vertex &lhs, const XY_vertex &rhs)
-                    {return lhs.id == rhs.id;}), vertices.end());
-    return vertices;
-}
-std::vector < XY_vertex > extract_vertices(
-    std::vector < XY_vertex > vertices,
-    const Edge_xy_t *data_edges, int64_t count) {
-    return extract_vertices(vertices,
-            std::vector <Edge_xy_t >(data_edges, data_edges + count));
-}
-#endif
 
 }  // namespace pgrouting

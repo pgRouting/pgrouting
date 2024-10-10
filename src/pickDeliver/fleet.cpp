@@ -80,10 +80,6 @@ Fleet::get_truck() {
 
 Vehicle_pickDeliver
 Fleet::get_truck(size_t order) {
-#if 0
-    msg().log << "Available vehicles: " << m_un_used << "\n";
-    msg().log << "NOT Available vehicles: " << m_used << "\n";
-#endif
     size_t idx{0};
 
     for (const auto &i : m_un_used) {
@@ -138,9 +134,6 @@ Fleet::add_vehicle(
                     vehicle.capacity,
                     vehicle.speed,
                     factor));
-#if 0
-        msg().log << "inserting vehicle: " << m_trucks.back().tau() << "\n";
-#endif
         pgassert((m_trucks.back().idx() + 1)  == m_trucks.size());
         pgassert(m_trucks.back().is_ok());
     }

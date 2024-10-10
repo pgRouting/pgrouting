@@ -80,11 +80,7 @@ Pgr_pickDeliver::solve() {
             return rhs < lhs;
             });
 
-#if 1
     solutions.push_back(Optimize(initial_sols.back(), m_max_cycles));
-#else
-    solutions.push_back(initial_sols.back());
-#endif
     pgassert(!solutions.empty());
 
     msg.log << "best solution duration = " << solutions.back().duration();
@@ -162,30 +158,14 @@ Pgr_pickDeliver::Pgr_pickDeliver(
             return;
         }
 
-#if 0
-        pgassert(m_trucks.msg().get_error().empty());
-        pgassert(msg().get_error().empty());
-#endif
 
         msg.log << "\n Checking fleet ...";
         if (!m_trucks.is_fleet_ok()) {
             pgassert(msg.get_error().empty());
-#if 0
-            pgassert(!m_trucks.msg.get_error().empty());
-            msg.error << m_trucks.msg.get_error();
-#endif
             return;
         }
         msg.log << "fleet OK \n";
 
-#if 0
-        for (const auto t : m_trucks) {
-            msg.log << t << "\n";
-        }
-        for (const auto &o : m_orders) {
-            msg.log << o << "\n";
-        }
-#endif
 
         /*
          * check the (S, P, D, E) order on all vehicles
@@ -199,39 +179,12 @@ Pgr_pickDeliver::Pgr_pickDeliver(
                     << o.id()
                     << " is not feasible on any truck";
                 msg.log << "\n" << o;
-#if 0
-                double old_speed(0);
-                for (auto t : m_trucks) {
-                    if (old_speed == t.speed()) continue;
-                    old_speed = t.speed();
-                    msg.log << "****** With speed: " << t.speed() << "\n";
-                    msg.log << t.start_site() << "\n";
-                    msg.log << o.pickup() << "\n";
-                    msg.log << "travel time to "
-                        << t.start_site().travel_time_to(
-                                o.pickup(), t.speed()) << "\n";
-
-                    msg.log << o.delivery() << "\n";
-                    msg.log << t.end_site() << "\n";
-                    msg.log << "travel time to "
-                        << t.start_site().travel_time_to(
-                                o.delivery(), t.speed())
-                        << "\n";
-                    t.push_back(o);
-                }
-#endif
                 return;
             }
         }
         msg.log << "orders OK \n";
 
         m_trucks.set_compatibles(m_orders);
-#if 0
-        msg.error << "foo";
-        for (const auto t : m_trucks) {
-            msg.log << t << "\n";
-        }
-#endif
         EXITING(msg);
     }  //  constructor
 

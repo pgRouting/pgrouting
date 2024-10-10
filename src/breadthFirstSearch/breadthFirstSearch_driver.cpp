@@ -42,25 +42,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace {
 
-#if 0
-template < class G >
-std::vector<MST_rt>
-pgr_breadthFirstSearch(
-        G &graph,
-        std::vector < int64_t > sources,
-        int64_t max_depth) {
-    std::sort(sources.begin(), sources.end());
-    sources.erase(
-            std::unique(sources.begin(), sources.end()),
-            sources.end());
-
-
-    pgrouting::functions::Pgr_breadthFirstSearch< G > fn_breadthFirstSearch;
-    auto results = fn_breadthFirstSearch.breadthFirstSearch(
-            graph, sources, max_depth);
-    return results;
-}
-#endif
 
 template <class G> std::vector<MST_rt> breadthFirstSearch(
         G &graph,

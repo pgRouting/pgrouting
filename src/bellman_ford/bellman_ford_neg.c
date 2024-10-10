@@ -90,7 +90,7 @@ process(
     pgr_SPI_finish();
 }
 
-PGDLLEXPORT Datum 
+PGDLLEXPORT Datum
 _pgr_bellmanfordneg(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;

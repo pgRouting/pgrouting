@@ -688,19 +688,6 @@ bool Pgr_trspHandler::addEdge(Edge_t edgeIn, bool directed) {
         }
     }
 
-#if 0
-    /*
-     * The edge was already inserted
-     *
-     * If the user has rows with repeated edge id, the subsequent edges will be ignored
-     *
-     * When changing to boost graph, the additional edges are to be added
-     */
-
-    if (m_mapEdgeId2Index.find(edgeIn.id) != m_mapEdgeId2Index.end()) {
-        return false;
-    }
-#endif
 
     /*
      * the index of this new edge in the edges container is
@@ -708,13 +695,6 @@ bool Pgr_trspHandler::addEdge(Edge_t edgeIn, bool directed) {
      */
     EdgeInfo edge(edgeIn, m_edges.size());
 
-#if 0
-    // Adding edge to the list
-    m_mapEdgeId2Index.insert(
-            std::make_pair(
-                edge.edgeID(),
-                m_edges.size()));
-#endif
 
     m_edges.push_back(edge);
 
