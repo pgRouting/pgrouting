@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.7.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-10 02:39+0000\n"
+"POT-Creation-Date: 2024-10-10 03:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13249,6 +13249,60 @@ msgstr ""
 msgid "pgRouting 3.6"
 msgstr ""
 
+msgid "pgRouting 3.6.3 Release Notes"
+msgstr ""
+
+msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.6.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.3%22>`__"
+msgstr ""
+
+msgid "Build"
+msgstr ""
+
+msgid "Explicit minimum requirements:"
+msgstr ""
+
+msgid "postgres 11.0.0"
+msgstr ""
+
+msgid "postgis 3.0.0"
+msgstr ""
+
+msgid "Code fixes"
+msgstr ""
+
+msgid "Fix warnings from cpplint."
+msgstr ""
+
+msgid "Fix warnings from clang 18."
+msgstr ""
+
+msgid "CI tests"
+msgstr ""
+
+msgid "Add a clang tidy test on changed files."
+msgstr ""
+
+msgid "Update test not done on versions: 3.0.1, 3.0.2, 3.0.3, 3.0.4, 3.1.0, 3.1.1, 3.1.2"
+msgstr ""
+
+msgid "Documentation"
+msgstr ""
+
+msgid "Results of documentation queries adujsted to boost 1.83.0 version:"
+msgstr ""
+
+msgid "pgr_edgeDisjointPaths"
+msgstr ""
+
+msgid "pgr_stoerWagner"
+msgstr ""
+
+msgid "pgtap tests"
+msgstr ""
+
+msgid "bug fixes"
+msgstr ""
+
 msgid "pgRouting 3.6.2 Release Notes"
 msgstr ""
 
@@ -13259,9 +13313,6 @@ msgid "Upgrade fix"
 msgstr ""
 
 msgid "The upgrade was failing for same minor"
-msgstr ""
-
-msgid "Code fixes"
 msgstr ""
 
 msgid "Fix warnings from cpplint"
@@ -13354,9 +13405,6 @@ msgstr ""
 msgid "`#2522 <https://github.com/pgRouting/pgrouting/pull/2522>`__ bdAstar code simplification."
 msgstr ""
 
-msgid "Documentation"
-msgstr ""
-
 msgid "`#2490 <https://github.com/pgRouting/pgrouting/pull/2490>`__ Automatic page history links."
 msgstr ""
 
@@ -13409,9 +13457,6 @@ msgid "SQL enhancements"
 msgstr ""
 
 msgid "`#2561 <https://github.com/pgRouting/pgrouting/issues/2561>`__ Not use wildcards on SQL"
-msgstr ""
-
-msgid "pgtap tests"
 msgstr ""
 
 msgid "`#2559 <https://github.com/pgRouting/pgrouting/issues/2559>`__ pgtap test using sampledata"
@@ -13769,9 +13814,6 @@ msgid "pgRouting 3.2.0 Release Notes"
 msgstr ""
 
 msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.2.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.0%22>`_ on Github."
-msgstr ""
-
-msgid "Build"
 msgstr ""
 
 msgid "`#1850 <https://github.com/pgRouting/pgrouting/issues/1850>`__: Change Boost min version to 1.56"
@@ -14243,9 +14285,6 @@ msgid "pgr_maxFlowMinCost_Cost"
 msgstr ""
 
 msgid "pgr_turnRestrictedPath"
-msgstr ""
-
-msgid "pgr_stoerWagner"
 msgstr ""
 
 msgid "pgr_dagShortestpath"
