@@ -341,7 +341,6 @@ Pg_points_graph::create_new_edges() {
             << point.vertex_id << "\n";
     }
 
-    int64_t vertex_id = 1;
     std::vector< Point_on_edge_t > new_points;
     for (const auto edge : m_edges_of_points) {
         std::set< Point_on_edge_t, pointCompare> points_on_edge;
@@ -400,7 +399,6 @@ Pg_points_graph::create_new_edges() {
             if (point.fraction > 0 &&  point.fraction < 1) {
                 log << "vertex_id of the point is " << -point.pid << "\n";
                 point.vertex_id = -point.pid;
-                ++vertex_id;
             }
             new_points.push_back(point);
 

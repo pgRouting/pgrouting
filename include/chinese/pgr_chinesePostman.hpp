@@ -143,7 +143,6 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(
 
     // calcu deg & build part of edges
     std::map<int64_t, int> deg;
-    size_t i(0);
     for (const auto &e : originalEdges) {
         pgassert(e.cost > 0);
         /* has out going edge */
@@ -169,7 +168,6 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(
         edge.capacity = (std::numeric_limits<int32_t>::max)();
         edge.cost = e.cost;
         edges.push_back(edge);
-        ++i;
     }
 
     superSource = deg.rbegin()->first + 1;
