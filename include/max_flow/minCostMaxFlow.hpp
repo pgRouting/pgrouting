@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_minCostMaxFlow.hpp
+File: minCostMaxFlow.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_MAX_FLOW_PGR_MINCOSTMAXFLOW_HPP_
-#define INCLUDE_MAX_FLOW_PGR_MINCOSTMAXFLOW_HPP_
+#ifndef INCLUDE_MAX_FLOW_MINCOSTMAXFLOW_HPP_
+#define INCLUDE_MAX_FLOW_MINCOSTMAXFLOW_HPP_
 #pragma once
 
 #include <map>
@@ -41,7 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/flow_t.h"
 #include "cpp_common/costFlow_t.hpp"
-#include "max_flow/pgr_costFlowGraph.hpp"
+#include "max_flow/costFlowGraph.hpp"
 
 namespace pgrouting {
 namespace graph {
@@ -146,4 +146,4 @@ class PgrCostFlowGraph {
 }  // namespace graph
 }  // namespace pgrouting
 
-#endif  // INCLUDE_MAX_FLOW_PGR_MINCOSTMAXFLOW_HPP_
+#endif  // INCLUDE_MAX_FLOW_MINCOSTMAXFLOW_HPP_

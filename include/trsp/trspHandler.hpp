@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_trspHandler.hpp
+File: trspHandler.hpp
 
 Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org
@@ -22,8 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_TRSP_PGR_TRSPHANDLER_HPP_
-#define INCLUDE_TRSP_PGR_TRSPHANDLER_HPP_
+#ifndef INCLUDE_TRSP_TRSPHANDLER_HPP_
+#define INCLUDE_TRSP_TRSPHANDLER_HPP_
 
 #include <stdlib.h>
 
@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/basePath_SSEC.hpp"
 #include "trsp/edgeInfo.hpp"
 #include "cpp_common/rule.hpp"
-#include "cpp_common/pgr_messages.hpp"
+#include "cpp_common/messages.hpp"
 
 namespace pgrouting {
 namespace trsp {
@@ -245,4 +245,4 @@ class Pgr_trspHandler : public pgrouting::Pgr_messages {
 }  // namespace trsp
 }  // namespace pgrouting
 
-#endif  // INCLUDE_TRSP_PGR_TRSPHANDLER_HPP_
+#endif  // INCLUDE_TRSP_TRSPHANDLER_HPP_

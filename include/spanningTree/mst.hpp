@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_mst.hpp
+File: mst.hpp
 
 Copyright (c) 2018 pgRouting developers
 Mail: project@pgrouting.org
@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_SPANNINGTREE_PGR_MST_HPP_
-#define INCLUDE_SPANNINGTREE_PGR_MST_HPP_
+#ifndef INCLUDE_SPANNINGTREE_MST_HPP_
+#define INCLUDE_SPANNINGTREE_MST_HPP_
 #pragma once
 
 #include <set>
@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/connected_components.hpp>
 #include <boost/graph/filtered_graph.hpp>
 
-#include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/base_graph.hpp"
 #include "cpp_common/interruption.hpp"
 #include "spanningTree/details.hpp"
 
@@ -370,4 +370,4 @@ class Pgr_mst {
 }  // namespace functions
 }  // namespace pgrouting
 
-#endif  // INCLUDE_SPANNINGTREE_PGR_MST_HPP_
+#endif  // INCLUDE_SPANNINGTREE_MST_HPP_

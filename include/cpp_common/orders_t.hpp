@@ -26,8 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_CPP_COMMON_PICKDELIVER_ORDERS_T_HPP_
-#define INCLUDE_CPP_COMMON_PICKDELIVER_ORDERS_T_HPP_
+#ifndef INCLUDE_CPP_COMMON_ORDERS_T_HPP_
+#define INCLUDE_CPP_COMMON_ORDERS_T_HPP_
 #pragma once
 
 #include <cstdint>
@@ -53,4 +53,4 @@ struct Orders_t {
     double deliver_service_t;
 };
 
-#endif  // INCLUDE_CPP_COMMON_PICKDELIVER_ORDERS_T_HPP_
+#endif  // INCLUDE_CPP_COMMON_ORDERS_T_HPP_

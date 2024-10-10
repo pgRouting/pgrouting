@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_bipartite_driver.hpp
+File: bipartite_driver.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -28,8 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#ifndef INCLUDE_COLORING_PGR_BIPARTITE_DRIVER_HPP_
-#define INCLUDE_COLORING_PGR_BIPARTITE_DRIVER_HPP_
+#ifndef INCLUDE_COLORING_BIPARTITE_DRIVER_HPP_
+#define INCLUDE_COLORING_BIPARTITE_DRIVER_HPP_
 #pragma once
 
 #include <iostream>
@@ -41,8 +41,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/type_traits.hpp>
 #include <boost/graph/bipartite.hpp>
 
-#include "cpp_common/pgr_base_graph.hpp"
-#include "cpp_common/pgr_messages.hpp"
+#include "cpp_common/base_graph.hpp"
+#include "cpp_common/messages.hpp"
 #include "cpp_common/interruption.hpp"
 typedef struct II_t_rt II_t_rt;
 #include "c_types/ii_t_rt.h"
@@ -93,4 +93,4 @@ class Pgr_Bipartite : public pgrouting::Pgr_messages {
 };
 }  // namespace functions
 }  // namespace pgrouting
-#endif  // INCLUDE_COLORING_PGR_BIPARTITE_DRIVER_HPP_
+#endif  // INCLUDE_COLORING_BIPARTITE_DRIVER_HPP_

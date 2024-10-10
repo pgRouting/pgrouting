@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_makeConnected.hpp
+File: makeConnected.hpp
 
 Copyright (c) 2020 pgRouting developers
 Mail: project@pgrouting.org
@@ -21,8 +21,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_COMPONENTS_PGR_MAKECONNECTED_HPP_
-#define INCLUDE_COMPONENTS_PGR_MAKECONNECTED_HPP_
+#ifndef INCLUDE_COMPONENTS_MAKECONNECTED_HPP_
+#define INCLUDE_COMPONENTS_MAKECONNECTED_HPP_
 #pragma once
 
 #include <vector>
@@ -38,8 +38,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/ref.hpp>
 
 #include "c_types/ii_t_rt.h"
-#include "cpp_common/pgr_messages.hpp"
-#include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/messages.hpp"
+#include "cpp_common/base_graph.hpp"
 #include "cpp_common/interruption.hpp"
 //******************************************
 
@@ -99,4 +99,4 @@ class Pgr_makeConnected : public pgrouting::Pgr_messages {
 }  // namespace functions
 }  // namespace pgrouting
 
-#endif  // INCLUDE_COMPONENTS_PGR_MAKECONNECTED_HPP_
+#endif  // INCLUDE_COMPONENTS_MAKECONNECTED_HPP_

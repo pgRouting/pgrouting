@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_alphaShape.hpp
+File: alphaShape.hpp
 
 Copyright (c) 2018 pgRouting developers
 Mail: project@pgrouting.org
@@ -26,8 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_ALPHASHAPE_PGR_ALPHASHAPE_HPP_
-#define INCLUDE_ALPHASHAPE_PGR_ALPHASHAPE_HPP_
+#ifndef INCLUDE_ALPHASHAPE_ALPHASHAPE_HPP_
+#define INCLUDE_ALPHASHAPE_ALPHASHAPE_HPP_
 #pragma once
 
 #ifndef __cplusplus
@@ -40,9 +40,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <iosfwd>
 
 #include "cpp_common/edge_xy_t.hpp"
-#include "cpp_common/pgr_messages.hpp"
+#include "cpp_common/messages.hpp"
 
-#include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/base_graph.hpp"
 #include "cpp_common/bline.hpp"
 
 
@@ -99,4 +99,4 @@ class Pgr_alphaShape : public Pgr_messages {
 }  // namespace alphashape
 }  // namespace pgrouting
 
-#endif  // INCLUDE_ALPHASHAPE_PGR_ALPHASHAPE_HPP_
+#endif  // INCLUDE_ALPHASHAPE_ALPHASHAPE_HPP_

@@ -39,12 +39,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "bellman_ford/bellman_ford.hpp"
 
-#include "c_types/ii_t_rt.h"
 #include "cpp_common/combinations.hpp"
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/alloc.hpp"
 #include "cpp_common/assert.hpp"
 
+#include "c_types/ii_t_rt.h"
 
 namespace {
 #if 0
@@ -75,6 +75,7 @@ pgr_bellman_ford(
     return paths;
 }
 #endif
+
 
 template <class G>
 std::deque<pgrouting::Path>
@@ -128,7 +129,7 @@ pgr_do_bellman_ford_neg(
 
 
         hint = combinations_sql;
-        auto combinations = get_combinations(combinations_sql, starts, ends, normal);
+        auto combinations = get_combinations(combinations_sql, starts, ends, true);
         hint = nullptr;
 
         if (combinations.empty() && combinations_sql) {
@@ -143,8 +144,6 @@ pgr_do_bellman_ford_neg(
         hint = neg_edges_sql;
         auto neg_edges = get_edges(std::string(neg_edges_sql), true, false);
 
-
-
         if (edges.size() + neg_edges.empty()) {
             *notice_msg = pgr_msg("No edges found");
             *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
@@ -154,15 +153,15 @@ pgr_do_bellman_ford_neg(
 
         std::deque<Path> paths;
         if (directed) {
-            pgrouting::DirectedGraph digraph(directed);
+            pgrouting::DirectedGraph digraph;
             digraph.insert_edges(edges);
             digraph.insert_negative_edges(neg_edges);
             paths = bellman_ford(digraph, combinations, only_cost);
         } else {
-            pgrouting::UndirectedGraph undigraph(directed);
+            pgrouting::UndirectedGraph undigraph;
             undigraph.insert_edges(edges);
             undigraph.insert_negative_edges(neg_edges);
-            paths = pgr_bellman_ford(undigraph, combinations, only_cost);
+            paths = bellman_ford(undigraph, combinations, only_cost);
         }
 
         size_t count(0);

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_breadthFirstSearch.hpp
+File: breadthFirstSearch.hpp
 
 Copyright (c) 2019 pgRouting developers
 Mail: project@pgrouting.org
@@ -21,8 +21,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_BREADTHFIRSTSEARCH_PGR_BREADTHFIRSTSEARCH_HPP_
-#define INCLUDE_BREADTHFIRSTSEARCH_PGR_BREADTHFIRSTSEARCH_HPP_
+#ifndef INCLUDE_BREADTHFIRSTSEARCH_BREADTHFIRSTSEARCH_HPP_
+#define INCLUDE_BREADTHFIRSTSEARCH_BREADTHFIRSTSEARCH_HPP_
 #pragma once
 
 #include <vector>
@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <visitors/edges_order_bfs_visitor.hpp>
 #include <boost/graph/breadth_first_search.hpp>
 
-#include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/base_graph.hpp"
 #include "cpp_common/interruption.hpp"
 #include "c_types/mst_rt.h"
 
@@ -111,4 +111,4 @@ class Pgr_breadthFirstSearch {
 }  // namespace functions
 }  // namespace pgrouting
 
-#endif  // INCLUDE_BREADTHFIRSTSEARCH_PGR_BREADTHFIRSTSEARCH_HPP_
+#endif  // INCLUDE_BREADTHFIRSTSEARCH_BREADTHFIRSTSEARCH_HPP_

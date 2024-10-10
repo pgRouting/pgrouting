@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_pickDeliver.hpp
+File: pickDeliver.hpp
 
 Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org
@@ -24,8 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /*! @file */
 
-#ifndef INCLUDE_VRP_PGR_PICKDELIVER_HPP_
-#define INCLUDE_VRP_PGR_PICKDELIVER_HPP_
+#ifndef INCLUDE_VRP_PICKDELIVER_HPP_
+#define INCLUDE_VRP_PICKDELIVER_HPP_
 #pragma once
 
 
@@ -116,4 +116,4 @@ class Pgr_pickDeliver : public PD_problem {
 }  //  namespace vrp
 }  //  namespace pgrouting
 
-#endif  // INCLUDE_VRP_PGR_PICKDELIVER_HPP_
+#endif  // INCLUDE_VRP_PICKDELIVER_HPP_

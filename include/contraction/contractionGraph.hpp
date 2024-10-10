@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_contractionGraph.hpp
+File: contractionGraph.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_CONTRACTION_PGR_CONTRACTIONGRAPH_HPP_
-#define INCLUDE_CONTRACTION_PGR_CONTRACTIONGRAPH_HPP_
+#ifndef INCLUDE_CONTRACTION_CONTRACTIONGRAPH_HPP_
+#define INCLUDE_CONTRACTION_CONTRACTIONGRAPH_HPP_
 #pragma once
 
 #include <limits>
@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <boost/graph/iteration_macros.hpp>
 
-#include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/base_graph.hpp"
 #include "cpp_common/ch_vertex.hpp"
 #include "cpp_common/ch_edge.hpp"
 
@@ -259,4 +259,4 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge, t_dire
 }  // namespace graph
 }  // namespace pgrouting
 
-#endif  // INCLUDE_CONTRACTION_PGR_CONTRACTIONGRAPH_HPP_
+#endif  // INCLUDE_CONTRACTION_CONTRACTIONGRAPH_HPP_

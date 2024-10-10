@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_allpairs.hpp
+File: allpairs.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 // http://www.cs.rpi.edu/~musser/archive/2005/gsd/restricted/FloydWarshall/FloydWarshall.pdf
 
-#ifndef INCLUDE_ALLPAIRS_PGR_ALLPAIRS_HPP_
-#define INCLUDE_ALLPAIRS_PGR_ALLPAIRS_HPP_
+#ifndef INCLUDE_ALLPAIRS_ALLPAIRS_HPP_
+#define INCLUDE_ALLPAIRS_ALLPAIRS_HPP_
 #pragma once
 
 #include <deque>
@@ -44,11 +44,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/iid_t_rt.h"
 #include "cpp_common/basePath_SSEC.hpp"
-#include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/base_graph.hpp"
 #include "cpp_common/interruption.hpp"
 
 // TODO(vicky) don't keep it here
-#include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/alloc.hpp"
 
 namespace pgrouting  {
 template < class G > class Pgr_allpairs;
@@ -263,4 +263,4 @@ class Pgr_allpairs {
 
 }  // namespace pgrouting
 
-#endif  // INCLUDE_ALLPAIRS_PGR_ALLPAIRS_HPP_
+#endif  // INCLUDE_ALLPAIRS_ALLPAIRS_HPP_

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_transitiveClosure.hpp
+File: transitiveClosure.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_TRANSITIVECLOSURE_PGR_TRANSITIVECLOSURE_HPP_
-#define INCLUDE_TRANSITIVECLOSURE_PGR_TRANSITIVECLOSURE_HPP_
+#ifndef INCLUDE_TRANSITIVECLOSURE_TRANSITIVECLOSURE_HPP_
+#define INCLUDE_TRANSITIVECLOSURE_TRANSITIVECLOSURE_HPP_
 #pragma once
 
 
@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 
 #include <boost/graph/transitive_closure.hpp>
-#include "cpp_common/pgr_assert.hpp"
+#include "cpp_common/assert.hpp"
 
 
 template < class G > class Pgr_transitiveClosure;
@@ -72,4 +72,4 @@ Pgr_transitiveClosure< G >::transitiveClosure(
 
 
 
-#endif  // INCLUDE_TRANSITIVECLOSURE_PGR_TRANSITIVECLOSURE_HPP_
+#endif  // INCLUDE_TRANSITIVECLOSURE_TRANSITIVECLOSURE_HPP_

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_sequentialVertexColoring.hpp
+File: sequentialVertexColoring.hpp
 
 Copyright (c) 2020 pgRouting developers
 Mail: project@pgrouting.org
@@ -21,8 +21,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_COLORING_PGR_SEQUENTIALVERTEXCOLORING_HPP_
-#define INCLUDE_COLORING_PGR_SEQUENTIALVERTEXCOLORING_HPP_
+#ifndef INCLUDE_COLORING_SEQUENTIALVERTEXCOLORING_HPP_
+#define INCLUDE_COLORING_SEQUENTIALVERTEXCOLORING_HPP_
 #pragma once
 
 #include <algorithm>
@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/sequential_vertex_coloring.hpp>
 
-#include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/base_graph.hpp"
 #include "cpp_common/interruption.hpp"
 
 #include "c_types/ii_t_rt.h"
@@ -146,4 +146,4 @@ class Pgr_sequentialVertexColoring {
 }  // namespace functions
 }  // namespace pgrouting
 
-#endif  // INCLUDE_COLORING_PGR_SEQUENTIALVERTEXCOLORING_HPP_
+#endif  // INCLUDE_COLORING_SEQUENTIALVERTEXCOLORING_HPP_

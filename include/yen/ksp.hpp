@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_ksp.hpp
+File: ksp.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -30,8 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_YEN_PGR_KSP_HPP_
-#define INCLUDE_YEN_PGR_KSP_HPP_
+#ifndef INCLUDE_YEN_KSP_HPP_
+#define INCLUDE_YEN_KSP_HPP_
 #pragma once
 
 #include <map>
@@ -43,9 +43,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 
 #include "dijkstra/dijkstra.hpp"
-#include "cpp_common/pgr_assert.hpp"
+#include "cpp_common/assert.hpp"
 #include "cpp_common/compPaths.hpp"
-#include "cpp_common/pgr_messages.hpp"
+#include "cpp_common/messages.hpp"
 #include "cpp_common/basePath_SSEC.hpp"
 
 namespace pgrouting {
@@ -277,4 +277,4 @@ namespace algorithms {
 
 }  // namespace pgrouting
 
-#endif  // INCLUDE_YEN_PGR_KSP_HPP_
+#endif  // INCLUDE_YEN_KSP_HPP_

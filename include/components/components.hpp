@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_components.hpp
+File: components.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_COMPONENTS_PGR_COMPONENTS_HPP_
-#define INCLUDE_COMPONENTS_PGR_COMPONENTS_HPP_
+#ifndef INCLUDE_COMPONENTS_COMPONENTS_HPP_
+#define INCLUDE_COMPONENTS_COMPONENTS_HPP_
 #pragma once
 
 #include <vector>
@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/strong_components.hpp>
 #include <boost/graph/biconnected_components.hpp>
 
-#include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/base_graph.hpp"
 #include "cpp_common/identifiers.hpp"
 #include "components/componentsResult.hpp"
 
@@ -72,4 +72,4 @@ bridges(pgrouting::UndirectedGraph &graph);
 }  // namespace algorithms
 }  // namespace pgrouting
 
-#endif  // INCLUDE_COMPONENTS_PGR_COMPONENTS_HPP_
+#endif  // INCLUDE_COMPONENTS_COMPONENTS_HPP_

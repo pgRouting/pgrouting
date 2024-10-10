@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_dijkstraVia.hpp
+File: dijkstraVia.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -26,8 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DIJKSTRA_PGR_DIJKSTRAVIA_HPP_
-#define INCLUDE_DIJKSTRA_PGR_DIJKSTRAVIA_HPP_
+#ifndef INCLUDE_DIJKSTRA_DIJKSTRAVIA_HPP_
+#define INCLUDE_DIJKSTRA_DIJKSTRAVIA_HPP_
 #pragma once
 
 #include <sstream>
@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "dijkstra/dijkstra.hpp"
 
-#include "cpp_common/pgr_assert.hpp"
+#include "cpp_common/assert.hpp"
 
 
 namespace pgrouting {
@@ -122,4 +122,4 @@ pgr_dijkstraVia(
 
 }  // namespace pgrouting
 
-#endif  // INCLUDE_DIJKSTRA_PGR_DIJKSTRAVIA_HPP_
+#endif  // INCLUDE_DIJKSTRA_DIJKSTRAVIA_HPP_

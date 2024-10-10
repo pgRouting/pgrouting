@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_withPoints.hpp
+File: withPoints.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -26,13 +26,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_WITHPOINTS_PGR_WITHPOINTS_HPP_
-#define INCLUDE_WITHPOINTS_PGR_WITHPOINTS_HPP_
+#ifndef INCLUDE_WITHPOINTS_WITHPOINTS_HPP_
+#define INCLUDE_WITHPOINTS_WITHPOINTS_HPP_
 #pragma once
 #include <vector>
 
 #include "cpp_common/point_on_edge_t.hpp"
-#include "cpp_common/pgr_messages.hpp"
+#include "cpp_common/messages.hpp"
 #include "cpp_common/basePath_SSEC.hpp"
 
 namespace pgrouting {
@@ -98,4 +98,4 @@ class Pg_points_graph : public Pgr_messages {
 
 }  // namespace pgrouting
 
-#endif  // INCLUDE_WITHPOINTS_PGR_WITHPOINTS_HPP_
+#endif  // INCLUDE_WITHPOINTS_WITHPOINTS_HPP_

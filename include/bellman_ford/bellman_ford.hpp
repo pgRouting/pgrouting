@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_bellman_ford.hpp
+File: bellman_ford.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_BELLMAN_FORD_PGR_BELLMAN_FORD_HPP_
-#define INCLUDE_BELLMAN_FORD_PGR_BELLMAN_FORD_HPP_
+#ifndef INCLUDE_BELLMAN_FORD_BELLMAN_FORD_HPP_
+#define INCLUDE_BELLMAN_FORD_BELLMAN_FORD_HPP_
 #pragma once
 
 #include <deque>
@@ -41,9 +41,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/bellman_ford_shortest_paths.hpp>
-#include "cpp_common/pgr_messages.hpp"
+#include "cpp_common/messages.hpp"
 #include "cpp_common/basePath_SSEC.hpp"
-#include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/base_graph.hpp"
 #include "cpp_common/interruption.hpp"
 #include "c_types/ii_t_rt.h"
 
@@ -334,4 +334,4 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
 
 }  // namespace pgrouting
 
-#endif  // INCLUDE_BELLMAN_FORD_PGR_BELLMAN_FORD_HPP_
+#endif  // INCLUDE_BELLMAN_FORD_BELLMAN_FORD_HPP_

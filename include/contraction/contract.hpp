@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_contract.hpp
+File: contract.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,18 +27,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_CONTRACTION_PGR_CONTRACT_HPP_
-#define INCLUDE_CONTRACTION_PGR_CONTRACT_HPP_
+#ifndef INCLUDE_CONTRACTION_CONTRACT_HPP_
+#define INCLUDE_CONTRACTION_CONTRACT_HPP_
 #pragma once
 
 #include <deque>
 #include <vector>
-#include "cpp_common/pgr_assert.hpp"
+#include "cpp_common/assert.hpp"
 
-#include "contraction/pgr_contractionGraph.hpp"
+#include "contraction/contractionGraph.hpp"
 #include "contraction/ch_graphs.hpp"
-#include "contraction/pgr_linearContraction.hpp"
-#include "contraction/pgr_deadEndContraction.hpp"
+#include "contraction/linearContraction.hpp"
+#include "contraction/deadEndContraction.hpp"
 
 namespace pgrouting {
 namespace contraction {
@@ -131,4 +131,4 @@ class Pgr_contract {
 }  // namespace contraction
 }  // namespace pgrouting
 
-#endif  // INCLUDE_CONTRACTION_PGR_CONTRACT_HPP_
+#endif  // INCLUDE_CONTRACTION_CONTRACT_HPP_

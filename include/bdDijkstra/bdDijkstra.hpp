@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_bdDijkstra.hpp
+File: bdDijkstra.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -25,12 +25,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_BDDIJKSTRA_PGR_BDDIJKSTRA_HPP_
-#define INCLUDE_BDDIJKSTRA_PGR_BDDIJKSTRA_HPP_
+#ifndef INCLUDE_BDDIJKSTRA_BDDIJKSTRA_HPP_
+#define INCLUDE_BDDIJKSTRA_BDDIJKSTRA_HPP_
 #pragma once
-
-
-#include "cpp_common/pgr_bidirectional.hpp"
 
 #include <string>
 #include <queue>
@@ -40,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <functional>
 
 
+#include "cpp_common/bidirectional.hpp"
 #include "cpp_common/basePath_SSEC.hpp"
 
 
@@ -145,4 +143,4 @@ class Pgr_bdDijkstra : public Pgr_bidirectional<G> {
 }  // namespace bidirectional
 }  // namespace pgrouting
 
-#endif  // INCLUDE_BDDIJKSTRA_PGR_BDDIJKSTRA_HPP_
+#endif  // INCLUDE_BDDIJKSTRA_BDDIJKSTRA_HPP_

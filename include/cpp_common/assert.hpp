@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_assert.hpp
+File: assert.hpp
 
 Copyright (c) 2014 pgRouting developers
 Mail: project@pgrouting.org
@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef  INCLUDE_CPP_COMMON_PGR_ASSERT_HPP_
-#define  INCLUDE_CPP_COMMON_PGR_ASSERT_HPP_
+#ifndef  INCLUDE_CPP_COMMON_ASSERT_HPP_
+#define  INCLUDE_CPP_COMMON_ASSERT_HPP_
 #pragma once
 
 #include <string>
@@ -69,7 +69,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  * Example:
  * @code
     #include <iostream>
-    #include "cpp_common/pgr_assert.hpp"
+    #include "cpp_common/assert.hpp"
 
     int main() {
 
@@ -148,4 +148,4 @@ class AssertFailedException : public std::exception {
      virtual ~AssertFailedException() throw() {}
 };
 
-#endif  //  INCLUDE_CPP_COMMON_PGR_ASSERT_HPP_
+#endif  //  INCLUDE_CPP_COMMON_ASSERT_HPP_

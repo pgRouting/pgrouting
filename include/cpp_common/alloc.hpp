@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_alloc.hpp
+File: alloc.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /*! @file */
 
-#ifndef INCLUDE_CPP_COMMON_PGR_ALLOC_HPP_
-#define INCLUDE_CPP_COMMON_PGR_ALLOC_HPP_
+#ifndef INCLUDE_CPP_COMMON_ALLOC_HPP_
+#define INCLUDE_CPP_COMMON_ALLOC_HPP_
 #pragma once
 
 
@@ -91,4 +91,4 @@ pgr_msg(const std::string &msg);
 
 }  // namespace pgrouting
 
-#endif  // INCLUDE_CPP_COMMON_PGR_ALLOC_HPP_
+#endif  // INCLUDE_CPP_COMMON_ALLOC_HPP_

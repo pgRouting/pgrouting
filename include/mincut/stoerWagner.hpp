@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_stoerWagner.hpp
+File: stoerWagner.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_MINCUT_PGR_STOERWAGNER_HPP_
-#define INCLUDE_MINCUT_PGR_STOERWAGNER_HPP_
+#ifndef INCLUDE_MINCUT_STOERWAGNER_HPP_
+#define INCLUDE_MINCUT_STOERWAGNER_HPP_
 #pragma once
 
 #include <iostream>
@@ -45,7 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/property_map/property_map.hpp>
 #include <boost/typeof/typeof.hpp>
 
-#include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/base_graph.hpp"
 #include "c_types/stoerWagner_t.h"
 
 
@@ -118,4 +118,4 @@ Pgr_stoerWagner< G >::stoerWagner(
 }
 
 
-#endif  // INCLUDE_MINCUT_PGR_STOERWAGNER_HPP_
+#endif  // INCLUDE_MINCUT_STOERWAGNER_HPP_
