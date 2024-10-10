@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_trspHandler.cpp
+File: trspHandler.cpp
 
 Copyright (c) 2011 pgRouting developers
 Mail: project@pgrouting.org
@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "trsp/pgr_trspHandler.hpp"
+#include "trsp/trspHandler.hpp"
 
 #include <functional>
 #include <utility>
@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 
 #include "cpp_common/basePath_SSEC.hpp"
-#include "cpp_common/pgr_assert.hpp"
+#include "cpp_common/assert.hpp"
 
 namespace pgrouting {
 namespace trsp {

@@ -33,16 +33,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <string>
 
-#include "dijkstra/pgr_dijkstraVia.hpp"
+#include "dijkstra/dijkstraVia.hpp"
 #include "c_types/routes_t.h"
 #include "cpp_common/restriction_t.hpp"
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/rule.hpp"
 #include "cpp_common/combinations.hpp"
-#include "cpp_common/pgr_alloc.hpp"
-#include "cpp_common/pgr_assert.hpp"
+#include "cpp_common/alloc.hpp"
+#include "cpp_common/assert.hpp"
 
-#include "trsp/pgr_trspHandler.hpp"
+#include "trsp/trspHandler.hpp"
 
 
 namespace {

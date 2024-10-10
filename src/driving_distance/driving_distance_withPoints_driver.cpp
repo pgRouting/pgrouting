@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: withPoints_dd_driver.cpp
+File: driving_distance_withPoints.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#include "drivers/driving_distance/withPoints_dd_driver.h"
+#include "drivers/driving_distance/driving_distance_withPoints_driver.h"
 
 #include <sstream>
 #include <deque>
@@ -41,10 +41,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgdata_getters.hpp"
 #include "dijkstra/drivingDist.hpp"
-#include "withPoints/pgr_withPoints.hpp"
+#include "withPoints/withPoints.hpp"
 #include "c_types/mst_rt.h"
 #include "cpp_common/combinations.hpp"
-#include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/alloc.hpp"
 
 
 void

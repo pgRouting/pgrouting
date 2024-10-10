@@ -33,11 +33,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 
 #include "cpp_common/pgdata_getters.hpp"
-#include "cpp_common/pgr_alloc.hpp"
-#include "cpp_common/pgr_assert.hpp"
+#include "cpp_common/alloc.hpp"
+#include "cpp_common/assert.hpp"
 
 #include "spanningTree/details.hpp"
-#include "traversal/pgr_depthFirstSearch.hpp"
+#include "traversal/depthFirstSearch.hpp"
 
 /** @file depthFirstSearch_driver.cpp
  * @brief Handles actual calling of function in the `pgr_depthFirstSearch.hpp` file.

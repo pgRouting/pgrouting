@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_maxflow.cpp
+File: maxflow.cpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "max_flow/pgr_maxflow.hpp"
+#include "max_flow/maxflow.hpp"
 
 #include <limits>
 #include <utility>

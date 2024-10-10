@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_withPoints.cpp
+File: withPoints.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#include "withPoints/pgr_withPoints.hpp"
+#include "withPoints/withPoints.hpp"
 
 #include <sstream>
 #include <deque>
@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <cassert>
 
-#include "cpp_common/pgr_assert.hpp"
+#include "cpp_common/assert.hpp"
 
 namespace pgrouting {
 

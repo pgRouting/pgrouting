@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_messages.cpp
+File: messages.cpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <string>
 #include <sstream>
-#include "cpp_common/pgr_messages.hpp"
+#include "cpp_common/messages.hpp"
 
 namespace pgrouting {
 

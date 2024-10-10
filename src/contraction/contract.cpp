@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_contract.cpp
+File: contract.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "contraction/pgr_contract.hpp"
+#include "contraction/contract.hpp"
 
 namespace pgrouting {
 namespace contraction {

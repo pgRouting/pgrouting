@@ -37,12 +37,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 #include <set>
 
-#include "bellman_ford/pgr_bellman_ford.hpp"
+#include "bellman_ford/bellman_ford.hpp"
 
 #include "cpp_common/combinations.hpp"
 #include "cpp_common/pgdata_getters.hpp"
-#include "cpp_common/pgr_alloc.hpp"
-#include "cpp_common/pgr_assert.hpp"
+#include "cpp_common/alloc.hpp"
+#include "cpp_common/assert.hpp"
 
 #include "c_types/ii_t_rt.h"
 

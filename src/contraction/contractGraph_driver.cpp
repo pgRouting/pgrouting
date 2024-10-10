@@ -37,11 +37,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgdata_getters.hpp"
 #include "contraction/ch_graphs.hpp"
-#include "contraction/pgr_contract.hpp"
+#include "contraction/contract.hpp"
 
 #include "c_types/contracted_rt.h"
 #include "cpp_common/identifiers.hpp"
-#include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/alloc.hpp"
 
 namespace {
 
