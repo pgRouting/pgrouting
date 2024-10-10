@@ -40,10 +40,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/combinations.hpp"
 #include "cpp_common/pgdata_getters.hpp"
-#include "cpp_common/pgr_alloc.hpp"
-#include "cpp_common/pgr_assert.hpp"
-#include "cpp_common/pgr_base_graph.hpp"
-#include "bdDijkstra/pgr_bdDijkstra.hpp"
+#include "cpp_common/alloc.hpp"
+#include "cpp_common/assert.hpp"
+#include "cpp_common/base_graph.hpp"
+#include "bdDijkstra/bdDijkstra.hpp"
 
 #include "c_types/ii_t_rt.h"
 

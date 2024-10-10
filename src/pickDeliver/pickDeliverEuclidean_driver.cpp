@@ -39,11 +39,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/schedule_rt.h"
 
-#include "vrp/pgr_pickDeliver.hpp"
+#include "vrp/pickDeliver.hpp"
 
 #include "cpp_common/pgdata_getters.hpp"
-#include "cpp_common/pgr_assert.hpp"
-#include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/assert.hpp"
+#include "cpp_common/alloc.hpp"
 
 void
 pgr_do_pickDeliverEuclidean(

@@ -40,15 +40,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <cassert>
 #include <string>
 
-#include "trsp/pgr_trspHandler.hpp"
+#include "trsp/trspHandler.hpp"
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/rule.hpp"
-#include "cpp_common/pgr_assert.hpp"
-#include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/assert.hpp"
+#include "cpp_common/alloc.hpp"
 #include "cpp_common/combinations.hpp"
 #include "cpp_common/restriction_t.hpp"
 #include "c_types/ii_t_rt.h"
-#include "withPoints/pgr_withPoints.hpp"
+#include "withPoints/withPoints.hpp"
 
 #include "dijkstra/dijkstra.hpp"
 

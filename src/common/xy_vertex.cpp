@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 
 #include <boost/geometry/io/wkt/write.hpp>
-#include "cpp_common/pgr_assert.hpp"
+#include "cpp_common/assert.hpp"
 
 namespace {
 

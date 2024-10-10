@@ -27,9 +27,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <algorithm>
 #include <set>
-#include "cpp_common/pgr_assert.hpp"
+#include "cpp_common/assert.hpp"
 #include "vrp/solution.hpp"
-#include "vrp/pgr_pickDeliver.hpp"
+#include "vrp/pickDeliver.hpp"
 
 namespace pgrouting {
 namespace vrp {

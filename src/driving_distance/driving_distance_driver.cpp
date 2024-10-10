@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: drivedist_driver.cpp
+File: driving_distance_driver.cpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "drivers/driving_distance/drivedist_driver.h"
+#include "drivers/driving_distance/driving_distance_driver.h"
 
 #include <sstream>
 #include <deque>
@@ -39,8 +39,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "dijkstra/drivingDist.hpp"
 
 #include "c_types/mst_rt.h"
-#include "cpp_common/pgr_alloc.hpp"
-#include "cpp_common/pgr_assert.hpp"
+#include "cpp_common/alloc.hpp"
+#include "cpp_common/assert.hpp"
 
 
 void

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_assert.cpp
+File: assert.cpp
 
 Copyright (c) 2014 pgRouting developers
 Mail: project@pgrouting.org
@@ -25,7 +25,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-#include "cpp_common/pgr_assert.hpp"
+#include "cpp_common/assert.hpp"
 
 #include <stdio.h>
 #include <stdlib.h>

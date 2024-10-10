@@ -30,8 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 #include <sstream>
 
-#include "cpp_common/pgr_assert.hpp"
-#include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/assert.hpp"
+#include "cpp_common/alloc.hpp"
 
 int
 get_order(char * fn_suffix, char ** err_msg) {

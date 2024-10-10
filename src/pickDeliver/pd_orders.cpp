@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 #include <string>
 
-#include "vrp/pgr_pickDeliver.hpp"
+#include "vrp/pickDeliver.hpp"
 #include "vrp/dnode.hpp"
 
 namespace pgrouting {

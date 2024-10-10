@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_components.cpp
+File: components.cpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "components/pgr_components.hpp"
+#include "components/components.hpp"
 
 #include <vector>
 #include <map>

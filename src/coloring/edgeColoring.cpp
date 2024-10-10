@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_edgeColoring.cpp
+File: edgeColoring.cpp
 
 Generated with Template by:
 Copyright (c) 2021 pgRouting developers
@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "coloring/pgr_edgeColoring.hpp"
+#include "coloring/edgeColoring.hpp"
 
 #include <vector>
 #include <utility>
@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/edge_coloring.hpp>
 #include <boost/graph/graph_utility.hpp>
 
-#include "cpp_common/pgr_assert.hpp"
+#include "cpp_common/assert.hpp"
 #include "cpp_common/interruption.hpp"
 
 

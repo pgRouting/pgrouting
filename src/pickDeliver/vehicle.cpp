@@ -35,9 +35,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/schedule_rt.h"
 
-#include "cpp_common/pgr_assert.hpp"
+#include "cpp_common/assert.hpp"
 
-#include "vrp/pgr_pickDeliver.hpp"
+#include "vrp/pickDeliver.hpp"
 
 
 namespace pgrouting {

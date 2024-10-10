@@ -39,7 +39,7 @@ extern "C" {
 #include <string>
 
 #include "cpp_common/undefPostgresDefine.hpp"
-#include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/alloc.hpp"
 #include "cpp_common/info_t.hpp"
 
 

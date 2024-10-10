@@ -35,10 +35,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/routes_t.h"
 #include "cpp_common/pgdata_getters.hpp"
-#include "cpp_common/pgr_alloc.hpp"
-#include "cpp_common/pgr_assert.hpp"
-#include "dijkstra/pgr_dijkstraVia.hpp"
-#include "withPoints/pgr_withPoints.hpp"
+#include "cpp_common/alloc.hpp"
+#include "cpp_common/assert.hpp"
+#include "dijkstra/dijkstraVia.hpp"
+#include "withPoints/withPoints.hpp"
 
 namespace {
 

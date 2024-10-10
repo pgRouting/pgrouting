@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_pickDeliver.cpp
+File: pickDeliver.cpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "vrp/pgr_pickDeliver.hpp"
+#include "vrp/pickDeliver.hpp"
 
 #include <sstream>
 #include <string>
@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/schedule_rt.h"
 
-#include "cpp_common/pgr_assert.hpp"
+#include "cpp_common/assert.hpp"
 
 #include "vrp/initials_code.hpp"
 #include "vrp/vehicle_node.hpp"

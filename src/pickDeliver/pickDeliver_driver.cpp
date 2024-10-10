@@ -36,13 +36,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <utility>
 
-#include "vrp/pgr_pickDeliver.hpp"
+#include "vrp/pickDeliver.hpp"
 #include "vrp/initials_code.hpp"
 #include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/Dmatrix.hpp"
 
-#include "cpp_common/pgr_assert.hpp"
-#include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/assert.hpp"
+#include "cpp_common/alloc.hpp"
 
 #include "c_types/iid_t_rt.h"
 #include "cpp_common/orders_t.hpp"

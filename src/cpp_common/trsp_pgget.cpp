@@ -57,7 +57,7 @@ The old version of TRSP
 
 #include "cpp_common/get_data.hpp"
 #include "cpp_common/get_check_data.hpp"
-#include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/alloc.hpp"
 #include "cpp_common/trsp_pgfetch.hpp"
 
 #include "cpp_common/info_t.hpp"

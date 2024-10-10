@@ -66,6 +66,7 @@ process(
             neg_edges_sql,
             combinations_sql,
             starts, ends,
+
             directed,
             only_cost,
 
@@ -89,9 +90,10 @@ process(
     pgr_SPI_finish();
 }
 
-PGDLLEXPORT Datum _pgr_bellmanfordneg(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum 
+_pgr_bellmanfordneg(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    TupleDesc           tuple_desc;
+    TupleDesc            tuple_desc;
 
     Path_rt  *result_tuples = NULL;
     size_t result_count = 0;
@@ -159,14 +161,15 @@ PGDLLEXPORT Datum _pgr_bellmanfordneg(PG_FUNCTION_ARGS) {
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
 
-
         size_t i;
         for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
 
-        values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
+        int64_t seq = funcctx->call_cntr == 0?  1 : result_tuples[funcctx->call_cntr - 1].start_id;
+
+        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[1] = Int32GetDatum(seq);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_id);
         values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
@@ -174,6 +177,7 @@ PGDLLEXPORT Datum _pgr_bellmanfordneg(PG_FUNCTION_ARGS) {
         values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
 
+        result_tuples[funcctx->call_cntr].start_id = result_tuples[funcctx->call_cntr].edge < 0? 1 : seq + 1;
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

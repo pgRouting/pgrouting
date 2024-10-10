@@ -41,12 +41,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 
 #include "cpp_common/pgdata_getters.hpp"
-#include "cpp_common/pgr_alloc.hpp"
-#include "cpp_common/pgr_assert.hpp"
+#include "cpp_common/alloc.hpp"
+#include "cpp_common/assert.hpp"
 #include "cpp_common/rule.hpp"
 #include "cpp_common/combinations.hpp"
-#include "withPoints/pgr_withPoints.hpp"
-#include "trsp/pgr_trspHandler.hpp"
+#include "withPoints/withPoints.hpp"
+#include "trsp/trspHandler.hpp"
 
 #include "dijkstra/dijkstra.hpp"
 
