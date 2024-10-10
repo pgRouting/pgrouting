@@ -10,13 +10,13 @@
     <title>pgr_lineGraph - Propuesto &#8212; pgRouting Manual (3.7-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=abe048be"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=8578d92c"></script>
-    <script src="_static/translations.js?v=d190bf04"></script>
+    <script src="_static/translations.js?v=f85f4cfb"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
@@ -110,11 +110,11 @@
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
-<li><a class="reference internal" href="#representation-as-directed-with-shared-edge-identifiers">Representation as directed with shared edge identifiers</a><ul>
+<li><a class="reference internal" href="#representation-as-directed-with-shared-edge-identifiers">Representación como dirigida con identificadores de arista compartidos</a><ul>
 <li><a class="reference internal" href="#line-graph-of-a-directed-graph-represented-with-shared-edges">Grafo lineal de un grafo dirigido representado con aristas compartidas</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#representation-as-directed-with-unique-edge-identifiers">Representation as directed with unique edge identifiers</a><ul>
+<li><a class="reference internal" href="#representation-as-directed-with-unique-edge-identifiers">Representación dirigida con identificadores de arista únicos</a><ul>
 <li><a class="reference internal" href="#line-graph-of-a-directed-graph-represented-with-unique-edges">Gráfico lineal de un grafo dirigido representado con aristas únicas</a></li>
 </ul>
 </li>
@@ -180,11 +180,11 @@
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
-<li><a class="reference internal" href="#representation-as-directed-with-shared-edge-identifiers">Representation as directed with shared edge identifiers</a><ul>
+<li><a class="reference internal" href="#representation-as-directed-with-shared-edge-identifiers">Representación como dirigida con identificadores de arista compartidos</a><ul>
 <li><a class="reference internal" href="#line-graph-of-a-directed-graph-represented-with-shared-edges">Grafo lineal de un grafo dirigido representado con aristas compartidas</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#representation-as-directed-with-unique-edge-identifiers">Representation as directed with unique edge identifiers</a><ul>
+<li><a class="reference internal" href="#representation-as-directed-with-unique-edge-identifiers">Representación dirigida con identificadores de arista únicos</a><ul>
 <li><a class="reference internal" href="#line-graph-of-a-directed-graph-represented-with-unique-edges">Gráfico lineal de un grafo dirigido representado con aristas únicas</a></li>
 </ul>
 </li>
@@ -495,12 +495,12 @@
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="contenido">
 <ul class="simple">
-<li><p><a class="reference internal" href="#representation-as-directed-with-shared-edge-identifiers" id="id2">Representation as directed with shared edge identifiers</a></p>
+<li><p><a class="reference internal" href="#representation-as-directed-with-shared-edge-identifiers" id="id2">Representación como dirigida con identificadores de arista compartidos</a></p>
 <ul>
 <li><p><a class="reference internal" href="#line-graph-of-a-directed-graph-represented-with-shared-edges" id="id3">Grafo lineal de un grafo dirigido representado con aristas compartidas</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#representation-as-directed-with-unique-edge-identifiers" id="id4">Representation as directed with unique edge identifiers</a></p>
+<li><p><a class="reference internal" href="#representation-as-directed-with-unique-edge-identifiers" id="id4">Representación dirigida con identificadores de arista únicos</a></p>
 <ul>
 <li><p><a class="reference internal" href="#line-graph-of-a-directed-graph-represented-with-unique-edges" id="id5">Gráfico lineal de un grafo dirigido representado con aristas únicas</a></p></li>
 </ul>
@@ -508,14 +508,7 @@
 </ul>
 </nav>
 <p>Dado el siguente grafo dirigido</p>
-<p><span class="math notranslate nohighlight">\(G(V,E) = G(\{1,2,3,4\},\{
-1 \rightarrow 2,
-1 \rightarrow 4,
-2 \rightarrow 3,
-3 \rightarrow 1,
-3 \rightarrow 2,
-3 \rightarrow 4,
-4 \rightarrow 3\})\)</span></p>
+<p><span class="math notranslate nohighlight">\(G(V,E) = G(\{1,2,3,4\},\{ 1 \rightarrow 2, 1 \rightarrow 4, 2 \rightarrow 3, 3 \rightarrow 1, 3 \rightarrow 2, 3 \rightarrow 4, 4 \rightarrow 3})\)</span></p>
 <div class="graphviz"><img src="_images/graphviz-a659b08ba803646bf67ee2958aeaf33ae0c046d2.png" alt="digraph G {
 
    subgraph clusterA {
@@ -533,23 +526,23 @@
    }
 }" class="graphviz" /></div>
 <section id="representation-as-directed-with-shared-edge-identifiers">
-<h3><a class="toc-backref" href="#id2" role="doc-backlink">Representation as directed with shared edge identifiers</a><a class="headerlink" href="#representation-as-directed-with-shared-edge-identifiers" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Representación como dirigida con identificadores de arista compartidos</a><a class="headerlink" href="#representation-as-directed-with-shared-edge-identifiers" title="Link to this heading">¶</a></h3>
 <p>For the simplicity, the design of the edges table on the database, has the
 edge’s identifiers are represented with 3 digits:</p>
 <dl class="field-list simple">
-<dt class="field-odd">hundreds<span class="colon">:</span></dt>
+<dt class="field-odd">cientos<span class="colon">:</span></dt>
 <dd class="field-odd"><p>el vértice de origen</p>
 </dd>
-<dt class="field-even">tens<span class="colon">:</span></dt>
-<dd class="field-even"><p>always 0, acts as a separator</p>
+<dt class="field-even">decenas<span class="colon">:</span></dt>
+<dd class="field-even"><p>siempre 0, actúa como separador</p>
 </dd>
 <dt class="field-odd">unidades<span class="colon">:</span></dt>
 <dd class="field-odd"><p>el vértice de destino</p>
 </dd>
 </dl>
-<p>In this image,</p>
+<p>En esta imagen,</p>
 <ul class="simple">
-<li><p>Single or double head arrows represent one edge (row) on the edges table.</p></li>
+<li><p>Las puntas de flechas simples o dobles representan una arista (fila) en la tabla de aristas.</p></li>
 <li><p>Los números en la sombra amarilla son los identificadores de las aristas.</p></li>
 </ul>
 <div class="graphviz"><img src="_images/graphviz-c510169c496a30324c1d92dcb1e14cd7d0e704ce.png" alt="digraph G {
@@ -580,8 +573,7 @@ edge’s identifiers are represented with 3 digits:</p>
       s304 [label=&quot;304&quot;,pos=&quot;1,0!&quot;];
    }
  }" class="graphviz" /></div>
-<p>Two pair of edges share the same identifier when the <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column is
-used.</p>
+<p>Dos pares de aristas comparten el mismo identificador cuando se utiliza la columna <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>.</p>
 <ul class="simple">
 <li><p>Las aristas <span class="math notranslate nohighlight">\({2 \rightarrow 3, 3 \rightarrow 2}\)</span> se representan con una fila de aristas con <span class="math notranslate nohighlight">\(id=203\)</span>.</p></li>
 <li><p>Las aristas <span class="math notranslate nohighlight">\({3 \rightarrow 4, 4 \rightarrow 3}\)</span> se representan con una fila de aristas con <span class="math notranslate nohighlight">\(id=304\)</span>.</p></li>
@@ -628,7 +620,7 @@ used.</p>
 <ul class="simple">
 <li><p>El resultado es un grafo dirigido.</p></li>
 <li><p>Para <span class="math notranslate nohighlight">\(seq=4\)</span> desde <span class="math notranslate nohighlight">\(203 \leftrightarrow 304\)</span> representa dos arsitas</p></li>
-<li><p>For all the other values of <code class="docutils literal notranslate"><span class="pre">seq</span></code> represent one edge.</p></li>
+<li><p>Todos los demás valores de <code class="docutils literal notranslate"><span class="pre">seq</span></code> representan una arista.</p></li>
 <li><p>Los valores <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> representan la existencia de la arista.</p>
 <ul>
 <li><p>Cuando es positivo: la arista existe.</p></li>
@@ -677,24 +669,24 @@ used.</p>
 </section>
 </section>
 <section id="representation-as-directed-with-unique-edge-identifiers">
-<h3><a class="toc-backref" href="#id4" role="doc-backlink">Representation as directed with unique edge identifiers</a><a class="headerlink" href="#representation-as-directed-with-unique-edge-identifiers" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Representación dirigida con identificadores de arista únicos</a><a class="headerlink" href="#representation-as-directed-with-unique-edge-identifiers" title="Link to this heading">¶</a></h3>
 <p>For the simplicity, the design of the edges table on the database, has the
 edge’s identifiers are represented with 3 digits:</p>
 <dl class="field-list simple">
-<dt class="field-odd">hundreds<span class="colon">:</span></dt>
+<dt class="field-odd">cientos<span class="colon">:</span></dt>
 <dd class="field-odd"><p>el vértice de origen</p>
 </dd>
-<dt class="field-even">tens<span class="colon">:</span></dt>
-<dd class="field-even"><p>always 0, acts as a separator</p>
+<dt class="field-even">decenas<span class="colon">:</span></dt>
+<dd class="field-even"><p>siempre 0, actúa como separador</p>
 </dd>
 <dt class="field-odd">unidades<span class="colon">:</span></dt>
 <dd class="field-odd"><p>el vértice de destino</p>
 </dd>
 </dl>
-<p>In this image,</p>
+<p>En esta imagen,</p>
 <ul class="simple">
 <li><p>Las flechas de una cabeza representan una arista (fila) en la tabla de aristas.</p></li>
-<li><p>There are no double head arrows</p></li>
+<li><p>No hay flechas de doble punta</p></li>
 <li><p>Los números en la sombra amarilla son los identificadores de las aristas.</p></li>
 </ul>
 <div class="graphviz"><img src="_images/graphviz-5ea4f6dbbf67e07106ed6260658525135c83f6aa.png" alt="digraph G {
@@ -727,11 +719,9 @@ edge’s identifiers are represented with 3 digits:</p>
      sg [label=&quot;301&quot;,pos=&quot;1,1!&quot;];
    }
 }" class="graphviz" /></div>
-<p>Two pair of edges share the same ending nodes and the <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column is
-not used.</p>
+<p>Dos pares de aristas comparten los mismos nodos finales y no se utiliza la columna <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>.</p>
 <ul class="simple">
-<li><p>Edges <span class="math notranslate nohighlight">\({2 \rightarrow 3, 3 \rightarrow 2}\)</span> are represented with two
-edges <span class="math notranslate nohighlight">\(id=203\)</span> and <span class="math notranslate nohighlight">\(id=302\)</span> respectively.</p></li>
+<li><p>Las aristas <span class="math notranslate nohighlight">\({2 \rightarrow 3, 3 \rightarrow 2}\)</span> se representan con dos aristas <span class="math notranslate nohighlight">\(id=203\)</span> y <span class="math notranslate nohighlight">\(id=302\)</span> respectivamente.</p></li>
 <li><p>Edges <span class="math notranslate nohighlight">\({3 \rightarrow 4, 4 \rightarrow 3}\)</span> are represented with two
 edges <span class="math notranslate nohighlight">\(id=304\)</span> and <span class="math notranslate nohighlight">\(id=403\)</span> respectively.</p></li>
 </ul>
@@ -780,7 +770,7 @@ edges <span class="math notranslate nohighlight">\(id=304\)</span> and <span cla
 <li><p>El resultado es un grafo dirigido.</p></li>
 <li><p>Para <span class="math notranslate nohighlight">\(seq=7\)</span> desde <span class="math notranslate nohighlight">\(203 \leftrightarrow 302\)</span> representan dos aristas.</p></li>
 <li><p>Para <span class="math notranslate nohighlight">\(seq=8\)</span> desde <span class="math notranslate nohighlight">\(304 \leftrightarrow 403\)</span> representan dos aristas.</p></li>
-<li><p>For all the other values of <code class="docutils literal notranslate"><span class="pre">seq</span></code> represent one edge.</p></li>
+<li><p>Todos los demás valores de <code class="docutils literal notranslate"><span class="pre">seq</span></code> representan una arista.</p></li>
 <li><p>Los valores <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> representan la existencia de la arista.</p>
 <ul>
 <li><p>Cuando es positivo: la arista existe.</p></li>
@@ -861,7 +851,7 @@ edges <span class="math notranslate nohighlight">\(id=304\)</span> and <span cla
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.7.0-dev.<br/>
       Actualizado por última vez en oct 10, 2024.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.0.<br/>
     </p>
   </div>
 </footer>
