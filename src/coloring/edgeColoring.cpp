@@ -89,6 +89,7 @@ Pgr_edgeColoring::Pgr_edgeColoring(const std::vector<Edge_t> &edges) {
         auto v1 = get_boost_vertex(edge.source);
         auto v2 = get_boost_vertex(edge.target);
         auto e_exists = boost::edge(v1, v2, graph);
+        // NOLINTNEXTLINE
         if (e_exists.second) continue;
 
         if (edge.source == edge.target) continue;
@@ -96,6 +97,7 @@ Pgr_edgeColoring::Pgr_edgeColoring(const std::vector<Edge_t> &edges) {
         if (edge.cost < 0 && edge.reverse_cost < 0) continue;
 
         E e;
+        // NOLINTNEXTLINE
         boost::tie(e, added) = boost::add_edge(v1, v2, graph);
 
         E_to_id.insert(std::make_pair(e, edge.id));

@@ -28,12 +28,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <set>
 
-#include <visitors/edges_order_bfs_visitor.hpp>
+#include <boost/config.hpp>
 #include <boost/graph/breadth_first_search.hpp>
 
 #include "cpp_common/base_graph.hpp"
 #include "cpp_common/interruption.hpp"
 #include "c_types/mst_rt.h"
+#include "visitors/edges_order_bfs_visitor.hpp"
 
 //******************************************
 

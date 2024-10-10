@@ -55,7 +55,7 @@ class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E, t_directed> {
     typedef typename boost::graph_traits < G >::in_edge_iterator EI_i;
 
 
-    explicit Pgr_lineGraphFull< G, T_V, T_E, t_directed>(bool directed)
+    explicit Pgr_lineGraphFull< G, T_V, T_E, t_directed>()
         : Pgr_base_graph<G, T_V, T_E, t_directed>(),
         m_num_edges(0) {
         }
