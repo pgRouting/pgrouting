@@ -110,6 +110,7 @@ biconnectedComponents(
     boost::associative_property_map<Edge_map> bimap(bicmp_map);
     size_t num_comps;
     try {
+        // NOLINTNEXTLINE(clang-analyzer-cplusplus.NewDelete)
         num_comps = biconnected_components(graph.graph, bimap);
     } catch (...) {
         throw;

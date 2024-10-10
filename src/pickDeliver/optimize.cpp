@@ -249,7 +249,7 @@ Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
         }
     }
 
-    return false && swapped;
+    return swapped;
 }
 
 

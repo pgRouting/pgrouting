@@ -77,11 +77,13 @@ pgr_do_breadthFirstSearch(
     char *hint = nullptr;
 
     try {
+        // NOLINTBEGIN(clang-analyzer-cplusplus.NewDelete)
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
+        // NOLINTEND(clang-analyzer-cplusplus.NewDelete)
 
 
 
