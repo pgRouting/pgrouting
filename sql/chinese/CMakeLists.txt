@@ -1,8 +1,8 @@
 
 SET(LOCAL_FILES
     _pgr_chinesePostman.sql
-    pgr_chinesePostman.sql
-    pgr_chinesePostmanCost.sql)
+    chinesePostman.sql
+    chinesePostmanCost.sql)
 
 foreach (f ${LOCAL_FILES})
     configure_file(${f} ${f})

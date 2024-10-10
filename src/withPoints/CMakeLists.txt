@@ -3,7 +3,7 @@ ADD_LIBRARY(withPoints OBJECT
 
     get_new_queries.cpp
     withPoints_driver.cpp
-    pgr_withPoints.cpp
+    withPoints.cpp
 
     withPointsVia.c
     withPointsVia_driver.cpp

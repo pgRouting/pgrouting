@@ -3,7 +3,7 @@ ADD_LIBRARY(cpp_common OBJECT
     compPaths.cpp
     rule.cpp
     bpoint.cpp
-    pgr_messages.cpp
+    messages.cpp
     combinations.cpp
 
     get_check_data.cpp
