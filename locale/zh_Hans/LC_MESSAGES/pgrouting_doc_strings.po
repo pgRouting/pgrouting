@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-10 03:40+0000\n"
-"PO-Revision-Date: 2024-09-23 14:18+0000\n"
+"PO-Revision-Date: 2024-10-10 19:47+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -1544,7 +1544,7 @@ msgid "When ``factor`` > 1 the travel times are faster"
 msgstr "当 ``因子`` > 1 时，行程时间更快"
 
 msgid "When ``factor`` < 1 the travel times are slower"
-msgstr "当 ``因子`` < 1  时，行程时间会变慢"
+msgstr "当 ``因子`` < 1 时，行程时间会变慢"
 
 msgid "For the :doc:`pgr_pickDeliverEuclidean`:"
 msgstr "用于 :doc:`pgr_pickDeliverEuclidean`:"
@@ -3764,10 +3764,8 @@ msgstr "加权有向图， :math:`G_d(V,E)` 的定义如下："
 msgid "the set of vertices :math:`V`"
 msgstr "顶点集 :math:`V`"
 
-#, fuzzy
 msgid ":math:`V = source \\cup target \\cup {start_{vid}} \\cup  {end_{vid}}`"
-msgstr ""
-":math:`V = source \\cup target \\cup {start_v{vid}} \\cup  {end_{vid}}`"
+msgstr ":math:`V = source \\cup target \\cup {start_v{vid}} \\cup {end_{vid}}`"
 
 msgid "the set of edges :math:`E`"
 msgstr "边集 :math:`E`"
@@ -16791,9 +16789,8 @@ msgstr "文档"
 msgid "Results of documentation queries adujsted to boost 1.83.0 version:"
 msgstr ""
 
-#, fuzzy
 msgid "pgr_edgeDisjointPaths"
-msgstr "pgr_edgeDisjointPaths："
+msgstr "pgr_edgeDisjointPaths"
 
 msgid "pgr_stoerWagner"
 msgstr "pgr_stoerWagner"
