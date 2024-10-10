@@ -57,42 +57,6 @@ class Pgr_dag {
      typedef typename G::V V;
      typedef typename G::E E;
 
-#if 0
-     //! Dijkstra 1 to 1
-     Path dag(
-             G &graph,
-             int64_t start_vertex,
-             int64_t end_vertex,
-             bool only_cost = false) {
-         clear();
-
-         // adjust predecessors and distances vectors
-         predecessors.resize(graph.num_vertices());
-         distances.resize(
-                 graph.num_vertices(),
-                 std::numeric_limits<double>::infinity());
-
-
-         if (!graph.has_vertex(start_vertex)
-                 || !graph.has_vertex(end_vertex)) {
-             return Path(start_vertex, end_vertex);
-         }
-
-         // get the graphs source and target
-         auto v_source(graph.get_V(start_vertex));
-         auto v_target(graph.get_V(end_vertex));
-
-         // perform the algorithm
-         dag_1_to_1(graph, v_source, v_target);
-
-         // get the results
-         return Path(
-                 graph,
-                 v_source, v_target,
-                 predecessors, distances,
-                 only_cost, true);
-     }
-#endif
 
      /** dag 1 to many */
      std::deque<Path> dag(
@@ -133,55 +97,6 @@ class Pgr_dag {
          return paths;
      }
 
-#if 0
-     // preparation for many to 1
-     std::deque<Path> dag(
-             G &graph,
-             const std::vector < int64_t > &start_vertex,
-             int64_t end_vertex,
-             bool only_cost) {
-         std::deque<Path> paths;
-
-         for (const auto &start : start_vertex) {
-             paths.push_back(
-                     dag(graph, start, end_vertex, only_cost));
-         }
-
-         std::stable_sort(paths.begin(), paths.end(),
-                 [](const Path &e1, const Path &e2)->bool {
-                 return e1.start_id() < e2.start_id();
-                 });
-         return paths;
-     }
-
-     // preparation for many to many
-     std::deque<Path> dag(
-             G &graph,
-             const std::vector< int64_t > &start_vertex,
-             const std::vector< int64_t > &end_vertex,
-             bool only_cost) {
-         // a call to 1 to many is faster for each of the sources
-         std::deque<Path> paths;
-
-         for (const auto &start : start_vertex) {
-             auto r_paths = dag(
-                     graph,
-                     start, end_vertex,
-                     only_cost);
-             paths.insert(paths.begin(), r_paths.begin(), r_paths.end());
-         }
-
-         std::sort(paths.begin(), paths.end(),
-                 [](const Path &e1, const Path &e2)->bool {
-                 return e1.end_id() < e2.end_id();
-                 });
-         std::stable_sort(paths.begin(), paths.end(),
-                 [](const Path &e1, const Path &e2)->bool {
-                 return e1.start_id() < e2.start_id();
-                 });
-         return paths;
-     }
-#endif
 
      /** combinations */
      std::deque<Path> dag(
@@ -204,35 +119,6 @@ class Pgr_dag {
      //@}
 
  private:
-#if 0
-     //! Call to Dijkstra  1 source to 1 target
-     bool dag_1_to_1(
-                 G &graph,
-                 V source,
-                 V target) {
-         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
-         CHECK_FOR_INTERRUPTS();
-         try {
-             boost::dag_shortest_paths(graph.graph, source,
-                     boost::predecessor_map(&predecessors[0])
-                     .weight_map(get(&G::G_T_E::cost, graph.graph))
-                     .distance_map(&distances[0])
-                     .visitor(dijkstra_one_goal_visitor(target)));
-         } catch(found_goals &) {
-             return true;
-         } catch (boost::exception const& ex) {
-             (void)ex;
-             throw;
-         } catch (std::exception &e) {
-             (void)e;
-             throw;
-         } catch (...) {
-             throw;
-         }
-         return true;
-     }
-#endif
-
      /** DAG  1 source to many targets */
      bool dag_1_to_many(
              G &graph,
@@ -300,22 +186,6 @@ class Pgr_dag {
      //@}
 
 
-#if 0
-     //! @name Stopping classes
-     //@{
-     //! class for stopping when 1 target is found
-
-     class dijkstra_one_goal_visitor : public boost::default_dijkstra_visitor {
-      public:
-          explicit dijkstra_one_goal_visitor(V goal) : m_goal(goal) {}
-          template <class B_G>
-              void examine_vertex(V &u, B_G &) {
-                  if (u == m_goal) throw found_goals();
-              }
-      private:
-          V m_goal;
-     };
-#endif
 
      //! class for stopping when all targets are found
      class dijkstra_many_goal_visitor : public boost::default_dijkstra_visitor {

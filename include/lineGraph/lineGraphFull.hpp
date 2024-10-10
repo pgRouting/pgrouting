@@ -144,11 +144,6 @@ class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E, t_directed> {
                     }
                 }
 
-#if 0
-                log << "e_source = " << e_source
-                    << " e_target = " << e_target
-                    << "\n";
-#endif
                 Line_graph_full_rt edge = {
                     ++count,
                     vertex_id_map[e_source],

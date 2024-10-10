@@ -62,15 +62,6 @@ class CH_vertex {
 size_t
 check_vertices(std::vector < CH_vertex > vertices);
 
-#if 0
-std::vector < CH_vertex >
-extract_vertices(
-    const Edge_t *data_edges, int64_t count);
-
-std::vector < CH_vertex >
-extract_vertices(
-    const std::vector < Edge_t > &data_edges);
-#endif
 }  // namespace pgrouting
 
 #endif  // INCLUDE_CPP_COMMON_CH_VERTEX_HPP_

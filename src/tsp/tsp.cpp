@@ -510,14 +510,6 @@ std::ostream& operator<<(std::ostream &log, const TSP& data) {
     log << "Number of Edges is:" << num_edges(data.graph) << "\n";
     log << "\n the print_graph\n";
     boost::print_graph(data.graph, boost::get(boost::vertex_index, data.graph), log);
-#if 0
-    // to print with edge weights:
-    for (auto v : boost::make_iterator_range(boost::vertices(data.graph))) {
-        for (auto oe : boost::make_iterator_range(boost::out_edges(v, data.graph))) {
-            log << "Edge " << oe << " weight " << get(boost::edge_weight, data.graph)[oe] << "\n";
-        }
-    }
-#endif
     return log;
 }
 #endif

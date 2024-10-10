@@ -80,15 +80,6 @@ std::vector < XY_vertex >
 extract_vertices(
     const std::vector <Edge_xy_t > &data_edges);
 
-#if 0
-std::vector < XY_vertex > extract_vertices(
-    std::vector < XY_vertex > vertices,
-    const Edge_xy_t *data_edges, int64_t count);
-
-std::vector < XY_vertex > extract_vertices(
-    std::vector < XY_vertex > vertices,
-    const std::vector <Edge_xy_t > data_edges);
-#endif
 
 }  // namespace pgrouting
 

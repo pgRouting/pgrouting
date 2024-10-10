@@ -102,17 +102,8 @@ Optimize::inter_swap() {
         for (auto &to : fleet) {
             if (&from == &to) break;
 
-#if 0
-            msg().log
-                << "\n to " << to.id()
-                << "from " << from.id();
-            auto swapped = false;
-#endif
             swap_worse(to, from);
             move_reduce_cost(from, to);
-#if 0
-            msg().log << "++++++++" << p_swaps;
-#endif
         }
     }
 
@@ -492,17 +483,11 @@ Optimize::save_if_best() {
         best_solution = (*this);
         msg().log << "\n*********** best by duration"
             << best_solution.cost_str();
-#if 0
-        msg().dbg_log << best_solution.tau("best by duration");
-#endif
     }
     if (fleet.size() < best_solution.fleet.size()) {
         best_solution = (*this);
         msg().log << "\n*********** best by fleet size"
             << best_solution.cost_str();
-#if 0
-        msg().dbg_log << best_solution.tau("best by fleet size");
-#endif
     }
 }
 

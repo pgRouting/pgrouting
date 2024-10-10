@@ -51,32 +51,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace {
 
-#if 0
-template < class G >
-std::deque< pgrouting::Path >
-pgr_edwardMoore(
-        G &graph,
-        std::vector <II_t_rt> &combinations,
-        std::vector < int64_t > sources,
-        std::vector < int64_t > targets) {
-    std::sort(sources.begin(), sources.end());
-    sources.erase(
-            std::unique(sources.begin(), sources.end()),
-            sources.end());
-
-    std::sort(targets.begin(), targets.end());
-    targets.erase(
-            std::unique(targets.begin(), targets.end()),
-            targets.end());
-
-    pgrouting::functions::Pgr_edwardMoore< G > fn_edwardMoore;
-    auto paths = combinations.empty() ?
-            fn_edwardMoore.edwardMoore(graph, sources, targets)
-            : fn_edwardMoore.edwardMoore(graph, combinations);
-
-    return paths;
-}
-#endif
 
 template <class G>
 std::deque<pgrouting::Path>

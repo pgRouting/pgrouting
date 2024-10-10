@@ -205,36 +205,11 @@ std::ostream& operator<<(std::ostream &log, const Dmatrix &matrix) {
             log << "Internal(" << i << "," << j << ")"
                 << "\tUsers(" << matrix.ids[i] << "," << matrix.ids[j] << ")"
                 << "\t = " << cost
-#if 0
-                << "\t(" << matrix.get_index(matrix.ids[i])
-                << "," << matrix.get_index(matrix.ids[j]) << ")"
-                << "\t = " << matrix.costs[i][j]
-                << "\t = " << matrix.costs[j][i]
-                << "=inf:"
-                <<  (matrix.costs[i][j] ==
-                        (std::numeric_limits<double>::infinity)())
-                << "=inf:"
-                <<  (matrix.costs[j][i] ==
-                        (std::numeric_limits<double>::infinity)())
-#endif
                 << "\n";
             ++j;
         }
         ++i;
     }
-#if 0
-    for (size_t i = 0; i < matrix.costs.size(); ++i) {
-        for (size_t j = 0; j < matrix.costs.size(); ++j) {
-            for (size_t k = 0; k < matrix.costs.size(); ++k) {
-                log << matrix.costs[i][k] << " <= ("
-                    << matrix.costs[i][j] << " + "  << matrix.costs[j][k] << ")"
-                    << (matrix.costs[i][k]
-                            <= (matrix.costs[i][j] + matrix.costs[j][k]))
-                    << "\n";
-            }
-        }
-    }
-#endif
     return log;
 }
 
