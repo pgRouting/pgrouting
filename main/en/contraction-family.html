@@ -10,12 +10,12 @@
     <title>Contraction - Family of functions &#8212; pgRouting Manual (3.6)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=2c346b64"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=e87c01b6"></script>
+    <script src="_static/page_history.js?v=c8ec7c59"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -314,7 +314,7 @@ done.</p>
 <li><p>The green nodes are <a class="reference internal" href="#dead-end">dead end</a> nodes</p></li>
 <li><p>The blue nodes have an unlimited number of edges.</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-133c3d00246c459c4912dd2d409ee878545598e4.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-ef5116d42636a1711444f79368304c1978068213.png" alt="graph G {
     u, v [shape=circle;style=filled;width=.4;color=deepskyblue];
     a, b [style=filled; color=green];
     G [shape=tripleoctagon;width=1.5;style=filled;
@@ -351,7 +351,7 @@ done.</p>
 <li><p>The green nodes are <a class="reference internal" href="#dead-end">dead end</a> nodes</p></li>
 <li><p>The blue nodes have an unlimited number of incoming and/or outgoing edges.</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-c8e8001a0f075b45b5ef94157808fa302e8b62a7.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-82723db0022a25b1a9ffd323d95d9daeda8a2c1f.png" alt="digraph G {
     u, v, w, x, y [shape=circle;style=filled;width=.4;color=deepskyblue];
     a, b, c, d, e [style=filled; color=green];
     G [shape=tripleoctagon;width=1.5;style=filled;
@@ -430,7 +430,7 @@ even that the number of adjacent vertices is not 1 for</p>
 <h3>Operation: Dead End Contraction<a class="headerlink" href="#operation-dead-end-contraction" title="Link to this heading">¶</a></h3>
 <p>The dead end contraction will stop until there are no more dead end nodes.
 For example from the following graph where <span class="math notranslate nohighlight">\(w\)</span> is the <a class="reference internal" href="#dead-end">dead end</a> node:</p>
-<div class="graphviz"><img src="_images/graphviz-4fdcd0305dbfbab90073ec9514716ef0ad1e4f76.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-8ef6dd10de3e2f48d63ff7a0851f401fe2c8a22a.png" alt="digraph G {
     u, v [shape=circle;style=filled;width=.4;color=deepskyblue];
     w [style=filled; color=green];
     &quot;G&quot; [shape=tripleoctagon;style=filled;
@@ -442,7 +442,7 @@ For example from the following graph where <span class="math notranslate nohighl
 }" class="graphviz" /></div>
 <p>After contracting <span class="math notranslate nohighlight">\(w\)</span>, node <span class="math notranslate nohighlight">\(v\)</span> is now a <a class="reference internal" href="#dead-end">dead end</a> node and is
 contracted:</p>
-<div class="graphviz"><img src="_images/graphviz-82174f96e766deeae75a75488fa01f23af7da497.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-44f751227801adfe2756a5066b83a8e932268d07.png" alt="digraph G {
     u [shape=circle;style=filled;width=.4;color=deepskyblue];
     v [style=filled; color=green, label=&quot;v{w}&quot;];
     &quot;G&quot; [shape=tripleoctagon;style=filled;
@@ -454,7 +454,7 @@ contracted:</p>
 }" class="graphviz" /></div>
 <p>After contracting <span class="math notranslate nohighlight">\(v\)</span>, stop. Node <span class="math notranslate nohighlight">\(u\)</span> has the information of nodes
 that were contrcted.</p>
-<div class="graphviz"><img src="_images/graphviz-2d7779194092aa64d7a74051e7b24d8a962d9e0f.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-1fdb5a4269dc3d5f14197ba41c61e8a1f3f2775f.png" alt="digraph G {
     u [style=filled; color=green, label=&quot;u{v,w}&quot;];
     &quot;G&quot; [shape=tripleoctagon;style=filled;
          color=deepskyblue; label = &quot;Rest of the Graph&quot;];
@@ -486,7 +486,7 @@ that were contrcted.</p>
 <li><p>The blue nodes have an unlimited number of incoming and outgoing edges.</p></li>
 </ul>
 <p class="rubric">Undirected</p>
-<div class="graphviz"><img src="_images/graphviz-5565c2a3e64a5e493dd60c052a86cee32c294e38.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-2c64934e1318cf1b0fbb263edf75addebbeb6392.png" alt="graph G {
     u, w [shape=circle;style=filled;width=.4;color=deepskyblue];
     v [style=filled; color=green];
     G [shape=tripleoctagon;width=1.5;style=filled;
@@ -523,7 +523,7 @@ that were contrcted.</p>
 </ul>
 </li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-726b2c9e619c1609c8d06996b6392b09095c2986.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-a372f19fad77b867577e0b6450c882d1bbf72874.png" alt="digraph G {
     u, v, w, x, y, z [shape=circle;style=filled;width=.4;color=deepskyblue];
     a, b [style=filled; color=green];
     G [shape=tripleoctagon;width=1.5;style=filled;
@@ -569,7 +569,7 @@ that were contrcted.</p>
 <p>The linear contraction will stop when there are no more linear nodes.
 For example from the following graph where <span class="math notranslate nohighlight">\(v\)</span> and <span class="math notranslate nohighlight">\(w\)</span> are <a class="reference internal" href="#linear">linear</a>
 nodes:</p>
-<div class="graphviz"><img src="_images/graphviz-5d6780661464bc07b07b2af1a5d6b5f8f36ca90a.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-865ef229717c7b64018fc9fcb65b4a6d2f2052f8.png" alt="digraph G {
     u, z [shape=circle;style=filled;color=deepskyblue];
     v, w [style=filled; color=green];
     &quot;G&quot; [shape=tripleoctagon; style=filled;
@@ -586,7 +586,7 @@ nodes:</p>
 from the graph.</p></li>
 <li><p>A new edge <span class="math notranslate nohighlight">\(v \rightarrow z\)</span> is inserted represented with red color.</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-14be5626ee411f35a47287f42c24255e0dc350bb.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-2bbe18fa4d3e404d80eb937b6eb2633639d591a7.png" alt="digraph G {
     u, z [shape=circle;style=filled;color=deepskyblue];
     v [style=filled; color=green];
     &quot;G&quot; [shape=tripleoctagon; style=filled;
@@ -604,7 +604,7 @@ from the graph.</p></li>
 from the graph.</p></li>
 <li><p>A new edge <span class="math notranslate nohighlight">\(u \rightarrow z\)</span> is inserted represented with red color.</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-12be2629d707913e64a07fee1e387ff25af98fb6.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-a93daa3950f37f1d1d11eb7bfa4614514bc45fbb.png" alt="digraph G {
     u, z [shape=circle;style=filled;color=deepskyblue];
     &quot;G&quot; [shape=tripleoctagon; style=filled;
          color=deepskyblue;label = &quot;Rest of the Graph&quot;];
@@ -1228,8 +1228,8 @@ to an edge subgraph, a path is still found.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.3.<br/>
-      Last updated on Oct 10, 2024.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2.<br/>
+      Last updated on Oct 12, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.1.<br/>
     </p>
   </div>
 </footer>

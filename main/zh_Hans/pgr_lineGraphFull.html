@@ -1,0 +1,1057 @@
+
+
+<!DOCTYPE html>
+
+<html lang="zh-Hans" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>pgr_lineGraphFull - 实验 &#8212; pgRouting Manual (3.6)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
+    <script src="_static/documentation_options.js?v=0fece2b7"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=c8ec7c59"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="排序 - 函数族" href="ordering-family.html" />
+    <link rel="prev" title="pgr_lineGraph - Experimental" href="pgr_lineGraph.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v3.6.3</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">支持</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="experimental.html">实验函数</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> - 实验</a><ul>
+<li><a class="reference internal" href="#description">描述</a></li>
+<li><a class="reference internal" href="#signatures">签名</a></li>
+<li><a class="reference internal" href="#parameters">参数</a></li>
+<li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
+<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">结果列</a></li>
+<li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
+<li><a class="reference internal" href="#the-data">数据</a></li>
+<li><a class="reference internal" href="#the-transformation">转变</a></li>
+<li><a class="reference internal" href="#creating-table-that-identifies-transformed-vertices">创建标识变换顶点的表</a><ul>
+<li><a class="reference internal" href="#store-edge-results">存储边结果</a></li>
+<li><a class="reference internal" href="#create-the-mapping-table">创建映射表</a></li>
+<li><a class="reference internal" href="#filling-the-mapping-table">填写映射表</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#adding-a-soft-restriction">添加软限制</a><ul>
+<li><a class="reference internal" href="#idenifying-the-restriction">识别限制</a></li>
+<li><a class="reference internal" href="#adding-a-value-to-the-restriction">向限制添加值</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#simplifying-leaf-vertices">简化叶顶点</a><ul>
+<li><a class="reference internal" href="#using-the-vertex-map-give-the-leaf-verices-their-original-value">使用顶点图赋予叶顶点其原始值。</a></li>
+<li><a class="reference internal" href="#removing-self-loops-on-leaf-nodes">删除叶节点上的自循环</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#complete-routing-graph">完整的路由图</a><ul>
+<li><a class="reference internal" href="#add-edges-from-the-original-graph">从原始图中添加边</a></li>
+<li><a class="reference internal" href="#add-the-newly-calculated-edges">添加新计算的边</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#using-the-routing-graph">使用路由图</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">另请参阅</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_lineGraph.html" title="Previous Chapter: pgr_lineGraph - Experimental"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_lineGraph...</span>
+    </a>
+  </li>
+  <li>
+    <a href="ordering-family.html" title="Next Chapter: 排序 - 函数族"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">排序 - 函数族 &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> - 实验</a><ul>
+<li><a class="reference internal" href="#description">描述</a></li>
+<li><a class="reference internal" href="#signatures">签名</a></li>
+<li><a class="reference internal" href="#parameters">参数</a></li>
+<li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
+<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">结果列</a></li>
+<li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
+<li><a class="reference internal" href="#the-data">数据</a></li>
+<li><a class="reference internal" href="#the-transformation">转变</a></li>
+<li><a class="reference internal" href="#creating-table-that-identifies-transformed-vertices">创建标识变换顶点的表</a><ul>
+<li><a class="reference internal" href="#store-edge-results">存储边结果</a></li>
+<li><a class="reference internal" href="#create-the-mapping-table">创建映射表</a></li>
+<li><a class="reference internal" href="#filling-the-mapping-table">填写映射表</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#adding-a-soft-restriction">添加软限制</a><ul>
+<li><a class="reference internal" href="#idenifying-the-restriction">识别限制</a></li>
+<li><a class="reference internal" href="#adding-a-value-to-the-restriction">向限制添加值</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#simplifying-leaf-vertices">简化叶顶点</a><ul>
+<li><a class="reference internal" href="#using-the-vertex-map-give-the-leaf-verices-their-original-value">使用顶点图赋予叶顶点其原始值。</a></li>
+<li><a class="reference internal" href="#removing-self-loops-on-leaf-nodes">删除叶节点上的自循环</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#complete-routing-graph">完整的路由图</a><ul>
+<li><a class="reference internal" href="#add-edges-from-the-original-graph">从原始图中添加边</a></li>
+<li><a class="reference internal" href="#add-the-newly-calculated-edges">添加新计算的边</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#using-the-routing-graph">使用路由图</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">另请参阅</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="pgr_lineGraph.html" title="Previous Chapter: pgr_lineGraph - Experimental"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_lineGraph...</span>
+    </a>
+  </li>
+  <li>
+    <a href="ordering-family.html" title="Next Chapter: 排序 - 函数族"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">排序 - 函数族 &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
+            <script> document.write(get_history('pgr_lineGraphFull','zh-Hans'));  </script>
+            
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="pgr-linegraphfull-experimental">
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> - 实验<a class="headerlink" href="#pgr-linegraphfull-experimental" title="Link to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> —将给定图转换为新图，其中原始图的所有顶点都转换为线图。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>可能服务器崩溃</p>
+<ul class="simple">
+<li><p>这些功能可能会导致服务器崩溃</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>实验功能</p>
+<ul class="simple">
+<li><p>它们不是当前版本的正式版本。</p></li>
+<li><p>它们可能不会正式成为下一个版本的一部分：</p>
+<ul>
+<li><p>这些函数可能不使用 ANY-INTEGER 和 ANY-NUMERICAL</p></li>
+<li><p>名称可能会改变。</p></li>
+<li><p>签名可能会改变。</p></li>
+<li><p>功能可能会改变。</p></li>
+<li><p>pgTap 测试可能丢失。</p></li>
+<li><p>可能需要 c/c++编码。</p></li>
+<li><p>可能缺乏文档。</p></li>
+<li><p>文档（如果有）可能需要重写。</p></li>
+<li><p>可能需要自动生成文档示例。</p></li>
+<li><p>可能需要社区的大量反馈。</p></li>
+<li><p>可能取决于 pgRouting 的拟议功能</p></li>
+<li><p>可能依赖于 pgRouting 的已弃用函数</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p class="rubric">可用性</p>
+<ul class="simple">
+<li><p>版本2.6.0</p>
+<ul>
+<li><p>新的 <strong>实验</strong> 函数</p></li>
+</ul>
+</li>
+</ul>
+<section id="description">
+<h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code>, 通过将每个顶点转换为完全图并保留所有原始边，将原始有向图转换为有向线图。 新的连接边的成本为 0，并位于相邻的原始边之间，尊重方向性。</p>
+<p>结果图的一个可能的应用是 <strong>&quot;具有两个边限制的路由&quot;</strong>：</p>
+<ul class="simple">
+<li><p>设置在连接边上的边之间布线时使用顶点的成本</p></li>
+<li><p>通过删除连接边来禁止两条边之间的布线</p></li>
+</ul>
+<p>这是可能的，因为原始图中的每个交叉点（顶点）现在都是完整的图，对于穿过该交叉点的每个可能的转弯都有一条新边。</p>
+<p>主要特点是：</p>
+<ul class="simple">
+<li><p>该函数适用于 <strong>有向</strong> 图。</p></li>
+<li><p>当输入图中使用负顶点 id 时，结果是不确定的。</p></li>
+<li><p>当输入图中使用重复的边 id 时，结果是不确定的。</p></li>
+<li><p>运行时间：TBD（待定）</p></li>
+</ul>
+</section>
+<section id="signatures">
+<span id="index-0"></span><h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<p class="rubric">总结</p>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_lineGraphFull(<a class="reference internal" href="#edges-sql">Edges SQL</a>)</div>
+</div>
+<div class="line-block">
+<div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">edge)</span></code> 的集合</div>
+<div class="line">OR EMPTY SET</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">示例<span class="colon">:</span></dt>
+<dd class="field-odd"><p>边 <span class="math notranslate nohighlight">\(\{4, 7, 8, 10\}\)</span> 子图的全线图</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_lineGraphFull(
+  $$SELECT id, source, target, cost, reverse_cost
+  FROM edges
+  WHERE id IN (4, 7, 8, 10)$$);
+ seq | source | target | cost | edge
+-----+--------+--------+------+------
+   1 |     -1 |      7 |    1 |    4
+   2 |      6 |     -1 |    0 |    0
+   3 |     -2 |      6 |    1 |   -4
+   4 |     -3 |      3 |    1 |   -7
+   5 |     -4 |     11 |    1 |    8
+   6 |     -5 |      8 |    1 |   10
+   7 |      7 |     -2 |    0 |    0
+   8 |      7 |     -3 |    0 |    0
+   9 |      7 |     -4 |    0 |    0
+  10 |      7 |     -5 |    0 |    0
+  11 |     -6 |     -2 |    0 |    0
+  12 |     -6 |     -3 |    0 |    0
+  13 |     -6 |     -4 |    0 |    0
+  14 |     -6 |     -5 |    0 |    0
+  15 |     -7 |     -2 |    0 |    0
+  16 |     -7 |     -3 |    0 |    0
+  17 |     -7 |     -4 |    0 |    0
+  18 |     -7 |     -5 |    0 |    0
+  19 |     -8 |     -2 |    0 |    0
+  20 |     -8 |     -3 |    0 |    0
+  21 |     -8 |     -4 |    0 |    0
+  22 |     -8 |     -5 |    0 |    0
+  23 |     -9 |     -6 |    1 |    7
+  24 |      3 |     -9 |    0 |    0
+  25 |    -10 |     -7 |    1 |   -8
+  26 |     11 |    -10 |    0 |    0
+  27 |    -11 |     -8 |    1 |  -10
+  28 |      8 |    -11 |    0 |    0
+(28 rows)
+
+</pre></div>
+</div>
+</section>
+<section id="parameters">
+<h2>参数<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>参数</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> 如下所述。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="inner-queries">
+<h2>内部查询<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<section id="edges-sql">
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>边的标识符。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>边的第一个端点顶点的标识符。</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>边的第二个端点顶点的标识符。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td></td>
+<td><p>边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p>-1</p></td>
+<td><p>边(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的权重</p>
+<ul class="simple">
+<li><p>当为负时：边（ <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code> ）不存在，因此它不是图的一部分。</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>其中：</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="result-columns">
+<h2>结果列<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<p>返回 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">edge)</span></code> 的集合</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>从 <strong>1</strong> 开始的顺序值。</p>
+<ul class="simple">
+<li><p>给出边的本地标识符</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>当前边的源顶点的标识符。</p>
+<ul class="simple">
+<li><p>为负时：源是原始图中的反向边。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>当前边的目标顶点的标识符。</p>
+<ul class="simple">
+<li><p>为负时：目标是原始图中的反向边。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>边 (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重。</p>
+<ul class="simple">
+<li><p>当为负时：边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)不存在，因此它不是图的一部分。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>边 (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的权重。</p>
+<ul class="simple">
+<li><p>当为负时：边(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)不存在，因此它不是图的一部分。</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="additional-examples">
+<h2>其他示例<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#the-data" id="id1">数据</a></p></li>
+<li><p><a class="reference internal" href="#the-transformation" id="id2">转变</a></p></li>
+<li><p><a class="reference internal" href="#creating-table-that-identifies-transformed-vertices" id="id3">创建标识变换顶点的表</a></p>
+<ul>
+<li><p><a class="reference internal" href="#store-edge-results" id="id4">存储边结果</a></p></li>
+<li><p><a class="reference internal" href="#create-the-mapping-table" id="id5">创建映射表</a></p></li>
+<li><p><a class="reference internal" href="#filling-the-mapping-table" id="id6">填写映射表</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#adding-a-soft-restriction" id="id7">添加软限制</a></p>
+<ul>
+<li><p><a class="reference internal" href="#idenifying-the-restriction" id="id8">识别限制</a></p></li>
+<li><p><a class="reference internal" href="#adding-a-value-to-the-restriction" id="id9">向限制添加值</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#simplifying-leaf-vertices" id="id10">简化叶顶点</a></p>
+<ul>
+<li><p><a class="reference internal" href="#using-the-vertex-map-give-the-leaf-verices-their-original-value" id="id11">使用顶点图赋予叶顶点其原始值。</a></p></li>
+<li><p><a class="reference internal" href="#removing-self-loops-on-leaf-nodes" id="id12">删除叶节点上的自循环</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#complete-routing-graph" id="id13">完整的路由图</a></p>
+<ul>
+<li><p><a class="reference internal" href="#add-edges-from-the-original-graph" id="id14">从原始图中添加边</a></p></li>
+<li><p><a class="reference internal" href="#add-the-newly-calculated-edges" id="id15">添加新计算的边</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#using-the-routing-graph" id="id16">使用路由图</a></p></li>
+</ul>
+</nav>
+<p>本节的示例基于 <a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a> 网络。 这些示例包括包含具有 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 的边 4、7、8 和 10 的子图。</p>
+<section id="the-data">
+<h3><a class="toc-backref" href="#id1" role="doc-backlink">数据</a><a class="headerlink" href="#the-data" title="Link to this heading">¶</a></h3>
+<p>此示例显示此图形转换如何为图形中的每个可能的转弯创建附加边。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span>
+<span class="n">FROM</span> <span class="n">edges</span>
+<span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">reverse_cost</span>
+<span class="o">----+--------+--------+------+--------------</span>
+  <span class="mi">4</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
+  <span class="mi">7</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
+  <span class="mi">8</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
+ <span class="mi">10</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
+<span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><img alt="首先" class="align-middle" src="_images/original.png" /></div>
+</div>
+</section>
+<section id="the-transformation">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">转变</a><a class="headerlink" href="#the-transformation" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_lineGraphFull(
+  $$SELECT id, source, target, cost, reverse_cost
+  FROM edges
+  WHERE id IN (4, 7, 8, 10)$$);
+ seq | source | target | cost | edge
+-----+--------+--------+------+------
+   1 |     -1 |      7 |    1 |    4
+   2 |      6 |     -1 |    0 |    0
+   3 |     -2 |      6 |    1 |   -4
+   4 |     -3 |      3 |    1 |   -7
+   5 |     -4 |     11 |    1 |    8
+   6 |     -5 |      8 |    1 |   10
+   7 |      7 |     -2 |    0 |    0
+   8 |      7 |     -3 |    0 |    0
+   9 |      7 |     -4 |    0 |    0
+  10 |      7 |     -5 |    0 |    0
+  11 |     -6 |     -2 |    0 |    0
+  12 |     -6 |     -3 |    0 |    0
+  13 |     -6 |     -4 |    0 |    0
+  14 |     -6 |     -5 |    0 |    0
+  15 |     -7 |     -2 |    0 |    0
+  16 |     -7 |     -3 |    0 |    0
+  17 |     -7 |     -4 |    0 |    0
+  18 |     -7 |     -5 |    0 |    0
+  19 |     -8 |     -2 |    0 |    0
+  20 |     -8 |     -3 |    0 |    0
+  21 |     -8 |     -4 |    0 |    0
+  22 |     -8 |     -5 |    0 |    0
+  23 |     -9 |     -6 |    1 |    7
+  24 |      3 |     -9 |    0 |    0
+  25 |    -10 |     -7 |    1 |   -8
+  26 |     11 |    -10 |    0 |    0
+  27 |    -11 |     -8 |    1 |  -10
+  28 |      8 |    -11 |    0 |    0
+(28 rows)
+
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><img alt="第二" class="align-middle" src="_images/transformation.png" /></div>
+</div>
+<p>在转换后的图中，原始图中的所有边仍然存在（黄色），但现在我们为跨顶点 7 的每个转弯提供了额外的边（橙色）。</p>
+</section>
+<section id="creating-table-that-identifies-transformed-vertices">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">创建标识变换顶点的表</a><a class="headerlink" href="#creating-table-that-identifies-transformed-vertices" title="Link to this heading">¶</a></h3>
+<p>变换后的图中的每个顶点都是通过分割原始图中的顶点而创建的。 除非原始图中的某个顶点是叶顶点，否则它将在变换后的图中生成多个顶点。 转换后的图中新创建的顶点之一将被赋予与原始图中创建它的顶点相同的顶点标识符，但新创建的其余顶点将具有负顶点 id。</p>
+<p>以下是如何生成一个表的示例，该表将新创建的顶点的 id 与创建它们的原始顶点进行映射</p>
+<section id="store-edge-results">
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">存储边结果</a><a class="headerlink" href="#store-edge-results" title="Link to this heading">¶</a></h4>
+<p>第一步是将 <code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> 调用的结果存储到表中</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT seq AS id, source, target, cost, edge
+INTO lineGraph_edges
+FROM pgr_lineGraphFull(
+  $$SELECT id, source, target, cost, reverse_cost
+  FROM edges
+  WHERE id IN (4, 7, 8, 10)$$);
+SELECT 28
+</pre></div>
+</div>
+</section>
+<section id="create-the-mapping-table">
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">创建映射表</a><a class="headerlink" href="#create-the-mapping-table" title="Link to this heading">¶</a></h4>
+<p>从原始图的顶点信息</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">NULL</span><span class="p">::</span><span class="n">BIGINT</span> <span class="n">original_id</span>
+<span class="n">INTO</span> <span class="n">vertex_map</span>
+<span class="n">FROM</span> <span class="n">vertices</span><span class="p">;</span>
+<span class="n">SELECT</span> <span class="mi">17</span>
+</pre></div>
+</div>
+<p>增加新的顶点</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>INSERT INTO vertex_map (id)
+(SELECT id
+FROM pgr_extractVertices(
+  $$SELECT id, source, target FROM lineGraph_edges$$) WHERE id &lt; 0);
+INSERT 0 11
+</pre></div>
+</div>
+</section>
+<section id="filling-the-mapping-table">
+<h4><a class="toc-backref" href="#id6" role="doc-backlink">填写映射表</a><a class="headerlink" href="#filling-the-mapping-table" title="Link to this heading">¶</a></h4>
+<p>正的顶点标识符是原始标识符</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertex_map</span>
+<span class="n">SET</span> <span class="n">original_id</span> <span class="o">=</span> <span class="nb">id</span>
+<span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">17</span>
+</pre></div>
+</div>
+<p>检查顶点图</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">vertex_map</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span> <span class="n">DESC</span><span class="p">;</span>
+ <span class="nb">id</span>  <span class="o">|</span> <span class="n">original_id</span>
+<span class="o">-----+-------------</span>
+  <span class="mi">17</span> <span class="o">|</span>          <span class="mi">17</span>
+  <span class="mi">16</span> <span class="o">|</span>          <span class="mi">16</span>
+  <span class="mi">15</span> <span class="o">|</span>          <span class="mi">15</span>
+  <span class="mi">14</span> <span class="o">|</span>          <span class="mi">14</span>
+  <span class="mi">13</span> <span class="o">|</span>          <span class="mi">13</span>
+  <span class="mi">12</span> <span class="o">|</span>          <span class="mi">12</span>
+  <span class="mi">11</span> <span class="o">|</span>          <span class="mi">11</span>
+  <span class="mi">10</span> <span class="o">|</span>          <span class="mi">10</span>
+   <span class="mi">9</span> <span class="o">|</span>           <span class="mi">9</span>
+   <span class="mi">8</span> <span class="o">|</span>           <span class="mi">8</span>
+   <span class="mi">7</span> <span class="o">|</span>           <span class="mi">7</span>
+   <span class="mi">6</span> <span class="o">|</span>           <span class="mi">6</span>
+   <span class="mi">5</span> <span class="o">|</span>           <span class="mi">5</span>
+   <span class="mi">4</span> <span class="o">|</span>           <span class="mi">4</span>
+   <span class="mi">3</span> <span class="o">|</span>           <span class="mi">3</span>
+   <span class="mi">2</span> <span class="o">|</span>           <span class="mi">2</span>
+   <span class="mi">1</span> <span class="o">|</span>           <span class="mi">1</span>
+  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>
+  <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>
+  <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>
+  <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>
+  <span class="o">-</span><span class="mi">5</span> <span class="o">|</span>
+  <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>
+  <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>
+  <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>
+  <span class="o">-</span><span class="mi">9</span> <span class="o">|</span>
+ <span class="o">-</span><span class="mi">10</span> <span class="o">|</span>
+ <span class="o">-</span><span class="mi">11</span> <span class="o">|</span>
+<span class="p">(</span><span class="mi">28</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>当没有成本到达目标并且源具有原始值时，就会发生自循环。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span><span class="p">,</span> <span class="n">source</span> <span class="n">AS</span> <span class="n">targets_original_id</span>
+  <span class="n">FROM</span> <span class="n">lineGraph_edges</span>
+  <span class="n">WHERE</span> <span class="n">cost</span> <span class="o">=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">source</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">targets_original_id</span>
+<span class="o">----+--------+--------+------+------+---------------------</span>
+  <span class="mi">2</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>                   <span class="mi">6</span>
+  <span class="mi">7</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>                   <span class="mi">7</span>
+  <span class="mi">8</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>                   <span class="mi">7</span>
+  <span class="mi">9</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>                   <span class="mi">7</span>
+ <span class="mi">10</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">5</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>                   <span class="mi">7</span>
+ <span class="mi">24</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">9</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>                   <span class="mi">3</span>
+ <span class="mi">26</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">10</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>                  <span class="mi">11</span>
+ <span class="mi">28</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">11</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>                   <span class="mi">8</span>
+<span class="p">(</span><span class="mi">8</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>从自循环更新值</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
+<span class="n">self_loops</span> <span class="n">AS</span> <span class="p">(</span>
+  <span class="n">SELECT</span> <span class="n">DISTINCT</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">source</span> <span class="n">AS</span> <span class="n">targets_original_id</span>
+  <span class="n">FROM</span> <span class="n">lineGraph_edges</span>
+  <span class="n">WHERE</span> <span class="n">cost</span> <span class="o">=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">source</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">UPDATE</span> <span class="n">vertex_map</span> <span class="n">SET</span> <span class="n">original_id</span> <span class="o">=</span> <span class="n">targets_original_id</span>
+<span class="n">FROM</span> <span class="n">self_loops</span> <span class="n">WHERE</span> <span class="n">target</span> <span class="o">=</span> <span class="nb">id</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">8</span>
+</pre></div>
+</div>
+<p>检查顶点表</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">vertex_map</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">0</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span> <span class="n">DESC</span><span class="p">;</span>
+ <span class="nb">id</span>  <span class="o">|</span> <span class="n">original_id</span>
+<span class="o">-----+-------------</span>
+  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">6</span>
+  <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>           <span class="mi">7</span>
+  <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>           <span class="mi">7</span>
+  <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>           <span class="mi">7</span>
+  <span class="o">-</span><span class="mi">5</span> <span class="o">|</span>           <span class="mi">7</span>
+  <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>
+  <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>
+  <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>
+  <span class="o">-</span><span class="mi">9</span> <span class="o">|</span>           <span class="mi">3</span>
+ <span class="o">-</span><span class="mi">10</span> <span class="o">|</span>          <span class="mi">11</span>
+ <span class="o">-</span><span class="mi">11</span> <span class="o">|</span>           <span class="mi">8</span>
+<span class="p">(</span><span class="mi">11</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>从内部自我循环更新</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
+<span class="n">assigned_vertices</span>
+<span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">original_id</span>
+  <span class="n">FROM</span> <span class="n">vertex_map</span>
+  <span class="n">WHERE</span> <span class="n">original_id</span> <span class="n">IS</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">),</span>
+<span class="n">cross_edges</span>
+<span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">DISTINCT</span> <span class="n">e</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">original_id</span> <span class="n">AS</span> <span class="n">source_original_id</span>
+  <span class="n">FROM</span> <span class="n">lineGraph_edges</span> <span class="n">AS</span> <span class="n">e</span>
+  <span class="n">JOIN</span> <span class="n">vertex_map</span> <span class="n">AS</span> <span class="n">v</span> <span class="n">ON</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+  <span class="n">WHERE</span> <span class="n">source</span> <span class="n">NOT</span> <span class="n">IN</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">assigned_vertices</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">UPDATE</span> <span class="n">vertex_map</span> <span class="n">SET</span> <span class="n">original_id</span> <span class="o">=</span> <span class="n">source_original_id</span>
+<span class="n">FROM</span> <span class="n">cross_edges</span> <span class="n">WHERE</span> <span class="n">source</span> <span class="o">=</span> <span class="nb">id</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>检查顶点图</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">vertex_map</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">0</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span> <span class="n">DESC</span><span class="p">;</span>
+ <span class="nb">id</span>  <span class="o">|</span> <span class="n">original_id</span>
+<span class="o">-----+-------------</span>
+  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>           <span class="mi">6</span>
+  <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>           <span class="mi">7</span>
+  <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>           <span class="mi">7</span>
+  <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>           <span class="mi">7</span>
+  <span class="o">-</span><span class="mi">5</span> <span class="o">|</span>           <span class="mi">7</span>
+  <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>           <span class="mi">7</span>
+  <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>           <span class="mi">7</span>
+  <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>           <span class="mi">7</span>
+  <span class="o">-</span><span class="mi">9</span> <span class="o">|</span>           <span class="mi">3</span>
+ <span class="o">-</span><span class="mi">10</span> <span class="o">|</span>          <span class="mi">11</span>
+ <span class="o">-</span><span class="mi">11</span> <span class="o">|</span>           <span class="mi">8</span>
+<span class="p">(</span><span class="mi">11</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="adding-a-soft-restriction">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">添加软限制</a><a class="headerlink" href="#adding-a-soft-restriction" title="Link to this heading">¶</a></h3>
+<p>需要使用边 4 -&gt; 7 从顶点 6 到顶点 3 的软限制。</p>
+<section id="idenifying-the-restriction">
+<h4><a class="toc-backref" href="#id8" role="doc-backlink">识别限制</a><a class="headerlink" href="#idenifying-the-restriction" title="Link to this heading">¶</a></h4>
+<p>运行 <a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - 拟议</span></a> 时，成本将会增加的地方是边 8，其成本为 0</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT seq, path_seq, start_vid, end_vid, node, original_id, edge, cost, agg_cost
+FROM (SELECT * FROM pgr_dijkstraNear(
+  $$SELECT * FROM lineGraph_edges$$,
+  (SELECT array_agg(id) FROM vertex_map where original_id = 6),
+  (SELECT array_agg(id) FROM vertex_map where original_id = 3))) dn
+JOIN vertex_map AS v1 ON (node = v1.id);
+ seq | path_seq | start_vid | end_vid | node | original_id | edge | cost | agg_cost
+-----+----------+-----------+---------+------+-------------+------+------+----------
+   3 |        3 |        -1 |       3 |   -3 |           7 |    4 |    1 |        1
+   1 |        1 |        -1 |       3 |   -1 |           6 |    1 |    1 |        0
+   4 |        4 |        -1 |       3 |    3 |           3 |   -1 |    0 |        2
+   2 |        2 |        -1 |       3 |    7 |           7 |    8 |    0 |        1
+(4 rows)
+
+</pre></div>
+</div>
+<p>要更改的边是上一个查询中的 <code class="docutils literal notranslate"><span class="pre">WHERE</span> <span class="pre">cost</span> <span class="pre">=</span> <span class="pre">0</span> <span class="pre">AND</span> <span class="pre">seq</span> <span class="pre">!=</span> <span class="pre">1</span> <span class="pre">AND</span> <span class="pre">edge</span> <span class="pre">!=</span> <span class="pre">-1</span></code> ：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge FROM pgr_dijkstraNear(
+  $$SELECT * FROM lineGraph_edges$$,
+  (SELECT array_agg(id) FROM vertex_map where original_id = 6),
+  (SELECT array_agg(id) FROM vertex_map where original_id = 3))
+WHERE cost = 0 AND seq != 1 AND edge != -1;
+ edge
+------
+    8
+(1 row)
+
+</pre></div>
+</div>
+</section>
+<section id="adding-a-value-to-the-restriction">
+<h4><a class="toc-backref" href="#id9" role="doc-backlink">向限制添加值</a><a class="headerlink" href="#adding-a-value-to-the-restriction" title="Link to this heading">¶</a></h4>
+<p>将成本更新到边：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>UPDATE lineGraph_edges
+SET cost = 100
+WHERE id IN (
+SELECT edge FROM pgr_dijkstraNear(
+  $$SELECT * FROM lineGraph_edges$$,
+  (SELECT array_agg(id) FROM vertex_map where original_id = 6),
+  (SELECT array_agg(id) FROM vertex_map where original_id = 3))
+WHERE cost = 0 AND seq != 1 AND edge != -1);
+UPDATE 1
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">示例<span class="colon">:</span></dt>
+<dd class="field-odd"><p>路由从 <span class="math notranslate nohighlight">\(6\)</span> 到 <span class="math notranslate nohighlight">\(3\)</span></p>
+</dd>
+</dl>
+<p>现在，该路线不使用边 8，而是在叶顶点上进行 U 形转弯。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WITH
+results AS (
+  SELECT * FROM pgr_dijkstraNear(
+    $$SELECT * FROM lineGraph_edges$$,
+    (SELECT array_agg(id) FROM vertex_map where original_id = 6),
+    (SELECT array_agg(id) FROM vertex_map where original_id = 3)))
+SELECT seq, path_seq, start_vid, end_vid, node, original_id, edge, cost, agg_cost
+FROM results
+LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
+ seq | path_seq | start_vid | end_vid | node | original_id | edge | cost | agg_cost
+-----+----------+-----------+---------+------+-------------+------+------+----------
+   1 |        1 |        -1 |       3 |   -1 |           6 |    1 |    1 |        0
+   2 |        2 |        -1 |       3 |    7 |           7 |   10 |    0 |        1
+   3 |        3 |        -1 |       3 |   -5 |           7 |    6 |    1 |        1
+   4 |        4 |        -1 |       3 |    8 |           8 |   28 |    0 |        2
+   5 |        5 |        -1 |       3 |  -11 |           8 |   27 |    1 |        2
+   6 |        6 |        -1 |       3 |   -8 |           7 |   20 |    0 |        3
+   7 |        7 |        -1 |       3 |   -3 |           7 |    4 |    1 |        3
+   8 |        8 |        -1 |       3 |    3 |           3 |   -1 |    0 |        4
+(8 rows)
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="simplifying-leaf-vertices">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">简化叶顶点</a><a class="headerlink" href="#simplifying-leaf-vertices" title="Link to this heading">¶</a></h3>
+<p>在这个例子中，遍历叶顶点没有额外的成本。</p>
+<section id="using-the-vertex-map-give-the-leaf-verices-their-original-value">
+<h4><a class="toc-backref" href="#id11" role="doc-backlink">使用顶点图赋予叶顶点其原始值。</a><a class="headerlink" href="#using-the-vertex-map-give-the-leaf-verices-their-original-value" title="Link to this heading">¶</a></h4>
+<p>在source 列</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
+<span class="n">u_turns</span> <span class="n">AS</span> <span class="p">(</span>
+<span class="n">SELECT</span> <span class="n">e</span><span class="o">.</span><span class="n">id</span> <span class="n">AS</span> <span class="n">eid</span><span class="p">,</span> <span class="n">v1</span><span class="o">.</span><span class="n">original_id</span>
+<span class="n">FROM</span> <span class="n">linegraph_edges</span> <span class="k">as</span> <span class="n">e</span>
+<span class="n">JOIN</span> <span class="n">vertex_map</span> <span class="n">AS</span> <span class="n">v1</span> <span class="n">ON</span> <span class="p">(</span><span class="n">source</span> <span class="o">=</span> <span class="n">v1</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">AND</span> <span class="n">v1</span><span class="o">.</span><span class="n">original_id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">))</span>
+<span class="n">UPDATE</span> <span class="n">lineGraph_edges</span>
+<span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">original_id</span>
+<span class="n">FROM</span> <span class="n">u_turns</span>
+<span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="n">eid</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">8</span>
+</pre></div>
+</div>
+<p>在target列</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
+<span class="n">u_turns</span> <span class="n">AS</span> <span class="p">(</span>
+<span class="n">SELECT</span> <span class="n">e</span><span class="o">.</span><span class="n">id</span> <span class="n">AS</span> <span class="n">eid</span><span class="p">,</span> <span class="n">v1</span><span class="o">.</span><span class="n">original_id</span>
+<span class="n">FROM</span> <span class="n">linegraph_edges</span> <span class="k">as</span> <span class="n">e</span>
+<span class="n">JOIN</span> <span class="n">vertex_map</span> <span class="n">AS</span> <span class="n">v1</span> <span class="n">ON</span> <span class="p">(</span><span class="n">target</span> <span class="o">=</span> <span class="n">v1</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">AND</span> <span class="n">v1</span><span class="o">.</span><span class="n">original_id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">))</span>
+<span class="n">UPDATE</span> <span class="n">lineGraph_edges</span>
+<span class="n">SET</span> <span class="n">target</span> <span class="o">=</span> <span class="n">original_id</span>
+<span class="n">FROM</span> <span class="n">u_turns</span>
+<span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="n">eid</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">8</span>
+</pre></div>
+</div>
+</section>
+<section id="removing-self-loops-on-leaf-nodes">
+<h4><a class="toc-backref" href="#id12" role="doc-backlink">删除叶节点上的自循环</a><a class="headerlink" href="#removing-self-loops-on-leaf-nodes" title="Link to this heading">¶</a></h4>
+<p>叶节点的自循环为</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">linegraph_edges</span>
+<span class="n">WHERE</span> <span class="n">source</span> <span class="o">=</span> <span class="n">target</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="p">;</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">edge</span>
+<span class="o">----+--------+--------+------+------</span>
+  <span class="mi">2</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+ <span class="mi">24</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+ <span class="mi">26</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+ <span class="mi">28</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+<span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>哪些可以删除</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="n">FROM</span> <span class="n">linegraph_edges</span>
+<span class="n">WHERE</span> <span class="n">source</span> <span class="o">=</span> <span class="n">target</span><span class="p">;</span>
+<span class="n">DELETE</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">示例<span class="colon">:</span></dt>
+<dd class="field-odd"><p>路由从 <span class="math notranslate nohighlight">\(6\)</span> 到 <span class="math notranslate nohighlight">\(3\)</span></p>
+</dd>
+</dl>
+<p>现在可以使用 <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra`</span></a> 使用原始顶点 id 来完成路由</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WITH
+results AS (
+  SELECT * FROM pgr_dijkstra(
+    $$SELECT * FROM lineGraph_edges$$, 6, 3))
+SELECT seq, path_seq, node, original_id, edge, cost, agg_cost
+FROM results
+LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
+ seq | path_seq | node | original_id | edge | cost | agg_cost
+-----+----------+------+-------------+------+------+----------
+   1 |        1 |    6 |           6 |    1 |    1 |        0
+   2 |        2 |    7 |           7 |    9 |    0 |        1
+   3 |        3 |   -4 |           7 |    5 |    1 |        1
+   4 |        4 |   11 |          11 |   25 |    1 |        2
+   5 |        5 |   -7 |           7 |   16 |    0 |        3
+   6 |        6 |   -3 |           7 |    4 |    1 |        3
+   7 |        7 |    3 |           3 |   -1 |    0 |        4
+(7 rows)
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="complete-routing-graph">
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">完整的路由图</a><a class="headerlink" href="#complete-routing-graph" title="Link to this heading">¶</a></h3>
+<section id="add-edges-from-the-original-graph">
+<h4><a class="toc-backref" href="#id14" role="doc-backlink">从原始图中添加边</a><a class="headerlink" href="#add-edges-from-the-original-graph" title="Link to this heading">¶</a></h4>
+<p>将所有不参与折线图过程的边添加到新表中</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span>
+<span class="n">INTO</span> <span class="n">new_graph</span> <span class="kn">from</span> <span class="nn">edges</span>
+<span class="n">WHERE</span> <span class="nb">id</span> <span class="n">NOT</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="mi">14</span>
+</pre></div>
+</div>
+<p>一些获取边新标识符的管理任务</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">SEQUENCE</span> <span class="n">new_graph_id_seq</span><span class="p">;</span>
+<span class="n">CREATE</span> <span class="n">SEQUENCE</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">new_graph</span> <span class="n">ALTER</span> <span class="n">COLUMN</span> <span class="nb">id</span> <span class="n">SET</span> <span class="n">DEFAULT</span> <span class="n">nextval</span><span class="p">(</span><span class="s1">&#39;new_graph_id_seq&#39;</span><span class="p">);</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">new_graph</span> <span class="n">ALTER</span> <span class="n">COLUMN</span> <span class="nb">id</span> <span class="n">SET</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">;</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+<span class="n">ALTER</span> <span class="n">SEQUENCE</span> <span class="n">new_graph_id_seq</span> <span class="n">OWNED</span> <span class="n">BY</span> <span class="n">new_graph</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
+<span class="n">ALTER</span> <span class="n">SEQUENCE</span>
+<span class="n">SELECT</span> <span class="n">setval</span><span class="p">(</span><span class="s1">&#39;new_graph_id_seq&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">max</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">new_graph</span><span class="p">));</span>
+ <span class="n">setval</span>
+<span class="o">--------</span>
+     <span class="mi">18</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="add-the-newly-calculated-edges">
+<h4><a class="toc-backref" href="#id15" role="doc-backlink">添加新计算的边</a><a class="headerlink" href="#add-the-newly-calculated-edges" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">new_graph</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">)</span>
+<span class="n">SELECT</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span> <span class="n">FROM</span> <span class="n">lineGraph_edges</span><span class="p">;</span>
+<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">24</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="using-the-routing-graph">
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">使用路由图</a><a class="headerlink" href="#using-the-routing-graph" title="Link to this heading">¶</a></h3>
+<p>当使用这种方法进行具有软限制的路由时，将会出现 uturn</p>
+<dl class="field-list simple">
+<dt class="field-odd">示例<span class="colon">:</span></dt>
+<dd class="field-odd"><p>路由从 <span class="math notranslate nohighlight">\(6\)</span> 到 <span class="math notranslate nohighlight">\(3\)</span></p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WITH
+results AS (
+  SELECT * FROM pgr_dijkstra(
+    $$SELECT * FROM new_graph$$, 6, 3))
+SELECT seq, path_seq, node, original_id, edge, cost, agg_cost
+FROM results
+LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
+ seq | path_seq | node | original_id | edge | cost | agg_cost
+-----+----------+------+-------------+------+------+----------
+   1 |        1 |    6 |           6 |   35 |    1 |        0
+   2 |        2 |    7 |           7 |   20 |    0 |        1
+   3 |        3 |   -4 |           7 |   41 |    1 |        1
+   4 |        4 |   11 |          11 |   37 |    1 |        2
+   5 |        5 |   -7 |           7 |   27 |    0 |        3
+   6 |        6 |   -3 |           7 |   40 |    1 |        3
+   7 |        7 |    3 |           3 |   -1 |    0 |        4
+(7 rows)
+
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">示例<span class="colon">:</span></dt>
+<dd class="field-odd"><p>路由从 <span class="math notranslate nohighlight">\(5\)</span> 到 <span class="math notranslate nohighlight">\(1\)</span></p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WITH
+results AS (
+  SELECT * FROM pgr_dijkstra(
+    $$SELECT * FROM new_graph$$, 5, 1))
+SELECT seq, path_seq, node, original_id, edge, cost, agg_cost
+FROM results
+LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
+ seq | path_seq | node | original_id | edge | cost | agg_cost
+-----+----------+------+-------------+------+------+----------
+   1 |        1 |    5 |           5 |    1 |    1 |        0
+   2 |        2 |    6 |           6 |   35 |    1 |        1
+   3 |        3 |    7 |           7 |   20 |    0 |        2
+   4 |        4 |   -4 |           7 |   41 |    1 |        2
+   5 |        5 |   11 |          11 |   37 |    1 |        3
+   6 |        6 |   -7 |           7 |   27 |    0 |        4
+   7 |        7 |   -3 |           7 |   40 |    1 |        4
+   8 |        8 |    3 |           3 |    6 |    1 |        5
+   9 |        9 |    1 |           1 |   -1 |    0 |        6
+(9 rows)
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="see-also">
+<h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Line_graph">https://en.wikipedia.org/wiki/Line_graph</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Complete_graph">https://en.wikipedia.org/wiki/Complete_graph</a></p></li>
+</ul>
+<p class="rubric">索引和表格</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.6.3.<br/>
+      Last updated on 10月 12, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -10,13 +10,13 @@
     <title>Contraction - Familia de funciones &#8212; pgRouting Manual (3.6)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=53e5f443"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=e87c01b6"></script>
-    <script src="_static/translations.js?v=d190bf04"></script>
+    <script src="_static/page_history.js?v=c8ec7c59"></script>
+    <script src="_static/translations.js?v=f85f4cfb"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
@@ -308,7 +308,7 @@
 <li><p>Los nodos verdes son nodos <a class="reference internal" href="#dead-end">dead end</a></p></li>
 <li><p>Los nodos azules tienen un número ilimitado de aristas.</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-133c3d00246c459c4912dd2d409ee878545598e4.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-ef5116d42636a1711444f79368304c1978068213.png" alt="graph G {
     u, v [shape=circle;style=filled;width=.4;color=deepskyblue];
     a, b [style=filled; color=green];
     G [shape=tripleoctagon;width=1.5;style=filled;
@@ -345,7 +345,7 @@
 <li><p>Los nodos verdes son nodos <a class="reference internal" href="#dead-end">dead end</a></p></li>
 <li><p>Los nodos azules tienen un número ilimitado de aristas entrantes y/o salientes.</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-c8e8001a0f075b45b5ef94157808fa302e8b62a7.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-82723db0022a25b1a9ffd323d95d9daeda8a2c1f.png" alt="digraph G {
     u, v, w, x, y [shape=circle;style=filled;width=.4;color=deepskyblue];
     a, b, c, d, e [style=filled; color=green];
     G [shape=tripleoctagon;width=1.5;style=filled;
@@ -421,7 +421,7 @@
 <section id="operation-dead-end-contraction">
 <h3>Operación: Contracción sin salida<a class="headerlink" href="#operation-dead-end-contraction" title="Link to this heading">¶</a></h3>
 <p>La contracción sin salida se detendrá hasta que no haya más nodos sin salida. Por ejemplo, del siguiente grafo donde <span class="math notranslate nohighlight">\(w\)</span> es el nodo <a class="reference internal" href="#dead-end">dead end</a>:</p>
-<div class="graphviz"><img src="_images/graphviz-4fdcd0305dbfbab90073ec9514716ef0ad1e4f76.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-8ef6dd10de3e2f48d63ff7a0851f401fe2c8a22a.png" alt="digraph G {
     u, v [shape=circle;style=filled;width=.4;color=deepskyblue];
     w [style=filled; color=green];
     &quot;G&quot; [shape=tripleoctagon;style=filled;
@@ -432,7 +432,7 @@
     u -&gt; v -&gt; w;
 }" class="graphviz" /></div>
 <p>Después de contraer <span class="math notranslate nohighlight">\(w\)</span>, el nodo ` <span class="math notranslate nohighlight">\(v\)</span> es ahora un nodo <a class="reference internal" href="#dead-end">dead end</a> y es contraído:</p>
-<div class="graphviz"><img src="_images/graphviz-82174f96e766deeae75a75488fa01f23af7da497.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-44f751227801adfe2756a5066b83a8e932268d07.png" alt="digraph G {
     u [shape=circle;style=filled;width=.4;color=deepskyblue];
     v [style=filled; color=green, label=&quot;v{w}&quot;];
     &quot;G&quot; [shape=tripleoctagon;style=filled;
@@ -443,7 +443,7 @@
     u -&gt; v;
 }" class="graphviz" /></div>
 <p>Después de contraer math:<cite>v</cite>, detenerse El nodo math:<cite>u</cite> tiene la información de los nodos que se contraen.</p>
-<div class="graphviz"><img src="_images/graphviz-2d7779194092aa64d7a74051e7b24d8a962d9e0f.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-1fdb5a4269dc3d5f14197ba41c61e8a1f3f2775f.png" alt="digraph G {
     u [style=filled; color=green, label=&quot;u{v,w}&quot;];
     &quot;G&quot; [shape=tripleoctagon;style=filled;
          color=deepskyblue; label = &quot;Rest of the Graph&quot;];
@@ -475,7 +475,7 @@
 <li><p>Los nodos azules tienen un número ilimitado de aristas entrantes y salientes.</p></li>
 </ul>
 <p class="rubric">No dirigido</p>
-<div class="graphviz"><img src="_images/graphviz-5565c2a3e64a5e493dd60c052a86cee32c294e38.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-2c64934e1318cf1b0fbb263edf75addebbeb6392.png" alt="graph G {
     u, w [shape=circle;style=filled;width=.4;color=deepskyblue];
     v [style=filled; color=green];
     G [shape=tripleoctagon;width=1.5;style=filled;
@@ -512,7 +512,7 @@
 </ul>
 </li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-726b2c9e619c1609c8d06996b6392b09095c2986.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-a372f19fad77b867577e0b6450c882d1bbf72874.png" alt="digraph G {
     u, v, w, x, y, z [shape=circle;style=filled;width=.4;color=deepskyblue];
     a, b [style=filled; color=green];
     G [shape=tripleoctagon;width=1.5;style=filled;
@@ -556,7 +556,7 @@
 <section id="operation-linear-contraction">
 <h3>Operación: Contracción Lineal<a class="headerlink" href="#operation-linear-contraction" title="Link to this heading">¶</a></h3>
 <p>La contracción lineal se detendrá hasta que no hayan más nodos lineales. Por ejemplo, en el siguiente grafo donde ` <span class="math notranslate nohighlight">\(v\)</span> y <span class="math notranslate nohighlight">\(w\)</span> son nodos <a class="reference internal" href="#linear">lineales</a> :</p>
-<div class="graphviz"><img src="_images/graphviz-5d6780661464bc07b07b2af1a5d6b5f8f36ca90a.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-865ef229717c7b64018fc9fcb65b4a6d2f2052f8.png" alt="digraph G {
     u, z [shape=circle;style=filled;color=deepskyblue];
     v, w [style=filled; color=green];
     &quot;G&quot; [shape=tripleoctagon; style=filled;
@@ -572,7 +572,7 @@
 <li><p>Los aristas <span class="math notranslate nohighlight">\(v \rightarrow w\)</span> y <span class="math notranslate nohighlight">\(w \rightarrow z\)</span> fueron eliminados del grafo.</p></li>
 <li><p>Se inserta un nuevo arista <span class="math notranslate nohighlight">\(v \rightarrow z\)</span> y se representa con color rojo.</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-14be5626ee411f35a47287f42c24255e0dc350bb.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-2bbe18fa4d3e404d80eb937b6eb2633639d591a7.png" alt="digraph G {
     u, z [shape=circle;style=filled;color=deepskyblue];
     v [style=filled; color=green];
     &quot;G&quot; [shape=tripleoctagon; style=filled;
@@ -589,7 +589,7 @@
 <li><p>Los aristas <span class="math notranslate nohighlight">\(u \rightarrow v\)</span> y <span class="math notranslate nohighlight">\(v \rightarrow z\)</span> son removidos del grafo.</p></li>
 <li><p>Se inserta un nuevo arista <span class="math notranslate nohighlight">\(u \rightarrow z\)</span> y se representa con color rojo.</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-12be2629d707913e64a07fee1e387ff25af98fb6.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-a93daa3950f37f1d1d11eb7bfa4614514bc45fbb.png" alt="digraph G {
     u, z [shape=circle;style=filled;color=deepskyblue];
     &quot;G&quot; [shape=tripleoctagon; style=filled;
          color=deepskyblue;label = &quot;Rest of the Graph&quot;];
@@ -1195,8 +1195,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.3.<br/>
-      Actualizado por última vez en oct 10, 2024.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2.<br/>
+      Actualizado por última vez en oct 12, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.1.<br/>
     </p>
   </div>
 </footer>

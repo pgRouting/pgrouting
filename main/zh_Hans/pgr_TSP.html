@@ -1,0 +1,681 @@
+
+
+<!DOCTYPE html>
+
+<html lang="zh-Hans" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>pgr_TSP &#8212; pgRouting Manual (3.6)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
+    <script src="_static/documentation_options.js?v=0fece2b7"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=c8ec7c59"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pgr_TSPeuclidean" href="pgr_TSPeuclidean.html" />
+    <link rel="prev" title="Traveling Sales Person - 函数族" href="TSP-family.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v3.6.3</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">支持</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code></a><ul>
+<li><a class="reference internal" href="#description">描述</a><ul>
+<li><a class="reference internal" href="#problem-definition">问题定义</a></li>
+<li><a class="reference internal" href="#characteristics">特征</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#signatures">签名</a></li>
+<li><a class="reference internal" href="#parameters">参数</a><ul>
+<li><a class="reference internal" href="#tsp-optional-parameters">TSP 可选参数</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
+<li><a class="reference internal" href="#matrix-sql">矩阵SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">结果列</a></li>
+<li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
+<li><a class="reference internal" href="#start-from-vertex-1">从顶点 <span class="math notranslate nohighlight">\(1\)</span> 开始</a></li>
+<li><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymetric-matrix">使用兴趣点生成不对称矩阵。</a></li>
+<li><a class="reference internal" href="#connected-incomplete-data">连接不完整数据</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">另请参阅</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="TSP-family.html" title="Previous Chapter: Traveling Sales Person - 函数族"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Traveling Sal...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_TSPeuclidean.html" title="Next Chapter: pgr_TSPeuclidean"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_TSPeuclidean &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code></a><ul>
+<li><a class="reference internal" href="#description">描述</a><ul>
+<li><a class="reference internal" href="#problem-definition">问题定义</a></li>
+<li><a class="reference internal" href="#characteristics">特征</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#signatures">签名</a></li>
+<li><a class="reference internal" href="#parameters">参数</a><ul>
+<li><a class="reference internal" href="#tsp-optional-parameters">TSP 可选参数</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
+<li><a class="reference internal" href="#matrix-sql">矩阵SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">结果列</a></li>
+<li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
+<li><a class="reference internal" href="#start-from-vertex-1">从顶点 <span class="math notranslate nohighlight">\(1\)</span> 开始</a></li>
+<li><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymetric-matrix">使用兴趣点生成不对称矩阵。</a></li>
+<li><a class="reference internal" href="#connected-incomplete-data">连接不完整数据</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">另请参阅</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="TSP-family.html" title="Previous Chapter: Traveling Sales Person - 函数族"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Traveling Sal...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_TSPeuclidean.html" title="Next Chapter: pgr_TSPeuclidean"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_TSPeuclidean &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
+            <script> document.write(get_history('pgr_TSP','zh-Hans'));  </script>
+            
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="pgr-tsp">
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code><a class="headerlink" href="#pgr-tsp" title="Link to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code> -使用*metric*算法的近似方法。</p></li>
+</ul>
+<figure class="align-default" id="id1">
+<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
+</a>
+<figcaption>
+<p><span class="caption-text">Boost 图内部</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p class="rubric">可用性：</p>
+<ul class="simple">
+<li><p>版本3.2.1</p>
+<ul>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost库</a> 中的度量算法</p></li>
+<li><p>Simulated Annealing算法不再受支持</p>
+<ul>
+<li><p>Simulated Annealing算法相关参数被忽略：max_processing_time、tries_per_temper、max_changes_per_tempere、max_consecutive_non_changes、initial_temper、final_temper、cooling_factor、randomize</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>版本2.3.0</p>
+<ul>
+<li><p>签名变更</p>
+<ul>
+<li><p>不再支持旧签名</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>版本2.0.0</p>
+<ul>
+<li><p><strong>官方</strong> 函数</p></li>
+</ul>
+</li>
+</ul>
+<section id="description">
+<h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<section id="problem-definition">
+<h3>问题定义<a class="headerlink" href="#problem-definition" title="Link to this heading">¶</a></h3>
+<p>旅行推销员问题 (TSP) 提出以下问题：</p>
+<blockquote>
+<div><p><em>给定一个城市列表以及每对城市之间的距离，哪条是访问每个城市一次并返回出发城市的最短路线？</em></p>
+</div></blockquote>
+</section>
+<section id="characteristics">
+<h3>特征<a class="headerlink" href="#characteristics" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>该问题是一个NP-hard优化问题。</p></li>
+<li><p>使用度量算法</p></li>
+<li><p><em>在最坏的情况下，实施产生的解决方案的时间是最佳旅行的两倍</em>：</p>
+<ul>
+<li><p>图是无向的</p></li>
+<li><p>图是全连通的</p></li>
+<li><p>图中，边上的旅行成本服从三角不等式。</p></li>
+</ul>
+</li>
+<li><p>在无向图上：</p>
+<ul>
+<li><p>旅行费用是对称的：</p></li>
+<li><p>从 <code class="docutils literal notranslate"><span class="pre">u</span></code> 到 <code class="docutils literal notranslate"><span class="pre">v</span></code> 的旅行费用与从 <code class="docutils literal notranslate"><span class="pre">v</span></code> 到 <code class="docutils literal notranslate"><span class="pre">u</span></code> 的旅行费用相同</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>可以与 <a class="reference internal" href="costMatrix-category.html"><span class="doc">成本矩阵 - 类别</span></a> 函数一起使用，最好使用 <cite>directed =&gt; false</cite>。</p>
+<ul>
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">false</span></code></p>
+<ul>
+<li><p>将生成一个图：</p>
+<ul>
+<li><p>是无向的</p></li>
+<li><p>是完全连接的（只要图有一个分量）</p></li>
+<li><p>所有边上的旅行成本都遵循三角不等式。</p></li>
+</ul>
+</li>
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">=</span> <span class="pre">0</span> <span class="pre">OR</span> <span class="pre">end_vid</span> <span class="pre">=</span> <span class="pre">0</span></code></p>
+<ul>
+<li><p>生成的解决方案保证是*最坏情况下最优路径时间的两倍*</p></li>
+</ul>
+</li>
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">AND</span> <span class="pre">end_vid</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">AND</span> <span class="pre">start_vid</span> <span class="pre">!=</span> <span class="pre">end_vid</span></code></p>
+<ul>
+<li><p>在最坏情况下， <strong>不能保证</strong> 解决方案将是最优路径的两倍长，因为 <cite>end_vid</cite> 被强制设置在固定位置。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
+<ul>
+<li><p><strong>不能保证</strong> 在最坏情况下解决方案将是最优路径的两倍长</p></li>
+<li><p>将生成一个图：</p>
+<ul>
+<li><p>有向</p></li>
+<li><p>是完全连接的（只要图有一个分量）</p></li>
+<li><p>某些（或全部）边上的旅行成本可能不满足三角不等式。</p></li>
+</ul>
+</li>
+<li><p>由于需要无向图，有向图变换如下：</p>
+<ul>
+<li><p>边 <cite>(u, v)</cite> 和 <cite>(v, u)`被认为是相同的边（表示为 `(u, v)</cite></p></li>
+<li><p>如果 <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> 在边`(u, v)` 的一个或多个实例之间不同</p></li>
+<li><p>边 <cite>(u, v)</cite> 的所有实例的 <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> 最小值将被视为边 <cite>(u, v)</cite> 的 <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></li>
+<li><p>边上的一些（或全部）旅行成本仍然可能不遵守三角不等式。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>当数据不完整，但是是连通图时：</p>
+<ul>
+<li><p>缺失值将使用 dijkstra 算法计算。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="signatures">
+<h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<p class="rubric">总结</p>
+<div class="signatures admonition" id="index-0">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_TSP(<a class="reference internal" href="#matrix-sql">Matrix SQL</a>, <code class="docutils literal notranslate"><span class="pre">[start_id,</span> <span class="pre">end_id]</span></code>)</div>
+</div>
+<div class="line-block">
+<div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code> 的集合</div>
+<div class="line">OR EMTPY SET</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">示例<span class="colon">:</span></dt>
+<dd class="field-odd"><p>使用 <a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a> 生成矩阵信息</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p><strong>Line 4</strong> 顶点 <span class="math notranslate nohighlight">\(\{2, 4, 13, 14\}\)</span> 不包括在内，因为它们未连接。</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
+<span class="linenos"> 2</span>  $$SELECT * FROM pgr_dijkstraCostMatrix(
+<span class="linenos"> 3</span>    &#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;,
+<span class="linenos"> 4</span>    (SELECT array_agg(id) FROM vertices WHERE id NOT IN (2, 4, 13, 14)),
+<span class="linenos"> 5</span>    directed =&gt; false) $$);
+<span class="linenos"> 6</span> seq | node | cost | agg_cost
+<span class="linenos"> 7</span>-----+------+------+----------
+<span class="linenos"> 8</span>   1 |    1 |    0 |        0
+<span class="linenos"> 9</span>   2 |    3 |    1 |        1
+<span class="linenos">10</span>   3 |    7 |    1 |        2
+<span class="linenos">11</span>   4 |    6 |    1 |        3
+<span class="linenos">12</span>   5 |    5 |    1 |        4
+<span class="linenos">13</span>   6 |   10 |    2 |        6
+<span class="linenos">14</span>   7 |   11 |    1 |        7
+<span class="linenos">15</span>   8 |   12 |    1 |        8
+<span class="linenos">16</span>   9 |   16 |    2 |       10
+<span class="linenos">17</span>  10 |   15 |    1 |       11
+<span class="linenos">18</span>  11 |   17 |    2 |       13
+<span class="linenos">19</span>  12 |    9 |    3 |       16
+<span class="linenos">20</span>  13 |    8 |    1 |       17
+<span class="linenos">21</span>  14 |    1 |    3 |       20
+<span class="linenos">22</span>(14 rows)
+<span class="linenos">23</span>
+</pre></div>
+</div>
+</section>
+<section id="parameters">
+<h2>参数<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>参数</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#matrix-sql">Matrix SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#matrix-sql">Matrix SQL</a> 如下所述</p></td>
+</tr>
+</tbody>
+</table>
+<section id="tsp-optional-parameters">
+<h3>TSP 可选参数<a class="headerlink" href="#tsp-optional-parameters" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_id</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>第一个访问顶点</p>
+<ul class="simple">
+<li><p>当 <cite>0</cite> 时，任何顶点都可以成为第一个访问顶点。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_id</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>返回 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 之前最后访问的顶点。</p>
+<ul class="simple">
+<li><p>当为 <code class="docutils literal notranslate"><span class="pre">0</span></code> 时，任何顶点都可以成为返回 <code class="docutils literal notranslate"><span class="pre">start_id</span></code> 之前最后访问的顶点。</p></li>
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">0</span></code> 且 <code class="docutils literal notranslate"><span class="pre">start_id</span> <span class="pre">=</span> <span class="pre">0</span></code> 时，它是第一个和最后一个顶点</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="inner-queries">
+<h2>内部查询<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<section id="matrix-sql">
+<h3>矩阵SQL<a class="headerlink" href="#matrix-sql" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td><p>起始顶点的标识符。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td><p>结束顶点的标识符。</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td><p>从 start_vid 到 end_vid 的成本</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="result-columns">
+<h2>结果列<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<p>返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>seq</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>行顺序。</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>node</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>节点/坐标/点的标识符。</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>从路径序列中的当前 <code class="docutils literal notranslate"><span class="pre">node``遍历到下一个``node</span></code> 的成本。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> 表示游览序列中的最后一行。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>agg_cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>从 <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> 的 <code class="docutils literal notranslate"><span class="pre">node</span></code> 到当前节点的总成本。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> 表示游览序列中的第一行。</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="additional-examples">
+<h2>其他示例<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#start-from-vertex-1" id="id2">从顶点 <span class="math notranslate nohighlight">\(1\)</span> 开始</a></p></li>
+<li><p><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymetric-matrix" id="id3">使用兴趣点生成不对称矩阵。</a></p></li>
+<li><p><a class="reference internal" href="#connected-incomplete-data" id="id4">连接不完整数据</a></p></li>
+</ul>
+</nav>
+<section id="start-from-vertex-1">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">从顶点 <span class="math notranslate nohighlight">\(1\)</span> 开始</a><a class="headerlink" href="#start-from-vertex-1" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Line 6</strong> <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">=&gt;</span> <span class="pre">1</span></code></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
+<span class="linenos"> 2</span>  $$SELECT * FROM pgr_dijkstraCostMatrix(
+<span class="linenos"> 3</span>    &#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;,
+<span class="linenos"> 4</span>    (SELECT array_agg(id) FROM vertices WHERE id NOT IN (2, 4, 13, 14)),
+<span class="linenos"> 5</span>    directed =&gt; false) $$,
+<span class="linenos"> 6</span>  start_id =&gt; 1);
+<span class="linenos"> 7</span> seq | node | cost | agg_cost
+<span class="linenos"> 8</span>-----+------+------+----------
+<span class="linenos"> 9</span>   1 |    1 |    0 |        0
+<span class="linenos">10</span>   2 |    3 |    1 |        1
+<span class="linenos">11</span>   3 |    7 |    1 |        2
+<span class="linenos">12</span>   4 |    6 |    1 |        3
+<span class="linenos">13</span>   5 |    5 |    1 |        4
+<span class="linenos">14</span>   6 |   10 |    2 |        6
+<span class="linenos">15</span>   7 |   11 |    1 |        7
+<span class="linenos">16</span>   8 |   12 |    1 |        8
+<span class="linenos">17</span>   9 |   16 |    2 |       10
+<span class="linenos">18</span>  10 |   15 |    1 |       11
+<span class="linenos">19</span>  11 |   17 |    2 |       13
+<span class="linenos">20</span>  12 |    9 |    3 |       16
+<span class="linenos">21</span>  13 |    8 |    1 |       17
+<span class="linenos">22</span>  14 |    1 |    3 |       20
+<span class="linenos">23</span>(14 rows)
+<span class="linenos">24</span>
+</pre></div>
+</div>
+</section>
+<section id="using-points-of-interest-to-generate-an-asymetric-matrix">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">使用兴趣点生成不对称矩阵。</a><a class="headerlink" href="#using-points-of-interest-to-generate-an-asymetric-matrix" title="Link to this heading">¶</a></h3>
+<p>生成非对称矩阵：</p>
+<ul class="simple">
+<li><p><strong>Line 4</strong> 通过未在查询中包括 <code class="docutils literal notranslate"><span class="pre">pointsOfInterset</span></code> 中的``side`` 信息而被忽略</p></li>
+<li><p><strong>Line 6</strong> 使用 <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code> 生成一个非对称矩阵</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(min(agg\_cost(u, v), agg\_cost(v, u))\)</span> 将被视为 <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></li>
+<li><p>该解决方案的长度可能是*最佳行程的两倍以上*，因为：</p>
+<ul>
+<li><p>三角不等式可能不满足。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_id</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">AND</span> <span class="pre">end_id</span> <span class="pre">!=</span> <span class="pre">0</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
+<span class="linenos"> 2</span>  $$SELECT * FROM pgr_withPointsCostMatrix(
+<span class="linenos"> 3</span>    &#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;,
+<span class="linenos"> 4</span>    &#39;SELECT pid, edge_id, fraction from pointsOfInterest&#39;,
+<span class="linenos"> 5</span>    array[-1, 10, 7, 11, -6],
+<span class="linenos"> 6</span>    directed =&gt; true) $$,
+<span class="linenos"> 7</span>  start_id =&gt; 7,
+<span class="linenos"> 8</span>  end_id =&gt; 11);
+<span class="linenos"> 9</span> seq | node | cost | agg_cost
+<span class="linenos">10</span>-----+------+------+----------
+<span class="linenos">11</span>   1 |    7 |    0 |        0
+<span class="linenos">12</span>   2 |   -6 |  0.3 |      0.3
+<span class="linenos">13</span>   3 |   -1 |  1.3 |      1.6
+<span class="linenos">14</span>   4 |   10 |  1.6 |      3.2
+<span class="linenos">15</span>   5 |   11 |    1 |      4.2
+<span class="linenos">16</span>   6 |    7 |    1 |      5.2
+<span class="linenos">17</span>(6 rows)
+<span class="linenos">18</span>
+</pre></div>
+</div>
+</section>
+<section id="connected-incomplete-data">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">连接不完整数据</a><a class="headerlink" href="#connected-incomplete-data" title="Link to this heading">¶</a></h3>
+<p>使用选定的边 <span class="math notranslate nohighlight">\(\{2, 4, 5, 8, 9, 15\}\)</span>，矩阵不完整。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_dijkstraCostMatrix(
+<span class="linenos"> 2</span>  $q1$SELECT id, source, target, cost, reverse_cost FROM edges WHERE id IN (2, 4, 5, 8, 9, 15)$q1$,
+<span class="linenos"> 3</span>  (SELECT ARRAY[6, 7, 10, 11, 16, 17]),
+<span class="linenos"> 4</span>  directed =&gt; true);
+<span class="linenos"> 5</span> start_vid | end_vid | agg_cost
+<span class="linenos"> 6</span>-----------+---------+----------
+<span class="linenos"> 7</span>         6 |       7 |        1
+<span class="linenos"> 8</span>         6 |      11 |        2
+<span class="linenos"> 9</span>         6 |      16 |        3
+<span class="linenos">10</span>         6 |      17 |        4
+<span class="linenos">11</span>         7 |       6 |        1
+<span class="linenos">12</span>         7 |      11 |        1
+<span class="linenos">13</span>         7 |      16 |        2
+<span class="linenos">14</span>         7 |      17 |        3
+<span class="linenos">15</span>        10 |       6 |        1
+<span class="linenos">16</span>        10 |       7 |        2
+<span class="linenos">17</span>        10 |      11 |        1
+<span class="linenos">18</span>        10 |      16 |        2
+<span class="linenos">19</span>        10 |      17 |        3
+<span class="linenos">20</span>        11 |       6 |        2
+<span class="linenos">21</span>        11 |       7 |        1
+<span class="linenos">22</span>        11 |      16 |        1
+<span class="linenos">23</span>        11 |      17 |        2
+<span class="linenos">24</span>        16 |       6 |        3
+<span class="linenos">25</span>        16 |       7 |        2
+<span class="linenos">26</span>        16 |      11 |        1
+<span class="linenos">27</span>        16 |      17 |        1
+<span class="linenos">28</span>        17 |       6 |        4
+<span class="linenos">29</span>        17 |       7 |        3
+<span class="linenos">30</span>        17 |      11 |        2
+<span class="linenos">31</span>        17 |      16 |        1
+<span class="linenos">32</span>(25 rows)
+<span class="linenos">33</span>
+</pre></div>
+</div>
+<p>对于 <span class="math notranslate nohighlight">\(17 \rightarrow 10\)</span> 的成本值在矩阵中不存在，但使用的值是从 <span class="math notranslate nohighlight">\(10 \rightarrow 17\)</span> 中获取的。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
+<span class="linenos"> 2</span>  $$SELECT * FROM pgr_dijkstraCostMatrix(
+<span class="linenos"> 3</span>  $q1$SELECT id, source, target, cost, reverse_cost FROM edges WHERE id IN (2, 4, 5, 8, 9, 15)$q1$,
+<span class="linenos"> 4</span>  (SELECT ARRAY[6, 7, 10, 11, 16, 17]),
+<span class="linenos"> 5</span>  directed =&gt; true)$$);
+<span class="linenos"> 6</span> seq | node | cost | agg_cost
+<span class="linenos"> 7</span>-----+------+------+----------
+<span class="linenos"> 8</span>   1 |    6 |    0 |        0
+<span class="linenos"> 9</span>   2 |    7 |    1 |        1
+<span class="linenos">10</span>   3 |   11 |    1 |        2
+<span class="linenos">11</span>   4 |   16 |    1 |        3
+<span class="linenos">12</span>   5 |   17 |    1 |        4
+<span class="linenos">13</span>   6 |   10 |    3 |        7
+<span class="linenos">14</span>   7 |    6 |    1 |        8
+<span class="linenos">15</span>(7 rows)
+<span class="linenos">16</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="see-also">
+<h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Traveling Sales Person - 函数族</span></a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost 的 metric appro 的 metric 近似</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Traveling_salesman_problem">维基百科：旅行商问题</a></p></li>
+</ul>
+<p class="rubric">索引和表格</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.6.3.<br/>
+      Last updated on 10月 12, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

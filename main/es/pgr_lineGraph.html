@@ -10,18 +10,19 @@
     <title>pgr_lineGraph - Experimental &#8212; pgRouting Manual (3.6)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=53e5f443"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=e87c01b6"></script>
-    <script src="_static/translations.js?v=d190bf04"></script>
+    <script src="_static/page_history.js?v=c8ec7c59"></script>
+    <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
     <link rel="next" title="pgr_lineGraphFull - Experimental" href="pgr_lineGraphFull.html" />
-    <link rel="prev" title="Transformation - Familia de funciones (Experimental)" href="transformation-family.html" />
+    <link rel="prev" title="Transformation - Family of functions (Experimental)" href="transformation-family.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -96,7 +97,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_lineGraph</span></code> - Experimental</a><ul>
+<li><a class="reference internal" href="#">pgr_lineGraph - Experimental</a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
@@ -120,7 +121,7 @@
               
                 
   <li>
-    <a href="transformation-family.html" title="Previous Chapter: Transformation - Familia de funciones (Experimental)"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Transformatio...</span>
+    <a href="transformation-family.html" title="Previous Chapter: Transformation - Family of functions (Experimental)"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Transformatio...</span>
     </a>
   </li>
   <li>
@@ -155,7 +156,7 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_lineGraph</span></code> - Experimental</a><ul>
+<li><a class="reference internal" href="#">pgr_lineGraph - Experimental</a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
@@ -173,7 +174,7 @@
 </ul>
 
   <li>
-    <a href="transformation-family.html" title="Previous Chapter: Transformation - Familia de funciones (Experimental)"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Transformatio...</span>
+    <a href="transformation-family.html" title="Previous Chapter: Transformation - Family of functions (Experimental)"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Transformatio...</span>
     </a>
   </li>
   <li>
@@ -196,7 +197,7 @@
 <div class="line"><br /></div>
 </div>
 <section id="pgr-linegraph-experimental">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_lineGraph</span></code> - Experimental<a class="headerlink" href="#pgr-linegraph-experimental" title="Link to this heading">¶</a></h1>
+<h1>pgr_lineGraph - Experimental<a class="headerlink" href="#pgr-linegraph-experimental" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_lineGraph</span></code> — Transforma un grafo dado en su grafo correspondiente basado en aristas.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
@@ -245,10 +246,21 @@
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>Dado un grafo G, su grafo de líneas L(G) es un grafo de tal forma que:</p>
+<p>Dado un grafo <span class="math notranslate nohighlight">\(G\)</span>, su grafo lineal <span class="math notranslate nohighlight">\(L(G)\)</span> es un grafo tal que:</p>
 <ul class="simple">
-<li><p>Cada vértice de L(G) representa una arista de G</p></li>
-<li><p>Dos vértices de L(G) son adyacentes si y sólo si sus aristas correspondientes comparten un punto final común en G.</p></li>
+<li><p>Cada vértice de <span class="math notranslate nohighlight">\(L(G)\)</span> representa una arista de <span class="math notranslate nohighlight">\(G\)</span>.</p></li>
+<li><p>Dos vértices de <span class="math notranslate nohighlight">\(L(G)\)</span> son adyacentes si y sólo si sus aristas correspondientes comparten un punto final común en <span class="math notranslate nohighlight">\(G\)</span></p></li>
+</ul>
+<p><strong>Las principales características son:</strong></p>
+<ul class="simple">
+<li><p>Funciona para grafos dirigidos y no dirigidos.</p></li>
+<li><p>Las columnas <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> del resultado representan la existencia de la arista.</p></li>
+<li><p>Cuando el grafo es dirigido el resultado es dirigido.</p></li>
+<li><p>Cuando el grafo es no dirigido el resultado es no dirigido.</p>
+<ul>
+<li><p>El <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> es siempre <span class="math notranslate nohighlight">\(-1\)</span>.</p></li>
+</ul>
+</li>
 </ul>
 </section>
 <section id="signatures">
@@ -260,12 +272,12 @@
 </div>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">reverse_cost)</span></code></div>
-<div class="line">OR EMPTY SET</div>
+<div class="line">O CONJUNTO VACÍO</div>
 </div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Para un grafo <strong>dirigido</strong></p>
+<dd class="field-odd"><p>Para un grafo no dirigido con aristas :math:”{2,4,5,8}”</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_lineGraph</span><span class="p">(</span>
@@ -317,6 +329,28 @@
 
 </pre></div>
 </div>
+<div class="graphviz"><img src="_images/graphviz-53d9009d1e470c965b50bfd5e57a48b4cb4b7819.png" alt="graph G {
+
+   v6 [label=6,shape=circle;style=filled;fixedsize=true;width=.4;color=deepskyblue,pos=&quot;0,0!&quot;];
+   v7 [label=7,shape=circle;style=filled;fixedsize=true;width=.4;color=deepskyblue,pos=&quot;0,2!&quot;];
+   v10 [label=10,shape=circle;style=filled;fixedsize=true;width=.4;color=deepskyblue,pos=&quot;2,0!&quot;];
+   v11 [label=11,shape=circle;style=filled;fixedsize=true;width=.4;color=deepskyblue,pos=&quot;2,2!&quot;];
+
+   v7--v6 [color=blue];
+   v7--v11 [color=blue];
+   v10--v6 [color=blue];
+   v10--v11 [color=blue];
+
+   s2 [label=&quot;2&quot;,shape=circle;style=filled;width=.4;color=yellow,pos=&quot;1,0!&quot;];
+   s4 [label=&quot;4&quot;,shape=circle;style=filled;width=.4;color=yellow,pos=&quot;0,1!&quot;];
+   s5 [label=&quot;5&quot;,shape=circle;style=filled;width=.4;color=yellow,pos=&quot;2,1!&quot;];
+   s8 [label=&quot;8&quot;,shape=circle;style=filled;width=.4;color=yellow,pos=&quot;1,2!&quot;];
+
+   s2--s4 [color=red];
+   s2--s5 [color=red];
+   s4--s8 [color=red];
+   s5--s8 [color=red];
+}" class="graphviz" /></div>
 </section>
 <section id="parameters">
 <h2>Parámetros<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
@@ -476,8 +510,9 @@
 <section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Line_graph">https://en.wikipedia.org/wiki/Line_graph</a></p></li>
-<li><p>Las consultas utilizan la red <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
+<li><p>wikipedia: <a class="reference external" href="https://en.wikipedia.org/wiki/Line_graph">Grafo lineal</a></p></li>
+<li><p>mathworld: <a class="reference external" href="https://mathworld.wolfram.com/LineGraph.html">Line Graph</a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
@@ -500,8 +535,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.3.<br/>
-      Actualizado por última vez en oct 10, 2024.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2.<br/>
+      Actualizado por última vez en oct 12, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.1.<br/>
     </p>
   </div>
 </footer>

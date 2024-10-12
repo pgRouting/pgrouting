@@ -1,0 +1,387 @@
+
+
+<!DOCTYPE html>
+
+<html lang="zh-Hans" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>pgr_vrpOneDepot -实验 &#8212; pgRouting Manual (3.6)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
+    <script src="_static/documentation_options.js?v=0fece2b7"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=c8ec7c59"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pgr_bellmanFord - 实验" href="pgr_bellmanFord.html" />
+    <link rel="prev" title="pgr_pickDeliverEuclidean - 实验" href="pgr_pickDeliverEuclidean.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v3.6.3</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">支持</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="experimental.html">实验函数</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">pgr_vrpOneDepot -实验</a><ul>
+<li><a class="reference internal" href="#description">描述</a></li>
+<li><a class="reference internal" href="#signatures">签名</a></li>
+<li><a class="reference internal" href="#parameters">参数</a></li>
+<li><a class="reference internal" href="#inner-queries">内部查询</a></li>
+<li><a class="reference internal" href="#result-columns">结果列</a></li>
+<li><a class="reference internal" href="#additional-example">附加示例：</a></li>
+<li><a class="reference internal" href="#see-also">另请参阅</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_pickDeliverEuclidean.html" title="Previous Chapter: pgr_pickDeliverEuclidean - 实验"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_pickDeliv...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_bellmanFord.html" title="Next Chapter: pgr_bellmanFord - 实验"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_bellmanFord - 实验 &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#">pgr_vrpOneDepot -实验</a><ul>
+<li><a class="reference internal" href="#description">描述</a></li>
+<li><a class="reference internal" href="#signatures">签名</a></li>
+<li><a class="reference internal" href="#parameters">参数</a></li>
+<li><a class="reference internal" href="#inner-queries">内部查询</a></li>
+<li><a class="reference internal" href="#result-columns">结果列</a></li>
+<li><a class="reference internal" href="#additional-example">附加示例：</a></li>
+<li><a class="reference internal" href="#see-also">另请参阅</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="pgr_pickDeliverEuclidean.html" title="Previous Chapter: pgr_pickDeliverEuclidean - 实验"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_pickDeliv...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_bellmanFord.html" title="Next Chapter: pgr_bellmanFord - 实验"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_bellmanFord - 实验 &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
+            <script> document.write(get_history('pgr_vrpOneDepot','zh-Hans'));  </script>
+            
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="pgr-vrponedepot-experimental">
+<h1>pgr_vrpOneDepot -实验<a class="headerlink" href="#pgr-vrponedepot-experimental" title="Link to this heading">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>可能服务器崩溃</p>
+<ul class="simple">
+<li><p>这些功能可能会导致服务器崩溃</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>实验功能</p>
+<ul class="simple">
+<li><p>它们不是当前版本的正式版本。</p></li>
+<li><p>它们可能不会正式成为下一个版本的一部分：</p>
+<ul>
+<li><p>这些函数可能不使用 ANY-INTEGER 和 ANY-NUMERICAL</p></li>
+<li><p>名称可能会改变。</p></li>
+<li><p>签名可能会改变。</p></li>
+<li><p>功能可能会改变。</p></li>
+<li><p>pgTap 测试可能丢失。</p></li>
+<li><p>可能需要 c/c++编码。</p></li>
+<li><p>可能缺乏文档。</p></li>
+<li><p>文档（如果有）可能需要重写。</p></li>
+<li><p>可能需要自动生成文档示例。</p></li>
+<li><p>可能需要社区的大量反馈。</p></li>
+<li><p>可能取决于 pgRouting 的拟议功能</p></li>
+<li><p>可能依赖于 pgRouting 的已弃用函数</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><strong>无可用文档</strong></p>
+<p class="rubric">可用性</p>
+<ul class="simple">
+<li><p>版本2.1.0</p>
+<ul>
+<li><p>新 <strong>实验</strong> 函数</p></li>
+</ul>
+</li>
+<li><p><strong>TBD</strong></p></li>
+</ul>
+<section id="description">
+<h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>TBD</p></li>
+</ul>
+</section>
+<section id="signatures">
+<h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>TBD</p></li>
+</ul>
+</section>
+<section id="parameters">
+<h2>参数<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>TBD</p></li>
+</ul>
+</section>
+<section id="inner-queries">
+<h2>内部查询<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>TBD</p></li>
+</ul>
+</section>
+<section id="result-columns">
+<h2>结果列<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>TBD</p></li>
+</ul>
+</section>
+<section id="additional-example">
+<h2>附加示例：<a class="headerlink" href="#additional-example" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BEGIN</span><span class="p">;</span>
+<span class="n">BEGIN</span>
+<span class="n">SET</span> <span class="n">client_min_messages</span> <span class="n">TO</span> <span class="n">NOTICE</span><span class="p">;</span>
+<span class="n">SET</span>
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_vrpOneDepot</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT * FROM solomon_100_RC_101&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SELECT * FROM vrp_vehicles&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SELECT * FROM vrp_distance&#39;</span><span class="p">,</span>
+    <span class="mi">1</span><span class="p">);</span>
+ <span class="n">oid</span> <span class="o">|</span> <span class="n">opos</span> <span class="o">|</span> <span class="n">vid</span> <span class="o">|</span> <span class="n">tarrival</span> <span class="o">|</span> <span class="n">tdepart</span>
+<span class="o">-----+------+-----+----------+---------</span>
+  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>       <span class="mi">0</span>
+   <span class="mi">7</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>       <span class="mi">0</span>
+   <span class="mi">9</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>       <span class="mi">0</span>
+   <span class="mi">8</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>       <span class="mi">0</span>
+   <span class="mi">6</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>       <span class="mi">0</span>
+   <span class="mi">5</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>       <span class="mi">0</span>
+   <span class="mi">4</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>       <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>       <span class="mi">0</span>
+   <span class="mi">6</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>       <span class="mi">40</span> <span class="o">|</span>      <span class="mi">51</span>
+   <span class="mi">8</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>       <span class="mi">62</span> <span class="o">|</span>      <span class="mi">89</span>
+   <span class="mi">9</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>       <span class="mi">94</span> <span class="o">|</span>     <span class="mi">104</span>
+   <span class="mi">7</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>      <span class="mi">110</span> <span class="o">|</span>     <span class="mi">120</span>
+   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>      <span class="mi">131</span> <span class="o">|</span>     <span class="mi">141</span>
+   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>      <span class="mi">144</span> <span class="o">|</span>     <span class="mi">155</span>
+   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>      <span class="mi">162</span> <span class="o">|</span>     <span class="mi">172</span>
+  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>      <span class="mi">208</span> <span class="o">|</span>     <span class="mi">208</span>
+  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>       <span class="mi">0</span>
+  <span class="mi">10</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>       <span class="mi">0</span>
+  <span class="mi">11</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>       <span class="mi">0</span>
+  <span class="mi">10</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>       <span class="mi">34</span> <span class="o">|</span>     <span class="mi">101</span>
+  <span class="mi">11</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">106</span> <span class="o">|</span>     <span class="mi">129</span>
+  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">161</span> <span class="o">|</span>     <span class="mi">161</span>
+  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>       <span class="mi">0</span>
+   <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>       <span class="mi">0</span>
+   <span class="mi">3</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>       <span class="mi">31</span> <span class="o">|</span>      <span class="mi">60</span>
+  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>       <span class="mi">91</span> <span class="o">|</span>      <span class="mi">91</span>
+  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>       <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="mi">460</span>
+<span class="p">(</span><span class="mi">27</span> <span class="n">rows</span><span class="p">)</span>
+
+<span class="n">ROLLBACK</span><span class="p">;</span>
+<span class="n">ROLLBACK</span>
+</pre></div>
+</div>
+<p class="rubric">数据</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">solomon_100_RC_101</span> <span class="n">cascade</span><span class="p">;</span>
+<span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">solomon_100_RC_101</span> <span class="p">(</span>
+    <span class="nb">id</span> <span class="n">integer</span> <span class="n">NOT</span> <span class="n">NULL</span> <span class="n">PRIMARY</span> <span class="n">KEY</span><span class="p">,</span>
+    <span class="n">order_unit</span> <span class="n">integer</span><span class="p">,</span>
+    <span class="n">open_time</span> <span class="n">integer</span><span class="p">,</span>
+    <span class="n">close_time</span> <span class="n">integer</span><span class="p">,</span>
+    <span class="n">service_time</span> <span class="n">integer</span><span class="p">,</span>
+    <span class="n">x</span> <span class="n">float8</span><span class="p">,</span>
+    <span class="n">y</span> <span class="n">float8</span>
+<span class="p">);</span>
+
+<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">solomon_100_RC_101</span> <span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">order_unit</span><span class="p">,</span> <span class="n">open_time</span><span class="p">,</span> <span class="n">close_time</span><span class="p">,</span> <span class="n">service_time</span><span class="p">)</span> <span class="n">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">40.000000</span><span class="p">,</span> <span class="mf">50.000000</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">25.000000</span><span class="p">,</span> <span class="mf">85.000000</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">145</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">22.000000</span><span class="p">,</span> <span class="mf">75.000000</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mf">22.000000</span><span class="p">,</span> <span class="mf">85.000000</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">109</span><span class="p">,</span> <span class="mi">139</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mf">20.000000</span><span class="p">,</span> <span class="mf">80.000000</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">141</span><span class="p">,</span> <span class="mi">171</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mf">20.000000</span><span class="p">,</span> <span class="mf">85.000000</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mf">18.000000</span><span class="p">,</span> <span class="mf">75.000000</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">15.000000</span><span class="p">,</span> <span class="mf">75.000000</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">79</span><span class="p">,</span> <span class="mi">109</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">15.000000</span><span class="p">,</span> <span class="mf">80.000000</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="mi">121</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">10.000000</span><span class="p">,</span> <span class="mf">35.000000</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="mi">121</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mf">10.000000</span><span class="p">,</span> <span class="mf">40.000000</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">119</span><span class="p">,</span> <span class="mi">149</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+
+<span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">vrp_vehicles</span> <span class="n">cascade</span><span class="p">;</span>
+<span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">vrp_vehicles</span> <span class="p">(</span>
+    <span class="n">vehicle_id</span> <span class="n">integer</span> <span class="ow">not</span> <span class="n">null</span> <span class="n">primary</span> <span class="n">key</span><span class="p">,</span>
+    <span class="n">capacity</span> <span class="n">integer</span><span class="p">,</span>
+    <span class="n">case_no</span> <span class="n">integer</span>
+<span class="p">);</span>
+
+<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">vrp_vehicles</span> <span class="p">(</span><span class="n">vehicle_id</span><span class="p">,</span> <span class="n">capacity</span><span class="p">,</span> <span class="n">case_no</span><span class="p">)</span> <span class="n">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+
+<span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">vrp_distance</span> <span class="n">cascade</span><span class="p">;</span>
+<span class="n">WITH</span>
+<span class="n">the_matrix_info</span> <span class="n">AS</span> <span class="p">(</span>
+    <span class="n">SELECT</span> <span class="n">A</span><span class="o">.</span><span class="n">id</span> <span class="n">AS</span> <span class="n">src_id</span><span class="p">,</span> <span class="n">B</span><span class="o">.</span><span class="n">id</span> <span class="n">AS</span> <span class="n">dest_id</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">(</span> <span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">b</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">b</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">b</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">b</span><span class="o">.</span><span class="n">y</span><span class="p">))</span> <span class="n">AS</span> <span class="n">cost</span>
+    <span class="n">FROM</span> <span class="n">solomon_100_rc_101</span> <span class="n">AS</span> <span class="n">A</span><span class="p">,</span> <span class="n">solomon_100_rc_101</span> <span class="n">AS</span> <span class="n">B</span> <span class="n">WHERE</span> <span class="n">A</span><span class="o">.</span><span class="n">id</span> <span class="o">!=</span> <span class="n">B</span><span class="o">.</span><span class="n">id</span>
+<span class="p">)</span>
+<span class="n">SELECT</span> <span class="n">src_id</span><span class="p">,</span> <span class="n">dest_id</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">cost</span> <span class="n">AS</span> <span class="n">distance</span><span class="p">,</span> <span class="n">cost</span> <span class="n">AS</span> <span class="n">traveltime</span>
+<span class="n">INTO</span> <span class="n">vrp_distance</span>
+<span class="n">FROM</span> <span class="n">the_matrix_info</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="see-also">
+<h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Vehicle_routing_problem">https://en.wikipedia.org/wiki/Vehicle_routing_problem</a></p></li>
+</ul>
+<p class="rubric">索引和表格</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.6.3.<br/>
+      Last updated on 10月 12, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

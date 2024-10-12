@@ -10,13 +10,13 @@
     <title>pgr_createTopology &#8212; pgRouting Manual (3.6)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=53e5f443"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=e87c01b6"></script>
-    <script src="_static/translations.js?v=d190bf04"></script>
+    <script src="_static/page_history.js?v=c8ec7c59"></script>
+    <script src="_static/translations.js?v=f85f4cfb"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -238,11 +238,11 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_createTopology(edge_table, tolerance, [<strong>options</strong>])</div>
+<div class="line">pgr_createTopology(tabla_borde, tolerancia, [<strong>opciones</strong>])</div>
 <div class="line"><strong>opcionales:</strong> <code class="docutils literal notranslate"><span class="pre">[the_geom,</span> <span class="pre">id,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">rows_where,</span> <span class="pre">clean]</span></code></div>
 </div>
 <div class="line-block">
-<div class="line">RETURNS <code class="docutils literal notranslate"><span class="pre">VARCHAR</span></code></div>
+<div class="line">DEVUELVE <code class="docutils literal notranslate"><span class="pre">VARCHAR</span></code></div>
 </div>
 </div>
 </section>
@@ -577,7 +577,7 @@
 </nav>
 <section id="create-a-routing-topology">
 <h3><a class="toc-backref" href="#id2" role="doc-backlink">Creación de una topología de ruteo</a><a class="headerlink" href="#create-a-routing-topology" title="Link to this heading">¶</a></h3>
-<p>An alternate method to create a routing topology use <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Propuesto</span></a></p>
+<p>Un método alternativo para crear una topología de ruteo es utilizar <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Propuesto</span></a></p>
 <section id="make-sure-the-database-does-not-have-the-vertices-table">
 <h4><a class="toc-backref" href="#id3" role="doc-backlink">Asegurarse de que la base de datos no tiene <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a><a class="headerlink" href="#make-sure-the-database-does-not-have-the-vertices-table" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">vertices_table</span><span class="p">;</span>
@@ -599,11 +599,11 @@
 <section id="create-the-vertices-table">
 <h4><a class="toc-backref" href="#id5" role="doc-backlink">Crear la tabla de vértices</a><a class="headerlink" href="#create-the-vertices-table" title="Link to this heading">¶</a></h4>
 <ul class="simple">
-<li><p>When the <code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code> has a SRID then use <code class="docutils literal notranslate"><span class="pre">geom::geometry(POINT,</span> <span class="pre">&lt;SRID&gt;)</span></code></p></li>
-<li><p>For big edge tables that are been prepared,</p>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code> tiene un SRID entonces usa <code class="docutils literal notranslate"><span class="pre">geom::geometry(POINT,</span> <span class="pre">&lt;SRID&gt;)</span></code></p></li>
+<li><p>Para grandes tablas de aristas que han sido preparadas,</p>
 <ul>
-<li><p>Create it as <code class="docutils literal notranslate"><span class="pre">UNLOGGED</span></code> and</p></li>
-<li><p>After the table is created <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span> <span class="pre">..</span> <span class="pre">SET</span> <span class="pre">LOGGED</span></code></p></li>
+<li><p>Crearlo como <code class="docutils literal notranslate"><span class="pre">UNLOGGED</span></code> y</p></li>
+<li><p>Después de crear la tabla <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span> <span class="pre">..</span> <span class="pre">SET</span> <span class="pre">LOGGED</span></code></p></li>
 </ul>
 </li>
 </ul>
@@ -769,8 +769,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.3.<br/>
-      Actualizado por última vez en oct 10, 2024.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2.<br/>
+      Actualizado por última vez en oct 12, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.1.<br/>
     </p>
   </div>
 </footer>

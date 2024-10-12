@@ -1,0 +1,615 @@
+
+
+<!DOCTYPE html>
+
+<html lang="zh-Hans" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>pgr_TSPeuclidean &#8212; pgRouting Manual (3.6)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
+    <script src="_static/documentation_options.js?v=0fece2b7"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=c8ec7c59"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="生成树 - 类别" href="spanningTree-family.html" />
+    <link rel="prev" title="pgr_TSP" href="pgr_TSP.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v3.6.3</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">支持</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code></a><ul>
+<li><a class="reference internal" href="#description">描述</a><ul>
+<li><a class="reference internal" href="#problem-definition">问题定义</a></li>
+<li><a class="reference internal" href="#characteristics">特征</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#signatures">签名</a></li>
+<li><a class="reference internal" href="#parameters">参数</a><ul>
+<li><a class="reference internal" href="#tsp-optional-parameters">TSP 可选参数</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
+<li><a class="reference internal" href="#coordinates-sql">坐标SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">结果列</a></li>
+<li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
+<li><a class="reference internal" href="#test-29-cities-of-western-sahara">测试西撒哈拉29个城市</a><ul>
+<li><a class="reference internal" href="#creating-a-table-for-the-data-and-storing-the-data">创建数据表并存储数据</a></li>
+<li><a class="reference internal" href="#adding-a-geometry-for-visual-purposes">添加几何图形（用于视觉目的）</a></li>
+<li><a class="reference internal" href="#total-tour-cost">旅游总费用</a></li>
+<li><a class="reference internal" href="#getting-a-geometry-of-the-tour">获取游览的几何形状</a></li>
+<li><a class="reference internal" href="#visual-results">视觉效果</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">另请参阅</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_TSP.html" title="Previous Chapter: pgr_TSP"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_TSP</span>
+    </a>
+  </li>
+  <li>
+    <a href="spanningTree-family.html" title="Next Chapter: 生成树 - 类别"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">生成树 - 类别 &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code></a><ul>
+<li><a class="reference internal" href="#description">描述</a><ul>
+<li><a class="reference internal" href="#problem-definition">问题定义</a></li>
+<li><a class="reference internal" href="#characteristics">特征</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#signatures">签名</a></li>
+<li><a class="reference internal" href="#parameters">参数</a><ul>
+<li><a class="reference internal" href="#tsp-optional-parameters">TSP 可选参数</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
+<li><a class="reference internal" href="#coordinates-sql">坐标SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">结果列</a></li>
+<li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
+<li><a class="reference internal" href="#test-29-cities-of-western-sahara">测试西撒哈拉29个城市</a><ul>
+<li><a class="reference internal" href="#creating-a-table-for-the-data-and-storing-the-data">创建数据表并存储数据</a></li>
+<li><a class="reference internal" href="#adding-a-geometry-for-visual-purposes">添加几何图形（用于视觉目的）</a></li>
+<li><a class="reference internal" href="#total-tour-cost">旅游总费用</a></li>
+<li><a class="reference internal" href="#getting-a-geometry-of-the-tour">获取游览的几何形状</a></li>
+<li><a class="reference internal" href="#visual-results">视觉效果</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">另请参阅</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="pgr_TSP.html" title="Previous Chapter: pgr_TSP"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_TSP</span>
+    </a>
+  </li>
+  <li>
+    <a href="spanningTree-family.html" title="Next Chapter: 生成树 - 类别"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">生成树 - 类别 &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
+            <script> document.write(get_history('pgr_TSPeuclidean','zh-Hans'));  </script>
+            
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="pgr-tspeuclidean">
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code><a class="headerlink" href="#pgr-tspeuclidean" title="Link to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code> -使用*metric*算法进行近似。</p></li>
+</ul>
+<figure class="align-default" id="id1">
+<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
+</a>
+<figcaption>
+<p><span class="caption-text">Boost 图内部</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p class="rubric">可用性：</p>
+<ul class="simple">
+<li><p>版本3.2.1</p>
+<ul>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost库</a> 中的度量算法</p></li>
+<li><p>Simulated Annealing算法不再受支持</p>
+<ul>
+<li><p>Simulated Annealing 算法相关参数被忽略： <cite>max_processing_time</cite>, <cite>tries_per_temperature</cite>, <cite>max_changes_per_temperature</cite>, <cite>max_consecutive_non_changes</cite>, <cite>initial_temperature</cite>, <cite>final_temperature</cite>, <cite>cooling_factor</cite>, <cite>randomize</cite></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>版本3.0.0</p>
+<ul>
+<li><p>pgr_eucledianTSP 的名称更改</p></li>
+</ul>
+</li>
+<li><p>版本2.3.0</p>
+<ul>
+<li><p><strong>官方</strong> 新函数</p></li>
+</ul>
+</li>
+</ul>
+<section id="description">
+<h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<section id="problem-definition">
+<h3>问题定义<a class="headerlink" href="#problem-definition" title="Link to this heading">¶</a></h3>
+<p>旅行推销员问题 (TSP) 提出以下问题：</p>
+<blockquote>
+<div><p><em>给定一个城市列表以及每对城市之间的距离，哪条是访问每个城市一次并返回出发城市的最短路线？</em></p>
+</div></blockquote>
+</section>
+<section id="characteristics">
+<h3>特征<a class="headerlink" href="#characteristics" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>该问题是一个NP-hard优化问题。</p></li>
+<li><p>使用度量算法</p></li>
+<li><p><em>在最坏的情况下，实施产生的解决方案的时间是最佳旅行的两倍</em>：</p>
+<ul>
+<li><p>图是无向的</p></li>
+<li><p>图是全连通的</p></li>
+<li><p>图中，边上的旅行成本服从三角不等式。</p></li>
+</ul>
+</li>
+<li><p>在无向图上：</p>
+<ul>
+<li><p>旅行费用是对称的：</p></li>
+<li><p>从 <code class="docutils literal notranslate"><span class="pre">u</span></code> 到 <code class="docutils literal notranslate"><span class="pre">v</span></code> 的旅行费用与从 <code class="docutils literal notranslate"><span class="pre">v</span></code> 到 <code class="docutils literal notranslate"><span class="pre">u</span></code> 的旅行费用相同</p></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><dl class="simple">
+<dt>任何重复的标识符都将被忽略。 将保留的坐标</dt><dd><p>是任意的。</p>
+</dd>
+</dl>
+<ul>
+<li><p>对于相同的标识符，坐标非常相似，例如</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mi">1</span>
+<span class="mi">1</span><span class="p">,</span> <span class="mf">3.499999999999</span> <span class="mf">0.9999999</span>
+</pre></div>
+</div>
+</li>
+<li><p>对于相同的标识符，坐标有很大不同，例如:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">1.0</span>
+<span class="mi">2</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">,</span> <span class="mf">1.1</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="signatures">
+<h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<p class="rubric">总结</p>
+<div class="signatures admonition" id="index-0">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_TSPeuclidean(<a class="reference internal" href="#coordinates-sql">Coordinates SQL</a>, <code class="docutils literal notranslate"><span class="pre">[start_id,</span> <span class="pre">end_id]</span></code>)</div>
+</div>
+<div class="line-block">
+<div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code> 的集合</div>
+<div class="line">OR EMTPY SET</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">示例<span class="colon">:</span></dt>
+<dd class="field-odd"><p>有默认值</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TSPeuclidean(
+  $$
+  SELECT id, st_X(geom) AS x, st_Y(geom)AS y  FROM vertices
+  $$);
+ seq | node |      cost      |   agg_cost
+-----+------+----------------+---------------
+   1 |    1 |              0 |             0
+   2 |    6 |   2.2360679775 |  2.2360679775
+   3 |    5 |              1 |  3.2360679775
+   4 |   10 |  1.41421356237 | 4.65028153987
+   5 |    7 |  1.41421356237 | 6.06449510225
+   6 |    2 |  2.12132034356 | 8.18581544581
+   7 |    9 |  1.58113883008 | 9.76695427589
+   8 |    4 |            0.5 | 10.2669542759
+   9 |   14 |  1.58113883009 |  11.848093106
+  10 |   17 |  1.11803398875 | 12.9661270947
+  11 |   16 |              1 | 13.9661270947
+  12 |   15 |              1 | 14.9661270947
+  13 |   11 |  1.41421356237 | 16.3803406571
+  14 |   13 | 0.583095189485 | 16.9634358466
+  15 |   12 | 0.860232526704 | 17.8236683733
+  16 |    8 |              1 | 18.8236683733
+  17 |    3 |  1.41421356237 | 20.2378819357
+  18 |    1 |              1 | 21.2378819357
+(18 rows)
+
+</pre></div>
+</div>
+</section>
+<section id="parameters">
+<h2>参数<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>参数</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#coordinates-sql">Coordinates SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#coordinates-sql">Coordinates SQL</a> 如下所述</p></td>
+</tr>
+</tbody>
+</table>
+<section id="tsp-optional-parameters">
+<h3>TSP 可选参数<a class="headerlink" href="#tsp-optional-parameters" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_id</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>第一个访问顶点</p>
+<ul class="simple">
+<li><p>当 <cite>0</cite> 时，任何顶点都可以成为第一个访问顶点。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_id</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>返回 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 之前最后访问的顶点。</p>
+<ul class="simple">
+<li><p>当为 <code class="docutils literal notranslate"><span class="pre">0</span></code> 时，任何顶点都可以成为返回 <code class="docutils literal notranslate"><span class="pre">start_id</span></code> 之前最后访问的顶点。</p></li>
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">0</span></code> 且 <code class="docutils literal notranslate"><span class="pre">start_id</span> <span class="pre">=</span> <span class="pre">0</span></code> 时，它是第一个和最后一个顶点</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="inner-queries">
+<h2>内部查询<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<section id="coordinates-sql">
+<h3>坐标SQL<a class="headerlink" href="#coordinates-sql" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td><p>起始顶点的标识符。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td><p>坐标的X值。</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">y</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td><p>坐标的Y值。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="result-columns">
+<h2>结果列<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<p>返回集合 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>seq</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>行顺序。</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>node</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>节点/坐标/点的标识符。</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>从路径序列中的当前 <code class="docutils literal notranslate"><span class="pre">node``遍历到下一个``node</span></code> 的成本。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> 表示游览序列中的最后一行。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>agg_cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>从 <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> 的 <code class="docutils literal notranslate"><span class="pre">node</span></code> 到当前节点的总成本。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> 表示游览序列中的第一行。</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="additional-examples">
+<h2>其他示例<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#test-29-cities-of-western-sahara" id="id2">测试西撒哈拉29个城市</a></p>
+<ul>
+<li><p><a class="reference internal" href="#creating-a-table-for-the-data-and-storing-the-data" id="id3">创建数据表并存储数据</a></p></li>
+<li><p><a class="reference internal" href="#adding-a-geometry-for-visual-purposes" id="id4">添加几何图形（用于视觉目的）</a></p></li>
+<li><p><a class="reference internal" href="#total-tour-cost" id="id5">旅游总费用</a></p></li>
+<li><p><a class="reference internal" href="#getting-a-geometry-of-the-tour" id="id6">获取游览的几何形状</a></p></li>
+<li><p><a class="reference internal" href="#visual-results" id="id7">视觉效果</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="test-29-cities-of-western-sahara">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">测试西撒哈拉29个城市</a><a class="headerlink" href="#test-29-cities-of-western-sahara" title="Link to this heading">¶</a></h3>
+<p>此示例展示了如何使用Waterloo大学的 <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/countries.html">示例数据</a> （使用西撒哈拉 29 个城市的数据集 &lt;<a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/wi29.tsp">https://www.math.uwaterloo.ca/tsp/world/wi29.tsp</a>&gt;`__）进行性能测试</p>
+<section id="creating-a-table-for-the-data-and-storing-the-data">
+<h4><a class="toc-backref" href="#id3" role="doc-backlink">创建数据表并存储数据</a><a class="headerlink" href="#creating-a-table-for-the-data-and-storing-the-data" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">wi29</span> <span class="p">(</span><span class="nb">id</span> <span class="n">BIGINT</span><span class="p">,</span> <span class="n">x</span> <span class="n">FLOAT</span><span class="p">,</span> <span class="n">y</span> <span class="n">FLOAT</span><span class="p">,</span> <span class="n">geom</span> <span class="n">geometry</span><span class="p">);</span>
+<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">wi29</span> <span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">20833.3333</span><span class="p">,</span><span class="mf">17100.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mf">20900.0000</span><span class="p">,</span><span class="mf">17066.6667</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mf">21300.0000</span><span class="p">,</span><span class="mf">13016.6667</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mf">21600.0000</span><span class="p">,</span><span class="mf">14150.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mf">21600.0000</span><span class="p">,</span><span class="mf">14966.6667</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mf">21600.0000</span><span class="p">,</span><span class="mf">16500.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mf">22183.3333</span><span class="p">,</span><span class="mf">13133.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mf">22583.3333</span><span class="p">,</span><span class="mf">14300.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mf">22683.3333</span><span class="p">,</span><span class="mf">12716.6667</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mf">23616.6667</span><span class="p">,</span><span class="mf">15866.6667</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mf">23700.0000</span><span class="p">,</span><span class="mf">15933.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mf">23883.3333</span><span class="p">,</span><span class="mf">14533.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mf">24166.6667</span><span class="p">,</span><span class="mf">13250.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mf">25149.1667</span><span class="p">,</span><span class="mf">12365.8333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mf">26133.3333</span><span class="p">,</span><span class="mf">14500.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mf">26150.0000</span><span class="p">,</span><span class="mf">10550.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">17</span><span class="p">,</span><span class="mf">26283.3333</span><span class="p">,</span><span class="mf">12766.6667</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mf">26433.3333</span><span class="p">,</span><span class="mf">13433.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">19</span><span class="p">,</span><span class="mf">26550.0000</span><span class="p">,</span><span class="mf">13850.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mf">26733.3333</span><span class="p">,</span><span class="mf">11683.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">21</span><span class="p">,</span><span class="mf">27026.1111</span><span class="p">,</span><span class="mf">13051.9444</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">22</span><span class="p">,</span><span class="mf">27096.1111</span><span class="p">,</span><span class="mf">13415.8333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">23</span><span class="p">,</span><span class="mf">27153.6111</span><span class="p">,</span><span class="mf">13203.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">24</span><span class="p">,</span><span class="mf">27166.6667</span><span class="p">,</span><span class="mf">9833.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mf">27233.3333</span><span class="p">,</span><span class="mf">10450.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">26</span><span class="p">,</span><span class="mf">27233.3333</span><span class="p">,</span><span class="mf">11783.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">27</span><span class="p">,</span><span class="mf">27266.6667</span><span class="p">,</span><span class="mf">10383.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mf">27433.3333</span><span class="p">,</span><span class="mf">12400.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">29</span><span class="p">,</span><span class="mf">27462.5000</span><span class="p">,</span><span class="mf">12992.2222</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-a-geometry-for-visual-purposes">
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">添加几何图形（用于视觉目的）</a><a class="headerlink" href="#adding-a-geometry-for-visual-purposes" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">wi29</span> <span class="n">SET</span> <span class="n">geom</span> <span class="o">=</span> <span class="n">ST_makePoint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="total-tour-cost">
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">旅游总费用</a><a class="headerlink" href="#total-tour-cost" title="Link to this heading">¶</a></h4>
+<p>获取旅行的总成本，将该值与数据集上给出的最佳旅行长度 27603 进行比较</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT *
+FROM pgr_TSPeuclidean($$SELECT * FROM wi29$$)
+WHERE seq = 30;
+ seq | node |     cost      |   agg_cost
+-----+------+---------------+---------------
+  30 |    1 | 2266.91173136 | 28777.4854127
+(1 row)
+
+</pre></div>
+</div>
+</section>
+<section id="getting-a-geometry-of-the-tour">
+<h4><a class="toc-backref" href="#id6" role="doc-backlink">获取游览的几何形状</a><a class="headerlink" href="#getting-a-geometry-of-the-tour" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WITH
+tsp_results AS (SELECT seq, geom FROM pgr_TSPeuclidean($$SELECT * FROM wi29$$) JOIN wi29 ON (node = id))
+SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    st_makeline
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 01020000001E000000F085C9545558D4400000000000B3D040000000000069D440107A36ABAAAAD040000000000018D54000000000001DD040107A36AB2A10D7401FF46C5655FDCE40000000000025D740E10B93A9AA1ECF40F085C954D552D740E10B93A9AA62CC40107A36ABAA99D7400000000000E1C940107A36AB4A8FD840E10B93A9EA26C840F085C954D5AAD9401FF46C5655EFC840F085C95455D0D940E10B93A9AA3CCA40F085C9545585D940000000000052CC400000000080EDD94000000000000DCB40A52C431C0776DA40E10B93A9EA33CA40A52C431C6784DA40E10B93A9AAC9C940A52C431C8764DA402C6519E2F87DC94000000000A0D1DA4096B20C711C60C940F085C95455CADA40000000000038C840F085C9545598DA40E10B93A9AA03C740F085C954551BDA40E10B93A9AAD1C640F085C9545598DA40000000000069C440107A36ABAAA0DA40E10B93A9AA47C440107A36ABAA87DA40E10B93A9AA34C340000000008089D94000000000009BC440F085C954D526D6401FF46C5655D6C840F085C954D5A9D540E10B93A9AAA6C9400000000000CDD4401FF46C56556CC940000000000018D5400000000000A3CB40F085C954D50DD6400000000000EECB40000000000018D5401FF46C56553BCD40F085C9545558D4400000000000B3D040
+(1 row)
+
+</pre></div>
+</div>
+</section>
+<section id="visual-results">
+<h4><a class="toc-backref" href="#id7" role="doc-backlink">视觉效果</a><a class="headerlink" href="#visual-results" title="Link to this heading">¶</a></h4>
+<p>从视觉上看，第一幅图像是 <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/witour.html">最优解</a> ，第二幅图像是使用 <code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code> 获得的解。</p>
+<a class="reference internal image-reference" href="_images/wi29optimal.png"><img alt="_images/wi29optimal.png" src="_images/wi29optimal.png" style="width: 383.5px; height: 311.0px;" />
+</a>
+<a class="reference internal image-reference" href="_images/wi29Solution.png"><img alt="_images/wi29Solution.png" src="_images/wi29Solution.png" style="width: 357.0px; height: 313.0px;" />
+</a>
+</section>
+</section>
+</section>
+<section id="see-also">
+<h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Traveling Sales Person - 函数族</span></a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a> 网络。</p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost 的 metric appro 的 metric 近似</a></p></li>
+<li><p><a class="reference external" href="https://www.math.uwaterloo.ca/tsp/">滑铁卢大学（University of Waterloo ）TSP</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Traveling_salesman_problem">维基百科：旅行商问题</a></p></li>
+</ul>
+<p class="rubric">索引和表格</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.6.3.<br/>
+      Last updated on 10月 12, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -10,18 +10,18 @@
     <title>pgr_extractVertices – Propuesto &#8212; pgRouting Manual (3.6)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=53e5f443"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=e87c01b6"></script>
-    <script src="_static/translations.js?v=d190bf04"></script>
+    <script src="_static/page_history.js?v=c8ec7c59"></script>
+    <script src="_static/translations.js?v=f85f4cfb"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="pgr_degree – Proposed" href="pgr_degree.html" />
+    <link rel="next" title="pgr_degree – Propuesto" href="pgr_degree.html" />
     <link rel="prev" title="pgr_nodeNetwork" href="pgr_nodeNetwork.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -156,7 +156,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_degree.html" title="Next Chapter: pgr_degree – Proposed"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_degree – Proposed &raquo;</span>
+    <a href="pgr_degree.html" title="Next Chapter: pgr_degree – Propuesto"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_degree – ... &raquo;</span>
     </a>
   </li>
               
@@ -240,7 +240,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_degree.html" title="Next Chapter: pgr_degree – Proposed"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_degree – Proposed &raquo;</span>
+    <a href="pgr_degree.html" title="Next Chapter: pgr_degree – Propuesto"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_degree – ... &raquo;</span>
     </a>
   </li>
 <form action="search.html" method="get">
@@ -307,7 +307,7 @@
 </div>
 <div class="line-block">
 <div class="line">REGRESA CONJUNTO DE <code class="docutils literal notranslate"><span class="pre">(id,</span> <span class="pre">in_edges,</span> <span class="pre">out_edges,</span> <span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">geom)</span></code></div>
-<div class="line">OR EMTPY SET</div>
+<div class="line">O CONJUNTO VACÍO</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -655,11 +655,11 @@
 <section id="create-the-vertices-table">
 <h4><a class="toc-backref" href="#id11" role="doc-backlink">Crear la tabla de vértices</a><a class="headerlink" href="#create-the-vertices-table" title="Link to this heading">¶</a></h4>
 <ul class="simple">
-<li><p>When the <code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code> has a SRID then use <code class="docutils literal notranslate"><span class="pre">geom::geometry(POINT,</span> <span class="pre">&lt;SRID&gt;)</span></code></p></li>
-<li><p>For big edge tables that are been prepared,</p>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code> tiene un SRID entonces usa <code class="docutils literal notranslate"><span class="pre">geom::geometry(POINT,</span> <span class="pre">&lt;SRID&gt;)</span></code></p></li>
+<li><p>Para grandes tablas de aristas que han sido preparadas,</p>
 <ul>
-<li><p>Create it as <code class="docutils literal notranslate"><span class="pre">UNLOGGED</span></code> and</p></li>
-<li><p>After the table is created <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span> <span class="pre">..</span> <span class="pre">SET</span> <span class="pre">LOGGED</span></code></p></li>
+<li><p>Crearlo como <code class="docutils literal notranslate"><span class="pre">UNLOGGED</span></code> y</p></li>
+<li><p>Después de crear la tabla <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span> <span class="pre">..</span> <span class="pre">SET</span> <span class="pre">LOGGED</span></code></p></li>
 </ul>
 </li>
 </ul>
@@ -975,7 +975,7 @@
 </pre></div>
 </div>
 <p>Para ir de <span class="math notranslate nohighlight">\(1\)</span> a <span class="math notranslate nohighlight">\(5\)</span> el camino que atraviesa los siguientes vértices: <span class="math notranslate nohighlight">\(1 \rightarrow 3 \rightarrow 6 \rightarrow 5\)</span></p>
-<div class="graphviz"><img src="_images/graphviz-f5023e9489530080277f198d08a8ca708bae132d.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-4f0fc20fceda207bb79aff53d54b69262287fb99.png" alt="graph G {
  rankdir=&quot;LR&quot;;
  1 [color=&quot;red&quot;];
  5 [color=&quot;green&quot;];
@@ -1037,8 +1037,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.3.<br/>
-      Actualizado por última vez en oct 10, 2024.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2.<br/>
+      Actualizado por última vez en oct 12, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.1.<br/>
     </p>
   </div>
 </footer>

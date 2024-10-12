@@ -10,13 +10,13 @@
     <title>Guía de migración &#8212; pgRouting Manual (3.6)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=53e5f443"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=e87c01b6"></script>
-    <script src="_static/translations.js?v=d190bf04"></script>
+    <script src="_static/page_history.js?v=c8ec7c59"></script>
+    <script src="_static/translations.js?v=f85f4cfb"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
@@ -813,7 +813,7 @@
 </section>
 <section id="migration-of-pgr-drivingdistance">
 <h3><a class="toc-backref" href="#id41" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><a class="headerlink" href="#migration-of-pgr-drivingdistance" title="Link to this heading">¶</a></h3>
-<p>A partir de <a class="reference external" href="https://docs.pgrouting.org/3.6/en/migration.html">v3.6.0</a>, las columnas resultantes de <a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> son estandarizadas.</p>
+<p>A partir de <a class="reference external" href="https://docs.pgrouting.org/3.6/es/migration.html">v3.6.0</a>, las columnas resultantes de <a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> son estandarizadas.</p>
 <dl class="field-list simple">
 <dt class="field-odd">de<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[from_v,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
@@ -968,7 +968,7 @@ FROM pgr_drivingDistance(
 </section>
 <section id="migration-of-pgr-ksp">
 <h3><a class="toc-backref" href="#id44" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code></a><a class="headerlink" href="#migration-of-pgr-ksp" title="Link to this heading">¶</a></h3>
-<p>A partir de <a class="reference external" href="https://docs.pgrouting.org/3.6/en/migration.html">v3.6.0</a> las columnas resultantes de <a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> son estandarizadas.</p>
+<p>A partir de <a class="reference external" href="https://docs.pgrouting.org/3.6/es/migration.html">v3.6.0</a> En <a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> las columnas de resultados están siendo estandarizadas.</p>
 <dl class="field-list simple">
 <dt class="field-odd">de<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
@@ -1136,7 +1136,7 @@ WARNING:  pgr_maxCardinalityMatch(text,boolean) deprecated signature on v3.4.0
 </section>
 <section id="migration-of-pgr-withpointsdd">
 <h3><a class="toc-backref" href="#id47" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a><a class="headerlink" href="#migration-of-pgr-withpointsdd" title="Link to this heading">¶</a></h3>
-<p>A partir de <a class="reference external" href="https://docs.pgrouting.org/3.6/en/migration.html">v3.6.0</a> las columnas resultantes de <a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD - Propuesto</span></a> son estandarizadas.</p>
+<p>A partir de <a class="reference external" href="https://docs.pgrouting.org/3.6/en/migration.html">v3.6.0</a> En <a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD - Propuesto</span></a> las columnas de resultados están siendo estandarizadas.</p>
 <dl class="field-list simple">
 <dt class="field-odd">de<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[start_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
@@ -1175,7 +1175,7 @@ WARNING:  pgr_maxCardinalityMatch(text,boolean) deprecated signature on v3.4.0
 <p>Los valores predeterminados en esta consulta son:</p>
 <dl class="field-list simple">
 <dt class="field-odd">dirigido<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p>
+<dd class="field-odd"><p>verdadero</p>
 </dd>
 <dt class="field-even">driving_side<span class="colon">:</span></dt>
 <dd class="field-even"><p>“b”</p>
@@ -1208,7 +1208,7 @@ WARNING:  pgr_withpointsdd(text,text,bigint,double precision,boolean,character,b
 <p>Los valores predeterminados en esta consulta son:</p>
 <dl class="field-list simple">
 <dt class="field-odd">dirigido<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p>
+<dd class="field-odd"><p>verdadero</p>
 </dd>
 <dt class="field-even">detalles<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p>
@@ -1277,7 +1277,7 @@ WARNING:  pgr_withpointsdd(text,text,bigint,double precision,boolean,character,b
 <dd class="field-odd"><p></p></dd>
 </dl>
 <ul class="simple">
-<li><p>Tener en cuenta la existencia de las columnas de adicionales de resultados.</p></li>
+<li><p>Tener en cuenta la existencia de las columnas adicionales de resultados.</p></li>
 <li><p>Las nuevas columnas de salida son <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 <li><p>El parámetro <strong>lado de manjeo</strong> es obligatorio sin nombre, y los valores válidos difieren para grafos dirigidos y no dirigidos.</p>
 <ul>
@@ -1396,7 +1396,7 @@ WARNING:  pgr_withpointsdd(text,text,bigint,double precision,boolean,character,b
 </section>
 <section id="migration-of-pgr-withpointsksp">
 <h3><a class="toc-backref" href="#id50" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code></a><a class="headerlink" href="#migration-of-pgr-withpointsksp" title="Link to this heading">¶</a></h3>
-<p>A partir de <a class="reference external" href="https://docs.pgrouting.org/3.6/en/migration.html">v3.6.0</a> las columnas resultantes de <a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP - Propuesto</span></a> son estandarizadas.</p>
+<p>A partir de <a class="reference external" href="https://docs.pgrouting.org/3.6/es/migration.html">v3.6.0</a> en <a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP - Propuesto</span></a> las columnas de resultados están siendo estandarizadas.</p>
 <dl class="field-list simple">
 <dt class="field-odd">de<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
@@ -1426,7 +1426,7 @@ WARNING:  pgr_withpointsdd(text,text,bigint,double precision,boolean,character,b
 <dd class="field-odd"><p></p></dd>
 </dl>
 <ul class="simple">
-<li><p>Tener en cuenta la existencia de las columnas de adicionales de resultados.</p></li>
+<li><p>Tener en cuenta la existencia de las columnas adicionales de resultados.</p></li>
 <li><p>Las nuevas columnas de salida son <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 <li><p>El parámetro <strong>lado de manjeo</strong> es obligatorio sin nombre, y los valores válidos difieren para grafos dirigidos y no dirigidos.</p>
 <ul>
@@ -2006,7 +2006,7 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated 
 </ul>
 </li>
 </ul>
-<p>Utiliza en su lugar <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a>.</p>
+<p>Utilizar en su lugar <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (4, 3)$$,
@@ -2738,8 +2738,8 @@ FROM pgr_trspVia_withPoints(
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.3.<br/>
-      Actualizado por última vez en oct 10, 2024.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2.<br/>
+      Actualizado por última vez en oct 12, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.1.<br/>
     </p>
   </div>
 </footer>

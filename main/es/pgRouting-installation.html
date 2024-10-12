@@ -10,13 +10,13 @@
     <title>Instalación &#8212; pgRouting Manual (3.6)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=53e5f443"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=e87c01b6"></script>
-    <script src="_static/translations.js?v=d190bf04"></script>
+    <script src="_static/page_history.js?v=c8ec7c59"></script>
+    <script src="_static/translations.js?v=f85f4cfb"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -205,9 +205,7 @@
 <li><p><a class="reference internal" href="#install-build"><span class="std std-ref">Compilando</span></a></p></li>
 <li><p><a class="reference internal" href="#install-testing"><span class="std std-ref">Pruebas</span></a></p></li>
 </ul>
-<p>Instructions for downloading and installing binaries for different operating
-systems, additional notes and corrections not included in this documentation can
-be found in <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting">Installation wiki</a></p>
+<p>Las instrucciones para descargar e instalar los binarios para diferentes sistemas operativos, notas adicionales y correcciones no incluidas en esta documentación se pueden encontrar en <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting">Installation wiki</a></p>
 <p>Para utilizar pgRouting postGIS necesita ser instalado, por favor lea la información sobre la instalación en esta <a class="reference external" href="https://www.postgis.us/presentations/postgis_install_guide_22.html">Guía de instalacoón</a></p>
 <section id="short-version">
 <span id="install-short"></span><h2>Versión corta<a class="headerlink" href="#short-version" title="Link to this heading">¶</a></h2>
@@ -234,7 +232,6 @@ be found in <a class="reference external" href="https://github.com/pgRouting/pgr
 <section id="get-the-sources">
 <span id="install-get-sources"></span><h2>Obtener las fuentes<a class="headerlink" href="#get-the-sources" title="Link to this heading">¶</a></h2>
 <p>La última versión de pgRouting se puede encontrar en <a class="reference external" href="https://github.com/pgRouting/pgrouting/releases/latest">https://github.com/pgRouting/pgrouting/releases/latest</a></p>
-<p class="rubric">Wget</p>
 <p>Para descargar esta versión:</p>
 <pre class="literal-block">wget -O pgrouting-3.6.3.tar.gz    <a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/v3.6.3.tar.gz">https://github.com/pgRouting/pgrouting/archive/v3.6.3.tar.gz</a></pre>
 <p>Ir a <a class="reference internal" href="#install-short"><span class="std std-ref">Versión corta</span></a> para más instrucciones sobre la extraccion de la bola tar y la compilación de pgRouting.</p>
@@ -245,21 +242,17 @@ be found in <a class="reference external" href="https://github.com/pgRouting/pgr
 <span class="n">git</span> <span class="n">checkout</span> <span class="n">v3</span><span class="mf">.6.3</span>
 </pre></div>
 </div>
-<p>Go to <a class="reference internal" href="#install-short"><span class="std std-ref">Versión corta</span></a> for more instructions on compiling pgRouting
-(there is no tar ball involved while downloading pgRouting repository from
-GitHub).</p>
+<p>Ir a <a class="reference internal" href="#install-short"><span class="std std-ref">Versión corta</span></a> para más instrucciones sobre la compilación de pgRouting (no hay bola tar involucrada al descargar el repositorio pgRouting desde GitHub).</p>
 </section>
 <section id="enabling-and-upgrading-in-the-database">
 <span id="install-enable-db"></span><h2>Habilitación y actualización en la base de datos<a class="headerlink" href="#enabling-and-upgrading-in-the-database" title="Link to this heading">¶</a></h2>
 <p class="rubric">Habilitación de la base de datos</p>
-<p>pgRouting is a PostgreSQL extension and depends on PostGIS to provide
-functionalities to end user. Below given code demonstrates enabling PostGIS and
-pgRouting in the database.</p>
+<p>pgRouting es una extensión de PostgreSQL y depende de PostGIS para proporcionar funcionalidades al usuario final. A continuación se muestra el código demuestra que permite PostGIS y pgRouting en la base de datos.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">EXTENSION</span> <span class="n">postgis</span><span class="p">;</span>
 <span class="n">CREATE</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>Checking PostGIS and pgRouting version after enabling them in the database.</p>
+<p>Comprobación de la versión de PostGIS y pgRouting después de habilitarlos en la base de datos.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">PostGIS_full_version</span><span class="p">();</span>
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_version</span><span class="p">();</span>
 </pre></div>
@@ -277,12 +270,11 @@ following command:</p>
 <p class="rubric">Dependencias de Compilación</p>
 <p>Para poder compilar pgRouting, asegúrese de que se cumplen las siguientes dependencias:</p>
 <ul>
-<li><p>C and C++0x compilers</p>
+<li><p>Compiladores C y C++0x</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Compilar con Boost 1.56 hasta Boost 1.74 requiere un compilador C++ con soporte estandard para C++03 o C++11</p></li>
-<li><p>Compiling with Boost 1.75 requires C++ Compiler with C++14 standard
-support</p></li>
+<li><p>La compilación con Boost 1.75 requiere un compilador de C++ compatible con el estándar C++14</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -318,63 +310,57 @@ support</p></li>
 </pre></div>
 </div>
 <p class="rubric">Configurar PostgreSQL</p>
-<p>Entering psql console</p>
+<p>Entrar en la consola psql</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">postgresql</span><span class="o">.</span><span class="n">service</span>
 <span class="n">sudo</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span><span class="n">u</span> <span class="n">postgres</span>
 <span class="n">psql</span>
 </pre></div>
 </div>
-<p>To exit psql console</p>
+<p>Para salir de la consola psql</p>
 <pre class="literal-block">q</pre>
-<p>Entering psql console directly without switching roles can be done by the
-following commands</p>
+<p>Se puede entrar directamente en la consola psql sin cambiar de rol mediante los siguientes comandos</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">postgres</span> <span class="n">psql</span>
 </pre></div>
 </div>
-<p>Then use the above given method to exit out of the psql console</p>
-<p>Checking PostgreSQL version</p>
+<p>A continuación, utilizar el método anterior para salir de la consola psql</p>
+<p>Comprobación de la versión de PostgreSQL</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">psql</span> <span class="o">--</span><span class="n">version</span>
 </pre></div>
 </div>
-<p>or</p>
-<p>Enter the psql console using above given method and then enter</p>
+<p>o</p>
+<p>Entrar a la consola psql usando el método anterior e introducir</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">VERSION</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>Creating PostgreSQL role</p>
+<p>Creación del rol PostgreSQL</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span><span class="n">u</span> <span class="n">postgres</span>
 <span class="n">createuser</span> <span class="o">--</span><span class="n">interactive</span>
 </pre></div>
 </div>
-<p>or</p>
+<p>o</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">postgres</span> <span class="n">createuser</span> <span class="o">--</span><span class="n">interactive</span>
 </pre></div>
 </div>
-<p>Default role provided by PostgreSQL is postgres. To create new roles you
-can use the above provided commands. The prompt will ask the user to type
-name of the role and then provide affirmation. Proceed with the steps and
-you will succeed in creating PostgreSQL role successfully.</p>
-<p>To add password to the role or change previously created password of the
-role use the following commands</p>
+<p>El rol por defecto proporcionado por PostgreSQL es postgres. Para crear nuevos roles puede utilizar los comandos proporcionados anteriromente. El prompt le pedirá al usuario que escibir el nombre del rol y confirmarlo. Proceder con los pasos y tendrá éxito en la creación de rol PostgreSQL.</p>
+<p>Para añadir una contraseña a un rol o cambiar una contraseña previamente creada utilizar los siguientes comandos</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">USER</span> <span class="o">&lt;</span><span class="n">role</span> <span class="n">name</span><span class="o">&gt;</span> <span class="n">PASSWORD</span> <span class="o">&lt;</span><span class="n">password</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>To get additional details on the flags associated with <code class="docutils literal notranslate"><span class="pre">createuser</span></code> below
-given command can be used</p>
+<p>Para obtener detalles adicionales sobre las banderas asociadas con <code class="docutils literal notranslate"><span class="pre">createuser</span></code> se puede utilizar el siguiente comando</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">man</span> <span class="n">createuser</span>
 </pre></div>
 </div>
-<p>Creating Database in PostgreSQL</p>
+<p>Crear una base de datos en PostgreSQL</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span><span class="n">u</span> <span class="n">postgres</span>
 <span class="n">createdb</span> <span class="o">&lt;</span><span class="n">database</span> <span class="n">name</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>or</p>
+<p>o</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">postgres</span> <span class="n">createdb</span> <span class="o">&lt;</span><span class="n">database</span> <span class="n">name</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>Connecting to a PostgreSQL Database</p>
-<p>Enter the psql console and type the following commands</p>
+<p>Conexión a una base de datos PostgreSQL</p>
+<p>Entrar en la consola psql y escribir los siguientes comandos</p>
 <pre class="literal-block">connect &lt;database name&gt;</pre>
 <p class="rubric">Construir dependencias</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">cmake</span>
@@ -444,8 +430,7 @@ $ cmake -L ..
 </tr>
 </tbody>
 </table>
-<p>Configuring cmake to create documentation before building
-pgRouting</p>
+<p>Configuración de cmake para crear documentación antes de compilar pgRouting</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cmake -DWITH_DOC=ON -DDOC_USE_BOOTSTRAP=ON ..
 </pre></div>
 </div>
@@ -487,8 +472,7 @@ $ make install
 <span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
-<p>To remove the build when the configuration changes, use the following
-code:</p>
+<p>Para eliminar la compilación cuando se cambie la configuración, utilizar el siguiente código:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">build</span>
 </pre></div>
 </div>
@@ -528,8 +512,8 @@ code:</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.3.<br/>
-      Actualizado por última vez en oct 10, 2024.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2.<br/>
+      Actualizado por última vez en oct 12, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.1.<br/>
     </p>
   </div>
 </footer>

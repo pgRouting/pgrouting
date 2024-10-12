@@ -1,0 +1,781 @@
+
+
+<!DOCTYPE html>
+
+<html lang="zh-Hans" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>withPoints - 函数族 &#8212; pgRouting Manual (3.6)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
+    <script src="_static/documentation_options.js?v=0fece2b7"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=c8ec7c59"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pgr_withPoints -拟议" href="pgr_withPoints.html" />
+    <link rel="prev" title="pgr_edgeColoring - 实验" href="pgr_edgeColoring.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v3.6.3</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">支持</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">withPoints - 函数族</a><ul>
+<li><a class="reference internal" href="#introduction">介绍</a></li>
+<li><a class="reference internal" href="#parameters">参数</a><ul>
+<li><a class="reference internal" href="#optional-parameters">可选参数</a></li>
+<li><a class="reference internal" href="#with-points-optional-parameters">带点可选参数</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
+<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+<li><a class="reference internal" href="#points-sql">Points SQL</a></li>
+<li><a class="reference internal" href="#combinations-sql">分量 SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#advanced-documentation">高级文档</a><ul>
+<li><a class="reference internal" href="#about-points">关于积分</a></li>
+<li><a class="reference internal" href="#driving-side">驾驶侧</a><ul>
+<li><a class="reference internal" href="#right-driving-side">右驾驶侧</a></li>
+<li><a class="reference internal" href="#left-driving-side">左驾驶侧</a></li>
+<li><a class="reference internal" href="#driving-side-does-not-matter">驾驶侧并不重要</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#creating-temporary-vertices">创建临时顶点</a><ul>
+<li><a class="reference internal" href="#on-a-right-hand-side-driving-network">在右侧行驶网络</a></li>
+<li><a class="reference internal" href="#on-a-left-hand-side-driving-network">在左侧驾驶网络上</a></li>
+<li><a class="reference internal" href="#when-driving-side-does-not-matter">当驾驶侧无关紧要时</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">另请参阅</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_edgeColoring.html" title="Previous Chapter: pgr_edgeColoring - 实验"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_edgeColoring - 实验</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_withPoints.html" title="Next Chapter: pgr_withPoints -拟议"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_withPoints -拟议 &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#">withPoints - 函数族</a><ul>
+<li><a class="reference internal" href="#introduction">介绍</a></li>
+<li><a class="reference internal" href="#parameters">参数</a><ul>
+<li><a class="reference internal" href="#optional-parameters">可选参数</a></li>
+<li><a class="reference internal" href="#with-points-optional-parameters">带点可选参数</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">内部查询</a><ul>
+<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+<li><a class="reference internal" href="#points-sql">Points SQL</a></li>
+<li><a class="reference internal" href="#combinations-sql">分量 SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#advanced-documentation">高级文档</a><ul>
+<li><a class="reference internal" href="#about-points">关于积分</a></li>
+<li><a class="reference internal" href="#driving-side">驾驶侧</a><ul>
+<li><a class="reference internal" href="#right-driving-side">右驾驶侧</a></li>
+<li><a class="reference internal" href="#left-driving-side">左驾驶侧</a></li>
+<li><a class="reference internal" href="#driving-side-does-not-matter">驾驶侧并不重要</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#creating-temporary-vertices">创建临时顶点</a><ul>
+<li><a class="reference internal" href="#on-a-right-hand-side-driving-network">在右侧行驶网络</a></li>
+<li><a class="reference internal" href="#on-a-left-hand-side-driving-network">在左侧驾驶网络上</a></li>
+<li><a class="reference internal" href="#when-driving-side-does-not-matter">当驾驶侧无关紧要时</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">另请参阅</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="pgr_edgeColoring.html" title="Previous Chapter: pgr_edgeColoring - 实验"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_edgeColoring - 实验</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_withPoints.html" title="Next Chapter: pgr_withPoints -拟议"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_withPoints -拟议 &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
+            <script> document.write(get_history('withPoints-family','zh-Hans'));  </script>
+            
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="withpoints-family-of-functions">
+<h1>withPoints - 函数族<a class="headerlink" href="#withpoints-family-of-functions" title="Link to this heading">¶</a></h1>
+<p>当点也作为输入给出时：</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>下一版本的拟议功能。</p>
+<ul class="simple">
+<li><p>它们并未正式出现在当前版本中。</p></li>
+<li><p>它们可能会正式成为下一个版本的一部分：</p>
+<ul>
+<li><p>这些函数使用 ANY-INTEGER 和 ANY-NUMERICAL</p></li>
+<li><p>名字可能不会改变。（但仍然有可能改变）</p></li>
+<li><p>签名可能不会改变。（但仍然有可能改变）</p></li>
+<li><p>功能可能不会改变。（但仍然有可能改变）</p></li>
+<li><p>pgTap 测试已经完成。 但可能需要更多。</p></li>
+<li><p>文档可能需要完善。</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints -拟议</span></a> - 从/到图表上任意点的路线。</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_withPointsCost -拟议</span></a> - 最短路径的成本。</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsCostMatrix.html"><span class="doc">pgr_withPointsCostMatrix - 拟议</span></a> - 最短路径的成本。</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP -拟议</span></a> -K 最短路径。</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD - 拟议</span></a> -行驶距离。</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia - 拟议</span></a> - 通过路由</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<section id="introduction">
+<h2>介绍<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<p>这一系列函数属于 <a class="reference internal" href="withPoints-category.html"><span class="doc">withPoints - 类别</span></a>，组成它们的函数以某种方式基于 dijkstra 算法。</p>
+<p>取决于名称：</p>
+<ul class="simple">
+<li><p>pgr_withPoints 是 <strong>带有点</strong> 的 pgr_dijkstra</p></li>
+<li><p>pgr_withPointsCost 是 <strong>带有点</strong> 的 pgr_dijkstraCost</p></li>
+<li><p>pgr_withPointsCostMatrix 是 <strong>带有点</strong> 的 pgr_dijkstraCostMatrix</p></li>
+<li><p>pgr_withPointsKSP 是 <strong>带有点</strong> 的 pgr_ksp</p></li>
+<li><p>pgr_withPointsDD 是 <strong>带有点</strong> 的 pgr_drivenDistance</p></li>
+<li><p>pgr_withPointsvia is pgr_dijkstraVia <strong>with points</strong></p></li>
+</ul>
+</section>
+<section id="parameters">
+<h2>参数<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 19.4%" />
+<col style="width: 19.4%" />
+<col style="width: 61.1%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> 如下所述</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">Points SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#points-sql">Points SQL</a> 如下所述</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a> 如下所述</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>start vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>路径起始顶点的标识符。 负值用于点的标识符。</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>start vids</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td><p>起始顶点的标识符数组。 负值用于点的标识符。</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>end vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>路径结束顶点的标识符。 负值用于点的标识符。</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>end vids</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td><p>结束顶点的标识符数组。 负值用于点的标识符。</p></td>
+</tr>
+</tbody>
+</table>
+<section id="optional-parameters">
+<h3>可选参数<a class="headerlink" href="#optional-parameters" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><ul class="simple">
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">true</span></code> 时，该图被视为有 <cite>有向</cite></p></li>
+<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，则该图被视为 <cite>无向</cite>。</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="with-points-optional-parameters">
+<h3>带点可选参数<a class="headerlink" href="#with-points-optional-parameters" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 15.9%" />
+<col style="width: 8.0%" />
+<col style="width: 8.0%" />
+<col style="width: 68.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>参数</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
+<td><p>[<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>] 中的值指示驱动侧是否为：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> 代表右驾驶侧。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> 代表左驾驶侧。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> 对于两者。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">details</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><ul class="simple">
+<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">true</span></code> ，结果将包括路径中的点。</p></li>
+<li><p>如果为 <code class="docutils literal notranslate"><span class="pre">false</span></code> ，结果将不包括路径中的点。</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="inner-queries">
+<h2>内部查询<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<section id="edges-sql">
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>边的标识符。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>边的第一个端点顶点的标识符。</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>边的第二个端点顶点的标识符。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td></td>
+<td><p>边(<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)的权重</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p>-1</p></td>
+<td><p>边(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)的权重</p>
+<ul class="simple">
+<li><p>当为负时：边（ <code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code> ）不存在，因此它不是图的一部分。</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>其中：</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+</section>
+<section id="points-sql">
+<h3>Points SQL<a class="headerlink" href="#points-sql" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 15.6%" />
+<col style="width: 18.2%" />
+<col style="width: 9.1%" />
+<col style="width: 57.1%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>参数</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pid</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>value</strong></p></td>
+<td><p>点的标识符。</p>
+<ul class="simple">
+<li><p>使用正值，因为内部将转换为负值</p></li>
+<li><p>如果列存在，则它不能为 NULL。</p></li>
+<li><p>如果列不存在，将自动给出连续的负 <strong>值</strong> 。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>距离该点“最近”的边的标识符。</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td></td>
+<td><p>&lt;0,1&gt; 中的值指示距边缘第一个端点的相对位置。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">side</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
+<td><p>[<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>] 中的值指示该点是否为：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> 在右边，</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> 在左边，</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 在两边</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>其中：</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+</section>
+<section id="combinations-sql">
+<h3>分量 SQL<a class="headerlink" href="#combinations-sql" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 14.0%" />
+<col style="width: 16.3%" />
+<col style="width: 69.8%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>参数</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p>出发顶点的标识符。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p>到达顶点的标识符。</p></td>
+</tr>
+</tbody>
+</table>
+<p>其中：</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="advanced-documentation">
+<h2>高级文档<a class="headerlink" href="#advanced-documentation" title="Link to this heading">¶</a></h2>
+<nav class="contents local" id="contents">
+<p class="topic-title">内容</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#about-points" id="id1">关于积分</a></p></li>
+<li><p><a class="reference internal" href="#driving-side" id="id2">驾驶侧</a></p>
+<ul>
+<li><p><a class="reference internal" href="#right-driving-side" id="id3">右驾驶侧</a></p></li>
+<li><p><a class="reference internal" href="#left-driving-side" id="id4">左驾驶侧</a></p></li>
+<li><p><a class="reference internal" href="#driving-side-does-not-matter" id="id5">驾驶侧并不重要</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#creating-temporary-vertices" id="id6">创建临时顶点</a></p>
+<ul>
+<li><p><a class="reference internal" href="#on-a-right-hand-side-driving-network" id="id7">在右侧行驶网络</a></p></li>
+<li><p><a class="reference internal" href="#on-a-left-hand-side-driving-network" id="id8">在左侧驾驶网络上</a></p></li>
+<li><p><a class="reference internal" href="#when-driving-side-does-not-matter" id="id9">当驾驶侧无关紧要时</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="about-points">
+<h3><a class="toc-backref" href="#id1" role="doc-backlink">关于积分</a><a class="headerlink" href="#about-points" title="Link to this heading">¶</a></h3>
+<p>对于本节，将使用以下城市（参见 <a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a>）一些有趣的点（例如餐馆、超市、邮局等）作为示例。</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 475.5px; height: 433.0px;" />
+</a>
+</figure>
+<ul class="simple">
+<li><p>图是 <strong>有向</strong> 的</p></li>
+<li><p>红色箭头显示边表上的边 <code class="docutils literal notranslate"><span class="pre">(source,</span> <span class="pre">target)</span></code></p></li>
+<li><p>蓝色箭头显示边表上的边 <code class="docutils literal notranslate"><span class="pre">(target,</span> <span class="pre">source)</span></code></p></li>
+<li><p>每个点位置显示它与边 <code class="docutils literal notranslate"><span class="pre">(source,</span> <span class="pre">target)</span></code> 的关系</p>
+<ul>
+<li><p>在右侧为第 <strong>2</strong> 点和第 <strong>4</strong> 点。</p></li>
+<li><p>左侧为第 <strong>1</strong>、<strong>3</strong> 和 <strong>5</strong> 点。</p></li>
+<li><p>在两侧为第 <strong>6</strong> 点。</p></li>
+</ul>
+</li>
+</ul>
+<p>数据库上的表示遵循 <a class="reference internal" href="#points-sql">Points SQL</a> 描述，对于本示例：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pid</span><span class="p">,</span> <span class="n">edge_id</span><span class="p">,</span> <span class="n">fraction</span><span class="p">,</span> <span class="n">side</span> <span class="n">FROM</span> <span class="n">pointsOfInterest</span><span class="p">;</span>
+ <span class="n">pid</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">fraction</span> <span class="o">|</span> <span class="n">side</span>
+<span class="o">-----+---------+----------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>      <span class="mf">0.4</span> <span class="o">|</span> <span class="n">l</span>
+   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">15</span> <span class="o">|</span>      <span class="mf">0.4</span> <span class="o">|</span> <span class="n">r</span>
+   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>      <span class="mf">0.6</span> <span class="o">|</span> <span class="n">l</span>
+   <span class="mi">4</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>      <span class="mf">0.3</span> <span class="o">|</span> <span class="n">r</span>
+   <span class="mi">5</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>      <span class="mf">0.8</span> <span class="o">|</span> <span class="n">l</span>
+   <span class="mi">6</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>      <span class="mf">0.7</span> <span class="o">|</span> <span class="n">b</span>
+<span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="driving-side">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">驾驶侧</a><a class="headerlink" href="#driving-side" title="Link to this heading">¶</a></h3>
+<p>在下面的图片中：</p>
+<ul class="simple">
+<li><p>平方顶点是临时顶点，</p></li>
+<li><p>根据驾驶侧添加临时顶点，</p></li>
+<li><p>直观地显示不同驾驶侧数据解释方式的差异。</p></li>
+</ul>
+<section id="right-driving-side">
+<h4><a class="toc-backref" href="#id3" role="doc-backlink">右驾驶侧</a><a class="headerlink" href="#right-driving-side" title="Link to this heading">¶</a></h4>
+<a class="reference internal image-reference" href="_images/rightDrivingSide.png"><img alt="_images/rightDrivingSide.png" src="_images/rightDrivingSide.png" style="width: 501.5px; height: 433.5px;" />
+</a>
+<ul class="simple">
+<li><p>点 <strong>1</strong> 位于边 <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">5)</span></code></p></li>
+<li><p>点 <strong>2</strong> 位于边缘 <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code></p></li>
+<li><p>点 <strong>3</strong> 位于边缘 <code class="docutils literal notranslate"><span class="pre">(8,</span> <span class="pre">12)</span></code></p></li>
+<li><p>点 <strong>4</strong> 位于边 <code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">3)</span></code></p></li>
+<li><p>点 <strong>5</strong> 位于边缘 <code class="docutils literal notranslate"><span class="pre">(10,</span> <span class="pre">11)</span></code></p></li>
+<li><p>点 <strong>6</strong> 位于边 <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">7)</span></code> 和 <code class="docutils literal notranslate"><span class="pre">(7,</span> <span class="pre">6)</span></code></p></li>
+</ul>
+</section>
+<section id="left-driving-side">
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">左驾驶侧</a><a class="headerlink" href="#left-driving-side" title="Link to this heading">¶</a></h4>
+<a class="reference internal image-reference" href="_images/leftDrivingSide.png"><img alt="_images/leftDrivingSide.png" src="_images/leftDrivingSide.png" style="width: 510.0px; height: 436.5px;" />
+</a>
+<ul class="simple">
+<li><p>点 <strong>1</strong> 位于边 <code class="docutils literal notranslate"><span class="pre">(5,</span> <span class="pre">6)</span></code></p></li>
+<li><p>点 <strong>2</strong> 位于边 <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)</span></code></p></li>
+<li><p>点 <strong>3</strong> 位于边缘 <code class="docutils literal notranslate"><span class="pre">(8,</span> <span class="pre">12)</span></code></p></li>
+<li><p>点 <strong>4</strong> 位于边 <code class="docutils literal notranslate"><span class="pre">(3,</span> <span class="pre">1)</span></code></p></li>
+<li><p>点 <strong>5</strong> 位于边缘 <code class="docutils literal notranslate"><span class="pre">(10,</span> <span class="pre">11)</span></code></p></li>
+<li><p>点 <strong>6</strong> 位于边 <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">7)</span></code> 和 <code class="docutils literal notranslate"><span class="pre">(7,</span> <span class="pre">6)</span></code></p></li>
+</ul>
+</section>
+<section id="driving-side-does-not-matter">
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">驾驶侧并不重要</a><a class="headerlink" href="#driving-side-does-not-matter" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>就像双方都要考虑所有点 <code class="docutils literal notranslate"><span class="pre">b</span></code></p></li>
+<li><p><strong>无向</strong> 图上的首选用法</p></li>
+<li><p>在 <a class="reference internal" href="TRSP-family.html"><span class="doc">TRSP - 函数族</span></a> 上，此选项无效</p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/noMatterDrivingSide.png"><img alt="_images/noMatterDrivingSide.png" src="_images/noMatterDrivingSide.png" style="width: 470.0px; height: 432.5px;" />
+</a>
+<ul class="simple">
+<li><p>点 <strong>1</strong> 位于边 <code class="docutils literal notranslate"><span class="pre">(5,</span> <span class="pre">6)</span></code> 和 <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">5)</span></code></p></li>
+<li><p>点 <strong>2</strong> 位于边 <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)</span></code> 和 <code class="docutils literal notranslate"><span class="pre">16,</span> <span class="pre">17</span></code></p></li>
+<li><p>点 <strong>3</strong> 位于边缘 <code class="docutils literal notranslate"><span class="pre">(8,</span> <span class="pre">12)</span></code></p></li>
+<li><p>点 <strong>4</strong> 位于边 <code class="docutils literal notranslate"><span class="pre">(3,</span> <span class="pre">1)</span></code> 和 <code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">3)</span></code></p></li>
+<li><p>点 <strong>5</strong> 位于边缘 <code class="docutils literal notranslate"><span class="pre">(10,</span> <span class="pre">11)</span></code></p></li>
+<li><p>点 <strong>6</strong> 位于边 <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">7)</span></code> 和 <code class="docutils literal notranslate"><span class="pre">(7,</span> <span class="pre">6)</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="creating-temporary-vertices">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">创建临时顶点</a><a class="headerlink" href="#creating-temporary-vertices" title="Link to this heading">¶</a></h3>
+<p>本节将演示如何在图内部创建临时顶点。</p>
+<p class="rubric">问题</p>
+<p>对于边:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">reverse_cost</span>
+<span class="o">----+--------+--------+------+--------------</span>
+ <span class="mi">15</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>     <span class="mi">17</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>插入点：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pid</span><span class="p">,</span> <span class="n">edge_id</span><span class="p">,</span> <span class="n">fraction</span><span class="p">,</span> <span class="n">side</span>
+<span class="n">FROM</span> <span class="n">pointsOfInterest</span> <span class="n">WHERE</span> <span class="n">pid</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+ <span class="n">pid</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">fraction</span> <span class="o">|</span> <span class="n">side</span>
+<span class="o">-----+---------+----------+------</span>
+   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">15</span> <span class="o">|</span>      <span class="mf">0.4</span> <span class="o">|</span> <span class="n">r</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<section id="on-a-right-hand-side-driving-network">
+<h4><a class="toc-backref" href="#id7" role="doc-backlink">在右侧行驶网络</a><a class="headerlink" href="#on-a-right-hand-side-driving-network" title="Link to this heading">¶</a></h4>
+<p class="rubric">右驾驶侧</p>
+<a class="reference internal image-reference" href="_images/rightDrivingSide.png"><img alt="_images/rightDrivingSide.png" src="_images/rightDrivingSide.png" style="width: 501.5px; height: 433.5px;" />
+</a>
+<ul class="simple">
+<li><p>只能通过顶点 <strong>16</strong> 才能到达点 <code class="docutils literal notranslate"><span class="pre">-2</span></code>。</p></li>
+<li><p>不影响边 <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)</span></code>，因此边被保留。</p></li>
+<li><p>它只影响边 <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code>，因此边被移除。</p></li>
+<li><p>创建两条新边：</p>
+<ul>
+<li><p>边 <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">-2)</span></code> 的成本为``0.4`` （原始成本*分数 == <span class="math notranslate nohighlight">\(1 * 0.4\)</span>）</p></li>
+<li><p>边 <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> 的成本为``0.6`` （剩余成本）</p></li>
+</ul>
+</li>
+<li><p>附加边的总成本等于原始成本。</p></li>
+<li><p>如果同一条边上有更多点，则递归地重复该过程。</p></li>
+</ul>
+</section>
+<section id="on-a-left-hand-side-driving-network">
+<h4><a class="toc-backref" href="#id8" role="doc-backlink">在左侧驾驶网络上</a><a class="headerlink" href="#on-a-left-hand-side-driving-network" title="Link to this heading">¶</a></h4>
+<p class="rubric">左驾驶侧</p>
+<a class="reference internal image-reference" href="_images/leftDrivingSide.png"><img alt="_images/leftDrivingSide.png" src="_images/leftDrivingSide.png" style="width: 510.0px; height: 436.5px;" />
+</a>
+<ul class="simple">
+<li><p>只能通过顶点 <strong>17</strong> 才能到达点 <code class="docutils literal notranslate"><span class="pre">-2</span></code>。</p></li>
+<li><p>不影响边 <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code> ，因此保留边。</p></li>
+<li><p>它只影响边 <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)</span></code> ，因此边被移除。</p></li>
+<li><p>创建两条新边：</p>
+<ul>
+<li><p>使用原始边 <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code> ，因为分数是原始边的分数：</p>
+<ul>
+<li><p>边 <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">-2)</span></code> 的成本为``0.4`` （原始成本*分数 == <span class="math notranslate nohighlight">\(1 * 0.4\)</span>）</p></li>
+<li><p>边 <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> 的成本为``0.6`` （剩余成本）</p></li>
+<li><p>如果同一条边上有更多点，则递归地重复该过程。</p></li>
+</ul>
+</li>
+<li><p>翻转边并将它们添加到图中：</p>
+<ul>
+<li><p>边 <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">-2)</span></code> 变为 <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">16)</span></code>，成本为``0.4`` ，并添加到图中。</p></li>
+<li><p>边 <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">16)</span></code> 变为 <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">-2)</span></code>，成本为 <code class="docutils literal notranslate"><span class="pre">0.6</span></code> ，并添加到图中。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>附加边的总成本等于原始成本。</p></li>
+</ul>
+</section>
+<section id="when-driving-side-does-not-matter">
+<h4><a class="toc-backref" href="#id9" role="doc-backlink">当驾驶侧无关紧要时</a><a class="headerlink" href="#when-driving-side-does-not-matter" title="Link to this heading">¶</a></h4>
+<a class="reference internal image-reference" href="_images/noMatterDrivingSide.png"><img alt="_images/noMatterDrivingSide.png" src="_images/noMatterDrivingSide.png" style="width: 470.0px; height: 432.5px;" />
+</a>
+<ul class="simple">
+<li><p>可以通过顶点 <strong>16</strong> 或 <strong>17</strong> 到达点 <code class="docutils literal notranslate"><span class="pre">-2</span></code>。</p></li>
+<li><p>影响边 <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code> 和 <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)</span></code> ，因此边被移除。</p></li>
+<li><p>创建四个新边：</p>
+<ul>
+<li><p>使用原始边 <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code> ，因为分数是原始边的分数：</p>
+<ul>
+<li><p>边 <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">-2)</span></code> 的成本为``0.4`` （原始成本*分数 == <span class="math notranslate nohighlight">\(1 * 0.4\)</span>）</p></li>
+<li><p>边 <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> 的成本为``0.6`` （剩余成本）</p></li>
+<li><p>如果同一条边上有更多点，则递归地重复该过程。</p></li>
+</ul>
+</li>
+<li><p>翻转边并将所有边添加到图中：</p>
+<ul>
+<li><p>边 <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">-2)</span></code> 被添加到图中。</p></li>
+<li><p>边 <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> 被添加到图中。</p></li>
+<li><p>边 <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">-2)</span></code> 变为 <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">16)</span></code> ，成本为 0.4，并添加到图中。</p></li>
+<li><p>边 <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> 变为``(17, -2)``，成本为 <code class="docutils literal notranslate"><span class="pre">0.6</span></code> ，并添加到图中。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="see-also">
+<h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="withPoints-category.html"><span class="doc">withPoints - 类别</span></a></p></li>
+</ul>
+<p class="rubric">索引和表格</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.6.3.<br/>
+      Last updated on 10月 12, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

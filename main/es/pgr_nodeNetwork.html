@@ -10,13 +10,13 @@
     <title>pgr_nodeNetwork &#8212; pgRouting Manual (3.6)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=53e5f443"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=e87c01b6"></script>
-    <script src="_static/translations.js?v=d190bf04"></script>
+    <script src="_static/page_history.js?v=c8ec7c59"></script>
+    <script src="_static/translations.js?v=f85f4cfb"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -239,7 +239,7 @@
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code> identificador único del vértice</p>
 </dd>
 <dt class="field-even">old_id<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code> identificador del borde en la tabla original</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code> Identificador de la arista en la tabla original</p>
 </dd>
 <dt class="field-odd">sub_id<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> número del segmento del borde original</p>
@@ -424,14 +424,14 @@
 <tr class="row-even"><td><p>Callejones sin salida</p></td>
 <td><ul class="simple">
 <li><p>Los bordes con 1 callejón sin salida: 1,6,24</p></li>
-<li><p>Bordes con 2 callejones sin salida 17,18</p></li>
+<li><p>Aristas con 2 callejones sin salida: 17,18</p></li>
 </ul>
 <p>Nodo derecho borde de 17 es un callejón sin salida porque no hay ningún otro borde que comparta ese mismo nodo. (cnt = 1)</p>
 </td>
 <td><p>Los bordes con 1 callejón sin salida: 1-1, 6-1,14-2, 18-1-17-1 18-2</p></td>
 </tr>
 <tr class="row-odd"><td><p>Segmentos aislados</p></td>
-<td><p>dos aislados segmentos: 17 y 18 ambos tienen 2 callejones sin salida</p></td>
+<td><p>dos segmentos aislados: 17 y 18 ambos tienen 2 callejones sin salida</p></td>
 <td><dl class="simple">
 <dt>Segmentos no aislados</dt><dd><ul class="simple">
 <li><p>Borde 17 ahora comparte un nodo con bordes 14-1 y 14-2</p></li>
@@ -581,8 +581,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.6.3.<br/>
-      Actualizado por última vez en oct 10, 2024.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2.<br/>
+      Actualizado por última vez en oct 12, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.1.<br/>
     </p>
   </div>
 </footer>
