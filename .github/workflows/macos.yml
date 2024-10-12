@@ -54,7 +54,7 @@ jobs:
 
       - name: install deps
         run: |
-          brew install postgresql postgis boost
+          brew install postgresql@14 postgis boost
 
       - name: Configure
         run: |
