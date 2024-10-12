@@ -83,6 +83,8 @@ milestone for 3.6.3
   * postgres 11.0.0
   * postgis 3.0.0
 
+* g++ 13+ is supported
+
 **Code fixes**
 
 * Fix warnings from cpplint.
