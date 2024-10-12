@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <vector>
 #include <sstream>
+#include <cstdint>
 
 typedef struct Restriction_t Restriction_t;
 
