@@ -1,6 +1,6 @@
 /*PGR-GNU*****************************************************************
 
-FILE: rule.h
+FILE: rule.hpp
 
 Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org
