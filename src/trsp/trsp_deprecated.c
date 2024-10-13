@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: trsp.c
+File: trsp_deprecated.c
 
 Generated with Template by:
 Copyright (c) 2013 pgRouting developers
@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/trsp/trsp.h"
 #include "c_types/edge_rt.h"
 #include "c_common/trsp_pgget.h"
-#include "drivers/trsp/trsp_core.h"
+#include "drivers/trsp/trsp_deprecated_driver.h"
 
 typedef struct restrict_t restrict_t;
 typedef struct Edge_rt Edge_t;

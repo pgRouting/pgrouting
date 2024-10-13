@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: trsp_core.cpp
+File: trsp_deprecated_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "drivers/trsp/trsp_core.h"
+#include "drivers/trsp/trsp_deprecated_driver.h"
 
 #ifdef __MINGW32__
 #include <winsock2.h>
