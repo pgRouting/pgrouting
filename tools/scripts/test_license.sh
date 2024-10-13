@@ -30,7 +30,7 @@ pushd "${DIR}" > /dev/null || exit
 missing1=$(mylicensecheck doc | grep "No copyright")
 missing2=$(grep --files-without-match 'Creative Commons' doc/*/*.rst)
 missing3=$(mylicensecheck docqueries | grep "No copyright")
-missing4=$(grep --files-without-match 'Creative Commons' docqueries/*/*.sql)
+missing4=$(grep --files-without-match 'Creative Commons' docqueries/*/*.pg)
 popd > /dev/null || exit
 
 #mylicensecheck doc
