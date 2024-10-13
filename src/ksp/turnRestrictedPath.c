@@ -175,9 +175,9 @@ _pgr_turnrestrictedpath(PG_FUNCTION_ARGS) {
 
         int64_t seq = funcctx->call_cntr == 0?  1 : path[funcctx->call_cntr - 1].start_id;
 
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int32GetDatum(path[funcctx->call_cntr].start_id + 1);
-        values[2] = Int32GetDatum(seq);
+        values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
+        values[1] = Int32GetDatum((int32_t)path[funcctx->call_cntr].start_id + 1);
+        values[2] = Int32GetDatum((int32_t)seq);
         values[3] = Int64GetDatum(path[funcctx->call_cntr].node);
         values[4] = Int64GetDatum(path[funcctx->call_cntr].edge);
         values[5] = Float8GetDatum(path[funcctx->call_cntr].cost);

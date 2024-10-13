@@ -179,8 +179,8 @@ _pgr_bdastar(PG_FUNCTION_ARGS) {
 
         int64_t seq = call_cntr == 0?  1 : result_tuples[call_cntr - 1].start_id;
 
-        values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int32GetDatum(seq);
+        values[0] = Int32GetDatum((int32_t)call_cntr + 1);
+        values[1] = Int32GetDatum((int32_t)seq);
         values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
         values[3] = Int64GetDatum(result_tuples[call_cntr].end_id);
         values[4] = Int64GetDatum(result_tuples[call_cntr].node);
