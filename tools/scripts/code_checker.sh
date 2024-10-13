@@ -54,7 +54,7 @@ if test -z "$DIRECTORY"; then
     echo "------ *.cpp  ------"
     echo "--------------------"
     code_linter/cpplint/cpplint.py --linelength=120 \
-        --filter=-runtime/references,-whitespace/indent_namespace,"${INCLUDE_ORDER}"  \
+        --filter=-readability/nolint,-runtime/references,-whitespace/indent_namespace,"${INCLUDE_ORDER}"  \
         --linelength=120 src/*/*.cpp
 
     echo "--------------------"
