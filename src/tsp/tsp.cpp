@@ -230,7 +230,7 @@ TSP::tsp(
     auto u = get_boost_vertex(start_vid);
     auto v = get_boost_vertex(end_vid);
 
-    auto dummy_node = add_vertex(num_vertices(graph), graph);
+    auto dummy_node = add_vertex(static_cast<int>(num_vertices(graph)), graph);
     id_to_V.insert(std::make_pair(0, dummy_node));
     V_to_id.insert(std::make_pair(dummy_node, 0));
     boost::add_edge(u, dummy_node, 0, graph);
@@ -299,8 +299,8 @@ TSP::TSP(std::vector<IID_t_rt> &distances) {
         }
     }
 
-    size_t i {0};
-    for (const auto id : ids) {
+    int i {0};
+    for (const auto &id : ids) {
         auto v = add_vertex(i, graph);
         id_to_V.insert(std::make_pair(id, v));
         V_to_id.insert(std::make_pair(v, id));
@@ -384,7 +384,7 @@ TSP::TSP(const std::vector<Coordinate_t> &coordinates) {
     /*
      * Inserting vertices
      */
-    size_t i{0};
+    int i{0};
     for (const auto &id : ids) {
         auto v = add_vertex(i, graph);
         id_to_V.insert(std::make_pair(id, v));

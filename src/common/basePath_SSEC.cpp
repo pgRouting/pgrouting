@@ -234,7 +234,6 @@ void Path::append(const Path &other) {
 void Path::generate_postgres_data(
         Path_rt **postgres_data,
         size_t &sequence) const {
-    int i = 1;
     for (const auto e : path) {
         auto agg_cost = std::fabs(
                 e.agg_cost - (std::numeric_limits<double>::max)()) < 1?
@@ -243,7 +242,6 @@ void Path::generate_postgres_data(
             std::numeric_limits<double>::infinity() : e.cost;
 
         (*postgres_data)[sequence] = {start_id(), end_id(), e.node, e.edge, cost, agg_cost};
-        ++i;
         ++sequence;
     }
 }
