@@ -149,7 +149,7 @@ jobs:
           cat release_body.txt
 
       - name: Create Draft Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           body_path: release_body.txt
           name: ${{ env.TAG_NAME }}
