@@ -10,12 +10,12 @@
     <title>pgr_TSPeuclidean &#8212; pgRouting Manual (3.6)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=48fbbb20"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/documentation_options.js?v=2c346b64"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=e87c01b6"></script>
+    <script src="_static/page_history.js?v=c8ec7c59"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -44,7 +44,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.6.2</b></span>
+        <span class="navbar-text pull-left"><b>v3.6.3</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -167,7 +167,58 @@
 
 <div class="container">
     <div class="row">
-        <div class="body span12 content" role="main">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code></a><ul>
+<li><a class="reference internal" href="#description">Description</a><ul>
+<li><a class="reference internal" href="#problem-definition">Problem Definition</a></li>
+<li><a class="reference internal" href="#characteristics">Characteristics</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a><ul>
+<li><a class="reference internal" href="#tsp-optional-parameters">TSP optional parameters</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
+<li><a class="reference internal" href="#coordinates-sql">Coordinates SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">Result columns</a></li>
+<li><a class="reference internal" href="#additional-examples">Additional Examples</a><ul>
+<li><a class="reference internal" href="#test-29-cities-of-western-sahara">Test 29 cities of Western Sahara</a><ul>
+<li><a class="reference internal" href="#creating-a-table-for-the-data-and-storing-the-data">Creating a table for the data and storing the data</a></li>
+<li><a class="reference internal" href="#adding-a-geometry-for-visual-purposes">Adding a geometry (for visual purposes)</a></li>
+<li><a class="reference internal" href="#total-tour-cost">Total tour cost</a></li>
+<li><a class="reference internal" href="#getting-a-geometry-of-the-tour">Getting a geometry of the tour</a></li>
+<li><a class="reference internal" href="#visual-results">Visual results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="pgr_TSP.html" title="Previous Chapter: pgr_TSP"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_TSP</span>
+    </a>
+  </li>
+  <li>
+    <a href="spanningTree-family.html" title="Next Chapter: Spanning Tree - Category"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Spanning Tree... &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_TSPeuclidean','en'));  </script>
             
   <div class="line-block">
@@ -179,7 +230,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code> - Aproximation using <em>metric</em> algorithm.</p></li>
 </ul>
 <figure class="align-default" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
+<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
+</a>
 <figcaption>
 <p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
@@ -531,8 +583,10 @@ SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
 <h4><a class="toc-backref" href="#id7" role="doc-backlink">Visual results</a><a class="headerlink" href="#visual-results" title="Link to this heading">¶</a></h4>
 <p>Visualy, The first image is the <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/witour.html">optimal solution</a> and the second image
 is the solution obtained with <code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code>.</p>
-<a class="reference internal image-reference" href="_images/wi29optimal.png"><img alt="_images/wi29optimal.png" src="_images/wi29optimal.png" style="width: 383.5px; height: 311.0px;" /></a>
-<a class="reference internal image-reference" href="_images/wi29Solution.png"><img alt="_images/wi29Solution.png" src="_images/wi29Solution.png" style="width: 357.0px; height: 313.0px;" /></a>
+<a class="reference internal image-reference" href="_images/wi29optimal.png"><img alt="_images/wi29optimal.png" src="_images/wi29optimal.png" style="width: 383.5px; height: 311.0px;" />
+</a>
+<a class="reference internal image-reference" href="_images/wi29Solution.png"><img alt="_images/wi29Solution.png" src="_images/wi29Solution.png" style="width: 357.0px; height: 313.0px;" />
+</a>
 </section>
 </section>
 </section>
@@ -565,9 +619,9 @@ is the solution obtained with <code class="docutils literal notranslate"><span c
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.6.2.<br/>
-      Last updated on Mar 30, 2024.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.6.3.<br/>
+      Last updated on Oct 16, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>
 </footer>

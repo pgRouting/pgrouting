@@ -10,13 +10,14 @@
     <title>Tabla de Contenido &#8212; pgRouting Manual (3.6)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=372a2407"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/documentation_options.js?v=53e5f443"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=e87c01b6"></script>
-    <script src="_static/translations.js?v=efdbd0b9"></script>
+    <script src="_static/page_history.js?v=c8ec7c59"></script>
+    <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -44,7 +45,7 @@
 
         <a class="brand" href="#">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.6.2</b></span>
+        <span class="navbar-text pull-left"><b>v3.6.3</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -105,8 +106,9 @@
 <li><a class="reference internal" href="#available-functions-but-not-official-pgrouting-functions">Funciones disponibles pero no oficiales de pgRouting</a></li>
 <li><a class="reference internal" href="#release-notes"><span class="xref std std-doc">release_notes</span></a><ul>
 <li><a class="reference internal" href="#current-release">Current release</a></li>
-<li><a class="reference internal" href="#pgrouting-3-6-2-release-notes">pgRouting 3.6.2 Release Notes</a></li>
-<li><a class="reference internal" href="#all-releases">All releases</a><ul>
+<li><a class="reference internal" href="#pgrouting-3-6-3-release-notes">Notas de la versión de pgRouting 3.6.3</a></li>
+<li><a class="reference internal" href="#pgrouting-3-6-2-release-notes">Notas de la versión de pgRouting 3.6.2</a></li>
+<li><a class="reference internal" href="#all-releases">Todas las versiones</a><ul>
 </ul>
 </li>
 </ul>
@@ -151,7 +153,43 @@
 
 <div class="container">
     <div class="row">
-        <div class="body span12 content" role="main">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#">Tabla de Contenido</a><ul>
+<li><a class="reference internal" href="#general">General</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#pgrouting-concepts">Conceptos de pgRouting</a></li>
+<li><a class="reference internal" href="#routingfunctions"><span class="xref std std-doc">routingFunctions</span></a></li>
+<li><a class="reference internal" href="#functions-by-categories">Funciones por categorías</a></li>
+<li><a class="reference internal" href="#available-functions-but-not-official-pgrouting-functions">Funciones disponibles pero no oficiales de pgRouting</a></li>
+<li><a class="reference internal" href="#release-notes"><span class="xref std std-doc">release_notes</span></a><ul>
+<li><a class="reference internal" href="#current-release">Current release</a></li>
+<li><a class="reference internal" href="#pgrouting-3-6-3-release-notes">Notas de la versión de pgRouting 3.6.3</a></li>
+<li><a class="reference internal" href="#pgrouting-3-6-2-release-notes">Notas de la versión de pgRouting 3.6.2</a></li>
+<li><a class="reference internal" href="#all-releases">Todas las versiones</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="pgRouting-introduction.html" title="Next Chapter: Introducción"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Introducción &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
             <script> document.write(get_history('index','es'));  </script>
             
   <div class="line-block">
@@ -160,7 +198,7 @@
 <section id="table-of-contents">
 <h1>Tabla de Contenido<a class="headerlink" href="#table-of-contents" title="Link to this heading">¶</a></h1>
 <p>pgRouting extiende la base de datos geospacial de <a class="reference external" href="https://postgis.net">PostGIS</a>/<a class="reference external" href="https://www.postgresql.org">PostgreSQL</a> para proporcionar enrutamiento geoespacial y otras funciones de análisis de red.</p>
-<p>Este es el manual para la version v3.6.2 de pgRouting.</p>
+<p>Este es el manual para la version v3.6.3 de pgRouting.</p>
 <img alt="Licencia de Creative Commons Attribution-Share Alike 3.0" class="align-left" src="_images/ccbysa.png" />
 <p>El Manual de pgRouting está bajo licencia <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>. Siéntase libre de usar este material de la manera que desee, pero le pedimos que atribuya el crédito correspondiente al proyecto pgRouting y, siempre que sea posible, visite <a class="reference external" href="https://pgrouting.org">https://pgrouting.org</a>. Para otras licencias utilizadas en pgRouting, consulte la página <a class="reference internal" href="pgRouting-introduction.html#license"><span class="std std-ref">Licencias</span></a> .</p>
 <section id="general">
@@ -207,8 +245,8 @@
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#graphs-without-geometries">Grafos sin geometrías</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#graphs-with-geometries">Grafos con geometrías</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#check-the-routing-topology">Compruebe la Topología de Ruteo</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#function-s-structure">Function’s structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#function-s-overloads">Function’s overloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#function-s-structure">Estructura de la función</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#function-s-overloads">Sobrecargas de funciones</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#inner-queries">Consultas Internas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#parameters">Parámetros</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#result-columns">Columnas de resultados</a></li>
@@ -327,9 +365,8 @@
 <p><a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Categoría</span></a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_aStarCostMatrix.html"><span class="doc">pgr_aStarCostMatrix</span></a></p></li>
-<li><p><a class="reference internal" href="pgr_bdAstarCostMatrix.html"><span class="doc">pgr_bdAstarCostMatrix</span></a></p></li>
-<li><p><a class="reference internal" href="pgr_bdDijkstraCostMatrix.html"><span class="doc">pgr_bdDijkstraCostMatrix</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_bdAstarCostMatrix.html"><span class="doc">pgr_bdAstarCostMatrix</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_bdDijkstraCostMatrix.html"><span class="doc">pgr_bdDijkstraCostMatrix</span></a></p></li>
 </ul>
 <p><a class="reference internal" href="drivingDistance-category.html"><span class="doc">Distancia Manejando - Categoría</span></a></p>
@@ -377,10 +414,47 @@
 <section id="current-release">
 <h3>Current release<a class="headerlink" href="#current-release" title="Link to this heading">¶</a></h3>
 </section>
+<section id="pgrouting-3-6-3-release-notes">
+<h3>Notas de la versión de pgRouting 3.6.3<a class="headerlink" href="#pgrouting-3-6-3-release-notes" title="Link to this heading">¶</a></h3>
+<p>Para ver todas las incidencias y pull requests cerrados por esta versión, consulte <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.6.3%22">Git closed milestone for 3.6.3</a></p>
+<p class="rubric">Construir</p>
+<ul class="simple">
+<li><p>Explicit minimum requirements:</p>
+<ul>
+<li><p>postgres 11.0.0</p></li>
+<li><p>postgis 3.0.0</p></li>
+</ul>
+</li>
+<li><p>g++ 13+ is supported</p></li>
+</ul>
+<p class="rubric">Corrección de código</p>
+<ul class="simple">
+<li><p>Fix warnings from cpplint.</p></li>
+<li><p>Fix warnings from clang 18.</p></li>
+</ul>
+<p class="rubric">Pruebas CI</p>
+<ul class="simple">
+<li><p>Add a clang tidy test on changed files.</p></li>
+<li><p>Update test not done on versions: 3.0.1, 3.0.2, 3.0.3, 3.0.4, 3.1.0, 3.1.1,
+3.1.2</p></li>
+</ul>
+<p class="rubric">Documentación</p>
+<ul class="simple">
+<li><p>Results of documentation queries adujsted to boost 1.83.0 version:</p>
+<ul>
+<li><p>pgr_edgeDisjointPaths</p></li>
+<li><p>pgr_stoerWagner</p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Pruebas pgtap</p>
+<ul class="simple">
+<li><p>corrección de errores</p></li>
+</ul>
+</section>
 <section id="pgrouting-3-6-2-release-notes">
-<h3>pgRouting 3.6.2 Release Notes<a class="headerlink" href="#pgrouting-3-6-2-release-notes" title="Link to this heading">¶</a></h3>
-<p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.6.2%22">Git closed
-milestone for 3.6.2</a></p>
+<h3>Notas de la versión de pgRouting 3.6.2<a class="headerlink" href="#pgrouting-3-6-2-release-notes" title="Link to this heading">¶</a></h3>
+<p>Para ver todas las incidencias y pull requests cerrados por esta versión, consulte <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.6.2%22">Git closed milestone for 3.6.2</a></p>
 <p class="rubric">Upgrade fix</p>
 <ul class="simple">
 <li><p>The upgrade was failing for same minor</p></li>
@@ -389,17 +463,17 @@ milestone for 3.6.2</a></p>
 <ul class="simple">
 <li><p>Fix warnings from cpplint</p></li>
 </ul>
-<p class="rubric">Others</p>
+<p class="rubric">Otros</p>
 <ul class="simple">
-<li><p>Adjust NEWS generator</p>
+<li><p>Ajustar el generador NEWS</p>
 <ul>
-<li><p>Name change to <cite>NEWS.md</cite> for better visualization on GitHub</p></li>
+<li><p>Cambio de nombre a <cite>NEWS.md</cite> para una mejor visualización en GitHub</p></li>
 </ul>
 </li>
 </ul>
 </section>
 <section id="all-releases">
-<h3>All releases<a class="headerlink" href="#all-releases" title="Link to this heading">¶</a></h3>
+<h3>Todas las versiones<a class="headerlink" href="#all-releases" title="Link to this heading">¶</a></h3>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a><ul>
@@ -433,9 +507,9 @@ milestone for 3.6.2</a></p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.6.2.<br/>
-      Actualizado por última vez en mar 30, 2024.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.6.3.<br/>
+      Actualizado por última vez en oct 16, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>
 </footer>

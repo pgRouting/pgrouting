@@ -10,12 +10,12 @@
     <title>Contraction - Family of functions &#8212; pgRouting Manual (3.6)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=48fbbb20"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/documentation_options.js?v=2c346b64"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=e87c01b6"></script>
+    <script src="_static/page_history.js?v=c8ec7c59"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -45,7 +45,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.6.2</b></span>
+        <span class="navbar-text pull-left"><b>v3.6.3</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -185,7 +185,75 @@
 
 <div class="container">
     <div class="row">
-        <div class="body span12 content" role="main">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#">Contraction - Family of functions</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#dead-end-contraction">Dead end contraction</a><ul>
+<li><a class="reference internal" href="#dead-end">Dead end</a><ul>
+<li><a class="reference internal" href="#dead-end-vertex-on-undirected-graph">Dead end vertex on undirected graph</a></li>
+<li><a class="reference internal" href="#dead-end-vertex-on-directed-graph">Dead end vertex on directed graph</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#operation-dead-end-contraction">Operation: Dead End Contraction</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#linear-contraction">Linear contraction</a><ul>
+<li><a class="reference internal" href="#linear">Linear</a><ul>
+<li><a class="reference internal" href="#linear-vertex-on-undirected-graph">Linear vertex on undirected graph</a></li>
+<li><a class="reference internal" href="#linear-vertex-on-directed-graph">Linear vertex on directed graph</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#operation-linear-contraction">Operation: Linear Contraction</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-cycle">The cycle</a></li>
+<li><a class="reference internal" href="#contracting-sample-data">Contracting sample data</a><ul>
+<li><a class="reference internal" href="#construction-of-the-graph-in-the-database">Construction of the graph in the database</a><ul>
+<li><a class="reference internal" href="#contraction-results">Contraction results</a></li>
+<li><a class="reference internal" href="#add-additional-columns">Add additional columns</a></li>
+<li><a class="reference internal" href="#store-contraction-information">Store contraction information</a></li>
+<li><a class="reference internal" href="#the-vertex-table-update">The vertex table update</a></li>
+<li><a class="reference internal" href="#the-edge-table-update">The edge table update</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-contracted-graph">The contracted graph</a><ul>
+<li><a class="reference internal" href="#vertices-that-belong-to-the-contracted-graph">Vertices that belong to the contracted graph.</a></li>
+<li><a class="reference internal" href="#edges-that-belong-to-the-contracted-graph">Edges that belong to the contracted graph.</a></li>
+<li><a class="reference internal" href="#contracted-graph">Contracted graph</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#using-the-contracted-graph">Using the contracted graph</a><ul>
+<li><a class="reference internal" href="#case-1-both-source-and-target-belong-to-the-contracted-graph">Case 1: Both source and target belong to the contracted graph.</a></li>
+<li><a class="reference internal" href="#case-2-source-and-or-target-belong-to-an-edge-subgraph">Case 2: Source and/or target belong to an edge subgraph.</a></li>
+<li><a class="reference internal" href="#case-3-source-and-or-target-belong-to-a-vertex">Case 3: Source and/or target belong to a vertex.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="pgr_makeConnected.html" title="Previous Chapter: pgr_makeConnected - Experimental"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_makeConne...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_contraction.html" title="Next Chapter: pgr_contraction"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_contraction &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
             <script> document.write(get_history('contraction-family','en'));  </script>
             
   <div class="line-block">
@@ -246,7 +314,7 @@ done.</p>
 <li><p>The green nodes are <a class="reference internal" href="#dead-end">dead end</a> nodes</p></li>
 <li><p>The blue nodes have an unlimited number of edges.</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-133c3d00246c459c4912dd2d409ee878545598e4.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-ef5116d42636a1711444f79368304c1978068213.png" alt="graph G {
     u, v [shape=circle;style=filled;width=.4;color=deepskyblue];
     a, b [style=filled; color=green];
     G [shape=tripleoctagon;width=1.5;style=filled;
@@ -283,7 +351,7 @@ done.</p>
 <li><p>The green nodes are <a class="reference internal" href="#dead-end">dead end</a> nodes</p></li>
 <li><p>The blue nodes have an unlimited number of incoming and/or outgoing edges.</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-c8e8001a0f075b45b5ef94157808fa302e8b62a7.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-82723db0022a25b1a9ffd323d95d9daeda8a2c1f.png" alt="digraph G {
     u, v, w, x, y [shape=circle;style=filled;width=.4;color=deepskyblue];
     a, b, c, d, e [style=filled; color=green];
     G [shape=tripleoctagon;width=1.5;style=filled;
@@ -362,7 +430,7 @@ even that the number of adjacent vertices is not 1 for</p>
 <h3>Operation: Dead End Contraction<a class="headerlink" href="#operation-dead-end-contraction" title="Link to this heading">¶</a></h3>
 <p>The dead end contraction will stop until there are no more dead end nodes.
 For example from the following graph where <span class="math notranslate nohighlight">\(w\)</span> is the <a class="reference internal" href="#dead-end">dead end</a> node:</p>
-<div class="graphviz"><img src="_images/graphviz-4fdcd0305dbfbab90073ec9514716ef0ad1e4f76.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-8ef6dd10de3e2f48d63ff7a0851f401fe2c8a22a.png" alt="digraph G {
     u, v [shape=circle;style=filled;width=.4;color=deepskyblue];
     w [style=filled; color=green];
     &quot;G&quot; [shape=tripleoctagon;style=filled;
@@ -374,7 +442,7 @@ For example from the following graph where <span class="math notranslate nohighl
 }" class="graphviz" /></div>
 <p>After contracting <span class="math notranslate nohighlight">\(w\)</span>, node <span class="math notranslate nohighlight">\(v\)</span> is now a <a class="reference internal" href="#dead-end">dead end</a> node and is
 contracted:</p>
-<div class="graphviz"><img src="_images/graphviz-82174f96e766deeae75a75488fa01f23af7da497.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-44f751227801adfe2756a5066b83a8e932268d07.png" alt="digraph G {
     u [shape=circle;style=filled;width=.4;color=deepskyblue];
     v [style=filled; color=green, label=&quot;v{w}&quot;];
     &quot;G&quot; [shape=tripleoctagon;style=filled;
@@ -386,7 +454,7 @@ contracted:</p>
 }" class="graphviz" /></div>
 <p>After contracting <span class="math notranslate nohighlight">\(v\)</span>, stop. Node <span class="math notranslate nohighlight">\(u\)</span> has the information of nodes
 that were contrcted.</p>
-<div class="graphviz"><img src="_images/graphviz-2d7779194092aa64d7a74051e7b24d8a962d9e0f.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-1fdb5a4269dc3d5f14197ba41c61e8a1f3f2775f.png" alt="digraph G {
     u [style=filled; color=green, label=&quot;u{v,w}&quot;];
     &quot;G&quot; [shape=tripleoctagon;style=filled;
          color=deepskyblue; label = &quot;Rest of the Graph&quot;];
@@ -418,7 +486,7 @@ that were contrcted.</p>
 <li><p>The blue nodes have an unlimited number of incoming and outgoing edges.</p></li>
 </ul>
 <p class="rubric">Undirected</p>
-<div class="graphviz"><img src="_images/graphviz-5565c2a3e64a5e493dd60c052a86cee32c294e38.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-2c64934e1318cf1b0fbb263edf75addebbeb6392.png" alt="graph G {
     u, w [shape=circle;style=filled;width=.4;color=deepskyblue];
     v [style=filled; color=green];
     G [shape=tripleoctagon;width=1.5;style=filled;
@@ -455,7 +523,7 @@ that were contrcted.</p>
 </ul>
 </li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-726b2c9e619c1609c8d06996b6392b09095c2986.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-a372f19fad77b867577e0b6450c882d1bbf72874.png" alt="digraph G {
     u, v, w, x, y, z [shape=circle;style=filled;width=.4;color=deepskyblue];
     a, b [style=filled; color=green];
     G [shape=tripleoctagon;width=1.5;style=filled;
@@ -501,7 +569,7 @@ that were contrcted.</p>
 <p>The linear contraction will stop when there are no more linear nodes.
 For example from the following graph where <span class="math notranslate nohighlight">\(v\)</span> and <span class="math notranslate nohighlight">\(w\)</span> are <a class="reference internal" href="#linear">linear</a>
 nodes:</p>
-<div class="graphviz"><img src="_images/graphviz-5d6780661464bc07b07b2af1a5d6b5f8f36ca90a.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-865ef229717c7b64018fc9fcb65b4a6d2f2052f8.png" alt="digraph G {
     u, z [shape=circle;style=filled;color=deepskyblue];
     v, w [style=filled; color=green];
     &quot;G&quot; [shape=tripleoctagon; style=filled;
@@ -518,7 +586,7 @@ nodes:</p>
 from the graph.</p></li>
 <li><p>A new edge <span class="math notranslate nohighlight">\(v \rightarrow z\)</span> is inserted represented with red color.</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-14be5626ee411f35a47287f42c24255e0dc350bb.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-2bbe18fa4d3e404d80eb937b6eb2633639d591a7.png" alt="digraph G {
     u, z [shape=circle;style=filled;color=deepskyblue];
     v [style=filled; color=green];
     &quot;G&quot; [shape=tripleoctagon; style=filled;
@@ -536,7 +604,7 @@ from the graph.</p></li>
 from the graph.</p></li>
 <li><p>A new edge <span class="math notranslate nohighlight">\(u \rightarrow z\)</span> is inserted represented with red color.</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-12be2629d707913e64a07fee1e387ff25af98fb6.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-a93daa3950f37f1d1d11eb7bfa4614514bc45fbb.png" alt="digraph G {
     u, z [shape=circle;style=filled;color=deepskyblue];
     &quot;G&quot; [shape=tripleoctagon; style=filled;
          color=deepskyblue;label = &quot;Rest of the Graph&quot;];
@@ -630,7 +698,8 @@ operation.</p>
 </pre></div>
 </div>
 <p>The original graph:</p>
-<a class="reference internal image-reference" href="_images/Fig6-undirected.png"><img alt="_images/Fig6-undirected.png" src="_images/Fig6-undirected.png" style="width: 241.0px; height: 217.5px;" /></a>
+<a class="reference internal image-reference" href="_images/Fig6-undirected.png"><img alt="_images/Fig6-undirected.png" src="_images/Fig6-undirected.png" style="width: 241.0px; height: 217.5px;" />
+</a>
 <section id="contraction-results">
 <h4><a class="toc-backref" href="#id3" role="doc-backlink">Contraction results</a><a class="headerlink" href="#contraction-results" title="Link to this heading">¶</a></h4>
 <p>The results do not represent the contracted graph.
@@ -655,9 +724,11 @@ because it was not affected by the contraction algorithm.</p>
 </pre></div>
 </div>
 <p>After doing the dead end contraction operation:</p>
-<a class="reference internal image-reference" href="_images/undirected_sampledata_b.png"><img alt="_images/undirected_sampledata_b.png" src="_images/undirected_sampledata_b.png" style="width: 175.75px; height: 198.5px;" /></a>
+<a class="reference internal image-reference" href="_images/undirected_sampledata_b.png"><img alt="_images/undirected_sampledata_b.png" src="_images/undirected_sampledata_b.png" style="width: 175.75px; height: 198.5px;" />
+</a>
 <p>After doing the linear contraction operation to the graph above:</p>
-<a class="reference internal image-reference" href="_images/undirected_sampledata_c.png"><img alt="_images/undirected_sampledata_c.png" src="_images/undirected_sampledata_c.png" style="width: 184.25px; height: 193.75px;" /></a>
+<a class="reference internal image-reference" href="_images/undirected_sampledata_c.png"><img alt="_images/undirected_sampledata_c.png" src="_images/undirected_sampledata_c.png" style="width: 184.25px; height: 193.75px;" />
+</a>
 <p>The process to create the contraction graph on the database:</p>
 </section>
 <section id="add-additional-columns">
@@ -860,7 +931,8 @@ the vertices.</p>
 </section>
 <section id="contracted-graph">
 <h4><a class="toc-backref" href="#id11" role="doc-backlink">Contracted graph</a><a class="headerlink" href="#contracted-graph" title="Link to this heading">¶</a></h4>
-<a class="reference internal image-reference" href="_images/newgraph.png"><img alt="_images/newgraph.png" src="_images/newgraph.png" style="width: 184.25px; height: 193.75px;" /></a>
+<a class="reference internal image-reference" href="_images/newgraph.png"><img alt="_images/newgraph.png" src="_images/newgraph.png" style="width: 184.25px; height: 193.75px;" />
+</a>
 </section>
 </section>
 <section id="using-the-contracted-graph">
@@ -1155,9 +1227,9 @@ to an edge subgraph, a path is still found.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.6.2.<br/>
-      Last updated on Mar 30, 2024.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.6.3.<br/>
+      Last updated on Oct 16, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>
 </footer>

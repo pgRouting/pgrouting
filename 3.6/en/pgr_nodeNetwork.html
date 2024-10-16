@@ -10,12 +10,12 @@
     <title>pgr_nodeNetwork &#8212; pgRouting Manual (3.6)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=48fbbb20"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/documentation_options.js?v=2c346b64"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=e87c01b6"></script>
+    <script src="_static/page_history.js?v=c8ec7c59"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -44,7 +44,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.6.2</b></span>
+        <span class="navbar-text pull-left"><b>v3.6.3</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -146,7 +146,37 @@
 
 <div class="container">
     <div class="row">
-        <div class="body span12 content" role="main">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#">pgr_nodeNetwork</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#images">Images</a></li>
+<li><a class="reference internal" href="#comparing-the-results">Comparing the results</a></li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="pgr_analyzeOneWay.html" title="Previous Chapter: pgr_analyzeOneWay"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_analyzeOneWay</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_extractVertices.html" title="Next Chapter: pgr_extractVertices – Proposed"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_extractVe... &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_nodeNetwork','en'));  </script>
             
   <div class="line-block">
@@ -221,7 +251,7 @@ are considered the same node.</p>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code> Unique identifier for the table</p>
 </dd>
 <dt class="field-even">old_id<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code>  Identifier of the edge in original table</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code> Identifier of the edge in original table</p>
 </dd>
 <dt class="field-odd">sub_id<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Segment number of the original edge</p>
@@ -382,9 +412,11 @@ segmented</p>
 <section id="images">
 <h2>Images<a class="headerlink" href="#images" title="Link to this heading">¶</a></h2>
 <p class="rubric">Before Image</p>
-<a class="reference internal image-reference" href="_images/before_node_net.png"><img alt="Before image" class="align-left" src="_images/before_node_net.png" style="width: 460.2px; height: 440.4px;" /></a>
+<a class="reference internal image-reference" href="_images/before_node_net.png"><img alt="Before image" class="align-left" src="_images/before_node_net.png" style="width: 460.2px; height: 440.4px;" />
+</a>
 <p class="rubric">After Image</p>
-<a class="reference internal image-reference" href="_images/after_node_net.png"><img alt="After image" class="align-left" src="_images/after_node_net.png" style="width: 456.0px; height: 439.2px;" /></a>
+<a class="reference internal image-reference" href="_images/after_node_net.png"><img alt="After image" class="align-left" src="_images/after_node_net.png" style="width: 456.0px; height: 439.2px;" />
+</a>
 </section>
 <section id="comparing-the-results">
 <h2>Comparing the results<a class="headerlink" href="#comparing-the-results" title="Link to this heading">¶</a></h2>
@@ -408,7 +440,7 @@ segmented</p>
 <tr class="row-even"><td><p>Dead ends</p></td>
 <td><ul class="simple">
 <li><p>Edges with 1 dead end: 1,6,24</p></li>
-<li><p>Edges with 2 dead ends  17,18</p></li>
+<li><p>Edges with 2 dead ends: 17,18</p></li>
 </ul>
 <p>Edge 17’s right node is a dead end
 because there is no other edge sharing
@@ -417,7 +449,7 @@ that same node. (cnt=1)</p>
 <td><p>Edges with 1 dead end: 1-1 ,6-1,14-2, 18-1 17-1 18-2</p></td>
 </tr>
 <tr class="row-odd"><td><p>Isolated segments</p></td>
-<td><p>two isolated segments:  17 and 18 both
+<td><p>two isolated segments: 17 and 18 both
 they have 2 dead ends</p></td>
 <td><dl class="simple">
 <dt>No Isolated segments</dt><dd><ul class="simple">
@@ -583,9 +615,9 @@ with edges 17 and 13.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.6.2.<br/>
-      Last updated on Mar 30, 2024.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.6.3.<br/>
+      Last updated on Oct 16, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>
 </footer>

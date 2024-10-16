@@ -10,13 +10,13 @@
     <title>pgr_edwardMoore - Experimental &#8212; pgRouting Manual (3.6)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=372a2407"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/documentation_options.js?v=53e5f443"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=e87c01b6"></script>
-    <script src="_static/translations.js?v=efdbd0b9"></script>
+    <script src="_static/page_history.js?v=c8ec7c59"></script>
+    <script src="_static/translations.js?v=f85f4cfb"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
@@ -46,7 +46,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.6.2</b></span>
+        <span class="navbar-text pull-left"><b>v3.6.3</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -161,7 +161,50 @@
 
 <div class="container">
     <div class="row">
-        <div class="body span12 content" role="main">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span></code> - Experimental</a><ul>
+<li><a class="reference internal" href="#description">Descripción</a></li>
+<li><a class="reference internal" href="#signatures">Firmas</a><ul>
+<li><a class="reference internal" href="#one-to-one">Uno a Uno</a></li>
+<li><a class="reference internal" href="#one-to-many">Uno a Muchos</a></li>
+<li><a class="reference internal" href="#many-to-one">Muchos a Uno</a></li>
+<li><a class="reference internal" href="#many-to-many">Muchos a Muchos</a></li>
+<li><a class="reference internal" href="#combinations">Combinaciones</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#parameters">Parámetros</a></li>
+<li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
+<li><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
+<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a></li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="pgr_dagShortestPath.html" title="Previous Chapter: pgr_dagShortestPath - Experimental"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_dagShorte...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_isPlanar.html" title="Next Chapter: pgr_isPlanar - Experimental"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_isPlanar ... &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_edwardMoore','es'));  </script>
             
   <div class="line-block">
@@ -216,9 +259,9 @@
 <li><p>Nuevas firmas <strong>experimental</strong>:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span></code> (<a class="reference internal" href="#one-to-one">Uno a Uno</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span></code> (<a class="reference internal" href="#one-to-many">One to Many</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span></code> (<a class="reference internal" href="#many-to-one">Many to One</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span></code> (<a class="reference internal" href="#many-to-many">Many to Many</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span></code> (<a class="reference internal" href="#one-to-many">Uno a Muchos</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span></code> (<a class="reference internal" href="#many-to-one">Muchos a Uno</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span></code> (<a class="reference internal" href="#many-to-many">Muchos a Muchos</a>)</p></li>
 </ul>
 </li>
 </ul>
@@ -252,10 +295,10 @@
 <li><p><cite>end_vid</cite> ascendente</p></li>
 </ul>
 </li>
-<li><p>Running time:</p>
+<li><p>Tiempo de ejecución:</p>
 <ul>
-<li><p>Worst case: <span class="math notranslate nohighlight">\(O(| V | * | E |)\)</span></p></li>
-<li><p>Average case: <span class="math notranslate nohighlight">\(O( | E | )\)</span></p></li>
+<li><p>Peor caso: <span class="math notranslate nohighlight">\(O(| V | * | E |)\)</span></p></li>
+<li><p>Caso promedio: <span class="math notranslate nohighlight">\(O( | E | )\)</span></p></li>
 </ul>
 </li>
 </ul>
@@ -274,7 +317,7 @@
 </div>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid],</span> <span class="pre">[end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
-<div class="line">OR EMPTY SET</div>
+<div class="line">O CONJUNTO VACÍO</div>
 </div>
 </div>
 <section id="one-to-one">
@@ -286,7 +329,7 @@
 </div>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
-<div class="line">OR EMPTY SET</div>
+<div class="line">O CONJUNTO VACÍO</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -319,7 +362,7 @@
 </div>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
-<div class="line">OR EMPTY SET</div>
+<div class="line">O CONJUNTO VACÍO</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -357,7 +400,7 @@
 </div>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
-<div class="line">OR EMPTY SET</div>
+<div class="line">O CONJUNTO VACÍO</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -395,7 +438,7 @@
 </div>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
-<div class="line">OR EMPTY SET</div>
+<div class="line">O CONJUNTO VACÍO</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -441,7 +484,7 @@
 </div>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
-<div class="line">OR EMPTY SET</div>
+<div class="line">O CONJUNTO VACÍO</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -627,7 +670,7 @@
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
-<td><p>Identificador del vértice de salida.</p></td>
+<td><p>Identificador del vértice de partida.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
@@ -832,9 +875,9 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.6.2.<br/>
-      Actualizado por última vez en mar 30, 2024.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.6.3.<br/>
+      Actualizado por última vez en oct 16, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>
 </footer>

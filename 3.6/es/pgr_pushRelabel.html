@@ -10,13 +10,13 @@
     <title>pgr_pushRelabel &#8212; pgRouting Manual (3.6)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=372a2407"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/documentation_options.js?v=53e5f443"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=e87c01b6"></script>
-    <script src="_static/translations.js?v=efdbd0b9"></script>
+    <script src="_static/page_history.js?v=c8ec7c59"></script>
+    <script src="_static/translations.js?v=f85f4cfb"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
@@ -46,7 +46,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.6.2</b></span>
+        <span class="navbar-text pull-left"><b>v3.6.3</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -160,7 +160,49 @@
 
 <div class="container">
     <div class="row">
-        <div class="body span12 content" role="main">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_pushRelabel</span></code></a><ul>
+<li><a class="reference internal" href="#description">Descripción</a></li>
+<li><a class="reference internal" href="#signatures">Firmas</a><ul>
+<li><a class="reference internal" href="#one-to-one">Uno a Uno</a></li>
+<li><a class="reference internal" href="#one-to-many">Uno a Muchos</a></li>
+<li><a class="reference internal" href="#many-to-one">Muchos a Uno</a></li>
+<li><a class="reference internal" href="#many-to-many">Muchos a Muchos</a></li>
+<li><a class="reference internal" href="#combinations">Combinaciones</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#parameters">Parámetros</a></li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
+<li><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
+<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a></li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="pgr_edmondsKarp.html" title="Previous Chapter: pgr_edmondsKarp"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_edmondsKarp</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_edgeDisjointPaths.html" title="Next Chapter: pgr_edgeDisjointPaths"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_edgeDisjointPaths &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_pushRelabel','es'));  </script>
             
   <div class="line-block">
@@ -170,7 +212,8 @@
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_pushRelabel</span></code><a class="headerlink" href="#pgr-pushrelabel" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_pushRelabel</span></code> — Calcula el flujo en los bordes del grafo que maximiza el flujo de los orígenes a los destinos mediante el Algoritmo Push Relabel.</p>
 <figure class="align-default" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
+<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
+</a>
 <figcaption>
 <p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
@@ -211,16 +254,21 @@
 <li><p>El proceso se realiza sólo en aristas con capacidades positivas.</p></li>
 <li><p>Cuando el flujo máximo es 0 entonces no hay flujo, se devolverá: <strong>EMPTY SET</strong>.</p>
 <ul>
-<li><p>No hay ningún flujo cuando el <strong>orígen</strong> es el mismo que el <strong>destino</strong>.</p></li>
+<li><p>No hay flujo cuando el origen tiene el mismo valor que el destino.</p></li>
 </ul>
 </li>
-<li><p>Cualquier valor duplicado en el/los orígen(es) o en el/los destino(s) será ignorado.</p></li>
+<li><p>Los valores duplicados en origen o destino se ignoran.</p></li>
 <li><p>Calcula la capacidad de flujo/residuo para cada arista. En la salida</p>
 <ul>
 <li><p>Se omiten las aristas con flujo cero.</p></li>
 </ul>
 </li>
-<li><p>Crea una <strong>súper origen</strong>, con aristas para todos las fuentes(es), y un <strong>súper destino</strong> con aristas para todos los destino(s).</p></li>
+<li><p>Crea</p>
+<ul>
+<li><p>una <strong>super fuente</strong> y aristas desde ella a todas las fuentes,</p></li>
+<li><p>un <strong>super objetivo</strong> y aristas desde él a todos los objetivos.</p></li>
+</ul>
+</li>
 <li><p>Se garantiza que el flujo máximo a través del grafo es el valor devuelto por <a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> cuando es ejecutado con los mismos parámetros y se puede calcular:</p>
 <ul>
 <li><p>Mediante la suma de los flujos salientes de las fuentes</p></li>
@@ -246,7 +294,7 @@
 </div>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity)</span></code></div>
-<div class="line">OR EMPTY SET</div>
+<div class="line">O CONJUNTO VACÍO</div>
 </div>
 </div>
 <section id="one-to-one">
@@ -258,7 +306,7 @@
 </div>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity)</span></code></div>
-<div class="line">OR EMPTY SET</div>
+<div class="line">O CONJUNTO VACÍO</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -290,7 +338,7 @@
 </div>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity)</span></code></div>
-<div class="line">OR EMPTY SET</div>
+<div class="line">O CONJUNTO VACÍO</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -331,7 +379,7 @@
 </div>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity)</span></code></div>
-<div class="line">OR EMPTY SET</div>
+<div class="line">O CONJUNTO VACÍO</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -363,7 +411,7 @@
 </div>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity)</span></code></div>
-<div class="line">OR EMPTY SET</div>
+<div class="line">O CONJUNTO VACÍO</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -401,7 +449,7 @@
 </div>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">flow,</span> <span class="pre">residual_capacity)</span></code></div>
-<div class="line">OR EMPTY SET</div>
+<div class="line">O CONJUNTO VACÍO</div>
 </div>
 </div>
 <dl class="field-list simple">
@@ -560,7 +608,7 @@
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
-<td><p>Identificador del vértice de salida.</p></td>
+<td><p>Identificador del vértice de partida.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
@@ -670,9 +718,9 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.6.2.<br/>
-      Actualizado por última vez en mar 30, 2024.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.6.3.<br/>
+      Actualizado por última vez en oct 16, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>
 </footer>
