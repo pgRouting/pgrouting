@@ -1,10 +1,7 @@
 name: Release
 
 on:
-  push:
-    tags:
-      - 'v*.*.*'
-
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -25,6 +22,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Initialize mandatory git config
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
       - name: Get postgres version
         run: |
           sudo service postgresql start
@@ -34,17 +36,14 @@ jobs:
           echo "PGPORT=5432" >> $GITHUB_ENV
           echo "PGIS=3" >> $GITHUB_ENV
           echo "PGROUTING_VERSION=${PGROUTING_VERSION}" >> $GITHUB_ENV
+          echo "TAG_NAME=v${PGROUTING_VERSION}" >> $GITHUB_ENV
 
-      - name: Verify Tag Name
+      - name: Create and Push Tag
         run: |
-          TAG_NAME=${GITHUB_REF#refs/*/}
-          echo "TAG_NAME=${TAG_NAME}" >> $GITHUB_ENV
-          echo ${TAG_NAME}
-          echo ${PGROUTING_VERSION}
-          if [ "${TAG_NAME}" != "v${PGROUTING_VERSION}" ]; then
-            echo "Tag name should be v${PGROUTING_VERSION}"
-            exit 1
-          fi
+          git tag -a "${TAG_NAME}" -m "Release version ${TAG_NAME}"
+          git push origin "${TAG_NAME}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract branch name and commit hash
         run: |
@@ -88,7 +87,7 @@ jobs:
           mkdir build
           cd build
           cmake -DPOSTGRESQL_VERSION=${PGVER} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON -DCMAKE_BUILD_TYPE=Release \
-              -DES=ON -DZH_HANS=ON..
+              -DES=ON -DZH_HANS=ON ..
 
       - name: Build
         run: |
@@ -97,11 +96,6 @@ jobs:
           make -j 4
           sudo make install
           make doxy
-
-      - name: Initialize mandatory git config
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Update Users Documentation
         run: |
