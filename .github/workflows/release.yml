@@ -1,10 +1,7 @@
 name: Release
 
 on:
-  push:
-    tags:
-      - 'v*.*.*'
-
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -25,6 +22,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Initialize mandatory git config
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
       - name: Get postgres version
         run: |
           sudo service postgresql start
@@ -34,17 +36,14 @@ jobs:
           echo "PGPORT=5432" >> $GITHUB_ENV
           echo "PGIS=3" >> $GITHUB_ENV
           echo "PGROUTING_VERSION=${PGROUTING_VERSION}" >> $GITHUB_ENV
+          echo "TAG_NAME=v${PGROUTING_VERSION}" >> $GITHUB_ENV
 
-      - name: Verify Tag Name
+      - name: Create and Push Tag
         run: |
-          TAG_NAME=${GITHUB_REF#refs/*/}
-          echo "TAG_NAME=${TAG_NAME}" >> $GITHUB_ENV
-          echo ${TAG_NAME}
-          echo ${PGROUTING_VERSION}
-          if [ "${TAG_NAME}" != "v${PGROUTING_VERSION}" ]; then
-            echo "Tag name should be v${PGROUTING_VERSION}"
-            exit 1
-          fi
+          git tag -a "${TAG_NAME}" -m "Release version ${TAG_NAME}"
+          git push origin "${TAG_NAME}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract branch name and commit hash
         run: |
@@ -62,7 +61,7 @@ jobs:
             $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 
       - name: Install python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
@@ -87,7 +86,8 @@ jobs:
           export PATH=/usr/lib/postgresql/${PGVER}/bin:$PATH
           mkdir build
           cd build
-          cmake -DPOSTGRESQL_VERSION=${PGVER} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON -DCMAKE_BUILD_TYPE=Release -DES=ON ..
+          cmake -DPOSTGRESQL_VERSION=${PGVER} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON -DCMAKE_BUILD_TYPE=Release \
+              -DES=ON -DZH_HANS=ON ..
 
       - name: Build
         run: |
@@ -96,11 +96,6 @@ jobs:
           make -j 4
           sudo make install
           make doxy
-
-      - name: Initialize mandatory git config
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Update Users Documentation
         run: |
@@ -140,26 +135,15 @@ jobs:
         run: |
           cd build/doc
 
-          cp -r html doc-v${PGROUTING_VERSION}-en-es
-          tar -zcvf doc-v${PGROUTING_VERSION}-en-es.tar.gz doc-v${PGROUTING_VERSION}-en-es
-
-          cp -r html doc-v${PGROUTING_VERSION}-en
-          rm -rf doc-v${PGROUTING_VERSION}-en/es
-          tar -zcvf doc-v${PGROUTING_VERSION}-en.tar.gz doc-v${PGROUTING_VERSION}-en
-
-          cp -r html doc-v${PGROUTING_VERSION}-es
-          rm -rf doc-v${PGROUTING_VERSION}-es/en
-          perl -pi -e 's/en\/index.html/es\/index.html/g' doc-v${PGROUTING_VERSION}-es/index.html
-          tar -zcvf doc-v${PGROUTING_VERSION}-es.tar.gz doc-v${PGROUTING_VERSION}-es
+          cp -r html doc-v${PGROUTING_VERSION}
+          tar -zcvf doc-v${PGROUTING_VERSION}.tar.gz doc-v${PGROUTING_VERSION}
 
           cd ../..
           grep -Pzo "(?s)pgRouting ${PGROUTING_VERSION//./\\.} Release Notes.*?(?=pgRouting .\..\.. Release Notes)" NEWS.md | tr '\0' '\n' > release_body.txt
           echo "**Attachments**" >> release_body.txt
           echo "File | Contents" >> release_body.txt
           echo "| --- | --- |" >> release_body.txt
-          echo "| \`doc-v${PGROUTING_VERSION}-en-es.tar.gz\` | English and Spanish documentation. Redirection to English" >> release_body.txt
-          echo "| \`doc-v${PGROUTING_VERSION}-en.tar.gz\`|English documentation. Redirection to English" >> release_body.txt
-          echo "| \`doc-v${PGROUTING_VERSION}-es.tar.gz\`|Spanish documentation. Redirection to Spanish" >> release_body.txt
+          echo "| \`doc-v${PGROUTING_VERSION}tar.gz\` | English and Spanish documentation. Redirection to English" >> release_body.txt
           echo "| \`pgrouting-${PGROUTING_VERSION}.tar.gz\` | tar.gz of the release" >> release_body.txt
           echo "| \`pgrouting-${PGROUTING_VERSION}.zip\`| zip of the release" >> release_body.txt
           cat release_body.txt
@@ -172,9 +156,7 @@ jobs:
           draft: true
           prerelease: false
           files: |
-            build/doc/doc-v${{ env.PGROUTING_VERSION }}-en-es.tar.gz
-            build/doc/doc-v${{ env.PGROUTING_VERSION }}-en.tar.gz
-            build/doc/doc-v${{ env.PGROUTING_VERSION }}-es.tar.gz
+            build/doc/doc-v${{ env.PGROUTING_VERSION }}.tar.gz
             ${{ github.event.repository.name }}-${{ env.PGROUTING_VERSION }}.zip
             ${{ github.event.repository.name }}-${{ env.PGROUTING_VERSION }}.tar.gz
 
