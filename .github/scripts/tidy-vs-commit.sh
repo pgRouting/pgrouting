@@ -33,7 +33,7 @@ if [ ${#MODIFIED_HEADERS[@]} != 0 ] ; then
     for f in ${MODIFIED_HEADERS}
     do
         echo "${f}"
-        clang-tidy "${CHECKS}" -header-filter=.* "${f}" \
-            -- -I./include "${POSTGRES_SERVER}"
+        echo clang-tidy "${CHECKS}" -header-filter=.* "${f}" -- -I./include "${POSTGRES_SERVER}"
+        clang-tidy "${CHECKS}" -header-filter=.* "${f}" -- -I./include ${POSTGRES_SERVER}
     done
 fi

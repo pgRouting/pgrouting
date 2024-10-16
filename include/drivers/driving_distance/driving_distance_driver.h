@@ -1,16 +1,14 @@
 /*PGR-GNU*****************************************************************
-File: withPoints_driver.h
+File: drivedist_driver.h
 
 Copyright (c) 2015 pgRouting developers
-Mail: project at pgrouting.org
+Mail: project@pgrouting.org
 
-Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky at erosion.dev
+vicky at erosion.dev
 
-Copyright (c) 2023 Yige Huang
-Mail: square1ge at gmail.com
-
+Copyright (c) 2023 Aryan Gupta
+guptaaryan1010 AT gmail.com
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -29,10 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_DRIVING_DISTANCE_WITHPOINTS_DD_DRIVER_H_
-#define INCLUDE_DRIVERS_DRIVING_DISTANCE_WITHPOINTS_DD_DRIVER_H_
-#pragma once
-
+#ifndef INCLUDE_DRIVERS_DRIVING_DISTANCE_DRIVING_DISTANCE_DRIVER_H_
+#define INCLUDE_DRIVERS_DRIVING_DISTANCE_DRIVING_DISTANCE_DRIVER_H_
 
 #ifdef __cplusplus
 extern "C" {
@@ -48,8 +44,8 @@ extern "C" {
 #include "cpp_common/undefPostgresDefine.hpp"
 
 #ifdef __cplusplus
-#   include <cstddef>
 #   include <cstdint>
+#   include <cstddef>
 using MST_rt = struct MST_rt;
 #else
 #   include <stddef.h>
@@ -61,14 +57,10 @@ typedef struct MST_rt MST_rt;
 extern "C" {
 #endif
 
-void pgr_do_withPointsDD(
-        char*,
-        char*,
+void pgr_do_drivingDistance(
         char*,
         ArrayType*,
-
-        double, char, bool, bool, bool,
-
+        double, bool, bool,
         MST_rt**, size_t*,
         char**, char**, char **);
 
@@ -76,4 +68,4 @@ void pgr_do_withPointsDD(
 }
 #endif
 
-#endif  // INCLUDE_DRIVERS_DRIVING_DISTANCE_WITHPOINTS_DD_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_DRIVING_DISTANCE_DRIVING_DISTANCE_DRIVER_H_

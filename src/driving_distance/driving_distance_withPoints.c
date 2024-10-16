@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: many_to_dist_driving_distance.c
+File: driving_distance_withPoints.c
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -7,8 +7,8 @@ Mail: project@pgrouting.org
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky at erosion.dev
 
-Copyright (c) 2023 Aryan Gupta
-guptaaryan1010 AT gmail.com
+Copyright (c) 2023 Yige Huang
+Mail: square1ge at gmail.com
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -34,49 +34,82 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
+#include "drivers/withPoints/get_new_queries.h"
+#include "drivers/driving_distance/driving_distance_withPoints_driver.h"
 
-#include "drivers/driving_distance/drivedist_driver.h"
-
-
-PGDLLEXPORT Datum _pgr_drivingdistance(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(_pgr_drivingdistance);
-
-PGDLLEXPORT Datum _pgr_drivingdistancev4(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(_pgr_drivingdistancev4);
+PGDLLEXPORT Datum _pgr_withpointsddv4(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_withpointsddv4);
 
 static
-void process(
+void
+process(
         char* edges_sql,
-        ArrayType *starts,
+        char* points_sql,
+        ArrayType* starts,
         double distance,
+
         bool directed,
+        char *driving_side,
+        bool details,
         bool equicost,
+        bool is_new,
+
         MST_rt **result_tuples,
         size_t *result_count) {
+    char d_side = estimate_drivingSide(driving_side[0]);
+    if (is_new) {
+        if (d_side == ' ') {
+            pgr_throw_error("Invalid value of 'driving side'", "Valid value are 'r', 'l', 'b'");
+            return;
+        } else if (directed && !(d_side == 'r' || d_side == 'l')) {
+            pgr_throw_error("Invalid value of 'driving side'", "Valid values are for directed graph are: 'r', 'l'");
+            return;
+        } else if (!directed && !(d_side == 'b')) {
+            pgr_throw_error("Invalid value of 'driving side'", "Valid values are for undirected graph is: 'b'");
+            return;
+        }
+    } else {
+        /* TODO remove on v4 */
+        d_side = (char)tolower(driving_side[0]);
+        if (!((d_side == 'r') || (d_side == 'l'))) d_side = 'b';
+    }
+
     pgr_SPI_connect();
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
+    char *edges_of_points_query = NULL;
+    char *edges_no_points_query = NULL;
+    get_new_queries(
+            edges_sql, points_sql,
+            &edges_of_points_query,
+            &edges_no_points_query);
+
+
     clock_t start_t = clock();
-    pgr_do_drivingDistance(
-            edges_sql,
+    pgr_do_withPointsDD(
+            edges_no_points_query,
+            points_sql,
+            edges_of_points_query,
             starts,
             distance,
+            d_side,
+
             directed,
+            details,
             equicost,
+
             result_tuples, result_count,
             &log_msg,
             &notice_msg,
             &err_msg);
-
-    time_msg("processing pgr_drivingDistance",
-            start_t, clock());
+    time_msg(" processing withPointsDD", start_t, clock());
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
-        (*result_tuples) = NULL;
         (*result_count) = 0;
+        (*result_tuples) = NULL;
     }
 
     pgr_global_report(&log_msg, &notice_msg, &err_msg);
@@ -84,32 +117,34 @@ void process(
     pgr_SPI_finish();
 }
 
-
 PGDLLEXPORT Datum
-_pgr_drivingdistancev4(PG_FUNCTION_ARGS) {
+_pgr_withpointsddv4(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    TupleDesc            tuple_desc;
+    TupleDesc           tuple_desc;
 
-    MST_rt  *result_tuples = 0;
+    MST_rt *result_tuples = NULL;
     size_t result_count = 0;
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
-
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_ARRAYTYPE_P(1),
-                PG_GETARG_FLOAT8(2),
-                PG_GETARG_BOOL(3),
-                PG_GETARG_BOOL(4),
+                text_to_cstring(PG_GETARG_TEXT_P(1)),
+                PG_GETARG_ARRAYTYPE_P(2),
+                PG_GETARG_FLOAT8(3),
+
+                PG_GETARG_BOOL(5),
+                text_to_cstring(PG_GETARG_TEXT_P(4)),
+                PG_GETARG_BOOL(6),
+                PG_GETARG_BOOL(7),
+
+                true,
                 &result_tuples, &result_count);
 
-
         funcctx->max_calls = result_count;
-
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE)
@@ -119,20 +154,18 @@ _pgr_drivingdistancev4(PG_FUNCTION_ARGS) {
                          "that cannot accept type record")));
 
         funcctx->tuple_desc = tuple_desc;
-
         MemoryContextSwitchTo(oldcontext);
     }
 
     funcctx = SRF_PERCALL_SETUP();
-
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (MST_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
         Datum        result;
-        Datum *values;
-        bool* nulls;
+        Datum        *values;
+        bool*        nulls;
 
         size_t numb = 8;
         values = palloc(numb * sizeof(Datum));
@@ -142,7 +175,8 @@ _pgr_drivingdistancev4(PG_FUNCTION_ARGS) {
         for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+
+        values[0] = Int64GetDatum(funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].depth);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_v);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].pred);
@@ -164,34 +198,36 @@ _pgr_drivingdistancev4(PG_FUNCTION_ARGS) {
 }
 
 
-/* Old code starts here
- * TODO(v4) remove old code
- * its code that is used when there is an old version of SQL 3.5 and under
- */
-PGDLLEXPORT Datum
-_pgr_drivingdistance(PG_FUNCTION_ARGS) {
-    FuncCallContext     *funcctx;
-    TupleDesc            tuple_desc;
+/* TODO remove old code in v4 */
+PGDLLEXPORT Datum _pgr_withpointsdd(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_withpointsdd);
 
-    MST_rt  *result_tuples = 0;
+PGDLLEXPORT Datum
+_pgr_withpointsdd(PG_FUNCTION_ARGS) {
+    FuncCallContext     *funcctx;
+    TupleDesc               tuple_desc;
+
+    MST_rt *result_tuples = 0;
     size_t result_count = 0;
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
-
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-
-        PGR_DBG("Calling driving_many_to_dist_driver");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_ARRAYTYPE_P(1),
-                PG_GETARG_FLOAT8(2),
-                PG_GETARG_BOOL(3),
-                PG_GETARG_BOOL(4),
-                &result_tuples, &result_count);
+                text_to_cstring(PG_GETARG_TEXT_P(1)),
+                PG_GETARG_ARRAYTYPE_P(2),
+                PG_GETARG_FLOAT8(3),
 
+                PG_GETARG_BOOL(4),
+                text_to_cstring(PG_GETARG_TEXT_P(5)),
+                PG_GETARG_BOOL(6),
+                PG_GETARG_BOOL(7),
+
+                false,
+                &result_tuples, &result_count);
 
         funcctx->max_calls = result_count;
 
@@ -204,10 +240,8 @@ _pgr_drivingdistance(PG_FUNCTION_ARGS) {
                          "that cannot accept type record")));
 
         funcctx->tuple_desc = tuple_desc;
-
         MemoryContextSwitchTo(oldcontext);
     }
-
     funcctx = SRF_PERCALL_SETUP();
 
     tuple_desc = funcctx->tuple_desc;
@@ -227,6 +261,7 @@ _pgr_drivingdistance(PG_FUNCTION_ARGS) {
         for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
+
         values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_v);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
