@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-10 03:40+0000\n"
+"POT-Creation-Date: 2024-10-17 00:50+0000\n"
 "PO-Revision-Date: 2024-09-23 01:16+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/"
@@ -15732,6 +15732,9 @@ msgstr ""
 #, fuzzy
 msgid "postgis 3.0.0"
 msgstr "バージョン 3.0.0"
+
+msgid "g++ 13+ is supported"
+msgstr ""
 
 msgid "Code fixes"
 msgstr ""
