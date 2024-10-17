@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-10 03:40+0000\n"
+"POT-Creation-Date: 2024-10-17 00:50+0000\n"
 "PO-Revision-Date: 2022-12-13 12:30+0000\n"
 "Last-Translator: Hyung-Gyu Ryoo <hyunggyu.ryoo@gmail.com>\n"
 "Language-Team: Korean <https://weblate.osgeo.org/projects/pgrouting/"
@@ -15623,6 +15623,9 @@ msgid "postgres 11.0.0"
 msgstr ""
 
 msgid "postgis 3.0.0"
+msgstr ""
+
+msgid "g++ 13+ is supported"
 msgstr ""
 
 msgid "Code fixes"
