@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-10 03:40+0000\n"
+"POT-Creation-Date: 2024-10-17 00:50+0000\n"
 "PO-Revision-Date: 2024-10-10 19:43+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
@@ -18194,6 +18194,9 @@ msgstr ""
 msgid "postgis 3.0.0"
 msgstr "postgis 3.0.0"
 
+msgid "g++ 13+ is supported"
+msgstr ""
+
 msgid "Code fixes"
 msgstr "Corrección de código"
 
@@ -21826,4 +21829,3 @@ msgstr "pgr_withPointsDD es pgr_drivingDistance **con puntos**"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPoints es pgr_dijkstraVia **con puntos**"
-

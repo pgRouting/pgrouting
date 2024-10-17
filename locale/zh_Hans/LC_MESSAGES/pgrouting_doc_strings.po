@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.6.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-10 03:40+0000\n"
+"POT-Creation-Date: 2024-10-17 00:50+0000\n"
 "PO-Revision-Date: 2024-10-10 19:47+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
@@ -16762,6 +16762,9 @@ msgstr ""
 msgid "postgis 3.0.0"
 msgstr "版本3.0.0"
 
+msgid "g++ 13+ is supported"
+msgstr ""
+
 msgid "Code fixes"
 msgstr "代码修正"
 
@@ -20277,4 +20280,3 @@ msgstr "pgr_withPointsDD 是 **带有点** 的 pgr_drivenDistance"
 #, fuzzy
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia 是 **带有点** 的"
-
