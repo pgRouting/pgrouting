@@ -49,7 +49,7 @@ Signatures
 
 :Example: From vertex :math:`3` to vertex :math:`8` on a directed graph
 
-.. literalinclude:: doc-pgr_turnRestrictedPath.queries
+.. literalinclude:: turnRestrictedPath.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -130,19 +130,19 @@ Additional Examples
 
 No results because the only path available follows a restriction.
 
-.. literalinclude:: doc-pgr_turnRestrictedPath.queries
+.. literalinclude:: turnRestrictedPath.queries
    :start-after: -- q2
    :end-before: -- q3
 
 :Example: From vertex :math:`3` to vertex :math:`8` on an undirected graph
 
-.. literalinclude:: doc-pgr_turnRestrictedPath.queries
+.. literalinclude:: turnRestrictedPath.queries
    :start-after: -- q3
    :end-before: -- q4
 
 :Example: From vertex :math:`3` to vertex :math:`8` with more alternatives
 
-.. literalinclude:: doc-pgr_turnRestrictedPath.queries
+.. literalinclude:: turnRestrictedPath.queries
    :start-after: -- q4
    :end-before: -- q5
 

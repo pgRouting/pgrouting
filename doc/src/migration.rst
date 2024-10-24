@@ -307,6 +307,89 @@ columns:
    :start-after: --drivingdistance4
    :end-before: --drivingdistance5
 
+Migration of ``pgr_kruskalDD`` / ``pgr_kruskalBFS`` / ``pgr_kruskalDFS``
+-------------------------------------------------------------------------------
+
+Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__
+:doc:`pgr_kruskalDD`, :doc:`pgr_kruskalBFS` and
+:doc:`pgr_kruskalDFS` result columns are being standardized.
+
+:from: |result-bfs|
+:to: |result-spantree|
+
+* ``pgr_kruskalDD``
+
+  * Single vertex
+  * Multiple vertices
+
+* ``pgr_kruskalDFS``
+
+  * Single vertex
+  * Multiple vertices
+
+* ``pgr_kruskalBFS``
+
+  * Single vertex
+  * Multiple vertices
+
+
+:Before Migration:
+
+Output columns were |result-bfs|
+
+* Single vertex and Multiple vertices
+
+  * Do not have ``pred`` result column.
+
+:Migration:
+
+* Be aware of the existence of `pred` result columns.
+* If needed filter out the added columns
+
+Kruskal single vertex
+...............................................................................
+
+Using ``pgr_KruskalDD`` as example.
+Migration is similar to al the affected functions.
+
+Comparing with `this
+<https://docs.pgrouting.org/3.6/en/pgr_kruskalDD.html#single-vertex>`__ example.
+
+Now column ``pred`` exists and contains the predecessor of the ``node``.
+
+.. literalinclude:: migration.queries
+   :start-after: --kruskalDD1
+   :end-before: --kruskalDD2
+
+If needed filter out the added columns, for example, to return the original
+columns
+
+.. literalinclude:: migration.queries
+   :start-after: --kruskalDD2
+   :end-before: --kruskalDD3
+
+Kruskal multiple vertices
+...............................................................................
+
+Using ``pgr_KruskalDD`` as example.
+Migration is similar to al the affected functions.
+
+Comparing with `this
+<https://docs.pgrouting.org/3.6/en/pgr_kruskalDD.html#multiple-vertex>`__
+example.
+
+Now column ``pred`` exists and contains the predecessor of the ``node``.
+
+.. literalinclude:: migration.queries
+   :start-after: --kruskalDD3
+   :end-before: --kruskalDD4
+
+If needed filter out the added columns, for example, to return the original
+columns
+
+.. literalinclude:: migration.queries
+   :start-after: --kruskalDD4
+   :end-before: --kruskalDD5
 
 Migration of ``pgr_KSP``
 -------------------------------------------------------------------------------
@@ -405,6 +488,90 @@ Migration is needed, because:
 .. literalinclude:: migration.queries
    :start-after: --maxcard2
    :end-before: --maxcard3
+
+Migration of ``pgr_primDD`` / ``pgr_primBFS`` / ``pgr_primDFS``
+-------------------------------------------------------------------------------
+
+Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__
+:doc:`pgr_primDD`, :doc:`pgr_primBFS` and :doc:`pgr_primDFS` result columns are
+being standardized.
+
+:from: |result-bfs|
+:to: |result-spantree|
+
+* ``pgr_primDD``
+
+  * Single vertex
+  * Multiple vertices
+
+* ``pgr_primDFS``
+
+  * Single vertex
+  * Multiple vertices
+
+* ``pgr_primBFS``
+
+  * Single vertex
+  * Multiple vertices
+
+
+:Before Migration:
+
+Output columns were |result-bfs|
+
+* Single vertex and Multiple vertices
+
+  * Do not have ``pred`` result column.
+
+:Migration:
+
+* Be aware of the existence of `pred` result columns.
+* If needed filter out the added columns
+
+Prim single vertex
+...............................................................................
+
+Using ``pgr_primDD`` as example.
+Migration is similar to al the affected functions.
+
+Comparing with `this
+<https://docs.pgrouting.org/3.6/en/pgr_primDD.html#single-vertex>`__ example.
+
+Now column ``pred`` exists and contains the predecessor of the ``node``.
+
+.. literalinclude:: migration.queries
+   :start-after: --primDD1
+   :end-before: --primDD2
+
+If needed filter out the added columns, for example, to return the original
+columns
+
+.. literalinclude:: migration.queries
+   :start-after: --primDD2
+   :end-before: --primDD3
+
+Prim multiple vertices
+...............................................................................
+
+Using ``pgr_primDD`` as example.
+Migration is similar to al the affected functions.
+
+Comparing with `this
+<https://docs.pgrouting.org/3.6/en/pgr_primDD.html#multiple-vertex>`__
+example.
+
+Now column ``pred`` exists and contains the predecessor of the ``node``.
+
+.. literalinclude:: migration.queries
+   :start-after: --primDD3
+   :end-before: --primDD4
+
+If needed filter out the added columns, for example, to return the original
+columns
+
+.. literalinclude:: migration.queries
+   :start-after: --primDD4
+   :end-before: --primDD5
 
 Migration of ``pgr_withPointsDD``
 -------------------------------------------------------------------------------

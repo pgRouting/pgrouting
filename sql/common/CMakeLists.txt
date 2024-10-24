@@ -5,7 +5,7 @@ SET(LOCAL_FILES
     _startPoint.sql
     _endPoint.sql
     pgrouting_utilities.sql
-    pgr_parameter_check.sql
+    parameter_check.sql
     utilities_pgr.sql
     createIndex.sql
     _checkquery.sql

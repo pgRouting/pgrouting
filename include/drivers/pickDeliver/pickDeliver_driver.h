@@ -35,43 +35,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
-using Orders_t = struct Orders_t;
-using Vehicle_t = struct Vehicle_t;
 using Schedule_rt = struct Schedule_rt;
-using IID_t_rt = struct IID_t_rt;
 #else
 #   include <stddef.h>
-typedef struct Orders_t Orders_t;
-typedef struct Vehicle_t Vehicle_t;
 typedef struct Schedule_rt Schedule_rt;
-typedef struct IID_t_rt IID_t_rt;
 #endif
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-    /*********************************************************
-      orders_sql TEXT,
-      max_vehicles INTEGER,
-      capacity FLOAT,
-      max_cycles INTEGER,
-     ********************************************************/
-    void do_pgr_pickDeliver(
-            Orders_t *pd_orders_arr, size_t total_pd_orders,
-            Vehicle_t *vehicles_arr, size_t total_vehicles,
-            IID_t_rt *matrix_cells_arr, size_t total_cells,
+void pgr_do_pickDeliver(
+        char*,
+        char*,
+        char*,
 
-            double factor,
-            int max_cycles,
-            int initial_solution_id,
+        double, int, int,
 
-            Schedule_rt **return_tuples,
-            size_t *return_count,
+        Schedule_rt**, size_t*,
 
-            char **log_msg,
-            char **notice_msg,
-            char **err_msg);
+        char**, char**, char**);
 
 
 #ifdef __cplusplus

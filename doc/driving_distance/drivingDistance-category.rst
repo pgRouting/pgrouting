@@ -61,7 +61,7 @@ Calculate nodes that are within a distance.
 Parameters
 -------------------------------------------------------------------------------
 
-.. mst-dd-params_start
+.. spantree-params_start
 
 .. list-table::
    :width: 81
@@ -91,7 +91,7 @@ Where:
 
 :ANY-NUMERIC: ``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``
 
-.. mst-dd-params_end
+.. spantree-params_end
 
 Inner Queries
 -------------------------------------------------------------------------------

@@ -72,7 +72,7 @@ Signatures
 :Example: Symmetric cost matrix for vertices :math:`\{5, 6, 10, 15\}` on an
           **undirected** graph using heuristic :math:`2`
 
-.. literalinclude:: doc-pgr_bdAstarCostMatrix.queries
+.. literalinclude:: bdAstarCostMatrix.queries
    :start-after: -- q2
    :end-before: -- q3
 
@@ -119,7 +119,7 @@ Additional Examples
 
 :Example: Use with :doc:`pgr_TSP`
 
-.. literalinclude:: doc-pgr_bdAstarCostMatrix.queries
+.. literalinclude:: bdAstarCostMatrix.queries
    :start-after: -- q3
    :end-before: -- q4
 

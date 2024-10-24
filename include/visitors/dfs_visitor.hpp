@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: Dfs_visitor.hpp
+File: dfs_visitor.hpp
 
 Copyright (c) 2020 pgRouting developers
 Mail: project@pgrouting.org

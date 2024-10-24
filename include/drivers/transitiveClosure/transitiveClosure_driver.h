@@ -30,35 +30,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_TRANSITIVECLOSURE_TRANSITIVECLOSURE_DRIVER_H_
 #pragma once
 
-/* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
 using TransitiveClosure_rt = struct TransitiveClosure_rt;
-using Edge_t = struct Edge_t;
 #else
 #   include <stddef.h>
 typedef struct TransitiveClosure_rt TransitiveClosure_rt;
-typedef struct Edge_t Edge_t;
 #endif
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-    /*********************************************************
-        edges_sql TEXT,
+void pgr_do_transitiveClosure(
+        char*,
 
-     ********************************************************/
-    void
-        do_pgr_transitiveClosure(
-               Edge_t  *data_edges,
-        size_t total_tuples,
-        TransitiveClosure_rt **return_tuples,
-        size_t *return_count,
-        char **log_msg,
-        char **notice_msg,
-        char **err_msg);
-
+        TransitiveClosure_rt**, size_t*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }

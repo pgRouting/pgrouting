@@ -72,7 +72,7 @@ Signatures
 
 :Example: Full line graph of subgraph of edges :math:`\{4, 7, 8, 10\}`
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -151,7 +151,7 @@ The data
 This example displays how this graph transformation works to create additional
 edges for each possible turn in a graph.
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q0
    :end-before: -- q1
 
@@ -165,7 +165,7 @@ edges for each possible turn in a graph.
 The transformation
 ...............................................................................
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -200,7 +200,7 @@ Store edge results
 The first step is to store the results of the ``pgr_lineGraphFull`` call into a
 table
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q2
    :end-before: -- q3
 
@@ -209,13 +209,13 @@ Create the mapping table
 
 From the original graph's vertex information
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q3
    :end-before: -- q4
 
 Add the new vertices
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q4
    :end-before: -- q5
 
@@ -224,44 +224,44 @@ Filling the mapping table
 
 The positive vertex identifiers are the original identifiers
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q5
    :end-before: -- q6
 
 Inspecting the vertices map
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q6
    :end-before: -- q7
 
 The self loops happen when there is no cost traveling to the ``target`` and the
 source has an original value.
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q7
    :end-before: -- q8
 
 Updating values from self loops
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q8
    :end-before: -- q9
 
 Inspecting the vertices table
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q9
    :end-before: -- q10
 
 Updating from inner self loops
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q10
    :end-before: -- q11
 
 Inspecting the vertices map
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q11
    :end-before: -- q12
 
@@ -276,14 +276,14 @@ Idenifying the restriction
 Running a :doc:`pgr_dijkstraNear` the edge with cost 0, edge 8, is where the
 cost will be increased
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q12
    :end-before: -- q13
 
 The edge to be altered is ``WHERE cost = 0 AND seq != 1 AND edge != -1`` from
 the previus query:
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q13
    :end-before: -- q14
 
@@ -292,7 +292,7 @@ Adding a value to the restriction
 
 Updating the cost to the edge:
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q14
    :end-before: -- q15
 
@@ -300,7 +300,7 @@ Updating the cost to the edge:
 
 Now the route does not use edge 8 and does a U turn on a leaf vertex.
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q15
    :end-before: -- q16
 
@@ -314,13 +314,13 @@ Using the vertex map give the leaf verices their original value.
 
 On the source column
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q16
    :end-before: -- q17
 
 On the target column
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q17
    :end-before: -- q18
 
@@ -329,13 +329,13 @@ Removing self loops on leaf nodes
 
 The self loops of the leaf nodes are
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q18
    :end-before: -- q19
 
 Which can be removed
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q19
    :end-before: -- q20
 
@@ -343,7 +343,7 @@ Which can be removed
 
 Routing can be done now using the original vertices id using :doc:`pgr_dijkstra`
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q20
    :end-before: -- q21
 
@@ -356,20 +356,20 @@ Add edges from the original graph
 Add all the edges that are not involved in the line graph process to the new
 table
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q21
    :end-before: -- q22
 
 Some administrative tasks to get new identifiers for the edges
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q22
    :end-before: -- q23
 
 Add the newly calculated edges
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q23
    :end-before: -- q24
 
@@ -380,13 +380,13 @@ When using this method for routing with soft restrictions there will be uturns
 
 :Example: Routing from :math:`6` to :math:`3`
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q24
    :end-before: -- q25
 
 :Example: Routing from :math:`5` to :math:`1`
 
-.. literalinclude:: doc-pgr_lineGraphFull.queries
+.. literalinclude:: lineGraphFull.queries
    :start-after: -- q25
    :end-before: -- q26
 

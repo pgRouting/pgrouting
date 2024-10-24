@@ -1,0 +1,21 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+/* -- q1 */
+SELECT * FROM pgr_betweennessCentrality(
+'SELECT id, source, target, cost, reverse_cost
+FROM edges where id < 5'
+) ORDER BY vid;
+ vid | centrality
+-----+------------
+   5 |          0
+   6 |        0.5
+   7 |          0
+  10 |       0.25
+  15 |          0
+(5 rows)
+
+/* -- q2 */
+ROLLBACK;
+ROLLBACK

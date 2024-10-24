@@ -31,14 +31,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef INCLUDE_DRIVERS_TOPOLOGICALSORT_TOPOLOGICALSORT_DRIVER_H_
 #define INCLUDE_DRIVERS_TOPOLOGICALSORT_TOPOLOGICALSORT_DRIVER_H_
 
-/* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
-using Edge_t = struct Edge_t;
 using I_rt = struct I_rt;
 #else
 #   include <stddef.h>
-typedef struct Edge_t Edge_t;
 typedef struct I_rt I_rt;
 #endif
 
@@ -46,18 +43,11 @@ typedef struct I_rt I_rt;
 extern "C" {
 #endif
 
-    //  CREATE OR REPLACE FUNCTION pgr_topologicalSort(
-    //  sql text,
-    void do_pgr_topologicalSort(
-            Edge_t  *data_edges,
-            size_t total_tuples,
+void pgr_do_topologicalSort(
+        char*,
 
-            I_rt **return_tuples,
-            size_t *return_count,
-
-            char** log_msg,
-            char** notice_msg,
-            char** err_msg);
+        I_rt**, size_t*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
     }

@@ -34,10 +34,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
-using Edge_t = struct Edge_t;
+using Edge_rt = struct Edge_rt;
 #else
 #   include <stddef.h>
-typedef struct Edge_t Edge_t;
+#include <stdbool.h>
+typedef struct Edge_rt Edge_rt;
 #endif
 
 
@@ -45,23 +46,13 @@ typedef struct Edge_t Edge_t;
 extern "C" {
 #endif
 
-    /*********************************************************
-      TEXT,
-    directed BOOLEAN DEFAULT true,
-     ********************************************************/
+void pgr_do_lineGraph(
+        char*,
 
+        bool,
 
-    void
-        do_pgr_lineGraph(
-                Edge_t  *data_edges,
-                size_t total_edges,
-                bool directed,
-                Edge_t **return_tuples,
-                size_t *return_count,
-                char ** log_msg,
-                char ** notice_msg,
-                char ** err_msg);
-
+        Edge_rt**, size_t*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }

@@ -34,11 +34,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
-using Edge_t = struct Edge_t;
 using II_t_rt = struct II_t_rt;
 #else
 #   include <stddef.h>
-typedef struct Edge_t Edge_t;
 typedef struct II_t_rt II_t_rt;
 #endif
 
@@ -47,20 +45,12 @@ typedef struct II_t_rt II_t_rt;
 extern "C" {
 #endif
 
-/*********************************************************
-    edges_sql TEXT,
-
- ********************************************************/
 void
-do_pgr_bipartite(
-        Edge_t  *data_edges,
-        size_t total_tuples,
-        II_t_rt **return_tuples,
-        size_t *return_count,
-        char **log_msg,
-        char **notice_msg,
-        char **err_msg);
+pgr_do_bipartite(
+        char*,
 
+        II_t_rt**, size_t*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }

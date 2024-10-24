@@ -32,17 +32,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
+#include <string>
 
-#include "allpairs/pgr_allpairs.hpp"
+#include "allpairs/allpairs.hpp"
+#include "cpp_common/pgdata_getters.hpp"
 
-#include "cpp_common/pgr_assert.h"
+#include "cpp_common/assert.hpp"
 
 
 void
-do_pgr_floydWarshall(
-        Edge_t  *data_edges,
-        size_t total_tuples,
-        bool directedFlag,
+pgr_do_floydWarshall(
+        char *edges_sql,
+        bool directed,
 
         IID_t_rt **return_tuples,
         size_t *return_count,
@@ -53,6 +54,7 @@ do_pgr_floydWarshall(
 
     std::ostringstream log;
     std::ostringstream err;
+    char *hint = nullptr;
 
     try {
         pgassert(!(*log_msg));
@@ -60,18 +62,23 @@ do_pgr_floydWarshall(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        graphType gType = directedFlag? DIRECTED: UNDIRECTED;
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, true);
 
+        if (edges.empty()) {
+            throw std::string("No edges found");
+        }
+        hint = nullptr;
 
-        if (directedFlag) {
+        if (directed) {
             log << "Processing Directed graph\n";
-            pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(data_edges, total_tuples);
+            pgrouting::DirectedGraph digraph;
+            digraph.insert_edges(edges);
             pgr_floydWarshall(digraph, *return_count, return_tuples);
         } else {
             log << "Processing Undirected graph\n";
-            pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(data_edges, total_tuples);
+            pgrouting::UndirectedGraph undigraph;
+            undigraph.insert_edges(edges);
             pgr_floydWarshall(undigraph, *return_count, return_tuples);
         }
 
@@ -93,6 +100,9 @@ do_pgr_floydWarshall(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

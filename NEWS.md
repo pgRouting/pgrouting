@@ -1,10 +1,68 @@
 # pgRouting 3
 
 
-## pgRouting 3.6
+## pgRouting 3.7
 
 
 .. current
+
+### pgRouting 3.7.0 Release Notes
+
+To see all issues & pull requests closed by this release see the [Git closed
+milestone for 3.7.0
+](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22)
+
+**Support**
+
+* [#2656](https://github.com/pgRouting/pgrouting/pull/2656) Stop support of
+  PostgreSQL12 on pgrouting v3.7
+
+  * Stopping support of PostgreSQL 12
+  * CI does not test for PostgreSQL 12
+
+**New experimental functions**
+
+* Metrics
+
+  * pgr_betweennessCentrality
+
+**Official functions changes**
+
+* [#2605](https://github.com/pgRouting/pgrouting/pull/2605) Standarize
+  spanning tree functions output
+
+  * Functions:
+
+    * ``pgr_kruskalDD``
+    * ``pgr_kruskalDFS``
+    * ``pgr_kruskalBFS``
+    * ``pgr_primDD``
+    * ``pgr_primDFS``
+    * ``pgr_primBFS``
+
+  * Standarizing output columns to ``(seq, depth, start_vid, pred, node, edge, cost, agg_cost)``
+    * Added ``pred`` result columns.
+
+**Experimental promoted to proposed.**
+
+* [#2635](https://github.com/pgRouting/pgrouting/pull/2635) pgr_LineGraph
+  ignores directed flag and use negative values for identifiers.
+
+  * ``pgr_lineGraph``
+
+    * Promoted to **proposed** signature.
+    * Works for directed and undirected graphs.
+
+**Code enhancement**
+
+* [#2599](https://github.com/pgRouting/pgrouting/pull/2599) Driving distance
+  cleanup
+* [#2607](https://github.com/pgRouting/pgrouting/pull/2607) Read postgresql
+  data on C++
+* [#2614](https://github.com/pgRouting/pgrouting/pull/2614) Clang tidy does
+  not work
+
+## pgRouting 3.6
 
 
 ### pgRouting 3.6.3 Release Notes
@@ -104,91 +162,61 @@ milestone for 3.6.0
 * [#2547](https://github.com/pgRouting/pgrouting/pull/2547) Standarize output
   and modifying signature pgr_KSP
 
-  
   * Result columns standarized to: ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
   * ``pgr_ksp`` (One to One)
-  
     * Added ``start_vid`` and ``end_vid`` result columns.
-  
   * New overload functions:
-  
     * ``pgr_ksp`` (One to Many)
     * ``pgr_ksp`` (Many to One)
     * ``pgr_ksp`` (Many to Many)
     * ``pgr_ksp`` (Combinations)
-  
 
 * [#2548](https://github.com/pgRouting/pgrouting/pull/2548) Standarize output
   pgr_drivingdistance
 
-  
   * Standarizing output columns to ``(seq, depth, start_vid, pred, node, edge, cost, agg_cost)``
-  
     * ``pgr_drivingdistance`` (Single vertex)
-  
       * Added ``depth`` and ``start_vid`` result columns.
-  
     * ``pgr_drivingdistance`` (Multiple vertices)
-  
       * Result column name change: ``from_v`` to ``start_vid``.
       * Added ``depth`` and ``pred`` result columns.
-  
 
 **Proposed functions changes**
 
 * [#2544](https://github.com/pgRouting/pgrouting/pull/2544) Standarize output
   and modifying signature pgr_withPointsDD
 
-  
   * Signature change: ``driving_side`` parameter changed from named optional to
     unnamed compulsory **driving side**.
-  
     * ``pgr_withPointsDD`` (`Single vertex`)
     * ``pgr_withPointsDD`` (`Multiple vertices`)
-  
   * Standarizing output columns to ``(seq, depth, start_vid, pred, node, edge, cost, agg_cost)``
-  
     * ``pgr_withPointsDD`` (`Single vertex`)
-  
       * Added ``depth``, ``pred`` and ``start_vid`` column.
-  
     * ``pgr_withPointsDD`` (`Multiple vertices`)
-  
       * Added ``depth``, ``pred`` columns.
-  
   * When ``details`` is ``false``:
-  
     * Only points that are visited are removed, that is, points reached within the
       distance are included
-  
   * Deprecated signatures
-  
     * ``pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)``
     * ``pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)``
-  
 
 * [#2546](https://github.com/pgRouting/pgrouting/pull/2546) Standarize output
   and modifying signature pgr_withPointsKSP
 
-  
   * Standarizing output columns to ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
   * ``pgr_withPointsKSP`` (One to One)
-  
     * Signature change: ``driving_side`` parameter changed from named optional to
       unnamed compulsory **driving side**.
     * Added ``start_vid`` and ``end_vid`` result columns.
-  
   * New overload functions
-  
     * ``pgr_withPointsKSP`` (One to Many)
     * ``pgr_withPointsKSP`` (Many to One)
     * ``pgr_withPointsKSP`` (Many to Many)
     * ``pgr_withPointsKSP`` (Combinations)
-  
   * Deprecated signature
-  
     * ``pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,boolean)``
-  
 
 **C/C++ code enhancements**
 

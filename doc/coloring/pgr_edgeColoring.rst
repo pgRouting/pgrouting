@@ -86,7 +86,7 @@ Signatures
 
 :Example: Graph coloring of pgRouting :doc:`sampledata`
 
-.. literalinclude:: doc-edgeColoring.queries
+.. literalinclude:: edgeColoring.queries
    :start-after: -- q1
    :end-before: -- q2
 

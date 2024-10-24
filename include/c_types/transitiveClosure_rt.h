@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: contracted_rt.h
+File: transitiveClosure_rt.h
 
 Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org

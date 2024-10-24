@@ -29,14 +29,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include "c_common/postgres_connection.h"
-#include "utils/array.h"
 
 #include "c_types/path_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 
-#include "c_common/pgdata_getters.h"
 #include "c_types/tsp_tour_rt.h"
 #include "drivers/tsp/euclideanTSP_driver.h"
 
@@ -59,26 +57,9 @@ process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    Coordinate_t *coordinates = NULL;
-    size_t total_coordinates = 0;
-    pgr_get_coordinates(coordinates_sql, &coordinates, &total_coordinates, &err_msg);
-    throw_error(err_msg, coordinates_sql);
-
-    if (total_coordinates == 0) {
-        ereport(WARNING,
-                (errmsg("Insufficient data found on inner query."),
-                 errhint("%s", coordinates_sql)));
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
-        pgr_SPI_finish();
-        return;
-    }
-
-    PGR_DBG("Starting timer");
     clock_t start_t = clock();
-
-    do_pgr_euclideanTSP(
-            coordinates, total_coordinates,
+    pgr_do_euclideanTSP(
+            coordinates_sql,
             start_vid,
             end_vid,
             max_cycles,
@@ -88,7 +69,6 @@ process(
             &log_msg,
             &notice_msg,
             &err_msg);
-
     time_msg("euclideanTSP", start_t, clock());
 
     if (err_msg && (*result_tuples)) {
@@ -97,12 +77,7 @@ process(
         (*result_count) = 0;
     }
 
-    pgr_global_report(log_msg, notice_msg, err_msg);
-
-    if (log_msg) pfree(log_msg);
-    if (notice_msg) pfree(notice_msg);
-    if (err_msg) pfree(err_msg);
-    if (coordinates) pfree(coordinates);
+    pgr_global_report(&log_msg, &notice_msg, &err_msg);
 
     pgr_SPI_finish();
 }

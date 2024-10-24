@@ -83,7 +83,7 @@ debuglevel TEXT;
 BEGIN
     RAISE NOTICE 'Deprecated Signature pgr_tsp(float8[][], integer, integer)';
 
-    CREATE TEMP TABLE ___tmp2 ON COMMIT DROP AS 
+    CREATE TEMP TABLE ___tmp2 ON COMMIT DROP AS
     SELECT start_vid, end_vid, agg_cost FROM _pgr_unnest_matrix( matrix );
 
 

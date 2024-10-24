@@ -66,7 +66,7 @@ Signatures
 
 :Example: When the graph is bipartite
 
-.. literalinclude:: doc-bipartite.queries
+.. literalinclude:: bipartite.queries
    :start-after: --q1
    :end-before: --q2
 
@@ -102,7 +102,7 @@ Additional Example
 The edge :math:`5 \rightarrow 1` will make subgraph with vertices :math:`\{1, 3,
 7, 6, 5\}` an odd length cyclic graph, as the cycle has 5 vertices.
 
-.. literalinclude:: doc-bipartite.queries
+.. literalinclude:: bipartite.queries
    :start-after: --q2
    :end-before: --q3
 
@@ -111,7 +111,7 @@ Edges in blue represent odd length cycle subgraph.
 .. image:: images/bipartite.png
    :scale: 40%
 
-.. literalinclude:: doc-bipartite.queries
+.. literalinclude:: bipartite.queries
     :start-after: --q3
     :end-before: --q4
 

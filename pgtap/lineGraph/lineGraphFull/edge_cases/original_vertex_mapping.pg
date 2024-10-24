@@ -79,7 +79,7 @@ BEGIN
   b AS (SELECT source,edge FROM result2 WHERE source IN (SELECT id FROM a)),
   c AS (SELECT id,source FROM edges WHERE id IN (SELECT edge FROM b))
   UPDATE result2_vertices_pgr AS d SET original_id = (SELECT source FROM c WHERE c.id = (SELECT edge FROM b WHERE b.source = d.id)) WHERE id IN (SELECT id FROM a);
-  
+
   WITH a AS (SELECT id FROM result2_vertices_pgr WHERE original_id IS NULL),
   b AS (SELECT target,edge FROM result2 WHERE target IN (SELECT id FROM a)),
   c AS (SELECT id,target FROM edges WHERE id IN (SELECT edge FROM b))

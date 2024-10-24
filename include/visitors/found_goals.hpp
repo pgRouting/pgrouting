@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-file: found_goals.hpp
+File: found_goals.hpp
 
 Copyright (c) 2018 pgRouting developers
 Mail: project@pgrouting.org

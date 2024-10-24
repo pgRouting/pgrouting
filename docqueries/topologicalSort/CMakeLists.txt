@@ -1,6 +1,6 @@
 # Do not use extensions
 SET(LOCAL_FILES
-    doc-topologicalSort
+    topologicalSort
     )
 
 foreach (f ${LOCAL_FILES})

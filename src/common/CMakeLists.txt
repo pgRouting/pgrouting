@@ -6,7 +6,7 @@ ADD_LIBRARY(common OBJECT
     check_parameters.c
 
     time_msg.c
-    pgr_assert.cpp
+    assert.cpp
     identifier.cpp
 
     basic_vertex.cpp
@@ -14,5 +14,5 @@ ADD_LIBRARY(common OBJECT
     ch_vertex.cpp
     ch_edge.cpp
     basic_edge.cpp
-    pgr_alloc.cpp
+    alloc.cpp
     )

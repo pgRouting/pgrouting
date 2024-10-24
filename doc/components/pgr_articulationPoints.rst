@@ -67,7 +67,7 @@ Signatures
 
 :Example: The articulation points of the graph
 
-.. literalinclude:: doc-pgr_articulationPoints.queries
+.. literalinclude:: articulationPoints.queries
    :start-after: -- q1
    :end-before: -- q2
 

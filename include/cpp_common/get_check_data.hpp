@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_C_COMMON_GET_CHECK_DATA_HPP_
-#define INCLUDE_C_COMMON_GET_CHECK_DATA_HPP_
+#ifndef INCLUDE_CPP_COMMON_GET_CHECK_DATA_HPP_
+#define INCLUDE_CPP_COMMON_GET_CHECK_DATA_HPP_
 #pragma once
 
 
@@ -37,10 +37,12 @@ extern "C" {
 #include <catalog/pg_type.h>
 }
 
-#include <vector>
-#include <string>
 #include <cstdint>
+#include <set>
+#include <string>
+#include <vector>
 
+#include "cpp_common/undefPostgresDefine.hpp"
 
 
 namespace pgrouting {
@@ -54,6 +56,12 @@ void fetch_column_info(const TupleDesc&, std::vector<Column_info_t>&);
 
 /** @brief Function return the value of specified column in char type. */
 char getChar(const HeapTuple, const TupleDesc&, const Column_info_t&, bool, char);
+
+/** @brief get postgres array into c++ set container */
+std::set<int64_t> get_pgset(ArrayType*);
+
+/** @brief get postgres array into c++ vector container */
+std::vector<int64_t> get_pgarray(ArrayType*, bool);
 
 /** @brief Enforces the input array to be @b NOT empty */
 int64_t* get_array(ArrayType*, size_t*, bool);
@@ -73,4 +81,4 @@ char* getText(const HeapTuple, const TupleDesc&, const Column_info_t&);
 }  // namespace pgrouting
 
 
-#endif  // INCLUDE_C_COMMON_GET_CHECK_DATA_HPP_
+#endif  // INCLUDE_CPP_COMMON_GET_CHECK_DATA_HPP_

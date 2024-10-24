@@ -100,7 +100,7 @@ Single vertex
 :Example: Right side driving topology, from point :math:`1` within a distance of
           :math:`3.3` with details.
 
-.. literalinclude:: doc-pgr_withPointsDD.queries
+.. literalinclude:: withPointsDD.queries
    :start-after: -- q2
    :end-before: -- q3
 
@@ -122,7 +122,7 @@ Multiple vertices
 :Example: From point :math:`1` and vertex :math:`16` within a distance of
           :math:`3.3` with ``equicost`` on a directed graph
 
-.. literalinclude:: doc-pgr_withPointsDD.queries
+.. literalinclude:: withPointsDD.queries
    :start-after: -- q3
    :end-before: -- q4
 
@@ -244,7 +244,7 @@ Use :doc:`pgr_findCloseEdges` in the `Points SQL`_.
 Find the driving distance from the two closest locations on the graph of point
 `(2.9, 1.8)`.
 
-.. literalinclude:: doc-pgr_withPointsDD.queries
+.. literalinclude:: withPointsDD.queries
     :start-after: -- q5
     :end-before: -- q6
 
@@ -257,7 +257,7 @@ Driving side does not matter
 From point :math:`1` within a distance of :math:`3.3`, does not matter driving
 side, with details.
 
-.. literalinclude:: doc-pgr_withPointsDD.queries
+.. literalinclude:: withPointsDD.queries
    :start-after: -- q4
    :end-before: -- q5
 

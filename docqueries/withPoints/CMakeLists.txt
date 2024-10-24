@@ -1,10 +1,10 @@
 # Do not use extensions
 SET(LOCAL_FILES
-    doc-pgr_withPointsCostMatrix
-    doc-pgr_withPointsCost
-    doc-pgr_withPointsDD
-    doc-pgr_withPointsKSP
-    doc-pgr_withPoints
+    withPointsCostMatrix
+    withPointsCost
+    withPointsDD
+    withPointsKSP
+    withPoints
     withPointsVia
     )
 

@@ -1,7 +1,7 @@
 # Do not use extensions
 SET(LOCAL_FILES
-    doc-pickDeliverEuclidean
-    doc-pickDeliver
+    pickDeliverEuclidean
+    pickDeliver
     lc101
     )
 

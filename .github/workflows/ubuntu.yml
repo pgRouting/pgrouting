@@ -29,12 +29,9 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-          psql: [11,12,13,14,15,16]
+          psql: [13,14,15,16]
           postgis: [3]
-          os: [ubuntu-latest, ububtu-22.04, ubuntu-20.04]
-          exclude:
-            - os: ubuntu-latest
-              psql: 11
+          os: [ubuntu-latest, ubuntu-22.04, ubuntu-20.04]
 
     steps:
       - uses: actions/checkout@v4

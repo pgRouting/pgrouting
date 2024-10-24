@@ -47,23 +47,11 @@ typedef struct II_t_rt II_t_rt;
 extern "C" {
 #endif
 
-    /*********************************************************
-      TEXT,
-    BIGINT,
-    BIGINT,
-     ********************************************************/
+void pgr_do_biconnectedComponents(
+        char*,
 
-
-    void
-        do_pgr_biconnectedComponents(
-                Edge_t  *data_edges,
-                size_t total_edges,
-                II_t_rt **return_tuples,
-                size_t *return_count,
-                char ** log_msg,
-                char ** notice_msg,
-                char ** err_msg);
-
+        II_t_rt**, size_t*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }

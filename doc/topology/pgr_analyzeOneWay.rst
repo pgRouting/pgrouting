@@ -128,7 +128,7 @@ The structure of the vertices table is:
 Additional Examples
 -------------------------------------------------------------------------------
 
-.. literalinclude:: doc-pgr_analyzeOneWay.queries
+.. literalinclude:: analyzeOneWay.queries
    :start-after: --q1
    :end-before: --q1.1
 

@@ -32,40 +32,32 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 #include <string>
+#include <set>
 
-#include "cpp_common/pgr_alloc.hpp"
-#include "cpp_common/pgr_assert.h"
+#include "cpp_common/pgdata_getters.hpp"
+#include "cpp_common/alloc.hpp"
+#include "cpp_common/assert.hpp"
 
-#include "breadthFirstSearch/pgr_breadthFirstSearch.hpp"
+#include "breadthFirstSearch/breadthFirstSearch.hpp"
 
 namespace {
 
-template < class G >
-std::vector<MST_rt>
-pgr_breadthFirstSearch(
+
+template <class G> std::vector<MST_rt> breadthFirstSearch(
         G &graph,
-        std::vector < int64_t > sources,
+        std::set<int64_t> sources,
         int64_t max_depth) {
-    std::sort(sources.begin(), sources.end());
-    sources.erase(
-            std::unique(sources.begin(), sources.end()),
-            sources.end());
-
-
-    pgrouting::functions::Pgr_breadthFirstSearch< G > fn_breadthFirstSearch;
-    auto results = fn_breadthFirstSearch.breadthFirstSearch(
-            graph, sources, max_depth);
+    pgrouting::functions::Pgr_breadthFirstSearch<G> fn_breadthFirstSearch;
+    auto results = fn_breadthFirstSearch.breadthFirstSearch(graph, sources, max_depth);
     return results;
 }
 
 }  // namespace
 
 void
-do_pgr_breadthFirstSearch(
-                Edge_t  *data_edges,
-                size_t total_edges,
-                int64_t  *start_vidsArr,
-                size_t size_start_vidsArr,
+pgr_do_breadthFirstSearch(
+                char *edges_sql,
+                ArrayType* starts,
                 int64_t  max_depth,
                 bool directed,
 
@@ -77,43 +69,46 @@ do_pgr_breadthFirstSearch(
     using pgrouting::pgr_alloc;
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
+    using pgrouting::pgget::get_intSet;
 
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char *hint = nullptr;
+
     try {
+        // NOLINTBEGIN(clang-analyzer-cplusplus.NewDelete)
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(total_edges != 0);
+        // NOLINTEND(clang-analyzer-cplusplus.NewDelete)
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        log << "Inserting vertices into a c++ vector structure";
-        std::vector<int64_t>
-            start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
+
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+
+        if (edges.empty()) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
+
+        auto roots = get_intSet(starts);
 
         std::vector<MST_rt> results;
         if (directed) {
-            log << "Working with directed Graph\n";
-            pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(data_edges, total_edges);
-            results = pgr_breadthFirstSearch(
-                    digraph,
-                    start_vertices,
-                    max_depth);
+            pgrouting::DirectedGraph digraph;
+            digraph.insert_edges(edges);
+            results = breadthFirstSearch(digraph, roots, max_depth);
 
         } else {
-            log << "Working with Undirected Graph\n";
-            pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(data_edges, total_edges);
-
-            results = pgr_breadthFirstSearch(
-                    undigraph,
-                    start_vertices,
-                    max_depth);
+            pgrouting::UndirectedGraph undigraph;
+            undigraph.insert_edges(edges);
+            results = breadthFirstSearch(undigraph, roots, max_depth);
         }
 
         auto count = results.size();
@@ -121,20 +116,17 @@ do_pgr_breadthFirstSearch(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            notice <<
-                "No traversal found";
+            notice << "No traversal found";
             *log_msg = pgr_msg(notice.str().c_str());
             return;
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        log << "\nConverting a set of traversals into the tuples";
+        (*return_count) = count;
         for (size_t i = 0; i < count; i++) {
             *((*return_tuples) + i) = results[i];
         }
-        (*return_count) = count;
 
-        pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             *log_msg :
             pgr_msg(log.str().c_str());
@@ -147,6 +139,9 @@ do_pgr_breadthFirstSearch(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

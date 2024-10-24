@@ -1,7 +1,7 @@
 # Do not use extensions
 SET(LOCAL_FILES
-    doc-contraction-family
-    doc-pgr_contraction
+    contraction-family
+    contraction
     )
 
 foreach (f ${LOCAL_FILES})

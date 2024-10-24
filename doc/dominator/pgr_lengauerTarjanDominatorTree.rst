@@ -66,7 +66,7 @@ Signatures
 
 :Example: The dominator tree with root vertex :math:`5`
 
-.. literalinclude:: doc-lengauerTarjanDominatorTree.queries
+.. literalinclude:: lengauerTarjanDominatorTree.queries
    :start-after: --q1
    :end-before: --q2
 
@@ -109,7 +109,7 @@ Additional Examples
 
 :Example: Dominator tree of another component.
 
-.. literalinclude:: doc-lengauerTarjanDominatorTree.queries
+.. literalinclude:: lengauerTarjanDominatorTree.queries
     :start-after: --q2
     :end-before: --q3
 

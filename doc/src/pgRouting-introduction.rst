@@ -63,21 +63,13 @@ Contributors
 This Release Contributors
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Individuals in this release (in alphabetical order)
+Individuals in this release v3.7.x (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Aniket Agarwal,
-Aryan Gupta,
-Ashish Kumar,
-Cayetano Benavent,
-Daniel Kastl,
-Nitish Chauhan,
-Rajat Shinde,
+(Alphabetical order)
+
 Regina Obe,
-Shobhit Chaurasia,
-Swapnil Joshi,
-Virginia Vergara,
-Yige Huang
+Vicky Vergara
 
 
 And all the people that give us a little of their time making comments, finding

@@ -75,7 +75,7 @@ Signatures
 
 :Example: The biconnected components of the graph
 
-.. literalinclude:: doc-pgr_biconnectedComponents.queries
+.. literalinclude:: biconnectedComponents.queries
    :start-after: -- q1
    :end-before: -- q2
 

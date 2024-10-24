@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: details.hpp
+File: details.cpp
 
 Copyright (c) 2018 pgRouting developers
 Mail: project@pgrouting.org

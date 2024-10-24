@@ -40,9 +40,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/version.hpp>
 
 #include "c_types/iid_t_rt.h"
-#include "c_types/coordinate_t.h"
-#include "cpp_common/pgr_messages.h"
-#include "cpp_common/pgr_assert.h"
+#include "cpp_common/coordinate_t.hpp"
+#include "cpp_common/messages.hpp"
+#include "cpp_common/assert.hpp"
 
 
 namespace pgrouting {
@@ -74,8 +74,8 @@ class TSP : public Pgr_messages {
             std::deque<std::pair<int64_t, double>> result,
             size_t limit, int cycles);
 
-    TSP(IID_t_rt *, size_t, bool);
-    TSP(Coordinate_t *, size_t, bool);
+    explicit TSP(std::vector<IID_t_rt>&);
+    explicit TSP(const std::vector<Coordinate_t>&);
     TSP() = delete;
 
 #if BOOST_VERSION >= 106800

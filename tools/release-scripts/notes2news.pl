@@ -143,7 +143,7 @@ sub find_stuff {
         next if $line =~ /$mstart/;
         $line =~ s/[\|]+//g;
         $line =~ s/($check)/$conversions{$1}/go;
-        print $ofh "  $line" if $line !~ /$mend/;
+        print $ofh "  $line" if $line !~ /$mend/ && $line ne "\n";
         last if $line =~ /$mend/;
     }
     close($fh);

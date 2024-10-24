@@ -64,7 +64,7 @@ Signatures
 
    | RETURNS ``BOOLEAN``
 
-.. literalinclude:: doc-pgr_isPlanar.queries
+.. literalinclude:: isPlanar.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -103,7 +103,7 @@ Additional Examples
 The following edges will make the subgraph with vertices {10, 15, 11, 16, 13} a
 :math:`K_1` graph.
 
-.. literalinclude:: doc-pgr_isPlanar.queries
+.. literalinclude:: isPlanar.queries
    :start-after: -- q2
    :end-before: -- q3
 
@@ -115,7 +115,7 @@ represent :math:`K_5` subgraph.
 .. image:: images/nonPlanar.png
    :scale: 50%
 
-.. literalinclude:: doc-pgr_isPlanar.queries
+.. literalinclude:: isPlanar.queries
    :start-after: -- q3
    :end-before: -- q4
 

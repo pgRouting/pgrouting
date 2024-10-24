@@ -28,31 +28,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-/************************************************************
-  edges_sql TEXT
- ***********************************************************/
-
 #include <string>
 #include <sstream>
 #include <deque>
 #include <vector>
 #include <algorithm>
+#include "cpp_common/pgdata_getters.hpp"
 #include "c_types/ii_t_rt.h"
 #include "cpp_common/identifiers.hpp"
-#include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/alloc.hpp"
 #include "cpp_common/basePath_SSEC.hpp"
-#include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/base_graph.hpp"
 #include "drivers/coloring/bipartite_driver.h"
-#include "coloring/pgr_bipartite_driver.hpp"
+#include "coloring/bipartite_driver.hpp"
 
 
-/************************************************************
-  edges_sql TEXT
- ***********************************************************/
 void
-do_pgr_bipartite(
-        Edge_t  *data_edges,
-        size_t total_edges,
+pgr_do_bipartite(
+        char *edges_sql,
+
         II_t_rt **return_tuples,
         size_t *return_count,
         char **log_msg,
@@ -65,20 +59,30 @@ do_pgr_bipartite(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
+    char *hint = nullptr;
 
 
     try {
-        pgassert(total_edges != 0);
+        // NOLINTBEGIN(clang-analyzer-cplusplus.NewDelete)
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
+        // NOLINTEND(clang-analyzer-cplusplus.NewDelete)
+
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+        if (edges.empty()) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
 
         std::string logstr;
-        graphType gType = UNDIRECTED;
-        pgrouting::UndirectedGraph undigraph(gType);
-        undigraph.insert_edges(data_edges, total_edges);
+        pgrouting::UndirectedGraph undigraph;
+        undigraph.insert_edges(edges);
         std::vector<II_t_rt> results;
         pgrouting::functions::Pgr_Bipartite <pgrouting::UndirectedGraph> fn_Bipartite;
         results = fn_Bipartite.pgr_bipartite(undigraph);
@@ -115,6 +119,9 @@ do_pgr_bipartite(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

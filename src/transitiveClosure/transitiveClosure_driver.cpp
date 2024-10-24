@@ -28,12 +28,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 
-#include "transitiveClosure/pgr_transitiveClosure.hpp"
+#include "transitiveClosure/transitiveClosure.hpp"
 
+#include "cpp_common/pgdata_getters.hpp"
 #include "cpp_common/identifiers.hpp"
-#include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/alloc.hpp"
 #include "cpp_common/basePath_SSEC.hpp"
-#include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/base_graph.hpp"
 
 #include "c_types/transitiveClosure_rt.h"
 
@@ -93,9 +94,9 @@ void get_postgres_result(
   edges_sql TEXT
  ***********************************************************/
 void
-do_pgr_transitiveClosure(
-        Edge_t  *data_edges,
-        size_t total_edges,
+pgr_do_transitiveClosure(
+        char *edges_sql,
+
         TransitiveClosure_rt **return_tuples,
         size_t *return_count,
         char **log_msg,
@@ -107,23 +108,26 @@ do_pgr_transitiveClosure(
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
+    char *hint = nullptr;
+
     try {
-        pgassert(total_edges != 0);
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        /*
-         * Converting to C++ structures
-         */
-        std::vector<Edge_t> edges(data_edges, data_edges + total_edges);
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+        if (edges.empty()) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
 
-
-        graphType gType = DIRECTED;
-        pgrouting::DirectedGraph digraph(gType);
-        digraph.insert_edges(data_edges, total_edges);
+        pgrouting::DirectedGraph digraph;
+        digraph.insert_edges(edges);
 
         get_postgres_result(
                 digraph,
@@ -142,6 +146,9 @@ do_pgr_transitiveClosure(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

@@ -1,7 +1,7 @@
 # Do not use extensions
 SET(LOCAL_FILES
-    doc-pgr_boyerMyrvold
-    doc-pgr_isPlanar
+    boyerMyrvold
+    isPlanar
     )
 
 foreach (f ${LOCAL_FILES})

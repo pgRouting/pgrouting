@@ -72,7 +72,7 @@ Signatures
 
 :Example: The connected components of the graph
 
-.. literalinclude:: doc-pgr_connectedComponents.queries
+.. literalinclude:: connectedComponents.queries
    :start-after: -- q1
    :end-before: -- q2
 

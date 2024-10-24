@@ -26,36 +26,12 @@ IFS='\. ' read -r -a a <<< "${OLD_VERSION}"
 MAYOR="${a[0]}"
 MINOR="${a[1]}"
 
-function pumpup_doc {
-    echo "pump up doc"
-    OLDSTR='^  \(`'"${1}"' (.*)\/'"${1}"'(.*)\)$'
-    NEWSTR='  \(`'"${2}"' $1\/'"${2}"'$2\)\n  `'"${1}"' $1\/'"${1}"'$2'
-    for f in $(git ls-files './*.rst')
-    do
-        perl -pi -e 's/'"$OLDSTR"'/'"${NEWSTR}"'/' "$f"
-    done
-    WEBLINK='<https:\/\/docs.pgrouting.org\/'
-    OLDSTR='`'"${1}"' '"${WEBLINK}${1}"
-    NEWSTR='`'"${2}"' '"${WEBLINK}${2}"
-    echo "${OLDSTR}"
-    echo "${NEWSTR}"
-    echo "pump up pot file"
-    perl -pi -e 's/\('"${OLDSTR}"'(.*)__\)/\('"${NEWSTR}"'$1__\) '"${OLDSTR}"'$1__/' locale/pot/pgrouting_doc_strings.pot
-    # Joining the line to be changed
-    perl -pi -e 's/\(`'"${1}"'(.*)\n/\"\n\"\(`'"${1}"'$1/g' locale/*/LC_MESSAGES/pgrouting_doc_strings.po
-    # Removing double quote
-    perl -pi -e 's/^\"(.*)""(.*)$/\"$1$2/g' locale/*/LC_MESSAGES/pgrouting_doc_strings.po
-    # now it can be substitued
-    perl -pi -e 's/\('"${OLDSTR}"'(.*)__\)/\('"${NEWSTR}"'$1__\)\"\n\"'"${OLDSTR}"'$1__/' locale/*/LC_MESSAGES/pgrouting_doc_strings.po
-}
-
 function pumpup_mayor {
     ((a[0]++))
     NEW_MAYOR="${a[0]}"
     NEW_MINOR="0"
     NEW_MICRO="0"
     NEW_KIND="-dev"
-    pumpup_doc "${MAYOR}.${MINOR}" "${NEW_MAYOR}.${NEW_MINOR}"
 }
 
 function pumpup_minor {
@@ -64,7 +40,6 @@ function pumpup_minor {
     NEW_MINOR="${a[1]}"
     NEW_MICRO="0"
     NEW_KIND="-dev"
-    pumpup_doc "${MAYOR}.${MINOR}" "${NEW_MAYOR}.${NEW_MINOR}"
 }
 
 function pumpup_micro {
@@ -90,6 +65,7 @@ fi
 
 NEW_VERSION="${NEW_MAYOR}.${NEW_MINOR}.${NEW_MICRO}"
 echo "pumpup from ${OLD_VERSION}${KIND} to ${NEW_VERSION}${NEW_KIND}"
+
 
 # --------------------------------------------
 # --------------------------------------------
@@ -172,5 +148,11 @@ then
 fi
 
 
+# ------
+# Documentation related
+# ------
 perl -pi -e 's/# Copyright(.*) v(.*)$/# Copyright$1 v'"${NEW_VERSION}${NEW_KIND}"'/' locale/pot/*.pot
 perl -pi -e 's/# Copyright(.*) v(.*)$/# Copyright$1 v'"${NEW_VERSION}${NEW_KIND}"'/' locale/*/*/*.po
+perl -pi -e 's/('"${MAYOR}.${MINOR}"')/'"${NEW_MAYOR}.${NEW_MINOR}\', \'${MAYOR}.${MINOR}"'/g' doc/_static/page_history.js
+bash tools/transifex/update_locale.sh
+

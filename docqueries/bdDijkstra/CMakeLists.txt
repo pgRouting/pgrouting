@@ -1,8 +1,8 @@
 # Do not use extensions
 SET(LOCAL_FILES
-    doc-pgr_bdDijkstraCostMatrix
-    doc-pgr_bdDijkstraCost
-    doc-pgr_bdDijkstra
+    bdDijkstraCostMatrix
+    bdDijkstraCost
+    bdDijkstra
     )
 
 foreach (f ${LOCAL_FILES})

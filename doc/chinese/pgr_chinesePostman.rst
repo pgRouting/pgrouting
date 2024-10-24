@@ -52,7 +52,7 @@ Signatures
 
 :Example:
 
-.. literalinclude:: doc-pgr_chinesePostman.queries
+.. literalinclude:: chinesePostman.queries
    :start-after: -- q1
    :end-before: -- q2
 

@@ -25,7 +25,7 @@ UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(revers
 
 --
 PREPARE prim1 AS
-SELECT *
+SELECT seq, depth, start_vid, node, edge, cost, agg_cost
 FROM pgr_primDD(
     'SELECT id, source, target, cost, reverse_cost
     FROM edges WHERE id > 18 ORDER BY id',
@@ -38,7 +38,7 @@ SELECT set_eq('prim1',
 
 
 PREPARE prim2 AS
-SELECT *
+SELECT seq, depth, start_vid, node, edge, cost, agg_cost
 FROM pgr_primDD(
     'SELECT id, source, target, cost
      FROM edges WHERE id > 18 ORDER BY id',
@@ -56,7 +56,7 @@ SELECT set_eq('prim2',
 
 --
 PREPARE prim3 AS
-SELECT *
+SELECT seq, depth, start_vid, node, edge, cost, agg_cost
 FROM pgr_primDD(
     'SELECT id, source, target, cost, reverse_cost
      FROM edges ORDER BY id',
@@ -126,7 +126,7 @@ FROM pgr_primDD(
 );
 
 SELECT throws_ok('prim6',
-    'P0001',
+    CASE WHEN min_version('3.7.0') THEN 'XX000' ELSE 'P0001' END,
     'Negative value found on ''distance''',
     '6: Negative distance throws');
 
@@ -141,13 +141,13 @@ FROM pgr_primDD(
 );
 
 SELECT throws_ok('prim7',
-    'P0001',
+    CASE WHEN min_version('3.7.0') THEN 'XX000' ELSE 'P0001' END,
     'Negative value found on ''distance''',
     '7:Negative distance throws');
 
 --
 PREPARE prim8 AS
-SELECT *
+SELECT seq, depth, start_vid, node, edge, cost, agg_cost
 FROM pgr_primDD(
     'SELECT id, source, target, cost, reverse_cost
     FROM edges ORDER BY id',

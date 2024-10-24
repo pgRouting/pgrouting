@@ -42,7 +42,7 @@ CREATE FUNCTION pgr_kruskal(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT edge, cost
-    FROM _pgr_kruskal(_pgr_get_statement($1), ARRAY[0]::BIGINT[], '', -1, -1);
+    FROM _pgr_kruskalv4(_pgr_get_statement($1), ARRAY[0]::BIGINT[], '', -1, -1);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT;
 

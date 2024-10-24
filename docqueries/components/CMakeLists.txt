@@ -1,11 +1,11 @@
 # Do not use extensions
 SET(LOCAL_FILES
-    doc-pgr_articulationPoints
-    doc-pgr_biconnectedComponents
-    doc-pgr_bridges
-    doc-pgr_connectedComponents
-    doc-pgr_strongComponents
-    doc-pgr_makeConnected
+    articulationPoints
+    biconnectedComponents
+    bridges
+    connectedComponents
+    strongComponents
+    makeConnected
     )
 
 foreach (f ${LOCAL_FILES})

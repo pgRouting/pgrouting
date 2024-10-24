@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: directedChPP_driver.cpp
+File: chinesePostman_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -33,16 +33,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 #include <set>
+#include <string>
 
 // work for only directed
-#include "chinese/pgr_chinesePostman.hpp"
+#include "cpp_common/pgdata_getters.hpp"
+#include "chinese/chinesePostman.hpp"
 
-#include "cpp_common/pgr_alloc.hpp"
-#include "cpp_common/pgr_assert.h"
+#include "cpp_common/alloc.hpp"
+#include "cpp_common/assert.hpp"
 
 void
-do_pgr_directedChPP(
-        Edge_t *data_edges, size_t total_edges,
+pgr_do_directedChPP(
+        char *edges_sql,
         bool only_cost,
 
         Path_rt **return_tuples, size_t *return_count,
@@ -56,16 +58,26 @@ do_pgr_directedChPP(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char *hint = nullptr;
+
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(total_edges != 0);
 
-        pgrouting::graph::PgrDirectedChPPGraph digraph(
-                data_edges, total_edges);
+
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+        if (edges.empty()) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
+
+        pgrouting::graph::PgrDirectedChPPGraph digraph(edges);
 
         double minCost;
         minCost = digraph.DirectedChPP();
@@ -73,8 +85,7 @@ do_pgr_directedChPP(
         std::vector<Path_rt> pathEdges;
         if (only_cost) {
             if (minCost >= 0.0) {
-                Path_rt edge;
-                edge.seq = -1;
+                Path_rt edge = {};
                 edge.node = edge.edge = -1;
                 edge.cost = edge.agg_cost = minCost;
                 pathEdges.push_back(edge);
@@ -82,7 +93,6 @@ do_pgr_directedChPP(
         } else {
             pathEdges = digraph.GetPathEdges();
         }
-
 
         size_t count = pathEdges.size();
 
@@ -114,6 +124,9 @@ do_pgr_directedChPP(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

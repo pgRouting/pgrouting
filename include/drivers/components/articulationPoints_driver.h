@@ -47,22 +47,11 @@ typedef struct Edge_t Edge_t;
 extern "C" {
 #endif
 
-    /*********************************************************
-      TEXT,
-    BIGINT,
-    BIGINT,
-     ********************************************************/
+void pgr_do_articulationPoints(
+        char*,
+        int64_t**, size_t*,
 
-
-    void
-        do_pgr_articulationPoints(
-                Edge_t  *data_edges,
-                size_t total_edges,
-                int64_t **return_tuples,
-                size_t *return_count,
-                char ** log_msg,
-                char ** notice_msg,
-                char ** err_msg);
+        char**, char**, char**);
 
 
 #ifdef __cplusplus

@@ -55,7 +55,7 @@ SELECT is_empty('
 SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges where id>18 '',array[2,5], 2, directed := false)', '13');
 
 
--- vertex not present in graph tests 
+-- vertex not present in graph tests
 
 -- directed graph
 SELECT is_empty('
@@ -85,7 +85,7 @@ SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_
 SELECT is_empty('
 SELECT * from pgr_breadthFirstSearch(''SELECT id, source, target, cost, reverse_cost  from edges'',array[20,-10], 2, directed := false)', '25');
 
--- negative depth tests 
+-- negative depth tests
 
 PREPARE breadthFirstSearch26 AS
 SELECT *
@@ -141,8 +141,8 @@ FROM pgr_breadthFirstSearch(
 SELECT throws_ok('breadthFirstSearch29',
     'P0001',
     'Negative value found on ''max_depth''',
-    '29: Negative max_depth throws');  
+    '29: Negative max_depth throws');
 
 
 SELECT * FROM finish();
-ROLLBACK;    
+ROLLBACK;

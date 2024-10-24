@@ -76,7 +76,7 @@ Signatures
 
 :Example: Graph coloring of pgRouting :doc:`sampledata`
 
-.. literalinclude:: doc-pgr_sequentialVertexColoring.queries
+.. literalinclude:: sequentialVertexColoring.queries
    :start-after: -- q1
    :end-before: -- q2
 

@@ -99,7 +99,7 @@ One to One
 :Example: From vertex :math:`6` to vertex :math:`12` on a **directed** graph
           with heuristic :math:`2`
 
-.. literalinclude:: doc-aStarCost.queries
+.. literalinclude:: aStarCost.queries
     :start-after: -- q2
     :end-before: -- q3
 
@@ -121,7 +121,7 @@ One to Many
 :Example: From vertex :math:`6` to vertices :math:`\{10, 12\}` on a **directed**
           graph with heuristic :math:`3` and factor :math:`3.5`
 
-.. literalinclude:: doc-aStarCost.queries
+.. literalinclude:: aStarCost.queries
    :start-after: -- q3
    :end-before: -- q4
 
@@ -143,7 +143,7 @@ Many to One
 :Example: From vertices :math:`\{6, 8\}` to vertex :math:`10` on an
           **undirected** graph with heuristic :math:`4`
 
-.. literalinclude:: doc-aStarCost.queries
+.. literalinclude:: aStarCost.queries
     :start-after: -- q4
     :end-before: -- q5
 
@@ -165,7 +165,7 @@ Many to Many
 :Example: From vertices :math:`\{6, 8\}` to vertices :math:`\{10, 12\}` on a
           **directed** graph with factor :math:`0.5`
 
-.. literalinclude:: doc-aStarCost.queries
+.. literalinclude:: aStarCost.queries
     :start-after: -- q5
     :end-before: -- q51
 
@@ -189,13 +189,13 @@ Combinations
 
 The combinations table:
 
-.. literalinclude:: doc-aStarCost.queries
+.. literalinclude:: aStarCost.queries
    :start-after: -- q51
    :end-before: -- q52
 
 The query:
 
-.. literalinclude:: doc-aStarCost.queries
+.. literalinclude:: aStarCost.queries
    :start-after: -- q52
    :end-before: -- q6
 
@@ -249,19 +249,19 @@ Additional Examples
 
 :Example 1: Demonstration of repeated values are ignored, and result is sorted.
 
-.. literalinclude:: doc-aStarCost.queries
+.. literalinclude:: aStarCost.queries
     :start-after: -- q6
     :end-before: -- q7
 
 :Example 2: Making **start vids** the same as **end vids**.
 
-.. literalinclude:: doc-aStarCost.queries
+.. literalinclude:: aStarCost.queries
     :start-after: -- q7
     :end-before: -- q8
 
 :Example 3: Manually assigned vertex combinations.
 
-.. literalinclude:: doc-aStarCost.queries
+.. literalinclude:: aStarCost.queries
    :start-after: -- q8
    :end-before: -- q9
 

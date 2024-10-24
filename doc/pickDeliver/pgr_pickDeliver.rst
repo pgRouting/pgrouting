@@ -88,19 +88,19 @@ Signature
 
 Given the vehicles:
 
-.. literalinclude:: doc-pickDeliver.queries
+.. literalinclude:: pickDeliver.queries
    :start-after: -- q1
    :end-before: -- q2
 
 and the orders:
 
-.. literalinclude:: doc-pickDeliver.queries
+.. literalinclude:: pickDeliver.queries
    :start-after: -- q2
    :end-before: -- q3
 
 The query:
 
-.. literalinclude:: doc-pickDeliver.queries
+.. literalinclude:: pickDeliver.queries
    :start-after: -- q3
    :end-before: -- q4
 

@@ -1,6 +1,5 @@
 /*PGR-GNU*****************************************************************
-
-FILE: rule.cpp
+File: rule.cpp
 
 Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org
@@ -28,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 
-#include "c_types/restriction_t.h"
+#include "cpp_common/restriction_t.hpp"
 
 
 namespace pgrouting {

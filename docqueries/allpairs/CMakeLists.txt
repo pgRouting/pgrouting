@@ -1,7 +1,7 @@
 # Do not use extensions
 SET(LOCAL_FILES
-    doc-floydWarshall
-    doc-johnson
+    floydWarshall
+    johnson
     )
 
 foreach (f ${LOCAL_FILES})

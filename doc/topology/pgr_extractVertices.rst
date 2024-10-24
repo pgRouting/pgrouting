@@ -57,7 +57,7 @@ Signatures
 
 :Example: Extracting the vertex information
 
-.. literalinclude:: doc-pgr_extractVertices.queries
+.. literalinclude:: extractVertices.queries
    :start-after: --q1
    :end-before: --q1.1
 
@@ -206,7 +206,7 @@ true``.
 The results can be used as base code to make a refinement based on the backend
 development needs.
 
-.. literalinclude:: doc-pgr_extractVertices.queries
+.. literalinclude:: extractVertices.queries
    :start-after: --q2
    :end-before: --q2.1
 
@@ -219,14 +219,14 @@ Create a routing topology
 Make sure the database does not have the ``vertices_table``
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_extractVertices.queries
+.. literalinclude:: extractVertices.queries
    :start-after: --q3
    :end-before: --q3.1
 
 Clean up the columns of the routing topology to be created
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_extractVertices.queries
+.. literalinclude:: extractVertices.queries
    :start-after: --q3.1
    :end-before: --q3.2
 
@@ -239,14 +239,14 @@ Create the vertices table
   * Create it as ``UNLOGGED`` and
   * After the table is created ``ALTER TABLE .. SET LOGGED``
 
-.. literalinclude:: doc-pgr_extractVertices.queries
+.. literalinclude:: extractVertices.queries
    :start-after: --q3.2
    :end-before: --q3.3
 
 Inspect the vertices table
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_extractVertices.queries
+.. literalinclude:: extractVertices.queries
    :start-after: --q3.3
    :end-before: --q3.4
 
@@ -255,20 +255,20 @@ Create the routing topology on the edge table
 
 Updating the ``source`` information
 
-.. literalinclude:: doc-pgr_extractVertices.queries
+.. literalinclude:: extractVertices.queries
    :start-after: --q3.4
    :end-before: --q3.5
 
 Updating the ``target`` information
 
-.. literalinclude:: doc-pgr_extractVertices.queries
+.. literalinclude:: extractVertices.queries
    :start-after: --q3.5
    :end-before: --q3.6
 
 Inspect the routing topology
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_extractVertices.queries
+.. literalinclude:: extractVertices.queries
    :start-after: --q3.6
    :end-before: --q3.7
 

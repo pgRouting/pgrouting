@@ -56,6 +56,7 @@ The latest documentation: https://docs.pgrouting.org/latest
   * Compiling with Boost 1.56 up to Boost 1.74 requires C++ Compiler with C++03 or C++11 standard support
   * Compiling with Boost 1.75 requires C++ Compiler with C++14 standard support
 * Postgresql = Supported [version](https://www.postgresql.org/support/versioning/) by PostgreSQL
+  * Not supporting v12 & under
 * The Boost Graph Library (BGL) >= 1.56
 * CMake >= 3.2
 * 7.0 > Sphinx >= 4.0.0

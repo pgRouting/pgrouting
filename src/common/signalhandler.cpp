@@ -1,4 +1,5 @@
 /*PGR-GNU*****************************************************************
+File: signalhandler.cpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -32,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  *****************************************************************PGR-MIT*/
 
-#include "cpp_common/signalhandler.h"
+#include "cpp_common/signalhandler.hpp"
 
 SignalHandler *
 SignalHandler::instance() {

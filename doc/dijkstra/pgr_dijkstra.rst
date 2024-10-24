@@ -108,7 +108,7 @@ One to One
 
 :Example: From vertex :math:`6` to vertex :math:`10` on a **directed** graph
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
     :start-after: -- q2
     :end-before: -- q3
 
@@ -128,7 +128,7 @@ One to Many
 
 :Example: From vertex :math:`6` to vertices :math:`\{10, 17\}` on a **directed**
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q3
    :end-before: -- q4
 
@@ -149,7 +149,7 @@ Many to One
 :Example: From vertices :math:`\{6, 1\}` to vertex :math:`17` on a **directed**
           graph
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q4
    :end-before: -- q5
 
@@ -170,7 +170,7 @@ Many to Many
 :Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 17\}` on an
           **undirected** graph
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q5
    :end-before: -- q51
 
@@ -192,13 +192,13 @@ Combinations
 
 The combinations table:
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
     :start-after: -- q51
     :end-before: -- q52
 
 The query:
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
     :start-after: -- q52
     :end-before: -- q6
 
@@ -245,19 +245,19 @@ Additional Examples
 
 :Example: Demonstration of repeated values are ignored, and result is sorted.
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
     :start-after: -- q6
     :end-before: -- q7
 
 :Example 2: Making **start_vids** the same as **end_vids**
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
     :start-after: -- q7
     :end-before: -- q8
 
 :Example: Manually assigned vertex combinations.
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
     :start-after: -- q8
     :end-before: -- q9
 
@@ -278,28 +278,28 @@ For **directed** graphs with ``cost`` and ``reverse_cost`` columns
 1) Path from :math:`6` to :math:`10`
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q70
    :end-before: -- q71
 
 2) Path from :math:`6` to :math:`7`
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q71
    :end-before: -- q72
 
 3) Path from :math:`12` to :math:`10`
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q72
    :end-before: -- q73
 
 4) Path from :math:`12` to :math:`7`
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q73
    :end-before: -- q74
 
@@ -308,7 +308,7 @@ For **directed** graphs with ``cost`` and ``reverse_cost`` columns
 
 Paths :math:`\{6\}\rightarrow\{10, 7\}`
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q74
    :end-before: -- q75
 
@@ -317,7 +317,7 @@ Paths :math:`\{6\}\rightarrow\{10, 7\}`
 
 Paths :math:`\{6, 12\}\rightarrow\{7\}`
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q75
    :end-before: -- q76
 
@@ -326,7 +326,7 @@ Paths :math:`\{6, 12\}\rightarrow\{7\}`
 
 Paths :math:`\{6, 12\}\rightarrow\{10, 7\}`
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q76
    :end-before: -- q77
 
@@ -335,7 +335,7 @@ Paths :math:`\{6, 12\}\rightarrow\{10, 7\}`
 
 Paths :math:`\{6\}\rightarrow\{10, 7\}\cup\{12\}\rightarrow\{10\}`
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q77
    :end-before: -- q80
 
@@ -350,28 +350,28 @@ For **undirected** graphs with ``cost`` and ``reverse_cost`` columns
 9) Path from :math:`6` to :math:`10`
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q90
    :end-before: -- q91
 
 10) Path from :math:`6` to :math:`7`
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q91
    :end-before: -- q92
 
 11) Path from :math:`12` to :math:`10`
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q92
    :end-before: -- q93
 
 12) Path from :math:`12` to :math:`7`
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q93
    :end-before: -- q94
 
@@ -380,7 +380,7 @@ For **undirected** graphs with ``cost`` and ``reverse_cost`` columns
 
 Paths :math:`\{6\}\rightarrow\{10, 7\}`
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q94
    :end-before: -- q95
 
@@ -389,7 +389,7 @@ Paths :math:`\{6\}\rightarrow\{10, 7\}`
 
 Paths :math:`\{6, 12\}\rightarrow\{7\}`
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q95
    :end-before: -- q96
 
@@ -398,7 +398,7 @@ Paths :math:`\{6, 12\}\rightarrow\{7\}`
 
 Paths :math:`\{6, 12\}\rightarrow\{10, 7\}`
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q96
    :end-before: -- q97
 
@@ -407,7 +407,7 @@ Paths :math:`\{6, 12\}\rightarrow\{10, 7\}`
 
 Paths :math:`\{6\}\rightarrow\{10, 7\}\cup\{12\}\rightarrow\{10\}`
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q97
    :end-before: -- q10
 
@@ -422,28 +422,28 @@ For **directed** graphs only with ``cost`` column
 17) Path from :math:`6` to :math:`10`
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q11
    :end-before: -- q111
 
 18) Path from :math:`6` to :math:`7`
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q111
    :end-before: -- q112
 
 19) Path from :math:`12` to :math:`10`
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q112
    :end-before: -- q113
 
 20) Path from :math:`12` to :math:`7`
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q113
    :end-before: -- q114
 
@@ -452,7 +452,7 @@ For **directed** graphs only with ``cost`` column
 
 Paths :math:`\{6\}\rightarrow\{10, 7\}`
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q114
    :end-before: -- q115
 
@@ -461,7 +461,7 @@ Paths :math:`\{6\}\rightarrow\{10, 7\}`
 
 Paths :math:`\{6, 12\}\rightarrow\{7\}`
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q115
    :end-before: -- q116
 
@@ -470,7 +470,7 @@ Paths :math:`\{6, 12\}\rightarrow\{7\}`
 
 Paths :math:`\{6, 12\}\rightarrow\{10, 7\}`
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q116
    :end-before: -- q117
 
@@ -479,7 +479,7 @@ Paths :math:`\{6, 12\}\rightarrow\{10, 7\}`
 
 Paths :math:`\{6\}\rightarrow\{10, 7\}\cup\{12\}\rightarrow\{10\}`
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q117
    :end-before: -- q12
 
@@ -494,28 +494,28 @@ For **undirected** graphs only with ``cost`` column
 25) Path from :math:`6` to :math:`10`
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q13
    :end-before: -- q131
 
 26) Path from :math:`6` to :math:`7`
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q131
    :end-before: -- q132
 
 27) Path from :math:`12` to :math:`10`
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q132
    :end-before: -- q133
 
 28) Path from :math:`12` to :math:`7`
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q133
    :end-before: -- q134
 
@@ -524,7 +524,7 @@ For **undirected** graphs only with ``cost`` column
 
 Paths :math:`\{6\}\rightarrow\{10, 7\}`
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q134
    :end-before: -- q135
 
@@ -533,7 +533,7 @@ Paths :math:`\{6\}\rightarrow\{10, 7\}`
 
 Paths :math:`\{6, 12\}\rightarrow\{7\}`
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q135
    :end-before: -- q136
 
@@ -542,7 +542,7 @@ Paths :math:`\{6, 12\}\rightarrow\{7\}`
 
 Paths :math:`\{6, 12\}\rightarrow\{10, 7\}`
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q136
    :end-before: -- q137
 
@@ -551,7 +551,7 @@ Paths :math:`\{6, 12\}\rightarrow\{10, 7\}`
 
 Paths :math:`\{6\}\rightarrow\{10, 7\}\cup\{12\}\rightarrow\{10\}`
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q137
    :end-before: -- q14
 
@@ -564,35 +564,35 @@ The following examples find the path for :math:`\{6\}\rightarrow\{10\}`
 33) Using `One to One`_
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q15
    :end-before: -- q151
 
 34) Using `One to Many`_
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q151
    :end-before: -- q152
 
 35) Using `Many to One`_
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q152
    :end-before: -- q153
 
 36) Using `Many to Many`_
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q153
    :end-before: -- q154
 
 37) Using `Combinations`_
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_dijkstra.queries
+.. literalinclude:: dijkstra.queries
    :start-after: -- q154
    :end-before: -- q16
 

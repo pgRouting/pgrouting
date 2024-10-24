@@ -120,7 +120,7 @@ Usage when the edge table's columns MATCH the default values:
 
 The simplest way to use pgr_createTopology is:
 
-.. literalinclude:: doc-pgr_createTopology.queries
+.. literalinclude:: createTopology.queries
    :start-after: --q1
    :end-before: --q1.1
 
@@ -129,7 +129,7 @@ The simplest way to use pgr_createTopology is:
 
 We get the sameresult as the simplest way to use the function.
 
-.. literalinclude:: doc-pgr_createTopology.queries
+.. literalinclude:: createTopology.queries
    :start-after: --q2
    :end-before: --q2.1
 
@@ -139,7 +139,7 @@ We get the sameresult as the simplest way to use the function.
     passed to the function as the geometry column, and the geometry column
     ``the_geom`` is passed to the function as the id column.
 
-    .. literalinclude:: doc-pgr_createTopology.queries
+    .. literalinclude:: createTopology.queries
        :start-after: --q3
        :end-before: --q3.1
 
@@ -148,15 +148,15 @@ We get the sameresult as the simplest way to use the function.
 Parameters defined with a default value can be omitted, as long as the value
 matches the default And The order of the parameters would not matter.
 
-.. literalinclude:: doc-pgr_createTopology.queries
+.. literalinclude:: createTopology.queries
    :start-after: --q4
    :end-before: --q4.1
 
-.. literalinclude:: doc-pgr_createTopology.queries
+.. literalinclude:: createTopology.queries
    :start-after: --q5
    :end-before: --q5.1
 
-.. literalinclude:: doc-pgr_createTopology.queries
+.. literalinclude:: createTopology.queries
    :start-after: --q6
    :end-before: --q6.1
 
@@ -164,21 +164,21 @@ matches the default And The order of the parameters would not matter.
 
 Selecting rows based on the id.
 
-.. literalinclude:: doc-pgr_createTopology.queries
+.. literalinclude:: createTopology.queries
    :start-after: --q7
    :end-before: --q7.1
 
 Selecting the rows where the geometry is near the geometry of row with ``id =
 5``.
 
-.. literalinclude:: doc-pgr_createTopology.queries
+.. literalinclude:: createTopology.queries
    :start-after: --q8
    :end-before: --q8.1
 
 Selecting the rows where the geometry is near the geometry of the row with
 ``gid`` =100 of the table ``othertable``.
 
-.. literalinclude:: doc-pgr_createTopology.queries
+.. literalinclude:: createTopology.queries
    :start-after: --q9
    :end-before: --q9.1
 
@@ -187,7 +187,7 @@ Usage when the edge table's columns DO NOT MATCH the default values:
 
 For the following table
 
-.. literalinclude:: doc-pgr_createTopology.queries
+.. literalinclude:: createTopology.queries
    :start-after: --q10
    :end-before: --q10.1
 
@@ -198,7 +198,7 @@ The arguments need to be given in the order described in the parameters.
 Note that this example uses clean flag. So it recreates the whole vertices
 table.
 
-.. literalinclude:: doc-pgr_createTopology.queries
+.. literalinclude:: createTopology.queries
    :start-after: --q11
    :end-before: --q11.1
 
@@ -208,7 +208,7 @@ table.
    to the function AS the geometry column, and the geometry column ``mygeom`` is
    passed to the function AS the id column.
 
-    .. literalinclude:: doc-pgr_createTopology.queries
+    .. literalinclude:: createTopology.queries
        :start-after: --q12
        :end-before: --q12.1
 
@@ -218,11 +218,11 @@ In this scenario omitting a parameter would create an error because the default
 values for the column names do not match the column names of the table.
 The order of the parameters do not matter:
 
-.. literalinclude:: doc-pgr_createTopology.queries
+.. literalinclude:: createTopology.queries
    :start-after: --q13
    :end-before: --q13.1
 
-.. literalinclude:: doc-pgr_createTopology.queries
+.. literalinclude:: createTopology.queries
    :start-after: --q14
    :end-before: --q14.1
 
@@ -230,14 +230,14 @@ The order of the parameters do not matter:
 
 Based on id:
 
-.. literalinclude:: doc-pgr_createTopology.queries
+.. literalinclude:: createTopology.queries
    :start-after: --q15
    :end-before: --q15.1
 
 Selecting the rows where the geometry is near the geometry of the row with
 ``gid`` =100 of the table ``othertable``.
 
-.. literalinclude:: doc-pgr_createTopology.queries
+.. literalinclude:: createTopology.queries
    :start-after: --q16
    :end-before: --q16.1
 
@@ -264,7 +264,7 @@ With full output
 This example start a clean topology, with 5 edges, and then its incremented to
 the rest of the edges.
 
-.. literalinclude:: doc-pgr_createTopology.queries
+.. literalinclude:: createTopology.queries
    :start-after: --q17
    :end-before: --q17.1
 

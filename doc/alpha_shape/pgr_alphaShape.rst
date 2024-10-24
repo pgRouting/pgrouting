@@ -75,7 +75,7 @@ Signatures
 :Example: passing a geometry collection with spoon radius :math:`1.5` using the
           return variable ``geom``
 
-.. literalinclude:: doc-pgr_alphashape.queries
+.. literalinclude:: alphashape.queries
    :start-after: -- q1
    :end-before: -- q2
 

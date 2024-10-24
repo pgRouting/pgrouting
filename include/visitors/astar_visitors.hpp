@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-file: astar_visitors.hpp
+File: astar_visitors.hpp
 
 Copyright (c) 2023 Celia Virginia Vergara Castillo
 Copyright (c) 2015 Celia Virginia Vergara Castillo

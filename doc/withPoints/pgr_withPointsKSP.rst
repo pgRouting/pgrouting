@@ -98,7 +98,7 @@ One to One
 * No details are given about distance of other points of the query.
 * No heap paths are returned.
 
-.. literalinclude:: doc-pgr_withPointsKSP.queries
+.. literalinclude:: withPointsKSP.queries
    :start-after: --q1
    :end-before: --q2
 
@@ -120,7 +120,7 @@ One to Many
 :Example: Get 2 paths from point :math:`1` to point :math:`3` and vertex :math:`7` on an
           undirected graph
 
-.. literalinclude:: doc-pgr_withPointsKSP.queries
+.. literalinclude:: withPointsKSP.queries
    :start-after: --q2
    :end-before: --q3
 
@@ -142,7 +142,7 @@ Many to One
 :Example: Get a path from point :math:`1` and vertex :math:`6` to point :math:`3` on a **directed**
           graph with **right** side driving and **details** set to **True**
 
-.. literalinclude:: doc-pgr_withPointsKSP.queries
+.. literalinclude:: withPointsKSP.queries
    :start-after: --q3
    :end-before: --q4
 
@@ -164,7 +164,7 @@ Many to Many
 :Example: Get a path from point :math:`1` and vertex :math:`6` to point :math:`3` and vertex :math:`1` on a **directed**
           graph with **left** side driving and **heap_paths** set to **True**
 
-.. literalinclude:: doc-pgr_withPointsKSP.queries
+.. literalinclude:: withPointsKSP.queries
    :start-after: --q4
    :end-before: --q5
 
@@ -185,7 +185,7 @@ Combinations
 
 :Example: Using a combinations table on an **directed** graph
 
-.. literalinclude:: doc-pgr_withPointsKSP.queries
+.. literalinclude:: withPointsKSP.queries
     :start-after: --q5
     :end-before: --q6
 
@@ -307,7 +307,7 @@ Use :doc:`pgr_findCloseEdges` in the `Points SQL`_.
 Get :math:`2` paths using left side driving topology, from vertex :math:`1` to
 the closest location on the graph of point `(2.9, 1.8)`.
 
-.. literalinclude:: doc-pgr_withPointsKSP.queries
+.. literalinclude:: withPointsKSP.queries
     :start-after: --q6
     :end-before: --q7
 
@@ -319,7 +319,7 @@ Left driving side
 Get :math:`2` paths using left side driving topology, from point :math:`1` to
 point :math:`3` with details.
 
-.. literalinclude:: doc-pgr_withPointsKSP.queries
+.. literalinclude:: withPointsKSP.queries
    :start-after: --q7
    :end-before: --q8
 
@@ -329,7 +329,7 @@ Right driving side
 Get :math:`2` paths using right side driving topology from, point :math:`1` to
 point :math:`2` with heap paths and details.
 
-.. literalinclude:: doc-pgr_withPointsKSP.queries
+.. literalinclude:: withPointsKSP.queries
    :start-after: --q8
    :end-before: --q9
 

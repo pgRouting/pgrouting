@@ -31,11 +31,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
+#include <string>
 
-#include "spanningTree/pgr_randomSpanningTree.hpp"
 
-#include "cpp_common/pgr_alloc.hpp"
-#include "cpp_common/pgr_assert.h"
+#include "cpp_common/pgdata_getters.hpp"
+#include "cpp_common/alloc.hpp"
+#include "cpp_common/assert.hpp"
+#include "spanningTree/randomSpanningTree.hpp"
 
 template < class G >
 static
@@ -49,9 +51,8 @@ pgr_randomSpanningTree(
 
 
 void
-do_pgr_randomSpanningTree(
-        Edge_t  *data_edges,
-        size_t total_edges,
+pgr_do_randomSpanningTree(
+        char *edges_sql,
         int64_t root_vertex,
         bool directed,
         SpanTree_rt **return_tuples,
@@ -66,6 +67,8 @@ do_pgr_randomSpanningTree(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char *hint = nullptr;
+
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
@@ -74,20 +77,30 @@ do_pgr_randomSpanningTree(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+
+        if (edges.empty()) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
+
+
 
         std::vector<SpanTree_rt> results;
 
         if (directed) {
             log << "Working with directed Graph\n";
-            pgrouting::DirectedGraph digraph(gType);
+            pgrouting::DirectedGraph digraph(directed);
             digraph.insert_edges(data_edges, total_edges);
             results = pgr_randomSpanningTree(
                     digraph,
                     root_vertex);
         } else {
             log << "Working with Undirected Graph\n";
-            pgrouting::UndirectedGraph undigraph(gType);
+            pgrouting::UndirectedGraph undigraph(directed);
             undigraph.insert_edges(data_edges, total_edges);
             results = pgr_randomSpanningTree(
                     undigraph,
@@ -99,8 +112,7 @@ do_pgr_randomSpanningTree(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            notice <<
-                "No paths found";
+            notice << "No paths found";
             return;
         }
 
@@ -123,6 +135,9 @@ do_pgr_randomSpanningTree(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

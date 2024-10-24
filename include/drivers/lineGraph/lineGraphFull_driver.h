@@ -34,11 +34,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
-using Edge_t = struct Edge_t;
 using Line_graph_full_rt = struct Line_graph_full_rt;
 #else
 #   include <stddef.h>
-typedef struct Edge_t Edge_t;
 typedef struct Line_graph_full_rt Line_graph_full_rt;
 #endif
 
@@ -46,16 +44,11 @@ typedef struct Line_graph_full_rt Line_graph_full_rt;
 extern "C" {
 #endif
 
-    void
-        do_pgr_lineGraphFull(
-                Edge_t  *data_edges,
-                size_t total_edges,
-                Line_graph_full_rt **return_tuples,
-                size_t *return_count,
-                char ** log_msg,
-                char ** notice_msg,
-                char ** err_msg);
+void pgr_do_lineGraphFull(
+        char*,
 
+        Line_graph_full_rt**, size_t*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }

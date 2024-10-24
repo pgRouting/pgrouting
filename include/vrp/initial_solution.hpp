@@ -1,0 +1,70 @@
+/*PGR-GNU*****************************************************************
+File: initial_solution.hpp
+
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+ ********************************************************************PGR-GNU*/
+
+/*! @file */
+
+#ifndef INCLUDE_VRP_INITIAL_SOLUTION_HPP_
+#define INCLUDE_VRP_INITIAL_SOLUTION_HPP_
+#pragma once
+
+#include <set>
+#include <deque>
+#include "vrp/pd_orders.hpp"
+#include "vrp/solution.hpp"
+#include "vrp/initials_code.hpp"
+#include "cpp_common/identifiers.hpp"
+
+namespace pgrouting {
+namespace vrp {
+
+
+class Pgr_pickDeliver;
+
+
+class Initial_solution : public Solution {
+ public:
+     Initial_solution(
+             Initials_code kind,
+             size_t);
+
+     void invariant() const;
+
+ private:
+     /*
+      * one truck per order
+      */
+     void one_truck_all_orders();
+
+     void do_while_foo(int kind);
+
+
+     Identifiers<size_t> m_all_orders;
+     Identifiers<size_t> m_unassigned;
+     Identifiers<size_t> m_assigned;
+};
+
+}  //  namespace vrp
+}  //  namespace pgrouting
+
+#endif  // INCLUDE_VRP_INITIAL_SOLUTION_HPP_

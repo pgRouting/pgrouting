@@ -1,7 +1,7 @@
 ADD_LIBRARY(pickDeliver OBJECT
     pd_orders.cpp
     fleet.cpp
-    pgr_pickDeliver.cpp
+    pickDeliver.cpp
     dnode.cpp
     vehicle_pickDeliver.cpp
     solution.cpp
