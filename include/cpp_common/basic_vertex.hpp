@@ -43,17 +43,17 @@ namespace pgrouting {
 class Basic_vertex {
  public:
      Basic_vertex() :
-         id(0), vertex_index(0) {}
+         id(0) {}
      Basic_vertex(const Basic_vertex &v) :
-         id(v.id), vertex_index(0) {}
+         id(v.id) {}
 
      explicit Basic_vertex(const int64_t _id) :
-         id(_id), vertex_index(0) {}
+         id(_id) {}
 
      Basic_vertex& operator=(const Basic_vertex&) = default;
 
      Basic_vertex(const Edge_t &other, bool is_source) :
-         id(is_source? other.source : other.target), vertex_index(0) {}
+         id(is_source? other.source : other.target) {}
 
      void cp_members(const Basic_vertex &other) {
          this->id = other.id;
