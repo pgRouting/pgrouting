@@ -8,7 +8,7 @@
 # DeepL <noreply-mt-deepl@weblate.org>, 2024.
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Project-Id-Version: pgRouting v3.7.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-17 00:50+0000\n"
 "PO-Revision-Date: 2024-10-10 19:43+0000\n"

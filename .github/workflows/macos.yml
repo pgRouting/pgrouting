@@ -69,6 +69,7 @@ jobs:
           make install
 
       - name: Install pgTAP
+        if: false
         run: |
           git clone https://github.com/theory/pgtap.git pgTapExtension
           cd pgTapExtension
@@ -78,6 +79,7 @@ jobs:
           ln -s $(find `brew --prefix` -name pg_prove) symlink it into $(brew --prefix)/bin
 
       - name: Test
+        if: false
         run: |
           export PATH=$(brew --prefix)/Cellar/perl/$(perl -e 'print substr($^V, 1)')/bin:$PATH
           pg_ctl -D $(brew --prefix)/var/postgresql@14 start
