@@ -390,11 +390,15 @@ Pg_points_graph::create_new_edges() {
             }
             if (point.fraction == 0) {
                 log << "Point's vertex_id = source" << edge.source << "\n";
-                point.vertex_id = edge.source;
+                point.vertex_id = -point.pid;
+                Edge_t new_edge = {edge.id, edge.source, -point.pid, 0, 0};
+                m_new_edges.push_back(new_edge);
             }
             if (point.fraction == 1) {
                 log << "point's vertex_id = target" << edge.target << "\n";
-                point.vertex_id = edge.target;
+                point.vertex_id = -point.pid;
+                Edge_t new_edge = {edge.id, edge.target, -point.pid, 0, 0};
+                m_new_edges.push_back(new_edge);
             }
             if (point.fraction > 0 &&  point.fraction < 1) {
                 log << "vertex_id of the point is " << -point.pid << "\n";
