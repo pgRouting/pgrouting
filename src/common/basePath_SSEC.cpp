@@ -160,8 +160,6 @@ Path Path::getSubpath(unsigned int j) const {
     for (auto i = path.begin(); i != path.begin() + j; ++i) {
         result.push_back((*i));
     }
-    pgassert(result.tot_cost() != 0);
-    pgassert(this->tot_cost() != 0);
     return result;
 }
 
