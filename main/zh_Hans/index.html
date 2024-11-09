@@ -7,15 +7,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>目录 &#8212; pgRouting Manual (3.6)</title>
+    <title>目录 &#8212; pgRouting Manual (3.7)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=0fece2b7"></script>
+    <script src="_static/documentation_options.js?v=4258f9fe"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=c8ec7c59"></script>
+    <script src="_static/page_history.js?v=8578d92c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -44,7 +44,7 @@
 
         <a class="brand" href="#">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.6.3</b></span>
+        <span class="navbar-text pull-left"><b>v3.7.0</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -105,8 +105,7 @@
 <li><a class="reference internal" href="#available-functions-but-not-official-pgrouting-functions">可用函数，但不是官方 pgRouting 函数</a></li>
 <li><a class="reference internal" href="#release-notes"><span class="xref std std-doc">release_notes</span></a><ul>
 <li><a class="reference internal" href="#current-release">Current release</a></li>
-<li><a class="reference internal" href="#pgrouting-3-6-3-release-notes">pgRouting 3.6.3 Release Notes</a></li>
-<li><a class="reference internal" href="#pgrouting-3-6-2-release-notes">pgRouting 3.6.2 Release Notes</a></li>
+<li><a class="reference internal" href="#pgrouting-3-7-0-release-notes">pgRouting 3.7.0 发布说明</a></li>
 <li><a class="reference internal" href="#all-releases">所有版本</a><ul>
 </ul>
 </li>
@@ -164,8 +163,7 @@
 <li><a class="reference internal" href="#available-functions-but-not-official-pgrouting-functions">可用函数，但不是官方 pgRouting 函数</a></li>
 <li><a class="reference internal" href="#release-notes"><span class="xref std std-doc">release_notes</span></a><ul>
 <li><a class="reference internal" href="#current-release">Current release</a></li>
-<li><a class="reference internal" href="#pgrouting-3-6-3-release-notes">pgRouting 3.6.3 Release Notes</a></li>
-<li><a class="reference internal" href="#pgrouting-3-6-2-release-notes">pgRouting 3.6.2 Release Notes</a></li>
+<li><a class="reference internal" href="#pgrouting-3-7-0-release-notes">pgRouting 3.7.0 发布说明</a></li>
 <li><a class="reference internal" href="#all-releases">所有版本</a><ul>
 </ul>
 </li>
@@ -413,64 +411,75 @@
 <section id="current-release">
 <h3>Current release<a class="headerlink" href="#current-release" title="Link to this heading">¶</a></h3>
 </section>
-<section id="pgrouting-3-6-3-release-notes">
-<h3>pgRouting 3.6.3 Release Notes<a class="headerlink" href="#pgrouting-3-6-3-release-notes" title="Link to this heading">¶</a></h3>
-<p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.6.3%22">Git closed
-milestone for 3.6.3</a></p>
-<p class="rubric">构建</p>
+<section id="pgrouting-3-7-0-release-notes">
+<h3>pgRouting 3.7.0 发布说明<a class="headerlink" href="#pgrouting-3-7-0-release-notes" title="Link to this heading">¶</a></h3>
+<p>要查看此版本关闭的所有问题和拉取请求，请参阅 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.7.0%22">3.7.0</a> 的 Git 关闭里程碑</p>
+<p class="rubric">支持</p>
 <ul class="simple">
-<li><p>Explicit minimum requirements:</p>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2656">#2656</a> Stop support of
+PostgreSQL12 on pgrouting v3.7</p>
 <ul>
-<li><p>postgres 11.0.0</p></li>
-<li><p>postgis 3.0.0</p></li>
-</ul>
-</li>
-<li><p>g++ 13+ is supported</p></li>
-</ul>
-<p class="rubric">代码修正</p>
-<ul class="simple">
-<li><p>Fix warnings from cpplint.</p></li>
-<li><p>Fix warnings from clang 18.</p></li>
-</ul>
-<p class="rubric">CI tests</p>
-<ul class="simple">
-<li><p>Add a clang tidy test on changed files.</p></li>
-<li><p>Update test not done on versions: 3.0.1, 3.0.2, 3.0.3, 3.0.4, 3.1.0, 3.1.1,
-3.1.2</p></li>
-</ul>
-<p class="rubric">文档</p>
-<ul class="simple">
-<li><p>Results of documentation queries adujsted to boost 1.83.0 version:</p>
-<ul>
-<li><p>pgr_edgeDisjointPaths</p></li>
-<li><p>pgr_stoerWagner</p></li>
+<li><p>Stopping support of PostgreSQL 12</p></li>
+<li><p>CI does not test for PostgreSQL 12</p></li>
 </ul>
 </li>
 </ul>
-<p class="rubric">pgtap 测试</p>
+<p class="rubric">新的实验函数</p>
 <ul class="simple">
-<li><p>bug fixes</p></li>
-</ul>
-</section>
-<section id="pgrouting-3-6-2-release-notes">
-<h3>pgRouting 3.6.2 Release Notes<a class="headerlink" href="#pgrouting-3-6-2-release-notes" title="Link to this heading">¶</a></h3>
-<p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.6.2%22">Git closed
-milestone for 3.6.2</a></p>
-<p class="rubric">Upgrade fix</p>
-<ul class="simple">
-<li><p>The upgrade was failing for same minor</p></li>
-</ul>
-<p class="rubric">代码修正</p>
-<ul class="simple">
-<li><p>Fix warnings from cpplint</p></li>
-</ul>
-<p class="rubric">其他</p>
-<ul class="simple">
-<li><p>调整新闻生成器</p>
+<li><p>Metrics</p>
 <ul>
-<li><p>更名为 <cite>NEWS.md</cite> ，以便在 GitHub 上更好地可视化</p></li>
+<li><p>pgr_betweennessCentrality</p></li>
 </ul>
 </li>
+</ul>
+<p class="rubric">官方功能变更</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2605">#2605</a> Standarize
+spanning tree functions output</p>
+<ul class="simple">
+<li><p>新函数:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_kruskalDD</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_kruskalDFS</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_kruskalBFS</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_primDD</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_primDFS</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code></p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>将输出列标准化为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<ul>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">pred</span></code> result columns.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="rubric">实验提升为拟议。</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2635">#2635</a> pgr_LineGraph
+ignores directed flag and use negative values for identifiers.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_lineGraph</span></code></p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>晋升为 <strong>拟议</strong> 签名。</p></li>
+<li><p>适用于有向和无向图。</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">代码改进</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2599">#2599</a> 行车距离清理</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2607">#2607</a> 在 C++ 上读取 postgresql 数据</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2614">#2614</a> Clang tidy 不工作</p></li>
 </ul>
 </section>
 <section id="all-releases">
@@ -508,9 +517,9 @@ milestone for 3.6.2</a></p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.6.3.<br/>
-      Last updated on 10月 12, 2024.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.7.0.<br/>
+      Last updated on 11月 09, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>
 </footer>

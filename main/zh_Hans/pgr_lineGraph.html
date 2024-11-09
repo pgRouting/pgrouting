@@ -7,21 +7,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_lineGraph - Experimental &#8212; pgRouting Manual (3.6)</title>
+    <title>pgr_lineGraph - Proposed &#8212; pgRouting Manual (3.7)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=0fece2b7"></script>
+    <script src="_static/documentation_options.js?v=4258f9fe"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=c8ec7c59"></script>
+    <script src="_static/page_history.js?v=8578d92c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pgr_lineGraphFull - 实验" href="pgr_lineGraphFull.html" />
-    <link rel="prev" title="Transformation - Family of functions (Experimental)" href="transformation-family.html" />
+    <link rel="prev" title="Transformation - Family of functions" href="transformation-family.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -45,7 +45,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.6.3</b></span>
+        <span class="navbar-text pull-left"><b>v3.7.0</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -96,7 +96,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_lineGraph - Experimental</a><ul>
+<li><a class="reference internal" href="#">pgr_lineGraph - Proposed</a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a></li>
 <li><a class="reference internal" href="#parameters">参数</a><ul>
@@ -108,6 +108,17 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">结果列</a></li>
+<li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
+<li><a class="reference internal" href="#representation-as-directed-with-shared-edge-identifiers">Representation as directed with shared edge identifiers</a><ul>
+<li><a class="reference internal" href="#line-graph-of-a-directed-graph-represented-with-shared-edges">Line Graph of a directed graph represented with shared edges</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#representation-as-directed-with-unique-edge-identifiers">Representation as directed with unique edge identifiers</a><ul>
+<li><a class="reference internal" href="#line-graph-of-a-directed-graph-represented-with-unique-edges">Line Graph of a directed graph represented with unique edges</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#see-also">另请参阅</a></li>
 </ul>
 </li>
@@ -120,7 +131,7 @@
               
                 
   <li>
-    <a href="transformation-family.html" title="Previous Chapter: Transformation - Family of functions (Experimental)"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Transformatio...</span>
+    <a href="transformation-family.html" title="Previous Chapter: Transformation - Family of functions"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Transformatio...</span>
     </a>
   </li>
   <li>
@@ -155,7 +166,7 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">pgr_lineGraph - Experimental</a><ul>
+<li><a class="reference internal" href="#">pgr_lineGraph - Proposed</a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a></li>
 <li><a class="reference internal" href="#parameters">参数</a><ul>
@@ -167,13 +178,24 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">结果列</a></li>
+<li><a class="reference internal" href="#additional-examples">其他示例</a><ul>
+<li><a class="reference internal" href="#representation-as-directed-with-shared-edge-identifiers">Representation as directed with shared edge identifiers</a><ul>
+<li><a class="reference internal" href="#line-graph-of-a-directed-graph-represented-with-shared-edges">Line Graph of a directed graph represented with shared edges</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#representation-as-directed-with-unique-edge-identifiers">Representation as directed with unique edge identifiers</a><ul>
+<li><a class="reference internal" href="#line-graph-of-a-directed-graph-represented-with-unique-edges">Line Graph of a directed graph represented with unique edges</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#see-also">另请参阅</a></li>
 </ul>
 </li>
 </ul>
 
   <li>
-    <a href="transformation-family.html" title="Previous Chapter: Transformation - Family of functions (Experimental)"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Transformatio...</span>
+    <a href="transformation-family.html" title="Previous Chapter: Transformation - Family of functions"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; Transformatio...</span>
     </a>
   </li>
   <li>
@@ -195,8 +217,8 @@
   <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<section id="pgr-linegraph-experimental">
-<h1>pgr_lineGraph - Experimental<a class="headerlink" href="#pgr-linegraph-experimental" title="Link to this heading">¶</a></h1>
+<section id="pgr-linegraph-proposed">
+<h1>pgr_lineGraph - Proposed<a class="headerlink" href="#pgr-linegraph-proposed" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_lineGraph</span></code> — 将给定图转换为其相应的基于边的图。</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
@@ -207,36 +229,29 @@
 </figure>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>可能服务器崩溃</p>
+<p>下一版本的拟议功能。</p>
 <ul class="simple">
-<li><p>这些功能可能会导致服务器崩溃</p></li>
-</ul>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>实验功能</p>
-<ul class="simple">
-<li><p>它们不是当前版本的正式版本。</p></li>
-<li><p>它们可能不会正式成为下一个版本的一部分：</p>
+<li><p>它们并未正式出现在当前版本中。</p></li>
+<li><p>它们可能会正式成为下一个版本的一部分：</p>
 <ul>
-<li><p>这些函数可能不使用 ANY-INTEGER 和 ANY-NUMERICAL</p></li>
-<li><p>名称可能会改变。</p></li>
-<li><p>签名可能会改变。</p></li>
-<li><p>功能可能会改变。</p></li>
-<li><p>pgTap 测试可能丢失。</p></li>
-<li><p>可能需要 c/c++编码。</p></li>
-<li><p>可能缺乏文档。</p></li>
-<li><p>文档（如果有）可能需要重写。</p></li>
-<li><p>可能需要自动生成文档示例。</p></li>
-<li><p>可能需要社区的大量反馈。</p></li>
-<li><p>可能取决于 pgRouting 的拟议功能</p></li>
-<li><p>可能依赖于 pgRouting 的已弃用函数</p></li>
+<li><p>这些函数使用 ANY-INTEGER 和 ANY-NUMERICAL</p></li>
+<li><p>名字可能不会改变。（但仍然有可能改变）</p></li>
+<li><p>签名可能不会改变。（但仍然有可能改变）</p></li>
+<li><p>功能可能不会改变。（但仍然有可能改变）</p></li>
+<li><p>pgTap 测试已经完成。 但可能需要更多。</p></li>
+<li><p>文档可能需要完善。</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <p class="rubric">可用性</p>
 <ul class="simple">
+<li><p>Version 3.7.0</p>
+<ul>
+<li><p>晋升为 <strong>拟议</strong> 签名。</p></li>
+<li><p>适用于有向和无向图。</p></li>
+</ul>
+</li>
 <li><p>版本2.5.0</p>
 <ul>
 <li><p>新的 <strong>实验</strong> 函数</p></li>
@@ -256,7 +271,12 @@ edges share a common endpoint in <span class="math notranslate nohighlight">\(G\
 <li><p>适用于有向和无向图。</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> columns of the result represent existence of
 the edge.</p></li>
-<li><p>When the graph is directed the result is directed.</p></li>
+<li><p>When the graph is directed the result is directed.</p>
+<ul>
+<li><p>To get the complete Line Graph use unique identifiers on the double way
+edges (See <a class="reference internal" href="#additional-examples">Additional Examples</a>).</p></li>
+</ul>
+</li>
 <li><p>当图无向时，成本矩阵是对称的。</p>
 <ul>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> is always <span class="math notranslate nohighlight">\(-1\)</span>.</p></li>
@@ -282,51 +302,16 @@ the edge.</p></li>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_lineGraph</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
-<span class="p">);</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
+  <span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span><span class="s1">&#39;,</span>
+  <span class="n">false</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">reverse_cost</span>
 <span class="o">-----+--------+--------+------+--------------</span>
-   <span class="mi">1</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">18</span> <span class="o">|</span>     <span class="mi">18</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
-   <span class="mi">2</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">17</span> <span class="o">|</span>     <span class="mi">17</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">16</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
-   <span class="mi">4</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">14</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
-   <span class="mi">5</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">14</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
-   <span class="mi">6</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">14</span> <span class="o">|</span>     <span class="mi">14</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
-   <span class="mi">7</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">10</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
-   <span class="mi">8</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">10</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
-   <span class="mi">9</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">10</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
-  <span class="mi">10</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">10</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
-  <span class="mi">11</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">9</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
-  <span class="mi">12</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">9</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
-  <span class="mi">13</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">9</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
-  <span class="mi">14</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
-  <span class="mi">15</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
-  <span class="mi">16</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
-  <span class="mi">17</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
-  <span class="mi">18</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
-  <span class="mi">19</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
-  <span class="mi">20</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
-  <span class="mi">21</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
-  <span class="mi">22</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
-  <span class="mi">23</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
-  <span class="mi">24</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
-  <span class="mi">25</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
-  <span class="mi">26</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
-  <span class="mi">27</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
-  <span class="mi">28</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
-  <span class="mi">29</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
-  <span class="mi">30</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
-  <span class="mi">31</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
-  <span class="mi">32</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
-  <span class="mi">33</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>     <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
-  <span class="mi">34</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
-  <span class="mi">35</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
-  <span class="mi">36</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
-  <span class="mi">37</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
-  <span class="mi">38</span> <span class="o">|</span>     <span class="mi">15</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
-  <span class="mi">39</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
-  <span class="mi">40</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>     <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
-<span class="p">(</span><span class="mi">40</span> <span class="n">rows</span><span class="p">)</span>
+   <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">4</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+<span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
 </div>
@@ -508,6 +493,349 @@ the edge.</p></li>
 </tbody>
 </table>
 </section>
+<section id="additional-examples">
+<h2>其他示例<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#representation-as-directed-with-shared-edge-identifiers" id="id2">Representation as directed with shared edge identifiers</a></p>
+<ul>
+<li><p><a class="reference internal" href="#line-graph-of-a-directed-graph-represented-with-shared-edges" id="id3">Line Graph of a directed graph represented with shared edges</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#representation-as-directed-with-unique-edge-identifiers" id="id4">Representation as directed with unique edge identifiers</a></p>
+<ul>
+<li><p><a class="reference internal" href="#line-graph-of-a-directed-graph-represented-with-unique-edges" id="id5">Line Graph of a directed graph represented with unique edges</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<p>Given the following directed graph</p>
+<p><span class="math notranslate nohighlight">\(G(V,E) = G(\{1,2,3,4\},\{
+1 \rightarrow 2,
+1 \rightarrow 4,
+2 \rightarrow 3,
+3 \rightarrow 1,
+3 \rightarrow 2,
+3 \rightarrow 4,
+4 \rightarrow 3\})\)</span></p>
+<div class="graphviz"><img src="_images/graphviz-a659b08ba803646bf67ee2958aeaf33ae0c046d2.png" alt="digraph G {
+
+   subgraph clusterA {
+      style=invis;
+      edge [arrowsize=0.5,color=blue];
+      node [shape=circle;style=filled;fontsize=8;fixedsize=true;width=.4;color=deepskyblue];
+      v1 [label=1,pos=&quot;0,2!&quot;];
+      v2 [label=2,pos=&quot;2,2!&quot;];
+      v3 [label=3,pos=&quot;2,0!&quot;];
+      v4 [label=4,pos=&quot;0,0!&quot;];
+
+      v1-&gt;{v2,v4} [color=blue];
+      v3-&gt;{v2,v4} [dir=both,color=blue];
+      v3-&gt;v1 [arrowsize=0.5,color=blue ];
+   }
+}" class="graphviz" /></div>
+<section id="representation-as-directed-with-shared-edge-identifiers">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Representation as directed with shared edge identifiers</a><a class="headerlink" href="#representation-as-directed-with-shared-edge-identifiers" title="Link to this heading">¶</a></h3>
+<p>For the simplicity, the design of the edges table on the database, has the
+edge's identifiers are represented with 3 digits:</p>
+<dl class="field-list simple">
+<dt class="field-odd">hundreds<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the source vertex</p>
+</dd>
+<dt class="field-even">tens<span class="colon">:</span></dt>
+<dd class="field-even"><p>always 0, acts as a separator</p>
+</dd>
+<dt class="field-odd">units<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the target vertex</p>
+</dd>
+</dl>
+<p>In this image,</p>
+<ul class="simple">
+<li><p>Single or double head arrows represent one edge (row) on the edges table.</p></li>
+<li><p>The numbers in the yellow shadow are the edge identifiers.</p></li>
+</ul>
+<div class="graphviz"><img src="_images/graphviz-c510169c496a30324c1d92dcb1e14cd7d0e704ce.png" alt="digraph G {
+
+   subgraph clusterA {
+      style=invis;
+      edge [arrowsize=0.5,color=blue];
+      node [shape=circle;style=filled;fontsize=8;fixedsize=true;width=.4;color=deepskyblue];
+      v1 [label=1,pos=&quot;0,2!&quot;];
+      v2 [label=2,pos=&quot;2,2!&quot;];
+      v3 [label=3,pos=&quot;2,0!&quot;];
+      v4 [label=4,pos=&quot;0,0!&quot;];
+
+      v1-&gt;{v2,v4} [color=blue];
+      v3-&gt;{v2,v4} [dir=both,color=blue];
+      v3-&gt;v1 [arrowsize=0.5,color=blue ];
+   }
+
+   subgraph clusterB {
+      style=invis;
+      edge [arrowsize=0.5,color=red,fontsize=10,fontcolor=red];
+      node [shape=circle;style=filled;fontsize=8;fixedsize=true;width=.4;color=yellow]
+
+      s102 [label=&quot;102&quot;,pos=&quot;1,2!&quot;];
+      s104 [label=&quot;104&quot;,pos=&quot;0,1!&quot;];
+      s301 [label=&quot;301&quot;,pos=&quot;1,1!&quot;];
+      s203 [label=&quot;203&quot;,pos=&quot;2,1!&quot;];
+      s304 [label=&quot;304&quot;,pos=&quot;1,0!&quot;];
+   }
+ }" class="graphviz" /></div>
+<p>Two pair of edges share the same identifier when the <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column is
+used.</p>
+<ul class="simple">
+<li><p>Edges <span class="math notranslate nohighlight">\({2 \rightarrow 3, 3 \rightarrow 2}\)</span> are represented with one edge
+row with <span class="math notranslate nohighlight">\(id=203\)</span>.</p></li>
+<li><p>Edges <span class="math notranslate nohighlight">\({3 \rightarrow 4, 4 \rightarrow 3}\)</span> are represented with one edge
+row with <span class="math notranslate nohighlight">\(id=304\)</span>.</p></li>
+</ul>
+<p>The graph can be created as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">edges_shared</span> <span class="p">(</span>
+    <span class="nb">id</span> <span class="n">BIGINT</span><span class="p">,</span>
+    <span class="n">source</span> <span class="n">BIGINT</span><span class="p">,</span>
+    <span class="n">target</span> <span class="n">BIGINT</span><span class="p">,</span>
+    <span class="n">cost</span> <span class="n">FLOAT</span><span class="p">,</span>
+    <span class="n">reverse_cost</span> <span class="n">FLOAT</span><span class="p">,</span>
+    <span class="n">geom</span> <span class="n">geometry</span>
+<span class="p">);</span>
+<span class="n">CREATE</span> <span class="n">TABLE</span>
+<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges_shared</span> <span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span> <span class="n">VALUES</span>
+  <span class="p">(</span><span class="mi">102</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">))),</span>
+  <span class="p">(</span><span class="mi">104</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">))),</span>
+  <span class="p">(</span><span class="mi">301</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">))),</span>
+  <span class="p">(</span><span class="mi">203</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">))),</span>
+  <span class="p">(</span><span class="mi">304</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">)));</span>
+</pre></div>
+</div>
+<section id="line-graph-of-a-directed-graph-represented-with-shared-edges">
+<h4><a class="toc-backref" href="#id3" role="doc-backlink">Line Graph of a directed graph represented with shared edges</a><a class="headerlink" href="#line-graph-of-a-directed-graph-represented-with-shared-edges" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span>
+<span class="n">FROM</span> <span class="n">pgr_lineGraph</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges_shared&#39;</span><span class="p">,</span>
+  <span class="n">true</span><span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">reverse_cost</span>
+<span class="o">-----+--------+--------+------+--------------</span>
+   <span class="mi">1</span> <span class="o">|</span>    <span class="mi">102</span> <span class="o">|</span>    <span class="mi">203</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>    <span class="mi">104</span> <span class="o">|</span>    <span class="mi">304</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>    <span class="mi">203</span> <span class="o">|</span>    <span class="mi">203</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
+   <span class="mi">4</span> <span class="o">|</span>    <span class="mi">203</span> <span class="o">|</span>    <span class="mi">301</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">5</span> <span class="o">|</span>    <span class="mi">203</span> <span class="o">|</span>    <span class="mi">304</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
+   <span class="mi">6</span> <span class="o">|</span>    <span class="mi">301</span> <span class="o">|</span>    <span class="mi">102</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">7</span> <span class="o">|</span>    <span class="mi">301</span> <span class="o">|</span>    <span class="mi">104</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">8</span> <span class="o">|</span>    <span class="mi">304</span> <span class="o">|</span>    <span class="mi">301</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">9</span> <span class="o">|</span>    <span class="mi">304</span> <span class="o">|</span>    <span class="mi">304</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
+<span class="p">(</span><span class="mi">9</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The result is a directed graph.</p></li>
+<li><p>For <span class="math notranslate nohighlight">\(seq=4\)</span> from <span class="math notranslate nohighlight">\(203 \leftrightarrow 304\)</span> represent two edges</p></li>
+<li><p>For all the other values of <code class="docutils literal notranslate"><span class="pre">seq</span></code> represent one edge.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> values represent the existence of the edge.</p>
+<ul>
+<li><p>When positive: the edge exists.</p></li>
+<li><p>When negative: the edge does not exist.</p></li>
+</ul>
+</li>
+</ul>
+<div class="graphviz"><img src="_images/graphviz-3ebafb2311cbea90d6daa3bd00c3f7dbe695b0a5.png" alt="digraph G {
+
+   subgraph clusterA {
+      style=invis;
+      edge [arrowsize=0.5,color=blue];
+      node [shape=circle;style=filled;fontsize=8;fixedsize=true;width=.4;color=deepskyblue];
+      v1 [label=1,pos=&quot;0,4!&quot;];
+      v2 [label=2,pos=&quot;4,4!&quot;];
+      v3 [label=3,pos=&quot;4,0!&quot;];
+      v4 [label=4,pos=&quot;0,0!&quot;];
+
+      v1-&gt;{v2,v4} [color=blue];
+      v3-&gt;{v2,v4} [dir=both,color=blue];
+      v3-&gt;v1 [arrowsize=0.5,color=blue ];
+   }
+
+   subgraph clusterB {
+      style=invis;
+      edge [arrowsize=0.5,labelfloat=true,color=red,fontsize=14,fontcolor=red];
+      node [shape=circle;style=filled;fontsize=8;fixedsize=true;width=.4;color=yellow]
+
+      s102 [label=&quot;102&quot;,pos=&quot;2,4!&quot;];
+      s104 [label=&quot;104&quot;,pos=&quot;0,2!&quot;];
+      s301 [label=&quot;301&quot;,pos=&quot;2,2!&quot;];
+      s203 [label=&quot;203&quot;,pos=&quot;4,2!&quot;];
+      s304 [label=&quot;304&quot;,pos=&quot;2,0!&quot;];
+
+      s102 -&gt; s203 [label=1];
+      s104 -&gt; s304 [label=2];
+      s203 -&gt; s203 [label=3,dir=both];
+      s203 -&gt; s301 [label=4];
+      s203 -&gt; s304 [label=5,dir=both];
+      s301 -&gt; s102 [label=6];
+      s301 -&gt; s104 [label=7];
+      s304 -&gt; s301 [label=8];
+      s304 -&gt; s304 [label=9,dir=both];
+   }
+ }" class="graphviz" /></div>
+</section>
+</section>
+<section id="representation-as-directed-with-unique-edge-identifiers">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Representation as directed with unique edge identifiers</a><a class="headerlink" href="#representation-as-directed-with-unique-edge-identifiers" title="Link to this heading">¶</a></h3>
+<p>For the simplicity, the design of the edges table on the database, has the
+edge's identifiers are represented with 3 digits:</p>
+<dl class="field-list simple">
+<dt class="field-odd">hundreds<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the source vertex</p>
+</dd>
+<dt class="field-even">tens<span class="colon">:</span></dt>
+<dd class="field-even"><p>always 0, acts as a separator</p>
+</dd>
+<dt class="field-odd">units<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the target vertex</p>
+</dd>
+</dl>
+<p>In this image,</p>
+<ul class="simple">
+<li><p>Single head arrows represent one edge (row) on the edges table.</p></li>
+<li><p>There are no double head arrows</p></li>
+<li><p>The numbers in the yellow shadow are the edge identifiers.</p></li>
+</ul>
+<div class="graphviz"><img src="_images/graphviz-5ea4f6dbbf67e07106ed6260658525135c83f6aa.png" alt="digraph G {
+
+   subgraph clusterA {
+     style=invis;
+     edge [arrowsize=0.5,color=blue];
+     node [shape=circle;style=filled;fontsize=8;fixedsize=true;width=.4;color=deepskyblue]
+     v1 [label=1,pos=&quot;0,2!&quot;];
+     v2 [label=2,pos=&quot;2,2!&quot;];
+     v3 [label=3,pos=&quot;2,0!&quot;];
+     v4 [label=4,pos=&quot;0,0!&quot;];
+
+     v1-&gt;{v2,v4};
+     v3-&gt;{v1,v2,v4};
+     {v4,v2}-&gt;v3;
+   }
+
+   subgraph clusterB {
+     style=invis;
+     edge [arrowsize=0.5,color=red,fontsize=6,fontcolor=red];
+     node [shape=circle;style=filled;fontsize=8;fixedsize=true;width=.4;color=yellow]
+
+     sa [label=&quot;102&quot;,pos=&quot;1,2!&quot;];
+     sb [label=&quot;203&quot;,pos=&quot;2.2,1!&quot;];
+     sc [label=&quot;302&quot;,pos=&quot;1.8,1!&quot;];
+     sd [label=&quot;104&quot;,pos=&quot;0,1!&quot;];
+     se [label=&quot;403&quot;,pos=&quot;1,0.2!&quot;];
+     sf [label=&quot;304&quot;,pos=&quot;1,-0.2!&quot;];
+     sg [label=&quot;301&quot;,pos=&quot;1,1!&quot;];
+   }
+}" class="graphviz" /></div>
+<p>Two pair of edges share the same ending nodes and the <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column is
+not used.</p>
+<ul class="simple">
+<li><p>Edges <span class="math notranslate nohighlight">\({2 \rightarrow 3, 3 \rightarrow 2}\)</span> are represented with two
+edges <span class="math notranslate nohighlight">\(id=203\)</span> and <span class="math notranslate nohighlight">\(id=302\)</span> respectively.</p></li>
+<li><p>Edges <span class="math notranslate nohighlight">\({3 \rightarrow 4, 4 \rightarrow 3}\)</span> are represented with two
+edges <span class="math notranslate nohighlight">\(id=304\)</span> and <span class="math notranslate nohighlight">\(id=403\)</span> respectively.</p></li>
+</ul>
+<p>The graph can be created as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">edges_unique</span> <span class="p">(</span>
+    <span class="nb">id</span> <span class="n">BIGINT</span><span class="p">,</span>
+    <span class="n">source</span> <span class="n">BIGINT</span><span class="p">,</span>
+    <span class="n">target</span> <span class="n">BIGINT</span><span class="p">,</span>
+    <span class="n">cost</span> <span class="n">FLOAT</span><span class="p">,</span>
+    <span class="n">geom</span> <span class="n">geometry</span>
+<span class="p">);</span>
+<span class="n">CREATE</span> <span class="n">TABLE</span>
+<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges_unique</span> <span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span> <span class="n">VALUES</span>
+  <span class="p">(</span><span class="mi">102</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">))),</span>
+  <span class="p">(</span><span class="mi">104</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">))),</span>
+  <span class="p">(</span><span class="mi">301</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">))),</span>
+  <span class="p">(</span><span class="mi">203</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">))),</span>
+  <span class="p">(</span><span class="mi">304</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">))),</span>
+  <span class="p">(</span><span class="mi">302</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">))),</span>
+  <span class="p">(</span><span class="mi">403</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">),</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">)));</span>
+</pre></div>
+</div>
+<section id="line-graph-of-a-directed-graph-represented-with-unique-edges">
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">Line Graph of a directed graph represented with unique edges</a><a class="headerlink" href="#line-graph-of-a-directed-graph-represented-with-unique-edges" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span>
+<span class="n">FROM</span> <span class="n">pgr_lineGraph</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost FROM edges_unique&#39;</span><span class="p">,</span>
+  <span class="n">true</span><span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">reverse_cost</span>
+<span class="o">-----+--------+--------+------+--------------</span>
+   <span class="mi">1</span> <span class="o">|</span>    <span class="mi">102</span> <span class="o">|</span>    <span class="mi">203</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>    <span class="mi">104</span> <span class="o">|</span>    <span class="mi">403</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>    <span class="mi">203</span> <span class="o">|</span>    <span class="mi">301</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">4</span> <span class="o">|</span>    <span class="mi">203</span> <span class="o">|</span>    <span class="mi">304</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">5</span> <span class="o">|</span>    <span class="mi">301</span> <span class="o">|</span>    <span class="mi">102</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">6</span> <span class="o">|</span>    <span class="mi">301</span> <span class="o">|</span>    <span class="mi">104</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+   <span class="mi">7</span> <span class="o">|</span>    <span class="mi">302</span> <span class="o">|</span>    <span class="mi">203</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
+   <span class="mi">8</span> <span class="o">|</span>    <span class="mi">304</span> <span class="o">|</span>    <span class="mi">403</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
+   <span class="mi">9</span> <span class="o">|</span>    <span class="mi">403</span> <span class="o">|</span>    <span class="mi">301</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+  <span class="mi">10</span> <span class="o">|</span>    <span class="mi">403</span> <span class="o">|</span>    <span class="mi">302</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+<span class="p">(</span><span class="mi">10</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The result is a directed graph.</p></li>
+<li><p>For <span class="math notranslate nohighlight">\(seq=7\)</span> from <span class="math notranslate nohighlight">\(203 \leftrightarrow 302\)</span> represent two edges.</p></li>
+<li><p>For <span class="math notranslate nohighlight">\(seq=8\)</span> from <span class="math notranslate nohighlight">\(304 \leftrightarrow 403\)</span> represent two edges.</p></li>
+<li><p>For all the other values of <code class="docutils literal notranslate"><span class="pre">seq</span></code> represent one edge.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> values represent the existence of the edge.</p>
+<ul>
+<li><p>When positive: the edge exists.</p></li>
+<li><p>When negative: the edge does not exist.</p></li>
+</ul>
+</li>
+</ul>
+<div class="graphviz"><img src="_images/graphviz-e3338ff473677aa10122478b38ad71566b1d6f15.png" alt="digraph G {
+
+   subgraph clusterA {
+     style=invis;
+     edge [arrowsize=0.5,color=blue];
+     node [shape=circle;style=filled;fontsize=10;fixedsize=true;width=.4;color=deepskyblue]
+     v1 [label=1,pos=&quot;0,4!&quot;];
+     v2 [label=2,pos=&quot;4,4!&quot;];
+     v3 [label=3,pos=&quot;4,0!&quot;];
+     v4 [label=4,pos=&quot;0,0!&quot;];
+
+     v1-&gt;{v2,v4};
+     v3-&gt;{v1,v2,v4};
+     {v4,v2}-&gt;v3;
+   }
+
+   subgraph clusterB {
+     style=invis;
+     edge [arrowsize=0.5,labelfloat=true,color=red,fontsize=14,fontcolor=red];
+     node [shape=circle;style=filled;fontsize=8;fixedsize=true;width=.4;color=yellow]
+
+     sa [label=&quot;102&quot;,pos=&quot;2,4!&quot;];
+     sb [label=&quot;203&quot;,pos=&quot;4.4,2!&quot;];
+     sc [label=&quot;302&quot;,pos=&quot;3.6,2!&quot;];
+     sd [label=&quot;104&quot;,pos=&quot;0,2!&quot;];
+     se [label=&quot;403&quot;,pos=&quot;2,0.4!&quot;];
+     sf [label=&quot;304&quot;,pos=&quot;2,-0.4!&quot;];
+     sg [label=&quot;301&quot;,pos=&quot;2,2!&quot;];
+
+     sa -&gt; sb [label=1];
+     sd -&gt; se [label=2];
+     sb -&gt; sg [label=3];
+     sb -&gt; sf [label=4];
+     sg -&gt; sa [label=5];
+     sg -&gt; sd [label=6];
+     sc -&gt; sb [dir=both,label=7];
+     sf -&gt; se [dir=both,label=8];
+     se -&gt; sg [label=9];
+     se -&gt; sc [label=10];
+   }
+}" class="graphviz" /></div>
+</section>
+</section>
+</section>
 <section id="see-also">
 <h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
@@ -535,9 +863,9 @@ the edge.</p></li>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.6.3.<br/>
-      Last updated on 10月 12, 2024.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.7.0.<br/>
+      Last updated on 11月 09, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>
 </footer>
