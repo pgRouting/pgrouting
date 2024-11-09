@@ -1,6 +1,5 @@
-# #-#-#-#-#  allpairs-family.po (pgRouting v3.4.0-dev)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.6.3
+# Copyright (C) pgRouting Contributors - Version v3.7.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 # Translators:
@@ -19,9 +18,9 @@
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2024.
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION 3.6.3\n"
+"Project-Id-Version: PROJECT VERSION 3.7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-10 03:40+0000\n"
+"POT-Creation-Date: 2024-10-17 00:50+0000\n"
 "PO-Revision-Date: 2024-09-23 01:16+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/"
@@ -15732,6 +15731,9 @@ msgstr ""
 #, fuzzy
 msgid "postgis 3.0.0"
 msgstr "バージョン 3.0.0"
+
+msgid "g++ 13+ is supported"
+msgstr ""
 
 msgid "Code fixes"
 msgstr ""

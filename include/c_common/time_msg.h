@@ -1,6 +1,5 @@
 /*PGR-GNU*****************************************************************
-
-FILE: time_msg.h
+File: time_msg.h
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

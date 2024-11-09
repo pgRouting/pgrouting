@@ -93,7 +93,7 @@ One to One
 
 :Example: From vertex :math:`11` to vertex :math:`12`
 
-.. literalinclude:: doc-pgr_maxFlowMinCost_Cost.queries
+.. literalinclude:: maxFlowMinCost_Cost.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -112,7 +112,7 @@ One to Many
 
 :Example: From vertex :math:`11` to vertices :math:`\{5, 10, 12\}`
 
-.. literalinclude:: doc-pgr_maxFlowMinCost_Cost.queries
+.. literalinclude:: maxFlowMinCost_Cost.queries
    :start-after: -- q3
    :end-before: -- q4
 
@@ -131,7 +131,7 @@ Many to One
 
 :Example: From vertices :math:`\{11, 3, 17\}` to vertex :math:`12`
 
-.. literalinclude:: doc-pgr_maxFlowMinCost_Cost.queries
+.. literalinclude:: maxFlowMinCost_Cost.queries
    :start-after: -- q2
    :end-before: -- q3
 
@@ -151,7 +151,7 @@ Many to Many
 :Example: From vertices :math:`\{11, 3, 17\}` to vertices :math:`\{5, 10, 12\}`
 
 
-.. literalinclude:: doc-pgr_maxFlowMinCost_Cost.queries
+.. literalinclude:: maxFlowMinCost_Cost.queries
    :start-after: -- q4
    :end-before: -- q5
 
@@ -173,13 +173,13 @@ Combinations
 
 The combinations table:
 
-.. literalinclude:: doc-pgr_maxFlowMinCost_Cost.queries
+.. literalinclude:: maxFlowMinCost_Cost.queries
    :start-after: -- q5
    :end-before: -- q51
 
 The query:
 
-.. literalinclude:: doc-pgr_maxFlowMinCost_Cost.queries
+.. literalinclude:: maxFlowMinCost_Cost.queries
    :start-after: -- q51
    :end-before: -- q6
 
@@ -221,7 +221,7 @@ Additional Examples
 
 :Example: Manually assigned vertex combinations.
 
-.. literalinclude:: doc-pgr_maxFlowMinCost_Cost.queries
+.. literalinclude:: maxFlowMinCost_Cost.queries
    :start-after: -- q6
    :end-before: -- q7
 

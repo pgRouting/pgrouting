@@ -55,7 +55,7 @@ Result columns
 
 Additional Example:
 -------------------------------------------------------------------------------
-.. literalinclude:: doc-pgr_vrpOneDepot.queries
+.. literalinclude:: vrpOneDepot.queries
 
 .. rubric:: Data
 

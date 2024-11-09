@@ -70,7 +70,7 @@ Signatures
 
 :Example: The strong components of the graph
 
-.. literalinclude:: doc-pgr_strongComponents.queries
+.. literalinclude:: strongComponents.queries
    :start-after: -- q1
    :end-before: -- q2
 

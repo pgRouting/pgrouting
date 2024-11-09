@@ -1,6 +1,5 @@
 /*PGR-GNU*****************************************************************
-
-FILE: optimize.cpp
+File: optimize.cpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -28,11 +27,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 #include <set>
 
-#include "cpp_common/pgr_assert.h"
+#include "cpp_common/assert.hpp"
 
-#include "vrp/solution.h"
-#include "vrp/optimize.h"
-#include "vrp/pgr_pickDeliver.h"
+#include "vrp/solution.hpp"
+#include "vrp/optimize.hpp"
+#include "vrp/pickDeliver.hpp"
 
 namespace pgrouting {
 namespace vrp {
@@ -103,17 +102,8 @@ Optimize::inter_swap() {
         for (auto &to : fleet) {
             if (&from == &to) break;
 
-#if 0
-            msg().log
-                << "\n to " << to.id()
-                << "from " << from.id();
-            auto swapped = false;
-#endif
             swap_worse(to, from);
             move_reduce_cost(from, to);
-#if 0
-            msg().log << "++++++++" << p_swaps;
-#endif
         }
     }
 
@@ -259,7 +249,7 @@ Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
         }
     }
 
-    return false && swapped;
+    return swapped;
 }
 
 
@@ -493,17 +483,11 @@ Optimize::save_if_best() {
         best_solution = (*this);
         msg().log << "\n*********** best by duration"
             << best_solution.cost_str();
-#if 0
-        msg().dbg_log << best_solution.tau("best by duration");
-#endif
     }
     if (fleet.size() < best_solution.fleet.size()) {
         best_solution = (*this);
         msg().log << "\n*********** best by fleet size"
             << best_solution.cost_str();
-#if 0
-        msg().dbg_log << best_solution.tau("best by fleet size");
-#endif
     }
 }
 

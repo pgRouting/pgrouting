@@ -27,7 +27,7 @@ pgRouting 3
    :local:
    :depth: 1
 
-pgRouting 3.6
+pgRouting 3.7
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. contents:: Contents
@@ -36,6 +36,71 @@ pgRouting 3.6
 
 .. current
 
+pgRouting 3.7.0 Release Notes
+-------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.7.0
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__
+
+.. rubric:: Support
+
+* `#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stop support of
+  PostgreSQL12 on pgrouting v3.7
+
+  * Stopping support of PostgreSQL 12
+  * CI does not test for PostgreSQL 12
+
+.. rubric:: New experimental functions
+
+* Metrics
+
+  * pgr_betweennessCentrality
+
+.. rubric:: Official functions changes
+
+* `#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standarize
+  spanning tree functions output
+
+  * Functions:
+
+    * ``pgr_kruskalDD``
+    * ``pgr_kruskalDFS``
+    * ``pgr_kruskalBFS``
+    * ``pgr_primDD``
+    * ``pgr_primDFS``
+    * ``pgr_primBFS``
+
+  .. include:: pgr_primDD.rst
+     :start-after: Version 3.7.0
+     :end-before: .. rubric
+
+.. rubric:: Experimental promoted to proposed.
+
+* `#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ pgr_LineGraph
+  ignores directed flag and use negative values for identifiers.
+
+  * ``pgr_lineGraph``
+
+  .. include:: pgr_lineGraph.rst
+     :start-after: Version 3.7.0
+     :end-before: Version 2.5.0
+
+.. rubric:: Code enhancement
+
+* `#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Driving distance
+  cleanup
+* `#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Read postgresql
+  data on C++
+* `#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy does
+  not work
+
+pgRouting 3.6
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. contents:: Contents
+   :local:
+   :depth: 1
 
 pgRouting 3.6.3 Release Notes
 -------------------------------------------------------------------------------

@@ -89,7 +89,7 @@ Signatures
 
 :Example: With default values
 
-.. literalinclude:: doc-pgr_TSPeuclidean.queries
+.. literalinclude:: TSPeuclidean.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -167,14 +167,14 @@ Total tour cost
 Getting a total cost of the tour, compare the value with the length of an
 optimal tour is 27603, given on the dataset
 
-.. literalinclude:: doc-pgr_TSPeuclidean.queries
+.. literalinclude:: TSPeuclidean.queries
    :start-after: -- q2
    :end-before: -- q3
 
 Getting a geometry of the tour
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: doc-pgr_TSPeuclidean.queries
+.. literalinclude:: TSPeuclidean.queries
    :start-after: -- q3
    :end-before: -- q4
 

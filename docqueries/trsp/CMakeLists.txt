@@ -1,6 +1,6 @@
 # Do not use extensions
 SET(LOCAL_FILES
-    doc-trsp
+    trsp
     trsp_withPoints
     trspVia
     trspVia_withPoints

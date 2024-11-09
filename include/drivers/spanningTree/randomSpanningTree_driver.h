@@ -31,31 +31,40 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_SPANNINGTREE_RANDOMSPANNINGTREE_DRIVER_H_
 #pragma once
 
-/* for size-t */
 #ifdef __cplusplus
-#   include <cstddef>
-#else
-#   include <stddef.h>
+extern "C" {
 #endif
 
-typedef struct Edge_t Edge_t;
+#include <postgres.h>
+#include <utils/array.h>
+
+#ifdef __cplusplus
+}
+#endif
+
+#include "cpp_common/undefPostgresDefine.hpp"
+
+#ifdef __cplusplus
+#   include <cstddef>
+using  SpanTree_rt = struct SpanTree_rt;
+#else
+#   include <stddef.h>
 typedef SpanTree_rt SpanTree_rt;
+#endif
+
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-    void
-        do_pgr_randomSpanningTree(
-                Edge_t  *data_edges,
-                size_t total_edges,
-                int64_t root_vertex,
-                bool directed,
-                SpanTree_rt **return_tuples,
-                size_t *return_count,
-                char ** log_msg,
-                char ** notice_msg,
-                char ** err_msg);
+void pgr_do_randomSpanningTree(
+        char*,
+        ArrayType*,
+
+        int64_t, double,
+
+        SpanTree_rt**, size_t*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }

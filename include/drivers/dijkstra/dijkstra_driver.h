@@ -35,19 +35,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #ifndef INCLUDE_DRIVERS_DIJKSTRA_DIJKSTRA_DRIVER_H_
 #define INCLUDE_DRIVERS_DIJKSTRA_DIJKSTRA_DRIVER_H_
+#pragma once
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include <postgres.h>
+#include <utils/array.h>
+
+#ifdef __cplusplus
+}
+#endif
+
+#include "cpp_common/undefPostgresDefine.hpp"
 
 #ifdef __cplusplus
 #   include <cstddef>
 #   include <cstdint>
-using Edge_t = struct Edge_t;
 using Path_rt = struct Path_rt;
-using II_t_rt = struct II_t_rt;
 #else
 #   include <stddef.h>
 #   include <stdint.h>
-typedef struct Edge_t Edge_t;
 typedef struct Path_rt Path_rt;
-typedef struct II_t_rt II_t_rt;
 #endif
 
 #ifdef __cplusplus
@@ -55,17 +65,15 @@ extern "C" {
 #endif
 
 void pgr_do_dijkstra(
-        Edge_t*, size_t,
-        II_t_rt*, size_t,
-        int64_t*, size_t,
-        int64_t*, size_t,
+        char*,
+        char*,
+        ArrayType*, ArrayType*,
 
         bool, bool, bool,
         int64_t, bool,
 
         Path_rt**, size_t*,
         char**, char**, char**);
-
 
 #ifdef __cplusplus
 }

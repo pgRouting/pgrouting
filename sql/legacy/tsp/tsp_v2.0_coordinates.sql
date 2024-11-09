@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 CREATE OR  REPLACE FUNCTION pgr_tsp(
-    sql text, 
+    sql text,
     start_id INTEGER,
     end_id INTEGER default (-1),
 

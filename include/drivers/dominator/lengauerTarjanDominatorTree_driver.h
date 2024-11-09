@@ -31,14 +31,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_DOMINATOR_LENGAUERTARJANDOMINATORTREE_DRIVER_H_
 #pragma once
 
-/* for size-t */
 #ifdef __cplusplus
+#   include <cstdint>
 #   include <cstddef>
-using Edge_t = struct Edge_t;
 using II_t_rt = struct II_t_rt;
 #else
 #   include <stddef.h>
-typedef struct Edge_t Edge_t;
+#   include <stdint.h>
 typedef struct II_t_rt II_t_rt;
 #endif
 
@@ -48,20 +47,13 @@ typedef struct II_t_rt II_t_rt;
 extern "C" {
 #endif
 
-/*********************************************************
-    edges_sql TEXT,
+void pgr_do_LTDTree(
+        char*,
 
- ********************************************************/
-void
-do_pgr_LTDTree(
-        Edge_t  *data_edges,
-        size_t total_tuples,
-        int64_t root_vertex,
-        II_t_rt **return_tuples,
-        size_t *return_count,
-        char **log_msg,
-        char **notice_msg,
-        char **err_msg);
+        int64_t,
+
+        II_t_rt**, size_t*,
+        char**, char**, char**);
 
 
 #ifdef __cplusplus

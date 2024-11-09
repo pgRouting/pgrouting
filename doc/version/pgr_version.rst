@@ -47,7 +47,7 @@ Signature
 
 :Example: pgRouting Version for this documentation
 
-.. literalinclude:: doc-version.queries
+.. literalinclude:: version.queries
    :start-after: -- q1
    :end-before: -- q2
 

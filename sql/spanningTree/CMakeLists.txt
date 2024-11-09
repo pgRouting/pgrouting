@@ -3,7 +3,7 @@ SET(LOCAL_FILES
     _prim.sql
     _kruskal.sql
     #_randomSpanTree.sql
-    
+
     prim.sql
     primDFS.sql
     primBFS.sql

@@ -79,7 +79,7 @@ Single Vertex
 
 :Example: From vertex :math:`11` for a distance of :math:`3.0`
 
-.. literalinclude:: pgr_drivingDistance.queries
+.. literalinclude:: drivingDistance.queries
    :start-after: --q5
    :end-before: --q6
 
@@ -100,7 +100,7 @@ Multiple Vertices
 :Example: From vertices :math:`\{11, 16\}` for a distance of :math:`3.0` with
           equi-cost on a directed graph
 
-.. literalinclude:: pgr_drivingDistance.queries
+.. literalinclude:: drivingDistance.queries
    :start-after: --q6
    :end-before: --q10
 
@@ -108,8 +108,8 @@ Parameters
 -------------------------------------------------------------------------------
 
 .. include:: drivingDistance-category.rst
-    :start-after: mst-dd-params_start
-    :end-before: mst-dd-params_end
+    :start-after: spantree-params_start
+    :end-before: spantree-params_end
 
 Optional parameters
 ...............................................................................
@@ -165,7 +165,7 @@ Additional Examples
 :Example: From vertices :math:`\{11, 16\}` for a distance of :math:`3.0` on an
           undirected graph
 
-.. literalinclude:: pgr_drivingDistance.queries
+.. literalinclude:: drivingDistance.queries
    :start-after: --q10
    :end-before: --q15
 

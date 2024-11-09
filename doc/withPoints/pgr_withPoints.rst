@@ -103,7 +103,7 @@ One to One
 
 :Example: From point :math:`1` to vertex :math:`10` with details
 
-.. literalinclude:: doc-pgr_withPoints.queries
+.. literalinclude:: withPoints.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -125,7 +125,7 @@ One to Many
 :Example: From point :math:`1` to point :math:`3` and vertex :math:`7` on an
           undirected graph
 
-.. literalinclude:: doc-pgr_withPoints.queries
+.. literalinclude:: withPoints.queries
    :start-after: -- q2
    :end-before: -- q3
 
@@ -146,7 +146,7 @@ Many to One
 
 :Example: From point :math:`1` and vertex :math:`6` to point :math:`3`
 
-.. literalinclude:: doc-pgr_withPoints.queries
+.. literalinclude:: withPoints.queries
    :start-after: -- q3
    :end-before: -- q4
 
@@ -168,7 +168,7 @@ Many to Many
 :Example: From point :math:`1` and vertex :math:`6` to point :math:`3` and
           vertex :math:`1`
 
-.. literalinclude:: doc-pgr_withPoints.queries
+.. literalinclude:: withPoints.queries
    :start-after: -- q4
    :end-before: -- q5
 
@@ -192,7 +192,7 @@ Combinations
 From point :math:`1` to vertex :math:`10`, and from vertex :math:`6` to point
 :math:`3` with **right** side driving.
 
-.. literalinclude:: doc-pgr_withPoints.queries
+.. literalinclude:: withPoints.queries
    :start-after: -- q5
    :end-before: -- q6
 
@@ -260,7 +260,7 @@ Use :doc:`pgr_findCloseEdges` in the `Points SQL`_.
 Find the routes from vertex :math:`1` to the two closest locations on the graph
 of point `(2.9, 1.8)`.
 
-.. literalinclude:: doc-pgr_withPoints.queries
+.. literalinclude:: withPoints.queries
     :start-after: -- q9
     :end-before: -- q10
 
@@ -273,7 +273,7 @@ Usage variations
 All the examples are about traveling from point :math:`1` and vertex :math:`5`
 to points :math:`\{2, 3, 6\}` and vertices :math:`\{10, 11\}`
 
-.. literalinclude:: doc-pgr_withPoints.queries
+.. literalinclude:: withPoints.queries
    :start-after: -- q6
    :end-before: -- q7
 
@@ -283,7 +283,7 @@ Passes in front or visits with right side driving.
 For point :math:`6` and vertex :math:`11`.
 
 
-.. literalinclude:: doc-pgr_withPoints.queries
+.. literalinclude:: withPoints.queries
    :start-after: -- q7
    :end-before: -- q8
 
@@ -292,7 +292,7 @@ Passes in front or visits with left side driving.
 
 For point :math:`6` and vertex :math:`11`.
 
-.. literalinclude:: doc-pgr_withPoints.queries
+.. literalinclude:: withPoints.queries
    :start-after: -- q8
    :end-before: -- q9
 

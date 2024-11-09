@@ -2,14 +2,14 @@
 SET(LOCAL_FILES
     _trsp.sql
     trsp.sql
-    _pgr_trsp.sql
+    _trsp_deprecated.sql
     _array_reverse.sql
-    pgr_trsp.sql
+    trsp_deprecated.sql
 
-    _pgr_trspViaVertices.sql
-    pgr_trspViaVertices.sql
+    _trspViaVertices_deprecated.sql
+    trspViaVertices_deprecated.sql
 
-    pgr_trspViaEdges.sql
+    trspViaEdges_deprecated.sql
     _trsp_withPoints.sql
     trsp_withPoints.sql
 

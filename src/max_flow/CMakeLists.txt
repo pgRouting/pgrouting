@@ -9,7 +9,7 @@ ADD_LIBRARY(max_flow OBJECT
     edge_disjoint_paths_driver.cpp
     minCostMaxFlow_driver.cpp
 
-    pgr_maxflow.cpp
-    pgr_flowgraph.cpp
-    pgr_minCostMaxFlow.cpp
+    maxflow.cpp
+    flowgraph.cpp
+    minCostMaxFlow.cpp
     )

@@ -1,6 +1,5 @@
 /*PGR-GNU*****************************************************************
-
-FILE: order.cpp
+File: order.cpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -24,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#include "vrp/order.h"
+#include "vrp/order.hpp"
 
 
 namespace pgrouting {

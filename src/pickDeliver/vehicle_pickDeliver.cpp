@@ -1,6 +1,5 @@
 /*PGR-GNU*****************************************************************
-
-FILE: vehicle_pickDeliver.cpp
+File: vehicle_pickDeliver.cpp
 
 Copyright (c) 2016 pgRouting developers
 Mail: project@pgrouting.org
@@ -23,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "vrp/vehicle_pickDeliver.h"
+#include "vrp/vehicle_pickDeliver.hpp"
 
 #include <iostream>
 #include <deque>
@@ -33,10 +32,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 
 
-#include "cpp_common/pgr_assert.h"
-#include "vrp/order.h"
-#include "vrp/vehicle.h"
-#include "vrp/pgr_pickDeliver.h"
+#include "cpp_common/assert.hpp"
+#include "vrp/order.hpp"
+#include "vrp/vehicle.hpp"
+#include "vrp/pickDeliver.hpp"
 
 
 
@@ -58,13 +57,7 @@ Vehicle_pickDeliver::Vehicle_pickDeliver(
     m_orders_in_vehicle(),
     m_orders(),
     m_feasable_orders() {
-#if 0
-        ENTERING();
-#endif
         invariant();
-#if 0
-        EXITING();
-#endif
     }
 
 
@@ -229,16 +222,9 @@ Vehicle_pickDeliver::do_while_feasable(
         Identifiers<size_t> &unassigned,
         Identifiers<size_t> &assigned) {
     pgassert(is_feasable());
-#if 0
-    msg.log << "unasigned" << unassigned << "\n";
-    msg.log << "m_feasable_orders" << m_feasable_orders << "\n";
-#endif
     auto current_feasable = m_feasable_orders * unassigned;
 
     while (!current_feasable.empty()) {
-#if 0
-        msg.log << "current_feasable" << current_feasable << "\n";
-#endif
         auto order = m_orders[current_feasable.front()];
 
         switch (kind) {

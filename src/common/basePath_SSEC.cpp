@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/path_rt.h"
 #include "c_types/mst_rt.h"
-#include "cpp_common/pgr_assert.h"
+#include "cpp_common/assert.hpp"
 
 namespace pgrouting {
 
@@ -216,9 +216,6 @@ void Path::append(const Path &other) {
         *this = other;
         return;
     }
-#if 0
-    pgassert(path.back().cost == 0);
-#endif
     pgassert(path.back().edge == -1);
     m_end_id = other.m_end_id;
 
@@ -237,7 +234,6 @@ void Path::append(const Path &other) {
 void Path::generate_postgres_data(
         Path_rt **postgres_data,
         size_t &sequence) const {
-    int i = 1;
     for (const auto e : path) {
         auto agg_cost = std::fabs(
                 e.agg_cost - (std::numeric_limits<double>::max)()) < 1?
@@ -245,8 +241,7 @@ void Path::generate_postgres_data(
         auto cost = std::fabs(e.cost - (std::numeric_limits<double>::max)()) < 1?
             std::numeric_limits<double>::infinity() : e.cost;
 
-        (*postgres_data)[sequence] = {i, start_id(), end_id(), e.node, e.edge, cost, agg_cost};
-        ++i;
+        (*postgres_data)[sequence] = {start_id(), end_id(), e.node, e.edge, cost, agg_cost};
         ++sequence;
     }
 }
@@ -272,7 +267,6 @@ void Path::get_pg_nksp_path(
         Path_rt **ret_path,
         size_t &sequence) const {
     for (unsigned int i = 0; i < path.size(); i++) {
-        (*ret_path)[sequence].seq = static_cast<int>(i + 1);
         (*ret_path)[sequence].start_id = start_id();
         (*ret_path)[sequence].end_id = end_id();
         (*ret_path)[sequence].node = path[i].node;
@@ -290,7 +284,6 @@ void Path::get_pg_turn_restricted_path(
         Path_rt **ret_path,
         size_t &sequence, int routeId) const {
     for (unsigned int i = 0; i < path.size(); i++) {
-        (*ret_path)[sequence].seq = static_cast<int>(i + 1);
         (*ret_path)[sequence].start_id = routeId;
         (*ret_path)[sequence].end_id = end_id();
         (*ret_path)[sequence].node = path[i].node;

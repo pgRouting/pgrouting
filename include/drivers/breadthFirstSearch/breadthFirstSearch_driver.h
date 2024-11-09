@@ -31,16 +31,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_BREADTHFIRSTSEARCH_BREADTHFIRSTSEARCH_DRIVER_H_
 #pragma once
 
-/* for size-t */
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include <postgres.h>
+#include <utils/array.h>
+
+#ifdef __cplusplus
+}
+#endif
+
+#include "cpp_common/undefPostgresDefine.hpp"
+
 #ifdef __cplusplus
 #   include <cstddef>
 #   include <cstdint>
-using Edge_t = struct Edge_t;
 using MST_rt = struct MST_rt;
 #else
 #   include <stddef.h>
 #   include <stdint.h>
-typedef struct Edge_t Edge_t;
 typedef struct MST_rt MST_rt;
 #endif
 
@@ -50,30 +60,17 @@ typedef struct MST_rt MST_rt;
 extern "C" {
 #endif
 
-    /*********************************************************
-    TEXT,
-    ANYARRAY,
-    max_depth BIGINT DEFAULT 9223372036854775807,
-    directed BOOLEAN DEFAULT true
-     ********************************************************/
-
-
-    void do_pgr_breadthFirstSearch(
-                Edge_t  *data_edges,
-                size_t total_tuples,
-                int64_t  *start_vidsArr,
-                size_t size_start_vidsArr,
-                int64_t max_depth,
-                bool directed,
-                MST_rt **return_tuples,
-                size_t *return_count,
-                char ** log_msg,
-                char ** notice_msg,
-                char ** err_msg);
+void pgr_do_breadthFirstSearch(
+        char*,
+        ArrayType*,
+        int64_t,
+        bool,
+        MST_rt**, size_t*,
+        char**, char**, char**);
 
 
 #ifdef __cplusplus
-}
+        }
 #endif
 
 #endif  // INCLUDE_DRIVERS_BREADTHFIRSTSEARCH_BREADTHFIRSTSEARCH_DRIVER_H_

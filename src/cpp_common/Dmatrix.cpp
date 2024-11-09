@@ -1,6 +1,5 @@
 /*PGR-GNU*****************************************************************
-
-FILE: Dmatrix.cpp
+File: Dmatrix.cpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -23,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "cpp_common/Dmatrix.h"
+#include "cpp_common/Dmatrix.hpp"
 
 #include <string>
 #include <utility>
@@ -34,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 #include <cmath>
 
-#include "cpp_common/pgr_assert.h"
+#include "cpp_common/assert.hpp"
 #include "c_types/iid_t_rt.h"
 
 
@@ -206,36 +205,11 @@ std::ostream& operator<<(std::ostream &log, const Dmatrix &matrix) {
             log << "Internal(" << i << "," << j << ")"
                 << "\tUsers(" << matrix.ids[i] << "," << matrix.ids[j] << ")"
                 << "\t = " << cost
-#if 0
-                << "\t(" << matrix.get_index(matrix.ids[i])
-                << "," << matrix.get_index(matrix.ids[j]) << ")"
-                << "\t = " << matrix.costs[i][j]
-                << "\t = " << matrix.costs[j][i]
-                << "=inf:"
-                <<  (matrix.costs[i][j] ==
-                        (std::numeric_limits<double>::infinity)())
-                << "=inf:"
-                <<  (matrix.costs[j][i] ==
-                        (std::numeric_limits<double>::infinity)())
-#endif
                 << "\n";
             ++j;
         }
         ++i;
     }
-#if 0
-    for (size_t i = 0; i < matrix.costs.size(); ++i) {
-        for (size_t j = 0; j < matrix.costs.size(); ++j) {
-            for (size_t k = 0; k < matrix.costs.size(); ++k) {
-                log << matrix.costs[i][k] << " <= ("
-                    << matrix.costs[i][j] << " + "  << matrix.costs[j][k] << ")"
-                    << (matrix.costs[i][k]
-                            <= (matrix.costs[i][j] + matrix.costs[j][k]))
-                    << "\n";
-            }
-        }
-    }
-#endif
     return log;
 }
 

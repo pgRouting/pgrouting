@@ -36,12 +36,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/path_rt.h"
 #include "c_common/time_msg.h"
 #include "c_common/e_report.h"
-
-#include "c_common/pgdata_getters.h"
-
 #include "drivers/withPoints/get_new_queries.h"
 #include "drivers/yen/withPoints_ksp_driver.h"
-#include "c_common/debug_macro.h"
 
 PGDLLEXPORT Datum _pgr_withpointsksp(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_withpointsksp);
@@ -55,8 +51,8 @@ process(
         ArrayType *starts,
         ArrayType *ends,
 
-        int64_t* start_pid,
-        int64_t* end_pid,
+        int64_t* start_vid,
+        int64_t* end_vid,
 
         int p_k,
         char *driving_side,
@@ -68,12 +64,13 @@ process(
         Path_rt **result_tuples,
         size_t *result_count) {
     if (p_k < 0) {
+        /* TODO add error message */
         return;
     }
 
     size_t k = (size_t)p_k;
 
-    if (start_pid) {
+    if (start_vid) {
         driving_side[0] = (char) tolower(driving_side[0]);
         if (!((driving_side[0] == 'r')
                     || (driving_side[0] == 'l'))) {
@@ -83,11 +80,11 @@ process(
         driving_side[0] = (char) tolower(driving_side[0]);
         if (directed) {
             if (!((driving_side[0] == 'r') || (driving_side[0] == 'l'))) {
-                throw_error("Invalid value of 'driving side'", "Valid values are for directed graph are: 'r', 'l'");
+                pgr_throw_error("Invalid value of 'driving side'", "Valid values are for directed graph are: 'r', 'l'");
                 return;
             }
         } else if (!(driving_side[0] == 'b')) {
-            throw_error("Invalid value of 'driving side'", "Valid values are for undirected graph is: 'b'");
+            pgr_throw_error("Invalid value of 'driving side'", "Valid values are for undirected graph is: 'b'");
             return;
         }
     }
@@ -98,11 +95,6 @@ process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    Point_on_edge_t *points = NULL;
-    size_t total_points = 0;
-    pgr_get_points(points_sql, &points, &total_points, &err_msg);
-    throw_error(err_msg, points_sql);
-
     char *edges_of_points_query = NULL;
     char *edges_no_points_query = NULL;
     get_new_queries(
@@ -110,62 +102,17 @@ process(
             &edges_of_points_query,
             &edges_no_points_query);
 
-    Edge_t *edges_of_points = NULL;
-    size_t total_edges_of_points = 0;
-    pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points, true, false, &err_msg);
-    throw_error(err_msg, edges_of_points_query);
-
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-    pgr_get_edges(edges_no_points_query, &edges, &total_edges, true, false, &err_msg);
-    throw_error(err_msg, edges_no_points_query);
-
-    int64_t* start_pidsArr = NULL;
-    size_t size_start_pidsArr = 0;
-    int64_t* end_pidsArr = NULL;
-    size_t size_end_pidsArr = 0;
-    II_t_rt *combinationsArr = NULL;
-    size_t total_combinations = 0;
-    if (start_pid && end_pid) {
-        start_pidsArr = start_pid; size_start_pidsArr = 1;
-        end_pidsArr = end_pid; size_end_pidsArr = 1;
-    } else if (starts && ends) {
-        start_pidsArr = pgr_get_bigIntArray(&size_start_pidsArr, starts, false, &err_msg);
-        throw_error(err_msg, "While getting start pids");
-        end_pidsArr = pgr_get_bigIntArray(&size_end_pidsArr, ends, false, &err_msg);
-        throw_error(err_msg, "While getting end pids");
-    } else if (combinations_sql) {
-        pgr_get_combinations(combinations_sql, &combinationsArr, &total_combinations, &err_msg);
-        throw_error(err_msg, combinations_sql);
-    }
-
-    pfree(edges_of_points_query);
-    pfree(edges_no_points_query);
-
-    if ((total_edges + total_edges_of_points) == 0) {
-        if (end_pidsArr) pfree(end_pidsArr);
-        if (start_pidsArr) pfree(start_pidsArr);
-        if (combinationsArr) pfree(combinationsArr);
-        pgr_SPI_finish();
-        return;
-    }
-
-    if (total_combinations == 0 && (size_start_pidsArr== 0 || size_end_pidsArr == 0)) {
-        if (edges) pfree(edges);
-        pgr_SPI_finish();
-        return;
-    }
 
     clock_t start_t = clock();
 
     pgr_do_withPointsKsp(
-            edges,           total_edges,
-            points,          total_points,
-            edges_of_points, total_edges_of_points,
-            combinationsArr, total_combinations,
-            start_pidsArr,   size_start_pidsArr,
-            end_pidsArr,     size_end_pidsArr,
+            edges_no_points_query,
+            points_sql,
+            edges_of_points_query,
+            combinations_sql,
+            starts, ends,
 
+            start_vid, end_vid,
             k,
 
             directed,
@@ -187,19 +134,7 @@ process(
         (*result_count) = 0;
     }
 
-    pgr_global_report(log_msg, notice_msg, err_msg);
-
-    if (log_msg) pfree(log_msg);
-    if (notice_msg) pfree(notice_msg);
-    if (err_msg) pfree(err_msg);
-    if (edges) pfree(edges);
-    if (start_pid && end_pid) {
-        start_pidsArr = NULL;
-        end_pidsArr = NULL;
-    }
-    if (start_pidsArr) pfree(start_pidsArr);
-    if (end_pidsArr) pfree(end_pidsArr);
-    if (combinationsArr) pfree(combinationsArr);
+    pgr_global_report(&log_msg, &notice_msg, &err_msg);
 
     pgr_SPI_finish();
 }
@@ -312,10 +247,11 @@ PGDLLEXPORT Datum _pgr_withpointsksp(PG_FUNCTION_ARGS) {
                 path_id = result_tuples[funcctx->call_cntr - 1].start_id;
             }
         }
+        int64_t seq = funcctx->call_cntr == 0?  1 : result_tuples[funcctx->call_cntr - 1].end_id;
 
         values[0] = Int32GetDatum((int32_t)funcctx->call_cntr + 1);
         values[1] = Int32GetDatum((int32_t)path_id);
-        values[2] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
+        values[2] = Int32GetDatum((int32_t)seq);
         if (PG_NARGS() != 9) {
             values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id);
             values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_id);
@@ -326,6 +262,7 @@ PGDLLEXPORT Datum _pgr_withpointsksp(PG_FUNCTION_ARGS) {
         values[n - 1] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
 
         result_tuples[funcctx->call_cntr].start_id = path_id;
+        result_tuples[funcctx->call_cntr].end_id = result_tuples[funcctx->call_cntr].edge < 0? 1 : seq + 1;
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

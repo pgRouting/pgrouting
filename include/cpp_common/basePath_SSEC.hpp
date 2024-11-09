@@ -1,5 +1,4 @@
 /*PGR-GNU*****************************************************************
-
 File: basePath_SSEC.hpp
 
 Copyright (c) 2015 pgRouting developers
@@ -38,13 +37,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <map>
 
+#include "cpp_common/undefPostgresDefine.hpp"
+
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 
 #include "c_types/path_rt.h"
 #include "c_types/mst_rt.h"
-#include "cpp_common/path_t.h"
-#include "cpp_common/pgr_base_graph.hpp"
+#include "cpp_common/path_t.hpp"
+#include "cpp_common/base_graph.hpp"
 #include "cpp_common/rule.hpp"
 
 namespace pgrouting {
@@ -89,7 +90,7 @@ class Path {
     ConstpthIt end() const {return path.end();}
 
 
-    void erase(pthIt pos) {path.erase(pos);}
+    void erase(const pthIt &pos) {path.erase(pos);}
     const Path_t& back() const {return path.back();}
     Path_t& back() {return path.back();}
     const Path_t& front() const {return path.front();}

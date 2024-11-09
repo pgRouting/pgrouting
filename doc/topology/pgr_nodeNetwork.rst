@@ -86,39 +86,39 @@ Examples
 
 Let's create the topology for the data in :doc:`sampledata`
 
-.. literalinclude:: doc-pgr_nodeNetwork.queries
+.. literalinclude:: nodeNetwork.queries
    :start-after: --q1
    :end-before: --q1.1
 
 Now we can analyze the network.
 
-.. literalinclude:: doc-pgr_nodeNetwork.queries
+.. literalinclude:: nodeNetwork.queries
    :start-after: --q2
    :end-before: --q2.1
 
 The analysis tell us that the network has a gap and an intersection. We try to
 fix the problem using:
 
-.. literalinclude:: doc-pgr_nodeNetwork.queries
+.. literalinclude:: nodeNetwork.queries
    :start-after: --q3
    :end-before: --q3.1
 
 Inspecting the generated table, we can see that edges 13,14 and 18 has been
 segmented
 
-.. literalinclude:: doc-pgr_nodeNetwork.queries
+.. literalinclude:: nodeNetwork.queries
    :start-after: --q4
    :end-before: --q4.1
 
 We can create the topology of the new network
 
-.. literalinclude:: doc-pgr_nodeNetwork.queries
+.. literalinclude:: nodeNetwork.queries
    :start-after: --q5
    :end-before: --q5.1
 
 Now let's analyze the new topology
 
-.. literalinclude:: doc-pgr_nodeNetwork.queries
+.. literalinclude:: nodeNetwork.queries
    :start-after: --q6
    :end-before: --q6.1
 
@@ -182,27 +182,27 @@ following steps:
   of the original edge
 - Insert only the segmented edges, that is, the ones whose max(sub_id) >1
 
-.. literalinclude:: doc-pgr_nodeNetwork.queries
+.. literalinclude:: nodeNetwork.queries
    :start-after: --q7
    :end-before: --q7.1
 
 We recreate the topology:
 
-.. literalinclude:: doc-pgr_nodeNetwork.queries
+.. literalinclude:: nodeNetwork.queries
    :start-after: --q8
    :end-before: --q8.1
 
 To get the same analysis results as the topology of edge_table_noded, we do the
 following query:
 
-.. literalinclude:: doc-pgr_nodeNetwork.queries
+.. literalinclude:: nodeNetwork.queries
    :start-after: --q9
    :end-before: --q9.1
 
 To get the same analysis results as the original edge_table, we do the following
 query:
 
-.. literalinclude:: doc-pgr_nodeNetwork.queries
+.. literalinclude:: nodeNetwork.queries
    :start-after: --q10
    :end-before: --q10.1
 
@@ -210,7 +210,7 @@ Or we can analyze everything because, maybe edge 18 is an overpass, edge 14 is
 an under pass and there is also a street level juction, and the same happens
 with edges 17 and 13.
 
-.. literalinclude:: doc-pgr_nodeNetwork.queries
+.. literalinclude:: nodeNetwork.queries
    :start-after: --q11
    :end-before: --q11.1
 

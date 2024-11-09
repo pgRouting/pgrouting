@@ -59,7 +59,7 @@ Signatures
 
 :Example: Minimum spanning forest
 
-.. literalinclude:: doc-pgr_kruskal.queries
+.. literalinclude:: kruskal.queries
    :start-after: -- q1
    :end-before: -- q2
 

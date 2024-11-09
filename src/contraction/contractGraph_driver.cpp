@@ -35,12 +35,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 
+#include "cpp_common/pgdata_getters.hpp"
 #include "contraction/ch_graphs.hpp"
-#include "contraction/pgr_contract.hpp"
+#include "contraction/contract.hpp"
 
 #include "c_types/contracted_rt.h"
 #include "cpp_common/identifiers.hpp"
-#include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/alloc.hpp"
 
 namespace {
 
@@ -168,21 +169,13 @@ void get_postgres_result(
 
 
 
-/************************************************************
-  edges_sql TEXT,
-  contraction_order BIGINT[],
-  forbidden_vertices BIGINT[] DEFAULT ARRAY[]::BIGINT[],
-  max_cycles integer DEFAULT 1,
-  directed BOOLEAN DEFAULT true
- ***********************************************************/
 void
-do_pgr_contractGraph(
-        Edge_t  *data_edges,
-        size_t total_edges,
-        int64_t *forbidden_vertices,
-        size_t size_forbidden_vertices,
-        int64_t *contraction_order,
-        size_t size_contraction_order,
+pgr_do_contractGraph(
+        char *edges_sql,
+
+        ArrayType* forbidden,
+        ArrayType* order,
+
         int64_t max_cycles,
         bool directed,
         contracted_rt **return_tuples,
@@ -193,13 +186,15 @@ do_pgr_contractGraph(
     using pgrouting::pgr_alloc;
     using pgrouting::pgr_msg;
     using pgrouting::pgr_free;
+    using pgrouting::pgget::get_intArray;
+    using pgrouting::pgget::get_edges;
 
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
+    char *hint = nullptr;
+
     try {
-        pgassert(total_edges != 0);
-        pgassert(size_contraction_order != 0);
         pgassert(max_cycles != 0);
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
@@ -207,16 +202,17 @@ do_pgr_contractGraph(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        /*
-         * Converting to C++ structures
-         */
-        std::vector<Edge_t> edges(data_edges, data_edges + total_edges);
-        std::vector<int64_t> forbid(
-                forbidden_vertices,
-                forbidden_vertices + size_forbidden_vertices);
-        std::vector<int64_t> ordering(
-                contraction_order,
-                contraction_order + size_contraction_order);
+        hint = edges_sql;
+        auto edges = get_edges(std::string(edges_sql), true, false);
+        if (edges.empty()) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
+
+        auto forbid = get_intArray(forbidden, true);
+        auto ordering = get_intArray(order, false);
 
         for (const auto kind : ordering) {
             if (!pgrouting::contraction::is_valid_contraction(static_cast<int>(kind))) {
@@ -228,10 +224,10 @@ do_pgr_contractGraph(
         }
 
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
+
         if (directed) {
             using DirectedGraph = pgrouting::graph::CHDirectedGraph;
-            DirectedGraph digraph(gType);
+            DirectedGraph digraph;
 
             process_contraction(digraph, edges, forbid, ordering,
                     max_cycles);
@@ -242,7 +238,7 @@ do_pgr_contractGraph(
                     return_count);
         } else {
             using UndirectedGraph = pgrouting::graph::CHUndirectedGraph;
-            UndirectedGraph undigraph(gType);
+            UndirectedGraph undigraph;
             process_contraction(undigraph, edges, forbid, ordering,
                     max_cycles);
 
@@ -265,6 +261,9 @@ do_pgr_contractGraph(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

@@ -22,7 +22,13 @@
 
 .. rubric:: Availability
 
-* Version 3.0.0
+.. rubric:: Version 3.7.0
+
+* Standarizing output columns to |result-spantree|
+
+  * Added ``pred`` result columns.
+
+.. rubric:: Version 3.0.0
 
 * New **Official** function
 
@@ -55,7 +61,7 @@ Signatures
    | pgr_primDD(`Edges SQL`_, **root vid**, **distance**)
    | pgr_primDD(`Edges SQL`_, **root vids**, **distance**)
 
-   | Returns set of |result-bfs|
+   | Returns set of |result-spantree|
 
 .. index::
     single: primDD(Single vertex)
@@ -68,12 +74,12 @@ Single vertex
 
    | pgr_primDD(`Edges SQL`_, **root vid**, **distance**)
 
-   | Returns set of |result-bfs|
+   | Returns set of |result-spantree|
 
 :Example: The Minimum Spanning Tree starting on vertex :math:`6` with
           :math:`distance \leq 3.5`
 
-.. literalinclude:: doc-pgr_primDD.queries
+.. literalinclude:: primDD.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -88,12 +94,12 @@ Multiple vertices
 
    | pgr_primDD(`Edges SQL`_, **root vids**, **distance**)
 
-   | Returns set of |result-bfs|
+   | Returns set of |result-spantree|
 
 :Example: The Minimum Spanning Tree starting on vertices :math:`\{9, 6\}` with
           :math:`distance \leq 3.5`
 
-.. literalinclude:: doc-pgr_primDD.queries
+.. literalinclude:: primDD.queries
    :start-after: -- q2
    :end-before: -- q3
 
@@ -101,8 +107,8 @@ Parameters
 -------------------------------------------------------------------------------
 
 .. include:: drivingDistance-category.rst
-   :start-after: mst-dd-params_start
-   :end-before: mst-dd-params_end
+    :start-after: spantree-params_start
+    :end-before: spantree-params_end
 
 Inner Queries
 -------------------------------------------------------------------------------
@@ -117,9 +123,9 @@ Edges SQL
 Result columns
 -------------------------------------------------------------------------------
 
-.. include:: BFS-category.rst
-   :start-after: mst-bfs-dfs-dd-result-columns-start
-   :end-before: mst-bfs-dfs-dd-result-columns-end
+.. include:: drivingDistance-category.rst
+   :start-after: spantree-result-columns-start
+   :end-before: spantree-result-columns-end
 
 See Also
 -------------------------------------------------------------------------------
@@ -136,4 +142,3 @@ See Also
 
 * :ref:`genindex`
 * :ref:`search`
-

@@ -89,7 +89,7 @@ Signatures
 :Example: Using all edges.
 
 
-.. literalinclude:: doc-pgr_maxCardinalityMatch.queries
+.. literalinclude:: maxCardinalityMatch.queries
    :start-after: -- q2
    :end-before: -- q3
 

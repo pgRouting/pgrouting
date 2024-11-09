@@ -54,7 +54,7 @@ jobs:
 
       - name: install deps
         run: |
-          brew install postgresql postgis boost
+          brew install postgresql@14 postgis boost
 
       - name: Configure
         run: |
@@ -66,24 +66,21 @@ jobs:
         run: |
           cd build
           make -j
-          sudo make install
+          make install
 
       - name: Install pgTAP
-        if: false
         run: |
           git clone https://github.com/theory/pgtap.git pgTapExtension
           cd pgTapExtension
           make -j
-          sudo make install
-          sudo cpan TAP::Parser::SourceHandler::pgTAP
-          sudo find /usr/local -name pg_prove
-          sudo ln -s  /usr/local/Cellar/perl/5.32.1_1/bin/pg_prove  symlink it into /usr/local/bin
+          make install
+          cpan TAP::Parser::SourceHandler::pgTAP
+          ln -s $(find `brew --prefix` -name pg_prove) symlink it into $(brew --prefix)/bin
 
       - name: Test
-        if: false
         run: |
-          export PATH=/usr/local/Cellar/perl/$(perl -e 'print substr($^V, 1)')/bin:$PATH
-          pg_ctl -D /usr/local/var/postgres start
+          export PATH=$(brew --prefix)/Cellar/perl/$(perl -e 'print substr($^V, 1)')/bin:$PATH
+          pg_ctl -D $(brew --prefix)/var/postgresql@14 start
           createuser -s postgres
           createdb ___pgr___test___
           bash ./tools/testers/pg_prove_tests.sh postgres 5432 Release

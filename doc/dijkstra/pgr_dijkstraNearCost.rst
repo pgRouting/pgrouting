@@ -93,7 +93,7 @@ One to Many
   * `cap => 1`
 
 
-.. literalinclude:: doc-pgr_dijkstraNearCost.queries
+.. literalinclude:: dijkstraNearCost.queries
     :start-after: -- q1
     :end-before: -- q2
     :linenos:
@@ -123,7 +123,7 @@ Many to One
 * On line `4`: using the positional parameter: `directed` set to ``true``
 * In line `5`: using named parameter `cap => 2`
 
-.. literalinclude:: doc-pgr_dijkstraNearCost.queries
+.. literalinclude:: dijkstraNearCost.queries
     :start-after: -- q2
     :end-before: -- q3
     :linenos:
@@ -157,7 +157,7 @@ Many to Many
   * `cap => 1`
   * `global => true`
 
-.. literalinclude:: doc-pgr_dijkstraNearCost.queries
+.. literalinclude:: dijkstraNearCost.queries
     :start-after: -- q3
     :end-before: -- q4
     :linenos:
@@ -191,7 +191,7 @@ Combinations
 
 The combinations contents:
 
-.. literalinclude:: doc-pgr_dijkstraNear.queries
+.. literalinclude:: dijkstraNear.queries
     :start-after: -- q4
     :end-before: -- q41
 
@@ -207,7 +207,7 @@ The query:
   * `directed => true`
   * `cap => 1`
 
-.. literalinclude:: doc-pgr_dijkstraNearCost.queries
+.. literalinclude:: dijkstraNearCost.queries
     :start-after: -- q41
     :end-before: -- q5
     :linenos:

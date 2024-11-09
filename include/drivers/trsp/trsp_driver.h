@@ -32,41 +32,44 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_TRSP_TRSP_DRIVER_H_
 #pragma once
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include <postgres.h>
+#include <utils/array.h>
+
+#ifdef __cplusplus
+}
+#endif
+
+#include "cpp_common/undefPostgresDefine.hpp"
+
 #ifdef __cplusplus
 #include <cstddef>
 #include <cstdint>
-using Restriction_t = struct Restriction_t;
 using Path_rt = struct Path_rt;
-using Edge_t = struct Edge_t;
-using II_t_rt = struct II_t_rt;
 #else
 #include <stddef.h>
 #include <stdint.h>
-typedef struct Restriction_t Restriction_t;
 typedef struct Path_rt Path_rt;
-typedef struct Edge_t Edge_t;
-typedef struct II_t_rt II_t_rt;
 #endif
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void do_trsp(
-        Edge_t *, size_t,           // edges
-        Restriction_t *, size_t,    // restrictions
+void pgr_do_trsp(
+        char*,
+        char*,
+        char*,
+        ArrayType*, ArrayType*,
 
-        II_t_rt *, size_t,  // combinations
-        int64_t *, size_t,  // starts
-        int64_t *, size_t,  // ends
+        bool,
 
-        bool,  // directed
-
-        Path_rt **, size_t *,  // tuples
-
-        char**,   // log
-        char**,   // notice
-        char**);  // err
+        Path_rt**, size_t*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }

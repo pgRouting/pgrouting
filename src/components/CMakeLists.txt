@@ -8,7 +8,7 @@ ADD_LIBRARY(components OBJECT
 
     makeConnected_driver.cpp
     componentsResult.cpp
-    pgr_components.cpp
+    components.cpp
     connectedComponents_driver.cpp
 	strongComponents_driver.cpp
     biconnectedComponents_driver.cpp

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File:.edges_order_bfs_visitor.hpp
+File: edges_order_bfs_visitor.hpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

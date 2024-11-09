@@ -1,6 +1,5 @@
 /*PGR-GNU*****************************************************************
-
-FILE: identifiers.hpp
+File: identifiers.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers

@@ -1,0 +1,183 @@
+/*PGR-GNU*****************************************************************
+File: vehicle_pickDeliver.hpp
+
+Copyright (c) 2016 pgRouting developers
+Mail: project@pgrouting.org
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+ ********************************************************************PGR-GNU*/
+
+/*! @file */
+
+#ifndef INCLUDE_VRP_VEHICLE_PICKDELIVER_HPP_
+#define INCLUDE_VRP_VEHICLE_PICKDELIVER_HPP_
+#pragma once
+
+#include <set>
+#include "vrp/order.hpp"
+#include "vrp/pd_orders.hpp"
+#include "vrp/tw_node.hpp"
+#include "vrp/vehicle.hpp"
+#include "vrp/initials_code.hpp"
+#include "cpp_common/identifiers.hpp"
+
+namespace pgrouting {
+namespace vrp {
+
+
+class Initial_solution;
+class Optimize;
+
+class Vehicle_pickDeliver : public Vehicle {
+ protected:
+     double cost;
+     //! orders inserted in this vehicle
+     Identifiers<size_t> m_orders_in_vehicle;
+     PD_Orders m_orders;
+     //! orders that fit in the truck
+     Identifiers<size_t> m_feasable_orders;
+
+
+ public:
+     friend class Initial_solution;
+     friend class Optimize;
+
+     Vehicle_pickDeliver(
+             size_t idx,
+             int64_t id,
+             const Vehicle_node &starting_site,
+             const Vehicle_node &ending_site,
+             double p_capacity,
+             double p_speed,
+             double factor);
+
+     void set_compatibles(const PD_Orders &orders);
+     bool is_order_feasable(const Order &order) const;
+     Identifiers<size_t> feasable_orders() const {return m_feasable_orders;}
+
+     const PD_Orders& orders() const {return m_orders;}
+     size_t orders_size() const {return m_orders_in_vehicle.size();}
+     Identifiers<size_t> orders_in_vehicle() const {return m_orders_in_vehicle;}
+
+     bool has_order(const Order &order) const;
+
+     /*! @brief puts an order at the end of the truck
+      *
+      * Precondition:
+      * !has_order(order)
+      *
+      * Postcondition:
+      * has_order(order)
+      * !has_cv();
+      *
+      * ~~~~{.c}
+      * Before: S <nodes> E
+      *   After: S <nodes> P D E
+      * ~~~~
+      *
+      * Can generate time window violation
+      * No capacity violation
+      */
+     void push_back(const Order &order);
+
+
+     /*! @brief Puts an order at the end front of the truck
+      *
+      * Precondition:
+      * !has_order(order)
+      *
+      * Postcondition:
+      * has_order(order)
+      * !has_cv();
+      *
+      * ~~~~{.c}
+      * Before: S <nodes> E
+      *   After: S P D <nodes> E
+      * ~~~~
+      *
+      * Can generate time window violation
+      * No capacity violation
+      */
+     void push_front(const Order &order);
+
+
+     /*! @brief Inserts an order
+      *
+      * Precondition:
+      * !has_order(order)
+      *
+      * Postcondition:
+      * has_order(order)
+      * !has_cv();
+      *
+      * ~~~~{.c}
+      * Before: S <nodes> E
+      *   After: S ....P .... D .... E
+      * ~~~~
+      *
+      * push_back is performed when
+      *   - pickup
+      *
+      * Can generate time window violation
+      * No capacity violation
+      */
+     bool insert(const Order &order);
+
+     /*! @brief Inserts an order In semi-Lifo order
+      *
+      * Precondition:
+      * !has_order(order)
+      *
+      * Postcondition:
+      * has_order(order)
+      * !has_cv();
+      *
+      * ~~~~{.c}
+      * Before: S .... (P1 ....... P2) ... D2 .... D1 .... E
+      *  After: S .... (P .. P1 .. P2) ... D2 .. D .. D1 .... E
+      * ~~~~
+      *
+      * push_back is performed when
+      *   - drop generates a time window violation
+      *
+      * Can generate time window violation
+      * No capacity violation
+      */
+     bool semiLIFO(const Order &order);
+
+     /* @brief erases the order from the vehicle
+      *
+      * Precondition:
+      * has_order(order)
+      *
+      * Precondition:
+      * !has_order(order)
+      */
+     void erase(const Order &order);
+
+
+     void do_while_feasable(
+             Initials_code kind,
+             Identifiers<size_t> &unassigned,
+             Identifiers<size_t> &assigned);
+};
+
+}  //  namespace vrp
+}  //  namespace pgrouting
+
+#endif  // INCLUDE_VRP_VEHICLE_PICKDELIVER_HPP_

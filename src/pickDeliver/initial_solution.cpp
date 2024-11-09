@@ -1,6 +1,5 @@
 /*PGR-GNU*****************************************************************
-
-FILE: initial_solution.cpp
+File: initial_solution.cpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -24,13 +23,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#include "vrp/initial_solution.h"
+#include "vrp/initial_solution.hpp"
 #include <deque>
 #include <algorithm>
 #include <set>
-#include "cpp_common/pgr_assert.h"
-#include "vrp/solution.h"
-#include "vrp/pgr_pickDeliver.h"
+#include "cpp_common/assert.hpp"
+#include "vrp/solution.hpp"
+#include "vrp/pickDeliver.hpp"
 
 namespace pgrouting {
 namespace vrp {
@@ -79,30 +78,15 @@ Initial_solution::do_while_foo(int kind) {
     invariant();
     pgassert(kind > 0 && kind <= OneDepot);
 
-#if 0
-    msg().log << "\nInitial_solution::do_while_foo\n";
-#endif
     Identifiers<size_t> notused;
 
     while (!m_unassigned.empty()) {
-#if 0
-        msg().log << m_unassigned.size() << " m_unassigned: " << m_unassigned << "\n";
-        msg().log << m_assigned.size() << " m_assigned:" << m_assigned << "\n";
-#endif
         auto current = m_unassigned.size();
         auto truck = trucks.get_truck(m_unassigned.front());
-#if 0
-        msg().log << "got truck:" << truck.tau() << "\n";
-#endif
         /*
          * kind 1 to 7 work with the same code structure
          */
         truck.do_while_feasable((Initials_code)kind, m_unassigned, m_assigned);
-#if 0
-        msg().log << m_unassigned.size() << " m_unassigned: " << m_unassigned << "\n";
-        msg().log << m_assigned.size() << " m_assigned:" << m_assigned << "\n";
-        msg().log << "current" << current << " m_unassigned: " << m_unassigned.size();
-#endif
         pgassertwm(current > m_unassigned.size(), msg().get_log().c_str());
 
         fleet.push_back(truck);

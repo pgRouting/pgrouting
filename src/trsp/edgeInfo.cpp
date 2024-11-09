@@ -1,6 +1,5 @@
 /*PGR-GNU*****************************************************************
-
-FILE: edgeInfo.cpp
+File: edgeInfo.cpp
 
 Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org
@@ -23,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "trsp/edgeInfo.h"
+#include "trsp/edgeInfo.hpp"
 
 
 namespace pgrouting {

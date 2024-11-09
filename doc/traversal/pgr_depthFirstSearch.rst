@@ -91,7 +91,7 @@ Single vertex
 :Example: From root vertex :math:`6` on a **directed** graph with edges in
           ascending order of ``id``
 
-.. literalinclude:: doc-pgr_depthFirstSearch.queries
+.. literalinclude:: depthFirstSearch.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -112,7 +112,7 @@ Multiple vertices
 :Example: From root vertices :math:`\{12, 6\}` on an **undirected** graph with
           **depth** :math:`<= 2` and edges in ascending order of ``id``
 
-.. literalinclude:: doc-pgr_depthFirstSearch.queries
+.. literalinclude:: depthFirstSearch.queries
    :start-after: -- q2
    :end-before: -- q3
 
@@ -159,7 +159,7 @@ Additional Examples
 
 :Example: Same as `Single vertex`_ but with edges in descending order of ``id``.
 
-.. literalinclude:: doc-pgr_depthFirstSearch.queries
+.. literalinclude:: depthFirstSearch.queries
    :start-after: -- q3
    :end-before: -- q4
 

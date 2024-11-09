@@ -30,19 +30,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #ifdef __cplusplus
+extern "C" {
+#endif
+
+#include <postgres.h>
+#include <utils/array.h>
+
+#ifdef __cplusplus
+}
+#endif
+
+#include "cpp_common/undefPostgresDefine.hpp"
+
+#ifdef __cplusplus
 #   include <cstdint>
 #   include <cstddef>
-using Point_on_edge_t = struct Point_on_edge_t;
-using Edge_t = struct Edge_t;
 using Routes_t = struct Routes_t;
-using Restriction_t = struct Restriction_t;
 #else
 #   include <stddef.h>
 #   include <stdint.h>
-typedef struct Point_on_edge_t Point_on_edge_t;
-typedef struct Edge_t Edge_t;
 typedef struct Routes_t Routes_t;
-typedef struct Restriction_t Restriction_t;
 #endif
 
 
@@ -52,26 +59,19 @@ extern "C" {
 
 /** @brief Process pgr_trsp_withPointsVia */
 void
-do_trspVia_withPoints(
-        Edge_t*,  size_t,           // edges
-        Restriction_t *, size_t,    // restrictions
-        Point_on_edge_t *, size_t,  // Points
-        Edge_t*, size_t,            // edges of points
-        int64_t *,    size_t,       // via vertices
+pgr_do_trspVia_withPoints(
+        char*,
+        char*,
+        char*,
+        char*,
+        ArrayType*,
 
-        bool,  // directed
+        bool,
+        char, bool,
+        bool, bool,
 
-        char,  // driving_side
-        bool,  // details
-
-        bool,  // strict
-        bool,  // U_turn_on_edge,
-
-        Routes_t**, size_t*,  // results
-
-        char**,   // log
-        char**,   // notice
-        char**);  // error
+        Routes_t**, size_t*,
+        char**, char**, char**);
 
 #ifdef __cplusplus
 }

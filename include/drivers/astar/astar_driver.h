@@ -32,16 +32,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #ifdef __cplusplus
+extern "C" {
+#endif
+
+#include <postgres.h>
+#include <utils/array.h>
+
+#ifdef __cplusplus
+}
+#endif
+
+#include "cpp_common/undefPostgresDefine.hpp"
+
+#ifdef __cplusplus
 #   include <cstddef>
 #   include <cstdint>
-using Edge_xy_t = struct Edge_xy_t;
-using II_t_rt = struct II_t_rt;
 using Path_rt = struct Path_rt;
 #else
 #   include <stddef.h>
 #   include <stdint.h>
-typedef struct Edge_xy_t Edge_xy_t;
-typedef struct II_t_rt II_t_rt;
 typedef struct Path_rt Path_rt;
 #endif
 
@@ -49,16 +58,16 @@ typedef struct Path_rt Path_rt;
 extern "C" {
 #endif
 
-    void pgr_do_astar(
-            Edge_xy_t*, size_t,
-            II_t_rt*, size_t,
-            int64_t*, size_t,
-            int64_t*, size_t,
+void pgr_do_astar(
+        char*,
+        char*,
+        ArrayType*,
+        ArrayType*,
 
-            bool, int, double, double, bool, bool,
+        bool, int, double, double, bool, bool,
 
-            Path_rt**, size_t*,
-            char**, char**, char**);
+        Path_rt**, size_t*,
+        char**, char**, char**);
 
 
 #ifdef __cplusplus

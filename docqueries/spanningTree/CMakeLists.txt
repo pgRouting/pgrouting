@@ -1,13 +1,13 @@
 # Do not use extensions
 SET(LOCAL_FILES
-    doc-pgr_kruskalBFS
-    doc-pgr_kruskalDD
-    doc-pgr_kruskalDFS
-    doc-pgr_kruskal
-    doc-pgr_primBFS
-    doc-pgr_primDD
-    doc-pgr_primDFS
-    doc-pgr_prim
+    kruskalBFS
+    kruskalDD
+    kruskalDFS
+    kruskal
+    primBFS
+    primDD
+    primDFS
+    prim
     )
 
 foreach (f ${LOCAL_FILES})

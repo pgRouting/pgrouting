@@ -33,39 +33,35 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 #include <utility>
+#include <string>
 
-#include "dijkstra/dijkstra.hpp"
-
-#include "cpp_common/pgr_alloc.hpp"
-#include "cpp_common/pgr_assert.h"
-
-#include "lineGraph/pgr_lineGraph.hpp"
-#include "cpp_common/linear_directed_graph.h"
+#include "bgraph/line_graph.hpp"
+#include "bgraph/graph_to_edges.hpp"
+#include "cpp_common/pgdata_getters.hpp"
+#include "cpp_common/alloc.hpp"
+#include "cpp_common/assert.hpp"
+#include "cpp_common/base_graph.hpp"
+#include "c_types/edge_rt.h"
 
 namespace {
 
-void get_postgres_result(
-        std::vector< Edge_t > edge_result,
-        Edge_t **return_tuples,
-        size_t &sequence) {
-    using pgrouting::pgr_alloc;
-    (*return_tuples) = pgr_alloc(edge_result.size(), (*return_tuples));
+template<typename G>
+std::vector<Edge_t> line_graph(const G& original, bool add_self_loop) {
+    auto lg_result = pgrouting::b_g::line_graph(original.graph);
 
-    for (const auto &edge : edge_result) {
-        (*return_tuples)[sequence] = {edge.id, edge.source, edge.target,
-             edge.cost, edge.reverse_cost};
-        sequence++;
-    }
+    return pgrouting::b_g::graph_to_existing_edges(lg_result, add_self_loop);
 }
+
 }  // namespace
 
 void
-do_pgr_lineGraph(
-        Edge_t  *data_edges,
-        size_t total_edges,
+pgr_do_lineGraph(
+        char *edges_sql,
         bool directed,
-        Edge_t **return_tuples,
+
+        Edge_rt **return_tuples,
         size_t *return_count,
+
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
@@ -75,56 +71,68 @@ do_pgr_lineGraph(
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
+    char *hint = nullptr;
+
     try {
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(total_edges != 0);
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        pgrouting::DirectedGraph digraph(gType);
-        digraph.insert_edges_neg(data_edges, total_edges);
+        hint = edges_sql;
+        auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
+        if (edges.empty()) {
+            *notice_msg = pgr_msg("No edges found");
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            return;
+        }
+        hint = nullptr;
 
-        log << digraph << "\n";
-        pgrouting::graph::Pgr_lineGraph<
-            pgrouting::LinearDirectedGraph,
-            pgrouting::Line_vertex,
-            pgrouting::Basic_edge> line(digraph);
-        std::vector< Edge_t > line_graph_edges;
-        line_graph_edges = line.get_postgres_results_directed();
+        std::vector<Edge_t> line_graph_edges;
+        if (directed) {
+            pgrouting::DirectedGraph ograph;
+            ograph.insert_edges(edges);
+            line_graph_edges = line_graph(ograph, directed);
+        } else {
+            pgrouting::UndirectedGraph ograph;
+            ograph.insert_edges(edges);
+            line_graph_edges = line_graph(ograph, directed);
+        }
+
         auto count = line_graph_edges.size();
 
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            notice <<
-                "Only vertices graph";
-        } else {
-            size_t sequence = 0;
-
-            get_postgres_result(
-                line_graph_edges,
-                return_tuples,
-                sequence);
-            (*return_count) = sequence;
+            *log_msg = pgr_msg(log.str().c_str());
+            return;
         }
 
+        size_t sequence = 0;
+        using pgrouting::pgr_alloc;
+        (*return_tuples) = pgr_alloc(line_graph_edges.size(), (*return_tuples));
+
+        for (const auto &e : line_graph_edges) {
+            auto rev_c = directed? e.reverse_cost : -1;
+            (*return_tuples)[sequence] = {e.id, e.source, e.target, e.cost, rev_c};
+            sequence++;
+        }
+        (*return_count) = sequence;
+
         pgassert(*err_msg == NULL);
-        *log_msg = log.str().empty()?
-            *log_msg :
-            pgr_msg(log.str().c_str());
-        *notice_msg = notice.str().empty()?
-            *notice_msg :
-            pgr_msg(notice.str().c_str());
+        *log_msg = log.str().empty()?  *log_msg : pgr_msg(log.str().c_str());
+        *notice_msg = notice.str().empty()?  *notice_msg : pgr_msg(notice.str().c_str());
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string &ex) {
+        *err_msg = pgr_msg(ex.c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

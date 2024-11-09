@@ -51,7 +51,7 @@ Signatures
 
 :Example:
 
-.. literalinclude:: doc-pgr_chinesePostmanCost.queries
+.. literalinclude:: chinesePostmanCost.queries
    :start-after: -- q1
    :end-before: -- q2
 

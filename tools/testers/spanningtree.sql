@@ -31,6 +31,8 @@ BEGIN
   RETURN QUERY SELECT function_returns(fn, ARRAY['text','bigint','bigint'],  'setof record');
   RETURN QUERY SELECT function_returns(fn, ARRAY['text','anyarray','bigint'],  'setof record');
 
+  IF NOT min_version('3.7.0') THEN
+
   RETURN QUERY SELECT set_eq(
     format($$SELECT  proargnames FROM pg_proc WHERE proname = %1$L$$,fn),
     $$VALUES
@@ -46,6 +48,24 @@ BEGIN
     $$
   );
 
+  ELSE
+
+  RETURN QUERY SELECT set_eq(
+    format($$SELECT  proargnames FROM pg_proc WHERE proname = %1$L$$,fn),
+    $$VALUES
+    ('{"","","max_depth","seq","depth","start_vid","pred","node","edge","cost","agg_cost"}'::TEXT[])
+    $$
+  );
+
+  RETURN QUERY SELECT set_eq(
+    format($$SELECT  proallargtypes FROM pg_proc WHERE proname = %1$L$$, fn),
+    $$VALUES
+    ('{25,20,20,20,20,20,20,20,20,701,701}'::OID[]),
+    ('{25,2277,20,20,20,20,20,20,20,701,701}'::OID[])
+    $$
+  );
+
+  END IF;
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE;
@@ -67,6 +87,8 @@ BEGIN
   RETURN QUERY SELECT function_returns(fn,  ARRAY['text','bigint','double precision'],  'setof record');
   RETURN QUERY SELECT function_returns(fn,  ARRAY['text','anyarray','double precision'],  'setof record');
 
+  IF NOT min_version('3.7.0') THEN
+
   RETURN QUERY SELECT set_eq(
     format($$SELECT  proargnames FROM pg_proc WHERE proname = %1$L$$,fn),
     $$VALUES
@@ -85,6 +107,29 @@ BEGIN
     ('{25,2277,701,20,20,20,20,20,701,701}'::OID[])
     $$
   );
+
+  ELSE
+
+  RETURN QUERY SELECT set_eq(
+    format($$SELECT  proargnames FROM pg_proc WHERE proname = %1$L$$,fn),
+    $$VALUES
+    ('{"","","","seq","depth","start_vid","pred","node","edge","cost","agg_cost"}'::TEXT[])
+    $$
+  );
+
+  RETURN QUERY SELECT set_eq(
+    format($$SELECT  proallargtypes FROM pg_proc WHERE proname = %1$L$$, fn),
+    $$VALUES
+    ('{25,20,701,20,20,20,20,20,20,701,701}'::OID[]),
+    ('{25,2277,701,20,20,20,20,20,20,701,701}'::OID[]),
+    ('{25,20,1700,20,20,20,20,20,20,701,701}'::OID[]),
+    ('{25,2277,1700,20,20,20,20,20,20,701,701}'::OID[]),
+    ('{25,20,701,20,20,20,20,20,20,701,701}'::OID[]),
+    ('{25,2277,701,20,20,20,20,20,20,701,701}'::OID[])
+    $$
+  );
+
+  END IF;
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE;

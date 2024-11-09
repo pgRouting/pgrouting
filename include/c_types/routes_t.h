@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_types.h
+File: routes_t.h
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

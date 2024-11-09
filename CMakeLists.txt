@@ -18,7 +18,7 @@ include(pgr/BuildType)
 #---------------------------------------------
 #---------------------------------------------
 
-project(PGROUTING VERSION 3.6.3
+project(PGROUTING VERSION 3.7.0
     LANGUAGES C CXX )
 set(PROJECT_VERSION_DEV "")
 string(TOLOWER "${PROJECT_NAME}" PROJECT_NAME_LOWER)
@@ -31,8 +31,9 @@ set(PROJECT_LIB_NAME "${PROJECT_NAME_LOWER}-${PROJECT_LIB_VERSION}")
 
 string(TIMESTAMP COMPILATION_DATE "%Y/%m/%d" UTC)
 
-set(MINORS 3.6 3.5 3.4 3.3 3.2 3.1 3.0 2.6)
+set(MINORS 3.7 3.6 3.5 3.4 3.3 3.2 3.1 3.0 2.6)
 set(OLD_SIGNATURES
+    3.6.3
     3.6.2
     3.6.1
     3.6.0
@@ -61,7 +62,7 @@ include(pgr/Configure)
 #---------------------------------------------
 set(DOXYGEN_MINIMUM_VERSION "1.7")
 set(SPHINX_MINIMUM_VERSION "4.0")
-set(POSTGRESQL_MINIMUM_VERSION "11.0.0")
+set(POSTGRESQL_MINIMUM_VERSION "13.0.0")
 set(BOOST_MINIMUM_VERSION "1.56.0")
 set(POSTGIS_MINIMUM_VERSION "3.0.0")
 
@@ -187,6 +188,7 @@ string(REPLACE "." ";" VERSION_LIST ${POSTGRESQL_VERSION})
 list(GET VERSION_LIST 0 POSTGRESQL_VERSION_MAYOR)
 list(GET VERSION_LIST 1 POSTGRESQL_VERSION_MINOR)
 
+# calculate math value of postgres version
 math(EXPR PGSQL_VERSION "${POSTGRESQL_VERSION_MAYOR} * 1000 + ${POSTGRESQL_VERSION_MINOR}")
 message(STATUS "PGSQL_VERSION=${PGSQL_VERSION}")
 

@@ -1,7 +1,7 @@
 # Do not use extensions
 SET(LOCAL_FILES
-    doc-pgr_TSPeuclidean
-    doc-pgr_TSP
+    TSPeuclidean
+    TSP
     )
 
 configure_file("wi29.sql" "${PGR_DOCUMENTATION_SOURCE_DIR}/wi29.queries")
