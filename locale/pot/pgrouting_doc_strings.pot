@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v4.0.0-dev
+# Copyright (C) pgRouting Contributors - Version v4.0.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v4.0.0-dev\n"
+"Project-Id-Version: pgRouting v4.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-02 11:55-0600\n"
+"POT-Creation-Date: 2024-11-18 21:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3941,6 +3941,15 @@ msgid "pgRouting 4.0.0 Release Notes"
 msgstr ""
 
 msgid "No Changes Yet"
+msgstr ""
+
+msgid "pgRouting 3"
+msgstr ""
+
+msgid "Minors 3.x"
+msgstr ""
+
+msgid "pgRouting 3.7"
 msgstr ""
 
 msgid "pgRouting 3.7.0 Release Notes"
@@ -13243,13 +13252,13 @@ msgstr ""
 msgid "Mayors"
 msgstr ""
 
-msgid "pgRouting 3"
+msgid "pgRouting 4"
 msgstr ""
 
-msgid "Minors 3.x"
+msgid "Minors 4.x"
 msgstr ""
 
-msgid "pgRouting 3.7"
+msgid "pgRouting 4.0"
 msgstr ""
 
 msgid "pgRouting 3.6"
