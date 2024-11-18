@@ -1,0 +1,369 @@
+
+
+<!DOCTYPE html>
+
+<html lang="zh-Hans" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>介绍 &#8212; pgRouting Manual (4.0)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
+    <script src="_static/documentation_options.js?v=2ef3d351"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="安装" href="pgRouting-installation.html" />
+    <link rel="prev" title="目录" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v4.0.0</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">支持</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">介绍</a><ul>
+<li><a class="reference internal" href="#licensing">许可</a></li>
+<li><a class="reference internal" href="#contributors">贡献者</a><ul>
+<li><a class="reference internal" href="#this-release-contributors">此版本贡献者</a><ul>
+<li><a class="reference internal" href="#individuals-in-this-release-v3-7-x-in-alphabetical-order">在此版本 v3.7.x 中的个人贡献者（按字母顺序排列）</a></li>
+<li><a class="reference internal" href="#corporate-sponsors-in-this-release-in-alphabetical-order">本次发布中的企业赞助商（按字母顺序排列）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#contributors-past-present">过去与现在的贡献者：</a><ul>
+<li><a class="reference internal" href="#individuals-in-alphabetical-order">个人贡献者（按字母排序）</a></li>
+<li><a class="reference internal" href="#corporate-sponsors-in-alphabetical-order">企业赞助商（按字母顺序排列）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#more-information">更多信息</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="index.html" title="Previous Chapter: 目录"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; 目录</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgRouting-installation.html" title="Next Chapter: 安装"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">安装 &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#">介绍</a><ul>
+<li><a class="reference internal" href="#licensing">许可</a></li>
+<li><a class="reference internal" href="#contributors">贡献者</a><ul>
+<li><a class="reference internal" href="#this-release-contributors">此版本贡献者</a><ul>
+<li><a class="reference internal" href="#individuals-in-this-release-v3-7-x-in-alphabetical-order">在此版本 v3.7.x 中的个人贡献者（按字母顺序排列）</a></li>
+<li><a class="reference internal" href="#corporate-sponsors-in-this-release-in-alphabetical-order">本次发布中的企业赞助商（按字母顺序排列）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#contributors-past-present">过去与现在的贡献者：</a><ul>
+<li><a class="reference internal" href="#individuals-in-alphabetical-order">个人贡献者（按字母排序）</a></li>
+<li><a class="reference internal" href="#corporate-sponsors-in-alphabetical-order">企业赞助商（按字母顺序排列）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#more-information">更多信息</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="index.html" title="Previous Chapter: 目录"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; 目录</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgRouting-installation.html" title="Next Chapter: 安装"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">安装 &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
+            <script> document.write(get_history('pgRouting-introduction','zh-Hans'));  </script>
+            
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="introduction">
+<h1>介绍<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h1>
+<p>pgRouting 是 <a class="reference external" href="https://postgis.net">PostGIS</a> 和 <a class="reference external" href="https://www.postgresql.org">PostgreSQL</a> 地理空间数据库的扩展，并添加了路由和其他网络分析功能。 pgRouting的前身——pgDijkstra，由`Camptocamp &lt;<a class="reference external" href="https://camptocamp.com">https://camptocamp.com</a>&gt;`__ 的Sylvain Pasche编写，后来被Orkney扩展并更名为pgRouting。 该项目现在得到了 <a class="reference external" href="https://georepublic.info">Georepublic</a> 、<a class="reference external" href="https://www.paragoncorporation.com/">Paragon Corporation</a> 和广大用户社区的支持和维护。</p>
+<p>pgRouting is part of <a class="reference external" href="https://wiki.osgeo.org/wiki/OSGeo_Community_Projects">OSGeo Community Projects</a> from the <a class="reference external" href="https://www.osgeo.org">OSGeo
+Foundation</a> and included on <a class="reference external" href="http://live.osgeo.org/">OSGeoLive</a>.</p>
+<section id="licensing">
+<span id="license"></span><h2>许可<a class="headerlink" href="#licensing" title="Link to this heading">¶</a></h2>
+<p>可以在 pgRouting 中找到以下许可证：</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 66.7%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>许可</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>GNU 通用公共许可证 v2.0 或更高版本</p></td>
+<td><p>pgRouting 的大多数功能都可以在` GNU 通用公共许可证 v2.0 或更高版本 &lt;<a class="reference external" href="https://spdx.org/licenses/GPL-2.0-or-later.html">https://spdx.org/licenses/GPL-2.0-or-later.html</a>&gt;`_ 下使用。</p></td>
+</tr>
+<tr class="row-odd"><td><p>Boost 软件许可证 - 版本 1.0</p></td>
+<td><p>一些 Boost 扩展可根据` Boost 软件许可证 - 版本 1.0 获得 &lt;<a class="reference external" href="https://www.boost.org/LICENSE_1_0.txt">https://www.boost.org/LICENSE_1_0.txt</a>&gt;`_。</p></td>
+</tr>
+<tr class="row-even"><td><p>MIT-X License</p></td>
+<td><p>iMaptools.com 贡献的一些代码可在 MIT-X 许可证下使用。</p></td>
+</tr>
+<tr class="row-odd"><td><p>知识共享署名 - 相同方式共享 3.0 许可证</p></td>
+<td><p>pgRouting 手册根据`知识共享署名-相同方式共享 3.0 许可证获得许可 &lt;<a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">https://creativecommons.org/licenses/by-sa/3.0/</a>&gt;`_。</p></td>
+</tr>
+</tbody>
+</table>
+<p>一般来说，许可证信息应包含在每个源文件的标头中。</p>
+</section>
+<section id="contributors">
+<h2>贡献者<a class="headerlink" href="#contributors" title="Link to this heading">¶</a></h2>
+<section id="this-release-contributors">
+<h3>此版本贡献者<a class="headerlink" href="#this-release-contributors" title="Link to this heading">¶</a></h3>
+<section id="individuals-in-this-release-v3-7-x-in-alphabetical-order">
+<h4>在此版本 v3.7.x 中的个人贡献者（按字母顺序排列）<a class="headerlink" href="#individuals-in-this-release-v3-7-x-in-alphabetical-order" title="Link to this heading">¶</a></h4>
+<p>(按字母顺序排列）</p>
+<p>Regina Obe,
+Vicky Vergara</p>
+<p>还有所有为我们的产品（osm2pgrouting、pgRouting、pgRoutingLayer、workshop）提供意见、发现问题、提出拉取请求等的人们。</p>
+</section>
+<section id="corporate-sponsors-in-this-release-in-alphabetical-order">
+<h4>本次发布中的企业赞助商（按字母顺序排列）<a class="headerlink" href="#corporate-sponsors-in-this-release-in-alphabetical-order" title="Link to this heading">¶</a></h4>
+<p>这些是为 pgRouting 项目贡献了开发人员时间、托管或直接货币资金的公司实体：</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.osgeo.org">OSGeo</a></p></li>
+<li><p><a class="reference external" href="https://uk.osgeo.org">OSGeo UK</a></p></li>
+<li><p><a class="reference external" href="https://summerofcode.withgoogle.com">Google Summer of Code</a></p></li>
+<li><p><a class="reference external" href="https://www.paragoncorporation.com/">Paragon Corporation</a></p></li>
+</ul>
+</section>
+</section>
+<section id="contributors-past-present">
+<h3>过去与现在的贡献者：<a class="headerlink" href="#contributors-past-present" title="Link to this heading">¶</a></h3>
+<section id="individuals-in-alphabetical-order">
+<h4>个人贡献者（按字母排序）<a class="headerlink" href="#individuals-in-alphabetical-order" title="Link to this heading">¶</a></h4>
+<p>Aasheesh Tiwari,
+Abhinav Jain,
+Aditya Pratap Singh,
+Adrien Berchet,
+Akio Takubo,
+Andrea Nardelli,
+Anthony Tasca,
+Anton Patrushev,
+Aryan Gupta,
+Ashraf Hossain,
+Ashish Kumar,
+Cayetano Benavent,
+Christian Gonzalez,
+Daniel Kastl,
+Dave Potts,
+David Techer,
+Denis Rykov,
+Ema Miyawaki,
+Esteban Zimanyi,
+Florian Thurkow,
+Frederic Junod,
+Gerald Fenoy,
+Gudesa Venkata Sai Akhil,
+Hang Wu,
+Himanshu Raj,
+Imre Samu,
+Jay Mahadeokar,
+Jinfu Leng,
+Kai Behncke,
+Kishore Kumar,
+Ko Nagase,
+Mahmoud Sakr,
+Manikata Kondeti,
+Mario Basa,
+Martin Wiesenhaan,
+Maxim Dubinin,
+Maoguang Wang,
+Mohamed Bakli,
+Mohamed Zia,
+Mukul Priya,
+Nitish Chauhan,
+Rajat Shinde,
+Razequl Islam,
+Regina Obe,
+Rohith Reddy,
+Sarthak Agarwal,
+Shobhit Chaurasia,
+Sourabh Garg,
+Stephen Woodbridge,
+Swapnil Joshi,
+Sylvain Housseman,
+Sylvain Pasche,
+Veenit Kumar,
+Vidhan Jain,
+Virginia Vergara,
+Yige Huang</p>
+</section>
+<section id="corporate-sponsors-in-alphabetical-order">
+<h4>企业赞助商（按字母顺序排列）<a class="headerlink" href="#corporate-sponsors-in-alphabetical-order" title="Link to this heading">¶</a></h4>
+<p>这些是为 pgRouting 项目贡献了开发人员时间、托管或直接货币资金的公司实体：</p>
+<ul class="simple">
+<li><p>Camptocamp</p></li>
+<li><p>CSIS (University of Tokyo)</p></li>
+<li><p>Georepublic</p></li>
+<li><p>Google Summer of Code</p></li>
+<li><p>iMaptools</p></li>
+<li><p>Leopark</p></li>
+<li><p>Orkney</p></li>
+<li><p>OSGeo</p></li>
+<li><p>OSGeo UK</p></li>
+<li><p>Paragon Corporation</p></li>
+<li><p>Versaterm Inc.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="more-information">
+<h2>更多信息<a class="headerlink" href="#more-information" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>最新的软件、文档和新闻可在 pgRouting 网站 <a class="reference external" href="https://pgrouting.org">https://pgrouting.org</a> 上获取。</p></li>
+<li><p>PostgreSQL 数据库服务器位于 PostgreSQL 主站点 <a class="reference external" href="https://www.postgresql.org">https://www.postgresql.org</a>。</p></li>
+<li><p>PostGIS 项目网站 <a class="reference external" href="https://postgis.net">https://postgis.net</a> 上的 PostGIS 扩展。</p></li>
+<li><p>Boost C++ 源库位于 <a class="reference external" href="https://www.boost.org">https://www.boost.org</a>。</p></li>
+<li><p><a class="reference internal" href="migration.html"><span class="doc">迁移指南</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v4.0.0.<br/>
+      Last updated on 11月 18, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

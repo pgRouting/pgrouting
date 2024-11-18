@@ -1,0 +1,1400 @@
+
+
+<!DOCTYPE html>
+
+<html lang="es" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>pgr_findCloseEdges &#8212; pgRouting Manual (4.0)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
+    <script src="_static/documentation_options.js?v=fa0eef97"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Funciones Experimentales" href="experimental.html" />
+    <link rel="prev" title="withPoints- Categoría" href="withPoints-category.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v4.0.0</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Soporte</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Datos Muestra</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Guía de migración</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code></a><ul>
+<li><a class="reference internal" href="#description">Descripción</a></li>
+<li><a class="reference internal" href="#signatures">Firmas</a><ul>
+<li><a class="reference internal" href="#one-point">Un punto</a></li>
+<li><a class="reference internal" href="#many-points">Muchos puntos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#parameters">Parámetros</a><ul>
+<li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
+<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
+<li><a class="reference internal" href="#one-point-examples">Ejemplos de un punto</a><ul>
+<li><a class="reference internal" href="#at-most-two-answers">Como máximo dos respuestas</a></li>
+<li><a class="reference internal" href="#one-answer-all-columns">Una respuesta, todas las columnas</a></li>
+<li><a class="reference internal" href="#at-most-two-answers-with-all-columns">Como máximo dos respuestas con todas las columnas</a></li>
+<li><a class="reference internal" href="#one-point-dry-run-execution">Ejecución en seco de un punto</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#many-points-examples">Ejemplos de muchos puntos</a><ul>
+<li><a class="reference internal" href="#at-most-two-answers-per-point">Un máximo de dos respuestas por punto</a></li>
+<li><a class="reference internal" href="#one-answer-per-point-all-columns">Una respuesta por punto, todas las columnas</a></li>
+<li><a class="reference internal" href="#many-points-dry-run-execution">Ejecución en seco de muchos puntos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#find-at-most-two-routes-to-a-given-point">Encontrar como máximo dos rutas a un punto dado</a></li>
+<li><a class="reference internal" href="#a-point-of-interest-table">Una tabla de puntos de interés</a><ul>
+<li><a class="reference internal" href="#points-of-interest">Puntos de interés</a></li>
+<li><a class="reference internal" href="#points-of-interest-fillup">LLenado de puntos de interés</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#connecting-disconnected-components">Conectando componentes desconectados</a><ul>
+<li><a class="reference internal" href="#prepare-storage-for-connection-information">Preparar el almacenamiento de la información de conexión</a></li>
+<li><a class="reference internal" href="#save-the-vertices-connection-information">Guardar la información de conexión de los vértices</a></li>
+<li><a class="reference internal" href="#save-the-edges-connection-information">Guardar la información de conexión de las aristas</a></li>
+<li><a class="reference internal" href="#get-the-closest-vertex">Obtener el vértice más cercano</a></li>
+<li><a class="reference internal" href="#connecting-components">Conectando componentes</a></li>
+<li><a class="reference internal" href="#checking-components">Revisando componentes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="withPoints-category.html" title="Previous Chapter: withPoints- Categoría"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; withPoints- Categoría</span>
+    </a>
+  </li>
+  <li>
+    <a href="experimental.html" title="Next Chapter: Funciones Experimentales"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Funciones Exp... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code></a><ul>
+<li><a class="reference internal" href="#description">Descripción</a></li>
+<li><a class="reference internal" href="#signatures">Firmas</a><ul>
+<li><a class="reference internal" href="#one-point">Un punto</a></li>
+<li><a class="reference internal" href="#many-points">Muchos puntos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#parameters">Parámetros</a><ul>
+<li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">Columnas de resultados</a></li>
+<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
+<li><a class="reference internal" href="#one-point-examples">Ejemplos de un punto</a><ul>
+<li><a class="reference internal" href="#at-most-two-answers">Como máximo dos respuestas</a></li>
+<li><a class="reference internal" href="#one-answer-all-columns">Una respuesta, todas las columnas</a></li>
+<li><a class="reference internal" href="#at-most-two-answers-with-all-columns">Como máximo dos respuestas con todas las columnas</a></li>
+<li><a class="reference internal" href="#one-point-dry-run-execution">Ejecución en seco de un punto</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#many-points-examples">Ejemplos de muchos puntos</a><ul>
+<li><a class="reference internal" href="#at-most-two-answers-per-point">Un máximo de dos respuestas por punto</a></li>
+<li><a class="reference internal" href="#one-answer-per-point-all-columns">Una respuesta por punto, todas las columnas</a></li>
+<li><a class="reference internal" href="#many-points-dry-run-execution">Ejecución en seco de muchos puntos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#find-at-most-two-routes-to-a-given-point">Encontrar como máximo dos rutas a un punto dado</a></li>
+<li><a class="reference internal" href="#a-point-of-interest-table">Una tabla de puntos de interés</a><ul>
+<li><a class="reference internal" href="#points-of-interest">Puntos de interés</a></li>
+<li><a class="reference internal" href="#points-of-interest-fillup">LLenado de puntos de interés</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#connecting-disconnected-components">Conectando componentes desconectados</a><ul>
+<li><a class="reference internal" href="#prepare-storage-for-connection-information">Preparar el almacenamiento de la información de conexión</a></li>
+<li><a class="reference internal" href="#save-the-vertices-connection-information">Guardar la información de conexión de los vértices</a></li>
+<li><a class="reference internal" href="#save-the-edges-connection-information">Guardar la información de conexión de las aristas</a></li>
+<li><a class="reference internal" href="#get-the-closest-vertex">Obtener el vértice más cercano</a></li>
+<li><a class="reference internal" href="#connecting-components">Conectando componentes</a></li>
+<li><a class="reference internal" href="#checking-components">Revisando componentes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="withPoints-category.html" title="Previous Chapter: withPoints- Categoría"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; withPoints- Categoría</span>
+    </a>
+  </li>
+  <li>
+    <a href="experimental.html" title="Next Chapter: Funciones Experimentales"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">Funciones Exp... &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
+            <script> document.write(get_history('pgr_findCloseEdges','es'));  </script>
+            
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="pgr-findcloseedges">
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code><a class="headerlink" href="#pgr-findcloseedges" title="Link to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code> - Encuentra las aristas cercanas a una geometría puntual.</p>
+<figure class="align-default" id="id1">
+<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
+</a>
+<figcaption>
+<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p class="rubric">Disponibilidad</p>
+<ul class="simple">
+<li><p>Versión 3.4.0</p>
+<ul>
+<li><p>Nuevas firmas <strong>propuestas</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code> (<a class="reference internal" href="#one-point">Un punto</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code> (<a class="reference internal" href="#many-points">Muchos puntos</a>)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<section id="description">
+<h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code> - Función de utilidad que encuentra la arista más cercana a una geometría de puntos.</p>
+<ul class="simple">
+<li><p>Las geometrías deben estar en el mismo sistema de coordenadas (tener el mismo SRID).</p></li>
+<li><p>El código para realizar los cálculos puede obtenerse para realizar los ajustes específicos que necesite la aplicación.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EMTPY</span> <span class="pre">SET</span></code> se devuelve en ejecuciones en seco</p></li>
+</ul>
+</section>
+<section id="signatures">
+<h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<p class="rubric">Resumen</p>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_findCloseEdges(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>punto</strong>, <strong>tolerancia</strong>, [<strong>options</strong>])</div>
+<div class="line">pgr_findCloseEdges(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>puntos</strong>, <strong>tolerancia</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>opcionales:</strong> <code class="docutils literal notranslate"><span class="pre">[cap,</span> <span class="pre">partial,</span> <span class="pre">dryrun]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">fraction,</span> <span class="pre">side,</span> <span class="pre">distance,</span> <span class="pre">geom,</span> <span class="pre">edge)</span></code></div>
+<div class="line">O CONJUNTO VACÍO</div>
+</div>
+</div>
+<section id="one-point">
+<span id="index-0"></span><h3>Un punto<a class="headerlink" href="#one-point" title="Link to this heading">¶</a></h3>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_findCloseEdges(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>punto</strong>, <strong>tolerancia</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>opcionales:</strong> <code class="docutils literal notranslate"><span class="pre">[cap,</span> <span class="pre">partial,</span> <span class="pre">dryrun]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">fraction,</span> <span class="pre">side,</span> <span class="pre">distance,</span> <span class="pre">geom,</span> <span class="pre">edge)</span></code></div>
+<div class="line">O CONJUNTO VACÍO</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Con valores predeterminados</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>Por defecto: <code class="docutils literal notranslate"><span class="pre">cap</span> <span class="pre">=&gt;</span> <span class="pre">1</span></code></p>
+<ul>
+<li><p>Respuesta de una fila como máximo.</p></li>
+</ul>
+</li>
+<li><p>Por defecto: <code class="docutils literal notranslate"><span class="pre">partial</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
+<ul>
+<li><p>Con menos cálculos posibles.</p></li>
+</ul>
+</li>
+<li><p>Por defecto: <code class="docutils literal notranslate"><span class="pre">dryrun</span> <span class="pre">=&gt;</span> <span class="pre">false</span></code></p>
+<ul>
+<li><p>Consulta del proceso</p></li>
+</ul>
+</li>
+<li><p>Devuelve</p>
+<ul>
+<li><p>valores en las columnas <code class="docutils literal notranslate"><span class="pre">edge_id</span></code>, <code class="docutils literal notranslate"><span class="pre">fraction</span></code>, <code class="docutils literal notranslate"><span class="pre">side</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> en las columnas <code class="docutils literal notranslate"><span class="pre">distance</span></code>, <code class="docutils literal notranslate"><span class="pre">geom</span></code>, <code class="docutils literal notranslate"><span class="pre">edge</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT  *
+FROM pgr_findCloseEdges(
+  $$SELECT id, geom FROM edges$$,
+  (SELECT geom FROM pointsOfInterest WHERE pid = 5),
+  0.5);
+ edge_id | fraction | side | distance | geom | edge
+---------+----------+------+----------+------+------
+       5 |      0.8 | l    |          |      |
+(1 row)
+
+</pre></div>
+</div>
+</section>
+<section id="many-points">
+<span id="index-1"></span><h3>Muchos puntos<a class="headerlink" href="#many-points" title="Link to this heading">¶</a></h3>
+<div class="signatures admonition">
+<p class="admonition-title"></p>
+<div class="line-block">
+<div class="line">pgr_findCloseEdges(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>puntos</strong>, <strong>tolerancia</strong>, [<strong>options</strong>])</div>
+<div class="line"><strong>opcionales:</strong> <code class="docutils literal notranslate"><span class="pre">[cap,</span> <span class="pre">partial,</span> <span class="pre">dryrun]</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">fraction,</span> <span class="pre">side,</span> <span class="pre">distance,</span> <span class="pre">geom,</span> <span class="pre">edge)</span></code></div>
+<div class="line">O CONJUNTO VACÍO</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Encuentra como máximo <span class="math notranslate nohighlight">\(2\)</span> aristas cercanas a todos los vértices de la tabla de puntos de interés.</p>
+</dd>
+</dl>
+<p>Una respuesta por punto, lo más pequeña posible.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge_id, round(fraction::numeric, 2) AS fraction, side, ST_AsText(geom) AS original_point
+FROM pgr_findCloseEdges(
+  $$SELECT id, geom FROM edges$$,
+  (SELECT array_agg(geom) FROM pointsOfInterest),
+  0.5);
+ edge_id | fraction | side | original_point
+---------+----------+------+----------------
+       1 |     0.40 | l    | POINT(1.8 0.4)
+       6 |     0.30 | r    | POINT(0.3 1.8)
+      12 |     0.60 | l    | POINT(2.6 3.2)
+      15 |     0.40 | r    | POINT(4.2 2.4)
+       5 |     0.80 | l    | POINT(2.9 1.8)
+       4 |     0.70 | r    | POINT(2.2 1.7)
+(6 rows)
+
+</pre></div>
+</div>
+<p>Las columnas <code class="docutils literal notranslate"><span class="pre">edge_id</span></code>, <code class="docutils literal notranslate"><span class="pre">fraction</span></code>, <code class="docutils literal notranslate"><span class="pre">side</span></code> y <code class="docutils literal notranslate"><span class="pre">geom</span></code> se devuelven con valores.</p>
+<p><code class="docutils literal notranslate"><span class="pre">geom</span></code> contiene la geometría de puntos original para ayudar a determinar a qué geometría de puntos pertenece la fila.</p>
+</section>
+</section>
+<section id="parameters">
+<span id="index-2"></span><h2>Parámetros<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL de aristas</a> descritas más adelante.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>punto</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">POINT</span></code></p></td>
+<td><p>La geometría del punto</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>puntos</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">POINT</span></code></p></td>
+<td><p>Una matriz de geometrías de puntos</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>tolerancia</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Distancia máxima entre geometrías</p></td>
+</tr>
+</tbody>
+</table>
+<section id="optional-parameters">
+<h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cap</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p>Limitar las filas de salida</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">parcial</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><ul class="simple">
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> sólo se calculan las columnas necesarias para <a class="reference internal" href="withPoints-category.html"><span class="doc">withPoints- Categoría</span></a>.</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> se calculan todas las columnas</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dryrun</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><ul class="simple">
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> se realizan los cálculos.</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> los cálculos no se realizan y la consulta para hacer los cálculos se expone en un <code class="docutils literal notranslate"><span class="pre">NOTICE</span></code> de PostgreSQL.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="inner-queries">
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Link to this heading">¶</a></h2>
+<section id="edges-sql">
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td><p>Identificador de la arista.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">geom</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code></p></td>
+<td><p>La geometría <code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code> de la arista.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="result-columns">
+<h2>Columnas de resultados<a class="headerlink" href="#result-columns" title="Link to this heading">¶</a></h2>
+<p>Regresa conjunto de <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">fraction,</span> <span class="pre">side,</span> <span class="pre">distance,</span> <span class="pre">geom,</span> <span class="pre">edge)</span></code></p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador de la arista.</p>
+<ul class="simple">
+<li><p>Cuando <span class="math notranslate nohighlight">\(cap = 1\)</span>, es la arista más cercana.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>El valor entre &lt;0,1&gt; indica la posición relativa desde el primer punto de la arista.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">side</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
+<td><p>Valor en <code class="docutils literal notranslate"><span class="pre">[r,</span> <span class="pre">l]</span></code> que indica si el punto es:</p>
+<ul class="simple">
+<li><p>A la derecha <code class="docutils literal notranslate"><span class="pre">r</span></code>.</p></li>
+<li><p>A la izquierda <code class="docutils literal notranslate"><span class="pre">l</span></code>.</p>
+<ul>
+<li><p>Cuando el punto está en la línea se considera que está a la derecha.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">distancia</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Distancia del punto a la arista.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> cuando <code class="docutils literal notranslate"><span class="pre">cap</span> <span class="pre">=</span> <span class="pre">1</span></code> en la firma de <a class="reference internal" href="#one-point">Un punto</a></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">geom</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code></p></td>
+<td><p>geometría <code class="docutils literal notranslate"><span class="pre">POINT</span></code></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#one-point">Un Punto</a>: Contiene el punto de la arista que está a <code class="docutils literal notranslate"><span class="pre">fraction</span></code> del punto inicial de la arista.</p></li>
+<li><p><a class="reference internal" href="#many-points">Muchos Puntos</a>: Contiene el <strong>punto original</strong> correspondiente</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code></p></td>
+<td><p>Geometría <code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code> desde el <strong>punto original</strong> hasta el punto más cercano de la arista con identificador <code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Resultados de un punto</p>
+<ul class="simple">
+<li><p>Los nodos verdes son el <strong>punto original</strong></p></li>
+<li><p>La geometría <code class="docutils literal notranslate"><span class="pre">geom</span></code> es un punto en la arista <span class="math notranslate nohighlight">\(sp \rightarrow ep\)</span>.</p></li>
+<li><p>La geometría <code class="docutils literal notranslate"><span class="pre">edge</span></code> es una línea que conecta el <strong>punto original</strong> con <code class="docutils literal notranslate"><span class="pre">geom</span></code></p></li>
+</ul>
+<div class="graphviz"><img src="_images/graphviz-f095009bc5e25b0759561a55f4bc2634d170824b.png" alt="digraph G {
+  splines=false;
+  subgraph cluster0 {
+    point [shape=circle;style=filled;color=green];
+    geom [shape=point;color=black;size=0];
+    sp, ep;
+
+    edge[weight=0];
+    point -&gt; geom [dir=none; penwidth=0, color=red];
+    edge[weight=2];
+    sp -&gt; geom -&gt; ep [dir=none;penwidth=3 ];
+
+    {rank=same; point, geom}
+  }
+
+  subgraph cluster1 {
+    point1 [shape=circle;style=filled;color=green;label=point];
+    geom1 [shape=point;color=deepskyblue; xlabel=&quot;geom&quot;; width=0.3];
+    sp1 [label=sp]; ep1 [label=ep];
+
+    edge[weight=0];
+    point1 -&gt; geom1 [weight=0, penwidth=3, color=red,
+                   label=&quot;edge&quot;];
+    edge[weight=2];
+    sp1 -&gt; geom1 -&gt; ep1 [dir=none;weight=1, penwidth=3 ];
+
+
+    geom1 -&gt; point1 [dir=none;weight=0, penwidth=0, color=red];
+    {rank=same; point1, geom1}
+  }
+}" class="graphviz" /></div>
+<p class="rubric">Resultados de muchos puntos</p>
+<ul class="simple">
+<li><p>Los nodos verdes son los <strong>puntos originales</strong></p></li>
+<li><p>La geometría <code class="docutils literal notranslate"><span class="pre">geom</span></code>, marcada como <strong>g1</strong> y <strong>g2</strong> son los <strong>puntos originales</strong></p></li>
+<li><p>La geometría <code class="docutils literal notranslate"><span class="pre">edge</span></code>, marcada como <strong>edge1</strong> y <strong>edge2</strong> es una línea que conecta el <strong>punto original</strong> con el punto más cercano de la arista <span class="math notranslate nohighlight">\(sp \rightarrow ep\)</span>.</p></li>
+</ul>
+<div class="graphviz"><img src="_images/graphviz-c1aa13dbbbf1cb5c2eff7da689f0cf61b8653ab4.png" alt="digraph G {
+  splines = false;
+  subgraph cluster0 {
+     p1 [shape=circle;style=filled;color=green];
+     g1 [shape=point;color=black;size=0];
+     g2 [shape=point;color=black;size=0];
+     sp, ep;
+     p2 [shape=circle;style=filled;color=green];
+
+     sp -&gt; g1 [dir=none;weight=1, penwidth=3 ];
+     g1 -&gt; g2 [dir=none;weight=1, penwidth=3 ];
+     g2 -&gt; ep [weight=1, penwidth=3 ];
+
+     g2 -&gt; p2 [dir=none;weight=0, penwidth=0, color=red, partiallen=3];
+     p1 -&gt; g1 [dir=none;weight=0, penwidth=0, color=red, partiallen=3];
+     p1 -&gt; {g1, g2} [dir=none;weight=0, penwidth=0, color=red;]
+
+     {rank=same; p1; g1}
+     {rank=same; p2; g2}
+  }
+  subgraph cluster1 {
+     p3 [shape=circle;style=filled;color=deepskyblue;label=g1];
+     g3 [shape=point;color=black;size=0];
+     g4 [shape=point;color=black;size=0];
+     sp1 [label=sp]; ep1 [label=ep];
+     p4 [shape=circle;style=filled;color=deepskyblue;label=g2];
+
+     sp1 -&gt; g3 [dir=none;weight=1, penwidth=3 ];
+     g3 -&gt; g4 [dir=none;weight=1, penwidth=3,len=10];
+     g4 -&gt; ep1 [weight=1, penwidth=3, len=10];
+
+     g4 -&gt; p4 [dir=back;weight=0, penwidth=3, color=red, partiallen=3,
+                    label=&quot;edge2&quot;];
+     p3 -&gt; g3 [weight=0, penwidth=3, color=red, partiallen=3,
+                    label=&quot;edge1&quot;];
+     p3 -&gt; {g3, g4} [dir=none;weight=0, penwidth=0, color=red];
+
+     {rank=same; p3; g3}
+     {rank=same; p4; g4}
+  }
+}" class="graphviz" /></div>
+</section>
+<section id="additional-examples">
+<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
+<nav class="contents local" id="contenido">
+<ul class="simple">
+<li><p><a class="reference internal" href="#one-point-examples" id="id2">Ejemplos de un punto</a></p>
+<ul>
+<li><p><a class="reference internal" href="#at-most-two-answers" id="id3">Como máximo dos respuestas</a></p></li>
+<li><p><a class="reference internal" href="#one-answer-all-columns" id="id4">Una respuesta, todas las columnas</a></p></li>
+<li><p><a class="reference internal" href="#at-most-two-answers-with-all-columns" id="id5">Como máximo dos respuestas con todas las columnas</a></p></li>
+<li><p><a class="reference internal" href="#one-point-dry-run-execution" id="id6">Ejecución en seco de un punto</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#many-points-examples" id="id7">Ejemplos de muchos puntos</a></p>
+<ul>
+<li><p><a class="reference internal" href="#at-most-two-answers-per-point" id="id8">Un máximo de dos respuestas por punto</a></p></li>
+<li><p><a class="reference internal" href="#one-answer-per-point-all-columns" id="id9">Una respuesta por punto, todas las columnas</a></p></li>
+<li><p><a class="reference internal" href="#many-points-dry-run-execution" id="id10">Ejecución en seco de muchos puntos</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#find-at-most-two-routes-to-a-given-point" id="id11">Encontrar como máximo dos rutas a un punto dado</a></p></li>
+<li><p><a class="reference internal" href="#a-point-of-interest-table" id="id12">Una tabla de puntos de interés</a></p>
+<ul>
+<li><p><a class="reference internal" href="#points-of-interest" id="id13">Puntos de interés</a></p></li>
+<li><p><a class="reference internal" href="#points-of-interest-fillup" id="id14">LLenado de puntos de interés</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#connecting-disconnected-components" id="id15">Conectando componentes desconectados</a></p>
+<ul>
+<li><p><a class="reference internal" href="#prepare-storage-for-connection-information" id="id16">Preparar el almacenamiento de la información de conexión</a></p></li>
+<li><p><a class="reference internal" href="#save-the-vertices-connection-information" id="id17">Guardar la información de conexión de los vértices</a></p></li>
+<li><p><a class="reference internal" href="#save-the-edges-connection-information" id="id18">Guardar la información de conexión de las aristas</a></p></li>
+<li><p><a class="reference internal" href="#get-the-closest-vertex" id="id19">Obtener el vértice más cercano</a></p></li>
+<li><p><a class="reference internal" href="#connecting-components" id="id20">Conectando componentes</a></p></li>
+<li><p><a class="reference internal" href="#checking-components" id="id21">Revisando componentes</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="one-point-examples">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Ejemplos de un punto</a><a class="headerlink" href="#one-point-examples" title="Link to this heading">¶</a></h3>
+<section id="at-most-two-answers">
+<h4><a class="toc-backref" href="#id3" role="doc-backlink">Como máximo dos respuestas</a><a class="headerlink" href="#at-most-two-answers" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cap</span> <span class="pre">=&gt;</span> <span class="pre">2</span></code></p>
+<ul>
+<li><p>Respuesta de dos filas como máximo.</p></li>
+</ul>
+</li>
+<li><p>Por defecto: <code class="docutils literal notranslate"><span class="pre">partial</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
+<ul>
+<li><p>Con menos cálculos posibles.</p></li>
+</ul>
+</li>
+<li><p>Por defecto: <code class="docutils literal notranslate"><span class="pre">dryrun</span> <span class="pre">=&gt;</span> <span class="pre">false</span></code></p>
+<ul>
+<li><p>Consulta del proceso</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT *
+FROM pgr_findCloseEdges(
+  $$SELECT id, geom FROM edges$$,
+  (SELECT geom FROM pointsOfInterest WHERE pid = 5),
+  0.5, cap =&gt; 2);
+ edge_id |      fraction      | side |      distance       | geom | edge
+---------+--------------------+------+---------------------+------+------
+       5 |                0.8 | l    | 0.10000000000000009 |      |
+       8 | 0.8999999999999999 | r    | 0.19999999999999996 |      |
+(2 rows)
+
+</pre></div>
+</div>
+<p class="rubric">Comprendiendo el resultado</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> en <code class="docutils literal notranslate"><span class="pre">geom</span></code>, <code class="docutils literal notranslate"><span class="pre">edge</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">edge_id</span></code> identificador de la arista cercana al <strong>punto original</strong></p>
+<ul>
+<li><p>Dos aristas están a menos de <span class="math notranslate nohighlight">\(0.5\)</span> unidades de distancia del <strong>punto original</strong>: <span class="math notranslate nohighlight">\({5, 8}\)</span></p></li>
+</ul>
+</li>
+<li><p>Para la arista <span class="math notranslate nohighlight">\(5\)</span>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code>: El punto más cercano desde el <strong>punto original</strong> está en la fracción <span class="math notranslate nohighlight">\(0.8\)</span> del borde <span class="math notranslate nohighlight">\(5\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">side</span></code>: El <strong>punto original</strong> está situado a la izquierda de la arista <span class="math notranslate nohighlight">\(5\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">distance</span></code>: El <strong>punto original</strong> está situado a <span class="math notranslate nohighlight">\(0.1\)</span> unidades de longitud de la arista <span class="math notranslate nohighlight">\(5\)</span>.</p></li>
+</ul>
+</li>
+<li><p>Para la arista <span class="math notranslate nohighlight">\(8\)</span>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code>: El punto más cercano desde el <strong>punto original</strong> está en la fracción <span class="math notranslate nohighlight">\(0.89..\)</span> del borde <span class="math notranslate nohighlight">\(8\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">side</span></code>: El <strong>punto original</strong> está situado a la derecha de la arista <span class="math notranslate nohighlight">\(8\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">distance</span></code>: El <strong>punto original</strong> se encuentra a <span class="math notranslate nohighlight">\(0.19..\)</span> unidades de longitud de la arista <span class="math notranslate nohighlight">\(8\)</span>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="one-answer-all-columns">
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">Una respuesta, todas las columnas</a><a class="headerlink" href="#one-answer-all-columns" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>Por defecto: <code class="docutils literal notranslate"><span class="pre">cap</span> <span class="pre">=&gt;</span> <span class="pre">1</span></code></p>
+<ul>
+<li><p>Respuesta de una fila como máximo.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">partial</span> <span class="pre">=&gt;</span> <span class="pre">false</span></code></p>
+<ul>
+<li><p>Calcular todas las columnas</p></li>
+</ul>
+</li>
+<li><p>Por defecto: <code class="docutils literal notranslate"><span class="pre">dryrun</span> <span class="pre">=&gt;</span> <span class="pre">false</span></code></p>
+<ul>
+<li><p>Consulta del proceso</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge_id, round(fraction::numeric, 2) AS fraction, side, round(distance::numeric, 3) AS distance,
+  ST_AsText(geom) AS new_point,
+  ST_AsText(edge) AS original_to_new_point
+FROM pgr_findCloseEdges(
+  $$SELECT id, geom FROM edges$$,
+  (SELECT geom FROM pointsOfInterest WHERE pid = 5),
+  0.5, partial =&gt; false);
+ edge_id | fraction | side | distance |  new_point   |   original_to_new_point
+---------+----------+------+----------+--------------+---------------------------
+       5 |     0.80 | l    |    0.100 | POINT(3 1.8) | LINESTRING(2.9 1.8,3 1.8)
+(1 row)
+
+</pre></div>
+</div>
+<p class="rubric">Comprendiendo el resultado</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">edge_id</span></code> identificador de la arista <strong>más cercana</strong> al <strong>punto original</strong></p>
+<ul>
+<li><p>De todos los bordes dentro de <span class="math notranslate nohighlight">\(0.5\)</span> unidades de distancia desde el <strong>punto original</strong>: <span class="math notranslate nohighlight">\({5}\)</span> es el más cercano.</p></li>
+</ul>
+</li>
+<li><p>Para la arista <span class="math notranslate nohighlight">\(5\)</span>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code>: El punto más cercano desde el <strong>punto original</strong> está en la fracción <span class="math notranslate nohighlight">\(0.8\)</span> del borde <span class="math notranslate nohighlight">\(5\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">side</span></code>: El <strong>punto original</strong> está situado a la izquierda de la arista <span class="math notranslate nohighlight">\(5\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">distance</span></code>: El <strong>punto original</strong> está situado a <span class="math notranslate nohighlight">\(0.1\)</span> unidades de longitud de la arista <span class="math notranslate nohighlight">\(5\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom</span></code>: Contiene la geometría del punto más cercano de la arista <span class="math notranslate nohighlight">\(5\)</span> desde el <strong>punto original</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">edge</span></code>: Contiene la geometría <code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code> del <strong>punto original</strong> al punto más cercano de la arista <span class="math notranslate nohighlight">\(5\)</span> <code class="docutils literal notranslate"><span class="pre">geom</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="at-most-two-answers-with-all-columns">
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">Como máximo dos respuestas con todas las columnas</a><a class="headerlink" href="#at-most-two-answers-with-all-columns" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cap</span> <span class="pre">=&gt;</span> <span class="pre">2</span></code></p>
+<ul>
+<li><p>Respuesta de dos filas como máximo.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">partial</span> <span class="pre">=&gt;</span> <span class="pre">false</span></code></p>
+<ul>
+<li><p>Calcular todas las columnas</p></li>
+</ul>
+</li>
+<li><p>Por defecto: <code class="docutils literal notranslate"><span class="pre">dryrun</span> <span class="pre">=&gt;</span> <span class="pre">false</span></code></p>
+<ul>
+<li><p>Consulta del proceso</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge_id, round(fraction::numeric, 2) AS fraction, side, round(distance::numeric, 3) AS distance,
+  ST_AsText(geom) AS new_point,
+  ST_AsText(edge) AS original_to_new_point
+FROM pgr_findCloseEdges(
+  $$SELECT id, geom FROM edges$$,
+  (SELECT geom FROM pointsOfInterest WHERE pid = 5),
+  0.5, cap =&gt; 2, partial =&gt; false);
+ edge_id | fraction | side | distance |  new_point   |   original_to_new_point
+---------+----------+------+----------+--------------+---------------------------
+       5 |     0.80 | l    |    0.100 | POINT(3 1.8) | LINESTRING(2.9 1.8,3 1.8)
+       8 |     0.90 | r    |    0.200 | POINT(2.9 2) | LINESTRING(2.9 1.8,2.9 2)
+(2 rows)
+
+</pre></div>
+</div>
+<p class="rubric">Comprender el resultado:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">edge_id</span></code> identificador de la arista cercana al <strong>punto original</strong></p>
+<ul>
+<li><p>Dos aristas están a menos de <span class="math notranslate nohighlight">\(0.5\)</span> unidades de distancia del <strong>punto original</strong>: <span class="math notranslate nohighlight">\({5, 8}\)</span></p></li>
+</ul>
+</li>
+<li><p>Para la arista <span class="math notranslate nohighlight">\(5\)</span>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code>: El punto más cercano desde el <strong>punto original</strong> está en la fracción <span class="math notranslate nohighlight">\(0.8\)</span> del borde <span class="math notranslate nohighlight">\(5\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">side</span></code>: El <strong>punto original</strong> está situado a la izquierda de la arista <span class="math notranslate nohighlight">\(5\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">distance</span></code>: El <strong>punto original</strong> está situado a <span class="math notranslate nohighlight">\(0.1\)</span> unidades de longitud de la arista <span class="math notranslate nohighlight">\(5\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom</span></code>: Contiene la geometría del punto más cercano de la arista <span class="math notranslate nohighlight">\(5\)</span> desde el <strong>punto original</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">edge</span></code>: Contiene la geometría <code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code> del <strong>punto original</strong> al punto más cercano de la arista <span class="math notranslate nohighlight">\(5\)</span> <code class="docutils literal notranslate"><span class="pre">geom</span></code></p></li>
+</ul>
+</li>
+<li><p>Para la arista <span class="math notranslate nohighlight">\(8\)</span>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code>: El punto más cercano desde el <strong>punto original</strong> está en la fracción <span class="math notranslate nohighlight">\(0.89..\)</span> del borde <span class="math notranslate nohighlight">\(8\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">side</span></code>: El <strong>punto original</strong> está situado a la derecha de la arista <span class="math notranslate nohighlight">\(8\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">distance</span></code>: El <strong>punto original</strong> se encuentra a <span class="math notranslate nohighlight">\(0.19..\)</span> unidades de longitud de la arista <span class="math notranslate nohighlight">\(8\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom</span></code>: Contiene la geometría del punto más cercano de la arista <span class="math notranslate nohighlight">\(8\)</span> desde el <strong>punto original</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">borde</span></code>: Contiene la geometría <code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code> del <strong>punto original</strong> al punto más cercano de la arista <span class="math notranslate nohighlight">\(8\)</span> <code class="docutils literal notranslate"><span class="pre">geom</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="one-point-dry-run-execution">
+<h4><a class="toc-backref" href="#id6" role="doc-backlink">Ejecución en seco de un punto</a><a class="headerlink" href="#one-point-dry-run-execution" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>Devuelve <code class="docutils literal notranslate"><span class="pre">CONJUNTO</span> <span class="pre">VACÍO</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">partial</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
+<ul>
+<li><p>Se ignora</p></li>
+<li><p>Dado que se trata de una ejecución <strong>dry run</strong>, el código de todos los cálculos se muestra en el <code class="docutils literal notranslate"><span class="pre">NOTICE</span></code> de PostgreSQL.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dryrun</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
+<ul>
+<li><p>No procesar la consulta</p></li>
+<li><p>Generar un <code class="docutils literal notranslate"><span class="pre">NOTICE</span></code> de PostgreSQL con el código utilizado para calcular todas las columnas</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">cap</span></code> y <strong>punto original</strong> se utilizan en el código</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT *
+FROM pgr_findCloseEdges(
+  $$SELECT id, geom FROM edges$$,
+  (SELECT geom FROM pointsOfInterest WHERE pid = 5),
+  0.5,
+  dryrun =&gt; true);
+NOTICE:
+    WITH
+    edges_sql AS (SELECT id, geom FROM edges),
+    point_sql AS (SELECT &#39;01010000003333333333330740CDCCCCCCCCCCFC3F&#39;::geometry AS point)
+
+    SELECT
+      id::BIGINT AS edge_id,
+      ST_LineLocatePoint(geom, point) AS fraction,
+      CASE WHEN ST_Intersects(ST_Buffer(geom, 0.5, &#39;side=right endcap=flat&#39;), point)
+           THEN &#39;r&#39;
+           ELSE &#39;l&#39; END::CHAR AS side,
+
+        geom &lt;-&gt; point AS distance,
+        ST_ClosestPoint(geom, point) AS new_point,
+        ST_MakeLine(point, ST_ClosestPoint(geom, point)) AS new_line
+
+    FROM  edges_sql, point_sql
+    WHERE ST_DWithin(geom,  point, 0.5)
+    ORDER BY geom &lt;-&gt; point LIMIT 1
+
+ edge_id | fraction | side | distance | geom | edge
+---------+----------+------+----------+------+------
+(0 rows)
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="many-points-examples">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Ejemplos de muchos puntos</a><a class="headerlink" href="#many-points-examples" title="Link to this heading">¶</a></h3>
+<section id="at-most-two-answers-per-point">
+<h4><a class="toc-backref" href="#id8" role="doc-backlink">Un máximo de dos respuestas por punto</a><a class="headerlink" href="#at-most-two-answers-per-point" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cap</span> <span class="pre">=&gt;</span> <span class="pre">2</span></code></p>
+<ul>
+<li><p>Respuesta de dos filas como máximo.</p></li>
+</ul>
+</li>
+<li><p>Por defecto: <code class="docutils literal notranslate"><span class="pre">partial</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
+<ul>
+<li><p>Con menos cálculos posibles.</p></li>
+</ul>
+</li>
+<li><p>Por defecto: <code class="docutils literal notranslate"><span class="pre">dryrun</span> <span class="pre">=&gt;</span> <span class="pre">false</span></code></p>
+<ul>
+<li><p>Consulta del proceso</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge_id, round(fraction::numeric, 2) AS fraction, side, round(distance::numeric, 3) AS distance,
+  ST_AsText(geom) AS geom_is_original, edge
+FROM pgr_findCloseEdges(
+  $$SELECT id, geom FROM edges$$,
+  (SELECT array_agg(geom) FROM pointsOfInterest),
+  0.5, cap =&gt; 2);
+ edge_id | fraction | side | distance | geom_is_original | edge
+---------+----------+------+----------+------------------+------
+       1 |     0.40 | l    |    0.200 | POINT(1.8 0.4)   |
+       6 |     0.30 | r    |    0.200 | POINT(0.3 1.8)   |
+      12 |     0.60 | l    |    0.200 | POINT(2.6 3.2)   |
+      11 |     1.00 | l    |    0.447 | POINT(2.6 3.2)   |
+      15 |     0.40 | r    |    0.200 | POINT(4.2 2.4)   |
+       9 |     1.00 | l    |    0.447 | POINT(4.2 2.4)   |
+       5 |     0.80 | l    |    0.100 | POINT(2.9 1.8)   |
+       8 |     0.90 | r    |    0.200 | POINT(2.9 1.8)   |
+       4 |     0.70 | r    |    0.200 | POINT(2.2 1.7)   |
+       8 |     0.20 | r    |    0.300 | POINT(2.2 1.7)   |
+(10 rows)
+
+</pre></div>
+</div>
+<p class="rubric">Comprendiendo el resultado</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> en <code class="docutils literal notranslate"><span class="pre">edge</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">edge_id</span></code> identificador de la arista cercana a un <strong>punto original</strong> (<code class="docutils literal notranslate"><span class="pre">geom</span></code>)</p>
+<ul>
+<li><p>Dos aristas a un máximo de <span class="math notranslate nohighlight">\(0.5\)</span> unidades de distancia de cada uno de los <strong>puntos originales</strong>:</p>
+<ul>
+<li><p>Para <code class="docutils literal notranslate"><span class="pre">POINT(1.8</span> <span class="pre">0.4)</span></code> y <code class="docutils literal notranslate"><span class="pre">POINT(0.3</span> <span class="pre">1.8)</span></code> sólo se encontró una arista.</p></li>
+<li><p>Para el resto de los puntos se encontraron dos aristas.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Para el punto <code class="docutils literal notranslate"><span class="pre">POINT(2.9</span> <span class="pre">1.8)</span></code></p>
+<ul>
+<li><p>La arista <span class="math notranslate nohighlight">\(5\)</span> está antes que la arista <span class="math notranslate nohighlight">\(8\)</span> por lo tanto la arista <span class="math notranslate nohighlight">\(5\)</span> tiene la distancia más corta a <code class="docutils literal notranslate"><span class="pre">POINT(2.9</span> <span class="pre">1.8)</span></code>.</p></li>
+<li><p>Para la arista <span class="math notranslate nohighlight">\(5\)</span>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code>: El punto más cercano desde el <strong>punto original</strong> está en la fracción <span class="math notranslate nohighlight">\(0.8\)</span> del borde <span class="math notranslate nohighlight">\(5\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">side</span></code>: El <strong>punto original</strong> está situado a la izquierda de la arista <span class="math notranslate nohighlight">\(5\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">distance</span></code>: El <strong>punto original</strong> está situado a <span class="math notranslate nohighlight">\(0.1\)</span> unidades de longitud de la arista <span class="math notranslate nohighlight">\(5\)</span>.</p></li>
+</ul>
+</li>
+<li><p>Para la arista <span class="math notranslate nohighlight">\(8\)</span>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code>: El punto más cercano desde el <strong>punto original</strong> está en la fracción <span class="math notranslate nohighlight">\(0.89..\)</span> del borde <span class="math notranslate nohighlight">\(8\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">side</span></code>: El <strong>punto original</strong> está situado a la derecha de la arista <span class="math notranslate nohighlight">\(8\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">distance</span></code>: El <strong>punto original</strong> se encuentra a <span class="math notranslate nohighlight">\(0.19..\)</span> unidades de longitud de la arista <span class="math notranslate nohighlight">\(8\)</span>.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="one-answer-per-point-all-columns">
+<h4><a class="toc-backref" href="#id9" role="doc-backlink">Una respuesta por punto, todas las columnas</a><a class="headerlink" href="#one-answer-per-point-all-columns" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>Por defecto: <code class="docutils literal notranslate"><span class="pre">cap</span> <span class="pre">=&gt;</span> <span class="pre">1</span></code></p>
+<ul>
+<li><p>Respuesta de una fila como máximo.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">partial</span> <span class="pre">=&gt;</span> <span class="pre">false</span></code></p>
+<ul>
+<li><p>Calcular todas las columnas</p></li>
+</ul>
+</li>
+<li><p>Por defecto: <code class="docutils literal notranslate"><span class="pre">dryrun</span> <span class="pre">=&gt;</span> <span class="pre">false</span></code></p>
+<ul>
+<li><p>Consulta del proceso</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge_id, round(fraction::numeric, 2) AS fraction, side, round(distance::numeric, 3) AS distance,
+  ST_AsText(geom) AS geom_is_original,
+  ST_AsText(edge) AS original_to_new_point
+FROM pgr_findCloseEdges(
+  $$SELECT id, geom FROM edges$$,
+  (SELECT array_agg(geom) FROM pointsOfInterest),
+  0.5, partial =&gt; false);
+ edge_id | fraction | side | distance | geom_is_original |   original_to_new_point
+---------+----------+------+----------+------------------+---------------------------
+       1 |     0.40 | l    |    0.200 | POINT(1.8 0.4)   | LINESTRING(1.8 0.4,2 0.4)
+       6 |     0.30 | r    |    0.200 | POINT(0.3 1.8)   | LINESTRING(0.3 1.8,0.3 2)
+      12 |     0.60 | l    |    0.200 | POINT(2.6 3.2)   | LINESTRING(2.6 3.2,2.6 3)
+      15 |     0.40 | r    |    0.200 | POINT(4.2 2.4)   | LINESTRING(4.2 2.4,4 2.4)
+       5 |     0.80 | l    |    0.100 | POINT(2.9 1.8)   | LINESTRING(2.9 1.8,3 1.8)
+       4 |     0.70 | r    |    0.200 | POINT(2.2 1.7)   | LINESTRING(2.2 1.7,2 1.7)
+(6 rows)
+
+</pre></div>
+</div>
+<p class="rubric">Comprendiendo el resultado</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">edge_id</span></code> identificador de la arista <strong>más cercana</strong> al <strong>punto original</strong></p>
+<ul>
+<li><p>De todos los bordes dentro de <span class="math notranslate nohighlight">\(0.5\)</span> unidades de distancia desde el <strong>punto original</strong>: <span class="math notranslate nohighlight">\({5}\)</span> es el más cercano.</p></li>
+</ul>
+</li>
+<li><p>Para el <strong>punto original</strong> <code class="docutils literal notranslate"><span class="pre">POINT(2.9</span> <span class="pre">1.8)</span></code></p>
+<ul>
+<li><p>La arista <span class="math notranslate nohighlight">\(5\)</span> es la más cercana al <strong>punto original</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code>: El punto más cercano desde el <strong>punto original</strong> está en la fracción <span class="math notranslate nohighlight">\(0.8\)</span> del borde <span class="math notranslate nohighlight">\(5\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">side</span></code>: El <strong>punto original</strong> está situado a la izquierda de la arista <span class="math notranslate nohighlight">\(5\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">distance</span></code>: El <strong>punto original</strong> está situado a <span class="math notranslate nohighlight">\(0.1\)</span> unidades de longitud de la arista <span class="math notranslate nohighlight">\(5\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom</span></code>: Contiene la geometría del <strong>punto original</strong> <code class="docutils literal notranslate"><span class="pre">POINT(2.9</span> <span class="pre">1.8)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">edge</span></code>: Contiene la geometría <code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code> del <strong>punto original</strong> (<code class="docutils literal notranslate"><span class="pre">geom</span></code>) al punto más cercano en el borde.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="many-points-dry-run-execution">
+<h4><a class="toc-backref" href="#id10" role="doc-backlink">Ejecución en seco de muchos puntos</a><a class="headerlink" href="#many-points-dry-run-execution" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>Devuelve <code class="docutils literal notranslate"><span class="pre">CONJUNTO</span> <span class="pre">VACÍO</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">partial</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
+<ul>
+<li><p>Se ignora</p></li>
+<li><p>Dado que se trata de una ejecución <strong>dry run</strong>, el código de todos los cálculos se muestra en el <code class="docutils literal notranslate"><span class="pre">NOTICE</span></code> de PostgreSQL.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dryrun</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
+<ul>
+<li><p>No procesar la consulta</p></li>
+<li><p>Generar un <code class="docutils literal notranslate"><span class="pre">NOTICE</span></code> de PostgreSQL con el código utilizado para calcular todas las columnas</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">cap</span></code> y <strong>punto original</strong> se utilizan en el código</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT *
+FROM pgr_findCloseEdges(
+  $$SELECT id, geom FROM edges$$,
+  (SELECT array_agg(geom) FROM pointsOfInterest),
+  0.5,
+  dryrun =&gt; true);
+NOTICE:
+WITH
+edges_sql AS (SELECT id, geom FROM edges),
+point_sql AS (SELECT unnest(&#39;{0101000000CDCCCCCCCCCCFC3F9A9999999999D93F:0101000000CDCCCCCCCCCC10403333333333330340:0101000000CDCCCCCCCCCC04409A99999999990940:0101000000333333333333D33FCDCCCCCCCCCCFC3F:01010000003333333333330740CDCCCCCCCCCCFC3F:01010000009A99999999990140333333333333FB3F}&#39;::geometry[]) AS point),
+results AS (
+  SELECT
+    id::BIGINT AS edge_id,
+    ST_LineLocatePoint(geom, point) AS fraction,
+    CASE WHEN ST_Intersects(ST_Buffer(geom, 0.5, &#39;side=right endcap=flat&#39;), point)
+         THEN &#39;r&#39;
+         ELSE &#39;l&#39; END::CHAR AS side,
+    geom &lt;-&gt; point AS distance,
+    point,
+    ST_MakeLine(point, ST_ClosestPoint(geom, point)) AS new_line
+  FROM  edges_sql, point_sql
+  WHERE ST_DWithin(geom, point, 0.5)
+  ORDER BY geom &lt;-&gt; point),
+prepare_cap AS (
+  SELECT row_number() OVER (PARTITION BY point ORDER BY point, distance) AS rn, *
+  FROM results)
+SELECT edge_id, fraction, side, distance, point, new_line
+FROM prepare_cap
+WHERE rn &lt;= 1
+
+ edge_id | fraction | side | distance | geom | edge
+---------+----------+------+----------+------+------
+(0 rows)
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="find-at-most-two-routes-to-a-given-point">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Encontrar como máximo dos rutas a un punto dado</a><a class="headerlink" href="#find-at-most-two-routes-to-a-given-point" title="Link to this heading">¶</a></h3>
+<p>Usando <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
+  $e$ SELECT * FROM edges $e$,
+  $p$ SELECT edge_id, round(fraction::numeric, 2) AS fraction, side
+      FROM pgr_findCloseEdges(
+        $$SELECT id, geom FROM edges$$,
+        (SELECT geom FROM pointsOfInterest WHERE pid = 5),
+        0.5, cap =&gt; 2)
+  $p$,
+  1, ARRAY[-1, -2]);
+ seq | path_seq | end_pid | node | edge | cost | agg_cost
+-----+----------+---------+------+------+------+----------
+   1 |        1 |      -2 |    1 |    6 |    1 |        0
+   2 |        2 |      -2 |    3 |    7 |    1 |        1
+   3 |        3 |      -2 |    7 |    8 |  0.9 |        2
+   4 |        4 |      -2 |   -2 |   -1 |    0 |      2.9
+   5 |        1 |      -1 |    1 |    6 |    1 |        0
+   6 |        2 |      -1 |    3 |    7 |    1 |        1
+   7 |        3 |      -1 |    7 |    8 |    1 |        2
+   8 |        4 |      -1 |   11 |    9 |    1 |        3
+   9 |        5 |      -1 |   16 |   16 |    1 |        4
+  10 |        6 |      -1 |   15 |    3 |    1 |        5
+  11 |        7 |      -1 |   10 |    5 |  0.8 |        6
+  12 |        8 |      -1 |   -1 |   -1 |    0 |      6.8
+(12 rows)
+
+</pre></div>
+</div>
+</section>
+<section id="a-point-of-interest-table">
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">Una tabla de puntos de interés</a><a class="headerlink" href="#a-point-of-interest-table" title="Link to this heading">¶</a></h3>
+<p>Manejo de puntos fuera del gráfico.</p>
+<section id="points-of-interest">
+<h4><a class="toc-backref" href="#id13" role="doc-backlink">Puntos de interés</a><a class="headerlink" href="#points-of-interest" title="Link to this heading">¶</a></h4>
+<p>Algunas veces las aplicaciones trabajan «sobre la marcha» comenzando desde una localización que no es un vértice en el grafo. Esas localizaciones, en pgRrouting se llaman puntos de interés.</p>
+<p>La información necesaria en los puntos de interés es <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">edge_id</span></code>, <code class="docutils literal notranslate"><span class="pre">side</span></code>, <code class="docutils literal notranslate"><span class="pre">fraction</span></code>.</p>
+<p>En esta documentación habrá unos 6 puntos de interés fijos y se almacenarán en una tabla.</p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pid</span></code></p></td>
+<td><p>Un identificador único.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
+<td><p>Identificador de la arista más cercana que permite una llegada al punto.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">side</span></code></p></td>
+<td><p>Está a la izquierda, a la derecha o a ambos lados del segmento <code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code></p></td>
+<td><p>En qué parte del segmento se encuentra el punto.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">geom</span></code></p></td>
+<td><p>La geometría de los puntos.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">newPoint</span></code></p></td>
+<td><p>La geometría de los puntos desplazados sobre el segmento.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">pointsOfInterest</span><span class="p">(</span>
+    <span class="n">pid</span> <span class="n">BIGSERIAL</span> <span class="n">PRIMARY</span> <span class="n">KEY</span><span class="p">,</span>
+    <span class="n">edge_id</span> <span class="n">BIGINT</span><span class="p">,</span>
+    <span class="n">side</span> <span class="n">CHAR</span><span class="p">,</span>
+    <span class="n">fraction</span> <span class="n">FLOAT</span><span class="p">,</span>
+    <span class="n">geom</span> <span class="n">geometry</span><span class="p">);</span>
+<span class="n">CREATE</span> <span class="n">TABLE</span>
+</pre></div>
+</div>
+</section>
+<section id="points-of-interest-fillup">
+<h4><a class="toc-backref" href="#id14" role="doc-backlink">LLenado de puntos de interés</a><a class="headerlink" href="#points-of-interest-fillup" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">pointsOfInterest</span> <span class="p">(</span><span class="n">edge_id</span><span class="p">,</span> <span class="n">side</span><span class="p">,</span> <span class="n">fraction</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span> <span class="n">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span> <span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mf">1.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)),</span>
+<span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span> <span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mf">4.2</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">)),</span>
+<span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span> <span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mf">2.6</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">)),</span>
+<span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span> <span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">)),</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span> <span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mf">2.9</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">)),</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="n">ST_POINT</span><span class="p">(</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">));</span>
+<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">6</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="connecting-disconnected-components">
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Conectando componentes desconectados</a><a class="headerlink" href="#connecting-disconnected-components" title="Link to this heading">¶</a></h3>
+<p>Para obtener la conectividad del grafo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">component</span> <span class="o">|</span> <span class="n">node</span>
+<span class="o">-----+-----------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">3</span>
+   <span class="mi">3</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">5</span>
+   <span class="mi">4</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">6</span>
+   <span class="mi">5</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">7</span>
+   <span class="mi">6</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">8</span>
+   <span class="mi">7</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">9</span>
+   <span class="mi">8</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">10</span>
+   <span class="mi">9</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">11</span>
+  <span class="mi">10</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">12</span>
+  <span class="mi">11</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">13</span>
+  <span class="mi">12</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">14</span>
+  <span class="mi">13</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">15</span>
+  <span class="mi">14</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">16</span>
+  <span class="mi">15</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">17</span>
+  <span class="mi">16</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">18</span>
+  <span class="mi">17</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span>
+  <span class="mi">18</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span>
+<span class="p">(</span><span class="mi">18</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>En este ejemplo, el componente <span class="math notranslate nohighlight">\(2\)</span> está formado por vértices <span class="math notranslate nohighlight">\(\{2, 4\}\)</span> y ambos vértices también forman parte del conjunto de resultados sin salida.</p>
+<p>Este grafo debe estar conectado.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Con el grafo original de esta documentación, habría 3 componentes, ya que la arista de cruce en este grafo es un componente diferente.</p>
+</div>
+<section id="prepare-storage-for-connection-information">
+<h4><a class="toc-backref" href="#id16" role="doc-backlink">Preparar el almacenamiento de la información de conexión</a><a class="headerlink" href="#prepare-storage-for-connection-information" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">vertices</span> <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">component</span> <span class="n">BIGINT</span><span class="p">;</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">component</span> <span class="n">BIGINT</span><span class="p">;</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+</pre></div>
+</div>
+</section>
+<section id="save-the-vertices-connection-information">
+<h4><a class="toc-backref" href="#id17" role="doc-backlink">Guardar la información de conexión de los vértices</a><a class="headerlink" href="#save-the-vertices-connection-information" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span> <span class="n">SET</span> <span class="n">component</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">component</span>
+<span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
+<span class="p">))</span> <span class="n">AS</span> <span class="n">c</span>
+<span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">18</span>
+</pre></div>
+</div>
+</section>
+<section id="save-the-edges-connection-information">
+<h4><a class="toc-backref" href="#id18" role="doc-backlink">Guardar la información de conexión de las aristas</a><a class="headerlink" href="#save-the-edges-connection-information" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">SET</span> <span class="n">component</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">component</span>
+<span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">component</span> <span class="n">FROM</span> <span class="n">vertices</span><span class="p">)</span> <span class="n">AS</span> <span class="n">v</span>
+<span class="n">WHERE</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">20</span>
+</pre></div>
+</div>
+</section>
+<section id="get-the-closest-vertex">
+<h4><a class="toc-backref" href="#id19" role="doc-backlink">Obtener el vértice más cercano</a><a class="headerlink" href="#get-the-closest-vertex" title="Link to this heading">¶</a></h4>
+<p>Usando <a class="reference internal" href="#"><span class="doc">pgr_findCloseEdges</span></a> el vértice más cercano al componente <span class="math notranslate nohighlight">\(1\)</span> es el vértice <span class="math notranslate nohighlight">\(4\)</span>. Y la arista más cercana al vértice <span class="math notranslate nohighlight">\(4\)</span> es la arista <span class="math notranslate nohighlight">\(14\)</span>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge_id, fraction, ST_AsText(edge) AS edge, id AS closest_vertex
+FROM pgr_findCloseEdges(
+  $$SELECT id, geom FROM edges WHERE component = 1$$,
+  (SELECT array_agg(geom) FROM vertices WHERE component = 2),
+  2, partial =&gt; false) JOIN vertices USING (geom) ORDER BY distance LIMIT 1;
+ edge_id | fraction |                 edge                 | closest_vertex
+---------+----------+--------------------------------------+----------------
+      14 |      0.5 | LINESTRING(1.999999999999 3.5,2 3.5) |              4
+(1 row)
+
+</pre></div>
+</div>
+<p>La arista <code class="docutils literal notranslate"><span class="pre">edge</span></code> se puede utilizar para conectar los componentes, utilizando la información <code class="docutils literal notranslate"><span class="pre">fraction</span></code> sobre la arista <span class="math notranslate nohighlight">\(14\)</span> para dividir la arista de conexión.</p>
+</section>
+<section id="connecting-components">
+<h4><a class="toc-backref" href="#id20" role="doc-backlink">Conectando componentes</a><a class="headerlink" href="#connecting-components" title="Link to this heading">¶</a></h4>
+<p>Existen tres formas básicas de conectar los componentes</p>
+<ul class="simple">
+<li><p>Del vértice al punto inicial de la arista</p></li>
+<li><p>Desde el vértice hasta el punto final de la arista</p></li>
+<li><p>Del vértice al vértice más cercano de la arista</p>
+<ul>
+<li><p>Esta solución requiere dividir el borde.</p></li>
+</ul>
+</li>
+</ul>
+<p>La siguiente consulta muestra las tres formas de conectar los componentes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WITH
+info AS (
+  SELECT
+    edge_id, fraction, side, distance, ce.geom, edge, v.id AS closest,
+    source, target, capacity, reverse_capacity, e.geom AS e_geom
+  FROM pgr_findCloseEdges(
+    $$SELECT id, geom FROM edges WHERE component = 1$$,
+    (SELECT array_agg(geom) FROM vertices WHERE component = 2),
+    2, partial =&gt; false) AS ce
+  JOIN vertices AS v USING (geom)
+  JOIN edges AS e ON (edge_id = e.id)
+  ORDER BY distance LIMIT 1),
+three_options AS (
+  SELECT
+    closest AS source, target, 0 AS cost, 0 AS reverse_cost,
+    capacity, reverse_capacity,
+    ST_X(geom) AS x1, ST_Y(geom) AS y1,
+    ST_X(ST_EndPoint(e_geom)) AS x2, ST_Y(ST_EndPoint(e_geom)) AS y2,
+    ST_MakeLine(geom, ST_EndPoint(e_geom)) AS geom
+  FROM info
+  UNION
+  SELECT closest, source, 0, 0, capacity, reverse_capacity,
+    ST_X(geom) AS x1, ST_Y(geom) AS y1,
+    ST_X(ST_StartPoint(e_geom)) AS x2, ST_Y(ST_StartPoint(e_geom)) AS y2,
+    ST_MakeLine(info.geom, ST_StartPoint(e_geom))
+  FROM info
+  /*
+  UNION
+  -- This option requires splitting the edge
+  SELECT closest, NULL, 0, 0, capacity, reverse_capacity,
+    ST_X(geom) AS x1, ST_Y(geom) AS y1,
+    ST_X(ST_EndPoint(edge)) AS x2, ST_Y(ST_EndPoint(edge)) AS y2,
+    edge
+  FROM info */
+  )
+INSERT INTO edges
+  (source, target,
+    cost, reverse_cost,
+    capacity, reverse_capacity,
+    x1, y1, x2, y2,
+    geom)
+(SELECT
+    source, target, cost, reverse_cost, capacity, reverse_capacity,
+    x1, y1, x2, y2, geom
+  FROM three_options);
+INSERT 0 2
+</pre></div>
+</div>
+</section>
+<section id="checking-components">
+<h4><a class="toc-backref" href="#id21" role="doc-backlink">Revisando componentes</a><a class="headerlink" href="#checking-components" title="Link to this heading">¶</a></h4>
+<p>Ignorando la arista que requiere más trabajo. El grafo está ahora totalmente conectado, ya que sólo hay un componente.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">component</span> <span class="o">|</span> <span class="n">node</span>
+<span class="o">-----+-----------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">2</span>
+   <span class="mi">3</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">3</span>
+   <span class="mi">4</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">4</span>
+   <span class="mi">5</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">5</span>
+   <span class="mi">6</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">6</span>
+   <span class="mi">7</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">7</span>
+   <span class="mi">8</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">8</span>
+   <span class="mi">9</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">9</span>
+  <span class="mi">10</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">10</span>
+  <span class="mi">11</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">11</span>
+  <span class="mi">12</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">12</span>
+  <span class="mi">13</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">13</span>
+  <span class="mi">14</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">14</span>
+  <span class="mi">15</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">15</span>
+  <span class="mi">16</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">16</span>
+  <span class="mi">17</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">17</span>
+  <span class="mi">18</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">18</span>
+<span class="p">(</span><span class="mi">18</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="see-also">
+<h2>Ver también<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="withPoints-category.html"><span class="doc">withPoints- Categoría</span></a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
+</ul>
+<p class="rubric">Índices y tablas</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v4.0.0.<br/>
+      Actualizado por última vez en nov 18, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

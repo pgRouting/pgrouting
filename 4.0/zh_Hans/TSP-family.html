@@ -1,0 +1,339 @@
+
+
+<!DOCTYPE html>
+
+<html lang="zh-Hans" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Traveling Sales Person - 函数族 &#8212; pgRouting Manual (4.0)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
+    <script src="_static/documentation_options.js?v=2ef3d351"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pgr_TSP" href="pgr_TSP.html" />
+    <link rel="prev" title="pgr_degree -- 拟议" href="pgr_degree.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">
+          pgRouting</a>
+        <span class="navbar-text pull-left"><b>v4.0.0</b></span>
+
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">支持</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">示例数据</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting 基本概念</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">函数族</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">拟议的功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">实验函数</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">发行说明</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">迁移指南</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Traveling Sales Person - 函数族</a><ul>
+<li><a class="reference internal" href="#general-information">一般信息</a><ul>
+<li><a class="reference internal" href="#problem-definition">问题定义</a></li>
+<li><a class="reference internal" href="#origin">起源</a></li>
+<li><a class="reference internal" href="#characteristics">特征</a></li>
+<li><a class="reference internal" href="#tsp-optional-parameters">TSP 可选参数</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">另请参阅</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_degree.html" title="Previous Chapter: pgr_degree -- 拟议"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_degree -- 拟议</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_TSP.html" title="Next Chapter: pgr_TSP"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_TSP &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
+<li><a class="reference internal" href="#">Traveling Sales Person - 函数族</a><ul>
+<li><a class="reference internal" href="#general-information">一般信息</a><ul>
+<li><a class="reference internal" href="#problem-definition">问题定义</a></li>
+<li><a class="reference internal" href="#origin">起源</a></li>
+<li><a class="reference internal" href="#characteristics">特征</a></li>
+<li><a class="reference internal" href="#tsp-optional-parameters">TSP 可选参数</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#see-also">另请参阅</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="pgr_degree.html" title="Previous Chapter: pgr_degree -- 拟议"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_degree -- 拟议</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_TSP.html" title="Next Chapter: pgr_TSP"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_TSP &raquo;</span>
+    </a>
+  </li>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+        <div class="body span9 content" role="main">
+            <script> document.write(get_history('TSP-family','zh-Hans'));  </script>
+            
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="traveling-sales-person-family-of-functions">
+<h1>Traveling Sales Person - 函数族<a class="headerlink" href="#traveling-sales-person-family-of-functions" title="Link to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a>- 当输入作为矩阵单元信息给出时。</p></li>
+<li><p><a class="reference internal" href="pgr_TSPeuclidean.html"><span class="doc">pgr_TSPeuclidean</span></a> - 当输入是坐标时。</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<nav class="contents local" id="table-of-contents">
+<p class="topic-title">目录</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#general-information" id="id1">一般信息</a></p>
+<ul>
+<li><p><a class="reference internal" href="#problem-definition" id="id2">问题定义</a></p></li>
+<li><p><a class="reference internal" href="#origin" id="id3">起源</a></p></li>
+<li><p><a class="reference internal" href="#characteristics" id="id4">特征</a></p></li>
+<li><p><a class="reference internal" href="#tsp-optional-parameters" id="id5">TSP 可选参数</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#see-also" id="id6">另请参阅</a></p></li>
+</ul>
+</nav>
+<section id="general-information">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">一般信息</a><a class="headerlink" href="#general-information" title="Link to this heading">¶</a></h2>
+<section id="problem-definition">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">问题定义</a><a class="headerlink" href="#problem-definition" title="Link to this heading">¶</a></h3>
+<p>旅行推销员问题 (TSP) 提出以下问题：</p>
+<blockquote>
+<div><p><em>给定一个城市列表以及每对城市之间的距离，哪条是访问每个城市一次并返回出发城市的最短路线？</em></p>
+</div></blockquote>
+</section>
+<section id="origin">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">起源</a><a class="headerlink" href="#origin" title="Link to this heading">¶</a></h3>
+<p>旅行推销员问题由数学家 <strong>William Rowam Hamilton 爵士</strong> 和 <strong>Thomas Penyngton Kirkman</strong> 于 18 世纪研究。</p>
+<p>关于汉密尔顿和柯克曼工作的讨论可参见《<strong>图论》（比格斯等人，1976 年）一书</strong>。</p>
+<ul class="simple">
+<li><p>ISBN-13: 978-0198539162</p></li>
+<li><p>ISBN-10: 0198539169</p></li>
+</ul>
+<p>人们认为旅行推销员问题（TSP）的一般形式最早由维也纳和哈佛的卡尔·门格尔（Karl Menger）研究。后来，普林斯顿的哈斯勒、惠特尼和梅里尔（Hassler, Whitney &amp; Merrill）进一步推动了这个问题。关于门格尔和惠特尼之间的联系以及TSP的发展，可以在`组合优化的历史(直到1960年) &lt;<a class="reference external" href="https://homepages.cwi.nl/~lex/files/histco.ps">https://homepages.cwi.nl/~lex/files/histco.ps</a>&gt;`__</p>
+<p>计算经过 : math:<cite>n</cite> 城市的不同旅行次数：</p>
+<ul class="simple">
+<li><p>给定一个起始城市，</p></li>
+<li><p>第二个城市还有 <span class="math notranslate nohighlight">\(n-1\)</span> 个选择，</p></li>
+<li><p>第三个城市的 <span class="math notranslate nohighlight">\(n-2\)</span> 选项等。</p></li>
+<li><p>相乘得到 <span class="math notranslate nohighlight">\((n-1)！= (n-1) (n-2) ..1\)</span>.</p></li>
+<li><p>现在，由于旅行成本不取决于旅行的方向：</p>
+<ul>
+<li><p>这个数字乘2</p></li>
+<li><p><span class="math notranslate nohighlight">\((n-1)!/2\)</span>。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="characteristics">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">特征</a><a class="headerlink" href="#characteristics" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>该问题是一个NP-hard优化问题。</p></li>
+<li><p>使用度量算法</p></li>
+<li><p><em>在最坏的情况下，实施产生的解决方案的时间是最佳旅行的两倍</em>：</p>
+<ul>
+<li><p>图是无向的</p></li>
+<li><p>图是全连通的</p></li>
+<li><p>图中，边上的旅行成本服从三角不等式。</p></li>
+</ul>
+</li>
+<li><p>在无向图上：</p>
+<ul>
+<li><p>旅行费用是对称的：</p></li>
+<li><p>从 <code class="docutils literal notranslate"><span class="pre">u</span></code> 到 <code class="docutils literal notranslate"><span class="pre">v</span></code> 的旅行费用与从 <code class="docutils literal notranslate"><span class="pre">v</span></code> 到 <code class="docutils literal notranslate"><span class="pre">u</span></code> 的旅行费用相同</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tsp-optional-parameters">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">TSP 可选参数</a><a class="headerlink" href="#tsp-optional-parameters" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>列</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_id</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>第一个访问顶点</p>
+<ul class="simple">
+<li><p>当 <cite>0</cite> 时，任何顶点都可以成为第一个访问顶点。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_id</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>返回 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 之前最后访问的顶点。</p>
+<ul class="simple">
+<li><p>当为 <code class="docutils literal notranslate"><span class="pre">0</span></code> 时，任何顶点都可以成为返回 <code class="docutils literal notranslate"><span class="pre">start_id</span></code> 之前最后访问的顶点。</p></li>
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">0</span></code> 且 <code class="docutils literal notranslate"><span class="pre">start_id</span> <span class="pre">=</span> <span class="pre">0</span></code> 时，它是第一个和最后一个顶点</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="see-also">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">另请参阅</a><a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<p class="rubric">参考</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost 的 metric appro 的 metric 近似</a></p></li>
+<li><p><a class="reference external" href="https://www.math.uwaterloo.ca/tsp/">滑铁卢大学（University of Waterloo ）TSP</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Traveling_salesman_problem">维基百科：旅行商问题</a></p></li>
+</ul>
+<p class="rubric">索引和表格</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+          
+    </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v4.0.0.<br/>
+      Last updated on 11月 18, 2024.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
