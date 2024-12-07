@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-17 00:50+0000\n"
+"POT-Creation-Date: 2024-11-18 21:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -4375,6 +4375,21 @@ msgstr ""
 msgid ":doc:`release_notes`"
 msgstr ""
 
+msgid "pgRouting 4.0.0 Release Notes"
+msgstr ""
+
+msgid "No Changes Yet"
+msgstr ""
+
+msgid "pgRouting 3"
+msgstr ""
+
+msgid "Minors 3.x"
+msgstr ""
+
+msgid "pgRouting 3.7"
+msgstr ""
+
 msgid "pgRouting 3.7.0 Release Notes"
 msgstr ""
 
@@ -7011,7 +7026,7 @@ msgid "Upgrading the database"
 msgstr ""
 
 msgid ""
-"To upgrade pgRouting in the database to version 3.7.0 use the following "
+"To upgrade pgRouting in the database to version 4.0.0 use the following "
 "command:"
 msgstr ""
 
@@ -15533,13 +15548,13 @@ msgstr ""
 msgid "Mayors"
 msgstr ""
 
-msgid "pgRouting 3"
+msgid "pgRouting 4"
 msgstr ""
 
-msgid "Minors 3.x"
+msgid "Minors 4.x"
 msgstr ""
 
-msgid "pgRouting 3.7"
+msgid "pgRouting 4.0"
 msgstr ""
 
 msgid "pgRouting 3.6"

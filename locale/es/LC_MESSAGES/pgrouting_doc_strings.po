@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-17 00:50+0000\n"
-"PO-Revision-Date: 2024-10-10 19:43+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"POT-Creation-Date: 2024-11-18 21:19+0000\n"
+"PO-Revision-Date: 2024-12-07 13:04+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
 "Language: es\n"
@@ -4926,6 +4926,22 @@ msgstr ":doc:`experimental`"
 msgid ":doc:`release_notes`"
 msgstr ":doc:`release_notes`"
 
+#, fuzzy
+msgid "pgRouting 4.0.0 Release Notes"
+msgstr "Notas de la versión de pgRouting 3.0.0"
+
+msgid "No Changes Yet"
+msgstr "Aún no hay cambios"
+
+msgid "pgRouting 3"
+msgstr "pgRouting 3"
+
+msgid "Minors 3.x"
+msgstr ""
+
+msgid "pgRouting 3.7"
+msgstr "pgRouting 3.7"
+
 msgid "pgRouting 3.7.0 Release Notes"
 msgstr "Notas de la versión de pgRouting 3.7.0"
 
@@ -7997,8 +8013,9 @@ msgstr ""
 msgid "Upgrading the database"
 msgstr "Actualización de la base de datos"
 
+#, fuzzy
 msgid ""
-"To upgrade pgRouting in the database to version 3.7.0 use the following "
+"To upgrade pgRouting in the database to version 4.0.0 use the following "
 "command:"
 msgstr ""
 "Para actualizar pgRouting en la base de datos a la versión 3.7.0 utilice el "
@@ -18158,14 +18175,16 @@ msgstr ""
 msgid "Mayors"
 msgstr ""
 
-msgid "pgRouting 3"
-msgstr "pgRouting 3"
+#, fuzzy
+msgid "pgRouting 4"
+msgstr "pgRouting 3.4"
 
-msgid "Minors 3.x"
+msgid "Minors 4.x"
 msgstr ""
 
-msgid "pgRouting 3.7"
-msgstr "pgRouting 3.7"
+#, fuzzy
+msgid "pgRouting 4.0"
+msgstr "pgRouting 3.0"
 
 msgid "pgRouting 3.6"
 msgstr "pgRouting 3.6"
