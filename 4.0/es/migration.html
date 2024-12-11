@@ -7,12 +7,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Guía de migración &#8212; pgRouting Manual (4.0)</title>
+    <title>Guía de migración &#8212; pgRouting Manual (4.0-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=fa0eef97"></script>
+    <script src="_static/documentation_options.js?v=065f0aea"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=d3fd4772"></script>
@@ -45,7 +45,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v4.0.0</b></span>
+        <span class="navbar-text pull-left"><b>v4.0.0-dev</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -160,9 +160,9 @@
 <li><a class="reference internal" href="#migrating-pgr-trspviavertices-using-pgr-trspvia">Migrando <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code> usando <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#migration-of-pgr-trspviaedges">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a><ul>
-<li><a class="reference internal" href="#migrating-pgr-trspviaedges-using-pgr-withpointsvia">Migrando <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code> usando <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code></a></li>
-<li><a class="reference internal" href="#migrating-pgr-trspviaedges-using-pgr-trspvia-withpoints">Migrando <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code> usando <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code></a></li>
+<li><a class="reference internal" href="#migration-of-pgr-trspviaedges">Migration of pgr_trspViaEdges</a><ul>
+<li><a class="reference internal" href="#migrating-pgr-trspviaedges-using-pgr-withpointsvia">Migrating pgr_trspViaEdges using pgr_withPointsVia</a></li>
+<li><a class="reference internal" href="#migrating-pgr-trspviaedges-using-pgr-trspvia-withpoints">Migrating pgr_trspViaEdges using pgr_trspVia_withPoints</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
@@ -274,9 +274,9 @@
 <li><a class="reference internal" href="#migrating-pgr-trspviavertices-using-pgr-trspvia">Migrando <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code> usando <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#migration-of-pgr-trspviaedges">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a><ul>
-<li><a class="reference internal" href="#migrating-pgr-trspviaedges-using-pgr-withpointsvia">Migrando <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code> usando <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code></a></li>
-<li><a class="reference internal" href="#migrating-pgr-trspviaedges-using-pgr-trspvia-withpoints">Migrando <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code> usando <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code></a></li>
+<li><a class="reference internal" href="#migration-of-pgr-trspviaedges">Migration of pgr_trspViaEdges</a><ul>
+<li><a class="reference internal" href="#migrating-pgr-trspviaedges-using-pgr-withpointsvia">Migrating pgr_trspViaEdges using pgr_withPointsVia</a></li>
+<li><a class="reference internal" href="#migrating-pgr-trspviaedges-using-pgr-trspvia-withpoints">Migrating pgr_trspViaEdges using pgr_trspVia_withPoints</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
@@ -395,10 +395,10 @@
 <li><p><a class="reference internal" href="#migrating-pgr-trspviavertices-using-pgr-trspvia" id="id39">Migrando <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code> usando <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code></a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#migration-of-pgr-trspviaedges" id="id40">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a></p>
+<li><p><a class="reference internal" href="#migration-of-pgr-trspviaedges" id="id40">Migration of pgr_trspViaEdges</a></p>
 <ul>
-<li><p><a class="reference internal" href="#migrating-pgr-trspviaedges-using-pgr-withpointsvia" id="id41">Migrando <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code> usando <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migrating-pgr-trspviaedges-using-pgr-trspvia-withpoints" id="id42">Migrando <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code> usando <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migrating-pgr-trspviaedges-using-pgr-withpointsvia" id="id41">Migrating pgr_trspViaEdges using pgr_withPointsVia</a></p></li>
+<li><p><a class="reference internal" href="#migrating-pgr-trspviaedges-using-pgr-trspvia-withpoints" id="id42">Migrating pgr_trspViaEdges using pgr_trspVia_withPoints</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#see-also" id="id43">Ver también</a></p></li>
@@ -1876,10 +1876,10 @@ WARNING:  pgr_withpointsdd(text,text,bigint,double precision,boolean,character,b
 <li><p><a class="reference internal" href="#migrating-pgr-trspviavertices-using-pgr-trspvia" id="id78">Migrando <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code> usando <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code></a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#migration-of-pgr-trspviaedges" id="id79">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a></p>
+<li><p><a class="reference internal" href="#migration-of-pgr-trspviaedges" id="id79">Migration of pgr_trspViaEdges</a></p>
 <ul>
-<li><p><a class="reference internal" href="#migrating-pgr-trspviaedges-using-pgr-withpointsvia" id="id80">Migrando <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code> usando <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migrating-pgr-trspviaedges-using-pgr-trspvia-withpoints" id="id81">Migrando <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code> usando <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migrating-pgr-trspviaedges-using-pgr-withpointsvia" id="id80">Migrating pgr_trspViaEdges using pgr_withPointsVia</a></p></li>
+<li><p><a class="reference internal" href="#migrating-pgr-trspviaedges-using-pgr-trspvia-withpoints" id="id81">Migrating pgr_trspViaEdges using pgr_trspVia_withPoints</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#see-also" id="id82">Ver también</a></p></li>
@@ -2768,81 +2768,27 @@ WHERE edge != -1;
 </section>
 </section>
 <section id="migration-of-pgr-trspviaedges">
-<h3><a class="toc-backref" href="#id79" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a><a class="headerlink" href="#migration-of-pgr-trspviaedges" title="Link to this heading">¶</a></h3>
-<p>Firma que serán migrada:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trspViaEdges</span><span class="p">(</span><span class="n">sql</span> <span class="n">text</span><span class="p">,</span> <span class="n">eids</span> <span class="n">integer</span><span class="p">[],</span> <span class="n">pcts</span> <span class="n">float8</span><span class="p">[],</span>
-                  <span class="n">directed</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="n">boolean</span>
-                  <span class="p">[,</span> <span class="n">turn_restrict_sql</span> <span class="n">text</span><span class="p">]);</span>
-<span class="n">RETURNS</span> <span class="n">SETOF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">id1</span><span class="p">,</span> <span class="n">id2</span><span class="p">,</span> <span class="n">id3</span><span class="p">,</span> <span class="n">cost</span><span class="p">)</span>
-</pre></div>
-</div>
+<h3><a class="toc-backref" href="#id79" role="doc-backlink">Migration of pgr_trspViaEdges</a><a class="headerlink" href="#migration-of-pgr-trspviaedges" title="Link to this heading">¶</a></h3>
+<nav class="contents local" id="contenido">
 <ul class="simple">
-<li><p>Los tipos enteros de las <code class="docutils literal notranslate"><span class="pre">Consultas</span> <span class="pre">de</span> <span class="pre">Aristas</span></code> solo pueden ser <code class="docutils literal notranslate"><span class="pre">ENTEROS</span></code>.</p></li>
-<li><p>El tipo de punto flotante del <code class="docutils literal notranslate"><span class="pre">Edges</span> <span class="pre">SQL</span></code> solo puede ser <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code>.</p></li>
-<li><p>La bandera <code class="docutils literal notranslate"><span class="pre">directed</span></code> es obligatoria.</p>
-<ul>
-<li><p>No tiene un valor de facto.</p></li>
+<li><p><a class="reference internal" href="#migrating-pgr-trspviaedges-using-pgr-withpointsvia" id="id83">Migrating pgr_trspViaEdges using pgr_withPointsVia</a></p></li>
+<li><p><a class="reference internal" href="#migrating-pgr-trspviaedges-using-pgr-trspvia-withpoints" id="id84">Migrating pgr_trspViaEdges using pgr_trspVia_withPoints</a></p></li>
 </ul>
-</li>
-<li><p>No auto-detecta si la columna``reverse_cost`` existe.</p>
-<ul>
-<li><p>El usuario debe de tener cuidado al coincidir la existencia de la columna con el valor del parámetro <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code>.</p></li>
-</ul>
-</li>
-<li><p>Las restricciones de consulta interna son opcionales.</p></li>
-</ul>
-<p>Para los siguientes puntos la guía de migración se utilizara:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pid</span><span class="p">,</span> <span class="n">edge_id</span><span class="p">,</span> <span class="n">fraction</span><span class="p">,</span> <span class="n">side</span> <span class="n">FROM</span> <span class="n">pointsOfInterest</span>
-<span class="n">WHERE</span> <span class="n">pid</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
- <span class="n">pid</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">fraction</span> <span class="o">|</span> <span class="n">side</span>
-<span class="o">-----+---------+----------+------</span>
-   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>      <span class="mf">0.6</span> <span class="o">|</span> <span class="n">l</span>
-   <span class="mi">4</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>      <span class="mf">0.3</span> <span class="o">|</span> <span class="n">r</span>
-   <span class="mi">6</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>      <span class="mf">0.7</span> <span class="o">|</span> <span class="n">b</span>
+</nav>
+<p>In this section this set of points is going to be used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pid</span><span class="p">,</span> <span class="n">edge_id</span><span class="p">,</span> <span class="n">fraction</span> <span class="n">FROM</span> <span class="n">pointsOfInterest</span> <span class="n">WHERE</span> <span class="n">pid</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+ <span class="n">pid</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">fraction</span>
+<span class="o">-----+---------+----------</span>
+   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>      <span class="mf">0.6</span>
+   <span class="mi">4</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>      <span class="mf">0.3</span>
+   <span class="mi">6</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>      <span class="mf">0.7</span>
 <span class="p">(</span><span class="mi">3</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
 </div>
-<p>Viajará a travez de los siguientes puntos de la vía <span class="math notranslate nohighlight">\(4\rightarrow3\rightarrow6\)</span></p>
-<p>Migra al user:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia - Proposed</span></a> cuando no hay restricciones,</p></li>
-<li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints - Proposed</span></a> cuando hay restricciones.</p></li>
-</ul>
 <section id="migrating-pgr-trspviaedges-using-pgr-withpointsvia">
-<h4><a class="toc-backref" href="#id80" role="doc-backlink">Migrando <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code> usando <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code></a><a class="headerlink" href="#migrating-pgr-trspviaedges-using-pgr-withpointsvia" title="Link to this heading">¶</a></h4>
-<p>La siguiente consulta no tiene restricciones.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trspViaEdges(
-  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges$$,
-  ARRAY[6, 12, 4], ARRAY[0.3, 0.6, 0.7],
-  true, true);
-WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated function on v3.4.0
- seq | id1 | id2 | id3 | cost
------+-----+-----+-----+------
-   1 |   1 |  -1 |   6 |  0.7
-   2 |   1 |   3 |   7 |    1
-   3 |   1 |   7 |  10 |    1
-   4 |   1 |   8 |  12 |  0.6
-   5 |   1 |  -2 |  -1 |    0
-   6 |   2 |  -2 |  12 |  0.4
-   7 |   2 |  12 |  13 |    1
-   8 |   2 |  17 |  15 |    1
-   9 |   2 |  16 |   9 |    1
-  10 |   2 |  11 |   8 |    1
-  11 |   2 |   7 |   4 |  0.7
-  12 |   2 |  -3 |  -2 |    0
-(12 rows)
-
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Un mensaje sobre lo obsoleto se enseña</p>
-<ul>
-<li><p>Funciones obsoletas se eliminaran en la siguiente versión mayor 4.0.0</p></li>
-</ul>
-</li>
-</ul>
-<p>Usar <a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia - Proposed</span></a> en su lugar.</p>
+<h4><a class="toc-backref" href="#id83" role="doc-backlink">Migrating pgr_trspViaEdges using pgr_withPointsVia</a><a class="headerlink" href="#migrating-pgr-trspviaedges-using-pgr-withpointsvia" title="Link to this heading">¶</a></h4>
+<p>Using <a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia - Proposed</span></a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (3, 4, 6)$$,
@@ -2866,105 +2812,42 @@ WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecat
 
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>Se han eliminado la fundición de tipos.</p></li>
-<li><p>No enseña detalles, pues las funciones obsoletas no enseñan detalles.</p></li>
-<li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia - Proposed</span></a>:</p>
-<ul>
-<li><p>Auto-detecta si la columna``reverse_cost`` está en la SQL de aristas.</p></li>
-<li><p>Acepta <code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code> sobre tipos integrales</p></li>
-<li><p>Acepta <code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code> sobre tipos de puntos flotantes</p></li>
-<li><p>La bandera <code class="docutils literal notranslate"><span class="pre">directed</span></code> tiene valor de facto de <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
-<ul>
-<li><p>Usa el mismo valor de la consulta original.</p></li>
-<li><p>En este ejemplo <code class="docutils literal notranslate"><span class="pre">true</span></code> que es el valor de facto.</p>
-<ul>
-<li><p>Se ha omitido la bandera y se ha utilizado el valor por defecto.</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>La consulta de puntos con incluye la columna <code class="docutils literal notranslate"><span class="pre">side</span></code>.</p></li>
-</ul>
-</li>
-</ul>
-<p>Cuando la necesidad de utilizar estrictamente los mismos nombres (sin importancia) y tipos , y los valores de nodo de la función han sido migradas entonces:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT row_number() over(ORDER BY seq) AS seq,
-path_id::INTEGER AS id1, node::INTEGER AS id2,
-CASE WHEN edge &gt;= 0 THEN edge::INTEGER ELSE -1 END AS id3, cost::FLOAT
-FROM pgr_withPointsVia(
-  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
-  $$SELECT * FROM (VALUES (1, 6, 0.3),(2, 12, 0.6),(3, 4, 0.7)) AS t(pid, edge_id, fraction)$$,
-  ARRAY[-1, -2, -3],
-  details=&gt; false);
- seq | id1 | id2 | id3 | cost
------+-----+-----+-----+------
-   1 |   1 |  -1 |   6 |  0.7
-   2 |   1 |   3 |   7 |    1
-   3 |   1 |   7 |  10 |    1
-   4 |   1 |   8 |  12 |  0.6
-   5 |   1 |  -2 |  -1 |    0
-   6 |   2 |  -2 |  12 |  0.4
-   7 |   2 |  12 |  13 |    1
-   8 |   2 |  17 |  15 |    1
-   9 |   2 |  16 |   9 |    1
-  10 |   2 |  11 |   8 |    1
-  11 |   2 |   7 |   4 |  0.3
-  12 |   2 |  -3 |  -1 |    0
-(12 rows)
-
-</pre></div>
-</div>
+<p>When the need of using the same (meaningless) names and and strict types then
+convert the result to the deprecated function columns:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">id1</span></code> es el identificador de camino</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">id2</span></code> es el nodo</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">id3</span></code> es la arista</p></li>
 </ul>
-</section>
-<section id="migrating-pgr-trspviaedges-using-pgr-trspvia-withpoints">
-<h4><a class="toc-backref" href="#id81" role="doc-backlink">Migrando <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code> usando <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code></a><a class="headerlink" href="#migrating-pgr-trspviaedges-using-pgr-trspvia-withpoints" title="Link to this heading">¶</a></h4>
-<p>La siguiente consulta tiene restricciones.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trspViaEdges(
-  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges$$,
-  ARRAY[6, 12, 4], ARRAY[0.3, 0.6, 0.7],
-  true, true,
-  $$SELECT to_cost, target_id::INTEGER, via_path FROM old_restrictions$$);
-WARNING:  pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text) deprecated function on v3.4.0
-WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated signature on v3.4.0
-WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated signature on v3.4.0
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT row_number() over(ORDER BY seq) AS seq,
+path_id::INTEGER AS id1, node::INTEGER AS id2,
+CASE WHEN edge &gt;= 0 THEN edge::INTEGER ELSE -1 END AS id3, cost::FLOAT
+FROM pgr_withPointsVia(
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
+  $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (3, 4, 6)$$,
+  ARRAY[-4, -3, -6],
+  details =&gt; false);
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
-   1 |   1 |  -1 |   6 |  0.7
+   1 |   1 |  -4 |   6 |  0.7
    2 |   1 |   3 |   7 |    1
-   3 |   1 |   7 |   8 |    1
-   4 |   1 |  11 |   9 |    1
-   5 |   1 |  16 |  16 |    1
-   6 |   1 |  15 |   3 |    1
-   7 |   1 |  10 |   2 |    1
-   8 |   1 |   6 |   4 |    1
-   9 |   1 |   7 |  10 |    1
-  10 |   1 |   8 |  12 |    1
-  11 |   2 |  12 |  13 |    1
-  12 |   2 |  17 |  15 |    1
-  13 |   2 |  16 |   9 |    1
-  14 |   2 |  11 |   8 |    1
-  15 |   2 |   7 |   4 |  0.3
-(15 rows)
+   3 |   1 |   7 |  10 |    1
+   4 |   1 |   8 |  12 |  0.6
+   5 |   1 |  -3 |  -1 |    0
+   6 |   2 |  -3 |  12 |  0.4
+   7 |   2 |  12 |  13 |    1
+   8 |   2 |  17 |  15 |    1
+   9 |   2 |  16 |   9 |    1
+  10 |   2 |  11 |   8 |    1
+  11 |   2 |   7 |   4 |  0.3
+  12 |   2 |  -6 |  -1 |    0
+(12 rows)
 
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>Un mensaje sobre lo obsoleto se enseña</p>
-<ul>
-<li><p>Funciones obsoletas se eliminaran en la siguiente versión mayor 4.0.0</p></li>
-</ul>
-</li>
-<li><p>Las restricciones son el último parámetro de la función</p>
-<ul>
-<li><p>Usando la antigua estructura de restricciones</p></li>
-</ul>
-</li>
-</ul>
+</section>
+<section id="migrating-pgr-trspviaedges-using-pgr-trspvia-withpoints">
+<h4><a class="toc-backref" href="#id84" role="doc-backlink">Migrating pgr_trspViaEdges using pgr_trspVia_withPoints</a><a class="headerlink" href="#migrating-pgr-trspviaedges-using-pgr-trspvia-withpoints" title="Link to this heading">¶</a></h4>
 <p>Usar <a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints - Proposed</span></a> en su lugar.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trspVia_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
@@ -2991,34 +2874,13 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) deprecated 
 
 </pre></div>
 </div>
+<p>When the need of using the same (meaningless) names and and strict types then
+convert the result to the deprecated function columns:</p>
 <ul class="simple">
-<li><p>La nueva estructura de restricciones han sido utilizados.</p>
-<ul>
-<li><p>Es el segundo parámetro.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">id1</span></code> es el identificador de camino</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">id2</span></code> es el nodo</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">id3</span></code> es la arista</p></li>
 </ul>
-</li>
-<li><p>Se han eliminado la fundición de tipos.</p></li>
-<li><p>No enseña detalles, pues las funciones obsoletas no enseñan detalles.</p></li>
-<li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints - Proposed</span></a>:</p>
-<ul>
-<li><p>Auto-detecta si la columna``reverse_cost`` está en la SQL de aristas.</p></li>
-<li><p>Acepta <code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code> sobre tipos integrales</p></li>
-<li><p>Acepta <code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code> sobre tipos de puntos flotantes</p></li>
-<li><p>La bandera <code class="docutils literal notranslate"><span class="pre">directed</span></code> tiene valor de facto de <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
-<ul>
-<li><p>Usa el mismo valor de la consulta original.</p></li>
-<li><p>En este ejemplo <code class="docutils literal notranslate"><span class="pre">true</span></code> que es el valor de facto.</p>
-<ul>
-<li><p>Se ha omitido la bandera y se ha utilizado el valor por defecto.</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>La consulta de puntos con incluye la columna <code class="docutils literal notranslate"><span class="pre">side</span></code>.</p></li>
-</ul>
-</li>
-</ul>
-<p>Cuando la necesidad de utilizar estrictamente los mismos nombres (sin importancia) y tipos , y los valores de nodo de la función han sido migradas entonces:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT row_number() over(ORDER BY seq) AS seq,
 path_id::INTEGER AS id1, node::INTEGER AS id2,
 CASE WHEN edge &gt;= 0 THEN edge::INTEGER ELSE -1 END AS id3, cost::FLOAT
@@ -3047,11 +2909,6 @@ FROM pgr_trspVia_withPoints(
 
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">id1</span></code> es el identificador de camino</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">id2</span></code> es el nodo</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">id3</span></code> es la arista</p></li>
-</ul>
 </section>
 </section>
 <section id="see-also">
@@ -3081,8 +2938,8 @@ FROM pgr_trspVia_withPoints(
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v4.0.0.<br/>
-      Actualizado por última vez en dic 07, 2024.<br/>
+        &copy; Copyright pgRouting Contributors - Version v4.0.0-dev.<br/>
+      Actualizado por última vez en dic 11, 2024.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>
