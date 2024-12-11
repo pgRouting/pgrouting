@@ -20,7 +20,7 @@ include(pgr/BuildType)
 
 project(PGROUTING VERSION 4.0.0
     LANGUAGES C CXX )
-set(PROJECT_VERSION_DEV "")
+set(PROJECT_VERSION_DEV "-dev")
 string(TOLOWER "${PROJECT_NAME}" PROJECT_NAME_LOWER)
 
 include(pgr/GitInfo)

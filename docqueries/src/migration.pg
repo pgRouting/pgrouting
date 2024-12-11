@@ -156,10 +156,7 @@ WHERE edge != -1;
 SELECT pid, edge_id, fraction, side FROM pointsOfInterest
 WHERE pid IN (3, 4, 6);
 /* --edgesvia1 */
-SELECT * FROM pgr_trspViaEdges(
-  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges$$,
-  ARRAY[6, 12, 4], ARRAY[0.3, 0.6, 0.7],
-  true, true);
+SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (3, 4, 6);
 /* --edgesvia2 */
 SELECT * FROM pgr_withPointsVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
@@ -172,15 +169,10 @@ path_id::INTEGER AS id1, node::INTEGER AS id2,
 CASE WHEN edge >= 0 THEN edge::INTEGER ELSE -1 END AS id3, cost::FLOAT
 FROM pgr_withPointsVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
-  $$SELECT * FROM (VALUES (1, 6, 0.3),(2, 12, 0.6),(3, 4, 0.7)) AS t(pid, edge_id, fraction)$$,
-  ARRAY[-1, -2, -3],
-  details=> false);
+  $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (3, 4, 6)$$,
+  ARRAY[-4, -3, -6],
+  details => false);
 /* --edgesvia4 */
-SELECT * FROM pgr_trspViaEdges(
-  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges$$,
-  ARRAY[6, 12, 4], ARRAY[0.3, 0.6, 0.7],
-  true, true,
-  $$SELECT to_cost, target_id::INTEGER, via_path FROM old_restrictions$$);
 /* --edgesvia5 */
 SELECT * FROM pgr_trspVia_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
