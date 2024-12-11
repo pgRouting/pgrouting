@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.7.0
+# Copyright (C) pgRouting Contributors - Version v3.7.1
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.7.0\n"
+"Project-Id-Version: pgRouting v3.7.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-17 00:50+0000\n"
+"POT-Creation-Date: 2024-12-11 11:17-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3937,22 +3937,28 @@ msgstr ""
 msgid ":doc:`release_notes`"
 msgstr ""
 
+msgid "pgRouting 4.0.0 Release Notes"
+msgstr ""
+
+msgid "Removal of deprecated functions and signatures"
+msgstr ""
+
+msgid "``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``"
+msgstr ""
+
+msgid "pgRouting 3"
+msgstr ""
+
+msgid "Minors 3.x"
+msgstr ""
+
+msgid "pgRouting 3.7"
+msgstr ""
+
 msgid "pgRouting 3.7.0 Release Notes"
 msgstr ""
 
 msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.7.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
-msgstr ""
-
-msgid "Support"
-msgstr ""
-
-msgid "`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stop support of PostgreSQL12 on pgrouting v3.7"
-msgstr ""
-
-msgid "Stopping support of PostgreSQL 12"
-msgstr ""
-
-msgid "CI does not test for PostgreSQL 12"
 msgstr ""
 
 msgid "New experimental functions"
@@ -4897,34 +4903,25 @@ msgstr ""
 msgid ":doc:`pgr_trspVia`:"
 msgstr ""
 
-msgid "Migration of ``pgr_trspViaEdges``"
+msgid "Migration of pgr_trspViaEdges"
 msgstr ""
 
-msgid "And will travel thru the following Via points :math:`4\\rightarrow3\\rightarrow6`"
+msgid "In this section this set of points is going to be used:"
 msgstr ""
 
-msgid ":doc:`pgr_withPointsVia` when there are no restrictions,"
+msgid "Migrating pgr_trspViaEdges using pgr_withPointsVia"
 msgstr ""
 
-msgid ":doc:`pgr_trspVia_withPoints` when there are restrictions."
+msgid "Using :doc:`pgr_withPointsVia`."
 msgstr ""
 
-msgid "Migrating ``pgr_trspViaEdges`` using ``pgr_withPointsVia``"
+msgid "When the need of using the same (meaningless) names and and strict types then convert the result to the deprecated function columns:"
 msgstr ""
 
-msgid "Use :doc:`pgr_withPointsVia` instead."
-msgstr ""
-
-msgid ":doc:`pgr_withPointsVia`:"
-msgstr ""
-
-msgid "Migrating ``pgr_trspViaEdges`` using ``pgr_trspVia_withPoints``"
+msgid "Migrating pgr_trspViaEdges using pgr_trspVia_withPoints"
 msgstr ""
 
 msgid "Use :doc:`pgr_trspVia_withPoints` instead."
-msgstr ""
-
-msgid ":doc:`pgr_trspVia_withPoints`:"
 msgstr ""
 
 msgid ":doc:`withPoints-category`"
@@ -6175,7 +6172,7 @@ msgstr ""
 msgid "Upgrading the database"
 msgstr ""
 
-msgid "To upgrade pgRouting in the database to version 3.7.0 use the following command:"
+msgid "To upgrade pgRouting in the database to version 3.7.1 use the following command:"
 msgstr ""
 
 msgid "More information can be found in https://www.postgresql.org/docs/current/sql-createextension.html"
@@ -7211,6 +7208,9 @@ msgid "Support to return multiple outer/inner ring"
 msgstr ""
 
 msgid "Renamed from version 1.x"
+msgstr ""
+
+msgid "Support"
 msgstr ""
 
 msgid "Returns the polygon part of an alpha shape."
@@ -12214,9 +12214,6 @@ msgstr ""
 msgid "``pgr_trspViaVertices(text,anyarray,boolean,boolean,text)``"
 msgstr ""
 
-msgid "``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``"
-msgstr ""
-
 msgid "New prototypes"
 msgstr ""
 
@@ -13237,73 +13234,16 @@ msgstr ""
 msgid "Mayors"
 msgstr ""
 
-msgid "pgRouting 3"
+msgid "pgRouting 4"
 msgstr ""
 
-msgid "Minors 3.x"
+msgid "Minors 4.x"
 msgstr ""
 
-msgid "pgRouting 3.7"
+msgid "pgRouting 4.0"
 msgstr ""
 
 msgid "pgRouting 3.6"
-msgstr ""
-
-msgid "pgRouting 3.6.3 Release Notes"
-msgstr ""
-
-msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.6.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.3%22>`__"
-msgstr ""
-
-msgid "Build"
-msgstr ""
-
-msgid "Explicit minimum requirements:"
-msgstr ""
-
-msgid "postgres 11.0.0"
-msgstr ""
-
-msgid "postgis 3.0.0"
-msgstr ""
-
-msgid "g++ 13+ is supported"
-msgstr ""
-
-msgid "Code fixes"
-msgstr ""
-
-msgid "Fix warnings from cpplint."
-msgstr ""
-
-msgid "Fix warnings from clang 18."
-msgstr ""
-
-msgid "CI tests"
-msgstr ""
-
-msgid "Add a clang tidy test on changed files."
-msgstr ""
-
-msgid "Update test not done on versions: 3.0.1, 3.0.2, 3.0.3, 3.0.4, 3.1.0, 3.1.1, 3.1.2"
-msgstr ""
-
-msgid "Documentation"
-msgstr ""
-
-msgid "Results of documentation queries adujsted to boost 1.83.0 version:"
-msgstr ""
-
-msgid "pgr_edgeDisjointPaths"
-msgstr ""
-
-msgid "pgr_stoerWagner"
-msgstr ""
-
-msgid "pgtap tests"
-msgstr ""
-
-msgid "bug fixes"
 msgstr ""
 
 msgid "pgRouting 3.6.2 Release Notes"
@@ -13316,6 +13256,9 @@ msgid "Upgrade fix"
 msgstr ""
 
 msgid "The upgrade was failing for same minor"
+msgstr ""
+
+msgid "Code fixes"
 msgstr ""
 
 msgid "Fix warnings from cpplint"
@@ -13408,6 +13351,9 @@ msgstr ""
 msgid "`#2522 <https://github.com/pgRouting/pgrouting/pull/2522>`__ bdAstar code simplification."
 msgstr ""
 
+msgid "Documentation"
+msgstr ""
+
 msgid "`#2490 <https://github.com/pgRouting/pgrouting/pull/2490>`__ Automatic page history links."
 msgstr ""
 
@@ -13460,6 +13406,9 @@ msgid "SQL enhancements"
 msgstr ""
 
 msgid "`#2561 <https://github.com/pgRouting/pgrouting/issues/2561>`__ Not use wildcards on SQL"
+msgstr ""
+
+msgid "pgtap tests"
 msgstr ""
 
 msgid "`#2559 <https://github.com/pgRouting/pgrouting/issues/2559>`__ pgtap test using sampledata"
@@ -13817,6 +13766,9 @@ msgid "pgRouting 3.2.0 Release Notes"
 msgstr ""
 
 msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.2.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.0%22>`_ on Github."
+msgstr ""
+
+msgid "Build"
 msgstr ""
 
 msgid "`#1850 <https://github.com/pgRouting/pgrouting/issues/1850>`__: Change Boost min version to 1.56"
@@ -14288,6 +14240,9 @@ msgid "pgr_maxFlowMinCost_Cost"
 msgstr ""
 
 msgid "pgr_turnRestrictedPath"
+msgstr ""
+
+msgid "pgr_stoerWagner"
 msgstr ""
 
 msgid "pgr_dagShortestpath"
