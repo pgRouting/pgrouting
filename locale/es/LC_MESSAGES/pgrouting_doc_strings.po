@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.7.0
+# Copyright (C) pgRouting Contributors - Version v3.7.1
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 # Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
@@ -8,7 +8,7 @@
 # DeepL <noreply-mt-deepl@weblate.org>, 2024.
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.7.0\n"
+"Project-Id-Version: pgRouting v3.7.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-17 00:50+0000\n"
 "PO-Revision-Date: 2024-10-10 19:43+0000\n"
