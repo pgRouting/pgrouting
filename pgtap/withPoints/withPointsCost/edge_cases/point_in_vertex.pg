@@ -1,0 +1,170 @@
+/*PGR-GNU*****************************************************************
+
+Copyright (c) 2024  pgRouting developers
+Mail: project@pgrouting.org
+
+------
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ ********************************************************************PGR-GNU*/
+BEGIN;
+
+SET extra_float_digits=-3;
+
+SELECT plan(38);
+
+CREATE VIEW four_edges AS
+SELECT * FROM edges WHERE id IN (1,4,10,14);
+
+PREPARE dijkstra1(BIGINT, BIGINT) AS
+SELECT agg_cost::TEXT FROM pgr_dijkstraCost(
+  $$SELECT id, source, target, cost, reverse_cost FROM four_edges$$,
+  $1, $2, true);
+
+-- its a straigh line and one extreme are reachable
+SELECT results_eq($$dijkstra1(5,9)$$, ARRAY[4]::TEXT[]);
+SELECT results_eq($$dijkstra1(9,5)$$, ARRAY[4]::TEXT[]);
+
+
+/* Points
+  midpoint of edge 1 (-1 by default)
+*/
+PREPARE expectedCost1(BIGINT) AS
+SELECT agg_cost::TEXT FROM pgr_withPointsCost(
+  $$ SELECT id, source, target, cost, reverse_cost FROM four_edges$$,
+  $$ SELECT 1 AS edge_id, 0.5::float AS fraction$$,
+  -1,  $1, true) ;
+
+SELECT results_eq($$expectedCost1(6)$$, ARRAY[0.5]::TEXT[], 'Cost from midpoint on 1 (-1 default) to 6');
+SELECT results_eq($$expectedCost1(7)$$, ARRAY[1.5]::TEXT[] , 'Cost from midpoint on 1 to 7');
+SELECT results_eq($$expectedCost1(8)$$, ARRAY[2.5]::TEXT[] , 'Cost from midpoint on 1 to 8');
+SELECT results_eq($$expectedCost1(9)$$, ARRAY[3.5]::TEXT[] , 'Cost from midpoint on 1 to 9');
+
+/* Points
+  midpoint of edge 1 (-2 assigned)
+*/
+PREPARE expectedCost2(BIGINT) AS
+SELECT agg_cost::TEXT FROM pgr_withPointsCost(
+  $$ SELECT id, source, target, cost, reverse_cost FROM four_edges$$,
+  $$ SELECT 2 AS pid, 1 AS edge_id, 0.5::float AS fraction$$,
+  -2,  $1, true) ;
+
+SELECT results_eq($$expectedCost2(6)$$, $$expectedCost1(6)$$, 'Cost from midpoint on 1 (-2 assigned) to 6');
+SELECT results_eq($$expectedCost2(7)$$, $$expectedCost1(7)$$, 'Cost from midpoint on 1 to 7');
+SELECT results_eq($$expectedCost2(8)$$, $$expectedCost1(8)$$, 'Cost from midpoint on 1 to 8');
+SELECT results_eq($$expectedCost2(9)$$, $$expectedCost1(9)$$, 'Cost from midpoint on 1 to 9');
+
+/* UNION ALL data is not sorted
+  source point of edge 10 (-1 by default)
+  midpoint of edge 1 (-2 by default)
+*/
+PREPARE expectedCost3(BIGINT, BIGINT) AS
+SELECT agg_cost::TEXT FROM pgr_withPointsCost(
+  $$SELECT id, source, target, cost, reverse_cost FROM four_edges$$,
+  $$SELECT 10 AS edge_id, 0::float AS fraction UNION ALL SELECT 1, 0.5 $$,
+  $1, $2, true);
+
+SELECT results_eq($$expectedCost3(-2,6)$$, $$expectedCost1(6)$$, '(UNION ALL) Cost from midpoint on 1 (-2 default) to 6');
+SELECT results_eq($$expectedCost3(-2,7)$$, $$expectedCost1(7)$$, 'Cost from midpoint on 1 to 7');
+SELECT results_eq($$expectedCost3(-2,8)$$, $$expectedCost1(8)$$, 'Cost from midpoint on 1 to 8');
+SELECT results_eq($$expectedCost3(-2,9)$$, $$expectedCost1(9)$$, 'Cost from midpoint on 1 to 9');
+
+SELECT CASE WHEN min_version('3.7.1')
+THEN
+  collect_tap(
+    set_eq($$expectedCost3(-1,9)$$, $$dijkstra1(7,9)$$, 'Cost from target on 10 (-1 default, aka 7) to 9'),
+    set_eq($$expectedCost3(-1,8)$$, $$dijkstra1(7,8)$$, 'Cost from target on 10 to 8'),
+    set_eq($$expectedCost3(-1,7)$$, ARRAY[0]::TEXT[], 'Cost from target on 10 to 7')
+  )
+ELSE skip('Fix implemented on 3.7.1',3)
+END;
+
+/* UNION data is sorted
+  midpoint of edge 1 (-1 by default)
+  source point of edge 10 (-2 by default)
+*/
+DEALLOCATE PREPARE expectedCost3;
+PREPARE expectedCost3(BIGINT, BIGINT) AS
+SELECT agg_cost::TEXT FROM pgr_withPointsCost(
+  $$SELECT id, source, target, cost, reverse_cost FROM four_edges$$,
+  $$SELECT 10 AS edge_id, 0::float AS fraction UNION SELECT 1, 0.5 $$,
+  $1, $2, true);
+
+SELECT results_eq($$expectedCost3(-1,6)$$, $$expectedCost1(6)$$, '(UNION) Cost from midpoint on 1 (-2 default) to 6');
+SELECT results_eq($$expectedCost3(-1,7)$$, $$expectedCost1(7)$$, 'Cost from midpoint on 1 to 7');
+SELECT results_eq($$expectedCost3(-1,8)$$, $$expectedCost1(8)$$, 'Cost from midpoint on 1 to 8');
+SELECT results_eq($$expectedCost3(-1,9)$$, $$expectedCost1(9)$$, 'Cost from midpoint on 1 to 9');
+
+SELECT CASE WHEN min_version('3.7.1')
+THEN
+  collect_tap(
+    set_eq($$expectedCost3(-2,9)$$, $$dijkstra1(7,9)$$, 'Cost from target on 10 (-1 default, aka 7) to 9'),
+    set_eq($$expectedCost3(-2,8)$$, $$dijkstra1(7,8)$$, 'Cost from target on 10 to 8'),
+    set_eq($$expectedCost3(-2,7)$$, ARRAY[0]::TEXT[], 'Cost from target on 10 to 7')
+  )
+ELSE skip('Fix implemented on 3.7.1',3)
+END;
+
+/* VALUES data is not sorted
+  midpoint of edge 1 (-1 by default)
+  source point of edge 10 (-2 by default)
+*/
+DEALLOCATE PREPARE expectedCost3;
+PREPARE expectedCost3(BIGINT, BIGINT) AS
+SELECT agg_cost::TEXT FROM pgr_withPointsCost(
+  $$SELECT id, source, target, cost, reverse_cost FROM four_edges$$,
+  $$SELECT * FROM (VALUES (1,0.5), (10, 0)) AS t (edge_id, fraction)$$,
+  $1, $2, true);
+
+SELECT results_eq($$expectedCost3(-1,6)$$, $$expectedCost1(6)$$, '(VALUES) Cost from midpoint on 1 (-1 default) to 6');
+SELECT results_eq($$expectedCost3(-1,7)$$, $$expectedCost1(7)$$, 'Cost from midpoint on 1 to 7');
+SELECT results_eq($$expectedCost3(-1,8)$$, $$expectedCost1(8)$$, 'Cost from midpoint on 1 to 8');
+SELECT results_eq($$expectedCost3(-1,9)$$, $$expectedCost1(9)$$, 'Cost from midpoint on 1 to 9');
+
+SELECT CASE WHEN min_version('3.7.1')
+THEN
+  collect_tap(
+    set_eq($$expectedCost3(-2,9)$$, $$dijkstra1(7,9)$$, 'Cost from target on 10 (-1 default, aka 7) to 9'),
+    set_eq($$expectedCost3(-2,8)$$, $$dijkstra1(7,8)$$, 'Cost from target on 10 to 8'),
+    set_eq($$expectedCost3(-2,7)$$, ARRAY[0]::TEXT[], 'Cost from target on 10 to 7')
+  )
+ELSE skip('Fix implemented on 3.7.1',3)
+END;
+
+/* Points
+  midpoint of edge 1 (-2 assigned)
+  source point of edge 10 (-1 assigned)
+*/
+DEALLOCATE PREPARE expectedCost3;
+PREPARE expectedCost3(BIGINT, BIGINT) AS
+SELECT agg_cost::TEXT FROM pgr_withPointsCost(
+  $$SELECT id, source, target, cost, reverse_cost FROM four_edges$$,
+  $$SELECT 2 AS pid, 1 AS edge_id, 0.5::float AS fraction UNION SELECT 1, 10, 0 $$,
+  $1, $2, true);
+
+SELECT results_eq($$expectedCost3(-2,6)$$, $$expectedCost1(6)$$, '(ASSIGNED) Cost from midpoint on 1 (-2 default) to 6');
+SELECT results_eq($$expectedCost3(-2,7)$$, $$expectedCost1(7)$$, 'Cost from midpoint on 1 to 7');
+SELECT results_eq($$expectedCost3(-2,8)$$, $$expectedCost1(8)$$, 'Cost from midpoint on 1 to 8');
+SELECT results_eq($$expectedCost3(-2,9)$$, $$expectedCost1(9)$$, 'Cost from midpoint on 1 to 9');
+
+SELECT CASE WHEN min_version('3.7.1')
+THEN
+  collect_tap(
+    set_eq($$expectedCost3(-1,9)$$, $$dijkstra1(7,9)$$, 'Cost from target on 10 (-1 default, aka 7) to 9'),
+    set_eq($$expectedCost3(-1,8)$$, $$dijkstra1(7,8)$$, 'Cost from target on 10 to 8'),
+    set_eq($$expectedCost3(-1,7)$$, ARRAY[0]::TEXT[], 'Cost from target on 10 to 7')
+  )
+ELSE skip('Fix implemented on 3.7.1',3)
+END;
+
+SELECT finish();
+ROLLBACK;

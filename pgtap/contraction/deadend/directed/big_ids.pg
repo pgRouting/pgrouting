@@ -97,16 +97,18 @@ SELECT set_eq('q4',
 --  input: 5 <-> 6 <- 10 <- 15
 -- output: 6{5, 10, 15}
 PREPARE q5 AS
-SELECT * FROM pgr_contraction(
+SELECT type, id, unnest(contracted_vertices) FROM pgr_contraction(
     $$SELECT id, source, target, cost, reverse_cost FROM edges
     WHERE id IN (100000001, 100000002, 100000003)$$,
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
 
 PREPARE sol5 AS
-SELECT type, id, contracted_vertices, source, target, cost
+SELECT type, id, unnest
 FROM (VALUES
-    ('v'::CHAR, 100000006::BIGINT, ARRAY[100000005, 100000010, 100000015]::BIGINT[], -1::BIGINT, -1::BIGINT, -1::FLOAT)
-) AS t(type, id, contracted_vertices, source, target, cost );
+    ('v'::CHAR, 100000006::BIGINT, 100000005),
+    ('v'::CHAR, 100000006::BIGINT, 100000015),
+    ('v'::CHAR, 100000006::BIGINT, 100000010)
+) AS t(type, id, unnest);
 
 SELECT set_eq('q5', 'sol5');
 
