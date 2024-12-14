@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-11 19:07+0000\n"
+"POT-Creation-Date: 2024-12-14 13:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3946,6 +3946,9 @@ msgstr ""
 msgid "``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``"
 msgstr ""
 
+msgid "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+msgstr ""
+
 msgid "All releases"
 msgstr ""
 
@@ -4798,25 +4801,16 @@ msgstr ""
 msgid ":doc:`pgr_trsp_withPoints`:"
 msgstr ""
 
-msgid "Migration of ``pgr_trspViaVertices``"
+msgid "Migration of pgr_trspViaVertices"
 msgstr ""
 
-msgid "The integral types of the ``Edges SQL`` can only be ``INTEGER``."
+msgid "Migrating pgr_trspViaVertices using pgr_dijkstraVia"
 msgstr ""
 
-msgid ":doc:`pgr_dijkstraVia` when there are no restrictions,"
+msgid "Using :doc:`pgr_dijkstraVia`."
 msgstr ""
 
-msgid ":doc:`pgr_trspVia` when there are restrictions."
-msgstr ""
-
-msgid "Migrating ``pgr_trspViaVertices`` using ``pgr_dijkstraVia``"
-msgstr ""
-
-msgid "Use :doc:`pgr_dijkstraVia` instead."
-msgstr ""
-
-msgid ":doc:`pgr_dijkstraVia`:"
+msgid "When the need of using the same (meaningless) names and and strict types then convert the result to the deprecated function columns:"
 msgstr ""
 
 msgid "``id1`` is the path identifier"
@@ -4828,13 +4822,10 @@ msgstr ""
 msgid "``id3`` is the edge"
 msgstr ""
 
-msgid "Migrating ``pgr_trspViaVertices`` using ``pgr_trspVia``"
+msgid "Migrating pgr_trspViaVertices using pgr_trspVia"
 msgstr ""
 
-msgid "Use :doc:`pgr_trspVia` instead."
-msgstr ""
-
-msgid ":doc:`pgr_trspVia`:"
+msgid "Using :doc:`pgr_trspVia`."
 msgstr ""
 
 msgid "Migration of pgr_trspViaEdges"
@@ -4847,9 +4838,6 @@ msgid "Migrating pgr_trspViaEdges using pgr_withPointsVia"
 msgstr ""
 
 msgid "Using :doc:`pgr_withPointsVia`."
-msgstr ""
-
-msgid "When the need of using the same (meaningless) names and and strict types then convert the result to the deprecated function columns:"
 msgstr ""
 
 msgid "Migrating pgr_trspViaEdges using pgr_trspVia_withPoints"
