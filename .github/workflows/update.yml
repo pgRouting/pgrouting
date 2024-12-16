@@ -28,6 +28,7 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
+          boost_minor: [56]
           old_pgr: [3.7.0, 3.6.3, 3.6.2, 3.6.1, 3.6.0, 3.5.1, 3.5.0, 3.4.2, 3.4.1, 3.4.0, 3.3.5, 3.3.4, 3.3.3, 3.3.2, 3.3.1, 3.3.0, 3.0.0, 3.0.1, 3.0.2, 3.0.3, 3.0.4, 3.0.6, 3.1.0, 3.1.1, 3.1.2, 3.1.3, 3.2.0, 3.2.1, 3.2.2]
 
     steps:
@@ -63,7 +64,6 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y \
-            libboost-graph-dev \
             libtap-parser-sourcehandler-pgtap-perl \
             postgresql-${PGVER} \
             postgresql-${PGVER}-pgtap \
@@ -73,6 +73,10 @@ jobs:
 
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+
+          wget https://sourceforge.net/projects/boost/files/boost/1.${{ matrix.boost_minor }}.0/boost_1_${{ matrix.boost_minor }}_0.tar.bz2
+          sudo tar --bzip2 -xf  boost_1_${{ matrix.boost_minor }}_0.tar.bz2
+          sudo mv boost_1_${{ matrix.boost_minor }}_0/boost /usr/include/
 
       - name: get old version
         uses: actions/checkout@v4
