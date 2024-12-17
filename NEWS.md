@@ -29,6 +29,8 @@ milestone for 3.7.1
 
 **Bug fixes**
 
+* [#2680](https://github.com/pgRouting/pgrouting/pull/2680) fails to compile
+  under mingw64 gcc 13.2
 * [#2689](https://github.com/pgRouting/pgrouting/pull/2689) When point is a
   vertex, the withPoints family do not return results.
 
