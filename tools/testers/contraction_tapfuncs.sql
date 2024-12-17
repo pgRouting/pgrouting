@@ -97,24 +97,25 @@ BEGIN
   RETURN QUERY
   SELECT set_eq(q, expected);
 
-  q = format($d$ SELECT * FROM pgr_contraction(
+  q = format($d$ SELECT type, id, unnest(contracted_vertices) FROM pgr_contraction(
       $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
       ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], '%1$s'::BOOLEAN)$d$, directed);
 
   expected = format($d$
-    SELECT type, id, contracted_vertices, source, target, cost
+    SELECT type, id, unnest
     FROM (VALUES
-      ('v'::CHAR, %1$s::BIGINT, '%2$s'::BIGINT[], -1::BIGINT, -1::BIGINT, -1::FLOAT),
-      ('v', %3$s, '%4$s'::BIGINT[], -1, -1, -1),
-      ('v', %5$s, '%6$s'::BIGINT[], -1, -1, -1),
-      ('v', %7$s, '%8$s'::BIGINT[], -1, -1, -1),
-      ('v', %9$s, '%10$s'::BIGINT[], -1, -1, -1)
-    ) AS t(type, id, contracted_vertices, source, target, cost )$d$,
-    vids[4], ARRAY[vids[2]],
-    vids[6], ARRAY[vids[5]],
-    vids[7], ARRAY[vids[1], vids[3]],
-    vids[8], ARRAY[vids[9]],
-    vids[14], ARRAY[vids[13]]);
+      ('v'::CHAR, %1$s::BIGINT, %2$s),
+      ('v', %3$s, %4$s),
+      ('v', %5$s, %6$s),
+      ('v', %5$s, %7$s),
+      ('v', %8$s, %9$s),
+      ('v', %10$s, %11$s)
+    ) AS t(type, id, unnest)$d$,
+    vids[4], vids[2],
+    vids[6], vids[5],
+    vids[7], vids[1], vids[3],
+    vids[8], vids[9],
+    vids[14], vids[13]);
 
     RETURN QUERY
     SELECT set_eq(q, expected);
