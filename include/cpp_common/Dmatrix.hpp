@@ -1,8 +1,6 @@
 /*PGR-GNU*****************************************************************
 File: Dmatrix.hpp
 
-FILE: Dmatrix.h
-
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
@@ -34,6 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <map>
 #include <utility>
+#include <cstdint>
 
 typedef struct IID_t_rt IID_t_rt;
 
