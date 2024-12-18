@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-18 21:19+0000\n"
+"POT-Creation-Date: 2024-12-14 13:32+0000\n"
 "PO-Revision-Date: 2022-12-13 12:30+0000\n"
 "Last-Translator: Hyung-Gyu Ryoo <hyunggyu.ryoo@gmail.com>\n"
 "Language-Team: Korean <https://weblate.osgeo.org/projects/pgrouting/"
@@ -4398,121 +4398,14 @@ msgstr ":doc:`release_notes`"
 msgid "pgRouting 4.0.0 Release Notes"
 msgstr ""
 
-msgid "No Changes Yet"
-msgstr ""
-
-msgid "pgRouting 3"
-msgstr ""
-
-msgid "Minors 3.x"
-msgstr ""
-
-msgid "pgRouting 3.7"
-msgstr ""
-
-msgid "pgRouting 3.7.0 Release Notes"
+msgid "Removal of deprecated functions and signatures"
 msgstr ""
 
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.7.0 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
+"``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``"
 msgstr ""
 
-msgid "Support"
-msgstr ""
-
-msgid ""
-"`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stop support of "
-"PostgreSQL12 on pgrouting v3.7"
-msgstr ""
-
-#, fuzzy
-msgid "Stopping support of PostgreSQL 12"
-msgstr "PostgreSQL 설정"
-
-msgid "CI does not test for PostgreSQL 12"
-msgstr ""
-
-msgid "New experimental functions"
-msgstr ""
-
-msgid "Metrics"
-msgstr ""
-
-msgid "pgr_betweennessCentrality"
-msgstr ""
-
-msgid "Official functions changes"
-msgstr ""
-
-msgid ""
-"`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standarize "
-"spanning tree functions output"
-msgstr ""
-
-msgid "Functions:"
-msgstr ""
-
-msgid "``pgr_kruskalDD``"
-msgstr ""
-
-msgid "``pgr_kruskalDFS``"
-msgstr ""
-
-msgid "``pgr_kruskalBFS``"
-msgstr ""
-
-msgid "``pgr_primDD``"
-msgstr ""
-
-msgid "``pgr_primDFS``"
-msgstr ""
-
-msgid "``pgr_primBFS``"
-msgstr ""
-
-msgid "Standarizing output columns to |result-spantree|"
-msgstr ""
-
-msgid "Added ``pred`` result columns."
-msgstr ""
-
-msgid "Experimental promoted to proposed."
-msgstr ""
-
-msgid ""
-"`#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ pgr_LineGraph "
-"ignores directed flag and use negative values for identifiers."
-msgstr ""
-
-#, fuzzy
-msgid "``pgr_lineGraph``"
-msgstr ":doc:`pgr_analyzeGraph`"
-
-msgid "Promoted to **proposed** signature."
-msgstr ""
-
-#, fuzzy
-msgid "Works for directed and undirected graphs."
-msgstr ":doc:`pgr_bridges` - 무방향 그래프의 브릿지."
-
-msgid "Code enhancement"
-msgstr ""
-
-msgid ""
-"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Driving "
-"distance cleanup"
-msgstr ""
-
-msgid ""
-"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Read postgresql "
-"data on C++"
-msgstr ""
-
-msgid ""
-"`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy does "
-"not work"
+msgid "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
 msgstr ""
 
 msgid "All releases"
@@ -4802,10 +4695,19 @@ msgstr ""
 msgid "|result-bfs|"
 msgstr ""
 
+msgid "``pgr_kruskalDD``"
+msgstr ""
+
 msgid "Single vertex"
 msgstr ""
 
 msgid "Multiple vertices"
+msgstr ""
+
+msgid "``pgr_kruskalDFS``"
+msgstr ""
+
+msgid "``pgr_kruskalBFS``"
 msgstr ""
 
 msgid "Output columns were |result-bfs|"
@@ -4961,6 +4863,15 @@ msgid ""
 "Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__ :"
 "doc:`pgr_primDD`, :doc:`pgr_primBFS` and :doc:`pgr_primDFS` result columns "
 "are being standardized."
+msgstr ""
+
+msgid "``pgr_primDD``"
+msgstr ""
+
+msgid "``pgr_primDFS``"
+msgstr ""
+
+msgid "``pgr_primBFS``"
 msgstr ""
 
 msgid "Prim single vertex"
@@ -5474,25 +5385,20 @@ msgstr ""
 msgid ":doc:`pgr_trsp_withPoints`:"
 msgstr ""
 
-msgid "Migration of ``pgr_trspViaVertices``"
+#, fuzzy
+msgid "Migration of pgr_trspViaVertices"
+msgstr ":doc:`pgr_withPoints`"
+
+msgid "Migrating pgr_trspViaVertices using pgr_dijkstraVia"
 msgstr ""
 
-msgid "The integral types of the ``Edges SQL`` can only be ``INTEGER``."
-msgstr ""
+#, fuzzy
+msgid "Using :doc:`pgr_dijkstraVia`."
+msgstr ":doc:`pgr_dijkstraVia`"
 
-msgid ":doc:`pgr_dijkstraVia` when there are no restrictions,"
-msgstr ""
-
-msgid ":doc:`pgr_trspVia` when there are restrictions."
-msgstr ""
-
-msgid "Migrating ``pgr_trspViaVertices`` using ``pgr_dijkstraVia``"
-msgstr ""
-
-msgid "Use :doc:`pgr_dijkstraVia` instead."
-msgstr ""
-
-msgid ":doc:`pgr_dijkstraVia`:"
+msgid ""
+"When the need of using the same (meaningless) names and and strict types "
+"then convert the result to the deprecated function columns:"
 msgstr ""
 
 msgid "``id1`` is the path identifier"
@@ -5504,45 +5410,31 @@ msgstr ""
 msgid "``id3`` is the edge"
 msgstr ""
 
-msgid "Migrating ``pgr_trspViaVertices`` using ``pgr_trspVia``"
+msgid "Migrating pgr_trspViaVertices using pgr_trspVia"
 msgstr ""
 
-msgid "Use :doc:`pgr_trspVia` instead."
+#, fuzzy
+msgid "Using :doc:`pgr_trspVia`."
+msgstr ":doc:`pgr_trspVia`"
+
+#, fuzzy
+msgid "Migration of pgr_trspViaEdges"
+msgstr ":doc:`pgr_withPoints`"
+
+msgid "In this section this set of points is going to be used:"
 msgstr ""
 
-msgid ":doc:`pgr_trspVia`:"
+msgid "Migrating pgr_trspViaEdges using pgr_withPointsVia"
 msgstr ""
 
-msgid "Migration of ``pgr_trspViaEdges``"
-msgstr ""
+#, fuzzy
+msgid "Using :doc:`pgr_withPointsVia`."
+msgstr ":doc:`pgr_withPointsVia`"
 
-msgid ""
-"And will travel thru the following Via points :math:"
-"`4\\rightarrow3\\rightarrow6`"
-msgstr ""
-
-msgid ":doc:`pgr_withPointsVia` when there are no restrictions,"
-msgstr ""
-
-msgid ":doc:`pgr_trspVia_withPoints` when there are restrictions."
-msgstr ""
-
-msgid "Migrating ``pgr_trspViaEdges`` using ``pgr_withPointsVia``"
-msgstr ""
-
-msgid "Use :doc:`pgr_withPointsVia` instead."
-msgstr ""
-
-msgid ":doc:`pgr_withPointsVia`:"
-msgstr ""
-
-msgid "Migrating ``pgr_trspViaEdges`` using ``pgr_trspVia_withPoints``"
+msgid "Migrating pgr_trspViaEdges using pgr_trspVia_withPoints"
 msgstr ""
 
 msgid "Use :doc:`pgr_trspVia_withPoints` instead."
-msgstr ""
-
-msgid ":doc:`pgr_trspVia_withPoints`:"
 msgstr ""
 
 msgid ":doc:`withPoints-category`"
@@ -8263,6 +8155,9 @@ msgid "Support to return multiple outer/inner ring"
 msgstr ""
 
 msgid "Renamed from version 1.x"
+msgstr ""
+
+msgid "Support"
 msgstr ""
 
 msgid "Returns the polygon part of an alpha shape."
@@ -11327,6 +11222,9 @@ msgid ""
 "``pgr_drivingDistance`` - Returns the driving distance from a start node."
 msgstr ""
 
+msgid "Standarizing output columns to |result-spantree|"
+msgstr ""
+
 msgid "Added ``depth`` and ``start_vid`` result columns."
 msgstr ""
 
@@ -12533,6 +12431,9 @@ msgid ""
 "breadth First Search ordering."
 msgstr ""
 
+msgid "Added ``pred`` result columns."
+msgstr ""
+
 msgid ""
 "Visits and extracts the nodes information in Breath First Search ordering of "
 "the Minimum Spanning Tree created using Kruskal's algorithm."
@@ -12682,6 +12583,13 @@ msgid ""
 "``pgr_lineGraph`` — Transforms the given graph into its corresponding edge-"
 "based graph."
 msgstr ""
+
+msgid "Promoted to **proposed** signature."
+msgstr ""
+
+#, fuzzy
+msgid "Works for directed and undirected graphs."
+msgstr ":doc:`pgr_bridges` - 무방향 그래프의 브릿지."
 
 msgid ""
 "Given a graph :math:`G`, its line graph :math:`L(G)` is a graph such that:"
@@ -14283,10 +14191,6 @@ msgstr ""
 msgid "``pgr_trspViaVertices(text,anyarray,boolean,boolean,text)``"
 msgstr ""
 
-msgid ""
-"``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``"
-msgstr ""
-
 msgid "New prototypes"
 msgstr ""
 
@@ -15614,6 +15518,86 @@ msgid "Minors 4.x"
 msgstr ""
 
 msgid "pgRouting 4.0"
+msgstr ""
+
+msgid "pgRouting 3"
+msgstr ""
+
+msgid "Minors 3.x"
+msgstr ""
+
+msgid "pgRouting 3.7"
+msgstr ""
+
+msgid "pgRouting 3.7.0 Release Notes"
+msgstr ""
+
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git closed "
+"milestone for 3.7.0 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
+msgstr ""
+
+msgid ""
+"`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stop support of "
+"PostgreSQL12 on pgrouting v3.7"
+msgstr ""
+
+#, fuzzy
+msgid "Stopping support of PostgreSQL 12"
+msgstr "PostgreSQL 설정"
+
+msgid "CI does not test for PostgreSQL 12"
+msgstr ""
+
+msgid "New experimental functions"
+msgstr ""
+
+msgid "Metrics"
+msgstr ""
+
+msgid "pgr_betweennessCentrality"
+msgstr ""
+
+msgid "Official functions changes"
+msgstr ""
+
+msgid ""
+"`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standarize "
+"spanning tree functions output"
+msgstr ""
+
+msgid "Functions:"
+msgstr ""
+
+msgid "Experimental promoted to proposed."
+msgstr ""
+
+msgid ""
+"`#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ pgr_LineGraph "
+"ignores directed flag and use negative values for identifiers."
+msgstr ""
+
+#, fuzzy
+msgid "``pgr_lineGraph``"
+msgstr ":doc:`pgr_analyzeGraph`"
+
+msgid "Code enhancement"
+msgstr ""
+
+msgid ""
+"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Driving "
+"distance cleanup"
+msgstr ""
+
+msgid ""
+"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Read postgresql "
+"data on C++"
+msgstr ""
+
+msgid ""
+"`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy does "
+"not work"
 msgstr ""
 
 msgid "pgRouting 3.6"
