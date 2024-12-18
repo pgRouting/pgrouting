@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-18 21:19+0000\n"
+"POT-Creation-Date: 2024-12-14 13:32+0000\n"
 "PO-Revision-Date: 2024-10-10 19:47+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
@@ -4561,134 +4561,18 @@ msgstr ":doc:`release_notes`"
 msgid "pgRouting 4.0.0 Release Notes"
 msgstr "pgRouting 3.0.0 发布说明"
 
-msgid "No Changes Yet"
-msgstr ""
-
-msgid "pgRouting 3"
-msgstr "pgRouting 3"
-
-msgid "Minors 3.x"
-msgstr "3.x小版本"
-
-msgid "pgRouting 3.7"
-msgstr "pgRouting 3.7"
-
-msgid "pgRouting 3.7.0 Release Notes"
-msgstr "pgRouting 3.7.0 发布说明"
+#, fuzzy
+msgid "Removal of deprecated functions and signatures"
+msgstr "关于已弃用的签名："
 
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.7.0 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
+"``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 `3.7.0 <https://github.com/"
-"pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__ 的 Git 关闭里程碑"
-
-msgid "Support"
-msgstr "支持"
+"``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``"
 
 #, fuzzy
-msgid ""
-"`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stop support of "
-"PostgreSQL12 on pgrouting v3.7"
-msgstr ""
-"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ 在 C++ 上读取 "
-"postgresql 数据"
-
-#, fuzzy
-msgid "Stopping support of PostgreSQL 12"
-msgstr "从 PostgreSQL 12 开始：："
-
-#, fuzzy
-msgid "CI does not test for PostgreSQL 12"
-msgstr "适用于 postgreSQL 10"
-
-msgid "New experimental functions"
-msgstr "新的实验函数"
-
-#, fuzzy
-msgid "Metrics"
-msgstr "限制"
-
-msgid "pgr_betweennessCentrality"
-msgstr ""
-
-msgid "Official functions changes"
-msgstr "官方功能变更"
-
-msgid ""
-"`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standarize "
-"spanning tree functions output"
-msgstr ""
-
-msgid "Functions:"
-msgstr "新函数:"
-
-msgid "``pgr_kruskalDD``"
-msgstr "``pgr_kruskalDD``"
-
-msgid "``pgr_kruskalDFS``"
-msgstr "``pgr_kruskalDFS``"
-
-msgid "``pgr_kruskalBFS``"
-msgstr "``pgr_kruskalBFS``"
-
-msgid "``pgr_primDD``"
-msgstr "``pgr_primDD``"
-
-msgid "``pgr_primDFS``"
-msgstr "``pgr_primDFS``"
-
-msgid "``pgr_primBFS``"
-msgstr "``pgr_primBFS``"
-
-msgid "Standarizing output columns to |result-spantree|"
-msgstr "将输出列标准化为 |result-spantree|"
-
-#, fuzzy
-msgid "Added ``pred`` result columns."
-msgstr "添加了 ``depth`` 和``pred`` 结果列。"
-
-msgid "Experimental promoted to proposed."
-msgstr "实验提升为拟议。"
-
-msgid ""
-"`#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ pgr_LineGraph "
-"ignores directed flag and use negative values for identifiers."
-msgstr ""
-
-msgid "``pgr_lineGraph``"
-msgstr "``pgr_lineGraph``"
-
-msgid "Promoted to **proposed** signature."
-msgstr "晋升为 **拟议** 签名。"
-
-msgid "Works for directed and undirected graphs."
-msgstr "适用于有向和无向图。"
-
-msgid "Code enhancement"
-msgstr "代码改进"
-
-msgid ""
-"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Driving "
-"distance cleanup"
-msgstr ""
-"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ 行车距离清理"
-
-msgid ""
-"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Read postgresql "
-"data on C++"
-msgstr ""
-"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ 在 C++ 上读取 "
-"postgresql 数据"
-
-msgid ""
-"`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy does "
-"not work"
-msgstr ""
-"`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy 不工"
-"作"
+msgid "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+msgstr "``pgr_trspViaVertices(text,anyarray,boolean,boolean,text)``"
 
 msgid "All releases"
 msgstr "所有版本"
@@ -4992,11 +4876,20 @@ msgstr ""
 msgid "|result-bfs|"
 msgstr "|result-bfs|"
 
+msgid "``pgr_kruskalDD``"
+msgstr "``pgr_kruskalDD``"
+
 msgid "Single vertex"
 msgstr "单顶点"
 
 msgid "Multiple vertices"
 msgstr "多个顶点"
+
+msgid "``pgr_kruskalDFS``"
+msgstr "``pgr_kruskalDFS``"
+
+msgid "``pgr_kruskalBFS``"
+msgstr "``pgr_kruskalBFS``"
 
 msgid "Output columns were |result-bfs|"
 msgstr ""
@@ -5172,6 +5065,15 @@ msgid ""
 msgstr ""
 "从 `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ 开始， :doc:"
 "`pgr_drivingDistance`结果列正在标准化。"
+
+msgid "``pgr_primDD``"
+msgstr "``pgr_primDD``"
+
+msgid "``pgr_primDFS``"
+msgstr "``pgr_primDFS``"
+
+msgid "``pgr_primBFS``"
+msgstr "``pgr_primBFS``"
 
 #, fuzzy
 msgid "Prim single vertex"
@@ -5713,26 +5615,23 @@ msgstr "请使用 :doc:`pgr_trsp_withPoints`。"
 msgid ":doc:`pgr_trsp_withPoints`:"
 msgstr ":doc:`pgr_trsp_withPoints`:"
 
-msgid "Migration of ``pgr_trspViaVertices``"
+#, fuzzy
+msgid "Migration of pgr_trspViaVertices"
 msgstr "迁移 ``pgr_trspViaVertices``"
 
-msgid "The integral types of the ``Edges SQL`` can only be ``INTEGER``."
-msgstr "``Edges SQL`` 的整数类型只能是 ``INTEGER``。"
-
-msgid ":doc:`pgr_dijkstraVia` when there are no restrictions,"
-msgstr ":doc:`pgr_dijkstraVia` 当无限制时，"
-
-msgid ":doc:`pgr_trspVia` when there are restrictions."
-msgstr ":doc:`pgr_trspVia` 当有限制时。"
-
-msgid "Migrating ``pgr_trspViaVertices`` using ``pgr_dijkstraVia``"
+#, fuzzy
+msgid "Migrating pgr_trspViaVertices using pgr_dijkstraVia"
 msgstr "使用 ``pgr_dijkstraVia``迁移 ``pgr_trspViaVertices``"
 
-msgid "Use :doc:`pgr_dijkstraVia` instead."
-msgstr "请使用 :doc:`pgr_dijkstraVia`。"
+#, fuzzy
+msgid "Using :doc:`pgr_dijkstraVia`."
+msgstr ":doc:`pgr_dijkstraVia`"
 
-msgid ":doc:`pgr_dijkstraVia`:"
-msgstr ":doc:`pgr_dijkstraVia`:"
+#, fuzzy
+msgid ""
+"When the need of using the same (meaningless) names and and strict types "
+"then convert the result to the deprecated function columns:"
+msgstr "当需要使用严格相同（无意义）的函数名称和类型进行迁移时："
 
 msgid "``id1`` is the path identifier"
 msgstr "``id1`` 是路径标识符"
@@ -5743,46 +5642,35 @@ msgstr "``id2`` 是节点"
 msgid "``id3`` is the edge"
 msgstr "``id3`` 是边"
 
-msgid "Migrating ``pgr_trspViaVertices`` using ``pgr_trspVia``"
+#, fuzzy
+msgid "Migrating pgr_trspViaVertices using pgr_trspVia"
 msgstr "使用 ``pgr_trspVia``迁移 ``pgr_trspViaVertices``"
 
-msgid "Use :doc:`pgr_trspVia` instead."
-msgstr "使用 :doc:`pgr_trspVia`。"
+#, fuzzy
+msgid "Using :doc:`pgr_trspVia`."
+msgstr ":doc:`pgr_trspVia`"
 
-msgid ":doc:`pgr_trspVia`:"
-msgstr ":doc:`pgr_trspVia`:"
-
-msgid "Migration of ``pgr_trspViaEdges``"
+#, fuzzy
+msgid "Migration of pgr_trspViaEdges"
 msgstr "迁移 ``pgr_trspViaEdges``"
 
-msgid ""
-"And will travel thru the following Via points :math:"
-"`4\\rightarrow3\\rightarrow6`"
-msgstr "并将途经以下途经点： :math:`4\\rightarrow3\\rightarrow6`"
+msgid "In this section this set of points is going to be used:"
+msgstr ""
 
-msgid ":doc:`pgr_withPointsVia` when there are no restrictions,"
-msgstr ":doc:`pgr_withPointsVia` 当没有限制时，"
-
-msgid ":doc:`pgr_trspVia_withPoints` when there are restrictions."
-msgstr ":doc:`pgr_trspVia_withPoints` 当有限制时。"
-
-msgid "Migrating ``pgr_trspViaEdges`` using ``pgr_withPointsVia``"
+#, fuzzy
+msgid "Migrating pgr_trspViaEdges using pgr_withPointsVia"
 msgstr "使用 ``pgr_withPointsVia`` 迁移 ``pgr_trspViaEdges``"
 
-msgid "Use :doc:`pgr_withPointsVia` instead."
-msgstr "请使用 :doc:`pgr_withPointsVia`。"
+#, fuzzy
+msgid "Using :doc:`pgr_withPointsVia`."
+msgstr "使用 :doc:`pgr_withPoints`"
 
-msgid ":doc:`pgr_withPointsVia`:"
-msgstr ":doc:`pgr_withPointsVia`:"
-
-msgid "Migrating ``pgr_trspViaEdges`` using ``pgr_trspVia_withPoints``"
+#, fuzzy
+msgid "Migrating pgr_trspViaEdges using pgr_trspVia_withPoints"
 msgstr "使用 ``pgr_trspVia_withPoints``迁移``pgr_trspViaEdges``"
 
 msgid "Use :doc:`pgr_trspVia_withPoints` instead."
 msgstr "使用 :doc:`pgr_trspVia_withPoints` 代替。"
-
-msgid ":doc:`pgr_trspVia_withPoints`:"
-msgstr ":doc:`pgr_trspVia_withPoints`:"
 
 msgid ":doc:`withPoints-category`"
 msgstr ":doc:`withPoints-category`"
@@ -8714,6 +8602,9 @@ msgstr "支持返回多个外/内圈"
 
 msgid "Renamed from version 1.x"
 msgstr "从版本1.X重命名"
+
+msgid "Support"
+msgstr "支持"
 
 msgid "Returns the polygon part of an alpha shape."
 msgstr "返回 alpha 形状的多边形部分。"
@@ -12050,6 +11941,9 @@ msgid ""
 "``pgr_drivingDistance`` - Returns the driving distance from a start node."
 msgstr "``pgr_drivingDistance`` - 返回起始节点的行驶距离。"
 
+msgid "Standarizing output columns to |result-spantree|"
+msgstr "将输出列标准化为 |result-spantree|"
+
 msgid "Added ``depth`` and ``start_vid`` result columns."
 msgstr "添加了 ``depth`` 和 ``start_vid`` 结果列。"
 
@@ -13356,6 +13250,10 @@ msgid ""
 "breadth First Search ordering."
 msgstr "``pgr_kruskalBFS`` — Kruskal 的最小生成树算法，具有广度优先搜索排序。"
 
+#, fuzzy
+msgid "Added ``pred`` result columns."
+msgstr "添加了 ``depth`` 和``pred`` 结果列。"
+
 msgid ""
 "Visits and extracts the nodes information in Breath First Search ordering of "
 "the Minimum Spanning Tree created using Kruskal's algorithm."
@@ -13518,6 +13416,12 @@ msgid ""
 "``pgr_lineGraph`` — Transforms the given graph into its corresponding edge-"
 "based graph."
 msgstr "``pgr_lineGraph`` — 将给定图转换为其相应的基于边的图。"
+
+msgid "Promoted to **proposed** signature."
+msgstr "晋升为 **拟议** 签名。"
+
+msgid "Works for directed and undirected graphs."
+msgstr "适用于有向和无向图。"
 
 #, fuzzy
 msgid ""
@@ -15232,11 +15136,6 @@ msgstr "``pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)``"
 msgid "``pgr_trspViaVertices(text,anyarray,boolean,boolean,text)``"
 msgstr "``pgr_trspViaVertices(text,anyarray,boolean,boolean,text)``"
 
-msgid ""
-"``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``"
-msgstr ""
-"``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``"
-
 msgid "New prototypes"
 msgstr "新原型"
 
@@ -16751,6 +16650,98 @@ msgstr "3.x小版本"
 #, fuzzy
 msgid "pgRouting 4.0"
 msgstr "pgRouting 3.0"
+
+msgid "pgRouting 3"
+msgstr "pgRouting 3"
+
+msgid "Minors 3.x"
+msgstr "3.x小版本"
+
+msgid "pgRouting 3.7"
+msgstr "pgRouting 3.7"
+
+msgid "pgRouting 3.7.0 Release Notes"
+msgstr "pgRouting 3.7.0 发布说明"
+
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git closed "
+"milestone for 3.7.0 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
+msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `3.7.0 <https://github.com/"
+"pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__ 的 Git 关闭里程碑"
+
+#, fuzzy
+msgid ""
+"`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stop support of "
+"PostgreSQL12 on pgrouting v3.7"
+msgstr ""
+"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ 在 C++ 上读取 "
+"postgresql 数据"
+
+#, fuzzy
+msgid "Stopping support of PostgreSQL 12"
+msgstr "从 PostgreSQL 12 开始：："
+
+#, fuzzy
+msgid "CI does not test for PostgreSQL 12"
+msgstr "适用于 postgreSQL 10"
+
+msgid "New experimental functions"
+msgstr "新的实验函数"
+
+#, fuzzy
+msgid "Metrics"
+msgstr "限制"
+
+msgid "pgr_betweennessCentrality"
+msgstr ""
+
+msgid "Official functions changes"
+msgstr "官方功能变更"
+
+msgid ""
+"`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standarize "
+"spanning tree functions output"
+msgstr ""
+
+msgid "Functions:"
+msgstr "新函数:"
+
+msgid "Experimental promoted to proposed."
+msgstr "实验提升为拟议。"
+
+msgid ""
+"`#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ pgr_LineGraph "
+"ignores directed flag and use negative values for identifiers."
+msgstr ""
+
+msgid "``pgr_lineGraph``"
+msgstr "``pgr_lineGraph``"
+
+msgid "Code enhancement"
+msgstr "代码改进"
+
+msgid ""
+"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Driving "
+"distance cleanup"
+msgstr ""
+"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ 行车距离清理"
+
+msgid ""
+"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Read postgresql "
+"data on C++"
+msgstr ""
+"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ 在 C++ 上读取 "
+"postgresql 数据"
+
+msgid ""
+"`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy does "
+"not work"
+msgstr ""
+"`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy 不工"
+"作"
 
 msgid "pgRouting 3.6"
 msgstr "pgRouting 3.6"
@@ -20300,3 +20291,44 @@ msgstr "pgr_withPointsDD 是 **带有点** 的 pgr_drivenDistance"
 #, fuzzy
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia 是 **带有点** 的"
+
+#~ msgid "The integral types of the ``Edges SQL`` can only be ``INTEGER``."
+#~ msgstr "``Edges SQL`` 的整数类型只能是 ``INTEGER``。"
+
+#~ msgid ":doc:`pgr_dijkstraVia` when there are no restrictions,"
+#~ msgstr ":doc:`pgr_dijkstraVia` 当无限制时，"
+
+#~ msgid ":doc:`pgr_trspVia` when there are restrictions."
+#~ msgstr ":doc:`pgr_trspVia` 当有限制时。"
+
+#~ msgid "Use :doc:`pgr_dijkstraVia` instead."
+#~ msgstr "请使用 :doc:`pgr_dijkstraVia`。"
+
+#~ msgid ":doc:`pgr_dijkstraVia`:"
+#~ msgstr ":doc:`pgr_dijkstraVia`:"
+
+#~ msgid "Use :doc:`pgr_trspVia` instead."
+#~ msgstr "使用 :doc:`pgr_trspVia`。"
+
+#~ msgid ":doc:`pgr_trspVia`:"
+#~ msgstr ":doc:`pgr_trspVia`:"
+
+#~ msgid ""
+#~ "And will travel thru the following Via points :math:"
+#~ "`4\\rightarrow3\\rightarrow6`"
+#~ msgstr "并将途经以下途经点： :math:`4\\rightarrow3\\rightarrow6`"
+
+#~ msgid ":doc:`pgr_withPointsVia` when there are no restrictions,"
+#~ msgstr ":doc:`pgr_withPointsVia` 当没有限制时，"
+
+#~ msgid ":doc:`pgr_trspVia_withPoints` when there are restrictions."
+#~ msgstr ":doc:`pgr_trspVia_withPoints` 当有限制时。"
+
+#~ msgid "Use :doc:`pgr_withPointsVia` instead."
+#~ msgstr "请使用 :doc:`pgr_withPointsVia`。"
+
+#~ msgid ":doc:`pgr_withPointsVia`:"
+#~ msgstr ":doc:`pgr_withPointsVia`:"
+
+#~ msgid ":doc:`pgr_trspVia_withPoints`:"
+#~ msgstr ":doc:`pgr_trspVia_withPoints`:"
