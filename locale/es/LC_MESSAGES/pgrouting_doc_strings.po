@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-14 13:32+0000\n"
+"POT-Creation-Date: 2024-12-18 19:18+0000\n"
 "PO-Revision-Date: 2024-12-07 13:04+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
@@ -18090,6 +18090,36 @@ msgstr ""
 
 msgid "pgRouting 3.7"
 msgstr "pgRouting 3.7"
+
+#, fuzzy
+msgid "pgRouting 3.7.1 Release Notes"
+msgstr "Notas de la versión de pgRouting 3.7.0"
+
+#, fuzzy
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git closed "
+"milestone for 3.7.1 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
+msgstr ""
+"Para ver todos los problemas y solicitudes de extracción cerrados para ésta "
+"versión, consulte la `meta cerrada 3.7.0 <https://github.com/pgRouting/"
+"pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`_"
+
+#, fuzzy
+msgid ""
+"`#2680 <https://github.com/pgRouting/pgrouting/pull/2680>`__ fails to "
+"compile under mingw64 gcc 13.2"
+msgstr ""
+"`#2588 <https://github.com/pgRouting/pgrouting/pull/2588>`__ pgrouting 3.6.0 "
+"no construye en OSX"
+
+#, fuzzy
+msgid ""
+"`#2689 <https://github.com/pgRouting/pgrouting/pull/2689>`__ When point is a "
+"vertex, the withPoints family do not return results."
+msgstr ""
+"`#2490 <https://github.com/pgRouting/pgrouting/pull/2490>`__ Lígas "
+"automáticas historiales."
 
 msgid "pgRouting 3.7.0 Release Notes"
 msgstr "Notas de la versión de pgRouting 3.7.0"
