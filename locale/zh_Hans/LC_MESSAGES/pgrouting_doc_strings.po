@@ -7,13 +7,14 @@
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023, 2024.
 # Wang Dapeng <wangdapeng20191008@gmail.com>, 2023.
 # DeepL <noreply-mt-deepl@weblate.org>, 2024.
+# Dapeng Wang <wangdapeng20191008@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-14 13:32+0000\n"
-"PO-Revision-Date: 2024-12-18 10:36+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"PO-Revision-Date: 2024-12-18 10:39+0000\n"
+"Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -4151,7 +4152,7 @@ msgid ""
 msgstr "当最大流量为0时则没有流量并返回 **EMPTY SET** 。"
 
 msgid "There is no flow when source has the same vaule as target."
-msgstr "当源值与目标值相同时，没有流量。"
+msgstr "当 source与 target相同时，没有流量。"
 
 msgid "Any duplicated values in source or target are ignored."
 msgstr "source或target 中的任何重复值都将被忽略。"
@@ -4166,10 +4167,10 @@ msgid "Creates"
 msgstr "创建"
 
 msgid "a **super source** and edges from it to all the sources,"
-msgstr "一个**超级源**，并从它向所有源进行边缘化、"
+msgstr "一个**超级源**和从它到所有源的边，"
 
 msgid "a **super target** and edges from it to all the targetss."
-msgstr "一个**超级目标**，从它到所有目标的边缘。"
+msgstr "一个**超级目标**和从它到所有目标的边。"
 
 msgid ""
 "The maximum flow through the graph is guaranteed to be the value returned "
@@ -4559,7 +4560,7 @@ msgid "pgRouting 4.0.0 Release Notes"
 msgstr "pgRouting 4.0.0 发布说明"
 
 msgid "Removal of deprecated functions and signatures"
-msgstr "删除过时的函数和签名"
+msgstr "移除已弃用的函数和签名"
 
 msgid ""
 "``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``"
@@ -4567,9 +4568,7 @@ msgstr ""
 "``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``"
 
 msgid "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
-msgstr ""
-"pgr_trspviavertices(text,anyarray,boolean,boolean,"
-"text)``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+msgstr "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
 
 msgid "All releases"
 msgstr "所有版本"
