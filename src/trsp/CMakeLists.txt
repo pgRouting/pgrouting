@@ -1,8 +1,5 @@
 add_library(trsp OBJECT
     # keeping these for backwards compatibility
-    trsp_deprecated.c
-    trsp_deprecated_driver.cpp
-    GraphDefinition.cpp
     edgeInfo.cpp
     trspHandler.cpp
 
