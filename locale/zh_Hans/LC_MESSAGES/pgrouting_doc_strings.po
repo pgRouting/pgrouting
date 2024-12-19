@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 19:18+0000\n"
 "PO-Revision-Date: 2024-12-19 09:56+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -9639,7 +9639,6 @@ msgstr "移除节点 :math:`10` 将会产生两个图形组件。"
 msgid "``vid``"
 msgstr "``vid``"
 
-#, fuzzy
 msgid "``centrality``"
 msgstr "``capacity``"
 
@@ -16607,9 +16606,8 @@ msgstr "主要版本"
 msgid "pgRouting 4"
 msgstr "pgRouting 4"
 
-#, fuzzy
 msgid "Minors 4.x"
-msgstr "3.x小版本"
+msgstr "Minors 4.x"
 
 msgid "pgRouting 4.0"
 msgstr "pgRouting 4.0"
@@ -16618,7 +16616,7 @@ msgid "pgRouting 3"
 msgstr "pgRouting 3"
 
 msgid "Minors 3.x"
-msgstr "3.x小版本"
+msgstr "Minors 3.x"
 
 msgid "pgRouting 3.7"
 msgstr "pgRouting 3.7"
@@ -16778,7 +16776,7 @@ msgid "Fix warnings from clang 18."
 msgstr "修正来自 clang 18 的警告。"
 
 msgid "CI tests"
-msgstr "CI 测试"
+msgstr "CI tests"
 
 msgid "Add a clang tidy test on changed files."
 msgstr "为已更改的文件添加 clang tidy 测试。"
@@ -16804,7 +16802,7 @@ msgid "pgtap tests"
 msgstr "pgtap 测试"
 
 msgid "bug fixes"
-msgstr "Bug修复"
+msgstr "bug fixes"
 
 msgid "pgRouting 3.6.2 Release Notes"
 msgstr "pgRouting 3.6.2 发布说明"
