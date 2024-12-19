@@ -261,7 +261,7 @@ pgr_do_trspVia_withPoints(
         auto new_combinations = pgrouting::utilities::get_combinations(paths, ruleList);
 
         if (!new_combinations.empty()) {
-            pgrouting::trsp::Pgr_trspHandler gdef(
+            pgrouting::trsp::TrspHandler gdef(
                     edges,
                     pg_graph.new_edges(),
                     directed,
