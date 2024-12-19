@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 19:18+0000\n"
-"PO-Revision-Date: 2024-12-19 09:28+0000\n"
-"Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
+"PO-Revision-Date: 2024-12-19 09:56+0000\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -9609,17 +9609,15 @@ msgstr "当图形中没有边时抛出"
 msgid "pgr_betweennessCentrality(`Edges SQL`_, [``directed``])"
 msgstr "pgr_betweennessCentrality(`Edges SQL`_, [``directed``])"
 
-#, fuzzy
 msgid "Returns set of ``(vid, centrality)``"
-msgstr "返回集合 ``(edge, cost)``"
+msgstr "返回 ``(vid, centrality)`` 的集合"
 
 #, fuzzy
 msgid "For a directed graph with edges :math:`\\{1, 2, 3, 4\\}`."
 msgstr "对于有边 :math:`\\{1, 2, 3, 4\\}` 的有向子图。"
 
-#, fuzzy
 msgid "Explanation"
-msgstr "应用"
+msgstr "说明"
 
 msgid "The betweenness centrality are between parenthesis."
 msgstr "介数中心性值位于括号内。"
@@ -9649,13 +9647,12 @@ msgid ""
 "Relative betweenness centrality score of the vertex (will be in range [0,1])"
 msgstr "该节点的相对介数中心性得分（范围为 [0,1]）"
 
-#, fuzzy
 msgid ""
 "Boost's `betweenness_centrality <https://www.boost.org/doc/libs/1_84_0/libs/"
 "graph/doc/betweenness_centrality.html>`_"
 msgstr ""
-"`Boost：Hawick 电路算法 <https://www.boost.org/doc/libs/1_78_0/libs/graph/"
-"doc/hawick_circuits.html>`__"
+"Boost's `betweenness_centrality <https://www.boost.org/doc/libs/1_84_0/libs/"
+"graph/doc/betweenness_centrality.html>`_"
 
 msgid "Queries use the :doc:`sampledata` network."
 msgstr "查询使用 :doc:`sampledata` 网络。"
@@ -13378,9 +13375,8 @@ msgid ""
 msgstr ""
 "`维基百科:支配树 <https://en.wikipedia.org/wiki/Dominator_(graph_theory)>`__"
 
-#, fuzzy
 msgid "pgr_lineGraph - Proposed"
-msgstr "pgr_trsp - 拟议"
+msgstr "pgr_lineGraph - 提议"
 
 msgid ""
 "``pgr_lineGraph`` — Transforms the given graph into its corresponding edge-"
@@ -16608,17 +16604,15 @@ msgstr ""
 msgid "Mayors"
 msgstr "主要版本"
 
-#, fuzzy
 msgid "pgRouting 4"
-msgstr "pgRouting 3.4"
+msgstr "pgRouting 4"
 
 #, fuzzy
 msgid "Minors 4.x"
 msgstr "3.x小版本"
 
-#, fuzzy
 msgid "pgRouting 4.0"
-msgstr "pgRouting 3.0"
+msgstr "pgRouting 4.0"
 
 msgid "pgRouting 3"
 msgstr "pgRouting 3"
@@ -16629,9 +16623,8 @@ msgstr "3.x小版本"
 msgid "pgRouting 3.7"
 msgstr "pgRouting 3.7"
 
-#, fuzzy
 msgid "pgRouting 3.7.1 Release Notes"
-msgstr "pgRouting 3.7.0 发布说明"
+msgstr "pgRouting 3.7.1 发布说明"
 
 #, fuzzy
 msgid ""
@@ -16682,9 +16675,8 @@ msgstr ""
 msgid "Stopping support of PostgreSQL 12"
 msgstr "停止支持 PostgreSQL 12"
 
-#, fuzzy
 msgid "CI does not test for PostgreSQL 12"
-msgstr "适用于 postgreSQL 10"
+msgstr "CI 不测试 PostgreSQL 12"
 
 msgid "New experimental functions"
 msgstr "新的实验函数"
@@ -16748,9 +16740,8 @@ msgstr ""
 msgid "pgRouting 3.6"
 msgstr "pgRouting 3.6"
 
-#, fuzzy
 msgid "pgRouting 3.6.3 Release Notes"
-msgstr "pgRouting 3.6.1 发布说明"
+msgstr "pgRouting 3.6.3 发布说明"
 
 #, fuzzy
 msgid ""
@@ -16771,9 +16762,8 @@ msgstr "明确的最低要求："
 msgid "postgres 11.0.0"
 msgstr "postgres 11.0.0"
 
-#, fuzzy
 msgid "postgis 3.0.0"
-msgstr "版本3.0.0"
+msgstr "postgis 3.0.0"
 
 msgid "g++ 13+ is supported"
 msgstr "支持 g++ 13+"
