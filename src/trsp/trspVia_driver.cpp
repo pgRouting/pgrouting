@@ -239,7 +239,7 @@ pgr_do_trspVia(
         auto new_combinations = pgrouting::utilities::get_combinations(paths, ruleList);
 
         if (!new_combinations.empty()) {
-            pgrouting::trsp::Pgr_trspHandler gdef(edges, directed, ruleList);
+            pgrouting::trsp::TrspHandler gdef(edges, directed, ruleList);
             auto new_paths = gdef.process(new_combinations);
             paths.insert(paths.end(), new_paths.begin(), new_paths.end());
         }

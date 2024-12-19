@@ -42,8 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace trsp {
 
-// -------------------------------------------------------------------------
-Pgr_trspHandler::Pgr_trspHandler(
+TrspHandler::TrspHandler(
         std::vector<Edge_t> &edges,
         const bool directed,
         const std::vector<Rule> &ruleList) :
@@ -55,29 +54,10 @@ Pgr_trspHandler::Pgr_trspHandler(
         m_idx_to_id[id.second] = id.first;
     }
 
-    construct_graph(edges, directed);
+    construct_graph(edges, std::vector<Edge_t>(), directed);
 }
 
-Pgr_trspHandler::Pgr_trspHandler(
-        Edge_t *edges,
-        const size_t edge_count,
-        const bool directed,
-        const std::vector<Rule> &ruleList) :
-    m_ruleTable() {
-    initialize_restrictions(ruleList);
-
-    renumber_edges(edges, edge_count);
-    for (const auto& id :  m_id_to_idx) {
-        m_idx_to_id[id.second] = id.first;
-    }
-
-    construct_graph(
-            edges,
-            edge_count,
-            directed);
-}
-
-Pgr_trspHandler::Pgr_trspHandler(
+TrspHandler::TrspHandler(
         std::vector<Edge_t> &edges,
         const std::vector<Edge_t> &new_edges,
         const bool directed,
@@ -92,44 +72,14 @@ Pgr_trspHandler::Pgr_trspHandler(
         m_idx_to_id[id.second] = id.first;
     }
 
-    construct_graph(
-            edges,
-            directed);
-    add_point_edges(
-            point_edges,
-            directed);
-}
-
-Pgr_trspHandler::Pgr_trspHandler(
-        Edge_t *edges,
-        const size_t edge_count,
-        const std::vector<Edge_t> &new_edges,
-        const bool directed,
-        const std::vector<Rule> &ruleList) :
-    m_ruleTable() {
-    initialize_restrictions(ruleList);
-
-    auto point_edges = new_edges;
-    renumber_edges(edges, edge_count, point_edges);
-
-    for (const auto& id :  m_id_to_idx) {
-        m_idx_to_id[id.second] = id.first;
-    }
-
-    construct_graph(
-            edges,
-            edge_count,
-            directed);
-    add_point_edges(
-            point_edges,
-            directed);
+    construct_graph(edges, point_edges, directed);
 }
 
 
 
 // -------------------------------------------------------------------------
 void
-Pgr_trspHandler::renumber_edges(std::vector<Edge_t> &edges) {
+TrspHandler::renumber_edges(std::vector<Edge_t> &edges) {
     int64_t idx(0);
     for (auto &e : edges) {
         if (m_id_to_idx.find(e.source) == m_id_to_idx.end()) {
@@ -145,27 +95,9 @@ Pgr_trspHandler::renumber_edges(std::vector<Edge_t> &edges) {
     }
 }
 
-void
-Pgr_trspHandler::renumber_edges(
-        Edge_t *edges,
-        size_t total_edges) {
-    int64_t idx(0);
-    for (size_t i = 0; i < total_edges; ++i) {
-        if (m_id_to_idx.find(edges[i].source) == m_id_to_idx.end()) {
-            m_id_to_idx[edges[i].source] = idx;
-            ++idx;
-        }
-        if (m_id_to_idx.find(edges[i].target) == m_id_to_idx.end()) {
-            m_id_to_idx[edges[i].target] = idx;
-            ++idx;
-        }
-        edges[i].source = m_id_to_idx.at(edges[i].source);
-        edges[i].target = m_id_to_idx.at(edges[i].target);
-    }
-}
 
 void
-Pgr_trspHandler::renumber_edges(
+TrspHandler::renumber_edges(
         std::vector<Edge_t> &edges,
         std::vector<Edge_t> &new_edges) {
     int64_t idx(0);
@@ -195,42 +127,10 @@ Pgr_trspHandler::renumber_edges(
     }
 }
 
-void
-Pgr_trspHandler::renumber_edges(
-        Edge_t *edges,
-        size_t total_edges,
-        std::vector<Edge_t>& new_edges) {
-    int64_t idx(0);
-    for (size_t i = 0; i < total_edges; ++i) {
-        if (m_id_to_idx.find(edges[i].source) == m_id_to_idx.end()) {
-            m_id_to_idx[edges[i].source] = idx;
-            ++idx;
-        }
-        if (m_id_to_idx.find(edges[i].target) == m_id_to_idx.end()) {
-            m_id_to_idx[edges[i].target] = idx;
-            ++idx;
-        }
-        edges[i].source = m_id_to_idx.at(edges[i].source);
-        edges[i].target = m_id_to_idx.at(edges[i].target);
-    }
-    for (auto &e : new_edges) {
-        if (m_id_to_idx.find(e.source) == m_id_to_idx.end()) {
-            m_id_to_idx[e.source] = idx;
-            ++idx;
-        }
-        if (m_id_to_idx.find(e.target) == m_id_to_idx.end()) {
-            m_id_to_idx[e.target] = idx;
-            ++idx;
-        }
-        e.source = m_id_to_idx.at(e.source);
-        e.target = m_id_to_idx.at(e.target);
-    }
-}
-
 
 
 // -------------------------------------------------------------------------
-void Pgr_trspHandler::clear() {
+void TrspHandler::clear() {
     m_parent.clear();
     m_dCost.clear();
     m_path.clear();
@@ -238,7 +138,7 @@ void Pgr_trspHandler::clear() {
 
 
 // -------------------------------------------------------------------------
-double Pgr_trspHandler::construct_path(int64_t ed_id, Position pos) {
+double TrspHandler::construct_path(int64_t ed_id, Position pos) {
     if (pos == ILLEGAL) return (std::numeric_limits<double>::max)();
     pgassert(pos != ILLEGAL);
 
@@ -282,7 +182,7 @@ double Pgr_trspHandler::construct_path(int64_t ed_id, Position pos) {
 
 
 // -------------------------------------------------------------------------
-double Pgr_trspHandler::getRestrictionCost(
+double TrspHandler::getRestrictionCost(
         int64_t edge_ind,
         const EdgeInfo &edge,
         bool isStart) {
@@ -315,7 +215,7 @@ double Pgr_trspHandler::getRestrictionCost(
 }
 
 
-double Pgr_trspHandler::get_tot_cost(
+double TrspHandler::get_tot_cost(
         double cost,
         size_t edge_idx,
         bool isStart) {
@@ -329,7 +229,7 @@ double Pgr_trspHandler::get_tot_cost(
 
 
 // -------------------------------------------------------------------------
-void Pgr_trspHandler::explore(
+void TrspHandler::explore(
         int64_t cur_node,
         const EdgeInfo cur_edge,
         bool isStart) {
@@ -380,7 +280,7 @@ void Pgr_trspHandler::explore(
 
 
 // -------------------------------------------------------------------------
-int Pgr_trspHandler::initialize_restrictions(
+int TrspHandler::initialize_restrictions(
         const std::vector<Rule> &ruleList) {
     for (const auto &rule : ruleList) {
         auto dest_edge_id = rule.dest_id();
@@ -402,7 +302,7 @@ int Pgr_trspHandler::initialize_restrictions(
  *
  */
 Path
-Pgr_trspHandler::process(
+TrspHandler::process(
         const int64_t start_vertex,
         const int64_t end_vertex) {
     if (m_id_to_idx.find(start_vertex) == m_id_to_idx.end()
@@ -438,7 +338,7 @@ Pgr_trspHandler::process(
  *
  */
 std::deque<Path>
-Pgr_trspHandler::process(
+TrspHandler::process(
         const std::map<int64_t, std::set<int64_t>> &combinations
         ) {
     std::deque<Path> paths;
@@ -451,77 +351,40 @@ Pgr_trspHandler::process(
     return paths;
 }
 
-/** process
- *
- * does many to many processisng
- *
- */
-std::deque<Path>
-Pgr_trspHandler::process(
-        const std::vector<int64_t> sources,
-        const std::vector<int64_t> targets) {
-    std::deque<Path> paths;
-    for (const auto &s : sources) {
-        for (const auto &t : targets) {
-            paths.push_back(process(s, t));
-        }
-    }
-
-    std::sort(paths.begin(), paths.end(),
-            [](const Path &e1, const Path &e2)->bool {
-            return e1.end_id() < e2.end_id();
-            });
-    std::stable_sort(paths.begin(), paths.end(),
-            [](const Path &e1, const Path &e2)->bool {
-            return e1.start_id() < e2.start_id();
-            });
-    return paths;
-}
-
-
-void  Pgr_trspHandler::add_to_que(
-        double cost,
-        size_t e_idx,
-        bool isStart) {
-    que.push(std::make_pair(cost,
-                std::make_pair(e_idx, isStart)));
-}
-
-
 
 // -------------------------------------------------------------------------
+void TrspHandler::add_to_que(double cost, size_t e_idx, bool isStart) {
+    m_que.push(std::make_pair(cost, std::make_pair(e_idx, isStart)));
+}
 
-void  Pgr_trspHandler::initialize_que() {
+void  TrspHandler::initialize_que() {
     /*
      * For each adjacent edge to the start_vertex
      */
     for (const auto source : m_adjacency[m_start_vertex]) {
         EdgeInfo &cur_edge = m_edges[source];
 
-        if (cur_edge.startNode() == m_start_vertex
-                && cur_edge.cost() >= 0.0) {
+        if (cur_edge.startNode() == m_start_vertex && cur_edge.cost() >= 0.0) {
             m_dCost[cur_edge.idx()].endCost = cur_edge.cost();
             m_parent[cur_edge.idx()].v_pos[0] = ILLEGAL;
             add_to_que(cur_edge.cost(), cur_edge.idx(), true);
         }
 
-        if (cur_edge.endNode() == m_start_vertex
-                && cur_edge.r_cost() >= 0.0) {
-            m_dCost[cur_edge.idx()].startCost =
-                cur_edge.r_cost();
+        if (cur_edge.endNode() == m_start_vertex && cur_edge.r_cost() >= 0.0) {
+            m_dCost[cur_edge.idx()].startCost = cur_edge.r_cost();
             m_parent[cur_edge.idx()].v_pos[1] = ILLEGAL;
             add_to_que(cur_edge.r_cost(), cur_edge.idx(), false);
         }
     }
 }
 
-EdgeInfo Pgr_trspHandler::dijkstra_exploration() {
+EdgeInfo TrspHandler::dijkstra_exploration() {
     EdgeInfo cur_edge;
-    pgassert(current_node == m_start_vertex);
+    pgassert(m_current_node == m_start_vertex);
 
-    while (!que.empty()) {
-        auto cur_pos = que.top();
-        que.pop();
+    while (!m_que.empty()) {
+        auto cur_pos = m_que.top();
+        m_que.pop();
 
         auto cure_idxex = cur_pos.second.first;
         cur_edge = m_edges[static_cast<size_t>(cure_idxex)];
@@ -530,18 +393,18 @@ EdgeInfo Pgr_trspHandler::dijkstra_exploration() {
             /*
              * explore edges connected to end node
              */
-            current_node = cur_edge.endNode();
+            m_current_node = cur_edge.endNode();
             if (cur_edge.cost() < 0.0) continue;
-            if (current_node == m_end_vertex) break;
-            explore(current_node, cur_edge, false);
+            if (m_current_node == m_end_vertex) break;
+            explore(m_current_node, cur_edge, false);
         } else {
             /*
              *  explore edges connected to start node
              */
-            current_node = cur_edge.startNode();
+            m_current_node = cur_edge.startNode();
             if (cur_edge.r_cost() < 0.0) continue;
-            if (current_node == m_end_vertex) break;
-            explore(current_node, cur_edge, true);
+            if (m_current_node == m_end_vertex) break;
+            explore(m_current_node, cur_edge, true);
         }
     }
     return cur_edge;
@@ -551,7 +414,7 @@ EdgeInfo Pgr_trspHandler::dijkstra_exploration() {
 
 
 Path
-Pgr_trspHandler::process_trsp(
+TrspHandler::process_trsp(
         size_t edge_count) {
     pgassert(m_path.start_id() == m_start_vertex);
     pgassert(m_path.end_id() == m_end_vertex);
@@ -562,25 +425,21 @@ Pgr_trspHandler::process_trsp(
 
     initialize_que();
 
-    current_node = m_start_vertex;
+    m_current_node = m_start_vertex;
 
     pgassert(m_path.start_id() == m_start_vertex);
 
     auto cur_edge = dijkstra_exploration();
 
     pgassert(m_path.start_id() == m_start_vertex);
-    if (current_node != m_end_vertex) {
+    if (m_current_node != m_end_vertex) {
         Path result(m_start_vertex, m_end_vertex);
         return result.renumber_vertices(m_idx_to_id);;
     }
 
     pgassert(m_path.start_id() == m_start_vertex);
 
-    if (current_node == cur_edge.startNode()) {
-        construct_path(static_cast<int64_t>(cur_edge.idx()), C_EDGE);
-    } else {
-        construct_path(static_cast<int64_t>(cur_edge.idx()), RC_EDGE);
-    }
+    construct_path(static_cast<int64_t>(cur_edge.idx()), m_current_node == cur_edge.startNode()? C_EDGE : RC_EDGE);
 
     Path_t pelement = {};
     pelement.node = m_end_vertex;
@@ -593,41 +452,23 @@ Pgr_trspHandler::process_trsp(
 }
 
 
-
-
-
-// -------------------------------------------------------------------------
-void Pgr_trspHandler::construct_graph(
+void TrspHandler::construct_graph(
         const std::vector<Edge_t> &edges,
+        const std::vector<Edge_t> &new_edges,
         const bool directed) {
     for (const auto &e : edges) {
+        addEdge(e, directed);
+    }
+    for (const auto &e : new_edges) {
         addEdge(e, directed);
     }
     m_mapEdgeId2Index.clear();
 }
 
-void Pgr_trspHandler::construct_graph(
-        Edge_t* edges,
-        const size_t edge_count,
-        const bool directed) {
-    for (size_t i = 0; i < edge_count; i++) {
-        addEdge(edges[i], directed);
-    }
-    m_mapEdgeId2Index.clear();
-}
-
-void Pgr_trspHandler::add_point_edges(
-        const std::vector<Edge_t> &new_edges,
-        const bool directed) {
-    for (auto current_edge : new_edges) {
-        addEdge(current_edge, directed);
-    }
-    m_mapEdgeId2Index.clear();
-}
 
 
 // -------------------------------------------------------------------------
-void Pgr_trspHandler::connectStartEdge(
+void TrspHandler::connectStartEdge(
         size_t firstEdge_idx,
         size_t secondEdge_idx) {
     EdgeInfo &firstEdge = m_edges[firstEdge_idx];
@@ -650,7 +491,7 @@ void Pgr_trspHandler::connectStartEdge(
 
 
 // -------------------------------------------------------------------------
-void Pgr_trspHandler::connectEndEdge(
+void TrspHandler::connectEndEdge(
         size_t firstEdge_idx,
         size_t secondEdge_idx) {
     EdgeInfo &firstEdge = m_edges[firstEdge_idx];
@@ -673,7 +514,7 @@ void Pgr_trspHandler::connectEndEdge(
 
 
 // -------------------------------------------------------------------------
-bool Pgr_trspHandler::addEdge(Edge_t edgeIn, bool directed) {
+bool TrspHandler::addEdge(Edge_t edgeIn, bool directed) {
     /*
      * making all "cost" > 0
      */
@@ -682,12 +523,13 @@ bool Pgr_trspHandler::addEdge(Edge_t edgeIn, bool directed) {
         std::swap(edgeIn.source, edgeIn.target);
     }
 
-    if (!directed) {
-        if (edgeIn.reverse_cost < 0) {
-            edgeIn.reverse_cost = edgeIn.cost;
-        }
+    /* This gives a value to reverse_cost when:"
+     * graph is undirected
+     * reverse_cost is negative
+     */
+    if (!directed && edgeIn.reverse_cost < 0) {
+        edgeIn.reverse_cost = edgeIn.cost;
     }
-
 
     /*
      * the index of this new edge in the edges container is
@@ -695,12 +537,11 @@ bool Pgr_trspHandler::addEdge(Edge_t edgeIn, bool directed) {
      */
     EdgeInfo edge(edgeIn, m_edges.size());
 
-
+    /*
+     * Add to the set of edges
+     */
     m_edges.push_back(edge);
-
     EdgeInfo &newEdge = m_edges[m_edges.size()-1];
-
-
 
     /*
      *  Searching the start node for connectivity
@@ -708,7 +549,7 @@ bool Pgr_trspHandler::addEdge(Edge_t edgeIn, bool directed) {
     auto itNodeMap = m_adjacency.find(edgeIn.source);
 
     if (itNodeMap != m_adjacency.end()) {
-        for (const auto e_idx : itNodeMap->second) {
+        for (const auto &e_idx : itNodeMap->second) {
             connectStartEdge(edge.idx(), e_idx);
         }
     }
@@ -719,7 +560,7 @@ bool Pgr_trspHandler::addEdge(Edge_t edgeIn, bool directed) {
      */
     itNodeMap = m_adjacency.find(edgeIn.target);
     if (itNodeMap != m_adjacency.end()) {
-        for (const auto e_idx : itNodeMap->second) {
+        for (const auto &e_idx : itNodeMap->second) {
             connectEndEdge(edge.idx(), e_idx);
         }
     }
