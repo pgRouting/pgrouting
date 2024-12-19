@@ -43,6 +43,8 @@ pgRouting 4.0.0 Release Notes
 
 * ``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``
 * ``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``
+* ``pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)``
+* ``pgr_trsp(text,integer,integer,boolean,boolean,text)``
 
 
 
