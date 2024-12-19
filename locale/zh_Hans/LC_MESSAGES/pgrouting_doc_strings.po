@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 19:18+0000\n"
 "PO-Revision-Date: 2024-12-19 08:23+0000\n"
-"Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -4919,14 +4919,12 @@ msgstr ""
 "使用`这个 <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
 "vertex>`__ 示例。"
 
-#, fuzzy
 msgid ""
 "Now column ``pred`` exists and contains the predecessor of the ``node``."
-msgstr "``pred`` 包含``node`` 的前驱。"
+msgstr "现在列 ``pred`` 已经存在，并包含了 ``node`` 的前置节点。"
 
-#, fuzzy
 msgid "Kruskal multiple vertices"
-msgstr "多个顶点"
+msgstr "Kruskal 多顶点"
 
 #, fuzzy
 msgid ""
@@ -5068,9 +5066,8 @@ msgstr "``pgr_primDFS``"
 msgid "``pgr_primBFS``"
 msgstr "``pgr_primBFS``"
 
-#, fuzzy
 msgid "Prim single vertex"
-msgstr "单顶点"
+msgstr "初级单顶点"
 
 msgid ""
 "Using ``pgr_primDD`` as example. Migration is similar to al the affected "
