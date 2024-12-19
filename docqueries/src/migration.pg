@@ -34,11 +34,6 @@ SELECT * FROM new_restrictions;
 /* --rest5 */
 
 /* --verticesv1 */
-SELECT * FROM pgr_trsp(
-  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost
-    FROM edges WHERE id != 16$$,
-  15, 16,
-  true, true);
 /* --verticesv2 */
 SELECT * FROM pgr_dijkstra(
   $$SELECT id, source, target, cost, reverse_cost
@@ -51,13 +46,6 @@ FROM pgr_dijkstra(
     FROM edges WHERE id != 16$$,
   15, 16);
 /* --verticesv4 */
-SELECT * FROM pgr_trsp(
-  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost
-    FROM edges WHERE id != 16$$,
-  15, 16,
-  true, true,
-  $$SELECT to_cost, target_id::INTEGER, via_path
-    FROM old_restrictions$$);
 /* --verticesv5 */
 SELECT * FROM pgr_trsp(
   $$SELECT id, source, target, cost, reverse_cost
@@ -75,11 +63,6 @@ FROM pgr_trsp(
 SELECT pid, edge_id, fraction, side FROM pointsOfInterest
 WHERE pid IN (3, 4);
 /* --edgesv1 */
-SELECT * FROM pgr_trsp(
-  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost
-    FROM edges$$,
-  6, 0.3, 12, 0.6,
-  true, true);
 /* --edgesv2 */
 SELECT * FROM pgr_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
@@ -94,10 +77,6 @@ FROM pgr_withPoints(
   -1, -2,
   details => false);
 /* --edgesv4 */
-SELECT * FROM pgr_trsp(
-  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges$$,
-  6, 0.3, 12, 0.6, true, true,
-  $$SELECT to_cost, target_id::INTEGER, via_path FROM old_restrictions$$);
 /* --edgesv5 */
 SELECT * FROM pgr_trsp_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
