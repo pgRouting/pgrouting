@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 19:18+0000\n"
-"PO-Revision-Date: 2024-12-19 08:40+0000\n"
+"PO-Revision-Date: 2024-12-19 09:28+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -4911,13 +4911,12 @@ msgid ""
 "functions."
 msgstr "以 ``pgr_KruskalDD`` 为例。迁移与所有受影响的函数类似。"
 
-#, fuzzy
 msgid ""
 "Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_kruskalDD."
 "html#single-vertex>`__ example."
 msgstr ""
-"使用`这个 <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
-"vertex>`__ 示例。"
+"与 `this <https://docs.pgrouting.org/3.6/en/pgr_kruskalDD.html#single-"
+"vertex>`__ 示例比较。"
 
 msgid ""
 "Now column ``pred`` exists and contains the predecessor of the ``node``."
@@ -4926,24 +4925,22 @@ msgstr "现在列 ``pred`` 已经存在，并包含了 ``node`` 的前置节点�
 msgid "Kruskal multiple vertices"
 msgstr "Kruskal 多顶点"
 
-#, fuzzy
 msgid ""
 "Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_kruskalDD."
 "html#multiple-vertex>`__ example."
 msgstr ""
-"使用`这个 <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#multiple-"
-"vertices>`__ 示例。"
+"与 `this <https://docs.pgrouting.org/3.6/en/pgr_kruskalDD.html#multiple-"
+"vertex>`__ 示例比较。"
 
 msgid "Migration of ``pgr_KSP``"
 msgstr "迁移 ``pgr_KSP``"
 
-#, fuzzy
 msgid ""
 "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :"
 "doc:`pgr_KSP` result columns are being standardized."
 msgstr ""
-"从 `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ 开始， :doc:"
-"`pgr_KSP`结果列正在标准化。"
+"从 `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ "
+":doc:`pgr_KSP` 开始，结果列被标准化。"
 
 msgid "|ksp-result|"
 msgstr "|ksp-result|"
@@ -4963,13 +4960,12 @@ msgstr "``start_vid`` 和 ``end_vid`` 列不存在。"
 msgid "``pgr_KSP`` (One to One) does not have ``start_vid`` and ``end_vid``."
 msgstr "``pgr_KSP`` (一对一) 没有 ``start_vid`` 和``end_vid``。"
 
-#, fuzzy
 msgid ""
 "Using `this <https://docs.pgrouting.org/3.5/en/pgr_KSP.html#signatures>`__ "
 "example."
 msgstr ""
-"使用`这个 <https://docs.pgrouting.org/3.5/en/pgr_KSP.html#signatures>`__ 示"
-"例。"
+"使用 `this <https://docs.pgrouting.org/3.5/en/pgr_KSP.html#signatures>`__ "
+"示例。"
 
 msgid ""
 "If needed filter out the added columns, for example, to return the original "
@@ -5074,36 +5070,32 @@ msgid ""
 "functions."
 msgstr "以 ``pgr_primDD`` 为例。迁移与所有受影响的函数类似。"
 
-#, fuzzy
 msgid ""
 "Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_primDD."
 "html#single-vertex>`__ example."
 msgstr ""
-"使用`这个 <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
-"vertex>`__ 示例。"
+"与 `this <https://docs.pgrouting.org/3.6/en/pgr_primDD.html#single-vertex>`"
+"__ 例子比较。"
 
-#, fuzzy
 msgid "Prim multiple vertices"
-msgstr "多个顶点"
+msgstr "Prim 多个顶点"
 
-#, fuzzy
 msgid ""
 "Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_primDD."
 "html#multiple-vertex>`__ example."
 msgstr ""
-"使用`这个 <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#multiple-"
-"vertices>`__ 示例。"
+"与 `this <https://docs.pgrouting.org/3.6/en/pgr_primDD.html#multiple-vertex>`"
+"__ 例子比较。"
 
 msgid "Migration of ``pgr_withPointsDD``"
 msgstr "迁移 ``pgr_withPointsDD``"
 
-#, fuzzy
 msgid ""
 "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :"
 "doc:`pgr_withPointsDD` result columns are being standardized."
 msgstr ""
-"从`v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ 开始 :doc:"
-"`pgr_withPointsDD`结果列正在标准化。"
+"从 `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ "
+":doc:`pgr_withPointsDD` 结果列开始标准化。"
 
 msgid "|result-generic-no-seq|"
 msgstr "|result-generic-no-seq|"
@@ -5181,7 +5173,6 @@ msgstr "此外， ``l`` 也可用作 **驾驶侧**"
 msgid "After Migration"
 msgstr "迁移后"
 
-#, fuzzy
 msgid "Be aware of the existence of the additional result Columns."
 msgstr "注意附加结果列的存在。"
 
@@ -5250,13 +5241,12 @@ msgstr "过滤掉额外的列"
 msgid "Migration of ``pgr_withPointsKSP``"
 msgstr "迁移 ``pgr_withPointsKSP``"
 
-#, fuzzy
 msgid ""
 "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :"
 "doc:`pgr_withPointsKSP` result columns are being standardized."
 msgstr ""
-"从`v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ 开始 ， :doc:"
-"`pgr_withPointsKSP`结果列正在标准化。"
+"从 `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ "
+":doc:`pgr_withPointsKSP` 开始对结果列进行标准化。"
 
 msgid ""
 "And ``driving side`` parameter changed from named optional to unnamed "
@@ -5605,22 +5595,19 @@ msgstr "请使用 :doc:`pgr_trsp_withPoints`。"
 msgid ":doc:`pgr_trsp_withPoints`:"
 msgstr ":doc:`pgr_trsp_withPoints`:"
 
-#, fuzzy
 msgid "Migration of pgr_trspViaVertices"
-msgstr "迁移 ``pgr_trspViaVertices``"
+msgstr "pgr_trspViaVertices 的迁移"
 
-#, fuzzy
 msgid "Migrating pgr_trspViaVertices using pgr_dijkstraVia"
-msgstr "使用 ``pgr_dijkstraVia``迁移 ``pgr_trspViaVertices``"
+msgstr "使用 pgr_dijkstraVia 迁移 pgr_trspViaVertices"
 
 msgid "Using :doc:`pgr_dijkstraVia`."
 msgstr "使用 :doc:`pgr_dijkstraVia`."
 
-#, fuzzy
 msgid ""
 "When the need of using the same (meaningless) names and and strict types "
 "then convert the result to the deprecated function columns:"
-msgstr "当需要使用严格相同（无意义）的函数名称和类型进行迁移时："
+msgstr "当需要使用相同（无意义）的名称和严格类型时，则将结果转换为已废弃的函数列："
 
 msgid "``id1`` is the path identifier"
 msgstr "``id1`` 是路径标识符"
@@ -5631,30 +5618,26 @@ msgstr "``id2`` 是节点"
 msgid "``id3`` is the edge"
 msgstr "``id3`` 是边"
 
-#, fuzzy
 msgid "Migrating pgr_trspViaVertices using pgr_trspVia"
-msgstr "使用 ``pgr_trspVia``迁移 ``pgr_trspViaVertices``"
+msgstr "使用 pgr_trspVia 迁移 pgr_trspViaVertices"
 
 msgid "Using :doc:`pgr_trspVia`."
 msgstr "使用 :doc:`pgr_trspVia`."
 
-#, fuzzy
 msgid "Migration of pgr_trspViaEdges"
-msgstr "迁移 ``pgr_trspViaEdges``"
+msgstr "pgr_trspViaEdges 的迁移"
 
 msgid "In this section this set of points is going to be used:"
 msgstr "本节将使用这组点："
 
-#, fuzzy
 msgid "Migrating pgr_trspViaEdges using pgr_withPointsVia"
-msgstr "使用 ``pgr_withPointsVia`` 迁移 ``pgr_trspViaEdges``"
+msgstr "使用 pgr_withPointsVia 迁移 pgr_trspViaEdges"
 
 msgid "Using :doc:`pgr_withPointsVia`."
 msgstr "使用 :doc:`pgr_withPointsVia`."
 
-#, fuzzy
 msgid "Migrating pgr_trspViaEdges using pgr_trspVia_withPoints"
-msgstr "使用 ``pgr_trspVia_withPoints``迁移``pgr_trspViaEdges``"
+msgstr "使用 pgr_trspVia_withPoints 迁移 pgr_trspViaEdges"
 
 msgid "Use :doc:`pgr_trspVia_withPoints` instead."
 msgstr "使用 :doc:`pgr_trspVia_withPoints` 代替。"
@@ -13557,17 +13540,14 @@ msgid ""
 "edge row with :math:`id=304`."
 msgstr "从图中删除边 :math:`v \\rightarrow w` 和 :math:`w \\rightarrow z`。"
 
-#, fuzzy
 msgid "The graph can be created as follows:"
-msgstr "图定义如下："
+msgstr "图表的创建过程如下："
 
-#, fuzzy
 msgid "Line Graph of a directed graph represented with shared edges"
-msgstr "就有向图而言，就像有四个边"
+msgstr "用共享边表示的有向图的线图"
 
-#, fuzzy
 msgid "The result is a directed graph."
-msgstr "有向图。"
+msgstr "结果就是一个有向图。"
 
 #, fuzzy
 msgid ""
@@ -16807,9 +16787,8 @@ msgstr "修正来自 cpplint 的警告。"
 msgid "Fix warnings from clang 18."
 msgstr "修正来自 clang 18 的警告。"
 
-#, fuzzy
 msgid "CI tests"
-msgstr "pgtap 测试"
+msgstr "CI 测试"
 
 msgid "Add a clang tidy test on changed files."
 msgstr "为已更改的文件添加 clang tidy 测试。"
@@ -16838,9 +16817,8 @@ msgstr "pgtap 测试"
 msgid "bug fixes"
 msgstr "Bug修复"
 
-#, fuzzy
 msgid "pgRouting 3.6.2 Release Notes"
-msgstr "pgRouting 3.6.1 发布说明"
+msgstr "pgRouting 3.6.2 发布说明"
 
 #, fuzzy
 msgid ""
@@ -19805,15 +19783,13 @@ msgid ""
 "User mailing list: https://lists.osgeo.org/mailman/listinfo/pgrouting-users"
 msgstr "用户邮件列表：https://lists.osgeo.org/mailman/listinfo/pgrouting-users"
 
-#, fuzzy
 msgid ""
 "Developer mailing list: https://discourse.osgeo.org/c/pgrouting/pgrouting-"
 "dev/"
-msgstr "开发者邮件列表：https://lists.osgeo.org/mailman/listinfo/pgrouting-dev"
+msgstr "开发人员邮件列表： https://discourse.osgeo.org/c/pgrouting/pgrouting-dev/"
 
-#, fuzzy
 msgid "Subscribe: https://discourse.osgeo.org/g/pgrouting-dev"
-msgstr "开发者邮件列表：https://lists.osgeo.org/mailman/listinfo/pgrouting-dev"
+msgstr "订阅：https://discourse.osgeo.org/g/pgrouting-dev"
 
 msgid ""
 "For general questions and topics about how to use pgRouting, please write to "
@@ -19901,9 +19877,8 @@ msgstr "创建图表的附加函数："
 msgid "Additional functions to analyze a graph:"
 msgstr "用于分析图表的附加函数："
 
-#, fuzzy
 msgid "Transformation - Family of functions"
-msgstr "收缩 - 函数族"
+msgstr "转换 - 函数族"
 
 msgid ""
 "This family of functions is used for transforming a given input graph :math:"
