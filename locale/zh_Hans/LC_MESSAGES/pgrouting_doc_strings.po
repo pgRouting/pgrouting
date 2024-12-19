@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 19:18+0000\n"
-"PO-Revision-Date: 2024-12-19 06:05+0000\n"
-"Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
+"PO-Revision-Date: 2024-12-19 06:06+0000\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -9653,11 +9653,10 @@ msgstr "介数中心性值位于括号内。"
 msgid "The leaf vertices have betweenness centrality :math:`0`."
 msgstr "叶子节点的介数中心性为 :math:`0`。"
 
-#, fuzzy
 msgid ""
 "Betweenness centrality of vertex :math:`6` is higher than of vertex :math:"
 "`10`."
-msgstr "从顶点 :math:`11` 到顶点 :math:`12`"
+msgstr "顶点 :math:`6` 的间隔中心度高于顶点 :math:`10` 的间隔中心度。"
 
 #, fuzzy
 msgid "Removing vertex :math:`6` will create three graph components."
