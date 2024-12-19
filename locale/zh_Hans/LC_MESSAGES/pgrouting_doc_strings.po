@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 19:18+0000\n"
-"PO-Revision-Date: 2024-12-19 06:07+0000\n"
+"PO-Revision-Date: 2024-12-19 07:04+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -3766,7 +3766,7 @@ msgid "the set of vertices :math:`V`"
 msgstr "顶点集 :math:`V`"
 
 msgid ":math:`V = source \\cup target \\cup {start_{vid}} \\cup  {end_{vid}}`"
-msgstr ":math:`V = source \\cup target \\cup {start_v{vid}} \\cup {end_{vid}}`"
+msgstr ":math:`V = source \\cup target \\cup {start_{vid}}\\cup {end_{vid}`"
 
 msgid "the set of edges :math:`E`"
 msgstr "边集 :math:`E`"
@@ -7311,11 +7311,10 @@ msgstr "在数据库中启用 PostGIS 和 pgRouting 后检查它们的版本。"
 msgid "Upgrading the database"
 msgstr "升级数据库"
 
-#, fuzzy
 msgid ""
 "To upgrade pgRouting in the database to version 4.0.0 use the following "
 "command:"
-msgstr "要将数据库中的 pgRouting 升级到版本3.7.0，请使用以下命令："
+msgstr "要将数据库中的 pgRouting 升级到 4.0.0 版本，请使用以下命令："
 
 msgid ""
 "More information can be found in https://www.postgresql.org/docs/current/sql-"
@@ -16711,9 +16710,8 @@ msgstr ""
 "`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ 在 C++ 上读取 "
 "postgresql 数据"
 
-#, fuzzy
 msgid "Stopping support of PostgreSQL 12"
-msgstr "从 PostgreSQL 12 开始：："
+msgstr "停止支持 PostgreSQL 12"
 
 #, fuzzy
 msgid "CI does not test for PostgreSQL 12"
