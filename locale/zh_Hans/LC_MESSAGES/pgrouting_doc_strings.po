@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 19:18+0000\n"
 "PO-Revision-Date: 2024-12-19 06:06+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -9633,7 +9633,7 @@ msgid "Throws when there are no edges in the graph"
 msgstr "当图形中没有边时抛出"
 
 msgid "pgr_betweennessCentrality(`Edges SQL`_, [``directed``])"
-msgstr "pgr_betweennessCentrality(`Edges SQL`_, [``directed`])"
+msgstr "pgr_betweennessCentrality(`Edges SQL`_, [``directed``])"
 
 #, fuzzy
 msgid "Returns set of ``(vid, centrality)``"
