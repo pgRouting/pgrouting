@@ -51,6 +51,10 @@ milestone for 3.7.1
 * `#2689 <https://github.com/pgRouting/pgrouting/pull/2689>`__ When point is a
   vertex, the withPoints family do not return results.
 
+.. rubric:: C/C++ code enhancemet
+
+* TRSP family
+
 pgRouting 3.7.0 Release Notes
 -------------------------------------------------------------------------------
 
