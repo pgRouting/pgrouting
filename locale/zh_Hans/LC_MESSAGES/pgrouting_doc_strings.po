@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 19:18+0000\n"
-"PO-Revision-Date: 2024-12-19 05:43+0000\n"
+"PO-Revision-Date: 2024-12-19 05:45+0000\n"
 "Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -13544,11 +13544,11 @@ msgid "the target vertex"
 msgstr "获取最近的顶点"
 
 msgid "In this image,"
-msgstr "在这张图片中"
+msgstr "在这张图片中，"
 
 msgid ""
 "Single or double head arrows represent one edge (row) on the edges table."
-msgstr ""
+msgstr "单向或双向箭头表示边表中的一条边（行）。"
 
 #, fuzzy
 msgid "The numbers in the yellow shadow are the edge identifiers."
