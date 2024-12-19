@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 19:18+0000\n"
 "PO-Revision-Date: 2024-12-19 08:40+0000\n"
-"Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -13592,9 +13592,8 @@ msgstr "为负数时抛出错误。"
 msgid "Representation as directed with unique edge identifiers"
 msgstr "作为有向图表示，并使用唯一的边标识符"
 
-#, fuzzy
 msgid "Single head arrows represent one edge (row) on the edges table."
-msgstr "红色箭头对应边表中 ``cost`` > 0的情况。"
+msgstr "单头箭头代表边表中的一条边（行）。"
 
 msgid "There are no double head arrows"
 msgstr "没有双向头箭"
@@ -13618,14 +13617,12 @@ msgstr ""
 "边 :math:`{3 \\rightarrow 4, 4 \\rightarrow 3}`分别用两条边表示，边标识符为 "
 ":math:`id=304` 和 :math:`id=403` 。"
 
-#, fuzzy
 msgid "Line Graph of a directed graph represented with unique edges"
-msgstr "就有向图而言，就像有四个边"
+msgstr "用唯一边表示的有向图的线图"
 
-#, fuzzy
 msgid ""
 "For :math:`seq=7` from :math:`203 \\leftrightarrow 302` represent two edges."
-msgstr "边 :math:`2` (:math:`1 \\rightarrow 3`) 不是图的一部分。"
+msgstr "对于 :math:`seq=7` 从 :math:`203 \\leftrightarrow 302` 代表两条边。"
 
 #, fuzzy
 msgid ""
