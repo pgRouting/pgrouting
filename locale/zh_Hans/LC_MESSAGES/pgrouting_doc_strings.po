@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 19:18+0000\n"
 "PO-Revision-Date: 2024-12-19 05:43+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -13521,24 +13521,23 @@ msgstr "用共享边标识符定向表示"
 msgid ""
 "For the simplicity, the design of the edges table on the database, has the "
 "edge's identifiers are represented with 3 digits:"
-msgstr ""
+msgstr "为了简化数据库中边表的设计，边的标识符采用3位数字表示："
 
 msgid "hundreds"
-msgstr ""
+msgstr "百位"
 
 #, fuzzy
 msgid "the source vertex"
 msgstr "获取最近的顶点"
 
 msgid "tens"
-msgstr ""
+msgstr "十位"
 
 msgid "always 0, acts as a separator"
-msgstr ""
+msgstr "始终为 0，用作分隔符"
 
-#, fuzzy
 msgid "units"
-msgstr "单位"
+msgstr "个位"
 
 #, fuzzy
 msgid "the target vertex"
