@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 19:18+0000\n"
-"PO-Revision-Date: 2024-12-19 07:07+0000\n"
+"PO-Revision-Date: 2024-12-19 08:03+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -4900,13 +4900,11 @@ msgstr "没有 ``pred`` 结果列。"
 msgid "Be aware of the existence of `pred` result columns."
 msgstr "注意`pred`结果列的存在。"
 
-#, fuzzy
 msgid "If needed filter out the added columns"
-msgstr "如果需要，过滤掉添加的列，例如"
+msgstr "如果需要，可过滤掉添加的列"
 
-#, fuzzy
 msgid "Kruskal single vertex"
-msgstr "单顶点"
+msgstr "Kruskal 单顶点"
 
 msgid ""
 "Using ``pgr_KruskalDD`` as example. Migration is similar to al the affected "
