@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 19:18+0000\n"
-"PO-Revision-Date: 2024-12-19 05:45+0000\n"
+"PO-Revision-Date: 2024-12-19 06:05+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -5619,9 +5619,8 @@ msgstr "迁移 ``pgr_trspViaVertices``"
 msgid "Migrating pgr_trspViaVertices using pgr_dijkstraVia"
 msgstr "使用 ``pgr_dijkstraVia``迁移 ``pgr_trspViaVertices``"
 
-#, fuzzy
 msgid "Using :doc:`pgr_dijkstraVia`."
-msgstr ":doc:`pgr_dijkstraVia`"
+msgstr "使用 :doc:`pgr_dijkstraVia`."
 
 #, fuzzy
 msgid ""
@@ -5642,9 +5641,8 @@ msgstr "``id3`` 是边"
 msgid "Migrating pgr_trspViaVertices using pgr_trspVia"
 msgstr "使用 ``pgr_trspVia``迁移 ``pgr_trspViaVertices``"
 
-#, fuzzy
 msgid "Using :doc:`pgr_trspVia`."
-msgstr ":doc:`pgr_trspVia`"
+msgstr "使用 :doc:`pgr_trspVia`."
 
 #, fuzzy
 msgid "Migration of pgr_trspViaEdges"
@@ -5657,9 +5655,8 @@ msgstr "本节将使用这组点："
 msgid "Migrating pgr_trspViaEdges using pgr_withPointsVia"
 msgstr "使用 ``pgr_withPointsVia`` 迁移 ``pgr_trspViaEdges``"
 
-#, fuzzy
 msgid "Using :doc:`pgr_withPointsVia`."
-msgstr "使用 :doc:`pgr_withPoints`"
+msgstr "使用 :doc:`pgr_withPointsVia`."
 
 #, fuzzy
 msgid "Migrating pgr_trspViaEdges using pgr_trspVia_withPoints"
@@ -9631,12 +9628,11 @@ msgstr "运行时间： :math:`O(V + E)`"
 msgid "Running space: :math:`\\Theta(VE)`"
 msgstr "运行时间： :math:`O(V + E)`"
 
-#, fuzzy
 msgid "Throws when there are no edges in the graph"
-msgstr "当图中没有边时，返回 EMPTY SET。"
+msgstr "当图形中没有边时抛出"
 
 msgid "pgr_betweennessCentrality(`Edges SQL`_, [``directed``])"
-msgstr "pgr_betweennessCentrality(`Edges SQL`_, [``directed``])"
+msgstr "pgr_betweennessCentrality(`Edges SQL`_, [``directed`])"
 
 #, fuzzy
 msgid "Returns set of ``(vid, centrality)``"
@@ -13612,7 +13608,7 @@ msgid "Single head arrows represent one edge (row) on the edges table."
 msgstr "红色箭头对应边表中 ``cost`` > 0的情况。"
 
 msgid "There are no double head arrows"
-msgstr ""
+msgstr "没有双头箭"
 
 msgid ""
 "Two pair of edges share the same ending nodes and the ``reverse_cost`` "
@@ -13649,7 +13645,7 @@ msgstr "`维基百科：二分图 <https://en.wikipedia.org/wiki/Bipartite_graph
 
 msgid ""
 "mathworld: `Line Graph <https://mathworld.wolfram.com/LineGraph.html>`__"
-msgstr ""
+msgstr "mathworld: `线形图 <https://mathworld.wolfram.com/LineGraph.html>`__"
 
 msgid "``pgr_lineGraphFull`` - Experimental"
 msgstr "``pgr_lineGraphFull`` - 实验"
@@ -16738,6 +16734,8 @@ msgid ""
 "`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standarize "
 "spanning tree functions output"
 msgstr ""
+"`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ "
+"将生成树函数输出标准化"
 
 msgid "Functions:"
 msgstr "新函数:"
@@ -16797,44 +16795,44 @@ msgid "Build"
 msgstr "构建"
 
 msgid "Explicit minimum requirements:"
-msgstr ""
+msgstr "明确的最低要求："
 
 msgid "postgres 11.0.0"
-msgstr ""
+msgstr "postgres 11.0.0"
 
 #, fuzzy
 msgid "postgis 3.0.0"
 msgstr "版本3.0.0"
 
 msgid "g++ 13+ is supported"
-msgstr ""
+msgstr "支持 g++ 13+"
 
 msgid "Code fixes"
 msgstr "代码修正"
 
 msgid "Fix warnings from cpplint."
-msgstr ""
+msgstr "修正来自 cpplint 的警告。"
 
 msgid "Fix warnings from clang 18."
-msgstr ""
+msgstr "修正来自 clang 18 的警告。"
 
 #, fuzzy
 msgid "CI tests"
 msgstr "pgtap 测试"
 
 msgid "Add a clang tidy test on changed files."
-msgstr ""
+msgstr "为已更改的文件添加 clang tidy 测试。"
 
 msgid ""
 "Update test not done on versions: 3.0.1, 3.0.2, 3.0.3, 3.0.4, 3.1.0, 3.1.1, "
 "3.1.2"
-msgstr ""
+msgstr "未对以下版本进行更新测试3.0.1, 3.0.2, 3.0.3, 3.0.4, 3.1.0, 3.1.1, 3.1.2"
 
 msgid "Documentation"
 msgstr "文档"
 
 msgid "Results of documentation queries adujsted to boost 1.83.0 version:"
-msgstr ""
+msgstr "根据 boost 1.83.0 版本进行的文档查询结果："
 
 msgid "pgr_edgeDisjointPaths"
 msgstr "pgr_edgeDisjointPaths"
@@ -16864,13 +16862,13 @@ msgstr ""
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.1%22>`_"
 
 msgid "Upgrade fix"
-msgstr ""
+msgstr "升级修复"
 
 msgid "The upgrade was failing for same minor"
-msgstr ""
+msgstr "升级失败的主要原因是"
 
 msgid "Fix warnings from cpplint"
-msgstr ""
+msgstr "修正来自 cpplint 的警告"
 
 msgid "Others"
 msgstr "其他"
