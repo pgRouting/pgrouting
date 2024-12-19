@@ -4897,9 +4897,8 @@ msgstr "单顶点和多顶点"
 msgid "Do not have ``pred`` result column."
 msgstr "没有 ``pred`` 结果列。"
 
-#, fuzzy
 msgid "Be aware of the existence of `pred` result columns."
-msgstr "注意附加结果列的存在。"
+msgstr "注意`pred`结果列的存在。"
 
 #, fuzzy
 msgid "If needed filter out the added columns"
