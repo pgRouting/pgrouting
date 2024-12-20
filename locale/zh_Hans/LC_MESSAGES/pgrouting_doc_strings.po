@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 19:18+0000\n"
-"PO-Revision-Date: 2024-12-20 01:51+0000\n"
+"PO-Revision-Date: 2024-12-20 02:29+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -13474,9 +13474,8 @@ msgstr "始终为 0，用作分隔符"
 msgid "units"
 msgstr "个位"
 
-#, fuzzy
 msgid "the target vertex"
-msgstr "获取最近的顶点"
+msgstr "目标顶点"
 
 msgid "In this image,"
 msgstr "在这张图片中，"
@@ -13493,11 +13492,12 @@ msgid ""
 "is used."
 msgstr "当使用 ``reverse_cost`` 列时，两个边对会共享相同的标识符。"
 
-#, fuzzy
 msgid ""
 "Edges :math:`{2 \\rightarrow 3, 3 \\rightarrow 2}` are represented with one "
 "edge row with :math:`id=203`."
-msgstr "从图中删除边 :math:`v \\rightarrow w` 和 :math:`w \\rightarrow z`。"
+msgstr ""
+"边 :math:`{2 \\rightarrow 3, 3 \\rightarrow 2}` 用一个边行表示，其 "
+":math:`id=203`."
 
 #, fuzzy
 msgid ""
