@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 19:18+0000\n"
-"PO-Revision-Date: 2024-12-20 02:29+0000\n"
+"PO-Revision-Date: 2024-12-20 02:47+0000\n"
 "Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -4867,9 +4867,9 @@ msgid ""
 "doc:`pgr_kruskalDD`, :doc:`pgr_kruskalBFS` and :doc:`pgr_kruskalDFS` result "
 "columns are being standardized."
 msgstr ""
-"从 `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__ :doc:"
-"`pgr_kruskalDD`, :doc:`pgr_kruskalBFS` 和 :doc:`pgr_kruskalDFS` 结果列开始标"
-"准化。"
+"从 `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__ ， "
+":doc:`pgr_kruskalDD` 、 :doc:`pgr_kruskalBFS` 和 :doc:`pgr_kruskalDFS` "
+"的结果列正在进行标准化。"
 
 msgid "|result-bfs|"
 msgstr "|result-bfs|"
@@ -13494,14 +13494,15 @@ msgid ""
 "Edges :math:`{2 \\rightarrow 3, 3 \\rightarrow 2}` are represented with one "
 "edge row with :math:`id=203`."
 msgstr ""
-"边 :math:`{2 \\rightarrow 3, 3 \\rightarrow 2}` 用一个边行表示，其 "
-":math:`id=203`."
+"边 :math:`{2 \\rightarrow 3, 3 \\rightarrow 2}` 用一条边行表示，标识符其 "
+":math:`id=203` 。"
 
-#, fuzzy
 msgid ""
 "Edges :math:`{3 \\rightarrow 4, 4 \\rightarrow 3}` are represented with one "
 "edge row with :math:`id=304`."
-msgstr "从图中删除边 :math:`v \\rightarrow w` 和 :math:`w \\rightarrow z`。"
+msgstr ""
+"边 :math:`{3 \\rightarrow 4, 4 \\rightarrow 3}` 用一条边的行表示，标识符为 "
+":math:`id=304` 。"
 
 msgid "The graph can be created as follows:"
 msgstr "图表的创建过程如下："
@@ -13512,10 +13513,9 @@ msgstr "用共享边表示的有向图的线图"
 msgid "The result is a directed graph."
 msgstr "结果就是一个有向图。"
 
-#, fuzzy
 msgid ""
 "For :math:`seq=4` from :math:`203 \\leftrightarrow 304` represent two edges"
-msgstr "边 :math:`2` (:math:`1 \\rightarrow 3`) 不是图的一部分"
+msgstr "对于 :math:`seq=4` ，从:math:`203 \\leftrightarrow 304` 表示两条边"
 
 msgid "For all the other values of ``seq`` represent one edge."
 msgstr "所有其他的 ``seq`` 值都代表一条边。"
@@ -13567,14 +13567,12 @@ msgid ""
 "For :math:`seq=7` from :math:`203 \\leftrightarrow 302` represent two edges."
 msgstr "对于 :math:`seq=7` 从 :math:`203 \\leftrightarrow 302` 代表两条边。"
 
-#, fuzzy
 msgid ""
 "For :math:`seq=8` from :math:`304 \\leftrightarrow 403` represent two edges."
-msgstr "边 :math:`2` (:math:`1 \\rightarrow 3`) 不是图的一部分。"
+msgstr "对于 :math:`seq=8` ，从 :math:`304 \\leftrightarrow 403` 表示两条边。"
 
-#, fuzzy
 msgid "wikipedia: `Line Graph <https://en.wikipedia.org/wiki/Line_graph>`__"
-msgstr "`维基百科：二分图 <https://en.wikipedia.org/wiki/Bipartite_graph>`__"
+msgstr "维基百科: `Line Graph <https://en.wikipedia.org/wiki/Line_graph>`__"
 
 msgid ""
 "mathworld: `Line Graph <https://mathworld.wolfram.com/LineGraph.html>`__"
@@ -14194,9 +14192,8 @@ msgstr "``bigint`` 表的唯一标识符"
 msgid "old_id"
 msgstr "old_id"
 
-#, fuzzy
 msgid "``bigint`` Identifier of the edge in original table"
-msgstr "``bigint`` 原表中边的标识符"
+msgstr "``bigint`` 是原始表中边的标识符"
 
 msgid "sub_id"
 msgstr "sub_id"
@@ -14305,9 +14302,8 @@ msgstr "有 1 个死端的边：1-1 ,6-1,14-2, 18-1 17-1 18-2"
 msgid "Isolated segments"
 msgstr "孤立的片段"
 
-#, fuzzy
 msgid "two isolated segments: 17 and 18 both they have 2 dead ends"
-msgstr "两个孤立的段：17 和 18 都有 2 个死端"
+msgstr "两个孤立的段：17 和 18，它们都有两个死端"
 
 msgid "No Isolated segments"
 msgstr "无孤立段"
@@ -20240,9 +20236,8 @@ msgstr "pgr_withPointsKSP 是 **带有点** 的 pgr_ksp"
 msgid "pgr_withPointsDD is pgr_drivingDistance **with points**"
 msgstr "pgr_withPointsDD 是 **带有点** 的 pgr_drivenDistance"
 
-#, fuzzy
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
-msgstr "pgr_withPointsvia 是 **带有点** 的"
+msgstr "pgr_withPointsvia 是 pgr_dijkstraVia **with points** 的版本"
 
 #~ msgid "The integral types of the ``Edges SQL`` can only be ``INTEGER``."
 #~ msgstr "``Edges SQL`` 的整数类型只能是 ``INTEGER``。"
