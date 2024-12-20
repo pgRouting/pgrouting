@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 19:18+0000\n"
-"PO-Revision-Date: 2024-12-20 01:45+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"PO-Revision-Date: 2024-12-20 01:46+0000\n"
+"Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -13361,15 +13361,14 @@ msgid ""
 msgstr "``pgr_lineGraph`` — 将给定图转换为其相应的基于边的图。"
 
 msgid "Promoted to **proposed** signature."
-msgstr "晋升为**拟议**签署。"
+msgstr "晋升为**proposed** 签名。"
 
 msgid "Works for directed and undirected graphs."
 msgstr "适用于有向和无向图。"
 
-#, fuzzy
 msgid ""
 "Given a graph :math:`G`, its line graph :math:`L(G)` is a graph such that:"
-msgstr "给定一个图 G，它的线图 L(G) 是这样的图："
+msgstr "给定一个图 :math:`G`，其线图 :math:`L(G)` 是一个图，满足以下条件："
 
 #, fuzzy
 msgid "Each vertex of :math:`L(G)` represents an edge of :math:`G`."
