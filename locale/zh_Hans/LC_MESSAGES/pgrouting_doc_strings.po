@@ -9587,9 +9587,8 @@ msgstr "该实现适用于directed 和undirected。"
 msgid "Running time:  :math:`\\Theta(VE)`"
 msgstr "运行时间: :math:`Theta(VE)`"
 
-#, fuzzy
 msgid "Running space: :math:`\\Theta(VE)`"
-msgstr "运行时间： :math:`O(V + E)`"
+msgstr "运行空间: :math:`\\Theta(VE)`"
 
 msgid "Throws when there are no edges in the graph"
 msgstr "当图形中没有边时抛出"
