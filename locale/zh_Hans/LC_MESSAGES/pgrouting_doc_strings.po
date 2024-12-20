@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 19:18+0000\n"
 "PO-Revision-Date: 2024-12-20 02:47+0000\n"
-"Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -13524,13 +13524,11 @@ msgid ""
 "The ``cost`` and ``reverse_cost`` values represent the existence of the edge."
 msgstr "使用 ``cost`` 和 ``reverse_cost`` 列来表示边的存在。"
 
-#, fuzzy
 msgid "When positive: the edge exists."
-msgstr "当正数时是顶点的标识符。"
+msgstr "当为正数时：边缘存在。"
 
-#, fuzzy
 msgid "When negative: the edge does not exist."
-msgstr "为负数时抛出错误。"
+msgstr "负数时：边缘不存在。"
 
 msgid "Representation as directed with unique edge identifiers"
 msgstr "作为有向图表示，并使用唯一的边标识符"
@@ -13976,9 +13974,8 @@ msgstr "``pgr_maxFlow`` (`组合`_)"
 msgid "New **Proposed** function"
 msgstr "新 **拟议** 的函数"
 
-#, fuzzy
 msgid "Calculates the maximum flow from the sources to the targets."
-msgstr "计算从 `source(s)` 到 `target(s)` 的最大流量。"
+msgstr "计算从源头到目标的最大流量。"
 
 msgid ""
 "When the maximum flow is **0** then there is no flow and **0** is returned."
@@ -14287,9 +14284,8 @@ msgstr "仅具有进行拓扑分析的基本字段"
 msgid "Edges with 1 dead end: 1,6,24"
 msgstr "有 1 个死端的边：1、6、24"
 
-#, fuzzy
 msgid "Edges with 2 dead ends: 17,18"
-msgstr "有两个死端的边：17，18"
+msgstr "边缘有 2 个死角：17,18"
 
 msgid ""
 "Edge 17's right node is a dead end because there is no other edge sharing "
@@ -14636,12 +14632,11 @@ msgid ""
 "First Search ordering."
 msgstr "``pgr_primBFS`` — Prim 的深度优先搜索排序最小生成树算法。"
 
-#, fuzzy
 msgid ""
 "Visits and extracts the nodes information in Breath First Search ordering of "
 "the Minimum Spanning Tree created using Prims's algorithm."
-msgstr ""
-"访问并提取使用 Prims 算法创建的最小生成树的深度优先搜索顺序中的节点信息。"
+msgstr "访问并提取使用 Prims 算法创建的最小生成树的 Breath First Search "
+"排序中的节点信息。"
 
 msgid "pgr_primBFS(`Edges SQL`_, **root vid**, [``max_depth``])"
 msgstr "pgr_primBFS(`Edges SQL`_, **root vid**, [``max_depth``])"
