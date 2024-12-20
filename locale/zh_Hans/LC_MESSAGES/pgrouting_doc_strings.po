@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 19:18+0000\n"
 "PO-Revision-Date: 2024-12-20 02:29+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -8216,7 +8216,7 @@ msgid "Name change from pgr_eucledianTSP"
 msgstr "pgr_eucledianTSP 的名称更改"
 
 msgid "New **Official** function"
-msgstr "**官方** 新函数"
+msgstr "新的 **Official** 函数"
 
 msgid ""
 "Any duplicated identifier will be ignored. The coordinates that will be kept"
@@ -8233,9 +8233,8 @@ msgid ""
 "The coordinates are quite different for the same identifier, for example ::"
 msgstr "对于相同的标识符，坐标有很大不同，例如::"
 
-#, fuzzy
 msgid "pgr_TSPeuclidean(`Coordinates SQL`_, ``[start_id, end_id]``)"
-msgstr "pgr_TSPeuclidean(`Coordinates SQL`_ , ``[start_id, end_id]``)"
+msgstr "pgr_TSPeuclidean(`Coordinates SQL`_, ``[start_id, end_id]``)"
 
 msgid "With default values"
 msgstr "有默认值"
@@ -11823,7 +11822,7 @@ msgstr "返回 |via-result| 的集合"
 msgid ""
 "Find the route that visits the vertices :math:`\\{5, 1, 8\\}` in that order "
 "on an directed graph."
-msgstr "在一个directed graph中，找到按顺序访问顶点:math:`\\{5, 1, 8\\}`的路径。"
+msgstr "在一个directed graph中，找到按顺序访问顶点 :math:`\\ {5, 1, 8\\}` 的路径。"
 
 msgid "Via optional parameters"
 msgstr "Via可选参数"
@@ -13382,7 +13381,7 @@ msgstr ":math:`L(G)` 的两个顶点相邻，当且仅当它们对应的边在 :
 msgid ""
 "The ``cost`` and ``reverse_cost`` columns of the result represent existence "
 "of the edge."
-msgstr "结果中的 ``cost``和 ``reverse_cost``列表示边的存在性。"
+msgstr "结果中的 ``cost`` 和 ``reverse_cost`` 列表示边的存在性。"
 
 msgid "When the graph is directed the result is directed."
 msgstr "当图形是有向的，结果也是有向的。"
@@ -13405,7 +13404,7 @@ msgid "Returns set of |result-lineg|"
 msgstr "Returns set of |result-lineg|"
 
 msgid "For an undirected graph with edges :math:'{2,4,5,8}'"
-msgstr "对于有边 :math:'{2,4,5,8}' 的无向图来说"
+msgstr "对于一个undirected graph(无向图)，其边为 :math:'{2,4,5,8}'"
 
 msgid "Gives a local identifier for the edge"
 msgstr "给出边的本地标识符"
@@ -13461,9 +13460,8 @@ msgstr "为了简化数据库中边表的设计，边的标识符采用3位数�
 msgid "hundreds"
 msgstr "百位"
 
-#, fuzzy
 msgid "the source vertex"
-msgstr "获取最近的顶点"
+msgstr "源点"
 
 msgid "tens"
 msgstr "十位"
