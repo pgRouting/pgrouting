@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 19:18+0000\n"
 "PO-Revision-Date: 2024-12-20 01:46+0000\n"
-"Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -13370,7 +13370,6 @@ msgid ""
 "Given a graph :math:`G`, its line graph :math:`L(G)` is a graph such that:"
 msgstr "给定一个图 :math:`G`，其线图 :math:`L(G)` 是一个图，满足以下条件："
 
-#, fuzzy
 msgid "Each vertex of :math:`L(G)` represents an edge of :math:`G`."
 msgstr ":math:`L(G)` 的每个顶点代表 :math:`G` 的一条边。"
 
