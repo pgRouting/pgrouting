@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 19:18+0000\n"
-"PO-Revision-Date: 2024-12-20 01:46+0000\n"
+"PO-Revision-Date: 2024-12-20 01:48+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -13373,12 +13373,11 @@ msgstr "给定一个图 :math:`G`，其线图 :math:`L(G)` 是一个图，满足
 msgid "Each vertex of :math:`L(G)` represents an edge of :math:`G`."
 msgstr ":math:`L(G)` 的每个顶点代表 :math:`G` 的一条边。"
 
-#, fuzzy
 msgid ""
 "Two vertices of :math:`L(G)` are adjacent if and only if their corresponding "
 "edges share a common endpoint in :math:`G`"
-msgstr ""
-":math:`L(G)` 的两个顶点相邻当且仅当它们对应的边共享 :math:`G` 中的公共端点"
+msgstr ":math:`L(G)` 的两个顶点相邻，当且仅当它们对应的边在 :math:`G` "
+"中共享一个共同端点时。"
 
 #, fuzzy
 msgid ""
