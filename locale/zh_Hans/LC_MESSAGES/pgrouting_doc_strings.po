@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-18 19:18+0000\n"
 "PO-Revision-Date: 2024-12-20 01:33+0000\n"
-"Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -9584,9 +9584,8 @@ msgstr ""
 msgid "This implementation work for both directed and undirected graphs."
 msgstr "该实现适用于directed 和undirected。"
 
-#, fuzzy
 msgid "Running time:  :math:`\\Theta(VE)`"
-msgstr "运行时间： :math:`O(V + E)`"
+msgstr "运行时间: :math:`Theta(VE)`"
 
 #, fuzzy
 msgid "Running space: :math:`\\Theta(VE)`"
@@ -13399,9 +13398,8 @@ msgid ""
 "of the edge."
 msgstr "使用 ``cost`` 和 ``reverse_cost`` 列来表示边的存在。"
 
-#, fuzzy
 msgid "When the graph is directed the result is directed."
-msgstr "当图无向时，成本矩阵是对称的。"
+msgstr "当图形是有向的，结果也是有向的。"
 
 msgid ""
 "To get the complete Line Graph use unique identifiers on the double way "
@@ -13455,9 +13453,8 @@ msgid ""
 "it’s not part of the graph."
 msgstr "当为负时：边(``target``, ``source``)不存在，因此它不是图的一部分。"
 
-#, fuzzy
 msgid "Given the following directed graph"
-msgstr "给出以下查询"
+msgstr "给定以下有向图"
 
 msgid ""
 ":math:`G(V,E) = G(\\{1,2,3,4\\},\\{ 1 \\rightarrow 2, 1 \\rightarrow 4, 2 "
@@ -13503,9 +13500,8 @@ msgid ""
 "Single or double head arrows represent one edge (row) on the edges table."
 msgstr "单向或双向箭头表示边表中的一条边（行）。"
 
-#, fuzzy
 msgid "The numbers in the yellow shadow are the edge identifiers."
-msgstr "返回的行按边标识符升序排列。"
+msgstr "黄色阴影中的数字是边缘标识符。"
 
 msgid ""
 "Two pair of edges share the same identifier when the ``reverse_cost`` column "
