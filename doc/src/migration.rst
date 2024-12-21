@@ -22,13 +22,7 @@ Results can be different because of the changes.
    All deprecated functions will be removed on next mayor version 4.0.0
 
 .. contents:: Contents
-
-Migration of functions
-*******************************************************************************
-
-.. contents:: Migrating functions
-   :local:
-
+   :depth: 2
 
 Migration of ``pgr_aStar``
 -------------------------------------------------------------------------------
@@ -770,11 +764,252 @@ columns:
    :start-after: --withPointsKSP2
    :end-before: --withPointsKSP3
 
-Migration of turn restrictions
-*******************************************************************************
 
-.. contents:: Contents
+Migration of ``pgr_trsp`` (Vertices)
+-------------------------------------------------------------------------------
+
+Signature:
+
+.. parsed-literal::
+
+   pgr_trsp(Edges SQL, source, target, directed boolean, has_rcost boolean
+           [,restrict_sql text]);
+   RETURNS SETOF (seq, id1, id2, cost)
+
+:Deprecated: `v3.4.0 <https://docs.pgrouting.org/3.4>`__
+:Removed: `v4.0.0 <https://docs.pgrouting.org/4.0>`__
+
+.. contents::
    :local:
+
+.. rubric:: See also
+
+- :doc:`pgr_dijkstra`
+- :doc:`pgr_trsp`
+- `Migration of restrictions`_
+
+Use ``pgr_dijkstra`` when there are no restrictions.
+...............................................................................
+
+Use :doc:`pgr_dijkstra` instead.
+
+.. literalinclude:: migration.queries
+   :start-after: --verticesv2
+   :end-before: --verticesv3
+
+To get the original column names:
+
+.. literalinclude:: migration.queries
+   :start-after: --verticesv3
+   :end-before: --verticesv4
+
+* ``id1`` is the node
+* ``id2`` is the edge
+
+Use ``pgr_trsp`` when there are restrictions.
+...............................................................................
+
+Use :doc:`pgr_trsp` (One to One) instead.
+
+.. literalinclude:: migration.queries
+   :start-after: --verticesv5
+   :end-before: --verticesv6
+
+To get the original column names:
+
+.. literalinclude:: migration.queries
+   :start-after: --verticesv6
+   :end-before: --verticesv7
+
+* ``id1`` is the node
+* ``id2`` is the edge
+
+Migration of ``pgr_trsp`` (Edges)
+-------------------------------------------------------------------------------
+
+Signature:
+
+.. parsed-literal::
+
+   pgr_trsp(sql text, source_edge integer, source_pos float8,
+                    target_edge integer, target_pos float8,
+                    directed boolean, has_rcost boolean
+                    [,restrict_sql text]);
+   RETURNS SETOF (seq, id1, id2, cost)
+
+:Deprecated: `v3.4.0 <https://docs.pgrouting.org/3.4>`__
+:Removed: `v4.0.0 <https://docs.pgrouting.org/4.0>`__
+
+.. contents::
+   :local:
+
+.. rubric:: See also
+
+- :doc:`pgr_withPoints`
+- :doc:`pgr_trsp_withPoints`
+- `Migration of restrictions`_
+
+Use ``pgr_withPoints`` when there are no restrictions.
+...............................................................................
+
+Use :doc:`pgr_withPoints` (Ont to One) instead.
+
+.. literalinclude:: migration.queries
+   :start-after: --edgesv2
+   :end-before: --edgesv3
+
+To get the original column names:
+
+.. literalinclude:: migration.queries
+   :start-after: --edgesv3
+   :end-before: --edgesv4
+
+* ``id1`` is the node
+* ``id2`` is the edge
+
+Use ``pgr_trsp_withPoints`` when there are restrictions.
+...............................................................................
+
+Use :doc:`pgr_trsp_withPoints` instead.
+
+.. literalinclude:: migration.queries
+   :start-after: --edgesv5
+   :end-before: --edgesv6
+
+To get the original column names:
+
+.. literalinclude:: migration.queries
+   :start-after: --edgesv6
+   :end-before: --edgesv7
+
+* ``id1`` is the node
+* ``id2`` is the edge
+
+Migration of ``pgr_trspViaVertices``
+-------------------------------------------------------------------------------
+
+Signature:
+
+.. parsed-literal::
+
+   pgr_trspViaVertices(sql text, vids integer[],
+                     directed boolean, has_rcost boolean
+                     [, turn_restrict_sql text]);
+   RETURNS SETOF (seq, id1, id2, id3, cost)
+
+:Deprecated: `v3.4.0 <https://docs.pgrouting.org/3.4>`__
+:Removed: `v4.0.0 <https://docs.pgrouting.org/4.0>`__
+
+.. contents::
+   :local:
+   :depth: 1
+
+.. rubric:: See also
+
+- :doc:`pgr_dijkstraVia`
+- :doc:`pgr_trspVia`
+- `Migration of restrictions`_
+
+Use ``pgr_dijkstraVia`` when there are no restrictions
+...............................................................................
+
+Use :doc:`pgr_dijkstraVia` instead.
+
+.. literalinclude:: migration.queries
+   :start-after: --viav2
+   :end-before: --viav3
+
+To get the original column names:
+
+.. literalinclude:: migration.queries
+   :start-after: --viav3
+   :end-before: --viav4
+
+* ``id1`` is the path identifier
+* ``id2`` is the node
+* ``id3`` is the edge
+
+Use ``pgr_trspVia`` when there are restrictions
+...............................................................................
+
+Use :doc:`pgr_trspVia` instead.
+
+.. literalinclude:: migration.queries
+   :start-after: --viav5
+   :end-before: --viav6
+
+To get the original column names:
+
+.. literalinclude:: migration.queries
+   :start-after: --viav6
+   :end-before: --viav7
+
+* ``id1`` is the path identifier
+* ``id2`` is the node
+* ``id3`` is the edge
+
+Migration of ``pgr_trspViaEdges``
+-------------------------------------------------------------------------------
+
+Signature:
+
+.. parsed-literal::
+
+   pgr_trspViaEdges(sql text, eids integer[], pcts float8[],
+                     directed boolean, has_rcost boolean
+                     [, turn_restrict_sql text]);
+   RETURNS SETOF (seq, id1, id2, id3, cost)
+
+:Deprecated: `v3.4.0 <https://docs.pgrouting.org/3.4>`__
+:Removed: `v4.0.0 <https://docs.pgrouting.org/4.0>`__
+
+.. contents::
+   :local:
+   :depth: 1
+
+.. rubric:: See also
+
+- :doc:`pgr_withPointsVia`
+- :doc:`pgr_trspVia_withPoints`
+- `Migration of restrictions`_
+
+Use ``pgr_withPointsVia`` when there are no restrictions
+...............................................................................
+
+Use :doc:`pgr_withPointsVia` instead.
+
+.. literalinclude:: migration.queries
+   :start-after: --edgesvia2
+   :end-before: --edgesvia3
+
+To get the original column names:
+
+.. literalinclude:: migration.queries
+   :start-after: --edgesvia3
+   :end-before: --edgesvia4
+
+* ``id1`` is the path identifier
+* ``id2`` is the node
+* ``id3`` is the edge
+
+Use ``pgr_trspVia_withPoints`` when there are restrictions
+...............................................................................
+
+Use :doc:`pgr_trspVia_withPoints` instead.
+
+.. literalinclude:: migration.queries
+   :start-after: --edgesvia5
+   :end-before: --edgesvia6
+
+To get the original column names:
+
+.. literalinclude:: migration.queries
+   :start-after: --edgesvia6
+   :end-before: --edgesvia7
+
+* ``id1`` is the path identifier
+* ``id2`` is the node
+* ``id3`` is the edge
 
 Migration of restrictions
 -------------------------------------------------------------------------------
@@ -888,378 +1123,6 @@ The migrated table contents:
 .. literalinclude:: migration.queries
    :start-after: --rest4
    :end-before: --rest5
-
-
-Migration of ``pgr_trsp`` (Vertices)
--------------------------------------------------------------------------------
-
-:doc:`pgr_trsp` signatures have changed and many issues have been fixed in the
-new signatures. This section will show how to migrate from the old signatures to
-the new replacement functions. This also affects the restrictions.
-
-Starting from `v3.4.0 <https://docs.pgrouting.org/3.4/en/migration.html>`__
-
-Signature to be migrated:
-
-.. parsed-literal::
-
-  pgr_trsp(Edges SQL, source, target,
-           directed boolean, has_rcost boolean
-           [,restrict_sql text]);
-   RETURNS SETOF (seq, id1, id2, cost)
-
-* The integral type of the ``Edges SQL`` can only be ``INTEGER``.
-* The floating point type of the ``Edges SQL`` can only be ``FLOAT``.
-* ``directed`` flag is compulsory.
-
-  * Does not have a default value.
-
-* Does not autodetect if ``reverse_cost`` column exist.
-
-  * User must be careful to match the existence of the column with the value of
-    ``has_rcost`` parameter.
-
-* The restrictions inner query is optional.
-* The output column names are meaningless
-
-Migrate by using:
-
-* :doc:`pgr_dijkstra` when there are no restrictions,
-* :doc:`pgr_trsp` (One to One) when there are restrictions.
-
-
-Migrating ``pgr_trsp`` (Vertices) using ``pgr_dijkstra``
-...............................................................................
-
-The following query does not have restrictions.
-
-.. literalinclude:: migration.queries
-   :start-after: --verticesv1
-   :end-before: --verticesv2
-
-* A message about deprecation is shown
-
-  * Deprecated functions will be removed on the next mayor version 4.0.0
-
-Use :doc:`pgr_dijkstra` instead.
-
-
-.. literalinclude:: migration.queries
-   :start-after: --verticesv2
-   :end-before: --verticesv3
-
-* The types casting has been removed.
-* :doc:`pgr_dijkstra`:
-
-  * Autodetects if ``reverse_cost`` column is in the edges
-    SQL.
-  * Accepts ``ANY-INTEGER`` on integral types
-  * Accepts ``ANY-NUMERICAL`` on floating point types
-  * ``directed`` flag has a default value of ``true``.
-
-    * Use the same value that on the original query.
-    * In this example it is ``true`` which is the default value.
-
-      * The flag has been omitted and the default is been used.
-
-When the need of using strictly the same (meaningless) names and types of the
-function been migrated then:
-
-.. literalinclude:: migration.queries
-   :start-after: --verticesv3
-   :end-before: --verticesv4
-
-* ``id1`` is the node
-* ``id2`` is the edge
-
-
-Migrating ``pgr_trsp`` (Vertices) using ``pgr_trsp``
-...............................................................................
-
-The following query has restrictions.
-
-.. literalinclude:: migration.queries
-   :start-after: --verticesv4
-   :end-before: --verticesv5
-
-* A message about deprecation is shown
-
-  * Deprecated functions will be removed on the next mayor version 4.0.0
-
-* The restrictions are the last parameter of the function
-
-  * Using the old structure of restrictions
-
-Use :doc:`pgr_trsp` (One to One) instead.
-
-.. literalinclude:: migration.queries
-   :start-after: --verticesv5
-   :end-before: --verticesv6
-
-* The new structure of restrictions is been used.
-
-  * It is the second parameter.
-
-* The types casting has been removed.
-* :doc:`pgr_trsp`:
-
-  * Autodetects if ``reverse_cost`` column is in the edges
-    SQL.
-  * Accepts ``ANY-INTEGER`` on integral types
-  * Accepts ``ANY-NUMERICAL`` on floating point types
-  * ``directed`` flag has a default value of ``true``.
-
-    * Use the same value that on the original query.
-    * In this example it is ``true`` which is the default value.
-
-      * The flag has been omitted and the default is been used.
-
-When the need of using strictly the same (meaningless) names and types of the
-function been migrated then:
-
-.. literalinclude:: migration.queries
-   :start-after: --verticesv6
-   :end-before: --verticesv7
-
-* ``id1`` is the node
-* ``id2`` is the edge
-
-Migration of ``pgr_trsp`` (Edges)
--------------------------------------------------------------------------------
-
-Signature to be migrated:
-
-.. parsed-literal::
-
-   pgr_trsp(sql text, source_edge integer, source_pos float8,
-                    target_edge integer, target_pos float8,
-                    directed boolean, has_rcost boolean
-                    [,restrict_sql text]);
-   RETURNS SETOF (seq, id1, id2, cost)
-
-* The integral types of the ``sql`` can only be ``INTEGER``.
-* The floating point type of the ``sql`` can only be ``FLOAT``.
-* ``directed`` flag is compulsory.
-
-  * Does not have a default value.
-
-* Does not autodetect if ``reverse_cost`` column exist.
-
-  * User must be careful to match the existence of the column with the value of
-    ``has_rcost`` parameter.
-
-* The restrictions inner query is optional.
-
-For these migration guide the following points will be used:
-
-.. literalinclude:: migration.queries
-   :start-after: --verticesv7
-   :end-before: --edgesv1
-
-Migrate by using:
-
-* :doc:`pgr_withPoints` when there are no restrictions,
-* :doc:`pgr_trsp_withPoints` (One to One) when there are restrictions.
-
-Migrating ``pgr_trsp`` (Edges) using ``pgr_withPoints``
-...............................................................................
-
-The following query does not have restrictions.
-
-.. literalinclude:: migration.queries
-   :start-after: --edgesv1
-   :end-before: --edgesv2
-
-* A message about deprecation is shown
-
-  * Deprecated functions will be removed on the next mayor version 4.0.0
-
-Use :doc:`pgr_withPoints` instead.
-
-.. literalinclude:: migration.queries
-   :start-after: --edgesv2
-   :end-before: --edgesv3
-
-* The types casting has been removed.
-* Do not show details, as the deprecated function does not show details.
-* :doc:`pgr_withPoints`:
-
-  * Autodetects if ``reverse_cost`` column is in the edges
-    SQL.
-  * Accepts ``ANY-INTEGER`` on integral types
-  * Accepts ``ANY-NUMERICAL`` on floating point types
-  * ``directed`` flag has a default value of ``true``.
-
-    * Use the same value that on the original query.
-    * In this example it is ``true`` which is the default value.
-
-      * The flag has been omitted and the default is been used.
-  * On the points query do not include the ``side`` column.
-
-When the need of using strictly the same (meaningless) names and types, and node
-values of the function been migrated then:
-
-.. literalinclude:: migration.queries
-   :start-after: --edgesv3
-   :end-before: --edgesv4
-
-* ``id1`` is the node
-* ``id2`` is the edge
-
-
-Migrating ``pgr_trsp`` (Edges) using ``pgr_trsp_withPoints``
-...............................................................................
-
-The following query has restrictions.
-
-.. literalinclude:: migration.queries
-   :start-after: --edgesv4
-   :end-before: --edgesv5
-
-* A message about deprecation is shown
-
-  * Deprecated functions will be removed on the next mayor version 4.0.0
-
-* The restrictions are the last parameter of the function
-
-  * Using the old structure of restrictions
-
-Use :doc:`pgr_trsp_withPoints` instead.
-
-.. literalinclude:: migration.queries
-   :start-after: --edgesv5
-   :end-before: --edgesv6
-
-* The new structure of restrictions is been used.
-
-  * It is the second parameter.
-
-* The types casting has been removed.
-* Do not show details, as the deprecated function does not show details.
-* :doc:`pgr_trsp_withPoints`:
-
-  * Autodetects if ``reverse_cost`` column is in the edges
-    SQL.
-  * Accepts ``ANY-INTEGER`` on integral types
-  * Accepts ``ANY-NUMERICAL`` on floating point types
-  * ``directed`` flag has a default value of ``true``.
-
-    * Use the same value that on the original query.
-    * In this example it is ``true`` which is the default value.
-
-      * The flag has been omitted and the default is been used.
-  * On the points query do not include the ``side`` column.
-
-When the need of using strictly the same (meaningless) names and types, and node
-values of the function been migrated then:
-
-.. literalinclude:: migration.queries
-   :start-after: --edgesv6
-   :end-before: --edgesv7
-
-* ``id1`` is the node
-* ``id2`` is the edge
-
-Migration of pgr_trspViaVertices
--------------------------------------------------------------------------------
-
-.. contents::
-   :local:
-   :depth: 1
-
-Migrating pgr_trspViaVertices using pgr_dijkstraVia
-...............................................................................
-
-Using :doc:`pgr_dijkstraVia`.
-
-.. literalinclude:: migration.queries
-   :start-after: --viav2
-   :end-before: --viav3
-
-When the need of using the same (meaningless) names and and strict types then
-convert the result to the deprecated function columns:
-
-* ``id1`` is the path identifier
-* ``id2`` is the node
-* ``id3`` is the edge
-
-.. literalinclude:: migration.queries
-   :start-after: --viav3
-   :end-before: --viav4
-
-
-Migrating pgr_trspViaVertices using pgr_trspVia
-...............................................................................
-
-Using :doc:`pgr_trspVia`.
-
-.. literalinclude:: migration.queries
-   :start-after: --viav5
-   :end-before: --viav6
-
-When the need of using the same (meaningless) names and and strict types then
-convert the result to the deprecated function columns:
-
-* ``id1`` is the path identifier
-* ``id2`` is the node
-* ``id3`` is the edge
-
-.. literalinclude:: migration.queries
-   :start-after: --viav6
-   :end-before: --viav7
-
-Migration of pgr_trspViaEdges
--------------------------------------------------------------------------------
-
-.. contents::
-   :local:
-   :depth: 1
-
-In this section this set of points is going to be used:
-
-.. literalinclude:: migration.queries
-   :start-after: --edgesvia1
-   :end-before: --edgesvia2
-
-Migrating pgr_trspViaEdges using pgr_withPointsVia
-...............................................................................
-
-Using :doc:`pgr_withPointsVia`.
-
-.. literalinclude:: migration.queries
-   :start-after: --edgesvia2
-   :end-before: --edgesvia3
-
-When the need of using the same (meaningless) names and and strict types then
-convert the result to the deprecated function columns:
-
-* ``id1`` is the path identifier
-* ``id2`` is the node
-* ``id3`` is the edge
-
-.. literalinclude:: migration.queries
-   :start-after: --edgesvia3
-   :end-before: --edgesvia4
-
-Migrating pgr_trspViaEdges using pgr_trspVia_withPoints
-...............................................................................
-
-Use :doc:`pgr_trspVia_withPoints` instead.
-
-.. literalinclude:: migration.queries
-   :start-after: --edgesvia5
-   :end-before: --edgesvia6
-
-When the need of using the same (meaningless) names and and strict types then
-convert the result to the deprecated function columns:
-
-* ``id1`` is the path identifier
-* ``id2`` is the node
-* ``id3`` is the edge
-
-.. literalinclude:: migration.queries
-   :start-after: --edgesvia6
-   :end-before: --edgesvia7
 
 
 See Also

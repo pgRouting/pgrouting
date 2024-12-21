@@ -19,9 +19,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.4.0') THEN plan(540) ELSE plan(324) END;
-SET client_min_messages TO ERROR;
+UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
+SELECT CASE WHEN min_version('3.4.0') THEN plan(216) ELSE plan(1) END;
+
 
 CREATE OR REPLACE FUNCTION inner_query()
 RETURNS SETOF TEXT AS
@@ -32,9 +32,12 @@ DECLARE
   empty_restriction TEXT;
 BEGIN
 
-  IF min_version('3.4.0') THEN
+    IF NOT min_version('3.4.0') THEN
+      RETURN QUERY SELECT skip(1, 'pgr_signature added on 3.4.0');
+      RETURN;
+    END IF;
 
-    unrelated_restriction := '$$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$';
+    unrelated_restriction := '$$SELECT 1 AS id, 100 AS cost, ARRAY[33, 32, 25] AS path$$';
     empty_restriction := '$$SELECT * FROM restrictions WHERE id > 7$$';
 
     RETURN QUERY SELECT style_dijkstra('pgr_trsp(', ', ' || empty_restriction || ', 6, 16, false)');
@@ -42,27 +45,6 @@ BEGIN
 
     RETURN QUERY SELECT style_dijkstra('pgr_trsp(', ', ' || unrelated_restriction || ', 6, 16, false)');
     RETURN QUERY SELECT style_dijkstra('pgr_trsp(', ', ' || unrelated_restriction || ', 6, 16, true)');
-
-  END IF;
-
-    restriction := '$$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, ''32, 33''::TEXT AS via_path$$)';
-
-
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trsp', ', 6, 16, false, true)', TRUE);
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trsp', ', 6, 16, false, true, NULL)', TRUE);
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trsp', ', 6, 16, false, true, ' || restriction, TRUE);
-
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trsp', ', 6, 16, true, true)', TRUE);
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trsp', ', 6, 16, true, true, NULL)', TRUE);
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trsp', ', 6, 16, true, true, ' || restriction, TRUE);
-
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trsp', ', 6, 16, false, false)', FALSE);
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trsp', ', 6, 16, false, false, NULL)', FALSE);
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trsp', ', 6, 16, false, false, ' || restriction, FALSE);
-
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trsp', ', 6, 16, true, false)', FALSE);
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trsp', ', 6, 16, true, false, NULL)', FALSE);
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trsp', ', 6, 16, true, false, ' || restriction, FALSE);
 
 END;
 $BODY$

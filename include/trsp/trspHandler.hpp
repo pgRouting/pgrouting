@@ -50,7 +50,7 @@ namespace trsp {
 
 
 
-class Pgr_trspHandler : public pgrouting::Pgr_messages {
+class TrspHandler : public pgrouting::Pgr_messages {
     /**
      * Used in the priority queue
      */
@@ -101,104 +101,54 @@ class Pgr_trspHandler : public pgrouting::Pgr_messages {
 
 
  public:
-    Pgr_trspHandler(
+    TrspHandler(
             std::vector<Edge_t> &edges,
             const std::vector<Edge_t> &new_edges,
             const bool directed,
             const std::vector<Rule> &ruleList);
-    Pgr_trspHandler(
+
+    TrspHandler(
             std::vector<Edge_t> &edges,
             const bool directed,
             const std::vector<Rule> &ruleList);
-    Pgr_trspHandler(
-            Edge_t *edges,
-            const size_t edge_count,
-            const bool directed,
-            const std::vector<Rule> &ruleList);
-    Pgr_trspHandler(
-            Edge_t *edges,
-            const size_t edge_count,
-            const std::vector<Edge_t> &new_edges,
-            const bool directed,
-            const std::vector<Rule> &ruleList);
 
+    ~TrspHandler(void) = default;
 
-    Pgr_trspHandler(void) = delete;
-    ~Pgr_trspHandler(void) = default;
-
-
-    Path process(
-            const int64_t start_vertex,
-            const int64_t end_vertex);
-
-    std::deque<Path> process(
-            const std::map<int64_t,
-            std::set<int64_t>> &combinations);
-
-    std::deque<Path> process(
-            const std::vector<int64_t> sources,
-            const std::vector<int64_t> targets);
-
+    std::deque<Path> process(const std::map<int64_t, std::set<int64_t>>&);
 
     void clear();
 
  private:
-    void construct_graph(const std::vector<Edge_t>&, const bool);
-    void construct_graph(
-            Edge_t *edges,
-            const size_t edge_count,
-            const bool directed);
+    void construct_graph(const std::vector<Edge_t>&, const std::vector<Edge_t>&, const bool);
 
-    void add_point_edges(
-        const std::vector<Edge_t> &new_edges,
-        const bool directed);
-
-    int initialize_restrictions(
-            const std::vector<Rule> &ruleList);
+    int initialize_restrictions(const std::vector<Rule>&);
 
     void initialize_que();
 
-    Path process_trsp(
-            size_t edge_count);
+    Path process(const int64_t, const int64_t);
+
+    Path process_trsp(size_t edge_count);
 
     EdgeInfo dijkstra_exploration();
 
+    void explore(int64_t, const EdgeInfo, bool);
 
-    void explore(
-            int64_t cur_node,
-            const EdgeInfo cur_edge,
-            bool isStart);
+    double getRestrictionCost(int64_t, const EdgeInfo&, bool);
 
-    double getRestrictionCost(
-            int64_t cur_node,
-            const EdgeInfo &new_edge,
-            bool isStart);
-    bool addEdge(Edge_t edgeIn, bool);
+    bool addEdge(Edge_t, bool);
 
-    void connectStartEdge(
-            size_t firstEdge_idx,
-            size_t secondEdge_idx);
+    void connectStartEdge(size_t, size_t);
 
-    void connectEndEdge(
-            size_t firstEdge_idx,
-            size_t secondEdge_idx);
+    void connectEndEdge(size_t, size_t);
 
-    double construct_path(int64_t ed_id, Position pos);
+    double construct_path(int64_t, Position);
 
-    void renumber_edges(Edge_t*, const size_t);
-    void renumber_edges(Edge_t*, const size_t, std::vector<Edge_t>&);
     void renumber_edges(std::vector<Edge_t>&);
     void renumber_edges(std::vector<Edge_t>&, std::vector<Edge_t>&);
 
-    void  add_to_que(
-            double cost,
-            size_t e_idx,
-            bool isStart);
+    void  add_to_que(double, size_t, bool);
 
-    double get_tot_cost(
-            double cost,
-            size_t edge_idx,
-            bool isStart);
+    double get_tot_cost(double, size_t, bool);
 
  private:
     std::vector<EdgeInfo> m_edges;
@@ -226,7 +176,7 @@ class Pgr_trspHandler : public pgrouting::Pgr_messages {
     /*
      * Used in dijkstra_exploration
      */
-    int64_t current_node;
+    int64_t m_current_node;
 
     Path m_path;
 
@@ -238,7 +188,7 @@ class Pgr_trspHandler : public pgrouting::Pgr_messages {
     /*
      * priority queue
      */
-    std::priority_queue<PDP, std::vector<PDP>, std::greater<PDP> > que;
+    std::priority_queue<PDP, std::vector<PDP>, std::greater<PDP>> m_que;
 };
 
 

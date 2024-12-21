@@ -12,6 +12,8 @@
 
 * ``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``
 * ``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``
+* ``pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)``
+* ``pgr_trsp(text,integer,integer,boolean,boolean,text)``
 
 
 
@@ -33,6 +35,10 @@ milestone for 3.7.1
   under mingw64 gcc 13.2
 * [#2689](https://github.com/pgRouting/pgrouting/pull/2689) When point is a
   vertex, the withPoints family do not return results.
+
+**C/C++ code enhancemet**
+
+* TRSP family
 
 ### pgRouting 3.7.0 Release Notes
 
