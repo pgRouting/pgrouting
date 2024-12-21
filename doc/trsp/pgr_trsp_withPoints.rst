@@ -9,6 +9,12 @@
 
 |
 
+.. index::
+   single: TRSP Family ; trsp_withPoints
+   single: Shortest Path Category ; trsp_withPoints
+   single: Restrictions Category ; trsp_withPoints
+   single: withPoints Category ; trsp_withPoints
+   single: trsp_withPoints
 
 pgr_trsp_withPoints - Proposed
 ===============================================================================
@@ -88,7 +94,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: trsp_withPoints(One to One) - Proposed on v3.4
+    single: trsp_withPoints ; One to One - Proposed on v3.4
 
 One to One
 ...............................................................................
@@ -110,7 +116,7 @@ One to One
    :end-before: --e2
 
 .. index::
-    single: trsp_withPoints(One to Many) - Proposed on v3.4
+    single: trsp_withPoints ; One to Many - Proposed on v3.4
 
 One to Many
 ...............................................................................
@@ -131,7 +137,7 @@ One to Many
    :end-before: --e3
 
 .. index::
-    single: trsp_withPoints(Many to One) - Proposed on v3.4
+    single: trsp_withPoints ; Many to One - Proposed on v3.4
 
 Many to One
 ...............................................................................
@@ -152,7 +158,7 @@ Many to One
    :end-before: --e4
 
 .. index::
-    single: trsp_withPoints(Many to Many) - Proposed on v3.4
+    single: trsp_withPoints ; Many to Many - Proposed on v3.4
 
 Many to Many
 ...............................................................................
@@ -174,7 +180,7 @@ Many to Many
    :end-before: --e5
 
 .. index::
-    single: trsp_withPoints(Combinations) - Proposed on v3.4
+    single: trsp_withPoints ; Combinations - Proposed on v3.4
 
 Combinations
 ...............................................................................

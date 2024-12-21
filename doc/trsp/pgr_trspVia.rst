@@ -9,6 +9,11 @@
 
 |
 
+.. index::
+   single: TRSP Family ; trspVia
+   single: Via Category ; trspVia
+   single: Restrictions Category ; trspVia
+   single: trspVia
 
 ``pgr_trspVia`` - Proposed
 ===============================================================================
@@ -54,7 +59,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: trspVia - Proposed on v3.4
+    single: trspVia ; One Via - Proposed on v3.4
 
 One Via
 ...............................................................................

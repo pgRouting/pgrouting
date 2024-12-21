@@ -9,11 +9,17 @@
 
 |
 
+.. index::
+   single: TRSP Family ; turnRestrictedPath
+   single: Shortest Path Category ; turnRestrictedPath
+   single: Restrictions Category ; turnRestrictedPath
+   single: turnRestrictedPath
+
 
 pgr_turnRestrictedPath - Experimental
 ===============================================================================
 
-``pgr_turnRestrictedPath`` Using Yen's algorithm Vertex -Vertex routing with
+``pgr_turnRestrictedPath`` Using Yen's algorithm Vertex - Vertex routing with
 restrictions
 
 .. include:: experimental.rst
@@ -34,9 +40,6 @@ the paths that do not use the restrictions
 
 Signatures
 -------------------------------------------------------------------------------
-
-.. index::
-   single: turnRestrictedPath - Experimental on v3.0
 
 .. admonition:: \ \
    :class: signatures
