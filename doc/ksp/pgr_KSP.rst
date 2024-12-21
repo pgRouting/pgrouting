@@ -9,6 +9,8 @@
 
 |
 
+.. index::
+    single: ksp
 
 pgr_KSP
 ===============================================================================
@@ -73,7 +75,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: ksp(One to One)
+    single: ksp ; One to One
 
 One to One
 ...............................................................................
@@ -94,7 +96,7 @@ One to One
     :end-before: --q2
 
 .. index::
-    single: ksp(One to Many)
+    single: ksp ; One to Many
 
 One to Many
 ...............................................................................
@@ -115,7 +117,7 @@ One to Many
     :end-before: --q3
 
 .. index::
-    single: ksp(Many to One)
+    single: ksp ; Many to One
 
 Many to One
 ...............................................................................
@@ -136,7 +138,7 @@ Many to One
     :end-before: --q4
 
 .. index::
-    single: ksp(Many to Many)
+    single: ksp ; Many to Many
 
 Many to Many
 ...............................................................................
@@ -157,7 +159,7 @@ Many to Many
     :end-before: --q5
 
 .. index::
-   single: ksp(Combinations)
+   single: ksp ; Combinations
 
 Combinations
 ...............................................................................
