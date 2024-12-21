@@ -9,6 +9,11 @@
 
 |
 
+.. index::
+   single: withPoints Family ; withPointsCostMatrix
+   single: withPoints Category ; withPointsCostMatrix
+   single: CostMatrix Category ; withPointsCostMatrix
+   single: withPointsCostMatrix - proposed on v2.0
 
 ``pgr_withPointsCostMatrix`` - proposed
 ===============================================================================
@@ -43,9 +48,6 @@ Using Dijkstra algorithm, calculate and return a cost matrix.
 .. include:: costMatrix-category.rst
     :start-after: costMatrix_details_start
     :end-before: costMatrix_details_end
-
-.. index::
-   single: withPointsCostMatrix - proposed
 
 Signatures
 -------------------------------------------------------------------------------

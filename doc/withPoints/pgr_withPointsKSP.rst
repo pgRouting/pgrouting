@@ -9,6 +9,11 @@
 
 |
 
+.. index::
+   single: withPoints Family ; withPointsKSP
+   single: withPoints Category ; withPointsKSP
+   single: KSP Category ; withPointsKSP
+   single: withPointsKSP
 
 pgr_withPointsKSP - Proposed
 ===============================================================================
@@ -57,9 +62,6 @@ Description
 Modifies the graph to include the points defined in the `Points SQL`_ and
 using Yen algorithm, finds the :math:`K` shortest paths.
 
-.. index::
-    single: withPointsKSP - Proposed on v2.2
-
 Signatures
 -------------------------------------------------------------------------------
 
@@ -77,7 +79,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: withPointsKSP(One to One)
+    single: withPointsKSP ; One to One - Proposed on v2.2
 
 One to One
 ...............................................................................
@@ -103,7 +105,7 @@ One to One
    :end-before: --q2
 
 .. index::
-    single: withPointsKSP(One to Many)
+    single: withPointsKSP ; One to Many - Proposed on v3.6
 
 One to Many
 ...............................................................................
@@ -125,7 +127,7 @@ One to Many
    :end-before: --q3
 
 .. index::
-    single: withPointsKSP(Many to One)
+    single: withPointsKSP ; Many to One - Proposed on v3.6
 
 Many to One
 ...............................................................................
@@ -147,7 +149,7 @@ Many to One
    :end-before: --q4
 
 .. index::
-    single: withPointsKSP(Many to Many)
+    single: withPointsKSP ; Many to Many - Proposed on v3.6
 
 Many to Many
 ...............................................................................
@@ -169,7 +171,7 @@ Many to Many
    :end-before: --q5
 
 .. index::
-    single: withPointsKSP(Combinations)
+    single: withPointsKSP ; Combinations - Proposed on v3.6
 
 Combinations
 ...............................................................................
