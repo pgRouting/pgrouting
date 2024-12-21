@@ -1,6 +1,5 @@
 
 SET(LOCAL_FILES
-     KSP-category.rst
      pgr_KSP.rst
     )
 

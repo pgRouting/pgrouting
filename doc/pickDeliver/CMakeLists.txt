@@ -2,7 +2,6 @@
 SET(LOCAL_FILES
      pgr_pickDeliverEuclidean.rst
      pgr_pickDeliver.rst
-     VRP-category.rst
     )
 
 foreach (f ${LOCAL_FILES})

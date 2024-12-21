@@ -1,8 +1,16 @@
 
 SET(LOCAL_FILES
-    traversal-family.rst
-    pgr_depthFirstSearch.rst
-    )
+    BFS-category.rst
+    cost-category.rst
+    costMatrix-category.rst
+    DFS-category.rst
+    drivingDistance-category.rst
+    KSP-category.rst
+    spanningTree-category.rst
+    via-category.rst
+    VRP-category.rst
+    withPoints-category.rst
+)
 
 foreach (f ${LOCAL_FILES})
     configure_file(${f} "${PGR_DOCUMENTATION_SOURCE_DIR}/${f}")

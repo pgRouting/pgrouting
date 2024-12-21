@@ -10,10 +10,6 @@ SET(LOCAL_FILES
     routingFunctions.rst
     sampledata.rst
     support.rst
-    cost-category.rst
-    costMatrix-category.rst
-    via-category.rst
-    withPoints-category.rst
     migration.rst
     )
 
