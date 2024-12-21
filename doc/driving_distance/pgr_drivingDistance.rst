@@ -65,7 +65,7 @@ Signatures
    | Returns set of |result-spantree|
 
 .. index::
-   single: drivingDistance(Single vertex)
+   single: drivingDistance ; Single vertex
 
 Single Vertex
 ...............................................................................
@@ -84,7 +84,7 @@ Single Vertex
    :end-before: --q6
 
 .. index::
-   single: drivingDistance(Multiple vertices)
+   single: drivingDistance ; Multiple vertices
 
 Multiple Vertices
 ...............................................................................
