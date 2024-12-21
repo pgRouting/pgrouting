@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Bidirectional Dijkstra Family ; bdDijkstraCostMatrix
+   single: bdDijkstraCostMatrix
 
 ``pgr_bdDijkstraCostMatrix``
 ===============================================================================
@@ -44,9 +47,6 @@ Using bidirectional Dijkstra algorithm, calculate and return a cost matrix.
 .. include:: costMatrix-category.rst
     :start-after: costMatrix_details_start
     :end-before: costMatrix_details_end
-
-.. index::
-    single: bdDijkstraCostMatrix
 
 Signatures
 -------------------------------------------------------------------------------
