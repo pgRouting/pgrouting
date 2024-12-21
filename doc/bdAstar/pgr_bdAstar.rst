@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Bidirectional A* Family ; bdAstar
+   single: bdAstar
 
 ``pgr_bdAstar``
 ===============================================================================
@@ -94,7 +97,7 @@ Signatures
 Optional parameters are `named parameters` and have a default value.
 
 .. index::
-    single: bdAstar(One to One)
+    single: bdAstar ; One to One
 
 One to One
 ...............................................................................
@@ -116,7 +119,7 @@ One to One
    :end-before: -- q3
 
 .. index::
-    single: bdAstar(One to Many)
+    single: bdAstar ; One to Many
 
 One to Many
 ...............................................................................
@@ -138,7 +141,7 @@ One to Many
    :end-before: -- q4
 
 .. index::
-    single: bdAstar(Many to One)
+    single: bdAstar ; Many to One
 
 Many to One
 ...............................................................................
@@ -160,7 +163,7 @@ Many to One
    :end-before: -- q5
 
 .. index::
-    single: bdAstar(Many to Many)
+    single: bdAstar ; Many to Many
 
 Many to Many
 ...............................................................................
@@ -182,7 +185,7 @@ Many to Many
    :end-before: -- q51
 
 .. index::
-    single: bdAstar(Combinations) - Proposed on v3.2
+    single: bdAstar ; Combinations - Proposed on v3.2
 
 Combinations
 ...............................................................................

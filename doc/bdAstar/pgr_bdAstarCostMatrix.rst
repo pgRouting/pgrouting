@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Bidirectional A* Family ; bdAstarCostMatrix
+   single: bdAstarCostMatrix
 
 ``pgr_bdAstarCostMatrix``
 ===============================================================================
@@ -51,9 +54,6 @@ Description
     * cost from `v` to `u` is :math:`0`
 
 * When the graph is **undirected** the cost matrix is symmetric
-
-.. index::
-    single: bdAstarCostMatrix
 
 Signatures
 -------------------------------------------------------------------------------

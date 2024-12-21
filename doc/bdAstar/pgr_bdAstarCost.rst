@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Bidirectional A* Family ; bdAstarCost
+   single: bdAstarCost
 
 pgr_bdAstarCost
 ===============================================================================
@@ -83,7 +86,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: bdAstarCost(One to One)
+    single: bdAstarCost ; One to One
 
 One to One
 ...............................................................................
@@ -105,7 +108,7 @@ One to One
     :end-before: -- q3
 
 .. index::
-    single: bdAstarCost(One to Many)
+    single: bdAstarCost ; One to Many
 
 One to Many
 ...............................................................................
@@ -127,7 +130,7 @@ One to Many
    :end-before: -- q4
 
 .. index::
-    single: bdAstarCost(Many to One)
+    single: bdAstarCost ; Many to One
 
 Many to One
 ...............................................................................
@@ -149,7 +152,7 @@ Many to One
     :end-before: -- q5
 
 .. index::
-    single: bdAstarCost(Many to Many)
+    single: bdAstarCost ; Many to Many
 
 Many to Many
 ...............................................................................
@@ -171,7 +174,7 @@ Many to Many
     :end-before: -- q51
 
 .. index::
-    single: bdAstarCost(Combinations) - Proposed on v3.2
+    single: bdAstarCost ; Combinations - Proposed on v3.2
 
 Combinations
 ...............................................................................
