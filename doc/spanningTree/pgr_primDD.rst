@@ -9,6 +9,8 @@
 
 |
 
+.. index::
+   single: primDD
 
 ``pgr_primDD``
 ===============================================================================
@@ -64,7 +66,7 @@ Signatures
    | Returns set of |result-spantree|
 
 .. index::
-    single: primDD(Single vertex)
+    single: primDD ; Single vertex
 
 Single vertex
 ...............................................................................
@@ -84,7 +86,7 @@ Single vertex
    :end-before: -- q2
 
 .. index::
-    single: primDD(Multiple vertices)
+    single: primDD ; Multiple vertices
 
 Multiple vertices
 ...............................................................................

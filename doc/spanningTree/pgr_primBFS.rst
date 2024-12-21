@@ -9,6 +9,8 @@
 
 |
 
+.. index::
+   single: primBFS
 
 ``pgr_primBFS``
 ===============================================================================
@@ -60,7 +62,7 @@ Signatures
    | Returns set of |result-spantree|
 
 .. index::
-    single: primBFS(Single vertex)
+    single: primBFS ; Single vertex
 
 Single vertex
 ...............................................................................
@@ -79,7 +81,7 @@ Single vertex
    :end-before: -- q2
 
 .. index::
-    single: primBFS(Multiple vertices)
+    single: primBFS ; Multiple vertices
 
 Multiple vertices
 ...............................................................................

@@ -9,6 +9,8 @@
 
 |
 
+.. index::
+   single: kruskal
 
 ``pgr_kruskal``
 ===============================================================================
@@ -43,9 +45,6 @@ graph using Kruskal's algorithm.
 
 Signatures
 -------------------------------------------------------------------------------
-
-.. index::
-    single: kruskal
 
 .. rubric:: Summary
 
