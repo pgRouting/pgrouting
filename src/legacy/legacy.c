@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define PGROUTING_DEPRECATE(version, funcname) \
     Datum funcname(PG_FUNCTION_ARGS); \
     PG_FUNCTION_INFO_V1(funcname); \
-    Datum funcname([[maybe_unused]] PG_FUNCTION_ARGS) \
+    Datum funcname(__attribute__((unused)) PG_FUNCTION_ARGS) \
     { \
         ereport(ERROR, (\
             errcode(ERRCODE_FEATURE_NOT_SUPPORTED), \
