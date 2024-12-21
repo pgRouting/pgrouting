@@ -10,6 +10,9 @@
 |
 
 
+.. index::
+    single: alphaShape
+
 ``pgr_alphaShape``
 ===============================================================================
 
@@ -60,9 +63,6 @@ Characteristics
 Signatures
 -------------------------------------------------------------------------------
 .. rubric:: Summary
-
-.. index::
-    single: alphaShape
 
 .. admonition:: \ \
    :class: signatures
