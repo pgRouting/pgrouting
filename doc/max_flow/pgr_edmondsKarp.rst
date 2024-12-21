@@ -9,6 +9,8 @@
 
 |
 
+.. index::
+   single: edmondsKarp
 
 ``pgr_edmondsKarp``
 ===============================================================================
@@ -70,7 +72,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: edmondsKarp(One to One)
+    single: edmondsKarp ; One to One
 
 One to One
 ...............................................................................
@@ -90,7 +92,7 @@ One to One
    :end-before: -- q2
 
 .. index::
-    single: edmondsKarp(One to Many)
+    single: edmondsKarp ; One to Many
 
 One to Many
 ...............................................................................
@@ -110,7 +112,7 @@ One to Many
    :end-before: -- q3
 
 .. index::
-    single: edmondsKarp(Many to One)
+    single: edmondsKarp ; Many to One
 
 Many to One
 ...............................................................................
@@ -130,7 +132,7 @@ Many to One
    :end-before: -- q4
 
 .. index::
-    single: edmondsKarp(Many to Many)
+    single: edmondsKarp ; Many to Many
 
 Many to Many
 ...............................................................................
@@ -150,7 +152,7 @@ Many to Many
    :end-before: -- q5
 
 .. index::
-    single: edmondsKarp(Combinations) - Proposed on v3.2
+    single: edmondsKarp ; Combinations - Proposed on v3.2
 
 Combinations
 ...............................................................................

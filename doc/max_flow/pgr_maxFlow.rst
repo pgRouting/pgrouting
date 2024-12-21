@@ -9,6 +9,8 @@
 
 |
 
+.. index::
+   single: maxFlow
 
 ``pgr_maxFlow``
 ===============================================================================
@@ -71,7 +73,7 @@ Signatures
    | RETURNS ``BIGINT``
 
 .. index::
-    single: maxFlow(One to One)
+    single: maxFlow ; One to One
 
 One to One
 ...............................................................................
@@ -90,7 +92,7 @@ One to One
    :end-before: -- q2
 
 .. index::
-    single: maxFlow(One to Many)
+    single: maxFlow ; One to Many
 
 One to Many
 ...............................................................................
@@ -109,7 +111,7 @@ One to Many
    :end-before: -- q3
 
 .. index::
-    single: maxFlow(Many to One)
+    single: maxFlow ; Many to One
 
 Many to One
 ...............................................................................
@@ -128,7 +130,7 @@ Many to One
    :end-before: -- q4
 
 .. index::
-    single: maxFlow(Many to Many)
+    single: maxFlow ; Many to Many
 
 Many to Many
 ...............................................................................
@@ -147,7 +149,7 @@ Many to Many
    :end-before: -- q5
 
 .. index::
-    single: maxFlow(Combinations) - Proposed on v3.2
+    single: maxFlow ; Combinations - Proposed on v3.2
 
 Combinations
 ...............................................................................

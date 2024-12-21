@@ -9,6 +9,8 @@
 
 |
 
+.. index::
+   single: maxFlowMinCost
 
 ``pgr_maxFlowMinCost`` - Experimental
 ===============================================================================
@@ -75,7 +77,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: maxFlowMinCost(One to One) - Experimental on v3.0
+    single: maxFlowMinCost ; One to One - Experimental on v3.0
 
 One to One
 ...............................................................................
@@ -95,7 +97,7 @@ One to One
    :end-before: -- q2
 
 .. index::
-    single: maxFlowMinCost(One to Many) - Experimental on v3.0
+    single: maxFlowMinCost ; One to Many - Experimental on v3.0
 
 One to Many
 ...............................................................................
@@ -115,7 +117,7 @@ One to Many
    :end-before: -- q3
 
 .. index::
-    single: maxFlowMinCost(Many to One) - Experimental on v3.0
+    single: maxFlowMinCost ; Many to One - Experimental on v3.0
 
 Many to One
 ...............................................................................
@@ -135,7 +137,7 @@ Many to One
    :end-before: -- q4
 
 .. index::
-    single: maxFlowMinCost(Many to Many) - Experimental on v3.0
+    single: maxFlowMinCost ; Many to Many - Experimental on v3.0
 
 Many to Many
 ...............................................................................
@@ -155,7 +157,7 @@ Many to Many
    :end-before: -- q5
 
 .. index::
-    single: maxFlowMinCost(Combinations) -- Experimental on v3.2
+    single: maxFlowMinCost ; Combinations -- Experimental on v3.2
 
 Combinations
 ...............................................................................

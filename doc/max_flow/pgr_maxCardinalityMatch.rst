@@ -9,6 +9,8 @@
 
 |
 
+.. index::
+   single: maxCardinalityMatch
 
 pgr_maxCardinalityMatch
 ===============================================================================

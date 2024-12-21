@@ -9,6 +9,8 @@
 
 |
 
+.. index::
+   single: boykovKolmogorov
 
 ``pgr_boykovKolmogorov``
 ===============================================================================
@@ -70,7 +72,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: boykovKolmogorov(One to One)
+    single: boykovKolmogorov ; One to One
 
 One to One
 ...............................................................................
@@ -90,7 +92,7 @@ One to One
    :end-before: -- q2
 
 .. index::
-    single: boykovKolmogorov(One to Many)
+    single: boykovKolmogorov ; One to Many
 
 One to Many
 ...............................................................................
@@ -110,7 +112,7 @@ One to Many
    :end-before: -- q3
 
 .. index::
-    single: boykovKolmogorov(Many to One)
+    single: boykovKolmogorov ; Many to One
 
 Many to One
 ...............................................................................
@@ -130,7 +132,7 @@ Many to One
    :end-before: -- q4
 
 .. index::
-    single: boykovKolmogorov(Many to Many)
+    single: boykovKolmogorov ; Many to Many
 
 Many to Many
 ...............................................................................
@@ -150,7 +152,7 @@ Many to Many
    :end-before: -- q5
 
 .. index::
-    single: boykovKolmogorov(Combinations) - Proposed on v3.2
+    single: boykovKolmogorov ; Combinations - Proposed on v3.2
 
 Combinations
 ...............................................................................
