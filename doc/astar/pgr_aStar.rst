@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: aStar Family ; aStar
+   single: aStar
 
 ``pgr_aStar``
 ===============================================================================
@@ -96,7 +99,7 @@ Signatures
 Optional parameters are `named parameters` and have a default value.
 
 .. index::
-    single: aStar(One to One)
+    single: aStar ; One to One
 
 One to One
 ...............................................................................
@@ -118,7 +121,7 @@ One to One
    :end-before: -- q3
 
 .. index::
-    single: astar(One to Many)
+    single: aStar ; One to Many
 
 One to Many
 ...............................................................................
@@ -140,7 +143,7 @@ One to Many
    :end-before: -- q4
 
 .. index::
-    single: aStar(Many to One)
+    single: aStar ; Many to One
 
 Many to One
 ...............................................................................
@@ -162,7 +165,7 @@ Many to One
    :end-before: -- q5
 
 .. index::
-    single: aStar(Many to Many)
+    single: aStar ; Many to Many
 
 Many to Many
 ...............................................................................
@@ -184,7 +187,7 @@ Many to Many
    :end-before: -- q51
 
 .. index::
-    single: aStarCost(Combinations) - Proposed on v3.2
+    single: aStar ; Combinations - Proposed on v3.2
 
 Combinations
 ...............................................................................
