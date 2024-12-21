@@ -9,6 +9,10 @@
 
 |
 
+.. index::
+   single: Dijkstra Family ; dijkstra
+   single: Shortest Path Category ; dijkstra
+   single: dijkstra
 
 ``pgr_dijkstra``
 ===============================================================================
@@ -93,7 +97,7 @@ Signatures
    the new result columns.
 
 .. index::
-    single: dijkstra(One to One)
+    single: dijkstra ; One to One
 
 One to One
 ...............................................................................
@@ -113,7 +117,7 @@ One to One
     :end-before: -- q3
 
 .. index::
-    single: dijkstra(One to Many)
+    single: dijkstra ; One to Many
 
 One to Many
 ...............................................................................
@@ -133,7 +137,7 @@ One to Many
    :end-before: -- q4
 
 .. index::
-    single: dijkstra(Many to One)
+    single: dijkstra ; Many to One
 
 Many to One
 ...............................................................................
@@ -154,7 +158,7 @@ Many to One
    :end-before: -- q5
 
 .. index::
-    single: dijkstra(Many to Many)
+    single: dijkstra ; Many to Many
 
 Many to Many
 ...............................................................................
@@ -175,7 +179,7 @@ Many to Many
    :end-before: -- q51
 
 .. index::
-    single: dijkstra(Combinations) - Proposed on v3.1
+    single: dijkstra ; Combinations - Proposed on v3.1
 
 Combinations
 ...............................................................................

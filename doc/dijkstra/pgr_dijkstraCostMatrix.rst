@@ -9,6 +9,10 @@
 
 |
 
+.. index::
+   single: Dijkstra Family ; dijkstraCostMatrix
+   single: CostMatrix Category ; dijkstraCostMatrix
+   single: dijkstraCostMatrix
 
 ``pgr_dijkstraCostMatrix``
 ===============================================================================

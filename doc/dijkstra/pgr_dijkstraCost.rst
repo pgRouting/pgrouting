@@ -10,6 +10,10 @@
 |
 
 
+.. index::
+   single: Dijkstra Family ; dijkstraCost
+   single: Cost Category ; dijkstraCost
+   single: dijkstraCost
 
 ``pgr_dijkstraCost``
 ===============================================================================
@@ -71,7 +75,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: dijkstraCost(One to One)
+    single: dijkstraCost ; One to One
 
 One to One
 ...............................................................................
@@ -91,7 +95,7 @@ One to One
     :end-before: -- q3
 
 .. index::
-    single: dijkstraCost(One to Many)
+    single: dijkstraCost ; One to Many
 
 One to Many
 ...............................................................................
@@ -112,7 +116,7 @@ One to Many
     :end-before: -- q4
 
 .. index::
-    single: dijkstraCost(Many to One)
+    single: dijkstraCost ; Many to One
 
 Many to One
 ...............................................................................
@@ -133,7 +137,7 @@ Many to One
     :end-before: -- q5
 
 .. index::
-    single: dijkstraCost(Many to Many)
+    single: dijkstraCost ; Many to Many
 
 Many to Many
 ...............................................................................
@@ -154,7 +158,7 @@ Many to Many
     :end-before: -- q51
 
 .. index::
-    single: dijkstraCost(Combinations) - Proposed on v3.1
+    single: dijkstraCost ; Combinations - Proposed on v3.1
 
 Combinations
 ...............................................................................

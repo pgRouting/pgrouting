@@ -9,6 +9,7 @@
 
 |
 
+.. index:: Dijkstra Family
 
 Dijkstra - Family of functions
 ===============================================================================
