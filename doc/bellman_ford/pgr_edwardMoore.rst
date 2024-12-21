@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Shortest Path Category; edwardMoore
+   single: edwardMoore
 
 ``pgr_edwardMoore - Experimental``
 ===============================================================================
@@ -99,7 +102,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: edwardMoore(One to One) - Experimental on v3.0
+    single: edwardMoore ; One to One - Experimental on v3.0
 
 One to One
 ...............................................................................
@@ -119,7 +122,7 @@ One to One
    :end-before: -- q3
 
 .. index::
-    single: edwardMoore(One to Many) - Experimental on v3.0
+    single: edwardMoore ; One to Many - Experimental on v3.0
 
 One to Many
 ...............................................................................
@@ -140,7 +143,7 @@ One to Many
    :end-before: -- q4
 
 .. index::
-    single: edwardMoore(Many to One) - Experimental on v3.0
+    single: edwardMoore ; Many to One - Experimental on v3.0
 
 Many to One
 ...............................................................................
@@ -161,7 +164,7 @@ Many to One
    :end-before: -- q5
 
 .. index::
-    single: edwardMoore(Many to Many) - Experimental on v3.0
+    single: edwardMoore ; Many to Many - Experimental on v3.0
 
 Many to Many
 ...............................................................................
@@ -182,7 +185,7 @@ Many to Many
    :end-before: -- q51
 
 .. index::
-    single: edwardMoore(Combinations) - Experimental on v3.2
+    single: edwardMoore ; Combinations - Experimental on v3.2
 
 Combinations
 ...............................................................................
