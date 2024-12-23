@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Vehicle Routing Functions Category ; pickDeliverEuclidean
+   single: pgr_pickDeliverEuclidean
 
 ``pgr_pickDeliverEuclidean`` - Experimental
 ===============================================================================

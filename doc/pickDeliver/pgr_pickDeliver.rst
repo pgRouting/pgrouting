@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Vehicle Routing Functions Category ; pickDeliver
+   single: pgr_pickDeliver
 
 ``pgr_pickDeliver`` - Experimental
 ===============================================================================
