@@ -10,7 +10,8 @@
 |
 
 .. index::
-    single: findCloseEdges
+   single: Utilities ; pgr_findCloseEdges
+   single: findCloseEdges
 
 ``pgr_findCloseEdges``
 ===============================================================================
