@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-18 19:18+0000\n"
+"POT-Creation-Date: 2024-12-23 23:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -604,7 +604,7 @@ msgstr ""
 msgid "`Wikipedia: Traveling Salesman Problem <https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
 msgstr ""
 
-msgid "Vehicle Routing Functions - Category (Experimental)"
+msgid "Vehicle Routing Functions - Category"
 msgstr ""
 
 msgid "Pickup and delivery problem"
@@ -2416,9 +2416,6 @@ msgstr ""
 msgid ":doc:`aStar-family`"
 msgstr ""
 
-msgid "Previous versions of this page"
-msgstr ""
-
 msgid "Bidirectional Dijkstra - Family of functions"
 msgstr ""
 
@@ -3532,6 +3529,9 @@ msgstr ""
 msgid ":doc:`pgr_cuthillMckeeOrdering` - Return reverse Cuthill-McKee ordering of an undirected graph."
 msgstr ""
 
+msgid ":doc:`pgr_topologicalSort` - Linear ordering of the vertices for directed acyclic graph."
+msgstr ""
+
 msgid ":doc:`metrics-family`"
 msgstr ""
 
@@ -3547,7 +3547,7 @@ msgstr ""
 msgid ":doc:`VRP-category`"
 msgstr ""
 
-msgid "Unclassified"
+msgid "Shortest Path Category"
 msgstr ""
 
 msgid ":doc:`pgr_bellmanFord`"
@@ -3559,19 +3559,22 @@ msgstr ""
 msgid ":doc:`pgr_edwardMoore`"
 msgstr ""
 
+msgid "Planar Family"
+msgstr ""
+
 msgid ":doc:`pgr_isPlanar`"
+msgstr ""
+
+msgid "Miscellaneous Algoritms"
+msgstr ""
+
+msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
 msgstr ""
 
 msgid ":doc:`pgr_stoerWagner`"
 msgstr ""
 
-msgid ":doc:`pgr_topologicalSort`"
-msgstr ""
-
 msgid ":doc:`pgr_transitiveClosure`"
-msgstr ""
-
-msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
 msgstr ""
 
 msgid ":doc:`pgr_hawickCircuits`"
@@ -12517,7 +12520,7 @@ msgstr ""
 msgid "pgr_turnRestrictedPath - Experimental"
 msgstr ""
 
-msgid "``pgr_turnRestrictedPath`` Using Yen's algorithm Vertex -Vertex routing with restrictions"
+msgid "``pgr_turnRestrictedPath`` Using Yen's algorithm Vertex - Vertex routing with restrictions"
 msgstr ""
 
 msgid "New experimental function"
@@ -13150,7 +13153,7 @@ msgstr ""
 msgid "From the :doc:`TRSP-family`:"
 msgstr ""
 
-msgid "Utilities"
+msgid "Utilities Category"
 msgstr ""
 
 msgid ":doc:`pgr_findCloseEdges`"
@@ -13459,7 +13462,7 @@ msgstr ""
 msgid "Issue fixes"
 msgstr ""
 
-msgid "`#2565 <https://github.com/pgRouting/pgrouting/issues/2565>`__ pgr_pgr_lengauerTarjanDominatorTree triggers an assertion"
+msgid "`#2565 <https://github.com/pgRouting/pgrouting/issues/2565>`__ pgr_lengauerTarjanDominatorTree triggers an assertion"
 msgstr ""
 
 msgid "SQL enhancements"
@@ -13600,6 +13603,9 @@ msgstr ""
 msgid "``pgr_degree``"
 msgstr ""
 
+msgid "Utilities"
+msgstr ""
+
 msgid "``pgr_findCloseEdges`` (One point)"
 msgstr ""
 
@@ -13610,6 +13616,9 @@ msgid "Ordering"
 msgstr ""
 
 msgid "``pgr_cuthillMckeeOrdering``"
+msgstr ""
+
+msgid "Unclassified"
 msgstr ""
 
 msgid "Flow functions"
