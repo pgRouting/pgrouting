@@ -9,6 +9,7 @@
 
 |
 
+.. index:: Circuits Family
 
 ``pgr_hawickCircuits - Experimental``
 ===============================================================================
