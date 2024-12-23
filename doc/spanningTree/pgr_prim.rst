@@ -92,7 +92,7 @@ Result columns
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`spanningTree-category`
+* :doc:`spanningTree-family`
 * :doc:`prim-family`
 * The queries use the :doc:`sampledata` network.
 * `Boost: Prim's algorithm documentation

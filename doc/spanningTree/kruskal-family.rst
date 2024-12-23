@@ -49,7 +49,7 @@ two trees in the forest.
 
 .. kruskal-description-start
 
-.. include:: spanningTree-category.rst
+.. include:: spanningTree-family.rst
    :start-after: spanntree_traits_start
    :end-before: spanntree_traits_end
 
@@ -68,7 +68,7 @@ Inner Queries
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`spanningTree-category`
+* :doc:`spanningTree-family`
 * `Boost: Kruskal's algorithm <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__
 * `Wikipedia: Kruskal's algorithm <https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__
 

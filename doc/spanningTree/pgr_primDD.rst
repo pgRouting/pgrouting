@@ -135,7 +135,7 @@ Result columns
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`spanningTree-category`
+* :doc:`spanningTree-family`
 * :doc:`prim-family`
 * :doc:`sampledata`
 * `Boost: Prim's algorithm documentation

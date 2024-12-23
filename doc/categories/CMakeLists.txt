@@ -6,7 +6,7 @@ SET(LOCAL_FILES
     DFS-category.rst
     drivingDistance-category.rst
     KSP-category.rst
-    spanningTree-category.rst
+    spanningTree-family.rst
     via-category.rst
     VRP-category.rst
     withPoints-category.rst

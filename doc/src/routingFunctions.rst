@@ -128,9 +128,9 @@ Functions by categories
    :start-after: index from here
    :end-before: index to here
 
-:doc:`spanningTree-category`
+:doc:`spanningTree-family`
 
-.. include:: spanningTree-category.rst
+.. include:: spanningTree-family.rst
    :start-after: index from here
    :end-before: index to here
 
@@ -174,7 +174,7 @@ Functions by categories
     DFS-category
     drivingDistance-category
     KSP-category
-    spanningTree-category
+    spanningTree-family
     via-category
     VRP-category
     withPoints-category

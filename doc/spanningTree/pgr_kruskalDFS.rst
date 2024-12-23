@@ -138,7 +138,7 @@ Result columns
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`spanningTree-category`
+* :doc:`spanningTree-family`
 * :doc:`kruskal-family`
 * :doc:`sampledata`
 * `Boost: Kruskal's algorithm

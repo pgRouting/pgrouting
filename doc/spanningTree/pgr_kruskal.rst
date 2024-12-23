@@ -91,7 +91,7 @@ Result columns
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`spanningTree-category`
+* :doc:`spanningTree-family`
 * :doc:`kruskal-family`
 * The queries use the :doc:`sampledata` network.
 * `Boost: Kruskal's algorithm
