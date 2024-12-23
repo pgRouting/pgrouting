@@ -10,9 +10,9 @@
 |
 
 .. index::
-   single: withPoints Family ; withPointsCostMatrix
-   single: withPoints Category ; withPointsCostMatrix
-   single: CostMatrix Category ; withPointsCostMatrix
+   single: withPoints Family ; pgr_withPointsCostMatrix
+   single: With Points Category ; pgr_withPointsCostMatrix
+   single: Cost Matrix Category ; pgr_withPointsCostMatrix
    single: withPointsCostMatrix - proposed on v2.0
 
 ``pgr_withPointsCostMatrix`` - proposed

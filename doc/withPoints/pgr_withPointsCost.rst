@@ -10,9 +10,9 @@
 |
 
 .. index::
-   single: withPoints Family ; withPointsCost
-   single: withPoints Category ; withPointsCost
-   single: Cost Category ; withPointsCost
+   single: withPoints Family ; pgr_withPointsCost
+   single: With Points Category ; pgr_withPointsCost
+   single: Cost Category ; pgr_withPointsCost
    single: withPointsCost
 
 ``pgr_withPointsCost`` - Proposed

@@ -10,9 +10,9 @@
 |
 
 .. index::
-   single: withPoints Family ; withPointsDD
-   single: withPoints Category ; withPointsDD
-   single: Driving Distance Category ; withPointsDD
+   single: withPoints Family ; pgr_withPointsDD
+   single: With Points Category ; pgr_withPointsDD
+   single: Driving Distance Category ; pgr_withPointsDD
    single: withPointsDD
 
 ``pgr_withPointsDD`` - Proposed

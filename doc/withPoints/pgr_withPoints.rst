@@ -10,9 +10,9 @@
 |
 
 .. index::
-   single: withPoints Family ; withPoints
-   single: withPoints Category ; withPoints
-   single: Shortest Path Category ; withPoints
+   single: withPoints Family ; pgr_withPoints
+   single: With Points Category ; pgr_withPoints
+   single: Shortest Path Category ; pgr_withPoints
    single: withPoints
 
 ``pgr_withPoints`` - Proposed

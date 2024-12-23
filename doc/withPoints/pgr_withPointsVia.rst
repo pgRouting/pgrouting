@@ -10,9 +10,9 @@
 |
 
 .. index::
-   single: withPoints Family ; withPointsVia
-   single: withPoints Category ; withPointsVia
-   single: Via Category ; withPointsVia
+   single: withPoints Family ; pgr_withPointsVia
+   single: With Points Category ; pgr_withPointsVia
+   single: Via Category ; pgr_withPointsVia
    single: withPointsVia
 
 ``pgr_withPointsVia`` - Proposed

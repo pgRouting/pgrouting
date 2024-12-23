@@ -10,9 +10,9 @@
 |
 
 .. index::
-   single: withPoints Family ; withPointsKSP
-   single: withPoints Category ; withPointsKSP
-   single: KSP Category ; withPointsKSP
+   single: withPoints Family ; pgr_withPointsKSP
+   single: With Points Category ; pgr_withPointsKSP
+   single: KSP Category ; pgr_withPointsKSP
    single: withPointsKSP
 
 pgr_withPointsKSP - Proposed
