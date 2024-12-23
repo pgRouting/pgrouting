@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Transformation Family ; pgr_lineGraph
+   single: lineGraph
 
 pgr_lineGraph - Proposed
 ===============================================================================

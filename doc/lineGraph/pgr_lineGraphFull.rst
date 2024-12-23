@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Transformation Family ; pgr_lineGraphFull
+   single: lineGraphFull
 
 ``pgr_lineGraphFull`` - Experimental
 ===============================================================================
