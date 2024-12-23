@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-18 19:18+0000\n"
+"POT-Creation-Date: 2024-12-23 23:17+0000\n"
 "PO-Revision-Date: 2022-12-13 12:30+0000\n"
 "Last-Translator: Hyung-Gyu Ryoo <hyunggyu.ryoo@gmail.com>\n"
 "Language-Team: Korean <https://weblate.osgeo.org/projects/pgrouting/"
@@ -669,7 +669,7 @@ msgid ""
 "Traveling_salesman_problem>`__"
 msgstr ""
 
-msgid "Vehicle Routing Functions - Category (Experimental)"
+msgid "Vehicle Routing Functions - Category"
 msgstr ""
 
 msgid "Pickup and delivery problem"
@@ -2593,9 +2593,6 @@ msgstr ""
 msgid ":doc:`aStar-family`"
 msgstr ":doc:`aStar-family`"
 
-msgid "Previous versions of this page"
-msgstr ""
-
 msgid "Bidirectional Dijkstra - Family of functions"
 msgstr ""
 
@@ -3918,6 +3915,11 @@ msgid ""
 "an undirected graph."
 msgstr ""
 
+msgid ""
+":doc:`pgr_topologicalSort` - Linear ordering of the vertices for directed "
+"acyclic graph."
+msgstr ""
+
 #, fuzzy
 msgid ":doc:`metrics-family`"
 msgstr ":doc:`prim-family`"
@@ -3936,8 +3938,9 @@ msgstr ""
 msgid ":doc:`VRP-category`"
 msgstr ":doc:`VRP-category`"
 
-msgid "Unclassified"
-msgstr ""
+#, fuzzy
+msgid "Shortest Path Category"
+msgstr "BFS - 카테고리"
 
 msgid ":doc:`pgr_bellmanFord`"
 msgstr ":doc:`pgr_bellmanFord`"
@@ -3948,20 +3951,23 @@ msgstr ":doc:`pgr_dagShortestPath`"
 msgid ":doc:`pgr_edwardMoore`"
 msgstr ":doc:`pgr_edwardMoore`"
 
+msgid "Planar Family"
+msgstr ""
+
 msgid ":doc:`pgr_isPlanar`"
 msgstr ":doc:`pgr_isPlanar`"
+
+msgid "Miscellaneous Algoritms"
+msgstr ""
+
+msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
+msgstr ":doc:`pgr_lengauerTarjanDominatorTree`"
 
 msgid ":doc:`pgr_stoerWagner`"
 msgstr ":doc:`pgr_stoerWagner`"
 
-msgid ":doc:`pgr_topologicalSort`"
-msgstr ":doc:`pgr_topologicalSort`"
-
 msgid ":doc:`pgr_transitiveClosure`"
 msgstr ":doc:`pgr_transitiveClosure`"
-
-msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
-msgstr ":doc:`pgr_lengauerTarjanDominatorTree`"
 
 msgid ":doc:`pgr_hawickCircuits`"
 msgstr ":doc:`pgr_hawickCircuits`"
@@ -14666,8 +14672,8 @@ msgid "pgr_turnRestrictedPath - Experimental"
 msgstr ""
 
 msgid ""
-"``pgr_turnRestrictedPath`` Using Yen's algorithm Vertex -Vertex routing with "
-"restrictions"
+"``pgr_turnRestrictedPath`` Using Yen's algorithm Vertex - Vertex routing "
+"with restrictions"
 msgstr ""
 
 msgid "New experimental function"
@@ -15491,7 +15497,7 @@ msgstr ""
 msgid "From the :doc:`TRSP-family`:"
 msgstr ""
 
-msgid "Utilities"
+msgid "Utilities Category"
 msgstr ""
 
 msgid ":doc:`pgr_findCloseEdges`"
@@ -15879,7 +15885,7 @@ msgstr ""
 
 msgid ""
 "`#2565 <https://github.com/pgRouting/pgrouting/issues/2565>`__ "
-"pgr_pgr_lengauerTarjanDominatorTree triggers an assertion"
+"pgr_lengauerTarjanDominatorTree triggers an assertion"
 msgstr ""
 
 msgid "SQL enhancements"
@@ -16049,6 +16055,9 @@ msgstr ""
 msgid "``pgr_degree``"
 msgstr ""
 
+msgid "Utilities"
+msgstr ""
+
 msgid "``pgr_findCloseEdges`` (One point)"
 msgstr ""
 
@@ -16059,6 +16068,9 @@ msgid "Ordering"
 msgstr ""
 
 msgid "``pgr_cuthillMckeeOrdering``"
+msgstr ""
+
+msgid "Unclassified"
 msgstr ""
 
 msgid "Flow functions"
@@ -18821,3 +18833,6 @@ msgstr ""
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
+
+#~ msgid ":doc:`pgr_topologicalSort`"
+#~ msgstr ":doc:`pgr_topologicalSort`"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-18 19:18+0000\n"
+"POT-Creation-Date: 2024-12-23 23:17+0000\n"
 "PO-Revision-Date: 2024-12-07 13:04+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
@@ -742,7 +742,8 @@ msgstr ""
 "`Wikipedia: Problema del viajante <https://es.wikipedia.org/wiki/"
 "Problema_del_viajante>`__"
 
-msgid "Vehicle Routing Functions - Category (Experimental)"
+#, fuzzy
+msgid "Vehicle Routing Functions - Category"
 msgstr "Funciones de Ruteo de Vehículos - Categoría (Experimental)"
 
 msgid "Pickup and delivery problem"
@@ -2812,9 +2813,6 @@ msgstr "Se espera que termine más rápido que pgr_astar"
 msgid ":doc:`aStar-family`"
 msgstr ":doc:`aStar-family`"
 
-msgid "Previous versions of this page"
-msgstr "Versiones anteriores de esta página"
-
 msgid "Bidirectional Dijkstra - Family of functions"
 msgstr "Bidirectional Dijkstra - Familia de funciones"
 
@@ -4383,6 +4381,14 @@ msgstr ""
 ":doc:`pgr_cuthillMckeeOrdering` - Ordenamiento Cuthill-McKee de grafo sin no "
 "dirigido."
 
+#, fuzzy
+msgid ""
+":doc:`pgr_topologicalSort` - Linear ordering of the vertices for directed "
+"acyclic graph."
+msgstr ""
+"``pgr_topologicalSort`` — Devuelve el orden lineal de los vértices para los "
+"grafos acíclicos dirigidos ponderados (DAG)."
+
 msgid ":doc:`metrics-family`"
 msgstr ":doc:`metrics-family`"
 
@@ -4402,8 +4408,9 @@ msgstr "Categorías"
 msgid ":doc:`VRP-category`"
 msgstr ":doc:`VRP-category`"
 
-msgid "Unclassified"
-msgstr "No clasificado"
+#, fuzzy
+msgid "Shortest Path Category"
+msgstr "Rutas más cortas K - Categoría"
 
 msgid ":doc:`pgr_bellmanFord`"
 msgstr ":doc:`pgr_bellmanFord`"
@@ -4414,20 +4421,24 @@ msgstr ":doc:`pgr_dagShortestPath`"
 msgid ":doc:`pgr_edwardMoore`"
 msgstr ":doc:`pgr_edwardMoore`"
 
+#, fuzzy
+msgid "Planar Family"
+msgstr "Familia aStar"
+
 msgid ":doc:`pgr_isPlanar`"
 msgstr ":doc:`pgr_isPlanar`"
+
+msgid "Miscellaneous Algoritms"
+msgstr ""
+
+msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
+msgstr ":doc:`pgr_lengauerTarjanDominatorTree`"
 
 msgid ":doc:`pgr_stoerWagner`"
 msgstr ":doc:`pgr_stoerWagner`"
 
-msgid ":doc:`pgr_topologicalSort`"
-msgstr ":doc:`pgr_topologicalSort`"
-
 msgid ":doc:`pgr_transitiveClosure`"
 msgstr ":doc:`pgr_transitiveClosure`"
-
-msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
-msgstr ":doc:`pgr_lengauerTarjanDominatorTree`"
 
 msgid ":doc:`pgr_hawickCircuits`"
 msgstr ":doc:`pgr_hawickCircuits`"
@@ -17044,10 +17055,11 @@ msgstr ""
 msgid "pgr_turnRestrictedPath - Experimental"
 msgstr "pgr_turnRestrictedPath - Experimental"
 
+#, fuzzy
 msgid ""
-"``pgr_turnRestrictedPath`` Using Yen's algorithm Vertex -Vertex routing with "
-"restrictions"
-msgstr ""
+"``pgr_turnRestrictedPath`` Using Yen's algorithm Vertex - Vertex routing "
+"with restrictions"
+msgstr ":doc:`pgr_trsp` - Ruteo Vértice - Vértice con restricciones."
 
 msgid "New experimental function"
 msgstr "Nueva función Experimental"
@@ -18049,7 +18061,8 @@ msgstr ":doc:`withPoints-family` - Funciones basadas en el algoritmo Dijkstra."
 msgid "From the :doc:`TRSP-family`:"
 msgstr "Desde :doc:`TRSP-family` :"
 
-msgid "Utilities"
+#, fuzzy
+msgid "Utilities Category"
 msgstr "Utilidades"
 
 msgid ":doc:`pgr_findCloseEdges`"
@@ -18510,9 +18523,10 @@ msgstr ""
 msgid "Issue fixes"
 msgstr "Corrección de problema"
 
+#, fuzzy
 msgid ""
 "`#2565 <https://github.com/pgRouting/pgrouting/issues/2565>`__ "
-"pgr_pgr_lengauerTarjanDominatorTree triggers an assertion"
+"pgr_lengauerTarjanDominatorTree triggers an assertion"
 msgstr ""
 "`#2565 <https://github.com/pgRouting/pgrouting/issues/2565>`__ "
 "pgr_pgr_lengauerTarjanDominatorTree genera un error de afirmación"
@@ -18710,6 +18724,9 @@ msgstr "Topología"
 msgid "``pgr_degree``"
 msgstr ""
 
+msgid "Utilities"
+msgstr "Utilidades"
+
 msgid "``pgr_findCloseEdges`` (One point)"
 msgstr ""
 
@@ -18721,6 +18738,9 @@ msgstr "Ordenamiento"
 
 msgid "``pgr_cuthillMckeeOrdering``"
 msgstr "``pgr_cuthillMckeeOrdering``"
+
+msgid "Unclassified"
+msgstr "No clasificado"
 
 msgid "Flow functions"
 msgstr "Funciones de flujo"
@@ -21867,6 +21887,12 @@ msgstr "pgr_withPointsDD es pgr_drivingDistance **con puntos**"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPoints es pgr_dijkstraVia **con puntos**"
+
+#~ msgid "Previous versions of this page"
+#~ msgstr "Versiones anteriores de esta página"
+
+#~ msgid ":doc:`pgr_topologicalSort`"
+#~ msgstr ":doc:`pgr_topologicalSort`"
 
 #~ msgid "The integral types of the ``Edges SQL`` can only be ``INTEGER``."
 #~ msgstr ""

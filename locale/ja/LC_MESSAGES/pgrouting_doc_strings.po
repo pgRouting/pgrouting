@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-18 19:18+0000\n"
+"POT-Creation-Date: 2024-12-23 23:17+0000\n"
 "PO-Revision-Date: 2024-09-23 01:16+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/"
@@ -698,7 +698,7 @@ msgstr ""
 "`Wikipedia: 巡回セールスマン問題 <https://en.wikipedia.org/wiki/"
 "Traveling_salesman_problem>`__"
 
-msgid "Vehicle Routing Functions - Category (Experimental)"
+msgid "Vehicle Routing Functions - Category"
 msgstr ""
 
 msgid "Pickup and delivery problem"
@@ -2620,9 +2620,6 @@ msgstr ""
 msgid ":doc:`aStar-family`"
 msgstr ""
 
-msgid "Previous versions of this page"
-msgstr "このページの以前のバージョン"
-
 msgid "Bidirectional Dijkstra - Family of functions"
 msgstr ""
 
@@ -3986,6 +3983,11 @@ msgid ""
 "an undirected graph."
 msgstr ""
 
+msgid ""
+":doc:`pgr_topologicalSort` - Linear ordering of the vertices for directed "
+"acyclic graph."
+msgstr ""
+
 #, fuzzy
 msgid ":doc:`metrics-family`"
 msgstr ":doc:`ordering-family`"
@@ -4004,8 +4006,9 @@ msgstr ""
 msgid ":doc:`VRP-category`"
 msgstr ""
 
-msgid "Unclassified"
-msgstr ""
+#, fuzzy
+msgid "Shortest Path Category"
+msgstr "BFS - カテゴリ"
 
 msgid ":doc:`pgr_bellmanFord`"
 msgstr ""
@@ -4016,19 +4019,22 @@ msgstr ""
 msgid ":doc:`pgr_edwardMoore`"
 msgstr ""
 
+msgid "Planar Family"
+msgstr ""
+
 msgid ":doc:`pgr_isPlanar`"
+msgstr ""
+
+msgid "Miscellaneous Algoritms"
+msgstr ""
+
+msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
 msgstr ""
 
 msgid ":doc:`pgr_stoerWagner`"
 msgstr ""
 
-msgid ":doc:`pgr_topologicalSort`"
-msgstr ""
-
 msgid ":doc:`pgr_transitiveClosure`"
-msgstr ""
-
-msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
 msgstr ""
 
 msgid ":doc:`pgr_hawickCircuits`"
@@ -14764,8 +14770,8 @@ msgid "pgr_turnRestrictedPath - Experimental"
 msgstr ""
 
 msgid ""
-"``pgr_turnRestrictedPath`` Using Yen's algorithm Vertex -Vertex routing with "
-"restrictions"
+"``pgr_turnRestrictedPath`` Using Yen's algorithm Vertex - Vertex routing "
+"with restrictions"
 msgstr ""
 
 #, fuzzy
@@ -15596,7 +15602,7 @@ msgstr ""
 msgid "From the :doc:`TRSP-family`:"
 msgstr ""
 
-msgid "Utilities"
+msgid "Utilities Category"
 msgstr ""
 
 msgid ":doc:`pgr_findCloseEdges`"
@@ -15984,7 +15990,7 @@ msgstr ""
 
 msgid ""
 "`#2565 <https://github.com/pgRouting/pgrouting/issues/2565>`__ "
-"pgr_pgr_lengauerTarjanDominatorTree triggers an assertion"
+"pgr_lengauerTarjanDominatorTree triggers an assertion"
 msgstr ""
 
 msgid "SQL enhancements"
@@ -16153,6 +16159,9 @@ msgstr ""
 msgid "``pgr_degree``"
 msgstr ""
 
+msgid "Utilities"
+msgstr ""
+
 msgid "``pgr_findCloseEdges`` (One point)"
 msgstr ""
 
@@ -16163,6 +16172,9 @@ msgid "Ordering"
 msgstr ""
 
 msgid "``pgr_cuthillMckeeOrdering``"
+msgstr ""
+
+msgid "Unclassified"
 msgstr ""
 
 msgid "Flow functions"
@@ -18928,3 +18940,6 @@ msgstr ""
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
+
+#~ msgid "Previous versions of this page"
+#~ msgstr "このページの以前のバージョン"
