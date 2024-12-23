@@ -10,6 +10,7 @@
 |
 
 .. index::
+   single: Flow Family ; pgr_boykovKolmogorov
    single: boykovKolmogorov
 
 ``pgr_boykovKolmogorov``

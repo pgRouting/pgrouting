@@ -10,6 +10,7 @@
 |
 
 .. index::
+   single: Flow Family ; pgr_maxFlowMinCost
    single: maxFlowMinCost
 
 ``pgr_maxFlowMinCost`` - Experimental

@@ -10,6 +10,7 @@
 |
 
 .. index::
+   single: Flow Family ; pgr_maxFlow
    single: maxFlow
 
 ``pgr_maxFlow``

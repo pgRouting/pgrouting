@@ -10,6 +10,7 @@
 |
 
 .. index::
+   single: Flow Family ; edmondsKarp
    single: edmondsKarp
 
 ``pgr_edmondsKarp``

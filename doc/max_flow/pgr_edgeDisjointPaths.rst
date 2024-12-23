@@ -10,6 +10,7 @@
 |
 
 .. index::
+   single: Flow Family ; edgeDisjointPaths
    single: edgeDisjointPaths
 
 ``pgr_edgeDisjointPaths``

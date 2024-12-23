@@ -10,6 +10,7 @@
 |
 
 .. index::
+   single: Flow Family ; pgr_maxCardinalityMatch
    single: maxCardinalityMatch
 
 pgr_maxCardinalityMatch

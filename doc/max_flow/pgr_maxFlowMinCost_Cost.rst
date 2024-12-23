@@ -10,6 +10,8 @@
 |
 
 .. index::
+   single: Flow Family ; pgr_maxFlowMinCost_Cost
+   single: Cost Category ; pgr_maxFlowMinCost_Cost
    single: maxFlowMinCost_Cost
 
 ``pgr_maxFlowMinCost_Cost`` - Experimental
