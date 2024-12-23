@@ -11,7 +11,10 @@
 
 
 .. index::
-    single: kruskalDD
+   single: Kruskal Family ; pgr_kruskalDD
+   single: Spanning Tree Category ; pgr_kruskalDD
+   single: Driving Distance Category ; pgr_kruskalDD
+   single: kruskalDD
 
 ``pgr_kruskalDD``
 ===============================================================================
@@ -133,7 +136,7 @@ Result columns
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`spanningTree-family`
+* :doc:`spanningTree-category`
 * :doc:`kruskal-family`
 * :doc:`sampledata`
 * `Boost: Kruskal's algorithm

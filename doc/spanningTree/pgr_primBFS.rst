@@ -10,6 +10,9 @@
 |
 
 .. index::
+   single: Prim Family ; pgr_primBFS
+   single: Spanning Tree Category ; pgr_primBFS
+   single: Breadth First Search Category ; pgr_primBFS
    single: primBFS
 
 ``pgr_primBFS``
@@ -134,7 +137,7 @@ Result columns
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`spanningTree-family`
+* :doc:`spanningTree-category`
 * :doc:`prim-family`
 * :doc:`sampledata`
 * `Boost: Prim's algorithm documentation

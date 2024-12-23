@@ -10,6 +10,9 @@
 |
 
 .. index::
+   single: Prim Family ; pgr_primDD
+   single: Spanning Tree Category ; pgr_primDD
+   single: Driving Distance Category ; pgr_primDD
    single: primDD
 
 ``pgr_primDD``
@@ -132,7 +135,7 @@ Result columns
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`spanningTree-family`
+* :doc:`spanningTree-category`
 * :doc:`prim-family`
 * :doc:`sampledata`
 * `Boost: Prim's algorithm documentation

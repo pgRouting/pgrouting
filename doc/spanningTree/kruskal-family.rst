@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Spanning Tree Category ; Kruskal Family
+   single: Kruskal Family
 
 Kruskal - Family of functions
 ===============================================================================
@@ -46,7 +49,7 @@ two trees in the forest.
 
 .. kruskal-description-start
 
-.. include:: spanningTree-family.rst
+.. include:: spanningTree-category.rst
    :start-after: spanntree_traits_start
    :end-before: spanntree_traits_end
 
@@ -65,7 +68,7 @@ Inner Queries
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`spanningTree-family`
+* :doc:`spanningTree-category`
 * `Boost: Kruskal's algorithm <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__
 * `Wikipedia: Kruskal's algorithm <https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__
 

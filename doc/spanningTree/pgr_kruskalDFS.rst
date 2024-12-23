@@ -10,6 +10,9 @@
 |
 
 .. index::
+   single: Kruskal Family ; pgr_kruskalDFS
+   single: Spanning Tree Category ; pgr_kruskalDFS
+   single: Depth First Search Category ; pgr_kruskalBFS
    single: kruskalDFS
 
 ``pgr_kruskalDFS``
@@ -135,7 +138,7 @@ Result columns
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`spanningTree-family`
+* :doc:`spanningTree-category`
 * :doc:`kruskal-family`
 * :doc:`sampledata`
 * `Boost: Kruskal's algorithm

@@ -10,6 +10,8 @@
 |
 
 .. index::
+   single: Prim Family ; pgr_primDFS
+   single: Spanning Tree Category ; pgr_primDFS
    single: prim
 
 ``pgr_prim``
@@ -90,7 +92,7 @@ Result columns
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`spanningTree-family`
+* :doc:`spanningTree-category`
 * :doc:`prim-family`
 * The queries use the :doc:`sampledata` network.
 * `Boost: Prim's algorithm documentation

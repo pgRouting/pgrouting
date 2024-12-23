@@ -10,6 +10,8 @@
 |
 
 .. index::
+   single: Kruskal Family ; pgr_kruska
+   single: Spanning Tree Category ; pgr_kruskal
    single: kruskal
 
 ``pgr_kruskal``
@@ -89,7 +91,7 @@ Result columns
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`spanningTree-family`
+* :doc:`spanningTree-category`
 * :doc:`kruskal-family`
 * The queries use the :doc:`sampledata` network.
 * `Boost: Kruskal's algorithm
