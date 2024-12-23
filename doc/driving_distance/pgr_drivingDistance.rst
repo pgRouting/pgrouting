@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Driving Distance Category ; pgr_drivingDistance
+   single: drivingDistance
 
 ``pgr_drivingDistance``
 ===============================================================================
