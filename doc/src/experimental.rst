@@ -117,14 +117,19 @@ Experimental Functions
 
   VRP-category
 
-.. rubric:: Unclassified
+.. rubric:: Shortest Path Category
 
 - :doc:`pgr_bellmanFord`
 - :doc:`pgr_dagShortestPath`
+
 - :doc:`pgr_edwardMoore`
+
+.. rubric:: Shortest Family
+
 - :doc:`pgr_isPlanar`
+
+
 - :doc:`pgr_stoerWagner`
-- :doc:`pgr_topologicalSort`
 - :doc:`pgr_transitiveClosure`
 - :doc:`pgr_lengauerTarjanDominatorTree`
 - :doc:`pgr_hawickCircuits`
@@ -139,9 +144,10 @@ Experimental Functions
   pgr_edwardMoore
   pgr_isPlanar
   pgr_stoerWagner
-  pgr_topologicalSort
   pgr_transitiveClosure
   pgr_lengauerTarjanDominatorTree
+
+
   pgr_hawickCircuits
 
 
