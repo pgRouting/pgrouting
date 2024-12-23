@@ -2,6 +2,7 @@
 SET(LOCAL_FILES
      pgr_pickDeliverEuclidean.rst
      pgr_pickDeliver.rst
+     pgr_vrpOneDepot.rst
     )
 
 foreach (f ${LOCAL_FILES})
