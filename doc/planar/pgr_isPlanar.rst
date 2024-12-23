@@ -11,7 +11,7 @@
 
 .. index::
    single: Planar Family ; pgr_isPlanar
-   single: isPlanar
+   single: isPlanar - Experimental on v3.2
 
 ``pgr_isPlanar`` - Experimental
 ===============================================================================
@@ -56,9 +56,6 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. rubric:: Summary
-
-.. index::
-   single: isPlanar - Experimental on v3.2
 
 .. admonition:: \ \
    :class: signatures
