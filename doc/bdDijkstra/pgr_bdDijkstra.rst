@@ -10,7 +10,7 @@
 |
 
 .. index::
-   single: Bidirectional Dijkstra Family ; bdDijkstra
+   single: Bidirectional Dijkstra Family ; pgr_bdDijkstra
    single: bdDijkstra
 
 ``pgr_bdDijkstra``

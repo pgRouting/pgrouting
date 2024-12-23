@@ -10,7 +10,7 @@
 |
 
 .. index::
-   single: Bidirectional Dijkstra Family ; bdDijkstraCost
+   single: Bidirectional Dijkstra Family ; pgr_bdDijkstraCost
    single: bdDijkstraCost
 
 ``pgr_bdDijkstraCost``
