@@ -1,6 +1,7 @@
 # Do not use extensions
 SET(LOCAL_FILES
     cuthillMckeeOrdering
+    topologicalSort
     )
 
 foreach (f ${LOCAL_FILES})
