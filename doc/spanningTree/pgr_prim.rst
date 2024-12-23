@@ -10,8 +10,8 @@
 |
 
 .. index::
-   single: Prim Family ; pgr_primDFS
-   single: Spanning Tree Category ; pgr_primDFS
+   single: Prim Family ; pgr_prim
+   single: Spanning Tree Category ; pgr_prim
    single: prim
 
 ``pgr_prim``

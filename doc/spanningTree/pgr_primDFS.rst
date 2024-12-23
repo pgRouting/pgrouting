@@ -65,7 +65,7 @@ Signatures
    | Returns set of |result-spantree|
 
 .. index::
-    single: primDFS ; Single vertex
+   single: primDFS ; Single vertex
 
 Single vertex
 ...............................................................................
