@@ -11,7 +11,7 @@
 
 
 .. index::
-   single: aStar Family ; aStarCostMatrix
+   single: aStar Family ; pgr_aStarCostMatrix
    single: aStarCostMatrix
 
 ``pgr_aStarCostMatrix``

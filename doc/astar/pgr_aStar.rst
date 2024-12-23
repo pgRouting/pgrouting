@@ -10,7 +10,7 @@
 |
 
 .. index::
-   single: aStar Family ; aStar
+   single: aStar Family ; pgr_aStar
    single: aStar
 
 ``pgr_aStar``

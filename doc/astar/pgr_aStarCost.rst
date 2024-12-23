@@ -11,7 +11,7 @@
 
 
 .. index::
-   single: aStar Family ; aStarCost
+   single: aStar Family ; pgr_aStarCost
    single: aStarCost
 
 pgr_aStarCost
