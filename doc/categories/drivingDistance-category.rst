@@ -9,6 +9,7 @@
 
 |
 
+.. index:: Driving Distance Category
 
 Driving Distance - Category
 ===============================================================================

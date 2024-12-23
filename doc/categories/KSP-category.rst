@@ -9,6 +9,7 @@
 
 |
 
+.. index:: K shortest paths Category
 
 K shortest paths - Category
 ===============================================================================
