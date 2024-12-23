@@ -128,9 +128,9 @@ Functions by categories
    :start-after: index from here
    :end-before: index to here
 
-:doc:`spanningTree-family`
+:doc:`spanningTree-category`
 
-.. include:: spanningTree-family.rst
+.. include:: spanningTree-category.rst
    :start-after: index from here
    :end-before: index to here
 
@@ -164,17 +164,20 @@ Functions by categories
     reference
     topology-functions
     TSP-family
-    spanningTree-family
-    KSP-category
 
 .. toctree::
     :hidden:
 
+    BFS-category
     cost-category
     costMatrix-category
+    DFS-category
     drivingDistance-category
-    spanningTree-family
-    BFS-category
+    KSP-category
+    spanningTree-category
+    via-category
+    VRP-category
+    withPoints-category
 
 See Also
 -------------------------------------------------------------------------------
