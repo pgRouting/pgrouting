@@ -9,7 +9,7 @@
 
 .. index::
    single: Miscellaneous Algorithms ; pgr_stoerWagner
-   single: stoerWagner
+   single: stoerWagner - Experimental on v3.0
 
 pgr_stoerWagner - Experimental
 ===============================================================================
@@ -70,9 +70,6 @@ weight on the cut determines whether it is a minimum cut.
 
 Signatures
 -------------------------------------------------------------------------------
-
-.. index::
-    single: stoerWagner - Experimental on v3.0
 
 .. admonition:: \ \
    :class: signatures
