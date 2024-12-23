@@ -9,7 +9,9 @@
 
 |
 
-.. index:: Circuits Family
+.. index::
+   single: Circuits Family ; pgr_hawickCircuits
+   single: hawickCircuits
 
 ``pgr_hawickCircuits - Experimental``
 ===============================================================================
