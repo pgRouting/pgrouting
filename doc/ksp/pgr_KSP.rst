@@ -10,7 +10,8 @@
 |
 
 .. index::
-    single: ksp
+    single: K Shortest Paths Category ; pgr_KSP
+    single: KSP
 
 pgr_KSP
 ===============================================================================
@@ -75,7 +76,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: ksp ; One to One
+    single: KSP ; One to One
 
 One to One
 ...............................................................................
@@ -96,7 +97,7 @@ One to One
     :end-before: --q2
 
 .. index::
-    single: ksp ; One to Many
+    single: KSP ; One to Many
 
 One to Many
 ...............................................................................
@@ -117,7 +118,7 @@ One to Many
     :end-before: --q3
 
 .. index::
-    single: ksp ; Many to One
+    single: KSP ; Many to One
 
 Many to One
 ...............................................................................
@@ -138,7 +139,7 @@ Many to One
     :end-before: --q4
 
 .. index::
-    single: ksp ; Many to Many
+    single: KSP ; Many to Many
 
 Many to Many
 ...............................................................................
@@ -159,7 +160,7 @@ Many to Many
     :end-before: --q5
 
 .. index::
-   single: ksp ; Combinations
+   single: KSP ; Combinations
 
 Combinations
 ...............................................................................
