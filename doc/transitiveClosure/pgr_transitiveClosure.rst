@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Miscellaneous Algorithms ; pgr_transitiveClosure
+   single: transitiveClosure - Experimental on v3.0
 
 ``pgr_transitiveClosure`` - Experimental
 ===============================================================================
@@ -56,9 +59,6 @@ Signatures
 .. rubric:: Summary
 
 The pgr_transitiveClosure function has the following signature:
-
-.. index::
-   single: transitiveClosure - Experimental on v3.0
 
 .. admonition:: \ \
    :class: signatures
