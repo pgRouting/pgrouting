@@ -9,6 +9,7 @@
 
 |
 
+.. index:: Traveling Sales Person Family
 
 Traveling Sales Person - Family of functions
 ===============================================================================
