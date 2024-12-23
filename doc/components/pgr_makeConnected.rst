@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Components Family ; pgr_makeConnected
+   single: makeConnected
 
 ``pgr_makeConnected`` - Experimental
 ===============================================================================

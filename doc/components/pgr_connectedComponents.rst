@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Components Family ; pgr_connectedComponents
+   single: connectedComponents
 
 pgr_connectedComponents
 ===============================================================================

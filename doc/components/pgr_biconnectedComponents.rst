@@ -10,6 +10,9 @@
 |
 
 
+.. index::
+   single: Components Family ; pgr_biconnectedComponents
+   single: biconnectedComponents
 
 ``pgr_biconnectedComponents``
 ===============================================================================

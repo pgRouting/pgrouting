@@ -9,6 +9,7 @@
 
 |
 
+.. index:: Components Family
 
 Components - Family of functions
 ===============================================================================

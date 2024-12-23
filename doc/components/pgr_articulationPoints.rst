@@ -10,6 +10,9 @@
 |
 
 
+.. index::
+   single: Components Family ; pgr_articulationPoints
+   single: articulationPoints
 
 ``pgr_articulationPoints``
 ===============================================================================
@@ -50,9 +53,6 @@ This implementation can only be used with an undirected graph.
   - ``node`` ascending
 
 - Running time: :math:`O(V + E)`
-
-.. index::
-    single: articulationPoints
 
 Signatures
 -------------------------------------------------------------------------------
