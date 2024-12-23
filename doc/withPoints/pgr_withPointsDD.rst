@@ -9,6 +9,11 @@
 
 |
 
+.. index::
+   single: withPoints Family ; pgr_withPointsDD
+   single: With Points Category ; pgr_withPointsDD
+   single: Driving Distance Category ; pgr_withPointsDD
+   single: withPointsDD
 
 ``pgr_withPointsDD`` - Proposed
 ===============================================================================
@@ -83,7 +88,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: withPointsDD(Single Vertex) - Proposed on v2.2
+    single: withPointsDD ; Single Vertex - Proposed on v2.2
 
 Single vertex
 ...............................................................................
@@ -105,7 +110,7 @@ Single vertex
    :end-before: -- q3
 
 .. index::
-    single: withPointsDD(Multiple Vertices) - Proposed on v2.2
+    single: withPointsDD ; Multiple Vertices - Proposed on v2.2
 
 Multiple vertices
 ...............................................................................

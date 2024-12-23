@@ -9,6 +9,7 @@
 
 |
 
+.. index:: Bidirectional A* Family
 
 Bidirectional A* - Family of functions
 ===============================================================================

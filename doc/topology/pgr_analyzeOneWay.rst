@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Topology Family ; pgr_analyzeOneWay
+   single: analyzeOneWay
 
 pgr_analyzeOneWay
 ===============================================================================

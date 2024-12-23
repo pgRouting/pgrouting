@@ -9,6 +9,10 @@
 
 |
 
+.. index::
+   single: Prim Family ; pgr_prim
+   single: Spanning Tree Category ; pgr_prim
+   single: prim
 
 ``pgr_prim``
 ===============================================================================
@@ -43,9 +47,6 @@ graph using Prim's algorithm.
 
 Signatures
 -------------------------------------------------------------------------------
-
-.. index::
-    single: prim
 
 .. rubric:: Summary
 

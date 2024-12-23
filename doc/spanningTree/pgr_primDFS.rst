@@ -9,6 +9,11 @@
 
 |
 
+.. index::
+   single: Prim Family ; pgr_primDFS
+   single: Spanning Tree Category ; pgr_primDFS
+   single: Depth First Search Category ; pgr_primDFS
+   single: primDFS
 
 ``pgr_primDFS``
 ===============================================================================
@@ -60,7 +65,7 @@ Signatures
    | Returns set of |result-spantree|
 
 .. index::
-    single: primDFS(Single vertex)
+   single: primDFS ; Single vertex
 
 Single vertex
 ...............................................................................
@@ -79,7 +84,7 @@ Single vertex
    :end-before: -- q2
 
 .. index::
-    single: primDFS(Multiple vertices)
+    single: primDFS ; Multiple vertices
 
 Multiple vertices
 ...............................................................................

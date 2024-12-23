@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Topology Family ; pgr_nodeNetwork
+   single: nodeNetwork
 
 pgr_nodeNetwork
 ===============================================================================

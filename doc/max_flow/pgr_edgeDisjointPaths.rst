@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Flow Family ; edgeDisjointPaths
+   single: edgeDisjointPaths
 
 ``pgr_edgeDisjointPaths``
 ===============================================================================
@@ -73,7 +76,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: edgeDisjointPaths(One to One)
+    single: edgeDisjointPaths ; One to One
 
 One to One
 ...............................................................................
@@ -93,7 +96,7 @@ One to One
    :end-before: -- q2
 
 .. index::
-    single: edgeDisjointPaths(One to Many)
+    single: edgeDisjointPaths ; One to Many
 
 One to Many
 ...............................................................................
@@ -114,7 +117,7 @@ One to Many
    :end-before: -- q3
 
 .. index::
-    single: edgeDisjointPaths(Many to One)
+    single: edgeDisjointPaths ; Many to One
 
 Many to One
 ...............................................................................
@@ -134,7 +137,7 @@ Many to One
    :end-before: -- q4
 
 .. index::
-    single: edgeDisjointPaths(Many to Many)
+    single: edgeDisjointPaths ; Many to Many
 
 Many to Many
 ...............................................................................
@@ -154,7 +157,7 @@ Many to Many
    :end-before: -- q5
 
 .. index::
-    single: edgeDisjointPaths(Combinations) -- Proposed on v3.2
+    single: edgeDisjointPaths ; Combinations -- Proposed on v3.2
 
 Combinations
 ...............................................................................

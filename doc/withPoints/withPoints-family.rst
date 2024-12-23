@@ -9,6 +9,7 @@
 
 |
 
+.. index:: withPoints Family
 
 withPoints - Family of functions
 ===============================================================================

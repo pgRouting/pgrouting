@@ -9,30 +9,31 @@
 
 |
 
+.. index:: Depth First Search Category
 
-Spanning Tree - Category
+DFS - Category
 ===============================================================================
+
+Traversal using Depth First Search.
 
 .. index from here
 
-* :doc:`kruskal-family`
-* :doc:`prim-family`
+* :doc:`pgr_kruskalDFS`
+* :doc:`pgr_primDFS`
 
 .. index to here
 
-A spanning tree of an undirected graph is a tree that includes all the vertices
-of G with the minimum possible number of edges.
 
-For a disconnected graph, there there is no single tree, but a spanning forest,
-consisting of a spanning tree of each connected component.
+.. rubric:: Proposed
 
-.. toctree::
-    :hidden:
+.. include:: proposed.rst
+   :start-after: stable-begin-warning
+   :end-before: stable-end-warning
 
-    kruskal-family
-    prim-family
+* :doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph.
 
-Characteristics:
+
+In general:
 
 .. spanntree_traits_start
 

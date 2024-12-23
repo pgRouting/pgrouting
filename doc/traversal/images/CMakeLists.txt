@@ -1,6 +1,8 @@
 SET(LOCAL_FILES
     Fig1-AscendingOrder.png
     Fig2-DescendingOrder.png
+    bfs-ascending.png
+    bfs-descending.png
     )
 
 foreach (f ${LOCAL_FILES})

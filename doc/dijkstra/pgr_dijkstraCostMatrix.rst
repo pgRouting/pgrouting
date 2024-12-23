@@ -9,6 +9,10 @@
 
 |
 
+.. index::
+   single: Dijkstra Family ; pgr_dijkstraCostMatrix
+   single: Cost Matrix Category ; pgr_dijkstraCostMatrix
+   single: dijkstraCostMatrix
 
 ``pgr_dijkstraCostMatrix``
 ===============================================================================
@@ -42,9 +46,6 @@ Using Dijkstra algorithm, calculate and return a cost matrix.
 .. include:: costMatrix-category.rst
     :start-after: costMatrix_details_start
     :end-before: costMatrix_details_end
-
-.. index::
-    single: dijkstraCostMatrix
 
 Signatures
 -------------------------------------------------------------------------------

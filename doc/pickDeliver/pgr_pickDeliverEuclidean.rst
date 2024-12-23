@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Vehicle Routing Functions Category ; pgr_pickDeliverEuclidean
+   single: pickDeliverEuclidean - Experimental on 3.0
 
 ``pgr_pickDeliverEuclidean`` - Experimental
 ===============================================================================
@@ -69,11 +72,6 @@ Characteristics
 - Six different optional different initial solutions
 
   - the best solution found will be result
-
-
-.. index::
-    single: pgr_pickDeliverEuclidean - Experimental on 3.0
-
 
 Signature
 -------------------------------------------------------------------------------

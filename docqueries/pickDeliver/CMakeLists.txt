@@ -2,6 +2,7 @@
 SET(LOCAL_FILES
     pickDeliverEuclidean
     pickDeliver
+    vrpOneDepot
     lc101
     )
 

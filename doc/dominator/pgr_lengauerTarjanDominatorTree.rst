@@ -9,6 +9,10 @@
 
 |
 
+.. index::
+   single: Miscellaneous Algorithms ; pgr_lengauerTarjanDominatorTree
+   single: lengauerTarjanDominatorTree - Experimental on v3.2
+
 
 pgr_lengauerTarjanDominatorTree -Experimental
 ===============================================================================
@@ -59,9 +63,6 @@ Signatures
    | Returns set of |result-idom|
    | OR EMPTY SET
 
-
-.. index::
-    single: lengauerTarjanDominatorTree - Experimental on v3.2
 
 
 :Example: The dominator tree with root vertex :math:`5`

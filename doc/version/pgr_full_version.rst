@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Reference ; pgr_full_version
+   single: full_version
 
 ``pgr_full_version``
 ===============================================================================
@@ -26,9 +29,6 @@ Description
 -------------------------------------------------------------------------------
 
 Get complete details of pgRouting version information
-
-.. index::
-    single: full_version
 
 Signatures
 -------------------------------------------------------------------------------

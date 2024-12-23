@@ -9,7 +9,9 @@
 
 |
 
-
+.. index::
+   single: Utilities ; pgr_findCloseEdges
+   single: findCloseEdges
 
 ``pgr_findCloseEdges``
 ===============================================================================
@@ -57,7 +59,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: findCloseEdges(One point)
+    single: findCloseEdges ; One point - Proposed on 3.4
 
 One point
 ...............................................................................
@@ -92,7 +94,7 @@ One point
    :end-before: -- q2
 
 .. index::
-   single: findCloseEdges(One point)
+   single: findCloseEdges ; Many points - Proposed on 3.4
 
 Many points
 ...............................................................................
@@ -120,9 +122,6 @@ values.
 
 ``geom`` contains the original point geometry to assist on deterpartialing to which
 point geometry the row belongs to.
-
-.. index::
-   single: findCloseEdges(Many points)
 
 Parameters
 -------------------------------------------------------------------------------

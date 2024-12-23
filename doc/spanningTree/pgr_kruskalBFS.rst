@@ -9,6 +9,11 @@
 
 |
 
+.. index::
+   single: Kruskal Family ; pgr_kruskalBFS
+   single: Spanning Tree Category ; pgr_kruskalBFS
+   single: Breadth First Search Category ; pgr_kruskalBFS
+   single: kruskalBFS
 
 ``pgr_kruskalBFS``
 ===============================================================================
@@ -60,7 +65,7 @@ Signatures
    | Returns set of |result-spantree|
 
 .. index::
-    single: kruskalBFS(Single vertex)
+    single: kruskalBFS ; Single vertex
 
 Single vertex
 ...............................................................................
@@ -79,7 +84,7 @@ Single vertex
    :end-before: -- q2
 
 .. index::
-    single: kruskalBFS(Multiple vertices)
+    single: kruskalBFS ; Multiple vertices
 
 Multiple vertices
 ...............................................................................

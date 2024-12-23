@@ -9,6 +9,7 @@
 
 |
 
+.. index:: Ordering Family
 
 Ordering - Family of functions
 ===============================================================================
@@ -23,6 +24,8 @@ Ordering - Family of functions
 .. index from here
 
 * :doc:`pgr_cuthillMckeeOrdering` - Return reverse Cuthill-McKee ordering of an undirected graph.
+* :doc:`pgr_topologicalSort` - Linear ordering of the vertices for directed
+  acyclic graph.
 
 .. index to here
 
@@ -30,6 +33,7 @@ Ordering - Family of functions
     :hidden:
 
     pgr_cuthillMckeeOrdering
+    pgr_topologicalSort
 
 See Also
 -------------------------------------------------------------------------------

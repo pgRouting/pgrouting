@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Vehicle Routing Functions Category ; pgr_pickDeliver
+   single: pickDeliver - Experimental on v3.0
 
 ``pgr_pickDeliver`` - Experimental
 ===============================================================================
@@ -69,9 +72,6 @@ Characteristics
 
 - Six different initial will be optimized
   - the best solution found will be result
-
-.. index::
-    single: pgr_pickDeliver - Experimental on v3.0
 
 Signature
 -------------------------------------------------------------------------------

@@ -9,6 +9,10 @@
 
 |
 
+.. index::
+   single: Traversal Family ; pgr_breadthFirstSearch
+   single: Breadth First Search Category ; pgr_breadthFirstSearch
+   single: breadthFirstSearch
 
 ``pgr_breadthFirstSearch`` - Experimental
 ===============================================================================
@@ -62,7 +66,7 @@ Signatures
    | Returns set of |result-bfs|
 
 .. index::
-    single: breadthFirstSearch(Single vertex) - Experimental on v3.0
+    single: breadthFirstSearch ; Single vertex - Experimental on v3.0
 
 Single vertex
 ...............................................................................
@@ -83,7 +87,7 @@ Single vertex
    :end-before: -- q2
 
 .. index::
-    single: breadthFirstSearch(Multiple vertices) - Experimental on v3.0
+    single: breadthFirstSearch ; Multiple vertices - Experimental on v3.0
 
 Multiple vertices
 ...............................................................................
