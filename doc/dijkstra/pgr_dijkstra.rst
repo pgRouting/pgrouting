@@ -10,8 +10,8 @@
 |
 
 .. index::
-   single: Dijkstra Family ; dijkstra
-   single: Shortest Path Category ; dijkstra
+   single: Dijkstra Family ; pgr_dijkstra
+   single: Shortest Path Category ; pgr_dijkstra
    single: dijkstra
 
 ``pgr_dijkstra``

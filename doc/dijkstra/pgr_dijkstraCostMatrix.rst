@@ -10,8 +10,8 @@
 |
 
 .. index::
-   single: Dijkstra Family ; dijkstraCostMatrix
-   single: CostMatrix Category ; dijkstraCostMatrix
+   single: Dijkstra Family ; pgr_dijkstraCostMatrix
+   single: Cost Matrix Category ; pgr_dijkstraCostMatrix
    single: dijkstraCostMatrix
 
 ``pgr_dijkstraCostMatrix``

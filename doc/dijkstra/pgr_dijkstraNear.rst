@@ -10,8 +10,8 @@
 |
 
 .. index::
-   single: Dijkstra Family ; dijkstraNear
-   single: Near Category ; dijkstraNear
+   single: Dijkstra Family ; pgr_dijkstraNear
+   single: Near Category ; pgr_dijkstraNear
    single: dijkstraNear
 
 ``pgr_dijkstraNear`` - Proposed

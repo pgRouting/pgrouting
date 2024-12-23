@@ -11,8 +11,8 @@
 
 
 .. index::
-   single: Dijkstra Family ; dijkstraCost
-   single: Cost Category ; dijkstraCost
+   single: Dijkstra Family ; pgr_dijkstraCost
+   single: Cost Category ; pgr_dijkstraCost
    single: dijkstraCost
 
 ``pgr_dijkstraCost``

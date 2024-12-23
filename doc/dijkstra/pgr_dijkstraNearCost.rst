@@ -11,9 +11,9 @@
 
 
 .. index::
-   single: Dijkstra Family ; dijkstraNearCost
-   single: Near Category ; dijkstraNearCost
-   single: Cost Category ; dijkstraNearCost
+   single: Dijkstra Family ; pgr_dijkstraNearCost
+   single: Near Category ; pgr_dijkstraNearCost
+   single: Cost Category ; pgr_dijkstraNearCost
    single: dijkstraNearCost
 
 ``pgr_dijkstraNearCost`` - Proposed
