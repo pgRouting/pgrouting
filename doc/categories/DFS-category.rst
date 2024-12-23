@@ -9,7 +9,7 @@
 
 |
 
-.. index:: DFS Category
+.. index:: Depth First Search Category
 
 DFS - Category
 ===============================================================================
