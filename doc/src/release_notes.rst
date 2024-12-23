@@ -305,7 +305,7 @@ Changes on the documentation to the following:
 .. rubric:: Issue fixes
 
 * `#2565 <https://github.com/pgRouting/pgrouting/issues/2565>`__
-  pgr_pgr_lengauerTarjanDominatorTree triggers an assertion
+  pgr_lengauerTarjanDominatorTree triggers an assertion
 
 .. rubric:: SQL enhancements
 

@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Ordering Family ; pgr_topologicalSort
+   single: topologicalSort - Experimental on v3.0
 
 ``pgr_topologicalSort`` - Experimental
 ===============================================================================
@@ -55,9 +58,6 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. rubric:: Summary
-
-.. index::
-   single: topologicalSort - Experimental on v3.0
 
 .. admonition:: \ \
    :class: signatures

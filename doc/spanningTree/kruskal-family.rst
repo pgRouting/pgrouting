@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Spanning Tree Category ; Kruskal Family
+   single: Kruskal Family
 
 Kruskal - Family of functions
 ===============================================================================

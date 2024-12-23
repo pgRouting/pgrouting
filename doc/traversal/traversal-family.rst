@@ -9,6 +9,7 @@
 
 |
 
+.. index:: Traversal Family
 
 Traversal - Family of functions
 ===============================================================================

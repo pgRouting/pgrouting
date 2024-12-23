@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Metrics Family ; pgr_betweennessCentrality
+   single: betweennessCentrality - Experimental on v3.7
 
 ``pgr_betweennessCentrality``
 ===============================================================================

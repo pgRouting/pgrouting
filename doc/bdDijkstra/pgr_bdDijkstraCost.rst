@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Bidirectional Dijkstra Family ; pgr_bdDijkstraCost
+   single: bdDijkstraCost
 
 ``pgr_bdDijkstraCost``
 ===============================================================================
@@ -70,7 +73,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: bdDijkstraCost(One to One)
+    single: bdDijkstraCost ; One to One
 
 One to One
 ...............................................................................
@@ -90,7 +93,7 @@ One to One
     :end-before: -- q3
 
 .. index::
-    single: bdDijkstraCost(One to Many)
+    single: bdDijkstraCost ; One to Many
 
 One to Many
 ...............................................................................
@@ -111,7 +114,7 @@ One to Many
     :end-before: -- q4
 
 .. index::
-    single: bdDijkstraCost(Many to One)
+    single: bdDijkstraCost ; Many to One
 
 Many to One
 ...............................................................................
@@ -132,7 +135,7 @@ Many to One
     :end-before: -- q5
 
 .. index::
-    single: bdDijkstraCost(Many to Many)
+    single: bdDijkstraCost ; Many to Many
 
 Many to Many
 ...............................................................................
@@ -153,7 +156,7 @@ Many to Many
     :end-before: -- q51
 
 .. index::
-    single: bdDijkstraCost(Combinations) - Proposed on v3.2
+    single: bdDijkstraCost ; Combinations - Proposed on v3.2
 
 Combinations
 ...............................................................................

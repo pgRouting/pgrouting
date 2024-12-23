@@ -9,6 +9,10 @@
 
 |
 
+.. index::
+   single: Shortest Path Category ; pgr_dagShortestPath
+   single: Directed Acyclic Graph Category ; pgr_dagShortestPath
+   single: dagShortestPath
 
 pgr_dagShortestPath - Experimental
 ===============================================================================
@@ -98,7 +102,7 @@ Signatures
 
 
 .. index::
-    single: dagShortestPath(One to One) - Experimental on v3.0
+    single: dagShortestPath ; One to One - Experimental on v3.0
 
 One to One
 ...............................................................................
@@ -118,7 +122,7 @@ One to One
    :end-before: -- q3
 
 .. index::
-    single: dagShortestPath(One to Many) - Experimental on v3.0
+    single: dagShortestPath ; One to Many - Experimental on v3.0
 
 One to Many
 ...............................................................................
@@ -138,7 +142,7 @@ One to Many
    :end-before: -- q4
 
 .. index::
-    single: dagShortestPath(Many to One) - Experimental on v3.0
+    single: dagShortestPath ; Many to One - Experimental on v3.0
 
 Many to One
 ...............................................................................
@@ -158,7 +162,7 @@ Many to One
    :end-before: -- q5
 
 .. index::
-    single: dagShortestPath(Many to Many) - Experimental on v3.0
+    single: dagShortestPath ; Many to Many - Experimental on v3.0
 
 Many to Many
 ...............................................................................
@@ -179,7 +183,7 @@ Many to Many
    :end-before: -- q51
 
 .. index::
-    single: dagShortestPath(Combinations) - Experimental on v3.2
+    single: dagShortestPath ; Combinations - Experimental on v3.2
 
 Combinations
 ...............................................................................

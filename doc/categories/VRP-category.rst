@@ -9,8 +9,9 @@
 
 |
 
+.. index:: Vehicle Routing Functions Category
 
-Vehicle Routing Functions - Category (Experimental)
+Vehicle Routing Functions - Category
 ===============================================================================
 
 .. include:: experimental.rst

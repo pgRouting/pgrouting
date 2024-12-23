@@ -287,7 +287,7 @@ Changes on the documentation to the following:
 **Issue fixes**
 
 * [#2565](https://github.com/pgRouting/pgrouting/issues/2565)
-  pgr_pgr_lengauerTarjanDominatorTree triggers an assertion
+  pgr_lengauerTarjanDominatorTree triggers an assertion
 
 **SQL enhancements**
 

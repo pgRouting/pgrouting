@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Components Family ; pgr_bridges
+   single: bridges
 
 ``pgr_bridges``
 ===============================================================================
@@ -46,9 +49,6 @@ This implementation can only be used with an undirected graph.
   - ``edge`` ascending
 
 - Running time: :math:`O(E * (V + E))`
-
-.. index::
-    single: bridges
 
 Signatures
 -------------------------------------------------------------------------------

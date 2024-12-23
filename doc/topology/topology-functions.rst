@@ -9,6 +9,7 @@
 
 |
 
+.. index:: Topology Family
 
 Topology - Family of Functions
 ===============================================================================

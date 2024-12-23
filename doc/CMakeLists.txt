@@ -215,7 +215,9 @@ message(STATUS "PGR_DOCUMENTATION_BUILD_DIR = ${PGR_DOCUMENTATION_BUILD_DIR}")
 #---------------------------------------------
 foreach (subdir ${PROJECT_DOC_DIRECTORIES} "src")
     add_subdirectory("${subdir}")
-    add_subdirectory("../docqueries/${subdir}" "build/doc/${subdir}")
+    if (EXISTS "../docqueries/${subdir}")
+        add_subdirectory("../docqueries/${subdir}" "build/doc/${subdir}")
+    endif()
 endforeach()
 
 add_subdirectory("images")

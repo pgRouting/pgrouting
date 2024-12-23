@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Traveling Sales Person Family ; pgr_TSPeuclidean
+   single: pgr_TSPeuclidean
 
 ``pgr_TSPeuclidean``
 =============================================================================

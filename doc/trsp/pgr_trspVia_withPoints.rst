@@ -9,6 +9,12 @@
 
 |
 
+.. index::
+   single: Turn Restriction Shortest Path Family ; pgr_trspVia_withPoints
+   single: Via Category ; pgr_trspVia_withPoints
+   single: Restrictions Category ; pgr_trspVia_withPoints
+   single: With Points Category ; pgr_trspVia_withPoints
+   single: trspVia_withPoints
 
 ``pgr_trspVia_withPoints`` - Proposed
 ===============================================================================
@@ -64,7 +70,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: trspVia_withPoints - Proposed on v3.4
+    single: trspVia_withPoints ; One Via - Proposed on v3.4
 
 One Via
 ...............................................................................

@@ -9,6 +9,11 @@
 
 |
 
+.. index::
+   single: withPoints Family ; pgr_withPointsVia
+   single: With Points Category ; pgr_withPointsVia
+   single: Via Category ; pgr_withPointsVia
+   single: withPointsVia
 
 ``pgr_withPointsVia`` - Proposed
 ===============================================================================
@@ -55,7 +60,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: withPointsVia - Proposed on v3.4
+    single: withPointsVia ; One Via - Proposed on v3.4
 
 One Via
 ...............................................................................

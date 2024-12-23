@@ -9,8 +9,8 @@
 
 |
 
-.. rubric:: Previous versions of this page
 
+.. index:: Bidirectional Dijkstra Family
 
 Bidirectional Dijkstra - Family of functions
 ===============================================================================

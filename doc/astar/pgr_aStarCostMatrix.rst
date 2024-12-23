@@ -10,6 +10,10 @@
 |
 
 
+.. index::
+   single: aStar Family ; pgr_aStarCostMatrix
+   single: aStarCostMatrix
+
 ``pgr_aStarCostMatrix``
 ===============================================================================
 
@@ -51,9 +55,6 @@ Description
     * cost from `v` to `u` is :math:`0`
 
 * When the graph is **undirected** the cost matrix is symmetric
-
-.. index::
-    single: aStarCostMatrix
 
 Signatures
 -------------------------------------------------------------------------------

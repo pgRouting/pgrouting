@@ -9,6 +9,10 @@
 
 |
 
+.. index::
+   single: Traversal Family ; pgr_depthFirstSearch
+   single: Depth First Search Category ; pgr_depthFirstSearch
+   single: depthFirstSearch
 
 ``pgr_depthFirstSearch`` - Proposed
 ===============================================================================
@@ -75,7 +79,7 @@ Signatures
    | Returns set of |result-bfs|
 
 .. index::
-    single: depthFirstSearch(Single vertex) - Proposed on v3.3
+    single: depthFirstSearch ; Single vertex - Proposed on v3.3
 
 Single vertex
 ...............................................................................
@@ -96,7 +100,7 @@ Single vertex
    :end-before: -- q2
 
 .. index::
-    single: depthFirstSearch(Multiple vertices) - Proposed on v3.3
+    single: depthFirstSearch ; Multiple vertices - Proposed on v3.3
 
 Multiple vertices
 ...............................................................................

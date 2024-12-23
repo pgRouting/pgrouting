@@ -9,6 +9,10 @@
 
 |
 
+.. index::
+   single: Kruskal Family ; pgr_kruska
+   single: Spanning Tree Category ; pgr_kruskal
+   single: kruskal
 
 ``pgr_kruskal``
 ===============================================================================
@@ -43,9 +47,6 @@ graph using Kruskal's algorithm.
 
 Signatures
 -------------------------------------------------------------------------------
-
-.. index::
-    single: kruskal
 
 .. rubric:: Summary
 

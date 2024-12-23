@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Topology Family ; pgr_analyzeGraph
+   single: analyzeGraph
 
 pgr_analyzeGraph
 ===============================================================================

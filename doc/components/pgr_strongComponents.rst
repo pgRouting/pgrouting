@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Components Family ; pgr_strongComponents
+   single: strongComponents
 
 ``pgr_strongComponents``
 ===============================================================================
@@ -53,9 +56,6 @@ all reachable from each other.
   - ``node`` ascending
 
 - Running time: :math:`O(V + E)`
-
-.. index::
-    single: strongComponents
 
 Signatures
 -------------------------------------------------------------------------------
