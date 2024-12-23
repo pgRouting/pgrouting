@@ -11,7 +11,7 @@
 
 .. index::
    single: Topology Family ; pgr_extractVertices
-   single: extractVertices - Proposed on v3.3.0
+   single: extractVertices - Proposed on v3.3
 
 pgr_extractVertices -- Proposed
 ===============================================================================
