@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Ordering Family ; pgr_topologicalSort
+   single: topologicalSort
 
 ``pgr_topologicalSort`` - Experimental
 ===============================================================================
