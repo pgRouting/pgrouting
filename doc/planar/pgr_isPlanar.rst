@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Planar Family ; pgr_isPlanar
+   single: isPlanar
 
 ``pgr_isPlanar`` - Experimental
 ===============================================================================
