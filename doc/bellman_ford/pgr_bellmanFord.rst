@@ -10,7 +10,7 @@
 |
 
 .. index::
-   single: Shortest Path Category; bellmanFord
+   single: Shortest Path Category; pgr_bellmanFord
    single: bellmanFord
 
 ``pgr_bellmanFord - Experimental``
@@ -100,7 +100,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: bellman_ford ; One to One - Experimental on v3.0
+   single: bellmanFord ; One to One - Experimental on v3.0
 
 One to One
 ...............................................................................
@@ -120,7 +120,7 @@ One to One
    :end-before: -- q3
 
 .. index::
-    single: bellmanFord ; One to Many - Experimental on v3.0
+   single: bellmanFord ; One to Many - Experimental on v3.0
 
 One to Many
 ...............................................................................
@@ -141,7 +141,7 @@ One to Many
    :end-before: -- q4
 
 .. index::
-    single: bellman_ford ; Many to One - Experimental on v3.0
+   single: bellmanFord ; Many to One - Experimental on v3.0
 
 Many to One
 ...............................................................................

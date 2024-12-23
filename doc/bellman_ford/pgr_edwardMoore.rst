@@ -10,7 +10,7 @@
 |
 
 .. index::
-   single: Shortest Path Category; edwardMoore
+   single: Shortest Path Category; pgr_edwardMoore
    single: edwardMoore
 
 ``pgr_edwardMoore - Experimental``
