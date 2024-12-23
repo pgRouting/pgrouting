@@ -10,6 +10,7 @@
 |
 
 
+.. index:: Contraction Family ; pgr_contraction
 
 ``pgr_contraction``
 ===============================================================================
