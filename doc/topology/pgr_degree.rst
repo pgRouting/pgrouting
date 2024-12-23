@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Topology Family ; pgr_degree
+   single: degree
 
 ``pgr_degree`` -- Proposed
 ===============================================================================
