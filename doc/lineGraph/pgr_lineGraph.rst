@@ -11,7 +11,7 @@
 
 .. index::
    single: Transformation Family ; pgr_lineGraph
-   single: lineGraph
+   single: lineGraph - Proposed on v3.7
 
 pgr_lineGraph - Proposed
 ===============================================================================
@@ -62,9 +62,6 @@ Given a graph :math:`G`, its line graph :math:`L(G)` is a graph such that:
 - When the graph is undirected the result is undirected.
 
   - The ``reverse_cost`` is always :math:`-1`.
-
-.. index::
-    single: lineGraph - Proposed on v3.7
 
 Signatures
 -------------------------------------------------------------------------------

@@ -11,7 +11,7 @@
 
 .. index::
    single: Transformation Family ; pgr_lineGraphFull
-   single: lineGraphFull
+   single: lineGraphFull - Experimental on v2.6
 
 ``pgr_lineGraphFull`` - Experimental
 ===============================================================================
@@ -56,9 +56,6 @@ The main characteristics are:
 - Results are undefined when a negative vertex id is used in the input graph.
 - Results are undefined when a duplicated edge id is used in the input graph.
 - Running time: TBD
-
-.. index::
-    single: lineGraphFull - Experimental on v2.6
 
 Signatures
 -------------------------------------------------------------------------------
