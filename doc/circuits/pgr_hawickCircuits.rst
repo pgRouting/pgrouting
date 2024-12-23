@@ -10,8 +10,8 @@
 |
 
 .. index::
-   single: Circuits Family ; pgr_hawickCircuits
-   single: hawickCircuits
+   single: Miscellaneous Algorithms ; pgr_hawickCircuits
+   single: Hawick Circuits - Experimental on v3.4
 
 ``pgr_hawickCircuits - Experimental``
 ===============================================================================
@@ -73,9 +73,6 @@ Signatures
 
    | Returns set of |generic-result|
    | OR EMPTY SET
-
-.. index::
-    single: Hawick Circuits - Experimental on v3.4
 
 :Example: Circuits present in the pgRouting :doc:`sampledata`
 
