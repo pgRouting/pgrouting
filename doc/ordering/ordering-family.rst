@@ -9,6 +9,7 @@
 
 |
 
+.. index:: Ordering Family
 
 Ordering - Family of functions
 ===============================================================================
