@@ -10,7 +10,7 @@
 |
 
 .. index::
-   single: TRSP Family ; pgr_trspVia
+   single: Turn Restriction Shortest Path Family ; pgr_trspVia
    single: Via Category ; pgr_trspVia
    single: Restrictions Category ; pgr_trspVia
    single: trspVia

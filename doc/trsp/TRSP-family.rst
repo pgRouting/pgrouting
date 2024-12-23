@@ -9,7 +9,7 @@
 
 |
 
-.. index:: TRSP Family
+.. index:: Turn Restriction Shortest Path Family
 
 TRSP - Family of functions
 ===============================================================================

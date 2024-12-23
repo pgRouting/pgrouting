@@ -10,7 +10,7 @@
 |
 
 .. index::
-   single: TRSP Family ; pgr_trsp_withPoints
+   single: Turn Restriction Shortest Path Family ; pgr_trsp_withPoints
    single: Shortest Path Category ; pgr_trsp_withPoints
    single: Restrictions Category ; pgr_trsp_withPoints
    single: With Points Category ; pgr_trsp_withPoints
