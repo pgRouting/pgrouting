@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Miscellaneous Algorithms ; pgr_lengauerTarjanDominatorTree
+   single: lengauerTarjanDominatorTree
 
 pgr_lengauerTarjanDominatorTree -Experimental
 ===============================================================================
