@@ -9,6 +9,10 @@
 
 |
 
+.. index::
+   single: Traversal Family ; pgr_breadthFirstSearch
+   single: Breadth First Search Category ; pgr_breadthFirstSearch
+   single: breadthFirstSearch
 
 ``pgr_breadthFirstSearch`` - Experimental
 ===============================================================================

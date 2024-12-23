@@ -9,6 +9,10 @@
 
 |
 
+.. index::
+   single: Traversal Family ; pgr_depthFirstSearch
+   single: Depth First Search Category ; pgr_depthFirstSearch
+   single: depthFirstSearch
 
 ``pgr_depthFirstSearch`` - Proposed
 ===============================================================================
