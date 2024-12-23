@@ -10,9 +10,9 @@
 |
 
 .. index::
-   singe: Shortest Path Category ; pgr_dagShortestPath
-   singe: Directed Acyclic Graph Category ; pgr_dagShortestPath
-   singe: dagShortestPath
+   single: Shortest Path Category ; pgr_dagShortestPath
+   single: Directed Acyclic Graph Category ; pgr_dagShortestPath
+   single: dagShortestPath
 
 pgr_dagShortestPath - Experimental
 ===============================================================================
