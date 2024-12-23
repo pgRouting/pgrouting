@@ -164,17 +164,20 @@ Functions by categories
     reference
     topology-functions
     TSP-family
-    spanningTree-family
-    KSP-category
 
 .. toctree::
     :hidden:
 
+    BFS-category
     cost-category
     costMatrix-category
+    DFS-category
     drivingDistance-category
+    KSP-category
     spanningTree-family
-    BFS-category
+    via-category
+    VRP-category
+    withPoints-category
 
 See Also
 -------------------------------------------------------------------------------

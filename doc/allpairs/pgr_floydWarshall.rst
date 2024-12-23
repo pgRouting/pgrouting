@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: All Pairs Family ; pgr_floydWarshall
+   single: floydWarshall
 
 ``pgr_floydWarshall``
 ===============================================================================

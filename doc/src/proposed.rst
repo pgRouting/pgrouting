@@ -130,7 +130,7 @@ Proposed Functions
     via-category
     withPoints-category
 
-.. rubric:: Utilities
+.. rubric:: Utilities Category
 
 :doc:`pgr_findCloseEdges`
 

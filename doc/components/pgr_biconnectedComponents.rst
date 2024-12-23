@@ -10,6 +10,9 @@
 |
 
 
+.. index::
+   single: Components Family ; pgr_biconnectedComponents
+   single: biconnectedComponents
 
 ``pgr_biconnectedComponents``
 ===============================================================================
@@ -58,9 +61,6 @@ only be contained in a single biconnected component.
   - ``edge`` ascending.
 
 - Running time: :math:`O(V + E)`
-
-.. index::
-    single: biconnectedComponents
 
 Signatures
 -------------------------------------------------------------------------------

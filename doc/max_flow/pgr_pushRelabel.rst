@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Flow Family ; pgr_pushRelabel
+   single: pushRelabel
 
 ``pgr_pushRelabel``
 ===============================================================================
@@ -70,7 +73,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: pushRelabel(One to One)
+    single: pushRelabel ; One to One
 
 One to One
 ...............................................................................
@@ -90,7 +93,7 @@ One to One
    :end-before: -- q2
 
 .. index::
-    single: pushRelabel(One to Many)
+    single: pushRelabel ; One to Many
 
 One to Many
 ...............................................................................
@@ -110,7 +113,7 @@ One to Many
    :end-before: -- q3
 
 .. index::
-    single: pushRelabel(Many to One)
+    single: pushRelabel ; Many to One
 
 Many to One
 ...............................................................................
@@ -130,7 +133,7 @@ Many to One
    :end-before: -- q4
 
 .. index::
-    single: pushRelabel(Many to Many)
+    single: pushRelabel ; Many to Many
 
 Many to Many
 ...............................................................................
@@ -150,7 +153,7 @@ Many to Many
    :end-before: -- q5
 
 .. index::
-    single: pushRelabel(Combinations) - Proposed on v3.2
+    single: pushRelabel ; Combinations - Proposed on v3.2
 
 Combinations
 ...............................................................................

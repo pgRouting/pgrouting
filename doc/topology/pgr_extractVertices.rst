@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Topology Family ; pgr_extractVertices
+   single: extractVertices - Proposed on v3.3
 
 pgr_extractVertices -- Proposed
 ===============================================================================
@@ -44,8 +47,7 @@ of edges of a graph.
 Signatures
 -------------------------------------------------------------------------------
 
-.. index::
-    single: pgr_extractVertices - Proposed on v3.3
+.. rubric:: Summary
 
 .. admonition:: \ \
    :class: signatures

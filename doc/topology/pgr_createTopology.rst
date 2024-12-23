@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Topology Family ; pgr_createTopology
+   single: createTopology
 
 pgr_createTopology
 ===============================================================================

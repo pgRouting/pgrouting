@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Topology Family ; pgr_createVerticesTable
+   single: createVerticesTable
 
 pgr_createVerticesTable
 ===============================================================================

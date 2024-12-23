@@ -1,7 +1,6 @@
 
 SET(LOCAL_FILES
     #pgr_randomSpanTree.rst
-    spanningTree-family.rst
     kruskal-family.rst
     prim-family.rst
     pgr_kruskal.rst

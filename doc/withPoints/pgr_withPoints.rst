@@ -9,6 +9,11 @@
 
 |
 
+.. index::
+   single: withPoints Family ; pgr_withPoints
+   single: With Points Category ; pgr_withPoints
+   single: Shortest Path Category ; pgr_withPoints
+   single: withPoints
 
 ``pgr_withPoints`` - Proposed
 ===============================================================================
@@ -87,7 +92,7 @@ Signatures
    | OR EMTPY SET
 
 .. index::
-    single: withPoints(One to One) - Proposed on v2.2
+    single: withPoints ; One to One - Proposed on v2.2
 
 One to One
 ...............................................................................
@@ -108,7 +113,7 @@ One to One
    :end-before: -- q2
 
 .. index::
-    single: withPoints(One to Many) - Proposed on v2.2
+    single: withPoints ; One to Many - Proposed on v2.2
 
 One to Many
 ...............................................................................
@@ -130,7 +135,7 @@ One to Many
    :end-before: -- q3
 
 .. index::
-    single: withPoints(Many to One) - Proposed on v2.2
+    single: withPoints ; Many to One - Proposed on v2.2
 
 Many to One
 ...............................................................................
@@ -151,7 +156,7 @@ Many to One
    :end-before: -- q4
 
 .. index::
-    single: withPoints(Many to Many) - Proposed on v2.2
+    single: withPoints ; Many to Many - Proposed on v2.2
 
 Many to Many
 ...............................................................................
@@ -173,7 +178,7 @@ Many to Many
    :end-before: -- q5
 
 .. index::
-    single: withPoints(Combinations) - Proposed on v3.2
+    single: withPoints ; Combinations - Proposed on v3.2
 
 Combinations
 ...............................................................................

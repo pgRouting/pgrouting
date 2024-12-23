@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Components Family ; pgr_makeConnected
+   single: makeConnected - Experimental on v3.2
 
 ``pgr_makeConnected`` - Experimental
 ===============================================================================
@@ -51,10 +54,6 @@ The main characteristics are:
 - The algorithm does not considers traversal costs in the calculations.
 - The algorithm does not considers geometric topology in the calculations.
 - Running time: :math:`O(V + E)`
-
-
-.. index::
-    single: makeConnected - Experimental on v3.2
 
 Signatures
 -------------------------------------------------------------------------------

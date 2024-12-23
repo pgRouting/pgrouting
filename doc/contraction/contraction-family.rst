@@ -10,6 +10,7 @@
 |
 
 
+.. index:: Contraction Family
 
 Contraction - Family of functions
 ===============================================================================

@@ -10,6 +10,7 @@
 |
 
 
+.. index:: All Pairs Family
 
 All Pairs - Family of Functions
 ===============================================================================

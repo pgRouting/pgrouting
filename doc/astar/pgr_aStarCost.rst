@@ -10,6 +10,10 @@
 |
 
 
+.. index::
+   single: aStar Family ; pgr_aStarCost
+   single: aStarCost
+
 pgr_aStarCost
 ===============================================================================
 
@@ -82,7 +86,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: aStarCost(One to One)
+    single: aStarCost ; One to One
 
 One to One
 ...............................................................................
@@ -104,7 +108,7 @@ One to One
     :end-before: -- q3
 
 .. index::
-    single: aStarCost(One to Many)
+    single: aStarCost ; One to Many
 
 One to Many
 ...............................................................................
@@ -126,7 +130,7 @@ One to Many
    :end-before: -- q4
 
 .. index::
-    single: aStarCost(Many to One)
+    single: aStarCost ; Many to One
 
 Many to One
 ...............................................................................
@@ -148,7 +152,7 @@ Many to One
     :end-before: -- q5
 
 .. index::
-    single: aStarCost(Many to Many)
+    single: aStarCost ; Many to Many
 
 Many to Many
 ...............................................................................
@@ -170,7 +174,7 @@ Many to Many
     :end-before: -- q51
 
 .. index::
-    single: aStarCost(Combinations) - Proposed on v3.2
+    single: aStarCost ; Combinations - Proposed on v3.2
 
 Combinations
 ...............................................................................

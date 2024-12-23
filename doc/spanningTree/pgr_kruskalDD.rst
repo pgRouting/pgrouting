@@ -10,6 +10,12 @@
 |
 
 
+.. index::
+   single: Kruskal Family ; pgr_kruskalDD
+   single: Spanning Tree Category ; pgr_kruskalDD
+   single: Driving Distance Category ; pgr_kruskalDD
+   single: kruskalDD
+
 ``pgr_kruskalDD``
 ===============================================================================
 
@@ -64,7 +70,7 @@ Signatures
    | Returns set of |result-spantree|
 
 .. index::
-    single: kruskalDD(Single vertex)
+    single: kruskalDD ; Single vertex
 
 Single vertex
 ...............................................................................
@@ -84,7 +90,7 @@ Single vertex
    :end-before: -- q2
 
 .. index::
-    single: kruskalDD(Multiple vertices)
+    single: kruskalDD ; Multiple vertices
 
 Multiple vertices
 ...............................................................................

@@ -9,6 +9,10 @@
 
 |
 
+.. index::
+   single: Dijkstra Family ; pgr_dijkstraVia
+   single: Via Category ; pgr_dijkstraVia
+   single: dijkstraVia
 
 ``pgr_dijkstraVia`` - Proposed
 ===============================================================================

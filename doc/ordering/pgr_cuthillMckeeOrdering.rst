@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Ordering Family ; pgr_cuthillMckeeOrdering
+   single: pgr_cuthillMckeeOrdering
 
 ``pgr_cuthillMckeeOrdering`` - Experimental
 ===============================================================================

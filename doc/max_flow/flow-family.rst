@@ -9,6 +9,7 @@
 
 |
 
+.. index:: Flow Family
 
 Flow - Family of functions
 ===================================

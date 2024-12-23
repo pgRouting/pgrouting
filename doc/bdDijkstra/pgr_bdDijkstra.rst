@@ -9,6 +9,9 @@
 
 |
 
+.. index::
+   single: Bidirectional Dijkstra Family ; pgr_bdDijkstra
+   single: bdDijkstra
 
 ``pgr_bdDijkstra``
 ===============================================================================
@@ -79,7 +82,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: bdDijkstra(One to One)
+    single: bdDijkstra ; One to One
 
 One to One
 ...............................................................................
@@ -99,7 +102,7 @@ One to One
     :end-before: -- q3
 
 .. index::
-    single: bdDijkstra(One to Many)
+    single: bdDijkstra ; One to Many
 
 One to Many
 ...............................................................................
@@ -120,7 +123,7 @@ One to Many
     :end-before: -- q4
 
 .. index::
-    single: bdDijkstra(Many to One)
+    single: bdDijkstra ; Many to One
 
 Many to One
 ...............................................................................
@@ -141,7 +144,7 @@ Many to One
     :end-before: -- q5
 
 .. index::
-    single: bdDijkstra(Many to Many)
+    single: bdDijkstra ; Many to Many
 
 Many to Many
 ...............................................................................
@@ -162,7 +165,7 @@ Many to Many
     :end-before: -- q51
 
 .. index::
-    single: bdDijkstra(Combinations) - Proposed on v3.2
+    single: bdDijkstra ; Combinations - Proposed on v3.2
 
 Combinations
 ...............................................................................
