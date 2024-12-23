@@ -10,7 +10,7 @@
 |
 
 .. index::
-   single: Bidirectional A* Family ; bdAstar
+   single: Bidirectional A* Family ; pgr_bdAstar
    single: bdAstar
 
 ``pgr_bdAstar``

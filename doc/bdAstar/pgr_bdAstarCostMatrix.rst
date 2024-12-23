@@ -10,7 +10,7 @@
 |
 
 .. index::
-   single: Bidirectional A* Family ; bdAstarCostMatrix
+   single: Bidirectional A* Family ; pgr_bdAstarCostMatrix
    single: bdAstarCostMatrix
 
 ``pgr_bdAstarCostMatrix``
