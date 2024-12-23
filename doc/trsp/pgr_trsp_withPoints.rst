@@ -10,10 +10,10 @@
 |
 
 .. index::
-   single: TRSP Family ; trsp_withPoints
-   single: Shortest Path Category ; trsp_withPoints
-   single: Restrictions Category ; trsp_withPoints
-   single: withPoints Category ; trsp_withPoints
+   single: TRSP Family ; pgr_trsp_withPoints
+   single: Shortest Path Category ; pgr_trsp_withPoints
+   single: Restrictions Category ; pgr_trsp_withPoints
+   single: With Points Category ; pgr_trsp_withPoints
    single: trsp_withPoints
 
 pgr_trsp_withPoints - Proposed

@@ -10,9 +10,9 @@
 |
 
 .. index::
-   single: TRSP Family ; trsp
-   single: Shortest Path Category ; trsp
-   single: Restrictions Category ; trsp
+   single: TRSP Family ; pgr_trsp
+   single: Shortest Path Category ; pgr_trsp
+   single: Restrictions Category ; pgr_trsp
    single: trsp
 
 pgr_trsp - Proposed

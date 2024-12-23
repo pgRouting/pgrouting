@@ -10,9 +10,9 @@
 |
 
 .. index::
-   single: TRSP Family ; turnRestrictedPath
-   single: Shortest Path Category ; turnRestrictedPath
-   single: Restrictions Category ; turnRestrictedPath
+   single: TRSP Family ; pgr_turnRestrictedPath
+   single: Shortest Path Category ; pgr_turnRestrictedPath
+   single: Restrictions Category ; pgr_turnRestrictedPath
    single: turnRestrictedPath
 
 

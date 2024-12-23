@@ -10,9 +10,9 @@
 |
 
 .. index::
-   single: TRSP Family ; trspVia
-   single: Via Category ; trspVia
-   single: Restrictions Category ; trspVia
+   single: TRSP Family ; pgr_trspVia
+   single: Via Category ; pgr_trspVia
+   single: Restrictions Category ; pgr_trspVia
    single: trspVia
 
 ``pgr_trspVia`` - Proposed

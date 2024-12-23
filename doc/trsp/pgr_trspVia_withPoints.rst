@@ -10,10 +10,10 @@
 |
 
 .. index::
-   single: TRSP Family ; trspVia_withPoints
-   single: Via Category ; trspVia_withPoints
-   single: Restrictions Category ; trspVia_withPoints
-   single: withPoints Category ; trspVia_withPoints
+   single: TRSP Family ; pgr_trspVia_withPoints
+   single: Via Category ; pgr_trspVia_withPoints
+   single: Restrictions Category ; pgr_trspVia_withPoints
+   single: With Points Category ; pgr_trspVia_withPoints
    single: trspVia_withPoints
 
 ``pgr_trspVia_withPoints`` - Proposed
