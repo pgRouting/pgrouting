@@ -9,7 +9,7 @@
 
 |
 
-.. index:: Spanning tree Category
+.. index:: Spanning Tree Category
 
 Spanning Tree - Category
 ===============================================================================
