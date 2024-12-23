@@ -62,9 +62,6 @@ only be contained in a single biconnected component.
 
 - Running time: :math:`O(V + E)`
 
-.. index::
-    single: biconnectedComponents
-
 Signatures
 -------------------------------------------------------------------------------
 
