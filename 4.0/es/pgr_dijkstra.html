@@ -323,7 +323,7 @@
 <div class="line"><br /></div>
 </div>
 <section id="pgr-dijkstra">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code><a class="headerlink" href="#pgr-dijkstra" title="Link to this heading">¶</a></h1>
+<span id="index-0"></span><h1><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code><a class="headerlink" href="#pgr-dijkstra" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> - Camino más corto utilizando el algoritmo de Dijkstra.</p>
 <figure class="align-default" id="id13">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
@@ -419,7 +419,7 @@
 <div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salida</strong>, <strong>destinos</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 <div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salidas</strong>, <strong>destino</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 <div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salidas</strong>, <strong>destinos</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
-<div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#combinations-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_dijkstra(<a class="reference internal" href="#combinations-sql">SQL de aristas</a>, <a class="reference internal" href="#edges-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
@@ -432,7 +432,7 @@
 <p>Leer <a class="reference internal" href="migration.html"><span class="doc">Guía de migración</span></a> sobre como migrar de las columnas de resultados anteriores a las nuevas columnas de resultados.</p>
 </div>
 <section id="one-to-one">
-<span id="index-0"></span><h3>Uno a Uno<a class="headerlink" href="#one-to-one" title="Link to this heading">¶</a></h3>
+<span id="index-1"></span><h3>Uno a Uno<a class="headerlink" href="#one-to-one" title="Link to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -465,7 +465,7 @@
 </div>
 </section>
 <section id="one-to-many">
-<span id="index-1"></span><h3>Uno a Muchos<a class="headerlink" href="#one-to-many" title="Link to this heading">¶</a></h3>
+<span id="index-2"></span><h3>Uno a Muchos<a class="headerlink" href="#one-to-many" title="Link to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -503,7 +503,7 @@
 </div>
 </section>
 <section id="many-to-one">
-<span id="index-2"></span><h3>Muchos a Uno<a class="headerlink" href="#many-to-one" title="Link to this heading">¶</a></h3>
+<span id="index-3"></span><h3>Muchos a Uno<a class="headerlink" href="#many-to-one" title="Link to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -541,7 +541,7 @@
 </div>
 </section>
 <section id="many-to-many">
-<span id="index-3"></span><h3>Muchos a Muchos<a class="headerlink" href="#many-to-many" title="Link to this heading">¶</a></h3>
+<span id="index-4"></span><h3>Muchos a Muchos<a class="headerlink" href="#many-to-many" title="Link to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -587,11 +587,11 @@
 </div>
 </section>
 <section id="combinations">
-<span id="index-4"></span><h3>Combinaciones<a class="headerlink" href="#combinations" title="Link to this heading">¶</a></h3>
+<span id="index-5"></span><h3>Combinaciones<a class="headerlink" href="#combinations" title="Link to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#combinations-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_dijkstra(<a class="reference internal" href="#combinations-sql">SQL de aristas</a>, <a class="reference internal" href="#edges-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
@@ -1790,7 +1790,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.0-dev.<br/>
-      Actualizado por última vez en dic 18, 2024.<br/>
+      Actualizado por última vez en dic 23, 2024.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>
