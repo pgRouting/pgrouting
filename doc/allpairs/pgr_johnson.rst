@@ -10,6 +10,7 @@
 |
 
 .. index::
+   single: All Pairs Family ; pgr_johnson
    single: johnson
 
 ``pgr_johnson``
