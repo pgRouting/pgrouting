@@ -57,9 +57,6 @@ all reachable from each other.
 
 - Running time: :math:`O(V + E)`
 
-.. index::
-    single: strongComponents
-
 Signatures
 -------------------------------------------------------------------------------
 
