@@ -29,7 +29,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef INCLUDE_WITHPOINTS_WITHPOINTS_HPP_
 #define INCLUDE_WITHPOINTS_WITHPOINTS_HPP_
 #pragma once
+
 #include <vector>
+#include <cstdint>
 
 #include "cpp_common/point_on_edge_t.hpp"
 #include "cpp_common/messages.hpp"

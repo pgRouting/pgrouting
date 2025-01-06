@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <vector>
 #include <algorithm>
+#include <cstdint>
 
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/dominator_tree.hpp>

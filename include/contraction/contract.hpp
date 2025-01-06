@@ -33,12 +33,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <deque>
 #include <vector>
-#include "cpp_common/assert.hpp"
+#include <cstdint>
 
 #include "contraction/contractionGraph.hpp"
 #include "contraction/ch_graphs.hpp"
 #include "contraction/linearContraction.hpp"
 #include "contraction/deadEndContraction.hpp"
+
+#include "cpp_common/assert.hpp"
 
 namespace pgrouting {
 namespace contraction {

@@ -27,6 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <vector>
 #include <set>
+#include <cstdint>
 
 #include <boost/config.hpp>
 #include <boost/graph/breadth_first_search.hpp>

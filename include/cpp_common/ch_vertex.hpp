@@ -28,9 +28,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 #ifndef INCLUDE_CPP_COMMON_CH_VERTEX_HPP_
 #define INCLUDE_CPP_COMMON_CH_VERTEX_HPP_
+
 #include <iostream>
 #include <sstream>
 #include <vector>
+#include <cstdint>
 
 #include "cpp_common/edge_t.hpp"
 #include "cpp_common/identifiers.hpp"

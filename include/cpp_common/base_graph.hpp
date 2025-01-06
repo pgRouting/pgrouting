@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 #include <limits>
 #include <string>
+#include <cstdint>
 
 #include <boost/graph/iteration_macros.hpp>
 #include <boost/config.hpp>
@@ -265,7 +266,7 @@ class Pgr_base_graph {
        - inserts the vertices
        - The vertices must be checked (if necessary)  before calling the constructor
        */
-     explicit Pgr_base_graph<G , T_V, T_E, t_directed>(
+     explicit Pgr_base_graph(
              const std::vector<T_V> &vertices)
          : graph(vertices.size()),
          m_is_directed(t_directed),
@@ -295,7 +296,7 @@ class Pgr_base_graph {
      /**
        Prepares the _graph_ to be of type gtype with 0 vertices
        */
-     explicit Pgr_base_graph<G , T_V, T_E, t_directed>()
+     explicit Pgr_base_graph()
          : graph(0),
          m_is_directed(t_directed),
          vertIndex(boost::get(boost::vertex_index, graph)),
