@@ -41,7 +41,10 @@ pgRouting 3.7
 pgRouting 3.7.2 Release Notes
 -------------------------------------------------------------------------------
 
-No Changes Yet
+.. rubric:: Bug fixes
+
+* `#2706 <https://github.com/pgRouting/pgrouting/pull/2706>`__ winnie crashing
+  on pgr_betweennessCentrality
 
 pgRouting 3.7.1 Release Notes
 -------------------------------------------------------------------------------
