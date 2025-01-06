@@ -23,6 +23,10 @@
 ## pgRouting 3.7
 
 
+### pgRouting 3.7.2 Release Notes
+
+No Changes Yet
+
 ### pgRouting 3.7.1 Release Notes
 
 To see all issues & pull requests closed by this release see the [Git closed
