@@ -75,7 +75,7 @@ RETURN QUERY
 SELECT lives_ok('idless4_q');
 
 RETURN QUERY
-SELECT results_eq('idless4_q', 'idless4_r');
+SELECT results_eq('idless4_q', 'idless4_r', 'test 4');
 
 
 PREPARE idless3_q AS
@@ -95,7 +95,7 @@ RETURN QUERY
 SELECT lives_ok('idless3_q');
 
 RETURN QUERY
-SELECT results_eq('idless3_q', 'idless3_r');
+SELECT results_eq('idless3_q', 'idless3_r', 'test 6');
 
 PREPARE idless2_q AS
   SELECT * FROM pgr_betweennessCentrality(
@@ -120,7 +120,7 @@ SELECT results_eq('idless2_q', 'idless2_r');
 PREPARE idless5ud_q AS
   SELECT * FROM pgr_betweennessCentrality(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edges WHERE id < 5', directed => false                                                                               ) ORDER BY vid;
+    FROM edges WHERE id < 5', directed => false ) ORDER BY vid;
 
 PREPARE idless5ud_r AS
   SELECT * FROM (VALUES
@@ -135,18 +135,20 @@ RETURN QUERY
 SELECT lives_ok('idless5ud_q');
 
 RETURN QUERY
-SELECT results_eq('idless5ud_q', 'idless5ud_r');
+SELECT results_eq('idless5ud_q', 'idless5ud_r', 'test 10');
+
 
 PREPARE idless4ud_q AS
   SELECT * FROM pgr_betweennessCentrality(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edges WHERE id < 4', directed => false                                                                               ) ORDER BY vid;
+    FROM edges WHERE id < 4', directed => false) ORDER BY vid;
 
 PREPARE idless4ud_r AS
   SELECT * FROM (VALUES
     (5::BIGINT , 0::FLOAT),
     (6 , 0.6666666666666666),
-    (10 , 0.6666666666666666),                                                                                                  (15 , 0))
+    (10 , 0.6666666666666666),
+    (15 , 0))
   AS t(vid, centrality);
 
 RETURN QUERY
@@ -159,7 +161,7 @@ SELECT results_eq('idless4ud_q', 'idless4ud_r');
 PREPARE idless3ud_q AS
   SELECT * FROM pgr_betweennessCentrality(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edges WHERE id < 3', directed => false                                                                               ) ORDER BY vid;
+    FROM edges WHERE id < 3', directed => false) ORDER BY vid;
 
 PREPARE idless3ud_r AS
   SELECT * FROM (VALUES
@@ -172,7 +174,7 @@ RETURN QUERY
 SELECT lives_ok('idless3ud_q');
 
 RETURN QUERY
-SELECT results_eq('idless3ud_q', 'idless3ud_r');
+SELECT results_eq('idless3ud_q', 'idless3ud_r', 'test 14');
 
 PREPARE idless2ud_q AS
   SELECT * FROM pgr_betweennessCentrality(
@@ -190,7 +192,7 @@ RETURN QUERY
 SELECT lives_ok('idless2ud_q');
 
 RETURN QUERY
-SELECT results_eq('idless2ud_q', 'idless2ud_r');
+SELECT results_eq('idless2ud_q', 'idless2ud_r', 'test 16');
 
 /* Explicit Directed Cases */
 
@@ -198,7 +200,7 @@ SELECT results_eq('idless2ud_q', 'idless2ud_r');
 PREPARE idless5d_q AS
   SELECT * FROM pgr_betweennessCentrality(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edges WHERE id < 5', directed => true                                                                                ) ORDER BY vid;
+    FROM edges WHERE id < 5', directed => true ) ORDER BY vid;
 
 PREPARE idless5d_r AS
   SELECT * FROM (VALUES
@@ -213,13 +215,13 @@ RETURN QUERY
 SELECT lives_ok('idless5d_q');
 
 RETURN QUERY
-SELECT results_eq('idless5d_q', 'idless5d_r');
+SELECT results_eq('idless5d_q', 'idless5d_r', 'test 18');
 
 
 PREPARE idless4d_q AS
   SELECT * FROM pgr_betweennessCentrality(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edges WHERE id < 4', directed => true                                                                                ) ORDER BY vid;
+    FROM edges WHERE id < 4', directed => true) ORDER BY vid;
 
 PREPARE idless4d_r AS
   SELECT * FROM (VALUES
@@ -233,13 +235,13 @@ RETURN QUERY
 SELECT lives_ok('idless4d_q');
 
 RETURN QUERY
-SELECT results_eq('idless4d_q', 'idless4d_r');
+SELECT results_eq('idless4d_q', 'idless4d_r', 'test 20');
 
 
 PREPARE idless3d_q AS
   SELECT * FROM pgr_betweennessCentrality(
     'SELECT id, source, target, cost, reverse_cost
-    FROM edges WHERE id < 3', directed => true                                                                                ) ORDER BY vid;
+    FROM edges WHERE id < 3', directed => true) ORDER BY vid;
 
 PREPARE idless3d_r AS
   SELECT * FROM (VALUES
@@ -252,7 +254,8 @@ RETURN QUERY
 SELECT lives_ok('idless3d_q');
 
 RETURN QUERY
-SELECT results_eq('idless3d_q', 'idless3d_r');
+SELECT results_eq('idless3d_q', 'idless3d_r', 'test 22');
+
 
 PREPARE idless2d_q AS
   SELECT * FROM pgr_betweennessCentrality(
@@ -270,7 +273,7 @@ RETURN QUERY
 SELECT lives_ok('idless2d_q');
 
 RETURN QUERY
-SELECT results_eq('idless2d_q', 'idless2d_r');
+SELECT results_eq('idless2d_q', 'idless2d_r', 'test 24');
 
 END;
 $BODY$

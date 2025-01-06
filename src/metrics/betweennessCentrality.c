@@ -60,7 +60,7 @@ process(
             result_count,
             &log_msg,
             &err_msg);
-    time_msg(" processing Centrality", start_t, clock());
+    time_msg(" processing pgr_betweenessCentrality", start_t, clock());
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
