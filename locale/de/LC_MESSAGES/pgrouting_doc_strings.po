@@ -1,10 +1,10 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.7.1
+# Copyright (C) pgRouting Contributors - Version v3.7.2
 # This file is distributed under the same license as the pgRouting package.
 # Regina Obe <regina@arrival3d.com>, 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.7.1\n"
+"Project-Id-Version: pgRouting v3.7.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-17 00:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
