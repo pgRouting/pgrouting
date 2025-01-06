@@ -45,6 +45,7 @@ extern "C" {
 }
 
 #include <vector>
+#include <cstdint>
 
 #include "cpp_common/undefPostgresDefine.hpp"
 

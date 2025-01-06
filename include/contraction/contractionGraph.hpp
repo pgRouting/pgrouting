@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <iostream>
 #include <tuple>
+#include <cstdint>
 
 #include <boost/graph/iteration_macros.hpp>
 
@@ -58,7 +59,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, CH_vertex, CH_edge, t_dire
      /*!
        Prepares the _graph_ to be of type *directed*
        */
-     explicit Pgr_contractionGraph<G, t_directed>()
+     explicit Pgr_contractionGraph()
          : Pgr_base_graph<G, CH_vertex, CH_edge, t_directed>() {
          }
 

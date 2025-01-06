@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <vector>
 #include <set>
+#include <cstdint>
 
 #include <visitors/prim_dijkstra_visitor.hpp>
 #include <boost/graph/prim_minimum_spanning_tree.hpp>
