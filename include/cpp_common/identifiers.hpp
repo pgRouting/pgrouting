@@ -54,15 +54,15 @@ class Identifiers {
 
     //! @name constructors
     //@{
-    Identifiers<T>() = default;
-    Identifiers<T>(const std::set<T>& data) : m_ids(data) {
+    Identifiers() = default;
+    explicit Identifiers(const std::set<T>& data) : m_ids(data) {
     }
 
     /* @brief initializes with {1 ~ number}
      *
      * @params [in] number
      */
-    explicit Identifiers<T>(const size_t number) {
+    explicit Identifiers(const size_t number) {
         size_t i(0);
         std::generate_n(std::inserter(m_ids, m_ids.begin()),
                 number,

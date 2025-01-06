@@ -63,8 +63,14 @@ pgRouting 3.7
 pgRouting 3.7.2 Release Notes
 -------------------------------------------------------------------------------
 
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.7.2
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__
+
 .. rubric:: Bug fixes
 
+* `#2707 <https://github.com/pgRouting/pgrouting/pull/2707>`__ Build failure in
+  pgRouting 3.7.1 on Alpine
 * `#2706 <https://github.com/pgRouting/pgrouting/pull/2706>`__ winnie crashing
   on pgr_betweennessCentrality
 

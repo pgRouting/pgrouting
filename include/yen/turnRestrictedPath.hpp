@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <set>
 #include <limits>
+#include <cstdint>
 
 #include "yen/ksp.hpp"
 #include "cpp_common/assert.hpp"

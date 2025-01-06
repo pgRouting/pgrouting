@@ -41,6 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 #include <functional>
 #include <numeric>
+#include <cstdint>
 
 #include <boost/config.hpp>
 #include <boost/graph/dijkstra_shortest_paths.hpp>

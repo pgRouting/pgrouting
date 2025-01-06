@@ -29,6 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_MAX_FLOW_FLOWGRAPH_HPP_
 #pragma once
 
+#include <cstdint>
+
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 

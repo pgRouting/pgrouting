@@ -29,6 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <set>
+#include <cstdint>
+
 #include "vrp/order.hpp"
 #include "vrp/pd_orders.hpp"
 #include "vrp/tw_node.hpp"

@@ -41,6 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <set>
 #include <limits>
+#include <cstdint>
 
 #include "dijkstra/dijkstra.hpp"
 #include "cpp_common/assert.hpp"
