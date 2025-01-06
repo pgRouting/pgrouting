@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <queue>
 #include <functional>
 #include <vector>
+#include <cstdint>
 
 #include <boost/graph/iteration_macros.hpp>
 #include <boost/graph/filtered_graph.hpp>

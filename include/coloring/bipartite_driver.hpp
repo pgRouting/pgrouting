@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <cstdint>
 
 #include <boost/property_map/property_map.hpp>
 #include <boost/property_map/vector_property_map.hpp>

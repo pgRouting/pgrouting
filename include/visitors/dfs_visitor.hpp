@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <map>
 #include <iostream>
+#include <cstdint>
 
 #include <boost/graph/depth_first_search.hpp>
 

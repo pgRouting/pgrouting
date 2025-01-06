@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <utility>
 #include <map>
+#include <cstdint>
 
 #include"c_types/line_graph_full_rt.h"
 #include "cpp_common/base_graph.hpp"
@@ -55,12 +56,12 @@ class Pgr_lineGraphFull : public Pgr_base_graph<G, T_V, T_E, t_directed> {
     typedef typename boost::graph_traits < G >::in_edge_iterator EI_i;
 
 
-    explicit Pgr_lineGraphFull< G, T_V, T_E, t_directed>()
+    explicit Pgr_lineGraphFull()
         : Pgr_base_graph<G, T_V, T_E, t_directed>(),
         m_num_edges(0) {
         }
 
-    explicit Pgr_lineGraphFull<G, T_V, T_E, t_directed>(const pgrouting::DirectedGraph &digraph)
+    explicit Pgr_lineGraphFull(const pgrouting::DirectedGraph &digraph)
         : Pgr_base_graph<G, T_V, T_E, t_directed>() {
             apply_transformation(digraph);
             store_edge_costs(digraph);

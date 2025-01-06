@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include <vector>
+#include <cstdint>
 
 #include "cpp_common/bpoint.hpp"
 #include "cpp_common/edge_xy_t.hpp"

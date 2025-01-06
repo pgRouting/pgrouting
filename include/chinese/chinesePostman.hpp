@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <limits>
 #include <stack>
+#include <cstdint>
 
 #include "max_flow/minCostMaxFlow.hpp"
 #include "c_types/path_rt.h"

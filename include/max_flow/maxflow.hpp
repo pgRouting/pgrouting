@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <set>
 #include <limits>
+#include <cstdint>
 
 #include "max_flow/flowgraph.hpp"
 #include <boost/graph/push_relabel_max_flow.hpp>

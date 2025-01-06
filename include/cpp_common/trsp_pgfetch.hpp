@@ -57,6 +57,8 @@ extern "C" {
 }
 
 #include <vector>
+#include <cstdint>
+
 #include "cpp_common/undefPostgresDefine.hpp"
 
 using Edge_t = struct Edge_rt;

@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 #include <string>
 #include <vector>
+#include <cstdint>
 
 #include <visitors/dfs_visitor_with_root.hpp>
 #include <visitors/edges_order_bfs_visitor.hpp>
