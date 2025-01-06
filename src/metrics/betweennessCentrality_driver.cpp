@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 #include "metrics/betweennessCentrality.hpp"
 #include "cpp_common/pgdata_getters.hpp"
-
+#include "cpp_common/to_postgres.hpp"
 #include "cpp_common/assert.hpp"
 
 
@@ -61,6 +61,9 @@ pgr_do_betweennessCentrality(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
+        using pgrouting::metrics::betweennessCentrality;
+        using pgrouting::to_postgres::vector_to_tuple;
+
         hint = edges_sql;
         auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, true);
 
@@ -73,12 +76,12 @@ pgr_do_betweennessCentrality(
             log << "Processing Directed graph\n";
             pgrouting::DirectedGraph digraph;
             digraph.insert_edges(edges);
-            pgr_betweennesscentrality(digraph, *return_count, return_tuples);
+            vector_to_tuple(digraph, betweennessCentrality(digraph), *return_count, return_tuples);
         } else {
             log << "Processing Undirected graph\n";
             pgrouting::UndirectedGraph undigraph;
             undigraph.insert_edges(edges);
-            pgr_betweennesscentrality(undigraph, *return_count, return_tuples);
+            vector_to_tuple(undigraph, betweennessCentrality(undigraph), *return_count, return_tuples);
         }
 
 
