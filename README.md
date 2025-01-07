@@ -58,7 +58,7 @@ The latest documentation: https://docs.pgrouting.org/latest
 * Postgresql = Supported [version](https://www.postgresql.org/support/versioning/) by PostgreSQL
   * Not supporting v12 & under
 * The Boost Graph Library (BGL) >= 1.56
-* CMake >= 3.2
+* CMake >= 3.12
 * 7.0 > Sphinx >= 4.0.0
 
 ### User's requirements
