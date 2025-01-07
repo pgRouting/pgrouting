@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-23 23:17+0000\n"
+"POT-Creation-Date: 2025-01-07 22:37+0000\n"
 "PO-Revision-Date: 2024-12-20 07:59+0000\n"
 "Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
@@ -4580,6 +4580,17 @@ msgstr ""
 msgid "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
 msgstr "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
 
+#, fuzzy
+msgid ""
+"``pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
+"boolean,text)``"
+msgstr ""
+"修复pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
+"boolean[,text])"
+
+msgid "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
+msgstr "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
+
 msgid "All releases"
 msgstr "All releases"
 
@@ -4622,12 +4633,6 @@ msgstr "结果可能会因变化而不同。"
 
 msgid "All deprecated functions will be removed on next mayor version 4.0.0"
 msgstr "所有已弃用的函数将在下一个主要版本 4.0.0 中被移除"
-
-msgid "Migration of functions"
-msgstr "函数迁移"
-
-msgid "Migrating functions"
-msgstr "迁移函数"
 
 msgid "Migration of ``pgr_aStar``"
 msgstr "``pgr_aStar`` 迁移"
@@ -5285,8 +5290,148 @@ msgid ""
 "original columns:"
 msgstr "如果需要，过滤掉附加列，例如，返回原始列："
 
-msgid "Migration of turn restrictions"
-msgstr "转弯限制的迁移"
+msgid "Migration of ``pgr_trsp`` (Vertices)"
+msgstr "迁移 ``pgr_trsp`` （顶点）"
+
+#, fuzzy
+msgid "Signature:"
+msgstr "标识"
+
+#, fuzzy
+msgid "Deprecated"
+msgstr "已废弃的功能"
+
+#, fuzzy
+msgid "`v3.4.0 <https://docs.pgrouting.org/3.4>`__"
+msgstr "从`v3.4.0 <https://docs.pgrouting.org/3.4/en/migration.html>`__ 开始"
+
+msgid "Removed"
+msgstr ""
+
+#, fuzzy
+msgid "`v4.0.0 <https://docs.pgrouting.org/4.0>`__"
+msgstr "从`v3.4.0 <https://docs.pgrouting.org/3.4/en/migration.html>`__ 开始"
+
+#, fuzzy
+msgid "See also"
+msgstr "另请参阅"
+
+#, fuzzy
+msgid ":doc:`pgr_dijkstra`"
+msgstr ":doc:`pgr_dijkstra`:"
+
+msgid ":doc:`pgr_trsp`"
+msgstr ":doc:`pgr_trsp`"
+
+#, fuzzy
+msgid "`Migration of restrictions`_"
+msgstr "限制迁移"
+
+#, fuzzy
+msgid "Use ``pgr_dijkstra`` when there are no restrictions."
+msgstr ":doc:`pgr_dijkstra` 当没有限制时，"
+
+msgid "Use :doc:`pgr_dijkstra` instead."
+msgstr "请改用 :doc:`pgr_dijkstra`。"
+
+#, fuzzy
+msgid "To get the original column names:"
+msgstr "要获取图的连通性："
+
+msgid "``id1`` is the node"
+msgstr "``id1`` 是节点"
+
+msgid "``id2`` is the edge"
+msgstr "``id2`` 是边"
+
+#, fuzzy
+msgid "Use ``pgr_trsp`` when there are restrictions."
+msgstr ":doc:`pgr_trspVia` 当有限制时。"
+
+msgid "Use :doc:`pgr_trsp` (One to One) instead."
+msgstr "请改用 :doc:`pgr_trsp` (一对一）。"
+
+msgid "Migration of ``pgr_trsp`` (Edges)"
+msgstr "迁移 ``pgr_trsp`` （边）"
+
+msgid ":doc:`pgr_withPoints`"
+msgstr ":doc:`pgr_withPoints`"
+
+#, fuzzy
+msgid ":doc:`pgr_trsp_withPoints`"
+msgstr ":doc:`pgr_trsp_withPoints`:"
+
+#, fuzzy
+msgid "Use ``pgr_withPoints`` when there are no restrictions."
+msgstr ":doc:`pgr_withPoints` 当没有任何限制的时候，"
+
+#, fuzzy
+msgid "Use :doc:`pgr_withPoints` (Ont to One) instead."
+msgstr "请改用 :doc:`pgr_trsp` (一对一）。"
+
+#, fuzzy
+msgid "Use ``pgr_trsp_withPoints`` when there are restrictions."
+msgstr ":doc:`pgr_trspVia_withPoints` 当有限制时。"
+
+msgid "Use :doc:`pgr_trsp_withPoints` instead."
+msgstr "请使用 :doc:`pgr_trsp_withPoints`。"
+
+#, fuzzy
+msgid "Migration of ``pgr_trspViaVertices``"
+msgstr "pgr_trspViaVertices 的迁移"
+
+msgid ":doc:`pgr_dijkstraVia`"
+msgstr ":doc:`pgr_dijkstraVia`"
+
+msgid ":doc:`pgr_trspVia`"
+msgstr ":doc:`pgr_trspVia`"
+
+#, fuzzy
+msgid "Use ``pgr_dijkstraVia`` when there are no restrictions"
+msgstr ":doc:`pgr_dijkstraVia` 当无限制时，"
+
+msgid "Use :doc:`pgr_dijkstraVia` instead."
+msgstr "请使用 :doc:`pgr_dijkstraVia`。"
+
+msgid "``id1`` is the path identifier"
+msgstr "``id1`` 是路径标识符"
+
+msgid "``id2`` is the node"
+msgstr "``id2`` 是节点"
+
+msgid "``id3`` is the edge"
+msgstr "``id3`` 是边"
+
+#, fuzzy
+msgid "Use ``pgr_trspVia`` when there are restrictions"
+msgstr ":doc:`pgr_trspVia` 当有限制时。"
+
+msgid "Use :doc:`pgr_trspVia` instead."
+msgstr "使用 :doc:`pgr_trspVia`。"
+
+#, fuzzy
+msgid "Migration of ``pgr_trspViaEdges``"
+msgstr "pgr_trspViaEdges 的迁移"
+
+msgid ":doc:`pgr_withPointsVia`"
+msgstr ":doc:`pgr_withPointsVia`"
+
+msgid ":doc:`pgr_trspVia_withPoints`"
+msgstr ":doc:`pgr_trspVia_withPoints`"
+
+#, fuzzy
+msgid "Use ``pgr_withPointsVia`` when there are no restrictions"
+msgstr ":doc:`pgr_withPointsVia` 当没有限制时，"
+
+msgid "Use :doc:`pgr_withPointsVia` instead."
+msgstr "请使用 :doc:`pgr_withPointsVia`。"
+
+#, fuzzy
+msgid "Use ``pgr_trspVia_withPoints`` when there are restrictions"
+msgstr ":doc:`pgr_trspVia_withPoints` 当有限制时。"
+
+msgid "Use :doc:`pgr_trspVia_withPoints` instead."
+msgstr "使用 :doc:`pgr_trspVia_withPoints` 代替。"
 
 msgid "Migration of restrictions"
 msgstr "限制迁移"
@@ -5434,222 +5579,6 @@ msgstr "将在下一个正式版本 4.0.0 中删除"
 
 msgid "The migrated table contents:"
 msgstr "迁移后的表内容："
-
-msgid "Migration of ``pgr_trsp`` (Vertices)"
-msgstr "迁移 ``pgr_trsp`` （顶点）"
-
-msgid ""
-":doc:`pgr_trsp` signatures have changed and many issues have been fixed in "
-"the new signatures. This section will show how to migrate from the old "
-"signatures to the new replacement functions. This also affects the "
-"restrictions."
-msgstr ""
-":doc:`pgr_trsp` 的签名已更改，并且新签名中已修复许多问题。 本节将展示如何从旧"
-"签名迁移到新的替换函数。 这也会影响限制。"
-
-msgid "The integral type of the ``Edges SQL`` can only be ``INTEGER``."
-msgstr "``Edges SQL`` 的整数类型只能是 ``INTEGER``。"
-
-msgid "The floating point type of the ``Edges SQL`` can only be ``FLOAT``."
-msgstr "``Edges SQL`` 的浮点类型只能是 ``FLOAT``。"
-
-msgid "``directed`` flag is compulsory."
-msgstr "``directed`` 标志是强制性的。"
-
-msgid "Does not autodetect if ``reverse_cost`` column exist."
-msgstr "不自动检测 ``reverse_cost`` 列是否存在。"
-
-msgid ""
-"User must be careful to match the existence of the column with the value of "
-"``has_rcost`` parameter."
-msgstr "用户必须小心地将列的存在与 ``has_rcost`` 参数的值相匹配。"
-
-msgid "The restrictions inner query is optional."
-msgstr "内部查询的限制是可选的。"
-
-msgid "The output column names are meaningless"
-msgstr "输出列名没有意义"
-
-msgid "Migrate by using:"
-msgstr "使用以下方式迁移："
-
-msgid ":doc:`pgr_dijkstra` when there are no restrictions,"
-msgstr ":doc:`pgr_dijkstra` 当没有限制时，"
-
-msgid ":doc:`pgr_trsp` (One to One) when there are restrictions."
-msgstr ":doc:`pgr_trsp` (一对一)当有限制时。"
-
-msgid "Migrating ``pgr_trsp`` (Vertices) using ``pgr_dijkstra``"
-msgstr "使用 ``pgr_dijkstra`` 迁移 ``pgr_trsp`` （顶点）"
-
-msgid "The following query does not have restrictions."
-msgstr "以下查询没有限制。"
-
-msgid "A message about deprecation is shown"
-msgstr "显示有关弃用的消息"
-
-msgid "Deprecated functions will be removed on the next mayor version 4.0.0"
-msgstr "已弃用的功能将在下一个正式版本 4.0.0 中删除"
-
-msgid "Use :doc:`pgr_dijkstra` instead."
-msgstr "请改用 :doc:`pgr_dijkstra`。"
-
-msgid "The types casting has been removed."
-msgstr "类型强制转换已被删除。"
-
-msgid ":doc:`pgr_dijkstra`:"
-msgstr ":doc:`pgr_dijkstra`:"
-
-msgid "Autodetects if ``reverse_cost`` column is in the edges SQL."
-msgstr "自动检测 ``reverse_cost`` 列是否在边SQL中。"
-
-msgid "Accepts ``ANY-INTEGER`` on integral types"
-msgstr "接受整数类型 ``ANY-INTEGER``"
-
-msgid "Accepts ``ANY-NUMERICAL`` on floating point types"
-msgstr "接受浮点类型 ``ANY-NUMERICAL``"
-
-msgid "``directed`` flag has a default value of ``true``."
-msgstr "``directed`` 标志的默认值为``true``。"
-
-msgid "Use the same value that on the original query."
-msgstr "使用与原始查询相同的值。"
-
-msgid "In this example it is ``true`` which is the default value."
-msgstr "在此示例中，默认值为 ``true``。"
-
-msgid "The flag has been omitted and the default is been used."
-msgstr "该标志已被省略，并使用默认值。"
-
-msgid ""
-"When the need of using strictly the same (meaningless) names and types of "
-"the function been migrated then:"
-msgstr "当需要使用严格相同（无意义）的函数名称和类型进行迁移时："
-
-msgid "``id1`` is the node"
-msgstr "``id1`` 是节点"
-
-msgid "``id2`` is the edge"
-msgstr "``id2`` 是边"
-
-msgid "Migrating ``pgr_trsp`` (Vertices) using ``pgr_trsp``"
-msgstr "使用 ``pgr_trsp``迁移 ``pgr_trsp`` （顶点）"
-
-msgid "The following query has restrictions."
-msgstr "以下查询有限制。"
-
-msgid "The restrictions are the last parameter of the function"
-msgstr "限制是函数的最后一个参数"
-
-msgid "Using the old structure of restrictions"
-msgstr "使用旧的限制结构"
-
-msgid "Use :doc:`pgr_trsp` (One to One) instead."
-msgstr "请改用 :doc:`pgr_trsp` (一对一）。"
-
-msgid "The new structure of restrictions is been used."
-msgstr "使用了新的限制结构。"
-
-msgid "It is the second parameter."
-msgstr "这是第二个参数。"
-
-msgid ":doc:`pgr_trsp`:"
-msgstr ":doc:`pgr_trsp`:"
-
-msgid "Migration of ``pgr_trsp`` (Edges)"
-msgstr "迁移 ``pgr_trsp`` （边）"
-
-msgid "The integral types of the ``sql`` can only be ``INTEGER``."
-msgstr "``sql`` 的整型类型只能是 ``INTEGER``。"
-
-msgid "The floating point type of the ``sql`` can only be ``FLOAT``."
-msgstr "``sql`` 的浮点类型只能是 ``FLOAT``。"
-
-msgid "For these migration guide the following points will be used:"
-msgstr "对于这些迁移指南，将使用以下几点："
-
-msgid ":doc:`pgr_withPoints` when there are no restrictions,"
-msgstr ":doc:`pgr_withPoints` 当没有任何限制的时候，"
-
-msgid ":doc:`pgr_trsp_withPoints` (One to One) when there are restrictions."
-msgstr ":doc:`pgr_trsp_withPoints` (一对一) 当有限制时。"
-
-msgid "Migrating ``pgr_trsp`` (Edges) using ``pgr_withPoints``"
-msgstr "使用 ``pgr_withPoints``迁移 ``pgr_trsp`` （边）"
-
-msgid "Use :doc:`pgr_withPoints` instead."
-msgstr "请使用 :doc:`pgr_withPoints`。"
-
-msgid "Do not show details, as the deprecated function does not show details."
-msgstr "不显示详细信息，因为已弃用的函数不显示详细信息。"
-
-msgid ":doc:`pgr_withPoints`:"
-msgstr ":doc:`pgr_withPoints`:"
-
-msgid "On the points query do not include the ``side`` column."
-msgstr "在点查询中不包括 ``side`` 列。"
-
-msgid ""
-"When the need of using strictly the same (meaningless) names and types, and "
-"node values of the function been migrated then:"
-msgstr "当需要使用严格相同（无意义）的名称和类型，并且函数的节点值被迁移时："
-
-msgid "Migrating ``pgr_trsp`` (Edges) using ``pgr_trsp_withPoints``"
-msgstr "使用 ``pgr_trsp_withPoints`` 迁移 ``pgr_trsp`` （边）"
-
-msgid "Use :doc:`pgr_trsp_withPoints` instead."
-msgstr "请使用 :doc:`pgr_trsp_withPoints`。"
-
-msgid ":doc:`pgr_trsp_withPoints`:"
-msgstr ":doc:`pgr_trsp_withPoints`:"
-
-msgid "Migration of pgr_trspViaVertices"
-msgstr "pgr_trspViaVertices 的迁移"
-
-msgid "Migrating pgr_trspViaVertices using pgr_dijkstraVia"
-msgstr "使用 pgr_dijkstraVia 迁移 pgr_trspViaVertices"
-
-msgid "Using :doc:`pgr_dijkstraVia`."
-msgstr "使用 :doc:`pgr_dijkstraVia` 。"
-
-msgid ""
-"When the need of using the same (meaningless) names and and strict types "
-"then convert the result to the deprecated function columns:"
-msgstr ""
-"当需要使用相同（无意义）的名称和严格类型时，则将结果转换为已废弃的函数列："
-
-msgid "``id1`` is the path identifier"
-msgstr "``id1`` 是路径标识符"
-
-msgid "``id2`` is the node"
-msgstr "``id2`` 是节点"
-
-msgid "``id3`` is the edge"
-msgstr "``id3`` 是边"
-
-msgid "Migrating pgr_trspViaVertices using pgr_trspVia"
-msgstr "使用 pgr_trspVia 迁移 pgr_trspViaVertices"
-
-msgid "Using :doc:`pgr_trspVia`."
-msgstr "使用 :doc:`pgr_trspVia`。"
-
-msgid "Migration of pgr_trspViaEdges"
-msgstr "pgr_trspViaEdges 的迁移"
-
-msgid "In this section this set of points is going to be used:"
-msgstr "本节将使用这组点："
-
-msgid "Migrating pgr_trspViaEdges using pgr_withPointsVia"
-msgstr "使用 pgr_withPointsVia 迁移 pgr_trspViaEdges"
-
-msgid "Using :doc:`pgr_withPointsVia`."
-msgstr "使用 :doc:`pgr_withPointsVia`。"
-
-msgid "Migrating pgr_trspViaEdges using pgr_trspVia_withPoints"
-msgstr "使用 pgr_trspVia_withPoints 迁移 pgr_trspViaEdges"
-
-msgid "Use :doc:`pgr_trspVia_withPoints` instead."
-msgstr "使用 :doc:`pgr_trspVia_withPoints` 代替。"
 
 msgid ":doc:`withPoints-category`"
 msgstr ":doc:`withPoints-category`"
@@ -6878,9 +6807,6 @@ msgstr ""
 msgid "Parameters for the Via functions"
 msgstr "Via 函数的参数"
 
-msgid ":doc:`pgr_dijkstraVia`"
-msgstr ":doc:`pgr_dijkstraVia`"
-
 msgid "SQL query as described."
 msgstr "如所述的 SQL 查询。"
 
@@ -6923,9 +6849,6 @@ msgstr ""
 
 msgid "For the TRSP functions"
 msgstr "对于 TRSP 函数"
-
-msgid ":doc:`pgr_trsp`"
-msgstr ":doc:`pgr_trsp`"
 
 msgid "Array of identifiers of destination vertices."
 msgstr "目标顶点的标识符数组。"
@@ -6981,9 +6904,6 @@ msgstr "从使用 ``edge`` 的 ``node`` 遍历到路径序列中的下一个节�
 
 msgid "Used in functions the following:"
 msgstr "用于以下函数："
-
-msgid ":doc:`pgr_withPoints`"
-msgstr ":doc:`pgr_withPoints`"
 
 msgid ""
 "Returns set of ``(seq, path_seq [, start_pid] [, end_pid], node, edge, cost, "
@@ -15065,9 +14985,6 @@ msgstr "``pgr_trsp`` (`组合`_)"
 msgid "Deprecated signatures"
 msgstr "弃用签名"
 
-msgid "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
-msgstr "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
-
 msgid "``pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)``"
 msgstr "``pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)``"
 
@@ -16537,15 +16454,6 @@ msgid ""
 ":doc:`pgr_lineGraph` - Transformation algorithm for generating a Line Graph."
 msgstr ":doc:`pgr_lineGraph` - 用于生成折线图的转换算法。"
 
-msgid ":doc:`pgr_withPointsVia`"
-msgstr ":doc:`pgr_withPointsVia`"
-
-msgid ":doc:`pgr_trspVia`"
-msgstr ":doc:`pgr_trspVia`"
-
-msgid ":doc:`pgr_trspVia_withPoints`"
-msgstr ":doc:`pgr_trspVia_withPoints`"
-
 msgid ":doc:`withPoints-family` - Functions based on Dijkstra algorithm."
 msgstr ":doc:`withPoints-family` -基于 Dijkstra 算法的函数。"
 
@@ -16618,6 +16526,14 @@ msgid ""
 msgstr ""
 "`#2689 <https://github.com/pgRouting/pgrouting/pull/2689>`__ 当 point 是顶点"
 "时，withPoints 系列不返回结果。"
+
+#, fuzzy
+msgid "C/C++ code enhancemet"
+msgstr "C/C++ 代码增强"
+
+#, fuzzy
+msgid "TRSP family"
+msgstr "Prim族"
 
 msgid "pgRouting 3.7.0 Release Notes"
 msgstr "pgRouting 3.7.0 发布说明"
@@ -20249,6 +20165,182 @@ msgstr "pgr_withPointsDD 是 **带有点** 的 pgr_drivenDistance"
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia 是 pgr_dijkstraVia **with points** 的版本"
 
+#~ msgid "Migration of functions"
+#~ msgstr "函数迁移"
+
+#~ msgid "Migrating functions"
+#~ msgstr "迁移函数"
+
+#~ msgid "Migration of turn restrictions"
+#~ msgstr "转弯限制的迁移"
+
+#~ msgid ""
+#~ ":doc:`pgr_trsp` signatures have changed and many issues have been fixed "
+#~ "in the new signatures. This section will show how to migrate from the old "
+#~ "signatures to the new replacement functions. This also affects the "
+#~ "restrictions."
+#~ msgstr ""
+#~ ":doc:`pgr_trsp` 的签名已更改，并且新签名中已修复许多问题。 本节将展示如何"
+#~ "从旧签名迁移到新的替换函数。 这也会影响限制。"
+
+#~ msgid "The integral type of the ``Edges SQL`` can only be ``INTEGER``."
+#~ msgstr "``Edges SQL`` 的整数类型只能是 ``INTEGER``。"
+
+#~ msgid "The floating point type of the ``Edges SQL`` can only be ``FLOAT``."
+#~ msgstr "``Edges SQL`` 的浮点类型只能是 ``FLOAT``。"
+
+#~ msgid "``directed`` flag is compulsory."
+#~ msgstr "``directed`` 标志是强制性的。"
+
+#~ msgid "Does not autodetect if ``reverse_cost`` column exist."
+#~ msgstr "不自动检测 ``reverse_cost`` 列是否存在。"
+
+#~ msgid ""
+#~ "User must be careful to match the existence of the column with the value "
+#~ "of ``has_rcost`` parameter."
+#~ msgstr "用户必须小心地将列的存在与 ``has_rcost`` 参数的值相匹配。"
+
+#~ msgid "The restrictions inner query is optional."
+#~ msgstr "内部查询的限制是可选的。"
+
+#~ msgid "The output column names are meaningless"
+#~ msgstr "输出列名没有意义"
+
+#~ msgid "Migrate by using:"
+#~ msgstr "使用以下方式迁移："
+
+#~ msgid ":doc:`pgr_trsp` (One to One) when there are restrictions."
+#~ msgstr ":doc:`pgr_trsp` (一对一)当有限制时。"
+
+#~ msgid "Migrating ``pgr_trsp`` (Vertices) using ``pgr_dijkstra``"
+#~ msgstr "使用 ``pgr_dijkstra`` 迁移 ``pgr_trsp`` （顶点）"
+
+#~ msgid "The following query does not have restrictions."
+#~ msgstr "以下查询没有限制。"
+
+#~ msgid "A message about deprecation is shown"
+#~ msgstr "显示有关弃用的消息"
+
+#~ msgid "Deprecated functions will be removed on the next mayor version 4.0.0"
+#~ msgstr "已弃用的功能将在下一个正式版本 4.0.0 中删除"
+
+#~ msgid "The types casting has been removed."
+#~ msgstr "类型强制转换已被删除。"
+
+#~ msgid "Autodetects if ``reverse_cost`` column is in the edges SQL."
+#~ msgstr "自动检测 ``reverse_cost`` 列是否在边SQL中。"
+
+#~ msgid "Accepts ``ANY-INTEGER`` on integral types"
+#~ msgstr "接受整数类型 ``ANY-INTEGER``"
+
+#~ msgid "Accepts ``ANY-NUMERICAL`` on floating point types"
+#~ msgstr "接受浮点类型 ``ANY-NUMERICAL``"
+
+#~ msgid "``directed`` flag has a default value of ``true``."
+#~ msgstr "``directed`` 标志的默认值为``true``。"
+
+#~ msgid "Use the same value that on the original query."
+#~ msgstr "使用与原始查询相同的值。"
+
+#~ msgid "In this example it is ``true`` which is the default value."
+#~ msgstr "在此示例中，默认值为 ``true``。"
+
+#~ msgid "The flag has been omitted and the default is been used."
+#~ msgstr "该标志已被省略，并使用默认值。"
+
+#~ msgid ""
+#~ "When the need of using strictly the same (meaningless) names and types of "
+#~ "the function been migrated then:"
+#~ msgstr "当需要使用严格相同（无意义）的函数名称和类型进行迁移时："
+
+#~ msgid "Migrating ``pgr_trsp`` (Vertices) using ``pgr_trsp``"
+#~ msgstr "使用 ``pgr_trsp``迁移 ``pgr_trsp`` （顶点）"
+
+#~ msgid "The following query has restrictions."
+#~ msgstr "以下查询有限制。"
+
+#~ msgid "The restrictions are the last parameter of the function"
+#~ msgstr "限制是函数的最后一个参数"
+
+#~ msgid "Using the old structure of restrictions"
+#~ msgstr "使用旧的限制结构"
+
+#~ msgid "The new structure of restrictions is been used."
+#~ msgstr "使用了新的限制结构。"
+
+#~ msgid "It is the second parameter."
+#~ msgstr "这是第二个参数。"
+
+#~ msgid ":doc:`pgr_trsp`:"
+#~ msgstr ":doc:`pgr_trsp`:"
+
+#~ msgid "The integral types of the ``sql`` can only be ``INTEGER``."
+#~ msgstr "``sql`` 的整型类型只能是 ``INTEGER``。"
+
+#~ msgid "The floating point type of the ``sql`` can only be ``FLOAT``."
+#~ msgstr "``sql`` 的浮点类型只能是 ``FLOAT``。"
+
+#~ msgid "For these migration guide the following points will be used:"
+#~ msgstr "对于这些迁移指南，将使用以下几点："
+
+#~ msgid ":doc:`pgr_trsp_withPoints` (One to One) when there are restrictions."
+#~ msgstr ":doc:`pgr_trsp_withPoints` (一对一) 当有限制时。"
+
+#~ msgid "Migrating ``pgr_trsp`` (Edges) using ``pgr_withPoints``"
+#~ msgstr "使用 ``pgr_withPoints``迁移 ``pgr_trsp`` （边）"
+
+#~ msgid "Use :doc:`pgr_withPoints` instead."
+#~ msgstr "请使用 :doc:`pgr_withPoints`。"
+
+#~ msgid ""
+#~ "Do not show details, as the deprecated function does not show details."
+#~ msgstr "不显示详细信息，因为已弃用的函数不显示详细信息。"
+
+#~ msgid ":doc:`pgr_withPoints`:"
+#~ msgstr ":doc:`pgr_withPoints`:"
+
+#~ msgid "On the points query do not include the ``side`` column."
+#~ msgstr "在点查询中不包括 ``side`` 列。"
+
+#~ msgid ""
+#~ "When the need of using strictly the same (meaningless) names and types, "
+#~ "and node values of the function been migrated then:"
+#~ msgstr ""
+#~ "当需要使用严格相同（无意义）的名称和类型，并且函数的节点值被迁移时："
+
+#~ msgid "Migrating ``pgr_trsp`` (Edges) using ``pgr_trsp_withPoints``"
+#~ msgstr "使用 ``pgr_trsp_withPoints`` 迁移 ``pgr_trsp`` （边）"
+
+#~ msgid "Migrating pgr_trspViaVertices using pgr_dijkstraVia"
+#~ msgstr "使用 pgr_dijkstraVia 迁移 pgr_trspViaVertices"
+
+#~ msgid "Using :doc:`pgr_dijkstraVia`."
+#~ msgstr "使用 :doc:`pgr_dijkstraVia` 。"
+
+#~ msgid ""
+#~ "When the need of using the same (meaningless) names and and strict types "
+#~ "then convert the result to the deprecated function columns:"
+#~ msgstr ""
+#~ "当需要使用相同（无意义）的名称和严格类型时，则将结果转换为已废弃的函数列："
+
+#~ msgid "Migrating pgr_trspViaVertices using pgr_trspVia"
+#~ msgstr "使用 pgr_trspVia 迁移 pgr_trspViaVertices"
+
+#~ msgid "Using :doc:`pgr_trspVia`."
+#~ msgstr "使用 :doc:`pgr_trspVia`。"
+
+#~ msgid "In this section this set of points is going to be used:"
+#~ msgstr "本节将使用这组点："
+
+#~ msgid "Migrating pgr_trspViaEdges using pgr_withPointsVia"
+#~ msgstr "使用 pgr_withPointsVia 迁移 pgr_trspViaEdges"
+
+#~ msgid "Using :doc:`pgr_withPointsVia`."
+#~ msgstr "使用 :doc:`pgr_withPointsVia`。"
+
+#~ msgid "Migrating pgr_trspViaEdges using pgr_trspVia_withPoints"
+#~ msgstr "使用 pgr_trspVia_withPoints 迁移 pgr_trspViaEdges"
+
 #~ msgid "Previous versions of this page"
 #~ msgstr "此页面的先前版本"
 
@@ -20258,20 +20350,8 @@ msgstr "pgr_withPointsvia 是 pgr_dijkstraVia **with points** 的版本"
 #~ msgid "The integral types of the ``Edges SQL`` can only be ``INTEGER``."
 #~ msgstr "``Edges SQL`` 的整数类型只能是 ``INTEGER``。"
 
-#~ msgid ":doc:`pgr_dijkstraVia` when there are no restrictions,"
-#~ msgstr ":doc:`pgr_dijkstraVia` 当无限制时，"
-
-#~ msgid ":doc:`pgr_trspVia` when there are restrictions."
-#~ msgstr ":doc:`pgr_trspVia` 当有限制时。"
-
-#~ msgid "Use :doc:`pgr_dijkstraVia` instead."
-#~ msgstr "请使用 :doc:`pgr_dijkstraVia`。"
-
 #~ msgid ":doc:`pgr_dijkstraVia`:"
 #~ msgstr ":doc:`pgr_dijkstraVia`:"
-
-#~ msgid "Use :doc:`pgr_trspVia` instead."
-#~ msgstr "使用 :doc:`pgr_trspVia`。"
 
 #~ msgid ":doc:`pgr_trspVia`:"
 #~ msgstr ":doc:`pgr_trspVia`:"
@@ -20280,15 +20360,6 @@ msgstr "pgr_withPointsvia 是 pgr_dijkstraVia **with points** 的版本"
 #~ "And will travel thru the following Via points :math:"
 #~ "`4\\rightarrow3\\rightarrow6`"
 #~ msgstr "并将途经以下途经点： :math:`4\\rightarrow3\\rightarrow6`"
-
-#~ msgid ":doc:`pgr_withPointsVia` when there are no restrictions,"
-#~ msgstr ":doc:`pgr_withPointsVia` 当没有限制时，"
-
-#~ msgid ":doc:`pgr_trspVia_withPoints` when there are restrictions."
-#~ msgstr ":doc:`pgr_trspVia_withPoints` 当有限制时。"
-
-#~ msgid "Use :doc:`pgr_withPointsVia` instead."
-#~ msgstr "请使用 :doc:`pgr_withPointsVia`。"
 
 #~ msgid ":doc:`pgr_withPointsVia`:"
 #~ msgstr ":doc:`pgr_withPointsVia`:"
