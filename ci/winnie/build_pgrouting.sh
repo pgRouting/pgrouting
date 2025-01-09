@@ -20,185 +20,164 @@
 # File used in Jenkis setup
 #-------------------------
 
-JENKINS_DEBUG=1
+# Setting defaults
+if  [[ "${OS_BUILD}" == '' ]] ; then
+    OS_BUILD=64
+fi;
 
-#-----------------
-# variables setup
-#  Variables recived by jenkins setup
-#-----------------
-#export OS_BUILD=
-#export PG_VER=
-#export PGHOST=
-#export PGPORT=
-#export PGROUTING_VER=
-#export POSTIGS_VER=
-#GCC_TYPE=
-#export GIT_COMMIT=
+if  [[ "${PG_VER}" == '' ]] ; then
+    PG_VER=14
+fi;
 
+if  [[ "${PGPORT}" == '' ]] ; then
+    PGPORT=54613
+fi;
+
+if  [[ "${PGROUTING_VER}" == '' ]] ; then
+    PGROUTING_VER=cvvergara
+fi;
+
+if  [[ "${POSTGIS_VER}" == '' ]] ; then
+    POSTGIS_VER=3.3.2
+fi;
+
+if  [[ "${GCC_TYPE}" == '' ]] ; then
+    GCC_TYPE=gcc81
+fi;
+
+if  [[ "${BOOST_VER}" == '' ]] ; then
+    BOOST_VER=1.78.0
+fi;
+BOOST_VER_WU=$(echo "${BOOST_VER//./_}")
+
+echo "DEBUG ${DEBUG}"
+
+# debugging options
+if [[ "$DEBUG" == 'true' ]]
+then
+    JENKINS_DEBUG=1
+    VERBOSE=ON
+    BUILD_TYPE=Debug
+else
+    JENKINS_DEBUG=0
+    VERBOSE=OFF
+    BUILD_TYPE=Release
+fi
+
+TAPTEST=${TAPTEST%%*([[:blank:]])}
+TAPTEST=${TAPTEST##*([[:blank:]])}
+
+echo "GIT_COMMIT ${GIT_COMMIT}"
 
 if [ $JENKINS_DEBUG -eq 1 ]
 then
-    #---------------
     echo
     echo "***************************"
-    echo Recived variables
+    echo Recived variables used in this script
     echo "**************************"
-    #---------------
+
     echo "OS_BUILD ${OS_BUILD}"
     echo "PG_VER ${PG_VER}"
-    echo "PGHOST ${PGHOST}"
     echo "PGPORT ${PGPORT}"
     echo "PGROUTING_VER ${PGROUTING_VER}"
     echo "POSTGIS_VER ${POSTGIS_VER}"
     echo "GCC_TYPE ${GCC_TYPE}"
-    echo "GIT_COMMIT ${GIT_COMMIT}"
+    echo "BOOST_VER ${BOOST_VER}"
+    echo "calculated BOOST_VER_WU ${BOOST_VER_WU}"
+    echo "TAPTEST ${TAPTEST}"
+    echo "DEBUG ${DEBUG}"
 fi
-
-#---------------
-echo
-echo "***************************"
-echo Deduced variables
-echo "***************************"
-#---------------
 
 export PGUSER=postgres
 export PROJECTS=/projects
-export PGPATHEDB=${PROJECTS}/postgresql/rel/pg${PG_VER}w${OS_BUILD}${GCC_TYPE}edb  #this is so winnie know's where to copy the dlls for vc++ edb compiled postgresql testing
+
+#this is so winnie know's where to copy the dlls for vc++ edb compiled postgresql testing
+export PGPATHEDB=${PROJECTS}/postgresql/rel/pg${PG_VER}w${OS_BUILD}${GCC_TYPE}edb
+
 export PGPATH=${PROJECTS}/postgresql/rel/pg${PG_VER}w${OS_BUILD}${GCC_TYPE}
-export PATHOLD=$PATH
-#export PATHOLD="/mingw/bin:/mingw/include:/c/Windows/system32:/c/Windows"
 export PGWINVER=${PG_VER}w${OS_BUILD}${GCC_TYPE}edb
-export PATH="${PATHOLD}:/usr/bin:${PGPATH}/bin:${PGPATH}/lib:${PGPATH}/include"
+export BOOSTROOT_PATH="${PROJECTS}/boost/rel-${BOOST_VER_WU}w${OS_BUILD}${GCC_TYPE}"
+export PATH="${PATH}:/usr/bin:${PGPATH}/bin:${PGPATH}/lib:${PGPATH}/include"
 export PATH="${PROJECTS}/rel-libiconv-1.13.1w${OS_BUILD}${GCC_TYPE}/include:${PATH}"
+export PATH="${PATH}:${BOOSTROOT_PATH}/lib"
+export PATH="${PATH}:/cmake/bin"
+export PATH="${PATH}:.:/bin:/include"
+
 
 if [ $JENKINS_DEBUG -eq 1 ]
 then
+    echo "***************************"
+    echo Paths
+    echo "***************************"
+
     echo "PGUSER ${PGUSER}"
     echo "PROJECTS ${PROJECTS}"
     echo "PGPATHEDB ${PGPATHEDB}"
     echo "PGPATH ${PGPATH}"
-    echo "PATHOLD ${PATHOLD}"
     echo "PGWINVER ${PGWINVER}"
     echo "PATH ${PATH}"
+    echo "BOOSTROOT_PATH ${BOOSTROOT_PATH}"
 fi
 
-BOOST_VER=1.78.0
-BOOST_VER_WU=1_78_0
-BOOST_VER_WUM=1_78
-ZLIB_VER=1.2.13
-echo "${BOOST_VER}"
+#---------------
+echo "Cleanup ${PGPATH} & ${PGPATHEDB}"
+rm -f ${PGPATH}/lib/libpgrouting*
+rm -f ${PGPATH}/share/extension/pgrouting*
+rm -f ${PGPATHEDB}/lib/libpgrouting*
+rm -f ${PGPATHEDB}/share/extension/pgrouting*
 
 if [ $JENKINS_DEBUG -eq 1 ]
 then
-    echo "BOOST_VER_WU ${BOOST_VER_WU}"
-    echo "BOOST_VER_WUM ${BOOST_VER_WUM}"
-    echo "ZLIB_VER ${ZLIB_VER}"
+    echo "${PGPATH} & ${PGPATHEDB} pgrouting related files"
+    ls ${PGPATH}/lib/libpgrouting* 2>/dev/null
+    ls ${PGPATH}/share/extension/pgrouting* 2>/dev/null
+    ls ${PGPATHEDB}/lib/libpgrouting* 2>/dev/null
+    ls ${PGPATHEDB}/share/extension/pgrouting* 2>/dev/null
 fi
-
-#zlib
-ZLIB_PATH="${PROJECTS}/zlib/rel-${ZLIB_VER}w${OS_BUILD}${GCC_TYPE}"
-PATH="${PATH}:${ZLIB_PATH}/include:${ZLIB_PATH}/lib:${ZLIB_PATH}/bin"
-
-#boost
-BOOSTROOT_PATH="${PROJECTS}/boost/rel-${BOOST_VER_WU}w${OS_BUILD}${GCC_TYPE}"
-PATH="${PATH}:${BOOSTROOT_PATH}/lib"
-
-#cmake
-export PATH="${PATH}:/cmake/bin"
-export PATH="${PATH}:.:/bin:/include"
 
 cmake --version
 
-echo "PATH ${PATH}"
-
 cd "${PROJECTS}/pgrouting" || exit 1
+DATABASE="___pgr___test___"
+PGR_VERSION=$(grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' "branches/${PGROUTING_VER}/CMakeLists.txt")
+if [ $JENKINS_DEBUG -eq 1 ]
+then
+    echo "pgRouting VERSION ${PGR_VERSION}"
+fi
+
 rm -rf "build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}"
 mkdir "build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}"
 cd "build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}" || exit 1
 
-
-#---------------
-echo
-echo "***************************"
-echo "Current contents of PGPATH ${PGPATH}"
-echo "***************************"
-#---------------
-ls ${PGPATH}/lib/libpgrouting*
-ls ${PGPATH}/share/extension/pgrouting*
-
-#---------------
-echo
-echo "***************************"
-echo "Current contents of PGPATHEDB ${PGPATHEDB}"
-echo "***************************"
-#---------------
-ls ${PGPATHEDB}/lib/libpgrouting*
-ls ${PGPATHEDB}/share/extension/pgrouting*
-
-rm ${PGPATH}/lib/libpgrouting*
-rm ${PGPATH}/share/extension/pgrouting*
-rm ${PGPATHEDB}/lib/libpgrouting
-rm ${PGPATHEDB}/share/extension/pgrouting*
-
-#---------------
-echo
-echo "***************************"
-echo "After removing in PGPATH ${PGPATH}"
-echo "***************************"
-#---------------
-ls ${PGPATH}/lib/libpgrouting*
-ls ${PGPATH}/share/extension/pgrouting*
-
-#---------------
-echo
-echo "***************************"
-echo "After removing in PGPATHEDB ${PGPATHEDB}"
-echo "***************************"
-#---------------
-ls ${PGPATHEDB}/lib/libpgrouting*
-ls ${PGPATHEDB}/share/extension/pgrouting*
-cmake --version
-
-cmake -G "MSYS Makefiles" -DCMAKE_VERBOSE_MAKEFILE=ON \
+cmake -G "MSYS Makefiles" -DCMAKE_VERBOSE_MAKEFILE="${VERBOSE}" \
  -DBOOST_ROOT:PATH="${BOOSTROOT_PATH}" \
  -DBoost_USE_STATIC_LIBS=ON \
- -DCMAKE_BUILD_TYPE=Release \
+ -DCMAKE_BUILD_TYPE="${BUILD_TYPE}" \
  "../branches/${PGROUTING_VER}"
 
 #---------------
 echo
 echo "***************************"
-echo make
-echo "***************************"
-#---------------
-make
-
-#---------------
-echo
-echo "***************************"
-echo make install
+echo Building and installing
 echo "***************************"
 #---------------
 make install
 
-#---------------
-echo
-echo "***************************"
-echo "Current contents of PGPATH ${PGPATH}"
-echo "***************************"
-#---------------
-ls ${PGPATH}/lib/libpgrouting*
-ls ${PGPATH}/share/extension/pgrouting*
+if [ $JENKINS_DEBUG -eq 1 ]
+then
+    echo "***************************"
+    echo "Installation on PGPATH ${PGPATH}"
+    echo "***************************"
+    ls ${PGPATH}/lib/libpgrouting*
+    ls ${PGPATH}/share/extension/pgrouting*
 
-#---------------
-echo
-echo "***************************"
-echo "Current contents of PGPATHEDB ${PGPATHEDB}"
-echo Should be empty
-echo "***************************"
-#---------------
-ls ${PGPATHEDB}/lib/libpgrouting*
-ls ${PGPATHEDB}/share/extension/pgrouting*
+    echo "***************************"
+    echo "Current contents of PGPATHEDB ${PGPATHEDB}"
+    echo Should be empty
+    echo "***************************"
+    ls ${PGPATHEDB}/lib/libpgrouting*
+    ls ${PGPATHEDB}/share/extension/pgrouting*
+fi
 
 
 #we need uninstall and reinstall copy to VC++ EDB instance if we want to test on standard Windows installed versions
@@ -207,36 +186,37 @@ cp -r ${PGPATH}/lib/libpgrouting*.dll ${PGPATHEDB}/lib/
 cp -r ${PGPATH}/share/extension/pgrouting*.sql ${PGPATHEDB}/share/extension/
 cp -r ${PGPATH}/share/extension/pgrouting.control ${PGPATHEDB}/share/extension/
 
-#---------------
-echo
-echo "***************************"
-echo "After copying to PGPATHEDB ${PGPATHEDB}"
-echo "***************************"
-#---------------
-ls ${PGPATHEDB}/lib/libpgrouting*
-ls ${PGPATHEDB}/share/extension/pgrouting*
+if [ $JENKINS_DEBUG -eq 1 ]
+then
+    echo
+    echo "***************************"
+    echo "Installation on PGPATHEDB ${PGPATHEDB}"
+    echo "***************************"
+    ls ${PGPATHEDB}/lib/libpgrouting*
+    ls ${PGPATHEDB}/share/extension/pgrouting*
+fi
 
 cd "${PROJECTS}/pgrouting/branches/${PGROUTING_VER}" || exit 1
 
-#perl tools/test-runner.pl   -pgver ${PG_VER} -pgport "${PGPORT}"  -clean
-#perl tools/testers/doc_queries_generator.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"  -alg common -clean -v
-#perl tools/testers/doc_queries_generator.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"  -alg dijkstra -clean -v
-#perl tools/testers/doc_queries_generator.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"  -alg contraction
+echo "***************************"
+# Testing
+echo "***************************"
 
-#perl tools/testers/doc_queries_generator.pl  -pgver ${PG_VER} -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"
-
-if [ "${OS_BUILD}" -eq 32 ]
+if [ -n "${TAPTEST}" ]
 then
 
-    perl tools/testers/doc_queries_generator.pl  -pgver "${PG_VER}" -pgisver "${POSTGIS_VER}" -pgport "${PGPORT}"
-
-else
-
-    psql -c "CREATE DATABASE ___pgr___test___"
-    tools/testers/pg_prove_tests.sh "${PGUSER}" "${PGPORT}"
-    psql -c "DROP DATABASE ___pgr___test___"
+    psql -c "CREATE DATABASE ${DATABASE}"
+    bash tools/testers/setup_db.sh "${PGPORT}" "${DATABASE}"  "${PGUSER}" "${PGR_VERSION}"
+    pg_prove -v --normalize --directives --recurse -p "${PGPORT}" -d "${DATABASE}" "${TAPTEST}"
+    psql -c "DROP DATABASE ${DATABASE}"
 
 fi
+
+
+psql -c "CREATE DATABASE ${DATABASE}"
+tools/testers/pg_prove_tests.sh "${PGUSER}" "${PGPORT}"
+psql -c "DROP DATABASE ${DATABASE}"
+
 
 cd "${PROJECTS}/pgrouting/build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}/lib" || exit 1
 strip ./*.dll
