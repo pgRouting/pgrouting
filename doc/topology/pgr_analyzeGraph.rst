@@ -7,13 +7,13 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Topology Family ; pgr_analyzeGraph
    single: analyzeGraph
 
-pgr_analyzeGraph
+|
+
+``pgr_analyzeGraph``
 ===============================================================================
 
 ``pgr_analyzeGraph`` — Analyzes the network topology.
@@ -278,12 +278,10 @@ Additional Examples
    :start-after: -- q28
    :end-before: -- q28.1
 
-The examples use the :doc:`sampledata` network.
-
-
 See Also
 -------------------------------------------------------------------------------
 
+* :doc:`sampledata`
 * :doc:`topology-functions`
 * :doc:`pgr_analyzeOneWay`
 * :doc:`pgr_createVerticesTable`

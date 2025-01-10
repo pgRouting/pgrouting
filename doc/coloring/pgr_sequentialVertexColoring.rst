@@ -7,33 +7,31 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+.. index::
+   single: Coloring Family ; pgr_sequentialVertexColoring - Proposed
+   single: sequentialVertexColoring - Proposed on v3.3
+
 |
 
-
-pgr_sequentialVertexColoring - Proposed
+``pgr_sequentialVertexColoring`` - Proposed
 ===============================================================================
 
 ``pgr_sequentialVertexColoring`` — Returns the vertex coloring of an undirected
 graph, using greedy approach.
 
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html
-
-   Boost Graph Inside
-
 .. include:: proposed.rst
-   :start-after: stable-begin-warning
-   :end-before: stable-end-warning
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. rubric:: Availability
 
 * Version 3.3.0
 
-  * Promoted to **proposed** signature
+  * Function promoted to proposed.
 
 * Version 3.2.0
 
-  * New **experimental** signature
+  * New experimental function.
 
 
 Description
@@ -60,11 +58,10 @@ manner, such that no edge connects two identically colored vertices.
   - :math:`d` is the maximum degree of the vertices in the graph,
   - :math:`k` is the number of colors used.
 
+|Boost| Boost Graph Inside
+
 Signatures
 ------------------------------------------------------------------------------
-
-.. index::
-    single: sequentialVertexColoring - Proposed on v3.3
 
 .. admonition:: \ \
    :class: signatures
@@ -110,15 +107,10 @@ Result columns
 See Also
 -------------------------------------------------------------------------------
 
-* The queries use the :doc:`sampledata` network.
-
-.. see also start
-
-* `Boost: Sequential Vertex Coloring algorithm documentation
+* :doc:`sampledata`
+* `Boost: Sequential Vertex Coloring
   <https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html>`__
 * `Wikipedia: Graph coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__
-
-.. see also end
 
 .. rubric:: Indices and tables
 

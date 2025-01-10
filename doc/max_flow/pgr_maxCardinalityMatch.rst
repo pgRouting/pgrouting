@@ -7,22 +7,17 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Flow Family ; pgr_maxCardinalityMatch
    single: maxCardinalityMatch
 
-pgr_maxCardinalityMatch
+|
+
+``pgr_maxCardinalityMatch``
 ===============================================================================
 
 ``pgr_maxCardinalityMatch`` — Calculates a maximum cardinality matching in a
 graph.
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/maximum_matching.html
-
-   Boost Graph Inside
 
 .. Rubric:: Availability
 
@@ -33,13 +28,13 @@ graph.
   * Works for undirected graphs.
   * New signature
 
-    * ``pgr_maxCardinalityMatch(text)`` returns only ``edge`` column.
+    * pgr_maxCardinalityMatch(text)`` returns only ``edge`` column.
 
   * Deprecated signature
 
-    * ``pgr_maxCardinalityMatch(text,boolean)``
+    * pgr_maxCardinalityMatch(text,boolean)``
 
-      * ``directed => false`` when used.
+      * directed => false`` when used.
 
 * Version 3.0.0
 
@@ -74,6 +69,8 @@ The main characteristics are:
   * :math:`\alpha(E,V)` is the inverse of the `Ackermann function`_.
 
 .. _Ackermann function: https://en.wikipedia.org/wiki/Ackermann_function
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -162,7 +159,8 @@ See Also
 
 * :doc:`flow-family`
 * :doc:`migration`
-* https://www.boost.org/libs/graph/doc/maximum_matching.html
+* `Boost: maximum_matching
+  <https://www.boost.org/libs/graph/doc/maximum_matching.html>`__
 * https://en.wikipedia.org/wiki/Matching_%28graph_theory%29
 * https://en.wikipedia.org/wiki/Ackermann_function
 

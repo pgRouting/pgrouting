@@ -7,9 +7,9 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
     ****************************************************************************
 
-|
-
 .. index:: With Points Category
+
+|
 
 withPoints - Category
 ===============================================================================
@@ -17,7 +17,7 @@ withPoints - Category
 When points are added to the graph.
 
 .. include:: proposed.rst
-   :start-after: begin-warning
+   :start-after: warning-begin
    :end-before: end-warning
 
 .. proposed start

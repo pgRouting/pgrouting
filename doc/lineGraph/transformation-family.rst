@@ -10,29 +10,31 @@
 
 .. index:: Transformation Family
 
+|
+
 Transformation - Family of functions
 ===============================================================================
 
 .. include:: proposed.rst
-   :start-after: stable-begin-warning
-   :end-before: stable-end-warning
+   :start-after: warning-begin
+   :end-before: end-warning
 
-.. index proposed from here
+.. proposed-start
 
 * :doc:`pgr_lineGraph` - Transformation algorithm for generating a Line Graph.
 
-.. index proposed to here
+.. proposed-end
 
 .. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: warning-begin
+   :end-before: end-warning
 
-.. index experimental from here
+.. experimental-start
 
 * :doc:`pgr_lineGraphFull` - Transformation algorithm for generating a Line
   Graph out of each vertex in the input graph.
 
-.. index experimental to here
+.. experimental-end
 
 
 .. toctree::

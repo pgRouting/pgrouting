@@ -9,7 +9,6 @@
 
 |
 
-
 Migration guide
 ===============================================================================
 
@@ -30,16 +29,16 @@ Migration of functions
    :local:
 
 
-Migration of ``pgr_aStar``
+Migration of pgr_aStar``
 -------------------------------------------------------------------------------
 
 Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
 
 Signatures to be migrated:
 
-* ``pgr_aStar`` (`One to One`)
-* ``pgr_aStar`` (`One to Many`)
-* ``pgr_aStar`` (`Many to One`)
+* pgr_aStar(One to One)
+* pgr_aStar(One to Many)
+* pgr_aStar(Many to One)
 
 :Before Migration:
 
@@ -48,24 +47,24 @@ Signatures to be migrated:
   * Depending on the overload used, the columns ``start_vid`` and ``end_vid``
     might be missing:
 
-    * ``pgr_aStar`` (`One to One`) does not have ``start_vid`` and ``end_vid``.
-    * ``pgr_aStar`` (`One to Many`) does not have ``start_vid``.
-    * ``pgr_aStar`` (`Many to One`) does not have ``end_vid``.
+    * pgr_aStar(One to One) does not have ``start_vid`` and ``end_vid``.
+    * pgr_aStar(One to Many) does not have ``start_vid``.
+    * pgr_aStar(Many to One) does not have ``end_vid``.
 
 :Migration:
 
 * Be aware of the existence of the additional columns.
 
-* In ``pgr_aStar`` (`One to One`)
+* In pgr_aStar(One to One)
 
-  * ``start_vid`` contains the **start vid** parameter value.
-  * ``end_vid`` contains the **end vid** parameter value.
+  * start_vid`` contains the **start vid** parameter value.
+  * end_vid`` contains the **end vid** parameter value.
 
 .. literalinclude:: migration.queries
    :start-after: --astar1
    :end-before: --astar2
 
-* In ``pgr_aStar`` (`One to Many`)
+* In pgr_aStar(One to Many)
 
   * ``start_vid`` contains the **start vid** parameter value.
 
@@ -73,7 +72,7 @@ Signatures to be migrated:
    :start-after: --astar2
    :end-before: --astar3
 
-* In ``pgr_aStar`` (`Many to One`)
+* In pgr_aStar(Many to One)
 
   * ``end_vid`` contains the **end vid** parameter value.
 
@@ -106,9 +105,9 @@ Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
 
 Signatures to be migrated:
 
-* ``pgr_bdAstar`` (`One to One`)
-* ``pgr_bdAstar`` (`One to Many`)
-* ``pgr_bdAstar`` (`Many to One`)
+* pgr_bdAstar(One to One)
+* pgr_bdAstar(One to Many)
+* pgr_bdAstar(Many to One)
 
 :Before Migration:
 
@@ -117,15 +116,15 @@ Signatures to be migrated:
   * Depending on the overload used, the columns ``start_vid`` and ``end_vid``
     might be missing:
 
-    * ``pgr_bdAstar`` (`One to One`) does not have ``start_vid`` and ``end_vid``.
-    * ``pgr_bdAstar`` (`One to Many`) does not have ``start_vid``.
-    * ``pgr_bdAstar`` (`Many to One`) does not have ``end_vid``.
+    * pgr_bdAstar(One to One) does not have ``start_vid`` and ``end_vid``.
+    * pgr_bdAstar(One to Many) does not have ``start_vid``.
+    * pgr_bdAstar(Many to One) does not have ``end_vid``.
 
 :Migration:
 
 * Be aware of the existence of the additional columns.
 
-* In ``pgr_bdAstar`` (`One to One`)
+* In pgr_bdAstar(One to One)
 
   * ``start_vid`` contains the **start vid** parameter value.
   * ``end_vid`` contains the **end vid** parameter value.
@@ -134,7 +133,7 @@ Signatures to be migrated:
    :start-after: --bdastar1
    :end-before: --bdastar2
 
-* In ``pgr_bdAstar`` (`One to Many`)
+* In pgr_bdAstar(One to Many)
 
   * ``start_vid`` contains the **start vid** parameter value.
 
@@ -142,7 +141,7 @@ Signatures to be migrated:
    :start-after: --bdastar2
    :end-before: --bdastar3
 
-* In ``pgr_bdAstar`` (`Many to One`)
+* In pgr_bdAstar(Many to One)
 
   * ``end_vid`` contains the **end vid** parameter value.
 
@@ -174,9 +173,9 @@ Starting from `v3.5.0 <https://docs.pgrouting.org/3.5/en/migration.html>`__
 
 Signatures to be migrated:
 
-* ``pgr_dijkstra`` (`One to One`)
-* ``pgr_dijkstra`` (`One to Many`)
-* ``pgr_dijkstra`` (`Many to One`)
+* pgr_dijkstra(One to One)
+* pgr_dijkstra(One to Many)
+* pgr_dijkstra(Many to One)
 
 :Before Migration:
 
@@ -185,16 +184,16 @@ Signatures to be migrated:
   * Depending on the overload used, the columns ``start_vid`` and ``end_vid``
     might be missing:
 
-    * ``pgr_dijkstra`` (`One to One`) does not have ``start_vid`` and
+    * pgr_dijkstra(One to One) does not have ``start_vid`` and
       ``end_vid``.
-    * ``pgr_dijkstra`` (`One to Many`) does not have ``start_vid``.
-    * ``pgr_dijkstra`` (`Many to One`) does not have ``end_vid``.
+    * pgr_dijkstra(One to Many) does not have ``start_vid``.
+    * pgr_dijkstra(Many to One) does not have ``end_vid``.
 
 :Migration:
 
 * Be aware of the existence of the additional columns.
 
-* In ``pgr_dijkstra`` (`One to One`)
+* In pgr_dijkstra(One to One)
 
   * ``start_vid`` contains the **start vid** parameter value.
   * ``end_vid`` contains the **end vid** parameter value.
@@ -203,7 +202,7 @@ Signatures to be migrated:
    :start-after: --dijkstra1
    :end-before: --dijkstra2
 
-* In ``pgr_dijkstra`` (`One to Many`)
+* In pgr_dijkstra(One to Many)
 
   * ``start_vid`` contains the **start vid** parameter value.
 
@@ -211,7 +210,7 @@ Signatures to be migrated:
    :start-after: --dijkstra2
    :end-before: --dijkstra3
 
-* In ``pgr_dijkstra`` (`Many to One`)
+* In pgr_dijkstra(Many to One)
 
   * ``end_vid`` contains the **end vid** parameter value.
 
@@ -244,18 +243,18 @@ Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
 
 Signatures to be migrated:
 
-* ``pgr_drivingdistance`` (Single vertex)
-* ``pgr_drivingdistance`` (Multiple vertices)
+* pgr_drivingdistance(Single vertex)
+* pgr_drivingdistance(Multiple vertices)
 
 :Before Migration:
 
 Output columns were |result-dij-dd|
 
-* ``pgr_drivingdistance`` (Single vertex)
+* pgr_drivingdistance(Single vertex)
 
   * Does not have ``start_vid`` and ``depth`` result columns.
 
-* ``pgr_drivingdistance`` (Multiple vertices)
+* pgr_drivingdistance(Multiple vertices)
 
   * Has ``from_v`` instead of ``start_vid`` result column.
   * does not have ``depth`` result column.
@@ -349,7 +348,7 @@ Output columns were |result-bfs|
 Kruskal single vertex
 ...............................................................................
 
-Using ``pgr_KruskalDD`` as example.
+Using pgr_KruskalDD`` as example.
 Migration is similar to al the affected functions.
 
 Comparing with `this
@@ -402,7 +401,7 @@ Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
 
 Signatures to be migrated:
 
-* ``pgr_KSP`` (One to One)
+* pgr_KSP(One to One)
 
 :Before Migration:
 
@@ -410,7 +409,7 @@ Signatures to be migrated:
 
   * the columns ``start_vid`` and ``end_vid`` do not exist.
 
-    * ``pgr_KSP`` (One to One) does not have ``start_vid`` and ``end_vid``.
+    * pgr_KSP(One to One) does not have ``start_vid`` and ``end_vid``.
 
 :Migration:
 
@@ -459,7 +458,7 @@ Migration is needed, because:
 * Works for undirected graphs.
 * New signature
 
-  * ``pgr_maxCardinalityMatch(text)`` returns only ``edge`` column.
+  * pgr_maxCardinalityMatch(text)`` returns only ``edge`` column.
   * The optional flag ``directed`` is removed.
 
 :Before migration:
@@ -489,7 +488,7 @@ Migration is needed, because:
    :start-after: --maxcard2
    :end-before: --maxcard3
 
-Migration of ``pgr_primDD`` / ``pgr_primBFS`` / ``pgr_primDFS``
+Migration of pgr_primDD`` / ``pgr_primBFS`` / ``pgr_primDFS``
 -------------------------------------------------------------------------------
 
 Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__
@@ -553,7 +552,7 @@ columns
 Prim multiple vertices
 ...............................................................................
 
-Using ``pgr_primDD`` as example.
+Using pgr_primDD`` as example.
 Migration is similar to al the affected functions.
 
 Comparing with `this
@@ -598,7 +597,7 @@ Signatures to be migrated:
   * Does not have ``start_vid``, ``pred`` and ``depth`` result columns.
   * ``driving_side`` parameter was named optional now it is compulsory unnamed.
 
-* ``pgr_withPointsDD`` (`Multiple vertices`)
+* ``pgr_withPointsDD`` (Multiple vertices)
 
   * Output columns were |result-m-1-no-seq|
   * Does not have ``depth`` and ``pred`` result columns.
@@ -728,7 +727,7 @@ And ``driving side`` parameter changed from named optional to unnamed compulsory
 
 Signatures to be migrated:
 
-* ``pgr_withPointsKSP`` (`One to One`)
+* pgr_withPointsKSP(One to One)
 
 :Before Migration:
 
@@ -749,7 +748,7 @@ Signatures to be migrated:
   * In undirected graph: valid values are [``b``, ``B``]
   * Using an invalid value throws an ``ERROR``.
 
-``pgr_withPointsKSP`` (`One to One`)
+``pgr_withPointsKSP`` (One to One)
 ...............................................................................
 
 Using
@@ -1024,7 +1023,7 @@ function been migrated then:
 * ``id1`` is the node
 * ``id2`` is the edge
 
-Migration of ``pgr_trsp`` (Edges)
+Migration of pgr_trsp(Edges)
 -------------------------------------------------------------------------------
 
 Signature to be migrated:

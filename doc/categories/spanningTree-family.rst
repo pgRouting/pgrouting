@@ -7,19 +7,19 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index:: Spanning Tree Category
+
+|
 
 Spanning Tree - Category
 ===============================================================================
 
-.. index from here
+.. official-start
 
 * :doc:`kruskal-family`
 * :doc:`prim-family`
 
-.. index to here
+.. official-end
 
 A spanning tree of an undirected graph is a tree that includes all the vertices
 of G with the minimum possible number of edges.

@@ -7,13 +7,13 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Topology Family ; pgr_createTopology
    single: createTopology
 
-pgr_createTopology
+|
+
+``pgr_createTopology``
 ===============================================================================
 
 ``pgr_createTopology`` — Builds a network topology based on the geometry
@@ -34,6 +34,8 @@ The function returns:
 - ``OK`` after the network topology has been built and the vertices table
   created.
 - ``FAIL`` when the network topology was not built due to an error.
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -271,11 +273,10 @@ the rest of the edges.
    :start-after: --q17
    :end-before: --q17.1
 
-The example uses the :doc:`sampledata` network.
-
 See Also
 -------------------------------------------------------------------------------
 
+* :doc:`sampledata`
 * :doc:`topology-functions`
 * :doc:`pgr_createVerticesTable`
 * :doc:`pgr_analyzeGraph`

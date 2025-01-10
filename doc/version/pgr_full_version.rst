@@ -7,11 +7,11 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Reference ; pgr_full_version
    single: full_version
+
+|
 
 ``pgr_full_version``
 ===============================================================================
@@ -29,6 +29,8 @@ Description
 -------------------------------------------------------------------------------
 
 Get complete details of pgRouting version information
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------

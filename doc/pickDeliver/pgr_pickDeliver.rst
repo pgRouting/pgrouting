@@ -7,11 +7,11 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Vehicle Routing Functions Category ; pgr_pickDeliver
    single: pickDeliver - Experimental on v3.0
+
+|
 
 ``pgr_pickDeliver`` - Experimental
 ===============================================================================
@@ -19,14 +19,14 @@
 ``pgr_pickDeliver`` - Pickup and delivery Vehicle Routing Problem
 
 .. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. rubric:: Availability
 
 * Version 3.0.0
 
-  * New **experimental** function
+  * New experimental function.
 
 
 Synopsis

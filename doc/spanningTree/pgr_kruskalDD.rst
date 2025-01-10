@@ -7,8 +7,6 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 
 .. index::
    single: Kruskal Family ; pgr_kruskalDD
@@ -16,15 +14,12 @@
    single: Driving Distance Category ; pgr_kruskalDD
    single: kruskalDD
 
+|
+
 ``pgr_kruskalDD``
 ===============================================================================
 
 ``pgr_kruskalDD`` — Catchament nodes using Kruskal's algorithm.
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html
-
-   Boost Graph Inside
 
 .. rubric:: Availability
 
@@ -57,6 +52,8 @@ calculated minimum spanning tree.
 
 - Returned tree nodes from a root vertex are on Depth First Search order.
 - Depth First Search running time: :math:`O(E + V)`
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------

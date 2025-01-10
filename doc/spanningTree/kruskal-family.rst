@@ -7,28 +7,23 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Spanning Tree Category ; Kruskal Family
    single: Kruskal Family
 
+|
+
 Kruskal - Family of functions
 ===============================================================================
 
-.. index from here
+.. official-start
 
 * :doc:`pgr_kruskal`
 * :doc:`pgr_kruskalBFS`
 * :doc:`pgr_kruskalDD`
 * :doc:`pgr_kruskalDFS`
 
-.. index to here
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html
-
-   Boost Graph Inside
+.. official-end
 
 .. toctree::
     :hidden:
@@ -70,6 +65,7 @@ See Also
 
 * :doc:`spanningTree-family`
 * `Boost: Kruskal's algorithm <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__
+* `Boost: Prim's algorithm <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
 * `Wikipedia: Kruskal's algorithm <https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__
 
 .. rubric:: Indices and tables

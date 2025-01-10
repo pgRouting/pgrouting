@@ -7,11 +7,11 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Transformation Family ; pgr_lineGraphFull
    single: lineGraphFull - Experimental on v2.6
+
+|
 
 ``pgr_lineGraphFull`` - Experimental
 ===============================================================================
@@ -20,8 +20,8 @@
 the vertices from the original graph are converted to line graphs.
 
 .. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. rubric:: Availability
 
@@ -56,6 +56,8 @@ The main characteristics are:
 - Results are undefined when a negative vertex id is used in the input graph.
 - Results are undefined when a duplicated edge id is used in the input graph.
 - Running time: TBD
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -141,7 +143,7 @@ Additional Examples
 .. contents::
    :local:
 
-The examples of this section are based on the :doc:`sampledata` network.
+The examples of this section are based on the :doc:`sampledata`
 The examples include the subgraph including edges 4, 7, 8, and 10 with
 ``reverse_cost``.
 

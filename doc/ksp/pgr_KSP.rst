@@ -7,38 +7,32 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
     single: K Shortest Paths Category ; pgr_KSP
     single: KSP
 
-pgr_KSP
+|
+
+``pgr_KSP``
 ===============================================================================
 
 ``pgr_KSP`` — Yen's algorithm for K shortest paths using Dijkstra.
-
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/table_of_contents.html
-
-   Boost Graph Inside
 
 .. rubric:: Availability
 
 .. rubric:: Version 3.6.0
 
 * Result columns standarized to: |nksp-result|
-* ``pgr_ksp`` (One to One)
+* pgr_ksp(One to One)
 
   * Added ``start_vid`` and ``end_vid`` result columns.
 
-* New overload functions:
+* New proposed signatures:
 
-  * ``pgr_ksp`` (One to Many)
-  * ``pgr_ksp`` (Many to One)
-  * ``pgr_ksp`` (Many to Many)
-  * ``pgr_ksp`` (Combinations)
+  * pgr_ksp(One to Many)
+  * pgr_ksp(Many to One)
+  * pgr_ksp(Many to Many)
+  * pgr_ksp(Combinations)
 
 .. rubric:: Version 2.1.0
 
@@ -56,6 +50,8 @@ Description
 
 The K shortest path routing algorithm based on Yen's algorithm. "K" is the
 number of shortest paths desired.
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -97,7 +93,7 @@ One to One
     :end-before: --q2
 
 .. index::
-    single: KSP ; One to Many
+    single: KSP ; One to Many - Proposed on 3.6
 
 One to Many
 ...............................................................................
@@ -118,7 +114,7 @@ One to Many
     :end-before: --q3
 
 .. index::
-    single: KSP ; Many to One
+    single: KSP ; Many to One - Proposed in 3.6
 
 Many to One
 ...............................................................................
@@ -139,7 +135,7 @@ Many to One
     :end-before: --q4
 
 .. index::
-    single: KSP ; Many to Many
+    single: KSP ; Many to Many - Proposed in 3.6
 
 Many to Many
 ...............................................................................
@@ -160,7 +156,7 @@ Many to Many
     :end-before: --q5
 
 .. index::
-   single: KSP ; Combinations
+   single: KSP ; Combinations - Proposed in 3.6
 
 Combinations
 ...............................................................................

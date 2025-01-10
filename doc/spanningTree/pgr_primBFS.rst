@@ -7,24 +7,19 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Prim Family ; pgr_primBFS
    single: Spanning Tree Category ; pgr_primBFS
    single: Breadth First Search Category ; pgr_primBFS
    single: primBFS
 
+|
+
 ``pgr_primBFS``
 ===============================================================================
 
 ``pgr_primBFS`` — Prim's algorithm for Minimum Spanning Tree with Depth First
 Search ordering.
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html
-
-   Boost Graph Inside
 
 .. rubric:: Availability
 
@@ -52,6 +47,8 @@ of the Minimum Spanning Tree created using Prims's algorithm.
 
 - Returned tree nodes from a root vertex are on Breath First Search order
 - Breath First Search Running time: :math:`O(E + V)`
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -140,7 +137,7 @@ See Also
 * :doc:`spanningTree-family`
 * :doc:`prim-family`
 * :doc:`sampledata`
-* `Boost: Prim's algorithm documentation
+* `Boost: Prim's algorithm
   <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
 * `Wikipedia: Prim's algorithm
   <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__

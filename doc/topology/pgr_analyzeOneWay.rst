@@ -7,13 +7,13 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Topology Family ; pgr_analyzeOneWay
    single: analyzeOneWay
 
-pgr_analyzeOneWay
+|
+
+``pgr_analyzeOneWay``
 ===============================================================================
 
 ``pgr_analyzeOneWay`` — Analyzes oneway Sstreets and identifies flipped segments.
@@ -59,6 +59,8 @@ table <edge_table>_vertices_pgr that stores the vertices information.
 
 - Use :doc:`pgr_createVerticesTable` to create the vertices table.
 - Use :doc:`pgr_createTopology` to create the topology and the vertices table.
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------

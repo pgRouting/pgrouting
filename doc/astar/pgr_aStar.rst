@@ -7,21 +7,16 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: aStar Family ; pgr_aStar
    single: aStar
+
+|
 
 ``pgr_aStar``
 ===============================================================================
 
 ``pgr_aStar`` — Shortest path using the A* algorithm.
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/astar_search.html
-
-   Boost Graph Inside
 
 .. rubric:: Availability
 
@@ -29,37 +24,37 @@
 
   * Standarizing output columns to |short-generic-result|
 
-    * ``pgr_aStar`` (`One to One`_) added ``start_vid`` and ``end_vid`` columns.
-    * ``pgr_aStar`` (`One to Many`_) added ``end_vid`` column.
-    * ``pgr_aStar`` (`Many to One`_) added ``start_vid`` column.
+    * pgr_aStar(One to One) added ``start_vid`` and ``end_vid`` columns.
+    * pgr_aStar(One to Many) added ``end_vid`` column.
+    * pgr_aStar(Many to One) added ``start_vid`` column.
 
 * Version 3.2.0
 
-  * New **proposed** signature:
+  * New proposed signature:
 
-    * ``pgr_aStar`` (`Combinations`_)
+    * pgr_aStar(Combinations)
 
 * Version 3.0.0
 
-  * **Official** function
+  * Function promoted to **official**.
 
 * Version 2.4.0
 
-  * New **Proposed** signatures:
+  * New proposed signatures:
 
-    * ``pgr_aStar`` (`One to Many`_)
-    * ``pgr_aStar`` (`Many to One`_)
-    * ``pgr_aStar`` (`Many to Many`_)
+    * pgr_aStar(One to Many)
+    * pgr_aStar(Many to One)
+    * pgr_aStar(Many to Many)
 
 * Version 2.3.0
 
-  * Signature change on ``pgr_astar`` (`One to One`_)
+  * Signature change on pgr_astar(One to One)
 
     * Old signature no longer supported
 
 * Version 2.0.0
 
-  * **Official** ``pgr_aStar`` (`One to One`_)
+  * **Official** pgr_aStar(One to One)
 
 Description
 -------------------------------------------------------------------------------
@@ -73,10 +68,12 @@ Description
 * The results are equivalent to the union of the results of the `pgr_aStar(`
   `One to One`_ `)` on the:
 
-  * ``pgr_aStar`` (`One to Many`_)
-  * ``pgr_aStar`` (`Many to One`_)
-  * ``pgr_aStar`` (`Many to Many`_)
-  * ``pgr_aStar`` (`Combinations`_)
+  * pgr_aStar(One to Many)
+  * pgr_aStar(Many to One)
+  * pgr_aStar(Many to Many)
+  * pgr_aStar(Combinations)
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------

@@ -7,24 +7,19 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Kruskal Family ; pgr_kruskalBFS
    single: Spanning Tree Category ; pgr_kruskalBFS
    single: Breadth First Search Category ; pgr_kruskalBFS
    single: kruskalBFS
 
+|
+
 ``pgr_kruskalBFS``
 ===============================================================================
 
 ``pgr_kruskalBFS`` — Kruskal's algorithm for Minimum Spanning Tree with breadth
 First Search ordering.
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html
-
-   Boost Graph Inside
 
 .. rubric:: Availability
 
