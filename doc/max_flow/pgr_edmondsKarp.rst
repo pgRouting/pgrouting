@@ -7,11 +7,11 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
-   single: Flow Family ; edmondsKarp
+   single: Flow Family ; pgr_edmondsKarp
    single: edmondsKarp
+
+|
 
 ``pgr_edmondsKarp``
 ===============================================================================
@@ -19,18 +19,13 @@
 ``pgr_edmondsKarp`` — Calculates the flow on the graph edges that maximizes the
 flow from the sources to the targets using Edmonds Karp Algorithm.
 
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
-
-   Boost Graph Inside
-
 .. Rubric:: Availability
 
 * Version 3.2.0
 
-  * New **proposed** signature
+  * New proposed signature
 
-    * ``pgr_edmondsKarp`` (`Combinations`_)
+    * pgr_edmondsKarp(Combinations)
 
 * Version 3.0.0
 
@@ -54,6 +49,8 @@ Description
     :end-before: characteristics_end
 
 * Running time: :math:`O( V * E ^ 2)`
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -229,7 +226,8 @@ See Also
   * :doc:`pgr_boykovKolmogorov`
   * :doc:`pgr_pushRelabel`
 
-* https://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html
+* `Boost: edmonds_karp_max_flow
+  <https://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html>`__
 * https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm
 
 .. rubric:: Indices and tables

@@ -7,38 +7,33 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+.. index::
+   single: Shortest Path Category; pgr_edwardMoore - Experimental
+   single: edwardMoore - Experimental
+
 |
 
-.. index::
-   single: Shortest Path Category; pgr_edwardMoore
-   single: edwardMoore
-
-``pgr_edwardMoore - Experimental``
+``pgr_edwardMoore`` - Experimental
 ===============================================================================
 
 ``pgr_edwardMoore`` — Returns the shortest path using Edward-Moore algorithm.
 
 
 .. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. rubric:: Availability
 
 * Version 3.2.0
 
-  * New **experimental** signature:
+  * New experimental signature:
 
-    * ``pgr_edwardMoore`` (`Combinations`_)
+    * pgr_edwardMoore(Combinations)
 
 * Version 3.0.0
 
-  * New **experimental** signatures:
-
-    * ``pgr_edwardMoore`` (`One to One`_)
-    * ``pgr_edwardMoore`` (`One to Many`_)
-    * ``pgr_edwardMoore`` (`Many to One`_)
-    * ``pgr_edwardMoore`` (`Many to Many`_)
+  * New experimental function.
 
 Description
 -------------------------------------------------------------------------------
@@ -84,6 +79,8 @@ and is at-worst,as good as Bellman-Ford algorithm
   * Worst case: :math:`O(| V | * | E |)`
   * Average case: :math:`O( | E | )`
 
+|Boost| Boost Graph Inside
+
 Signatures
 -------------------------------------------------------------------------------
 
@@ -102,7 +99,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: edwardMoore ; One to One - Experimental on v3.0
+    single: edwardMoore - Experimental ; One to One - Experimental on v3.0
 
 One to One
 ...............................................................................
@@ -122,7 +119,7 @@ One to One
    :end-before: -- q3
 
 .. index::
-    single: edwardMoore ; One to Many - Experimental on v3.0
+    single: edwardMoore - Experimental ; One to Many - Experimental on v3.0
 
 One to Many
 ...............................................................................
@@ -143,7 +140,7 @@ One to Many
    :end-before: -- q4
 
 .. index::
-    single: edwardMoore ; Many to One - Experimental on v3.0
+    single: edwardMoore - Experimental ; Many to One - Experimental on v3.0
 
 Many to One
 ...............................................................................
@@ -164,7 +161,7 @@ Many to One
    :end-before: -- q5
 
 .. index::
-    single: edwardMoore ; Many to Many - Experimental on v3.0
+    single: edwardMoore - Experimental ; Many to Many - Experimental on v3.0
 
 Many to Many
 ...............................................................................
@@ -185,7 +182,7 @@ Many to Many
    :end-before: -- q51
 
 .. index::
-    single: edwardMoore ; Combinations - Experimental on v3.2
+    single: edwardMoore - Experimental ; Combinations - Experimental on v3.2
 
 Combinations
 ...............................................................................

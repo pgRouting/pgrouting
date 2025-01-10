@@ -7,9 +7,9 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index:: single: aStar Family
+
+|
 
 A* - Family of functions
 ===============================================================================
@@ -18,13 +18,13 @@ The A* (pronounced "A Star") algorithm is based on Dijkstra's algorithm with a
 heuristic that allow it to solve most shortest path problems by evaluation only
 a sub-set of the overall graph.
 
-.. index from here
+.. official-start
 
 - :doc:`pgr_aStar` - A* algorithm for the shortest path.
 - :doc:`pgr_aStarCost` - Get the aggregate cost of the shortest paths.
 - :doc:`pgr_aStarCostMatrix` - Get the cost matrix of the shortest paths.
 
-.. index to here
+.. official-end
 
 .. toctree::
     :hidden:
@@ -180,7 +180,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`bdAstar-family`
-* https://www.boost.org/libs/graph/doc/astar_search.html
+* `Boost: A* search <https://www.boost.org/libs/graph/doc/astar_search.html>`__
 * https://en.wikipedia.org/wiki/A*_search_algorithm
 
 .. rubric:: Indices and tables

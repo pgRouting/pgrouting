@@ -7,31 +7,26 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Miscellaneous Algorithms ; pgr_transitiveClosure
    single: transitiveClosure - Experimental on v3.0
+
+|
 
 ``pgr_transitiveClosure`` - Experimental
 ===============================================================================
 
 ``pgr_transitiveClosure`` — Transitive closure graph of a directed graph.
 
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/transitive_closure.html
-
-   Boost Graph Inside
-
 .. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. rubric:: Availability
 
 * Version 3.0.0
 
-  * New **experimental** function
+  * New experimental function.
 
 
 Description
@@ -52,6 +47,7 @@ The main characteristics are:
 * The returned graph is compresed
 * Running time: :math:`O(|V||E|)`
 
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -119,6 +115,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`sampledata`
+* `Boost: transitive closure <https://www.boost.org/libs/graph/doc/transitive_closure.html>`__
 * https://en.wikipedia.org/wiki/Transitive_closure
 
 .. rubric:: Indices and tables

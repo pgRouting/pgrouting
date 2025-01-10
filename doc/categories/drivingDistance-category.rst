@@ -7,14 +7,14 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index:: Driving Distance Category
+
+|
 
 Driving Distance - Category
 ===============================================================================
 
-.. index from here
+.. official-start
 
 * :doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's algorithm
 * :doc:`pgr_primDD` - Driving Distance based on Prim's algorithm
@@ -23,19 +23,19 @@ Driving Distance - Category
 
   * :doc:`pgr_alphaShape` - Alpha shape computation
 
-.. index to here
+.. official-end
 
 .. rubric:: Proposed
 
 .. include:: proposed.rst
-   :start-after: stable-begin-warning
-   :end-before: stable-end-warning
+   :start-after: warning-begin
+   :end-before: end-warning
 
-.. index proposed from here
+.. proposed-start
 
 * :doc:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints
 
-.. index proposed to here
+.. proposed-end
 
 .. toctree::
     :hidden:

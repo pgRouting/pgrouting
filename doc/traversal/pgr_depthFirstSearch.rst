@@ -7,12 +7,12 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
-   single: Traversal Family ; pgr_depthFirstSearch
-   single: Depth First Search Category ; pgr_depthFirstSearch
-   single: depthFirstSearch
+   single: Traversal Family ; pgr_depthFirstSearch - Proposed
+   single: Depth First Search Category ; pgr_depthFirstSearch - Proposed
+   single: depthFirstSearch - Proposed
+
+|
 
 ``pgr_depthFirstSearch`` - Proposed
 ===============================================================================
@@ -20,27 +20,19 @@
 ``pgr_depthFirstSearch`` — Returns a depth first search traversal of the graph.
 The graph can be directed or undirected.
 
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/depth_first_search.html
-
-   Boost Graph Inside
-
 .. include:: proposed.rst
-   :start-after: stable-begin-warning
-   :end-before: stable-end-warning
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. rubric:: Availability
 
 * Version 3.3.0
 
-  * Promoted to **proposed** function
+  * Function promoted to proposed.
 
 * Version 3.2.0
 
-  * New **experimental** signatures:
-
-    * ``pgr_depthFirstSearch`` (`Single Vertex`_)
-    * ``pgr_depthFirstSearch`` (`Multiple Vertices`_)
+  * New experimental function.
 
 Description
 -------------------------------------------------------------------------------
@@ -64,6 +56,8 @@ continues until all the vertices reachable from the root vertex are visited.
 - The returned values are ordered in ascending order of `start_vid`.
 - Depth First Search Running time: :math:`O(E + V)`
 
+|Boost| Boost Graph Inside
+
 Signatures
 -------------------------------------------------------------------------------
 
@@ -79,7 +73,7 @@ Signatures
    | Returns set of |result-bfs|
 
 .. index::
-    single: depthFirstSearch ; Single vertex - Proposed on v3.3
+    single: depthFirstSearch - Proposed ; Single vertex - Proposed on v3.3
 
 Single vertex
 ...............................................................................
@@ -100,7 +94,7 @@ Single vertex
    :end-before: -- q2
 
 .. index::
-    single: depthFirstSearch ; Multiple vertices - Proposed on v3.3
+    single: depthFirstSearch - Proposed ; Multiple vertices - Proposed on v3.3
 
 Multiple vertices
 ...............................................................................
@@ -187,9 +181,9 @@ See Also
 
 * :doc:`DFS-category`
 * :doc:`sampledata`
-* `Boost: Depth First Search algorithm documentation
+* `Boost: Depth First Search
   <https://www.boost.org/libs/graph/doc/depth_first_search.html>`__
-* `Boost: Undirected DFS algorithm documentation
+* `Boost: Undirected DFS
   <https://www.boost.org/libs/graph/doc/undirected_dfs.html>`__
 * `Wikipedia: Depth First Search algorithm
   <https://en.wikipedia.org/wiki/Depth-first_search>`__

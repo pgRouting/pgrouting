@@ -7,32 +7,28 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 
 .. index::
    single: aStar Family ; pgr_aStarCostMatrix
+   single: Cost Matrix Category ; pgr_aStarCostMatrix
    single: aStarCostMatrix
+
+|
 
 ``pgr_aStarCostMatrix``
 ===============================================================================
 
 ``pgr_aStarCostMatrix`` - Calculates the a cost matrix using :doc:`pgr_aStar`.
 
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org//libs/graph/doc/astar_search.html
-
-   Boost Graph Inside
-
 .. rubric:: Availability
 
 * Version 3.0.0
 
-  * **Official** function
+  * Function promoted to **official**.
 
 * Version 2.4.0
 
-  * New **proposed** function
+  * New proposed function.
 
 Description
 -------------------------------------------------------------------------------
@@ -55,6 +51,8 @@ Description
     * cost from `v` to `u` is :math:`0`
 
 * When the graph is **undirected** the cost matrix is symmetric
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -131,6 +129,7 @@ See Also
 * :doc:`costMatrix-category`
 * :doc:`TSP-family`
 * :doc:`sampledata`
+* `Boost: A* search <https://www.boost.org/libs/graph/doc/astar_search.html>`__
 
 .. rubric:: Indices and tables
 

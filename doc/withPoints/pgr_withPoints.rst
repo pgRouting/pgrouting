@@ -7,13 +7,13 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: withPoints Family ; pgr_withPoints
    single: With Points Category ; pgr_withPoints
    single: Shortest Path Category ; pgr_withPoints
    single: withPoints
+
+|
 
 ``pgr_withPoints`` - Proposed
 ===============================================================================
@@ -22,25 +22,20 @@
 temporary vertices.
 
 .. include:: proposed.rst
-   :start-after: begin-warning
+   :start-after: warning-begin
    :end-before: end-warning
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/table_of_contents.html
-
-   Boost Graph Inside
 
 .. rubric:: Availability
 
 * Version 3.2.0
 
-  * New **proposed** function:
+  * New proposed function.
 
     * pgr_withPoints(Combinations)
 
 * Version 2.2.0
 
-  * New **proposed** function
+  * New proposed function.
 
 Description
 -------------------------------------------------------------------------------
@@ -72,6 +67,8 @@ Using Dijkstra algorithm, find the shortest path
   - end_vid ascending
 
 * Running time: :math:`O(|start\_vids|\times(V \log V + E))`
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------

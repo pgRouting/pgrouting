@@ -7,8 +7,12 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
+.. index::
+   single: Cost Category ; pgr_chinesePostmanCost - Experimental
+   single: Miscellaneous Algorithms ; pgr_chinesePostmanCost - Experimental
+   single: chinesePostmanCost - Experimental on v3.0
 
+|
 
 ``pgr_chinesePostmanCost`` - Experimental
 ===============================================================================
@@ -18,14 +22,14 @@ which contains every edge in a directed graph and starts and ends on the same
 vertex.
 
 .. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. rubric:: Availability
 
 * Version 3.0.0
 
-  * New **experimental** signature
+  * New experimental function.
 
 Description
 -------------------------------------------------------------------------------
@@ -36,11 +40,10 @@ Description
 
 - Return value when the graph if disconnected
 
+|Boost| Boost Graph Inside
+
 Signatures
 -------------------------------------------------------------------------------
-
-.. index::
-    single: chinesePostmanCost - Experimental on v3.0
 
 .. admonition:: \ \
    :class: signatures

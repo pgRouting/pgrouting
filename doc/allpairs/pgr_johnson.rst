@@ -7,22 +7,17 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: All Pairs Family ; pgr_johnson
    single: johnson
+
+|
 
 ``pgr_johnson``
 ===============================================================================
 
 ``pgr_johnson`` - Returns the sum of the costs of the shortest path for each
 pair of nodes in the graph using Floyd-Warshall algorithm.
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html
-
-   Boost Graph Inside
 
 .. rubric:: Availability
 
@@ -45,6 +40,8 @@ It usees the Boost's implementation which runs in :math:`O(V E \log V)` time,
 .. include:: allpairs-family.rst
    :start-after: characteristics_start
    :end-before: characteristics_end
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -100,9 +97,9 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`pgr_floydWarshall`
+* :doc:`sampledata`
 * Boost `Johnson
   <https://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html>`_
-* Queries uses the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 

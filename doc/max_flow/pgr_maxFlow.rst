@@ -7,11 +7,11 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Flow Family ; pgr_maxFlow
    single: maxFlow
+
+|
 
 ``pgr_maxFlow``
 ===============================================================================
@@ -19,26 +19,21 @@
 ``pgr_maxFlow`` — Calculates the maximum flow in a directed graph from the
 source(s) to the targets(s) using the Push Relabel algorithm.
 
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
-
-   Boost Graph Inside
-
 .. Rubric:: Availability
 
 * Version 3.2.0
 
-  * New **proposed** signature
+  * New proposed signature
 
-    * ``pgr_maxFlow`` (`Combinations`_)
+    * pgr_maxFlow(Combinations)
 
 * Version 3.0.0
 
-  * **Official** function
+  *  Function promoted to **official**.
 
 * Version 2.4.0
 
-  * New **Proposed** function
+  * New **Proposed** function.
 
 
 Description
@@ -56,6 +51,8 @@ Description
 - Uses the :doc:`pgr_pushRelabel <pgr_pushRelabel>` algorithm.
 
 * Running time: :math:`O( V ^ 3)`
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -226,7 +223,8 @@ See Also
 
   * :doc:`pgr_pushRelabel`
 
-* https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
+* `Boost: push relabel max flow
+  <https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html>`__
 * https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm
 
 .. rubric:: Indices and tables

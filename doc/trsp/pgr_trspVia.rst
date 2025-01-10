@@ -7,35 +7,30 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Turn Restriction Shortest Path Family ; pgr_trspVia
    single: Via Category ; pgr_trspVia
    single: Restrictions Category ; pgr_trspVia
    single: trspVia
 
+|
+
 ``pgr_trspVia`` - Proposed
 ===============================================================================
 
 ``pgr_trspVia`` Route that goes through a list of vertices with restrictions.
 
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/table_of_contents.html
-
-   Boost Graph Inside
-
 .. include:: proposed.rst
-   :start-after: stable-begin-warning
-   :end-before: stable-end-warning
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. rubric:: Availability
 
 * Version 3.4.0
 
-  * New proposed function:
+  * New proposed function.
 
-    * ``pgr_trspVia`` (`One Via`_)
+    * pgr_trspVia(One Via)
 
 Description
 -------------------------------------------------------------------------------
@@ -54,6 +49,7 @@ The general algorithm is as follows:
   * Execute the **TRSP** algorithm with restrictions for the paths.
   * **NOTE** when this is done, ``U_turn_on_edge`` flag is ignored.
 
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -236,7 +232,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`via-category`
-* :doc:`sampledata` network.
+* :doc:`sampledata`
 
 .. rubric:: Indices and tables
 

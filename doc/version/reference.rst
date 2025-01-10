@@ -7,20 +7,20 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Reference
+
+|
 
 Reference
 ===============================================================================
 
-.. index from here
+.. official-start
 
 * :doc:`pgr_version`
 * :doc:`pgr_full_version`
 
-.. index to here
+.. official-end
 
 .. toctree::
     :hidden:

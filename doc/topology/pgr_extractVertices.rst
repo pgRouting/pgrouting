@@ -7,21 +7,21 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Topology Family ; pgr_extractVertices
    single: extractVertices - Proposed on v3.3
 
-pgr_extractVertices -- Proposed
+|
+
+``pgr_extractVertices`` -- Proposed
 ===============================================================================
 
 ``pgr_extractVertices`` — Extracts the vertices information
 
 
 .. include:: proposed.rst
-   :start-after: stable-begin-warning
-   :end-before: stable-end-warning
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. rubric:: Availability
 
@@ -31,7 +31,7 @@ pgr_extractVertices -- Proposed
 
 * Version 3.0.0
 
-  * New **experimental** function
+  * New experimental function.
 
 
 Description
@@ -43,6 +43,8 @@ of edges of a graph.
 * When the edge identifier is given, then it will also calculate the in and out
   edges
 
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------

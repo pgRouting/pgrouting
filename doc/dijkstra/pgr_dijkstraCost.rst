@@ -7,13 +7,13 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 
 .. index::
    single: Dijkstra Family ; pgr_dijkstraCost
    single: Cost Category ; pgr_dijkstraCost
    single: dijkstraCost
+
+|
 
 ``pgr_dijkstraCost``
 ===============================================================================
@@ -21,22 +21,17 @@
 ``pgr_dijkstraCost`` - Total cost of the shortest path using Dijkstra
 algorithm.
 
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
-
-   Boost Graph Inside
-
 .. rubric:: Availability
 
 * Version 3.1.0
 
-  * New **proposed** signature:
+  * New proposed signature:
 
-    * ``pgr_dijkstraCost`` (`Combinations`_)
+    * pgr_dijkstraCost(Combinations)
 
 * Version 2.2.0
 
-  * New **Official** function
+  * New **official** function.
 
 
 Description
@@ -56,6 +51,8 @@ using Dijkstra Algorithm.
 .. include:: cost-category.rst
     :start-after: cost_traits_start
     :end-before: cost_traits_end
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -249,6 +246,8 @@ See Also
 
 * :doc:`dijkstra-family`
 * :doc:`sampledata`
+* `Boost: Dijkstra shortest paths
+  <https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html>`__
 * https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 
 .. rubric:: Indices and tables

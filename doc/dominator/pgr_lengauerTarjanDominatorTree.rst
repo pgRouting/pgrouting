@@ -7,33 +7,27 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Miscellaneous Algorithms ; pgr_lengauerTarjanDominatorTree
    single: lengauerTarjanDominatorTree - Experimental on v3.2
 
+|
 
-pgr_lengauerTarjanDominatorTree -Experimental
+``pgr_lengauerTarjanDominatorTree`` -Experimental
 ===============================================================================
 
 ``pgr_lengauerTarjanDominatorTree`` — Returns the immediate dominator of all
 vertices.
 
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/lengauer_tarjan_dominator.htm
-
-   Boost Graph Inside
-
 .. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. rubric:: Availability
 
 * Version 3.2.0
 
-  * New **experimental** function
+  * New experimental function.
 
 
 Description
@@ -49,6 +43,8 @@ The algorithm calculates the *immidiate dominator* of each vertex called
 - The algorithm returns *idom* of each vertex.
 - If the *root vertex* not present in the graph then it returns empty set.
 - Running time: :math:`O((V+E)log(V+E))`
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -118,7 +114,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`sampledata`
-* `Boost: Lengauer-Tarjan dominator tree algorithm
+* `Boost: Lengauer-Tarjan dominator
   <https://www.boost.org/libs/graph/doc/lengauer_tarjan_dominator.htm>`__
 * `Wikipedia: dominator tree
   <https://en.wikipedia.org/wiki/Dominator_(graph_theory)>`__

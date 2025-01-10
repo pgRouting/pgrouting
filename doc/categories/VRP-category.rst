@@ -7,18 +7,18 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index:: Vehicle Routing Functions Category
+
+|
 
 Vehicle Routing Functions - Category
 ===============================================================================
 
 .. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: warning-begin
+   :end-before: end-warning
 
-.. index experimental from here
+.. experimental-start
 
 * Pickup and delivery problem
 
@@ -29,7 +29,7 @@ Vehicle Routing Functions - Category
 
   - :doc:`pgr_vrpOneDepot` - From a single depot, distributes orders
 
-.. index experimental to here
+.. experimental-end
 
 .. contents::
 
@@ -767,7 +767,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * https://en.wikipedia.org/wiki/Vehicle_routing_problem
-* The queries use the :doc:`sampledata` network.
+* :doc:`sampledata`
 
 .. rubric:: Indices and tables
 

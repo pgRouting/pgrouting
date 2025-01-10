@@ -9,11 +9,10 @@
 
 |
 
-
 Experimental Functions
 ===============================================================================
 
-.. begin-warn-expr
+.. warning-begin
 
 .. warning:: Possible server crash
 
@@ -37,63 +36,63 @@ Experimental Functions
     - Might depend on a proposed function of pgRouting
     - Might depend on a deprecated function of pgRouting
 
-.. end-warn-expr
+.. end-warning
 
 .. rubric:: Families
 
 :doc:`flow-family`
 
 .. include:: flow-family.rst
-   :start-after: index experimental from here
-   :end-before: index experimental to here
+   :start-after: experimental-start
+   :end-before: experimental-end
 
 :doc:`chinesePostmanProblem-family`
 
 .. include:: chinesePostmanProblem-family.rst
-   :start-after: index from here
-   :end-before: index to here
+   :start-after: official-start
+   :end-before: official-end
 
 :doc:`coloring-family`
 
 .. include:: coloring-family.rst
-   :start-after: index from here
-   :end-before: index to here
+   :start-after: official-start
+   :end-before: official-end
 
 :doc:`transformation-family`
 
 .. include:: transformation-family.rst
-   :start-after: index experimental from here
-   :end-before: index experimental to here
+   :start-after: experimental-start
+   :end-before: experimental-end
 
 :doc:`traversal-family`
 
 .. include:: traversal-family.rst
-   :start-after: index experimental from here
-   :end-before: index experimental to here
+   :start-after: experimental-start
+   :end-before: experimental-end
 
 :doc:`components-family`
 
 .. include:: components-family.rst
-   :start-after: index experimental from here
-   :end-before: index experimental to here
+   :start-after: experimental-start
+   :end-before: experimental-end
 
 :doc:`ordering-family`
 
 .. include:: ordering-family.rst
-   :start-after: index from here
-   :end-before: index to here
+   :start-after: official-start
+   :end-before: official-end
 
 :doc:`metrics-family`
 
 .. include:: metrics-family.rst
-   :start-after: index experimental from here
-   :end-before: index experimental to here
+   :start-after: experimental-start
+   :end-before: experimental-end
 
 :doc:`TRSP-family`
 
 .. include:: TRSP-family.rst
-   :start-after: index experimental from here
-   :end-before: index experimental to here
+   :start-after: experimental-start
+   :end-before: experimental-end
 
 .. toctree::
    :hidden:
@@ -109,8 +108,8 @@ Experimental Functions
 :doc:`VRP-category`
 
 .. include:: VRP-category.rst
-   :start-after: index experimental from here
-   :end-before: index experimental to here
+   :start-after: experimental-start
+   :end-before: experimental-end
 
 .. toctree::
   :hidden:

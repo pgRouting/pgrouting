@@ -7,11 +7,11 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
-   single: Flow Family ; edgeDisjointPaths
+   single: Flow Family ; pgr_edgeDisjointPaths
    single: edgeDisjointPaths
+
+|
 
 ``pgr_edgeDisjointPaths``
 ===============================================================================
@@ -20,16 +20,11 @@
 vertices.
 
 
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html
-
-   Boost Graph Inside
-
 .. Rubric:: Availability
 
 * Version 3.2.0
 
-  * New **proposed** function:
+  * New proposed signature:
 
     * pgr_edgeDisjointPaths(Combinations)
 
@@ -57,6 +52,8 @@ The main characterics are:
   - Returns EMPTY SET when source and destination are the same, or cannot be reached.
   - The graph can be directed or undirected.
   - Uses :doc:`pgr_boykovKolmogorov` to calculate the paths.
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -237,6 +234,8 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`flow-family`
+* `Boost: Boykov Kolmogorov max flow
+  <https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html>`__
 
 .. rubric:: Indices and tables
 

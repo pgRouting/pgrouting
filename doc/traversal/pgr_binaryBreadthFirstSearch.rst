@@ -7,12 +7,12 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
-   single: Traversal Family ; pgr_binaryBreadthFirstSearch
-   single: Breadth First Search Category ; pgr_binaryBreadthFirstSearch
-   single: binaryBreadthFirstSearch
+   single: Traversal Family ; pgr_binaryBreadthFirstSearch - Experimental
+   single: Breadth First Search Category ; pgr_binaryBreadthFirstSearch - Experimental
+   single: binaryBreadthFirstSearch - Experimental
+
+|
 
 ``pgr_binaryBreadthFirstSearch`` - Experimental
 ===============================================================================
@@ -23,31 +23,21 @@ graph.
 Any graph whose edge-weights belongs to the set {0,X}, where 'X' is any
 non-negative integer, is termed as a 'binary graph'.
 
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/breadth_first_search.html
-
-   Boost Graph Inside
-
 .. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. rubric:: Availability
 
 * Version 3.2.0
 
-  * New **experimental** signature:
+  * New experimental signature:
 
-    * pgr_binaryBreadthFirstSearch(`Combinations`_)
+    * pgr_binaryBreadthFirstSearch(Combinations)
 
 * Version 3.0.0
 
-  * New **experimental** signatures:
-
-    * pgr_binaryBreadthFirstSearch(`One to One`_)
-    * pgr_binaryBreadthFirstSearch(`One to Many`_)
-    * pgr_binaryBreadthFirstSearch(`Many to One`_)
-    * pgr_binaryBreadthFirstSearch(`Many to Many`_)
+  * New experimental function.
 
 Description
 -------------------------------------------------------------------------------
@@ -81,6 +71,8 @@ edge belongs to the set {0,X}, where 'X' is any non-negative real integer.
 
 * Running time: :math:`O(| start\_vids | * |E|)`
 
+|Boost| Boost Graph Inside
+
 Signatures
 -------------------------------------------------------------------------------
 
@@ -102,7 +94,7 @@ Signatures
 :math:`1``)
 
 .. index::
-    single: binaryBreadthFirstSearch ; One to One - Experimental on v3.0
+    single: binaryBreadthFirstSearch - Experimental ; One to One - Experimental on v3.0
 
 One to One
 ...............................................................................
@@ -122,7 +114,7 @@ One to One
    :end-before: -- q2
 
 .. index::
-    single: binaryBreadthFirstSearch ; One to Many - Experimental on v3.0
+    single: binaryBreadthFirstSearch - Experimental ; One to Many - Experimental on v3.0
 
 One to Many
 ...............................................................................
@@ -143,7 +135,7 @@ One to Many
    :end-before: -- q3
 
 .. index::
-    single: binaryBreadthFirstSearch ; Many to One - Experimental on v3.0
+    single: binaryBreadthFirstSearch - Experimental ; Many to One - Experimental on v3.0
 
 Many to One
 ...............................................................................
@@ -164,7 +156,7 @@ Many to One
    :end-before: -- q4
 
 .. index::
-    single: binaryBreadthFirstSearch ; Many to Many - Experimental on v3.0
+    single: binaryBreadthFirstSearch - Experimental ; Many to Many - Experimental on v3.0
 
 Many to Many
 ...............................................................................
@@ -185,7 +177,7 @@ Many to Many
    :end-before: -- q5
 
 .. index::
-    single: binaryBreadthFirstSearch ; Combinations - Experimental on v3.2
+    single: binaryBreadthFirstSearch - Experimental ; Combinations - Experimental on v3.2
 
 Combinations
 ...............................................................................
@@ -263,6 +255,8 @@ Additional Examples
 See Also
 -------------------------------------------------------------------------------
 * :doc:`sampledata`
+* `Boost: Breadth First Search
+  <https://www.boost.org/libs/graph/doc/breadth_first_search.html>`__
 * https://cp-algorithms.com/graph/01_bfs.html
 * https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Specialized_variants
 

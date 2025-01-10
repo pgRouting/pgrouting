@@ -7,24 +7,19 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Prim Family ; pgr_primDFS
    single: Spanning Tree Category ; pgr_primDFS
    single: Depth First Search Category ; pgr_primDFS
    single: primDFS
 
+|
+
 ``pgr_primDFS``
 ===============================================================================
 
 ``pgr_primDFS`` — Prim algorithm for Minimum Spanning Tree with Depth First
 Search ordering.
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html
-
-   Boost Graph Inside
 
 .. rubric:: Availability
 
@@ -52,6 +47,8 @@ of the Minimum Spanning Tree created using Prims's algorithm.
 
 - Returned tree nodes from a root vertex are on Depth First Search order
 - Depth First Search Running time: :math:`O(E + V)`
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -140,7 +137,7 @@ See Also
 * :doc:`spanningTree-family`
 * :doc:`prim-family`
 * :doc:`sampledata`
-* `Boost: Prim's algorithm documentation
+* `Boost: Prim's algorithm
   <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
 * `Wikipedia: Prim's algorithm
   <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__

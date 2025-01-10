@@ -7,30 +7,25 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
-   single: Metrics Family ; pgr_betweennessCentrality
+   single: Metrics Family ; pgr_betweennessCentrality - Experimental
    single: betweennessCentrality - Experimental on v3.7
 
-``pgr_betweennessCentrality``
+|
+
+``pgr_betweennessCentrality`` - Experimental
 ===============================================================================
 
 ``pgr_betweennessCentrality`` - Calculates the relative betweeness centrality
 using Brandes Algorithm
 
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/doc/libs/1_84_0/libs/graph/doc/betweenness_centrality.html
-
-   Boost Graph Inside
-
 .. rubric:: Availability
 
 * Version 3.7.0
 
-  * New **experimental** function:
+  * New experimental function.
 
-    * ``pgr_betweennessCentrality``
+    * pgr_betweennessCentrality``
 
 Description
 -------------------------------------------------------------------------------
@@ -52,6 +47,8 @@ This implementation work for both directed and undirected graphs.
 - Running time:  :math:`\Theta(VE)`
 - Running space: :math:`\Theta(VE)`
 - Throws when there are no edges in the graph
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -141,9 +138,9 @@ Result columns
 See Also
 -------------------------------------------------------------------------------
 
-* Boost's `betweenness_centrality
+* :doc:`sampledata`
+* `Boost: betweenness centrality
   <https://www.boost.org/doc/libs/1_84_0/libs/graph/doc/betweenness_centrality.html>`_
-* Queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 

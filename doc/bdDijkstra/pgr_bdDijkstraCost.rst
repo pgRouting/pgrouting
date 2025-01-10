@@ -7,11 +7,11 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Bidirectional Dijkstra Family ; pgr_bdDijkstraCost
    single: bdDijkstraCost
+
+|
 
 ``pgr_bdDijkstraCost``
 ===============================================================================
@@ -19,18 +19,13 @@
 ``pgr_bdDijkstraCost`` — Returns the shortest path's cost using Bidirectional
 Dijkstra algorithm.
 
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/table_of_contents.html
-
-   Boost Graph Inside
-
 .. rubric:: Availability
 
 * Version 3.2.0
 
-  * New **proposed** signature:
+  * New proposed signature:
 
-    * ``pgr_bdDijkstraCost`` (`Combinations`_)
+    * pgr_bdDijkstraCost(Combinations)
 
 * Version 3.0.0
 
@@ -38,7 +33,7 @@ Dijkstra algorithm.
 
 * Version 2.5.0
 
-  * New **proposed** function
+  * New proposed function.
 
 
 Description
@@ -54,6 +49,8 @@ using the bidirectional Dijkstra Algorithm.
 .. include:: cost-category.rst
     :start-after: cost_traits_start
     :end-before: cost_traits_end
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -247,7 +244,6 @@ See Also
 
 * :doc:`bdDijkstra-family`
 * :doc:`sampledata`
-* https://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf
 * https://en.wikipedia.org/wiki/Bidirectional_search
 
 .. rubric:: Indices and tables

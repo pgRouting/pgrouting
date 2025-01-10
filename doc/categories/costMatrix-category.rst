@@ -7,34 +7,34 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index:: Cost Matrix Category
+
+|
 
 Cost Matrix - Category
 ===============================================================================
 
-.. index from here
+.. official-start
 
 * :doc:`pgr_aStarCostMatrix`
 * :doc:`pgr_dijkstraCostMatrix`
 * :doc:`pgr_bdAstarCostMatrix`
 * :doc:`pgr_bdDijkstraCostMatrix`
 
-.. index to here
+.. official-end
 
 
 .. rubric:: proposed
 
 .. include:: proposed.rst
-    :start-after: begin-warning
+    :start-after: warning-begin
     :end-before: end-warning
 
-.. index proposed from here
+.. proposed-start
 
 * :doc:`pgr_withPointsCostMatrix`
 
-.. index proposed to here
+.. proposed-end
 
 General Information
 -------------------------------------------------------------------------------

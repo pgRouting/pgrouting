@@ -7,19 +7,19 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 
 .. index:: Contraction Family
+
+|
 
 Contraction - Family of functions
 ===============================================================================
 
-.. index from here
+.. official-start
 
 * :doc:`pgr_contraction`
 
-.. index to here
+.. official-end
 
 .. toctree::
     :hidden:

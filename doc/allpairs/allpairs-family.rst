@@ -7,22 +7,22 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 
 .. index:: All Pairs Family
+
+|
 
 All Pairs - Family of Functions
 ===============================================================================
 
 The following functions work on all vertices pair combinations
 
-.. index from here
+.. official-start
 
 * :doc:`pgr_floydWarshall` - Floyd-Warshall's algorithm.
 * :doc:`pgr_johnson` - Johnson's algorithm
 
-.. index to here
+.. official-end
 
 .. toctree::
     :hidden:

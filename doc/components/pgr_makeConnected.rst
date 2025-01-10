@@ -7,31 +7,27 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
-   single: Components Family ; pgr_makeConnected
+   single: Components Family ; pgr_makeConnected - Experimental
    single: makeConnected - Experimental on v3.2
+
+
+|
 
 ``pgr_makeConnected`` - Experimental
 ===============================================================================
 
 ``pgr_makeConnected`` — Set of edges that will connect the graph.
 
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/make_connected.html
-
-   Boost Graph Inside
-
 .. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. rubric:: Availability
 
 * Version 3.2.0
 
-  * New **experimental** function
+  * New experimental function.
 
 
 Description
@@ -55,6 +51,8 @@ The main characteristics are:
 - The algorithm does not considers geometric topology in the calculations.
 - Running time: :math:`O(V + E)`
 
+|Boost| Boost Graph Inside
+
 Signatures
 -------------------------------------------------------------------------------
 
@@ -66,8 +64,7 @@ Signatures
    | Returns set of |result-component-make|
    | OR EMPTY SET
 
-:Example: Query done on :doc:`sampledata` network gives the list of edges that
-          are needed to connect the graph.
+:Example: List of edges that are needed to connect the graph.
 
 .. literalinclude:: makeConnected.queries
    :start-after: -- q1
@@ -116,8 +113,9 @@ Returns set of |result-component-make|
 See Also
 -------------------------------------------------------------------------------
 
-* https://www.boost.org/libs/graph/doc/make_connected.html
-* The queries use the :doc:`sampledata` network.
+* `Boost: make connected
+  <https://www.boost.org/libs/graph/doc/make_connected.html>`__
+* :doc:`sampledata`
 
 .. rubric:: Indices and tables
 

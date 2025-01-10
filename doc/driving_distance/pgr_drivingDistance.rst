@@ -7,21 +7,16 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Driving Distance Category ; pgr_drivingDistance
    single: drivingDistance
+
+|
 
 ``pgr_drivingDistance``
 ===============================================================================
 
 ``pgr_drivingDistance`` - Returns the driving distance from a start node.
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/table_of_contents.html
-
-   Boost Graph Inside
 
 .. rubric:: Availability
 
@@ -29,11 +24,11 @@
 
 * Standarizing output columns to |result-spantree|
 
-  * ``pgr_drivingdistance`` (Single vertex)
+  * pgr_drivingdistance(Single vertex)
 
     * Added ``depth`` and ``start_vid`` result columns.
 
-  * ``pgr_drivingdistance`` (Multiple vertices)
+  * pgr_drivingdistance(Multiple vertices)
 
     * Result column name change: ``from_v`` to ``start_vid``.
     * Added ``depth`` and ``pred`` result columns.
@@ -54,6 +49,8 @@ Description
 Using the Dijkstra algorithm, extracts all the nodes that have costs less than
 or equal to the value ``distance``.
 The edges extracted will conform to the corresponding spaning tree.
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -176,7 +173,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`pgr_alphaShape` - Alpha shape computation
-* :doc:`sampledata` network.
+* :doc:`sampledata`
 
 .. rubric:: Indices and tables
 
