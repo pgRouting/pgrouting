@@ -7,30 +7,27 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+.. index::
+   single: Coloring Family ; pgr_edgeColoring - Experimental
+   single: edgeColoring - Experimental on v3.3
+
 |
 
-
-pgr_edgeColoring - Experimental
+``pgr_edgeColoring`` - Experimental
 ===============================================================================
 
 ``pgr_edgeColoring`` — Returns the edge coloring of undirected and loop-free
 graphs
 
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/edge_coloring.html
-
-   Boost Graph Inside
-
 .. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-exp
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. rubric:: Availability
 
 * Version 3.3.0
 
-  * New **experimental** signature
-
+  * New experimental function.
 
 Description
 -------------------------------------------------------------------------------
@@ -70,11 +67,10 @@ no two adjacent edges have the same color.
     - where :math:`|E|` is the number of edges in the graph,
     - :math:`|V|` is the number of vertices in the graph.
 
+|Boost| Boost Graph Inside
+
 Signatures
 ------------------------------------------------------------------------------
-
-.. index::
-    single: edgeColoring - Experimental on v3.3
 
 .. admonition:: \ \
    :class: signatures
@@ -120,15 +116,10 @@ Result columns
 See Also
 -------------------------------------------------------------------------------
 
-* The queries use the :doc:`sampledata` network.
-
-.. see also start
-
-* `Boost: Edge Coloring Algorithm documentation
+* :doc:`sampledata`
+* `Boost: Edge Coloring
   <https://www.boost.org/libs/graph/doc/edge_coloring.html>`__
 * `Wikipedia: Graph coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__
-
-.. see also end
 
 .. rubric:: Indices and tables
 

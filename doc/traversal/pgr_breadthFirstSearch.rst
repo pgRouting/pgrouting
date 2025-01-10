@@ -7,12 +7,12 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
-   single: Traversal Family ; pgr_breadthFirstSearch
-   single: Breadth First Search Category ; pgr_breadthFirstSearch
-   single: breadthFirstSearch
+   single: Traversal Family ; pgr_breadthFirstSearch - Experimental
+   single: Breadth First Search Category ; pgr_breadthFirstSearch - Experimental
+   single: breadthFirstSearch - Experimental
+
+|
 
 ``pgr_breadthFirstSearch`` - Experimental
 ===============================================================================
@@ -20,23 +20,15 @@
 ``pgr_breadthFirstSearch`` — Returns the traversal order(s) using Breadth First
 Search algorithm.
 
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/breadth_first_search.html
-
-   Boost Graph Inside
-
 .. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. rubric:: Availability
 
 * Version 3.0.0
 
-  * New **experimental** signature:
-
-    * ``pgr_breadthFirstSearch`` (`Single Vertex`_)
-    * ``pgr_breadthFirstSearch`` (`Multiple Vertices`_)
+  * New experimental function.
 
 Description
 -------------------------------------------------------------------------------
@@ -51,6 +43,8 @@ particular depth.
   target depth level.
 * Running time: :math:`O(E + V)`
 
+|Boost| Boost Graph Inside
+
 Signatures
 -------------------------------------------------------------------------------
 
@@ -61,12 +55,12 @@ Signatures
 
    | pgr_breadthFirstSearch(`Edges SQL`_, **root vid**, [**options**])
    | pgr_breadthFirstSearch(`Edges SQL`_, **root vids**, [**options**])
-   | **options:** ``[max_depth, directed]``
+   | **options:** [max_depth, directed]``
 
    | Returns set of |result-bfs|
 
 .. index::
-    single: breadthFirstSearch ; Single vertex - Experimental on v3.0
+    single: breadthFirstSearch - Experimental ; Single vertex - Experimental on v3.0
 
 Single vertex
 ...............................................................................
@@ -75,7 +69,7 @@ Single vertex
    :class: signatures
 
    | pgr_breadthFirstSearch(`Edges SQL`_, **root vid**, [**options**])
-   | **options:** ``[max_depth, directed]``
+   | **options:** [max_depth, directed]``
 
    | Returns set of |result-bfs|
 
@@ -87,7 +81,7 @@ Single vertex
    :end-before: -- q2
 
 .. index::
-    single: breadthFirstSearch ; Multiple vertices - Experimental on v3.0
+    single: breadthFirstSearch - Experimental ; Multiple vertices - Experimental on v3.0
 
 Multiple vertices
 ...............................................................................
@@ -96,7 +90,7 @@ Multiple vertices
    :class: signatures
 
    | pgr_breadthFirstSearch(`Edges SQL`_, **root vids**, [**options**])
-   | **options:** ``[max_depth, directed]``
+   | **options:** [max_depth, directed]``
 
    | Returns set of |result-bfs|
 
@@ -178,7 +172,7 @@ See Also
 
 * :doc:`BFS-category`
 * :doc:`sampledata`
-* `Boost: Breadth First Search algorithm documentation
+* `Boost: Breadth First Search
   <https://www.boost.org/libs/graph/doc/breadth_first_search.html>`__
 * `Wikipedia: Breadth First Search algorithm
   <https://en.wikipedia.org/wiki/Breadth-first_search>`__

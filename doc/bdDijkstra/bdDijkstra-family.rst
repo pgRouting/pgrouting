@@ -7,15 +7,15 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 
 .. index:: Bidirectional Dijkstra Family
+
+|
 
 Bidirectional Dijkstra - Family of functions
 ===============================================================================
 
-.. index from here
+.. official-start
 
 * :doc:`pgr_bdDijkstra` - Bidirectional Dijkstra algorithm for the shortest
   paths.
@@ -24,7 +24,7 @@ Bidirectional Dijkstra - Family of functions
 * :doc:`pgr_bdDijkstraCostMatrix` - Bidirectional Dijkstra algorithm to create
   a matrix of costs of the shortest paths.
 
-.. index to here
+.. official-end
 
 .. toctree::
     :hidden:

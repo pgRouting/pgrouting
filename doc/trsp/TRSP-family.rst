@@ -7,9 +7,9 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index:: Turn Restriction Shortest Path Family
+
+|
 
 TRSP - Family of functions
 ===============================================================================
@@ -19,17 +19,17 @@ When points are also given as input:
 .. rubric:: Proposed
 
 .. include:: proposed.rst
-   :start-after: begin-warning
+   :start-after: warning-begin
    :end-before: end-warning
 
-.. index proposed from here
+.. proposed-start
 
 - :doc:`pgr_trsp` - Vertex - Vertex routing with restrictions.
 - :doc:`pgr_trspVia` - Via Vertices routing with restrictions.
 - :doc:`pgr_trsp_withPoints` - Vertex/Point routing with restrictions.
 - :doc:`pgr_trspVia_withPoints` - Via Vertex/point routing with restrictions.
 
-.. index proposed to here
+.. proposed-end
 
 .. Warning:: Read the :doc:`migration` about how to migrate from the
    deprecated TRSP functionality to the new signatures or replacement functions.
@@ -37,14 +37,14 @@ When points are also given as input:
 .. rubric:: Experimental
 
 .. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: warning-begin
+   :end-before: end-warning
 
-.. index experimental from here
+.. experimental-start
 
 - :doc:`pgr_turnRestrictedPath` - Routing with restrictions.
 
-.. index experimental to here
+.. experimental-end
 
 .. toctree::
     :hidden:

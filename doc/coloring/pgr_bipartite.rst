@@ -7,30 +7,27 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+.. index::
+   single: Coloring Family ; pgr_bipartite - Experimental
+   single: bipartite - Experimental on v3.2
+
 |
 
-
-pgr_bipartite -Experimental
+``pgr_bipartite`` - Experimental
 ===============================================================================
 
 ``pgr_bipartite`` — Disjoint sets of vertices such that no two vertices within
 the same set are adjacent.
 
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/is_bipartite.html
-
-   Boost Graph Inside
-
 .. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. rubric:: Availability
 
 * Version 3.2.0
 
-  * New **experimental** signature
-
+  * New experimental function.
 
 Description
 -------------------------------------------------------------------------------
@@ -49,12 +46,10 @@ colored with the same color.
 - If graph is not bipartite then algorithm returns empty set.
 - Running time: :math:`O(V + E)`
 
+|Boost| Boost Graph Inside
+
 Signatures
 -------------------------------------------------------------------------------
-
-.. index::
-    single: bipartite - Experimental on v3.2
-
 
 .. admonition:: \ \
    :class: signatures
@@ -118,16 +113,12 @@ Edges in blue represent odd length cycle subgraph.
 See Also
 -------------------------------------------------------------------------------
 
-.. see also start
-
 * `Boost: is_bipartite
   <https://www.boost.org/libs/graph/doc/is_bipartite.html>`__
 * `Wikipedia: bipartite graph
   <https://en.wikipedia.org/wiki/Bipartite_graph>`__
 
-.. see also end
-
-* :doc:`sampledata` network.
+* :doc:`sampledata`
 
 .. rubric:: Indices and tables
 

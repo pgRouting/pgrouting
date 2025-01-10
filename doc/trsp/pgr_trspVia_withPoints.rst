@@ -7,8 +7,6 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Turn Restriction Shortest Path Family ; pgr_trspVia_withPoints
    single: Via Category ; pgr_trspVia_withPoints
@@ -16,28 +14,23 @@
    single: With Points Category ; pgr_trspVia_withPoints
    single: trspVia_withPoints
 
+|
+
 ``pgr_trspVia_withPoints`` - Proposed
 ===============================================================================
 
 ``pgr_trspVia_withPoints`` - Route that goes through a list of vertices and/or
 points with restrictions.
 
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/table_of_contents.html
-
-   Boost Graph Inside
-
 .. include:: proposed.rst
-   :start-after: stable-begin-warning
-   :end-before: stable-end-warning
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. rubric:: Availability
 
 * Version 3.4.0
 
-  * New proposed function:
-
-    ``pgr_trspVia_withPoints`` (`One Via`_)
+  * New proposed function.
 
 Description
 -------------------------------------------------------------------------------
@@ -65,6 +58,8 @@ The general algorithm is as follows:
   * **NOTE** when this is done, ``U_turn_on_edge`` flag is ignored.
 
 .. Note:: Do not use negative values on identifiers of the inner queries.
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -287,7 +282,7 @@ See Also
 * :doc:`TRSP-family`
 * :doc:`via-category`
 * :doc:`withPoints-category`
-* :doc:`sampledata` network.
+* :doc:`sampledata`
 
 .. rubric:: Indices and tables
 

@@ -7,40 +7,35 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+.. index::
+   single: Shortest Path Category ; pgr_dagShortestPath - Experimental
+   single: Directed Acyclic Graph Category ; pgr_dagShortestPath - Experimental
+   single: dagShortestPath - Experimental
+
 |
 
-.. index::
-   single: Shortest Path Category ; pgr_dagShortestPath
-   single: Directed Acyclic Graph Category ; pgr_dagShortestPath
-   single: dagShortestPath
-
-pgr_dagShortestPath - Experimental
+``pgr_dagShortestPath`` - Experimental
 ===============================================================================
 
 ``pgr_dagShortestPath`` — Returns the shortest path for weighted directed
 acyclic graphs(DAG).
 In particular, the DAG shortest paths algorithm implemented by Boost.Graph.
 
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/dag_shortest_paths.html
-
-   Boost Graph Inside
-
 .. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. rubric:: Availability
 
 * Version 3.2.0
 
-  * New **experimental** function:
+  * New experimental function.
 
     * pgr_dagShortestPath(Combinations)
 
 * Version 3.0.0
 
-  * New **experimental** function
+  * New experimental function.
 
 
 Description
@@ -82,6 +77,7 @@ The main characteristics are:
 
   * Running time: :math:`O(| start\_vids | * (V + E))`
 
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -102,7 +98,7 @@ Signatures
 
 
 .. index::
-    single: dagShortestPath ; One to One - Experimental on v3.0
+    single: dagShortestPath - Experimental ; One to One - Experimental on v3.0
 
 One to One
 ...............................................................................
@@ -122,7 +118,7 @@ One to One
    :end-before: -- q3
 
 .. index::
-    single: dagShortestPath ; One to Many - Experimental on v3.0
+    single: dagShortestPath - Experimental ; One to Many - Experimental on v3.0
 
 One to Many
 ...............................................................................
@@ -142,7 +138,7 @@ One to Many
    :end-before: -- q4
 
 .. index::
-    single: dagShortestPath ; Many to One - Experimental on v3.0
+    single: dagShortestPath - Experimental ; Many to One - Experimental on v3.0
 
 Many to One
 ...............................................................................
@@ -162,7 +158,7 @@ Many to One
    :end-before: -- q5
 
 .. index::
-    single: dagShortestPath ; Many to Many - Experimental on v3.0
+    single: dagShortestPath - Experimental ; Many to Many - Experimental on v3.0
 
 Many to Many
 ...............................................................................
@@ -183,7 +179,7 @@ Many to Many
    :end-before: -- q51
 
 .. index::
-    single: dagShortestPath ; Combinations - Experimental on v3.2
+    single: dagShortestPath - Experimental ; Combinations - Experimental on v3.2
 
 Combinations
 ...............................................................................
@@ -266,6 +262,8 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`sampledata`
+* `Boost: DAG shortest paths
+  <https://www.boost.org/libs/graph/doc/dag_shortest_paths.html>`__
 * https://en.wikipedia.org/wiki/Topological_sorting
 
 .. rubric:: Indices and tables

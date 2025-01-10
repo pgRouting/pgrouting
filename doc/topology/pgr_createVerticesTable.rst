@@ -7,13 +7,13 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Topology Family ; pgr_createVerticesTable
    single: createVerticesTable
 
-pgr_createVerticesTable
+|
+
+``pgr_createVerticesTable``
 ===============================================================================
 
 ``pgr_createVerticesTable`` — Reconstructs the vertices table based on the
@@ -33,6 +33,8 @@ The function returns:
 
 - ``OK`` after the vertices table has been reconstructed.
 - ``FAIL`` when the vertices table was not reconstructed due to an error.
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -274,11 +276,10 @@ values for the column names do not match the column names of the table.
    :start-after: --q17
    :end-before: --q17.1
 
-The example uses the :doc:`sampledata` network.
-
 See Also
 -------------------------------------------------------------------------------
 
+* :doc:`sampledata`
 * :doc:`topology-functions` for an overview of a topology for routing
   algorithms.
 * :doc:`pgr_createTopology` <pgr_create_topology>` to create a topology based on

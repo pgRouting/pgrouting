@@ -7,13 +7,13 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
-   single: withPoints Family ; pgr_withPointsCostMatrix
-   single: With Points Category ; pgr_withPointsCostMatrix
-   single: Cost Matrix Category ; pgr_withPointsCostMatrix
+   single: withPoints Family ; pgr_withPointsCostMatrix - Proposed
+   single: With Points Category ; pgr_withPointsCostMatrix - Proposed
+   single: Cost Matrix Category ; pgr_withPointsCostMatrix - Proposed
    single: withPointsCostMatrix - proposed on v2.0
+
+|
 
 ``pgr_withPointsCostMatrix`` - proposed
 ===============================================================================
@@ -22,19 +22,14 @@
 :doc:`pgr_withPoints`.
 
 .. include:: proposed.rst
-   :start-after: begin-warning
+   :start-after: warning-begin
    :end-before: end-warning
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/table_of_contents.html
-
-   Boost Graph Inside
 
 .. rubric:: Availability
 
 * Version 2.2.0
 
-  * New **proposed** function
+  * New proposed function.
 
 Description
 -------------------------------------------------------------------------------
@@ -48,6 +43,8 @@ Using Dijkstra algorithm, calculate and return a cost matrix.
 .. include:: costMatrix-category.rst
     :start-after: costMatrix_details_start
     :end-before: costMatrix_details_end
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------

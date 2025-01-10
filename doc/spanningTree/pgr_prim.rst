@@ -7,22 +7,17 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Prim Family ; pgr_prim
    single: Spanning Tree Category ; pgr_prim
    single: prim
 
+|
+
 ``pgr_prim``
 ===============================================================================
 
 ``pgr_prim`` — Minimum spanning forest of a graph using Prim's algorithm.
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html
-
-   Boost Graph Inside
 
 .. rubric:: Availability
 
@@ -44,6 +39,7 @@ graph using Prim's algorithm.
 
 - EMPTY SET is returned when there are no edges in the graph.
 
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -94,7 +90,7 @@ See Also
 
 * :doc:`spanningTree-family`
 * :doc:`prim-family`
-* The queries use the :doc:`sampledata` network.
+* :doc:`sampledata`
 * `Boost: Prim's algorithm documentation
   <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
 * `Wikipedia: Prim's algorithm

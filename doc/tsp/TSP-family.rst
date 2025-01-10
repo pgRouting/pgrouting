@@ -7,19 +7,19 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index:: Traveling Sales Person Family
+
+|
 
 Traveling Sales Person - Family of functions
 ===============================================================================
 
-.. index from here
+.. official-start
 
 * :doc:`pgr_TSP` - When input is given as matrix cell information.
 * :doc:`pgr_TSPeuclidean` - When input are coordinates.
 
-.. index to here
+.. official-end
 
 .. toctree::
     :hidden:
@@ -139,7 +139,7 @@ See Also
 
 .. rubric:: References
 
-* `Boost's metric appro's metric approximation
+* `Boost: metric TSP approx
   <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
 * `University of Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__
 * `Wikipedia: Traveling Salesman Problem

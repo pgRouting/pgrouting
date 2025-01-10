@@ -7,23 +7,18 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Bidirectional Dijkstra Family ; pgr_bdDijkstraCostMatrix
+   single: Cost Matrix Category ; pgr_bdDijkstraCostMatrix
    single: bdDijkstraCostMatrix
+
+|
 
 ``pgr_bdDijkstraCostMatrix``
 ===============================================================================
 
 ``pgr_bdDijkstraCostMatrix`` - Calculates a cost matrix using
 :doc:`pgr_bdDijkstra`.
-
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/table_of_contents.html
-
-   Boost Graph Inside
 
 .. rubric:: Availability
 
@@ -33,7 +28,7 @@
 
 * Version 2.5.0
 
-  * New **proposed** function
+  * New proposed function.
 
 Description
 -------------------------------------------------------------------------------
@@ -47,6 +42,8 @@ Using bidirectional Dijkstra algorithm, calculate and return a cost matrix.
 .. include:: costMatrix-category.rst
     :start-after: costMatrix_details_start
     :end-before: costMatrix_details_end
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------

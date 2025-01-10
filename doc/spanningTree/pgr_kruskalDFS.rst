@@ -7,24 +7,19 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Kruskal Family ; pgr_kruskalDFS
    single: Spanning Tree Category ; pgr_kruskalDFS
    single: Depth First Search Category ; pgr_kruskalBFS
    single: kruskalDFS
 
+|
+
 ``pgr_kruskalDFS``
 ===============================================================================
 
 ``pgr_kruskalDFS`` — Kruskal's algorithm for Minimum Spanning Tree with Depth
 First Search ordering.
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html
-
-   Boost Graph Inside
 
 .. rubric:: Availability
 
@@ -53,6 +48,8 @@ of the Minimum Spanning Tree created using Kruskal's algorithm.
 
 - Returned tree nodes from a root vertex are on Depth First Search order
 - Depth First Search Running time: :math:`O(E + V)`
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------

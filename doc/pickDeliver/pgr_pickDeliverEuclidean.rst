@@ -7,11 +7,11 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Vehicle Routing Functions Category ; pgr_pickDeliverEuclidean
    single: pickDeliverEuclidean - Experimental on 3.0
+
+|
 
 ``pgr_pickDeliverEuclidean`` - Experimental
 ===============================================================================
@@ -19,15 +19,15 @@
 ``pgr_pickDeliverEuclidean`` - Pickup and delivery Vehicle Routing Problem
 
 .. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. rubric:: Availability
 
 * Version 3.0.0
 
   * Replaces ``pgr_gsoc_vrppdtw``
-  * New **experimental** function
+  * New experimental function.
 
 
 Synopsis
@@ -200,7 +200,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`VRP-category`
-* The queries use the :doc:`sampledata` network.
+* :doc:`sampledata`
 
 .. rubric:: Indices and tables
 

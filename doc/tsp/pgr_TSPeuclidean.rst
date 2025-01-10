@@ -7,22 +7,16 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Traveling Sales Person Family ; pgr_TSPeuclidean
    single: pgr_TSPeuclidean
 
+|
+
 ``pgr_TSPeuclidean``
 =============================================================================
 
-* ``pgr_TSPeuclidean`` - Aproximation using *metric* algorithm.
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/metric_tsp_approx.html
-
-   Boost Graph Inside
-
+* pgr_TSPeuclidean`` - Aproximation using *metric* algorithm.
 
 .. rubric:: Availability:
 
@@ -73,6 +67,7 @@ Description
       2, 3.5, 1.0
       2, 3.6, 1.1
 
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -197,8 +192,8 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`TSP-family`
-* :doc:`sampledata` network.
-* `Boost's metric appro's metric approximation
+* :doc:`sampledata`
+* `Boost: metric TSP approx
   <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
 * `University of Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__
 * `Wikipedia: Traveling Salesman Problem

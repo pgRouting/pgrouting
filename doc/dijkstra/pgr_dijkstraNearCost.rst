@@ -7,14 +7,14 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 
 .. index::
-   single: Dijkstra Family ; pgr_dijkstraNearCost
-   single: Near Category ; pgr_dijkstraNearCost
-   single: Cost Category ; pgr_dijkstraNearCost
-   single: dijkstraNearCost
+   single: Dijkstra Family ; pgr_dijkstraNearCost - Proposed
+   single: Near Category ; pgr_dijkstraNearCost - Proposed
+   single: Cost Category ; pgr_dijkstraNearCost - Proposed
+   single: dijkstraNearCost - Proposed
+
+|
 
 ``pgr_dijkstraNearCost`` - Proposed
 ===============================================================================
@@ -23,23 +23,18 @@
 to the nearest vertex.
 
 .. include:: proposed.rst
-   :start-after: stable-begin-warning
-   :end-before: stable-end-warning
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/table_of_contents.html
-
-   Boost Graph Inside
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. rubric:: Availability
 
 * Version 3.3.0
 
-  * Promoted to **proposed** function
+  * Function promoted to proposed.
 
 * Version 3.2.0
 
-  * New **experimental** function
+  * New experimental function.
 
 
 Description
@@ -54,6 +49,8 @@ Characteristics
 .. include:: pgr_dijkstraNear.rst
     :start-after: dijkstraNear characteristics start
     :end-before: dijkstraNear characteristics end
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -74,7 +71,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: dijkstraNearCost ; One to Many - Proposed on v3.3
+    single: dijkstraNearCost - Proposed ; One to Many - Proposed on v3.3
 
 One to Many
 ...............................................................................
@@ -107,7 +104,7 @@ One to Many
 The result shows that station at vertex :math:`11` is the nearest.
 
 .. index::
-    single: dijkstraNearCost ; Many to One - Proposed on v3.3
+    single: dijkstraNearCost - Proposed ; Many to One - Proposed on v3.3
 
 Many to One
 ...............................................................................
@@ -138,7 +135,7 @@ The result shows that station at vertex :math:`10` is the nearest and the next
 best is :math:`11`.
 
 .. index::
-    single: dijkstraNearCost ; Many to Many - Proposed on v3.3
+    single: dijkstraNearCost - Proposed ; Many to Many - Proposed on v3.3
 
 Many to Many
 ...............................................................................
@@ -174,7 +171,7 @@ the first subway line and at vertex :math:`10` of the second subway line.
 Only `one` route is returned because `global` is ``true`` and `cap` is ``1``
 
 .. index::
-    single: dijkstraNearCost ; Combinations - Proposed on v3.3
+    single: dijkstraNearCost - Proposed ; Combinations - Proposed on v3.3
 
 Combinations
 ...............................................................................
@@ -285,8 +282,9 @@ See Also
 
 * :doc:`dijkstra-family`
 * :doc:`pgr_dijkstraNear`
-* :doc:`sampledata` network.
-* boost: https://www.boost.org/libs/graph/doc/table_of_contents.html
+* :doc:`sampledata`
+* `Boost: Dijkstra shortest paths
+  <https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html>`__
 * Wikipedia: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 
 .. rubric:: Indices and tables

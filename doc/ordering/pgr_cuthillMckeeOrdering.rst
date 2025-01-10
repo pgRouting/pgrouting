@@ -7,11 +7,11 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Ordering Family ; pgr_cuthillMckeeOrdering
    single: pgr_cuthillMckeeOrdering
+
+|
 
 ``pgr_cuthillMckeeOrdering`` - Experimental
 ===============================================================================
@@ -19,20 +19,15 @@
 ``pgr_cuthillMckeeOrdering`` — Returns the reverse Cuthill-Mckee ordering of an undirected
 graphs
 
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/cuthill_mckee_ordering.html
-
-   Boost Graph Inside
-
 .. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-exp
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. rubric:: Availability
 
 * Version 3.4.0
 
-  * New **experimental** function
+  * New experimental function.
 
 
 Description
@@ -54,6 +49,8 @@ each step, the adjacent vertices are placed in the queue in order of increasing 
 
   - where :math:`|V|` is the number of vertices,
   - :math:`m` is the maximum degree of the vertices in the graph.
+
+|Boost| Boost Graph Inside
 
 Signatures
 ------------------------------------------------------------------------------
@@ -109,7 +106,7 @@ Column           Type        Description
 See Also
 -------------------------------------------------------------------------------
 
-* The queries use the :doc:`sampledata` network.
+* :doc:`sampledata`
 * `Boost: Cuthill-McKee Ordering
   <https://www.boost.org/libs/graph/doc/cuthill_mckee_ordering.html>`__
 * `Wikipedia: Cuthill-McKee Ordering

@@ -7,9 +7,9 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index:: Topology Family
+
+|
 
 Topology - Family of Functions
 ===============================================================================
@@ -22,19 +22,7 @@ undirected, if an edge is one way on a directed graph, and depending on the
 final application needs, suitable topology(s) need to be
 created.
 
-pgRouting suplies some functions to create a routing topology and to analyze the
-topology.
-
-Additional functions to create a graph:
-
-* :doc:`contraction-family`
-
-Additional functions to analyze a graph:
-
-* :doc:`components-family`
-
-
-.. topology_index_start
+.. official-start
 
 The following functions modify the database directly therefore the user must
 have special permissions given by the administrators to use them.
@@ -47,17 +35,27 @@ have special permissions given by the administrators to use them.
 - :doc:`pgr_analyzeOneWay` - to analyze directionality of the edges.
 - :doc:`pgr_nodeNetwork` - to create nodes to a not noded edge table.
 
-.. topology_index_end
+.. official-end
 
+pgRouting supplies some functions to create a routing topology and to analyze the
+topology.
+
+Additional functions to create a graph:
+
+* :doc:`contraction-family`
+
+Additional functions to analyze a graph:
+
+* :doc:`components-family`
 
 
 .. rubric:: Proposed
 
 .. include:: proposed.rst
-   :start-after: stable-begin-warning
-   :end-before: stable-end-warning
+   :start-after: warning-begin
+   :end-before: end-warning
 
-.. topology_proposed_start
+.. proposed-start
 
 These proposed functions do not modify the database.
 
@@ -65,7 +63,7 @@ These proposed functions do not modify the database.
 - :doc:`pgr_extractVertices` - Extracts vertex information based on the edge
   table information.
 
-.. topology_proposed_end
+.. proposed-end
 
 .. toctree::
   :hidden:

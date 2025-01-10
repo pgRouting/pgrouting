@@ -7,42 +7,32 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
-   single: Shortest Path Category; pgr_bellmanFord
-   single: bellmanFord
+   single: Shortest Path Category; pgr_bellmanFord - Experimental
+   single: bellmanFord - Experimental
+
+|
 
 ``pgr_bellmanFord - Experimental``
 ===============================================================================
 
 ``pgr_bellmanFord`` — Shortest path using Bellman-Ford algorithm.
 
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html
-
-   Boost Graph Inside
-
 .. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. rubric:: Availability
 
 * Version 3.2.0
 
-  * New **experimental** signature:
+  * New experimental signature:
 
-    * ``pgr_bellmanFord`` (`Combinations`_)
+    * pgr_bellmanFord(Combinations)
 
 * Version 3.0.0
 
-  * New **experimental** signatures:
-
-    * ``pgr_bellmanFord`` (`One to One`_)
-    * ``pgr_bellmanFord`` (`One to Many`_)
-    * ``pgr_bellmanFord`` (`Many to One`_)
-    * ``pgr_bellmanFord`` (`Many to Many`_)
+  * New experimental function.
 
 Description
 -------------------------------------------------------------------------------
@@ -81,6 +71,7 @@ implementation can be used with a directed graph and an undirected graph.
 
   * Running time: :math:`O(| start\_vids | * ( V * E))`
 
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -100,7 +91,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-   single: bellmanFord ; One to One - Experimental on v3.0
+   single: bellmanFord - Experimental; One to One - Experimental on v3.0
 
 One to One
 ...............................................................................
@@ -120,7 +111,7 @@ One to One
    :end-before: -- q3
 
 .. index::
-   single: bellmanFord ; One to Many - Experimental on v3.0
+   single: bellmanFord - Experimental ; One to Many - Experimental on v3.0
 
 One to Many
 ...............................................................................
@@ -141,7 +132,7 @@ One to Many
    :end-before: -- q4
 
 .. index::
-   single: bellmanFord ; Many to One - Experimental on v3.0
+   single: bellmanFord - Experimental ; Many to One - Experimental on v3.0
 
 Many to One
 ...............................................................................
@@ -162,7 +153,7 @@ Many to One
    :end-before: -- q5
 
 .. index::
-    single: bellmanFord ; Many to Many - Experimental on v3.0
+    single: bellmanFord - Experimental; Many to Many - Experimental on v3.0
 
 Many to Many
 ...............................................................................
@@ -183,7 +174,7 @@ Many to Many
    :end-before: -- q51
 
 .. index::
-    single: bellmanFord ; Combinations - Experimental on v3.2
+    single: bellmanFord - Experimental; Combinations - Experimental on v3.2
 
 Combinations
 ...............................................................................
@@ -272,8 +263,12 @@ Additional Examples
 See Also
 -------------------------------------------------------------------------------
 
-* https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm
 * :doc:`sampledata`
+* `Boost: Belman Ford <https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html>`__
+* https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm
+
+   Boost Graph Inside
+
 
 .. rubric:: Indices and tables
 
