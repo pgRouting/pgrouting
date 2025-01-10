@@ -16501,6 +16501,13 @@ msgstr "Minors 3.x"
 msgid "pgRouting 3.7"
 msgstr "pgRouting 3.7"
 
+#, fuzzy
+msgid "pgRouting 3.7.2 Release Notes"
+msgstr "pgRouting 3.7.1 发布说明"
+
+msgid "No Changes Yet"
+msgstr ""
+
 msgid "pgRouting 3.7.1 Release Notes"
 msgstr "pgRouting 3.7.1 发布说明"
 

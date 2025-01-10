@@ -17996,6 +17996,13 @@ msgid "pgRouting 3.7"
 msgstr "pgRouting 3.7"
 
 #, fuzzy
+msgid "pgRouting 3.7.2 Release Notes"
+msgstr "Notas de la versión de pgRouting 3.7.0"
+
+msgid "No Changes Yet"
+msgstr "Aún no hay cambios"
+
+#, fuzzy
 msgid "pgRouting 3.7.1 Release Notes"
 msgstr "Notas de la versión de pgRouting 3.7.0"
 
@@ -21997,9 +22004,6 @@ msgstr "pgr_withPoints es pgr_dijkstraVia **con puntos**"
 
 #~ msgid ":doc:`pgr_trspVia`:"
 #~ msgstr ":doc:`pgr_trspVia`:"
-
-#~ msgid "No Changes Yet"
-#~ msgstr "Aún no hay cambios"
 
 #~ msgid ""
 #~ "And will travel thru the following Via points :math:"
