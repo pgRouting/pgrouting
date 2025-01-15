@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-18 21:19+0000\n"
+"POT-Creation-Date: 2025-01-10 14:53+0000\n"
 "PO-Revision-Date: 2024-12-07 13:04+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
@@ -742,7 +742,8 @@ msgstr ""
 "`Wikipedia: Problema del viajante <https://es.wikipedia.org/wiki/"
 "Problema_del_viajante>`__"
 
-msgid "Vehicle Routing Functions - Category (Experimental)"
+#, fuzzy
+msgid "Vehicle Routing Functions - Category"
 msgstr "Funciones de Ruteo de Vehículos - Categoría (Experimental)"
 
 msgid "Pickup and delivery problem"
@@ -2812,9 +2813,6 @@ msgstr "Se espera que termine más rápido que pgr_astar"
 msgid ":doc:`aStar-family`"
 msgstr ":doc:`aStar-family`"
 
-msgid "Previous versions of this page"
-msgstr "Versiones anteriores de esta página"
-
 msgid "Bidirectional Dijkstra - Family of functions"
 msgstr "Bidirectional Dijkstra - Familia de funciones"
 
@@ -4383,6 +4381,14 @@ msgstr ""
 ":doc:`pgr_cuthillMckeeOrdering` - Ordenamiento Cuthill-McKee de grafo sin no "
 "dirigido."
 
+#, fuzzy
+msgid ""
+":doc:`pgr_topologicalSort` - Linear ordering of the vertices for directed "
+"acyclic graph."
+msgstr ""
+"``pgr_topologicalSort`` — Devuelve el orden lineal de los vértices para los "
+"grafos acíclicos dirigidos ponderados (DAG)."
+
 msgid ":doc:`metrics-family`"
 msgstr ":doc:`metrics-family`"
 
@@ -4402,8 +4408,9 @@ msgstr "Categorías"
 msgid ":doc:`VRP-category`"
 msgstr ":doc:`VRP-category`"
 
-msgid "Unclassified"
-msgstr "No clasificado"
+#, fuzzy
+msgid "Shortest Path Category"
+msgstr "Rutas más cortas K - Categoría"
 
 msgid ":doc:`pgr_bellmanFord`"
 msgstr ":doc:`pgr_bellmanFord`"
@@ -4414,20 +4421,24 @@ msgstr ":doc:`pgr_dagShortestPath`"
 msgid ":doc:`pgr_edwardMoore`"
 msgstr ":doc:`pgr_edwardMoore`"
 
+#, fuzzy
+msgid "Planar Family"
+msgstr "Familia aStar"
+
 msgid ":doc:`pgr_isPlanar`"
 msgstr ":doc:`pgr_isPlanar`"
+
+msgid "Miscellaneous Algoritms"
+msgstr ""
+
+msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
+msgstr ":doc:`pgr_lengauerTarjanDominatorTree`"
 
 msgid ":doc:`pgr_stoerWagner`"
 msgstr ":doc:`pgr_stoerWagner`"
 
-msgid ":doc:`pgr_topologicalSort`"
-msgstr ":doc:`pgr_topologicalSort`"
-
 msgid ":doc:`pgr_transitiveClosure`"
 msgstr ":doc:`pgr_transitiveClosure`"
-
-msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
-msgstr ":doc:`pgr_lengauerTarjanDominatorTree`"
 
 msgid ":doc:`pgr_hawickCircuits`"
 msgstr ":doc:`pgr_hawickCircuits`"
@@ -4930,134 +4941,28 @@ msgstr ":doc:`release_notes`"
 msgid "pgRouting 4.0.0 Release Notes"
 msgstr "Notas de la versión de pgRouting 3.0.0"
 
-msgid "No Changes Yet"
-msgstr "Aún no hay cambios"
-
-msgid "pgRouting 3"
-msgstr "pgRouting 3"
-
-msgid "Minors 3.x"
-msgstr ""
-
-msgid "pgRouting 3.7"
-msgstr "pgRouting 3.7"
-
-msgid "pgRouting 3.7.0 Release Notes"
-msgstr "Notas de la versión de pgRouting 3.7.0"
+#, fuzzy
+msgid "Removal of deprecated functions and signatures"
+msgstr "Sobre las firmas obsoletas:"
 
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.7.0 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
+"``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``"
 msgstr ""
-"Para ver todos los problemas y solicitudes de extracción cerrados para ésta "
-"versión, consulte la `meta cerrada 3.7.0 <https://github.com/pgRouting/"
-"pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`_"
 
-msgid "Support"
-msgstr "Soporte"
+#, fuzzy
+msgid "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+msgstr "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
 
+#, fuzzy
 msgid ""
-"`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stop support of "
-"PostgreSQL12 on pgrouting v3.7"
+"``pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
+"boolean,text)``"
 msgstr ""
-"`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ PostgreSQL 12 "
-"no se apya en pgrouting v3.7"
+"Correción pgr_trsp(text,integer,double precision,integer,double precision,"
+"boolean,boolean[,text])"
 
-msgid "Stopping support of PostgreSQL 12"
-msgstr "PostgreSQL 12 ya no es soportado"
-
-msgid "CI does not test for PostgreSQL 12"
-msgstr "CI no hace pruebas con PostgreSQL 12"
-
-msgid "New experimental functions"
-msgstr "Nuevas funciones experimentales"
-
-msgid "Metrics"
-msgstr "Métricas"
-
-msgid "pgr_betweennessCentrality"
-msgstr "pgr_betweennessCentrality"
-
-msgid "Official functions changes"
-msgstr "Cambios en las funciones oficiales"
-
-msgid ""
-"`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standarize "
-"spanning tree functions output"
-msgstr ""
-"`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Estandarización "
-"de las salida de las funciones de árbol de expansión"
-
-msgid "Functions:"
-msgstr "Funciones:"
-
-msgid "``pgr_kruskalDD``"
-msgstr "``pgr_kruskalDD``"
-
-msgid "``pgr_kruskalDFS``"
-msgstr "``pgr_kruskalDFS``"
-
-msgid "``pgr_kruskalBFS``"
-msgstr "``pgr_kruskalBFS``"
-
-msgid "``pgr_primDD``"
-msgstr "``pgr_primDD``"
-
-msgid "``pgr_primDFS``"
-msgstr "``pgr_primDFS``"
-
-msgid "``pgr_primBFS``"
-msgstr "``pgr_primBFS``"
-
-msgid "Standarizing output columns to |result-spantree|"
-msgstr "Estandarización de columnas de resultados a |result-spantree|"
-
-msgid "Added ``pred`` result columns."
-msgstr "Agregado columna de resultados ``pred``."
-
-msgid "Experimental promoted to proposed."
-msgstr "Experimental promovido a propuesto."
-
-msgid ""
-"`#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ pgr_LineGraph "
-"ignores directed flag and use negative values for identifiers."
-msgstr ""
-"`#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ pgr_LineGraph "
-"ignora la bandera directed y usa valores negatives para identificadores."
-
-msgid "``pgr_lineGraph``"
-msgstr "``pgr_lineGraph``"
-
-msgid "Promoted to **proposed** signature."
-msgstr "Promovido a firma **propuesta**."
-
-msgid "Works for directed and undirected graphs."
-msgstr "Funciona para grafos dirigidos y no dirigidos."
-
-msgid "Code enhancement"
-msgstr "Mejora del código"
-
-msgid ""
-"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Driving "
-"distance cleanup"
-msgstr ""
-"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Limpieza de la "
-"distancia de conducción"
-
-msgid ""
-"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Read postgresql "
-"data on C++"
-msgstr ""
-"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Leer datos "
-"postgresql en C++"
-
-msgid ""
-"`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy does "
-"not work"
-msgstr ""
-"`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy no "
-"funciona"
+msgid "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
+msgstr "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
 
 msgid "All releases"
 msgstr "Todas las versiones"
@@ -5106,12 +5011,6 @@ msgid "All deprecated functions will be removed on next mayor version 4.0.0"
 msgstr ""
 "Todas las funciones obsoletas serán removidas en las siguiente versión mayor "
 "4.0.0"
-
-msgid "Migration of functions"
-msgstr "Migración de funciones"
-
-msgid "Migrating functions"
-msgstr "Migrando funciones"
 
 msgid "Migration of ``pgr_aStar``"
 msgstr "Migración de ``pgr_aStar``"
@@ -5379,11 +5278,20 @@ msgstr ""
 msgid "|result-bfs|"
 msgstr "|result-bfs|"
 
+msgid "``pgr_kruskalDD``"
+msgstr "``pgr_kruskalDD``"
+
 msgid "Single vertex"
 msgstr "Vértice único"
 
 msgid "Multiple vertices"
 msgstr "Múltiples vértices"
+
+msgid "``pgr_kruskalDFS``"
+msgstr "``pgr_kruskalDFS``"
+
+msgid "``pgr_kruskalBFS``"
+msgstr "``pgr_kruskalBFS``"
 
 msgid "Output columns were |result-bfs|"
 msgstr "Las columnas de salida fueron |result-bfs|"
@@ -5565,6 +5473,15 @@ msgstr ""
 "A partir de `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__ se "
 "estandarizan las columnas de resultados :doc:`pgr_primDD`, :doc:"
 "`pgr_primBFS` y :doc:`pgr_primDFS`."
+
+msgid "``pgr_primDD``"
+msgstr "``pgr_primDD``"
+
+msgid "``pgr_primDFS``"
+msgstr "``pgr_primDFS``"
+
+msgid "``pgr_primBFS``"
+msgstr "``pgr_primBFS``"
 
 msgid "Prim single vertex"
 msgstr "Prim vértice único"
@@ -5795,8 +5712,150 @@ msgstr ""
 "Si es necesario, filtrar las columnas adicionales, por ejemplo, para "
 "devolver las columnas originales:"
 
-msgid "Migration of turn restrictions"
-msgstr "Migración de las restricciones de giro"
+msgid "Migration of ``pgr_trsp`` (Vertices)"
+msgstr "Migración de `pgr_trsp`` (Vértices)"
+
+#, fuzzy
+msgid "Signature:"
+msgstr "Firma"
+
+#, fuzzy
+msgid "Deprecated"
+msgstr "Funcion Obsoleta"
+
+#, fuzzy
+msgid "`v3.4.0 <https://docs.pgrouting.org/3.4>`__"
+msgstr ""
+"A partir de v3.4.0 <https://docs.pgrouting.org/3.4/es/migration.html>`__"
+
+msgid "Removed"
+msgstr ""
+
+#, fuzzy
+msgid "`v4.0.0 <https://docs.pgrouting.org/4.0>`__"
+msgstr ""
+"A partir de v3.4.0 <https://docs.pgrouting.org/3.4/es/migration.html>`__"
+
+#, fuzzy
+msgid "See also"
+msgstr "Ver también"
+
+#, fuzzy
+msgid ":doc:`pgr_dijkstra`"
+msgstr ":doc:`pgr_dijkstra`:"
+
+msgid ":doc:`pgr_trsp`"
+msgstr ":doc:`pgr_trsp`"
+
+#, fuzzy
+msgid "`Migration of restrictions`_"
+msgstr "Migración de restricciones"
+
+#, fuzzy
+msgid "Use ``pgr_dijkstra`` when there are no restrictions."
+msgstr ":doc:`pgr_dijkstra` cuando no hay restricciones,"
+
+msgid "Use :doc:`pgr_dijkstra` instead."
+msgstr "Usa en vez :doc:`pgr_dijkstra`."
+
+#, fuzzy
+msgid "To get the original column names:"
+msgstr "Para obtener la conectividad del grafo:"
+
+msgid "``id1`` is the node"
+msgstr "``id1`` es el nodo"
+
+msgid "``id2`` is the edge"
+msgstr "``id2`` es la arista"
+
+#, fuzzy
+msgid "Use ``pgr_trsp`` when there are restrictions."
+msgstr ":doc:`pgr_trspVia` cuando hay restricciones."
+
+msgid "Use :doc:`pgr_trsp` (One to One) instead."
+msgstr "Utilice en su lugar :doc:`pgr_trsp` (Uno a Uno)."
+
+msgid "Migration of ``pgr_trsp`` (Edges)"
+msgstr "Migración de ``pgr_trsp`` (Aristas)"
+
+msgid ":doc:`pgr_withPoints`"
+msgstr ":doc:`pgr_withPoints`"
+
+#, fuzzy
+msgid ":doc:`pgr_trsp_withPoints`"
+msgstr ":doc:`pgr_trsp_withPoints`:"
+
+#, fuzzy
+msgid "Use ``pgr_withPoints`` when there are no restrictions."
+msgstr ":doc:`pgr_withPoints` cuando no hay restricciones,"
+
+#, fuzzy
+msgid "Use :doc:`pgr_withPoints` (Ont to One) instead."
+msgstr "Utilice en su lugar :doc:`pgr_trsp` (Uno a Uno)."
+
+#, fuzzy
+msgid "Use ``pgr_trsp_withPoints`` when there are restrictions."
+msgstr ":doc:`pgr_trspVia_withPoints` cuando hay restricciones."
+
+msgid "Use :doc:`pgr_trsp_withPoints` instead."
+msgstr "Utilizar en su lugar :doc:`pgr_trsp_withPoints`."
+
+#, fuzzy
+msgid "Migration of ``pgr_trspViaVertices``"
+msgstr "Migraciones de ``pgr_trspViaVertices``"
+
+msgid ":doc:`pgr_dijkstraVia`"
+msgstr ":doc:`pgr_dijkstraVia`"
+
+msgid ":doc:`pgr_trspVia`"
+msgstr ":doc:`pgr_trspVia`"
+
+#, fuzzy
+msgid "Use ``pgr_dijkstraVia`` when there are no restrictions"
+msgstr ":doc:`pgr_dijkstraVia` cuando no hay restricciones,"
+
+msgid "Use :doc:`pgr_dijkstraVia` instead."
+msgstr "Usar :doc:`pgr_dijkstraVia` en su lugar."
+
+msgid "``id1`` is the path identifier"
+msgstr "``id1`` es el identificador de camino"
+
+msgid "``id2`` is the node"
+msgstr "``id2`` es el nodo"
+
+msgid "``id3`` is the edge"
+msgstr "``id3`` es la arista"
+
+#, fuzzy
+msgid "Use ``pgr_trspVia`` when there are restrictions"
+msgstr ":doc:`pgr_trspVia` cuando hay restricciones."
+
+msgid "Use :doc:`pgr_trspVia` instead."
+msgstr "Usar :doc:`pgr_trspVia` en su lugar."
+
+#, fuzzy
+msgid "Migration of ``pgr_trspViaEdges``"
+msgstr "Migración de ``pgr_trspViaEdges``"
+
+msgid ":doc:`pgr_withPointsVia`"
+msgstr ":doc:`pgr_withPointsVia`"
+
+msgid ":doc:`pgr_trspVia_withPoints`"
+msgstr ":doc:`pgr_trspVia_withPoints`"
+
+#, fuzzy
+msgid "Use ``pgr_withPointsVia`` when there are no restrictions"
+msgstr ":doc:`pgr_withPointsVia` cuando no hay restricciones,"
+
+msgid "Use :doc:`pgr_withPointsVia` instead."
+msgstr "Usar :doc:`pgr_withPointsVia` en su lugar."
+
+#, fuzzy
+msgid "Use ``pgr_trspVia_withPoints`` when there are restrictions"
+msgstr ":doc:`pgr_trspVia_withPoints` cuando hay restricciones."
+
+msgid "Use :doc:`pgr_trspVia_withPoints` instead."
+msgstr "Usar :doc:`pgr_trspVia_withPoints` en su lugar."
 
 msgid "Migration of restrictions"
 msgstr "Migración de restricciones"
@@ -5950,257 +6009,6 @@ msgstr "Se eliminara en la próxima versión mayor 4.0.0"
 
 msgid "The migrated table contents:"
 msgstr "El contenido de la tabla de migración:"
-
-msgid "Migration of ``pgr_trsp`` (Vertices)"
-msgstr "Migración de `pgr_trsp`` (Vértices)"
-
-msgid ""
-":doc:`pgr_trsp` signatures have changed and many issues have been fixed in "
-"the new signatures. This section will show how to migrate from the old "
-"signatures to the new replacement functions. This also affects the "
-"restrictions."
-msgstr ""
-":doc:`pgr_trsp` firmas han cambiando y varios problemas han sido arreglados "
-"en las nuevas firmas. Esta sección enseñara como migrar las viejas firmas a "
-"la nueva función de reemplazo. Esto también afecta las restricciones ."
-
-msgid "The integral type of the ``Edges SQL`` can only be ``INTEGER``."
-msgstr "El tipo integral de ``Edges SQL`` sólo puede ser ``INTEGER``."
-
-msgid "The floating point type of the ``Edges SQL`` can only be ``FLOAT``."
-msgstr "El tipo de punto flotante del ``Edges SQL`` solo puede ser ``FLOAT``."
-
-msgid "``directed`` flag is compulsory."
-msgstr "La bandera ``directed`` es obligatoria."
-
-msgid "Does not autodetect if ``reverse_cost`` column exist."
-msgstr "No auto-detecta si la columna``reverse_cost`` existe."
-
-msgid ""
-"User must be careful to match the existence of the column with the value of "
-"``has_rcost`` parameter."
-msgstr ""
-"El usuario debe de tener cuidado al coincidir la existencia de la columna "
-"con el valor del parámetro ``has_rcost``."
-
-msgid "The restrictions inner query is optional."
-msgstr "Las restricciones de consulta interna son opcionales."
-
-msgid "The output column names are meaningless"
-msgstr "Los nombres de la columna de salida no tienen importancia"
-
-msgid "Migrate by using:"
-msgstr "Migra al user:"
-
-msgid ":doc:`pgr_dijkstra` when there are no restrictions,"
-msgstr ":doc:`pgr_dijkstra` cuando no hay restricciones,"
-
-msgid ":doc:`pgr_trsp` (One to One) when there are restrictions."
-msgstr ":doc:`pgr_trsp` (Uno a Uno) cuando hay restricciones."
-
-msgid "Migrating ``pgr_trsp`` (Vertices) using ``pgr_dijkstra``"
-msgstr "Migrar ``pgr_trsp`` (Vértices) usando ``pgr_dijkstra``"
-
-msgid "The following query does not have restrictions."
-msgstr "La siguiente consulta no tiene restricciones."
-
-msgid "A message about deprecation is shown"
-msgstr "Un mensaje sobre lo obsoleto se enseña"
-
-msgid "Deprecated functions will be removed on the next mayor version 4.0.0"
-msgstr "Funciones obsoletas se eliminaran en la siguiente versión mayor 4.0.0"
-
-msgid "Use :doc:`pgr_dijkstra` instead."
-msgstr "Usa en vez :doc:`pgr_dijkstra`."
-
-msgid "The types casting has been removed."
-msgstr "Se han eliminado la fundición de tipos."
-
-msgid ":doc:`pgr_dijkstra`:"
-msgstr ":doc:`pgr_dijkstra`:"
-
-msgid "Autodetects if ``reverse_cost`` column is in the edges SQL."
-msgstr "Auto-detecta si la columna``reverse_cost`` está en la SQL de aristas."
-
-msgid "Accepts ``ANY-INTEGER`` on integral types"
-msgstr "Acepta ``ANY-INTEGER`` sobre tipos integrales"
-
-msgid "Accepts ``ANY-NUMERICAL`` on floating point types"
-msgstr "Acepta ``ANY-NUMERICAL`` sobre tipos de puntos flotantes"
-
-msgid "``directed`` flag has a default value of ``true``."
-msgstr "La bandera ``directed`` tiene valor de facto de ``true``."
-
-msgid "Use the same value that on the original query."
-msgstr "Usa el mismo valor de la consulta original."
-
-msgid "In this example it is ``true`` which is the default value."
-msgstr "En este ejemplo ``true`` que es el valor de facto."
-
-msgid "The flag has been omitted and the default is been used."
-msgstr "Se ha omitido la bandera y se ha utilizado el valor por defecto."
-
-msgid ""
-"When the need of using strictly the same (meaningless) names and types of "
-"the function been migrated then:"
-msgstr ""
-"Cuando la necesidad de utilizar estrictamente los mismos nombres (sin "
-"importancia) y los tipos de la función han sido migradas entonces:"
-
-msgid "``id1`` is the node"
-msgstr "``id1`` es el nodo"
-
-msgid "``id2`` is the edge"
-msgstr "``id2`` es la arista"
-
-msgid "Migrating ``pgr_trsp`` (Vertices) using ``pgr_trsp``"
-msgstr "Migrando ``pgr_trsp`` (Vértices) usando ``pgr_trsp``"
-
-msgid "The following query has restrictions."
-msgstr "La siguiente consulta tiene restricciones."
-
-msgid "The restrictions are the last parameter of the function"
-msgstr "Las restricciones son el último parámetro de la función"
-
-msgid "Using the old structure of restrictions"
-msgstr "Usando la antigua estructura de restricciones"
-
-msgid "Use :doc:`pgr_trsp` (One to One) instead."
-msgstr "Utilice en su lugar :doc:`pgr_trsp` (Uno a Uno)."
-
-msgid "The new structure of restrictions is been used."
-msgstr "La nueva estructura de restricciones han sido utilizados."
-
-msgid "It is the second parameter."
-msgstr "Es el segundo parámetro."
-
-msgid ":doc:`pgr_trsp`:"
-msgstr ":doc:`pgr_trsp`:"
-
-msgid "Migration of ``pgr_trsp`` (Edges)"
-msgstr "Migración de ``pgr_trsp`` (Aristas)"
-
-msgid "The integral types of the ``sql`` can only be ``INTEGER``."
-msgstr "Los tipos integrales de ``sql`` solo pueden ser ``INTEGER``."
-
-msgid "The floating point type of the ``sql`` can only be ``FLOAT``."
-msgstr "El tipo de punto flotante del ``sql`` solo pueden ser ``FLOAT``."
-
-msgid "For these migration guide the following points will be used:"
-msgstr "Para los siguientes puntos la guía de migración se utilizara:"
-
-msgid ":doc:`pgr_withPoints` when there are no restrictions,"
-msgstr ":doc:`pgr_withPoints` cuando no hay restricciones,"
-
-msgid ":doc:`pgr_trsp_withPoints` (One to One) when there are restrictions."
-msgstr ":doc:`pgr_trsp_withPoints` (Uno a Uno) cuando hay restricciones."
-
-msgid "Migrating ``pgr_trsp`` (Edges) using ``pgr_withPoints``"
-msgstr "Migrando ``pgr_trsp`` (Aristas) usando ``pgr_withPoints``"
-
-msgid "Use :doc:`pgr_withPoints` instead."
-msgstr "Utilizar en su lugar :doc:`pgr_withPoints`."
-
-msgid "Do not show details, as the deprecated function does not show details."
-msgstr "No enseña detalles, pues las funciones obsoletas no enseñan detalles."
-
-msgid ":doc:`pgr_withPoints`:"
-msgstr ":doc:`pgr_withPoints`:"
-
-msgid "On the points query do not include the ``side`` column."
-msgstr "La consulta de puntos con incluye la columna ``side``."
-
-msgid ""
-"When the need of using strictly the same (meaningless) names and types, and "
-"node values of the function been migrated then:"
-msgstr ""
-"Cuando la necesidad de utilizar estrictamente los mismos nombres (sin "
-"importancia) y tipos , y los valores de nodo de la función han sido migradas "
-"entonces:"
-
-msgid "Migrating ``pgr_trsp`` (Edges) using ``pgr_trsp_withPoints``"
-msgstr "Migrando``pgr_trsp`` (Aristas) utilizando ``pgr_trsp_withPoints``"
-
-msgid "Use :doc:`pgr_trsp_withPoints` instead."
-msgstr "Utilizar en su lugar :doc:`pgr_trsp_withPoints`."
-
-msgid ":doc:`pgr_trsp_withPoints`:"
-msgstr ":doc:`pgr_trsp_withPoints`:"
-
-msgid "Migration of ``pgr_trspViaVertices``"
-msgstr "Migraciones de ``pgr_trspViaVertices``"
-
-msgid "The integral types of the ``Edges SQL`` can only be ``INTEGER``."
-msgstr ""
-"Los tipos enteros de las ``Consultas de Aristas`` solo pueden ser "
-"``ENTEROS``."
-
-msgid ":doc:`pgr_dijkstraVia` when there are no restrictions,"
-msgstr ":doc:`pgr_dijkstraVia` cuando no hay restricciones,"
-
-msgid ":doc:`pgr_trspVia` when there are restrictions."
-msgstr ":doc:`pgr_trspVia` cuando hay restricciones."
-
-msgid "Migrating ``pgr_trspViaVertices`` using ``pgr_dijkstraVia``"
-msgstr "Migrando ``pgr_trspViaVertices`` usando ``pgr_dijkstraVia``"
-
-msgid "Use :doc:`pgr_dijkstraVia` instead."
-msgstr "Usar :doc:`pgr_dijkstraVia` en su lugar."
-
-msgid ":doc:`pgr_dijkstraVia`:"
-msgstr ":doc:`pgr_dijkstraVia`:"
-
-msgid "``id1`` is the path identifier"
-msgstr "``id1`` es el identificador de camino"
-
-msgid "``id2`` is the node"
-msgstr "``id2`` es el nodo"
-
-msgid "``id3`` is the edge"
-msgstr "``id3`` es la arista"
-
-msgid "Migrating ``pgr_trspViaVertices`` using ``pgr_trspVia``"
-msgstr "Migrando ``pgr_trspViaVertices`` usando ``pgr_trspVia``"
-
-msgid "Use :doc:`pgr_trspVia` instead."
-msgstr "Usar :doc:`pgr_trspVia` en su lugar."
-
-msgid ":doc:`pgr_trspVia`:"
-msgstr ":doc:`pgr_trspVia`:"
-
-msgid "Migration of ``pgr_trspViaEdges``"
-msgstr "Migración de ``pgr_trspViaEdges``"
-
-msgid ""
-"And will travel thru the following Via points :math:"
-"`4\\rightarrow3\\rightarrow6`"
-msgstr ""
-"Viajará a travez de los siguientes puntos de la vía :math:"
-"`4\\rightarrow3\\rightarrow6`"
-
-msgid ":doc:`pgr_withPointsVia` when there are no restrictions,"
-msgstr ":doc:`pgr_withPointsVia` cuando no hay restricciones,"
-
-msgid ":doc:`pgr_trspVia_withPoints` when there are restrictions."
-msgstr ":doc:`pgr_trspVia_withPoints` cuando hay restricciones."
-
-msgid "Migrating ``pgr_trspViaEdges`` using ``pgr_withPointsVia``"
-msgstr "Migrando ``pgr_trspViaEdges`` usando ``pgr_withPointsVia``"
-
-msgid "Use :doc:`pgr_withPointsVia` instead."
-msgstr "Usar :doc:`pgr_withPointsVia` en su lugar."
-
-msgid ":doc:`pgr_withPointsVia`:"
-msgstr ":doc:`pgr_withPointsVia`:"
-
-msgid "Migrating ``pgr_trspViaEdges`` using ``pgr_trspVia_withPoints``"
-msgstr "Migrando ``pgr_trspViaEdges`` usando ``pgr_trspVia_withPoints``"
-
-msgid "Use :doc:`pgr_trspVia_withPoints` instead."
-msgstr "Usar :doc:`pgr_trspVia_withPoints` en su lugar."
-
-msgid ":doc:`pgr_trspVia_withPoints`:"
-msgstr ":doc:`pgr_trspVia_withPoints`:"
 
 msgid ":doc:`withPoints-category`"
 msgstr ":doc:`withPoints-category`"
@@ -7562,9 +7370,6 @@ msgstr ""
 msgid "Parameters for the Via functions"
 msgstr "Párametros para las funciones Via"
 
-msgid ":doc:`pgr_dijkstraVia`"
-msgstr ":doc:`pgr_dijkstraVia`"
-
 msgid "SQL query as described."
 msgstr "Consulta SQL como se describe."
 
@@ -7612,9 +7417,6 @@ msgstr ""
 
 msgid "For the TRSP functions"
 msgstr "Para las funciones de TRSP"
-
-msgid ":doc:`pgr_trsp`"
-msgstr ":doc:`pgr_trsp`"
 
 msgid "Array of identifiers of destination vertices."
 msgstr "Arreglo de identificadores de vértices destino."
@@ -7678,9 +7480,6 @@ msgstr ""
 
 msgid "Used in functions the following:"
 msgstr "Se utiliza en las funciones siguientes:"
-
-msgid ":doc:`pgr_withPoints`"
-msgstr ":doc:`pgr_withPoints`"
 
 msgid ""
 "Returns set of ``(seq, path_seq [, start_pid] [, end_pid], node, edge, cost, "
@@ -9419,6 +9218,9 @@ msgstr "Soporte para devolver múltiples anillos exteriores/interiores"
 
 msgid "Renamed from version 1.x"
 msgstr "Renombrado desde la versión 1.x"
+
+msgid "Support"
+msgstr "Soporte"
 
 msgid "Returns the polygon part of an alpha shape."
 msgstr "Devuelve la parte poligonal de una forma alfa."
@@ -13130,6 +12932,9 @@ msgstr ""
 "``pgr_drivingDistance`` - Devuelve la distancia de manejo desde un nodo de "
 "inicio."
 
+msgid "Standarizing output columns to |result-spantree|"
+msgstr "Estandarización de columnas de resultados a |result-spantree|"
+
 msgid "Added ``depth`` and ``start_vid`` result columns."
 msgstr "Agregado las columnas de resultados``depth`` y ``start_vid``."
 
@@ -14566,6 +14371,9 @@ msgstr ""
 "``pgr_kruskalBFS`` — Algoritmo de Kruskal para el Árbol de Expansión Mínimo "
 "con orden de Primera Búsqueda en Anchura."
 
+msgid "Added ``pred`` result columns."
+msgstr "Agregado columna de resultados ``pred``."
+
 msgid ""
 "Visits and extracts the nodes information in Breath First Search ordering of "
 "the Minimum Spanning Tree created using Kruskal's algorithm."
@@ -14753,6 +14561,12 @@ msgid ""
 msgstr ""
 "``pgr_lineGraph`` — Transforma un grafo dado en su grafo correspondiente "
 "basado en aristas."
+
+msgid "Promoted to **proposed** signature."
+msgstr "Promovido a firma **propuesta**."
+
+msgid "Works for directed and undirected graphs."
+msgstr "Funciona para grafos dirigidos y no dirigidos."
 
 msgid ""
 "Given a graph :math:`G`, its line graph :math:`L(G)` is a graph such that:"
@@ -16602,17 +16416,10 @@ msgstr ""
 msgid "Deprecated signatures"
 msgstr "Firmas obsoletas"
 
-msgid "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
-msgstr "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
-
 msgid "``pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)``"
 msgstr ""
 
 msgid "``pgr_trspViaVertices(text,anyarray,boolean,boolean,text)``"
-msgstr ""
-
-msgid ""
-"``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``"
 msgstr ""
 
 msgid "New prototypes"
@@ -17148,10 +16955,11 @@ msgstr ""
 msgid "pgr_turnRestrictedPath - Experimental"
 msgstr "pgr_turnRestrictedPath - Experimental"
 
+#, fuzzy
 msgid ""
-"``pgr_turnRestrictedPath`` Using Yen's algorithm Vertex -Vertex routing with "
-"restrictions"
-msgstr ""
+"``pgr_turnRestrictedPath`` Using Yen's algorithm Vertex - Vertex routing "
+"with restrictions"
+msgstr ":doc:`pgr_trsp` - Ruteo Vértice - Vértice con restricciones."
 
 msgid "New experimental function"
 msgstr "Nueva función Experimental"
@@ -18138,22 +17946,14 @@ msgstr ""
 ":doc:`pgr_lineGraph` - Algoritmo de transformación para generar un grafo de "
 "líneas."
 
-msgid ":doc:`pgr_withPointsVia`"
-msgstr ":doc:`pgr_withPointsVia`"
-
-msgid ":doc:`pgr_trspVia`"
-msgstr ":doc:`pgr_trspVia`"
-
-msgid ":doc:`pgr_trspVia_withPoints`"
-msgstr ":doc:`pgr_trspVia_withPoints`"
-
 msgid ":doc:`withPoints-family` - Functions based on Dijkstra algorithm."
 msgstr ":doc:`withPoints-family` - Funciones basadas en el algoritmo Dijkstra."
 
 msgid "From the :doc:`TRSP-family`:"
 msgstr "Desde :doc:`TRSP-family` :"
 
-msgid "Utilities"
+#, fuzzy
+msgid "Utilities Category"
 msgstr "Utilidades"
 
 msgid ":doc:`pgr_findCloseEdges`"
@@ -18186,6 +17986,184 @@ msgstr ""
 msgid "pgRouting 4.0"
 msgstr "pgRouting 3.0"
 
+msgid "pgRouting 3"
+msgstr "pgRouting 3"
+
+msgid "Minors 3.x"
+msgstr ""
+
+msgid "pgRouting 3.7"
+msgstr "pgRouting 3.7"
+
+#, fuzzy
+msgid "pgRouting 3.7.2 Release Notes"
+msgstr "Notas de la versión de pgRouting 3.7.0"
+
+#, fuzzy
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git closed "
+"milestone for 3.7.2 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
+msgstr ""
+"Para ver todos los problemas y solicitudes de extracción cerrados para ésta "
+"versión, consulte la `meta cerrada 3.7.0 <https://github.com/pgRouting/"
+"pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`_"
+
+msgid "Build"
+msgstr "Construir"
+
+#, fuzzy
+msgid ""
+"`#2713 <https://github.com/pgRouting/pgrouting/pull/2713>`__ cmake missing "
+"some policies and min version"
+msgstr ""
+"`#2517 <https://github.com/pgRouting/pgrouting/pull/2517>`__ Simplificación "
+"del código de Astar."
+
+msgid "Using OLD policies: CMP0148, CMP0144, CMP0167"
+msgstr ""
+
+msgid "Minimum cmake version 3.12"
+msgstr ""
+
+#, fuzzy
+msgid ""
+"`#2707 <https://github.com/pgRouting/pgrouting/pull/2707>`__ Build failure "
+"in pgRouting 3.7.1 on Alpine"
+msgstr ""
+"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Leer datos "
+"postgresql en C++"
+
+#, fuzzy
+msgid ""
+"`#2706 <https://github.com/pgRouting/pgrouting/pull/2706>`__ winnie crashing "
+"on pgr_betweennessCentrality"
+msgstr ""
+"`#2505 <https://github.com/pgRouting/pgrouting/pull/2505>`__ Usando "
+"namespace."
+
+#, fuzzy
+msgid "pgRouting 3.7.1 Release Notes"
+msgstr "Notas de la versión de pgRouting 3.7.0"
+
+#, fuzzy
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git closed "
+"milestone for 3.7.1 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
+msgstr ""
+"Para ver todos los problemas y solicitudes de extracción cerrados para ésta "
+"versión, consulte la `meta cerrada 3.7.0 <https://github.com/pgRouting/"
+"pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`_"
+
+#, fuzzy
+msgid ""
+"`#2680 <https://github.com/pgRouting/pgrouting/pull/2680>`__ fails to "
+"compile under mingw64 gcc 13.2"
+msgstr ""
+"`#2588 <https://github.com/pgRouting/pgrouting/pull/2588>`__ pgrouting 3.6.0 "
+"no construye en OSX"
+
+#, fuzzy
+msgid ""
+"`#2689 <https://github.com/pgRouting/pgrouting/pull/2689>`__ When point is a "
+"vertex, the withPoints family do not return results."
+msgstr ""
+"`#2490 <https://github.com/pgRouting/pgrouting/pull/2490>`__ Lígas "
+"automáticas historiales."
+
+#, fuzzy
+msgid "C/C++ code enhancemet"
+msgstr "Mejora de código C/C++"
+
+#, fuzzy
+msgid "TRSP family"
+msgstr "Familia Prim"
+
+msgid "pgRouting 3.7.0 Release Notes"
+msgstr "Notas de la versión de pgRouting 3.7.0"
+
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git closed "
+"milestone for 3.7.0 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
+msgstr ""
+"Para ver todos los problemas y solicitudes de extracción cerrados para ésta "
+"versión, consulte la `meta cerrada 3.7.0 <https://github.com/pgRouting/"
+"pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`_"
+
+msgid ""
+"`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stop support of "
+"PostgreSQL12 on pgrouting v3.7"
+msgstr ""
+"`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ PostgreSQL 12 "
+"no se apya en pgrouting v3.7"
+
+msgid "Stopping support of PostgreSQL 12"
+msgstr "PostgreSQL 12 ya no es soportado"
+
+msgid "CI does not test for PostgreSQL 12"
+msgstr "CI no hace pruebas con PostgreSQL 12"
+
+msgid "New experimental functions"
+msgstr "Nuevas funciones experimentales"
+
+msgid "Metrics"
+msgstr "Métricas"
+
+msgid "pgr_betweennessCentrality"
+msgstr "pgr_betweennessCentrality"
+
+msgid "Official functions changes"
+msgstr "Cambios en las funciones oficiales"
+
+msgid ""
+"`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standarize "
+"spanning tree functions output"
+msgstr ""
+"`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Estandarización "
+"de las salida de las funciones de árbol de expansión"
+
+msgid "Functions:"
+msgstr "Funciones:"
+
+msgid "Experimental promoted to proposed."
+msgstr "Experimental promovido a propuesto."
+
+msgid ""
+"`#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ pgr_LineGraph "
+"ignores directed flag and use negative values for identifiers."
+msgstr ""
+"`#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ pgr_LineGraph "
+"ignora la bandera directed y usa valores negatives para identificadores."
+
+msgid "``pgr_lineGraph``"
+msgstr "``pgr_lineGraph``"
+
+msgid "Code enhancement"
+msgstr "Mejora del código"
+
+msgid ""
+"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Driving "
+"distance cleanup"
+msgstr ""
+"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Limpieza de la "
+"distancia de conducción"
+
+msgid ""
+"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Read postgresql "
+"data on C++"
+msgstr ""
+"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Leer datos "
+"postgresql en C++"
+
+msgid ""
+"`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy does "
+"not work"
+msgstr ""
+"`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy no "
+"funciona"
+
 msgid "pgRouting 3.6"
 msgstr "pgRouting 3.6"
 
@@ -18200,9 +18178,6 @@ msgstr ""
 "Para ver todas las incidencias y pull requests cerrados por esta versión, "
 "consulte `Git closed milestone for 3.6.3 <https://github.com/pgRouting/"
 "pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.3%22>`__"
-
-msgid "Build"
-msgstr "Construir"
 
 msgid "Explicit minimum requirements:"
 msgstr ""
@@ -18491,9 +18466,10 @@ msgstr ""
 msgid "Issue fixes"
 msgstr "Corrección de problema"
 
+#, fuzzy
 msgid ""
 "`#2565 <https://github.com/pgRouting/pgrouting/issues/2565>`__ "
-"pgr_pgr_lengauerTarjanDominatorTree triggers an assertion"
+"pgr_lengauerTarjanDominatorTree triggers an assertion"
 msgstr ""
 "`#2565 <https://github.com/pgRouting/pgrouting/issues/2565>`__ "
 "pgr_pgr_lengauerTarjanDominatorTree genera un error de afirmación"
@@ -18691,6 +18667,9 @@ msgstr "Topología"
 msgid "``pgr_degree``"
 msgstr ""
 
+msgid "Utilities"
+msgstr "Utilidades"
+
 msgid "``pgr_findCloseEdges`` (One point)"
 msgstr ""
 
@@ -18702,6 +18681,9 @@ msgstr "Ordenamiento"
 
 msgid "``pgr_cuthillMckeeOrdering``"
 msgstr "``pgr_cuthillMckeeOrdering``"
+
+msgid "Unclassified"
+msgstr "No clasificado"
 
 msgid "Flow functions"
 msgstr "Funciones de flujo"
@@ -21848,3 +21830,230 @@ msgstr "pgr_withPointsDD es pgr_drivingDistance **con puntos**"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPoints es pgr_dijkstraVia **con puntos**"
+
+#~ msgid "No Changes Yet"
+#~ msgstr "Aún no hay cambios"
+
+#~ msgid "Migration of functions"
+#~ msgstr "Migración de funciones"
+
+#~ msgid "Migrating functions"
+#~ msgstr "Migrando funciones"
+
+#~ msgid "Migration of turn restrictions"
+#~ msgstr "Migración de las restricciones de giro"
+
+#~ msgid ""
+#~ ":doc:`pgr_trsp` signatures have changed and many issues have been fixed "
+#~ "in the new signatures. This section will show how to migrate from the old "
+#~ "signatures to the new replacement functions. This also affects the "
+#~ "restrictions."
+#~ msgstr ""
+#~ ":doc:`pgr_trsp` firmas han cambiando y varios problemas han sido "
+#~ "arreglados en las nuevas firmas. Esta sección enseñara como migrar las "
+#~ "viejas firmas a la nueva función de reemplazo. Esto también afecta las "
+#~ "restricciones ."
+
+#~ msgid "The integral type of the ``Edges SQL`` can only be ``INTEGER``."
+#~ msgstr "El tipo integral de ``Edges SQL`` sólo puede ser ``INTEGER``."
+
+#~ msgid "The floating point type of the ``Edges SQL`` can only be ``FLOAT``."
+#~ msgstr ""
+#~ "El tipo de punto flotante del ``Edges SQL`` solo puede ser ``FLOAT``."
+
+#~ msgid "``directed`` flag is compulsory."
+#~ msgstr "La bandera ``directed`` es obligatoria."
+
+#~ msgid "Does not autodetect if ``reverse_cost`` column exist."
+#~ msgstr "No auto-detecta si la columna``reverse_cost`` existe."
+
+#~ msgid ""
+#~ "User must be careful to match the existence of the column with the value "
+#~ "of ``has_rcost`` parameter."
+#~ msgstr ""
+#~ "El usuario debe de tener cuidado al coincidir la existencia de la columna "
+#~ "con el valor del parámetro ``has_rcost``."
+
+#~ msgid "The restrictions inner query is optional."
+#~ msgstr "Las restricciones de consulta interna son opcionales."
+
+#~ msgid "The output column names are meaningless"
+#~ msgstr "Los nombres de la columna de salida no tienen importancia"
+
+#~ msgid "Migrate by using:"
+#~ msgstr "Migra al user:"
+
+#~ msgid ":doc:`pgr_trsp` (One to One) when there are restrictions."
+#~ msgstr ":doc:`pgr_trsp` (Uno a Uno) cuando hay restricciones."
+
+#~ msgid "Migrating ``pgr_trsp`` (Vertices) using ``pgr_dijkstra``"
+#~ msgstr "Migrar ``pgr_trsp`` (Vértices) usando ``pgr_dijkstra``"
+
+#~ msgid "The following query does not have restrictions."
+#~ msgstr "La siguiente consulta no tiene restricciones."
+
+#~ msgid "A message about deprecation is shown"
+#~ msgstr "Un mensaje sobre lo obsoleto se enseña"
+
+#~ msgid "Deprecated functions will be removed on the next mayor version 4.0.0"
+#~ msgstr ""
+#~ "Funciones obsoletas se eliminaran en la siguiente versión mayor 4.0.0"
+
+#~ msgid "The types casting has been removed."
+#~ msgstr "Se han eliminado la fundición de tipos."
+
+#~ msgid "Autodetects if ``reverse_cost`` column is in the edges SQL."
+#~ msgstr ""
+#~ "Auto-detecta si la columna``reverse_cost`` está en la SQL de aristas."
+
+#~ msgid "Accepts ``ANY-INTEGER`` on integral types"
+#~ msgstr "Acepta ``ANY-INTEGER`` sobre tipos integrales"
+
+#~ msgid "Accepts ``ANY-NUMERICAL`` on floating point types"
+#~ msgstr "Acepta ``ANY-NUMERICAL`` sobre tipos de puntos flotantes"
+
+#~ msgid "``directed`` flag has a default value of ``true``."
+#~ msgstr "La bandera ``directed`` tiene valor de facto de ``true``."
+
+#~ msgid "Use the same value that on the original query."
+#~ msgstr "Usa el mismo valor de la consulta original."
+
+#~ msgid "In this example it is ``true`` which is the default value."
+#~ msgstr "En este ejemplo ``true`` que es el valor de facto."
+
+#~ msgid "The flag has been omitted and the default is been used."
+#~ msgstr "Se ha omitido la bandera y se ha utilizado el valor por defecto."
+
+#~ msgid ""
+#~ "When the need of using strictly the same (meaningless) names and types of "
+#~ "the function been migrated then:"
+#~ msgstr ""
+#~ "Cuando la necesidad de utilizar estrictamente los mismos nombres (sin "
+#~ "importancia) y los tipos de la función han sido migradas entonces:"
+
+#~ msgid "Migrating ``pgr_trsp`` (Vertices) using ``pgr_trsp``"
+#~ msgstr "Migrando ``pgr_trsp`` (Vértices) usando ``pgr_trsp``"
+
+#~ msgid "The following query has restrictions."
+#~ msgstr "La siguiente consulta tiene restricciones."
+
+#~ msgid "The restrictions are the last parameter of the function"
+#~ msgstr "Las restricciones son el último parámetro de la función"
+
+#~ msgid "Using the old structure of restrictions"
+#~ msgstr "Usando la antigua estructura de restricciones"
+
+#~ msgid "The new structure of restrictions is been used."
+#~ msgstr "La nueva estructura de restricciones han sido utilizados."
+
+#~ msgid "It is the second parameter."
+#~ msgstr "Es el segundo parámetro."
+
+#~ msgid ":doc:`pgr_trsp`:"
+#~ msgstr ":doc:`pgr_trsp`:"
+
+#~ msgid "The integral types of the ``sql`` can only be ``INTEGER``."
+#~ msgstr "Los tipos integrales de ``sql`` solo pueden ser ``INTEGER``."
+
+#~ msgid "The floating point type of the ``sql`` can only be ``FLOAT``."
+#~ msgstr "El tipo de punto flotante del ``sql`` solo pueden ser ``FLOAT``."
+
+#~ msgid "For these migration guide the following points will be used:"
+#~ msgstr "Para los siguientes puntos la guía de migración se utilizara:"
+
+#~ msgid ":doc:`pgr_trsp_withPoints` (One to One) when there are restrictions."
+#~ msgstr ":doc:`pgr_trsp_withPoints` (Uno a Uno) cuando hay restricciones."
+
+#~ msgid "Migrating ``pgr_trsp`` (Edges) using ``pgr_withPoints``"
+#~ msgstr "Migrando ``pgr_trsp`` (Aristas) usando ``pgr_withPoints``"
+
+#~ msgid "Use :doc:`pgr_withPoints` instead."
+#~ msgstr "Utilizar en su lugar :doc:`pgr_withPoints`."
+
+#~ msgid ""
+#~ "Do not show details, as the deprecated function does not show details."
+#~ msgstr ""
+#~ "No enseña detalles, pues las funciones obsoletas no enseñan detalles."
+
+#~ msgid ":doc:`pgr_withPoints`:"
+#~ msgstr ":doc:`pgr_withPoints`:"
+
+#~ msgid "On the points query do not include the ``side`` column."
+#~ msgstr "La consulta de puntos con incluye la columna ``side``."
+
+#~ msgid ""
+#~ "When the need of using strictly the same (meaningless) names and types, "
+#~ "and node values of the function been migrated then:"
+#~ msgstr ""
+#~ "Cuando la necesidad de utilizar estrictamente los mismos nombres (sin "
+#~ "importancia) y tipos , y los valores de nodo de la función han sido "
+#~ "migradas entonces:"
+
+#~ msgid "Migrating ``pgr_trsp`` (Edges) using ``pgr_trsp_withPoints``"
+#~ msgstr "Migrando``pgr_trsp`` (Aristas) utilizando ``pgr_trsp_withPoints``"
+
+#, fuzzy
+#~ msgid "Migrating pgr_trspViaVertices using pgr_dijkstraVia"
+#~ msgstr "Migrando ``pgr_trspViaVertices`` usando ``pgr_dijkstraVia``"
+
+#, fuzzy
+#~ msgid "Using :doc:`pgr_dijkstraVia`."
+#~ msgstr ":doc:`pgr_dijkstraVia`"
+
+#, fuzzy
+#~ msgid ""
+#~ "When the need of using the same (meaningless) names and and strict types "
+#~ "then convert the result to the deprecated function columns:"
+#~ msgstr ""
+#~ "Cuando la necesidad de utilizar estrictamente los mismos nombres (sin "
+#~ "importancia) y los tipos de la función han sido migradas entonces:"
+
+#, fuzzy
+#~ msgid "Migrating pgr_trspViaVertices using pgr_trspVia"
+#~ msgstr "Migrando ``pgr_trspViaVertices`` usando ``pgr_trspVia``"
+
+#, fuzzy
+#~ msgid "Using :doc:`pgr_trspVia`."
+#~ msgstr ":doc:`pgr_trspVia`"
+
+#, fuzzy
+#~ msgid "Migrating pgr_trspViaEdges using pgr_withPointsVia"
+#~ msgstr "Migrando ``pgr_trspViaEdges`` usando ``pgr_withPointsVia``"
+
+#, fuzzy
+#~ msgid "Using :doc:`pgr_withPointsVia`."
+#~ msgstr "Usando :doc:`pgr_withPoints`"
+
+#, fuzzy
+#~ msgid "Migrating pgr_trspViaEdges using pgr_trspVia_withPoints"
+#~ msgstr "Migrando ``pgr_trspViaEdges`` usando ``pgr_trspVia_withPoints``"
+
+#~ msgid "Previous versions of this page"
+#~ msgstr "Versiones anteriores de esta página"
+
+#~ msgid ":doc:`pgr_topologicalSort`"
+#~ msgstr ":doc:`pgr_topologicalSort`"
+
+#~ msgid "The integral types of the ``Edges SQL`` can only be ``INTEGER``."
+#~ msgstr ""
+#~ "Los tipos enteros de las ``Consultas de Aristas`` solo pueden ser "
+#~ "``ENTEROS``."
+
+#~ msgid ":doc:`pgr_dijkstraVia`:"
+#~ msgstr ":doc:`pgr_dijkstraVia`:"
+
+#~ msgid ":doc:`pgr_trspVia`:"
+#~ msgstr ":doc:`pgr_trspVia`:"
+
+#~ msgid ""
+#~ "And will travel thru the following Via points :math:"
+#~ "`4\\rightarrow3\\rightarrow6`"
+#~ msgstr ""
+#~ "Viajará a travez de los siguientes puntos de la vía :math:"
+#~ "`4\\rightarrow3\\rightarrow6`"
+
+#~ msgid ":doc:`pgr_withPointsVia`:"
+#~ msgstr ":doc:`pgr_withPointsVia`:"
+
+#~ msgid ":doc:`pgr_trspVia_withPoints`:"
+#~ msgstr ":doc:`pgr_trspVia_withPoints`:"

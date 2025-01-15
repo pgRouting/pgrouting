@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-18 21:19+0000\n"
+"POT-Creation-Date: 2025-01-10 14:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -664,7 +664,7 @@ msgid ""
 "Traveling_salesman_problem>`__"
 msgstr ""
 
-msgid "Vehicle Routing Functions - Category (Experimental)"
+msgid "Vehicle Routing Functions - Category"
 msgstr ""
 
 msgid "Pickup and delivery problem"
@@ -2585,9 +2585,6 @@ msgstr ""
 msgid ":doc:`aStar-family`"
 msgstr ""
 
-msgid "Previous versions of this page"
-msgstr ""
-
 msgid "Bidirectional Dijkstra - Family of functions"
 msgstr ""
 
@@ -3904,6 +3901,11 @@ msgid ""
 "an undirected graph."
 msgstr ""
 
+msgid ""
+":doc:`pgr_topologicalSort` - Linear ordering of the vertices for directed "
+"acyclic graph."
+msgstr ""
+
 msgid ":doc:`metrics-family`"
 msgstr ""
 
@@ -3921,7 +3923,7 @@ msgstr ""
 msgid ":doc:`VRP-category`"
 msgstr ""
 
-msgid "Unclassified"
+msgid "Shortest Path Category"
 msgstr ""
 
 msgid ":doc:`pgr_bellmanFord`"
@@ -3933,19 +3935,22 @@ msgstr ""
 msgid ":doc:`pgr_edwardMoore`"
 msgstr ""
 
+msgid "Planar Family"
+msgstr ""
+
 msgid ":doc:`pgr_isPlanar`"
+msgstr ""
+
+msgid "Miscellaneous Algoritms"
+msgstr ""
+
+msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
 msgstr ""
 
 msgid ":doc:`pgr_stoerWagner`"
 msgstr ""
 
-msgid ":doc:`pgr_topologicalSort`"
-msgstr ""
-
 msgid ":doc:`pgr_transitiveClosure`"
-msgstr ""
-
-msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
 msgstr ""
 
 msgid ":doc:`pgr_hawickCircuits`"
@@ -4378,118 +4383,22 @@ msgstr ""
 msgid "pgRouting 4.0.0 Release Notes"
 msgstr ""
 
-msgid "No Changes Yet"
-msgstr ""
-
-msgid "pgRouting 3"
-msgstr ""
-
-msgid "Minors 3.x"
-msgstr ""
-
-msgid "pgRouting 3.7"
-msgstr ""
-
-msgid "pgRouting 3.7.0 Release Notes"
+msgid "Removal of deprecated functions and signatures"
 msgstr ""
 
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.7.0 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
+"``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``"
 msgstr ""
 
-msgid "Support"
-msgstr ""
-
-msgid ""
-"`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stop support of "
-"PostgreSQL12 on pgrouting v3.7"
-msgstr ""
-
-msgid "Stopping support of PostgreSQL 12"
-msgstr ""
-
-msgid "CI does not test for PostgreSQL 12"
-msgstr ""
-
-msgid "New experimental functions"
-msgstr ""
-
-msgid "Metrics"
-msgstr ""
-
-msgid "pgr_betweennessCentrality"
-msgstr ""
-
-msgid "Official functions changes"
+msgid "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
 msgstr ""
 
 msgid ""
-"`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standarize "
-"spanning tree functions output"
+"``pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
+"boolean,text)``"
 msgstr ""
 
-msgid "Functions:"
-msgstr ""
-
-msgid "``pgr_kruskalDD``"
-msgstr ""
-
-msgid "``pgr_kruskalDFS``"
-msgstr ""
-
-msgid "``pgr_kruskalBFS``"
-msgstr ""
-
-msgid "``pgr_primDD``"
-msgstr ""
-
-msgid "``pgr_primDFS``"
-msgstr ""
-
-msgid "``pgr_primBFS``"
-msgstr ""
-
-msgid "Standarizing output columns to |result-spantree|"
-msgstr ""
-
-msgid "Added ``pred`` result columns."
-msgstr ""
-
-msgid "Experimental promoted to proposed."
-msgstr ""
-
-msgid ""
-"`#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ pgr_LineGraph "
-"ignores directed flag and use negative values for identifiers."
-msgstr ""
-
-msgid "``pgr_lineGraph``"
-msgstr ""
-
-msgid "Promoted to **proposed** signature."
-msgstr ""
-
-msgid "Works for directed and undirected graphs."
-msgstr ""
-
-msgid "Code enhancement"
-msgstr ""
-
-msgid ""
-"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Driving "
-"distance cleanup"
-msgstr ""
-
-msgid ""
-"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Read postgresql "
-"data on C++"
-msgstr ""
-
-msgid ""
-"`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy does "
-"not work"
+msgid "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
 msgstr ""
 
 msgid "All releases"
@@ -4531,12 +4440,6 @@ msgid "Results can be different because of the changes."
 msgstr ""
 
 msgid "All deprecated functions will be removed on next mayor version 4.0.0"
-msgstr ""
-
-msgid "Migration of functions"
-msgstr ""
-
-msgid "Migrating functions"
 msgstr ""
 
 msgid "Migration of ``pgr_aStar``"
@@ -4774,10 +4677,19 @@ msgstr ""
 msgid "|result-bfs|"
 msgstr ""
 
+msgid "``pgr_kruskalDD``"
+msgstr ""
+
 msgid "Single vertex"
 msgstr ""
 
 msgid "Multiple vertices"
+msgstr ""
+
+msgid "``pgr_kruskalDFS``"
+msgstr ""
+
+msgid "``pgr_kruskalBFS``"
 msgstr ""
 
 msgid "Output columns were |result-bfs|"
@@ -4931,6 +4843,15 @@ msgid ""
 "Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__ :"
 "doc:`pgr_primDD`, :doc:`pgr_primBFS` and :doc:`pgr_primDFS` result columns "
 "are being standardized."
+msgstr ""
+
+msgid "``pgr_primDD``"
+msgstr ""
+
+msgid "``pgr_primDFS``"
+msgstr ""
+
+msgid "``pgr_primBFS``"
 msgstr ""
 
 msgid "Prim single vertex"
@@ -5125,7 +5046,127 @@ msgid ""
 "original columns:"
 msgstr ""
 
-msgid "Migration of turn restrictions"
+msgid "Migration of ``pgr_trsp`` (Vertices)"
+msgstr ""
+
+msgid "Signature:"
+msgstr ""
+
+msgid "Deprecated"
+msgstr ""
+
+msgid "`v3.4.0 <https://docs.pgrouting.org/3.4>`__"
+msgstr ""
+
+msgid "Removed"
+msgstr ""
+
+msgid "`v4.0.0 <https://docs.pgrouting.org/4.0>`__"
+msgstr ""
+
+msgid "See also"
+msgstr ""
+
+msgid ":doc:`pgr_dijkstra`"
+msgstr ""
+
+msgid ":doc:`pgr_trsp`"
+msgstr ""
+
+msgid "`Migration of restrictions`_"
+msgstr ""
+
+msgid "Use ``pgr_dijkstra`` when there are no restrictions."
+msgstr ""
+
+msgid "Use :doc:`pgr_dijkstra` instead."
+msgstr ""
+
+msgid "To get the original column names:"
+msgstr ""
+
+msgid "``id1`` is the node"
+msgstr ""
+
+msgid "``id2`` is the edge"
+msgstr ""
+
+msgid "Use ``pgr_trsp`` when there are restrictions."
+msgstr ""
+
+msgid "Use :doc:`pgr_trsp` (One to One) instead."
+msgstr ""
+
+msgid "Migration of ``pgr_trsp`` (Edges)"
+msgstr ""
+
+msgid ":doc:`pgr_withPoints`"
+msgstr ""
+
+msgid ":doc:`pgr_trsp_withPoints`"
+msgstr ""
+
+msgid "Use ``pgr_withPoints`` when there are no restrictions."
+msgstr ""
+
+msgid "Use :doc:`pgr_withPoints` (Ont to One) instead."
+msgstr ""
+
+msgid "Use ``pgr_trsp_withPoints`` when there are restrictions."
+msgstr ""
+
+msgid "Use :doc:`pgr_trsp_withPoints` instead."
+msgstr ""
+
+msgid "Migration of ``pgr_trspViaVertices``"
+msgstr ""
+
+msgid ":doc:`pgr_dijkstraVia`"
+msgstr ""
+
+msgid ":doc:`pgr_trspVia`"
+msgstr ""
+
+msgid "Use ``pgr_dijkstraVia`` when there are no restrictions"
+msgstr ""
+
+msgid "Use :doc:`pgr_dijkstraVia` instead."
+msgstr ""
+
+msgid "``id1`` is the path identifier"
+msgstr ""
+
+msgid "``id2`` is the node"
+msgstr ""
+
+msgid "``id3`` is the edge"
+msgstr ""
+
+msgid "Use ``pgr_trspVia`` when there are restrictions"
+msgstr ""
+
+msgid "Use :doc:`pgr_trspVia` instead."
+msgstr ""
+
+msgid "Migration of ``pgr_trspViaEdges``"
+msgstr ""
+
+msgid ":doc:`pgr_withPointsVia`"
+msgstr ""
+
+msgid ":doc:`pgr_trspVia_withPoints`"
+msgstr ""
+
+msgid "Use ``pgr_withPointsVia`` when there are no restrictions"
+msgstr ""
+
+msgid "Use :doc:`pgr_withPointsVia` instead."
+msgstr ""
+
+msgid "Use ``pgr_trspVia_withPoints`` when there are restrictions"
+msgstr ""
+
+msgid "Use :doc:`pgr_trspVia_withPoints` instead."
 msgstr ""
 
 msgid "Migration of restrictions"
@@ -5271,243 +5312,6 @@ msgid "Will be removed on the next mayor version 4.0.0"
 msgstr ""
 
 msgid "The migrated table contents:"
-msgstr ""
-
-msgid "Migration of ``pgr_trsp`` (Vertices)"
-msgstr ""
-
-msgid ""
-":doc:`pgr_trsp` signatures have changed and many issues have been fixed in "
-"the new signatures. This section will show how to migrate from the old "
-"signatures to the new replacement functions. This also affects the "
-"restrictions."
-msgstr ""
-
-msgid "The integral type of the ``Edges SQL`` can only be ``INTEGER``."
-msgstr ""
-
-msgid "The floating point type of the ``Edges SQL`` can only be ``FLOAT``."
-msgstr ""
-
-msgid "``directed`` flag is compulsory."
-msgstr ""
-
-msgid "Does not autodetect if ``reverse_cost`` column exist."
-msgstr ""
-
-msgid ""
-"User must be careful to match the existence of the column with the value of "
-"``has_rcost`` parameter."
-msgstr ""
-
-msgid "The restrictions inner query is optional."
-msgstr ""
-
-msgid "The output column names are meaningless"
-msgstr ""
-
-msgid "Migrate by using:"
-msgstr ""
-
-msgid ":doc:`pgr_dijkstra` when there are no restrictions,"
-msgstr ""
-
-msgid ":doc:`pgr_trsp` (One to One) when there are restrictions."
-msgstr ""
-
-msgid "Migrating ``pgr_trsp`` (Vertices) using ``pgr_dijkstra``"
-msgstr ""
-
-msgid "The following query does not have restrictions."
-msgstr ""
-
-msgid "A message about deprecation is shown"
-msgstr ""
-
-msgid "Deprecated functions will be removed on the next mayor version 4.0.0"
-msgstr ""
-
-msgid "Use :doc:`pgr_dijkstra` instead."
-msgstr ""
-
-msgid "The types casting has been removed."
-msgstr ""
-
-msgid ":doc:`pgr_dijkstra`:"
-msgstr ""
-
-msgid "Autodetects if ``reverse_cost`` column is in the edges SQL."
-msgstr ""
-
-msgid "Accepts ``ANY-INTEGER`` on integral types"
-msgstr ""
-
-msgid "Accepts ``ANY-NUMERICAL`` on floating point types"
-msgstr ""
-
-msgid "``directed`` flag has a default value of ``true``."
-msgstr ""
-
-msgid "Use the same value that on the original query."
-msgstr ""
-
-msgid "In this example it is ``true`` which is the default value."
-msgstr ""
-
-msgid "The flag has been omitted and the default is been used."
-msgstr ""
-
-msgid ""
-"When the need of using strictly the same (meaningless) names and types of "
-"the function been migrated then:"
-msgstr ""
-
-msgid "``id1`` is the node"
-msgstr ""
-
-msgid "``id2`` is the edge"
-msgstr ""
-
-msgid "Migrating ``pgr_trsp`` (Vertices) using ``pgr_trsp``"
-msgstr ""
-
-msgid "The following query has restrictions."
-msgstr ""
-
-msgid "The restrictions are the last parameter of the function"
-msgstr ""
-
-msgid "Using the old structure of restrictions"
-msgstr ""
-
-msgid "Use :doc:`pgr_trsp` (One to One) instead."
-msgstr ""
-
-msgid "The new structure of restrictions is been used."
-msgstr ""
-
-msgid "It is the second parameter."
-msgstr ""
-
-msgid ":doc:`pgr_trsp`:"
-msgstr ""
-
-msgid "Migration of ``pgr_trsp`` (Edges)"
-msgstr ""
-
-msgid "The integral types of the ``sql`` can only be ``INTEGER``."
-msgstr ""
-
-msgid "The floating point type of the ``sql`` can only be ``FLOAT``."
-msgstr ""
-
-msgid "For these migration guide the following points will be used:"
-msgstr ""
-
-msgid ":doc:`pgr_withPoints` when there are no restrictions,"
-msgstr ""
-
-msgid ":doc:`pgr_trsp_withPoints` (One to One) when there are restrictions."
-msgstr ""
-
-msgid "Migrating ``pgr_trsp`` (Edges) using ``pgr_withPoints``"
-msgstr ""
-
-msgid "Use :doc:`pgr_withPoints` instead."
-msgstr ""
-
-msgid "Do not show details, as the deprecated function does not show details."
-msgstr ""
-
-msgid ":doc:`pgr_withPoints`:"
-msgstr ""
-
-msgid "On the points query do not include the ``side`` column."
-msgstr ""
-
-msgid ""
-"When the need of using strictly the same (meaningless) names and types, and "
-"node values of the function been migrated then:"
-msgstr ""
-
-msgid "Migrating ``pgr_trsp`` (Edges) using ``pgr_trsp_withPoints``"
-msgstr ""
-
-msgid "Use :doc:`pgr_trsp_withPoints` instead."
-msgstr ""
-
-msgid ":doc:`pgr_trsp_withPoints`:"
-msgstr ""
-
-msgid "Migration of ``pgr_trspViaVertices``"
-msgstr ""
-
-msgid "The integral types of the ``Edges SQL`` can only be ``INTEGER``."
-msgstr ""
-
-msgid ":doc:`pgr_dijkstraVia` when there are no restrictions,"
-msgstr ""
-
-msgid ":doc:`pgr_trspVia` when there are restrictions."
-msgstr ""
-
-msgid "Migrating ``pgr_trspViaVertices`` using ``pgr_dijkstraVia``"
-msgstr ""
-
-msgid "Use :doc:`pgr_dijkstraVia` instead."
-msgstr ""
-
-msgid ":doc:`pgr_dijkstraVia`:"
-msgstr ""
-
-msgid "``id1`` is the path identifier"
-msgstr ""
-
-msgid "``id2`` is the node"
-msgstr ""
-
-msgid "``id3`` is the edge"
-msgstr ""
-
-msgid "Migrating ``pgr_trspViaVertices`` using ``pgr_trspVia``"
-msgstr ""
-
-msgid "Use :doc:`pgr_trspVia` instead."
-msgstr ""
-
-msgid ":doc:`pgr_trspVia`:"
-msgstr ""
-
-msgid "Migration of ``pgr_trspViaEdges``"
-msgstr ""
-
-msgid ""
-"And will travel thru the following Via points :math:"
-"`4\\rightarrow3\\rightarrow6`"
-msgstr ""
-
-msgid ":doc:`pgr_withPointsVia` when there are no restrictions,"
-msgstr ""
-
-msgid ":doc:`pgr_trspVia_withPoints` when there are restrictions."
-msgstr ""
-
-msgid "Migrating ``pgr_trspViaEdges`` using ``pgr_withPointsVia``"
-msgstr ""
-
-msgid "Use :doc:`pgr_withPointsVia` instead."
-msgstr ""
-
-msgid ":doc:`pgr_withPointsVia`:"
-msgstr ""
-
-msgid "Migrating ``pgr_trspViaEdges`` using ``pgr_trspVia_withPoints``"
-msgstr ""
-
-msgid "Use :doc:`pgr_trspVia_withPoints` instead."
-msgstr ""
-
-msgid ":doc:`pgr_trspVia_withPoints`:"
 msgstr ""
 
 msgid ":doc:`withPoints-category`"
@@ -6643,9 +6447,6 @@ msgstr ""
 msgid "Parameters for the Via functions"
 msgstr ""
 
-msgid ":doc:`pgr_dijkstraVia`"
-msgstr ""
-
 msgid "SQL query as described."
 msgstr ""
 
@@ -6683,9 +6484,6 @@ msgid ""
 msgstr ""
 
 msgid "For the TRSP functions"
-msgstr ""
-
-msgid ":doc:`pgr_trsp`"
 msgstr ""
 
 msgid "Array of identifiers of destination vertices."
@@ -6737,9 +6535,6 @@ msgid ""
 msgstr ""
 
 msgid "Used in functions the following:"
-msgstr ""
-
-msgid ":doc:`pgr_withPoints`"
 msgstr ""
 
 msgid ""
@@ -8219,6 +8014,9 @@ msgid "Support to return multiple outer/inner ring"
 msgstr ""
 
 msgid "Renamed from version 1.x"
+msgstr ""
+
+msgid "Support"
 msgstr ""
 
 msgid "Returns the polygon part of an alpha shape."
@@ -11274,6 +11072,9 @@ msgid ""
 "``pgr_drivingDistance`` - Returns the driving distance from a start node."
 msgstr ""
 
+msgid "Standarizing output columns to |result-spantree|"
+msgstr ""
+
 msgid "Added ``depth`` and ``start_vid`` result columns."
 msgstr ""
 
@@ -12480,6 +12281,9 @@ msgid ""
 "breadth First Search ordering."
 msgstr ""
 
+msgid "Added ``pred`` result columns."
+msgstr ""
+
 msgid ""
 "Visits and extracts the nodes information in Breath First Search ordering of "
 "the Minimum Spanning Tree created using Kruskal's algorithm."
@@ -12628,6 +12432,12 @@ msgstr ""
 msgid ""
 "``pgr_lineGraph`` — Transforms the given graph into its corresponding edge-"
 "based graph."
+msgstr ""
+
+msgid "Promoted to **proposed** signature."
+msgstr ""
+
+msgid "Works for directed and undirected graphs."
 msgstr ""
 
 msgid ""
@@ -14220,17 +14030,10 @@ msgstr ""
 msgid "Deprecated signatures"
 msgstr ""
 
-msgid "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
-msgstr ""
-
 msgid "``pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)``"
 msgstr ""
 
 msgid "``pgr_trspViaVertices(text,anyarray,boolean,boolean,text)``"
-msgstr ""
-
-msgid ""
-"``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``"
 msgstr ""
 
 msgid "New prototypes"
@@ -14708,8 +14511,8 @@ msgid "pgr_turnRestrictedPath - Experimental"
 msgstr ""
 
 msgid ""
-"``pgr_turnRestrictedPath`` Using Yen's algorithm Vertex -Vertex routing with "
-"restrictions"
+"``pgr_turnRestrictedPath`` Using Yen's algorithm Vertex - Vertex routing "
+"with restrictions"
 msgstr ""
 
 msgid "New experimental function"
@@ -15513,22 +15316,13 @@ msgid ""
 ":doc:`pgr_lineGraph` - Transformation algorithm for generating a Line Graph."
 msgstr ""
 
-msgid ":doc:`pgr_withPointsVia`"
-msgstr ""
-
-msgid ":doc:`pgr_trspVia`"
-msgstr ""
-
-msgid ":doc:`pgr_trspVia_withPoints`"
-msgstr ""
-
 msgid ":doc:`withPoints-family` - Functions based on Dijkstra algorithm."
 msgstr ""
 
 msgid "From the :doc:`TRSP-family`:"
 msgstr ""
 
-msgid "Utilities"
+msgid "Utilities Category"
 msgstr ""
 
 msgid ":doc:`pgr_findCloseEdges`"
@@ -15557,6 +15351,142 @@ msgstr ""
 msgid "pgRouting 4.0"
 msgstr ""
 
+msgid "pgRouting 3"
+msgstr ""
+
+msgid "Minors 3.x"
+msgstr ""
+
+msgid "pgRouting 3.7"
+msgstr ""
+
+msgid "pgRouting 3.7.2 Release Notes"
+msgstr ""
+
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git closed "
+"milestone for 3.7.2 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
+msgstr ""
+
+msgid "Build"
+msgstr ""
+
+msgid ""
+"`#2713 <https://github.com/pgRouting/pgrouting/pull/2713>`__ cmake missing "
+"some policies and min version"
+msgstr ""
+
+msgid "Using OLD policies: CMP0148, CMP0144, CMP0167"
+msgstr ""
+
+msgid "Minimum cmake version 3.12"
+msgstr ""
+
+msgid ""
+"`#2707 <https://github.com/pgRouting/pgrouting/pull/2707>`__ Build failure "
+"in pgRouting 3.7.1 on Alpine"
+msgstr ""
+
+msgid ""
+"`#2706 <https://github.com/pgRouting/pgrouting/pull/2706>`__ winnie crashing "
+"on pgr_betweennessCentrality"
+msgstr ""
+
+msgid "pgRouting 3.7.1 Release Notes"
+msgstr ""
+
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git closed "
+"milestone for 3.7.1 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
+msgstr ""
+
+msgid ""
+"`#2680 <https://github.com/pgRouting/pgrouting/pull/2680>`__ fails to "
+"compile under mingw64 gcc 13.2"
+msgstr ""
+
+msgid ""
+"`#2689 <https://github.com/pgRouting/pgrouting/pull/2689>`__ When point is a "
+"vertex, the withPoints family do not return results."
+msgstr ""
+
+msgid "C/C++ code enhancemet"
+msgstr ""
+
+msgid "TRSP family"
+msgstr ""
+
+msgid "pgRouting 3.7.0 Release Notes"
+msgstr ""
+
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git closed "
+"milestone for 3.7.0 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
+msgstr ""
+
+msgid ""
+"`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stop support of "
+"PostgreSQL12 on pgrouting v3.7"
+msgstr ""
+
+msgid "Stopping support of PostgreSQL 12"
+msgstr ""
+
+msgid "CI does not test for PostgreSQL 12"
+msgstr ""
+
+msgid "New experimental functions"
+msgstr ""
+
+msgid "Metrics"
+msgstr ""
+
+msgid "pgr_betweennessCentrality"
+msgstr ""
+
+msgid "Official functions changes"
+msgstr ""
+
+msgid ""
+"`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standarize "
+"spanning tree functions output"
+msgstr ""
+
+msgid "Functions:"
+msgstr ""
+
+msgid "Experimental promoted to proposed."
+msgstr ""
+
+msgid ""
+"`#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ pgr_LineGraph "
+"ignores directed flag and use negative values for identifiers."
+msgstr ""
+
+msgid "``pgr_lineGraph``"
+msgstr ""
+
+msgid "Code enhancement"
+msgstr ""
+
+msgid ""
+"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Driving "
+"distance cleanup"
+msgstr ""
+
+msgid ""
+"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Read postgresql "
+"data on C++"
+msgstr ""
+
+msgid ""
+"`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy does "
+"not work"
+msgstr ""
+
 msgid "pgRouting 3.6"
 msgstr ""
 
@@ -15567,9 +15497,6 @@ msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.6.3 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.3%22>`__"
-msgstr ""
-
-msgid "Build"
 msgstr ""
 
 msgid "Explicit minimum requirements:"
@@ -15815,7 +15742,7 @@ msgstr ""
 
 msgid ""
 "`#2565 <https://github.com/pgRouting/pgrouting/issues/2565>`__ "
-"pgr_pgr_lengauerTarjanDominatorTree triggers an assertion"
+"pgr_lengauerTarjanDominatorTree triggers an assertion"
 msgstr ""
 
 msgid "SQL enhancements"
@@ -15984,6 +15911,9 @@ msgstr ""
 msgid "``pgr_degree``"
 msgstr ""
 
+msgid "Utilities"
+msgstr ""
+
 msgid "``pgr_findCloseEdges`` (One point)"
 msgstr ""
 
@@ -15994,6 +15924,9 @@ msgid "Ordering"
 msgstr ""
 
 msgid "``pgr_cuthillMckeeOrdering``"
+msgstr ""
+
+msgid "Unclassified"
 msgstr ""
 
 msgid "Flow functions"

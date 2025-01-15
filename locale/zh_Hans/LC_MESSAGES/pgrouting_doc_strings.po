@@ -7,13 +7,14 @@
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023, 2024.
 # Wang Dapeng <wangdapeng20191008@gmail.com>, 2023.
 # DeepL <noreply-mt-deepl@weblate.org>, 2024.
+# Dapeng Wang <wangdapeng20191008@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-18 21:19+0000\n"
-"PO-Revision-Date: 2024-10-10 19:47+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"POT-Creation-Date: 2025-01-10 14:53+0000\n"
+"PO-Revision-Date: 2024-12-20 07:59+0000\n"
+"Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -24,7 +25,7 @@ msgstr ""
 "X-Generator: Weblate 5.4.3\n"
 
 msgid "BFS - Category"
-msgstr "BFS - 类别"
+msgstr "BFS（广度优先搜索） - 类别"
 
 msgid ":doc:`pgr_kruskalBFS`"
 msgstr ":doc:`pgr_kruskalBFS`"
@@ -84,7 +85,7 @@ msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
 msgid "Identifier of the root vertex of the tree."
-msgstr "树的根顶点的标识符。"
+msgstr "树的根顶点标识符。"
 
 msgid ""
 "When value is :math:`0` then gets the spanning forest starting in aleatory "
@@ -294,7 +295,7 @@ msgid ":ref:`search`"
 msgstr ":ref:`search`"
 
 msgid "DFS - Category"
-msgstr "DFS - 类别"
+msgstr "DFS（深度优先搜索） - 类别"
 
 msgid "Traversal using Depth First Search."
 msgstr "使用深度优先搜索进行遍历。"
@@ -705,7 +706,8 @@ msgstr ""
 "`维基百科：旅行商问题 <https://en.wikipedia.org/wiki/"
 "Traveling_salesman_problem>`__"
 
-msgid "Vehicle Routing Functions - Category (Experimental)"
+#, fuzzy
+msgid "Vehicle Routing Functions - Category"
 msgstr "车辆路由功能 - 类别（实验）"
 
 msgid "Pickup and delivery problem"
@@ -2668,9 +2670,6 @@ msgstr "预计终止速度比 pgr_astar 更快"
 msgid ":doc:`aStar-family`"
 msgstr ":doc:`aStar-family`"
 
-msgid "Previous versions of this page"
-msgstr "此页面的先前版本"
-
 msgid "Bidirectional Dijkstra - Family of functions"
 msgstr "双向 Dijkstra - 函数族"
 
@@ -3765,7 +3764,7 @@ msgid "the set of vertices :math:`V`"
 msgstr "顶点集 :math:`V`"
 
 msgid ":math:`V = source \\cup target \\cup {start_{vid}} \\cup  {end_{vid}}`"
-msgstr ":math:`V = source \\cup target \\cup {start_v{vid}} \\cup {end_{vid}}`"
+msgstr ":math:`V = source \\cup target \\cup {start_{vid}} \\cup  {end_{vid}}`"
 
 msgid "the set of edges :math:`E`"
 msgstr "边集 :math:`E`"
@@ -3782,7 +3781,7 @@ msgstr ""
 ":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, cost_i) "
 "\\text{ when } cost >=0 \\} & \\quad \\text{if } reverse\\_cost = "
 "\\varnothing \\\\ \\text{ } \\text{ }  & \\quad \\text{ } \\\\ \\text{ } "
-"\\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} & \\quad "
+"\\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} &  \\quad "
 "\\text{ } \\\\ \\cup \\{(target_i, source_i, reverse\\_cost_i) "
 "\\text{ when } reverse\\_cost_i>=0 \\} & \\quad \\text{if } reverse\\_cost "
 "\\neq \\varnothing \\\\ \\end{cases}`"
@@ -3811,8 +3810,8 @@ msgid ""
 msgstr ""
 ":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, cost_i) "
 "\\text{ when } cost >=0 \\}  & \\quad \\text{ } \\\\ \\cup \\{(target_i, "
-"source_i, cost_i) \\text{ when } cost >=0 \\} & \\quad \\text{ if } "
-"reverse\\_cost = \\varnothing \\\\ \\text{ } \\text{ } & \\text{ } \\\\ "
+"source_i, cost_i) \\text{ when } cost >=0 \\}  & \\quad \\text{ if } "
+"reverse\\_cost = \\varnothing \\\\ \\text{ } \\text{ }  & \\text{ } \\\\ "
 "\\text{ } \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} & "
 "\\text{ } \\\\ \\cup \\{(target_i, source_i, cost_i) \\text{ when } cost >=0 "
 "\\} & \\text{ } \\\\ \\cup \\{(target_i, source_i, reverse\\_cost_i) "
@@ -4053,13 +4052,19 @@ msgid ""
 "an undirected graph."
 msgstr ":doc:`pgr_cuthillMckeeOrdering` -返回无向图的反向 Cuthill-McKee 排序。"
 
+#, fuzzy
+msgid ""
+":doc:`pgr_topologicalSort` - Linear ordering of the vertices for directed "
+"acyclic graph."
+msgstr "``pgr_topologicalSort`` — 有向无环图 (DAG) 的顶点的线性排序。"
+
 msgid ":doc:`metrics-family`"
 msgstr ":doc:`metrics-family`"
 
 msgid ""
 ":doc:`pgr_betweennessCentrality` - Calculates relative betweenness "
 "centrality using Brandes Algorithm"
-msgstr ""
+msgstr ":doc:`pgr_betweennessCentrality` - 使用布兰德斯算法计算相对介度中心性"
 
 msgid ":doc:`TRSP-family`"
 msgstr ":doc:`TRSP-family`"
@@ -4070,8 +4075,9 @@ msgstr "类别"
 msgid ":doc:`VRP-category`"
 msgstr ":doc:`VRP-category`"
 
-msgid "Unclassified"
-msgstr "未分类"
+#, fuzzy
+msgid "Shortest Path Category"
+msgstr "K最短路径 - 类别"
 
 msgid ":doc:`pgr_bellmanFord`"
 msgstr ":doc:`pgr_bellmanFord`"
@@ -4082,20 +4088,24 @@ msgstr ":doc:`pgr_dagShortestPath`"
 msgid ":doc:`pgr_edwardMoore`"
 msgstr ":doc:`pgr_edwardMoore`"
 
+#, fuzzy
+msgid "Planar Family"
+msgstr "aStar族"
+
 msgid ":doc:`pgr_isPlanar`"
 msgstr ":doc:`pgr_isPlanar`"
+
+msgid "Miscellaneous Algoritms"
+msgstr ""
+
+msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
+msgstr ":doc:`pgr_lengauerTarjanDominatorTree`"
 
 msgid ":doc:`pgr_stoerWagner`"
 msgstr ":doc:`pgr_stoerWagner`"
 
-msgid ":doc:`pgr_topologicalSort`"
-msgstr ":doc:`pgr_topologicalSort`"
-
 msgid ":doc:`pgr_transitiveClosure`"
 msgstr ":doc:`pgr_transitiveClosure`"
-
-msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
-msgstr ":doc:`pgr_lengauerTarjanDominatorTree`"
 
 msgid ":doc:`pgr_hawickCircuits`"
 msgstr ":doc:`pgr_hawickCircuits`"
@@ -4150,11 +4160,9 @@ msgid ""
 "returned."
 msgstr "当最大流量为0时则没有流量并返回 **EMPTY SET** 。"
 
-#, fuzzy
 msgid "There is no flow when source has the same vaule as target."
-msgstr "当 source与 target相同时，就没有流量。"
+msgstr "当 source与 target相同时，没有流量。"
 
-#, fuzzy
 msgid "Any duplicated values in source or target are ignored."
 msgstr "source或target 中的任何重复值都将被忽略。"
 
@@ -4165,13 +4173,13 @@ msgid "Edges with zero flow are omitted."
 msgstr "流量为零的边被忽略。"
 
 msgid "Creates"
-msgstr ""
+msgstr "创建"
 
 msgid "a **super source** and edges from it to all the sources,"
-msgstr ""
+msgstr "一个**超级源**和从它到所有源的边，"
 
 msgid "a **super target** and edges from it to all the targetss."
-msgstr ""
+msgstr "一个**超级目标**和从它到所有目标的边。"
 
 msgid ""
 "The maximum flow through the graph is guaranteed to be the value returned "
@@ -4417,8 +4425,8 @@ msgid ""
 "www.postgresql.org>`__ geospatial database to provide geospatial routing and "
 "other network analysis functionality."
 msgstr ""
-"pgRouting 扩展了 `PostGIS <https://postgis.net>`__ /`PostgreSQL <https://www."
-"postgresql.org>`__ 地理空间数据库，以提供地理空间路由和其他网络分析功能。"
+"pgRouting 扩展了`PostGIS <https://postgis.net>`__/`PostgreSQL <https://www."
+"postgresql.org>`__ 地理空间数据库，提供地理空间路由和其他网络分析功能。"
 
 msgid "This is the manual for pgRouting |release|."
 msgstr "这是pgRouting|release|的手册。"
@@ -4434,10 +4442,11 @@ msgid ""
 "https://pgrouting.org. For other licenses used in pgRouting see the :ref:"
 "`license` page."
 msgstr ""
-"pgRouting 手册根据`知识共享署名-相同方式共享3.0许可证 <https://"
-"creativecommons.org/licenses/by-sa/3.0/>`_。 您可以随意使用本材料，但我们要求"
-"您将功劳归功于 pgRouting 项目，并尽可能提供返回 https://pgrouting.org 的链"
-"接。 有关 pgRouting 中使用的其他许可证，请参阅 :ref:`license` page.。"
+"pgRouting 手册采用`Creative Commons Attribution-Share Alike 3.0 License "
+"<https://creativecommons.org/licenses/by-sa/3.0/>`_ 。您可以随意使用这些资"
+"料，但我们要求您注明 pgRouting 项目的出处，并在可能的情况下提供链接回 "
+"https://pgrouting.org。有关 pgRouting 中使用的其他许可证，请参阅 :ref:"
+"`license` page.。"
 
 msgid "General"
 msgstr "常规"
@@ -4557,141 +4566,33 @@ msgstr ":doc:`experimental`"
 msgid ":doc:`release_notes`"
 msgstr ":doc:`release_notes`"
 
-#, fuzzy
 msgid "pgRouting 4.0.0 Release Notes"
-msgstr "pgRouting 3.0.0 发布说明"
+msgstr "pgRouting 4.0.0 发布说明"
 
-msgid "No Changes Yet"
-msgstr ""
-
-msgid "pgRouting 3"
-msgstr "pgRouting 3"
-
-msgid "Minors 3.x"
-msgstr "3.x小版本"
-
-msgid "pgRouting 3.7"
-msgstr "pgRouting 3.7"
-
-msgid "pgRouting 3.7.0 Release Notes"
-msgstr "pgRouting 3.7.0 发布说明"
+msgid "Removal of deprecated functions and signatures"
+msgstr "移除已弃用的函数和签名"
 
 msgid ""
-"To see all issues & pull requests closed by this release see the `Git closed "
-"milestone for 3.7.0 <https://github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
+"``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 `3.7.0 <https://github.com/"
-"pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__ 的 Git 关闭里程碑"
+"``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``"
 
-msgid "Support"
-msgstr "支持"
+msgid "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+msgstr "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
 
 #, fuzzy
 msgid ""
-"`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stop support of "
-"PostgreSQL12 on pgrouting v3.7"
+"``pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
+"boolean,text)``"
 msgstr ""
-"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ 在 C++ 上读取 "
-"postgresql 数据"
+"修复pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
+"boolean[,text])"
 
-#, fuzzy
-msgid "Stopping support of PostgreSQL 12"
-msgstr "从 PostgreSQL 12 开始：："
-
-#, fuzzy
-msgid "CI does not test for PostgreSQL 12"
-msgstr "适用于 postgreSQL 10"
-
-msgid "New experimental functions"
-msgstr "新的实验函数"
-
-#, fuzzy
-msgid "Metrics"
-msgstr "限制"
-
-msgid "pgr_betweennessCentrality"
-msgstr ""
-
-msgid "Official functions changes"
-msgstr "官方功能变更"
-
-msgid ""
-"`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standarize "
-"spanning tree functions output"
-msgstr ""
-
-msgid "Functions:"
-msgstr "新函数:"
-
-msgid "``pgr_kruskalDD``"
-msgstr "``pgr_kruskalDD``"
-
-msgid "``pgr_kruskalDFS``"
-msgstr "``pgr_kruskalDFS``"
-
-msgid "``pgr_kruskalBFS``"
-msgstr "``pgr_kruskalBFS``"
-
-msgid "``pgr_primDD``"
-msgstr "``pgr_primDD``"
-
-msgid "``pgr_primDFS``"
-msgstr "``pgr_primDFS``"
-
-msgid "``pgr_primBFS``"
-msgstr "``pgr_primBFS``"
-
-msgid "Standarizing output columns to |result-spantree|"
-msgstr "将输出列标准化为 |result-spantree|"
-
-#, fuzzy
-msgid "Added ``pred`` result columns."
-msgstr "添加了 ``depth`` 和``pred`` 结果列。"
-
-msgid "Experimental promoted to proposed."
-msgstr "实验提升为拟议。"
-
-msgid ""
-"`#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ pgr_LineGraph "
-"ignores directed flag and use negative values for identifiers."
-msgstr ""
-
-msgid "``pgr_lineGraph``"
-msgstr "``pgr_lineGraph``"
-
-msgid "Promoted to **proposed** signature."
-msgstr "晋升为 **拟议** 签名。"
-
-msgid "Works for directed and undirected graphs."
-msgstr "适用于有向和无向图。"
-
-msgid "Code enhancement"
-msgstr "代码改进"
-
-msgid ""
-"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Driving "
-"distance cleanup"
-msgstr ""
-"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ 行车距离清理"
-
-msgid ""
-"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Read postgresql "
-"data on C++"
-msgstr ""
-"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ 在 C++ 上读取 "
-"postgresql 数据"
-
-msgid ""
-"`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy does "
-"not work"
-msgstr ""
-"`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy 不工"
-"作"
+msgid "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
+msgstr "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
 
 msgid "All releases"
-msgstr "所有版本"
+msgstr "All releases"
 
 msgid "Kruskal - Family of functions"
 msgstr "Kruskal - 函数族"
@@ -4717,7 +4618,7 @@ msgid "Kruskal's running time: :math:`O(E * log E)`"
 msgstr "克鲁斯卡尔的运行时间： :math:`O(E * log E)`"
 
 msgid "Metrics - Family of functions"
-msgstr ""
+msgstr "度量 - 功能系列"
 
 msgid "Migration guide"
 msgstr "迁移指南"
@@ -4732,12 +4633,6 @@ msgstr "结果可能会因变化而不同。"
 
 msgid "All deprecated functions will be removed on next mayor version 4.0.0"
 msgstr "所有已弃用的函数将在下一个主要版本 4.0.0 中被移除"
-
-msgid "Migration of functions"
-msgstr "函数迁移"
-
-msgid "Migrating functions"
-msgstr "迁移函数"
 
 msgid "Migration of ``pgr_aStar``"
 msgstr "``pgr_aStar`` 迁移"
@@ -4782,9 +4677,8 @@ msgstr "``pgr_aStar`` (`多对一`)没有 ``end_vid``。"
 msgid "Migration"
 msgstr "迁移"
 
-#, fuzzy
 msgid "Be aware of the existence of the additional columns."
-msgstr "请注意附加列的存在。"
+msgstr "注意附加栏的存在。"
 
 msgid "In ``pgr_aStar`` (`One to One`)"
 msgstr "在 ``pgr_aStar`` (`一对一`)中"
@@ -4908,8 +4802,8 @@ msgid ""
 "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :"
 "doc:`pgr_drivingDistance` result columns are being standardized."
 msgstr ""
-"从 `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ 开始， :doc:"
-"`pgr_drivingDistance` 结果列正在标准化。"
+"从 `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :doc:"
+"`pgr_drivingDistance` 结果列开始标准化。"
 
 msgid "from"
 msgstr "从"
@@ -4941,9 +4835,8 @@ msgstr "有 ``from_v`` 而不是 ``start_vid`` 结果列。"
 msgid "does not have ``depth`` result column."
 msgstr "没有 ``depth`` 结果列。"
 
-#, fuzzy
 msgid "Be aware of the existence and name change of the result columns."
-msgstr "请注意结果列的存在和名称更改。"
+msgstr "注意结果列的存在和名称变化。"
 
 msgid ""
 "Using `this <https://docs.pgrouting.org/3.5/en/pgr_drivingDistance."
@@ -4973,24 +4866,29 @@ msgstr ""
 msgid "The ``from_v`` result column name changes to ``start_vid``."
 msgstr "``from_v`结果列名称更改为 ``start_vid``。"
 
-#, fuzzy
 msgid ""
 "If needed filter out and rename columns, for example, to return the original "
 "columns:"
-msgstr "如果需要，过滤掉并重命名列，例如，返回原始列："
+msgstr "如有需要，可过滤掉列并重新命名列，例如，返回原始列："
 
 msgid ""
 "Migration of ``pgr_kruskalDD`` / ``pgr_kruskalBFS`` / ``pgr_kruskalDFS``"
-msgstr ""
+msgstr "`pgr_kruskalDD`` / `pgr_kruskalBFS`` / `pgr_kruskalDFS`` 的迁移"
 
 msgid ""
 "Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__ :"
 "doc:`pgr_kruskalDD`, :doc:`pgr_kruskalBFS` and :doc:`pgr_kruskalDFS` result "
 "columns are being standardized."
 msgstr ""
+"Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__ :"
+"doc:`pgr_kruskalDD`, :doc:`pgr_kruskalBFS` and :doc:`pgr_kruskalDFS` result "
+"columns are being standardized."
 
 msgid "|result-bfs|"
 msgstr "|result-bfs|"
+
+msgid "``pgr_kruskalDD``"
+msgstr "``pgr_kruskalDD``"
 
 msgid "Single vertex"
 msgstr "单顶点"
@@ -4998,68 +4896,65 @@ msgstr "单顶点"
 msgid "Multiple vertices"
 msgstr "多个顶点"
 
-msgid "Output columns were |result-bfs|"
-msgstr ""
+msgid "``pgr_kruskalDFS``"
+msgstr "``pgr_kruskalDFS``"
 
-#, fuzzy
+msgid "``pgr_kruskalBFS``"
+msgstr "``pgr_kruskalBFS``"
+
+msgid "Output columns were |result-bfs|"
+msgstr "输出列为 |result-bfs|"
+
 msgid "Single vertex and Multiple vertices"
-msgstr "多个顶点"
+msgstr "单顶点和多顶点"
 
 msgid "Do not have ``pred`` result column."
-msgstr ""
+msgstr "没有 ``pred`` 结果列。"
 
-#, fuzzy
 msgid "Be aware of the existence of `pred` result columns."
-msgstr "注意附加结果列的存在。"
+msgstr "注意`pred`结果列的存在。"
 
-#, fuzzy
 msgid "If needed filter out the added columns"
-msgstr "如果需要，过滤掉添加的列，例如"
+msgstr "如果需要，可过滤掉添加的列"
 
-#, fuzzy
 msgid "Kruskal single vertex"
-msgstr "单顶点"
+msgstr "Kruskal 单顶点"
 
 msgid ""
 "Using ``pgr_KruskalDD`` as example. Migration is similar to al the affected "
 "functions."
-msgstr ""
+msgstr "以 ``pgr_KruskalDD`` 为例。迁移与所有受影响的函数类似。"
 
-#, fuzzy
 msgid ""
 "Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_kruskalDD."
 "html#single-vertex>`__ example."
 msgstr ""
-"使用`这个 <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
-"vertex>`__ 示例。"
+"与 `this <https://docs.pgrouting.org/3.6/en/pgr_kruskalDD.html#single-"
+"vertex>`__ 示例比较。"
 
-#, fuzzy
 msgid ""
 "Now column ``pred`` exists and contains the predecessor of the ``node``."
-msgstr "``pred`` 包含``node`` 的前驱。"
+msgstr "现在列 ``pred`` 已经存在，并包含了 ``node`` 的前置节点。"
 
-#, fuzzy
 msgid "Kruskal multiple vertices"
-msgstr "多个顶点"
+msgstr "Kruskal 多顶点"
 
-#, fuzzy
 msgid ""
 "Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_kruskalDD."
 "html#multiple-vertex>`__ example."
 msgstr ""
-"使用`这个 <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#multiple-"
-"vertices>`__ 示例。"
+"与 `this <https://docs.pgrouting.org/3.6/en/pgr_kruskalDD.html#multiple-"
+"vertex>`__ 示例比较。"
 
 msgid "Migration of ``pgr_KSP``"
 msgstr "迁移 ``pgr_KSP``"
 
-#, fuzzy
 msgid ""
 "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :"
 "doc:`pgr_KSP` result columns are being standardized."
 msgstr ""
-"从 `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ 开始， :doc:"
-"`pgr_KSP`结果列正在标准化。"
+"从 `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :doc:"
+"`pgr_KSP` 开始，结果列被标准化。"
 
 msgid "|ksp-result|"
 msgstr "|ksp-result|"
@@ -5079,12 +4974,11 @@ msgstr "``start_vid`` 和 ``end_vid`` 列不存在。"
 msgid "``pgr_KSP`` (One to One) does not have ``start_vid`` and ``end_vid``."
 msgstr "``pgr_KSP`` (一对一) 没有 ``start_vid`` 和``end_vid``。"
 
-#, fuzzy
 msgid ""
 "Using `this <https://docs.pgrouting.org/3.5/en/pgr_KSP.html#signatures>`__ "
 "example."
 msgstr ""
-"使用`这个 <https://docs.pgrouting.org/3.5/en/pgr_KSP.html#signatures>`__ 示"
+"使用 `this <https://docs.pgrouting.org/3.5/en/pgr_KSP.html#signatures>`__ 示"
 "例。"
 
 msgid ""
@@ -5162,56 +5056,60 @@ msgid "In the query returns only ``edge`` column."
 msgstr "查询中仅返回 ``边`` 列。"
 
 msgid "Migration of ``pgr_primDD`` / ``pgr_primBFS`` / ``pgr_primDFS``"
-msgstr ""
+msgstr "`pgr_primDD`` / `pgr_primBFS`` / `pgr_primDFS`` 的迁移"
 
-#, fuzzy
 msgid ""
 "Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__ :"
 "doc:`pgr_primDD`, :doc:`pgr_primBFS` and :doc:`pgr_primDFS` result columns "
 "are being standardized."
 msgstr ""
-"从 `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ 开始， :doc:"
-"`pgr_drivingDistance`结果列正在标准化。"
+"Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__ :"
+"doc:`pgr_primDD`, :doc:`pgr_primBFS` and :doc:`pgr_primDFS` result columns "
+"are being standardized."
 
-#, fuzzy
+msgid "``pgr_primDD``"
+msgstr "``pgr_primDD``"
+
+msgid "``pgr_primDFS``"
+msgstr "``pgr_primDFS``"
+
+msgid "``pgr_primBFS``"
+msgstr "``pgr_primBFS``"
+
 msgid "Prim single vertex"
-msgstr "单顶点"
+msgstr "Prim 单一节点"
 
 msgid ""
 "Using ``pgr_primDD`` as example. Migration is similar to al the affected "
 "functions."
-msgstr ""
+msgstr "以 ``pgr_primDD`` 为例。迁移与所有受影响的函数类似。"
 
-#, fuzzy
 msgid ""
 "Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_primDD."
 "html#single-vertex>`__ example."
 msgstr ""
-"使用`这个 <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#single-"
-"vertex>`__ 示例。"
+"与 `this <https://docs.pgrouting.org/3.6/en/pgr_primDD.html#single-"
+"vertex>`__ 例子比较。"
 
-#, fuzzy
 msgid "Prim multiple vertices"
-msgstr "多个顶点"
+msgstr "Prim 多个顶点"
 
-#, fuzzy
 msgid ""
 "Comparing with `this <https://docs.pgrouting.org/3.6/en/pgr_primDD."
 "html#multiple-vertex>`__ example."
 msgstr ""
-"使用`这个 <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#multiple-"
-"vertices>`__ 示例。"
+"与 `this <https://docs.pgrouting.org/3.6/en/pgr_primDD.html#multiple-"
+"vertex>`__ 例子比较。"
 
 msgid "Migration of ``pgr_withPointsDD``"
 msgstr "迁移 ``pgr_withPointsDD``"
 
-#, fuzzy
 msgid ""
 "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :"
 "doc:`pgr_withPointsDD` result columns are being standardized."
 msgstr ""
-"从`v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ 开始 :doc:"
-"`pgr_withPointsDD`结果列正在标准化。"
+"从 `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :doc:"
+"`pgr_withPointsDD` 结果列开始标准化。"
 
 msgid "|result-generic-no-seq|"
 msgstr "|result-generic-no-seq|"
@@ -5236,10 +5134,9 @@ msgstr "输出列为 |result-1-1-no-seq|"
 msgid "Does not have ``start_vid``, ``pred`` and ``depth`` result columns."
 msgstr "没有 ``start_vid``，``pred`` 和``depth`` 结果列。"
 
-#, fuzzy
 msgid ""
 "``driving_side`` parameter was named optional now it is compulsory unnamed."
-msgstr "``driving_side`` 参数被命名为可选，现在强制未命名。"
+msgstr "``driving_side`` 参数以前被命名为可选，现在是强制性的未命名参数。"
 
 msgid "``pgr_withPointsDD`` (`Multiple vertices`)"
 msgstr "``pgr_withPointsDD`` (`多个顶点`)"
@@ -5289,7 +5186,6 @@ msgstr "此外， ``l`` 也可用作 **驾驶侧**"
 msgid "After Migration"
 msgstr "迁移后"
 
-#, fuzzy
 msgid "Be aware of the existence of the additional result Columns."
 msgstr "注意附加结果列的存在。"
 
@@ -5358,13 +5254,12 @@ msgstr "过滤掉额外的列"
 msgid "Migration of ``pgr_withPointsKSP``"
 msgstr "迁移 ``pgr_withPointsKSP``"
 
-#, fuzzy
 msgid ""
 "Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :"
 "doc:`pgr_withPointsKSP` result columns are being standardized."
 msgstr ""
-"从`v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ 开始 ， :doc:"
-"`pgr_withPointsKSP`结果列正在标准化。"
+"从 `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__ :doc:"
+"`pgr_withPointsKSP` 开始对结果列进行标准化。"
 
 msgid ""
 "And ``driving side`` parameter changed from named optional to unnamed "
@@ -5395,8 +5290,148 @@ msgid ""
 "original columns:"
 msgstr "如果需要，过滤掉附加列，例如，返回原始列："
 
-msgid "Migration of turn restrictions"
-msgstr "转弯限制的迁移"
+msgid "Migration of ``pgr_trsp`` (Vertices)"
+msgstr "迁移 ``pgr_trsp`` （顶点）"
+
+#, fuzzy
+msgid "Signature:"
+msgstr "标识"
+
+#, fuzzy
+msgid "Deprecated"
+msgstr "已废弃的功能"
+
+#, fuzzy
+msgid "`v3.4.0 <https://docs.pgrouting.org/3.4>`__"
+msgstr "从`v3.4.0 <https://docs.pgrouting.org/3.4/en/migration.html>`__ 开始"
+
+msgid "Removed"
+msgstr ""
+
+#, fuzzy
+msgid "`v4.0.0 <https://docs.pgrouting.org/4.0>`__"
+msgstr "从`v3.4.0 <https://docs.pgrouting.org/3.4/en/migration.html>`__ 开始"
+
+#, fuzzy
+msgid "See also"
+msgstr "另请参阅"
+
+#, fuzzy
+msgid ":doc:`pgr_dijkstra`"
+msgstr ":doc:`pgr_dijkstra`:"
+
+msgid ":doc:`pgr_trsp`"
+msgstr ":doc:`pgr_trsp`"
+
+#, fuzzy
+msgid "`Migration of restrictions`_"
+msgstr "限制迁移"
+
+#, fuzzy
+msgid "Use ``pgr_dijkstra`` when there are no restrictions."
+msgstr ":doc:`pgr_dijkstra` 当没有限制时，"
+
+msgid "Use :doc:`pgr_dijkstra` instead."
+msgstr "请改用 :doc:`pgr_dijkstra`。"
+
+#, fuzzy
+msgid "To get the original column names:"
+msgstr "要获取图的连通性："
+
+msgid "``id1`` is the node"
+msgstr "``id1`` 是节点"
+
+msgid "``id2`` is the edge"
+msgstr "``id2`` 是边"
+
+#, fuzzy
+msgid "Use ``pgr_trsp`` when there are restrictions."
+msgstr ":doc:`pgr_trspVia` 当有限制时。"
+
+msgid "Use :doc:`pgr_trsp` (One to One) instead."
+msgstr "请改用 :doc:`pgr_trsp` (一对一）。"
+
+msgid "Migration of ``pgr_trsp`` (Edges)"
+msgstr "迁移 ``pgr_trsp`` （边）"
+
+msgid ":doc:`pgr_withPoints`"
+msgstr ":doc:`pgr_withPoints`"
+
+#, fuzzy
+msgid ":doc:`pgr_trsp_withPoints`"
+msgstr ":doc:`pgr_trsp_withPoints`:"
+
+#, fuzzy
+msgid "Use ``pgr_withPoints`` when there are no restrictions."
+msgstr ":doc:`pgr_withPoints` 当没有任何限制的时候，"
+
+#, fuzzy
+msgid "Use :doc:`pgr_withPoints` (Ont to One) instead."
+msgstr "请改用 :doc:`pgr_trsp` (一对一）。"
+
+#, fuzzy
+msgid "Use ``pgr_trsp_withPoints`` when there are restrictions."
+msgstr ":doc:`pgr_trspVia_withPoints` 当有限制时。"
+
+msgid "Use :doc:`pgr_trsp_withPoints` instead."
+msgstr "请使用 :doc:`pgr_trsp_withPoints`。"
+
+#, fuzzy
+msgid "Migration of ``pgr_trspViaVertices``"
+msgstr "pgr_trspViaVertices 的迁移"
+
+msgid ":doc:`pgr_dijkstraVia`"
+msgstr ":doc:`pgr_dijkstraVia`"
+
+msgid ":doc:`pgr_trspVia`"
+msgstr ":doc:`pgr_trspVia`"
+
+#, fuzzy
+msgid "Use ``pgr_dijkstraVia`` when there are no restrictions"
+msgstr ":doc:`pgr_dijkstraVia` 当无限制时，"
+
+msgid "Use :doc:`pgr_dijkstraVia` instead."
+msgstr "请使用 :doc:`pgr_dijkstraVia`。"
+
+msgid "``id1`` is the path identifier"
+msgstr "``id1`` 是路径标识符"
+
+msgid "``id2`` is the node"
+msgstr "``id2`` 是节点"
+
+msgid "``id3`` is the edge"
+msgstr "``id3`` 是边"
+
+#, fuzzy
+msgid "Use ``pgr_trspVia`` when there are restrictions"
+msgstr ":doc:`pgr_trspVia` 当有限制时。"
+
+msgid "Use :doc:`pgr_trspVia` instead."
+msgstr "使用 :doc:`pgr_trspVia`。"
+
+#, fuzzy
+msgid "Migration of ``pgr_trspViaEdges``"
+msgstr "pgr_trspViaEdges 的迁移"
+
+msgid ":doc:`pgr_withPointsVia`"
+msgstr ":doc:`pgr_withPointsVia`"
+
+msgid ":doc:`pgr_trspVia_withPoints`"
+msgstr ":doc:`pgr_trspVia_withPoints`"
+
+#, fuzzy
+msgid "Use ``pgr_withPointsVia`` when there are no restrictions"
+msgstr ":doc:`pgr_withPointsVia` 当没有限制时，"
+
+msgid "Use :doc:`pgr_withPointsVia` instead."
+msgstr "请使用 :doc:`pgr_withPointsVia`。"
+
+#, fuzzy
+msgid "Use ``pgr_trspVia_withPoints`` when there are restrictions"
+msgstr ":doc:`pgr_trspVia_withPoints` 当有限制时。"
+
+msgid "Use :doc:`pgr_trspVia_withPoints` instead."
+msgstr "使用 :doc:`pgr_trspVia_withPoints` 代替。"
 
 msgid "Migration of restrictions"
 msgstr "限制迁移"
@@ -5544,245 +5579,6 @@ msgstr "将在下一个正式版本 4.0.0 中删除"
 
 msgid "The migrated table contents:"
 msgstr "迁移后的表内容："
-
-msgid "Migration of ``pgr_trsp`` (Vertices)"
-msgstr "迁移 ``pgr_trsp`` （顶点）"
-
-msgid ""
-":doc:`pgr_trsp` signatures have changed and many issues have been fixed in "
-"the new signatures. This section will show how to migrate from the old "
-"signatures to the new replacement functions. This also affects the "
-"restrictions."
-msgstr ""
-":doc:`pgr_trsp` 的签名已更改，并且新签名中已修复许多问题。 本节将展示如何从旧"
-"签名迁移到新的替换函数。 这也会影响限制。"
-
-msgid "The integral type of the ``Edges SQL`` can only be ``INTEGER``."
-msgstr "``Edges SQL`` 的整数类型只能是 ``INTEGER``。"
-
-msgid "The floating point type of the ``Edges SQL`` can only be ``FLOAT``."
-msgstr "``Edges SQL`` 的浮点类型只能是 ``FLOAT``。"
-
-msgid "``directed`` flag is compulsory."
-msgstr "``directed`` 标志是强制性的。"
-
-msgid "Does not autodetect if ``reverse_cost`` column exist."
-msgstr "不自动检测 ``reverse_cost`` 列是否存在。"
-
-msgid ""
-"User must be careful to match the existence of the column with the value of "
-"``has_rcost`` parameter."
-msgstr "用户必须小心地将列的存在与 ``has_rcost`` 参数的值相匹配。"
-
-msgid "The restrictions inner query is optional."
-msgstr "内部查询的限制是可选的。"
-
-msgid "The output column names are meaningless"
-msgstr "输出列名没有意义"
-
-msgid "Migrate by using:"
-msgstr "使用以下方式迁移："
-
-msgid ":doc:`pgr_dijkstra` when there are no restrictions,"
-msgstr ":doc:`pgr_dijkstra` 当没有限制时，"
-
-msgid ":doc:`pgr_trsp` (One to One) when there are restrictions."
-msgstr ":doc:`pgr_trsp` (一对一)当有限制时。"
-
-msgid "Migrating ``pgr_trsp`` (Vertices) using ``pgr_dijkstra``"
-msgstr "使用 ``pgr_dijkstra`` 迁移 ``pgr_trsp`` （顶点）"
-
-msgid "The following query does not have restrictions."
-msgstr "以下查询没有限制。"
-
-msgid "A message about deprecation is shown"
-msgstr "显示有关弃用的消息"
-
-msgid "Deprecated functions will be removed on the next mayor version 4.0.0"
-msgstr "已弃用的功能将在下一个正式版本 4.0.0 中删除"
-
-msgid "Use :doc:`pgr_dijkstra` instead."
-msgstr "请改用 :doc:`pgr_dijkstra`。"
-
-msgid "The types casting has been removed."
-msgstr "类型强制转换已被删除。"
-
-msgid ":doc:`pgr_dijkstra`:"
-msgstr ":doc:`pgr_dijkstra`:"
-
-msgid "Autodetects if ``reverse_cost`` column is in the edges SQL."
-msgstr "自动检测 ``reverse_cost`` 列是否在边SQL中。"
-
-msgid "Accepts ``ANY-INTEGER`` on integral types"
-msgstr "接受整数类型 ``ANY-INTEGER``"
-
-msgid "Accepts ``ANY-NUMERICAL`` on floating point types"
-msgstr "接受浮点类型 ``ANY-NUMERICAL``"
-
-msgid "``directed`` flag has a default value of ``true``."
-msgstr "``directed`` 标志的默认值为``true``。"
-
-msgid "Use the same value that on the original query."
-msgstr "使用与原始查询相同的值。"
-
-msgid "In this example it is ``true`` which is the default value."
-msgstr "在此示例中，默认值为 ``true``。"
-
-msgid "The flag has been omitted and the default is been used."
-msgstr "该标志已被省略，并使用默认值。"
-
-msgid ""
-"When the need of using strictly the same (meaningless) names and types of "
-"the function been migrated then:"
-msgstr "当需要使用严格相同（无意义）的函数名称和类型进行迁移时："
-
-msgid "``id1`` is the node"
-msgstr "``id1`` 是节点"
-
-msgid "``id2`` is the edge"
-msgstr "``id2`` 是边"
-
-msgid "Migrating ``pgr_trsp`` (Vertices) using ``pgr_trsp``"
-msgstr "使用 ``pgr_trsp``迁移 ``pgr_trsp`` （顶点）"
-
-msgid "The following query has restrictions."
-msgstr "以下查询有限制。"
-
-msgid "The restrictions are the last parameter of the function"
-msgstr "限制是函数的最后一个参数"
-
-msgid "Using the old structure of restrictions"
-msgstr "使用旧的限制结构"
-
-msgid "Use :doc:`pgr_trsp` (One to One) instead."
-msgstr "请改用 :doc:`pgr_trsp` (一对一）。"
-
-msgid "The new structure of restrictions is been used."
-msgstr "使用了新的限制结构。"
-
-msgid "It is the second parameter."
-msgstr "这是第二个参数。"
-
-msgid ":doc:`pgr_trsp`:"
-msgstr ":doc:`pgr_trsp`:"
-
-msgid "Migration of ``pgr_trsp`` (Edges)"
-msgstr "迁移 ``pgr_trsp`` （边）"
-
-msgid "The integral types of the ``sql`` can only be ``INTEGER``."
-msgstr "``sql`` 的整型类型只能是 ``INTEGER``。"
-
-msgid "The floating point type of the ``sql`` can only be ``FLOAT``."
-msgstr "``sql`` 的浮点类型只能是 ``FLOAT``。"
-
-msgid "For these migration guide the following points will be used:"
-msgstr "对于这些迁移指南，将使用以下几点："
-
-msgid ":doc:`pgr_withPoints` when there are no restrictions,"
-msgstr ":doc:`pgr_withPoints` 当没有任何限制的时候，"
-
-msgid ":doc:`pgr_trsp_withPoints` (One to One) when there are restrictions."
-msgstr ":doc:`pgr_trsp_withPoints` (一对一) 当有限制时。"
-
-msgid "Migrating ``pgr_trsp`` (Edges) using ``pgr_withPoints``"
-msgstr "使用 ``pgr_withPoints``迁移 ``pgr_trsp`` （边）"
-
-msgid "Use :doc:`pgr_withPoints` instead."
-msgstr "请使用 :doc:`pgr_withPoints`。"
-
-msgid "Do not show details, as the deprecated function does not show details."
-msgstr "不显示详细信息，因为已弃用的函数不显示详细信息。"
-
-msgid ":doc:`pgr_withPoints`:"
-msgstr ":doc:`pgr_withPoints`:"
-
-msgid "On the points query do not include the ``side`` column."
-msgstr "在点查询中不包括 ``side`` 列。"
-
-msgid ""
-"When the need of using strictly the same (meaningless) names and types, and "
-"node values of the function been migrated then:"
-msgstr "当需要使用严格相同（无意义）的名称和类型，并且函数的节点值被迁移时："
-
-msgid "Migrating ``pgr_trsp`` (Edges) using ``pgr_trsp_withPoints``"
-msgstr "使用 ``pgr_trsp_withPoints`` 迁移 ``pgr_trsp`` （边）"
-
-msgid "Use :doc:`pgr_trsp_withPoints` instead."
-msgstr "请使用 :doc:`pgr_trsp_withPoints`。"
-
-msgid ":doc:`pgr_trsp_withPoints`:"
-msgstr ":doc:`pgr_trsp_withPoints`:"
-
-msgid "Migration of ``pgr_trspViaVertices``"
-msgstr "迁移 ``pgr_trspViaVertices``"
-
-msgid "The integral types of the ``Edges SQL`` can only be ``INTEGER``."
-msgstr "``Edges SQL`` 的整数类型只能是 ``INTEGER``。"
-
-msgid ":doc:`pgr_dijkstraVia` when there are no restrictions,"
-msgstr ":doc:`pgr_dijkstraVia` 当无限制时，"
-
-msgid ":doc:`pgr_trspVia` when there are restrictions."
-msgstr ":doc:`pgr_trspVia` 当有限制时。"
-
-msgid "Migrating ``pgr_trspViaVertices`` using ``pgr_dijkstraVia``"
-msgstr "使用 ``pgr_dijkstraVia``迁移 ``pgr_trspViaVertices``"
-
-msgid "Use :doc:`pgr_dijkstraVia` instead."
-msgstr "请使用 :doc:`pgr_dijkstraVia`。"
-
-msgid ":doc:`pgr_dijkstraVia`:"
-msgstr ":doc:`pgr_dijkstraVia`:"
-
-msgid "``id1`` is the path identifier"
-msgstr "``id1`` 是路径标识符"
-
-msgid "``id2`` is the node"
-msgstr "``id2`` 是节点"
-
-msgid "``id3`` is the edge"
-msgstr "``id3`` 是边"
-
-msgid "Migrating ``pgr_trspViaVertices`` using ``pgr_trspVia``"
-msgstr "使用 ``pgr_trspVia``迁移 ``pgr_trspViaVertices``"
-
-msgid "Use :doc:`pgr_trspVia` instead."
-msgstr "使用 :doc:`pgr_trspVia`。"
-
-msgid ":doc:`pgr_trspVia`:"
-msgstr ":doc:`pgr_trspVia`:"
-
-msgid "Migration of ``pgr_trspViaEdges``"
-msgstr "迁移 ``pgr_trspViaEdges``"
-
-msgid ""
-"And will travel thru the following Via points :math:"
-"`4\\rightarrow3\\rightarrow6`"
-msgstr "并将途经以下途经点： :math:`4\\rightarrow3\\rightarrow6`"
-
-msgid ":doc:`pgr_withPointsVia` when there are no restrictions,"
-msgstr ":doc:`pgr_withPointsVia` 当没有限制时，"
-
-msgid ":doc:`pgr_trspVia_withPoints` when there are restrictions."
-msgstr ":doc:`pgr_trspVia_withPoints` 当有限制时。"
-
-msgid "Migrating ``pgr_trspViaEdges`` using ``pgr_withPointsVia``"
-msgstr "使用 ``pgr_withPointsVia`` 迁移 ``pgr_trspViaEdges``"
-
-msgid "Use :doc:`pgr_withPointsVia` instead."
-msgstr "请使用 :doc:`pgr_withPointsVia`。"
-
-msgid ":doc:`pgr_withPointsVia`:"
-msgstr ":doc:`pgr_withPointsVia`:"
-
-msgid "Migrating ``pgr_trspViaEdges`` using ``pgr_trspVia_withPoints``"
-msgstr "使用 ``pgr_trspVia_withPoints``迁移``pgr_trspViaEdges``"
-
-msgid "Use :doc:`pgr_trspVia_withPoints` instead."
-msgstr "使用 :doc:`pgr_trspVia_withPoints` 代替。"
-
-msgid ":doc:`pgr_trspVia_withPoints`:"
-msgstr ":doc:`pgr_trspVia_withPoints`:"
 
 msgid ":doc:`withPoints-category`"
 msgstr ":doc:`withPoints-category`"
@@ -6918,15 +6714,14 @@ msgstr "用户可以根据需要定义组合。"
 msgid "Needs a `Combinations SQL`_"
 msgstr "需要 `Combinations SQL`_"
 
-#, fuzzy
 msgid ""
 "There are several kinds of valid inner queries and also the columns returned "
 "are depending of the function. Which kind of inner query will depend on the "
 "function's requirements. To simplify the variety of types, **ANY-INTEGER** "
 "and **ANY-NUMERICAL** is used."
 msgstr ""
-"有多种有效的内部查询，返回的列也取决于函数。 哪种内部查询取决于函数的要求。 "
-"为了简化各种类型，使用 **ANY-INTEGER** 和 **ANY-NUMERICAL** 。"
+"有几种有效的内部查询类型，返回的列也取决于函数。哪种类型的内部查询将取决于函"
+"数的要求。为了简化类型的种类，使用了 **ANY-INTEGER**和**ANY-NUMERICAL**。"
 
 msgid "Edges SQL for"
 msgstr "边 SQL"
@@ -7012,9 +6807,6 @@ msgstr ""
 msgid "Parameters for the Via functions"
 msgstr "Via 函数的参数"
 
-msgid ":doc:`pgr_dijkstraVia`"
-msgstr ":doc:`pgr_dijkstraVia`"
-
 msgid "SQL query as described."
 msgstr "如所述的 SQL 查询。"
 
@@ -7057,9 +6849,6 @@ msgstr ""
 
 msgid "For the TRSP functions"
 msgstr "对于 TRSP 函数"
-
-msgid ":doc:`pgr_trsp`"
-msgstr ":doc:`pgr_trsp`"
 
 msgid "Array of identifiers of destination vertices."
 msgstr "目标顶点的标识符数组。"
@@ -7115,9 +6904,6 @@ msgstr "从使用 ``edge`` 的 ``node`` 遍历到路径序列中的下一个节�
 
 msgid "Used in functions the following:"
 msgstr "用于以下函数："
-
-msgid ":doc:`pgr_withPoints`"
-msgstr ":doc:`pgr_withPoints`"
 
 msgid ""
 "Returns set of ``(seq, path_seq [, start_pid] [, end_pid], node, edge, cost, "
@@ -7429,11 +7215,10 @@ msgstr "在数据库中启用 PostGIS 和 pgRouting 后检查它们的版本。"
 msgid "Upgrading the database"
 msgstr "升级数据库"
 
-#, fuzzy
 msgid ""
 "To upgrade pgRouting in the database to version 4.0.0 use the following "
 "command:"
-msgstr "要将数据库中的 pgRouting 升级到版本3.7.0，请使用以下命令："
+msgstr "要将数据库中的 pgRouting 升级到 4.0.0 版本，请使用以下命令："
 
 msgid ""
 "More information can be found in https://www.postgresql.org/docs/current/sql-"
@@ -7725,15 +7510,14 @@ msgstr ""
 "`Georepublic <https://georepublic.info>`__ 、`Paragon Corporation <https://"
 "www.paragoncorporation.com/>`__ 和广大用户社区的支持和维护。"
 
-#, fuzzy
 msgid ""
 "pgRouting is part of `OSGeo Community Projects <https://wiki.osgeo.org/wiki/"
 "OSGeo_Community_Projects>`__ from the `OSGeo Foundation <https://www.osgeo."
 "org>`__ and included on `OSGeoLive <http://live.osgeo.org/>`__."
 msgstr ""
-"pgRouting 是 `OSGeo 基金会 <https://www.osgeo.org>`__ `OSGeo 社区项目 "
-"<https://wiki.osgeo.org/wiki/OSGeo_Community_Projects>`__ 的一部分，并包含在 "
-"`OSGeoLive <http://live.osgeo.org/>`__ 中。"
+"pgRouting 是 `OSGeo Community Projects <https://wiki.osgeo.org/wiki/"
+"OSGeo_Community_Projects>`__的一部分，隶属于`OSGeo Foundation <https://www."
+"osgeo.org>`__，并被包含在`OSGeoLive <http://live.osgeo.org/>`__。"
 
 msgid "Licensing"
 msgstr "许可"
@@ -7790,7 +7574,7 @@ msgid "This Release Contributors"
 msgstr "此版本贡献者"
 
 msgid "Individuals in this release v3.7.x (in alphabetical order)"
-msgstr "在此版本 v3.7.x 中的个人贡献者（按字母顺序排列）"
+msgstr "此版本 v3.7.x 中的个人贡献者（按字母顺序排列）"
 
 msgid "(Alphabetical order)"
 msgstr "(按字母顺序排列）"
@@ -8361,7 +8145,7 @@ msgid "Name change from pgr_eucledianTSP"
 msgstr "pgr_eucledianTSP 的名称更改"
 
 msgid "New **Official** function"
-msgstr "**官方** 新函数"
+msgstr "新函数 **Official**"
 
 msgid ""
 "Any duplicated identifier will be ignored. The coordinates that will be kept"
@@ -8378,9 +8162,8 @@ msgid ""
 "The coordinates are quite different for the same identifier, for example ::"
 msgstr "对于相同的标识符，坐标有很大不同，例如::"
 
-#, fuzzy
 msgid "pgr_TSPeuclidean(`Coordinates SQL`_, ``[start_id, end_id]``)"
-msgstr "pgr_TSPeuclidean(`Coordinates SQL`_ , ``[start_id, end_id]``)"
+msgstr "pgr_TSPeuclidean(`Coordinates SQL`_, ``[start_id, end_id]``)"
 
 msgid "With default values"
 msgstr "有默认值"
@@ -8581,10 +8364,9 @@ msgstr "手动指定的顶点组合。"
 msgid "pgr_aStarCost"
 msgstr "pgr_aStarCost"
 
-#, fuzzy
 msgid ""
 "``pgr_aStarCost`` - Total cost of the shortest path using the A* algorithm."
-msgstr "``pgr_aStarCost`` -使用 A* 算法的最短路径的总成本。"
+msgstr "``pgr_aStarCost`` - 使用 A* 算法计算最短路径的总成本。"
 
 msgid "``pgr_aStarCost`` (`Combinations`_)"
 msgstr "``pgr_aStarCost`` (`组合`_)"
@@ -8592,11 +8374,10 @@ msgstr "``pgr_aStarCost`` (`组合`_)"
 msgid "New **proposed** function"
 msgstr "新 **拟议** 函数"
 
-#, fuzzy
 msgid ""
 "The ``pgr_aStarCost`` function sumarizes of the cost of the shortest path "
 "using the A* algorithm."
-msgstr "``pgr_aStarCost`` 函数使用 A* 算法汇总最短路径的成本。"
+msgstr "``pgr_aStarCost`` 函数总结了使用 A* 算法计算最短路径的成本。"
 
 msgid ""
 "Let be the case the values returned are stored in a table, so the unique "
@@ -8714,6 +8495,9 @@ msgstr "支持返回多个外/内圈"
 
 msgid "Renamed from version 1.x"
 msgstr "从版本1.X重命名"
+
+msgid "Support"
+msgstr "支持"
 
 msgid "Returns the polygon part of an alpha shape."
 msgstr "返回 alpha 形状的多边形部分。"
@@ -9357,20 +9141,18 @@ msgstr "pgr_bdAstar(`Edges SQL`_, `Combinations SQL`_, [**options**])"
 msgid "pgr_bdAstarCost"
 msgstr "pgr_bdAstarCost"
 
-#, fuzzy
 msgid ""
 "``pgr_bdAstarCost`` - Total cost of the shortest path using the "
 "bidirectional A* algorithm."
-msgstr "``pgr_bdAstarCost`` -使用双向 A* 算法的最短路径的总成本。"
+msgstr "``pgr_bdAstarCost`` - 使用双向 A* 算法计算的最短路径的总成本。"
 
 msgid "``pgr_bdAstarCost`` (`Combinations`_)"
 msgstr "``pgr_bdAstarCost`` (`组合`_)"
 
-#, fuzzy
 msgid ""
 "The ``pgr_bdAstarCost`` function sumarizes of the cost of the shortest path "
 "using the bidirectional A* algorithm."
-msgstr "``pgr_bdAstarCost`` 函数使用双向 A* 算法汇总最短路径的成本。"
+msgstr "``pgr_bdAstarCost`` 函数总结了使用双向 A* 算法计算最短路径的成本。"
 
 msgid ""
 "pgr_bdAstarCost(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
@@ -9412,11 +9194,10 @@ msgstr "pgr_bdAstarCostMatrix(`Edges SQL`_, **start vids**, [**options**])"
 msgid "``pgr_bdDijkstra``"
 msgstr "``pgr_bdDijkstra``"
 
-#, fuzzy
 msgid ""
 "``pgr_bdDijkstra`` — Returns the shortest path using Bidirectional Dijkstra "
 "algorithm."
-msgstr "``pgr_bdDijkstra`` — 使用双向 Dijkstra 算法返回最短路径。"
+msgstr "``pgr_bdDijkstra`` — 返回使用双向 Dijkstra 算法计算的最短路径。"
 
 msgid "pgr_bdDijkstra(`Combinations`_)"
 msgstr "pgr_bdDijkstra(`组合`_)"
@@ -9507,11 +9288,10 @@ msgstr "https://en.wikipedia.org/wiki/Bidirectional_search"
 msgid "``pgr_bdDijkstraCost``"
 msgstr "``pgr_bdDijkstraCost``"
 
-#, fuzzy
 msgid ""
 "``pgr_bdDijkstraCost`` — Returns the shortest path's cost using "
 "Bidirectional Dijkstra algorithm."
-msgstr "``pgr_bdDijkstraCost`` — 使用双向 Dijkstra 算法返回最短路径的成本。"
+msgstr "``pgr_bdDijkstraCost`` —返回使用双向 Dijkstra 算法计算最短路径的成本。"
 
 msgid "``pgr_bdDijkstraCost`` (`Combinations`_)"
 msgstr "``pgr_bdDijkstraCost`` (`组合`_)"
@@ -9579,9 +9359,8 @@ msgstr "与 :doc:`pgr_TSP` 一起使用。"
 msgid "``pgr_bellmanFord - Experimental``"
 msgstr "``pgr_bellmanFord - 实验``"
 
-#, fuzzy
 msgid "``pgr_bellmanFord`` — Shortest path using Bellman-Ford algorithm."
-msgstr "``pgr_bellmanFord`` — 使用 Bellman-Ford 算法的最短路径。"
+msgstr "``pgr_bellmanFord`` — 使用 Bellman-Ford 算法计算的最短路径。"
 
 msgid "New **experimental** signature:"
 msgstr "新 **实验性** 签名："
@@ -9683,11 +9462,11 @@ msgstr ""
 msgid "pgr_bellmanFord(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr "pgr_bellmanFord(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 
-#, fuzzy
 msgid ""
 "From vertex :math:`6` to vertices :math:`\\{ 10, 17\\}` on a **directed** "
 "graph"
-msgstr "在 **有向** 图上从顶点 :math:`6` 到顶点 :math:`\\{10, 17\\}`"
+msgstr ""
+"从节点 :math:`6`到节点:math:`\\{ 10, 17\\}`的最短路径，基于一个**directed**图"
 
 msgid "Using a combinations table on an **undirected** graph."
 msgstr "在 **无向** 图上使用组合表。"
@@ -9696,16 +9475,15 @@ msgid "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
 msgstr "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
 
 msgid "``pgr_betweennessCentrality``"
-msgstr ""
+msgstr "``pgr_betweennessCentrality``"
 
 msgid ""
 "``pgr_betweennessCentrality`` - Calculates the relative betweeness "
 "centrality using Brandes Algorithm"
-msgstr ""
+msgstr "``pgr_betweennessCentrality`` - 使用 Brandes 算法计算相对介数中心度"
 
-#, fuzzy
 msgid "Version 3.7.0"
-msgstr "版本3.6.0"
+msgstr "版本 3.7.0"
 
 msgid "New **experimental** function:"
 msgstr "新的 **实验** 函数："
@@ -9713,7 +9491,7 @@ msgstr "新的 **实验** 函数："
 msgid ""
 "The Brandes Algorithm takes advantage of the sparse graphs for evaluating "
 "the betweenness centrality score of all vertices."
-msgstr ""
+msgstr "Brandes 算法利用稀疏图来评估所有顶点的中心度得分。"
 
 msgid ""
 "Betweenness centrality measures the extent to which a vertex lies on the "
@@ -9721,80 +9499,74 @@ msgid ""
 "betweenness centrality score may have considerable influence in a network by "
 "the virtue of their control over the shortest paths passing between them."
 msgstr ""
+"Betweenness centrality（介数中心性）衡量的是一个顶点在所有其他顶点对之间的最"
+"短路径中的重要性。具有较高介数中心性得分的顶点，通常能够对网络产生显著的影"
+"响，因为它们控制了通过它们的最短路径。"
 
 msgid ""
 "The removal of these vertices will affect the network by disrupting the it, "
 "as most of the shortest paths between vertices pass through them."
 msgstr ""
+"这些顶点的移除会影响网络，因为大多数顶点之间的最短路径都经过它们，从而破坏了"
+"网络的连接性。"
 
-#, fuzzy
 msgid "This implementation work for both directed and undirected graphs."
-msgstr "该实现适用于 **有向** 图和 **无向** 图。"
+msgstr "该实现适用于directed 和undirected。"
 
-#, fuzzy
 msgid "Running time:  :math:`\\Theta(VE)`"
-msgstr "运行时间： :math:`O(V + E)`"
+msgstr "运行时间: :math:`Theta(VE)`"
 
-#, fuzzy
 msgid "Running space: :math:`\\Theta(VE)`"
-msgstr "运行时间： :math:`O(V + E)`"
+msgstr "运行空间: :math:`\\Theta(VE)`"
 
-#, fuzzy
 msgid "Throws when there are no edges in the graph"
-msgstr "当图中没有边时，返回 EMPTY SET。"
+msgstr "当图形中没有边时抛出"
 
 msgid "pgr_betweennessCentrality(`Edges SQL`_, [``directed``])"
 msgstr "pgr_betweennessCentrality(`Edges SQL`_, [``directed``])"
 
-#, fuzzy
 msgid "Returns set of ``(vid, centrality)``"
-msgstr "返回集合 ``(edge, cost)``"
+msgstr "返回 ``(vid, centrality)`` 的集合"
 
-#, fuzzy
 msgid "For a directed graph with edges :math:`\\{1, 2, 3, 4\\}`."
-msgstr "对于有边 :math:`\\{1, 2, 3, 4\\}` 的有向子图。"
+msgstr "对于带边的directed graph:math:`\\{1, 2, 3, 4\\}`."
 
-#, fuzzy
 msgid "Explanation"
-msgstr "应用"
+msgstr "说明"
 
 msgid "The betweenness centrality are between parenthesis."
-msgstr ""
+msgstr "介数中心性值位于括号内。"
 
 msgid "The leaf vertices have betweenness centrality :math:`0`."
-msgstr ""
+msgstr "叶子节点的介数中心性为 :math:`0`。"
 
-#, fuzzy
 msgid ""
 "Betweenness centrality of vertex :math:`6` is higher than of vertex :math:"
 "`10`."
-msgstr "从顶点 :math:`11` 到顶点 :math:`12`"
+msgstr "顶点 :math:`6` 的间隔中心度高于顶点 :math:`10` 的间隔中心度。"
 
-#, fuzzy
 msgid "Removing vertex :math:`6` will create three graph components."
-msgstr "顶点 :math:`w` 已从图中移除"
+msgstr "移除顶点 :math:`6` 将创建三个图形组件。"
 
 msgid "Removing vertex :math:`10` will create two graph components."
-msgstr ""
+msgstr "移除节点 :math:`10` 将会产生两个图形组件。"
 
 msgid "``vid``"
 msgstr "``vid``"
 
-#, fuzzy
 msgid "``centrality``"
 msgstr "``capacity``"
 
 msgid ""
 "Relative betweenness centrality score of the vertex (will be in range [0,1])"
-msgstr ""
+msgstr "该节点的相对介数中心性得分（范围为 [0,1]）"
 
-#, fuzzy
 msgid ""
 "Boost's `betweenness_centrality <https://www.boost.org/doc/libs/1_84_0/libs/"
 "graph/doc/betweenness_centrality.html>`_"
 msgstr ""
-"`Boost：Hawick 电路算法 <https://www.boost.org/doc/libs/1_78_0/libs/graph/"
-"doc/hawick_circuits.html>`__"
+"Boost's `betweenness_centrality <https://www.boost.org/doc/libs/1_84_0/libs/"
+"graph/doc/betweenness_centrality.html>`_"
 
 msgid "Queries use the :doc:`sampledata` network."
 msgstr "查询使用 :doc:`sampledata` 网络。"
@@ -9868,11 +9640,10 @@ msgstr ""
 msgid "``pgr_binaryBreadthFirstSearch`` - Experimental"
 msgstr "``pgr_binaryBreadthFirstSearch`` - 实验"
 
-#, fuzzy
 msgid ""
 "``pgr_binaryBreadthFirstSearch`` — Returns the shortest path in a binary "
 "graph."
-msgstr "``pgr_binaryBreadthFirstSearch`` — 返回二元图中的最短路径。"
+msgstr "``pgr_binaryBreadthFirstSearch`` — 返回二进制图中的最短路径。"
 
 msgid ""
 "Any graph whose edge-weights belongs to the set {0,X}, where 'X' is any non-"
@@ -10123,7 +9894,7 @@ msgstr "``pgr_breadthFirstSearch`` - 实验"
 msgid ""
 "``pgr_breadthFirstSearch`` — Returns the traversal order(s) using Breadth "
 "First Search algorithm."
-msgstr "``pgr_breadthFirstSearch`` —使用广度优先搜索算法返回遍历顺序。"
+msgstr "``pgr_breadthFirstSearch`` — 使用广度优先搜索算法返回遍历顺序。"
 
 msgid "``pgr_breadthFirstSearch`` (`Single Vertex`_)"
 msgstr "``pgr_breadthFirstSearch`` (`单顶点搜索`_)"
@@ -11005,14 +10776,13 @@ msgstr ""
 msgid "pgr_dagShortestPath - Experimental"
 msgstr "pgr_dagShortestPath - 实验"
 
-#, fuzzy
 msgid ""
 "``pgr_dagShortestPath`` — Returns the shortest path for weighted directed "
 "acyclic graphs(DAG). In particular, the DAG shortest paths algorithm "
 "implemented by Boost.Graph."
 msgstr ""
-"``pgr_dagShortestPath`` — 返回加权有向无环图（DAG）的最短路径（path）。特别"
-"是，由Boost.Graph实现的DAG最短路径算法。"
+"``pgr_dagShortestPath`` — 返回加权有向无环图（DAG）中的最短路径。特别是使用 "
+"Boost.Graph 实现的 DAG 最短路径算法。"
 
 msgid "pgr_dagShortestPath(Combinations)"
 msgstr "pgr_dagShortestPath(组合)"
@@ -11103,9 +10873,8 @@ msgstr "``pgr_degree`` —对于无向图中的每个顶点，返回与该顶点
 msgid "Calculates the degree of the vertices of an **undirected** graph"
 msgstr "计算 **无向** 图顶点的度数"
 
-#, fuzzy
 msgid "pgr_degree(`Edges SQL`_ , `Vertex SQL`_, [``dryrun``])"
-msgstr "pgr_degree(`Edges SQL`_ , `Vertex SQL`_ , [``dryrun``])"
+msgstr "pgr_degree(`Edges SQL`_ , `Vertex SQL`_, [``dryrun``])"
 
 msgid "RETURNS SETOF |result-degree|"
 msgstr "RETURNS SETOF |result-degree|"
@@ -11304,9 +11073,8 @@ msgstr ""
 msgid "``pgr_dijkstra``"
 msgstr "`pgr_dijkstra``"
 
-#, fuzzy
 msgid "``pgr_dijkstra`` — Shortest path using Dijkstra algorithm."
-msgstr "`pgr_dijkstra`` - 使用 Dijkstra 算法的最短路径。"
+msgstr "`pgr_dijkstra`` - 使用 Dijkstra 算法计算的最短路径。"
 
 msgid "Version 3.5.0"
 msgstr "版本 3.5.0"
@@ -11542,20 +11310,18 @@ msgstr "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgid "``pgr_dijkstraCost``"
 msgstr "`pgr_dijkstraCost``"
 
-#, fuzzy
 msgid ""
 "``pgr_dijkstraCost`` - Total cost of the shortest path using Dijkstra "
 "algorithm."
-msgstr "`pgr_dijkstraCost`` - 使用 Dijkstra 算法计算的最短路径总成本。"
+msgstr "`pgr_dijkstraCost`` - 使用 Dijkstra 算法计算最短路径的总成本。"
 
 msgid "``pgr_dijkstraCost`` (`Combinations`_)"
 msgstr "``pgr_dijkstraCost`` (`组合`_)"
 
-#, fuzzy
 msgid ""
 "The ``pgr_dijkstraCost`` function sumarizes of the cost of the shortest path "
 "using Dijkstra Algorithm."
-msgstr "``pgr_dijkstraCost`` 函数总结了使用Dijkstra算法的最短路径的成本。"
+msgstr "``pgr_dijkstraCost`` 函数总结了使用 Dijkstra 算法计算最短路径的成本。"
 
 msgid ""
 "pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
@@ -11871,7 +11637,7 @@ msgid "Wikipedia: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr "维基百科：https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 
 msgid "``pgr_dijkstraNearCost`` - Proposed"
-msgstr "``pgr_dijkstraNearCost`` - 拟议"
+msgstr "``pgr_dijkstraNearCost`` - 提议"
 
 msgid ""
 "``pgr_dijkstraNearCost`` — Using dijkstra algorithm, finds the route that "
@@ -11983,11 +11749,11 @@ msgstr "**选项：** ``[directed, strict, U_turn_on_edge]``"
 msgid "Returns set of |via-result|"
 msgstr "返回 |via-result| 的集合"
 
-#, fuzzy
 msgid ""
 "Find the route that visits the vertices :math:`\\{5, 1, 8\\}` in that order "
 "on an directed graph."
-msgstr "在有向图上查找按顺序访问顶点 :math:`\\{ 5, 1, 8\\}` 的路线。"
+msgstr ""
+"在一个directed graph中，找到按顺序访问顶点 :math:`\\ {5, 1, 8\\}` 的路径。"
 
 msgid "Via optional parameters"
 msgstr "Via可选参数"
@@ -12049,6 +11815,9 @@ msgstr "驾驶距离"
 msgid ""
 "``pgr_drivingDistance`` - Returns the driving distance from a start node."
 msgstr "``pgr_drivingDistance`` - 返回起始节点的行驶距离。"
+
+msgid "Standarizing output columns to |result-spantree|"
+msgstr "将输出列标准化为 |result-spantree|"
 
 msgid "Added ``depth`` and ``start_vid`` result columns."
 msgstr "添加了 ``depth`` 和 ``start_vid`` 结果列。"
@@ -13077,7 +12846,7 @@ msgid ""
 msgstr "``pgr_full_version`` — 获取pgRouting版本信息的详细信息。."
 
 msgid "New **official** function"
-msgstr "**官方** 新功能"
+msgstr "新函数 **official**"
 
 msgid "Get complete details of pgRouting version information"
 msgstr "获取 pgRouting 版本信息的完整详细信息"
@@ -13306,7 +13075,7 @@ msgid ""
 "``pgr_johnson`` - Returns the sum of the costs of the shortest path for each "
 "pair of nodes in the graph using Floyd-Warshall algorithm."
 msgstr ""
-"``pgr_johnson`` - 使用 Jhonson 算法返回图中每对节点的最短路径成本之和。."
+"``pgr_johnson`` - 使用 Jhonson 算法返回图中每对节点的最短路径成本之和。"
 
 msgid ""
 "The Johnson algorithm, is a good choice to calculate the sum of the costs of "
@@ -13356,6 +13125,9 @@ msgid ""
 "breadth First Search ordering."
 msgstr "``pgr_kruskalBFS`` — Kruskal 的最小生成树算法，具有广度优先搜索排序。"
 
+msgid "Added ``pred`` result columns."
+msgstr "添加了 ``pred`` 结果列。"
+
 msgid ""
 "Visits and extracts the nodes information in Breath First Search ordering of "
 "the Minimum Spanning Tree created using Kruskal's algorithm."
@@ -13390,8 +13162,8 @@ msgid ""
 "than or equal to a **distance** from a **root** vertex (or vertices) within "
 "the calculated minimum spanning tree."
 msgstr ""
-"使用 Kruskal 算法，在计算的最小生成树中提取总成本小于或等于距 **根** 顶点（或"
-"多个顶点） **距离** 的节点。"
+"使用 Kruskal 算法，从计算出的最小生成树中，提取出那些与 **root** 顶点（或根顶"
+"点组）之间的聚合成本，小于或等于 **distance** 的节点。"
 
 msgid "Returned tree nodes from a root vertex are on Depth First Search order."
 msgstr "从根顶点返回的树节点遵循深度优先搜索顺序。"
@@ -13451,8 +13223,8 @@ msgid ""
 "**idom**, once **idom** of each vertex is calculated then by making every "
 "**idom** of each vertex as its parent, the dominator tree can be built."
 msgstr ""
-"该算法计算每个顶点的 **直接支配者**（称为 **idom**），一旦计算出每个顶点的 "
-"**idom**，然后通过将每个顶点的 **idom** 作为其父节点，可以构建支配树。"
+"该算法计算每个顶点的 *immidiate dominator* ，称为 **idom** ，一旦每个顶点的 "
+"**idom** 被计算出来，通过将每个顶点的 **idom** 作为其父节点，可以构建支配树。"
 
 msgid "The algorithm works in directed graph only."
 msgstr "该算法仅适用于有向图。"
@@ -13510,51 +13282,53 @@ msgid ""
 msgstr ""
 "`维基百科:支配树 <https://en.wikipedia.org/wiki/Dominator_(graph_theory)>`__"
 
-#, fuzzy
 msgid "pgr_lineGraph - Proposed"
-msgstr "pgr_trsp - 拟议"
+msgstr "pgr_lineGraph - 提议"
 
 msgid ""
 "``pgr_lineGraph`` — Transforms the given graph into its corresponding edge-"
 "based graph."
 msgstr "``pgr_lineGraph`` — 将给定图转换为其相应的基于边的图。"
 
-#, fuzzy
+msgid "Promoted to **proposed** signature."
+msgstr "晋升为**proposed** 签名。"
+
+msgid "Works for directed and undirected graphs."
+msgstr "适用于有向和无向图。"
+
 msgid ""
 "Given a graph :math:`G`, its line graph :math:`L(G)` is a graph such that:"
-msgstr "给定一个图 G，它的线图 L(G) 是这样的图："
+msgstr "给定一个图 :math:`G`，其线图 :math:`L(G)` 是一个图，满足以下条件："
 
-#, fuzzy
 msgid "Each vertex of :math:`L(G)` represents an edge of :math:`G`."
 msgstr ":math:`L(G)` 的每个顶点代表 :math:`G` 的一条边。"
 
-#, fuzzy
 msgid ""
 "Two vertices of :math:`L(G)` are adjacent if and only if their corresponding "
 "edges share a common endpoint in :math:`G`"
 msgstr ""
-":math:`L(G)` 的两个顶点相邻当且仅当它们对应的边共享 :math:`G` 中的公共端点"
+":math:`L(G)` 的两个顶点相邻，当且仅当它们对应的边在 :math:`G` 中共享一个共同"
+"端点时"
 
-#, fuzzy
 msgid ""
 "The ``cost`` and ``reverse_cost`` columns of the result represent existence "
 "of the edge."
-msgstr "使用 ``cost`` 和 ``reverse_cost`` 列来表示边的存在。"
+msgstr "结果中的 ``cost`` 和 ``reverse_cost`` 列表示边的存在性。"
 
-#, fuzzy
 msgid "When the graph is directed the result is directed."
-msgstr "当图无向时，成本矩阵是对称的。"
+msgstr "当图形是有向的，结果也是有向的。"
 
 msgid ""
 "To get the complete Line Graph use unique identifiers on the double way "
 "edges (See `Additional Examples`_)."
 msgstr ""
+"要获取完整的线图，请在双向边上使用唯一标识符 (See `Additional Examples`_)."
 
 msgid "When the graph is undirected the result is undirected."
-msgstr "当图无向时，成本矩阵是对称的。"
+msgstr "当图undirected(无向)时，成本矩阵是对称的。"
 
 msgid "The ``reverse_cost`` is always :math:`-1`."
-msgstr ""
+msgstr "``reverse_cost`` 始终为 :math:`-1`。"
 
 msgid "pgr_lineGraph(`Edges SQL`_, [``directed``])"
 msgstr "pgr_lineGraph(`Edges SQL`_, [``directed``])"
@@ -13562,9 +13336,8 @@ msgstr "pgr_lineGraph(`Edges SQL`_, [``directed``])"
 msgid "Returns set of |result-lineg|"
 msgstr "Returns set of |result-lineg|"
 
-#, fuzzy
 msgid "For an undirected graph with edges :math:'{2,4,5,8}'"
-msgstr "对于有边 :math:`\\{1, 2, 3, 4\\}` 的有向子图"
+msgstr "对于一个undirected graph(无向图)，其边为 :math:'{2,4,5,8}'"
 
 msgid "Gives a local identifier for the edge"
 msgstr "给出边的本地标识符"
@@ -13597,152 +13370,146 @@ msgid ""
 "it’s not part of the graph."
 msgstr "当为负时：边(``target``, ``source``)不存在，因此它不是图的一部分。"
 
-#, fuzzy
 msgid "Given the following directed graph"
-msgstr "给出以下查询"
+msgstr "给定以下有向图"
 
 msgid ""
 ":math:`G(V,E) = G(\\{1,2,3,4\\},\\{ 1 \\rightarrow 2, 1 \\rightarrow 4, 2 "
 "\\rightarrow 3, 3 \\rightarrow 1, 3 \\rightarrow 2, 3 \\rightarrow 4, 4 "
 "\\rightarrow 3\\})`"
 msgstr ""
+":math:`G(V,E) = G(\\{1,2,3,4\\},\\{ 1 \\rightarrow 2, 1 \\rightarrow 4, 2 "
+"\\rightarrow 3, 3 \\rightarrow 1, 3 \\rightarrow 2, 3 \\rightarrow 4, 4 "
+"\\rightarrow 3\\})`"
 
 msgid "Representation as directed with shared edge identifiers"
-msgstr ""
+msgstr "用共享边标识符定向表示"
 
 msgid ""
 "For the simplicity, the design of the edges table on the database, has the "
 "edge's identifiers are represented with 3 digits:"
-msgstr ""
+msgstr "为了简化数据库中边表的设计，边的标识符采用3位数字表示："
 
 msgid "hundreds"
-msgstr ""
+msgstr "百位"
 
-#, fuzzy
 msgid "the source vertex"
-msgstr "获取最近的顶点"
+msgstr "源点"
 
 msgid "tens"
-msgstr ""
+msgstr "十位"
 
 msgid "always 0, acts as a separator"
-msgstr ""
+msgstr "始终为 0，用作分隔符"
 
-#, fuzzy
 msgid "units"
-msgstr "单位"
+msgstr "个位"
 
-#, fuzzy
 msgid "the target vertex"
-msgstr "获取最近的顶点"
+msgstr "目标顶点"
 
 msgid "In this image,"
-msgstr ""
+msgstr "在这张图片中，"
 
 msgid ""
 "Single or double head arrows represent one edge (row) on the edges table."
-msgstr ""
+msgstr "单向或双向箭头表示边表中的一条边（行）。"
 
-#, fuzzy
 msgid "The numbers in the yellow shadow are the edge identifiers."
-msgstr "返回的行按边标识符升序排列。"
+msgstr "黄色阴影中的数字是边缘标识符。"
 
 msgid ""
 "Two pair of edges share the same identifier when the ``reverse_cost`` column "
 "is used."
-msgstr ""
+msgstr "当使用 ``reverse_cost`` 列时，两个边对会共享相同的标识符。"
 
-#, fuzzy
 msgid ""
 "Edges :math:`{2 \\rightarrow 3, 3 \\rightarrow 2}` are represented with one "
 "edge row with :math:`id=203`."
-msgstr "从图中删除边 :math:`v \\rightarrow w` 和 :math:`w \\rightarrow z`。"
+msgstr ""
+"边 :math:`{2 \\rightarrow 3, 3 \\rightarrow 2}` 用一条边行表示，标识符其 :"
+"math:`id=203` 。"
 
-#, fuzzy
 msgid ""
 "Edges :math:`{3 \\rightarrow 4, 4 \\rightarrow 3}` are represented with one "
 "edge row with :math:`id=304`."
-msgstr "从图中删除边 :math:`v \\rightarrow w` 和 :math:`w \\rightarrow z`。"
+msgstr ""
+"边 :math:`{3 \\rightarrow 4, 4 \\rightarrow 3}` 用一条边的行表示，标识符为 :"
+"math:`id=304` 。"
 
-#, fuzzy
 msgid "The graph can be created as follows:"
-msgstr "图定义如下："
+msgstr "图表的创建过程如下："
 
-#, fuzzy
 msgid "Line Graph of a directed graph represented with shared edges"
-msgstr "就有向图而言，就像有四个边"
+msgstr "用共享边表示的有向图的线图"
 
-#, fuzzy
 msgid "The result is a directed graph."
-msgstr "有向图。"
+msgstr "结果就是一个有向图。"
 
-#, fuzzy
 msgid ""
 "For :math:`seq=4` from :math:`203 \\leftrightarrow 304` represent two edges"
-msgstr "边 :math:`2` (:math:`1 \\rightarrow 3`) 不是图的一部分"
+msgstr "对于 :math:`seq=4` ，从:math:`203 \\leftrightarrow 304` 表示两条边"
 
 msgid "For all the other values of ``seq`` represent one edge."
-msgstr ""
+msgstr "所有其他的 ``seq`` 值都代表一条边。"
 
-#, fuzzy
 msgid ""
 "The ``cost`` and ``reverse_cost`` values represent the existence of the edge."
-msgstr "使用 ``cost`` 和 ``reverse_cost`` 列来表示边的存在。"
+msgstr "``cost`` 和 ``reverse_cost`` 的值表示边的存在。"
 
-#, fuzzy
 msgid "When positive: the edge exists."
-msgstr "当正数时是顶点的标识符。"
+msgstr "当为正数时：边缘存在。"
 
-#, fuzzy
 msgid "When negative: the edge does not exist."
-msgstr "为负数时抛出错误。"
+msgstr "负数时：边缘不存在。"
 
 msgid "Representation as directed with unique edge identifiers"
-msgstr ""
+msgstr "作为有向图表示，并使用唯一的边标识符"
 
-#, fuzzy
 msgid "Single head arrows represent one edge (row) on the edges table."
-msgstr "红色箭头对应边表中 ``cost`` > 0的情况。"
+msgstr "单头箭头代表边表中的一条边（行）。"
 
 msgid "There are no double head arrows"
-msgstr ""
+msgstr "没有双向头箭"
 
 msgid ""
 "Two pair of edges share the same ending nodes and the ``reverse_cost`` "
 "column is not used."
-msgstr ""
+msgstr "两对边共享相同的结束节点，不使用 ``reverse_cost`` 列。"
 
 msgid ""
 "Edges :math:`{2 \\rightarrow 3, 3 \\rightarrow 2}` are represented with two "
 "edges :math:`id=203` and :math:`id=302` respectively."
 msgstr ""
+"边 :math:`{2 \\rightarrow 3, 3 \\rightarrow 2}`分别用两条边表示，边标识符为 :"
+"math:`id=203` 和:math:`id=302` 。"
 
 msgid ""
 "Edges :math:`{3 \\rightarrow 4, 4 \\rightarrow 3}` are represented with two "
 "edges :math:`id=304` and :math:`id=403` respectively."
 msgstr ""
+"边 :math:`{3 \\rightarrow 4, 4 \\rightarrow 3}`分别用两条边表示，边标识符为 :"
+"math:`id=304` 和 :math:`id=403` 。"
 
-#, fuzzy
 msgid "Line Graph of a directed graph represented with unique edges"
-msgstr "就有向图而言，就像有四个边"
+msgstr "用唯一边表示的有向图的线图"
 
-#, fuzzy
 msgid ""
 "For :math:`seq=7` from :math:`203 \\leftrightarrow 302` represent two edges."
-msgstr "边 :math:`2` (:math:`1 \\rightarrow 3`) 不是图的一部分。"
+msgstr "对于 :math:`seq=7` 从 :math:`203 \\leftrightarrow 302` 代表两条边。"
 
-#, fuzzy
 msgid ""
 "For :math:`seq=8` from :math:`304 \\leftrightarrow 403` represent two edges."
-msgstr "边 :math:`2` (:math:`1 \\rightarrow 3`) 不是图的一部分。"
+msgstr "对于 :math:`seq=8` ，从 :math:`304 \\leftrightarrow 403` 表示两条边。"
 
-#, fuzzy
 msgid "wikipedia: `Line Graph <https://en.wikipedia.org/wiki/Line_graph>`__"
-msgstr "`维基百科：二分图 <https://en.wikipedia.org/wiki/Bipartite_graph>`__"
+msgstr "维基百科: `Line Graph <https://en.wikipedia.org/wiki/Line_graph>`__"
 
 msgid ""
 "mathworld: `Line Graph <https://mathworld.wolfram.com/LineGraph.html>`__"
 msgstr ""
+"MathWorld在线数学资源: `Line Graph <https://mathworld.wolfram.com/LineGraph."
+"html>`__"
 
 msgid "``pgr_lineGraphFull`` - Experimental"
 msgstr "``pgr_lineGraphFull`` - 实验"
@@ -13966,7 +13733,7 @@ msgid "Removing self loops on leaf nodes"
 msgstr "删除叶节点上的自循环"
 
 msgid "The self loops of the leaf nodes are"
-msgstr "叶节点的自循环为"
+msgstr "叶节点的自循环"
 
 msgid "Which can be removed"
 msgstr "哪些可以删除"
@@ -14134,7 +13901,7 @@ msgid ""
 "``pgr_maxFlow`` — Calculates the maximum flow in a directed graph from the "
 "source(s) to the targets(s) using the Push Relabel algorithm."
 msgstr ""
-"``pgr_maxFlow`` —使用 Push Relabel 算法计算有向图中从源到目标的最大流量。"
+"``pgr_maxFlow`` — 使用 Push Relabel 算法计算有向图中从源到目标的最大流量。"
 
 msgid "``pgr_maxFlow`` (`Combinations`_)"
 msgstr "``pgr_maxFlow`` (`组合`_)"
@@ -14142,9 +13909,8 @@ msgstr "``pgr_maxFlow`` (`组合`_)"
 msgid "New **Proposed** function"
 msgstr "新 **拟议** 的函数"
 
-#, fuzzy
 msgid "Calculates the maximum flow from the sources to the targets."
-msgstr "计算从 `source(s)` 到 `target(s)` 的最大流量。"
+msgstr "计算从源头到目标的最大流量。"
 
 msgid ""
 "When the maximum flow is **0** then there is no flow and **0** is returned."
@@ -14358,9 +14124,8 @@ msgstr "``bigint`` 表的唯一标识符"
 msgid "old_id"
 msgstr "old_id"
 
-#, fuzzy
 msgid "``bigint`` Identifier of the edge in original table"
-msgstr "``bigint`` 原表中边的标识符"
+msgstr "``bigint`` 是原始表中边的标识符"
 
 msgid "sub_id"
 msgstr "sub_id"
@@ -14454,9 +14219,8 @@ msgstr "仅具有进行拓扑分析的基本字段"
 msgid "Edges with 1 dead end: 1,6,24"
 msgstr "有 1 个死端的边：1、6、24"
 
-#, fuzzy
 msgid "Edges with 2 dead ends: 17,18"
-msgstr "有两个死端的边：17，18"
+msgstr "边缘有 2 个死角：17,18"
 
 msgid ""
 "Edge 17's right node is a dead end because there is no other edge sharing "
@@ -14469,9 +14233,8 @@ msgstr "有 1 个死端的边：1-1 ,6-1,14-2, 18-1 17-1 18-2"
 msgid "Isolated segments"
 msgstr "孤立的片段"
 
-#, fuzzy
 msgid "two isolated segments: 17 and 18 both they have 2 dead ends"
-msgstr "两个孤立的段：17 和 18 都有 2 个死端"
+msgstr "两个孤立的段：17 和 18，它们都有两个死端"
 
 msgid "No Isolated segments"
 msgstr "无孤立段"
@@ -14804,12 +14567,12 @@ msgid ""
 "First Search ordering."
 msgstr "``pgr_primBFS`` — Prim 的深度优先搜索排序最小生成树算法。"
 
-#, fuzzy
 msgid ""
 "Visits and extracts the nodes information in Breath First Search ordering of "
 "the Minimum Spanning Tree created using Prims's algorithm."
 msgstr ""
-"访问并提取使用 Prims 算法创建的最小生成树的深度优先搜索顺序中的节点信息。"
+"访问并提取使用 Prims 算法创建的最小生成树的 Breath First Search 排序中的节点"
+"信息。"
 
 msgid "pgr_primBFS(`Edges SQL`_, **root vid**, [``max_depth``])"
 msgstr "pgr_primBFS(`Edges SQL`_, **root vid**, [``max_depth``])"
@@ -14820,14 +14583,13 @@ msgstr "pgr_primBFS(`Edges SQL`_, **root vids**, [``max_depth``])"
 msgid "``pgr_primDD`` — Catchament nodes using Prim's algorithm."
 msgstr "``pgr_primDD`` — 使用 Prim 算法的集水区节点。"
 
-#, fuzzy
 msgid ""
 "Using Prim's algorithm, extracts the nodes that have aggregate costs less "
 "than or equal to a distance from a root vertex (or vertices) within the "
 "calculated minimum spanning tree."
 msgstr ""
-"使用 Prim 算法，在计算的最小生成树中提取总成本小于或等于距根顶点（或多个顶"
-"点）距离的节点。"
+"使用 Prim 算法，从计算出最小生成树中提取出那些与根节点（或根节点组）之间的聚"
+"合成本小于或等于某个距离的节点。"
 
 msgid "pgr_primDD(`Edges SQL`_, **root vid**, **distance**)"
 msgstr "pgr_primDD(`Edges SQL`_, **root vid**, **distance**)"
@@ -15223,19 +14985,11 @@ msgstr "``pgr_trsp`` (`组合`_)"
 msgid "Deprecated signatures"
 msgstr "弃用签名"
 
-msgid "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
-msgstr "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
-
 msgid "``pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)``"
 msgstr "``pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)``"
 
 msgid "``pgr_trspViaVertices(text,anyarray,boolean,boolean,text)``"
 msgstr "``pgr_trspViaVertices(text,anyarray,boolean,boolean,text)``"
-
-msgid ""
-"``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``"
-msgstr ""
-"``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``"
 
 msgid "New prototypes"
 msgstr "新原型"
@@ -15575,7 +15329,7 @@ msgstr ""
 "的路线。"
 
 msgid "Status of \"passes in front\" or \"visits\" of the nodes and points."
-msgstr "节点、点的\"通过\"或\"访问\"状态。"
+msgstr "节点和点的“经过”或“访问”状态。"
 
 msgid "The algorithm performs a :doc:`pgr_withPointsVia`"
 msgstr "该算法执行 :doc:`pgr_withPointsVia`"
@@ -15651,11 +15405,11 @@ msgstr "``pgr_trsp_withPoints`` (`多对多`_)"
 msgid "``pgr_trsp_withPoints`` (`Combinations`_)"
 msgstr "``pgr_trsp_withPoints`` (`组合`_)"
 
-#, fuzzy
 msgid ""
 "Modify the graph to include points defined by points_sql. Using Dijkstra "
 "algorithm, find the shortest path"
-msgstr "修改图以包括由points_sql 定义的点。 使用 Dijkstra 算法，找到最短路径"
+msgstr ""
+"修改图形，使其包含由 points_sql 定义的点。使用 Dijkstra 算法找出最短路径"
 
 msgid "Characteristics:"
 msgstr "特征："
@@ -15779,9 +15533,10 @@ msgstr ""
 msgid "pgr_turnRestrictedPath - Experimental"
 msgstr "pgr_turnRestrictedPath - 实验性"
 
+#, fuzzy
 msgid ""
-"``pgr_turnRestrictedPath`` Using Yen's algorithm Vertex -Vertex routing with "
-"restrictions"
+"``pgr_turnRestrictedPath`` Using Yen's algorithm Vertex - Vertex routing "
+"with restrictions"
 msgstr "``pgr_turnRestrictedPath`` 使用 Yen 算法顶点- 带限制的顶点路由"
 
 msgid "New experimental function"
@@ -16031,25 +15786,22 @@ msgstr "从前方超车或以左侧驾驶方式行驶。"
 msgid "``pgr_withPointsCost`` - Proposed"
 msgstr "``pgr_withPointsCost`` -拟议"
 
-#, fuzzy
 msgid ""
 "``pgr_withPointsCost`` - Calculates the shortest path and returns only the "
 "aggregate cost of the shortest path found, for the combination of points "
 "given."
 msgstr ""
-"``pgr_withPointsCost`` -对于给定的点组合，计算最短路径并仅返回找到的最短路径"
-"的总成本。"
+"``pgr_withPointsCost`` - 计算最短路径，并只返回所给点组合的最短路径的总成本。"
 
 msgid "pgr_withPointsCost(Combinations)"
 msgstr "pgr_withPointsCost（组合）"
 
-#, fuzzy
 msgid ""
 "Modify the graph to include points defined by points_sql. Using Dijkstra "
 "algorithm, return only the aggregate cost of the shortest path found."
 msgstr ""
-"修改图以包括由points_sql 定义的点。 使用 Dijkstra 算法，仅返回找到的最短路径"
-"的总成本。"
+"修改图形以包含由 points_sql 定义的点。使用 Dijkstra 算法，只返回找到的最短路"
+"径的总成本。"
 
 msgid ""
 "Returns the sum of the costs of the shortest path for pair combination of "
@@ -16260,9 +16012,8 @@ msgstr "添加了 ``depth``、``pred`` 和 ``start_vid`` 列。"
 msgid "Added ``depth``, ``pred`` columns."
 msgstr "添加了 ``depth``，``pred`` 列。"
 
-#, fuzzy
 msgid "When ``details`` is ``false``:"
-msgstr "当 ``details`` 为``false`` 时："
+msgstr "当 ``details`` 为 ``false`` 时："
 
 msgid ""
 "Only points that are visited are removed, that is, points reached within the "
@@ -16291,8 +16042,8 @@ msgid ""
 "``**distance**`` from the starting point. The edges extracted will conform "
 "the corresponding spanning tree."
 msgstr ""
-"修改图以包含点，并使用 Dijkstra 算法，提取成本小于或等于距起点 ``**距离**`` "
-"值的所有节点和点。 提取的边将符合相应的生成树。"
+"修改图以包含点，并使用 Dijkstra 算法，提取成本小于或等于距起点 "
+"``**distance**`` 值的所有节点和点。 提取的边将符合相应的生成树。"
 
 msgid ""
 "pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **root vid**, **distance**, "
@@ -16703,22 +16454,14 @@ msgid ""
 ":doc:`pgr_lineGraph` - Transformation algorithm for generating a Line Graph."
 msgstr ":doc:`pgr_lineGraph` - 用于生成折线图的转换算法。"
 
-msgid ":doc:`pgr_withPointsVia`"
-msgstr ":doc:`pgr_withPointsVia`"
-
-msgid ":doc:`pgr_trspVia`"
-msgstr ":doc:`pgr_trspVia`"
-
-msgid ":doc:`pgr_trspVia_withPoints`"
-msgstr ":doc:`pgr_trspVia_withPoints`"
-
 msgid ":doc:`withPoints-family` - Functions based on Dijkstra algorithm."
 msgstr ":doc:`withPoints-family` -基于 Dijkstra 算法的函数。"
 
 msgid "From the :doc:`TRSP-family`:"
 msgstr "来自 :doc:`TRSP-family`:"
 
-msgid "Utilities"
+#, fuzzy
+msgid "Utilities Category"
 msgstr "实用程序"
 
 msgid ":doc:`pgr_findCloseEdges`"
@@ -16738,79 +16481,241 @@ msgstr ""
 "pgRouting/pgrouting/commits>`_。"
 
 msgid "Mayors"
-msgstr "主要版本"
+msgstr "Mayors"
 
-#, fuzzy
 msgid "pgRouting 4"
-msgstr "pgRouting 3.4"
+msgstr "pgRouting 4"
 
-#, fuzzy
 msgid "Minors 4.x"
-msgstr "3.x小版本"
+msgstr "Minors 4.x"
+
+msgid "pgRouting 4.0"
+msgstr "pgRouting 4.0"
+
+msgid "pgRouting 3"
+msgstr "pgRouting 3"
+
+msgid "Minors 3.x"
+msgstr "Minors 3.x"
+
+msgid "pgRouting 3.7"
+msgstr "pgRouting 3.7"
 
 #, fuzzy
-msgid "pgRouting 4.0"
-msgstr "pgRouting 3.0"
+msgid "pgRouting 3.7.2 Release Notes"
+msgstr "pgRouting 3.7.1 发布说明"
+
+#, fuzzy
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git closed "
+"milestone for 3.7.2 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
+msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `Git closed milestone for 3.7.1 "
+"<https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
+
+msgid "Build"
+msgstr "Build"
+
+#, fuzzy
+msgid ""
+"`#2713 <https://github.com/pgRouting/pgrouting/pull/2713>`__ cmake missing "
+"some policies and min version"
+msgstr ""
+"`#2517 <https://github.com/pgRouting/pgrouting/pull/2517>`__ Astar 代码简化。"
+
+msgid "Using OLD policies: CMP0148, CMP0144, CMP0167"
+msgstr ""
+
+msgid "Minimum cmake version 3.12"
+msgstr ""
+
+#, fuzzy
+msgid ""
+"`#2707 <https://github.com/pgRouting/pgrouting/pull/2707>`__ Build failure "
+"in pgRouting 3.7.1 on Alpine"
+msgstr ""
+"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ 在 C++ 上读取 "
+"postgresql 数据"
+
+#, fuzzy
+msgid ""
+"`#2706 <https://github.com/pgRouting/pgrouting/pull/2706>`__ winnie crashing "
+"on pgr_betweennessCentrality"
+msgstr ""
+"`#2505 <https://github.com/pgRouting/pgrouting/pull/2505>`__ 使用命名空间。"
+
+msgid "pgRouting 3.7.1 Release Notes"
+msgstr "pgRouting 3.7.1 发布说明"
+
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git closed "
+"milestone for 3.7.1 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
+msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `Git closed milestone for 3.7.1 "
+"<https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
+
+msgid ""
+"`#2680 <https://github.com/pgRouting/pgrouting/pull/2680>`__ fails to "
+"compile under mingw64 gcc 13.2"
+msgstr ""
+"`#2680 <https://github.com/pgRouting/pgrouting/pull/2680>`__ 在 mingw64 gcc "
+"13.2 下编译失败"
+
+msgid ""
+"`#2689 <https://github.com/pgRouting/pgrouting/pull/2689>`__ When point is a "
+"vertex, the withPoints family do not return results."
+msgstr ""
+"`#2689 <https://github.com/pgRouting/pgrouting/pull/2689>`__ 当 point 是顶点"
+"时，withPoints 系列不返回结果。"
+
+#, fuzzy
+msgid "C/C++ code enhancemet"
+msgstr "C/C++ 代码增强"
+
+#, fuzzy
+msgid "TRSP family"
+msgstr "Prim族"
+
+msgid "pgRouting 3.7.0 Release Notes"
+msgstr "pgRouting 3.7.0 发布说明"
+
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git closed "
+"milestone for 3.7.0 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
+msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `Git closed milestone for 3.7.0 "
+"<https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
+
+msgid ""
+"`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stop support of "
+"PostgreSQL12 on pgrouting v3.7"
+msgstr ""
+"`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ 在 pgrouting "
+"v3.7 上停止支持 PostgreSQL12"
+
+msgid "Stopping support of PostgreSQL 12"
+msgstr "停止支持 PostgreSQL 12"
+
+msgid "CI does not test for PostgreSQL 12"
+msgstr "CI 不测试 PostgreSQL 12"
+
+msgid "New experimental functions"
+msgstr "新的实验函数"
+
+msgid "Metrics"
+msgstr "Metrics"
+
+msgid "pgr_betweennessCentrality"
+msgstr "pgr_betweennessCentrality"
+
+msgid "Official functions changes"
+msgstr "官方功能变更"
+
+msgid ""
+"`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standarize "
+"spanning tree functions output"
+msgstr ""
+"`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ 将生成树函数输出"
+"标准化"
+
+msgid "Functions:"
+msgstr "Functions:"
+
+msgid "Experimental promoted to proposed."
+msgstr "实验性的功能被提升为提议的。"
+
+msgid ""
+"`#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ pgr_LineGraph "
+"ignores directed flag and use negative values for identifiers."
+msgstr ""
+"`#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ pgr_LineGraph 忽"
+"略了有向标志，并使用负值作为标识符。"
+
+msgid "``pgr_lineGraph``"
+msgstr "``pgr_lineGraph``"
+
+msgid "Code enhancement"
+msgstr "代码改进"
+
+msgid ""
+"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Driving "
+"distance cleanup"
+msgstr ""
+"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ 行车距离清理"
+
+msgid ""
+"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Read postgresql "
+"data on C++"
+msgstr ""
+"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ 在 C++ 上读取 "
+"postgresql 数据"
+
+msgid ""
+"`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy does "
+"not work"
+msgstr ""
+"`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy 不工"
+"作"
 
 msgid "pgRouting 3.6"
 msgstr "pgRouting 3.6"
 
-#, fuzzy
 msgid "pgRouting 3.6.3 Release Notes"
-msgstr "pgRouting 3.6.1 发布说明"
+msgstr "pgRouting 3.6.3 发布说明"
 
-#, fuzzy
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.6.3 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.3%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 `3.6.1Git 关闭里程碑 <https://"
-"github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.1%22>`_"
-
-msgid "Build"
-msgstr "构建"
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `Git closed milestone for 3.6.3 "
+"<https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.3%22>`__"
 
 msgid "Explicit minimum requirements:"
-msgstr ""
+msgstr "最低要求："
 
 msgid "postgres 11.0.0"
-msgstr ""
+msgstr "postgres 11.0.0"
 
-#, fuzzy
 msgid "postgis 3.0.0"
-msgstr "版本3.0.0"
+msgstr "postgis 3.0.0"
 
 msgid "g++ 13+ is supported"
-msgstr ""
+msgstr "支持 g++ 13+"
 
 msgid "Code fixes"
-msgstr "代码修正"
+msgstr "代码修复"
 
 msgid "Fix warnings from cpplint."
-msgstr ""
+msgstr "修复来自 cpplint 的警告。"
 
 msgid "Fix warnings from clang 18."
-msgstr ""
+msgstr "修复来自 clang 18 的警告。"
 
-#, fuzzy
 msgid "CI tests"
-msgstr "pgtap 测试"
+msgstr "CI tests"
 
 msgid "Add a clang tidy test on changed files."
-msgstr ""
+msgstr "为已更改的文件添加 clang tidy 测试。"
 
 msgid ""
 "Update test not done on versions: 3.0.1, 3.0.2, 3.0.3, 3.0.4, 3.1.0, 3.1.1, "
 "3.1.2"
 msgstr ""
+"未对以下版本进行更新测试3.0.1, 3.0.2, 3.0.3, 3.0.4, 3.1.0, 3.1.1, 3.1.2"
 
 msgid "Documentation"
 msgstr "文档"
 
 msgid "Results of documentation queries adujsted to boost 1.83.0 version:"
-msgstr ""
+msgstr "根据 boost 1.83.0 版本进行的文档查询结果："
 
 msgid "pgr_edgeDisjointPaths"
 msgstr "pgr_edgeDisjointPaths"
@@ -16821,32 +16726,29 @@ msgstr "pgr_stoerWagner"
 msgid "pgtap tests"
 msgstr "pgtap 测试"
 
-#, fuzzy
 msgid "bug fixes"
-msgstr "Bug修复"
+msgstr "bug fixes"
 
-#, fuzzy
 msgid "pgRouting 3.6.2 Release Notes"
-msgstr "pgRouting 3.6.1 发布说明"
+msgstr "pgRouting 3.6.2 发布说明"
 
-#, fuzzy
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.6.2 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.2%22>`__"
 msgstr ""
-"要查看此版本关闭的所有问题和拉取请求，请参阅 `3.6.1Git 关闭里程碑 <https://"
-"github.com/pgRouting/pgrouting/issues?"
-"utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.1%22>`_"
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `Git closed milestone for 3.6.2 "
+"<https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.2%22>`__"
 
 msgid "Upgrade fix"
-msgstr ""
+msgstr "升级修复"
 
 msgid "The upgrade was failing for same minor"
-msgstr ""
+msgstr "升级失败的主要原因是"
 
 msgid "Fix warnings from cpplint"
-msgstr ""
+msgstr "修复来自 cpplint 的警告"
 
 msgid "Others"
 msgstr "其他"
@@ -17058,9 +16960,10 @@ msgstr "使用 bootstrap_version 2，因为 3+ 不支持下拉菜单"
 msgid "Issue fixes"
 msgstr "问题修复"
 
+#, fuzzy
 msgid ""
 "`#2565 <https://github.com/pgRouting/pgrouting/issues/2565>`__ "
-"pgr_pgr_lengauerTarjanDominatorTree triggers an assertion"
+"pgr_lengauerTarjanDominatorTree triggers an assertion"
 msgstr ""
 "`#2565 <https://github.com/pgRouting/pgrouting/issues/2565>`__ "
 "pgr_pgr_lengauerTarjanDominatorTree 触发了一个断言"
@@ -17257,6 +17160,9 @@ msgstr "拓扑结构"
 msgid "``pgr_degree``"
 msgstr "``pgr_degree``"
 
+msgid "Utilities"
+msgstr "实用程序"
+
 msgid "``pgr_findCloseEdges`` (One point)"
 msgstr "``pgr_findCloseEdges`` （单点）"
 
@@ -17268,6 +17174,9 @@ msgstr "排序"
 
 msgid "``pgr_cuthillMckeeOrdering``"
 msgstr "``pgr_cuthillMckeeOrdering``"
+
+msgid "Unclassified"
+msgstr "未分类"
 
 msgid "Flow functions"
 msgstr "流程函数"
@@ -18297,7 +18206,7 @@ msgid "pgRouting 2"
 msgstr "pgRouting 2"
 
 msgid "Minors 2.x"
-msgstr "2.x小版本"
+msgstr "Minors 2.x"
 
 msgid "pgRouting 2.6"
 msgstr "pgRouting 2.6"
@@ -18599,7 +18508,7 @@ msgstr ""
 "utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.1%22%20>`_。"
 
 msgid "Fixed prerequisite minimum version of: cmake"
-msgstr "修正了 cmake 的最低版本要求"
+msgstr "修复 cmake 的最低版本要求"
 
 msgid "pgRouting 2.5.0 Release Notes"
 msgstr "pgRouting 2.5.0 发布说明"
@@ -18717,7 +18626,7 @@ msgstr ""
 "utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22%20>`_。"
 
 msgid "Fixed compiling error on macOS"
-msgstr "修正了 macOS 上的编译错误"
+msgstr "修复 macOS 上的编译错误"
 
 msgid "Condition error on pgr_withPoints"
 msgstr "pgr_withPoints 上的条件错误"
@@ -18795,16 +18704,16 @@ msgstr ""
 "q=milestone%3A%22Release+2.3.2%22+is%3Aclosed>`_ 。"
 
 msgid "Fixed pgr_gsoc_vrppdtw crash when all orders fit on one truck."
-msgstr "修正了当所有订单都装在一辆卡车上时 pgr_gsoc_vrppdtw 崩溃的问题。"
+msgstr "修复当所有订单都装在一辆卡车上时 pgr_gsoc_vrppdtw 崩溃的问题。"
 
 msgid "Fixed pgr_trsp:"
-msgstr "修正了 pgr_trsp："
+msgstr "修复 pgr_trsp："
 
 msgid "Alternate code is not executed when the point is in reality a vertex"
 msgstr "当实际上的点是一个顶点时，替代代码不会被执行"
 
 msgid "Fixed ambiguity on seq"
-msgstr "修正了 seq 上的歧义"
+msgstr "修复 seq 上的歧义"
 
 msgid "pgRouting 2.3.1 Release Notes"
 msgstr "pgRouting 2.3.1 发布说明"
@@ -18966,7 +18875,7 @@ msgstr ""
 "q=milestone%3A%22Release+2.2.2%22+is%3Aclosed>`_ 。"
 
 msgid "Fixed regression error on pgr_drivingDistance"
-msgstr "修正了 pgr_drivingDistance 的回归错误"
+msgstr "修复 pgr_drivingDistance 的回归错误"
 
 msgid "pgRouting 2.2.1 Release Notes"
 msgstr "pgRouting 2.2.1 发布说明"
@@ -19792,15 +19701,14 @@ msgid ""
 "User mailing list: https://lists.osgeo.org/mailman/listinfo/pgrouting-users"
 msgstr "用户邮件列表：https://lists.osgeo.org/mailman/listinfo/pgrouting-users"
 
-#, fuzzy
 msgid ""
 "Developer mailing list: https://discourse.osgeo.org/c/pgrouting/pgrouting-"
 "dev/"
-msgstr "开发者邮件列表：https://lists.osgeo.org/mailman/listinfo/pgrouting-dev"
+msgstr ""
+"开发人员邮件列表： https://discourse.osgeo.org/c/pgrouting/pgrouting-dev/"
 
-#, fuzzy
 msgid "Subscribe: https://discourse.osgeo.org/g/pgrouting-dev"
-msgstr "开发者邮件列表：https://lists.osgeo.org/mailman/listinfo/pgrouting-dev"
+msgstr "订阅：https://discourse.osgeo.org/g/pgrouting-dev"
 
 msgid ""
 "For general questions and topics about how to use pgRouting, please write to "
@@ -19888,9 +19796,8 @@ msgstr "创建图表的附加函数："
 msgid "Additional functions to analyze a graph:"
 msgstr "用于分析图表的附加函数："
 
-#, fuzzy
 msgid "Transformation - Family of functions"
-msgstr "收缩 - 函数族"
+msgstr "转换 - 函数族"
 
 msgid ""
 "This family of functions is used for transforming a given input graph :math:"
@@ -20297,6 +20204,207 @@ msgstr "pgr_withPointsKSP 是 **带有点** 的 pgr_ksp"
 msgid "pgr_withPointsDD is pgr_drivingDistance **with points**"
 msgstr "pgr_withPointsDD 是 **带有点** 的 pgr_drivenDistance"
 
-#, fuzzy
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
-msgstr "pgr_withPointsvia 是 **带有点** 的"
+msgstr "pgr_withPointsvia 是 pgr_dijkstraVia **with points** 的版本"
+
+#~ msgid "Migration of functions"
+#~ msgstr "函数迁移"
+
+#~ msgid "Migrating functions"
+#~ msgstr "迁移函数"
+
+#~ msgid "Migration of turn restrictions"
+#~ msgstr "转弯限制的迁移"
+
+#~ msgid ""
+#~ ":doc:`pgr_trsp` signatures have changed and many issues have been fixed "
+#~ "in the new signatures. This section will show how to migrate from the old "
+#~ "signatures to the new replacement functions. This also affects the "
+#~ "restrictions."
+#~ msgstr ""
+#~ ":doc:`pgr_trsp` 的签名已更改，并且新签名中已修复许多问题。 本节将展示如何"
+#~ "从旧签名迁移到新的替换函数。 这也会影响限制。"
+
+#~ msgid "The integral type of the ``Edges SQL`` can only be ``INTEGER``."
+#~ msgstr "``Edges SQL`` 的整数类型只能是 ``INTEGER``。"
+
+#~ msgid "The floating point type of the ``Edges SQL`` can only be ``FLOAT``."
+#~ msgstr "``Edges SQL`` 的浮点类型只能是 ``FLOAT``。"
+
+#~ msgid "``directed`` flag is compulsory."
+#~ msgstr "``directed`` 标志是强制性的。"
+
+#~ msgid "Does not autodetect if ``reverse_cost`` column exist."
+#~ msgstr "不自动检测 ``reverse_cost`` 列是否存在。"
+
+#~ msgid ""
+#~ "User must be careful to match the existence of the column with the value "
+#~ "of ``has_rcost`` parameter."
+#~ msgstr "用户必须小心地将列的存在与 ``has_rcost`` 参数的值相匹配。"
+
+#~ msgid "The restrictions inner query is optional."
+#~ msgstr "内部查询的限制是可选的。"
+
+#~ msgid "The output column names are meaningless"
+#~ msgstr "输出列名没有意义"
+
+#~ msgid "Migrate by using:"
+#~ msgstr "使用以下方式迁移："
+
+#~ msgid ":doc:`pgr_trsp` (One to One) when there are restrictions."
+#~ msgstr ":doc:`pgr_trsp` (一对一)当有限制时。"
+
+#~ msgid "Migrating ``pgr_trsp`` (Vertices) using ``pgr_dijkstra``"
+#~ msgstr "使用 ``pgr_dijkstra`` 迁移 ``pgr_trsp`` （顶点）"
+
+#~ msgid "The following query does not have restrictions."
+#~ msgstr "以下查询没有限制。"
+
+#~ msgid "A message about deprecation is shown"
+#~ msgstr "显示有关弃用的消息"
+
+#~ msgid "Deprecated functions will be removed on the next mayor version 4.0.0"
+#~ msgstr "已弃用的功能将在下一个正式版本 4.0.0 中删除"
+
+#~ msgid "The types casting has been removed."
+#~ msgstr "类型强制转换已被删除。"
+
+#~ msgid "Autodetects if ``reverse_cost`` column is in the edges SQL."
+#~ msgstr "自动检测 ``reverse_cost`` 列是否在边SQL中。"
+
+#~ msgid "Accepts ``ANY-INTEGER`` on integral types"
+#~ msgstr "接受整数类型 ``ANY-INTEGER``"
+
+#~ msgid "Accepts ``ANY-NUMERICAL`` on floating point types"
+#~ msgstr "接受浮点类型 ``ANY-NUMERICAL``"
+
+#~ msgid "``directed`` flag has a default value of ``true``."
+#~ msgstr "``directed`` 标志的默认值为``true``。"
+
+#~ msgid "Use the same value that on the original query."
+#~ msgstr "使用与原始查询相同的值。"
+
+#~ msgid "In this example it is ``true`` which is the default value."
+#~ msgstr "在此示例中，默认值为 ``true``。"
+
+#~ msgid "The flag has been omitted and the default is been used."
+#~ msgstr "该标志已被省略，并使用默认值。"
+
+#~ msgid ""
+#~ "When the need of using strictly the same (meaningless) names and types of "
+#~ "the function been migrated then:"
+#~ msgstr "当需要使用严格相同（无意义）的函数名称和类型进行迁移时："
+
+#~ msgid "Migrating ``pgr_trsp`` (Vertices) using ``pgr_trsp``"
+#~ msgstr "使用 ``pgr_trsp``迁移 ``pgr_trsp`` （顶点）"
+
+#~ msgid "The following query has restrictions."
+#~ msgstr "以下查询有限制。"
+
+#~ msgid "The restrictions are the last parameter of the function"
+#~ msgstr "限制是函数的最后一个参数"
+
+#~ msgid "Using the old structure of restrictions"
+#~ msgstr "使用旧的限制结构"
+
+#~ msgid "The new structure of restrictions is been used."
+#~ msgstr "使用了新的限制结构。"
+
+#~ msgid "It is the second parameter."
+#~ msgstr "这是第二个参数。"
+
+#~ msgid ":doc:`pgr_trsp`:"
+#~ msgstr ":doc:`pgr_trsp`:"
+
+#~ msgid "The integral types of the ``sql`` can only be ``INTEGER``."
+#~ msgstr "``sql`` 的整型类型只能是 ``INTEGER``。"
+
+#~ msgid "The floating point type of the ``sql`` can only be ``FLOAT``."
+#~ msgstr "``sql`` 的浮点类型只能是 ``FLOAT``。"
+
+#~ msgid "For these migration guide the following points will be used:"
+#~ msgstr "对于这些迁移指南，将使用以下几点："
+
+#~ msgid ":doc:`pgr_trsp_withPoints` (One to One) when there are restrictions."
+#~ msgstr ":doc:`pgr_trsp_withPoints` (一对一) 当有限制时。"
+
+#~ msgid "Migrating ``pgr_trsp`` (Edges) using ``pgr_withPoints``"
+#~ msgstr "使用 ``pgr_withPoints``迁移 ``pgr_trsp`` （边）"
+
+#~ msgid "Use :doc:`pgr_withPoints` instead."
+#~ msgstr "请使用 :doc:`pgr_withPoints`。"
+
+#~ msgid ""
+#~ "Do not show details, as the deprecated function does not show details."
+#~ msgstr "不显示详细信息，因为已弃用的函数不显示详细信息。"
+
+#~ msgid ":doc:`pgr_withPoints`:"
+#~ msgstr ":doc:`pgr_withPoints`:"
+
+#~ msgid "On the points query do not include the ``side`` column."
+#~ msgstr "在点查询中不包括 ``side`` 列。"
+
+#~ msgid ""
+#~ "When the need of using strictly the same (meaningless) names and types, "
+#~ "and node values of the function been migrated then:"
+#~ msgstr ""
+#~ "当需要使用严格相同（无意义）的名称和类型，并且函数的节点值被迁移时："
+
+#~ msgid "Migrating ``pgr_trsp`` (Edges) using ``pgr_trsp_withPoints``"
+#~ msgstr "使用 ``pgr_trsp_withPoints`` 迁移 ``pgr_trsp`` （边）"
+
+#~ msgid "Migrating pgr_trspViaVertices using pgr_dijkstraVia"
+#~ msgstr "使用 pgr_dijkstraVia 迁移 pgr_trspViaVertices"
+
+#~ msgid "Using :doc:`pgr_dijkstraVia`."
+#~ msgstr "使用 :doc:`pgr_dijkstraVia` 。"
+
+#~ msgid ""
+#~ "When the need of using the same (meaningless) names and and strict types "
+#~ "then convert the result to the deprecated function columns:"
+#~ msgstr ""
+#~ "当需要使用相同（无意义）的名称和严格类型时，则将结果转换为已废弃的函数列："
+
+#~ msgid "Migrating pgr_trspViaVertices using pgr_trspVia"
+#~ msgstr "使用 pgr_trspVia 迁移 pgr_trspViaVertices"
+
+#~ msgid "Using :doc:`pgr_trspVia`."
+#~ msgstr "使用 :doc:`pgr_trspVia`。"
+
+#~ msgid "In this section this set of points is going to be used:"
+#~ msgstr "本节将使用这组点："
+
+#~ msgid "Migrating pgr_trspViaEdges using pgr_withPointsVia"
+#~ msgstr "使用 pgr_withPointsVia 迁移 pgr_trspViaEdges"
+
+#~ msgid "Using :doc:`pgr_withPointsVia`."
+#~ msgstr "使用 :doc:`pgr_withPointsVia`。"
+
+#~ msgid "Migrating pgr_trspViaEdges using pgr_trspVia_withPoints"
+#~ msgstr "使用 pgr_trspVia_withPoints 迁移 pgr_trspViaEdges"
+
+#~ msgid "Previous versions of this page"
+#~ msgstr "此页面的先前版本"
+
+#~ msgid ":doc:`pgr_topologicalSort`"
+#~ msgstr ":doc:`pgr_topologicalSort`"
+
+#~ msgid "The integral types of the ``Edges SQL`` can only be ``INTEGER``."
+#~ msgstr "``Edges SQL`` 的整数类型只能是 ``INTEGER``。"
+
+#~ msgid ":doc:`pgr_dijkstraVia`:"
+#~ msgstr ":doc:`pgr_dijkstraVia`:"
+
+#~ msgid ":doc:`pgr_trspVia`:"
+#~ msgstr ":doc:`pgr_trspVia`:"
+
+#~ msgid ""
+#~ "And will travel thru the following Via points :math:"
+#~ "`4\\rightarrow3\\rightarrow6`"
+#~ msgstr "并将途经以下途经点： :math:`4\\rightarrow3\\rightarrow6`"
+
+#~ msgid ":doc:`pgr_withPointsVia`:"
+#~ msgstr ":doc:`pgr_withPointsVia`:"
+
+#~ msgid ":doc:`pgr_trspVia_withPoints`:"
+#~ msgstr ":doc:`pgr_trspVia_withPoints`:"
