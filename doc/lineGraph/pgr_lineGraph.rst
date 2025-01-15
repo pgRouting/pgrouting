@@ -32,7 +32,7 @@ graph.
 
 * Version 2.5.0
 
-  * New **Experimental** function
+  * New experimental function.
 
 
 Description

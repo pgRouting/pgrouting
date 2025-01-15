@@ -28,7 +28,7 @@
 
 * Version 3.4.0
 
-  * New proposed signatures
+  * New proposed signatures:
 
     * pgr_trsp(One to One)
     * pgr_trsp(One to Many)
@@ -52,7 +52,7 @@
 
 * Version 2.0.0
 
-  * **Official** function
+  * Official function.
 
 Description
 -------------------------------------------------------------------------------

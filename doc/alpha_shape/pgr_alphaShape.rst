@@ -36,7 +36,7 @@
 
 * Version 2.0.0
 
-  * **Official** function
+  * Official function.
   * Renamed from version 1.x
 
 .. rubric:: Support

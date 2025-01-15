@@ -36,11 +36,11 @@
 
 * Version 3.0.0
 
-  * **Official** function
+  * Function promoted to official.
 
 * Version 2.5.0
 
-  * New **Proposed** signatures:
+  * New proposed signatures:
 
     * pgr_bdAstar(One to Many)
     * pgr_bdAstar(Many to One)
@@ -52,7 +52,7 @@
 
 * Version 2.0.0
 
-  * **Official** pgr_bdAstar(One to One)
+  * Official function.
 
 Description
 -------------------------------------------------------------------------------

@@ -27,7 +27,7 @@ vertices and edges.
   * Result columns change: ``seq`` is removed
   * Name change from ``pgr_contractGraph``
   * Bug fixes
-  * **Official** function
+  * Function promoted to official.
 
 * Version 2.3.0
 

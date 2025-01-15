@@ -37,7 +37,7 @@
 
 * Version 3.0.0
 
-  * **Official** function.
+  * Function promoted to official.
 
 * Version 2.2.0
 
@@ -53,7 +53,7 @@
 
 * Version 2.0.0
 
-  * **Official** pgr_dijkstra(One to One)
+  * Official function.
 
 
 Description
