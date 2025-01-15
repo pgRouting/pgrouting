@@ -1397,7 +1397,7 @@ on Github.
 
 * pgr_bdAstar(one to one)
 
-.. rubric:: New Proposed functions
+.. rubric:: New proposed functions.
 
 * pgr_bdAstar(one to many)
 * pgr_bdAstar(many to one)
@@ -1485,12 +1485,12 @@ To see the issues closed by this release see the `Git closed issues for 2.4.0
 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.4.0%22+is%3Aclosed>`_
 on Github.
 
-.. rubric:: New Signatures
+.. rubric:: New Function.
 
 * pgr_bdDijkstra
 
 
-.. rubric:: New Proposed Signatures
+.. rubric:: New proposed signatures:
 
 * pgr_maxFlow
 * pgr_astar(one to many)
@@ -1502,7 +1502,7 @@ on Github.
 * pgr_astarCost(many to many)
 * pgr_astarCostMatrix
 
-.. rubric:: Deprecated signatures
+.. rubric:: Deprecated signatures.
 
 * pgr_bddijkstra - use pgr_bdDijkstra instead
 
@@ -1570,7 +1570,7 @@ on Github.
 * pgr_eucledianTSP
 
 
-.. rubric:: New Proposed functions
+.. rubric:: New proposed functions.
 
 * pgr_dijkstraCostMatrix
 * pgr_withPointsCostMatrix

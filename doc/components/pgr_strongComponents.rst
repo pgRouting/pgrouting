@@ -28,7 +28,7 @@ using Tarjan's algorithm based on DFS.
     * ``n_seq`` is removed
     * ``seq`` changed type to ``BIGINT``
 
-  * **Official** function
+  * Function promoted to official.
 
 * Version 2.5.0
 

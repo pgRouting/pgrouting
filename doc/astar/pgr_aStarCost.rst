@@ -29,7 +29,7 @@
 
 * Version 3.0.0
 
-  * Function promoted to **official**.
+  * Function promoted to official.
 
 * Version 2.4.0
 
