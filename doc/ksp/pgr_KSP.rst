@@ -20,6 +20,10 @@
 
 .. rubric:: Availability
 
+* Version 4.0.0
+
+  * All signatures promoted to official.
+
 .. rubric:: Version 3.6.0
 
 * Result columns standarized to: |nksp-result|
@@ -93,7 +97,7 @@ One to One
     :end-before: --q2
 
 .. index::
-    single: KSP ; One to Many - Proposed on 3.6
+    single: KSP ; One to Many
 
 One to Many
 ...............................................................................
@@ -114,7 +118,7 @@ One to Many
     :end-before: --q3
 
 .. index::
-    single: KSP ; Many to One - Proposed in 3.6
+    single: KSP ; Many to One
 
 Many to One
 ...............................................................................
@@ -135,7 +139,7 @@ Many to One
     :end-before: --q4
 
 .. index::
-    single: KSP ; Many to Many - Proposed in 3.6
+    single: KSP ; Many to Many
 
 Many to Many
 ...............................................................................
@@ -156,7 +160,7 @@ Many to Many
     :end-before: --q5
 
 .. index::
-   single: KSP ; Combinations - Proposed in 3.6
+   single: KSP ; Combinations
 
 Combinations
 ...............................................................................

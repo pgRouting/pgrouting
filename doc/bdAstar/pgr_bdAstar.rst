@@ -20,6 +20,10 @@
 
 .. rubric:: Availability
 
+* Version 4.0.0
+
+  * Combinations signature promoted to official.
+
 * Version 3.6.0
 
   * Standarizing output columns to |short-generic-result|
@@ -182,7 +186,7 @@ Many to Many
    :end-before: -- q51
 
 .. index::
-    single: bdAstar ; Combinations - Proposed on v3.2
+    single: bdAstar ; Combinations
 
 Combinations
 ...............................................................................
