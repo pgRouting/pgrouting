@@ -191,7 +191,6 @@ ROWS 1000;
 
 COMMENT ON FUNCTION pgr_trsp(TEXT, TEXT, BIGINT, BIGINT, BOOLEAN)
 IS 'pgr_trsp(one to one)
-- PROPOSED
 - Parameters
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - Restrictions SQL with columns: cost, path
@@ -205,7 +204,6 @@ IS 'pgr_trsp(one to one)
 
 COMMENT ON FUNCTION pgr_trsp(TEXT, TEXT, BIGINT, ANYARRAY, BOOLEAN)
 IS 'pgr_trsp(one to many)
-- PROPOSED
 - Parameters
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - Restrictions SQL with columns: cost, path
@@ -219,7 +217,6 @@ IS 'pgr_trsp(one to many)
 
 COMMENT ON FUNCTION pgr_trsp(TEXT, TEXT, ANYARRAY, BIGINT, BOOLEAN)
 IS 'pgr_trsp(many to one)
-- PROPOSED
 - Parameters
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - Restrictions SQL with columns: cost, path
@@ -233,7 +230,6 @@ IS 'pgr_trsp(many to one)
 
 COMMENT ON FUNCTION pgr_trsp(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
 IS 'pgr_trsp(many to many)
-- PROPOSED
 - Parameters
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - Restrictions SQL with columns: cost, path
@@ -247,7 +243,6 @@ IS 'pgr_trsp(many to many)
 
 COMMENT ON FUNCTION pgr_trsp(TEXT, TEXT, TEXT, BOOLEAN)
 IS 'pgr_trsp(combinations)
-- PROPOSED
 - Parameters
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - Restrictions SQL with columns: cost, path

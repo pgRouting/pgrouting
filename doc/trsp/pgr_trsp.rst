@@ -15,16 +15,16 @@
 
 |
 
-``pgr_trsp`` - Proposed
+``pgr_trsp``
 ===============================================================================
 
 ``pgr_trsp`` - routing vertices with restrictions.
 
-.. include:: proposed.rst
-   :start-after: warning-begin
-   :end-before: end-warning
-
 .. rubric:: Availability
+
+* Version 4.0.0
+
+  * **Official** function.
 
 * Version 3.4.0
 
@@ -77,7 +77,7 @@ The general algorithm is as follows:
 Signatures
 -------------------------------------------------------------------------------
 
-.. rubric:: Proposed
+.. rubric:: Summary
 
 .. admonition:: \ \
    :class: signatures
@@ -92,7 +92,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: trsp ; One to One -- Proposed on v3.4
+    single: trsp ; One to One
 
 One to One
 ...............................................................................
@@ -112,7 +112,7 @@ One to One
    :end-before: -- q3
 
 .. index::
-    single: trsp ; One to Many -- Proposed on v3.4
+    single: trsp ; One to Many
 
 One to Many
 ...............................................................................
@@ -133,7 +133,7 @@ One to Many
    :end-before: -- q4
 
 .. index::
-    single: trsp ; Many to One -- Proposed on v3.4
+    single: trsp ; Many to One
 
 Many to One
 ...............................................................................
@@ -154,7 +154,7 @@ Many to One
    :end-before: -- q5
 
 .. index::
-    single: trsp ; Many to Many -- Proposed on v3.4
+    single: trsp ; Many to Many
 
 Many to Many
 ...............................................................................
@@ -176,7 +176,7 @@ Many to Many
    :end-before: -- q6
 
 .. index::
-    single: trsp ; Combinations - Proposed on v3.4
+    single: trsp ; Combinations
 
 Combinations
 ...............................................................................
