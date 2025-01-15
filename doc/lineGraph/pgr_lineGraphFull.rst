@@ -27,7 +27,7 @@ the vertices from the original graph are converted to line graphs.
 
 * Version 2.6.0
 
-  * New **Experimental** function
+  * New experimental function.
 
 
 Description

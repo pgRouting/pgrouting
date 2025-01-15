@@ -23,22 +23,22 @@ flow from the sources to the targets using Edmonds Karp Algorithm.
 
 * Version 3.2.0
 
-  * New proposed signature
+  * New proposed signature:
 
     * pgr_edmondsKarp(Combinations)
 
 * Version 3.0.0
 
-  * **Official** function
+  * Function promoted to official.
 
 * Version 2.5.0
 
   * Renamed from ``pgr_maxFlowEdmondsKarp``
-  * **Proposed** function
+  * Function promoted to proposed.
 
 * Version 2.3.0
 
-  * New **Experimental** function
+  * New experimental function.
 
 
 Description

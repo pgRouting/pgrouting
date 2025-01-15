@@ -33,7 +33,7 @@ pgr_withPointsKSP - Proposed
     unnamed compulsory **driving side**.
   * Added ``start_vid`` and ``end_vid`` result columns.
 
-* New proposed signatures
+* New proposed signatures:
 
   * pgr_withPointsKSP(One to Many)
   * pgr_withPointsKSP(Many to One)

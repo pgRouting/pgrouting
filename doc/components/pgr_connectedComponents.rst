@@ -28,7 +28,7 @@ a DFS-based approach.
     * n_seq`` is removed
     * seq`` changed type to ``BIGINT``
 
-  * Function propoted to **Official**.
+  * Function promoted to official.
 
 * Version 2.5.0
 

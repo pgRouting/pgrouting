@@ -38,7 +38,7 @@ edges into a new table.
 
 * Version 2.0.0
 
-  * **Official** function
+  * Official function.
 
 
 Description

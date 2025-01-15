@@ -29,7 +29,7 @@ algorithm.
 
 * Version 3.0.0
 
-  * **Official** function.
+  * Function promoted to official.
 
 * Version 2.5.0
 
@@ -47,7 +47,7 @@ algorithm.
 
 * Version 2.0.0
 
-  * **Official** pgr_bdDijkstra(One to One)
+  * Official function.
 
 
 Description

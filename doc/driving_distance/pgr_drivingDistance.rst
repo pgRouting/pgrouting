@@ -35,12 +35,12 @@
 
 .. rubric:: Version 2.1.0
 
-* Signature change pgr_drivingDistance(single vertex)
-* New **Official** pgr_drivingDistance(multiple vertices)
+* Signature change: pgr_drivingDistance(single vertex)
+* New official.ignature: pgr_drivingDistance(multiple vertices)
 
 .. rubric:: Version 2.0.0
 
-* Official:: pgr_drivingDistance(single vertex)
+* Official function.
 
 
 Description

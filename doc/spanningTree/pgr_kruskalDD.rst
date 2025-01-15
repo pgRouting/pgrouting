@@ -31,7 +31,7 @@
 
 :Version 3.0.0:
 
-  * New **Official** function
+  * New official function.
 
 Description
 -------------------------------------------------------------------------------

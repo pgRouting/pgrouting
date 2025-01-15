@@ -38,7 +38,7 @@
 
 * Version 2.3.0
 
-  * New **Official** function
+  * New official function.
 
 
 Description
