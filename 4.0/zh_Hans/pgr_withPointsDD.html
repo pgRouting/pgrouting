@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_withPointsDD - 拟议 &#8212; pgRouting Manual (4.0-dev)</title>
+    <title>pgr_withPointsDD &#8212; pgRouting Manual (4.0-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -20,8 +20,8 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pgr_withPointsVia - 拟议" href="pgr_withPointsVia.html" />
-    <link rel="prev" title="pgr_withPointsKSP -拟议" href="pgr_withPointsKSP.html" />
+    <link rel="next" title="pgr_withPointsVia" href="pgr_withPointsVia.html" />
+    <link rel="prev" title="pgr_withPointsKSP" href="pgr_withPointsKSP.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -96,7 +96,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> - 拟议</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a><ul>
 <li><a class="reference internal" href="#single-vertex">单顶点</a></li>
@@ -132,11 +132,11 @@
               
                 
   <li>
-    <a href="pgr_withPointsKSP.html" title="Previous Chapter: pgr_withPointsKSP -拟议"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPointsKSP -拟议</span>
+    <a href="pgr_withPointsKSP.html" title="Previous Chapter: pgr_withPointsKSP"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPointsKSP</span>
     </a>
   </li>
   <li>
-    <a href="pgr_withPointsVia.html" title="Next Chapter: pgr_withPointsVia - 拟议"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_withPoint... &raquo;</span>
+    <a href="pgr_withPointsVia.html" title="Next Chapter: pgr_withPointsVia"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_withPointsVia &raquo;</span>
     </a>
   </li>
               
@@ -167,7 +167,7 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> - 拟议</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code></a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a><ul>
 <li><a class="reference internal" href="#single-vertex">单顶点</a></li>
@@ -197,11 +197,11 @@
 </ul>
 
   <li>
-    <a href="pgr_withPointsKSP.html" title="Previous Chapter: pgr_withPointsKSP -拟议"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPointsKSP -拟议</span>
+    <a href="pgr_withPointsKSP.html" title="Previous Chapter: pgr_withPointsKSP"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPointsKSP</span>
     </a>
   </li>
   <li>
-    <a href="pgr_withPointsVia.html" title="Next Chapter: pgr_withPointsVia - 拟议"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_withPoint... &raquo;</span>
+    <a href="pgr_withPointsVia.html" title="Next Chapter: pgr_withPointsVia"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_withPointsVia &raquo;</span>
     </a>
   </li>
 <form action="search.html" method="get">
@@ -219,27 +219,14 @@
   <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
-<section id="pgr-withpointsdd-proposed">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> - 拟议<a class="headerlink" href="#pgr-withpointsdd-proposed" title="Link to this heading">¶</a></h1>
+<section id="pgr-withpointsdd">
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code><a class="headerlink" href="#pgr-withpointsdd" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> - 返回从起点开始的行驶 <strong>距离</strong> 。</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>下一版本的拟议功能。</p>
-<ul class="simple">
-<li><p>它们并未正式出现在当前版本中。</p></li>
-<li><p>它们可能会正式成为下一个版本的一部分：</p>
-<ul>
-<li><p>这些函数使用 ANY-INTEGER 和 ANY-NUMERICAL</p></li>
-<li><p>名字可能不会改变。（但仍然有可能改变）</p></li>
-<li><p>签名可能不会改变。（但仍然有可能改变）</p></li>
-<li><p>功能可能不会改变。（但仍然有可能改变）</p></li>
-<li><p>pgTap 测试已经完成。 但可能需要更多。</p></li>
-<li><p>文档可能需要完善。</p></li>
-</ul>
-</li>
-</ul>
-</div>
 <p class="rubric">可用性</p>
+<p class="rubric">Version 4.0.0</p>
+<ul class="simple">
+<li><p>Function promoted to official.</p></li>
+</ul>
 <p class="rubric">版本3.6.0</p>
 <ul class="simple">
 <li><p>签名更改： <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> 参数从已命名的可选参数改为未命名的必选参数 <strong>driving side</strong>。</p>

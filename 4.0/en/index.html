@@ -369,7 +369,7 @@ table.</p></li>
 <li><p><a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a> - When input is given as matrix cell information.</p></li>
 <li><p><a class="reference internal" href="pgr_TSPeuclidean.html"><span class="doc">pgr_TSPeuclidean</span></a> - When input are coordinates.</p></li>
 </ul>
-<p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Proposed</span></a> - Turn Restriction Shortest Path (TRSP)</p>
+<p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp</span></a> - Turn Restriction Shortest Path (TRSP)</p>
 </section>
 <section id="functions-by-categories">
 <h2>Functions by categories<a class="headerlink" href="#functions-by-categories" title="Link to this heading">¶</a></h2>
@@ -432,6 +432,37 @@ table.</p></li>
 <h2><a class="reference internal" href="release_notes.html"><span class="doc">Release Notes</span></a><a class="headerlink" href="#release-notes" title="Link to this heading">¶</a></h2>
 <section id="pgrouting-4-0-0-release-notes">
 <h3>pgRouting 4.0.0 Release Notes<a class="headerlink" href="#pgrouting-4-0-0-release-notes" title="Link to this heading">¶</a></h3>
+<p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%204.0.0%22">Git closed
+milestone for 4.0.0</a></p>
+<p class="rubric">Functions promoted to official</p>
+<ul class="simple">
+<li><p>pgr_trsp</p></li>
+<li><p>pgr_trspVia</p></li>
+<li><p>pgr_trspVia_withPoints</p></li>
+<li><p>pgr_trsp_withPoints</p></li>
+<li><p>pgr_withPoints</p></li>
+<li><p>pgr_withPointsCost</p></li>
+<li><p>pgr_withPointsCostMatrix</p></li>
+<li><p>pgr_withPointsDD</p></li>
+<li><p>pgr_withPointsKSP</p></li>
+<li><p>pgr_withPointsVia</p></li>
+</ul>
+<p class="rubric">Signatures promoted to official</p>
+<ul class="simple">
+<li><p>pgr_aStar(Combinations)</p></li>
+<li><p>pgr_aStarCost(Combinations)</p></li>
+<li><p>pgr_bdAstar(Combinations)</p></li>
+<li><p>pgr_bdAstarCost(Combinations)</p></li>
+<li><p>pgr_bdDijkstra(Combinations)</p></li>
+<li><p>pgr_bdDijkstraCost(Combinations)</p></li>
+<li><p>pgr_dijkstra(Combinations)</p></li>
+<li><p>pgr_dijkstraCost(Combinations)</p></li>
+<li><p>pgr_KSP(All signatures)</p></li>
+<li><p>pgr_boykovKolmogorov(Combinations)</p></li>
+<li><p>pgr_edmondsKarp(Combinations)</p></li>
+<li><p>pgr_maxFlow(Combinations)</p></li>
+<li><p>pgr_pushRelabel(Combinations)</p></li>
+</ul>
 <p class="rubric">Removal of deprecated functions and signatures</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_trspviaedges(text,integer[],double</span> <span class="pre">precision[],boolean,boolean,text)</span></code></p></li>

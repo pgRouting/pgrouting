@@ -21,7 +21,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="实验函数" href="experimental.html" />
-    <link rel="prev" title="pgr_withPointsVia - 拟议" href="pgr_withPointsVia.html" />
+    <link rel="prev" title="pgr_withPointsVia" href="pgr_withPointsVia.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -155,7 +155,7 @@
               
                 
   <li>
-    <a href="pgr_withPointsVia.html" title="Previous Chapter: pgr_withPointsVia - 拟议"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPoint...</span>
+    <a href="pgr_withPointsVia.html" title="Previous Chapter: pgr_withPointsVia"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPointsVia</span>
     </a>
   </li>
   <li>
@@ -243,7 +243,7 @@
 </ul>
 
   <li>
-    <a href="pgr_withPointsVia.html" title="Previous Chapter: pgr_withPointsVia - 拟议"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPoint...</span>
+    <a href="pgr_withPointsVia.html" title="Previous Chapter: pgr_withPointsVia"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPointsVia</span>
     </a>
   </li>
   <li>
@@ -1087,7 +1087,7 @@ WHERE rn &lt;= 1
 </section>
 <section id="find-at-most-two-routes-to-a-given-point">
 <h3><a class="toc-backref" href="#id10" role="doc-backlink">最多找到两条到达给定点的路线</a><a class="headerlink" href="#find-at-most-two-routes-to-a-given-point" title="Link to this heading">¶</a></h3>
-<p>使用 <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints -拟议</span></a></p>
+<p>使用 <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints</span></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
   $e$ SELECT * FROM edges $e$,
   $p$ SELECT edge_id, round(fraction::numeric, 2) AS fraction, side
