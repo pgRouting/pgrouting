@@ -21,6 +21,10 @@ algorithm.
 
 .. rubric:: Availability:
 
+* Version 4.0.0
+
+  * Combinations signature promoted to official.
+
 * Version 3.2.0
 
   * New proposed signature:
@@ -162,7 +166,7 @@ Many to Many
     :end-before: -- q51
 
 .. index::
-    single: bdDijkstra ; Combinations - Proposed on v3.2
+    single: bdDijkstra ; Combinations
 
 Combinations
 ...............................................................................

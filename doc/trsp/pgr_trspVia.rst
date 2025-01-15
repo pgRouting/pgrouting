@@ -15,22 +15,20 @@
 
 |
 
-``pgr_trspVia`` - Proposed
+``pgr_trspVia``
 ===============================================================================
 
 ``pgr_trspVia`` Route that goes through a list of vertices with restrictions.
 
-.. include:: proposed.rst
-   :start-after: warning-begin
-   :end-before: end-warning
-
 .. rubric:: Availability
+
+* Version 4.0.0
+
+  * Function promoted to official.
 
 * Version 3.4.0
 
   * New proposed function.
-
-    * pgr_trspVia(One Via)
 
 Description
 -------------------------------------------------------------------------------
@@ -55,7 +53,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: trspVia ; One Via - Proposed on v3.4
+    single: trspVia ; One Via
 
 One Via
 ...............................................................................

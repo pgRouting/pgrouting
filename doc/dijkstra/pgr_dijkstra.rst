@@ -21,6 +21,10 @@
 
 .. rubric:: Availability
 
+* Version 4.0.0
+
+  * Combinations signature promoted to official.
+
 * Version 3.5.0
 
   * Standarizing output columns to |short-generic-result|
@@ -175,7 +179,7 @@ Many to Many
    :end-before: -- q51
 
 .. index::
-    single: dijkstra ; Combinations - Proposed on v3.1
+    single: dijkstra ; Combinations
 
 Combinations
 ...............................................................................

@@ -21,6 +21,10 @@ source(s) to the targets(s) using the Push Relabel algorithm.
 
 .. Rubric:: Availability
 
+* Version 4.0.0
+
+  * Combinations signature promoted to official.
+
 * Version 3.2.0
 
   * New proposed signature:
@@ -147,7 +151,7 @@ Many to Many
    :end-before: -- q5
 
 .. index::
-    single: maxFlow ; Combinations - Proposed on v3.2
+    single: maxFlow ; Combinations
 
 Combinations
 ...............................................................................

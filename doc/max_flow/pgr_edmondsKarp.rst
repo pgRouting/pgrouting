@@ -21,6 +21,10 @@ flow from the sources to the targets using Edmonds Karp Algorithm.
 
 .. Rubric:: Availability
 
+* Version 4.0.0
+
+  * Combinations signature promoted to official.
+
 * Version 3.2.0
 
   * New proposed signature:
@@ -150,7 +154,7 @@ Many to Many
    :end-before: -- q5
 
 .. index::
-    single: edmondsKarp ; Combinations - Proposed on v3.2
+    single: edmondsKarp ; Combinations
 
 Combinations
 ...............................................................................

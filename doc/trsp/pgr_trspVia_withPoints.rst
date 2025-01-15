@@ -16,17 +16,17 @@
 
 |
 
-``pgr_trspVia_withPoints`` - Proposed
+``pgr_trspVia_withPoints``
 ===============================================================================
 
 ``pgr_trspVia_withPoints`` - Route that goes through a list of vertices and/or
 points with restrictions.
 
-.. include:: proposed.rst
-   :start-after: warning-begin
-   :end-before: end-warning
-
 .. rubric:: Availability
+
+* Version 4.0.0
+
+  * Function promoted to official.
 
 * Version 3.4.0
 
@@ -65,7 +65,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: trspVia_withPoints ; One Via - Proposed on v3.4
+    single: trspVia_withPoints ; One Via
 
 One Via
 ...............................................................................

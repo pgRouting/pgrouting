@@ -23,6 +23,10 @@ algorithm.
 
 .. rubric:: Availability
 
+* Version 4.0.0
+
+  * Combinations signature promoted to official.
+
 * Version 3.1.0
 
   * New proposed signature:
@@ -155,7 +159,7 @@ Many to Many
     :end-before: -- q51
 
 .. index::
-    single: dijkstraCost ; Combinations - Proposed on v3.1
+    single: dijkstraCost ; Combinations
 
 Combinations
 ...............................................................................

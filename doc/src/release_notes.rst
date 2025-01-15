@@ -39,6 +39,40 @@ pgRouting 4.0
 pgRouting 4.0.0 Release Notes
 -------------------------------------------------------------------------------
 
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 4.0.0
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__
+
+.. rubric:: Functions promoted to official
+
+* pgr_trsp
+* pgr_trspVia
+* pgr_trspVia_withPoints
+* pgr_trsp_withPoints
+* pgr_withPoints
+* pgr_withPointsCost
+* pgr_withPointsCostMatrix
+* pgr_withPointsDD
+* pgr_withPointsKSP
+* pgr_withPointsVia
+
+.. rubric:: Signatures promoted to official
+
+* pgr_aStar(Combinations)
+* pgr_aStarCost(Combinations)
+* pgr_bdAstar(Combinations)
+* pgr_bdAstarCost(Combinations)
+* pgr_bdDijkstra(Combinations)
+* pgr_bdDijkstraCost(Combinations)
+* pgr_dijkstra(Combinations)
+* pgr_dijkstraCost(Combinations)
+* pgr_KSP(All signatures)
+* pgr_boykovKolmogorov(Combinations)
+* pgr_edmondsKarp(Combinations)
+* pgr_maxFlow(Combinations)
+* pgr_pushRelabel(Combinations)
+
+
 .. rubric:: Removal of deprecated functions and signatures
 
 * ``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``

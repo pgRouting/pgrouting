@@ -16,16 +16,16 @@
 
 |
 
-``pgr_trsp_withPoints`` - Proposed
+``pgr_trsp_withPoints``
 ===============================================================================
 
 ``pgr_trsp_withPoints`` Routing Vertex/Point with restrictions.
 
-.. include:: proposed.rst
-   :start-after: warning-begin
-   :end-before: end-warning
-
 .. rubric:: Availability
+
+* Version 4.0.0
+
+  * Function promoted to official.
 
 * Version 3.4.0
 
@@ -85,7 +85,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: trsp_withPoints ; One to One - Proposed on v3.4
+    single: trsp_withPoints ; One to One
 
 One to One
 ...............................................................................
@@ -107,7 +107,7 @@ One to One
    :end-before: --e2
 
 .. index::
-    single: trsp_withPoints ; One to Many - Proposed on v3.4
+    single: trsp_withPoints ; One to Many
 
 One to Many
 ...............................................................................
@@ -128,7 +128,7 @@ One to Many
    :end-before: --e3
 
 .. index::
-    single: trsp_withPoints ; Many to One - Proposed on v3.4
+    single: trsp_withPoints ; Many to One
 
 Many to One
 ...............................................................................
@@ -149,7 +149,7 @@ Many to One
    :end-before: --e4
 
 .. index::
-    single: trsp_withPoints ; Many to Many - Proposed on v3.4
+    single: trsp_withPoints ; Many to Many
 
 Many to Many
 ...............................................................................
@@ -171,7 +171,7 @@ Many to Many
    :end-before: --e5
 
 .. index::
-    single: trsp_withPoints ; Combinations - Proposed on v3.4
+    single: trsp_withPoints ; Combinations
 
 Combinations
 ...............................................................................

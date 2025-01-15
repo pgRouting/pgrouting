@@ -21,6 +21,10 @@ the flow from the sources to the targets using Boykov Kolmogorov algorithm.
 
 .. Rubric:: Availability
 
+* Version 4.0.0
+
+  * Combinations signature promoted to official.
+
 * Version 3.2.0
 
   * New proposed signature:
@@ -150,7 +154,7 @@ Many to Many
    :end-before: -- q5
 
 .. index::
-    single: boykovKolmogorov ; Combinations - Proposed on v3.2
+    single: boykovKolmogorov ; Combinations
 
 Combinations
 ...............................................................................
