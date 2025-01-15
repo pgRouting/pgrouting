@@ -96,7 +96,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_connectedComponents</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_connectedComponents</span></code></a><ul>
 <li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#signatures">Signatures</a></li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
@@ -164,7 +164,7 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">pgr_connectedComponents</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_connectedComponents</span></code></a><ul>
 <li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#signatures">Signatures</a></li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
@@ -210,36 +210,29 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_connectedComponents','en'));  </script>
             
-  <div class="line-block">
+  <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-connectedcomponents">
-<span id="index-0"></span><h1>pgr_connectedComponents<a class="headerlink" href="#pgr-connectedcomponents" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_connectedComponents</span></code><a class="headerlink" href="#pgr-connectedcomponents" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_connectedComponents</span></code> — Connected components of an undirected graph using
 a DFS-based approach.</p>
-<figure class="align-default" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/connected_components.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
-</a>
-<figcaption>
-<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
 <p class="rubric">Availability</p>
 <ul class="simple">
 <li><p>Version 3.0.0</p>
 <ul>
 <li><p>Result columns change:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">n_seq</span></code> is removed</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">seq</span></code> changed type to <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></li>
+<li><p>n_seq`` is removed</p></li>
+<li><p>seq`` changed type to <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></li>
 </ul>
 </li>
-<li><p><strong>Official</strong> function</p></li>
+<li><p>Function promoted to official.</p></li>
 </ul>
 </li>
 <li><p>Version 2.5.0</p>
 <ul>
-<li><p>New <strong>experimental</strong> function</p></li>
+<li><p>New experimental function.</p></li>
 </ul>
 </li>
 </ul>
@@ -260,9 +253,10 @@ from each other.</p>
 </li>
 <li><p>Running time: <span class="math notranslate nohighlight">\(O(V + E)\)</span></p></li>
 </ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
-<span id="index-1"></span><h2>Signatures<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<h2>Signatures<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -489,7 +483,7 @@ the crossing edge in this graph is a different component.</p>
 </section>
 <section id="get-the-closest-vertex">
 <h4>Get the closest vertex<a class="headerlink" href="#get-the-closest-vertex" title="Link to this heading">¶</a></h4>
-<p>Using <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> the closest vertex to component <span class="math notranslate nohighlight">\(1\)</span> is
+<p>Using <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges - Proposed</span></a> the closest vertex to component <span class="math notranslate nohighlight">\(1\)</span> is
 vertex <span class="math notranslate nohighlight">\(4\)</span>. And the closest edge to vertex <span class="math notranslate nohighlight">\(4\)</span> is edge <span class="math notranslate nohighlight">\(14\)</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge_id, fraction, ST_AsText(edge) AS edge, id AS closest_vertex
 FROM pgr_findCloseEdges(
@@ -606,8 +600,8 @@ as there is only one component.</p>
 <h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="components-family.html"><span class="doc">Components - Family of functions</span></a></p></li>
-<li><p>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p></li>
-<li><p>Boost: <a class="reference external" href="https://www.boost.org/libs/graph/doc/connected_components.html">Connected components</a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/connected_components.html">Boost: Connected components</a></p></li>
 <li><p>wikipedia: <a class="reference external" href="https://en.wikipedia.org/wiki/Connected_component_(graph_theory)">Connected component</a></p></li>
 </ul>
 <p class="rubric">Indices and tables</p>
@@ -631,7 +625,7 @@ as there is only one component.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.0-dev.<br/>
-      Last updated on Jan 10, 2025.<br/>
+      Last updated on Jan 15, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

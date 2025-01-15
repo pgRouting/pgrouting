@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_betweennessCentrality &#8212; pgRouting Manual (4.0-dev)</title>
+    <title>pgr_betweennessCentrality - Experimental &#8212; pgRouting Manual (4.0-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -96,7 +96,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_betweennessCentrality</span></code></a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_betweennessCentrality</span></code> - Experimental</a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a></li>
 <li><a class="reference internal" href="#parameters">参数</a><ul>
@@ -155,7 +155,7 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_betweennessCentrality</span></code></a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_betweennessCentrality</span></code> - Experimental</a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a></li>
 <li><a class="reference internal" href="#parameters">参数</a><ul>
@@ -192,27 +192,20 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_betweennessCentrality','zh-Hans'));  </script>
             
-  <div class="line-block">
+  <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
-<section id="pgr-betweennesscentrality">
-<span id="index-0"></span><h1><code class="docutils literal notranslate"><span class="pre">pgr_betweennessCentrality</span></code><a class="headerlink" href="#pgr-betweennesscentrality" title="Link to this heading">¶</a></h1>
+<section id="pgr-betweennesscentrality-experimental">
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_betweennessCentrality</span></code> - Experimental<a class="headerlink" href="#pgr-betweennesscentrality-experimental" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_betweennessCentrality</span></code> - Calculates the relative betweeness centrality
 using Brandes Algorithm</p>
-<figure class="align-default" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/doc/libs/1_84_0/libs/graph/doc/betweenness_centrality.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
-</a>
-<figcaption>
-<p><span class="caption-text">Boost 图内部</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
 <p class="rubric">可用性</p>
 <ul class="simple">
 <li><p>Version 3.7.0</p>
 <ul>
-<li><p>新的 <strong>实验</strong> 函数：</p>
+<li><p>New experimental function.</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_betweennessCentrality</span></code></p></li>
+<li><p>pgr_betweennessCentrality``</p></li>
 </ul>
 </li>
 </ul>
@@ -234,6 +227,7 @@ it, as most of the shortest paths between vertices pass through them.</p>
 <li><p>Running space: <span class="math notranslate nohighlight">\(\Theta(VE)\)</span></p></li>
 <li><p>Throws when there are no edges in the graph</p></li>
 </ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -412,8 +406,8 @@ it, as most of the shortest paths between vertices pass through them.</p>
 <section id="see-also">
 <h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p>Boost's <a class="reference external" href="https://www.boost.org/doc/libs/1_84_0/libs/graph/doc/betweenness_centrality.html">betweenness_centrality</a></p></li>
-<li><p>查询使用 <a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a> 网络。</p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/doc/libs/1_84_0/libs/graph/doc/betweenness_centrality.html">Boost: betweenness centrality</a></p></li>
 </ul>
 <p class="rubric">索引和表格</p>
 <ul class="simple">
@@ -436,7 +430,7 @@ it, as most of the shortest paths between vertices pass through them.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.0-dev.<br/>
-      Last updated on 1月 10, 2025.<br/>
+      Last updated on 1月 15, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

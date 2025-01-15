@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_trsp_withPoints - 拟议 &#8212; pgRouting Manual (4.0-dev)</title>
+    <title>pgr_trsp_withPoints - Proposed &#8212; pgRouting Manual (4.0-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -96,7 +96,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_trsp_withPoints - 拟议</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> - Proposed</a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a><ul>
 <li><a class="reference internal" href="#one-to-one">一对一</a></li>
@@ -172,7 +172,7 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">pgr_trsp_withPoints - 拟议</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> - Proposed</a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a><ul>
 <li><a class="reference internal" href="#one-to-one">一对一</a></li>
@@ -226,19 +226,12 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_trsp_withPoints','zh-Hans'));  </script>
             
-  <div class="line-block">
+  <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-trsp-withpoints-proposed">
-<span id="index-0"></span><h1>pgr_trsp_withPoints - 拟议<a class="headerlink" href="#pgr-trsp-withpoints-proposed" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> - Proposed<a class="headerlink" href="#pgr-trsp-withpoints-proposed" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> 有限制的路由顶点/点。</p>
-<figure class="align-default" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/table_of_contents.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
-</a>
-<figcaption>
-<p><span class="caption-text">Boost 图内部</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>下一版本的拟议功能。</p>
@@ -260,15 +253,7 @@
 <ul class="simple">
 <li><p>版本 3.4.0</p>
 <ul>
-<li><p>新拟议的签名：</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> (<a class="reference internal" href="#one-to-one">一对一</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> (<a class="reference internal" href="#one-to-many">一对多</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> (<a class="reference internal" href="#many-to-one">多对一</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> (<a class="reference internal" href="#many-to-many">多对多</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> (<a class="reference internal" href="#combinations">组合</a>)</p></li>
-</ul>
-</li>
+<li><p>New proposed function.</p></li>
 </ul>
 </li>
 </ul>
@@ -305,6 +290,7 @@ Using Dijkstra algorithm, find the shortest path</p>
 <ul class="simple">
 <li><p>运行时间： <span class="math notranslate nohighlight">\(O(|start\_vids|\times(V \log V + E))\)</span></p></li>
 </ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -921,14 +907,14 @@ Using Dijkstra algorithm, find the shortest path</p>
 <h2>其他示例<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-findcloseedges-for-points-on-the-fly" id="id2">对动态点使用 <code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code></a></p></li>
-<li><p><a class="reference internal" href="#pass-in-front-or-visits" id="id3">从前面经过或参观。</a></p></li>
-<li><p><a class="reference internal" href="#show-details-on-undirected-graph" id="id4">显示无向图的详细信息。</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-findcloseedges-for-points-on-the-fly" id="id1">对动态点使用 <code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code></a></p></li>
+<li><p><a class="reference internal" href="#pass-in-front-or-visits" id="id2">从前面经过或参观。</a></p></li>
+<li><p><a class="reference internal" href="#show-details-on-undirected-graph" id="id3">显示无向图的详细信息。</a></p></li>
 </ul>
 </nav>
 <section id="use-pgr-findcloseedges-for-points-on-the-fly">
-<h3><a class="toc-backref" href="#id2" role="doc-backlink">对动态点使用 <code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code></a><a class="headerlink" href="#use-pgr-findcloseedges-for-points-on-the-fly" title="Link to this heading">¶</a></h3>
-<p>使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a>:</p>
+<h3><a class="toc-backref" href="#id1" role="doc-backlink">对动态点使用 <code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code></a><a class="headerlink" href="#use-pgr-findcloseedges-for-points-on-the-fly" title="Link to this heading">¶</a></h3>
+<p>使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges - Proposed</span></a>:</p>
 <p>找到从顶点 <span class="math notranslate nohighlight">\(1\)</span> 到点 <cite>(2.9, 1.8)</cite> 图上两个最近位置的路线。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp_withPoints(
   $e$ SELECT * FROM edges $e$,
@@ -968,7 +954,7 @@ Using Dijkstra algorithm, find the shortest path</p>
 </ul>
 </section>
 <section id="pass-in-front-or-visits">
-<h3><a class="toc-backref" href="#id3" role="doc-backlink">从前面经过或参观。</a><a class="headerlink" href="#pass-in-front-or-visits" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">从前面经过或参观。</a><a class="headerlink" href="#pass-in-front-or-visits" title="Link to this heading">¶</a></h3>
 <p>哪条路径（如果有）通过右侧驱动拓扑的点 <span class="math notranslate nohighlight">\(6\)</span> 或顶点 <span class="math notranslate nohighlight">\(11\)</span> 前面。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT (&#39;(&#39; || start_vid || &#39; =&gt; &#39; || end_vid ||&#39;) at &#39; || path_seq || &#39;th step:&#39;)::TEXT AS path_at,
 CASE WHEN edge = -1 THEN &#39; visits&#39;
@@ -1004,7 +990,7 @@ ELSE &#39; passes in front of&#39;
 </div>
 </section>
 <section id="show-details-on-undirected-graph">
-<h3><a class="toc-backref" href="#id4" role="doc-backlink">显示无向图的详细信息。</a><a class="headerlink" href="#show-details-on-undirected-graph" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">显示无向图的详细信息。</a><a class="headerlink" href="#show-details-on-undirected-graph" title="Link to this heading">¶</a></h3>
 <p>无向图上从点 <span class="math notranslate nohighlight">\(1\)</span> 和顶点 <span class="math notranslate nohighlight">\(6\)</span> 到点 <span class="math notranslate nohighlight">\(3`到顶点 :math:`1\)</span> 的详细信息。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
@@ -1073,7 +1059,7 @@ ELSE &#39; passes in front of&#39;
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.0-dev.<br/>
-      Last updated on 1月 10, 2025.<br/>
+      Last updated on 1月 15, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

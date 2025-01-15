@@ -96,7 +96,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_lineGraph - Proposed</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_lineGraph</span></code> - Proposed</a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a></li>
 <li><a class="reference internal" href="#parameters">参数</a><ul>
@@ -166,7 +166,7 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">pgr_lineGraph - Proposed</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_lineGraph</span></code> - Proposed</a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a></li>
 <li><a class="reference internal" href="#parameters">参数</a><ul>
@@ -214,19 +214,12 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_lineGraph','zh-Hans'));  </script>
             
-  <div class="line-block">
+  <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-linegraph-proposed">
-<span id="index-0"></span><h1>pgr_lineGraph - Proposed<a class="headerlink" href="#pgr-linegraph-proposed" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_lineGraph</span></code> - Proposed<a class="headerlink" href="#pgr-linegraph-proposed" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_lineGraph</span></code> — 将给定图转换为其相应的基于边的图。</p>
-<figure class="align-default" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
-</a>
-<figcaption>
-<p><span class="caption-text">Boost 图内部</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>下一版本的拟议功能。</p>
@@ -248,13 +241,13 @@
 <ul class="simple">
 <li><p>Version 3.7.0</p>
 <ul>
-<li><p>晋升为 <strong>拟议</strong> 签名。</p></li>
+<li><p>Function promoted to proposed.</p></li>
 <li><p>适用于有向和无向图。</p></li>
 </ul>
 </li>
 <li><p>版本2.5.0</p>
 <ul>
-<li><p>新的 <strong>实验</strong> 函数</p></li>
+<li><p>New experimental function.</p></li>
 </ul>
 </li>
 </ul>
@@ -283,6 +276,7 @@ edges (See <a class="reference internal" href="#additional-examples">Additional 
 </ul>
 </li>
 </ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -497,14 +491,14 @@ edges (See <a class="reference internal" href="#additional-examples">Additional 
 <h2>其他示例<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#representation-as-directed-with-shared-edge-identifiers" id="id2">Representation as directed with shared edge identifiers</a></p>
+<li><p><a class="reference internal" href="#representation-as-directed-with-shared-edge-identifiers" id="id1">Representation as directed with shared edge identifiers</a></p>
 <ul>
-<li><p><a class="reference internal" href="#line-graph-of-a-directed-graph-represented-with-shared-edges" id="id3">Line Graph of a directed graph represented with shared edges</a></p></li>
+<li><p><a class="reference internal" href="#line-graph-of-a-directed-graph-represented-with-shared-edges" id="id2">Line Graph of a directed graph represented with shared edges</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#representation-as-directed-with-unique-edge-identifiers" id="id4">Representation as directed with unique edge identifiers</a></p>
+<li><p><a class="reference internal" href="#representation-as-directed-with-unique-edge-identifiers" id="id3">Representation as directed with unique edge identifiers</a></p>
 <ul>
-<li><p><a class="reference internal" href="#line-graph-of-a-directed-graph-represented-with-unique-edges" id="id5">Line Graph of a directed graph represented with unique edges</a></p></li>
+<li><p><a class="reference internal" href="#line-graph-of-a-directed-graph-represented-with-unique-edges" id="id4">Line Graph of a directed graph represented with unique edges</a></p></li>
 </ul>
 </li>
 </ul>
@@ -535,7 +529,7 @@ edges (See <a class="reference internal" href="#additional-examples">Additional 
    }
 }" class="graphviz" /></div>
 <section id="representation-as-directed-with-shared-edge-identifiers">
-<h3><a class="toc-backref" href="#id2" role="doc-backlink">Representation as directed with shared edge identifiers</a><a class="headerlink" href="#representation-as-directed-with-shared-edge-identifiers" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id1" role="doc-backlink">Representation as directed with shared edge identifiers</a><a class="headerlink" href="#representation-as-directed-with-shared-edge-identifiers" title="Link to this heading">¶</a></h3>
 <p>For the simplicity, the design of the edges table on the database, has the
 edge's identifiers are represented with 3 digits:</p>
 <dl class="field-list simple">
@@ -609,7 +603,7 @@ row with <span class="math notranslate nohighlight">\(id=304\)</span>.</p></li>
 </pre></div>
 </div>
 <section id="line-graph-of-a-directed-graph-represented-with-shared-edges">
-<h4><a class="toc-backref" href="#id3" role="doc-backlink">Line Graph of a directed graph represented with shared edges</a><a class="headerlink" href="#line-graph-of-a-directed-graph-represented-with-shared-edges" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id2" role="doc-backlink">Line Graph of a directed graph represented with shared edges</a><a class="headerlink" href="#line-graph-of-a-directed-graph-represented-with-shared-edges" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span>
 <span class="n">FROM</span> <span class="n">pgr_lineGraph</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges_shared&#39;</span><span class="p">,</span>
@@ -681,7 +675,7 @@ row with <span class="math notranslate nohighlight">\(id=304\)</span>.</p></li>
 </section>
 </section>
 <section id="representation-as-directed-with-unique-edge-identifiers">
-<h3><a class="toc-backref" href="#id4" role="doc-backlink">Representation as directed with unique edge identifiers</a><a class="headerlink" href="#representation-as-directed-with-unique-edge-identifiers" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Representation as directed with unique edge identifiers</a><a class="headerlink" href="#representation-as-directed-with-unique-edge-identifiers" title="Link to this heading">¶</a></h3>
 <p>For the simplicity, the design of the edges table on the database, has the
 edge's identifiers are represented with 3 digits:</p>
 <dl class="field-list simple">
@@ -759,7 +753,7 @@ edges <span class="math notranslate nohighlight">\(id=304\)</span> and <span cla
 </pre></div>
 </div>
 <section id="line-graph-of-a-directed-graph-represented-with-unique-edges">
-<h4><a class="toc-backref" href="#id5" role="doc-backlink">Line Graph of a directed graph represented with unique edges</a><a class="headerlink" href="#line-graph-of-a-directed-graph-represented-with-unique-edges" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">Line Graph of a directed graph represented with unique edges</a><a class="headerlink" href="#line-graph-of-a-directed-graph-represented-with-unique-edges" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span>
 <span class="n">FROM</span> <span class="n">pgr_lineGraph</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges_unique&#39;</span><span class="p">,</span>
@@ -864,7 +858,7 @@ edges <span class="math notranslate nohighlight">\(id=304\)</span> and <span cla
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.0-dev.<br/>
-      Last updated on 1月 10, 2025.<br/>
+      Last updated on 1月 15, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

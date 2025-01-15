@@ -213,56 +213,49 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_bdAstar','es'));  </script>
             
-  <div class="line-block">
+  <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-bdastar">
-<span id="index-0"></span><h1><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code><a class="headerlink" href="#pgr-bdastar" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code><a class="headerlink" href="#pgr-bdastar" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> — Devuelve la ruta más corta usando el algoritmo Bidireccional A*.</p>
-<figure class="align-default" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/astar_search.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
-</a>
-<figcaption>
-<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
 <li><p>Versión 3.6.0</p>
 <ul>
 <li><p>Estandarización de las columnas de salida a <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#one-to-one">Uno a Uno</a>) ha añadido las columnas <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> y <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#one-to-many">Uno a Muchos</a>) ha añadido la columna <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#many-to-one">Muchos a Uno</a>) ha añadido la columna <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
+<li><p>pgr_bdAstar(One to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> columns.</p></li>
+<li><p>pgr_bdAstar(One to Many) added <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> column.</p></li>
+<li><p>pgr_bdAstar(Many to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>Versión 3.2.0</p>
 <ul>
-<li><p>Nueva firma <strong>propuesta</strong>:</p>
+<li><p>New proposed signature:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#combinations">Combinaciones</a>)</p></li>
+<li><p>pgr_bdAstar(Combinaciones)</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>Versión 3.0.0</p>
 <ul>
-<li><p>Función <strong>oficial</strong></p></li>
+<li><p>Function promoted to official.</p></li>
 </ul>
 </li>
 <li><p>Versión 2.5.0</p>
 <ul>
-<li><p>Nuevas firmas <strong>propuestas</strong>:</p>
+<li><p>New proposed signatures:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#one-to-many">Uno a Muchos</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#many-to-one">Muchos a Uno</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#many-to-many">Muchos a Muchos</a>)</p></li>
+<li><p>pgr_bdAstar(One to Many)</p></li>
+<li><p>pgr_bdAstar(Many to One)</p></li>
+<li><p>pgr_bdAstar(Many to Many)</p></li>
 </ul>
 </li>
-<li><p>Cambio de firma en <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#one-to-one">Uno a Uno</a>)</p>
+<li><p>Signature change on pgr_bdAstar(One to One)</p>
 <ul>
 <li><p>Firma antigua ya no soportada</p></li>
 </ul>
@@ -271,7 +264,7 @@
 </li>
 <li><p>Versión 2.0.0</p>
 <ul>
-<li><p><strong>Oficial</strong> <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#one-to-one">Uno a Uno</a>)</p></li>
+<li><p>Official function.</p></li>
 </ul>
 </li>
 </ul>
@@ -311,15 +304,17 @@
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O((E + V) * \log V)\)</span></p></li>
 </ul>
 <ul class="simple">
-<li><p>Los resultados son equivalentes a la unión de los resultados de <cite>pgr_bdAStar(</cite> <a class="reference internal" href="#one-to-one">Uno a Uno</a> <cite>)</cite> en:</p>
+<li><p>The results are equivalent to the union of the results of the
+pgr_bdAStar(One to One) on the:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#one-to-many">Uno a Muchos</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#many-to-one">Muchos a Uno</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#many-to-many">Muchos a Muchos</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#combinations">Combinaciones</a>)</p></li>
+<li><p>pgr_bdAstar(One to Many)</p></li>
+<li><p>pgr_bdAstar(Many to One)</p></li>
+<li><p>pgr_bdAstar(Many to Many)</p></li>
+<li><p>pgr_bdAstar(Combinaciones)</p></li>
 </ul>
 </li>
 </ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -346,7 +341,7 @@
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_bdAstar(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salida</strong>, <strong>destino</strong>, [<strong>opciones</strong>])</div>
-<div class="line"><strong>opcionales:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">heuristic,</span> <span class="pre">factor,</span> <span class="pre">epsilon]</span></code></div>
+<div class="line"><strong>options:</strong> [directed, heuristic, factor, epsilon]``</div>
 </div>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
@@ -957,7 +952,7 @@
 <li><p><a class="reference internal" href="aStar-family.html"><span class="doc">A* - Familia de Funciones</span></a></p></li>
 <li><p><a class="reference internal" href="bdAstar-family.html"><span class="doc">A* Bidireccional - Familia de Funciones</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/astar_search.html">https://www.boost.org/libs/graph/doc/astar_search.html</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/astar_search.html">Boost: A* search</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/A*_search_algorithm">https://en.wikipedia.org/wiki/A*_search_algorithm</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
@@ -981,7 +976,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.0-dev.<br/>
-      Actualizado por última vez en ene 10, 2025.<br/>
+      Actualizado por última vez en ene 15, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

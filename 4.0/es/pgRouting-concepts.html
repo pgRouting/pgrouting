@@ -798,7 +798,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </section>
 <section id="vertex-information">
 <h4><a class="toc-backref" href="#id27" role="doc-backlink">Información de vertices</a><a class="headerlink" href="#vertex-information" title="Link to this heading">¶</a></h4>
-<p>Para obtener la información de los vértices, use <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Propuesto</span></a></p>
+<p>Para obtener la información de los vértices, use <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Proposed</span></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span>
 <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target FROM wiki&#39;</span><span class="p">);</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">in_edges</span> <span class="o">|</span> <span class="n">out_edges</span>
@@ -905,7 +905,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <p>Cuando los datos vienen con geometrías y no hay topología de ruteo, entonces este paso es necesario.</p>
 <p>Todos los vértices iniciales y finales de las geometrías necesitan un identificador que se almacenará en las columnas <code class="docutils literal notranslate"><span class="pre">source</span></code> y <code class="docutils literal notranslate"><span class="pre">target</span></code> de la tabla de los datos. Del mismo modo, <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> necesitan tener el valor de atravesar la arista en ambas direcciones.</p>
 <p>Si las columnas no existen, hay que añadirlas a la tabla en cuestión. (véase <a class="reference external" href="https://www.postgresql.org/docs/current/sql-altertable.html">ALTER TABLE</a>)</p>
-<p>La función <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Propuesto</span></a> se utiliza para crear una tabla de vértices basada en el identificador de arista y la geometría de la arista del grafo.</p>
+<p>La función <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Proposed</span></a> se utiliza para crear una tabla de vértices basada en el identificador de arista y la geometría de la arista del grafo.</p>
 <p>Finalmente, utilizando los datos almacenados en las tablas de vértices, se rellenan los campos <code class="docutils literal notranslate"><span class="pre">source</span></code> y <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
 <p>Consulte <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> para ver un ejemplo de construcción de una topología.</p>
 <p>Los datos procedentes de OSM y utilizando <code class="docutils literal notranslate"><span class="pre">osm2pgrouting</span> <span class="pre">&lt;https://github.com/pgRouting/osm2pgrouting&gt;`__</span> <span class="pre">como</span> <span class="pre">herramienta</span> <span class="pre">de</span> <span class="pre">importación,</span> <span class="pre">vienen</span> <span class="pre">con</span> <span class="pre">la</span> <span class="pre">topología</span> <span class="pre">de</span> <span class="pre">ruteo.</span> <span class="pre">Ver</span> <span class="pre">un</span> <span class="pre">ejemplo</span> <span class="pre">de</span> <span class="pre">uso</span> <span class="pre">de</span> <span class="pre">``osm2pgrouting</span></code> en el <a class="reference external" href="https://workshop.pgrouting.org/latest/en/basic/data.html">workshop</a>.</p>
@@ -1314,7 +1314,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </section>
 <section id="get-the-closest-vertex">
 <h4><a class="toc-backref" href="#id45" role="doc-backlink">Obtener el vértice más cercano</a><a class="headerlink" href="#get-the-closest-vertex" title="Link to this heading">¶</a></h4>
-<p>Usando <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> el vértice más cercano al componente <span class="math notranslate nohighlight">\(1\)</span> es el vértice <span class="math notranslate nohighlight">\(4\)</span>. Y la arista más cercana al vértice <span class="math notranslate nohighlight">\(4\)</span> es la arista <span class="math notranslate nohighlight">\(14\)</span>.</p>
+<p>Usando <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges - Proposed</span></a> el vértice más cercano al componente <span class="math notranslate nohighlight">\(1\)</span> es el vértice <span class="math notranslate nohighlight">\(4\)</span>. Y la arista más cercana al vértice <span class="math notranslate nohighlight">\(4\)</span> es la arista <span class="math notranslate nohighlight">\(14\)</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge_id, fraction, ST_AsText(edge) AS edge, id AS closest_vertex
 FROM pgr_findCloseEdges(
   $$SELECT id, geom FROM edges WHERE component = 1$$,
@@ -2816,7 +2816,7 @@ INSERT 0 2
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.0-dev.<br/>
-      Actualizado por última vez en ene 10, 2025.<br/>
+      Actualizado por última vez en ene 15, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>
