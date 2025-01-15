@@ -240,11 +240,11 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_lineGraphFull','zh-Hans'));  </script>
             
-  <div class="line-block">
+  <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-linegraphfull-experimental">
-<span id="index-0"></span><h1><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> - 实验<a class="headerlink" href="#pgr-linegraphfull-experimental" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> - 实验<a class="headerlink" href="#pgr-linegraphfull-experimental" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> —将给定图转换为新图，其中原始图的所有顶点都转换为线图。</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -300,6 +300,7 @@
 <li><p>当输入图中使用重复的边 id 时，结果是不确定的。</p></li>
 <li><p>运行时间：TBD（待定）</p></li>
 </ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -524,7 +525,9 @@
 <li><p><a class="reference internal" href="#using-the-routing-graph" id="id16">使用路由图</a></p></li>
 </ul>
 </nav>
-<p>本节的示例基于 <a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a> 网络。 这些示例包括包含具有 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> 的边 4、7、8 和 10 的子图。</p>
+<p>The examples of this section are based on the <a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a>
+The examples include the subgraph including edges 4, 7, 8, and 10 with
+<code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>.</p>
 <section id="the-data">
 <h3><a class="toc-backref" href="#id1" role="doc-backlink">数据</a><a class="headerlink" href="#the-data" title="Link to this heading">¶</a></h3>
 <p>此示例显示此图形转换如何为图形中的每个可能的转弯创建附加边。</p>
@@ -1048,7 +1051,7 @@ LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.7.2.<br/>
-      Last updated on 1月 07, 2025.<br/>
+      Last updated on 1月 15, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

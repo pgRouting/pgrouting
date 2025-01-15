@@ -97,7 +97,7 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Migration guide</a><ul>
 <li><a class="reference internal" href="#migration-of-functions">Migration of functions</a><ul>
-<li><a class="reference internal" href="#migration-of-pgr-astar">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></a></li>
+<li><a class="reference internal" href="#migration-of-pgr-astar">Migration of pgr_aStar``</a></li>
 <li><a class="reference internal" href="#migration-of-pgr-bdastar">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-dijkstra">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-drivingdistance">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code></a><ul>
@@ -115,7 +115,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#migration-of-pgr-maxcardinalitymatch">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_primDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primDFS</span></code></a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs">Migration of pgr_primDD`` / <code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primDFS</span></code></a><ul>
 <li><a class="reference internal" href="#prim-single-vertex">Prim single vertex</a></li>
 <li><a class="reference internal" href="#prim-multiple-vertices">Prim multiple vertices</a></li>
 </ul>
@@ -126,7 +126,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#migration-of-pgr-withpointsksp">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code></a><ul>
-<li><a class="reference internal" href="#pgr-withpointsksp-one-to-one"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>One to One</cite>)</a></li>
+<li><a class="reference internal" href="#pgr-withpointsksp-one-to-one"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (One to One)</a></li>
 </ul>
 </li>
 </ul>
@@ -149,7 +149,7 @@
 <li><a class="reference internal" href="#migrating-pgr-trsp-vertices-using-pgr-trsp">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Vertices) using <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#migration-of-pgr-trsp-edges">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges)</a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-trsp-edges">Migration of pgr_trsp(Edges)</a><ul>
 <li><a class="reference internal" href="#migrating-pgr-trsp-edges-using-pgr-withpoints">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges) using <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code></a></li>
 <li><a class="reference internal" href="#migrating-pgr-trsp-edges-using-pgr-trsp-withpoints">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges) using <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code></a></li>
 </ul>
@@ -211,7 +211,7 @@
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
 <li><a class="reference internal" href="#">Migration guide</a><ul>
 <li><a class="reference internal" href="#migration-of-functions">Migration of functions</a><ul>
-<li><a class="reference internal" href="#migration-of-pgr-astar">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></a></li>
+<li><a class="reference internal" href="#migration-of-pgr-astar">Migration of pgr_aStar``</a></li>
 <li><a class="reference internal" href="#migration-of-pgr-bdastar">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-dijkstra">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-drivingdistance">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code></a><ul>
@@ -229,7 +229,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#migration-of-pgr-maxcardinalitymatch">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_primDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primDFS</span></code></a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs">Migration of pgr_primDD`` / <code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primDFS</span></code></a><ul>
 <li><a class="reference internal" href="#prim-single-vertex">Prim single vertex</a></li>
 <li><a class="reference internal" href="#prim-multiple-vertices">Prim multiple vertices</a></li>
 </ul>
@@ -240,7 +240,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#migration-of-pgr-withpointsksp">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code></a><ul>
-<li><a class="reference internal" href="#pgr-withpointsksp-one-to-one"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>One to One</cite>)</a></li>
+<li><a class="reference internal" href="#pgr-withpointsksp-one-to-one"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (One to One)</a></li>
 </ul>
 </li>
 </ul>
@@ -263,7 +263,7 @@
 <li><a class="reference internal" href="#migrating-pgr-trsp-vertices-using-pgr-trsp">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Vertices) using <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#migration-of-pgr-trsp-edges">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges)</a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-trsp-edges">Migration of pgr_trsp(Edges)</a><ul>
 <li><a class="reference internal" href="#migrating-pgr-trsp-edges-using-pgr-withpoints">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges) using <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code></a></li>
 <li><a class="reference internal" href="#migrating-pgr-trsp-edges-using-pgr-trsp-withpoints">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges) using <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code></a></li>
 </ul>
@@ -320,7 +320,7 @@ replaced by new functions.</p>
 <ul>
 <li><p><a class="reference internal" href="#migration-of-functions" id="id3">Migration of functions</a></p>
 <ul>
-<li><p><a class="reference internal" href="#migration-of-pgr-astar" id="id4">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-astar" id="id4">Migration of pgr_aStar``</a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-bdastar" id="id5">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-dijkstra" id="id6">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-drivingdistance" id="id7">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code></a></p>
@@ -341,7 +341,7 @@ replaced by new functions.</p>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#migration-of-pgr-maxcardinalitymatch" id="id15">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs" id="id16">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_primDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primDFS</span></code></a></p>
+<li><p><a class="reference internal" href="#migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs" id="id16">Migration of pgr_primDD`` / <code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primDFS</span></code></a></p>
 <ul>
 <li><p><a class="reference internal" href="#prim-single-vertex" id="id17">Prim single vertex</a></p></li>
 <li><p><a class="reference internal" href="#prim-multiple-vertices" id="id18">Prim multiple vertices</a></p></li>
@@ -355,7 +355,7 @@ replaced by new functions.</p>
 </li>
 <li><p><a class="reference internal" href="#migration-of-pgr-withpointsksp" id="id22">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code></a></p>
 <ul>
-<li><p><a class="reference internal" href="#pgr-withpointsksp-one-to-one" id="id23"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>One to One</cite>)</a></p></li>
+<li><p><a class="reference internal" href="#pgr-withpointsksp-one-to-one" id="id23"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (One to One)</a></p></li>
 </ul>
 </li>
 </ul>
@@ -383,7 +383,7 @@ replaced by new functions.</p>
 <li><p><a class="reference internal" href="#migrating-pgr-trsp-vertices-using-pgr-trsp" id="id33">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Vertices) using <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code></a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#migration-of-pgr-trsp-edges" id="id34">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges)</a></p>
+<li><p><a class="reference internal" href="#migration-of-pgr-trsp-edges" id="id34">Migration of pgr_trsp(Edges)</a></p>
 <ul>
 <li><p><a class="reference internal" href="#migrating-pgr-trsp-edges-using-pgr-withpoints" id="id35">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges) using <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migrating-pgr-trsp-edges-using-pgr-trsp-withpoints" id="id36">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges) using <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code></a></p></li>
@@ -413,7 +413,7 @@ replaced by new functions.</p>
 <nav class="contents local" id="migrating-functions">
 <p class="topic-title">Migrating functions</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#migration-of-pgr-astar" id="id44">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-astar" id="id44">Migration of pgr_aStar``</a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-bdastar" id="id45">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-dijkstra" id="id46">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-drivingdistance" id="id47">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code></a></p>
@@ -434,7 +434,7 @@ replaced by new functions.</p>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#migration-of-pgr-maxcardinalitymatch" id="id55">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs" id="id56">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_primDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primDFS</span></code></a></p>
+<li><p><a class="reference internal" href="#migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs" id="id56">Migration of pgr_primDD`` / <code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primDFS</span></code></a></p>
 <ul>
 <li><p><a class="reference internal" href="#prim-single-vertex" id="id57">Prim single vertex</a></p></li>
 <li><p><a class="reference internal" href="#prim-multiple-vertices" id="id58">Prim multiple vertices</a></p></li>
@@ -448,19 +448,19 @@ replaced by new functions.</p>
 </li>
 <li><p><a class="reference internal" href="#migration-of-pgr-withpointsksp" id="id62">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code></a></p>
 <ul>
-<li><p><a class="reference internal" href="#pgr-withpointsksp-one-to-one" id="id63"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>One to One</cite>)</a></p></li>
+<li><p><a class="reference internal" href="#pgr-withpointsksp-one-to-one" id="id63"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (One to One)</a></p></li>
 </ul>
 </li>
 </ul>
 </nav>
 <section id="migration-of-pgr-astar">
-<h3><a class="toc-backref" href="#id44" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></a><a class="headerlink" href="#migration-of-pgr-astar" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id44" role="doc-backlink">Migration of pgr_aStar``</a><a class="headerlink" href="#migration-of-pgr-astar" title="Link to this heading">¶</a></h3>
 <p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.6/en/migration.html">v3.6.0</a></p>
 <p>Signatures to be migrated:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>One to One</cite>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>One to Many</cite>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>Many to One</cite>)</p></li>
+<li><p>pgr_aStar(One to One)</p></li>
+<li><p>pgr_aStar(One to Many)</p></li>
+<li><p>pgr_aStar(Many to One)</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Before Migration<span class="colon">:</span></dt>
@@ -472,9 +472,9 @@ replaced by new functions.</p>
 <li><p>Depending on the overload used, the columns <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>
 might be missing:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>One to One</cite>) does not have <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>One to Many</cite>) does not have <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>Many to One</cite>) does not have <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
+<li><p>pgr_aStar(One to One) does not have <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
+<li><p>pgr_aStar(One to Many) does not have <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
+<li><p>pgr_aStar(Many to One) does not have <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
 </ul>
 </li>
 </ul>
@@ -486,10 +486,10 @@ might be missing:</p>
 </dl>
 <ul class="simple">
 <li><p>Be aware of the existence of the additional columns.</p></li>
-<li><p>In <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>One to One</cite>)</p>
+<li><p>In pgr_aStar(One to One)</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> contains the <strong>start vid</strong> parameter value.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code> contains the <strong>end vid</strong> parameter value.</p></li>
+<li><p>start_vid`` contains the <strong>start vid</strong> parameter value.</p></li>
+<li><p>end_vid`` contains the <strong>end vid</strong> parameter value.</p></li>
 </ul>
 </li>
 </ul>
@@ -509,7 +509,7 @@ might be missing:</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>In <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>One to Many</cite>)</p>
+<li><p>In pgr_aStar(One to Many)</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> contains the <strong>start vid</strong> parameter value.</p></li>
 </ul>
@@ -534,7 +534,7 @@ might be missing:</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>In <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>Many to One</cite>)</p>
+<li><p>In pgr_aStar(Many to One)</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code> contains the <strong>end vid</strong> parameter value.</p></li>
 </ul>
@@ -598,9 +598,9 @@ the function <code class="docutils literal notranslate"><span class="pre">my_dij
 <p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.6/en/migration.html">v3.6.0</a></p>
 <p>Signatures to be migrated:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>One to One</cite>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>One to Many</cite>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>Many to One</cite>)</p></li>
+<li><p>pgr_bdAstar(One to One)</p></li>
+<li><p>pgr_bdAstar(One to Many)</p></li>
+<li><p>pgr_bdAstar(Many to One)</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Before Migration<span class="colon">:</span></dt>
@@ -612,9 +612,9 @@ the function <code class="docutils literal notranslate"><span class="pre">my_dij
 <li><p>Depending on the overload used, the columns <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>
 might be missing:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>One to One</cite>) does not have <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>One to Many</cite>) does not have <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>Many to One</cite>) does not have <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
+<li><p>pgr_bdAstar(One to One) does not have <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
+<li><p>pgr_bdAstar(One to Many) does not have <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
+<li><p>pgr_bdAstar(Many to One) does not have <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
 </ul>
 </li>
 </ul>
@@ -626,7 +626,7 @@ might be missing:</p>
 </dl>
 <ul class="simple">
 <li><p>Be aware of the existence of the additional columns.</p></li>
-<li><p>In <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>One to One</cite>)</p>
+<li><p>In pgr_bdAstar(One to One)</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> contains the <strong>start vid</strong> parameter value.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code> contains the <strong>end vid</strong> parameter value.</p></li>
@@ -649,7 +649,7 @@ might be missing:</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>In <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>One to Many</cite>)</p>
+<li><p>In pgr_bdAstar(One to Many)</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> contains the <strong>start vid</strong> parameter value.</p></li>
 </ul>
@@ -674,7 +674,7 @@ might be missing:</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>In <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>Many to One</cite>)</p>
+<li><p>In pgr_bdAstar(Many to One)</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code> contains the <strong>end vid</strong> parameter value.</p></li>
 </ul>
@@ -738,9 +738,9 @@ the function <code class="docutils literal notranslate"><span class="pre">my_dij
 <p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.5/en/migration.html">v3.5.0</a></p>
 <p>Signatures to be migrated:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>One to One</cite>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>One to Many</cite>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>Many to One</cite>)</p></li>
+<li><p>pgr_dijkstra(One to One)</p></li>
+<li><p>pgr_dijkstra(One to Many)</p></li>
+<li><p>pgr_dijkstra(Many to One)</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Before Migration<span class="colon">:</span></dt>
@@ -752,10 +752,10 @@ the function <code class="docutils literal notranslate"><span class="pre">my_dij
 <li><p>Depending on the overload used, the columns <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>
 might be missing:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>One to One</cite>) does not have <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and
+<li><p>pgr_dijkstra(One to One) does not have <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and
 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>One to Many</cite>) does not have <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>Many to One</cite>) does not have <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
+<li><p>pgr_dijkstra(One to Many) does not have <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
+<li><p>pgr_dijkstra(Many to One) does not have <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
 </ul>
 </li>
 </ul>
@@ -767,7 +767,7 @@ might be missing:</p>
 </dl>
 <ul class="simple">
 <li><p>Be aware of the existence of the additional columns.</p></li>
-<li><p>In <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>One to One</cite>)</p>
+<li><p>In pgr_dijkstra(One to One)</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> contains the <strong>start vid</strong> parameter value.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code> contains the <strong>end vid</strong> parameter value.</p></li>
@@ -790,7 +790,7 @@ might be missing:</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>In <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>One to Many</cite>)</p>
+<li><p>In pgr_dijkstra(One to Many)</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> contains the <strong>start vid</strong> parameter value.</p></li>
 </ul>
@@ -815,7 +815,7 @@ might be missing:</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>In <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>Many to One</cite>)</p>
+<li><p>In pgr_dijkstra(Many to One)</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code> contains the <strong>end vid</strong> parameter value.</p></li>
 </ul>
@@ -886,8 +886,8 @@ the function <code class="docutils literal notranslate"><span class="pre">my_dij
 </dl>
 <p>Signatures to be migrated:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (Single vertex)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (Multiple vertices)</p></li>
+<li><p>pgr_drivingdistance(Single vertex)</p></li>
+<li><p>pgr_drivingdistance(Multiple vertices)</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Before Migration<span class="colon">:</span></dt>
@@ -895,12 +895,12 @@ the function <code class="docutils literal notranslate"><span class="pre">my_dij
 </dl>
 <p>Output columns were <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[from_v,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (Single vertex)</p>
+<li><p>pgr_drivingdistance(Single vertex)</p>
 <ul>
 <li><p>Does not have <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">depth</span></code> result columns.</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (Multiple vertices)</p>
+<li><p>pgr_drivingdistance(Multiple vertices)</p>
 <ul>
 <li><p>Has <code class="docutils literal notranslate"><span class="pre">from_v</span></code> instead of <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> result column.</p></li>
 <li><p>does not have <code class="docutils literal notranslate"><span class="pre">depth</span></code> result column.</p></li>
@@ -1086,7 +1086,7 @@ FROM pgr_drivingDistance(
 </ul>
 <section id="kruskal-single-vertex">
 <h4><a class="toc-backref" href="#id51" role="doc-backlink">Kruskal single vertex</a><a class="headerlink" href="#kruskal-single-vertex" title="Link to this heading">¶</a></h4>
-<p>Using <code class="docutils literal notranslate"><span class="pre">pgr_KruskalDD</span></code> as example.
+<p>Using pgr_KruskalDD`` as example.
 Migration is similar to al the affected functions.</p>
 <p>Comparing with <a class="reference external" href="https://docs.pgrouting.org/3.6/en/pgr_kruskalDD.html#single-vertex">this</a> example.</p>
 <p>Now column <code class="docutils literal notranslate"><span class="pre">pred</span></code> exists and contains the predecessor of the <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
@@ -1190,7 +1190,7 @@ columns</p>
 </dl>
 <p>Signatures to be migrated:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code> (One to One)</p></li>
+<li><p>pgr_KSP(One to One)</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Before Migration<span class="colon">:</span></dt>
@@ -1201,7 +1201,7 @@ columns</p>
 <ul>
 <li><p>the columns <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> do not exist.</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code> (One to One) does not have <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
+<li><p>pgr_KSP(One to One) does not have <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
 </ul>
 </li>
 </ul>
@@ -1282,7 +1282,7 @@ columns:</p>
 <li><p>Works for undirected graphs.</p></li>
 <li><p>New signature</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch(text)</span></code> returns only <code class="docutils literal notranslate"><span class="pre">edge</span></code> column.</p></li>
+<li><p>pgr_maxCardinalityMatch(text)`` returns only <code class="docutils literal notranslate"><span class="pre">edge</span></code> column.</p></li>
 <li><p>The optional flag <code class="docutils literal notranslate"><span class="pre">directed</span></code> is removed.</p></li>
 </ul>
 </li>
@@ -1354,7 +1354,7 @@ edge.</p></li>
 </div>
 </section>
 <section id="migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs">
-<h3><a class="toc-backref" href="#id56" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_primDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primDFS</span></code></a><a class="headerlink" href="#migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id56" role="doc-backlink">Migration of pgr_primDD`` / <code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_primDFS</span></code></a><a class="headerlink" href="#migration-of-pgr-primdd-pgr-primbfs-pgr-primdfs" title="Link to this heading">¶</a></h3>
 <p>Starting from <a class="reference external" href="https://docs.pgrouting.org/3.7/en/migration.html">v3.7.0</a>
 <a class="reference internal" href="pgr_primDD.html"><span class="doc">pgr_primDD</span></a>, <a class="reference internal" href="pgr_primBFS.html"><span class="doc">pgr_primBFS</span></a> and <a class="reference internal" href="pgr_primDFS.html"><span class="doc">pgr_primDFS</span></a> result columns are
 being standardized.</p>
@@ -1460,7 +1460,7 @@ columns</p>
 </section>
 <section id="prim-multiple-vertices">
 <h4><a class="toc-backref" href="#id58" role="doc-backlink">Prim multiple vertices</a><a class="headerlink" href="#prim-multiple-vertices" title="Link to this heading">¶</a></h4>
-<p>Using <code class="docutils literal notranslate"><span class="pre">pgr_primDD</span></code> as example.
+<p>Using pgr_primDD`` as example.
 Migration is similar to al the affected functions.</p>
 <p>Comparing with <a class="reference external" href="https://docs.pgrouting.org/3.6/en/pgr_primDD.html#multiple-vertex">this</a>
 example.</p>
@@ -1553,7 +1553,7 @@ columns</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter was named optional now it is compulsory unnamed.</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<cite>Multiple vertices</cite>)</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (Multiple vertices)</p>
 <ul>
 <li><p>Output columns were <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 <li><p>Does not have <code class="docutils literal notranslate"><span class="pre">depth</span></code> and <code class="docutils literal notranslate"><span class="pre">pred</span></code> result columns.</p></li>
@@ -1810,7 +1810,7 @@ example.</p>
 <strong>driving side</strong> and its validity differ for directed and undirected graphs.</p>
 <p>Signatures to be migrated:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>One to One</cite>)</p></li>
+<li><p>pgr_withPointsKSP(One to One)</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Before Migration<span class="colon">:</span></dt>
@@ -1841,7 +1841,7 @@ directed and undirected graphs.</p>
 </li>
 </ul>
 <section id="pgr-withpointsksp-one-to-one">
-<h4><a class="toc-backref" href="#id63" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (<cite>One to One</cite>)</a><a class="headerlink" href="#pgr-withpointsksp-one-to-one" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id63" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (One to One)</a><a class="headerlink" href="#pgr-withpointsksp-one-to-one" title="Link to this heading">¶</a></h4>
 <p>Using
 <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_withPointsKSP.html#signatures">this</a>
 example.</p>
@@ -1926,7 +1926,7 @@ columns:</p>
 <li><p><a class="reference internal" href="#migrating-pgr-trsp-vertices-using-pgr-trsp" id="id72">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Vertices) using <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code></a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#migration-of-pgr-trsp-edges" id="id73">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges)</a></p>
+<li><p><a class="reference internal" href="#migration-of-pgr-trsp-edges" id="id73">Migration of pgr_trsp(Edges)</a></p>
 <ul>
 <li><p><a class="reference internal" href="#migrating-pgr-trsp-edges-using-pgr-withpoints" id="id74">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges) using <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migrating-pgr-trsp-edges-using-pgr-trsp-withpoints" id="id75">Migrating <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges) using <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code></a></p></li>
@@ -2355,7 +2355,7 @@ FROM pgr_trsp(
 </section>
 </section>
 <section id="migration-of-pgr-trsp-edges">
-<h3><a class="toc-backref" href="#id73" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Edges)</a><a class="headerlink" href="#migration-of-pgr-trsp-edges" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id73" role="doc-backlink">Migration of pgr_trsp(Edges)</a><a class="headerlink" href="#migration-of-pgr-trsp-edges" title="Link to this heading">¶</a></h3>
 <p>Signature to be migrated:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trsp</span><span class="p">(</span><span class="n">sql</span> <span class="n">text</span><span class="p">,</span> <span class="n">source_edge</span> <span class="n">integer</span><span class="p">,</span> <span class="n">source_pos</span> <span class="n">float8</span><span class="p">,</span>
                  <span class="n">target_edge</span> <span class="n">integer</span><span class="p">,</span> <span class="n">target_pos</span> <span class="n">float8</span><span class="p">,</span>
@@ -3169,7 +3169,7 @@ FROM pgr_trspVia_withPoints(
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.7.2.<br/>
-      Last updated on Jan 07, 2025.<br/>
+      Last updated on Jan 15, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

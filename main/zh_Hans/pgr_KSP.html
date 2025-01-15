@@ -96,7 +96,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_KSP</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code></a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a><ul>
 <li><a class="reference internal" href="#one-to-one">一对一</a></li>
@@ -165,7 +165,7 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">pgr_KSP</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code></a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a><ul>
 <li><a class="reference internal" href="#one-to-one">一对一</a></li>
@@ -212,34 +212,27 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_KSP','zh-Hans'));  </script>
             
-  <div class="line-block">
+  <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-ksp">
-<span id="index-0"></span><h1>pgr_KSP<a class="headerlink" href="#pgr-ksp" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code><a class="headerlink" href="#pgr-ksp" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code> — Yen 使用 Dijkstra 计算 K 最短路径的算法。</p>
-<figure class="align-default" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/table_of_contents.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
-</a>
-<figcaption>
-<p><span class="caption-text">Boost 图内部</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
 <p class="rubric">可用性</p>
 <p class="rubric">版本3.6.0</p>
 <ul class="simple">
 <li><p>结果列标准化为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (一对一)</p>
+<li><p>pgr_ksp(One to One)</p>
 <ul>
 <li><p>增加 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 结果列。</p></li>
 </ul>
 </li>
-<li><p>新的重载函数：</p>
+<li><p>新拟议的签名：</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (一对多)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (多对一)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (多对多)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (组合)</p></li>
+<li><p>pgr_ksp(One to Many)</p></li>
+<li><p>pgr_ksp(Many to One)</p></li>
+<li><p>pgr_ksp(Many to Many)</p></li>
+<li><p>pgr_ksp(Combinations)</p></li>
 </ul>
 </li>
 </ul>
@@ -258,6 +251,7 @@
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p>基于Yen算法的K最短路径路由算法。 “K”是所需的最短路径的数量。</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -1041,7 +1035,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.7.2.<br/>
-      Last updated on 1月 07, 2025.<br/>
+      Last updated on 1月 15, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

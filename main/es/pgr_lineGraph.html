@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_lineGraph - Propuesto &#8212; pgRouting Manual (3.7)</title>
+    <title>pgr_lineGraph - Proposed &#8212; pgRouting Manual (3.7)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -97,7 +97,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_lineGraph - Propuesto</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_lineGraph</span></code> - Proposed</a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
@@ -167,7 +167,7 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">pgr_lineGraph - Propuesto</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_lineGraph</span></code> - Proposed</a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
@@ -215,19 +215,12 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_lineGraph','es'));  </script>
             
-  <div class="line-block">
+  <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-linegraph-proposed">
-<span id="index-0"></span><h1>pgr_lineGraph - Propuesto<a class="headerlink" href="#pgr-linegraph-proposed" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_lineGraph</span></code> - Proposed<a class="headerlink" href="#pgr-linegraph-proposed" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_lineGraph</span></code> — Transforma un grafo dado en su grafo correspondiente basado en aristas.</p>
-<figure class="align-default" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
-</a>
-<figcaption>
-<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Funciones propuestas para la próxima versión mayor.</p>
@@ -249,7 +242,7 @@
 <ul class="simple">
 <li><p>Versión 3.7.0</p>
 <ul>
-<li><p>Promovido a firma <strong>propuesta</strong>.</p></li>
+<li><p>Function promoted to proposed.</p></li>
 <li><p>Funciona para grafos dirigidos y no dirigidos.</p></li>
 </ul>
 </li>
@@ -281,6 +274,7 @@
 </ul>
 </li>
 </ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -495,14 +489,14 @@
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="contenido">
 <ul class="simple">
-<li><p><a class="reference internal" href="#representation-as-directed-with-shared-edge-identifiers" id="id2">Representación como dirigida con identificadores de arista compartidos</a></p>
+<li><p><a class="reference internal" href="#representation-as-directed-with-shared-edge-identifiers" id="id1">Representación como dirigida con identificadores de arista compartidos</a></p>
 <ul>
-<li><p><a class="reference internal" href="#line-graph-of-a-directed-graph-represented-with-shared-edges" id="id3">Grafo lineal de un grafo dirigido representado con aristas compartidas</a></p></li>
+<li><p><a class="reference internal" href="#line-graph-of-a-directed-graph-represented-with-shared-edges" id="id2">Grafo lineal de un grafo dirigido representado con aristas compartidas</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#representation-as-directed-with-unique-edge-identifiers" id="id4">Representación dirigida con identificadores de arista únicos</a></p>
+<li><p><a class="reference internal" href="#representation-as-directed-with-unique-edge-identifiers" id="id3">Representación dirigida con identificadores de arista únicos</a></p>
 <ul>
-<li><p><a class="reference internal" href="#line-graph-of-a-directed-graph-represented-with-unique-edges" id="id5">Gráfico lineal de un grafo dirigido representado con aristas únicas</a></p></li>
+<li><p><a class="reference internal" href="#line-graph-of-a-directed-graph-represented-with-unique-edges" id="id4">Gráfico lineal de un grafo dirigido representado con aristas únicas</a></p></li>
 </ul>
 </li>
 </ul>
@@ -526,7 +520,7 @@
    }
 }" class="graphviz" /></div>
 <section id="representation-as-directed-with-shared-edge-identifiers">
-<h3><a class="toc-backref" href="#id2" role="doc-backlink">Representación como dirigida con identificadores de arista compartidos</a><a class="headerlink" href="#representation-as-directed-with-shared-edge-identifiers" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id1" role="doc-backlink">Representación como dirigida con identificadores de arista compartidos</a><a class="headerlink" href="#representation-as-directed-with-shared-edge-identifiers" title="Link to this heading">¶</a></h3>
 <p>For the simplicity, the design of the edges table on the database, has the
 edge’s identifiers are represented with 3 digits:</p>
 <dl class="field-list simple">
@@ -597,7 +591,7 @@ edge’s identifiers are represented with 3 digits:</p>
 </pre></div>
 </div>
 <section id="line-graph-of-a-directed-graph-represented-with-shared-edges">
-<h4><a class="toc-backref" href="#id3" role="doc-backlink">Grafo lineal de un grafo dirigido representado con aristas compartidas</a><a class="headerlink" href="#line-graph-of-a-directed-graph-represented-with-shared-edges" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id2" role="doc-backlink">Grafo lineal de un grafo dirigido representado con aristas compartidas</a><a class="headerlink" href="#line-graph-of-a-directed-graph-represented-with-shared-edges" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span>
 <span class="n">FROM</span> <span class="n">pgr_lineGraph</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges_shared&#39;</span><span class="p">,</span>
@@ -669,7 +663,7 @@ edge’s identifiers are represented with 3 digits:</p>
 </section>
 </section>
 <section id="representation-as-directed-with-unique-edge-identifiers">
-<h3><a class="toc-backref" href="#id4" role="doc-backlink">Representación dirigida con identificadores de arista únicos</a><a class="headerlink" href="#representation-as-directed-with-unique-edge-identifiers" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Representación dirigida con identificadores de arista únicos</a><a class="headerlink" href="#representation-as-directed-with-unique-edge-identifiers" title="Link to this heading">¶</a></h3>
 <p>For the simplicity, the design of the edges table on the database, has the
 edge’s identifiers are represented with 3 digits:</p>
 <dl class="field-list simple">
@@ -745,7 +739,7 @@ edges <span class="math notranslate nohighlight">\(id=304\)</span> and <span cla
 </pre></div>
 </div>
 <section id="line-graph-of-a-directed-graph-represented-with-unique-edges">
-<h4><a class="toc-backref" href="#id5" role="doc-backlink">Gráfico lineal de un grafo dirigido representado con aristas únicas</a><a class="headerlink" href="#line-graph-of-a-directed-graph-represented-with-unique-edges" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">Gráfico lineal de un grafo dirigido representado con aristas únicas</a><a class="headerlink" href="#line-graph-of-a-directed-graph-represented-with-unique-edges" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span>
 <span class="n">FROM</span> <span class="n">pgr_lineGraph</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges_unique&#39;</span><span class="p">,</span>
@@ -850,7 +844,7 @@ edges <span class="math notranslate nohighlight">\(id=304\)</span> and <span cla
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.7.2.<br/>
-      Actualizado por última vez en ene 07, 2025.<br/>
+      Actualizado por última vez en ene 15, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

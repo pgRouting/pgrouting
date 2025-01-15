@@ -204,19 +204,12 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_breadthFirstSearch','zh-Hans'));  </script>
             
-  <div class="line-block">
+  <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-breadthfirstsearch-experimental">
-<span id="index-0"></span><h1><code class="docutils literal notranslate"><span class="pre">pgr_breadthFirstSearch</span></code> - 实验<a class="headerlink" href="#pgr-breadthfirstsearch-experimental" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_breadthFirstSearch</span></code> - 实验<a class="headerlink" href="#pgr-breadthfirstsearch-experimental" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_breadthFirstSearch</span></code> —使用广度优先搜索算法返回遍历顺序。</p>
-<figure class="align-default" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/breadth_first_search.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
-</a>
-<figcaption>
-<p><span class="caption-text">Boost 图内部</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>可能服务器崩溃</p>
@@ -251,12 +244,7 @@
 <ul class="simple">
 <li><p>版本3.0.0</p>
 <ul>
-<li><p>新 <strong>实验性</strong> 签名：</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_breadthFirstSearch</span></code> (<a class="reference internal" href="#single-vertex">单顶点搜索</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_breadthFirstSearch</span></code> (<a class="reference internal" href="#multiple-vertices">多顶点搜索</a>)</p></li>
-</ul>
-</li>
+<li><p>New experimental function.</p></li>
 </ul>
 </li>
 </ul>
@@ -269,6 +257,7 @@
 <li><p>提供从源节点到目标深度级别的广度优先搜索遍历顺序。</p></li>
 <li><p>运行时间： <span class="math notranslate nohighlight">\(O(E + V)\)</span></p></li>
 </ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -278,7 +267,7 @@
 <div class="line-block">
 <div class="line">pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vid</strong>, [<strong>options</strong>])</div>
 <div class="line">pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vids</strong>, [<strong>options</strong>])</div>
-<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[max_depth,</span> <span class="pre">directed]</span></code></div>
+<div class="line"><strong>options:</strong> [max_depth, directed]``</div>
 </div>
 <div class="line-block">
 <div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code> 的集合</div>
@@ -290,7 +279,7 @@
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vid</strong>, [<strong>options</strong>])</div>
-<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[max_depth,</span> <span class="pre">directed]</span></code></div>
+<div class="line"><strong>options:</strong> [max_depth, directed]``</div>
 </div>
 <div class="line-block">
 <div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code> 的集合</div>
@@ -331,7 +320,7 @@
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vids</strong>, [<strong>options</strong>])</div>
-<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[max_depth,</span> <span class="pre">directed]</span></code></div>
+<div class="line"><strong>options:</strong> [max_depth, directed]``</div>
 </div>
 <div class="line-block">
 <div class="line">返回 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code> 的集合</div>
@@ -653,7 +642,7 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="BFS-category.html"><span class="doc">BFS - 类别</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/breadth_first_search.html">Boost：广度优先搜索算法文档</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/breadth_first_search.html">Boost: Breadth First Search</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Breadth-first_search">维基百科：广度优先搜索算法</a></p></li>
 </ul>
 <p class="rubric">索引和表格</p>
@@ -677,7 +666,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.7.2.<br/>
-      Last updated on 1月 07, 2025.<br/>
+      Last updated on 1月 15, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

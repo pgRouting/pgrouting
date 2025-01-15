@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_stoerWagner - 实验 &#8212; pgRouting Manual (3.7)</title>
+    <title>pgr_stoerWagner - Experimental &#8212; pgRouting Manual (3.7)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -21,7 +21,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pgr_transitiveClosure - 实验" href="pgr_transitiveClosure.html" />
-    <link rel="prev" title="pgr_lengauerTarjanDominatorTree -实验" href="pgr_lengauerTarjanDominatorTree.html" />
+    <link rel="prev" title="pgr_lengauerTarjanDominatorTree -Experimental" href="pgr_lengauerTarjanDominatorTree.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -96,7 +96,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_stoerWagner - 实验</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_stoerWagner</span></code> - Experimental</a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a></li>
 <li><a class="reference internal" href="#parameters">参数</a></li>
@@ -118,7 +118,7 @@
               
                 
   <li>
-    <a href="pgr_lengauerTarjanDominatorTree.html" title="Previous Chapter: pgr_lengauerTarjanDominatorTree -实验"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_lengauerT...</span>
+    <a href="pgr_lengauerTarjanDominatorTree.html" title="Previous Chapter: pgr_lengauerTarjanDominatorTree -Experimental"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_lengauerT...</span>
     </a>
   </li>
   <li>
@@ -153,7 +153,7 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">pgr_stoerWagner - 实验</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_stoerWagner</span></code> - Experimental</a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a></li>
 <li><a class="reference internal" href="#parameters">参数</a></li>
@@ -169,7 +169,7 @@
 </ul>
 
   <li>
-    <a href="pgr_lengauerTarjanDominatorTree.html" title="Previous Chapter: pgr_lengauerTarjanDominatorTree -实验"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_lengauerT...</span>
+    <a href="pgr_lengauerTarjanDominatorTree.html" title="Previous Chapter: pgr_lengauerTarjanDominatorTree -Experimental"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_lengauerT...</span>
     </a>
   </li>
   <li>
@@ -188,16 +188,12 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_stoerWagner','zh-Hans'));  </script>
             
-  <section id="pgr-stoerwagner-experimental">
-<span id="index-0"></span><h1>pgr_stoerWagner - 实验<a class="headerlink" href="#pgr-stoerwagner-experimental" title="Link to this heading">¶</a></h1>
+  <div class="line-block" id="index-0">
+<div class="line"><br /></div>
+</div>
+<section id="pgr-stoerwagner-experimental">
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_stoerWagner</span></code> - Experimental<a class="headerlink" href="#pgr-stoerwagner-experimental" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_stoerWagner</span></code> — 使用 stoerWagner 算法对图进行最小分割。</p>
-<figure class="align-default" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/stoer_wagner_min_cut.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
-</a>
-<figcaption>
-<p><span class="caption-text">Boost 图内部</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>可能服务器崩溃</p>
@@ -262,6 +258,7 @@
 <ul class="simple">
 <li><p>运行时间： <span class="math notranslate nohighlight">\(O(V*E + V^2*log V)\)</span>。</p></li>
 </ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -442,6 +439,7 @@
 <h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/stoer_wagner_min_cut.html">Boost: Stoer Wagner min cut</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm">https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm</a></p></li>
 </ul>
 <p class="rubric">索引和表格</p>
@@ -465,7 +463,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.7.2.<br/>
-      Last updated on 1月 07, 2025.<br/>
+      Last updated on 1月 15, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

@@ -206,11 +206,11 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_withPointsCostMatrix','zh-Hans'));  </script>
             
-  <div class="line-block">
+  <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-withpointscostmatrix-proposed">
-<span id="index-0"></span><h1><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCostMatrix</span></code> - 拟议<a class="headerlink" href="#pgr-withpointscostmatrix-proposed" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCostMatrix</span></code> - 拟议<a class="headerlink" href="#pgr-withpointscostmatrix-proposed" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCostMatrix</span></code> - 使用 <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints -拟议</span></a> 计算成本矩阵.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -229,18 +229,11 @@
 </li>
 </ul>
 </div>
-<figure class="align-default" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/table_of_contents.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
-</a>
-<figcaption>
-<p><span class="caption-text">Boost 图内部</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
 <p class="rubric">可用性</p>
 <ul class="simple">
 <li><p>版本 2.2.0</p>
 <ul>
-<li><p>新 <strong>拟议</strong> 函数</p></li>
+<li><p>New proposed function.</p></li>
 </ul>
 </li>
 </ul>
@@ -300,6 +293,7 @@
 </ul>
 </li>
 </ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -586,12 +580,12 @@
 <h2>其他示例<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id2">在 Points SQL 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a>。</a></p></li>
-<li><p><a class="reference internal" href="#use-with-pgr-tsp" id="id3">与 <a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a> 一起使用。</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id1">在 Points SQL 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges - Proposed</span></a>。</a></p></li>
+<li><p><a class="reference internal" href="#use-with-pgr-tsp" id="id2">与 <a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a> 一起使用。</a></p></li>
 </ul>
 </nav>
 <section id="use-pgr-findcloseedges-in-the-points-sql">
-<h3>在 <a class="reference internal" href="#points-sql">Points SQL</a> 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a>。<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Link to this heading">¶</a></h3>
+<h3>在 <a class="reference internal" href="#points-sql">Points SQL</a> 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges - Proposed</span></a>。<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Link to this heading">¶</a></h3>
 <p>求从顶点 <span class="math notranslate nohighlight">\(1\)</span> 到图上点 <cite>(2.9, 1.8)</cite> 的两个最近位置的路线的矩阵成本。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsCostMatrix(
   $e$ SELECT * FROM edges $e$,
@@ -626,7 +620,7 @@
 </ul>
 </section>
 <section id="use-with-pgr-tsp">
-<h3><a class="toc-backref" href="#id3" role="doc-backlink">与 <a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a> 一起使用。</a><a class="headerlink" href="#use-with-pgr-tsp" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">与 <a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a> 一起使用。</a><a class="headerlink" href="#use-with-pgr-tsp" title="Link to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TSP(
   $$
   SELECT * FROM pgr_withPointsCostMatrix(
@@ -679,7 +673,7 @@ HINT:  Ignoring annaeling parameters
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.7.2.<br/>
-      Last updated on 1月 07, 2025.<br/>
+      Last updated on 1月 15, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

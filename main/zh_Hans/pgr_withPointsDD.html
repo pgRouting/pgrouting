@@ -216,11 +216,11 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_withPointsDD','zh-Hans'));  </script>
             
-  <div class="line-block">
+  <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-withpointsdd-proposed">
-<span id="index-0"></span><h1><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> - 拟议<a class="headerlink" href="#pgr-withpointsdd-proposed" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> - 拟议<a class="headerlink" href="#pgr-withpointsdd-proposed" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> - 返回从起点开始的行驶 <strong>距离</strong> 。</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -239,30 +239,23 @@
 </li>
 </ul>
 </div>
-<figure class="align-default" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/table_of_contents.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
-</a>
-<figcaption>
-<p><span class="caption-text">Boost 图内部</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
 <p class="rubric">可用性</p>
 <p class="rubric">版本3.6.0</p>
 <ul class="simple">
 <li><p>签名更改： <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> 参数从已命名的可选参数改为未命名的必选参数 <strong>driving side</strong>。</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> （<cite>单顶点</cite>）</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<cite>多个顶点</cite>)</p></li>
+<li><p>pgr_withPointsDD(Single vertex)</p></li>
+<li><p>pgr_withPointsDD(Multiple vertices)</p></li>
 </ul>
 </li>
 <li><p>将输出列标准化为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> （<cite>单顶点</cite>）</p>
+<li><p>pgr_withPointsDD(Single vertex)</p>
 <ul>
 <li><p>添加了 <code class="docutils literal notranslate"><span class="pre">depth</span></code>、<code class="docutils literal notranslate"><span class="pre">pred</span></code> 和 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 列。</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<cite>多个顶点</cite>)</p>
+<li><p>pgr_withPointsDD(Multiple vertices)</p>
 <ul>
 <li><p>添加了 <code class="docutils literal notranslate"><span class="pre">depth</span></code>，<code class="docutils literal notranslate"><span class="pre">pred</span></code> 列。</p></li>
 </ul>
@@ -276,18 +269,19 @@
 </li>
 <li><p>弃用签名</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withpointsdd(text,text,bigint,double</span> <span class="pre">precision,boolean,character,boolean)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withpointsdd(text,text,anyarray,double</span> <span class="pre">precision,boolean,character,boolean,boolean)</span></code></p></li>
+<li><p>pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)``</p></li>
+<li><p>pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)``</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">版本 2.2.0</p>
 <ul class="simple">
-<li><p>新 <strong>拟议</strong> 函数</p></li>
+<li><p>New proposed function.</p></li>
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p>修改图以包含点，并使用 Dijkstra 算法，提取成本小于或等于距起点 <code class="docutils literal notranslate"><span class="pre">**距离**</span></code> 值的所有节点和点。 提取的边将符合相应的生成树。</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -723,12 +717,12 @@
 <h2>其他示例<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id2">在 Points SQL 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a>。</a></p></li>
-<li><p><a class="reference internal" href="#driving-side-does-not-matter" id="id3">驾驶侧并不重要</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id1">在 Points SQL 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges - Proposed</span></a>。</a></p></li>
+<li><p><a class="reference internal" href="#driving-side-does-not-matter" id="id2">驾驶侧并不重要</a></p></li>
 </ul>
 </nav>
 <section id="use-pgr-findcloseedges-in-the-points-sql">
-<h3>在 <a class="reference internal" href="#points-sql">Points SQL</a> 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a>。<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Link to this heading">¶</a></h3>
+<h3>在 <a class="reference internal" href="#points-sql">Points SQL</a> 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges - Proposed</span></a>。<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Link to this heading">¶</a></h3>
 <p>求图上点 <cite>(2.9, 1.8)</cite> 距离最近的两个位置的行驶距离。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsDD(
   $e$ SELECT * FROM edges $e$,
@@ -773,7 +767,7 @@
 </ul>
 </section>
 <section id="driving-side-does-not-matter">
-<h3><a class="toc-backref" href="#id3" role="doc-backlink">驾驶侧并不重要</a><a class="headerlink" href="#driving-side-does-not-matter" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">驾驶侧并不重要</a><a class="headerlink" href="#driving-side-does-not-matter" title="Link to this heading">¶</a></h3>
 <p>从点 <span class="math notranslate nohighlight">\(1\)</span> 开始，在距离不超过 <span class="math notranslate nohighlight">\(3.3\)</span> 的范围内，无论驾驶方向如何，提供详细信息。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsDD</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
@@ -830,7 +824,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.7.2.<br/>
-      Last updated on 1月 07, 2025.<br/>
+      Last updated on 1月 15, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

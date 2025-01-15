@@ -222,21 +222,14 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_TSPeuclidean','es'));  </script>
             
-  <div class="line-block">
+  <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-tspeuclidean">
-<span id="index-0"></span><h1><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code><a class="headerlink" href="#pgr-tspeuclidean" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code><a class="headerlink" href="#pgr-tspeuclidean" title="Link to this heading">¶</a></h1>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code> - Aproximación usando el algoritmo <em>metric</em>.</p></li>
+<li><p>pgr_TSPeuclidean`` - Aproximation using <em>metric</em> algorithm.</p></li>
 </ul>
-<figure class="align-default" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
-</a>
-<figcaption>
-<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
 <p class="rubric">Disponibilidad:</p>
 <ul class="simple">
 <li><p>Versión 3.2.1</p>
@@ -309,6 +302,7 @@
 </ul>
 </li>
 </ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 </section>
 <section id="signatures">
@@ -484,22 +478,22 @@
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="contenido">
 <ul class="simple">
-<li><p><a class="reference internal" href="#test-29-cities-of-western-sahara" id="id2">Prueba 29 ciudades del Sáhara Occidental</a></p>
+<li><p><a class="reference internal" href="#test-29-cities-of-western-sahara" id="id1">Prueba 29 ciudades del Sáhara Occidental</a></p>
 <ul>
-<li><p><a class="reference internal" href="#creating-a-table-for-the-data-and-storing-the-data" id="id3">Creación de una tabla para datos y almacenamiento de los datos</a></p></li>
-<li><p><a class="reference internal" href="#adding-a-geometry-for-visual-purposes" id="id4">Agregar una geometría (con fines visuales)</a></p></li>
-<li><p><a class="reference internal" href="#total-tour-cost" id="id5">Costo total del tour</a></p></li>
-<li><p><a class="reference internal" href="#getting-a-geometry-of-the-tour" id="id6">Obtener una geometría del recorrido</a></p></li>
-<li><p><a class="reference internal" href="#visual-results" id="id7">Resultados visuales</a></p></li>
+<li><p><a class="reference internal" href="#creating-a-table-for-the-data-and-storing-the-data" id="id2">Creación de una tabla para datos y almacenamiento de los datos</a></p></li>
+<li><p><a class="reference internal" href="#adding-a-geometry-for-visual-purposes" id="id3">Agregar una geometría (con fines visuales)</a></p></li>
+<li><p><a class="reference internal" href="#total-tour-cost" id="id4">Costo total del tour</a></p></li>
+<li><p><a class="reference internal" href="#getting-a-geometry-of-the-tour" id="id5">Obtener una geometría del recorrido</a></p></li>
+<li><p><a class="reference internal" href="#visual-results" id="id6">Resultados visuales</a></p></li>
 </ul>
 </li>
 </ul>
 </nav>
 <section id="test-29-cities-of-western-sahara">
-<h3><a class="toc-backref" href="#id2" role="doc-backlink">Prueba 29 ciudades del Sáhara Occidental</a><a class="headerlink" href="#test-29-cities-of-western-sahara" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id1" role="doc-backlink">Prueba 29 ciudades del Sáhara Occidental</a><a class="headerlink" href="#test-29-cities-of-western-sahara" title="Link to this heading">¶</a></h3>
 <p>Este ejemplo muestra cómo hacer pruebas de rendimiento utilizando los <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/countries.html">datos de ejemplo</a> de la Universidad de Waterloo utilizando el conjunto de datos de 29 ciudades del <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/wi29.tsp">Sáhara Occidental</a></p>
 <section id="creating-a-table-for-the-data-and-storing-the-data">
-<h4><a class="toc-backref" href="#id3" role="doc-backlink">Creación de una tabla para datos y almacenamiento de los datos</a><a class="headerlink" href="#creating-a-table-for-the-data-and-storing-the-data" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id2" role="doc-backlink">Creación de una tabla para datos y almacenamiento de los datos</a><a class="headerlink" href="#creating-a-table-for-the-data-and-storing-the-data" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">wi29</span> <span class="p">(</span><span class="nb">id</span> <span class="n">BIGINT</span><span class="p">,</span> <span class="n">x</span> <span class="n">FLOAT</span><span class="p">,</span> <span class="n">y</span> <span class="n">FLOAT</span><span class="p">,</span> <span class="n">geom</span> <span class="n">geometry</span><span class="p">);</span>
 <span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">wi29</span> <span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">VALUES</span>
 <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">20833.3333</span><span class="p">,</span><span class="mf">17100.0000</span><span class="p">),</span>
@@ -535,13 +529,13 @@
 </div>
 </section>
 <section id="adding-a-geometry-for-visual-purposes">
-<h4><a class="toc-backref" href="#id4" role="doc-backlink">Agregar una geometría (con fines visuales)</a><a class="headerlink" href="#adding-a-geometry-for-visual-purposes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id3" role="doc-backlink">Agregar una geometría (con fines visuales)</a><a class="headerlink" href="#adding-a-geometry-for-visual-purposes" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">wi29</span> <span class="n">SET</span> <span class="n">geom</span> <span class="o">=</span> <span class="n">ST_makePoint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
 <section id="total-tour-cost">
-<h4><a class="toc-backref" href="#id5" role="doc-backlink">Costo total del tour</a><a class="headerlink" href="#total-tour-cost" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">Costo total del tour</a><a class="headerlink" href="#total-tour-cost" title="Link to this heading">¶</a></h4>
 <p>Al obtener un costo total del recorrido, comparar el valor con la duración de un recorrido óptimo, que es 27603, dado en el conjunto de datos</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT *
 FROM pgr_TSPeuclidean($$SELECT * FROM wi29$$)
@@ -555,7 +549,7 @@ WHERE seq = 30;
 </div>
 </section>
 <section id="getting-a-geometry-of-the-tour">
-<h4><a class="toc-backref" href="#id6" role="doc-backlink">Obtener una geometría del recorrido</a><a class="headerlink" href="#getting-a-geometry-of-the-tour" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">Obtener una geometría del recorrido</a><a class="headerlink" href="#getting-a-geometry-of-the-tour" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WITH
 tsp_results AS (SELECT seq, geom FROM pgr_TSPeuclidean($$SELECT * FROM wi29$$) JOIN wi29 ON (node = id))
 SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
@@ -568,7 +562,7 @@ SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
 </div>
 </section>
 <section id="visual-results">
-<h4><a class="toc-backref" href="#id7" role="doc-backlink">Resultados visuales</a><a class="headerlink" href="#visual-results" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id6" role="doc-backlink">Resultados visuales</a><a class="headerlink" href="#visual-results" title="Link to this heading">¶</a></h4>
 <p>Visualmente, la primera imagen es la <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/witour.html">solución óptima</a> y la segunda imagen es la solución obtenida con <code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code>.</p>
 <a class="reference internal image-reference" href="_images/wi29optimal.png"><img alt="_images/wi29optimal.png" src="_images/wi29optimal.png" style="width: 383.5px; height: 311.0px;" />
 </a>
@@ -581,8 +575,8 @@ SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
 <h2>Ver también<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Vendedor Viajante - Familia de funciones</span></a></p></li>
-<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Algoritmo Métrico de la Librería Boost</a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost: metric TSP approx</a></p></li>
 <li><p><a class="reference external" href="https://www.math.uwaterloo.ca/tsp/">Universided de Waterloo TSP</a></p></li>
 <li><p><a class="reference external" href="https://es.wikipedia.org/wiki/Problema_del_viajante">Wikipedia: Problema del viajante</a></p></li>
 </ul>
@@ -607,7 +601,7 @@ SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.7.2.<br/>
-      Actualizado por última vez en ene 07, 2025.<br/>
+      Actualizado por última vez en ene 15, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

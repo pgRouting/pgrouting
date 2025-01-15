@@ -172,7 +172,7 @@
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#see-also">Ver también</a></li>
+<li><a class="reference internal" href="#e-also">e Also</a></li>
 </ul>
 </li>
 </ul>
@@ -294,7 +294,7 @@
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#see-also">Ver también</a></li>
+<li><a class="reference internal" href="#e-also">e Also</a></li>
 </ul>
 </li>
 </ul>
@@ -319,65 +319,58 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_dijkstra','es'));  </script>
             
-  <div class="line-block">
+  <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-dijkstra">
-<span id="index-0"></span><h1><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code><a class="headerlink" href="#pgr-dijkstra" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code><a class="headerlink" href="#pgr-dijkstra" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> - Camino más corto utilizando el algoritmo de Dijkstra.</p>
-<figure class="align-default" id="id13">
-<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
-</a>
-<figcaption>
-<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id13" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
 <li><p>Versión 3.5.0</p>
 <ul>
 <li><p>Estandarización de las columnas de salida a <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<a class="reference internal" href="#one-to-one">Uno a Uno</a>) ha añadido las columnas <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> y <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<a class="reference internal" href="#one-to-many">Uno a Muchos</a>) ha añadido la columna <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<a class="reference internal" href="#many-to-one">Muchos a Uno</a>) ha añadido la columna <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
+<li><p>pgr_dijkstra(One to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> columns.</p></li>
+<li><p>pgr_dijkstra(One to Many) added <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> column.</p></li>
+<li><p>pgr_dijkstra(Many to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>Versión 3.1.0</p>
 <ul>
-<li><p>Nuevas funciones <strong>Propuestas</strong>:</p>
+<li><p>New proposed signature:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<a class="reference internal" href="#combinations">Combinaciones</a>)</p></li>
+<li><p>pgr_dijkstra(Combinations)</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>Versión 3.0.0</p>
 <ul>
-<li><p>Funciones <strong>oficiales</strong></p></li>
+<li><p><strong>Official</strong> function.</p></li>
 </ul>
 </li>
 <li><p>Version 2.2.0</p>
 <ul>
-<li><p>Nuevas funciones <strong>propuestas</strong>:</p>
+<li><p>New proposed signatures:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<a class="reference internal" href="#one-to-many">Uno a Muchos</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<a class="reference internal" href="#many-to-one">Muchos a Uno</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<a class="reference internal" href="#many-to-many">Muchos a Muchos</a>)</p></li>
+<li><p>pgr_dijkstra(One to Many)</p></li>
+<li><p>pgr_dijkstra(Many to One)</p></li>
+<li><p>pgr_dijkstra(Many to Many)</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>Versión 2.1.0</p>
 <ul>
-<li><p>Cambio de firma en <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<a class="reference internal" href="#one-to-one">Uno a Uno</a>)</p></li>
+<li><p>Signature change on pgr_dijkstra(One to One)</p></li>
 </ul>
 </li>
 <li><p>Versión 2.0.0</p>
 <ul>
-<li><p><strong>Oficial</strong> <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<a class="reference internal" href="#one-to-one">Uno a Uno</a>)</p></li>
+<li><p><strong>Official</strong> pgr_dijkstra(One to One)</p></li>
 </ul>
 </li>
 </ul>
@@ -408,6 +401,7 @@
 <li><p>Para fines de optimización, se ignora cualquier valor duplicado en los vertices de salida o destino.</p></li>
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O(| start\_vids | * (V \log V + E))\)</span></p></li>
 </ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -962,76 +956,76 @@
 <p>Los ejemplos de esta sección se basan en la red <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a>.</p>
 <nav class="contents local" id="contenido">
 <ul class="simple">
-<li><p><a class="reference internal" href="#for-directed-graphs-with-cost-and-reverse-cost-columns" id="id18">Para grafos <strong>dirigidos</strong> con columnas <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></p>
+<li><p><a class="reference internal" href="#for-directed-graphs-with-cost-and-reverse-cost-columns" id="id17">Para grafos <strong>dirigidos</strong> con columnas <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></p>
 <ul>
-<li><p><a class="reference internal" href="#path-from-6-to-10" id="id19">1) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a></p></li>
-<li><p><a class="reference internal" href="#path-from-6-to-7" id="id20">2) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a></p></li>
-<li><p><a class="reference internal" href="#path-from-12-to-10" id="id21">3) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a></p></li>
-<li><p><a class="reference internal" href="#path-from-12-to-7" id="id22">4) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a></p></li>
-<li><p><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-1-and-2" id="id23">5) Usando Uno a Muchos para obtener la solución de los ejemplos 1 y 2</a></p></li>
-<li><p><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-2-and-4" id="id24">6) Usando Muchos a Uno para obtener la solución de los ejemplos 2 y 4</a></p></li>
-<li><p><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-1-to-4" id="id25">7) Usando Muchos a Muchos para obtener la solución de los ejemplos 1 y 4</a></p></li>
-<li><p><a class="reference internal" href="#using-combinations-to-get-the-solution-of-examples-1-to-3" id="id26">8) Usando Combinaciones para obtener la solución de los ejemplos 1 a 3</a></p></li>
+<li><p><a class="reference internal" href="#path-from-6-to-10" id="id18">1) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a></p></li>
+<li><p><a class="reference internal" href="#path-from-6-to-7" id="id19">2) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a></p></li>
+<li><p><a class="reference internal" href="#path-from-12-to-10" id="id20">3) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a></p></li>
+<li><p><a class="reference internal" href="#path-from-12-to-7" id="id21">4) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a></p></li>
+<li><p><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-1-and-2" id="id22">5) Usando Uno a Muchos para obtener la solución de los ejemplos 1 y 2</a></p></li>
+<li><p><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-2-and-4" id="id23">6) Usando Muchos a Uno para obtener la solución de los ejemplos 2 y 4</a></p></li>
+<li><p><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-1-to-4" id="id24">7) Usando Muchos a Muchos para obtener la solución de los ejemplos 1 y 4</a></p></li>
+<li><p><a class="reference internal" href="#using-combinations-to-get-the-solution-of-examples-1-to-3" id="id25">8) Usando Combinaciones para obtener la solución de los ejemplos 1 a 3</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#for-undirected-graphs-with-cost-and-reverse-cost-columns" id="id27">Para grafos <strong>no dirigidos</strong> con columnas <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></p>
+<li><p><a class="reference internal" href="#for-undirected-graphs-with-cost-and-reverse-cost-columns" id="id26">Para grafos <strong>no dirigidos</strong> con columnas <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></p>
 <ul>
-<li><p><a class="reference internal" href="#id1" id="id28">9) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a></p></li>
-<li><p><a class="reference internal" href="#id2" id="id29">10) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a></p></li>
-<li><p><a class="reference internal" href="#id3" id="id30">11) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a></p></li>
-<li><p><a class="reference internal" href="#id4" id="id31">12) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a></p></li>
-<li><p><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-9-and-10" id="id32">13) Usando Uno a Muchos para obtener la solución de los ejemplos 9 y 10</a></p></li>
-<li><p><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-10-and-12" id="id33">14) Usando Muchos a Uno para obtener la solución de los ejemplos 10 y 12</a></p></li>
-<li><p><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-9-to-12" id="id34">15) Usando Muchos a Muchos para obtener la solución de los ejemplos 9 y 12</a></p></li>
-<li><p><a class="reference internal" href="#using-combinations-to-get-the-solution-of-examples-9-to-11" id="id35">16) Usando Combinaciones para obtener la solución de los ejemplos 9 a 13</a></p></li>
+<li><p><a class="reference internal" href="#id1" id="id27">9) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id28">10) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a></p></li>
+<li><p><a class="reference internal" href="#id3" id="id29">11) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id30">12) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a></p></li>
+<li><p><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-9-and-10" id="id31">13) Usando Uno a Muchos para obtener la solución de los ejemplos 9 y 10</a></p></li>
+<li><p><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-10-and-12" id="id32">14) Usando Muchos a Uno para obtener la solución de los ejemplos 10 y 12</a></p></li>
+<li><p><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-9-to-12" id="id33">15) Usando Muchos a Muchos para obtener la solución de los ejemplos 9 y 12</a></p></li>
+<li><p><a class="reference internal" href="#using-combinations-to-get-the-solution-of-examples-9-to-11" id="id34">16) Usando Combinaciones para obtener la solución de los ejemplos 9 a 13</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#for-directed-graphs-only-with-cost-column" id="id36">Para grafos <strong>dirigidos</strong> con columna``cost``</a></p>
+<li><p><a class="reference internal" href="#for-directed-graphs-only-with-cost-column" id="id35">Para grafos <strong>dirigidos</strong> con columna``cost``</a></p>
 <ul>
-<li><p><a class="reference internal" href="#id5" id="id37">17) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a></p></li>
-<li><p><a class="reference internal" href="#id6" id="id38">18) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a></p></li>
-<li><p><a class="reference internal" href="#id7" id="id39">19) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a></p></li>
-<li><p><a class="reference internal" href="#id8" id="id40">20) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a></p></li>
-<li><p><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-17-and-18" id="id41">21) Usando Uno a Muchos para obtener la solución de los ejemplos 17 y 18</a></p></li>
-<li><p><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-18-and-20" id="id42">22) Usando Muchos a Uno para obtener la solución de los ejemplos 18 y 20</a></p></li>
-<li><p><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-17-to-20" id="id43">23) Usando Muchos a Muchos para obtener la solución de los ejemplos 17 y 20</a></p></li>
-<li><p><a class="reference internal" href="#using-combinations-to-get-the-solution-of-examples-17-to-19" id="id44">24) Usando Combinaciones para obtener la solución de los ejemplos 17 a 19</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id36">17) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id37">18) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id38">19) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id39">20) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a></p></li>
+<li><p><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-17-and-18" id="id40">21) Usando Uno a Muchos para obtener la solución de los ejemplos 17 y 18</a></p></li>
+<li><p><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-18-and-20" id="id41">22) Usando Muchos a Uno para obtener la solución de los ejemplos 18 y 20</a></p></li>
+<li><p><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-17-to-20" id="id42">23) Usando Muchos a Muchos para obtener la solución de los ejemplos 17 y 20</a></p></li>
+<li><p><a class="reference internal" href="#using-combinations-to-get-the-solution-of-examples-17-to-19" id="id43">24) Usando Combinaciones para obtener la solución de los ejemplos 17 a 19</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#for-undirected-graphs-only-with-cost-column" id="id45">Para grafos <strong>no dirigidos</strong> con columna``cost``</a></p>
+<li><p><a class="reference internal" href="#for-undirected-graphs-only-with-cost-column" id="id44">Para grafos <strong>no dirigidos</strong> con columna``cost``</a></p>
 <ul>
-<li><p><a class="reference internal" href="#id9" id="id46">25) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a></p></li>
-<li><p><a class="reference internal" href="#id10" id="id47">26) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a></p></li>
-<li><p><a class="reference internal" href="#id11" id="id48">27) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a></p></li>
-<li><p><a class="reference internal" href="#id12" id="id49">28) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a></p></li>
-<li><p><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-25-and-26" id="id50">29) Usando Uno a Muchos para obtener la solución de los ejemplos 25 y 26</a></p></li>
-<li><p><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-26-and-28" id="id51">30) Usando Muchos a Uno para obtener la solución de los ejemplos 26 y 28</a></p></li>
-<li><p><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-25-to-28" id="id52">31) Usando Muchos a Muchos para obtener la solución de los ejemplos 25 y 28</a></p></li>
-<li><p><a class="reference internal" href="#using-combinations-to-get-the-solution-of-examples-25-to-27" id="id53">32) Usando Combinaciones para obtener la solución de los ejemplos 25 a 27</a></p></li>
+<li><p><a class="reference internal" href="#id9" id="id45">25) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a></p></li>
+<li><p><a class="reference internal" href="#id10" id="id46">26) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a></p></li>
+<li><p><a class="reference internal" href="#id11" id="id47">27) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a></p></li>
+<li><p><a class="reference internal" href="#id12" id="id48">28) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a></p></li>
+<li><p><a class="reference internal" href="#using-one-to-many-to-get-the-solution-of-examples-25-and-26" id="id49">29) Usando Uno a Muchos para obtener la solución de los ejemplos 25 y 26</a></p></li>
+<li><p><a class="reference internal" href="#using-many-to-one-to-get-the-solution-of-examples-26-and-28" id="id50">30) Usando Muchos a Uno para obtener la solución de los ejemplos 26 y 28</a></p></li>
+<li><p><a class="reference internal" href="#using-many-to-many-to-get-the-solution-of-examples-25-to-28" id="id51">31) Usando Muchos a Muchos para obtener la solución de los ejemplos 25 y 28</a></p></li>
+<li><p><a class="reference internal" href="#using-combinations-to-get-the-solution-of-examples-25-to-27" id="id52">32) Usando Combinaciones para obtener la solución de los ejemplos 25 a 27</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#equvalences-between-signatures" id="id54">Equivalencias entre firmas</a></p>
+<li><p><a class="reference internal" href="#equvalences-between-signatures" id="id53">Equivalencias entre firmas</a></p>
 <ul>
-<li><p><a class="reference internal" href="#using-one-to-one" id="id55">33) Usando Uno a Uno</a></p></li>
-<li><p><a class="reference internal" href="#using-one-to-many" id="id56">34) Usando Uno a Muchos</a></p></li>
-<li><p><a class="reference internal" href="#using-many-to-one" id="id57">35) Usando Muchos a Uno</a></p></li>
-<li><p><a class="reference internal" href="#using-many-to-many" id="id58">36) Usando Muchos a Muchos</a></p></li>
-<li><p><a class="reference internal" href="#using-combinations" id="id59">37) Usando Combinaciones</a></p></li>
+<li><p><a class="reference internal" href="#using-one-to-one" id="id54">33) Usando Uno a Uno</a></p></li>
+<li><p><a class="reference internal" href="#using-one-to-many" id="id55">34) Usando Uno a Muchos</a></p></li>
+<li><p><a class="reference internal" href="#using-many-to-one" id="id56">35) Usando Muchos a Uno</a></p></li>
+<li><p><a class="reference internal" href="#using-many-to-many" id="id57">36) Usando Muchos a Muchos</a></p></li>
+<li><p><a class="reference internal" href="#using-combinations" id="id58">37) Usando Combinaciones</a></p></li>
 </ul>
 </li>
 </ul>
 </nav>
 <section id="for-directed-graphs-with-cost-and-reverse-cost-columns">
-<h3><a class="toc-backref" href="#id18" role="doc-backlink">Para grafos <strong>dirigidos</strong> con columnas <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a><a class="headerlink" href="#for-directed-graphs-with-cost-and-reverse-cost-columns" title="Link to this heading">¶</a></h3>
-<figure class="align-default" id="id14">
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">Para grafos <strong>dirigidos</strong> con columnas <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a><a class="headerlink" href="#for-directed-graphs-with-cost-and-reverse-cost-columns" title="Link to this heading">¶</a></h3>
+<figure class="align-default" id="id13">
 <a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 475.5px; height: 433.0px;" />
 </a>
 <figcaption>
-<p><span class="caption-text">Grafo dirigido con columnas de costo y costo de regreso</span><a class="headerlink" href="#id14" title="Link to this image">¶</a></p>
+<p><span class="caption-text">Grafo dirigido con columnas de costo y costo de regreso</span><a class="headerlink" href="#id13" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="path-from-6-to-10">
-<h4><a class="toc-backref" href="#id19" role="doc-backlink">1) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#path-from-6-to-10" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id18" role="doc-backlink">1) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#path-from-6-to-10" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span>
@@ -1050,7 +1044,7 @@
 </div>
 </section>
 <section id="path-from-6-to-7">
-<h4><a class="toc-backref" href="#id20" role="doc-backlink">2) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#path-from-6-to-7" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id19" role="doc-backlink">2) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#path-from-6-to-7" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span>
@@ -1065,7 +1059,7 @@
 </div>
 </section>
 <section id="path-from-12-to-10">
-<h4><a class="toc-backref" href="#id21" role="doc-backlink">3) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#path-from-12-to-10" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id20" role="doc-backlink">3) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#path-from-12-to-10" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span>
@@ -1083,7 +1077,7 @@
 </div>
 </section>
 <section id="path-from-12-to-7">
-<h4><a class="toc-backref" href="#id22" role="doc-backlink">4) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#path-from-12-to-7" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id21" role="doc-backlink">4) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#path-from-12-to-7" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">7</span>
@@ -1204,16 +1198,16 @@
 </section>
 </section>
 <section id="for-undirected-graphs-with-cost-and-reverse-cost-columns">
-<h3><a class="toc-backref" href="#id27" role="doc-backlink">Para grafos <strong>no dirigidos</strong> con columnas <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a><a class="headerlink" href="#for-undirected-graphs-with-cost-and-reverse-cost-columns" title="Link to this heading">¶</a></h3>
-<figure class="align-default" id="id15">
+<h3><a class="toc-backref" href="#id26" role="doc-backlink">Para grafos <strong>no dirigidos</strong> con columnas <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a><a class="headerlink" href="#for-undirected-graphs-with-cost-and-reverse-cost-columns" title="Link to this heading">¶</a></h3>
+<figure class="align-default" id="id14">
 <a class="reference internal image-reference" href="_images/Fig6-undirected.png"><img alt="_images/Fig6-undirected.png" src="_images/Fig6-undirected.png" style="width: 482.0px; height: 435.0px;" />
 </a>
 <figcaption>
-<p><span class="caption-text">Grafo no dirigido con columnas de costo y costo de regreso</span><a class="headerlink" href="#id15" title="Link to this image">¶</a></p>
+<p><span class="caption-text">Grafo no dirigido con columnas de costo y costo de regreso</span><a class="headerlink" href="#id14" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="id1">
-<h4><a class="toc-backref" href="#id28" role="doc-backlink">9) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id27" role="doc-backlink">9) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>
@@ -1229,7 +1223,7 @@
 </div>
 </section>
 <section id="id2">
-<h4><a class="toc-backref" href="#id29" role="doc-backlink">10) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id2" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id28" role="doc-backlink">10) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id2" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span>
@@ -1245,7 +1239,7 @@
 </div>
 </section>
 <section id="id3">
-<h4><a class="toc-backref" href="#id30" role="doc-backlink">11) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id29" role="doc-backlink">11) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>
@@ -1262,7 +1256,7 @@
 </div>
 </section>
 <section id="id4">
-<h4><a class="toc-backref" href="#id31" role="doc-backlink">12) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id30" role="doc-backlink">12) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span>
@@ -1366,16 +1360,16 @@
 </section>
 </section>
 <section id="for-directed-graphs-only-with-cost-column">
-<h3><a class="toc-backref" href="#id36" role="doc-backlink">Para grafos <strong>dirigidos</strong> con columna``cost``</a><a class="headerlink" href="#for-directed-graphs-only-with-cost-column" title="Link to this heading">¶</a></h3>
-<figure class="align-default" id="id16">
+<h3><a class="toc-backref" href="#id35" role="doc-backlink">Para grafos <strong>dirigidos</strong> con columna``cost``</a><a class="headerlink" href="#for-directed-graphs-only-with-cost-column" title="Link to this heading">¶</a></h3>
+<figure class="align-default" id="id15">
 <a class="reference internal image-reference" href="_images/Fig2-cost.png"><img alt="_images/Fig2-cost.png" src="_images/Fig2-cost.png" style="width: 484.5px; height: 434.0px;" />
 </a>
 <figcaption>
-<p><span class="caption-text">Grafo dirigido con solo la columna costo</span><a class="headerlink" href="#id16" title="Link to this image">¶</a></p>
+<p><span class="caption-text">Grafo dirigido con solo la columna costo</span><a class="headerlink" href="#id15" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="id5">
-<h4><a class="toc-backref" href="#id37" role="doc-backlink">17) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id36" role="doc-backlink">17) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span>
@@ -1388,7 +1382,7 @@
 </div>
 </section>
 <section id="id6">
-<h4><a class="toc-backref" href="#id38" role="doc-backlink">18) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id37" role="doc-backlink">18) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span>
@@ -1403,7 +1397,7 @@
 </div>
 </section>
 <section id="id7">
-<h4><a class="toc-backref" href="#id39" role="doc-backlink">19) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id7" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id38" role="doc-backlink">19) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id7" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span>
@@ -1416,7 +1410,7 @@
 </div>
 </section>
 <section id="id8">
-<h4><a class="toc-backref" href="#id40" role="doc-backlink">20) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id8" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id39" role="doc-backlink">20) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id8" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">7</span>
@@ -1494,16 +1488,16 @@
 </section>
 </section>
 <section id="for-undirected-graphs-only-with-cost-column">
-<h3><a class="toc-backref" href="#id45" role="doc-backlink">Para grafos <strong>no dirigidos</strong> con columna``cost``</a><a class="headerlink" href="#for-undirected-graphs-only-with-cost-column" title="Link to this heading">¶</a></h3>
-<figure class="align-default" id="id17">
+<h3><a class="toc-backref" href="#id44" role="doc-backlink">Para grafos <strong>no dirigidos</strong> con columna``cost``</a><a class="headerlink" href="#for-undirected-graphs-only-with-cost-column" title="Link to this heading">¶</a></h3>
+<figure class="align-default" id="id16">
 <a class="reference internal image-reference" href="_images/Fig4-costUndirected.png"><img alt="_images/Fig4-costUndirected.png" src="_images/Fig4-costUndirected.png" style="width: 487.5px; height: 438.0px;" />
 </a>
 <figcaption>
-<p><span class="caption-text">Grafo no dirigido con solo la columna costo</span><a class="headerlink" href="#id17" title="Link to this image">¶</a></p>
+<p><span class="caption-text">Grafo no dirigido con solo la columna costo</span><a class="headerlink" href="#id16" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="id9">
-<h4><a class="toc-backref" href="#id46" role="doc-backlink">25) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id9" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id45" role="doc-backlink">25) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id9" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>
@@ -1521,7 +1515,7 @@
 </div>
 </section>
 <section id="id10">
-<h4><a class="toc-backref" href="#id47" role="doc-backlink">26) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id10" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id46" role="doc-backlink">26) Ruta de <span class="math notranslate nohighlight">\(6\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id10" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span>
@@ -1537,7 +1531,7 @@
 </div>
 </section>
 <section id="id11">
-<h4><a class="toc-backref" href="#id48" role="doc-backlink">27) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id11" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id47" role="doc-backlink">27) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(10\)</span></a><a class="headerlink" href="#id11" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>
@@ -1554,7 +1548,7 @@
 </div>
 </section>
 <section id="id12">
-<h4><a class="toc-backref" href="#id49" role="doc-backlink">28) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id12" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id48" role="doc-backlink">28) Ruta de <span class="math notranslate nohighlight">\(12\)</span> a <span class="math notranslate nohighlight">\(7\)</span></a><a class="headerlink" href="#id12" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span>
@@ -1664,7 +1658,7 @@
 </section>
 </section>
 <section id="equvalences-between-signatures">
-<h3><a class="toc-backref" href="#id54" role="doc-backlink">Equivalencias entre firmas</a><a class="headerlink" href="#equvalences-between-signatures" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id53" role="doc-backlink">Equivalencias entre firmas</a><a class="headerlink" href="#equvalences-between-signatures" title="Link to this heading">¶</a></h3>
 <p>Los siguientes ejemplos son para la ruta <span class="math notranslate nohighlight">\(\{6\}\rightarrow\{10\}\)</span></p>
 <section id="using-one-to-one">
 <h4>33) Usando <a class="reference internal" href="#one-to-one">Uno a Uno</a><a class="headerlink" href="#using-one-to-one" title="Link to this heading">¶</a></h4>
@@ -1763,11 +1757,12 @@
 </section>
 </section>
 </section>
-<section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<section id="e-also">
+<h2>e Also<a class="headerlink" href="#e-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html">Boost: Dijkstra shortest paths</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a></p></li>
-<li><p>Las consultas utilizan la red <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
@@ -1790,7 +1785,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.7.2.<br/>
-      Actualizado por última vez en ene 07, 2025.<br/>
+      Actualizado por última vez en ene 15, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

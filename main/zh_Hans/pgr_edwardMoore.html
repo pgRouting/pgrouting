@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_edwardMoore - 实验 &#8212; pgRouting Manual (3.7)</title>
+    <title>pgr_edwardMoore - Experimental &#8212; pgRouting Manual (3.7)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -21,7 +21,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pgr_isPlanar - 实验" href="pgr_isPlanar.html" />
-    <link rel="prev" title="pgr_dagShortestPath - 实验" href="pgr_dagShortestPath.html" />
+    <link rel="prev" title="pgr_dagShortestPath - Experimental" href="pgr_dagShortestPath.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -96,7 +96,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span> <span class="pre">-</span> <span class="pre">实验</span></code></a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span></code> - Experimental</a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a><ul>
 <li><a class="reference internal" href="#one-to-one">一对一</a></li>
@@ -127,7 +127,7 @@
               
                 
   <li>
-    <a href="pgr_dagShortestPath.html" title="Previous Chapter: pgr_dagShortestPath - 实验"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_dagShorte...</span>
+    <a href="pgr_dagShortestPath.html" title="Previous Chapter: pgr_dagShortestPath - Experimental"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_dagShorte...</span>
     </a>
   </li>
   <li>
@@ -162,7 +162,7 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span> <span class="pre">-</span> <span class="pre">实验</span></code></a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span></code> - Experimental</a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a><ul>
 <li><a class="reference internal" href="#one-to-one">一对一</a></li>
@@ -187,7 +187,7 @@
 </ul>
 
   <li>
-    <a href="pgr_dagShortestPath.html" title="Previous Chapter: pgr_dagShortestPath - 实验"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_dagShorte...</span>
+    <a href="pgr_dagShortestPath.html" title="Previous Chapter: pgr_dagShortestPath - Experimental"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_dagShorte...</span>
     </a>
   </li>
   <li>
@@ -206,11 +206,11 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_edwardMoore','zh-Hans'));  </script>
             
-  <div class="line-block">
+  <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-edwardmoore-experimental">
-<span id="index-0"></span><h1><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span> <span class="pre">-</span> <span class="pre">实验</span></code><a class="headerlink" href="#pgr-edwardmoore-experimental" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span></code> - Experimental<a class="headerlink" href="#pgr-edwardmoore-experimental" title="Link to this heading">¶</a></h1>
 <p><cite>pgr_edwardMoore`</cite> - 使用 Edward-Moore 算法返回最短路径。</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -246,23 +246,16 @@
 <ul class="simple">
 <li><p>版本3.2.0</p>
 <ul>
-<li><p>新 <strong>实验性</strong> 签名：</p>
+<li><p>New experimental signature:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span></code> (<a class="reference internal" href="#combinations">组合</a>)</p></li>
+<li><p>pgr_edwardMoore(组合)</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>版本3.0.0</p>
 <ul>
-<li><p>新 <strong>实验</strong> 签名：</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span></code> (<a class="reference internal" href="#one-to-one">一对一</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span></code> (<a class="reference internal" href="#one-to-many">一对多</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span></code> (<a class="reference internal" href="#many-to-one">多对一</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span></code> (<a class="reference internal" href="#many-to-many">多对多</a>)</p></li>
-</ul>
-</li>
+<li><p>New experimental function.</p></li>
 </ul>
 </li>
 </ul>
@@ -301,6 +294,7 @@
 </ul>
 </li>
 </ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -876,7 +870,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.7.2.<br/>
-      Last updated on 1月 07, 2025.<br/>
+      Last updated on 1月 15, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

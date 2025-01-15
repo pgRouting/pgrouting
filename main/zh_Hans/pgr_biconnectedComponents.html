@@ -186,27 +186,20 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_biconnectedComponents','zh-Hans'));  </script>
             
-  <div class="line-block">
+  <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-biconnectedcomponents">
-<span id="index-0"></span><h1><code class="docutils literal notranslate"><span class="pre">pgr_biconnectedComponents</span></code><a class="headerlink" href="#pgr-biconnectedcomponents" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_biconnectedComponents</span></code><a class="headerlink" href="#pgr-biconnectedcomponents" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_biconnectedComponents</span></code> — 无向图的双连通分量。</p>
-<figure class="align-default" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/biconnected_components.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
-</a>
-<figcaption>
-<p><span class="caption-text">Boost 图内部</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
 <p class="rubric">可用性</p>
 <ul class="simple">
 <li><p>版本3.0.0</p>
 <ul>
 <li><p>结果列发生变化：</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">n_seq</span></code> 被删除</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">seq</span></code> 将类型更改为``BIGINT``</p></li>
+<li><p>n_seq`` is removed</p></li>
+<li><p>seq`` changed type to <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></li>
 </ul>
 </li>
 <li><p><strong>官方</strong> 函数</p></li>
@@ -214,7 +207,7 @@
 </li>
 <li><p>版本2.5.0</p>
 <ul>
-<li><p>新 <strong>实验</strong> 函数</p></li>
+<li><p>New experimental function.</p></li>
 </ul>
 </li>
 </ul>
@@ -233,6 +226,7 @@
 </li>
 <li><p>运行时间： <span class="math notranslate nohighlight">\(O(V + E)\)</span></p></li>
 </ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -395,8 +389,8 @@
 <h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="components-family.html"><span class="doc">分量 - 函数族</span></a></p></li>
-<li><p>查询使用 <a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a> 网络。</p></li>
-<li><p>Boost: <a class="reference external" href="https://www.boost.org/libs/graph/doc/biconnected_components.html">双连通分量</a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/biconnected_components.html">Boost: Biconnected components &amp; articulation points</a></p></li>
 <li><p>维基百科: <a class="reference external" href="https://en.wikipedia.org/wiki/Biconnected_component">双连通分量</a></p></li>
 </ul>
 <p class="rubric">索引和表格</p>
@@ -420,7 +414,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.7.2.<br/>
-      Last updated on 1月 07, 2025.<br/>
+      Last updated on 1月 15, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

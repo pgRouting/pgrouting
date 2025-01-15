@@ -170,22 +170,13 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('topology-functions','zh-Hans'));  </script>
             
-  <div class="line-block">
+  <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="topology-family-of-functions">
-<span id="index-0"></span><h1>Topology - 函数族<a class="headerlink" href="#topology-family-of-functions" title="Link to this heading">¶</a></h1>
+<h1>Topology - 函数族<a class="headerlink" href="#topology-family-of-functions" title="Link to this heading">¶</a></h1>
 <p>pgRouting 的网络拓扑以两个表形式的图表示：边表和顶点表。</p>
 <p>与表关联的属性有助于指示图是有向的还是无向的，边是否是有向图上的单向，并且根据最终应用程序的需要，需要创建合适的拓扑。</p>
-<p>pgRouting 提供一些函数来创建路由拓扑并分析拓扑。</p>
-<p>创建图表的附加函数：</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="contraction-family.html"><span class="doc">收缩 - 函数族</span></a></p></li>
-</ul>
-<p>用于分析图表的附加函数：</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="components-family.html"><span class="doc">分量 - 函数族</span></a></p></li>
-</ul>
 <p>以下函数直接修改数据库，因此用户必须具有管理员授予的特殊权限才能使用它们。</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> - 根据几何形状创建拓扑。</p></li>
@@ -193,6 +184,16 @@
 <li><p><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> - 分析边表的边和顶点。</p></li>
 <li><p><a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> - 分析边的方向性。</p></li>
 <li><p><a class="reference internal" href="pgr_nodeNetwork.html"><span class="doc">pgr_nodeNetwork</span></a> - 为无节点边表创建节点。</p></li>
+</ul>
+<p>pgRouting supplies some functions to create a routing topology and to analyze the
+topology.</p>
+<p>创建图表的附加函数：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="contraction-family.html"><span class="doc">收缩 - 函数族</span></a></p></li>
+</ul>
+<p>用于分析图表的附加函数：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="components-family.html"><span class="doc">分量 - 函数族</span></a></p></li>
 </ul>
 <p class="rubric">建议</p>
 <div class="admonition warning">
@@ -215,7 +216,7 @@
 <p>这些拟议的功能不会修改数据库。</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_degree.html"><span class="doc">pgr_degree -- 拟议</span></a> -返回一组顶点以及该顶点对应的关联边数。</p></li>
-<li><p><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices -- 拟议</span></a> - 根据边表信息提取顶点信息。</p></li>
+<li><p><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices -- Proposed</span></a> - 根据边表信息提取顶点信息。</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -242,7 +243,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.7.2.<br/>
-      Last updated on 1月 07, 2025.<br/>
+      Last updated on 1月 15, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

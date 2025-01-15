@@ -204,30 +204,23 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_drivingDistance','zh-Hans'));  </script>
             
-  <div class="line-block">
+  <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-drivingdistance">
-<span id="index-0"></span><h1>驾驶距离<a class="headerlink" href="#pgr-drivingdistance" title="Link to this heading">¶</a></h1>
+<h1>驾驶距离<a class="headerlink" href="#pgr-drivingdistance" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code> - 返回起始节点的行驶距离。</p>
-<figure class="align-default" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/table_of_contents.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
-</a>
-<figcaption>
-<p><span class="caption-text">Boost 图内部</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
 <p class="rubric">可用性</p>
 <p class="rubric">版本3.6.0</p>
 <ul class="simple">
 <li><p>将输出列标准化为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (单个顶点)</p>
+<li><p>pgr_drivingdistance(Single vertex)</p>
 <ul>
 <li><p>添加了 <code class="docutils literal notranslate"><span class="pre">depth</span></code> 和 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 结果列。</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (多个顶点)</p>
+<li><p>pgr_drivingdistance(Multiple vertices)</p>
 <ul>
 <li><p>结果列名称更改： <code class="docutils literal notranslate"><span class="pre">from_v``改为</span> <span class="pre">``start_vid</span></code>。</p></li>
 <li><p>添加了 <code class="docutils literal notranslate"><span class="pre">depth</span></code> 和``pred`` 结果列。</p></li>
@@ -248,6 +241,7 @@
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p>使用Dijkstra算法，提取所有成本小于或等于值 <code class="docutils literal notranslate"><span class="pre">distance</span></code> 的节点。提取的边将符合相应的生成树。</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -603,7 +597,7 @@
 <h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_alphaShape.html"><span class="doc">pgr_alphaShape</span></a> - Alpha 形状计算</p></li>
-<li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a> 网络。</p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
 </ul>
 <p class="rubric">索引和表格</p>
 <ul class="simple">
@@ -626,7 +620,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.7.2.<br/>
-      Last updated on 1月 07, 2025.<br/>
+      Last updated on 1月 15, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

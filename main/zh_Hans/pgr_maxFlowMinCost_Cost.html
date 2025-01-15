@@ -204,63 +204,26 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_maxFlowMinCost_Cost','zh-Hans'));  </script>
             
-  <div class="line-block">
+  <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-maxflowmincost-cost-experimental">
-<span id="index-0"></span><h1><code class="docutils literal notranslate"><span class="pre">pgr_maxFlowMinCost_Cost</span></code> - 实验<a class="headerlink" href="#pgr-maxflowmincost-cost-experimental" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_maxFlowMinCost_Cost</span></code> - 实验<a class="headerlink" href="#pgr-maxflowmincost-cost-experimental" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_maxFlowMinCost_Cost</span></code> — 计算图上最大流量的最小总成本</p>
-<figure class="align-default" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
-</a>
-<figcaption>
-<p><span class="caption-text">Boost 图内部</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>可能服务器崩溃</p>
-<ul class="simple">
-<li><p>这些功能可能会导致服务器崩溃</p></li>
-</ul>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>实验功能</p>
-<ul class="simple">
-<li><p>它们不是当前版本的正式版本。</p></li>
-<li><p>它们可能不会正式成为下一个版本的一部分：</p>
-<ul>
-<li><p>这些函数可能不使用 ANY-INTEGER 和 ANY-NUMERICAL</p></li>
-<li><p>名称可能会改变。</p></li>
-<li><p>签名可能会改变。</p></li>
-<li><p>功能可能会改变。</p></li>
-<li><p>pgTap 测试可能丢失。</p></li>
-<li><p>可能需要 c/c++编码。</p></li>
-<li><p>可能缺乏文档。</p></li>
-<li><p>文档（如果有）可能需要重写。</p></li>
-<li><p>可能需要自动生成文档示例。</p></li>
-<li><p>可能需要社区的大量反馈。</p></li>
-<li><p>可能取决于 pgRouting 的拟议功能</p></li>
-<li><p>可能依赖于 pgRouting 的已弃用函数</p></li>
-</ul>
-</li>
-</ul>
-</div>
 <p class="rubric">可用性</p>
 <ul class="simple">
 <li><p>版本3.2.0</p>
 <ul>
-<li><p>新的 <strong>实验</strong> 函数：</p>
+<li><p>New experimental signature:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_maxFlowMinCost_Cost</span></code> (<a class="reference internal" href="#combinations">组合</a>)</p></li>
+<li><p>pgr_maxFlowMinCost_Cost(组合)</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>版本3.0.0</p>
 <ul>
-<li><p>新 <strong>实验</strong> 函数</p></li>
+<li><p>New experimental function.</p></li>
 </ul>
 </li>
 </ul>
@@ -314,6 +277,37 @@
 </ul>
 </li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>可能服务器崩溃</p>
+<ul class="simple">
+<li><p>这些功能可能会导致服务器崩溃</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>实验功能</p>
+<ul class="simple">
+<li><p>它们不是当前版本的正式版本。</p></li>
+<li><p>它们可能不会正式成为下一个版本的一部分：</p>
+<ul>
+<li><p>这些函数可能不使用 ANY-INTEGER 和 ANY-NUMERICAL</p></li>
+<li><p>名称可能会改变。</p></li>
+<li><p>签名可能会改变。</p></li>
+<li><p>功能可能会改变。</p></li>
+<li><p>pgTap 测试可能丢失。</p></li>
+<li><p>可能需要 c/c++编码。</p></li>
+<li><p>可能缺乏文档。</p></li>
+<li><p>文档（如果有）可能需要重写。</p></li>
+<li><p>可能需要自动生成文档示例。</p></li>
+<li><p>可能需要社区的大量反馈。</p></li>
+<li><p>可能取决于 pgRouting 的拟议功能</p></li>
+<li><p>可能依赖于 pgRouting 的已弃用函数</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -672,7 +666,7 @@
 <h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="flow-family.html"><span class="doc">Flow - 函数族</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/successive_shortest_path_nonnegative_weights.html">https://www.boost.org/libs/graph/doc/successive_shortest_path_nonnegative_weights.html</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html">Boost: push relabel max flow</a></p></li>
 </ul>
 <p class="rubric">索引和表格</p>
 <ul class="simple">
@@ -695,7 +689,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.7.2.<br/>
-      Last updated on 1月 07, 2025.<br/>
+      Last updated on 1月 15, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>
