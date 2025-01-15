@@ -4,14 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 # Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
 # Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
-# Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023, 2024.
+# Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023, 2024, 2025.
 # DeepL <noreply-mt-deepl@weblate.org>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-10 14:53+0000\n"
-"PO-Revision-Date: 2024-12-07 13:04+0000\n"
+"PO-Revision-Date: 2025-01-15 21:02+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
@@ -742,9 +742,8 @@ msgstr ""
 "`Wikipedia: Problema del viajante <https://es.wikipedia.org/wiki/"
 "Problema_del_viajante>`__"
 
-#, fuzzy
 msgid "Vehicle Routing Functions - Category"
-msgstr "Funciones de Ruteo de Vehículos - Categoría (Experimental)"
+msgstr "Funciones de Ruteo de Vehículos - Categoría"
 
 msgid "Pickup and delivery problem"
 msgstr "Problema de recogida y entrega"
