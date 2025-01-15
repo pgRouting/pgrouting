@@ -249,7 +249,7 @@
 </li>
 </ul>
 </li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">details</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>:</p>
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">details</span></code> 为 <code class="docutils literal notranslate"><span class="pre">false</span></code> 时：</p>
 <ul>
 <li><p>只有那些被访问的兴趣点会被移除，也就是说，位于一定距离范围内被到达的兴趣点会被包含在内</p></li>
 </ul>
@@ -267,7 +267,7 @@
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>修改图以包含点，并使用 Dijkstra 算法，提取成本小于或等于距起点 <code class="docutils literal notranslate"><span class="pre">**距离**</span></code> 值的所有节点和点。 提取的边将符合相应的生成树。</p>
+<p>修改图以包含点，并使用 Dijkstra 算法，提取成本小于或等于距起点 <code class="docutils literal notranslate"><span class="pre">**distance**</span></code> 值的所有节点和点。 提取的边将符合相应的生成树。</p>
 <p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
@@ -390,7 +390,7 @@
 </tr>
 <tr class="row-even"><td><p><strong>Root vid</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>树的根顶点的标识符。</p>
+<td><p>树的根顶点标识符。</p>
 <ul class="simple">
 <li><p>负值代表一个点</p></li>
 </ul>

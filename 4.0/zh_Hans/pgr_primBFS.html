@@ -208,13 +208,13 @@
 <p><code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code> — Prim 的深度优先搜索排序最小生成树算法。</p>
 <p class="rubric">可用性</p>
 <dl class="field-list simple">
-<dt class="field-odd">Version 3.7.0<span class="colon">:</span></dt>
+<dt class="field-odd">版本 3.7.0<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <ul class="simple">
 <li><p>将输出列标准化为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p>Added <code class="docutils literal notranslate"><span class="pre">pred</span></code> result columns.</p></li>
+<li><p>添加了 <code class="docutils literal notranslate"><span class="pre">pred</span></code> 结果列。</p></li>
 </ul>
 </li>
 </ul>
@@ -227,8 +227,7 @@
 </dl>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>Visits and extracts the nodes information in Breath First Search ordering
-of the Minimum Spanning Tree created using Prims's algorithm.</p>
+<p>访问并提取使用 Prims 算法创建的最小生成树的 Breath First Search 排序中的节点信息。</p>
 <p><strong>主要特点是：</strong></p>
 <ul class="simple">
 <li><p>它的实现仅在 <strong>无向</strong> 图上。</p></li>
@@ -370,7 +369,7 @@ of the Minimum Spanning Tree created using Prims's algorithm.</p>
 </tr>
 <tr class="row-odd"><td><p><strong>Root vid</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>树的根顶点的标识符。</p></td>
+<td><p>树的根顶点标识符。</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Root vids</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></p></td>

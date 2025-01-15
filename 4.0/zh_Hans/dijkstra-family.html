@@ -231,7 +231,7 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia -拟议</span></a> - 获取一系列顶点的路径。</p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - 拟议</span></a> - 获取到最近顶点的路线。</p></li>
-<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - 拟议</span></a> - 获取最近顶点的成本。</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - 提议</span></a> - 获取最近顶点的成本。</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -441,12 +441,17 @@
 <ul class="simple">
 <li><p>顶点集 <span class="math notranslate nohighlight">\(V\)</span></p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(V = source \cup target \cup {start_v{vid}} \cup {end_{vid}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(V = source \cup target \cup {start_{vid}} \cup  {end_{vid}}\)</span></p></li>
 </ul>
 </li>
 <li><p>边集 <span class="math notranslate nohighlight">\(E\)</span></p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(E = \begin{cases} \text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \quad \text{if } reverse\_cost = \varnothing \\ \text{ } \text{ }  &amp; \quad \text{ } \\ \text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \quad \text{ } \\ \cup \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i&gt;=0 \} &amp; \quad \text{if } reverse\_cost \neq \varnothing \\ \end{cases}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E = \begin{cases}
+\text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \quad \text{if } reverse\_cost = \varnothing \\
+\text{ } \text{ }  &amp; \quad \text{ } \\
+\text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp;  \quad \text{ } \\
+\cup \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i&gt;=0 \} &amp; \quad \text{if } reverse\_cost \neq \varnothing \\
+\end{cases}\)</span></p></li>
 </ul>
 </li>
 </ul>
@@ -460,7 +465,15 @@
 </li>
 <li><p>边集 <span class="math notranslate nohighlight">\(E\)</span></p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(E = \begin{cases} \text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \}  &amp; \quad \text{ } \\ \cup \{(target_i, source_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \quad \text{ if } reverse\_cost = \varnothing \\ \text{ } \text{ } &amp; \text{ } \\ \text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \text{ } \\ \cup \{(target_i, source_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \text{ } \\ \cup \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} &amp; \text{ } \\ \cup \{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} &amp; \quad \text{ if } reverse\_cost \neq \varnothing \\ \end{cases}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E = \begin{cases}
+\text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \}  &amp; \quad \text{ } \\
+\cup \{(target_i, source_i, cost_i) \text{ when } cost &gt;=0 \}  &amp; \quad \text{ if } reverse\_cost = \varnothing \\
+\text{ } \text{ }  &amp; \text{ } \\
+\text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \text{ } \\
+\cup \{(target_i, source_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \text{ } \\
+\cup \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} &amp; \text{ } \\
+\cup \{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} &amp; \quad \text{ if } reverse\_cost \neq \varnothing \\
+\end{cases}\)</span></p></li>
 </ul>
 </li>
 </ul>

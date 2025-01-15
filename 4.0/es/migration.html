@@ -139,12 +139,12 @@
 <li><a class="reference internal" href="#use-pgr-trsp-withpoints-when-there-are-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> when there are restrictions.</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#migration-of-pgr-trspviavertices">Migraciones de <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-trspviavertices">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a><ul>
 <li><a class="reference internal" href="#use-pgr-dijkstravia-when-there-are-no-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> when there are no restrictions</a></li>
 <li><a class="reference internal" href="#use-pgr-trspvia-when-there-are-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> when there are restrictions</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#migration-of-pgr-trspviaedges">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-trspviaedges">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a><ul>
 <li><a class="reference internal" href="#use-pgr-withpointsvia-when-there-are-no-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code> when there are no restrictions</a></li>
 <li><a class="reference internal" href="#use-pgr-trspvia-withpoints-when-there-are-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> when there are restrictions</a></li>
 </ul>
@@ -247,12 +247,12 @@
 <li><a class="reference internal" href="#use-pgr-trsp-withpoints-when-there-are-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> when there are restrictions.</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#migration-of-pgr-trspviavertices">Migraciones de <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-trspviavertices">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a><ul>
 <li><a class="reference internal" href="#use-pgr-dijkstravia-when-there-are-no-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> when there are no restrictions</a></li>
 <li><a class="reference internal" href="#use-pgr-trspvia-when-there-are-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> when there are restrictions</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#migration-of-pgr-trspviaedges">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a><ul>
+<li><a class="reference internal" href="#migration-of-pgr-trspviaedges">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a><ul>
 <li><a class="reference internal" href="#use-pgr-withpointsvia-when-there-are-no-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code> when there are no restrictions</a></li>
 <li><a class="reference internal" href="#use-pgr-trspvia-withpoints-when-there-are-restrictions">Use <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> when there are restrictions</a></li>
 </ul>
@@ -318,8 +318,8 @@
 <li><p><a class="reference internal" href="#migration-of-pgr-withpointsksp" id="id14">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-trsp-vertices" id="id15">Migración de <cite>pgr_trsp`</cite> (Vértices)</a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-trsp-edges" id="id16">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Aristas)</a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-trspviavertices" id="id17">Migraciones de <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-trspviaedges" id="id18">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-trspviavertices" id="id17">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-trspviaedges" id="id18">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-restrictions" id="id19">Migración de restricciones</a></p></li>
 <li><p><a class="reference internal" href="#see-also" id="id20">Ver también</a></p></li>
 </ul>
@@ -1951,7 +1951,7 @@ WHERE edge != -1;
 </section>
 </section>
 <section id="migration-of-pgr-trspviavertices">
-<h2><a class="toc-backref" href="#id17" role="doc-backlink">Migraciones de <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a><a class="headerlink" href="#migration-of-pgr-trspviavertices" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a><a class="headerlink" href="#migration-of-pgr-trspviavertices" title="Link to this heading">¶</a></h2>
 <p>Signature:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trspViaVertices</span><span class="p">(</span><span class="n">sql</span> <span class="n">text</span><span class="p">,</span> <span class="n">vids</span> <span class="n">integer</span><span class="p">[],</span>
                   <span class="n">directed</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="n">boolean</span>
@@ -2081,7 +2081,7 @@ WHERE edge != -1;
 </section>
 </section>
 <section id="migration-of-pgr-trspviaedges">
-<h2><a class="toc-backref" href="#id18" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a><a class="headerlink" href="#migration-of-pgr-trspviaedges" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id18" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></a><a class="headerlink" href="#migration-of-pgr-trspviaedges" title="Link to this heading">¶</a></h2>
 <p>Signature:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trspViaEdges</span><span class="p">(</span><span class="n">sql</span> <span class="n">text</span><span class="p">,</span> <span class="n">eids</span> <span class="n">integer</span><span class="p">[],</span> <span class="n">pcts</span> <span class="n">float8</span><span class="p">[],</span>
                   <span class="n">directed</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="n">boolean</span>

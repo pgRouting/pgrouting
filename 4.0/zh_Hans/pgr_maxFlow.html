@@ -209,7 +209,7 @@
 </div>
 <section id="pgr-maxflow">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_maxFlow</span></code><a class="headerlink" href="#pgr-maxflow" title="Link to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_maxFlow</span></code> —使用 Push Relabel 算法计算有向图中从源到目标的最大流量。</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_maxFlow</span></code> — 使用 Push Relabel 算法计算有向图中从源到目标的最大流量。</p>
 <p class="rubric">可用性</p>
 <ul class="simple">
 <li><p>Version 4.0.0</p>
@@ -242,13 +242,13 @@
 <p><strong>主要特点是：</strong></p>
 <ul class="simple">
 <li><p>该图是 <strong>有向</strong> 的。</p></li>
-<li><p>Calculates the maximum flow from the sources to the targets.</p>
+<li><p>计算从源头到目标的最大流量。</p>
 <ul>
 <li><p>当最大流量为 <strong>0</strong> 时则没有流量，返回 <strong>0</strong> 。</p></li>
-<li><p>There is no flow when source has the same vaule as target.</p></li>
+<li><p>当 source与 target相同时，没有流量。</p></li>
 </ul>
 </li>
-<li><p>Any duplicated values in source or target are ignored.</p></li>
+<li><p>source或target 中的任何重复值都将被忽略。</p></li>
 <li><p>使用 <a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a> 算法。</p></li>
 </ul>
 <ul class="simple">

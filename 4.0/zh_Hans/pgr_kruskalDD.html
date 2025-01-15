@@ -202,13 +202,13 @@
 <p><code class="docutils literal notranslate"><span class="pre">pgr_kruskalDD</span></code> — 使用 Kruskal 算法的汇流节点。</p>
 <p class="rubric">可用性</p>
 <dl class="field-list simple">
-<dt class="field-odd">Version 3.7.0<span class="colon">:</span></dt>
+<dt class="field-odd">版本 3.7.0<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <ul class="simple">
 <li><p>将输出列标准化为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p>Added <code class="docutils literal notranslate"><span class="pre">pred</span></code> result columns.</p></li>
+<li><p>添加了 <code class="docutils literal notranslate"><span class="pre">pred</span></code> 结果列。</p></li>
 </ul>
 </li>
 </ul>
@@ -221,7 +221,7 @@
 </dl>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>使用 Kruskal 算法，在计算的最小生成树中提取总成本小于或等于距 <strong>根</strong> 顶点（或多个顶点） <strong>距离</strong> 的节点。</p>
+<p>使用 Kruskal 算法，从计算出的最小生成树中，提取出那些与 <strong>root</strong> 顶点（或根顶点组）之间的聚合成本，小于或等于 <strong>distance</strong> 的节点。</p>
 <p><strong>主要特点是：</strong></p>
 <ul class="simple">
 <li><p>它的实现仅在 <strong>无向</strong> 图上。</p></li>
@@ -362,7 +362,7 @@
 </tr>
 <tr class="row-odd"><td><p><strong>Root vid</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>树的根顶点的标识符。</p></td>
+<td><p>树的根顶点标识符。</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Root vids</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></p></td>
