@@ -66,7 +66,6 @@ ROWS 1000;
 
 COMMENT ON FUNCTION pgr_trspVia_withPoints(TEXT, TEXT, TEXT, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN, CHAR, BOOLEAN)
 IS 'pgr_trspVia_withPoints
-- PROPOSED
 - Parameters:
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - Restrictions SQL with columns: cost, path

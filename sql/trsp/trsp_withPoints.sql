@@ -199,7 +199,6 @@ ROWS 1000;
 -- COMMENTS
 COMMENT ON FUNCTION pgr_trsp_withPoints(TEXT, TEXT, TEXT, BIGINT, BIGINT, BOOLEAN, CHAR, BOOLEAN)
 IS 'pgr_trsp_withPoints (One to One)
-- PROPOSED
 - Parameters:
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - Restrictions SQL with columns: id, cost, path
@@ -217,7 +216,6 @@ IS 'pgr_trsp_withPoints (One to One)
 
 COMMENT ON FUNCTION pgr_trsp_withPoints(TEXT, TEXT, TEXT, BIGINT, ANYARRAY, BOOLEAN, CHAR, BOOLEAN)
 IS 'pgr_trsp_withPoints(One to Many)
-- PROPOSED
 - Parameters:
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - Restrictions SQL with columns: id, cost, path
@@ -234,7 +232,6 @@ IS 'pgr_trsp_withPoints(One to Many)
 
 COMMENT ON FUNCTION pgr_trsp_withPoints(TEXT, TEXT, TEXT, ANYARRAY, BIGINT, BOOLEAN, CHAR, BOOLEAN)
 IS 'pgr_trsp_withPoints(Many to One)
-- PROPOSED
 - Parameters:
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - Restrictions SQL with columns: id, cost, path
@@ -251,7 +248,6 @@ IS 'pgr_trsp_withPoints(Many to One)
 
 COMMENT ON FUNCTION pgr_trsp_withPoints(TEXT, TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN, CHAR, BOOLEAN)
 IS 'pgr_trsp_withPoints(Many to Many)
-- PROPOSED
 - Parameters:
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - Restrictions SQL with columns: id, cost, path

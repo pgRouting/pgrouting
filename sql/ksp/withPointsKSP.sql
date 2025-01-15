@@ -188,7 +188,6 @@ ROWS 1000;
 
 COMMENT ON FUNCTION pgr_withPointsKSP(TEXT, TEXT, BIGINT, BIGINT, INTEGER, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgr_withPointsKSP
-- PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - Points SQL with columns: [pid], edge_id, fraction[,side]
@@ -205,7 +204,6 @@ IS 'pgr_withPointsKSP
 
 COMMENT ON FUNCTION pgr_withPointsKSP(TEXT, TEXT, BIGINT, ANYARRAY, INTEGER, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgr_withPointsKSP
-- PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - Points SQL with columns: [pid], edge_id, fraction[,side]
@@ -222,7 +220,6 @@ IS 'pgr_withPointsKSP
 
 COMMENT ON FUNCTION pgr_withPointsKSP(TEXT, TEXT, ANYARRAY, BIGINT, INTEGER, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgr_withPointsKSP
-- PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - Points SQL with columns: [pid], edge_id, fraction[,side]
@@ -239,7 +236,6 @@ IS 'pgr_withPointsKSP
 
 COMMENT ON FUNCTION pgr_withPointsKSP(TEXT, TEXT, ANYARRAY, ANYARRAY, INTEGER, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgr_withPointsKSP
-- PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - Points SQL with columns: [pid], edge_id, fraction[,side]
@@ -256,7 +252,6 @@ IS 'pgr_withPointsKSP
 
 COMMENT ON FUNCTION pgr_withPointsKSP(TEXT, TEXT, TEXT, INTEGER, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgr_withPointsKSP
-- PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - Points SQL with columns: [pid], edge_id, fraction[,side]

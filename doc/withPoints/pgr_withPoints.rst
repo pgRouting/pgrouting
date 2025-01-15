@@ -15,21 +15,21 @@
 
 |
 
-``pgr_withPoints`` - Proposed
+``pgr_withPoints``
 ===============================================================================
 
 ``pgr_withPoints`` - Returns the shortest path in a graph with additional
 temporary vertices.
 
-.. include:: proposed.rst
-   :start-after: warning-begin
-   :end-before: end-warning
-
 .. rubric:: Availability
+
+* Version 4.0.0
+
+  * **Official** function.
 
 * Version 3.2.0
 
-  * New proposed function.
+  * New proposed signature:
 
     * pgr_withPoints(Combinations)
 
@@ -89,7 +89,7 @@ Signatures
    | OR EMTPY SET
 
 .. index::
-    single: withPoints ; One to One - Proposed on v2.2
+    single: withPoints ; One to One
 
 One to One
 ...............................................................................
@@ -110,7 +110,7 @@ One to One
    :end-before: -- q2
 
 .. index::
-    single: withPoints ; One to Many - Proposed on v2.2
+    single: withPoints ; One to Many
 
 One to Many
 ...............................................................................
@@ -132,7 +132,7 @@ One to Many
    :end-before: -- q3
 
 .. index::
-    single: withPoints ; Many to One - Proposed on v2.2
+    single: withPoints ; Many to One
 
 Many to One
 ...............................................................................
@@ -153,7 +153,7 @@ Many to One
    :end-before: -- q4
 
 .. index::
-    single: withPoints ; Many to Many - Proposed on v2.2
+    single: withPoints ; Many to Many
 
 Many to Many
 ...............................................................................
@@ -175,7 +175,7 @@ Many to Many
    :end-before: -- q5
 
 .. index::
-    single: withPoints ; Combinations - Proposed on v3.2
+    single: withPoints ; Combinations
 
 Combinations
 ...............................................................................

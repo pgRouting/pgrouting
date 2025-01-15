@@ -8,25 +8,25 @@
    ****************************************************************************
 
 .. index::
-   single: withPoints Family ; pgr_withPointsCost - Proposed
-   single: With Points Category ; pgr_withPointsCost - Proposed
-   single: Cost Category ; pgr_withPointsCost - Proposed
+   single: withPoints Family ; pgr_withPointsCost
+   single: With Points Category ; pgr_withPointsCost
+   single: Cost Category ; pgr_withPointsCost
    single: withPointsCost
 
 |
 
-``pgr_withPointsCost`` - Proposed
+``pgr_withPointsCost``
 ===============================================================================
 
 ``pgr_withPointsCost`` - Calculates the shortest path and returns only the
 aggregate cost of the shortest path found, for the combination of points
 given.
 
-.. include:: proposed.rst
-   :start-after: warning-begin
-   :end-before: end-warning
-
 .. rubric:: Availability
+
+* Version 4.0.0
+
+  * **Official** function.
 
 * Version 3.2.0
 
@@ -111,7 +111,7 @@ Signatures
    withPoints family of functions.
 
 .. index::
-    single: withPointsCost - Proposed ; One To One - Proposed on v2.2
+    single: withPointsCost ; One To One
 
 One to One
 ...............................................................................
@@ -132,7 +132,7 @@ One to One
    :end-before: -- q2
 
 .. index::
-    single: withPointsCost - Proposed ; One To Many - Proposed on v2.2
+    single: withPointsCost ; One To Many
 
 One to Many
 ...............................................................................
@@ -154,7 +154,7 @@ One to Many
    :end-before: -- q3
 
 .. index::
-    single: withPointsCost - Proposed ; Many To One - Proposed on v2.2
+    single: withPointsCost ; Many To One
 
 Many to One
 ...............................................................................
@@ -175,7 +175,7 @@ Many to One
    :end-before: -- q4
 
 .. index::
-    single: withPointsCost - Proposed ; Many To Many - Proposed on v2.2
+    single: withPointsCost ; Many To Many
 
 Many to Many
 ...............................................................................
@@ -197,7 +197,7 @@ Many to Many
    :end-before: -- q5
 
 .. index::
-    single: withPointsCost - Proposed ; Combinations -- Proposed on v3.2
+    single: withPointsCost ; Combinations
 
 Combinations
 ...............................................................................

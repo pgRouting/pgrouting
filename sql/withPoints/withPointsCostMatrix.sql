@@ -27,16 +27,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
----------------------
----------------------
--- costMatrix
----------------------
----------------------
-
 ---------------------------
 -- pgr_withPointsCostMatrix
 ---------------------------
-
 
 --v2.6
 CREATE FUNCTION pgr_withPointsCostMatrix(
@@ -63,7 +56,6 @@ ROWS 1000;
 
 COMMENT ON FUNCTION pgr_withPointsCostMatrix(TEXT, TEXT, ANYARRAY, BOOLEAN, CHAR)
 IS'pgr_withPointsCostMatrix
-- PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - Points SQL with columns: [pid], edge_id, fraction[,side]

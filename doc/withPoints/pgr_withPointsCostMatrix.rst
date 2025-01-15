@@ -8,24 +8,24 @@
    ****************************************************************************
 
 .. index::
-   single: withPoints Family ; pgr_withPointsCostMatrix - Proposed
-   single: With Points Category ; pgr_withPointsCostMatrix - Proposed
-   single: Cost Matrix Category ; pgr_withPointsCostMatrix - Proposed
-   single: withPointsCostMatrix - proposed on v2.0
+   single: withPoints Family ; pgr_withPointsCostMatrix
+   single: With Points Category ; pgr_withPointsCostMatrix
+   single: Cost Matrix Category ; pgr_withPointsCostMatrix
+   single: withPointsCostMatrix
 
 |
 
-``pgr_withPointsCostMatrix`` - proposed
+``pgr_withPointsCostMatrix``
 ===============================================================================
 
 ``pgr_withPointsCostMatrix`` - Calculates a cost matrix using
 :doc:`pgr_withPoints`.
 
-.. include:: proposed.rst
-   :start-after: warning-begin
-   :end-before: end-warning
-
 .. rubric:: Availability
+
+* Version 4.0.0
+
+  * **Official** function.
 
 * Version 2.2.0
 
@@ -48,8 +48,6 @@ Using Dijkstra algorithm, calculate and return a cost matrix.
 
 Signatures
 -------------------------------------------------------------------------------
-
-.. rubric:: Summary
 
 .. admonition:: \ \
    :class: signatures

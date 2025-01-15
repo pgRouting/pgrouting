@@ -8,23 +8,23 @@
    ****************************************************************************
 
 .. index::
-   single: withPoints Family ; pgr_withPointsDD - Proposed
-   single: With Points Category ; pgr_withPointsDD - Proposed
-   single: Driving Distance Category ; pgr_withPointsDD - Proposed
-   single: withPointsDD - Proposed
+   single: withPoints Family ; pgr_withPointsDD
+   single: With Points Category ; pgr_withPointsDD
+   single: Driving Distance Category ; pgr_withPointsDD
+   single: withPointsDD
 
 |
 
-``pgr_withPointsDD`` - Proposed
+``pgr_withPointsDD``
 ===============================================================================
 
 ``pgr_withPointsDD`` - Returns the driving **distance** from a starting point.
 
-.. include:: proposed.rst
-   :start-after: warning-begin
-   :end-before: end-warning
-
 .. rubric:: Availability
+
+.. rubric:: Version 4.0.0
+
+* **Official** function.
 
 .. rubric:: Version 3.6.0
 
@@ -84,7 +84,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: withPointsDD - Proposed ; Single Vertex - Proposed on v2.2
+    single: withPointsDD ; Single Vertex
 
 Single vertex
 ...............................................................................
@@ -106,7 +106,7 @@ Single vertex
    :end-before: -- q3
 
 .. index::
-    single: withPointsDD - Proposed ; Multiple Vertices - Proposed on v2.2
+    single: withPointsDD ; Multiple Vertices
 
 Multiple vertices
 ...............................................................................
