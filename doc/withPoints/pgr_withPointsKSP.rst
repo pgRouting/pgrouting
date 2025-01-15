@@ -22,7 +22,7 @@
 
 .. rubric:: Version 4.0.0
 
-* **Official** function.
+* Function promoted to official.
 
 .. rubric:: Version 3.6.0
 

@@ -26,7 +26,7 @@ given.
 
 * Version 4.0.0
 
-  * **Official** function.
+  * Function promoted to official.
 
 * Version 3.2.0
 
