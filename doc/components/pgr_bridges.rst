@@ -7,21 +7,16 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Components Family ; pgr_bridges
    single: bridges
+
+|
 
 ``pgr_bridges``
 ===============================================================================
 
 ``pgr_bridges`` - Return the bridges of an undirected graph.
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/connected_components.html
-
-   Boost Graph Inside
 
 .. rubric:: Availability
 
@@ -32,7 +27,7 @@
 
 * Version 2.5.0
 
-  * New **experimental** function
+  * New experimental function.
 
 Description
 -------------------------------------------------------------------------------
@@ -49,6 +44,8 @@ This implementation can only be used with an undirected graph.
   - ``edge`` ascending
 
 - Running time: :math:`O(E * (V + E))`
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -108,7 +105,8 @@ See Also
 -------------------------------------------------------------------------------
 
 * https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29
-* The queries use the :doc:`sampledata` network.
+* :doc:`sampledata`
+* `Boost: connected components <https://www.boost.org/libs/graph/doc/connected_components.html>`__
 
 .. rubric:: Indices and tables
 

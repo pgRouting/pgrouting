@@ -7,14 +7,14 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index:: Dijkstra Family
+
+|
 
 Dijkstra - Family of functions
 ===============================================================================
 
-.. index from here
+.. official-start
 
 * :doc:`pgr_dijkstra` - Dijkstra's algorithm for the shortest paths.
 * :doc:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths.
@@ -24,22 +24,22 @@ Dijkstra - Family of functions
 * :doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K shortest
   paths.
 
-.. index to here
+.. official-end
 
 .. rubric:: Proposed
 
 .. include:: proposed.rst
-   :start-after: stable-begin-warning
-   :end-before: stable-end-warning
+   :start-after: warning-begin
+   :end-before: end-warning
 
 
-.. index proposed from here
+.. proposed-start
 
 * :doc:`pgr_dijkstraVia` - Get a route of a seuence of vertices.
 * :doc:`pgr_dijkstraNear` - Get the route to the nearest vertex.
 * :doc:`pgr_dijkstraNearCost` - Get the cost to the nearest vertex.
 
-.. index proposed to here
+.. proposed-end
 
 .. toctree::
     :hidden:

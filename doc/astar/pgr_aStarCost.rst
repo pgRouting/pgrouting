@@ -7,38 +7,33 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 
 .. index::
    single: aStar Family ; pgr_aStarCost
    single: aStarCost
 
-pgr_aStarCost
+|
+
+``pgr_aStarCost``
 ===============================================================================
 
 ``pgr_aStarCost`` - Total cost of the shortest path using the A* algorithm.
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/astar_search.html
-
-   Boost Graph Inside
 
 .. rubric:: Availability
 
 * Version 3.2.0
 
-  * New **proposed** signature:
+  * New proposed signature:
 
-    * ``pgr_aStarCost`` (`Combinations`_)
+    * pgr_aStarCost(Combinations)
 
 * Version 3.0.0
 
-  * **Official** function
+  * Function promoted to **official**.
 
 * Version 2.4.0
 
-  * New **proposed** function
+  * New proposed function.
 
 Description
 -------------------------------------------------------------------------------
@@ -66,6 +61,8 @@ using the A* algorithm.
 
   - `start_vid` ascending
   - `end_vid` ascending
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -275,6 +272,7 @@ See Also
 * :doc:`aStar-family`
 * :doc:`cost-category`
 * :doc:`sampledata`
+* `Boost: A* search <https://www.boost.org/libs/graph/doc/astar_search.html>`__
 
 .. rubric:: Indices and tables
 

@@ -7,8 +7,6 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Turn Restriction Shortest Path Family ; pgr_trsp_withPoints
    single: Shortest Path Category ; pgr_trsp_withPoints
@@ -16,31 +14,22 @@
    single: With Points Category ; pgr_trsp_withPoints
    single: trsp_withPoints
 
-pgr_trsp_withPoints - Proposed
+|
+
+``pgr_trsp_withPoints`` - Proposed
 ===============================================================================
 
 ``pgr_trsp_withPoints`` Routing Vertex/Point with restrictions.
 
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/table_of_contents.html
-
-   Boost Graph Inside
-
 .. include:: proposed.rst
-   :start-after: begin-warning
+   :start-after: warning-begin
    :end-before: end-warning
 
 .. rubric:: Availability
 
 * Version 3.4.0
 
-  * New proposed signatures:
-
-    * ``pgr_trsp_withPoints`` (`One to One`_)
-    * ``pgr_trsp_withPoints`` (`One to Many`_)
-    * ``pgr_trsp_withPoints`` (`Many to One`_)
-    * ``pgr_trsp_withPoints`` (`Many to Many`_)
-    * ``pgr_trsp_withPoints`` (`Combinations`_)
+  * New proposed function.
 
 Description
 -------------------------------------------------------------------------------
@@ -74,6 +63,8 @@ Characteristics:
   - end_vid ascending
 
 * Running time: :math:`O(|start\_vids|\times(V \log V + E))`
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------

@@ -7,14 +7,14 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index:: Flow Family
+
+|
 
 Flow - Family of functions
 ===================================
 
-.. index from here
+.. official-start
 
 * :doc:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel
   algorithm.
@@ -31,20 +31,20 @@ Flow - Family of functions
   * :doc:`pgr_maxCardinalityMatch` - Calculates a maximum cardinality matching
     in a graph.
 
-.. index to here
+.. official-end
 
 .. rubric:: Experimental
 
 .. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: warning-begin
+   :end-before: end-warning
 
-.. index experimental from here
+.. experimental-start
 
 * :doc:`pgr_maxFlowMinCost` - Details of flow and cost on edges.
 * :doc:`pgr_maxFlowMinCost_Cost` - Only the Min Cost calculation.
 
-.. index experimental to here
+.. experimental-end
 
 .. toctree::
     :hidden:

@@ -13,7 +13,7 @@
 Proposed Functions
 ==================================
 
-.. stable-begin-warning
+.. warning-begin
 
 .. warning:: Proposed functions for next mayor release.
 
@@ -27,27 +27,27 @@ Proposed Functions
     - pgTap tests have being done. But might need more.
     - Documentation might need refinement.
 
-.. stable-end-warning
+.. end-warning
 
 .. rubric:: Families
 
 :doc:`dijkstra-family`
 
 .. include:: dijkstra-family.rst
-   :start-after: index proposed from here
-   :end-before: index proposed to here
+   :start-after: proposed-start
+   :end-before: proposed-end
 
 :doc:`withPoints-family`
 
 .. include:: withPoints-family.rst
-   :start-after: index proposed from here
-   :end-before: index proposed to here
+   :start-after: proposed-start
+   :end-before: proposed-end
 
 :doc:`TRSP-family`
 
 .. include:: TRSP-family.rst
-   :start-after: index proposed from here
-   :end-before: index proposed to here
+   :start-after: proposed-start
+   :end-before: proposed-end
 
 .. toctree::
    :hidden:
@@ -57,26 +57,26 @@ Proposed Functions
 :doc:`topology-functions`
 
 .. include:: topology-functions.rst
-   :start-after: topology_proposed_start
-   :end-before: topology_proposed_end
+   :start-after: proposed-start
+   :end-before: proposed-end
 
 :doc:`transformation-family`
 
 .. include:: transformation-family.rst
-   :start-after: index proposed from here
-   :end-before: index proposed to here
+   :start-after: proposed-start
+   :end-before: proposed-end
 
 :doc:`coloring-family`
 
 .. include:: coloring-family.rst
-   :start-after: index proposed from here
-   :end-before: index proposed to here
+   :start-after: proposed-start
+   :end-before: proposed-end
 
 :doc:`traversal-family`
 
 .. include:: traversal-family.rst
-   :start-after: index from here
-   :end-before: index to here
+   :start-after: official-start
+   :end-before: official-end
 
 .. toctree::
    :hidden:
@@ -89,26 +89,26 @@ Proposed Functions
 :doc:`cost-category`
 
 .. include:: cost-category.rst
-   :start-after: index proposed from here
-   :end-before: index proposed to here
+   :start-after: proposed-start
+   :end-before: proposed-end
 
 :doc:`costMatrix-category`
 
 .. include:: costMatrix-category.rst
-   :start-after: index proposed from here
-   :end-before: index proposed to here
+   :start-after: proposed-start
+   :end-before: proposed-end
 
 :doc:`drivingDistance-category`
 
 .. include:: drivingDistance-category.rst
-   :start-after: index proposed from here
-   :end-before: index proposed to here
+   :start-after: proposed-start
+   :end-before: proposed-end
 
 :doc:`KSP-category`
 
 .. include:: KSP-category.rst
-   :start-after: index proposed from here
-   :end-before: index proposed to here
+   :start-after: proposed-start
+   :end-before: proposed-end
 
 :doc:`via-category`
 

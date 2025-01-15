@@ -7,32 +7,27 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Transformation Family ; pgr_lineGraph
    single: lineGraph - Proposed on v3.7
 
-pgr_lineGraph - Proposed
+|
+
+``pgr_lineGraph`` - Proposed
 ===============================================================================
 
 ``pgr_lineGraph`` — Transforms the given graph into its corresponding edge-based
 graph.
 
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
-
-   Boost Graph Inside
-
 .. include:: proposed.rst
-   :start-after: stable-begin-warning
-   :end-before: stable-end-warning
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. rubric:: Availability
 
 * Version 3.7.0
 
-  * Promoted to **proposed** signature.
+  * Function promoted to proposed.
   * Works for directed and undirected graphs.
 
 * Version 2.5.0
@@ -62,6 +57,8 @@ Given a graph :math:`G`, its line graph :math:`L(G)` is a graph such that:
 - When the graph is undirected the result is undirected.
 
   - The ``reverse_cost`` is always :math:`-1`.
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------

@@ -7,11 +7,11 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
-   single: Flow Family ; pgr_maxFlowMinCost
-   single: maxFlowMinCost
+   single: Flow Family ; pgr_maxFlowMinCost - Experimental
+   single: maxFlowMinCost - Experimental
+
+|
 
 ``pgr_maxFlowMinCost`` - Experimental
 ===============================================================================
@@ -19,30 +19,22 @@
 ``pgr_maxFlowMinCost`` — Calculates the edges that minimizes the total cost of
 the maximum flow on a graph
 
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
-
-   Boost Graph Inside
-
-.. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
-
 .. rubric:: Availability
 
 * Version 3.2.0
 
-  * New **experimental** function:
+  * New experimental signature:
 
-    * ``pgr_maxFlowMinCost`` (`Combinations`_)
+    * pgr_maxFlowMinCost(Combinations)
 
 * Version 3.0.0
 
-* New **experimental** function
-
+  * New experimental function.
 
 Description
 -------------------------------------------------------------------------------
+
+|boost| graph inside.
 
 .. include::  flow-family.rst
     :start-after: characteristics_start
@@ -59,6 +51,12 @@ Description
   * where :math:`U` is the value of the max flow.
   * :math:`U` is upper bound on number of iterations. In many real world cases
     number of iterations is much smaller than :math:`U`.
+
+.. include:: experimental.rst
+   :start-after: warning-begin
+   :end-before: end-warning
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -78,7 +76,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: maxFlowMinCost ; One to One - Experimental on v3.0
+    single: maxFlowMinCost - Experimental ; One to One - Experimental on v3.0
 
 One to One
 ...............................................................................
@@ -98,7 +96,7 @@ One to One
    :end-before: -- q2
 
 .. index::
-    single: maxFlowMinCost ; One to Many - Experimental on v3.0
+    single: maxFlowMinCost - Experimental ; One to Many - Experimental on v3.0
 
 One to Many
 ...............................................................................
@@ -118,7 +116,7 @@ One to Many
    :end-before: -- q3
 
 .. index::
-    single: maxFlowMinCost ; Many to One - Experimental on v3.0
+    single: maxFlowMinCost - Experimental ; Many to One - Experimental on v3.0
 
 Many to One
 ...............................................................................
@@ -138,7 +136,7 @@ Many to One
    :end-before: -- q4
 
 .. index::
-    single: maxFlowMinCost ; Many to Many - Experimental on v3.0
+    single: maxFlowMinCost - Experimental ; Many to Many - Experimental on v3.0
 
 Many to Many
 ...............................................................................
@@ -158,7 +156,7 @@ Many to Many
    :end-before: -- q5
 
 .. index::
-    single: maxFlowMinCost ; Combinations -- Experimental on v3.2
+    single: maxFlowMinCost - Experimental ; Combinations -- Experimental on v3.2
 
 Combinations
 ...............................................................................
@@ -230,7 +228,8 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`flow-family`
-* https://www.boost.org/libs/graph/doc/successive_shortest_path_nonnegative_weights.html
+* `Boost: push relabel max flow
+  <https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html>`__
 
 .. rubric:: Indices and tables
 

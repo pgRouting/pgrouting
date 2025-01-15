@@ -7,13 +7,13 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
-   single: withPoints Family ; pgr_withPointsDD
-   single: With Points Category ; pgr_withPointsDD
-   single: Driving Distance Category ; pgr_withPointsDD
-   single: withPointsDD
+   single: withPoints Family ; pgr_withPointsDD - Proposed
+   single: With Points Category ; pgr_withPointsDD - Proposed
+   single: Driving Distance Category ; pgr_withPointsDD - Proposed
+   single: withPointsDD - Proposed
+
+|
 
 ``pgr_withPointsDD`` - Proposed
 ===============================================================================
@@ -21,14 +21,8 @@
 ``pgr_withPointsDD`` - Returns the driving **distance** from a starting point.
 
 .. include:: proposed.rst
-   :start-after: begin-warning
+   :start-after: warning-begin
    :end-before: end-warning
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/table_of_contents.html
-
-   Boost Graph Inside
-
 
 .. rubric:: Availability
 
@@ -37,16 +31,16 @@
 * Signature change: ``driving_side`` parameter changed from named optional to
   unnamed compulsory **driving side**.
 
-  * ``pgr_withPointsDD`` (`Single vertex`)
-  * ``pgr_withPointsDD`` (`Multiple vertices`)
+  * pgr_withPointsDD(Single vertex)
+  * pgr_withPointsDD(Multiple vertices)
 
 * Standarizing output columns to |result-spantree|
 
-  * ``pgr_withPointsDD`` (`Single vertex`)
+  * pgr_withPointsDD(Single vertex)
 
     * Added ``depth``, ``pred`` and ``start_vid`` column.
 
-  * ``pgr_withPointsDD`` (`Multiple vertices`)
+  * pgr_withPointsDD(Multiple vertices)
 
     * Added ``depth``, ``pred`` columns.
 
@@ -57,12 +51,12 @@
 
 * Deprecated signatures
 
-  * ``pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)``
-  * ``pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)``
+  * pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)``
+  * pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)``
 
 .. rubric:: Version 2.2.0
 
-* New **proposed** function
+* New proposed function.
 
 
 Description
@@ -72,6 +66,8 @@ Modify the graph to include points and using Dijkstra algorithm, extracts all
 the nodes and points that have costs less than or equal to the value
 ``**distance**`` from the starting point.
 The edges extracted will conform the corresponding spanning tree.
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -88,7 +84,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: withPointsDD ; Single Vertex - Proposed on v2.2
+    single: withPointsDD - Proposed ; Single Vertex - Proposed on v2.2
 
 Single vertex
 ...............................................................................
@@ -110,7 +106,7 @@ Single vertex
    :end-before: -- q3
 
 .. index::
-    single: withPointsDD ; Multiple Vertices - Proposed on v2.2
+    single: withPointsDD - Proposed ; Multiple Vertices - Proposed on v2.2
 
 Multiple vertices
 ...............................................................................

@@ -7,22 +7,17 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
-   single: Kruskal Family ; pgr_kruska
+   single: Kruskal Family ; pgr_kruskal
    single: Spanning Tree Category ; pgr_kruskal
    single: kruskal
+
+|
 
 ``pgr_kruskal``
 ===============================================================================
 
 ``pgr_kruskal`` — Minimum spanning tree of a graph using Kruskal's algorithm.
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html
-
-   Boost Graph Inside
 
 .. rubric:: Availability
 
@@ -93,7 +88,7 @@ See Also
 
 * :doc:`spanningTree-family`
 * :doc:`kruskal-family`
-* The queries use the :doc:`sampledata` network.
+* :doc:`sampledata`
 * `Boost: Kruskal's algorithm
   <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__
 * `Wikipedia: Kruskal's algorithm

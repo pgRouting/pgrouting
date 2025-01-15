@@ -7,21 +7,18 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+
+.. index:: 
+   single: Contraction Family ; pgr_contraction
+   single: contraction
+
 |
-
-
-.. index:: Contraction Family ; pgr_contraction
 
 ``pgr_contraction``
 ===============================================================================
 
 ``pgr_contraction`` — Performs graph contraction and returns the contracted
 vertices and edges.
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/table_of_contents.html
-
-   Boost Graph Inside
 
 .. rubric:: Availability
 
@@ -34,7 +31,7 @@ vertices and edges.
 
 * Version 2.3.0
 
-  * New **experimental** function
+  * New experimental function.
 
 
 Description
@@ -66,6 +63,7 @@ The main Characteristics are:
   - column ``id`` ascending when type is ``v``
   - column ``id`` descending when type is ``e``
 
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------

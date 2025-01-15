@@ -7,18 +7,18 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Vehicle Routing Functions Category ; pgr_vrpOneDepot
    single: vrpOneDepot - Experimental on v2.1.0
 
-pgr_vrpOneDepot - Experimental
+|
+
+``pgr_vrpOneDepot`` - Experimental
 ===============================================================================
 
 .. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: warning-begin
+   :end-before: end-warning
 
 **No documentation available**
 
@@ -26,7 +26,7 @@ pgr_vrpOneDepot - Experimental
 
 * Version 2.1.0
 
-  * New **experimental** function
+  * New experimental function.
 
 
 * **TBD**

@@ -7,30 +7,22 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
-   single: Utilities ; pgr_findCloseEdges
+   single: Utilities ; pgr_findCloseEdges - Proposed
    single: findCloseEdges
 
-``pgr_findCloseEdges``
+|
+
+``pgr_findCloseEdges`` - Proposed
 ===============================================================================
 
 ``pgr_findCloseEdges`` - Finds the close edges to a point geometry.
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
-
-   Boost Graph Inside
 
 .. rubric:: Availability
 
 * Version 3.4.0
 
-  * New **proposed** signatures:
-
-    * ``pgr_findCloseEdges`` (`One point`_)
-    * ``pgr_findCloseEdges`` (`Many points`_)
+  * New proposed function.
 
 Description
 -------------------------------------------------------------------------------
@@ -41,7 +33,9 @@ point geometry.
 * The geometries must be in the same coordinate system (have the same SRID).
 * The code to do the calculations can be obtained for further specific
   adjustments needed by the application.
-* ``EMTPY SET`` is returned on dryrun executions
+* EMTPY SET`` is returned on dryrun executions
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -53,13 +47,13 @@ Signatures
 
    | pgr_findCloseEdges(`Edges SQL`_, **point**, **tolerance**, [**options**])
    | pgr_findCloseEdges(`Edges SQL`_, **points**, **tolerance**, [**options**])
-   | **options:** ``[cap, partial, dryrun]``
+   | **options:** [cap, partial, dryrun]``
 
    | Returns set of |result-find|
    | OR EMPTY SET
 
 .. index::
-    single: findCloseEdges ; One point - Proposed on 3.4
+    single: findCloseEdges - Proposed ; One point - Proposed on 3.4
 
 One point
 ...............................................................................
@@ -68,7 +62,7 @@ One point
    :class: signatures
 
    | pgr_findCloseEdges(`Edges SQL`_, **point**, **tolerance**, [**options**])
-   | **options:** ``[cap, partial, dryrun]``
+   | **options:** [cap, partial, dryrun]``
 
    | Returns set of |result-find|
    | OR EMPTY SET
@@ -94,7 +88,7 @@ One point
    :end-before: -- q2
 
 .. index::
-   single: findCloseEdges ; Many points - Proposed on 3.4
+   single: findCloseEdges - Proposed ; Many points - Proposed on 3.4
 
 Many points
 ...............................................................................

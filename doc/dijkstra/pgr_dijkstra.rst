@@ -7,22 +7,17 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Dijkstra Family ; pgr_dijkstra
    single: Shortest Path Category ; pgr_dijkstra
    single: dijkstra
 
+|
+
 ``pgr_dijkstra``
 ===============================================================================
 
 ``pgr_dijkstra`` — Shortest path using Dijkstra algorithm.
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
-
-   Boost Graph Inside
 
 .. rubric:: Availability
 
@@ -30,35 +25,35 @@
 
   * Standarizing output columns to |short-generic-result|
 
-    * ``pgr_dijkstra`` (`One to One`_) added ``start_vid`` and ``end_vid`` columns.
-    * ``pgr_dijkstra`` (`One to Many`_) added ``end_vid`` column.
-    * ``pgr_dijkstra`` (`Many to One`_) added ``start_vid`` column.
+    * pgr_dijkstra(One to One) added ``start_vid`` and ``end_vid`` columns.
+    * pgr_dijkstra(One to Many) added ``end_vid`` column.
+    * pgr_dijkstra(Many to One) added ``start_vid`` column.
 
 * Version 3.1.0
 
-  * New **Proposed** functions:
+  * New proposed signature:
 
-    * ``pgr_dijkstra`` (`Combinations`_)
+    * pgr_dijkstra(Combinations)
 
 * Version 3.0.0
 
-  * **Official** functions
+  * **Official** function.
 
 * Version 2.2.0
 
-  * New **proposed** functions:
+  * New proposed signatures:
 
-    * ``pgr_dijkstra`` (`One to Many`_)
-    * ``pgr_dijkstra`` (`Many to One`_)
-    * ``pgr_dijkstra`` (`Many to Many`_)
+    * pgr_dijkstra(One to Many)
+    * pgr_dijkstra(Many to One)
+    * pgr_dijkstra(Many to Many)
 
 * Version 2.1.0
 
-  * Signature change on ``pgr_dijkstra`` (`One to One`_)
+  * Signature change on pgr_dijkstra(One to One)
 
 * Version 2.0.0
 
-  * **Official** ``pgr_dijkstra`` (`One to One`_)
+  * **Official** pgr_dijkstra(One to One)
 
 
 Description
@@ -72,6 +67,7 @@ Description
     :start-after: dijkstra_details_start
     :end-before: dijkstra_details_end
 
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -600,11 +596,13 @@ The following examples find the path for :math:`\{6\}\rightarrow\{10\}`
    :start-after: -- q154
    :end-before: -- q16
 
-See Also
+e Also
 -------------------------------------------------------------------------------
 
+* :doc:`sampledata`
+* `Boost: Dijkstra shortest paths
+  <https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html>`__
 * https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
-* The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 

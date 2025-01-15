@@ -7,11 +7,11 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
-   single: Topology Family ; pgr_degree
-   single: degree
+   single: Topology Family ; pgr_degree - Proposed
+   single: degree - Proposed on v3.4
+
+|
 
 ``pgr_degree`` -- Proposed
 ===============================================================================
@@ -20,14 +20,14 @@
 
 
 .. include:: proposed.rst
-   :start-after: stable-begin-warning
-   :end-before: stable-end-warning
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. rubric:: Availability
 
 * Version 3.4.0
 
-  * New **proposed** function
+  * New proposed function.
 
 
 Description
@@ -36,11 +36,10 @@ Description
 Calculates the degree of the vertices of an **undirected** graph
 
 
+|Boost| Boost Graph Inside
+
 Signatures
 -------------------------------------------------------------------------------
-
-.. index::
-    single: pgr_degree - Proposed on v3.4
 
 .. admonition:: \ \
    :class: signatures

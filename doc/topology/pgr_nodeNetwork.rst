@@ -7,13 +7,13 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Topology Family ; pgr_nodeNetwork
    single: nodeNetwork
 
-pgr_nodeNetwork
+|
+
+``pgr_nodeNetwork``
 ===============================================================================
 
 ``pgr_nodeNetwork`` - Nodes an network edge table.

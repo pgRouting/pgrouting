@@ -7,9 +7,9 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index:: Bidirectional A* Family
+
+|
 
 Bidirectional A* - Family of functions
 ===============================================================================
@@ -17,7 +17,7 @@ Bidirectional A* - Family of functions
 The bidirectional A* (pronounced "A Star") algorithm is based on the A*
 algorithm.
 
-.. index from here
+.. official-start
 
 - :doc:`pgr_bdAstar` - Bidirectional A* algorithm for obtaining paths.
 - :doc:`pgr_bdAstarCost` - Bidirectional A* algorithm to calculate the cost of
@@ -25,7 +25,7 @@ algorithm.
 - :doc:`pgr_bdAstarCostMatrix` - Bidirectional A* algorithm to calculate a cost
   matrix of paths.
 
-.. index to here
+.. official-end
 
 .. toctree::
     :hidden:
@@ -62,7 +62,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`aStar-family`
-* https://www.boost.org/libs/graph/doc/astar_search.html
+* `Boost <https://www.boost.org/libs/graph/doc/astar_search.html>`__
 * https://en.wikipedia.org/wiki/A*_search_algorithm
 
 .. rubric:: Indices and tables

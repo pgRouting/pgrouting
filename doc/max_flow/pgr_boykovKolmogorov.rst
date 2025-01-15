@@ -7,11 +7,11 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Flow Family ; pgr_boykovKolmogorov
    single: boykovKolmogorov
+
+|
 
 ``pgr_boykovKolmogorov``
 ===============================================================================
@@ -19,18 +19,13 @@
 ``pgr_boykovKolmogorov`` — Calculates the flow on the graph edges that maximizes
 the flow from the sources to the targets using Boykov Kolmogorov algorithm.
 
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html
-
-   Boost Graph Inside
-
 .. Rubric:: Availability
 
 * Version 3.2.0
 
-  * New **proposed** signature
+  * New proposed signature
 
-    * ``pgr_boykovKolmogorov`` (`Combinations`_)
+    * pgr_boykovKolmogorov(Combinations)
 
 * Version 3.0.0
 
@@ -54,6 +49,8 @@ Description
     :end-before: characteristics_end
 
 * Running time: Polynomial
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -229,7 +226,8 @@ See Also
   * :doc:`pgr_edmondsKarp`
   * :doc:`pgr_pushRelabel`
 
-* https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html
+* `Boost: Boykov Kolmogorov max flow
+  <https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html>`__
 
 .. rubric:: Indices and tables
 

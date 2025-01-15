@@ -7,22 +7,17 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Dijkstra Family ; pgr_dijkstraCostMatrix
    single: Cost Matrix Category ; pgr_dijkstraCostMatrix
    single: dijkstraCostMatrix
 
+|
+
 ``pgr_dijkstraCostMatrix``
 ===============================================================================
 
 ``pgr_dijkstraCostMatrix`` - Calculates a cost matrix using :doc:`pgr_dijkstra`.
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/table_of_contents.html
-
-   Boost Graph Inside
 
 .. rubric:: Availability
 
@@ -32,7 +27,7 @@
 
 * Version 2.3.0
 
-  * New **proposed** function
+  * New proposed function.
 
 Description
 -------------------------------------------------------------------------------
@@ -46,6 +41,8 @@ Using Dijkstra algorithm, calculate and return a cost matrix.
 .. include:: costMatrix-category.rst
     :start-after: costMatrix_details_start
     :end-before: costMatrix_details_end
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -114,6 +111,8 @@ See Also
 * :doc:`costMatrix-category`
 * :doc:`TSP-family`
 * :doc:`sampledata`
+* `Boost: Dijkstra shortest paths
+  <https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html>`__
 
 .. rubric:: Indices and tables
 

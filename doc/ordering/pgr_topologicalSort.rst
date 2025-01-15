@@ -7,11 +7,11 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Ordering Family ; pgr_topologicalSort
    single: topologicalSort - Experimental on v3.0
+
+|
 
 ``pgr_topologicalSort`` - Experimental
 ===============================================================================
@@ -19,20 +19,15 @@
 ``pgr_topologicalSort`` — Linear ordering of the vertices for directed acyclic
 graphs (DAG).
 
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/topological_sort.html
-
-   Boost Graph Inside
-
 .. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: warning-begin
+   :end-before: end-warning
 
 .. rubric:: Availability
 
 * Version 3.0.0
 
-  * New **experimental** function
+  * New experimental function.
 
 Description
 -------------------------------------------------------------------------------
@@ -53,6 +48,7 @@ The main characteristics are:
 
 * Running time: :math:`O(V + E)`
 
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -129,6 +125,8 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`sampledata`
+* `Boost: topological sort
+  <https://www.boost.org/libs/graph/doc/topological_sort.html>`__
 * https://en.wikipedia.org/wiki/Topological_sorting
 
 .. rubric:: Indices and tables

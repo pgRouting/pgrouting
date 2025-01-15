@@ -7,22 +7,16 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-|
-
 .. index::
    single: Traveling Sales Person Family ; pgr_TSP
    single: pgr_TSP
 
+|
+
 ``pgr_TSP``
 ===============================================================================
 
-* ``pgr_TSP`` - Aproximation using *metric* algorithm.
-
-.. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/metric_tsp_approx.html
-
-   Boost Graph Inside
-
+* pgr_TSP`` - Aproximation using *metric* algorithm.
 
 .. rubric:: Availability:
 
@@ -107,6 +101,8 @@ Description
 - When the data is incomplete, but it is a connected graph:
 
   - the missing values will be calculated with dijkstra algorithm.
+
+|Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
@@ -236,7 +232,7 @@ See Also
 
 * :doc:`TSP-family`
 * :doc:`sampledata`
-* `Boost's metric appro's metric approximation
+* `Boost: metric TSP approx
   <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
 * `Wikipedia: Traveling Salesman Problem
   <https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__

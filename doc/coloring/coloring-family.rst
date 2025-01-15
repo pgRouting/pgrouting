@@ -7,9 +7,9 @@
     Alike 3.0 License: https://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+.. index:: Coloring Family
+
 |
-
-
 
 Coloring - Family of functions
 ===============================================================================
@@ -17,29 +17,29 @@ Coloring - Family of functions
 .. rubric:: Proposed
 
 .. include:: proposed.rst
-   :start-after: stable-begin-warning
-   :end-before: stable-end-warning
+   :start-after: warning-begin
+   :end-before: end-warning
 
-.. index proposed from here
+.. proposed-start
 
 * :doc:`pgr_sequentialVertexColoring` - Vertex coloring algorithm using greedy
   approach.
 
-.. index proposed to here
+.. proposed-end
 
 .. rubric:: Experimental
 
 .. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+   :start-after: warning-begin
+   :end-before: end-warning
 
-.. index from here
+.. official-start
 
 * :doc:`pgr_bipartite` - Bipartite graph algorithm using a DFS-based coloring
   approach.
 * :doc:`pgr_edgeColoring` - Edge Coloring algorithm using Vizing's theorem.
 
-.. index to here
+.. official-end
 
 
 .. toctree::
@@ -88,18 +88,7 @@ Column           Type        Description
 See Also
 -------------------------------------------------------------------------------
 
-.. include:: pgr_sequentialVertexColoring.rst
-    :start-after: see also start
-    :end-before: see also end
-
-.. include:: pgr_bipartite.rst
-    :start-after: see also start
-    :end-before: see also end
-
-.. include:: pgr_edgeColoring.rst
-    :start-after: see also start
-    :end-before: see also end
-
+* `Boost: <https://www.boost.org/libs/graph/doc/table_of_contents.html>`__
 
 .. rubric:: Indices and tables
 
