@@ -23,17 +23,17 @@ source(s) to the targets(s) using the Push Relabel algorithm.
 
 * Version 3.2.0
 
-  * New proposed signature
+  * New proposed signature:
 
     * pgr_maxFlow(Combinations)
 
 * Version 3.0.0
 
-  *  Function promoted to **official**.
+  *  Function promoted to official.
 
 * Version 2.4.0
 
-  * New **Proposed** function.
+  * New proposed function.
 
 
 Description

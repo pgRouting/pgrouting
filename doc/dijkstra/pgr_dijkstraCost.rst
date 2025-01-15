@@ -31,7 +31,7 @@ algorithm.
 
 * Version 2.2.0
 
-  * New **official** function.
+  * Official function.
 
 
 Description

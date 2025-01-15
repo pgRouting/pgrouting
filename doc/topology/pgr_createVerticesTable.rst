@@ -23,8 +23,8 @@ source and target information.
 
 * Version 2.0.0
 
+  * Official function.
   * Renamed from version 1.x
-  * **Official** function
 
 Description
 -------------------------------------------------------------------------------

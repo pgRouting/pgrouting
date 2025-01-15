@@ -250,7 +250,7 @@ milestone for 3.6.0
     * Signature change: ``driving_side`` parameter changed from named optional to
       unnamed compulsory **driving side**.
     * Added ``start_vid`` and ``end_vid`` result columns.
-  * New proposed signatures
+  * New proposed signatures:
     * pgr_withPointsKSP(One to Many)
     * pgr_withPointsKSP(Many to One)
     * pgr_withPointsKSP(Many to Many)
@@ -1284,7 +1284,7 @@ on Github.
 
 * pgr_bdAstar(one to one)
 
-**New Proposed functions**
+**New proposed functions.**
 
 * pgr_bdAstar(one to many)
 * pgr_bdAstar(many to one)
@@ -1365,12 +1365,12 @@ To see the issues closed by this release see the [Git closed issues for 2.4.0
 ](https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.4.0%22+is%3Aclosed)
 on Github.
 
-**New Signatures**
+**New Function.**
 
 * pgr_bdDijkstra
 
 
-**New Proposed Signatures**
+**New proposed signatures:**
 
 * pgr_maxFlow
 * pgr_astar(one to many)
@@ -1382,7 +1382,7 @@ on Github.
 * pgr_astarCost(many to many)
 * pgr_astarCostMatrix
 
-**Deprecated signatures**
+**Deprecated signatures.**
 
 * pgr_bddijkstra - use pgr_bdDijkstra instead
 
@@ -1446,7 +1446,7 @@ on Github.
 * pgr_eucledianTSP
 
 
-**New Proposed functions**
+**New proposed functions.**
 
 * pgr_dijkstraCostMatrix
 * pgr_withPointsCostMatrix

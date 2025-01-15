@@ -22,7 +22,7 @@
 
 * Version 3.0.0
 
-  * New **official** function
+  * Official function.
 
 
 Description
