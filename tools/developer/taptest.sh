@@ -27,7 +27,10 @@ if [[ -z  $1 ]]; then
 fi
 
 # run from root of repository
-DIR=$(git rev-parse --show-toplevel)
+if ! DIR=$(git rev-parse --show-toplevel 2>/dev/null); then
+    echo "Error: Must be run from within the git repository" >&2
+    exit 1
+fi
 pushd "${DIR}" > /dev/null || exit 1
 
 DIR="$1"
