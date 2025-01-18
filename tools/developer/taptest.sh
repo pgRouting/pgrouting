@@ -26,15 +26,22 @@ if [[ -z  $1 ]]; then
     exit 1;
 fi
 
+# run from root of repository
+DIR=$(git rev-parse --show-toplevel)
+pushd "${DIR}" > /dev/null || exit 1
 
 DIR="$1"
 shift
 PGFLAGS=$*
+VERSION=$(grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt)
 
 echo "dir ${DIR}"
 echo "pgflags ${PGFLAGS}"
 QUIET="-v"
 QUIET="-q"
+
+PGPORT="5432"
+PGUSER="youruser"
 
 PGDATABASE="___pgr___test___"
 PGRVERSION="3.6.1 3.6.0 3.5.1 3.5.0 3.2.0 3.1.3 3.0.6"
@@ -46,49 +53,36 @@ do
     pushd tools/testers/
     echo "--------------------------"
     echo " Running with version ${v}"
+    echo " test ${DIR}"
     echo "--------------------------"
+    sleep 3
 
     dropdb --if-exists "${PGFLAGS}" "${PGDATABASE}"
     createdb "${PGFLAGS}" "${PGDATABASE}"
 
-    psql "$PGFLAGS" -d "$PGDATABASE" -X -q --set client_min_messages=WARNING --set ON_ERROR_STOP=1 --pset pager=off \
-        -c "CREATE EXTENSION IF NOT EXISTS pgtap; CREATE EXTENSION IF NOT EXISTS pgrouting WITH VERSION '${v}' CASCADE;"
-
+    bash setup_db.sh "${PGPORT}" "${PGDATABASE}" "${PGUSER}" "${v}"
     echo "--------------------------"
     echo " Installed version"
     echo "--------------------------"
     psql "${PGFLAGS}" -d "$PGDATABASE" -c "SELECT * FROM pgr_full_version();"
-    #psql "${PGFLAGS}" -d "$PGDATABASE" -c "SET client_min_messages TO DEBUG3; ALTER EXTENSION pgrouting UPDATE  TO '3.7.0';"
-    echo "--------------------------"
-    echo " update version"
-    echo "--------------------------"
+    popd
+
+    if [[ "${v}" != "${VERSION}" ]]
+    then
+        # run tests on old version
+        pg_prove "$QUIET" --normalize --directives --recurse "${PGFLAGS}"  -d "${PGDATABASE}" "pgtap/${DIR}"
+
+        # update to this version
+        echo "--------------------------"
+        echo " update version"
+        echo "--------------------------"
+        psql "${PGFLAGS}" -d "$PGDATABASE" -c "SET client_min_messages TO DEBUG3; ALTER EXTENSION pgrouting UPDATE TO '${VERSION}';"
+    fi
+
+    # run this version's test
     psql "${PGFLAGS}" -d "$PGDATABASE" -c "SELECT * FROM pgr_full_version();"
 
-    psql "${PGFLAGS}" -d "$PGDATABASE" -X -q --set client_min_messages=WARNING --set ON_ERROR_STOP=1 --pset pager=off \
-        -f sampledata.sql \
-        -f solomon_100_rc101.data.sql \
-        -f innerQuery.sql \
-        -f innerQuery_old.sql \
-        -f inner_styles.sql \
-        -f old_inner_styles.sql \
-        -f no_crash_test.sql \
-        -f alphaShapeTester.sql \
-        -f general_pgtap_tests.sql \
-        -f no_crash_general.sql \
-        -f dijkstra_pgtap_tests.sql \
-        -f flow_pgtap_tests.sql \
-        -f trsp_tests.sql \
-        -f spanningtree.sql \
-        -f types_check.sql \
-        -f via_compare.sql \
-        -f astar_pgtap_tests.sql \
-        -f compare_dijkstra.sql \
-        -f allpairs_tests.sql \
-        -f contraction_tapfuncs.sql\
-        -f tsp_pgtap_tests.sql
 
-
-    popd
     pg_prove "$QUIET" --normalize --directives --recurse "${PGFLAGS}"  -d "${PGDATABASE}" "pgtap/${DIR}"
     #dropdb --if-exists "${PGFLAGS}" "${PGDATABASE}"
 done

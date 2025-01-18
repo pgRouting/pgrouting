@@ -64,7 +64,7 @@ function set_cmake {
     #cmake  -DPOSTGRESQL_BIN=${PGBIN} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON -DCMAKE_BUILD_TYPE=Debug -DES=ON -DPROJECT_DEBUG=ON ..
 
     # building languages -DES=ON -DJA=ON -DZH_HANS=ON -DDE=ON -DKO=ON
-    #cmake  -DPOSTGRESQL_BIN=${PGBIN}  -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON -DES=ON  -DCMAKE_BUILD_TYPE=Debug ..
+    #cmake  -DPOSTGRESQL_BIN=${PGBIN} -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON -DES=ON  -DCMAKE_BUILD_TYPE=Debug ..
 
     # check link in documentation
     #cmake  -DPOSTGRESQL_BIN=${PGBIN} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DES=ON -DLINKCHECK=ON -DCMAKE_BUILD_TYPE=Release ..
@@ -105,14 +105,15 @@ function set_compiler {
     echo ------------------------------------
 
     if [ -n "$1" ]; then
-        update-alternatives --set gcc "/usr/bin/gcc-$1"
+        sudo update-alternatives --set gcc "/usr/bin/gcc-$1"
+        sudo update-alternatives --set g++ "/usr/bin/g++-$1"
     fi
 }
 
 function build_doc {
     pushd build > /dev/null || exit 1
     #rm -rf doc/* ; rm -rf locale/*/*/*.mo
-    rm -rf doc/*
+    #rm -rf doc/*
     make doc
     #example on how to only build spanish html
     #make html-es
@@ -121,6 +122,18 @@ function build_doc {
     #rm -rf doxygen/*
     make doxy
     popd > /dev/null || exit 1
+}
+
+function check {
+    pushd build > /dev/null || exit 1
+    cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .
+    cppcheck --project=compile_commands.json -q
+    popd > /dev/null || exit 1
+}
+
+function tidy_with_clang {
+    .github/scripts/tidy-vs-commit.sh upstream/develop
+    sleep 1
 }
 
 function build {
@@ -141,6 +154,16 @@ function test_compile {
     build
 
     echo --------------------------------------------
+    echo  Execute documentation queries
+    echo --------------------------------------------
+    for d in ${QUERIES_DIRS}
+    do
+        #tools/testers/doc_queries_generator.pl  -alg "docqueries/${d}" -documentation  -pgport "${PGPORT}"
+        tools/testers/doc_queries_generator.pl  -alg "docqueries/${d}" -level WARNING  -pgport "${PGPORT}"
+        #tools/testers/doc_queries_generator.pl  -alg "docqueries/${d}" -pgport "${PGPORT}"
+    done
+
+    echo --------------------------------------------
     echo  Execute tap_directories
     echo --------------------------------------------
     for d in ${TAP_DIRS}
@@ -148,18 +171,14 @@ function test_compile {
         time bash taptest.sh  "${d}" "-p ${PGPORT}"
     done
 
-    echo --------------------------------------------
-    echo  Execute documentation queries
-    echo --------------------------------------------
-    for d in ${QUERIES_DIRS}
-    do
-        #tools/testers/doc_queries_generator.pl  -alg "docqueries/${d}" -documentation  -pgport "${PGPORT}"
-        #tools/testers/doc_queries_generator.pl  -alg "docqueries/${d}" -debug1  -pgport "${PGPORT}"
-        tools/testers/doc_queries_generator.pl  -alg "docqueries/${d}" -pgport "${PGPORT}"
-    done
+    tap_test
+    tools/testers/doc_queries_generator.pl -pgport $PGPORT
+    exit 0
 
+
+    tidy_with_clang
+    check
     build_doc
-    #exit 0
     tap_test
     action_tests
 }
