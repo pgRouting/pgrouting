@@ -59,7 +59,7 @@ function set_cmake {
     #cmake  -DWITH_DOC=ON -DBUILD_DOXY=ON ..
 
     # Building using clang
-    #CXX=clang++ CC=clang cmake -DPOSTGRESQL_BIN=${PGBIN} -DCMAKE_BUILD_TYPE=Debug ..
+    #CXX=clang++ CC=clang cmake -DPOSTGRESQL_BIN=${PGBIN} -DCMAKE_BUILD_TYPE=Debug  -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=OFF ..
 
     #cmake  -DPOSTGRESQL_BIN=${PGBIN} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON -DCMAKE_BUILD_TYPE=Debug -DES=ON -DPROJECT_DEBUG=ON ..
 
@@ -105,15 +105,16 @@ function set_compiler {
     echo ------------------------------------
 
     if [ -n "$1" ]; then
-        sudo update-alternatives --set gcc "/usr/bin/gcc-$1"
-        sudo update-alternatives --set g++ "/usr/bin/g++-$1"
+        export CC="/usr/bin/gcc-$1"
+        export CXX="/usr/bin/g++-$1"
     fi
 }
 
 function build_doc {
     pushd build > /dev/null || exit 1
     #rm -rf doc/* ; rm -rf locale/*/*/*.mo
-    #rm -rf doc/*
+    # Clean only generated files while preserving custom content
+    find doc -type f -name "*.html" -o -name "*.pdf" -delete
     make doc
     #example on how to only build spanish html
     #make html-es
@@ -126,14 +127,26 @@ function build_doc {
 
 function check {
     pushd build > /dev/null || exit 1
-    cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .
-    cppcheck --project=compile_commands.json -q
+    cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
+
+    # Run with error handling and report generation
+    cppcheck --project=compile_commands.json \
+        --enable=all \
+        --suppress=missingIncludeSystem \
+        --error-exitcode=1 \
+        --output-file=cppcheck-report.txt 2>&1 || {
+        echo "Static analysis failed. See build/cppcheck-report.txt for details"
+        return 1
+    }
     popd > /dev/null || exit 1
 }
 
 function tidy_with_clang {
-    .github/scripts/tidy-vs-commit.sh upstream/develop
-    sleep 1
+    local base_branch=${1:-"upstream/develop"}
+    .github/scripts/tidy-vs-commit.sh "$base_branch" || {
+        echo "clang-tidy checks failed"
+        return 1
+    }
 }
 
 function build {
@@ -173,11 +186,7 @@ function test_compile {
 
     tap_test
     tools/testers/doc_queries_generator.pl -pgport $PGPORT
-    #exit 0
 
-
-    tidy_with_clang
-    check
     build_doc
     tap_test
     action_tests

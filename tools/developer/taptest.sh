@@ -36,10 +36,19 @@ pushd "${DIR}" > /dev/null || exit 1
 DIR="$1"
 shift
 PGFLAGS=$*
-VERSION=$(grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt)
+if ! VERSION=$(grep -E '^[[:space:]]*project\(PGROUTING[[:space:]]+VERSION[[:space:]]+([^[:space:];]+)' CMakeLists.txt | sed -E 's/.*VERSION[[:space:]]+([^[:space:];]+).*/\1/'); then
+    echo "Error: Failed to extract version from CMakeLists.txt" >&2
+    exit 1
+fi
+
+if [[ -z "${VERSION}" ]]; then
+    echo "Error: Version not found in CMakeLists.txt" >&2
+    exit 1
+fi
 
 echo "dir ${DIR}"
 echo "pgflags ${PGFLAGS}"
+echo "VERSION ${VERSION}"
 QUIET="-v"
 QUIET="-q"
 
@@ -58,12 +67,17 @@ do
     echo " Running with version ${v}"
     echo " test ${DIR}"
     echo "--------------------------"
+    # give time to developer to read message
     sleep 3
 
     dropdb --if-exists "${PGFLAGS}" "${PGDATABASE}"
     createdb "${PGFLAGS}" "${PGDATABASE}"
 
     bash setup_db.sh "${PGPORT}" "${PGDATABASE}" "${PGUSER}" "${v}"
+    if ! bash setup_db.sh "${PGPORT}" "${PGDATABASE}" "${PGUSER}" "${v}"; then
+        echo "Error: Database setup failed" >&2
+        exit 1
+    fi
     echo "--------------------------"
     echo " Installed version"
     echo "--------------------------"
@@ -79,7 +93,18 @@ do
         echo "--------------------------"
         echo " update version"
         echo "--------------------------"
-        psql "${PGFLAGS}" -d "$PGDATABASE" -c "SET client_min_messages TO DEBUG3; ALTER EXTENSION pgrouting UPDATE TO '${VERSION}';"
+        if ! psql "${PGFLAGS}" -d "$PGDATABASE" -c "SET client_min_messages TO DEBUG3; ALTER EXTENSION pgrouting UPDATE TO '${VERSION}';"; then
+            echo "Error: Failed to update pgrouting extension to version ${VERSION}" >&2
+            exit 1
+        fi
+
+        psql "${PGFLAGS}" -q -t -d "$PGDATABASE" -c "SELECT extversion FROM pg_extension WHERE extname = 'pgrouting';"
+
+        # Verify update success
+        if ! psql "${PGFLAGS}" -q -t -d "$PGDATABASE" -c "SELECT extversion FROM pg_extension WHERE extname = 'pgrouting';" | grep -q "${VERSION}"; then
+            echo "Error: Extension version mismatch after update" >&2
+            exit 1
+        fi
     fi
 
     # run this version's test
