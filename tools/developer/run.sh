@@ -173,7 +173,7 @@ function test_compile {
 
     tap_test
     tools/testers/doc_queries_generator.pl -pgport $PGPORT
-    exit 0
+    #exit 0
 
 
     tidy_with_clang
