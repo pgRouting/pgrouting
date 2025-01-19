@@ -47,7 +47,7 @@ get_new_queries(
         char *points_sql,
         char **edges_of_points_query,
         char **edges_no_points_query) {
-    using pgrouting::pgr_msg;
+    using pgrouting::to_pg_msg;
     std::ostringstream edges_of_points_sql;
     std::ostringstream edges_no_points_sql;
 
@@ -55,7 +55,7 @@ get_new_queries(
         << " edges AS (" << edges_sql << "), "
         << " points AS (" << points_sql << ")"
         << " SELECT DISTINCT edges.* FROM edges JOIN points ON (id = edge_id)";
-    *edges_of_points_query = pgr_msg(edges_of_points_sql.str());
+    *edges_of_points_query = to_pg_msg(edges_of_points_sql.str());
 
     edges_no_points_sql << "WITH "
         << " edges AS (" << edges_sql << "), "
@@ -63,6 +63,6 @@ get_new_queries(
         << " SELECT edges.*"
         << " FROM edges"
         << " WHERE NOT EXISTS (SELECT edge_id FROM points WHERE id = edge_id)";
-    *edges_no_points_query = pgr_msg(edges_no_points_sql.str());
+    *edges_no_points_query = to_pg_msg(edges_no_points_sql.str());
 }
 

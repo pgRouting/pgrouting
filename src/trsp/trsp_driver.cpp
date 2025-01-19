@@ -111,7 +111,7 @@ pgr_do_trsp(
         char** err_msg) {
     using pgrouting::Path;
     using pgrouting::pgr_alloc;
-    using pgrouting::pgr_msg;
+    using pgrouting::to_pg_msg;
     using pgrouting::pgr_free;
     using pgrouting::utilities::get_combinations;
 
@@ -132,8 +132,8 @@ pgr_do_trsp(
         hint = nullptr;
 
         if (combinations.empty() && combinations_sql) {
-            *notice_msg = pgr_msg("No (source, target) pairs found");
-            *log_msg = pgr_msg(combinations_sql);
+            *notice_msg = to_pg_msg("No (source, target) pairs found");
+            *log_msg = to_pg_msg(combinations_sql);
             return;
         }
 
@@ -142,8 +142,8 @@ pgr_do_trsp(
         hint = nullptr;
 
         if (edges.empty()) {
-            *notice_msg = pgr_msg("No edges found");
-            *log_msg = pgr_msg(edges_sql);
+            *notice_msg = to_pg_msg("No edges found");
+            *log_msg = to_pg_msg(edges_sql);
             return;
         }
 
@@ -172,7 +172,7 @@ pgr_do_trsp(
 
         if (count == 0) {
             notice << "No paths found";
-            *log_msg = pgr_msg(notice.str());
+            *log_msg = to_pg_msg(notice.str());
             return;
         }
 
@@ -224,30 +224,30 @@ pgr_do_trsp(
 
         *log_msg = log.str().empty()?
             *log_msg :
-            pgr_msg(log.str());
+            to_pg_msg(log.str());
         *notice_msg = notice.str().empty()?
             *notice_msg :
-            pgr_msg(notice.str());
+            to_pg_msg(notice.str());
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = pgr_msg(err.str());
-        *log_msg = pgr_msg(log.str());
+        *err_msg = to_pg_msg(err.str());
+        *log_msg = to_pg_msg(log.str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = pgr_msg(err.str());
-        *log_msg = pgr_msg(log.str());
+        *err_msg = to_pg_msg(err.str());
+        *log_msg = to_pg_msg(log.str());
     } catch (const std::string &ex) {
-        *err_msg = pgr_msg(ex);
-        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str());
+        *err_msg = to_pg_msg(ex);
+        *log_msg = hint? to_pg_msg(hint) : to_pg_msg(log.str());
     } catch(...) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << "Caught unknown exception!";
-        *err_msg = pgr_msg(err.str());
-        *log_msg = pgr_msg(log.str());
+        *err_msg = to_pg_msg(err.str());
+        *log_msg = to_pg_msg(log.str());
     }
 }

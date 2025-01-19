@@ -61,7 +61,7 @@ pgr_do_pickDeliverEuclidean(
         char **notice_msg,
         char **err_msg) {
     using pgrouting::pgr_alloc;
-    using pgrouting::pgr_msg;
+    using pgrouting::to_pg_msg;
     using pgrouting::pgr_free;
 
     std::ostringstream log;
@@ -76,16 +76,16 @@ pgr_do_pickDeliverEuclidean(
         hint = customers_sql;
         auto orders = pgrouting::pgget::get_orders(std::string(customers_sql), false);
         if (orders.size() == 0) {
-            *notice_msg = pgr_msg("Insufficient data found on inner query");
-            *log_msg = hint? pgr_msg(hint) : nullptr;
+            *notice_msg = to_pg_msg("Insufficient data found on inner query");
+            *log_msg = hint? to_pg_msg(hint) : nullptr;
             return;
         }
 
         hint = vehicles_sql;
         auto vehicles = pgrouting::pgget::get_vehicles(std::string(vehicles_sql), false);
         if (vehicles.size() == 0) {
-            *notice_msg = pgr_msg("Insufficient data found on inner query");
-            *log_msg = hint? pgr_msg(hint) : nullptr;
+            *notice_msg = to_pg_msg("Insufficient data found on inner query");
+            *log_msg = hint? to_pg_msg(hint) : nullptr;
             return;
         }
 
@@ -141,8 +141,8 @@ pgr_do_pickDeliverEuclidean(
             log.clear();
             log << pd_problem.msg.get_error();
             log << pd_problem.msg.get_log();
-            *log_msg = pgr_msg(log.str());
-            *err_msg = pgr_msg(err.str());
+            *log_msg = to_pg_msg(log.str());
+            *err_msg = to_pg_msg(err.str());
             return;
         }
         log << pd_problem.msg.get_log();
@@ -181,38 +181,38 @@ pgr_do_pickDeliverEuclidean(
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             nullptr :
-            pgr_msg(log.str());
+            to_pg_msg(log.str());
         *notice_msg = notice.str().empty()?
             nullptr :
-            pgr_msg(notice.str());
+            to_pg_msg(notice.str());
     } catch (AssertFailedException &except) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = pgr_msg(err.str());
-        *log_msg = pgr_msg(log.str());
+        *err_msg = to_pg_msg(err.str());
+        *log_msg = to_pg_msg(log.str());
     } catch (std::exception& except) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = pgr_msg(err.str());
-        *log_msg = pgr_msg(log.str());
+        *err_msg = to_pg_msg(err.str());
+        *log_msg = to_pg_msg(log.str());
     } catch (const std::string &ex) {
-        *err_msg = pgr_msg(ex);
-        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str());
+        *err_msg = to_pg_msg(ex);
+        *log_msg = hint? to_pg_msg(hint) : to_pg_msg(log.str());
     } catch (const std::pair<std::string, std::string>& ex) {
         (*return_count) = 0;
         err << ex.first;
         log.str("");
         log.clear();
         log << ex.second;
-        *err_msg = pgr_msg(err.str());
-        *log_msg = pgr_msg(log.str());
+        *err_msg = to_pg_msg(err.str());
+        *log_msg = to_pg_msg(log.str());
     } catch(...) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
         err << "Caught unknown exception!";
-        *err_msg = pgr_msg(err.str());
-        *log_msg = pgr_msg(log.str());
+        *err_msg = to_pg_msg(err.str());
+        *log_msg = to_pg_msg(log.str());
     }
 }

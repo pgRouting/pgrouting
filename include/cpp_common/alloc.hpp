@@ -87,7 +87,7 @@ pgr_free(T* ptr) {
 }
 
 char *
-pgr_msg(const std::string &msg);
+to_pg_msg(const std::string &msg);
 
 }  // namespace pgrouting
 

@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 
 char *
-pgr_msg(const std::string &msg) {
+to_pg_msg(const std::string &msg) {
     char* duplicate = NULL;
     duplicate = pgr_alloc(msg.size() + 1, duplicate);
     memcpy(duplicate, msg.c_str(), msg.size());

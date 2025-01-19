@@ -85,7 +85,7 @@ pgr_get_edges(
         bool normal,
         bool ignore_id,
         char **err_msg) {
-    using pgrouting::pgr_msg;
+    using pgrouting::to_pg_msg;
     using pgrouting::pgr_free;
     using pgrouting::Column_info_t;
     try {
@@ -100,11 +100,11 @@ pgr_get_edges(
     } catch (const std::string &ex) {
         (*rows) = pgr_free(*rows);
         (*total_rows) = 0;
-        *err_msg = pgr_msg(ex);
+        *err_msg = to_pg_msg(ex);
     } catch(...) {
         (*rows) = pgr_free(*rows);
         (*total_rows) = 0;
-        *err_msg = pgr_msg("Caught unknown exception!");
+        *err_msg = to_pg_msg("Caught unknown exception!");
     }
 }
 
