@@ -100,7 +100,7 @@ pgr_get_edges(
     } catch (const std::string &ex) {
         (*rows) = pgr_free(*rows);
         (*total_rows) = 0;
-        *err_msg = pgr_msg(ex.c_str());
+        *err_msg = pgr_msg(ex);
     } catch(...) {
         (*rows) = pgr_free(*rows);
         (*total_rows) = 0;

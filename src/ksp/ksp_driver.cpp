@@ -152,7 +152,7 @@ void pgr_do_ksp(
         *err_msg = pgr_msg(err.str());
         *log_msg = pgr_msg(log.str());
     } catch (const std::string &ex) {
-        *err_msg = pgr_msg(ex.c_str());
+        *err_msg = pgr_msg(ex);
         *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);

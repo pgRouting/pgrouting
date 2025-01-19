@@ -198,7 +198,7 @@ pgr_do_pickDeliverEuclidean(
         *err_msg = pgr_msg(err.str());
         *log_msg = pgr_msg(log.str());
     } catch (const std::string &ex) {
-        *err_msg = pgr_msg(ex.c_str());
+        *err_msg = pgr_msg(ex);
         *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str());
     } catch (const std::pair<std::string, std::string>& ex) {
         (*return_count) = 0;
