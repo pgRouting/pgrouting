@@ -55,7 +55,7 @@ get_new_queries(
         << " edges AS (" << edges_sql << "), "
         << " points AS (" << points_sql << ")"
         << " SELECT DISTINCT edges.* FROM edges JOIN points ON (id = edge_id)";
-    *edges_of_points_query = pgr_msg(edges_of_points_sql.str().c_str());
+    *edges_of_points_query = pgr_msg(edges_of_points_sql.str());
 
     edges_no_points_sql << "WITH "
         << " edges AS (" << edges_sql << "), "
@@ -63,6 +63,6 @@ get_new_queries(
         << " SELECT edges.*"
         << " FROM edges"
         << " WHERE NOT EXISTS (SELECT edge_id FROM points WHERE id = edge_id)";
-    *edges_no_points_query = pgr_msg(edges_no_points_sql.str().c_str());
+    *edges_no_points_query = pgr_msg(edges_no_points_sql.str());
 }
 

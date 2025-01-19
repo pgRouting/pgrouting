@@ -141,8 +141,8 @@ pgr_do_pickDeliverEuclidean(
             log.clear();
             log << pd_problem.msg.get_error();
             log << pd_problem.msg.get_log();
-            *log_msg = pgr_msg(log.str().c_str());
-            *err_msg = pgr_msg(err.str().c_str());
+            *log_msg = pgr_msg(log.str());
+            *err_msg = pgr_msg(err.str());
             return;
         }
         log << pd_problem.msg.get_log();
@@ -181,38 +181,38 @@ pgr_do_pickDeliverEuclidean(
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             nullptr :
-            pgr_msg(log.str().c_str());
+            pgr_msg(log.str());
         *notice_msg = notice.str().empty()?
             nullptr :
-            pgr_msg(notice.str().c_str());
+            pgr_msg(notice.str());
     } catch (AssertFailedException &except) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *err_msg = pgr_msg(err.str());
+        *log_msg = pgr_msg(log.str());
     } catch (std::exception& except) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *err_msg = pgr_msg(err.str());
+        *log_msg = pgr_msg(log.str());
     } catch (const std::string &ex) {
         *err_msg = pgr_msg(ex.c_str());
-        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str());
     } catch (const std::pair<std::string, std::string>& ex) {
         (*return_count) = 0;
         err << ex.first;
         log.str("");
         log.clear();
         log << ex.second;
-        *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *err_msg = pgr_msg(err.str());
+        *log_msg = pgr_msg(log.str());
     } catch(...) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
         err << "Caught unknown exception!";
-        *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *err_msg = pgr_msg(err.str());
+        *log_msg = pgr_msg(log.str());
     }
 }

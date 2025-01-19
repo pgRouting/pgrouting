@@ -69,7 +69,7 @@ pgr_do_euclideanTSP(
 
         if (coordinates.size() == 0) {
             *notice_msg = pgr_msg("No coordinates found");
-            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str());
             return;
         }
         hint = nullptr;
@@ -78,13 +78,13 @@ pgr_do_euclideanTSP(
 
         if (start_vid != 0 && !fn_tsp.has_vertex(start_vid)) {
             err << "Parameter 'start_id' do not exist on the data";
-            *err_msg = pgr_msg(err.str().c_str());
+            *err_msg = pgr_msg(err.str());
             return;
         }
 
         if (end_vid != 0 && !fn_tsp.has_vertex(end_vid)) {
             err << "Parameter 'end_id' do not exist on the data";
-            *err_msg = pgr_msg(err.str().c_str());
+            *err_msg = pgr_msg(err.str());
             return;
         }
 
@@ -106,34 +106,34 @@ pgr_do_euclideanTSP(
 
         *log_msg = log.str().empty()?
             *log_msg :
-            pgr_msg(log.str().c_str());
+            pgr_msg(log.str());
         *notice_msg = notice.str().empty()?
             *notice_msg :
-            pgr_msg(notice.str().c_str());
+            pgr_msg(notice.str());
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *err_msg = pgr_msg(err.str());
+        *log_msg = pgr_msg(log.str());
     } catch (const std::pair<std::string, std::string>& ex) {
         (*return_count) = 0;
         *err_msg = pgr_msg(ex.first.c_str());
         *log_msg = pgr_msg(ex.second.c_str());
     } catch (const std::string &ex) {
         *err_msg = pgr_msg(ex.c_str());
-        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *err_msg = pgr_msg(err.str());
+        *log_msg = pgr_msg(log.str());
     } catch(...) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << "Caught unknown exception!";
-        *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *err_msg = pgr_msg(err.str());
+        *log_msg = pgr_msg(log.str());
     }
 }

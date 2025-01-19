@@ -180,7 +180,7 @@ pgr_do_alphaShape(
             *return_tuples = pgr_alloc(*return_count, (*return_tuples));
             std::stringstream ss;
             ss << "MULTIPOLYGON EMPTY";
-            (*return_tuples)[0].geom = pgr_msg(ss.str().c_str());
+            (*return_tuples)[0].geom = pgr_msg(ss.str());
         } else {
             *return_count = results.size();
             *return_tuples = pgr_alloc(*return_count, (*return_tuples));
@@ -188,7 +188,7 @@ pgr_do_alphaShape(
             for (const auto &r : results) {
                 std::stringstream ss;
                 ss << bg::wkt(r);
-                (*return_tuples)[row].geom = pgr_msg(ss.str().c_str());
+                (*return_tuples)[row].geom = pgr_msg(ss.str());
                 ++row;
             }
         }
@@ -196,30 +196,30 @@ pgr_do_alphaShape(
 
         *log_msg = log.str().empty()?
             *log_msg :
-            pgr_msg(log.str().c_str());
+            pgr_msg(log.str());
         *notice_msg = notice.str().empty()?
             *notice_msg :
-            pgr_msg(notice.str().c_str());
+            pgr_msg(notice.str());
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *err_msg = pgr_msg(err.str());
+        *log_msg = pgr_msg(log.str());
     } catch (const std::string &ex) {
         *err_msg = pgr_msg(ex.c_str());
-        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *err_msg = pgr_msg(err.str());
+        *log_msg = pgr_msg(log.str());
     } catch(...) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << "Caught unknown exception!";
-        *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *err_msg = pgr_msg(err.str());
+        *log_msg = pgr_msg(log.str());
     }
 }

@@ -180,7 +180,7 @@ pgr_do_trspVia_withPoints(
 
         if (edges.size() + edges_of_points.size() == 0) {
             *notice_msg = pgr_msg("No edges found");
-            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str());
             return;
         }
 
@@ -199,8 +199,8 @@ pgr_do_trspVia_withPoints(
         if (pg_graph.has_error()) {
             log << pg_graph.get_log();
             err << pg_graph.get_error();
-            *log_msg = pgr_msg(log.str().c_str());
-            *err_msg = pgr_msg(err.str().c_str());
+            *log_msg = pgr_msg(log.str());
+            *err_msg = pgr_msg(err.str());
             return;
         }
 
@@ -240,7 +240,7 @@ pgr_do_trspVia_withPoints(
 
         if (count == 0) {
             notice << "No paths found";
-            *log_msg = pgr_msg(notice.str().c_str());
+            *log_msg = pgr_msg(notice.str());
             return;
         }
 
@@ -289,30 +289,30 @@ pgr_do_trspVia_withPoints(
 
         *log_msg = log.str().empty()?
             *log_msg :
-            pgr_msg(log.str().c_str());
+            pgr_msg(log.str());
         *notice_msg = notice.str().empty()?
             *notice_msg :
-            pgr_msg(notice.str().c_str());
+            pgr_msg(notice.str());
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *err_msg = pgr_msg(err.str());
+        *log_msg = pgr_msg(log.str());
     } catch (const std::string &ex) {
         *err_msg = pgr_msg(ex.c_str());
-        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *err_msg = pgr_msg(err.str());
+        *log_msg = pgr_msg(log.str());
     } catch(...) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << "Caught unknown exception!";
-        *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *err_msg = pgr_msg(err.str());
+        *log_msg = pgr_msg(log.str());
     }
 }

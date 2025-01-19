@@ -45,10 +45,10 @@ get_order(char * fn_suffix, char ** err_msg) {
         if (suffix == "BFS") return 2;
         if (suffix == "DD") return 1;
         err << "Unknown function suffix" << suffix;
-        *err_msg = pgr_msg(err.str().c_str());
+        *err_msg = pgr_msg(err.str());
     } catch (std::exception &except) {
         err << except.what();
-        *err_msg = pgr_msg(err.str().c_str());
+        *err_msg = pgr_msg(err.str());
     }
     return -1;
 }
@@ -68,7 +68,7 @@ get_name(int fn_id, char * fn_suffix, char ** err_msg) {
                     break;
             default : name = "unknown";
                       err << "Unknown function name";
-                      *err_msg = pgr_msg(err.str().c_str());
+                      *err_msg = pgr_msg(err.str());
         }
         std::string suffix(fn_suffix);
         name += suffix;
@@ -76,7 +76,7 @@ get_name(int fn_id, char * fn_suffix, char ** err_msg) {
         return full_name;
     } catch (std::exception &except) {
         err << except.what();
-        *err_msg = pgr_msg(err.str().c_str());
+        *err_msg = pgr_msg(err.str());
     }
     return nullptr;
 }
