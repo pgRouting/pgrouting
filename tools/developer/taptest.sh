@@ -26,15 +26,34 @@ if [[ -z  $1 ]]; then
     exit 1;
 fi
 
+# run from root of repository
+if ! DIR=$(git rev-parse --show-toplevel 2>/dev/null); then
+    echo "Error: Must be run from within the git repository" >&2
+    exit 1
+fi
+pushd "${DIR}" > /dev/null || exit 1
 
 DIR="$1"
 shift
 PGFLAGS=$*
+if ! VERSION=$(grep -E '^[[:space:]]*project\(PGROUTING[[:space:]]+VERSION[[:space:]]+([^[:space:];]+)' CMakeLists.txt | sed -E 's/.*VERSION[[:space:]]+([^[:space:];]+).*/\1/'); then
+    echo "Error: Failed to extract version from CMakeLists.txt" >&2
+    exit 1
+fi
+
+if [[ -z "${VERSION}" ]]; then
+    echo "Error: Version not found in CMakeLists.txt" >&2
+    exit 1
+fi
 
 echo "dir ${DIR}"
 echo "pgflags ${PGFLAGS}"
+echo "VERSION ${VERSION}"
 QUIET="-v"
 QUIET="-q"
+
+PGPORT="${PGPORT:-5432}"
+PGUSER="${PGUSER:-$USER}"
 
 PGDATABASE="___pgr___test___"
 PGRVERSION="3.6.1 3.6.0 3.5.1 3.5.0 3.2.0 3.1.3 3.0.6"
@@ -46,49 +65,51 @@ do
     pushd tools/testers/
     echo "--------------------------"
     echo " Running with version ${v}"
+    echo " test ${DIR}"
     echo "--------------------------"
+    # give time to developer to read message
+    sleep 3
 
     dropdb --if-exists "${PGFLAGS}" "${PGDATABASE}"
     createdb "${PGFLAGS}" "${PGDATABASE}"
 
-    psql "$PGFLAGS" -d "$PGDATABASE" -X -q --set client_min_messages=WARNING --set ON_ERROR_STOP=1 --pset pager=off \
-        -c "CREATE EXTENSION IF NOT EXISTS pgtap; CREATE EXTENSION IF NOT EXISTS pgrouting WITH VERSION '${v}' CASCADE;"
-
+    if ! bash setup_db.sh "${PGPORT}" "${PGDATABASE}" "${PGUSER}" "${v}"; then
+        echo "Error: Database setup failed" >&2
+        exit 1
+    fi
     echo "--------------------------"
     echo " Installed version"
     echo "--------------------------"
     psql "${PGFLAGS}" -d "$PGDATABASE" -c "SELECT * FROM pgr_full_version();"
-    #psql "${PGFLAGS}" -d "$PGDATABASE" -c "SET client_min_messages TO DEBUG3; ALTER EXTENSION pgrouting UPDATE  TO '3.7.0';"
-    echo "--------------------------"
-    echo " update version"
-    echo "--------------------------"
+    popd
+
+    if [[ "${v}" != "${VERSION}" ]]
+    then
+        # run tests on old version
+        pg_prove "$QUIET" --normalize --directives --recurse "${PGFLAGS}"  -d "${PGDATABASE}" "pgtap/${DIR}"
+
+        # update to this version
+        echo "--------------------------"
+        echo " update version"
+        echo "--------------------------"
+        if ! psql "${PGFLAGS}" -d "$PGDATABASE" -c "SET client_min_messages TO DEBUG3; ALTER EXTENSION pgrouting UPDATE TO '${VERSION}';"; then
+            echo "Error: Failed to update pgrouting extension to version ${VERSION}" >&2
+            exit 1
+        fi
+
+        psql "${PGFLAGS}" -q -t -d "$PGDATABASE" -c "SELECT extversion FROM pg_extension WHERE extname = 'pgrouting';"
+
+        # Verify update success
+        if ! psql "${PGFLAGS}" -q -t -d "$PGDATABASE" -c "SELECT extversion FROM pg_extension WHERE extname = 'pgrouting';" | grep -q "${VERSION}"; then
+            echo "Error: Extension version mismatch after update" >&2
+            exit 1
+        fi
+    fi
+
+    # run this version's test
     psql "${PGFLAGS}" -d "$PGDATABASE" -c "SELECT * FROM pgr_full_version();"
 
-    psql "${PGFLAGS}" -d "$PGDATABASE" -X -q --set client_min_messages=WARNING --set ON_ERROR_STOP=1 --pset pager=off \
-        -f sampledata.sql \
-        -f solomon_100_rc101.data.sql \
-        -f innerQuery.sql \
-        -f innerQuery_old.sql \
-        -f inner_styles.sql \
-        -f old_inner_styles.sql \
-        -f no_crash_test.sql \
-        -f alphaShapeTester.sql \
-        -f general_pgtap_tests.sql \
-        -f no_crash_general.sql \
-        -f dijkstra_pgtap_tests.sql \
-        -f flow_pgtap_tests.sql \
-        -f trsp_tests.sql \
-        -f spanningtree.sql \
-        -f types_check.sql \
-        -f via_compare.sql \
-        -f astar_pgtap_tests.sql \
-        -f compare_dijkstra.sql \
-        -f allpairs_tests.sql \
-        -f contraction_tapfuncs.sql\
-        -f tsp_pgtap_tests.sql
 
-
-    popd
     pg_prove "$QUIET" --normalize --directives --recurse "${PGFLAGS}"  -d "${PGDATABASE}" "pgtap/${DIR}"
     #dropdb --if-exists "${PGFLAGS}" "${PGDATABASE}"
 done
