@@ -81,13 +81,13 @@ pgr_do_tsp(
 
         if (start_vid != 0 && !fn_tsp.has_vertex(start_vid)) {
             err << "Parameter 'start_id' do not exist on the data";
-            *err_msg = to_pg_msg(err.str());
+            *err_msg = to_pg_msg(err);
             return;
         }
 
         if (end_vid != 0 && !fn_tsp.has_vertex(end_vid)) {
             err << "Parameter 'end_id' do not exist on the data";
-            *err_msg = to_pg_msg(err.str());
+            *err_msg = to_pg_msg(err);
             return;
         }
 
@@ -107,36 +107,32 @@ pgr_do_tsp(
             }
         }
 
-        *log_msg = log.str().empty()?
-            *log_msg :
-            to_pg_msg(log.str());
-        *notice_msg = notice.str().empty()?
-            *notice_msg :
-            to_pg_msg(notice.str());
+        *log_msg = to_pg_msg(log);
+        *notice_msg = to_pg_msg(notice);
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = to_pg_msg(err.str());
-        *log_msg = to_pg_msg(log.str());
+        *err_msg = to_pg_msg(err);
+        *log_msg = to_pg_msg(log);
     } catch (const std::pair<std::string, std::string>& ex) {
         (*return_count) = 0;
         *err_msg = to_pg_msg(ex.first.c_str());
         *log_msg = to_pg_msg(ex.second.c_str());
     } catch (const std::string &ex) {
         *err_msg = to_pg_msg(ex);
-        *log_msg = hint? to_pg_msg(hint) : to_pg_msg(log.str());
+        *log_msg = hint? to_pg_msg(hint) : to_pg_msg(log);
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = to_pg_msg(err.str());
-        *log_msg = to_pg_msg(log.str());
+        *err_msg = to_pg_msg(err);
+        *log_msg = to_pg_msg(log);
     } catch(...) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << "Caught unknown exception!";
-        *err_msg = to_pg_msg(err.str());
-        *log_msg = to_pg_msg(log.str());
+        *err_msg = to_pg_msg(err);
+        *log_msg = to_pg_msg(log);
     }
 }

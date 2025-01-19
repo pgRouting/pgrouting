@@ -121,7 +121,7 @@ pgr_do_pickDeliver(
             for (const auto &v : vehicles) {
                 if (v.start_node_id != depot_node && v.end_node_id != depot_node) {
                     err << "All vehicles must depart & arrive to same node";
-                    *err_msg = to_pg_msg(err.str());
+                    *err_msg = to_pg_msg(err);
                     return;
                 }
             }
@@ -132,7 +132,7 @@ pgr_do_pickDeliver(
             for (const auto &o : orders) {
                 if (o.pick_node_id != depot_node) {
                     err << "All orders must be picked at depot";
-                    *err_msg = to_pg_msg(err.str());
+                    *err_msg = to_pg_msg(err);
                     return;
                 }
             }
@@ -140,7 +140,7 @@ pgr_do_pickDeliver(
 
         if (!cost_matrix.has_no_infinity()) {
             err << "An Infinity value was found on the Matrix";
-            *err_msg = to_pg_msg(err.str());
+            *err_msg = to_pg_msg(err);
             return;
         }
 
@@ -156,8 +156,8 @@ pgr_do_pickDeliver(
         err << pd_problem.msg.get_error();
         if (!err.str().empty()) {
             log << pd_problem.msg.get_log();
-            *log_msg = to_pg_msg(log.str());
-            *err_msg = to_pg_msg(err.str());
+            *log_msg = to_pg_msg(log);
+            *err_msg = to_pg_msg(err);
             return;
         }
         log << pd_problem.msg.get_log();
@@ -198,48 +198,44 @@ pgr_do_pickDeliver(
         (*return_count) = solution.size();
 
         pgassert(*err_msg == NULL);
-        *log_msg = log.str().empty()?
-            nullptr :
-            to_pg_msg(log.str());
-        *notice_msg = notice.str().empty()?
-            nullptr :
-            to_pg_msg(notice.str());
+        *log_msg = to_pg_msg(log);
+        *notice_msg = to_pg_msg(notice);
     } catch (AssertFailedException &except) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = to_pg_msg(err.str());
-        *log_msg = to_pg_msg(log.str());
+        *err_msg = to_pg_msg(err);
+        *log_msg = to_pg_msg(log);
     } catch (std::exception& except) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = to_pg_msg(err.str());
-        *log_msg = to_pg_msg(log.str());
+        *err_msg = to_pg_msg(err);
+        *log_msg = to_pg_msg(log);
     } catch (const std::string &ex) {
         *err_msg = to_pg_msg(ex);
-        *log_msg = hint? to_pg_msg(hint) : to_pg_msg(log.str());
+        *log_msg = hint? to_pg_msg(hint) : to_pg_msg(log);
     } catch (const std::pair<std::string, std::string>& ex) {
         (*return_count) = 0;
         err << ex.first;
         log.str("");
         log.clear();
         log << ex.second;
-        *err_msg = to_pg_msg(err.str());
-        *log_msg = to_pg_msg(log.str());
+        *err_msg = to_pg_msg(err);
+        *log_msg = to_pg_msg(log);
     } catch (const std::pair<std::string, int64_t>& ex) {
         (*return_count) = 0;
         err << ex.first;
         log.str("");
         log.clear();
         log << "Node missing on matrix: id =  " << ex.second;
-        *err_msg = to_pg_msg(err.str());
-        *log_msg = to_pg_msg(log.str());
+        *err_msg = to_pg_msg(err);
+        *log_msg = to_pg_msg(log);
     } catch(...) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
         err << "Caught unknown exception!";
-        *err_msg = to_pg_msg(err.str());
-        *log_msg = to_pg_msg(log.str());
+        *err_msg = to_pg_msg(err);
+        *log_msg = to_pg_msg(log);
     }
 }

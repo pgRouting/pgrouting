@@ -206,7 +206,7 @@ pgr_do_contractGraph(
         auto edges = get_edges(std::string(edges_sql), true, false);
         if (edges.empty()) {
             *notice_msg = to_pg_msg("No edges found");
-            *log_msg = hint? to_pg_msg(hint) : to_pg_msg(log.str());
+            *log_msg = hint? to_pg_msg(hint) : to_pg_msg(log);
             return;
         }
         hint = nullptr;
@@ -218,7 +218,7 @@ pgr_do_contractGraph(
             if (!pgrouting::contraction::is_valid_contraction(static_cast<int>(kind))) {
                 *err_msg = to_pg_msg("Invalid contraction type found");
                 log << "Contraction type " << kind << " not valid";
-                *log_msg = to_pg_msg(log.str());
+                *log_msg = to_pg_msg(log);
                 return;
             }
         }
@@ -249,32 +249,28 @@ pgr_do_contractGraph(
         }
 
         pgassert(err.str().empty());
-        *log_msg = log.str().empty()?
-            *log_msg :
-            to_pg_msg(log.str());
-        *notice_msg = notice.str().empty()?
-            *notice_msg :
-            to_pg_msg(notice.str());
+        *log_msg = to_pg_msg(log);
+        *notice_msg = to_pg_msg(notice);
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = to_pg_msg(err.str());
-        *log_msg = to_pg_msg(log.str());
+        *err_msg = to_pg_msg(err);
+        *log_msg = to_pg_msg(log);
     } catch (const std::string &ex) {
         *err_msg = to_pg_msg(ex);
-        *log_msg = hint? to_pg_msg(hint) : to_pg_msg(log.str());
+        *log_msg = hint? to_pg_msg(hint) : to_pg_msg(log);
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = to_pg_msg(err.str());
-        *log_msg = to_pg_msg(log.str());
+        *err_msg = to_pg_msg(err);
+        *log_msg = to_pg_msg(log);
     } catch(...) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << "Caught unknown exception!";
-        *err_msg = to_pg_msg(err.str());
-        *log_msg = to_pg_msg(log.str());
+        *err_msg = to_pg_msg(err);
+        *log_msg = to_pg_msg(log);
     }
 }

@@ -79,28 +79,24 @@ pgr_do_isPlanar(
         result = fn_isPlanar.isPlanar(undigraph);
 
         pgassert(*err_msg == NULL);
-        *log_msg = log.str().empty()?
-            *log_msg :
-            to_pg_msg(log.str());
-        *notice_msg = notice.str().empty()?
-            *notice_msg :
-            to_pg_msg(notice.str());
+        *log_msg = to_pg_msg(log);
+        *notice_msg = to_pg_msg(notice);
         return result;
     } catch (AssertFailedException &except) {
         err << except.what();
-        *err_msg = to_pg_msg(err.str());
-        *log_msg = to_pg_msg(log.str());
+        *err_msg = to_pg_msg(err);
+        *log_msg = to_pg_msg(log);
     } catch (const std::string &ex) {
         *err_msg = to_pg_msg(ex);
-        *log_msg = hint? to_pg_msg(hint) : to_pg_msg(log.str());
+        *log_msg = hint? to_pg_msg(hint) : to_pg_msg(log);
     } catch (std::exception &except) {
         err << except.what();
-        *err_msg = to_pg_msg(err.str());
-        *log_msg = to_pg_msg(log.str());
+        *err_msg = to_pg_msg(err);
+        *log_msg = to_pg_msg(log);
     } catch(...) {
         err << "Caught unknown exception!";
-        *err_msg = to_pg_msg(err.str());
-        *log_msg = to_pg_msg(log.str());
+        *err_msg = to_pg_msg(err);
+        *log_msg = to_pg_msg(log);
     }
     return false;
 }
