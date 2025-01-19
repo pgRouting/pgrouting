@@ -44,7 +44,7 @@ pgr_throw_error(char *err, char *hint) {
  * ~~~~{.c}
  * std::ostringstream log;
  * log << "the message";
- * *log_msg = to_pg_msg(log.str().c_str());
+ * *log_msg = to_pg_msg(log);
  * ~~~~
  *
  * Then on the C side

@@ -70,7 +70,7 @@ pgr_do_hawickCircuits(
         char ** err_msg) {
     using pgrouting::Path;
     using pgrouting::pgr_alloc;
-    using pgrouting::pgr_msg;
+    using pgrouting::to_pg_msg;
     using pgrouting::pgr_free;
 
     std::ostringstream log;
@@ -88,8 +88,8 @@ pgr_do_hawickCircuits(
         hint = edges_sql;
         auto edges = pgrouting::pgget::get_edges(std::string(edges_sql), true, false);
         if (edges.empty()) {
-            *notice_msg = pgr_msg("No edges found");
-            *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+            *notice_msg = to_pg_msg("No edges found");
+            *log_msg = hint? to_pg_msg(hint) : to_pg_msg(log);
             return;
         }
         hint = nullptr;
@@ -107,7 +107,7 @@ pgr_do_hawickCircuits(
             (*return_tuples) = NULL;
             (*return_count) = 0;
             notice << "No Circuit found";
-            *log_msg = pgr_msg(notice.str().c_str());
+            *log_msg = to_pg_msg(notice);
             return;
         }
 
@@ -118,32 +118,28 @@ pgr_do_hawickCircuits(
         (*return_count) = count;
 
         pgassert(*err_msg == NULL);
-        *log_msg = log.str().empty()?
-            *log_msg :
-            pgr_msg(log.str().c_str());
-        *notice_msg = notice.str().empty()?
-            *notice_msg :
-            pgr_msg(notice.str().c_str());
+        *log_msg = to_pg_msg(log);
+        *notice_msg = to_pg_msg(notice);
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *err_msg = to_pg_msg(err);
+        *log_msg = to_pg_msg(log);
     } catch (const std::string &ex) {
-        *err_msg = pgr_msg(ex.c_str());
-        *log_msg = hint? pgr_msg(hint) : pgr_msg(log.str().c_str());
+        *err_msg = to_pg_msg(ex);
+        *log_msg = hint? to_pg_msg(hint) : to_pg_msg(log);
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *err_msg = to_pg_msg(err);
+        *log_msg = to_pg_msg(log);
     } catch(...) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
         err << "Caught unknown exception!";
-        *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
+        *err_msg = to_pg_msg(err);
+        *log_msg = to_pg_msg(log);
     }
 }
