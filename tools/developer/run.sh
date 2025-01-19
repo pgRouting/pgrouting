@@ -64,7 +64,7 @@ function set_cmake {
     # Building with debug on
     #cmake  -DPOSTGRESQL_BIN=${PGBIN} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON -DCMAKE_BUILD_TYPE=Debug -DES=ON -DPROJECT_DEBUG=ON ..
 
-    # building languages -DES=ON -DJA=ON -DZH_HANS=ON -DDE=ON -DKO=ON
+    # building languages -DES=ON -DJA=ON -DZH_HANS=ON -DDE=ON -DKO=ON and CMAKE_EXPORT_COMPILE_COMMANDS for static analysis tools.
     #cmake  -DPOSTGRESQL_BIN=${PGBIN} -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON -DES=ON  -DCMAKE_BUILD_TYPE=Debug ..
 
     # check link in documentation
