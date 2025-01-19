@@ -52,7 +52,7 @@ echo "VERSION ${VERSION}"
 QUIET="-v"
 QUIET="-q"
 
-PGPORT="5432"
+PGPORT="${PGPORT:-5432}"
 PGUSER="${PGUSER:-$USER}"
 
 PGDATABASE="___pgr___test___"
@@ -73,7 +73,6 @@ do
     dropdb --if-exists "${PGFLAGS}" "${PGDATABASE}"
     createdb "${PGFLAGS}" "${PGDATABASE}"
 
-    bash setup_db.sh "${PGPORT}" "${PGDATABASE}" "${PGUSER}" "${v}"
     if ! bash setup_db.sh "${PGPORT}" "${PGDATABASE}" "${PGUSER}" "${v}"; then
         echo "Error: Database setup failed" >&2
         exit 1

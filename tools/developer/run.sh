@@ -61,6 +61,7 @@ function set_cmake {
     # Building using clang
     #CXX=clang++ CC=clang cmake -DPOSTGRESQL_BIN=${PGBIN} -DCMAKE_BUILD_TYPE=Debug  -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=OFF ..
 
+    # Building with debug on
     #cmake  -DPOSTGRESQL_BIN=${PGBIN} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON -DCMAKE_BUILD_TYPE=Debug -DES=ON -DPROJECT_DEBUG=ON ..
 
     # building languages -DES=ON -DJA=ON -DZH_HANS=ON -DDE=ON -DKO=ON
@@ -69,6 +70,7 @@ function set_cmake {
     # check link in documentation
     #cmake  -DPOSTGRESQL_BIN=${PGBIN} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DES=ON -DLINKCHECK=ON -DCMAKE_BUILD_TYPE=Release ..
 
+    # build only english
     cmake  -DPOSTGRESQL_BIN=${PGBIN} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON  -DCMAKE_BUILD_TYPE=Debug ..
 }
 
@@ -114,7 +116,7 @@ function build_doc {
     pushd build > /dev/null || exit 1
     #rm -rf doc/* ; rm -rf locale/*/*/*.mo
     # Clean only generated files while preserving custom content
-    find doc -type f -name "*.html" -o -name "*.pdf" -delete
+    find doc -type f \( -name "*.html" -o -name "*.pdf" \) -delete
     make doc
     #example on how to only build spanish html
     #make html-es
@@ -171,9 +173,12 @@ function test_compile {
     echo --------------------------------------------
     for d in ${QUERIES_DIRS}
     do
+        # generate the documentation queries
         #tools/testers/doc_queries_generator.pl  -alg "docqueries/${d}" -documentation  -pgport "${PGPORT}"
-        tools/testers/doc_queries_generator.pl  -alg "docqueries/${d}" -level WARNING  -pgport "${PGPORT}"
-        #tools/testers/doc_queries_generator.pl  -alg "docqueries/${d}" -pgport "${PGPORT}"
+        # Show warnings
+        #tools/testers/doc_queries_generator.pl  -alg "docqueries/${d}" -level WARNING  -pgport "${PGPORT}"
+        # Compare differences on results
+        tools/testers/doc_queries_generator.pl  -alg "docqueries/${d}" -pgport "${PGPORT}"
     done
 
     echo --------------------------------------------
