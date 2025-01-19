@@ -59,16 +59,18 @@ function set_cmake {
     #cmake  -DWITH_DOC=ON -DBUILD_DOXY=ON ..
 
     # Building using clang
-    #CXX=clang++ CC=clang cmake -DPOSTGRESQL_BIN=${PGBIN} -DCMAKE_BUILD_TYPE=Debug ..
+    #CXX=clang++ CC=clang cmake -DPOSTGRESQL_BIN=${PGBIN} -DCMAKE_BUILD_TYPE=Debug  -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=OFF ..
 
+    # Building with debug on
     #cmake  -DPOSTGRESQL_BIN=${PGBIN} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON -DCMAKE_BUILD_TYPE=Debug -DES=ON -DPROJECT_DEBUG=ON ..
 
-    # building languages -DES=ON -DJA=ON -DZH_HANS=ON -DDE=ON -DKO=ON
-    #cmake  -DPOSTGRESQL_BIN=${PGBIN}  -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON -DES=ON  -DCMAKE_BUILD_TYPE=Debug ..
+    # building languages -DES=ON -DJA=ON -DZH_HANS=ON -DDE=ON -DKO=ON and CMAKE_EXPORT_COMPILE_COMMANDS for static analysis tools.
+    #cmake  -DPOSTGRESQL_BIN=${PGBIN} -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON -DES=ON  -DCMAKE_BUILD_TYPE=Debug ..
 
     # check link in documentation
     #cmake  -DPOSTGRESQL_BIN=${PGBIN} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DES=ON -DLINKCHECK=ON -DCMAKE_BUILD_TYPE=Release ..
 
+    # build only english
     cmake  -DPOSTGRESQL_BIN=${PGBIN} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON  -DBUILD_LATEX=ON  -DCMAKE_BUILD_TYPE=Debug ..
 }
 
@@ -105,14 +107,16 @@ function set_compiler {
     echo ------------------------------------
 
     if [ -n "$1" ]; then
-        update-alternatives --set gcc "/usr/bin/gcc-$1"
+        export CC="/usr/bin/gcc-$1"
+        export CXX="/usr/bin/g++-$1"
     fi
 }
 
 function build_doc {
     pushd build > /dev/null || exit 1
     #rm -rf doc/* ; rm -rf locale/*/*/*.mo
-    rm -rf doc/*
+    # Clean only generated files while preserving custom content
+    find doc -type f \( -name "*.html" -o -name "*.pdf" \) -delete
     make doc
     #example on how to only build spanish html
     #make html-es
@@ -121,6 +125,30 @@ function build_doc {
     #rm -rf doxygen/*
     make doxy
     popd > /dev/null || exit 1
+}
+
+function check {
+    pushd build > /dev/null || exit 1
+    cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
+
+    # Run with error handling and report generation
+    cppcheck --project=compile_commands.json \
+        --enable=all \
+        --suppress=missingIncludeSystem \
+        --error-exitcode=1 \
+        --output-file=cppcheck-report.txt 2>&1 || {
+        echo "Static analysis failed. See build/cppcheck-report.txt for details"
+        return 1
+    }
+    popd > /dev/null || exit 1
+}
+
+function tidy_with_clang {
+    local base_branch=${1:-"upstream/develop"}
+    .github/scripts/tidy-vs-commit.sh "$base_branch" || {
+        echo "clang-tidy checks failed"
+        return 1
+    }
 }
 
 function build {
@@ -141,6 +169,19 @@ function test_compile {
     build
 
     echo --------------------------------------------
+    echo  Execute documentation queries
+    echo --------------------------------------------
+    for d in ${QUERIES_DIRS}
+    do
+        # generate the documentation queries
+        #tools/testers/doc_queries_generator.pl  -alg "docqueries/${d}" -documentation  -pgport "${PGPORT}"
+        # Show warnings
+        #tools/testers/doc_queries_generator.pl  -alg "docqueries/${d}" -level WARNING  -pgport "${PGPORT}"
+        # Compare differences on results
+        tools/testers/doc_queries_generator.pl  -alg "docqueries/${d}" -pgport "${PGPORT}"
+    done
+
+    echo --------------------------------------------
     echo  Execute tap_directories
     echo --------------------------------------------
     for d in ${TAP_DIRS}
@@ -148,18 +189,10 @@ function test_compile {
         time bash taptest.sh  "${d}" "-p ${PGPORT}"
     done
 
-    echo --------------------------------------------
-    echo  Execute documentation queries
-    echo --------------------------------------------
-    for d in ${QUERIES_DIRS}
-    do
-        #tools/testers/doc_queries_generator.pl  -alg "docqueries/${d}" -documentation  -pgport "${PGPORT}"
-        #tools/testers/doc_queries_generator.pl  -alg "docqueries/${d}" -debug1  -pgport "${PGPORT}"
-        tools/testers/doc_queries_generator.pl  -alg "docqueries/${d}" -pgport "${PGPORT}"
-    done
+    tap_test
+    tools/testers/doc_queries_generator.pl -pgport $PGPORT
 
     build_doc
-    #exit 0
     tap_test
     action_tests
 }

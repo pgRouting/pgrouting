@@ -124,8 +124,9 @@ while (my $a = shift @ARGV) {
     elsif ($a =~ /^-c/i) {
         $clean = 1;
     }
-    elsif ($a =~ /^-l$/i) {
-        $LEVEL = $psql = shift @ARGV || Usage();
+    elsif ($a =~ /^-l(evel)?/i) {
+        $LEVEL = shift @ARGV || Usage();
+        print "The level $LEVEL\n";
     }
     elsif ($a =~ /^-v/i) {
         $VERBOSE = 1;
