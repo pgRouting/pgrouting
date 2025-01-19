@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include <string>
+#include <sstream>
 
 extern "C" {
 
@@ -86,8 +87,8 @@ pgr_free(T* ptr) {
     return nullptr;
 }
 
-char *
-pgr_msg(const std::string &msg);
+char* to_pg_msg(const std::string&);
+char* to_pg_msg(const std::ostringstream&);
 
 }  // namespace pgrouting
 
