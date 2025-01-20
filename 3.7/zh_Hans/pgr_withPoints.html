@@ -8,11 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pgr_withPoints -拟议 &#8212; pgRouting Manual (3.7)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=521dc130"></script>
+    <script src="_static/documentation_options.js?v=62d28862"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=8578d92c"></script>
@@ -45,7 +45,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.7.1</b></span>
+        <span class="navbar-text pull-left"><b>v3.7.2</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -230,11 +230,11 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_withPoints','zh-Hans'));  </script>
             
-  <div class="line-block">
+  <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-withpoints-proposed">
-<span id="index-0"></span><h1><code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> -拟议<a class="headerlink" href="#pgr-withpoints-proposed" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> -拟议<a class="headerlink" href="#pgr-withpoints-proposed" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> - 返回图中带有附加临时顶点的最短路径。</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -253,18 +253,11 @@
 </li>
 </ul>
 </div>
-<figure class="align-default" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/table_of_contents.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
-</a>
-<figcaption>
-<p><span class="caption-text">Boost 图内部</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
 <p class="rubric">可用性</p>
 <ul class="simple">
 <li><p>版本3.2.0</p>
 <ul>
-<li><p>新的 <strong>拟议</strong> 函数：</p>
+<li><p>New proposed function.</p>
 <ul>
 <li><p>pgr_withPoints（组合）</p></li>
 </ul>
@@ -273,7 +266,7 @@
 </li>
 <li><p>版本 2.2.0</p>
 <ul>
-<li><p>新 <strong>拟议</strong> 函数</p></li>
+<li><p>New proposed function.</p></li>
 </ul>
 </li>
 </ul>
@@ -302,6 +295,7 @@ Using Dijkstra algorithm, find the shortest path</p>
 <ul class="simple">
 <li><p>运行时间： <span class="math notranslate nohighlight">\(O(|start\_vids|\times(V \log V + E))\)</span></p></li>
 </ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -879,17 +873,17 @@ Using Dijkstra algorithm, find the shortest path</p>
 <h2>其他示例<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id2">在 Points SQL 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a>。</a></p></li>
-<li><p><a class="reference internal" href="#usage-variations" id="id3">用法变化</a></p>
+<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id1">在 Points SQL 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges - Proposed</span></a>。</a></p></li>
+<li><p><a class="reference internal" href="#usage-variations" id="id2">用法变化</a></p>
 <ul>
-<li><p><a class="reference internal" href="#passes-in-front-or-visits-with-right-side-driving" id="id4">从前方超车或右侧行驶来访。</a></p></li>
-<li><p><a class="reference internal" href="#passes-in-front-or-visits-with-left-side-driving" id="id5">从前方超车或以左侧驾驶方式行驶。</a></p></li>
+<li><p><a class="reference internal" href="#passes-in-front-or-visits-with-right-side-driving" id="id3">从前方超车或右侧行驶来访。</a></p></li>
+<li><p><a class="reference internal" href="#passes-in-front-or-visits-with-left-side-driving" id="id4">从前方超车或以左侧驾驶方式行驶。</a></p></li>
 </ul>
 </li>
 </ul>
 </nav>
 <section id="use-pgr-findcloseedges-in-the-points-sql">
-<h3>在 <a class="reference internal" href="#points-sql">Points SQL</a> 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a>。<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Link to this heading">¶</a></h3>
+<h3>在 <a class="reference internal" href="#points-sql">Points SQL</a> 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges - Proposed</span></a>。<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Link to this heading">¶</a></h3>
 <p>找到从顶点 <span class="math notranslate nohighlight">\(1\)</span> 到点 <cite>(2.9, 1.8)</cite> 图上两个最近位置的路线。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
   $e$ SELECT * FROM edges $e$,
@@ -924,7 +918,7 @@ Using Dijkstra algorithm, find the shortest path</p>
 </ul>
 </section>
 <section id="usage-variations">
-<h3><a class="toc-backref" href="#id3" role="doc-backlink">用法变化</a><a class="headerlink" href="#usage-variations" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">用法变化</a><a class="headerlink" href="#usage-variations" title="Link to this heading">¶</a></h3>
 <p>所有示例都是关于从点 <span class="math notranslate nohighlight">\(1\)</span> 和顶点 <span class="math notranslate nohighlight">\(5\)</span> 到点 <span class="math notranslate nohighlight">\(\{2, 3, 6\}\)</span> 和顶点 <span class="math notranslate nohighlight">\(\{10, 11\}\)</span> 的旅行</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
@@ -1002,7 +996,7 @@ Using Dijkstra algorithm, find the shortest path</p>
 </pre></div>
 </div>
 <section id="passes-in-front-or-visits-with-right-side-driving">
-<h4><a class="toc-backref" href="#id4" role="doc-backlink">从前方超车或右侧行驶来访。</a><a class="headerlink" href="#passes-in-front-or-visits-with-right-side-driving" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id3" role="doc-backlink">从前方超车或右侧行驶来访。</a><a class="headerlink" href="#passes-in-front-or-visits-with-right-side-driving" title="Link to this heading">¶</a></h4>
 <p>对于点 <span class="math notranslate nohighlight">\(6\)</span> 和顶点 <span class="math notranslate nohighlight">\(11\)</span>。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="p">(</span><span class="n">start_pid</span> <span class="o">||</span> <span class="s1">&#39; -&gt; &#39;</span> <span class="o">||</span> <span class="n">end_pid</span> <span class="o">||</span><span class="s1">&#39; at &#39;</span> <span class="o">||</span> <span class="n">path_seq</span> <span class="o">||</span> <span class="s1">&#39;th step&#39;</span><span class="p">)::</span><span class="n">TEXT</span> <span class="n">AS</span> <span class="n">path_at</span><span class="p">,</span>
   <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">edge</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="s1">&#39; visits&#39;</span>
@@ -1042,7 +1036,7 @@ Using Dijkstra algorithm, find the shortest path</p>
 </div>
 </section>
 <section id="passes-in-front-or-visits-with-left-side-driving">
-<h4><a class="toc-backref" href="#id5" role="doc-backlink">从前方超车或以左侧驾驶方式行驶。</a><a class="headerlink" href="#passes-in-front-or-visits-with-left-side-driving" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">从前方超车或以左侧驾驶方式行驶。</a><a class="headerlink" href="#passes-in-front-or-visits-with-left-side-driving" title="Link to this heading">¶</a></h4>
 <p>对于点 <span class="math notranslate nohighlight">\(6\)</span> 和顶点 <span class="math notranslate nohighlight">\(11\)</span>。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="p">(</span><span class="n">start_pid</span> <span class="o">||</span> <span class="s1">&#39; =&gt; &#39;</span> <span class="o">||</span> <span class="n">end_pid</span> <span class="o">||</span><span class="s1">&#39; at &#39;</span> <span class="o">||</span> <span class="n">path_seq</span> <span class="o">||</span> <span class="s1">&#39;th step&#39;</span><span class="p">)::</span><span class="n">TEXT</span> <span class="n">AS</span> <span class="n">path_at</span><span class="p">,</span>
   <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">edge</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="s1">&#39; visits&#39;</span>
@@ -1110,8 +1104,8 @@ Using Dijkstra algorithm, find the shortest path</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.7.1.<br/>
-      Last updated on 12月 24, 2024.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.7.2.<br/>
+      Last updated on 1月 20, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

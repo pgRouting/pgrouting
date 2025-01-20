@@ -8,11 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pgr_maxCardinalityMatch &#8212; pgRouting Manual (3.7)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=f76df7f6"></script>
+    <script src="_static/documentation_options.js?v=5a3d873a"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=8578d92c"></script>
@@ -45,7 +45,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.7.1</b></span>
+        <span class="navbar-text pull-left"><b>v3.7.2</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -96,7 +96,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_maxCardinalityMatch</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a><ul>
 <li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#signatures">Signatures</a></li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
@@ -152,7 +152,7 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">pgr_maxCardinalityMatch</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a><ul>
 <li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#signatures">Signatures</a></li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
@@ -186,20 +186,13 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_maxCardinalityMatch','en'));  </script>
             
-  <div class="line-block">
+  <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-maxcardinalitymatch">
-<span id="index-0"></span><h1>pgr_maxCardinalityMatch<a class="headerlink" href="#pgr-maxcardinalitymatch" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code><a class="headerlink" href="#pgr-maxcardinalitymatch" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code> — Calculates a maximum cardinality matching in a
 graph.</p>
-<figure class="align-default" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/maximum_matching.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
-</a>
-<figcaption>
-<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
 <p class="rubric">Availability</p>
 <ul class="simple">
 <li><p>Version 3.4.0</p>
@@ -209,14 +202,14 @@ graph.</p>
 <li><p>Works for undirected graphs.</p></li>
 <li><p>New signature</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch(text)</span></code> returns only <code class="docutils literal notranslate"><span class="pre">edge</span></code> column.</p></li>
+<li><p>pgr_maxCardinalityMatch(text)`` returns only <code class="docutils literal notranslate"><span class="pre">edge</span></code> column.</p></li>
 </ul>
 </li>
 <li><p>Deprecated signature</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch(text,boolean)</span></code></p>
+<li><p>pgr_maxCardinalityMatch(text,boolean)``</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">false</span></code> when used.</p></li>
+<li><p>directed =&gt; false`` when used.</p></li>
 </ul>
 </li>
 </ul>
@@ -225,18 +218,18 @@ graph.</p>
 </li>
 <li><p>Version 3.0.0</p>
 <ul>
-<li><p><strong>Official</strong> function</p></li>
+<li><p>Function promoted to official.</p></li>
 </ul>
 </li>
 <li><p>Version 2.5.0</p>
 <ul>
 <li><p>Renamed from <code class="docutils literal notranslate"><span class="pre">pgr_maximumCardinalityMatching</span></code></p></li>
-<li><p><strong>Proposed</strong> function</p></li>
+<li><p>Function promoted to proposed.</p></li>
 </ul>
 </li>
 <li><p>Version 2.3.0</p>
 <ul>
-<li><p>New <strong>Experimental</strong> function</p></li>
+<li><p>New experimental function.</p></li>
 </ul>
 </li>
 </ul>
@@ -260,6 +253,7 @@ edges.</p>
 </ul>
 </li>
 </ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -394,7 +388,7 @@ edges.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="flow-family.html"><span class="doc">Flow - Family of functions</span></a></p></li>
 <li><p><a class="reference internal" href="migration.html"><span class="doc">Migration guide</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/maximum_matching.html">https://www.boost.org/libs/graph/doc/maximum_matching.html</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/maximum_matching.html">Boost: maximum_matching</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Matching_%28graph_theory%29">https://en.wikipedia.org/wiki/Matching_%28graph_theory%29</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Ackermann_function">https://en.wikipedia.org/wiki/Ackermann_function</a></p></li>
 </ul>
@@ -418,8 +412,8 @@ edges.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.7.1.<br/>
-      Last updated on Dec 24, 2024.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.7.2.<br/>
+      Last updated on Jan 20, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

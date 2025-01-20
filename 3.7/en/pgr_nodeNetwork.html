@@ -8,11 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pgr_nodeNetwork &#8212; pgRouting Manual (3.7)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=f76df7f6"></script>
+    <script src="_static/documentation_options.js?v=5a3d873a"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=8578d92c"></script>
@@ -44,7 +44,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.7.1</b></span>
+        <span class="navbar-text pull-left"><b>v3.7.2</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -95,7 +95,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_nodeNetwork</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code></a><ul>
 <li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
@@ -148,7 +148,7 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">pgr_nodeNetwork</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code></a><ul>
 <li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
@@ -179,11 +179,11 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_nodeNetwork','en'));  </script>
             
-  <div class="line-block">
+  <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-nodenetwork">
-<span id="index-0"></span><h1>pgr_nodeNetwork<a class="headerlink" href="#pgr-nodenetwork" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code><a class="headerlink" href="#pgr-nodenetwork" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code> - Nodes an network edge table.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Author<span class="colon">:</span></dt>
@@ -203,7 +203,7 @@ edges into a new table.</p>
 <ul class="simple">
 <li><p>Version 2.0.0</p>
 <ul>
-<li><p><strong>Official</strong> function</p></li>
+<li><p>Official function.</p></li>
 </ul>
 </li>
 </ul>
@@ -491,10 +491,10 @@ of the original edge</p></li>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 <span class="n">insert</span> <span class="n">into</span> <span class="n">edges</span> <span class="p">(</span><span class="n">old_id</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
    <span class="p">(</span><span class="k">with</span>
-       <span class="n">segmented</span> <span class="k">as</span> <span class="p">(</span><span class="n">select</span> <span class="n">old_id</span><span class="p">,</span><span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="n">i</span> <span class="kn">from</span> <span class="nn">edges_noded</span> <span class="n">group</span> <span class="n">by</span> <span class="n">old_id</span><span class="p">)</span>
+       <span class="n">segmented</span> <span class="k">as</span> <span class="p">(</span><span class="n">select</span> <span class="n">old_id</span><span class="p">,</span><span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="n">i</span> <span class="kn">from</span><span class="w"> </span><span class="nn">edges_noded</span> <span class="n">group</span> <span class="n">by</span> <span class="n">old_id</span><span class="p">)</span>
    <span class="n">select</span>  <span class="n">segments</span><span class="o">.</span><span class="n">old_id</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span> <span class="n">segments</span><span class="o">.</span><span class="n">geom</span>
-       <span class="kn">from</span> <span class="nn">edges</span> <span class="k">as</span> <span class="n">edges</span> <span class="n">join</span> <span class="n">edges_noded</span> <span class="k">as</span> <span class="n">segments</span> <span class="n">on</span> <span class="p">(</span><span class="n">edges</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">segments</span><span class="o">.</span><span class="n">old_id</span><span class="p">)</span>
-       <span class="n">where</span> <span class="n">edges</span><span class="o">.</span><span class="n">id</span> <span class="ow">in</span> <span class="p">(</span><span class="n">select</span> <span class="n">old_id</span> <span class="kn">from</span> <span class="nn">segmented</span> <span class="n">where</span> <span class="n">i</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">)</span> <span class="p">);</span>
+       <span class="kn">from</span><span class="w"> </span><span class="nn">edges</span> <span class="k">as</span> <span class="n">edges</span> <span class="n">join</span> <span class="n">edges_noded</span> <span class="k">as</span> <span class="n">segments</span> <span class="n">on</span> <span class="p">(</span><span class="n">edges</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">segments</span><span class="o">.</span><span class="n">old_id</span><span class="p">)</span>
+       <span class="n">where</span> <span class="n">edges</span><span class="o">.</span><span class="n">id</span> <span class="ow">in</span> <span class="p">(</span><span class="n">select</span> <span class="n">old_id</span> <span class="kn">from</span><span class="w"> </span><span class="nn">segmented</span> <span class="n">where</span> <span class="n">i</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">)</span> <span class="p">);</span>
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">6</span>
 </pre></div>
 </div>
@@ -615,8 +615,8 @@ with edges 17 and 13.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.7.1.<br/>
-      Last updated on Dec 24, 2024.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.7.2.<br/>
+      Last updated on Jan 20, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

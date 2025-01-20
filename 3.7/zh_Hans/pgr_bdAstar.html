@@ -8,11 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pgr_bdAstar &#8212; pgRouting Manual (3.7)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=521dc130"></script>
+    <script src="_static/documentation_options.js?v=62d28862"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=8578d92c"></script>
@@ -45,7 +45,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.7.1</b></span>
+        <span class="navbar-text pull-left"><b>v3.7.2</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -212,56 +212,49 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_bdAstar','zh-Hans'));  </script>
             
-  <div class="line-block">
+  <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-bdastar">
-<span id="index-0"></span><h1><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code><a class="headerlink" href="#pgr-bdastar" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code><a class="headerlink" href="#pgr-bdastar" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> — 使用双向 A* 算法的最短路径。</p>
-<figure class="align-default" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/astar_search.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
-</a>
-<figcaption>
-<p><span class="caption-text">Boost 图内部</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
 <p class="rubric">可用性</p>
 <ul class="simple">
 <li><p>版本3.6.0</p>
 <ul>
 <li><p>标准输出列|short-generic-result|</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#one-to-one">一对一</a>) 增加 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 列。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#one-to-many">一对多</a>) 增加 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 列。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#many-to-one">多对一</a>) 增加 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 列。</p></li>
+<li><p>pgr_bdAstar(One to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> columns.</p></li>
+<li><p>pgr_bdAstar(One to Many) added <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> column.</p></li>
+<li><p>pgr_bdAstar(Many to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>版本3.2.0</p>
 <ul>
-<li><p>新 <strong>拟议</strong> 的签名：</p>
+<li><p>New proposed signature:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#combinations">组合</a>)</p></li>
+<li><p>pgr_bdAstar(组合)</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>版本3.0.0</p>
 <ul>
-<li><p><strong>官方</strong> 函数</p></li>
+<li><p>Function promoted to official.</p></li>
 </ul>
 </li>
 <li><p>版本2.5.0</p>
 <ul>
-<li><p>新 <strong>拟议</strong> 签名：</p>
+<li><p>新拟议的签名：</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#one-to-many">一对多</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#many-to-one">多对一</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#many-to-many">多对多</a>)</p></li>
+<li><p>pgr_bdAstar(One to Many)</p></li>
+<li><p>pgr_bdAstar(Many to One)</p></li>
+<li><p>pgr_bdAstar(Many to Many)</p></li>
 </ul>
 </li>
-<li><p>在 <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#one-to-one">一对一</a>)上的签名更改</p>
+<li><p>Signature change on pgr_bdAstar(One to One)</p>
 <ul>
 <li><p>不再支持旧签名</p></li>
 </ul>
@@ -270,7 +263,7 @@
 </li>
 <li><p>版本2.0.0</p>
 <ul>
-<li><p><strong>官方</strong> <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#one-to-one">一对一</a>)</p></li>
+<li><p>Official function.</p></li>
 </ul>
 </li>
 </ul>
@@ -310,15 +303,17 @@
 <li><p>运行时间： <span class="math notranslate nohighlight">\(O((E + V) * \log V)\)</span></p></li>
 </ul>
 <ul class="simple">
-<li><p>结果相当于`pgr_bdAStar(` <a class="reference internal" href="#one-to-one">一对一</a> <cite>)</cite> 结果的并集：</p>
+<li><p>The results are equivalent to the union of the results of the
+pgr_bdAStar(One to One) on the:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#one-to-many">一对多</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#many-to-one">多对一</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#many-to-many">多对多</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#combinations">组合</a>)</p></li>
+<li><p>pgr_bdAstar(One to Many)</p></li>
+<li><p>pgr_bdAstar(Many to One)</p></li>
+<li><p>pgr_bdAstar(Many to Many)</p></li>
+<li><p>pgr_bdAstar(组合)</p></li>
 </ul>
 </li>
 </ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -345,7 +340,7 @@
 <p class="admonition-title"></p>
 <div class="line-block">
 <div class="line">pgr_bdAstar(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>, [<strong>options</strong>])</div>
-<div class="line"><strong>options:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">heuristic,</span> <span class="pre">factor,</span> <span class="pre">epsilon]</span></code></div>
+<div class="line"><strong>options:</strong> [directed, heuristic, factor, epsilon]``</div>
 </div>
 <div class="line-block">
 <div class="line">Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
@@ -956,7 +951,7 @@
 <li><p><a class="reference internal" href="aStar-family.html"><span class="doc">A* - 函数族</span></a></p></li>
 <li><p><a class="reference internal" href="bdAstar-family.html"><span class="doc">双向A* - 函数族</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/astar_search.html">https://www.boost.org/libs/graph/doc/astar_search.html</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/astar_search.html">Boost: A* search</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/A*_search_algorithm">https://en.wikipedia.org/wiki/A*_search_algorithm</a></p></li>
 </ul>
 <p class="rubric">索引和表格</p>
@@ -979,8 +974,8 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.7.1.<br/>
-      Last updated on 12月 24, 2024.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.7.2.<br/>
+      Last updated on 1月 20, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

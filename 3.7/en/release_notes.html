@@ -8,11 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Release Notes &#8212; pgRouting Manual (3.7)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=f76df7f6"></script>
+    <script src="_static/documentation_options.js?v=5a3d873a"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=8578d92c"></script>
@@ -44,7 +44,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.7.1</b></span>
+        <span class="navbar-text pull-left"><b>v3.7.2</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -98,6 +98,7 @@
 <li><a class="reference internal" href="#">Release Notes</a><ul>
 <li><a class="reference internal" href="#pgrouting-3">pgRouting 3</a><ul>
 <li><a class="reference internal" href="#pgrouting-3-7">pgRouting 3.7</a><ul>
+<li><a class="reference internal" href="#pgrouting-3-7-2-release-notes">pgRouting 3.7.2 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-3-7-1-release-notes">pgRouting 3.7.1 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-3-7-0-release-notes">pgRouting 3.7.0 Release Notes</a></li>
 </ul>
@@ -267,6 +268,7 @@
 <li><a class="reference internal" href="#">Release Notes</a><ul>
 <li><a class="reference internal" href="#pgrouting-3">pgRouting 3</a><ul>
 <li><a class="reference internal" href="#pgrouting-3-7">pgRouting 3.7</a><ul>
+<li><a class="reference internal" href="#pgrouting-3-7-2-release-notes">pgRouting 3.7.2 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-3-7-1-release-notes">pgRouting 3.7.1 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-3-7-0-release-notes">pgRouting 3.7.0 Release Notes</a></li>
 </ul>
@@ -445,12 +447,35 @@
 <nav class="contents local" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-7-1-release-notes" id="id27">pgRouting 3.7.1 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-7-0-release-notes" id="id28">pgRouting 3.7.0 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-7-2-release-notes" id="id27">pgRouting 3.7.2 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-7-1-release-notes" id="id28">pgRouting 3.7.1 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-7-0-release-notes" id="id29">pgRouting 3.7.0 Release Notes</a></p></li>
 </ul>
 </nav>
+<section id="pgrouting-3-7-2-release-notes">
+<h4><a class="toc-backref" href="#id27" role="doc-backlink">pgRouting 3.7.2 Release Notes</a><a class="headerlink" href="#pgrouting-3-7-2-release-notes" title="Link to this heading">¶</a></h4>
+<p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.7.2%22">Git closed
+milestone for 3.7.2</a></p>
+<p class="rubric">Build</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2713">#2713</a> cmake missing
+some policies and min version</p>
+<ul>
+<li><p>Using OLD policies: CMP0148, CMP0144, CMP0167</p></li>
+<li><p>Minimum cmake version 3.12</p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Bug fixes</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2707">#2707</a> Build failure in
+pgRouting 3.7.1 on Alpine</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2706">#2706</a> winnie crashing
+on pgr_betweennessCentrality</p></li>
+</ul>
+</section>
 <section id="pgrouting-3-7-1-release-notes">
-<h4><a class="toc-backref" href="#id27" role="doc-backlink">pgRouting 3.7.1 Release Notes</a><a class="headerlink" href="#pgrouting-3-7-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id28" role="doc-backlink">pgRouting 3.7.1 Release Notes</a><a class="headerlink" href="#pgrouting-3-7-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.7.1%22">Git closed
 milestone for 3.7.1</a></p>
 <p class="rubric">Bug fixes</p>
@@ -466,7 +491,7 @@ vertex, the withPoints family do not return results.</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-7-0-release-notes">
-<h4><a class="toc-backref" href="#id28" role="doc-backlink">pgRouting 3.7.0 Release Notes</a><a class="headerlink" href="#pgrouting-3-7-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id29" role="doc-backlink">pgRouting 3.7.0 Release Notes</a><a class="headerlink" href="#pgrouting-3-7-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.7.0%22">Git closed
 milestone for 3.7.0</a></p>
 <p class="rubric">Support</p>
@@ -521,7 +546,7 @@ ignores directed flag and use negative values for identifiers.</p>
 </ul>
 <blockquote>
 <div><ul class="simple">
-<li><p>Promoted to <strong>proposed</strong> signature.</p></li>
+<li><p>Function promoted to proposed.</p></li>
 <li><p>Works for directed and undirected graphs.</p></li>
 </ul>
 </div></blockquote>
@@ -546,14 +571,14 @@ not work</p></li>
 <nav class="contents local" id="id1">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-6-3-release-notes" id="id29">pgRouting 3.6.3 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-6-2-release-notes" id="id30">pgRouting 3.6.2 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-6-1-release-notes" id="id31">pgRouting 3.6.1 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-6-0-release-notes" id="id32">pgRouting 3.6.0 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-6-3-release-notes" id="id30">pgRouting 3.6.3 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-6-2-release-notes" id="id31">pgRouting 3.6.2 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-6-1-release-notes" id="id32">pgRouting 3.6.1 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-6-0-release-notes" id="id33">pgRouting 3.6.0 Release Notes</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-6-3-release-notes">
-<h4><a class="toc-backref" href="#id29" role="doc-backlink">pgRouting 3.6.3 Release Notes</a><a class="headerlink" href="#pgrouting-3-6-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id30" role="doc-backlink">pgRouting 3.6.3 Release Notes</a><a class="headerlink" href="#pgrouting-3-6-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.6.3%22">Git closed
 milestone for 3.6.3</a></p>
 <p class="rubric">Build</p>
@@ -592,7 +617,7 @@ milestone for 3.6.3</a></p>
 </ul>
 </section>
 <section id="pgrouting-3-6-2-release-notes">
-<h4><a class="toc-backref" href="#id30" role="doc-backlink">pgRouting 3.6.2 Release Notes</a><a class="headerlink" href="#pgrouting-3-6-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id31" role="doc-backlink">pgRouting 3.6.2 Release Notes</a><a class="headerlink" href="#pgrouting-3-6-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.6.2%22">Git closed
 milestone for 3.6.2</a></p>
 <p class="rubric">Upgrade fix</p>
@@ -613,7 +638,7 @@ milestone for 3.6.2</a></p>
 </ul>
 </section>
 <section id="pgrouting-3-6-1-release-notes">
-<h4><a class="toc-backref" href="#id31" role="doc-backlink">pgRouting 3.6.1 Release Notes</a><a class="headerlink" href="#pgrouting-3-6-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id32" role="doc-backlink">pgRouting 3.6.1 Release Notes</a><a class="headerlink" href="#pgrouting-3-6-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.6.1%22">Git closed
 milestone for 3.6.1</a></p>
 <ul class="simple">
@@ -622,7 +647,7 @@ fails to build on OSX</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-6-0-release-notes">
-<h4><a class="toc-backref" href="#id32" role="doc-backlink">pgRouting 3.6.0 Release Notes</a><a class="headerlink" href="#pgrouting-3-6-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id33" role="doc-backlink">pgRouting 3.6.0 Release Notes</a><a class="headerlink" href="#pgrouting-3-6-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.6.0%22">Git closed
 milestone for 3.6.0</a></p>
 <p class="rubric">Official functions changes</p>
@@ -632,9 +657,9 @@ pgr_aStar</p>
 <ul>
 <li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>One to One</cite>) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> columns.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>One to Many</cite>) added <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> column.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> (<cite>Many to One</cite>) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
+<li><p>pgr_aStar(One to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> columns.</p></li>
+<li><p>pgr_aStar(One to Many) added <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> column.</p></li>
+<li><p>pgr_aStar(Many to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
 </ul>
 </li>
 </ul>
@@ -644,10 +669,10 @@ pgr_bdAstar</p>
 <ul>
 <li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>One to One</cite>) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>
+<li><p>pgr_bdAstar(One to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>
 columns.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>One to Many</cite>) added <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> column.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<cite>Many to One</cite>) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
+<li><p>pgr_bdAstar(One to Many) added <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> column.</p></li>
+<li><p>pgr_bdAstar(Many to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
 </ul>
 </li>
 </ul>
@@ -656,17 +681,17 @@ columns.</p></li>
 and modifying signature pgr_KSP</p>
 <ul>
 <li><p>Result columns standarized to: <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (One to One)</p>
+<li><p>pgr_ksp(One to One)</p>
 <ul>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> result columns.</p></li>
 </ul>
 </li>
-<li><p>New overload functions:</p>
+<li><p>New proposed signatures:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (One to Many)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (Many to One)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (Many to Many)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (Combinations)</p></li>
+<li><p>pgr_ksp(One to Many)</p></li>
+<li><p>pgr_ksp(Many to One)</p></li>
+<li><p>pgr_ksp(Many to Many)</p></li>
+<li><p>pgr_ksp(Combinations)</p></li>
 </ul>
 </li>
 </ul>
@@ -676,12 +701,12 @@ pgr_drivingdistance</p>
 <ul>
 <li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (Single vertex)</p>
+<li><p>pgr_drivingdistance(Single vertex)</p>
 <ul>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">depth</span></code> and <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> result columns.</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (Multiple vertices)</p>
+<li><p>pgr_drivingdistance(Multiple vertices)</p>
 <ul>
 <li><p>Result column name change: <code class="docutils literal notranslate"><span class="pre">from_v</span></code> to <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">depth</span></code> and <code class="docutils literal notranslate"><span class="pre">pred</span></code> result columns.</p></li>
@@ -700,18 +725,18 @@ and modifying signature pgr_withPointsDD</p>
 <li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
 unnamed compulsory <strong>driving side</strong>.</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<cite>Single vertex</cite>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<cite>Multiple vertices</cite>)</p></li>
+<li><p>pgr_withPointsDD(Single vertex)</p></li>
+<li><p>pgr_withPointsDD(Multiple vertices)</p></li>
 </ul>
 </li>
 <li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<cite>Single vertex</cite>)</p>
+<li><p>pgr_withPointsDD(Single vertex)</p>
 <ul>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">depth</span></code>, <code class="docutils literal notranslate"><span class="pre">pred</span></code> and <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<cite>Multiple vertices</cite>)</p>
+<li><p>pgr_withPointsDD(Multiple vertices)</p>
 <ul>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">depth</span></code>, <code class="docutils literal notranslate"><span class="pre">pred</span></code> columns.</p></li>
 </ul>
@@ -726,8 +751,8 @@ distance are included</p></li>
 </li>
 <li><p>Deprecated signatures</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withpointsdd(text,text,bigint,double</span> <span class="pre">precision,boolean,character,boolean)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withpointsdd(text,text,anyarray,double</span> <span class="pre">precision,boolean,character,boolean,boolean)</span></code></p></li>
+<li><p>pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)``</p></li>
+<li><p>pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)``</p></li>
 </ul>
 </li>
 </ul>
@@ -736,24 +761,24 @@ distance are included</p></li>
 and modifying signature pgr_withPointsKSP</p>
 <ul>
 <li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (One to One)</p>
+<li><p>pgr_withPointsKSP(One to One)</p>
 <ul>
 <li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
 unnamed compulsory <strong>driving side</strong>.</p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> result columns.</p></li>
 </ul>
 </li>
-<li><p>New overload functions</p>
+<li><p>New proposed signatures:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (One to Many)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (Many to One)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (Many to Many)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (Combinations)</p></li>
+<li><p>pgr_withPointsKSP(One to Many)</p></li>
+<li><p>pgr_withPointsKSP(Many to One)</p></li>
+<li><p>pgr_withPointsKSP(Many to Many)</p></li>
+<li><p>pgr_withPointsKSP(Combinations)</p></li>
 </ul>
 </li>
 <li><p>Deprecated signature</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,boolean)</span></code></p></li>
+<li><p>pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,boolean)``</p></li>
 </ul>
 </li>
 </ul>
@@ -793,12 +818,12 @@ deprecated messages</p></li>
 <nav class="contents local" id="id2">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-5-1-release-notes" id="id33">pgRouting 3.5.1 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-5-0-release-notes" id="id34">pgRouting 3.5.0 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-5-1-release-notes" id="id34">pgRouting 3.5.1 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-5-0-release-notes" id="id35">pgRouting 3.5.0 Release Notes</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-5-1-release-notes">
-<h4><a class="toc-backref" href="#id33" role="doc-backlink">pgRouting 3.5.1 Release Notes</a><a class="headerlink" href="#pgrouting-3-5-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id34" role="doc-backlink">pgRouting 3.5.1 Release Notes</a><a class="headerlink" href="#pgrouting-3-5-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.5.1%22">Git closed
 milestone for 3.5.1</a></p>
 <p class="rubric">Documentation fixes</p>
@@ -841,7 +866,7 @@ wildcards on SQL</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-5-0-release-notes">
-<h4><a class="toc-backref" href="#id34" role="doc-backlink">pgRouting 3.5.0 Release Notes</a><a class="headerlink" href="#pgrouting-3-5-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id35" role="doc-backlink">pgRouting 3.5.0 Release Notes</a><a class="headerlink" href="#pgrouting-3-5-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.5.0%22">Git closed
 milestone for 3.5.0</a></p>
 <p class="rubric">Official functions changes</p>
@@ -850,9 +875,9 @@ milestone for 3.5.0</a></p>
 <ul>
 <li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>One to One</cite>) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> columns.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>One to Many</cite>) added <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> column.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<cite>Many to One</cite>) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
+<li><p>pgr_dijkstra(One to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> columns.</p></li>
+<li><p>pgr_dijkstra(One to Many) added <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> column.</p></li>
+<li><p>pgr_dijkstra(Many to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
 </ul>
 </li>
 </ul>
@@ -865,13 +890,13 @@ milestone for 3.5.0</a></p>
 <nav class="contents local" id="id3">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-4-2-release-notes" id="id35">pgRouting 3.4.2 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-4-1-release-notes" id="id36">pgRouting 3.4.1 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-4-0-release-notes" id="id37">pgRouting 3.4.0 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-4-2-release-notes" id="id36">pgRouting 3.4.2 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-4-1-release-notes" id="id37">pgRouting 3.4.1 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-4-0-release-notes" id="id38">pgRouting 3.4.0 Release Notes</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-4-2-release-notes">
-<h4><a class="toc-backref" href="#id35" role="doc-backlink">pgRouting 3.4.2 Release Notes</a><a class="headerlink" href="#pgrouting-3-4-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id36" role="doc-backlink">pgRouting 3.4.2 Release Notes</a><a class="headerlink" href="#pgrouting-3-4-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.4.2%22">Git closed
 milestone for 3.4.2</a></p>
 <p class="rubric">Issue fixes</p>
@@ -883,7 +908,7 @@ pgr_createVerticesTable &amp; pgr_createTopology, variable should be of type Rec
 </ul>
 </section>
 <section id="pgrouting-3-4-1-release-notes">
-<h4><a class="toc-backref" href="#id36" role="doc-backlink">pgRouting 3.4.1 Release Notes</a><a class="headerlink" href="#pgrouting-3-4-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id37" role="doc-backlink">pgRouting 3.4.1 Release Notes</a><a class="headerlink" href="#pgrouting-3-4-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.4.1%22">Git closed
 milestone for 3.4.1</a></p>
 <p class="rubric">Issue fixes</p>
@@ -895,7 +920,7 @@ v3.4.0 does not upgrade from 3.3.3</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-4-0-release-notes">
-<h4><a class="toc-backref" href="#id37" role="doc-backlink">pgRouting 3.4.0 Release Notes</a><a class="headerlink" href="#pgrouting-3-4-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id38" role="doc-backlink">pgRouting 3.4.0 Release Notes</a><a class="headerlink" href="#pgrouting-3-4-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.4.0%22">Git closed
 milestone for 3.4.0</a></p>
 <p class="rubric">Issue fixes</p>
@@ -903,50 +928,50 @@ milestone for 3.4.0</a></p>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1891">#1891</a>:
 pgr_ksp doesn’t give all correct shortest path</p></li>
 </ul>
-<p class="rubric">New proposed functions</p>
+<p class="rubric">New proposed functions.</p>
 <ul class="simple">
 <li><p>With points</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code> (One Via)</p></li>
+<li><p>pgr_withPointsVia(One Via)</p></li>
 </ul>
 </li>
 <li><p>Turn Restrictions</p>
 <ul>
 <li><p>Via with turn restrictions</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> (One Via)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> (One Via)</p></li>
+<li><p>pgr_trspVia(One Via)</p></li>
+<li><p>pgr_trspVia_withPoints(One Via)</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code></p>
+<li><p>pgr_trsp</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (One to One)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (One to Many)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Many to One)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Many to Many)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (Combinations)</p></li>
+<li><p>pgr_trsp(One to One)</p></li>
+<li><p>pgr_trsp(One to Many)</p></li>
+<li><p>pgr_trsp(Many to One)</p></li>
+<li><p>pgr_trsp(Many to Many)</p></li>
+<li><p>pgr_trsp(Combinations)</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> (One to One)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> (One to Many)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> (Many to One)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> (Many to Many)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> (Combinations)</p></li>
+<li><p>pgr_trsp_withPoints(One to One)</p></li>
+<li><p>pgr_trsp_withPoints(One to Many)</p></li>
+<li><p>pgr_trsp_withPoints(Many to One)</p></li>
+<li><p>pgr_trsp_withPoints(Many to Many)</p></li>
+<li><p>pgr_trsp_withPoints(Combinations)</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>Topology</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_degree</span></code></p></li>
+<li><p>pgr_degree</p></li>
 </ul>
 </li>
 <li><p>Utilities</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code> (One point)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code> (Many points)</p></li>
+<li><p>pgr_findCloseEdges(One point)</p></li>
+<li><p>pgr_findCloseEdges(Many points)</p></li>
 </ul>
 </li>
 </ul>
@@ -954,12 +979,12 @@ pgr_ksp doesn’t give all correct shortest path</p></li>
 <ul class="simple">
 <li><p>Ordering</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_cuthillMckeeOrdering</span></code></p></li>
+<li><p>pgr_cuthillMckeeOrdering</p></li>
 </ul>
 </li>
 <li><p>Unclassified</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_hawickCircuits</span></code></p></li>
+<li><p>pgr_hawickCircuits</p></li>
 </ul>
 </li>
 </ul>
@@ -967,7 +992,7 @@ pgr_ksp doesn’t give all correct shortest path</p></li>
 <ul class="simple">
 <li><p>Flow functions</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch(text)</span></code></p>
+<li><p>pgr_maxCardinalityMatch(text)``</p>
 <ul>
 <li><p>Deprecating <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch(text,boolean)</span></code></p></li>
 </ul>
@@ -979,10 +1004,10 @@ pgr_ksp doesn’t give all correct shortest path</p></li>
 <ul class="simple">
 <li><p>Turn Restrictions</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp(text,integer,integer,boolean,boolean,text)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices(text,anyarray,boolean,boolean,text)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)</span></code></p></li>
+<li><p>pgr_trsp(text,integer,integer,boolean,boolean,text)</p></li>
+<li><p>pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text)</p></li>
+<li><p>pgr_trspViaVertices(text,anyarray,boolean,boolean,text)</p></li>
+<li><p>pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)</p></li>
 </ul>
 </li>
 </ul>
@@ -993,23 +1018,23 @@ pgr_ksp doesn’t give all correct shortest path</p></li>
 <nav class="contents local" id="id4">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-3-5-release-notes" id="id38">pgRouting 3.3.5 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-3-4-release-notes" id="id39">pgRouting 3.3.4 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-3-3-release-notes" id="id40">pgRouting 3.3.3 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-3-2-release-notes" id="id41">pgRouting 3.3.2 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-3-1-release-notes" id="id42">pgRouting 3.3.1 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-3-0-release-notes" id="id43">pgRouting 3.3.0 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3-5-release-notes" id="id39">pgRouting 3.3.5 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3-4-release-notes" id="id40">pgRouting 3.3.4 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3-3-release-notes" id="id41">pgRouting 3.3.3 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3-2-release-notes" id="id42">pgRouting 3.3.2 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3-1-release-notes" id="id43">pgRouting 3.3.1 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3-0-release-notes" id="id44">pgRouting 3.3.0 Release Notes</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-3-5-release-notes">
-<h4><a class="toc-backref" href="#id38" role="doc-backlink">pgRouting 3.3.5 Release Notes</a><a class="headerlink" href="#pgrouting-3-3-5-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id39" role="doc-backlink">pgRouting 3.3.5 Release Notes</a><a class="headerlink" href="#pgrouting-3-3-5-release-notes" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2401">#2401</a>:
 pgRouting 3.4.0 do not build docs when sphinx is too low or missing</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-3-4-release-notes">
-<h4><a class="toc-backref" href="#id39" role="doc-backlink">pgRouting 3.3.4 Release Notes</a><a class="headerlink" href="#pgrouting-3-3-4-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id40" role="doc-backlink">pgRouting 3.3.4 Release Notes</a><a class="headerlink" href="#pgrouting-3-3-4-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.4%22">Git closed
 milestone for 3.3.4</a></p>
 <p class="rubric">Issue fixes</p>
@@ -1019,7 +1044,7 @@ pgRouting 3.3.3 does not build in focal</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-3-3-release-notes">
-<h4><a class="toc-backref" href="#id40" role="doc-backlink">pgRouting 3.3.3 Release Notes</a><a class="headerlink" href="#pgrouting-3-3-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id41" role="doc-backlink">pgRouting 3.3.3 Release Notes</a><a class="headerlink" href="#pgrouting-3-3-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.3%22">Git closed
 milestone for 3.3.3</a></p>
 <p class="rubric">Issue fixes</p>
@@ -1031,7 +1056,7 @@ pgr_ksp doesn’t give all correct shortest path</p></li>
 <ul class="simple">
 <li><p>Flow functions</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch(text,boolean)</span></code></p>
+<li><p>pgr_maxCardinalityMatch(text,boolean)</p>
 <ul>
 <li><p>Ignoring optional boolean parameter, as the algorithm works only for
 undirected graphs.</p></li>
@@ -1042,7 +1067,7 @@ undirected graphs.</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-3-2-release-notes">
-<h4><a class="toc-backref" href="#id41" role="doc-backlink">pgRouting 3.3.2 Release Notes</a><a class="headerlink" href="#pgrouting-3-3-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id42" role="doc-backlink">pgRouting 3.3.2 Release Notes</a><a class="headerlink" href="#pgrouting-3-3-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.2%22">Git closed
 milestone for 3.3.2</a></p>
 <ul>
@@ -1087,7 +1112,7 @@ Apply clang-tidy performance-*</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-3-1-release-notes">
-<h4><a class="toc-backref" href="#id42" role="doc-backlink">pgRouting 3.3.1 Release Notes</a><a class="headerlink" href="#pgrouting-3-3-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id43" role="doc-backlink">pgRouting 3.3.1 Release Notes</a><a class="headerlink" href="#pgrouting-3-3-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.1%22">Git closed
 milestone for 3.3.1</a>
 on Github.</p>
@@ -1098,7 +1123,7 @@ on Github.</p>
 </ul>
 </section>
 <section id="pgrouting-3-3-0-release-notes">
-<h4><a class="toc-backref" href="#id43" role="doc-backlink">pgRouting 3.3.0 Release Notes</a><a class="headerlink" href="#pgrouting-3-3-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id44" role="doc-backlink">pgRouting 3.3.0 Release Notes</a><a class="headerlink" href="#pgrouting-3-3-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.0%22">Git closed
 milestone for 3.3.0</a>
 on Github.</p>
@@ -1164,13 +1189,13 @@ on Github.</p>
 <nav class="contents local" id="id5">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-2-2-release-notes" id="id44">pgRouting 3.2.2 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-2-1-release-notes" id="id45">pgRouting 3.2.1 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-2-0-release-notes" id="id46">pgRouting 3.2.0 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-2-2-release-notes" id="id45">pgRouting 3.2.2 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-2-1-release-notes" id="id46">pgRouting 3.2.1 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-2-0-release-notes" id="id47">pgRouting 3.2.0 Release Notes</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-2-2-release-notes">
-<h4><a class="toc-backref" href="#id44" role="doc-backlink">pgRouting 3.2.2 Release Notes</a><a class="headerlink" href="#pgrouting-3-2-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id45" role="doc-backlink">pgRouting 3.2.2 Release Notes</a><a class="headerlink" href="#pgrouting-3-2-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.2.2%22">Git closed
 milestone for 3.2.2</a>
 on Github.</p>
@@ -1181,7 +1206,7 @@ on Github.</p>
 </ul>
 </section>
 <section id="pgrouting-3-2-1-release-notes">
-<h4><a class="toc-backref" href="#id45" role="doc-backlink">pgRouting 3.2.1 Release Notes</a><a class="headerlink" href="#pgrouting-3-2-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id46" role="doc-backlink">pgRouting 3.2.1 Release Notes</a><a class="headerlink" href="#pgrouting-3-2-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.2.1%22">Git closed
 milestone for 3.2.1</a>
 on Github.</p>
@@ -1197,7 +1222,7 @@ on Github.</p>
 </ul>
 </section>
 <section id="pgrouting-3-2-0-release-notes">
-<h4><a class="toc-backref" href="#id46" role="doc-backlink">pgRouting 3.2.0 Release Notes</a><a class="headerlink" href="#pgrouting-3-2-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id47" role="doc-backlink">pgRouting 3.2.0 Release Notes</a><a class="headerlink" href="#pgrouting-3-2-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.2.0%22">Git closed
 milestone for 3.2.0</a>
 on Github.</p>
@@ -1249,7 +1274,7 @@ min version to 1.56</p>
 </li>
 <li><p>pgr_sequentialVertexColoring</p></li>
 </ul>
-<p class="rubric">New proposed functions</p>
+<p class="rubric">New proposed functions.</p>
 <ul class="simple">
 <li><p>Astar</p>
 <ul>
@@ -1288,15 +1313,15 @@ min version to 1.56</p>
 <nav class="contents local" id="id6">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-1-4-release-notes" id="id47">pgRouting 3.1.4 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-1-3-release-notes" id="id48">pgRouting 3.1.3 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-1-2-release-notes" id="id49">pgRouting 3.1.2 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-1-1-release-notes" id="id50">pgRouting 3.1.1 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-1-0-release-notes" id="id51">pgRouting 3.1.0 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-1-4-release-notes" id="id48">pgRouting 3.1.4 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-1-3-release-notes" id="id49">pgRouting 3.1.3 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-1-2-release-notes" id="id50">pgRouting 3.1.2 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-1-1-release-notes" id="id51">pgRouting 3.1.1 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-1-0-release-notes" id="id52">pgRouting 3.1.0 Release Notes</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-1-4-release-notes">
-<h4><a class="toc-backref" href="#id47" role="doc-backlink">pgRouting 3.1.4 Release Notes</a><a class="headerlink" href="#pgrouting-3-1-4-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id48" role="doc-backlink">pgRouting 3.1.4 Release Notes</a><a class="headerlink" href="#pgrouting-3-1-4-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.1.4%22">Git closed
 milestone for 3.1.4</a>
 on Github.</p>
@@ -1307,7 +1332,7 @@ RHEL 7</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-1-3-release-notes">
-<h4><a class="toc-backref" href="#id48" role="doc-backlink">pgRouting 3.1.3 Release Notes</a><a class="headerlink" href="#pgrouting-3-1-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id49" role="doc-backlink">pgRouting 3.1.3 Release Notes</a><a class="headerlink" href="#pgrouting-3-1-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.1.3%22">Git closed
 milestone for 3.1.3</a>
 on Github.</p>
@@ -1322,7 +1347,7 @@ crash server</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-1-2-release-notes">
-<h4><a class="toc-backref" href="#id49" role="doc-backlink">pgRouting 3.1.2 Release Notes</a><a class="headerlink" href="#pgrouting-3-1-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id50" role="doc-backlink">pgRouting 3.1.2 Release Notes</a><a class="headerlink" href="#pgrouting-3-1-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.1.2%22">Git closed
 milestone for 3.1.2</a>
 on Github.</p>
@@ -1341,7 +1366,7 @@ warnings when using clang compiler</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-1-1-release-notes">
-<h4><a class="toc-backref" href="#id50" role="doc-backlink">pgRouting 3.1.1 Release Notes</a><a class="headerlink" href="#pgrouting-3-1-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id51" role="doc-backlink">pgRouting 3.1.1 Release Notes</a><a class="headerlink" href="#pgrouting-3-1-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.1.1%22">Git closed
 milestone for 3.1.1</a>
 on Github.</p>
@@ -1360,11 +1385,11 @@ pgr_chinesePostman crash on test data</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-1-0-release-notes">
-<h4><a class="toc-backref" href="#id51" role="doc-backlink">pgRouting 3.1.0 Release Notes</a><a class="headerlink" href="#pgrouting-3-1-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id52" role="doc-backlink">pgRouting 3.1.0 Release Notes</a><a class="headerlink" href="#pgrouting-3-1-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.1.0%22">Git closed
 milestone for 3.1.0</a>
 on Github.</p>
-<p class="rubric">New proposed functions</p>
+<p class="rubric">New proposed functions.</p>
 <ul class="simple">
 <li><p>pgr_dijkstra(combinations)</p></li>
 <li><p>pgr_dijkstraCost(combinations)</p></li>
@@ -1380,17 +1405,17 @@ on Github.</p>
 <nav class="contents local" id="id7">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-0-6-release-notes" id="id52">pgRouting 3.0.6 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-0-5-release-notes" id="id53">pgRouting 3.0.5 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-0-4-release-notes" id="id54">pgRouting 3.0.4 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-0-3-release-notes" id="id55">pgRouting 3.0.3 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-0-2-release-notes" id="id56">pgRouting 3.0.2 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-0-1-release-notes" id="id57">pgRouting 3.0.1 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-0-0-release-notes" id="id58">pgRouting 3.0.0 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-6-release-notes" id="id53">pgRouting 3.0.6 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-5-release-notes" id="id54">pgRouting 3.0.5 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-4-release-notes" id="id55">pgRouting 3.0.4 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-3-release-notes" id="id56">pgRouting 3.0.3 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-2-release-notes" id="id57">pgRouting 3.0.2 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-1-release-notes" id="id58">pgRouting 3.0.1 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-0-release-notes" id="id59">pgRouting 3.0.0 Release Notes</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-0-6-release-notes">
-<h4><a class="toc-backref" href="#id52" role="doc-backlink">pgRouting 3.0.6 Release Notes</a><a class="headerlink" href="#pgrouting-3-0-6-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id53" role="doc-backlink">pgRouting 3.0.6 Release Notes</a><a class="headerlink" href="#pgrouting-3-0-6-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.6%22">Git closed
 milestone for 3.0.6</a>
 on Github.</p>
@@ -1401,7 +1426,7 @@ RHEL 7</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-0-5-release-notes">
-<h4><a class="toc-backref" href="#id53" role="doc-backlink">pgRouting 3.0.5 Release Notes</a><a class="headerlink" href="#pgrouting-3-0-5-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id54" role="doc-backlink">pgRouting 3.0.5 Release Notes</a><a class="headerlink" href="#pgrouting-3-0-5-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.5%22">Git closed
 milestone for 3.0.5</a>
 on Github.</p>
@@ -1416,7 +1441,7 @@ crash server</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-0-4-release-notes">
-<h4><a class="toc-backref" href="#id54" role="doc-backlink">pgRouting 3.0.4 Release Notes</a><a class="headerlink" href="#pgrouting-3-0-4-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id55" role="doc-backlink">pgRouting 3.0.4 Release Notes</a><a class="headerlink" href="#pgrouting-3-0-4-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.4%22">Git closed
 milestone for 3.0.4</a>
 on Github.</p>
@@ -1435,7 +1460,7 @@ warnings when using clang compiler</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-0-3-release-notes">
-<h4><a class="toc-backref" href="#id55" role="doc-backlink">pgRouting 3.0.3 Release Notes</a><a class="headerlink" href="#pgrouting-3-0-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id56" role="doc-backlink">pgRouting 3.0.3 Release Notes</a><a class="headerlink" href="#pgrouting-3-0-3-release-notes" title="Link to this heading">¶</a></h4>
 <p class="rubric">Backport issue fixes</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1733">#1733</a>: pgr_bdAstar
@@ -1451,7 +1476,7 @@ pgr_chinesePostman crash on test data</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-0-2-release-notes">
-<h4><a class="toc-backref" href="#id56" role="doc-backlink">pgRouting 3.0.2 Release Notes</a><a class="headerlink" href="#pgrouting-3-0-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id57" role="doc-backlink">pgRouting 3.0.2 Release Notes</a><a class="headerlink" href="#pgrouting-3-0-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.2%22">Git closed
 milestone for 3.0.2</a>
 on Github.</p>
@@ -1462,7 +1487,7 @@ build failing</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-0-1-release-notes">
-<h4><a class="toc-backref" href="#id57" role="doc-backlink">pgRouting 3.0.1 Release Notes</a><a class="headerlink" href="#pgrouting-3-0-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id58" role="doc-backlink">pgRouting 3.0.1 Release Notes</a><a class="headerlink" href="#pgrouting-3-0-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.1%22">Git closed
 milestone for 3.0.1</a>
 on Github.</p>
@@ -1473,7 +1498,7 @@ cancel requests in C /C++ code</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-0-0-release-notes">
-<h4><a class="toc-backref" href="#id58" role="doc-backlink">pgRouting 3.0.0 Release Notes</a><a class="headerlink" href="#pgrouting-3-0-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id59" role="doc-backlink">pgRouting 3.0.0 Release Notes</a><a class="headerlink" href="#pgrouting-3-0-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.0%22">Git closed
 milestone for 3.0.0</a>
 on Github.</p>
@@ -1666,28 +1691,28 @@ information</p></li>
 <nav class="contents local" id="minors-2-x">
 <p class="topic-title">Minors 2.x</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-6" id="id59">pgRouting 2.6</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-5" id="id60">pgRouting 2.5</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-4" id="id61">pgRouting 2.4</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-3" id="id62">pgRouting 2.3</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-2" id="id63">pgRouting 2.2</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-1" id="id64">pgRouting 2.1</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-0" id="id65">pgRouting 2.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-6" id="id60">pgRouting 2.6</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5" id="id61">pgRouting 2.5</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-4" id="id62">pgRouting 2.4</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-3" id="id63">pgRouting 2.3</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2" id="id64">pgRouting 2.2</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-1" id="id65">pgRouting 2.1</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-0" id="id66">pgRouting 2.0</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-6">
-<h3><a class="toc-backref" href="#id59" role="doc-backlink">pgRouting 2.6</a><a class="headerlink" href="#pgrouting-2-6" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id60" role="doc-backlink">pgRouting 2.6</a><a class="headerlink" href="#pgrouting-2-6" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id9">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-6-3-release-notes" id="id66">pgRouting 2.6.3 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-6-2-release-notes" id="id67">pgRouting 2.6.2 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-6-1-release-notes" id="id68">pgRouting 2.6.1 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-6-0-release-notes" id="id69">pgRouting 2.6.0 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-6-3-release-notes" id="id67">pgRouting 2.6.3 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-6-2-release-notes" id="id68">pgRouting 2.6.2 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-6-1-release-notes" id="id69">pgRouting 2.6.1 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-6-0-release-notes" id="id70">pgRouting 2.6.0 Release Notes</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-6-3-release-notes">
-<h4><a class="toc-backref" href="#id66" role="doc-backlink">pgRouting 2.6.3 Release Notes</a><a class="headerlink" href="#pgrouting-2-6-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id67" role="doc-backlink">pgRouting 2.6.3 Release Notes</a><a class="headerlink" href="#pgrouting-2-6-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.3%22%20">Git closed milestone for 2.6.3</a>
 on Github.</p>
 <p class="rubric">Bug fixes</p>
@@ -1701,7 +1726,7 @@ FindPostgreSQL.cmake</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-6-2-release-notes">
-<h4><a class="toc-backref" href="#id67" role="doc-backlink">pgRouting 2.6.2 Release Notes</a><a class="headerlink" href="#pgrouting-2-6-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id68" role="doc-backlink">pgRouting 2.6.2 Release Notes</a><a class="headerlink" href="#pgrouting-2-6-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.2%22%20">Git closed milestone for 2.6.2</a>
 on Github.</p>
 <p class="rubric">Bug fixes</p>
@@ -1715,7 +1740,7 @@ python3 and perl5</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-6-1-release-notes">
-<h4><a class="toc-backref" href="#id68" role="doc-backlink">pgRouting 2.6.1 Release Notes</a><a class="headerlink" href="#pgrouting-2-6-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id69" role="doc-backlink">pgRouting 2.6.1 Release Notes</a><a class="headerlink" href="#pgrouting-2-6-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.1%22%20">Git closed milestone for 2.6.1</a>
 on Github.</p>
 <ul class="simple">
@@ -1755,7 +1780,7 @@ on Github.</p>
 </ul>
 </section>
 <section id="pgrouting-2-6-0-release-notes">
-<h4><a class="toc-backref" href="#id69" role="doc-backlink">pgRouting 2.6.0 Release Notes</a><a class="headerlink" href="#pgrouting-2-6-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id70" role="doc-backlink">pgRouting 2.6.0 Release Notes</a><a class="headerlink" href="#pgrouting-2-6-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.0%22%20">Git closed milestone for 2.6.0</a>
 on Github.</p>
 <p class="rubric">New experimental functions</p>
@@ -1795,20 +1820,20 @@ text])</p>
 </section>
 </section>
 <section id="pgrouting-2-5">
-<h3><a class="toc-backref" href="#id60" role="doc-backlink">pgRouting 2.5</a><a class="headerlink" href="#pgrouting-2-5" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id61" role="doc-backlink">pgRouting 2.5</a><a class="headerlink" href="#pgrouting-2-5" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id10">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-5-5-release-notes" id="id70">pgRouting 2.5.5 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-5-4-release-notes" id="id71">pgRouting 2.5.4 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-5-3-release-notes" id="id72">pgRouting 2.5.3 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-5-2-release-notes" id="id73">pgRouting 2.5.2 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-5-1-release-notes" id="id74">pgRouting 2.5.1 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-5-0-release-notes" id="id75">pgRouting 2.5.0 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-5-release-notes" id="id71">pgRouting 2.5.5 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-4-release-notes" id="id72">pgRouting 2.5.4 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-3-release-notes" id="id73">pgRouting 2.5.3 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-2-release-notes" id="id74">pgRouting 2.5.2 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-1-release-notes" id="id75">pgRouting 2.5.1 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-0-release-notes" id="id76">pgRouting 2.5.0 Release Notes</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-5-5-release-notes">
-<h4><a class="toc-backref" href="#id70" role="doc-backlink">pgRouting 2.5.5 Release Notes</a><a class="headerlink" href="#pgrouting-2-5-5-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id71" role="doc-backlink">pgRouting 2.5.5 Release Notes</a><a class="headerlink" href="#pgrouting-2-5-5-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.5%22%20">Git closed milestone for 2.5.5</a>
 on Github.</p>
 <p class="rubric">Bug fixes</p>
@@ -1819,7 +1844,7 @@ on Github.</p>
 </ul>
 </section>
 <section id="pgrouting-2-5-4-release-notes">
-<h4><a class="toc-backref" href="#id71" role="doc-backlink">pgRouting 2.5.4 Release Notes</a><a class="headerlink" href="#pgrouting-2-5-4-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id72" role="doc-backlink">pgRouting 2.5.4 Release Notes</a><a class="headerlink" href="#pgrouting-2-5-4-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.4%22%20">Git closed milestone for 2.5.4</a> on Github.</p>
 <ul class="simple">
 <li><p>Fixes server crash on several functions.</p>
@@ -1858,7 +1883,7 @@ on Github.</p>
 </ul>
 </section>
 <section id="pgrouting-2-5-3-release-notes">
-<h4><a class="toc-backref" href="#id72" role="doc-backlink">pgRouting 2.5.3 Release Notes</a><a class="headerlink" href="#pgrouting-2-5-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id73" role="doc-backlink">pgRouting 2.5.3 Release Notes</a><a class="headerlink" href="#pgrouting-2-5-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.3%22%20">Git closed milestone for 2.5.3</a>
 on Github.</p>
 <p class="rubric">Bug fixes</p>
@@ -1868,7 +1893,7 @@ postgreSQL</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-5-2-release-notes">
-<h4><a class="toc-backref" href="#id73" role="doc-backlink">pgRouting 2.5.2 Release Notes</a><a class="headerlink" href="#pgrouting-2-5-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id74" role="doc-backlink">pgRouting 2.5.2 Release Notes</a><a class="headerlink" href="#pgrouting-2-5-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.2%22%20">Git closed milestone for 2.5.2</a> on Github.</p>
 <p class="rubric">Bug fixes</p>
 <ul class="simple">
@@ -1876,7 +1901,7 @@ postgreSQL</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-5-1-release-notes">
-<h4><a class="toc-backref" href="#id74" role="doc-backlink">pgRouting 2.5.1 Release Notes</a><a class="headerlink" href="#pgrouting-2-5-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id75" role="doc-backlink">pgRouting 2.5.1 Release Notes</a><a class="headerlink" href="#pgrouting-2-5-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.1%22%20">Git closed milestone for 2.5.1</a>
 on Github.</p>
 <p class="rubric">Bug fixes</p>
@@ -1885,7 +1910,7 @@ on Github.</p>
 </ul>
 </section>
 <section id="pgrouting-2-5-0-release-notes">
-<h4><a class="toc-backref" href="#id75" role="doc-backlink">pgRouting 2.5.0 Release Notes</a><a class="headerlink" href="#pgrouting-2-5-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id76" role="doc-backlink">pgRouting 2.5.0 Release Notes</a><a class="headerlink" href="#pgrouting-2-5-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.5.0%22+is%3Aclosed">Git closed issues for 2.5.0</a>
 on Github.</p>
 <p class="rubric">enhancement:</p>
@@ -1906,7 +1931,7 @@ on Github.</p>
 <ul class="simple">
 <li><p>pgr_bdAstar(one to one)</p></li>
 </ul>
-<p class="rubric">New Proposed functions</p>
+<p class="rubric">New proposed functions.</p>
 <ul class="simple">
 <li><p>pgr_bdAstar(one to many)</p></li>
 <li><p>pgr_bdAstar(many to one)</p></li>
@@ -1950,17 +1975,17 @@ on Github.</p>
 </section>
 </section>
 <section id="pgrouting-2-4">
-<h3><a class="toc-backref" href="#id61" role="doc-backlink">pgRouting 2.4</a><a class="headerlink" href="#pgrouting-2-4" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id62" role="doc-backlink">pgRouting 2.4</a><a class="headerlink" href="#pgrouting-2-4" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id11">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-4-2-release-notes" id="id76">pgRouting 2.4.2 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-4-1-release-notes" id="id77">pgRouting 2.4.1 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-4-0-release-notes" id="id78">pgRouting 2.4.0 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-4-2-release-notes" id="id77">pgRouting 2.4.2 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-4-1-release-notes" id="id78">pgRouting 2.4.1 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-4-0-release-notes" id="id79">pgRouting 2.4.0 Release Notes</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-4-2-release-notes">
-<h4><a class="toc-backref" href="#id76" role="doc-backlink">pgRouting 2.4.2 Release Notes</a><a class="headerlink" href="#pgrouting-2-4-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id77" role="doc-backlink">pgRouting 2.4.2 Release Notes</a><a class="headerlink" href="#pgrouting-2-4-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.4.2%22%20">Git closed milestone for 2.4.2</a>
 on Github.</p>
 <p class="rubric">Improvement</p>
@@ -1974,7 +1999,7 @@ on Github.</p>
 </ul>
 </section>
 <section id="pgrouting-2-4-1-release-notes">
-<h4><a class="toc-backref" href="#id77" role="doc-backlink">pgRouting 2.4.1 Release Notes</a><a class="headerlink" href="#pgrouting-2-4-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id78" role="doc-backlink">pgRouting 2.4.1 Release Notes</a><a class="headerlink" href="#pgrouting-2-4-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.4.1%22%20">Git closed milestone for 2.4.1</a>
 on Github.</p>
 <p class="rubric">Bug fixes</p>
@@ -1984,14 +2009,14 @@ on Github.</p>
 </ul>
 </section>
 <section id="pgrouting-2-4-0-release-notes">
-<h4><a class="toc-backref" href="#id78" role="doc-backlink">pgRouting 2.4.0 Release Notes</a><a class="headerlink" href="#pgrouting-2-4-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id79" role="doc-backlink">pgRouting 2.4.0 Release Notes</a><a class="headerlink" href="#pgrouting-2-4-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.4.0%22+is%3Aclosed">Git closed issues for 2.4.0</a>
 on Github.</p>
-<p class="rubric">New Signatures</p>
+<p class="rubric">New Function.</p>
 <ul class="simple">
 <li><p>pgr_bdDijkstra</p></li>
 </ul>
-<p class="rubric">New Proposed Signatures</p>
+<p class="rubric">New proposed signatures:</p>
 <ul class="simple">
 <li><p>pgr_maxFlow</p></li>
 <li><p>pgr_astar(one to many)</p></li>
@@ -2003,7 +2028,7 @@ on Github.</p>
 <li><p>pgr_astarCost(many to many)</p></li>
 <li><p>pgr_astarCostMatrix</p></li>
 </ul>
-<p class="rubric">Deprecated signatures</p>
+<p class="rubric">Deprecated signatures.</p>
 <ul class="simple">
 <li><p>pgr_bddijkstra - use pgr_bdDijkstra instead</p></li>
 </ul>
@@ -2023,7 +2048,7 @@ on Github.</p>
 </section>
 </section>
 <section id="pgrouting-2-3">
-<h3><a class="toc-backref" href="#id62" role="doc-backlink">pgRouting 2.3</a><a class="headerlink" href="#pgrouting-2-3" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id63" role="doc-backlink">pgRouting 2.3</a><a class="headerlink" href="#pgrouting-2-3" title="Link to this heading">¶</a></h3>
 <section id="pgrouting-2-3-2-release-notes">
 <h4>pgRouting 2.3.2 Release Notes<a class="headerlink" href="#pgrouting-2-3-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.2%22+is%3Aclosed">Git closed issues for 2.3.2</a>
@@ -2063,7 +2088,7 @@ on Github.</p>
 <ul class="simple">
 <li><p>pgr_eucledianTSP</p></li>
 </ul>
-<p class="rubric">New Proposed functions</p>
+<p class="rubric">New proposed functions.</p>
 <ul class="simple">
 <li><p>pgr_dijkstraCostMatrix</p></li>
 <li><p>pgr_withPointsCostMatrix</p></li>
@@ -2101,19 +2126,19 @@ on Github.</p>
 </section>
 </section>
 <section id="pgrouting-2-2">
-<h3><a class="toc-backref" href="#id63" role="doc-backlink">pgRouting 2.2</a><a class="headerlink" href="#pgrouting-2-2" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id64" role="doc-backlink">pgRouting 2.2</a><a class="headerlink" href="#pgrouting-2-2" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id12">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-2-4-release-notes" id="id79">pgRouting 2.2.4 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-2-3-release-notes" id="id80">pgRouting 2.2.3 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-2-2-release-notes" id="id81">pgRouting 2.2.2 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-2-1-release-notes" id="id82">pgRouting 2.2.1 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-2-0-release-notes" id="id83">pgRouting 2.2.0 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2-4-release-notes" id="id80">pgRouting 2.2.4 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2-3-release-notes" id="id81">pgRouting 2.2.3 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2-2-release-notes" id="id82">pgRouting 2.2.2 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2-1-release-notes" id="id83">pgRouting 2.2.1 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2-0-release-notes" id="id84">pgRouting 2.2.0 Release Notes</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-2-4-release-notes">
-<h4><a class="toc-backref" href="#id79" role="doc-backlink">pgRouting 2.2.4 Release Notes</a><a class="headerlink" href="#pgrouting-2-2-4-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id80" role="doc-backlink">pgRouting 2.2.4 Release Notes</a><a class="headerlink" href="#pgrouting-2-2-4-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.4%22+is%3Aclosed">Git closed issues for 2.2.4</a>
 on Github.</p>
 <p class="rubric">Bug Fixes</p>
@@ -2124,7 +2149,7 @@ on Github.</p>
 </ul>
 </section>
 <section id="pgrouting-2-2-3-release-notes">
-<h4><a class="toc-backref" href="#id80" role="doc-backlink">pgRouting 2.2.3 Release Notes</a><a class="headerlink" href="#pgrouting-2-2-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id81" role="doc-backlink">pgRouting 2.2.3 Release Notes</a><a class="headerlink" href="#pgrouting-2-2-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.3%22+is%3Aclosed">Git closed issues for 2.2.3</a>
 on Github.</p>
 <p class="rubric">Bug Fixes</p>
@@ -2133,7 +2158,7 @@ on Github.</p>
 </ul>
 </section>
 <section id="pgrouting-2-2-2-release-notes">
-<h4><a class="toc-backref" href="#id81" role="doc-backlink">pgRouting 2.2.2 Release Notes</a><a class="headerlink" href="#pgrouting-2-2-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id82" role="doc-backlink">pgRouting 2.2.2 Release Notes</a><a class="headerlink" href="#pgrouting-2-2-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.2%22+is%3Aclosed">Git closed issues for 2.2.2</a>
 on Github.</p>
 <p class="rubric">Bug Fixes</p>
@@ -2142,7 +2167,7 @@ on Github.</p>
 </ul>
 </section>
 <section id="pgrouting-2-2-1-release-notes">
-<h4><a class="toc-backref" href="#id82" role="doc-backlink">pgRouting 2.2.1 Release Notes</a><a class="headerlink" href="#pgrouting-2-2-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id83" role="doc-backlink">pgRouting 2.2.1 Release Notes</a><a class="headerlink" href="#pgrouting-2-2-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A2.2.1+is%3Aclosed">Git closed issues for 2.2.1</a>
 on Github.</p>
 <p class="rubric">Bug Fixes</p>
@@ -2152,7 +2177,7 @@ on Github.</p>
 </ul>
 </section>
 <section id="pgrouting-2-2-0-release-notes">
-<h4><a class="toc-backref" href="#id83" role="doc-backlink">pgRouting 2.2.0 Release Notes</a><a class="headerlink" href="#pgrouting-2-2-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id84" role="doc-backlink">pgRouting 2.2.0 Release Notes</a><a class="headerlink" href="#pgrouting-2-2-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.0%22+is%3Aclosed">Git closed issues for 2.2.0</a>
 on Github.</p>
 <p class="rubric">Improvements</p>
@@ -2206,15 +2231,15 @@ on Github.</p>
 </section>
 </section>
 <section id="pgrouting-2-1">
-<h3><a class="toc-backref" href="#id64" role="doc-backlink">pgRouting 2.1</a><a class="headerlink" href="#pgrouting-2-1" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id65" role="doc-backlink">pgRouting 2.1</a><a class="headerlink" href="#pgrouting-2-1" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id13">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-1-0-release-notes" id="id84">pgRouting 2.1.0 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-1-0-release-notes" id="id85">pgRouting 2.1.0 Release Notes</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-1-0-release-notes">
-<h4><a class="toc-backref" href="#id84" role="doc-backlink">pgRouting 2.1.0 Release Notes</a><a class="headerlink" href="#pgrouting-2-1-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id85" role="doc-backlink">pgRouting 2.1.0 Release Notes</a><a class="headerlink" href="#pgrouting-2-1-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed">Git closed issues for 2.1.0</a>
 on Github.</p>
 <p class="rubric">New Signatures</p>
@@ -2301,16 +2326,16 @@ geometries.</p></li>
 </section>
 </section>
 <section id="pgrouting-2-0">
-<h3><a class="toc-backref" href="#id65" role="doc-backlink">pgRouting 2.0</a><a class="headerlink" href="#pgrouting-2-0" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id66" role="doc-backlink">pgRouting 2.0</a><a class="headerlink" href="#pgrouting-2-0" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id14">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-0-1-release-notes" id="id85">pgRouting 2.0.1 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-0-0-release-notes" id="id86">pgRouting 2.0.0 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-0-1-release-notes" id="id86">pgRouting 2.0.1 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-0-0-release-notes" id="id87">pgRouting 2.0.0 Release Notes</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-0-1-release-notes">
-<h4><a class="toc-backref" href="#id85" role="doc-backlink">pgRouting 2.0.1 Release Notes</a><a class="headerlink" href="#pgrouting-2-0-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id86" role="doc-backlink">pgRouting 2.0.1 Release Notes</a><a class="headerlink" href="#pgrouting-2-0-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>Minor bug fixes.</p>
 <p class="rubric">Bug Fixes</p>
 <ul class="simple">
@@ -2318,7 +2343,7 @@ geometries.</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-0-0-release-notes">
-<h4><a class="toc-backref" href="#id86" role="doc-backlink">pgRouting 2.0.0 Release Notes</a><a class="headerlink" href="#pgrouting-2-0-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id87" role="doc-backlink">pgRouting 2.0.0 Release Notes</a><a class="headerlink" href="#pgrouting-2-0-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.0.0%22+is%3Aclosed">Git closed issues for 2.0.0</a>
 on Github.</p>
 <p>With the release of pgRouting 2.0.0 the library has abandoned backwards
@@ -2378,15 +2403,15 @@ existing in the 2.0-dev code base.</p></li>
 <nav class="contents local" id="id15">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#changes-for-release-1-05" id="id87">Changes for release 1.05</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-1-03" id="id88">Changes for release 1.03</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-1-02" id="id89">Changes for release 1.02</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-1-01" id="id90">Changes for release 1.01</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-1-0" id="id91">Changes for release 1.0</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-1-0-0b" id="id92">Changes for release 1.0.0b</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-1-0-0a" id="id93">Changes for release 1.0.0a</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-0-9-9" id="id94">Changes for release 0.9.9</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-0-9-8" id="id95">Changes for release 0.9.8</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-05" id="id88">Changes for release 1.05</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-03" id="id89">Changes for release 1.03</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-02" id="id90">Changes for release 1.02</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-01" id="id91">Changes for release 1.01</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-0" id="id92">Changes for release 1.0</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-0-0b" id="id93">Changes for release 1.0.0b</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-0-0a" id="id94">Changes for release 1.0.0a</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-0-9-9" id="id95">Changes for release 0.9.9</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-0-9-8" id="id96">Changes for release 0.9.8</a></p></li>
 </ul>
 </nav>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+1.x%22+is%3Aclosed">Git closed issues for 1.x</a>
@@ -2394,33 +2419,33 @@ on Github.
 The following release notes have been copied from the previous <code class="docutils literal notranslate"><span class="pre">RELEASE_NOTES</span></code>
 file and are kept as a reference.</p>
 <section id="changes-for-release-1-05">
-<h4><a class="toc-backref" href="#id87" role="doc-backlink">Changes for release 1.05</a><a class="headerlink" href="#changes-for-release-1-05" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id88" role="doc-backlink">Changes for release 1.05</a><a class="headerlink" href="#changes-for-release-1-05" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Bug fixes</p></li>
 </ul>
 </section>
 <section id="changes-for-release-1-03">
-<h4><a class="toc-backref" href="#id88" role="doc-backlink">Changes for release 1.03</a><a class="headerlink" href="#changes-for-release-1-03" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id89" role="doc-backlink">Changes for release 1.03</a><a class="headerlink" href="#changes-for-release-1-03" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Much faster topology creation</p></li>
 <li><p>Bug fixes</p></li>
 </ul>
 </section>
 <section id="changes-for-release-1-02">
-<h4><a class="toc-backref" href="#id89" role="doc-backlink">Changes for release 1.02</a><a class="headerlink" href="#changes-for-release-1-02" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id90" role="doc-backlink">Changes for release 1.02</a><a class="headerlink" href="#changes-for-release-1-02" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Shooting* bug fixes</p></li>
 <li><p>Compilation problems solved</p></li>
 </ul>
 </section>
 <section id="changes-for-release-1-01">
-<h4><a class="toc-backref" href="#id90" role="doc-backlink">Changes for release 1.01</a><a class="headerlink" href="#changes-for-release-1-01" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id91" role="doc-backlink">Changes for release 1.01</a><a class="headerlink" href="#changes-for-release-1-01" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Shooting* bug fixes</p></li>
 </ul>
 </section>
 <section id="changes-for-release-1-0">
-<h4><a class="toc-backref" href="#id91" role="doc-backlink">Changes for release 1.0</a><a class="headerlink" href="#changes-for-release-1-0" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id92" role="doc-backlink">Changes for release 1.0</a><a class="headerlink" href="#changes-for-release-1-0" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Core and extra functions are separated</p></li>
 <li><p>Cmake build process</p></li>
@@ -2428,28 +2453,28 @@ file and are kept as a reference.</p>
 </ul>
 </section>
 <section id="changes-for-release-1-0-0b">
-<h4><a class="toc-backref" href="#id92" role="doc-backlink">Changes for release 1.0.0b</a><a class="headerlink" href="#changes-for-release-1-0-0b" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id93" role="doc-backlink">Changes for release 1.0.0b</a><a class="headerlink" href="#changes-for-release-1-0-0b" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Additional SQL file with more simple names for wrapper functions</p></li>
 <li><p>Bug fixes</p></li>
 </ul>
 </section>
 <section id="changes-for-release-1-0-0a">
-<h4><a class="toc-backref" href="#id93" role="doc-backlink">Changes for release 1.0.0a</a><a class="headerlink" href="#changes-for-release-1-0-0a" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id94" role="doc-backlink">Changes for release 1.0.0a</a><a class="headerlink" href="#changes-for-release-1-0-0a" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Shooting* shortest path algorithm for real road networks</p></li>
 <li><p>Several SQL bugs were fixed</p></li>
 </ul>
 </section>
 <section id="changes-for-release-0-9-9">
-<h4><a class="toc-backref" href="#id94" role="doc-backlink">Changes for release 0.9.9</a><a class="headerlink" href="#changes-for-release-0-9-9" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id95" role="doc-backlink">Changes for release 0.9.9</a><a class="headerlink" href="#changes-for-release-0-9-9" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>PostgreSQL 8.2 support</p></li>
 <li><p>Shortest path functions return empty result if they could not find any path</p></li>
 </ul>
 </section>
 <section id="changes-for-release-0-9-8">
-<h4><a class="toc-backref" href="#id95" role="doc-backlink">Changes for release 0.9.8</a><a class="headerlink" href="#changes-for-release-0-9-8" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id96" role="doc-backlink">Changes for release 0.9.8</a><a class="headerlink" href="#changes-for-release-0-9-8" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Renumbering scheme was added to shortest path functions</p></li>
 <li><p>Directed shortest path functions were added</p></li>
@@ -2472,8 +2497,8 @@ file and are kept as a reference.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.7.1.<br/>
-      Last updated on Dec 24, 2024.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.7.2.<br/>
+      Last updated on Jan 20, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

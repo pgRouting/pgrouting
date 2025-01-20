@@ -8,11 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>发行说明 &#8212; pgRouting Manual (3.7)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=521dc130"></script>
+    <script src="_static/documentation_options.js?v=62d28862"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=8578d92c"></script>
@@ -44,7 +44,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.7.1</b></span>
+        <span class="navbar-text pull-left"><b>v3.7.2</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -98,6 +98,7 @@
 <li><a class="reference internal" href="#">发行说明</a><ul>
 <li><a class="reference internal" href="#pgrouting-3">pgRouting 3</a><ul>
 <li><a class="reference internal" href="#pgrouting-3-7">pgRouting 3.7</a><ul>
+<li><a class="reference internal" href="#pgrouting-3-7-2-release-notes">pgRouting 3.7.2 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-3-7-1-release-notes">pgRouting 3.7.1 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-3-7-0-release-notes">pgRouting 3.7.0 发布说明</a></li>
 </ul>
@@ -267,6 +268,7 @@
 <li><a class="reference internal" href="#">发行说明</a><ul>
 <li><a class="reference internal" href="#pgrouting-3">pgRouting 3</a><ul>
 <li><a class="reference internal" href="#pgrouting-3-7">pgRouting 3.7</a><ul>
+<li><a class="reference internal" href="#pgrouting-3-7-2-release-notes">pgRouting 3.7.2 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-3-7-1-release-notes">pgRouting 3.7.1 Release Notes</a></li>
 <li><a class="reference internal" href="#pgrouting-3-7-0-release-notes">pgRouting 3.7.0 发布说明</a></li>
 </ul>
@@ -445,12 +447,35 @@
 <nav class="contents local" id="contents">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-7-1-release-notes" id="id27">pgRouting 3.7.1 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-7-0-release-notes" id="id28">pgRouting 3.7.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-7-2-release-notes" id="id27">pgRouting 3.7.2 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-7-1-release-notes" id="id28">pgRouting 3.7.1 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-7-0-release-notes" id="id29">pgRouting 3.7.0 发布说明</a></p></li>
 </ul>
 </nav>
+<section id="pgrouting-3-7-2-release-notes">
+<h4><a class="toc-backref" href="#id27" role="doc-backlink">pgRouting 3.7.2 Release Notes</a><a class="headerlink" href="#pgrouting-3-7-2-release-notes" title="Link to this heading">¶</a></h4>
+<p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.7.2%22">Git closed
+milestone for 3.7.2</a></p>
+<p class="rubric">构建</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2713">#2713</a> cmake missing
+some policies and min version</p>
+<ul>
+<li><p>Using OLD policies: CMP0148, CMP0144, CMP0167</p></li>
+<li><p>Minimum cmake version 3.12</p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Bug修复</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2707">#2707</a> Build failure in
+pgRouting 3.7.1 on Alpine</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2706">#2706</a> winnie crashing
+on pgr_betweennessCentrality</p></li>
+</ul>
+</section>
 <section id="pgrouting-3-7-1-release-notes">
-<h4><a class="toc-backref" href="#id27" role="doc-backlink">pgRouting 3.7.1 Release Notes</a><a class="headerlink" href="#pgrouting-3-7-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id28" role="doc-backlink">pgRouting 3.7.1 Release Notes</a><a class="headerlink" href="#pgrouting-3-7-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.7.1%22">Git closed
 milestone for 3.7.1</a></p>
 <p class="rubric">Bug修复</p>
@@ -466,7 +491,7 @@ vertex, the withPoints family do not return results.</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-7-0-release-notes">
-<h4><a class="toc-backref" href="#id28" role="doc-backlink">pgRouting 3.7.0 发布说明</a><a class="headerlink" href="#pgrouting-3-7-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id29" role="doc-backlink">pgRouting 3.7.0 发布说明</a><a class="headerlink" href="#pgrouting-3-7-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.7.0%22">3.7.0</a> 的 Git 关闭里程碑</p>
 <p class="rubric">支持</p>
 <ul class="simple">
@@ -520,7 +545,7 @@ ignores directed flag and use negative values for identifiers.</p>
 </ul>
 <blockquote>
 <div><ul class="simple">
-<li><p>晋升为 <strong>拟议</strong> 签名。</p></li>
+<li><p>Function promoted to proposed.</p></li>
 <li><p>适用于有向和无向图。</p></li>
 </ul>
 </div></blockquote>
@@ -542,14 +567,14 @@ ignores directed flag and use negative values for identifiers.</p>
 <nav class="contents local" id="id1">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-6-3-release-notes" id="id29">pgRouting 3.6.3 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-6-2-release-notes" id="id30">pgRouting 3.6.2 Release Notes</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-6-1-release-notes" id="id31">pgRouting 3.6.1 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-6-0-release-notes" id="id32">pgRouting 3.6.0 发布说</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-6-3-release-notes" id="id30">pgRouting 3.6.3 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-6-2-release-notes" id="id31">pgRouting 3.6.2 Release Notes</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-6-1-release-notes" id="id32">pgRouting 3.6.1 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-6-0-release-notes" id="id33">pgRouting 3.6.0 发布说</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-6-3-release-notes">
-<h4><a class="toc-backref" href="#id29" role="doc-backlink">pgRouting 3.6.3 Release Notes</a><a class="headerlink" href="#pgrouting-3-6-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id30" role="doc-backlink">pgRouting 3.6.3 Release Notes</a><a class="headerlink" href="#pgrouting-3-6-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.6.3%22">Git closed
 milestone for 3.6.3</a></p>
 <p class="rubric">构建</p>
@@ -588,7 +613,7 @@ milestone for 3.6.3</a></p>
 </ul>
 </section>
 <section id="pgrouting-3-6-2-release-notes">
-<h4><a class="toc-backref" href="#id30" role="doc-backlink">pgRouting 3.6.2 Release Notes</a><a class="headerlink" href="#pgrouting-3-6-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id31" role="doc-backlink">pgRouting 3.6.2 Release Notes</a><a class="headerlink" href="#pgrouting-3-6-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.6.2%22">Git closed
 milestone for 3.6.2</a></p>
 <p class="rubric">Upgrade fix</p>
@@ -609,14 +634,14 @@ milestone for 3.6.2</a></p>
 </ul>
 </section>
 <section id="pgrouting-3-6-1-release-notes">
-<h4><a class="toc-backref" href="#id31" role="doc-backlink">pgRouting 3.6.1 发布说明</a><a class="headerlink" href="#pgrouting-3-6-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id32" role="doc-backlink">pgRouting 3.6.1 发布说明</a><a class="headerlink" href="#pgrouting-3-6-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.6.1%22">3.6.1Git 关闭里程碑</a></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2588">#2588</a> pgrouting 3.6.0 在 OSX 上构建失败</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-6-0-release-notes">
-<h4><a class="toc-backref" href="#id32" role="doc-backlink">pgRouting 3.6.0 发布说</a><a class="headerlink" href="#pgrouting-3-6-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id33" role="doc-backlink">pgRouting 3.6.0 发布说</a><a class="headerlink" href="#pgrouting-3-6-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请访问 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.6.0%22">Git 3.6.0 里程碑的已关闭问题和拉取请求</a></p>
 <p class="rubric">官方功能变更</p>
 <ul class="simple">
@@ -624,9 +649,9 @@ milestone for 3.6.2</a></p>
 <ul>
 <li><p>标准输出列|short-generic-result|</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> （<cite>一对一</cite>）增加了 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 列。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_aStar``（`一对多`）添加了</span> <span class="pre">``end_vid</span></code> 列。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_aStar``（`多对一`）添加了</span> <span class="pre">``start_vid</span></code> 列。</p></li>
+<li><p>pgr_aStar(One to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> columns.</p></li>
+<li><p>pgr_aStar(One to Many) added <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> column.</p></li>
+<li><p>pgr_aStar(Many to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
 </ul>
 </li>
 </ul>
@@ -635,9 +660,10 @@ milestone for 3.6.2</a></p>
 <ul>
 <li><p>标准输出列|short-generic-result|</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar``（`一对一`）增加了</span> <span class="pre">``start_vid</span></code> 和``end_vid`` 列。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar``（`一对多）添加了``end_vid</span></code> 列。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar``（`多对一`）添加了``start_vid</span></code> 列。</p></li>
+<li><p>pgr_bdAstar(One to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>
+columns.</p></li>
+<li><p>pgr_bdAstar(One to Many) added <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> column.</p></li>
+<li><p>pgr_bdAstar(Many to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
 </ul>
 </li>
 </ul>
@@ -645,17 +671,17 @@ milestone for 3.6.2</a></p>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2547">#2547</a> 标准化输出并修改签名 pgr_KSP</p>
 <ul>
 <li><p>结果列标准化为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (一对一)</p>
+<li><p>pgr_ksp(One to One)</p>
 <ul>
 <li><p>增加 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 结果列。</p></li>
 </ul>
 </li>
-<li><p>新的重载函数：</p>
+<li><p>新拟议的签名：</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (一对多)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (多对一)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (多对多)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_ksp</span></code> (组合)</p></li>
+<li><p>pgr_ksp(One to Many)</p></li>
+<li><p>pgr_ksp(Many to One)</p></li>
+<li><p>pgr_ksp(Many to Many)</p></li>
+<li><p>pgr_ksp(Combinations)</p></li>
 </ul>
 </li>
 </ul>
@@ -664,12 +690,12 @@ milestone for 3.6.2</a></p>
 <ul>
 <li><p>将输出列标准化为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (单个顶点)</p>
+<li><p>pgr_drivingdistance(Single vertex)</p>
 <ul>
 <li><p>添加了 <code class="docutils literal notranslate"><span class="pre">depth</span></code> 和 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 结果列。</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (多个顶点)</p>
+<li><p>pgr_drivingdistance(Multiple vertices)</p>
 <ul>
 <li><p>结果列名称更改： <code class="docutils literal notranslate"><span class="pre">from_v``改为</span> <span class="pre">``start_vid</span></code>。</p></li>
 <li><p>添加了 <code class="docutils literal notranslate"><span class="pre">depth</span></code> 和``pred`` 结果列。</p></li>
@@ -686,18 +712,18 @@ milestone for 3.6.2</a></p>
 <ul>
 <li><p>签名更改： <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> 参数从已命名的可选参数改为未命名的必选参数 <strong>driving side</strong>。</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> （<cite>单顶点</cite>）</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<cite>多个顶点</cite>)</p></li>
+<li><p>pgr_withPointsDD(Single vertex)</p></li>
+<li><p>pgr_withPointsDD(Multiple vertices)</p></li>
 </ul>
 </li>
 <li><p>将输出列标准化为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> （<cite>单顶点</cite>）</p>
+<li><p>pgr_withPointsDD(Single vertex)</p>
 <ul>
 <li><p>添加了 <code class="docutils literal notranslate"><span class="pre">depth</span></code>、<code class="docutils literal notranslate"><span class="pre">pred</span></code> 和 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 列。</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> (<cite>多个顶点</cite>)</p>
+<li><p>pgr_withPointsDD(Multiple vertices)</p>
 <ul>
 <li><p>添加了 <code class="docutils literal notranslate"><span class="pre">depth</span></code>，<code class="docutils literal notranslate"><span class="pre">pred</span></code> 列。</p></li>
 </ul>
@@ -711,8 +737,8 @@ milestone for 3.6.2</a></p>
 </li>
 <li><p>弃用签名</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withpointsdd(text,text,bigint,double</span> <span class="pre">precision,boolean,character,boolean)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withpointsdd(text,text,anyarray,double</span> <span class="pre">precision,boolean,character,boolean,boolean)</span></code></p></li>
+<li><p>pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)``</p></li>
+<li><p>pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)``</p></li>
 </ul>
 </li>
 </ul>
@@ -720,23 +746,23 @@ milestone for 3.6.2</a></p>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2546">#2546</a> 标准化输出并修改签名pgr_withPointsKSP</p>
 <ul>
 <li><p>标准化输出列为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (一对一)</p>
+<li><p>pgr_withPointsKSP(One to One)</p>
 <ul>
 <li><p>签名更改： <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> 参数从已命名的可选参数改为未命名的必选参数 <strong>driving side</strong>。</p></li>
 <li><p>增加 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> 结果列。</p></li>
 </ul>
 </li>
-<li><p>新的重载函数</p>
+<li><p>新拟议的签名：</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (一对多)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (多对一)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (多对多)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> (组合)</p></li>
+<li><p>pgr_withPointsKSP(One to Many)</p></li>
+<li><p>pgr_withPointsKSP(Many to One)</p></li>
+<li><p>pgr_withPointsKSP(Many to Many)</p></li>
+<li><p>pgr_withPointsKSP(Combinations)</p></li>
 </ul>
 </li>
 <li><p>已弃用的签名</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,boolean)</span></code></p></li>
+<li><p>pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,boolean)``</p></li>
 </ul>
 </li>
 </ul>
@@ -769,12 +795,12 @@ milestone for 3.6.2</a></p>
 <nav class="contents local" id="id2">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-5-1-release-notes" id="id33">pgRouting 3.5.1 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-5-0-release-notes" id="id34">pgRouting 3.5.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-5-1-release-notes" id="id34">pgRouting 3.5.1 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-5-0-release-notes" id="id35">pgRouting 3.5.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-5-1-release-notes">
-<h4><a class="toc-backref" href="#id33" role="doc-backlink">pgRouting 3.5.1 发布说明</a><a class="headerlink" href="#pgrouting-3-5-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id34" role="doc-backlink">pgRouting 3.5.1 发布说明</a><a class="headerlink" href="#pgrouting-3-5-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.5.1%22">3.5.1 Git 关闭里程碑</a></p>
 <p class="rubric">文档修复</p>
 <p>将文件修改如下：</p>
@@ -815,7 +841,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-5-0-release-notes">
-<h4><a class="toc-backref" href="#id34" role="doc-backlink">pgRouting 3.5.0 发布说明</a><a class="headerlink" href="#pgrouting-3-5-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id35" role="doc-backlink">pgRouting 3.5.0 发布说明</a><a class="headerlink" href="#pgrouting-3-5-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.5.0%22">3.5.0 Git 关闭里程碑</a></p>
 <p class="rubric">官方功能变更</p>
 <ul class="simple">
@@ -823,9 +849,9 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 <ul>
 <li><p>标准输出列|short-generic-result|</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra``（`一对一`）增加了``start_vid</span></code> 和``end_vid`` 列。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra``（`一对多`）添加了</span> <span class="pre">``end_vid</span></code> 列。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> （<cite>多对一</cite>）添加了 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 列。</p></li>
+<li><p>pgr_dijkstra(One to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> columns.</p></li>
+<li><p>pgr_dijkstra(One to Many) added <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> column.</p></li>
+<li><p>pgr_dijkstra(Many to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
 </ul>
 </li>
 </ul>
@@ -838,13 +864,13 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 <nav class="contents local" id="id3">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-4-2-release-notes" id="id35">pgRouting 3.4.2 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-4-1-release-notes" id="id36">pgRouting 3.4.1 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-4-0-release-notes" id="id37">pgRouting 3.4.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-4-2-release-notes" id="id36">pgRouting 3.4.2 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-4-1-release-notes" id="id37">pgRouting 3.4.1 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-4-0-release-notes" id="id38">pgRouting 3.4.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-4-2-release-notes">
-<h4><a class="toc-backref" href="#id35" role="doc-backlink">pgRouting 3.4.2 发布说明</a><a class="headerlink" href="#pgrouting-3-4-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id36" role="doc-backlink">pgRouting 3.4.2 发布说明</a><a class="headerlink" href="#pgrouting-3-4-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.4.2%22">3.4.2Git 关闭里程碑</a></p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -853,7 +879,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-4-1-release-notes">
-<h4><a class="toc-backref" href="#id36" role="doc-backlink">pgRouting 3.4.1 发布说明</a><a class="headerlink" href="#pgrouting-3-4-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id37" role="doc-backlink">pgRouting 3.4.1 发布说明</a><a class="headerlink" href="#pgrouting-3-4-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.4.1%22">3.4.1Git 关闭里程碑</a></p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -862,56 +888,56 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-4-0-release-notes">
-<h4><a class="toc-backref" href="#id37" role="doc-backlink">pgRouting 3.4.0 发布说明</a><a class="headerlink" href="#pgrouting-3-4-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id38" role="doc-backlink">pgRouting 3.4.0 发布说明</a><a class="headerlink" href="#pgrouting-3-4-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.4.0%22">3.4.0 Git 关闭里程碑</a></p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1891">#1891</a>: pgr_ksp 没有给出所有正确的最短路径</p></li>
 </ul>
-<p class="rubric">新的拟议函数</p>
+<p class="rubric">New proposed functions.</p>
 <ul class="simple">
 <li><p>带点</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code> (One Via)</p></li>
+<li><p>pgr_withPointsVia(One Via)</p></li>
 </ul>
 </li>
 <li><p>转弯限制</p>
 <ul>
 <li><p>有转弯限制的通道</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> (One Via)</p></li>
-<li><p>pgr_trspVia_withPoints``（一次通过）</p></li>
+<li><p>pgr_trspVia(One Via)</p></li>
+<li><p>pgr_trspVia_withPoints(One Via)</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code></p>
+<li><p>pgr_trsp</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> （一对一）</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> （一对多）</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> （多对一）</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> （多对多）</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> （组合）</p></li>
+<li><p>pgr_trsp(One to One)</p></li>
+<li><p>pgr_trsp(One to Many)</p></li>
+<li><p>pgr_trsp(Many to One)</p></li>
+<li><p>pgr_trsp(Many to Many)</p></li>
+<li><p>pgr_trsp(Combinations)</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> （一对一）</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> （一对多）</p></li>
-<li><p>pgr_trsp_withPoints``（多对一）</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> （多对多）</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp_withPoints</span></code> （组合）</p></li>
+<li><p>pgr_trsp_withPoints(One to One)</p></li>
+<li><p>pgr_trsp_withPoints(One to Many)</p></li>
+<li><p>pgr_trsp_withPoints(Many to One)</p></li>
+<li><p>pgr_trsp_withPoints(Many to Many)</p></li>
+<li><p>pgr_trsp_withPoints(Combinations)</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>拓扑结构</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_degree</span></code></p></li>
+<li><p>pgr_degree</p></li>
 </ul>
 </li>
 <li><p>实用程序</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code> （单点）</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code> （多点）</p></li>
+<li><p>pgr_findCloseEdges(One point)</p></li>
+<li><p>pgr_findCloseEdges(Many points)</p></li>
 </ul>
 </li>
 </ul>
@@ -919,12 +945,12 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 <ul class="simple">
 <li><p>排序</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_cuthillMckeeOrdering</span></code></p></li>
+<li><p>pgr_cuthillMckeeOrdering</p></li>
 </ul>
 </li>
 <li><p>未分类</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_hawickCircuits</span></code></p></li>
+<li><p>pgr_hawickCircuits</p></li>
 </ul>
 </li>
 </ul>
@@ -932,7 +958,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 <ul class="simple">
 <li><p>流程函数</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch(text)</span></code></p>
+<li><p>pgr_maxCardinalityMatch(text)``</p>
 <ul>
 <li><p>弃用 <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch(text,boolean)</span></code></p></li>
 </ul>
@@ -944,10 +970,10 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 <ul class="simple">
 <li><p>转弯限制</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp(text,integer,integer,boolean,boolean,text)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices(text,anyarray,boolean,boolean,text)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)</span></code></p></li>
+<li><p>pgr_trsp(text,integer,integer,boolean,boolean,text)</p></li>
+<li><p>pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text)</p></li>
+<li><p>pgr_trspViaVertices(text,anyarray,boolean,boolean,text)</p></li>
+<li><p>pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)</p></li>
 </ul>
 </li>
 </ul>
@@ -958,22 +984,22 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 <nav class="contents local" id="id4">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-3-5-release-notes" id="id38">pgRouting 3.3.5 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-3-4-release-notes" id="id39">pgRouting 3.3.4 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-3-3-release-notes" id="id40">pgRouting 3.3.3 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-3-2-release-notes" id="id41">pgRouting 3.3.2 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-3-1-release-notes" id="id42">pgRouting 3.3.1 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-3-0-release-notes" id="id43">pgRouting 3.3.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3-5-release-notes" id="id39">pgRouting 3.3.5 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3-4-release-notes" id="id40">pgRouting 3.3.4 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3-3-release-notes" id="id41">pgRouting 3.3.3 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3-2-release-notes" id="id42">pgRouting 3.3.2 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3-1-release-notes" id="id43">pgRouting 3.3.1 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-3-0-release-notes" id="id44">pgRouting 3.3.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-3-5-release-notes">
-<h4><a class="toc-backref" href="#id38" role="doc-backlink">pgRouting 3.3.5 发布说明</a><a class="headerlink" href="#pgrouting-3-3-5-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id39" role="doc-backlink">pgRouting 3.3.5 发布说明</a><a class="headerlink" href="#pgrouting-3-3-5-release-notes" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2401">#2401</a>: pgRouting 3.4.0 在 sphinx 过低或丢失时不构建文档</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-3-4-release-notes">
-<h4><a class="toc-backref" href="#id39" role="doc-backlink">pgRouting 3.3.4 发布说明</a><a class="headerlink" href="#pgrouting-3-3-4-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id40" role="doc-backlink">pgRouting 3.3.4 发布说明</a><a class="headerlink" href="#pgrouting-3-3-4-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.4%22">3.3.4Git 关闭里程碑</a></p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -981,7 +1007,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-3-3-release-notes">
-<h4><a class="toc-backref" href="#id40" role="doc-backlink">pgRouting 3.3.3 发布说明</a><a class="headerlink" href="#pgrouting-3-3-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id41" role="doc-backlink">pgRouting 3.3.3 发布说明</a><a class="headerlink" href="#pgrouting-3-3-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅` 3.3.3Git 关闭里程碑 &lt;<a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.3%22">https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.3%22</a>&gt;`_</p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -991,7 +1017,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 <ul class="simple">
 <li><p>流程函数</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch(text,boolean)</span></code></p>
+<li><p>pgr_maxCardinalityMatch(text,boolean)</p>
 <ul>
 <li><p>忽略可选的布尔参数，因为该算法只适用于无向图。</p></li>
 </ul>
@@ -1001,7 +1027,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-3-2-release-notes">
-<h4><a class="toc-backref" href="#id41" role="doc-backlink">pgRouting 3.3.2 发布说明</a><a class="headerlink" href="#pgrouting-3-3-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id42" role="doc-backlink">pgRouting 3.3.2 发布说明</a><a class="headerlink" href="#pgrouting-3-3-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 ` 3.3.2Git 关闭里程碑 &lt;<a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.2%22">https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.2%22</a>&gt;`_</p>
 <ul>
 <li><p>修订文档</p>
@@ -1042,7 +1068,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-3-1-release-notes">
-<h4><a class="toc-backref" href="#id42" role="doc-backlink">pgRouting 3.3.1 发布说明</a><a class="headerlink" href="#pgrouting-3-3-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id43" role="doc-backlink">pgRouting 3.3.1 发布说明</a><a class="headerlink" href="#pgrouting-3-3-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 ` 3.3.1Git关闭里程碑 &lt;<a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.1%22">https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.1%22</a>&gt;`_。</p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1051,7 +1077,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-3-0-release-notes">
-<h4><a class="toc-backref" href="#id43" role="doc-backlink">pgRouting 3.3.0 发布说明</a><a class="headerlink" href="#pgrouting-3-3-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id44" role="doc-backlink">pgRouting 3.3.0 发布说明</a><a class="headerlink" href="#pgrouting-3-3-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 ` 3.3.0 Git关闭里程碑 &lt;<a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.0%22">https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.3.0%22</a>&gt;`_ 。</p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1115,13 +1141,13 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 <nav class="contents local" id="id5">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-2-2-release-notes" id="id44">pgRouting 3.2.2 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-2-1-release-notes" id="id45">pgRouting 3.2.1 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-2-0-release-notes" id="id46">pgRouting 3.2.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-2-2-release-notes" id="id45">pgRouting 3.2.2 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-2-1-release-notes" id="id46">pgRouting 3.2.1 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-2-0-release-notes" id="id47">pgRouting 3.2.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-2-2-release-notes">
-<h4><a class="toc-backref" href="#id44" role="doc-backlink">pgRouting 3.2.2 发布说明</a><a class="headerlink" href="#pgrouting-3-2-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id45" role="doc-backlink">pgRouting 3.2.2 发布说明</a><a class="headerlink" href="#pgrouting-3-2-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.2.2%22">3.2.2 Git关闭里程碑</a>。</p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1130,7 +1156,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-2-1-release-notes">
-<h4><a class="toc-backref" href="#id45" role="doc-backlink">pgRouting 3.2.1 发布说明</a><a class="headerlink" href="#pgrouting-3-2-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id46" role="doc-backlink">pgRouting 3.2.1 发布说明</a><a class="headerlink" href="#pgrouting-3-2-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.2.1%22">3.2.1Git关闭里程碑</a>。</p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1144,7 +1170,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-2-0-release-notes">
-<h4><a class="toc-backref" href="#id46" role="doc-backlink">pgRouting 3.2.0 发布说明</a><a class="headerlink" href="#pgrouting-3-2-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id47" role="doc-backlink">pgRouting 3.2.0 发布说明</a><a class="headerlink" href="#pgrouting-3-2-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 ` 3.2.0Git关闭里程碑 &lt;<a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.2.0%22">https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.2.0%22</a>&gt;`_。</p>
 <p class="rubric">构建</p>
 <ul class="simple">
@@ -1193,7 +1219,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </li>
 <li><p>pgr_sequentialVertexColoring</p></li>
 </ul>
-<p class="rubric">新的拟议函数</p>
+<p class="rubric">New proposed functions.</p>
 <ul class="simple">
 <li><p>Astar</p>
 <ul>
@@ -1232,15 +1258,15 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 <nav class="contents local" id="id6">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-1-4-release-notes" id="id47">pgRouting 3.1.4 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-1-3-release-notes" id="id48">pgRouting 3.1.3 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-1-2-release-notes" id="id49">pgRouting 3.1.2 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-1-1-release-notes" id="id50">pgRouting 3.1.1 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-1-0-release-notes" id="id51">pgRouting 3.1.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-1-4-release-notes" id="id48">pgRouting 3.1.4 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-1-3-release-notes" id="id49">pgRouting 3.1.3 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-1-2-release-notes" id="id50">pgRouting 3.1.2 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-1-1-release-notes" id="id51">pgRouting 3.1.1 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-1-0-release-notes" id="id52">pgRouting 3.1.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-1-4-release-notes">
-<h4><a class="toc-backref" href="#id47" role="doc-backlink">pgRouting 3.1.4 发布说明</a><a class="headerlink" href="#pgrouting-3-1-4-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id48" role="doc-backlink">pgRouting 3.1.4 发布说明</a><a class="headerlink" href="#pgrouting-3-1-4-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.1.4%22">3.1.4Git关闭里程碑</a> 。</p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1248,7 +1274,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-1-3-release-notes">
-<h4><a class="toc-backref" href="#id48" role="doc-backlink">pgRouting 3.1.3 发布说明</a><a class="headerlink" href="#pgrouting-3-1-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id49" role="doc-backlink">pgRouting 3.1.3 发布说明</a><a class="headerlink" href="#pgrouting-3-1-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.1.3%22">3.1.3 Git关闭里程碑</a>。</p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1258,7 +1284,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-1-2-release-notes">
-<h4><a class="toc-backref" href="#id49" role="doc-backlink">pgRouting 3.1.2 发布说明</a><a class="headerlink" href="#pgrouting-3-1-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id50" role="doc-backlink">pgRouting 3.1.2 发布说明</a><a class="headerlink" href="#pgrouting-3-1-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.1.2%22">3.1.2Git关闭里程碑</a>。</p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1270,7 +1296,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-1-1-release-notes">
-<h4><a class="toc-backref" href="#id50" role="doc-backlink">pgRouting 3.1.1 发布说明</a><a class="headerlink" href="#pgrouting-3-1-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id51" role="doc-backlink">pgRouting 3.1.1 发布说明</a><a class="headerlink" href="#pgrouting-3-1-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.1.1%22">3.1.1 Git关闭里程碑</a>。</p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1282,9 +1308,9 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-1-0-release-notes">
-<h4><a class="toc-backref" href="#id51" role="doc-backlink">pgRouting 3.1.0 发布说明</a><a class="headerlink" href="#pgrouting-3-1-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id52" role="doc-backlink">pgRouting 3.1.0 发布说明</a><a class="headerlink" href="#pgrouting-3-1-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.1.0%22">3.1.0 Git关闭里程碑</a>。</p>
-<p class="rubric">新的拟议函数</p>
+<p class="rubric">New proposed functions.</p>
 <ul class="simple">
 <li><p>pgr_dijkstra(组合)</p></li>
 <li><p>pgr_dijkstraCost(组合)</p></li>
@@ -1300,17 +1326,17 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 <nav class="contents local" id="id7">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-3-0-6-release-notes" id="id52">pgRouting 3.0.6 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-0-5-release-notes" id="id53">pgRouting 3.0.5 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-0-4-release-notes" id="id54">pgRouting 3.0.4 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-0-3-release-notes" id="id55">pgRouting 3.0.3 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-0-2-release-notes" id="id56">pgRouting 3.0.2 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-0-1-release-notes" id="id57">pgRouting 3.0.1 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-3-0-0-release-notes" id="id58">pgRouting 3.0.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-6-release-notes" id="id53">pgRouting 3.0.6 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-5-release-notes" id="id54">pgRouting 3.0.5 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-4-release-notes" id="id55">pgRouting 3.0.4 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-3-release-notes" id="id56">pgRouting 3.0.3 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-2-release-notes" id="id57">pgRouting 3.0.2 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-1-release-notes" id="id58">pgRouting 3.0.1 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-3-0-0-release-notes" id="id59">pgRouting 3.0.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-3-0-6-release-notes">
-<h4><a class="toc-backref" href="#id52" role="doc-backlink">pgRouting 3.0.6 发布说明</a><a class="headerlink" href="#pgrouting-3-0-6-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id53" role="doc-backlink">pgRouting 3.0.6 发布说明</a><a class="headerlink" href="#pgrouting-3-0-6-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 ` 3.0.6Git关闭里程碑 &lt;<a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.6%22">https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.6%22</a>&gt;`_。</p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1318,7 +1344,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-0-5-release-notes">
-<h4><a class="toc-backref" href="#id53" role="doc-backlink">pgRouting 3.0.5 发布说明</a><a class="headerlink" href="#pgrouting-3-0-5-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id54" role="doc-backlink">pgRouting 3.0.5 发布说明</a><a class="headerlink" href="#pgrouting-3-0-5-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.5%22">3.0.5Git关闭里程碑</a>。</p>
 <p class="rubric">回溯问题修复</p>
 <ul class="simple">
@@ -1328,7 +1354,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-0-4-release-notes">
-<h4><a class="toc-backref" href="#id54" role="doc-backlink">pgRouting 3.0.4 发布说明</a><a class="headerlink" href="#pgrouting-3-0-4-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id55" role="doc-backlink">pgRouting 3.0.4 发布说明</a><a class="headerlink" href="#pgrouting-3-0-4-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 ` 3.0.4Git关闭里程碑 &lt;<a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.4%22">https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.4%22</a>&gt;`_。</p>
 <p class="rubric">回溯问题修复</p>
 <ul class="simple">
@@ -1340,7 +1366,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-0-3-release-notes">
-<h4><a class="toc-backref" href="#id55" role="doc-backlink">pgRouting 3.0.3 发布说明</a><a class="headerlink" href="#pgrouting-3-0-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id56" role="doc-backlink">pgRouting 3.0.3 发布说明</a><a class="headerlink" href="#pgrouting-3-0-3-release-notes" title="Link to this heading">¶</a></h4>
 <p class="rubric">回溯问题修复</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/1733">#1733</a>：当图中不存在源顶点或目标顶点时，pgr_bdAstar 失败</p></li>
@@ -1351,7 +1377,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-0-2-release-notes">
-<h4><a class="toc-backref" href="#id56" role="doc-backlink">pgRouting 3.0.2 发布说明</a><a class="headerlink" href="#pgrouting-3-0-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id57" role="doc-backlink">pgRouting 3.0.2 发布说明</a><a class="headerlink" href="#pgrouting-3-0-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.2%22">3.0.2Git关闭里程碑</a>。</p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1359,7 +1385,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-0-1-release-notes">
-<h4><a class="toc-backref" href="#id57" role="doc-backlink">pgRouting 3.0.1 发布说明</a><a class="headerlink" href="#pgrouting-3-0-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id58" role="doc-backlink">pgRouting 3.0.1 发布说明</a><a class="headerlink" href="#pgrouting-3-0-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.1%22">3.0.1Git关闭里程碑</a>。</p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1367,7 +1393,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-3-0-0-release-notes">
-<h4><a class="toc-backref" href="#id58" role="doc-backlink">pgRouting 3.0.0 发布说明</a><a class="headerlink" href="#pgrouting-3-0-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id59" role="doc-backlink">pgRouting 3.0.0 发布说明</a><a class="headerlink" href="#pgrouting-3-0-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的所有问题和拉取请求，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.0.0%22">3.0.0Git关闭里程碑</a>。</p>
 <p class="rubric">问题修复</p>
 <ul class="simple">
@@ -1552,28 +1578,28 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 <nav class="contents local" id="minors-2-x">
 <p class="topic-title">2.x小版本</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-6" id="id59">pgRouting 2.6</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-5" id="id60">pgRouting 2.5</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-4" id="id61">pgRouting 2.4</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-3" id="id62">pgRouting 2.3</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-2" id="id63">pgRouting 2.2</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-1" id="id64">pgRouting 2.1</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-0" id="id65">pgRouting 2.0</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-6" id="id60">pgRouting 2.6</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5" id="id61">pgRouting 2.5</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-4" id="id62">pgRouting 2.4</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-3" id="id63">pgRouting 2.3</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2" id="id64">pgRouting 2.2</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-1" id="id65">pgRouting 2.1</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-0" id="id66">pgRouting 2.0</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-6">
-<h3><a class="toc-backref" href="#id59" role="doc-backlink">pgRouting 2.6</a><a class="headerlink" href="#pgrouting-2-6" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id60" role="doc-backlink">pgRouting 2.6</a><a class="headerlink" href="#pgrouting-2-6" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id9">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-6-3-release-notes" id="id66">pgRouting 2.6.3 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-6-2-release-notes" id="id67">pgRouting 2.6.2 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-6-1-release-notes" id="id68">pgRouting 2.6.1 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-6-0-release-notes" id="id69">pgRouting 2.6.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-6-3-release-notes" id="id67">pgRouting 2.6.3 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-6-2-release-notes" id="id68">pgRouting 2.6.2 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-6-1-release-notes" id="id69">pgRouting 2.6.1 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-6-0-release-notes" id="id70">pgRouting 2.6.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-6-3-release-notes">
-<h4><a class="toc-backref" href="#id66" role="doc-backlink">pgRouting 2.6.3 发布说明</a><a class="headerlink" href="#pgrouting-2-6-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id67" role="doc-backlink">pgRouting 2.6.3 发布说明</a><a class="headerlink" href="#pgrouting-2-6-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.3%22%20">2.6.3Git关闭里程碑</a>。</p>
 <p class="rubric">Bug修复</p>
 <ul class="simple">
@@ -1583,7 +1609,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-6-2-release-notes">
-<h4><a class="toc-backref" href="#id67" role="doc-backlink">pgRouting 2.6.2 发布说明</a><a class="headerlink" href="#pgrouting-2-6-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id68" role="doc-backlink">pgRouting 2.6.2 发布说明</a><a class="headerlink" href="#pgrouting-2-6-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.2%22%20">2.6.2Git关闭里程碑</a>。</p>
 <p class="rubric">Bug修复</p>
 <ul class="simple">
@@ -1593,7 +1619,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-6-1-release-notes">
-<h4><a class="toc-backref" href="#id68" role="doc-backlink">pgRouting 2.6.1 发布说明</a><a class="headerlink" href="#pgrouting-2-6-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id69" role="doc-backlink">pgRouting 2.6.1 发布说明</a><a class="headerlink" href="#pgrouting-2-6-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.1%22%20">2.6.1Git关闭里程碑</a>。</p>
 <ul class="simple">
 <li><p>修复了多个函数导致服务器崩溃的问题。</p>
@@ -1632,7 +1658,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-6-0-release-notes">
-<h4><a class="toc-backref" href="#id69" role="doc-backlink">pgRouting 2.6.0 发布说明</a><a class="headerlink" href="#pgrouting-2-6-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id70" role="doc-backlink">pgRouting 2.6.0 发布说明</a><a class="headerlink" href="#pgrouting-2-6-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 ` 2.6.0Git关闭里程碑 &lt;<a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.0%22%20">https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.6.0%22%20</a>&gt;`_。</p>
 <p class="rubric">新的实验函数</p>
 <ul class="simple">
@@ -1669,20 +1695,20 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </section>
 </section>
 <section id="pgrouting-2-5">
-<h3><a class="toc-backref" href="#id60" role="doc-backlink">pgRouting 2.5</a><a class="headerlink" href="#pgrouting-2-5" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id61" role="doc-backlink">pgRouting 2.5</a><a class="headerlink" href="#pgrouting-2-5" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id10">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-5-5-release-notes" id="id70">pgRouting 2.5.5 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-5-4-release-notes" id="id71">pgRouting 2.5.4 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-5-3-release-notes" id="id72">pgRouting 2.5.3 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-5-2-release-notes" id="id73">pgRouting 2.5.2 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-5-1-release-notes" id="id74">pgRouting 2.5.1 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-5-0-release-notes" id="id75">pgRouting 2.5.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-5-release-notes" id="id71">pgRouting 2.5.5 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-4-release-notes" id="id72">pgRouting 2.5.4 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-3-release-notes" id="id73">pgRouting 2.5.3 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-2-release-notes" id="id74">pgRouting 2.5.2 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-1-release-notes" id="id75">pgRouting 2.5.1 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-5-0-release-notes" id="id76">pgRouting 2.5.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-5-5-release-notes">
-<h4><a class="toc-backref" href="#id70" role="doc-backlink">pgRouting 2.5.5 发布说明</a><a class="headerlink" href="#pgrouting-2-5-5-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id71" role="doc-backlink">pgRouting 2.5.5 发布说明</a><a class="headerlink" href="#pgrouting-2-5-5-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.5%22%20">2.5.5Git关闭里程碑</a>。</p>
 <p class="rubric">Bug修复</p>
 <ul class="simple">
@@ -1692,7 +1718,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-5-4-release-notes">
-<h4><a class="toc-backref" href="#id71" role="doc-backlink">pgRouting 2.5.4 发布说明</a><a class="headerlink" href="#pgrouting-2-5-4-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id72" role="doc-backlink">pgRouting 2.5.4 发布说明</a><a class="headerlink" href="#pgrouting-2-5-4-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.4%22%20">2.5.4 Git关闭里程碑</a>。</p>
 <ul class="simple">
 <li><p>修复了多个函数导致服务器崩溃的问题。</p>
@@ -1731,7 +1757,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-5-3-release-notes">
-<h4><a class="toc-backref" href="#id72" role="doc-backlink">pgRouting 2.5.3 发布说明</a><a class="headerlink" href="#pgrouting-2-5-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id73" role="doc-backlink">pgRouting 2.5.3 发布说明</a><a class="headerlink" href="#pgrouting-2-5-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 ` 2.5.3Git关闭里程碑 &lt;<a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.3%22%20">https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.3%22%20</a>&gt;`_。</p>
 <p class="rubric">Bug修复</p>
 <ul class="simple">
@@ -1739,7 +1765,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-5-2-release-notes">
-<h4><a class="toc-backref" href="#id73" role="doc-backlink">pgRouting 2.5.2 发布说明</a><a class="headerlink" href="#pgrouting-2-5-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id74" role="doc-backlink">pgRouting 2.5.2 发布说明</a><a class="headerlink" href="#pgrouting-2-5-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.2%22%20">2.5.2Git关闭里程碑</a>。</p>
 <p class="rubric">Bug修复</p>
 <ul class="simple">
@@ -1747,7 +1773,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-5-1-release-notes">
-<h4><a class="toc-backref" href="#id74" role="doc-backlink">pgRouting 2.5.1 发布说明</a><a class="headerlink" href="#pgrouting-2-5-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id75" role="doc-backlink">pgRouting 2.5.1 发布说明</a><a class="headerlink" href="#pgrouting-2-5-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.5.1%22%20">2.5.1Git关闭里程碑</a>。</p>
 <p class="rubric">Bug修复</p>
 <ul class="simple">
@@ -1755,7 +1781,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-5-0-release-notes">
-<h4><a class="toc-backref" href="#id75" role="doc-backlink">pgRouting 2.5.0 发布说明</a><a class="headerlink" href="#pgrouting-2-5-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id76" role="doc-backlink">pgRouting 2.5.0 发布说明</a><a class="headerlink" href="#pgrouting-2-5-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.5.0%22+is%3Aclosed">2.5.0Git关闭里程碑</a> 。</p>
 <p class="rubric">增强：</p>
 <ul class="simple">
@@ -1775,7 +1801,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 <ul class="simple">
 <li><p>pgr_bdAstar（一对一）</p></li>
 </ul>
-<p class="rubric">新的拟议函数</p>
+<p class="rubric">New proposed functions.</p>
 <ul class="simple">
 <li><p>pgr_bdAstar（一对多）</p></li>
 <li><p>pgr_bdAstar（多对一）</p></li>
@@ -1819,17 +1845,17 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </section>
 </section>
 <section id="pgrouting-2-4">
-<h3><a class="toc-backref" href="#id61" role="doc-backlink">pgRouting 2.4</a><a class="headerlink" href="#pgrouting-2-4" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id62" role="doc-backlink">pgRouting 2.4</a><a class="headerlink" href="#pgrouting-2-4" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id11">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-4-2-release-notes" id="id76">pgRouting 2.4.2 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-4-1-release-notes" id="id77">pgRouting 2.4.1 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-4-0-release-notes" id="id78">pgRouting 2.4.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-4-2-release-notes" id="id77">pgRouting 2.4.2 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-4-1-release-notes" id="id78">pgRouting 2.4.1 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-4-0-release-notes" id="id79">pgRouting 2.4.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-4-2-release-notes">
-<h4><a class="toc-backref" href="#id76" role="doc-backlink">pgRouting 2.4.2 发布说明</a><a class="headerlink" href="#pgrouting-2-4-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id77" role="doc-backlink">pgRouting 2.4.2 发布说明</a><a class="headerlink" href="#pgrouting-2-4-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.4.2%22%20">2.4.2Git关闭里程碑</a>。</p>
 <p class="rubric">改进</p>
 <ul class="simple">
@@ -1842,7 +1868,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-4-1-release-notes">
-<h4><a class="toc-backref" href="#id77" role="doc-backlink">pgRouting 2.4.1 发布说明</a><a class="headerlink" href="#pgrouting-2-4-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id78" role="doc-backlink">pgRouting 2.4.1 发布说明</a><a class="headerlink" href="#pgrouting-2-4-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%202.4.1%22%20">2.4.1Git关闭里程碑</a>。</p>
 <p class="rubric">Bug修复</p>
 <ul class="simple">
@@ -1851,13 +1877,13 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-4-0-release-notes">
-<h4><a class="toc-backref" href="#id78" role="doc-backlink">pgRouting 2.4.0 发布说明</a><a class="headerlink" href="#pgrouting-2-4-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id79" role="doc-backlink">pgRouting 2.4.0 发布说明</a><a class="headerlink" href="#pgrouting-2-4-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 ` 2.4.0Git关闭里程碑 &lt;<a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.4.0%22+is%3Aclosed">https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.4.0%22+is%3Aclosed</a>&gt;`_ 。</p>
-<p class="rubric">新签名</p>
+<p class="rubric">New Function.</p>
 <ul class="simple">
 <li><p>pgr_bdDijkstra</p></li>
 </ul>
-<p class="rubric">新的拟议签名</p>
+<p class="rubric">新拟议的签名：</p>
 <ul class="simple">
 <li><p>pgr_maxFlow</p></li>
 <li><p>pgr_astar（一对多）</p></li>
@@ -1869,7 +1895,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 <li><p>pgr_astarCost（多对多）</p></li>
 <li><p>pgr_astarCostMatrix</p></li>
 </ul>
-<p class="rubric">弃用签名</p>
+<p class="rubric">Deprecated signatures.</p>
 <ul class="simple">
 <li><p>pgr_bddijkstra - 使用 pgr_bdDijkstra代替</p></li>
 </ul>
@@ -1889,7 +1915,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </section>
 </section>
 <section id="pgrouting-2-3">
-<h3><a class="toc-backref" href="#id62" role="doc-backlink">pgRouting 2.3</a><a class="headerlink" href="#pgrouting-2-3" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id63" role="doc-backlink">pgRouting 2.3</a><a class="headerlink" href="#pgrouting-2-3" title="Link to this heading">¶</a></h3>
 <section id="pgrouting-2-3-2-release-notes">
 <h4>pgRouting 2.3.2 发布说明<a class="headerlink" href="#pgrouting-2-3-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 ` 2.3.2 Git关闭里程碑 &lt;<a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.2%22+is%3Aclosed">https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.2%22+is%3Aclosed</a>&gt;`_ 。</p>
@@ -1926,7 +1952,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 <ul class="simple">
 <li><p>pgr_eucledianTSP</p></li>
 </ul>
-<p class="rubric">新的拟议函数</p>
+<p class="rubric">New proposed functions.</p>
 <ul class="simple">
 <li><p>pgr_dijkstraCostMatrix</p></li>
 <li><p>pgr_withPointsCostMatrix</p></li>
@@ -1964,19 +1990,19 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </section>
 </section>
 <section id="pgrouting-2-2">
-<h3><a class="toc-backref" href="#id63" role="doc-backlink">pgRouting 2.2</a><a class="headerlink" href="#pgrouting-2-2" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id64" role="doc-backlink">pgRouting 2.2</a><a class="headerlink" href="#pgrouting-2-2" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id12">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-2-4-release-notes" id="id79">pgRouting 2.2.4 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-2-3-release-notes" id="id80">pgRouting 2.2.3 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-2-2-release-notes" id="id81">pgRouting 2.2.2 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-2-1-release-notes" id="id82">pgRouting 2.2.1 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-2-0-release-notes" id="id83">pgRouting 2.2.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2-4-release-notes" id="id80">pgRouting 2.2.4 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2-3-release-notes" id="id81">pgRouting 2.2.3 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2-2-release-notes" id="id82">pgRouting 2.2.2 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2-1-release-notes" id="id83">pgRouting 2.2.1 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-2-0-release-notes" id="id84">pgRouting 2.2.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-2-4-release-notes">
-<h4><a class="toc-backref" href="#id79" role="doc-backlink">pgRouting 2.2.4 发布说明</a><a class="headerlink" href="#pgrouting-2-2-4-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id80" role="doc-backlink">pgRouting 2.2.4 发布说明</a><a class="headerlink" href="#pgrouting-2-2-4-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.4%22+is%3Aclosed">2.2.4Git关闭里程碑</a> 。</p>
 <p class="rubric">Bug修复</p>
 <ul class="simple">
@@ -1986,7 +2012,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-2-3-release-notes">
-<h4><a class="toc-backref" href="#id80" role="doc-backlink">pgRouting 2.2.3 发布说明</a><a class="headerlink" href="#pgrouting-2-2-3-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id81" role="doc-backlink">pgRouting 2.2.3 发布说明</a><a class="headerlink" href="#pgrouting-2-2-3-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 ` 2.2.3Git关闭里程碑 &lt;<a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.3%22+is%3Aclosed">https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.3%22+is%3Aclosed</a>&gt;`_ 。</p>
 <p class="rubric">Bug修复</p>
 <ul class="simple">
@@ -1994,7 +2020,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-2-2-release-notes">
-<h4><a class="toc-backref" href="#id81" role="doc-backlink">pgRouting 2.2.2 发布说明</a><a class="headerlink" href="#pgrouting-2-2-2-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id82" role="doc-backlink">pgRouting 2.2.2 发布说明</a><a class="headerlink" href="#pgrouting-2-2-2-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.2%22+is%3Aclosed">2.2.2 Git关闭里程碑</a> 。</p>
 <p class="rubric">Bug修复</p>
 <ul class="simple">
@@ -2002,7 +2028,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-2-1-release-notes">
-<h4><a class="toc-backref" href="#id82" role="doc-backlink">pgRouting 2.2.1 发布说明</a><a class="headerlink" href="#pgrouting-2-2-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id83" role="doc-backlink">pgRouting 2.2.1 发布说明</a><a class="headerlink" href="#pgrouting-2-2-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 ` 2.2.1Git关闭里程碑 &lt;<a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A2.2.1+is%3Aclosed">https://github.com/pgRouting/pgrouting/issues?q=milestone%3A2.2.1+is%3Aclosed</a>&gt;`_ 。</p>
 <p class="rubric">Bug修复</p>
 <ul class="simple">
@@ -2011,7 +2037,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-2-0-release-notes">
-<h4><a class="toc-backref" href="#id83" role="doc-backlink">pgRouting 2.2.0 发布说明</a><a class="headerlink" href="#pgrouting-2-2-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id84" role="doc-backlink">pgRouting 2.2.0 发布说明</a><a class="headerlink" href="#pgrouting-2-2-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.0%22+is%3Aclosed">2.2.0Git关闭里程碑</a> 。</p>
 <p class="rubric">改进</p>
 <ul class="simple">
@@ -2064,15 +2090,15 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </section>
 </section>
 <section id="pgrouting-2-1">
-<h3><a class="toc-backref" href="#id64" role="doc-backlink">pgRouting 2.1</a><a class="headerlink" href="#pgrouting-2-1" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id65" role="doc-backlink">pgRouting 2.1</a><a class="headerlink" href="#pgrouting-2-1" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id13">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-1-0-release-notes" id="id84">pgRouting 2.1.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-1-0-release-notes" id="id85">pgRouting 2.1.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-1-0-release-notes">
-<h4><a class="toc-backref" href="#id84" role="doc-backlink">pgRouting 2.1.0 发布说明</a><a class="headerlink" href="#pgrouting-2-1-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id85" role="doc-backlink">pgRouting 2.1.0 发布说明</a><a class="headerlink" href="#pgrouting-2-1-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed">2.1.0Git关闭里程碑</a> 。</p>
 <p class="rubric">新签名</p>
 <ul class="simple">
@@ -2151,16 +2177,16 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </section>
 </section>
 <section id="pgrouting-2-0">
-<h3><a class="toc-backref" href="#id65" role="doc-backlink">pgRouting 2.0</a><a class="headerlink" href="#pgrouting-2-0" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id66" role="doc-backlink">pgRouting 2.0</a><a class="headerlink" href="#pgrouting-2-0" title="Link to this heading">¶</a></h3>
 <nav class="contents local" id="id14">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-2-0-1-release-notes" id="id85">pgRouting 2.0.1 发布说明</a></p></li>
-<li><p><a class="reference internal" href="#pgrouting-2-0-0-release-notes" id="id86">pgRouting 2.0.0 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-0-1-release-notes" id="id86">pgRouting 2.0.1 发布说明</a></p></li>
+<li><p><a class="reference internal" href="#pgrouting-2-0-0-release-notes" id="id87">pgRouting 2.0.0 发布说明</a></p></li>
 </ul>
 </nav>
 <section id="pgrouting-2-0-1-release-notes">
-<h4><a class="toc-backref" href="#id85" role="doc-backlink">pgRouting 2.0.1 发布说明</a><a class="headerlink" href="#pgrouting-2-0-1-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id86" role="doc-backlink">pgRouting 2.0.1 发布说明</a><a class="headerlink" href="#pgrouting-2-0-1-release-notes" title="Link to this heading">¶</a></h4>
 <p>小bug修复。</p>
 <p class="rubric">Bug修复</p>
 <ul class="simple">
@@ -2168,7 +2194,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="pgrouting-2-0-0-release-notes">
-<h4><a class="toc-backref" href="#id86" role="doc-backlink">pgRouting 2.0.0 发布说明</a><a class="headerlink" href="#pgrouting-2-0-0-release-notes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id87" role="doc-backlink">pgRouting 2.0.0 发布说明</a><a class="headerlink" href="#pgrouting-2-0-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 ` 2.0.0Git关闭里程碑 &lt;<a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.0.0%22+is%3Aclosed">https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.0.0%22+is%3Aclosed</a>&gt;`_ 。</p>
 <p>随着 pgRouting 2.0.0 的发布，该库已放弃向后兼容 <a class="reference internal" href="#pgrouting-1-0">pgRouting 1.0</a> 版本。此版本的主要目标是：</p>
 <ul class="simple">
@@ -2220,46 +2246,46 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 <nav class="contents local" id="id15">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#changes-for-release-1-05" id="id87">1.05 版的更改</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-1-03" id="id88">1.03 版的更改</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-1-02" id="id89">1.02 版的更改</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-1-01" id="id90">1.01 版的更改</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-1-0" id="id91">1.0 版的更改</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-1-0-0b" id="id92">1.0.0b 版的更改</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-1-0-0a" id="id93">1.0.0a 版的更改</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-0-9-9" id="id94">0.9.9 版的更改</a></p></li>
-<li><p><a class="reference internal" href="#changes-for-release-0-9-8" id="id95">0.9.8 版的更改</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-05" id="id88">1.05 版的更改</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-03" id="id89">1.03 版的更改</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-02" id="id90">1.02 版的更改</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-01" id="id91">1.01 版的更改</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-0" id="id92">1.0 版的更改</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-0-0b" id="id93">1.0.0b 版的更改</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-1-0-0a" id="id94">1.0.0a 版的更改</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-0-9-9" id="id95">0.9.9 版的更改</a></p></li>
+<li><p><a class="reference internal" href="#changes-for-release-0-9-8" id="id96">0.9.8 版的更改</a></p></li>
 </ul>
 </nav>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+1.x%22+is%3Aclosed">1.x Git 已关闭问题</a>。以下的发行说明已从之前的 <code class="docutils literal notranslate"><span class="pre">RELEASE_NOTES</span></code> 文件中复制，并作为参考保留。</p>
 <section id="changes-for-release-1-05">
-<h4><a class="toc-backref" href="#id87" role="doc-backlink">1.05 版的更改</a><a class="headerlink" href="#changes-for-release-1-05" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id88" role="doc-backlink">1.05 版的更改</a><a class="headerlink" href="#changes-for-release-1-05" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Bug修复</p></li>
 </ul>
 </section>
 <section id="changes-for-release-1-03">
-<h4><a class="toc-backref" href="#id88" role="doc-backlink">1.03 版的更改</a><a class="headerlink" href="#changes-for-release-1-03" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id89" role="doc-backlink">1.03 版的更改</a><a class="headerlink" href="#changes-for-release-1-03" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>拓扑创建速度更快</p></li>
 <li><p>Bug修复</p></li>
 </ul>
 </section>
 <section id="changes-for-release-1-02">
-<h4><a class="toc-backref" href="#id89" role="doc-backlink">1.02 版的更改</a><a class="headerlink" href="#changes-for-release-1-02" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id90" role="doc-backlink">1.02 版的更改</a><a class="headerlink" href="#changes-for-release-1-02" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Shooting*错误修复</p></li>
 <li><p>编译问题已解决</p></li>
 </ul>
 </section>
 <section id="changes-for-release-1-01">
-<h4><a class="toc-backref" href="#id90" role="doc-backlink">1.01 版的更改</a><a class="headerlink" href="#changes-for-release-1-01" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id91" role="doc-backlink">1.01 版的更改</a><a class="headerlink" href="#changes-for-release-1-01" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Shooting*错误修复</p></li>
 </ul>
 </section>
 <section id="changes-for-release-1-0">
-<h4><a class="toc-backref" href="#id91" role="doc-backlink">1.0 版的更改</a><a class="headerlink" href="#changes-for-release-1-0" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id92" role="doc-backlink">1.0 版的更改</a><a class="headerlink" href="#changes-for-release-1-0" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>核心函数和附加函数分开</p></li>
 <li><p>Cmake 构建过程</p></li>
@@ -2267,28 +2293,28 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 </ul>
 </section>
 <section id="changes-for-release-1-0-0b">
-<h4><a class="toc-backref" href="#id92" role="doc-backlink">1.0.0b 版的更改</a><a class="headerlink" href="#changes-for-release-1-0-0b" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id93" role="doc-backlink">1.0.0b 版的更改</a><a class="headerlink" href="#changes-for-release-1-0-0b" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>带有更简单的包装函数名称的附加 SQL 文件</p></li>
 <li><p>Bug修复</p></li>
 </ul>
 </section>
 <section id="changes-for-release-1-0-0a">
-<h4><a class="toc-backref" href="#id93" role="doc-backlink">1.0.0a 版的更改</a><a class="headerlink" href="#changes-for-release-1-0-0a" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id94" role="doc-backlink">1.0.0a 版的更改</a><a class="headerlink" href="#changes-for-release-1-0-0a" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Shooting* 真实道路网络的最短路径算法</p></li>
 <li><p>修复了多个 SQL 错误</p></li>
 </ul>
 </section>
 <section id="changes-for-release-0-9-9">
-<h4><a class="toc-backref" href="#id94" role="doc-backlink">0.9.9 版的更改</a><a class="headerlink" href="#changes-for-release-0-9-9" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id95" role="doc-backlink">0.9.9 版的更改</a><a class="headerlink" href="#changes-for-release-0-9-9" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>支持 PostgreSQL 8.2</p></li>
 <li><p>如果找不到任何路径，最短路径函数会返回空结果</p></li>
 </ul>
 </section>
 <section id="changes-for-release-0-9-8">
-<h4><a class="toc-backref" href="#id95" role="doc-backlink">0.9.8 版的更改</a><a class="headerlink" href="#changes-for-release-0-9-8" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id96" role="doc-backlink">0.9.8 版的更改</a><a class="headerlink" href="#changes-for-release-0-9-8" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>为最短路径函数添加了重新编号方案</p></li>
 <li><p>增加了有向最短路径函数</p></li>
@@ -2311,8 +2337,8 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.7.1.<br/>
-      Last updated on 12月 24, 2024.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.7.2.<br/>
+      Last updated on 1月 20, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

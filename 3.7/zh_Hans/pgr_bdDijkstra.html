@@ -8,11 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pgr_bdDijkstra &#8212; pgRouting Manual (3.7)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=521dc130"></script>
+    <script src="_static/documentation_options.js?v=62d28862"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=8578d92c"></script>
@@ -45,7 +45,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.7.1</b></span>
+        <span class="navbar-text pull-left"><b>v3.7.2</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -210,50 +210,43 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_bdDijkstra','zh-Hans'));  </script>
             
-  <div class="line-block">
+  <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-bddijkstra">
-<span id="index-0"></span><h1><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code><a class="headerlink" href="#pgr-bddijkstra" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code><a class="headerlink" href="#pgr-bddijkstra" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code> — Returns the shortest path using Bidirectional Dijkstra
 algorithm.</p>
-<figure class="align-default" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/table_of_contents.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
-</a>
-<figcaption>
-<p><span class="caption-text">Boost 图内部</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
 <p class="rubric">可用性：</p>
 <ul class="simple">
 <li><p>版本3.2.0</p>
 <ul>
-<li><p>新 <strong>拟议</strong> 的签名：</p>
+<li><p>New proposed signature:</p>
 <ul>
-<li><p>pgr_bdDijkstra(<a class="reference internal" href="#combinations">组合</a>)</p></li>
+<li><p>pgr_bdDijkstra(组合)</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>版本3.0.0</p>
 <ul>
-<li><p><strong>官方</strong> 函数</p></li>
+<li><p>Function promoted to official.</p></li>
 </ul>
 </li>
 <li><p>版本2.5.0</p>
 <ul>
-<li><p>新 <strong>拟议</strong> 函数：</p>
+<li><p>New Proposed signatures:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code> (<a class="reference internal" href="#one-to-many">一对多</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code> (<a class="reference internal" href="#many-to-one">多对一</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code> (<a class="reference internal" href="#many-to-many">多对多</a>)</p></li>
+<li><p>pgr_bdDijkstra(One to Many)</p></li>
+<li><p>pgr_bdDijkstra(Many to One)</p></li>
+<li><p>pgr_bdDijkstra(Many to Many)</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>版本2.4.0</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdDijsktra</span></code> (<a class="reference internal" href="#one-to-one">一对一</a>)上的签名更改</p>
+<li><p>Signature change on pgr_bdDijsktra(One to One)</p>
 <ul>
 <li><p>不再支持旧签名</p></li>
 </ul>
@@ -262,7 +255,7 @@ algorithm.</p>
 </li>
 <li><p>版本2.0.0</p>
 <ul>
-<li><p><strong>官方</strong> <code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code> (<a class="reference internal" href="#one-to-one">一对一</a>)</p></li>
+<li><p>Official function.</p></li>
 </ul>
 </li>
 </ul>
@@ -298,6 +291,7 @@ algorithm.</p>
 </ul>
 </li>
 </ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -850,7 +844,6 @@ algorithm.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="bdDijkstra-family.html"><span class="doc">双向 Dijkstra - 函数族</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
-<li><p><a class="reference external" href="https://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf">https://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Bidirectional_search">https://en.wikipedia.org/wiki/Bidirectional_search</a></p></li>
 </ul>
 <p class="rubric">索引和表格</p>
@@ -873,8 +866,8 @@ algorithm.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.7.1.<br/>
-      Last updated on 12月 24, 2024.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.7.2.<br/>
+      Last updated on 1月 20, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

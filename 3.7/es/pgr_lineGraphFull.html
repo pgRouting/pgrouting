@@ -8,11 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pgr_lineGraphFull - Experimental &#8212; pgRouting Manual (3.7)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=88bc68d1"></script>
+    <script src="_static/documentation_options.js?v=25ec181d"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=8578d92c"></script>
@@ -22,7 +22,7 @@
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
     <link rel="next" title="Ordenamiento - Familia de funciones" href="ordering-family.html" />
-    <link rel="prev" title="pgr_lineGraph - Propuesto" href="pgr_lineGraph.html" />
+    <link rel="prev" title="pgr_lineGraph - Proposed" href="pgr_lineGraph.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -46,7 +46,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.7.1</b></span>
+        <span class="navbar-text pull-left"><b>v3.7.2</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -145,7 +145,7 @@
               
                 
   <li>
-    <a href="pgr_lineGraph.html" title="Previous Chapter: pgr_lineGraph - Propuesto"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_lineGraph...</span>
+    <a href="pgr_lineGraph.html" title="Previous Chapter: pgr_lineGraph - Proposed"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_lineGraph...</span>
     </a>
   </li>
   <li>
@@ -222,7 +222,7 @@
 </ul>
 
   <li>
-    <a href="pgr_lineGraph.html" title="Previous Chapter: pgr_lineGraph - Propuesto"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_lineGraph...</span>
+    <a href="pgr_lineGraph.html" title="Previous Chapter: pgr_lineGraph - Proposed"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_lineGraph...</span>
     </a>
   </li>
   <li>
@@ -241,11 +241,11 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_lineGraphFull','es'));  </script>
             
-  <div class="line-block">
+  <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-linegraphfull-experimental">
-<span id="index-0"></span><h1><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> - Experimental<a class="headerlink" href="#pgr-linegraphfull-experimental" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> - Experimental<a class="headerlink" href="#pgr-linegraphfull-experimental" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> — Transforma un grafo dado en uno nuevo donde todos los vértices del grafo original se convierten en grafos de líneas.</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
@@ -281,7 +281,7 @@
 <ul class="simple">
 <li><p>Versión 2.6.0</p>
 <ul>
-<li><p>Nueva función <strong>Experimental</strong></p></li>
+<li><p>New experimental function.</p></li>
 </ul>
 </li>
 </ul>
@@ -301,6 +301,7 @@
 <li><p>Los resultados son indefinidos cuando se utiliza un identificador de borde duplicado en el grafo de entrada.</p></li>
 <li><p>Tiempo de ejecución: TBD</p></li>
 </ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -525,7 +526,9 @@
 <li><p><a class="reference internal" href="#using-the-routing-graph" id="id16">Using the routing graph</a></p></li>
 </ul>
 </nav>
-<p>Los ejemplos de esta sección se basan en la red <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a>. Los ejemplos incluyen el subgrafo que incluye las aristas 4, 7, 8 y 10 con <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>.</p>
+<p>The examples of this section are based on the <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a>
+The examples include the subgraph including edges 4, 7, 8, and 10 with
+<code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>.</p>
 <section id="the-data">
 <h3><a class="toc-backref" href="#id1" role="doc-backlink">The data</a><a class="headerlink" href="#the-data" title="Link to this heading">¶</a></h3>
 <p>En este ejemplo se muestra cómo funciona esta transformación de grafo para crear aristas adicionales para cada giro posible en un grafoáfico.</p>
@@ -939,7 +942,7 @@ LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
 <p>Add all the edges that are not involved in the line graph process to the new
 table</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span>
-<span class="n">INTO</span> <span class="n">new_graph</span> <span class="kn">from</span> <span class="nn">edges</span>
+<span class="n">INTO</span> <span class="n">new_graph</span> <span class="kn">from</span><span class="w"> </span><span class="nn">edges</span>
 <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">NOT</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">14</span>
 </pre></div>
@@ -1054,8 +1057,8 @@ LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.7.1.<br/>
-      Actualizado por última vez en dic 24, 2024.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.7.2.<br/>
+      Actualizado por última vez en ene 20, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

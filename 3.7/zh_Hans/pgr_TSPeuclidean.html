@@ -8,11 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pgr_TSPeuclidean &#8212; pgRouting Manual (3.7)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=521dc130"></script>
+    <script src="_static/documentation_options.js?v=62d28862"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=8578d92c"></script>
@@ -44,7 +44,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.7.1</b></span>
+        <span class="navbar-text pull-left"><b>v3.7.2</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -221,21 +221,14 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_TSPeuclidean','zh-Hans'));  </script>
             
-  <div class="line-block">
+  <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-tspeuclidean">
-<span id="index-0"></span><h1><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code><a class="headerlink" href="#pgr-tspeuclidean" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code><a class="headerlink" href="#pgr-tspeuclidean" title="Link to this heading">¶</a></h1>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code> -使用*metric*算法进行近似。</p></li>
+<li><p>pgr_TSPeuclidean`` - Aproximation using <em>metric</em> algorithm.</p></li>
 </ul>
-<figure class="align-default" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
-</a>
-<figcaption>
-<p><span class="caption-text">Boost 图内部</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
 <p class="rubric">可用性：</p>
 <ul class="simple">
 <li><p>版本3.2.1</p>
@@ -255,7 +248,7 @@
 </li>
 <li><p>版本2.3.0</p>
 <ul>
-<li><p><strong>官方</strong> 新函数</p></li>
+<li><p>New official function.</p></li>
 </ul>
 </li>
 </ul>
@@ -308,6 +301,7 @@
 </ul>
 </li>
 </ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 </section>
 <section id="signatures">
@@ -483,22 +477,22 @@
 <h2>其他示例<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#test-29-cities-of-western-sahara" id="id2">测试西撒哈拉29个城市</a></p>
+<li><p><a class="reference internal" href="#test-29-cities-of-western-sahara" id="id1">测试西撒哈拉29个城市</a></p>
 <ul>
-<li><p><a class="reference internal" href="#creating-a-table-for-the-data-and-storing-the-data" id="id3">创建数据表并存储数据</a></p></li>
-<li><p><a class="reference internal" href="#adding-a-geometry-for-visual-purposes" id="id4">添加几何图形（用于视觉目的）</a></p></li>
-<li><p><a class="reference internal" href="#total-tour-cost" id="id5">旅游总费用</a></p></li>
-<li><p><a class="reference internal" href="#getting-a-geometry-of-the-tour" id="id6">获取游览的几何形状</a></p></li>
-<li><p><a class="reference internal" href="#visual-results" id="id7">视觉效果</a></p></li>
+<li><p><a class="reference internal" href="#creating-a-table-for-the-data-and-storing-the-data" id="id2">创建数据表并存储数据</a></p></li>
+<li><p><a class="reference internal" href="#adding-a-geometry-for-visual-purposes" id="id3">添加几何图形（用于视觉目的）</a></p></li>
+<li><p><a class="reference internal" href="#total-tour-cost" id="id4">旅游总费用</a></p></li>
+<li><p><a class="reference internal" href="#getting-a-geometry-of-the-tour" id="id5">获取游览的几何形状</a></p></li>
+<li><p><a class="reference internal" href="#visual-results" id="id6">视觉效果</a></p></li>
 </ul>
 </li>
 </ul>
 </nav>
 <section id="test-29-cities-of-western-sahara">
-<h3><a class="toc-backref" href="#id2" role="doc-backlink">测试西撒哈拉29个城市</a><a class="headerlink" href="#test-29-cities-of-western-sahara" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id1" role="doc-backlink">测试西撒哈拉29个城市</a><a class="headerlink" href="#test-29-cities-of-western-sahara" title="Link to this heading">¶</a></h3>
 <p>此示例展示了如何使用Waterloo大学的 <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/countries.html">示例数据</a> （使用西撒哈拉 29 个城市的数据集 &lt;<a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/wi29.tsp">https://www.math.uwaterloo.ca/tsp/world/wi29.tsp</a>&gt;`__）进行性能测试</p>
 <section id="creating-a-table-for-the-data-and-storing-the-data">
-<h4><a class="toc-backref" href="#id3" role="doc-backlink">创建数据表并存储数据</a><a class="headerlink" href="#creating-a-table-for-the-data-and-storing-the-data" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id2" role="doc-backlink">创建数据表并存储数据</a><a class="headerlink" href="#creating-a-table-for-the-data-and-storing-the-data" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">wi29</span> <span class="p">(</span><span class="nb">id</span> <span class="n">BIGINT</span><span class="p">,</span> <span class="n">x</span> <span class="n">FLOAT</span><span class="p">,</span> <span class="n">y</span> <span class="n">FLOAT</span><span class="p">,</span> <span class="n">geom</span> <span class="n">geometry</span><span class="p">);</span>
 <span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">wi29</span> <span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">VALUES</span>
 <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">20833.3333</span><span class="p">,</span><span class="mf">17100.0000</span><span class="p">),</span>
@@ -534,13 +528,13 @@
 </div>
 </section>
 <section id="adding-a-geometry-for-visual-purposes">
-<h4><a class="toc-backref" href="#id4" role="doc-backlink">添加几何图形（用于视觉目的）</a><a class="headerlink" href="#adding-a-geometry-for-visual-purposes" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id3" role="doc-backlink">添加几何图形（用于视觉目的）</a><a class="headerlink" href="#adding-a-geometry-for-visual-purposes" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">wi29</span> <span class="n">SET</span> <span class="n">geom</span> <span class="o">=</span> <span class="n">ST_makePoint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
 <section id="total-tour-cost">
-<h4><a class="toc-backref" href="#id5" role="doc-backlink">旅游总费用</a><a class="headerlink" href="#total-tour-cost" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">旅游总费用</a><a class="headerlink" href="#total-tour-cost" title="Link to this heading">¶</a></h4>
 <p>获取旅行的总成本，将该值与数据集上给出的最佳旅行长度 27603 进行比较</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT *
 FROM pgr_TSPeuclidean($$SELECT * FROM wi29$$)
@@ -554,7 +548,7 @@ WHERE seq = 30;
 </div>
 </section>
 <section id="getting-a-geometry-of-the-tour">
-<h4><a class="toc-backref" href="#id6" role="doc-backlink">获取游览的几何形状</a><a class="headerlink" href="#getting-a-geometry-of-the-tour" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">获取游览的几何形状</a><a class="headerlink" href="#getting-a-geometry-of-the-tour" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WITH
 tsp_results AS (SELECT seq, geom FROM pgr_TSPeuclidean($$SELECT * FROM wi29$$) JOIN wi29 ON (node = id))
 SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
@@ -567,7 +561,7 @@ SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
 </div>
 </section>
 <section id="visual-results">
-<h4><a class="toc-backref" href="#id7" role="doc-backlink">视觉效果</a><a class="headerlink" href="#visual-results" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id6" role="doc-backlink">视觉效果</a><a class="headerlink" href="#visual-results" title="Link to this heading">¶</a></h4>
 <p>从视觉上看，第一幅图像是 <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/witour.html">最优解</a> ，第二幅图像是使用 <code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code> 获得的解。</p>
 <a class="reference internal image-reference" href="_images/wi29optimal.png"><img alt="_images/wi29optimal.png" src="_images/wi29optimal.png" style="width: 383.5px; height: 311.0px;" />
 </a>
@@ -580,8 +574,8 @@ SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
 <h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Traveling Sales Person - 函数族</span></a></p></li>
-<li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a> 网络。</p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost 的 metric appro 的 metric 近似</a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost: metric TSP approx</a></p></li>
 <li><p><a class="reference external" href="https://www.math.uwaterloo.ca/tsp/">滑铁卢大学（University of Waterloo ）TSP</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Traveling_salesman_problem">维基百科：旅行商问题</a></p></li>
 </ul>
@@ -605,8 +599,8 @@ SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.7.1.<br/>
-      Last updated on 12月 24, 2024.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.7.2.<br/>
+      Last updated on 1月 20, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

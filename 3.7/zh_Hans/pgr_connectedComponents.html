@@ -8,11 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pgr_connectedComponents &#8212; pgRouting Manual (3.7)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=521dc130"></script>
+    <script src="_static/documentation_options.js?v=62d28862"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/page_history.js?v=8578d92c"></script>
@@ -45,7 +45,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.7.1</b></span>
+        <span class="navbar-text pull-left"><b>v3.7.2</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -96,7 +96,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_connectedComponents</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_connectedComponents</span></code></a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a></li>
 <li><a class="reference internal" href="#parameters">参数</a></li>
@@ -164,7 +164,7 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#">pgr_connectedComponents</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_connectedComponents</span></code></a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a></li>
 <li><a class="reference internal" href="#parameters">参数</a></li>
@@ -210,35 +210,28 @@
         <div class="body span9 content" role="main">
             <script> document.write(get_history('pgr_connectedComponents','zh-Hans'));  </script>
             
-  <div class="line-block">
+  <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
 <section id="pgr-connectedcomponents">
-<span id="index-0"></span><h1>pgr_connectedComponents<a class="headerlink" href="#pgr-connectedcomponents" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_connectedComponents</span></code><a class="headerlink" href="#pgr-connectedcomponents" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_connectedComponents</span></code> — 使用基于深度优先搜索（DFS）的方法计算无向图的连通分量。</p>
-<figure class="align-default" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/connected_components.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" />
-</a>
-<figcaption>
-<p><span class="caption-text">Boost 图内部</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
 <p class="rubric">可用性</p>
 <ul class="simple">
 <li><p>版本3.0.0</p>
 <ul>
 <li><p>结果列发生变化：</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">n_seq</span></code> 被删除</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">seq</span></code> 将类型更改为``BIGINT``</p></li>
+<li><p>n_seq`` is removed</p></li>
+<li><p>seq`` changed type to <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></li>
 </ul>
 </li>
-<li><p><strong>官方</strong> 函数</p></li>
+<li><p>Function promoted to official.</p></li>
 </ul>
 </li>
 <li><p>版本2.5.0</p>
 <ul>
-<li><p>新 <strong>实验</strong> 函数</p></li>
+<li><p>New experimental function.</p></li>
 </ul>
 </li>
 </ul>
@@ -257,9 +250,10 @@
 </li>
 <li><p>运行时间： <span class="math notranslate nohighlight">\(O(V + E)\)</span></p></li>
 </ul>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
-<span id="index-1"></span><h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
+<h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
@@ -483,7 +477,7 @@
 </section>
 <section id="get-the-closest-vertex">
 <h4>获取最近的顶点<a class="headerlink" href="#get-the-closest-vertex" title="Link to this heading">¶</a></h4>
-<p>使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> 距离组件 <span class="math notranslate nohighlight">\(1\)</span> 最近的顶点是顶点 <span class="math notranslate nohighlight">\(4\)</span>。 距离顶点 <span class="math notranslate nohighlight">\(4\)</span> 最近的边是 边 <span class="math notranslate nohighlight">\(14\)</span>。</p>
+<p>使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges - Proposed</span></a> 距离组件 <span class="math notranslate nohighlight">\(1\)</span> 最近的顶点是顶点 <span class="math notranslate nohighlight">\(4\)</span>。 距离顶点 <span class="math notranslate nohighlight">\(4\)</span> 最近的边是 边 <span class="math notranslate nohighlight">\(14\)</span>。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge_id, fraction, ST_AsText(edge) AS edge, id AS closest_vertex
 FROM pgr_findCloseEdges(
   $$SELECT id, geom FROM edges WHERE component = 1$$,
@@ -597,8 +591,8 @@ INSERT 0 2
 <h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="components-family.html"><span class="doc">分量 - 函数族</span></a></p></li>
-<li><p>查询使用 <a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a> 网络。</p></li>
-<li><p>Boost: ` 已连接组件 &lt;<a class="reference external" href="https://www.boost.org/libs/graph/doc/connected_components.html">https://www.boost.org/libs/graph/doc/connected_components.html</a>&gt;`__</p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/connected_components.html">Boost: Connected components</a></p></li>
 <li><p>维基百科: <a class="reference external" href="https://en.wikipedia.org/wiki/Connected_component_(graph_theory)">连通分量</a></p></li>
 </ul>
 <p class="rubric">索引和表格</p>
@@ -621,8 +615,8 @@ INSERT 0 2
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.7.1.<br/>
-      Last updated on 12月 24, 2024.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.7.2.<br/>
+      Last updated on 1月 20, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>
