@@ -44,7 +44,7 @@ CREATE FUNCTION pgr_dijkstraNearCost(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT start_vid, end_vid, agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], directed, true, true, cap, true);
+    FROM _pgr_dijkstrav4(_pgr_get_statement($1), NULL::TEXT, ARRAY[$2]::BIGINT[], $3::BIGINT[], directed, true, true, cap, true);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -66,7 +66,7 @@ CREATE FUNCTION pgr_dijkstraNearCost(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT start_vid, end_vid, agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], directed, true, false, cap, true);
+    FROM _pgr_dijkstrav4(_pgr_get_statement($1), NULL::TEXT, $2::BIGINT[], ARRAY[$3]::BIGINT[], directed, true, false, cap, true);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -89,7 +89,7 @@ CREATE FUNCTION pgr_dijkstraNearCost(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT start_vid, end_vid, agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], directed, true, true, cap, global);
+    FROM _pgr_dijkstrav4(_pgr_get_statement($1), NULL::TEXT, $2::BIGINT[], $3::BIGINT[], directed, true, true, cap, global);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -111,7 +111,7 @@ CREATE FUNCTION pgr_dijkstraNearCost(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT start_vid, end_vid, agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), _pgr_get_statement($2), directed, true, cap, global);
+    FROM _pgr_dijkstrav4(_pgr_get_statement($1), _pgr_get_statement($2), NULL::BIGINT[], NULL::BIGINT[], directed, true, true, cap, global);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
