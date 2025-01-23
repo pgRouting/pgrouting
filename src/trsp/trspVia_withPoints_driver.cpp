@@ -212,7 +212,7 @@ pgr_do_trspVia_withPoints(
             pgrouting::DirectedGraph digraph;
             digraph.insert_edges(edges);
             digraph.insert_edges(pg_graph.new_edges());
-            pgrouting::pgr_dijkstraVia(
+            pgrouting::dijkstraVia(
                     digraph,
                     via,
                     paths,
@@ -223,7 +223,7 @@ pgr_do_trspVia_withPoints(
             pgrouting::UndirectedGraph undigraph;
             undigraph.insert_edges(edges);
             undigraph.insert_edges(pg_graph.new_edges());
-            pgrouting::pgr_dijkstraVia(
+            pgrouting::dijkstraVia(
                     undigraph,
                     via,
                     paths,

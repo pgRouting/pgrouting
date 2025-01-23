@@ -138,7 +138,7 @@ pgr_do_dijkstraVia(
         if (directed) {
             pgrouting::DirectedGraph digraph;
             digraph.insert_edges(edges);
-            pgrouting::pgr_dijkstraVia(
+            pgrouting::dijkstraVia(
                     digraph,
                     via,
                     paths,
@@ -148,7 +148,7 @@ pgr_do_dijkstraVia(
         } else {
             pgrouting::UndirectedGraph undigraph;
             undigraph.insert_edges(edges);
-            pgrouting::pgr_dijkstraVia(
+            pgrouting::dijkstraVia(
                     undigraph,
                     via,
                     paths,
