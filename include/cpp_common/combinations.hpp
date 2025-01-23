@@ -49,13 +49,6 @@ class Path;
 
 namespace utilities {
 
-#if 1
-std::map<int64_t, std::set<int64_t>>
-get_combinations(const II_t_rt *, size_t);
-
-std::map<int64_t, std::set<int64_t>>
-get_combinations(int64_t*, size_t, int64_t*, size_t);
-#endif
 
 std::map<int64_t, std::set<int64_t>>
 get_combinations(

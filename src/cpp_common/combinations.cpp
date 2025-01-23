@@ -37,35 +37,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace utilities {
 
-#if 1
-std::map<int64_t , std::set<int64_t>>
-get_combinations(const II_t_rt *combinations, size_t total) {
-    std::map<int64_t, std::set<int64_t>> result;
-
-    /* TODO(vicky) maybe use std::for_each */
-    for (size_t i = 0; i < total; i++) {
-        auto row = combinations[i];
-        result[row.d1.source].insert(row.d2.target);
-    }
-    return result;
-}
-
-std::map<int64_t , std::set<int64_t>>
-get_combinations(
-        int64_t  *start_arr,
-        size_t size_start_arr,
-        int64_t  *end_arr,
-        size_t size_end_arr) {
-    std::map<int64_t, std::set<int64_t>> result;
-
-    for (size_t i = 0; i < size_start_arr; ++i) {
-        for (size_t j = 0; j < size_end_arr; ++j) {
-            result[start_arr[i]].insert(end_arr[j]);
-        }
-    }
-    return result;
-}
-#endif
 
 std::map<int64_t, std::set<int64_t>>
 get_combinations(
