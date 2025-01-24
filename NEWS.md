@@ -41,15 +41,36 @@ milestone for 4.0.0
 * pgr_maxFlow(Combinations)
 * pgr_pushRelabel(Combinations)
 
+**code enhancements:**
 
-**Removal of deprecated functions and signatures**
+* Simplify C/C++ code for all overloads of
 
-* ``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``
-* ``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``
-* ``pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)``
-* ``pgr_trsp(text,integer,integer,boolean,boolean,text)``
+  * pgr_dijkstra
 
+**Removal of SQL deprecated functions and signatures**
 
+* pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)
+* pgr_trspviavertices(text,anyarray,boolean,boolean,text)
+* pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
+* pgr_trsp(text,integer,integer,boolean,boolean,text)
+* _pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)
+* _pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)
+* _pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)
+* _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)
+* _pgr_dijkstra(text,text,boolean,boolean,boolean)
+
+**Deprecation of internal C/C++ functions**
+
+* _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)``
+* _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint,boolean)``
+* _pgr_dijkstra(text,text,boolean,boolean,bigint,boolean)``
+* _pgr_dijkstra(text,text,boolean,boolean,boolean)``
+
+**Internal C/C++ functions in legacy**
+
+* _trsp(text,text,anyarray,anyarray,boolean)``
+* _v4trsp(text,text,anyarray,anyarray,boolean)``
+* _v4trsp(text,text,text,boolean)``
 
 # pgRouting 3
 

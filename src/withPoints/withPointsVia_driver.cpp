@@ -172,7 +172,7 @@ pgr_do_withPointsVia(
             pgrouting::DirectedGraph digraph(vertices);
             digraph.insert_edges(edges);
             digraph.insert_edges(pg_graph.new_edges());
-            pgrouting::pgr_dijkstraVia(
+            pgrouting::dijkstraVia(
                     digraph,
                     via_vertices,
                     paths,
@@ -183,7 +183,7 @@ pgr_do_withPointsVia(
             pgrouting::UndirectedGraph undigraph(vertices);
             undigraph.insert_edges(edges);
             undigraph.insert_edges(pg_graph.new_edges());
-            pgrouting::pgr_dijkstraVia(
+            pgrouting::dijkstraVia(
                     undigraph,
                     via_vertices,
                     paths,
