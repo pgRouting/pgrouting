@@ -78,20 +78,34 @@ milestone for 4.0.0
 
   * pgr_dijkstra
 
-.. rubric:: Removal of SQL deprecated functions and signatures
+.. rubric:: Removal of SQL deprecated functions
 
-* pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)
-* pgr_trspviavertices(text,anyarray,boolean,boolean,text)
-* pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
+* pgr_trsp(text,integer,double
 * pgr_trsp(text,integer,integer,boolean,boolean,text)
+* pgr_trspviaedges(text,integer[],double
+* pgr_trspviavertices(text,anyarray,boolean,boolean,text)
+
+.. rubric:: Removal of SQL deprecated internal functions
+
 * _pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)
 * _pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)
 * _pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)
 * _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)
+* _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint,boolean)
+* _pgr_dijkstra(text,text,boolean,boolean,bigint,boolean)
 * _pgr_dijkstra(text,text,boolean,boolean,boolean)
+* _pgr_dijkstrav4(text,text,anyarray,anyarray,boolean,boolean,boolean,bigint,boolean)
+* _pgr_drivingdistance(text,anyarray,double
+* _pgr_trsp(text,integer,double
+* _pgr_trsp(text,text,anyarray,anyarray,boolean)
+* _pgr_trsp(text,text,anyarray,bigint,boolean)
+* _pgr_trsp(text,text,bigint,anyarray,boolean)
+* _pgr_trsp(text,text,bigint,bigint,boolean)
+* _pgr_trspviavertices(text,integer[],boolean,boolean,text)
 
 .. rubric:: Deprecation of internal C/C++ functions
 
+* _pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)
 * _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)``
 * _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint,boolean)``
 * _pgr_dijkstra(text,text,boolean,boolean,bigint,boolean)``
@@ -102,6 +116,7 @@ milestone for 4.0.0
 * _trsp(text,text,anyarray,anyarray,boolean)``
 * _v4trsp(text,text,anyarray,anyarray,boolean)``
 * _v4trsp(text,text,text,boolean)``
+
 
 pgRouting 3
 *******************************************************************************
