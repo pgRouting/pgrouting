@@ -25,10 +25,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-----------------------
--- pgr_drivingDistance
-----------------------
-
 --v3.6
 CREATE FUNCTION _pgr_drivingDistancev4(
     TEXT,     -- edges_sql
@@ -48,31 +44,5 @@ RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
 LANGUAGE c VOLATILE STRICT;
 
--- COMMENTS
-
 COMMENT ON FUNCTION _pgr_drivingDistancev4(TEXT, ANYARRAY, FLOAT, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';
-
-/* Below functions are for backward compatibility to be removed on v4*/
-
---v3.0
-CREATE FUNCTION _pgr_drivingDistance(
-    edges_sql TEXT,
-    start_vids ANYARRAY,
-    distance FLOAT,
-    directed BOOLEAN DEFAULT TRUE,
-    equicost BOOLEAN DEFAULT FALSE,
-    OUT seq INTEGER,
-    OUT from_v  BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME'
-LANGUAGE c VOLATILE STRICT;
-
--- COMMENTS
-
-COMMENT ON FUNCTION _pgr_drivingDistance(TEXT, ANYARRAY, FLOAT, BOOLEAN, BOOLEAN)
-IS 'pgRouting internal function deprecated on v3.6.0';

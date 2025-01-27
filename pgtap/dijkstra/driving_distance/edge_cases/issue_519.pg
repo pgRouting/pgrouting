@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(3);
+SELECT CASE WHEN NOT min_version('3.6.0') AND min_lib_version('5.0.0') THEN plan(1) ELSE plan(3) END;
 
 CREATE OR REPLACE FUNCTION test_function() RETURNS SETOF TEXT AS
 $BODY$
@@ -41,6 +41,11 @@ BEGIN
         RETURN QUERY SELECT bag_has('q4', 'q2', '2: DD from [1, 5, 25] should have results of DD from 5');
         RETURN QUERY SELECT bag_has('q4', 'q3', '3: DD from [1, 5, 25] should have results of DD from 25');
     ELSE
+      IF min_lib_version('5.0.0') THEN
+        RETURN QUERY SELECT skip(1, 'Internal function deprecated on 3.6.0 and removed on 5.0.0');
+      ELSE
+        --Internal function deprecated on 3.6.0
+        SET client_min_messages TO WARNING;
         PREPARE q1 AS
         SELECT 1 AS from_v, node, edge, cost, agg_cost FROM pgr_drivingDistance('SELECT id, source, target, cost FROM edges', 1, 3.5);
 
@@ -56,6 +61,8 @@ BEGIN
         RETURN QUERY SELECT bag_has('q4', 'q1', '1: DD from [1, 5, 25] should have results of DD from 1');
         RETURN QUERY SELECT bag_has('q4', 'q2', '2: DD from [1, 5, 25] should have results of DD from 5');
         RETURN QUERY SELECT bag_has('q4', 'q3', '3: DD from [1, 5, 25] should have results of DD from 25');
+        SET client_min_messages TO NOTICE;
+      END IF;
     END IF;
 END;
 $BODY$
