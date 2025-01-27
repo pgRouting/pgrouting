@@ -74,9 +74,7 @@ milestone for 4.0.0
 
 .. rubric:: code enhancements:
 
-* Simplify C/C++ code for all overloads of
-
-  * pgr_dijkstra
+* Removal of unused C/C++ code
 
 .. rubric:: Removal of SQL deprecated functions
 
