@@ -499,20 +499,36 @@ milestone for 4.0.0</a></p>
 </ul>
 </li>
 </ul>
-<p class="rubric">Removal of SQL deprecated functions and signatures</p>
+<p class="rubric">Removal of SQL deprecated functions</p>
 <ul class="simple">
-<li><p>pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)</p></li>
-<li><p>pgr_trspviavertices(text,anyarray,boolean,boolean,text)</p></li>
 <li><p>pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)</p></li>
 <li><p>pgr_trsp(text,integer,integer,boolean,boolean,text)</p></li>
+<li><p>pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)</p></li>
+<li><p>pgr_trspviavertices(text,anyarray,boolean,boolean,text)</p></li>
+</ul>
+<p class="rubric">Removal of SQL deprecated internal functions</p>
+<ul class="simple">
 <li><p>_pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)</p></li>
 <li><p>_pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)</p></li>
 <li><p>_pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)</p></li>
 <li><p>_pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)</p></li>
+<li><p>_pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint,boolean)</p></li>
+<li><p>_pgr_dijkstra(text,text,boolean,boolean,bigint,boolean)</p></li>
 <li><p>_pgr_dijkstra(text,text,boolean,boolean,boolean)</p></li>
+<li><p>_pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)</p></li>
+<li><p>_pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)</p></li>
+<li><p>_pgr_trsp(text,text,anyarray,anyarray,boolean)</p></li>
+<li><p>_pgr_trsp(text,text,anyarray,bigint,boolean)</p></li>
+<li><p>_pgr_trsp(text,text,bigint,anyarray,boolean)</p></li>
+<li><p>_pgr_trsp(text,text,bigint,bigint,boolean)</p></li>
+<li><p>_pgr_trspviavertices(text,integer[],boolean,boolean,text)</p></li>
+<li><p>_trsp(text,text,anyarray,anyarray,boolean)</p></li>
+<li><p>_v4trsp(text,text,anyarray,anyarray,boolean)</p></li>
+<li><p>_v4trsp(text,text,text,boolean)</p></li>
 </ul>
 <p class="rubric">Deprecation of internal C/C++ functions</p>
 <ul class="simple">
+<li><p>_pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)</p></li>
 <li><p>_pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)``</p></li>
 <li><p>_pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint,boolean)``</p></li>
 <li><p>_pgr_dijkstra(text,text,boolean,boolean,bigint,boolean)``</p></li>
@@ -2429,7 +2445,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.0-dev.<br/>
-      Last updated on 1月 25, 2025.<br/>
+      Last updated on 1月 27, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>
