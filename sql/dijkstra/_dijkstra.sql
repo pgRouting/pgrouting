@@ -28,10 +28,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
---v4.0
-CREATE FUNCTION _pgr_dijkstrav4(
+--v3.2
+CREATE FUNCTION _pgr_dijkstra(
     edges_sql TEXT,
-    combinations_sql TEXT,
     start_vids ANYARRAY,
     end_vids ANYARRAY,
     directed BOOLEAN,
@@ -50,6 +49,34 @@ CREATE FUNCTION _pgr_dijkstrav4(
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
-LANGUAGE C VOLATILE;
+LANGUAGE C VOLATILE STRICT;
 
 
+--v3.2
+CREATE FUNCTION _pgr_dijkstra(
+    edges_sql TEXT,
+    combinations_sql TEXT,
+    directed BOOLEAN,
+    only_cost BOOLEAN,
+    n_goals BIGINT,
+    global BOOLEAN,
+
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE C VOLATILE STRICT;
+
+-- COMMENTS
+
+COMMENT ON FUNCTION _pgr_dijkstra(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN, BIGINT, BOOLEAN)
+IS 'pgRouting internal function';
+
+COMMENT ON FUNCTION _pgr_dijkstra(TEXT, TEXT, BOOLEAN, BOOLEAN, BIGINT, BOOLEAN)
+IS 'pgRouting internal function';

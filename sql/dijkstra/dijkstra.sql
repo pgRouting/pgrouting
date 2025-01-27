@@ -53,7 +53,7 @@ CREATE FUNCTION pgr_dijkstra(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM _pgr_dijkstrav4(_pgr_get_statement($1), NULL::TEXT, ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, false, true, 0, false);
+    FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, false, true, 0, false);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -79,7 +79,7 @@ CREATE FUNCTION pgr_dijkstra(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM _pgr_dijkstrav4(_pgr_get_statement($1), NULL::TEXT, ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, false, true, 0, false);
+    FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, false, true, 0, false);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -105,7 +105,7 @@ CREATE FUNCTION pgr_dijkstra(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM _pgr_dijkstrav4(_pgr_get_statement($1), NULL::TEXT, $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, false, false, 0, false);
+    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, false, false, 0, false);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -131,7 +131,7 @@ CREATE FUNCTION pgr_dijkstra(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM _pgr_dijkstrav4(_pgr_get_statement($1), NULL::TEXT, $2::BIGINT[], $3::BIGINT[], $4, false, true, 0, false);
+    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, false, true, 0, false);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -156,7 +156,7 @@ CREATE FUNCTION pgr_dijkstra(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
-    FROM _pgr_dijkstrav4(_pgr_get_statement($1), _pgr_get_statement($2), NULL::BIGINT[], NULL::BIGINT[], $3, false, true, 0, false);
+    FROM _pgr_dijkstra(_pgr_get_statement($1), _pgr_get_statement($2), $3, false, 0, false);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
