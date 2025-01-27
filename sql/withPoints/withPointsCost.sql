@@ -205,6 +205,7 @@ IS 'pgr_withPointsCost (Many to One)
 
 COMMENT ON FUNCTION pgr_withPointsCost(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN, CHAR)
 IS 'pgr_withPointsCost (Many to Many)
+- PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - Points SQL with columns: [pid], edge_id, fraction[,side]
@@ -219,6 +220,7 @@ IS 'pgr_withPointsCost (Many to Many)
 
 COMMENT ON FUNCTION pgr_withPointsCost(TEXT, TEXT, TEXT, BOOLEAN, CHAR)
 IS 'pgr_withPointsCost(Combinations)
+- PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - Points SQL with columns: [pid], edge_id, fraction [,side]

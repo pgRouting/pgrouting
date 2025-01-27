@@ -42,7 +42,7 @@ CREATE FUNCTION pgr_dijkstraCostMatrix(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT a.start_vid, a.end_vid, a.agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), $2, $2, $3, TRUE) a;
+    FROM _pgr_dijkstra(_pgr_get_statement($1), $2, $2, $3, true, true, 0, false) a;
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100

@@ -229,5 +229,5 @@ END;
 $BODY$ LANGUAGE 'plpgsql' VOLATILE STRICT COST 100;
 
 -- COMMENTS
-COMMENT ON FUNCTION pgr_createverticestable(TEXT, TEXT, TEXT, TEXT, TEXT)
+COMMENT ON FUNCTION pgr_nodeNetwork(TEXT, DOUBLE PRECISION, TEXT, TEXT, TEXT, TEXT, BOOLEAN)
 IS 'pgr_nodeNetwork deprecated function on v3.8.0';

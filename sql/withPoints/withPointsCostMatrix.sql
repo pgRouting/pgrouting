@@ -27,16 +27,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
----------------------
----------------------
--- costMatrix
----------------------
----------------------
-
 ---------------------------
 -- pgr_withPointsCostMatrix
 ---------------------------
-
 
 --v2.6
 CREATE FUNCTION pgr_withPointsCostMatrix(
