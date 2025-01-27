@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(34);
+SELECT CASE WHEN NOT min_version('3.6.0') AND min_lib_version('5.0.0') THEN plan(1) ELSE plan(34) END;
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost  FROM edges;
@@ -39,6 +39,11 @@ DECLARE
 params TEXT[];
 subs TEXT[];
 BEGIN
+    IF NOT min_version('3.6.0') AND min_lib_version('5.0.0') THEN
+      RETURN NEXT skip(1, 'Internal function deprecated on 3.6.0 and removed on 5.0.0');
+      RETURN;
+    END IF;
+
     -- 1 to distance
     params = ARRAY['$$SELECT id, source, target, cost, reverse_cost  FROM edges$$','1', '1.3::FLOAT']::TEXT[];
     subs = ARRAY[
