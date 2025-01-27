@@ -44,6 +44,7 @@ LANGUAGE SQL VOLATILE STRICT;
 
 COMMENT ON FUNCTION pgr_contractionDeadEnd(TEXT, BOOLEAN, BIGINT[])
 IS 'pgr_contractionDeadEnd
+- PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Optional Parameters

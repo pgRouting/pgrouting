@@ -228,16 +228,5 @@ END;
 $BODY$ LANGUAGE 'plpgsql' VOLATILE STRICT COST 100;
 
 -- COMMENTS
-COMMENT ON FUNCTION pgr_nodeNetwork(TEXT, DOUBLE PRECISION, TEXT, TEXT, TEXT, TEXT, BOOLEAN) IS 'pgr_nodeNetwork
-- Parameters
-  - Edge table name
-  - tolerance
-- Optional parameters
-  - id := ''id''
-  - the_geom := ''the_geom''
-  - table_ending := ''noded''
-  - rows_where := ''''
-  - outall := false
-- DOCUMENTATION:
-  - ${PROJECT_DOC_LINK}/pgr_nodeNetwork.html
-';
+COMMENT ON FUNCTION pgr_nodeNetwork(TEXT, DOUBLE PRECISION, TEXT, TEXT, TEXT, TEXT, BOOLEAN)
+IS 'pgr_nodeNetwork deprecated function on v3.8.0';

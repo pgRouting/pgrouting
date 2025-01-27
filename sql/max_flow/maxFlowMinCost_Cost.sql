@@ -141,7 +141,7 @@ IS 'pgr_maxFlowMinCost_Cost (Many to One)
 ';
 
 COMMENT ON FUNCTION pgr_maxFlowMinCost_Cost(TEXT, ANYARRAY, ANYARRAY)
-IS 'EXPERIMENTAL pgr_maxFlowMinCost_Cost (Many to Many)
+IS 'pgr_maxFlowMinCost_Cost (Many to Many)
 - EXPERIMENTAL
 - Parameters:
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
@@ -152,7 +152,7 @@ IS 'EXPERIMENTAL pgr_maxFlowMinCost_Cost (Many to Many)
 ';
 
 COMMENT ON FUNCTION pgr_maxFlowMinCost_Cost(TEXT, TEXT)
-IS 'EXPERIMENTAL pgr_maxFlowMinCost_Cost (Combinations)
+IS 'pgr_maxFlowMinCost_Cost (Combinations)
 - EXPERIMENTAL
 - Parameters:
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]

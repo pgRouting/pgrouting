@@ -63,7 +63,7 @@ LANGUAGE SQL VOLATILE STRICT;
 
 COMMENT ON FUNCTION pgr_contractionHierarchies(TEXT, BOOLEAN, BIGINT[])
 IS 'pgr_contractionHierarchies
-EXPERIMENTAL
+- EXPERIMENTAL
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Optional Parameters

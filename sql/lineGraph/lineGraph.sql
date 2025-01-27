@@ -51,7 +51,7 @@ ROWS 1000;
 
 COMMENT ON FUNCTION pgr_lineGraph(TEXT, BOOLEAN)
 IS 'pgr_lineGraph
-- EXPERIMENTAL
+- PROPOSED
 - Parameters:
   - edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Optional Parameters:
