@@ -43,9 +43,7 @@ milestone for 4.0.0
 
 **code enhancements:**
 
-* Simplify C/C++ code for all overloads of
-
-  * pgr_dijkstra
+* Removal of unused C/C++ code
 
 **Removal of SQL deprecated functions**
 
