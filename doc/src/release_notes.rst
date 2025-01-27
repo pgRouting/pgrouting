@@ -82,7 +82,7 @@ milestone for 4.0.0
 
 * pgr_trsp(text,integer,double
 * pgr_trsp(text,integer,integer,boolean,boolean,text)
-* pgr_trspviaedges(text,integer[],double
+* pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)
 * pgr_trspviavertices(text,anyarray,boolean,boolean,text)
 
 .. rubric:: Removal of SQL deprecated internal functions
@@ -95,8 +95,6 @@ milestone for 4.0.0
 * _pgr_dijkstra(text,text,boolean,boolean,bigint,boolean)
 * _pgr_dijkstra(text,text,boolean,boolean,boolean)
 * _pgr_dijkstrav4(text,text,anyarray,anyarray,boolean,boolean,boolean,bigint,boolean)
-* _pgr_drivingdistance(text,anyarray,double
-* _pgr_trsp(text,integer,double
 * _pgr_trsp(text,text,anyarray,anyarray,boolean)
 * _pgr_trsp(text,text,anyarray,bigint,boolean)
 * _pgr_trsp(text,text,bigint,anyarray,boolean)
@@ -116,7 +114,6 @@ milestone for 4.0.0
 * _trsp(text,text,anyarray,anyarray,boolean)``
 * _v4trsp(text,text,anyarray,anyarray,boolean)``
 * _v4trsp(text,text,text,boolean)``
-
 
 pgRouting 3
 *******************************************************************************
