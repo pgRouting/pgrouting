@@ -48,6 +48,7 @@ LANGUAGE SQL VOLATILE STRICT;
 
 COMMENT ON FUNCTION pgr_betweennessCentrality(TEXT, BOOLEAN)
 IS 'pgr_betweennessCentrality
+- EXPERIMENTAL
 - Parameters:
     - edges SQL with columns: source, target, cost [,reverse_cost])
 - Optional Parameters:
