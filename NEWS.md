@@ -66,6 +66,7 @@ milestone for 4.0.0
 * _pgr_trsp(text,text,bigint,anyarray,boolean)
 * _pgr_trsp(text,text,bigint,bigint,boolean)
 * _pgr_trspviavertices(text,integer[],boolean,boolean,text)
+* _pgr_withpointsvia(text,bigint[],double precision[],boolean)
 * _trsp(text,text,anyarray,anyarray,boolean)
 * _v4trsp(text,text,anyarray,anyarray,boolean)
 * _v4trsp(text,text,text,boolean)
