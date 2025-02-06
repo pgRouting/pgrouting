@@ -27,18 +27,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-----------
-----------
--- mst
-----------
-----------
-
-
-----------------
--- _pgr_prim
-----------------
-
-
 --v3.7
 CREATE FUNCTION _pgr_primv4(
   TEXT,     -- Edge sql
@@ -61,30 +49,3 @@ LANGUAGE C VOLATILE STRICT;
 
 COMMENT ON FUNCTION _pgr_primv4(TEXT, ANYARRAY, TEXT, BIGINT, FLOAT)
 IS 'pgRouting internal function';
-
---v3.0
-CREATE FUNCTION _pgr_prim(
-    TEXT,             -- Edge sql
-    ANYARRAY,         -- tree root for traversal
-    order_by TEXT,
-    max_depth BIGINT,
-    distance FLOAT,
-
-    OUT seq BIGINT,
-    OUT depth BIGINT,
-    OUT start_vid BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME'
-LANGUAGE C VOLATILE STRICT;
-
-
--- COMMENTS
-
-
-COMMENT ON FUNCTION _pgr_prim(TEXT, ANYARRAY, TEXT, BIGINT, FLOAT)
-IS 'pgRouting internal function deprecated on v3.7.0';
-
