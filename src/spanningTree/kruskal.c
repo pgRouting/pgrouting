@@ -170,7 +170,11 @@ PGDLLEXPORT Datum _pgr_kruskalv4(PG_FUNCTION_ARGS) {
     }
 }
 
-/***********************************************************************************/
+/* Deprecated code starts here
+ * This code is used on v3.6 and under
+ *
+ * TODO(v5) Move to legacy
+ */
 
 PGDLLEXPORT Datum _pgr_kruskal(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_kruskal);
@@ -181,6 +185,12 @@ PGDLLEXPORT Datum _pgr_kruskal(PG_FUNCTION_ARGS) {
 
     MST_rt *result_tuples = NULL;
     size_t result_count = 0;
+
+    ereport(NOTICE, (
+            errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+            errmsg("A stored procedure is using deprecated C internal function '%s'", __func__),
+            errdetail("Library function '%s' was deprecated in pgRouting %s", __func__, "3.7.0"),
+            errhint("Consider upgrade pgRouting")));
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
