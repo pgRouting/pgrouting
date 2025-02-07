@@ -53,29 +53,3 @@ LANGUAGE C VOLATILE STRICT;
 
 COMMENT ON FUNCTION _pgr_kruskalv4(TEXT, ANYARRAY, TEXT, BIGINT, FLOAT)
 IS 'pgRouting internal function';
-
---v3.0
-CREATE FUNCTION _pgr_kruskal(
-    TEXT,             -- Edge sql
-    ANYARRAY,         -- tree root for traversal
-    fn_suffix TEXT,
-    max_depth BIGINT,
-    distance FLOAT,
-
-    OUT seq BIGINT,
-    OUT depth BIGINT,
-    OUT start_vid BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-'MODULE_PATHNAME'
-LANGUAGE C VOLATILE STRICT;
-
-
--- COMMENTS
-
-
-COMMENT ON FUNCTION _pgr_kruskal(TEXT, ANYARRAY, TEXT, BIGINT, FLOAT)
-IS 'pgRouting internal function deprecated on v3.7.0';

@@ -91,6 +91,7 @@ milestone for 4.0.0
 * _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)
 * _pgr_dijkstra(text,text,boolean,boolean,boolean)
 * _pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)
+* _pgr_kruskal(text,anyarray,text,bigint,double precision)
 * _pgr_prim(text,anyarray,text,bigint,double precision)
 * _pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)
 * _pgr_trsp(text,text,anyarray,anyarray,boolean)
@@ -106,6 +107,7 @@ milestone for 4.0.0
 .. rubric:: Deprecation of internal C/C++ functions
 
 * _pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)
+* _pgr_kruskal(text,anyarray,text,bigint,double precision)
 * _pgr_prim(text,anyarray,text,bigint,double precision)
 
 .. rubric:: Internal C/C++ functions in legacy
