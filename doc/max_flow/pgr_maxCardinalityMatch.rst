@@ -28,13 +28,13 @@ graph.
   * Works for undirected graphs.
   * New signature
 
-    * pgr_maxCardinalityMatch(text)`` returns only ``edge`` column.
+    * pgr_maxCardinalityMatch(text) returns only ``edge`` column.
 
   * Deprecated signature
 
-    * pgr_maxCardinalityMatch(text,boolean)``
+    * pgr_maxCardinalityMatch(text,boolean)
 
-      * directed => false`` when used.
+      * directed => ``false`` when used.
 
 * Version 3.0.0
 

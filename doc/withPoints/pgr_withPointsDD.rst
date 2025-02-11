@@ -51,8 +51,8 @@
 
 * Deprecated signatures
 
-  * pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)``
-  * pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)``
+  * pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)
+  * pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)
 
 .. rubric:: Version 2.2.0
 

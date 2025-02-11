@@ -60,8 +60,6 @@ implemenent this variation.
 Signatures
 -------------------------------------------------------------------------------
 
-.. rubric:: Summary
-
 .. admonition:: \ \
    :class: signatures
 

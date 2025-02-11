@@ -47,7 +47,7 @@ Signatures
 
    | pgr_findCloseEdges(`Edges SQL`_, **point**, **tolerance**, [**options**])
    | pgr_findCloseEdges(`Edges SQL`_, **points**, **tolerance**, [**options**])
-   | **options:** [cap, partial, dryrun]``
+   | **options:** ``[cap, partial, dryrun]``
 
    | Returns set of |result-find|
    | OR EMPTY SET
@@ -62,7 +62,7 @@ One point
    :class: signatures
 
    | pgr_findCloseEdges(`Edges SQL`_, **point**, **tolerance**, [**options**])
-   | **options:** [cap, partial, dryrun]``
+   | **options:** ``[cap, partial, dryrun]``
 
    | Returns set of |result-find|
    | OR EMPTY SET
