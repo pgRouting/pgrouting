@@ -9,6 +9,7 @@
 
 |
 
+
 Migration guide
 ===============================================================================
 
@@ -21,24 +22,18 @@ Results can be different because of the changes.
    All deprecated functions will be removed on next mayor version 4.0.0
 
 .. contents:: Contents
+   :depth: 2
 
-Migration of functions
-*******************************************************************************
-
-.. contents:: Migrating functions
-   :local:
-
-
-Migration of pgr_aStar``
+Migration of ``pgr_aStar``
 -------------------------------------------------------------------------------
 
 Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
 
 Signatures to be migrated:
 
-* pgr_aStar(One to One)
-* pgr_aStar(One to Many)
-* pgr_aStar(Many to One)
+* ``pgr_aStar`` (`One to One`)
+* ``pgr_aStar`` (`One to Many`)
+* ``pgr_aStar`` (`Many to One`)
 
 :Before Migration:
 
@@ -47,24 +42,24 @@ Signatures to be migrated:
   * Depending on the overload used, the columns ``start_vid`` and ``end_vid``
     might be missing:
 
-    * pgr_aStar(One to One) does not have ``start_vid`` and ``end_vid``.
-    * pgr_aStar(One to Many) does not have ``start_vid``.
-    * pgr_aStar(Many to One) does not have ``end_vid``.
+    * ``pgr_aStar`` (`One to One`) does not have ``start_vid`` and ``end_vid``.
+    * ``pgr_aStar`` (`One to Many`) does not have ``start_vid``.
+    * ``pgr_aStar`` (`Many to One`) does not have ``end_vid``.
 
 :Migration:
 
 * Be aware of the existence of the additional columns.
 
-* In pgr_aStar(One to One)
+* In ``pgr_aStar`` (`One to One`)
 
-  * start_vid`` contains the **start vid** parameter value.
-  * end_vid`` contains the **end vid** parameter value.
+  * ``start_vid`` contains the **start vid** parameter value.
+  * ``end_vid`` contains the **end vid** parameter value.
 
 .. literalinclude:: migration.queries
    :start-after: --astar1
    :end-before: --astar2
 
-* In pgr_aStar(One to Many)
+* In ``pgr_aStar`` (`One to Many`)
 
   * ``start_vid`` contains the **start vid** parameter value.
 
@@ -72,7 +67,7 @@ Signatures to be migrated:
    :start-after: --astar2
    :end-before: --astar3
 
-* In pgr_aStar(Many to One)
+* In ``pgr_aStar`` (`Many to One`)
 
   * ``end_vid`` contains the **end vid** parameter value.
 
@@ -105,9 +100,9 @@ Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
 
 Signatures to be migrated:
 
-* pgr_bdAstar(One to One)
-* pgr_bdAstar(One to Many)
-* pgr_bdAstar(Many to One)
+* ``pgr_bdAstar`` (`One to One`)
+* ``pgr_bdAstar`` (`One to Many`)
+* ``pgr_bdAstar`` (`Many to One`)
 
 :Before Migration:
 
@@ -116,15 +111,15 @@ Signatures to be migrated:
   * Depending on the overload used, the columns ``start_vid`` and ``end_vid``
     might be missing:
 
-    * pgr_bdAstar(One to One) does not have ``start_vid`` and ``end_vid``.
-    * pgr_bdAstar(One to Many) does not have ``start_vid``.
-    * pgr_bdAstar(Many to One) does not have ``end_vid``.
+    * ``pgr_bdAstar`` (`One to One`) does not have ``start_vid`` and ``end_vid``.
+    * ``pgr_bdAstar`` (`One to Many`) does not have ``start_vid``.
+    * ``pgr_bdAstar`` (`Many to One`) does not have ``end_vid``.
 
 :Migration:
 
 * Be aware of the existence of the additional columns.
 
-* In pgr_bdAstar(One to One)
+* In ``pgr_bdAstar`` (`One to One`)
 
   * ``start_vid`` contains the **start vid** parameter value.
   * ``end_vid`` contains the **end vid** parameter value.
@@ -133,7 +128,7 @@ Signatures to be migrated:
    :start-after: --bdastar1
    :end-before: --bdastar2
 
-* In pgr_bdAstar(One to Many)
+* In ``pgr_bdAstar`` (`One to Many`)
 
   * ``start_vid`` contains the **start vid** parameter value.
 
@@ -141,7 +136,7 @@ Signatures to be migrated:
    :start-after: --bdastar2
    :end-before: --bdastar3
 
-* In pgr_bdAstar(Many to One)
+* In ``pgr_bdAstar`` (`Many to One`)
 
   * ``end_vid`` contains the **end vid** parameter value.
 
@@ -173,9 +168,9 @@ Starting from `v3.5.0 <https://docs.pgrouting.org/3.5/en/migration.html>`__
 
 Signatures to be migrated:
 
-* pgr_dijkstra(One to One)
-* pgr_dijkstra(One to Many)
-* pgr_dijkstra(Many to One)
+* ``pgr_dijkstra`` (`One to One`)
+* ``pgr_dijkstra`` (`One to Many`)
+* ``pgr_dijkstra`` (`Many to One`)
 
 :Before Migration:
 
@@ -184,16 +179,16 @@ Signatures to be migrated:
   * Depending on the overload used, the columns ``start_vid`` and ``end_vid``
     might be missing:
 
-    * pgr_dijkstra(One to One) does not have ``start_vid`` and
+    * ``pgr_dijkstra`` (`One to One`) does not have ``start_vid`` and
       ``end_vid``.
-    * pgr_dijkstra(One to Many) does not have ``start_vid``.
-    * pgr_dijkstra(Many to One) does not have ``end_vid``.
+    * ``pgr_dijkstra`` (`One to Many`) does not have ``start_vid``.
+    * ``pgr_dijkstra`` (`Many to One`) does not have ``end_vid``.
 
 :Migration:
 
 * Be aware of the existence of the additional columns.
 
-* In pgr_dijkstra(One to One)
+* In ``pgr_dijkstra`` (`One to One`)
 
   * ``start_vid`` contains the **start vid** parameter value.
   * ``end_vid`` contains the **end vid** parameter value.
@@ -202,7 +197,7 @@ Signatures to be migrated:
    :start-after: --dijkstra1
    :end-before: --dijkstra2
 
-* In pgr_dijkstra(One to Many)
+* In ``pgr_dijkstra`` (`One to Many`)
 
   * ``start_vid`` contains the **start vid** parameter value.
 
@@ -210,7 +205,7 @@ Signatures to be migrated:
    :start-after: --dijkstra2
    :end-before: --dijkstra3
 
-* In pgr_dijkstra(Many to One)
+* In ``pgr_dijkstra`` (`Many to One`)
 
   * ``end_vid`` contains the **end vid** parameter value.
 
@@ -232,7 +227,7 @@ Signatures to be migrated:
     the function ``my_dijkstra`` returns the new additional columns of
     ``pgr_dijkstra``.
 
-Migration of ``pgr_drivingdistance``
+Migration of ``pgr_drivingDistance``
 -------------------------------------------------------------------------------
 
 Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
@@ -243,18 +238,18 @@ Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
 
 Signatures to be migrated:
 
-* pgr_drivingdistance(Single vertex)
-* pgr_drivingdistance(Multiple vertices)
+* pgr_drivingDistance(Single vertex)
+* pgr_drivingDistance(Multiple vertices)
 
 :Before Migration:
 
 Output columns were |result-dij-dd|
 
-* pgr_drivingdistance(Single vertex)
+* pgr_drivingDistance(Single vertex)
 
   * Does not have ``start_vid`` and ``depth`` result columns.
 
-* pgr_drivingdistance(Multiple vertices)
+* pgr_drivingDistance(Multiple vertices)
 
   * Has ``from_v`` instead of ``start_vid`` result column.
   * does not have ``depth`` result column.
@@ -263,7 +258,7 @@ Output columns were |result-dij-dd|
 
 * Be aware of the existence and name change of the result columns.
 
-``pgr_drivingdistance`` (Single vertex)
+pgr_drivingDistance(Single vertex)
 ...............................................................................
 
 Using `this
@@ -284,7 +279,7 @@ If needed filter out the added columns, for example, to return the original colu
    :start-after: --drivingdistance2
    :end-before: --drivingdistance3
 
-``pgr_drivingdistance`` (Multiple vertices)
+pgr_drivingDistance(Multiple vertices)
 ...............................................................................
 
 Using `this
@@ -348,7 +343,7 @@ Output columns were |result-bfs|
 Kruskal single vertex
 ...............................................................................
 
-Using pgr_KruskalDD`` as example.
+Using ``pgr_KruskalDD`` as example.
 Migration is similar to al the affected functions.
 
 Comparing with `this
@@ -401,7 +396,7 @@ Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
 
 Signatures to be migrated:
 
-* pgr_KSP(One to One)
+* ``pgr_KSP`` (One to One)
 
 :Before Migration:
 
@@ -409,7 +404,7 @@ Signatures to be migrated:
 
   * the columns ``start_vid`` and ``end_vid`` do not exist.
 
-    * pgr_KSP(One to One) does not have ``start_vid`` and ``end_vid``.
+    * ``pgr_KSP`` (One to One) does not have ``start_vid`` and ``end_vid``.
 
 :Migration:
 
@@ -458,7 +453,7 @@ Migration is needed, because:
 * Works for undirected graphs.
 * New signature
 
-  * pgr_maxCardinalityMatch(text)`` returns only ``edge`` column.
+  * ``pgr_maxCardinalityMatch(text)`` returns only ``edge`` column.
   * The optional flag ``directed`` is removed.
 
 :Before migration:
@@ -488,7 +483,7 @@ Migration is needed, because:
    :start-after: --maxcard2
    :end-before: --maxcard3
 
-Migration of pgr_primDD`` / ``pgr_primBFS`` / ``pgr_primDFS``
+Migration of ``pgr_primDD`` / ``pgr_primBFS`` / ``pgr_primDFS``
 -------------------------------------------------------------------------------
 
 Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__
@@ -552,7 +547,7 @@ columns
 Prim multiple vertices
 ...............................................................................
 
-Using pgr_primDD`` as example.
+Using ``pgr_primDD`` as example.
 Migration is similar to al the affected functions.
 
 Comparing with `this
@@ -597,7 +592,7 @@ Signatures to be migrated:
   * Does not have ``start_vid``, ``pred`` and ``depth`` result columns.
   * ``driving_side`` parameter was named optional now it is compulsory unnamed.
 
-* ``pgr_withPointsDD`` (Multiple vertices)
+* ``pgr_withPointsDD`` (`Multiple vertices`)
 
   * Output columns were |result-m-1-no-seq|
   * Does not have ``depth`` and ``pred`` result columns.
@@ -727,7 +722,7 @@ And ``driving side`` parameter changed from named optional to unnamed compulsory
 
 Signatures to be migrated:
 
-* pgr_withPointsKSP(One to One)
+* ``pgr_withPointsKSP`` (`One to One`)
 
 :Before Migration:
 
@@ -748,7 +743,7 @@ Signatures to be migrated:
   * In undirected graph: valid values are [``b``, ``B``]
   * Using an invalid value throws an ``ERROR``.
 
-``pgr_withPointsKSP`` (One to One)
+``pgr_withPointsKSP`` (`One to One`)
 ...............................................................................
 
 Using
@@ -769,11 +764,248 @@ columns:
    :start-after: --withPointsKSP2
    :end-before: --withPointsKSP3
 
-Migration of turn restrictions
-*******************************************************************************
 
-.. contents:: Contents
+Migration of ``pgr_trsp`` (Vertices)
+-------------------------------------------------------------------------------
+
+Signature:
+
+.. parsed-literal::
+
+   pgr_trsp(Edges SQL, source, target, directed boolean, has_rcost boolean
+           [,restrict_sql text]);
+   RETURNS SETOF (seq, id1, id2, cost)
+
+:Deprecated: `v3.4.0 <https://docs.pgrouting.org/3.4>`__
+
+.. contents::
    :local:
+
+.. rubric:: See Also
+
+- :doc:`pgr_dijkstra`
+- :doc:`pgr_trsp`
+- `Migration of restrictions`_
+
+Use ``pgr_dijkstra`` when there are no restrictions.
+...............................................................................
+
+Use :doc:`pgr_dijkstra` instead.
+
+.. literalinclude:: migration.queries
+   :start-after: --verticesv2
+   :end-before: --verticesv3
+
+To get the original column names:
+
+.. literalinclude:: migration.queries
+   :start-after: --verticesv3
+   :end-before: --verticesv4
+
+* ``id1`` is the node
+* ``id2`` is the edge
+
+Use ``pgr_trsp`` when there are restrictions.
+...............................................................................
+
+Use :doc:`pgr_trsp` (One to One) instead.
+
+.. literalinclude:: migration.queries
+   :start-after: --verticesv5
+   :end-before: --verticesv6
+
+To get the original column names:
+
+.. literalinclude:: migration.queries
+   :start-after: --verticesv6
+   :end-before: --verticesv7
+
+* ``id1`` is the node
+* ``id2`` is the edge
+
+Migration of ``pgr_trsp`` (Edges)
+-------------------------------------------------------------------------------
+
+Signature:
+
+.. parsed-literal::
+
+   pgr_trsp(sql text, source_edge integer, source_pos float8,
+                    target_edge integer, target_pos float8,
+                    directed boolean, has_rcost boolean
+                    [,restrict_sql text]);
+   RETURNS SETOF (seq, id1, id2, cost)
+
+:Deprecated: `v3.4.0 <https://docs.pgrouting.org/3.4>`__
+
+.. contents::
+   :local:
+
+.. rubric:: See Also
+
+- :doc:`pgr_withPoints`
+- :doc:`pgr_trsp_withPoints`
+- `Migration of restrictions`_
+
+Use ``pgr_withPoints`` when there are no restrictions.
+...............................................................................
+
+Use :doc:`pgr_withPoints` (One to One) instead.
+
+.. literalinclude:: migration.queries
+   :start-after: --edgesv2
+   :end-before: --edgesv3
+
+To get the original column names:
+
+.. literalinclude:: migration.queries
+   :start-after: --edgesv3
+   :end-before: --edgesv4
+
+* ``id1`` is the node
+* ``id2`` is the edge
+
+Use ``pgr_trsp_withPoints`` when there are restrictions.
+...............................................................................
+
+Use :doc:`pgr_trsp_withPoints` instead.
+
+.. literalinclude:: migration.queries
+   :start-after: --edgesv5
+   :end-before: --edgesv6
+
+To get the original column names:
+
+.. literalinclude:: migration.queries
+   :start-after: --edgesv6
+   :end-before: --edgesv7
+
+* ``id1`` is the node
+* ``id2`` is the edge
+
+Migration of ``pgr_trspViaVertices``
+-------------------------------------------------------------------------------
+
+Signature:
+
+.. parsed-literal::
+
+   pgr_trspViaVertices(sql text, vids integer[],
+                     directed boolean, has_rcost boolean
+                     [, turn_restrict_sql text]);
+   RETURNS SETOF (seq, id1, id2, id3, cost)
+
+:Deprecated: `v3.4.0 <https://docs.pgrouting.org/3.4>`__
+
+.. contents::
+   :local:
+   :depth: 1
+
+.. rubric:: See Also
+
+- :doc:`pgr_dijkstraVia`
+- :doc:`pgr_trspVia`
+- `Migration of restrictions`_
+
+Use ``pgr_dijkstraVia`` when there are no restrictions
+...............................................................................
+
+Use :doc:`pgr_dijkstraVia` instead.
+
+.. literalinclude:: migration.queries
+   :start-after: --viav2
+   :end-before: --viav3
+
+To get the original column names:
+
+.. literalinclude:: migration.queries
+   :start-after: --viav3
+   :end-before: --viav4
+
+* ``id1`` is the path identifier
+* ``id2`` is the node
+* ``id3`` is the edge
+
+Use ``pgr_trspVia`` when there are restrictions
+...............................................................................
+
+Use :doc:`pgr_trspVia` instead.
+
+.. literalinclude:: migration.queries
+   :start-after: --viav5
+   :end-before: --viav6
+
+To get the original column names:
+
+.. literalinclude:: migration.queries
+   :start-after: --viav6
+   :end-before: --viav7
+
+* ``id1`` is the path identifier
+* ``id2`` is the node
+* ``id3`` is the edge
+
+Migration of ``pgr_trspViaEdges``
+-------------------------------------------------------------------------------
+
+Signature:
+
+.. parsed-literal::
+
+   pgr_trspViaEdges(sql text, eids integer[], pcts float8[],
+                     directed boolean, has_rcost boolean
+                     [, turn_restrict_sql text]);
+   RETURNS SETOF (seq, id1, id2, id3, cost)
+
+:Deprecated: `v3.4.0 <https://docs.pgrouting.org/3.4>`__
+
+.. contents::
+   :local:
+   :depth: 1
+
+.. rubric:: See Also
+
+- :doc:`pgr_withPointsVia`
+- :doc:`pgr_trspVia_withPoints`
+- `Migration of restrictions`_
+
+Use ``pgr_withPointsVia`` when there are no restrictions
+...............................................................................
+
+Use :doc:`pgr_withPointsVia` instead.
+
+.. literalinclude:: migration.queries
+   :start-after: --edgesvia2
+   :end-before: --edgesvia3
+
+To get the original column names:
+
+.. literalinclude:: migration.queries
+   :start-after: --edgesvia3
+   :end-before: --edgesvia4
+
+* ``id1`` is the path identifier
+* ``id2`` is the node
+* ``id3`` is the edge
+
+Use ``pgr_trspVia_withPoints`` when there are restrictions
+...............................................................................
+
+Use :doc:`pgr_trspVia_withPoints` instead.
+
+.. literalinclude:: migration.queries
+   :start-after: --edgesvia5
+   :end-before: --edgesvia6
+
+To get the original column names:
+
+.. literalinclude:: migration.queries
+   :start-after: --edgesvia6
+   :end-before: --edgesvia7
+
+* ``id1`` is the path identifier
+* ``id2`` is the node
+* ``id3`` is the edge
 
 Migration of restrictions
 -------------------------------------------------------------------------------
@@ -887,547 +1119,6 @@ The migrated table contents:
 .. literalinclude:: migration.queries
    :start-after: --rest4
    :end-before: --rest5
-
-
-Migration of ``pgr_trsp`` (Vertices)
--------------------------------------------------------------------------------
-
-:doc:`pgr_trsp` signatures have changed and many issues have been fixed in the
-new signatures. This section will show how to migrate from the old signatures to
-the new replacement functions. This also affects the restrictions.
-
-Starting from `v3.4.0 <https://docs.pgrouting.org/3.4/en/migration.html>`__
-
-Signature to be migrated:
-
-.. parsed-literal::
-
-  pgr_trsp(Edges SQL, source, target,
-           directed boolean, has_rcost boolean
-           [,restrict_sql text]);
-   RETURNS SETOF (seq, id1, id2, cost)
-
-* The integral type of the ``Edges SQL`` can only be ``INTEGER``.
-* The floating point type of the ``Edges SQL`` can only be ``FLOAT``.
-* ``directed`` flag is compulsory.
-
-  * Does not have a default value.
-
-* Does not autodetect if ``reverse_cost`` column exist.
-
-  * User must be careful to match the existence of the column with the value of
-    ``has_rcost`` parameter.
-
-* The restrictions inner query is optional.
-* The output column names are meaningless
-
-Migrate by using:
-
-* :doc:`pgr_dijkstra` when there are no restrictions,
-* :doc:`pgr_trsp` (One to One) when there are restrictions.
-
-
-Migrating ``pgr_trsp`` (Vertices) using ``pgr_dijkstra``
-...............................................................................
-
-The following query does not have restrictions.
-
-.. literalinclude:: migration.queries
-   :start-after: --verticesv1
-   :end-before: --verticesv2
-
-* A message about deprecation is shown
-
-  * Deprecated functions will be removed on the next mayor version 4.0.0
-
-Use :doc:`pgr_dijkstra` instead.
-
-
-.. literalinclude:: migration.queries
-   :start-after: --verticesv2
-   :end-before: --verticesv3
-
-* The types casting has been removed.
-* :doc:`pgr_dijkstra`:
-
-  * Autodetects if ``reverse_cost`` column is in the edges
-    SQL.
-  * Accepts ``ANY-INTEGER`` on integral types
-  * Accepts ``ANY-NUMERICAL`` on floating point types
-  * ``directed`` flag has a default value of ``true``.
-
-    * Use the same value that on the original query.
-    * In this example it is ``true`` which is the default value.
-
-      * The flag has been omitted and the default is been used.
-
-When the need of using strictly the same (meaningless) names and types of the
-function been migrated then:
-
-.. literalinclude:: migration.queries
-   :start-after: --verticesv3
-   :end-before: --verticesv4
-
-* ``id1`` is the node
-* ``id2`` is the edge
-
-
-Migrating ``pgr_trsp`` (Vertices) using ``pgr_trsp``
-...............................................................................
-
-The following query has restrictions.
-
-.. literalinclude:: migration.queries
-   :start-after: --verticesv4
-   :end-before: --verticesv5
-
-* A message about deprecation is shown
-
-  * Deprecated functions will be removed on the next mayor version 4.0.0
-
-* The restrictions are the last parameter of the function
-
-  * Using the old structure of restrictions
-
-Use :doc:`pgr_trsp` (One to One) instead.
-
-.. literalinclude:: migration.queries
-   :start-after: --verticesv5
-   :end-before: --verticesv6
-
-* The new structure of restrictions is been used.
-
-  * It is the second parameter.
-
-* The types casting has been removed.
-* :doc:`pgr_trsp`:
-
-  * Autodetects if ``reverse_cost`` column is in the edges
-    SQL.
-  * Accepts ``ANY-INTEGER`` on integral types
-  * Accepts ``ANY-NUMERICAL`` on floating point types
-  * ``directed`` flag has a default value of ``true``.
-
-    * Use the same value that on the original query.
-    * In this example it is ``true`` which is the default value.
-
-      * The flag has been omitted and the default is been used.
-
-When the need of using strictly the same (meaningless) names and types of the
-function been migrated then:
-
-.. literalinclude:: migration.queries
-   :start-after: --verticesv6
-   :end-before: --verticesv7
-
-* ``id1`` is the node
-* ``id2`` is the edge
-
-Migration of pgr_trsp(Edges)
--------------------------------------------------------------------------------
-
-Signature to be migrated:
-
-.. parsed-literal::
-
-   pgr_trsp(sql text, source_edge integer, source_pos float8,
-                    target_edge integer, target_pos float8,
-                    directed boolean, has_rcost boolean
-                    [,restrict_sql text]);
-   RETURNS SETOF (seq, id1, id2, cost)
-
-* The integral types of the ``sql`` can only be ``INTEGER``.
-* The floating point type of the ``sql`` can only be ``FLOAT``.
-* ``directed`` flag is compulsory.
-
-  * Does not have a default value.
-
-* Does not autodetect if ``reverse_cost`` column exist.
-
-  * User must be careful to match the existence of the column with the value of
-    ``has_rcost`` parameter.
-
-* The restrictions inner query is optional.
-
-For these migration guide the following points will be used:
-
-.. literalinclude:: migration.queries
-   :start-after: --verticesv7
-   :end-before: --edgesv1
-
-Migrate by using:
-
-* :doc:`pgr_withPoints` when there are no restrictions,
-* :doc:`pgr_trsp_withPoints` (One to One) when there are restrictions.
-
-Migrating ``pgr_trsp`` (Edges) using ``pgr_withPoints``
-...............................................................................
-
-The following query does not have restrictions.
-
-.. literalinclude:: migration.queries
-   :start-after: --edgesv1
-   :end-before: --edgesv2
-
-* A message about deprecation is shown
-
-  * Deprecated functions will be removed on the next mayor version 4.0.0
-
-Use :doc:`pgr_withPoints` instead.
-
-.. literalinclude:: migration.queries
-   :start-after: --edgesv2
-   :end-before: --edgesv3
-
-* The types casting has been removed.
-* Do not show details, as the deprecated function does not show details.
-* :doc:`pgr_withPoints`:
-
-  * Autodetects if ``reverse_cost`` column is in the edges
-    SQL.
-  * Accepts ``ANY-INTEGER`` on integral types
-  * Accepts ``ANY-NUMERICAL`` on floating point types
-  * ``directed`` flag has a default value of ``true``.
-
-    * Use the same value that on the original query.
-    * In this example it is ``true`` which is the default value.
-
-      * The flag has been omitted and the default is been used.
-  * On the points query do not include the ``side`` column.
-
-When the need of using strictly the same (meaningless) names and types, and node
-values of the function been migrated then:
-
-.. literalinclude:: migration.queries
-   :start-after: --edgesv3
-   :end-before: --edgesv4
-
-* ``id1`` is the node
-* ``id2`` is the edge
-
-
-Migrating ``pgr_trsp`` (Edges) using ``pgr_trsp_withPoints``
-...............................................................................
-
-The following query has restrictions.
-
-.. literalinclude:: migration.queries
-   :start-after: --edgesv4
-   :end-before: --edgesv5
-
-* A message about deprecation is shown
-
-  * Deprecated functions will be removed on the next mayor version 4.0.0
-
-* The restrictions are the last parameter of the function
-
-  * Using the old structure of restrictions
-
-Use :doc:`pgr_trsp_withPoints` instead.
-
-.. literalinclude:: migration.queries
-   :start-after: --edgesv5
-   :end-before: --edgesv6
-
-* The new structure of restrictions is been used.
-
-  * It is the second parameter.
-
-* The types casting has been removed.
-* Do not show details, as the deprecated function does not show details.
-* :doc:`pgr_trsp_withPoints`:
-
-  * Autodetects if ``reverse_cost`` column is in the edges
-    SQL.
-  * Accepts ``ANY-INTEGER`` on integral types
-  * Accepts ``ANY-NUMERICAL`` on floating point types
-  * ``directed`` flag has a default value of ``true``.
-
-    * Use the same value that on the original query.
-    * In this example it is ``true`` which is the default value.
-
-      * The flag has been omitted and the default is been used.
-  * On the points query do not include the ``side`` column.
-
-When the need of using strictly the same (meaningless) names and types, and node
-values of the function been migrated then:
-
-.. literalinclude:: migration.queries
-   :start-after: --edgesv6
-   :end-before: --edgesv7
-
-* ``id1`` is the node
-* ``id2`` is the edge
-
-Migration of ``pgr_trspViaVertices``
--------------------------------------------------------------------------------
-
-Signature to be migrated:
-
-.. parsed-literal::
-
-   pgr_trspViaVertices(sql text, vids integer[],
-                     directed boolean, has_rcost boolean
-                     [, turn_restrict_sql text]);
-   RETURNS SETOF (seq, id1, id2, id3, cost)
-
-
-* The integral types of the ``Edges SQL`` can only be ``INTEGER``.
-* The floating point type of the ``Edges SQL`` can only be ``FLOAT``.
-* ``directed`` flag is compulsory.
-
-  * Does not have a default value.
-
-* Does not autodetect if ``reverse_cost`` column exist.
-
-  * User must be careful to match the existence of the column with the value of
-    ``has_rcost`` parameter.
-
-* The restrictions inner query is optional.
-
-
-Migrate by using:
-
-* :doc:`pgr_dijkstraVia` when there are no restrictions,
-* :doc:`pgr_trspVia` when there are restrictions.
-
-Migrating ``pgr_trspViaVertices`` using ``pgr_dijkstraVia``
-...............................................................................
-
-The following query does not have restrictions.
-
-.. literalinclude:: migration.queries
-   :start-after: --viav1
-   :end-before: --viav2
-
-* A message about deprecation is shown
-
-  * Deprecated functions will be removed on the next mayor version 4.0.0
-
-Use :doc:`pgr_dijkstraVia` instead.
-
-.. literalinclude:: migration.queries
-   :start-after: --viav2
-   :end-before: --viav3
-
-* The types casting has been removed.
-* :doc:`pgr_dijkstraVia`:
-
-  * Autodetects if ``reverse_cost`` column is in the edges
-    SQL.
-  * Accepts ``ANY-INTEGER`` on integral types
-  * Accepts ``ANY-NUMERICAL`` on floating point types
-  * ``directed`` flag has a default value of ``true``.
-
-    * Use the same value that on the original query.
-    * In this example it is ``true`` which is the default value.
-
-      * The flag has been omitted and the default is been used.
-  * On the points query do not include the ``side`` column.
-
-When the need of using strictly the same (meaningless) names and types of the
-function been migrated then:
-
-.. literalinclude:: migration.queries
-   :start-after: --viav3
-   :end-before: --viav4
-
-* ``id1`` is the path identifier
-* ``id2`` is the node
-* ``id3`` is the edge
-
-
-Migrating ``pgr_trspViaVertices`` using ``pgr_trspVia``
-...............................................................................
-
-The following query has restrictions.
-
-.. literalinclude:: migration.queries
-   :start-after: --viav4
-   :end-before: --viav5
-
-* A message about deprecation is shown
-
-  * Deprecated functions will be removed on the next mayor version 4.0.0
-
-* The restrictions are the last parameter of the function
-
-  * Using the old structure of restrictions
-
-Use :doc:`pgr_trspVia` instead.
-
-.. literalinclude:: migration.queries
-   :start-after: --viav5
-   :end-before: --viav6
-
-* The new structure of restrictions is been used.
-
-  * It is the second parameter.
-
-* The types casting has been removed.
-* :doc:`pgr_trspVia`:
-
-  * Autodetects if ``reverse_cost`` column is in the edges
-    SQL.
-  * Accepts ``ANY-INTEGER`` on integral types
-  * Accepts ``ANY-NUMERICAL`` on floating point types
-  * ``directed`` flag has a default value of ``true``.
-
-    * Use the same value that on the original query.
-    * In this example it is ``true`` which is the default value.
-
-      * The flag has been omitted and the default is been used.
-  * On the points query do not include the ``side`` column.
-
-When the need of using strictly the same (meaningless) names and types of the
-function been migrated then:
-
-.. literalinclude:: migration.queries
-   :start-after: --viav6
-   :end-before: --viav7
-
-* ``id1`` is the path identifier
-* ``id2`` is the node
-* ``id3`` is the edge
-
-Migration of ``pgr_trspViaEdges``
--------------------------------------------------------------------------------
-
-Signature to be migrated:
-
-.. parsed-literal::
-
-   pgr_trspViaEdges(sql text, eids integer[], pcts float8[],
-                     directed boolean, has_rcost boolean
-                     [, turn_restrict_sql text]);
-   RETURNS SETOF (seq, id1, id2, id3, cost)
-
-
-* The integral types of the ``Edges SQL`` can only be ``INTEGER``.
-* The floating point type of the ``Edges SQL`` can only be ``FLOAT``.
-* ``directed`` flag is compulsory.
-
-  * Does not have a default value.
-
-* Does not autodetect if ``reverse_cost`` column exist.
-
-  * User must be careful to match the existence of the column with the value of
-    ``has_rcost`` parameter.
-
-* The restrictions inner query is optional.
-
-For these migration guide the following points will be used:
-
-.. literalinclude:: migration.queries
-   :start-after: --viav7
-   :end-before: --edgesvia1
-
-And will travel thru the following Via points :math:`4\rightarrow3\rightarrow6`
-
-Migrate by using:
-
-* :doc:`pgr_withPointsVia` when there are no restrictions,
-* :doc:`pgr_trspVia_withPoints` when there are restrictions.
-
-Migrating ``pgr_trspViaEdges`` using ``pgr_withPointsVia``
-...............................................................................
-
-The following query does not have restrictions.
-
-.. literalinclude:: migration.queries
-   :start-after: --edgesvia1
-   :end-before: --edgesvia2
-
-* A message about deprecation is shown
-
-  * Deprecated functions will be removed on the next mayor version 4.0.0
-
-Use :doc:`pgr_withPointsVia` instead.
-
-.. literalinclude:: migration.queries
-   :start-after: --edgesvia2
-   :end-before: --edgesvia3
-
-* The types casting has been removed.
-* Do not show details, as the deprecated function does not show details.
-* :doc:`pgr_withPointsVia`:
-
-  * Autodetects if ``reverse_cost`` column is in the edges
-    SQL.
-  * Accepts ``ANY-INTEGER`` on integral types
-  * Accepts ``ANY-NUMERICAL`` on floating point types
-  * ``directed`` flag has a default value of ``true``.
-
-    * Use the same value that on the original query.
-    * In this example it is ``true`` which is the default value.
-
-      * The flag has been omitted and the default is been used.
-  * On the points query do not include the ``side`` column.
-
-When the need of using strictly the same (meaningless) names and types, and node
-values of the function been migrated then:
-
-.. literalinclude:: migration.queries
-   :start-after: --edgesvia3
-   :end-before: --edgesvia4
-
-* ``id1`` is the path identifier
-* ``id2`` is the node
-* ``id3`` is the edge
-
-Migrating ``pgr_trspViaEdges`` using ``pgr_trspVia_withPoints``
-...............................................................................
-
-The following query has restrictions.
-
-.. literalinclude:: migration.queries
-   :start-after: --edgesvia4
-   :end-before: --edgesvia5
-
-* A message about deprecation is shown
-
-  * Deprecated functions will be removed on the next mayor version 4.0.0
-
-* The restrictions are the last parameter of the function
-
-  * Using the old structure of restrictions
-
-Use :doc:`pgr_trspVia_withPoints` instead.
-
-.. literalinclude:: migration.queries
-   :start-after: --edgesvia5
-   :end-before: --edgesvia6
-
-* The new structure of restrictions is been used.
-
-  * It is the second parameter.
-
-* The types casting has been removed.
-* Do not show details, as the deprecated function does not show details.
-* :doc:`pgr_trspVia_withPoints`:
-
-  * Autodetects if ``reverse_cost`` column is in the edges
-    SQL.
-  * Accepts ``ANY-INTEGER`` on integral types
-  * Accepts ``ANY-NUMERICAL`` on floating point types
-  * ``directed`` flag has a default value of ``true``.
-
-    * Use the same value that on the original query.
-    * In this example it is ``true`` which is the default value.
-
-      * The flag has been omitted and the default is been used.
-  * On the points query do not include the ``side`` column.
-
-When the need of using strictly the same (meaningless) names and types, and node
-values of the function been migrated then:
-
-.. literalinclude:: migration.queries
-   :start-after: --edgesvia6
-   :end-before: --edgesvia7
-
-* ``id1`` is the path identifier
-* ``id2`` is the node
-* ``id3`` is the edge
 
 
 See Also

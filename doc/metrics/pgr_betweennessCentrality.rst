@@ -16,7 +16,7 @@
 ``pgr_betweennessCentrality`` - Experimental
 ===============================================================================
 
-``pgr_betweennessCentrality`` - Calculates the relative betweeness centrality
+``pgr_betweennessCentrality`` - Calculates the relative betweenness centrality
 using Brandes Algorithm
 
 .. rubric:: Availability
@@ -24,8 +24,6 @@ using Brandes Algorithm
 * Version 3.7.0
 
   * New experimental function.
-
-    * pgr_betweennessCentrality``
 
 Description
 -------------------------------------------------------------------------------
@@ -140,7 +138,7 @@ See Also
 
 * :doc:`sampledata`
 * `Boost: betweenness centrality
-  <https://www.boost.org/doc/libs/1_84_0/libs/graph/doc/betweenness_centrality.html>`_
+  <https://www.boost.org/libs/graph/doc/betweenness_centrality.html>`_
 
 .. rubric:: Indices and tables
 

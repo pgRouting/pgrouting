@@ -143,9 +143,9 @@ Additional Examples
 .. contents::
    :local:
 
-The examples of this section are based on the :doc:`sampledata`
-The examples include the subgraph including edges 4, 7, 8, and 10 with
-``reverse_cost``.
+* The examples of this section are based on the :doc:`sampledata` network.
+* The examples include the subgraph including edges 4, 7, 8, and 10 with
+  ``reverse_cost``.
 
 The data
 ...............................................................................

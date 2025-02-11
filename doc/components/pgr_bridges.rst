@@ -106,7 +106,8 @@ See Also
 
 * https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29
 * :doc:`sampledata`
-* `Boost: connected components <https://www.boost.org/libs/graph/doc/connected_components.html>`__
+* `Boost: Connected components
+  <https://www.boost.org/libs/graph/doc/connected_components.html>`__
 
 .. rubric:: Indices and tables
 

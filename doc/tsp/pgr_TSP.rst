@@ -16,7 +16,7 @@
 ``pgr_TSP``
 ===============================================================================
 
-* pgr_TSP`` - Aproximation using *metric* algorithm.
+* ``pgr_TSP`` - Aproximation using *metric* algorithm.
 
 .. rubric:: Availability:
 

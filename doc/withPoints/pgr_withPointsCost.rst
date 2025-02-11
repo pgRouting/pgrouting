@@ -111,7 +111,7 @@ Signatures
    withPoints family of functions.
 
 .. index::
-    single: withPointsCost - Proposed ; One To One - Proposed on v2.2
+    single: withPointsCost - Proposed ; One to One - Proposed on v2.2
 
 One to One
 ...............................................................................
@@ -132,7 +132,7 @@ One to One
    :end-before: -- q2
 
 .. index::
-    single: withPointsCost - Proposed ; One To Many - Proposed on v2.2
+    single: withPointsCost - Proposed ; One to Many - Proposed on v2.2
 
 One to Many
 ...............................................................................
@@ -154,7 +154,7 @@ One to Many
    :end-before: -- q3
 
 .. index::
-    single: withPointsCost - Proposed ; Many To One - Proposed on v2.2
+    single: withPointsCost - Proposed ; Many to One - Proposed on v2.2
 
 Many to One
 ...............................................................................
@@ -175,7 +175,7 @@ Many to One
    :end-before: -- q4
 
 .. index::
-    single: withPointsCost - Proposed ; Many To Many - Proposed on v2.2
+    single: withPointsCost - Proposed ; Many to Many - Proposed on v2.2
 
 Many to Many
 ...............................................................................

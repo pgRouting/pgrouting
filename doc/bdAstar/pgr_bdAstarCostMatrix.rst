@@ -56,8 +56,6 @@ Description
 Signatures
 -------------------------------------------------------------------------------
 
-.. rubric:: Summary
-
 .. admonition:: \ \
    :class: signatures
 

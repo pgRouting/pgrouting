@@ -48,13 +48,13 @@
 
 * Version 2.3.0
 
-  * Signature change on pgr_astar(One to One)
+  * Signature change on pgr_aStar(One to One)
 
     * Old signature no longer supported
 
 * Version 2.0.0
 
-  * Official function.
+  * New official function.
 
 Description
 -------------------------------------------------------------------------------
@@ -285,7 +285,7 @@ See Also
 * :doc:`aStar-family`
 * :doc:`bdAstar-family`
 * :doc:`sampledata`
-* https://www.boost.org/libs/graph/doc/astar_search.html
+* `Boost: A* search <https://www.boost.org/libs/graph/doc/astar_search.html>`__
 * https://en.wikipedia.org/wiki/A*_search_algorithm
 
 .. rubric:: Indices and tables

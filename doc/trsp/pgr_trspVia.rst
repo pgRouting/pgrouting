@@ -30,8 +30,6 @@
 
   * New proposed function.
 
-    * pgr_trspVia(One Via)
-
 Description
 -------------------------------------------------------------------------------
 

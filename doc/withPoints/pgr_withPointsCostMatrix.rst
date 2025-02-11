@@ -49,8 +49,6 @@ Using Dijkstra algorithm, calculate and return a cost matrix.
 Signatures
 -------------------------------------------------------------------------------
 
-.. rubric:: Summary
-
 .. admonition:: \ \
    :class: signatures
 
