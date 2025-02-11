@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-11 11:58-0600\n"
-"PO-Revision-Date: 2025-01-26 15:47+0000\n"
+"PO-Revision-Date: 2025-02-12 00:30+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
@@ -728,13 +728,12 @@ msgstr ""
 msgid "References"
 msgstr "Referencias"
 
-#, fuzzy
 msgid ""
 "`Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/"
 "metric_tsp_approx.html>`__"
 msgstr ""
-"`Algoritmo Métrico de la Librería Boost <https://www.boost.org/libs/graph/"
-"doc/metric_tsp_approx.html>`__"
+"`Boost: aproximación métrica de TSP <https://www.boost.org/libs/graph/doc/"
+"metric_tsp_approx.html>`__"
 
 msgid "`University of Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__"
 msgstr "`Universided de Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__"
@@ -1973,10 +1972,11 @@ msgstr ""
 msgid ":doc:`bdAstar-family`"
 msgstr ":doc:`bdAstar-family`"
 
-#, fuzzy
 msgid ""
 "`Boost: A* search <https://www.boost.org/libs/graph/doc/astar_search.html>`__"
-msgstr "https://www.boost.org/libs/graph/doc/astar_search.html"
+msgstr ""
+"`Boost: Búsqueda A* <https://www.boost.org/libs/graph/doc/astar_search."
+"html>`__"
 
 msgid "https://en.wikipedia.org/wiki/A*_search_algorithm"
 msgstr "https://en.wikipedia.org/wiki/A*_search_algorithm"
@@ -2989,7 +2989,8 @@ msgstr "Identificador del color del segmento."
 #, fuzzy
 msgid ""
 "`Boost: <https://www.boost.org/libs/graph/doc/table_of_contents.html>`__"
-msgstr "boost: https://www.boost.org/libs/graph/doc/table_of_contents.html"
+msgstr ""
+"`Boost: <https://www.boost.org/libs/graph/doc/table_of_contents.html>`__"
 
 msgid "Components - Family of functions"
 msgstr "Componentes - Familia de funciones"
@@ -4399,7 +4400,7 @@ msgid ":doc:`pgr_isPlanar`"
 msgstr ":doc:`pgr_isPlanar`"
 
 msgid "Miscellaneous Algoritms"
-msgstr ""
+msgstr "Algoritmos diversos"
 
 msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
 msgstr ":doc:`pgr_lengauerTarjanDominatorTree`"
@@ -4910,56 +4911,52 @@ msgstr ":doc:`release_notes`"
 msgid "pgRouting 4.0.0 Release Notes"
 msgstr "Notas de la versión de pgRouting 4.0.0"
 
-#, fuzzy
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 4.0.0 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
 msgstr ""
 "Para ver todos los problemas y solicitudes de extracción cerrados para ésta "
-"versión, consulte la `meta cerrada 3.7.0 <https://github.com/pgRouting/"
-"pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`_"
+"versión, consulte la `meta cerrada 4.0.0 <https://github.com/pgRouting/"
+"pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
 
 msgid "Functions promoted to official"
 msgstr ""
 
-#, fuzzy
 msgid "pgr_trsp"
-msgstr "``pgr_trsp``"
+msgstr "pgr_trsp"
 
 #, fuzzy
 msgid "pgr_trspVia"
-msgstr ":doc:`pgr_trspVia`"
+msgstr "pgr_trspVia"
 
 #, fuzzy
 msgid "pgr_trspVia_withPoints"
-msgstr ":doc:`pgr_trspVia_withPoints`"
+msgstr "pgr_trspVia_withPoints"
 
 #, fuzzy
 msgid "pgr_trsp_withPoints"
-msgstr "``pgr_trsp_withPoints``"
+msgstr "pgr_trsp_withPoints"
 
 #, fuzzy
 msgid "pgr_withPoints"
-msgstr "pgr_withPointsKSP"
+msgstr "pgr_withPoints"
 
 #, fuzzy
 msgid "pgr_withPointsCost"
-msgstr "pgr_withPointsCostMatrix"
+msgstr "pgr_withPointsCost"
 
 msgid "pgr_withPointsCostMatrix"
 msgstr "pgr_withPointsCostMatrix"
 
-#, fuzzy
 msgid "pgr_withPointsDD"
-msgstr "pgr_withPointsKSP"
+msgstr "pgr_withPointsDD"
 
 msgid "pgr_withPointsKSP"
 msgstr "pgr_withPointsKSP"
 
-#, fuzzy
 msgid "pgr_withPointsVia"
-msgstr ":doc:`pgr_withPointsVia`"
+msgstr "pgr_withPointsVia"
 
 msgid "Signatures promoted to official"
 msgstr ""
@@ -4982,17 +4979,14 @@ msgstr "pgr_bdDijkstra(Combinaciones)"
 msgid "pgr_bdDijkstraCost(Combinations)"
 msgstr "pgr_bdDijkstraCost(Combinaciones)"
 
-#, fuzzy
 msgid "pgr_dijkstra(Combinations)"
-msgstr "pgr_bdDijkstra(Combinaciones)"
+msgstr "pgr_dijkstra(Combinaciones)"
 
-#, fuzzy
 msgid "pgr_dijkstraCost(Combinations)"
-msgstr "pgr_bdDijkstraCost(Combinaciones)"
+msgstr "pgr_dijkstraCost(Combinaciones)"
 
-#, fuzzy
 msgid "pgr_KSP(All signatures)"
-msgstr "Firmas antiguas de TSP"
+msgstr "pgr_KSP(todas las firmas)"
 
 msgid "pgr_boykovKolmogorov(Combinations)"
 msgstr "pgr_boykovKolmogorov(Combinaciones)"
@@ -5006,106 +5000,81 @@ msgstr "pgr_maxFlow(Combinaciones)"
 msgid "pgr_pushRelabel(Combinations)"
 msgstr "pgr_pushRelabel(Combinaciones)"
 
-#, fuzzy
 msgid "code enhancements:"
-msgstr "Mejora del código"
+msgstr "Mejora del código:"
 
 msgid "Removal of unused C/C++ code"
 msgstr ""
 
-#, fuzzy
 msgid "Removal of SQL deprecated functions"
-msgstr "Eliminación de funciones y firmas obsoletas"
+msgstr "Eliminación de funciones obsoletas"
 
-#, fuzzy
 msgid ""
 "pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
 "boolean,text)"
 msgstr ""
-"``pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
-"boolean,text)``"
+"pgr_trsp(text,integer,double precision,integer,double "
+"precision,boolean,boolean,text)"
 
-#, fuzzy
 msgid "pgr_trsp(text,integer,integer,boolean,boolean,text)"
-msgstr "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
+msgstr "pgr_trsp(text,integer,integer,boolean,boolean,text)"
 
-#, fuzzy
 msgid ""
 "pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)"
 msgstr ""
-"``pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
-"boolean,text)``"
+"pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)"
 
-#, fuzzy
 msgid "pgr_trspviavertices(text,anyarray,boolean,boolean,text)"
-msgstr "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+msgstr "pgr_trspviavertices(text,anyarray,boolean,boolean,text)"
 
-#, fuzzy
 msgid "Removal of SQL deprecated internal functions"
-msgstr "Eliminación de funciones y firmas obsoletas"
+msgstr "Eliminación de funciones internas SQL obsoletas"
 
-#, fuzzy
 msgid "_pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)"
-msgstr "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+msgstr "_pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)"
 
-#, fuzzy
 msgid "_pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)"
-msgstr "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+msgstr "_pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)"
 
-#, fuzzy
 msgid "_pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)"
-msgstr "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+msgstr "_pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)"
 
-#, fuzzy
 msgid "_pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)"
-msgstr "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+msgstr "_pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)"
 
-#, fuzzy
 msgid "_pgr_dijkstra(text,text,boolean,boolean,boolean)"
-msgstr "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
+msgstr "_pgr_dijkstra(text,text,boolean,boolean,boolean)"
 
-#, fuzzy
 msgid "_pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)"
-msgstr ""
-"``pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
-"boolean,boolean)``"
+msgstr "_pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)"
 
 msgid "_pgr_kruskal(text,anyarray,text,bigint,double precision)"
 msgstr ""
 
-#, fuzzy
 msgid "_pgr_prim(text,anyarray,text,bigint,double precision)"
-msgstr ""
-"``pgr_withpointsdd(text,text,bigint,double precision,boolean,character,"
-"boolean)``"
+msgstr "_pgr_prim(text,anyarray,text,bigint,double precision)"
 
-#, fuzzy
 msgid ""
 "_pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
 "boolean,text)"
 msgstr ""
-"``pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
-"boolean,text)``"
+"_pgr_trsp(text,integer,double precision,integer,double "
+"precision,boolean,boolean,text)"
 
-#, fuzzy
 msgid "_pgr_trsp(text,text,anyarray,anyarray,boolean)"
-msgstr "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+msgstr "_pgr_trsp(text,text,anyarray,anyarray,boolean)"
 
-#, fuzzy
 msgid "_pgr_trsp(text,text,anyarray,bigint,boolean)"
-msgstr "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+msgstr "_pgr_trsp(text,text,anyarray,bigint,boolean)"
 
-#, fuzzy
 msgid "_pgr_trsp(text,text,bigint,anyarray,boolean)"
-msgstr "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
+msgstr "_pgr_trsp(text,text,bigint,anyarray,boolean)"
 
-#, fuzzy
 msgid "_pgr_trsp(text,text,bigint,bigint,boolean)"
-msgstr "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
+msgstr "_pgr_trsp(text,text,bigint,bigint,boolean)"
 
-#, fuzzy
 msgid "_pgr_trspviavertices(text,integer[],boolean,boolean,text)"
-msgstr "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+msgstr "_pgr_trspviavertices(text,integer[],boolean,boolean,text)"
 
 #, fuzzy
 msgid "_pgr_withpointsvia(text,bigint[],double precision[],boolean)"
@@ -5113,20 +5082,17 @@ msgstr ""
 "``pgr_withpointsdd(text,text,bigint,double precision,boolean,character,"
 "boolean)``"
 
-#, fuzzy
 msgid "_trsp(text,text,anyarray,anyarray,boolean)"
-msgstr "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+msgstr "_trsp(text,text,anyarray,anyarray,boolean)"
 
-#, fuzzy
 msgid "_v4trsp(text,text,anyarray,anyarray,boolean)"
-msgstr "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+msgstr "_v4trsp(text,text,anyarray,anyarray,boolean)"
 
 msgid "_v4trsp(text,text,text,boolean)"
 msgstr ""
 
-#, fuzzy
 msgid "Deprecation of internal C/C++ functions"
-msgstr "Funciones obsoletas"
+msgstr "Obsolescencia de funciones internas C/C++"
 
 msgid "Internal C/C++ functions in legacy"
 msgstr ""
@@ -5889,32 +5855,28 @@ msgid "`v3.4.0 <https://docs.pgrouting.org/3.4>`__"
 msgstr "`v3.4.0 <https://docs.pgrouting.org/3.4>`__"
 
 msgid "Removed"
-msgstr ""
+msgstr "Eliminado"
 
 msgid "`v4.0.0 <https://docs.pgrouting.org/4.0>`__"
 msgstr "`v4.0.0 <https://docs.pgrouting.org/4.0>`__"
 
-#, fuzzy
 msgid ":doc:`pgr_dijkstra`"
-msgstr ":doc:`pgr_dijkstra`:"
+msgstr ":doc:`pgr_dijkstra`"
 
 msgid ":doc:`pgr_trsp`"
 msgstr ":doc:`pgr_trsp`"
 
-#, fuzzy
 msgid "`Migration of restrictions`_"
-msgstr "Migración de restricciones"
+msgstr "`Migración de restricciones`_"
 
-#, fuzzy
 msgid "Use ``pgr_dijkstra`` when there are no restrictions."
-msgstr ":doc:`pgr_dijkstra` cuando no hay restricciones,"
+msgstr "Usar ``pgr_dijkstra`` cuando no hay restricciones."
 
 msgid "Use :doc:`pgr_dijkstra` instead."
 msgstr "Usa en vez :doc:`pgr_dijkstra`."
 
-#, fuzzy
 msgid "To get the original column names:"
-msgstr "Para obtener la conectividad del grafo:"
+msgstr "Para obtener los nombres originales de las columnas:"
 
 msgid "``id1`` is the node"
 msgstr "``id1`` es el nodo"
@@ -5922,9 +5884,8 @@ msgstr "``id1`` es el nodo"
 msgid "``id2`` is the edge"
 msgstr "``id2`` es la arista"
 
-#, fuzzy
 msgid "Use ``pgr_trsp`` when there are restrictions."
-msgstr ":doc:`pgr_trspVia` cuando hay restricciones."
+msgstr "Usar ``pgr_trspVia`` cuando hay restricciones."
 
 msgid "Use :doc:`pgr_trsp` (One to One) instead."
 msgstr "Utilice en su lugar :doc:`pgr_trsp` (Uno a Uno)."
@@ -5935,28 +5896,23 @@ msgstr "Migración de ``pgr_trsp`` (Aristas)"
 msgid ":doc:`pgr_withPoints`"
 msgstr ":doc:`pgr_withPoints`"
 
-#, fuzzy
 msgid ":doc:`pgr_trsp_withPoints`"
-msgstr ":doc:`pgr_trsp_withPoints`:"
+msgstr ":doc:`pgr_trsp_withPoints`"
 
-#, fuzzy
 msgid "Use ``pgr_withPoints`` when there are no restrictions."
-msgstr ":doc:`pgr_withPoints` cuando no hay restricciones,"
+msgstr "Usar ``pgr_withPoints`` cuando no hay restricciones."
 
-#, fuzzy
 msgid "Use :doc:`pgr_withPoints` (Ont to One) instead."
-msgstr "Utilice en su lugar :doc:`pgr_trsp` (Uno a Uno)."
+msgstr "Utilizar en su lugar `:doc:`pgr_withPoints` (Uno a Uno)."
 
-#, fuzzy
 msgid "Use ``pgr_trsp_withPoints`` when there are restrictions."
-msgstr ":doc:`pgr_trspVia_withPoints` cuando hay restricciones."
+msgstr "Usar ``pgr_trsp_withPoints`` cuando hay restricciones."
 
 msgid "Use :doc:`pgr_trsp_withPoints` instead."
 msgstr "Utilizar en su lugar :doc:`pgr_trsp_withPoints`."
 
-#, fuzzy
 msgid "Migration of ``pgr_trspViaVertices``"
-msgstr "Migraciones de ``pgr_trspViaVertices``"
+msgstr "Migración de ``pgr_trspViaVertices``"
 
 msgid ":doc:`pgr_dijkstraVia`"
 msgstr ":doc:`pgr_dijkstraVia`"
@@ -5964,9 +5920,8 @@ msgstr ":doc:`pgr_dijkstraVia`"
 msgid ":doc:`pgr_trspVia`"
 msgstr ":doc:`pgr_trspVia`"
 
-#, fuzzy
 msgid "Use ``pgr_dijkstraVia`` when there are no restrictions"
-msgstr ":doc:`pgr_dijkstraVia` cuando no hay restricciones,"
+msgstr "Usar ``pgr_dijkstraVia`` cuando no hay restricciones"
 
 msgid "Use :doc:`pgr_dijkstraVia` instead."
 msgstr "Usar :doc:`pgr_dijkstraVia` en su lugar."
@@ -5980,14 +5935,12 @@ msgstr "``id2`` es el nodo"
 msgid "``id3`` is the edge"
 msgstr "``id3`` es la arista"
 
-#, fuzzy
 msgid "Use ``pgr_trspVia`` when there are restrictions"
-msgstr ":doc:`pgr_trspVia` cuando hay restricciones."
+msgstr "Usar ``pgr_trspVia`` cuando hay restricciones"
 
 msgid "Use :doc:`pgr_trspVia` instead."
 msgstr "Usar :doc:`pgr_trspVia` en su lugar."
 
-#, fuzzy
 msgid "Migration of ``pgr_trspViaEdges``"
 msgstr "Migración de ``pgr_trspViaEdges``"
 
@@ -5997,16 +5950,14 @@ msgstr ":doc:`pgr_withPointsVia`"
 msgid ":doc:`pgr_trspVia_withPoints`"
 msgstr ":doc:`pgr_trspVia_withPoints`"
 
-#, fuzzy
 msgid "Use ``pgr_withPointsVia`` when there are no restrictions"
-msgstr ":doc:`pgr_withPointsVia` cuando no hay restricciones,"
+msgstr "Usar ``pgr_withPointsVia` cuando no hay restricciones"
 
 msgid "Use :doc:`pgr_withPointsVia` instead."
 msgstr "Usar :doc:`pgr_withPointsVia` en su lugar."
 
-#, fuzzy
 msgid "Use ``pgr_trspVia_withPoints`` when there are restrictions"
-msgstr ":doc:`pgr_trspVia_withPoints` cuando hay restricciones."
+msgstr "Usar ``pgr_trspVia_withPoints`` cuando hay restricciones"
 
 msgid "Use :doc:`pgr_trspVia_withPoints` instead."
 msgstr "Usar :doc:`pgr_trspVia_withPoints` en su lugar."
@@ -7966,12 +7917,11 @@ msgstr ""
 msgid "Upgrading the database"
 msgstr "Actualización de la base de datos"
 
-#, fuzzy
 msgid ""
 "To upgrade pgRouting in the database to version 4.0.0 use the following "
 "command:"
 msgstr ""
-"Para actualizar pgRouting en la base de datos a la versión 3.7.0 utilice el "
+"Para actualizar pgRouting en la base de datos a la versión 4.0.0 utilice el "
 "siguiente comando:"
 
 msgid ""
@@ -8500,9 +8450,8 @@ msgstr "Bibliotecas de código Boost C++ en https://www.boost.org."
 msgid ":doc:`migration`"
 msgstr ":doc:`migration`"
 
-#, fuzzy
 msgid "``pgr_KSP``"
-msgstr "``pgr_TSP``"
+msgstr "``pgr_KSP``"
 
 msgid "``pgr_KSP`` — Yen's algorithm for K shortest paths using Dijkstra."
 msgstr "``pgr_KSP`` — Devuelve las K rutas más cortas usando Dijkstra ."
@@ -8510,9 +8459,8 @@ msgstr "``pgr_KSP`` — Devuelve las K rutas más cortas usando Dijkstra ."
 msgid "Availability"
 msgstr "Disponibilidad"
 
-#, fuzzy
 msgid "Version 4.0.0"
-msgstr "Versión 2.0.0"
+msgstr "Versión 4.0.0"
 
 msgid "All signatures promoted to official."
 msgstr ""
@@ -8523,9 +8471,8 @@ msgstr "Versión 3.6.0"
 msgid "Result columns standarized to: |nksp-result|"
 msgstr "Columnas de resultados estandarizadas a: |nksp-result|"
 
-#, fuzzy
 msgid "pgr_ksp(One to One)"
-msgstr "``pgr_ksp`` (Uno a Uno)"
+msgstr "pgr_ksp(Uno a Uno)"
 
 msgid "Added ``start_vid`` and ``end_vid`` result columns."
 msgstr "Añadidas las columnas de resultados ``start_vid`` y ``end_vid``."
@@ -8533,21 +8480,17 @@ msgstr "Añadidas las columnas de resultados ``start_vid`` y ``end_vid``."
 msgid "New proposed signatures:"
 msgstr ""
 
-#, fuzzy
 msgid "pgr_ksp(One to Many)"
-msgstr "``pgr_ksp`` (Uno a muchos)"
+msgstr "pgr_ksp(Uno a muchos)"
 
-#, fuzzy
 msgid "pgr_ksp(Many to One)"
-msgstr "``pgr_ksp`` (Muchos a uno)"
+msgstr "pgr_ksp(Muchos a uno)"
 
-#, fuzzy
 msgid "pgr_ksp(Many to Many)"
-msgstr "``pgr_ksp`` (Muchos a muchos)"
+msgstr "pgr_ksp(Muchos a muchos)"
 
-#, fuzzy
 msgid "pgr_ksp(Combinations)"
-msgstr "``pgr_ksp`` (Combinaciones)"
+msgstr "pgr_ksp(Combinaciones)"
 
 msgid "Version 2.1.0"
 msgstr "Versión 2.1.0"
@@ -8561,9 +8504,8 @@ msgstr "Firma antigua ya no soportada"
 msgid "Version 2.0.0"
 msgstr "Versión 2.0.0"
 
-#, fuzzy
 msgid "Official function."
-msgstr "Función **oficial**"
+msgstr "Función oficial."
 
 msgid ""
 "The K shortest path routing algorithm based on Yen's algorithm. \"K\" is the "
@@ -8572,9 +8514,8 @@ msgstr ""
 "El algoritmo de ruteo para obtener la ruta más corta K basado en el "
 "algoritmo de Yen . \"K\" es el número de rutas más cortas deseadas."
 
-#, fuzzy
 msgid "|Boost| Boost Graph Inside"
-msgstr "Adentro: Boost Graph"
+msgstr "|Boost| Adentro: Boost Graph"
 
 msgid "Signatures"
 msgstr "Firmas"
@@ -9012,9 +8953,8 @@ msgstr "Versión 3.0.0"
 msgid "Name change from pgr_eucledianTSP"
 msgstr "Cambio de nombre de pgr_eucledianTSP"
 
-#, fuzzy
 msgid "New official function."
-msgstr "Nueva función **oficial**"
+msgstr "Nueva función oficial."
 
 msgid ""
 "Any duplicated identifier will be ignored. The coordinates that will be kept"
@@ -9121,26 +9061,21 @@ msgstr ""
 msgid "Standarizing output columns to |short-generic-result|"
 msgstr "Estandarización de las columnas de salida a |short-generic-result|"
 
-#, fuzzy
 msgid "pgr_aStar(One to One) added ``start_vid`` and ``end_vid`` columns."
 msgstr ""
-"``pgr_aStar`` (`Uno a Uno`) ha añadido las columnas ``start_vid`` y "
-"``end_vid``."
+"pgr_aStar(Uno a Uno) ha añadido las columnas ``start_vid`` y ``end_vid``."
 
-#, fuzzy
 msgid "pgr_aStar(One to Many) added ``end_vid`` column."
-msgstr "``pgr_aStar`` (`Uno a Muchos`) ha añadido la columna ``end_vid``."
+msgstr "pgr_aStar(Uno a Muchos) ha añadido la columna ``end_vid``."
 
-#, fuzzy
 msgid "pgr_aStar(Many to One) added ``start_vid`` column."
-msgstr "``pgr_aStar`` (`Muchos a Uno`) ha añadido la columna ``start_vid``."
+msgstr "pgr_aStar(Muchos a Uno) ha añadido la columna ``start_vid``."
 
 msgid "Version 3.2.0"
 msgstr "Versión 3.2.0"
 
-#, fuzzy
 msgid "New proposed signature:"
-msgstr "Nuevas firmas propuestas"
+msgstr "Nuevas firmas propuestas:"
 
 msgid "Function promoted to official."
 msgstr ""
@@ -9148,21 +9083,17 @@ msgstr ""
 msgid "Version 2.4.0"
 msgstr "Versión 2.4.0"
 
-#, fuzzy
 msgid "pgr_aStar(One to Many)"
 msgstr "pgr_aStar(Uno a Muchos)"
 
-#, fuzzy
 msgid "pgr_aStar(Many to One)"
-msgstr "pgr_aStar(muchos a uno)"
+msgstr "pgr_aStar(Muchos a Uno)"
 
-#, fuzzy
 msgid "pgr_aStar(Many to Many)"
-msgstr "pgr_aStar(muchos a muchos)"
+msgstr "pgr_aStar(Muchos a Muchos)"
 
-#, fuzzy
 msgid "Signature change on pgr_astar(One to One)"
-msgstr "Cambio de firma en ``pgr_astar`` (`Uno a Uno`_)"
+msgstr "Cambio de firma en pgr_astar(Uno a Uno)"
 
 msgid ""
 "The results are equivalent to the union of the results of the `pgr_aStar(` "
@@ -9254,9 +9185,8 @@ msgstr "Ejemplo 3"
 msgid "Manually assigned vertex combinations."
 msgstr "Manualmente asignar combinaciones de vértices."
 
-#, fuzzy
 msgid "``pgr_aStarCost``"
-msgstr "pgr_aStarCost"
+msgstr "``pgr_aStarCost``"
 
 msgid ""
 "``pgr_aStarCost`` - Total cost of the shortest path using the A* algorithm."
@@ -9264,9 +9194,8 @@ msgstr ""
 "``pgr_aStarCost`` - Coste total del camino más corto utilizando el algoritmo "
 "A*."
 
-#, fuzzy
 msgid "New proposed function."
-msgstr "Nuevas funciones propuestas"
+msgstr "Nueva función propuesta."
 
 msgid ""
 "The ``pgr_aStarCost`` function sumarizes of the cost of the shortest path "
@@ -9482,9 +9411,8 @@ msgstr ":doc:`pgr_drivingDistance`"
 msgid "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
 msgstr "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
 
-#, fuzzy
 msgid "``pgr_analyzeGraph``"
-msgstr "pgr_analyzeGraph"
+msgstr "``pgr_analyzeGraph``"
 
 msgid "``pgr_analyzeGraph`` — Analyzes the network topology."
 msgstr "``pgr_analyzeGraph`` — analiza la topología de red."
@@ -9810,9 +9738,8 @@ msgstr ":doc:`pgr_createVerticesTable`"
 msgid ":doc:`pgr_nodeNetwork` to create nodes to a not noded edge table."
 msgstr ":doc:`pgr_nodeNetwork` para crear nodos en una tabla sin nodos."
 
-#, fuzzy
 msgid "``pgr_analyzeOneWay``"
-msgstr "pgr_analyzeOneWay"
+msgstr "``pgr_analyzeOneWay``"
 
 msgid ""
 "``pgr_analyzeOneWay`` — Analyzes oneway Sstreets and identifies flipped "
@@ -10012,9 +9939,8 @@ msgstr "Cambio de columnas de resultados: ``seq`` se elimina"
 msgid "Version 2.5.0"
 msgstr "Versión 2.5.0"
 
-#, fuzzy
 msgid "New experimental function."
-msgstr "Nueva función Experimental"
+msgstr "Nueva función experimental."
 
 msgid ""
 "Those vertices that belong to more than one biconnected component are called "
@@ -10049,13 +9975,12 @@ msgstr "Los puntos de articulación del grafo"
 msgid "Nodes in red are the articulation points."
 msgstr "Nodos en rojo son los puntos de articulación."
 
-#, fuzzy
 msgid ""
 "`Boost: Biconnected components & articulation points <https://www.boost.org/"
 "libs/graph/doc/biconnected_components.html>`__"
 msgstr ""
-"Boost: `Componentes biconectados & y puntos de articulación <https://www."
-"boost.org/libs/graph/doc/biconnected_components.html>`__"
+"`Boost: Componentes biconectados y puntos de articulación <https://www.boost."
+"org/libs/graph/doc/biconnected_components.html>`__"
 
 msgid ""
 "wikipedia: `Biconnected component <https://en.wikipedia.org/wiki/"
@@ -10072,43 +9997,34 @@ msgstr ""
 "``pgr_bdAstar`` — Devuelve la ruta más corta usando el algoritmo "
 "Bidireccional A*."
 
-#, fuzzy
 msgid "pgr_bdAstar(One to One) added ``start_vid`` and ``end_vid`` columns."
 msgstr ""
-"``pgr_bdAstar`` (`Uno a Uno`) ha añadido las columnas ``start_vid`` y "
-"``end_vid``."
+"pgr_bdAstar(Uno a Uno) ha añadido las columnas ``start_vid`` y ``end_vid``."
 
-#, fuzzy
 msgid "pgr_bdAstar(One to Many) added ``end_vid`` column."
-msgstr "``pgr_bdAstar`` (`Uno a Muchos`) ha añadido la columna ``end_vid``."
+msgstr "pgr_bdAstar(Uno a Muchos) ha añadido la columna ``end_vid``."
 
-#, fuzzy
 msgid "pgr_bdAstar(Many to One) added ``start_vid`` column."
-msgstr "``pgr_bdAstar`` (`Muchos a Uno`) ha añadido la columna ``start_vid``."
+msgstr "pgr_bdAstar(Muchos a Uno) ha añadido la columna ``start_vid``."
 
-#, fuzzy
 msgid "pgr_bdAstar(One to Many)"
 msgstr "pgr_bdAstar(Uno a Muchos)"
 
-#, fuzzy
 msgid "pgr_bdAstar(Many to One)"
-msgstr "pgr_bdAstar(muchos a uno)"
+msgstr "pgr_bdAstar(Muchos a Uno)"
 
-#, fuzzy
 msgid "pgr_bdAstar(Many to Many)"
-msgstr "pgr_bdAstar(muchos a muchos)"
+msgstr "pgr_bdAstar(Muchos a Muchos)"
 
-#, fuzzy
 msgid "Signature change on pgr_bdAstar(One to One)"
-msgstr "Cambio de firma en ``pgr_bdAstar`` (`Uno a Uno`_)"
+msgstr "Cambio de firma en pgr_bdAstar(Uno a Uno)"
 
-#, fuzzy
 msgid ""
 "The results are equivalent to the union of the results of the "
 "pgr_bdAStar(One to One) on the:"
 msgstr ""
-"Los resultados son equivalentes a la unión de los resultados de "
-"`pgr_bdAStar(` `Uno a Uno`_ `)` en:"
+"Los resultados son equivalentes a la unión de los resultados de pgr_bdAStar("
+"Uno a Uno) en:"
 
 msgid "pgr_bdAstar(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
 msgstr ""
@@ -10134,9 +10050,8 @@ msgstr ""
 msgid "**options:** [directed, heuristic, factor, epsilon]``"
 msgstr "**opcionales:** ``[directed, heuristic, factor, epsilon]``"
 
-#, fuzzy
 msgid "``pgr_bdAstarCost``"
-msgstr "pgr_bdAstarCost"
+msgstr "``pgr_bdAstarCost``"
 
 msgid ""
 "``pgr_bdAstarCost`` - Total cost of the shortest path using the "
@@ -10202,25 +10117,20 @@ msgstr ""
 "``pgr_bdDijkstra`` - Devuelve el camino más corto utilizando el algoritmo "
 "Bidireccional de Dijkstra."
 
-#, fuzzy
 msgid "New Proposed signatures:"
-msgstr "Nuevas firmas propuestas"
+msgstr "Nuevas firmas Propuestas:"
 
-#, fuzzy
 msgid "pgr_bdDijkstra(One to Many)"
 msgstr "pgr_bdDijkstra(Uno a Muchos)"
 
-#, fuzzy
 msgid "pgr_bdDijkstra(Many to One)"
-msgstr "pgr_bdDijkstra(muchos a uno)"
+msgstr "pgr_bdDijkstra(Muchos a Uno)"
 
-#, fuzzy
 msgid "pgr_bdDijkstra(Many to Many)"
-msgstr "pgr_bdDijkstra(muchos a muchos)"
+msgstr "pgr_bdDijkstra(Muchos a Muchos)"
 
-#, fuzzy
 msgid "Signature change on pgr_bdDijsktra(One to One)"
-msgstr "La firma cambió en ``pgr_bdDijsktra`` (`Uno a Uno`_)"
+msgstr "La firma cambió en pgr_bdDijsktra(Uno a Uno)"
 
 msgid ""
 "pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
@@ -10378,9 +10288,8 @@ msgstr ""
 "``pgr_bellmanFord`` - Camino más corto utilizando el algoritmo de Bellman-"
 "Ford."
 
-#, fuzzy
 msgid "New experimental signature:"
-msgstr "Nueva firma **experimental**:"
+msgstr "Nueva firma experimental:"
 
 msgid "pgr_bellmanFord(Combinations)"
 msgstr "pgr_bellmanFord(Combinaciones)"
@@ -10487,20 +10396,18 @@ msgstr ""
 msgid "Using a combinations table on an **undirected** graph."
 msgstr "Uso de una tabla de combinaciones en un grafo **no dirigido**."
 
-#, fuzzy
 msgid ""
 "`Boost: Belman Ford <https://www.boost.org/libs/graph/doc/"
 "bellman_ford_shortest.html>`__"
 msgstr ""
-"Boost `Algoritmo de Johnson <https://www.boost.org/libs/graph/doc/"
-"johnson_all_pairs_shortest.html>`_"
+"`Boost: Bellman Ford <https://www.boost.org/libs/graph/doc/"
+"bellman_ford_shortest.html>`__"
 
 msgid "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
 msgstr "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
 
-#, fuzzy
 msgid "``pgr_betweennessCentrality`` - Experimental"
-msgstr "``pgr_betweennessCentrality``"
+msgstr "``pgr_betweennessCentrality`` - Experimental"
 
 msgid ""
 "``pgr_betweennessCentrality`` - Calculates the relative betweeness "
@@ -10598,13 +10505,12 @@ msgid ""
 msgstr ""
 "Puntuación relativa de centralidad entre vértices (estará en el rango [0,1])"
 
-#, fuzzy
 msgid ""
 "`Boost: betweenness centrality <https://www.boost.org/doc/libs/1_84_0/libs/"
 "graph/doc/betweenness_centrality.html>`_"
 msgstr ""
-"`Boost: Centralidad de intermediación <https://www.boost.org/doc/libs/1_84_0/"
-"libs/graph/doc/betweenness_centrality.html>`__"
+"`Boost: Centralidad de intermediación <https://www.boost.org/libs/graph/doc/"
+"betweenness_centrality.html>`__"
 
 msgid "``pgr_biconnectedComponents``"
 msgstr "``pgr_biconnectedComponents``"
@@ -10780,12 +10686,11 @@ msgstr ""
 "**Nota:** Usando la red de :doc:`sampledata` como todos los pesos son los "
 "mismos (i.e :math:`1``)"
 
-#, fuzzy
 msgid ""
 "`Boost: Breadth First Search <https://www.boost.org/libs/graph/doc/"
 "breadth_first_search.html>`__"
 msgstr ""
-"`Boost: Breadth First Search <https://www.boost.org/libs/graph/doc/"
+"`Boost: Primera búsqueda en amplitud <https://www.boost.org/libs/graph/doc/"
 "breadth_first_search.html>`__"
 
 msgid "https://cp-algorithms.com/graph/01_bfs.html"
@@ -10796,9 +10701,8 @@ msgid ""
 msgstr ""
 "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Specialized_variants"
 
-#, fuzzy
 msgid "``pgr_bipartite`` - Experimental"
-msgstr "pgr_bipartite - Experimental"
+msgstr "``pgr_bipartite`` - Experimental"
 
 msgid ""
 "``pgr_bipartite`` — Disjoint sets of vertices such that no two vertices "
@@ -10892,9 +10796,8 @@ msgstr ""
 msgid "Renamed from ``pgr_maxFlowBoykovKolmogorov``"
 msgstr "Renombrado de ``pgr_maxFlowBoykovKolmogorov``"
 
-#, fuzzy
 msgid "Function promoted to proposed."
-msgstr "Experimental promovido a propuesto."
+msgstr "Función promovida a propuesta."
 
 msgid "Running time: Polynomial"
 msgstr "Tiempo de ejecución: Polinomio"
@@ -10939,11 +10842,12 @@ msgstr ""
 "Usando una tabla de combinaciones, equivalente a calcular el resultado de "
 "los vértices :math:`\\{5, 6\\}` a los vértices :math:`\\{10, 15, 14\\}`."
 
-#, fuzzy
 msgid ""
 "`Boost: Boykov Kolmogorov max flow <https://www.boost.org/libs/graph/doc/"
 "boykov_kolmogorov_max_flow.html>`__"
-msgstr "https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html"
+msgstr ""
+"`Boost: Flujo máximo Boykov Kolmogorov <https://www.boost.org/libs/graph/doc/"
+"boykov_kolmogorov_max_flow.html>`__"
 
 msgid "``pgr_breadthFirstSearch`` - Experimental"
 msgstr "``pgr_breadthFirstSearch`` - Experimental"
@@ -11074,12 +10978,11 @@ msgstr "Identificador del borde que es un puente."
 msgid "https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29"
 msgstr "https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29"
 
-#, fuzzy
 msgid ""
 "`Boost: connected components <https://www.boost.org/libs/graph/doc/"
 "connected_components.html>`__"
 msgstr ""
-"Boost: `Componente conectado <https://www.boost.org/libs/graph/doc/"
+"`Boost: componentes conectados <https://www.boost.org/libs/graph/doc/"
 "connected_components.html>`__"
 
 msgid "``pgr_chinesePostman`` - Experimental"
@@ -11144,9 +11047,8 @@ msgstr "``pgr_chinesepostmancost``"
 msgid "Minimum costs of a circuit path."
 msgstr "Costes mínimos de una trayectoria de circuito."
 
-#, fuzzy
 msgid "``pgr_connectedComponents``"
-msgstr "``pgr_biconnectedComponents``"
+msgstr "``pgr_connectedComponents``"
 
 msgid ""
 "``pgr_connectedComponents`` — Connected components of an undirected graph "
@@ -11186,12 +11088,11 @@ msgstr "Identificador del vértice que pertenece al ``component``."
 msgid "Connecting disconnected components"
 msgstr "Conectando componentes desconectados"
 
-#, fuzzy
 msgid ""
 "`Boost: Connected components <https://www.boost.org/libs/graph/doc/"
 "connected_components.html>`__"
 msgstr ""
-"Boost: `Componente conectado <https://www.boost.org/libs/graph/doc/"
+"`Boost: Componentes conectados <https://www.boost.org/libs/graph/doc/"
 "connected_components.html>`__"
 
 msgid ""
@@ -11389,9 +11290,8 @@ msgstr "Sólo contracción sin salida"
 msgid "Only linear contraction"
 msgstr "Sólo contracción lineal"
 
-#, fuzzy
 msgid "``pgr_createTopology``"
-msgstr "pgr_createTopology"
+msgstr "``pgr_createTopology``"
 
 msgid ""
 "``pgr_createTopology`` — Builds a network topology based on the geometry "
@@ -11645,9 +11545,8 @@ msgstr ""
 "En este ejemplo se inicia una topología limpia, con 5 aristas y, a "
 "continuación, se incrementa al resto de los bordes."
 
-#, fuzzy
 msgid "``pgr_createVerticesTable``"
-msgstr "pgr_createVerticesTable"
+msgstr "``pgr_createVerticesTable``"
 
 msgid ""
 "``pgr_createVerticesTable`` — Reconstructs the vertices table based on the "
@@ -11912,9 +11811,8 @@ msgstr ""
 "`Wikipedia: Ordenamiento Cuthill-McKee <https://en.wikipedia.org/wiki/"
 "Cuthill%E2%80%93McKee_algorithm>`__"
 
-#, fuzzy
 msgid "``pgr_dagShortestPath`` - Experimental"
-msgstr "pgr_dagShortestPath - Experimental"
+msgstr "``pgr_dagShortestPath`` - Experimental"
 
 msgid ""
 "``pgr_dagShortestPath`` — Returns the shortest path for weighted directed "
@@ -12009,13 +11907,12 @@ msgstr "Columnas de Resultados"
 msgid "Making **start_vids** the same as **end_vids**"
 msgstr "Haciendo **vértices de salida** igual que **vértices destino**"
 
-#, fuzzy
 msgid ""
 "`Boost: DAG shortest paths <https://www.boost.org/libs/graph/doc/"
 "dag_shortest_paths.html>`__"
 msgstr ""
-"`Boost: es bipartido <https://www.boost.org/libs/graph/doc/is_bipartite."
-"html>`__"
+"`Boost: Caminos mas cortos en DAG <https://www.boost.org/libs/graph/doc/"
+"dag_shortest_paths.html>`__"
 
 msgid "https://en.wikipedia.org/wiki/Topological_sorting"
 msgstr "https://en.wikipedia.org/wiki/Topological_sorting"
@@ -12224,21 +12121,19 @@ msgid "Same as `Single vertex`_ but with edges in descending order of ``id``."
 msgstr ""
 "Igual que `Vértice único`_ pero con aristas en orden descendente de ``id``."
 
-#, fuzzy
 msgid ""
 "`Boost: Depth First Search <https://www.boost.org/libs/graph/doc/"
 "depth_first_search.html>`__"
 msgstr ""
-"`Boost: Documentación del algoritmo de Primera Búsqueda de Profundidad "
-"<https://www.boost.org/libs/graph/doc/depth_first_search.html>`__"
+"`Boost: Primera Búsqueda de Profundidad <https://www.boost.org/libs/graph/"
+"doc/depth_first_search.html>`__"
 
-#, fuzzy
 msgid ""
 "`Boost: Undirected DFS <https://www.boost.org/libs/graph/doc/undirected_dfs."
 "html>`__"
 msgstr ""
-"`Boost: Documentación del algoritmo DFS No dirigido <https://www.boost.org/"
-"libs/graph/doc/undirected_dfs.html>`__"
+"`Boost: DFS No dirigido <https://www.boost.org/libs/graph/doc/undirected_dfs."
+"html>`__"
 
 msgid ""
 "`Wikipedia: Depth First Search algorithm <https://en.wikipedia.org/wiki/"
@@ -12257,19 +12152,15 @@ msgstr ""
 msgid "Version 3.5.0"
 msgstr "Versión 3.5.0"
 
-#, fuzzy
 msgid "pgr_dijkstra(One to One) added ``start_vid`` and ``end_vid`` columns."
 msgstr ""
-"``pgr_dijkstra`` (`Uno a Uno`) ha añadido las columnas ``start_vid`` y "
-"``end_vid``."
+"pgr_dijkstra(Uno a Uno) ha añadido las columnas ``start_vid`` y ``end_vid``."
 
-#, fuzzy
 msgid "pgr_dijkstra(One to Many) added ``end_vid`` column."
-msgstr "``pgr_dijkstra`` (`Uno a Muchos`) ha añadido la columna ``end_vid``."
+msgstr "pgr_dijkstra(Uno a Muchos) ha añadido la columna ``end_vid``."
 
-#, fuzzy
 msgid "pgr_dijkstra(Many to One) added ``start_vid`` column."
-msgstr "``pgr_dijkstra`` (`Muchos a Uno`) ha añadido la columna ``start_vid``."
+msgstr "pgr_dijkstra(Muchos a Uno) ha añadido la columna ``start_vid``."
 
 msgid "Version 3.1.0"
 msgstr "Versión 3.1.0"
@@ -12277,21 +12168,17 @@ msgstr "Versión 3.1.0"
 msgid "Version 2.2.0"
 msgstr "Version 2.2.0"
 
-#, fuzzy
 msgid "pgr_dijkstra(One to Many)"
-msgstr "pgr_dijkstraNear(Uno a Muchos)"
+msgstr "pgr_dijkstra(Uno a Muchos)"
 
-#, fuzzy
 msgid "pgr_dijkstra(Many to One)"
-msgstr "pgr_dijkstraNear(Muchos a Uno)"
+msgstr "pgr_dijkstra(Muchos a Uno)"
 
-#, fuzzy
 msgid "pgr_dijkstra(Many to Many)"
-msgstr "pgr_dijkstraNear(Muchos a Muchos)"
+msgstr "pgr_dijkstra(Muchos a Muchos)"
 
-#, fuzzy
 msgid "Signature change on pgr_dijkstra(One to One)"
-msgstr "Cambio de firma en ``pgr_dijkstra`` (`Uno a Uno`_)"
+msgstr "Cambio de firma en pgr_dijkstra(Uno a Uno)"
 
 msgid "pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
 msgstr ""
@@ -12504,13 +12391,12 @@ msgstr "36) Usando `Muchos a Muchos`_"
 msgid "37) Using `Combinations`_"
 msgstr "37) Usando `Combinaciones`_"
 
-#, fuzzy
 msgid ""
 "`Boost: Dijkstra shortest paths <https://www.boost.org/libs/graph/doc/"
 "dijkstra_shortest_paths.html>`__"
 msgstr ""
-"`Boost: es bipartido <https://www.boost.org/libs/graph/doc/is_bipartite."
-"html>`__"
+"`Boost: Camino mas corto Dijkstra <https://www.boost.org/libs/graph/doc/"
+"dijkstra_shortest_paths.html>`__"
 
 msgid "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
@@ -13089,16 +12975,14 @@ msgstr ""
 msgid "Standarizing output columns to |result-spantree|"
 msgstr "Estandarización de columnas de resultados a |result-spantree|"
 
-#, fuzzy
 msgid "pgr_drivingdistance(Single vertex)"
-msgstr "pgr_drivingDistance(vértice único)"
+msgstr "pgr_drivingDistance(Vértice único)"
 
 msgid "Added ``depth`` and ``start_vid`` result columns."
 msgstr "Agregado las columnas de resultados``depth`` y ``start_vid``."
 
-#, fuzzy
 msgid "pgr_drivingdistance(Multiple vertices)"
-msgstr "pgr_drivingDistance(múltiples vértices)"
+msgstr "pgr_drivingDistance(Múltiples vértices)"
 
 msgid "Result column name change: ``from_v`` to ``start_vid``."
 msgstr ""
@@ -13107,16 +12991,14 @@ msgstr ""
 msgid "Added ``depth`` and ``pred`` result columns."
 msgstr "Agregado las columnas de resultados``depth`` y ``pred``."
 
-#, fuzzy
 msgid "Signature change:"
-msgstr "Cambio de firma"
+msgstr "Cambio de firma:"
 
 msgid "pgr_drivingDistance(single vertex)"
 msgstr "pgr_drivingDistance(vértice único)"
 
-#, fuzzy
 msgid "New official signature:"
-msgstr "Nueva firma"
+msgstr "Nueva firma oficial:"
 
 msgid "pgr_drivingDistance(multiple vertices)"
 msgstr "pgr_drivingDistance(múltiples vértices)"
@@ -13188,9 +13070,8 @@ msgstr ""
 "Desde vértices math:`\\{11, 16\\}` con una distancia de :math:`3.0` en un "
 "grafo no dirigido"
 
-#, fuzzy
 msgid "``pgr_edgeColoring`` - Experimental"
-msgstr "pgr_edgeColoring - Experimental"
+msgstr "``pgr_edgeColoring`` - Experimental"
 
 msgid ""
 "``pgr_edgeColoring`` — Returns the edge coloring of undirected and loop-free "
@@ -13276,13 +13157,12 @@ msgstr "Regresa el conjunto de |result-edge-color|"
 msgid "Graph coloring of pgRouting :doc:`sampledata`"
 msgstr "Coloración de grafos de pgRouting :doc:`sampledata`"
 
-#, fuzzy
 msgid ""
 "`Boost: Edge Coloring <https://www.boost.org/libs/graph/doc/edge_coloring."
 "html>`__"
 msgstr ""
-"`Boost: Algoritmo de Coloración de Segmentos <https://www.boost.org/libs/"
-"graph/doc/edge_coloring.html>`__"
+"`Boost: Coloración de Segmentos <https://www.boost.org/libs/graph/doc/"
+"edge_coloring.html>`__"
 
 msgid ""
 "`Wikipedia: Graph coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__"
@@ -13425,16 +13305,16 @@ msgstr "pgr_edmondsKarp(`SQL de aristas`_, **salidas**, **destinos**)"
 msgid "pgr_edmondsKarp(`Edges SQL`_, `Combinations SQL`_)"
 msgstr "pgr_edmondsKarp(`SQL de aristas`_, `SQL de combinaciones`_)"
 
-#, fuzzy
 msgid ""
 "`Boost: edmonds_karp_max_flow <https://www.boost.org/libs/graph/doc/"
 "edmonds_karp_max_flow.html>`__"
-msgstr "https://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html"
+msgstr ""
+"`Boost: Flujo máximo Edmonds Karp <https://www.boost.org/libs/graph/doc/"
+"edmonds_karp_max_flow.html>`__"
 
 msgid "https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm"
 msgstr "https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm"
 
-#, fuzzy
 msgid "``pgr_edwardMoore`` - Experimental"
 msgstr "``pgr_edwardMoore`` - Experimental"
 
@@ -13527,9 +13407,8 @@ msgstr ""
 msgid "https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm"
 msgstr "https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm"
 
-#, fuzzy
 msgid "``pgr_extractVertices`` -- Proposed"
-msgstr "pgr_extractVertices -- Propuesto"
+msgstr "``pgr_extractVertices``-- Propuesto"
 
 msgid "``pgr_extractVertices`` — Extracts the vertices information"
 msgstr "``pgr_extractVertices`` — Extrae la información de los vértices"
@@ -13645,9 +13524,8 @@ msgstr ""
 "Para obtener la consulta generada que se usa para obtener la información de "
 "vértices, utilice ``dryrun := true``."
 
-#, fuzzy
 msgid "``pgr_findCloseEdges`` - Proposed"
-msgstr "``pgr_findCloseEdges``"
+msgstr "``pgr_findCloseEdges`` - Propuesto"
 
 msgid "``pgr_findCloseEdges`` - Finds the close edges to a point geometry."
 msgstr ""
@@ -14294,6 +14172,7 @@ msgstr "``hash``"
 msgid "Git hash of pgRouting build"
 msgstr "Hash de Git de pgRouting"
 
+#, fuzzy
 msgid "``pgr_hawickCircuits - Experimental``"
 msgstr "``pgr_hawickCircuits - Experimental``"
 
@@ -14455,11 +14334,12 @@ msgstr ""
 "El nuevo grafo no es planar porque tiene un subgráfico :math:`K_5`. Las "
 "aristas en azul representan el subgrafo :math:`K_5`."
 
-#, fuzzy
 msgid ""
 "`Boost: Boyer Myrvold <https://www.boost.org/libs/graph/doc/boyer_myrvold."
 "html>`__"
-msgstr "https://www.boost.org/libs/graph/doc/boyer_myrvold.html"
+msgstr ""
+"`Boost: Boyer Myrvold <https://www.boost.org/libs/graph/doc/boyer_myrvold."
+"html>`__"
 
 msgid "``pgr_johnson``"
 msgstr "``pgr_johnson``"
@@ -14629,9 +14509,8 @@ msgstr "pgr_kruskalDFS(`SQL de aristas`_, **raíz**, [``max_depth``])"
 msgid "pgr_kruskalDFS(`Edges SQL`_, **root vids**, [``max_depth``])"
 msgstr "pgr_kruskalDFS(`SQL de aristas`_, **raices**, [``max_depth``])"
 
-#, fuzzy
 msgid "``pgr_lengauerTarjanDominatorTree`` -Experimental"
-msgstr "pgr_lengauerTarjanDominatorTree -Experimental"
+msgstr "``pgr_lengauerTarjanDominatorTree`` - Experimental"
 
 msgid ""
 "``pgr_lengauerTarjanDominatorTree`` — Returns the immediate dominator of all "
@@ -14695,13 +14574,12 @@ msgstr "Dominador inmediato del vértice."
 msgid "Dominator tree of another component."
 msgstr "Árbnol dominante de otro componente."
 
-#, fuzzy
 msgid ""
 "`Boost: Lengauer-Tarjan dominator <https://www.boost.org/libs/graph/doc/"
 "lengauer_tarjan_dominator.htm>`__"
 msgstr ""
-"`Boost: Algoritmo Lengauer-Tarjan de árbol dominante <https://www.boost.org/"
-"libs/graph/doc/lengauer_tarjan_dominator.htm>`__"
+"`Boost: Árbol dominante Lengauer-Tarjan <https://www.boost.org/libs/graph/"
+"doc/lengauer_tarjan_dominator.htm>`__"
 
 msgid ""
 "`Wikipedia: dominator tree <https://en.wikipedia.org/wiki/"
@@ -14710,9 +14588,8 @@ msgstr ""
 "'Wikipedia: árbol de dominador' <https://en.wikipedia.org/wiki/"
 "Dominator_(graph_theory)>`__"
 
-#, fuzzy
 msgid "``pgr_lineGraph`` - Proposed"
-msgstr "pgr_lineGraph - Propuesto"
+msgstr "``pgr_lineGraph`` - Propuesto"
 
 msgid ""
 "``pgr_lineGraph`` — Transforms the given graph into its corresponding edge-"
@@ -15050,7 +14927,7 @@ msgstr ""
 "``reverse_cost``."
 
 msgid "The data"
-msgstr ""
+msgstr "Los datos"
 
 msgid ""
 "This example displays how this graph transformation works to create "
@@ -15066,7 +14943,7 @@ msgid "first"
 msgstr "primero"
 
 msgid "The transformation"
-msgstr ""
+msgstr "La transformación"
 
 msgid "|second|"
 msgstr "|second|"
@@ -15285,21 +15162,18 @@ msgstr "pgr_makeConnected(`SQL de aristas`_)"
 msgid "Returns set of |result-component-make|"
 msgstr "Regresa conjunto de |result-component-make|"
 
-#, fuzzy
 msgid "List of edges that are needed to connect the graph."
-msgstr ""
-"La consulta realizada en la red de :doc:`sampledata` proporciona la lista de "
-"aristas que se necesitan en el grafo para conectarlo."
+msgstr "Lista de aristas que se necesitan para conectar el grafo."
 
-#, fuzzy
 msgid ""
 "`Boost: make connected <https://www.boost.org/libs/graph/doc/make_connected."
 "html>`__"
-msgstr "https://www.boost.org/libs/graph/doc/make_connected.html"
+msgstr ""
+"`Boost: conectar <https://www.boost.org/libs/graph/doc/make_connected."
+"html>`__"
 
-#, fuzzy
 msgid "``pgr_maxCardinalityMatch``"
-msgstr "pgr_maxCardinalityMatch"
+msgstr "``pgr_maxCardinalityMatch``"
 
 msgid ""
 "``pgr_maxCardinalityMatch`` — Calculates a maximum cardinality matching in a "
@@ -15308,21 +15182,17 @@ msgstr ""
 "``pgr_maxCardinalityMatch`` — Calcula una coincidencia de cardinalidad "
 "máxima en un grafo."
 
-#, fuzzy
 msgid "pgr_maxCardinalityMatch(text) returns only ``edge`` column."
-msgstr ""
-"``pgr_maxCardinalityMatch(text)`` regresa solamente la columna ``edge``."
+msgstr "pgr_maxCardinalityMatch(text) regresa solamente la columna ``edge``."
 
 msgid "Deprecated signature"
 msgstr ""
 
-#, fuzzy
 msgid "pgr_maxCardinalityMatch(text,boolean)"
-msgstr "``pgr_maxCardinalityMatch(text,boolean)``"
+msgstr "pgr_maxCardinalityMatch(text,boolean)"
 
-#, fuzzy
 msgid "directed => ``false`` when used."
-msgstr "Con ``directed => false``"
+msgstr "Con directed => `` false`` cuando se usa."
 
 msgid "Renamed from ``pgr_maximumCardinalityMatching``"
 msgstr "Renombrado de ``pgr_maximumCardinalityMatching``"
@@ -15382,11 +15252,12 @@ msgstr ""
 msgid "Identifier of the edge in the original query."
 msgstr "Identificador de la arista en la consulta original."
 
-#, fuzzy
 msgid ""
 "`Boost: maximum_matching <https://www.boost.org/libs/graph/doc/"
 "maximum_matching.html>`__"
-msgstr "https://www.boost.org/libs/graph/doc/maximum_matching.html"
+msgstr ""
+"`Boost: Coincidencia máxima <https://www.boost.org/libs/graph/doc/"
+"maximum_matching.html>`__"
 
 msgid "https://en.wikipedia.org/wiki/Matching_%28graph_theory%29"
 msgstr "https://en.wikipedia.org/wiki/Matching_%28graph_theory%29"
@@ -15439,11 +15310,12 @@ msgstr ""
 msgid "Maximum flow possible from the source(s) to the target(s)"
 msgstr "Flujo máximo posible desde el/los orígen(es) hacia el/los destino(s)"
 
-#, fuzzy
 msgid ""
 "`Boost: push relabel max flow <https://www.boost.org/libs/graph/doc/"
 "push_relabel_max_flow.html>`__"
-msgstr "https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html"
+msgstr ""
+"`Boost: Flujo máximo empujar reetiquetar <https://www.boost.org/libs/graph/"
+"doc/push_relabel_max_flow.html>`__"
 
 msgid ""
 "https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm"
@@ -15463,9 +15335,8 @@ msgstr ""
 msgid "pgr_maxFlowMinCost(Combinations)"
 msgstr "pgr_maxFlowMinCost(Combinaciones)"
 
-#, fuzzy
 msgid "|boost| graph inside."
-msgstr "Adentro: Boost Graph"
+msgstr "|boost| graph adentro."
 
 msgid "**TODO** check which statement is true:"
 msgstr "**Por hacer** comprobar qué declaración es verdadera:"
@@ -15561,9 +15432,8 @@ msgstr ""
 "Coste Mínimo Flujo Máximo posible desde el/los origen(es) hasta el/los "
 "objetivo(s)"
 
-#, fuzzy
 msgid "``pgr_nodeNetwork``"
-msgstr "pgr_nodeNetwork"
+msgstr "``pgr_nodeNetwork``"
 
 msgid "``pgr_nodeNetwork`` - Nodes an network edge table."
 msgstr ""
@@ -16204,9 +16074,8 @@ msgstr "pgr_pushRelabel(`SQL de aristas`_, **salidas**, **destinos**)"
 msgid "pgr_pushRelabel(`Edges SQL`_, `Combinations SQL`_)"
 msgstr "pgr_pushRelabel(`SQL de aristas`_, `SQL de combinaciones`_)"
 
-#, fuzzy
 msgid "``pgr_sequentialVertexColoring`` - Proposed"
-msgstr "pgr_sequentialVertexColoring - Propuesto"
+msgstr "``pgr_sequentialVertexColoring`` - Propuesto"
 
 msgid ""
 "``pgr_sequentialVertexColoring`` — Returns the vertex coloring of an "
@@ -16273,17 +16142,15 @@ msgstr ":math:`k` es el número de colores utilizados."
 msgid "pgr_sequentialVertexColoring(`Edges SQL`_)"
 msgstr "pgr_sequentialVertexColoring(`SQL de aristas`_)"
 
-#, fuzzy
 msgid ""
 "`Boost: Sequential Vertex Coloring <https://www.boost.org/libs/graph/doc/"
 "sequential_vertex_coloring.html>`__"
 msgstr ""
-"`Boost: Documentacion de Algoritmo de Coloración Secuencial de Vertices "
-"<https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html>`__"
+"`Boost: Coloración Secuencial de Vértices <https://www.boost.org/libs/graph/"
+"doc/sequential_vertex_coloring.html>`__"
 
-#, fuzzy
 msgid "``pgr_stoerWagner`` - Experimental"
-msgstr "pgr_stoerWagner - Experimental"
+msgstr "``pgr_stoerWagner`` - Experimental"
 
 msgid "``pgr_stoerWagner`` — The min-cut of graph using stoerWagner algorithm."
 msgstr ""
@@ -16389,13 +16256,12 @@ msgstr "corte mínimo de una arista"
 msgid "Using :doc:`pgr_connectedComponents`"
 msgstr "Usando :doc:`pgr_connectedComponents`"
 
-#, fuzzy
 msgid ""
 "`Boost: Stoer Wagner min cut <https://www.boost.org/libs/graph/doc/"
 "stoer_wagner_min_cut.html>`__"
 msgstr ""
-"Boost: `Components fuertemente conectados <https://www.boost.org/libs/graph/"
-"doc/strong_components.html>`__"
+"`Boost: Corte mínimo Stoer Wagner <https://www.boost.org/libs/graph/doc/"
+"stoer_wagner_min_cut.html>`__"
 
 msgid "https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm"
 msgstr "https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm"
@@ -16429,12 +16295,11 @@ msgstr "pgr_strongComponents(`SQL de aristas`_)"
 msgid "The strong components of the graph"
 msgstr "Los componentes fuertes del grafo"
 
-#, fuzzy
 msgid ""
 "`Boost: Strong components <https://www.boost.org/libs/graph/doc/"
 "strong_components.html>`__"
 msgstr ""
-"Boost: `Components fuertemente conectados <https://www.boost.org/libs/graph/"
+"`Boost: Componentes fuertemente conectados <https://www.boost.org/libs/graph/"
 "doc/strong_components.html>`__"
 
 msgid ""
@@ -16507,13 +16372,12 @@ msgstr ""
 msgid "Graph is not a DAG"
 msgstr ""
 
-#, fuzzy
 msgid ""
 "`Boost: topological sort <https://www.boost.org/libs/graph/doc/"
 "topological_sort.html>`__"
 msgstr ""
-"`Boost: es bipartido <https://www.boost.org/libs/graph/doc/is_bipartite."
-"html>`__"
+"`Boost: Ordenamiento topológico <https://www.boost.org/libs/graph/doc/"
+"topological_sort.html>`__"
 
 msgid "``pgr_transitiveClosure`` - Experimental"
 msgstr "``pgr_transitiveClosure`` - Experimental"
@@ -16571,13 +16435,12 @@ msgid "Identifiers of the vertices that are reachable from vertex v."
 msgstr ""
 "Identificadores de los vértices que son alcanzables desde el vértice v."
 
-#, fuzzy
 msgid ""
 "`Boost: transitive closure <https://www.boost.org/libs/graph/doc/"
 "transitive_closure.html>`__"
 msgstr ""
-"`Boost: es bipartido <https://www.boost.org/libs/graph/doc/is_bipartite."
-"html>`__"
+"`Boost: Cierre transitivo <https://www.boost.org/libs/graph/doc/"
+"transitive_closure.html>`__"
 
 msgid "https://en.wikipedia.org/wiki/Transitive_closure"
 msgstr "https://en.wikipedia.org/wiki/Transitive_closure"
@@ -16588,47 +16451,39 @@ msgstr "``pgr_trsp``"
 msgid "``pgr_trsp`` - routing vertices with restrictions."
 msgstr "``pgr_trsp`` - Ruteo con restricciones."
 
-#, fuzzy
 msgid "pgr_trsp(One to One)"
-msgstr "``pgr_trsp`` (Uno a Uno)"
+msgstr "pgr_trsp(Uno a Uno)"
 
-#, fuzzy
 msgid "pgr_trsp(One to Many)"
-msgstr "``pgr_trsp`` (Uno a Muchos)"
+msgstr "pgr_trsp(Uno a Muchos)"
 
-#, fuzzy
 msgid "pgr_trsp(Many to One)"
-msgstr "``pgr_trsp`` (Muchos a Uno)"
+msgstr "pgr_trsp(Muchos a Uno)"
 
-#, fuzzy
 msgid "pgr_trsp(Many to Many)"
-msgstr "``pgr_trsp`` (Muchos a Muchos)"
+msgstr "pgr_trsp(Muchos a Muchos)"
 
-#, fuzzy
 msgid "pgr_trsp(Combinations)"
-msgstr "``pgr_trsp`` (Combinaciones)"
+msgstr "pgr_trsp(Combinaciones)"
 
 msgid "Deprecated signatures"
 msgstr "Firmas obsoletas"
 
-#, fuzzy
 msgid "pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)"
-msgstr "``pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text)``"
+msgstr "pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)"
 
-#, fuzzy
 msgid "pgr_trspViaVertices(text,anyarray,boolean,boolean,text)"
-msgstr "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+msgstr "pgr_trspViaVertices(text,anyarray,boolean,boolean,text)"
 
 msgid "New prototypes"
 msgstr "Nuevos prototipos"
 
 #, fuzzy
 msgid "pgr_trspViaVertices"
-msgstr "``pgr_trspViaVertices``"
+msgstr "pgr_trspViaVertices"
 
-#, fuzzy
 msgid "pgr_trspViaEdges"
-msgstr "``pgr_trspViaEdges``"
+msgstr "pgr_trspViaEdges"
 
 msgid ""
 "Turn restricted shortest path (TRSP) is an algorithm that receives turn "
@@ -16710,9 +16565,8 @@ msgid ""
 "`Deprecated documentation <https://docs.pgrouting.org/3.3/en/pgr_trsp.html>`_"
 msgstr ""
 
-#, fuzzy
 msgid "``pgr_trspVia``"
-msgstr "``pgr_trsp``"
+msgstr "``pgr_trspVia``"
 
 msgid ""
 "``pgr_trspVia`` Route that goes through a list of vertices with restrictions."
@@ -16799,9 +16653,8 @@ msgstr ""
 msgid ":doc:`via-category`"
 msgstr ":doc:`via-category`"
 
-#, fuzzy
 msgid "``pgr_trspVia_withPoints``"
-msgstr "``pgr_trsp_withPoints``"
+msgstr "``pgr_trspVia_withPoints``"
 
 msgid ""
 "``pgr_trspVia_withPoints`` - Route that goes through a list of vertices and/"
@@ -17126,15 +16979,15 @@ msgstr ""
 "Desde el punto :math:`1` y el vértice :math:`6` al punto :math:`3` y el "
 "vértice :math:`1` en un grafo no dirigido, con detalles."
 
-#, fuzzy
 msgid "``pgr_turnRestrictedPath`` - Experimental"
-msgstr "pgr_turnRestrictedPath - Experimental"
+msgstr "``pgr_turnRestrictedPath`` - Experimental"
 
-#, fuzzy
 msgid ""
 "``pgr_turnRestrictedPath`` Using Yen's algorithm Vertex - Vertex routing "
 "with restrictions"
-msgstr ":doc:`pgr_trsp` - Ruteo Vértice - Vértice con restricciones."
+msgstr ""
+"``pgr_turnRestrictedPath`` Usando el algoritmo vértice -vértice de Yen para "
+"ruteo con restricciones"
 
 msgid ""
 "Using Yen's algorithm to obtain K shortest paths and analyze the paths to "
@@ -17210,9 +17063,8 @@ msgstr "pgr_version()"
 msgid "pgRouting Version for this documentation"
 msgstr "Versión de pgRouting para esta documentación"
 
-#, fuzzy
 msgid "``pgr_vrpOneDepot`` - Experimental"
-msgstr "pgr_vrpOneDepot - Experimental"
+msgstr "``pgr_vrpOneDepot`` - Experimental"
 
 msgid "**No documentation available**"
 msgstr "**No hay documentación disponible**"
@@ -17220,9 +17072,8 @@ msgstr "**No hay documentación disponible**"
 msgid "**TBD**"
 msgstr "**TBD**"
 
-#, fuzzy
 msgid "``pgr_withPoints``"
-msgstr "``pgr_trsp_withPoints``"
+msgstr "``pgr_withPoints``"
 
 msgid ""
 "``pgr_withPoints`` - Returns the shortest path in a graph with additional "
@@ -17397,9 +17248,8 @@ msgstr "Del punto :math:`6` al vértice :math:`11`."
 msgid "Passes in front or visits with left side driving."
 msgstr "Pasa enfrente o visita con lado izquierdo de manejo."
 
-#, fuzzy
 msgid "``pgr_withPointsCost``"
-msgstr ":doc:`pgr_withPointsCost`"
+msgstr "``pgr_withPointsCost``"
 
 msgid ""
 "``pgr_withPointsCost`` - Calculates the shortest path and returns only the "
@@ -17582,9 +17432,8 @@ msgstr "Topología de manejo del lado izquierdo"
 msgid "Does not matter driving side driving topology"
 msgstr "No importa el lado de manejo"
 
-#, fuzzy
 msgid "``pgr_withPointsCostMatrix``"
-msgstr "pgr_withPointsCostMatrix"
+msgstr "``pgr_withPointsCostMatrix``"
 
 msgid ""
 "``pgr_withPointsCostMatrix`` - Calculates a cost matrix using :doc:"
@@ -17639,13 +17488,11 @@ msgid ""
 "unnamed compulsory **driving side**."
 msgstr ""
 
-#, fuzzy
 msgid "pgr_withPointsDD(Single vertex)"
-msgstr "pgr_withPointsDD(vértice único)"
+msgstr "pgr_withPointsDD(Vértice único)"
 
-#, fuzzy
 msgid "pgr_withPointsDD(Multiple vertices)"
-msgstr "pgr_withPointsDD(múltiples vértices)"
+msgstr "pgr_withPointsDD(Múltiples vértices)"
 
 msgid "Added ``depth``, ``pred`` and ``start_vid`` column."
 msgstr "Agregado las columnas ``depth``, ``pred`` y ``start_vid``."
@@ -17661,20 +17508,17 @@ msgid ""
 "distance are included"
 msgstr ""
 
-#, fuzzy
 msgid ""
 "pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)"
 msgstr ""
-"``pgr_withpointsdd(text,text,bigint,double precision,boolean,character,"
-"boolean)``"
+"pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)"
 
-#, fuzzy
 msgid ""
 "pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
 "boolean,boolean)"
 msgstr ""
-"``pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
-"boolean,boolean)``"
+"pgr_withpointsdd(text,text,anyarray,double "
+"precision,boolean,character,boolean,boolean)"
 
 msgid ""
 "Modify the graph to include points and using Dijkstra algorithm, extracts "
@@ -17806,9 +17650,8 @@ msgstr ""
 msgid ":doc:`pgr_alphaShape`"
 msgstr ":doc:`pgr_alphaShape`"
 
-#, fuzzy
 msgid "``pgr_withPointsKSP``"
-msgstr "pgr_withPointsKSP"
+msgstr "``pgr_withPointsKSP``"
 
 msgid ""
 "``pgr_withPointsKSP`` — Yen's algorithm for K shortest paths using Dijkstra."
@@ -17819,33 +17662,27 @@ msgstr ""
 msgid "Standarizing output columns to |nksp-result|"
 msgstr ""
 
-#, fuzzy
 msgid "pgr_withPointsKSP(One to One)"
-msgstr "``pgr_withPointsKSP`` (Uno a Uno)"
+msgstr "pgr_withPointsKSP(Uno a Uno)"
 
-#, fuzzy
 msgid "pgr_withPointsKSP(One to Many)"
-msgstr "``pgr_withPointsKSP`` (Uno a Muchos)"
+msgstr "pgr_withPointsKSP(Uno a Muchos)"
 
-#, fuzzy
 msgid "pgr_withPointsKSP(Many to One)"
-msgstr "``pgr_withPointsKSP`` (Muchos a Uno)"
+msgstr "pgr_withPointsKSP(Muchos a Uno)"
 
-#, fuzzy
 msgid "pgr_withPointsKSP(Many to Many)"
-msgstr "``pgr_withPointsKSP`` (Muchos a Muchos)"
+msgstr "pgr_withPointsKSP(Muchos a Muchos)"
 
-#, fuzzy
 msgid "pgr_withPointsKSP(Combinations)"
-msgstr "pgr_withPoints(Combinaciones)"
+msgstr "pgr_withPointsKSP(Combinaciones)"
 
-#, fuzzy
 msgid ""
 "pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,"
 "boolean)``"
 msgstr ""
-"``pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,"
-"boolean)``"
+"pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,boolea"
+"n)``"
 
 msgid ""
 "Modifies the graph to include the points defined in the `Points SQL`_ and "
@@ -17997,9 +17834,8 @@ msgstr ""
 "Obtener :math:`2` rutas, usando topología de manejo por la derecha, desde el "
 "punto :math:`1` al punto :math:`2`, detallado y con rutas procesadas."
 
-#, fuzzy
 msgid "``pgr_withPointsVia``"
-msgstr ":doc:`pgr_withPointsVia`"
+msgstr "``pgr_withPointsVia``"
 
 msgid ""
 "``pgr_withPointsVia`` - Route that goes through a list of vertices and/or "
@@ -18137,9 +17973,8 @@ msgstr ":doc:`withPoints-family` - Funciones basadas en el algoritmo Dijkstra."
 msgid "From the :doc:`TRSP-family`:"
 msgstr "Desde :doc:`TRSP-family` :"
 
-#, fuzzy
 msgid "Utilities Category"
-msgstr "Utilidades"
+msgstr "Utilidades - Categoría"
 
 msgid ":doc:`pgr_findCloseEdges`"
 msgstr ":doc:`pgr_findCloseEdges`"
@@ -18160,16 +17995,14 @@ msgstr ""
 msgid "Mayors"
 msgstr ""
 
-#, fuzzy
 msgid "pgRouting 4"
-msgstr "pgRouting 3.4"
+msgstr "pgRouting 4"
 
 msgid "Minors 4.x"
 msgstr ""
 
-#, fuzzy
 msgid "pgRouting 4.0"
-msgstr "pgRouting 3.0"
+msgstr "pgRouting 4.0"
 
 msgid "pgRouting 3"
 msgstr "pgRouting 3"
@@ -18180,52 +18013,46 @@ msgstr ""
 msgid "pgRouting 3.7"
 msgstr "pgRouting 3.7"
 
-#, fuzzy
 msgid "pgRouting 3.7.3 Release Notes"
-msgstr "Notas de la versión de pgRouting 3.7.0"
+msgstr "Notas de la versión de pgRouting 3.7.3"
 
-#, fuzzy
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.7.3 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.3%22>`__"
 msgstr ""
 "Para ver todos los problemas y solicitudes de extracción cerrados para ésta "
-"versión, consulte la `meta cerrada 3.7.0 <https://github.com/pgRouting/"
-"pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`_"
+"versión, consulte la `meta cerrada 3.7.3 <https://github.com/pgRouting/"
+"pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.3%22>`__"
 
-#, fuzzy
 msgid ""
 "`#2731 <https://github.com/pgRouting/pgrouting/pull/2731>`__ Build Failure "
 "on Ubuntu 22"
 msgstr ""
-"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Leer datos "
-"postgresql en C++"
+"`#2731 <https://github.com/pgRouting/pgrouting/pull/2731>`__ Construcción "
+"falla en Ubuntu 22"
 
-#, fuzzy
 msgid "pgRouting 3.7.2 Release Notes"
-msgstr "Notas de la versión de pgRouting 3.7.0"
+msgstr "Notas de la versión de pgRouting 3.7.2"
 
-#, fuzzy
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.7.2 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
 msgstr ""
 "Para ver todos los problemas y solicitudes de extracción cerrados para ésta "
-"versión, consulte la `meta cerrada 3.7.0 <https://github.com/pgRouting/"
-"pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`_"
+"versión, consulte la `meta cerrada 3.7.2 <https://github.com/pgRouting/"
+"pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
 
 msgid "Build"
 msgstr "Construir"
 
-#, fuzzy
 msgid ""
 "`#2713 <https://github.com/pgRouting/pgrouting/pull/2713>`__ cmake missing "
 "some policies and min version"
 msgstr ""
-"`#2517 <https://github.com/pgRouting/pgrouting/pull/2517>`__ Simplificación "
-"del código de Astar."
+"`#2713 <https://github.com/pgRouting/pgrouting/pull/2713>`__ cmake le falta "
+"algunas políticas y versión minima"
 
 msgid "Using OLD policies: CMP0148, CMP0144, CMP0167"
 msgstr ""
@@ -18233,59 +18060,51 @@ msgstr ""
 msgid "Minimum cmake version 3.12"
 msgstr ""
 
-#, fuzzy
 msgid ""
 "`#2707 <https://github.com/pgRouting/pgrouting/pull/2707>`__ Build failure "
 "in pgRouting 3.7.1 on Alpine"
 msgstr ""
-"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Leer datos "
-"postgresql en C++"
+"`#2707 <https://github.com/pgRouting/pgrouting/pull/2707>`__ Falla de "
+"construcción en Alpine para pgRouting 3.7.1"
 
-#, fuzzy
 msgid ""
 "`#2706 <https://github.com/pgRouting/pgrouting/pull/2706>`__ winnie crashing "
 "on pgr_betweennessCentrality"
 msgstr ""
-"`#2505 <https://github.com/pgRouting/pgrouting/pull/2505>`__ Usando "
-"namespace."
+"`#2706 <https://github.com/pgRouting/pgrouting/pull/2706>`__ winnie falla en "
+"pgr_betweennessCentrality"
 
-#, fuzzy
 msgid "pgRouting 3.7.1 Release Notes"
-msgstr "Notas de la versión de pgRouting 3.7.0"
+msgstr "Notas de la versión de pgRouting 3.7.1"
 
-#, fuzzy
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git closed "
 "milestone for 3.7.1 <https://github.com/pgRouting/pgrouting/issues?"
 "utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
 msgstr ""
 "Para ver todos los problemas y solicitudes de extracción cerrados para ésta "
-"versión, consulte la `meta cerrada 3.7.0 <https://github.com/pgRouting/"
-"pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`_"
+"versión, consulte la `meta cerrada 3.7.1 <https://github.com/pgRouting/"
+"pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
 
-#, fuzzy
 msgid ""
 "`#2680 <https://github.com/pgRouting/pgrouting/pull/2680>`__ fails to "
 "compile under mingw64 gcc 13.2"
 msgstr ""
-"`#2588 <https://github.com/pgRouting/pgrouting/pull/2588>`__ pgrouting 3.6.0 "
-"no construye en OSX"
+"`#2680 <https://github.com/pgRouting/pgrouting/pull/2680>`__ Compilación "
+"falla bajo mingw64 gcc 13.2"
 
-#, fuzzy
 msgid ""
 "`#2689 <https://github.com/pgRouting/pgrouting/pull/2689>`__ When point is a "
 "vertex, the withPoints family do not return results."
 msgstr ""
-"`#2490 <https://github.com/pgRouting/pgrouting/pull/2490>`__ Lígas "
-"automáticas historiales."
+"`#2689 <https://github.com/pgRouting/pgrouting/pull/2689>`__ Cuando el punto "
+"es un vértice, la familia withPoints no devuelve resultados."
 
-#, fuzzy
 msgid "C/C++ code enhancemet"
-msgstr "Mejora de código C/C++"
+msgstr "Mejora del código C/C++"
 
-#, fuzzy
 msgid "TRSP family"
-msgstr "Familia Prim"
+msgstr "Familia TRSP"
 
 msgid "pgRouting 3.7.0 Release Notes"
 msgstr "Notas de la versión de pgRouting 3.7.0"
@@ -18649,13 +18468,12 @@ msgstr ""
 msgid "Issue fixes"
 msgstr "Corrección de problema"
 
-#, fuzzy
 msgid ""
 "`#2565 <https://github.com/pgRouting/pgrouting/issues/2565>`__ "
 "pgr_lengauerTarjanDominatorTree triggers an assertion"
 msgstr ""
 "`#2565 <https://github.com/pgRouting/pgrouting/issues/2565>`__ "
-"pgr_pgr_lengauerTarjanDominatorTree genera un error de afirmación"
+"pgr_lengauerTarjanDominatorTree genera un error de afirmación"
 
 msgid "SQL enhancements"
 msgstr "Mejoras SQL"
@@ -18775,16 +18593,14 @@ msgid ""
 "doesn't give all correct shortest path"
 msgstr ""
 
-#, fuzzy
 msgid "New proposed functions."
-msgstr "Nuevas funciones propuestas"
+msgstr "Nuevas funciones propuestas."
 
 msgid "With points"
 msgstr "Con puntos"
 
-#, fuzzy
 msgid "pgr_withPointsVia(One Via)"
-msgstr "``pgr_withPointsVia`` (Una trayectoria)"
+msgstr "pgr_withPointsVia(Una Via)"
 
 msgid "Turn Restrictions"
 msgstr "Restricciones de giro"
@@ -18792,33 +18608,26 @@ msgstr "Restricciones de giro"
 msgid "Via with turn restrictions"
 msgstr "Trayectoria con restricciones de giro"
 
-#, fuzzy
 msgid "pgr_trspVia(One Via)"
-msgstr "``pgr_trspVia_withPoints`` (Muchas trayectorias)"
+msgstr "pgr_trspVia(Una Vía)"
 
-#, fuzzy
 msgid "pgr_trspVia_withPoints(One Via)"
-msgstr "``pgr_trspVia_withPoints`` (Muchas trayectorias)"
+msgstr "pgr_trspVia_withPoints(Una Vía)"
 
-#, fuzzy
 msgid "pgr_trsp_withPoints(One to One)"
-msgstr "``pgr_trsp_withPoints`` (Uno a Uno)"
+msgstr "pgr_trsp_withPoints(Uno a Uno)"
 
-#, fuzzy
 msgid "pgr_trsp_withPoints(One to Many)"
-msgstr "``pgr_trsp_withPoints`` (Uno a Muchos)"
+msgstr "pgr_trsp_withPoints(Uno a Muchos)"
 
-#, fuzzy
 msgid "pgr_trsp_withPoints(Many to One)"
-msgstr "``pgr_trsp_withPoints`` (Muchos a Uno)"
+msgstr "pgr_trsp_withPoints(Muchos a Uno)"
 
-#, fuzzy
 msgid "pgr_trsp_withPoints(Many to Many)"
-msgstr "``pgr_trsp_withPoints`` (Muchos a Muchos)"
+msgstr "pgr_trsp_withPoints(Muchos a Muchos)"
 
-#, fuzzy
 msgid "pgr_trsp_withPoints(Combinations)"
-msgstr "``pgr_trsp_withPoints`` (Combinaciones)"
+msgstr "pgr_trsp_withPoints(Combinaciones)"
 
 msgid "Topology"
 msgstr "Topología"
@@ -18826,49 +18635,41 @@ msgstr "Topología"
 msgid "Utilities"
 msgstr "Utilidades"
 
-#, fuzzy
 msgid "pgr_findCloseEdges(One point)"
-msgstr "``pgr_findCloseEdges`` (`Un punto`_)"
+msgstr "pgr_findCloseEdges(Un punto)"
 
-#, fuzzy
 msgid "pgr_findCloseEdges(Many points)"
-msgstr "``pgr_findCloseEdges`` (`Muchos puntos`_)"
+msgstr "pgr_findCloseEdges(Muchos puntos)"
 
 msgid "Ordering"
 msgstr "Ordenamiento"
 
-#, fuzzy
 msgid "pgr_cuthillMckeeOrdering"
-msgstr "``pgr_cuthillMckeeOrdering``"
+msgstr "pgr_cuthillMckeeOrdering"
 
 msgid "Unclassified"
 msgstr "No clasificado"
 
-#, fuzzy
 msgid "pgr_hawickCircuits"
-msgstr "``pgr_hawickCircuits``"
+msgstr "pgr_hawickCircuits"
 
 msgid "Flow functions"
 msgstr "Funciones de flujo"
 
-#, fuzzy
 msgid "pgr_maxCardinalityMatch(text)"
-msgstr "``pgr_maxCardinalityMatch(text)``"
+msgstr "pgr_maxCardinalityMatch(text)"
 
-#, fuzzy
 msgid "Deprecating: pgr_maxCardinalityMatch(text,boolean)"
-msgstr "``pgr_maxCardinalityMatch(text,boolean)``"
+msgstr "Ossoleto: pgr_maxCardinalityMatch(text,boolean)"
 
 msgid "Deprecated Functions"
 msgstr "Funciones obsoletas"
 
-#, fuzzy
 msgid "pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text)"
-msgstr "``pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text)``"
+msgstr "pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text)"
 
-#, fuzzy
 msgid "pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)"
-msgstr "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
+msgstr "pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)"
 
 msgid "pgRouting 3.3"
 msgstr "pgRouting 3.3"
@@ -20298,9 +20099,8 @@ msgstr ""
 "issues for 2.4.0 <https://github.com/pgRouting/pgrouting/issues?"
 "q=milestone%3A%22Release+2.4.0%22+is%3Aclosed>`_ on Github."
 
-#, fuzzy
 msgid "New Function."
-msgstr "Nuevas Funciones"
+msgstr "Nueva Función."
 
 msgid "pgr_bdDijkstra"
 msgstr "pgr_bdDijkstra"
@@ -20329,9 +20129,8 @@ msgstr "pgr_astarCost(muchos a muchos)"
 msgid "pgr_astarCostMatrix"
 msgstr "pgr_astarCostMatrix"
 
-#, fuzzy
 msgid "Deprecated signatures."
-msgstr "Firmas obsoletas"
+msgstr "Firmas obsoletas."
 
 msgid "pgr_bddijkstra - use pgr_bdDijkstra instead"
 msgstr "pgr_bddijkstra - utilizar pgr_bdDijkstra en su lugar"
