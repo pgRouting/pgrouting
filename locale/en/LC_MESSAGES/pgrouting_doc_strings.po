@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-11 11:58-0600\n"
+"POT-Creation-Date: 2025-02-11 23:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.16.0\n"
+"Generated-By: Babel 2.17.0\n"
 
 msgid "BFS - Category"
 msgstr ""
@@ -280,9 +280,6 @@ msgid ":ref:`genindex`"
 msgstr ""
 
 msgid ":ref:`search`"
-msgstr ""
-
-msgid "Boost Graph Inside"
 msgstr ""
 
 msgid "DFS - Category"
@@ -1122,6 +1119,7 @@ msgstr ""
 msgid "``vehicle_seq``"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Sequential value starting from **1** for current vehicles. The "
 ":math:`n_{th}` vehicle in the solution."
@@ -1151,6 +1149,7 @@ msgstr ""
 msgid "INTEGER"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Sequential value starting from **1** for the stops made by the current "
 "vehicle. The :math:`m_{th}` stop of the current vehicle."
@@ -1579,6 +1578,7 @@ msgstr ""
 msgid ":math:`10 m/s`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`\\frac{1}{10m/s}`"
 msgstr ""
 
@@ -1591,6 +1591,7 @@ msgstr ""
 msgid ":math:`600 m/min`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`\\frac{1}{600m/min}`"
 msgstr ""
 
@@ -1606,6 +1607,7 @@ msgstr ""
 msgid ":math:`36 km/hr`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`\\frac{1}{36 km/hr}`"
 msgstr ""
 
@@ -1919,6 +1921,7 @@ msgstr ""
 msgid "DENSITY"
 msgstr ""
 
+#, python-brace-format
 msgid "is the density of the data :math:`\\dfrac{E}{V \\times (V-1)}`."
 msgstr ""
 
@@ -2852,12 +2855,14 @@ msgstr ""
 msgid ":math:`a`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`\\{u\\}`"
 msgstr ""
 
 msgid ":math:`b`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`\\{v\\}`"
 msgstr ""
 
@@ -2876,6 +2881,7 @@ msgstr ""
 msgid ":math:`c`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`\\{v, w\\}`"
 msgstr ""
 
@@ -2885,20 +2891,24 @@ msgstr ""
 msgid ":math:`d`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`\\{x\\}`"
 msgstr ""
 
 msgid ":math:`e`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`\\{x, y\\}`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From above, nodes :math:`\\{a, b, d\\}` are dead ends because the number "
 "of adjacent vertices is 1. No further checks are needed for those nodes."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "On the following table, nodes :math:`\\{c, e\\}` because the even that "
 "the number of adjacent vertices is not 1 for"
@@ -2959,6 +2969,7 @@ msgstr ""
 msgid ":math:`v`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`\\{u, w\\}`"
 msgstr ""
 
@@ -2977,15 +2988,18 @@ msgstr ""
 msgid "Is symmetrical?"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`\\{u, v\\}`"
 msgstr ""
 
 msgid "yes"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`\\{w, x\\}`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`\\{y, z\\}`"
 msgstr ""
 
@@ -3599,9 +3613,11 @@ msgstr ""
 msgid "Given the following query:"
 msgstr ""
 
+#, python-brace-format
 msgid "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "where :math:`sql = \\{(id_i, source_i, target_i, cost_i, "
 "reverse\\_cost_i)\\}`"
@@ -3673,12 +3689,15 @@ msgstr ""
 msgid "Given:"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`start_{vid} \\in V` a starting vertex"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`end_{vid} \\in V` an ending vertex"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 ":math:`G(V,E) = \\begin{cases} G_d(V,E) & \\quad \\text{ if6 } directed ="
 " true \\\\ G_u(V,E) & \\quad \\text{ if5 } directed = false \\\\ "
@@ -3688,6 +3707,7 @@ msgstr ""
 msgid "Then:"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 ":math:`\\boldsymbol{\\pi} = \\{(path\\_seq_i, node_i, edge_i, cost_i, "
 "agg\\_cost_i)\\}`"
@@ -3699,18 +3719,22 @@ msgstr ""
 msgid ":math:`path\\_seq_i = i`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`path\\_seq_{| \\pi |} = | \\pi |`"
 msgstr ""
 
 msgid ":math:`node_i \\in V`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`node_1 = start_{vid}`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`node_{| \\pi |}  = end_{vid}`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 ":math:`\\forall i \\neq | \\pi |, \\quad (node_i, node_{i+1}, cost_i) "
 "\\in E`"
@@ -3731,6 +3755,7 @@ msgid ""
 "  \\text{when } i \\neq 1 \\\\ \\end{cases}`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "In other words: The algorithm returns a the shortest path between "
 ":math:`start_{vid}` and :math:`end_{vid}`, if it exists, in terms of a "
@@ -3745,6 +3770,7 @@ msgstr ""
 msgid ":math:`cost` is the cost of the edge to be used to go to the next node."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 ":math:`agg\\_cost` is the cost from the :math:`start_{vid}` up to the "
 "node."
@@ -4165,6 +4191,7 @@ msgstr ""
 msgid "pgr_maxFlow :math:`(edges\\_sql, source\\_vertex, sink\\_vertex)`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "where :math:`edges\\_sql = \\{(id_i, source_i, target_i, capacity_i, "
 "reverse\\_capacity_i)\\}`"
@@ -4206,14 +4233,17 @@ msgstr ""
 msgid ":math:`sink\\_vertex \\in V` the sink vertex"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`pgr\\_maxFlow(edges\\_sql, source, sink) = \\boldsymbol{\\Phi}`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 ":math:`\\boldsymbol{\\Phi} = {(id_i, edge\\_id_i, source_i, target_i, "
 "flow_i, residual\\_capacity_i)}`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 ":math:`\\boldsymbol{\\Phi}` is a subset of the original edges with their "
 "residual capacity and flow. The maximum flow through the graph can be "
@@ -4737,7 +4767,7 @@ msgstr ""
 msgid "If needed add the new columns, for example:"
 msgstr ""
 
-msgid "Migration of ``pgr_drivingdistance``"
+msgid "Migration of ``pgr_drivingDistance``"
 msgstr ""
 
 msgid ""
@@ -4758,10 +4788,10 @@ msgstr ""
 msgid "|result-spantree|"
 msgstr ""
 
-msgid "``pgr_drivingdistance`` (Single vertex)"
+msgid "pgr_drivingDistance(Single vertex)"
 msgstr ""
 
-msgid "``pgr_drivingdistance`` (Multiple vertices)"
+msgid "pgr_drivingDistance(Multiple vertices)"
 msgstr ""
 
 msgid "Output columns were |result-dij-dd|"
@@ -5258,7 +5288,7 @@ msgstr ""
 msgid "Use ``pgr_withPoints`` when there are no restrictions."
 msgstr ""
 
-msgid "Use :doc:`pgr_withPoints` (Ont to One) instead."
+msgid "Use :doc:`pgr_withPoints` (One to One) instead."
 msgstr ""
 
 msgid "Use ``pgr_trsp_withPoints`` when there are restrictions."
@@ -5485,27 +5515,32 @@ msgstr ""
 msgid ":math:`V` is a set of vertices, also called nodes."
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`E \\subseteq \\{( u, v ) \\mid u , v \\in V \\}`"
 msgstr ""
 
 msgid "There are different kinds of graphs:"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`E \\subseteq \\{( u, v ) \\mid u , v \\in V\\}`"
 msgstr ""
 
 msgid "Undirected simple graph"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`E \\subseteq \\{( u, v ) \\mid u , v \\in V, u \\neq v\\}`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`E \\subseteq \\{( u, v ) \\mid (u , v) \\in (V X V) \\}`"
 msgstr ""
 
 msgid "Directed simple graph"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`E \\subseteq \\{( u, v ) \\mid (u , v) \\in (V X V), u \\neq v\\}`"
 msgstr ""
 
@@ -5586,6 +5621,7 @@ msgstr ""
 msgid "All vertices in ``source`` and ``target`` are part of the graph."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "In a directed graph the edge :math:`(source_{id}, target_{id}, "
 "cost_{id})` has directionality: :math:`source_{id} \\rightarrow "
@@ -5601,17 +5637,20 @@ msgstr ""
 msgid "The data is representing the following graph:"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "In an undirected graph the edge :math:`(source_{id}, target_{id}, "
 "cost_{id})` does not have directionality: :math:`source_{id} "
 "\\frac{\\;\\;\\;\\;\\;}{} target_{id}`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "In terms of a directed graph is like having two edges: :math:`source_{id}"
 " \\leftrightarrow target_{id}`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Edge :math:`2` (:math:`1 \\frac{\\;\\;\\;\\;\\;}{} 3`) is not part of the"
 " graph."
@@ -5652,11 +5691,13 @@ msgstr ""
 msgid "In a directed graph both edges have directionality"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "edge :math:`(source_{id}, target_{id}, cost_{id})` has directionality: "
 ":math:`source_{id} \\rightarrow target_{id}`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "edge :math:`(target_{id}, source_{id}, reverse\\_cost_{id})` has "
 "directionality: :math:`target_{id} \\rightarrow source_{id}`"
@@ -5674,11 +5715,13 @@ msgstr ""
 msgid "In a directed graph both edges do not have directionality"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Edge :math:`(source_{id}, target_{id}, cost_{id})` is :math:`source_{id} "
 "\\frac{\\;\\;\\;\\;\\;}{} target_{id}`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Edge :math:`(target_{id}, source_{id}, reverse\\_cost_{id})` is "
 ":math:`target_{id} \\frac{\\;\\;\\;\\;\\;}{} source_{id}`"
@@ -5693,9 +5736,11 @@ msgstr ""
 msgid ":math:`target_i \\leftrightarrow source_i`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`2` (:math:`1 \\frac{\\;\\;\\;\\;\\;}{} 3`)"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`3` (:math:`3 \\frac{\\;\\;\\;\\;\\;}{} 2`)"
 msgstr ""
 
@@ -5731,12 +5776,14 @@ msgstr ""
 msgid "No geometries associated to the vertices or edges"
 msgstr ""
 
+#, python-brace-format
 msgid "Has 6 vertices :math:`\\{1,2,3,4,5,6\\}`"
 msgstr ""
 
 msgid "Has 9 edges:"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 ":math:`\\begin{split} \\begin{align} E = & \\{(1,2,7), (1,3,9), (1,6,14),"
 " \\\\ & (2,3,10), (2,4,13), \\\\ & (3,4,11), (3,6,2), \\\\ & (4,5,6), "
@@ -6189,6 +6236,7 @@ msgstr ""
 msgid "To get the graph connectivity:"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "In this example, the component :math:`2` consists of vertices "
 ":math:`\\{2, 4\\}` and both vertices are also part of the dead end result"
@@ -7489,6 +7537,9 @@ msgstr ""
 msgid "|Boost| Boost Graph Inside"
 msgstr ""
 
+msgid "Boost Graph Inside"
+msgstr ""
+
 msgid "Signatures"
 msgstr ""
 
@@ -7525,16 +7576,19 @@ msgstr ""
 msgid "Get 2 paths from :math:`6` to :math:`17` on a directed graph."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Get 2 paths from vertex :math:`6` to vertices :math:`\\{10, 17\\}` on a "
 "directed graph."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Get 2 paths from vertices :math:`\\{6, 1\\}` to vertex :math:`17` on a "
 "directed graph."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Get 2 paths vertices :math:`\\{6, 1\\}` to vertices :math:`\\{10, 17\\}` "
 "on a directed graph."
@@ -7599,6 +7653,7 @@ msgstr ""
 msgid "Get 2 paths using combinations table on an undirected graph"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Get 2 paths from vertices :math:`\\{6, 1\\}` to vertex :math:`17` on a "
 "undirected graph."
@@ -7731,6 +7786,7 @@ msgstr ""
 msgid "Using :doc:`pgr_dijkstraCostMatrix` to generate the matrix information"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "**Line 4** Vertices :math:`\\{2, 4, 13, 14\\}` are not included because "
 "they are not connected."
@@ -7813,6 +7869,7 @@ msgstr ""
 msgid "Connected incomplete data"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Using selected edges :math:`\\{2, 4, 5, 8, 9, 15\\}` the matrix is not "
 "complete."
@@ -8009,16 +8066,19 @@ msgid ""
 "heuristic :math:`2`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From vertex :math:`6` to vertices :math:`\\{10, 12\\}` on a **directed** "
 "graph with heuristic :math:`3` and factor :math:`3.5`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From vertices :math:`\\{6, 8\\}` to vertex :math:`10` on an "
 "**undirected** graph with heuristic :math:`4`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From vertices :math:`\\{6, 8\\}` to vertices :math:`\\{10, 12\\}` on a "
 "**directed** graph with factor :math:`0.5`"
@@ -8139,6 +8199,7 @@ msgstr ""
 msgid "pgr_aStarCostMatrix(`Edges SQL`_, **start vids**, [**options**])"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Symmetric cost matrix for vertices :math:`\\{5, 6, 10, 15\\}` on an "
 "**undirected** graph using heuristic :math:`2`"
@@ -8760,9 +8821,6 @@ msgstr ""
 msgid "pgr_bdAstar(`Edges SQL`_, `Combinations SQL`_, [**options**])"
 msgstr ""
 
-msgid "**options:** [directed, heuristic, factor, epsilon]``"
-msgstr ""
-
 msgid "``pgr_bdAstarCost``"
 msgstr ""
 
@@ -8813,9 +8871,6 @@ msgid ""
 "Dijkstra algorithm."
 msgstr ""
 
-msgid "New Proposed signatures:"
-msgstr ""
-
 msgid "pgr_bdDijkstra(One to Many)"
 msgstr ""
 
@@ -8855,6 +8910,7 @@ msgstr ""
 msgid "Returns set of |result-1-m|"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From vertex :math:`6` to vertices :math:`\\{10, 17\\}` on a **directed** "
 "graph"
@@ -8863,11 +8919,13 @@ msgstr ""
 msgid "Returns set of |result-m-1|"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From vertices :math:`\\{6, 1\\}` to vertex :math:`17` on a **directed** "
 "graph"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From vertices :math:`\\{6, 1\\}` to vertices :math:`\\{10, 17\\}` on an "
 "**undirected** graph"
@@ -8934,6 +8992,7 @@ msgstr ""
 msgid "pgr_bdDijkstraCostMatrix(`Edges SQL`_, **start vids**, [``directed``])"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Symmetric cost matrix for vertices :math:`\\{5, 6, 10, 15\\}` on an "
 "**undirected** graph"
@@ -9015,6 +9074,7 @@ msgstr ""
 msgid "pgr_bellmanFord(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From vertex :math:`6` to vertices :math:`\\{ 10, 17\\}` on a **directed**"
 " graph"
@@ -9024,7 +9084,7 @@ msgid "Using a combinations table on an **undirected** graph."
 msgstr ""
 
 msgid ""
-"`Boost: Belman Ford "
+"`Boost: Bellman Ford "
 "<https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html>`__"
 msgstr ""
 
@@ -9036,14 +9096,11 @@ msgid "``pgr_betweennessCentrality`` - Experimental"
 msgstr ""
 
 msgid ""
-"``pgr_betweennessCentrality`` - Calculates the relative betweeness "
+"``pgr_betweennessCentrality`` - Calculates the relative betweenness "
 "centrality using Brandes Algorithm"
 msgstr ""
 
 msgid "Version 3.7.0"
-msgstr ""
-
-msgid "pgr_betweennessCentrality``"
 msgstr ""
 
 msgid ""
@@ -9082,6 +9139,7 @@ msgstr ""
 msgid "Returns set of ``(vid, centrality)``"
 msgstr ""
 
+#, python-brace-format
 msgid "For a directed graph with edges :math:`\\{1, 2, 3, 4\\}`."
 msgstr ""
 
@@ -9118,7 +9176,7 @@ msgstr ""
 
 msgid ""
 "`Boost: betweenness centrality "
-"<https://www.boost.org/doc/libs/1_84_0/libs/graph/doc/betweenness_centrality.html>`_"
+"<https://www.boost.org/libs/graph/doc/betweenness_centrality.html>`_"
 msgstr ""
 
 msgid "``pgr_biconnectedComponents``"
@@ -9185,6 +9243,7 @@ msgid ""
 "graph."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Any graph whose edge-weights belongs to the set {0,X}, where 'X' is any "
 "non-negative integer, is termed as a 'binary graph'."
@@ -9204,6 +9263,7 @@ msgid ""
 ":math:`O(|E|log|V|)` time."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "However if the weights are more constrained, we can use a faster "
 "algorithm. This algorithm, termed as 'Binary Breadth First Search' as "
@@ -9213,6 +9273,7 @@ msgid ""
 "where 'X' is any non-negative real integer."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Process is done only on 'binary graphs'. ('Binary Graph': Any graph whose"
 " edge-weights belongs to the set {0,X}, where 'X' is any non-negative "
@@ -9309,6 +9370,7 @@ msgstr ""
 msgid "The odd length cyclic graph can not be bipartite."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "The edge :math:`5 \\rightarrow 1` will make subgraph with vertices "
 ":math:`\\{1, 3, 7, 6, 5\\}` an odd length cyclic graph, as the cycle has "
@@ -9367,15 +9429,19 @@ msgstr ""
 msgid "From vertex :math:`11` to vertex :math:`12`"
 msgstr ""
 
+#, python-brace-format
 msgid "From vertex :math:`11` to vertices :math:`\\{5, 10, 12\\}`"
 msgstr ""
 
+#, python-brace-format
 msgid "From vertices :math:`\\{11, 3, 17\\}` to vertex :math:`12`"
 msgstr ""
 
+#, python-brace-format
 msgid "From vertices :math:`\\{11, 3, 17\\}` to vertices :math:`\\{5, 10, 12\\}`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Using a combinations table, equivalent to calculating result from "
 "vertices :math:`\\{5, 6\\}` to vertices :math:`\\{10, 15, 14\\}`."
@@ -9427,6 +9493,7 @@ msgid ""
 "ascending order of ``id``"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From root vertices :math:`\\{12, 6\\}` on an **undirected** graph with "
 "**depth** :math:`<= 2` and edges in ascending order of ``id``"
@@ -9498,7 +9565,7 @@ msgid "https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29"
 msgstr ""
 
 msgid ""
-"`Boost: connected components "
+"`Boost: Connected components "
 "<https://www.boost.org/libs/graph/doc/connected_components.html>`__"
 msgstr ""
 
@@ -9593,11 +9660,6 @@ msgid "Identifier of the vertex that belongs to the ``component``."
 msgstr ""
 
 msgid "Connecting disconnected components"
-msgstr ""
-
-msgid ""
-"`Boost: Connected components "
-"<https://www.boost.org/libs/graph/doc/connected_components.html>`__"
 msgstr ""
 
 msgid ""
@@ -10260,12 +10322,15 @@ msgstr ""
 msgid "From vertex :math:`5` to vertex :math:`11` on a **directed** graph"
 msgstr ""
 
+#, python-brace-format
 msgid "From vertex :math:`5` to vertices :math:`\\{7, 11\\}`"
 msgstr ""
 
+#, python-brace-format
 msgid "From vertices :math:`\\{5, 10\\}` to vertex :math:`11`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From vertices :math:`\\{5, 15\\}` to vertices :math:`\\{11, 17\\}` on an "
 "**undirected** graph"
@@ -10524,6 +10589,7 @@ msgid ""
 "columns to the new result columns."
 msgstr ""
 
+#, python-brace-format
 msgid "From vertex :math:`6` to vertices :math:`\\{10, 17\\}` on a **directed**"
 msgstr ""
 
@@ -10551,24 +10617,28 @@ msgstr ""
 msgid "5) Using `One to Many`_ to get the solution of examples 1 and 2"
 msgstr ""
 
+#, python-brace-format
 msgid "Paths :math:`\\{6\\}\\rightarrow\\{10, 7\\}`"
 msgstr ""
 
 msgid "6) Using `Many to One`_ to get the solution of examples 2 and 4"
 msgstr ""
 
+#, python-brace-format
 msgid "Paths :math:`\\{6, 12\\}\\rightarrow\\{7\\}`"
 msgstr ""
 
 msgid "7) Using `Many to Many`_ to get the solution of examples 1 to 4"
 msgstr ""
 
+#, python-brace-format
 msgid "Paths :math:`\\{6, 12\\}\\rightarrow\\{10, 7\\}`"
 msgstr ""
 
 msgid "8) Using `Combinations`_ to get the solution of examples 1 to 3"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Paths :math:`\\{6\\}\\rightarrow\\{10, "
 "7\\}\\cup\\{12\\}\\rightarrow\\{10\\}`"
@@ -10667,6 +10737,7 @@ msgstr ""
 msgid "Equvalences between signatures"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "The following examples find the path for "
 ":math:`\\{6\\}\\rightarrow\\{10\\}`"
@@ -10839,6 +10910,7 @@ msgstr ""
 msgid "Using a **directed** graph for car routing."
 msgstr ""
 
+#, python-brace-format
 msgid "The subway stations are on the following vertices :math:`\\{1, 10, 11\\}`"
 msgstr ""
 
@@ -10887,9 +10959,11 @@ msgstr ""
 msgid "Unsing an **undirected** graph for pedestrian routing"
 msgstr ""
 
+#, python-brace-format
 msgid "The first subway line stations are at :math:`\\{15, 16\\}`"
 msgstr ""
 
+#, python-brace-format
 msgid "The second subway line stations stops are at :math:`\\{1, 10, 11\\}`"
 msgstr ""
 
@@ -10916,9 +10990,11 @@ msgstr ""
 msgid "Find the best car connection between all the stations of two subway lines"
 msgstr ""
 
+#, python-brace-format
 msgid "The first subway line stations stops are at :math:`\\{1, 10, 11\\}`"
 msgstr ""
 
+#, python-brace-format
 msgid "The second subway line stations are at :math:`\\{15, 16\\}`"
 msgstr ""
 
@@ -10941,11 +11017,13 @@ msgstr ""
 msgid "From the results:"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "making a connection from the first subway line :math:`\\{1, 10, 11\\}` to"
 " the second :math:`\\{15, 16\\}`:"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "The best connections from all the stations from the first line are: "
 ":math:`{(1 \\rightarrow 16) (10 \\rightarrow 16) (11 \\rightarrow 16)}`"
@@ -10956,11 +11034,13 @@ msgid ""
 "(lines: `11` and `12`)"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "making a connection from the second subway line :math:`\\{15, 16\\}` to "
 "the first :math:`\\{1, 10, 11\\}`:"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "The best connections from all the stations from the second line are: "
 ":math:`{(15 \\rightarrow 10) (16 \\rightarrow 11)}`"
@@ -11064,6 +11144,7 @@ msgstr ""
 msgid "``pgr_dijkstraVia`` — Route that goes through a list of vertices."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Given a list of vertices and a graph, this function is equivalent to "
 "finding the shortest path between :math:`vertex_i` and "
@@ -11094,6 +11175,7 @@ msgstr ""
 msgid "Returns set of |via-result|"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Find the route that visits the vertices :math:`\\{5, 1, 8\\}` in that "
 "order on an directed graph."
@@ -11122,6 +11204,7 @@ msgid ""
 "current ``seq``."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "All this examples are about the route that visits the vertices "
 ":math:`\\{5, 7, 1, 8, 15\\}` in that order on a **directed** graph."
@@ -11160,13 +11243,7 @@ msgstr ""
 msgid "Standarizing output columns to |result-spantree|"
 msgstr ""
 
-msgid "pgr_drivingdistance(Single vertex)"
-msgstr ""
-
 msgid "Added ``depth`` and ``start_vid`` result columns."
-msgstr ""
-
-msgid "pgr_drivingdistance(Multiple vertices)"
 msgstr ""
 
 msgid "Result column name change: ``from_v`` to ``start_vid``."
@@ -11215,6 +11292,7 @@ msgstr ""
 msgid "Multiple Vertices"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From vertices :math:`\\{11, 16\\}` for a distance of :math:`3.0` with "
 "equi-cost on a directed graph"
@@ -11236,6 +11314,7 @@ msgid ""
 "signature."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From vertices :math:`\\{11, 16\\}` for a distance of :math:`3.0` on an "
 "undirected graph"
@@ -11394,6 +11473,7 @@ msgstr ""
 msgid "Returns set of |result-disjoint-m-m|"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Using a combinations table, equivalent to calculating result from "
 "vertices :math:`\\{5, 6\\}` to vertices :math:`\\{10, 15, 14\\}` on an "
@@ -11434,7 +11514,7 @@ msgid "pgr_edmondsKarp(`Edges SQL`_, `Combinations SQL`_)"
 msgstr ""
 
 msgid ""
-"`Boost: edmonds_karp_max_flow "
+"`Boost: Edmonds Karp max flow "
 "<https://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html>`__"
 msgstr ""
 
@@ -11632,7 +11712,7 @@ msgid ""
 "adjustments needed by the application."
 msgstr ""
 
-msgid "EMTPY SET`` is returned on dryrun executions"
+msgid "``EMTPY SET`` is returned on dryrun executions"
 msgstr ""
 
 msgid "pgr_findCloseEdges(`Edges SQL`_, **point**, **tolerance**, [**options**])"
@@ -11841,6 +11921,7 @@ msgstr ""
 msgid "``edge_id`` identifier of the edge close to the **original point**"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Two edges are withing :math:`0.5` distance units from the **original "
 "point**: :math:`{5, 8}`"
@@ -11894,6 +11975,7 @@ msgstr ""
 msgid "``edge_id`` identifier of the edge **closest** to the **original point**"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From all edges within :math:`0.5` distance units from the **original "
 "point**: :math:`{5}` is the closest one."
@@ -12084,6 +12166,7 @@ msgstr ""
 msgid "pgr_floydWarshall(`Edges SQL`_, [``directed``])"
 msgstr ""
 
+#, python-brace-format
 msgid "For a directed subgraph with edges :math:`\\{1, 2, 3, 4\\}`."
 msgstr ""
 
@@ -12164,7 +12247,7 @@ msgstr ""
 msgid "Git hash of pgRouting build"
 msgstr ""
 
-msgid "``pgr_hawickCircuits - Experimental``"
+msgid "``pgr_hawickCircuits`` - Experimental"
 msgstr ""
 
 msgid ""
@@ -12242,6 +12325,7 @@ msgid ""
 "graph."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "A graph is planar if it can be drawn in two-dimensional space with no two"
 " of its edges crossing. Such a drawing of a planar graph is called a "
@@ -12284,6 +12368,7 @@ msgstr ""
 msgid "`false` when the graph is not planar."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "The following edges will make the subgraph with vertices {10, 15, 11, 16,"
 " 13} a :math:`K_1` graph."
@@ -12375,6 +12460,7 @@ msgstr ""
 msgid "The Minimum Spanning Tree having as root vertex :math:`6`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "The Minimum Spanning Tree starting on vertices :math:`\\{9, 6\\}` with "
 ":math:`depth \\leq 3`"
@@ -12406,6 +12492,7 @@ msgid ""
 ":math:`distance \\leq 3.5`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "The Minimum Spanning Tree starting on vertices :math:`\\{9, 6\\}` with "
 ":math:`distance \\leq 3.5`"
@@ -12430,7 +12517,7 @@ msgstr ""
 msgid "pgr_kruskalDFS(`Edges SQL`_, **root vids**, [``max_depth``])"
 msgstr ""
 
-msgid "``pgr_lengauerTarjanDominatorTree`` -Experimental"
+msgid "``pgr_lengauerTarjanDominatorTree`` - Experimental"
 msgstr ""
 
 msgid ""
@@ -12543,6 +12630,7 @@ msgstr ""
 msgid "Returns set of |result-lineg|"
 msgstr ""
 
+#, python-brace-format
 msgid "For an undirected graph with edges :math:'{2,4,5,8}'"
 msgstr ""
 
@@ -12580,6 +12668,7 @@ msgstr ""
 msgid "Given the following directed graph"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 ":math:`G(V,E) = G(\\{1,2,3,4\\},\\{ 1 \\rightarrow 2, 1 \\rightarrow 4, 2"
 " \\rightarrow 3, 3 \\rightarrow 1, 3 \\rightarrow 2, 3 \\rightarrow 4, 4 "
@@ -12626,11 +12715,13 @@ msgid ""
 "column is used."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Edges :math:`{2 \\rightarrow 3, 3 \\rightarrow 2}` are represented with "
 "one edge row with :math:`id=203`."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Edges :math:`{3 \\rightarrow 4, 4 \\rightarrow 3}` are represented with "
 "one edge row with :math:`id=304`."
@@ -12678,11 +12769,13 @@ msgid ""
 "column is not used."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Edges :math:`{2 \\rightarrow 3, 3 \\rightarrow 2}` are represented with "
 "two edges :math:`id=203` and :math:`id=302` respectively."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Edges :math:`{3 \\rightarrow 4, 4 \\rightarrow 3}` are represented with "
 "two edges :math:`id=304` and :math:`id=403` respectively."
@@ -12766,12 +12859,12 @@ msgstr ""
 msgid "Returns set of |result-linegf|"
 msgstr ""
 
+#, python-brace-format
 msgid "Full line graph of subgraph of edges :math:`\\{4, 7, 8, 10\\}`"
 msgstr ""
 
 msgid ""
-"The examples of this section are based on the :doc:`sampledata` The "
-"examples include the subgraph including edges 4, 7, 8, and 10 with "
+"The examples include the subgraph including edges 4, 7, 8, and 10 with "
 "``reverse_cost``."
 msgstr ""
 
@@ -14182,14 +14275,17 @@ msgstr ""
 msgid "From vertex :math:`6` to vertex :math:`10` on an undirected graph."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From vertex :math:`6` to vertices :math:`\\{10, 1\\}` on an undirected "
 "graph."
 msgstr ""
 
+#, python-brace-format
 msgid "From vertices :math:`\\{6, 1\\}` to vertex :math:`8` on a directed graph."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From vertices :math:`\\{6, 1\\}` to vertices :math:`\\{10, 8\\}` on an "
 "undirected graph."
@@ -14211,6 +14307,7 @@ msgid ""
 "restrictions."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Given a list of vertices and a graph, this function is equivalent to "
 "finding the shortest path between :math:`vertex_i` and "
@@ -14240,6 +14337,7 @@ msgid ""
 "[**options**])"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "All this examples are about the route that visits the vertices "
 ":math:`\\{5, 7, 1, 8, 15\\}` in that order on a directed graph."
@@ -14299,6 +14397,7 @@ msgid ""
 "and/or points with restrictions."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Given a graph, a set of restriction on the graph edges, a set of points "
 "on the graphs edges and a list of vertices, this function is equivalent "
@@ -14337,6 +14436,7 @@ msgid ""
 "**via vertices**, [**options**])"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Find the route that visits the vertices :math:`\\{-6, 15, -5\\}` in that "
 "order on an directed graph."
@@ -14412,6 +14512,7 @@ msgstr ""
 msgid "Usage variations"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "All this examples are about the route that visits the vertices "
 ":math:`\\{-6, 7, -4, 8, -2\\}` in that order on a directed graph."
@@ -14789,6 +14890,7 @@ msgstr ""
 msgid "Use :doc:`pgr_findCloseEdges` in the `Points SQL`_."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "All the examples are about traveling from point :math:`1` and vertex "
 ":math:`5` to points :math:`\\{2, 3, 6\\}` and vertices :math:`\\{10, "
@@ -14937,6 +15039,7 @@ msgstr ""
 msgid "Right side driving topology"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Traveling from point :math:`1` and vertex :math:`5` to points "
 ":math:`\\{2, 3, 6\\}` and vertices :math:`\\{10, 11\\}`"
@@ -14961,6 +15064,7 @@ msgid ""
 "[**options**])"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Cost matrix for points :math:`\\{1, 6\\}` and vertices :math:`\\{10, "
 "11\\}` on an **undirected** graph"
@@ -15276,6 +15380,7 @@ msgid ""
 " points."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Given a graph, a set of points on the graphs edges and a list of "
 "vertices, this function is equivalent to finding the shortest path "
@@ -15289,6 +15394,7 @@ msgid ""
 "[**options**])"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Find the route that visits the vertices :math:`\\{ -6, 15, -1\\}` in that"
 " order on a **directed** graph."
@@ -15297,6 +15403,7 @@ msgstr ""
 msgid "Use :doc:`pgr_findCloseEdges` in the `Points SQL`_"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "All this examples are about the route that visits the vertices "
 ":math:`\\{-1, 7, -3, 16, 15\\}` in that order on a **directed** graph."
@@ -15702,7 +15809,7 @@ msgstr ""
 
 msgid ""
 "`#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ Standarize "
-"output pgr_drivingdistance"
+"output pgr_drivingDistance"
 msgstr ""
 
 msgid "Proposed functions changes"
@@ -16545,7 +16652,7 @@ msgid ""
 "of information"
 msgstr ""
 
-msgid "New functions"
+msgid "New Functions"
 msgstr ""
 
 msgid "Kruskal family"
@@ -16584,148 +16691,121 @@ msgstr ""
 msgid "aStar Family"
 msgstr ""
 
-msgid "pgr_aStar(one to many)"
+msgid "pgr_aStarCost(One to One)"
 msgstr ""
 
-msgid "pgr_aStar(many to one)"
+msgid "pgr_aStarCost(One to Many)"
 msgstr ""
 
-msgid "pgr_aStar(many to many)"
+msgid "pgr_aStarCost(Many to One)"
 msgstr ""
 
-msgid "pgr_aStarCost(one to one)"
+msgid "pgr_aStarCost(Many to Many)"
 msgstr ""
 
-msgid "pgr_aStarCost(one to many)"
+msgid "pgr_aStarCostMatrix(One to One)"
 msgstr ""
 
-msgid "pgr_aStarCost(many to one)"
+msgid "pgr_aStarCostMatrix(One to Many)"
 msgstr ""
 
-msgid "pgr_aStarCost(many to many)"
+msgid "pgr_aStarCostMatrix(Many to One)"
 msgstr ""
 
-msgid "pgr_aStarCostMatrix(one to one)"
-msgstr ""
-
-msgid "pgr_aStarCostMatrix(one to many)"
-msgstr ""
-
-msgid "pgr_aStarCostMatrix(many to one)"
-msgstr ""
-
-msgid "pgr_aStarCostMatrix(many to many)"
+msgid "pgr_aStarCostMatrix(Many to Many)"
 msgstr ""
 
 msgid "bdAstar Family"
 msgstr ""
 
-msgid "pgr_bdAstar(one to many)"
+msgid "pgr_bdAstarCost(One to One)"
 msgstr ""
 
-msgid "pgr_bdAstar(many to one)"
+msgid "pgr_bdAstarCost(One to Many)"
 msgstr ""
 
-msgid "pgr_bdAstar(many to many)"
+msgid "pgr_bdAstarCost(Many to One)"
 msgstr ""
 
-msgid "pgr_bdAstarCost(one to one)"
+msgid "pgr_bdAstarCost(Many to Many)"
 msgstr ""
 
-msgid "pgr_bdAstarCost(one to many)"
+msgid "pgr_bdAstarCostMatrix(One to One)"
 msgstr ""
 
-msgid "pgr_bdAstarCost(many to one)"
+msgid "pgr_bdAstarCostMatrix(One to Many)"
 msgstr ""
 
-msgid "pgr_bdAstarCost(many to many)"
+msgid "pgr_bdAstarCostMatrix(Many to One)"
 msgstr ""
 
-msgid "pgr_bdAstarCostMatrix(one to one)"
-msgstr ""
-
-msgid "pgr_bdAstarCostMatrix(one to many)"
-msgstr ""
-
-msgid "pgr_bdAstarCostMatrix(many to one)"
-msgstr ""
-
-msgid "pgr_bdAstarCostMatrix(many to many)"
+msgid "pgr_bdAstarCostMatrix(Many to Many)"
 msgstr ""
 
 msgid "bdDijkstra Family"
 msgstr ""
 
-msgid "pgr_bdDijkstra(one to many)"
+msgid "pgr_bdDijkstraCost(One to One)"
 msgstr ""
 
-msgid "pgr_bdDijkstra(many to one)"
+msgid "pgr_bdDijkstraCost(One to Many)"
 msgstr ""
 
-msgid "pgr_bdDijkstra(many to many)"
+msgid "pgr_bdDijkstraCost(Many to One)"
 msgstr ""
 
-msgid "pgr_bdDijkstraCost(one to one)"
+msgid "pgr_bdDijkstraCost(Many to Many)"
 msgstr ""
 
-msgid "pgr_bdDijkstraCost(one to many)"
+msgid "pgr_bdDijkstraCostMatrix(One to One)"
 msgstr ""
 
-msgid "pgr_bdDijkstraCost(many to one)"
+msgid "pgr_bdDijkstraCostMatrix(One to Many)"
 msgstr ""
 
-msgid "pgr_bdDijkstraCost(many to many)"
+msgid "pgr_bdDijkstraCostMatrix(Many to One)"
 msgstr ""
 
-msgid "pgr_bdDijkstraCostMatrix(one to one)"
-msgstr ""
-
-msgid "pgr_bdDijkstraCostMatrix(one to many)"
-msgstr ""
-
-msgid "pgr_bdDijkstraCostMatrix(many to one)"
-msgstr ""
-
-msgid "pgr_bdDijkstraCostMatrix(many to many)"
+msgid "pgr_bdDijkstraCostMatrix(Many to Many)"
 msgstr ""
 
 msgid "Flow Family"
 msgstr ""
 
-msgid "pgr_pushRelabel(one to one)"
+msgid "pgr_pushRelabel(One to One)"
 msgstr ""
 
-msgid "pgr_pushRelabel(one to many)"
+msgid "pgr_pushRelabel(One to Many)"
 msgstr ""
 
-msgid "pgr_pushRelabel(many to one)"
+msgid "pgr_pushRelabel(Many to One)"
 msgstr ""
 
-msgid "pgr_pushRelabel(many to many)"
+msgid "pgr_pushRelabel(Many to Many)"
 msgstr ""
 
-msgid "pgr_edmondsKarp(one to one)"
+msgid "pgr_edmondsKarp(One to One)"
 msgstr ""
 
-msgid "pgr_edmondsKarp(one to many)"
+msgid "pgr_edmondsKarp(One to Many)"
 msgstr ""
 
-msgid "pgr_edmondsKarp(many to one)"
+msgid "pgr_edmondsKarp(Many to One)"
 msgstr ""
 
-msgid "pgr_edmondsKarp(many to many)"
+msgid "pgr_edmondsKarp(Many to Many)"
 msgstr ""
 
-msgid "pgr_boykovKolmogorov (one to one)"
+msgid "pgr_boykovKolmogorov (One to One)"
 msgstr ""
 
-msgid "pgr_boykovKolmogorov (one to many)"
+msgid "pgr_boykovKolmogorov (One to Many)"
 msgstr ""
 
-msgid "pgr_boykovKolmogorov (many to one)"
+msgid "pgr_boykovKolmogorov (Many to One)"
 msgstr ""
 
-msgid "pgr_boykovKolmogorov (many to many)"
+msgid "pgr_boykovKolmogorov (Many to Many)"
 msgstr ""
 
 msgid "pgr_maxCardinalityMatching"
@@ -16734,16 +16814,16 @@ msgstr ""
 msgid "pgr_maxFlow"
 msgstr ""
 
-msgid "pgr_edgeDisjointPaths(one to one)"
+msgid "pgr_edgeDisjointPaths(One to One)"
 msgstr ""
 
-msgid "pgr_edgeDisjointPaths(one to many)"
+msgid "pgr_edgeDisjointPaths(One to Many)"
 msgstr ""
 
-msgid "pgr_edgeDisjointPaths(many to one)"
+msgid "pgr_edgeDisjointPaths(Many to One)"
 msgstr ""
 
-msgid "pgr_edgeDisjointPaths(many to many)"
+msgid "pgr_edgeDisjointPaths(Many to Many)"
 msgstr ""
 
 msgid "Components family"
@@ -17179,13 +17259,13 @@ msgstr ""
 msgid "Parameter names changed"
 msgstr ""
 
-msgid "The many version results are the union of the one to one version"
+msgid "The many version results are the union of the One to One version"
 msgstr ""
 
 msgid "New Signatures"
 msgstr ""
 
-msgid "pgr_bdAstar(one to one)"
+msgid "pgr_bdAstar(One to One)"
 msgstr ""
 
 msgid "pgr_bdAstarCostMatrix"
@@ -17274,31 +17354,28 @@ msgid ""
 " on Github."
 msgstr ""
 
-msgid "New Function."
-msgstr ""
-
 msgid "pgr_bdDijkstra"
 msgstr ""
 
-msgid "pgr_astar(one to many)"
+msgid "pgr_astar(One to Many)"
 msgstr ""
 
-msgid "pgr_astar(many to one)"
+msgid "pgr_astar(Many to One)"
 msgstr ""
 
-msgid "pgr_astar(many to many)"
+msgid "pgr_astar(Many to Many)"
 msgstr ""
 
-msgid "pgr_astarCost(one to one)"
+msgid "pgr_astarCost(One to One)"
 msgstr ""
 
-msgid "pgr_astarCost(one to many)"
+msgid "pgr_astarCost(One to Many)"
 msgstr ""
 
-msgid "pgr_astarCost(many to one)"
+msgid "pgr_astarCost(Many to One)"
 msgstr ""
 
-msgid "pgr_astarCost(many to many)"
+msgid "pgr_astarCost(Many to Many)"
 msgstr ""
 
 msgid "pgr_astarCostMatrix"
@@ -17382,46 +17459,43 @@ msgstr ""
 msgid "pgr_aStar"
 msgstr ""
 
-msgid "New Functions"
-msgstr ""
-
 msgid "pgr_eucledianTSP"
 msgstr ""
 
-msgid "pgr_maxFlowPushRelabel(one to one)"
+msgid "pgr_maxFlowPushRelabel(One to One)"
 msgstr ""
 
-msgid "pgr_maxFlowPushRelabel(one to many)"
+msgid "pgr_maxFlowPushRelabel(One to Many)"
 msgstr ""
 
-msgid "pgr_maxFlowPushRelabel(many to one)"
+msgid "pgr_maxFlowPushRelabel(Many to One)"
 msgstr ""
 
-msgid "pgr_maxFlowPushRelabel(many to many)"
+msgid "pgr_maxFlowPushRelabel(Many to Many)"
 msgstr ""
 
-msgid "pgr_maxFlowEdmondsKarp(one to one)"
+msgid "pgr_maxFlowEdmondsKarp(One to One)"
 msgstr ""
 
-msgid "pgr_maxFlowEdmondsKarp(one to many)"
+msgid "pgr_maxFlowEdmondsKarp(One to Many)"
 msgstr ""
 
-msgid "pgr_maxFlowEdmondsKarp(many to one)"
+msgid "pgr_maxFlowEdmondsKarp(Many to One)"
 msgstr ""
 
-msgid "pgr_maxFlowEdmondsKarp(many to many)"
+msgid "pgr_maxFlowEdmondsKarp(Many to Many)"
 msgstr ""
 
-msgid "pgr_maxFlowBoykovKolmogorov (one to one)"
+msgid "pgr_maxFlowBoykovKolmogorov (One to One)"
 msgstr ""
 
-msgid "pgr_maxFlowBoykovKolmogorov (one to many)"
+msgid "pgr_maxFlowBoykovKolmogorov (One to Many)"
 msgstr ""
 
-msgid "pgr_maxFlowBoykovKolmogorov (many to one)"
+msgid "pgr_maxFlowBoykovKolmogorov (Many to One)"
 msgstr ""
 
-msgid "pgr_maxFlowBoykovKolmogorov (many to many)"
+msgid "pgr_maxFlowBoykovKolmogorov (Many to Many)"
 msgstr ""
 
 msgid "pgr_maximumCardinalityMatching"
@@ -17540,43 +17614,43 @@ msgstr ""
 msgid "pgr_Johnson"
 msgstr ""
 
-msgid "pgr_dijkstraCost(one to one)"
+msgid "pgr_dijkstraCost(One to One)"
 msgstr ""
 
-msgid "pgr_dijkstraCost(one to many)"
+msgid "pgr_dijkstraCost(One to Many)"
 msgstr ""
 
-msgid "pgr_dijkstraCost(many to one)"
+msgid "pgr_dijkstraCost(Many to One)"
 msgstr ""
 
-msgid "pgr_dijkstraCost(many to many)"
+msgid "pgr_dijkstraCost(Many to Many)"
 msgstr ""
 
 msgid "Proposed Functionality"
 msgstr ""
 
-msgid "pgr_withPoints(one to one)"
+msgid "pgr_withPoints(One to One)"
 msgstr ""
 
-msgid "pgr_withPoints(one to many)"
+msgid "pgr_withPoints(One to Many)"
 msgstr ""
 
-msgid "pgr_withPoints(many to one)"
+msgid "pgr_withPoints(Many to One)"
 msgstr ""
 
-msgid "pgr_withPoints(many to many)"
+msgid "pgr_withPoints(Many to Many)"
 msgstr ""
 
-msgid "pgr_withPointsCost(one to one)"
+msgid "pgr_withPointsCost(One to One)"
 msgstr ""
 
-msgid "pgr_withPointsCost(one to many)"
+msgid "pgr_withPointsCost(One to Many)"
 msgstr ""
 
-msgid "pgr_withPointsCost(many to one)"
+msgid "pgr_withPointsCost(Many to One)"
 msgstr ""
 
-msgid "pgr_withPointsCost(many to many)"
+msgid "pgr_withPointsCost(Many to Many)"
 msgstr ""
 
 msgid "pgr_withPointsDD(single vertex)"
@@ -17619,19 +17693,10 @@ msgid ""
 " on Github."
 msgstr ""
 
-msgid "pgr_dijkstra(one to many)"
-msgstr ""
-
-msgid "pgr_dijkstra(many to one)"
-msgstr ""
-
-msgid "pgr_dijkstra(many to many)"
-msgstr ""
-
 msgid "Refactored"
 msgstr ""
 
-msgid "pgr_dijkstra(one to one)"
+msgid "pgr_dijkstra(One to One)"
 msgstr ""
 
 msgid ""
@@ -18378,6 +18443,7 @@ msgstr ""
 msgid "This category intends to solve the general problem:"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Given a graph and a list of vertices, find the shortest path between "
 ":math:`vertex_i` and :math:`vertex_{i+1}` for all vertices"
