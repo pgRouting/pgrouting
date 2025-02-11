@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-10 14:53+0000\n"
-"PO-Revision-Date: 2025-01-15 21:02+0000\n"
+"PO-Revision-Date: 2025-01-26 15:47+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
@@ -4380,13 +4380,12 @@ msgstr ""
 ":doc:`pgr_cuthillMckeeOrdering` - Ordenamiento Cuthill-McKee de grafo sin no "
 "dirigido."
 
-#, fuzzy
 msgid ""
 ":doc:`pgr_topologicalSort` - Linear ordering of the vertices for directed "
 "acyclic graph."
 msgstr ""
-"``pgr_topologicalSort`` — Devuelve el orden lineal de los vértices para los "
-"grafos acíclicos dirigidos ponderados (DAG)."
+":doc:`pgr_topologicalSort` - Orden lineal de los vértices para grafos "
+"acíclicos dirigidos."
 
 msgid ":doc:`metrics-family`"
 msgstr ":doc:`metrics-family`"
@@ -4407,9 +4406,8 @@ msgstr "Categorías"
 msgid ":doc:`VRP-category`"
 msgstr ":doc:`VRP-category`"
 
-#, fuzzy
 msgid "Shortest Path Category"
-msgstr "Rutas más cortas K - Categoría"
+msgstr "Rutas más cortas Categoría"
 
 msgid ":doc:`pgr_bellmanFord`"
 msgstr ":doc:`pgr_bellmanFord`"
@@ -4420,9 +4418,8 @@ msgstr ":doc:`pgr_dagShortestPath`"
 msgid ":doc:`pgr_edwardMoore`"
 msgstr ":doc:`pgr_edwardMoore`"
 
-#, fuzzy
 msgid "Planar Family"
-msgstr "Familia aStar"
+msgstr "Familia Planar"
 
 msgid ":doc:`pgr_isPlanar`"
 msgstr ":doc:`pgr_isPlanar`"
@@ -4936,29 +4933,26 @@ msgstr ":doc:`experimental`"
 msgid ":doc:`release_notes`"
 msgstr ":doc:`release_notes`"
 
-#, fuzzy
 msgid "pgRouting 4.0.0 Release Notes"
-msgstr "Notas de la versión de pgRouting 3.0.0"
+msgstr "Notas de la versión de pgRouting 4.0.0"
 
-#, fuzzy
 msgid "Removal of deprecated functions and signatures"
-msgstr "Sobre las firmas obsoletas:"
+msgstr "Eliminación de funciones y firmas obsoletas"
 
 msgid ""
 "``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``"
 msgstr ""
 
-#, fuzzy
 msgid "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
-msgstr "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
+msgstr "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
 
 #, fuzzy
 msgid ""
 "``pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
 "boolean,text)``"
 msgstr ""
-"Correción pgr_trsp(text,integer,double precision,integer,double precision,"
-"boolean,boolean[,text])"
+"``pgr_trsp(text,integer,double precision,integer,double "
+"precision,boolean,boolean,text)``"
 
 msgid "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
 msgstr "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
@@ -5714,26 +5708,20 @@ msgstr ""
 msgid "Migration of ``pgr_trsp`` (Vertices)"
 msgstr "Migración de `pgr_trsp`` (Vértices)"
 
-#, fuzzy
 msgid "Signature:"
-msgstr "Firma"
+msgstr "Firma:"
 
-#, fuzzy
 msgid "Deprecated"
-msgstr "Funcion Obsoleta"
+msgstr "Obsoleto"
 
-#, fuzzy
 msgid "`v3.4.0 <https://docs.pgrouting.org/3.4>`__"
-msgstr ""
-"A partir de v3.4.0 <https://docs.pgrouting.org/3.4/es/migration.html>`__"
+msgstr "`v3.4.0 <https://docs.pgrouting.org/3.4>`__"
 
 msgid "Removed"
 msgstr ""
 
-#, fuzzy
 msgid "`v4.0.0 <https://docs.pgrouting.org/4.0>`__"
-msgstr ""
-"A partir de v3.4.0 <https://docs.pgrouting.org/3.4/es/migration.html>`__"
+msgstr "`v4.0.0 <https://docs.pgrouting.org/4.0>`__"
 
 #, fuzzy
 msgid "See also"
