@@ -44,7 +44,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v4.0.0-dev</b></span>
+        <span class="navbar-text pull-left"><b>v4.0</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -227,13 +227,13 @@
 <section id="pgr-tspeuclidean">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code><a class="headerlink" href="#pgr-tspeuclidean" title="Link to this heading">¶</a></h1>
 <ul class="simple">
-<li><p>pgr_TSPeuclidean`` - Aproximation using <em>metric</em> algorithm.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code> -使用*metric*算法进行近似。</p></li>
 </ul>
 <p class="rubric">可用性：</p>
 <ul class="simple">
 <li><p>版本3.2.1</p>
 <ul>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost库</a> 中的度量算法</p></li>
+<li><p>Using <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost: metric TSP approx</a></p></li>
 <li><p>Simulated Annealing算法不再受支持</p>
 <ul>
 <li><p>Simulated Annealing 算法相关参数被忽略： <cite>max_processing_time</cite>, <cite>tries_per_temperature</cite>, <cite>max_changes_per_temperature</cite>, <cite>max_consecutive_non_changes</cite>, <cite>initial_temperature</cite>, <cite>final_temperature</cite>, <cite>cooling_factor</cite>, <cite>randomize</cite></p></li>
@@ -301,7 +301,7 @@
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 </section>
 <section id="signatures">
@@ -599,7 +599,7 @@ SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v4.0.0-dev.<br/>
+        &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
       Last updated on 2月 11, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>

@@ -46,7 +46,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v4.0.0-dev</b></span>
+        <span class="navbar-text pull-left"><b>v4.0</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -172,7 +172,7 @@
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#e-also">e Also</a></li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
 </li>
 </ul>
@@ -294,7 +294,7 @@
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#e-also">e Also</a></li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
 </li>
 </ul>
@@ -406,7 +406,7 @@
 <li><p>Para fines de optimización, se ignora cualquier valor duplicado en los vertices de salida o destino.</p></li>
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O(| start\_vids | * (V \log V + E))\)</span></p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -418,7 +418,7 @@
 <div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salida</strong>, <strong>destinos</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 <div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salidas</strong>, <strong>destino</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 <div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <strong>salidas</strong>, <strong>destinos</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
-<div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#combinations-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_dijkstra(<a class="reference internal" href="#combinations-sql">SQL de aristas</a>, <a class="reference internal" href="#edges-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
@@ -590,7 +590,7 @@
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_dijkstra(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#combinations-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_dijkstra(<a class="reference internal" href="#combinations-sql">SQL de aristas</a>, <a class="reference internal" href="#edges-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
@@ -1762,8 +1762,8 @@
 </section>
 </section>
 </section>
-<section id="e-also">
-<h2>e Also<a class="headerlink" href="#e-also" title="Link to this heading">¶</a></h2>
+<section id="see-also">
+<h2>Ver también<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
 <li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html">Boost: Dijkstra shortest paths</a></p></li>
@@ -1789,7 +1789,7 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v4.0.0-dev.<br/>
+        &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
       Actualizado por última vez en feb 11, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
