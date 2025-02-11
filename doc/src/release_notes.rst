@@ -112,9 +112,9 @@ milestone for 4.0.0
 
 .. rubric:: Internal C/C++ functions in legacy
 
-* _trsp(text,text,anyarray,anyarray,boolean)``
-* _v4trsp(text,text,anyarray,anyarray,boolean)``
-* _v4trsp(text,text,text,boolean)``
+* _trsp(text,text,anyarray,anyarray,boolean)
+* _v4trsp(text,text,anyarray,anyarray,boolean)
+* _v4trsp(text,text,text,boolean)
 
 pgRouting 3
 *******************************************************************************
@@ -129,6 +129,15 @@ pgRouting 3.7
 .. contents:: Contents
    :local:
    :depth: 1
+
+pgRouting 3.7.3 Release Notes
+-------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.7.3
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.3%22>`__
+
+* `#2731 <https://github.com/pgRouting/pgrouting/pull/2731>`__ Build Failure on Ubuntu 22
 
 pgRouting 3.7.2 Release Notes
 -------------------------------------------------------------------------------
@@ -557,9 +566,9 @@ milestone for 3.4.0
 
 * Flow functions
 
-  * pgr_maxCardinalityMatch(text)``
+  * pgr_maxCardinalityMatch(text)
 
-    * Deprecating ``pgr_maxCardinalityMatch(text,boolean)``
+    * Deprecating: pgr_maxCardinalityMatch(text,boolean)
 
 .. rubric:: Deprecated Functions
 
@@ -1368,7 +1377,9 @@ on Github.
 pgRouting 2.5.4 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed milestone for 2.5.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22%20>`_ on Github.
+To see the issues closed by this release see the `Git closed milestone for 2.5.4
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22%20>`_
+on Github.
 
 * Fixes server crash on several functions.
 

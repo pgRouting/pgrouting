@@ -81,15 +81,23 @@ milestone for 4.0.0
 
 **Internal C/C++ functions in legacy**
 
-* _trsp(text,text,anyarray,anyarray,boolean)``
-* _v4trsp(text,text,anyarray,anyarray,boolean)``
-* _v4trsp(text,text,text,boolean)``
+* _trsp(text,text,anyarray,anyarray,boolean)
+* _v4trsp(text,text,anyarray,anyarray,boolean)
+* _v4trsp(text,text,text,boolean)
 
 # pgRouting 3
 
 
 ## pgRouting 3.7
 
+
+### pgRouting 3.7.3 Release Notes
+
+To see all issues & pull requests closed by this release see the [Git closed
+milestone for 3.7.3
+](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.3%22)
+
+* [#2731](https://github.com/pgRouting/pgrouting/pull/2731) Build Failure on Ubuntu 22
 
 ### pgRouting 3.7.2 Release Notes
 
@@ -322,8 +330,8 @@ milestone for 3.6.0
     * Only points that are visited are removed, that is, points reached within the
       distance are included
   * Deprecated signatures
-    * pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)``
-    * pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)``
+    * pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)
+    * pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)
 
 * [#2546](https://github.com/pgRouting/pgrouting/pull/2546) Standarize output
   and modifying signature pgr_withPointsKSP
@@ -521,9 +529,9 @@ milestone for 3.4.0
 
 * Flow functions
 
-  * pgr_maxCardinalityMatch(text)``
+  * pgr_maxCardinalityMatch(text)
 
-    * Deprecating ``pgr_maxCardinalityMatch(text,boolean)``
+    * Deprecating: pgr_maxCardinalityMatch(text,boolean)
 
 **Deprecated Functions**
 
@@ -1274,7 +1282,9 @@ on Github.
 
 ### pgRouting 2.5.4 Release Notes
 
-To see the issues closed by this release see the [Git closed milestone for 2.5.4](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22%20) on Github.
+To see the issues closed by this release see the [Git closed milestone for 2.5.4
+](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22%20)
+on Github.
 
 * Fixes server crash on several functions.
 
