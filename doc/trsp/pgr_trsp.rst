@@ -38,17 +38,17 @@
 
   * Deprecated signatures
 
-    * pgr_trsp(text,integer,integer,boolean,boolean,text)``
-    * pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)``
-    * pgr_trspViaVertices(text,anyarray,boolean,boolean,text)``
-    * pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``
+    * pgr_trsp(text,integer,integer,boolean,boolean,text)
+    * pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)
+    * pgr_trspViaVertices(text,anyarray,boolean,boolean,text)
+    * pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)
 
 * Version 2.1.0
 
   * New prototypes
 
-    * pgr_trspViaVertices``
-    * pgr_trspViaEdges``
+    * pgr_trspViaVertices
+    * pgr_trspViaEdges
 
 * Version 2.0.0
 

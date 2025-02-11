@@ -782,7 +782,7 @@ Signature:
 .. contents::
    :local:
 
-.. rubric:: See also
+.. rubric:: See Also
 
 - :doc:`pgr_dijkstra`
 - :doc:`pgr_trsp`
@@ -843,7 +843,7 @@ Signature:
 .. contents::
    :local:
 
-.. rubric:: See also
+.. rubric:: See Also
 
 - :doc:`pgr_withPoints`
 - :doc:`pgr_trsp_withPoints`
@@ -904,7 +904,7 @@ Signature:
    :local:
    :depth: 1
 
-.. rubric:: See also
+.. rubric:: See Also
 
 - :doc:`pgr_dijkstraVia`
 - :doc:`pgr_trspVia`
@@ -967,7 +967,7 @@ Signature:
    :local:
    :depth: 1
 
-.. rubric:: See also
+.. rubric:: See Also
 
 - :doc:`pgr_withPointsVia`
 - :doc:`pgr_trspVia_withPoints`

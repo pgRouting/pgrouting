@@ -25,8 +25,8 @@
 
   * Result columns change:
 
-    * n_seq`` is removed
-    * seq`` changed type to ``BIGINT``
+    * ``n_seq`` is removed
+    * ``seq`` changed type to ``BIGINT``
 
   * Function promoted to official.
 

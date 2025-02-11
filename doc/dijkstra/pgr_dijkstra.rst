@@ -600,7 +600,7 @@ The following examples find the path for :math:`\{6\}\rightarrow\{10\}`
    :start-after: -- q154
    :end-before: -- q16
 
-e Also
+See Also
 -------------------------------------------------------------------------------
 
 * :doc:`sampledata`
