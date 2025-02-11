@@ -107,7 +107,7 @@ One to One
    :class: signatures
 
    | pgr_bdAstar(`Edges SQL`_, **start vid**, **end vid**, [**options**])
-   | **options:** [directed, heuristic, factor, epsilon]``
+   | **options:** ``[directed, heuristic, factor, epsilon]``
 
    | Returns set of |short-generic-result|
    | OR EMPTY SET

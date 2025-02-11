@@ -13,7 +13,7 @@
 
 |
 
-``pgr_lengauerTarjanDominatorTree`` -Experimental
+``pgr_lengauerTarjanDominatorTree`` - Experimental
 ===============================================================================
 
 ``pgr_lengauerTarjanDominatorTree`` — Returns the immediate dominator of all

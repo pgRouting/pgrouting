@@ -33,7 +33,7 @@ point geometry.
 * The geometries must be in the same coordinate system (have the same SRID).
 * The code to do the calculations can be obtained for further specific
   adjustments needed by the application.
-* EMTPY SET`` is returned on dryrun executions
+* ``EMTPY SET`` is returned on dryrun executions
 
 |Boost| Boost Graph Inside
 
