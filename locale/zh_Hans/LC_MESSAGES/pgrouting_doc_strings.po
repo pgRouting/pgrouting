@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-10 14:53+0000\n"
+"POT-Creation-Date: 2025-02-11 11:58-0600\n"
 "PO-Revision-Date: 2024-12-20 07:59+0000\n"
 "Last-Translator: Dapeng Wang <wangdapeng20191008@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
@@ -293,6 +293,9 @@ msgstr ":ref:`genindex`"
 
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+msgid "Boost Graph Inside"
+msgstr "Boost 图内部"
 
 msgid "DFS - Category"
 msgstr "DFS（深度优先搜索） - 类别"
@@ -687,9 +690,10 @@ msgstr "当 ``NOT 0`` 且 ``start_id = 0`` 时，它是第一个和最后一个�
 msgid "References"
 msgstr "参考"
 
+#, fuzzy
 msgid ""
-"`Boost's metric appro's metric approximation <https://www.boost.org/libs/"
-"graph/doc/metric_tsp_approx.html>`__"
+"`Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/"
+"metric_tsp_approx.html>`__"
 msgstr ""
 "`Boost 的 metric appro 的 metric 近似 <https://www.boost.org/libs/graph/doc/"
 "metric_tsp_approx.html>`__"
@@ -1676,8 +1680,8 @@ msgstr ":math:`1km * 0.0277hr/km = 0.0277hr`"
 msgid "https://en.wikipedia.org/wiki/Vehicle_routing_problem"
 msgstr "https://en.wikipedia.org/wiki/Vehicle_routing_problem"
 
-msgid "The queries use the :doc:`sampledata` network."
-msgstr "查询使用 :doc:`sampledata` 网络。"
+msgid ":doc:`sampledata`"
+msgstr ":doc:`sampledata`"
 
 msgid "A* - Family of functions"
 msgstr "A* - 函数族"
@@ -1848,7 +1852,9 @@ msgstr ""
 msgid ":doc:`bdAstar-family`"
 msgstr ":doc:`bdAstar-family`"
 
-msgid "https://www.boost.org/libs/graph/doc/astar_search.html"
+#, fuzzy
+msgid ""
+"`Boost: A* search <https://www.boost.org/libs/graph/doc/astar_search.html>`__"
 msgstr "https://www.boost.org/libs/graph/doc/astar_search.html"
 
 msgid "https://en.wikipedia.org/wiki/A*_search_algorithm"
@@ -2813,35 +2819,10 @@ msgstr "``edge_id``"
 msgid "Identifier of the color of the edge."
 msgstr "边颜色的标识符。"
 
+#, fuzzy
 msgid ""
-"`Boost: Sequential Vertex Coloring algorithm documentation <https://www."
-"boost.org/libs/graph/doc/sequential_vertex_coloring.html>`__"
-msgstr ""
-"`Boost：顺序顶点着色算法文档 <https://www.boost.org/libs/graph/doc/"
-"sequential_vertex_coloring.html>`__"
-
-msgid ""
-"`Wikipedia: Graph coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__"
-msgstr "`维基百科：图着色 <https://en.wikipedia.org/wiki/Graph_coloring>`__"
-
-msgid ""
-"`Boost: is_bipartite <https://www.boost.org/libs/graph/doc/is_bipartite."
-"html>`__"
-msgstr ""
-"`Boost: is_bipartite <https://www.boost.org/libs/graph/doc/is_bipartite."
-"html>`__"
-
-msgid ""
-"`Wikipedia: bipartite graph <https://en.wikipedia.org/wiki/"
-"Bipartite_graph>`__"
-msgstr "`维基百科：二分图 <https://en.wikipedia.org/wiki/Bipartite_graph>`__"
-
-msgid ""
-"`Boost: Edge Coloring Algorithm documentation <https://www.boost.org/libs/"
-"graph/doc/edge_coloring.html>`__"
-msgstr ""
-"`Boost：边缘着色算法文档 <https://www.boost.org/libs/graph/doc/edge_coloring."
-"html>`__"
+"`Boost: <https://www.boost.org/libs/graph/doc/table_of_contents.html>`__"
+msgstr "boost: https://www.boost.org/libs/graph/doc/table_of_contents.html"
 
 msgid "Components - Family of functions"
 msgstr "分量 - 函数族"
@@ -3402,9 +3383,6 @@ msgstr "当源和/或目标属于一个顶点时，现在就找到了一条路�
 
 msgid "Now, the routing graph has an edge connecting with node :math:`7`."
 msgstr "现在，路由图有一条与节点 :math:`7` 连接的边。"
-
-msgid ":doc:`sampledata`"
-msgstr ":doc:`sampledata`"
 
 msgid ""
 "https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/"
@@ -4569,36 +4547,231 @@ msgstr ":doc:`release_notes`"
 msgid "pgRouting 4.0.0 Release Notes"
 msgstr "pgRouting 4.0.0 发布说明"
 
-msgid "Removal of deprecated functions and signatures"
-msgstr "移除已弃用的函数和签名"
-
+#, fuzzy
 msgid ""
-"``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``"
+"To see all issues & pull requests closed by this release see the `Git closed "
+"milestone for 4.0.0 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
 msgstr ""
-"``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``"
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `Git closed milestone for 3.7.0 "
+"<https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
 
-msgid "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
-msgstr "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+msgid "Functions promoted to official"
+msgstr ""
+
+#, fuzzy
+msgid "pgr_trsp"
+msgstr "``pgr_trsp``"
+
+#, fuzzy
+msgid "pgr_trspVia"
+msgstr ":doc:`pgr_trspVia`"
+
+#, fuzzy
+msgid "pgr_trspVia_withPoints"
+msgstr ":doc:`pgr_trspVia_withPoints`"
+
+#, fuzzy
+msgid "pgr_trsp_withPoints"
+msgstr "``pgr_trsp_withPoints``"
+
+#, fuzzy
+msgid "pgr_withPoints"
+msgstr "pgr_withPointsKSP"
+
+#, fuzzy
+msgid "pgr_withPointsCost"
+msgstr "pgr_withPointsCostMatrix"
+
+msgid "pgr_withPointsCostMatrix"
+msgstr "pgr_withPointsCostMatrix"
+
+#, fuzzy
+msgid "pgr_withPointsDD"
+msgstr "pgr_withPointsKSP"
+
+msgid "pgr_withPointsKSP"
+msgstr "pgr_withPointsKSP"
+
+#, fuzzy
+msgid "pgr_withPointsVia"
+msgstr ":doc:`pgr_withPointsVia`"
+
+msgid "Signatures promoted to official"
+msgstr ""
+
+msgid "pgr_aStar(Combinations)"
+msgstr "pgr_aStar(组合)"
+
+msgid "pgr_aStarCost(Combinations)"
+msgstr "pgr_aStarCost(组合)"
+
+msgid "pgr_bdAstar(Combinations)"
+msgstr "pgr_bdAstar(组合)"
+
+msgid "pgr_bdAstarCost(Combinations)"
+msgstr "pgr_bdAstarCost(组合)"
+
+msgid "pgr_bdDijkstra(Combinations)"
+msgstr "pgr_bdDijkstra(组合)"
+
+msgid "pgr_bdDijkstraCost(Combinations)"
+msgstr "pgr_bdDijkstraCost(组合)"
+
+#, fuzzy
+msgid "pgr_dijkstra(Combinations)"
+msgstr "pgr_bdDijkstra(组合)"
+
+#, fuzzy
+msgid "pgr_dijkstraCost(Combinations)"
+msgstr "pgr_bdDijkstraCost(组合)"
+
+#, fuzzy
+msgid "pgr_KSP(All signatures)"
+msgstr "TSP 旧签名"
+
+msgid "pgr_boykovKolmogorov(Combinations)"
+msgstr "pgr_boykovKolmogorov (组合)"
+
+msgid "pgr_edmondsKarp(Combinations)"
+msgstr "pgr_edmondsKarp(组合)"
+
+msgid "pgr_maxFlow(Combinations)"
+msgstr "pgr_maxFlow(组合)"
+
+msgid "pgr_pushRelabel(Combinations)"
+msgstr "pgr_pushRelabel(组合)"
+
+#, fuzzy
+msgid "code enhancements:"
+msgstr "代码改进"
+
+msgid "Removal of unused C/C++ code"
+msgstr ""
+
+#, fuzzy
+msgid "Removal of SQL deprecated functions"
+msgstr "移除已弃用的函数和签名"
 
 #, fuzzy
 msgid ""
-"``pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
-"boolean,text)``"
+"pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
+"boolean,text)"
 msgstr ""
 "修复pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
 "boolean[,text])"
 
-msgid "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
+#, fuzzy
+msgid "pgr_trsp(text,integer,integer,boolean,boolean,text)"
 msgstr "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
+
+#, fuzzy
+msgid ""
+"pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)"
+msgstr ""
+"``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``"
+
+#, fuzzy
+msgid "pgr_trspviavertices(text,anyarray,boolean,boolean,text)"
+msgstr "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+
+#, fuzzy
+msgid "Removal of SQL deprecated internal functions"
+msgstr "移除已弃用的函数和签名"
+
+#, fuzzy
+msgid "_pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)"
+msgstr "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+
+#, fuzzy
+msgid "_pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)"
+msgstr "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+
+#, fuzzy
+msgid "_pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)"
+msgstr "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+
+#, fuzzy
+msgid "_pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)"
+msgstr "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+
+#, fuzzy
+msgid "_pgr_dijkstra(text,text,boolean,boolean,boolean)"
+msgstr "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
+
+#, fuzzy
+msgid "_pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)"
+msgstr ""
+"``pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
+"boolean,boolean)``"
+
+msgid "_pgr_kruskal(text,anyarray,text,bigint,double precision)"
+msgstr ""
+
+#, fuzzy
+msgid "_pgr_prim(text,anyarray,text,bigint,double precision)"
+msgstr ""
+"``pgr_withpointsdd(text,text,bigint,double precision,boolean,character,"
+"boolean)``"
+
+#, fuzzy
+msgid ""
+"_pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
+"boolean,text)"
+msgstr ""
+"修复pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
+"boolean[,text])"
+
+#, fuzzy
+msgid "_pgr_trsp(text,text,anyarray,anyarray,boolean)"
+msgstr "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+
+#, fuzzy
+msgid "_pgr_trsp(text,text,anyarray,bigint,boolean)"
+msgstr "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+
+#, fuzzy
+msgid "_pgr_trsp(text,text,bigint,anyarray,boolean)"
+msgstr "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
+
+#, fuzzy
+msgid "_pgr_trsp(text,text,bigint,bigint,boolean)"
+msgstr "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
+
+#, fuzzy
+msgid "_pgr_trspviavertices(text,integer[],boolean,boolean,text)"
+msgstr "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+
+#, fuzzy
+msgid "_pgr_withpointsvia(text,bigint[],double precision[],boolean)"
+msgstr ""
+"``pgr_withpointsdd(text,text,bigint,double precision,boolean,character,"
+"boolean)``"
+
+#, fuzzy
+msgid "_trsp(text,text,anyarray,anyarray,boolean)"
+msgstr "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+
+#, fuzzy
+msgid "_v4trsp(text,text,anyarray,anyarray,boolean)"
+msgstr "``pgr_trspviavertices(text,anyarray,boolean,boolean,text)``"
+
+msgid "_v4trsp(text,text,text,boolean)"
+msgstr ""
+
+#, fuzzy
+msgid "Deprecation of internal C/C++ functions"
+msgstr "已废弃的函数"
+
+msgid "Internal C/C++ functions in legacy"
+msgstr ""
 
 msgid "All releases"
 msgstr "All releases"
 
 msgid "Kruskal - Family of functions"
 msgstr "Kruskal - 函数族"
-
-msgid "Boost Graph Inside"
-msgstr "Boost 图内部"
 
 msgid ""
 "Kruskal's algorithm is a greedy minimum spanning tree algorithm that in each "
@@ -5311,10 +5484,6 @@ msgstr ""
 #, fuzzy
 msgid "`v4.0.0 <https://docs.pgrouting.org/4.0>`__"
 msgstr "从`v3.4.0 <https://docs.pgrouting.org/3.4/en/migration.html>`__ 开始"
-
-#, fuzzy
-msgid "See also"
-msgstr "另请参阅"
 
 #, fuzzy
 msgid ":doc:`pgr_dijkstra`"
@@ -7704,8 +7873,9 @@ msgstr "Boost C++ 源库位于 https://www.boost.org。"
 msgid ":doc:`migration`"
 msgstr ":doc:`migration`"
 
-msgid "pgr_KSP"
-msgstr "pgr_KSP"
+#, fuzzy
+msgid "``pgr_KSP``"
+msgstr "``pgr_TSP``"
 
 msgid "``pgr_KSP`` — Yen's algorithm for K shortest paths using Dijkstra."
 msgstr "``pgr_KSP`` — Yen 使用 Dijkstra 计算 K 最短路径的算法。"
@@ -7713,31 +7883,43 @@ msgstr "``pgr_KSP`` — Yen 使用 Dijkstra 计算 K 最短路径的算法。"
 msgid "Availability"
 msgstr "可用性"
 
+#, fuzzy
+msgid "Version 4.0.0"
+msgstr "版本2.0.0"
+
+msgid "All signatures promoted to official."
+msgstr ""
+
 msgid "Version 3.6.0"
 msgstr "版本3.6.0"
 
 msgid "Result columns standarized to: |nksp-result|"
 msgstr "结果列标准化为 |nksp-result|"
 
-msgid "``pgr_ksp`` (One to One)"
+#, fuzzy
+msgid "pgr_ksp(One to One)"
 msgstr "``pgr_ksp`` (一对一)"
 
 msgid "Added ``start_vid`` and ``end_vid`` result columns."
 msgstr "增加 ``start_vid`` 和 ``end_vid`` 结果列。"
 
-msgid "New overload functions:"
-msgstr "新的重载函数："
+msgid "New proposed signatures:"
+msgstr "新拟议的签名："
 
-msgid "``pgr_ksp`` (One to Many)"
+#, fuzzy
+msgid "pgr_ksp(One to Many)"
 msgstr "``pgr_ksp`` (一对多)"
 
-msgid "``pgr_ksp`` (Many to One)"
+#, fuzzy
+msgid "pgr_ksp(Many to One)"
 msgstr "``pgr_ksp`` (多对一)"
 
-msgid "``pgr_ksp`` (Many to Many)"
+#, fuzzy
+msgid "pgr_ksp(Many to Many)"
 msgstr "``pgr_ksp`` (多对多)"
 
-msgid "``pgr_ksp`` (Combinations)"
+#, fuzzy
+msgid "pgr_ksp(Combinations)"
 msgstr "``pgr_ksp`` (组合)"
 
 msgid "Version 2.1.0"
@@ -7752,13 +7934,18 @@ msgstr "不再支持旧签名"
 msgid "Version 2.0.0"
 msgstr "版本2.0.0"
 
-msgid "**Official** function"
+#, fuzzy
+msgid "Official function."
 msgstr "**官方** 函数"
 
 msgid ""
 "The K shortest path routing algorithm based on Yen's algorithm. \"K\" is the "
 "number of shortest paths desired."
 msgstr "基于Yen算法的K最短路径路由算法。 “K”是所需的最短路径的数量。"
+
+#, fuzzy
+msgid "|Boost| Boost Graph Inside"
+msgstr "Boost 图内部"
 
 msgid "Signatures"
 msgstr "签名"
@@ -8127,6 +8314,14 @@ msgstr "``pgr_TSPeuclidean``"
 msgid "``pgr_TSPeuclidean`` - Aproximation using *metric* algorithm."
 msgstr "``pgr_TSPeuclidean`` -使用*metric*算法进行近似。"
 
+#, fuzzy
+msgid ""
+"Using `Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/"
+"metric_tsp_approx.html>`__"
+msgstr ""
+"`Boost 的 metric appro 的 metric 近似 <https://www.boost.org/libs/graph/doc/"
+"metric_tsp_approx.html>`__"
+
 msgid ""
 "The Simulated Annealing Algorithm related parameters are ignored: "
 "`max_processing_time`, `tries_per_temperature`, "
@@ -8144,8 +8339,9 @@ msgstr "版本3.0.0"
 msgid "Name change from pgr_eucledianTSP"
 msgstr "pgr_eucledianTSP 的名称更改"
 
-msgid "New **Official** function"
-msgstr "新函数 **Official**"
+#, fuzzy
+msgid "New official function."
+msgstr "新函数 **official**"
 
 msgid ""
 "Any duplicated identifier will be ignored. The coordinates that will be kept"
@@ -8230,57 +8426,58 @@ msgstr ""
 "从视觉上看，第一幅图像是 `最优解 <https://www.math.uwaterloo.ca/tsp/world/"
 "witour.html>`__ ，第二幅图像是使用 ``pgr_TSPeuclidean`` 获得的解。"
 
-msgid ":doc:`sampledata` network."
-msgstr ":doc:`sampledata` 网络。"
-
 msgid "``pgr_aStar``"
 msgstr "``pgr_aStar``"
 
 msgid "``pgr_aStar`` — Shortest path using the A* algorithm."
 msgstr "``pgr_aStar`` —使用 A* 算法的最短路径。"
 
+msgid "Combinations signature promoted to official."
+msgstr ""
+
 msgid "Standarizing output columns to |short-generic-result|"
 msgstr "标准输出列|short-generic-result|"
 
-msgid ""
-"``pgr_aStar`` (`One to One`_) added ``start_vid`` and ``end_vid`` columns."
-msgstr "``pgr_aStar`` (`一对一`_) 增加 ``start_vid`` 和 ``end_vid`` 列."
+#, fuzzy
+msgid "pgr_aStar(One to One) added ``start_vid`` and ``end_vid`` columns."
+msgstr "``pgr_aStar`` （`一对一`）增加了 ``start_vid`` 和 ``end_vid`` 列。"
 
-msgid "``pgr_aStar`` (`One to Many`_) added ``end_vid`` column."
-msgstr "``pgr_aStar`` (`一对多`_) 增加 ``end_vid`` 列."
+#, fuzzy
+msgid "pgr_aStar(One to Many) added ``end_vid`` column."
+msgstr "``pgr_aStar``（`一对多`）添加了 ``end_vid`` 列。"
 
-msgid "``pgr_aStar`` (`Many to One`_) added ``start_vid`` column."
-msgstr "``pgr_aStar`` (`多对一`_) 增加 ``start_vid`` 列."
+#, fuzzy
+msgid "pgr_aStar(Many to One) added ``start_vid`` column."
+msgstr "``pgr_aStar``（`多对一`）添加了 ``start_vid`` 列。"
 
 msgid "Version 3.2.0"
 msgstr "版本3.2.0"
 
-msgid "New **proposed** signature:"
-msgstr "新 **拟议** 的签名："
+#, fuzzy
+msgid "New proposed signature:"
+msgstr "新拟议的签名："
 
-msgid "``pgr_aStar`` (`Combinations`_)"
-msgstr "``pgr_aStar`` (`组合`_)"
+msgid "Function promoted to official."
+msgstr ""
 
 msgid "Version 2.4.0"
 msgstr "版本2.4.0"
 
-msgid "New **Proposed** signatures:"
-msgstr "新 **拟议** 签名："
+#, fuzzy
+msgid "pgr_aStar(One to Many)"
+msgstr "pgr_aStar（一对多）"
 
-msgid "``pgr_aStar`` (`One to Many`_)"
-msgstr "``pgr_aStar`` (`一对多`_)"
+#, fuzzy
+msgid "pgr_aStar(Many to One)"
+msgstr "pgr_aStar（多对一）"
 
-msgid "``pgr_aStar`` (`Many to One`_)"
-msgstr "``pgr_aStar`` (`多对一`_)"
+#, fuzzy
+msgid "pgr_aStar(Many to Many)"
+msgstr "pgr_aStar（多对多）"
 
-msgid "``pgr_aStar`` (`Many to Many`_)"
-msgstr "``pgr_aStar`` (`多对多`_)"
-
-msgid "Signature change on ``pgr_astar`` (`One to One`_)"
+#, fuzzy
+msgid "Signature change on pgr_astar(One to One)"
 msgstr "签名更改 ``pgr_astar`` (`一对一`_)"
-
-msgid "**Official** ``pgr_aStar`` (`One to One`_)"
-msgstr "**官方** ``pgr_aStar`` (`一对一`_)"
 
 msgid ""
 "The results are equivalent to the union of the results of the `pgr_aStar(` "
@@ -8361,18 +8558,17 @@ msgstr "示例3"
 msgid "Manually assigned vertex combinations."
 msgstr "手动指定的顶点组合。"
 
-msgid "pgr_aStarCost"
+#, fuzzy
+msgid "``pgr_aStarCost``"
 msgstr "pgr_aStarCost"
 
 msgid ""
 "``pgr_aStarCost`` - Total cost of the shortest path using the A* algorithm."
 msgstr "``pgr_aStarCost`` - 使用 A* 算法计算最短路径的总成本。"
 
-msgid "``pgr_aStarCost`` (`Combinations`_)"
-msgstr "``pgr_aStarCost`` (`组合`_)"
-
-msgid "New **proposed** function"
-msgstr "新 **拟议** 函数"
+#, fuzzy
+msgid "New proposed function."
+msgstr "新提议的函数："
 
 msgid ""
 "The ``pgr_aStarCost`` function sumarizes of the cost of the shortest path "
@@ -8573,7 +8769,8 @@ msgstr ":doc:`pgr_drivingDistance`"
 msgid "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
 msgstr "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
 
-msgid "pgr_analyzeGraph"
+#, fuzzy
+msgid "``pgr_analyzeGraph``"
 msgstr "pgr_analyzeGraph"
 
 msgid "``pgr_analyzeGraph`` — Analyzes the network topology."
@@ -8849,9 +9046,6 @@ msgstr ""
 "选择几何图形靠近表 ``othertable`` 的 place='myhouse' 的行。 （注意 "
 "quote_literal 的使用）"
 
-msgid "The examples use the :doc:`sampledata` network."
-msgstr "这些示例使用 :doc:`sampledata` 网络。"
-
 msgid ":doc:`pgr_analyzeOneWay`"
 msgstr ":doc:`pgr_analyzeOneWay`"
 
@@ -8861,7 +9055,8 @@ msgstr ":doc:`pgr_createVerticesTable`"
 msgid ":doc:`pgr_nodeNetwork` to create nodes to a not noded edge table."
 msgstr ":doc:`pgr_nodeNetwork` 创建节点到非节点边表。"
 
-msgid "pgr_analyzeOneWay"
+#, fuzzy
+msgid "``pgr_analyzeOneWay``"
 msgstr "pgr_analyzeOneWay"
 
 msgid ""
@@ -9037,8 +9232,9 @@ msgstr "结果列更改：删除了 ``seq``"
 msgid "Version 2.5.0"
 msgstr "版本2.5.0"
 
-msgid "New **experimental** function"
-msgstr "新 **实验** 函数"
+#, fuzzy
+msgid "New experimental function."
+msgstr "新实验功能"
 
 msgid ""
 "Those vertices that belong to more than one biconnected component are called "
@@ -9070,8 +9266,9 @@ msgstr "图表的连接点"
 msgid "Nodes in red are the articulation points."
 msgstr "红色节点是关节点。"
 
+#, fuzzy
 msgid ""
-"Boost: `Biconnected components & articulation points <https://www.boost.org/"
+"`Boost: Biconnected components & articulation points <https://www.boost.org/"
 "libs/graph/doc/biconnected_components.html>`__"
 msgstr ""
 "Boost: `双连通分量和关节点 <https://www.boost.org/libs/graph/doc/"
@@ -9090,37 +9287,38 @@ msgstr "``pgr_bdAstar``"
 msgid "``pgr_bdAstar`` — Shortest path using the bidirectional A* algorithm."
 msgstr "``pgr_bdAstar`` — 使用双向 A* 算法的最短路径。"
 
-msgid ""
-"``pgr_bdAstar`` (`One to One`_) added ``start_vid`` and ``end_vid`` columns."
-msgstr "``pgr_bdAstar`` (`一对一`_) 增加 ``start_vid`` 和 ``end_vid`` 列。"
+#, fuzzy
+msgid "pgr_bdAstar(One to One) added ``start_vid`` and ``end_vid`` columns."
+msgstr "``pgr_bdAstar``（`一对一`）增加了 ``start_vid`` 和``end_vid`` 列。"
 
-msgid "``pgr_bdAstar`` (`One to Many`_) added ``end_vid`` column."
-msgstr "``pgr_bdAstar`` (`一对多`_) 增加 ``end_vid`` 列。"
+#, fuzzy
+msgid "pgr_bdAstar(One to Many) added ``end_vid`` column."
+msgstr "``pgr_bdAstar``（`一对多）添加了``end_vid`` 列。"
 
-msgid "``pgr_bdAstar`` (`Many to One`_) added ``start_vid`` column."
-msgstr "``pgr_bdAstar`` (`多对一`_) 增加 ``start_vid`` 列。"
+#, fuzzy
+msgid "pgr_bdAstar(Many to One) added ``start_vid`` column."
+msgstr "``pgr_bdAstar``（`多对一`）添加了``start_vid`` 列。"
 
-msgid "``pgr_bdAstar`` (`Combinations`_)"
-msgstr "``pgr_bdAstar`` (`组合`_)"
+#, fuzzy
+msgid "pgr_bdAstar(One to Many)"
+msgstr "pgr_bdAstar（一对多）"
 
-msgid "``pgr_bdAstar`` (`One to Many`_)"
-msgstr "``pgr_bdAstar`` (`一对多`_)"
+#, fuzzy
+msgid "pgr_bdAstar(Many to One)"
+msgstr "pgr_bdAstar（多对一）"
 
-msgid "``pgr_bdAstar`` (`Many to One`_)"
-msgstr "``pgr_bdAstar`` (`多对一`_)"
+#, fuzzy
+msgid "pgr_bdAstar(Many to Many)"
+msgstr "pgr_bdAstar（多对多）"
 
-msgid "``pgr_bdAstar`` (`Many to Many`_)"
-msgstr "``pgr_bdAstar`` (`多对多`_)"
-
-msgid "Signature change on ``pgr_bdAstar`` (`One to One`_)"
+#, fuzzy
+msgid "Signature change on pgr_bdAstar(One to One)"
 msgstr "在 ``pgr_bdAstar`` (`一对一`_)上的签名更改"
 
-msgid "**Official** ``pgr_bdAstar`` (`One to One`_)"
-msgstr "**官方** ``pgr_bdAstar`` (`一对一`_)"
-
+#, fuzzy
 msgid ""
-"The results are equivalent to the union of the results of the `pgr_bdAStar(` "
-"`One to One`_ `)` on the:"
+"The results are equivalent to the union of the results of the "
+"pgr_bdAStar(One to One) on the:"
 msgstr "结果相当于`pgr_bdAStar(` `一对一`_ `)` 结果的并集："
 
 msgid "pgr_bdAstar(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
@@ -9138,16 +9336,18 @@ msgstr "pgr_bdAstar(`Edges SQL`_, **start vids**, **end vids**, [**options**])"
 msgid "pgr_bdAstar(`Edges SQL`_, `Combinations SQL`_, [**options**])"
 msgstr "pgr_bdAstar(`Edges SQL`_, `Combinations SQL`_, [**options**])"
 
-msgid "pgr_bdAstarCost"
+#, fuzzy
+msgid "**options:** [directed, heuristic, factor, epsilon]``"
+msgstr "**options:** ``[directed, heuristic, factor, epsilon]``"
+
+#, fuzzy
+msgid "``pgr_bdAstarCost``"
 msgstr "pgr_bdAstarCost"
 
 msgid ""
 "``pgr_bdAstarCost`` - Total cost of the shortest path using the "
 "bidirectional A* algorithm."
 msgstr "``pgr_bdAstarCost`` - 使用双向 A* 算法计算的最短路径的总成本。"
-
-msgid "``pgr_bdAstarCost`` (`Combinations`_)"
-msgstr "``pgr_bdAstarCost`` (`组合`_)"
 
 msgid ""
 "The ``pgr_bdAstarCost`` function sumarizes of the cost of the shortest path "
@@ -9199,26 +9399,25 @@ msgid ""
 "algorithm."
 msgstr "``pgr_bdDijkstra`` — 返回使用双向 Dijkstra 算法计算的最短路径。"
 
-msgid "pgr_bdDijkstra(`Combinations`_)"
-msgstr "pgr_bdDijkstra(`组合`_)"
+#, fuzzy
+msgid "New Proposed signatures:"
+msgstr "新拟议的签名："
 
-msgid "New **Proposed** functions:"
-msgstr "新 **拟议** 函数："
+#, fuzzy
+msgid "pgr_bdDijkstra(One to Many)"
+msgstr "pgr_bdDijkstra（一对多）"
 
-msgid "``pgr_bdDijkstra`` (`One to Many`_)"
-msgstr "``pgr_bdDijkstra`` (`一对多`_)"
+#, fuzzy
+msgid "pgr_bdDijkstra(Many to One)"
+msgstr "pgr_bdDijkstra（多对一）"
 
-msgid "``pgr_bdDijkstra`` (`Many to One`_)"
-msgstr "``pgr_bdDijkstra`` (`多对一`_)"
+#, fuzzy
+msgid "pgr_bdDijkstra(Many to Many)"
+msgstr "pgr_bdDijkstra（多对多）"
 
-msgid "``pgr_bdDijkstra`` (`Many to Many`_)"
-msgstr "``pgr_bdDijkstra`` (`多对多`_)"
-
-msgid "Signature change on ``pgr_bdDijsktra`` (`One to One`_)"
+#, fuzzy
+msgid "Signature change on pgr_bdDijsktra(One to One)"
 msgstr "``pgr_bdDijsktra`` (`一对一`_)上的签名更改"
-
-msgid "**Official** ``pgr_bdDijkstra`` (`One to One`_)"
-msgstr "**官方** ``pgr_bdDijkstra`` (`一对一`_)"
 
 msgid ""
 "pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
@@ -9275,13 +9474,6 @@ msgstr "在 **无向** 图上从顶点 :math:`\\{6, 1\\}` 到顶点 :math:`\\{10
 msgid "Using a combinations table on an **undirected** graph"
 msgstr "在 **无向** 图上使用组合表"
 
-msgid ""
-"https://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/"
-"EPP%20shortest%20path%20algorithms.pdf"
-msgstr ""
-"https://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/"
-"EPP%20shortest%20path%20algorithms.pdf"
-
 msgid "https://en.wikipedia.org/wiki/Bidirectional_search"
 msgstr "https://en.wikipedia.org/wiki/Bidirectional_search"
 
@@ -9292,9 +9484,6 @@ msgid ""
 "``pgr_bdDijkstraCost`` — Returns the shortest path's cost using "
 "Bidirectional Dijkstra algorithm."
 msgstr "``pgr_bdDijkstraCost`` —返回使用双向 Dijkstra 算法计算最短路径的成本。"
-
-msgid "``pgr_bdDijkstraCost`` (`Combinations`_)"
-msgstr "``pgr_bdDijkstraCost`` (`组合`_)"
 
 msgid ""
 "The ``pgr_bdDijkstraCost`` function sumarizes of the cost of the shortest "
@@ -9362,26 +9551,12 @@ msgstr "``pgr_bellmanFord - 实验``"
 msgid "``pgr_bellmanFord`` — Shortest path using Bellman-Ford algorithm."
 msgstr "``pgr_bellmanFord`` — 使用 Bellman-Ford 算法计算的最短路径。"
 
-msgid "New **experimental** signature:"
+#, fuzzy
+msgid "New experimental signature:"
 msgstr "新 **实验性** 签名："
 
-msgid "``pgr_bellmanFord`` (`Combinations`_)"
-msgstr "``pgr_bellmanFord`` (`组合`_)"
-
-msgid "New **experimental** signatures:"
-msgstr "新 **实验** 签名："
-
-msgid "``pgr_bellmanFord`` (`One to One`_)"
-msgstr "``pgr_bellmanFord`` (`一对一`_)"
-
-msgid "``pgr_bellmanFord`` (`One to Many`_)"
-msgstr "``pgr_bellmanFord`` (`一对多`_)"
-
-msgid "``pgr_bellmanFord`` (`Many to One`_)"
-msgstr "``pgr_bellmanFord`` (`多对一`_)"
-
-msgid "``pgr_bellmanFord`` (`Many to Many`_)"
-msgstr "``pgr_bellmanFord`` (`多对多`_)"
+msgid "pgr_bellmanFord(Combinations)"
+msgstr "pgr_bellmanFord(组合)"
 
 msgid ""
 "Bellman-Ford's algorithm, is named after Richard Bellman and Lester Ford, "
@@ -9471,10 +9646,19 @@ msgstr ""
 msgid "Using a combinations table on an **undirected** graph."
 msgstr "在 **无向** 图上使用组合表。"
 
+#, fuzzy
+msgid ""
+"`Boost: Belman Ford <https://www.boost.org/libs/graph/doc/"
+"bellman_ford_shortest.html>`__"
+msgstr ""
+"Boost `Johnson <https://www.boost.org/libs/graph/doc/"
+"johnson_all_pairs_shortest.html>`_"
+
 msgid "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
 msgstr "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
 
-msgid "``pgr_betweennessCentrality``"
+#, fuzzy
+msgid "``pgr_betweennessCentrality`` - Experimental"
 msgstr "``pgr_betweennessCentrality``"
 
 msgid ""
@@ -9485,8 +9669,9 @@ msgstr "``pgr_betweennessCentrality`` - 使用 Brandes 算法计算相对介数�
 msgid "Version 3.7.0"
 msgstr "版本 3.7.0"
 
-msgid "New **experimental** function:"
-msgstr "新的 **实验** 函数："
+#, fuzzy
+msgid "pgr_betweennessCentrality``"
+msgstr "``pgr_betweennessCentrality``"
 
 msgid ""
 "The Brandes Algorithm takes advantage of the sparse graphs for evaluating "
@@ -9561,15 +9746,13 @@ msgid ""
 "Relative betweenness centrality score of the vertex (will be in range [0,1])"
 msgstr "该节点的相对介数中心性得分（范围为 [0,1]）"
 
+#, fuzzy
 msgid ""
-"Boost's `betweenness_centrality <https://www.boost.org/doc/libs/1_84_0/libs/"
+"`Boost: betweenness centrality <https://www.boost.org/doc/libs/1_84_0/libs/"
 "graph/doc/betweenness_centrality.html>`_"
 msgstr ""
 "Boost's `betweenness_centrality <https://www.boost.org/doc/libs/1_84_0/libs/"
 "graph/doc/betweenness_centrality.html>`_"
-
-msgid "Queries use the :doc:`sampledata` network."
-msgstr "查询使用 :doc:`sampledata` 网络。"
 
 msgid "``pgr_biconnectedComponents``"
 msgstr "``pgr_biconnectedComponents``"
@@ -9630,13 +9813,6 @@ msgstr "具有组件中最小边标识符的值。"
 msgid "Identifier of the edge that belongs to the ``component``."
 msgstr "属于该 ``分量`` 的边的标识符。"
 
-msgid ""
-"Boost: `Biconnected components <https://www.boost.org/libs/graph/doc/"
-"biconnected_components.html>`__"
-msgstr ""
-"Boost: `双连通分量 <https://www.boost.org/libs/graph/doc/"
-"biconnected_components.html>`__"
-
 msgid "``pgr_binaryBreadthFirstSearch`` - Experimental"
 msgstr "``pgr_binaryBreadthFirstSearch`` - 实验"
 
@@ -9650,20 +9826,8 @@ msgid ""
 "negative integer, is termed as a 'binary graph'."
 msgstr "任何边权属于集合 {0,X} 的图（其中“X”是任何非负整数）都被称为“二元图”。"
 
-msgid "pgr_binaryBreadthFirstSearch(`Combinations`_)"
-msgstr "pgr_binaryBreadthFirstSearch(`组合`_)"
-
-msgid "pgr_binaryBreadthFirstSearch(`One to One`_)"
-msgstr "pgr_binaryBreadthFirstSearch(`一对一`_)"
-
-msgid "pgr_binaryBreadthFirstSearch(`One to Many`_)"
-msgstr "pgr_binaryBreadthFirstSearch(`一对多`_)"
-
-msgid "pgr_binaryBreadthFirstSearch(`Many to One`_)"
-msgstr "pgr_binaryBreadthFirstSearch(`多对一`_)"
-
-msgid "pgr_binaryBreadthFirstSearch(`Many to Many`_)"
-msgstr "pgr_binaryBreadthFirstSearch(`多对多`_)"
+msgid "pgr_binaryBreadthFirstSearch(Combinations)"
+msgstr "pgr_binaryBreadthFirstSearch(组合)"
 
 msgid ""
 "It is well-known that the shortest paths between a single source and all "
@@ -9746,6 +9910,14 @@ msgid ""
 msgstr ""
 "**注意:** 使用 :doc:`sampledata` 网络，因为所有权重都相同（即为 :math:`1`）"
 
+#, fuzzy
+msgid ""
+"`Boost: Breadth First Search <https://www.boost.org/libs/graph/doc/"
+"breadth_first_search.html>`__"
+msgstr ""
+"`Boost：广度优先搜索算法文档 <https://www.boost.org/libs/graph/doc/"
+"breadth_first_search.html>`__"
+
 msgid "https://cp-algorithms.com/graph/01_bfs.html"
 msgstr "https://cp-algorithms.com/graph/01_bfs.html"
 
@@ -9754,16 +9926,14 @@ msgid ""
 msgstr ""
 "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Specialized_variants"
 
-msgid "pgr_bipartite -Experimental"
+#, fuzzy
+msgid "``pgr_bipartite`` - Experimental"
 msgstr "pgr_bipartite -实验"
 
 msgid ""
 "``pgr_bipartite`` — Disjoint sets of vertices such that no two vertices "
 "within the same set are adjacent."
 msgstr "`pgr_bipartite` - 不相邻的顶点集合，同一集合中没有两个顶点相邻。"
-
-msgid "New **experimental** signature"
-msgstr "新的 **实验** 签名"
 
 msgid ""
 "A bipartite graph is a graph with two sets of vertices which are connected "
@@ -9818,6 +9988,18 @@ msgstr ""
 msgid "Edges in blue represent odd length cycle subgraph."
 msgstr "蓝色边代表奇数长度循环子图。"
 
+msgid ""
+"`Boost: is_bipartite <https://www.boost.org/libs/graph/doc/is_bipartite."
+"html>`__"
+msgstr ""
+"`Boost: is_bipartite <https://www.boost.org/libs/graph/doc/is_bipartite."
+"html>`__"
+
+msgid ""
+"`Wikipedia: bipartite graph <https://en.wikipedia.org/wiki/"
+"Bipartite_graph>`__"
+msgstr "`维基百科：二分图 <https://en.wikipedia.org/wiki/Bipartite_graph>`__"
+
 msgid "``pgr_boykovKolmogorov``"
 msgstr "``pgr_boykovKolmogorov``"
 
@@ -9829,20 +10011,12 @@ msgstr ""
 "`pgr_boykovKolmogorov`` - 使用 Boykov Kolmogorov 算法计算图边的流量，使从源到"
 "目标的流量最大。"
 
-msgid "New **proposed** signature"
-msgstr "新的 **拟议** 签名"
-
-msgid "``pgr_boykovKolmogorov`` (`Combinations`_)"
-msgstr "``pgr_boykovKolmogorov`` (`组合`_)"
-
 msgid "Renamed from ``pgr_maxFlowBoykovKolmogorov``"
 msgstr "从 ``pgr_maxFlowBoykovKolmogorov`` 更名而来"
 
-msgid "**Proposed** function"
-msgstr "**拟议** 函数"
-
-msgid "New **Experimental** function"
-msgstr "新的 **实验** 函数"
+#, fuzzy
+msgid "Function promoted to proposed."
+msgstr "实验性的功能被提升为提议的。"
 
 msgid "Running time: Polynomial"
 msgstr "运行时间：多项式时间"
@@ -9885,7 +10059,10 @@ msgstr ""
 "使用组合表，相当于计算从顶点 :math:`\\{5, 6\\}` 到顶点 :math:`{\\10, 15, "
 "14\\}` 的结果。"
 
-msgid "https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html"
+#, fuzzy
+msgid ""
+"`Boost: Boykov Kolmogorov max flow <https://www.boost.org/libs/graph/doc/"
+"boykov_kolmogorov_max_flow.html>`__"
 msgstr "https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html"
 
 msgid "``pgr_breadthFirstSearch`` - Experimental"
@@ -9895,12 +10072,6 @@ msgid ""
 "``pgr_breadthFirstSearch`` — Returns the traversal order(s) using Breadth "
 "First Search algorithm."
 msgstr "``pgr_breadthFirstSearch`` — 使用广度优先搜索算法返回遍历顺序。"
-
-msgid "``pgr_breadthFirstSearch`` (`Single Vertex`_)"
-msgstr "``pgr_breadthFirstSearch`` (`单顶点搜索`_)"
-
-msgid "``pgr_breadthFirstSearch`` (`Multiple Vertices`_)"
-msgstr "``pgr_breadthFirstSearch`` (`多顶点搜索`_)"
 
 msgid ""
 "Provides the Breadth First Search traversal order from a root vertex to a "
@@ -9971,13 +10142,6 @@ msgid "descending"
 msgstr "降序"
 
 msgid ""
-"`Boost: Breadth First Search algorithm documentation <https://www.boost.org/"
-"libs/graph/doc/breadth_first_search.html>`__"
-msgstr ""
-"`Boost：广度优先搜索算法文档 <https://www.boost.org/libs/graph/doc/"
-"breadth_first_search.html>`__"
-
-msgid ""
 "`Wikipedia: Breadth First Search algorithm <https://en.wikipedia.org/wiki/"
 "Breadth-first_search>`__"
 msgstr ""
@@ -10019,8 +10183,13 @@ msgstr "作为桥的边的标识符。"
 msgid "https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29"
 msgstr "https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29"
 
-msgid "**Supported versions**"
-msgstr "**支持版本**"
+#, fuzzy
+msgid ""
+"`Boost: connected components <https://www.boost.org/libs/graph/doc/"
+"connected_components.html>`__"
+msgstr ""
+"Boost: ` 已连接组件 <https://www.boost.org/libs/graph/doc/"
+"connected_components.html>`__"
 
 msgid "``pgr_chinesePostman`` - Experimental"
 msgstr "``pgr_chinesePostman`` - 实验"
@@ -10083,8 +10252,9 @@ msgstr "``pgr_chinesepostmancost``"
 msgid "Minimum costs of a circuit path."
 msgstr "一个回路路径的最小成本。"
 
-msgid "pgr_connectedComponents"
-msgstr "pgr_connectedComponents"
+#, fuzzy
+msgid "``pgr_connectedComponents``"
+msgstr "``pgr_biconnectedComponents``"
 
 msgid ""
 "``pgr_connectedComponents`` — Connected components of an undirected graph "
@@ -10122,8 +10292,9 @@ msgstr "属于该 ``组件`` 的顶点的标识符。"
 msgid "Connecting disconnected components"
 msgstr "连接不连通的组件"
 
+#, fuzzy
 msgid ""
-"Boost: `Connected components <https://www.boost.org/libs/graph/doc/"
+"`Boost: Connected components <https://www.boost.org/libs/graph/doc/"
 "connected_components.html>`__"
 msgstr ""
 "Boost: ` 已连接组件 <https://www.boost.org/libs/graph/doc/"
@@ -10310,7 +10481,8 @@ msgstr "仅死端收缩"
 msgid "Only linear contraction"
 msgstr "仅线性收缩"
 
-msgid "pgr_createTopology"
+#, fuzzy
+msgid "``pgr_createTopology``"
 msgstr "pgr_createTopology"
 
 msgid ""
@@ -10530,10 +10702,8 @@ msgid ""
 "to the rest of the edges."
 msgstr "该示例以 5 条边的简洁拓扑结构为起点，然后递增到其余的边。"
 
-msgid "The example uses the :doc:`sampledata` network."
-msgstr "本例使用 :doc:`sampledata` 网络。"
-
-msgid "pgr_createVerticesTable"
+#, fuzzy
+msgid "``pgr_createVerticesTable``"
 msgstr "pgr_createVerticesTable"
 
 msgid ""
@@ -10773,7 +10943,8 @@ msgstr ""
 "`Wikipedia: Cuthill-McKee 排序 <https://en.wikipedia.org/wiki/"
 "Cuthill%E2%80%93McKee_algorithm>`__"
 
-msgid "pgr_dagShortestPath - Experimental"
+#, fuzzy
+msgid "``pgr_dagShortestPath`` - Experimental"
 msgstr "pgr_dagShortestPath - 实验"
 
 msgid ""
@@ -10858,6 +11029,14 @@ msgstr "返回列"
 
 msgid "Making **start_vids** the same as **end_vids**"
 msgstr "使 **start_vids** 与 **end_vids** 相同"
+
+#, fuzzy
+msgid ""
+"`Boost: DAG shortest paths <https://www.boost.org/libs/graph/doc/"
+"dag_shortest_paths.html>`__"
+msgstr ""
+"`Boost: is_bipartite <https://www.boost.org/libs/graph/doc/is_bipartite."
+"html>`__"
 
 msgid "https://en.wikipedia.org/wiki/Topological_sorting"
 msgstr "https://en.wikipedia.org/wiki/Topological_sorting"
@@ -10985,15 +11164,6 @@ msgstr ""
 msgid "Version 3.3.0"
 msgstr "版本 3.3.0"
 
-msgid "Promoted to **proposed** function"
-msgstr "升级至 **拟议** 函数"
-
-msgid "``pgr_depthFirstSearch`` (`Single Vertex`_)"
-msgstr "``pgr_depthFirstSearch`` (`单个顶点`_)"
-
-msgid "``pgr_depthFirstSearch`` (`Multiple Vertices`_)"
-msgstr "``pgr_depthFirstSearch`` (`多个顶点`_)"
-
 msgid ""
 "Depth First Search algorithm is a traversal algorithm which starts from a "
 "root vertex, goes as deep as possible, and backtracks once a vertex is "
@@ -11049,16 +11219,18 @@ msgstr "**options:** ``[directed, max_depth]``"
 msgid "Same as `Single vertex`_ but with edges in descending order of ``id``."
 msgstr "与 `单顶点`_ 相同，但边按 ``id`` 降序排列。"
 
+#, fuzzy
 msgid ""
-"`Boost: Depth First Search algorithm documentation <https://www.boost.org/"
-"libs/graph/doc/depth_first_search.html>`__"
+"`Boost: Depth First Search <https://www.boost.org/libs/graph/doc/"
+"depth_first_search.html>`__"
 msgstr ""
 "`Boost：深度优先搜索算法文档 <https://www.boost.org/libs/graph/doc/"
 "depth_first_search.html>`__"
 
+#, fuzzy
 msgid ""
-"`Boost: Undirected DFS algorithm documentation <https://www.boost.org/libs/"
-"graph/doc/undirected_dfs.html>`__"
+"`Boost: Undirected DFS <https://www.boost.org/libs/graph/doc/undirected_dfs."
+"html>`__"
 msgstr ""
 "`Boost：非定向 DFS 算法文档 <https://www.boost.org/libs/graph/doc/"
 "undirected_dfs.html>`__"
@@ -11079,45 +11251,39 @@ msgstr "`pgr_dijkstra`` - 使用 Dijkstra 算法计算的最短路径。"
 msgid "Version 3.5.0"
 msgstr "版本 3.5.0"
 
-msgid ""
-"``pgr_dijkstra`` (`One to One`_) added ``start_vid`` and ``end_vid`` columns."
-msgstr "``pgr_dijkstra`` (`一对一`_)增加``start_vid`` 和``end_vid`` 列。"
+#, fuzzy
+msgid "pgr_dijkstra(One to One) added ``start_vid`` and ``end_vid`` columns."
+msgstr "``pgr_dijkstra``（`一对一`）增加了``start_vid`` 和``end_vid`` 列。"
 
-msgid "``pgr_dijkstra`` (`One to Many`_) added ``end_vid`` column."
-msgstr "``pgr_dijkstra`` (`一对多`_) 增加``end_vid`` 列。"
+#, fuzzy
+msgid "pgr_dijkstra(One to Many) added ``end_vid`` column."
+msgstr "``pgr_dijkstra``（`一对多`）添加了 ``end_vid`` 列。"
 
-msgid "``pgr_dijkstra`` (`Many to One`_) added ``start_vid`` column."
-msgstr "``pgr_dijkstra`` (`多对一`_) 增加 ``start_vid`` 列。"
+#, fuzzy
+msgid "pgr_dijkstra(Many to One) added ``start_vid`` column."
+msgstr "``pgr_dijkstra`` （`多对一`）添加了 ``start_vid`` 列。"
 
 msgid "Version 3.1.0"
 msgstr "版本 3.1.0"
 
-msgid "``pgr_dijkstra`` (`Combinations`_)"
-msgstr "``pgr_dijkstra`` (`组合`_)"
-
-msgid "**Official** functions"
-msgstr "**官方** 函数"
-
 msgid "Version 2.2.0"
 msgstr "版本 2.2.0"
 
-msgid "New **proposed** functions:"
-msgstr "新的 **拟议** 函数："
+#, fuzzy
+msgid "pgr_dijkstra(One to Many)"
+msgstr "pgr_dijkstraNear(一对多)"
 
-msgid "``pgr_dijkstra`` (`One to Many`_)"
-msgstr "``pgr_dijkstra`` (`一对多`_)"
+#, fuzzy
+msgid "pgr_dijkstra(Many to One)"
+msgstr "pgr_dijkstraNear(多对一)"
 
-msgid "``pgr_dijkstra`` (`Many to One`_)"
-msgstr "``pgr_dijkstra`` (`多对一`_)"
+#, fuzzy
+msgid "pgr_dijkstra(Many to Many)"
+msgstr "pgr_dijkstraNear（多对多）"
 
-msgid "``pgr_dijkstra`` (`Many to Many`_)"
-msgstr "``pgr_dijkstra`` (`多对多`_)"
-
-msgid "Signature change on ``pgr_dijkstra`` (`One to One`_)"
+#, fuzzy
+msgid "Signature change on pgr_dijkstra(One to One)"
 msgstr "``pgr_dijkstra`` (`一对一`_)的签名更改"
-
-msgid "**Official** ``pgr_dijkstra`` (`One to One`_)"
-msgstr "**官方** ``pgr_dijkstra`` (`一对一`_)"
 
 msgid "pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
 msgstr "pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**, [``directed``])"
@@ -11304,6 +11470,14 @@ msgstr "36) 使用 `多对多`_"
 msgid "37) Using `Combinations`_"
 msgstr "37) 使用 `组合`_"
 
+#, fuzzy
+msgid ""
+"`Boost: Dijkstra shortest paths <https://www.boost.org/libs/graph/doc/"
+"dijkstra_shortest_paths.html>`__"
+msgstr ""
+"`Boost: is_bipartite <https://www.boost.org/libs/graph/doc/is_bipartite."
+"html>`__"
+
 msgid "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 
@@ -11314,9 +11488,6 @@ msgid ""
 "``pgr_dijkstraCost`` - Total cost of the shortest path using Dijkstra "
 "algorithm."
 msgstr "`pgr_dijkstraCost`` - 使用 Dijkstra 算法计算最短路径的总成本。"
-
-msgid "``pgr_dijkstraCost`` (`Combinations`_)"
-msgstr "``pgr_dijkstraCost`` (`组合`_)"
 
 msgid ""
 "The ``pgr_dijkstraCost`` function sumarizes of the cost of the shortest path "
@@ -11630,9 +11801,6 @@ msgstr "``true`` 时：仅返回 ``cap`` 结果"
 msgid "When ``false``: ``cap`` limit per ``Start vid`` will be returned"
 msgstr "当 ``false`` 时：将返回每个 ``Start vid`` 的 ``cap`` 限值"
 
-msgid "boost: https://www.boost.org/libs/graph/doc/table_of_contents.html"
-msgstr "boost: https://www.boost.org/libs/graph/doc/table_of_contents.html"
-
 msgid "Wikipedia: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr "维基百科：https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 
@@ -11819,8 +11987,16 @@ msgstr "``pgr_drivingDistance`` - 返回起始节点的行驶距离。"
 msgid "Standarizing output columns to |result-spantree|"
 msgstr "将输出列标准化为 |result-spantree|"
 
+#, fuzzy
+msgid "pgr_drivingdistance(Single vertex)"
+msgstr "pgr_drivingDistance （单顶点）"
+
 msgid "Added ``depth`` and ``start_vid`` result columns."
 msgstr "添加了 ``depth`` 和 ``start_vid`` 结果列。"
+
+#, fuzzy
+msgid "pgr_drivingdistance(Multiple vertices)"
+msgstr "pgr_drivingDistance （多顶点）"
 
 msgid "Result column name change: ``from_v`` to ``start_vid``."
 msgstr "结果列名称更改： ``from_v``改为 ``start_vid``。"
@@ -11828,14 +12004,19 @@ msgstr "结果列名称更改： ``from_v``改为 ``start_vid``。"
 msgid "Added ``depth`` and ``pred`` result columns."
 msgstr "添加了 ``depth`` 和``pred`` 结果列。"
 
-msgid "Signature change pgr_drivingDistance(single vertex)"
-msgstr "签名更改 pgr_drivingDistance（单顶点）"
+#, fuzzy
+msgid "Signature change:"
+msgstr "签名变更"
 
-msgid "New **Official** pgr_drivingDistance(multiple vertices)"
-msgstr "新 **官方** pgr_drivingDistance(多顶点)"
+msgid "pgr_drivingDistance(single vertex)"
+msgstr "pgr_drivingDistance （单顶点）"
 
-msgid "Official:: pgr_drivingDistance(single vertex)"
-msgstr "官方:: pgr_drivingDistance(单顶点)"
+#, fuzzy
+msgid "New official signature:"
+msgstr "新签名"
+
+msgid "pgr_drivingDistance(multiple vertices)"
+msgstr "pgr_drivingDistance （多顶点）"
 
 msgid ""
 "Using the Dijkstra algorithm, extracts all the nodes that have costs less "
@@ -11895,7 +12076,8 @@ msgid ""
 "undirected graph"
 msgstr "在无向图上，从顶点 :math:`{11, 16\\}` 开始的距离为 :math:`3.0`"
 
-msgid "pgr_edgeColoring - Experimental"
+#, fuzzy
+msgid "``pgr_edgeColoring`` - Experimental"
 msgstr "pgr_edgeColoring - 实验"
 
 msgid ""
@@ -11975,6 +12157,18 @@ msgstr "Returns set of |result-edge-color|"
 msgid "Graph coloring of pgRouting :doc:`sampledata`"
 msgstr "pgRouting :doc:`sampledata` 的图形着色"
 
+#, fuzzy
+msgid ""
+"`Boost: Edge Coloring <https://www.boost.org/libs/graph/doc/edge_coloring."
+"html>`__"
+msgstr ""
+"`Boost：边缘着色算法文档 <https://www.boost.org/libs/graph/doc/edge_coloring."
+"html>`__"
+
+msgid ""
+"`Wikipedia: Graph coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__"
+msgstr "`维基百科：图着色 <https://en.wikipedia.org/wiki/Graph_coloring>`__"
+
 msgid "``pgr_edgeDisjointPaths``"
 msgstr "``pgr_edgeDisjointPaths``"
 
@@ -11982,9 +12176,6 @@ msgid ""
 "``pgr_edgeDisjointPaths`` — Calculates edge disjoint paths between two "
 "groups of vertices."
 msgstr "``pgr_edgeDisjointPaths`` - 计算两组顶点之间的边不相交路径。"
-
-msgid "New **proposed** function:"
-msgstr "新的 **拟议** 函数："
 
 msgid "pgr_edgeDisjointPaths(Combinations)"
 msgstr "pgr_edgeDisjointPaths(组合)"
@@ -12080,9 +12271,6 @@ msgstr ""
 "``pgr_edmondsKarp`` —使用 Edmonds Karp 算法计算图边上的流量，以最大化从源到目"
 "标的流量。"
 
-msgid "``pgr_edmondsKarp`` (`Combinations`_)"
-msgstr "``pgr_edmondsKarp`` (`组合`_)"
-
 msgid "Renamed from ``pgr_maxFlowEdmondsKarp``"
 msgstr "从 ``pgr_maxFlowEdmondsKarp`` 更名而来"
 
@@ -12104,33 +12292,25 @@ msgstr "pgr_edmondsKarp(`Edges SQL`_, **start vids**, **end vids**)"
 msgid "pgr_edmondsKarp(`Edges SQL`_, `Combinations SQL`_)"
 msgstr "pgr_edmondsKarp(`Edges SQL`_, `Combinations SQL`_)"
 
-msgid "https://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html"
+#, fuzzy
+msgid ""
+"`Boost: edmonds_karp_max_flow <https://www.boost.org/libs/graph/doc/"
+"edmonds_karp_max_flow.html>`__"
 msgstr "https://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html"
 
 msgid "https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm"
 msgstr "https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm"
 
-msgid "``pgr_edwardMoore - Experimental``"
+#, fuzzy
+msgid "``pgr_edwardMoore`` - Experimental"
 msgstr "``pgr_edwardMoore - 实验``"
 
 msgid ""
 "``pgr_edwardMoore`` — Returns the shortest path using Edward-Moore algorithm."
 msgstr "`pgr_edwardMoore`` - 使用 Edward-Moore 算法返回最短路径。"
 
-msgid "``pgr_edwardMoore`` (`Combinations`_)"
-msgstr "``pgr_edwardMoore`` (`组合`_)"
-
-msgid "``pgr_edwardMoore`` (`One to One`_)"
-msgstr "``pgr_edwardMoore`` (`一对一`_)"
-
-msgid "``pgr_edwardMoore`` (`One to Many`_)"
-msgstr "``pgr_edwardMoore`` (`一对多`_)"
-
-msgid "``pgr_edwardMoore`` (`Many to One`_)"
-msgstr "``pgr_edwardMoore`` (`多对一`_)"
-
-msgid "``pgr_edwardMoore`` (`Many to Many`_)"
-msgstr "``pgr_edwardMoore`` (`多对多`_)"
+msgid "pgr_edwardMoore(Combinations)"
+msgstr "pgr_edwardMoore(组合)"
 
 msgid ""
 "Edward Moore’s Algorithm is an improvement of the Bellman-Ford Algorithm. It "
@@ -12203,7 +12383,8 @@ msgstr "pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgid "https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm"
 msgstr "https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm"
 
-msgid "pgr_extractVertices -- Proposed"
+#, fuzzy
+msgid "``pgr_extractVertices`` -- Proposed"
 msgstr "pgr_extractVertices -- 拟议"
 
 msgid "``pgr_extractVertices`` — Extracts the vertices information"
@@ -12310,20 +12491,12 @@ msgid ""
 "= true``."
 msgstr "要获取用于生成顶点信息的查询，请使用 ``dryrun := true``。"
 
-msgid "``pgr_findCloseEdges``"
+#, fuzzy
+msgid "``pgr_findCloseEdges`` - Proposed"
 msgstr "``pgr_findCloseEdges``"
 
 msgid "``pgr_findCloseEdges`` - Finds the close edges to a point geometry."
 msgstr "``pgr_findCloseEdges`` -查找点几何图形的闭合边。"
-
-msgid "New **proposed** signatures:"
-msgstr "新的 **拟议** 签名："
-
-msgid "``pgr_findCloseEdges`` (`One point`_)"
-msgstr "``pgr_findCloseEdges`` (`一个点`_)"
-
-msgid "``pgr_findCloseEdges`` (`Many points`_)"
-msgstr "``pgr_findCloseEdges`` (`多个点`_)"
 
 msgid ""
 "``pgr_findCloseEdges`` - An utility function that finds the closest edge to "
@@ -12339,7 +12512,8 @@ msgid ""
 "adjustments needed by the application."
 msgstr "可以获取计算代码，以便根据应用需要进行进一步的具体调整。"
 
-msgid "``EMTPY SET`` is returned on dryrun executions"
+#, fuzzy
+msgid "EMTPY SET`` is returned on dryrun executions"
 msgstr "空运行执行时返回 ``EMTPY SET``"
 
 msgid ""
@@ -12835,18 +13009,12 @@ msgstr ""
 "Boost `floyd-Warshall <https://www.boost.org/libs/graph/doc/"
 "floyd_warshall_shortest.html>`_"
 
-msgid "Queries uses the :doc:`sampledata` network."
-msgstr "查询使用 :doc:`sampledata` 网络。"
-
 msgid "``pgr_full_version``"
 msgstr "``pgr_full_version``"
 
 msgid ""
 "``pgr_full_version`` — Get the details of pgRouting version information."
 msgstr "``pgr_full_version`` — 获取pgRouting版本信息的详细信息。."
-
-msgid "New **official** function"
-msgstr "新函数 **official**"
 
 msgid "Get complete details of pgRouting version information"
 msgstr "获取 pgRouting 版本信息的完整详细信息"
@@ -12921,9 +13089,6 @@ msgid ""
 "``pgr_hawickCircuits`` — Returns the list of cirucits using hawick circuits "
 "algorithm."
 msgstr "``pgr_hawickCircuits`` — 使用 Hawick 回路算法返回回路列表。"
-
-msgid "``pgr_hawickCircuits``"
-msgstr "``pgr_hawickCircuits``"
 
 msgid ""
 "Hawick Circuit algorithm, is published in 2008 by Ken Hawick and Health A. "
@@ -13065,7 +13230,10 @@ msgstr ""
 "新图不是平面图，因为它具有一个 :math:`K_5` 子图。蓝色的边代表 :math:`K_5` 子"
 "图。"
 
-msgid "https://www.boost.org/libs/graph/doc/boyer_myrvold.html"
+#, fuzzy
+msgid ""
+"`Boost: Boyer Myrvold <https://www.boost.org/libs/graph/doc/boyer_myrvold."
+"html>`__"
 msgstr "https://www.boost.org/libs/graph/doc/boyer_myrvold.html"
 
 msgid "``pgr_johnson``"
@@ -13210,7 +13378,8 @@ msgstr "pgr_kruskalDFS(`Edges SQL`_, **root vid**, [``max_depth``])"
 msgid "pgr_kruskalDFS(`Edges SQL`_, **root vids**, [``max_depth``])"
 msgstr "pgr_kruskalDFS(`Edges SQL`_, **root vids**, [``max_depth``])"
 
-msgid "pgr_lengauerTarjanDominatorTree -Experimental"
+#, fuzzy
+msgid "``pgr_lengauerTarjanDominatorTree`` -Experimental"
 msgstr "pgr_lengauerTarjanDominatorTree -实验"
 
 msgid ""
@@ -13269,9 +13438,10 @@ msgstr "顶点的直接支配者。"
 msgid "Dominator tree of another component."
 msgstr "另一个组件的支配树。"
 
+#, fuzzy
 msgid ""
-"`Boost: Lengauer-Tarjan dominator tree algorithm <https://www.boost.org/libs/"
-"graph/doc/lengauer_tarjan_dominator.htm>`__"
+"`Boost: Lengauer-Tarjan dominator <https://www.boost.org/libs/graph/doc/"
+"lengauer_tarjan_dominator.htm>`__"
 msgstr ""
 "`BOOST：Languer-Tarzan 支配树算法 <https://www.boost.org/libs/graph/doc/"
 "lengauer_tarjan_dominator.htm>`__"
@@ -13282,16 +13452,14 @@ msgid ""
 msgstr ""
 "`维基百科:支配树 <https://en.wikipedia.org/wiki/Dominator_(graph_theory)>`__"
 
-msgid "pgr_lineGraph - Proposed"
+#, fuzzy
+msgid "``pgr_lineGraph`` - Proposed"
 msgstr "pgr_lineGraph - 提议"
 
 msgid ""
 "``pgr_lineGraph`` — Transforms the given graph into its corresponding edge-"
 "based graph."
 msgstr "``pgr_lineGraph`` — 将给定图转换为其相应的基于边的图。"
-
-msgid "Promoted to **proposed** signature."
-msgstr "晋升为**proposed** 签名。"
 
 msgid "Works for directed and undirected graphs."
 msgstr "适用于有向和无向图。"
@@ -13576,10 +13744,10 @@ msgstr "返回 |result-linegf| 的集合"
 msgid "Full line graph of subgraph of edges :math:`\\{4, 7, 8, 10\\}`"
 msgstr "边 :math:`\\{4, 7, 8, 10\\}` 子图的全线图"
 
+#, fuzzy
 msgid ""
-"The examples of this section are based on the :doc:`sampledata` network. The "
-"examples include the subgraph including edges 4, 7, 8, and 10 with "
-"``reverse_cost``."
+"The examples of this section are based on the :doc:`sampledata` The examples "
+"include the subgraph including edges 4, 7, 8, and 10 with ``reverse_cost``."
 msgstr ""
 "本节的示例基于 :doc:`sampledata` 网络。 这些示例包括包含具有 "
 "``reverse_cost`` 的边 4、7、8 和 10 的子图。"
@@ -13812,15 +13980,18 @@ msgstr "pgr_makeConnected(`Edges SQL`_)"
 msgid "Returns set of |result-component-make|"
 msgstr "Returns set of |result-component-make|"
 
-msgid ""
-"Query done on :doc:`sampledata` network gives the list of edges that are "
-"needed to connect the graph."
+#, fuzzy
+msgid "List of edges that are needed to connect the graph."
 msgstr "在 :doc:`sampledata` 网络上完成的查询给出了连接图所需的边列表。"
 
-msgid "https://www.boost.org/libs/graph/doc/make_connected.html"
+#, fuzzy
+msgid ""
+"`Boost: make connected <https://www.boost.org/libs/graph/doc/make_connected."
+"html>`__"
 msgstr "https://www.boost.org/libs/graph/doc/make_connected.html"
 
-msgid "pgr_maxCardinalityMatch"
+#, fuzzy
+msgid "``pgr_maxCardinalityMatch``"
 msgstr "pgr_maxCardinalityMatch"
 
 msgid ""
@@ -13828,13 +13999,19 @@ msgid ""
 "graph."
 msgstr "``pgr_maxCardinalityMatch`` — 计算图中的最大基数匹配。."
 
+#, fuzzy
+msgid "pgr_maxCardinalityMatch(text) returns only ``edge`` column."
+msgstr "``pgr_maxCardinalityMatch(text)`` 仅仅返回``边`` 列."
+
 msgid "Deprecated signature"
 msgstr "已弃用的签名"
 
-msgid "``pgr_maxCardinalityMatch(text,boolean)``"
+#, fuzzy
+msgid "pgr_maxCardinalityMatch(text,boolean)"
 msgstr "``pgr_maxCardinalityMatch(text,boolean)``"
 
-msgid "``directed => false`` when used."
+#, fuzzy
+msgid "directed => ``false`` when used."
 msgstr "使用时 ``directed => false``。"
 
 msgid "Renamed from ``pgr_maximumCardinalityMatching``"
@@ -13885,7 +14062,10 @@ msgstr "正值表示存在边(``target``, ``source``)"
 msgid "Identifier of the edge in the original query."
 msgstr "原始查询中边的标识符。"
 
-msgid "https://www.boost.org/libs/graph/doc/maximum_matching.html"
+#, fuzzy
+msgid ""
+"`Boost: maximum_matching <https://www.boost.org/libs/graph/doc/"
+"maximum_matching.html>`__"
 msgstr "https://www.boost.org/libs/graph/doc/maximum_matching.html"
 
 msgid "https://en.wikipedia.org/wiki/Matching_%28graph_theory%29"
@@ -13902,12 +14082,6 @@ msgid ""
 "source(s) to the targets(s) using the Push Relabel algorithm."
 msgstr ""
 "``pgr_maxFlow`` — 使用 Push Relabel 算法计算有向图中从源到目标的最大流量。"
-
-msgid "``pgr_maxFlow`` (`Combinations`_)"
-msgstr "``pgr_maxFlow`` (`组合`_)"
-
-msgid "New **Proposed** function"
-msgstr "新 **拟议** 的函数"
 
 msgid "Calculates the maximum flow from the sources to the targets."
 msgstr "计算从源头到目标的最大流量。"
@@ -13943,7 +14117,10 @@ msgstr "RETURNS ``BIGINT``"
 msgid "Maximum flow possible from the source(s) to the target(s)"
 msgstr "从 source(s)到 target(s)的可能最大流量"
 
-msgid "https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html"
+#, fuzzy
+msgid ""
+"`Boost: push relabel max flow <https://www.boost.org/libs/graph/doc/"
+"push_relabel_max_flow.html>`__"
 msgstr "https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html"
 
 msgid ""
@@ -13959,8 +14136,12 @@ msgid ""
 "of the maximum flow on a graph"
 msgstr "``pgr_maxFlowMinCost`` — 计算图上最大流的总成本最小化的边"
 
-msgid "``pgr_maxFlowMinCost`` (`Combinations`_)"
-msgstr "``pgr_maxFlowMinCost`` (`组合`_)"
+msgid "pgr_maxFlowMinCost(Combinations)"
+msgstr "pgr_maxFlowMinCost(组合)"
+
+#, fuzzy
+msgid "|boost| graph inside."
+msgstr "Boost 图内部"
 
 msgid "**TODO** check which statement is true:"
 msgstr "**TODO** 检查哪个陈述是正确的："
@@ -14005,13 +14186,6 @@ msgstr "pgr_maxFlowMinCost(`Edges SQL`_, `Combinations SQL`_)"
 msgid "Returns set of |result-flow-mincost|"
 msgstr "返回 |result-flow-mincost| 的集合"
 
-msgid ""
-"https://www.boost.org/libs/graph/doc/"
-"successive_shortest_path_nonnegative_weights.html"
-msgstr ""
-"https://www.boost.org/libs/graph/doc/"
-"successive_shortest_path_nonnegative_weights.html"
-
 msgid "``pgr_maxFlowMinCost_Cost`` - Experimental"
 msgstr "``pgr_maxFlowMinCost_Cost`` - 实验"
 
@@ -14020,8 +14194,8 @@ msgid ""
 "maximum flow on a graph"
 msgstr "``pgr_maxFlowMinCost_Cost`` — 计算图上最大流量的最小总成本"
 
-msgid "``pgr_maxFlowMinCost_Cost`` (`Combinations`_)"
-msgstr "``pgr_maxFlowMinCost_Cost`` (`组合`_)"
+msgid "pgr_maxFlowMinCost_Cost(Combinations)"
+msgstr "pgr_maxFlowMinCost_Cost(组合)"
 
 msgid "**The cost value of all input edges must be nonnegative.**"
 msgstr "**所有输入边的成本值必须是非负的。**"
@@ -14053,7 +14227,8 @@ msgstr "RETURNS FLOAT"
 msgid "Minimum Cost Maximum Flow possible from the source(s) to the target(s)"
 msgstr "从source(s) 到target(s)的最小成本最大流量"
 
-msgid "pgr_nodeNetwork"
+#, fuzzy
+msgid "``pgr_nodeNetwork``"
 msgstr "pgr_nodeNetwork"
 
 msgid "``pgr_nodeNetwork`` - Nodes an network edge table."
@@ -14624,9 +14799,6 @@ msgstr ""
 "``pgr_pushRelabel`` — 使用 Push Relabel 算法计算图边上的流量，以最大化从源到"
 "目标的流量。"
 
-msgid "``pgr_pushRelabel`` (`Combinations`_)"
-msgstr "``pgr_pushRelabel`` (`组合`_)"
-
 msgid "Renamed from ``pgr_maxFlowPushRelabel``"
 msgstr "由 ``pgr_maxFlowPushRelabel`` 重命名"
 
@@ -14645,16 +14817,14 @@ msgstr "pgr_pushRelabel(`Edges SQL`_, **start vids**, **end vids**)"
 msgid "pgr_pushRelabel(`Edges SQL`_, `Combinations SQL`_)"
 msgstr "pgr_pushRelabel(`Edges SQL`_, `Combinations SQL`_)"
 
-msgid "pgr_sequentialVertexColoring - Proposed"
+#, fuzzy
+msgid "``pgr_sequentialVertexColoring`` - Proposed"
 msgstr "pgr_sequentialVertexColoring - 拟议"
 
 msgid ""
 "``pgr_sequentialVertexColoring`` — Returns the vertex coloring of an "
 "undirected graph, using greedy approach."
 msgstr "``pgr_sequentialVertexColoring`` — 使用贪婪方法返回无向图的顶点着色。"
-
-msgid "Promoted to **proposed** signature"
-msgstr "晋升为 **拟议** 签名"
 
 msgid ""
 "Sequential vertex coloring algorithm is a graph coloring algorithm in which "
@@ -14702,7 +14872,16 @@ msgstr ":math:`k` 是使用的颜色数量。"
 msgid "pgr_sequentialVertexColoring(`Edges SQL`_)"
 msgstr "pgr_sequentialVertexColoring(`Edges SQL`_)"
 
-msgid "pgr_stoerWagner - Experimental"
+#, fuzzy
+msgid ""
+"`Boost: Sequential Vertex Coloring <https://www.boost.org/libs/graph/doc/"
+"sequential_vertex_coloring.html>`__"
+msgstr ""
+"`Boost：顺序顶点着色算法文档 <https://www.boost.org/libs/graph/doc/"
+"sequential_vertex_coloring.html>`__"
+
+#, fuzzy
+msgid "``pgr_stoerWagner`` - Experimental"
 msgstr "pgr_stoerWagner - 实验"
 
 msgid "``pgr_stoerWagner`` — The min-cut of graph using stoerWagner algorithm."
@@ -14796,6 +14975,14 @@ msgstr "边的最小割"
 msgid "Using :doc:`pgr_connectedComponents`"
 msgstr "使用 :doc:`pgr_connectedComponents`"
 
+#, fuzzy
+msgid ""
+"`Boost: Stoer Wagner min cut <https://www.boost.org/libs/graph/doc/"
+"stoer_wagner_min_cut.html>`__"
+msgstr ""
+"Boost: `强大组件 <https://www.boost.org/libs/graph/doc/strong_components."
+"html>`__"
+
 msgid "https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm"
 msgstr "https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm"
 
@@ -14826,8 +15013,9 @@ msgstr "pgr_strongComponents(`Edges SQL`_)"
 msgid "The strong components of the graph"
 msgstr "图的重要组成部分"
 
+#, fuzzy
 msgid ""
-"Boost: `Strong components <https://www.boost.org/libs/graph/doc/"
+"`Boost: Strong components <https://www.boost.org/libs/graph/doc/"
 "strong_components.html>`__"
 msgstr ""
 "Boost: `强大组件 <https://www.boost.org/libs/graph/doc/strong_components."
@@ -14898,6 +15086,14 @@ msgstr "对单向段进行拓扑排序"
 msgid "Graph is not a DAG"
 msgstr "图不是 DAG"
 
+#, fuzzy
+msgid ""
+"`Boost: topological sort <https://www.boost.org/libs/graph/doc/"
+"topological_sort.html>`__"
+msgstr ""
+"`Boost: is_bipartite <https://www.boost.org/libs/graph/doc/is_bipartite."
+"html>`__"
+
 msgid "``pgr_transitiveClosure`` - Experimental"
 msgstr "``pgr_transitiveClosure`` - 实验"
 
@@ -14955,49 +15151,63 @@ msgstr "边目标的标识符"
 msgid "Identifiers of the vertices that are reachable from vertex v."
 msgstr "从顶点 v 可到达的顶点的标识符。"
 
+#, fuzzy
+msgid ""
+"`Boost: transitive closure <https://www.boost.org/libs/graph/doc/"
+"transitive_closure.html>`__"
+msgstr ""
+"`Boost: is_bipartite <https://www.boost.org/libs/graph/doc/is_bipartite."
+"html>`__"
+
 msgid "https://en.wikipedia.org/wiki/Transitive_closure"
 msgstr "https://en.wikipedia.org/wiki/Transitive_closure"
 
-msgid "pgr_trsp - Proposed"
-msgstr "pgr_trsp - 拟议"
+msgid "``pgr_trsp``"
+msgstr "``pgr_trsp``"
 
 msgid "``pgr_trsp`` - routing vertices with restrictions."
 msgstr "``pgr_trsp`` -有限制的路由顶点。"
 
-msgid "New proposed signatures"
-msgstr "新拟议的签名"
+#, fuzzy
+msgid "pgr_trsp(One to One)"
+msgstr "``pgr_trsp`` （一对一）"
 
-msgid "``pgr_trsp`` (`One to One`_)"
-msgstr "``pgr_trsp`` (`一对一`_)"
+#, fuzzy
+msgid "pgr_trsp(One to Many)"
+msgstr "``pgr_trsp`` （一对多）"
 
-msgid "``pgr_trsp`` (`One to Many`_)"
-msgstr "``pgr_trsp`` (`一对多`_)"
+#, fuzzy
+msgid "pgr_trsp(Many to One)"
+msgstr "``pgr_trsp`` （多对一）"
 
-msgid "``pgr_trsp`` (`Many to One`_)"
-msgstr "``pgr_trsp`` (`多对一`_)"
+#, fuzzy
+msgid "pgr_trsp(Many to Many)"
+msgstr "``pgr_trsp`` （多对多）"
 
-msgid "``pgr_trsp`` (`Many to Many`_)"
-msgstr "``pgr_trsp`` (`多对多`_)"
-
-msgid "``pgr_trsp`` (`Combinations`_)"
-msgstr "``pgr_trsp`` (`组合`_)"
+#, fuzzy
+msgid "pgr_trsp(Combinations)"
+msgstr "``pgr_trsp`` （组合）"
 
 msgid "Deprecated signatures"
 msgstr "弃用签名"
 
-msgid "``pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)``"
+#, fuzzy
+msgid "pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)"
 msgstr "``pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)``"
 
-msgid "``pgr_trspViaVertices(text,anyarray,boolean,boolean,text)``"
+#, fuzzy
+msgid "pgr_trspViaVertices(text,anyarray,boolean,boolean,text)"
 msgstr "``pgr_trspViaVertices(text,anyarray,boolean,boolean,text)``"
 
 msgid "New prototypes"
 msgstr "新原型"
 
-msgid "``pgr_trspViaVertices``"
+#, fuzzy
+msgid "pgr_trspViaVertices"
 msgstr "``pgr_trspViaVertices``"
 
-msgid "``pgr_trspViaEdges``"
+#, fuzzy
+msgid "pgr_trspViaEdges"
 msgstr "``pgr_trspViaEdges``"
 
 msgid ""
@@ -15082,18 +15292,13 @@ msgid ""
 "`Deprecated documentation <https://docs.pgrouting.org/3.3/en/pgr_trsp.html>`_"
 msgstr "` 已弃用文档 <https://docs.pgrouting.org/3.3/en/pgr_trsp.html>`_"
 
-msgid "``pgr_trspVia`` - Proposed"
-msgstr "``pgr_trspVia`` - 拟议"
+#, fuzzy
+msgid "``pgr_trspVia``"
+msgstr "``pgr_trsp``"
 
 msgid ""
 "``pgr_trspVia`` Route that goes through a list of vertices with restrictions."
 msgstr "``pgr_trspVia`` 穿过有限制的顶点列表的路线。"
-
-msgid "New proposed function:"
-msgstr "新提议的函数："
-
-msgid "``pgr_trspVia`` (`One Via`_)"
-msgstr "``pgr_trspVia`` (`One Via`_)"
 
 msgid ""
 "Given a list of vertices and a graph, this function is equivalent to finding "
@@ -15187,16 +15392,14 @@ msgstr "因此，当设置为 ``false`` 时，结果会忽略 ``U_turn_on_edge``
 msgid ":doc:`via-category`"
 msgstr ":doc:`via-category`"
 
-msgid "``pgr_trspVia_withPoints`` - Proposed"
-msgstr "``pgr_trspVia_withPoints`` - 拟议"
+#, fuzzy
+msgid "``pgr_trspVia_withPoints``"
+msgstr "``pgr_trsp_withPoints``"
 
 msgid ""
 "``pgr_trspVia_withPoints`` - Route that goes through a list of vertices and/"
 "or points with restrictions."
 msgstr "``pgr_trspVia_withPoints`` - 经过一系列具有限制的顶点和/或点的路线。"
-
-msgid "``pgr_trspVia_withPoints`` (`One Via`_)"
-msgstr "``pgr_trspVia_withPoints`` (`One Via`_)"
 
 msgid ""
 "Given a graph, a set of restriction on the graph edges, a set of points on "
@@ -15381,29 +15584,11 @@ msgstr ""
 "`pgr_withPointsVia` 结果中，它删除了冲突路径，并使用 :doc:`pgr_trsp` 算法的结"
 "果构建解决方案。 在这种情况下，使用相同的边缘完成 U 形转弯。"
 
-msgid "pgr_trsp_withPoints - Proposed"
-msgstr "pgr_trsp_withPoints - 拟议"
+msgid "``pgr_trsp_withPoints``"
+msgstr "``pgr_trsp_withPoints``"
 
 msgid "``pgr_trsp_withPoints`` Routing Vertex/Point with restrictions."
 msgstr "``pgr_trsp_withPoints`` 有限制的路由顶点/点。"
-
-msgid "New proposed signatures:"
-msgstr "新拟议的签名："
-
-msgid "``pgr_trsp_withPoints`` (`One to One`_)"
-msgstr "``pgr_trsp_withPoints`` (`一对一`_)"
-
-msgid "``pgr_trsp_withPoints`` (`One to Many`_)"
-msgstr "``pgr_trsp_withPoints`` (`一对多`_)"
-
-msgid "``pgr_trsp_withPoints`` (`Many to One`_)"
-msgstr "``pgr_trsp_withPoints`` (`多对一`_)"
-
-msgid "``pgr_trsp_withPoints`` (`Many to Many`_)"
-msgstr "``pgr_trsp_withPoints`` (`多对多`_)"
-
-msgid "``pgr_trsp_withPoints`` (`Combinations`_)"
-msgstr "``pgr_trsp_withPoints`` (`组合`_)"
 
 msgid ""
 "Modify the graph to include points defined by points_sql. Using Dijkstra "
@@ -15530,7 +15715,8 @@ msgstr ""
 "无向图上从点 :math:`1` 和顶点 :math:`6` 到点 :math:`3`到顶点 :math:`1` 的详细"
 "信息。"
 
-msgid "pgr_turnRestrictedPath - Experimental"
+#, fuzzy
+msgid "``pgr_turnRestrictedPath`` - Experimental"
 msgstr "pgr_turnRestrictedPath - 实验性"
 
 #, fuzzy
@@ -15538,9 +15724,6 @@ msgid ""
 "``pgr_turnRestrictedPath`` Using Yen's algorithm Vertex - Vertex routing "
 "with restrictions"
 msgstr "``pgr_turnRestrictedPath`` 使用 Yen 算法顶点- 带限制的顶点路由"
-
-msgid "New experimental function"
-msgstr "新实验功能"
 
 msgid ""
 "Using Yen's algorithm to obtain K shortest paths and analyze the paths to "
@@ -15615,7 +15798,8 @@ msgstr "pgr_version()"
 msgid "pgRouting Version for this documentation"
 msgstr "本文档的 pgRouting 版本"
 
-msgid "pgr_vrpOneDepot - Experimental"
+#, fuzzy
+msgid "``pgr_vrpOneDepot`` - Experimental"
 msgstr "pgr_vrpOneDepot -实验"
 
 msgid "**No documentation available**"
@@ -15624,8 +15808,9 @@ msgstr "**无可用文档**"
 msgid "**TBD**"
 msgstr "**TBD**"
 
-msgid "``pgr_withPoints`` - Proposed"
-msgstr "``pgr_withPoints`` -拟议"
+#, fuzzy
+msgid "``pgr_withPoints``"
+msgstr "``pgr_trsp_withPoints``"
 
 msgid ""
 "``pgr_withPoints`` - Returns the shortest path in a graph with additional "
@@ -15783,8 +15968,9 @@ msgstr "对于点 :math:`6` 和顶点 :math:`11`。"
 msgid "Passes in front or visits with left side driving."
 msgstr "从前方超车或以左侧驾驶方式行驶。"
 
-msgid "``pgr_withPointsCost`` - Proposed"
-msgstr "``pgr_withPointsCost`` -拟议"
+#, fuzzy
+msgid "``pgr_withPointsCost``"
+msgstr ":doc:`pgr_withPointsCost`"
 
 msgid ""
 "``pgr_withPointsCost`` - Calculates the shortest path and returns only the "
@@ -15951,8 +16137,9 @@ msgstr "左侧驾驶拓扑"
 msgid "Does not matter driving side driving topology"
 msgstr "与驱动端驱动拓扑无关"
 
-msgid "``pgr_withPointsCostMatrix`` - proposed"
-msgstr "``pgr_withPointsCostMatrix`` - 拟议"
+#, fuzzy
+msgid "``pgr_withPointsCostMatrix``"
+msgstr "pgr_withPointsCostMatrix"
 
 msgid ""
 "``pgr_withPointsCostMatrix`` - Calculates a cost matrix using :doc:"
@@ -15988,8 +16175,9 @@ msgid ""
 msgstr ""
 "求从顶点 :math:`1` 到图上点 `(2.9, 1.8)` 的两个最近位置的路线的矩阵成本。"
 
-msgid "``pgr_withPointsDD`` - Proposed"
-msgstr "``pgr_withPointsDD`` - 拟议"
+#, fuzzy
+msgid "``pgr_withPointsDD``"
+msgstr "``pgr_trsp_withPoints``"
 
 msgid ""
 "``pgr_withPointsDD`` - Returns the driving **distance** from a starting "
@@ -16003,8 +16191,13 @@ msgstr ""
 "签名更改： ``driving_side`` 参数从已命名的可选参数改为未命名的必选参数 "
 "**driving side**。"
 
-msgid "``pgr_withPointsDD`` (`Single vertex`)"
-msgstr "``pgr_withPointsDD`` （`单顶点`）"
+#, fuzzy
+msgid "pgr_withPointsDD(Single vertex)"
+msgstr "pgr_withPointsDD （单顶点）"
+
+#, fuzzy
+msgid "pgr_withPointsDD(Multiple vertices)"
+msgstr "pgr_withPointsDD（多顶点）"
 
 msgid "Added ``depth``, ``pred`` and ``start_vid`` column."
 msgstr "添加了 ``depth``、``pred`` 和 ``start_vid`` 列。"
@@ -16022,16 +16215,17 @@ msgstr ""
 "只有那些被访问的兴趣点会被移除，也就是说，位于一定距离范围内被到达的兴趣点会"
 "被包含在内"
 
+#, fuzzy
 msgid ""
-"``pgr_withpointsdd(text,text,bigint,double precision,boolean,character,"
-"boolean)``"
+"pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)"
 msgstr ""
 "``pgr_withpointsdd(text,text,bigint,double precision,boolean,character,"
 "boolean)``"
 
+#, fuzzy
 msgid ""
-"``pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
-"boolean,boolean)``"
+"pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
+"boolean,boolean)"
 msgstr ""
 "``pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
 "boolean,boolean)``"
@@ -16155,8 +16349,9 @@ msgstr ""
 msgid ":doc:`pgr_alphaShape`"
 msgstr ":doc:`pgr_alphaShape`"
 
-msgid "pgr_withPointsKSP - Proposed"
-msgstr "pgr_withPointsKSP -拟议"
+#, fuzzy
+msgid "``pgr_withPointsKSP``"
+msgstr "pgr_withPointsKSP"
 
 msgid ""
 "``pgr_withPointsKSP`` — Yen's algorithm for K shortest paths using Dijkstra."
@@ -16165,26 +16360,29 @@ msgstr "``pgr_withPointsKSP`` — Yen 使用 Dijkstra 计算 K 最短路径的�
 msgid "Standarizing output columns to |nksp-result|"
 msgstr "标准化输出列为 |nksp-result|"
 
-msgid "``pgr_withPointsKSP`` (One to One)"
+#, fuzzy
+msgid "pgr_withPointsKSP(One to One)"
 msgstr "``pgr_withPointsKSP`` (一对一)"
 
-msgid "New overload functions"
-msgstr "新的重载函数"
-
-msgid "``pgr_withPointsKSP`` (One to Many)"
+#, fuzzy
+msgid "pgr_withPointsKSP(One to Many)"
 msgstr "``pgr_withPointsKSP`` (一对多)"
 
-msgid "``pgr_withPointsKSP`` (Many to One)"
+#, fuzzy
+msgid "pgr_withPointsKSP(Many to One)"
 msgstr "``pgr_withPointsKSP`` (多对一)"
 
-msgid "``pgr_withPointsKSP`` (Many to Many)"
+#, fuzzy
+msgid "pgr_withPointsKSP(Many to Many)"
 msgstr "``pgr_withPointsKSP`` (多对多)"
 
-msgid "``pgr_withPointsKSP`` (Combinations)"
-msgstr "``pgr_withPointsKSP`` (组合)"
+#, fuzzy
+msgid "pgr_withPointsKSP(Combinations)"
+msgstr "pgr_withPoints（组合）"
 
+#, fuzzy
 msgid ""
-"``pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,"
+"pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,"
 "boolean)``"
 msgstr ""
 "``pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,"
@@ -16324,16 +16522,14 @@ msgstr ""
 "使用右侧驾驶拓扑，从点 :math:`1` 到点 :math:`2` 获取 :math:`2` 条路径，同时使"
 "用堆路径（heap paths）并包含详细信息。"
 
-msgid "``pgr_withPointsVia`` - Proposed"
-msgstr "``pgr_withPointsVia`` - 拟议"
+#, fuzzy
+msgid "``pgr_withPointsVia``"
+msgstr ":doc:`pgr_withPointsVia`"
 
 msgid ""
 "``pgr_withPointsVia`` - Route that goes through a list of vertices and/or "
 "points."
 msgstr "``pgr_withPointsVia`` - 经过一系列顶点和/或点的路线。"
-
-msgid "New **proposed** function ``pgr_withPointsVia`` (`One Via`_)"
-msgstr "新 **拟议** 的函数 ``pgr_withPointsVia`` (`One Via`_)"
 
 msgid ""
 "Given a graph, a set of points on the graphs edges and a list of vertices, "
@@ -16500,6 +16696,28 @@ msgstr "Minors 3.x"
 
 msgid "pgRouting 3.7"
 msgstr "pgRouting 3.7"
+
+#, fuzzy
+msgid "pgRouting 3.7.3 Release Notes"
+msgstr "pgRouting 3.7.1 发布说明"
+
+#, fuzzy
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git closed "
+"milestone for 3.7.3 <https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.3%22>`__"
+msgstr ""
+"要查看此版本关闭的所有问题和拉取请求，请参阅 `Git closed milestone for 3.7.1 "
+"<https://github.com/pgRouting/pgrouting/issues?"
+"utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
+
+#, fuzzy
+msgid ""
+"`#2731 <https://github.com/pgRouting/pgrouting/pull/2731>`__ Build Failure "
+"on Ubuntu 22"
+msgstr ""
+"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ 在 C++ 上读取 "
+"postgresql 数据"
 
 #, fuzzy
 msgid "pgRouting 3.7.2 Release Notes"
@@ -16798,31 +17016,11 @@ msgstr ""
 "pgr_aStar"
 
 msgid ""
-"``pgr_aStar`` (`One to One`) added ``start_vid`` and ``end_vid`` columns."
-msgstr "``pgr_aStar`` （`一对一`）增加了 ``start_vid`` 和 ``end_vid`` 列。"
-
-msgid "``pgr_aStar`` (`One to Many`) added ``end_vid`` column."
-msgstr "``pgr_aStar``（`一对多`）添加了 ``end_vid`` 列。"
-
-msgid "``pgr_aStar`` (`Many to One`) added ``start_vid`` column."
-msgstr "``pgr_aStar``（`多对一`）添加了 ``start_vid`` 列。"
-
-msgid ""
 "`#2523 <https://github.com/pgRouting/pgrouting/pull/2523>`__ Standarize "
 "output pgr_bdAstar"
 msgstr ""
 "`#2523 <https://github.com/pgRouting/pgrouting/pull/2523>`__ 标准化输出 "
 "pgr_bdAstar"
-
-msgid ""
-"``pgr_bdAstar`` (`One to One`) added ``start_vid`` and ``end_vid`` columns."
-msgstr "``pgr_bdAstar``（`一对一`）增加了 ``start_vid`` 和``end_vid`` 列。"
-
-msgid "``pgr_bdAstar`` (`One to Many`) added ``end_vid`` column."
-msgstr "``pgr_bdAstar``（`一对多）添加了``end_vid`` 列。"
-
-msgid "``pgr_bdAstar`` (`Many to One`) added ``start_vid`` column."
-msgstr "``pgr_bdAstar``（`多对一`）添加了``start_vid`` 列。"
 
 msgid ""
 "`#2547 <https://github.com/pgRouting/pgrouting/pull/2547>`__ Standarize "
@@ -17012,16 +17210,6 @@ msgstr ""
 msgid "Dijkstra"
 msgstr "Dijkstra"
 
-msgid ""
-"``pgr_dijkstra`` (`One to One`) added ``start_vid`` and ``end_vid`` columns."
-msgstr "``pgr_dijkstra``（`一对一`）增加了``start_vid`` 和``end_vid`` 列。"
-
-msgid "``pgr_dijkstra`` (`One to Many`) added ``end_vid`` column."
-msgstr "``pgr_dijkstra``（`一对多`）添加了 ``end_vid`` 列。"
-
-msgid "``pgr_dijkstra`` (`Many to One`) added ``start_vid`` column."
-msgstr "``pgr_dijkstra`` （`多对一`）添加了 ``start_vid`` 列。"
-
 msgid "pgRouting 3.4"
 msgstr "pgRouting 3.4"
 
@@ -17097,13 +17285,15 @@ msgstr ""
 "`#1891 <https://github.com/pgRouting/pgrouting/issues/1891>`__: pgr_ksp 没有"
 "给出所有正确的最短路径"
 
-msgid "New proposed functions"
+#, fuzzy
+msgid "New proposed functions."
 msgstr "新的拟议函数"
 
 msgid "With points"
 msgstr "带点"
 
-msgid "``pgr_withPointsVia`` (One Via)"
+#, fuzzy
+msgid "pgr_withPointsVia(One Via)"
 msgstr "``pgr_withPointsVia`` (One Via)"
 
 msgid "Turn Restrictions"
@@ -17112,88 +17302,82 @@ msgstr "转弯限制"
 msgid "Via with turn restrictions"
 msgstr "有转弯限制的通道"
 
-msgid "``pgr_trspVia`` (One Via)"
+#, fuzzy
+msgid "pgr_trspVia(One Via)"
 msgstr "``pgr_trspVia`` (One Via)"
 
-msgid "``pgr_trspVia_withPoints`` (One Via)"
+#, fuzzy
+msgid "pgr_trspVia_withPoints(One Via)"
 msgstr "pgr_trspVia_withPoints``（一次通过）"
 
-msgid "``pgr_trsp``"
-msgstr "``pgr_trsp``"
-
-msgid "``pgr_trsp`` (One to One)"
-msgstr "``pgr_trsp`` （一对一）"
-
-msgid "``pgr_trsp`` (One to Many)"
-msgstr "``pgr_trsp`` （一对多）"
-
-msgid "``pgr_trsp`` (Many to One)"
-msgstr "``pgr_trsp`` （多对一）"
-
-msgid "``pgr_trsp`` (Many to Many)"
-msgstr "``pgr_trsp`` （多对多）"
-
-msgid "``pgr_trsp`` (Combinations)"
-msgstr "``pgr_trsp`` （组合）"
-
-msgid "``pgr_trsp_withPoints``"
-msgstr "``pgr_trsp_withPoints``"
-
-msgid "``pgr_trsp_withPoints`` (One to One)"
+#, fuzzy
+msgid "pgr_trsp_withPoints(One to One)"
 msgstr "``pgr_trsp_withPoints`` （一对一）"
 
-msgid "``pgr_trsp_withPoints`` (One to Many)"
+#, fuzzy
+msgid "pgr_trsp_withPoints(One to Many)"
 msgstr "``pgr_trsp_withPoints`` （一对多）"
 
-msgid "``pgr_trsp_withPoints`` (Many to One)"
+#, fuzzy
+msgid "pgr_trsp_withPoints(Many to One)"
 msgstr "pgr_trsp_withPoints``（多对一）"
 
-msgid "``pgr_trsp_withPoints`` (Many to Many)"
+#, fuzzy
+msgid "pgr_trsp_withPoints(Many to Many)"
 msgstr "``pgr_trsp_withPoints`` （多对多）"
 
-msgid "``pgr_trsp_withPoints`` (Combinations)"
+#, fuzzy
+msgid "pgr_trsp_withPoints(Combinations)"
 msgstr "``pgr_trsp_withPoints`` （组合）"
 
 msgid "Topology"
 msgstr "拓扑结构"
 
-msgid "``pgr_degree``"
-msgstr "``pgr_degree``"
-
 msgid "Utilities"
 msgstr "实用程序"
 
-msgid "``pgr_findCloseEdges`` (One point)"
+#, fuzzy
+msgid "pgr_findCloseEdges(One point)"
 msgstr "``pgr_findCloseEdges`` （单点）"
 
-msgid "``pgr_findCloseEdges`` (Many points)"
+#, fuzzy
+msgid "pgr_findCloseEdges(Many points)"
 msgstr "``pgr_findCloseEdges`` （多点）"
 
 msgid "Ordering"
 msgstr "排序"
 
-msgid "``pgr_cuthillMckeeOrdering``"
+#, fuzzy
+msgid "pgr_cuthillMckeeOrdering"
 msgstr "``pgr_cuthillMckeeOrdering``"
 
 msgid "Unclassified"
 msgstr "未分类"
 
+#, fuzzy
+msgid "pgr_hawickCircuits"
+msgstr "``pgr_hawickCircuits``"
+
 msgid "Flow functions"
 msgstr "流程函数"
 
-msgid "``pgr_maxCardinalityMatch(text)``"
+#, fuzzy
+msgid "pgr_maxCardinalityMatch(text)"
 msgstr "``pgr_maxCardinalityMatch(text)``"
 
-msgid "Deprecating ``pgr_maxCardinalityMatch(text,boolean)``"
+#, fuzzy
+msgid "Deprecating: pgr_maxCardinalityMatch(text,boolean)"
 msgstr "弃用 ``pgr_maxCardinalityMatch(text,boolean)``"
 
 msgid "Deprecated Functions"
 msgstr "已废弃的函数"
 
-msgid "``pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text)``"
+#, fuzzy
+msgid "pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text)"
 msgstr "``pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text)``"
 
-msgid "``pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)``"
+#, fuzzy
+msgid "pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)"
 msgstr "``pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)``"
 
 msgid "pgRouting 3.3"
@@ -17508,12 +17692,6 @@ msgstr ""
 msgid "Removing support for Boost v1.53, v1.54 & v1.55"
 msgstr "删除对 Boost v1.53、v1.54 和 v1.55 的支持"
 
-msgid "pgr_bellmanFord(Combinations)"
-msgstr "pgr_bellmanFord(组合)"
-
-msgid "pgr_binaryBreadthFirstSearch(Combinations)"
-msgstr "pgr_binaryBreadthFirstSearch(组合)"
-
 msgid "pgr_bipartite"
 msgstr "pgr_bipartite"
 
@@ -17522,9 +17700,6 @@ msgstr "pgr_depthFirstSearch"
 
 msgid "Dijkstra Near"
 msgstr "Dijkstra Near"
-
-msgid "pgr_edwardMoore(Combinations)"
-msgstr "pgr_edwardMoore(组合)"
 
 msgid "pgr_isPlanar"
 msgstr "pgr_isPlanar"
@@ -17535,50 +17710,14 @@ msgstr "pgr_lengauerTarjanDominatorTree"
 msgid "pgr_makeConnected"
 msgstr "pgr_makeConnected"
 
-msgid "pgr_maxFlowMinCost(Combinations)"
-msgstr "pgr_maxFlowMinCost(组合)"
-
-msgid "pgr_maxFlowMinCost_Cost(Combinations)"
-msgstr "pgr_maxFlowMinCost_Cost(组合)"
-
 msgid "Astar"
 msgstr "Astar"
-
-msgid "pgr_aStar(Combinations)"
-msgstr "pgr_aStar(组合)"
-
-msgid "pgr_aStarCost(Combinations)"
-msgstr "pgr_aStarCost(组合)"
 
 msgid "Bidirectional Astar"
 msgstr "双向Astar"
 
-msgid "pgr_bdAstar(Combinations)"
-msgstr "pgr_bdAstar(组合)"
-
-msgid "pgr_bdAstarCost(Combinations)"
-msgstr "pgr_bdAstarCost(组合)"
-
 msgid "Bidirectional Dijkstra"
 msgstr "双向 Dijkstra"
-
-msgid "pgr_bdDijkstra(Combinations)"
-msgstr "pgr_bdDijkstra(组合)"
-
-msgid "pgr_bdDijkstraCost(Combinations)"
-msgstr "pgr_bdDijkstraCost(组合)"
-
-msgid "pgr_boykovKolmogorov(Combinations)"
-msgstr "pgr_boykovKolmogorov (组合)"
-
-msgid "pgr_edmondsKarp(Combinations)"
-msgstr "pgr_edmondsKarp(组合)"
-
-msgid "pgr_maxFlow(Combinations)"
-msgstr "pgr_maxFlow(组合)"
-
-msgid "pgr_pushRelabel(Combinations)"
-msgstr "pgr_pushRelabel(组合)"
 
 msgid "pgRouting 3.1"
 msgstr "pgRouting 3.1"
@@ -18091,6 +18230,9 @@ msgstr "pgr_edgeDisjointPaths （多对多）"
 msgid "Components family"
 msgstr "分量族"
 
+msgid "pgr_connectedComponents"
+msgstr "pgr_connectedComponents"
+
 msgid "pgr_strongComponents"
 msgstr "pgr_strongComponents"
 
@@ -18318,6 +18460,9 @@ msgstr "pgr_dijkstraCost"
 
 msgid "pgr_drivingDistance"
 msgstr "pgr_drivingDistance"
+
+msgid "pgr_KSP"
+msgstr "pgr_KSP"
 
 msgid "pgr_dijkstraVia (proposed)"
 msgstr "pgr_dijkstraVia (拟议)"
@@ -18549,9 +18694,6 @@ msgstr "新签名"
 msgid "pgr_bdAstar(one to one)"
 msgstr "pgr_bdAstar（一对一）"
 
-msgid "New Proposed functions"
-msgstr "新的拟议函数"
-
 msgid "pgr_bdAstarCostMatrix"
 msgstr "pgr_bdAstarCostMatrix"
 
@@ -18643,11 +18785,12 @@ msgstr ""
 "github.com/pgRouting/pgrouting/issues?"
 "q=milestone%3A%22Release+2.4.0%22+is%3Aclosed>`_ 。"
 
+#, fuzzy
+msgid "New Function."
+msgstr "新函数"
+
 msgid "pgr_bdDijkstra"
 msgstr "pgr_bdDijkstra"
-
-msgid "New Proposed Signatures"
-msgstr "新的拟议签名"
 
 msgid "pgr_astar(one to many)"
 msgstr "pgr_astar（一对多）"
@@ -18672,6 +18815,10 @@ msgstr "pgr_astarCost（多对多）"
 
 msgid "pgr_astarCostMatrix"
 msgstr "pgr_astarCostMatrix"
+
+#, fuzzy
+msgid "Deprecated signatures."
+msgstr "弃用签名"
 
 msgid "pgr_bddijkstra - use pgr_bdDijkstra instead"
 msgstr "pgr_bddijkstra - 使用 pgr_bdDijkstra代替"
@@ -18759,9 +18906,6 @@ msgstr "新函数"
 
 msgid "pgr_eucledianTSP"
 msgstr "pgr_eucledianTSP"
-
-msgid "pgr_withPointsCostMatrix"
-msgstr "pgr_withPointsCostMatrix"
 
 msgid "pgr_maxFlowPushRelabel(one to one)"
 msgstr "pgr_maxFlowPushRelabel(一对一)"
@@ -18909,6 +19053,9 @@ msgstr ""
 msgid "Improvements"
 msgstr "改进"
 
+msgid "pgr_nodeNetwork"
+msgstr "pgr_nodeNetwork"
+
 msgid "Adding a row_where and outall optional parameters"
 msgstr "添加 row_where 和 outall 可选参数"
 
@@ -18966,9 +19113,6 @@ msgstr "pgr_withPointsDD （单顶点）"
 msgid "pgr_withPointsDD(multiple vertices)"
 msgstr "pgr_withPointsDD（多顶点）"
 
-msgid "pgr_withPointsKSP"
-msgstr "pgr_withPointsKSP"
-
 msgid "pgr_dijkstraVia"
 msgstr "pgr_dijkstraVia"
 
@@ -19014,17 +19158,11 @@ msgstr "pgr_dijkstra（多对一）"
 msgid "pgr_dijkstra(many to many)"
 msgstr "pgr_dijkstra（多对多）"
 
-msgid "pgr_drivingDistance(multiple vertices)"
-msgstr "pgr_drivingDistance （多顶点）"
-
 msgid "Refactored"
 msgstr "重构"
 
 msgid "pgr_dijkstra(one to one)"
 msgstr "pgr_dijkstra（一对一）"
-
-msgid "pgr_drivingDistance(single vertex)"
-msgstr "pgr_drivingDistance （单顶点）"
 
 msgid ""
 "pgr_alphaShape function now can generate better (multi)polygon with holes "
@@ -19785,9 +19923,10 @@ msgstr ""
 "与表关联的属性有助于指示图是有向的还是无向的，边是否是有向图上的单向，并且根"
 "据最终应用程序的需要，需要创建合适的拓扑。"
 
+#, fuzzy
 msgid ""
-"pgRouting suplies some functions to create a routing topology and to analyze "
-"the topology."
+"pgRouting supplies some functions to create a routing topology and to "
+"analyze the topology."
 msgstr "pgRouting 提供一些函数来创建路由拓扑并分析拓扑。"
 
 msgid "Additional functions to create a graph:"
@@ -20207,3 +20346,395 @@ msgstr "pgr_withPointsDD 是 **带有点** 的 pgr_drivenDistance"
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia 是 pgr_dijkstraVia **with points** 的版本"
 
+#~ msgid "The queries use the :doc:`sampledata` network."
+#~ msgstr "查询使用 :doc:`sampledata` 网络。"
+
+#, fuzzy
+#~ msgid "See also"
+#~ msgstr "另请参阅"
+
+#~ msgid "New overload functions:"
+#~ msgstr "新的重载函数："
+
+#~ msgid "New **Official** function"
+#~ msgstr "新函数 **Official**"
+
+#~ msgid ":doc:`sampledata` network."
+#~ msgstr ":doc:`sampledata` 网络。"
+
+#~ msgid ""
+#~ "``pgr_aStar`` (`One to One`_) added ``start_vid`` and ``end_vid`` columns."
+#~ msgstr "``pgr_aStar`` (`一对一`_) 增加 ``start_vid`` 和 ``end_vid`` 列."
+
+#~ msgid "``pgr_aStar`` (`One to Many`_) added ``end_vid`` column."
+#~ msgstr "``pgr_aStar`` (`一对多`_) 增加 ``end_vid`` 列."
+
+#~ msgid "``pgr_aStar`` (`Many to One`_) added ``start_vid`` column."
+#~ msgstr "``pgr_aStar`` (`多对一`_) 增加 ``start_vid`` 列."
+
+#~ msgid "New **proposed** signature:"
+#~ msgstr "新 **拟议** 的签名："
+
+#~ msgid "``pgr_aStar`` (`Combinations`_)"
+#~ msgstr "``pgr_aStar`` (`组合`_)"
+
+#~ msgid "New **Proposed** signatures:"
+#~ msgstr "新 **拟议** 签名："
+
+#~ msgid "``pgr_aStar`` (`One to Many`_)"
+#~ msgstr "``pgr_aStar`` (`一对多`_)"
+
+#~ msgid "``pgr_aStar`` (`Many to One`_)"
+#~ msgstr "``pgr_aStar`` (`多对一`_)"
+
+#~ msgid "``pgr_aStar`` (`Many to Many`_)"
+#~ msgstr "``pgr_aStar`` (`多对多`_)"
+
+#~ msgid "**Official** ``pgr_aStar`` (`One to One`_)"
+#~ msgstr "**官方** ``pgr_aStar`` (`一对一`_)"
+
+#~ msgid "``pgr_aStarCost`` (`Combinations`_)"
+#~ msgstr "``pgr_aStarCost`` (`组合`_)"
+
+#~ msgid "New **proposed** function"
+#~ msgstr "新 **拟议** 函数"
+
+#~ msgid "The examples use the :doc:`sampledata` network."
+#~ msgstr "这些示例使用 :doc:`sampledata` 网络。"
+
+#~ msgid "New **experimental** function"
+#~ msgstr "新 **实验** 函数"
+
+#~ msgid ""
+#~ "``pgr_bdAstar`` (`One to One`_) added ``start_vid`` and ``end_vid`` "
+#~ "columns."
+#~ msgstr "``pgr_bdAstar`` (`一对一`_) 增加 ``start_vid`` 和 ``end_vid`` 列。"
+
+#~ msgid "``pgr_bdAstar`` (`One to Many`_) added ``end_vid`` column."
+#~ msgstr "``pgr_bdAstar`` (`一对多`_) 增加 ``end_vid`` 列。"
+
+#~ msgid "``pgr_bdAstar`` (`Many to One`_) added ``start_vid`` column."
+#~ msgstr "``pgr_bdAstar`` (`多对一`_) 增加 ``start_vid`` 列。"
+
+#~ msgid "``pgr_bdAstar`` (`Combinations`_)"
+#~ msgstr "``pgr_bdAstar`` (`组合`_)"
+
+#~ msgid "``pgr_bdAstar`` (`One to Many`_)"
+#~ msgstr "``pgr_bdAstar`` (`一对多`_)"
+
+#~ msgid "``pgr_bdAstar`` (`Many to One`_)"
+#~ msgstr "``pgr_bdAstar`` (`多对一`_)"
+
+#~ msgid "``pgr_bdAstar`` (`Many to Many`_)"
+#~ msgstr "``pgr_bdAstar`` (`多对多`_)"
+
+#~ msgid "**Official** ``pgr_bdAstar`` (`One to One`_)"
+#~ msgstr "**官方** ``pgr_bdAstar`` (`一对一`_)"
+
+#~ msgid "``pgr_bdAstarCost`` (`Combinations`_)"
+#~ msgstr "``pgr_bdAstarCost`` (`组合`_)"
+
+#~ msgid "pgr_bdDijkstra(`Combinations`_)"
+#~ msgstr "pgr_bdDijkstra(`组合`_)"
+
+#~ msgid "New **Proposed** functions:"
+#~ msgstr "新 **拟议** 函数："
+
+#~ msgid "``pgr_bdDijkstra`` (`One to Many`_)"
+#~ msgstr "``pgr_bdDijkstra`` (`一对多`_)"
+
+#~ msgid "``pgr_bdDijkstra`` (`Many to One`_)"
+#~ msgstr "``pgr_bdDijkstra`` (`多对一`_)"
+
+#~ msgid "``pgr_bdDijkstra`` (`Many to Many`_)"
+#~ msgstr "``pgr_bdDijkstra`` (`多对多`_)"
+
+#~ msgid "**Official** ``pgr_bdDijkstra`` (`One to One`_)"
+#~ msgstr "**官方** ``pgr_bdDijkstra`` (`一对一`_)"
+
+#~ msgid ""
+#~ "https://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/"
+#~ "EPP%20shortest%20path%20algorithms.pdf"
+#~ msgstr ""
+#~ "https://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/"
+#~ "EPP%20shortest%20path%20algorithms.pdf"
+
+#~ msgid "``pgr_bdDijkstraCost`` (`Combinations`_)"
+#~ msgstr "``pgr_bdDijkstraCost`` (`组合`_)"
+
+#~ msgid "``pgr_bellmanFord`` (`Combinations`_)"
+#~ msgstr "``pgr_bellmanFord`` (`组合`_)"
+
+#~ msgid "New **experimental** signatures:"
+#~ msgstr "新 **实验** 签名："
+
+#~ msgid "``pgr_bellmanFord`` (`One to One`_)"
+#~ msgstr "``pgr_bellmanFord`` (`一对一`_)"
+
+#~ msgid "``pgr_bellmanFord`` (`One to Many`_)"
+#~ msgstr "``pgr_bellmanFord`` (`一对多`_)"
+
+#~ msgid "``pgr_bellmanFord`` (`Many to One`_)"
+#~ msgstr "``pgr_bellmanFord`` (`多对一`_)"
+
+#~ msgid "``pgr_bellmanFord`` (`Many to Many`_)"
+#~ msgstr "``pgr_bellmanFord`` (`多对多`_)"
+
+#~ msgid "New **experimental** function:"
+#~ msgstr "新的 **实验** 函数："
+
+#~ msgid "Queries use the :doc:`sampledata` network."
+#~ msgstr "查询使用 :doc:`sampledata` 网络。"
+
+#~ msgid ""
+#~ "Boost: `Biconnected components <https://www.boost.org/libs/graph/doc/"
+#~ "biconnected_components.html>`__"
+#~ msgstr ""
+#~ "Boost: `双连通分量 <https://www.boost.org/libs/graph/doc/"
+#~ "biconnected_components.html>`__"
+
+#~ msgid "pgr_binaryBreadthFirstSearch(`Combinations`_)"
+#~ msgstr "pgr_binaryBreadthFirstSearch(`组合`_)"
+
+#~ msgid "pgr_binaryBreadthFirstSearch(`One to One`_)"
+#~ msgstr "pgr_binaryBreadthFirstSearch(`一对一`_)"
+
+#~ msgid "pgr_binaryBreadthFirstSearch(`One to Many`_)"
+#~ msgstr "pgr_binaryBreadthFirstSearch(`一对多`_)"
+
+#~ msgid "pgr_binaryBreadthFirstSearch(`Many to One`_)"
+#~ msgstr "pgr_binaryBreadthFirstSearch(`多对一`_)"
+
+#~ msgid "pgr_binaryBreadthFirstSearch(`Many to Many`_)"
+#~ msgstr "pgr_binaryBreadthFirstSearch(`多对多`_)"
+
+#~ msgid "New **experimental** signature"
+#~ msgstr "新的 **实验** 签名"
+
+#~ msgid "New **proposed** signature"
+#~ msgstr "新的 **拟议** 签名"
+
+#~ msgid "``pgr_boykovKolmogorov`` (`Combinations`_)"
+#~ msgstr "``pgr_boykovKolmogorov`` (`组合`_)"
+
+#~ msgid "**Proposed** function"
+#~ msgstr "**拟议** 函数"
+
+#~ msgid "New **Experimental** function"
+#~ msgstr "新的 **实验** 函数"
+
+#~ msgid "``pgr_breadthFirstSearch`` (`Single Vertex`_)"
+#~ msgstr "``pgr_breadthFirstSearch`` (`单顶点搜索`_)"
+
+#~ msgid "``pgr_breadthFirstSearch`` (`Multiple Vertices`_)"
+#~ msgstr "``pgr_breadthFirstSearch`` (`多顶点搜索`_)"
+
+#~ msgid "**Supported versions**"
+#~ msgstr "**支持版本**"
+
+#~ msgid "The example uses the :doc:`sampledata` network."
+#~ msgstr "本例使用 :doc:`sampledata` 网络。"
+
+#~ msgid "Promoted to **proposed** function"
+#~ msgstr "升级至 **拟议** 函数"
+
+#~ msgid "``pgr_depthFirstSearch`` (`Single Vertex`_)"
+#~ msgstr "``pgr_depthFirstSearch`` (`单个顶点`_)"
+
+#~ msgid "``pgr_depthFirstSearch`` (`Multiple Vertices`_)"
+#~ msgstr "``pgr_depthFirstSearch`` (`多个顶点`_)"
+
+#~ msgid ""
+#~ "``pgr_dijkstra`` (`One to One`_) added ``start_vid`` and ``end_vid`` "
+#~ "columns."
+#~ msgstr "``pgr_dijkstra`` (`一对一`_)增加``start_vid`` 和``end_vid`` 列。"
+
+#~ msgid "``pgr_dijkstra`` (`One to Many`_) added ``end_vid`` column."
+#~ msgstr "``pgr_dijkstra`` (`一对多`_) 增加``end_vid`` 列。"
+
+#~ msgid "``pgr_dijkstra`` (`Many to One`_) added ``start_vid`` column."
+#~ msgstr "``pgr_dijkstra`` (`多对一`_) 增加 ``start_vid`` 列。"
+
+#~ msgid "``pgr_dijkstra`` (`Combinations`_)"
+#~ msgstr "``pgr_dijkstra`` (`组合`_)"
+
+#~ msgid "**Official** functions"
+#~ msgstr "**官方** 函数"
+
+#~ msgid "New **proposed** functions:"
+#~ msgstr "新的 **拟议** 函数："
+
+#~ msgid "``pgr_dijkstra`` (`One to Many`_)"
+#~ msgstr "``pgr_dijkstra`` (`一对多`_)"
+
+#~ msgid "``pgr_dijkstra`` (`Many to One`_)"
+#~ msgstr "``pgr_dijkstra`` (`多对一`_)"
+
+#~ msgid "``pgr_dijkstra`` (`Many to Many`_)"
+#~ msgstr "``pgr_dijkstra`` (`多对多`_)"
+
+#~ msgid "**Official** ``pgr_dijkstra`` (`One to One`_)"
+#~ msgstr "**官方** ``pgr_dijkstra`` (`一对一`_)"
+
+#~ msgid "``pgr_dijkstraCost`` (`Combinations`_)"
+#~ msgstr "``pgr_dijkstraCost`` (`组合`_)"
+
+#~ msgid "Signature change pgr_drivingDistance(single vertex)"
+#~ msgstr "签名更改 pgr_drivingDistance（单顶点）"
+
+#~ msgid "New **Official** pgr_drivingDistance(multiple vertices)"
+#~ msgstr "新 **官方** pgr_drivingDistance(多顶点)"
+
+#~ msgid "Official:: pgr_drivingDistance(single vertex)"
+#~ msgstr "官方:: pgr_drivingDistance(单顶点)"
+
+#~ msgid "New **proposed** function:"
+#~ msgstr "新的 **拟议** 函数："
+
+#~ msgid "``pgr_edmondsKarp`` (`Combinations`_)"
+#~ msgstr "``pgr_edmondsKarp`` (`组合`_)"
+
+#~ msgid "``pgr_edwardMoore`` (`Combinations`_)"
+#~ msgstr "``pgr_edwardMoore`` (`组合`_)"
+
+#~ msgid "``pgr_edwardMoore`` (`One to One`_)"
+#~ msgstr "``pgr_edwardMoore`` (`一对一`_)"
+
+#~ msgid "``pgr_edwardMoore`` (`One to Many`_)"
+#~ msgstr "``pgr_edwardMoore`` (`一对多`_)"
+
+#~ msgid "``pgr_edwardMoore`` (`Many to One`_)"
+#~ msgstr "``pgr_edwardMoore`` (`多对一`_)"
+
+#~ msgid "``pgr_edwardMoore`` (`Many to Many`_)"
+#~ msgstr "``pgr_edwardMoore`` (`多对多`_)"
+
+#~ msgid "New **proposed** signatures:"
+#~ msgstr "新的 **拟议** 签名："
+
+#~ msgid "``pgr_findCloseEdges`` (`One point`_)"
+#~ msgstr "``pgr_findCloseEdges`` (`一个点`_)"
+
+#~ msgid "``pgr_findCloseEdges`` (`Many points`_)"
+#~ msgstr "``pgr_findCloseEdges`` (`多个点`_)"
+
+#~ msgid "Queries uses the :doc:`sampledata` network."
+#~ msgstr "查询使用 :doc:`sampledata` 网络。"
+
+#~ msgid "Promoted to **proposed** signature."
+#~ msgstr "晋升为**proposed** 签名。"
+
+#~ msgid "``pgr_maxFlow`` (`Combinations`_)"
+#~ msgstr "``pgr_maxFlow`` (`组合`_)"
+
+#~ msgid "New **Proposed** function"
+#~ msgstr "新 **拟议** 的函数"
+
+#~ msgid "``pgr_maxFlowMinCost`` (`Combinations`_)"
+#~ msgstr "``pgr_maxFlowMinCost`` (`组合`_)"
+
+#~ msgid ""
+#~ "https://www.boost.org/libs/graph/doc/"
+#~ "successive_shortest_path_nonnegative_weights.html"
+#~ msgstr ""
+#~ "https://www.boost.org/libs/graph/doc/"
+#~ "successive_shortest_path_nonnegative_weights.html"
+
+#~ msgid "``pgr_maxFlowMinCost_Cost`` (`Combinations`_)"
+#~ msgstr "``pgr_maxFlowMinCost_Cost`` (`组合`_)"
+
+#~ msgid "``pgr_pushRelabel`` (`Combinations`_)"
+#~ msgstr "``pgr_pushRelabel`` (`组合`_)"
+
+#~ msgid "Promoted to **proposed** signature"
+#~ msgstr "晋升为 **拟议** 签名"
+
+#~ msgid "pgr_trsp - Proposed"
+#~ msgstr "pgr_trsp - 拟议"
+
+#~ msgid "New proposed signatures"
+#~ msgstr "新拟议的签名"
+
+#~ msgid "``pgr_trsp`` (`One to One`_)"
+#~ msgstr "``pgr_trsp`` (`一对一`_)"
+
+#~ msgid "``pgr_trsp`` (`One to Many`_)"
+#~ msgstr "``pgr_trsp`` (`一对多`_)"
+
+#~ msgid "``pgr_trsp`` (`Many to One`_)"
+#~ msgstr "``pgr_trsp`` (`多对一`_)"
+
+#~ msgid "``pgr_trsp`` (`Many to Many`_)"
+#~ msgstr "``pgr_trsp`` (`多对多`_)"
+
+#~ msgid "``pgr_trsp`` (`Combinations`_)"
+#~ msgstr "``pgr_trsp`` (`组合`_)"
+
+#~ msgid "``pgr_trspVia`` - Proposed"
+#~ msgstr "``pgr_trspVia`` - 拟议"
+
+#~ msgid "``pgr_trspVia`` (`One Via`_)"
+#~ msgstr "``pgr_trspVia`` (`One Via`_)"
+
+#~ msgid "``pgr_trspVia_withPoints`` - Proposed"
+#~ msgstr "``pgr_trspVia_withPoints`` - 拟议"
+
+#~ msgid "``pgr_trspVia_withPoints`` (`One Via`_)"
+#~ msgstr "``pgr_trspVia_withPoints`` (`One Via`_)"
+
+#~ msgid "pgr_trsp_withPoints - Proposed"
+#~ msgstr "pgr_trsp_withPoints - 拟议"
+
+#~ msgid "``pgr_trsp_withPoints`` (`One to One`_)"
+#~ msgstr "``pgr_trsp_withPoints`` (`一对一`_)"
+
+#~ msgid "``pgr_trsp_withPoints`` (`One to Many`_)"
+#~ msgstr "``pgr_trsp_withPoints`` (`一对多`_)"
+
+#~ msgid "``pgr_trsp_withPoints`` (`Many to One`_)"
+#~ msgstr "``pgr_trsp_withPoints`` (`多对一`_)"
+
+#~ msgid "``pgr_trsp_withPoints`` (`Many to Many`_)"
+#~ msgstr "``pgr_trsp_withPoints`` (`多对多`_)"
+
+#~ msgid "``pgr_trsp_withPoints`` (`Combinations`_)"
+#~ msgstr "``pgr_trsp_withPoints`` (`组合`_)"
+
+#~ msgid "``pgr_withPoints`` - Proposed"
+#~ msgstr "``pgr_withPoints`` -拟议"
+
+#~ msgid "``pgr_withPointsCost`` - Proposed"
+#~ msgstr "``pgr_withPointsCost`` -拟议"
+
+#~ msgid "``pgr_withPointsCostMatrix`` - proposed"
+#~ msgstr "``pgr_withPointsCostMatrix`` - 拟议"
+
+#~ msgid "``pgr_withPointsDD`` - Proposed"
+#~ msgstr "``pgr_withPointsDD`` - 拟议"
+
+#~ msgid "``pgr_withPointsDD`` (`Single vertex`)"
+#~ msgstr "``pgr_withPointsDD`` （`单顶点`）"
+
+#~ msgid "pgr_withPointsKSP - Proposed"
+#~ msgstr "pgr_withPointsKSP -拟议"
+
+#~ msgid "New overload functions"
+#~ msgstr "新的重载函数"
+
+#~ msgid "``pgr_withPointsKSP`` (Combinations)"
+#~ msgstr "``pgr_withPointsKSP`` (组合)"
+
+#~ msgid "``pgr_withPointsVia`` - Proposed"
+#~ msgstr "``pgr_withPointsVia`` - 拟议"
+
+#~ msgid "New **proposed** function ``pgr_withPointsVia`` (`One Via`_)"
+#~ msgstr "新 **拟议** 的函数 ``pgr_withPointsVia`` (`One Via`_)"
+
+#~ msgid "``pgr_degree``"
+#~ msgstr "``pgr_degree``"
+
+#~ msgid "New Proposed functions"
+#~ msgstr "新的拟议函数"
+
+#~ msgid "New Proposed Signatures"
+#~ msgstr "新的拟议签名"
