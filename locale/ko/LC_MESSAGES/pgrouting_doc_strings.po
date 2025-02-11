@@ -1,11 +1,11 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v4.0.0-dev
+# Copyright (C) pgRouting Contributors - Version v4.0
 # This file is distributed under the same license as the pgRouting package.
 # Regina Obe <regina@arrival3d.com>, 2022.
 # Hyung-Gyu Ryoo <hyunggyu.ryoo@gmail.com>, 2022.
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v4.0.0-dev\n"
+"Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-10 14:53+0000\n"
 "PO-Revision-Date: 2022-12-13 12:30+0000\n"
@@ -18762,8 +18762,3 @@ msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
 
 #, fuzzy
-#~ msgid "Migrating functions"
-#~ msgstr ":doc:`routingFunctions`"
-
-#~ msgid ":doc:`pgr_topologicalSort`"
-#~ msgstr ":doc:`pgr_topologicalSort`"

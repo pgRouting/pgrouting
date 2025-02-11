@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v4.0.0-dev
+# Copyright (C) pgRouting Contributors - Version v4.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 # Translators:
@@ -18,7 +18,7 @@
 # Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2024.
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v4.0.0-dev\n"
+"Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-10 14:53+0000\n"
 "PO-Revision-Date: 2024-09-23 01:16+0000\n"
@@ -18872,8 +18872,3 @@ msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
 
 #, fuzzy
-#~ msgid "The following query has restrictions."
-#~ msgstr "次のクエリを実行します。"
-
-#~ msgid "Previous versions of this page"
-#~ msgstr "このページの以前のバージョン"
