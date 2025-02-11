@@ -230,7 +230,7 @@ See Also
   * :doc:`pgr_boykovKolmogorov`
   * :doc:`pgr_pushRelabel`
 
-* `Boost: edmonds_karp_max_flow
+* `Boost: Edmonds Karp max flow
   <https://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html>`__
 * https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm
 

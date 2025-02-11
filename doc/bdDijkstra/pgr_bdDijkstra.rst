@@ -37,7 +37,7 @@ algorithm.
 
 * Version 2.5.0
 
-  * New Proposed signatures:
+  * New proposed signatures:
 
     * pgr_bdDijkstra(One to Many)
     * pgr_bdDijkstra(Many to One)

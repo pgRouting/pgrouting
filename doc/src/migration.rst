@@ -227,7 +227,7 @@ Signatures to be migrated:
     the function ``my_dijkstra`` returns the new additional columns of
     ``pgr_dijkstra``.
 
-Migration of ``pgr_drivingdistance``
+Migration of ``pgr_drivingDistance``
 -------------------------------------------------------------------------------
 
 Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
@@ -238,18 +238,18 @@ Starting from `v3.6.0 <https://docs.pgrouting.org/3.6/en/migration.html>`__
 
 Signatures to be migrated:
 
-* ``pgr_drivingdistance`` (Single vertex)
-* ``pgr_drivingdistance`` (Multiple vertices)
+* pgr_drivingDistance(Single vertex)
+* pgr_drivingDistance(Multiple vertices)
 
 :Before Migration:
 
 Output columns were |result-dij-dd|
 
-* ``pgr_drivingdistance`` (Single vertex)
+* pgr_drivingDistance(Single vertex)
 
   * Does not have ``start_vid`` and ``depth`` result columns.
 
-* ``pgr_drivingdistance`` (Multiple vertices)
+* pgr_drivingDistance(Multiple vertices)
 
   * Has ``from_v`` instead of ``start_vid`` result column.
   * does not have ``depth`` result column.
@@ -258,7 +258,7 @@ Output columns were |result-dij-dd|
 
 * Be aware of the existence and name change of the result columns.
 
-``pgr_drivingdistance`` (Single vertex)
+pgr_drivingDistance(Single vertex)
 ...............................................................................
 
 Using `this
@@ -279,7 +279,7 @@ If needed filter out the added columns, for example, to return the original colu
    :start-after: --drivingdistance2
    :end-before: --drivingdistance3
 
-``pgr_drivingdistance`` (Multiple vertices)
+pgr_drivingDistance(Multiple vertices)
 ...............................................................................
 
 Using `this
@@ -852,7 +852,7 @@ Signature:
 Use ``pgr_withPoints`` when there are no restrictions.
 ...............................................................................
 
-Use :doc:`pgr_withPoints` (Ont to One) instead.
+Use :doc:`pgr_withPoints` (One to One) instead.
 
 .. literalinclude:: migration.queries
    :start-after: --edgesv2
