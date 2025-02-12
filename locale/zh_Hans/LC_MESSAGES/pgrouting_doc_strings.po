@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-12 01:00+0000\n"
-"PO-Revision-Date: 2025-02-12 00:30+0000\n"
+"PO-Revision-Date: 2025-02-12 01:27+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
 "pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -4630,9 +4630,8 @@ msgstr "pgr_maxFlow(组合)"
 msgid "pgr_pushRelabel(Combinations)"
 msgstr "pgr_pushRelabel(组合)"
 
-#, fuzzy
 msgid "code enhancements:"
-msgstr "代码改进"
+msgstr "代码改进："
 
 msgid "Removal of unused C/C++ code"
 msgstr ""
@@ -5195,13 +5194,14 @@ msgstr "查询中仅返回 ``边`` 列。"
 msgid "Migration of ``pgr_primDD`` / ``pgr_primBFS`` / ``pgr_primDFS``"
 msgstr "`pgr_primDD`` / `pgr_primBFS`` / `pgr_primDFS`` 的迁移"
 
+#, fuzzy
 msgid ""
 "Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__ :"
 "doc:`pgr_primDD`, :doc:`pgr_primBFS` and :doc:`pgr_primDFS` result columns "
 "are being standardized."
 msgstr ""
-"Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__ :"
-"doc:`pgr_primDD`, :doc:`pgr_primBFS` and :doc:`pgr_primDFS` result columns "
+"Starting from `v3.7.0 <https://docs.pgrouting.org/3.7/en/migration.html>`__ "
+":doc:`pgr_primDD`, :doc:`pgr_primBFS` and :doc:`pgr_primDFS` result columns "
 "are being standardized."
 
 msgid "``pgr_primDD``"
@@ -5430,9 +5430,8 @@ msgstr "如果需要，过滤掉附加列，例如，返回原始列："
 msgid "Migration of ``pgr_trsp`` (Vertices)"
 msgstr "迁移 ``pgr_trsp`` （顶点）"
 
-#, fuzzy
 msgid "Signature:"
-msgstr "标识"
+msgstr "标识："
 
 #, fuzzy
 msgid "Deprecated"
@@ -8296,7 +8295,7 @@ msgstr "pgr_eucledianTSP 的名称更改"
 
 #, fuzzy
 msgid "New official function."
-msgstr "新函数 official"
+msgstr "新函数 official。"
 
 msgid ""
 "Any duplicated identifier will be ignored. The coordinates that will be kept"
@@ -11903,16 +11902,14 @@ msgstr "结果列名称更改： ``from_v``改为 ``start_vid``。"
 msgid "Added ``depth`` and ``pred`` result columns."
 msgstr "添加了 ``depth`` 和``pred`` 结果列。"
 
-#, fuzzy
 msgid "Signature change:"
-msgstr "签名变更"
+msgstr "签名变更："
 
 msgid "pgr_drivingDistance(single vertex)"
 msgstr "pgr_drivingDistance （单顶点）"
 
-#, fuzzy
 msgid "New official signature:"
-msgstr "新签名"
+msgstr "新签名："
 
 msgid "pgr_drivingDistance(multiple vertices)"
 msgstr "pgr_drivingDistance （多顶点）"
@@ -17159,6 +17156,7 @@ msgstr "转弯限制"
 msgid "Via with turn restrictions"
 msgstr "有转弯限制的通道"
 
+#, fuzzy
 msgid "pgr_trspVia(One Via)"
 msgstr "pgr_trspVia(One Via)"
 
@@ -18602,9 +18600,8 @@ msgstr ""
 msgid "pgr_bdDijkstra"
 msgstr "pgr_bdDijkstra"
 
-#, fuzzy
 msgid "Deprecated signatures."
-msgstr "弃用签名"
+msgstr "弃用签名。"
 
 msgid "pgr_bddijkstra - use pgr_bdDijkstra instead"
 msgstr "pgr_bddijkstra - 使用 pgr_bdDijkstra代替"
