@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-11 23:18+0000\n"
+"POT-Creation-Date: 2025-02-12 01:00+0000\n"
 "PO-Revision-Date: 2022-12-13 12:30+0000\n"
 "Last-Translator: Hyung-Gyu Ryoo <hyunggyu.ryoo@gmail.com>\n"
 "Language-Team: Korean <https://weblate.osgeo.org/projects/pgrouting/"
@@ -2588,7 +2588,7 @@ msgid ""
 "ending vertex:"
 msgstr ""
 
-msgid "It is expected to terminate faster than pgr_astar"
+msgid "It is expected to terminate faster than pgr_aStar"
 msgstr ""
 
 msgid ":doc:`aStar-family`"
@@ -8008,8 +8008,9 @@ msgstr ":doc:`pgr_withPointsCostMatrix`"
 msgid "pgr_aStar(Many to Many)"
 msgstr ":doc:`pgr_withPointsCostMatrix`"
 
-msgid "Signature change on pgr_astar(One to One)"
-msgstr ""
+#, fuzzy
+msgid "Signature change on pgr_aStar(One to One)"
+msgstr ":doc:`pgr_withPointsCostMatrix`"
 
 msgid ""
 "The results are equivalent to the union of the results of the `pgr_aStar(` "
@@ -16613,20 +16614,8 @@ msgid "pgr_aStarCost(Many to Many)"
 msgstr ":doc:`pgr_withPointsCostMatrix`"
 
 #, fuzzy
-msgid "pgr_aStarCostMatrix(One to One)"
-msgstr ":doc:`pgr_withPointsCostMatrix`"
-
-#, fuzzy
-msgid "pgr_aStarCostMatrix(One to Many)"
-msgstr ":doc:`pgr_withPointsCostMatrix`"
-
-#, fuzzy
-msgid "pgr_aStarCostMatrix(Many to One)"
-msgstr ":doc:`pgr_withPointsCostMatrix`"
-
-#, fuzzy
-msgid "pgr_aStarCostMatrix(Many to Many)"
-msgstr ":doc:`pgr_withPointsCostMatrix`"
+msgid "pgr_aStarCostMatrix"
+msgstr ":doc:`pgr_aStarCostMatrix`"
 
 msgid "bdAstar Family"
 msgstr ""
@@ -16647,21 +16636,8 @@ msgstr ":doc:`pgr_withPointsCostMatrix`"
 msgid "pgr_bdAstarCost(Many to Many)"
 msgstr ":doc:`pgr_withPointsCostMatrix`"
 
-#, fuzzy
-msgid "pgr_bdAstarCostMatrix(One to One)"
-msgstr ":doc:`pgr_withPointsCostMatrix`"
-
-#, fuzzy
-msgid "pgr_bdAstarCostMatrix(One to Many)"
-msgstr ":doc:`pgr_withPointsCostMatrix`"
-
-#, fuzzy
-msgid "pgr_bdAstarCostMatrix(Many to One)"
-msgstr ":doc:`pgr_withPointsCostMatrix`"
-
-#, fuzzy
-msgid "pgr_bdAstarCostMatrix(Many to Many)"
-msgstr ":doc:`pgr_withPointsCostMatrix`"
+msgid "pgr_bdAstarCostMatrix"
+msgstr ""
 
 msgid "bdDijkstra Family"
 msgstr ""
@@ -16682,21 +16658,8 @@ msgstr ":doc:`pgr_withPointsCostMatrix`"
 msgid "pgr_bdDijkstraCost(Many to Many)"
 msgstr ":doc:`pgr_withPointsCostMatrix`"
 
-#, fuzzy
-msgid "pgr_bdDijkstraCostMatrix(One to One)"
-msgstr ":doc:`pgr_withPointsCostMatrix`"
-
-#, fuzzy
-msgid "pgr_bdDijkstraCostMatrix(One to Many)"
-msgstr ":doc:`pgr_withPointsCostMatrix`"
-
-#, fuzzy
-msgid "pgr_bdDijkstraCostMatrix(Many to One)"
-msgstr ":doc:`pgr_withPointsCostMatrix`"
-
-#, fuzzy
-msgid "pgr_bdDijkstraCostMatrix(Many to Many)"
-msgstr ":doc:`pgr_withPointsCostMatrix`"
+msgid "pgr_bdDijkstraCostMatrix"
+msgstr ""
 
 msgid "Flow Family"
 msgstr ""
@@ -16963,7 +16926,7 @@ msgstr ""
 msgid "pgr_johnson"
 msgstr ""
 
-msgid "pgr_astar"
+msgid "pgr_aStar"
 msgstr ""
 
 msgid "pgr_bdAstar"
@@ -17195,12 +17158,6 @@ msgstr ""
 msgid "pgr_bdAstar(One to One)"
 msgstr ":doc:`pgr_withPointsCostMatrix`"
 
-msgid "pgr_bdAstarCostMatrix"
-msgstr ""
-
-msgid "pgr_bdDijkstraCostMatrix"
-msgstr ""
-
 msgid "pgr_lineGraph"
 msgstr ""
 
@@ -17281,37 +17238,6 @@ msgstr ""
 msgid "pgr_bdDijkstra"
 msgstr ""
 
-#, fuzzy
-msgid "pgr_astar(One to Many)"
-msgstr ":doc:`pgr_withPointsCostMatrix`"
-
-#, fuzzy
-msgid "pgr_astar(Many to One)"
-msgstr ":doc:`pgr_withPointsCostMatrix`"
-
-#, fuzzy
-msgid "pgr_astar(Many to Many)"
-msgstr ":doc:`pgr_withPointsCostMatrix`"
-
-#, fuzzy
-msgid "pgr_astarCost(One to One)"
-msgstr ":doc:`pgr_withPointsCostMatrix`"
-
-#, fuzzy
-msgid "pgr_astarCost(One to Many)"
-msgstr ":doc:`pgr_withPointsCostMatrix`"
-
-#, fuzzy
-msgid "pgr_astarCost(Many to One)"
-msgstr ":doc:`pgr_withPointsCostMatrix`"
-
-#, fuzzy
-msgid "pgr_astarCost(Many to Many)"
-msgstr ":doc:`pgr_withPointsCostMatrix`"
-
-msgid "pgr_astarCostMatrix"
-msgstr ""
-
 msgid "Deprecated signatures."
 msgstr ""
 
@@ -17384,9 +17310,6 @@ msgstr ""
 msgid "pgr_TSP"
 msgstr ""
 
-msgid "pgr_aStar"
-msgstr ""
-
 msgid "pgr_eucledianTSP"
 msgstr ""
 
@@ -17446,7 +17369,7 @@ msgstr ""
 msgid "pgr_tsp - use pgr_TSP or pgr_eucledianTSP instead"
 msgstr ""
 
-msgid "pgr_astar - use pgr_aStar instead"
+msgid "pgr_aStar - use pgr_aStar instead"
 msgstr ""
 
 msgid "pgr_flip_edges"
@@ -18761,6 +18684,82 @@ msgstr ""
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
+
+#, fuzzy
+#~ msgid "pgr_aStarCostMatrix(One to One)"
+#~ msgstr ":doc:`pgr_withPointsCostMatrix`"
+
+#, fuzzy
+#~ msgid "pgr_aStarCostMatrix(One to Many)"
+#~ msgstr ":doc:`pgr_withPointsCostMatrix`"
+
+#, fuzzy
+#~ msgid "pgr_aStarCostMatrix(Many to One)"
+#~ msgstr ":doc:`pgr_withPointsCostMatrix`"
+
+#, fuzzy
+#~ msgid "pgr_aStarCostMatrix(Many to Many)"
+#~ msgstr ":doc:`pgr_withPointsCostMatrix`"
+
+#, fuzzy
+#~ msgid "pgr_bdAstarCostMatrix(One to One)"
+#~ msgstr ":doc:`pgr_withPointsCostMatrix`"
+
+#, fuzzy
+#~ msgid "pgr_bdAstarCostMatrix(One to Many)"
+#~ msgstr ":doc:`pgr_withPointsCostMatrix`"
+
+#, fuzzy
+#~ msgid "pgr_bdAstarCostMatrix(Many to One)"
+#~ msgstr ":doc:`pgr_withPointsCostMatrix`"
+
+#, fuzzy
+#~ msgid "pgr_bdAstarCostMatrix(Many to Many)"
+#~ msgstr ":doc:`pgr_withPointsCostMatrix`"
+
+#, fuzzy
+#~ msgid "pgr_bdDijkstraCostMatrix(One to One)"
+#~ msgstr ":doc:`pgr_withPointsCostMatrix`"
+
+#, fuzzy
+#~ msgid "pgr_bdDijkstraCostMatrix(One to Many)"
+#~ msgstr ":doc:`pgr_withPointsCostMatrix`"
+
+#, fuzzy
+#~ msgid "pgr_bdDijkstraCostMatrix(Many to One)"
+#~ msgstr ":doc:`pgr_withPointsCostMatrix`"
+
+#, fuzzy
+#~ msgid "pgr_bdDijkstraCostMatrix(Many to Many)"
+#~ msgstr ":doc:`pgr_withPointsCostMatrix`"
+
+#, fuzzy
+#~ msgid "pgr_astar(One to Many)"
+#~ msgstr ":doc:`pgr_withPointsCostMatrix`"
+
+#, fuzzy
+#~ msgid "pgr_astar(Many to One)"
+#~ msgstr ":doc:`pgr_withPointsCostMatrix`"
+
+#, fuzzy
+#~ msgid "pgr_astar(Many to Many)"
+#~ msgstr ":doc:`pgr_withPointsCostMatrix`"
+
+#, fuzzy
+#~ msgid "pgr_astarCost(One to One)"
+#~ msgstr ":doc:`pgr_withPointsCostMatrix`"
+
+#, fuzzy
+#~ msgid "pgr_astarCost(One to Many)"
+#~ msgstr ":doc:`pgr_withPointsCostMatrix`"
+
+#, fuzzy
+#~ msgid "pgr_astarCost(Many to One)"
+#~ msgstr ":doc:`pgr_withPointsCostMatrix`"
+
+#, fuzzy
+#~ msgid "pgr_astarCost(Many to Many)"
+#~ msgstr ":doc:`pgr_withPointsCostMatrix`"
 
 #, fuzzy
 #~ msgid "``pgr_drivingdistance`` (Single vertex)"

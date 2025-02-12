@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-11 23:18+0000\n"
+"POT-Creation-Date: 2025-02-12 01:00+0000\n"
 "PO-Revision-Date: 2025-02-12 00:30+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
@@ -2667,7 +2667,8 @@ msgid ""
 "ending vertex:"
 msgstr "对于起始顶点和结束顶点之间存在路径的大型图:"
 
-msgid "It is expected to terminate faster than pgr_astar"
+#, fuzzy
+msgid "It is expected to terminate faster than pgr_aStar"
 msgstr "预计终止速度比 pgr_astar 更快"
 
 msgid ":doc:`aStar-family`"
@@ -8424,7 +8425,8 @@ msgstr "pgr_aStar(多对一）"
 msgid "pgr_aStar(Many to Many)"
 msgstr "pgr_aStar(多对多）"
 
-msgid "Signature change on pgr_astar(One to One)"
+#, fuzzy
+msgid "Signature change on pgr_aStar(One to One)"
 msgstr "签名更改 pgr_aStar(一对一)"
 
 msgid ""
@@ -17923,20 +17925,8 @@ msgid "pgr_aStarCost(Many to Many)"
 msgstr "pgr_aStarCost（多对多）"
 
 #, fuzzy
-msgid "pgr_aStarCostMatrix(One to One)"
-msgstr "pgr_aStarCostMatrix(一对一)"
-
-#, fuzzy
-msgid "pgr_aStarCostMatrix(One to Many)"
-msgstr "pgr_aStarCostMatrix (一对多)"
-
-#, fuzzy
-msgid "pgr_aStarCostMatrix(Many to One)"
-msgstr "pgr_aStarCostMatrix (多对一)"
-
-#, fuzzy
-msgid "pgr_aStarCostMatrix(Many to Many)"
-msgstr "pgr_aStarCostMatrix（多对多）"
+msgid "pgr_aStarCostMatrix"
+msgstr "pgr_astarCostMatrix"
 
 msgid "bdAstar Family"
 msgstr "bdAstar 族"
@@ -17957,21 +17947,8 @@ msgstr "pgr_bdAstarCost （多对一）"
 msgid "pgr_bdAstarCost(Many to Many)"
 msgstr "pgr_bdAstarCost (多对多)"
 
-#, fuzzy
-msgid "pgr_bdAstarCostMatrix(One to One)"
-msgstr "pgr_bdAstarCostMatrix(一对一)"
-
-#, fuzzy
-msgid "pgr_bdAstarCostMatrix(One to Many)"
-msgstr "pgr_bdAstarCostMatrix(一对多)"
-
-#, fuzzy
-msgid "pgr_bdAstarCostMatrix(Many to One)"
-msgstr "pgr_bdAstarCostMatrix （多对一）"
-
-#, fuzzy
-msgid "pgr_bdAstarCostMatrix(Many to Many)"
-msgstr "pgr_bdAstarCostMatrix （多对多）"
+msgid "pgr_bdAstarCostMatrix"
+msgstr "pgr_bdAstarCostMatrix"
 
 msgid "bdDijkstra Family"
 msgstr "bdDijkstra族"
@@ -17992,21 +17969,8 @@ msgstr "pgr_bdDijkstraCost (多对一)"
 msgid "pgr_bdDijkstraCost(Many to Many)"
 msgstr "pgr_bdDijkstraCost（多对多）"
 
-#, fuzzy
-msgid "pgr_bdDijkstraCostMatrix(One to One)"
-msgstr "pgr_bdDijkstraCostMatrix(一对一)"
-
-#, fuzzy
-msgid "pgr_bdDijkstraCostMatrix(One to Many)"
-msgstr "pgr_bdDijkstraCostMatrix(一对多)"
-
-#, fuzzy
-msgid "pgr_bdDijkstraCostMatrix(Many to One)"
-msgstr "pgr_bdDijkstraCostMatrix (多对一)"
-
-#, fuzzy
-msgid "pgr_bdDijkstraCostMatrix(Many to Many)"
-msgstr "pgr_bdDijkstraCostMatrix（多对多）"
+msgid "pgr_bdDijkstraCostMatrix"
+msgstr "pgr_bdDijkstraCostMatrix"
 
 msgid "Flow Family"
 msgstr "Flow族"
@@ -18294,8 +18258,8 @@ msgstr "pgr_floydWarshall"
 msgid "pgr_johnson"
 msgstr "pgr_johnson"
 
-msgid "pgr_astar"
-msgstr "pgr_astar"
+msgid "pgr_aStar"
+msgstr "pgr_aStar"
 
 msgid "pgr_bdAstar"
 msgstr "pgr_bdAstar"
@@ -18550,12 +18514,6 @@ msgstr "新签名"
 msgid "pgr_bdAstar(One to One)"
 msgstr "pgr_bdAstar（一对一）"
 
-msgid "pgr_bdAstarCostMatrix"
-msgstr "pgr_bdAstarCostMatrix"
-
-msgid "pgr_bdDijkstraCostMatrix"
-msgstr "pgr_bdDijkstraCostMatrix"
-
 msgid "pgr_lineGraph"
 msgstr "pgr_lineGraph"
 
@@ -18645,37 +18603,6 @@ msgid "pgr_bdDijkstra"
 msgstr "pgr_bdDijkstra"
 
 #, fuzzy
-msgid "pgr_astar(One to Many)"
-msgstr "pgr_aStar(一对多）"
-
-#, fuzzy
-msgid "pgr_astar(Many to One)"
-msgstr "pgr_aStar(多对一）"
-
-#, fuzzy
-msgid "pgr_astar(Many to Many)"
-msgstr "pgr_aStar(多对多）"
-
-#, fuzzy
-msgid "pgr_astarCost(One to One)"
-msgstr "pgr_astarCost(一对一)"
-
-#, fuzzy
-msgid "pgr_astarCost(One to Many)"
-msgstr "pgr_astarCost(一对多)"
-
-#, fuzzy
-msgid "pgr_astarCost(Many to One)"
-msgstr "pgr_astarCost(多对一)"
-
-#, fuzzy
-msgid "pgr_astarCost(Many to Many)"
-msgstr "pgr_astarCost（多对多）"
-
-msgid "pgr_astarCostMatrix"
-msgstr "pgr_astarCostMatrix"
-
-#, fuzzy
 msgid "Deprecated signatures."
 msgstr "弃用签名"
 
@@ -18757,9 +18684,6 @@ msgstr ""
 msgid "pgr_TSP"
 msgstr "pgr_TSP"
 
-msgid "pgr_aStar"
-msgstr "pgr_aStar"
-
 msgid "pgr_eucledianTSP"
 msgstr "pgr_eucledianTSP"
 
@@ -18820,7 +18744,8 @@ msgstr "pgr_contractGraph"
 msgid "pgr_tsp - use pgr_TSP or pgr_eucledianTSP instead"
 msgstr "pgr_tsp - 使用 pgr_TSP 或 pgr_eucledianTSP 代替"
 
-msgid "pgr_astar - use pgr_aStar instead"
+#, fuzzy
+msgid "pgr_aStar - use pgr_aStar instead"
 msgstr "pgr_astar - 使用 pgr_aStar 代替"
 
 msgid "pgr_flip_edges"
@@ -20217,6 +20142,85 @@ msgstr "pgr_withPointsDD 是 **带有点** 的 pgr_drivenDistance"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia 是 pgr_dijkstraVia **with points** 的版本"
+
+#, fuzzy
+#~ msgid "pgr_aStarCostMatrix(One to One)"
+#~ msgstr "pgr_aStarCostMatrix(一对一)"
+
+#, fuzzy
+#~ msgid "pgr_aStarCostMatrix(One to Many)"
+#~ msgstr "pgr_aStarCostMatrix (一对多)"
+
+#, fuzzy
+#~ msgid "pgr_aStarCostMatrix(Many to One)"
+#~ msgstr "pgr_aStarCostMatrix (多对一)"
+
+#, fuzzy
+#~ msgid "pgr_aStarCostMatrix(Many to Many)"
+#~ msgstr "pgr_aStarCostMatrix（多对多）"
+
+#, fuzzy
+#~ msgid "pgr_bdAstarCostMatrix(One to One)"
+#~ msgstr "pgr_bdAstarCostMatrix(一对一)"
+
+#, fuzzy
+#~ msgid "pgr_bdAstarCostMatrix(One to Many)"
+#~ msgstr "pgr_bdAstarCostMatrix(一对多)"
+
+#, fuzzy
+#~ msgid "pgr_bdAstarCostMatrix(Many to One)"
+#~ msgstr "pgr_bdAstarCostMatrix （多对一）"
+
+#, fuzzy
+#~ msgid "pgr_bdAstarCostMatrix(Many to Many)"
+#~ msgstr "pgr_bdAstarCostMatrix （多对多）"
+
+#, fuzzy
+#~ msgid "pgr_bdDijkstraCostMatrix(One to One)"
+#~ msgstr "pgr_bdDijkstraCostMatrix(一对一)"
+
+#, fuzzy
+#~ msgid "pgr_bdDijkstraCostMatrix(One to Many)"
+#~ msgstr "pgr_bdDijkstraCostMatrix(一对多)"
+
+#, fuzzy
+#~ msgid "pgr_bdDijkstraCostMatrix(Many to One)"
+#~ msgstr "pgr_bdDijkstraCostMatrix (多对一)"
+
+#, fuzzy
+#~ msgid "pgr_bdDijkstraCostMatrix(Many to Many)"
+#~ msgstr "pgr_bdDijkstraCostMatrix（多对多）"
+
+#~ msgid "pgr_astar"
+#~ msgstr "pgr_astar"
+
+#, fuzzy
+#~ msgid "pgr_astar(One to Many)"
+#~ msgstr "pgr_aStar(一对多）"
+
+#, fuzzy
+#~ msgid "pgr_astar(Many to One)"
+#~ msgstr "pgr_aStar(多对一）"
+
+#, fuzzy
+#~ msgid "pgr_astar(Many to Many)"
+#~ msgstr "pgr_aStar(多对多）"
+
+#, fuzzy
+#~ msgid "pgr_astarCost(One to One)"
+#~ msgstr "pgr_astarCost(一对一)"
+
+#, fuzzy
+#~ msgid "pgr_astarCost(One to Many)"
+#~ msgstr "pgr_astarCost(一对多)"
+
+#, fuzzy
+#~ msgid "pgr_astarCost(Many to One)"
+#~ msgstr "pgr_astarCost(多对一)"
+
+#, fuzzy
+#~ msgid "pgr_astarCost(Many to Many)"
+#~ msgstr "pgr_astarCost（多对多）"
 
 #~ msgid "``pgr_drivingdistance`` (Single vertex)"
 #~ msgstr "``pgr_drivingdistance`` (单个顶点)"
