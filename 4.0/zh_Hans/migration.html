@@ -99,9 +99,9 @@
 <li><a class="reference internal" href="#migration-of-pgr-astar"><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> 迁移</a></li>
 <li><a class="reference internal" href="#migration-of-pgr-bdastar">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-dijkstra">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-drivingdistance">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code></a><ul>
-<li><a class="reference internal" href="#pgr-drivingdistance-single-vertex"><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (单个顶点)</a></li>
-<li><a class="reference internal" href="#pgr-drivingdistance-multiple-vertices"><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (多个顶点)</a></li>
+<li><a class="reference internal" href="#migration-of-pgr-drivingdistance">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><ul>
+<li><a class="reference internal" href="#pgr-drivingdistance-single-vertex">pgr_drivingDistance(Single vertex)</a></li>
+<li><a class="reference internal" href="#pgr-drivingdistance-multiple-vertices">pgr_drivingDistance(Multiple vertices)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#migration-of-pgr-kruskaldd-pgr-kruskalbfs-pgr-kruskaldfs"><cite>pgr_kruskalDD`</cite> / <cite>pgr_kruskalBFS`</cite> / <cite>pgr_kruskalDFS`</cite> 的迁移</a><ul>
@@ -207,9 +207,9 @@
 <li><a class="reference internal" href="#migration-of-pgr-astar"><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> 迁移</a></li>
 <li><a class="reference internal" href="#migration-of-pgr-bdastar">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-dijkstra">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-drivingdistance">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code></a><ul>
-<li><a class="reference internal" href="#pgr-drivingdistance-single-vertex"><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (单个顶点)</a></li>
-<li><a class="reference internal" href="#pgr-drivingdistance-multiple-vertices"><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (多个顶点)</a></li>
+<li><a class="reference internal" href="#migration-of-pgr-drivingdistance">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><ul>
+<li><a class="reference internal" href="#pgr-drivingdistance-single-vertex">pgr_drivingDistance(Single vertex)</a></li>
+<li><a class="reference internal" href="#pgr-drivingdistance-multiple-vertices">pgr_drivingDistance(Multiple vertices)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#migration-of-pgr-kruskaldd-pgr-kruskalbfs-pgr-kruskaldfs"><cite>pgr_kruskalDD`</cite> / <cite>pgr_kruskalBFS`</cite> / <cite>pgr_kruskalDFS`</cite> 的迁移</a><ul>
@@ -308,7 +308,7 @@
 <li><p><a class="reference internal" href="#migration-of-pgr-astar" id="id6"><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> 迁移</a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-bdastar" id="id7">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-dijkstra" id="id8">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-drivingdistance" id="id9">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-drivingdistance" id="id9">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-kruskaldd-pgr-kruskalbfs-pgr-kruskaldfs" id="id10"><cite>pgr_kruskalDD`</cite> / <cite>pgr_kruskalBFS`</cite> / <cite>pgr_kruskalDFS`</cite> 的迁移</a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-ksp" id="id11">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-maxcardinalitymatch" id="id12">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a></p></li>
@@ -728,7 +728,7 @@
 </ul>
 </section>
 <section id="migration-of-pgr-drivingdistance">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">迁移 <code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code></a><a class="headerlink" href="#migration-of-pgr-drivingdistance" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><a class="headerlink" href="#migration-of-pgr-drivingdistance" title="Link to this heading">¶</a></h2>
 <p>从 <a class="reference external" href="https://docs.pgrouting.org/3.6/en/migration.html">v3.6.0</a> <a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">驾驶距离</span></a> 结果列开始标准化。</p>
 <dl class="field-list simple">
 <dt class="field-odd">从<span class="colon">:</span></dt>
@@ -740,8 +740,8 @@
 </dl>
 <p>要迁移的签名：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (单个顶点)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (多个顶点)</p></li>
+<li><p>pgr_drivingDistance(Single vertex)</p></li>
+<li><p>pgr_drivingDistance(Multiple vertices)</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">迁移前<span class="colon">:</span></dt>
@@ -749,12 +749,12 @@
 </dl>
 <p>输出列是 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[from_v,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (单个顶点)</p>
+<li><p>pgr_drivingDistance(Single vertex)</p>
 <ul>
 <li><p>没有 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">depth</span></code> 结果列。</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (多个顶点)</p>
+<li><p>pgr_drivingDistance(Multiple vertices)</p>
 <ul>
 <li><p>有 <code class="docutils literal notranslate"><span class="pre">from_v</span></code> 而不是 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 结果列。</p></li>
 <li><p>没有 <code class="docutils literal notranslate"><span class="pre">depth</span></code> 结果列。</p></li>
@@ -769,7 +769,7 @@
 <li><p>注意结果列的存在和名称变化。</p></li>
 </ul>
 <section id="pgr-drivingdistance-single-vertex">
-<h3><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (单个顶点)<a class="headerlink" href="#pgr-drivingdistance-single-vertex" title="Link to this heading">¶</a></h3>
+<h3>pgr_drivingDistance(Single vertex)<a class="headerlink" href="#pgr-drivingdistance-single-vertex" title="Link to this heading">¶</a></h3>
 <p>使用`这个 &lt;<a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html#single-vertex">https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html#single-vertex</a>&gt;`__ 示例。</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 包含 <strong>起始 vid</strong> 参数值。</p></li>
@@ -825,7 +825,7 @@ FROM pgr_drivingDistance(
 </div>
 </section>
 <section id="pgr-drivingdistance-multiple-vertices">
-<h3><code class="docutils literal notranslate"><span class="pre">pgr_drivingdistance</span></code> (多个顶点)<a class="headerlink" href="#pgr-drivingdistance-multiple-vertices" title="Link to this heading">¶</a></h3>
+<h3>pgr_drivingDistance(Multiple vertices)<a class="headerlink" href="#pgr-drivingdistance-multiple-vertices" title="Link to this heading">¶</a></h3>
 <p>使用 <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html#multiple-vertices">这个</a> 示例。</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">from_v`结果列名称更改为</span> <span class="pre">``start_vid</span></code>。</p></li>
@@ -1856,7 +1856,7 @@ FROM pgr_trsp(
 </ul>
 <section id="use-pgr-withpoints-when-there-are-no-restrictions">
 <h3><a class="toc-backref" href="#id24" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> when there are no restrictions.</a><a class="headerlink" href="#use-pgr-withpoints-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
-<p>Use <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints</span></a> (Ont to One) instead.</p>
+<p>Use <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints</span></a> (One to One) instead.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (4, 3)$$,
@@ -2442,7 +2442,7 @@ FROM pgr_trspVia_withPoints(
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 2月 11, 2025.<br/>
+      Last updated on 2月 12, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

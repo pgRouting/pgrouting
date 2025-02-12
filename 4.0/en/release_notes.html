@@ -819,16 +819,16 @@ and modifying signature pgr_KSP</p>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2548">#2548</a> Standarize output
-pgr_drivingdistance</p>
+pgr_drivingDistance</p>
 <ul>
 <li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p>pgr_drivingdistance(Single vertex)</p>
+<li><p>pgr_drivingDistance(Single vertex)</p>
 <ul>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">depth</span></code> and <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> result columns.</p></li>
 </ul>
 </li>
-<li><p>pgr_drivingdistance(Multiple vertices)</p>
+<li><p>pgr_drivingDistance(Multiple vertices)</p>
 <ul>
 <li><p>Result column name change: <code class="docutils literal notranslate"><span class="pre">from_v</span></code> to <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">depth</span></code> and <code class="docutils literal notranslate"><span class="pre">pred</span></code> result columns.</p></li>
@@ -1642,7 +1642,7 @@ information</p></li>
 </ul>
 </li>
 </ul>
-<p class="rubric">New functions</p>
+<p class="rubric">New Functions</p>
 <ul class="simple">
 <li><p>Kruskal family</p>
 <ul>
@@ -1665,69 +1665,69 @@ information</p></li>
 <ul class="simple">
 <li><p>aStar Family</p>
 <ul>
-<li><p>pgr_aStar(one to many)</p></li>
-<li><p>pgr_aStar(many to one)</p></li>
-<li><p>pgr_aStar(many to many)</p></li>
-<li><p>pgr_aStarCost(one to one)</p></li>
-<li><p>pgr_aStarCost(one to many)</p></li>
-<li><p>pgr_aStarCost(many to one)</p></li>
-<li><p>pgr_aStarCost(many to many)</p></li>
-<li><p>pgr_aStarCostMatrix(one to one)</p></li>
-<li><p>pgr_aStarCostMatrix(one to many)</p></li>
-<li><p>pgr_aStarCostMatrix(many to one)</p></li>
-<li><p>pgr_aStarCostMatrix(many to many)</p></li>
+<li><p>pgr_aStar(One to Many)</p></li>
+<li><p>pgr_aStar(Many to One)</p></li>
+<li><p>pgr_aStar(Many to Many)</p></li>
+<li><p>pgr_aStarCost(One to One)</p></li>
+<li><p>pgr_aStarCost(One to Many)</p></li>
+<li><p>pgr_aStarCost(Many to One)</p></li>
+<li><p>pgr_aStarCost(Many to Many)</p></li>
+<li><p>pgr_aStarCostMatrix(One to One)</p></li>
+<li><p>pgr_aStarCostMatrix(One to Many)</p></li>
+<li><p>pgr_aStarCostMatrix(Many to One)</p></li>
+<li><p>pgr_aStarCostMatrix(Many to Many)</p></li>
 </ul>
 </li>
 <li><p>bdAstar Family</p>
 <ul>
-<li><p>pgr_bdAstar(one to many)</p></li>
-<li><p>pgr_bdAstar(many to one)</p></li>
-<li><p>pgr_bdAstar(many to many)</p></li>
-<li><p>pgr_bdAstarCost(one to one)</p></li>
-<li><p>pgr_bdAstarCost(one to many)</p></li>
-<li><p>pgr_bdAstarCost(many to one)</p></li>
-<li><p>pgr_bdAstarCost(many to many)</p></li>
-<li><p>pgr_bdAstarCostMatrix(one to one)</p></li>
-<li><p>pgr_bdAstarCostMatrix(one to many)</p></li>
-<li><p>pgr_bdAstarCostMatrix(many to one)</p></li>
-<li><p>pgr_bdAstarCostMatrix(many to many)</p></li>
+<li><p>pgr_bdAstar(One to Many)</p></li>
+<li><p>pgr_bdAstar(Many to One)</p></li>
+<li><p>pgr_bdAstar(Many to Many)</p></li>
+<li><p>pgr_bdAstarCost(One to One)</p></li>
+<li><p>pgr_bdAstarCost(One to Many)</p></li>
+<li><p>pgr_bdAstarCost(Many to One)</p></li>
+<li><p>pgr_bdAstarCost(Many to Many)</p></li>
+<li><p>pgr_bdAstarCostMatrix(One to One)</p></li>
+<li><p>pgr_bdAstarCostMatrix(One to Many)</p></li>
+<li><p>pgr_bdAstarCostMatrix(Many to One)</p></li>
+<li><p>pgr_bdAstarCostMatrix(Many to Many)</p></li>
 </ul>
 </li>
 <li><p>bdDijkstra Family</p>
 <ul>
-<li><p>pgr_bdDijkstra(one to many)</p></li>
-<li><p>pgr_bdDijkstra(many to one)</p></li>
-<li><p>pgr_bdDijkstra(many to many)</p></li>
-<li><p>pgr_bdDijkstraCost(one to one)</p></li>
-<li><p>pgr_bdDijkstraCost(one to many)</p></li>
-<li><p>pgr_bdDijkstraCost(many to one)</p></li>
-<li><p>pgr_bdDijkstraCost(many to many)</p></li>
-<li><p>pgr_bdDijkstraCostMatrix(one to one)</p></li>
-<li><p>pgr_bdDijkstraCostMatrix(one to many)</p></li>
-<li><p>pgr_bdDijkstraCostMatrix(many to one)</p></li>
-<li><p>pgr_bdDijkstraCostMatrix(many to many)</p></li>
+<li><p>pgr_bdDijkstra(One to Many)</p></li>
+<li><p>pgr_bdDijkstra(Many to One)</p></li>
+<li><p>pgr_bdDijkstra(Many to Many)</p></li>
+<li><p>pgr_bdDijkstraCost(One to One)</p></li>
+<li><p>pgr_bdDijkstraCost(One to Many)</p></li>
+<li><p>pgr_bdDijkstraCost(Many to One)</p></li>
+<li><p>pgr_bdDijkstraCost(Many to Many)</p></li>
+<li><p>pgr_bdDijkstraCostMatrix(One to One)</p></li>
+<li><p>pgr_bdDijkstraCostMatrix(One to Many)</p></li>
+<li><p>pgr_bdDijkstraCostMatrix(Many to One)</p></li>
+<li><p>pgr_bdDijkstraCostMatrix(Many to Many)</p></li>
 </ul>
 </li>
 <li><p>Flow Family</p>
 <ul>
-<li><p>pgr_pushRelabel(one to one)</p></li>
-<li><p>pgr_pushRelabel(one to many)</p></li>
-<li><p>pgr_pushRelabel(many to one)</p></li>
-<li><p>pgr_pushRelabel(many to many)</p></li>
-<li><p>pgr_edmondsKarp(one to one)</p></li>
-<li><p>pgr_edmondsKarp(one to many)</p></li>
-<li><p>pgr_edmondsKarp(many to one)</p></li>
-<li><p>pgr_edmondsKarp(many to many)</p></li>
-<li><p>pgr_boykovKolmogorov (one to one)</p></li>
-<li><p>pgr_boykovKolmogorov (one to many)</p></li>
-<li><p>pgr_boykovKolmogorov (many to one)</p></li>
-<li><p>pgr_boykovKolmogorov (many to many)</p></li>
+<li><p>pgr_pushRelabel(One to One)</p></li>
+<li><p>pgr_pushRelabel(One to Many)</p></li>
+<li><p>pgr_pushRelabel(Many to One)</p></li>
+<li><p>pgr_pushRelabel(Many to Many)</p></li>
+<li><p>pgr_edmondsKarp(One to One)</p></li>
+<li><p>pgr_edmondsKarp(One to Many)</p></li>
+<li><p>pgr_edmondsKarp(Many to One)</p></li>
+<li><p>pgr_edmondsKarp(Many to Many)</p></li>
+<li><p>pgr_boykovKolmogorov (One to One)</p></li>
+<li><p>pgr_boykovKolmogorov (One to Many)</p></li>
+<li><p>pgr_boykovKolmogorov (Many to One)</p></li>
+<li><p>pgr_boykovKolmogorov (Many to Many)</p></li>
 <li><p>pgr_maxCardinalityMatching</p></li>
 <li><p>pgr_maxFlow</p></li>
-<li><p>pgr_edgeDisjointPaths(one to one)</p></li>
-<li><p>pgr_edgeDisjointPaths(one to many)</p></li>
-<li><p>pgr_edgeDisjointPaths(many to one)</p></li>
-<li><p>pgr_edgeDisjointPaths(many to many)</p></li>
+<li><p>pgr_edgeDisjointPaths(One to One)</p></li>
+<li><p>pgr_edgeDisjointPaths(One to Many)</p></li>
+<li><p>pgr_edgeDisjointPaths(Many to One)</p></li>
+<li><p>pgr_edgeDisjointPaths(Many to Many)</p></li>
 </ul>
 </li>
 <li><p>Components family</p>
@@ -2046,31 +2046,31 @@ on Github.</p>
 <ul>
 <li><p>Added path_id, cost and agg_cost columns on the result</p></li>
 <li><p>Parameter names changed</p></li>
-<li><p>The many version results are the union of the one to one version</p></li>
+<li><p>The many version results are the union of the One to One version</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">New Signatures</p>
 <ul class="simple">
-<li><p>pgr_bdAstar(one to one)</p></li>
+<li><p>pgr_bdAstar(One to One)</p></li>
 </ul>
 <p class="rubric">New proposed functions.</p>
 <ul class="simple">
-<li><p>pgr_bdAstar(one to many)</p></li>
-<li><p>pgr_bdAstar(many to one)</p></li>
-<li><p>pgr_bdAstar(many to many)</p></li>
-<li><p>pgr_bdAstarCost(one to one)</p></li>
-<li><p>pgr_bdAstarCost(one to many)</p></li>
-<li><p>pgr_bdAstarCost(many to one)</p></li>
-<li><p>pgr_bdAstarCost(many to many)</p></li>
+<li><p>pgr_bdAstar(One to Many)</p></li>
+<li><p>pgr_bdAstar(Many to One)</p></li>
+<li><p>pgr_bdAstar(Many to Many)</p></li>
+<li><p>pgr_bdAstarCost(One to One)</p></li>
+<li><p>pgr_bdAstarCost(One to Many)</p></li>
+<li><p>pgr_bdAstarCost(Many to One)</p></li>
+<li><p>pgr_bdAstarCost(Many to Many)</p></li>
 <li><p>pgr_bdAstarCostMatrix</p></li>
-<li><p>pgr_bdDijkstra(one to many)</p></li>
-<li><p>pgr_bdDijkstra(many to one)</p></li>
-<li><p>pgr_bdDijkstra(many to many)</p></li>
-<li><p>pgr_bdDijkstraCost(one to one)</p></li>
-<li><p>pgr_bdDijkstraCost(one to many)</p></li>
-<li><p>pgr_bdDijkstraCost(many to one)</p></li>
-<li><p>pgr_bdDijkstraCost(many to many)</p></li>
+<li><p>pgr_bdDijkstra(One to Many)</p></li>
+<li><p>pgr_bdDijkstra(Many to One)</p></li>
+<li><p>pgr_bdDijkstra(Many to Many)</p></li>
+<li><p>pgr_bdDijkstraCost(One to One)</p></li>
+<li><p>pgr_bdDijkstraCost(One to Many)</p></li>
+<li><p>pgr_bdDijkstraCost(Many to One)</p></li>
+<li><p>pgr_bdDijkstraCost(Many to Many)</p></li>
 <li><p>pgr_bdDijkstraCostMatrix</p></li>
 <li><p>pgr_lineGraph</p></li>
 <li><p>pgr_lineGraphFull</p></li>
@@ -2135,20 +2135,20 @@ on Github.</p>
 <h4><a class="toc-backref" href="#id84" role="doc-backlink">pgRouting 2.4.0 Release Notes</a><a class="headerlink" href="#pgrouting-2-4-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.4.0%22+is%3Aclosed">Git closed issues for 2.4.0</a>
 on Github.</p>
-<p class="rubric">New Function.</p>
+<p class="rubric">New Functions</p>
 <ul class="simple">
 <li><p>pgr_bdDijkstra</p></li>
 </ul>
 <p class="rubric">New proposed signatures:</p>
 <ul class="simple">
 <li><p>pgr_maxFlow</p></li>
-<li><p>pgr_astar(one to many)</p></li>
-<li><p>pgr_astar(many to one)</p></li>
-<li><p>pgr_astar(many to many)</p></li>
-<li><p>pgr_astarCost(one to one)</p></li>
-<li><p>pgr_astarCost(one to many)</p></li>
-<li><p>pgr_astarCost(many to one)</p></li>
-<li><p>pgr_astarCost(many to many)</p></li>
+<li><p>pgr_astar(One to Many)</p></li>
+<li><p>pgr_astar(Many to One)</p></li>
+<li><p>pgr_astar(Many to Many)</p></li>
+<li><p>pgr_astarCost(One to One)</p></li>
+<li><p>pgr_astarCost(One to Many)</p></li>
+<li><p>pgr_astarCost(Many to One)</p></li>
+<li><p>pgr_astarCost(Many to Many)</p></li>
 <li><p>pgr_astarCostMatrix</p></li>
 </ul>
 <p class="rubric">Deprecated signatures.</p>
@@ -2215,23 +2215,23 @@ on Github.</p>
 <ul class="simple">
 <li><p>pgr_dijkstraCostMatrix</p></li>
 <li><p>pgr_withPointsCostMatrix</p></li>
-<li><p>pgr_maxFlowPushRelabel(one to one)</p></li>
-<li><p>pgr_maxFlowPushRelabel(one to many)</p></li>
-<li><p>pgr_maxFlowPushRelabel(many to one)</p></li>
-<li><p>pgr_maxFlowPushRelabel(many to many)</p></li>
-<li><p>pgr_maxFlowEdmondsKarp(one to one)</p></li>
-<li><p>pgr_maxFlowEdmondsKarp(one to many)</p></li>
-<li><p>pgr_maxFlowEdmondsKarp(many to one)</p></li>
-<li><p>pgr_maxFlowEdmondsKarp(many to many)</p></li>
-<li><p>pgr_maxFlowBoykovKolmogorov (one to one)</p></li>
-<li><p>pgr_maxFlowBoykovKolmogorov (one to many)</p></li>
-<li><p>pgr_maxFlowBoykovKolmogorov (many to one)</p></li>
-<li><p>pgr_maxFlowBoykovKolmogorov (many to many)</p></li>
+<li><p>pgr_maxFlowPushRelabel(One to One)</p></li>
+<li><p>pgr_maxFlowPushRelabel(One to Many)</p></li>
+<li><p>pgr_maxFlowPushRelabel(Many to One)</p></li>
+<li><p>pgr_maxFlowPushRelabel(Many to Many)</p></li>
+<li><p>pgr_maxFlowEdmondsKarp(One to One)</p></li>
+<li><p>pgr_maxFlowEdmondsKarp(One to Many)</p></li>
+<li><p>pgr_maxFlowEdmondsKarp(Many to One)</p></li>
+<li><p>pgr_maxFlowEdmondsKarp(Many to Many)</p></li>
+<li><p>pgr_maxFlowBoykovKolmogorov (One to One)</p></li>
+<li><p>pgr_maxFlowBoykovKolmogorov (One to Many)</p></li>
+<li><p>pgr_maxFlowBoykovKolmogorov (Many to One)</p></li>
+<li><p>pgr_maxFlowBoykovKolmogorov (Many to Many)</p></li>
 <li><p>pgr_maximumCardinalityMatching</p></li>
-<li><p>pgr_edgeDisjointPaths(one to one)</p></li>
-<li><p>pgr_edgeDisjointPaths(one to many)</p></li>
-<li><p>pgr_edgeDisjointPaths(many to one)</p></li>
-<li><p>pgr_edgeDisjointPaths(many to many)</p></li>
+<li><p>pgr_edgeDisjointPaths(One to One)</p></li>
+<li><p>pgr_edgeDisjointPaths(One to Many)</p></li>
+<li><p>pgr_edgeDisjointPaths(Many to One)</p></li>
+<li><p>pgr_edgeDisjointPaths(Many to Many)</p></li>
 <li><p>pgr_contractGraph</p></li>
 </ul>
 <p class="rubric">Deprecated signatures</p>
@@ -2320,21 +2320,21 @@ on Github.</p>
 <ul class="simple">
 <li><p>pgr_floydWarshall</p></li>
 <li><p>pgr_Johnson</p></li>
-<li><p>pgr_dijkstraCost(one to one)</p></li>
-<li><p>pgr_dijkstraCost(one to many)</p></li>
-<li><p>pgr_dijkstraCost(many to one)</p></li>
-<li><p>pgr_dijkstraCost(many to many)</p></li>
+<li><p>pgr_dijkstraCost(One to One)</p></li>
+<li><p>pgr_dijkstraCost(One to Many)</p></li>
+<li><p>pgr_dijkstraCost(Many to One)</p></li>
+<li><p>pgr_dijkstraCost(Many to Many)</p></li>
 </ul>
 <p class="rubric">Proposed Functionality</p>
 <ul class="simple">
-<li><p>pgr_withPoints(one to one)</p></li>
-<li><p>pgr_withPoints(one to many)</p></li>
-<li><p>pgr_withPoints(many to one)</p></li>
-<li><p>pgr_withPoints(many to many)</p></li>
-<li><p>pgr_withPointsCost(one to one)</p></li>
-<li><p>pgr_withPointsCost(one to many)</p></li>
-<li><p>pgr_withPointsCost(many to one)</p></li>
-<li><p>pgr_withPointsCost(many to many)</p></li>
+<li><p>pgr_withPoints(One to One)</p></li>
+<li><p>pgr_withPoints(One to Many)</p></li>
+<li><p>pgr_withPoints(Many to One)</p></li>
+<li><p>pgr_withPoints(Many to Many)</p></li>
+<li><p>pgr_withPointsCost(One to One)</p></li>
+<li><p>pgr_withPointsCost(One to Many)</p></li>
+<li><p>pgr_withPointsCost(Many to One)</p></li>
+<li><p>pgr_withPointsCost(Many to Many)</p></li>
 <li><p>pgr_withPointsDD(single vertex)</p></li>
 <li><p>pgr_withPointsDD(multiple vertices)</p></li>
 <li><p>pgr_withPointsKSP</p></li>
@@ -2367,14 +2367,14 @@ on Github.</p>
 on Github.</p>
 <p class="rubric">New Signatures</p>
 <ul class="simple">
-<li><p>pgr_dijkstra(one to many)</p></li>
-<li><p>pgr_dijkstra(many to one)</p></li>
-<li><p>pgr_dijkstra(many to many)</p></li>
+<li><p>pgr_dijkstra(One to Many)</p></li>
+<li><p>pgr_dijkstra(Many to One)</p></li>
+<li><p>pgr_dijkstra(Many to Many)</p></li>
 <li><p>pgr_drivingDistance(multiple vertices)</p></li>
 </ul>
 <p class="rubric">Refactored</p>
 <ul class="simple">
-<li><p>pgr_dijkstra(one to one)</p></li>
+<li><p>pgr_dijkstra(One to One)</p></li>
 <li><p>pgr_ksp</p></li>
 <li><p>pgr_drivingDistance(single vertex)</p></li>
 </ul>
@@ -2621,7 +2621,7 @@ file and are kept as a reference.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on Feb 11, 2025.<br/>
+      Last updated on Feb 12, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

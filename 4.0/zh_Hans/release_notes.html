@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="迁移指南" href="migration.html" />
-    <link rel="prev" title="pgr_hawickCircuits - 实验" href="pgr_hawickCircuits.html" />
+    <link rel="prev" title="pgr_hawickCircuits - Experimental" href="pgr_hawickCircuits.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -238,7 +238,7 @@
               
                 
   <li>
-    <a href="pgr_hawickCircuits.html" title="Previous Chapter: pgr_hawickCircuits - 实验"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_hawickCir...</span>
+    <a href="pgr_hawickCircuits.html" title="Previous Chapter: pgr_hawickCircuits - Experimental"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_hawickCir...</span>
     </a>
   </li>
   <li>
@@ -410,7 +410,7 @@
 </ul>
 
   <li>
-    <a href="pgr_hawickCircuits.html" title="Previous Chapter: pgr_hawickCircuits - 实验"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_hawickCir...</span>
+    <a href="pgr_hawickCircuits.html" title="Previous Chapter: pgr_hawickCircuits - Experimental"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_hawickCir...</span>
     </a>
   </li>
   <li>
@@ -799,16 +799,17 @@ columns.</p></li>
 </li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2548">#2548</a> 标准化输出 pgr_drivingdistance</p>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2548">#2548</a> Standarize output
+pgr_drivingDistance</p>
 <ul>
 <li><p>将输出列标准化为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p>pgr_drivingdistance(Single vertex)</p>
+<li><p>pgr_drivingDistance(Single vertex)</p>
 <ul>
 <li><p>添加了 <code class="docutils literal notranslate"><span class="pre">depth</span></code> 和 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 结果列。</p></li>
 </ul>
 </li>
-<li><p>pgr_drivingdistance(Multiple vertices)</p>
+<li><p>pgr_drivingDistance(Multiple vertices)</p>
 <ul>
 <li><p>结果列名称更改： <code class="docutils literal notranslate"><span class="pre">from_v``改为</span> <span class="pre">``start_vid</span></code>。</p></li>
 <li><p>添加了 <code class="docutils literal notranslate"><span class="pre">depth</span></code> 和``pred`` 结果列。</p></li>
@@ -1543,69 +1544,69 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 <ul class="simple">
 <li><p>aStar族</p>
 <ul>
-<li><p>pgr_aStar（一对多）</p></li>
-<li><p>pgr_aStar（多对一）</p></li>
-<li><p>pgr_aStar（多对多）</p></li>
-<li><p>pgr_aStarCost(一对一)</p></li>
-<li><p>pgr_aStarCost(一对多)</p></li>
-<li><p>pgr_aStarCost(多对一)</p></li>
-<li><p>pgr_aStarCost（多对多）</p></li>
-<li><p>pgr_aStarCostMatrix(一对一)</p></li>
-<li><p>pgr_aStarCostMatrix (一对多)</p></li>
-<li><p>pgr_aStarCostMatrix (多对一)</p></li>
-<li><p>pgr_aStarCostMatrix（多对多）</p></li>
+<li><p>pgr_aStar(One to Many)</p></li>
+<li><p>pgr_aStar(Many to One)</p></li>
+<li><p>pgr_aStar(Many to Many)</p></li>
+<li><p>pgr_aStarCost(One to One)</p></li>
+<li><p>pgr_aStarCost(One to Many)</p></li>
+<li><p>pgr_aStarCost(Many to One)</p></li>
+<li><p>pgr_aStarCost(Many to Many)</p></li>
+<li><p>pgr_aStarCostMatrix(One to One)</p></li>
+<li><p>pgr_aStarCostMatrix(One to Many)</p></li>
+<li><p>pgr_aStarCostMatrix(Many to One)</p></li>
+<li><p>pgr_aStarCostMatrix(Many to Many)</p></li>
 </ul>
 </li>
 <li><p>bdAstar 族</p>
 <ul>
-<li><p>pgr_bdAstar（一对多）</p></li>
-<li><p>pgr_bdAstar（多对一）</p></li>
-<li><p>pgr_bdAstar（多对多）</p></li>
-<li><p>pgr_bdAstarCost(一对一)</p></li>
-<li><p>pgr_bdAstarCost(一对多)</p></li>
-<li><p>pgr_bdAstarCost （多对一）</p></li>
-<li><p>pgr_bdAstarCost (多对多)</p></li>
-<li><p>pgr_bdAstarCostMatrix(一对一)</p></li>
-<li><p>pgr_bdAstarCostMatrix(一对多)</p></li>
-<li><p>pgr_bdAstarCostMatrix （多对一）</p></li>
-<li><p>pgr_bdAstarCostMatrix （多对多）</p></li>
+<li><p>pgr_bdAstar(One to Many)</p></li>
+<li><p>pgr_bdAstar(Many to One)</p></li>
+<li><p>pgr_bdAstar(Many to Many)</p></li>
+<li><p>pgr_bdAstarCost(One to One)</p></li>
+<li><p>pgr_bdAstarCost(One to Many)</p></li>
+<li><p>pgr_bdAstarCost(Many to One)</p></li>
+<li><p>pgr_bdAstarCost(Many to Many)</p></li>
+<li><p>pgr_bdAstarCostMatrix(One to One)</p></li>
+<li><p>pgr_bdAstarCostMatrix(One to Many)</p></li>
+<li><p>pgr_bdAstarCostMatrix(Many to One)</p></li>
+<li><p>pgr_bdAstarCostMatrix(Many to Many)</p></li>
 </ul>
 </li>
 <li><p>bdDijkstra族</p>
 <ul>
-<li><p>pgr_bdDijkstra（一对多）</p></li>
-<li><p>pgr_bdDijkstra（多对一）</p></li>
-<li><p>pgr_bdDijkstra（多对多）</p></li>
-<li><p>pgr_bdDijkstraCost (一对一)</p></li>
-<li><p>pgr_bdDijkstraCost(一对多)</p></li>
-<li><p>pgr_bdDijkstraCost (多对一)</p></li>
-<li><p>pgr_bdDijkstraCost（多对多）</p></li>
-<li><p>pgr_bdDijkstraCostMatrix(一对一)</p></li>
-<li><p>pgr_bdDijkstraCostMatrix(一对多)</p></li>
-<li><p>pgr_bdDijkstraCostMatrix (多对一)</p></li>
-<li><p>pgr_bdDijkstraCostMatrix（多对多）</p></li>
+<li><p>pgr_bdDijkstra(One to Many)</p></li>
+<li><p>pgr_bdDijkstra(Many to One)</p></li>
+<li><p>pgr_bdDijkstra(Many to Many)</p></li>
+<li><p>pgr_bdDijkstraCost(One to One)</p></li>
+<li><p>pgr_bdDijkstraCost(One to Many)</p></li>
+<li><p>pgr_bdDijkstraCost(Many to One)</p></li>
+<li><p>pgr_bdDijkstraCost(Many to Many)</p></li>
+<li><p>pgr_bdDijkstraCostMatrix(One to One)</p></li>
+<li><p>pgr_bdDijkstraCostMatrix(One to Many)</p></li>
+<li><p>pgr_bdDijkstraCostMatrix(Many to One)</p></li>
+<li><p>pgr_bdDijkstraCostMatrix(Many to Many)</p></li>
 </ul>
 </li>
 <li><p>Flow族</p>
 <ul>
-<li><p>pgr_pushRelabel(一对一)</p></li>
-<li><p>pgr_pushRelabel(一对多)</p></li>
-<li><p>pgr_pushRelabel(多对一)</p></li>
-<li><p>pgr_pushRelabel(多对多)</p></li>
-<li><p>pgr_edmondsKarp（一对一）</p></li>
-<li><p>pgr_edmondsKarp（一对多）</p></li>
-<li><p>pgr_edmondsKarp（多对一）</p></li>
-<li><p>pgr_edmondsKarp（多对多）</p></li>
-<li><p>pgr_boykovKolmogorov (一对一)</p></li>
-<li><p>pgr_boykovKolmogorov (一对多)</p></li>
-<li><p>pgr_boykovKolmogorov (多对一)</p></li>
-<li><p>pgr_boykovKolmogorov (多对多)</p></li>
+<li><p>pgr_pushRelabel(One to One)</p></li>
+<li><p>pgr_pushRelabel(One to Many)</p></li>
+<li><p>pgr_pushRelabel(Many to One)</p></li>
+<li><p>pgr_pushRelabel(Many to Many)</p></li>
+<li><p>pgr_edmondsKarp(One to One)</p></li>
+<li><p>pgr_edmondsKarp(One to Many)</p></li>
+<li><p>pgr_edmondsKarp(Many to One)</p></li>
+<li><p>pgr_edmondsKarp(Many to Many)</p></li>
+<li><p>pgr_boykovKolmogorov (One to One)</p></li>
+<li><p>pgr_boykovKolmogorov (One to Many)</p></li>
+<li><p>pgr_boykovKolmogorov (Many to One)</p></li>
+<li><p>pgr_boykovKolmogorov (Many to Many)</p></li>
 <li><p>pgr_maxCardinalityMatching</p></li>
 <li><p>pgr_maxFlow</p></li>
-<li><p>pgr_edgeDisjointPaths (一对一)</p></li>
-<li><p>pgr_edgeDisjointPaths （一对多）</p></li>
-<li><p>pgr_edgeDisjointPaths (多对一)</p></li>
-<li><p>pgr_edgeDisjointPaths （多对多）</p></li>
+<li><p>pgr_edgeDisjointPaths(One to One)</p></li>
+<li><p>pgr_edgeDisjointPaths(One to Many)</p></li>
+<li><p>pgr_edgeDisjointPaths(Many to One)</p></li>
+<li><p>pgr_edgeDisjointPaths(Many to Many)</p></li>
 </ul>
 </li>
 <li><p>分量族</p>
@@ -1906,31 +1907,31 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 <ul>
 <li><p>在结果中添加了 path_id、cost 和 agg_cost 列</p></li>
 <li><p>更改参数名称</p></li>
-<li><p>多版本结果是一对一版本的并集</p></li>
+<li><p>The many version results are the union of the One to One version</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">新签名</p>
 <ul class="simple">
-<li><p>pgr_bdAstar（一对一）</p></li>
+<li><p>pgr_bdAstar(One to One)</p></li>
 </ul>
 <p class="rubric">New proposed functions.</p>
 <ul class="simple">
-<li><p>pgr_bdAstar（一对多）</p></li>
-<li><p>pgr_bdAstar（多对一）</p></li>
-<li><p>pgr_bdAstar（多对多）</p></li>
-<li><p>pgr_bdAstarCost(一对一)</p></li>
-<li><p>pgr_bdAstarCost(一对多)</p></li>
-<li><p>pgr_bdAstarCost （多对一）</p></li>
-<li><p>pgr_bdAstarCost (多对多)</p></li>
+<li><p>pgr_bdAstar(One to Many)</p></li>
+<li><p>pgr_bdAstar(Many to One)</p></li>
+<li><p>pgr_bdAstar(Many to Many)</p></li>
+<li><p>pgr_bdAstarCost(One to One)</p></li>
+<li><p>pgr_bdAstarCost(One to Many)</p></li>
+<li><p>pgr_bdAstarCost(Many to One)</p></li>
+<li><p>pgr_bdAstarCost(Many to Many)</p></li>
 <li><p>pgr_bdAstarCostMatrix</p></li>
-<li><p>pgr_bdDijkstra（一对多）</p></li>
-<li><p>pgr_bdDijkstra（多对一）</p></li>
-<li><p>pgr_bdDijkstra（多对多）</p></li>
-<li><p>pgr_bdDijkstraCost (一对一)</p></li>
-<li><p>pgr_bdDijkstraCost(一对多)</p></li>
-<li><p>pgr_bdDijkstraCost (多对一)</p></li>
-<li><p>pgr_bdDijkstraCost（多对多）</p></li>
+<li><p>pgr_bdDijkstra(One to Many)</p></li>
+<li><p>pgr_bdDijkstra(Many to One)</p></li>
+<li><p>pgr_bdDijkstra(Many to Many)</p></li>
+<li><p>pgr_bdDijkstraCost(One to One)</p></li>
+<li><p>pgr_bdDijkstraCost(One to Many)</p></li>
+<li><p>pgr_bdDijkstraCost(Many to One)</p></li>
+<li><p>pgr_bdDijkstraCost(Many to Many)</p></li>
 <li><p>pgr_bdDijkstraCostMatrix</p></li>
 <li><p>pgr_lineGraph</p></li>
 <li><p>pgr_lineGraphFull</p></li>
@@ -1992,20 +1993,20 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 <section id="pgrouting-2-4-0-release-notes">
 <h4><a class="toc-backref" href="#id84" role="doc-backlink">pgRouting 2.4.0 发布说明</a><a class="headerlink" href="#pgrouting-2-4-0-release-notes" title="Link to this heading">¶</a></h4>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 ` 2.4.0Git关闭里程碑 &lt;<a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.4.0%22+is%3Aclosed">https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.4.0%22+is%3Aclosed</a>&gt;`_ 。</p>
-<p class="rubric">New Function.</p>
+<p class="rubric">新函数</p>
 <ul class="simple">
 <li><p>pgr_bdDijkstra</p></li>
 </ul>
 <p class="rubric">新拟议的签名：</p>
 <ul class="simple">
 <li><p>pgr_maxFlow</p></li>
-<li><p>pgr_astar（一对多）</p></li>
-<li><p>pgr_astar（多对一）</p></li>
-<li><p>pgr_astar（多对多）</p></li>
-<li><p>pgr_astarCost(一对一)</p></li>
-<li><p>pgr_astarCost(一对多)</p></li>
-<li><p>pgr_astarCost(多对一)</p></li>
-<li><p>pgr_astarCost（多对多）</p></li>
+<li><p>pgr_astar(One to Many)</p></li>
+<li><p>pgr_astar(Many to One)</p></li>
+<li><p>pgr_astar(Many to Many)</p></li>
+<li><p>pgr_astarCost(One to One)</p></li>
+<li><p>pgr_astarCost(One to Many)</p></li>
+<li><p>pgr_astarCost(Many to One)</p></li>
+<li><p>pgr_astarCost(Many to Many)</p></li>
 <li><p>pgr_astarCostMatrix</p></li>
 </ul>
 <p class="rubric">Deprecated signatures.</p>
@@ -2069,23 +2070,23 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 <ul class="simple">
 <li><p>pgr_dijkstraCostMatrix</p></li>
 <li><p>pgr_withPointsCostMatrix</p></li>
-<li><p>pgr_maxFlowPushRelabel(一对一)</p></li>
-<li><p>pgr_maxFlowPushRelabel(一对多)</p></li>
-<li><p>pgr_maxFlowPushRelabel(多对一)</p></li>
-<li><p>pgr_maxFlowPushRelabel(多对多)</p></li>
-<li><p>pgr_maxFlowEdmondsKarp（一对一）</p></li>
-<li><p>pgr_maxFlowEdmondsKarp（一对多）</p></li>
-<li><p>pgr_maxFlowEdmondsKarp（多对一）</p></li>
-<li><p>pgr_maxFlowEdmondsKarp（多对多）</p></li>
-<li><p>pgr_maxFlowBoykovKolmogorov （一对一）</p></li>
-<li><p>pgr_maxFlowBoykovKolmogorov （一对多）</p></li>
-<li><p>pgr_maxFlowBoykovKolmogorov （多对一）</p></li>
-<li><p>pgr_maxFlowBoykovKolmogorov （多对多）</p></li>
+<li><p>pgr_maxFlowPushRelabel(One to One)</p></li>
+<li><p>pgr_maxFlowPushRelabel(One to Many)</p></li>
+<li><p>pgr_maxFlowPushRelabel(Many to One)</p></li>
+<li><p>pgr_maxFlowPushRelabel(Many to Many)</p></li>
+<li><p>pgr_maxFlowEdmondsKarp(One to One)</p></li>
+<li><p>pgr_maxFlowEdmondsKarp(One to Many)</p></li>
+<li><p>pgr_maxFlowEdmondsKarp(Many to One)</p></li>
+<li><p>pgr_maxFlowEdmondsKarp(Many to Many)</p></li>
+<li><p>pgr_maxFlowBoykovKolmogorov (One to One)</p></li>
+<li><p>pgr_maxFlowBoykovKolmogorov (One to Many)</p></li>
+<li><p>pgr_maxFlowBoykovKolmogorov (Many to One)</p></li>
+<li><p>pgr_maxFlowBoykovKolmogorov (Many to Many)</p></li>
 <li><p>pgr_maximumCardinalityMatching</p></li>
-<li><p>pgr_edgeDisjointPaths (一对一)</p></li>
-<li><p>pgr_edgeDisjointPaths （一对多）</p></li>
-<li><p>pgr_edgeDisjointPaths (多对一)</p></li>
-<li><p>pgr_edgeDisjointPaths （多对多）</p></li>
+<li><p>pgr_edgeDisjointPaths(One to One)</p></li>
+<li><p>pgr_edgeDisjointPaths(One to Many)</p></li>
+<li><p>pgr_edgeDisjointPaths(Many to One)</p></li>
+<li><p>pgr_edgeDisjointPaths(Many to Many)</p></li>
 <li><p>pgr_contractGraph</p></li>
 </ul>
 <p class="rubric">弃用签名</p>
@@ -2169,21 +2170,21 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 <ul class="simple">
 <li><p>pgr_floydWarshall</p></li>
 <li><p>pgr_Johnson</p></li>
-<li><p>pgr_dijkstraCost(一对一)</p></li>
-<li><p>pgr_dijkstraCost(一对多)</p></li>
-<li><p>pgr_dijkstraCost（多对一）</p></li>
-<li><p>pgr_dijkstraCost（多对多）</p></li>
+<li><p>pgr_dijkstraCost(One to One)</p></li>
+<li><p>pgr_dijkstraCost(One to Many)</p></li>
+<li><p>pgr_dijkstraCost(Many to One)</p></li>
+<li><p>pgr_dijkstraCost(Many to Many)</p></li>
 </ul>
 <p class="rubric">建议的功能</p>
 <ul class="simple">
-<li><p>pgr_withPoints(一对一)</p></li>
-<li><p>pgr_withPoints（一对多）</p></li>
-<li><p>pgr_withPoints(多对一)</p></li>
-<li><p>pgr_withPoints(多对多)</p></li>
-<li><p>pgr_withPointsCost(一对一)</p></li>
-<li><p>pgr_withPointsCost(一对多)</p></li>
-<li><p>pgr_withPointsCost(多对一)</p></li>
-<li><p>pgr_withPointsCost(多对多)</p></li>
+<li><p>pgr_withPoints(One to One)</p></li>
+<li><p>pgr_withPoints(One to Many)</p></li>
+<li><p>pgr_withPoints(Many to One)</p></li>
+<li><p>pgr_withPoints(Many to Many)</p></li>
+<li><p>pgr_withPointsCost(One to One)</p></li>
+<li><p>pgr_withPointsCost(One to Many)</p></li>
+<li><p>pgr_withPointsCost(Many to One)</p></li>
+<li><p>pgr_withPointsCost(Many to Many)</p></li>
 <li><p>pgr_withPointsDD （单顶点）</p></li>
 <li><p>pgr_withPointsDD（多顶点）</p></li>
 <li><p>pgr_withPointsKSP</p></li>
@@ -2215,14 +2216,14 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 <p>要查看此版本关闭的问题，请参阅 Github 上的 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed">2.1.0Git关闭里程碑</a> 。</p>
 <p class="rubric">新签名</p>
 <ul class="simple">
-<li><p>pgr_dijkstra（一对多）</p></li>
-<li><p>pgr_dijkstra（多对一）</p></li>
-<li><p>pgr_dijkstra（多对多）</p></li>
+<li><p>pgr_dijkstra(One to Many)</p></li>
+<li><p>pgr_dijkstra(Many to One)</p></li>
+<li><p>pgr_dijkstra(Many to Many)</p></li>
 <li><p>pgr_drivingDistance （多顶点）</p></li>
 </ul>
 <p class="rubric">重构</p>
 <ul class="simple">
-<li><p>pgr_dijkstra（一对一）</p></li>
+<li><p>pgr_dijkstra(One to One)</p></li>
 <li><p>pgr_ksp</p></li>
 <li><p>pgr_drivingDistance （单顶点）</p></li>
 </ul>
@@ -2451,7 +2452,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 2月 11, 2025.<br/>
+      Last updated on 2月 12, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>

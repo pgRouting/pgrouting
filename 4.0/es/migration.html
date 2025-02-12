@@ -100,9 +100,9 @@
 <li><a class="reference internal" href="#migration-of-pgr-astar">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-bdastar">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-dijkstra">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-drivingdistance">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><ul>
-<li><a class="reference internal" href="#pgr-drivingdistance-single-vertex"><code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code> (Vértice único)</a></li>
-<li><a class="reference internal" href="#pgr-drivingdistance-multiple-vertices"><code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code> (Múltiples vértices)</a></li>
+<li><a class="reference internal" href="#migration-of-pgr-drivingdistance">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><ul>
+<li><a class="reference internal" href="#pgr-drivingdistance-single-vertex">pgr_drivingDistance(Single vertex)</a></li>
+<li><a class="reference internal" href="#pgr-drivingdistance-multiple-vertices">pgr_drivingDistance(Multiple vertices)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#migration-of-pgr-kruskaldd-pgr-kruskalbfs-pgr-kruskaldfs">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDFS</span></code></a><ul>
@@ -208,9 +208,9 @@
 <li><a class="reference internal" href="#migration-of-pgr-astar">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-bdastar">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></a></li>
 <li><a class="reference internal" href="#migration-of-pgr-dijkstra">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a></li>
-<li><a class="reference internal" href="#migration-of-pgr-drivingdistance">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><ul>
-<li><a class="reference internal" href="#pgr-drivingdistance-single-vertex"><code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code> (Vértice único)</a></li>
-<li><a class="reference internal" href="#pgr-drivingdistance-multiple-vertices"><code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code> (Múltiples vértices)</a></li>
+<li><a class="reference internal" href="#migration-of-pgr-drivingdistance">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><ul>
+<li><a class="reference internal" href="#pgr-drivingdistance-single-vertex">pgr_drivingDistance(Single vertex)</a></li>
+<li><a class="reference internal" href="#pgr-drivingdistance-multiple-vertices">pgr_drivingDistance(Multiple vertices)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#migration-of-pgr-kruskaldd-pgr-kruskalbfs-pgr-kruskaldfs">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDFS</span></code></a><ul>
@@ -309,7 +309,7 @@
 <li><p><a class="reference internal" href="#migration-of-pgr-astar" id="id5">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-bdastar" id="id6">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-dijkstra" id="id7">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></a></p></li>
-<li><p><a class="reference internal" href="#migration-of-pgr-drivingdistance" id="id8">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a></p></li>
+<li><p><a class="reference internal" href="#migration-of-pgr-drivingdistance" id="id8">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-kruskaldd-pgr-kruskalbfs-pgr-kruskaldfs" id="id9">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDD</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalBFS</span></code> / <code class="docutils literal notranslate"><span class="pre">pgr_kruskalDFS</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-ksp" id="id10">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code></a></p></li>
 <li><p><a class="reference internal" href="#migration-of-pgr-maxcardinalitymatch" id="id11">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch</span></code></a></p></li>
@@ -729,7 +729,7 @@
 </ul>
 </section>
 <section id="migration-of-pgr-drivingdistance">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">Migración de <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><a class="headerlink" href="#migration-of-pgr-drivingdistance" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Migration of <code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code></a><a class="headerlink" href="#migration-of-pgr-drivingdistance" title="Link to this heading">¶</a></h2>
 <p>A partir de <a class="reference external" href="https://docs.pgrouting.org/3.6/es/migration.html">v3.6.0</a>, las columnas resultantes de <a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> son estandarizadas.</p>
 <dl class="field-list simple">
 <dt class="field-odd">de<span class="colon">:</span></dt>
@@ -741,8 +741,8 @@
 </dl>
 <p>Firmas que serán migradas:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code> (Vértice único)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code> (Múltiples vértices)</p></li>
+<li><p>pgr_drivingDistance(Single vertex)</p></li>
+<li><p>pgr_drivingDistance(Multiple vertices)</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Antes de la migración<span class="colon">:</span></dt>
@@ -750,12 +750,12 @@
 </dl>
 <p>Columnas de resultados eran <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">[start_vid],</span> <span class="pre">[end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code> (Vértice único)</p>
+<li><p>pgr_drivingDistance(Single vertex)</p>
 <ul>
 <li><p>No tiene las columnas <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> ni <code class="docutils literal notranslate"><span class="pre">depth</span></code> en los resultados.</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code> (Múltiples vértices)</p>
+<li><p>pgr_drivingDistance(Multiple vertices)</p>
 <ul>
 <li><p>Tiene la columa de resultados <code class="docutils literal notranslate"><span class="pre">from_v</span></code> en vez de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
 <li><p>no tiene la columna <code class="docutils literal notranslate"><span class="pre">depth</span></code> en los resultados.</p></li>
@@ -770,7 +770,7 @@
 <li><p>Tener en cuenta la existencia y el cambio de nombre de las columnas de resultados.</p></li>
 </ul>
 <section id="pgr-drivingdistance-single-vertex">
-<h3><code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code> (Vértice único)<a class="headerlink" href="#pgr-drivingdistance-single-vertex" title="Link to this heading">¶</a></h3>
+<h3>pgr_drivingDistance(Single vertex)<a class="headerlink" href="#pgr-drivingdistance-single-vertex" title="Link to this heading">¶</a></h3>
 <p>Usando <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html#single-vertex">éste</a> ejemplo.</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> contiene el valor del parámetro <strong>start vid</strong>.</p></li>
@@ -826,7 +826,7 @@ FROM pgr_drivingDistance(
 </div>
 </section>
 <section id="pgr-drivingdistance-multiple-vertices">
-<h3><code class="docutils literal notranslate"><span class="pre">pgr_drivingDistance</span></code> (Múltiples vértices)<a class="headerlink" href="#pgr-drivingdistance-multiple-vertices" title="Link to this heading">¶</a></h3>
+<h3>pgr_drivingDistance(Multiple vertices)<a class="headerlink" href="#pgr-drivingdistance-multiple-vertices" title="Link to this heading">¶</a></h3>
 <p>Usando <a class="reference external" href="https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html#multiple-vertices">éste</a> ejemplo.</p>
 <ul>
 <li><p>El nombre de la columna de resultados <code class="docutils literal notranslate"><span class="pre">from_v</span></code> cambia a <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
@@ -1853,7 +1853,7 @@ FROM pgr_trsp(
 </ul>
 <section id="use-pgr-withpoints-when-there-are-no-restrictions">
 <h3><a class="toc-backref" href="#id23" role="doc-backlink">Use <code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> when there are no restrictions.</a><a class="headerlink" href="#use-pgr-withpoints-when-there-are-no-restrictions" title="Link to this heading">¶</a></h3>
-<p>Use <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints</span></a> (Ont to One) instead.</p>
+<p>Use <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints</span></a> (One to One) instead.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (4, 3)$$,
@@ -2439,7 +2439,7 @@ FROM pgr_trspVia_withPoints(
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en feb 11, 2025.<br/>
+      Actualizado por última vez en feb 12, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
     </p>
   </div>
