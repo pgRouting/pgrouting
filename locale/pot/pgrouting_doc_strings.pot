@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-11 23:18+0000\n"
+"POT-Creation-Date: 2025-02-12 01:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2410,7 +2410,7 @@ msgstr ""
 msgid "For large graphs where there is a path bewtween the starting vertex and ending vertex:"
 msgstr ""
 
-msgid "It is expected to terminate faster than pgr_astar"
+msgid "It is expected to terminate faster than pgr_aStar"
 msgstr ""
 
 msgid ":doc:`aStar-family`"
@@ -6997,7 +6997,7 @@ msgstr ""
 msgid "pgr_aStar(Many to Many)"
 msgstr ""
 
-msgid "Signature change on pgr_astar(One to One)"
+msgid "Signature change on pgr_aStar(One to One)"
 msgstr ""
 
 msgid "The results are equivalent to the union of the results of the `pgr_aStar(` `One to One`_ `)` on the:"
@@ -13933,16 +13933,7 @@ msgstr ""
 msgid "pgr_aStarCost(Many to Many)"
 msgstr ""
 
-msgid "pgr_aStarCostMatrix(One to One)"
-msgstr ""
-
-msgid "pgr_aStarCostMatrix(One to Many)"
-msgstr ""
-
-msgid "pgr_aStarCostMatrix(Many to One)"
-msgstr ""
-
-msgid "pgr_aStarCostMatrix(Many to Many)"
+msgid "pgr_aStarCostMatrix"
 msgstr ""
 
 msgid "bdAstar Family"
@@ -13960,16 +13951,7 @@ msgstr ""
 msgid "pgr_bdAstarCost(Many to Many)"
 msgstr ""
 
-msgid "pgr_bdAstarCostMatrix(One to One)"
-msgstr ""
-
-msgid "pgr_bdAstarCostMatrix(One to Many)"
-msgstr ""
-
-msgid "pgr_bdAstarCostMatrix(Many to One)"
-msgstr ""
-
-msgid "pgr_bdAstarCostMatrix(Many to Many)"
+msgid "pgr_bdAstarCostMatrix"
 msgstr ""
 
 msgid "bdDijkstra Family"
@@ -13987,16 +13969,7 @@ msgstr ""
 msgid "pgr_bdDijkstraCost(Many to Many)"
 msgstr ""
 
-msgid "pgr_bdDijkstraCostMatrix(One to One)"
-msgstr ""
-
-msgid "pgr_bdDijkstraCostMatrix(One to Many)"
-msgstr ""
-
-msgid "pgr_bdDijkstraCostMatrix(Many to One)"
-msgstr ""
-
-msgid "pgr_bdDijkstraCostMatrix(Many to Many)"
+msgid "pgr_bdDijkstraCostMatrix"
 msgstr ""
 
 msgid "Flow Family"
@@ -14227,7 +14200,7 @@ msgstr ""
 msgid "pgr_johnson"
 msgstr ""
 
-msgid "pgr_astar"
+msgid "pgr_aStar"
 msgstr ""
 
 msgid "pgr_bdAstar"
@@ -14431,12 +14404,6 @@ msgstr ""
 msgid "pgr_bdAstar(One to One)"
 msgstr ""
 
-msgid "pgr_bdAstarCostMatrix"
-msgstr ""
-
-msgid "pgr_bdDijkstraCostMatrix"
-msgstr ""
-
 msgid "pgr_lineGraph"
 msgstr ""
 
@@ -14506,30 +14473,6 @@ msgstr ""
 msgid "pgr_bdDijkstra"
 msgstr ""
 
-msgid "pgr_astar(One to Many)"
-msgstr ""
-
-msgid "pgr_astar(Many to One)"
-msgstr ""
-
-msgid "pgr_astar(Many to Many)"
-msgstr ""
-
-msgid "pgr_astarCost(One to One)"
-msgstr ""
-
-msgid "pgr_astarCost(One to Many)"
-msgstr ""
-
-msgid "pgr_astarCost(Many to One)"
-msgstr ""
-
-msgid "pgr_astarCost(Many to Many)"
-msgstr ""
-
-msgid "pgr_astarCostMatrix"
-msgstr ""
-
 msgid "Deprecated signatures."
 msgstr ""
 
@@ -14593,9 +14536,6 @@ msgstr ""
 msgid "pgr_TSP"
 msgstr ""
 
-msgid "pgr_aStar"
-msgstr ""
-
 msgid "pgr_eucledianTSP"
 msgstr ""
 
@@ -14644,7 +14584,7 @@ msgstr ""
 msgid "pgr_tsp - use pgr_TSP or pgr_eucledianTSP instead"
 msgstr ""
 
-msgid "pgr_astar - use pgr_aStar instead"
+msgid "pgr_aStar - use pgr_aStar instead"
 msgstr ""
 
 msgid "pgr_flip_edges"
