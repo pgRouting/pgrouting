@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-11 23:18+0000\n"
-"PO-Revision-Date: 2025-02-12 00:30+0000\n"
+"PO-Revision-Date: 2025-02-12 01:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
@@ -2983,7 +2983,6 @@ msgstr "``edge_id``"
 msgid "Identifier of the color of the edge."
 msgstr "Identificador del color del segmento."
 
-#, fuzzy
 msgid ""
 "`Boost: <https://www.boost.org/libs/graph/doc/table_of_contents.html>`__"
 msgstr ""
@@ -4923,23 +4922,18 @@ msgstr ""
 msgid "pgr_trsp"
 msgstr "pgr_trsp"
 
-#, fuzzy
 msgid "pgr_trspVia"
 msgstr "pgr_trspVia"
 
-#, fuzzy
 msgid "pgr_trspVia_withPoints"
 msgstr "pgr_trspVia_withPoints"
 
-#, fuzzy
 msgid "pgr_trsp_withPoints"
 msgstr "pgr_trsp_withPoints"
 
-#, fuzzy
 msgid "pgr_withPoints"
 msgstr "pgr_withPoints"
 
-#, fuzzy
 msgid "pgr_withPointsCost"
 msgstr "pgr_withPointsCost"
 
@@ -5073,11 +5067,8 @@ msgstr "_pgr_trsp(text,text,bigint,bigint,boolean)"
 msgid "_pgr_trspviavertices(text,integer[],boolean,boolean,text)"
 msgstr "_pgr_trspviavertices(text,integer[],boolean,boolean,text)"
 
-#, fuzzy
 msgid "_pgr_withpointsvia(text,bigint[],double precision[],boolean)"
-msgstr ""
-"``pgr_withpointsdd(text,text,bigint,double precision,boolean,character,"
-"boolean)``"
+msgstr "_pgr_withpointsvia(text,bigint[],double precision[],boolean)"
 
 msgid "_trsp(text,text,anyarray,anyarray,boolean)"
 msgstr "_trsp(text,text,anyarray,anyarray,boolean)"
@@ -5305,7 +5296,6 @@ msgstr "En ``pgr_dijkstra`` (`Muchos a Uno`)"
 msgid "If needed add the new columns, for example:"
 msgstr "Si es necesario, añadir las nuevas columnas, por ejemplo:"
 
-#, fuzzy
 msgid "Migration of ``pgr_drivingDistance``"
 msgstr "Migración de ``pgr_drivingDistance``"
 
@@ -5328,11 +5318,9 @@ msgstr "a"
 msgid "|result-spantree|"
 msgstr "|result-spantree|"
 
-#, fuzzy
 msgid "pgr_drivingDistance(Single vertex)"
 msgstr "pgr_drivingDistance(Vértice único)"
 
-#, fuzzy
 msgid "pgr_drivingDistance(Multiple vertices)"
 msgstr "pgr_drivingDistance(Múltiples vértices)"
 
@@ -5664,7 +5652,7 @@ msgstr ""
 "dirigidos."
 
 msgid "``pgr_withPointsDD`` (Single vertex)"
-msgstr "``pgr_withPointsDD`` (vértice único)"
+msgstr "``pgr_withPointsDD`` (Vértice único)"
 
 msgid "``pgr_withPointsDD`` (Multiple vertices)"
 msgstr "``pgr_withPointsDD`` (Múltiples vértices)"
@@ -5902,9 +5890,8 @@ msgstr ":doc:`pgr_trsp_withPoints`"
 msgid "Use ``pgr_withPoints`` when there are no restrictions."
 msgstr "Usar ``pgr_withPoints`` cuando no hay restricciones."
 
-#, fuzzy
 msgid "Use :doc:`pgr_withPoints` (One to One) instead."
-msgstr "Utilizar en su lugar `:doc:`pgr_withPoints` (Uno a Uno)."
+msgstr "Utilizar en su lugar :doc:`pgr_withPoints` (Uno a Uno)."
 
 msgid "Use ``pgr_trsp_withPoints`` when there are restrictions."
 msgstr "Usar ``pgr_trsp_withPoints`` cuando hay restricciones."
@@ -8932,13 +8919,12 @@ msgstr "``pgr_TSPeuclidean``"
 msgid "``pgr_TSPeuclidean`` - Aproximation using *metric* algorithm."
 msgstr "``pgr_TSPeuclidean`` - Aproximación usando el algoritmo *metric*."
 
-#, fuzzy
 msgid ""
 "Using `Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/"
 "metric_tsp_approx.html>`__"
 msgstr ""
-"`Algoritmo Métrico de la Librería Boost <https://www.boost.org/libs/graph/"
-"doc/metric_tsp_approx.html>`__"
+"Usando `Boost: Algoritmo de aproximación Métrica de TSP <https://www.boost."
+"org/libs/graph/doc/metric_tsp_approx.html>`__"
 
 msgid ""
 "The Simulated Annealing Algorithm related parameters are ignored: "
@@ -10393,7 +10379,6 @@ msgstr ""
 msgid "Using a combinations table on an **undirected** graph."
 msgstr "Uso de una tabla de combinaciones en un grafo **no dirigido**."
 
-#, fuzzy
 msgid ""
 "`Boost: Bellman Ford <https://www.boost.org/libs/graph/doc/"
 "bellman_ford_shortest.html>`__"
@@ -10407,7 +10392,6 @@ msgstr "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
 msgid "``pgr_betweennessCentrality`` - Experimental"
 msgstr "``pgr_betweennessCentrality`` - Experimental"
 
-#, fuzzy
 msgid ""
 "``pgr_betweennessCentrality`` - Calculates the relative betweenness "
 "centrality using Brandes Algorithm"
@@ -10500,7 +10484,6 @@ msgid ""
 msgstr ""
 "Puntuación relativa de centralidad entre vértices (estará en el rango [0,1])"
 
-#, fuzzy
 msgid ""
 "`Boost: betweenness centrality <https://www.boost.org/libs/graph/doc/"
 "betweenness_centrality.html>`_"
@@ -13288,7 +13271,6 @@ msgstr "pgr_edmondsKarp(`SQL de aristas`_, **salidas**, **destinos**)"
 msgid "pgr_edmondsKarp(`Edges SQL`_, `Combinations SQL`_)"
 msgstr "pgr_edmondsKarp(`SQL de aristas`_, `SQL de combinaciones`_)"
 
-#, fuzzy
 msgid ""
 "`Boost: Edmonds Karp max flow <https://www.boost.org/libs/graph/doc/"
 "edmonds_karp_max_flow.html>`__"
@@ -13536,7 +13518,6 @@ msgstr ""
 "El código para realizar los cálculos puede obtenerse para realizar los "
 "ajustes específicos que necesite la aplicación."
 
-#, fuzzy
 msgid "``EMTPY SET`` is returned on dryrun executions"
 msgstr "``EMTPY SET`` se devuelve en ejecuciones en seco"
 
@@ -14156,9 +14137,8 @@ msgstr "``hash``"
 msgid "Git hash of pgRouting build"
 msgstr "Hash de Git de pgRouting"
 
-#, fuzzy
 msgid "``pgr_hawickCircuits`` - Experimental"
-msgstr "``pgr_hawickCircuits - Experimental``"
+msgstr "``pgr_hawickCircuits`` - Experimental"
 
 msgid ""
 "``pgr_hawickCircuits`` — Returns the list of cirucits using hawick circuits "
@@ -14493,7 +14473,6 @@ msgstr "pgr_kruskalDFS(`SQL de aristas`_, **raíz**, [``max_depth``])"
 msgid "pgr_kruskalDFS(`Edges SQL`_, **root vids**, [``max_depth``])"
 msgstr "pgr_kruskalDFS(`SQL de aristas`_, **raices**, [``max_depth``])"
 
-#, fuzzy
 msgid "``pgr_lengauerTarjanDominatorTree`` - Experimental"
 msgstr "``pgr_lengauerTarjanDominatorTree`` - Experimental"
 
@@ -14902,13 +14881,11 @@ msgid "Full line graph of subgraph of edges :math:`\\{4, 7, 8, 10\\}`"
 msgstr ""
 "Grafo de línea completa del subgrafo de las aristas :math:`\\{4, 7, 8, 10\\}`"
 
-#, fuzzy
 msgid ""
 "The examples include the subgraph including edges 4, 7, 8, and 10 with "
 "``reverse_cost``."
 msgstr ""
-"Los ejemplos de esta sección se basan en la red :doc:`sampledata`. Los "
-"ejemplos incluyen el subgrafo que incluye las aristas 4, 7, 8 y 10 con "
+"Los ejemplos incluyen el sub-grafo que incluye las aristas 4, 7, 8 y 10 con "
 "``reverse_cost``."
 
 msgid "The data"
@@ -16463,7 +16440,6 @@ msgstr "pgr_trspViaVertices(text,anyarray,boolean,boolean,text)"
 msgid "New prototypes"
 msgstr "Nuevos prototipos"
 
-#, fuzzy
 msgid "pgr_trspViaVertices"
 msgstr "pgr_trspViaVertices"
 
@@ -17457,9 +17433,8 @@ msgstr ""
 "Encontrar la matriz de costos de las rutas desde el vértice :math:`1` y las "
 "dos ubicaciones más cercanas en el grafo al punto `(2.9, 1.8)`."
 
-#, fuzzy
 msgid "``pgr_withPointsDD``"
-msgstr "``pgr_trsp_withPoints``"
+msgstr "``pgr_withPointsDD``"
 
 msgid ""
 "``pgr_withPointsDD`` - Returns the driving **distance** from a starting "
@@ -17926,7 +17901,7 @@ msgid ":doc:`pgr_withPointsKSP` - K shortest paths."
 msgstr ":doc:`pgr_withPointsKSP` - rutas más cortas K."
 
 msgid ":doc:`pgr_withPointsDD` - Driving distance."
-msgstr ":doc:`pgr_withPointsDD` - Distancia de conducción."
+msgstr ":doc:`pgr_withPointsDD` - Distancia de manejo."
 
 msgid ":doc:`pgr_withPointsVia` - Via routing"
 msgstr ":doc:`pgr_withPointsVia` - Ruteo vía ubicaciones"
@@ -18322,13 +18297,12 @@ msgstr ""
 "`#2547 <https://github.com/pgRouting/pgrouting/pull/2547>`__ Estandarización "
 "de resultados y modificación de firmas de pgr_KSP"
 
-#, fuzzy
 msgid ""
 "`#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ Standarize "
 "output pgr_drivingDistance"
 msgstr ""
 "`#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ Estandarización "
-"de resultados de pgr_drivingdistance"
+"de resultados de pgr_drivingDistance"
 
 msgid "Proposed functions changes"
 msgstr "Cambios en funciones propuestas"
@@ -19356,37 +19330,29 @@ msgstr "Propuesta cambió a oficial en pgRouting"
 msgid "aStar Family"
 msgstr "Familia aStar"
 
-#, fuzzy
 msgid "pgr_aStarCost(One to One)"
 msgstr "pgr_aStarCost(Uno a Uno)"
 
-#, fuzzy
 msgid "pgr_aStarCost(One to Many)"
 msgstr "pgr_aStarCost(Uno a Muchos)"
 
-#, fuzzy
 msgid "pgr_aStarCost(Many to One)"
-msgstr "pgr_aStarCost(muchos a uno)"
+msgstr "pgr_aStarCost(Muchos a Uno)"
 
-#, fuzzy
 msgid "pgr_aStarCost(Many to Many)"
-msgstr "pgr_aStarCost(muchos a muchos)"
+msgstr "pgr_aStarCost(Muchos a Muchos)"
 
-#, fuzzy
 msgid "pgr_aStarCostMatrix(One to One)"
 msgstr "pgr_aStarCostMatrix(Uno a Uno)"
 
-#, fuzzy
 msgid "pgr_aStarCostMatrix(One to Many)"
 msgstr "pgr_aStarCostMatrix(Uno a Muchos)"
 
-#, fuzzy
 msgid "pgr_aStarCostMatrix(Many to One)"
-msgstr "pgr_aStarCostMatrix(muchos a uno)"
+msgstr "pgr_aStarCostMatrix(Muchos a Uno)"
 
-#, fuzzy
 msgid "pgr_aStarCostMatrix(Many to Many)"
-msgstr "pgr_aStarCostMatrix(muchos a muchos)"
+msgstr "pgr_aStarCostMatrix(Muchos a Muchos)"
 
 msgid "bdAstar Family"
 msgstr "Familia bdAstar"
@@ -19792,7 +19758,7 @@ msgid "pgr_withPointsKSP (proposed)"
 msgstr "pgr_withPointsKSP (proposed)"
 
 msgid "pgr_withPointsDD (proposed)"
-msgstr "pgr_withPointsDD (proposed)"
+msgstr "pgr_withPointsDD (propuesta)"
 
 msgid "pgr_withPointsCostMatrix (proposed)"
 msgstr "pgr_withPointsCostMatrix (propuesto)"
