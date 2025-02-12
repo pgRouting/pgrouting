@@ -235,14 +235,14 @@
 <p><code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> Route that goes through a list of vertices with restrictions.</p>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
-<li><p>Version 4.0.0</p>
+<li><p>Versión 4.0.0</p>
 <ul>
-<li><p>Function promoted to official.</p></li>
+<li><p>Función promovida a oficial.</p></li>
 </ul>
 </li>
 <li><p>Versión 3.4.0</p>
 <ul>
-<li><p>New proposed function.</p></li>
+<li><p>Nueva función propuesta.</p></li>
 </ul>
 </li>
 </ul>
@@ -254,7 +254,7 @@ shortest path between <span class="math notranslate nohighlight">\(vertex_i\)</s
 <p>Las trayectorias representan los tramos de la ruta.</p>
 <p>The general algorithm is as follows:</p>
 <ul class="simple">
-<li><p>Execute a <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Propuesto</span></a>.</p></li>
+<li><p>Ejecutar un <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Propuesto</span></a>.</p></li>
 <li><p>For the set of sub paths of the solution that pass through a restriction then</p>
 <ul>
 <li><p>Execute the <strong>TRSP</strong> algorithm with restrictions for the paths.</p></li>
@@ -262,7 +262,7 @@ shortest path between <span class="math notranslate nohighlight">\(vertex_i\)</s
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -271,7 +271,7 @@ shortest path between <span class="math notranslate nohighlight">\(vertex_i\)</s
 <div class="signatures admonition">
 <p class="admonition-title"></p>
 <div class="line-block">
-<div class="line">pgr_trsp(<a class="reference internal" href="#restrictions-sql">SQL de aristas</a>, <a class="reference internal" href="#edges-sql">SQL de restricciones</a>,**vértices**, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_trsp(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#restrictions-sql">SQL de restricciones</a>,**vértices**, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 <div class="line"><strong>opcionales:</strong> <code class="docutils literal notranslate"><span class="pre">[directed,</span> <span class="pre">strict,</span> <span class="pre">U_turn_on_edge]</span></code></div>
 </div>
 <div class="line-block">

@@ -231,7 +231,7 @@
 </li>
 <li><p>版本2.5.0</p>
 <ul>
-<li><p>New experimental function.</p></li>
+<li><p>新实验功能。</p></li>
 </ul>
 </li>
 </ul>
@@ -250,7 +250,7 @@
 </li>
 <li><p>运行时间： <span class="math notranslate nohighlight">\(O(V + E)\)</span></p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -477,7 +477,7 @@
 </section>
 <section id="get-the-closest-vertex">
 <h4>获取最近的顶点<a class="headerlink" href="#get-the-closest-vertex" title="Link to this heading">¶</a></h4>
-<p>使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges - Proposed</span></a> 距离组件 <span class="math notranslate nohighlight">\(1\)</span> 最近的顶点是顶点 <span class="math notranslate nohighlight">\(4\)</span>。 距离顶点 <span class="math notranslate nohighlight">\(4\)</span> 最近的边是 边 <span class="math notranslate nohighlight">\(14\)</span>。</p>
+<p>使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges- 拟议</span></a> 距离组件 <span class="math notranslate nohighlight">\(1\)</span> 最近的顶点是顶点 <span class="math notranslate nohighlight">\(4\)</span>。 距离顶点 <span class="math notranslate nohighlight">\(4\)</span> 最近的边是 边 <span class="math notranslate nohighlight">\(14\)</span>。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge_id, fraction, ST_AsText(edge) AS edge, id AS closest_vertex
 FROM pgr_findCloseEdges(
   $$SELECT id, geom FROM edges WHERE component = 1$$,

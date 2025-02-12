@@ -221,25 +221,25 @@
 <p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> — Devuelve la ruta más corta usando el algoritmo Bidireccional A*.</p>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
-<li><p>Version 4.0.0</p>
+<li><p>Versión 4.0.0</p>
 <ul>
-<li><p>Combinations signature promoted to official.</p></li>
+<li><p>Firmas de combinaciones promovidas a oficial.</p></li>
 </ul>
 </li>
 <li><p>Versión 3.6.0</p>
 <ul>
 <li><p>Estandarización de las columnas de salida a <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p>pgr_bdAstar(One to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> columns.</p></li>
-<li><p>pgr_bdAstar(One to Many) added <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> column.</p></li>
-<li><p>pgr_bdAstar(Many to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
+<li><p>pgr_bdAstar(Uno a Uno) ha añadido las columnas <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> y <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
+<li><p>pgr_bdAstar(Uno a Muchos) ha añadido la columna <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
+<li><p>pgr_bdAstar(Muchos a Uno) ha añadido la columna <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>Versión 3.2.0</p>
 <ul>
-<li><p>New proposed signature:</p>
+<li><p>Nuevas firmas propuesta:</p>
 <ul>
 <li><p>pgr_bdAstar(Combinaciones)</p></li>
 </ul>
@@ -248,19 +248,19 @@
 </li>
 <li><p>Versión 3.0.0</p>
 <ul>
-<li><p>Function promoted to official.</p></li>
+<li><p>Función promovida a oficial.</p></li>
 </ul>
 </li>
 <li><p>Versión 2.5.0</p>
 <ul>
-<li><p>New proposed signatures:</p>
+<li><p>Nuevas firmas propuestas:</p>
 <ul>
-<li><p>pgr_bdAstar(One to Many)</p></li>
-<li><p>pgr_bdAstar(Many to One)</p></li>
-<li><p>pgr_bdAstar(Many to Many)</p></li>
+<li><p>pgr_bdAstar(Uno a Muchos)</p></li>
+<li><p>pgr_bdAstar(Muchos a Uno)</p></li>
+<li><p>pgr_bdAstar(Muchos a Muchos)</p></li>
 </ul>
 </li>
-<li><p>Signature change on pgr_bdAstar(One to One)</p>
+<li><p>Cambio de firma en pgr_bdAstar(Uno a Uno)</p>
 <ul>
 <li><p>Firma antigua ya no soportada</p></li>
 </ul>
@@ -269,7 +269,7 @@
 </li>
 <li><p>Versión 2.0.0</p>
 <ul>
-<li><p>New official function.</p></li>
+<li><p>Nueva función oficial.</p></li>
 </ul>
 </li>
 </ul>
@@ -309,17 +309,16 @@
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O((E + V) * \log V)\)</span></p></li>
 </ul>
 <ul class="simple">
-<li><p>The results are equivalent to the union of the results of the
-pgr_bdAStar(One to One) on the:</p>
+<li><p>Los resultados son equivalentes a la unión de los resultados de pgr_bdAStar(Uno a Uno) en:</p>
 <ul>
-<li><p>pgr_bdAstar(One to Many)</p></li>
-<li><p>pgr_bdAstar(Many to One)</p></li>
-<li><p>pgr_bdAstar(Many to Many)</p></li>
+<li><p>pgr_bdAstar(Uno a Muchos)</p></li>
+<li><p>pgr_bdAstar(Muchos a Uno)</p></li>
+<li><p>pgr_bdAstar(Muchos a Muchos)</p></li>
 <li><p>pgr_bdAstar(Combinaciones)</p></li>
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -957,7 +956,7 @@ pgr_bdAStar(One to One) on the:</p>
 <li><p><a class="reference internal" href="aStar-family.html"><span class="doc">A* - Familia de Funciones</span></a></p></li>
 <li><p><a class="reference internal" href="bdAstar-family.html"><span class="doc">A* Bidireccional - Familia de Funciones</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/astar_search.html">Boost: A* search</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/astar_search.html">Boost: Búsqueda A*</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/A*_search_algorithm">https://en.wikipedia.org/wiki/A*_search_algorithm</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>

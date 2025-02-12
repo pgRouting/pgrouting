@@ -235,14 +235,14 @@
 <p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code> - Calcula el camino más corto y devuelve sólo el coste agregado del camino más corto encontrado, para la combinación de puntos dada.</p>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
-<li><p>Version 4.0.0</p>
+<li><p>Versión 4.0.0</p>
 <ul>
-<li><p>Function promoted to official.</p></li>
+<li><p>Función promovida a oficial.</p></li>
 </ul>
 </li>
 <li><p>Versión 3.2.0</p>
 <ul>
-<li><p>New proposed signature:</p>
+<li><p>Nuevas firmas propuesta:</p>
 <ul>
 <li><p>pgr_withPointsCost(Combinaciones)</p></li>
 </ul>
@@ -251,7 +251,7 @@
 </li>
 <li><p>Version 2.2.0</p>
 <ul>
-<li><p>New proposed function.</p></li>
+<li><p>Nueva función propuesta.</p></li>
 </ul>
 </li>
 </ul>
@@ -301,7 +301,7 @@
 </ul>
 </dd>
 </dl>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -772,14 +772,14 @@
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="contenido">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id1">Usar <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges - Proposed</span></a> en el SQL de puntos.</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id1">Usar <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges - Propuesto</span></a> en el SQL de puntos.</a></p></li>
 <li><p><a class="reference internal" href="#right-side-driving-topology" id="id2">Topología de manejo del lado derecho</a></p></li>
 <li><p><a class="reference internal" href="#left-side-driving-topology" id="id3">Topología de manejo del lado izquierdo</a></p></li>
 <li><p><a class="reference internal" href="#does-not-matter-driving-side-driving-topology" id="id4">No importa el lado de manejo</a></p></li>
 </ul>
 </nav>
 <section id="use-pgr-findcloseedges-in-the-points-sql">
-<h3>Usar <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges - Proposed</span></a> en el <a class="reference internal" href="#points-sql">SQL de puntos</a>.<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Link to this heading">¶</a></h3>
+<h3>Usar <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges - Propuesto</span></a> en el <a class="reference internal" href="#points-sql">SQL de puntos</a>.<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Link to this heading">¶</a></h3>
 <p>Encontrar el costo de las rutas desde el vértice <span class="math notranslate nohighlight">\(1\)</span> a las dos ubicaciones mpas cercanas en el grafo desde el punto <cite>(2.9, 1.8)</cite>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsCost(
   $e$ SELECT * FROM edges $e$,

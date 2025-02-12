@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_findCloseEdges - Proposed &#8212; pgRouting Manual (4.0-dev)</title>
+    <title>pgr_findCloseEdges- 拟议 &#8212; pgRouting Manual (4.0-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -96,7 +96,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code> - Proposed</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code>- 拟议</a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a><ul>
 <li><a class="reference internal" href="#one-point">一个点</a></li>
@@ -190,7 +190,7 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code> - Proposed</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code>- 拟议</a><ul>
 <li><a class="reference internal" href="#description">描述</a></li>
 <li><a class="reference internal" href="#signatures">签名</a><ul>
 <li><a class="reference internal" href="#one-point">一个点</a></li>
@@ -266,13 +266,13 @@
 <div class="line"><br /></div>
 </div>
 <section id="pgr-findcloseedges-proposed">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code> - Proposed<a class="headerlink" href="#pgr-findcloseedges-proposed" title="Link to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code>- 拟议<a class="headerlink" href="#pgr-findcloseedges-proposed" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_findCloseEdges</span></code> -查找点几何图形的闭合边。</p>
 <p class="rubric">可用性</p>
 <ul class="simple">
 <li><p>版本 3.4.0</p>
 <ul>
-<li><p>New proposed function.</p></li>
+<li><p>新提议的函数。</p></li>
 </ul>
 </li>
 </ul>
@@ -282,9 +282,9 @@
 <ul class="simple">
 <li><p>几何图形必须位于同一坐标系中（具有相同的 SRID）。</p></li>
 <li><p>可以获取计算代码，以便根据应用需要进行进一步的具体调整。</p></li>
-<li><p>空运行执行时返回 <code class="docutils literal notranslate"><span class="pre">EMTPY</span> <span class="pre">SET</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EMTPY</span> <span class="pre">SET</span></code> is returned on dryrun executions</p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -1242,7 +1242,7 @@ WHERE rn &lt;= 1
 </section>
 <section id="get-the-closest-vertex">
 <h4><a class="toc-backref" href="#id18" role="doc-backlink">获取最近的顶点</a><a class="headerlink" href="#get-the-closest-vertex" title="Link to this heading">¶</a></h4>
-<p>使用 <a class="reference internal" href="#"><span class="doc">pgr_findCloseEdges - Proposed</span></a> 距离组件 <span class="math notranslate nohighlight">\(1\)</span> 最近的顶点是顶点 <span class="math notranslate nohighlight">\(4\)</span>。 距离顶点 <span class="math notranslate nohighlight">\(4\)</span> 最近的边是 边 <span class="math notranslate nohighlight">\(14\)</span>。</p>
+<p>使用 <a class="reference internal" href="#"><span class="doc">pgr_findCloseEdges- 拟议</span></a> 距离组件 <span class="math notranslate nohighlight">\(1\)</span> 最近的顶点是顶点 <span class="math notranslate nohighlight">\(4\)</span>。 距离顶点 <span class="math notranslate nohighlight">\(4\)</span> 最近的边是 边 <span class="math notranslate nohighlight">\(14\)</span>。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge_id, fraction, ST_AsText(edge) AS edge, id AS closest_vertex
 FROM pgr_findCloseEdges(
   $$SELECT id, geom FROM edges WHERE component = 1$$,

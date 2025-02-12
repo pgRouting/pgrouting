@@ -237,26 +237,26 @@
 <section id="pgr-withpointsksp">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code><a class="headerlink" href="#pgr-withpointsksp" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> - Encuentra las rutas más cortas de K usando el algoritmo de Yen.</p>
-<p class="rubric">Version 4.0.0</p>
+<p class="rubric">Versión 4.0.0</p>
 <ul class="simple">
-<li><p>Function promoted to official.</p></li>
+<li><p>Función promovida a oficial.</p></li>
 </ul>
 <p class="rubric">Versión 3.6.0</p>
 <ul class="simple">
 <li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p>pgr_withPointsKSP(One to One)</p>
+<li><p>pgr_withPointsKSP(Uno a Uno)</p>
 <ul>
 <li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
 unnamed compulsory <strong>driving side</strong>.</p></li>
 <li><p>Añadidas las columnas de resultados <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> y <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
 </ul>
 </li>
-<li><p>New proposed signatures:</p>
+<li><p>Nuevas firmas propuestas:</p>
 <ul>
-<li><p>pgr_withPointsKSP(One to Many)</p></li>
-<li><p>pgr_withPointsKSP(Many to One)</p></li>
-<li><p>pgr_withPointsKSP(Many to Many)</p></li>
-<li><p>pgr_withPointsKSP(Combinations)</p></li>
+<li><p>pgr_withPointsKSP(Uno a Muchos)</p></li>
+<li><p>pgr_withPointsKSP(Muchos a Uno)</p></li>
+<li><p>pgr_withPointsKSP(Muchos a Muchos)</p></li>
+<li><p>pgr_withPointsKSP(Combinaciones)</p></li>
 </ul>
 </li>
 <li><p>Deprecated signature</p>
@@ -267,12 +267,12 @@ unnamed compulsory <strong>driving side</strong>.</p></li>
 </ul>
 <p class="rubric">Version 2.2.0</p>
 <ul class="simple">
-<li><p>New proposed function.</p></li>
+<li><p>Nueva función propuesta.</p></li>
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p>Modifica el grafo para incluir los puntos definidos en el <a class="reference internal" href="#points-sql">SQL de puntos</a> y utilizando el algoritmo Yen, encuentra las <span class="math notranslate nohighlight">\(K\)</span> rutas más cortas.</p>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -877,13 +877,13 @@ unnamed compulsory <strong>driving side</strong>.</p></li>
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="contenido">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id1">Usar <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges - Proposed</span></a> en el SQL de puntos.</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id1">Usar <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges - Propuesto</span></a> en el SQL de puntos.</a></p></li>
 <li><p><a class="reference internal" href="#left-driving-side" id="id2">Lado de manejo izquierdo</a></p></li>
 <li><p><a class="reference internal" href="#right-driving-side" id="id3">Lado de manejo derecho</a></p></li>
 </ul>
 </nav>
 <section id="use-pgr-findcloseedges-in-the-points-sql">
-<h3>Usar <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges - Proposed</span></a> en el <a class="reference internal" href="#points-sql">SQL de puntos</a>.<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Link to this heading">¶</a></h3>
+<h3>Usar <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges - Propuesto</span></a> en el <a class="reference internal" href="#points-sql">SQL de puntos</a>.<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Link to this heading">¶</a></h3>
 <p>Obtener <span class="math notranslate nohighlight">\(2\)</span> caminos usando el lado izquierdo de manejo, desde el vértice <span class="math notranslate nohighlight">\(1\)</span> a la ubicación mpas cercana en el grafo al punto <cite>(2.9, 1.8)</cite>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsKSP(
   $e$ SELECT * FROM edges $e$,

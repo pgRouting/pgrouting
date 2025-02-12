@@ -229,9 +229,9 @@
 <ul>
 <li><p>标准输出列|short-generic-result|</p>
 <ul>
-<li><p>pgr_bdAstar(One to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> columns.</p></li>
-<li><p>pgr_bdAstar(One to Many) added <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> column.</p></li>
-<li><p>pgr_bdAstar(Many to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
+<li><p>pgr_bdAstar(一对一）增加了 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 和``end_vid`` 列。</p></li>
+<li><p>pgr_bdAstar(一对多）添加了``end_vid`` 列。</p></li>
+<li><p>pgr_bdAstar(多对一）添加了``start_vid`` 列。</p></li>
 </ul>
 </li>
 </ul>
@@ -254,9 +254,9 @@
 <ul>
 <li><p>新拟议的签名：</p>
 <ul>
-<li><p>pgr_bdAstar(One to Many)</p></li>
-<li><p>pgr_bdAstar(Many to One)</p></li>
-<li><p>pgr_bdAstar(Many to Many)</p></li>
+<li><p>pgr_bdAstar（一对多）</p></li>
+<li><p>pgr_bdAstar（多对一）</p></li>
+<li><p>pgr_bdAstar（多对多）</p></li>
 </ul>
 </li>
 <li><p>Signature change on pgr_bdAstar(One to One)</p>
@@ -311,14 +311,14 @@
 <li><p>The results are equivalent to the union of the results of the
 pgr_bdAStar(One to One) on the:</p>
 <ul>
-<li><p>pgr_bdAstar(One to Many)</p></li>
-<li><p>pgr_bdAstar(Many to One)</p></li>
-<li><p>pgr_bdAstar(Many to Many)</p></li>
+<li><p>pgr_bdAstar（一对多）</p></li>
+<li><p>pgr_bdAstar（多对一）</p></li>
+<li><p>pgr_bdAstar（多对多）</p></li>
 <li><p>pgr_bdAstar(组合)</p></li>
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
