@@ -52,7 +52,7 @@
 
 * Version 2.3.0
 
-  * Signature change on pgr_astar(One to One)
+  * Signature change on pgr_aStar(One to One)
 
     * Old signature no longer supported
 

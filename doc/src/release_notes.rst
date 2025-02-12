@@ -1109,10 +1109,7 @@ on Github.
   * pgr_aStarCost(One to Many)
   * pgr_aStarCost(Many to One)
   * pgr_aStarCost(Many to Many)
-  * pgr_aStarCostMatrix(One to One)
-  * pgr_aStarCostMatrix(One to Many)
-  * pgr_aStarCostMatrix(Many to One)
-  * pgr_aStarCostMatrix(Many to Many)
+  * pgr_aStarCostMatrix
 
 * bdAstar Family
 
@@ -1123,10 +1120,7 @@ on Github.
   * pgr_bdAstarCost(One to Many)
   * pgr_bdAstarCost(Many to One)
   * pgr_bdAstarCost(Many to Many)
-  * pgr_bdAstarCostMatrix(One to One)
-  * pgr_bdAstarCostMatrix(One to Many)
-  * pgr_bdAstarCostMatrix(Many to One)
-  * pgr_bdAstarCostMatrix(Many to Many)
+  * pgr_bdAstarCostMatrix
 
 * bdDijkstra Family
 
@@ -1137,10 +1131,7 @@ on Github.
   * pgr_bdDijkstraCost(One to Many)
   * pgr_bdDijkstraCost(Many to One)
   * pgr_bdDijkstraCost(Many to Many)
-  * pgr_bdDijkstraCostMatrix(One to One)
-  * pgr_bdDijkstraCostMatrix(One to Many)
-  * pgr_bdDijkstraCostMatrix(Many to One)
-  * pgr_bdDijkstraCostMatrix(Many to Many)
+  * pgr_bdDijkstraCostMatrix
 
 * Flow Family
 
@@ -1287,7 +1278,7 @@ on Github.
 
   * pgr_floydWarshall
   * pgr_johnson
-  * pgr_astar
+  * pgr_aStar
   * pgr_bdAstar
   * pgr_bdDijstra
   * pgr_alphashape
@@ -1385,7 +1376,7 @@ on Github.
 
   * pgr_floydWarshall
   * pgr_johnson
-  * pgr_astar
+  * pgr_aStar
   * pgr_bdAstar
   * pgr_bdDijstra
   * pgr_alphashape
@@ -1572,14 +1563,14 @@ on Github.
 .. rubric:: New proposed signatures:
 
 * pgr_maxFlow
-* pgr_astar(One to Many)
-* pgr_astar(Many to One)
-* pgr_astar(Many to Many)
-* pgr_astarCost(One to One)
-* pgr_astarCost(One to Many)
-* pgr_astarCost(Many to One)
-* pgr_astarCost(Many to Many)
-* pgr_astarCostMatrix
+* pgr_aStar(One to Many)
+* pgr_aStar(Many to One)
+* pgr_aStar(Many to Many)
+* pgr_aStarCost(One to One)
+* pgr_aStarCost(One to Many)
+* pgr_aStarCost(Many to One)
+* pgr_aStarCost(Many to Many)
+* pgr_aStarCostMatrix
 
 .. rubric:: Deprecated signatures.
 
@@ -1676,7 +1667,7 @@ on Github.
 .. rubric:: Deprecated signatures
 
 * pgr_tsp - use pgr_TSP or pgr_eucledianTSP instead
-* pgr_astar - use pgr_aStar instead
+* pgr_aStar - use pgr_aStar instead
 
 
 .. rubric:: Deprecated Functions
