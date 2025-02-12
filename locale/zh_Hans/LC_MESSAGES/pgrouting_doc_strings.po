@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-11 11:58-0600\n"
+"POT-Creation-Date: 2025-02-11 23:18+0000\n"
 "PO-Revision-Date: 2025-02-12 00:30+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
@@ -293,9 +293,6 @@ msgstr ":ref:`genindex`"
 
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-msgid "Boost Graph Inside"
-msgstr "Boost 图内部"
 
 msgid "DFS - Category"
 msgstr "DFS（深度优先搜索） - 类别"
@@ -4647,8 +4644,8 @@ msgid ""
 "pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
 "boolean,text)"
 msgstr ""
-"pgr_trsp(text,integer,double precision,integer,double "
-"precision,boolean,boolean,text)"
+"pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
+"boolean,text)"
 
 msgid "pgr_trsp(text,integer,integer,boolean,boolean,text)"
 msgstr "pgr_trsp(text,integer,integer,boolean,boolean,text)"
@@ -4693,8 +4690,8 @@ msgid ""
 "_pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
 "boolean,text)"
 msgstr ""
-"_pgr_trsp(text,integer,double precision,integer,double "
-"precision,boolean,boolean,text)"
+"_pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
+"boolean,text)"
 
 msgid "_pgr_trsp(text,text,anyarray,anyarray,boolean)"
 msgstr "_pgr_trsp(text,text,anyarray,anyarray,boolean)"
@@ -4931,7 +4928,8 @@ msgstr "在 ``pgr_dijkstra`` (`多对一`)中"
 msgid "If needed add the new columns, for example:"
 msgstr "如果需要，过滤掉添加的列，例如："
 
-msgid "Migration of ``pgr_drivingdistance``"
+#, fuzzy
+msgid "Migration of ``pgr_drivingDistance``"
 msgstr "迁移 ``pgr_drivingdistance``"
 
 msgid ""
@@ -4953,11 +4951,13 @@ msgstr "到"
 msgid "|result-spantree|"
 msgstr "|result-spantree|"
 
-msgid "``pgr_drivingdistance`` (Single vertex)"
-msgstr "``pgr_drivingdistance`` (单个顶点)"
+#, fuzzy
+msgid "pgr_drivingDistance(Single vertex)"
+msgstr "pgr_drivingDistance （单顶点）"
 
-msgid "``pgr_drivingdistance`` (Multiple vertices)"
-msgstr "``pgr_drivingdistance`` (多个顶点)"
+#, fuzzy
+msgid "pgr_drivingDistance(Multiple vertices)"
+msgstr "pgr_drivingDistance （多顶点）"
 
 msgid "Output columns were |result-dij-dd|"
 msgstr "输出列是 |result-dij-dd|"
@@ -5494,7 +5494,7 @@ msgid "Use ``pgr_withPoints`` when there are no restrictions."
 msgstr ":doc:`pgr_withPoints` 当没有任何限制的时候，"
 
 #, fuzzy
-msgid "Use :doc:`pgr_withPoints` (Ont to One) instead."
+msgid "Use :doc:`pgr_withPoints` (One to One) instead."
 msgstr "请改用 :doc:`pgr_trsp` (一对一）。"
 
 #, fuzzy
@@ -7898,6 +7898,9 @@ msgstr "基于Yen算法的K最短路径路由算法。 “K”是所需的最短
 msgid "|Boost| Boost Graph Inside"
 msgstr "|Boost| Boost 图内部"
 
+msgid "Boost Graph Inside"
+msgstr "Boost 图内部"
+
 msgid "Signatures"
 msgstr "签名"
 
@@ -9270,10 +9273,6 @@ msgstr "pgr_bdAstar(`Edges SQL`_, **start vids**, **end vids**, [**options**])"
 msgid "pgr_bdAstar(`Edges SQL`_, `Combinations SQL`_, [**options**])"
 msgstr "pgr_bdAstar(`Edges SQL`_, `Combinations SQL`_, [**options**])"
 
-#, fuzzy
-msgid "**options:** [directed, heuristic, factor, epsilon]``"
-msgstr "**options:** ``[directed, heuristic, factor, epsilon]``"
-
 msgid "``pgr_bdAstarCost``"
 msgstr "``pgr_bdAstarCost``"
 
@@ -9331,10 +9330,6 @@ msgid ""
 "``pgr_bdDijkstra`` — Returns the shortest path using Bidirectional Dijkstra "
 "algorithm."
 msgstr "``pgr_bdDijkstra`` — 返回使用双向 Dijkstra 算法计算的最短路径。"
-
-#, fuzzy
-msgid "New Proposed signatures:"
-msgstr "新拟议的签名："
 
 #, fuzzy
 msgid "pgr_bdDijkstra(One to Many)"
@@ -9578,7 +9573,7 @@ msgstr "在 **无向** 图上使用组合表。"
 
 #, fuzzy
 msgid ""
-"`Boost: Belman Ford <https://www.boost.org/libs/graph/doc/"
+"`Boost: Bellman Ford <https://www.boost.org/libs/graph/doc/"
 "bellman_ford_shortest.html>`__"
 msgstr ""
 "`Boost: Belman Ford <https://www.boost.org/libs/graph/doc/"
@@ -9591,17 +9586,14 @@ msgstr "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
 msgid "``pgr_betweennessCentrality`` - Experimental"
 msgstr "``pgr_betweennessCentrality``"
 
+#, fuzzy
 msgid ""
-"``pgr_betweennessCentrality`` - Calculates the relative betweeness "
+"``pgr_betweennessCentrality`` - Calculates the relative betweenness "
 "centrality using Brandes Algorithm"
 msgstr "``pgr_betweennessCentrality`` - 使用 Brandes 算法计算相对介数中心度"
 
 msgid "Version 3.7.0"
 msgstr "版本 3.7.0"
-
-#, fuzzy
-msgid "pgr_betweennessCentrality``"
-msgstr "``pgr_betweennessCentrality``"
 
 msgid ""
 "The Brandes Algorithm takes advantage of the sparse graphs for evaluating "
@@ -9678,8 +9670,8 @@ msgstr "该节点的相对介数中心性得分（范围为 [0,1]）"
 
 #, fuzzy
 msgid ""
-"`Boost: betweenness centrality <https://www.boost.org/doc/libs/1_84_0/libs/"
-"graph/doc/betweenness_centrality.html>`_"
+"`Boost: betweenness centrality <https://www.boost.org/libs/graph/doc/"
+"betweenness_centrality.html>`_"
 msgstr ""
 "`Boost: betweenness centrality <https://www.boost.org/doc/libs/1_84_0/libs/"
 "graph/doc/betweenness_centrality.html>`_"
@@ -10115,7 +10107,7 @@ msgstr "https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29"
 
 #, fuzzy
 msgid ""
-"`Boost: connected components <https://www.boost.org/libs/graph/doc/"
+"`Boost: Connected components <https://www.boost.org/libs/graph/doc/"
 "connected_components.html>`__"
 msgstr ""
 "Boost: ` 已连接组件 <https://www.boost.org/libs/graph/doc/"
@@ -10220,14 +10212,6 @@ msgstr "属于该 ``组件`` 的顶点的标识符。"
 
 msgid "Connecting disconnected components"
 msgstr "连接不连通的组件"
-
-#, fuzzy
-msgid ""
-"`Boost: Connected components <https://www.boost.org/libs/graph/doc/"
-"connected_components.html>`__"
-msgstr ""
-"Boost: ` 已连接组件 <https://www.boost.org/libs/graph/doc/"
-"connected_components.html>`__"
 
 msgid ""
 "wikipedia: `Connected component <https://en.wikipedia.org/wiki/"
@@ -11908,16 +11892,8 @@ msgstr "``pgr_drivingDistance`` - 返回起始节点的行驶距离。"
 msgid "Standarizing output columns to |result-spantree|"
 msgstr "将输出列标准化为 |result-spantree|"
 
-#, fuzzy
-msgid "pgr_drivingdistance(Single vertex)"
-msgstr "pgr_drivingDistance （单顶点）"
-
 msgid "Added ``depth`` and ``start_vid`` result columns."
 msgstr "添加了 ``depth`` 和 ``start_vid`` 结果列。"
-
-#, fuzzy
-msgid "pgr_drivingdistance(Multiple vertices)"
-msgstr "pgr_drivingDistance （多顶点）"
 
 msgid "Result column name change: ``from_v`` to ``start_vid``."
 msgstr "结果列名称更改： ``from_v``改为 ``start_vid``。"
@@ -12215,7 +12191,7 @@ msgstr "pgr_edmondsKarp(`Edges SQL`_, `Combinations SQL`_)"
 
 #, fuzzy
 msgid ""
-"`Boost: edmonds_karp_max_flow <https://www.boost.org/libs/graph/doc/"
+"`Boost: Edmonds Karp max flow <https://www.boost.org/libs/graph/doc/"
 "edmonds_karp_max_flow.html>`__"
 msgstr "https://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html"
 
@@ -12432,7 +12408,7 @@ msgid ""
 msgstr "可以获取计算代码，以便根据应用需要进行进一步的具体调整。"
 
 #, fuzzy
-msgid "EMTPY SET`` is returned on dryrun executions"
+msgid "``EMTPY SET`` is returned on dryrun executions"
 msgstr "空运行执行时返回 ``EMTPY SET``"
 
 msgid ""
@@ -13001,7 +12977,8 @@ msgstr "``hash``"
 msgid "Git hash of pgRouting build"
 msgstr "pgRouting 构建的 Git 哈希"
 
-msgid "``pgr_hawickCircuits - Experimental``"
+#, fuzzy
+msgid "``pgr_hawickCircuits`` - Experimental"
 msgstr "``pgr_hawickCircuits - 实验``"
 
 msgid ""
@@ -13297,7 +13274,8 @@ msgstr "pgr_kruskalDFS(`Edges SQL`_, **root vid**, [``max_depth``])"
 msgid "pgr_kruskalDFS(`Edges SQL`_, **root vids**, [``max_depth``])"
 msgstr "pgr_kruskalDFS(`Edges SQL`_, **root vids**, [``max_depth``])"
 
-msgid "``pgr_lengauerTarjanDominatorTree`` -Experimental"
+#, fuzzy
+msgid "``pgr_lengauerTarjanDominatorTree`` - Experimental"
 msgstr "``pgr_lengauerTarjanDominatorTree`` - 实验"
 
 msgid ""
@@ -13663,8 +13641,8 @@ msgstr "边 :math:`\\{4, 7, 8, 10\\}` 子图的全线图"
 
 #, fuzzy
 msgid ""
-"The examples of this section are based on the :doc:`sampledata` The examples "
-"include the subgraph including edges 4, 7, 8, and 10 with ``reverse_cost``."
+"The examples include the subgraph including edges 4, 7, 8, and 10 with "
+"``reverse_cost``."
 msgstr ""
 "本节的示例基于 :doc:`sampledata` 网络。 这些示例包括包含具有 "
 "``reverse_cost`` 的边 4、7、8 和 10 的子图。"
@@ -16115,8 +16093,8 @@ msgid ""
 "pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
 "boolean,boolean)"
 msgstr ""
-"pgr_withpointsdd(text,text,anyarray,double "
-"precision,boolean,character,boolean,boolean)"
+"pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
+"boolean,boolean)"
 
 msgid ""
 "Modify the graph to include points and using Dijkstra algorithm, extracts "
@@ -16266,8 +16244,8 @@ msgid ""
 "pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,"
 "boolean)``"
 msgstr ""
-"pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,boolea"
-"n)``"
+"pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,"
+"boolean)``"
 
 msgid ""
 "Modifies the graph to include the points defined in the `Points SQL`_ and "
@@ -16907,9 +16885,10 @@ msgstr ""
 "`#2547 <https://github.com/pgRouting/pgrouting/pull/2547>`__ 标准化输出并修改"
 "签名 pgr_KSP"
 
+#, fuzzy
 msgid ""
 "`#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ Standarize "
-"output pgr_drivingdistance"
+"output pgr_drivingDistance"
 msgstr ""
 "`#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ 标准化输出 "
 "pgr_drivingdistance"
@@ -17888,7 +17867,7 @@ msgid ""
 msgstr ""
 "`#1006 <https://github.com/pgRouting/pgrouting/issues/1006>`__：无信息丢失"
 
-msgid "New functions"
+msgid "New Functions"
 msgstr "新函数"
 
 msgid "Kruskal family"
@@ -17927,148 +17906,157 @@ msgstr "pgRouting 中的拟议已升级为正式版本"
 msgid "aStar Family"
 msgstr "aStar族"
 
-msgid "pgr_aStar(one to many)"
-msgstr "pgr_aStar（一对多）"
-
-msgid "pgr_aStar(many to one)"
-msgstr "pgr_aStar（多对一）"
-
-msgid "pgr_aStar(many to many)"
-msgstr "pgr_aStar（多对多）"
-
-msgid "pgr_aStarCost(one to one)"
+#, fuzzy
+msgid "pgr_aStarCost(One to One)"
 msgstr "pgr_aStarCost(一对一)"
 
-msgid "pgr_aStarCost(one to many)"
+#, fuzzy
+msgid "pgr_aStarCost(One to Many)"
 msgstr "pgr_aStarCost(一对多)"
 
-msgid "pgr_aStarCost(many to one)"
+#, fuzzy
+msgid "pgr_aStarCost(Many to One)"
 msgstr "pgr_aStarCost(多对一)"
 
-msgid "pgr_aStarCost(many to many)"
+#, fuzzy
+msgid "pgr_aStarCost(Many to Many)"
 msgstr "pgr_aStarCost（多对多）"
 
-msgid "pgr_aStarCostMatrix(one to one)"
+#, fuzzy
+msgid "pgr_aStarCostMatrix(One to One)"
 msgstr "pgr_aStarCostMatrix(一对一)"
 
-msgid "pgr_aStarCostMatrix(one to many)"
+#, fuzzy
+msgid "pgr_aStarCostMatrix(One to Many)"
 msgstr "pgr_aStarCostMatrix (一对多)"
 
-msgid "pgr_aStarCostMatrix(many to one)"
+#, fuzzy
+msgid "pgr_aStarCostMatrix(Many to One)"
 msgstr "pgr_aStarCostMatrix (多对一)"
 
-msgid "pgr_aStarCostMatrix(many to many)"
+#, fuzzy
+msgid "pgr_aStarCostMatrix(Many to Many)"
 msgstr "pgr_aStarCostMatrix（多对多）"
 
 msgid "bdAstar Family"
 msgstr "bdAstar 族"
 
-msgid "pgr_bdAstar(one to many)"
-msgstr "pgr_bdAstar（一对多）"
-
-msgid "pgr_bdAstar(many to one)"
-msgstr "pgr_bdAstar（多对一）"
-
-msgid "pgr_bdAstar(many to many)"
-msgstr "pgr_bdAstar（多对多）"
-
-msgid "pgr_bdAstarCost(one to one)"
+#, fuzzy
+msgid "pgr_bdAstarCost(One to One)"
 msgstr "pgr_bdAstarCost(一对一)"
 
-msgid "pgr_bdAstarCost(one to many)"
+#, fuzzy
+msgid "pgr_bdAstarCost(One to Many)"
 msgstr "pgr_bdAstarCost(一对多)"
 
-msgid "pgr_bdAstarCost(many to one)"
+#, fuzzy
+msgid "pgr_bdAstarCost(Many to One)"
 msgstr "pgr_bdAstarCost （多对一）"
 
-msgid "pgr_bdAstarCost(many to many)"
+#, fuzzy
+msgid "pgr_bdAstarCost(Many to Many)"
 msgstr "pgr_bdAstarCost (多对多)"
 
-msgid "pgr_bdAstarCostMatrix(one to one)"
+#, fuzzy
+msgid "pgr_bdAstarCostMatrix(One to One)"
 msgstr "pgr_bdAstarCostMatrix(一对一)"
 
-msgid "pgr_bdAstarCostMatrix(one to many)"
+#, fuzzy
+msgid "pgr_bdAstarCostMatrix(One to Many)"
 msgstr "pgr_bdAstarCostMatrix(一对多)"
 
-msgid "pgr_bdAstarCostMatrix(many to one)"
+#, fuzzy
+msgid "pgr_bdAstarCostMatrix(Many to One)"
 msgstr "pgr_bdAstarCostMatrix （多对一）"
 
-msgid "pgr_bdAstarCostMatrix(many to many)"
+#, fuzzy
+msgid "pgr_bdAstarCostMatrix(Many to Many)"
 msgstr "pgr_bdAstarCostMatrix （多对多）"
 
 msgid "bdDijkstra Family"
 msgstr "bdDijkstra族"
 
-msgid "pgr_bdDijkstra(one to many)"
-msgstr "pgr_bdDijkstra（一对多）"
-
-msgid "pgr_bdDijkstra(many to one)"
-msgstr "pgr_bdDijkstra（多对一）"
-
-msgid "pgr_bdDijkstra(many to many)"
-msgstr "pgr_bdDijkstra（多对多）"
-
-msgid "pgr_bdDijkstraCost(one to one)"
+#, fuzzy
+msgid "pgr_bdDijkstraCost(One to One)"
 msgstr "pgr_bdDijkstraCost (一对一)"
 
-msgid "pgr_bdDijkstraCost(one to many)"
+#, fuzzy
+msgid "pgr_bdDijkstraCost(One to Many)"
 msgstr "pgr_bdDijkstraCost(一对多)"
 
-msgid "pgr_bdDijkstraCost(many to one)"
+#, fuzzy
+msgid "pgr_bdDijkstraCost(Many to One)"
 msgstr "pgr_bdDijkstraCost (多对一)"
 
-msgid "pgr_bdDijkstraCost(many to many)"
+#, fuzzy
+msgid "pgr_bdDijkstraCost(Many to Many)"
 msgstr "pgr_bdDijkstraCost（多对多）"
 
-msgid "pgr_bdDijkstraCostMatrix(one to one)"
+#, fuzzy
+msgid "pgr_bdDijkstraCostMatrix(One to One)"
 msgstr "pgr_bdDijkstraCostMatrix(一对一)"
 
-msgid "pgr_bdDijkstraCostMatrix(one to many)"
+#, fuzzy
+msgid "pgr_bdDijkstraCostMatrix(One to Many)"
 msgstr "pgr_bdDijkstraCostMatrix(一对多)"
 
-msgid "pgr_bdDijkstraCostMatrix(many to one)"
+#, fuzzy
+msgid "pgr_bdDijkstraCostMatrix(Many to One)"
 msgstr "pgr_bdDijkstraCostMatrix (多对一)"
 
-msgid "pgr_bdDijkstraCostMatrix(many to many)"
+#, fuzzy
+msgid "pgr_bdDijkstraCostMatrix(Many to Many)"
 msgstr "pgr_bdDijkstraCostMatrix（多对多）"
 
 msgid "Flow Family"
 msgstr "Flow族"
 
-msgid "pgr_pushRelabel(one to one)"
+#, fuzzy
+msgid "pgr_pushRelabel(One to One)"
 msgstr "pgr_pushRelabel(一对一)"
 
-msgid "pgr_pushRelabel(one to many)"
+#, fuzzy
+msgid "pgr_pushRelabel(One to Many)"
 msgstr "pgr_pushRelabel(一对多)"
 
-msgid "pgr_pushRelabel(many to one)"
+#, fuzzy
+msgid "pgr_pushRelabel(Many to One)"
 msgstr "pgr_pushRelabel(多对一)"
 
-msgid "pgr_pushRelabel(many to many)"
+#, fuzzy
+msgid "pgr_pushRelabel(Many to Many)"
 msgstr "pgr_pushRelabel(多对多)"
 
-msgid "pgr_edmondsKarp(one to one)"
+#, fuzzy
+msgid "pgr_edmondsKarp(One to One)"
 msgstr "pgr_edmondsKarp（一对一）"
 
-msgid "pgr_edmondsKarp(one to many)"
+#, fuzzy
+msgid "pgr_edmondsKarp(One to Many)"
 msgstr "pgr_edmondsKarp（一对多）"
 
-msgid "pgr_edmondsKarp(many to one)"
+#, fuzzy
+msgid "pgr_edmondsKarp(Many to One)"
 msgstr "pgr_edmondsKarp（多对一）"
 
-msgid "pgr_edmondsKarp(many to many)"
+#, fuzzy
+msgid "pgr_edmondsKarp(Many to Many)"
 msgstr "pgr_edmondsKarp（多对多）"
 
-msgid "pgr_boykovKolmogorov (one to one)"
+#, fuzzy
+msgid "pgr_boykovKolmogorov (One to One)"
 msgstr "pgr_boykovKolmogorov (一对一)"
 
-msgid "pgr_boykovKolmogorov (one to many)"
+#, fuzzy
+msgid "pgr_boykovKolmogorov (One to Many)"
 msgstr "pgr_boykovKolmogorov (一对多)"
 
-msgid "pgr_boykovKolmogorov (many to one)"
+#, fuzzy
+msgid "pgr_boykovKolmogorov (Many to One)"
 msgstr "pgr_boykovKolmogorov (多对一)"
 
-msgid "pgr_boykovKolmogorov (many to many)"
+#, fuzzy
+msgid "pgr_boykovKolmogorov (Many to Many)"
 msgstr "pgr_boykovKolmogorov (多对多)"
 
 msgid "pgr_maxCardinalityMatching"
@@ -18077,16 +18065,20 @@ msgstr "pgr_maxCardinalityMatching"
 msgid "pgr_maxFlow"
 msgstr "pgr_maxFlow"
 
-msgid "pgr_edgeDisjointPaths(one to one)"
+#, fuzzy
+msgid "pgr_edgeDisjointPaths(One to One)"
 msgstr "pgr_edgeDisjointPaths (一对一)"
 
-msgid "pgr_edgeDisjointPaths(one to many)"
+#, fuzzy
+msgid "pgr_edgeDisjointPaths(One to Many)"
 msgstr "pgr_edgeDisjointPaths （一对多）"
 
-msgid "pgr_edgeDisjointPaths(many to one)"
+#, fuzzy
+msgid "pgr_edgeDisjointPaths(Many to One)"
 msgstr "pgr_edgeDisjointPaths (多对一)"
 
-msgid "pgr_edgeDisjointPaths(many to many)"
+#, fuzzy
+msgid "pgr_edgeDisjointPaths(Many to Many)"
 msgstr "pgr_edgeDisjointPaths （多对多）"
 
 msgid "Components family"
@@ -18547,13 +18539,15 @@ msgstr "在结果中添加了 path_id、cost 和 agg_cost 列"
 msgid "Parameter names changed"
 msgstr "更改参数名称"
 
-msgid "The many version results are the union of the one to one version"
+#, fuzzy
+msgid "The many version results are the union of the One to One version"
 msgstr "多版本结果是一对一版本的并集"
 
 msgid "New Signatures"
 msgstr "新签名"
 
-msgid "pgr_bdAstar(one to one)"
+#, fuzzy
+msgid "pgr_bdAstar(One to One)"
 msgstr "pgr_bdAstar（一对一）"
 
 msgid "pgr_bdAstarCostMatrix"
@@ -18647,31 +18641,35 @@ msgstr ""
 "github.com/pgRouting/pgrouting/issues?"
 "q=milestone%3A%22Release+2.4.0%22+is%3Aclosed>`_ 。"
 
-msgid "New Function."
-msgstr "新函数。"
-
 msgid "pgr_bdDijkstra"
 msgstr "pgr_bdDijkstra"
 
-msgid "pgr_astar(one to many)"
-msgstr "pgr_astar（一对多）"
+#, fuzzy
+msgid "pgr_astar(One to Many)"
+msgstr "pgr_aStar(一对多）"
 
-msgid "pgr_astar(many to one)"
-msgstr "pgr_astar（多对一）"
+#, fuzzy
+msgid "pgr_astar(Many to One)"
+msgstr "pgr_aStar(多对一）"
 
-msgid "pgr_astar(many to many)"
-msgstr "pgr_astar（多对多）"
+#, fuzzy
+msgid "pgr_astar(Many to Many)"
+msgstr "pgr_aStar(多对多）"
 
-msgid "pgr_astarCost(one to one)"
+#, fuzzy
+msgid "pgr_astarCost(One to One)"
 msgstr "pgr_astarCost(一对一)"
 
-msgid "pgr_astarCost(one to many)"
+#, fuzzy
+msgid "pgr_astarCost(One to Many)"
 msgstr "pgr_astarCost(一对多)"
 
-msgid "pgr_astarCost(many to one)"
+#, fuzzy
+msgid "pgr_astarCost(Many to One)"
 msgstr "pgr_astarCost(多对一)"
 
-msgid "pgr_astarCost(many to many)"
+#, fuzzy
+msgid "pgr_astarCost(Many to Many)"
 msgstr "pgr_astarCost（多对多）"
 
 msgid "pgr_astarCostMatrix"
@@ -18762,46 +18760,55 @@ msgstr "pgr_TSP"
 msgid "pgr_aStar"
 msgstr "pgr_aStar"
 
-msgid "New Functions"
-msgstr "新函数"
-
 msgid "pgr_eucledianTSP"
 msgstr "pgr_eucledianTSP"
 
-msgid "pgr_maxFlowPushRelabel(one to one)"
+#, fuzzy
+msgid "pgr_maxFlowPushRelabel(One to One)"
 msgstr "pgr_maxFlowPushRelabel(一对一)"
 
-msgid "pgr_maxFlowPushRelabel(one to many)"
+#, fuzzy
+msgid "pgr_maxFlowPushRelabel(One to Many)"
 msgstr "pgr_maxFlowPushRelabel(一对多)"
 
-msgid "pgr_maxFlowPushRelabel(many to one)"
+#, fuzzy
+msgid "pgr_maxFlowPushRelabel(Many to One)"
 msgstr "pgr_maxFlowPushRelabel(多对一)"
 
-msgid "pgr_maxFlowPushRelabel(many to many)"
+#, fuzzy
+msgid "pgr_maxFlowPushRelabel(Many to Many)"
 msgstr "pgr_maxFlowPushRelabel(多对多)"
 
-msgid "pgr_maxFlowEdmondsKarp(one to one)"
+#, fuzzy
+msgid "pgr_maxFlowEdmondsKarp(One to One)"
 msgstr "pgr_maxFlowEdmondsKarp（一对一）"
 
-msgid "pgr_maxFlowEdmondsKarp(one to many)"
+#, fuzzy
+msgid "pgr_maxFlowEdmondsKarp(One to Many)"
 msgstr "pgr_maxFlowEdmondsKarp（一对多）"
 
-msgid "pgr_maxFlowEdmondsKarp(many to one)"
+#, fuzzy
+msgid "pgr_maxFlowEdmondsKarp(Many to One)"
 msgstr "pgr_maxFlowEdmondsKarp（多对一）"
 
-msgid "pgr_maxFlowEdmondsKarp(many to many)"
+#, fuzzy
+msgid "pgr_maxFlowEdmondsKarp(Many to Many)"
 msgstr "pgr_maxFlowEdmondsKarp（多对多）"
 
-msgid "pgr_maxFlowBoykovKolmogorov (one to one)"
+#, fuzzy
+msgid "pgr_maxFlowBoykovKolmogorov (One to One)"
 msgstr "pgr_maxFlowBoykovKolmogorov （一对一）"
 
-msgid "pgr_maxFlowBoykovKolmogorov (one to many)"
+#, fuzzy
+msgid "pgr_maxFlowBoykovKolmogorov (One to Many)"
 msgstr "pgr_maxFlowBoykovKolmogorov （一对多）"
 
-msgid "pgr_maxFlowBoykovKolmogorov (many to one)"
+#, fuzzy
+msgid "pgr_maxFlowBoykovKolmogorov (Many to One)"
 msgstr "pgr_maxFlowBoykovKolmogorov （多对一）"
 
-msgid "pgr_maxFlowBoykovKolmogorov (many to many)"
+#, fuzzy
+msgid "pgr_maxFlowBoykovKolmogorov (Many to Many)"
 msgstr "pgr_maxFlowBoykovKolmogorov （多对多）"
 
 msgid "pgr_maximumCardinalityMatching"
@@ -18929,43 +18936,55 @@ msgstr "pgr_dijkstra -- 与文档中的内容相匹配"
 msgid "pgr_Johnson"
 msgstr "pgr_Johnson"
 
-msgid "pgr_dijkstraCost(one to one)"
+#, fuzzy
+msgid "pgr_dijkstraCost(One to One)"
 msgstr "pgr_dijkstraCost(一对一)"
 
-msgid "pgr_dijkstraCost(one to many)"
-msgstr "pgr_dijkstraCost(一对多)"
+#, fuzzy
+msgid "pgr_dijkstraCost(One to Many)"
+msgstr "pgr_dijkstraNearCost(一对多)"
 
-msgid "pgr_dijkstraCost(many to one)"
-msgstr "pgr_dijkstraCost（多对一）"
+#, fuzzy
+msgid "pgr_dijkstraCost(Many to One)"
+msgstr "pgr_dijkstraNearCost(多对一)"
 
-msgid "pgr_dijkstraCost(many to many)"
-msgstr "pgr_dijkstraCost（多对多）"
+#, fuzzy
+msgid "pgr_dijkstraCost(Many to Many)"
+msgstr "pgr_dijkstraNearCost (多对多)"
 
 msgid "Proposed Functionality"
 msgstr "建议的功能"
 
-msgid "pgr_withPoints(one to one)"
-msgstr "pgr_withPoints(一对一)"
+#, fuzzy
+msgid "pgr_withPoints(One to One)"
+msgstr "pgr_withPointsKSP(一对一)"
 
-msgid "pgr_withPoints(one to many)"
-msgstr "pgr_withPoints（一对多）"
+#, fuzzy
+msgid "pgr_withPoints(One to Many)"
+msgstr "pgr_withPointsKSP (一对多)"
 
-msgid "pgr_withPoints(many to one)"
-msgstr "pgr_withPoints(多对一)"
+#, fuzzy
+msgid "pgr_withPoints(Many to One)"
+msgstr "pgr_withPointsKSP(多对一)"
 
-msgid "pgr_withPoints(many to many)"
-msgstr "pgr_withPoints(多对多)"
+#, fuzzy
+msgid "pgr_withPoints(Many to Many)"
+msgstr "pgr_withPointsKSP(多对多)"
 
-msgid "pgr_withPointsCost(one to one)"
+#, fuzzy
+msgid "pgr_withPointsCost(One to One)"
 msgstr "pgr_withPointsCost(一对一)"
 
-msgid "pgr_withPointsCost(one to many)"
+#, fuzzy
+msgid "pgr_withPointsCost(One to Many)"
 msgstr "pgr_withPointsCost(一对多)"
 
-msgid "pgr_withPointsCost(many to one)"
+#, fuzzy
+msgid "pgr_withPointsCost(Many to One)"
 msgstr "pgr_withPointsCost(多对一)"
 
-msgid "pgr_withPointsCost(many to many)"
+#, fuzzy
+msgid "pgr_withPointsCost(Many to Many)"
 msgstr "pgr_withPointsCost(多对多)"
 
 msgid "pgr_withPointsDD(single vertex)"
@@ -19010,19 +19029,11 @@ msgstr ""
 "github.com/pgRouting/pgrouting/issues?"
 "q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed>`_ 。"
 
-msgid "pgr_dijkstra(one to many)"
-msgstr "pgr_dijkstra（一对多）"
-
-msgid "pgr_dijkstra(many to one)"
-msgstr "pgr_dijkstra（多对一）"
-
-msgid "pgr_dijkstra(many to many)"
-msgstr "pgr_dijkstra（多对多）"
-
 msgid "Refactored"
 msgstr "重构"
 
-msgid "pgr_dijkstra(one to one)"
+#, fuzzy
+msgid "pgr_dijkstra(One to One)"
 msgstr "pgr_dijkstra（一对一）"
 
 msgid ""
@@ -20206,6 +20217,104 @@ msgstr "pgr_withPointsDD 是 **带有点** 的 pgr_drivenDistance"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPointsvia 是 pgr_dijkstraVia **with points** 的版本"
+
+#~ msgid "``pgr_drivingdistance`` (Single vertex)"
+#~ msgstr "``pgr_drivingdistance`` (单个顶点)"
+
+#~ msgid "``pgr_drivingdistance`` (Multiple vertices)"
+#~ msgstr "``pgr_drivingdistance`` (多个顶点)"
+
+#, fuzzy
+#~ msgid "**options:** [directed, heuristic, factor, epsilon]``"
+#~ msgstr "**options:** ``[directed, heuristic, factor, epsilon]``"
+
+#, fuzzy
+#~ msgid "New Proposed signatures:"
+#~ msgstr "新拟议的签名："
+
+#, fuzzy
+#~ msgid "pgr_betweennessCentrality``"
+#~ msgstr "``pgr_betweennessCentrality``"
+
+#, fuzzy
+#~ msgid ""
+#~ "`Boost: connected components <https://www.boost.org/libs/graph/doc/"
+#~ "connected_components.html>`__"
+#~ msgstr ""
+#~ "Boost: ` 已连接组件 <https://www.boost.org/libs/graph/doc/"
+#~ "connected_components.html>`__"
+
+#~ msgid "New functions"
+#~ msgstr "新函数"
+
+#~ msgid "pgr_aStar(one to many)"
+#~ msgstr "pgr_aStar（一对多）"
+
+#~ msgid "pgr_aStar(many to one)"
+#~ msgstr "pgr_aStar（多对一）"
+
+#~ msgid "pgr_aStar(many to many)"
+#~ msgstr "pgr_aStar（多对多）"
+
+#~ msgid "pgr_bdAstar(one to many)"
+#~ msgstr "pgr_bdAstar（一对多）"
+
+#~ msgid "pgr_bdAstar(many to one)"
+#~ msgstr "pgr_bdAstar（多对一）"
+
+#~ msgid "pgr_bdAstar(many to many)"
+#~ msgstr "pgr_bdAstar（多对多）"
+
+#~ msgid "pgr_bdDijkstra(one to many)"
+#~ msgstr "pgr_bdDijkstra（一对多）"
+
+#~ msgid "pgr_bdDijkstra(many to one)"
+#~ msgstr "pgr_bdDijkstra（多对一）"
+
+#~ msgid "pgr_bdDijkstra(many to many)"
+#~ msgstr "pgr_bdDijkstra（多对多）"
+
+#~ msgid "New Function."
+#~ msgstr "新函数。"
+
+#~ msgid "pgr_astar(one to many)"
+#~ msgstr "pgr_astar（一对多）"
+
+#~ msgid "pgr_astar(many to one)"
+#~ msgstr "pgr_astar（多对一）"
+
+#~ msgid "pgr_astar(many to many)"
+#~ msgstr "pgr_astar（多对多）"
+
+#~ msgid "pgr_dijkstraCost(one to many)"
+#~ msgstr "pgr_dijkstraCost(一对多)"
+
+#~ msgid "pgr_dijkstraCost(many to one)"
+#~ msgstr "pgr_dijkstraCost（多对一）"
+
+#~ msgid "pgr_dijkstraCost(many to many)"
+#~ msgstr "pgr_dijkstraCost（多对多）"
+
+#~ msgid "pgr_withPoints(one to one)"
+#~ msgstr "pgr_withPoints(一对一)"
+
+#~ msgid "pgr_withPoints(one to many)"
+#~ msgstr "pgr_withPoints（一对多）"
+
+#~ msgid "pgr_withPoints(many to one)"
+#~ msgstr "pgr_withPoints(多对一)"
+
+#~ msgid "pgr_withPoints(many to many)"
+#~ msgstr "pgr_withPoints(多对多)"
+
+#~ msgid "pgr_dijkstra(one to many)"
+#~ msgstr "pgr_dijkstra（一对多）"
+
+#~ msgid "pgr_dijkstra(many to one)"
+#~ msgstr "pgr_dijkstra（多对一）"
+
+#~ msgid "pgr_dijkstra(many to many)"
+#~ msgstr "pgr_dijkstra（多对多）"
 
 #~ msgid "The queries use the :doc:`sampledata` network."
 #~ msgstr "查询使用 :doc:`sampledata` 网络。"

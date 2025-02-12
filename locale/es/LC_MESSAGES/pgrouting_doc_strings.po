@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-11 11:58-0600\n"
+"POT-Creation-Date: 2025-02-11 23:18+0000\n"
 "PO-Revision-Date: 2025-02-12 00:30+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
@@ -300,9 +300,6 @@ msgstr ":ref:`genindex`"
 
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-msgid "Boost Graph Inside"
-msgstr "Adentro: Boost Graph"
 
 msgid "DFS - Category"
 msgstr "DFS - Categoría"
@@ -5013,8 +5010,8 @@ msgid ""
 "pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
 "boolean,text)"
 msgstr ""
-"pgr_trsp(text,integer,double precision,integer,double "
-"precision,boolean,boolean,text)"
+"pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
+"boolean,text)"
 
 msgid "pgr_trsp(text,integer,integer,boolean,boolean,text)"
 msgstr "pgr_trsp(text,integer,integer,boolean,boolean,text)"
@@ -5058,8 +5055,8 @@ msgid ""
 "_pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
 "boolean,text)"
 msgstr ""
-"_pgr_trsp(text,integer,double precision,integer,double "
-"precision,boolean,boolean,text)"
+"_pgr_trsp(text,integer,double precision,integer,double precision,boolean,"
+"boolean,text)"
 
 msgid "_pgr_trsp(text,text,anyarray,anyarray,boolean)"
 msgstr "_pgr_trsp(text,text,anyarray,anyarray,boolean)"
@@ -5308,7 +5305,8 @@ msgstr "En ``pgr_dijkstra`` (`Muchos a Uno`)"
 msgid "If needed add the new columns, for example:"
 msgstr "Si es necesario, añadir las nuevas columnas, por ejemplo:"
 
-msgid "Migration of ``pgr_drivingdistance``"
+#, fuzzy
+msgid "Migration of ``pgr_drivingDistance``"
 msgstr "Migración de ``pgr_drivingDistance``"
 
 msgid ""
@@ -5330,11 +5328,13 @@ msgstr "a"
 msgid "|result-spantree|"
 msgstr "|result-spantree|"
 
-msgid "``pgr_drivingdistance`` (Single vertex)"
-msgstr "``pgr_drivingDistance`` (Vértice único)"
+#, fuzzy
+msgid "pgr_drivingDistance(Single vertex)"
+msgstr "pgr_drivingDistance(Vértice único)"
 
-msgid "``pgr_drivingdistance`` (Multiple vertices)"
-msgstr "``pgr_drivingDistance`` (Múltiples vértices)"
+#, fuzzy
+msgid "pgr_drivingDistance(Multiple vertices)"
+msgstr "pgr_drivingDistance(Múltiples vértices)"
 
 msgid "Output columns were |result-dij-dd|"
 msgstr "Columnas de resultados eran |old-generic-result|"
@@ -5902,7 +5902,8 @@ msgstr ":doc:`pgr_trsp_withPoints`"
 msgid "Use ``pgr_withPoints`` when there are no restrictions."
 msgstr "Usar ``pgr_withPoints`` cuando no hay restricciones."
 
-msgid "Use :doc:`pgr_withPoints` (Ont to One) instead."
+#, fuzzy
+msgid "Use :doc:`pgr_withPoints` (One to One) instead."
 msgstr "Utilizar en su lugar `:doc:`pgr_withPoints` (Uno a Uno)."
 
 msgid "Use ``pgr_trsp_withPoints`` when there are restrictions."
@@ -8517,6 +8518,9 @@ msgstr ""
 msgid "|Boost| Boost Graph Inside"
 msgstr "|Boost| Adentro: Boost Graph"
 
+msgid "Boost Graph Inside"
+msgstr "Adentro: Boost Graph"
+
 msgid "Signatures"
 msgstr "Firmas"
 
@@ -10023,8 +10027,8 @@ msgid ""
 "The results are equivalent to the union of the results of the "
 "pgr_bdAStar(One to One) on the:"
 msgstr ""
-"Los resultados son equivalentes a la unión de los resultados de pgr_bdAStar("
-"Uno a Uno) en:"
+"Los resultados son equivalentes a la unión de los resultados de "
+"pgr_bdAStar(Uno a Uno) en:"
 
 msgid "pgr_bdAstar(`Edges SQL`_, **start vid**, **end vid**, [**options**])"
 msgstr ""
@@ -10045,10 +10049,6 @@ msgstr ""
 msgid "pgr_bdAstar(`Edges SQL`_, `Combinations SQL`_, [**options**])"
 msgstr ""
 "pgr_bdAstar(`SQL de aristas`_, `SQL de combinaciones`_, [**opciones**])"
-
-#, fuzzy
-msgid "**options:** [directed, heuristic, factor, epsilon]``"
-msgstr "**opcionales:** ``[directed, heuristic, factor, epsilon]``"
 
 msgid "``pgr_bdAstarCost``"
 msgstr "``pgr_bdAstarCost``"
@@ -10116,9 +10116,6 @@ msgid ""
 msgstr ""
 "``pgr_bdDijkstra`` - Devuelve el camino más corto utilizando el algoritmo "
 "Bidireccional de Dijkstra."
-
-msgid "New Proposed signatures:"
-msgstr "Nuevas firmas Propuestas:"
 
 msgid "pgr_bdDijkstra(One to Many)"
 msgstr "pgr_bdDijkstra(Uno a Muchos)"
@@ -10396,8 +10393,9 @@ msgstr ""
 msgid "Using a combinations table on an **undirected** graph."
 msgstr "Uso de una tabla de combinaciones en un grafo **no dirigido**."
 
+#, fuzzy
 msgid ""
-"`Boost: Belman Ford <https://www.boost.org/libs/graph/doc/"
+"`Boost: Bellman Ford <https://www.boost.org/libs/graph/doc/"
 "bellman_ford_shortest.html>`__"
 msgstr ""
 "`Boost: Bellman Ford <https://www.boost.org/libs/graph/doc/"
@@ -10409,8 +10407,9 @@ msgstr "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
 msgid "``pgr_betweennessCentrality`` - Experimental"
 msgstr "``pgr_betweennessCentrality`` - Experimental"
 
+#, fuzzy
 msgid ""
-"``pgr_betweennessCentrality`` - Calculates the relative betweeness "
+"``pgr_betweennessCentrality`` - Calculates the relative betweenness "
 "centrality using Brandes Algorithm"
 msgstr ""
 "``pgr_betweennessCentrality`` - Calcula la centralidad intermedia relativa "
@@ -10418,10 +10417,6 @@ msgstr ""
 
 msgid "Version 3.7.0"
 msgstr "Versión 3.7.0"
-
-#, fuzzy
-msgid "pgr_betweennessCentrality``"
-msgstr "``pgr_betweennessCentrality``"
 
 msgid ""
 "The Brandes Algorithm takes advantage of the sparse graphs for evaluating "
@@ -10505,9 +10500,10 @@ msgid ""
 msgstr ""
 "Puntuación relativa de centralidad entre vértices (estará en el rango [0,1])"
 
+#, fuzzy
 msgid ""
-"`Boost: betweenness centrality <https://www.boost.org/doc/libs/1_84_0/libs/"
-"graph/doc/betweenness_centrality.html>`_"
+"`Boost: betweenness centrality <https://www.boost.org/libs/graph/doc/"
+"betweenness_centrality.html>`_"
 msgstr ""
 "`Boost: Centralidad de intermediación <https://www.boost.org/libs/graph/doc/"
 "betweenness_centrality.html>`__"
@@ -10979,10 +10975,10 @@ msgid "https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29"
 msgstr "https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29"
 
 msgid ""
-"`Boost: connected components <https://www.boost.org/libs/graph/doc/"
+"`Boost: Connected components <https://www.boost.org/libs/graph/doc/"
 "connected_components.html>`__"
 msgstr ""
-"`Boost: componentes conectados <https://www.boost.org/libs/graph/doc/"
+"`Boost: Componentes conectados <https://www.boost.org/libs/graph/doc/"
 "connected_components.html>`__"
 
 msgid "``pgr_chinesePostman`` - Experimental"
@@ -11087,13 +11083,6 @@ msgstr "Identificador del vértice que pertenece al ``component``."
 
 msgid "Connecting disconnected components"
 msgstr "Conectando componentes desconectados"
-
-msgid ""
-"`Boost: Connected components <https://www.boost.org/libs/graph/doc/"
-"connected_components.html>`__"
-msgstr ""
-"`Boost: Componentes conectados <https://www.boost.org/libs/graph/doc/"
-"connected_components.html>`__"
 
 msgid ""
 "wikipedia: `Connected component <https://en.wikipedia.org/wiki/"
@@ -12975,14 +12964,8 @@ msgstr ""
 msgid "Standarizing output columns to |result-spantree|"
 msgstr "Estandarización de columnas de resultados a |result-spantree|"
 
-msgid "pgr_drivingdistance(Single vertex)"
-msgstr "pgr_drivingDistance(Vértice único)"
-
 msgid "Added ``depth`` and ``start_vid`` result columns."
 msgstr "Agregado las columnas de resultados``depth`` y ``start_vid``."
-
-msgid "pgr_drivingdistance(Multiple vertices)"
-msgstr "pgr_drivingDistance(Múltiples vértices)"
 
 msgid "Result column name change: ``from_v`` to ``start_vid``."
 msgstr ""
@@ -13305,8 +13288,9 @@ msgstr "pgr_edmondsKarp(`SQL de aristas`_, **salidas**, **destinos**)"
 msgid "pgr_edmondsKarp(`Edges SQL`_, `Combinations SQL`_)"
 msgstr "pgr_edmondsKarp(`SQL de aristas`_, `SQL de combinaciones`_)"
 
+#, fuzzy
 msgid ""
-"`Boost: edmonds_karp_max_flow <https://www.boost.org/libs/graph/doc/"
+"`Boost: Edmonds Karp max flow <https://www.boost.org/libs/graph/doc/"
 "edmonds_karp_max_flow.html>`__"
 msgstr ""
 "`Boost: Flujo máximo Edmonds Karp <https://www.boost.org/libs/graph/doc/"
@@ -13553,7 +13537,7 @@ msgstr ""
 "ajustes específicos que necesite la aplicación."
 
 #, fuzzy
-msgid "EMTPY SET`` is returned on dryrun executions"
+msgid "``EMTPY SET`` is returned on dryrun executions"
 msgstr "``EMTPY SET`` se devuelve en ejecuciones en seco"
 
 msgid ""
@@ -14173,7 +14157,7 @@ msgid "Git hash of pgRouting build"
 msgstr "Hash de Git de pgRouting"
 
 #, fuzzy
-msgid "``pgr_hawickCircuits - Experimental``"
+msgid "``pgr_hawickCircuits`` - Experimental"
 msgstr "``pgr_hawickCircuits - Experimental``"
 
 msgid ""
@@ -14509,7 +14493,8 @@ msgstr "pgr_kruskalDFS(`SQL de aristas`_, **raíz**, [``max_depth``])"
 msgid "pgr_kruskalDFS(`Edges SQL`_, **root vids**, [``max_depth``])"
 msgstr "pgr_kruskalDFS(`SQL de aristas`_, **raices**, [``max_depth``])"
 
-msgid "``pgr_lengauerTarjanDominatorTree`` -Experimental"
+#, fuzzy
+msgid "``pgr_lengauerTarjanDominatorTree`` - Experimental"
 msgstr "``pgr_lengauerTarjanDominatorTree`` - Experimental"
 
 msgid ""
@@ -14919,8 +14904,8 @@ msgstr ""
 
 #, fuzzy
 msgid ""
-"The examples of this section are based on the :doc:`sampledata` The examples "
-"include the subgraph including edges 4, 7, 8, and 10 with ``reverse_cost``."
+"The examples include the subgraph including edges 4, 7, 8, and 10 with "
+"``reverse_cost``."
 msgstr ""
 "Los ejemplos de esta sección se basan en la red :doc:`sampledata`. Los "
 "ejemplos incluyen el subgrafo que incluye las aristas 4, 7, 8 y 10 con "
@@ -17517,8 +17502,8 @@ msgid ""
 "pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
 "boolean,boolean)"
 msgstr ""
-"pgr_withpointsdd(text,text,anyarray,double "
-"precision,boolean,character,boolean,boolean)"
+"pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,"
+"boolean,boolean)"
 
 msgid ""
 "Modify the graph to include points and using Dijkstra algorithm, extracts "
@@ -17681,8 +17666,8 @@ msgid ""
 "pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,"
 "boolean)``"
 msgstr ""
-"pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,boolea"
-"n)``"
+"pgr_withpointsksp(text,text,bigint,bigint,integer,boolean,boolean,char,"
+"boolean)``"
 
 msgid ""
 "Modifies the graph to include the points defined in the `Points SQL`_ and "
@@ -18337,9 +18322,10 @@ msgstr ""
 "`#2547 <https://github.com/pgRouting/pgrouting/pull/2547>`__ Estandarización "
 "de resultados y modificación de firmas de pgr_KSP"
 
+#, fuzzy
 msgid ""
 "`#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ Standarize "
-"output pgr_drivingdistance"
+"output pgr_drivingDistance"
 msgstr ""
 "`#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ Estandarización "
 "de resultados de pgr_drivingdistance"
@@ -19331,8 +19317,8 @@ msgstr ""
 "`#1006 <https://github.com/pgRouting/pgrouting/issues/1006>`__: No hay "
 "pérdida de información2"
 
-msgid "New functions"
-msgstr "Nuevas funciones"
+msgid "New Functions"
+msgstr "Nuevas Funciones"
 
 msgid "Kruskal family"
 msgstr "Familia Kruskal"
@@ -19370,148 +19356,157 @@ msgstr "Propuesta cambió a oficial en pgRouting"
 msgid "aStar Family"
 msgstr "Familia aStar"
 
-msgid "pgr_aStar(one to many)"
-msgstr "pgr_aStar(Uno a Muchos)"
-
-msgid "pgr_aStar(many to one)"
-msgstr "pgr_aStar(muchos a uno)"
-
-msgid "pgr_aStar(many to many)"
-msgstr "pgr_aStar(muchos a muchos)"
-
-msgid "pgr_aStarCost(one to one)"
+#, fuzzy
+msgid "pgr_aStarCost(One to One)"
 msgstr "pgr_aStarCost(Uno a Uno)"
 
-msgid "pgr_aStarCost(one to many)"
+#, fuzzy
+msgid "pgr_aStarCost(One to Many)"
 msgstr "pgr_aStarCost(Uno a Muchos)"
 
-msgid "pgr_aStarCost(many to one)"
+#, fuzzy
+msgid "pgr_aStarCost(Many to One)"
 msgstr "pgr_aStarCost(muchos a uno)"
 
-msgid "pgr_aStarCost(many to many)"
+#, fuzzy
+msgid "pgr_aStarCost(Many to Many)"
 msgstr "pgr_aStarCost(muchos a muchos)"
 
-msgid "pgr_aStarCostMatrix(one to one)"
+#, fuzzy
+msgid "pgr_aStarCostMatrix(One to One)"
 msgstr "pgr_aStarCostMatrix(Uno a Uno)"
 
-msgid "pgr_aStarCostMatrix(one to many)"
+#, fuzzy
+msgid "pgr_aStarCostMatrix(One to Many)"
 msgstr "pgr_aStarCostMatrix(Uno a Muchos)"
 
-msgid "pgr_aStarCostMatrix(many to one)"
+#, fuzzy
+msgid "pgr_aStarCostMatrix(Many to One)"
 msgstr "pgr_aStarCostMatrix(muchos a uno)"
 
-msgid "pgr_aStarCostMatrix(many to many)"
+#, fuzzy
+msgid "pgr_aStarCostMatrix(Many to Many)"
 msgstr "pgr_aStarCostMatrix(muchos a muchos)"
 
 msgid "bdAstar Family"
 msgstr "Familia bdAstar"
 
-msgid "pgr_bdAstar(one to many)"
-msgstr "pgr_bdAstar(Uno a Muchos)"
-
-msgid "pgr_bdAstar(many to one)"
-msgstr "pgr_bdAstar(muchos a uno)"
-
-msgid "pgr_bdAstar(many to many)"
-msgstr "pgr_bdAstar(muchos a muchos)"
-
-msgid "pgr_bdAstarCost(one to one)"
+#, fuzzy
+msgid "pgr_bdAstarCost(One to One)"
 msgstr "pgr_bdAstarCost(Uno a Uno)"
 
-msgid "pgr_bdAstarCost(one to many)"
+#, fuzzy
+msgid "pgr_bdAstarCost(One to Many)"
 msgstr "pgr_bdAstarCost(Uno a Muchos)"
 
-msgid "pgr_bdAstarCost(many to one)"
+#, fuzzy
+msgid "pgr_bdAstarCost(Many to One)"
 msgstr "pgr_bdAstarCost(muchos a uno)"
 
-msgid "pgr_bdAstarCost(many to many)"
+#, fuzzy
+msgid "pgr_bdAstarCost(Many to Many)"
 msgstr "pgr_bdAstarCost(muchos a muchos)"
 
-msgid "pgr_bdAstarCostMatrix(one to one)"
+#, fuzzy
+msgid "pgr_bdAstarCostMatrix(One to One)"
 msgstr "pgr_bdAstarCostMatrix(Uno a Uno)"
 
-msgid "pgr_bdAstarCostMatrix(one to many)"
+#, fuzzy
+msgid "pgr_bdAstarCostMatrix(One to Many)"
 msgstr "pgr_bdAstarCostMatrix(Uno a Muchos)"
 
-msgid "pgr_bdAstarCostMatrix(many to one)"
+#, fuzzy
+msgid "pgr_bdAstarCostMatrix(Many to One)"
 msgstr "pgr_bdAstarCostMatrix(muchos a uno)"
 
-msgid "pgr_bdAstarCostMatrix(many to many)"
+#, fuzzy
+msgid "pgr_bdAstarCostMatrix(Many to Many)"
 msgstr "pgr_bdAstarCostMatrix(muchos a muchos)"
 
 msgid "bdDijkstra Family"
 msgstr "bdDijkstra Familia"
 
-msgid "pgr_bdDijkstra(one to many)"
-msgstr "pgr_bdDijkstra(Uno a Muchos)"
-
-msgid "pgr_bdDijkstra(many to one)"
-msgstr "pgr_bdDijkstra(muchos a uno)"
-
-msgid "pgr_bdDijkstra(many to many)"
-msgstr "pgr_bdDijkstra(muchos a muchos)"
-
-msgid "pgr_bdDijkstraCost(one to one)"
+#, fuzzy
+msgid "pgr_bdDijkstraCost(One to One)"
 msgstr "pgr_bdDijkstraCost(uno a uno)"
 
-msgid "pgr_bdDijkstraCost(one to many)"
+#, fuzzy
+msgid "pgr_bdDijkstraCost(One to Many)"
 msgstr "pgr_bdDijkstraCost(uno a muchos)"
 
-msgid "pgr_bdDijkstraCost(many to one)"
+#, fuzzy
+msgid "pgr_bdDijkstraCost(Many to One)"
 msgstr "pgr_bdDijkstraCost(muchos a uno)"
 
-msgid "pgr_bdDijkstraCost(many to many)"
+#, fuzzy
+msgid "pgr_bdDijkstraCost(Many to Many)"
 msgstr "pgr_bdDijkstraCost(muchos a muchos)"
 
-msgid "pgr_bdDijkstraCostMatrix(one to one)"
+#, fuzzy
+msgid "pgr_bdDijkstraCostMatrix(One to One)"
 msgstr "pgr_bdDijkstraCostMatrix(uno a uno)"
 
-msgid "pgr_bdDijkstraCostMatrix(one to many)"
+#, fuzzy
+msgid "pgr_bdDijkstraCostMatrix(One to Many)"
 msgstr "pgr_bdDijkstraCostMatrix(uno a muchos)"
 
-msgid "pgr_bdDijkstraCostMatrix(many to one)"
+#, fuzzy
+msgid "pgr_bdDijkstraCostMatrix(Many to One)"
 msgstr "pgr_bdDijkstraCostMatrix(muchos a uno)"
 
-msgid "pgr_bdDijkstraCostMatrix(many to many)"
+#, fuzzy
+msgid "pgr_bdDijkstraCostMatrix(Many to Many)"
 msgstr "pgr_bdDijkstraCostMatrix(muchos a muchos)"
 
 msgid "Flow Family"
 msgstr "Familia Flow"
 
-msgid "pgr_pushRelabel(one to one)"
+#, fuzzy
+msgid "pgr_pushRelabel(One to One)"
 msgstr "pgr_pushRelabel(Uno a Uno)"
 
-msgid "pgr_pushRelabel(one to many)"
+#, fuzzy
+msgid "pgr_pushRelabel(One to Many)"
 msgstr "pgr_pushRelabel(Uno a Muchos)"
 
-msgid "pgr_pushRelabel(many to one)"
+#, fuzzy
+msgid "pgr_pushRelabel(Many to One)"
 msgstr "pgr_pushRelabel(muchos a uno)"
 
-msgid "pgr_pushRelabel(many to many)"
+#, fuzzy
+msgid "pgr_pushRelabel(Many to Many)"
 msgstr "pgr_pushRelabel(muchos a muchos)"
 
-msgid "pgr_edmondsKarp(one to one)"
+#, fuzzy
+msgid "pgr_edmondsKarp(One to One)"
 msgstr "pgr_edmondsKarp(Uno a Uno)"
 
-msgid "pgr_edmondsKarp(one to many)"
+#, fuzzy
+msgid "pgr_edmondsKarp(One to Many)"
 msgstr "pgr_edmondsKarp(Uno a Muchos)"
 
-msgid "pgr_edmondsKarp(many to one)"
+#, fuzzy
+msgid "pgr_edmondsKarp(Many to One)"
 msgstr "pgr_edmondsKarp(muchos a uno)"
 
-msgid "pgr_edmondsKarp(many to many)"
+#, fuzzy
+msgid "pgr_edmondsKarp(Many to Many)"
 msgstr "pgr_edmondsKarp(muchos a muchos)"
 
-msgid "pgr_boykovKolmogorov (one to one)"
+#, fuzzy
+msgid "pgr_boykovKolmogorov (One to One)"
 msgstr "pgr_boykovKolmogorov(Uno a Uno)"
 
-msgid "pgr_boykovKolmogorov (one to many)"
+#, fuzzy
+msgid "pgr_boykovKolmogorov (One to Many)"
 msgstr "pgr_boykovKolmogorov(Uno a Muchos)"
 
-msgid "pgr_boykovKolmogorov (many to one)"
+#, fuzzy
+msgid "pgr_boykovKolmogorov (Many to One)"
 msgstr "pgr_boykovKolmogorov (muchos a uno)"
 
-msgid "pgr_boykovKolmogorov (many to many)"
+#, fuzzy
+msgid "pgr_boykovKolmogorov (Many to Many)"
 msgstr "pgr_boykovKolmogorov (muchos a muchos)"
 
 msgid "pgr_maxCardinalityMatching"
@@ -19520,16 +19515,20 @@ msgstr "pgr_maxCardinalityMatching"
 msgid "pgr_maxFlow"
 msgstr "pgr_maxFlow"
 
-msgid "pgr_edgeDisjointPaths(one to one)"
+#, fuzzy
+msgid "pgr_edgeDisjointPaths(One to One)"
 msgstr "pgr_edgeDisjointPaths(Uno a Uno)"
 
-msgid "pgr_edgeDisjointPaths(one to many)"
+#, fuzzy
+msgid "pgr_edgeDisjointPaths(One to Many)"
 msgstr "pgr_edgeDisjointPaths(Uno a Muchos)"
 
-msgid "pgr_edgeDisjointPaths(many to one)"
+#, fuzzy
+msgid "pgr_edgeDisjointPaths(Many to One)"
 msgstr "pgr_edgeDisjointPaths(muchos a uno)"
 
-msgid "pgr_edgeDisjointPaths(many to many)"
+#, fuzzy
+msgid "pgr_edgeDisjointPaths(Many to Many)"
 msgstr "pgr_edgeDisjointPaths(muchos a muchos)"
 
 msgid "Components family"
@@ -19995,14 +19994,16 @@ msgstr "Columnas path_id, cost y agg_cost añadidas al resultado"
 msgid "Parameter names changed"
 msgstr "Nombres de parámetros cambiados"
 
-msgid "The many version results are the union of the one to one version"
+#, fuzzy
+msgid "The many version results are the union of the One to One version"
 msgstr ""
 "Los muchos resultados de la versión son la unión de la versión uno a uno"
 
 msgid "New Signatures"
 msgstr "Nuevas Firmas"
 
-msgid "pgr_bdAstar(one to one)"
+#, fuzzy
+msgid "pgr_bdAstar(One to One)"
 msgstr "pgr_bdAstar(Uno a Uno)"
 
 msgid "pgr_bdAstarCostMatrix"
@@ -20099,31 +20100,35 @@ msgstr ""
 "issues for 2.4.0 <https://github.com/pgRouting/pgrouting/issues?"
 "q=milestone%3A%22Release+2.4.0%22+is%3Aclosed>`_ on Github."
 
-msgid "New Function."
-msgstr "Nueva Función."
-
 msgid "pgr_bdDijkstra"
 msgstr "pgr_bdDijkstra"
 
-msgid "pgr_astar(one to many)"
-msgstr "pgr_astar(Uno a Muchos)"
+#, fuzzy
+msgid "pgr_astar(One to Many)"
+msgstr "pgr_aStar(Uno a Muchos)"
 
-msgid "pgr_astar(many to one)"
-msgstr "pgr_astar(muchos a uno)"
+#, fuzzy
+msgid "pgr_astar(Many to One)"
+msgstr "pgr_aStar(Muchos a Uno)"
 
-msgid "pgr_astar(many to many)"
-msgstr "pgr_astar(muchos a muchos)"
+#, fuzzy
+msgid "pgr_astar(Many to Many)"
+msgstr "pgr_aStar(Muchos a Muchos)"
 
-msgid "pgr_astarCost(one to one)"
+#, fuzzy
+msgid "pgr_astarCost(One to One)"
 msgstr "pgr_astarCost(Uno a Uno)"
 
-msgid "pgr_astarCost(one to many)"
+#, fuzzy
+msgid "pgr_astarCost(One to Many)"
 msgstr "pgr_astarCost(uno a muchos)"
 
-msgid "pgr_astarCost(many to one)"
+#, fuzzy
+msgid "pgr_astarCost(Many to One)"
 msgstr "pgr_astarCost(muchos a uno)"
 
-msgid "pgr_astarCost(many to many)"
+#, fuzzy
+msgid "pgr_astarCost(Many to Many)"
 msgstr "pgr_astarCost(muchos a muchos)"
 
 msgid "pgr_astarCostMatrix"
@@ -20218,46 +20223,55 @@ msgstr "pgr_TSP"
 msgid "pgr_aStar"
 msgstr "pgr_aStar"
 
-msgid "New Functions"
-msgstr "Nuevas Funciones"
-
 msgid "pgr_eucledianTSP"
 msgstr "pgr_eucledianTSP"
 
-msgid "pgr_maxFlowPushRelabel(one to one)"
+#, fuzzy
+msgid "pgr_maxFlowPushRelabel(One to One)"
 msgstr "pgr_maxFlowPushRelabel(Uno a Uno)"
 
-msgid "pgr_maxFlowPushRelabel(one to many)"
+#, fuzzy
+msgid "pgr_maxFlowPushRelabel(One to Many)"
 msgstr "pgr_maxFlowPushRelabel(uno a muchos)"
 
-msgid "pgr_maxFlowPushRelabel(many to one)"
+#, fuzzy
+msgid "pgr_maxFlowPushRelabel(Many to One)"
 msgstr "pgr_maxFlowPushRelabel(muchos a uno)"
 
-msgid "pgr_maxFlowPushRelabel(many to many)"
+#, fuzzy
+msgid "pgr_maxFlowPushRelabel(Many to Many)"
 msgstr "pgr_maxFlowPushRelabel(muchos a muchos)"
 
-msgid "pgr_maxFlowEdmondsKarp(one to one)"
+#, fuzzy
+msgid "pgr_maxFlowEdmondsKarp(One to One)"
 msgstr "pgr_maxFlowEdmondsKarp(Uno a Uno)"
 
-msgid "pgr_maxFlowEdmondsKarp(one to many)"
+#, fuzzy
+msgid "pgr_maxFlowEdmondsKarp(One to Many)"
 msgstr "pgr_maxFlowEdmondsKarp(uno a muchos)"
 
-msgid "pgr_maxFlowEdmondsKarp(many to one)"
+#, fuzzy
+msgid "pgr_maxFlowEdmondsKarp(Many to One)"
 msgstr "pgr_maxFlowEdmondsKarp(muchos a uno)"
 
-msgid "pgr_maxFlowEdmondsKarp(many to many)"
+#, fuzzy
+msgid "pgr_maxFlowEdmondsKarp(Many to Many)"
 msgstr "pgr_maxFlowEdmondsKarp(muchos a muchos)"
 
-msgid "pgr_maxFlowBoykovKolmogorov (one to one)"
+#, fuzzy
+msgid "pgr_maxFlowBoykovKolmogorov (One to One)"
 msgstr "pgr_maxFlowBoykovKolmogorov(Uno a Uno)"
 
-msgid "pgr_maxFlowBoykovKolmogorov (one to many)"
+#, fuzzy
+msgid "pgr_maxFlowBoykovKolmogorov (One to Many)"
 msgstr "pgr_maxFlowBoykovKolmogorov (uno a muchos)"
 
-msgid "pgr_maxFlowBoykovKolmogorov (many to one)"
+#, fuzzy
+msgid "pgr_maxFlowBoykovKolmogorov (Many to One)"
 msgstr "pgr_maxFlowBoykovKolmogorov (muchos a uno)"
 
-msgid "pgr_maxFlowBoykovKolmogorov (many to many)"
+#, fuzzy
+msgid "pgr_maxFlowBoykovKolmogorov (Many to Many)"
 msgstr "pgr_maxFlowBoykovKolmogorov (muchos a muchos)"
 
 msgid "pgr_maximumCardinalityMatching"
@@ -20386,43 +20400,55 @@ msgstr "pgr_dijkstra -- para que coincida con lo documentado"
 msgid "pgr_Johnson"
 msgstr "pgr_Johnson"
 
-msgid "pgr_dijkstraCost(one to one)"
+#, fuzzy
+msgid "pgr_dijkstraCost(One to One)"
 msgstr "pgr_dijkstraCost(Uno a Uno)"
 
-msgid "pgr_dijkstraCost(one to many)"
-msgstr "pgr_dijkstraCost(uno a muchos)"
+#, fuzzy
+msgid "pgr_dijkstraCost(One to Many)"
+msgstr "pgr_dijkstraNearCost(Uno a Muchos)"
 
-msgid "pgr_dijkstraCost(many to one)"
-msgstr "pgr_dijkstraCost(muchos a uno)"
+#, fuzzy
+msgid "pgr_dijkstraCost(Many to One)"
+msgstr "pgr_dijkstraNearCost(Muchos a Uno)"
 
-msgid "pgr_dijkstraCost(many to many)"
-msgstr "pgr_dijkstraCost(muchos a muchos)"
+#, fuzzy
+msgid "pgr_dijkstraCost(Many to Many)"
+msgstr "pgr_dijkstraNearCost(Muchos a Muchos)"
 
 msgid "Proposed Functionality"
 msgstr "Funcionalidad Propuesta"
 
-msgid "pgr_withPoints(one to one)"
-msgstr "pgr_withPoints(Uno a Uno)"
+#, fuzzy
+msgid "pgr_withPoints(One to One)"
+msgstr "pgr_withPointsKSP(Uno a Uno)"
 
-msgid "pgr_withPoints(one to many)"
-msgstr "pgr_withPoints(uno a muchos)"
+#, fuzzy
+msgid "pgr_withPoints(One to Many)"
+msgstr "pgr_withPointsKSP(Uno a Muchos)"
 
-msgid "pgr_withPoints(many to one)"
-msgstr "pgr_withPoints(muchos a uno)"
+#, fuzzy
+msgid "pgr_withPoints(Many to One)"
+msgstr "pgr_withPointsKSP(Muchos a Uno)"
 
-msgid "pgr_withPoints(many to many)"
-msgstr "pgr_withPoints(muchos a muchos)"
+#, fuzzy
+msgid "pgr_withPoints(Many to Many)"
+msgstr "pgr_withPointsKSP(Muchos a Muchos)"
 
-msgid "pgr_withPointsCost(one to one)"
+#, fuzzy
+msgid "pgr_withPointsCost(One to One)"
 msgstr "pgr_withPointsCost(Uno a Uno)"
 
-msgid "pgr_withPointsCost(one to many)"
+#, fuzzy
+msgid "pgr_withPointsCost(One to Many)"
 msgstr "pgr_withPointsCost(uno a muchos)"
 
-msgid "pgr_withPointsCost(many to one)"
+#, fuzzy
+msgid "pgr_withPointsCost(Many to One)"
 msgstr "pgr_withPointsCost(muchos a uno)"
 
-msgid "pgr_withPointsCost(many to many)"
+#, fuzzy
+msgid "pgr_withPointsCost(Many to Many)"
 msgstr "pgr_withPointsCost(muchos a muchos)"
 
 msgid "pgr_withPointsDD(single vertex)"
@@ -20467,19 +20493,11 @@ msgstr ""
 "issues for 2.1.0 <https://github.com/pgRouting/pgrouting/issues?"
 "q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed>`_ en Github."
 
-msgid "pgr_dijkstra(one to many)"
-msgstr "pgr_dijkstra(uno a muchos)"
-
-msgid "pgr_dijkstra(many to one)"
-msgstr "pgr_dijkstra(muchos a uno)"
-
-msgid "pgr_dijkstra(many to many)"
-msgstr "pgr_dijkstra(muchos a muchos)"
-
 msgid "Refactored"
 msgstr "Refactorizado"
 
-msgid "pgr_dijkstra(one to one)"
+#, fuzzy
+msgid "pgr_dijkstra(One to One)"
 msgstr "pgr_dijkstra(Uno a Uno)"
 
 msgid ""
@@ -21750,6 +21768,102 @@ msgstr "pgr_withPointsDD es pgr_drivingDistance **con puntos**"
 
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr "pgr_withPoints es pgr_dijkstraVia **con puntos**"
+
+#~ msgid "``pgr_drivingdistance`` (Single vertex)"
+#~ msgstr "``pgr_drivingDistance`` (Vértice único)"
+
+#~ msgid "``pgr_drivingdistance`` (Multiple vertices)"
+#~ msgstr "``pgr_drivingDistance`` (Múltiples vértices)"
+
+#, fuzzy
+#~ msgid "**options:** [directed, heuristic, factor, epsilon]``"
+#~ msgstr "**opcionales:** ``[directed, heuristic, factor, epsilon]``"
+
+#~ msgid "New Proposed signatures:"
+#~ msgstr "Nuevas firmas Propuestas:"
+
+#, fuzzy
+#~ msgid "pgr_betweennessCentrality``"
+#~ msgstr "``pgr_betweennessCentrality``"
+
+#~ msgid ""
+#~ "`Boost: connected components <https://www.boost.org/libs/graph/doc/"
+#~ "connected_components.html>`__"
+#~ msgstr ""
+#~ "`Boost: componentes conectados <https://www.boost.org/libs/graph/doc/"
+#~ "connected_components.html>`__"
+
+#~ msgid "New functions"
+#~ msgstr "Nuevas funciones"
+
+#~ msgid "pgr_aStar(one to many)"
+#~ msgstr "pgr_aStar(Uno a Muchos)"
+
+#~ msgid "pgr_aStar(many to one)"
+#~ msgstr "pgr_aStar(muchos a uno)"
+
+#~ msgid "pgr_aStar(many to many)"
+#~ msgstr "pgr_aStar(muchos a muchos)"
+
+#~ msgid "pgr_bdAstar(one to many)"
+#~ msgstr "pgr_bdAstar(Uno a Muchos)"
+
+#~ msgid "pgr_bdAstar(many to one)"
+#~ msgstr "pgr_bdAstar(muchos a uno)"
+
+#~ msgid "pgr_bdAstar(many to many)"
+#~ msgstr "pgr_bdAstar(muchos a muchos)"
+
+#~ msgid "pgr_bdDijkstra(one to many)"
+#~ msgstr "pgr_bdDijkstra(Uno a Muchos)"
+
+#~ msgid "pgr_bdDijkstra(many to one)"
+#~ msgstr "pgr_bdDijkstra(muchos a uno)"
+
+#~ msgid "pgr_bdDijkstra(many to many)"
+#~ msgstr "pgr_bdDijkstra(muchos a muchos)"
+
+#~ msgid "New Function."
+#~ msgstr "Nueva Función."
+
+#~ msgid "pgr_astar(one to many)"
+#~ msgstr "pgr_astar(Uno a Muchos)"
+
+#~ msgid "pgr_astar(many to one)"
+#~ msgstr "pgr_astar(muchos a uno)"
+
+#~ msgid "pgr_astar(many to many)"
+#~ msgstr "pgr_astar(muchos a muchos)"
+
+#~ msgid "pgr_dijkstraCost(one to many)"
+#~ msgstr "pgr_dijkstraCost(uno a muchos)"
+
+#~ msgid "pgr_dijkstraCost(many to one)"
+#~ msgstr "pgr_dijkstraCost(muchos a uno)"
+
+#~ msgid "pgr_dijkstraCost(many to many)"
+#~ msgstr "pgr_dijkstraCost(muchos a muchos)"
+
+#~ msgid "pgr_withPoints(one to one)"
+#~ msgstr "pgr_withPoints(Uno a Uno)"
+
+#~ msgid "pgr_withPoints(one to many)"
+#~ msgstr "pgr_withPoints(uno a muchos)"
+
+#~ msgid "pgr_withPoints(many to one)"
+#~ msgstr "pgr_withPoints(muchos a uno)"
+
+#~ msgid "pgr_withPoints(many to many)"
+#~ msgstr "pgr_withPoints(muchos a muchos)"
+
+#~ msgid "pgr_dijkstra(one to many)"
+#~ msgstr "pgr_dijkstra(uno a muchos)"
+
+#~ msgid "pgr_dijkstra(many to one)"
+#~ msgstr "pgr_dijkstra(muchos a uno)"
+
+#~ msgid "pgr_dijkstra(many to many)"
+#~ msgstr "pgr_dijkstra(muchos a muchos)"
 
 #~ msgid "The queries use the :doc:`sampledata` network."
 #~ msgstr "Las consultas utilizan la red :doc:`sampledata` ."
