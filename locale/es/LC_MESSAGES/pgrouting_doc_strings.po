@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-12 01:00+0000\n"
-"PO-Revision-Date: 2025-02-12 01:01+0000\n"
+"PO-Revision-Date: 2025-02-12 01:27+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
@@ -2809,9 +2809,8 @@ msgstr ""
 "Para grandes gráficos donde hay un camino entre el vértice inicial y el "
 "vértice final:"
 
-#, fuzzy
 msgid "It is expected to terminate faster than pgr_aStar"
-msgstr "Se espera que termine más rápido que pgr_astar"
+msgstr "Se espera que termine más rápido que pgr_aStar"
 
 msgid ":doc:`aStar-family`"
 msgstr ":doc:`aStar-family`"
@@ -4918,7 +4917,7 @@ msgstr ""
 "pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
 
 msgid "Functions promoted to official"
-msgstr ""
+msgstr "Funciones promovidas a oficial"
 
 msgid "pgr_trsp"
 msgstr "pgr_trsp"
@@ -4951,7 +4950,7 @@ msgid "pgr_withPointsVia"
 msgstr "pgr_withPointsVia"
 
 msgid "Signatures promoted to official"
-msgstr ""
+msgstr "Firmas promovidas a oficial"
 
 msgid "pgr_aStar(Combinations)"
 msgstr "pgr_aStar(Combinaciones)"
@@ -4996,7 +4995,7 @@ msgid "code enhancements:"
 msgstr "Mejora del código:"
 
 msgid "Removal of unused C/C++ code"
-msgstr ""
+msgstr "Eliminación de código C/C++ no utilizado"
 
 msgid "Removal of SQL deprecated functions"
 msgstr "Eliminación de funciones obsoletas"
@@ -5041,7 +5040,7 @@ msgid "_pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)"
 msgstr "_pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)"
 
 msgid "_pgr_kruskal(text,anyarray,text,bigint,double precision)"
-msgstr ""
+msgstr "_pgr_kruskal(text,anyarray,text,bigint,double precision)"
 
 msgid "_pgr_prim(text,anyarray,text,bigint,double precision)"
 msgstr "_pgr_prim(text,anyarray,text,bigint,double precision)"
@@ -5078,13 +5077,13 @@ msgid "_v4trsp(text,text,anyarray,anyarray,boolean)"
 msgstr "_v4trsp(text,text,anyarray,anyarray,boolean)"
 
 msgid "_v4trsp(text,text,text,boolean)"
-msgstr ""
+msgstr "_v4trsp(text,text,text,boolean)"
 
 msgid "Deprecation of internal C/C++ functions"
 msgstr "Obsolescencia de funciones internas C/C++"
 
 msgid "Internal C/C++ functions in legacy"
-msgstr ""
+msgstr "Funciones C/C++ internas en legado"
 
 msgid "All releases"
 msgstr "Todas las versiones"
@@ -8452,7 +8451,7 @@ msgid "Version 4.0.0"
 msgstr "Versión 4.0.0"
 
 msgid "All signatures promoted to official."
-msgstr ""
+msgstr "Todas las firmas promovidas a oficial."
 
 msgid "Version 3.6.0"
 msgstr "Versión 3.6.0"
@@ -8467,7 +8466,7 @@ msgid "Added ``start_vid`` and ``end_vid`` result columns."
 msgstr "Añadidas las columnas de resultados ``start_vid`` y ``end_vid``."
 
 msgid "New proposed signatures:"
-msgstr ""
+msgstr "Nuevas firmas propuestas:"
 
 msgid "pgr_ksp(One to Many)"
 msgstr "pgr_ksp(Uno a muchos)"
@@ -9047,7 +9046,7 @@ msgid "``pgr_aStar`` — Shortest path using the A* algorithm."
 msgstr "``pgr_aStar`` — La ruta más corta utilizando el algoritmo A*."
 
 msgid "Combinations signature promoted to official."
-msgstr ""
+msgstr "Firmas de combinaciones promovidas a oficial."
 
 msgid "Standarizing output columns to |short-generic-result|"
 msgstr "Estandarización de las columnas de salida a |short-generic-result|"
@@ -9066,10 +9065,10 @@ msgid "Version 3.2.0"
 msgstr "Versión 3.2.0"
 
 msgid "New proposed signature:"
-msgstr "Nuevas firmas propuestas:"
+msgstr "Nuevas firmas propuesta:"
 
 msgid "Function promoted to official."
-msgstr ""
+msgstr "Función promovida a oficial."
 
 msgid "Version 2.4.0"
 msgstr "Versión 2.4.0"
@@ -9083,9 +9082,8 @@ msgstr "pgr_aStar(Muchos a Uno)"
 msgid "pgr_aStar(Many to Many)"
 msgstr "pgr_aStar(Muchos a Muchos)"
 
-#, fuzzy
 msgid "Signature change on pgr_aStar(One to One)"
-msgstr "Cambio de firma en pgr_astar(Uno a Uno)"
+msgstr "Cambio de firma en pgr_aStar(Uno a Uno)"
 
 msgid ""
 "The results are equivalent to the union of the results of the `pgr_aStar(` "
@@ -14950,7 +14948,7 @@ msgid ""
 msgstr ""
 
 msgid "Store edge results"
-msgstr ""
+msgstr "Almacenar resultados de aristas"
 
 msgid ""
 "The first step is to store the results of the ``pgr_lineGraphFull`` call "
@@ -14964,7 +14962,7 @@ msgid "From the original graph's vertex information"
 msgstr ""
 
 msgid "Add the new vertices"
-msgstr ""
+msgstr "Agregar nuevos vértices"
 
 msgid "Filling the mapping table"
 msgstr ""
@@ -14984,7 +14982,7 @@ msgid "Updating values from self loops"
 msgstr ""
 
 msgid "Inspecting the vertices table"
-msgstr ""
+msgstr "Inspeccionando la tabla de vértices"
 
 msgid "Updating from inner self loops"
 msgstr ""
@@ -15781,6 +15779,8 @@ msgstr "Firma"
 msgid ""
 "pgr_pickDeliver(`Orders SQL`_, `Vehicles SQL`_, `Matrix SQL`_, [**options**])"
 msgstr ""
+"pgr_pickDeliver(`SQL de ordenes`_, `SQL de vehículos`_, `SQL de matriz`_, "
+"[**opciones**])"
 
 msgid "**options:** ``[factor, max_cycles, initial_sol]``"
 msgstr "**opcionales:** ``[factor, max_cycles, initial_sol]``"
@@ -16527,6 +16527,7 @@ msgstr "Usando una tabla de combinaciones en un grafo no dirigido."
 msgid ""
 "`Deprecated documentation <https://docs.pgrouting.org/3.3/en/pgr_trsp.html>`_"
 msgstr ""
+"`Documentación obsoleta <https://docs.pgrouting.org/3.3/en/pgr_trsp.html>`_"
 
 msgid "``pgr_trspVia``"
 msgstr "``pgr_trspVia``"
@@ -16545,7 +16546,7 @@ msgid "The paths represents the sections of the route."
 msgstr "Las trayectorias representan los tramos de la ruta."
 
 msgid "Execute a :doc:`pgr_dijkstraVia`."
-msgstr ""
+msgstr "Ejecutar un :doc:`pgr_dijkstraVia`."
 
 msgid ""
 "For the set of sub paths of the solution that pass through a restriction then"
@@ -19344,28 +19345,23 @@ msgstr "pgr_aStarCost(Muchos a Uno)"
 msgid "pgr_aStarCost(Many to Many)"
 msgstr "pgr_aStarCost(Muchos a Muchos)"
 
-#, fuzzy
 msgid "pgr_aStarCostMatrix"
-msgstr "pgr_astarCostMatrix"
+msgstr "pgr_aStarCostMatrix"
 
 msgid "bdAstar Family"
 msgstr "Familia bdAstar"
 
-#, fuzzy
 msgid "pgr_bdAstarCost(One to One)"
 msgstr "pgr_bdAstarCost(Uno a Uno)"
 
-#, fuzzy
 msgid "pgr_bdAstarCost(One to Many)"
 msgstr "pgr_bdAstarCost(Uno a Muchos)"
 
-#, fuzzy
 msgid "pgr_bdAstarCost(Many to One)"
-msgstr "pgr_bdAstarCost(muchos a uno)"
+msgstr "pgr_bdAstarCost(Muchos a Uno)"
 
-#, fuzzy
 msgid "pgr_bdAstarCost(Many to Many)"
-msgstr "pgr_bdAstarCost(muchos a muchos)"
+msgstr "pgr_bdAstarCost(Muchos a Muchos)"
 
 msgid "pgr_bdAstarCostMatrix"
 msgstr "pgr_bdAstarCostMatrix"
@@ -19373,21 +19369,17 @@ msgstr "pgr_bdAstarCostMatrix"
 msgid "bdDijkstra Family"
 msgstr "bdDijkstra Familia"
 
-#, fuzzy
 msgid "pgr_bdDijkstraCost(One to One)"
-msgstr "pgr_bdDijkstraCost(uno a uno)"
+msgstr "pgr_bdDijkstraCost(Uno a Uno)"
 
-#, fuzzy
 msgid "pgr_bdDijkstraCost(One to Many)"
-msgstr "pgr_bdDijkstraCost(uno a muchos)"
+msgstr "pgr_bdDijkstraCost(Uno a Muchos)"
 
-#, fuzzy
 msgid "pgr_bdDijkstraCost(Many to One)"
-msgstr "pgr_bdDijkstraCost(muchos a uno)"
+msgstr "pgr_bdDijkstraCost(Muchos a Uno)"
 
-#, fuzzy
 msgid "pgr_bdDijkstraCost(Many to Many)"
-msgstr "pgr_bdDijkstraCost(muchos a muchos)"
+msgstr "pgr_bdDijkstraCost(Muchos a Muchos)"
 
 msgid "pgr_bdDijkstraCostMatrix"
 msgstr "pgr_bdDijkstraCostMatrix"
@@ -19395,53 +19387,41 @@ msgstr "pgr_bdDijkstraCostMatrix"
 msgid "Flow Family"
 msgstr "Familia Flow"
 
-#, fuzzy
 msgid "pgr_pushRelabel(One to One)"
 msgstr "pgr_pushRelabel(Uno a Uno)"
 
-#, fuzzy
 msgid "pgr_pushRelabel(One to Many)"
 msgstr "pgr_pushRelabel(Uno a Muchos)"
 
-#, fuzzy
 msgid "pgr_pushRelabel(Many to One)"
-msgstr "pgr_pushRelabel(muchos a uno)"
+msgstr "pgr_pushRelabel(Muchos a Uno)"
 
-#, fuzzy
 msgid "pgr_pushRelabel(Many to Many)"
-msgstr "pgr_pushRelabel(muchos a muchos)"
+msgstr "pgr_pushRelabel(Muchos a Muchos)"
 
-#, fuzzy
 msgid "pgr_edmondsKarp(One to One)"
 msgstr "pgr_edmondsKarp(Uno a Uno)"
 
-#, fuzzy
 msgid "pgr_edmondsKarp(One to Many)"
 msgstr "pgr_edmondsKarp(Uno a Muchos)"
 
-#, fuzzy
 msgid "pgr_edmondsKarp(Many to One)"
-msgstr "pgr_edmondsKarp(muchos a uno)"
+msgstr "pgr_edmondsKarp(Muchos a Uno)"
 
-#, fuzzy
 msgid "pgr_edmondsKarp(Many to Many)"
-msgstr "pgr_edmondsKarp(muchos a muchos)"
+msgstr "pgr_edmondsKarp(Muchos a Muchos)"
 
-#, fuzzy
 msgid "pgr_boykovKolmogorov (One to One)"
 msgstr "pgr_boykovKolmogorov(Uno a Uno)"
 
-#, fuzzy
 msgid "pgr_boykovKolmogorov (One to Many)"
 msgstr "pgr_boykovKolmogorov(Uno a Muchos)"
 
-#, fuzzy
 msgid "pgr_boykovKolmogorov (Many to One)"
-msgstr "pgr_boykovKolmogorov (muchos a uno)"
+msgstr "pgr_boykovKolmogorov (Muchos a Uno)"
 
-#, fuzzy
 msgid "pgr_boykovKolmogorov (Many to Many)"
-msgstr "pgr_boykovKolmogorov (muchos a muchos)"
+msgstr "pgr_boykovKolmogorov (Muchos a Muchos)"
 
 msgid "pgr_maxCardinalityMatching"
 msgstr "pgr_maxCardinalityMatching"
@@ -19449,21 +19429,17 @@ msgstr "pgr_maxCardinalityMatching"
 msgid "pgr_maxFlow"
 msgstr "pgr_maxFlow"
 
-#, fuzzy
 msgid "pgr_edgeDisjointPaths(One to One)"
 msgstr "pgr_edgeDisjointPaths(Uno a Uno)"
 
-#, fuzzy
 msgid "pgr_edgeDisjointPaths(One to Many)"
 msgstr "pgr_edgeDisjointPaths(Uno a Muchos)"
 
-#, fuzzy
 msgid "pgr_edgeDisjointPaths(Many to One)"
-msgstr "pgr_edgeDisjointPaths(muchos a uno)"
+msgstr "pgr_edgeDisjointPaths(Muchos a Uno)"
 
-#, fuzzy
 msgid "pgr_edgeDisjointPaths(Many to Many)"
-msgstr "pgr_edgeDisjointPaths(muchos a muchos)"
+msgstr "pgr_edgeDisjointPaths(Muchos a Muchos)"
 
 msgid "Components family"
 msgstr "Familia de Componentes"
@@ -19928,15 +19904,13 @@ msgstr "Columnas path_id, cost y agg_cost añadidas al resultado"
 msgid "Parameter names changed"
 msgstr "Nombres de parámetros cambiados"
 
-#, fuzzy
 msgid "The many version results are the union of the One to One version"
 msgstr ""
-"Los muchos resultados de la versión son la unión de la versión uno a uno"
+"Los muchos resultados de la versión son la unión de la versión Uno a Uno"
 
 msgid "New Signatures"
 msgstr "Nuevas Firmas"
 
-#, fuzzy
 msgid "pgr_bdAstar(One to One)"
 msgstr "pgr_bdAstar(Uno a Uno)"
 
@@ -20120,53 +20094,41 @@ msgstr "pgr_TSP"
 msgid "pgr_eucledianTSP"
 msgstr "pgr_eucledianTSP"
 
-#, fuzzy
 msgid "pgr_maxFlowPushRelabel(One to One)"
 msgstr "pgr_maxFlowPushRelabel(Uno a Uno)"
 
-#, fuzzy
 msgid "pgr_maxFlowPushRelabel(One to Many)"
-msgstr "pgr_maxFlowPushRelabel(uno a muchos)"
+msgstr "pgr_maxFlowPushRelabel(Uno a Muchos)"
 
-#, fuzzy
 msgid "pgr_maxFlowPushRelabel(Many to One)"
-msgstr "pgr_maxFlowPushRelabel(muchos a uno)"
+msgstr "pgr_maxFlowPushRelabel(Muchos a Uno)"
 
-#, fuzzy
 msgid "pgr_maxFlowPushRelabel(Many to Many)"
-msgstr "pgr_maxFlowPushRelabel(muchos a muchos)"
+msgstr "pgr_maxFlowPushRelabel(Muchos a Muchos)"
 
-#, fuzzy
 msgid "pgr_maxFlowEdmondsKarp(One to One)"
 msgstr "pgr_maxFlowEdmondsKarp(Uno a Uno)"
 
-#, fuzzy
 msgid "pgr_maxFlowEdmondsKarp(One to Many)"
-msgstr "pgr_maxFlowEdmondsKarp(uno a muchos)"
+msgstr "pgr_maxFlowEdmondsKarp(Uno a Muchos)"
 
-#, fuzzy
 msgid "pgr_maxFlowEdmondsKarp(Many to One)"
-msgstr "pgr_maxFlowEdmondsKarp(muchos a uno)"
+msgstr "pgr_maxFlowEdmondsKarp(Muchos a Uno)"
 
-#, fuzzy
 msgid "pgr_maxFlowEdmondsKarp(Many to Many)"
-msgstr "pgr_maxFlowEdmondsKarp(muchos a muchos)"
+msgstr "pgr_maxFlowEdmondsKarp(Muchos a Muchos)"
 
-#, fuzzy
 msgid "pgr_maxFlowBoykovKolmogorov (One to One)"
 msgstr "pgr_maxFlowBoykovKolmogorov(Uno a Uno)"
 
-#, fuzzy
 msgid "pgr_maxFlowBoykovKolmogorov (One to Many)"
-msgstr "pgr_maxFlowBoykovKolmogorov (uno a muchos)"
+msgstr "pgr_maxFlowBoykovKolmogorov (Uno a Muchos)"
 
-#, fuzzy
 msgid "pgr_maxFlowBoykovKolmogorov (Many to One)"
-msgstr "pgr_maxFlowBoykovKolmogorov (muchos a uno)"
+msgstr "pgr_maxFlowBoykovKolmogorov (Muchos a Uno)"
 
-#, fuzzy
 msgid "pgr_maxFlowBoykovKolmogorov (Many to Many)"
-msgstr "pgr_maxFlowBoykovKolmogorov (muchos a muchos)"
+msgstr "pgr_maxFlowBoykovKolmogorov (Muchos a Muchos)"
 
 msgid "pgr_maximumCardinalityMatching"
 msgstr "pgr_maximumCardinalityMatching"
@@ -20177,9 +20139,8 @@ msgstr "pgr_contractGraph"
 msgid "pgr_tsp - use pgr_TSP or pgr_eucledianTSP instead"
 msgstr "pgr_tsp - utilice pgr_TSP o pgr_eucledianTSP en su lugar"
 
-#, fuzzy
 msgid "pgr_aStar - use pgr_aStar instead"
-msgstr "pgr_astar - utilice pgr_aStar en su lugar"
+msgstr "pgr_aStar - utilice pgr_aStar en su lugar"
 
 msgid "pgr_flip_edges"
 msgstr "pgr_flip_edges"
@@ -20295,56 +20256,44 @@ msgstr "pgr_dijkstra -- para que coincida con lo documentado"
 msgid "pgr_Johnson"
 msgstr "pgr_Johnson"
 
-#, fuzzy
 msgid "pgr_dijkstraCost(One to One)"
 msgstr "pgr_dijkstraCost(Uno a Uno)"
 
-#, fuzzy
 msgid "pgr_dijkstraCost(One to Many)"
-msgstr "pgr_dijkstraNearCost(Uno a Muchos)"
+msgstr "pgr_dijkstraCost(Uno a Muchos)"
 
-#, fuzzy
 msgid "pgr_dijkstraCost(Many to One)"
-msgstr "pgr_dijkstraNearCost(Muchos a Uno)"
+msgstr "pgr_dijkstraCost(Muchos a Uno)"
 
-#, fuzzy
 msgid "pgr_dijkstraCost(Many to Many)"
-msgstr "pgr_dijkstraNearCost(Muchos a Muchos)"
+msgstr "pgr_dijkstraCost(Muchos a Muchos)"
 
 msgid "Proposed Functionality"
 msgstr "Funcionalidad Propuesta"
 
-#, fuzzy
 msgid "pgr_withPoints(One to One)"
-msgstr "pgr_withPointsKSP(Uno a Uno)"
+msgstr "pgr_withPoints(Uno a Uno)"
 
-#, fuzzy
 msgid "pgr_withPoints(One to Many)"
-msgstr "pgr_withPointsKSP(Uno a Muchos)"
+msgstr "pgr_withPoints(Uno a Muchos)"
 
-#, fuzzy
 msgid "pgr_withPoints(Many to One)"
-msgstr "pgr_withPointsKSP(Muchos a Uno)"
+msgstr "pgr_withPoints(Muchos a Uno)"
 
-#, fuzzy
 msgid "pgr_withPoints(Many to Many)"
-msgstr "pgr_withPointsKSP(Muchos a Muchos)"
+msgstr "pgr_withPoints(Muchos a Muchos)"
 
-#, fuzzy
 msgid "pgr_withPointsCost(One to One)"
 msgstr "pgr_withPointsCost(Uno a Uno)"
 
-#, fuzzy
 msgid "pgr_withPointsCost(One to Many)"
-msgstr "pgr_withPointsCost(uno a muchos)"
+msgstr "pgr_withPointsCost(Uno a Muchos)"
 
-#, fuzzy
 msgid "pgr_withPointsCost(Many to One)"
-msgstr "pgr_withPointsCost(muchos a uno)"
+msgstr "pgr_withPointsCost(Muchos a Uno)"
 
-#, fuzzy
 msgid "pgr_withPointsCost(Many to Many)"
-msgstr "pgr_withPointsCost(muchos a muchos)"
+msgstr "pgr_withPointsCost(Muchos a Muchos)"
 
 msgid "pgr_withPointsDD(single vertex)"
 msgstr "pgr_withPointsDD(vértice único)"
@@ -20391,7 +20340,6 @@ msgstr ""
 msgid "Refactored"
 msgstr "Refactorizado"
 
-#, fuzzy
 msgid "pgr_dijkstra(One to One)"
 msgstr "pgr_dijkstra(Uno a Uno)"
 
