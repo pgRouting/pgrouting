@@ -1563,10 +1563,7 @@ pgr_extractVertices error when target is not BIGINT</p></li>
 <li><p>pgr_aStarCost(One to Many)</p></li>
 <li><p>pgr_aStarCost(Many to One)</p></li>
 <li><p>pgr_aStarCost(Many to Many)</p></li>
-<li><p>pgr_aStarCostMatrix(One to One)</p></li>
-<li><p>pgr_aStarCostMatrix(One to Many)</p></li>
-<li><p>pgr_aStarCostMatrix(Many to One)</p></li>
-<li><p>pgr_aStarCostMatrix(Many to Many)</p></li>
+<li><p>pgr_aStarCostMatrix</p></li>
 </ul>
 </li>
 <li><p>Familia bdAstar</p>
@@ -1578,10 +1575,7 @@ pgr_extractVertices error when target is not BIGINT</p></li>
 <li><p>pgr_bdAstarCost(One to Many)</p></li>
 <li><p>pgr_bdAstarCost(Many to One)</p></li>
 <li><p>pgr_bdAstarCost(Many to Many)</p></li>
-<li><p>pgr_bdAstarCostMatrix(One to One)</p></li>
-<li><p>pgr_bdAstarCostMatrix(One to Many)</p></li>
-<li><p>pgr_bdAstarCostMatrix(Many to One)</p></li>
-<li><p>pgr_bdAstarCostMatrix(Many to Many)</p></li>
+<li><p>pgr_bdAstarCostMatrix</p></li>
 </ul>
 </li>
 <li><p>bdDijkstra Familia</p>
@@ -1593,10 +1587,7 @@ pgr_extractVertices error when target is not BIGINT</p></li>
 <li><p>pgr_bdDijkstraCost(One to Many)</p></li>
 <li><p>pgr_bdDijkstraCost(Many to One)</p></li>
 <li><p>pgr_bdDijkstraCost(Many to Many)</p></li>
-<li><p>pgr_bdDijkstraCostMatrix(One to One)</p></li>
-<li><p>pgr_bdDijkstraCostMatrix(One to Many)</p></li>
-<li><p>pgr_bdDijkstraCostMatrix(Many to One)</p></li>
-<li><p>pgr_bdDijkstraCostMatrix(Many to Many)</p></li>
+<li><p>pgr_bdDijkstraCostMatrix</p></li>
 </ul>
 </li>
 <li><p>Familia Flow</p>
@@ -1755,7 +1746,7 @@ FindPostgreSQL.cmake</p></li>
 <ul>
 <li><p>pgr_floydWarshall</p></li>
 <li><p>pgr_johnson</p></li>
-<li><p>pgr_astar</p></li>
+<li><p>pgr_aStar</p></li>
 <li><p>pgr_bdAstar</p></li>
 <li><p>pgr_bdDijstra</p></li>
 <li><p>pgr_alphashape</p></li>
@@ -1854,7 +1845,7 @@ FindPostgreSQL.cmake</p></li>
 <ul>
 <li><p>pgr_floydWarshall</p></li>
 <li><p>pgr_johnson</p></li>
-<li><p>pgr_astar</p></li>
+<li><p>pgr_aStar</p></li>
 <li><p>pgr_bdAstar</p></li>
 <li><p>pgr_bdDijstra</p></li>
 <li><p>pgr_alphashape</p></li>
@@ -2015,14 +2006,14 @@ FindPostgreSQL.cmake</p></li>
 <p class="rubric">New proposed signatures:</p>
 <ul class="simple">
 <li><p>pgr_maxFlow</p></li>
-<li><p>pgr_astar(One to Many)</p></li>
-<li><p>pgr_astar(Many to One)</p></li>
-<li><p>pgr_astar(Many to Many)</p></li>
-<li><p>pgr_astarCost(One to One)</p></li>
-<li><p>pgr_astarCost(One to Many)</p></li>
-<li><p>pgr_astarCost(Many to One)</p></li>
-<li><p>pgr_astarCost(Many to Many)</p></li>
-<li><p>pgr_astarCostMatrix</p></li>
+<li><p>pgr_aStar(One to Many)</p></li>
+<li><p>pgr_aStar(Many to One)</p></li>
+<li><p>pgr_aStar(Many to Many)</p></li>
+<li><p>pgr_aStarCost(One to One)</p></li>
+<li><p>pgr_aStarCost(One to Many)</p></li>
+<li><p>pgr_aStarCost(Many to One)</p></li>
+<li><p>pgr_aStarCost(Many to Many)</p></li>
+<li><p>pgr_aStarCostMatrix</p></li>
 </ul>
 <p class="rubric">Deprecated signatures.</p>
 <ul class="simple">
@@ -2107,7 +2098,7 @@ FindPostgreSQL.cmake</p></li>
 <p class="rubric">Firmas obsoletas</p>
 <ul class="simple">
 <li><p>pgr_tsp - utilice pgr_TSP o pgr_eucledianTSP en su lugar</p></li>
-<li><p>pgr_astar - utilice pgr_aStar en su lugar</p></li>
+<li><p>pgr_aStar - use pgr_aStar instead</p></li>
 </ul>
 <p class="rubric">Funciones obsoletas</p>
 <ul class="simple">
