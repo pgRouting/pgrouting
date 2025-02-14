@@ -88,7 +88,7 @@ Result columns
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`spanningTree-family`
+* :doc:`spanningTree-category`
 * :doc:`prim-family`
 * :doc:`sampledata`
 * `Boost: Prim's algorithm documentation
