@@ -36,12 +36,23 @@ $BODY$
 DECLARE
   has_column BOOLEAN := TRUE;
   rec RECORD;
+  sqlhint TEXT;
 
 BEGIN
 
   BEGIN
     EXECUTE format('SELECT %1$s FROM ( %2$s ) AS __a__ limit 1', $2, $1);
+    EXCEPTION WHEN OTHERS THEN
+      BEGIN
+      IF NOT is_optional THEN
+        RAISE EXCEPTION '%', SQLERRM USING HINT = $1, ERRCODE = SQLSTATE;
+      ELSE
+        has_column := FALSE;
+      END IF;
+      END;
+  END;
 
+  BEGIN
     EXECUTE format('SELECT pg_typeof(%1$s) FROM ( %2$s ) AS __a__ limit 1', $2, $1)
     INTO rec;
 
@@ -89,7 +100,5 @@ END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
-
--- COMMENTS
 COMMENT ON FUNCTION _pgr_checkColumn(TEXT, TEXT, TEXT, BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';

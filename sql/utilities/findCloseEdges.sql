@@ -44,6 +44,9 @@ DECLARE
   has_geom BOOLEAN;
   ret_query TEXT;
   ret_query_end TEXT;
+
+  sqlhint TEXT;
+
 BEGIN
 
   IF ($3 < 0) THEN
@@ -54,10 +57,14 @@ BEGIN
     RAISE EXCEPTION 'Invalid value for cap';
   END IF;
 
-  edges_sql := _pgr_checkQuery($1);
-  has_id := _pgr_checkColumn(edges_sql, 'id', 'ANY-INTEGER', false, dryrun => dryrun);
-  has_geom := _pgr_checkColumn(edges_sql, 'geom', 'geometry', false, dryrun => dryrun);
-
+  BEGIN
+    edges_sql := _pgr_checkQuery($1);
+    has_id := _pgr_checkColumn(edges_sql, 'id', 'ANY-INTEGER', false, dryrun => dryrun);
+    has_geom := _pgr_checkColumn(edges_sql, 'geom', 'geometry', false, dryrun => dryrun);
+    EXCEPTION WHEN OTHERS THEN
+      GET STACKED DIAGNOSTICS sqlhint = PG_EXCEPTION_HINT;
+      RAISE EXCEPTION '%', SQLERRM USING HINT = sqlhint, ERRCODE = SQLSTATE;
+  END;
 
   ret_query = format(
     $q$
@@ -155,15 +162,23 @@ DECLARE
   has_geom BOOLEAN;
   ret_query TEXT;
   ret_query_end TEXT;
+
+  sqlhint TEXT;
+
 BEGIN
 
   IF ($3 < 0) THEN
     RAISE EXCEPTION 'Invalid value for tolerance';
   END IF;
 
-  edges_sql := _pgr_checkQuery($1);
-  has_id := _pgr_checkColumn(edges_sql, 'id', 'ANY-INTEGER', false, dryrun => dryrun);
-  has_geom := _pgr_checkColumn(edges_sql, 'geom', 'geometry', false, dryrun => dryrun);
+  BEGIN
+    edges_sql := _pgr_checkQuery($1);
+    has_id := _pgr_checkColumn(edges_sql, 'id', 'ANY-INTEGER', false, dryrun => dryrun);
+    has_geom := _pgr_checkColumn(edges_sql, 'geom', 'geometry', false, dryrun => dryrun);
+    EXCEPTION WHEN OTHERS THEN
+      GET STACKED DIAGNOSTICS sqlhint = PG_EXCEPTION_HINT;
+      RAISE EXCEPTION '%', SQLERRM USING HINT = sqlhint, ERRCODE = SQLSTATE;
+  END;
 
   ret_query = format(
     $q$

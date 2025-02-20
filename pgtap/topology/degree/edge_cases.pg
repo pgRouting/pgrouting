@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.4.0') THEN plan(12) ELSE plan(1) END;
+SELECT CASE WHEN min_version('3.4.0') THEN plan(16) ELSE plan(1) END;
 
 
 CREATE OR REPLACE FUNCTION edge_cases()
@@ -59,11 +59,13 @@ BEGIN
   SELECT * FROM pgr_degree('edges','SELECT id, out_edges FROM vertices');
 
   RETURN QUERY SELECT lives_ok('query_1', 'Good execution');
-  RETURN QUERY SELECT throws_ok('query_2', 'P0001', 'Missing column', 'Incomlete data -> throws');
-  RETURN QUERY SELECT throws_ok('query_3', 'P0001', 'Missing column', 'Incomlete data -> throws');
-  RETURN QUERY SELECT throws_ok('query_4', 'P0001', 'Missing column', 'Incomlete data -> throws');
+  RETURN QUERY SELECT column_missing('query_2', 'id');
+  RETURN QUERY SELECT column_missing('query_3', 'in_edges');
+  RETURN QUERY SELECT column_missing('query_4', 'id');
   RETURN QUERY SELECT lives_ok('query_5', 'Missing column out_edges but usable');
   RETURN QUERY SELECT lives_ok('query_5', 'Missing column in_edges but usable');
+  RETURN QUERY SELECT wrong_relation($$SELECT * FROM pgr_degree('SELECT id FROM foo', 'SELECT * FROM vertices')$$, 'foo');
+  RETURN QUERY SELECT wrong_relation($$SELECT * FROM pgr_degree('SELECT id FROM edges', 'SELECT * FROM bar')$$, 'bar');
 
   PREPARE subedges AS
   SELECT id FROM edges WHERE id < 17;
@@ -90,11 +92,28 @@ BEGIN
   SELECT * FROM pgr_degree('subedges','SELECT id, out_edges FROM vertices');
 
   RETURN QUERY SELECT lives_ok('query_7', 'Good execution');
-  RETURN QUERY SELECT throws_ok('query_8', 'P0001', 'Missing column', 'Incomlete data -> throws');
-  RETURN QUERY SELECT throws_ok('query_9', 'P0001', 'Missing column', 'Incomlete data -> throws');
-  RETURN QUERY SELECT throws_ok('query_10', 'P0001', 'Missing column', 'Incomlete data -> throws');
+  RETURN QUERY SELECT column_missing('query_8', 'id');
+  RETURN QUERY SELECT column_missing('query_9', 'in_edges');
+  RETURN QUERY SELECT column_missing('query_10', 'id');
   RETURN QUERY SELECT lives_ok('query_11', 'Missing column out_edges but usable');
   RETURN QUERY SELECT lives_ok('query_12', 'Missing column in_edges but usable');
+
+  PREPARE empty_vertices AS
+  SELECT * FROM pgr_degree('SELECT id FROM edges', 'SELECT * FROM vertices WHERE id > 20');
+  RETURN QUERY SELECT is_empty('empty_vertices', 'Empty vertices give empty result');
+
+  PREPARE empty_graph AS
+  SELECT * FROM pgr_degree('SELECT id FROM edges WHERE id > 20', 'SELECT * FROM vertices') ORDER BY node;
+  RETURN QUERY
+  SELECT CASE WHEN min_version('3.8.0') THEN
+    collect_tap(
+      is_empty('empty_graph', 'is empty: Empty edges give 0 count on all vertices so none is in result')
+    )
+  ELSE
+    collect_tap(
+      results_eq('empty_graph', 'SELECT generate_series (1,17)::BIGINT, 0::BIGINT', 'Empty edges give 0 count')
+    )
+  END;
 
 END;
 $BODY$
