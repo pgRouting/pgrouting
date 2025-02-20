@@ -95,7 +95,19 @@ milestone for 4.0.0
 
 ### pgRouting 3.8.0 Release Notes
 
-No Changes Yet
+**Changes on proposed functions**
+
+* pgr_extractVertices
+
+  * Error messages adjustment.
+
+* pgr_findCloseEdges
+
+  * Error messages adjustment.
+
+* pgr_degree
+
+  * Error messages adjustment.
 
 ## pgRouting 3.7
 

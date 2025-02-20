@@ -29,3 +29,23 @@ END;
 $BODY$
 LANGUAGE plpgsql;
 
+
+CREATE OR REPLACE FUNCTION column_missing(TEXT, TEXT)
+RETURNS TEXT AS
+$BODY$
+  SELECT CASE WHEN min_version('3.8.0') THEN
+    collect_tap(throws_ok($1, '42703','column "' || $2 || '" does not exist'))
+  ELSE
+    collect_tap(throws_ok($1, 'P0001', 'Missing column'))
+  END;
+$BODY$ LANGUAGE SQL;
+
+CREATE OR REPLACE FUNCTION wrong_relation(TEXT, TEXT)
+RETURNS TEXT AS
+$BODY$
+  SELECT CASE WHEN min_version('3.8.0') THEN
+    collect_tap(throws_ok($1, '42P01', 'relation "' || $2 || '" does not exist'))
+  ELSE
+    collect_tap(throws_ok($1, 'P0001', 'relation "' || $2 || '" does not exist'))
+  END;
+$BODY$ LANGUAGE SQL;

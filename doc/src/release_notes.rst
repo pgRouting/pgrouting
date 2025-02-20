@@ -135,7 +135,25 @@ pgRouting 3.8
 pgRouting 3.8.0 Release Notes
 -------------------------------------------------------------------------------
 
-No Changes Yet
+.. rubric:: Changes on proposed functions
+
+* pgr_extractVertices
+
+  .. include:: pgr_extractVertices.rst
+     :start-after: Version 3.8.0
+     :end-before: .. rubric
+
+* pgr_findCloseEdges
+
+  .. include:: pgr_findCloseEdges.rst
+     :start-after: Version 3.8.0
+     :end-before: .. rubric
+
+* pgr_degree
+
+  .. include:: pgr_degree.rst
+     :start-after: Version 3.8.0
+     :end-before: .. rubric
 
 pgRouting 3.7
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
