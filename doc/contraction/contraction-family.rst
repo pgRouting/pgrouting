@@ -99,7 +99,7 @@ Dead end vertex on undirected graph
    :header-rows: 1
 
    * - Node
-     - Adjecent nodes
+     - Adjacent nodes
      - Number of adjacent nodes
    * - :math:`a`
      - :math:`\{u\}`
@@ -140,7 +140,7 @@ Dead end vertex on directed graph
    :header-rows: 1
 
    * - Node
-     - Adjecent nodes
+     - Adjacent nodes
      - Number of adjacent nodes
      - Number of incoming edges
      - Number of outgoing edges
@@ -282,7 +282,7 @@ Linear vertex on undirected graph
    :header-rows: 1
 
    * - Node
-     - Adjecent nodes
+     - Adjacent nodes
      - Number of adjacent nodes
    * - :math:`v`
      - :math:`\{u, w\}`
@@ -320,7 +320,7 @@ Linear vertex on directed graph
    :header-rows: 1
 
    * - Node
-     - Adjecent nodes
+     - Adjacent nodes
      - Number of adjacent nodes
      - Is symmetrical?
    * - :math:`a`

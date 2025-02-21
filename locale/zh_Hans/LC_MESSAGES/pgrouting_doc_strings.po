@@ -2929,7 +2929,7 @@ msgstr "蓝色节点具有无限数量的边。"
 msgid "Node"
 msgstr "节点"
 
-msgid "Adjecent nodes"
+msgid "Adjacent nodes"
 msgstr "相邻节点"
 
 msgid "Number of adjacent nodes"

@@ -2870,7 +2870,7 @@ msgstr ""
 msgid "Node"
 msgstr ""
 
-msgid "Adjecent nodes"
+msgid "Adjacent nodes"
 msgstr ""
 
 msgid "Number of adjacent nodes"
