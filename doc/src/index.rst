@@ -94,7 +94,7 @@ Current release
 
 .. include:: release_notes.rst
    :start-after: current
-   :end-before: pgRouting 3.6
+   :end-before: pgRouting 3.7
 
 All releases
 -------------------------------------------------------------------------------
