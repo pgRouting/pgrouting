@@ -64,6 +64,7 @@ my $version_3_4 = qr/(3.4.[\d+])/;
 my $version_3_5 = qr/(3.5.[\d+])/;
 my $version_3_6 = qr/(3.6.[\d+])/;
 my $version_3_7 = qr/(3.7.[\d+])/;
+my $version_3_8 = qr/(3.8.[\d+])/;
 my $version_4_0 = qr/(4.0.[\d+])/;
 # add minor here
 
