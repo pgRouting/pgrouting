@@ -88,8 +88,16 @@ milestone for 4.0.0
 # pgRouting 3
 
 
-## pgRouting 3.7
+## pgRouting 3.8
 
+
+.. current
+
+### pgRouting 3.8.0 Release Notes
+
+No Changes Yet
+
+## pgRouting 3.7
 
 ### pgRouting 3.7.3 Release Notes
 

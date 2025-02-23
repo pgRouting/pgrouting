@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v4.0
+# Copyright (C) pgRouting Contributors - Version v3.8
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v4.0\n"
+"Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-12 01:00+0000\n"
+"POT-Creation-Date: 2025-02-27 16:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4401,177 +4401,10 @@ msgstr ""
 msgid ":doc:`release_notes`"
 msgstr ""
 
-msgid "pgRouting 4.0.0 Release Notes"
+msgid "pgRouting 3.8.0 Release Notes"
 msgstr ""
 
-#, python-format
-msgid ""
-"To see all issues & pull requests closed by this release see the `Git "
-"closed milestone for 4.0.0 "
-"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
-msgstr ""
-
-msgid "Functions promoted to official"
-msgstr ""
-
-msgid "pgr_trsp"
-msgstr ""
-
-msgid "pgr_trspVia"
-msgstr ""
-
-msgid "pgr_trspVia_withPoints"
-msgstr ""
-
-msgid "pgr_trsp_withPoints"
-msgstr ""
-
-msgid "pgr_withPoints"
-msgstr ""
-
-msgid "pgr_withPointsCost"
-msgstr ""
-
-msgid "pgr_withPointsCostMatrix"
-msgstr ""
-
-msgid "pgr_withPointsDD"
-msgstr ""
-
-msgid "pgr_withPointsKSP"
-msgstr ""
-
-msgid "pgr_withPointsVia"
-msgstr ""
-
-msgid "Signatures promoted to official"
-msgstr ""
-
-msgid "pgr_aStar(Combinations)"
-msgstr ""
-
-msgid "pgr_aStarCost(Combinations)"
-msgstr ""
-
-msgid "pgr_bdAstar(Combinations)"
-msgstr ""
-
-msgid "pgr_bdAstarCost(Combinations)"
-msgstr ""
-
-msgid "pgr_bdDijkstra(Combinations)"
-msgstr ""
-
-msgid "pgr_bdDijkstraCost(Combinations)"
-msgstr ""
-
-msgid "pgr_dijkstra(Combinations)"
-msgstr ""
-
-msgid "pgr_dijkstraCost(Combinations)"
-msgstr ""
-
-msgid "pgr_KSP(All signatures)"
-msgstr ""
-
-msgid "pgr_boykovKolmogorov(Combinations)"
-msgstr ""
-
-msgid "pgr_edmondsKarp(Combinations)"
-msgstr ""
-
-msgid "pgr_maxFlow(Combinations)"
-msgstr ""
-
-msgid "pgr_pushRelabel(Combinations)"
-msgstr ""
-
-msgid "code enhancements:"
-msgstr ""
-
-msgid "Removal of unused C/C++ code"
-msgstr ""
-
-msgid "Removal of SQL deprecated functions"
-msgstr ""
-
-msgid ""
-"pgr_trsp(text,integer,double precision,integer,double "
-"precision,boolean,boolean,text)"
-msgstr ""
-
-msgid "pgr_trsp(text,integer,integer,boolean,boolean,text)"
-msgstr ""
-
-msgid "pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)"
-msgstr ""
-
-msgid "pgr_trspviavertices(text,anyarray,boolean,boolean,text)"
-msgstr ""
-
-msgid "Removal of SQL deprecated internal functions"
-msgstr ""
-
-msgid "_pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)"
-msgstr ""
-
-msgid "_pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)"
-msgstr ""
-
-msgid "_pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)"
-msgstr ""
-
-msgid "_pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)"
-msgstr ""
-
-msgid "_pgr_dijkstra(text,text,boolean,boolean,boolean)"
-msgstr ""
-
-msgid "_pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)"
-msgstr ""
-
-msgid "_pgr_kruskal(text,anyarray,text,bigint,double precision)"
-msgstr ""
-
-msgid "_pgr_prim(text,anyarray,text,bigint,double precision)"
-msgstr ""
-
-msgid ""
-"_pgr_trsp(text,integer,double precision,integer,double "
-"precision,boolean,boolean,text)"
-msgstr ""
-
-msgid "_pgr_trsp(text,text,anyarray,anyarray,boolean)"
-msgstr ""
-
-msgid "_pgr_trsp(text,text,anyarray,bigint,boolean)"
-msgstr ""
-
-msgid "_pgr_trsp(text,text,bigint,anyarray,boolean)"
-msgstr ""
-
-msgid "_pgr_trsp(text,text,bigint,bigint,boolean)"
-msgstr ""
-
-msgid "_pgr_trspviavertices(text,integer[],boolean,boolean,text)"
-msgstr ""
-
-msgid "_pgr_withpointsvia(text,bigint[],double precision[],boolean)"
-msgstr ""
-
-msgid "_trsp(text,text,anyarray,anyarray,boolean)"
-msgstr ""
-
-msgid "_v4trsp(text,text,anyarray,anyarray,boolean)"
-msgstr ""
-
-msgid "_v4trsp(text,text,text,boolean)"
-msgstr ""
-
-msgid "Deprecation of internal C/C++ functions"
-msgstr ""
-
-msgid "Internal C/C++ functions in legacy"
+msgid "No Changes Yet"
 msgstr ""
 
 msgid "All releases"
@@ -5238,12 +5071,6 @@ msgid "Deprecated"
 msgstr ""
 
 msgid "`v3.4.0 <https://docs.pgrouting.org/3.4>`__"
-msgstr ""
-
-msgid "Removed"
-msgstr ""
-
-msgid "`v4.0.0 <https://docs.pgrouting.org/4.0>`__"
 msgstr ""
 
 msgid ":doc:`pgr_dijkstra`"
@@ -7019,7 +6846,7 @@ msgid "Upgrading the database"
 msgstr ""
 
 msgid ""
-"To upgrade pgRouting in the database to version 4.0.0 use the following "
+"To upgrade pgRouting in the database to version 3.8.0 use the following "
 "command:"
 msgstr ""
 
@@ -7481,12 +7308,6 @@ msgstr ""
 msgid "Availability"
 msgstr ""
 
-msgid "Version 4.0.0"
-msgstr ""
-
-msgid "All signatures promoted to official."
-msgstr ""
-
 msgid "Version 3.6.0"
 msgstr ""
 
@@ -7537,7 +7358,7 @@ msgstr ""
 msgid "|Boost| Boost Graph Inside"
 msgstr ""
 
-msgid "Boost Graph Inside"
+msgid "Boost Graph inside"
 msgstr ""
 
 msgid "Signatures"
@@ -7665,7 +7486,7 @@ msgstr ""
 msgid "``pgr_TSP``"
 msgstr ""
 
-msgid "``pgr_TSP`` - Aproximation using *metric* algorithm."
+msgid "``pgr_TSP`` - Approximation using *metric* algorithm."
 msgstr ""
 
 msgid "Availability:"
@@ -7883,7 +7704,7 @@ msgstr ""
 msgid "``pgr_TSPeuclidean``"
 msgstr ""
 
-msgid "``pgr_TSPeuclidean`` - Aproximation using *metric* algorithm."
+msgid "``pgr_TSPeuclidean`` - Approximation using *metric* algorithm."
 msgstr ""
 
 msgid ""
@@ -7993,9 +7814,6 @@ msgstr ""
 msgid "``pgr_aStar`` — Shortest path using the A* algorithm."
 msgstr ""
 
-msgid "Combinations signature promoted to official."
-msgstr ""
-
 msgid "Standarizing output columns to |short-generic-result|"
 msgstr ""
 
@@ -8012,6 +7830,9 @@ msgid "Version 3.2.0"
 msgstr ""
 
 msgid "New proposed signature:"
+msgstr ""
+
+msgid "pgr_aStar(Combinations)"
 msgstr ""
 
 msgid "Function promoted to official."
@@ -8113,6 +7934,9 @@ msgstr ""
 msgid ""
 "``pgr_aStarCost`` - Total cost of the shortest path using the A* "
 "algorithm."
+msgstr ""
+
+msgid "pgr_aStarCost(Combinations)"
 msgstr ""
 
 msgid "New proposed function."
@@ -8789,6 +8613,9 @@ msgstr ""
 msgid "pgr_bdAstar(Many to One) added ``start_vid`` column."
 msgstr ""
 
+msgid "pgr_bdAstar(Combinations)"
+msgstr ""
+
 msgid "pgr_bdAstar(One to Many)"
 msgstr ""
 
@@ -8827,6 +8654,9 @@ msgstr ""
 msgid ""
 "``pgr_bdAstarCost`` - Total cost of the shortest path using the "
 "bidirectional A* algorithm."
+msgstr ""
+
+msgid "pgr_bdAstarCost(Combinations)"
 msgstr ""
 
 msgid ""
@@ -8869,6 +8699,9 @@ msgstr ""
 msgid ""
 "``pgr_bdDijkstra`` — Returns the shortest path using Bidirectional "
 "Dijkstra algorithm."
+msgstr ""
+
+msgid "pgr_bdDijkstra(Combinations)"
 msgstr ""
 
 msgid "pgr_bdDijkstra(One to Many)"
@@ -8943,6 +8776,9 @@ msgstr ""
 msgid ""
 "``pgr_bdDijkstraCost`` — Returns the shortest path's cost using "
 "Bidirectional Dijkstra algorithm."
+msgstr ""
+
+msgid "pgr_bdDijkstraCost(Combinations)"
 msgstr ""
 
 msgid ""
@@ -9090,6 +8926,9 @@ msgstr ""
 
 #, python-format
 msgid "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
+msgstr ""
+
+msgid "Boost Graph Inside"
 msgstr ""
 
 msgid "``pgr_betweennessCentrality`` - Experimental"
@@ -9397,6 +9236,9 @@ msgid ""
 "``pgr_boykovKolmogorov`` — Calculates the flow on the graph edges that "
 "maximizes the flow from the sources to the targets using Boykov "
 "Kolmogorov algorithm."
+msgstr ""
+
+msgid "pgr_boykovKolmogorov(Combinations)"
 msgstr ""
 
 msgid "Renamed from ``pgr_maxFlowBoykovKolmogorov``"
@@ -10554,6 +10396,9 @@ msgstr ""
 msgid "Version 3.1.0"
 msgstr ""
 
+msgid "pgr_dijkstra(Combinations)"
+msgstr ""
+
 msgid "Version 2.2.0"
 msgstr ""
 
@@ -10758,6 +10603,9 @@ msgstr ""
 msgid "37) Using `Combinations`_"
 msgstr ""
 
+msgid "e Also"
+msgstr ""
+
 msgid ""
 "`Boost: Dijkstra shortest paths "
 "<https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html>`__"
@@ -10773,6 +10621,9 @@ msgstr ""
 msgid ""
 "``pgr_dijkstraCost`` - Total cost of the shortest path using Dijkstra "
 "algorithm."
+msgstr ""
+
+msgid "pgr_dijkstraCost(Combinations)"
 msgstr ""
 
 msgid ""
@@ -11492,6 +11343,9 @@ msgid ""
 "Algorithm."
 msgstr ""
 
+msgid "pgr_edmondsKarp(Combinations)"
+msgstr ""
+
 msgid "Renamed from ``pgr_maxFlowEdmondsKarp``"
 msgstr ""
 
@@ -11514,7 +11368,7 @@ msgid "pgr_edmondsKarp(`Edges SQL`_, `Combinations SQL`_)"
 msgstr ""
 
 msgid ""
-"`Boost: Edmonds Karp max flow "
+"`Boost: edmonds_karp_max_flow "
 "<https://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html>`__"
 msgstr ""
 
@@ -11728,6 +11582,9 @@ msgid "Returns set of |result-find|"
 msgstr ""
 
 msgid "One point"
+msgstr ""
+
+msgid "**options:** [cap, partial, dryrun]``"
 msgstr ""
 
 msgid "Default: ``cap => 1``"
@@ -12251,7 +12108,7 @@ msgid "``pgr_hawickCircuits`` - Experimental"
 msgstr ""
 
 msgid ""
-"``pgr_hawickCircuits`` — Returns the list of cirucits using hawick "
+"``pgr_hawickCircuits`` — Returns the list of ciruits using hawick "
 "circuits algorithm."
 msgstr ""
 
@@ -13177,6 +13034,9 @@ msgid ""
 "the source(s) to the targets(s) using the Push Relabel algorithm."
 msgstr ""
 
+msgid "pgr_maxFlow(Combinations)"
+msgstr ""
+
 msgid "Calculates the maximum flow from the sources to the targets."
 msgstr ""
 
@@ -13855,6 +13715,9 @@ msgid ""
 "Algorithm."
 msgstr ""
 
+msgid "pgr_pushRelabel(Combinations)"
+msgstr ""
+
 msgid "Renamed from ``pgr_maxFlowPushRelabel``"
 msgstr ""
 
@@ -14185,7 +14048,7 @@ msgstr ""
 msgid "https://en.wikipedia.org/wiki/Transitive_closure"
 msgstr ""
 
-msgid "``pgr_trsp``"
+msgid "``pgr_trsp`` - Proposed"
 msgstr ""
 
 msgid "``pgr_trsp`` - routing vertices with restrictions."
@@ -14209,10 +14072,16 @@ msgstr ""
 msgid "Deprecated signatures"
 msgstr ""
 
+msgid "pgr_trsp(text,integer,integer,boolean,boolean,text)"
+msgstr ""
+
 msgid "pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)"
 msgstr ""
 
 msgid "pgr_trspViaVertices(text,anyarray,boolean,boolean,text)"
+msgstr ""
+
+msgid "pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)"
 msgstr ""
 
 msgid "New prototypes"
@@ -14299,7 +14168,7 @@ msgid ""
 "<https://docs.pgrouting.org/3.3/en/pgr_trsp.html>`_"
 msgstr ""
 
-msgid "``pgr_trspVia``"
+msgid "``pgr_trspVia`` - Proposed"
 msgstr ""
 
 msgid ""
@@ -14389,7 +14258,7 @@ msgstr ""
 msgid ":doc:`via-category`"
 msgstr ""
 
-msgid "``pgr_trspVia_withPoints``"
+msgid "``pgr_trspVia_withPoints`` - Proposed"
 msgstr ""
 
 msgid ""
@@ -14561,7 +14430,7 @@ msgid ""
 "same edge."
 msgstr ""
 
-msgid "``pgr_trsp_withPoints``"
+msgid "``pgr_trsp_withPoints`` - Proposed"
 msgstr ""
 
 msgid "``pgr_trsp_withPoints`` Routing Vertex/Point with restrictions."
@@ -14761,7 +14630,7 @@ msgstr ""
 msgid "**TBD**"
 msgstr ""
 
-msgid "``pgr_withPoints``"
+msgid "``pgr_withPoints`` - Proposed"
 msgstr ""
 
 msgid ""
@@ -14906,7 +14775,7 @@ msgstr ""
 msgid "Passes in front or visits with left side driving."
 msgstr ""
 
-msgid "``pgr_withPointsCost``"
+msgid "``pgr_withPointsCost`` - Proposed"
 msgstr ""
 
 msgid ""
@@ -15051,7 +14920,7 @@ msgstr ""
 msgid "Does not matter driving side driving topology"
 msgstr ""
 
-msgid "``pgr_withPointsCostMatrix``"
+msgid "``pgr_withPointsCostMatrix`` - proposed"
 msgstr ""
 
 msgid ""
@@ -15084,7 +14953,7 @@ msgid ""
 "closest locations on the graph of point `(2.9, 1.8)`."
 msgstr ""
 
-msgid "``pgr_withPointsDD``"
+msgid "``pgr_withPointsDD`` - Proposed"
 msgstr ""
 
 msgid ""
@@ -15119,12 +14988,12 @@ msgstr ""
 
 msgid ""
 "pgr_withpointsdd(text,text,bigint,double "
-"precision,boolean,character,boolean)"
+"precision,boolean,character,boolean)``"
 msgstr ""
 
 msgid ""
 "pgr_withpointsdd(text,text,anyarray,double "
-"precision,boolean,character,boolean,boolean)"
+"precision,boolean,character,boolean,boolean)``"
 msgstr ""
 
 msgid ""
@@ -15231,7 +15100,7 @@ msgstr ""
 msgid ":doc:`pgr_alphaShape`"
 msgstr ""
 
-msgid "``pgr_withPointsKSP``"
+msgid "``pgr_withPointsKSP`` - Proposed"
 msgstr ""
 
 msgid ""
@@ -15372,7 +15241,7 @@ msgid ""
 ":math:`1` to point :math:`2` with heap paths and details."
 msgstr ""
 
-msgid "``pgr_withPointsVia``"
+msgid "``pgr_withPointsVia`` - Proposed"
 msgstr ""
 
 msgid ""
@@ -15512,19 +15381,13 @@ msgstr ""
 msgid "Mayors"
 msgstr ""
 
-msgid "pgRouting 4"
-msgstr ""
-
-msgid "Minors 4.x"
-msgstr ""
-
-msgid "pgRouting 4.0"
-msgstr ""
-
 msgid "pgRouting 3"
 msgstr ""
 
 msgid "Minors 3.x"
+msgstr ""
+
+msgid "pgRouting 3.8"
 msgstr ""
 
 msgid "pgRouting 3.7"
@@ -16037,6 +15900,12 @@ msgid "pgr_trspVia(One Via)"
 msgstr ""
 
 msgid "pgr_trspVia_withPoints(One Via)"
+msgstr ""
+
+msgid "pgr_trsp"
+msgstr ""
+
+msgid "``pgr_trsp_withPoints``"
 msgstr ""
 
 msgid "pgr_trsp_withPoints(One to One)"
@@ -17402,6 +17271,9 @@ msgstr ""
 msgid "pgr_eucledianTSP"
 msgstr ""
 
+msgid "pgr_withPointsCostMatrix"
+msgstr ""
+
 msgid "pgr_maxFlowPushRelabel(One to One)"
 msgstr ""
 
@@ -17597,6 +17469,9 @@ msgid "pgr_withPointsDD(single vertex)"
 msgstr ""
 
 msgid "pgr_withPointsDD(multiple vertices)"
+msgstr ""
+
+msgid "pgr_withPointsKSP"
 msgstr ""
 
 msgid "pgr_dijkstraVia"
