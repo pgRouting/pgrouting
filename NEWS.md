@@ -26,6 +26,7 @@
 * pgr_degree
 
   * Error messages adjustment.
+  * New signature with only Edges SQL.
 
 ## pgRouting 3.7
 
