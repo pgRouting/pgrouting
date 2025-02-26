@@ -9,25 +9,21 @@
 
 .. index::
    single: Topology Family ; pgr_extractVertices
-   single: extractVertices - Proposed on v3.3
+   single: extractVertices
 
 |
 
-``pgr_extractVertices`` -- Proposed
+``pgr_extractVertices``
 ===============================================================================
 
 ``pgr_extractVertices`` — Extracts the vertices information
-
-
-.. include:: proposed.rst
-   :start-after: warning-begin
-   :end-before: end-warning
 
 .. rubric:: Availability
 
 .. rubric:: Version 3.8.0
 
 * Error messages adjustment.
+* Function promoted to official.
 
 .. rubric:: Version 3.3.0
 
