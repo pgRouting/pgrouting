@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.4.0') THEN plan(16) ELSE plan(1) END;
+SELECT CASE WHEN min_version('3.8.0') THEN plan(23) WHEN min_version('3.4.0') THEN plan(16) ELSE plan(1) END;
 
 
 CREATE OR REPLACE FUNCTION edge_cases()
@@ -113,6 +113,34 @@ BEGIN
      RETURN QUERY
      SELECT results_eq('empty_graph', 'SELECT generate_series (1,17)::BIGINT, 0::BIGINT', 'Empty edges give 0 count');
   END IF;
+
+  IF NOT min_version('3.8.0') THEN RETURN; END IF;
+
+  -- TESTS FOR edges_sql only
+
+  PREPARE edges_1 AS
+  SELECT id, source, target FROM edges;
+
+  PREPARE subedges_1 AS
+  SELECT id, source, target FROM edges WHERE id < 17;
+
+  RETURN QUERY
+  SELECT set_eq($$SELECT * FROM pgr_degree('edges_1')$$, 'query_1',
+    'degree(edges) = degree(edges,vertices)');
+
+  RETURN QUERY
+  SELECT set_eq($$SELECT * FROM pgr_degree('subedges_1')$$, 'query_7',
+    'degree(subedges) = degree(subedges,vertices)');
+
+  RETURN QUERY SELECT lives_ok($$SELECT * FROM pgr_degree('SELECT id, source, target FROM edges')$$, 'good execution');
+  RETURN QUERY SELECT throws_ok($$SELECT * FROM pgr_degree('SELECT source, target FROM edges')$$,
+    '42703','column "id" does not exist');
+  RETURN QUERY SELECT throws_ok($$SELECT * FROM pgr_degree('SELECT id, target FROM edges')$$,
+    '42703','column "source" does not exist');
+  RETURN QUERY SELECT throws_ok($$SELECT * FROM pgr_degree('SELECT id, source FROM edges')$$,
+    '42703','column "target" does not exist');
+  RETURN QUERY SELECT wrong_relation($$SELECT * FROM pgr_degree('SELECT id FROM foo')$$, 'foo');
+
 
 END;
 $BODY$

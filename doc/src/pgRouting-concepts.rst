@@ -830,10 +830,11 @@ the number of dead ends and/or the number of linear edges.
 A complete method on how to contract and how to use the contracted graph is
 described on :doc:`contraction-family`
 
-.. degree_from_table_start
 
 Dead ends
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. degree_from_table_start
 
 To get the dead ends:
 
@@ -841,12 +842,50 @@ To get the dead ends:
    :start-after: -- contract1
    :end-before: -- contract2
 
-That information is correct, for example, when the dead end is on the limit of
-the imported graph.
+A dead end happens when
 
-Visually node :math:`4` looks to be as start/ending of 3 edges, but it is not.
+- The vertex is the limit of a cul-de-sac, a no-through road or a no-exit
+  road.
+- The vertex is on the limit of the imported graph.
 
-Is that correct?
+  - If a larger graph is imported then the vertex might not be a dead end
+
+Node :math:`4`, is a dead end on the query, even that it visually looks like an
+end point of 3 edges.
+
+.. image:: images/Fig1-originalData.png
+   :scale: 20%
+
+.. rubric:: Is node :math:`4` a dead end or not?
+
+.. graphviz::
+
+   graph G {
+     1,2,4,5,9,13,14 [shape=circle;style=filled;color=lightgreen;fontsize=8;width=0.3;fixedsize=true];
+     3,6,7,8,10,11,12,15,16,17 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
+
+     5 -- 6 [label="1",fontsize=8];     6 -- 10 [label="2",fontsize=8];
+     10 -- 15 [label="3",fontsize=8];   6 -- 7 [label="4",fontsize=8];
+     10 -- 11 [label="5",fontsize=8];   1 -- 3 [label="6",fontsize=8];
+     3 -- 7 [label="7",fontsize=8];     7 -- 11 [label="8",fontsize=8];
+     11 -- 16 [label="9",fontsize=8];   7 -- 8 [label="10",fontsize=8];
+     11 -- 12 [label="11",fontsize=8];  8 -- 12 [label="12",fontsize=8];
+     12 -- 17 [label="13",fontsize=8];  8 -- 9 [label="",fontsize=8];
+     16 -- 17 [label="15",fontsize=8]; 15 -- 16 [label="16",fontsize=8];
+     2 -- 4 [label="17",fontsize=8];   13 -- 14 [label="18",fontsize=8];
+
+     1 [pos="0,2!"];       2 [pos="0.5,3.5!"];
+     3 [pos="1,2!"];       4 [pos="2,3.5!"];
+     5 [pos="2,0!"];       6 [pos="2,1!"];
+     7 [pos="2,2!"];       8 [pos="2,3!"];
+     9 [pos="2,4!"];      10 [pos="3,1!"];
+     11 [pos="3,2!"];     12 [pos="3,3!"];
+     13 [pos="3.5,2.3!"]; 14 [pos="3.5,4!"];
+     15 [pos="4,1!"];     16 [pos="4,2!"];
+     17 [pos="4,3!"];
+   }
+
+The answer to that question will depend on the application.
 
 * Is there such a small curb:
 
@@ -859,11 +898,17 @@ Is that correct?
 * Is there a big cliff and from eagles view look like the dead end is close to
   the segment?
 
-When there are many dead ends, to speed up, the :doc:`contraction-family`
-functions can be used to divide the problem.
+Depending on the answer, modification of the data might be needed.
+
+When there are many dead ends, to speed up processing, the :doc:`contraction-family`
+functions can be used to contract the graph.
+
+.. degree_from_table_end
 
 Linear edges
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. linear_degree_from_table_start
 
 To get the linear edges:
 
@@ -871,13 +916,41 @@ To get the linear edges:
    :start-after: -- contract2
    :end-before: -- contract3
 
-This information is correct, for example, when the application is taking into
-account speed bumps, stop signals.
+.. graphviz::
 
-When there are many linear edges, to speed up, the :doc:`contraction-family`
-functions can be used to divide the problem.
+   graph G {
+     3,15,17 [shape=circle;style=filled;color=lightgreen;fontsize=8;width=0.3;fixedsize=true];
+     1,2,4,5,6,7,8,9,10,11,12,13,14,16 [shape=circle;style=filled;color=cyan;fontsize=8;width=0.3;fixedsize=true];
 
-.. degree_from_table_end
+     5 -- 6 [label="1",fontsize=8];     6 -- 10 [label="2",fontsize=8];
+     10 -- 15 [label="3",fontsize=8];   6 -- 7 [label="4",fontsize=8];
+     10 -- 11 [label="5",fontsize=8];   1 -- 3 [label="6",fontsize=8];
+     3 -- 7 [label="7",fontsize=8];     7 -- 11 [label="8",fontsize=8];
+     11 -- 16 [label="9",fontsize=8];   7 -- 8 [label="10",fontsize=8];
+     11 -- 12 [label="11",fontsize=8];  8 -- 12 [label="12",fontsize=8];
+     12 -- 17 [label="13",fontsize=8];  8 -- 9 [label="",fontsize=8];
+     16 -- 17 [label="15",fontsize=8]; 15 -- 16 [label="16",fontsize=8];
+     2 -- 4 [label="17",fontsize=8];   13 -- 14 [label="18",fontsize=8];
+
+     1 [pos="0,2!"];       2 [pos="0.5,3.5!"];
+     3 [pos="1,2!"];       4 [pos="2,3.5!"];
+     5 [pos="2,0!"];       6 [pos="2,1!"];
+     7 [pos="2,2!"];       8 [pos="2,3!"];
+     9 [pos="2,4!"];      10 [pos="3,1!"];
+     11 [pos="3,2!"];     12 [pos="3,3!"];
+     13 [pos="3.5,2.3!"]; 14 [pos="3.5,4!"];
+     15 [pos="4,1!"];     16 [pos="4,2!"];
+     17 [pos="4,3!"];
+   }
+
+These linear vertices are correct, for example, when those the vertices are speed
+bumps, stop signals and the application is taking them into account.
+
+When there are many linear vertices, that need not to be taken into account, to
+speed up the processing, the :doc:`contraction-family` functions can be used to
+contract the problem.
+
+.. linear_degree_from_table_end
 
 Function's structure
 -------------------------------------------------------------------------------
@@ -889,7 +962,7 @@ The general form of a pgRouting function call is:
 .. admonition:: \ \
    :class: signatures
 
-    pgr_<name>(`Inner queries`_, **parameters**, [ ``Optional parameters``)
+   pgr_<name>(`Inner queries`_, **parameters**, [ ``Optional parameters``)
 
 Where:
 

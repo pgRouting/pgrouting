@@ -1,23 +1,39 @@
 -- CopyRight(c) pgRouting developers
 -- Creative Commons Attribution-Share Alike 3.0 License : https://creativecommons.org/licenses/by-sa/3.0/
 /* -- q1 */
-DROP TABLE IF EXISTS tmp_edges_vertices_pgr;
-CREATE TEMP TABLE tmp_edges_vertices_pgr AS
-SELECT id, in_edges, out_edges
-    FROM pgr_extractVertices('SELECT id, geom FROM edges');
+SELECT * FROM pgr_degree($$SELECT id, source, target FROM edges$$)
+ORDER BY node;
+/* -- q2 */
 SELECT * FROM pgr_degree(
   $$SELECT id FROM edges$$,
   $$SELECT id, in_edges, out_edges
-    FROM tmp_edges_vertices_pgr$$);
-/* -- q2 */
-SELECT * FROM pgr_degree(
-  $$SELECT id FROM edges WHERE id < 17$$,
-  $$SELECT id, in_edges, out_edges
     FROM pgr_extractVertices('SELECT id, geom FROM edges')$$);
 /* -- q3 */
+SELECT * from pgr_degree('SELECT 1 as id, 2 as source, 2 as target');
+/* -- q4 */
+SELECT * FROM pgr_degree(
+  $$SELECT 1 AS id$$,
+  $$SELECT id, in_edges, out_edges
+     FROM pgr_extractVertices('SELECT 1 as id, 2 as source, 2 as target')$$);
+/* -- q5 */
+SELECT * FROM pgr_degree($$SELECT * FROM edges WHERE id IN (1, 2)$$);
+/* -- q6 */
+SELECT * FROM pgr_degree(
+  $$SELECT * FROM edges WHERE id IN (1, 2)$$,
+  $$SELECT id, in_edges, out_edges FROM vertices$$);
+/* -- q7 */
+DROP TABLE IF EXISTS vertices;
+/* -- q8*/
+CREATE TABLE vertices AS
+SELECT id, in_edges, out_edges
+FROM pgr_extractVertices('SELECT id, geom FROM edges');
+/* -- q9 */
+SELECT * FROM pgr_degree(
+  $$SELECT id FROM edges$$,
+  $$SELECT id, in_edges, out_edges FROM vertices$$);
+/* -- q10 */
 SELECT * FROM pgr_degree(
   $$SELECT id FROM edges WHERE id < 17$$,
-  $$SELECT id, in_edges, out_edges
-    FROM pgr_extractVertices('SELECT id, geom FROM edges')$$,
+  $$SELECT id, in_edges, out_edges FROM vertices$$,
   dryrun => true);
-/* -- q4 */
+/* -- q11 */
