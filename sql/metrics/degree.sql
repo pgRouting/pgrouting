@@ -42,6 +42,7 @@ DECLARE
   has_out_edges BOOLEAN := TRUE;
   eids TEXT;
   query TEXT;
+
   sqlhint TEXT;
 
 BEGIN
@@ -64,6 +65,7 @@ BEGIN
   IF NOT has_in_edges AND NOT has_out_edges THEN
       RAISE EXCEPTION 'column "in_edges" does not exist' USING HINT = vertices_sql, ERRCODE = 42703;
   END IF;
+
 
   IF has_in_edges THEN
     eids = $$coalesce(in_edges::BIGINT[], '{}'::BIGINT[])$$;
@@ -105,11 +107,11 @@ BEGIN
 
     totals AS (
       SELECT v.id, count(*)
-      FROM g_vertices AS v
-      JOIN g_edges AS e ON (e.id = eid) GROUP BY v.id
+      FROM g_vertices v
+      JOIN g_edges e ON (v.eid = e.id) GROUP BY v.id
     )
 
-    SELECT id::BIGINT, coalesce(count, 0)::BIGINT FROM all_vertices LEFT JOIN totals USING (id)
+    SELECT id::BIGINT, count::BIGINT FROM all_vertices JOIN totals USING (id)
     $q$, eids);
 
   IF dryrun THEN
@@ -122,12 +124,93 @@ END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
+
+-- COMMENTS
 COMMENT ON FUNCTION pgr_degree(TEXT, TEXT, BOOLEAN)
 IS 'pgr_degree
 - PROPOSED
 - Parameters
 - Edges SQL with columns: id
 - Vertices SQL with columns: id, in_edges, out_edges
+- Documentation:
+- ${PROJECT_DOC_LINK}/pgr_degree.html
+';
+
+--v3.8
+CREATE FUNCTION pgr_degree(
+  TEXT,  -- Edges SQL
+
+  dryrun BOOLEAN DEFAULT false,
+
+  OUT node BIGINT,
+  OUT degree BIGINT
+)
+RETURNS SETOF RECORD AS
+$BODY$
+DECLARE
+  edges_sql TEXT;
+  has_id BOOLEAN;
+  has_source BOOLEAN;
+  has_target BOOLEAN;
+  eids TEXT;
+  query TEXT;
+
+  sqlhint TEXT;
+
+BEGIN
+
+  -- Verify the data is complete
+  BEGIN
+    edges_sql := _pgr_checkQuery($1);
+    has_id :=  _pgr_checkColumn(edges_sql, 'id', 'ANY-INTEGER', dryrun => $2);
+    has_source :=  _pgr_checkColumn(edges_sql, 'source', 'ANY-INTEGER', dryrun => $2);
+    has_target :=  _pgr_checkColumn(edges_sql, 'target', 'ANY-INTEGER', dryrun => $2);
+    EXCEPTION WHEN OTHERS THEN
+      GET STACKED DIAGNOSTICS sqlhint = PG_EXCEPTION_HINT;
+      RAISE EXCEPTION '%', SQLERRM USING HINT = sqlhint, ERRCODE = SQLSTATE;
+  END;
+
+  query := format($q$
+
+    WITH
+
+    -- a sub set of edges of the graph goes here
+    g_edges AS (
+      %1$s
+    ),
+
+    -- sub set of vertices of the graph goes here
+    g_vertices AS (
+      SELECT source, id FROM g_edges
+      UNION ALL
+      SELECT target, id FROM g_edges
+    ),
+
+    totals AS (
+      SELECT source AS node, count(*) AS degree
+      FROM g_vertices
+      GROUP BY node
+    )
+
+    SELECT node::BIGINT, degree::BIGINT
+    FROM totals
+    $q$, edges_sql);
+
+  IF dryrun THEN
+    RAISE NOTICE '%', query || ';';
+  ELSE
+    RETURN QUERY EXECUTE query;
+  END IF;
+
+END;
+$BODY$
+LANGUAGE plpgsql VOLATILE STRICT;
+
+COMMENT ON FUNCTION pgr_degree(TEXT, BOOLEAN)
+IS 'pgr_degree
+- PROPOSED
+- Parameters
+- Edges SQL with columns: id
 - Documentation:
 - ${PROJECT_DOC_LINK}/pgr_degree.html
 ';
