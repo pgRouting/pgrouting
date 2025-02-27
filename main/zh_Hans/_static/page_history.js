@@ -1,7 +1,8 @@
-function createInfo(file, newat, altnames = '') {
+function createInfo(file, newat, altnames = '', removedat = '') {
     this.file = file;
     this.newat = newat;
     this.altnames = altnames;
+    this.removedat = removedat;
 }
 
 const versionsArr = ['3.8','3.7', '3.6', '3.5', '3.4', '3.3', '3.2', '3.1', '3.0'];
@@ -18,7 +19,7 @@ var newpages = [
 
     {v: '3.4', pages: ['TRSP-family', 'pgr_withPointsVia', 'pgr_trsp_withPoints', 'pgr_trspVia_withPoints',
             'pgr_trspVia', 'pgr_hawickCircuits', 'pgr_findCloseEdges', 'pgr_cuthillMckeeOrdering', 'ordering-family',
-            'migration']},
+            'migration', 'pgr_degree']},
 
     {v: '3.3', pages: ['withPoints-category', 'via-category', 'reference', 'pgr_edgeColoring', 'DFS-category',
         'BFS-category']},
@@ -46,276 +47,219 @@ var newpages = [
 
 var filesArr = [
 
+    new createInfo('spanningTree-category', '3.0', [
+        { v: '3.7', n: 'spanningTree-family'},
+    ]),
+
+    /* Documentation from version 2.3 */
     new createInfo('TSP-family', '2.3', [
-        { v: '2.3', n: 'tsp', d: 'tsp'},
+        { v: '2.3', n: 'src/tsp/doc/tsp', d: 'tsp'},
     ]),
+
     new createInfo('pgr_withPointsCostMatrix', '2.3', [
-        { v: '2.3', n: 'pgr_withPointsCostMatrix', d: 'costMatrix'},
+        { v: '2.3', n: 'src/costMatrix/doc/pgr_withPointsCostMatrix'},
     ]),
+
     new createInfo('pgr_maxCardinalityMatch', '2.3', [
-        { v: '2.3', n: 'pgr_maximumCardinalityMatching', d: 'max_flow'},
-        { v: '2.4', n: 'pgr_maximumCardinalityMatching', d: ''},
+        { v: '2.3', n: 'src/max_flow/doc/pgr_maximumCardinalityMatching'},
+        { v: '2.4', n: 'pgr_maximumCardinalityMatching'},
     ]),
     new createInfo('pgr_pushRelabel', '2.3', [
-        { v: '2.3', n: 'pgr_maxFlowPushRelabel', d: 'max_flow'},
-        { v: '2.4', n: 'pgr_maxFlowPushRelabel', d: ''},
+        { v: '2.3', n: 'src/max_flow/doc/pgr_maxFlowPushRelabel'},
+        { v: '2.4', n: 'pgr_maxFlowPushRelabel'},
     ]),
     new createInfo('pgr_edmondsKarp', '2.3', [
-        { v: '2.3', n: 'pgr_maxFlowEdmondsKarp', d: 'max_flow'},
-        { v: '2.4', n: 'pgr_maxFlowEdmondsKarp', d: ''},
+        { v: '2.3', n: 'src/max_flow/doc/pgr_maxFlowEdmondsKarp'},
+        { v: '2.4', n: 'pgr_maxFlowEdmondsKarp'},
     ]),
     new createInfo('pgr_boykovKolmogorov', '2.3', [
-        { v: '2.3', n: 'pgr_maxFlowBoykovKolmogorov', d: 'max_flow'},
-        { v: '2.4', n: 'pgr_maxFlowBoykovKolmogorov', d: ''},
+        { v: '2.3', n: 'src/max_flow/doc/pgr_maxFlowBoykovKolmogorov'},
+        { v: '2.4', n: 'pgr_maxFlowBoykovKolmogorov'},
     ]),
     new createInfo('pgr_TSPeuclidean', '2.3', [
-        { v: '2.3', n: 'pgr_eucledianTSP', d: 'tsp'},
-        { v: '2.4', n: 'pgr_eucledianTSP', d: ''},
-        { v: '2.5', n: 'pgr_eucledianTSP', d: ''},
-        { v: '2.6', n: 'pgr_eucledianTSP', d: ''},
+        { v: '2.3', n: 'src/tsp/doc/pgr_eucledianTSP'},
+        { v: '2.6', n: 'pgr_eucledianTSP'},
     ]),
     new createInfo('pgr_edgeDisjointPaths', '2.3', [
-        { v: '2.3', n: 'pgr_edgeDisjointPaths', d: 'max_flow'},
+        { v: '2.3', n: 'src/max_flow/doc/pgr_edgeDisjointPaths'},
     ]),
     new createInfo('pgr_dijkstraCostMatrix', '2.3', [
-        { v: '2.3', n: 'pgr_dijkstraCostMatrix', d: 'costMatrix'},
+        { v: '2.3', n: 'src/costMatrix/doc/pgr_dijkstraCostMatrix'},
     ]),
     new createInfo('pgr_contraction', '2.3', [
-        { v: '2.3', n: 'pgr_contractGraph', d: 'contraction'},
-        { v: '2.4', n: 'pgr_contractGraph', d: ''},
-        { v: '2.5', n: 'pgr_contractGraph', d: ''},
-        { v: '2.6', n: 'pgr_contractGraph', d: ''},
+        { v: '2.3', n: 'src/contraction/doc/pgr_contractGraph'},
+        { v: '2.6', n: 'pgr_contractGraph'},
     ]),
     new createInfo('flow-family', '2.3', [
-        { v: '2.3', n: 'maxFlow', d: 'max_flow'},
+        { v: '2.3', n: 'src/max_flow/doc/maxFlow'},
+    ]),
+
+    /* Documentation from version 2.2 */
+    new createInfo('withPoints-family', '2.2', [
+        { v: '2.3', n: 'src/withPoints/doc/withPoints'},
     ]),
     new createInfo('withPoints-family', '2.2', [
-        { v: '2.2', n: 'withPoints', d: 'withPoints'},
-        { v: '2.3', n: 'withPoints', d: 'withPoints'},
-    ]),
-    new createInfo('withPoints-family', '2.2', [
-        { v: '2.2', n: 'withPoints', d: 'withPoints'},
-        { v: '2.3', n: 'withPoints', d: 'withPoints'},
+        { v: '2.3', n: 'src/withPoints/doc/withPoints'},
     ]),
     new createInfo('experimental', '2.2', [
-        { v: '2.2', n: 'src/proposed', d: ''},
-        { v: '2.3', n: 'src/proposed', d: ''},
-        { v: '2.4', n: 'proposed', d: ''},
-        { v: '2.5', n: 'proposed', d: ''},
-        { v: '2.6', n: 'proposed', d: ''},
+        { v: '2.2', n: 'src/proposed'},
+        { v: '2.3', n: 'src/proposed'},
+        { v: '2.4', n: 'proposed'},
+        { v: '2.5', n: 'proposed'},
+        { v: '2.6', n: 'proposed'},
     ]),
     new createInfo('proposed', '2.2', [
-        { v: '2.2', n: 'src/proposed', d: ''},
-        { v: '2.3', n: 'src/proposed', d: ''},
+        { v: '2.2', n: 'src/proposed'},
+        { v: '2.3', n: 'src/proposed'},
     ]),
     new createInfo('pgr_withPointsKSP', '2.2', [
-        { v: '2.2', n: 'pgr_withPointsKSP', d: 'withPoints'},
-        { v: '2.3', n: 'pgr_withPointsKSP', d: 'withPoints'},
+        { v: '2.3', n: 'src/withPoints/doc/pgr_withPointsKSP'},
     ]),
     new createInfo('pgr_withPoints', '2.2', [
-        { v: '2.2', n: 'pgr_withPoints', d: 'withPoints'},
-        { v: '2.3', n: 'pgr_withPoints', d: 'withPoints'},
+        { v: '2.3', n: 'src/withPoints/doc/pgr_withPoints'},
     ]),
     new createInfo('pgr_withPointsDD', '2.2', [
-        { v: '2.2', n: 'pgr_withPointsDD', d: 'withPoints'},
-        { v: '2.3', n: 'pgr_withPointsDD', d: 'withPoints'},
+        { v: '2.3', n: 'src/withPoints/doc/pgr_withPointsDD'},
     ]),
     new createInfo('pgr_withPointsCost', '2.2', [
-        { v: '2.2', n: 'pgr_withPointsCost', d: 'withPoints'},
-        { v: '2.3', n: 'pgr_withPointsCost', d: 'withPoints'},
+        { v: '2.3', n: 'src/withPoints/doc/pgr_withPointsCost'},
     ]),
     new createInfo('pgr_withPointsCost', '2.2', [
-        { v: '2.2', n: 'pgr_withPointsCost', d: 'withPoints'},
-        { v: '2.3', n: 'pgr_withPointsCost', d: 'withPoints'},
+        { v: '2.3', n: 'src/withPoints/doc/pgr_withPointsCost'},
     ]),
     new createInfo('pgr_dijkstraVia', '2.2', [
-        { v: '2.2', n: 'pgr_dijkstraVia', d: 'dijkstra'},
-        { v: '2.3', n: 'pgr_dijkstraVia', d: 'dijkstra'},
+        { v: '2.3', n: 'src/dijkstra/doc/pgr_dijkstraVia'},
     ]),
     new createInfo('pgr_dijkstraCost', '2.2', [
-        { v: '2.2', n: 'pgr_dijkstraCost', d: 'dijkstra'},
-        { v: '2.3', n: 'pgr_dijkstraCost', d: 'dijkstra'},
+        { v: '2.3', n: 'src/dijkstra/doc/pgr_dijkstraCost'},
     ]),
     new createInfo('dijkstra-family', '2.2', [
-        { v: '2.2', n: 'dijkstra', d: 'dijkstra'},
-        { v: '2.3', n: 'dijkstra', d: 'dijkstra'},
+        { v: '2.3', n: 'src/dijkstra/doc/dijkstra'},
     ]),
     new createInfo('contraction-family', '2.2', [
-        { v: '2.2', n: 'contraction', d: 'contraction'},
-        { v: '2.3', n: 'contraction', d: 'contraction'},
+        { v: '2.3', n: 'src/contraction/doc/contraction'},
     ]),
     new createInfo('allpairs-family', '2.2', [
-        { v: '2.2', n: 'allpairs', d: 'allpairs'},
-        { v: '2.3', n: 'allpairs', d: 'allpairs'},
+        { v: '2.3', n: 'src/allpairs/doc/allpairs'},
     ]),
+
+    /* Documentation from version 2.1 */
     new createInfo('pgr_pickDeliverEuclidean', '2.1', [
-        { v: '2.1', n: 'index', d: 'vrppdtw'},
-        { v: '2.2', n: 'index', d: 'vrppdtw'},
-        { v: '2.3', n: 'pgr_gsoc_vrppdtw', d: 'vrppdtw'},
-        { v: '2.4', n: 'pgr_gsoc_vrppdtw', d: ''},
-        { v: '2.5', n: 'pgr_gsoc_vrppdtw', d: ''},
-        { v: '2.6', n: 'pgr_gsoc_vrppdtw', d: ''},
+        { v: '2.2', n: 'src/vrppdtw/doc/index'},
+        { v: '2.3', n: 'src/vrppdtw/doc/pgr_gsoc_vrppdtw'},
+        { v: '2.6', n: 'pgr_gsoc_vrppdtw'},
     ]),
     new createInfo('pgr_vrpOneDepot', '2.1', [
-        { v: '2.1', n: 'index', d: 'vrp_basic'},
-        { v: '2.2', n: 'pgr_vrpOneDepot', d: 'vrp_basic'},
-        { v: '2.3', n: 'pgr_vrpOneDepot', d: 'vrp_basic'},
+        { v: '2.1', n: 'src/vrp_basic/doc/index'},
+        { v: '2.3', n: 'src/vrp_basic/doc/pgr_vrpOneDepot'},
     ]),
+
+    /* Documentation from version 2.0 */
     new createInfo('pgr_version', '2.0', [
-        { v: '2.0', n: 'utilities/version', d: 'common'},
-        { v: '2.1', n: 'utilities/version', d: 'common'},
-        { v: '2.2', n: 'pgr_version', d: 'common'},
-        { v: '2.3', n: 'pgr_version', d: 'common'},
+        { v: '2.1', n: 'src/common/doc/utilities/version'},
+        { v: '2.3', n: 'src/common/doc/pgr_version'},
     ]),
     new createInfo('routingFunctions', '2.0', [
-        { v: '2.0', n: 'src/index', d: ''},
-        { v: '2.1', n: 'src/index', d: ''},
-        { v: '2.2', n: 'src/routingFunctions', d: ''},
-        { v: '2.3', n: 'src/routingFunctions', d: ''},
+        { v: '2.1', n: 'src/index'},
+        { v: '2.3', n: 'src/routingFunctions'},
     ]),
     new createInfo('index', '2.0', [
-        { v: '2.0', n: 'index', d: ''},
-        { v: '2.1', n: 'index', d: ''},
-        { v: '2.2', n: 'index', d: ''},
-        { v: '2.3', n: 'index', d: ''},
+        { v: '2.3', n: 'doc/index'},
     ]),
     new createInfo('pgr_TSP', '2.0', [
-        { v: '2.0', n: 'index', d: 'tsp'},
-        { v: '2.1', n: 'index', d: 'tsp'},
-        { v: '2.2', n: 'pgr_tsp', d: 'tsp'},
-        { v: '2.3', n: 'pgr_tsp', d: 'tsp'},
+        { v: '2.1', n: 'src/tsp/doc/index'},
+        { v: '2.3', n: 'src/tsp/doc/pgr_tsp'},
     ]),
     new createInfo('pgr_trsp', '2.0', [
-        { v: '2.0', n: 'index', d: 'trsp'},
-        { v: '2.1', n: 'index', d: 'trsp'},
-        { v: '2.2', n: 'pgr_trsp', d: 'trsp'},
-        { v: '2.3', n: 'pgr_trsp', d: 'trsp'}
+        { v: '2.1', n: 'src/trsp/doc/index'},
+        { v: '2.3', n: 'src/trsp/doc/pgr_trsp'}
     ]),
     new createInfo('pgr_KSP', '2.0', [
-        { v: '2.0', n: 'index', d: 'ksp'},
-        { v: '2.1', n: 'index', d: 'ksp'},
-        { v: '2.2', n: 'pgr_ksp', d: 'ksp'},
-        { v: '2.3', n: 'pgr_ksp', d: 'ksp'},
+        { v: '2.0', n: 'src/ksp/doc/index'},
+        { v: '2.1', n: 'src/ksp/doc/ksp_v3'},
+        { v: '2.3', n: 'src/ksp/doc/pgr_ksp'},
     ]),
     new createInfo('pgr_dijkstra', '2.0', [
-        { v: '2.0', n: 'index', d: 'dijkstra'},
-        { v: '2.1', n: 'index', d: 'dijkstra'},
-        { v: '2.2', n: 'pgr_dijkstra', d: 'dijkstra'},
-        { v: '2.3', n: 'pgr_dijkstra', d: 'dijkstra'}
+        { v: '2.0', n: 'src/dijkstra/doc/index'},
+        { v: '2.1', n: 'src/dijkstra/doc/dijkstra_v3'},
+        { v: '2.3', n: 'src/dijkstra/doc/pgr_dijkstra'}
     ]),
     new createInfo('pgr_bdDijkstra', '2.0', [
-        { v: '2.0', n: 'index', d: 'bd_dijkstra'},
-        { v: '2.1', n: 'index', d: 'bd_dijkstra'},
-        { v: '2.2', n: 'pgr_bdDijkstra', d: 'bd_dijkstra'},
-        { v: '2.3', n: 'pgr_bdDijkstra', d: 'bd_dijkstra'}
+        { v: '2.1', n: 'src/bd_dijkstra/doc/index'},
+        { v: '2.3', n: 'src/bd_dijkstra/doc/pgr_bdDijkstra'}
     ]),
     new createInfo('pgr_bdAstar', '2.0', [
-        { v: '2.0', n: 'index', d: 'bd_astar'},
-        { v: '2.1', n: 'index', d: 'bd_astar'},
-        { v: '2.2', n: 'pgr_bdAstar', d: 'bd_astar'},
-        { v: '2.3', n: 'pgr_bdAstar', d: 'bd_astar'}
+        { v: '2.1', n: 'src/bd_astar/doc/index'},
+        { v: '2.3', n: 'src/bd_astar/doc/pgr_bdAstar'}
     ]),
     new createInfo('pgr_aStar', '2.0', [
-        { v: '2.0', n: 'index', d: 'astar'},
-        { v: '2.1', n: 'index', d: 'astar'},
-        { v: '2.2', n: 'pgr_astar', d: 'astar'},
-        { v: '2.3', n: 'pgr_astar', d: 'astar'},
+        { v: '2.1', n: 'src/astar/doc/index'},
+        { v: '2.3', n: 'src/astar/doc/pgr_astar'},
     ]),
     new createInfo('pgr_floydWarshall', '2.0', [
-        { v: '2.0', n: 'index', d: 'apsp_warshall'},
-        { v: '2.1', n: 'index', d: 'apsp_warshall'},
-        { v: '2.2', n: 'pgr_floydWarshall', d: 'allpairs'},
-        { v: '2.3', n: 'pgr_floydWarshall', d: 'allpairs'}
+        { v: '2.1', n: 'src/apsp_warshall/doc/index'},
+        { v: '2.3', n: 'src/allpairs/doc/pgr_floydWarshall'}
     ]),
     new createInfo('pgr_johnson', '2.0', [
-        { v: '2.0', n: 'index', d: 'apsp_johnson'},
-        { v: '2.1', n: 'index', d: 'apsp_johnson'},
-        { v: '2.2', n: 'pgr_johnson', d: 'allpairs'},
-        { v: '2.3', n: 'pgr_johnson', d: 'allpairs'}
+        { v: '2.1', n: 'src/apsp_johnson/doc/index'},
+        { v: '2.3', n: 'src/allpairs/doc/pgr_johnson'}
     ]),
     new createInfo('pgr_nodeNetwork', '2.0', [
-        { v: '2.0', n: 'functions/node_network', d: 'common'},
-        { v: '2.1', n: 'functions/node_network', d: 'common'},
-        { v: '2.2', n: 'pgr_nodeNetwork', d: 'topology'},
-        { v: '2.3', n: 'pgr_nodeNetwork', d: 'topology'},
+        { v: '2.1', n: 'src/common/doc/functions/node_network'},
+        { v: '2.3', n: 'src/topology/doc/pgr_nodeNetwork'},
     ]),
     new createInfo('topology-functions', '2.0', [
-        { v: '2.0', n: 'functions/index', d: 'common'},
-        { v: '2.1', n: 'functions/index', d: 'common'},
-        { v: '2.2', n: 'topology', d: 'topology'},
-        { v: '2.3', n: 'topology', d: 'topology'},
+        { v: '2.1', n: 'src/common/doc/functions/index'},
+        { v: '2.3', n: 'src/topology/doc/topology'},
     ]),
     new createInfo('pgr_createVerticesTable', '2.0', [
-        { v: '2.0', n: 'functions/create_vert_table', d: 'common'},
-        { v: '2.1', n: 'functions/create_vert_table', d: 'common'},
-        { v: '2.2', n: 'pgr_createVerticesTable', d: 'topology'},
-        { v: '2.3', n: 'pgr_createVerticesTable', d: 'topology'},
+        { v: '2.1', n: 'src/common/doc/functions/create_vert_table'},
+        { v: '2.3', n: 'src/topology/doc/pgr_createVerticesTable'},
     ]),
     new createInfo('pgr_createTopology', '2.0', [
-        { v: '2.0', n: 'functions/create_topology', d: 'common'},
-        { v: '2.1', n: 'functions/create_topology', d: 'common'},
-        { v: '2.2', n: 'pgr_createTopology', d: 'topology'},
-        { v: '2.3', n: 'pgr_createTopology', d: 'topology'},
+        { v: '2.1', n: 'src/common/doc/functions/create_topology'},
+        { v: '2.3', n: 'src/topology/doc/pgr_createTopology'},
     ]),
     new createInfo('pgr_analyzeOneWay', '2.0', [
-        { v: '2.0', n: 'functions/analyze_oneway', d: 'common'},
-        { v: '2.1', n: 'functions/analyze_oneway', d: 'common'},
-        { v: '2.2', n: 'pgr_analyzeOneWay', d: 'topology'},
-        { v: '2.3', n: 'pgr_analyzeOneWay', d: 'topology'},
+        { v: '2.1', n: 'src/common/doc/functions/analyze_oneway'},
+        { v: '2.3', n: 'src/topology/doc/pgr_analyzeOneWay'},
     ]),
     new createInfo('pgr_analyzeGraph', '2.0', [
-        { v: '2.0', n: 'functions/analyze_graph', d: 'common'},
-        { v: '2.1', n: 'functions/analyze_graph', d: 'common'},
-        { v: '2.2', n: 'pgr_analyzeGraph', d: 'topology'},
-        { v: '2.3', n: 'pgr_analyzeGraph', d: 'topology'},
+        { v: '2.1', n: 'src/common/doc/functions/analyze_graph'},
+        { v: '2.3', n: 'src/topology/doc/pgr_analyzeGraph'},
     ]),
     new createInfo('pgRouting-concepts', '2.0', [
-        { v: '2.0', n: 'doc/src/tutorial/tutorial', d: ''},
-        { v: '2.1', n: 'doc/src/tutorial/tutorial', d: ''},
-        { v: '2.2', n: 'doc/src/tutorial/tutorial', d: ''},
-        { v: '2.3', n: 'doc/src/tutorial/tutorial', d: ''},
+        { v: '2.3', n: 'doc/src/tutorial/tutorial'},
     ]),
     new createInfo('support', '2.0', [
-        { v: '2.0', n: 'doc/src/introduction/support', d: ''},
-        { v: '2.1', n: 'doc/src/introduction/support', d: ''},
-        { v: '2.2', n: 'doc/src/introduction/support', d: ''},
-        { v: '2.3', n: 'doc/src/introduction/support', d: ''},
+        { v: '2.3', n: 'doc/src/introduction/support'},
     ]),
     new createInfo('pgRouting-introduction', '2.0', [
-        { v: '2.0', n: 'doc/src/introduction/introduction', d: ''},
-        { v: '2.1', n: 'doc/src/introduction/introduction', d: ''},
-        { v: '2.2', n: 'doc/src/introduction/introduction', d: ''},
-        { v: '2.3', n: 'doc/src/introduction/introduction', d: ''},
+        { v: '2.3', n: 'doc/src/introduction/introduction'},
     ]),
     new createInfo('pgRouting-installation', '2.0', [
-        { v: '2.0', n: 'doc/src/installation/index', d: ''},
-        { v: '2.1', n: 'doc/src/installation/index', d: ''},
-        { v: '2.2', n: 'doc/src/installation/installation', d: ''},
-        { v: '2.3', n: 'doc/src/installation/installation', d: ''},
+        { v: '2.1', n: 'doc/src/installation/index'},
+        { v: '2.3', n: 'doc/src/installation/installation'},
     ]),
     new createInfo('sampledata', '2.0', [
-        { v: '2.0', n: 'doc/src/developer/sampledata', d: ''},
-        { v: '2.1', n: 'doc/src/developer/sampledata', d: ''},
-        { v: '2.2', n: 'doc/src/developer/sampledata', d: ''},
-        { v: '2.3', n: 'doc/src/developer/sampledata', d: ''},
+        { v: '2.3', n: 'doc/src/developer/sampledata'},
     ]),
     new createInfo('release_notes', '2.0', [
-        { v: '2.0', n: 'doc/src/changelog/index', d: ''},
-        { v: '2.1', n: 'doc/src/changelog/index', d: ''},
-        { v: '2.2', n: 'doc/src/changelog/index', d: ''},
-        { v: '2.3', n: 'doc/src/changelog/release_notes', d: ''},
+        { v: '2.2', n: 'doc/src/changelog/index'},
+        { v: '2.3', n: 'doc/src/changelog/release_notes'},
+    ]),
+    new createInfo('drivingDistance-category', '2.0', [
+        { v: '2.1', n: 'src/driving_distance/doc/index'},
+        { v: '2.3', n: 'src/driving_distance/doc/drivingDistance'},
     ]),
     new createInfo('pgr_drivingDistance', '2.0', [
-        { v: '2.0', n: 'dd_driving_distance', d: 'driving_distance'},
-        { v: '2.1', n: 'dd_driving_distance_v3', d: 'driving_distance'},
-        { v: '2.2', n: 'pgr_drivingDistance', d: 'driving_distance'},
-        { v: '2.3', n: 'pgr_drivingDistance', d: 'driving_distance'}
+        { v: '2.0', n: 'src/driving_distance/doc/dd_driving_distance'},
+        { v: '2.1', n: 'src/driving_distance/doc/dd_driving_distance_v3'},
+        { v: '2.3', n: 'src/driving_distance/doc/pgr_drivingDistance'}
     ]),
     new createInfo('pgr_alphaShape', '2.0', [
-        { v: '2.0', n: 'dd_alphashape', d: 'driving_distance'},
-        { v: '2.1', n: 'dd_alphashape', d: 'driving_distance'},
-        { v: '2.2', n: 'pgr_alphaShape', d: 'alpha_shape'},
-        { v: '2.3', n: 'pgr_alphaShape', d: 'alpha_shape'}
+        { v: '2.1', n: 'src/driving_distance/doc/dd_alphashape'},
+        { v: '2.3', n: 'src/alpha_shape/doc/pgr_alphaShape'}
     ]),
 
 ];
@@ -326,11 +270,19 @@ function get_titles(data, k) {
     }
     return '';
 }
-function get_vdata(data, v) {
+
+function get_vdata(data, v, file, lang) {
+    let info = '';
+    let link = '';
     for (var i = 0; i < data.length; i++) {
-        if (data[i].v == v) { return data[i]; }
+        if (v <= data[i].v) { info = data[i]; break; }
     }
-    return '';
+    if (info === '') {
+        link = `${lang}/${file}.html">${v}</a>`;
+    } else {
+        link = `${lang}/${info.n}.html">${v}</a>`;
+    }
+    return link;
 }
 
 function get(name) {
@@ -362,12 +314,13 @@ function get_history(name, lang) {
         validlang = lang;
 
         if (versionsArr[i] < data.newat) break;
+        if (data.removedat != '' && versionsArr[i] > data.newat) break;
 
         /* for zh-Hans non translated versions use english */
-        validlang = (lang == 'zh-Hans' && versionsArr[i] == '3.7')? lang : 'en';
+        validlang = (lang == 'zh-Hans' && versionsArr[i] >= '3.7')? 'zh_Hans' : 'en';
 
-        var link = home + versionsArr[i] + '/';
-        link += validlang + '/' + data.file + '.html">' + versionsArr[i] + '</a>';
+        let link = `${home}${versionsArr[i]}/`
+        link += get_vdata(data.altnames, versionsArr[i], data.file, validlang);
         if (versionsArr[i] == latest) result += '(' + link + ') ';
         else result += link + ' ';
     }
@@ -385,29 +338,7 @@ function get_history(name, lang) {
 
             if (data.newat > unsuportedArr[i]) break;
             var link = home + unsuportedArr[i] + '/';
-            switch(unsuportedArr[i]) {
-                case '2.4':
-                    var info = get_vdata(data.altnames, unsuportedArr[i]);
-                    if (info === '') {
-                        link += validlang + '/' + data.file + '.html">' + unsuportedArr[i] + '</a>';
-                    } else {
-                        link += validlang + '/' + info.n + '.html">' + unsuportedArr[i] + '</a>';
-                    }
-                    break;
-                case '2.3':
-                case '2.2':
-                case '2.1':
-                case '2.0':
-                    var info = get_vdata(data.altnames, unsuportedArr[i]);
-                    if (info.d == '') {
-                        link += validlang + '/' + info.n + '.html">' + unsuportedArr[i] + '</a>';
-                    } else {
-                        link += validlang + '/src/' + info.d + '/doc/' + info.n + '.html">' + unsuportedArr[i] + '</a>';
-                    }
-                    break;
-                default:
-                    link += validlang + '/' + data.file + '.html">' + unsuportedArr[i] + '</a>';
-            }
+            link += get_vdata(data.altnames, unsuportedArr[i], data.file, validlang);
             result += link + ' ';
         }
     }
