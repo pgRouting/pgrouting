@@ -16,7 +16,7 @@
 ``pgr_hawickCircuits`` - Experimental
 ===============================================================================
 
-``pgr_hawickCircuits`` — Returns the list of cirucits using hawick circuits algorithm.
+``pgr_hawickCircuits`` — Returns the list of ciruits using hawick circuits algorithm.
 
 .. include:: experimental.rst
    :start-after: warning-begin
