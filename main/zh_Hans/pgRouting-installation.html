@@ -7,15 +7,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>安装 &#8212; pgRouting Manual (3.7)</title>
+    <title>安装 &#8212; pgRouting Manual (3.8)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=7297b0ac"></script>
+    <script src="_static/documentation_options.js?v=b671dda4"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=8578d92c"></script>
+    <script src="_static/page_history.js?v=efc08142"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -44,7 +44,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.7.3</b></span>
+        <span class="navbar-text pull-left"><b>v3.8</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -209,8 +209,8 @@
 <section id="short-version">
 <span id="install-short"></span><h2>简洁版本<a class="headerlink" href="#short-version" title="Link to this heading">¶</a></h2>
 <p>解压 tar 压缩文件</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="n">xvfz</span> <span class="n">pgrouting</span><span class="o">-</span><span class="mf">3.7.3</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
-<span class="n">cd</span> <span class="n">pgrouting</span><span class="o">-</span><span class="mf">3.7.3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="n">xvfz</span> <span class="n">pgrouting</span><span class="o">-</span><span class="mf">3.8.0</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">cd</span> <span class="n">pgrouting</span><span class="o">-</span><span class="mf">3.8.0</span>
 </pre></div>
 </div>
 <p>假设您的搜索路径中有所有依赖项，则进行编译：</p>
@@ -232,13 +232,13 @@
 <span id="install-get-sources"></span><h2>获取来源<a class="headerlink" href="#get-the-sources" title="Link to this heading">¶</a></h2>
 <p>pgRouting 最新版本可以在 <a class="reference external" href="https://github.com/pgRouting/pgrouting/releases/latest">https://github.com/pgRouting/pgrouting/releases/latest</a> 中找到</p>
 <p>要下载此版本：</p>
-<pre class="literal-block">wget -O pgrouting-3.7.3.tar.gz    <a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/v3.7.3.tar.gz">https://github.com/pgRouting/pgrouting/archive/v3.7.3.tar.gz</a></pre>
+<pre class="literal-block">wget -O pgrouting-3.8.0.tar.gz    <a class="reference external" href="https://github.com/pgRouting/pgrouting/archive/v3.8.0.tar.gz">https://github.com/pgRouting/pgrouting/archive/v3.8.0.tar.gz</a></pre>
 <p>转到 <a class="reference internal" href="#install-short"><span class="std std-ref">简洁版本</span></a> 以获取有关提取 tar 包和编译 pgRouting 的更多说明。</p>
 <p class="rubric">git</p>
 <p>下载存储库</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pgRouting</span><span class="o">/</span><span class="n">pgrouting</span><span class="o">.</span><span class="n">git</span>
 <span class="n">cd</span> <span class="n">pgrouting</span>
-<span class="n">git</span> <span class="n">checkout</span> <span class="n">v3</span><span class="mf">.7.3</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">v3</span><span class="mf">.8.0</span>
 </pre></div>
 </div>
 <p>请参阅 <a class="reference internal" href="#install-short"><span class="std std-ref">简洁版本</span></a> 获取有关编译 pgRouting 的更多说明（从 GitHub 下载 pgRouting 存储库时不涉及 tar 文件）。</p>
@@ -257,9 +257,9 @@
 </pre></div>
 </div>
 <p class="rubric">升级数据库</p>
-<p>To upgrade pgRouting in the database to version 3.7.3 use the
+<p>To upgrade pgRouting in the database to version 3.8.0 use the
 following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="n">UPDATE</span> <span class="n">TO</span> <span class="s2">&quot;3.7.3&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="n">UPDATE</span> <span class="n">TO</span> <span class="s2">&quot;3.8.0&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>更多信息可以在 <a class="reference external" href="https://www.postgresql.org/docs/current/sql-createextension.html">https://www.postgresql.org/docs/current/sql-createextension.html</a> 中找到</p>
@@ -510,9 +510,9 @@ $ make install
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.7.3.<br/>
-      Last updated on 2月 06, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
+      Last updated on 2月 27, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
     </p>
   </div>
 </footer>

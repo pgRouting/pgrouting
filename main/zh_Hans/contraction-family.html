@@ -7,15 +7,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>收缩 - 函数族 &#8212; pgRouting Manual (3.7)</title>
+    <title>收缩 - 函数族 &#8212; pgRouting Manual (3.8)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
-    <script src="_static/documentation_options.js?v=7297b0ac"></script>
+    <script src="_static/documentation_options.js?v=b671dda4"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=8578d92c"></script>
+    <script src="_static/page_history.js?v=efc08142"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -45,7 +45,7 @@
 
         <a class="brand" href="index.html">
           pgRouting</a>
-        <span class="navbar-text pull-left"><b>v3.7.3</b></span>
+        <span class="navbar-text pull-left"><b>v3.8</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -307,7 +307,7 @@
 <li><p>绿色节点是 <a class="reference internal" href="#dead-end">死端</a> 节点</p></li>
 <li><p>蓝色节点具有无限数量的边。</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-ef5116d42636a1711444f79368304c1978068213.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-8ed0b09c6e24c97e35aad2640ef76bfac252287c.png" alt="graph G {
     u, v [shape=circle;style=filled;width=.4;color=deepskyblue];
     a, b [style=filled; color=green];
     G [shape=tripleoctagon;width=1.5;style=filled;
@@ -322,7 +322,7 @@
 <table class="docutils align-default" style="width: 80">
 <thead>
 <tr class="row-odd"><th class="head"><p>节点</p></th>
-<th class="head"><p>相邻节点</p></th>
+<th class="head"><p>Adjacent nodes</p></th>
 <th class="head"><p>相邻节点数</p></th>
 </tr>
 </thead>
@@ -344,7 +344,7 @@
 <li><p>绿色节点是 <a class="reference internal" href="#dead-end">死端</a> 节点</p></li>
 <li><p>蓝色节点具有无限数量的传入和/或传出边缘。</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-82723db0022a25b1a9ffd323d95d9daeda8a2c1f.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-36bee83d94ba6ffd9ac2c8f358ed567b6cdd8da4.png" alt="digraph G {
     u, v, w, x, y [shape=circle;style=filled;width=.4;color=deepskyblue];
     a, b, c, d, e [style=filled; color=green];
     G [shape=tripleoctagon;width=1.5;style=filled;
@@ -362,7 +362,7 @@
 <table class="docutils align-default" style="width: 80">
 <thead>
 <tr class="row-odd"><th class="head"><p>节点</p></th>
-<th class="head"><p>相邻节点</p></th>
+<th class="head"><p>Adjacent nodes</p></th>
 <th class="head"><p>相邻节点数</p></th>
 <th class="head"><p>传入边数</p></th>
 <th class="head"><p>传出边数</p></th>
@@ -420,7 +420,7 @@
 <section id="operation-dead-end-contraction">
 <h3>操作：死端收缩<a class="headerlink" href="#operation-dead-end-contraction" title="Link to this heading">¶</a></h3>
 <p>死端收缩将停止，直到不再有死端节点。 例如，从下图中，其中 <span class="math notranslate nohighlight">\(w\)</span> 是 <a class="reference internal" href="#dead-end">死端</a> 节点：</p>
-<div class="graphviz"><img src="_images/graphviz-8ef6dd10de3e2f48d63ff7a0851f401fe2c8a22a.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-60e2377d4a1b5e90d8f68bb7e7a09064059c6cd0.png" alt="digraph G {
     u, v [shape=circle;style=filled;width=.4;color=deepskyblue];
     w [style=filled; color=green];
     &quot;G&quot; [shape=tripleoctagon;style=filled;
@@ -431,7 +431,7 @@
     u -&gt; v -&gt; w;
 }" class="graphviz" /></div>
 <p>收缩 <span class="math notranslate nohighlight">\(w\)</span> 后，节点 <span class="math notranslate nohighlight">\(v\)</span> 现在是一个 <a class="reference internal" href="#dead-end">死端</a> 节点并且已收缩：</p>
-<div class="graphviz"><img src="_images/graphviz-44f751227801adfe2756a5066b83a8e932268d07.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-395fba476c7c800e52b207440e6081a31a9dbef7.png" alt="digraph G {
     u [shape=circle;style=filled;width=.4;color=deepskyblue];
     v [style=filled; color=green, label=&quot;v{w}&quot;];
     &quot;G&quot; [shape=tripleoctagon;style=filled;
@@ -442,7 +442,7 @@
     u -&gt; v;
 }" class="graphviz" /></div>
 <p>在收缩 <span class="math notranslate nohighlight">\(v\)</span> 之后，停止。节点 <span class="math notranslate nohighlight">\(u\)</span> 有已收缩节点的信息。</p>
-<div class="graphviz"><img src="_images/graphviz-1fdb5a4269dc3d5f14197ba41c61e8a1f3f2775f.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-cccf3d837e2395e416d0e7ddb01e41463b6abe42.png" alt="digraph G {
     u [style=filled; color=green, label=&quot;u{v,w}&quot;];
     &quot;G&quot; [shape=tripleoctagon;style=filled;
          color=deepskyblue; label = &quot;Rest of the Graph&quot;];
@@ -474,7 +474,7 @@
 <li><p>蓝色节点具有无限数量的传入和传出边缘。</p></li>
 </ul>
 <p class="rubric">无向</p>
-<div class="graphviz"><img src="_images/graphviz-2c64934e1318cf1b0fbb263edf75addebbeb6392.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-9872665dd650fbe4b56184b4e266e5e885f76331.png" alt="graph G {
     u, w [shape=circle;style=filled;width=.4;color=deepskyblue];
     v [style=filled; color=green];
     G [shape=tripleoctagon;width=1.5;style=filled;
@@ -487,7 +487,7 @@
 <table class="docutils align-default" style="width: 80">
 <thead>
 <tr class="row-odd"><th class="head"><p>节点</p></th>
-<th class="head"><p>相邻节点</p></th>
+<th class="head"><p>Adjacent nodes</p></th>
 <th class="head"><p>相邻节点数</p></th>
 </tr>
 </thead>
@@ -511,7 +511,7 @@
 </ul>
 </li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-a372f19fad77b867577e0b6450c882d1bbf72874.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-0da6d285bf608f2fff32cc1bdf6e36ad07471c0e.png" alt="digraph G {
     u, v, w, x, y, z [shape=circle;style=filled;width=.4;color=deepskyblue];
     a, b [style=filled; color=green];
     G [shape=tripleoctagon;width=1.5;style=filled;
@@ -527,7 +527,7 @@
 <table class="docutils align-default" style="width: 80">
 <thead>
 <tr class="row-odd"><th class="head"><p>节点</p></th>
-<th class="head"><p>相邻节点</p></th>
+<th class="head"><p>Adjacent nodes</p></th>
 <th class="head"><p>相邻节点数</p></th>
 <th class="head"><p>是对称的吗？</p></th>
 </tr>
@@ -555,7 +555,7 @@
 <section id="operation-linear-contraction">
 <h3>操作：线性收缩<a class="headerlink" href="#operation-linear-contraction" title="Link to this heading">¶</a></h3>
 <p>当不再有线性节点时，线性收缩将停止。 例如，在下图中，其中 <span class="math notranslate nohighlight">\(v\)</span> 和 <span class="math notranslate nohighlight">\(w\)</span> 是 <a class="reference internal" href="#linear">线性</a> 节点：</p>
-<div class="graphviz"><img src="_images/graphviz-865ef229717c7b64018fc9fcb65b4a6d2f2052f8.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-2d88b57dd1d5f0b63e43ffdfe4ae05ae0ac068c5.png" alt="digraph G {
     u, z [shape=circle;style=filled;color=deepskyblue];
     v, w [style=filled; color=green];
     &quot;G&quot; [shape=tripleoctagon; style=filled;
@@ -571,7 +571,7 @@
 <li><p>从图中删除边 <span class="math notranslate nohighlight">\(v \rightarrow w\)</span> 和 <span class="math notranslate nohighlight">\(w \rightarrow z\)</span>。</p></li>
 <li><p>插入一条新边 <span class="math notranslate nohighlight">\(v \rightarrow z\)</span>，以红色表示。</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-2bbe18fa4d3e404d80eb937b6eb2633639d591a7.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-daa8aad1710941b016da236c5d7f49e64bf04a5f.png" alt="digraph G {
     u, z [shape=circle;style=filled;color=deepskyblue];
     v [style=filled; color=green];
     &quot;G&quot; [shape=tripleoctagon; style=filled;
@@ -588,7 +588,7 @@
 <li><p>从图中删除边 <span class="math notranslate nohighlight">\(u \rightarrow v\)</span> 和 <span class="math notranslate nohighlight">\(v \rightarrow z\)</span>。</p></li>
 <li><p>插入一条新边 <span class="math notranslate nohighlight">\(u \rightarrow z\)</span>，以红色表示。</p></li>
 </ul>
-<div class="graphviz"><img src="_images/graphviz-a93daa3950f37f1d1d11eb7bfa4614514bc45fbb.png" alt="digraph G {
+<div class="graphviz"><img src="_images/graphviz-8b01d503d415bd6cb722eee0eb0e9f10e481f0b2.png" alt="digraph G {
     u, z [shape=circle;style=filled;color=deepskyblue];
     &quot;G&quot; [shape=tripleoctagon; style=filled;
          color=deepskyblue;label = &quot;Rest of the Graph&quot;];
@@ -1193,9 +1193,9 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.7.3.<br/>
-      Last updated on 2月 06, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
+      Last updated on 2月 27, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
     </p>
   </div>
 </footer>
