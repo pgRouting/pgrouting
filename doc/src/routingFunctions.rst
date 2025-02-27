@@ -126,9 +126,9 @@ Functions by categories
    :start-after: official-start
    :end-before: official-end
 
-:doc:`spanningTree-family`
+:doc:`spanningTree-category`
 
-.. include:: spanningTree-family.rst
+.. include:: spanningTree-category.rst
    :start-after: official-start
    :end-before: official-end
 
@@ -172,7 +172,7 @@ Functions by categories
     DFS-category
     drivingDistance-category
     KSP-category
-    spanningTree-family
+    spanningTree-category
     via-category
     VRP-category
     withPoints-category

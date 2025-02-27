@@ -55,7 +55,7 @@ forest.
 
 .. prim-description-start
 
-.. include:: spanningTree-family.rst
+.. include:: spanningTree-category.rst
    :start-after: spanntree_traits_start
    :end-before: spanntree_traits_end
 
@@ -78,7 +78,7 @@ Inner Queries
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`spanningTree-family`
+* :doc:`spanningTree-category`
 * Boost: `Prim's algorithm
   <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
 * Wikipedia: `Prim's algorithm
