@@ -272,15 +272,15 @@ function get_titles(data, k) {
 }
 
 function get_vdata(data, v, file, lang) {
-    info = '';
-    link = '';
+    let info = '';
+    let link = '';
     for (var i = 0; i < data.length; i++) {
         if (v <= data[i].v) { info = data[i]; break; }
     }
     if (info === '') {
-        link = lang + '/' + file + '.html">' + v + '</a>';
+        link = `${lang}/${file}.html">${v}</a>`;
     } else {
-        link = lang + '/' + info.n + '.html">' + v + '</a>';
+        link = `${lang}/${info.n}.html">${v}</a>`;
     }
     return link;
 }
@@ -319,7 +319,7 @@ function get_history(name, lang) {
         /* for zh-Hans non translated versions use english */
         validlang = (lang == 'zh-Hans' && versionsArr[i] >= '3.7')? 'zh_Hans' : 'en';
 
-        var link = home + versionsArr[i] + '/';
+        let link = `${home}${versionsArr[i]}/`
         link += get_vdata(data.altnames, versionsArr[i], data.file, validlang);
         if (versionsArr[i] == latest) result += '(' + link + ') ';
         else result += link + ' ';
