@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-23 10:17-0600\n"
+"POT-Creation-Date: 2025-02-27 16:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.16.0\n"
+"Generated-By: Babel 2.17.0\n"
 
 msgid "BFS - Category"
 msgstr ""
@@ -280,9 +280,6 @@ msgid ":ref:`genindex`"
 msgstr ""
 
 msgid ":ref:`search`"
-msgstr ""
-
-msgid "Boost Graph inside"
 msgstr ""
 
 msgid "DFS - Category"
@@ -1122,6 +1119,7 @@ msgstr ""
 msgid "``vehicle_seq``"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Sequential value starting from **1** for current vehicles. The "
 ":math:`n_{th}` vehicle in the solution."
@@ -1151,6 +1149,7 @@ msgstr ""
 msgid "INTEGER"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Sequential value starting from **1** for the stops made by the current "
 "vehicle. The :math:`m_{th}` stop of the current vehicle."
@@ -1579,6 +1578,7 @@ msgstr ""
 msgid ":math:`10 m/s`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`\\frac{1}{10m/s}`"
 msgstr ""
 
@@ -1591,6 +1591,7 @@ msgstr ""
 msgid ":math:`600 m/min`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`\\frac{1}{600m/min}`"
 msgstr ""
 
@@ -1606,6 +1607,7 @@ msgstr ""
 msgid ":math:`36 km/hr`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`\\frac{1}{36 km/hr}`"
 msgstr ""
 
@@ -1919,6 +1921,7 @@ msgstr ""
 msgid "DENSITY"
 msgstr ""
 
+#, python-brace-format
 msgid "is the density of the data :math:`\\dfrac{E}{V \\times (V-1)}`."
 msgstr ""
 
@@ -2586,13 +2589,10 @@ msgid ""
 "ending vertex:"
 msgstr ""
 
-msgid "It is expected to terminate faster than pgr_astar"
+msgid "It is expected to terminate faster than pgr_aStar"
 msgstr ""
 
 msgid ":doc:`aStar-family`"
-msgstr ""
-
-msgid "`Boost <https://www.boost.org/libs/graph/doc/astar_search.html>`__"
 msgstr ""
 
 msgid "Bidirectional Dijkstra - Family of functions"
@@ -2846,7 +2846,7 @@ msgstr ""
 msgid "Node"
 msgstr ""
 
-msgid "Adjecent nodes"
+msgid "Adjacent nodes"
 msgstr ""
 
 msgid "Number of adjacent nodes"
@@ -2855,12 +2855,14 @@ msgstr ""
 msgid ":math:`a`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`\\{u\\}`"
 msgstr ""
 
 msgid ":math:`b`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`\\{v\\}`"
 msgstr ""
 
@@ -2879,6 +2881,7 @@ msgstr ""
 msgid ":math:`c`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`\\{v, w\\}`"
 msgstr ""
 
@@ -2888,20 +2891,24 @@ msgstr ""
 msgid ":math:`d`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`\\{x\\}`"
 msgstr ""
 
 msgid ":math:`e`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`\\{x, y\\}`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From above, nodes :math:`\\{a, b, d\\}` are dead ends because the number "
 "of adjacent vertices is 1. No further checks are needed for those nodes."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "On the following table, nodes :math:`\\{c, e\\}` because the even that "
 "the number of adjacent vertices is not 1 for"
@@ -2962,6 +2969,7 @@ msgstr ""
 msgid ":math:`v`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`\\{u, w\\}`"
 msgstr ""
 
@@ -2980,15 +2988,18 @@ msgstr ""
 msgid "Is symmetrical?"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`\\{u, v\\}`"
 msgstr ""
 
 msgid "yes"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`\\{w, x\\}`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`\\{y, z\\}`"
 msgstr ""
 
@@ -3602,9 +3613,11 @@ msgstr ""
 msgid "Given the following query:"
 msgstr ""
 
+#, python-brace-format
 msgid "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "where :math:`sql = \\{(id_i, source_i, target_i, cost_i, "
 "reverse\\_cost_i)\\}`"
@@ -3676,12 +3689,15 @@ msgstr ""
 msgid "Given:"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`start_{vid} \\in V` a starting vertex"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`end_{vid} \\in V` an ending vertex"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 ":math:`G(V,E) = \\begin{cases} G_d(V,E) & \\quad \\text{ if6 } directed ="
 " true \\\\ G_u(V,E) & \\quad \\text{ if5 } directed = false \\\\ "
@@ -3691,6 +3707,7 @@ msgstr ""
 msgid "Then:"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 ":math:`\\boldsymbol{\\pi} = \\{(path\\_seq_i, node_i, edge_i, cost_i, "
 "agg\\_cost_i)\\}`"
@@ -3702,18 +3719,22 @@ msgstr ""
 msgid ":math:`path\\_seq_i = i`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`path\\_seq_{| \\pi |} = | \\pi |`"
 msgstr ""
 
 msgid ":math:`node_i \\in V`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`node_1 = start_{vid}`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`node_{| \\pi |}  = end_{vid}`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 ":math:`\\forall i \\neq | \\pi |, \\quad (node_i, node_{i+1}, cost_i) "
 "\\in E`"
@@ -3734,6 +3755,7 @@ msgid ""
 "  \\text{when } i \\neq 1 \\\\ \\end{cases}`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "In other words: The algorithm returns a the shortest path between "
 ":math:`start_{vid}` and :math:`end_{vid}`, if it exists, in terms of a "
@@ -3748,6 +3770,7 @@ msgstr ""
 msgid ":math:`cost` is the cost of the edge to be used to go to the next node."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 ":math:`agg\\_cost` is the cost from the :math:`start_{vid}` up to the "
 "node."
@@ -4168,6 +4191,7 @@ msgstr ""
 msgid "pgr_maxFlow :math:`(edges\\_sql, source\\_vertex, sink\\_vertex)`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "where :math:`edges\\_sql = \\{(id_i, source_i, target_i, capacity_i, "
 "reverse\\_capacity_i)\\}`"
@@ -4209,14 +4233,17 @@ msgstr ""
 msgid ":math:`sink\\_vertex \\in V` the sink vertex"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`pgr\\_maxFlow(edges\\_sql, source, sink) = \\boldsymbol{\\Phi}`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 ":math:`\\boldsymbol{\\Phi} = {(id_i, edge\\_id_i, source_i, target_i, "
 "flow_i, residual\\_capacity_i)}`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 ":math:`\\boldsymbol{\\Phi}` is a subset of the original edges with their "
 "residual capacity and flow. The maximum flow through the graph can be "
@@ -4374,195 +4401,10 @@ msgstr ""
 msgid ":doc:`release_notes`"
 msgstr ""
 
-msgid "Current release"
-msgstr ""
-
 msgid "pgRouting 3.8.0 Release Notes"
 msgstr ""
 
 msgid "No Changes Yet"
-msgstr ""
-
-msgid "pgRouting 3.7.3 Release Notes"
-msgstr ""
-
-#, python-format
-msgid ""
-"To see all issues & pull requests closed by this release see the `Git "
-"closed milestone for 3.7.3 "
-"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.3%22>`__"
-msgstr ""
-
-msgid ""
-"`#2731 <https://github.com/pgRouting/pgrouting/pull/2731>`__ Build "
-"Failure on Ubuntu 22"
-msgstr ""
-
-msgid "pgRouting 3.7.2 Release Notes"
-msgstr ""
-
-#, python-format
-msgid ""
-"To see all issues & pull requests closed by this release see the `Git "
-"closed milestone for 3.7.2 "
-"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
-msgstr ""
-
-msgid "Build"
-msgstr ""
-
-msgid ""
-"`#2713 <https://github.com/pgRouting/pgrouting/pull/2713>`__ cmake "
-"missing some policies and min version"
-msgstr ""
-
-msgid "Using OLD policies: CMP0148, CMP0144, CMP0167"
-msgstr ""
-
-msgid "Minimum cmake version 3.12"
-msgstr ""
-
-msgid "Bug fixes"
-msgstr ""
-
-msgid ""
-"`#2707 <https://github.com/pgRouting/pgrouting/pull/2707>`__ Build "
-"failure in pgRouting 3.7.1 on Alpine"
-msgstr ""
-
-msgid ""
-"`#2706 <https://github.com/pgRouting/pgrouting/pull/2706>`__ winnie "
-"crashing on pgr_betweennessCentrality"
-msgstr ""
-
-msgid "pgRouting 3.7.1 Release Notes"
-msgstr ""
-
-#, python-format
-msgid ""
-"To see all issues & pull requests closed by this release see the `Git "
-"closed milestone for 3.7.1 "
-"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
-msgstr ""
-
-msgid ""
-"`#2680 <https://github.com/pgRouting/pgrouting/pull/2680>`__ fails to "
-"compile under mingw64 gcc 13.2"
-msgstr ""
-
-msgid ""
-"`#2689 <https://github.com/pgRouting/pgrouting/pull/2689>`__ When point "
-"is a vertex, the withPoints family do not return results."
-msgstr ""
-
-msgid "C/C++ code enhancemet"
-msgstr ""
-
-msgid "TRSP family"
-msgstr ""
-
-msgid "pgRouting 3.7.0 Release Notes"
-msgstr ""
-
-#, python-format
-msgid ""
-"To see all issues & pull requests closed by this release see the `Git "
-"closed milestone for 3.7.0 "
-"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
-msgstr ""
-
-msgid "Support"
-msgstr ""
-
-msgid ""
-"`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stop support"
-" of PostgreSQL12 on pgrouting v3.7"
-msgstr ""
-
-msgid "Stopping support of PostgreSQL 12"
-msgstr ""
-
-msgid "CI does not test for PostgreSQL 12"
-msgstr ""
-
-msgid "New experimental functions"
-msgstr ""
-
-msgid "Metrics"
-msgstr ""
-
-msgid "pgr_betweennessCentrality"
-msgstr ""
-
-msgid "Official functions changes"
-msgstr ""
-
-msgid ""
-"`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standarize "
-"spanning tree functions output"
-msgstr ""
-
-msgid "Functions:"
-msgstr ""
-
-msgid "``pgr_kruskalDD``"
-msgstr ""
-
-msgid "``pgr_kruskalDFS``"
-msgstr ""
-
-msgid "``pgr_kruskalBFS``"
-msgstr ""
-
-msgid "``pgr_primDD``"
-msgstr ""
-
-msgid "``pgr_primDFS``"
-msgstr ""
-
-msgid "``pgr_primBFS``"
-msgstr ""
-
-msgid "Standarizing output columns to |result-spantree|"
-msgstr ""
-
-msgid "Added ``pred`` result columns."
-msgstr ""
-
-msgid "Experimental promoted to proposed."
-msgstr ""
-
-msgid ""
-"`#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ "
-"pgr_LineGraph ignores directed flag and use negative values for "
-"identifiers."
-msgstr ""
-
-msgid "``pgr_lineGraph``"
-msgstr ""
-
-msgid "Function promoted to proposed."
-msgstr ""
-
-msgid "Works for directed and undirected graphs."
-msgstr ""
-
-msgid "Code enhancement"
-msgstr ""
-
-msgid ""
-"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Driving "
-"distance cleanup"
-msgstr ""
-
-msgid ""
-"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Read "
-"postgresql data on C++"
-msgstr ""
-
-msgid ""
-"`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy "
-"does not work"
 msgstr ""
 
 msgid "All releases"
@@ -4603,13 +4445,7 @@ msgstr ""
 msgid "All deprecated functions will be removed on next mayor version 4.0.0"
 msgstr ""
 
-msgid "Migration of functions"
-msgstr ""
-
-msgid "Migrating functions"
-msgstr ""
-
-msgid "Migration of pgr_aStar``"
+msgid "Migration of ``pgr_aStar``"
 msgstr ""
 
 msgid ""
@@ -4620,13 +4456,13 @@ msgstr ""
 msgid "Signatures to be migrated:"
 msgstr ""
 
-msgid "pgr_aStar(One to One)"
+msgid "``pgr_aStar`` (`One to One`)"
 msgstr ""
 
-msgid "pgr_aStar(One to Many)"
+msgid "``pgr_aStar`` (`One to Many`)"
 msgstr ""
 
-msgid "pgr_aStar(Many to One)"
+msgid "``pgr_aStar`` (`Many to One`)"
 msgstr ""
 
 msgid "Before Migration"
@@ -4640,13 +4476,13 @@ msgid ""
 " might be missing:"
 msgstr ""
 
-msgid "pgr_aStar(One to One) does not have ``start_vid`` and ``end_vid``."
+msgid "``pgr_aStar`` (`One to One`) does not have ``start_vid`` and ``end_vid``."
 msgstr ""
 
-msgid "pgr_aStar(One to Many) does not have ``start_vid``."
+msgid "``pgr_aStar`` (`One to Many`) does not have ``start_vid``."
 msgstr ""
 
-msgid "pgr_aStar(Many to One) does not have ``end_vid``."
+msgid "``pgr_aStar`` (`Many to One`) does not have ``end_vid``."
 msgstr ""
 
 msgid "Migration"
@@ -4655,25 +4491,19 @@ msgstr ""
 msgid "Be aware of the existence of the additional columns."
 msgstr ""
 
-msgid "In pgr_aStar(One to One)"
-msgstr ""
-
-msgid "start_vid`` contains the **start vid** parameter value."
-msgstr ""
-
-msgid "end_vid`` contains the **end vid** parameter value."
-msgstr ""
-
-msgid "In pgr_aStar(One to Many)"
+msgid "In ``pgr_aStar`` (`One to One`)"
 msgstr ""
 
 msgid "``start_vid`` contains the **start vid** parameter value."
 msgstr ""
 
-msgid "In pgr_aStar(Many to One)"
+msgid "``end_vid`` contains the **end vid** parameter value."
 msgstr ""
 
-msgid "``end_vid`` contains the **end vid** parameter value."
+msgid "In ``pgr_aStar`` (`One to Many`)"
+msgstr ""
+
+msgid "In ``pgr_aStar`` (`Many to One`)"
 msgstr ""
 
 msgid "If needed filter out the added columns, for example:"
@@ -4701,31 +4531,33 @@ msgstr ""
 msgid "Migration of ``pgr_bdAstar``"
 msgstr ""
 
-msgid "pgr_bdAstar(One to One)"
+msgid "``pgr_bdAstar`` (`One to One`)"
 msgstr ""
 
-msgid "pgr_bdAstar(One to Many)"
+msgid "``pgr_bdAstar`` (`One to Many`)"
 msgstr ""
 
-msgid "pgr_bdAstar(Many to One)"
+msgid "``pgr_bdAstar`` (`Many to One`)"
 msgstr ""
 
-msgid "pgr_bdAstar(One to One) does not have ``start_vid`` and ``end_vid``."
+msgid ""
+"``pgr_bdAstar`` (`One to One`) does not have ``start_vid`` and "
+"``end_vid``."
 msgstr ""
 
-msgid "pgr_bdAstar(One to Many) does not have ``start_vid``."
+msgid "``pgr_bdAstar`` (`One to Many`) does not have ``start_vid``."
 msgstr ""
 
-msgid "pgr_bdAstar(Many to One) does not have ``end_vid``."
+msgid "``pgr_bdAstar`` (`Many to One`) does not have ``end_vid``."
 msgstr ""
 
-msgid "In pgr_bdAstar(One to One)"
+msgid "In ``pgr_bdAstar`` (`One to One`)"
 msgstr ""
 
-msgid "In pgr_bdAstar(One to Many)"
+msgid "In ``pgr_bdAstar`` (`One to Many`)"
 msgstr ""
 
-msgid "In pgr_bdAstar(Many to One)"
+msgid "In ``pgr_bdAstar`` (`Many to One`)"
 msgstr ""
 
 msgid "Migration of ``pgr_dijkstra``"
@@ -4736,37 +4568,39 @@ msgid ""
 "<https://docs.pgrouting.org/3.5/en/migration.html>`__"
 msgstr ""
 
-msgid "pgr_dijkstra(One to One)"
+msgid "``pgr_dijkstra`` (`One to One`)"
 msgstr ""
 
-msgid "pgr_dijkstra(One to Many)"
+msgid "``pgr_dijkstra`` (`One to Many`)"
 msgstr ""
 
-msgid "pgr_dijkstra(Many to One)"
+msgid "``pgr_dijkstra`` (`Many to One`)"
 msgstr ""
 
-msgid "pgr_dijkstra(One to One) does not have ``start_vid`` and ``end_vid``."
+msgid ""
+"``pgr_dijkstra`` (`One to One`) does not have ``start_vid`` and "
+"``end_vid``."
 msgstr ""
 
-msgid "pgr_dijkstra(One to Many) does not have ``start_vid``."
+msgid "``pgr_dijkstra`` (`One to Many`) does not have ``start_vid``."
 msgstr ""
 
-msgid "pgr_dijkstra(Many to One) does not have ``end_vid``."
+msgid "``pgr_dijkstra`` (`Many to One`) does not have ``end_vid``."
 msgstr ""
 
-msgid "In pgr_dijkstra(One to One)"
+msgid "In ``pgr_dijkstra`` (`One to One`)"
 msgstr ""
 
-msgid "In pgr_dijkstra(One to Many)"
+msgid "In ``pgr_dijkstra`` (`One to Many`)"
 msgstr ""
 
-msgid "In pgr_dijkstra(Many to One)"
+msgid "In ``pgr_dijkstra`` (`Many to One`)"
 msgstr ""
 
 msgid "If needed add the new columns, for example:"
 msgstr ""
 
-msgid "Migration of ``pgr_drivingdistance``"
+msgid "Migration of ``pgr_drivingDistance``"
 msgstr ""
 
 msgid ""
@@ -4787,10 +4621,10 @@ msgstr ""
 msgid "|result-spantree|"
 msgstr ""
 
-msgid "pgr_drivingdistance(Single vertex)"
+msgid "pgr_drivingDistance(Single vertex)"
 msgstr ""
 
-msgid "pgr_drivingdistance(Multiple vertices)"
+msgid "pgr_drivingDistance(Multiple vertices)"
 msgstr ""
 
 msgid "Output columns were |result-dij-dd|"
@@ -4808,9 +4642,6 @@ msgstr ""
 msgid "Be aware of the existence and name change of the result columns."
 msgstr ""
 
-msgid "``pgr_drivingdistance`` (Single vertex)"
-msgstr ""
-
 msgid ""
 "Using `this <https://docs.pgrouting.org/3.5/en/pgr_drivingDistance.html"
 "#single-vertex>`__ example."
@@ -4825,9 +4656,6 @@ msgstr ""
 msgid ""
 "If needed filter out the added columns, for example, to return the "
 "original columns"
-msgstr ""
-
-msgid "``pgr_drivingdistance`` (Multiple vertices)"
 msgstr ""
 
 msgid ""
@@ -4856,10 +4684,19 @@ msgstr ""
 msgid "|result-bfs|"
 msgstr ""
 
+msgid "``pgr_kruskalDD``"
+msgstr ""
+
 msgid "Single vertex"
 msgstr ""
 
 msgid "Multiple vertices"
+msgstr ""
+
+msgid "``pgr_kruskalDFS``"
+msgstr ""
+
+msgid "``pgr_kruskalBFS``"
 msgstr ""
 
 msgid "Output columns were |result-bfs|"
@@ -4881,8 +4718,8 @@ msgid "Kruskal single vertex"
 msgstr ""
 
 msgid ""
-"Using pgr_KruskalDD`` as example. Migration is similar to al the affected"
-" functions."
+"Using ``pgr_KruskalDD`` as example. Migration is similar to al the "
+"affected functions."
 msgstr ""
 
 msgid ""
@@ -4895,11 +4732,6 @@ msgid "Now column ``pred`` exists and contains the predecessor of the ``node``."
 msgstr ""
 
 msgid "Kruskal multiple vertices"
-msgstr ""
-
-msgid ""
-"Using ``pgr_KruskalDD`` as example. Migration is similar to al the "
-"affected functions."
 msgstr ""
 
 msgid ""
@@ -4923,7 +4755,7 @@ msgstr ""
 msgid "|nksp-result|"
 msgstr ""
 
-msgid "pgr_KSP(One to One)"
+msgid "``pgr_KSP`` (One to One)"
 msgstr ""
 
 msgid "Output columns were |ksp-result|"
@@ -4932,10 +4764,7 @@ msgstr ""
 msgid "the columns ``start_vid`` and ``end_vid`` do not exist."
 msgstr ""
 
-msgid "pgr_KSP(One to One) does not have ``start_vid`` and ``end_vid``."
-msgstr ""
-
-msgid "``pgr_KSP`` (One to One)"
+msgid "``pgr_KSP`` (One to One) does not have ``start_vid`` and ``end_vid``."
 msgstr ""
 
 msgid ""
@@ -4979,7 +4808,7 @@ msgstr ""
 msgid "New signature"
 msgstr ""
 
-msgid "pgr_maxCardinalityMatch(text)`` returns only ``edge`` column."
+msgid "``pgr_maxCardinalityMatch(text)`` returns only ``edge`` column."
 msgstr ""
 
 msgid "The optional flag ``directed`` is removed."
@@ -5017,7 +4846,7 @@ msgstr ""
 msgid "In the query returns only ``edge`` column."
 msgstr ""
 
-msgid "Migration of pgr_primDD`` / ``pgr_primBFS`` / ``pgr_primDFS``"
+msgid "Migration of ``pgr_primDD`` / ``pgr_primBFS`` / ``pgr_primDFS``"
 msgstr ""
 
 msgid ""
@@ -5025,6 +4854,15 @@ msgid ""
 "<https://docs.pgrouting.org/3.7/en/migration.html>`__ :doc:`pgr_primDD`, "
 ":doc:`pgr_primBFS` and :doc:`pgr_primDFS` result columns are being "
 "standardized."
+msgstr ""
+
+msgid "``pgr_primDD``"
+msgstr ""
+
+msgid "``pgr_primDFS``"
+msgstr ""
+
+msgid "``pgr_primBFS``"
 msgstr ""
 
 msgid "Prim single vertex"
@@ -5041,11 +4879,6 @@ msgid ""
 msgstr ""
 
 msgid "Prim multiple vertices"
-msgstr ""
-
-msgid ""
-"Using pgr_primDD`` as example. Migration is similar to al the affected "
-"functions."
 msgstr ""
 
 msgid ""
@@ -5086,6 +4919,9 @@ msgstr ""
 msgid ""
 "``driving_side`` parameter was named optional now it is compulsory "
 "unnamed."
+msgstr ""
+
+msgid "``pgr_withPointsDD`` (`Multiple vertices`)"
 msgstr ""
 
 msgid "Output columns were |result-m-1-no-seq|"
@@ -5205,16 +5041,13 @@ msgid ""
 "undirected graphs."
 msgstr ""
 
-msgid "pgr_withPointsKSP(One to One)"
+msgid "``pgr_withPointsKSP`` (`One to One`)"
 msgstr ""
 
 msgid "Output columns were |old-pid-result|"
 msgstr ""
 
 msgid "New output columns are |nksp-result|"
-msgstr ""
-
-msgid "``pgr_withPointsKSP`` (One to One)"
 msgstr ""
 
 msgid ""
@@ -5228,7 +5061,118 @@ msgid ""
 "original columns:"
 msgstr ""
 
-msgid "Migration of turn restrictions"
+msgid "Migration of ``pgr_trsp`` (Vertices)"
+msgstr ""
+
+msgid "Signature:"
+msgstr ""
+
+msgid "Deprecated"
+msgstr ""
+
+msgid "`v3.4.0 <https://docs.pgrouting.org/3.4>`__"
+msgstr ""
+
+msgid ":doc:`pgr_dijkstra`"
+msgstr ""
+
+msgid ":doc:`pgr_trsp`"
+msgstr ""
+
+msgid "`Migration of restrictions`_"
+msgstr ""
+
+msgid "Use ``pgr_dijkstra`` when there are no restrictions."
+msgstr ""
+
+msgid "Use :doc:`pgr_dijkstra` instead."
+msgstr ""
+
+msgid "To get the original column names:"
+msgstr ""
+
+msgid "``id1`` is the node"
+msgstr ""
+
+msgid "``id2`` is the edge"
+msgstr ""
+
+msgid "Use ``pgr_trsp`` when there are restrictions."
+msgstr ""
+
+msgid "Use :doc:`pgr_trsp` (One to One) instead."
+msgstr ""
+
+msgid "Migration of ``pgr_trsp`` (Edges)"
+msgstr ""
+
+msgid ":doc:`pgr_withPoints`"
+msgstr ""
+
+msgid ":doc:`pgr_trsp_withPoints`"
+msgstr ""
+
+msgid "Use ``pgr_withPoints`` when there are no restrictions."
+msgstr ""
+
+msgid "Use :doc:`pgr_withPoints` (One to One) instead."
+msgstr ""
+
+msgid "Use ``pgr_trsp_withPoints`` when there are restrictions."
+msgstr ""
+
+msgid "Use :doc:`pgr_trsp_withPoints` instead."
+msgstr ""
+
+msgid "Migration of ``pgr_trspViaVertices``"
+msgstr ""
+
+msgid ":doc:`pgr_dijkstraVia`"
+msgstr ""
+
+msgid ":doc:`pgr_trspVia`"
+msgstr ""
+
+msgid "Use ``pgr_dijkstraVia`` when there are no restrictions"
+msgstr ""
+
+msgid "Use :doc:`pgr_dijkstraVia` instead."
+msgstr ""
+
+msgid "``id1`` is the path identifier"
+msgstr ""
+
+msgid "``id2`` is the node"
+msgstr ""
+
+msgid "``id3`` is the edge"
+msgstr ""
+
+msgid "Use ``pgr_trspVia`` when there are restrictions"
+msgstr ""
+
+msgid "Use :doc:`pgr_trspVia` instead."
+msgstr ""
+
+msgid "Migration of ``pgr_trspViaEdges``"
+msgstr ""
+
+msgid ":doc:`pgr_withPointsVia`"
+msgstr ""
+
+msgid ":doc:`pgr_trspVia_withPoints`"
+msgstr ""
+
+msgid "Use ``pgr_withPointsVia`` when there are no restrictions"
+msgstr ""
+
+msgid "Use :doc:`pgr_withPointsVia` instead."
+msgstr ""
+
+msgid "Use ``pgr_trspVia_withPoints`` when there are restrictions"
+msgstr ""
+
+msgid "Use :doc:`pgr_trspVia_withPoints` instead."
 msgstr ""
 
 msgid "Migration of restrictions"
@@ -5375,243 +5319,6 @@ msgstr ""
 msgid "The migrated table contents:"
 msgstr ""
 
-msgid "Migration of ``pgr_trsp`` (Vertices)"
-msgstr ""
-
-msgid ""
-":doc:`pgr_trsp` signatures have changed and many issues have been fixed "
-"in the new signatures. This section will show how to migrate from the old"
-" signatures to the new replacement functions. This also affects the "
-"restrictions."
-msgstr ""
-
-msgid "The integral type of the ``Edges SQL`` can only be ``INTEGER``."
-msgstr ""
-
-msgid "The floating point type of the ``Edges SQL`` can only be ``FLOAT``."
-msgstr ""
-
-msgid "``directed`` flag is compulsory."
-msgstr ""
-
-msgid "Does not autodetect if ``reverse_cost`` column exist."
-msgstr ""
-
-msgid ""
-"User must be careful to match the existence of the column with the value "
-"of ``has_rcost`` parameter."
-msgstr ""
-
-msgid "The restrictions inner query is optional."
-msgstr ""
-
-msgid "The output column names are meaningless"
-msgstr ""
-
-msgid "Migrate by using:"
-msgstr ""
-
-msgid ":doc:`pgr_dijkstra` when there are no restrictions,"
-msgstr ""
-
-msgid ":doc:`pgr_trsp` (One to One) when there are restrictions."
-msgstr ""
-
-msgid "Migrating ``pgr_trsp`` (Vertices) using ``pgr_dijkstra``"
-msgstr ""
-
-msgid "The following query does not have restrictions."
-msgstr ""
-
-msgid "A message about deprecation is shown"
-msgstr ""
-
-msgid "Deprecated functions will be removed on the next mayor version 4.0.0"
-msgstr ""
-
-msgid "Use :doc:`pgr_dijkstra` instead."
-msgstr ""
-
-msgid "The types casting has been removed."
-msgstr ""
-
-msgid ":doc:`pgr_dijkstra`:"
-msgstr ""
-
-msgid "Autodetects if ``reverse_cost`` column is in the edges SQL."
-msgstr ""
-
-msgid "Accepts ``ANY-INTEGER`` on integral types"
-msgstr ""
-
-msgid "Accepts ``ANY-NUMERICAL`` on floating point types"
-msgstr ""
-
-msgid "``directed`` flag has a default value of ``true``."
-msgstr ""
-
-msgid "Use the same value that on the original query."
-msgstr ""
-
-msgid "In this example it is ``true`` which is the default value."
-msgstr ""
-
-msgid "The flag has been omitted and the default is been used."
-msgstr ""
-
-msgid ""
-"When the need of using strictly the same (meaningless) names and types of"
-" the function been migrated then:"
-msgstr ""
-
-msgid "``id1`` is the node"
-msgstr ""
-
-msgid "``id2`` is the edge"
-msgstr ""
-
-msgid "Migrating ``pgr_trsp`` (Vertices) using ``pgr_trsp``"
-msgstr ""
-
-msgid "The following query has restrictions."
-msgstr ""
-
-msgid "The restrictions are the last parameter of the function"
-msgstr ""
-
-msgid "Using the old structure of restrictions"
-msgstr ""
-
-msgid "Use :doc:`pgr_trsp` (One to One) instead."
-msgstr ""
-
-msgid "The new structure of restrictions is been used."
-msgstr ""
-
-msgid "It is the second parameter."
-msgstr ""
-
-msgid ":doc:`pgr_trsp`:"
-msgstr ""
-
-msgid "Migration of pgr_trsp(Edges)"
-msgstr ""
-
-msgid "The integral types of the ``sql`` can only be ``INTEGER``."
-msgstr ""
-
-msgid "The floating point type of the ``sql`` can only be ``FLOAT``."
-msgstr ""
-
-msgid "For these migration guide the following points will be used:"
-msgstr ""
-
-msgid ":doc:`pgr_withPoints` when there are no restrictions,"
-msgstr ""
-
-msgid ":doc:`pgr_trsp_withPoints` (One to One) when there are restrictions."
-msgstr ""
-
-msgid "Migrating ``pgr_trsp`` (Edges) using ``pgr_withPoints``"
-msgstr ""
-
-msgid "Use :doc:`pgr_withPoints` instead."
-msgstr ""
-
-msgid "Do not show details, as the deprecated function does not show details."
-msgstr ""
-
-msgid ":doc:`pgr_withPoints`:"
-msgstr ""
-
-msgid "On the points query do not include the ``side`` column."
-msgstr ""
-
-msgid ""
-"When the need of using strictly the same (meaningless) names and types, "
-"and node values of the function been migrated then:"
-msgstr ""
-
-msgid "Migrating ``pgr_trsp`` (Edges) using ``pgr_trsp_withPoints``"
-msgstr ""
-
-msgid "Use :doc:`pgr_trsp_withPoints` instead."
-msgstr ""
-
-msgid ":doc:`pgr_trsp_withPoints`:"
-msgstr ""
-
-msgid "Migration of ``pgr_trspViaVertices``"
-msgstr ""
-
-msgid "The integral types of the ``Edges SQL`` can only be ``INTEGER``."
-msgstr ""
-
-msgid ":doc:`pgr_dijkstraVia` when there are no restrictions,"
-msgstr ""
-
-msgid ":doc:`pgr_trspVia` when there are restrictions."
-msgstr ""
-
-msgid "Migrating ``pgr_trspViaVertices`` using ``pgr_dijkstraVia``"
-msgstr ""
-
-msgid "Use :doc:`pgr_dijkstraVia` instead."
-msgstr ""
-
-msgid ":doc:`pgr_dijkstraVia`:"
-msgstr ""
-
-msgid "``id1`` is the path identifier"
-msgstr ""
-
-msgid "``id2`` is the node"
-msgstr ""
-
-msgid "``id3`` is the edge"
-msgstr ""
-
-msgid "Migrating ``pgr_trspViaVertices`` using ``pgr_trspVia``"
-msgstr ""
-
-msgid "Use :doc:`pgr_trspVia` instead."
-msgstr ""
-
-msgid ":doc:`pgr_trspVia`:"
-msgstr ""
-
-msgid "Migration of ``pgr_trspViaEdges``"
-msgstr ""
-
-msgid ""
-"And will travel thru the following Via points "
-":math:`4\\rightarrow3\\rightarrow6`"
-msgstr ""
-
-msgid ":doc:`pgr_withPointsVia` when there are no restrictions,"
-msgstr ""
-
-msgid ":doc:`pgr_trspVia_withPoints` when there are restrictions."
-msgstr ""
-
-msgid "Migrating ``pgr_trspViaEdges`` using ``pgr_withPointsVia``"
-msgstr ""
-
-msgid "Use :doc:`pgr_withPointsVia` instead."
-msgstr ""
-
-msgid ":doc:`pgr_withPointsVia`:"
-msgstr ""
-
-msgid "Migrating ``pgr_trspViaEdges`` using ``pgr_trspVia_withPoints``"
-msgstr ""
-
-msgid "Use :doc:`pgr_trspVia_withPoints` instead."
-msgstr ""
-
-msgid ":doc:`pgr_trspVia_withPoints`:"
-msgstr ""
-
 msgid ":doc:`withPoints-category`"
 msgstr ""
 
@@ -5635,27 +5342,32 @@ msgstr ""
 msgid ":math:`V` is a set of vertices, also called nodes."
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`E \\subseteq \\{( u, v ) \\mid u , v \\in V \\}`"
 msgstr ""
 
 msgid "There are different kinds of graphs:"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`E \\subseteq \\{( u, v ) \\mid u , v \\in V\\}`"
 msgstr ""
 
 msgid "Undirected simple graph"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`E \\subseteq \\{( u, v ) \\mid u , v \\in V, u \\neq v\\}`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`E \\subseteq \\{( u, v ) \\mid (u , v) \\in (V X V) \\}`"
 msgstr ""
 
 msgid "Directed simple graph"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`E \\subseteq \\{( u, v ) \\mid (u , v) \\in (V X V), u \\neq v\\}`"
 msgstr ""
 
@@ -5736,6 +5448,7 @@ msgstr ""
 msgid "All vertices in ``source`` and ``target`` are part of the graph."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "In a directed graph the edge :math:`(source_{id}, target_{id}, "
 "cost_{id})` has directionality: :math:`source_{id} \\rightarrow "
@@ -5751,17 +5464,20 @@ msgstr ""
 msgid "The data is representing the following graph:"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "In an undirected graph the edge :math:`(source_{id}, target_{id}, "
 "cost_{id})` does not have directionality: :math:`source_{id} "
 "\\frac{\\;\\;\\;\\;\\;}{} target_{id}`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "In terms of a directed graph is like having two edges: :math:`source_{id}"
 " \\leftrightarrow target_{id}`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Edge :math:`2` (:math:`1 \\frac{\\;\\;\\;\\;\\;}{} 3`) is not part of the"
 " graph."
@@ -5802,11 +5518,13 @@ msgstr ""
 msgid "In a directed graph both edges have directionality"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "edge :math:`(source_{id}, target_{id}, cost_{id})` has directionality: "
 ":math:`source_{id} \\rightarrow target_{id}`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "edge :math:`(target_{id}, source_{id}, reverse\\_cost_{id})` has "
 "directionality: :math:`target_{id} \\rightarrow source_{id}`"
@@ -5824,11 +5542,13 @@ msgstr ""
 msgid "In a directed graph both edges do not have directionality"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Edge :math:`(source_{id}, target_{id}, cost_{id})` is :math:`source_{id} "
 "\\frac{\\;\\;\\;\\;\\;}{} target_{id}`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Edge :math:`(target_{id}, source_{id}, reverse\\_cost_{id})` is "
 ":math:`target_{id} \\frac{\\;\\;\\;\\;\\;}{} source_{id}`"
@@ -5843,9 +5563,11 @@ msgstr ""
 msgid ":math:`target_i \\leftrightarrow source_i`"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`2` (:math:`1 \\frac{\\;\\;\\;\\;\\;}{} 3`)"
 msgstr ""
 
+#, python-brace-format
 msgid ":math:`3` (:math:`3 \\frac{\\;\\;\\;\\;\\;}{} 2`)"
 msgstr ""
 
@@ -5881,12 +5603,14 @@ msgstr ""
 msgid "No geometries associated to the vertices or edges"
 msgstr ""
 
+#, python-brace-format
 msgid "Has 6 vertices :math:`\\{1,2,3,4,5,6\\}`"
 msgstr ""
 
 msgid "Has 9 edges:"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 ":math:`\\begin{split} \\begin{align} E = & \\{(1,2,7), (1,3,9), (1,6,14),"
 " \\\\ & (2,3,10), (2,4,13), \\\\ & (3,4,11), (3,6,2), \\\\ & (4,5,6), "
@@ -6339,6 +6063,7 @@ msgstr ""
 msgid "To get the graph connectivity:"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "In this example, the component :math:`2` consists of vertices "
 ":math:`\\{2, 4\\}` and both vertices are also part of the dead end result"
@@ -6746,9 +6471,6 @@ msgstr ""
 msgid "Parameters for the Via functions"
 msgstr ""
 
-msgid ":doc:`pgr_dijkstraVia`"
-msgstr ""
-
 msgid "SQL query as described."
 msgstr ""
 
@@ -6786,9 +6508,6 @@ msgid ""
 msgstr ""
 
 msgid "For the TRSP functions"
-msgstr ""
-
-msgid ":doc:`pgr_trsp`"
 msgstr ""
 
 msgid "Array of identifiers of destination vertices."
@@ -6840,9 +6559,6 @@ msgid ""
 msgstr ""
 
 msgid "Used in functions the following:"
-msgstr ""
-
-msgid ":doc:`pgr_withPoints`"
 msgstr ""
 
 msgid ""
@@ -7642,6 +7358,9 @@ msgstr ""
 msgid "|Boost| Boost Graph Inside"
 msgstr ""
 
+msgid "Boost Graph inside"
+msgstr ""
+
 msgid "Signatures"
 msgstr ""
 
@@ -7678,16 +7397,19 @@ msgstr ""
 msgid "Get 2 paths from :math:`6` to :math:`17` on a directed graph."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Get 2 paths from vertex :math:`6` to vertices :math:`\\{10, 17\\}` on a "
 "directed graph."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Get 2 paths from vertices :math:`\\{6, 1\\}` to vertex :math:`17` on a "
 "directed graph."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Get 2 paths vertices :math:`\\{6, 1\\}` to vertices :math:`\\{10, 17\\}` "
 "on a directed graph."
@@ -7752,6 +7474,7 @@ msgstr ""
 msgid "Get 2 paths using combinations table on an undirected graph"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Get 2 paths from vertices :math:`\\{6, 1\\}` to vertex :math:`17` on a "
 "undirected graph."
@@ -7763,7 +7486,7 @@ msgstr ""
 msgid "``pgr_TSP``"
 msgstr ""
 
-msgid "pgr_TSP`` - Aproximation using *metric* algorithm."
+msgid "``pgr_TSP`` - Approximation using *metric* algorithm."
 msgstr ""
 
 msgid "Availability:"
@@ -7884,6 +7607,7 @@ msgstr ""
 msgid "Using :doc:`pgr_dijkstraCostMatrix` to generate the matrix information"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "**Line 4** Vertices :math:`\\{2, 4, 13, 14\\}` are not included because "
 "they are not connected."
@@ -7966,6 +7690,7 @@ msgstr ""
 msgid "Connected incomplete data"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Using selected edges :math:`\\{2, 4, 5, 8, 9, 15\\}` the matrix is not "
 "complete."
@@ -7979,7 +7704,12 @@ msgstr ""
 msgid "``pgr_TSPeuclidean``"
 msgstr ""
 
-msgid "pgr_TSPeuclidean`` - Aproximation using *metric* algorithm."
+msgid "``pgr_TSPeuclidean`` - Approximation using *metric* algorithm."
+msgstr ""
+
+msgid ""
+"Using `Boost: metric TSP approx "
+"<https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
 msgstr ""
 
 msgid ""
@@ -8111,10 +7841,16 @@ msgstr ""
 msgid "Version 2.4.0"
 msgstr ""
 
+msgid "pgr_aStar(One to Many)"
+msgstr ""
+
+msgid "pgr_aStar(Many to One)"
+msgstr ""
+
 msgid "pgr_aStar(Many to Many)"
 msgstr ""
 
-msgid "Signature change on pgr_astar(One to One)"
+msgid "Signature change on pgr_aStar(One to One)"
 msgstr ""
 
 msgid ""
@@ -8151,16 +7887,19 @@ msgid ""
 "heuristic :math:`2`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From vertex :math:`6` to vertices :math:`\\{10, 12\\}` on a **directed** "
 "graph with heuristic :math:`3` and factor :math:`3.5`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From vertices :math:`\\{6, 8\\}` to vertex :math:`10` on an "
 "**undirected** graph with heuristic :math:`4`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From vertices :math:`\\{6, 8\\}` to vertices :math:`\\{10, 12\\}` on a "
 "**directed** graph with factor :math:`0.5`"
@@ -8187,9 +7926,6 @@ msgid "Example 3"
 msgstr ""
 
 msgid "Manually assigned vertex combinations."
-msgstr ""
-
-msgid "https://www.boost.org/libs/graph/doc/astar_search.html"
 msgstr ""
 
 msgid "``pgr_aStarCost``"
@@ -8287,6 +8023,7 @@ msgstr ""
 msgid "pgr_aStarCostMatrix(`Edges SQL`_, **start vids**, [**options**])"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Symmetric cost matrix for vertices :math:`\\{5, 6, 10, 15\\}` on an "
 "**undirected** graph using heuristic :math:`2`"
@@ -8320,6 +8057,9 @@ msgid "Support to return multiple outer/inner ring"
 msgstr ""
 
 msgid "Renamed from version 1.x"
+msgstr ""
+
+msgid "Support"
 msgstr ""
 
 msgid "Returns the polygon part of an alpha shape."
@@ -8876,6 +8616,12 @@ msgstr ""
 msgid "pgr_bdAstar(Combinations)"
 msgstr ""
 
+msgid "pgr_bdAstar(One to Many)"
+msgstr ""
+
+msgid "pgr_bdAstar(Many to One)"
+msgstr ""
+
 msgid "pgr_bdAstar(Many to Many)"
 msgstr ""
 
@@ -8900,9 +8646,6 @@ msgid "pgr_bdAstar(`Edges SQL`_, **start vids**, **end vids**, [**options**])"
 msgstr ""
 
 msgid "pgr_bdAstar(`Edges SQL`_, `Combinations SQL`_, [**options**])"
-msgstr ""
-
-msgid "**options:** [directed, heuristic, factor, epsilon]``"
 msgstr ""
 
 msgid "``pgr_bdAstarCost``"
@@ -8961,9 +8704,6 @@ msgstr ""
 msgid "pgr_bdDijkstra(Combinations)"
 msgstr ""
 
-msgid "New Proposed signatures:"
-msgstr ""
-
 msgid "pgr_bdDijkstra(One to Many)"
 msgstr ""
 
@@ -9003,6 +8743,7 @@ msgstr ""
 msgid "Returns set of |result-1-m|"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From vertex :math:`6` to vertices :math:`\\{10, 17\\}` on a **directed** "
 "graph"
@@ -9011,11 +8752,13 @@ msgstr ""
 msgid "Returns set of |result-m-1|"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From vertices :math:`\\{6, 1\\}` to vertex :math:`17` on a **directed** "
 "graph"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From vertices :math:`\\{6, 1\\}` to vertices :math:`\\{10, 17\\}` on an "
 "**undirected** graph"
@@ -9085,6 +8828,7 @@ msgstr ""
 msgid "pgr_bdDijkstraCostMatrix(`Edges SQL`_, **start vids**, [``directed``])"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Symmetric cost matrix for vertices :math:`\\{5, 6, 10, 15\\}` on an "
 "**undirected** graph"
@@ -9166,6 +8910,7 @@ msgstr ""
 msgid "pgr_bellmanFord(`Edges SQL`_, `Combinations SQL`_, [``directed``])"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From vertex :math:`6` to vertices :math:`\\{ 10, 17\\}` on a **directed**"
 " graph"
@@ -9175,7 +8920,7 @@ msgid "Using a combinations table on an **undirected** graph."
 msgstr ""
 
 msgid ""
-"`Boost: Belman Ford "
+"`Boost: Bellman Ford "
 "<https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html>`__"
 msgstr ""
 
@@ -9190,14 +8935,11 @@ msgid "``pgr_betweennessCentrality`` - Experimental"
 msgstr ""
 
 msgid ""
-"``pgr_betweennessCentrality`` - Calculates the relative betweeness "
+"``pgr_betweennessCentrality`` - Calculates the relative betweenness "
 "centrality using Brandes Algorithm"
 msgstr ""
 
 msgid "Version 3.7.0"
-msgstr ""
-
-msgid "pgr_betweennessCentrality``"
 msgstr ""
 
 msgid ""
@@ -9236,6 +8978,7 @@ msgstr ""
 msgid "Returns set of ``(vid, centrality)``"
 msgstr ""
 
+#, python-brace-format
 msgid "For a directed graph with edges :math:`\\{1, 2, 3, 4\\}`."
 msgstr ""
 
@@ -9272,7 +9015,7 @@ msgstr ""
 
 msgid ""
 "`Boost: betweenness centrality "
-"<https://www.boost.org/doc/libs/1_84_0/libs/graph/doc/betweenness_centrality.html>`_"
+"<https://www.boost.org/libs/graph/doc/betweenness_centrality.html>`_"
 msgstr ""
 
 msgid "``pgr_biconnectedComponents``"
@@ -9286,10 +9029,10 @@ msgstr ""
 msgid "Result columns change:"
 msgstr ""
 
-msgid "n_seq`` is removed"
+msgid "``n_seq`` is removed"
 msgstr ""
 
-msgid "seq`` changed type to ``BIGINT``"
+msgid "``seq`` changed type to ``BIGINT``"
 msgstr ""
 
 msgid ""
@@ -9339,6 +9082,7 @@ msgid ""
 "graph."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Any graph whose edge-weights belongs to the set {0,X}, where 'X' is any "
 "non-negative integer, is termed as a 'binary graph'."
@@ -9358,6 +9102,7 @@ msgid ""
 ":math:`O(|E|log|V|)` time."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "However if the weights are more constrained, we can use a faster "
 "algorithm. This algorithm, termed as 'Binary Breadth First Search' as "
@@ -9367,6 +9112,7 @@ msgid ""
 "where 'X' is any non-negative real integer."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Process is done only on 'binary graphs'. ('Binary Graph': Any graph whose"
 " edge-weights belongs to the set {0,X}, where 'X' is any non-negative "
@@ -9463,6 +9209,7 @@ msgstr ""
 msgid "The odd length cyclic graph can not be bipartite."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "The edge :math:`5 \\rightarrow 1` will make subgraph with vertices "
 ":math:`\\{1, 3, 7, 6, 5\\}` an odd length cyclic graph, as the cycle has "
@@ -9497,6 +9244,9 @@ msgstr ""
 msgid "Renamed from ``pgr_maxFlowBoykovKolmogorov``"
 msgstr ""
 
+msgid "Function promoted to proposed."
+msgstr ""
+
 msgid "Running time: Polynomial"
 msgstr ""
 
@@ -9521,15 +9271,19 @@ msgstr ""
 msgid "From vertex :math:`11` to vertex :math:`12`"
 msgstr ""
 
+#, python-brace-format
 msgid "From vertex :math:`11` to vertices :math:`\\{5, 10, 12\\}`"
 msgstr ""
 
+#, python-brace-format
 msgid "From vertices :math:`\\{11, 3, 17\\}` to vertex :math:`12`"
 msgstr ""
 
+#, python-brace-format
 msgid "From vertices :math:`\\{11, 3, 17\\}` to vertices :math:`\\{5, 10, 12\\}`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Using a combinations table, equivalent to calculating result from "
 "vertices :math:`\\{5, 6\\}` to vertices :math:`\\{10, 15, 14\\}`."
@@ -9570,7 +9324,7 @@ msgstr ""
 msgid "pgr_breadthFirstSearch(`Edges SQL`_, **root vids**, [**options**])"
 msgstr ""
 
-msgid "**options:** [max_depth, directed]``"
+msgid "**options:** ``[max_depth, directed]``"
 msgstr ""
 
 msgid "Returns set of |result-bfs|"
@@ -9581,6 +9335,7 @@ msgid ""
 "ascending order of ``id``"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From root vertices :math:`\\{12, 6\\}` on an **undirected** graph with "
 "**depth** :math:`<= 2` and edges in ascending order of ``id``"
@@ -9652,7 +9407,7 @@ msgid "https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29"
 msgstr ""
 
 msgid ""
-"`Boost: connected components "
+"`Boost: Connected components "
 "<https://www.boost.org/libs/graph/doc/connected_components.html>`__"
 msgstr ""
 
@@ -9750,11 +9505,6 @@ msgid "Connecting disconnected components"
 msgstr ""
 
 msgid ""
-"`Boost: Connected components "
-"<https://www.boost.org/libs/graph/doc/connected_components.html>`__"
-msgstr ""
-
-msgid ""
 "wikipedia: `Connected component "
 "<https://en.wikipedia.org/wiki/Connected_component_(graph_theory)>`__"
 msgstr ""
@@ -9768,6 +9518,9 @@ msgid ""
 msgstr ""
 
 msgid "Name change from ``pgr_contractGraph``"
+msgstr ""
+
+msgid "Bug fixes"
 msgstr ""
 
 msgid ""
@@ -10411,12 +10164,15 @@ msgstr ""
 msgid "From vertex :math:`5` to vertex :math:`11` on a **directed** graph"
 msgstr ""
 
+#, python-brace-format
 msgid "From vertex :math:`5` to vertices :math:`\\{7, 11\\}`"
 msgstr ""
 
+#, python-brace-format
 msgid "From vertices :math:`\\{5, 10\\}` to vertex :math:`11`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From vertices :math:`\\{5, 15\\}` to vertices :math:`\\{11, 17\\}` on an "
 "**undirected** graph"
@@ -10646,6 +10402,12 @@ msgstr ""
 msgid "Version 2.2.0"
 msgstr ""
 
+msgid "pgr_dijkstra(One to Many)"
+msgstr ""
+
+msgid "pgr_dijkstra(Many to One)"
+msgstr ""
+
 msgid "pgr_dijkstra(Many to Many)"
 msgstr ""
 
@@ -10672,6 +10434,7 @@ msgid ""
 "columns to the new result columns."
 msgstr ""
 
+#, python-brace-format
 msgid "From vertex :math:`6` to vertices :math:`\\{10, 17\\}` on a **directed**"
 msgstr ""
 
@@ -10699,24 +10462,28 @@ msgstr ""
 msgid "5) Using `One to Many`_ to get the solution of examples 1 and 2"
 msgstr ""
 
+#, python-brace-format
 msgid "Paths :math:`\\{6\\}\\rightarrow\\{10, 7\\}`"
 msgstr ""
 
 msgid "6) Using `Many to One`_ to get the solution of examples 2 and 4"
 msgstr ""
 
+#, python-brace-format
 msgid "Paths :math:`\\{6, 12\\}\\rightarrow\\{7\\}`"
 msgstr ""
 
 msgid "7) Using `Many to Many`_ to get the solution of examples 1 to 4"
 msgstr ""
 
+#, python-brace-format
 msgid "Paths :math:`\\{6, 12\\}\\rightarrow\\{10, 7\\}`"
 msgstr ""
 
 msgid "8) Using `Combinations`_ to get the solution of examples 1 to 3"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Paths :math:`\\{6\\}\\rightarrow\\{10, "
 "7\\}\\cup\\{12\\}\\rightarrow\\{10\\}`"
@@ -10815,6 +10582,7 @@ msgstr ""
 msgid "Equvalences between signatures"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "The following examples find the path for "
 ":math:`\\{6\\}\\rightarrow\\{10\\}`"
@@ -10993,6 +10761,7 @@ msgstr ""
 msgid "Using a **directed** graph for car routing."
 msgstr ""
 
+#, python-brace-format
 msgid "The subway stations are on the following vertices :math:`\\{1, 10, 11\\}`"
 msgstr ""
 
@@ -11041,9 +10810,11 @@ msgstr ""
 msgid "Unsing an **undirected** graph for pedestrian routing"
 msgstr ""
 
+#, python-brace-format
 msgid "The first subway line stations are at :math:`\\{15, 16\\}`"
 msgstr ""
 
+#, python-brace-format
 msgid "The second subway line stations stops are at :math:`\\{1, 10, 11\\}`"
 msgstr ""
 
@@ -11070,9 +10841,11 @@ msgstr ""
 msgid "Find the best car connection between all the stations of two subway lines"
 msgstr ""
 
+#, python-brace-format
 msgid "The first subway line stations stops are at :math:`\\{1, 10, 11\\}`"
 msgstr ""
 
+#, python-brace-format
 msgid "The second subway line stations are at :math:`\\{15, 16\\}`"
 msgstr ""
 
@@ -11095,11 +10868,13 @@ msgstr ""
 msgid "From the results:"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "making a connection from the first subway line :math:`\\{1, 10, 11\\}` to"
 " the second :math:`\\{15, 16\\}`:"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "The best connections from all the stations from the first line are: "
 ":math:`{(1 \\rightarrow 16) (10 \\rightarrow 16) (11 \\rightarrow 16)}`"
@@ -11110,11 +10885,13 @@ msgid ""
 "(lines: `11` and `12`)"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "making a connection from the second subway line :math:`\\{15, 16\\}` to "
 "the first :math:`\\{1, 10, 11\\}`:"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "The best connections from all the stations from the second line are: "
 ":math:`{(15 \\rightarrow 10) (16 \\rightarrow 11)}`"
@@ -11218,6 +10995,7 @@ msgstr ""
 msgid "``pgr_dijkstraVia`` — Route that goes through a list of vertices."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Given a list of vertices and a graph, this function is equivalent to "
 "finding the shortest path between :math:`vertex_i` and "
@@ -11248,6 +11026,7 @@ msgstr ""
 msgid "Returns set of |via-result|"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Find the route that visits the vertices :math:`\\{5, 1, 8\\}` in that "
 "order on an directed graph."
@@ -11276,6 +11055,7 @@ msgid ""
 "current ``seq``."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "All this examples are about the route that visits the vertices "
 ":math:`\\{5, 7, 1, 8, 15\\}` in that order on a **directed** graph."
@@ -11309,6 +11089,9 @@ msgid "``pgr_drivingDistance``"
 msgstr ""
 
 msgid "``pgr_drivingDistance`` - Returns the driving distance from a start node."
+msgstr ""
+
+msgid "Standarizing output columns to |result-spantree|"
 msgstr ""
 
 msgid "Added ``depth`` and ``start_vid`` result columns."
@@ -11360,6 +11143,7 @@ msgstr ""
 msgid "Multiple Vertices"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From vertices :math:`\\{11, 16\\}` for a distance of :math:`3.0` with "
 "equi-cost on a directed graph"
@@ -11381,6 +11165,7 @@ msgid ""
 "signature."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From vertices :math:`\\{11, 16\\}` for a distance of :math:`3.0` on an "
 "undirected graph"
@@ -11539,6 +11324,7 @@ msgstr ""
 msgid "Returns set of |result-disjoint-m-m|"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Using a combinations table, equivalent to calculating result from "
 "vertices :math:`\\{5, 6\\}` to vertices :math:`\\{10, 15, 14\\}` on an "
@@ -11780,7 +11566,7 @@ msgid ""
 "adjustments needed by the application."
 msgstr ""
 
-msgid "EMTPY SET`` is returned on dryrun executions"
+msgid "``EMTPY SET`` is returned on dryrun executions"
 msgstr ""
 
 msgid "pgr_findCloseEdges(`Edges SQL`_, **point**, **tolerance**, [**options**])"
@@ -11789,13 +11575,16 @@ msgstr ""
 msgid "pgr_findCloseEdges(`Edges SQL`_, **points**, **tolerance**, [**options**])"
 msgstr ""
 
-msgid "**options:** [cap, partial, dryrun]``"
+msgid "**options:** ``[cap, partial, dryrun]``"
 msgstr ""
 
 msgid "Returns set of |result-find|"
 msgstr ""
 
 msgid "One point"
+msgstr ""
+
+msgid "**options:** [cap, partial, dryrun]``"
 msgstr ""
 
 msgid "Default: ``cap => 1``"
@@ -11826,9 +11615,6 @@ msgid "``NULL`` on ``distance``, ``geom``, ``edge`` columns."
 msgstr ""
 
 msgid "Many points"
-msgstr ""
-
-msgid "**options:** ``[cap, partial, dryrun]``"
 msgstr ""
 
 msgid ""
@@ -11992,6 +11778,7 @@ msgstr ""
 msgid "``edge_id`` identifier of the edge close to the **original point**"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Two edges are withing :math:`0.5` distance units from the **original "
 "point**: :math:`{5, 8}`"
@@ -12045,6 +11832,7 @@ msgstr ""
 msgid "``edge_id`` identifier of the edge **closest** to the **original point**"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From all edges within :math:`0.5` distance units from the **original "
 "point**: :math:`{5}` is the closest one."
@@ -12235,6 +12023,7 @@ msgstr ""
 msgid "pgr_floydWarshall(`Edges SQL`_, [``directed``])"
 msgstr ""
 
+#, python-brace-format
 msgid "For a directed subgraph with edges :math:`\\{1, 2, 3, 4\\}`."
 msgstr ""
 
@@ -12315,11 +12104,11 @@ msgstr ""
 msgid "Git hash of pgRouting build"
 msgstr ""
 
-msgid "``pgr_hawickCircuits - Experimental``"
+msgid "``pgr_hawickCircuits`` - Experimental"
 msgstr ""
 
 msgid ""
-"``pgr_hawickCircuits`` — Returns the list of cirucits using hawick "
+"``pgr_hawickCircuits`` — Returns the list of ciruits using hawick "
 "circuits algorithm."
 msgstr ""
 
@@ -12393,6 +12182,7 @@ msgid ""
 "graph."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "A graph is planar if it can be drawn in two-dimensional space with no two"
 " of its edges crossing. Such a drawing of a planar graph is called a "
@@ -12435,6 +12225,7 @@ msgstr ""
 msgid "`false` when the graph is not planar."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "The following edges will make the subgraph with vertices {10, 15, 11, 16,"
 " 13} a :math:`K_1` graph."
@@ -12503,6 +12294,9 @@ msgid ""
 "breadth First Search ordering."
 msgstr ""
 
+msgid "Added ``pred`` result columns."
+msgstr ""
+
 msgid ""
 "Visits and extracts the nodes information in Breath First Search ordering"
 " of the Minimum Spanning Tree created using Kruskal's algorithm."
@@ -12523,6 +12317,7 @@ msgstr ""
 msgid "The Minimum Spanning Tree having as root vertex :math:`6`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "The Minimum Spanning Tree starting on vertices :math:`\\{9, 6\\}` with "
 ":math:`depth \\leq 3`"
@@ -12554,6 +12349,7 @@ msgid ""
 ":math:`distance \\leq 3.5`"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "The Minimum Spanning Tree starting on vertices :math:`\\{9, 6\\}` with "
 ":math:`distance \\leq 3.5`"
@@ -12578,7 +12374,7 @@ msgstr ""
 msgid "pgr_kruskalDFS(`Edges SQL`_, **root vids**, [``max_depth``])"
 msgstr ""
 
-msgid "``pgr_lengauerTarjanDominatorTree`` -Experimental"
+msgid "``pgr_lengauerTarjanDominatorTree`` - Experimental"
 msgstr ""
 
 msgid ""
@@ -12652,6 +12448,9 @@ msgid ""
 "edge-based graph."
 msgstr ""
 
+msgid "Works for directed and undirected graphs."
+msgstr ""
+
 msgid "Given a graph :math:`G`, its line graph :math:`L(G)` is a graph such that:"
 msgstr ""
 
@@ -12688,6 +12487,7 @@ msgstr ""
 msgid "Returns set of |result-lineg|"
 msgstr ""
 
+#, python-brace-format
 msgid "For an undirected graph with edges :math:'{2,4,5,8}'"
 msgstr ""
 
@@ -12725,6 +12525,7 @@ msgstr ""
 msgid "Given the following directed graph"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 ":math:`G(V,E) = G(\\{1,2,3,4\\},\\{ 1 \\rightarrow 2, 1 \\rightarrow 4, 2"
 " \\rightarrow 3, 3 \\rightarrow 1, 3 \\rightarrow 2, 3 \\rightarrow 4, 4 "
@@ -12771,11 +12572,13 @@ msgid ""
 "column is used."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Edges :math:`{2 \\rightarrow 3, 3 \\rightarrow 2}` are represented with "
 "one edge row with :math:`id=203`."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Edges :math:`{3 \\rightarrow 4, 4 \\rightarrow 3}` are represented with "
 "one edge row with :math:`id=304`."
@@ -12823,11 +12626,13 @@ msgid ""
 "column is not used."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Edges :math:`{2 \\rightarrow 3, 3 \\rightarrow 2}` are represented with "
 "two edges :math:`id=203` and :math:`id=302` respectively."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Edges :math:`{3 \\rightarrow 4, 4 \\rightarrow 3}` are represented with "
 "two edges :math:`id=304` and :math:`id=403` respectively."
@@ -12911,12 +12716,12 @@ msgstr ""
 msgid "Returns set of |result-linegf|"
 msgstr ""
 
+#, python-brace-format
 msgid "Full line graph of subgraph of edges :math:`\\{4, 7, 8, 10\\}`"
 msgstr ""
 
 msgid ""
-"The examples of this section are based on the :doc:`sampledata` The "
-"examples include the subgraph including edges 4, 7, 8, and 10 with "
+"The examples include the subgraph including edges 4, 7, 8, and 10 with "
 "``reverse_cost``."
 msgstr ""
 
@@ -13150,13 +12955,16 @@ msgid ""
 "in a graph."
 msgstr ""
 
+msgid "pgr_maxCardinalityMatch(text) returns only ``edge`` column."
+msgstr ""
+
 msgid "Deprecated signature"
 msgstr ""
 
-msgid "pgr_maxCardinalityMatch(text,boolean)``"
+msgid "pgr_maxCardinalityMatch(text,boolean)"
 msgstr ""
 
-msgid "directed => false`` when used."
+msgid "directed => ``false`` when used."
 msgstr ""
 
 msgid "Renamed from ``pgr_maximumCardinalityMatching``"
@@ -14089,12 +13897,6 @@ msgid ""
 "graph using Tarjan's algorithm based on DFS."
 msgstr ""
 
-msgid "``n_seq`` is removed"
-msgstr ""
-
-msgid "``seq`` changed type to ``BIGINT``"
-msgstr ""
-
 msgid ""
 "A strongly connected component of a directed graph is a set of vertices "
 "that are all reachable from each other."
@@ -14270,25 +14072,25 @@ msgstr ""
 msgid "Deprecated signatures"
 msgstr ""
 
-msgid "pgr_trsp(text,integer,integer,boolean,boolean,text)``"
+msgid "pgr_trsp(text,integer,integer,boolean,boolean,text)"
 msgstr ""
 
-msgid "pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)``"
+msgid "pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)"
 msgstr ""
 
-msgid "pgr_trspViaVertices(text,anyarray,boolean,boolean,text)``"
+msgid "pgr_trspViaVertices(text,anyarray,boolean,boolean,text)"
 msgstr ""
 
-msgid "pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``"
+msgid "pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)"
 msgstr ""
 
 msgid "New prototypes"
 msgstr ""
 
-msgid "pgr_trspViaVertices``"
+msgid "pgr_trspViaVertices"
 msgstr ""
 
-msgid "pgr_trspViaEdges``"
+msgid "pgr_trspViaEdges"
 msgstr ""
 
 msgid ""
@@ -14342,14 +14144,17 @@ msgstr ""
 msgid "From vertex :math:`6` to vertex :math:`10` on an undirected graph."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From vertex :math:`6` to vertices :math:`\\{10, 1\\}` on an undirected "
 "graph."
 msgstr ""
 
+#, python-brace-format
 msgid "From vertices :math:`\\{6, 1\\}` to vertex :math:`8` on a directed graph."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "From vertices :math:`\\{6, 1\\}` to vertices :math:`\\{10, 8\\}` on an "
 "undirected graph."
@@ -14371,9 +14176,7 @@ msgid ""
 "restrictions."
 msgstr ""
 
-msgid "pgr_trspVia(One Via)"
-msgstr ""
-
+#, python-brace-format
 msgid ""
 "Given a list of vertices and a graph, this function is equivalent to "
 "finding the shortest path between :math:`vertex_i` and "
@@ -14403,6 +14206,7 @@ msgid ""
 "[**options**])"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "All this examples are about the route that visits the vertices "
 ":math:`\\{5, 7, 1, 8, 15\\}` in that order on a directed graph."
@@ -14462,6 +14266,7 @@ msgid ""
 "and/or points with restrictions."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Given a graph, a set of restriction on the graph edges, a set of points "
 "on the graphs edges and a list of vertices, this function is equivalent "
@@ -14500,6 +14305,7 @@ msgid ""
 "**via vertices**, [**options**])"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Find the route that visits the vertices :math:`\\{-6, 15, -5\\}` in that "
 "order on an directed graph."
@@ -14575,6 +14381,7 @@ msgstr ""
 msgid "Usage variations"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "All this examples are about the route that visits the vertices "
 ":math:`\\{-6, 7, -4, 8, -2\\}` in that order on a directed graph."
@@ -14952,6 +14759,7 @@ msgstr ""
 msgid "Use :doc:`pgr_findCloseEdges` in the `Points SQL`_."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "All the examples are about traveling from point :math:`1` and vertex "
 ":math:`5` to points :math:`\\{2, 3, 6\\}` and vertices :math:`\\{10, "
@@ -15100,6 +14908,7 @@ msgstr ""
 msgid "Right side driving topology"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Traveling from point :math:`1` and vertex :math:`5` to points "
 ":math:`\\{2, 3, 6\\}` and vertices :math:`\\{10, 11\\}`"
@@ -15124,6 +14933,7 @@ msgid ""
 "[**options**])"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Cost matrix for points :math:`\\{1, 6\\}` and vertices :math:`\\{10, "
 "11\\}` on an **undirected** graph"
@@ -15290,7 +15100,7 @@ msgstr ""
 msgid ":doc:`pgr_alphaShape`"
 msgstr ""
 
-msgid "pgr_withPointsKSP - Proposed"
+msgid "``pgr_withPointsKSP`` - Proposed"
 msgstr ""
 
 msgid ""
@@ -15299,6 +15109,9 @@ msgid ""
 msgstr ""
 
 msgid "Standarizing output columns to |nksp-result|"
+msgstr ""
+
+msgid "pgr_withPointsKSP(One to One)"
 msgstr ""
 
 msgid "pgr_withPointsKSP(One to Many)"
@@ -15436,6 +15249,7 @@ msgid ""
 " points."
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Given a graph, a set of points on the graphs edges and a list of "
 "vertices, this function is equivalent to finding the shortest path "
@@ -15449,6 +15263,7 @@ msgid ""
 "[**options**])"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Find the route that visits the vertices :math:`\\{ -6, 15, -1\\}` in that"
 " order on a **directed** graph."
@@ -15457,6 +15272,7 @@ msgstr ""
 msgid "Use :doc:`pgr_findCloseEdges` in the `Points SQL`_"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "All this examples are about the route that visits the vertices "
 ":math:`\\{-1, 7, -3, 16, 15\\}` in that order on a **directed** graph."
@@ -15539,15 +15355,6 @@ msgid ""
 "Graph."
 msgstr ""
 
-msgid ":doc:`pgr_withPointsVia`"
-msgstr ""
-
-msgid ":doc:`pgr_trspVia`"
-msgstr ""
-
-msgid ":doc:`pgr_trspVia_withPoints`"
-msgstr ""
-
 msgid ":doc:`withPoints-family` - Functions based on Dijkstra algorithm."
 msgstr ""
 
@@ -15580,7 +15387,156 @@ msgstr ""
 msgid "Minors 3.x"
 msgstr ""
 
+msgid "pgRouting 3.8"
+msgstr ""
+
 msgid "pgRouting 3.7"
+msgstr ""
+
+msgid "pgRouting 3.7.3 Release Notes"
+msgstr ""
+
+#, python-format
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git "
+"closed milestone for 3.7.3 "
+"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.3%22>`__"
+msgstr ""
+
+msgid ""
+"`#2731 <https://github.com/pgRouting/pgrouting/pull/2731>`__ Build "
+"Failure on Ubuntu 22"
+msgstr ""
+
+msgid "pgRouting 3.7.2 Release Notes"
+msgstr ""
+
+#, python-format
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git "
+"closed milestone for 3.7.2 "
+"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
+msgstr ""
+
+msgid "Build"
+msgstr ""
+
+msgid ""
+"`#2713 <https://github.com/pgRouting/pgrouting/pull/2713>`__ cmake "
+"missing some policies and min version"
+msgstr ""
+
+msgid "Using OLD policies: CMP0148, CMP0144, CMP0167"
+msgstr ""
+
+msgid "Minimum cmake version 3.12"
+msgstr ""
+
+msgid ""
+"`#2707 <https://github.com/pgRouting/pgrouting/pull/2707>`__ Build "
+"failure in pgRouting 3.7.1 on Alpine"
+msgstr ""
+
+msgid ""
+"`#2706 <https://github.com/pgRouting/pgrouting/pull/2706>`__ winnie "
+"crashing on pgr_betweennessCentrality"
+msgstr ""
+
+msgid "pgRouting 3.7.1 Release Notes"
+msgstr ""
+
+#, python-format
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git "
+"closed milestone for 3.7.1 "
+"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
+msgstr ""
+
+msgid ""
+"`#2680 <https://github.com/pgRouting/pgrouting/pull/2680>`__ fails to "
+"compile under mingw64 gcc 13.2"
+msgstr ""
+
+msgid ""
+"`#2689 <https://github.com/pgRouting/pgrouting/pull/2689>`__ When point "
+"is a vertex, the withPoints family do not return results."
+msgstr ""
+
+msgid "C/C++ code enhancemet"
+msgstr ""
+
+msgid "TRSP family"
+msgstr ""
+
+msgid "pgRouting 3.7.0 Release Notes"
+msgstr ""
+
+#, python-format
+msgid ""
+"To see all issues & pull requests closed by this release see the `Git "
+"closed milestone for 3.7.0 "
+"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
+msgstr ""
+
+msgid ""
+"`#2656 <https://github.com/pgRouting/pgrouting/pull/2656>`__ Stop support"
+" of PostgreSQL12 on pgrouting v3.7"
+msgstr ""
+
+msgid "Stopping support of PostgreSQL 12"
+msgstr ""
+
+msgid "CI does not test for PostgreSQL 12"
+msgstr ""
+
+msgid "New experimental functions"
+msgstr ""
+
+msgid "Metrics"
+msgstr ""
+
+msgid "pgr_betweennessCentrality"
+msgstr ""
+
+msgid "Official functions changes"
+msgstr ""
+
+msgid ""
+"`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standarize "
+"spanning tree functions output"
+msgstr ""
+
+msgid "Functions:"
+msgstr ""
+
+msgid "Experimental promoted to proposed."
+msgstr ""
+
+msgid ""
+"`#2635 <https://github.com/pgRouting/pgrouting/pull/2635>`__ "
+"pgr_LineGraph ignores directed flag and use negative values for "
+"identifiers."
+msgstr ""
+
+msgid "``pgr_lineGraph``"
+msgstr ""
+
+msgid "Code enhancement"
+msgstr ""
+
+msgid ""
+"`#2599 <https://github.com/pgRouting/pgrouting/pull/2599>`__ Driving "
+"distance cleanup"
+msgstr ""
+
+msgid ""
+"`#2607 <https://github.com/pgRouting/pgrouting/pull/2607>`__ Read "
+"postgresql data on C++"
+msgstr ""
+
+msgid ""
+"`#2614 <https://github.com/pgRouting/pgrouting/pull/2614>`__ Clang tidy "
+"does not work"
 msgstr ""
 
 msgid "pgRouting 3.6"
@@ -15716,7 +15672,7 @@ msgstr ""
 
 msgid ""
 "`#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ Standarize "
-"output pgr_drivingdistance"
+"output pgr_drivingDistance"
 msgstr ""
 
 msgid "Proposed functions changes"
@@ -15940,6 +15896,9 @@ msgstr ""
 msgid "Via with turn restrictions"
 msgstr ""
 
+msgid "pgr_trspVia(One Via)"
+msgstr ""
+
 msgid "pgr_trspVia_withPoints(One Via)"
 msgstr ""
 
@@ -15991,22 +15950,16 @@ msgstr ""
 msgid "Flow functions"
 msgstr ""
 
-msgid "pgr_maxCardinalityMatch(text)``"
+msgid "pgr_maxCardinalityMatch(text)"
 msgstr ""
 
-msgid "Deprecating ``pgr_maxCardinalityMatch(text,boolean)``"
+msgid "Deprecating: pgr_maxCardinalityMatch(text,boolean)"
 msgstr ""
 
 msgid "Deprecated Functions"
 msgstr ""
 
-msgid "pgr_trsp(text,integer,integer,boolean,boolean,text)"
-msgstr ""
-
 msgid "pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text)"
-msgstr ""
-
-msgid "pgr_trspViaVertices(text,anyarray,boolean,boolean,text)"
 msgstr ""
 
 msgid "pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)"
@@ -16041,9 +15994,6 @@ msgid ""
 "To see all issues & pull requests closed by this release see the `Git "
 "closed milestone for 3.3.3 "
 "<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.3%22>`_"
-msgstr ""
-
-msgid "pgr_maxCardinalityMatch(text,boolean)"
 msgstr ""
 
 msgid ""
@@ -16571,7 +16521,7 @@ msgid ""
 "of information"
 msgstr ""
 
-msgid "New functions"
+msgid "New Functions"
 msgstr ""
 
 msgid "Kruskal family"
@@ -16610,148 +16560,94 @@ msgstr ""
 msgid "aStar Family"
 msgstr ""
 
-msgid "pgr_aStar(one to many)"
+msgid "pgr_aStarCost(One to One)"
 msgstr ""
 
-msgid "pgr_aStar(many to one)"
+msgid "pgr_aStarCost(One to Many)"
 msgstr ""
 
-msgid "pgr_aStar(many to many)"
+msgid "pgr_aStarCost(Many to One)"
 msgstr ""
 
-msgid "pgr_aStarCost(one to one)"
+msgid "pgr_aStarCost(Many to Many)"
 msgstr ""
 
-msgid "pgr_aStarCost(one to many)"
-msgstr ""
-
-msgid "pgr_aStarCost(many to one)"
-msgstr ""
-
-msgid "pgr_aStarCost(many to many)"
-msgstr ""
-
-msgid "pgr_aStarCostMatrix(one to one)"
-msgstr ""
-
-msgid "pgr_aStarCostMatrix(one to many)"
-msgstr ""
-
-msgid "pgr_aStarCostMatrix(many to one)"
-msgstr ""
-
-msgid "pgr_aStarCostMatrix(many to many)"
+msgid "pgr_aStarCostMatrix"
 msgstr ""
 
 msgid "bdAstar Family"
 msgstr ""
 
-msgid "pgr_bdAstar(one to many)"
+msgid "pgr_bdAstarCost(One to One)"
 msgstr ""
 
-msgid "pgr_bdAstar(many to one)"
+msgid "pgr_bdAstarCost(One to Many)"
 msgstr ""
 
-msgid "pgr_bdAstar(many to many)"
+msgid "pgr_bdAstarCost(Many to One)"
 msgstr ""
 
-msgid "pgr_bdAstarCost(one to one)"
+msgid "pgr_bdAstarCost(Many to Many)"
 msgstr ""
 
-msgid "pgr_bdAstarCost(one to many)"
-msgstr ""
-
-msgid "pgr_bdAstarCost(many to one)"
-msgstr ""
-
-msgid "pgr_bdAstarCost(many to many)"
-msgstr ""
-
-msgid "pgr_bdAstarCostMatrix(one to one)"
-msgstr ""
-
-msgid "pgr_bdAstarCostMatrix(one to many)"
-msgstr ""
-
-msgid "pgr_bdAstarCostMatrix(many to one)"
-msgstr ""
-
-msgid "pgr_bdAstarCostMatrix(many to many)"
+msgid "pgr_bdAstarCostMatrix"
 msgstr ""
 
 msgid "bdDijkstra Family"
 msgstr ""
 
-msgid "pgr_bdDijkstra(one to many)"
+msgid "pgr_bdDijkstraCost(One to One)"
 msgstr ""
 
-msgid "pgr_bdDijkstra(many to one)"
+msgid "pgr_bdDijkstraCost(One to Many)"
 msgstr ""
 
-msgid "pgr_bdDijkstra(many to many)"
+msgid "pgr_bdDijkstraCost(Many to One)"
 msgstr ""
 
-msgid "pgr_bdDijkstraCost(one to one)"
+msgid "pgr_bdDijkstraCost(Many to Many)"
 msgstr ""
 
-msgid "pgr_bdDijkstraCost(one to many)"
-msgstr ""
-
-msgid "pgr_bdDijkstraCost(many to one)"
-msgstr ""
-
-msgid "pgr_bdDijkstraCost(many to many)"
-msgstr ""
-
-msgid "pgr_bdDijkstraCostMatrix(one to one)"
-msgstr ""
-
-msgid "pgr_bdDijkstraCostMatrix(one to many)"
-msgstr ""
-
-msgid "pgr_bdDijkstraCostMatrix(many to one)"
-msgstr ""
-
-msgid "pgr_bdDijkstraCostMatrix(many to many)"
+msgid "pgr_bdDijkstraCostMatrix"
 msgstr ""
 
 msgid "Flow Family"
 msgstr ""
 
-msgid "pgr_pushRelabel(one to one)"
+msgid "pgr_pushRelabel(One to One)"
 msgstr ""
 
-msgid "pgr_pushRelabel(one to many)"
+msgid "pgr_pushRelabel(One to Many)"
 msgstr ""
 
-msgid "pgr_pushRelabel(many to one)"
+msgid "pgr_pushRelabel(Many to One)"
 msgstr ""
 
-msgid "pgr_pushRelabel(many to many)"
+msgid "pgr_pushRelabel(Many to Many)"
 msgstr ""
 
-msgid "pgr_edmondsKarp(one to one)"
+msgid "pgr_edmondsKarp(One to One)"
 msgstr ""
 
-msgid "pgr_edmondsKarp(one to many)"
+msgid "pgr_edmondsKarp(One to Many)"
 msgstr ""
 
-msgid "pgr_edmondsKarp(many to one)"
+msgid "pgr_edmondsKarp(Many to One)"
 msgstr ""
 
-msgid "pgr_edmondsKarp(many to many)"
+msgid "pgr_edmondsKarp(Many to Many)"
 msgstr ""
 
-msgid "pgr_boykovKolmogorov (one to one)"
+msgid "pgr_boykovKolmogorov (One to One)"
 msgstr ""
 
-msgid "pgr_boykovKolmogorov (one to many)"
+msgid "pgr_boykovKolmogorov (One to Many)"
 msgstr ""
 
-msgid "pgr_boykovKolmogorov (many to one)"
+msgid "pgr_boykovKolmogorov (Many to One)"
 msgstr ""
 
-msgid "pgr_boykovKolmogorov (many to many)"
+msgid "pgr_boykovKolmogorov (Many to Many)"
 msgstr ""
 
 msgid "pgr_maxCardinalityMatching"
@@ -16760,16 +16656,16 @@ msgstr ""
 msgid "pgr_maxFlow"
 msgstr ""
 
-msgid "pgr_edgeDisjointPaths(one to one)"
+msgid "pgr_edgeDisjointPaths(One to One)"
 msgstr ""
 
-msgid "pgr_edgeDisjointPaths(one to many)"
+msgid "pgr_edgeDisjointPaths(One to Many)"
 msgstr ""
 
-msgid "pgr_edgeDisjointPaths(many to one)"
+msgid "pgr_edgeDisjointPaths(Many to One)"
 msgstr ""
 
-msgid "pgr_edgeDisjointPaths(many to many)"
+msgid "pgr_edgeDisjointPaths(Many to Many)"
 msgstr ""
 
 msgid "Components family"
@@ -16970,7 +16866,7 @@ msgstr ""
 msgid "pgr_johnson"
 msgstr ""
 
-msgid "pgr_astar"
+msgid "pgr_aStar"
 msgstr ""
 
 msgid "pgr_bdAstar"
@@ -17205,19 +17101,13 @@ msgstr ""
 msgid "Parameter names changed"
 msgstr ""
 
-msgid "The many version results are the union of the one to one version"
+msgid "The many version results are the union of the One to One version"
 msgstr ""
 
 msgid "New Signatures"
 msgstr ""
 
-msgid "pgr_bdAstar(one to one)"
-msgstr ""
-
-msgid "pgr_bdAstarCostMatrix"
-msgstr ""
-
-msgid "pgr_bdDijkstraCostMatrix"
+msgid "pgr_bdAstar(One to One)"
 msgstr ""
 
 msgid "pgr_lineGraph"
@@ -17300,34 +17190,7 @@ msgid ""
 " on Github."
 msgstr ""
 
-msgid "New Function."
-msgstr ""
-
 msgid "pgr_bdDijkstra"
-msgstr ""
-
-msgid "pgr_astar(one to many)"
-msgstr ""
-
-msgid "pgr_astar(many to one)"
-msgstr ""
-
-msgid "pgr_astar(many to many)"
-msgstr ""
-
-msgid "pgr_astarCost(one to one)"
-msgstr ""
-
-msgid "pgr_astarCost(one to many)"
-msgstr ""
-
-msgid "pgr_astarCost(many to one)"
-msgstr ""
-
-msgid "pgr_astarCost(many to many)"
-msgstr ""
-
-msgid "pgr_astarCostMatrix"
 msgstr ""
 
 msgid "Deprecated signatures."
@@ -17405,52 +17268,46 @@ msgstr ""
 msgid "pgr_TSP"
 msgstr ""
 
-msgid "pgr_aStar"
-msgstr ""
-
-msgid "New Functions"
-msgstr ""
-
 msgid "pgr_eucledianTSP"
 msgstr ""
 
 msgid "pgr_withPointsCostMatrix"
 msgstr ""
 
-msgid "pgr_maxFlowPushRelabel(one to one)"
+msgid "pgr_maxFlowPushRelabel(One to One)"
 msgstr ""
 
-msgid "pgr_maxFlowPushRelabel(one to many)"
+msgid "pgr_maxFlowPushRelabel(One to Many)"
 msgstr ""
 
-msgid "pgr_maxFlowPushRelabel(many to one)"
+msgid "pgr_maxFlowPushRelabel(Many to One)"
 msgstr ""
 
-msgid "pgr_maxFlowPushRelabel(many to many)"
+msgid "pgr_maxFlowPushRelabel(Many to Many)"
 msgstr ""
 
-msgid "pgr_maxFlowEdmondsKarp(one to one)"
+msgid "pgr_maxFlowEdmondsKarp(One to One)"
 msgstr ""
 
-msgid "pgr_maxFlowEdmondsKarp(one to many)"
+msgid "pgr_maxFlowEdmondsKarp(One to Many)"
 msgstr ""
 
-msgid "pgr_maxFlowEdmondsKarp(many to one)"
+msgid "pgr_maxFlowEdmondsKarp(Many to One)"
 msgstr ""
 
-msgid "pgr_maxFlowEdmondsKarp(many to many)"
+msgid "pgr_maxFlowEdmondsKarp(Many to Many)"
 msgstr ""
 
-msgid "pgr_maxFlowBoykovKolmogorov (one to one)"
+msgid "pgr_maxFlowBoykovKolmogorov (One to One)"
 msgstr ""
 
-msgid "pgr_maxFlowBoykovKolmogorov (one to many)"
+msgid "pgr_maxFlowBoykovKolmogorov (One to Many)"
 msgstr ""
 
-msgid "pgr_maxFlowBoykovKolmogorov (many to one)"
+msgid "pgr_maxFlowBoykovKolmogorov (Many to One)"
 msgstr ""
 
-msgid "pgr_maxFlowBoykovKolmogorov (many to many)"
+msgid "pgr_maxFlowBoykovKolmogorov (Many to Many)"
 msgstr ""
 
 msgid "pgr_maximumCardinalityMatching"
@@ -17462,7 +17319,7 @@ msgstr ""
 msgid "pgr_tsp - use pgr_TSP or pgr_eucledianTSP instead"
 msgstr ""
 
-msgid "pgr_astar - use pgr_aStar instead"
+msgid "pgr_aStar - use pgr_aStar instead"
 msgstr ""
 
 msgid "pgr_flip_edges"
@@ -17569,43 +17426,43 @@ msgstr ""
 msgid "pgr_Johnson"
 msgstr ""
 
-msgid "pgr_dijkstraCost(one to one)"
+msgid "pgr_dijkstraCost(One to One)"
 msgstr ""
 
-msgid "pgr_dijkstraCost(one to many)"
+msgid "pgr_dijkstraCost(One to Many)"
 msgstr ""
 
-msgid "pgr_dijkstraCost(many to one)"
+msgid "pgr_dijkstraCost(Many to One)"
 msgstr ""
 
-msgid "pgr_dijkstraCost(many to many)"
+msgid "pgr_dijkstraCost(Many to Many)"
 msgstr ""
 
 msgid "Proposed Functionality"
 msgstr ""
 
-msgid "pgr_withPoints(one to one)"
+msgid "pgr_withPoints(One to One)"
 msgstr ""
 
-msgid "pgr_withPoints(one to many)"
+msgid "pgr_withPoints(One to Many)"
 msgstr ""
 
-msgid "pgr_withPoints(many to one)"
+msgid "pgr_withPoints(Many to One)"
 msgstr ""
 
-msgid "pgr_withPoints(many to many)"
+msgid "pgr_withPoints(Many to Many)"
 msgstr ""
 
-msgid "pgr_withPointsCost(one to one)"
+msgid "pgr_withPointsCost(One to One)"
 msgstr ""
 
-msgid "pgr_withPointsCost(one to many)"
+msgid "pgr_withPointsCost(One to Many)"
 msgstr ""
 
-msgid "pgr_withPointsCost(many to one)"
+msgid "pgr_withPointsCost(Many to One)"
 msgstr ""
 
-msgid "pgr_withPointsCost(many to many)"
+msgid "pgr_withPointsCost(Many to Many)"
 msgstr ""
 
 msgid "pgr_withPointsDD(single vertex)"
@@ -17651,19 +17508,10 @@ msgid ""
 " on Github."
 msgstr ""
 
-msgid "pgr_dijkstra(one to many)"
-msgstr ""
-
-msgid "pgr_dijkstra(many to one)"
-msgstr ""
-
-msgid "pgr_dijkstra(many to many)"
-msgstr ""
-
 msgid "Refactored"
 msgstr ""
 
-msgid "pgr_dijkstra(one to one)"
+msgid "pgr_dijkstra(One to One)"
 msgstr ""
 
 msgid ""
@@ -18410,6 +18258,7 @@ msgstr ""
 msgid "This category intends to solve the general problem:"
 msgstr ""
 
+#, python-brace-format
 msgid ""
 "Given a graph and a list of vertices, find the shortest path between "
 ":math:`vertex_i` and :math:`vertex_{i+1}` for all vertices"
