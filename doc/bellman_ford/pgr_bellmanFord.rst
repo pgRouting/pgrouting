@@ -264,7 +264,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`sampledata`
-* `Boost: Belman Ford <https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html>`__
+* `Boost: Bellman Ford <https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html>`__
 * https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm
 
    Boost Graph Inside

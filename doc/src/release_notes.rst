@@ -27,7 +27,7 @@ pgRouting 3
    :local:
    :depth: 1
 
-pgRouting 3.7
+pgRouting 3.8
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. contents:: Contents
@@ -35,6 +35,14 @@ pgRouting 3.7
    :depth: 1
 
 .. current
+
+pgRouting 3.8.0 Release Notes
+-------------------------------------------------------------------------------
+
+No Changes Yet
+
+pgRouting 3.7
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 pgRouting 3.7.3 Release Notes
 -------------------------------------------------------------------------------
@@ -257,7 +265,7 @@ milestone for 3.6.0
      :end-before: .. rubric
 
 * `#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ Standarize output
-  pgr_drivingdistance
+  pgr_drivingDistance
 
   .. include:: pgr_drivingDistance.rst
      :start-after: Version 3.6.0
@@ -472,9 +480,9 @@ milestone for 3.4.0
 
 * Flow functions
 
-  * pgr_maxCardinalityMatch(text)``
+  * pgr_maxCardinalityMatch(text)
 
-    * Deprecating ``pgr_maxCardinalityMatch(text,boolean)``
+    * Deprecating: pgr_maxCardinalityMatch(text,boolean)
 
 .. rubric:: Deprecated Functions
 
@@ -987,7 +995,7 @@ on Github.
   * `#1006 <https://github.com/pgRouting/pgrouting/issues/1006>`__: No loss of
     information
 
-.. rubric:: New functions
+.. rubric:: New Functions
 
 * Kruskal family
 
@@ -1008,66 +1016,57 @@ on Github.
 
 * aStar Family
 
-  * pgr_aStar(one to many)
-  * pgr_aStar(many to one)
-  * pgr_aStar(many to many)
-  * pgr_aStarCost(one to one)
-  * pgr_aStarCost(one to many)
-  * pgr_aStarCost(many to one)
-  * pgr_aStarCost(many to many)
-  * pgr_aStarCostMatrix(one to one)
-  * pgr_aStarCostMatrix(one to many)
-  * pgr_aStarCostMatrix(many to one)
-  * pgr_aStarCostMatrix(many to many)
+  * pgr_aStar(One to Many)
+  * pgr_aStar(Many to One)
+  * pgr_aStar(Many to Many)
+  * pgr_aStarCost(One to One)
+  * pgr_aStarCost(One to Many)
+  * pgr_aStarCost(Many to One)
+  * pgr_aStarCost(Many to Many)
+  * pgr_aStarCostMatrix
 
 * bdAstar Family
 
-  * pgr_bdAstar(one to many)
-  * pgr_bdAstar(many to one)
-  * pgr_bdAstar(many to many)
-  * pgr_bdAstarCost(one to one)
-  * pgr_bdAstarCost(one to many)
-  * pgr_bdAstarCost(many to one)
-  * pgr_bdAstarCost(many to many)
-  * pgr_bdAstarCostMatrix(one to one)
-  * pgr_bdAstarCostMatrix(one to many)
-  * pgr_bdAstarCostMatrix(many to one)
-  * pgr_bdAstarCostMatrix(many to many)
+  * pgr_bdAstar(One to Many)
+  * pgr_bdAstar(Many to One)
+  * pgr_bdAstar(Many to Many)
+  * pgr_bdAstarCost(One to One)
+  * pgr_bdAstarCost(One to Many)
+  * pgr_bdAstarCost(Many to One)
+  * pgr_bdAstarCost(Many to Many)
+  * pgr_bdAstarCostMatrix
 
 * bdDijkstra Family
 
-  * pgr_bdDijkstra(one to many)
-  * pgr_bdDijkstra(many to one)
-  * pgr_bdDijkstra(many to many)
-  * pgr_bdDijkstraCost(one to one)
-  * pgr_bdDijkstraCost(one to many)
-  * pgr_bdDijkstraCost(many to one)
-  * pgr_bdDijkstraCost(many to many)
-  * pgr_bdDijkstraCostMatrix(one to one)
-  * pgr_bdDijkstraCostMatrix(one to many)
-  * pgr_bdDijkstraCostMatrix(many to one)
-  * pgr_bdDijkstraCostMatrix(many to many)
+  * pgr_bdDijkstra(One to Many)
+  * pgr_bdDijkstra(Many to One)
+  * pgr_bdDijkstra(Many to Many)
+  * pgr_bdDijkstraCost(One to One)
+  * pgr_bdDijkstraCost(One to Many)
+  * pgr_bdDijkstraCost(Many to One)
+  * pgr_bdDijkstraCost(Many to Many)
+  * pgr_bdDijkstraCostMatrix
 
 * Flow Family
 
-  * pgr_pushRelabel(one to one)
-  * pgr_pushRelabel(one to many)
-  * pgr_pushRelabel(many to one)
-  * pgr_pushRelabel(many to many)
-  * pgr_edmondsKarp(one to one)
-  * pgr_edmondsKarp(one to many)
-  * pgr_edmondsKarp(many to one)
-  * pgr_edmondsKarp(many to many)
-  * pgr_boykovKolmogorov (one to one)
-  * pgr_boykovKolmogorov (one to many)
-  * pgr_boykovKolmogorov (many to one)
-  * pgr_boykovKolmogorov (many to many)
+  * pgr_pushRelabel(One to One)
+  * pgr_pushRelabel(One to Many)
+  * pgr_pushRelabel(Many to One)
+  * pgr_pushRelabel(Many to Many)
+  * pgr_edmondsKarp(One to One)
+  * pgr_edmondsKarp(One to Many)
+  * pgr_edmondsKarp(Many to One)
+  * pgr_edmondsKarp(Many to Many)
+  * pgr_boykovKolmogorov (One to One)
+  * pgr_boykovKolmogorov (One to Many)
+  * pgr_boykovKolmogorov (Many to One)
+  * pgr_boykovKolmogorov (Many to Many)
   * pgr_maxCardinalityMatching
   * pgr_maxFlow
-  * pgr_edgeDisjointPaths(one to one)
-  * pgr_edgeDisjointPaths(one to many)
-  * pgr_edgeDisjointPaths(many to one)
-  * pgr_edgeDisjointPaths(many to many)
+  * pgr_edgeDisjointPaths(One to One)
+  * pgr_edgeDisjointPaths(One to Many)
+  * pgr_edgeDisjointPaths(Many to One)
+  * pgr_edgeDisjointPaths(Many to Many)
 
 * Components family
 
@@ -1193,7 +1192,7 @@ on Github.
 
   * pgr_floydWarshall
   * pgr_johnson
-  * pgr_astar
+  * pgr_aStar
   * pgr_bdAstar
   * pgr_bdDijstra
   * pgr_alphashape
@@ -1283,13 +1282,15 @@ on Github.
 pgRouting 2.5.4 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed milestone for 2.5.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22%20>`_ on Github.
+To see the issues closed by this release see the `Git closed milestone for 2.5.4
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22%20>`_
+on Github.
 
 * Fixes server crash on several functions.
 
   * pgr_floydWarshall
   * pgr_johnson
-  * pgr_astar
+  * pgr_aStar
   * pgr_bdAstar
   * pgr_bdDijstra
   * pgr_alphashape
@@ -1374,29 +1375,29 @@ on Github.
 
   * Added path_id, cost and agg_cost columns on the result
   * Parameter names changed
-  * The many version results are the union of the one to one version
+  * The many version results are the union of the One to One version
 
 .. rubric:: New Signatures
 
-* pgr_bdAstar(one to one)
+* pgr_bdAstar(One to One)
 
 .. rubric:: New proposed functions.
 
-* pgr_bdAstar(one to many)
-* pgr_bdAstar(many to one)
-* pgr_bdAstar(many to many)
-* pgr_bdAstarCost(one to one)
-* pgr_bdAstarCost(one to many)
-* pgr_bdAstarCost(many to one)
-* pgr_bdAstarCost(many to many)
+* pgr_bdAstar(One to Many)
+* pgr_bdAstar(Many to One)
+* pgr_bdAstar(Many to Many)
+* pgr_bdAstarCost(One to One)
+* pgr_bdAstarCost(One to Many)
+* pgr_bdAstarCost(Many to One)
+* pgr_bdAstarCost(Many to Many)
 * pgr_bdAstarCostMatrix
-* pgr_bdDijkstra(one to many)
-* pgr_bdDijkstra(many to one)
-* pgr_bdDijkstra(many to many)
-* pgr_bdDijkstraCost(one to one)
-* pgr_bdDijkstraCost(one to many)
-* pgr_bdDijkstraCost(many to one)
-* pgr_bdDijkstraCost(many to many)
+* pgr_bdDijkstra(One to Many)
+* pgr_bdDijkstra(Many to One)
+* pgr_bdDijkstra(Many to Many)
+* pgr_bdDijkstraCost(One to One)
+* pgr_bdDijkstraCost(One to Many)
+* pgr_bdDijkstraCost(Many to One)
+* pgr_bdDijkstraCost(Many to Many)
 * pgr_bdDijkstraCostMatrix
 * pgr_lineGraph
 * pgr_lineGraphFull
@@ -1468,7 +1469,7 @@ To see the issues closed by this release see the `Git closed issues for 2.4.0
 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.4.0%22+is%3Aclosed>`_
 on Github.
 
-.. rubric:: New Function.
+.. rubric:: New Functions
 
 * pgr_bdDijkstra
 
@@ -1476,14 +1477,14 @@ on Github.
 .. rubric:: New proposed signatures:
 
 * pgr_maxFlow
-* pgr_astar(one to many)
-* pgr_astar(many to one)
-* pgr_astar(many to many)
-* pgr_astarCost(one to one)
-* pgr_astarCost(one to many)
-* pgr_astarCost(many to one)
-* pgr_astarCost(many to many)
-* pgr_astarCostMatrix
+* pgr_aStar(One to Many)
+* pgr_aStar(Many to One)
+* pgr_aStar(Many to Many)
+* pgr_aStarCost(One to One)
+* pgr_aStarCost(One to Many)
+* pgr_aStarCost(Many to One)
+* pgr_aStarCost(Many to Many)
+* pgr_aStarCostMatrix
 
 .. rubric:: Deprecated signatures.
 
@@ -1557,30 +1558,30 @@ on Github.
 
 * pgr_dijkstraCostMatrix
 * pgr_withPointsCostMatrix
-* pgr_maxFlowPushRelabel(one to one)
-* pgr_maxFlowPushRelabel(one to many)
-* pgr_maxFlowPushRelabel(many to one)
-* pgr_maxFlowPushRelabel(many to many)
-* pgr_maxFlowEdmondsKarp(one to one)
-* pgr_maxFlowEdmondsKarp(one to many)
-* pgr_maxFlowEdmondsKarp(many to one)
-* pgr_maxFlowEdmondsKarp(many to many)
-* pgr_maxFlowBoykovKolmogorov (one to one)
-* pgr_maxFlowBoykovKolmogorov (one to many)
-* pgr_maxFlowBoykovKolmogorov (many to one)
-* pgr_maxFlowBoykovKolmogorov (many to many)
+* pgr_maxFlowPushRelabel(One to One)
+* pgr_maxFlowPushRelabel(One to Many)
+* pgr_maxFlowPushRelabel(Many to One)
+* pgr_maxFlowPushRelabel(Many to Many)
+* pgr_maxFlowEdmondsKarp(One to One)
+* pgr_maxFlowEdmondsKarp(One to Many)
+* pgr_maxFlowEdmondsKarp(Many to One)
+* pgr_maxFlowEdmondsKarp(Many to Many)
+* pgr_maxFlowBoykovKolmogorov (One to One)
+* pgr_maxFlowBoykovKolmogorov (One to Many)
+* pgr_maxFlowBoykovKolmogorov (Many to One)
+* pgr_maxFlowBoykovKolmogorov (Many to Many)
 * pgr_maximumCardinalityMatching
-* pgr_edgeDisjointPaths(one to one)
-* pgr_edgeDisjointPaths(one to many)
-* pgr_edgeDisjointPaths(many to one)
-* pgr_edgeDisjointPaths(many to many)
+* pgr_edgeDisjointPaths(One to One)
+* pgr_edgeDisjointPaths(One to Many)
+* pgr_edgeDisjointPaths(Many to One)
+* pgr_edgeDisjointPaths(Many to Many)
 * pgr_contractGraph
 
 
 .. rubric:: Deprecated signatures
 
 * pgr_tsp - use pgr_TSP or pgr_eucledianTSP instead
-* pgr_astar - use pgr_aStar instead
+* pgr_aStar - use pgr_aStar instead
 
 
 .. rubric:: Deprecated Functions
@@ -1673,21 +1674,21 @@ on Github.
 
 - pgr_floydWarshall
 - pgr_Johnson
-- pgr_dijkstraCost(one to one)
-- pgr_dijkstraCost(one to many)
-- pgr_dijkstraCost(many to one)
-- pgr_dijkstraCost(many to many)
+- pgr_dijkstraCost(One to One)
+- pgr_dijkstraCost(One to Many)
+- pgr_dijkstraCost(Many to One)
+- pgr_dijkstraCost(Many to Many)
 
 .. rubric:: Proposed Functionality
 
-- pgr_withPoints(one to one)
-- pgr_withPoints(one to many)
-- pgr_withPoints(many to one)
-- pgr_withPoints(many to many)
-- pgr_withPointsCost(one to one)
-- pgr_withPointsCost(one to many)
-- pgr_withPointsCost(many to one)
-- pgr_withPointsCost(many to many)
+- pgr_withPoints(One to One)
+- pgr_withPoints(One to Many)
+- pgr_withPoints(Many to One)
+- pgr_withPoints(Many to Many)
+- pgr_withPointsCost(One to One)
+- pgr_withPointsCost(One to Many)
+- pgr_withPointsCost(Many to One)
+- pgr_withPointsCost(Many to Many)
 - pgr_withPointsDD(single vertex)
 - pgr_withPointsDD(multiple vertices)
 - pgr_withPointsKSP
@@ -1721,14 +1722,14 @@ on Github.
 
 .. rubric:: New Signatures
 
-- pgr_dijkstra(one to many)
-- pgr_dijkstra(many to one)
-- pgr_dijkstra(many to many)
+- pgr_dijkstra(One to Many)
+- pgr_dijkstra(Many to One)
+- pgr_dijkstra(Many to Many)
 - pgr_drivingDistance(multiple vertices)
 
 .. rubric:: Refactored
 
-- pgr_dijkstra(one to one)
+- pgr_dijkstra(One to One)
 - pgr_ksp
 - pgr_drivingDistance(single vertex)
 

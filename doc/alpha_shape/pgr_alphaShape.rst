@@ -36,7 +36,7 @@
 
 * Version 2.0.0
 
-  * Official function.
+  * New official function.
   * Renamed from version 1.x
 
 .. rubric:: Support
@@ -64,7 +64,7 @@ Characteristics
 
 Signatures
 -------------------------------------------------------------------------------
-.. rubric:: Summary
+
 
 .. admonition:: \ \
    :class: signatures

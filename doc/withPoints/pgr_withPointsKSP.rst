@@ -15,7 +15,7 @@
 
 |
 
-pgr_withPointsKSP - Proposed
+``pgr_withPointsKSP`` - Proposed
 ===============================================================================
 
 ``pgr_withPointsKSP`` — Yen's algorithm for K shortest paths using Dijkstra.

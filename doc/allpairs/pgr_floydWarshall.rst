@@ -28,7 +28,7 @@ each pair of nodes in the graph using Floyd-Warshall algorithm.
 
 * Version 2.0.0
 
-  * Official function.
+  * New official function.
 
 Description
 -------------------------------------------------------------------------------

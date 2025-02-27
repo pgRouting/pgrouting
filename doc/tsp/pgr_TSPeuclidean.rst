@@ -16,13 +16,13 @@
 ``pgr_TSPeuclidean``
 =============================================================================
 
-* pgr_TSPeuclidean`` - Aproximation using *metric* algorithm.
+* ``pgr_TSPeuclidean`` - Approximation using *metric* algorithm.
 
 .. rubric:: Availability:
 
 * Version 3.2.1
 
-  * Metric Algorithm from `Boost library
+  * Using `Boost: metric TSP approx
     <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
   * Simulated Annealing Algorithm no longer supported
 

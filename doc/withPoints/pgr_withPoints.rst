@@ -29,7 +29,7 @@ temporary vertices.
 
 * Version 3.2.0
 
-  * New proposed function.
+  * New proposed signature:
 
     * pgr_withPoints(Combinations)
 
