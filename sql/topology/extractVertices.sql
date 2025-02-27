@@ -60,7 +60,7 @@ BEGIN
     edges_sql := _pgr_checkQuery($1);
     EXCEPTION WHEN OTHERS THEN
       GET STACKED DIAGNOSTICS sqlhint = PG_EXCEPTION_HINT;
-      RAISE EXCEPTION 'FOO %', SQLERRM USING HINT = sqlhint, ERRCODE = SQLSTATE;
+      RAISE EXCEPTION '%', SQLERRM USING HINT = sqlhint, ERRCODE = SQLSTATE;
   END;
 
   has_id := _pgr_checkColumn(edges_sql, 'id', 'ANY-INTEGER', true, dryrun => $2);
@@ -70,8 +70,8 @@ BEGIN
   has_geom := _pgr_checkColumn(edges_sql, 'geom', 'geometry', true, dryrun => $2);
   has_start := _pgr_checkColumn(edges_sql, 'startpoint', 'geometry', true, dryrun => $2);
   has_end   := _pgr_checkColumn(edges_sql, 'endpoint', 'geometry', true, dryrun => $2);
-  has_points = has_start AND has_end;
-  has_st = has_source AND has_target;
+  has_points := has_start AND has_end;
+  has_st := has_source AND has_target;
 
   IF (NOT has_geom) THEN
     IF (has_target AND NOT has_source) THEN

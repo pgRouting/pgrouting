@@ -30,7 +30,6 @@ RETURNS TEXT AS
 $BODY$
 DECLARE
   main_sql TEXT;
-  sqlhint TEXT;
 
 BEGIN
 
@@ -54,7 +53,6 @@ BEGIN
     EXECUTE format('SELECT * FROM ( %1$s ) AS __a__ limit 1', main_sql);
 
     EXCEPTION WHEN OTHERS THEN
-      GET STACKED DIAGNOSTICS sqlhint = PG_EXCEPTION_HINT;
       RAISE EXCEPTION '%', SQLERRM USING HINT = $1, ERRCODE = SQLSTATE;
   END;
 

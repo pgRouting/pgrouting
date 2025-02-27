@@ -31,7 +31,7 @@
 
 .. rubric:: Version 3.3.0
 
-* Classified as **proposed** function
+* Function promoted to proposed.
 
 .. rubric:: Version 3.0.0
 
