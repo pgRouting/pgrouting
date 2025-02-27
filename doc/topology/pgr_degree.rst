@@ -25,9 +25,13 @@
 
 .. rubric:: Availability
 
-* Version 3.4.0
+.. rubric:: Version 3.8.0
 
-  * New proposed function.
+* Error messages adjustment.
+
+.. rubric:: Version 3.4.0
+
+* New proposed function.
 
 
 Description
