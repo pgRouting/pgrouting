@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-27 18:35+0000\n"
+"POT-Creation-Date: 2025-02-27 23:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3928,7 +3928,19 @@ msgstr ""
 msgid "pgRouting 3.8.0 Release Notes"
 msgstr ""
 
-msgid "No Changes Yet"
+msgid "Changes on proposed functions"
+msgstr ""
+
+msgid "pgr_extractVertices"
+msgstr ""
+
+msgid "Error messages adjustment."
+msgstr ""
+
+msgid "pgr_findCloseEdges"
+msgstr ""
+
+msgid "pgr_degree"
 msgstr ""
 
 msgid "All releases"
@@ -8713,6 +8725,9 @@ msgstr ""
 msgid "``pgr_degree`` — For each vertex in an undirected graph, return the count of edges incident to the vertex."
 msgstr ""
 
+msgid "Version 3.8.0"
+msgstr ""
+
 msgid "Calculates the degree of the vertices of an **undirected** graph"
 msgstr ""
 
@@ -9743,9 +9758,6 @@ msgid "``pgr_extractVertices`` -- Proposed"
 msgstr ""
 
 msgid "``pgr_extractVertices`` — Extracts the vertices information"
-msgstr ""
-
-msgid "Classified as **proposed** function"
 msgstr ""
 
 msgid "This is an auxiliary function for extracting the vertex information of the set of edges of a graph."
@@ -13201,9 +13213,6 @@ msgstr ""
 msgid "Changes on the documentation to the following:"
 msgstr ""
 
-msgid "pgr_degree"
-msgstr ""
-
 msgid "pgr_dijkstra"
 msgstr ""
 
@@ -13514,9 +13523,6 @@ msgid "pgr_dijkstraNearCost(One to Many)"
 msgstr ""
 
 msgid "pgr_sequentialVertexColoring"
-msgstr ""
-
-msgid "pgr_extractVertices"
 msgstr ""
 
 msgid "Traversal"
