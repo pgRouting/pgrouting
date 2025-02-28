@@ -1,0 +1,43 @@
+-- CopyRight(c) pgRouting developers
+-- Creative Commons Attribution-Share Alike 3.0 License : https://creativecommons.org/licenses/by-sa/3.0/
+/* -- q0 */
+SELECT id, source, target, cost FROM edges ORDER BY id;
+/* -- q1 */
+SELECT * FROM pgr_contractionHierarchies(
+  'SELECT id, source, target, cost FROM edges',
+  directed => false);
+/* -- q2 */
+SELECT * FROM pgr_contractionHierarchies(
+  'SELECT id, source, target, cost FROM edges',
+  forbidden_vertices => ARRAY[6],
+  directed => false);
+/* -- q3 */
+ALTER TABLE edges
+  ADD is_new BOOLEAN default FALSE,
+  ADD contracted_vertices BIGINT[];
+/* -- q4 */
+ALTER TABLE vertices
+  ADD metric INTEGER,
+  ADD vertex_order INTEGER;
+/* -- q5 */
+SELECT * INTO contraction_results
+FROM pgr_contractionHierarchies(
+  'SELECT id, source, target, cost FROM edges',
+  directed => false);
+/* -- q6 */
+INSERT INTO edges(source, target, cost, reverse_cost, contracted_vertices, is_new)
+  SELECT source, target, cost, -1, contracted_vertices, true
+  FROM contraction_results
+  WHERE type = 'e';
+/* -- q7 */
+UPDATE vertices
+  SET metric = c.metric, vertex_order = c.vertex_order
+  FROM contraction_results c 
+  WHERE c.type = 'v' AND c.id = vertices.id;
+/* -- q8 */
+SELECT * FROM pgr_bdDijkstra(
+  'select id, source, target, cost, reverse_cost from edges', 
+    1, -- from_vid
+    17 -- to_vid
+);
+/* -- q9 */
