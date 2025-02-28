@@ -1,13 +1,13 @@
 /*PGR-GNU*****************************************************************
-File: _contraction.sql
+File: contractionHierarchies.sql
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
-Copyright (c) 2016 Rohith Reddy
-Mail:
+Copyright (c) Aurélie Bousquet - 2024
+Mail: aurelie.bousquet at oslandia.com
 
 ------
 
@@ -27,17 +27,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
---------------------
---------------------
--- contraction
---------------------
---------------------
+---------------------------
+---------------------------
+-- contractionHierarchies
+---------------------------
+---------------------------
 
---v3.0
-CREATE FUNCTION _pgr_contraction(
-    edges_sql TEXT,
-    contraction_order BIGINT[],
-    max_cycles INTEGER DEFAULT 1,
+--------------------------------
+-- pgr_contractionHierarchies
+--------------------------------
+
+
+--v3.8
+CREATE FUNCTION pgr_contractionHierarchies(
+    TEXT,     -- edges_sql (required)
     forbidden_vertices BIGINT[] DEFAULT ARRAY[]::BIGINT[],
     directed BOOLEAN DEFAULT true,
 
@@ -46,13 +49,25 @@ CREATE FUNCTION _pgr_contraction(
     OUT contracted_vertices BIGINT[],
     OUT source BIGINT,
     OUT target BIGINT,
-    OUT cost FLOAT)
+    OUT cost FLOAT,
+    OUT metric BIGINT,
+    OUT vertex_order BIGINT)
 RETURNS SETOF RECORD AS
-'MODULE_PATHNAME'
-LANGUAGE C VOLATILE STRICT;
+$BODY$
+    SELECT type, id, contracted_vertices, source, target, cost, metric, vertex_order
+    FROM _pgr_contractionhierarchies(_pgr_get_statement($1), $2::BIGINT[],  $3);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION _pgr_contraction(TEXT, BIGINT[], INTEGER, BIGINT[], BOOLEAN)
-IS 'pgRouting internal function';
-
+COMMENT ON FUNCTION pgr_contractionHierarchies(TEXT, BIGINT[], BOOLEAN)
+IS 'pgr_contractionHierarchies
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+- Optional Parameters
+    - forbidden_vertices := ARRAY[]::BIGINT[]
+    - directed := true
+- Documentation:
+    - ${PROJECT_DOC_LINK}/pgr_contractionHierarchies.html
+';

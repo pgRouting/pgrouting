@@ -60,3 +60,32 @@ IS 'pgr_contraction
 - Documentation:
     - ${PROJECT_DOC_LINK}/pgr_contraction.html
 ';
+
+--v3.0
+CREATE FUNCTION pgr_contraction(
+    TEXT,     -- edges_sql (required)
+    BIGINT[], -- contraction_order (required)
+
+    max_cycles INTEGER DEFAULT 1,
+    forbidden_vertices BIGINT[] DEFAULT ARRAY[]::BIGINT[],
+    directed BOOLEAN DEFAULT true,
+
+    OUT type TEXT,
+    OUT id BIGINT,
+    OUT contracted_vertices BIGINT[],
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+BEGIN
+    RAISE NOTICE 'Deprecated Signature pgr_contraction(text,bigint[],integer,integer[],bigint[],boolean) in v3.8.0';
+    RETURN QUERY
+    SELECT a.type, a.id, a.contracted_vertices, a.source, a.target, a.cost
+    FROM _pgr_contraction(_pgr_get_statement($1), $2::BIGINT[],  $3, $4, $5) AS a;
+END;
+$BODY$
+LANGUAGE plpgsql VOLATILE STRICT;
+
+COMMENT ON FUNCTION pgr_contraction(TEXT, BIGINT[], INTEGER, BIGINT[], BOOLEAN)
+IS 'pgr_contraction deprecated in 3.8.0';
