@@ -24,6 +24,7 @@ milestone for 4.0.0
 * pgr_withPointsDD
 * pgr_withPointsKSP
 * pgr_withPointsVia
+* pgr_contractionHierarchies
 
 **Signatures promoted to official**
 
@@ -206,6 +207,7 @@ milestone for 3.8.0
 
   * [#2790](https://github.com/pgRouting/pgrouting/issues/2790): pgr_contractionDeadEnd
   * [#2791](https://github.com/pgRouting/pgrouting/issues/2791): pgr_contractionLinear
+  * [#2536](https://github.com/pgRouting/pgrouting/issues/2536): pgr_contractionHierarchies
 
 * Utilities
 
