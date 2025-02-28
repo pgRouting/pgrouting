@@ -1,0 +1,55 @@
+/*PGR-GNU*****************************************************************
+
+Copyright (c) 2018  pgRouting developers
+Mail: project@pgrouting.org
+
+------
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ ********************************************************************PGR-GNU*/
+BEGIN;
+
+SELECT CASE WHEN min_version('3.8.0') THEN plan(5) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION types_check()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+  IF NOT min_version('3.8.0') THEN
+    RETURN QUERY SELECT skip(1,'pgr_contractiondeadend new on version 3.8.0');
+    RETURN;
+  END IF;
+
+  RETURN QUERY SELECT has_function('pgr_contractionhierarchies');
+  RETURN QUERY SELECT has_function('pgr_contractionhierarchies', ARRAY['text','bigint[]','boolean']);
+  RETURN QUERY SELECT function_returns('pgr_contractionhierarchies', ARRAY['text', 'bigint[]','boolean'], 'setof record');
+
+  RETURN QUERY SELECT set_eq(
+    $$SELECT proargnames FROM pg_proc WHERE proname = 'pgr_contractionhierarchies'$$,
+    $$VALUES
+    ('{"", "forbidden_vertices", "directed", "type", "id", "contracted_vertices", "source", "target", "cost", "metric", "vertex_order"}'::TEXT[])
+    $$);
+  RETURN QUERY SELECT set_eq(
+    $$SELECT proallargtypes from pg_proc where proname = 'pgr_contractionhierarchies'$$,
+    $$SELECT '{25,1016,16,25,20,1016,20,20,701,20,20}'::OID[] $$
+  );
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+
+
+SELECT types_check();
+
+SELECT finish();
+ROLLBACK;
