@@ -3,6 +3,7 @@ SET(LOCAL_FILES
     contraction
     contractionDeadEnd
     contractionLinear
+    contractionHierarchies
     )
 
 foreach (f ${LOCAL_FILES})
