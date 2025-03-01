@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-27 23:12+0000\n"
+"POT-Creation-Date: 2025-03-01 19:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3886,6 +3886,9 @@ msgstr ""
 msgid ":doc:`pgr_nodeNetwork` - to create nodes to a not noded edge table."
 msgstr ""
 
+msgid ":doc:`pgr_extractVertices` - Extracts vertex information based on the edge table information."
+msgstr ""
+
 msgid ":doc:`pgr_trsp` - Turn Restriction Shortest Path (TRSP)"
 msgstr ""
 
@@ -3928,13 +3931,19 @@ msgstr ""
 msgid "pgRouting 3.8.0 Release Notes"
 msgstr ""
 
-msgid "Changes on proposed functions"
+msgid "Promotion to official function of pgRouting."
 msgstr ""
 
 msgid "pgr_extractVertices"
 msgstr ""
 
 msgid "Error messages adjustment."
+msgstr ""
+
+msgid "Function promoted to official."
+msgstr ""
+
+msgid "Changes on proposed functions"
 msgstr ""
 
 msgid "pgr_findCloseEdges"
@@ -6821,9 +6830,6 @@ msgid "New proposed signature:"
 msgstr ""
 
 msgid "pgr_aStar(Combinations)"
-msgstr ""
-
-msgid "Function promoted to official."
 msgstr ""
 
 msgid "Version 2.4.0"
@@ -9754,7 +9760,7 @@ msgstr ""
 msgid "https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm"
 msgstr ""
 
-msgid "``pgr_extractVertices`` -- Proposed"
+msgid "``pgr_extractVertices``"
 msgstr ""
 
 msgid "``pgr_extractVertices`` — Extracts the vertices information"
@@ -12896,9 +12902,6 @@ msgid "These proposed functions do not modify the database."
 msgstr ""
 
 msgid ":doc:`pgr_degree` - Returns a set of vertices and corresponding count of incidet edges to the vertex."
-msgstr ""
-
-msgid ":doc:`pgr_extractVertices` - Extracts vertex information based on the edge table information."
 msgstr ""
 
 msgid ":doc:`pgr_lineGraph` - Transformation algorithm for generating a Line Graph."
