@@ -107,12 +107,14 @@ milestone for 4.0.0
 * pgr_findCloseEdges
 
   * Error messages adjustment.
+  * ``partial`` option is removed.
 
 * pgr_degree
 
   * Error messages adjustment.
 
 ## pgRouting 3.7
+
 
 ### pgRouting 3.7.3 Release Notes
 
