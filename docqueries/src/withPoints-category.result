@@ -7,9 +7,9 @@ SELECT pid, edge_id, fraction, side FROM pointsOfInterest;
  pid | edge_id | fraction | side
 -----+---------+----------+------
    1 |       1 |      0.4 | l
-   2 |      15 |      0.4 | r
-   3 |      12 |      0.6 | l
    4 |       6 |      0.3 | r
+   3 |      12 |      0.6 | l
+   2 |      15 |      0.4 | r
    5 |       5 |      0.8 | l
    6 |       4 |      0.7 | b
 (6 rows)

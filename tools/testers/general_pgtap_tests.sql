@@ -49,3 +49,19 @@ $BODY$
     collect_tap(throws_ok($1, 'P0001', 'relation "' || $2 || '" does not exist'))
   END;
 $BODY$ LANGUAGE SQL;
+
+CREATE OR REPLACE FUNCTION function_types(TEXT, TEXT)
+RETURNS TEXT AS
+$BODY$
+    SELECT set_eq(format($$
+      WITH
+      a AS (
+        SELECT oid, u.name, u.idx
+        FROM pg_proc p CROSS JOIN unnest(p.proallargtypes)
+        WITH ordinality as u(name, idx)
+        WHERE p.proname = '%1$s'),
+      b AS (
+        SELECT a.*, t.typname FROM a JOIN pg_type As t on (t.oid = a.name))
+      SELECT array_agg(typname ORDER BY idx)  FROM b GROUP BY oid
+      $$, $1), $2, $1 || ': Function types');
+$BODY$ LANGUAGE SQL;

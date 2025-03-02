@@ -156,18 +156,54 @@ CREATE TABLE pointsOfInterest(
     edge_id BIGINT,
     side CHAR,
     fraction FLOAT,
+    distance FLOAT,
+    edge geometry,
+    newPoint geometry,
     geom geometry);
 CREATE TABLE
 /* -- p2 */
-INSERT INTO pointsOfInterest (edge_id, side, fraction, geom) VALUES
-(1, 'l' , 0.4, ST_POINT(1.8, 0.4)),
-(15, 'r' , 0.4, ST_POINT(4.2, 2.4)),
-(12, 'l' , 0.6, ST_POINT(2.6, 3.2)),
-(6, 'r' , 0.3, ST_POINT(0.3, 1.8)),
-(5, 'l' , 0.8, ST_POINT(2.9, 1.8)),
-(4, 'b' , 0.7, ST_POINT(2.2, 1.7));
+INSERT INTO pointsOfInterest (geom) VALUES
+(ST_Point(1.8, 0.4)),
+(ST_Point(4.2, 2.4)),
+(ST_Point(2.6, 3.2)),
+(ST_Point(0.3, 1.8)),
+(ST_Point(2.9, 1.8)),
+(ST_Point(2.2, 1.7));
 INSERT 0 6
 /* -- p3 */
+UPDATE pointsofinterest SET
+  edge_id = poi.edge_id,
+  side =  poi.side,
+  fraction = round(poi.fraction::numeric, 2),
+  distance = round(poi.distance::numeric, 2),
+  edge = poi.edge,
+  newPoint = ST_EndPoint(poi.edge)
+FROM (
+  SELECT *
+  FROM pgr_findCloseEdges(
+    $$SELECT id, geom FROM edges$$,(SELECT array_agg(geom) FROM pointsOfInterest), 0.5) ) AS poi
+WHERE pointsOfInterest.geom = poi.geom;
+UPDATE 6
+/* -- p4 */
+UPDATE pointsOfInterest SET side = 'b' WHERE pid = 6;
+UPDATE 1
+/* -- p5 */
+SELECT
+  pid, ST_AsText(geom) geom,
+  edge_id, fraction AS frac, side, distance AS dist,
+  ST_AsText(edge) edge, ST_AsText(newPoint) newPoint
+FROM pointsOfInterest;
+ pid |      geom      | edge_id | frac | side | dist |           edge            |   newpoint
+-----+----------------+---------+------+------+------+---------------------------+--------------
+   1 | POINT(1.8 0.4) |       1 |  0.4 | l    |  0.2 | LINESTRING(1.8 0.4,2 0.4) | POINT(2 0.4)
+   4 | POINT(0.3 1.8) |       6 |  0.3 | r    |  0.2 | LINESTRING(0.3 1.8,0.3 2) | POINT(0.3 2)
+   3 | POINT(2.6 3.2) |      12 |  0.6 | l    |  0.2 | LINESTRING(2.6 3.2,2.6 3) | POINT(2.6 3)
+   2 | POINT(4.2 2.4) |      15 |  0.4 | r    |  0.2 | LINESTRING(4.2 2.4,4 2.4) | POINT(4 2.4)
+   5 | POINT(2.9 1.8) |       5 |  0.8 | l    |  0.1 | LINESTRING(2.9 1.8,3 1.8) | POINT(3 1.8)
+   6 | POINT(2.2 1.7) |       4 |  0.7 | b    |  0.2 | LINESTRING(2.2 1.7,2 1.7) | POINT(2 1.7)
+(6 rows)
+
+/* -- p6 */
 /* --POINTS CREATE end */
 /* --COMBINATIONS CREATE start */
 /* -- c1 */

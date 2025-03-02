@@ -42,26 +42,45 @@ BEGIN
   SELECT function_returns('pgr_findcloseedges',
     ARRAY['text', 'geometry[]','double precision','integer','boolean','boolean'],'setof record');
 
+  IF min_version('3.8.0') THEN
 
-  RETURN QUERY SELECT set_eq(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_findcloseedges'$$,
-    $$SELECT  '{"","","","cap","partial","dryrun","edge_id","fraction","side","distance","geom","edge"}'::TEXT[] $$);
+    RETURN QUERY SELECT bag_eq(
+      $$SELECT  proargnames from pg_proc where proname = 'pgr_findcloseedges'$$,
+      $$VALUES
+        ('{"","","","cap","dryrun","edge_id","fraction","side","distance","geom","edge"}'::TEXT[]),
+        ('{"","","","cap","dryrun","edge_id","fraction","side","distance","geom","edge"}'::TEXT[]),
+        ('{"","","","cap","partial","dryrun","edge_id","fraction","side","distance","geom","edge"}'::TEXT[]),
+        ('{"","","","cap","partial","dryrun","edge_id","fraction","side","distance","geom","edge"}'::TEXT[])
+      $$,
+      'proargnames');
 
-  /* pgtap does not like geometry type, this is a workaround */
-  RETURN QUERY
-  SELECT set_eq(
-  $$WITH a AS (SELECT  unnest(proallargtypes) FROM pg_proc WHERE proname = 'pgr_findcloseedges')
-    SELECT typname FROM a JOIN pg_type ON(oid = unnest)$$,
-  $$VALUES
-    ('bool'),
-    ('int4'),
-    ('text'),
-    ('float8'),
-    ('geometry'),
-    ('_geometry'),
-    ('int8'),
-    ('bpchar')
-    $$);
+    RETURN QUERY
+    SELECT function_types('pgr_findcloseedges',
+      $$ VALUES
+      ('{text,_geometry,float8,int4,bool,int8,float8,bpchar,float8,geometry,geometry}'::TEXT[]),
+      ('{text,geometry,float8,int4,bool,int8,float8,bpchar,float8,geometry,geometry}'::TEXT[]),
+      ('{text,geometry,float8,int4,bool,bool,int8,float8,bpchar,float8,geometry,geometry}'::TEXT[]),
+      ('{text,_geometry,float8,int4,bool,bool,int8,float8,bpchar,float8,geometry,geometry}'::TEXT[])
+      $$);
+
+  ELSE
+
+    RETURN QUERY SELECT bag_eq(
+      $$SELECT  proargnames from pg_proc where proname = 'pgr_findcloseedges'$$,
+      $$VALUES
+        ('{"","","","cap","partial","dryrun","edge_id","fraction","side","distance","geom","edge"}'::TEXT[]),
+        ('{"","","","cap","partial","dryrun","edge_id","fraction","side","distance","geom","edge"}'::TEXT[])
+      $$,
+      'proargnames');
+
+    RETURN QUERY
+    SELECT function_types('pgr_findcloseedges',
+      $$ VALUES
+      ('{text,geometry,float8,int4,bool,bool,int8,float8,bpchar,float8,geometry,geometry}'::TEXT[]),
+      ('{text,_geometry,float8,int4,bool,bool,int8,float8,bpchar,float8,geometry,geometry}'::TEXT[])
+      $$);
+
+  END IF;
 
 END
 $BODY$

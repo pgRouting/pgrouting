@@ -23,6 +23,7 @@
 .. rubric:: Version 3.8.0
 
 * Error messages adjustment.
+* ``partial`` option is removed.
 
 .. rubric:: Version 3.4.0
 
@@ -37,7 +38,7 @@ point geometry.
 * The geometries must be in the same coordinate system (have the same SRID).
 * The code to do the calculations can be obtained for further specific
   adjustments needed by the application.
-* ``EMTPY SET`` is returned on dryrun executions
+* ``EMPTY SET`` is returned on dryrun executions
 
 |Boost| Boost Graph Inside
 
@@ -51,13 +52,13 @@ Signatures
 
    | pgr_findCloseEdges(`Edges SQL`_, **point**, **tolerance**, [**options**])
    | pgr_findCloseEdges(`Edges SQL`_, **points**, **tolerance**, [**options**])
-   | **options:** ``[cap, partial, dryrun]``
+   | **options:** ``[cap, dryrun]``
 
    | Returns set of |result-find|
    | OR EMPTY SET
 
 .. index::
-    single: findCloseEdges - Proposed ; One point - Proposed on 3.4
+    single: findCloseEdges - Proposed ; One point - Proposed on 3.6
 
 One point
 ...............................................................................
@@ -66,33 +67,21 @@ One point
    :class: signatures
 
    | pgr_findCloseEdges(`Edges SQL`_, **point**, **tolerance**, [**options**])
-   | **options:** [cap, partial, dryrun]``
+   | **options:** ``[cap, dryrun]``
 
    | Returns set of |result-find|
    | OR EMPTY SET
 
-:Example: With default values
+:Example: Get two close edges to points of interest with :math:`pid = 5`
 
-* Default: ``cap => 1``
-
-  * Maximum one row answer.
-* Default: ``partial => true``
-
-  * With less calculations as possible.
-* Default: ``dryrun => false``
-
-  * Process query
-* Returns
-
-  * values on ``edge_id``, ``fraction``, ``side`` columns.
-  * ``NULL`` on ``distance``, ``geom``, ``edge`` columns.
+* ``cap => 2``
 
 .. literalinclude:: findCloseEdges.queries
    :start-after: -- q1
    :end-before: -- q2
 
 .. index::
-   single: findCloseEdges - Proposed ; Many points - Proposed on 3.4
+   single: findCloseEdges - Proposed ; Many points - Proposed on 3.6
 
 Many points
 ...............................................................................
@@ -101,25 +90,16 @@ Many points
    :class: signatures
 
    | pgr_findCloseEdges(`Edges SQL`_, **points**, **tolerance**, [**options**])
-   | **options:** ``[cap, partial, dryrun]``
+   | **options:** ``[cap, dryrun]``
 
    | Returns set of |result-find|
    | OR EMPTY SET
 
-:Example: Find at most :math:`2` edges close to all vertices on the points of
-          interest table.
-
-One answer per point, as small as possible.
+:Example: For each points of interests, find the closest edge.
 
 .. literalinclude:: findCloseEdges.queries
    :start-after: -- q2
    :end-before: -- q3
-
-Columns ``edge_id``, ``fraction``, ``side`` and ``geom`` are returned with
-values.
-
-``geom`` contains the original point geometry to assist on deterpartialing to which
-point geometry the row belongs to.
 
 Parameters
 -------------------------------------------------------------------------------
@@ -162,12 +142,6 @@ Optional parameters
      - ``INTEGER``
      - :math:`1`
      - Limit output rows
-   * - ``partial``
-     - ``BOOLEAN``
-     - ``true``
-     - * When ``true`` only columns needed for :doc:`withPoints-category` are
-         calculated.
-       * When ``false`` all columns are calculated
    * - ``dryrun``
      - ``BOOLEAN``
      - ``false``
@@ -216,127 +190,26 @@ Returns set of |result-find|
        * When :math:`cap = 1`, it is the closest edge.
    * - ``fraction``
      - ``FLOAT``
-     - Value in <0,1> that indicates the relative postition from the first
+     - Value in <0,1> that indicates the relative position from the first
        end-point of the edge.
    * - ``side``
      - ``CHAR``
      - Value in ``[r, l]`` indicating if the point is:
 
-       * In the right ``r``.
-       * In the left ``l``.
+       * At the right ``r`` of the segment.
 
          * When the point is on the line it is considered to be on the right.
+       * At the left ``l`` of the segment.
    * - ``distance``
      - ``FLOAT``
-     - Distance from point to edge.
-
-       * ``NULL`` when ``cap = 1`` on the `One point`_ signature
+     - Distance from the point to the edge.
    * - ``geom``
      - ``geometry``
-     - ``POINT`` geometry
-
-       * `One Point`_: Contains the point on the edge that is ``fraction`` away
-         from the starting point of the edge.
-       * `Many Points`_: Contains the corresponding **original point**
+     - Original ``POINT`` geometry.
    * - ``edge``
      - ``geometry``
-     - ``LINESTRING`` geometry from the **original point** to the closest point
-       of the edge with identifier ``edge_id``
-
-
-.. rubric:: One point results
-
-* The green nodes is the **original point**
-* The geometry ``geom`` is a point on the :math:`sp \rightarrow ep` edge.
-* The geometry ``edge`` is a line that connects the **original point** with
-  ``geom``
-
-.. graphviz::
-
-   digraph G {
-     splines=false;
-     subgraph cluster0 {
-       point [shape=circle;style=filled;color=green];
-       geom [shape=point;color=black;size=0];
-       sp, ep;
-
-       edge[weight=0];
-       point -> geom [dir=none; penwidth=0, color=red];
-       edge[weight=2];
-       sp -> geom -> ep [dir=none;penwidth=3 ];
-
-       {rank=same; point, geom}
-     }
-
-     subgraph cluster1 {
-       point1 [shape=circle;style=filled;color=green;label=point];
-       geom1 [shape=point;color=deepskyblue; xlabel="geom"; width=0.3];
-       sp1 [label=sp]; ep1 [label=ep];
-
-       edge[weight=0];
-       point1 -> geom1 [weight=0, penwidth=3, color=red,
-                      label="edge"];
-       edge[weight=2];
-       sp1 -> geom1 -> ep1 [dir=none;weight=1, penwidth=3 ];
-
-
-       geom1 -> point1 [dir=none;weight=0, penwidth=0, color=red];
-       {rank=same; point1, geom1}
-     }
-   }
-
-.. rubric:: Many point results
-
-* The green nodes are the **original points**
-* The geometry ``geom``, marked as **g1** and **g2** are the **original
-  points**
-* The geometry ``edge``, marked as **edge1** and **edge2** is a line that
-  connects the **original point** with the closest point on the :math:`sp
-  \rightarrow ep` edge.
-
-.. graphviz::
-
-   digraph G {
-     splines = false;
-     subgraph cluster0 {
-        p1 [shape=circle;style=filled;color=green];
-        g1 [shape=point;color=black;size=0];
-        g2 [shape=point;color=black;size=0];
-        sp, ep;
-        p2 [shape=circle;style=filled;color=green];
-
-        sp -> g1 [dir=none;weight=1, penwidth=3 ];
-        g1 -> g2 [dir=none;weight=1, penwidth=3 ];
-        g2 -> ep [weight=1, penwidth=3 ];
-
-        g2 -> p2 [dir=none;weight=0, penwidth=0, color=red, partiallen=3];
-        p1 -> g1 [dir=none;weight=0, penwidth=0, color=red, partiallen=3];
-        p1 -> {g1, g2} [dir=none;weight=0, penwidth=0, color=red;]
-
-        {rank=same; p1; g1}
-        {rank=same; p2; g2}
-     }
-     subgraph cluster1 {
-        p3 [shape=circle;style=filled;color=deepskyblue;label=g1];
-        g3 [shape=point;color=black;size=0];
-        g4 [shape=point;color=black;size=0];
-        sp1 [label=sp]; ep1 [label=ep];
-        p4 [shape=circle;style=filled;color=deepskyblue;label=g2];
-
-        sp1 -> g3 [dir=none;weight=1, penwidth=3 ];
-        g3 -> g4 [dir=none;weight=1, penwidth=3,len=10];
-        g4 -> ep1 [weight=1, penwidth=3, len=10];
-
-        g4 -> p4 [dir=back;weight=0, penwidth=3, color=red, partiallen=3,
-                       label="edge2"];
-        p3 -> g3 [weight=0, penwidth=3, color=red, partiallen=3,
-                       label="edge1"];
-        p3 -> {g3, g4} [dir=none;weight=0, penwidth=0, color=red];
-
-        {rank=same; p3; g3}
-        {rank=same; p4; g4}
-     }
-   }
+     - ``LINESTRING`` geometry that connects the original **point** to the
+       closest point of the edge with identifier ``edge_id``
 
 
 Additional Examples
@@ -345,260 +218,127 @@ Additional Examples
 .. contents::
    :local:
 
-One point examples
+One point in an edge
 ...............................................................................
 
-At most two answers
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-* ``cap => 2``
-
-  * Maximum two row answer.
-* Default: ``partial => true``
-
-  * With less calculations as possible.
-* Default: ``dryrun => false``
-
-  * Process query
-
 .. literalinclude:: findCloseEdges.queries
-   :start-after: -- o1
-   :end-before: -- o2
+   :start-after: -- o0
+   :end-before: -- o1
 
-.. rubric:: Understanding the result
+.. graphviz::
 
-* ``NULL`` on ``geom``, ``edge``
-* ``edge_id`` identifier of the edge close to the **original point**
+   digraph D {
+     subgraph cluster0 {
+       label="data";
+       point [shape=circle;style=filled;color=green;fontsize=8;width=0.3;fixedsize=true];
+       point [pos="0,1.5!"]
 
-  * Two edges are withing :math:`0.5` distance units from the **original
-    point**: :math:`{5, 8}`
-* For edge :math:`5`:
+       sp, ep [shape=circle;fontsize=8;width=0.3;fixedsize=true];
+       sp[pos="2,0!"]
+       ep[pos="2,3!"]
 
-  * ``fraction``: The closest point from the **original point** is at the
-    :math:`0.8` fraction of the edge :math:`5`.
-  * ``side``: The **original point** is located to the left side of edge
-    :math:`5`.
-  * ``distance``: The **original point** is located :math:`0.1` length units
-    from edge :math:`5`.
-* For edge :math:`8`:
+       sp -> ep:s
+     }
+     subgraph cluster1 {
+       label="results";
+       geom [shape=circle;style=filled;color=green;fontsize=8;width=0.3;fixedsize=true];
+       geom [pos="3,1.5!"]
 
-  * ``fraction``: The closest point from the **original point** is at the
-    :math:`0.89..` fraction of the edge :math:`8`.
-  * ``side``: The **original point** is located to the right side of edge
-    :math:`8`.
-  * ``distance``: The **original point** is located :math:`0.19..` length units
-    from edge :math:`8`.
+       np11 [shape=point;color=black;size=0;fontsize=8;fixedsize=true];
+       np11 [pos="5,1.5!";xlabel="fraction=0.5"];
 
-One answer, all columns
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+       sp1, ep1 [shape=circle;fontsize=8;width=0.3;fixedsize=true];
+       sp1[pos="5,0!"]
+       ep1[pos="5,3!"]
 
-* Default: ``cap => 1``
+       sp1:n ->  np11:s [dir=none]
+       np11:n -> ep1:s
 
-  * Maximum one row answer.
-* ``partial => false``
+       geom -> np11 [color=red,label="edge"];
+     }
+   }
 
-  * Calculate all columns
-* Default: ``dryrun => false``
-
-  * Process query
-
-.. literalinclude:: findCloseEdges.queries
-   :start-after: -- o2
-   :end-before: -- o3
-
-.. rubric:: Understanding the result
-
-* ``edge_id`` identifier of the edge **closest** to the **original point**
-
-  * From all edges within :math:`0.5` distance units from the **original
-    point**: :math:`{5}` is the closest one.
-* For edge :math:`5`:
-
-  * ``fraction``: The closest point from the **original point** is at the
-    :math:`0.8` fraction of the edge :math:`5`.
-  * ``side``: The **original point** is located to the left side of edge
-    :math:`5`.
-  * ``distance``: The **original point** is located :math:`0.1` length units
-    from edge :math:`5`.
-  * ``geom``: Contains the geometry of the closest point on edge :math:`5` from
-    the **original point**.
-  * ``edge``: Contains the ``LINESTRING`` geometry of the **original point** to
-    the closest point on on edge :math:`5` ``geom``
-
-At most two answers with all columns
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-* ``cap => 2``
-
-  * Maximum two row answer.
-* ``partial => false``
-
-  * Calculate all columns
-* Default: ``dryrun => false``
-
-  * Process query
-
-.. literalinclude:: findCloseEdges.queries
-   :start-after: -- o3
-   :end-before: -- o4
-
-.. rubric:: Understanding the result:
-
-* ``edge_id`` identifier of the edge close to the **original point**
-
-  * Two edges are withing :math:`0.5` distance units from the **original
-    point**: :math:`{5, 8}`
-* For edge :math:`5`:
-
-  * ``fraction``: The closest point from the **original point** is at the
-    :math:`0.8` fraction of the edge :math:`5`.
-  * ``side``: The **original point** is located to the left side of edge
-    :math:`5`.
-  * ``distance``: The **original point** is located :math:`0.1` length units
-    from edge :math:`5`.
-  * ``geom``: Contains the geometry of the closest point on edge :math:`5` from
-    the **original point**.
-  * ``edge``: Contains the ``LINESTRING`` geometry of the **original point** to
-    the closest point on on edge :math:`5` ``geom``
-* For edge :math:`8`:
-
-  * ``fraction``: The closest point from the **original point** is at the
-    :math:`0.89..` fraction of the edge :math:`8`.
-  * ``side``: The **original point** is located to the right side of edge
-    :math:`8`.
-  * ``distance``: The **original point** is located :math:`0.19..` length units
-    from edge :math:`8`.
-  * ``geom``: Contains the geometry of the closest point on edge :math:`8` from
-    the **original point**.
-  * ``edge``: Contains the ``LINESTRING`` geometry of the **original point** to
-    the closest point on on edge :math:`8` ``geom``
+* The green node is the original point.
+* ``geom`` has the value of the original point.
+* The geometry ``edge`` is a line that connects the original point with the edge
+  :math:`sp \rightarrow ep` edge.
+* The point is located at the left of the edge.
 
 One point dry run execution
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+...............................................................................
+
+Using the query from the previous example:
 
 * Returns ``EMPTY SET``.
-
-
-* ``partial => true``
-
-  * Is ignored
-  * Because it is a **dry run** excecution, the code for all calculations are
-    shown on the PostgreSQL ``NOTICE``.
 * ``dryrun => true``
 
-  * Do not process query
-  * Generate a PostgreSQL ``NOTICE`` with the code used to calculate all columns
-
-    * ``cap`` and **original point** are used in the code
+  * Generates a PostgreSQL ``NOTICE`` with the code used.
+  * The generated code can be used as a starting base code for additional
+    requirements, like taking into consideration the SRID.
 
 .. literalinclude:: findCloseEdges.queries
    :start-after: -- o5
    :end-before: -- o6
 
-Many points examples
+Many points in an edge
 ...............................................................................
 
-At most two answers per point
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-* ``cap => 2``
-
-  * Maximum two row answer.
-* Default: ``partial => true``
-
-  * With less calculations as possible.
-* Default: ``dryrun => false``
-
-  * Process query
+* The green nodes are the **original points**
+* The geometry ``geom``, marked as **g1** and **g2** are the **original
+  points**
+* The geometry ``edge``, marked as **edge1** and **edge2** is a line that
+  connects the **original point** with the closest point on the :math:`sp
+  \rightarrow ep` edge.
 
 .. literalinclude:: findCloseEdges.queries
-   :start-after: -- m1
-   :end-before: -- m2
+   :start-after: -- m0
+   :end-before: -- m1
 
-.. rubric:: Understanding the result
+.. graphviz::
 
-* ``NULL`` on ``edge``
-* ``edge_id`` identifier of the edge close to a **original point** (``geom``)
+   digraph G {
+     subgraph cluster0 {
+       p1,p2 [shape=circle;style=filled;color=green;fontsize=8;width=0.3;fixedsize=true];
+       p1 [pos="0,2!"]
+       p2 [pos="3,1!"]
 
-  * Two edges at most withing :math:`0.5` distance units from each of the
-    **original points**:
+       sp, ep [shape=circle;fontsize=8;width=0.3;fixedsize=true];
+       sp[pos="1,0!"]
+       ep[pos="1,3!"]
 
-    * For ``POINT(1.8 0.4)`` and ``POINT(0.3 1.8)`` only one edge was found.
-    * For the rest of the points two edges were found.
-* For point ``POINT(2.9 1.8)``
+       sp -> ep:s
+     }
 
-  * Edge :math:`5` is before :math:`8` therefore edge :math:`5` has the shortest
-    distance to ``POINT(2.9 1.8)``.
-  * For edge :math:`5`:
+     subgraph cluster1 {
+       g1, g2 [shape=circle;style=filled;color=green;fontsize=8;width=0.3;fixedsize=true];
+       g1 [pos="4,2!"]
+       g2 [pos="7,1!"]
 
-    * ``fraction``: The closest point from the **original point** is at the
-      :math:`0.8` fraction of the edge :math:`5`.
-    * ``side``: The **original point** is located to the left side of edge
-      :math:`5`.
-    * ``distance``: The **original point** is located :math:`0.1` length units
-      from edge :math:`5`.
-  * For edge :math:`8`:
+       np11,np21 [shape=point;color=black;size=0;fontsize=8;fixedsize=true];
+       np11 [pos="5,2!";xlabel="fraction=0.63"];
+       np21 [pos="5,1!";xlabel="fraction=0.33"];
 
-    * ``fraction``: The closest point from the **original point** is at the
-      :math:`0.89..` fraction of the edge :math:`8`.
-    * ``side``: The **original point** is located to the right side of edge
-      :math:`8`.
-    * ``distance``: The **original point** is located :math:`0.19..` length
-      units from edge :math:`8`.
+       sp1, ep1 [shape=circle;fontsize=8;width=0.3;fixedsize=true];
+       sp1[pos="5,0!"]
+       ep1[pos="5,3!"]
 
-One answer per point, all columns
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+       sp1:n ->  np21:s [dir=none]
+       np21:n ->  np11:s [dir=none]
+       np11:n -> ep1:s
 
-* Default: ``cap => 1``
-
-  * Maximum one row answer.
-* ``partial => false``
-
-  * Calculate all columns
-* Default: ``dryrun => false``
-
-  * Process query
-
-.. literalinclude:: findCloseEdges.queries
-   :start-after: -- m2
-   :end-before: -- m3
-
-.. rubric:: Understanding the result
-
-* ``edge_id`` identifier of the edge **closest** to the **original point**
-
-  * From all edges within :math:`0.5` distance units from the **original
-    point**: :math:`{5}` is the closest one.
-* For the **original point** ``POINT(2.9 1.8)``
-
-  * Edge :math:`5` is the closest edge to the **original point**
-  * ``fraction``: The closest point from the **original point** is at the
-    :math:`0.8` fraction of the edge :math:`5`.
-  * ``side``: The **original point** is located to the left side of edge
-    :math:`5`.
-  * ``distance``: The **original point** is located :math:`0.1` length units
-    from edge :math:`5`.
-  * ``geom``: Contains the geometry of the **original point** ``POINT(2.9 1.8)``
-  * ``edge``: Contains the ``LINESTRING`` geometry of the **original point**
-    (``geom``) to the closest point on on edge.
+       g1 -> np11 [color=red;label="edge"];
+       g2 -> np21 [color=red;label="edge"]
+     }
+   }
 
 Many points dry run execution
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+...............................................................................
 
 * Returns ``EMPTY SET``.
-
-
-* ``partial => true``
-
-  * Is ignored
-  * Because it is a **dry run** excecution, the code for all calculations are
-    shown on the PostgreSQL ``NOTICE``.
 * ``dryrun => true``
 
   * Do not process query
   * Generate a PostgreSQL ``NOTICE`` with the code used to calculate all columns
-
-    * ``cap`` and **original point** are used in the code
 
 .. literalinclude:: findCloseEdges.queries
    :start-after: -- m4
@@ -621,14 +361,6 @@ Handling points outside the graph.
 .. include:: sampledata.rst
    :start-after: pois_start
    :end-before: pois_end
-
-Connecting disconnected components
-...............................................................................
-
-.. include:: pgRouting-concepts.rst
-    :start-after: connecting_graph_start
-    :end-before: connecting_graph_end
-
 
 See Also
 -------------------------------------------------------------------------------
