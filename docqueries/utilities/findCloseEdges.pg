@@ -1,45 +1,35 @@
 -- CopyRight(c) pgRouting developers
 -- Creative Commons Attribution-Share Alike 3.0 License : https://creativecommons.org/licenses/by-sa/3.0/
+SET extra_float_digits=-3;
 /* -- q1 */
-SELECT  *
+SELECT
+  edge_id, fraction, side, distance,
+  distance, ST_AsText(geom) AS point, ST_AsText(edge) As edge
 FROM pgr_findCloseEdges(
   $$SELECT id, geom FROM edges$$,
   (SELECT geom FROM pointsOfInterest WHERE pid = 5),
-  0.5);
+  0.5, cap => 2);
 /* -- q2 */
-SELECT edge_id, round(fraction::numeric, 2) AS fraction, side, ST_AsText(geom) AS original_point
+SELECT
+edge_id, fraction, side, distance,
+ST_AsText(geom) AS point,
+ST_AsText(edge) AS edge
 FROM pgr_findCloseEdges(
   $$SELECT id, geom FROM edges$$,
   (SELECT array_agg(geom) FROM pointsOfInterest),
   0.5);
 /* -- q3 */
 /* One point signature */
+/* -- o0 */
+SELECT edge_id, fraction, side, distance, ST_AsText(geom) geom, ST_AsText(edge) edge
+FROM pgr_findCloseEdges(
+$$SELECT 1 AS id, ST_MakeLine(ST_makePoint(2,0), ST_MakePoint(2,3)) AS geom$$,
+ST_MakePoint(0,1.5), 5);
 /* -- o1 */
-SELECT *
-FROM pgr_findCloseEdges(
-  $$SELECT id, geom FROM edges$$,
-  (SELECT geom FROM pointsOfInterest WHERE pid = 5),
-  0.5, cap => 2);
-/* -- o2 */
-SELECT edge_id, round(fraction::numeric, 2) AS fraction, side, round(distance::numeric, 3) AS distance,
-  ST_AsText(geom) AS new_point,
-  ST_AsText(edge) AS original_to_new_point
-FROM pgr_findCloseEdges(
-  $$SELECT id, geom FROM edges$$,
-  (SELECT geom FROM pointsOfInterest WHERE pid = 5),
-  0.5, partial => false);
-/* -- o3 */
-SELECT edge_id, round(fraction::numeric, 2) AS fraction, side, round(distance::numeric, 3) AS distance,
-  ST_AsText(geom) AS new_point,
-  ST_AsText(edge) AS original_to_new_point
-FROM pgr_findCloseEdges(
-  $$SELECT id, geom FROM edges$$,
-  (SELECT geom FROM pointsOfInterest WHERE pid = 5),
-  0.5, cap => 2, partial => false);
 /* -- o4 */
 SELECT * FROM pgr_withPoints(
   $e$ SELECT * FROM edges $e$,
-  $p$ SELECT edge_id, round(fraction::numeric, 2) AS fraction, side
+  $p$ SELECT edge_id, fraction, side
       FROM pgr_findCloseEdges(
         $$SELECT id, geom FROM edges$$,
         (SELECT geom FROM pointsOfInterest WHERE pid = 5),
@@ -47,44 +37,23 @@ SELECT * FROM pgr_withPoints(
   $p$,
   1, ARRAY[-1, -2]);
 /* -- o5 */
-SELECT *
+SELECT edge_id, fraction, side, distance, ST_AsText(geom) geom, ST_AsText(edge) edge
 FROM pgr_findCloseEdges(
-  $$SELECT id, geom FROM edges$$,
-  (SELECT geom FROM pointsOfInterest WHERE pid = 5),
-  0.5,
-  dryrun => true);
+$$SELECT 1 AS id, ST_MakeLine(ST_makePoint(2,0), ST_MakePoint(2,3)) AS geom$$,
+ST_MakePoint(0,1.5), 5, dryrun => true);
 /* -- o6 */
 
 
 /* Many point signature */
+/* -- m0 */
+SELECT edge_id, fraction, side, distance, ST_AsText(geom) geom, ST_AsText(edge) edge
+FROM pgr_findCloseEdges(
+$$SELECT 1 AS id, ST_MakeLine(ST_makePoint(1,0), ST_MakePoint(1,3)) AS geom$$,
+ARRAY[ST_MakePoint(0,2), ST_MakePoint(3,1)]::GEOMETRY[], 5);
 /* -- m1 */
-SELECT edge_id, round(fraction::numeric, 2) AS fraction, side, round(distance::numeric, 3) AS distance,
-  ST_AsText(geom) AS geom_is_original, edge
-FROM pgr_findCloseEdges(
-  $$SELECT id, geom FROM edges$$,
-  (SELECT array_agg(geom) FROM pointsOfInterest),
-  0.5, cap => 2);
-/* -- m2 */
-SELECT edge_id, round(fraction::numeric, 2) AS fraction, side, round(distance::numeric, 3) AS distance,
-  ST_AsText(geom) AS geom_is_original,
-  ST_AsText(edge) AS original_to_new_point
-FROM pgr_findCloseEdges(
-  $$SELECT id, geom FROM edges$$,
-  (SELECT array_agg(geom) FROM pointsOfInterest),
-  0.5, partial => false);
-/* -- m3 */
-SELECT edge_id, round(fraction::numeric, 2) AS fraction, side, round(distance::numeric, 3) AS distance,
-  ST_AsText(geom) AS geom_is_original,
-  ST_AsText(edge) AS original_to_new_point
-FROM pgr_findCloseEdges(
-  $$SELECT id, geom FROM edges$$,
-  (SELECT array_agg(geom) FROM pointsOfInterest),
-  0.5, cap => 2, partial => false);
 /* -- m4 */
-SELECT *
+SELECT edge_id, fraction, side, distance, ST_AsText(geom) geom, ST_AsText(edge) edge
 FROM pgr_findCloseEdges(
-  $$SELECT id, geom FROM edges$$,
-  (SELECT array_agg(geom) FROM pointsOfInterest),
-  0.5,
-  dryrun => true);
+$$SELECT 1 AS id, ST_MakeLine(ST_makePoint(1,0), ST_MakePoint(1,3)) AS geom$$,
+ARRAY[ST_MakePoint(0,2), ST_MakePoint(3,1)]::GEOMETRY[], 5, dryrun=>true);
 /* -- m5 */

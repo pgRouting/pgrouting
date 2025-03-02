@@ -20,6 +20,7 @@
 * pgr_findCloseEdges
 
   * Error messages adjustment.
+  * ``partial`` option is removed.
 
 * pgr_degree
 

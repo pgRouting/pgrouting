@@ -269,6 +269,12 @@ sub generate_upgrade_script {
             push @commands, drop_special_case_function("pgr_kruskaldd(text,anyarray,double precision)");
         }
 
+        # updating to 3.7+
+        if ($old_mayor == 3 && $old_minor < 8) {
+            push @commands, drop_special_case_function("pgr_findcloseedges(text,geometry,double precision,integer,boolean,boolean)");
+            push @commands, drop_special_case_function("pgr_findcloseedges(text,geometry[],double precision,integer,boolean,boolean)");
+        }
+
     }
 
     #------------------------------------
@@ -283,9 +289,9 @@ sub generate_upgrade_script {
     }
 
     # UGH! someone change the definition of the TYPE or reused an existing
-    # TYPE name which is VERY BAD because other poeple might be dependent
+    # TYPE name which is VERY BAD because other people might be dependent
     # on the old TYPE so we can DROP TYPE <type> CASCADE; or we might drop
-    # a user's function. So juse DIE and maybe someone can resolve this
+    # a user's function. So just DIE and maybe someone can resolve this
     die "ERROR: pgrouting TYPE changed! Cannot continue!\n" if $err;
 
 
