@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pgr_extractVertices – Proposed &#8212; pgRouting Manual (3.8)</title>
+    <title>pgr_extractVertices &#8212; pgRouting Manual (3.8)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -96,7 +96,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_extractVertices</span></code> – Proposed</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_extractVertices</span></code></a><ul>
 <li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#signatures">Signatures</a></li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
@@ -186,7 +186,7 @@
     <div class="row">
       <div class="span3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_extractVertices</span></code> – Proposed</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_extractVertices</span></code></a><ul>
 <li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#signatures">Signatures</a></li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
@@ -257,30 +257,14 @@
   <div class="line-block" id="index-0">
 <div class="line"><br /></div>
 </div>
-<section id="pgr-extractvertices-proposed">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_extractVertices</span></code> – Proposed<a class="headerlink" href="#pgr-extractvertices-proposed" title="Link to this heading">¶</a></h1>
+<section id="pgr-extractvertices">
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_extractVertices</span></code><a class="headerlink" href="#pgr-extractvertices" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_extractVertices</span></code> — Extracts the vertices information</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Proposed functions for next mayor release.</p>
-<ul class="simple">
-<li><p>They are not officially in the current release.</p></li>
-<li><p>They will likely officially be part of the next mayor release:</p>
-<ul>
-<li><p>The functions make use of ANY-INTEGER and ANY-NUMERICAL</p></li>
-<li><p>Name might not change. (But still can)</p></li>
-<li><p>Signature might not change. (But still can)</p></li>
-<li><p>Functionality might not change. (But still can)</p></li>
-<li><p>pgTap tests have being done. But might need more.</p></li>
-<li><p>Documentation might need refinement.</p></li>
-</ul>
-</li>
-</ul>
-</div>
 <p class="rubric">Availability</p>
 <p class="rubric">Version 3.8.0</p>
 <ul class="simple">
 <li><p>Error messages adjustment.</p></li>
+<li><p>Function promoted to official.</p></li>
 </ul>
 <p class="rubric">Version 3.3.0</p>
 <ul class="simple">
@@ -1023,7 +1007,7 @@ view.</p>
 </section>
 <section id="vertex-information">
 <h4><a class="toc-backref" href="#id25" role="doc-backlink">Vertex information</a><a class="headerlink" href="#vertex-information" title="Link to this heading">¶</a></h4>
-<p>To obtain the vertices information, use <a class="reference internal" href="#"><span class="doc">pgr_extractVertices – Proposed</span></a></p>
+<p>To obtain the vertices information, use <a class="reference internal" href="#"><span class="doc">pgr_extractVertices</span></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span>
 <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target FROM wiki&#39;</span><span class="p">);</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">in_edges</span> <span class="o">|</span> <span class="n">out_edges</span>
@@ -1068,7 +1052,7 @@ view.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on Feb 27, 2025.<br/>
+      Last updated on Mar 02, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
     </p>
   </div>

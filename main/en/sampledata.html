@@ -465,7 +465,7 @@ exist.</p>
 <h3><a class="toc-backref" href="#id8" role="doc-backlink">Vertices</a><a class="headerlink" href="#vertices" title="Link to this heading">¶</a></h3>
 <p>The vertex information is calculated based on the identifier of the edge and the
 geometry and saved on a table.
-Saving all the information provided by <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Proposed</span></a>:</p>
+Saving all the information provided by <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">vertices</span>
 <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges ORDER BY id&#39;</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">17</span>
@@ -964,7 +964,7 @@ order.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on Feb 27, 2025.<br/>
+      Last updated on Mar 02, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
     </p>
   </div>
