@@ -8,11 +8,14 @@
 
 ### pgRouting 3.8.0 Release Notes
 
-**Changes on proposed functions**
+**Promotion to official function of pgRouting.**
 
 * pgr_extractVertices
 
   * Error messages adjustment.
+  * Function promoted to official.
+
+**Changes on proposed functions**
 
 * pgr_findCloseEdges
 
