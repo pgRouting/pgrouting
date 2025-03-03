@@ -130,15 +130,6 @@ Proposed Functions
     via-category
     withPoints-category
 
-.. rubric:: Utilities Category
-
-:doc:`pgr_findCloseEdges`
-
-.. toctree::
-    :hidden:
-
-    pgr_findCloseEdges
-
 See Also
 -------------------------------------------------------------------------------
 
