@@ -102,12 +102,13 @@ milestone for 4.0.0
   * Error messages adjustment.
   * Function promoted to official.
 
-**Changes on proposed functions**
-
 * pgr_findCloseEdges
 
   * Error messages adjustment.
   * ``partial`` option is removed.
+  * Function promoted to official.
+
+**Changes on proposed functions**
 
 * pgr_degree
 
@@ -184,7 +185,7 @@ milestone for 3.7.0
 
 **Official functions changes**
 
-* [#2605](https://github.com/pgRouting/pgrouting/pull/2605) Standarize
+* [#2605](https://github.com/pgRouting/pgrouting/pull/2605) Standardize
   spanning tree functions output
 
   * Functions:
@@ -296,26 +297,26 @@ milestone for 3.6.0
 
 **Official functions changes**
 
-* [#2516](https://github.com/pgRouting/pgrouting/pull/2516) Standarize output
+* [#2516](https://github.com/pgRouting/pgrouting/pull/2516) Standardize output
   pgr_aStar
 
-  * Standarizing output columns to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
+  * Standardize output columns to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
 
     * pgr_aStar(One to One) added ``start_vid`` and ``end_vid`` columns.
     * pgr_aStar(One to Many) added ``end_vid`` column.
     * pgr_aStar(Many to One) added ``start_vid`` column.
 
-* [#2523](https://github.com/pgRouting/pgrouting/pull/2523) Standarize output
+* [#2523](https://github.com/pgRouting/pgrouting/pull/2523) Standardize output
   pgr_bdAstar
 
-  * Standarizing output columns to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
+  * Standardize output columns to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
 
     * pgr_bdAstar(One to One) added ``start_vid`` and ``end_vid``
       columns.
     * pgr_bdAstar(One to Many) added ``end_vid`` column.
     * pgr_bdAstar(Many to One) added ``start_vid`` column.
 
-* [#2547](https://github.com/pgRouting/pgrouting/pull/2547) Standarize output
+* [#2547](https://github.com/pgRouting/pgrouting/pull/2547) Standardize output
   and modifying signature pgr_KSP
 
   * Result columns standarized to: ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
@@ -327,7 +328,7 @@ milestone for 3.6.0
     * pgr_ksp(Many to Many)
     * pgr_ksp(Combinations)
 
-* [#2548](https://github.com/pgRouting/pgrouting/pull/2548) Standarize output
+* [#2548](https://github.com/pgRouting/pgrouting/pull/2548) Standardize output
   pgr_drivingDistance
 
   * Standarizing output columns to ``(seq, depth, start_vid, pred, node, edge, cost, agg_cost)``
@@ -339,7 +340,7 @@ milestone for 3.6.0
 
 **Proposed functions changes**
 
-* [#2544](https://github.com/pgRouting/pgrouting/pull/2544) Standarize output
+* [#2544](https://github.com/pgRouting/pgrouting/pull/2544) Standardize output
   and modifying signature pgr_withPointsDD
 
   * Signature change: ``driving_side`` parameter changed from named optional to
@@ -358,7 +359,7 @@ milestone for 3.6.0
     * pgr_withpointsdd(text,text,bigint,double precision,boolean,character,boolean)
     * pgr_withpointsdd(text,text,anyarray,double precision,boolean,character,boolean,boolean)
 
-* [#2546](https://github.com/pgRouting/pgrouting/pull/2546) Standarize output
+* [#2546](https://github.com/pgRouting/pgrouting/pull/2546) Standardize output
   and modifying signature pgr_withPointsKSP
 
   * Standarizing output columns to ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
@@ -396,9 +397,9 @@ milestone for 3.6.0
 * [#2490](https://github.com/pgRouting/pgrouting/pull/2490) Automatic page
   history links.
 
-* ..rubric:: SQL standarization
+* ..rubric:: Standardize SQL
 
-* [#2555](https://github.com/pgRouting/pgrouting/pull/2555) standarize
+* [#2555](https://github.com/pgRouting/pgrouting/pull/2555) Standardize
   deprecated messages
 * On new internal function: do not use named parameters and default parameters.
 
@@ -456,7 +457,7 @@ milestone for 3.5.0
 
 * Dijkstra
 
-  * Standarizing output columns to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
+  * Standardize output columns to ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
 
     * pgr_dijkstra(One to One) added ``start_vid`` and ``end_vid`` columns.
     * pgr_dijkstra(One to Many) added ``end_vid`` column.

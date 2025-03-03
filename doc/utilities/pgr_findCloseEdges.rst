@@ -8,12 +8,12 @@
    ****************************************************************************
 
 .. index::
-   single: Utilities ; pgr_findCloseEdges - Proposed
+   single: Utilities ; pgr_findCloseEdges
    single: findCloseEdges
 
 |
 
-``pgr_findCloseEdges`` - Proposed
+``pgr_findCloseEdges``
 ===============================================================================
 
 ``pgr_findCloseEdges`` - Finds the close edges to a point geometry.
@@ -24,6 +24,7 @@
 
 * Error messages adjustment.
 * ``partial`` option is removed.
+* Function promoted to official.
 
 .. rubric:: Version 3.4.0
 
@@ -58,7 +59,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: findCloseEdges - Proposed ; One point - Proposed on 3.6
+    single: findCloseEdges ; One point
 
 One point
 ...............................................................................
@@ -81,7 +82,7 @@ One point
    :end-before: -- q2
 
 .. index::
-   single: findCloseEdges - Proposed ; Many points - Proposed on 3.6
+   single: findCloseEdges ; Many points
 
 Many points
 ...............................................................................
