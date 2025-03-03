@@ -47,13 +47,13 @@ pgRouting 3.8.0 Release Notes
      :start-after: Version 3.8.0
      :end-before: .. rubric
 
-.. rubric:: Changes on proposed functions
-
 * pgr_findCloseEdges
 
   .. include:: pgr_findCloseEdges.rst
      :start-after: Version 3.8.0
      :end-before: .. rubric
+
+.. rubric:: Changes on proposed functions
 
 * pgr_degree
 
@@ -136,7 +136,7 @@ milestone for 3.7.0
 
 .. rubric:: Official functions changes
 
-* `#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standarize
+* `#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standardize
   spanning tree functions output
 
   * Functions:
@@ -258,33 +258,33 @@ milestone for 3.6.0
 
 .. rubric:: Official functions changes
 
-* `#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__ Standarize output
+* `#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__ Standardize output
   pgr_aStar
 
-  * Standarizing output columns to |short-generic-result|
+  * Standardize output columns to |short-generic-result|
 
     * pgr_aStar(One to One) added ``start_vid`` and ``end_vid`` columns.
     * pgr_aStar(One to Many) added ``end_vid`` column.
     * pgr_aStar(Many to One) added ``start_vid`` column.
 
-* `#2523 <https://github.com/pgRouting/pgrouting/pull/2523>`__ Standarize output
+* `#2523 <https://github.com/pgRouting/pgrouting/pull/2523>`__ Standardize output
   pgr_bdAstar
 
-  * Standarizing output columns to |short-generic-result|
+  * Standardize output columns to |short-generic-result|
 
     * pgr_bdAstar(One to One) added ``start_vid`` and ``end_vid``
       columns.
     * pgr_bdAstar(One to Many) added ``end_vid`` column.
     * pgr_bdAstar(Many to One) added ``start_vid`` column.
 
-* `#2547 <https://github.com/pgRouting/pgrouting/pull/2547>`__ Standarize output
+* `#2547 <https://github.com/pgRouting/pgrouting/pull/2547>`__ Standardize output
   and modifying signature pgr_KSP
 
   .. include:: pgr_KSP.rst
      :start-after: Version 3.6.0
      :end-before: .. rubric
 
-* `#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ Standarize output
+* `#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ Standardize output
   pgr_drivingDistance
 
   .. include:: pgr_drivingDistance.rst
@@ -293,14 +293,14 @@ milestone for 3.6.0
 
 .. rubric:: Proposed functions changes
 
-* `#2544 <https://github.com/pgRouting/pgrouting/pull/2544>`__ Standarize output
+* `#2544 <https://github.com/pgRouting/pgrouting/pull/2544>`__ Standardize output
   and modifying signature pgr_withPointsDD
 
   .. include:: pgr_withPointsDD.rst
      :start-after: Version 3.6.0
      :end-before: .. rubric
 
-* `#2546 <https://github.com/pgRouting/pgrouting/pull/2546>`__ Standarize output
+* `#2546 <https://github.com/pgRouting/pgrouting/pull/2546>`__ Standardize output
   and modifying signature pgr_withPointsKSP
 
   .. include:: pgr_withPointsKSP.rst
@@ -329,9 +329,9 @@ milestone for 3.6.0
 * `#2490 <https://github.com/pgRouting/pgrouting/pull/2490>`__ Automatic page
   history links.
 
-* ..rubric:: SQL standarization
+* ..rubric:: Standardize SQL
 
-* `#2555 <https://github.com/pgRouting/pgrouting/pull/2555>`__ standarize
+* `#2555 <https://github.com/pgRouting/pgrouting/pull/2555>`__ Standardize
   deprecated messages
 * On new internal function: do not use named parameters and default parameters.
 
@@ -395,7 +395,7 @@ milestone for 3.5.0
 
 * Dijkstra
 
-  * Standarizing output columns to |short-generic-result|
+  * Standardize output columns to |short-generic-result|
 
     * pgr_dijkstra(One to One) added ``start_vid`` and ``end_vid`` columns.
     * pgr_dijkstra(One to Many) added ``end_vid`` column.
