@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-02 19:54+0000\n"
+"POT-Creation-Date: 2025-03-03 21:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4370,6 +4370,12 @@ msgstr ""
 msgid ":doc:`pgr_trsp` - Turn Restriction Shortest Path (TRSP)"
 msgstr ""
 
+msgid "Utilities family"
+msgstr ""
+
+msgid ":doc:`pgr_findCloseEdges`"
+msgstr ""
+
 msgid "Functions by categories"
 msgstr ""
 
@@ -4421,13 +4427,13 @@ msgstr ""
 msgid "Function promoted to official."
 msgstr ""
 
-msgid "Changes on proposed functions"
-msgstr ""
-
 msgid "pgr_findCloseEdges"
 msgstr ""
 
 msgid "``partial`` option is removed."
+msgstr ""
+
+msgid "Changes on proposed functions"
 msgstr ""
 
 msgid "pgr_degree"
@@ -11576,7 +11582,7 @@ msgid ""
 "``dryrun := true``."
 msgstr ""
 
-msgid "``pgr_findCloseEdges`` - Proposed"
+msgid "``pgr_findCloseEdges``"
 msgstr ""
 
 msgid "``pgr_findCloseEdges`` - Finds the close edges to a point geometry."
@@ -15187,12 +15193,6 @@ msgstr ""
 msgid "From the :doc:`TRSP-family`:"
 msgstr ""
 
-msgid "Utilities Category"
-msgstr ""
-
-msgid ":doc:`pgr_findCloseEdges`"
-msgstr ""
-
 msgid "Reference"
 msgstr ""
 
@@ -15328,7 +15328,7 @@ msgid "Official functions changes"
 msgstr ""
 
 msgid ""
-"`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standarize "
+"`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standardize "
 "spanning tree functions output"
 msgstr ""
 
@@ -15482,22 +15482,25 @@ msgid ""
 msgstr ""
 
 msgid ""
-"`#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__ Standarize "
+"`#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__ Standardize "
 "output pgr_aStar"
 msgstr ""
 
+msgid "Standardize output columns to |short-generic-result|"
+msgstr ""
+
 msgid ""
-"`#2523 <https://github.com/pgRouting/pgrouting/pull/2523>`__ Standarize "
+"`#2523 <https://github.com/pgRouting/pgrouting/pull/2523>`__ Standardize "
 "output pgr_bdAstar"
 msgstr ""
 
 msgid ""
-"`#2547 <https://github.com/pgRouting/pgrouting/pull/2547>`__ Standarize "
+"`#2547 <https://github.com/pgRouting/pgrouting/pull/2547>`__ Standardize "
 "output and modifying signature pgr_KSP"
 msgstr ""
 
 msgid ""
-"`#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ Standarize "
+"`#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ Standardize "
 "output pgr_drivingDistance"
 msgstr ""
 
@@ -15505,12 +15508,12 @@ msgid "Proposed functions changes"
 msgstr ""
 
 msgid ""
-"`#2544 <https://github.com/pgRouting/pgrouting/pull/2544>`__ Standarize "
+"`#2544 <https://github.com/pgRouting/pgrouting/pull/2544>`__ Standardize "
 "output and modifying signature pgr_withPointsDD"
 msgstr ""
 
 msgid ""
-"`#2546 <https://github.com/pgRouting/pgrouting/pull/2546>`__ Standarize "
+"`#2546 <https://github.com/pgRouting/pgrouting/pull/2546>`__ Standardize "
 "output and modifying signature pgr_withPointsKSP"
 msgstr ""
 
@@ -15555,11 +15558,11 @@ msgid ""
 "page history links."
 msgstr ""
 
-msgid "..rubric:: SQL standarization"
+msgid "..rubric:: Standardize SQL"
 msgstr ""
 
 msgid ""
-"`#2555 <https://github.com/pgRouting/pgrouting/pull/2555>`__ standarize "
+"`#2555 <https://github.com/pgRouting/pgrouting/pull/2555>`__ Standardize "
 "deprecated messages"
 msgstr ""
 
