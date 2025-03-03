@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-02 19:54+0000\n"
+"POT-Creation-Date: 2025-03-03 21:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3892,6 +3892,12 @@ msgstr ""
 msgid ":doc:`pgr_trsp` - Turn Restriction Shortest Path (TRSP)"
 msgstr ""
 
+msgid "Utilities family"
+msgstr ""
+
+msgid ":doc:`pgr_findCloseEdges`"
+msgstr ""
+
 msgid "Functions by categories"
 msgstr ""
 
@@ -3943,13 +3949,13 @@ msgstr ""
 msgid "Function promoted to official."
 msgstr ""
 
-msgid "Changes on proposed functions"
-msgstr ""
-
 msgid "pgr_findCloseEdges"
 msgstr ""
 
 msgid "``partial`` option is removed."
+msgstr ""
+
+msgid "Changes on proposed functions"
 msgstr ""
 
 msgid "pgr_degree"
@@ -9853,7 +9859,7 @@ msgstr ""
 msgid "To get the query generated used to get the vertex information, use ``dryrun := true``."
 msgstr ""
 
-msgid "``pgr_findCloseEdges`` - Proposed"
+msgid "``pgr_findCloseEdges``"
 msgstr ""
 
 msgid "``pgr_findCloseEdges`` - Finds the close edges to a point geometry."
@@ -12766,12 +12772,6 @@ msgstr ""
 msgid "From the :doc:`TRSP-family`:"
 msgstr ""
 
-msgid "Utilities Category"
-msgstr ""
-
-msgid ":doc:`pgr_findCloseEdges`"
-msgstr ""
-
 msgid "Reference"
 msgstr ""
 
@@ -12874,7 +12874,7 @@ msgstr ""
 msgid "Official functions changes"
 msgstr ""
 
-msgid "`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standarize spanning tree functions output"
+msgid "`#2605 <https://github.com/pgRouting/pgrouting/pull/2605>`__ Standardize spanning tree functions output"
 msgstr ""
 
 msgid "Functions:"
@@ -12997,25 +12997,28 @@ msgstr ""
 msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.0%22>`_"
 msgstr ""
 
-msgid "`#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__ Standarize output pgr_aStar"
+msgid "`#2516 <https://github.com/pgRouting/pgrouting/pull/2516>`__ Standardize output pgr_aStar"
 msgstr ""
 
-msgid "`#2523 <https://github.com/pgRouting/pgrouting/pull/2523>`__ Standarize output pgr_bdAstar"
+msgid "Standardize output columns to |short-generic-result|"
 msgstr ""
 
-msgid "`#2547 <https://github.com/pgRouting/pgrouting/pull/2547>`__ Standarize output and modifying signature pgr_KSP"
+msgid "`#2523 <https://github.com/pgRouting/pgrouting/pull/2523>`__ Standardize output pgr_bdAstar"
 msgstr ""
 
-msgid "`#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ Standarize output pgr_drivingDistance"
+msgid "`#2547 <https://github.com/pgRouting/pgrouting/pull/2547>`__ Standardize output and modifying signature pgr_KSP"
+msgstr ""
+
+msgid "`#2548 <https://github.com/pgRouting/pgrouting/pull/2548>`__ Standardize output pgr_drivingDistance"
 msgstr ""
 
 msgid "Proposed functions changes"
 msgstr ""
 
-msgid "`#2544 <https://github.com/pgRouting/pgrouting/pull/2544>`__ Standarize output and modifying signature pgr_withPointsDD"
+msgid "`#2544 <https://github.com/pgRouting/pgrouting/pull/2544>`__ Standardize output and modifying signature pgr_withPointsDD"
 msgstr ""
 
-msgid "`#2546 <https://github.com/pgRouting/pgrouting/pull/2546>`__ Standarize output and modifying signature pgr_withPointsKSP"
+msgid "`#2546 <https://github.com/pgRouting/pgrouting/pull/2546>`__ Standardize output and modifying signature pgr_withPointsKSP"
 msgstr ""
 
 msgid "C/C++ code enhancements"
@@ -13045,10 +13048,10 @@ msgstr ""
 msgid "`#2490 <https://github.com/pgRouting/pgrouting/pull/2490>`__ Automatic page history links."
 msgstr ""
 
-msgid "..rubric:: SQL standarization"
+msgid "..rubric:: Standardize SQL"
 msgstr ""
 
-msgid "`#2555 <https://github.com/pgRouting/pgrouting/pull/2555>`__ standarize deprecated messages"
+msgid "`#2555 <https://github.com/pgRouting/pgrouting/pull/2555>`__ Standardize deprecated messages"
 msgstr ""
 
 msgid "On new internal function: do not use named parameters and default parameters."
