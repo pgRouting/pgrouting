@@ -25,103 +25,43 @@ SELECT plan(30);
 UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
 --
-PREPARE query_1 AS
-SELECT * FROM pgr_extractVertices(
-    'SELECT source
-    FROM edges'
-);
 
-PREPARE query_2 AS
-SELECT *
-FROM pgr_extractVertices(
-    'SELECT target
-     FROM edges'
-);
+PREPARE test_1(TEXT) AS
+SELECT * FROM pgr_extractVertices('SELECT ' || $1 || ' FROM edges');
 
-SELECT throws_ok('query_1', 'P0001', 'Missing column', 'Incomlete data -> throws');
-SELECT throws_ok('query_2', 'P0001', 'Missing column', 'Incomlete data -> throws');
-
---
-PREPARE query_3 AS
-SELECT *
-FROM pgr_extractVertices(
-    'SELECT ST_StartPoint(geom) AS startpoint
-     FROM edges'
-);
-
-PREPARE query_4 AS
-SELECT *
-FROM pgr_extractVertices(
-    'SELECT ST_EndPoint(geom) AS endpoint
-     FROM edges'
-);
-
-SELECT throws_ok('query_3', 'P0001', 'Missing column', 'Incomlete data -> throws');
-SELECT throws_ok('query_4', 'P0001', 'Missing column', 'Incomlete data -> throws');
+SELECT column_missing($$test_1('source')$$, 'target');
+SELECT column_missing($$test_1('target')$$, 'source');
 
 --
 
-PREPARE query_5 AS
-SELECT * FROM pgr_extractVertices(
-    'SELECT source, geom
-    FROM edges'
-);
-
-PREPARE query_6 AS
-SELECT *
-FROM pgr_extractVertices(
-    'SELECT target, geom
-     FROM edges'
-);
-
-SELECT lives_ok('query_5', 'geom column makes data complete');
-SELECT lives_ok('query_6', 'geom column makes data complete');
-
---
-PREPARE query_7 AS
-SELECT *
-FROM pgr_extractVertices(
-    'SELECT ST_StartPoint(geom) AS startpoint, geom
-     FROM edges'
-);
-
-PREPARE query_8 AS
-SELECT *
-FROM pgr_extractVertices(
-    'SELECT ST_EndPoint(geom) AS endpoint, geom
-     FROM edges'
-);
-
-SELECT lives_ok('query_7', 'geom column makes data complete');
-SELECT lives_ok('query_8', 'geom column makes data complete');
+SELECT column_missing($$"test_1"('ST_StartPoint(geom) AS startpoint')$$, 'endpoint');
+SELECT column_missing($$"test_1"('ST_EndPoint(geom) AS endpoint')$$, 'startpoint');
 
 --
 
-SELECT set_eq(
-    $$SELECT count(*) FROM pgr_extractVertices( 'SELECT geom FROM edges')$$,
-    $$VALUES (17)$$,
-    '17: Number of vertices extracted');
-SELECT set_eq(
-    $$SELECT count(*) FROM pgr_extractVertices( 'SELECT ST_StartPoint(geom) AS startpoint, ST_EndPoint(geom) AS endpoint FROM edges')$$,
-    $$VALUES (17)$$,
-    '17: Number of vertices extracted');
-SELECT set_eq(
-    $$SELECT count(*) FROM pgr_extractVertices( 'SELECT source, target FROM edges')$$,
-    $$VALUES (17)$$,
-    '17: Number of vertices extracted');
+SELECT lives_ok($$"test_1"('source, geom')$$, 'geom column makes data complete');
+SELECT lives_ok($$"test_1"('target, geom')$$, 'geom column makes data complete');
 
-SELECT set_eq(
-    $$SELECT count(*) FROM pgr_extractVertices( 'SELECT id, geom FROM edges')$$,
-    $$VALUES (17)$$,
-    '17: Number of vertices extracted');
-SELECT set_eq(
-    $$SELECT count(*) FROM pgr_extractVertices( 'SELECT id, ST_StartPoint(geom) AS startpoint, ST_EndPoint(geom) AS endpoint FROM edges')$$,
-    $$VALUES (17)$$,
-    '17: Number of vertices extracted');
-SELECT set_eq(
-    $$SELECT count(*) FROM pgr_extractVertices( 'SELECT id, source, target FROM edges')$$,
-    $$VALUES (17)$$,
-    '17: Number of vertices extracted');
+--
+
+SELECT lives_ok($$"test_1"('ST_StartPoint(geom) AS startpoint, geom')$$, 'geom column makes data complete');
+SELECT lives_ok($$"test_1"('ST_EndPoint(geom) AS endpoint, geom')$$, 'geom column makes data complete');
+
+--
+
+SELECT is((SELECT count(*) FROM pgr_extractVertices('SELECT geom FROM edges')),
+  17::BIGINT, '17 vertices with geom');
+SELECT is((SELECT count(*) FROM pgr_extractVertices('SELECT ST_StartPoint(geom) AS startpoint, ST_EndPoint(geom) AS endpoint FROM edges')),
+  17::BIGINT, '17 vertices with points');
+SELECT is((SELECT count(*) FROM pgr_extractVertices('SELECT source, target FROM edges')),
+  17::BIGINT, '17 vertices with source, target');
+
+SELECT is((SELECT count(*) FROM pgr_extractVertices('SELECT id, geom FROM edges')),
+  17::BIGINT, '17 vertices with id, geom');
+SELECT is((SELECT count(*) FROM pgr_extractVertices('SELECT id, ST_StartPoint(geom) AS startpoint, ST_EndPoint(geom) AS endpoint FROM edges')),
+  17::BIGINT, '17 vertices with id, points');
+SELECT is((SELECT count(*) FROM pgr_extractVertices('SELECT id, source, target FROM edges')),
+  17::BIGINT, '17 vertices with id, source, target');
 
 --
 SELECT set_eq(

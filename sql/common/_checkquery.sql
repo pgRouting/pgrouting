@@ -33,18 +33,19 @@ DECLARE
 
 BEGIN
 
-  BEGIN
+  IF $1 !~ '[[:space:]]' THEN
+    -- prepared statements no arguments
     EXECUTE format($$
       SELECT regexp_replace(regexp_replace(statement, %1$L,'','i'),';$','')
       FROM pg_prepared_statements WHERE name = %2$L$$,
       '.*' || $1 || '\s*as', $1)
     INTO main_sql;
 
-    EXCEPTION WHEN OTHERS
-      THEN main_sql := $1;
-  END;
-
-  IF main_sql IS NULL THEN
+    IF main_sql IS NULL THEN
+      RAISE EXCEPTION 'prepared statement "%" does not exist', $1;
+    END IF;
+  ELSE
+    -- normal query
     main_sql := $1;
   END IF;
 
@@ -52,8 +53,7 @@ BEGIN
     EXECUTE format('SELECT * FROM ( %1$s ) AS __a__ limit 1', main_sql);
 
     EXCEPTION WHEN OTHERS THEN
-      RAISE EXCEPTION '%', SQLERRM
-      USING HINT = 'Please check query: '|| $1;
+      RAISE EXCEPTION '%', SQLERRM USING HINT = $1, ERRCODE = SQLSTATE;
   END;
 
   RETURN main_sql;
@@ -62,7 +62,5 @@ END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
-
--- COMMENTS
 COMMENT ON FUNCTION _pgr_checkquery(TEXT)
 IS 'pgrouting internal function';

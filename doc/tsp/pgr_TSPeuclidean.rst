@@ -16,7 +16,7 @@
 ``pgr_TSPeuclidean``
 =============================================================================
 
-* ``pgr_TSPeuclidean`` - Aproximation using *metric* algorithm.
+* ``pgr_TSPeuclidean`` - Approximation using *metric* algorithm.
 
 .. rubric:: Availability:
 

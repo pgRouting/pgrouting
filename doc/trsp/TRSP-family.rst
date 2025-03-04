@@ -16,8 +16,6 @@ TRSP - Family of functions
 
 When points are also given as input:
 
-.. rubric:: Proposed
-
 .. include:: proposed.rst
    :start-after: warning-begin
    :end-before: end-warning
@@ -33,8 +31,6 @@ When points are also given as input:
 
 .. Warning:: Read the :doc:`migration` about how to migrate from the
    deprecated TRSP functionality to the new signatures or replacement functions.
-
-.. rubric:: Experimental
 
 .. include:: experimental.rst
    :start-after: warning-begin

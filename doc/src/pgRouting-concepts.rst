@@ -1896,9 +1896,17 @@ To get faster results bound the queries to an area of interest of routing.
 In this example Use an inner query SQL that does not include some edges in the
 routing function and is within the area of the results.
 
+Given this area:
+
 .. literalinclude:: concepts.queries
    :start-after: -- performance1
    :end-before: -- performance2
+
+Calculate a route:
+
+.. literalinclude:: concepts.queries
+   :start-after: -- performance2
+   :end-before: -- performance3
 
 How to contribute
 -------------------------------------------------------------------------------
@@ -1917,7 +1925,7 @@ How to contribute
 * `Example
   <https://github.com/pgRouting/pgrouting/wiki/How-to:-Handle-parallel-edges-(KSP)>`__
 
-.. rubric:: Adding Functionaity to pgRouting
+.. rubric:: Adding Functionality to pgRouting
 
 
 Consult the `developer's documentation

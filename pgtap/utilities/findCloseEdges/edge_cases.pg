@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.4.0') THEN plan(12) ELSE plan(1) END;
+SELECT CASE WHEN min_version('3.8.0') THEN plan(33) WHEN min_version('3.4.0') THEN plan(34) ELSE plan(1) END;
 SET client_min_messages TO 'WARNING';
 
 
@@ -58,11 +58,16 @@ BEGIN
   RETURN QUERY SELECT lives_ok('query_1', 'With defaults');
   RETURN QUERY SELECT lives_ok('query_2', 'two rows');
   RETURN QUERY SELECT lives_ok('query_3', 'dryrun');
-  RETURN QUERY SELECT is_empty('query_3', 'dryrun');
+  RETURN QUERY SELECT is_empty('query_3', 'dryrun results empty');
 
-  RETURN QUERY SELECT throws_ok('err1', 'P0001', 'Missing column', 'Incomlete data -> throws');
-  RETURN QUERY SELECT throws_ok('err2', 'P0001', 'Missing column', 'Incomlete data -> throws');
+  RETURN QUERY SELECT column_missing('err1', 'geom');
+  RETURN QUERY SELECT column_missing('err2', 'id');
 
+  RETURN QUERY SELECT wrong_relation($$SELECT * FROM pgr_findCloseEdges(
+    'SELECT id, geom FROM foo', (SELECT geom FROM pointsOfInterest WHERE pid = 5), 0.5)$$, 'foo');
+  RETURN QUERY SELECT throws_ok($$SELECT * FROM pgr_findCloseEdges(
+    'SELECT id, geom FROM edges', (SELECT geom FROM bar WHERE pid = 5), 0.5)$$,
+    '42P01', 'relation "bar" does not exist');
 
   -- Many points
   PREPARE query_4 AS
@@ -80,12 +85,95 @@ BEGIN
   RETURN QUERY SELECT lives_ok('query_4', 'With defaults');
   RETURN QUERY SELECT lives_ok('query_5', 'two rows');
   RETURN QUERY SELECT lives_ok('query_6', 'dryrun');
-  RETURN QUERY SELECT is_empty('query_6', 'dryrun');
+  RETURN QUERY SELECT is_empty('query_6', 'dryrun results empty');
 
-  RETURN QUERY SELECT throws_ok('err3', 'P0001', 'Missing column', 'Incomlete data -> throws');
-  RETURN QUERY SELECT throws_ok('err4', 'P0001', 'Missing column', 'Incomlete data -> throws');
+  RETURN QUERY SELECT column_missing('err3', 'geom');
+  RETURN QUERY SELECT column_missing('err4', 'id');
 
 
+  RETURN QUERY SELECT wrong_relation($$SELECT * FROM pgr_findCloseEdges(
+    'SELECT id, geom FROM foo', (SELECT array_agg(geom) FROM pointsOfInterest), 0.5)$$, 'foo');
+  RETURN QUERY SELECT throws_ok($$SELECT * FROM pgr_findCloseEdges(
+    'SELECT id, geom FROM edges', (SELECT array_agg(geom) FROM bar), 0.5)$$,
+    '42P01', 'relation "bar" does not exist');
+
+  IF min_version('4.0.0') THEN
+    RETURN QUERY SELECT skip(1, 'Signatures with partial flag is removed on 4.0.0');
+    RETURN;
+  END IF;
+
+  -- Test with partial flag
+  RETURN QUERY SELECT is_empty($$SELECT * FROM pgr_findCloseEdges(
+      'SELECT id, geom FROM edges', (SELECT geom FROM pointsOfInterest WHERE pid = 5), 0.5, 1, true, true)$$, 'One geom: partial,dryrun = true,true');
+  RETURN QUERY SELECT isnt_empty($$SELECT * FROM pgr_findCloseEdges(
+      'SELECT id, geom FROM edges', (SELECT geom FROM pointsOfInterest WHERE pid = 5), 0.5, 1, true, false)$$, 'One geom: partial,dryrun = true,false');
+  RETURN QUERY SELECT is_empty($$SELECT * FROM pgr_findCloseEdges(
+      'SELECT id, geom FROM edges', (SELECT geom FROM pointsOfInterest WHERE pid = 5), 0.5, 1, false, true)$$, 'One geom: partial,dryrun = false,true');
+  RETURN QUERY SELECT isnt_empty($$SELECT * FROM pgr_findCloseEdges(
+      'SELECT id, geom FROM edges', (SELECT geom FROM pointsOfInterest WHERE pid = 5), 0.5, 1, false, false)$$, 'One geom: partial,dryrun = false,false');
+
+  RETURN QUERY SELECT is_empty($$SELECT * FROM pgr_findCloseEdges(
+      'SELECT id, geom FROM edges', (SELECT array_agg(geom) FROM pointsOfInterest), 0.5, 1, true, true)$$, 'Many geom: partial,dryrun = true,true');
+  RETURN QUERY SELECT isnt_empty($$SELECT * FROM pgr_findCloseEdges(
+      'SELECT id, geom FROM edges', (SELECT array_agg(geom) FROM pointsOfInterest), 0.5, 1, true, false)$$, 'Many geom: partial,dryrun = true,false');
+  RETURN QUERY SELECT is_empty($$SELECT * FROM pgr_findCloseEdges(
+      'SELECT id, geom FROM edges', (SELECT array_agg(geom) FROM pointsOfInterest), 0.5, 1, false, true)$$, 'Many geom: partial,dryrun = false,true');
+  RETURN QUERY SELECT isnt_empty($$SELECT * FROM pgr_findCloseEdges(
+      'SELECT id, geom FROM edges', (SELECT array_agg(geom) FROM pointsOfInterest), 0.5, 1, false, false)$$, 'Many geom: partial,dryrun = false,false');
+
+  RETURN QUERY SELECT
+  CASE WHEN min_version('3.8.0') THEN
+    collect_tap(
+      throws_ok($$SELECT * FROM pgr_findCloseEdges(
+          'SELECT id, geom FROM edges', (SELECT geom FROM pointsOfInterest WHERE pid = 5), 0.5, 1, partial => true) WHERE distance IS NOT NULL$$,
+          '42883','function pgr_findcloseedges(unknown, geometry, numeric, integer, partial => boolean) does not exist', 'throws: One geom, with cap value, naming partial => true'),
+      throws_ok($$SELECT * FROM pgr_findCloseEdges(
+          'SELECT id, geom FROM edges', (SELECT geom FROM pointsOfInterest WHERE pid = 5), 0.5, partial => true) WHERE distance IS NOT NULL$$,
+          '42883','function pgr_findcloseedges(unknown, geometry, numeric, partial => boolean) does not exist', 'throws: One geom, without cap value naming partial => true'),
+      isnt_empty($$SELECT * FROM pgr_findCloseEdges(
+          'SELECT id, geom FROM edges', (SELECT geom FROM pointsOfInterest WHERE pid = 5), 0.5, 1, true, false) WHERE distance IS NOT NULL$$, 'partial, One geom: isnt_empty distance'),
+      isnt_empty($$SELECT * FROM pgr_findCloseEdges(
+          'SELECT id, geom FROM edges', (SELECT geom FROM pointsOfInterest WHERE pid = 5), 0.5, 1, true, false) WHERE geom IS NOT NULL$$, 'partial, One geom: isnt_empty geom'),
+      isnt_empty($$SELECT * FROM pgr_findCloseEdges(
+          'SELECT id, geom FROM edges', (SELECT geom FROM pointsOfInterest WHERE pid = 5), 0.5, 1, true, false) WHERE edge IS NOT NULL$$, 'partial, One geom: isnt_empty edge'),
+
+      throws_ok($$SELECT * FROM pgr_findCloseEdges(
+          'SELECT id, geom FROM edges', (SELECT array_agg(geom) FROM pointsOfInterest), 0.5, 1, partial => true) WHERE distance IS NOT NULL$$,
+          '42883','function pgr_findcloseedges(unknown, geometry[], numeric, integer, partial => boolean) does not exist', 'throws: Many geom, with cap value, naming partial => true'),
+      throws_ok($$SELECT * FROM pgr_findCloseEdges(
+          'SELECT id, geom FROM edges', (SELECT array_agg(geom) FROM pointsOfInterest), 0.5, partial => true) WHERE distance IS NOT NULL$$,
+          '42883','function pgr_findcloseedges(unknown, geometry[], numeric, partial => boolean) does not exist', 'throws: Many geom, without cap value naming partial => true'),
+      isnt_empty($$SELECT * FROM pgr_findCloseEdges(
+          'SELECT id, geom FROM edges', (SELECT array_agg(geom) FROM pointsOfInterest), 0.5, 1, true, false) WHERE distance IS NOT NULL$$, 'partial, Many geom: isnt_empty distance'),
+      isnt_empty($$SELECT * FROM pgr_findCloseEdges(
+          'SELECT id, geom FROM edges', (SELECT array_agg(geom) FROM pointsOfInterest), 0.5, 1, true, false) WHERE edge IS NOT NULL$$, 'partial, Many geom: isnt_empty edge')
+    )
+
+  ELSE
+    collect_tap(
+      lives_ok($$SELECT * FROM pgr_findCloseEdges(
+          'SELECT id, geom FROM edges', (SELECT geom FROM pointsOfInterest WHERE pid = 5), 0.5, 1, partial => true) WHERE distance IS NOT NULL$$, 'One geom, with cap value, naming partial => true'),
+      lives_ok($$SELECT * FROM pgr_findCloseEdges(
+          'SELECT id, geom FROM edges', (SELECT geom FROM pointsOfInterest WHERE pid = 5), 0.5, partial => true) WHERE distance IS NOT NULL$$, 'One geom, without cap value, naming partial => true'),
+      is_empty($$SELECT * FROM pgr_findCloseEdges(
+          'SELECT id, geom FROM edges', (SELECT geom FROM pointsOfInterest WHERE pid = 5), 0.5, 1, true, false) WHERE distance IS NOT NULL$$, 'partial, One geom: is_empty distance'),
+      is_empty($$SELECT * FROM pgr_findCloseEdges(
+          'SELECT id, geom FROM edges', (SELECT geom FROM pointsOfInterest WHERE pid = 5), 0.5, 1, true, false) WHERE geom IS NOT NULL$$, 'partial, One geom: is_empty geom'),
+      is_empty($$SELECT * FROM pgr_findCloseEdges(
+          'SELECT id, geom FROM edges', (SELECT geom FROM pointsOfInterest WHERE pid = 5), 0.5, 1, true, false) WHERE edge IS NOT NULL$$, 'partial, One geom: is_empty edge'),
+
+      lives_ok($$SELECT * FROM pgr_findCloseEdges(
+          'SELECT id, geom FROM edges', (SELECT array_agg(geom) FROM pointsOfInterest), 0.5, 1, partial => true) WHERE distance IS NOT NULL$$, 'Many geom, with cap value, naming partial => true'),
+      lives_ok($$SELECT * FROM pgr_findCloseEdges(
+          'SELECT id, geom FROM edges', (SELECT array_agg(geom) FROM pointsOfInterest), 0.5, partial => true) WHERE distance IS NOT NULL$$, 'Many geom, without cap value, naming partial => true'),
+      isnt_empty($$SELECT * FROM pgr_findCloseEdges(
+          'SELECT id, geom FROM edges', (SELECT array_agg(geom) FROM pointsOfInterest), 0.5, 1, true, false) WHERE distance IS NOT NULL$$, 'partial, Many geom: isnt_empty distance'),
+      isnt_empty($$SELECT * FROM pgr_findCloseEdges(
+          'SELECT id, geom FROM edges', (SELECT array_agg(geom) FROM pointsOfInterest), 0.5, 1, true, false) WHERE geom IS NOT NULL$$, 'partial, Many geom: isnt_empty geom'),
+      is_empty($$SELECT * FROM pgr_findCloseEdges(
+          'SELECT id, geom FROM edges', (SELECT array_agg(geom) FROM pointsOfInterest), 0.5, 1, true, false) WHERE edge IS NOT NULL$$, 'partial, Many geom: is_empty edge')
+    )
+  END;
 
 END;
 $BODY$

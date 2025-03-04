@@ -27,8 +27,6 @@ Components - Family of functions
 
 .. official-end
 
-.. rubric:: Experimental
-
 .. include:: experimental.rst
    :start-after: warning-begin
    :end-before: end-warning

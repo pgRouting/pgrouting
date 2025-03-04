@@ -44,20 +44,49 @@ DECLARE
     quoted TEXT;
     query TEXT;
     has_geom BOOLEAN := TRUE;
+    has_st BOOLEAN := TRUE;
     has_source BOOLEAN := TRUE;
+    has_target BOOLEAN := TRUE;
     has_points BOOLEAN := TRUE;
+    has_start BOOLEAN := TRUE;
+    has_end BOOLEAN := TRUE;
     has_id BOOLEAN := TRUE;
     rec RECORD;
 
+    sqlhint TEXT;
+
 BEGIN
-  edges_sql := _pgr_checkQuery($1);
+  BEGIN
+    edges_sql := _pgr_checkQuery($1);
+    EXCEPTION WHEN OTHERS THEN
+      GET STACKED DIAGNOSTICS sqlhint = PG_EXCEPTION_HINT;
+      RAISE EXCEPTION '%', SQLERRM USING HINT = sqlhint, ERRCODE = SQLSTATE;
+  END;
+
   has_id := _pgr_checkColumn(edges_sql, 'id', 'ANY-INTEGER', true, dryrun => $2);
-  has_source := _pgr_checkColumn(edges_sql, 'source', 'ANY-INTEGER', true, dryrun => $2)
-    AND _pgr_checkColumn(edges_sql, 'target', 'ANY-INTEGER', true, dryrun => $2);
+  has_source := _pgr_checkColumn(edges_sql, 'source', 'ANY-INTEGER', true, dryrun => $2);
+  has_target := _pgr_checkColumn(edges_sql, 'target', 'ANY-INTEGER', true, dryrun => $2);
 
   has_geom := _pgr_checkColumn(edges_sql, 'geom', 'geometry', true, dryrun => $2);
-  has_points := _pgr_checkColumn(edges_sql, 'startpoint', 'geometry', true, dryrun => $2)
-    AND _pgr_checkColumn(edges_sql, 'endpoint', 'geometry', true, dryrun => $2);
+  has_start := _pgr_checkColumn(edges_sql, 'startpoint', 'geometry', true, dryrun => $2);
+  has_end   := _pgr_checkColumn(edges_sql, 'endpoint', 'geometry', true, dryrun => $2);
+  has_points := has_start AND has_end;
+  has_st := has_source AND has_target;
+
+  IF (NOT has_geom) THEN
+    IF (has_target AND NOT has_source) THEN
+        RAISE EXCEPTION 'column "source" does not exist' USING HINT = $1, ERRCODE = 42703;
+    ELSIF (NOT has_target AND has_source) THEN
+        RAISE EXCEPTION 'column "target" does not exist' USING HINT = $1, ERRCODE = 42703;
+    ELSIF (has_start AND NOT has_end) THEN
+      RAISE EXCEPTION 'column "endpoint" does not exist' USING HINT = $1, ERRCODE = 42703;
+    ELSIF (NOT has_start AND has_end) THEN
+      RAISE EXCEPTION 'column "startpoint" does not exist' USING HINT = $1, ERRCODE = 42703;
+    ELSIF (NOT has_st AND NOT has_points AND NOT has_geom) THEN
+      RAISE EXCEPTION 'column "geom" does not exist' USING HINT = $1, ERRCODE = 42703;
+    END IF;
+  END IF;
+
 
     IF has_geom AND has_id THEN
       -- SELECT id, geom
@@ -202,7 +231,7 @@ BEGIN
         SELECT row_number() over(ORDER BY  ST_X(geom), ST_Y(geom)) AS id, NULL::BIGINT[], NULL::BIGINT[], x, y, geom
         FROM the_points$q$;
 
-    ELSIF has_source AND has_id THEN
+    ELSIF has_st AND has_id THEN
       -- SELECT id, source, target
       query := $q$ WITH
 
@@ -232,7 +261,7 @@ BEGIN
         FROM the_points$q$;
 
 
-    ELSIF has_source AND NOT has_id THEN
+    ELSIF has_st AND NOT has_id THEN
       -- SELECT source, target
       query := $q$
         WITH
@@ -251,10 +280,6 @@ BEGIN
         SELECT DISTINCT vid::BIGINT AS id, NULL::BIGINT[], NULL::BIGINT[], NULL::FLOAT, NULL::FLOAT, NULL::geometry
         FROM the_points$q$;
 
-    ELSE
-        RAISE EXCEPTION 'Missing column'
-        USING HINT = 'Please check query: '|| $1;
-
     END IF;
 
     IF dryrun THEN
@@ -262,10 +287,6 @@ BEGIN
     ELSE
       RETURN QUERY EXECUTE query;
     END IF;
-
-    EXCEPTION WHEN OTHERS THEN
-        RAISE EXCEPTION '%', SQLERRM
-        USING HINT = 'Please check query: '|| $1;
 
 END;
 $BODY$
@@ -277,7 +298,6 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 COMMENT ON FUNCTION pgr_extractVertices(TEXT, BOOLEAN)
 IS 'pgr_extractVertices
-- PROPOSED
 - Parameters
   - Edges SQL with columns: [id,] startpoint, endpoint
         OR

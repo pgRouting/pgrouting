@@ -33,8 +33,6 @@ Flow - Family of functions
 
 .. official-end
 
-.. rubric:: Experimental
-
 .. include:: experimental.rst
    :start-after: warning-begin
    :end-before: end-warning
@@ -71,7 +69,7 @@ Flow Functions General Information
 - When the maximum flow is 0 then there is no flow and **EMPTY SET** is
   returned.
 
-  - There is no flow when source has the same vaule as target.
+  - There is no flow when source has the same value as target.
 
 - Any duplicated values in source or target are ignored.
 - Calculates the flow/residual capacity for each edge. In the output

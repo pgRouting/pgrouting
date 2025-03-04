@@ -10,9 +10,6 @@ FROM (VALUES (1, 1, 2, 5, 2), (2, 1, 3, -3, 4), (3, 2, 3, 7, -1))
      AS t(id, source, target, cost, reverse_cost);
 /* -- g3 */
 
-
-
-
 DROP TABLE IF EXISTS wiki;
 /* -- q1 */
 CREATE TABLE wiki (
@@ -183,7 +180,7 @@ SELECT edge_id, fraction, ST_AsText(edge) AS edge, id AS closest_vertex
 FROM pgr_findCloseEdges(
   $$SELECT id, geom FROM edges WHERE component = 1$$,
   (SELECT array_agg(geom) FROM vertices WHERE component = 2),
-  2, partial => false) JOIN vertices USING (geom) ORDER BY distance LIMIT 1;
+  2) JOIN vertices USING (geom) ORDER BY distance LIMIT 1;
 /* -- connect7 */
 WITH
 info AS (
@@ -193,7 +190,7 @@ info AS (
   FROM pgr_findCloseEdges(
     $$SELECT id, geom FROM edges WHERE component = 1$$,
     (SELECT array_agg(geom) FROM vertices WHERE component = 2),
-    2, partial => false) AS ce
+    2) AS ce
   JOIN vertices AS v USING (geom)
   JOIN edges AS e ON (edge_id = e.id)
   ORDER BY distance LIMIT 1),
@@ -245,9 +242,17 @@ WHERE array_length(in_edges || out_edges, 1) = 2;
 /* -- contract3 */
 
 /* -- performance1 */
-SELECT * FROM pgr_dijkstra($$
-  SELECT id, source, target, cost, reverse_cost from edges
-  WHERE geom && (SELECT st_buffer(geom, 1) AS myarea
-    FROM edges WHERE id = 2)$$,
-  1, 2);
+SELECT id, source, target, cost, reverse_cost
+FROM edges
+WHERE geom && (
+  SELECT st_buffer(geom, 1) as myarea
+  FROM edges where id = 6) ORDER BY id;
 /* -- performance2 */
+SELECT * FROM pgr_dijkstra($$
+  SELECT id, source, target, cost, reverse_cost
+  FROM edges
+  WHERE geom && (
+    SELECT st_buffer(geom, 1) AS myarea
+    FROM edges WHERE id = 6)$$,
+  7, 8);
+/* -- performance3 */

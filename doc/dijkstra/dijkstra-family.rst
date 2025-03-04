@@ -26,8 +26,6 @@ Dijkstra - Family of functions
 
 .. official-end
 
-.. rubric:: Proposed
-
 .. include:: proposed.rst
    :start-after: warning-begin
    :end-before: end-warning
@@ -35,7 +33,7 @@ Dijkstra - Family of functions
 
 .. proposed-start
 
-* :doc:`pgr_dijkstraVia` - Get a route of a seuence of vertices.
+* :doc:`pgr_dijkstraVia` - Get a route of a sequence of vertices.
 * :doc:`pgr_dijkstraNear` - Get the route to the nearest vertex.
 * :doc:`pgr_dijkstraNearCost` - Get the cost to the nearest vertex.
 
@@ -192,7 +190,7 @@ The graphs are defined as follows:
 
 .. rubric:: Directed graph
 
-The weighted directed graph, :math:`G_d(V,E)`, is definied by:
+The weighted directed graph, :math:`G_d(V,E)`, is defined by:
 
 * the set of vertices :math:`V`
 
@@ -211,7 +209,7 @@ The weighted directed graph, :math:`G_d(V,E)`, is definied by:
 
 .. rubric:: Undirected graph
 
-The weighted undirected graph, :math:`G_u(V,E)`, is definied by:
+The weighted undirected graph, :math:`G_u(V,E)`, is defined by:
 
 * the set of vertices :math:`V`
 

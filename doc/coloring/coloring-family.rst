@@ -14,8 +14,6 @@
 Coloring - Family of functions
 ===============================================================================
 
-.. rubric:: Proposed
-
 .. include:: proposed.rst
    :start-after: warning-begin
    :end-before: end-warning
@@ -26,8 +24,6 @@ Coloring - Family of functions
   approach.
 
 .. proposed-end
-
-.. rubric:: Experimental
 
 .. include:: experimental.rst
    :start-after: warning-begin

@@ -15,8 +15,6 @@
 Metrics - Family of functions
 ===============================================================================
 
-.. rubric:: Experimental
-
 .. include:: experimental.rst
    :start-after: warning-begin
    :end-before: end-warning

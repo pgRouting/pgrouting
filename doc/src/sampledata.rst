@@ -15,8 +15,8 @@ Sample Data
 
 The documentation provides very simple example queries based on a small sample
 network that resembles a city.
-To be able to execute the mayority of the examples queries, follow the
-instructions bellow.
+To be able to execute the majority of the examples queries, follow the
+instructions below.
 
 .. contents::
    :local:
@@ -31,7 +31,7 @@ The following city is to be inserted into the database:
 .. figure:: /images/Fig1-originalData.png
 
 Information known at this point is the geometry of the edges, cost values,
-cpacity values, category values and some locations that are not in the graph.
+capacity values, category values and some locations that are not in the graph.
 
 The process to have working topology starts by inserting the edges.
 After that everything else is calculated.
@@ -40,9 +40,9 @@ Edges
 ...............................................................................
 
 The database design for the documentation of pgRouting, keeps in the same row 2
-segments, one in the direction of the geometry and the second in the oposite
-direction. Therfore some information has the ``reverse_`` prefix which
-corresponds to the segment on the oposite direction of the geometry.
+segments, one in the direction of the geometry and the second in the opposite
+direction. Therefore some information has the ``reverse_`` prefix which
+corresponds to the segment on the opposite direction of the geometry.
 
 .. list-table::
    :width: 81
@@ -72,12 +72,12 @@ corresponds to the segment on the oposite direction of the geometry.
    * - ``x1``
      - :math:`x` coordinate of the starting vertex of the geometry.
 
-       - For convinience it is saved on the table but can be calculated as
+       - For convenience it is saved on the table but can be calculated as
          ``ST_X(ST_StartPoint(geom))``.
    * - ``y2``
      - :math:`y` coordinate of the ending vertex of the geometry.
 
-       - For convinience it is saved on the table but can be calculated as
+       - For convenience it is saved on the table but can be calculated as
          ``ST_Y(ST_EndPoint(geom))``.
    * - ``geom``
      - The geometry of the segments.
@@ -96,11 +96,11 @@ Starting on PostgreSQL 12::
    ...
 
 Optionally indexes on different columns can be created.
-The recomendation is to have
+The recommendation is to have
 
 * ``id`` indexed.
 * ``source`` and ``target`` columns indexed to speed up pgRouting queries.
-* ``geom`` indexed to speed up gemetry processes that might be needed in the
+* ``geom`` indexed to speed up geometry processes that might be needed in the
   front end.
 
 For this small example the indexes are skipped, except for ``id``
@@ -197,26 +197,52 @@ will be stored on a table.
    * - ``pid``
      - A unique identifier.
    * - ``edge_id``
-     - Identifier of the edge nearest edge that allows an arrival to the point.
+     - Identifier of the nearest segment.
    * - ``side``
-     - Is it on the left, right or both sides of the segment ``edge_id``
+     - Is it on the left, right or both sides of the segment ``edge_id``.
    * - ``fraction``
      - Where in the segment is the point located.
    * - ``geom``
      - The geometry of the points.
+   * - ``distance``
+     - The distance between ``geom`` and the segment ``edge_id``.
+   * - ``edge``
+     - A segment that connects the ``geom`` of the point to the closest point
+       on the segment ``edge_id``.
    * - ``newPoint``
-     - The geometry of the points moved on top of the segment.
+     - A point on segment ``edge_id`` that is the closest to ``geom``.
 
 .. literalinclude:: sampledata.queries
    :start-after: -- p1
    :end-before: -- p2
 
-Points of interest fillup
+Points of interest fill up
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Inserting the points of interest.
 
 .. literalinclude:: sampledata.queries
    :start-after: -- p2
    :end-before: -- p3
+
+Filling the rest of the table.
+
+.. literalinclude:: sampledata.queries
+   :start-after: -- p3
+   :end-before: -- p4
+
+Any other additional modification: In this manual, point :math:`6` can be
+reached from both sides.
+
+.. literalinclude:: sampledata.queries
+   :start-after: -- p4
+   :end-before: -- p5
+
+The points of interest:
+
+.. literalinclude:: sampledata.queries
+   :start-after: -- p5
+   :end-before: -- p6
 
 .. pois_end
 
@@ -229,7 +255,7 @@ Combinations
 Many functions can be used with a combinations of ``(source, target)`` pairs
 when wanting a route from ``source`` to ``target``.
 
-For convinence of this documentations, some combinations will be stored on a
+For convenience of this documentation, some combinations will be stored on a
 table:
 
 .. literalinclude:: sampledata.queries
@@ -347,7 +373,7 @@ https://www.sintef.no/projectweb/top/pdptw/li-lim-benchmark/
 The vehicles
 ...............................................................................
 
-There are 25 vehciles in the problem all with the same characteristics.
+There are 25 vehicles in the problem all with the same characteristics.
 
 .. literalinclude:: lc101.queries
    :start-after: -- q1
@@ -366,7 +392,7 @@ order.
 The orders
 ...............................................................................
 
-The original data needs to be converted to an appropiate table:
+The original data needs to be converted to an appropriate table:
 
 .. literalinclude:: lc101.queries
    :start-after: -- q3

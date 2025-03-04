@@ -34,6 +34,8 @@ have special permissions given by the administrators to use them.
   table.
 - :doc:`pgr_analyzeOneWay` - to analyze directionality of the edges.
 - :doc:`pgr_nodeNetwork` - to create nodes to a not noded edge table.
+- :doc:`pgr_extractVertices` - Extracts vertex information based on the edge
+  table information.
 
 .. official-end
 
@@ -49,8 +51,6 @@ Additional functions to analyze a graph:
 * :doc:`components-family`
 
 
-.. rubric:: Proposed
-
 .. include:: proposed.rst
    :start-after: warning-begin
    :end-before: end-warning
@@ -60,8 +60,6 @@ Additional functions to analyze a graph:
 These proposed functions do not modify the database.
 
 - :doc:`pgr_degree` - Returns a set of vertices and corresponding count of incidet edges to the vertex.
-- :doc:`pgr_extractVertices` - Extracts vertex information based on the edge
-  table information.
 
 .. proposed-end
 

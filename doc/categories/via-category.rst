@@ -14,8 +14,6 @@
 Via - Category
 ===============================================================================
 
-.. rubric:: proposed
-
 .. include:: proposed.rst
     :start-after: warning-begin
     :end-before: end-warning
@@ -37,7 +35,7 @@ This category intends to solve the general problem:
    Given a graph and a list of vertices, find the shortest path between
    :math:`vertex_i` and :math:`vertex_{i+1}` for all vertices
 
-In other words, find a continuos route that visits all the vertices in the order
+In other words, find a continuous route that visits all the vertices in the order
 given.
 
 :path: represents a section of a **route**.

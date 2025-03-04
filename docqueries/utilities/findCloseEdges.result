@@ -2,78 +2,58 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
+SET extra_float_digits=-3;
+SET
 /* -- q1 */
-SELECT  *
-FROM pgr_findCloseEdges(
-  $$SELECT id, geom FROM edges$$,
-  (SELECT geom FROM pointsOfInterest WHERE pid = 5),
-  0.5);
- edge_id | fraction | side | distance | geom | edge
----------+----------+------+----------+------+------
-       5 |      0.8 | l    |          |      |
-(1 row)
-
-/* -- q2 */
-SELECT edge_id, round(fraction::numeric, 2) AS fraction, side, ST_AsText(geom) AS original_point
-FROM pgr_findCloseEdges(
-  $$SELECT id, geom FROM edges$$,
-  (SELECT array_agg(geom) FROM pointsOfInterest),
-  0.5);
- edge_id | fraction | side | original_point
----------+----------+------+----------------
-       1 |     0.40 | l    | POINT(1.8 0.4)
-       6 |     0.30 | r    | POINT(0.3 1.8)
-      12 |     0.60 | l    | POINT(2.6 3.2)
-      15 |     0.40 | r    | POINT(4.2 2.4)
-       5 |     0.80 | l    | POINT(2.9 1.8)
-       4 |     0.70 | r    | POINT(2.2 1.7)
-(6 rows)
-
-/* -- q3 */
-/* One point signature */
-/* -- o1 */
-SELECT *
+SELECT
+  edge_id, fraction, side, distance,
+  distance, ST_AsText(geom) AS point, ST_AsText(edge) As edge
 FROM pgr_findCloseEdges(
   $$SELECT id, geom FROM edges$$,
   (SELECT geom FROM pointsOfInterest WHERE pid = 5),
   0.5, cap => 2);
- edge_id |      fraction      | side |      distance       | geom | edge
----------+--------------------+------+---------------------+------+------
-       5 |                0.8 | l    | 0.10000000000000009 |      |
-       8 | 0.8999999999999999 | r    | 0.19999999999999996 |      |
+ edge_id | fraction | side | distance | distance |     point      |           edge
+---------+----------+------+----------+----------+----------------+---------------------------
+       5 |      0.8 | l    |      0.1 |      0.1 | POINT(2.9 1.8) | LINESTRING(2.9 1.8,3 1.8)
+       8 |      0.9 | r    |      0.2 |      0.2 | POINT(2.9 1.8) | LINESTRING(2.9 1.8,2.9 2)
 (2 rows)
 
-/* -- o2 */
-SELECT edge_id, round(fraction::numeric, 2) AS fraction, side, round(distance::numeric, 3) AS distance,
-  ST_AsText(geom) AS new_point,
-  ST_AsText(edge) AS original_to_new_point
+/* -- q2 */
+SELECT
+edge_id, fraction, side, distance,
+ST_AsText(geom) AS point,
+ST_AsText(edge) AS edge
 FROM pgr_findCloseEdges(
   $$SELECT id, geom FROM edges$$,
-  (SELECT geom FROM pointsOfInterest WHERE pid = 5),
-  0.5, partial => false);
- edge_id | fraction | side | distance |  new_point   |   original_to_new_point
----------+----------+------+----------+--------------+---------------------------
-       5 |     0.80 | l    |    0.100 | POINT(3 1.8) | LINESTRING(2.9 1.8,3 1.8)
+  (SELECT array_agg(geom) FROM pointsOfInterest),
+  0.5);
+ edge_id | fraction | side | distance |     point      |           edge
+---------+----------+------+----------+----------------+---------------------------
+       1 |      0.4 | l    |      0.2 | POINT(1.8 0.4) | LINESTRING(1.8 0.4,2 0.4)
+       6 |      0.3 | r    |      0.2 | POINT(0.3 1.8) | LINESTRING(0.3 1.8,0.3 2)
+      12 |      0.6 | l    |      0.2 | POINT(2.6 3.2) | LINESTRING(2.6 3.2,2.6 3)
+      15 |      0.4 | r    |      0.2 | POINT(4.2 2.4) | LINESTRING(4.2 2.4,4 2.4)
+       5 |      0.8 | l    |      0.1 | POINT(2.9 1.8) | LINESTRING(2.9 1.8,3 1.8)
+       4 |      0.7 | r    |      0.2 | POINT(2.2 1.7) | LINESTRING(2.2 1.7,2 1.7)
+(6 rows)
+
+/* -- q3 */
+/* One point signature */
+/* -- o0 */
+SELECT edge_id, fraction, side, distance, ST_AsText(geom) geom, ST_AsText(edge) edge
+FROM pgr_findCloseEdges(
+$$SELECT 1 AS id, ST_MakeLine(ST_makePoint(2,0), ST_MakePoint(2,3)) AS geom$$,
+ST_MakePoint(0,1.5), 5);
+ edge_id | fraction | side | distance |     geom     |          edge
+---------+----------+------+----------+--------------+-------------------------
+       1 |      0.5 | l    |        2 | POINT(0 1.5) | LINESTRING(0 1.5,2 1.5)
 (1 row)
 
-/* -- o3 */
-SELECT edge_id, round(fraction::numeric, 2) AS fraction, side, round(distance::numeric, 3) AS distance,
-  ST_AsText(geom) AS new_point,
-  ST_AsText(edge) AS original_to_new_point
-FROM pgr_findCloseEdges(
-  $$SELECT id, geom FROM edges$$,
-  (SELECT geom FROM pointsOfInterest WHERE pid = 5),
-  0.5, cap => 2, partial => false);
- edge_id | fraction | side | distance |  new_point   |   original_to_new_point
----------+----------+------+----------+--------------+---------------------------
-       5 |     0.80 | l    |    0.100 | POINT(3 1.8) | LINESTRING(2.9 1.8,3 1.8)
-       8 |     0.90 | r    |    0.200 | POINT(2.9 2) | LINESTRING(2.9 1.8,2.9 2)
-(2 rows)
-
+/* -- o1 */
 /* -- o4 */
 SELECT * FROM pgr_withPoints(
   $e$ SELECT * FROM edges $e$,
-  $p$ SELECT edge_id, round(fraction::numeric, 2) AS fraction, side
+  $p$ SELECT edge_id, fraction, side
       FROM pgr_findCloseEdges(
         $$SELECT id, geom FROM edges$$,
         (SELECT geom FROM pointsOfInterest WHERE pid = 5),
@@ -97,31 +77,33 @@ SELECT * FROM pgr_withPoints(
 (12 rows)
 
 /* -- o5 */
-SELECT *
+SELECT edge_id, fraction, side, distance, ST_AsText(geom) geom, ST_AsText(edge) edge
 FROM pgr_findCloseEdges(
-  $$SELECT id, geom FROM edges$$,
-  (SELECT geom FROM pointsOfInterest WHERE pid = 5),
-  0.5,
-  dryrun => true);
+$$SELECT 1 AS id, ST_MakeLine(ST_makePoint(2,0), ST_MakePoint(2,3)) AS geom$$,
+ST_MakePoint(0,1.5), 5, dryrun => true);
 NOTICE:
-    WITH
-    edges_sql AS (SELECT id, geom FROM edges),
-    point_sql AS (SELECT '01010000003333333333330740CDCCCCCCCCCCFC3F'::geometry AS point)
-
-    SELECT
-      id::BIGINT AS edge_id,
-      ST_LineLocatePoint(geom, point) AS fraction,
-      CASE WHEN ST_Intersects(ST_Buffer(geom, 0.5, 'side=right endcap=flat'), point)
-           THEN 'r'
-           ELSE 'l' END::CHAR AS side,
-
-        geom <-> point AS distance,
-        ST_ClosestPoint(geom, point) AS new_point,
-        ST_MakeLine(point, ST_ClosestPoint(geom, point)) AS new_line
-
-    FROM  edges_sql, point_sql
-    WHERE ST_DWithin(geom,  point, 0.5)
-    ORDER BY geom <-> point LIMIT 1
+WITH
+edges_sql AS (SELECT 1 AS id, ST_MakeLine(ST_makePoint(2,0), ST_MakePoint(2,3)) AS geom),
+point_sql AS (SELECT unnest('{01010000000000000000000000000000000000F83F}'::geometry[]) AS point),
+results AS (
+  SELECT
+    id::BIGINT AS edge_id,
+    ST_LineLocatePoint(geom, point) AS fraction,
+    CASE WHEN ST_Intersects(ST_Buffer(geom, 5, 'side=right endcap=flat'), point)
+         THEN 'r'
+         ELSE 'l' END::CHAR AS side,
+    geom <-> point AS distance,
+    point,
+    ST_MakeLine(point, ST_ClosestPoint(geom, point)) AS new_line
+  FROM  edges_sql, point_sql
+  WHERE ST_DWithin(geom, point, 5)
+  ORDER BY geom <-> point),
+prepare_cap AS (
+  SELECT row_number() OVER (PARTITION BY point ORDER BY point, distance) AS rn, *
+  FROM results)
+SELECT edge_id, fraction, side, distance, point, new_line
+FROM prepare_cap
+WHERE rn <= 1
 
  edge_id | fraction | side | distance | geom | edge
 ---------+----------+------+----------+------+------
@@ -129,90 +111,39 @@ NOTICE:
 
 /* -- o6 */
 /* Many point signature */
+/* -- m0 */
+SELECT edge_id, fraction, side, distance, ST_AsText(geom) geom, ST_AsText(edge) edge
+FROM pgr_findCloseEdges(
+$$SELECT 1 AS id, ST_MakeLine(ST_makePoint(1,0), ST_MakePoint(1,3)) AS geom$$,
+ARRAY[ST_MakePoint(0,2), ST_MakePoint(3,1)]::GEOMETRY[], 5);
+ edge_id |    fraction    | side | distance |    geom    |        edge
+---------+----------------+------+----------+------------+---------------------
+       1 | 0.666666666667 | l    |        1 | POINT(0 2) | LINESTRING(0 2,1 2)
+       1 | 0.333333333333 | r    |        2 | POINT(3 1) | LINESTRING(3 1,1 1)
+(2 rows)
+
 /* -- m1 */
-SELECT edge_id, round(fraction::numeric, 2) AS fraction, side, round(distance::numeric, 3) AS distance,
-  ST_AsText(geom) AS geom_is_original, edge
-FROM pgr_findCloseEdges(
-  $$SELECT id, geom FROM edges$$,
-  (SELECT array_agg(geom) FROM pointsOfInterest),
-  0.5, cap => 2);
- edge_id | fraction | side | distance | geom_is_original | edge
----------+----------+------+----------+------------------+------
-       1 |     0.40 | l    |    0.200 | POINT(1.8 0.4)   |
-       6 |     0.30 | r    |    0.200 | POINT(0.3 1.8)   |
-      12 |     0.60 | l    |    0.200 | POINT(2.6 3.2)   |
-      11 |     1.00 | l    |    0.447 | POINT(2.6 3.2)   |
-      15 |     0.40 | r    |    0.200 | POINT(4.2 2.4)   |
-       9 |     1.00 | l    |    0.447 | POINT(4.2 2.4)   |
-       5 |     0.80 | l    |    0.100 | POINT(2.9 1.8)   |
-       8 |     0.90 | r    |    0.200 | POINT(2.9 1.8)   |
-       4 |     0.70 | r    |    0.200 | POINT(2.2 1.7)   |
-       8 |     0.20 | r    |    0.300 | POINT(2.2 1.7)   |
-(10 rows)
-
-/* -- m2 */
-SELECT edge_id, round(fraction::numeric, 2) AS fraction, side, round(distance::numeric, 3) AS distance,
-  ST_AsText(geom) AS geom_is_original,
-  ST_AsText(edge) AS original_to_new_point
-FROM pgr_findCloseEdges(
-  $$SELECT id, geom FROM edges$$,
-  (SELECT array_agg(geom) FROM pointsOfInterest),
-  0.5, partial => false);
- edge_id | fraction | side | distance | geom_is_original |   original_to_new_point
----------+----------+------+----------+------------------+---------------------------
-       1 |     0.40 | l    |    0.200 | POINT(1.8 0.4)   | LINESTRING(1.8 0.4,2 0.4)
-       6 |     0.30 | r    |    0.200 | POINT(0.3 1.8)   | LINESTRING(0.3 1.8,0.3 2)
-      12 |     0.60 | l    |    0.200 | POINT(2.6 3.2)   | LINESTRING(2.6 3.2,2.6 3)
-      15 |     0.40 | r    |    0.200 | POINT(4.2 2.4)   | LINESTRING(4.2 2.4,4 2.4)
-       5 |     0.80 | l    |    0.100 | POINT(2.9 1.8)   | LINESTRING(2.9 1.8,3 1.8)
-       4 |     0.70 | r    |    0.200 | POINT(2.2 1.7)   | LINESTRING(2.2 1.7,2 1.7)
-(6 rows)
-
-/* -- m3 */
-SELECT edge_id, round(fraction::numeric, 2) AS fraction, side, round(distance::numeric, 3) AS distance,
-  ST_AsText(geom) AS geom_is_original,
-  ST_AsText(edge) AS original_to_new_point
-FROM pgr_findCloseEdges(
-  $$SELECT id, geom FROM edges$$,
-  (SELECT array_agg(geom) FROM pointsOfInterest),
-  0.5, cap => 2, partial => false);
- edge_id | fraction | side | distance | geom_is_original |   original_to_new_point
----------+----------+------+----------+------------------+---------------------------
-       1 |     0.40 | l    |    0.200 | POINT(1.8 0.4)   | LINESTRING(1.8 0.4,2 0.4)
-       6 |     0.30 | r    |    0.200 | POINT(0.3 1.8)   | LINESTRING(0.3 1.8,0.3 2)
-      12 |     0.60 | l    |    0.200 | POINT(2.6 3.2)   | LINESTRING(2.6 3.2,2.6 3)
-      11 |     1.00 | l    |    0.447 | POINT(2.6 3.2)   | LINESTRING(2.6 3.2,3 3)
-      15 |     0.40 | r    |    0.200 | POINT(4.2 2.4)   | LINESTRING(4.2 2.4,4 2.4)
-       9 |     1.00 | l    |    0.447 | POINT(4.2 2.4)   | LINESTRING(4.2 2.4,4 2)
-       5 |     0.80 | l    |    0.100 | POINT(2.9 1.8)   | LINESTRING(2.9 1.8,3 1.8)
-       8 |     0.90 | r    |    0.200 | POINT(2.9 1.8)   | LINESTRING(2.9 1.8,2.9 2)
-       4 |     0.70 | r    |    0.200 | POINT(2.2 1.7)   | LINESTRING(2.2 1.7,2 1.7)
-       8 |     0.20 | r    |    0.300 | POINT(2.2 1.7)   | LINESTRING(2.2 1.7,2.2 2)
-(10 rows)
-
 /* -- m4 */
-SELECT *
+SELECT edge_id, fraction, side, distance, ST_AsText(geom) geom, ST_AsText(edge) edge
 FROM pgr_findCloseEdges(
-  $$SELECT id, geom FROM edges$$,
-  (SELECT array_agg(geom) FROM pointsOfInterest),
-  0.5,
-  dryrun => true);
+$$SELECT 1 AS id, ST_MakeLine(ST_makePoint(1,0), ST_MakePoint(1,3)) AS geom$$,
+ARRAY[ST_MakePoint(0,2), ST_MakePoint(3,1)]::GEOMETRY[], 5, dryrun=>true);
 NOTICE:
 WITH
-edges_sql AS (SELECT id, geom FROM edges),
-point_sql AS (SELECT unnest('{0101000000CDCCCCCCCCCCFC3F9A9999999999D93F:0101000000CDCCCCCCCCCC10403333333333330340:0101000000CDCCCCCCCCCC04409A99999999990940:0101000000333333333333D33FCDCCCCCCCCCCFC3F:01010000003333333333330740CDCCCCCCCCCCFC3F:01010000009A99999999990140333333333333FB3F}'::geometry[]) AS point),
+edges_sql AS (SELECT 1 AS id, ST_MakeLine(ST_makePoint(1,0), ST_MakePoint(1,3)) AS geom),
+point_sql AS (SELECT unnest('{010100000000000000000000000000000000000040:01010000000000000000000840000000000000F03F}'::geometry[]) AS point),
 results AS (
   SELECT
     id::BIGINT AS edge_id,
     ST_LineLocatePoint(geom, point) AS fraction,
-    CASE WHEN ST_Intersects(ST_Buffer(geom, 0.5, 'side=right endcap=flat'), point)
+    CASE WHEN ST_Intersects(ST_Buffer(geom, 5, 'side=right endcap=flat'), point)
          THEN 'r'
          ELSE 'l' END::CHAR AS side,
     geom <-> point AS distance,
     point,
     ST_MakeLine(point, ST_ClosestPoint(geom, point)) AS new_line
   FROM  edges_sql, point_sql
-  WHERE ST_DWithin(geom, point, 0.5)
+  WHERE ST_DWithin(geom, point, 5)
   ORDER BY geom <-> point),
 prepare_cap AS (
   SELECT row_number() OVER (PARTITION BY point ORDER BY point, distance) AS rn, *
