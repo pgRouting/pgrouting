@@ -24,8 +24,6 @@ Traversal using Depth First Search.
 .. official-end
 
 
-.. rubric:: Proposed
-
 .. include:: proposed.rst
    :start-after: warning-begin
    :end-before: end-warning

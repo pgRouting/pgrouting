@@ -15,17 +15,19 @@ Proposed Functions
 
 .. warning-begin
 
-.. warning:: Proposed functions for next mayor release.
+.. collapse:: Proposed
 
-  - They are not officially in the current release.
-  - They will likely officially be part of the next mayor release:
+   .. warning:: Proposed functions for next mayor release.
 
-    - The functions make use of ANY-INTEGER and ANY-NUMERICAL
-    - Name might not change. (But still can)
-    - Signature might not change. (But still can)
-    - Functionality might not change. (But still can)
-    - pgTap tests have being done. But might need more.
-    - Documentation might need refinement.
+     - They are not officially in the current release.
+     - They will likely officially be part of the next mayor release:
+
+       - The functions make use of ANY-INTEGER and ANY-NUMERICAL
+       - Name might not change. (But still can)
+       - Signature might not change. (But still can)
+       - Functionality might not change. (But still can)
+       - pgTap tests have being done. But might need more.
+       - Documentation might need refinement.
 
 .. end-warning
 
