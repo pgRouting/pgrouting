@@ -24,8 +24,6 @@ Cost Matrix - Category
 .. official-end
 
 
-.. rubric:: proposed
-
 .. include:: proposed.rst
     :start-after: warning-begin
     :end-before: end-warning
