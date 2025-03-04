@@ -15,18 +15,12 @@
 Metrics - Family of functions
 ===============================================================================
 
-.. collapse:: Proposed
-
-  .. include:: proposed.rst
-     :start-after: warning-begin
-     :end-before: end-warning
-
-.. proposed-start
+.. official-start
 
 - :doc:`pgr_degree` - Returns a set of vertices and corresponding count of
   incident edges to the vertex.
 
-.. proposed-end
+.. official-end
 
 .. collapse:: Experimental
 

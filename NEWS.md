@@ -15,18 +15,17 @@
   * Error messages adjustment.
   * Function promoted to official.
 
+* pgr_degree
+
+  * Error messages adjustment.
+  * New signature with only Edges SQL.
+  * Function promoted to official.
+
 * pgr_findCloseEdges
 
   * Error messages adjustment.
   * ``partial`` option is removed.
   * Function promoted to official.
-
-**Changes on proposed functions**
-
-* pgr_degree
-
-  * Error messages adjustment.
-  * New signature with only Edges SQL.
 
 ## pgRouting 3.7
 
