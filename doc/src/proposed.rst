@@ -56,9 +56,9 @@ Proposed Functions
 
    TRSP-family
 
-:doc:`topology-functions`
+:doc:`metrics-family`
 
-.. include:: topology-functions.rst
+.. include:: metrics-family.rst
    :start-after: proposed-start
    :end-before: proposed-end
 
