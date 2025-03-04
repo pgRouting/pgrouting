@@ -56,12 +56,6 @@ Proposed Functions
 
    TRSP-family
 
-:doc:`metrics-family`
-
-.. include:: metrics-family.rst
-   :start-after: proposed-start
-   :end-before: proposed-end
-
 :doc:`transformation-family`
 
 .. include:: transformation-family.rst

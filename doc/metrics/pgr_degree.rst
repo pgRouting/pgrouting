@@ -8,12 +8,12 @@
    ****************************************************************************
 
 .. index::
-   single: Metrics Family ; pgr_degree - Proposed
-   single: degree - Proposed on v3.4
+   single: Metrics Family ; pgr_degree
+   single: degree
 
 |
 
-``pgr_degree`` -- Proposed
+``pgr_degree``
 ===============================================================================
 
 ``pgr_degree`` — For each vertex in an undirected graph, return the count of
@@ -30,6 +30,7 @@ edges incident to the vertex.
 
 * Error messages adjustment.
 * New signature with only Edges SQL.
+* Function promoted to official.
 
 .. rubric:: Version 3.4.0
 
@@ -72,7 +73,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: degree - Proposed ; Edges and Vertices - Proposed on v3.4
+    single: degree ; Edges and Vertices
 
 Edges
 ...............................................................................
@@ -116,7 +117,7 @@ Calculate the degree of the nodes:
    :end-before: -- q3
 
 .. index::
-    single: degree- Proposed ; Edges - Proposed on v3.4
+    single: degree ; Edges
 
 
 Parameters
