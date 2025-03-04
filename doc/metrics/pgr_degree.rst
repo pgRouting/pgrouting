@@ -8,7 +8,7 @@
    ****************************************************************************
 
 .. index::
-   single: Topology Family ; pgr_degree - Proposed
+   single: Metrics Family ; pgr_degree - Proposed
    single: degree - Proposed on v3.4
 
 |
@@ -51,7 +51,7 @@ Signatures
    | pgr_degree(`Edges SQL`_ , `Vertex SQL`_, [``dryrun``])
 
    | RETURNS SETOF |result-degree|
-   | OR EMTPY SET
+   | OR EMPTY SET
 
 :Example: Extracting the vertex information
 

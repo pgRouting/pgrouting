@@ -15,20 +15,36 @@
 Metrics - Family of functions
 ===============================================================================
 
-.. include:: experimental.rst
-   :start-after: warning-begin
-   :end-before: end-warning
+.. collapse:: Proposed
+
+  .. include:: proposed.rst
+     :start-after: warning-begin
+     :end-before: end-warning
+
+.. proposed-start
+
+- :doc:`pgr_degree` - Returns a set of vertices and corresponding count of
+  incident edges to the vertex.
+
+.. proposed-end
+
+.. collapse:: Experimental
+
+  .. include:: experimental.rst
+     :start-after: warning-begin
+     :end-before: end-warning
 
 .. experimental-start
 
-* :doc:`pgr_betweennessCentrality` - Calculates relative betweenness centrality using Brandes Algorithm
+* :doc:`pgr_betweennessCentrality` - Calculates relative betweenness centrality
+  using Brandes Algorithm
 
 .. experimental-end
-
 
 .. toctree::
     :hidden:
 
+    pgr_degree
     pgr_betweennessCentrality
 
 See Also

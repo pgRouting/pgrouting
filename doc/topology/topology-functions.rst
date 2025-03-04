@@ -50,17 +50,6 @@ Additional functions to analyze a graph:
 
 * :doc:`components-family`
 
-
-.. include:: proposed.rst
-   :start-after: warning-begin
-   :end-before: end-warning
-
-.. proposed-start
-
-These proposed functions do not modify the database.
-
-- :doc:`pgr_degree` - Returns a set of vertices and corresponding count of incidet edges to the vertex.
-
 .. proposed-end
 
 .. toctree::
@@ -72,7 +61,6 @@ These proposed functions do not modify the database.
   pgr_analyzeOneWay
   pgr_nodeNetwork
   pgr_extractVertices
-  pgr_degree
 
 See Also
 -------------------------------------------------------------------------------
