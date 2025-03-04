@@ -2,6 +2,7 @@
 SET(LOCAL_FILES
     _betweennessCentrality.sql
     betweennessCentrality.sql
+    degree.sql
 )
 
 foreach (f ${LOCAL_FILES})

@@ -1,6 +1,7 @@
 # Do not use extensions
 SET(LOCAL_FILES
 	betweennessCentrality
+    degree
     )
 
 foreach (f ${LOCAL_FILES})

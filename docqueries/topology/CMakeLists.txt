@@ -6,7 +6,6 @@ SET(LOCAL_FILES
     createVerticesTable
     extractVertices
     nodeNetwork
-    degree
     )
 
 foreach (f ${LOCAL_FILES})
