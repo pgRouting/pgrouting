@@ -20,7 +20,7 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pgr_findCloseEdges - Proposed" href="pgr_findCloseEdges.html" />
+    <link rel="next" title="实验函数" href="experimental.html" />
     <link rel="prev" title="pgr_withPointsDD - 拟议" href="pgr_withPointsDD.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -142,7 +142,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_findCloseEdges.html" title="Next Chapter: pgr_findCloseEdges - Proposed"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_findClose... &raquo;</span>
+    <a href="experimental.html" title="Next Chapter: 实验函数"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">实验函数 &raquo;</span>
     </a>
   </li>
               
@@ -213,7 +213,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_findCloseEdges.html" title="Next Chapter: pgr_findCloseEdges - Proposed"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_findClose... &raquo;</span>
+    <a href="experimental.html" title="Next Chapter: 实验函数"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">实验函数 &raquo;</span>
     </a>
   </li>
 <form action="search.html" method="get">
@@ -665,7 +665,7 @@
 <h2>其他示例<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id1">在 Points SQL 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges - Proposed</span></a> 函数</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id1">在 Points SQL 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> 函数</a></p></li>
 <li><p><a class="reference internal" href="#usage-variations" id="id2">用法变化</a></p>
 <ul>
 <li><p><a class="reference internal" href="#aggregate-cost-of-the-third-path" id="id3">第三条路径的总成本。</a></p></li>
@@ -678,7 +678,7 @@
 </ul>
 </nav>
 <section id="use-pgr-findcloseedges-in-the-points-sql">
-<h3>在 <a class="reference internal" href="#points-sql">Points SQL</a> 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges - Proposed</span></a> 函数<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Link to this heading">¶</a></h3>
+<h3>在 <a class="reference internal" href="#points-sql">Points SQL</a> 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> 函数<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Link to this heading">¶</a></h3>
 <p>从顶点 <span class="math notranslate nohighlight">\(1\)</span> 开始，按照距离图形最近的顺序访问点 <cite>(2.9, 1.8)</cite> 上的两个位置。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsVia(
   $e$ SELECT * FROM edges $e$,
@@ -869,8 +869,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on 3月 02, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Last updated on 3月 04, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

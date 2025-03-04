@@ -1314,12 +1314,12 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </section>
 <section id="get-the-closest-vertex">
 <h4><a class="toc-backref" href="#id45" role="doc-backlink">Obtener el vértice más cercano</a><a class="headerlink" href="#get-the-closest-vertex" title="Link to this heading">¶</a></h4>
-<p>Usando <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges - Proposed</span></a> el vértice más cercano al componente <span class="math notranslate nohighlight">\(1\)</span> es el vértice <span class="math notranslate nohighlight">\(4\)</span>. Y la arista más cercana al vértice <span class="math notranslate nohighlight">\(4\)</span> es la arista <span class="math notranslate nohighlight">\(14\)</span>.</p>
+<p>Usando <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> el vértice más cercano al componente <span class="math notranslate nohighlight">\(1\)</span> es el vértice <span class="math notranslate nohighlight">\(4\)</span>. Y la arista más cercana al vértice <span class="math notranslate nohighlight">\(4\)</span> es la arista <span class="math notranslate nohighlight">\(14\)</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge_id, fraction, ST_AsText(edge) AS edge, id AS closest_vertex
 FROM pgr_findCloseEdges(
   $$SELECT id, geom FROM edges WHERE component = 1$$,
   (SELECT array_agg(geom) FROM vertices WHERE component = 2),
-  2, partial =&gt; false) JOIN vertices USING (geom) ORDER BY distance LIMIT 1;
+  2) JOIN vertices USING (geom) ORDER BY distance LIMIT 1;
  edge_id | fraction |                 edge                 | closest_vertex
 ---------+----------+--------------------------------------+----------------
       14 |      0.5 | LINESTRING(1.999999999999 3.5,2 3.5) |              4
@@ -1350,7 +1350,7 @@ info AS (
   FROM pgr_findCloseEdges(
     $$SELECT id, geom FROM edges WHERE component = 1$$,
     (SELECT array_agg(geom) FROM vertices WHERE component = 2),
-    2, partial =&gt; false) AS ce
+    2) AS ce
   JOIN vertices AS v USING (geom)
   JOIN edges AS e ON (edge_id = e.id)
   ORDER BY distance LIMIT 1),
@@ -2767,14 +2767,41 @@ INSERT 0 2
 <h3><a class="toc-backref" href="#id66" role="doc-backlink">Para las funciones de Ruteo</a><a class="headerlink" href="#for-the-routing-functions" title="Link to this heading">¶</a></h3>
 <p>Para obtener resultados más rápidos, delimitar las consultas a un área de interés para el ruteo.</p>
 <p>En este ejemplo, usar una consulta SQL interna que no incluya algunas aristas en la función de ruteo y dentro del área de los resultados.</p>
+<p>Given this area:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span>
+<span class="n">FROM</span> <span class="n">edges</span>
+<span class="n">WHERE</span> <span class="n">geom</span> <span class="o">&amp;&amp;</span> <span class="p">(</span>
+  <span class="n">SELECT</span> <span class="n">st_buffer</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="n">myarea</span>
+  <span class="n">FROM</span> <span class="n">edges</span> <span class="n">where</span> <span class="nb">id</span> <span class="o">=</span> <span class="mi">6</span><span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="p">;</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">reverse_cost</span>
+<span class="o">----+--------+--------+------+--------------</span>
+  <span class="mi">1</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
+  <span class="mi">2</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
+  <span class="mi">4</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
+  <span class="mi">6</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
+  <span class="mi">7</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
+  <span class="mi">8</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
+ <span class="mi">10</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
+ <span class="mi">12</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>           <span class="o">-</span><span class="mi">1</span>
+ <span class="mi">14</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
+ <span class="mi">23</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>            <span class="mi">0</span>
+<span class="p">(</span><span class="mi">10</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Calculate a route:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra($$
-  SELECT id, source, target, cost, reverse_cost from edges
-  WHERE geom &amp;&amp; (SELECT st_buffer(geom, 1) AS myarea
-    FROM edges WHERE id = 2)$$,
-  1, 2);
+  SELECT id, source, target, cost, reverse_cost
+  FROM edges
+  WHERE geom &amp;&amp; (
+    SELECT st_buffer(geom, 1) AS myarea
+    FROM edges WHERE id = 6)$$,
+  7, 8);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
-(0 rows)
+   1 |        1 |         7 |       8 |    7 |   10 |    1 |        0
+   2 |        2 |         7 |       8 |    8 |   -1 |    0 |        1
+(2 rows)
 
 </pre></div>
 </div>
@@ -2793,7 +2820,7 @@ INSERT 0 2
 </li>
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki/How-to:-Handle-parallel-edges-(KSP)">Ejemplo</a></p></li>
 </ul>
-<p class="rubric">Agregar funcionalidad a pgRouting</p>
+<p class="rubric">Adding Functionality to pgRouting</p>
 <p>Consultar la <a class="reference external" href="https://docs.pgrouting.org/doxygen/">documentation de desarrolladores</a></p>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
@@ -2816,8 +2843,8 @@ INSERT 0 2
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Actualizado por última vez en mar 02, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Actualizado por última vez en mar 04, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

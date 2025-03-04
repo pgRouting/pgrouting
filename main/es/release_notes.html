@@ -472,14 +472,16 @@
 <li><p>Function promoted to official.</p></li>
 </ul>
 </li>
-</ul>
-<p class="rubric">Changes on proposed functions</p>
-<ul class="simple">
 <li><p>pgr_findCloseEdges</p>
 <ul>
 <li><p>Error messages adjustment.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">partial</span></code> option is removed.</p></li>
+<li><p>Function promoted to official.</p></li>
 </ul>
 </li>
+</ul>
+<p class="rubric">Changes on proposed functions</p>
+<ul class="simple">
 <li><p>pgr_degree</p>
 <ul>
 <li><p>Error messages adjustment.</p></li>
@@ -558,7 +560,8 @@ vertex, the withPoints family do not return results.</p></li>
 </ul>
 <p class="rubric">Cambios en las funciones oficiales</p>
 <ul>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2605">#2605</a> Estandarización de las salida de las funciones de árbol de expansión</p>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2605">#2605</a> Standardize
+spanning tree functions output</p>
 <ul class="simple">
 <li><p>Funciones:</p>
 <ul>
@@ -686,9 +689,10 @@ vertex, the withPoints family do not return results.</p></li>
 <p>Para ver todos los problemas y solicitudes de extracción cerrados para ésta versión, consulte la <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.6.0%22">meta cerrada 3.6.0</a></p>
 <p class="rubric">Cambios en las funciones oficiales</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2516">#2516</a> estandarización de resultados de pgr_aStar</p>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2516">#2516</a> Standardize output
+pgr_aStar</p>
 <ul>
-<li><p>Estandarización de las columnas de salida a <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<li><p>Standardize output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
 <li><p>pgr_aStar(One to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> columns.</p></li>
 <li><p>pgr_aStar(One to Many) added <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> column.</p></li>
@@ -697,9 +701,10 @@ vertex, the withPoints family do not return results.</p></li>
 </li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2523">#2523</a> Estandarización de resultados de pgr_bdAstar</p>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2523">#2523</a> Standardize output
+pgr_bdAstar</p>
 <ul>
-<li><p>Estandarización de las columnas de salida a <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<li><p>Standardize output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
 <li><p>pgr_bdAstar(One to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>
 columns.</p></li>
@@ -709,7 +714,8 @@ columns.</p></li>
 </li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2547">#2547</a> Estandarización de resultados y modificación de firmas de pgr_KSP</p>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2547">#2547</a> Standardize output
+and modifying signature pgr_KSP</p>
 <ul>
 <li><p>Columnas de resultados estandarizadas a: <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 <li><p>pgr_ksp(One to One)</p>
@@ -727,7 +733,7 @@ columns.</p></li>
 </li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2548">#2548</a> Standarize output
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2548">#2548</a> Standardize output
 pgr_drivingDistance</p>
 <ul>
 <li><p>Estandarización de columnas de resultados a <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
@@ -750,7 +756,8 @@ pgr_drivingDistance</p>
 </ul>
 <p class="rubric">Cambios en funciones propuestas</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2544">#2544</a> Estandarización de resultados y modificación de firmas de pgr_withPointsDD</p>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2544">#2544</a> Standardize output
+and modifying signature pgr_withPointsDD</p>
 <ul>
 <li><p>Signature change: <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> parameter changed from named optional to
 unnamed compulsory <strong>driving side</strong>.</p>
@@ -787,7 +794,8 @@ distance are included</p></li>
 </li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2546">#2546</a> Estandarización de resultados y modificación de firmas de pgr_withPointsKSP</p>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2546">#2546</a> Standardize output
+and modifying signature pgr_withPointsKSP</p>
 <ul>
 <li><p>Standarizing output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 <li><p>pgr_withPointsKSP(One to One)</p>
@@ -829,8 +837,9 @@ unnamed compulsory <strong>driving side</strong>.</p></li>
 <p class="rubric">Documentación</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2490">#2490</a> Lígas automáticas historiales.</p></li>
-<li><p>..rubric:: SQL standarization</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2555">#2555</a> Estandarización de mesajes de depreciación</p></li>
+<li><p>..rubric:: Standardize SQL</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2555">#2555</a> Standardize
+deprecated messages</p></li>
 <li><p>On new internal function: do not use named parameters and default parameters.</p></li>
 </ul>
 </section>
@@ -892,7 +901,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 <ul class="simple">
 <li><p>Dijkstra</p>
 <ul>
-<li><p>Estandarización de las columnas de salida a <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<li><p>Standardize output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
 <li><p>pgr_dijkstra(One to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> columns.</p></li>
 <li><p>pgr_dijkstra(One to Many) added <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> column.</p></li>
@@ -2381,8 +2390,8 @@ FindPostgreSQL.cmake</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Actualizado por última vez en mar 02, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Actualizado por última vez en mar 04, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

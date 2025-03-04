@@ -801,7 +801,7 @@
 <p>此数据示例 <strong>lc101</strong> 来自 <a class="reference external" href="https://www.sintef.no/projectweb/top/pdptw/li-lim-benchmark/">https://www.sintef.no/projectweb/top/pdptw/li-lim-benchmark/</a> 上发布的数据</p>
 <section id="the-vehicles">
 <h3><a class="toc-backref" href="#id1" role="doc-backlink">车辆</a><a class="headerlink" href="#the-vehicles" title="Link to this heading">¶</a></h3>
-<p>问题中有 25 辆车都具有相同的特征。</p>
+<p>There are 25 vehicles in the problem all with the same characteristics.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">v_lc101</span><span class="p">(</span>
   <span class="nb">id</span> <span class="n">BIGINT</span> <span class="n">NOT</span> <span class="n">NULL</span> <span class="n">primary</span> <span class="n">key</span><span class="p">,</span>
   <span class="n">capacity</span> <span class="n">BIGINT</span> <span class="n">DEFAULT</span> <span class="mi">200</span><span class="p">,</span>
@@ -947,7 +947,7 @@
 </section>
 <section id="the-orders">
 <h3><a class="toc-backref" href="#id3" role="doc-backlink">订单</a><a class="headerlink" href="#the-orders" title="Link to this heading">¶</a></h3>
-<p>需要将原始数据转换为合适的表格：</p>
+<p>The original data needs to be converted to an appropriate table:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span> <span class="n">deliveries</span> <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">lc101_c</span> <span class="n">WHERE</span> <span class="n">dindex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">SELECT</span>
   <span class="n">row_number</span><span class="p">()</span> <span class="n">over</span><span class="p">()</span> <span class="n">AS</span> <span class="nb">id</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">demand</span><span class="p">,</span>
@@ -1013,8 +1013,8 @@ FROM pgr_pickDeliverEuclidean(
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on 3月 02, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Last updated on 3月 04, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

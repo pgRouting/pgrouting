@@ -471,14 +471,16 @@
 <li><p>Function promoted to official.</p></li>
 </ul>
 </li>
-</ul>
-<p class="rubric">Changes on proposed functions</p>
-<ul class="simple">
 <li><p>pgr_findCloseEdges</p>
 <ul>
 <li><p>Error messages adjustment.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">partial</span></code> option is removed.</p></li>
+<li><p>Function promoted to official.</p></li>
 </ul>
 </li>
+</ul>
+<p class="rubric">Changes on proposed functions</p>
+<ul class="simple">
 <li><p>pgr_degree</p>
 <ul>
 <li><p>Error messages adjustment.</p></li>
@@ -558,7 +560,7 @@ PostgreSQL12 on pgrouting v3.7</p>
 </ul>
 <p class="rubric">官方功能变更</p>
 <ul>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2605">#2605</a> Standarize
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2605">#2605</a> Standardize
 spanning tree functions output</p>
 <ul class="simple">
 <li><p>新函数:</p>
@@ -690,9 +692,10 @@ milestone for 3.6.2</a></p>
 <p>要查看此版本关闭的所有问题和拉取请求，请访问 <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%203.6.0%22">Git 3.6.0 里程碑的已关闭问题和拉取请求</a></p>
 <p class="rubric">官方功能变更</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2516">#2516</a> 标准化输出pgr_aStar</p>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2516">#2516</a> Standardize output
+pgr_aStar</p>
 <ul>
-<li><p>标准输出列|short-generic-result|</p>
+<li><p>Standardize output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
 <li><p>pgr_aStar(One to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> columns.</p></li>
 <li><p>pgr_aStar(One to Many) added <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> column.</p></li>
@@ -701,9 +704,10 @@ milestone for 3.6.2</a></p>
 </li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2523">#2523</a> 标准化输出 pgr_bdAstar</p>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2523">#2523</a> Standardize output
+pgr_bdAstar</p>
 <ul>
-<li><p>标准输出列|short-generic-result|</p>
+<li><p>Standardize output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
 <li><p>pgr_bdAstar(One to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>
 columns.</p></li>
@@ -713,7 +717,8 @@ columns.</p></li>
 </li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2547">#2547</a> 标准化输出并修改签名 pgr_KSP</p>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2547">#2547</a> Standardize output
+and modifying signature pgr_KSP</p>
 <ul>
 <li><p>结果列标准化为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 <li><p>pgr_ksp(One to One)</p>
@@ -731,7 +736,7 @@ columns.</p></li>
 </li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2548">#2548</a> Standarize output
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2548">#2548</a> Standardize output
 pgr_drivingDistance</p>
 <ul>
 <li><p>将输出列标准化为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
@@ -754,7 +759,8 @@ pgr_drivingDistance</p>
 </ul>
 <p class="rubric">拟议函数改变</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2544">#2544</a> 标准化输出并修改签名 pgr_withPointsDD</p>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2544">#2544</a> Standardize output
+and modifying signature pgr_withPointsDD</p>
 <ul>
 <li><p>签名更改： <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> 参数从已命名的可选参数改为未命名的必选参数 <strong>driving side</strong>。</p>
 <ul>
@@ -789,7 +795,8 @@ pgr_drivingDistance</p>
 </li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2546">#2546</a> 标准化输出并修改签名pgr_withPointsKSP</p>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2546">#2546</a> Standardize output
+and modifying signature pgr_withPointsKSP</p>
 <ul>
 <li><p>标准化输出列为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
 <li><p>pgr_withPointsKSP(One to One)</p>
@@ -830,8 +837,9 @@ pgr_drivingDistance</p>
 <p class="rubric">文档</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2490">#2490</a> 自动页面历史链接。</p></li>
-<li><p>..rubric::SQL 标准化</p></li>
-<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2555">#2555</a> 标准化已弃用的消息</p></li>
+<li><p>..rubric:: Standardize SQL</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/pull/2555">#2555</a> Standardize
+deprecated messages</p></li>
 <li><p>新内部函数：不使用命名参数和默认参数。</p></li>
 </ul>
 </section>
@@ -893,7 +901,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
 <ul class="simple">
 <li><p>Dijkstra</p>
 <ul>
-<li><p>标准输出列|short-generic-result|</p>
+<li><p>Standardize output columns to <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
 <li><p>pgr_dijkstra(One to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> columns.</p></li>
 <li><p>pgr_dijkstra(One to Many) added <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> column.</p></li>
@@ -2375,8 +2383,8 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on 3月 02, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Last updated on 3月 04, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

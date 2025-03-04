@@ -477,12 +477,12 @@
 </section>
 <section id="get-the-closest-vertex">
 <h4>获取最近的顶点<a class="headerlink" href="#get-the-closest-vertex" title="Link to this heading">¶</a></h4>
-<p>使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges - Proposed</span></a> 距离组件 <span class="math notranslate nohighlight">\(1\)</span> 最近的顶点是顶点 <span class="math notranslate nohighlight">\(4\)</span>。 距离顶点 <span class="math notranslate nohighlight">\(4\)</span> 最近的边是 边 <span class="math notranslate nohighlight">\(14\)</span>。</p>
+<p>使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> 距离组件 <span class="math notranslate nohighlight">\(1\)</span> 最近的顶点是顶点 <span class="math notranslate nohighlight">\(4\)</span>。 距离顶点 <span class="math notranslate nohighlight">\(4\)</span> 最近的边是 边 <span class="math notranslate nohighlight">\(14\)</span>。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge_id, fraction, ST_AsText(edge) AS edge, id AS closest_vertex
 FROM pgr_findCloseEdges(
   $$SELECT id, geom FROM edges WHERE component = 1$$,
   (SELECT array_agg(geom) FROM vertices WHERE component = 2),
-  2, partial =&gt; false) JOIN vertices USING (geom) ORDER BY distance LIMIT 1;
+  2) JOIN vertices USING (geom) ORDER BY distance LIMIT 1;
  edge_id | fraction |                 edge                 | closest_vertex
 ---------+----------+--------------------------------------+----------------
       14 |      0.5 | LINESTRING(1.999999999999 3.5,2 3.5) |              4
@@ -513,7 +513,7 @@ info AS (
   FROM pgr_findCloseEdges(
     $$SELECT id, geom FROM edges WHERE component = 1$$,
     (SELECT array_agg(geom) FROM vertices WHERE component = 2),
-    2, partial =&gt; false) AS ce
+    2) AS ce
   JOIN vertices AS v USING (geom)
   JOIN edges AS e ON (edge_id = e.id)
   ORDER BY distance LIMIT 1),
@@ -616,8 +616,8 @@ INSERT 0 2
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on 3月 02, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Last updated on 3月 04, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>
