@@ -47,17 +47,15 @@ pgRouting 3.8.0 Release Notes
      :start-after: Version 3.8.0
      :end-before: .. rubric
 
-* pgr_findCloseEdges
-
-  .. include:: pgr_findCloseEdges.rst
-     :start-after: Version 3.8.0
-     :end-before: .. rubric
-
-.. rubric:: Changes on proposed functions
-
 * pgr_degree
 
   .. include:: pgr_degree.rst
+     :start-after: Version 3.8.0
+     :end-before: .. rubric
+
+* pgr_findCloseEdges
+
+  .. include:: pgr_findCloseEdges.rst
      :start-after: Version 3.8.0
      :end-before: .. rubric
 
