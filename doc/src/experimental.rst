@@ -14,27 +14,29 @@ Experimental Functions
 
 .. warning-begin
 
-.. warning:: Possible server crash
+.. collapse:: Experimental
 
-  - These functions might create a server crash
+   .. warning:: Possible server crash
 
-.. warning:: Experimental functions
+     - These functions might create a server crash
 
-  - They are not officially of the current release.
-  - They likely will not be officially be part of the next release:
+   .. warning:: Experimental functions
 
-    - The functions might not make use of ANY-INTEGER and ANY-NUMERICAL
-    - Name might change.
-    - Signature might change.
-    - Functionality might change.
-    - pgTap tests might be missing.
-    - Might need c/c++ coding.
-    - May lack documentation.
-    - Documentation if any might need to be rewritten.
-    - Documentation examples might need to be automatically generated.
-    - Might need a lot of feedback from the comunity.
-    - Might depend on a proposed function of pgRouting
-    - Might depend on a deprecated function of pgRouting
+     - They are not officially of the current release.
+     - They likely will not be officially be part of the next release:
+
+       - The functions might not make use of ANY-INTEGER and ANY-NUMERICAL
+       - Name might change.
+       - Signature might change.
+       - Functionality might change.
+       - pgTap tests might be missing.
+       - Might need c/c++ coding.
+       - May lack documentation.
+       - Documentation if any might need to be rewritten.
+       - Documentation examples might need to be automatically generated.
+       - Might need a lot of feedback from the community.
+       - Might depend on a proposed function of pgRouting
+       - Might depend on a deprecated function of pgRouting
 
 .. end-warning
 
@@ -138,7 +140,7 @@ Experimental Functions
 
   pgr_isPlanar
 
-.. rubric:: Miscellaneous Algoritms
+.. rubric:: Miscellaneous Algorithms
 
 - :doc:`pgr_lengauerTarjanDominatorTree`
 - :doc:`pgr_stoerWagner`

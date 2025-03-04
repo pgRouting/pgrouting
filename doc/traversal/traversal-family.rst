@@ -14,8 +14,6 @@
 Traversal - Family of functions
 ===============================================================================
 
-.. rubric:: Proposed
-
 .. include:: proposed.rst
    :start-after: warning-begin
    :end-before: end-warning
@@ -25,8 +23,6 @@ Traversal - Family of functions
 * :doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph.
 
 .. official-end
-
-.. rubric:: Experimental
 
 .. include:: experimental.rst
    :start-after: warning-begin
@@ -40,7 +36,7 @@ Traversal - Family of functions
 
 .. experimental-end
 
-Aditionaly there are 2 categories under this family
+Additionally there are 2 categories under this family
 
 * :doc:`BFS-category`
 * :doc:`DFS-category`
