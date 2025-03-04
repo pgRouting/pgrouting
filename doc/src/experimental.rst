@@ -103,7 +103,6 @@ Experimental Functions
    transformation-family
    components-family
    ordering-family
-   metrics-family
 
 .. rubric:: categories
 

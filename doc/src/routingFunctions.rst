@@ -71,6 +71,12 @@ Function Families
       :start-after: official-start
       :end-before: official-end
 
+:doc:`metrics-family`
+
+.. include:: metrics-family.rst
+      :start-after: official-start
+      :end-before: official-end
+
 :doc:`prim-family`
 
 .. include:: prim-family.rst
@@ -100,11 +106,6 @@ Function Families
 .. rubric:: Utilities family
 
 :doc:`pgr_findCloseEdges`
-
-.. toctree::
-    :hidden:
-
-
 
 Functions by categories
 ===============================================================================
@@ -166,6 +167,7 @@ Functions by categories
     dijkstra-family
     flow-family
     kruskal-family
+    metrics-family
     prim-family
     reference
     topology-functions
