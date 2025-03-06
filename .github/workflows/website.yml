@@ -76,6 +76,7 @@ jobs:
           pip install Sphinx
           pip install sphinx-bootstrap-theme
           pip install sphinx-intl[transifex]
+          pip install sphinx-collapse
           pip list
 
       - name: Configure and build documentation
