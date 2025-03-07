@@ -150,6 +150,10 @@ FROM edges ORDER BY id;
 
 /* -- q5 */
 /* --POINTS CREATE start */
+DO LANGUAGE plpgsql $BODY$
+DECLARE v FLOAT;
+BEGIN
+SELECT (parts[1]||'.'||parts[2])::FLOAT FROM STRING_TO_ARRAY(pgr_version(), '.') AS parts INTO v;
 /* -- p1 */
 CREATE TABLE pointsOfInterest(
     pid BIGSERIAL PRIMARY KEY,
@@ -160,7 +164,7 @@ CREATE TABLE pointsOfInterest(
     edge geometry,
     newPoint geometry,
     geom geometry);
-CREATE TABLE
+IF v > 3.4 THEN
 /* -- p2 */
 INSERT INTO pointsOfInterest (geom) VALUES
 (ST_Point(1.8, 0.4)),
@@ -169,7 +173,6 @@ INSERT INTO pointsOfInterest (geom) VALUES
 (ST_Point(0.3, 1.8)),
 (ST_Point(2.9, 1.8)),
 (ST_Point(2.2, 1.7));
-INSERT 0 6
 /* -- p3 */
 UPDATE pointsofinterest SET
   edge_id = poi.edge_id,
@@ -183,11 +186,22 @@ FROM (
   FROM pgr_findCloseEdges(
     $$SELECT id, geom FROM edges$$,(SELECT array_agg(geom) FROM pointsOfInterest), 0.5) ) AS poi
 WHERE pointsOfInterest.geom = poi.geom;
-UPDATE 6
 /* -- p4 */
 UPDATE pointsOfInterest SET side = 'b' WHERE pid = 6;
-UPDATE 1
 /* -- p5 */
+ELSE
+INSERT INTO pointsOfInterest (edge_id, side, fraction, geom) VALUES
+(1, 'l' , 0.4, ST_POINT(1.8, 0.4)),
+(15, 'r' , 0.4, ST_POINT(4.2, 2.4)),
+(12, 'l' , 0.6, ST_POINT(2.6, 3.2)),
+(6, 'r' , 0.3, ST_POINT(0.3, 1.8)),
+(5, 'l' , 0.8, ST_POINT(2.9, 1.8)),
+(4, 'b' , 0.7, ST_POINT(2.2, 1.7));
+END IF;
+END;
+$BODY$;
+DO
+/* -- p6 */
 SELECT
   pid, ST_AsText(geom) geom,
   edge_id, fraction AS frac, side, distance AS dist,
@@ -203,7 +217,7 @@ FROM pointsOfInterest;
    6 | POINT(2.2 1.7) |       4 |  0.7 | b    |  0.2 | LINESTRING(2.2 1.7,2 1.7) | POINT(2 1.7)
 (6 rows)
 
-/* -- p6 */
+/* -- p7 */
 /* --POINTS CREATE end */
 /* --COMBINATIONS CREATE start */
 /* -- c1 */
