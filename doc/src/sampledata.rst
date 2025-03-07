@@ -241,8 +241,8 @@ reached from both sides.
 The points of interest:
 
 .. literalinclude:: sampledata.queries
-   :start-after: -- p5
-   :end-before: -- p6
+   :start-after: -- p6
+   :end-before: -- p7
 
 .. pois_end
 
