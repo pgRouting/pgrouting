@@ -9,8 +9,14 @@ DECLARE
   params TEXT;
   msg TEXT;
 BEGIN
+
   IF NOT min_version('3.4.0') THEN
-    RETURN QUERY SELECT skip(1, 'pgr_signature added on 3.4.0');
+    RETURN QUERY SELECT skip(1, 'New signatures on 3.4');
+    RETURN;
+  END IF;
+
+  IF min_lib_version('4.0.0') and NOT min_version('3.6.0') THEN
+    RETURN QUERY SELECT skip(1, 'Internal function __v4trsp deprecated on 3.5.0');
     RETURN;
   END IF;
 

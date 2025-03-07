@@ -22,7 +22,9 @@ BEGIN;
 SET extra_float_digits = -3;
 UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
-SELECT CASE WHEN min_version('3.4.0') THEN plan(3) ELSE plan(1) END;
+SELECT CASE WHEN min_lib_version('4.0.0') AND min_version('3.6.0') THEN plan(3)
+            WHEN NOT min_lib_version('4.0.0') AND min_version('3.4.0') THEN plan(3)
+            ELSE plan(1) END;
 
 PREPARE related_restriction AS SELECT 100.2 AS cost, ARRAY[5,9] AS path;
 PREPARE unrelated_restriction AS SELECT 100 AS cost, ARRAY[33, 32, 25] AS path;
@@ -32,7 +34,12 @@ $BODY$
 BEGIN
 
   IF NOT min_version('3.4.0') THEN
-    RETURN QUERY SELECT skip(1, 'pgr_signature added on 3.4.0');
+    RETURN QUERY SELECT skip(1, 'New signatures added on 3.4.0');
+    RETURN;
+  END IF;
+
+  IF min_lib_version('4.0.0') and NOT min_version('3.6.0') THEN
+    RETURN QUERY SELECT skip(1, 'Internal function __v4trsp deprecated on 3.6.0 deleted on 4.0.0');
     RETURN;
   END IF;
 
