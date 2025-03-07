@@ -270,7 +270,7 @@ sub generate_upgrade_script {
         }
 
         # updating to 3.7+
-        if ($old_mayor == 3 && $old_minor < 8) {
+        if ($old_mayor == 3 && $old_minor >= 4 && $old_minor < 8) {
             push @commands, drop_special_case_function("pgr_findcloseedges(text,geometry,double precision,integer,boolean,boolean)");
             push @commands, drop_special_case_function("pgr_findcloseedges(text,geometry[],double precision,integer,boolean,boolean)");
         }
