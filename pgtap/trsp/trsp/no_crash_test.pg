@@ -20,7 +20,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.4.0') THEN plan(147) ELSE plan(1) END;
+SELECT CASE WHEN min_lib_version('4.0.0') AND min_version('3.6.0') THEN plan(147)
+            WHEN NOT min_lib_version('4.0.0') AND min_version('3.4.0') THEN plan(147)
+            ELSE plan(1) END;
+
 SET client_min_messages TO ERROR;
 
 PREPARE all_edges AS
@@ -92,8 +95,14 @@ params TEXT[];
 params1 TEXT[];
 subs TEXT[];
 BEGIN
+
   IF NOT min_version('3.4.0') THEN
-    RETURN QUERY SELECT skip(1, 'New signatures on 3.4.0');
+    RETURN QUERY SELECT skip(1, 'New signatures added on 3.4.0');
+    RETURN;
+  END IF;
+
+  IF min_lib_version('4.0.0') and NOT min_version('3.6.0') THEN
+    RETURN QUERY SELECT skip(1, 'Internal function _v4trsp deprecated on 3.6.0 deleted on 4.0.0');
     RETURN;
   END IF;
 

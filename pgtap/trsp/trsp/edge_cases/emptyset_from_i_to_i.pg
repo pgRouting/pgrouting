@@ -20,7 +20,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.4.0') THEN plan(72) ELSE plan(2) END;
+SELECT CASE WHEN min_lib_version('4.0.0') AND min_version('3.6.0') THEN plan(72)
+            WHEN NOT min_lib_version('4.0.0') AND min_version('3.4.0') THEN plan(72)
+            ELSE plan(2) END;
 
 PREPARE restriction AS SELECT * FROM restrictions;
 PREPARE with_reverse AS SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id;
@@ -39,10 +41,16 @@ directed TEXT;
 msg TEXT;
 parameters TEXT;
 BEGIN
-    IF NOT min_version('3.4.0') THEN
-      RETURN QUERY SELECT skip(1, 'pgr_signature added on 3.4.0');
-      RETURN;
-    END IF;
+
+  IF NOT min_version('3.4.0') THEN
+    RETURN QUERY SELECT skip(1, 'New signatures added on 3.4.0');
+    RETURN;
+  END IF;
+
+  IF min_lib_version('4.0.0') and NOT min_version('3.6.0') THEN
+    RETURN QUERY SELECT skip(1, 'Internal function __v4trsp deprecated on 3.6.0 deleted on 4.0.0');
+    RETURN;
+  END IF;
 
   directed = 'Undirected';
   IF flag THEN directed = 'Directed'; END IF;
