@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-03 21:00+0000\n"
+"POT-Creation-Date: 2025-03-08 16:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -294,9 +294,6 @@ msgstr ""
 msgid ":doc:`pgr_primDFS`"
 msgstr ""
 
-msgid "Proposed"
-msgstr ""
-
 msgid "Proposed functions for next mayor release."
 msgstr ""
 
@@ -364,9 +361,6 @@ msgid ""
 "functionality to the new signatures or replacement functions."
 msgstr ""
 
-msgid "Experimental"
-msgstr ""
-
 msgid "Possible server crash"
 msgstr ""
 
@@ -409,7 +403,7 @@ msgstr ""
 msgid "Documentation examples might need to be automatically generated."
 msgstr ""
 
-msgid "Might need a lot of feedback from the comunity."
+msgid "Might need a lot of feedback from the community."
 msgstr ""
 
 msgid "Might depend on a proposed function of pgRouting"
@@ -3375,9 +3369,6 @@ msgstr ""
 msgid ":doc:`pgr_bdDijkstraCostMatrix`"
 msgstr ""
 
-msgid "proposed"
-msgstr ""
-
 msgid ":doc:`pgr_withPointsCostMatrix`"
 msgstr ""
 
@@ -3551,7 +3542,7 @@ msgid ""
 "shortest paths."
 msgstr ""
 
-msgid ":doc:`pgr_dijkstraVia` - Get a route of a seuence of vertices."
+msgid ":doc:`pgr_dijkstraVia` - Get a route of a sequence of vertices."
 msgstr ""
 
 msgid ":doc:`pgr_dijkstraNear` - Get the route to the nearest vertex."
@@ -3638,7 +3629,7 @@ msgstr ""
 msgid "Directed graph"
 msgstr ""
 
-msgid "The weighted directed graph, :math:`G_d(V,E)`, is definied by:"
+msgid "The weighted directed graph, :math:`G_d(V,E)`, is defined by:"
 msgstr ""
 
 msgid "the set of vertices :math:`V`"
@@ -3663,7 +3654,7 @@ msgstr ""
 msgid "Undirected graph"
 msgstr ""
 
-msgid "The weighted undirected graph, :math:`G_u(V,E)`, is definied by:"
+msgid "The weighted undirected graph, :math:`G_u(V,E)`, is defined by:"
 msgstr ""
 
 msgid ":math:`V = source \\cup target \\cup {start_v{vid}} \\cup  {end_{vid}}`"
@@ -3793,7 +3784,7 @@ msgstr ""
 msgid ":doc:`pgr_kruskalDD` - Driving Distance based on Kruskal's algorithm"
 msgstr ""
 
-msgid "Post pocessing"
+msgid "Post processing"
 msgstr ""
 
 msgid ":doc:`pgr_alphaShape` - Alpha shape computation"
@@ -3956,7 +3947,7 @@ msgstr ""
 msgid ":doc:`pgr_isPlanar`"
 msgstr ""
 
-msgid "Miscellaneous Algoritms"
+msgid "Miscellaneous Algorithms"
 msgstr ""
 
 msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
@@ -4021,7 +4012,7 @@ msgid ""
 "returned."
 msgstr ""
 
-msgid "There is no flow when source has the same vaule as target."
+msgid "There is no flow when source has the same value as target."
 msgstr ""
 
 msgid "Any duplicated values in source or target are ignored."
@@ -4317,6 +4308,11 @@ msgstr ""
 msgid ":doc:`pgr_kruskalDD`"
 msgstr ""
 
+msgid ""
+":doc:`pgr_degree` - Returns a set of vertices and corresponding count of "
+"incident edges to the vertex."
+msgstr ""
+
 msgid ":doc:`prim-family`"
 msgstr ""
 
@@ -4427,16 +4423,16 @@ msgstr ""
 msgid "Function promoted to official."
 msgstr ""
 
+msgid "pgr_degree"
+msgstr ""
+
+msgid "New signature with only Edges SQL."
+msgstr ""
+
 msgid "pgr_findCloseEdges"
 msgstr ""
 
 msgid "``partial`` option is removed."
-msgstr ""
-
-msgid "Changes on proposed functions"
-msgstr ""
-
-msgid "pgr_degree"
 msgstr ""
 
 msgid "All releases"
@@ -5518,9 +5514,6 @@ msgstr ""
 msgid "Graph with ``cost`` and ``reverse_cost``"
 msgstr ""
 
-msgid "The weighted directed graph, :math:`G_d(V,E)`, is defined by:"
-msgstr ""
-
 msgid "``SELECT id, source, target, cost, reverse_cost FROM edges``"
 msgstr ""
 
@@ -6191,17 +6184,29 @@ msgstr ""
 msgid "To get the dead ends:"
 msgstr ""
 
-msgid ""
-"That information is correct, for example, when the dead end is on the "
-"limit of the imported graph."
+msgid "A dead end happens when"
 msgstr ""
 
 msgid ""
-"Visually node :math:`4` looks to be as start/ending of 3 edges, but it is"
-" not."
+"The vertex is the limit of a cul-de-sac, a no-through road or a no-exit "
+"road."
 msgstr ""
 
-msgid "Is that correct?"
+msgid "The vertex is on the limit of the imported graph."
+msgstr ""
+
+msgid "If a larger graph is imported then the vertex might not be a dead end"
+msgstr ""
+
+msgid ""
+"Node :math:`4`, is a dead end on the query, even that it visually looks "
+"like an end point of 3 edges."
+msgstr ""
+
+msgid "Is node :math:`4` a dead end or not?"
+msgstr ""
+
+msgid "The answer to that question will depend on the application."
 msgstr ""
 
 msgid "Is there such a small curb:"
@@ -6225,9 +6230,12 @@ msgid ""
 " to the segment?"
 msgstr ""
 
+msgid "Depending on the answer, modification of the data might be needed."
+msgstr ""
+
 msgid ""
-"When there are many dead ends, to speed up, the :doc:`contraction-family`"
-" functions can be used to divide the problem."
+"When there are many dead ends, to speed up processing, the :doc"
+":`contraction-family` functions can be used to contract the graph."
 msgstr ""
 
 msgid "Linear edges"
@@ -6237,13 +6245,15 @@ msgid "To get the linear edges:"
 msgstr ""
 
 msgid ""
-"This information is correct, for example, when the application is taking "
-"into account speed bumps, stop signals."
+"These linear vertices are correct, for example, when those the vertices "
+"are speed bumps, stop signals and the application is taking them into "
+"account."
 msgstr ""
 
 msgid ""
-"When there are many linear edges, to speed up, the :doc:`contraction-"
-"family` functions can be used to divide the problem."
+"When there are many linear vertices, that need not to be taken into "
+"account, to speed up the processing, the :doc:`contraction-family` "
+"functions can be used to contract the problem."
 msgstr ""
 
 msgid "Function's structure"
@@ -10227,7 +10237,7 @@ msgstr ""
 msgid "https://en.wikipedia.org/wiki/Topological_sorting"
 msgstr ""
 
-msgid "``pgr_degree`` -- Proposed"
+msgid "``pgr_degree``"
 msgstr ""
 
 msgid ""
@@ -10238,7 +10248,42 @@ msgstr ""
 msgid "Version 3.8.0"
 msgstr ""
 
-msgid "Calculates the degree of the vertices of an **undirected** graph"
+msgid "Calculates the degree of the vertices of an undirected graph"
+msgstr ""
+
+msgid ""
+"The degree (or valency) of a vertex of a graph is the number of edges "
+"that are incident to the vertex."
+msgstr ""
+
+msgid "A loop contributes 2 to a vertex's degree."
+msgstr ""
+
+msgid "A vertex with degree 0 is called an isolated vertex."
+msgstr ""
+
+msgid "Isolated vertex is not part of the result"
+msgstr ""
+
+msgid ""
+"Vertex not participating on the subgraph is considered and isolated "
+"vertex."
+msgstr ""
+
+msgid ""
+"There can be a ``dryrun`` execution and the code used to get the answer "
+"will be shown in a PostgreSQL ``NOTICE``."
+msgstr ""
+
+msgid ""
+"The code can be used as base code for the particular application "
+"requirements."
+msgstr ""
+
+msgid "No ordering is performed."
+msgstr ""
+
+msgid "pgr_degree(`Edges SQL`_ , [``dryrun``])"
 msgstr ""
 
 msgid "pgr_degree(`Edges SQL`_ , `Vertex SQL`_, [``dryrun``])"
@@ -10247,14 +10292,31 @@ msgstr ""
 msgid "RETURNS SETOF |result-degree|"
 msgstr ""
 
+msgid "Edges"
+msgstr ""
+
+msgid "example"
+msgstr ""
+
+msgid "Get the degree of the vertices defined on the edges table"
+msgstr ""
+
+msgid "Edges and Vertices"
+msgstr ""
+
 msgid "Extracting the vertex information"
 msgstr ""
 
+msgid "``pgr_degree`` can use :doc:`pgr_extractVertices` embedded in the call."
+msgstr ""
+
 msgid ""
-"pgr_degree can utilize output from `pgr_extractVertices` or can have "
-"`pgr_extractVertices` embedded in the call. For decent size networks, it "
-"is best to prep your vertices table before hand and use that vertices "
-"table for pgr_degree calls."
+"For decent size networks, it is best to prepare your vertices table "
+"before hand and use it on ``pgr_degree`` calls. (See `Using a vertex "
+"table`_)"
+msgstr ""
+
+msgid "Calculate the degree of the nodes:"
 msgstr ""
 
 msgid "`Vertex SQL`_"
@@ -10267,6 +10329,12 @@ msgid "``dryrun``"
 msgstr ""
 
 msgid "When true do not process and get in a NOTICE the resulting query."
+msgstr ""
+
+msgid "For the `Edges and Vertices`_ signature:"
+msgstr ""
+
+msgid "For the `Edges`_ signature:"
 msgstr ""
 
 msgid "Vertex SQL"
@@ -10306,7 +10374,47 @@ msgstr ""
 msgid "Number of edges that are incident to the vertex ``id``"
 msgstr ""
 
+msgid "Degree of a loop"
+msgstr ""
+
+msgid "Using the `Edges`_ signature."
+msgstr ""
+
+msgid "Using the `Edges and Vertices`_ signature."
+msgstr ""
+
 msgid "Degree of a sub graph"
+msgstr ""
+
+msgid "For the following is a subgraph of the :doc:`sampledata`:"
+msgstr ""
+
+#, python-brace-format
+msgid ":math:`E = \\{(1, 5 \\leftrightarrow 6), (1, 6 \\leftrightarrow 10)\\}`"
+msgstr ""
+
+#, python-brace-format
+msgid ":math:`V = \\{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17\\}`"
+msgstr ""
+
+msgid "The vertices not participating on the edge are considered isolated"
+msgstr ""
+
+msgid "their degree is 0 in the subgraph and"
+msgstr ""
+
+msgid "their degree is not shown in the output."
+msgstr ""
+
+msgid "Using a vertex table"
+msgstr ""
+
+msgid ""
+"For decent size networks, it is best to prepare your vertices table "
+"before hand and use it on ``pgr_degree`` calls."
+msgstr ""
+
+msgid "Extract the vertex information and save into a table:"
 msgstr ""
 
 msgid "Dry run execution"
@@ -10322,14 +10430,28 @@ msgid ""
 "backend development needs."
 msgstr ""
 
-msgid "Degree from an existing table"
+msgid "Finding dead ends"
 msgstr ""
 
 msgid ""
-"If you have a vertices table already built using ``pgr_extractVertices`` "
-"and want the degree of the whole graph rather than a subset, you can "
-"forgo using pgr_degree and work with the ``in_edges`` and ``out_edges`` "
-"columns directly."
+"If there is a vertices table already built using ``pgr_extractVertices`` "
+"and want the degree of the whole graph rather than a subset, it can be "
+"forgo using ``pgr_degree`` and work with the ``in_edges`` and "
+"``out_edges`` columns directly."
+msgstr ""
+
+msgid "The degree of a dead end is 1."
+msgstr ""
+
+msgid "Finding linear vertices"
+msgstr ""
+
+msgid "The degree of a linear vertex is 2."
+msgstr ""
+
+msgid ""
+"If there is a vertices table already built using the "
+"``pgr_extractVertices``"
 msgstr ""
 
 msgid ":doc:`pgr_extractVertices`"
@@ -12882,6 +13004,9 @@ msgid ""
 "returned."
 msgstr ""
 
+msgid "There is no flow when source has the same vaule as target."
+msgstr ""
+
 msgid "Uses the :doc:`pgr_pushRelabel <pgr_pushRelabel>` algorithm."
 msgstr ""
 
@@ -15172,14 +15297,6 @@ msgid ":doc:`pgr_withPointsDD` - Driving distance."
 msgstr ""
 
 msgid ":doc:`pgr_withPointsVia` - Via routing"
-msgstr ""
-
-msgid "These proposed functions do not modify the database."
-msgstr ""
-
-msgid ""
-":doc:`pgr_degree` - Returns a set of vertices and corresponding count of "
-"incidet edges to the vertex."
 msgstr ""
 
 msgid ""
@@ -17698,9 +17815,6 @@ msgid ""
 " that everything else is calculated."
 msgstr ""
 
-msgid "Edges"
-msgstr ""
-
 msgid ""
 "The database design for the documentation of pgRouting, keeps in the same"
 " row 2 segments, one in the direction of the geometry and the second in "
@@ -18072,7 +18186,7 @@ msgstr ""
 msgid "Traversal - Family of functions"
 msgstr ""
 
-msgid "Aditionaly there are 2 categories under this family"
+msgid "Additionally there are 2 categories under this family"
 msgstr ""
 
 msgid "Via - Category"
@@ -18088,7 +18202,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"In other words, find a continuos route that visits all the vertices in "
+"In other words, find a continuous route that visits all the vertices in "
 "the order given."
 msgstr ""
 
