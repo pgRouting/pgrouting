@@ -73,7 +73,7 @@ Signatures
    | OR EMPTY SET
 
 .. index::
-    single: degree ; Edges and Vertices
+    single: degree ; Edges
 
 Edges
 ...............................................................................
@@ -91,6 +91,9 @@ Edges
 .. literalinclude:: degree.queries
    :start-after: -- q1
    :end-before: -- q2
+
+.. index::
+    single: degree ; Edges and Vertices
 
 Edges and Vertices
 ...............................................................................
@@ -115,10 +118,6 @@ Calculate the degree of the nodes:
 .. literalinclude:: degree.queries
    :start-after: -- q2
    :end-before: -- q3
-
-.. index::
-    single: degree ; Edges
-
 
 Parameters
 -------------------------------------------------------------------------------
