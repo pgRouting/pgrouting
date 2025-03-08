@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=b671dda4"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
@@ -210,7 +211,8 @@
 <li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">驾驶距离</span></a> - 使用 pgr_dijkstra 计算流域信息。</p></li>
 <li><p><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - 使用 Yen 算法和 pgr_dijkstra 来获得 K 条最短路径。</p></li>
 </ul>
-<p class="rubric">建议</p>
+<div class="sphinx_collapse docutils container">
+<input class="sphinx_collapse__input" id="9abcbac7-bb06-412a-8fd9-59086ea094ae" name="9abcbac7-bb06-412a-8fd9-59086ea094ae" type="checkbox"><label class="sphinx_collapse__label" for="9abcbac7-bb06-412a-8fd9-59086ea094ae"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>下一版本的拟议功能。</p>
@@ -228,8 +230,10 @@
 </li>
 </ul>
 </div>
+</div>
+</div>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia -拟议</span></a> - 获取一系列顶点的路径。</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia -拟议</span></a> - Get a route of a sequence of vertices.</p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - 拟议</span></a> - 获取到最近顶点的路线。</p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - 拟议</span></a> - 获取最近顶点的成本。</p></li>
 </ul>
@@ -437,7 +441,7 @@
 </ul>
 <p>图定义如下：</p>
 <p class="rubric">有向图</p>
-<p>加权有向图， <span class="math notranslate nohighlight">\(G_d(V,E)\)</span> 的定义如下：</p>
+<p>加权有向图， <span class="math notranslate nohighlight">\(G_d(V,E)\)</span>， 定义如下：</p>
 <ul class="simple">
 <li><p>顶点集 <span class="math notranslate nohighlight">\(V\)</span></p>
 <ul>
@@ -451,7 +455,7 @@
 </li>
 </ul>
 <p class="rubric">无向图</p>
-<p>加权无向图， <span class="math notranslate nohighlight">\(G_u(V,E)\)</span> 的定义如下：</p>
+<p>The weighted undirected graph, <span class="math notranslate nohighlight">\(G_u(V,E)\)</span>, is defined by:</p>
 <ul class="simple">
 <li><p>顶点集 <span class="math notranslate nohighlight">\(V\)</span></p>
 <ul>
@@ -524,7 +528,7 @@ G_u(V,E) &amp; \quad \text{ if5 } directed = false \\
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on 3月 04, 2025.<br/>
+      Last updated on 3月 08, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

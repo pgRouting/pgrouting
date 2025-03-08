@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=b671dda4"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
@@ -777,7 +778,7 @@ on the segment <code class="docutils literal notranslate"><span class="pre">edge
     <span class="n">edge</span> <span class="n">geometry</span><span class="p">,</span>
     <span class="n">newPoint</span> <span class="n">geometry</span><span class="p">,</span>
     <span class="n">geom</span> <span class="n">geometry</span><span class="p">);</span>
-<span class="n">CREATE</span> <span class="n">TABLE</span>
+<span class="n">IF</span> <span class="n">v</span> <span class="o">&gt;</span> <span class="mf">3.4</span> <span class="n">THEN</span>
 </pre></div>
 </div>
 </section>
@@ -791,7 +792,6 @@ on the segment <code class="docutils literal notranslate"><span class="pre">edge
 <span class="p">(</span><span class="n">ST_Point</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">)),</span>
 <span class="p">(</span><span class="n">ST_Point</span><span class="p">(</span><span class="mf">2.9</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">)),</span>
 <span class="p">(</span><span class="n">ST_Point</span><span class="p">(</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">));</span>
-<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">6</span>
 </pre></div>
 </div>
 <p>Filling the rest of the table.</p>
@@ -807,13 +807,11 @@ FROM (
   FROM pgr_findCloseEdges(
     $$SELECT id, geom FROM edges$$,(SELECT array_agg(geom) FROM pointsOfInterest), 0.5) ) AS poi
 WHERE pointsOfInterest.geom = poi.geom;
-UPDATE 6
 </pre></div>
 </div>
 <p>Any other additional modification: In this manual, point <span class="math notranslate nohighlight">\(6\)</span> can be
 reached from both sides.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">pointsOfInterest</span> <span class="n">SET</span> <span class="n">side</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span> <span class="n">WHERE</span> <span class="n">pid</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
-<span class="n">UPDATE</span> <span class="mi">1</span>
 </pre></div>
 </div>
 <p>The points of interest:</p>
@@ -864,7 +862,7 @@ reached from both sides.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on 3月 04, 2025.<br/>
+      Last updated on 3月 08, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

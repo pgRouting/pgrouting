@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=b671dda4"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
@@ -199,7 +200,8 @@
 </div>
 <section id="via-category">
 <h1>Via - 类别<a class="headerlink" href="#via-category" title="Link to this heading">¶</a></h1>
-<p class="rubric">建议的</p>
+<div class="sphinx_collapse docutils container">
+<input class="sphinx_collapse__input" id="f769e9ea-1f0c-4c9a-b3fe-e56cdf69ce92" name="f769e9ea-1f0c-4c9a-b3fe-e56cdf69ce92" type="checkbox"><label class="sphinx_collapse__label" for="f769e9ea-1f0c-4c9a-b3fe-e56cdf69ce92"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>下一版本的拟议功能。</p>
@@ -217,6 +219,8 @@
 </li>
 </ul>
 </div>
+</div>
+</div>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia -拟议</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia - 拟议</span></a></p></li>
@@ -229,7 +233,8 @@
 <blockquote>
 <div><p>给定一个图和一个顶点列表，找到所有相邻顶点对 <span class="math notranslate nohighlight">\(vertex_i\)</span> 和 <span class="math notranslate nohighlight">\(vertex_{i+1}\)</span> 之间的最短路径</p>
 </div></blockquote>
-<p>换句话说，找到一条按给定顺序访问所有顶点的连续路线。</p>
+<p>In other words, find a continuous route that visits all the vertices in the order
+given.</p>
 <dl class="field-list simple">
 <dt class="field-odd">path<span class="colon">:</span></dt>
 <dd class="field-odd"><p>代表 <strong>route</strong> 的一部分。</p>
@@ -632,7 +637,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on 3月 04, 2025.<br/>
+      Last updated on 3月 08, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
