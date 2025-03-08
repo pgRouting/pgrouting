@@ -11,11 +11,12 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=065f0aea"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script src="_static/page_history.js?v=fa54846d"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
@@ -188,6 +189,7 @@ created.</p>
 <li><p><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> - para analizar los bordes y vértices de la tabla de aristas.</p></li>
 <li><p><a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> - para analizar la direccionalidad de las aristas.</p></li>
 <li><p><a class="reference internal" href="pgr_nodeNetwork.html"><span class="doc">pgr_nodeNetwork</span></a> - para crear nodos a una tabla de aristas sin nodos.</p></li>
+<li><p><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> - Extrae información de vértices basada en la tabla de aristas.</p></li>
 </ul>
 <p>pgRouting supplies some functions to create a routing topology and to analyze the
 topology.</p>
@@ -198,29 +200,6 @@ topology.</p>
 <p>Additional functions to analyze a graph:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="components-family.html"><span class="doc">Componentes - Familia de funciones</span></a></p></li>
-</ul>
-<p class="rubric">Propuesto</p>
-<div class="admonition warning">
-<p class="admonition-title">Advertencia</p>
-<p>Funciones propuestas para la próxima versión mayor.</p>
-<ul class="simple">
-<li><p>No están oficialmente en la versión actual.</p></li>
-<li><p>Es probable que oficialmente formen parte del próximo lanzamiento:</p>
-<ul>
-<li><p>Las funciones hacen uso de ENTEROS y FLOTANTES</p></li>
-<li><p>Probablemente el nombre no cambie. (Pero todavía puede)</p></li>
-<li><p>Es posible que la firma no cambie. (Pero todavía puede)</p></li>
-<li><p>Probablemente la funcionalidad no cambie. (Pero todavía puede)</p></li>
-<li><p>Se han hecho pruebas con pgTap. Pero tal vez se necesiten más.</p></li>
-<li><p>Es posible que la documentación necesite un refinamiento.</p></li>
-</ul>
-</li>
-</ul>
-</div>
-<p>Estas funciones propuestas no modifican la base de datos.</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="pgr_degree.html"><span class="doc">pgr_degree – Propuesto</span></a> - Returns a set of vertices and corresponding count of incidet edges to the vertex.</p></li>
-<li><p><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices– Propuesto</span></a> - Extrae información de vértices basada en la tabla de aristas.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -247,8 +226,8 @@ topology.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en feb 27, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Actualizado por última vez en mar 08, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

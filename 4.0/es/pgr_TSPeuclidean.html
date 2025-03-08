@@ -11,16 +11,17 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=065f0aea"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script src="_static/page_history.js?v=fa54846d"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="BFS - Categoría" href="BFS-category.html" />
+    <link rel="next" title="pgr_findCloseEdges" href="pgr_findCloseEdges.html" />
     <link rel="prev" title="pgr_TSP" href="pgr_TSP.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -139,7 +140,7 @@
     </a>
   </li>
   <li>
-    <a href="BFS-category.html" title="Next Chapter: BFS - Categoría"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">BFS - Categoría &raquo;</span>
+    <a href="pgr_findCloseEdges.html" title="Next Chapter: pgr_findCloseEdges"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_findCloseEdges &raquo;</span>
     </a>
   </li>
               
@@ -207,7 +208,7 @@
     </a>
   </li>
   <li>
-    <a href="BFS-category.html" title="Next Chapter: BFS - Categoría"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">BFS - Categoría &raquo;</span>
+    <a href="pgr_findCloseEdges.html" title="Next Chapter: pgr_findCloseEdges"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_findCloseEdges &raquo;</span>
     </a>
   </li>
 <form action="search.html" method="get">
@@ -228,13 +229,13 @@
 <section id="pgr-tspeuclidean">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code><a class="headerlink" href="#pgr-tspeuclidean" title="Link to this heading">¶</a></h1>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code> - Aproximación usando el algoritmo <em>metric</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code> - Approximation using <em>metric</em> algorithm.</p></li>
 </ul>
 <p class="rubric">Disponibilidad:</p>
 <ul class="simple">
 <li><p>Versión 3.2.1</p>
 <ul>
-<li><p>Usando <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost: Algoritmo de aproximación Métrica de TSP</a></p></li>
+<li><p>Using <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost: metric TSP approx</a></p></li>
 <li><p>El algoritmo de recocido simulado ya no es utilizado</p>
 <ul>
 <li><p>Se ignoran los parámetros relacionados con el algoritmo de recocido simulado: <cite>max_processing_time</cite>, <cite>tries_per_temperature</cite>, <cite>max_changes_per_temperature</cite>, <cite>max_consecutive_non_changes</cite>, <cite>initial_temperature</cite>, <cite>final_temperature</cite>, <cite>cooling_factor</cite>, <cite>randomize</cite></p></li>
@@ -249,7 +250,7 @@
 </li>
 <li><p>Versión 2.3.0</p>
 <ul>
-<li><p>Nueva función oficial.</p></li>
+<li><p>New official function.</p></li>
 </ul>
 </li>
 </ul>
@@ -302,7 +303,7 @@
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 </section>
 <section id="signatures">
@@ -576,7 +577,7 @@ SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
 <ul class="simple">
 <li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Vendedor Viajante - Familia de funciones</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost: aproximación métrica de TSP</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost: metric TSP approx</a></p></li>
 <li><p><a class="reference external" href="https://www.math.uwaterloo.ca/tsp/">Universided de Waterloo TSP</a></p></li>
 <li><p><a class="reference external" href="https://es.wikipedia.org/wiki/Problema_del_viajante">Wikipedia: Problema del viajante</a></p></li>
 </ul>
@@ -601,8 +602,8 @@ SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en feb 27, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Actualizado por última vez en mar 08, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

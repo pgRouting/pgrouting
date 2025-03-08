@@ -11,11 +11,12 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=1b67ac13"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script src="_static/page_history.js?v=fa54846d"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -214,7 +215,7 @@
 <ul class="simple">
 <li><p>版本3.2.0</p>
 <ul>
-<li><p>新 实验性*签名：</p>
+<li><p>New experimental signature:</p>
 <ul>
 <li><p>pgr_maxFlowMinCost(组合)</p></li>
 </ul>
@@ -223,32 +224,32 @@
 </li>
 <li><p>版本3.0.0</p>
 <ul>
-<li><p>新实验功能。</p></li>
+<li><p>New experimental function.</p></li>
 </ul>
 </li>
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> 图内部。</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> graph inside.</p>
 <p><strong>主要特点是：</strong></p>
 <ul class="simple">
 <li><p>该图是 <strong>有向</strong> 的。</p></li>
 <li><p>仅在具有正容量的边缘上进行处理。</p></li>
 <li><p>当最大流量为0时则没有流量并返回 <strong>EMPTY SET</strong> 。</p>
 <ul>
-<li><p>当 source与 target相同时，没有流量。</p></li>
+<li><p>There is no flow when source has the same value as target.</p></li>
 </ul>
 </li>
-<li><p>source或target 中的任何重复值都将被忽略。</p></li>
+<li><p>Any duplicated values in source or target are ignored.</p></li>
 <li><p>计算每条边的流量/剩余容量。 在输出中</p>
 <ul>
 <li><p>流量为零的边被忽略。</p></li>
 </ul>
 </li>
-<li><p>创建</p>
+<li><p>Creates</p>
 <ul>
-<li><p>一个**超级源**和从它到所有源的边，</p></li>
-<li><p>一个**超级目标**和从它到所有目标的边。</p></li>
+<li><p>a <strong>super source</strong> and edges from it to all the sources,</p></li>
+<li><p>a <strong>super target</strong> and edges from it to all the targetss.</p></li>
 </ul>
 </li>
 <li><p>当使用相同参数执行时，通过图表的最大流量保证是 <a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> 返回的值，并且可以计算：</p>
@@ -273,6 +274,8 @@
 </ul>
 </li>
 </ul>
+<div class="sphinx_collapse docutils container">
+<input class="sphinx_collapse__input" id="4b595ab1-c5bd-49e7-8a40-476ec241f001" name="4b595ab1-c5bd-49e7-8a40-476ec241f001" type="checkbox"><label class="sphinx_collapse__label" for="4b595ab1-c5bd-49e7-8a40-476ec241f001"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>可能服务器崩溃</p>
@@ -296,14 +299,16 @@
 <li><p>可能缺乏文档。</p></li>
 <li><p>文档（如果有）可能需要重写。</p></li>
 <li><p>可能需要自动生成文档示例。</p></li>
-<li><p>可能需要社区的大量反馈。</p></li>
+<li><p>Might need a lot of feedback from the community.</p></li>
 <li><p>可能取决于 pgRouting 的拟议功能</p></li>
 <li><p>可能依赖于 pgRouting 的已弃用函数</p></li>
 </ul>
 </li>
 </ul>
 </div>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+</div>
+</div>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -752,8 +757,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 2月 27, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Last updated on 3月 08, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

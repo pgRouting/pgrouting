@@ -11,11 +11,12 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=065f0aea"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script src="_static/page_history.js?v=fa54846d"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
@@ -221,26 +222,26 @@
 <p><code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code> — Devuelve las K rutas más cortas usando Dijkstra .</p>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
-<li><p>Versión 4.0.0</p>
+<li><p>Version 4.0.0</p>
 <ul>
-<li><p>Todas las firmas promovidas a oficial.</p></li>
+<li><p>All signatures promoted to official.</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">Versión 3.6.0</p>
 <ul class="simple">
 <li><p>Columnas de resultados estandarizadas a: <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p></li>
-<li><p>pgr_ksp(Uno a Uno)</p>
+<li><p>pgr_ksp(One to One)</p>
 <ul>
 <li><p>Añadidas las columnas de resultados <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> y <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
 </ul>
 </li>
-<li><p>Nuevas firmas propuestas:</p>
+<li><p>New proposed signatures:</p>
 <ul>
-<li><p>pgr_ksp(Uno a muchos)</p></li>
-<li><p>pgr_ksp(Muchos a uno)</p></li>
-<li><p>pgr_ksp(Muchos a muchos)</p></li>
-<li><p>pgr_ksp(Combinaciones)</p></li>
+<li><p>pgr_ksp(One to Many)</p></li>
+<li><p>pgr_ksp(Many to One)</p></li>
+<li><p>pgr_ksp(Many to Many)</p></li>
+<li><p>pgr_ksp(Combinations)</p></li>
 </ul>
 </li>
 </ul>
@@ -254,12 +255,12 @@
 </ul>
 <p class="rubric">Versión 2.0.0</p>
 <ul class="simple">
-<li><p>Función oficial.</p></li>
+<li><p>Official function.</p></li>
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p>El algoritmo de ruteo para obtener la ruta más corta K basado en el algoritmo de Yen . «K» es el número de rutas más cortas deseadas.</p>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -1043,8 +1044,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en feb 27, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Actualizado por última vez en mar 08, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

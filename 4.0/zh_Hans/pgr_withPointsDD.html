@@ -11,11 +11,12 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=1b67ac13"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script src="_static/page_history.js?v=fa54846d"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -231,25 +232,25 @@
 <ul class="simple">
 <li><p>签名更改： <code class="docutils literal notranslate"><span class="pre">driving_side</span></code> 参数从已命名的可选参数改为未命名的必选参数 <strong>driving side</strong>。</p>
 <ul>
-<li><p>pgr_withPointsDD （单顶点）</p></li>
-<li><p>pgr_withPointsDD（多顶点）</p></li>
+<li><p>pgr_withPointsDD(Single vertex)</p></li>
+<li><p>pgr_withPointsDD(Multiple vertices)</p></li>
 </ul>
 </li>
 <li><p>将输出列标准化为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p>pgr_withPointsDD （单顶点）</p>
+<li><p>pgr_withPointsDD(Single vertex)</p>
 <ul>
 <li><p>添加了 <code class="docutils literal notranslate"><span class="pre">depth</span></code>、<code class="docutils literal notranslate"><span class="pre">pred</span></code> 和 <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> 列。</p></li>
 </ul>
 </li>
-<li><p>pgr_withPointsDD（多顶点）</p>
+<li><p>pgr_withPointsDD(Multiple vertices)</p>
 <ul>
 <li><p>添加了 <code class="docutils literal notranslate"><span class="pre">depth</span></code>，<code class="docutils literal notranslate"><span class="pre">pred</span></code> 列。</p></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>当 <code class="docutils literal notranslate"><span class="pre">details</span></code> 为 <code class="docutils literal notranslate"><span class="pre">false</span></code> 时：</p>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">details</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>:</p>
 <ul>
 <li><p>只有那些被访问的兴趣点会被移除，也就是说，位于一定距离范围内被到达的兴趣点会被包含在内</p></li>
 </ul>
@@ -263,12 +264,12 @@
 </ul>
 <p class="rubric">版本 2.2.0</p>
 <ul class="simple">
-<li><p>新提议的函数。</p></li>
+<li><p>New proposed function.</p></li>
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>修改图以包含点，并使用 Dijkstra 算法，提取成本小于或等于距起点 <code class="docutils literal notranslate"><span class="pre">**distance**</span></code> 值的所有节点和点。 提取的边将符合相应的生成树。</p>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p>修改图以包含点，并使用 Dijkstra 算法，提取成本小于或等于距起点 <code class="docutils literal notranslate"><span class="pre">**距离**</span></code> 值的所有节点和点。 提取的边将符合相应的生成树。</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -390,7 +391,7 @@
 </tr>
 <tr class="row-even"><td><p><strong>Root vid</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>树的根顶点标识符。</p>
+<td><p>树的根顶点的标识符。</p>
 <ul class="simple">
 <li><p>负值代表一个点</p></li>
 </ul>
@@ -704,12 +705,12 @@
 <h2>其他示例<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id1">在 Points SQL 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges- 拟议</span></a>。</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id1">在 Points SQL 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a>。</a></p></li>
 <li><p><a class="reference internal" href="#driving-side-does-not-matter" id="id2">驾驶侧并不重要</a></p></li>
 </ul>
 </nav>
 <section id="use-pgr-findcloseedges-in-the-points-sql">
-<h3>在 <a class="reference internal" href="#points-sql">Points SQL</a> 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges- 拟议</span></a>。<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Link to this heading">¶</a></h3>
+<h3>在 <a class="reference internal" href="#points-sql">Points SQL</a> 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a>。<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Link to this heading">¶</a></h3>
 <p>求图上点 <cite>(2.9, 1.8)</cite> 距离最近的两个位置的行驶距离。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsDD(
   $e$ SELECT * FROM edges $e$,
@@ -811,8 +812,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 2月 27, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Last updated on 3月 08, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

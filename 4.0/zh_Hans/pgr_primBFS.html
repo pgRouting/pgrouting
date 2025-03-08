@@ -11,11 +11,12 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=1b67ac13"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script src="_static/page_history.js?v=fa54846d"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -208,13 +209,13 @@
 <p><code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code> — Prim 的深度优先搜索排序最小生成树算法。</p>
 <p class="rubric">可用性</p>
 <dl class="field-list simple">
-<dt class="field-odd">版本 3.7.0<span class="colon">:</span></dt>
+<dt class="field-odd">Version 3.7.0<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <ul class="simple">
 <li><p>将输出列标准化为 <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">pred,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p>添加了 <code class="docutils literal notranslate"><span class="pre">pred</span></code> 结果列。</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">pred</span></code> result columns.</p></li>
 </ul>
 </li>
 </ul>
@@ -227,7 +228,8 @@
 </dl>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>访问并提取使用 Prims 算法创建的最小生成树的 Breath First Search 排序中的节点信息。</p>
+<p>Visits and extracts the nodes information in Breath First Search ordering
+of the Minimum Spanning Tree created using Prims's algorithm.</p>
 <p><strong>主要特点是：</strong></p>
 <ul class="simple">
 <li><p>它的实现仅在 <strong>无向</strong> 图上。</p></li>
@@ -251,7 +253,7 @@
 <li><p>从根顶点返回的树节点遵循广度优先搜索顺序</p></li>
 <li><p>广度优先搜索运行时间： <span class="math notranslate nohighlight">\(O(E + V)\)</span></p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -369,7 +371,7 @@
 </tr>
 <tr class="row-odd"><td><p><strong>Root vid</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>树的根顶点标识符。</p></td>
+<td><p>树的根顶点的标识符。</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Root vids</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></p></td>
@@ -539,7 +541,7 @@
 <section id="see-also">
 <h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="spanningTree-family.html"><span class="doc">生成树 - 类别</span></a></p></li>
+<li><p><a class="reference internal" href="spanningTree-category.html"><span class="doc">生成树 - 类别</span></a></p></li>
 <li><p><a class="reference internal" href="prim-family.html"><span class="doc">Prim - 函数族</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
 <li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html">Boost: Prim算法</a></p></li>
@@ -566,8 +568,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 2月 27, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Last updated on 3月 08, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

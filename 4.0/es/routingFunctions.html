@@ -11,11 +11,12 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=065f0aea"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script src="_static/page_history.js?v=fa54846d"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
@@ -241,6 +242,11 @@
 <li><p><a class="reference internal" href="pgr_kruskalDD.html"><span class="doc">pgr_kruskalDD</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_kruskalDFS.html"><span class="doc">pgr_kruskalDFS</span></a></p></li>
 </ul>
+<p><a class="reference internal" href="metrics-family.html"><span class="doc">Métricas - Familia de funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_degree.html"><span class="doc">pgr_degree</span></a> - Returns a set of vertices and corresponding count of
+incident edges to the vertex.</p></li>
+</ul>
 <p><a class="reference internal" href="prim-family.html"><span class="doc">Prim - Familia de funciones</span></a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_prim.html"><span class="doc">pgr_prim</span></a></p></li>
@@ -261,6 +267,7 @@
 <li><p><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> - para analizar los bordes y vértices de la tabla de aristas.</p></li>
 <li><p><a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> - para analizar la direccionalidad de las aristas.</p></li>
 <li><p><a class="reference internal" href="pgr_nodeNetwork.html"><span class="doc">pgr_nodeNetwork</span></a> - para crear nodos a una tabla de aristas sin nodos.</p></li>
+<li><p><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> - Extrae información de vértices basada en la tabla de aristas.</p></li>
 </ul>
 <p><a class="reference internal" href="TSP-family.html"><span class="doc">Vendedor Viajante - Familia de funciones</span></a></p>
 <ul class="simple">
@@ -268,6 +275,8 @@
 <li><p><a class="reference internal" href="pgr_TSPeuclidean.html"><span class="doc">pgr_TSPeuclidean</span></a> - Cuando la información son coordenadas.</p></li>
 </ul>
 <p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp</span></a> - Camino más corto con restricción de giros (TRSP)</p>
+<p class="rubric">Utilities family</p>
+<p><a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a></p>
 <section id="functions-by-categories">
 <h2>Funciones por categorías<a class="headerlink" href="#functions-by-categories" title="Link to this heading">¶</a></h2>
 <p><a class="reference internal" href="cost-category.html"><span class="doc">Costo - Categoría</span></a></p>
@@ -290,7 +299,7 @@
 <li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - Distancia de Manejo basada en el algoritmo de Dijkstra</p></li>
 <li><p><a class="reference internal" href="pgr_primDD.html"><span class="doc">pgr_primDD</span></a> - Distancia de manejo basada en el algoritmo de Prim</p></li>
 <li><p><a class="reference internal" href="pgr_kruskalDD.html"><span class="doc">pgr_kruskalDD</span></a> - Distancia de Manejo basada en el algoritmo de Kruskal</p></li>
-<li><p>Post procesamiento</p>
+<li><p>Post processing</p>
 <ul>
 <li><p><a class="reference internal" href="pgr_alphaShape.html"><span class="doc">pgr_alphaShape</span></a> - Cálcular la forma Alpha</p></li>
 </ul>
@@ -300,7 +309,7 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - Algoritmo de Yen basado en pgr_dijkstra</p></li>
 </ul>
-<p><a class="reference internal" href="spanningTree-family.html"><span class="doc">Árbol de expansión - Categoría</span></a></p>
+<p><a class="reference internal" href="spanningTree-category.html"><span class="doc">Árbol de expansión - Categoría</span></a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="kruskal-family.html"><span class="doc">Kruskal - Familia de funciones</span></a></p></li>
 <li><p><a class="reference internal" href="prim-family.html"><span class="doc">Prim - Familia de funciones</span></a></p></li>
@@ -343,8 +352,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en feb 27, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Actualizado por última vez en mar 08, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

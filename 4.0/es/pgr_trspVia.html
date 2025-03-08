@@ -11,11 +11,12 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=065f0aea"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script src="_static/page_history.js?v=fa54846d"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
@@ -235,14 +236,14 @@
 <p><code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> Route that goes through a list of vertices with restrictions.</p>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
-<li><p>Versión 4.0.0</p>
+<li><p>Version 4.0.0</p>
 <ul>
-<li><p>Función promovida a oficial.</p></li>
+<li><p>Function promoted to official.</p></li>
 </ul>
 </li>
 <li><p>Versión 3.4.0</p>
 <ul>
-<li><p>Nueva función propuesta.</p></li>
+<li><p>New proposed function.</p></li>
 </ul>
 </li>
 </ul>
@@ -254,7 +255,7 @@ shortest path between <span class="math notranslate nohighlight">\(vertex_i\)</s
 <p>Las trayectorias representan los tramos de la ruta.</p>
 <p>The general algorithm is as follows:</p>
 <ul class="simple">
-<li><p>Ejecutar un <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Propuesto</span></a>.</p></li>
+<li><p>Execute a <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Propuesto</span></a>.</p></li>
 <li><p>For the set of sub paths of the solution that pass through a restriction then</p>
 <ul>
 <li><p>Execute the <strong>TRSP</strong> algorithm with restrictions for the paths.</p></li>
@@ -262,7 +263,7 @@ shortest path between <span class="math notranslate nohighlight">\(vertex_i\)</s
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -900,8 +901,8 @@ no <code class="docutils literal notranslate"><span class="pre">U_turn_on_edge</
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en feb 27, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Actualizado por última vez en mar 08, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

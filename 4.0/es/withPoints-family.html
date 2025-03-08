@@ -11,11 +11,12 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=065f0aea"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script src="_static/page_history.js?v=fa54846d"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
@@ -233,6 +234,8 @@
 <section id="withpoints-family-of-functions">
 <h1>withPoints - Familia de funciones<a class="headerlink" href="#withpoints-family-of-functions" title="Link to this heading">¶</a></h1>
 <p>Cuando los puntos también se dan como entrada:</p>
+<div class="sphinx_collapse docutils container">
+<input class="sphinx_collapse__input" id="53dd9bfa-07d3-47f1-b8a6-6daeb23eab9c" name="53dd9bfa-07d3-47f1-b8a6-6daeb23eab9c" type="checkbox"><label class="sphinx_collapse__label" for="53dd9bfa-07d3-47f1-b8a6-6daeb23eab9c"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Funciones propuestas para la próxima versión mayor.</p>
@@ -250,12 +253,14 @@
 </li>
 </ul>
 </div>
+</div>
+</div>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints</span></a> - Ruta desde/hacia puntos en cualquier parte del grafo.</p></li>
 <li><p><a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_withPointsCost</span></a> - Costos de las tutas más cortas.</p></li>
 <li><p><a class="reference internal" href="pgr_withPointsCostMatrix.html"><span class="doc">pgr_withPointsCostMatrix</span></a> - Costos de las rutas más cortas.</p></li>
 <li><p><a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP</span></a> - rutas más cortas K.</p></li>
-<li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD</span></a> - Distancia de manejo.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD</span></a> - Distancia de conducción.</p></li>
 <li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia</span></a> - Ruteo vía ubicaciones</p></li>
 </ul>
 <div class="toctree-wrapper compound">
@@ -271,7 +276,7 @@ functions that compose them are based one way or another on dijkstra algorithm.<
 <li><p>pgr_withPointsCostMatrix es pgr_dijkstraCostMatrix <strong>con puntos</strong></p></li>
 <li><p>pgr_withPointsKSP es pgr_ksp <strong>con puntos</strong></p></li>
 <li><p>pgr_withPointsDD es pgr_drivingDistance <strong>con puntos</strong></p></li>
-<li><p>pgr_withPointsvia es pgr_dijkstraVia <strong>con puntos</strong></p></li>
+<li><p>pgr_withPoints es pgr_dijkstraVia <strong>con puntos</strong></p></li>
 </ul>
 </section>
 <section id="parameters">
@@ -583,9 +588,9 @@ functions that compose them are based one way or another on dijkstra algorithm.<
  <span class="n">pid</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">fraction</span> <span class="o">|</span> <span class="n">side</span>
 <span class="o">-----+---------+----------+------</span>
    <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>      <span class="mf">0.4</span> <span class="o">|</span> <span class="n">l</span>
-   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">15</span> <span class="o">|</span>      <span class="mf">0.4</span> <span class="o">|</span> <span class="n">r</span>
-   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>      <span class="mf">0.6</span> <span class="o">|</span> <span class="n">l</span>
    <span class="mi">4</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>      <span class="mf">0.3</span> <span class="o">|</span> <span class="n">r</span>
+   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>      <span class="mf">0.6</span> <span class="o">|</span> <span class="n">l</span>
+   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">15</span> <span class="o">|</span>      <span class="mf">0.4</span> <span class="o">|</span> <span class="n">r</span>
    <span class="mi">5</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>      <span class="mf">0.8</span> <span class="o">|</span> <span class="n">l</span>
    <span class="mi">6</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>      <span class="mf">0.7</span> <span class="o">|</span> <span class="n">b</span>
 <span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
@@ -784,8 +789,8 @@ the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en feb 27, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Actualizado por última vez en mar 08, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

@@ -11,11 +11,12 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=1b67ac13"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script src="_static/page_history.js?v=fa54846d"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -228,6 +229,8 @@
 <section id="pgr-dijkstravia-proposed">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> -拟议<a class="headerlink" href="#pgr-dijkstravia-proposed" title="Link to this heading">¶</a></h1>
 <p><cite>pgr_dijkstraVia</cite> - 经过顶点列表的路径。</p>
+<div class="sphinx_collapse docutils container">
+<input class="sphinx_collapse__input" id="6c85235d-0197-4270-a933-3661584ad887" name="6c85235d-0197-4270-a933-3661584ad887" type="checkbox"><label class="sphinx_collapse__label" for="6c85235d-0197-4270-a933-3661584ad887"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>下一版本的拟议功能。</p>
@@ -245,11 +248,13 @@
 </li>
 </ul>
 </div>
+</div>
+</div>
 <p class="rubric">可用性</p>
 <ul class="simple">
 <li><p>版本 2.2.0</p>
 <ul>
-<li><p>新提议的函数。</p></li>
+<li><p>New proposed function.</p></li>
 </ul>
 </li>
 </ul>
@@ -264,7 +269,7 @@
 <dd class="field-even"><p>是路线的一段。</p>
 </dd>
 </dl>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -283,7 +288,8 @@
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">示例<span class="colon">:</span></dt>
-<dd class="field-odd"><p>在一个directed graph中，找到按顺序访问顶点 <span class="math notranslate nohighlight">\(\ {5, 1, 8\}\)</span> 的路径。</p>
+<dd class="field-odd"><p>Find the route that visits the vertices <span class="math notranslate nohighlight">\(\{5, 1, 8\}\)</span> in that
+order on an directed graph.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraVia</span><span class="p">(</span>
@@ -700,8 +706,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 2月 27, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Last updated on 3月 08, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

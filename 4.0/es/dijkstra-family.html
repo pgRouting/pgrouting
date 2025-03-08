@@ -11,11 +11,12 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=065f0aea"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script src="_static/page_history.js?v=fa54846d"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
@@ -211,7 +212,8 @@
 <li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - Usar pgr_dijkstra para calcular información de captación.</p></li>
 <li><p><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - Usar el algoritmo Yen con pgr_dijkstra para obtener las K rutas más cortas.</p></li>
 </ul>
-<p class="rubric">Propuesto</p>
+<div class="sphinx_collapse docutils container">
+<input class="sphinx_collapse__input" id="cfee9370-d88a-45cb-932b-8f1ca7d514f6" name="cfee9370-d88a-45cb-932b-8f1ca7d514f6" type="checkbox"><label class="sphinx_collapse__label" for="cfee9370-d88a-45cb-932b-8f1ca7d514f6"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Funciones propuestas para la próxima versión mayor.</p>
@@ -229,8 +231,10 @@
 </li>
 </ul>
 </div>
+</div>
+</div>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Propuesto</span></a> - Obtenga una ruta a partir de una secuencia de vértices.</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Propuesto</span></a> - Get a route of a sequence of vertices.</p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - Propuesto</span></a> - Obtener la ruta al vértice más cercano.</p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - Propuesto</span></a> - Consigue el costo del vértice más cercano.</p></li>
 </ul>
@@ -438,7 +442,7 @@
 </ul>
 <p>Los gráficos se definen como sigue:</p>
 <p class="rubric">Grafo dirigido</p>
-<p>El gráfico dirigido ponderado, <span class="math notranslate nohighlight">\(G_d(V,E)\)</span>, se define por:</p>
+<p>El ponderado del grafo dirigido, <span class="math notranslate nohighlight">\(G_d(V,E)\)</span>, se define por:</p>
 <ul class="simple">
 <li><p>el conjunto de vértices <span class="math notranslate nohighlight">\(V\)</span></p>
 <ul>
@@ -452,7 +456,7 @@
 </li>
 </ul>
 <p class="rubric">Grafo no dirigido</p>
-<p>El grafo ponderado no dirigido <span class="math notranslate nohighlight">\(G_u(V,E)\)</span>, es definido por:</p>
+<p>The weighted undirected graph, <span class="math notranslate nohighlight">\(G_u(V,E)\)</span>, is defined by:</p>
 <ul class="simple">
 <li><p>el conjunto de vértices <span class="math notranslate nohighlight">\(V\)</span></p>
 <ul>
@@ -525,8 +529,8 @@ G_u(V,E) &amp; \quad \text{ if5 } directed = false \\
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en feb 27, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Actualizado por última vez en mar 08, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

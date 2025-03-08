@@ -11,11 +11,12 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=1b67ac13"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script src="_static/page_history.js?v=fa54846d"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -209,7 +210,9 @@
 </div>
 <section id="pgr-breadthfirstsearch-experimental">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_breadthFirstSearch</span></code> - 实验<a class="headerlink" href="#pgr-breadthfirstsearch-experimental" title="Link to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_breadthFirstSearch</span></code> — 使用广度优先搜索算法返回遍历顺序。</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_breadthFirstSearch</span></code> —使用广度优先搜索算法返回遍历顺序。</p>
+<div class="sphinx_collapse docutils container">
+<input class="sphinx_collapse__input" id="8c7869a5-22a6-46aa-a90b-e8ebd50f3da0" name="8c7869a5-22a6-46aa-a90b-e8ebd50f3da0" type="checkbox"><label class="sphinx_collapse__label" for="8c7869a5-22a6-46aa-a90b-e8ebd50f3da0"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>可能服务器崩溃</p>
@@ -233,18 +236,20 @@
 <li><p>可能缺乏文档。</p></li>
 <li><p>文档（如果有）可能需要重写。</p></li>
 <li><p>可能需要自动生成文档示例。</p></li>
-<li><p>可能需要社区的大量反馈。</p></li>
+<li><p>Might need a lot of feedback from the community.</p></li>
 <li><p>可能取决于 pgRouting 的拟议功能</p></li>
 <li><p>可能依赖于 pgRouting 的已弃用函数</p></li>
 </ul>
 </li>
 </ul>
 </div>
+</div>
+</div>
 <p class="rubric">可用性</p>
 <ul class="simple">
 <li><p>版本3.0.0</p>
 <ul>
-<li><p>新实验功能。</p></li>
+<li><p>New experimental function.</p></li>
 </ul>
 </li>
 </ul>
@@ -257,7 +262,7 @@
 <li><p>提供从源节点到目标深度级别的广度优先搜索遍历顺序。</p></li>
 <li><p>运行时间： <span class="math notranslate nohighlight">\(O(E + V)\)</span></p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -380,7 +385,7 @@
 </tr>
 <tr class="row-odd"><td><p><strong>root vid</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>树的根顶点标识符。</p>
+<td><p>树的根顶点的标识符。</p>
 <ul class="simple">
 <li><p>当值为 <span class="math notranslate nohighlight">\(0\)</span> 时，则获取从森林中每棵树的随机节点开始的生成森林。</p></li>
 </ul>
@@ -640,7 +645,7 @@
 <section id="see-also">
 <h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="BFS-category.html"><span class="doc">BFS（广度优先搜索） - 类别</span></a></p></li>
+<li><p><a class="reference internal" href="BFS-category.html"><span class="doc">BFS - 类别</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
 <li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/breadth_first_search.html">Boost: Breadth First Search</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Breadth-first_search">维基百科：广度优先搜索算法</a></p></li>
@@ -666,8 +671,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 2月 27, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Last updated on 3月 08, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

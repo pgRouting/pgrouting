@@ -11,17 +11,18 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=065f0aea"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script src="_static/page_history.js?v=fa54846d"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
     <link rel="next" title="Chinese Postman Problem - Familia de funciones (Experimental)" href="chinesePostmanProblem-family.html" />
-    <link rel="prev" title="pgr_findCloseEdges - Propuesto" href="pgr_findCloseEdges.html" />
+    <link rel="prev" title="pgr_withPointsVia" href="pgr_withPointsVia.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -109,7 +110,7 @@
               
                 
   <li>
-    <a href="pgr_findCloseEdges.html" title="Previous Chapter: pgr_findCloseEdges - Propuesto"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_findClose...</span>
+    <a href="pgr_withPointsVia.html" title="Previous Chapter: pgr_withPointsVia"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPointsVia</span>
     </a>
   </li>
   <li>
@@ -151,7 +152,7 @@
 </ul>
 
   <li>
-    <a href="pgr_findCloseEdges.html" title="Previous Chapter: pgr_findCloseEdges - Propuesto"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_findClose...</span>
+    <a href="pgr_withPointsVia.html" title="Previous Chapter: pgr_withPointsVia"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPointsVia</span>
     </a>
   </li>
   <li>
@@ -175,6 +176,8 @@
 </div>
 <section id="experimental-functions">
 <h1>Funciones Experimentales<a class="headerlink" href="#experimental-functions" title="Link to this heading">¶</a></h1>
+<div class="sphinx_collapse docutils container">
+<input class="sphinx_collapse__input" id="86f36ca9-9785-4d33-82c0-be56b54ff91c" name="86f36ca9-9785-4d33-82c0-be56b54ff91c" type="checkbox"><label class="sphinx_collapse__label" for="86f36ca9-9785-4d33-82c0-be56b54ff91c"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
@@ -198,12 +201,14 @@
 <li><p>Puede carecer documentación.</p></li>
 <li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
 <li><p>Puede ser necesario que los ejemplos de documentación se generen automáticamente.</p></li>
-<li><p>Puede ser necesaria retroalimentación por parte de la comunidad.</p></li>
+<li><p>Might need a lot of feedback from the community.</p></li>
 <li><p>Puede depender de una función propuesta de pgRouting</p></li>
 <li><p>Podría depender de una función obsoleta de pgRouting</p></li>
 </ul>
 </li>
 </ul>
+</div>
+</div>
 </div>
 <p class="rubric">Familias</p>
 <p><a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones</span></a></p>
@@ -237,7 +242,8 @@
 <p><a class="reference internal" href="ordering-family.html"><span class="doc">Ordenamiento - Familia de funciones</span></a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_cuthillMckeeOrdering.html"><span class="doc">pgr_cuthillMckeeOrdering - Experimental</span></a> - Ordenamiento Cuthill-McKee de grafo sin no dirigido.</p></li>
-<li><p><a class="reference internal" href="pgr_topologicalSort.html"><span class="doc">pgr_topologicalSort - Experimental</span></a> - Orden lineal de los vértices para grafos acíclicos dirigidos.</p></li>
+<li><p><a class="reference internal" href="pgr_topologicalSort.html"><span class="doc">pgr_topologicalSort - Experimental</span></a> - Linear ordering of the vertices for directed
+acyclic graph.</p></li>
 </ul>
 <p><a class="reference internal" href="metrics-family.html"><span class="doc">Métricas - Familia de funciones</span></a></p>
 <ul class="simple">
@@ -250,7 +256,7 @@
 <div class="toctree-wrapper compound">
 </div>
 <p class="rubric">Categorías</p>
-<p><a class="reference internal" href="VRP-category.html"><span class="doc">Funciones de Ruteo de Vehículos - Categoría</span></a></p>
+<p><a class="reference internal" href="VRP-category.html"><span class="doc">Vehicle Routing Functions - Category</span></a></p>
 <ul class="simple">
 <li><p>Problema de recogida y entrega</p>
 <ul>
@@ -266,7 +272,7 @@
 </ul>
 <div class="toctree-wrapper compound">
 </div>
-<p class="rubric">Rutas más cortas Categoría</p>
+<p class="rubric">Shortest Path Category</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_bellmanFord.html"><span class="doc">pgr_bellmanFord - Experimental</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_dagShortestPath.html"><span class="doc">pgr_dagShortestPath - Experimental</span></a></p></li>
@@ -274,13 +280,13 @@
 </ul>
 <div class="toctree-wrapper compound">
 </div>
-<p class="rubric">Familia Planar</p>
+<p class="rubric">Planar Family</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_isPlanar.html"><span class="doc">pgr_isPlanar - Experimental</span></a></p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
-<p class="rubric">Algoritmos diversos</p>
+<p class="rubric">Miscellaneous Algorithms</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_lengauerTarjanDominatorTree.html"><span class="doc">pgr_lengauerTarjanDominatorTree - Experimental</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_stoerWagner.html"><span class="doc">pgr_stoerWagner - Experimental</span></a></p></li>
@@ -312,8 +318,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en feb 27, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Actualizado por última vez en mar 08, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

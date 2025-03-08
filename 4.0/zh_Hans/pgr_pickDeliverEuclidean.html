@@ -11,16 +11,17 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=1b67ac13"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script src="_static/page_history.js?v=fa54846d"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pgr_vrpOneDepot - 实验" href="pgr_vrpOneDepot.html" />
+    <link rel="next" title="pgr_vrpOneDepot - Experimental" href="pgr_vrpOneDepot.html" />
     <link rel="prev" title="pgr_pickDeliver - 实验" href="pgr_pickDeliver.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -130,7 +131,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_vrpOneDepot.html" title="Next Chapter: pgr_vrpOneDepot - 实验"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_vrpOneDepot - 实验 &raquo;</span>
+    <a href="pgr_vrpOneDepot.html" title="Next Chapter: pgr_vrpOneDepot - Experimental"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_vrpOneDep... &raquo;</span>
     </a>
   </li>
               
@@ -189,7 +190,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_vrpOneDepot.html" title="Next Chapter: pgr_vrpOneDepot - 实验"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_vrpOneDepot - 实验 &raquo;</span>
+    <a href="pgr_vrpOneDepot.html" title="Next Chapter: pgr_vrpOneDepot - Experimental"><span class="icon-chevron-right visible-tablet"></span><span class="hidden-sm hidden-tablet">pgr_vrpOneDep... &raquo;</span>
     </a>
   </li>
 <form action="search.html" method="get">
@@ -210,6 +211,8 @@
 <section id="pgr-pickdelivereuclidean-experimental">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_pickDeliverEuclidean</span></code> - 实验<a class="headerlink" href="#pgr-pickdelivereuclidean-experimental" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_pickDeliverEuclidean</span></code> -取货和送货车辆路径问题</p>
+<div class="sphinx_collapse docutils container">
+<input class="sphinx_collapse__input" id="dc108140-a97f-4047-b03b-793607dd24d2" name="dc108140-a97f-4047-b03b-793607dd24d2" type="checkbox"><label class="sphinx_collapse__label" for="dc108140-a97f-4047-b03b-793607dd24d2"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>可能服务器崩溃</p>
@@ -233,19 +236,21 @@
 <li><p>可能缺乏文档。</p></li>
 <li><p>文档（如果有）可能需要重写。</p></li>
 <li><p>可能需要自动生成文档示例。</p></li>
-<li><p>可能需要社区的大量反馈。</p></li>
+<li><p>Might need a lot of feedback from the community.</p></li>
 <li><p>可能取决于 pgRouting 的拟议功能</p></li>
 <li><p>可能依赖于 pgRouting 的已弃用函数</p></li>
 </ul>
 </li>
 </ul>
 </div>
+</div>
+</div>
 <p class="rubric">可用性</p>
 <ul class="simple">
 <li><p>版本3.0.0</p>
 <ul>
 <li><p>替换 <code class="docutils literal notranslate"><span class="pre">pgr_gsoc_vrppdtw</span></code></p></li>
-<li><p>新实验功能。</p></li>
+<li><p>New experimental function.</p></li>
 </ul>
 </li>
 </ul>
@@ -801,7 +806,7 @@
 <p>此数据示例 <strong>lc101</strong> 来自 <a class="reference external" href="https://www.sintef.no/projectweb/top/pdptw/li-lim-benchmark/">https://www.sintef.no/projectweb/top/pdptw/li-lim-benchmark/</a> 上发布的数据</p>
 <section id="the-vehicles">
 <h3><a class="toc-backref" href="#id1" role="doc-backlink">车辆</a><a class="headerlink" href="#the-vehicles" title="Link to this heading">¶</a></h3>
-<p>问题中有 25 辆车都具有相同的特征。</p>
+<p>There are 25 vehicles in the problem all with the same characteristics.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">v_lc101</span><span class="p">(</span>
   <span class="nb">id</span> <span class="n">BIGINT</span> <span class="n">NOT</span> <span class="n">NULL</span> <span class="n">primary</span> <span class="n">key</span><span class="p">,</span>
   <span class="n">capacity</span> <span class="n">BIGINT</span> <span class="n">DEFAULT</span> <span class="mi">200</span><span class="p">,</span>
@@ -947,7 +952,7 @@
 </section>
 <section id="the-orders">
 <h3><a class="toc-backref" href="#id3" role="doc-backlink">订单</a><a class="headerlink" href="#the-orders" title="Link to this heading">¶</a></h3>
-<p>需要将原始数据转换为合适的表格：</p>
+<p>The original data needs to be converted to an appropriate table:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span> <span class="n">deliveries</span> <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">lc101_c</span> <span class="n">WHERE</span> <span class="n">dindex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">SELECT</span>
   <span class="n">row_number</span><span class="p">()</span> <span class="n">over</span><span class="p">()</span> <span class="n">AS</span> <span class="nb">id</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">demand</span><span class="p">,</span>
@@ -1013,8 +1018,8 @@ FROM pgr_pickDeliverEuclidean(
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 2月 27, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Last updated on 3月 08, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

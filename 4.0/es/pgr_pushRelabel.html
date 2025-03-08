@@ -11,11 +11,12 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=065f0aea"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script src="_static/page_history.js?v=fa54846d"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
@@ -213,14 +214,14 @@
 <p><code class="docutils literal notranslate"><span class="pre">pgr_pushRelabel</span></code> — Calcula el flujo en los bordes del grafo que maximiza el flujo de los orígenes a los destinos mediante el Algoritmo Push Relabel.</p>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
-<li><p>Versión 4.0.0</p>
+<li><p>Version 4.0.0</p>
 <ul>
-<li><p>Firmas de combinaciones promovidas a oficial.</p></li>
+<li><p>Combinations signature promoted to official.</p></li>
 </ul>
 </li>
 <li><p>Versión 3.2.0</p>
 <ul>
-<li><p>Nuevas firmas propuesta:</p>
+<li><p>New proposed signature:</p>
 <ul>
 <li><p>pgr_pushRelabel(Combinaciones)</p></li>
 </ul>
@@ -229,18 +230,18 @@
 </li>
 <li><p>Versión 3.0.0</p>
 <ul>
-<li><p>Función promovida a oficial.</p></li>
+<li><p>Function promoted to official.</p></li>
 </ul>
 </li>
 <li><p>Versión 2.5.0</p>
 <ul>
 <li><p>Renombrado de <code class="docutils literal notranslate"><span class="pre">pgr_maxFlowPushRelabel</span></code></p></li>
-<li><p>Función promovida a propuesta.</p></li>
+<li><p>Function promoted to proposed.</p></li>
 </ul>
 </li>
 <li><p>Versión 2.3.0</p>
 <ul>
-<li><p>Nueva función experimental.</p></li>
+<li><p>New experimental function.</p></li>
 </ul>
 </li>
 </ul>
@@ -252,7 +253,7 @@
 <li><p>El proceso se realiza sólo en aristas con capacidades positivas.</p></li>
 <li><p>Cuando el flujo máximo es 0 entonces no hay flujo, se devolverá: <strong>EMPTY SET</strong>.</p>
 <ul>
-<li><p>No hay flujo cuando el origen tiene el mismo valor que el destino.</p></li>
+<li><p>There is no flow when source has the same value as target.</p></li>
 </ul>
 </li>
 <li><p>Los valores duplicados en origen o destino se ignoran.</p></li>
@@ -277,7 +278,7 @@
 <ul class="simple">
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O( V ^ 3)\)</span></p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -694,7 +695,7 @@
 <li><p><a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a></p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html">Boost: Flujo máximo empujar reetiquetar</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html">Boost: push relabel max flow</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm">https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
@@ -718,8 +719,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en feb 27, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Actualizado por última vez en mar 08, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

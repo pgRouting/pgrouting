@@ -11,11 +11,12 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=1b67ac13"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script src="_static/page_history.js?v=fa54846d"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -209,7 +210,7 @@
 </div>
 <section id="pgr-maxflow">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_maxFlow</span></code><a class="headerlink" href="#pgr-maxflow" title="Link to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_maxFlow</span></code> — 使用 Push Relabel 算法计算有向图中从源到目标的最大流量。</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_maxFlow</span></code> —使用 Push Relabel 算法计算有向图中从源到目标的最大流量。</p>
 <p class="rubric">可用性</p>
 <ul class="simple">
 <li><p>Version 4.0.0</p>
@@ -233,7 +234,7 @@
 </li>
 <li><p>版本2.4.0</p>
 <ul>
-<li><p>新提议的函数。</p></li>
+<li><p>New proposed function.</p></li>
 </ul>
 </li>
 </ul>
@@ -242,19 +243,19 @@
 <p><strong>主要特点是：</strong></p>
 <ul class="simple">
 <li><p>该图是 <strong>有向</strong> 的。</p></li>
-<li><p>计算从源头到目标的最大流量。</p>
+<li><p>Calculates the maximum flow from the sources to the targets.</p>
 <ul>
 <li><p>当最大流量为 <strong>0</strong> 时则没有流量，返回 <strong>0</strong> 。</p></li>
-<li><p>当 source与 target相同时，没有流量。</p></li>
+<li><p>There is no flow when source has the same vaule as target.</p></li>
 </ul>
 </li>
-<li><p>source或target 中的任何重复值都将被忽略。</p></li>
+<li><p>Any duplicated values in source or target are ignored.</p></li>
 <li><p>使用 <a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a> 算法。</p></li>
 </ul>
 <ul class="simple">
 <li><p>运行时间： <span class="math notranslate nohighlight">\(O( V ^ 3)\)</span></p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -627,8 +628,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 2月 27, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Last updated on 3月 08, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

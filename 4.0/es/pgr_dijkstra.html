@@ -11,11 +11,12 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=065f0aea"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script src="_static/page_history.js?v=fa54846d"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
@@ -327,55 +328,55 @@
 <p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> - Camino más corto utilizando el algoritmo de Dijkstra.</p>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
-<li><p>Versión 4.0.0</p>
+<li><p>Version 4.0.0</p>
 <ul>
-<li><p>Firmas de combinaciones promovidas a oficial.</p></li>
+<li><p>Combinations signature promoted to official.</p></li>
 </ul>
 </li>
 <li><p>Versión 3.5.0</p>
 <ul>
 <li><p>Estandarización de las columnas de salida a <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p>pgr_dijkstra(Uno a Uno) ha añadido las columnas <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> y <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
-<li><p>pgr_dijkstra(Uno a Muchos) ha añadido la columna <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
-<li><p>pgr_dijkstra(Muchos a Uno) ha añadido la columna <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
+<li><p>pgr_dijkstra(One to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> columns.</p></li>
+<li><p>pgr_dijkstra(One to Many) added <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> column.</p></li>
+<li><p>pgr_dijkstra(Many to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>Versión 3.1.0</p>
 <ul>
-<li><p>Nuevas firmas propuesta:</p>
+<li><p>New proposed signature:</p>
 <ul>
-<li><p>pgr_dijkstra(Combinaciones)</p></li>
+<li><p>pgr_dijkstra(Combinations)</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>Versión 3.0.0</p>
 <ul>
-<li><p>Función promovida a oficial.</p></li>
+<li><p>Function promoted to official.</p></li>
 </ul>
 </li>
 <li><p>Version 2.2.0</p>
 <ul>
-<li><p>Nuevas firmas propuestas:</p>
+<li><p>New proposed signatures:</p>
 <ul>
-<li><p>pgr_dijkstra(Uno a Muchos)</p></li>
-<li><p>pgr_dijkstra(Muchos a Uno)</p></li>
-<li><p>pgr_dijkstra(Muchos a Muchos)</p></li>
+<li><p>pgr_dijkstra(One to Many)</p></li>
+<li><p>pgr_dijkstra(Many to One)</p></li>
+<li><p>pgr_dijkstra(Many to Many)</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>Versión 2.1.0</p>
 <ul>
-<li><p>Cambio de firma en pgr_dijkstra(Uno a Uno)</p></li>
+<li><p>Signature change on pgr_dijkstra(One to One)</p></li>
 </ul>
 </li>
 <li><p>Versión 2.0.0</p>
 <ul>
-<li><p>Función oficial.</p></li>
+<li><p>Official function.</p></li>
 </ul>
 </li>
 </ul>
@@ -406,7 +407,7 @@
 <li><p>Para fines de optimización, se ignora cualquier valor duplicado en los vertices de salida o destino.</p></li>
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O(| start\_vids | * (V \log V + E))\)</span></p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -1766,7 +1767,7 @@
 <h2>Ver también<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html">Boost: Camino mas corto Dijkstra</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html">Boost: Dijkstra shortest paths</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
@@ -1790,8 +1791,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en feb 27, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Actualizado por última vez en mar 08, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

@@ -11,11 +11,12 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=065f0aea"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script src="_static/page_history.js?v=fa54846d"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
@@ -221,25 +222,25 @@
 <p><code class="docutils literal notranslate"><span class="pre">pgr_aStar</span></code> — La ruta más corta utilizando el algoritmo A*.</p>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
-<li><p>Versión 4.0.0</p>
+<li><p>Version 4.0.0</p>
 <ul>
-<li><p>Firmas de combinaciones promovidas a oficial.</p></li>
+<li><p>Combinations signature promoted to official.</p></li>
 </ul>
 </li>
 <li><p>Versión 3.6.0</p>
 <ul>
 <li><p>Estandarización de las columnas de salida a <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <ul>
-<li><p>pgr_aStar(Uno a Uno) ha añadido las columnas <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> y <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
-<li><p>pgr_aStar(Uno a Muchos) ha añadido la columna <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
-<li><p>pgr_aStar(Muchos a Uno) ha añadido la columna <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
+<li><p>pgr_aStar(One to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> columns.</p></li>
+<li><p>pgr_aStar(One to Many) added <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> column.</p></li>
+<li><p>pgr_aStar(Many to One) added <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> column.</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>Versión 3.2.0</p>
 <ul>
-<li><p>Nuevas firmas propuesta:</p>
+<li><p>New proposed signature:</p>
 <ul>
 <li><p>pgr_aStar(Combinaciones)</p></li>
 </ul>
@@ -248,23 +249,23 @@
 </li>
 <li><p>Versión 3.0.0</p>
 <ul>
-<li><p>Función promovida a oficial.</p></li>
+<li><p>Function promoted to official.</p></li>
 </ul>
 </li>
 <li><p>Versión 2.4.0</p>
 <ul>
-<li><p>Nuevas firmas propuestas:</p>
+<li><p>New proposed signatures:</p>
 <ul>
-<li><p>pgr_aStar(Uno a Muchos)</p></li>
-<li><p>pgr_aStar(Muchos a Uno)</p></li>
-<li><p>pgr_aStar(Muchos a Muchos)</p></li>
+<li><p>pgr_aStar(One to Many)</p></li>
+<li><p>pgr_aStar(Many to One)</p></li>
+<li><p>pgr_aStar(Many to Many)</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>Versión 2.3.0</p>
 <ul>
-<li><p>Cambio de firma en pgr_aStar(Uno a Uno)</p>
+<li><p>Signature change on pgr_aStar(One to One)</p>
 <ul>
 <li><p>Firma antigua ya no soportada</p></li>
 </ul>
@@ -273,7 +274,7 @@
 </li>
 <li><p>Versión 2.0.0</p>
 <ul>
-<li><p>Nueva función oficial.</p></li>
+<li><p>New official function.</p></li>
 </ul>
 </li>
 </ul>
@@ -315,14 +316,14 @@
 <ul class="simple">
 <li><p>Los resultados son equivalentes a la unión de los resultados de pgr_aStar( <a class="reference internal" href="#one-to-one">Uno a Uno</a> ) en:</p>
 <ul>
-<li><p>pgr_aStar(Uno a Muchos)</p></li>
-<li><p>pgr_aStar(Muchos a Uno)</p></li>
-<li><p>pgr_aStar(Muchos a Muchos)</p></li>
+<li><p>pgr_aStar(One to Many)</p></li>
+<li><p>pgr_aStar(Many to One)</p></li>
+<li><p>pgr_aStar(Many to Many)</p></li>
 <li><p>pgr_aStar(Combinaciones)</p></li>
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -955,7 +956,7 @@
 <li><p><a class="reference internal" href="aStar-family.html"><span class="doc">A* - Familia de Funciones</span></a></p></li>
 <li><p><a class="reference internal" href="bdAstar-family.html"><span class="doc">A* Bidireccional - Familia de Funciones</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/astar_search.html">Boost: Búsqueda A*</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/astar_search.html">Boost: A* search</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/A*_search_algorithm">https://en.wikipedia.org/wiki/A*_search_algorithm</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
@@ -979,8 +980,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en feb 27, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Actualizado por última vez en mar 08, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

@@ -11,11 +11,12 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=798e95cd"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script src="_static/page_history.js?v=fa54846d"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -209,7 +210,8 @@ in a graph.</p></li>
 </ul>
 </li>
 </ul>
-<p class="rubric">Experimental</p>
+<div class="sphinx_collapse docutils container">
+<input class="sphinx_collapse__input" id="ef8aa47c-2e46-4376-82eb-9f135c5abf7a" name="ef8aa47c-2e46-4376-82eb-9f135c5abf7a" type="checkbox"><label class="sphinx_collapse__label" for="ef8aa47c-2e46-4376-82eb-9f135c5abf7a"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Possible server crash</p>
@@ -233,12 +235,14 @@ in a graph.</p></li>
 <li><p>May lack documentation.</p></li>
 <li><p>Documentation if any might need to be rewritten.</p></li>
 <li><p>Documentation examples might need to be automatically generated.</p></li>
-<li><p>Might need a lot of feedback from the comunity.</p></li>
+<li><p>Might need a lot of feedback from the community.</p></li>
 <li><p>Might depend on a proposed function of pgRouting</p></li>
 <li><p>Might depend on a deprecated function of pgRouting</p></li>
 </ul>
 </li>
 </ul>
+</div>
+</div>
 </div>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_maxFlowMinCost.html"><span class="doc">pgr_maxFlowMinCost - Experimental</span></a> - Details of flow and cost on edges.</p></li>
@@ -255,7 +259,7 @@ in a graph.</p></li>
 <li><p>When the maximum flow is 0 then there is no flow and <strong>EMPTY SET</strong> is
 returned.</p>
 <ul>
-<li><p>There is no flow when source has the same vaule as target.</p></li>
+<li><p>There is no flow when source has the same value as target.</p></li>
 </ul>
 </li>
 <li><p>Any duplicated values in source or target are ignored.</p></li>
@@ -697,8 +701,8 @@ or sink and summing the flow from/to it. In particular:</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on Feb 27, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Last updated on Mar 08, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

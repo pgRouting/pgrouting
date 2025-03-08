@@ -11,17 +11,18 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=1b67ac13"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script src="_static/page_history.js?v=fa54846d"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pgr_maxFlow" href="pgr_maxFlow.html" />
-    <link rel="prev" title="pgr_dijkstraNearCost - 提议" href="pgr_dijkstraNearCost.html" />
+    <link rel="prev" title="pgr_dijkstraNearCost - 拟议" href="pgr_dijkstraNearCost.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -117,7 +118,7 @@
               
                 
   <li>
-    <a href="pgr_dijkstraNearCost.html" title="Previous Chapter: pgr_dijkstraNearCost - 提议"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_dijkstraN...</span>
+    <a href="pgr_dijkstraNearCost.html" title="Previous Chapter: pgr_dijkstraNearCost - 拟议"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_dijkstraN...</span>
     </a>
   </li>
   <li>
@@ -167,7 +168,7 @@
 </ul>
 
   <li>
-    <a href="pgr_dijkstraNearCost.html" title="Previous Chapter: pgr_dijkstraNearCost - 提议"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_dijkstraN...</span>
+    <a href="pgr_dijkstraNearCost.html" title="Previous Chapter: pgr_dijkstraNearCost - 拟议"><span class="icon-chevron-left visible-tablet"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_dijkstraN...</span>
     </a>
   </li>
   <li>
@@ -203,7 +204,8 @@
 </ul>
 </li>
 </ul>
-<p class="rubric">实验性的</p>
+<div class="sphinx_collapse docutils container">
+<input class="sphinx_collapse__input" id="9009e70c-5ee6-43ba-902c-3da4334ffffc" name="9009e70c-5ee6-43ba-902c-3da4334ffffc" type="checkbox"><label class="sphinx_collapse__label" for="9009e70c-5ee6-43ba-902c-3da4334ffffc"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>可能服务器崩溃</p>
@@ -227,12 +229,14 @@
 <li><p>可能缺乏文档。</p></li>
 <li><p>文档（如果有）可能需要重写。</p></li>
 <li><p>可能需要自动生成文档示例。</p></li>
-<li><p>可能需要社区的大量反馈。</p></li>
+<li><p>Might need a lot of feedback from the community.</p></li>
 <li><p>可能取决于 pgRouting 的拟议功能</p></li>
 <li><p>可能依赖于 pgRouting 的已弃用函数</p></li>
 </ul>
 </li>
 </ul>
+</div>
+</div>
 </div>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_maxFlowMinCost.html"><span class="doc">pgr_maxFlowMinCost - 实验</span></a> - 边缘上的流量和成本详细信息。</p></li>
@@ -248,19 +252,19 @@
 <li><p>仅在具有正容量的边缘上进行处理。</p></li>
 <li><p>当最大流量为0时则没有流量并返回 <strong>EMPTY SET</strong> 。</p>
 <ul>
-<li><p>当 source与 target相同时，没有流量。</p></li>
+<li><p>There is no flow when source has the same value as target.</p></li>
 </ul>
 </li>
-<li><p>source或target 中的任何重复值都将被忽略。</p></li>
+<li><p>Any duplicated values in source or target are ignored.</p></li>
 <li><p>计算每条边的流量/剩余容量。 在输出中</p>
 <ul>
 <li><p>流量为零的边被忽略。</p></li>
 </ul>
 </li>
-<li><p>创建</p>
+<li><p>Creates</p>
 <ul>
-<li><p>一个**超级源**和从它到所有源的边，</p></li>
-<li><p>一个**超级目标**和从它到所有目标的边。</p></li>
+<li><p>a <strong>super source</strong> and edges from it to all the sources,</p></li>
+<li><p>a <strong>super target</strong> and edges from it to all the targetss.</p></li>
 </ul>
 </li>
 <li><p>当使用相同参数执行时，通过图表的最大流量保证是 <a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> 返回的值，并且可以计算：</p>
@@ -662,8 +666,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 2月 27, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Last updated on 3月 08, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

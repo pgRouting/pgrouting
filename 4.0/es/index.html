@@ -11,11 +11,12 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=065f0aea"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script src="_static/page_history.js?v=fa54846d"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
@@ -104,7 +105,7 @@
 <li><a class="reference internal" href="#functions-by-categories">Funciones por categorías</a></li>
 <li><a class="reference internal" href="#available-functions-but-not-official-pgrouting-functions">Funciones disponibles pero no oficiales de pgRouting</a></li>
 <li><a class="reference internal" href="#release-notes"><span class="xref std std-doc">release_notes</span></a><ul>
-<li><a class="reference internal" href="#pgrouting-4-0-0-release-notes">Notas de la versión de pgRouting 4.0.0</a></li>
+<li><a class="reference internal" href="#pgrouting-4-0-0-release-notes">pgRouting 4.0.0 Release Notes</a></li>
 <li><a class="reference internal" href="#all-releases">Todas las versiones</a><ul>
 </ul>
 </li>
@@ -161,7 +162,7 @@
 <li><a class="reference internal" href="#functions-by-categories">Funciones por categorías</a></li>
 <li><a class="reference internal" href="#available-functions-but-not-official-pgrouting-functions">Funciones disponibles pero no oficiales de pgRouting</a></li>
 <li><a class="reference internal" href="#release-notes"><span class="xref std std-doc">release_notes</span></a><ul>
-<li><a class="reference internal" href="#pgrouting-4-0-0-release-notes">Notas de la versión de pgRouting 4.0.0</a></li>
+<li><a class="reference internal" href="#pgrouting-4-0-0-release-notes">pgRouting 4.0.0 Release Notes</a></li>
 <li><a class="reference internal" href="#all-releases">Todas las versiones</a><ul>
 </ul>
 </li>
@@ -319,6 +320,11 @@
 <li><p><a class="reference internal" href="pgr_kruskalDD.html"><span class="doc">pgr_kruskalDD</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_kruskalDFS.html"><span class="doc">pgr_kruskalDFS</span></a></p></li>
 </ul>
+<p><a class="reference internal" href="metrics-family.html"><span class="doc">Métricas - Familia de funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_degree.html"><span class="doc">pgr_degree</span></a> - Returns a set of vertices and corresponding count of
+incident edges to the vertex.</p></li>
+</ul>
 <p><a class="reference internal" href="prim-family.html"><span class="doc">Prim - Familia de funciones</span></a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_prim.html"><span class="doc">pgr_prim</span></a></p></li>
@@ -339,6 +345,7 @@
 <li><p><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> - para analizar los bordes y vértices de la tabla de aristas.</p></li>
 <li><p><a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> - para analizar la direccionalidad de las aristas.</p></li>
 <li><p><a class="reference internal" href="pgr_nodeNetwork.html"><span class="doc">pgr_nodeNetwork</span></a> - para crear nodos a una tabla de aristas sin nodos.</p></li>
+<li><p><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices</span></a> - Extrae información de vértices basada en la tabla de aristas.</p></li>
 </ul>
 <p><a class="reference internal" href="TSP-family.html"><span class="doc">Vendedor Viajante - Familia de funciones</span></a></p>
 <ul class="simple">
@@ -346,6 +353,8 @@
 <li><p><a class="reference internal" href="pgr_TSPeuclidean.html"><span class="doc">pgr_TSPeuclidean</span></a> - Cuando la información son coordenadas.</p></li>
 </ul>
 <p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp</span></a> - Camino más corto con restricción de giros (TRSP)</p>
+<p class="rubric">Utilities family</p>
+<p><a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a></p>
 </section>
 <section id="functions-by-categories">
 <h2>Funciones por categorías<a class="headerlink" href="#functions-by-categories" title="Link to this heading">¶</a></h2>
@@ -369,7 +378,7 @@
 <li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - Distancia de Manejo basada en el algoritmo de Dijkstra</p></li>
 <li><p><a class="reference internal" href="pgr_primDD.html"><span class="doc">pgr_primDD</span></a> - Distancia de manejo basada en el algoritmo de Prim</p></li>
 <li><p><a class="reference internal" href="pgr_kruskalDD.html"><span class="doc">pgr_kruskalDD</span></a> - Distancia de Manejo basada en el algoritmo de Kruskal</p></li>
-<li><p>Post procesamiento</p>
+<li><p>Post processing</p>
 <ul>
 <li><p><a class="reference internal" href="pgr_alphaShape.html"><span class="doc">pgr_alphaShape</span></a> - Cálcular la forma Alpha</p></li>
 </ul>
@@ -379,7 +388,7 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - Algoritmo de Yen basado en pgr_dijkstra</p></li>
 </ul>
-<p><a class="reference internal" href="spanningTree-family.html"><span class="doc">Árbol de expansión - Categoría</span></a></p>
+<p><a class="reference internal" href="spanningTree-category.html"><span class="doc">Árbol de expansión - Categoría</span></a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="kruskal-family.html"><span class="doc">Kruskal - Familia de funciones</span></a></p></li>
 <li><p><a class="reference internal" href="prim-family.html"><span class="doc">Prim - Familia de funciones</span></a></p></li>
@@ -407,9 +416,10 @@
 <section id="release-notes">
 <h2><a class="reference internal" href="release_notes.html"><span class="doc">Notas de versión</span></a><a class="headerlink" href="#release-notes" title="Link to this heading">¶</a></h2>
 <section id="pgrouting-4-0-0-release-notes">
-<h3>Notas de la versión de pgRouting 4.0.0<a class="headerlink" href="#pgrouting-4-0-0-release-notes" title="Link to this heading">¶</a></h3>
-<p>Para ver todos los problemas y solicitudes de extracción cerrados para ésta versión, consulte la <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%204.0.0%22">meta cerrada 4.0.0</a></p>
-<p class="rubric">Funciones promovidas a oficial</p>
+<h3>pgRouting 4.0.0 Release Notes<a class="headerlink" href="#pgrouting-4-0-0-release-notes" title="Link to this heading">¶</a></h3>
+<p>To see all issues &amp; pull requests closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=milestone%3A%22Release%204.0.0%22">Git closed
+milestone for 4.0.0</a></p>
+<p class="rubric">Functions promoted to official</p>
 <ul class="simple">
 <li><p>pgr_trsp</p></li>
 <li><p>pgr_trspVia</p></li>
@@ -422,7 +432,7 @@
 <li><p>pgr_withPointsKSP</p></li>
 <li><p>pgr_withPointsVia</p></li>
 </ul>
-<p class="rubric">Firmas promovidas a oficial</p>
+<p class="rubric">Signatures promoted to official</p>
 <ul class="simple">
 <li><p>pgr_aStar(Combinaciones)</p></li>
 <li><p>pgr_aStarCost(Combinaciones)</p></li>
@@ -430,26 +440,26 @@
 <li><p>pgr_bdAstarCost(Combinaciones)</p></li>
 <li><p>pgr_bdDijkstra(Combinaciones)</p></li>
 <li><p>pgr_bdDijkstraCost(Combinaciones)</p></li>
-<li><p>pgr_dijkstra(Combinaciones)</p></li>
-<li><p>pgr_dijkstraCost(Combinaciones)</p></li>
-<li><p>pgr_KSP(todas las firmas)</p></li>
+<li><p>pgr_dijkstra(Combinations)</p></li>
+<li><p>pgr_dijkstraCost(Combinations)</p></li>
+<li><p>pgr_KSP(All signatures)</p></li>
 <li><p>pgr_boykovKolmogorov(Combinaciones)</p></li>
 <li><p>pgr_edmondsKarp(Combinaciones)</p></li>
 <li><p>pgr_maxFlow(Combinaciones)</p></li>
 <li><p>pgr_pushRelabel(Combinaciones)</p></li>
 </ul>
-<p class="rubric">Mejora del código:</p>
+<p class="rubric">code enhancements:</p>
 <ul class="simple">
-<li><p>Eliminación de código C/C++ no utilizado</p></li>
+<li><p>Removal of unused C/C++ code</p></li>
 </ul>
-<p class="rubric">Eliminación de funciones obsoletas</p>
+<p class="rubric">Removal of SQL deprecated functions</p>
 <ul class="simple">
 <li><p>pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)</p></li>
 <li><p>pgr_trsp(text,integer,integer,boolean,boolean,text)</p></li>
 <li><p>pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)</p></li>
 <li><p>pgr_trspviavertices(text,anyarray,boolean,boolean,text)</p></li>
 </ul>
-<p class="rubric">Eliminación de funciones internas SQL obsoletas</p>
+<p class="rubric">Removal of SQL deprecated internal functions</p>
 <ul class="simple">
 <li><p>_pgr_dijkstranear(text,anyarray,anyarray,bigint,boolean)</p></li>
 <li><p>_pgr_dijkstranear(text,anyarray,bigint,bigint,boolean)</p></li>
@@ -470,13 +480,13 @@
 <li><p>_v4trsp(text,text,anyarray,anyarray,boolean)</p></li>
 <li><p>_v4trsp(text,text,text,boolean)</p></li>
 </ul>
-<p class="rubric">Obsolescencia de funciones internas C/C++</p>
+<p class="rubric">Deprecation of internal C/C++ functions</p>
 <ul class="simple">
 <li><p>_pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)</p></li>
 <li><p>_pgr_kruskal(text,anyarray,text,bigint,double precision)</p></li>
 <li><p>_pgr_prim(text,anyarray,text,bigint,double precision)</p></li>
 </ul>
-<p class="rubric">Funciones C/C++ internas en legado</p>
+<p class="rubric">Internal C/C++ functions in legacy</p>
 <ul class="simple">
 <li><p>_trsp(text,text,anyarray,anyarray,boolean)</p></li>
 <li><p>_v4trsp(text,text,anyarray,anyarray,boolean)</p></li>
@@ -520,8 +530,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en feb 27, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Actualizado por última vez en mar 08, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

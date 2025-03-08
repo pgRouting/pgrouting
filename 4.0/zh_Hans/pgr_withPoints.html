@@ -11,11 +11,12 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=1b67ac13"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script src="_static/page_history.js?v=fa54846d"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -254,13 +255,14 @@
 </li>
 <li><p>版本 2.2.0</p>
 <ul>
-<li><p>新提议的函数。</p></li>
+<li><p>New proposed function.</p></li>
 </ul>
 </li>
 </ul>
 <section id="description">
 <h2>描述<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>修改图形，使其包含由 points_sql 定义的点。使用 Dijkstra 算法找出最短路径</p>
+<p>Modify the graph to include points defined by points_sql.
+Using Dijkstra algorithm, find the shortest path</p>
 <p><strong>主要特点是：</strong></p>
 <ul class="simple">
 <li><p>仅在具有正成本的边进行处理。</p></li>
@@ -282,7 +284,7 @@
 <ul class="simple">
 <li><p>运行时间： <span class="math notranslate nohighlight">\(O(|start\_vids|\times(V \log V + E))\)</span></p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost 图内部" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -860,7 +862,7 @@
 <h2>其他示例<a class="headerlink" href="#additional-examples" title="Link to this heading">¶</a></h2>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id1">在 Points SQL 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges- 拟议</span></a>。</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id1">在 Points SQL 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a>。</a></p></li>
 <li><p><a class="reference internal" href="#usage-variations" id="id2">用法变化</a></p>
 <ul>
 <li><p><a class="reference internal" href="#passes-in-front-or-visits-with-right-side-driving" id="id3">从前方超车或右侧行驶来访。</a></p></li>
@@ -870,7 +872,7 @@
 </ul>
 </nav>
 <section id="use-pgr-findcloseedges-in-the-points-sql">
-<h3>在 <a class="reference internal" href="#points-sql">Points SQL</a> 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges- 拟议</span></a>。<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Link to this heading">¶</a></h3>
+<h3>在 <a class="reference internal" href="#points-sql">Points SQL</a> 中使用 <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a>。<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Link to this heading">¶</a></h3>
 <p>找到从顶点 <span class="math notranslate nohighlight">\(1\)</span> 到点 <cite>(2.9, 1.8)</cite> 图上两个最近位置的路线。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
   $e$ SELECT * FROM edges $e$,
@@ -1092,8 +1094,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 2月 27, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Last updated on 3月 08, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

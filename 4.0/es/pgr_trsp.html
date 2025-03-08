@@ -11,11 +11,12 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=065f0aea"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script src="_static/page_history.js?v=fa54846d"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
@@ -219,20 +220,20 @@
 <p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> - Ruteo con restricciones.</p>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
-<li><p>Versión 4.0.0</p>
+<li><p>Version 4.0.0</p>
 <ul>
-<li><p>Función promovida a oficial.</p></li>
+<li><p>Function promoted to official.</p></li>
 </ul>
 </li>
 <li><p>Versión 3.4.0</p>
 <ul>
-<li><p>Nuevas firmas propuestas:</p>
+<li><p>New proposed signatures:</p>
 <ul>
-<li><p>pgr_trsp(Uno a Uno)</p></li>
-<li><p>pgr_trsp(Uno a Muchos)</p></li>
-<li><p>pgr_trsp(Muchos a Uno)</p></li>
-<li><p>pgr_trsp(Muchos a Muchos)</p></li>
-<li><p>pgr_trsp(Combinaciones)</p></li>
+<li><p>pgr_trsp(One to One)</p></li>
+<li><p>pgr_trsp(One to Many)</p></li>
+<li><p>pgr_trsp(Many to One)</p></li>
+<li><p>pgr_trsp(Many to Many)</p></li>
+<li><p>pgr_trsp(Combinations)</p></li>
 </ul>
 </li>
 <li><p>Firmas obsoletas</p>
@@ -257,7 +258,7 @@
 </li>
 <li><p>Versión 2.0.0</p>
 <ul>
-<li><p>Función oficial.</p></li>
+<li><p>Official function.</p></li>
 </ul>
 </li>
 </ul>
@@ -279,7 +280,7 @@ real world navigable road networks.</p>
 </ul>
 </li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -291,7 +292,7 @@ real world navigable road networks.</p>
 <div class="line">pgr_trsp(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#restrictions-sql">SQL de restricciones</a>, <strong>salida</strong>, <strong>destinos</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 <div class="line">pgr_trsp(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#restrictions-sql">SQL de restricciones</a>, <strong>salidas</strong>, <strong>destino</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 <div class="line">pgr_trsp(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#restrictions-sql">SQL de restricciones</a>, <strong>salidas</strong>, <strong>destinos</strong>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
-<div class="line">pgr_trsp(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#combinations-sql">SQL de restricciones</a>, <a class="reference internal" href="#restrictions-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
+<div class="line">pgr_trsp(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#restrictions-sql">SQL de restricciones</a>, <a class="reference internal" href="#combinations-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</div>
 </div>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
@@ -451,7 +452,7 @@ undirected graph.</p>
 <span id="index-5"></span><h3>Combinaciones<a class="headerlink" href="#combinations" title="Link to this heading">¶</a></h3>
 <div class="signatures admonition">
 <p class="admonition-title"></p>
-<p>pgr_trsp(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#combinations-sql">SQL de restricciones</a>, <a class="reference internal" href="#restrictions-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
+<p>pgr_trsp(<a class="reference internal" href="#edges-sql">SQL de aristas</a>, <a class="reference internal" href="#restrictions-sql">SQL de restricciones</a>, <a class="reference internal" href="#combinations-sql">SQL de combinaciones</a>, [<code class="docutils literal notranslate"><span class="pre">directed</span></code>])</p>
 <div class="line-block">
 <div class="line">Regresa el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></div>
 <div class="line">O CONJUNTO VACÍO</div>
@@ -765,7 +766,7 @@ undirected graph.</p>
 <h2>Ver también<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="TRSP-family.html"><span class="doc">TRSP - Familia de funciones</span></a></p></li>
-<li><p><a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_trsp.html">Documentación obsoleta</a></p></li>
+<li><p><a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_trsp.html">Deprecated documentation</a></p></li>
 <li><p><a class="reference internal" href="migration.html"><span class="doc">Guía de migración</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
 </ul>
@@ -790,8 +791,8 @@ undirected graph.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en feb 27, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Actualizado por última vez en mar 08, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

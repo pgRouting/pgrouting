@@ -11,11 +11,12 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=065f0aea"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script src="_static/page_history.js?v=fa54846d"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
@@ -211,6 +212,8 @@
 <section id="pgr-pickdelivereuclidean-experimental">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_pickDeliverEuclidean</span></code> - Experimental<a class="headerlink" href="#pgr-pickdelivereuclidean-experimental" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_pickDeliverEuclidean</span></code> - Problema de Ruteo del Vehículo de Recogida y Entrega</p>
+<div class="sphinx_collapse docutils container">
+<input class="sphinx_collapse__input" id="81677c2e-70c5-4c53-b9a0-a6e0e5b5dfc3" name="81677c2e-70c5-4c53-b9a0-a6e0e5b5dfc3" type="checkbox"><label class="sphinx_collapse__label" for="81677c2e-70c5-4c53-b9a0-a6e0e5b5dfc3"><i class="sphinx_collapse__icon"></i>Experimental</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
@@ -234,19 +237,21 @@
 <li><p>Puede carecer documentación.</p></li>
 <li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
 <li><p>Puede ser necesario que los ejemplos de documentación se generen automáticamente.</p></li>
-<li><p>Puede ser necesaria retroalimentación por parte de la comunidad.</p></li>
+<li><p>Might need a lot of feedback from the community.</p></li>
 <li><p>Puede depender de una función propuesta de pgRouting</p></li>
 <li><p>Podría depender de una función obsoleta de pgRouting</p></li>
 </ul>
 </li>
 </ul>
 </div>
+</div>
+</div>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
 <li><p>Versión 3.0.0</p>
 <ul>
 <li><p>Reemplaza <code class="docutils literal notranslate"><span class="pre">pgr_gsoc_vrppdtw</span></code></p></li>
-<li><p>Nueva función experimental.</p></li>
+<li><p>New experimental function.</p></li>
 </ul>
 </li>
 </ul>
@@ -803,7 +808,7 @@
 <a class="reference external" href="https://www.sintef.no/projectweb/top/pdptw/li-lim-benchmark/">https://www.sintef.no/projectweb/top/pdptw/li-lim-benchmark/</a></p>
 <section id="the-vehicles">
 <h3><a class="toc-backref" href="#id1" role="doc-backlink">Los vehículos</a><a class="headerlink" href="#the-vehicles" title="Link to this heading">¶</a></h3>
-<p>There are 25 vehciles in the problem all with the same characteristics.</p>
+<p>There are 25 vehicles in the problem all with the same characteristics.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">v_lc101</span><span class="p">(</span>
   <span class="nb">id</span> <span class="n">BIGINT</span> <span class="n">NOT</span> <span class="n">NULL</span> <span class="n">primary</span> <span class="n">key</span><span class="p">,</span>
   <span class="n">capacity</span> <span class="n">BIGINT</span> <span class="n">DEFAULT</span> <span class="mi">200</span><span class="p">,</span>
@@ -950,7 +955,7 @@ order.</p>
 </section>
 <section id="the-orders">
 <h3><a class="toc-backref" href="#id3" role="doc-backlink">Las órdenes</a><a class="headerlink" href="#the-orders" title="Link to this heading">¶</a></h3>
-<p>The original data needs to be converted to an appropiate table:</p>
+<p>The original data needs to be converted to an appropriate table:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span> <span class="n">deliveries</span> <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">lc101_c</span> <span class="n">WHERE</span> <span class="n">dindex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">SELECT</span>
   <span class="n">row_number</span><span class="p">()</span> <span class="n">over</span><span class="p">()</span> <span class="n">AS</span> <span class="nb">id</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">demand</span><span class="p">,</span>
@@ -994,7 +999,7 @@ FROM pgr_pickDeliverEuclidean(
 <section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="VRP-category.html"><span class="doc">Funciones de Ruteo de Vehículos - Categoría</span></a></p></li>
+<li><p><a class="reference internal" href="VRP-category.html"><span class="doc">Vehicle Routing Functions - Category</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
@@ -1018,8 +1023,8 @@ FROM pgr_pickDeliverEuclidean(
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en feb 27, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Actualizado por última vez en mar 08, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>

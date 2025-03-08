@@ -11,11 +11,12 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e38b2961" />
     <script src="_static/documentation_options.js?v=065f0aea"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=d3fd4772"></script>
+    <script src="_static/page_history.js?v=fa54846d"></script>
     <script src="_static/translations.js?v=f85f4cfb"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
@@ -227,12 +228,12 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">seq</span></code> cambió el tipo a <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>”</p></li>
 </ul>
 </li>
-<li><p>Función promovida a oficial.</p></li>
+<li><p>Function promoted to official.</p></li>
 </ul>
 </li>
 <li><p>Versión 2.5.0</p>
 <ul>
-<li><p>Nueva función experimental.</p></li>
+<li><p>New experimental function.</p></li>
 </ul>
 </li>
 </ul>
@@ -251,7 +252,7 @@
 </li>
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O(V + E)\)</span></p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Adentro: Boost Graph</p>
+<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Adentro: Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -478,12 +479,12 @@
 </section>
 <section id="get-the-closest-vertex">
 <h4>Obtener el vértice más cercano<a class="headerlink" href="#get-the-closest-vertex" title="Link to this heading">¶</a></h4>
-<p>Usando <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges - Propuesto</span></a> el vértice más cercano al componente <span class="math notranslate nohighlight">\(1\)</span> es el vértice <span class="math notranslate nohighlight">\(4\)</span>. Y la arista más cercana al vértice <span class="math notranslate nohighlight">\(4\)</span> es la arista <span class="math notranslate nohighlight">\(14\)</span>.</p>
+<p>Usando <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> el vértice más cercano al componente <span class="math notranslate nohighlight">\(1\)</span> es el vértice <span class="math notranslate nohighlight">\(4\)</span>. Y la arista más cercana al vértice <span class="math notranslate nohighlight">\(4\)</span> es la arista <span class="math notranslate nohighlight">\(14\)</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge_id, fraction, ST_AsText(edge) AS edge, id AS closest_vertex
 FROM pgr_findCloseEdges(
   $$SELECT id, geom FROM edges WHERE component = 1$$,
   (SELECT array_agg(geom) FROM vertices WHERE component = 2),
-  2, partial =&gt; false) JOIN vertices USING (geom) ORDER BY distance LIMIT 1;
+  2) JOIN vertices USING (geom) ORDER BY distance LIMIT 1;
  edge_id | fraction |                 edge                 | closest_vertex
 ---------+----------+--------------------------------------+----------------
       14 |      0.5 | LINESTRING(1.999999999999 3.5,2 3.5) |              4
@@ -514,7 +515,7 @@ info AS (
   FROM pgr_findCloseEdges(
     $$SELECT id, geom FROM edges WHERE component = 1$$,
     (SELECT array_agg(geom) FROM vertices WHERE component = 2),
-    2, partial =&gt; false) AS ce
+    2) AS ce
   JOIN vertices AS v USING (geom)
   JOIN edges AS e ON (edge_id = e.id)
   ORDER BY distance LIMIT 1),
@@ -593,7 +594,7 @@ INSERT 0 2
 <ul class="simple">
 <li><p><a class="reference internal" href="components-family.html"><span class="doc">Componentes - Familia de funciones</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/connected_components.html">Boost: Componentes conectados</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/connected_components.html">Boost: Connected components</a></p></li>
 <li><p>wikipedia: <a class="reference external" href="https://en.wikipedia.org/wiki/Connected_component_(graph_theory)">Componente conectado</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
@@ -617,8 +618,8 @@ INSERT 0 2
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Actualizado por última vez en feb 27, 2025.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.1.<br/>
+      Actualizado por última vez en mar 08, 2025.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
 </footer>
