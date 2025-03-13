@@ -51,6 +51,12 @@ class Identifiers {
     typedef typename std::set<T>::iterator iterator;
     typedef typename std::set<T>::const_iterator const_iterator;
 
+    /*!
+    \brief define ids
+     */
+    void set_ids(std::set<T> ids) {
+        m_ids = ids;
+    }
 
     //! @name constructors
     //@{
