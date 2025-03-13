@@ -47,10 +47,13 @@ class CH_edge {
          id(eid), source(source),
          target(target), cost(cost) {}
 
+     void set_contracted_vertices(Identifiers<int64_t>&);
+
      void cp_members(const CH_edge &other);
 
      void add_contracted_vertex(CH_vertex& v);
      void add_contracted_edge_vertices(CH_edge& e);
+     void add_contracted_vertices(Identifiers<int64_t>&);
 
      bool has_contracted_vertices() const;
 
