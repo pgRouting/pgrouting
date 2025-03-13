@@ -31,7 +31,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_CONTRACTION_LINEARCONTRACTION_HPP_
 #pragma once
 
-
 #include <queue>
 #include <functional>
 #include <vector>
@@ -43,7 +42,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/ch_edge.hpp"
 #include "cpp_common/identifiers.hpp"
-
 
 namespace pgrouting {
 namespace contraction {
@@ -77,9 +75,7 @@ class Pgr_linear {
          }
      }
 
-
-
-     void doContraction(G &graph, const Identifiers<V> &forbidden_vertices) {
+     void doContraction(G &graph, Identifiers<V> forbidden_vertices) {
          graph.set_forbidden_vertices(forbidden_vertices);
          calculateVertices(graph);
 
@@ -110,10 +106,18 @@ class Pgr_linear {
          E e, f;
          bool found_e, found_f;
 
+         E e, f;
+         bool found_e, found_f;
+
          if (graph.is_directed()) {
              /*
               *  u --> v --> w
               */
+            boost::tie(e, found_e) = boost::edge(u, v, graph.graph);
+            boost::tie(f, found_f) = boost::edge(v, w, graph.graph);
+            if (found_e && found_f) {
+                graph.process_shortcut(u, v, w);
+            }
             boost::tie(e, found_e) = boost::edge(u, v, graph.graph);
             boost::tie(f, found_f) = boost::edge(v, w, graph.graph);
             if (found_e && found_f) {
@@ -127,12 +131,18 @@ class Pgr_linear {
              if (found_e && found_f) {
                 graph.process_shortcut(w, v, u);
              }
+             boost::tie(e, found_e) = boost::edge(w, v, graph.graph);
+             boost::tie(f, found_f) = boost::edge(v, u, graph.graph);
+             if (found_e && found_f) {
+                graph.process_shortcut(w, v, u);
+             }
 
          } else {
              pgassert(graph.is_undirected());
              /*
               * u - v - w
               */
+             graph.process_shortcut(u, v, w);
              graph.process_shortcut(u, v, w);
          }
 

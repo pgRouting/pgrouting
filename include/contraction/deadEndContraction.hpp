@@ -31,7 +31,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_CONTRACTION_DEADENDCONTRACTION_HPP_
 #pragma once
 
-
 #include <queue>
 #include <functional>
 #include <vector>
@@ -77,7 +76,8 @@ class Pgr_deadend {
                  * u{v1 + v + v2 + v3}     v{}
                  */
                 const auto& e = graph.get_min_cost_edge(u, v);
-                graph[u].contracted_vertices() += std::get<0>(e).contracted_vertices();
+                graph[u].contracted_vertices() +=
+                    std::get<0>(e).contracted_vertices();
                 graph[u].add_contracted_vertex(graph[v]);
 
                 deadendVertices -= v;
@@ -87,11 +87,13 @@ class Pgr_deadend {
             graph[v].contracted_vertices().clear();
             boost::clear_vertex(v, graph.graph);
 
-            /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
+            /* abort in case of an interruption occurs
+            (e.g. the query is being cancelled) */
             CHECK_FOR_INTERRUPTS();
 
             for (const auto u : local) {
-                if (graph.is_dead_end(u) && !graph.is_forbidden(u)) {
+                if (graph.is_dead_end(u)
+                    && !graph.is_forbidden(u)) {
                     deadendVertices += u;
                 } else {
                     deadendVertices -= u;
