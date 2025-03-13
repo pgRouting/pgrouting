@@ -31,7 +31,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_CONTRACTION_LINEARCONTRACTION_HPP_
 #pragma once
 
-
 #include <queue>
 #include <functional>
 #include <vector>
@@ -44,7 +43,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/ch_edge.hpp"
 #include "cpp_common/identifiers.hpp"
 
-
 namespace pgrouting {
 namespace contraction {
 
@@ -54,29 +52,17 @@ class Pgr_linear {
      typedef typename G::V V;
      typedef typename G::V_i V_i;
      typedef typename G::B_G B_G;
-
+     typedef typename G::E E;
 
  public:
      void operator()(G &graph, Identifiers<V>& forbidden_vertices) {
          doContraction(graph, forbidden_vertices);
      }
 
-     Pgr_linear():last_edge_id(0) {}
-
- private:
-     int64_t get_next_id() {
-         return --last_edge_id;
-     }
-
-
- public:
-     void setForbiddenVertices(
-             Identifiers<V> forbidden_vertices) {
-         m_forbiddenVertices = forbidden_vertices;
-     }
+     Pgr_linear() = default;
 
      bool is_contractible(G &graph, V v) {
-         return graph.is_linear(v) && !m_forbiddenVertices.has(v);
+         return graph.is_linear(v) && !graph.is_forbidden(v);
      }
 
      void calculateVertices(G &graph) {
@@ -89,10 +75,8 @@ class Pgr_linear {
          }
      }
 
-
-
      void doContraction(G &graph, Identifiers<V> forbidden_vertices) {
-         m_forbiddenVertices = forbidden_vertices;
+         graph.set_forbidden_vertices(forbidden_vertices);
          calculateVertices(graph);
 
          while (!m_linearVertices.empty()) {
@@ -119,22 +103,33 @@ class Pgr_linear {
          pgassert(v != w);
          pgassert(u != w);
 
+         E e, f;
+         bool found_e, found_f;
+
          if (graph.is_directed()) {
              /*
               *  u --> v --> w
               */
-             process_shortcut(graph, u, v, w);
+            boost::tie(e, found_e) = boost::edge(u, v, graph.graph);
+            boost::tie(f, found_f) = boost::edge(v, w, graph.graph);
+            if (found_e && found_f) {
+                graph.process_shortcut(u, v, w);
+            }
              /*
               *  w --> v --> u
               */
-             process_shortcut(graph, w, v, u);
+             boost::tie(e, found_e) = boost::edge(w, v, graph.graph);
+             boost::tie(f, found_f) = boost::edge(v, u, graph.graph);
+             if (found_e && found_f) {
+                graph.process_shortcut(w, v, u);
+             }
 
          } else {
              pgassert(graph.is_undirected());
              /*
               * u - v - w
               */
-             process_shortcut(graph, u, v, w);
+             graph.process_shortcut(u, v, w);
          }
 
          graph[v].contracted_vertices().clear();
@@ -153,47 +148,8 @@ class Pgr_linear {
          }
      }
 
-
-
-     /**
-      *
-      * u ----e1{v1}----> v ----e2{v2}----> w
-      *
-      * e1: min cost edge from u to v
-      * e2: min cost edge from v to w
-      *
-      * result:
-      * u ---{v+v1+v2}---> w
-      *
-      */
-     void process_shortcut(G &graph, V u, V v, V w) {
-         auto e1 = graph.get_min_cost_edge(u, v);
-         auto e2 = graph.get_min_cost_edge(v, w);
-
-         if (std::get<2>(e1) && std::get<2>(e2)) {
-             auto contracted_vertices = std::get<1>(e1) + std::get<1>(e2);
-             double cost = std::get<0>(e1) + std::get<0>(e2);
-             contracted_vertices += graph[v].id;
-             contracted_vertices += graph[v].contracted_vertices();
-
-             // Create shortcut
-             CH_edge shortcut(
-                     get_next_id(),
-                     graph[u].id,
-                     graph[w].id,
-                     cost);
-             shortcut.contracted_vertices() = contracted_vertices;
-
-             graph.add_shortcut(shortcut, u, w);
-         }
-     }
-
-
  private:
      Identifiers<V> m_linearVertices;
-     Identifiers<V> m_forbiddenVertices;
-
-     int64_t last_edge_id;
 };
 
 }  // namespace contraction

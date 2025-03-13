@@ -124,6 +124,10 @@ milestone for 4.0.0
     * New name and order of optional parameters.
   * Deprecated signature pgr_contraction(text,bigint[],integer,bigint[],boolean)
 
+**C/C++ code enhancement**
+
+* Code factorization on pgr_contraction family
+
 **New proposed functions**
 
 * Contraction

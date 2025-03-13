@@ -31,6 +31,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 
+void CH_edge::set_contracted_vertices(
+    Identifiers<int64_t>& contracted_vertices_ids) {
+    m_contracted_vertices = contracted_vertices_ids;
+}
+
 void
 CH_edge::cp_members(const CH_edge &other) {
     this->cost = other.cost;
@@ -39,7 +44,6 @@ CH_edge::cp_members(const CH_edge &other) {
     this->target = other.target;
     this->m_contracted_vertices += other.contracted_vertices();
 }
-
 
 bool
 CH_edge::has_contracted_vertices() const {
@@ -56,7 +60,6 @@ CH_edge::contracted_vertices() {
     return m_contracted_vertices;
 }
 
-
 void
 CH_edge::add_contracted_vertex(CH_vertex& v) {
     m_contracted_vertices += v.id;
@@ -67,6 +70,10 @@ void
 CH_edge::add_contracted_edge_vertices(CH_edge &e) {
     if (e.has_contracted_vertices())
         m_contracted_vertices += e.contracted_vertices();
+}
+
+void CH_edge::add_contracted_vertices(Identifiers<int64_t>& ids) {
+    m_contracted_vertices += ids;
 }
 
 std::ostream& operator <<(std::ostream& os, const CH_edge& e) {

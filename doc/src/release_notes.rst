@@ -163,6 +163,10 @@ pgRouting 3.8.0 Release Notes
      :start-after: Version 3.8.0
      :end-before: .. rubric
 
+.. rubric:: C/C++ code enhancement
+
+* Code factorization on pgr_contraction family
+
 .. rubric:: New proposed functions
 
 * Contraction
