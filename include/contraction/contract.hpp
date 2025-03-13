@@ -106,7 +106,7 @@ class Pgr_contract {
     void perform_deadEnd(G &graph,
             Identifiers<V> forbidden_vertices) {
         Pgr_deadend<G> deadendContractor;
-        deadendContractor.setForbiddenVertices(forbidden_vertices);
+        graph.set_forbidden_vertices(forbidden_vertices);
 
         deadendContractor.calculateVertices(graph);
         try {
