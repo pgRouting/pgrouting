@@ -203,6 +203,11 @@ milestone for 3.8.0
      :start-after: Version 3.8.0
      :end-before: .. rubric
 
+.. rubric:: C/C++ code enhancement
+
+* `#2802 <https://github.com/pgRouting/pgrouting/issues/2802>`__:
+  Code factorization on pgr_contraction family
+
 .. rubric:: New proposed functions
 
 * Contraction

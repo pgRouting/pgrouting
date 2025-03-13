@@ -53,29 +53,12 @@ class Pgr_deadend {
  public:
     Pgr_deadend() = default;
 
-    void setForbiddenVertices(
-            Identifiers<V> forbidden_vertices) {
-        forbiddenVertices = forbidden_vertices;
-    }
-
-
     void calculateVertices(G &graph) {
         for (const auto v : boost::make_iterator_range(vertices(graph.graph))) {
-            if (is_dead_end(graph, v) && !forbiddenVertices.has(v)) {
+            if (graph.is_dead_end(v) && !graph.is_forbidden(v)) {
                 deadendVertices += v;
             }
         }
-    }
-
-    bool is_dead_end(G &graph, V v) {
-        if (graph.is_undirected()) {
-            return graph.find_adjacent_vertices(v).size() == 1;
-        }
-
-        pgassert(graph.is_directed());
-
-        return graph.find_adjacent_vertices(v).size() == 1
-            || (graph.in_degree(v) > 0 && graph.out_degree(v) == 0);
     }
 
     void doContraction(G &graph) {
@@ -84,7 +67,7 @@ class Pgr_deadend {
         while (!deadendVertices.empty()) {
             V v = deadendVertices.front();
             deadendVertices -= v;
-            pgassert(is_dead_end(graph, v));
+            pgassert(graph.is_dead_end(v));
 
             Identifiers<V> local;
             for (auto u : graph.find_adjacent_vertices(v)) {
@@ -93,10 +76,9 @@ class Pgr_deadend {
                  *
                  * u{v1 + v + v2 + v3}     v{}
                  */
-                auto v2(graph.get_min_cost_edge(u, v));
-                graph[u].contracted_vertices() += std::get<1>(v2);
-                graph[u].contracted_vertices() += graph[v].id;
-                graph[u].contracted_vertices() += graph[v].contracted_vertices();
+                const auto& e = graph.get_min_cost_edge(u, v);
+                graph[u].contracted_vertices() += std::get<0>(e).contracted_vertices();
+                graph[u].add_contracted_vertex(graph[v]);
 
                 deadendVertices -= v;
                 local += u;
@@ -109,7 +91,7 @@ class Pgr_deadend {
             CHECK_FOR_INTERRUPTS();
 
             for (const auto u : local) {
-                if (is_dead_end(graph, u) && !forbiddenVertices.has(u)) {
+                if (graph.is_dead_end(u) && !graph.is_forbidden(u)) {
                     deadendVertices += u;
                 } else {
                     deadendVertices -= u;
@@ -120,7 +102,6 @@ class Pgr_deadend {
 
  private:
     Identifiers<V> deadendVertices;
-    Identifiers<V> forbiddenVertices;
 };
 
 }  // namespace contraction

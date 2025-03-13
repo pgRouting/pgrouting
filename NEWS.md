@@ -164,6 +164,11 @@ milestone for 3.8.0
     * New name and order of optional parameters.
   * Deprecated signature pgr_contraction(text,bigint[],integer,bigint[],boolean)
 
+**C/C++ code enhancement**
+
+* [#2802](https://github.com/pgRouting/pgrouting/issues/2802):
+  Code factorization on pgr_contraction family
+
 **New proposed functions**
 
 * Contraction
