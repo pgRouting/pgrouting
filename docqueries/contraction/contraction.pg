@@ -2,14 +2,103 @@
 -- Creative Commons Attribution-Share Alike 3.0 License : https://creativecommons.org/licenses/by-sa/3.0/
 /* -- q1 */
 SELECT * FROM pgr_contraction(
-  'SELECT id, source, target, cost, reverse_cost FROM edges',
-  ARRAY[1, 2], directed => false);
+  'SELECT id, source, target, cost, reverse_cost FROM edges', false);
 /* -- q2 */
 SELECT type, id, contracted_vertices FROM pgr_contraction(
   'SELECT id, source, target, cost, reverse_cost FROM edges',
-  ARRAY[1]);
+  methods => ARRAY[1]);
 /* -- q3 */
 SELECT * FROM pgr_contraction(
   'SELECT id, source, target, cost, reverse_cost FROM edges',
-  ARRAY[2]);
+  methods => ARRAY[2]);
 /* -- q4 */
+
+/* -- cg1 */
+ALTER TABLE vertices
+  ADD is_contracted BOOLEAN DEFAULT false,
+  ADD contracted_vertices BIGINT[];
+ALTER TABLE edges
+  ADD is_new BOOLEAN DEFAULT false,
+  ADD contracted_vertices BIGINT[];
+/* -- cg2 */
+SELECT * FROM pgr_contraction(
+  'SELECT id, source, target, cost, reverse_cost FROM edges', false);
+/* -- cg3 */
+SELECT * INTO contraction_results
+FROM pgr_contraction(
+  'SELECT id, source, target, cost, reverse_cost FROM edges', false);
+/* -- cg4 */
+UPDATE vertices
+SET is_contracted = true
+WHERE id IN (SELECT  unnest(contracted_vertices) FROM  contraction_results);
+/* -- cg5 */
+SELECT id, is_contracted
+FROM vertices
+ORDER BY id;
+/* -- cg6 */
+UPDATE vertices
+SET contracted_vertices = contraction_results.contracted_vertices
+FROM contraction_results
+WHERE type = 'v' AND vertices.id = contraction_results.id;
+/* -- cg7 */
+INSERT INTO edges(source, target, cost, reverse_cost, contracted_vertices, is_new)
+SELECT source, target, cost, -1, contracted_vertices, true
+FROM contraction_results
+WHERE type = 'e';
+/* -- cg8 */
+SELECT id FROM vertices WHERE is_contracted = false ORDER BY id;
+/* -- cg9 */
+WITH
+vertices_in_graph AS (SELECT id FROM vertices WHERE is_contracted = false)
+SELECT id, source, target, cost, reverse_cost, contracted_vertices
+FROM edges
+WHERE
+  EXISTS (SELECT id FROM vertices AS v WHERE NOT is_contracted AND v.id = edges.source)
+  AND
+  EXISTS (SELECT id FROM vertices AS v WHERE NOT is_contracted AND v.id = edges.target)
+ORDER BY id;
+/* -- cg10 */
+DROP VIEW IF EXISTS contracted_graph;
+CREATE VIEW contracted_graph AS
+SELECT id,source, target, cost, reverse_cost, contracted_vertices FROM edges
+WHERE
+  EXISTS (SELECT id FROM vertices AS v WHERE NOT is_contracted AND v.id = edges.source)
+  AND
+  EXISTS (SELECT id FROM vertices AS v WHERE NOT is_contracted AND v.id = edges.target);
+/* -- cg11 */
+CREATE OR REPLACE FUNCTION path_cost(source BIGINT, target BIGINT)
+RETURNS SETOF FLOAT AS
+$BODY$
+
+SELECT agg_cost FROM pgr_dijkstraCost(
+  /* The inner query */
+  'WITH
+  cul_de_sac AS (
+    SELECT contracted_vertices || id as v
+    FROM vertices WHERE ' || $1 ||' = ANY(contracted_vertices)
+    OR ' || $2 ||' = ANY(contracted_vertices)),
+  linears_to_expand AS (
+    SELECT id, contracted_vertices
+    FROM edges WHERE is_new AND (' || $1 ||' = ANY(contracted_vertices)
+      OR '|| $2 ||'  = ANY(contracted_vertices))
+  ),
+  additional_vertices AS (
+    SELECT * FROM cul_de_sac UNION SELECT contracted_vertices FROM linears_to_expand)
+  SELECT id, source, target, cost, reverse_cost
+  FROM edges, additional_vertices WHERE source = ANY(v) OR target = ANY(v)
+
+  UNION
+
+  SELECT id, source, target, cost, reverse_cost
+  FROM contracted_graph LEFT JOIN linears_to_expand c USING (id) WHERE c.id IS NULL',
+
+  source, target, false);
+
+$BODY$ LANGUAGE SQL;
+/* -- cg12 */
+SELECT * FROM path_cost(10, 12);
+/* -- cg13 */
+SELECT * FROM path_cost(15, 12);
+/* -- cg14 */
+SELECT * FROM path_cost(15, 1);
+/* -- cg15 */
