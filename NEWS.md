@@ -27,6 +27,17 @@
   * ``partial`` option is removed.
   * Function promoted to official.
 
+**Official functions changes**
+
+* [#2786](https://github.com/pgRouting/pgrouting/issues/2786): pgr_contraction
+
+  * New signature:
+    * Previously compulsory parameter **Contraction order** is now optional with
+      name ``methods``.
+    * New name and order of optional parameters.
+  * Deprecated signature pgr_contraction(text,bigint[],integer,bigint[],boolean)
+
+
 ## pgRouting 3.7
 
 ### pgRouting 3.7.3 Release Notes
