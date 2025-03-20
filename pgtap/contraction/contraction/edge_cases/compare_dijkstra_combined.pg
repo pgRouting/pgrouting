@@ -1,0 +1,122 @@
+/*PGR-GNU*****************************************************************
+
+Copyright (c) 2025  pgRouting developers
+Mail: project@pgrouting.org
+
+------
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ ********************************************************************PGR-GNU*/
+BEGIN;
+
+SELECT CASE WHEN min_version('3.8.0') THEN plan(654) ELSE plan(4) END;
+
+UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
+
+ALTER TABLE edges ADD is_new BOOLEAN DEFAULT false, ADD contracted_vertices integer[];
+ALTER TABLE vertices ADD is_contracted BOOLEAN DEFAULT false, ADD contracted_vertices integer[];
+
+CREATE OR REPLACE FUNCTION check_cg(BOOLEAN)
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  IF NOT min_version('3.8.0') THEN
+    RETURN QUERY SELECT skip(1, 'contraction function/signature is new on 3.8.0');
+    RETURN;
+  END IF;
+
+  IF $1 THEN
+    RETURN QUERY
+    SELECT set_eq($$SELECT type, id, contracted_vertices, source, target FROM contraction_info$$,
+      $$ VALUES
+      ('v',7,ARRAY[1,3],-1,-1),
+      ('v',4,ARRAY[2],-1,-1),
+      ('v',14,ARRAY[13],-1,-1),
+      ('v',8,ARRAY[9],'-1','-1'),
+      ('v',6,ARRAY[5],'-1','-1') $$);
+
+    RETURN QUERY
+    SELECT is_empty($$SELECT id FROM edges WHERE is_new$$);
+
+    PREPARE c_expected_graph AS
+    SELECT source, target, cost, reverse_cost
+    FROM (VALUES
+      (16,17,'1.225'::TEXT,'1.225'::TEXT),
+      (10,15,'-0.991','1.009'),
+      (12,17,'1.169','-0.831'),
+      (15,16,'1.256','1.256'),
+      (6, 10, '-0.996', '1.004'),
+      (6, 7, '1.016', '1.016'),
+      (10, 11, '1.025', '-0.975'),
+      (7, 11, '1.064', '1.064'),
+      (11, 16, '1.081', '1.081'),
+      (11, 12, '1.121', '-0.879'),
+      (8, 12, '1.144', '-0.856'),
+      (7, 8,  '1.100', '1.100'))
+    AS t(source, target, cost, reverse_cost);
+
+    RETURN QUERY
+    SELECT set_eq('SELECT source, target, round(cost::numeric, 3)::TEXT AS cost, round(reverse_cost::numeric, 3)::TEXT FROM contracted_graph',
+      'c_expected_graph', 'The contracted graph');
+  ELSE
+    RETURN QUERY
+    SELECT set_eq($$SELECT type, id, contracted_vertices, source, target FROM contraction_info$$,
+      $$ VALUES
+      ('v',7,ARRAY[1,3],-1,-1),
+      ('v',4,ARRAY[2],-1,-1),
+      ('v',14,ARRAY[13],-1,-1),
+      ('e',-3,ARRAY[8,9],7,12),
+      ('e',-4,ARRAY[17],16,12),
+      ('e',-2,ARRAY[15],10,16),
+      ('e',-1,ARRAY[5,6],10,7)$$);
+
+    RETURN QUERY
+    SELECT set_eq(
+      $$SELECT id FROM edges WHERE is_new$$,
+      $$SELECT unnest(ARRAY[19, 20, 21,22])$$
+    );
+
+    PREPARE c_expected_graph AS
+    SELECT source, target, cost, reverse_cost
+    FROM (VALUES
+      (10, 11, '1.025', '-0.975'),
+      (7, 11, '1.064', '1.064'),
+      (11, 16, '1.081', '1.081'),
+      (11, 12, '1.121', '-0.879'),
+      (10,16,'2.265','-1.000'),
+      (16,12,'2.394','-1.000'),
+      (10,7,'2.020','-1.000'),
+      (7,12,'2.244','-1.000'))
+    AS t(source, target, cost, reverse_cost);
+
+    RETURN QUERY
+    SELECT set_eq('SELECT source, target, round(cost::numeric, 3)::TEXT AS cost, round(reverse_cost::numeric, 3)::TEXT FROM contracted_graph',
+      'c_expected_graph', 'The contracted graph');
+
+  END IF;
+  DEALLOCATE PREPARE c_expected_graph;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+
+CALL create_contracted_graph(false,'pgr_contraction', ARRAY[1,2]);
+SELECT check_cg(false);
+SELECT compare_dijkstra_contraction(false);
+
+CALL create_contracted_graph(true,'pgr_contraction', ARRAY[1,2]);
+SELECT check_cg(true);
+SELECT compare_dijkstra_contraction(true);
+
+SELECT finish();
+ROLLBACK;
