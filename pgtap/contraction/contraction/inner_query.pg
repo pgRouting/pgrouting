@@ -1,0 +1,105 @@
+/*PGR-GNU*****************************************************************
+
+Copyright (c) 2025  pgRouting developers
+Mail: project@pgrouting.org
+
+------
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ ********************************************************************PGR-GNU*/
+BEGIN;
+
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN min_version('3.8.0') THEN plan(387) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION inner_query()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  IF NOT min_version('3.8.0') THEN
+    RETURN QUERY SELECT skip(1, 'pgr_contraction new signature on 3.8.0');
+    RETURN;
+  END IF;
+
+  RETURN QUERY SELECT style_dijkstra('pgr_contraction(', ')');
+  RETURN QUERY SELECT style_dijkstra('pgr_contraction(', ', true)');
+  RETURN QUERY SELECT style_dijkstra('pgr_contraction(', ', false)');
+  RETURN QUERY SELECT style_dijkstra('pgr_contraction(', ', true, ARRAY[1])');
+  RETURN QUERY SELECT style_dijkstra('pgr_contraction(', ', false, ARRAY[1])');
+  RETURN QUERY SELECT style_dijkstra('pgr_contraction(', ', true, ARRAY[2])');
+  RETURN QUERY SELECT style_dijkstra('pgr_contraction(', ', false, ARRAY[2])');
+
+  RETURN QUERY SELECT throws_ok(
+    $$SELECT * FROM pgr_contraction(
+      'SELECT id, source, target, cost, reverse_cost FROM edges', true,
+      ARRAY[1]::bigint[], 1, ARRAY[ 2 ]::bigint[])$$,
+    '42883', 'function pgr_contraction(unknown, boolean, bigint[], integer, bigint[]) does not exist',
+    'Throws because methods is bigint[]');
+
+  RETURN QUERY SELECT throws_ok(
+    $$SELECT * FROM pgr_contraction(
+      'SELECT id, source, target, cost, reverse_cost FROM edges', true,
+      ARRAY[]::INTEGER[], 1, ARRAY[ 2 ]::integer[])$$,
+    'XX000', 'One dimension expected', 'Throws because methods is empty ARRAY[]');
+
+  RETURN QUERY SELECT throws_ok(
+    $$SELECT * FROM pgr_contraction(
+      'SELECT id, source, target, cost, reverse_cost FROM edges', true,
+      ARRAY[], 1, ARRAY[ 2 ]::integer[])$$,
+    '42P18', 'cannot determine type of empty array', 'Throws because methods is empty ARRAY[]');
+
+  RETURN QUERY SELECT throws_ok(
+    $$SELECT * FROM pgr_contraction(
+      'SELECT id, source, target, cost, reverse_cost FROM edges', true,
+      ARRAY[1], 1, ARRAY[ [2,3,4,5], [4,5,6,7] ]::integer[][])$$,
+   'XX000', 'One dimension expected', 'Throws because forbidden is 2 dimensions');
+
+  RETURN QUERY SELECT lives_ok(
+    $$SELECT * FROM pgr_contraction(
+      'SELECT id, source, target, cost, reverse_cost FROM edges', true,
+      ARRAY[1], 1, ARRAY[ 2 ])$$,
+    'Lives when forbidden is not described');
+
+  RETURN QUERY SELECT lives_ok(
+    $$SELECT * FROM pgr_contraction(
+      'SELECT id, source, target, cost, reverse_cost FROM edges', true,
+      ARRAY[1], 1, ARRAY[ 2 ]::integer[])$$,
+    'Lives when forbidden is integer[]');
+
+  RETURN QUERY SELECT lives_ok(
+    $$SELECT * FROM pgr_contraction(
+      'SELECT id, source, target, cost, reverse_cost FROM edges', true,
+      ARRAY[1], 1, ARRAY[ 2 ]::bigint[])$$,
+    'Lives when forbidden is bigint[]');
+
+  RETURN QUERY SELECT lives_ok(
+    $$SELECT * FROM pgr_contraction(
+      'SELECT id, source, target, cost, reverse_cost FROM edges', true,
+      ARRAY[1], 1, ARRAY[ 2 ]::smallint[])$$,
+    'Lives when forbidden is smallint[]');
+
+  RETURN QUERY SELECT throws_ok(
+    $$SELECT * FROM pgr_contraction(
+      'SELECT id, source, target, cost, reverse_cost FROM edges', true,
+      ARRAY[1], 1, ARRAY[ 2 ]::float8[])$$,
+    '42883', 'function pgr_contraction(unknown, boolean, integer[], integer, double precision[]) does not exist',
+    'Throws because forbidden is float8[]');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT inner_query();
+
+SELECT finish();
+ROLLBACK;

@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(49);
+SELECT plan(48);
 SET client_min_messages TO WARNING;
 SELECT has_function('pgr_contraction');
 
@@ -32,26 +32,6 @@ SELECT function_returns('pgr_contraction', ARRAY[
     'text', 'bigint[]',
     'integer', 'bigint[]', 'boolean'
     ], 'setof record');
-
-
-
-PREPARE parameters AS
-SELECT array[
-'',
-'',
-'max_cycles',
-'forbidden_vertices',
-'directed',
-'type',
-'id',
-'contracted_vertices',
-'source',
-'target',
-'cost'];
-
-SELECT set_eq(
-    $$SELECT proargnames FROM pg_proc WHERE proname = 'pgr_contraction'$$,
-    'parameters');
 
 
 CREATE OR REPLACE FUNCTION test_anyInteger(fn TEXT, params TEXT[], parameter TEXT)
