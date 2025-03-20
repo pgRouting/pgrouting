@@ -4,8 +4,7 @@ SET client_min_messages TO NOTICE;
 SET
 /* -- q1 */
 SELECT * FROM pgr_contraction(
-  'SELECT id, source, target, cost, reverse_cost FROM edges',
-  ARRAY[1, 2], directed => false);
+  'SELECT id, source, target, cost, reverse_cost FROM edges', false);
  type | id | contracted_vertices | source | target | cost
 ------+----+---------------------+--------+--------+------
  v    |  4 | {2}                 |     -1 |     -1 |   -1
@@ -20,7 +19,7 @@ SELECT * FROM pgr_contraction(
 /* -- q2 */
 SELECT type, id, contracted_vertices FROM pgr_contraction(
   'SELECT id, source, target, cost, reverse_cost FROM edges',
-  ARRAY[1]);
+  methods => ARRAY[1]);
  type | id | contracted_vertices
 ------+----+---------------------
  v    |  4 | {2}
@@ -33,7 +32,7 @@ SELECT type, id, contracted_vertices FROM pgr_contraction(
 /* -- q3 */
 SELECT * FROM pgr_contraction(
   'SELECT id, source, target, cost, reverse_cost FROM edges',
-  ARRAY[2]);
+  methods => ARRAY[2]);
  type | id | contracted_vertices | source | target | cost
 ------+----+---------------------+--------+--------+------
  e    | -1 | {3}                 |      1 |      7 |    2
@@ -41,5 +40,174 @@ SELECT * FROM pgr_contraction(
 (2 rows)
 
 /* -- q4 */
+/* -- cg1 */
+ALTER TABLE vertices
+  ADD is_contracted BOOLEAN DEFAULT false,
+  ADD contracted_vertices BIGINT[];
+ALTER TABLE
+ALTER TABLE edges
+  ADD is_new BOOLEAN DEFAULT false,
+  ADD contracted_vertices BIGINT[];
+ALTER TABLE
+/* -- cg2 */
+SELECT * FROM pgr_contraction(
+  'SELECT id, source, target, cost, reverse_cost FROM edges', false);
+ type | id | contracted_vertices | source | target | cost
+------+----+---------------------+--------+--------+------
+ v    |  4 | {2}                 |     -1 |     -1 |   -1
+ v    |  7 | {1,3}               |     -1 |     -1 |   -1
+ v    | 14 | {13}                |     -1 |     -1 |   -1
+ e    | -1 | {5,6}               |      7 |     10 |    2
+ e    | -2 | {8,9}               |      7 |     12 |    2
+ e    | -3 | {17}                |     12 |     16 |    2
+ e    | -4 | {15}                |     10 |     16 |    2
+(7 rows)
+
+/* -- cg3 */
+SELECT * INTO contraction_results
+FROM pgr_contraction(
+  'SELECT id, source, target, cost, reverse_cost FROM edges', false);
+SELECT 7
+/* -- cg4 */
+UPDATE vertices
+SET is_contracted = true
+WHERE id IN (SELECT  unnest(contracted_vertices) FROM  contraction_results);
+UPDATE 10
+/* -- cg5 */
+SELECT id, is_contracted
+FROM vertices
+ORDER BY id;
+ id | is_contracted
+----+---------------
+  1 | t
+  2 | t
+  3 | t
+  4 | f
+  5 | t
+  6 | t
+  7 | f
+  8 | t
+  9 | t
+ 10 | f
+ 11 | f
+ 12 | f
+ 13 | t
+ 14 | f
+ 15 | t
+ 16 | f
+ 17 | t
+(17 rows)
+
+/* -- cg6 */
+UPDATE vertices
+SET contracted_vertices = contraction_results.contracted_vertices
+FROM contraction_results
+WHERE type = 'v' AND vertices.id = contraction_results.id;
+UPDATE 3
+/* -- cg7 */
+INSERT INTO edges(source, target, cost, reverse_cost, contracted_vertices, is_new)
+SELECT source, target, cost, -1, contracted_vertices, true
+FROM contraction_results
+WHERE type = 'e';
+INSERT 0 4
+/* -- cg8 */
+SELECT id FROM vertices WHERE is_contracted = false ORDER BY id;
+ id
+----
+  4
+  7
+ 10
+ 11
+ 12
+ 14
+ 16
+(7 rows)
+
+/* -- cg9 */
+WITH
+vertices_in_graph AS (SELECT id FROM vertices WHERE is_contracted = false)
+SELECT id, source, target, cost, reverse_cost, contracted_vertices
+FROM edges
+WHERE
+  EXISTS (SELECT id FROM vertices AS v WHERE NOT is_contracted AND v.id = edges.source)
+  AND
+  EXISTS (SELECT id FROM vertices AS v WHERE NOT is_contracted AND v.id = edges.target)
+ORDER BY id;
+ id | source | target | cost | reverse_cost | contracted_vertices
+----+--------+--------+------+--------------+---------------------
+  5 |     10 |     11 |    1 |           -1 |
+  8 |      7 |     11 |    1 |            1 |
+  9 |     11 |     16 |    1 |            1 |
+ 11 |     11 |     12 |    1 |           -1 |
+ 19 |      7 |     10 |    2 |           -1 | {5,6}
+ 20 |      7 |     12 |    2 |           -1 | {8,9}
+ 21 |     12 |     16 |    2 |           -1 | {17}
+ 22 |     10 |     16 |    2 |           -1 | {15}
+(8 rows)
+
+/* -- cg10 */
+DROP VIEW IF EXISTS contracted_graph;
+NOTICE:  view "contracted_graph" does not exist, skipping
+DROP VIEW
+CREATE VIEW contracted_graph AS
+SELECT id,source, target, cost, reverse_cost, contracted_vertices FROM edges
+WHERE
+  EXISTS (SELECT id FROM vertices AS v WHERE NOT is_contracted AND v.id = edges.source)
+  AND
+  EXISTS (SELECT id FROM vertices AS v WHERE NOT is_contracted AND v.id = edges.target);
+CREATE VIEW
+/* -- cg11 */
+CREATE OR REPLACE FUNCTION path_cost(source BIGINT, target BIGINT)
+RETURNS SETOF FLOAT AS
+$BODY$
+
+SELECT agg_cost FROM pgr_dijkstraCost(
+  /* The inner query */
+  'WITH
+  cul_de_sac AS (
+    SELECT contracted_vertices || id as v
+    FROM vertices WHERE ' || $1 ||' = ANY(contracted_vertices)
+    OR ' || $2 ||' = ANY(contracted_vertices)),
+  linears_to_expand AS (
+    SELECT id, contracted_vertices
+    FROM edges WHERE is_new AND (' || $1 ||' = ANY(contracted_vertices)
+      OR '|| $2 ||'  = ANY(contracted_vertices))
+  ),
+  additional_vertices AS (
+    SELECT * FROM cul_de_sac UNION SELECT contracted_vertices FROM linears_to_expand)
+  SELECT id, source, target, cost, reverse_cost
+  FROM edges, additional_vertices WHERE source = ANY(v) OR target = ANY(v)
+
+  UNION
+
+  SELECT id, source, target, cost, reverse_cost
+  FROM contracted_graph LEFT JOIN linears_to_expand c USING (id) WHERE c.id IS NULL',
+
+  source, target, false);
+
+$BODY$ LANGUAGE SQL;
+CREATE FUNCTION
+/* -- cg12 */
+SELECT * FROM path_cost(10, 12);
+ path_cost
+-----------
+         2
+(1 row)
+
+/* -- cg13 */
+SELECT * FROM path_cost(15, 12);
+ path_cost
+-----------
+         3
+(1 row)
+
+/* -- cg14 */
+SELECT * FROM path_cost(15, 1);
+ path_cost
+-----------
+         5
+(1 row)
+
+/* -- cg15 */
 ROLLBACK;
 ROLLBACK
