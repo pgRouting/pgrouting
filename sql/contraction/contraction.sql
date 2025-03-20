@@ -27,16 +27,39 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
---------------------
---------------------
--- contraction
---------------------
---------------------
+--v3.8
+CREATE FUNCTION pgr_contraction(
+    TEXT,     -- edges_sql (required)
+    directed BOOLEAN DEFAULT true,
+    methods INTEGER[] DEFAULT ARRAY[1,2]::INTEGER[],
+    cycles INTEGER DEFAULT 1,
+    forbidden BIGINT[] DEFAULT ARRAY[]::BIGINT[],
 
---------------------
--- pgr_contraction
---------------------
+    OUT type TEXT,
+    OUT id BIGINT,
+    OUT contracted_vertices BIGINT[],
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+  SELECT type, id, contracted_vertices, source, target, cost
+  FROM _pgr_contraction(_pgr_get_statement($1), methods::BIGINT[], cycles, forbidden, directed);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT;
 
+COMMENT ON FUNCTION pgr_contraction(TEXT, BOOLEAN, INTEGER[], INTEGER, BIGINT[])
+IS 'pgr_contraction
+- Parameters:
+    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+- Optional Parameters
+    - directed := true
+    - methods := ARRAY[1,2]
+    - cycles := 1
+    - forbidden := ARRAY[]::BIGINT[]
+- Documentation:
+    - ${PROJECT_DOC_LINK}/pgr_contraction.html
+';
 
 --v3.0
 CREATE FUNCTION pgr_contraction(
@@ -55,22 +78,15 @@ CREATE FUNCTION pgr_contraction(
     OUT cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT type, id, contracted_vertices, source, target, cost
-    FROM _pgr_contraction(_pgr_get_statement($1), $2::BIGINT[],  $3, $4, $5);
+BEGIN
+    RAISE NOTICE 'Deprecated Signature pgr_contraction(text,boolean,integer[],integer,bigint[]) in v3.8.0';
+    RETURN QUERY
+    SELECT a.type, a.id, a.contracted_vertices, a.source, a.target, a.cost
+    FROM _pgr_contraction(_pgr_get_statement($1), $2::BIGINT[],  $3, $4, $5) AS a;
+END;
 $BODY$
-LANGUAGE SQL VOLATILE STRICT;
-
--- COMMENTS
+LANGUAGE plpgsql VOLATILE STRICT;
 
 COMMENT ON FUNCTION pgr_contraction(TEXT, BIGINT[], INTEGER, BIGINT[], BOOLEAN)
-IS 'pgr_contraction
-- Parameters:
-    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - ARRAY [Contraction order]
-- Optional Parameters
-    - max_cycles := 1
-    - forbidden_vertices := ARRAY[]::BIGINT[]
-    - directed := true
-- Documentation:
-    - ${PROJECT_DOC_LINK}/pgr_contraction.html
-';
+IS 'pgr_contraction deprecated in 3.8.0';
+
