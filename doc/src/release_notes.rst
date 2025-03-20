@@ -59,6 +59,15 @@ pgRouting 3.8.0 Release Notes
      :start-after: Version 3.8.0
      :end-before: .. rubric
 
+.. rubric:: Official functions changes
+
+* `#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__: pgr_contraction
+
+  .. include:: pgr_contraction.rst
+     :start-after: Version 3.8.0
+     :end-before: .. rubric
+
+
 pgRouting 3.7
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
