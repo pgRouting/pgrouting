@@ -21,10 +21,21 @@ Contraction - Family of functions
 
 .. official-end
 
+.. include:: proposed.rst
+    :start-after: warning-begin
+    :end-before: end-warning
+
+.. proposed-start
+
+* :doc:`pgr_contractionDeadEnd`
+
+.. proposed-end
+
 .. toctree::
     :hidden:
 
     pgr_contraction
+    pgr_contractionDeadEnd
 
 
 Introduction
@@ -47,196 +58,6 @@ Allowing the user to:
 - Forbid contraction on a set of nodes.
 - Decide the order of the contraction algorithms and set the maximum number of
   times they are to be executed.
-
-Dead end contraction
--------------------------------------------------------------------------------
-
-Contraction of the leaf nodes of the graph.
-
-Dead end
-..............................................................................
-
-A node is considered a **dead end** node when
-
-* On undirected graphs:
-
-  * The number of adjacent vertices is 1.
-
-* On directed graphs:
-
-  * The number of adjacent vertices is 1.
-  * There are no outgoing edges and has at least one incoming edge.
-  * There are no incoming edges and has at least one outgoing edge.
-
-
-When the conditions are true then the `Operation: Dead End Contraction`_ can be
-done.
-
-Dead end vertex on undirected graph
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-- The green nodes are `dead end`_ nodes
-- The blue nodes have an unlimited number of edges.
-
-.. graphviz::
-
-    graph G {
-        u, v [shape=circle;style=filled;width=.4;color=deepskyblue];
-        a, b [style=filled; color=green];
-        G [shape=tripleoctagon;width=1.5;style=filled;
-           color=deepskyblue;label = "Rest of the Graph"];
-
-        rankdir=LR;
-        G -- {u, v} [dir=none, weight=1, penwidth=3];
-        u -- a [color=black];
-        u -- a [color=darkgray];
-        v -- b;
-    }
-
-.. list-table::
-   :width: 80
-   :widths: auto
-   :header-rows: 1
-
-   * - Node
-     - Adjacent nodes
-     - Number of adjacent nodes
-   * - :math:`a`
-     - :math:`\{u\}`
-     - 1
-   * - :math:`b`
-     - :math:`\{v\}`
-     - 1
-
-
-Dead end vertex on directed graph
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-- The green nodes are `dead end`_ nodes
-- The blue nodes have an unlimited number of incoming and/or outgoing edges.
-
-.. graphviz::
-
-    digraph G {
-        u, v, w, x, y [shape=circle;style=filled;width=.4;color=deepskyblue];
-        a, b, c, d, e [style=filled; color=green];
-        G [shape=tripleoctagon;width=1.5;style=filled;
-           color=deepskyblue;label = "Rest of the Graph"];
-
-        rankdir=LR;
-        G -> {u, v, w} [dir=none, weight=1, penwidth=3];
-        {x, y} -> G [dir=none, weight=1, penwidth=3];
-        u -> a -> u;
-        v -> b;
-        {w, v} -> c;
-        d -> x;
-        e -> {x, y};
-    }
-
-
-.. list-table::
-   :width: 80
-   :widths: auto
-   :header-rows: 1
-
-   * - Node
-     - Adjacent nodes
-     - Number of adjacent nodes
-     - Number of incoming edges
-     - Number of outgoing edges
-   * - :math:`a`
-     - :math:`\{u\}`
-     - 1
-     -
-     -
-   * - :math:`b`
-     - :math:`\{v\}`
-     - 1
-     -
-     -
-   * - :math:`c`
-     - :math:`\{v, w\}`
-     - 2
-     - 2
-     - 0
-   * - :math:`d`
-     - :math:`\{x\}`
-     - 1
-     -
-     -
-   * - :math:`e`
-     - :math:`\{x, y\}`
-     - 2
-     - 0
-     - 2
-
-
-From above, nodes :math:`\{a, b, d\}` are dead ends because the
-number of adjacent vertices is 1. No further checks are needed for those nodes.
-
-On the following table, nodes :math:`\{c, e\}` because the
-even that the number of adjacent vertices is not 1 for
-
-* :math:`c`
-
-  * There are no outgoing edges and has at least one incoming edge.
-
-* :math:`e`
-
-  * There are no incoming edges and has at least one outgoing edge.
-
-Operation: Dead End Contraction
-...............................................................................
-
-The dead end contraction will stop until there are no more dead end nodes.
-For example from the following graph where :math:`w` is the `dead end`_ node:
-
-.. graphviz::
-
-    digraph G {
-        u, v [shape=circle;style=filled;width=.4;color=deepskyblue];
-        w [style=filled; color=green];
-        "G" [shape=tripleoctagon;style=filled;
-        color=deepskyblue; label = "Rest of the Graph"];
-
-        rankdir=LR;
-        G -> u [dir=none, weight=1, penwidth=3];
-        u -> v -> w;
-    }
-
-
-After contracting :math:`w`, node :math:`v` is now a `dead end`_ node and is
-contracted:
-
-.. graphviz::
-
-    digraph G {
-        u [shape=circle;style=filled;width=.4;color=deepskyblue];
-        v [style=filled; color=green, label="v{w}"];
-        "G" [shape=tripleoctagon;style=filled;
-            color=deepskyblue; label = "Rest of the Graph"];
-
-        rankdir=LR;
-        G -> u [dir=none, weight=1, penwidth=3];
-        u -> v;
-    }
-
-After contracting :math:`v`, stop. Node :math:`u` has the information of nodes
-that were contrcted.
-
-.. graphviz::
-
-    digraph G {
-        u [style=filled; color=green, label="u{v,w}"];
-        "G" [shape=tripleoctagon;style=filled;
-             color=deepskyblue; label = "Rest of the Graph"];
-
-        rankdir=LR;
-        G -> u [dir=none, weight=1, penwidth=3];
-    }
-
-Node :math:`u` has the information of nodes that were contracted.
-
 
 Linear contraction
 -------------------------------------------------------------------------------
