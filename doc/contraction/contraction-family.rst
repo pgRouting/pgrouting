@@ -531,7 +531,7 @@ Use ``is_contracted`` column to indicate the vertices that are contracted.
    :start-after: -- q4
    :end-before: -- q5
 
-Fill ``contracted_vertices`` with the information from the results tha belong to
+Fill ``contracted_vertices`` with the information from the results that belong to
 the vertices.
 
 .. literalinclude:: contraction-family.queries
