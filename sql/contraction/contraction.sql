@@ -79,7 +79,7 @@ CREATE FUNCTION pgr_contraction(
 RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
-    RAISE NOTICE 'Deprecated Signature pgr_contraction(text,boolean,integer[],integer,bigint[]) in v3.8.0';
+    RAISE NOTICE 'Deprecated Signature pgr_contraction(text,bigint[],integer,integer[],bigint[],boolean) in v3.8.0';
     RETURN QUERY
     SELECT a.type, a.id, a.contracted_vertices, a.source, a.target, a.cost
     FROM _pgr_contraction(_pgr_get_statement($1), $2::BIGINT[],  $3, $4, $5) AS a;
