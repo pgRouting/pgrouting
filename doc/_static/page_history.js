@@ -15,6 +15,8 @@ var titles = [
 
 
 var newpages = [
+    {v: '3.8', pages: ['pgr_contractionDeadEnd']},
+
     {v: '3.7', pages: ['metrics-family', 'pgr_betweennessCentrality']},
 
     {v: '3.4', pages: ['TRSP-family', 'pgr_withPointsVia', 'pgr_trsp_withPoints', 'pgr_trspVia_withPoints',

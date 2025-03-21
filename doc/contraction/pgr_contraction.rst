@@ -75,16 +75,13 @@ The main Characteristics are:
 - Currently there are two types of contraction methods included in this
   function:
 
-  - Dead End Contraction. See :doc:`contraction-family`.
+  - Dead End Contraction. See :doc:`pgr_contractionDeadEnd`.
   - Linear Contraction. See :doc:`contraction-family`.
 
 |Boost| Boost Graph Inside
 
 Signatures
 -------------------------------------------------------------------------------
-
-.. index::
-   single: contraction
 
 .. admonition:: \ \
    :class: signatures
