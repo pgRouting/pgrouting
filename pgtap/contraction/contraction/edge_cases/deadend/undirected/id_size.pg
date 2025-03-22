@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(18);
+SELECT plan(12);
 
 SELECT test_ids_size(2, false);
 SELECT test_ids_size(8, false);
