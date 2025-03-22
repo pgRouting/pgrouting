@@ -1,0 +1,179 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+/* -- q1 */
+SELECT * FROM pgr_contractionDeadEnd(
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
+  directed => false);
+ type | id | contracted_vertices | source | target | cost
+------+----+---------------------+--------+--------+------
+ v    |  4 | {2}                 |     -1 |     -1 |   -1
+ v    |  6 | {5}                 |     -1 |     -1 |   -1
+ v    |  7 | {1,3}               |     -1 |     -1 |   -1
+ v    |  8 | {9}                 |     -1 |     -1 |   -1
+ v    | 14 | {13}                |     -1 |     -1 |   -1
+(5 rows)
+
+/* -- q2 */
+SELECT * FROM pgr_contractionDeadEnd(
+$$SELECT * FROM (VALUES
+  (1, 1, 2, 1, 1),
+  (2, 3, 4, 1, -1),
+  (3, 2, 5, 1, 1), (4, 2, 6, 1, 1),
+  (5, 3, 5, 1, 1), (5, 3, 6, 1, 1))
+  AS edges(id,source,target,cost,reverse_cost)$$,
+  directed => true);
+ type | id | contracted_vertices | source | target | cost
+------+----+---------------------+--------+--------+------
+ v    |  2 | {1}                 |     -1 |     -1 |   -1
+ v    |  3 | {4}                 |     -1 |     -1 |   -1
+(2 rows)
+
+/* -- q3 */
+SELECT * FROM pgr_contractionDeadEnd(
+$$SELECT * FROM (VALUES
+  (1, 1, 6, 1, 1),
+  (2, 2, 7, 1, -1),
+  (3, 2, 8, 1, -1),
+  (4, 3, 8, 1, -1),
+  (5, 9, 4, 1, -1),
+  (6, 10, 4, 1, 1),
+  (7, 10, 5, 1, 1),
+  /* Rest of the graph */
+  (8, 1, 25, 1, 1), (9, 1, 26, 1, 1),
+  (10, 2, 25, 1, 1), (11, 2, 26, 1, 1),
+  (12, 3, 25, 1, 1), (13, 3, 26, 1, 1),
+  (14, 4, 25, 1, 1), (15, 4, 26, 1, 1),
+  (16, 5, 25, 1, 1), (17, 5, 26, 1, 1)) AS edges(id,source,target,cost,reverse_cost)$$,
+  directed => true);
+ type | id | contracted_vertices | source | target | cost
+------+----+---------------------+--------+--------+------
+ v    |  1 | {6}                 |     -1 |     -1 |   -1
+ v    |  2 | {7,8}               |     -1 |     -1 |   -1
+ v    |  3 | {8}                 |     -1 |     -1 |   -1
+ v    |  4 | {9}                 |     -1 |     -1 |   -1
+(4 rows)
+
+/* -- q4 */
+SELECT * FROM pgr_contractionDeadEnd(
+$$SELECT * FROM (VALUES
+  (1, 1, 2, 1, -1),
+  (2, 2, 3, 1, -1),
+  /* Rest of the graph */
+  (3, 1, 25, 1, 1), (4, 1, 26, 1, 1),
+  (5, 25, 25, 1, 1), (6, 25, 26, 1, 1)) AS edges(id,source,target,cost,reverse_cost)$$,
+  directed => true);
+ type | id | contracted_vertices | source | target | cost
+------+----+---------------------+--------+--------+------
+ v    |  1 | {2,3}               |     -1 |     -1 |   -1
+(1 row)
+
+/* -- q5 */
+/* -- cg1 */
+ALTER TABLE vertices ADD is_contracted BOOLEAN DEFAULT false;
+ALTER TABLE
+ALTER TABLE vertices ADD contracted_vertices BIGINT[];
+ALTER TABLE
+/* -- cg2 */
+SELECT * INTO contraction_results
+FROM pgr_contractionDeadEnd(
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
+  directed => false);
+SELECT 5
+/* -- cg3 */
+UPDATE vertices
+SET is_contracted = true
+WHERE id IN (SELECT  unnest(contracted_vertices) FROM  contraction_results);
+UPDATE 6
+/* -- cg4 */
+UPDATE vertices
+SET contracted_vertices = contraction_results.contracted_vertices
+FROM contraction_results
+WHERE type = 'v' AND vertices.id = contraction_results.id;
+UPDATE 5
+/* -- cg5 */
+SELECT id, is_contracted
+FROM vertices WHERE is_contracted ORDER BY id;
+ id | is_contracted
+----+---------------
+  1 | t
+  2 | t
+  3 | t
+  5 | t
+  9 | t
+ 13 | t
+(6 rows)
+
+/* -- cg6 */
+DROP VIEW IF EXISTS contracted_graph;
+NOTICE:  view "contracted_graph" does not exist, skipping
+DROP VIEW
+CREATE VIEW contracted_graph AS
+WITH
+vertices_in_graph AS (
+  SELECT id FROM vertices WHERE is_contracted = false
+)
+SELECT id, source, target, cost, reverse_cost
+FROM edges
+WHERE source IN (SELECT * FROM vertices_in_graph)
+AND target IN (SELECT * FROM vertices_in_graph)
+ORDER BY id;
+CREATE VIEW
+/* -- cg7 */
+SELECT *
+FROM pgr_dijkstra('SELECT * FROM contracted_graph', 6, 17);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         6 |      17 |    6 |    4 |    1 |        0
+   2 |        2 |         6 |      17 |    7 |    8 |    1 |        1
+   3 |        3 |         6 |      17 |   11 |   11 |    1 |        2
+   4 |        4 |         6 |      17 |   12 |   13 |    1 |        3
+   5 |        5 |         6 |      17 |   17 |   -1 |    0 |        4
+(5 rows)
+
+/* -- cg8 */
+SELECT * FROM pgr_dijkstra(
+  'WITH cul_de_sac AS (
+    SELECT contracted_vertices || id as v
+    FROM vertices WHERE 1 = ANY(contracted_vertices))
+  SELECT id, source, target, cost, reverse_cost FROM edges, cul_de_sac
+  WHERE source = ANY(v) AND target = ANY(v)
+
+  UNION
+
+  SELECT id, source, target, cost, reverse_cost FROM contracted_graph',
+  1, 17);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         1 |      17 |    1 |    6 |    1 |        0
+   2 |        2 |         1 |      17 |    3 |    7 |    1 |        1
+   3 |        3 |         1 |      17 |    7 |    8 |    1 |        2
+   4 |        4 |         1 |      17 |   11 |    9 |    1 |        3
+   5 |        5 |         1 |      17 |   16 |   15 |    1 |        4
+   6 |        6 |         1 |      17 |   17 |   -1 |    0 |        5
+(6 rows)
+
+/* -- cg9 */
+SELECT * FROM pgr_dijkstra(
+  'WITH cul_de_sac AS (
+    SELECT contracted_vertices || id as v
+    FROM vertices WHERE 1 = ANY(contracted_vertices) OR 9 = ANY(contracted_vertices))
+  SELECT id, source, target, cost, reverse_cost FROM edges, cul_de_sac WHERE source = ANY(v) AND target = ANY(v)
+
+  UNION
+
+  SELECT id, source, target, cost, reverse_cost FROM contracted_graph',
+  1, 9);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         1 |       9 |    1 |    6 |    1 |        0
+   2 |        2 |         1 |       9 |    3 |    7 |    1 |        1
+   3 |        3 |         1 |       9 |    7 |   10 |    1 |        2
+   4 |        4 |         1 |       9 |    8 |   14 |    1 |        3
+   5 |        5 |         1 |       9 |    9 |   -1 |    0 |        4
+(5 rows)
+
+/* -- cg10 */
+ROLLBACK;
+ROLLBACK

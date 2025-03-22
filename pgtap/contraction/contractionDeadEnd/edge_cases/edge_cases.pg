@@ -1,0 +1,60 @@
+/*PGR-GNU*****************************************************************
+
+Copyright (c) 2025  pgRouting developers
+Mail: project@pgrouting.org
+
+------
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ ********************************************************************PGR-GNU*/
+BEGIN;
+
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN min_version('3.8.0') THEN plan(128) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION edge_cases()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  IF NOT min_version('3.8.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'pgr_contractionDeadEnd is new on 3.8.0');
+    RETURN;
+  END IF;
+
+  CALL create_deadend_edge_cases();
+
+  PREPARE graph1(text,text,text) AS
+  SELECT type, id, contracted_vertices FROM pgr_contractionDeadEnd(
+    format($$SELECT id, source, target, cost, reverse_cost FROM edges WHERE id IN (%s) ORDER BY id$$, $1),
+    $3::boolean, $2::INTEGER[]);
+
+  prepare graph(text, text) AS
+  SELECT * FROM pgr_contractionDeadEnd(
+    format($$SELECT * FROM graphs WHERE dead_case IN (%1$s) ORDER BY id$$, $1),
+    $2::boolean);
+
+  RETURN QUERY SELECT deadend_edge_cases('true');
+  RETURN QUERY SELECT deadend_edge_cases('false');
+  RETURN QUERY SELECT deadend_edge_cases_sampledata('true');
+  RETURN QUERY SELECT deadend_edge_cases_sampledata('false');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT edge_cases();
+
+SELECT finish();
+ROLLBACK;
+

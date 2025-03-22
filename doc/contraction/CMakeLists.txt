@@ -2,6 +2,7 @@
 SET(LOCAL_FILES
     contraction-family.rst
     pgr_contraction.rst
+    pgr_contractionDeadEnd.rst
     )
 
 foreach (f ${LOCAL_FILES})

@@ -68,6 +68,12 @@ Proposed Functions
    :start-after: proposed-start
    :end-before: proposed-end
 
+:doc:`contraction-family`
+
+.. include:: contraction-family.rst
+   :start-after: proposed-start
+   :end-before: proposed-end
+
 :doc:`traversal-family`
 
 .. include:: traversal-family.rst

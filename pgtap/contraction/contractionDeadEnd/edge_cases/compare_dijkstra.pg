@@ -1,0 +1,36 @@
+/*PGR-GNU*****************************************************************
+
+Copyright (c) 2025  pgRouting developers
+Mail: project@pgrouting.org
+
+------
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ ********************************************************************PGR-GNU*/
+BEGIN;
+
+SELECT CASE WHEN min_version('3.8.0') THEN plan(654) ELSE plan(4) END;
+UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
+
+ALTER TABLE edges ADD is_new BOOLEAN DEFAULT false, ADD contracted_vertices integer[];
+ALTER TABLE vertices ADD is_contracted BOOLEAN DEFAULT false, ADD contracted_vertices integer[];
+
+CALL create_contracted_graph(false,'pgr_contractionDeadEnd');
+SELECT check_contracted_graph_deadend(false);
+SELECT compare_dijkstra_contraction(false);
+
+CALL create_contracted_graph(true,'pgr_contractionDeadEnd');
+SELECT check_contracted_graph_deadend(true);
+SELECT compare_dijkstra_contraction(true);
+
+SELECT finish();
+ROLLBACK;
