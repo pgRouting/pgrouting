@@ -487,6 +487,21 @@
 </ul>
 </li>
 </ul>
+<p class="rubric">官方功能变更</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2786">#2786</a>: pgr_contraction</p>
+<ul>
+<li><p>New signature:</p>
+<ul>
+<li><p>Previously compulsory parameter <strong>Contraction order</strong> is now optional with
+name <code class="docutils literal notranslate"><span class="pre">methods</span></code>.</p></li>
+<li><p>New name and order of optional parameters.</p></li>
+</ul>
+</li>
+<li><p>Deprecated signature pgr_contraction(text,bigint[],integer,bigint[],boolean)</p></li>
+</ul>
+</li>
+</ul>
 </section>
 </section>
 <section id="pgrouting-3-7">
@@ -2383,7 +2398,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on 3月 08, 2025.<br/>
+      Last updated on 3月 22, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
