@@ -1,6 +1,6 @@
 /*PGR-GNU*****************************************************************
 
-Copyright (c) 2023  pgRouting developers
+Copyright (c) 2025  pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -18,13 +18,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
 
-UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(12);
+SELECT CASE WHEN min_version('3.8.0') THEN plan(654) ELSE plan(4) END;
+UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
-SELECT test_ids_size(2, true);
-SELECT test_ids_size(8, true);
-SELECT test_ids_size(12, true);
+ALTER TABLE edges ADD is_new BOOLEAN DEFAULT false, ADD contracted_vertices integer[];
+ALTER TABLE vertices ADD is_contracted BOOLEAN DEFAULT false, ADD contracted_vertices integer[];
 
+CALL create_contracted_graph(false,'pgr_contractionLinear');
+SELECT check_contracted_graph_linear(false);
+SELECT compare_dijkstra_contraction(false);
+
+CALL create_contracted_graph(true,'pgr_contractionLinear');
+SELECT check_contracted_graph_linear(true);
+SELECT compare_dijkstra_contraction(true);
 
 SELECT finish();
 ROLLBACK;
