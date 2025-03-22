@@ -72,6 +72,7 @@ pgRouting 3.8.0 Release Notes
 * Contraction
 
   * `#2790 <https://github.com/pgRouting/pgrouting/issues/2790>`__: pgr_contractionDeadEnd
+  * `#2791 <https://github.com/pgRouting/pgrouting/issues/2791>`__: pgr_contractionLinear
 
 pgRouting 3.7
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
