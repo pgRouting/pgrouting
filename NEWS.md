@@ -129,6 +129,7 @@ milestone for 4.0.0
 * Contraction
 
   * [#2790](https://github.com/pgRouting/pgrouting/issues/2790): pgr_contractionDeadEnd
+  * [#2791](https://github.com/pgRouting/pgrouting/issues/2791): pgr_contractionLinear
 
 ## pgRouting 3.7
 
