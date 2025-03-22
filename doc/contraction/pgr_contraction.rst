@@ -76,7 +76,7 @@ The main Characteristics are:
   function:
 
   - Dead End Contraction. See :doc:`pgr_contractionDeadEnd`.
-  - Linear Contraction. See :doc:`contraction-family`.
+  - Linear Contraction. See :doc:`pgr_contractionLinear`.
 
 |Boost| Boost Graph Inside
 
@@ -238,12 +238,12 @@ Only linear contraction
 The cycle
 ................................................................................
 
-Contracting a graph can be done with more than one operation.
+Contracting a graph, can be done with more than one operation.
 The order of the operations affect the resulting contracted graph, after
 applying one operation, the set of vertices that can be contracted
 by another operation changes.
 
-This implementation cycles ``cycles`` times through the ``methods`` .
+This implementation, cycles ``cycles`` times through the ``methods`` .
 
 .. parsed-literal::
 
