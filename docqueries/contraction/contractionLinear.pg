@@ -1,0 +1,93 @@
+-- CopyRight(c) pgRouting developers
+-- Creative Commons Attribution-Share Alike 3.0 License : https://creativecommons.org/licenses/by-sa/3.0/
+/* -- q1 */
+SELECT * FROM pgr_contractionLinear(
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
+  directed => false);
+/* -- q2 */
+SELECT * FROM pgr_contractionLinear(
+$$SELECT * FROM (VALUES
+  (1, 1, 2, 1, -1),
+  (2, 2, 3, 3, 4))
+  AS edges(id,source,target,cost,reverse_cost)$$,
+  directed => true);
+/* -- q3 */
+SELECT * FROM pgr_contractionLinear(
+$$SELECT * FROM (VALUES
+  (1, 1, 2, 1, -1),
+  (2, 2, 3, 3, 4))
+  AS edges(id,source,target,cost,reverse_cost)$$,
+  directed => false);
+/* -- q4 */
+SELECT * FROM pgr_contractionLinear(
+$$SELECT * FROM (VALUES
+  (1, 1, 2, 1, 2),
+  (2, 2, 3, 3, 4))
+  AS edges(id,source,target,cost,reverse_cost)$$,
+  directed => true);
+/* -- q5 */
+SELECT * FROM pgr_contractionLinear(
+$$SELECT * FROM (VALUES
+  (1, 1, 2, 1, 2),
+  (2, 2, 3, 3, 4))
+  AS edges(id,source,target,cost,reverse_cost)$$,
+  directed => false);
+/* -- q6 */
+SELECT * FROM pgr_contractionLinear(
+$$SELECT * FROM (VALUES
+  (1, 1, 2, 1),
+  (2, 2, 3, 1),
+  (2, 3, 4, 1))
+  AS edges(id,source,target,cost)$$);
+/* -- q7 */
+-- CopyRight(c) pgRouting developers
+-- Creative Commons Attribution-Share Alike 3.0 License : https://creativecommons.org/licenses/by-sa/3.0/
+
+/* -- cg1 */
+ALTER TABLE vertices ADD is_contracted BOOLEAN DEFAULT false;
+ALTER TABLE edges ADD is_new BOOLEAN DEFAULT false;
+ALTER TABLE edges ADD contracted_vertices BIGINT[];
+/* -- cg2 */
+SELECT * INTO contraction_results
+FROM pgr_contractionLinear(
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
+  directed => false);
+/* -- cg3 */
+UPDATE vertices
+SET is_contracted = true
+WHERE id IN (SELECT  unnest(contracted_vertices) FROM  contraction_results);
+/* -- cg4 */
+SELECT id, is_contracted
+FROM vertices WHERE is_contracted ORDER BY id;
+/* -- cg5 */
+INSERT INTO edges(source, target, cost, reverse_cost, contracted_vertices, is_new)
+SELECT source, target, cost, -1, contracted_vertices, true
+FROM contraction_results;
+/* -- cg6 */
+CREATE VIEW contracted_graph AS
+WITH
+vertices_in_graph AS (
+  SELECT id FROM vertices WHERE NOT is_contracted
+)
+SELECT id, source, target, cost, reverse_cost
+FROM edges
+WHERE source IN (SELECT * FROM vertices_in_graph)
+AND target IN (SELECT * FROM vertices_in_graph)
+ORDER BY id;
+/* -- cg7 */
+SELECT * FROM contracted_graph ORDER by id;
+/* -- cg8 */
+SELECT *
+FROM pgr_dijkstra('SELECT * FROM contracted_graph', 7, 16);
+/* -- cg9 */
+SELECT * FROM pgr_dijkstra(
+  'WITH in_line AS (SELECT contracted_vertices FROM edges WHERE 17 = ANY(contracted_vertices))
+   SELECT id, source, target, cost, reverse_cost
+   FROM edges, in_line
+   WHERE source = ANY(in_line.contracted_vertices) OR target = ANY(in_line.contracted_vertices)
+
+  UNION
+
+  SELECT id, source, target, cost, reverse_cost FROM contracted_graph',
+  1, 17);
+/* -- cg10 */
