@@ -328,7 +328,7 @@ all incoming edges otherwise it is not a dead end.
      10 [pos="5,0!"];
     }
 
-Stop by step dead end contraction
+Step by step dead end contraction
 ...............................................................................
 
 The dead end contraction will stop until there are no more dead end nodes.
@@ -371,7 +371,7 @@ contracted:
     }
 
 After contracting :math:`2`, stop. Node :math:`1` has the information of nodes
-that were contrcted.
+that were contracted.
 
 .. graphviz::
 

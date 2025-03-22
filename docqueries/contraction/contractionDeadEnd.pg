@@ -61,6 +61,7 @@ WHERE type = 'v' AND vertices.id = contraction_results.id;
 SELECT id, is_contracted
 FROM vertices WHERE is_contracted ORDER BY id;
 /* -- cg6 */
+DROP VIEW IF EXISTS contracted_graph;
 CREATE VIEW contracted_graph AS
 WITH
 vertices_in_graph AS (
