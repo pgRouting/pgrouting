@@ -2,6 +2,7 @@
 SET(LOCAL_FILES
     contraction
     contractionDeadEnd
+    contractionLinear
     )
 
 foreach (f ${LOCAL_FILES})
