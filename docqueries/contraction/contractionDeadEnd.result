@@ -106,6 +106,9 @@ FROM vertices WHERE is_contracted ORDER BY id;
 (6 rows)
 
 /* -- cg6 */
+DROP VIEW IF EXISTS contracted_graph;
+NOTICE:  view "contracted_graph" does not exist, skipping
+DROP VIEW
 CREATE VIEW contracted_graph AS
 WITH
 vertices_in_graph AS (
