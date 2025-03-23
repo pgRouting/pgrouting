@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-22 15:34+0000\n"
+"POT-Creation-Date: 2025-03-23 20:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2802,143 +2802,6 @@ msgid ""
 " of times they are to be executed."
 msgstr ""
 
-msgid "In the algorithm, linear contraction is represented by 2."
-msgstr ""
-
-msgid "Linear"
-msgstr ""
-
-msgid "In case of an undirected graph, a node is considered a `linear` node when"
-msgstr ""
-
-msgid "The number of adjacent vertices is 2."
-msgstr ""
-
-msgid "In case of a directed graph, a node is considered a `linear` node when"
-msgstr ""
-
-msgid "Linearity is symmetrical"
-msgstr ""
-
-msgid "Linear vertex on undirected graph"
-msgstr ""
-
-msgid "The green nodes are `linear`_ nodes"
-msgstr ""
-
-msgid "The blue nodes have an unlimited number of incoming and outgoing edges."
-msgstr ""
-
-msgid "Undirected"
-msgstr ""
-
-msgid "Node"
-msgstr ""
-
-msgid "Adjacent nodes"
-msgstr ""
-
-msgid "Number of adjacent nodes"
-msgstr ""
-
-msgid ":math:`v`"
-msgstr ""
-
-#, python-brace-format
-msgid ":math:`\\{u, w\\}`"
-msgstr ""
-
-msgid "2"
-msgstr ""
-
-msgid "Linear vertex on directed graph"
-msgstr ""
-
-msgid "The white node is not linear because the linearity is not symmetrical."
-msgstr ""
-
-msgid "It is possible to go :math:`y \\rightarrow c \\rightarrow z`"
-msgstr ""
-
-msgid "It's not possible to go :math:`z \\rightarrow c \\rightarrow y`"
-msgstr ""
-
-msgid "Is symmetrical?"
-msgstr ""
-
-msgid ":math:`a`"
-msgstr ""
-
-#, python-brace-format
-msgid ":math:`\\{u, v\\}`"
-msgstr ""
-
-msgid "yes"
-msgstr ""
-
-msgid ":math:`b`"
-msgstr ""
-
-#, python-brace-format
-msgid ":math:`\\{w, x\\}`"
-msgstr ""
-
-msgid ":math:`c`"
-msgstr ""
-
-#, python-brace-format
-msgid ":math:`\\{y, z\\}`"
-msgstr ""
-
-msgid "no"
-msgstr ""
-
-msgid "Operation: Linear Contraction"
-msgstr ""
-
-msgid ""
-"The linear contraction will stop when there are no more linear nodes. For"
-" example from the following graph where :math:`v` and :math:`w` are "
-"`linear`_ nodes:"
-msgstr ""
-
-msgid "Contracting :math:`w`,"
-msgstr ""
-
-msgid "The vertex :math:`w` is removed from the graph"
-msgstr ""
-
-msgid ""
-"The edges :math:`v \\rightarrow w` and :math:`w \\rightarrow z` are "
-"removed from the graph."
-msgstr ""
-
-msgid ""
-"A new edge :math:`v \\rightarrow z` is inserted represented with red "
-"color."
-msgstr ""
-
-msgid "Contracting :math:`v`:"
-msgstr ""
-
-msgid "The vertex :math:`v` is removed from the graph"
-msgstr ""
-
-msgid ""
-"The edges :math:`u \\rightarrow v` and :math:`v \\rightarrow z` are "
-"removed from the graph."
-msgstr ""
-
-msgid ""
-"A new edge :math:`u \\rightarrow z` is inserted represented with red "
-"color."
-msgstr ""
-
-msgid ""
-"Edge :math:`u \\rightarrow z` has the information of nodes that were "
-"contracted."
-msgstr ""
-
 msgid "https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf"
 msgstr ""
 
@@ -4115,6 +3978,11 @@ msgstr ""
 msgid ""
 "`#2790 <https://github.com/pgRouting/pgrouting/issues/2790>`__: "
 "pgr_contractionDeadEnd"
+msgstr ""
+
+msgid ""
+"`#2791 <https://github.com/pgRouting/pgrouting/issues/2791>`__: "
+"pgr_contractionLinear"
 msgstr ""
 
 msgid "All releases"
@@ -9292,7 +9160,7 @@ msgstr ""
 msgid "Dead End Contraction. See :doc:`pgr_contractionDeadEnd`."
 msgstr ""
 
-msgid "Linear Contraction. See :doc:`contraction-family`."
+msgid "Linear Contraction. See :doc:`pgr_contractionLinear`."
 msgstr ""
 
 msgid "pgr_contraction(`Edges SQL`_, [**options**])"
@@ -9672,6 +9540,12 @@ msgstr ""
 msgid "The blue nodes have an unlimited number of incoming and/or outgoing edges."
 msgstr ""
 
+msgid "Node"
+msgstr ""
+
+msgid "Adjacent nodes"
+msgstr ""
+
 msgid "Dead end"
 msgstr ""
 
@@ -9788,6 +9662,149 @@ msgid "Using when departure/destination is not in the contracted graph"
 msgstr ""
 
 msgid "Using when departure and destination are not in the contracted graph"
+msgstr ""
+
+msgid "``pgr_contractionLinear`` - Proposed"
+msgstr ""
+
+msgid ""
+"``pgr_contractionLinear`` — Performs graph contraction and returns the "
+"contracted vertices and edges."
+msgstr ""
+
+msgid "pgr_contractionLinear(`Edges SQL`_, [**options**])"
+msgstr ""
+
+msgid "**options:** ``[directed, max_cycles, forbidden_vertices]``"
+msgstr ""
+
+msgid "Linear contraction on an undirected graph."
+msgstr ""
+
+msgid ""
+"The green nodes are linear nodes and will not be part of the contracted "
+"graph."
+msgstr ""
+
+msgid "All edges adjacent will not be part of the contracted graph."
+msgstr ""
+
+msgid "The red lines will be new edges of the contracted graph."
+msgstr ""
+
+msgid "**contraction Order**"
+msgstr ""
+
+msgid ""
+"Number of times the contraction operations on ``contraction_order`` will "
+"be performed."
+msgstr ""
+
+msgid "A node connects two (or more) `linear` edges when"
+msgstr ""
+
+msgid "The number of adjacent vertices is 2."
+msgstr ""
+
+msgid "In case of a directed graph, a node is considered a `linear` node when"
+msgstr ""
+
+msgid "Linearity is symmetrical."
+msgstr ""
+
+msgid "Linearity is not symmetrical"
+msgstr ""
+
+msgid "Graph where linearity is not symmetrical."
+msgstr ""
+
+msgid ""
+"When the graph is processed as a directed graph, linearity is not "
+"symmetrical, therefore the graph can not be contracted."
+msgstr ""
+
+msgid ""
+"When the same graph is processed as an undirected graph, linearity is "
+"symmetrical, therefore the graph can be contracted."
+msgstr ""
+
+msgid "The three edges can be replaced by one undirected edge"
+msgstr ""
+
+msgid "Edge :math:`1 - 3`."
+msgstr ""
+
+msgid "With cost: :math:`4`."
+msgstr ""
+
+#, python-brace-format
+msgid "Contracted vertices in the edge: :math:`\\{2\\}`."
+msgstr ""
+
+msgid "Linearity is symmetrical"
+msgstr ""
+
+msgid "Graph where linearity is symmetrical."
+msgstr ""
+
+msgid "The four edges can be replaced by two directed edges."
+msgstr ""
+
+msgid "Edge :math:`3 - 1`."
+msgstr ""
+
+msgid "With cost: :math:`6`."
+msgstr ""
+
+msgid "The four edges can be replaced by one undirected edge."
+msgstr ""
+
+msgid "Step by step linear contraction"
+msgstr ""
+
+msgid ""
+"The linear contraction will stop when there are no more linear edges. For"
+" example from the following graph there are linear edges"
+msgstr ""
+
+msgid "Contracting vertex :math:`3`,"
+msgstr ""
+
+msgid "The vertex :math:`3` is removed from the graph"
+msgstr ""
+
+msgid ""
+"The edges :math:`2 \\rightarrow 3` and :math:`w \\rightarrow z` are "
+"removed from the graph."
+msgstr ""
+
+msgid ""
+"A new edge :math:`2 \\rightarrow 4` is inserted represented with red "
+"color."
+msgstr ""
+
+msgid "Contracting vertex :math:`2`:"
+msgstr ""
+
+msgid "The vertex :math:`2` is removed from the graph"
+msgstr ""
+
+msgid ""
+"The edges :math:`1 \\rightarrow 2` and :math:`2 \\rightarrow 3` are "
+"removed from the graph."
+msgstr ""
+
+msgid ""
+"A new edge :math:`1 \\rightarrow 3` is inserted represented with red "
+"color."
+msgstr ""
+
+msgid ""
+"Edge :math:`1 \\rightarrow 3` has the information of cost and the nodes "
+"that were contracted."
+msgstr ""
+
+msgid "Create the contracted graph."
 msgstr ""
 
 msgid "``pgr_createTopology``"
