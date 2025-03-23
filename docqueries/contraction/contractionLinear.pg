@@ -40,9 +40,6 @@ $$SELECT * FROM (VALUES
   (2, 3, 4, 1))
   AS edges(id,source,target,cost)$$);
 /* -- q7 */
--- CopyRight(c) pgRouting developers
--- Creative Commons Attribution-Share Alike 3.0 License : https://creativecommons.org/licenses/by-sa/3.0/
-
 /* -- cg1 */
 ALTER TABLE vertices ADD is_contracted BOOLEAN DEFAULT false;
 ALTER TABLE edges ADD is_new BOOLEAN DEFAULT false;
