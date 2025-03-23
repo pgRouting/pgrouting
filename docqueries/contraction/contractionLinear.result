@@ -6,13 +6,10 @@ SET
 SELECT * FROM pgr_contractionLinear(
   'SELECT id, source, target, cost, reverse_cost FROM edges',
   directed => false);
- type | id | contracted_vertices | source | target | cost
-------+----+---------------------+--------+--------+------
- e    | -1 | {3}                 |      1 |      7 |    2
- e    | -2 | {17}                |     12 |     16 |    2
- e    | -3 | {15}                |     10 |     16 |    2
-(3 rows)
-
+ERROR:  function pgr_contractionlinear(unknown, directed => boolean) does not exist
+LINE 2: SELECT * FROM pgr_contractionLinear(
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
 /* -- q2 */
 SELECT * FROM pgr_contractionLinear(
 $$SELECT * FROM (VALUES
@@ -20,10 +17,7 @@ $$SELECT * FROM (VALUES
   (2, 2, 3, 3, 4))
   AS edges(id,source,target,cost,reverse_cost)$$,
   directed => true);
- type | id | contracted_vertices | source | target | cost
-------+----+---------------------+--------+--------+------
-(0 rows)
-
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
 /* -- q3 */
 SELECT * FROM pgr_contractionLinear(
 $$SELECT * FROM (VALUES
@@ -31,11 +25,7 @@ $$SELECT * FROM (VALUES
   (2, 2, 3, 3, 4))
   AS edges(id,source,target,cost,reverse_cost)$$,
   directed => false);
- type | id | contracted_vertices | source | target | cost
-------+----+---------------------+--------+--------+------
- e    | -1 | {2}                 |      1 |      3 |    4
-(1 row)
-
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
 /* -- q4 */
 SELECT * FROM pgr_contractionLinear(
 $$SELECT * FROM (VALUES
@@ -43,12 +33,7 @@ $$SELECT * FROM (VALUES
   (2, 2, 3, 3, 4))
   AS edges(id,source,target,cost,reverse_cost)$$,
   directed => true);
- type | id | contracted_vertices | source | target | cost
-------+----+---------------------+--------+--------+------
- e    | -1 | {2}                 |      1 |      3 |    4
- e    | -2 | {2}                 |      3 |      1 |    6
-(2 rows)
-
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
 /* -- q5 */
 SELECT * FROM pgr_contractionLinear(
 $$SELECT * FROM (VALUES
@@ -56,11 +41,7 @@ $$SELECT * FROM (VALUES
   (2, 2, 3, 3, 4))
   AS edges(id,source,target,cost,reverse_cost)$$,
   directed => false);
- type | id | contracted_vertices | source | target | cost
-------+----+---------------------+--------+--------+------
- e    | -1 | {2}                 |      1 |      3 |    4
-(1 row)
-
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
 /* -- q6 */
 SELECT * FROM pgr_contractionLinear(
 $$SELECT * FROM (VALUES
@@ -68,47 +49,35 @@ $$SELECT * FROM (VALUES
   (2, 2, 3, 1),
   (2, 3, 4, 1))
   AS edges(id,source,target,cost)$$);
- type | id | contracted_vertices | source | target | cost
-------+----+---------------------+--------+--------+------
- e    | -1 | {2,3}               |      1 |      4 |    3
-(1 row)
-
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
 /* -- q7 */
--- CopyRight(c) pgRouting developers
--- Creative Commons Attribution-Share Alike 3.0 License : https://creativecommons.org/licenses/by-sa/3.0/
 /* -- cg1 */
 ALTER TABLE vertices ADD is_contracted BOOLEAN DEFAULT false;
-ALTER TABLE
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
 ALTER TABLE edges ADD is_new BOOLEAN DEFAULT false;
-ALTER TABLE
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
 ALTER TABLE edges ADD contracted_vertices BIGINT[];
-ALTER TABLE
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
 /* -- cg2 */
 SELECT * INTO contraction_results
 FROM pgr_contractionLinear(
   'SELECT id, source, target, cost, reverse_cost FROM edges',
   directed => false);
-SELECT 3
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
 /* -- cg3 */
 UPDATE vertices
 SET is_contracted = true
 WHERE id IN (SELECT  unnest(contracted_vertices) FROM  contraction_results);
-UPDATE 3
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
 /* -- cg4 */
 SELECT id, is_contracted
 FROM vertices WHERE is_contracted ORDER BY id;
- id | is_contracted
-----+---------------
-  3 | t
- 15 | t
- 17 | t
-(3 rows)
-
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
 /* -- cg5 */
 INSERT INTO edges(source, target, cost, reverse_cost, contracted_vertices, is_new)
 SELECT source, target, cost, -1, contracted_vertices, true
 FROM contraction_results;
-INSERT 0 3
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
 /* -- cg6 */
 CREATE VIEW contracted_graph AS
 WITH
@@ -120,38 +89,14 @@ FROM edges
 WHERE source IN (SELECT * FROM vertices_in_graph)
 AND target IN (SELECT * FROM vertices_in_graph)
 ORDER BY id;
-CREATE VIEW
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
 /* -- cg7 */
 SELECT * FROM contracted_graph ORDER by id;
- id | source | target | cost | reverse_cost
-----+--------+--------+------+--------------
-  1 |      5 |      6 |    1 |            1
-  2 |      6 |     10 |   -1 |            1
-  4 |      6 |      7 |    1 |            1
-  5 |     10 |     11 |    1 |           -1
-  8 |      7 |     11 |    1 |            1
-  9 |     11 |     16 |    1 |            1
- 10 |      7 |      8 |    1 |            1
- 11 |     11 |     12 |    1 |           -1
- 12 |      8 |     12 |    1 |           -1
- 14 |      8 |      9 |    1 |            1
- 17 |      2 |      4 |    1 |            1
- 18 |     13 |     14 |    1 |            1
- 19 |      1 |      7 |    2 |           -1
- 20 |     12 |     16 |    2 |           -1
- 21 |     10 |     16 |    2 |           -1
-(15 rows)
-
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
 /* -- cg8 */
 SELECT *
 FROM pgr_dijkstra('SELECT * FROM contracted_graph', 7, 16);
- seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
------+----------+-----------+---------+------+------+------+----------
-   1 |        1 |         7 |      16 |    7 |    8 |    1 |        0
-   2 |        2 |         7 |      16 |   11 |    9 |    1 |        1
-   3 |        3 |         7 |      16 |   16 |   -1 |    0 |        2
-(3 rows)
-
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
 /* -- cg9 */
 SELECT * FROM pgr_dijkstra(
   'WITH in_line AS (SELECT contracted_vertices FROM edges WHERE 17 = ANY(contracted_vertices))
@@ -163,15 +108,7 @@ SELECT * FROM pgr_dijkstra(
 
   SELECT id, source, target, cost, reverse_cost FROM contracted_graph',
   1, 17);
- seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
------+----------+-----------+---------+------+------+------+----------
-   1 |        1 |         1 |      17 |    1 |   19 |    2 |        0
-   2 |        2 |         1 |      17 |    7 |    8 |    1 |        2
-   3 |        3 |         1 |      17 |   11 |    9 |    1 |        3
-   4 |        4 |         1 |      17 |   16 |   15 |    1 |        4
-   5 |        5 |         1 |      17 |   17 |   -1 |    0 |        5
-(5 rows)
-
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
 /* -- cg10 */
 ROLLBACK;
 ROLLBACK
