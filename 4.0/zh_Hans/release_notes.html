@@ -16,7 +16,7 @@
     <script src="_static/documentation_options.js?v=1b67ac13"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=fa54846d"></script>
+    <script src="_static/page_history.js?v=7e05f4e6"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -595,6 +595,30 @@ milestone for 4.0.0</a></p>
 <li><p>Error messages adjustment.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">partial</span></code> option is removed.</p></li>
 <li><p>Function promoted to official.</p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">官方功能变更</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2786">#2786</a>: pgr_contraction</p>
+<ul>
+<li><p>New signature:</p>
+<ul>
+<li><p>Previously compulsory parameter <strong>Contraction order</strong> is now optional with
+name <code class="docutils literal notranslate"><span class="pre">methods</span></code>.</p></li>
+<li><p>New name and order of optional parameters.</p></li>
+</ul>
+</li>
+<li><p>Deprecated signature pgr_contraction(text,bigint[],integer,bigint[],boolean)</p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">新的拟议函数</p>
+<ul class="simple">
+<li><p>Contraction</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2790">#2790</a>: pgr_contractionDeadEnd</p></li>
+<li><p><a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/2791">#2791</a>: pgr_contractionLinear</p></li>
 </ul>
 </li>
 </ul>
@@ -2503,7 +2527,7 @@ pgr_lengauerTarjanDominatorTree triggers an assertion</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v4.0.<br/>
-      Last updated on 3月 08, 2025.<br/>
+      Last updated on 3月 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
