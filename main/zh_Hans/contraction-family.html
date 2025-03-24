@@ -16,8 +16,7 @@
     <script src="_static/documentation_options.js?v=b671dda4"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=cd83b21e"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/page_history.js?v=7e05f4e6"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -99,15 +98,6 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">收缩 - 函数族</a><ul>
 <li><a class="reference internal" href="#introduction">介绍</a></li>
-<li><a class="reference internal" href="#linear-contraction">线性收缩</a><ul>
-<li><a class="reference internal" href="#linear">线性</a><ul>
-<li><a class="reference internal" href="#linear-vertex-on-undirected-graph">无向图上的线性顶点</a></li>
-<li><a class="reference internal" href="#linear-vertex-on-directed-graph">有向图上的线性顶点</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#operation-linear-contraction">操作：线性收缩</a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#see-also">另请参阅</a></li>
 </ul>
 </li>
@@ -157,15 +147,6 @@
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
 <li><a class="reference internal" href="#">收缩 - 函数族</a><ul>
 <li><a class="reference internal" href="#introduction">介绍</a></li>
-<li><a class="reference internal" href="#linear-contraction">线性收缩</a><ul>
-<li><a class="reference internal" href="#linear">线性</a><ul>
-<li><a class="reference internal" href="#linear-vertex-on-undirected-graph">无向图上的线性顶点</a></li>
-<li><a class="reference internal" href="#linear-vertex-on-directed-graph">有向图上的线性顶点</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#operation-linear-contraction">操作：线性收缩</a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#see-also">另请参阅</a></li>
 </ul>
 </li>
@@ -200,7 +181,7 @@
 <li><p><a class="reference internal" href="pgr_contraction.html"><span class="doc">pgr_contraction</span></a></p></li>
 </ul>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="e7f2415b-8c61-4361-af6e-3f8653b0d78a" name="e7f2415b-8c61-4361-af6e-3f8653b0d78a" type="checkbox"><label class="sphinx_collapse__label" for="e7f2415b-8c61-4361-af6e-3f8653b0d78a"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="18e86666-5ca8-4c3d-a088-bb082e95be9f" name="18e86666-5ca8-4c3d-a088-bb082e95be9f" type="checkbox"><label class="sphinx_collapse__label" for="18e86666-5ca8-4c3d-a088-bb082e95be9f"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>下一版本的拟议功能。</p>
@@ -239,158 +220,9 @@
 <li><p>决定收缩算法的顺序并设置它们要执行的最大次数。</p></li>
 </ul>
 </section>
-<section id="linear-contraction">
-<h2>线性收缩<a class="headerlink" href="#linear-contraction" title="Link to this heading">¶</a></h2>
-<p>算法中，线性收缩用2表示。</p>
-<section id="linear">
-<h3>线性<a class="headerlink" href="#linear" title="Link to this heading">¶</a></h3>
-<p>在无向图的情况下，当满足以下条件时，节点被视为`线性`节点</p>
-<ul class="simple">
-<li><p>相邻顶点的数量为2。</p></li>
-</ul>
-<p>在有向图的情况下，当满足以下条件时，节点被视为`线性`节点</p>
-<ul class="simple">
-<li><p>相邻顶点的数量为2。</p></li>
-<li><p>线性是对称的</p></li>
-</ul>
-<section id="linear-vertex-on-undirected-graph">
-<h4>无向图上的线性顶点<a class="headerlink" href="#linear-vertex-on-undirected-graph" title="Link to this heading">¶</a></h4>
-<ul class="simple">
-<li><p>绿色节点是 <a class="reference internal" href="#linear">线性</a> 节点</p></li>
-<li><p>蓝色节点具有无限数量的传入和传出边缘。</p></li>
-</ul>
-<p class="rubric">无向</p>
-<div class="graphviz"><img src="_images/graphviz-9872665dd650fbe4b56184b4e266e5e885f76331.png" alt="graph G {
-    u, w [shape=circle;style=filled;width=.4;color=deepskyblue];
-    v [style=filled; color=green];
-    G [shape=tripleoctagon;width=1.5;style=filled;
-       color=deepskyblue;label = &quot;Rest of the Graph&quot;];
-
-    rankdir=LR;
-    w -- G -- u [dir=none, weight=1, penwidth=3];
-    u -- v -- w;
-}" class="graphviz" /></div>
-<table class="docutils align-default" style="width: 80">
-<thead>
-<tr class="row-odd"><th class="head"><p>节点</p></th>
-<th class="head"><p>Adjacent nodes</p></th>
-<th class="head"><p>相邻节点数</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(v\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\{u, w\}\)</span></p></td>
-<td><p>2</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="linear-vertex-on-directed-graph">
-<h4>有向图上的线性顶点<a class="headerlink" href="#linear-vertex-on-directed-graph" title="Link to this heading">¶</a></h4>
-<ul class="simple">
-<li><p>绿色节点是 <a class="reference internal" href="#linear">线性</a> 节点</p></li>
-<li><p>蓝色节点具有无限数量的传入和传出边缘。</p></li>
-<li><p>The white node is not linear because the linearity is not symmetrical.</p>
-<ul>
-<li><p>它是可能去走 <span class="math notranslate nohighlight">\(y \rightarrow c \rightarrow z\)</span></p></li>
-<li><p>不可能走 <span class="math notranslate nohighlight">\(z \rightarrow c \rightarrow y\)</span></p></li>
-</ul>
-</li>
-</ul>
-<div class="graphviz"><img src="_images/graphviz-0da6d285bf608f2fff32cc1bdf6e36ad07471c0e.png" alt="digraph G {
-    u, v, w, x, y, z [shape=circle;style=filled;width=.4;color=deepskyblue];
-    a, b [style=filled; color=green];
-    G [shape=tripleoctagon;width=1.5;style=filled;
-      color=deepskyblue;label = &quot;Rest of the Graph&quot;];
-
-    rankdir=LR;
-    {u, v} -&gt; G -&gt; {x, w, y, z} [dir=none, weight=1, penwidth=3];
-    u -&gt; a -&gt; v;
-    w -&gt; b -&gt; x;
-    x -&gt; b -&gt; w [color=darkgray];
-    y -&gt; c -&gt; z -&gt; c;
-}" class="graphviz" /></div>
-<table class="docutils align-default" style="width: 80">
-<thead>
-<tr class="row-odd"><th class="head"><p>节点</p></th>
-<th class="head"><p>Adjacent nodes</p></th>
-<th class="head"><p>相邻节点数</p></th>
-<th class="head"><p>是对称的吗？</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(a\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\{u, v\}\)</span></p></td>
-<td><p>2</p></td>
-<td><p>是</p></td>
-</tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(b\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\{w, x\}\)</span></p></td>
-<td><p>2</p></td>
-<td><p>是</p></td>
-</tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(c\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\{y, z\}\)</span></p></td>
-<td><p>2</p></td>
-<td><p>否</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="operation-linear-contraction">
-<h3>操作：线性收缩<a class="headerlink" href="#operation-linear-contraction" title="Link to this heading">¶</a></h3>
-<p>当不再有线性节点时，线性收缩将停止。 例如，在下图中，其中 <span class="math notranslate nohighlight">\(v\)</span> 和 <span class="math notranslate nohighlight">\(w\)</span> 是 <a class="reference internal" href="#linear">线性</a> 节点：</p>
-<div class="graphviz"><img src="_images/graphviz-2d88b57dd1d5f0b63e43ffdfe4ae05ae0ac068c5.png" alt="digraph G {
-    u, z [shape=circle;style=filled;color=deepskyblue];
-    v, w [style=filled; color=green];
-    &quot;G&quot; [shape=tripleoctagon; style=filled;
-         color=deepskyblue;label = &quot;Rest of the Graph&quot;];
-
-    rankdir=LR;
-    G -&gt; {u, z} [dir=none, weight=1, penwidth=3];
-    u -&gt; v -&gt; w -&gt; z;
-}" class="graphviz" /></div>
-<p>收缩 <span class="math notranslate nohighlight">\(w\)</span>，</p>
-<ul class="simple">
-<li><p>顶点 <span class="math notranslate nohighlight">\(w\)</span> 已从图中移除</p></li>
-<li><p>从图中删除边 <span class="math notranslate nohighlight">\(v \rightarrow w\)</span> 和 <span class="math notranslate nohighlight">\(w \rightarrow z\)</span>。</p></li>
-<li><p>插入一条新边 <span class="math notranslate nohighlight">\(v \rightarrow z\)</span>，以红色表示。</p></li>
-</ul>
-<div class="graphviz"><img src="_images/graphviz-daa8aad1710941b016da236c5d7f49e64bf04a5f.png" alt="digraph G {
-    u, z [shape=circle;style=filled;color=deepskyblue];
-    v [style=filled; color=green];
-    &quot;G&quot; [shape=tripleoctagon; style=filled;
-         color=deepskyblue;label = &quot;Rest of the Graph&quot;];
-
-    rankdir=LR;
-    G -&gt; {u, z} [dir=none, weight=1, penwidth=3];
-    u -&gt; v;
-    v -&gt; z [label=&quot;{w}&quot;;color=red]
-}" class="graphviz" /></div>
-<p>收缩 <span class="math notranslate nohighlight">\(v\)</span>：</p>
-<ul class="simple">
-<li><p>顶点 <span class="math notranslate nohighlight">\(v\)</span> 已从图中移除</p></li>
-<li><p>从图中删除边 <span class="math notranslate nohighlight">\(u \rightarrow v\)</span> 和 <span class="math notranslate nohighlight">\(v \rightarrow z\)</span>。</p></li>
-<li><p>插入一条新边 <span class="math notranslate nohighlight">\(u \rightarrow z\)</span>，以红色表示。</p></li>
-</ul>
-<div class="graphviz"><img src="_images/graphviz-8b01d503d415bd6cb722eee0eb0e9f10e481f0b2.png" alt="digraph G {
-    u, z [shape=circle;style=filled;color=deepskyblue];
-    &quot;G&quot; [shape=tripleoctagon; style=filled;
-         color=deepskyblue;label = &quot;Rest of the Graph&quot;];
-
-    rankdir=LR;
-    G -&gt; {u, z} [dir=none, weight=1, penwidth=3];
-    u -&gt; z [label=&quot;{v, w}&quot;;color=red]
-}" class="graphviz" /></div>
-<p>边 <span class="math notranslate nohighlight">\(u \rightarrow z\)</span> 有收缩点的信息。</p>
-</section>
-</section>
 <section id="see-also">
 <h2>另请参阅<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_contraction.html"><span class="doc">pgr_contraction</span></a></p></li>
-<li><p><a class="reference internal" href="sampledata.html"><span class="doc">示例数据</span></a></p></li>
 <li><p><a class="reference external" href="https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf">https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf</a></p></li>
 <li><p><a class="reference external" href="https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf">https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf</a></p></li>
 </ul>
@@ -415,7 +247,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on 3月 22, 2025.<br/>
+      Last updated on 3月 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>

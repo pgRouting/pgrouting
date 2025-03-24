@@ -16,8 +16,7 @@
     <script src="_static/documentation_options.js?v=79c17324"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/page_history.js?v=cd83b21e"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/page_history.js?v=7e05f4e6"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -99,15 +98,6 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Contraction - Family of functions</a><ul>
 <li><a class="reference internal" href="#introduction">Introduction</a></li>
-<li><a class="reference internal" href="#linear-contraction">Linear contraction</a><ul>
-<li><a class="reference internal" href="#linear">Linear</a><ul>
-<li><a class="reference internal" href="#linear-vertex-on-undirected-graph">Linear vertex on undirected graph</a></li>
-<li><a class="reference internal" href="#linear-vertex-on-directed-graph">Linear vertex on directed graph</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#operation-linear-contraction">Operation: Linear Contraction</a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -157,15 +147,6 @@
         <div id="sidebar" class="bs-sidenav well" data-spy="affix"><ul>
 <li><a class="reference internal" href="#">Contraction - Family of functions</a><ul>
 <li><a class="reference internal" href="#introduction">Introduction</a></li>
-<li><a class="reference internal" href="#linear-contraction">Linear contraction</a><ul>
-<li><a class="reference internal" href="#linear">Linear</a><ul>
-<li><a class="reference internal" href="#linear-vertex-on-undirected-graph">Linear vertex on undirected graph</a></li>
-<li><a class="reference internal" href="#linear-vertex-on-directed-graph">Linear vertex on directed graph</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#operation-linear-contraction">Operation: Linear Contraction</a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -200,7 +181,7 @@
 <li><p><a class="reference internal" href="pgr_contraction.html"><span class="doc">pgr_contraction</span></a></p></li>
 </ul>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="34f81bfe-7d20-41c8-a33e-46d4139117d3" name="34f81bfe-7d20-41c8-a33e-46d4139117d3" type="checkbox"><label class="sphinx_collapse__label" for="34f81bfe-7d20-41c8-a33e-46d4139117d3"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="1c9b5b52-6c81-410f-982d-07926f7a1def" name="1c9b5b52-6c81-410f-982d-07926f7a1def" type="checkbox"><label class="sphinx_collapse__label" for="1c9b5b52-6c81-410f-982d-07926f7a1def"><i class="sphinx_collapse__icon"></i>Proposed</label><div class="sphinx_collapse__content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Proposed functions for next mayor release.</p>
@@ -245,162 +226,9 @@ in the future, currently, it supports two algorithms:</p>
 times they are to be executed.</p></li>
 </ul>
 </section>
-<section id="linear-contraction">
-<h2>Linear contraction<a class="headerlink" href="#linear-contraction" title="Link to this heading">¶</a></h2>
-<p>In the algorithm, linear contraction is represented by 2.</p>
-<section id="linear">
-<h3>Linear<a class="headerlink" href="#linear" title="Link to this heading">¶</a></h3>
-<p>In case of an undirected graph, a node is considered a <cite>linear</cite> node when</p>
-<ul class="simple">
-<li><p>The number of adjacent vertices is 2.</p></li>
-</ul>
-<p>In case of a directed graph, a node is considered a <cite>linear</cite> node when</p>
-<ul class="simple">
-<li><p>The number of adjacent vertices is 2.</p></li>
-<li><p>Linearity is symmetrical</p></li>
-</ul>
-<section id="linear-vertex-on-undirected-graph">
-<h4>Linear vertex on undirected graph<a class="headerlink" href="#linear-vertex-on-undirected-graph" title="Link to this heading">¶</a></h4>
-<ul class="simple">
-<li><p>The green nodes are <a class="reference internal" href="#linear">linear</a> nodes</p></li>
-<li><p>The blue nodes have an unlimited number of incoming and outgoing edges.</p></li>
-</ul>
-<p class="rubric">Undirected</p>
-<div class="graphviz"><img src="_images/graphviz-9872665dd650fbe4b56184b4e266e5e885f76331.png" alt="graph G {
-    u, w [shape=circle;style=filled;width=.4;color=deepskyblue];
-    v [style=filled; color=green];
-    G [shape=tripleoctagon;width=1.5;style=filled;
-       color=deepskyblue;label = &quot;Rest of the Graph&quot;];
-
-    rankdir=LR;
-    w -- G -- u [dir=none, weight=1, penwidth=3];
-    u -- v -- w;
-}" class="graphviz" /></div>
-<table class="docutils align-default" style="width: 80">
-<thead>
-<tr class="row-odd"><th class="head"><p>Node</p></th>
-<th class="head"><p>Adjacent nodes</p></th>
-<th class="head"><p>Number of adjacent nodes</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(v\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\{u, w\}\)</span></p></td>
-<td><p>2</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="linear-vertex-on-directed-graph">
-<h4>Linear vertex on directed graph<a class="headerlink" href="#linear-vertex-on-directed-graph" title="Link to this heading">¶</a></h4>
-<ul class="simple">
-<li><p>The green nodes are <a class="reference internal" href="#linear">linear</a> nodes</p></li>
-<li><p>The blue nodes have an unlimited number of incoming and outgoing edges.</p></li>
-<li><p>The white node is not linear because the linearity is not symmetrical.</p>
-<ul>
-<li><p>It is possible to go <span class="math notranslate nohighlight">\(y \rightarrow c \rightarrow z\)</span></p></li>
-<li><p>It’s not possible to go <span class="math notranslate nohighlight">\(z \rightarrow c \rightarrow y\)</span></p></li>
-</ul>
-</li>
-</ul>
-<div class="graphviz"><img src="_images/graphviz-0da6d285bf608f2fff32cc1bdf6e36ad07471c0e.png" alt="digraph G {
-    u, v, w, x, y, z [shape=circle;style=filled;width=.4;color=deepskyblue];
-    a, b [style=filled; color=green];
-    G [shape=tripleoctagon;width=1.5;style=filled;
-      color=deepskyblue;label = &quot;Rest of the Graph&quot;];
-
-    rankdir=LR;
-    {u, v} -&gt; G -&gt; {x, w, y, z} [dir=none, weight=1, penwidth=3];
-    u -&gt; a -&gt; v;
-    w -&gt; b -&gt; x;
-    x -&gt; b -&gt; w [color=darkgray];
-    y -&gt; c -&gt; z -&gt; c;
-}" class="graphviz" /></div>
-<table class="docutils align-default" style="width: 80">
-<thead>
-<tr class="row-odd"><th class="head"><p>Node</p></th>
-<th class="head"><p>Adjacent nodes</p></th>
-<th class="head"><p>Number of adjacent nodes</p></th>
-<th class="head"><p>Is symmetrical?</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(a\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\{u, v\}\)</span></p></td>
-<td><p>2</p></td>
-<td><p>yes</p></td>
-</tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(b\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\{w, x\}\)</span></p></td>
-<td><p>2</p></td>
-<td><p>yes</p></td>
-</tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(c\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\{y, z\}\)</span></p></td>
-<td><p>2</p></td>
-<td><p>no</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="operation-linear-contraction">
-<h3>Operation: Linear Contraction<a class="headerlink" href="#operation-linear-contraction" title="Link to this heading">¶</a></h3>
-<p>The linear contraction will stop when there are no more linear nodes.
-For example from the following graph where <span class="math notranslate nohighlight">\(v\)</span> and <span class="math notranslate nohighlight">\(w\)</span> are <a class="reference internal" href="#linear">linear</a>
-nodes:</p>
-<div class="graphviz"><img src="_images/graphviz-2d88b57dd1d5f0b63e43ffdfe4ae05ae0ac068c5.png" alt="digraph G {
-    u, z [shape=circle;style=filled;color=deepskyblue];
-    v, w [style=filled; color=green];
-    &quot;G&quot; [shape=tripleoctagon; style=filled;
-         color=deepskyblue;label = &quot;Rest of the Graph&quot;];
-
-    rankdir=LR;
-    G -&gt; {u, z} [dir=none, weight=1, penwidth=3];
-    u -&gt; v -&gt; w -&gt; z;
-}" class="graphviz" /></div>
-<p>Contracting <span class="math notranslate nohighlight">\(w\)</span>,</p>
-<ul class="simple">
-<li><p>The vertex <span class="math notranslate nohighlight">\(w\)</span> is removed from the graph</p></li>
-<li><p>The edges <span class="math notranslate nohighlight">\(v \rightarrow w\)</span> and <span class="math notranslate nohighlight">\(w \rightarrow z\)</span> are removed
-from the graph.</p></li>
-<li><p>A new edge <span class="math notranslate nohighlight">\(v \rightarrow z\)</span> is inserted represented with red color.</p></li>
-</ul>
-<div class="graphviz"><img src="_images/graphviz-daa8aad1710941b016da236c5d7f49e64bf04a5f.png" alt="digraph G {
-    u, z [shape=circle;style=filled;color=deepskyblue];
-    v [style=filled; color=green];
-    &quot;G&quot; [shape=tripleoctagon; style=filled;
-         color=deepskyblue;label = &quot;Rest of the Graph&quot;];
-
-    rankdir=LR;
-    G -&gt; {u, z} [dir=none, weight=1, penwidth=3];
-    u -&gt; v;
-    v -&gt; z [label=&quot;{w}&quot;;color=red]
-}" class="graphviz" /></div>
-<p>Contracting <span class="math notranslate nohighlight">\(v\)</span>:</p>
-<ul class="simple">
-<li><p>The vertex <span class="math notranslate nohighlight">\(v\)</span> is removed from the graph</p></li>
-<li><p>The edges <span class="math notranslate nohighlight">\(u \rightarrow v\)</span> and <span class="math notranslate nohighlight">\(v \rightarrow z\)</span> are removed
-from the graph.</p></li>
-<li><p>A new edge <span class="math notranslate nohighlight">\(u \rightarrow z\)</span> is inserted represented with red color.</p></li>
-</ul>
-<div class="graphviz"><img src="_images/graphviz-8b01d503d415bd6cb722eee0eb0e9f10e481f0b2.png" alt="digraph G {
-    u, z [shape=circle;style=filled;color=deepskyblue];
-    &quot;G&quot; [shape=tripleoctagon; style=filled;
-         color=deepskyblue;label = &quot;Rest of the Graph&quot;];
-
-    rankdir=LR;
-    G -&gt; {u, z} [dir=none, weight=1, penwidth=3];
-    u -&gt; z [label=&quot;{v, w}&quot;;color=red]
-}" class="graphviz" /></div>
-<p>Edge <span class="math notranslate nohighlight">\(u \rightarrow z\)</span> has the information of nodes that were contracted.</p>
-</section>
-</section>
 <section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_contraction.html"><span class="doc">pgr_contraction</span></a></p></li>
-<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a></p></li>
 <li><p><a class="reference external" href="https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf">https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf</a></p></li>
 <li><p><a class="reference external" href="https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf">https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf</a></p></li>
 </ul>
@@ -425,7 +253,7 @@ from the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.8.<br/>
-      Last updated on Mar 22, 2025.<br/>
+      Last updated on Mar 24, 2025.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
     </p>
   </div>
