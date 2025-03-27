@@ -4,15 +4,15 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 # Pedro Jose Rios Vergara <jose@georepublic.de>, 2022.
 # Celia Virginia Vergara Castillo <vicky@georepublic.de>, 2022.
-# Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023, 2024.
+# Celia Virginia Vergara Castillo <vicky@erosion.dev>, 2023, 2024, 2025.
 # DeepL <noreply-mt-deepl@weblate.org>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-24 14:17+0000\n"
-"PO-Revision-Date: 2024-10-10 19:43+0000\n"
-"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
+"PO-Revision-Date: 2025-03-27 21:47+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-develop/es/>\n"
 "Language: es\n"
@@ -10576,14 +10576,12 @@ msgid ""
 "name ``methods``."
 msgstr ""
 
-#, fuzzy
 msgid "New name and order of optional parameters."
-msgstr "Parámetros opcionales de Cercanía"
+msgstr "Nuevo nombre y orden de parámetros opcionales."
 
-#, fuzzy
 msgid ""
 "Deprecated signature pgr_contraction(text,bigint[],integer,bigint[],boolean)"
-msgstr "_pgr_dijkstranear(text,bigint,anyarray,bigint,boolean)"
+msgstr "Firma obsoleta pgr_contraction(text,bigint[],integer,bigint[],boolean)"
 
 msgid "Name change from ``pgr_contractGraph``"
 msgstr "Cambio de nombre de ``pgr_contractGraph``"
@@ -10601,13 +10599,11 @@ msgstr ""
 "secuencia de aristas originales disminuyendo el tiempo total y el espacio "
 "utilizados en los algoritmos de grafo."
 
-#, fuzzy
 msgid "Does not return the full contracted graph."
-msgstr "No devuelve el grafo completo contraído"
+msgstr "No devuelve el grafo contraído completo."
 
-#, fuzzy
 msgid "Only changes on the graph are returned."
-msgstr "Solo se devuelven los cambios en el gráfico"
+msgstr "Solo se devuelven los cambios en el grafo."
 
 #, fuzzy
 msgid "The returned values include:"
@@ -10624,13 +10620,12 @@ msgstr "los vértices modificados por contracción sin salida."
 msgid "The returned values are ordered as follows:"
 msgstr "Los valores devueltos se ordenan de la siguiente manera:"
 
-#, fuzzy
 msgid "column ``id`` ascending when its a modified vertex."
-msgstr "columna ``id`` ascendente cuando el tipo = ``v``"
+msgstr "columna ``id`` ascendente cuando es un vértice modificado."
 
-#, fuzzy
 msgid "column ``id`` with negative numbers descending when its a new edge."
-msgstr "columna ``id`` descendente cuando el tipo = ``e``"
+msgstr ""
+"columna ``id`` con números negativos descendentes cuando es una nueva arista."
 
 #, fuzzy
 msgid ""
@@ -10644,10 +10639,8 @@ msgstr ""
 msgid "Linear Contraction. See :doc:`pgr_contractionLinear`."
 msgstr ""
 
-#, fuzzy
 msgid "pgr_contraction(`Edges SQL`_, [**options**])"
-msgstr ""
-"pgr_contraction(`SQL de aristas`_, **orden de contracción**, [**opciones**])"
+msgstr "pgr_contraction(`SQL de aristas`_, [**opciones**])"
 
 #, fuzzy
 msgid "**options:** ``[directed, methods, cycles, forbidden]``"
@@ -10725,16 +10718,14 @@ msgstr "Tipo del ``id``."
 msgid "``v`` when the row is a vertex."
 msgstr "``v`` cuando la fila es un vértice."
 
-#, fuzzy
 msgid "Column ``id`` has a positive value."
-msgstr "Columna ``id`` tiene valor positivo"
+msgstr "Columna ``id`` tiene valor positivo."
 
 msgid "``e`` when the row is an edge."
 msgstr "``e`` cuando la fila es una arista."
 
-#, fuzzy
 msgid "Column ``id`` has a negative value."
-msgstr "Columna ``id`` tiene valor negativo"
+msgstr "Columna ``id`` tiene valor negativo."
 
 msgid "All numbers on this column are ``DISTINCT``"
 msgstr "Todos los números de esta columna son ''DISTINTOS''"
@@ -10869,9 +10860,8 @@ msgid ""
 "the following will be used:"
 msgstr ""
 
-#, fuzzy
 msgid "Column."
-msgstr "Columna"
+msgstr "Columna."
 
 msgid "The vertices set belonging to the vertex/edge"
 msgstr "El conjunto de vértices que pertenecen al vértice/arista"
@@ -10917,9 +10907,8 @@ msgstr ""
 msgid "Store contraction information"
 msgstr "Almacenar información de contracción"
 
-#, fuzzy
 msgid "Store the contraction results in a table."
-msgstr "Almacenar los `resultados de la contracción`_ en una tabla"
+msgstr "Almacenar los resultados de la contracción en una tabla."
 
 #, fuzzy
 msgid "Update the edges and vertices tables"
@@ -10983,9 +10972,8 @@ msgstr "Caso 3: El origen y/o el destino pertenecen a un vértice."
 msgid "The final application should consider all of those cases."
 msgstr ""
 
-#, fuzzy
 msgid "Create a view (or table) of the contracted graph:"
-msgstr "Vértices que pertenecen al grafo contraído."
+msgstr "Crear una vista (o tabla) del grafo Contraído:"
 
 #, fuzzy
 msgid "Create the function that will use the contracted graph."
@@ -11001,9 +10989,8 @@ msgid ""
 "Case 3: Source and/or target belong to a vertex that has been contracted."
 msgstr "Caso 3: El origen y/o el destino pertenecen a un vértice."
 
-#, fuzzy
 msgid "``pgr_contractionDeadEnd`` - Proposed"
-msgstr "``pgr_extractVertices``-- Propuesto"
+msgstr "``pgr_contractionDeadEnd`` - Propuesto"
 
 #, fuzzy
 msgid ""
@@ -11034,22 +11021,18 @@ msgid ""
 "When all edges are incoming regardless of the number of adjacent vertices."
 msgstr ""
 
-#, fuzzy
 msgid "pgr_contractionDeadEnd(`Edges SQL`_, [**options**])"
-msgstr ""
-"pgr_contraction(`SQL de aristas`_, **orden de contracción**, [**opciones**])"
+msgstr "pgr_contractionDeadEnd(`SQL de aristas`_, [**opciones**])"
 
 #, fuzzy
 msgid "**options:** ``[directed, forbidden_vertices]``"
 msgstr "**opcionales:** ``[directed, details]``"
 
-#, fuzzy
 msgid "Dead end contraction on an undirected graph."
-msgstr "Vértice sin salida en un grafo sin dirigir"
+msgstr "Contracción de vértice sin salida en un grafo no dirigido."
 
-#, fuzzy
 msgid "The green nodes are dead end nodes."
-msgstr "Los nodos verdes son nodos `dead end`_"
+msgstr "Los nodos verdes son nodos sin salida."
 
 #, fuzzy
 msgid "Node :math:`3` is a dead end node after node :math:`1` is contracted."
@@ -11127,9 +11110,8 @@ msgstr ":math:`\\{u\\}`"
 msgid "Yes"
 msgstr "sí"
 
-#, fuzzy
 msgid "Has only one adjacent node."
-msgstr "Número de vértices adyacentes"
+msgstr "Solo tiene un nodo adyacente."
 
 #, fuzzy
 msgid ":math:`7`"
@@ -11173,9 +11155,8 @@ msgstr ""
 msgid ":math:`1,2,3,4,5`"
 msgstr ":math:`1`"
 
-#, fuzzy
 msgid "Many adjacent nodes."
-msgstr "Nodos adyacentes"
+msgstr "Muchos nodos adyacentes."
 
 msgid ""
 "Has more than one adjacent node and some edges are incoming and some are "
@@ -11229,17 +11210,14 @@ msgstr ""
 msgid "Creating the contracted graph"
 msgstr "Usando el grafo contraído"
 
-#, fuzzy
 msgid "Steps for the creation of the contracted graph"
-msgstr "Aristas que pertenecen al grafo contraído."
+msgstr "Pasos para la creación del grafo contraído"
 
-#, fuzzy
 msgid "Add additional columns."
-msgstr "Añadir columnas adicionales"
+msgstr "Añadir columnas adicionales."
 
-#, fuzzy
 msgid "Save results into a table."
-msgstr "Almacenar los `resultados de la contracción`_ en una tabla"
+msgstr "Almacenar los resultados en una tabla."
 
 #, fuzzy
 msgid "The contracted vertices are not part of the contracted graph."
@@ -11247,23 +11225,17 @@ msgstr ""
 "En caso de ''true'' se contrae el vértice, no forma parte del grafo "
 "contraído."
 
-#, fuzzy
 msgid "Using when departure and destination are in the contracted graph"
-msgstr "Caso 1: Tanto el origen como el destino pertenecen al grafo contraído."
+msgstr "Usando cuando la salida como el destino pertenecen al grafo contraído"
 
-#, fuzzy
 msgid "Using when departure/destination is not in the contracted graph"
-msgstr ""
-"En caso de ''true'' se contrae el vértice, no forma parte del grafo "
-"contraído."
+msgstr "Usando cuando la salida /destino no pertenecen al grafo contraído"
 
-#, fuzzy
 msgid "Using when departure and destination are not in the contracted graph"
-msgstr "Caso 1: Tanto el origen como el destino pertenecen al grafo contraído."
+msgstr "Usando cuando la salida y el destino no están en el grafo contraído"
 
-#, fuzzy
 msgid "``pgr_contractionLinear`` - Proposed"
-msgstr "``pgr_dijkstraNear`` - Propuesto"
+msgstr "``pgr_contractionLinear`` - Propuesto"
 
 #, fuzzy
 msgid ""
@@ -11273,10 +11245,8 @@ msgstr ""
 "``pgr_contraction`` — Realiza la contracción del grafo y devuelve los "
 "vértices y aristas contraídos.."
 
-#, fuzzy
 msgid "pgr_contractionLinear(`Edges SQL`_, [**options**])"
-msgstr ""
-"pgr_contraction(`SQL de aristas`_, **orden de contracción**, [**opciones**])"
+msgstr "pgr_contractionLinear(`SQL de aristas`_, [**opciones**])"
 
 #, fuzzy
 msgid "**options:** ``[directed, max_cycles, forbidden_vertices]``"
@@ -11321,17 +11291,15 @@ msgstr "El número de vértices adyacentes es 2."
 msgid "In case of a directed graph, a node is considered a `linear` node when"
 msgstr "En el caso de un grafo dirigido, un nodo se considera `lineal` cuando"
 
-#, fuzzy
 msgid "Linearity is symmetrical."
-msgstr "La linealidad es simétrica"
+msgstr "La linealidad es simétrica."
 
 #, fuzzy
 msgid "Linearity is not symmetrical"
 msgstr "La linealidad es simétrica"
 
-#, fuzzy
 msgid "Graph where linearity is not symmetrical."
-msgstr "La linealidad es simétrica"
+msgstr "Grafo cuando la linealidad no es simétrica."
 
 msgid ""
 "When the graph is processed as a directed graph, linearity is not "
@@ -11343,17 +11311,14 @@ msgid ""
 "symmetrical, therefore the graph can be contracted."
 msgstr ""
 
-#, fuzzy
 msgid "The three edges can be replaced by one undirected edge"
-msgstr "El gráfico puede dirigido o no."
+msgstr "Las tres aristas pueden ser reemplazadas por una arista no dirigida"
 
-#, fuzzy
 msgid "Edge :math:`1 - 3`."
-msgstr ":math:`1`"
+msgstr "Arista :math:`1 - 3`."
 
-#, fuzzy
 msgid "With cost: :math:`4`."
-msgstr "Con ``cost``"
+msgstr "Con costo: :math:`4`."
 
 #, fuzzy
 msgid "Contracted vertices in the edge: :math:`\\{2\\}`."
@@ -11362,21 +11327,18 @@ msgstr "Para un grafo dirigido con aristas :math:`\\{1, 2, 3, 4\\}`."
 msgid "Linearity is symmetrical"
 msgstr "La linealidad es simétrica"
 
-#, fuzzy
 msgid "Graph where linearity is symmetrical."
-msgstr "La linealidad es simétrica"
+msgstr "Grafo donde la linealidad es simétrica."
 
 #, fuzzy
 msgid "The four edges can be replaced by two directed edges."
 msgstr "El gráfico puede dirigido o no."
 
-#, fuzzy
 msgid "Edge :math:`3 - 1`."
-msgstr ":math:`-1`"
+msgstr "Arista :math:`3 - 1`."
 
-#, fuzzy
 msgid "With cost: :math:`6`."
-msgstr "Con ``cost``"
+msgstr "Con costo: :math:`6`."
 
 #, fuzzy
 msgid "The four edges can be replaced by one undirected edge."
@@ -11449,9 +11411,8 @@ msgstr ""
 "El arista :math:`u \\rightarrow z` tiene la información de los nodos que "
 "fueron contraídos."
 
-#, fuzzy
 msgid "Create the contracted graph."
-msgstr "El grafo contraído"
+msgstr "Crear el grafo contraído."
 
 msgid "``pgr_createTopology``"
 msgstr "``pgr_createTopology``"
@@ -12137,9 +12098,8 @@ msgid ""
 "requirements."
 msgstr ""
 
-#, fuzzy
 msgid "No ordering is performed."
-msgstr "No se realiza ningún pedido"
+msgstr "No se realiza ningún ordenamiento."
 
 #, fuzzy
 msgid "pgr_degree(`Edges SQL`_ , [``dryrun``])"
@@ -12158,9 +12118,8 @@ msgstr ""
 msgid "example"
 msgstr "Ejemplo"
 
-#, fuzzy
 msgid "Get the degree of the vertices defined on the edges table"
-msgstr ":math:`m` es el grado máximo de los vértices en el grafo."
+msgstr "Obtener el grado de los vértices definidos en la tabla de aristas"
 
 #, fuzzy
 msgid "Edges and Vertices"
@@ -12244,9 +12203,8 @@ msgstr "Número de aristas incidentes al vértice ``id``"
 msgid "Degree of a loop"
 msgstr "Grado de un subgrafo"
 
-#, fuzzy
 msgid "Using the `Edges`_ signature."
-msgstr "Sobre las firmas obsoletas:"
+msgstr "Usando la firma `Aristas`_."
 
 msgid "Using the `Edges and Vertices`_ signature."
 msgstr ""
@@ -12324,9 +12282,8 @@ msgstr ""
 "subconjunto, se puede trabajar con las columnas ``in_edges`` y ``out_edges`` "
 "directamente."
 
-#, fuzzy
 msgid "The degree of a dead end is 1."
-msgstr "Los nodos verdes son nodos `dead end`_"
+msgstr "El grado de un sin salida es 1."
 
 #, fuzzy
 msgid "Finding linear vertices"
@@ -13830,9 +13787,8 @@ msgstr ""
 "``pgr_findCloseEdges`` - Encuentra las aristas cercanas a una geometría "
 "puntual."
 
-#, fuzzy
 msgid "``partial`` option is removed."
-msgstr "``n_seq`` se elimina"
+msgstr "Opción ``partial`` se elimina."
 
 msgid ""
 "``pgr_findCloseEdges`` - An utility function that finds the closest edge to "
@@ -13959,9 +13915,8 @@ msgstr "``distancia``"
 msgid "Distance from the point to the edge."
 msgstr "Distancia del punto a la arista."
 
-#, fuzzy
 msgid "Original ``POINT`` geometry."
-msgstr "geometría ``POINT``"
+msgstr "Geometría original ``POINT``."
 
 #, fuzzy
 msgid ""
@@ -13975,13 +13930,11 @@ msgstr ""
 msgid "One point in an edge"
 msgstr "Ejecución en seco de un punto"
 
-#, fuzzy
 msgid "The green node is the original point."
-msgstr "Los nodos verdes son el **punto original**"
+msgstr "El nodo verde es el punto original."
 
-#, fuzzy
 msgid "``geom`` has the value of the original point."
-msgstr "La arista :math:`5` es la más cercana al **punto original**"
+msgstr "``geom`` Tiene el valor del punto original."
 
 #, fuzzy
 msgid ""
@@ -14011,11 +13964,8 @@ msgstr "Devuelve ``CONJUNTO VACÍO``."
 msgid "``dryrun => true``"
 msgstr "``dryrun => true``"
 
-#, fuzzy
 msgid "Generates a PostgreSQL ``NOTICE`` with the code used."
-msgstr ""
-"Generar un ``NOTICE`` de PostgreSQL con el código utilizado para calcular "
-"todas las columnas"
+msgstr "Genera un ``NOTICE`` de PostgreSQL con el código utilizado."
 
 msgid ""
 "The generated code can be used as a starting base code for additional "
@@ -14102,10 +14052,9 @@ msgstr "Un identificador único."
 msgid "Identifier of the nearest segment."
 msgstr "Identificador del vértice."
 
-#, fuzzy
 msgid "Is it on the left, right or both sides of the segment ``edge_id``."
 msgstr ""
-"Está a la izquierda, a la derecha o a ambos lados del segmento ``edge_id``"
+"Está a la izquierda, a la derecha o a ambos lados del segmento ``edge_id``."
 
 msgid "Where in the segment is the point located."
 msgstr "En qué parte del segmento se encuentra el punto."
@@ -14113,17 +14062,15 @@ msgstr "En qué parte del segmento se encuentra el punto."
 msgid "The geometry of the points."
 msgstr "La geometría de los puntos."
 
-#, fuzzy
 msgid "The distance between ``geom`` and the segment ``edge_id``."
-msgstr ""
-"Está a la izquierda, a la derecha o a ambos lados del segmento ``edge_id``"
+msgstr "La distancia entre ``geom`` y el segmento ``edge_id``."
 
-#, fuzzy
 msgid ""
 "A segment that connects the ``geom`` of the point to the closest point on "
 "the segment ``edge_id``."
 msgstr ""
-"Está a la izquierda, a la derecha o a ambos lados del segmento ``edge_id``"
+"Un segmento que conecta la ``geom`` del punto al punto mas cercano al "
+"segmento ``edge_id``."
 
 msgid "``newPoint``"
 msgstr "``newPoint``"
@@ -14135,13 +14082,11 @@ msgstr ""
 msgid "Points of interest fill up"
 msgstr "LLenado de puntos de interés"
 
-#, fuzzy
 msgid "Inserting the points of interest."
-msgstr "Puntos de interés"
+msgstr "Insertando los puntos de interés."
 
-#, fuzzy
 msgid "Filling the rest of the table."
-msgstr "En la tabla de vértices"
+msgstr "Llenando el resto de la tabla."
 
 msgid ""
 "Any other additional modification: In this manual, point :math:`6` can be "
@@ -16843,7 +16788,7 @@ msgid "Use ``pgr_findCloseEdges`` for points on the fly"
 msgstr ""
 
 msgid "Using :doc:`pgr_findCloseEdges`:"
-msgstr "Usa :doc:`pgr_findCloseEdges`:"
+msgstr "Usando :doc:`pgr_findCloseEdges`:"
 
 msgid ""
 "Visit from vertex :math:`1` to the two locations on the graph of point "
@@ -18083,9 +18028,8 @@ msgstr "pgRouting 3.7"
 msgid "pgRouting 3.8.0 Release Notes"
 msgstr "Notas de la versión de pgRouting 3.7.0"
 
-#, fuzzy
 msgid "Promotion to official function of pgRouting."
-msgstr "Propuesta cambió a oficial en pgRouting"
+msgstr "Promoción a función oficial de pgRouting."
 
 msgid "pgr_extractVertices"
 msgstr "pgr_extractVertices"
@@ -18093,9 +18037,8 @@ msgstr "pgr_extractVertices"
 msgid "pgr_degree"
 msgstr "pgr_degree"
 
-#, fuzzy
 msgid "pgr_findCloseEdges"
-msgstr "``pgr_findCloseEdges``"
+msgstr "pgr_findCloseEdges"
 
 msgid "Official functions changes"
 msgstr "Cambios en las funciones oficiales"
@@ -21054,13 +20997,12 @@ msgid ""
 "when wanting a route from ``source`` to ``target``."
 msgstr ""
 
-#, fuzzy
 msgid ""
 "For convenience of this documentation, some combinations will be stored on a "
 "table:"
 msgstr ""
-"En esta documentación habrá unos 6 puntos de interés fijos y se almacenarán "
-"en una tabla."
+"Por conveniencia de esta documentación, algunas combinaciones se almacenan "
+"en una tabla:"
 
 msgid "Inserting the data:"
 msgstr "Insertar los datos:"
