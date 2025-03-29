@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.8.0') THEN plan(11) ELSE plan(8) END;
+SELECT CASE WHEN min_version('3.8.0') THEN plan(5) ELSE plan(2) END;
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost  FROM edges;
@@ -34,20 +34,9 @@ DECLARE
 params TEXT[];
 subs TEXT[];
 BEGIN
-    params = ARRAY[
-    '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$',
-    'ARRAY[1]::BIGINT[]'
-    ]::TEXT[];
-    subs = ARRAY[
-    'NULL',
-    'NULL::BIGINT[]'
-    ]::TEXT[];
-
-    RETURN query SELECT * FROM no_crash_test('pgr_contraction', params, subs);
-
   IF NOT min_version('3.8.0') THEN
     RETURN QUERY
-    SELECT skip(1, 'pgr_contraction new signature on 3.8.0');
+    SELECT skip(1, 'pgr_contraction new signature added on 3.8.0');
     RETURN;
   END IF;
 
