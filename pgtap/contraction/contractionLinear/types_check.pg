@@ -40,7 +40,7 @@ BEGIN
     ('{"",directed,forbidden,type,id,contracted_vertices,source,target,cost}'::TEXT[])
     $$,'pgr_contractionlinear: Column names');
 
-  RETURN QUERY SELECT function_types('pgr_contractionlinear',
+  RETURN QUERY SELECT function_types_eq('pgr_contractionlinear',
     $$VALUES ('{text,bool,_int8,text,int8,_int8,int8,int8,float8}'::TEXT[]) $$);
 
 END;
