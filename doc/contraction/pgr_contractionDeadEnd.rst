@@ -58,7 +58,7 @@ Signatures
 
    | pgr_contractionDeadEnd(`Edges SQL`_, [**options**])
 
-   | **options:** ``[directed, forbidden_vertices]``
+   | **options:** ``[directed, forbidden]``
    | Returns set of |result-contract|
 
 :Example: Dead end contraction on an undirected graph.
