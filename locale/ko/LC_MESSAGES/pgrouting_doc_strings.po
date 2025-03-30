@@ -18711,20 +18711,3 @@ msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
 
 #, fuzzy
-#~ msgid "``pgr_findCloseEdges`` - Proposed"
-#~ msgstr ":doc:`pgr_findCloseEdges`"
-
-#, fuzzy
-#~ msgid "``pgr_trsp_withPoints`` - Proposed"
-#~ msgstr ":doc:`pgr_trspVia_withPoints`"
-
-#~ msgid ":doc:`pgr_topologicalSort`"
-#~ msgstr ":doc:`pgr_topologicalSort`"
-
-#, fuzzy
-#~ msgid "Migrating functions"
-#~ msgstr ":doc:`routingFunctions`"
-
-#, fuzzy
-#~ msgid "**Supported versions**"
-#~ msgstr "짧은 버전"

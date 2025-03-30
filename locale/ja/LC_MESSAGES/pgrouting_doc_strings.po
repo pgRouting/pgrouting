@@ -18735,36 +18735,3 @@ msgstr ""
 msgid "pgr_withPointsvia is pgr_dijkstraVia **with points**"
 msgstr ""
 
-#~ msgid "no"
-#~ msgstr "いいえ"
-
-#~ msgid "proposed"
-#~ msgstr "リリース予定"
-
-#~ msgid "The weighted directed graph, :math:`G_d(V,E)`, is definied by:"
-#~ msgstr ""
-#~ "重みづけされた有向グラフ :math:'G_d(V,E)''は、次のように定義されます:"
-
-#, fuzzy
-#~ msgid "e Also"
-#~ msgstr "参照"
-
-#~ msgid "For edge :math:`8`:"
-#~ msgstr "エッジのセット :math:`8`:"
-
-#~ msgid "The queries use the :doc:`sampledata` network."
-#~ msgstr "クエリは :doc:`sampledata` ネットワークを使用します。"
-
-#~ msgid "Previous versions of this page"
-#~ msgstr "このページの以前のバージョン"
-
-#, fuzzy
-#~ msgid "The following query has restrictions."
-#~ msgstr "次のクエリを実行します。"
-
-#~ msgid "New overload functions:"
-#~ msgstr "新しい **公式** 機能:"
-
-#, fuzzy
-#~ msgid "Queries use the :doc:`sampledata` network."
-#~ msgstr "クエリは :doc:`sampledata` ネットワークを使用します。"
