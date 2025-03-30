@@ -44,7 +44,7 @@ Signatures
 
    | pgr_contractionLinear(`Edges SQL`_, [**options**])
 
-   | **options:** ``[directed, max_cycles, forbidden_vertices]``
+   | **options:** ``[directed, forbidden]``
    | Returns set of |result-contract|
 
 :Example: Linear contraction on an undirected graph.
@@ -130,11 +130,11 @@ Contraction optional parameters
      - Type
      - Default
      - Description
-   * - ``forbidden_vertices``
+   * - ``forbidden``
      - ``ARRAY[`` **ANY-INTEGER** ``]``
      - **Empty**
      - Identifiers of vertices forbidden for contraction.
-   * - ``max_cycles``
+   * - ``cycles``
      - ``INTEGER``
      - :math:`1`
      - Number of times the contraction operations on ``contraction_order`` will
